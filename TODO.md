@@ -15,7 +15,9 @@
 - [x] 2c. Semantic dedup live (2026-08-06): gemini-api-key mounted, 9 rows backfilled, threshold tuned 0.85→0.80 on measured data (translated pair 0.841, unrelated ≤0.702). First production catch: re-issued URL held at 0.98 similarity. Revisit threshold if false holds appear.
 - [ ] 3. Fighter filter (watchlist)
 - [ ] 4. Relevance agent (importance scoring vs. threshold) — Mastra comes in here
+  - **Alternative shape (2026-08-06, preferred so far):** classifier, not filter. Real feed volume is pleasant — nothing gets dropped; instead classify each item (fight announcement / result / interview / ...) and tier the *presentation*: announcements get their own ceremonial post (🚨🥊, bold card), possibly pinned (bot needs group admin) and loud, while digests deliver silently. First LLM call inside the hunter pipeline. "Where to watch" enrichment (Ukraine broadcast rights) joins later when web-search tools arrive (step 6) and appends into the announcement post.
 - [ ] 5. Rumor/confirmed layer + claim lifecycle
+  - Observed 2026-08-06: headline embeddings miss same-story-different-angle pairs (~0.70 sim, e.g. two articles on the same Masvidal quote). True fix is claim extraction: canonical claim + source list ordered by published_at (earliest ≈ original; translations/echoes append quietly as "also covered by").
 - [ ] 6. Conversational follow-ups with memory + web search
 
 ## Deploy automation
