@@ -1,0 +1,687 @@
+<title>FighterBot · Step 5: The Claims Layer</title>
+<style>
+  :root {
+    --paper: #f7f8f6;
+    --card: #ffffff;
+    --ink: #22262b;
+    --ink-soft: #5a6169;
+    --line: #d9dcd7;
+    --red: #b5122e;        /* red corner — articles / evidence */
+    --blue: #24507a;       /* blue corner — claims / facts */
+    --amber: #a4650a;      /* rumor */
+    --amber-bg: #f6e8d0;
+    --green: #1e6b3a;      /* confirmed */
+    --green-bg: #ddeee1;
+    --grey-bg: #e6e8e4;
+    --red-bg: #f3dadd;
+    --blue-bg: #dde7f0;
+    --mono: ui-monospace, "SF Mono", SFMono-Regular, Menlo, Consolas, monospace;
+    --disp: "Avenir Next Condensed", "Arial Narrow", "Helvetica Neue", sans-serif;
+    --body: -apple-system, "Segoe UI", system-ui, sans-serif;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --paper: #191c1f; --card: #22262b; --ink: #e8eae6; --ink-soft: #9aa2a9;
+      --line: #3a4046; --red: #e05a6e; --blue: #7fa8cf; --amber: #d99a3d;
+      --amber-bg: #3a3020; --green: #6cbd88; --green-bg: #20321f;
+      --grey-bg: #2c3034; --red-bg: #3a2428; --blue-bg: #223142;
+    }
+  }
+  :root[data-theme="dark"] {
+    --paper: #191c1f; --card: #22262b; --ink: #e8eae6; --ink-soft: #9aa2a9;
+    --line: #3a4046; --red: #e05a6e; --blue: #7fa8cf; --amber: #d99a3d;
+    --amber-bg: #3a3020; --green: #6cbd88; --green-bg: #20321f;
+    --grey-bg: #2c3034; --red-bg: #3a2428; --blue-bg: #223142;
+  }
+  :root[data-theme="light"] {
+    --paper: #f7f8f6; --card: #ffffff; --ink: #22262b; --ink-soft: #5a6169;
+    --line: #d9dcd7; --red: #b5122e; --blue: #24507a; --amber: #a4650a;
+    --amber-bg: #f6e8d0; --green: #1e6b3a; --green-bg: #ddeee1;
+    --grey-bg: #e6e8e4; --red-bg: #f3dadd; --blue-bg: #dde7f0;
+  }
+  body { background: var(--paper); color: var(--ink); font-family: var(--body);
+         line-height: 1.6; margin: 0; font-size: 16px; }
+  main { max-width: 860px; margin: 0 auto; padding: 40px 24px 100px; }
+  .prose { max-width: 700px; }
+  h1 { font-family: var(--disp); font-weight: 700; font-size: 2.6rem; line-height: 1.05;
+       text-transform: uppercase; letter-spacing: .01em; margin: .2em 0 .1em; text-wrap: balance; }
+  h2 { font-family: var(--disp); font-weight: 600; font-size: 1.55rem; text-transform: uppercase;
+       letter-spacing: .02em; margin: 2.6em 0 .4em; border-bottom: 2px solid var(--ink); padding-bottom: .15em; }
+  h2 .num { color: var(--red); margin-right: .4em; }
+  h3 { font-size: 1.05rem; margin: 1.8em 0 .3em; }
+  p { margin: .7em 0; }
+  .eyebrow { font-family: var(--disp); text-transform: uppercase; letter-spacing: .14em;
+             font-size: .8rem; color: var(--red); font-weight: 600; }
+  .sub { color: var(--ink-soft); font-size: 1.05rem; max-width: 640px; }
+  .toc { display: flex; flex-wrap: wrap; gap: 8px 18px; margin: 26px 0 6px; padding: 14px 18px;
+         background: var(--card); border: 1px solid var(--line); border-radius: 4px; font-size: .88rem; }
+  .toc a { color: var(--ink-soft); text-decoration: none; }
+  .toc a:hover, .toc a:focus { color: var(--red); text-decoration: underline; }
+  .toc b { color: var(--red); font-family: var(--mono); font-weight: 600; margin-right: 4px; }
+  code, .mono { font-family: var(--mono); font-size: .86em; background: var(--grey-bg);
+                padding: .1em .35em; border-radius: 3px; }
+  pre { background: var(--card); border: 1px solid var(--line); border-radius: 4px;
+        padding: 14px 16px; overflow-x: auto; font-size: .82rem; line-height: 1.5; }
+  pre code { background: none; padding: 0; }
+  .fig { background: var(--card); border: 1px solid var(--line); border-radius: 4px;
+         padding: 18px; margin: 22px 0; overflow-x: auto; }
+  .figcap { font-size: .8rem; color: var(--ink-soft); margin-top: 10px;
+            font-family: var(--disp); text-transform: uppercase; letter-spacing: .08em; }
+  svg { display: block; }
+  svg text { font-family: var(--body); fill: var(--ink); }
+  svg .t-mono { font-family: var(--mono); }
+  svg .t-soft { fill: var(--ink-soft); }
+  svg .t-disp { font-family: var(--disp); text-transform: uppercase; letter-spacing: .05em; font-weight: 600; }
+  table { border-collapse: collapse; width: 100%; font-size: .88rem; margin: 14px 0; }
+  th { font-family: var(--disp); text-transform: uppercase; letter-spacing: .06em;
+       font-size: .74rem; text-align: left; color: var(--ink-soft); border-bottom: 2px solid var(--ink);
+       padding: 6px 10px; }
+  td { border-bottom: 1px solid var(--line); padding: 8px 10px; vertical-align: top; }
+  td.mono-c { font-family: var(--mono); font-size: .8rem; white-space: nowrap; }
+  .tag { display: inline-block; font-family: var(--disp); text-transform: uppercase;
+         font-size: .7rem; font-weight: 600; letter-spacing: .07em; padding: 2px 9px;
+         border-radius: 3px; }
+  .tag.rumor { background: var(--amber-bg); color: var(--amber); }
+  .tag.confirmed { background: var(--green-bg); color: var(--green); }
+  .tag.denied { background: var(--red-bg); color: var(--red); }
+  .tag.stale { background: var(--grey-bg); color: var(--ink-soft); }
+  .tag.superseded { background: var(--blue-bg); color: var(--blue); }
+  .callout { border-left: 3px solid var(--red); background: var(--card); border-radius: 0 4px 4px 0;
+             padding: 12px 18px; margin: 18px 0; font-size: .95rem; }
+  .callout.blue { border-left-color: var(--blue); }
+  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; margin: 18px 0; }
+  @media (max-width: 640px) { .two-col { grid-template-columns: 1fr; } }
+  .side { background: var(--card); border: 1px solid var(--line); border-radius: 4px; padding: 14px 18px; }
+  .side h4 { margin: 0 0 6px; font-family: var(--disp); text-transform: uppercase;
+             letter-spacing: .06em; font-size: .82rem; }
+  .side.red h4 { color: var(--red); } .side.blue h4 { color: var(--blue); }
+  .side p, .side ul { font-size: .88rem; margin: .4em 0; }
+  ul { padding-left: 1.2em; } li { margin: .35em 0; }
+  .tg { background: var(--card); border: 1px solid var(--line); border-radius: 10px;
+        padding: 12px 16px; font-size: .88rem; max-width: 480px; margin: 10px 0; }
+  .tg .from { font-weight: 600; color: var(--blue); font-size: .8rem; }
+  .tg a { color: var(--blue); }
+  .footer { margin-top: 70px; padding-top: 16px; border-top: 1px solid var(--line);
+            color: var(--ink-soft); font-size: .8rem; }
+</style>
+
+<main>
+  <div class="eyebrow">FighterBot · System Design · Build Step 5</div>
+  <h1>The Claims Layer</h1>
+  <p class="sub">Where the unit of news stops being <em>the article</em> and becomes <em>the fact</em>.
+  A design for claim extraction, corroboration, and the rumor&nbsp;→&nbsp;confirmed lifecycle.
+  No code — architecture only. 2026-08-06.</p>
+
+  <nav class="toc" aria-label="Contents">
+    <a href="#s1"><b>1</b> Why claims</a>
+    <a href="#s2"><b>2</b> Two-layer model</a>
+    <a href="#s3"><b>3</b> Data model</a>
+    <a href="#s4"><b>4</b> Pipeline</a>
+    <a href="#s5"><b>5</b> Claim matching</a>
+    <a href="#s6"><b>6</b> Lifecycle</a>
+    <a href="#s7"><b>7</b> Independence</a>
+    <a href="#s8"><b>8</b> Posting</a>
+    <a href="#s9"><b>9</b> Cost &amp; scale</a>
+    <a href="#s10"><b>10</b> Failure modes</a>
+    <a href="#s11"><b>11</b> Open questions</a>
+  </nav>
+
+  <h2 id="s1"><span class="num">1</span>Why articles stop being enough</h2>
+  <div class="prose">
+    <p>Everything built so far treats <strong>the article</strong> as the atom of news: fetch articles,
+    dedup articles, post articles. That model has already shown its two failure modes in production:</p>
+    <ul>
+      <li><strong>Retellings slip through.</strong> Three articles covered one Masvidal quote about Fighter B
+      (MMA Junkie original → XSPORT translation → heavy.com retelling). Headline similarity linked two of
+      the three; the third posted as "new news." The group heard the same quote twice.</li>
+      <li><strong>Corroboration is invisible.</strong> When a second independent outlet reports the same
+      fight, that is the most important signal in the whole system — a rumor hardening into fact. Today it
+      is (at best) silently deduplicated. The signal is literally discarded.</li>
+    </ul>
+    <p>Both problems have the same root: <em>the thing the group cares about is not an article.</em>
+    It's the underlying fact — <strong>"Fighter B fights Alvarez at UFC&nbsp;328 on May&nbsp;9."</strong>
+    Articles are just sightings of that fact. Step 5 makes the fact itself a first-class database object:
+    a <strong>claim</strong>.</p>
+  </div>
+
+  <h2 id="s2"><span class="num">2</span>The two-layer model</h2>
+  <div class="prose">
+    <p>The architecture splits into two worlds. The <span style="color:var(--red);font-weight:600">red
+    corner</span> is the evidence world — raw articles, exactly what the hunter collects today. The
+    <span style="color:var(--blue);font-weight:600">blue corner</span> is the fact world — canonical claims
+    distilled from that evidence. Articles are immutable observations; claims are living records with a
+    status that changes as evidence accumulates.</p>
+  </div>
+
+  <div class="fig">
+    <svg viewBox="0 0 800 330" width="800" role="img" aria-label="Two-layer model: articles as evidence feeding claims as facts">
+      <text x="20" y="28" class="t-disp" font-size="13" fill="var(--red)">Evidence layer — items (immutable)</text>
+      <g>
+        <rect x="20" y="42" width="220" height="64" rx="4" fill="var(--red-bg)" stroke="var(--red)"/>
+        <text x="32" y="64" font-size="12" font-weight="600">MMA Junkie · 13h ago</text>
+        <text x="32" y="82" font-size="11" class="t-soft">"Masvidal: Fighter B a 'nightmare'</text>
+        <text x="32" y="96" font-size="11" class="t-soft">for Islam Makhachev"</text>
+
+        <rect x="270" y="42" width="220" height="64" rx="4" fill="var(--red-bg)" stroke="var(--red)"/>
+        <text x="282" y="64" font-size="12" font-weight="600">XSPORT.ua · 8h ago</text>
+        <text x="282" y="82" font-size="11" class="t-soft">«Fighter B — це кошмар для</text>
+        <text x="282" y="96" font-size="11" class="t-soft">Махачева» — Масвідаль</text>
+
+        <rect x="520" y="42" width="220" height="64" rx="4" fill="var(--red-bg)" stroke="var(--red)"/>
+        <text x="532" y="64" font-size="12" font-weight="600">heavy.com · 2h ago</text>
+        <text x="532" y="82" font-size="11" class="t-soft">"Fighter B Touted as Future UFC</text>
+        <text x="532" y="96" font-size="11" class="t-soft">Welterweight Champion"</text>
+      </g>
+
+      <g stroke="var(--ink-soft)" fill="none" stroke-width="1.5">
+        <path d="M130 106 L130 150 L360 150 L360 188"/>
+        <path d="M380 106 L380 188"/>
+        <path d="M630 106 L630 150 L400 150 L400 188"/>
+      </g>
+      <g fill="var(--ink-soft)">
+        <path d="M360 188 l-5 -9 h10 z"/>
+        <path d="M380 188 l-5 -9 h10 z"/>
+        <path d="M400 188 l-5 -9 h10 z"/>
+      </g>
+      <text x="415" y="168" font-size="11" class="t-mono t-soft">claim_sources (role: origin / echo / echo)</text>
+
+      <text x="20" y="182" class="t-disp" font-size="13" fill="var(--blue)">Fact layer — claims (living)</text>
+      <rect x="180" y="192" width="440" height="106" rx="4" fill="var(--blue-bg)" stroke="var(--blue)" stroke-width="1.5"/>
+      <text x="196" y="218" font-size="13" font-weight="600">CLAIM #41 · interview_quote · Fighter B</text>
+      <text x="196" y="240" font-size="12">"Jorge Masvidal says Fighter B would be a nightmare</text>
+      <text x="196" y="256" font-size="12">matchup for Islam Makhachev"</text>
+      <text x="196" y="282" font-size="11" class="t-mono t-soft">status: n/a for quotes · first_seen: 13h ago · sources: 3</text>
+    </svg>
+    <div class="figcap">Fig. 1 — Three sightings, one fact. The Masvidal cluster as it should have been stored.</div>
+  </div>
+
+  <div class="two-col">
+    <div class="side red">
+      <h4>Items — the evidence</h4>
+      <ul>
+        <li>One row per article sighted, forever</li>
+        <li>Immutable: never edited after insert</li>
+        <li>Carries: URL, headline, body, embeddings, dedup audit trail</li>
+        <li>Exists today (built in 2b/2c/2d/2e)</li>
+      </ul>
+    </div>
+    <div class="side blue">
+      <h4>Claims — the facts</h4>
+      <ul>
+        <li>One row per real-world assertion</li>
+        <li>Living: status evolves with evidence</li>
+        <li>Carries: canonical English text, typed fields, status, source links</li>
+        <li>New in step 5</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="callout">
+    <strong>Canonical English.</strong> Claims are always written in English regardless of source language
+    (per spec §17.5's storage design). The Ukrainian article and the American article map to the
+    <em>same</em> English claim text — which is also what makes claim embeddings comparable across the
+    whole archive. Output language for the group is a separate presentation decision.
+  </div>
+
+  <h2 id="s3"><span class="num">3</span>Data model</h2>
+  <div class="prose">
+    <p>Three tables. <code>items</code> already exists — it gains nothing new in step 5 (its held-audit
+    columns from 2d stay purely about article-level dedup). The two new tables carry the fact world:</p>
+  </div>
+
+  <div class="fig">
+    <svg viewBox="0 0 820 300" width="820" role="img" aria-label="Entity relationship diagram: items, claim_sources, claims">
+      <!-- items table -->
+      <rect x="15" y="30" width="230" height="218" rx="4" fill="var(--card)" stroke="var(--red)" stroke-width="1.5"/>
+      <rect x="15" y="30" width="230" height="30" rx="4" fill="var(--red-bg)"/>
+      <text x="30" y="50" class="t-disp" font-size="13" fill="var(--red)">items (exists)</text>
+      <g class="t-mono" font-size="11">
+        <text x="30" y="80">id            bigint PK</text>
+        <text x="30" y="98">url           text unique</text>
+        <text x="30" y="116">fighter, title, source</text>
+        <text x="30" y="134">body          text (2e)</text>
+        <text x="30" y="152">published_at, seen_at</text>
+        <text x="30" y="170">posted        boolean</text>
+        <text x="30" y="188">embedding     vector(768)</text>
+        <text x="30" y="206">held_reason / _similarity</text>
+        <text x="30" y="224">held_against  → items.id</text>
+      </g>
+
+      <!-- claim_sources -->
+      <rect x="300" y="60" width="230" height="158" rx="4" fill="var(--card)" stroke="var(--ink-soft)" stroke-width="1.5"/>
+      <rect x="300" y="60" width="230" height="30" rx="4" fill="var(--grey-bg)"/>
+      <text x="315" y="80" class="t-disp" font-size="13">claim_sources (new)</text>
+      <g class="t-mono" font-size="11">
+        <text x="315" y="110">item_id    → items.id</text>
+        <text x="315" y="128">claim_id   → claims.id</text>
+        <text x="315" y="146">role       origin | echo |</text>
+        <text x="315" y="162">           corroboration | official</text>
+        <text x="315" y="182">stance     asserts | denies</text>
+        <text x="315" y="200">linked_at  timestamptz</text>
+      </g>
+
+      <!-- claims -->
+      <rect x="585" y="20" width="225" height="248" rx="4" fill="var(--card)" stroke="var(--blue)" stroke-width="1.5"/>
+      <rect x="585" y="20" width="225" height="30" rx="4" fill="var(--blue-bg)"/>
+      <text x="600" y="40" class="t-disp" font-size="13" fill="var(--blue)">claims (new)</text>
+      <g class="t-mono" font-size="11">
+        <text x="600" y="70">id             bigint PK</text>
+        <text x="600" y="88">fighter        text</text>
+        <text x="600" y="106">type           announcement |</text>
+        <text x="600" y="122">   result | injury | quote | ...</text>
+        <text x="600" y="140">canonical_text text (EN)</text>
+        <text x="600" y="158">facts          jsonb</text>
+        <text x="600" y="176">status         rumor | confirmed…</text>
+        <text x="600" y="194">embedding      vector(768)</text>
+        <text x="600" y="212">first_seen_at, confirmed_at</text>
+        <text x="600" y="230">tg_message_id  bigint</text>
+        <text x="600" y="248">supersedes     → claims.id</text>
+      </g>
+
+      <!-- relation lines -->
+      <g stroke="var(--ink-soft)" stroke-width="1.5" fill="none">
+        <path d="M245 139 L300 139"/>
+        <path d="M530 139 L585 139"/>
+      </g>
+      <text x="252" y="132" font-size="10" class="t-mono t-soft">n:1</text>
+      <text x="558" y="132" font-size="10" class="t-mono t-soft">n:1</text>
+      <text x="300" y="252" font-size="11" class="t-soft">One item can support several claims (an article may both</text>
+      <text x="300" y="268" font-size="11" class="t-soft">announce a fight and report an injury) — hence a join table.</text>
+    </svg>
+    <div class="figcap">Fig. 2 — The schema. Red = exists, blue = new. Arrows are foreign keys.</div>
+  </div>
+
+  <div class="prose">
+    <p>Notes on the interesting columns:</p>
+    <ul>
+      <li><code>facts jsonb</code> — the structured extraction: <code>{opponent, event, date, location,
+      promotion}</code> for an announcement; <code>{method, round}</code> for a result. Typed enough to
+      query ("all upcoming fights"), flexible enough to differ per claim type.</li>
+      <li><code>embedding</code> — the canonical English text gets its own vector, so incoming articles are
+      matched against <em>claims</em> the same cheap way articles are matched against articles.</li>
+      <li><code>tg_message_id</code> — the Telegram message the bot posted for this claim. This is what lets
+      the bot later <em>reply to its own rumor post</em> with "✅ now confirmed" — threading the story.</li>
+      <li><code>supersedes</code> — claims are never edited when reality changes; a new claim supersedes the
+      old ("fight moved to June 6" supersedes "fight on May 9"). History stays intact.</li>
+    </ul>
+  </div>
+
+  <h2 id="s4"><span class="num">4</span>The pipeline, end to end</h2>
+  <div class="prose">
+    <p>The claims layer bolts onto the <em>back</em> of the existing hunter run. Everything up to the dedup
+    ladder is unchanged. The key subtlety: <strong>held duplicates don't exit the pipeline anymore</strong> —
+    an article held as a duplicate is exactly a "same claim, another source" event, which is evidence the
+    status engine wants.</p>
+  </div>
+
+  <div class="fig">
+    <svg viewBox="0 0 820 430" width="820" role="img" aria-label="Pipeline flow from RSS fetch through dedup, claim matching, status engine, to poster">
+      <!-- lane labels -->
+      <text x="15" y="24" class="t-disp" font-size="12" fill="var(--red)">Exists today (2a–2e)</text>
+      <!-- row 1: existing pipeline -->
+      <g font-size="12">
+        <rect x="15" y="36" width="118" height="46" rx="4" fill="var(--card)" stroke="var(--ink)"/>
+        <text x="74" y="56" text-anchor="middle">RSS fetch</text>
+        <text x="74" y="72" text-anchor="middle" class="t-soft" font-size="10">2 languages</text>
+
+        <rect x="163" y="36" width="118" height="46" rx="4" fill="var(--card)" stroke="var(--ink)"/>
+        <text x="222" y="56" text-anchor="middle">URL gate</text>
+        <text x="222" y="72" text-anchor="middle" class="t-soft" font-size="10">exact match</text>
+
+        <rect x="311" y="36" width="118" height="46" rx="4" fill="var(--card)" stroke="var(--ink)"/>
+        <text x="370" y="56" text-anchor="middle">Embedding gate</text>
+        <text x="370" y="72" text-anchor="middle" class="t-soft" font-size="10">sim ≥ 0.80 → held</text>
+
+        <rect x="459" y="36" width="118" height="46" rx="4" fill="var(--card)" stroke="var(--ink)"/>
+        <text x="518" y="56" text-anchor="middle">LLM judge</text>
+        <text x="518" y="72" text-anchor="middle" class="t-soft" font-size="10">gray zone 0.65–0.80</text>
+
+        <rect x="607" y="36" width="118" height="46" rx="4" fill="var(--card)" stroke="var(--ink)"/>
+        <text x="666" y="56" text-anchor="middle">Body extract</text>
+        <text x="666" y="72" text-anchor="middle" class="t-soft" font-size="10">readability, 2e</text>
+      </g>
+      <g stroke="var(--ink-soft)" stroke-width="1.5" fill="none">
+        <path d="M133 59 L163 59"/><path d="M281 59 L311 59"/>
+        <path d="M429 59 L459 59"/><path d="M577 59 L607 59"/>
+        <path d="M666 82 L666 130"/>
+      </g>
+      <g fill="var(--ink-soft)">
+        <path d="M163 59 l-9 -5 v10 z"/><path d="M311 59 l-9 -5 v10 z"/>
+        <path d="M459 59 l-9 -5 v10 z"/><path d="M607 59 l-9 -5 v10 z"/>
+        <path d="M666 130 l-5 -9 h10 z"/>
+      </g>
+
+      <!-- held path -->
+      <g stroke="var(--amber)" stroke-width="1.5" fill="none" stroke-dasharray="5 4">
+        <path d="M370 82 L370 108 L240 108 L240 168"/>
+        <path d="M518 82 L518 108 L370 108" />
+      </g>
+      <path d="M240 168 l-5 -9 h10 z" fill="var(--amber)"/>
+      <text x="52" y="126" font-size="11" fill="var(--amber)">held duplicates — still evidence!</text>
+
+      <text x="15" y="152" class="t-disp" font-size="12" fill="var(--blue)">New in step 5</text>
+
+      <!-- claim matcher -->
+      <rect x="170" y="168" width="330" height="66" rx="4" fill="var(--blue-bg)" stroke="var(--blue)" stroke-width="1.5"/>
+      <text x="335" y="192" text-anchor="middle" font-size="13" font-weight="600">CLAIM MATCHER  (per surviving + held item)</text>
+      <text x="335" y="210" text-anchor="middle" font-size="11" class="t-soft">embed → top-3 candidate claims → LLM:</text>
+      <text x="335" y="224" text-anchor="middle" font-size="11" class="t-soft">attach to existing claim  ·  or extract a new one</text>
+      <path d="M666 168 C 666 190 540 180 500 195" stroke="var(--ink-soft)" stroke-width="1.5" fill="none"/>
+      <path d="M500 195 l10 -4 -6 9 z" fill="var(--ink-soft)"/>
+      <text x="560" y="160" font-size="10" class="t-soft">headline + body excerpt</text>
+
+      <!-- two outputs -->
+      <g stroke="var(--blue)" stroke-width="1.5" fill="none">
+        <path d="M250 234 L250 274"/>
+        <path d="M420 234 L420 274"/>
+      </g>
+      <g fill="var(--blue)">
+        <path d="M250 274 l-5 -9 h10 z"/><path d="M420 274 l-5 -9 h10 z"/>
+      </g>
+      <rect x="140" y="278" width="220" height="52" rx="4" fill="var(--card)" stroke="var(--blue)"/>
+      <text x="250" y="300" text-anchor="middle" font-size="12" font-weight="600">Attach as source</text>
+      <text x="250" y="317" text-anchor="middle" font-size="10" class="t-soft">role: echo / corroboration / official</text>
+      <rect x="380" y="278" width="220" height="52" rx="4" fill="var(--card)" stroke="var(--blue)"/>
+      <text x="490" y="300" text-anchor="middle" font-size="12" font-weight="600">New claim created</text>
+      <text x="490" y="317" text-anchor="middle" font-size="10" class="t-soft">type + facts + initial status</text>
+
+      <!-- status engine -->
+      <g stroke="var(--blue)" stroke-width="1.5" fill="none">
+        <path d="M250 330 L250 356 L370 356 L370 366"/>
+        <path d="M490 330 L490 356 L370 356"/>
+      </g>
+      <path d="M370 366 l-5 -9 h10 z" fill="var(--blue)"/>
+      <rect x="230" y="370" width="280" height="50" rx="4" fill="var(--blue-bg)" stroke="var(--blue)" stroke-width="1.5"/>
+      <text x="370" y="391" text-anchor="middle" font-size="13" font-weight="600">STATUS ENGINE (rules, no LLM)</text>
+      <text x="370" y="408" text-anchor="middle" font-size="11" class="t-soft">independence count · official sources · contradictions</text>
+
+      <!-- poster -->
+      <path d="M510 395 L560 395" stroke="var(--blue)" stroke-width="1.5" fill="none"/>
+      <path d="M560 395 l-9 -5 v10 z" fill="var(--blue)"/>
+      <rect x="562" y="370" width="160" height="50" rx="4" fill="var(--card)" stroke="var(--ink)" stroke-width="1.5"/>
+      <text x="642" y="391" text-anchor="middle" font-size="13" font-weight="600">POSTER</text>
+      <text x="642" y="408" text-anchor="middle" font-size="11" class="t-soft">see §8 — event matrix</text>
+    </svg>
+    <div class="figcap">Fig. 3 — One hourly run. Amber dashed path: duplicates become evidence instead of exiting.</div>
+  </div>
+
+  <h2 id="s5"><span class="num">5</span>Claim matching in detail</h2>
+  <div class="prose">
+    <p>This is the same escalation ladder used everywhere in the system, aimed at a new question. Instead of
+    "have I seen this article?", the matcher asks: <strong>"which fact is this article about?"</strong></p>
+    <ol>
+      <li><strong>Geometry pre-selects.</strong> The article's embedding is compared against
+      <em>claim</em> embeddings (same fighter, active claims only). Top 3 candidates come back with scores.
+      Cost: free, milliseconds, scales with archive size without touching the LLM.</li>
+      <li><strong>The LLM decides.</strong> One call, given the article's headline + body excerpt and the
+      three candidate claims' canonical texts. It returns a verdict:</li>
+    </ol>
+  </div>
+
+  <div class="fig">
+    <svg viewBox="0 0 780 260" width="780" role="img" aria-label="Matcher decision flow">
+      <rect x="20" y="20" width="270" height="88" rx="4" fill="var(--card)" stroke="var(--ink)"/>
+      <text x="36" y="44" font-size="12" font-weight="600">Input to one Haiku call</text>
+      <g font-size="11" class="t-soft">
+        <text x="36" y="64">· article headline + first ~150 words</text>
+        <text x="36" y="80">· source name, published time</text>
+        <text x="36" y="96">· 3 candidate claims (canonical text + status)</text>
+      </g>
+      <path d="M290 64 L350 64" stroke="var(--ink-soft)" stroke-width="1.5"/>
+      <path d="M350 64 l-9 -5 v10 z" fill="var(--ink-soft)"/>
+      <rect x="352" y="34" width="120" height="60" rx="30" fill="var(--blue-bg)" stroke="var(--blue)" stroke-width="1.5"/>
+      <text x="412" y="60" text-anchor="middle" font-size="12" font-weight="600">verdict</text>
+      <text x="412" y="78" text-anchor="middle" font-size="10" class="t-soft">structured output</text>
+
+      <g stroke="var(--blue)" stroke-width="1.5" fill="none">
+        <path d="M472 50 L560 50 L560 30"/>
+        <path d="M472 64 L620 64 L620 110"/>
+        <path d="M472 78 L560 78 L560 190"/>
+      </g>
+      <g fill="var(--blue)">
+        <path d="M560 30 l-5 9 h10 z" transform="rotate(180 560 34.5)"/>
+      </g>
+      <g font-size="12">
+        <rect x="500" y="4" width="270" height="34" rx="4" fill="var(--card)" stroke="var(--blue)"/>
+        <text x="514" y="26"><tspan font-weight="600" class="t-mono">MATCH #41</tspan><tspan class="t-soft" font-size="11"> + role (echo/corroboration) + stance</tspan></text>
+        <rect x="500" y="96" width="270" height="52" rx="4" fill="var(--card)" stroke="var(--blue)"/>
+        <text x="514" y="117"><tspan font-weight="600" class="t-mono">NEW</tspan><tspan class="t-soft" font-size="11"> + type + canonical_text + facts</tspan></text>
+        <text x="514" y="136" class="t-soft" font-size="11">+ sourcing signal: official / reported / rumored</text>
+        <rect x="500" y="176" width="270" height="34" rx="4" fill="var(--card)" stroke="var(--blue)"/>
+        <text x="514" y="198"><tspan font-weight="600" class="t-mono">UNRELATED</tspan><tspan class="t-soft" font-size="11"> — none of the candidates fit</tspan></text>
+      </g>
+    </svg>
+    <div class="figcap">Fig. 4 — One matcher call, three possible verdicts. UNRELATED with an empty candidate list short-circuits to NEW.</div>
+  </div>
+
+  <div class="prose">
+    <p>Details that matter:</p>
+    <ul>
+      <li><strong>The extraction rides in the same call.</strong> When the verdict is NEW, the same response
+      carries the canonical English text, the claim type, the structured <code>facts</code>, and a sourcing
+      signal read from the article's own language — "officially announced" reads different from "sources say"
+      and "in talks", and that phrasing is what seeds the initial status (§6).</li>
+      <li><strong>One article can assert several claims.</strong> A fight-announcement article often also
+      contains an injury note or a quote. V1 keeps it simple: extract the single <em>primary</em> claim per
+      article; multi-claim extraction is a later refinement (§11).</li>
+      <li><strong>Held duplicates skip extraction.</strong> An item held against another article inherits that
+      article's claim link as an <code>echo</code> — no LLM needed. Only the judge-gray or genuinely-new items
+      pay for a matcher call.</li>
+    </ul>
+  </div>
+
+  <h2 id="s6"><span class="num">6</span>The lifecycle: rumor to confirmed</h2>
+  <div class="prose">
+    <p>Statuses live on the claim, never on articles. Transitions are driven by a <strong>rules engine, not
+    an LLM</strong> — the LLM's job ends at "what does this article assert, and how is it sourced?"
+    Deterministic rules then count evidence. This keeps the most consequential behavior (telling the group
+    something is <em>confirmed</em>) auditable and boring.</p>
+  </div>
+
+  <div class="fig">
+    <svg viewBox="0 0 800 300" width="800" role="img" aria-label="Claim status state machine">
+      <!-- states -->
+      <rect x="60" y="110" width="150" height="52" rx="26" fill="var(--amber-bg)" stroke="var(--amber)" stroke-width="1.5"/>
+      <text x="135" y="141" text-anchor="middle" class="t-disp" font-size="15" fill="var(--amber)">RUMOR</text>
+
+      <rect x="360" y="110" width="170" height="52" rx="26" fill="var(--green-bg)" stroke="var(--green)" stroke-width="1.5"/>
+      <text x="445" y="141" text-anchor="middle" class="t-disp" font-size="15" fill="var(--green)">CONFIRMED</text>
+
+      <rect x="360" y="20" width="150" height="46" rx="23" fill="var(--red-bg)" stroke="var(--red)" stroke-width="1.5"/>
+      <text x="435" y="48" text-anchor="middle" class="t-disp" font-size="14" fill="var(--red)">DENIED</text>
+
+      <rect x="60" y="228" width="150" height="46" rx="23" fill="var(--grey-bg)" stroke="var(--ink-soft)" stroke-width="1.5"/>
+      <text x="135" y="256" text-anchor="middle" class="t-disp" font-size="14" class2="t-soft" fill="var(--ink-soft)">STALE</text>
+
+      <rect x="620" y="228" width="165" height="46" rx="23" fill="var(--blue-bg)" stroke="var(--blue)" stroke-width="1.5"/>
+      <text x="702" y="256" text-anchor="middle" class="t-disp" font-size="14" fill="var(--blue)">SUPERSEDED</text>
+
+      <!-- birth arrows -->
+      <path d="M10 136 L60 136" stroke="var(--ink-soft)" stroke-width="1.5"/>
+      <path d="M60 136 l-9 -5 v10 z" fill="var(--ink-soft)"/>
+      <text x="6" y="122" font-size="10" class="t-soft">new claim,</text>
+      <text x="6" y="134" font-size="10" class="t-soft">1 outlet</text>
+
+      <path d="M445 200 L445 162" stroke="var(--ink-soft)" stroke-width="1.5"/>
+      <path d="M445 162 l-5 9 h10 z" fill="var(--ink-soft)"/>
+      <text x="452" y="190" font-size="10" class="t-soft">born confirmed: official source announces</text>
+
+      <!-- transitions -->
+      <path d="M210 128 L360 128" stroke="var(--green)" stroke-width="2"/>
+      <path d="M360 128 l-10 -5 v10 z" fill="var(--green)"/>
+      <text x="222" y="118" font-size="11" fill="var(--green)">2nd independent source · or official</text>
+
+      <path d="M210 150 C 260 172 300 60 360 48" stroke="var(--red)" stroke-width="1.5" fill="none"/>
+      <path d="M360 48 l-10 -2 4 9 z" fill="var(--red)"/>
+      <text x="228" y="76" font-size="11" fill="var(--red)">credible denial</text>
+
+      <path d="M135 162 L135 228" stroke="var(--ink-soft)" stroke-width="1.5"/>
+      <path d="M135 228 l-5 -9 h10 z" fill="var(--ink-soft)"/>
+      <text x="145" y="200" font-size="11" class="t-soft">no new evidence in 14 days</text>
+
+      <path d="M530 150 C 590 170 610 210 620 236" stroke="var(--blue)" stroke-width="1.5" fill="none"/>
+      <path d="M620 236 l-9 -6 9 -4 z" fill="var(--blue)"/>
+      <text x="556" y="196" font-size="11" fill="var(--blue)">reality changed:</text>
+      <text x="556" y="210" font-size="11" fill="var(--blue)">new claim replaces</text>
+
+      <path d="M510 66 C 540 84 530 96 505 110" stroke="var(--red)" stroke-width="1.5" fill="none"/>
+      <path d="M505 110 l10 -3 -5 -8 z" fill="var(--red)"/>
+      <text x="545" y="88" font-size="11" fill="var(--red)">denial retracted / fight back on</text>
+
+      <path d="M135 228 L135 195" stroke="none" fill="none"/>
+      <path d="M110 228 C 100 205 100 185 112 165" stroke="var(--amber)" stroke-width="1.5" fill="none" stroke-dasharray="4 4"/>
+      <path d="M112 165 l-9 3 6 8 z" fill="var(--amber)"/>
+      <text x="18" y="205" font-size="10" fill="var(--amber)">revives on</text>
+      <text x="18" y="217" font-size="10" fill="var(--amber)">new evidence</text>
+    </svg>
+    <div class="figcap">Fig. 5 — The state machine. Green edge is the one the group cares most about.</div>
+  </div>
+
+  <table>
+    <tr><th>Status</th><th>Meaning</th><th>Entry rule (deterministic)</th></tr>
+    <tr><td><span class="tag rumor">Rumor</span></td>
+        <td>One reporting chain asserts it; hedged sourcing</td>
+        <td>New claim from a single non-official source, or extraction flagged "reported / rumored" language</td></tr>
+    <tr><td><span class="tag confirmed">Confirmed</span></td>
+        <td>Fact, as far as the bot is concerned</td>
+        <td>Official source (promotion site/account, per curated list) asserts it — instantly; <em>or</em> a second <strong>independent</strong> chain asserts it (§7)</td></tr>
+    <tr><td><span class="tag denied">Denied</span></td>
+        <td>Credibly contradicted</td>
+        <td>A source with stance <code>denies</code> attaches, and rules rank it (official denial &gt; original outlet's walk-back &gt; other)</td></tr>
+    <tr><td><span class="tag stale">Stale</span></td>
+        <td>Rumor that never hardened</td>
+        <td>No new evidence for 14 days (tunable); revives automatically if evidence arrives</td></tr>
+    <tr><td><span class="tag superseded">Superseded</span></td>
+        <td>Replaced by an updated fact</td>
+        <td>New claim created with <code>supersedes</code> pointing here (date change, opponent change)</td></tr>
+  </table>
+
+  <h2 id="s7"><span class="num">7</span>Independence — the hard 20%</h2>
+  <div class="prose">
+    <p>"Two sources" is worthless if the second one copied the first. XSPORT translating MMA Junkie is
+    <strong>one</strong> reporting chain, not two — the whole corroboration logic hinges on telling echoes
+    from independent reports. Signals, cheapest first:</p>
+    <ul>
+      <li><strong>Attribution text (strongest).</strong> Echoes usually confess in their own body:
+      "as reported by MMA Junkie", "according to ESPN sources". The matcher LLM already reads the body —
+      it returns an <code>attributes_to</code> field for free. If article B credits A's outlet → echo.</li>
+      <li><strong>Original reporting markers.</strong> "told <em>us</em>", "in an interview with
+      <em>this publication</em>", exclusive quotes → origin candidate.</li>
+      <li><strong>Timing.</strong> Attachment hours after the origin with no own attribution → echo-leaning;
+      the earliest sighting in the cluster is the presumed origin (works: MMA Junkie preceded both echoes).</li>
+      <li><strong>Same-org detection.</strong> A curated map collapses outlet families (Yahoo Sports
+      syndicating MMA Junkie's parent, etc.) — plain config, grown lazily as false corroborations appear.</li>
+    </ul>
+    <p>Default when unsure: <strong>echo.</strong> The asymmetric cost rules this: a false "confirmed" tells
+    the group something is fact when it isn't; a delayed confirmation just waits for the promotion's own
+    announcement, which always comes. Bias toward skepticism.</p>
+  </div>
+
+  <h2 id="s8"><span class="num">8</span>What the group actually sees</h2>
+  <div class="prose">
+    <p>Posting stops being "one message per article" and becomes "one message per <em>claim event</em>."
+    This composes directly with the step-4 reframe (classifier + presentation tiers): the claim <em>type</em>
+    picks the ceremony, the claim <em>event</em> picks the timing.</p>
+  </div>
+
+  <table>
+    <tr><th>Claim event</th><th>Post behavior</th><th>Noise level</th></tr>
+    <tr><td>New claim, born <span class="tag confirmed">confirmed</span>, type = announcement</td>
+        <td>Ceremonial post 🚨 (own message, bold card, where-to-watch when step 6 lands), pinned, loud notification</td><td>Loud</td></tr>
+    <tr><td>New claim, <span class="tag rumor">rumor</span></td>
+        <td>Quiet post, visibly tagged as rumor — the group loves gossip, it just needs honest labeling</td><td>Silent</td></tr>
+    <tr><td><span class="tag rumor">Rumor</span> → <span class="tag confirmed">confirmed</span></td>
+        <td><strong>Reply to the original rumor message</strong> (via stored <code>tg_message_id</code>): "✅ Confirmed — Bellator announced it." Threaded story.</td><td>Loud</td></tr>
+    <tr><td>Corroboration attached (still rumor)</td>
+        <td>No new message. Optionally edit the original post to append "also: Sherdog" (Telegram lets bots edit their own messages)</td><td>None</td></tr>
+    <tr><td><span class="tag rumor">Rumor</span> → <span class="tag denied">denied</span></td>
+        <td>Reply to original: "❌ Fight is off per …"</td><td>Normal</td></tr>
+    <tr><td>Superseding claim</td>
+        <td>Reply to old claim's message + fresh post for the new fact ("📅 Moved to June 6")</td><td>Normal</td></tr>
+    <tr><td>Non-lifecycle types (quotes, interviews, previews)</td>
+        <td>Stay in today's hourly digest format, one line per claim (not per article — retellings collapse)</td><td>Silent</td></tr>
+  </table>
+
+  <div class="prose"><p>The rumor→confirmed thread, concretely:</p></div>
+  <div class="tg">
+    <div class="from">FighterBot · Tue 14:00</div>
+    🕵️ <b>Rumor:</b> Fighter B vs Joel Alvarez targeted for UFC 328, May 9 — <a>MMA Junkie</a>
+  </div>
+  <div class="tg" style="margin-left:34px">
+    <div class="from">FighterBot · Thu 09:00 — replying to ↑</div>
+    ✅ <b>Confirmed</b> — UFC announced the bout officially. <a>ufc.com</a><br>
+    <span style="color:var(--ink-soft)">First reported Tue by MMA Junkie · also covered by XSPORT.ua, Sherdog</span>
+  </div>
+
+  <h2 id="s9"><span class="num">9</span>Cost &amp; scale</h2>
+  <table>
+    <tr><th>Component</th><th>Volume (measured feed)</th><th>Unit cost</th><th>Monthly</th></tr>
+    <tr><td>Claim-candidate search (pgvector)</td><td class="mono-c">every unseen item</td><td>$0 (SQL)</td><td>$0</td></tr>
+    <tr><td>Matcher + extraction call (Haiku)</td><td class="mono-c">~5–15/day</td><td>~$0.001–0.002 <span style="color:var(--ink-soft)">(~1–2K tok in, ~200 out)</span></td><td>~$0.30–0.90</td></tr>
+    <tr><td>Claim embedding (Gemini free tier)</td><td class="mono-c">~2–5/day</td><td>$0 within free tier</td><td>$0</td></tr>
+    <tr><td>Status engine + poster</td><td class="mono-c">every run</td><td>$0 (rules + SQL)</td><td>$0</td></tr>
+    <tr><td>Storage (claims + sources rows)</td><td class="mono-c">~100 claims/mo</td><td>~1 KB each</td><td>≈ 0.1 MB — noise vs. Neon's 500 MB</td></tr>
+  </table>
+  <div class="prose">
+    <p>Total: <strong>under a dollar a month</strong>, dominated by the matcher — and the matcher only runs on
+    items that survived three free/cheap dedup gates. The escalation-ladder economics hold: the archive can
+    grow 100× and only the pgvector search notices; LLM spend tracks the <em>news rate</em>, not the archive.
+    Fits inside the planned $10 Anthropic cap with a 10× margin.</p>
+  </div>
+
+  <h2 id="s10"><span class="num">10</span>Failure modes &amp; degradation</h2>
+  <table>
+    <tr><th>Failure</th><th>Behavior</th><th>Principle</th></tr>
+    <tr><td>Matcher LLM down / errors</td>
+        <td>Item is stored <em>unclaimed</em> and still posts via today's article-level rules. A reconciler
+        pass (rerun of the matcher over unclaimed items — same idempotent shape as
+        <code>backfill-embeddings.js</code>) attaches them later.</td>
+        <td>Fail open; never lose news</td></tr>
+    <tr><td>Bad merge (two different fights matched into one claim)</td>
+        <td>Worst realistic bug. Mitigations: candidate shortlist is same-fighter only; facts mismatch
+        (different opponent/event) blocks MATCH in the prompt contract; unmerge = delete the
+        <code>claim_sources</code> row, rerun matcher.</td>
+        <td>Make wrong states cheap to repair</td></tr>
+    <tr><td>Wrong confirmation (echo miscounted as independent)</td>
+        <td>Bias-to-echo default (§7) makes this rare; if it happens, status is recomputable — the rules
+        engine can re-derive status from stored evidence at any time. Nothing is destroyed by a wrong
+        transition.</td>
+        <td>Status is derived state, always recomputable</td></tr>
+    <tr><td>No body available (Google-wrapped URL, paywall)</td>
+        <td>Matcher runs on headline alone; attribution signals unavailable → source defaults to echo-leaning,
+        claim still forms. Weakest evidence, weakest weight.</td>
+        <td>Patchy evidence degrades weight, not function</td></tr>
+    <tr><td>Extraction hallucination (facts that aren't in the article)</td>
+        <td>Canonical text must quote-anchor: the prompt contract requires the assertion to be supported by
+        the provided excerpt; UNSURE-style abstention (no claim) is an allowed verdict, item posts normally.</td>
+        <td>Abstention beats invention</td></tr>
+  </table>
+
+  <h2 id="s11"><span class="num">11</span>Open questions (decide at build time)</h2>
+  <div class="prose">
+    <ul>
+      <li><strong>Matcher model:</strong> Haiku first (cost table assumes it); escalate to Sonnet only if
+      extraction quality on real Ukrainian-language articles disappoints. Measure, then decide.</li>
+      <li><strong>Official-source list:</strong> which domains/accounts count as "official" per promotion
+      (UFC, PFL/Bellator)? Small curated config; needs research per fighter's org.</li>
+      <li><strong>Multi-claim articles:</strong> V1 extracts one primary claim per article. When does that
+      start losing real news? (Watch for it in the unclaimed/UNSURE logs.)</li>
+      <li><strong>Edit vs. reply for corroboration:</strong> silently editing old posts keeps the chat clean
+      but rewrites history; replies are honest but noisier. Taste decision for Anton.</li>
+      <li><strong>Staleness window:</strong> 14 days is a guess. MMA rumor cycles (negotiation → announcement)
+      might argue for 30.</li>
+      <li><strong>Cross-fighter claims:</strong> "Fighter B vs Fighter A announced" touches two watched fighters —
+      one claim with two fighter links, or two claims? (Lean: one claim, <code>fighter</code> becomes an array
+      or a join — decide when schema lands.)</li>
+      <li><strong>Sequencing:</strong> claims land best <em>after</em> 2e (bodies make extraction and
+      independence reliable) and can absorb step 4's classifier — claim <code>type</code> <em>is</em> the
+      classification. Steps 4 and 5 may merge into one build arc.</li>
+    </ul>
+  </div>
+
+  <div class="footer">
+    FighterBot · Step 5 design · drafted 2026-08-06 with measured data from the live 2a–2c pipeline ·
+    companion to <span class="mono">fighterbot-spec.md</span> §9/§13 and <span class="mono">TODO.md</span>.
+    Design only — no code exists for this yet.
+  </div>
+</main>
