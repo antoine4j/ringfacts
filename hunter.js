@@ -107,14 +107,15 @@ async function fetchFreshItems(fighter) {
     for (const item of found) item.foundVia = `${alias.edition} ${alias.query}`;
     items.push(...found);
   }
-  // Fresh only, newest first, capped. In-run URL dedup across aliases;
-  // cross-run dedup is the database's job.
+  // Fresh only, newest first. In-run URL dedup across aliases; cross-run
+  // dedup is the database's job. NOTE: no cap here — capping before the
+  // known-URL check would let newer known items permanently shadow older
+  // unseen ones. The cap is applied to unseen candidates in huntFighter.
   const seen = new Set();
   return items
     .filter((item) => item.publishedAt.getTime() > cutoff)
     .sort((a, b) => b.publishedAt - a.publishedAt)
-    .filter((item) => !seen.has(item.url) && seen.add(item.url))
-    .slice(0, MAX_ITEMS_PER_FIGHTER);
+    .filter((item) => !seen.has(item.url) && seen.add(item.url));
 }
 
 // Telegram HTML mode: headline stays plain text (calmer to read), the short
@@ -134,9 +135,15 @@ function formatMessage(fighter, items) {
 async function huntFighter(db, fighter) {
   const fetched = await fetchFreshItems(fighter);
 
-  // Gate 1: exact URLs we already know.
+  // Gate 1: exact URLs we already know. Flood cap applies to UNSEEN items
+  // (newest first), so a busy-day backlog drains at 5/run across successive
+  // sweeps instead of being shadowed by newer known items.
   const known = db ? await knownUrls(db, fetched.map((i) => i.url)) : new Set();
-  const candidates = fetched.filter((i) => !known.has(i.url));
+  const unseen = fetched.filter((i) => !known.has(i.url));
+  const candidates = unseen.slice(0, MAX_ITEMS_PER_FIGHTER);
+  if (unseen.length > candidates.length) {
+    console.log(`${fighter.name}: capped ${unseen.length} unseen to ${candidates.length}, rest next run`);
+  }
   if (candidates.length === 0) {
     console.log(`${fighter.name}: ${fetched.length} fetched, nothing new`);
     return;
