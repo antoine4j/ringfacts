@@ -117,9 +117,11 @@ gcloud iam service-accounts create hunter-scheduler \
 gcloud run jobs add-iam-policy-binding fighterbot-hunter \
   --member="serviceAccount:hunter-scheduler@${PROJECT_ID}.iam.gserviceaccount.com" \
   --role="roles/run.invoker"
+# Minute 17, not :00 — the top of the hour is when every cron on the internet
+# fires and Google is most likely to shed load (got 503s at 13:00Z once).
 gcloud scheduler jobs create http fighterbot-hunter-hourly \
   --location="$REGION" \
-  --schedule="0 * * * *" \
+  --schedule="17 * * * *" \
   --uri="https://run.googleapis.com/v2/projects/${PROJECT_ID}/locations/${REGION}/jobs/fighterbot-hunter:run" \
   --http-method=POST \
   --oauth-service-account-email="hunter-scheduler@${PROJECT_ID}.iam.gserviceaccount.com" || true
