@@ -291,6 +291,21 @@
     <div class="figcap">Fig. 2 — The schema. Red = exists, blue = new. Arrows are foreign keys.</div>
   </div>
 
+  <div class="callout blue">
+    <strong>How to read the arrows.</strong> An arrow like <code>item_id → items.id</code> is a
+    <em>foreign key</em>: the column holds another table's row ID — a pointer. And
+    <code>claim_sources</code> is a <em>join table</em>: each of its rows stores not a thing but a
+    <em>relationship</em> — one row reads as the sentence
+    <em>"article #12 is evidence for claim #41, as an echo, asserting it, linked Tuesday."</em>
+    <code>item_id</code> says <em>which article</em>, <code>claim_id</code> says <em>which claim</em>,
+    and the remaining columns (<code>role</code>, <code>stance</code>, <code>linked_at</code>) describe
+    the link itself. Why a separate table instead of a <code>claim_id</code> column on articles?
+    Because the relationship is many-to-many — one claim collects many articles (the Masvidal quote has
+    six), and one article can support several claims (an announcement piece that also mentions an
+    injury) — and because the link carries its own facts, it needs its own rows. The
+    <code>n:1</code> labels say "many link-rows can point at one article / one claim."
+  </div>
+
   <div class="prose">
     <p>Notes on the interesting columns:</p>
     <ul>
