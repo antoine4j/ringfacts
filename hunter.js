@@ -43,7 +43,12 @@ const FIGHTERS = [
   },
   {
     name: "Fighter C",
-    aliases: [{ query: '"Fighter C"', edition: "en" }],
+    aliases: [
+      { query: '"Fighter C"', edition: "en" },
+      // Same Latin spelling in Spanish — only the edition differs. Spain's
+      // press covers him as a domestic athlete (added 2026-08-07).
+      { query: '"Fighter C"', edition: "es" },
+    ],
   },
 ];
 
@@ -52,6 +57,7 @@ const FIGHTERS = [
 const EDITIONS = {
   en: "hl=en-US&gl=US&ceid=US:en",
   uk: "hl=uk&gl=UA&ceid=UA:uk",
+  es: "hl=es&gl=ES&ceid=ES:es",
 };
 
 function feedUrl(alias) {
