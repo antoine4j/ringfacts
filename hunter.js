@@ -122,7 +122,7 @@ function formatMessage(fighter, items) {
       : item.title;
     return `• ${escapeHtml(title)} — <a href="${item.url}">${escapeHtml(item.source)}</a>, ${hoursAgo(item.publishedAt)}h ago`;
   });
-  return `🔎 <b>${escapeHtml(fighter.name)}</b>\n${lines.join("\n")}`;
+  return `🔎 <b>${escapeHtml(fighter.name)}</b>\n\n${lines.join("\n\n")}`;
 }
 
 async function huntFighter(db, fighter) {
