@@ -17,8 +17,10 @@ const DRY_RUN = process.env.DRY_RUN === "1";
 const CHAT_ID = process.env.TELEGRAM_CHAT_ID;
 const HOURS_BACK = Number(process.env.HOURS_BACK || 24);
 const MAX_ITEMS_PER_FIGHTER = 5;
-// Cosine similarity above this = same story. First guess; tune on real data.
-const SEMANTIC_DUP_THRESHOLD = Number(process.env.SEMANTIC_DUP_THRESHOLD || 0.85);
+// Cosine similarity above this = same story. Tuned on real data 2026-08-06:
+// a UK<->EN translated pair measured 0.841; unrelated same-fighter pairs
+// topped out at 0.702. 0.80 splits that gap.
+const SEMANTIC_DUP_THRESHOLD = Number(process.env.SEMANTIC_DUP_THRESHOLD || 0.8);
 
 // Aliases are search queries, not display names. First draft (spec §17.4 is
 // still open): Cyrillic aliases matter most for the fighters western media

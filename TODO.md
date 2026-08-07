@@ -10,7 +10,7 @@
 - [x] 1. Delivery rail — dummy bot live end to end (2026-08-06)
 - [x] 2a. Raw hunter: Cloud Run Job `fighterbot-hunter`, Google News RSS per fighter (Latin + Cyrillic aliases), posts raw to group, manual trigger (2026-08-06)
 - [x] 2b. Hunter memory + schedule: Neon Postgres + pgvector, URL dedup, hourly Cloud Scheduler cron (2026-08-06). Supabase → Neon (spec amendment: free-tier fit, auto-resume).
-- [ ] 2c. Semantic dedup activation: **Anton — create Gemini API key (aistudio.google.com) → Secret Manager as `gemini-api-key`**; then mount into job + grant IAM. Code already shipped, degrades to URL-only until key exists. Tune SEMANTIC_DUP_THRESHOLD (0.85 first guess) on real cross-language pairs.
+- [x] 2c. Semantic dedup live (2026-08-06): gemini-api-key mounted, 9 rows backfilled, threshold tuned 0.85→0.80 on measured data (translated pair 0.841, unrelated ≤0.702). First production catch: re-issued URL held at 0.98 similarity. Revisit threshold if false holds appear.
 - [ ] 3. Fighter filter (watchlist)
 - [ ] 4. Relevance agent (importance scoring vs. threshold) — Mastra comes in here
 - [ ] 5. Rumor/confirmed layer + claim lifecycle

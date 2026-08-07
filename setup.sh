@@ -6,8 +6,10 @@
 #   1. Google Cloud account with billing activated (card on file).
 #   2. Project created: ${PROJECT_ID}.
 #   3. APIs can be enabled by script (below) — were enabled via console first time.
-#   4. Secrets telegram-bot-token and anthropic-api-key created with values pasted
-#      by hand in Secret Manager console (values never touch this repo or shell history).
+#   4. Secrets telegram-bot-token, anthropic-api-key and gemini-api-key created
+#      with values pasted by hand in Secret Manager console (values never touch
+#      this repo or shell history). Gemini key comes from aistudio.google.com
+#      (free tier, used for embeddings).
 #   5. Telegram bot @${BOT_USERNAME} created via BotFather (token = secret above).
 
 set -euo pipefail
@@ -45,7 +47,7 @@ fi
 PROJECT_NUMBER=$(gcloud projects describe "$PROJECT_ID" --format="value(projectNumber)")
 RUNTIME_SA="${PROJECT_NUMBER}-compute@developer.gserviceaccount.com"
 
-for s in telegram-bot-token anthropic-api-key telegram-webhook-secret; do
+for s in telegram-bot-token anthropic-api-key telegram-webhook-secret gemini-api-key; do
   gcloud secrets add-iam-policy-binding "$s" \
     --member="serviceAccount:$RUNTIME_SA" \
     --role="roles/secretmanager.secretAccessor"
@@ -84,6 +86,8 @@ fi
 
 # Apply the schema (idempotent; see schema.sql):
 # DATABASE_URL=$(gcloud secrets versions access latest --secret=neon-db-url) node migrate.js
+# Embed any rows recorded while the embedding key was missing/failing:
+# DATABASE_URL=$(...) GEMINI_API_KEY=$(...) node backfill-embeddings.js
 
 # --- Hunter job (spec §9 step 2) ---------------------------------------------
 # Same image as the service, different entry point (--command/--args override
@@ -93,7 +97,7 @@ fi
 gcloud run jobs deploy fighterbot-hunter \
   --source . \
   --command node --args hunter.js \
-  --set-secrets=TELEGRAM_BOT_TOKEN=telegram-bot-token:latest,DATABASE_URL=neon-db-url:latest \
+  --set-secrets=TELEGRAM_BOT_TOKEN=telegram-bot-token:latest,DATABASE_URL=neon-db-url:latest,GEMINI_API_KEY=gemini-api-key:latest \
   --set-env-vars=TELEGRAM_CHAT_ID=-${TELEGRAM_CHAT_ID} \
   --max-retries=0 \
   --task-timeout=300 \
