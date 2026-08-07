@@ -244,7 +244,8 @@ Embeddings are used for two things:
 
 ### 16.1 Chosen stack (all free-tier)
 - **Compute: Google Cloud Run** — runs a container, not a VM, not a bare machine. You never manage an OS; Google owns everything below the container image. Scale-to-zero. Free tier (per billing account/month, shared across all services): 2M requests, 180K vCPU-seconds, 360K GiB-seconds (request-based billing); instance-based billing gives 240K vCPU-s / 450K GiB-s. A once-hourly 1-minute job at 1 vCPU / 512 MiB is effectively $0.
-- **Database: Supabase** — hosted Postgres + pgvector in one managed service. Collapses the Sec. 13 relational-backbone + vector-layer design into a single DB. Free tier: 500 MB DB, pgvector included. Pauses after 7 days inactivity — but the hourly hunter writes to the DB constantly, so **the bot is its own keep-alive**; the pause can never trigger while running. (Neon is the tie-breaker alternative: pure serverless Postgres, ~500ms wake, no permanent-pause behavior — cleaner if we want DB-only without bundled auth/storage.)
+- **Database: Neon** *(amended 2026-08-06; was Supabase)* — serverless Postgres + pgvector. Collapses the Sec. 13 relational-backbone + vector-layer design into a single DB. Free tier: ~0.5 GB, multiple projects allowed, autosuspends after minutes and **auto-resumes on the next connection** (~0.5–1s cold start) — no manual unpause, no keep-alive needed. Why the switch: Anton's Supabase account was already at its 2-free-project limit; we only need the Postgres core anyway (no auth/storage/APIs), and Neon's scale-to-zero-and-self-wake model matches the Cloud Run stack's philosophy. Live as project `fighter-bot` (`${NEON_PROJECT_ID}`, aws-us-west-2 Oregon — next door to GCP us-west1). Connection string in Secret Manager as `neon-db-url`.
+- **Embeddings: Gemini API free tier** (`gemini-embedding-001`, 768 dims via Matryoshka truncation) — for cross-language semantic dedup (same story, EN vs UK outlets). ~100 RPM / ~1K RPD free covers hunter volume with 10–20× headroom; $0. Embeddings are model-locked, so the model name is stored beside each vector. Key in Secret Manager as `gemini-api-key`.
 - **Deploys: GitHub Actions** → Cloud Run (retires the self-hosted runner and the Cloudflare tunnel entirely — Cloud Run gives a real HTTPS URL for the webhook out of the box).
 
 ### 16.2 What the pivot deletes from the old plan
@@ -276,12 +277,12 @@ Cloudflare named tunnel, SSH setup, self-hosted GitHub Actions runner, laptop wi
 **What's inside the image — four layers, bottom to top:**
 1. **Minimal Linux base** — arrives inside the official Node base image; never installed, patched, or managed by us.
 2. **Node.js runtime** — the engine executing the TypeScript/Mastra app. Layers 1+2 come together from a single `FROM node:...` line.
-3. **Dependencies** — npm packages installed at build time from `package.json`: Mastra, Telegram library, Supabase client, LLM SDK.
+3. **Dependencies** — npm packages installed at build time from `package.json`: Mastra, Telegram library, Postgres client (`pg`), LLM SDK.
 4. **Application code** — the bot itself: webhook handler, agent logic, tools, relevance scoring.
 Plus **config**: the start command (CMD) and the port the app listens on (Cloud Run routes traffic to it).
 
 **What is NOT inside the container:**
-- **No database** — Supabase lives outside and is reached over the network.
+- **No database** — Neon lives outside and is reached over the network.
 - **No cron** — Cloud Scheduler pokes the container from outside.
 - **No secrets baked into the image** — bot token and API keys are injected as env vars at runtime (see Sec. 7).
 - **No OS to administer** — only the slim userland Node needs.
@@ -296,7 +297,7 @@ Plus **config**: the start command (CMD) and the port the app listens on (Cloud 
 - **VM (e.g. GCP e2-micro free VM):** total machine memory; Linux + daemons eat ~150–300 MB (headless server) before your code. A GUI desktop install climbs to ~1–1.5 GB idle. macOS on the old laptop: ~3–5 GB idle + Docker Desktop's hidden Linux VM (2–4 GB) — the overhead argument that partly motivated the cloud pivot.
 
 ### 16.9 Immediate next step (do in TEXT interface, at keyboard)
-Guided hands-on setup: create the GCP project → enable APIs → get Cloud Run breathing → capture as a gcloud script along the way. Accounts to create: Google Cloud (enable Cloud Run + Scheduler, billing alert ~$5), Supabase; GitHub already in hand for Actions deploys.
+Guided hands-on setup: create the GCP project → enable APIs → get Cloud Run breathing → capture as a gcloud script along the way. Accounts to create: Google Cloud (enable Cloud Run + Scheduler, billing alert ~$5), Neon (was Supabase — see 16.1), Google AI Studio key for embeddings; GitHub already in hand for Actions deploys.
 
 ## 17. Open Questions (resolve before/at build start)
 
