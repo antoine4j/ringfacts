@@ -12,6 +12,12 @@
 import { sendTelegramMessage, escapeHtml } from "./lib/telegram.js";
 import { openDb, knownUrls, nearestRecent, insertItem } from "./lib/db.js";
 import { embedTexts, EMBEDDING_MODEL } from "./lib/embeddings.js";
+import { translateToEnglish } from "./lib/translate.js";
+
+// Editions the group reads as-is. Headlines from any other edition are
+// translated to English at posting time, labeled as translated (§17.5:
+// the DB keeps originals; translation is presentation only).
+const GROUP_LANGUAGES = new Set(["en", "uk"]);
 
 const DRY_RUN = process.env.DRY_RUN === "1";
 const CHAT_ID = process.env.TELEGRAM_CHAT_ID;
@@ -110,7 +116,10 @@ async function fetchFreshItems(fighter) {
     const res = await fetch(feedUrl(alias));
     if (!res.ok) throw new Error(`RSS fetch ${res.status} for ${alias.query}`);
     const found = parseRssItems(await res.text());
-    for (const item of found) item.foundVia = `${alias.edition} ${alias.query}`;
+    for (const item of found) {
+      item.edition = alias.edition;
+      item.foundVia = `${alias.edition} ${alias.query}`;
+    }
     items.push(...found);
   }
   // Fresh only, newest first. In-run URL dedup across aliases; cross-run
@@ -124,16 +133,22 @@ async function fetchFreshItems(fighter) {
     .filter((item) => !seen.has(item.url) && seen.add(item.url));
 }
 
-// Telegram HTML mode: headline stays plain text (calmer to read), the short
-// source name carries the link — hiding the ugly Google News URL behind it.
 // Google News titles end in " - Source"; we show the source ourselves, so
 // strip that suffix when it matches.
+function cleanTitle(item) {
+  return item.title.endsWith(` - ${item.source}`)
+    ? item.title.slice(0, -` - ${item.source}`.length)
+    : item.title;
+}
+
+// Telegram HTML mode: headline stays plain text (calmer to read), the short
+// source name carries the link — hiding the ugly Google News URL behind it.
+// Translated headlines are labeled — never presented as the original.
 function formatMessage(fighter, items) {
   const lines = items.map((item) => {
-    const title = item.title.endsWith(` - ${item.source}`)
-      ? item.title.slice(0, -` - ${item.source}`.length)
-      : item.title;
-    return `• ${escapeHtml(title)} — <a href="${item.url}">${escapeHtml(item.source)}</a>, ${hoursAgo(item.publishedAt)}h ago`;
+    const title = item.displayTitle ?? cleanTitle(item);
+    const label = item.displayTitle ? ` (translated from ${item.edition})` : "";
+    return `• ${escapeHtml(title)} — <a href="${item.url}">${escapeHtml(item.source)}</a>${label}, ${hoursAgo(item.publishedAt)}h ago`;
   });
   return `🔎 <b>${escapeHtml(fighter.name)}</b>\n\n${lines.join("\n\n")}`;
 }
@@ -195,6 +210,17 @@ async function huntFighter(db, fighter) {
     `${fighter.name}: ${fetched.length} fetched, ${candidates.length} unseen, ${toPost.length} posted`
   );
   if (toPost.length === 0) return;
+
+  // Translate headlines the group can't read. Fail-open per item: a failed
+  // translation posts the original untranslated.
+  for (const item of toPost) {
+    if (GROUP_LANGUAGES.has(item.edition)) continue;
+    try {
+      item.displayTitle = await translateToEnglish(cleanTitle(item));
+    } catch (err) {
+      console.warn(`translate failed for "${item.title.slice(0, 40)}":`, err.message);
+    }
+  }
 
   const message = formatMessage(fighter, toPost);
   if (DRY_RUN) {
