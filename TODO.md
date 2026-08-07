@@ -5,6 +5,7 @@
 - [ ] **Anthropic hard spend cap (~$10/mo):** console.anthropic.com → Settings → Limits. The one cap that truly matters — LLM API is the only real runaway risk (spec §16.4).
 
 ## Housekeeping
+- [x] Hunter failure notifications (2026-08-06): Cloud Monitoring alert → email on failed job executions; plus in-code self-report — hunter DMs Anton (never the group) on fatal errors. Sentry evaluated, skipped: error volume too small to gain from it; revisit if multi-agent steps make failures subtle.
 - [ ] Destroy webhook-secret v1 (the newline-bugged dead version): `gcloud secrets versions destroy 1 --secret=telegram-webhook-secret`. Frees a Secret Manager free-tier version slot (we're at 6/6).
 - [x] Delete the `hello` crash-course service (2026-08-06)
 

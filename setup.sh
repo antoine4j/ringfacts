@@ -98,7 +98,7 @@ gcloud run jobs deploy fighterbot-hunter \
   --source . \
   --command node --args hunter.js \
   --set-secrets=TELEGRAM_BOT_TOKEN=telegram-bot-token:latest,DATABASE_URL=neon-db-url:latest,GEMINI_API_KEY=gemini-api-key:latest \
-  --set-env-vars=TELEGRAM_CHAT_ID=-${TELEGRAM_CHAT_ID} \
+  --set-env-vars=TELEGRAM_CHAT_ID=-${TELEGRAM_CHAT_ID},ADMIN_CHAT_ID=${ADMIN_CHAT_ID} \
   --max-retries=0 \
   --task-timeout=300 \
   --memory=512Mi \
@@ -132,6 +132,16 @@ curl -s "https://api.telegram.org/bot$(gcloud secrets versions access latest --s
   -d "secret_token=$(gcloud secrets versions access latest --secret=telegram-webhook-secret)" \
   -d 'allowed_updates=["message"]'
 echo
+
+# --- Failure alerting (Cloud Monitoring) -------------------------------------
+# Email fires when a hunter execution fails. Complemented by in-code
+# self-report: hunter DMs the admin on fatal errors (ADMIN_CHAT_ID above).
+# Channel + policy created 2026-08-06; policy JSON documented the filter:
+#   metric run.googleapis.com/job/completed_task_attempt_count, result=failed,
+#   resource cloud_run_job fighterbot-hunter -> notify email channel.
+# gcloud beta monitoring channels create --display-name="Anton email" \
+#   --type=email --channel-labels=email_address=${ALERT_EMAIL}
+# gcloud alpha monitoring policies create --policy-from-file=alert-policy.json
 
 # --- Smoke tests ------------------------------------------------------------
 curl -s "$SERVICE_URL/"                                   # expect: alive message

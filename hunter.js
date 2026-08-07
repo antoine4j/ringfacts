@@ -15,6 +15,7 @@ import { embedTexts, EMBEDDING_MODEL } from "./lib/embeddings.js";
 
 const DRY_RUN = process.env.DRY_RUN === "1";
 const CHAT_ID = process.env.TELEGRAM_CHAT_ID;
+const ADMIN_CHAT_ID = process.env.ADMIN_CHAT_ID; // failure DMs go here, never the group
 const HOURS_BACK = Number(process.env.HOURS_BACK || 24);
 const MAX_ITEMS_PER_FIGHTER = 5;
 // Cosine similarity above this = same story. Tuned on real data 2026-08-06:
@@ -210,7 +211,14 @@ async function main() {
   }
 }
 
-main().catch((err) => {
+main().catch(async (err) => {
   console.error(err);
+  // Self-report to the admin's DM, best-effort: if Telegram itself is what
+  // broke, this can't deliver — the GCP failure alert is the backstop.
+  if (ADMIN_CHAT_ID && !DRY_RUN) {
+    try {
+      await sendTelegramMessage(ADMIN_CHAT_ID, `⚠️ Hunter run failed: ${err.message}`);
+    } catch {}
+  }
   process.exit(1);
 });
