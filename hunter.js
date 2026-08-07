@@ -9,7 +9,7 @@
 //
 // DRY_RUN=1 prints instead of posting and skips DB writes (reads still work).
 
-import { sendTelegramMessage } from "./lib/telegram.js";
+import { sendTelegramMessage, escapeHtml } from "./lib/telegram.js";
 import { openDb, knownUrls, nearestRecent, insertItem } from "./lib/db.js";
 import { embedTexts, EMBEDDING_MODEL } from "./lib/embeddings.js";
 
@@ -111,11 +111,17 @@ async function fetchFreshItems(fighter) {
     .slice(0, MAX_ITEMS_PER_FIGHTER);
 }
 
+// Telegram HTML mode: the headline IS the link, the ugly Google News URL
+// stays hidden behind it. Google News titles end in " - Source"; we show the
+// source ourselves, so strip that suffix when it matches.
 function formatMessage(fighter, items) {
-  const lines = items.map(
-    (item) => `• ${item.title} (${item.source}, ${hoursAgo(item.publishedAt)}h ago)\n${item.url}`
-  );
-  return `🔎 ${fighter.name} — ${items.length} new item(s):\n\n${lines.join("\n\n")}`;
+  const lines = items.map((item) => {
+    const title = item.title.endsWith(` - ${item.source}`)
+      ? item.title.slice(0, -` - ${item.source}`.length)
+      : item.title;
+    return `• <a href="${item.url}">${escapeHtml(title)}</a> — ${escapeHtml(item.source)}, ${hoursAgo(item.publishedAt)}h ago`;
+  });
+  return `🔎 <b>${escapeHtml(fighter.name)}</b>\n${lines.join("\n")}`;
 }
 
 async function huntFighter(db, fighter) {
@@ -170,7 +176,7 @@ async function huntFighter(db, fighter) {
   if (DRY_RUN) {
     console.log(`\n--- would post ---\n${message}\n`);
   } else {
-    await sendTelegramMessage(CHAT_ID, message);
+    await sendTelegramMessage(CHAT_ID, message, { html: true, noPreview: true });
   }
 }
 
