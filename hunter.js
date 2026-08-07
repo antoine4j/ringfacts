@@ -74,6 +74,9 @@ function parseRssItems(xml) {
       title: pick("title"),
       url: pick("link"),
       source: pick("source"),
+      // Raw description kept for later mining — Google News packs
+      // related-coverage links (its own story clustering) in here.
+      rssDescription: pick("description") || null,
       publishedAt: new Date(block.match(/<pubDate>(.*?)<\/pubDate>/)?.[1] ?? 0),
     });
   }
@@ -100,7 +103,9 @@ async function fetchFreshItems(fighter) {
   for (const alias of fighter.aliases) {
     const res = await fetch(feedUrl(alias));
     if (!res.ok) throw new Error(`RSS fetch ${res.status} for ${alias.query}`);
-    items.push(...parseRssItems(await res.text()));
+    const found = parseRssItems(await res.text());
+    for (const item of found) item.foundVia = `${alias.edition} ${alias.query}`;
+    items.push(...found);
   }
   // Fresh only, newest first, capped. In-run URL dedup across aliases;
   // cross-run dedup is the database's job.
@@ -154,10 +159,14 @@ async function huntFighter(db, fighter) {
     item.embeddingModel = EMBEDDING_MODEL;
 
     // Compare against stored rows BEFORE inserting this one, so an item
-    // never matches itself.
+    // never matches itself. Recorded for every item, not just holds — the
+    // similarity distribution is future threshold-tuning data.
     const nearest = item.embedding ? await nearestRecent(db, fighter.name, item.embedding) : null;
+    item.nearestSimilarity = nearest?.similarity ?? null;
+    item.nearestItem = nearest?.id ?? null;
     const isDup = nearest && nearest.similarity >= SEMANTIC_DUP_THRESHOLD;
     item.posted = !isDup;
+    item.heldReason = isDup ? "embedding" : null;
 
     if (isDup) {
       console.log(
