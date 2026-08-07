@@ -30,4 +30,4 @@
 - [ ] Source list per fighter (Fighter A/Fighter B coverage may be sparse; Google News RSS is source #1 as of 2a)
 - [ ] Cron frequency — hourly chosen and running (2b); revisit only if limits or noise say otherwise
 - [ ] Alias lists per fighter — first draft live in hunter.js (Latin + uk-Cyrillic); expand if coverage gaps show (e.g. ru-Cyrillic spellings)
-- [ ] Bot output language (spec §17.5) — config line now, thanks to canonical-English storage design
+- [ ] Bot output language (spec §17.5) — precedent set 2026-08-07: uk/en headlines post as-is; other languages translate to **English**, labeled "(translated from xx)", via Gemini free tier. Still open: language of the bot's own voice (announcements, replies).
