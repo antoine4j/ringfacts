@@ -110,7 +110,7 @@
   <h1>The Claims Layer</h1>
   <p class="sub">Where the unit of news stops being <em>the article</em> and becomes <em>the fact</em>.
   A design for claim extraction, corroboration, and the rumor&nbsp;→&nbsp;confirmed lifecycle.
-  No code — architecture only. 2026-08-06.</p>
+  No code — architecture only. 2026-08-06; amended 2026-08-07 with first live-data findings.</p>
 
   <nav class="toc" aria-label="Contents">
     <a href="#s1"><b>1</b> Why claims</a>
@@ -410,11 +410,13 @@
     <p>This is the same escalation ladder used everywhere in the system, aimed at a new question. Instead of
     "have I seen this article?", the matcher asks: <strong>"which fact is this article about?"</strong></p>
     <ol>
-      <li><strong>Geometry pre-selects.</strong> The article's embedding is compared against
-      <em>claim</em> embeddings (same fighter, active claims only). Top 3 candidates come back with scores.
-      Cost: free, milliseconds, scales with archive size without touching the LLM.</li>
+      <li><strong>Geometry orders, but does not cut.</strong> The article's embedding is compared against
+      <em>claim</em> embeddings — and <strong>all active claims for that fighter</strong> (a naturally small
+      set, ~10) go to the LLM, similarity-ordered. <em>Amended 2026-08-07:</em> a top-3 cutoff was
+      measured risky — metaphor headlines ("Makhachev's heir will make Ilia throw in the towel") can bury
+      the right candidate, whose entity hides behind a flourish only the LLM can resolve.</li>
       <li><strong>The LLM decides.</strong> One call, given the article's headline + body excerpt and the
-      three candidate claims' canonical texts. It returns a verdict:</li>
+      candidate claims' canonical texts. It returns a verdict:</li>
     </ol>
   </div>
 
@@ -425,7 +427,7 @@
       <g font-size="11" class="t-soft">
         <text x="36" y="64">· article headline + first ~150 words</text>
         <text x="36" y="80">· source name, published time</text>
-        <text x="36" y="96">· 3 candidate claims (canonical text + status)</text>
+        <text x="36" y="96">· fighter's active claims (~10 max, similarity-ordered)</text>
       </g>
       <path d="M290 64 L350 64" stroke="var(--ink-soft)" stroke-width="1.5"/>
       <path d="M350 64 l-9 -5 v10 z" fill="var(--ink-soft)"/>
@@ -467,6 +469,11 @@
       <li><strong>Held duplicates skip extraction.</strong> An item held against another article inherits that
       article's claim link as an <code>echo</code> — no LLM needed. Only the judge-gray or genuinely-new items
       pay for a matcher call.</li>
+      <li><strong>NO_CLAIM is a legal verdict</strong> <em>(amended 2026-08-07)</em>. Some articles assert
+      nothing about fights at all — the Spanish press delivered Fighter C's favorite restaurant and his Ibiza
+      vacation on day one. Forcing extraction there manufactures garbage; instead the article posts through
+      the normal digest with no claim created, and the type vocabulary gains a <code>lifestyle</code>
+      category for the presentation tiers.</li>
     </ul>
   </div>
 
@@ -676,6 +683,15 @@
       <li><strong>Sequencing:</strong> claims land best <em>after</em> 2e (bodies make extraction and
       independence reliable) and can absorb step 4's classifier — claim <code>type</code> <em>is</em> the
       classification. Steps 4 and 5 may merge into one build arc.</li>
+      <li><strong>Bootstrap pass</strong> <em>(added 2026-08-07)</em>: the archive already contains
+      ready-made claim clusters — the Masvidal quote (6 sightings, 2 languages) and the Fighter A
+      UFC-Paris announcement (5 sightings). The reconciler's first job is a batch pass converting
+      accumulated history into claims — same idempotent machinery as failure recovery, pointed backward.
+      This is also the build's natural acceptance test.</li>
+      <li><strong>Google's own clustering as a free signal</strong> <em>(added 2026-08-07)</em>: the
+      captured <code>rss_description</code> column carries Google News's related-coverage links per item —
+      potentially a ready-made "these articles are the same story" hint to weigh alongside embeddings in
+      the matcher. Mine before building anything clever.</li>
     </ul>
   </div>
 
