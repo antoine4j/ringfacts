@@ -65,7 +65,27 @@ gcloud run deploy "$SERVICE" \
 SERVICE_URL=$(gcloud run services describe "$SERVICE" --format="value(status.url)")
 echo "Deployed: $SERVICE_URL"
 
-# --- Hunter job (spec §9 step 2, raw-pipe half) ------------------------------
+# --- Neon Postgres (hunter memory; slice 2b) ---------------------------------
+# Neon = serverless Postgres + pgvector, free tier, autosuspends and
+# auto-resumes itself (unlike Supabase's manual unpause). Runs on AWS
+# us-west-2 (Oregon) — physically next door to our GCP us-west1.
+# brew install neonctl && neonctl auth   # browser OAuth, one time
+NEON_PROJECT_ID="${NEON_PROJECT_ID}"    # display name: fighter-bot
+# neonctl projects create --name fighter-bot --region-id aws-us-west-2
+# Connection string (contains the DB password) goes straight into Secret
+# Manager via a pipe — never printed. tr -d '\n' per the day-one lesson.
+if ! gcloud secrets describe neon-db-url >/dev/null 2>&1; then
+  neonctl connection-string --project-id "$NEON_PROJECT_ID" | tr -d '\n' | \
+    gcloud secrets create neon-db-url --data-file=-
+  gcloud secrets add-iam-policy-binding neon-db-url \
+    --member="serviceAccount:$RUNTIME_SA" \
+    --role="roles/secretmanager.secretAccessor"
+fi
+
+# Apply the schema (idempotent; see schema.sql):
+# DATABASE_URL=$(gcloud secrets versions access latest --secret=neon-db-url) node migrate.js
+
+# --- Hunter job (spec §9 step 2) ---------------------------------------------
 # Same image as the service, different entry point (--command/--args override
 # the Dockerfile CMD). Least privilege: only the bot token secret is mounted.
 # Chat ID is not a secret -> plain env var. max-retries=0: a buggy run fails
@@ -73,15 +93,32 @@ echo "Deployed: $SERVICE_URL"
 gcloud run jobs deploy fighterbot-hunter \
   --source . \
   --command node --args hunter.js \
-  --set-secrets=TELEGRAM_BOT_TOKEN=telegram-bot-token:latest \
+  --set-secrets=TELEGRAM_BOT_TOKEN=telegram-bot-token:latest,DATABASE_URL=neon-db-url:latest \
   --set-env-vars=TELEGRAM_CHAT_ID=-${TELEGRAM_CHAT_ID} \
   --max-retries=0 \
   --task-timeout=300 \
   --memory=512Mi \
   --quiet
 
-# Run the hunter on demand (until Cloud Scheduler takes over in step 2b):
+# Run the hunter on demand:
 # gcloud run jobs execute fighterbot-hunter --wait
+
+# --- Hourly pulse: Cloud Scheduler (slice 2b) --------------------------------
+# A dedicated service account whose ONLY power is executing this one job
+# (least privilege), and a cron that POSTs the same Run Admin API call that
+# `gcloud run jobs execute` makes.
+gcloud services enable cloudscheduler.googleapis.com
+gcloud iam service-accounts create hunter-scheduler \
+  --display-name="Triggers fighterbot-hunter job" || true
+gcloud run jobs add-iam-policy-binding fighterbot-hunter \
+  --member="serviceAccount:hunter-scheduler@${PROJECT_ID}.iam.gserviceaccount.com" \
+  --role="roles/run.invoker"
+gcloud scheduler jobs create http fighterbot-hunter-hourly \
+  --location="$REGION" \
+  --schedule="0 * * * *" \
+  --uri="https://run.googleapis.com/v2/projects/${PROJECT_ID}/locations/${REGION}/jobs/fighterbot-hunter:run" \
+  --http-method=POST \
+  --oauth-service-account-email="hunter-scheduler@${PROJECT_ID}.iam.gserviceaccount.com" || true
 
 # --- Point Telegram's webhook at the service --------------------------------
 # Command substitution pulls secret values straight from Secret Manager into

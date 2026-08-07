@@ -1,16 +1,24 @@
-// FighterBot hunter — raw-pipe skeleton (spec §9 step 2, first half).
-// Runs top to bottom and exits: fetch Google News RSS per fighter -> parse ->
-// post fresh items to the Telegram group, unfiltered. No storage yet, so every
-// run re-posts what it finds — dedup arrives with Supabase in the next step.
+// FighterBot hunter — slice 2b: memory + dedup.
+// Each run: fetch Google News RSS per fighter -> drop URLs already in the DB
+// -> embed the rest -> hold back semantic duplicates (same story, different
+// outlet/language) -> post what's genuinely new -> record everything.
 //
-// DRY_RUN=1 prints to stdout instead of posting (local testing, no secrets).
+// Degradation ladder: no DATABASE_URL -> no dedup (local dry runs);
+// embedding API down -> URL dedup only. DB configured but unreachable is
+// fatal — posting without memory would re-spam the group.
+//
+// DRY_RUN=1 prints instead of posting and skips DB writes (reads still work).
 
 import { sendTelegramMessage } from "./lib/telegram.js";
+import { openDb, knownUrls, nearestRecent, insertItem } from "./lib/db.js";
+import { embedTexts, EMBEDDING_MODEL } from "./lib/embeddings.js";
 
 const DRY_RUN = process.env.DRY_RUN === "1";
 const CHAT_ID = process.env.TELEGRAM_CHAT_ID;
 const HOURS_BACK = Number(process.env.HOURS_BACK || 24);
 const MAX_ITEMS_PER_FIGHTER = 5;
+// Cosine similarity above this = same story. First guess; tune on real data.
+const SEMANTIC_DUP_THRESHOLD = Number(process.env.SEMANTIC_DUP_THRESHOLD || 0.85);
 
 // Aliases are search queries, not display names. First draft (spec §17.4 is
 // still open): Cyrillic aliases matter most for the fighters western media
@@ -61,7 +69,7 @@ function parseRssItems(xml) {
       decodeEntities(block.match(new RegExp(`<${tag}[^>]*>([\\s\\S]*?)</${tag}>`))?.[1] ?? "");
     items.push({
       title: pick("title"),
-      link: pick("link"),
+      url: pick("link"),
       source: pick("source"),
       publishedAt: new Date(block.match(/<pubDate>(.*?)<\/pubDate>/)?.[1] ?? 0),
     });
@@ -83,7 +91,7 @@ function hoursAgo(date) {
   return Math.round((Date.now() - date.getTime()) / 3_600_000);
 }
 
-async function huntFighter(fighter) {
+async function fetchFreshItems(fighter) {
   const cutoff = Date.now() - HOURS_BACK * 3_600_000;
   const items = [];
   for (const alias of fighter.aliases) {
@@ -91,49 +99,105 @@ async function huntFighter(fighter) {
     if (!res.ok) throw new Error(`RSS fetch ${res.status} for ${alias.query}`);
     items.push(...parseRssItems(await res.text()));
   }
-  // Fresh only, newest first, capped. Cross-alias URL dedup handles the same
-  // story appearing in both language editions.
-  const seenLinks = new Set();
+  // Fresh only, newest first, capped. In-run URL dedup across aliases;
+  // cross-run dedup is the database's job.
+  const seen = new Set();
   return items
     .filter((item) => item.publishedAt.getTime() > cutoff)
     .sort((a, b) => b.publishedAt - a.publishedAt)
-    .filter((item) => !seenLinks.has(item.link) && seenLinks.add(item.link))
+    .filter((item) => !seen.has(item.url) && seen.add(item.url))
     .slice(0, MAX_ITEMS_PER_FIGHTER);
 }
 
 function formatMessage(fighter, items) {
   const lines = items.map(
-    (item) => `• ${item.title} (${item.source}, ${hoursAgo(item.publishedAt)}h ago)\n${item.link}`
+    (item) => `• ${item.title} (${item.source}, ${hoursAgo(item.publishedAt)}h ago)\n${item.url}`
   );
-  return `🔎 ${fighter.name} — ${items.length} item(s) in the last ${HOURS_BACK}h:\n\n${lines.join("\n\n")}`;
+  return `🔎 ${fighter.name} — ${items.length} new item(s):\n\n${lines.join("\n\n")}`;
+}
+
+async function huntFighter(db, fighter) {
+  const fetched = await fetchFreshItems(fighter);
+
+  // Gate 1: exact URLs we already know.
+  const known = db ? await knownUrls(db, fetched.map((i) => i.url)) : new Set();
+  const candidates = fetched.filter((i) => !known.has(i.url));
+  if (candidates.length === 0) {
+    console.log(`${fighter.name}: ${fetched.length} fetched, nothing new`);
+    return;
+  }
+
+  // Gate 2: semantic duplicates. Embedding failure degrades to URL-only dedup.
+  let vectors = null;
+  if (db) {
+    try {
+      vectors = await embedTexts(candidates.map((i) => i.title));
+    } catch (err) {
+      console.warn(`${fighter.name}: embedding failed, URL dedup only:`, err.message);
+    }
+  }
+
+  const toPost = [];
+  for (const [i, item] of candidates.entries()) {
+    item.fighter = fighter.name;
+    item.embedding = vectors?.[i] ?? null;
+    item.embeddingModel = EMBEDDING_MODEL;
+
+    // Compare against stored rows BEFORE inserting this one, so an item
+    // never matches itself.
+    const nearest = item.embedding ? await nearestRecent(db, fighter.name, item.embedding) : null;
+    const isDup = nearest && nearest.similarity >= SEMANTIC_DUP_THRESHOLD;
+    item.posted = !isDup;
+
+    if (isDup) {
+      console.log(
+        `${fighter.name}: held as dup (${nearest.similarity.toFixed(2)} vs "${nearest.title.slice(0, 60)}"): ${item.title.slice(0, 60)}`
+      );
+    } else {
+      toPost.push(item);
+    }
+    if (db && !DRY_RUN) await insertItem(db, item);
+  }
+
+  console.log(
+    `${fighter.name}: ${fetched.length} fetched, ${candidates.length} unseen, ${toPost.length} posted`
+  );
+  if (toPost.length === 0) return;
+
+  const message = formatMessage(fighter, toPost);
+  if (DRY_RUN) {
+    console.log(`\n--- would post ---\n${message}\n`);
+  } else {
+    await sendTelegramMessage(CHAT_ID, message);
+  }
 }
 
 async function main() {
   if (!DRY_RUN && !CHAT_ID) {
     throw new Error("TELEGRAM_CHAT_ID is required unless DRY_RUN=1");
   }
+  // No DATABASE_URL (secret-free local run) -> no dedup. But if a DB is
+  // configured and unreachable, fail the whole run: memory-less posting
+  // would re-spam the group every hour.
+  const db = process.env.DATABASE_URL ? await openDb() : null;
+  if (!db) console.warn("No DATABASE_URL — running without dedup memory.");
 
-  let failures = 0;
-  for (const fighter of FIGHTERS) {
-    try {
-      const items = await huntFighter(fighter);
-      console.log(`${fighter.name}: ${items.length} fresh item(s)`);
-      if (items.length === 0) continue; // silence beats "no news" spam
-      const message = formatMessage(fighter, items);
-      if (DRY_RUN) {
-        console.log(`\n--- would post ---\n${message}\n`);
-      } else {
-        await sendTelegramMessage(CHAT_ID, message);
+  try {
+    let failures = 0;
+    for (const fighter of FIGHTERS) {
+      try {
+        await huntFighter(db, fighter);
+      } catch (err) {
+        // One broken feed must not kill the other fighters' hunts.
+        failures++;
+        console.error(`${fighter.name}: hunt failed:`, err);
       }
-    } catch (err) {
-      // One broken feed must not kill the other fighters' hunts.
-      failures++;
-      console.error(`${fighter.name}: hunt failed:`, err);
     }
-  }
-
-  if (failures === FIGHTERS.length) {
-    throw new Error("every fighter hunt failed"); // job run shows red
+    if (failures === FIGHTERS.length) {
+      throw new Error("every fighter hunt failed"); // job run shows red
+    }
+  } finally {
+    if (db) await db.end();
   }
 }
 
