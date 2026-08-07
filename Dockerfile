@@ -8,7 +8,10 @@ WORKDIR /app
 COPY package.json package-lock.json ./
 RUN npm ci --omit=dev
 
-COPY server.js ./
+# One image, two entry points: the service runs the default CMD below,
+# the hunter job overrides it with `node hunter.js`.
+COPY server.js hunter.js ./
+COPY lib ./lib
 
 ENV NODE_ENV=production
 

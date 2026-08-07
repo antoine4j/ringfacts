@@ -65,6 +65,24 @@ gcloud run deploy "$SERVICE" \
 SERVICE_URL=$(gcloud run services describe "$SERVICE" --format="value(status.url)")
 echo "Deployed: $SERVICE_URL"
 
+# --- Hunter job (spec §9 step 2, raw-pipe half) ------------------------------
+# Same image as the service, different entry point (--command/--args override
+# the Dockerfile CMD). Least privilege: only the bot token secret is mounted.
+# Chat ID is not a secret -> plain env var. max-retries=0: a buggy run fails
+# once, visibly, instead of retry-spamming the group.
+gcloud run jobs deploy fighterbot-hunter \
+  --source . \
+  --command node --args hunter.js \
+  --set-secrets=TELEGRAM_BOT_TOKEN=telegram-bot-token:latest \
+  --set-env-vars=TELEGRAM_CHAT_ID=-${TELEGRAM_CHAT_ID} \
+  --max-retries=0 \
+  --task-timeout=300 \
+  --memory=512Mi \
+  --quiet
+
+# Run the hunter on demand (until Cloud Scheduler takes over in step 2b):
+# gcloud run jobs execute fighterbot-hunter --wait
+
 # --- Point Telegram's webhook at the service --------------------------------
 # Command substitution pulls secret values straight from Secret Manager into
 # the request without echoing them. allowed_updates trims noise (no joins/edits).

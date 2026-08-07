@@ -3,9 +3,9 @@
 
 import http from "node:http";
 import Anthropic from "@anthropic-ai/sdk";
+import { sendTelegramMessage } from "./lib/telegram.js";
 
 const PORT = process.env.PORT || 8080;
-const BOT_TOKEN = process.env.TELEGRAM_BOT_TOKEN;
 const WEBHOOK_SECRET = process.env.TELEGRAM_WEBHOOK_SECRET;
 
 // Chat whitelist (spec §15): Anton's DM + test group. Everything else is dropped silently.
@@ -31,17 +31,6 @@ async function askClaude(userText) {
     .filter((block) => block.type === "text")
     .map((block) => block.text)
     .join("\n");
-}
-
-async function sendTelegramMessage(chatId, text) {
-  const res = await fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ chat_id: chatId, text }),
-  });
-  if (!res.ok) {
-    console.error("sendMessage failed:", res.status, await res.text());
-  }
 }
 
 async function handleUpdate(update) {
