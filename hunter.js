@@ -111,15 +111,16 @@ async function fetchFreshItems(fighter) {
     .slice(0, MAX_ITEMS_PER_FIGHTER);
 }
 
-// Telegram HTML mode: the headline IS the link, the ugly Google News URL
-// stays hidden behind it. Google News titles end in " - Source"; we show the
-// source ourselves, so strip that suffix when it matches.
+// Telegram HTML mode: headline stays plain text (calmer to read), the short
+// source name carries the link — hiding the ugly Google News URL behind it.
+// Google News titles end in " - Source"; we show the source ourselves, so
+// strip that suffix when it matches.
 function formatMessage(fighter, items) {
   const lines = items.map((item) => {
     const title = item.title.endsWith(` - ${item.source}`)
       ? item.title.slice(0, -` - ${item.source}`.length)
       : item.title;
-    return `• <a href="${item.url}">${escapeHtml(title)}</a> — ${escapeHtml(item.source)}, ${hoursAgo(item.publishedAt)}h ago`;
+    return `• ${escapeHtml(title)} — <a href="${item.url}">${escapeHtml(item.source)}</a>, ${hoursAgo(item.publishedAt)}h ago`;
   });
   return `🔎 <b>${escapeHtml(fighter.name)}</b>\n${lines.join("\n")}`;
 }
