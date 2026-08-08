@@ -703,12 +703,22 @@
       same story?" (2d) is a special case of "which claim does this belong to?" (§5) — a MATCH verdict
       with role <code>echo</code> <em>is</em> the gray-zone dedup decision. If step 5 starts soon, the
       standalone judge slice is redundant work; the gray zone routes through the matcher instead.</li>
-      <li><strong>Official-source list:</strong> which domains/accounts count as "official" per promotion
-      (UFC, PFL/Bellator)? Small curated config; needs research per fighter's org.</li>
+      <li><strong>Official-source list — RESOLVED 2026-08-08:</strong> all three fighters are UFC, so the
+      v1 list is one domain: <code>ufc.com</code> (match by source domain, or normalized source name
+      "UFC"/"UFC.com" from Google News). Bellator is defunct (ceased 2025, absorbed into PFL); PFL is
+      mid-migration into MVP MMA (2026→2027) — <code>pflmma.com</code> parked in a config comment for
+      the day a watched fighter signs there. Record trackers (Tapology, Sherdog, ESPN, ufcstats) are
+      high-credibility media, <em>not</em> official — they corroborate, never born-confirm. Fighter
+      first-party statements arrive via media quotes; the matcher's sourcing signal handles those, not
+      the domain list.</li>
+      <li><strong>Status labels &amp; bot voice — RESOLVED 2026-08-08:</strong> every status line is
+      emoji + word (🕵️ Rumor / ✅ Confirmed / ❌ Denied / 📅 Superseded), as the §8 mockups show. The
+      bot's own voice (announcements, confirmations) is English, extending the translation precedent.</li>
       <li><strong>Multi-claim articles:</strong> V1 extracts one primary claim per article. When does that
       start losing real news? (Watch for it in the unclaimed/UNSURE logs.)</li>
       <li><strong>Edit vs. reply for corroboration:</strong> silently editing old posts keeps the chat clean
-      but rewrites history; replies are honest but noisier. Taste decision for Anton.</li>
+      but rewrites history; replies are honest but noisier. Taste decision for Anton — deferred without
+      cost: corroboration display only matters once 2e's independence engine runs.</li>
       <li><strong>Staleness window:</strong> 14 days is a guess. MMA rumor cycles (negotiation → announcement)
       might argue for 30.</li>
       <li><strong>Cross-fighter claims:</strong> "Fighter B vs Fighter A announced" touches two watched fighters —
