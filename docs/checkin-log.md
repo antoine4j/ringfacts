@@ -7,6 +7,16 @@ as the chat report: data / changes / proposals / next attention.
 
 ---
 
+## 2026-08-08 ~16:00 PDT — verdict validation gate (first autonomous run)
+
+- 📊 Window 11:45–16:00 PDT: 3 runs, all green (75s retry never even fired — zero 503s since the fix). 3 items: 1 posted, 2 held as embedding dups (0.83, 0.87 — both correctly linked as echoes to claims 4 and 7). 1 new claim: #8 negotiation, "Carlos Prates warns against Fighter C moving to welterweight" (1 source). No confirmations; Fighter A trap still armed. No WRONG_SUBJECT, no UNSURE this window (1 UNSURE at 10:53 PDT, fail-open worked).
+- 📊 Fighter A/Fighter B "0 fetched" all day is real, not a broken feed — verified all 6 alias feeds return 200 with items; freshest for those two are 45–57h old (the Masvidal cluster, already captured).
+- 🔧 lib/matcher.js: `normalizeVerdict` validates every matcher answer before the pipeline trusts it (off-enum type → other, off-enum sourcing → reported so junk can't born-confirm, MATCH on an unoffered claim id → UNSURE). Closes TODO's "add code validation" AND an FK-error crash path that would have killed the rest of a fighter's hunt. 12-case unit check + live matcher call pass; deployed.
+- 🔧 Caught in testing: pg returns claim bigints as strings ("7") while the model answers with a number (7) — a naive id check would have silently downgraded EVERY match to UNSURE. Compared as strings, verified live (MATCH → claim 7).
+- 👁 'prediction' is the type the model reaches for and the enum lacks (coerced to other + warned). If that warning recurs, extend the enum + docs §5. Also still watching: 503s under the 75s retry, the armed Fighter A confirmation.
+
+---
+
 ## 2026-08-08 ~11:45 PDT — retry tuned, alert de-noised (manual session)
 
 - 📊 12:19 PDT run failed WITH retry: 503 persisted past the 30s wait — Google's throttle waves are longer. 3 failures today (14:17Z, 18:17Z, 19:19Z).
