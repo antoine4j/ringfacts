@@ -133,7 +133,10 @@
     <ul>
       <li><strong>Retellings slip through.</strong> Three articles covered one Masvidal quote about Fighter B
       (MMA Junkie original → XSPORT translation → heavy.com retelling). Headline similarity linked two of
-      the three; the third posted as "new news." The group heard the same quote twice.</li>
+      the three; the third posted as "new news." The group heard the same quote twice.
+      <em>(Update 2026-08-08: the cluster has grown to seven sightings across six outlets and two
+      languages — and a fourth retelling slipped the embedding gate at 0.77 similarity. The problem
+      compounds daily.)</em></li>
       <li><strong>Corroboration is invisible.</strong> When a second independent outlet reports the same
       fight, that is the most important signal in the whole system — a rumor hardening into fact. Today it
       is (at best) silently deduplicated. The signal is literally discarded.</li>
@@ -489,6 +492,13 @@
       vacation on day one. Forcing extraction there manufactures garbage; instead the article posts through
       the normal digest with no claim created, and the type vocabulary gains a <code>lifestyle</code>
       category for the presentation tiers.</li>
+      <li><strong>Identity check is part of the matcher contract</strong> <em>(amended 2026-08-08)</em>.
+      Name match ≠ fighter match: the live archive already caught a namesake esports driver ("Yaroslav
+      Fighter B" in an iRacing video), Ilia's brother Fighter C's brother (also UFC), and keyword-stuffed
+      junk with no connection at all. Before returning MATCH or NEW, the matcher must confirm the article
+      concerns <em>the watched fighter, the human</em> — wrong-subject items resolve to a
+      <code>WRONG_SUBJECT</code> outcome (recorded, never posted, never a claim). This absorbs spec
+      step 3's "fighter filter" into the matcher.</li>
     </ul>
   </div>
 
@@ -707,6 +717,17 @@
       captured <code>rss_description</code> column carries Google News's related-coverage links per item —
       potentially a ready-made "these articles are the same story" hint to weigh alongside embeddings in
       the matcher. Mine before building anything clever.</li>
+      <li><strong>Gray-zone volume measured</strong> <em>(added 2026-08-08)</em>: ~10–13 items/day land in
+      the 0.65–0.80 ambiguous band — real duplicates (the fourth Masvidal retelling at 0.77) mixed with
+      genuinely-new developments (a manager feud producing distinct articles at 0.77–0.80). Confirms the
+      2d judge has daily work at ~1¢/day, and that the matcher volume estimate in §9 holds.</li>
+      <li><strong>Source blocklist</strong> <em>(added 2026-08-08)</em>: keyword-stuffing aggregators exist
+      (two junk items from one source in one day). A small curated blocklist, grown lazily like the
+      outlet-family map in §7, is cheaper than classifying garbage repeatedly.</li>
+      <li><strong>Storyline threading</strong> <em>(added 2026-08-08, parked)</em>: multi-day narrative
+      arcs (prediction → rebuttal → counterattack) unfold as several related claims. The group's mental
+      model may eventually want a "storyline" grouping above claims. Observed, not designed — revisit
+      after claims ship.</li>
     </ul>
   </div>
 
