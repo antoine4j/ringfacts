@@ -29,3 +29,35 @@ ALTER TABLE items ADD COLUMN IF NOT EXISTS nearest_item bigint REFERENCES items(
 ALTER TABLE items ADD COLUMN IF NOT EXISTS held_reason text;      -- 'embedding' | 'llm' (2d)
 ALTER TABLE items ADD COLUMN IF NOT EXISTS found_via text;        -- which query alias caught it
 ALTER TABLE items ADD COLUMN IF NOT EXISTS rss_description text;  -- raw RSS <description>, mined later
+
+-- ============================================================================
+-- Claims layer (step 5, phase 1 — docs/claims-architecture.html).
+-- Articles (items) are immutable evidence; claims are living facts.
+
+CREATE TABLE IF NOT EXISTS claims (
+  id             bigint GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+  fighter        text NOT NULL,
+  type           text NOT NULL,      -- announcement|result|injury|quote|negotiation|lifestyle|other
+  canonical_text text NOT NULL,      -- one English sentence, quote-anchored
+  facts          jsonb NOT NULL DEFAULT '{}',
+  status         text NOT NULL,      -- rumor|confirmed|denied|stale|superseded
+  embedding      vector(768),
+  embedding_model text,
+  first_seen_at  timestamptz NOT NULL DEFAULT now(),
+  confirmed_at   timestamptz,
+  tg_message_id  bigint,             -- lets confirmations reply to the rumor post
+  supersedes     bigint REFERENCES claims(id)
+);
+
+-- Join table: each row IS a relationship — "this article is evidence for
+-- this claim, in this role". One claim <-> many articles and vice versa.
+CREATE TABLE IF NOT EXISTS claim_sources (
+  item_id   bigint NOT NULL REFERENCES items(id),
+  claim_id  bigint NOT NULL REFERENCES claims(id),
+  role      text NOT NULL,           -- origin|echo|corroboration|official
+  stance    text NOT NULL DEFAULT 'asserts',
+  linked_at timestamptz NOT NULL DEFAULT now(),
+  PRIMARY KEY (item_id, claim_id)
+);
+
+CREATE INDEX IF NOT EXISTS claims_fighter_status_idx ON claims (fighter, status);

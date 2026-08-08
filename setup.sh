@@ -88,6 +88,9 @@ fi
 # DATABASE_URL=$(gcloud secrets versions access latest --secret=neon-db-url) node migrate.js
 # Embed any rows recorded while the embedding key was missing/failing:
 # DATABASE_URL=$(...) GEMINI_API_KEY=$(...) node backfill-embeddings.js
+# Claims bootstrap (step 5): replay archive through the matcher. Dry by default:
+# DATABASE_URL=$(...) GEMINI_API_KEY=$(...) ANTHROPIC_API_KEY=$(...) node bootstrap-claims.js
+# COMMIT=1 ... node bootstrap-claims.js   # done 2026-08-08: 7 claims, 23 links
 
 # --- Hunter job (spec §9 step 2) ---------------------------------------------
 # Same image as the service, different entry point (--command/--args override
@@ -97,7 +100,7 @@ fi
 gcloud run jobs deploy fighterbot-hunter \
   --source . \
   --command node --args hunter.js \
-  --set-secrets=TELEGRAM_BOT_TOKEN=telegram-bot-token:latest,DATABASE_URL=neon-db-url:latest,GEMINI_API_KEY=gemini-api-key:latest \
+  --set-secrets=TELEGRAM_BOT_TOKEN=telegram-bot-token:latest,DATABASE_URL=neon-db-url:latest,GEMINI_API_KEY=gemini-api-key:latest,ANTHROPIC_API_KEY=anthropic-api-key:latest \
   --set-env-vars=TELEGRAM_CHAT_ID=-${TELEGRAM_CHAT_ID},ADMIN_CHAT_ID=${ADMIN_CHAT_ID} \
   --max-retries=0 \
   --task-timeout=300 \
