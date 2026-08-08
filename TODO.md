@@ -7,6 +7,7 @@
 ## Housekeeping
 - [x] Hunter failure notifications (2026-08-06): Cloud Monitoring alert → email on failed job executions; plus in-code self-report — hunter DMs Anton (never the group) on fatal errors. Sentry evaluated, skipped: error volume too small to gain from it; revisit if multi-agent steps make failures subtle.
 - [ ] Destroy webhook-secret v1 (the newline-bugged dead version): `gcloud secrets versions destroy 1 --secret=telegram-webhook-secret`. Frees a Secret Manager free-tier version slot (we're at 6/6).
+- [ ] **Hourly DB backups to GCS (designed 2026-08-08, not built):** Neon free tier = 6h point-in-time restore only, no external backups. Design: after each hunt, the hunter dumps all tables (plain SELECTs → gzipped JSON, no pg_dump) to a GCS bucket in us-west1 — inside GCS's always-free 5GB, so $0 forever (DB <1MB). Rotation via bucket lifecycle rule (30d auto-delete, enforced by Google, no code). Security: hunter's SA gets object-CREATE only, never delete — a poisoned agent can add snapshots but not destroy them. ~30 lines in hunter.js + `gsutil mb` + lifecycle rule in setup.sh.
 - [x] Delete the `hello` crash-course service (2026-08-06)
 
 ## Build sequence (spec §9, cloud-first per §16)
