@@ -7,6 +7,14 @@ as the chat report: data / changes / proposals / next attention.
 
 ---
 
+## 2026-08-08 ~11:30 PDT — 2f retry shipped (manual session)
+
+- 📊 11:17 PDT run failed: Google 503s on all feeds (2nd failure today — pattern crossed the "build the retry" line).
+- 🔧 hunter.js: one retry per feed after 30s pause (RETRY_DELAY_MS tunable). Deployed. TODO 2f done.
+- 👁 Watch whether 503s survive the retry; if yes, escalate (jittered delay / alternate discovery source).
+
+---
+
 ## 2026-08-08 ~11:00 PDT — step 5 phase 1 launch (manual session, baseline)
 
 - 📊 Bootstrap: 7 claims, 23 evidence links from ~50-item archive. Masvidal cluster (5 src), Fighter A UFC-Paris announcement (5 src, rumor — awaiting ufc.com for first lifecycle confirmation). All claims born rumor (no official sources in archive yet).

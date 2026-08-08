@@ -119,13 +119,27 @@ function hoursAgo(date) {
   return Math.round((Date.now() - date.getTime()) / 3_600_000);
 }
 
+// Google News intermittently sheds load from cloud-datacenter IPs (503s,
+// ~1-2 runs/day observed). One retry after a pause rides out the wave;
+// worst case (all aliases failing twice) stays within the job timeout.
+const RETRY_DELAY_MS = Number(process.env.RETRY_DELAY_MS || 30_000);
+
+async function fetchFeed(alias) {
+  let res = await fetch(feedUrl(alias));
+  if (!res.ok) {
+    console.warn(`RSS fetch ${res.status} for ${alias.query} — retrying in ${RETRY_DELAY_MS / 1000}s`);
+    await new Promise((resolve) => setTimeout(resolve, RETRY_DELAY_MS));
+    res = await fetch(feedUrl(alias));
+  }
+  if (!res.ok) throw new Error(`RSS fetch ${res.status} for ${alias.query} (after retry)`);
+  return res.text();
+}
+
 async function fetchFreshItems(fighter) {
   const cutoff = Date.now() - HOURS_BACK * 3_600_000;
   const items = [];
   for (const alias of fighter.aliases) {
-    const res = await fetch(feedUrl(alias));
-    if (!res.ok) throw new Error(`RSS fetch ${res.status} for ${alias.query}`);
-    const found = parseRssItems(await res.text());
+    const found = parseRssItems(await fetchFeed(alias));
     for (const item of found) {
       item.edition = alias.edition;
       item.foundVia = `${alias.edition} ${alias.query}`;
