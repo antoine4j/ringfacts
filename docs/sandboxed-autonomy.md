@@ -19,7 +19,7 @@ credentials it holds. Design = choose the pockets:
 |---|---|---|
 | Anthropic auth | yes (it has to think) | hard spend cap at console.anthropic.com (~$10) makes worst-case abuse a rounding error |
 | GCP | yes, but NOT Anton's `gcloud auth` | dedicated service account: read logs, execute `fighterbot-hunter`, deploy that one job. No resource creation, no API enabling, no billing powers |
-| Neon | yes | read-only role — analysis needs SELECT, not DROP |
+| Neon | yes | **full read-write** (decided 2026-08-08): the agent must apply migrations and evolve the schema — that IS the self-improvement. Safety comes from recovery, not restriction: Neon point-in-time restore covers accidents, and the routine's hard rule "never delete data" plus ask-first-for-schema-destruction stay in the prompt |
 | Telegram bot token | **no, never** | reviewing/improving code requires messaging nobody; the sandbox physically cannot spam the group |
 
 ## Three ways to get the sandbox (weakest to strongest fit)
@@ -52,6 +52,10 @@ requires powers; don't mount the powers. Anton's own account keeps them.
   branch/PR so trash never touches `main` without a human glance.
 - Wasted Anthropic dollars — capped.
 - A redeployed hunter job — rolled back with one command from setup.sh.
+- A botched migration or damaged data — recovered via Neon point-in-time
+  restore (its restore window is the real backstop; check retention settings
+  before going live). Worst truly-lost case: news items captured inside the
+  restore gap — annoying, not fatal.
 
 That's the whole list. No secrets to steal (none on the machine), nowhere to
 send them (egress allowlist), no group to spam (no bot token), nothing to bill.
