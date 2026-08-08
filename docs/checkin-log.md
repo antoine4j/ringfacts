@@ -7,6 +7,14 @@ as the chat report: data / changes / proposals / next attention.
 
 ---
 
+## 2026-08-08 ~11:45 PDT — retry tuned, alert de-noised (manual session)
+
+- 📊 12:19 PDT run failed WITH retry: 503 persisted past the 30s wait — Google's throttle waves are longer. 3 failures today (14:17Z, 18:17Z, 19:19Z).
+- 🔧 RETRY_DELAY 30s→75s; task-timeout 300→600s (worst-case retries fit). Alert policy replaced: fires on 2+ failures in 2h instead of every blip (isolated failed hour loses zero news thanks to the 24h window; the alert cost was inbox noise).
+- 👁 If ≥2-in-2h alerts still fire, escalate: jittered delay or start 2e direct feeds early.
+
+---
+
 ## 2026-08-08 ~11:30 PDT — 2f retry shipped (manual session)
 
 - 📊 11:17 PDT run failed: Google 503s on all feeds (2nd failure today — pattern crossed the "build the retry" line).

@@ -103,7 +103,7 @@ gcloud run jobs deploy fighterbot-hunter \
   --set-secrets=TELEGRAM_BOT_TOKEN=telegram-bot-token:latest,DATABASE_URL=neon-db-url:latest,GEMINI_API_KEY=gemini-api-key:latest,ANTHROPIC_API_KEY=anthropic-api-key:latest \
   --set-env-vars=TELEGRAM_CHAT_ID=-${TELEGRAM_CHAT_ID},ADMIN_CHAT_ID=${ADMIN_CHAT_ID} \
   --max-retries=0 \
-  --task-timeout=300 \
+  --task-timeout=600 \
   --memory=512Mi \
   --quiet
 
@@ -141,7 +141,9 @@ echo
 # --- Failure alerting (Cloud Monitoring) -------------------------------------
 # Email fires when a hunter execution fails. Complemented by in-code
 # self-report: hunter DMs the admin on fatal errors (ADMIN_CHAT_ID above).
-# Channel + policy created 2026-08-06; policy JSON documented the filter:
+# Channel + policy created 2026-08-06; policy v2 2026-08-08: fires on 2+
+# failed attempts within 2h (ALIGN_SUM over 7200s, threshold > 1) — single
+# blips lose no news (24h fetch window) and don't deserve email. Filter:
 #   metric run.googleapis.com/job/completed_task_attempt_count, result=failed,
 #   resource cloud_run_job fighterbot-hunter -> notify email channel.
 # gcloud beta monitoring channels create --display-name="Anton email" \

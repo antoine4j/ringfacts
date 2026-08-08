@@ -122,7 +122,7 @@ function hoursAgo(date) {
 // Google News intermittently sheds load from cloud-datacenter IPs (503s,
 // ~1-2 runs/day observed). One retry after a pause rides out the wave;
 // worst case (all aliases failing twice) stays within the job timeout.
-const RETRY_DELAY_MS = Number(process.env.RETRY_DELAY_MS || 30_000);
+const RETRY_DELAY_MS = Number(process.env.RETRY_DELAY_MS || 75_000); // 30s proved too short for Google's waves
 
 async function fetchFeed(alias) {
   let res = await fetch(feedUrl(alias));
