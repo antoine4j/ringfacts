@@ -694,6 +694,15 @@
     <ul>
       <li><strong>Matcher model:</strong> Haiku first (cost table assumes it); escalate to Sonnet only if
       extraction quality on real Ukrainian-language articles disappoints. Measure, then decide.</li>
+      <li><strong>No Mastra for this layer</strong> <em>(decided 2026-08-08)</em>: the claims layer is
+      single-shot structured LLM calls + deterministic rules + SQL — none of the shapes (tool-using
+      agents, durable workflows, cross-agent tracing) that justify an agent framework. Plain JS against
+      the SDK. Mastra + TypeScript enter with the step-6 conversational responder, where their concepts
+      are load-bearing; retrofitting the matcher under its tracing later is optional and cheap.</li>
+      <li><strong>The matcher absorbs the 2d judge</strong> <em>(realized 2026-08-08)</em>: "is this the
+      same story?" (2d) is a special case of "which claim does this belong to?" (§5) — a MATCH verdict
+      with role <code>echo</code> <em>is</em> the gray-zone dedup decision. If step 5 starts soon, the
+      standalone judge slice is redundant work; the gray zone routes through the matcher instead.</li>
       <li><strong>Official-source list:</strong> which domains/accounts count as "official" per promotion
       (UFC, PFL/Bellator)? Small curated config; needs research per fighter's org.</li>
       <li><strong>Multi-claim articles:</strong> V1 extracts one primary claim per article. When does that
