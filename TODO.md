@@ -28,6 +28,7 @@
 
 ## Deploy automation
 - [ ] GitHub remote + Actions workflow: push to main → deploy to Cloud Run (spec §16.1). Retires manual `gcloud run deploy`.
+- [ ] **Sandboxed autonomy (parked 2026-08-08, Anton sitting on it):** move the self-improvement routine into an ephemeral sandbox (GitHub Actions cron preferred) with scoped credentials so even a fully poisoned run is harmless. Full spec: docs/sandboxed-autonomy.md. Until then: local scheduled task + manual approvals.
 
 ## Open questions (spec §17)
 - [ ] LLM model final choice (dummy uses Haiku 4.5)
