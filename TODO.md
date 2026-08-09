@@ -45,6 +45,28 @@
 - [ ] **Sandboxed autonomy (parked 2026-08-08, Anton sitting on it):** move the self-improvement routine into an ephemeral sandbox (GitHub Actions cron preferred) with scoped credentials so even a fully poisoned run is harmless. Full spec: docs/sandboxed-autonomy.md. Until then: local scheduled task + manual approvals.
 
 ## Open questions (spec §17)
+- [ ] **Is the generalization real, or a veneer over an MMA tool? (Anton, 2026-08-09.)**
+  Raised after auditing what's still combat-sports-wired. The doubt is worth
+  keeping in front of us rather than assuming the refactor settled it.
+  - **For "real":** 79 of 1,727 lines are MMA-specific, all in `domain/mma.js`.
+    Fetching, extraction, Telegram, embeddings, dedup, the tier rule, the claim
+    lifecycle, and `server.js` contain no sport. `claims.facts` is `jsonb`, so
+    swapping `opponent, event, method` for another domain's fields needs no
+    migration. Adding `domain/example-music.js` required no change outside it.
+  - **For "veneer":** every threshold (0.80 dup, 0.10 drift, 300ch body floor,
+    1-mention demotion) was measured against MMA press conventions and only
+    *assumed* to transfer. The second domain has never been run — no feeds
+    fetched, no verdicts, no database. The claim vocabulary earned its shape
+    from MMA verdicts. So the seam is proven to *compile*, not to *work*.
+  - **What would settle it:** one real run of a non-MMA domain against live
+    feeds — even a throwaway database and a DM sink instead of a group. Until
+    then the honest claim in the README is the one it already makes ("written
+    to prove the seam is real... never been run"), and it should stay that
+    modest. Do not upgrade the language on the strength of the line count.
+  - **Also fine as an answer:** decide the tool is an MMA tracker with a tidy
+    config seam, and say so plainly. That is a defensible portfolio story and
+    costs nothing to tell honestly — it is the reframing, not the code, that
+    would need to change.
 - [ ] LLM model final choice (dummy uses Haiku 4.5)
 - [ ] Source list per fighter (Fighter A/Fighter B coverage may be sparse) — largely answered by 2e: Google News + six direct outlet feeds incl. Sport.ua (uk) which covers both quiet fighters. Still open: more Ukrainian outlets if gaps show.
 - [ ] Cron frequency — hourly chosen and running (2b); revisit only if limits or noise say otherwise
