@@ -1,8 +1,8 @@
 # FighterBot — Next Steps
 
 ## Safety (Anton, console)
-- [ ] **GCP budget alert (~$5):** console → Billing → Budgets & alerts → Create budget. Email-only tripwire; `max-instances=1` already caps compute physically.
-- [ ] **Anthropic hard spend cap (~$10/mo):** console.anthropic.com → Settings → Limits. The one cap that truly matters — LLM API is the only real runaway risk (spec §16.4).
+- [x] **GCP budget alert (2026-08-09):** $5/month, project-scoped, email tripwire at 50/90/100/150% to the billing admin (${ALERT_EMAIL}). Created via `gcloud billing budgets create` (Billing Budget API enabled to allow it). `max-instances=1` still caps compute physically; this is the visibility layer on top.
+- [x] **Anthropic hard spend cap (2026-08-09):** set to $5/mo (Anton, console.anthropic.com). The one cap that truly matters — LLM API is the only real runaway risk (spec §16.4).
 
 ## Housekeeping
 - [x] Hunter failure notifications (2026-08-06): Cloud Monitoring alert → email on failed job executions; plus in-code self-report — hunter DMs Anton (never the group) on fatal errors. Sentry evaluated, skipped: error volume too small to gain from it; revisit if multi-agent steps make failures subtle.
