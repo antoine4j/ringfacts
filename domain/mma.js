@@ -68,10 +68,12 @@ export default {
     factFields: "opponent, event, date, location, method",
     sourcingHint:
       "official = promotion announced it; reported = outlet states as fact; rumored = hedged (in talks, targeted, sources say)",
-    // Default disambiguation hints, used when a watchlist entry supplies none
-    // of its own. Per-subject `confusables` override this — a namesake hint
-    // only helps the subject it belongs to.
+    // Fallback for watchlist entries that supply no `confusables` of their
+    // own. Deliberately names nobody: concrete hints belong on the subject
+    // they describe, in the (private) watchlist. Naming real people here put
+    // one subject's namesake in every other subject's prompt as pure noise,
+    // and put those names in a public file.
     confusables:
-      "a namesake (e.g. an esports driver also named Fighter B), a relative (Fighter C's brother is Ilia's brother — a different fighter)",
+      "a namesake (an unrelated person who happens to share the name), a relative who competes in the same sport",
   },
 };

@@ -26,7 +26,7 @@
 //   DATABASE_URL=$(gcloud secrets versions access latest --secret=neon-db-url) \
 //     node audit-digest-tier.js
 import { openDb } from "./lib/db.js";
-import { matchNamesOf } from "./lib/subjects.js";
+import { loadSubjects, matchNamesOf } from "./lib/subjects.js";
 import {
   mentionsName, countMentions, isTangential,
   MIN_BODY_FOR_JUDGEMENT, MAX_MENTIONS_TO_DEMOTE,
@@ -35,7 +35,8 @@ import {
 // The rule and the watchlist both come from lib/ — this script exists to
 // re-measure the thresholds the hunter runs on, so a private copy of either
 // would let the measurement drift away from the thing being measured.
-const hasName = (text, subject) => mentionsName(text, matchNamesOf(subject));
+const subjects = await loadSubjects();
+const hasName = (text, subject) => mentionsName(text, matchNamesOf(subjects, subject));
 
 // Audit-only telemetry. `first` (position of the earliest mention, as a
 // fraction of body length) was EVALUATED AND REJECTED as a tier signal —
@@ -44,7 +45,7 @@ const hasName = (text, subject) => mentionsName(text, matchNamesOf(subject));
 // only. `count` is the signal the rule actually uses.
 function density(text, subject) {
   if (!text) return null;
-  const names = matchNamesOf(subject);
+  const names = matchNamesOf(subjects, subject);
   const count = countMentions(text, names);
   if (!count) return { count: 0, first: null };
   const lower = text.toLowerCase();
@@ -108,7 +109,7 @@ if (withBody.length) {
 // The LIVE rule, imported — not a local re-implementation. Running the exact
 // function the hunter runs is what makes this script a regression test: if
 // lib/tier.js drifts, these numbers move.
-const wouldDemote = (it) => isTangential(it, matchNamesOf(it.subject));
+const wouldDemote = (it) => isTangential(it, matchNamesOf(subjects, it.subject));
 
 console.log(`\n--- LIVE RULE (lib/tier.js): no name in headline + body >= ${MIN_BODY_FOR_JUDGEMENT}ch + <= ${MAX_MENTIONS_TO_DEMOTE} mention(s) ---`);
 const claimMentions = items.filter((i) => i.in_claim && i.body)
@@ -134,7 +135,7 @@ for (const it of candidates) {
   console.log(`  "${it.title}"`);
   if (it.body) {
     // Show the name's neighbourhood so the mention can be judged in context.
-    const names = MATCH_NAMES[it.subject];
+    const names = matchNamesOf(subjects, it.subject);
     const lower = it.body.toLowerCase();
     for (const n of names) {
       const at = lower.indexOf(n.toLowerCase());

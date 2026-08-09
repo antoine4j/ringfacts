@@ -22,7 +22,7 @@ import { isOfficialSource } from "./lib/sources.js";
 import { OUTLETS, fetchOutletItems, matchesSubject } from "./lib/feeds.js";
 import { decodeGoogleNewsUrl, isGoogleWrapped } from "./lib/googlenews.js";
 import { fetchArticleBody, decodeEntities } from "./lib/extract.js";
-import { SUBJECTS } from "./lib/subjects.js";
+import { loadSubjects } from "./lib/subjects.js";
 import { isTangential } from "./lib/tier.js";
 import { domain } from "./domain/index.js";
 import { fileURLToPath } from "node:url";
@@ -334,7 +334,10 @@ export async function huntSubject(db, subject, directItems = []) {
     if (db && process.env.ANTHROPIC_API_KEY) {
       try {
         const knownClaims = await activeClaims(db, subject.name, item.embedding);
-        verdict = await matchItem({ subject: subject.name, item, candidates: knownClaims });
+        verdict = await matchItem({
+          subject: subject.name, item, candidates: knownClaims,
+          confusables: subject.confusables,
+        });
       } catch (err) {
         console.warn(`${subject.name}: matcher failed (fail-open):`, err.message);
       }
@@ -509,6 +512,9 @@ async function main() {
   if (!DRY_RUN && !CHAT_ID) {
     throw new Error("TELEGRAM_CHAT_ID is required unless DRY_RUN=1");
   }
+  // Before the database and the feeds: a missing watchlist is a config error,
+  // and there is no point opening connections to discover it.
+  const subjects = await loadSubjects();
   // No DATABASE_URL (secret-free local run) -> no dedup. But if a DB is
   // configured and unreachable, fail the whole run: memory-less posting
   // would re-spam the group every hour.
@@ -531,7 +537,7 @@ async function main() {
 
   try {
     let failures = 0;
-    for (const subject of SUBJECTS) {
+    for (const subject of subjects) {
       try {
         await huntSubject(db, subject, directItems);
       } catch (err) {
@@ -540,7 +546,7 @@ async function main() {
         console.error(`${subject.name}: hunt failed:`, err);
       }
     }
-    if (failures === SUBJECTS.length) {
+    if (failures === subjects.length) {
       throw new Error("every subject hunt failed"); // job run shows red
     }
   } finally {

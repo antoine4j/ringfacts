@@ -16,6 +16,11 @@ RUN npm ci --omit=dev
 COPY server.js hunter.js ./
 COPY lib ./lib
 COPY domain ./domain
+# Glob, not a bare filename: watchlist.js is gitignored, so a fresh clone has
+# only the .example. A bare COPY would fail the build there; the glob matches
+# whatever exists, and a missing real watchlist surfaces at startup with an
+# actionable message instead of a Docker error.
+COPY watchlist*.js ./
 
 ENV NODE_ENV=production
 
