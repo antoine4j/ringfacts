@@ -7,6 +7,15 @@ as the chat report: data / changes / proposals / next attention.
 
 ---
 
+## 2026-08-09 — 2e watch item fired: furniture mentions fixed (manual session, Anton reported)
+
+- 📊 Anton read the group digest and couldn't find "Fighter C" in the posted articles — correctly. Items #56/#58/#60 (Bloody Elbow direct feed) matched only through invisible markup: an image `alt` ("Fighter C v Gaethje" photo caption, Cormier piece), an href URL slug (Ruffy piece), and a visible "LATEST NEWS" cross-promo block (Machado Garry piece). `matchesFighter` searched raw feed HTML; the matcher then jittered NO_CLAIM instead of WRONG_SUBJECT — the exact watch item logged at 2e ship, trigger ("digest bloats with tangential items") fired.
+- 🔧 Two-layer fix (commit 5a48896): `matchesFighter` matches `htmlToText(feedContent)` — reader-visible words only, kills both markup vectors before Gate 1, item never enters the DB (same as any non-matching feed article). Matcher rules gain: fighter nowhere in shown text, or only in site furniture (link lists, captions, nav) → WRONG_SUBJECT.
+- 🔧 Verified: captured-feed regression (Ruffy/Cormier flip to non-match; genuine manager article and prose-mention Usman article keep matching); live Haiku probes (#60 → WRONG_SUBJECT; Usman-manager body → MATCH claim 12, correctly — it's the Makhachev-successor story); full DRY_RUN clean; deployed and one live execution green (exit 0, nothing new, group untouched). Items #56/58/60 left as-is (immutable evidence; test mode).
+- 👁 Opposite failure now possible: over-dropping. Watch that genuine peripheral-prose stories (rival targeting, division context) still post as NO_CLAIM.
+
+---
+
 ## 2026-08-08 ~19:45 PDT — claim drift found and fenced
 
 - 📊 Window 16:00–19:45 PDT: 4 runs, 1 failed (17:17 PDT — Google 503 on all three feeds, survived the 75s retry); 19:17 green, nothing new. That is 1 failure in the 7 runs since the retry shipped and it did NOT trip the 2-in-2h alert, so the documented escalation trigger (jitter / 2e feeds) has **not** fired — left alone deliberately. 3 items, 0 posted: 2 held as embedding dups, 1 WRONG_SUBJECT (Spanish Makhachev-vs-McGregor piece that never names Fighter C — the known headline-blindness case, correct on headline-only evidence, more 2e ammunition). No new claims, no confirmations. Totals: 54 items, 8 claims, 28 links, 0 confirmed.

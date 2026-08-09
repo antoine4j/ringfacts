@@ -563,10 +563,13 @@
       <li><strong>Headline-blindness is fixed for new items</strong> (2e): a body that clearly concerns
       the fighter overrides a headline that never names them ("Usman walks through the division"). The
       pre-2e archive has no bodies, so old items of that shape stay dropped — accepted.</li>
-      <li><strong>New watch item (2e):</strong> direct feeds admit articles about <em>other</em> fighters
-      whose body merely mentions ours; the matcher's WRONG_SUBJECT-vs-NO_CLAIM boundary jitters on these
-      (both verdicts observed on the same Cormier/Aspinall item in consecutive runs). Tighten the
-      contract if the digest bloats or real stories get dropped.</li>
+      <li><strong>Furniture mentions fixed (2026-08-09):</strong> the 2e watch item fired — three digest
+      posts whose only "mention" of the fighter was invisible markup (an image <code>alt</code>, a URL
+      slug) or a "LATEST NEWS" promo block. Two-layer fix: <code>matchesFighter</code> now searches
+      reader-visible text only (<code>htmlToText</code> before matching, kills the markup vectors
+      upstream of Gate&nbsp;1), and the matcher rules gained an explicit line: a fighter appearing
+      nowhere in the shown text, or only in site furniture, is WRONG_SUBJECT. Prose mentions
+      ("Usman's manager targets Fighter C") still post.</li>
     </ul>
   </div>
 
@@ -814,8 +817,9 @@
     <ul>
       <li>2e telemetry: decode success rate (fast path 3/3 at launch), per-outlet fetch 403s, which
       extraction rung wins, dup-hold volume with two rails on.</li>
-      <li>Peripheral body-mention items from outlet feeds: WRONG_SUBJECT (drop) vs NO_CLAIM (digest)
-      jitters on the same story — tighten the prompt contract if the digest bloats or real news drops.</li>
+      <li>Peripheral body-mention items from outlet feeds: the furniture-mention leak was fixed
+      2026-08-09 (visible-text gate + WRONG_SUBJECT rule for site furniture); still watch that genuine
+      prose-mention stories keep posting and real news isn't over-dropped.</li>
       <li>503s under the 75s retry; direct feeds now cover a Google blackout, so escalation is only
       about lost <em>Google-exclusive</em> discoveries.</li>
       <li>The 0.80 embedding threshold — revisit if false holds appear.</li>
