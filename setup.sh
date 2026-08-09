@@ -4,17 +4,33 @@
 #
 # Manual prerequisites (done in the console, not scriptable):
 #   1. Google Cloud account with billing activated (card on file).
-#   2. Project created: ${PROJECT_ID}.
+#   2. Project created (its id goes in PROJECT_ID below).
 #   3. APIs can be enabled by script (below) — were enabled via console first time.
 #   4. Secrets telegram-bot-token, anthropic-api-key and gemini-api-key created
 #      with values pasted by hand in Secret Manager console (values never touch
 #      this repo or shell history). Gemini key comes from aistudio.google.com
 #      (free tier, used for embeddings).
-#   5. Telegram bot @${BOT_USERNAME} created via BotFather (token = secret above).
+#   5. Telegram bot created via BotFather (token = secret above).
+#
+# Required environment (ids, not secrets — they identify YOUR project and
+# chats, so they live outside the repo; see .env.example and the README):
+#   PROJECT_ID        GCP project id
+#   NEON_PROJECT_ID   Neon project id (neonctl projects list)
+#   TELEGRAM_CHAT_ID  group the hunter posts to
+#   ADMIN_CHAT_ID     DM that receives failure self-reports
+#   ALLOWED_CHAT_IDS  comma-separated whitelist the webhook service accepts
+# All five are required: the :? expansions below abort the run if unset,
+# rather than deploying something half-configured. ALERT_EMAIL is referenced
+# too, but only by the commented-out monitoring command near the bottom —
+# export it just for that manual step.
 
 set -euo pipefail
 
-PROJECT_ID="${PROJECT_ID}"
+PROJECT_ID="${PROJECT_ID:?set PROJECT_ID to your GCP project id}"
+NEON_PROJECT_ID="${NEON_PROJECT_ID:?set NEON_PROJECT_ID to your Neon project id}"
+TELEGRAM_CHAT_ID="${TELEGRAM_CHAT_ID:?set TELEGRAM_CHAT_ID to the group chat id}"
+ADMIN_CHAT_ID="${ADMIN_CHAT_ID:?set ADMIN_CHAT_ID to your own Telegram id}"
+ALLOWED_CHAT_IDS="${ALLOWED_CHAT_IDS:?set ALLOWED_CHAT_IDS to the comma-separated chat whitelist}"
 REGION="us-west1"
 SERVICE="fighterbot"
 
@@ -56,12 +72,17 @@ done
 # --- Build + deploy from source ---------------------------------------------
 # Cloud Build builds the Dockerfile in the cloud, pushes to Artifact Registry,
 # Cloud Run serves it. max-instances=1 is the hard cost ceiling (spec §16.4).
+# ALLOWED_CHAT_IDS is itself comma-separated, and comma is gcloud's list
+# delimiter — the ^:^ prefix switches this flag's delimiter to ':' so the
+# value survives intact. Without it the whitelist parses as two flags and
+# server.js boots with an empty Set, silently dropping every message.
 gcloud run deploy "$SERVICE" \
   --source . \
   --allow-unauthenticated \
   --max-instances=1 \
   --memory=512Mi \
   --set-secrets=TELEGRAM_BOT_TOKEN=telegram-bot-token:latest,ANTHROPIC_API_KEY=anthropic-api-key:latest,TELEGRAM_WEBHOOK_SECRET=telegram-webhook-secret:latest \
+  --set-env-vars="^:^ALLOWED_CHAT_IDS=${ALLOWED_CHAT_IDS}" \
   --quiet
 
 SERVICE_URL=$(gcloud run services describe "$SERVICE" --format="value(status.url)")
@@ -72,7 +93,7 @@ echo "Deployed: $SERVICE_URL"
 # auto-resumes itself (unlike Supabase's manual unpause). Runs on AWS
 # us-west-2 (Oregon) — physically next door to our GCP us-west1.
 # brew install neonctl && neonctl auth   # browser OAuth, one time
-NEON_PROJECT_ID="${NEON_PROJECT_ID}"    # display name: fighter-bot
+# NEON_PROJECT_ID is set at the top of this script.
 # neonctl projects create --name fighter-bot --region-id aws-us-west-2
 # Connection string (contains the DB password) goes straight into Secret
 # Manager via a pipe — never printed. tr -d '\n' per the day-one lesson.
@@ -105,7 +126,7 @@ gcloud run jobs deploy fighterbot-hunter \
   --source . \
   --command node --args hunter.js \
   --set-secrets=TELEGRAM_BOT_TOKEN=telegram-bot-token:latest,DATABASE_URL=neon-db-url:latest,GEMINI_API_KEY=gemini-api-key:latest,ANTHROPIC_API_KEY=anthropic-api-key:latest \
-  --set-env-vars=TELEGRAM_CHAT_ID=-${TELEGRAM_CHAT_ID},ADMIN_CHAT_ID=${ADMIN_CHAT_ID} \
+  --set-env-vars="TELEGRAM_CHAT_ID=${TELEGRAM_CHAT_ID},ADMIN_CHAT_ID=${ADMIN_CHAT_ID}" \
   --max-retries=0 \
   --task-timeout=900 \
   --memory=512Mi \
@@ -150,8 +171,8 @@ echo
 # blips lose no news (24h fetch window) and don't deserve email. Filter:
 #   metric run.googleapis.com/job/completed_task_attempt_count, result=failed,
 #   resource cloud_run_job fighterbot-hunter -> notify email channel.
-# gcloud beta monitoring channels create --display-name="Anton email" \
-#   --type=email --channel-labels=email_address=${ALERT_EMAIL}
+# gcloud beta monitoring channels create --display-name="admin email" \
+#   --type=email --channel-labels=email_address="${ALERT_EMAIL}"
 # gcloud alpha monitoring policies create --policy-from-file=alert-policy.json
 
 # --- Smoke tests ------------------------------------------------------------

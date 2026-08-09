@@ -1,7 +1,7 @@
 # FighterBot — Next Steps
 
 ## Safety (Anton, console)
-- [x] **GCP budget alert (2026-08-09):** $5/month, project-scoped, email tripwire at 50/90/100/150% to the billing admin (${ALERT_EMAIL}). Created via `gcloud billing budgets create` (Billing Budget API enabled to allow it). `max-instances=1` still caps compute physically; this is the visibility layer on top.
+- [x] **GCP budget alert (2026-08-09):** $5/month, project-scoped, email tripwire at 50/90/100/150% to the billing admin (`${ALERT_EMAIL}`). Created via `gcloud billing budgets create` (Billing Budget API enabled to allow it). `max-instances=1` still caps compute physically; this is the visibility layer on top.
 - [x] **Anthropic hard spend cap (2026-08-09):** set to $5/mo (Anton, console.anthropic.com). The one cap that truly matters — LLM API is the only real runaway risk (spec §16.4).
 
 ## Housekeeping

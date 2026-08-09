@@ -2,7 +2,7 @@
 
 A Telegram bot that hunts MMA news about three fighters (Fighter A, Fighter B,
 Fighter C) and posts what matters to a small private group. Runs as an hourly
-Cloud Run Job on GCP (`${PROJECT_ID}`, `us-west1`), with Neon Postgres +
+Cloud Run Job on GCP (`us-west1`; see [setup.sh](setup.sh)), with Neon Postgres +
 pgvector for memory. FighterBot is Anton's learning project as much as it is a
 bot — explaining *why* beats delivering silently.
 
@@ -49,8 +49,8 @@ code is expected stable and the group's post history becomes a contract.
   deploying; `DRY_RUN=1` prints instead of posting and skips DB writes.
 - **Deploy with the exact command in [setup.sh](setup.sh)** — it carries the
   secret mounts, timeouts, and env vars.
-- **Never post to the Telegram group** (`-${TELEGRAM_CHAT_ID}`) from a development or
-  check-in session. Failure self-reports go to the admin DM only.
+- **Never post to the Telegram group** (`${TELEGRAM_CHAT_ID}`) from a development
+  or check-in session. Failure self-reports go to the admin DM only.
 - **Never print secret values.** Use command substitution:
   `DATABASE_URL=$(gcloud secrets versions access latest --secret=neon-db-url)`.
 - **Never delete data.** The items table is the evidence record.

@@ -231,7 +231,7 @@ Embeddings are used for two things:
 ## 15. Telegram Setup — Verified Findings (from live testing)
 
 - **Bot created:** @${BOT_USERNAME} ("Fighter Bot"). Token captured and stored securely. Test group "Fighter Tracker Test" created with bot added.
-- **Chat IDs captured (whitelist seeds):** Anton's DM = `${ADMIN_CHAT_ID}` (positive; in private chats chat.id == user id). Test group = `-${TELEGRAM_CHAT_ID}` (negative, `"type":"group"`).
+- **Chat IDs captured (whitelist seeds):** admin DM = `${ADMIN_CHAT_ID}` (positive; in private chats chat.id == user id). Test group = `${TELEGRAM_CHAT_ID}` (negative, `"type":"group"`). Real values live in `.env` / Cloud Run env vars, never in the repo.
 - **Privacy mode behavior — VERIFIED empirically:** in groups, plain @mentions do NOT reach the bot. Only slash commands (e.g. `/start@${BOT_USERNAME}`) and replies to the bot's own messages pass the filter. **Design consequence for the Responder:** conversational follow-ups from friends must be *replies* to the bot's posts (natural gesture anyway) or commands — not bare mentions. DMs are unfiltered: every message arrives.
 - **Group → supergroup upgrade caveat:** the test group is currently a basic "group" (plain negative ID, no -100 prefix). Telegram silently upgrades groups to supergroups when certain settings change — **and the chat ID changes** to a new -100-prefixed number. Mitigation: log rejected/unknown chat IDs so an upgrade doesn't look like a mystery outage; expect the real friends' group may be a supergroup from birth.
 - **Update anatomy notes:** Telegram pre-parses messages — `entities` array labels commands/mentions/URLs (no regex needed). `update_id` is the ack counter. `language_code` of sender is included (useful for the bilingual group).
