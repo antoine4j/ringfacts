@@ -8,8 +8,14 @@ import { sendTelegramMessage } from "./lib/telegram.js";
 const PORT = process.env.PORT || 8080;
 const WEBHOOK_SECRET = process.env.TELEGRAM_WEBHOOK_SECRET;
 
-// Chat whitelist (spec §15): Anton's DM + test group. Everything else is dropped silently.
-const ALLOWED_CHAT_IDS = new Set([${ADMIN_CHAT_ID}, -${TELEGRAM_CHAT_ID}]);
+// Chat whitelist (spec §15): admin DM + test group, from env (not a secret,
+// just not something someone else's clone of this repo should inherit).
+const ALLOWED_CHAT_IDS = new Set(
+  (process.env.ALLOWED_CHAT_IDS || "")
+    .split(",")
+    .filter(Boolean)
+    .map(Number),
+);
 
 const anthropic = new Anthropic(); // reads ANTHROPIC_API_KEY from env
 
