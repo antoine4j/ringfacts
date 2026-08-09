@@ -91,6 +91,10 @@ fi
 # Claims bootstrap (step 5): replay archive through the matcher. Dry by default:
 # DATABASE_URL=$(...) GEMINI_API_KEY=$(...) ANTHROPIC_API_KEY=$(...) node bootstrap-claims.js
 # COMMIT=1 ... node bootstrap-claims.js   # done 2026-08-08: 7 claims, 23 links
+# Full re-bootstrap (2e): wipes claims + claim_sources (NEVER items), replays
+# the archive through the body-aware matcher, re-attaches tg_message_id
+# anchors by origin item. Destructive to derived state only; snapshots first.
+# RESET=1 COMMIT=1 ... node bootstrap-claims.js
 
 # --- Hunter job (spec §9 step 2) ---------------------------------------------
 # Same image as the service, different entry point (--command/--args override
@@ -103,7 +107,7 @@ gcloud run jobs deploy fighterbot-hunter \
   --set-secrets=TELEGRAM_BOT_TOKEN=telegram-bot-token:latest,DATABASE_URL=neon-db-url:latest,GEMINI_API_KEY=gemini-api-key:latest,ANTHROPIC_API_KEY=anthropic-api-key:latest \
   --set-env-vars=TELEGRAM_CHAT_ID=-${TELEGRAM_CHAT_ID},ADMIN_CHAT_ID=${ADMIN_CHAT_ID} \
   --max-retries=0 \
-  --task-timeout=600 \
+  --task-timeout=900 \
   --memory=512Mi \
   --quiet
 

@@ -5,22 +5,66 @@
 // Dry run (default): in-memory claims, prints planned clusters — the
 // acceptance test. COMMIT=1 writes to the database.
 //
+// RESET (2e re-bootstrap): replay the WHOLE archive as if no claims existed.
+//   RESET=1          — preview: ignores existing links, wipes nothing, writes
+//                      nothing; prints the clusters a full replay would build.
+//   RESET=1 COMMIT=1 — the real thing: snapshots claims + claim_sources to a
+//                      gitignored JSON file, deletes both tables (items are
+//                      NEVER touched — evidence is immutable, claims are
+//                      derived state), replays, then re-attaches saved
+//                      tg_message_id anchors by origin item so threaded
+//                      confirmations keep working.
+//
 //   DATABASE_URL=$(...) GEMINI_API_KEY=$(...) ANTHROPIC_API_KEY=$(...) \
 //   node bootstrap-claims.js            # dry run
 //   COMMIT=1 ... node bootstrap-claims.js
 
+import { writeFileSync } from "node:fs";
 import { openDb, insertClaim, linkClaimSource, claimOfItem } from "./lib/db.js";
 import { embedTexts, EMBEDDING_MODEL } from "./lib/embeddings.js";
 import { matchItem } from "./lib/matcher.js";
 import { isOfficialSource } from "./lib/sources.js";
 
 const COMMIT = process.env.COMMIT === "1";
+const RESET = process.env.RESET === "1";
 
 const db = await openDb();
 const { rows: items } = await db.query(
-  `SELECT id, fighter, title, source, published_at, found_via, nearest_item, held_reason
+  `SELECT id, fighter, title, source, published_at, found_via, nearest_item, held_reason,
+          body, rss_description
      FROM items ORDER BY seen_at, id`
 );
+
+// The anchor map: which Telegram message announced each old claim, keyed by
+// the claim's origin item(s). After the wipe, the same articles re-cluster
+// into new claims — the map lets those claims keep their reply-to anchor.
+const anchors = new Map(); // item id (pg string) -> tg_message_id
+if (RESET) {
+  const { rows: old } = await db.query(
+    `SELECT cs.item_id, c.tg_message_id FROM claims c
+       JOIN claim_sources cs ON cs.claim_id = c.id AND cs.role IN ('origin','official')
+      WHERE c.tg_message_id IS NOT NULL`
+  );
+  for (const r of old) anchors.set(String(r.item_id), r.tg_message_id);
+
+  if (COMMIT) {
+    const snapshot = {
+      taken_at: new Date().toISOString(),
+      claims: (await db.query("SELECT * FROM claims ORDER BY id")).rows,
+      claim_sources: (await db.query("SELECT * FROM claim_sources ORDER BY claim_id, item_id")).rows,
+    };
+    const file = `claims-snapshot-${Date.now()}.json`;
+    writeFileSync(file, JSON.stringify(snapshot, null, 2));
+    console.log(
+      `RESET: snapshot of ${snapshot.claims.length} claims / ${snapshot.claim_sources.length} links -> ${file}`
+    );
+    await db.query("DELETE FROM claim_sources");
+    await db.query("DELETE FROM claims");
+    console.log("RESET: claims + claim_sources wiped (items untouched)\n");
+  } else {
+    console.log("RESET preview: replaying the whole archive in memory, wiping nothing\n");
+  }
+}
 
 // In-memory claim store — authoritative during the pass in BOTH modes
 // (the archive starts claimless and we process single-threaded).
@@ -31,7 +75,9 @@ let nextMemId = 1;
 const tally = { inherited: 0, matched: 0, created: 0, no_claim: 0, wrong_subject: 0, unsure: 0, skipped: 0 };
 
 for (const row of items) {
-  if (await claimOfItem(db, row.id)) { tally.skipped++; continue; } // already linked
+  // Under RESET the old links are gone (or, in preview, treated as gone) —
+  // every item replays.
+  if (!RESET && (await claimOfItem(db, row.id))) { tally.skipped++; continue; } // already linked
   if (row.held_reason === "wrong_subject") { tally.skipped++; continue; }
 
   const item = {
@@ -39,6 +85,8 @@ for (const row of items) {
     source: row.source,
     publishedAt: row.published_at,
     foundVia: row.found_via,
+    body: row.body,                     // 2e: mostly null for the old archive
+    rssDescription: row.rss_description, // Google's related-coverage cluster
   };
   const official = isOfficialSource(row.source);
 
@@ -119,6 +167,28 @@ for (const row of items) {
   claims.push(claim);
   itemClaim.set(row.id, claim);
   tally.created++;
+}
+
+// Re-anchor pass (RESET only): give each rebuilt claim the tg_message_id its
+// origin article's old claim was posted under, so ✅ confirmations can still
+// thread to the original 🕵️ message. An anchor that can't land (its item
+// re-judged to NO_CLAIM/WRONG_SUBJECT under better evidence) is loudly noted.
+if (RESET && anchors.size > 0) {
+  console.log(`\n=== re-anchoring ${anchors.size} tg_message_id(s) ===`);
+  for (const [itemId, tg] of anchors) {
+    const claim = itemClaim.get(itemId) ?? itemClaim.get(Number(itemId));
+    if (!claim) {
+      console.warn(`  anchor LOST: item ${itemId} (tg ${tg}) has no claim in the replay`);
+      continue;
+    }
+    if (COMMIT && claim.id) {
+      await db.query(
+        "UPDATE claims SET tg_message_id = $2 WHERE id = $1 AND tg_message_id IS NULL",
+        [claim.id, tg]
+      );
+    }
+    console.log(`  tg ${tg} -> ${COMMIT ? `claim #${claim.id}` : "(preview)"} "${claim.canonical_text.slice(0, 60)}"`);
+  }
 }
 
 console.log(`\n=== ${COMMIT ? "COMMITTED" : "DRY RUN"} — tally ===`);
