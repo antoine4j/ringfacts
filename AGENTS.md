@@ -33,6 +33,16 @@ becomes `UNSURE` and the article posts as it always did. The one fatal condition
 is a configured-but-unreachable database — posting without memory would re-spam
 the group every hour.
 
+## Current mode: TEST (declared by Anton, 2026-08-08)
+
+The bot and its Telegram group (name carries a "test" postfix) are in test
+mode. **Posted-message lineage is not precious yet**: implementation and
+post formats change on the go, threads may break, claims may be rebuilt,
+earlier posts may not relate cleanly to later ones — all fine. Don't spend
+effort preserving Telegram continuity (thread anchors, message references)
+beyond what's cheap. This flips when Anton declares production: then the
+code is expected stable and the group's post history becomes a contract.
+
 ## Working rules
 
 - **Verify before claiming.** Code changes get a `DRY_RUN=1` local run before
