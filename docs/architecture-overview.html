@@ -570,6 +570,14 @@
       upstream of Gate&nbsp;1), and the matcher rules gained an explicit line: a fighter appearing
       nowhere in the shown text, or only in site furniture, is WRONG_SUBJECT. Prose mentions
       ("Usman's manager targets Fighter C") still post.</li>
+      <li><strong>Digest tier shipped (2026-08-09):</strong> not everything the matcher lets through earns
+      a headline. WRONG_SUBJECT drops an article outright; <strong>tangential</strong> (new, downstream of
+      the matcher) folds it into a shared "↘ Also mentioning: Source1 · Source2" line instead — still
+      <code>posted=true</code>, still linked, just not a bullet of its own. Rule (<code>lib/tier.js</code>):
+      headline never names the fighter, body ≥300 characters (a floor — a 141-char blurb can't support a
+      mention count), and the body names them ≤1×. Threshold measured over the archive: claim-bearing
+      articles name the fighter 2–12× in their body, the junk cluster 0–1×, a clean gap. Claim-producing
+      items are exempt by construction.</li>
     </ul>
   </div>
 
@@ -817,11 +825,20 @@
     </ul>
     <p><strong>Standing watch items</strong> (tracked by the autonomous loop):</p>
     <ul>
-      <li>2e telemetry: decode success rate (fast path 3/3 at launch), per-outlet fetch 403s, which
-      extraction rung wins, dup-hold volume with two rails on.</li>
+      <li>2e telemetry: decode success rate (fast path 3/3 at launch), per-outlet fetch 403s, dup-hold
+      volume with two rails on. Which extraction rung wins is now QUERYABLE (<code>body_via</code>,
+      shipped 2026-08-09) instead of console-only — the gap that hid Sherdog's 4/4 ~75-char
+      <code>og-description</code> blurbs from every prior audit.</li>
       <li>Peripheral body-mention items from outlet feeds: the furniture-mention leak was fixed
       2026-08-09 (visible-text gate + WRONG_SUBJECT rule for site furniture); still watch that genuine
       prose-mention stories keep posting and real news isn't over-dropped.</li>
+      <li><strong>Digest tier (2026-08-09):</strong> tangential articles fold into an "also mentioning"
+      line rather than a bullet (§5). Watch the demotion rate against the ~17% measured on the archive —
+      it was measured on a backfilled, not organically-fetched, sample. Cross-rail feed reuse (read a
+      Bloody Elbow article's own feed text instead of a 403ing direct fetch, when Google discovers the
+      same story first) is designed but backlogged — deliberately, until it can be done without
+      hardcoding per-outlet fetch behaviour, since adding athletes may change which outlets/feeds/
+      extraction strategies matter at all.</li>
       <li>503s under the 75s retry; direct feeds now cover a Google blackout, so escalation is only
       about lost <em>Google-exclusive</em> discoveries.</li>
       <li>The 0.80 embedding threshold — revisit if false holds appear.</li>
@@ -835,7 +852,7 @@
   </div>
 
   <div class="footer">
-    FighterBot · living architecture overview · updated 2026-08-08 ·
+    FighterBot · living architecture overview · updated 2026-08-09 ·
     companion to <span class="mono">fighterbot-spec.md</span>, <span class="mono">TODO.md</span>,
     <span class="mono">docs/checkin-log.md</span>, <span class="mono">docs/sandboxed-autonomy.md</span>.
     Formerly <span class="mono">claims-architecture.html</span> (the step-5 design doc) — that design is
