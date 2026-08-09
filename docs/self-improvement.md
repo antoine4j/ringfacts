@@ -79,7 +79,30 @@ ids as strings (`"7"`) while the model answers with numbers (`7`) — which woul
 have silently downgraded *every* real match. A live call caught it. Neither
 would have been caught by reasoning alone.
 
-## 5. Explain changes in plain English
+## 5. Silence is a success state
+
+A quiet group is not a broken bot. The point of this system is that the Telegram
+group receives *substantial* updates only — Anton's standing preference, restated
+2026-08-09: a day or two of silence is fine when there genuinely isn't news. Every
+gate here exists to remove noise, so gates doing their job looks exactly like a
+bot with nothing to say.
+
+**Never loosen a threshold because output volume feels low.** The 0.80 dedup
+cutoff, the digest tier rule in `lib/tier.js`, and the `ignoredTypes` routing were
+each measured against real archived data (§1). "The group has been quiet" is not
+evidence any of them is wrong — it is the expected reading when the news is quiet
+or repetitive. Only a *specific item that should have posted and didn't* is
+evidence, and that earns an investigation of why that item was dropped, not a
+blanket adjustment.
+
+**The case that named this principle (2026-08-09).** The 18:17 run fetched 12
+items for one subject, found 2 unseen, and posted nothing: one was held at 0.84
+against a Spanish-language story it duplicated, the other at 0.98 against the
+first. Zero posted was the correct outcome — the same story in three dresses. A
+run reading only the summary line would have seen "0 posted" for many hours
+straight and been tempted to fix something that was working.
+
+## 6. Explain changes in plain English
 
 FighterBot is a learning project. Reports and commit messages say what changed
 and *why it mattered*, in language that teaches rather than just logs. Code
