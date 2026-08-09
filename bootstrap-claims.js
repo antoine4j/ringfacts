@@ -20,7 +20,7 @@
 //   COMMIT=1 ... node bootstrap-claims.js
 
 import { writeFileSync } from "node:fs";
-import { openDb, insertClaim, linkClaimSource, claimOfItem } from "./lib/db.js";
+import { openDb, insertClaim, linkClaimSource, claimOfItem, claimLinkDrifts } from "./lib/db.js";
 import { embedTexts, EMBEDDING_MODEL } from "./lib/embeddings.js";
 import { matchItem } from "./lib/matcher.js";
 import { isOfficialSource } from "./lib/sources.js";
@@ -31,7 +31,7 @@ const RESET = process.env.RESET === "1";
 const db = await openDb();
 const { rows: items } = await db.query(
   `SELECT id, fighter, title, source, published_at, found_via, nearest_item, held_reason,
-          body, rss_description
+          body, rss_description, embedding::text AS embedding_text
      FROM items ORDER BY seen_at, id`
 );
 
@@ -90,9 +90,26 @@ for (const row of items) {
   };
   const official = isOfficialSource(row.source);
 
-  // Held-as-dup items inherit their neighbor's claim, no LLM.
+  // Held-as-dup items inherit their neighbor's claim, no LLM — but through
+  // the SAME drift guard as the live pipeline (hunter.js holdAsDup): if some
+  // other claim of this fighter fits the item far better, the hold stands but
+  // the link is refused. Only measurable in COMMIT mode, where the replayed
+  // claims exist in the DB with embeddings; the dry preview inherits blindly
+  // (drifts=null -> old behaviour), which the preview report should mention.
   if (row.held_reason === "embedding" && itemClaim.has(row.nearest_item)) {
     const claim = itemClaim.get(row.nearest_item);
+    if (COMMIT && claim.id && row.embedding_text) {
+      const probe = { fighter: row.fighter, embedding: JSON.parse(row.embedding_text) };
+      const v = await claimLinkDrifts(db, probe, claim.id, 0.1);
+      if (v.drifts) {
+        console.log(
+          `drift guard: not inheriting claim #${claim.id} (${v.mine.similarity.toFixed(3)}; ` +
+            `#${v.best.id} fits ${v.best.similarity.toFixed(3)}): ${row.title.slice(0, 60)}`
+        );
+        tally.drift_refused = (tally.drift_refused ?? 0) + 1;
+        continue;
+      }
+    }
     claim.sources.push({ itemId: row.id, role: "echo" });
     itemClaim.set(row.id, claim);
     if (COMMIT) await linkClaimSource(db, row.id, claim.id, "echo");
