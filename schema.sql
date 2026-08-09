@@ -30,6 +30,16 @@ ALTER TABLE items ADD COLUMN IF NOT EXISTS held_reason text;      -- 'embedding'
 ALTER TABLE items ADD COLUMN IF NOT EXISTS found_via text;        -- which query alias caught it
 ALTER TABLE items ADD COLUMN IF NOT EXISTS rss_description text;  -- raw RSS <description>, mined later
 
+-- 2e (2026-08-08): article bodies. `url` stays the identity (whatever the
+-- discovery source handed us); resolved_url is the real article address when
+-- we managed to unwrap Google's redirect (or same as url for direct-feed
+-- items). body is extracted text, capped — null means headline-only, which
+-- every consumer must tolerate.
+ALTER TABLE items ADD COLUMN IF NOT EXISTS resolved_url text;
+ALTER TABLE items ADD COLUMN IF NOT EXISTS body text;
+ALTER TABLE items ADD COLUMN IF NOT EXISTS body_fetched_at timestamptz;
+CREATE INDEX IF NOT EXISTS items_resolved_url_idx ON items (resolved_url);
+
 -- ============================================================================
 -- Claims layer (step 5, phase 1 — docs/claims-architecture.html).
 -- Articles (items) are immutable evidence; claims are living facts.
