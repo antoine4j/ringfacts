@@ -17,9 +17,10 @@
 //
 //   matchNames  Surname STEMS used to filter the outlet-wide direct feeds down
 //               to this subject. Stems, not full names, so inflected languages
-//               still match — Ukrainian "Fighter Cя" and "Fighter Cї" both contain
-//               "Fighter C". Case-insensitive substring, so keep them long enough
-//               to be unambiguous.
+//               still match: Ukrainian declines surnames, so "Спортсмена" and
+//               "Спортсменом" are the same person as "Спортсмен" — the stem
+//               "Спортсме" catches all three. Case-insensitive substring, so
+//               keep stems long enough to be unambiguous.
 //
 //   confusables Optional. Disambiguation hints spliced into the matcher prompt
 //               for THIS subject only: namesakes, relatives, anyone the model

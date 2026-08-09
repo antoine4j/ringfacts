@@ -23,7 +23,9 @@ import { openDb } from "./lib/db.js";
 import { huntSubject } from "./hunter.js";
 
 const db = await openDb();
-const subject = { name: "Fighter C", aliases: [], matchNames: ["Fighter C", "Fighter C"] };
+// Synthetic subject: the fixture bodies below are written around this name, so
+// the two must stay in step for the mention counts to mean anything.
+const subject = { name: "Testov Example", aliases: [], matchNames: ["Testov"] };
 
 // Both bodies sit comfortably above the 400ch feed-content floor (extract.js
 // MIN_FEED_TEXT) so rung 0 fires without a live network fetch to a fake
@@ -33,16 +35,16 @@ const tangentialBody =
   "The lightweight division continues to shuffle as contenders jockey for position ahead of " +
   "the next scheduled event in the calendar year. Sources close to the promotion say a rematch " +
   "is being discussed for early next year, with several names in the mix for the next title " +
-  "shot once the current contenders are sorted out through eliminators. Fighter C has been " +
+  "shot once the current contenders are sorted out through eliminators. Testov has been " +
   "mentioned as a measuring stick for how far the division has come, though no formal talks " +
   "are underway between either camp at this early stage of the process.";
 const mainBody =
-  "Fighter C spoke to reporters today about his training camp and upcoming plans for the " +
+  "Testov Example spoke to reporters today about his training camp and upcoming plans for the " +
   'rest of the year, touching on his mindset and preparation routine. "I feel ready for ' +
-  'whatever comes next," Fighter C said during the session. "Fighter C has always been about ' +
+  'whatever comes next," Testov said during the session. "Testov has always been about ' +
   'proving doubters wrong," he added, discussing his mindset heading into the new year and the ' +
-  "challenges ahead. Fighter C also addressed recent rumors about his next opponent, saying " +
-  "Fighter C would fight anyone the UFC picks and that Fighter C trusts the matchmakers.";
+  "challenges ahead. Testov also addressed recent rumors about his next opponent, saying " +
+  "Testov would fight anyone the UFC picks and that Testov trusts the matchmakers.";
 
 const items = [
   {
@@ -53,7 +55,7 @@ const items = [
     source: "Test Wire A", edition: "en", foundVia: "synthetic", rssDescription: null,
   },
   {
-    title: "Fighter C opens up about training camp and next fight",
+    title: "Testov Example opens up about training camp and next fight",
     url: "https://example-test-wire.invalid/main-" + Date.now(),
     publishedAt: new Date(Date.now() - 1 * 3600_000),
     feedContent: `<p>${mainBody}</p>`,
