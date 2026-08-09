@@ -1,0 +1,793 @@
+<title>FighterBot · Architecture Overview</title>
+<style>
+  :root {
+    --paper: #f7f8f6;
+    --card: #ffffff;
+    --ink: #22262b;
+    --ink-soft: #5a6169;
+    --line: #d9dcd7;
+    --red: #b5122e;        /* red corner — articles / evidence */
+    --blue: #24507a;       /* blue corner — claims / facts */
+    --amber: #a4650a;      /* rumor */
+    --amber-bg: #f6e8d0;
+    --green: #1e6b3a;      /* confirmed */
+    --green-bg: #ddeee1;
+    --grey-bg: #e6e8e4;
+    --red-bg: #f3dadd;
+    --blue-bg: #dde7f0;
+    --mono: ui-monospace, "SF Mono", SFMono-Regular, Menlo, Consolas, monospace;
+    --disp: "Avenir Next Condensed", "Arial Narrow", "Helvetica Neue", sans-serif;
+    --body: -apple-system, "Segoe UI", system-ui, sans-serif;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --paper: #191c1f; --card: #22262b; --ink: #e8eae6; --ink-soft: #9aa2a9;
+      --line: #3a4046; --red: #e05a6e; --blue: #7fa8cf; --amber: #d99a3d;
+      --amber-bg: #3a3020; --green: #6cbd88; --green-bg: #20321f;
+      --grey-bg: #2c3034; --red-bg: #3a2428; --blue-bg: #223142;
+    }
+  }
+  :root[data-theme="dark"] {
+    --paper: #191c1f; --card: #22262b; --ink: #e8eae6; --ink-soft: #9aa2a9;
+    --line: #3a4046; --red: #e05a6e; --blue: #7fa8cf; --amber: #d99a3d;
+    --amber-bg: #3a3020; --green: #6cbd88; --green-bg: #20321f;
+    --grey-bg: #2c3034; --red-bg: #3a2428; --blue-bg: #223142;
+  }
+  :root[data-theme="light"] {
+    --paper: #f7f8f6; --card: #ffffff; --ink: #22262b; --ink-soft: #5a6169;
+    --line: #d9dcd7; --red: #b5122e; --blue: #24507a; --amber: #a4650a;
+    --amber-bg: #f6e8d0; --green: #1e6b3a; --green-bg: #ddeee1;
+    --grey-bg: #e6e8e4; --red-bg: #f3dadd; --blue-bg: #dde7f0;
+  }
+  body { background: var(--paper); color: var(--ink); font-family: var(--body);
+         line-height: 1.6; margin: 0; font-size: 16px; }
+  main { max-width: 860px; margin: 0 auto; padding: 40px 24px 100px; }
+  .prose { max-width: 700px; }
+  h1 { font-family: var(--disp); font-weight: 700; font-size: 2.6rem; line-height: 1.05;
+       text-transform: uppercase; letter-spacing: .01em; margin: .2em 0 .1em; text-wrap: balance; }
+  h2 { font-family: var(--disp); font-weight: 600; font-size: 1.55rem; text-transform: uppercase;
+       letter-spacing: .02em; margin: 2.6em 0 .4em; border-bottom: 2px solid var(--ink); padding-bottom: .15em; }
+  h2 .num { color: var(--red); margin-right: .4em; }
+  h3 { font-size: 1.05rem; margin: 1.8em 0 .3em; }
+  p { margin: .7em 0; }
+  .eyebrow { font-family: var(--disp); text-transform: uppercase; letter-spacing: .14em;
+             font-size: .8rem; color: var(--red); font-weight: 600; }
+  .sub { color: var(--ink-soft); font-size: 1.05rem; max-width: 640px; }
+  .toc { display: flex; flex-wrap: wrap; gap: 8px 18px; margin: 26px 0 6px; padding: 14px 18px;
+         background: var(--card); border: 1px solid var(--line); border-radius: 4px; font-size: .88rem; }
+  .toc a { color: var(--ink-soft); text-decoration: none; }
+  .toc a:hover, .toc a:focus { color: var(--red); text-decoration: underline; }
+  .toc b { color: var(--red); font-family: var(--mono); font-weight: 600; margin-right: 4px; }
+  code, .mono { font-family: var(--mono); font-size: .86em; background: var(--grey-bg);
+                padding: .1em .35em; border-radius: 3px; }
+  pre { background: var(--card); border: 1px solid var(--line); border-radius: 4px;
+        padding: 14px 16px; overflow-x: auto; font-size: .82rem; line-height: 1.5; }
+  pre code { background: none; padding: 0; }
+  .fig { background: var(--card); border: 1px solid var(--line); border-radius: 4px;
+         padding: 18px; margin: 22px 0; overflow-x: auto; }
+  .figcap { font-size: .8rem; color: var(--ink-soft); margin-top: 10px;
+            font-family: var(--disp); text-transform: uppercase; letter-spacing: .08em; }
+  svg { display: block; }
+  svg text { font-family: var(--body); fill: var(--ink); }
+  svg .t-mono { font-family: var(--mono); }
+  svg .t-soft { fill: var(--ink-soft); }
+  svg .t-disp { font-family: var(--disp); text-transform: uppercase; letter-spacing: .05em; font-weight: 600; }
+  table { border-collapse: collapse; width: 100%; font-size: .88rem; margin: 14px 0; }
+  th { font-family: var(--disp); text-transform: uppercase; letter-spacing: .06em;
+       font-size: .74rem; text-align: left; color: var(--ink-soft); border-bottom: 2px solid var(--ink);
+       padding: 6px 10px; }
+  td { border-bottom: 1px solid var(--line); padding: 8px 10px; vertical-align: top; }
+  td.mono-c { font-family: var(--mono); font-size: .8rem; white-space: nowrap; }
+  .tag { display: inline-block; font-family: var(--disp); text-transform: uppercase;
+         font-size: .7rem; font-weight: 600; letter-spacing: .07em; padding: 2px 9px;
+         border-radius: 3px; }
+  .tag.rumor { background: var(--amber-bg); color: var(--amber); }
+  .tag.confirmed { background: var(--green-bg); color: var(--green); }
+  .tag.denied { background: var(--red-bg); color: var(--red); }
+  .tag.stale { background: var(--grey-bg); color: var(--ink-soft); }
+  .tag.superseded { background: var(--blue-bg); color: var(--blue); }
+  .tag.live { background: var(--green-bg); color: var(--green); }
+  .tag.phase2 { background: var(--grey-bg); color: var(--ink-soft); }
+  .callout { border-left: 3px solid var(--red); background: var(--card); border-radius: 0 4px 4px 0;
+             padding: 12px 18px; margin: 18px 0; font-size: .95rem; }
+  .callout.blue { border-left-color: var(--blue); }
+  .callout.green { border-left-color: var(--green); }
+  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; margin: 18px 0; }
+  @media (max-width: 640px) { .two-col { grid-template-columns: 1fr; } }
+  .side { background: var(--card); border: 1px solid var(--line); border-radius: 4px; padding: 14px 18px; }
+  .side h4 { margin: 0 0 6px; font-family: var(--disp); text-transform: uppercase;
+             letter-spacing: .06em; font-size: .82rem; }
+  .side.red h4 { color: var(--red); } .side.blue h4 { color: var(--blue); }
+  .side p, .side ul { font-size: .88rem; margin: .4em 0; }
+  ul { padding-left: 1.2em; } li { margin: .35em 0; }
+  .tg { background: var(--card); border: 1px solid var(--line); border-radius: 10px;
+        padding: 12px 16px; font-size: .88rem; max-width: 480px; margin: 10px 0; }
+  .tg .from { font-weight: 600; color: var(--blue); font-size: .8rem; }
+  .tg a { color: var(--blue); }
+  .footer { margin-top: 70px; padding-top: 16px; border-top: 1px solid var(--line);
+            color: var(--ink-soft); font-size: .8rem; }
+</style>
+
+<main>
+  <div class="eyebrow">FighterBot · Living Document · as built</div>
+  <h1>Architecture Overview</h1>
+  <p class="sub">How the bot actually works: the hourly hunt, the three-gate dedup ladder, the claims
+  layer, posting, operations, and the autonomous improvement loop. Began life 2026-08-06 as the step-5
+  design doc; converted 2026-08-08 into the current-state overview after that design shipped.
+  Updated as the system evolves — history lives in git.</p>
+
+  <nav class="toc" aria-label="Contents">
+    <a href="#s1"><b>1</b> System at a glance</a>
+    <a href="#s2"><b>2</b> Two-layer model</a>
+    <a href="#s3"><b>3</b> Data model</a>
+    <a href="#s4"><b>4</b> The hourly pipeline</a>
+    <a href="#s5"><b>5</b> Claim matching</a>
+    <a href="#s6"><b>6</b> Lifecycle</a>
+    <a href="#s7"><b>7</b> Independence (phase 2)</a>
+    <a href="#s8"><b>8</b> Posting</a>
+    <a href="#s9"><b>9</b> Operations &amp; reliability</a>
+    <a href="#s10"><b>10</b> Cost &amp; scale</a>
+    <a href="#s11"><b>11</b> Autonomous loop</a>
+    <a href="#s12"><b>12</b> Roadmap &amp; watch items</a>
+  </nav>
+
+  <h2 id="s1"><span class="num">1</span>The system at a glance</h2>
+  <div class="prose">
+    <p>FighterBot tracks three MMA fighters — Daniil Fighter A, Fighter B, Fighter C — for a
+    Ukrainian fan group on Telegram. There is deliberately <strong>no UI</strong>: the Telegram group is
+    the entire product surface. One repo, one container image, two entry points: a webhook
+    <em>service</em> (the future conversational rail) and the hourly hunter <em>job</em> — same image,
+    different <code>--command/--args</code>.</p>
+  </div>
+
+  <div class="fig">
+    <svg viewBox="0 0 820 310" width="820" role="img" aria-label="System overview: Cloud Scheduler triggers the hunter job, which reads RSS, uses Neon, Gemini and Haiku, and posts to Telegram">
+      <rect x="300" y="14" width="220" height="44" rx="4" fill="var(--card)" stroke="var(--ink)"/>
+      <text x="410" y="33" text-anchor="middle" font-size="12" font-weight="600">Cloud Scheduler</text>
+      <text x="410" y="49" text-anchor="middle" font-size="10" class="t-mono t-soft">17 * * * * — dodges top-of-hour</text>
+      <path d="M410 58 L410 88" stroke="var(--ink-soft)" stroke-width="1.5"/>
+      <path d="M410 88 l-5 -9 h10 z" fill="var(--ink-soft)"/>
+
+      <rect x="30" y="96" width="190" height="64" rx="4" fill="var(--card)" stroke="var(--ink)"/>
+      <text x="125" y="118" text-anchor="middle" font-size="12" font-weight="600">Google News RSS</text>
+      <text x="125" y="134" text-anchor="middle" font-size="10" class="t-soft">en · uk · es editions</text>
+      <text x="125" y="148" text-anchor="middle" font-size="10" class="t-soft">per-fighter alias queries</text>
+      <path d="M220 128 L298 128" stroke="var(--ink-soft)" stroke-width="1.5"/>
+      <path d="M298 128 l-9 -5 v10 z" fill="var(--ink-soft)"/>
+
+      <rect x="300" y="92" width="220" height="72" rx="4" fill="var(--blue-bg)" stroke="var(--blue)" stroke-width="1.5"/>
+      <text x="410" y="115" text-anchor="middle" font-size="13" font-weight="600">fighterbot-hunter</text>
+      <text x="410" y="132" text-anchor="middle" font-size="10" class="t-soft">Cloud Run Job · node hunter.js</text>
+      <text x="410" y="147" text-anchor="middle" font-size="10" class="t-mono t-soft">max-retries 0 · timeout 600s</text>
+
+      <rect x="600" y="96" width="190" height="64" rx="4" fill="var(--card)" stroke="var(--ink)"/>
+      <text x="695" y="118" text-anchor="middle" font-size="12" font-weight="600">Telegram</text>
+      <text x="695" y="134" text-anchor="middle" font-size="10" class="t-soft">the fan group (posts)</text>
+      <text x="695" y="148" text-anchor="middle" font-size="10" class="t-soft">admin DM (error self-reports)</text>
+      <path d="M520 128 L598 128" stroke="var(--ink-soft)" stroke-width="1.5"/>
+      <path d="M598 128 l-9 -5 v10 z" fill="var(--ink-soft)"/>
+
+      <rect x="110" y="232" width="190" height="58" rx="4" fill="var(--card)" stroke="var(--ink)"/>
+      <text x="205" y="254" text-anchor="middle" font-size="12" font-weight="600">Neon Postgres + pgvector</text>
+      <text x="205" y="272" text-anchor="middle" font-size="10" class="t-mono t-soft">items · claims · claim_sources</text>
+
+      <rect x="330" y="232" width="160" height="58" rx="4" fill="var(--card)" stroke="var(--ink)"/>
+      <text x="410" y="254" text-anchor="middle" font-size="12" font-weight="600">Gemini (free tier)</text>
+      <text x="410" y="272" text-anchor="middle" font-size="10" class="t-soft">embeddings 768 · translation</text>
+
+      <rect x="520" y="232" width="180" height="58" rx="4" fill="var(--card)" stroke="var(--ink)"/>
+      <text x="610" y="254" text-anchor="middle" font-size="12" font-weight="600">Claude Haiku</text>
+      <text x="610" y="272" text-anchor="middle" font-size="10" class="t-soft">claim-matcher verdicts</text>
+
+      <g stroke="var(--ink-soft)" stroke-width="1.5" fill="none">
+        <path d="M350 164 L230 230"/>
+        <path d="M410 164 L410 230"/>
+        <path d="M470 164 L588 230"/>
+      </g>
+      <g fill="var(--ink-soft)">
+        <path d="M230 230 l2 -10 7 7 z"/>
+        <path d="M410 230 l-5 -9 h10 z"/>
+        <path d="M588 230 l-9 -3 7 -7 z"/>
+      </g>
+    </svg>
+    <div class="figcap">Fig. 1 — The whole machine. All credentials live in Secret Manager; Cloud Monitoring
+    emails on 2+ failed runs within 2h. Everything is free tier except Haiku (pennies).</div>
+  </div>
+
+  <table>
+    <tr><th>Component</th><th>Role</th><th>Notes</th></tr>
+    <tr><td class="mono-c">fighterbot-hunter</td><td>The hourly hunt (fetch → dedup → match → post)</td>
+        <td>Cloud Run Job; <code>max-retries=0</code> so a buggy run fails once, visibly, instead of spamming</td></tr>
+    <tr><td class="mono-c">fighterbot</td><td>Telegram webhook service</td>
+        <td>Deployed, mostly dormant — becomes the step-6 conversational rail</td></tr>
+    <tr><td class="mono-c">Cloud Scheduler</td><td>Hourly pulse at :17</td>
+        <td>Dedicated service account whose only power is executing this one job</td></tr>
+    <tr><td class="mono-c">Neon Postgres</td><td>All memory</td>
+        <td>Serverless, autosuspends; pgvector for similarity; aws-us-west-2, next door to GCP us-west1</td></tr>
+    <tr><td class="mono-c">Gemini free tier</td><td>Embeddings + translation</td>
+        <td><code>gemini-embedding-001</code> at 768 dims; <code>gemini-flash-lite-latest</code> translates non-uk/en headlines to English</td></tr>
+    <tr><td class="mono-c">Claude Haiku</td><td>The claim matcher</td>
+        <td>Forced tool use → guaranteed-parseable verdicts; the only paid component</td></tr>
+    <tr><td class="mono-c">Secret Manager</td><td>All credentials</td>
+        <td>Values flow via command substitution, never printed, never in files</td></tr>
+  </table>
+
+  <div class="callout green">
+    <strong>The design philosophy that runs through everything: escalate intelligence before
+    information.</strong> Cheap checks (string compare) run before geometry (embeddings), geometry before
+    a small LLM, and the LLM only sees items the free gates couldn't settle. Same ladder, every layer.
+  </div>
+
+  <h2 id="s2"><span class="num">2</span>The two-layer model</h2>
+  <div class="prose">
+    <p>The core idea of the claims layer, live since 2026-08-08: <em>the thing the group cares about is
+    not an article</em> — it's the underlying fact. The <span style="color:var(--red);font-weight:600">red
+    corner</span> is the evidence world: raw articles, immutable, exactly what the hunter collects. The
+    <span style="color:var(--blue);font-weight:600">blue corner</span> is the fact world: canonical claims
+    distilled from evidence, living records whose status changes as evidence accumulates.</p>
+    <p>The problem this solved in production: three-then-seven sightings of one Masvidal quote about
+    Fighter B (MMA Junkie original → XSPORT translation → heavy.com retelling → …) — retellings kept
+    slipping the article-level gates, and corroboration (the most important signal in news!) was being
+    silently discarded as "duplicate."</p>
+  </div>
+
+  <div class="fig">
+    <svg viewBox="0 0 800 330" width="800" role="img" aria-label="Two-layer model: articles as evidence feeding claims as facts">
+      <text x="20" y="28" class="t-disp" font-size="13" fill="var(--red)">Evidence layer — items (immutable)</text>
+      <g>
+        <rect x="20" y="42" width="220" height="64" rx="4" fill="var(--red-bg)" stroke="var(--red)"/>
+        <text x="32" y="64" font-size="12" font-weight="600">MMA Junkie · 13h ago</text>
+        <text x="32" y="82" font-size="11" class="t-soft">"Masvidal: Fighter B a 'nightmare'</text>
+        <text x="32" y="96" font-size="11" class="t-soft">for Islam Makhachev"</text>
+
+        <rect x="270" y="42" width="220" height="64" rx="4" fill="var(--red-bg)" stroke="var(--red)"/>
+        <text x="282" y="64" font-size="12" font-weight="600">XSPORT.ua · 8h ago</text>
+        <text x="282" y="82" font-size="11" class="t-soft">«Fighter B — це кошмар для</text>
+        <text x="282" y="96" font-size="11" class="t-soft">Махачева» — Масвідаль</text>
+
+        <rect x="520" y="42" width="220" height="64" rx="4" fill="var(--red-bg)" stroke="var(--red)"/>
+        <text x="532" y="64" font-size="12" font-weight="600">heavy.com · 2h ago</text>
+        <text x="532" y="82" font-size="11" class="t-soft">"Fighter B Touted as Future UFC</text>
+        <text x="532" y="96" font-size="11" class="t-soft">Welterweight Champion"</text>
+      </g>
+
+      <g stroke="var(--ink-soft)" fill="none" stroke-width="1.5">
+        <path d="M130 106 L130 150 L360 150 L360 188"/>
+        <path d="M380 106 L380 188"/>
+        <path d="M630 106 L630 150 L400 150 L400 188"/>
+      </g>
+      <g fill="var(--ink-soft)">
+        <path d="M360 188 l-5 -9 h10 z"/>
+        <path d="M380 188 l-5 -9 h10 z"/>
+        <path d="M400 188 l-5 -9 h10 z"/>
+      </g>
+      <text x="415" y="168" font-size="11" class="t-mono t-soft">claim_sources (role: origin / echo / echo)</text>
+
+      <text x="20" y="182" class="t-disp" font-size="13" fill="var(--blue)">Fact layer — claims (living)</text>
+      <rect x="180" y="192" width="440" height="106" rx="4" fill="var(--blue-bg)" stroke="var(--blue)" stroke-width="1.5"/>
+      <text x="196" y="218" font-size="13" font-weight="600">CLAIM #4 · quote · Fighter B</text>
+      <text x="196" y="240" font-size="12">"Jorge Masvidal says Fighter B would be a nightmare</text>
+      <text x="196" y="256" font-size="12">matchup for Islam Makhachev"</text>
+      <text x="196" y="282" font-size="11" class="t-mono t-soft">status: rumor · sources: 5 · in production since bootstrap</text>
+    </svg>
+    <div class="figcap">Fig. 2 — Many sightings, one fact. The real Masvidal cluster: 5 linked sources in the live database.</div>
+  </div>
+
+  <div class="two-col">
+    <div class="side red">
+      <h4>Items — the evidence</h4>
+      <ul>
+        <li>One row per article sighted, forever</li>
+        <li>Immutable: never edited after insert</li>
+        <li>Carries: URL, headline, embedding, dedup audit trail</li>
+        <li>Live since 2b/2c</li>
+      </ul>
+    </div>
+    <div class="side blue">
+      <h4>Claims — the facts</h4>
+      <ul>
+        <li>One row per real-world assertion</li>
+        <li>Living: status evolves with evidence</li>
+        <li>Carries: canonical English text, typed facts, status, own embedding</li>
+        <li>Live since step 5 phase 1 (2026-08-08)</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="callout">
+    <strong>Canonical English.</strong> Claims are always written in English regardless of source language.
+    The Ukrainian article and the American article map to the <em>same</em> English claim text — which is
+    also what makes claim embeddings comparable across the whole archive. Presentation language is a
+    separate decision (§8).
+  </div>
+
+  <h2 id="s3"><span class="num">3</span>Data model</h2>
+  <div class="prose">
+    <p>Three tables, all live in Neon. <code>items</code> carries the evidence plus a full dedup audit
+    trail (why was this held, against what, at what similarity); <code>claims</code> and
+    <code>claim_sources</code> carry the fact world.</p>
+  </div>
+
+  <div class="fig">
+    <svg viewBox="0 0 820 300" width="820" role="img" aria-label="Entity relationship diagram: items, claim_sources, claims">
+      <rect x="15" y="30" width="230" height="218" rx="4" fill="var(--card)" stroke="var(--red)" stroke-width="1.5"/>
+      <rect x="15" y="30" width="230" height="30" rx="4" fill="var(--red-bg)"/>
+      <text x="30" y="50" class="t-disp" font-size="13" fill="var(--red)">items (live)</text>
+      <g class="t-mono" font-size="11">
+        <text x="30" y="80">id            bigint PK</text>
+        <text x="30" y="98">url           text unique</text>
+        <text x="30" y="116">fighter, title, source</text>
+        <text x="30" y="134">published_at, seen_at</text>
+        <text x="30" y="152">embedding     vector(768)</text>
+        <text x="30" y="170">nearest_similarity real</text>
+        <text x="30" y="188">nearest_item  → items.id</text>
+        <text x="30" y="206">held_reason   embedding|llm|…</text>
+        <text x="30" y="224">found_via, rss_description</text>
+      </g>
+
+      <rect x="300" y="60" width="230" height="158" rx="4" fill="var(--card)" stroke="var(--ink-soft)" stroke-width="1.5"/>
+      <rect x="300" y="60" width="230" height="30" rx="4" fill="var(--grey-bg)"/>
+      <text x="315" y="80" class="t-disp" font-size="13">claim_sources (live)</text>
+      <g class="t-mono" font-size="11">
+        <text x="315" y="110">item_id    → items.id</text>
+        <text x="315" y="128">claim_id   → claims.id</text>
+        <text x="315" y="146">role       origin | echo |</text>
+        <text x="315" y="162">           corroboration | official</text>
+        <text x="315" y="182">stance     asserts | denies</text>
+        <text x="315" y="200">linked_at  timestamptz</text>
+      </g>
+
+      <rect x="585" y="20" width="225" height="248" rx="4" fill="var(--card)" stroke="var(--blue)" stroke-width="1.5"/>
+      <rect x="585" y="20" width="225" height="30" rx="4" fill="var(--blue-bg)"/>
+      <text x="600" y="40" class="t-disp" font-size="13" fill="var(--blue)">claims (live)</text>
+      <g class="t-mono" font-size="11">
+        <text x="600" y="70">id             bigint PK</text>
+        <text x="600" y="88">fighter        text</text>
+        <text x="600" y="106">type           announcement |</text>
+        <text x="600" y="122">   result | injury | quote | ...</text>
+        <text x="600" y="140">canonical_text text (EN)</text>
+        <text x="600" y="158">facts          jsonb</text>
+        <text x="600" y="176">status         rumor | confirmed</text>
+        <text x="600" y="194">embedding      vector(768)</text>
+        <text x="600" y="212">first_seen_at, confirmed_at</text>
+        <text x="600" y="230">tg_message_id  bigint</text>
+        <text x="600" y="248">supersedes     → claims.id</text>
+      </g>
+
+      <g stroke="var(--ink-soft)" stroke-width="1.5" fill="none">
+        <path d="M245 139 L300 139"/>
+        <path d="M530 139 L585 139"/>
+      </g>
+      <text x="252" y="132" font-size="10" class="t-mono t-soft">n:1</text>
+      <text x="558" y="132" font-size="10" class="t-mono t-soft">n:1</text>
+      <text x="300" y="252" font-size="11" class="t-soft">One item can support several claims (an article may both</text>
+      <text x="300" y="268" font-size="11" class="t-soft">announce a fight and report an injury) — hence a join table.</text>
+    </svg>
+    <div class="figcap">Fig. 3 — The schema as deployed. Arrows are foreign keys.</div>
+  </div>
+
+  <div class="callout blue">
+    <strong>How to read the arrows.</strong> An arrow like <code>item_id → items.id</code> is a
+    <em>foreign key</em>: the column holds another table's row ID — a pointer. And
+    <code>claim_sources</code> is a <em>join table</em>: each of its rows stores not a thing but a
+    <em>relationship</em> — one row reads as the sentence
+    <em>"article #12 is evidence for claim #4, as an echo, asserting it, linked Tuesday."</em>
+    Why a separate table instead of a <code>claim_id</code> column on articles? Because the relationship
+    is many-to-many — one claim collects many articles (the Masvidal quote has five), one article can
+    support several claims — and because the link carries its own facts (role, stance, when), it needs
+    its own rows.
+  </div>
+
+  <div class="prose">
+    <p>The columns that make the system honest:</p>
+    <ul>
+      <li><code>nearest_similarity / nearest_item / held_reason</code> — the dedup audit trail. Every held
+      item records <em>what</em> held it and <em>how close</em> it was; threshold tuning (0.85 → 0.80) came
+      from reading these columns, not from guessing.</li>
+      <li><code>tg_message_id</code> — the Telegram message the bot posted for a claim. This is what lets the
+      bot later <em>reply to its own rumor post</em> with "✅ Confirmed" — threading the story.</li>
+      <li><code>supersedes</code> — claims are never edited when reality changes; a new claim supersedes the
+      old ("moved to June 6" supersedes "on May 9"). History stays intact. (Column exists; the flow that
+      writes it is phase 2.)</li>
+      <li><code>rss_description</code> — Google News's own related-coverage links per item, captured for
+      future mining as a free "same story" signal.</li>
+    </ul>
+  </div>
+
+  <h2 id="s4"><span class="num">4</span>The hourly pipeline</h2>
+  <div class="prose">
+    <p>Every hour at :17, the hunter sweeps a <strong>24-hour window</strong> of Google News RSS per
+    fighter per language edition. The window overlapping the hourly cadence ~24× is the reliability
+    trick: any single failed run loses <em>nothing</em>, because the next run re-covers it. Each unseen
+    item then descends the three-gate ladder — each gate cheaper than the next is smart:</p>
+  </div>
+
+  <div class="fig">
+    <svg viewBox="0 0 820 420" width="820" role="img" aria-label="Pipeline: RSS fetch, URL gate, embedding gate, claim matcher, then claims and poster">
+      <g font-size="12">
+        <rect x="15" y="30" width="180" height="52" rx="4" fill="var(--card)" stroke="var(--ink)"/>
+        <text x="105" y="52" text-anchor="middle">RSS fetch</text>
+        <text x="105" y="68" text-anchor="middle" class="t-soft" font-size="10">24h window · retry after 75s</text>
+
+        <rect x="215" y="30" width="180" height="52" rx="4" fill="var(--card)" stroke="var(--ink)"/>
+        <text x="305" y="52" text-anchor="middle">Gate 1 — URL</text>
+        <text x="305" y="68" text-anchor="middle" class="t-soft" font-size="10">seen exact URL → skip, free</text>
+
+        <rect x="415" y="30" width="180" height="52" rx="4" fill="var(--card)" stroke="var(--ink)"/>
+        <text x="505" y="52" text-anchor="middle">Gate 2 — Embedding</text>
+        <text x="505" y="68" text-anchor="middle" class="t-soft" font-size="10">sim ≥ 0.80 vs 7-day items → held</text>
+
+        <rect x="615" y="30" width="190" height="52" rx="4" fill="var(--blue-bg)" stroke="var(--blue)" stroke-width="1.5"/>
+        <text x="710" y="52" text-anchor="middle" font-weight="600">Gate 3 — Matcher</text>
+        <text x="710" y="68" text-anchor="middle" class="t-soft" font-size="10">one Haiku call, forced verdict</text>
+      </g>
+      <g stroke="var(--ink-soft)" stroke-width="1.5" fill="none">
+        <path d="M195 56 L215 56"/><path d="M395 56 L415 56"/><path d="M595 56 L615 56"/>
+      </g>
+      <g fill="var(--ink-soft)">
+        <path d="M215 56 l-9 -5 v10 z"/><path d="M415 56 l-9 -5 v10 z"/><path d="M615 56 l-9 -5 v10 z"/>
+      </g>
+
+      <g stroke="var(--amber)" stroke-width="1.5" fill="none" stroke-dasharray="5 4">
+        <path d="M505 82 L505 150"/>
+      </g>
+      <path d="M505 150 l-5 -9 h10 z" fill="var(--amber)"/>
+      <rect x="405" y="152" width="200" height="48" rx="4" fill="var(--amber-bg)" stroke="var(--amber)"/>
+      <text x="505" y="172" text-anchor="middle" font-size="12" font-weight="600">Held → linked as echo</text>
+      <text x="505" y="188" text-anchor="middle" font-size="10" class="t-soft">inherits its neighbour's claim, no LLM</text>
+
+      <path d="M710 82 L710 150" stroke="var(--blue)" stroke-width="1.5" fill="none"/>
+      <path d="M710 150 l-5 -9 h10 z" fill="var(--blue)"/>
+      <rect x="630" y="152" width="175" height="48" rx="4" fill="var(--card)" stroke="var(--blue)" stroke-width="1.5"/>
+      <text x="717" y="172" text-anchor="middle" font-size="12" font-weight="600">normalizeVerdict</text>
+      <text x="717" y="188" text-anchor="middle" font-size="10" class="t-soft">validation gate — see §5</text>
+
+      <g stroke="var(--blue)" stroke-width="1.5" fill="none">
+        <path d="M505 200 L505 236"/>
+        <path d="M717 200 L717 218 L560 218 L560 236"/>
+      </g>
+      <g fill="var(--blue)">
+        <path d="M505 236 l-5 -9 h10 z"/><path d="M560 236 l-5 -9 h10 z"/>
+      </g>
+      <rect x="300" y="240" width="400" height="52" rx="4" fill="var(--blue-bg)" stroke="var(--blue)" stroke-width="1.5"/>
+      <text x="500" y="262" text-anchor="middle" font-size="13" font-weight="600">CLAIMS + CLAIM_SOURCES</text>
+      <text x="500" y="280" text-anchor="middle" font-size="11" class="t-soft">match → link as source · new → insert claim + embed canonical text</text>
+
+      <path d="M500 292 L500 328" stroke="var(--ink-soft)" stroke-width="1.5" fill="none"/>
+      <path d="M500 328 l-5 -9 h10 z" fill="var(--ink-soft)"/>
+      <rect x="230" y="332" width="540" height="56" rx="4" fill="var(--card)" stroke="var(--ink)" stroke-width="1.5"/>
+      <text x="500" y="355" text-anchor="middle" font-size="13" font-weight="600">POSTER</text>
+      <text x="500" y="374" text-anchor="middle" font-size="11" class="t-soft">translate non-uk/en → English · 🚨 ceremony · 🕵️ rumor lines · digest · ✅ threaded confirmations</text>
+    </svg>
+    <div class="figcap">Fig. 4 — One hourly run, as deployed. Amber path: held duplicates don't exit — they become claim evidence.</div>
+  </div>
+
+  <div class="prose">
+    <p>Details that matter in production:</p>
+    <ul>
+      <li><strong>The flood cap applies to unseen items only</strong> (max 5 per fighter per run,
+      newest-first, truncation logged). An earlier version capped before the URL gate — which let
+      already-known items permanently shadow older unseen ones. Found by questioning, fixed.</li>
+      <li><strong>Held ≥ 0.80 inherits the claim of its nearest neighbour</strong> as an
+      <code>echo</code> — corroboration recorded for free, no LLM spent. The 0.80 threshold is measured,
+      not guessed: a real translated pair scored 0.841, unrelated pairs ≤ 0.702.</li>
+      <li><strong>Everything is idempotent.</strong> Re-running any part (migrations, backfills, the hunt
+      itself) is always safe — the URL gate and <code>IF NOT EXISTS</code> guards make reruns no-ops.</li>
+    </ul>
+  </div>
+
+  <h2 id="s5"><span class="num">5</span>Claim matching in detail</h2>
+  <div class="prose">
+    <p>The matcher is the intelligence concentrated at the top of the ladder. For each item that survives
+    the free gates, one Haiku call receives the headline, source, timing — and <strong>all active claims
+    for that fighter</strong>, similarity-ordered ("order, don't cut": a top-3 cutoff was measured risky
+    because metaphor headlines bury the right candidate). Forced tool use means the answer is always a
+    parseable verdict — no JSON scraping. Five verdicts:</p>
+  </div>
+
+  <table>
+    <tr><th>Verdict</th><th>Meaning</th><th>What happens</th></tr>
+    <tr><td class="mono-c">MATCH</td><td>Same underlying fact as a listed claim (retelling, translation, syndication)</td>
+        <td>Linked via <code>claim_sources</code> with stance asserts/denies; role <code>official</code> if the
+        source is ufc.com, else <code>echo</code>. Official + asserts → confirms the claim (§6). No new post.</td></tr>
+    <tr><td class="mono-c">NEW</td><td>A claim-worthy fact not in the list</td>
+        <td>Claim inserted (type, canonical English sentence, structured facts, sourcing signal); canonical
+        text embedded for future matching; posts per §8.</td></tr>
+    <tr><td class="mono-c">NO_CLAIM</td><td>About the fighter, but asserts nothing claim-worthy — lifestyle,
+        peripheral division mentions, reactions</td>
+        <td>Article posts through the normal digest; no claim created. The group still gets its gossip.</td></tr>
+    <tr><td class="mono-c">WRONG_SUBJECT</td><td>Not about this fighter <em>at all</em>: namesakes (an iRacing
+        driver also named Fighter B), relatives (Fighter C's brother), keyword-stuffed junk</td>
+        <td>Recorded with <code>held_reason='wrong_subject'</code>, never posted, never a claim. This absorbed
+        the planned step-3 fighter filter.</td></tr>
+    <tr><td class="mono-c">UNSURE</td><td>Cannot decide from available evidence — abstention beats guessing</td>
+        <td>Fail-open: the article posts normally, no claim invented. Matcher API errors resolve the same way.</td></tr>
+  </table>
+
+  <div class="callout">
+    <strong>The <code>normalizeVerdict</code> gate (added by the first autonomous run, 2026-08-08).</strong>
+    Tool schemas are guidance to the model, not a guarantee — Haiku has answered with an off-menu claim type
+    (<code>prediction</code>) and could MATCH a claim id it was never offered. Every verdict is validated
+    before the pipeline trusts it: off-enum type → <code>other</code>; off-enum sourcing →
+    <code>reported</code> (junk can never born-confirm); MATCH on an unoffered id → UNSURE (also closes a
+    foreign-key crash path). Ids compare <em>as strings</em>, because Postgres returns bigints as
+    <code>"7"</code> while the model answers <code>7</code> — a naive check would have silently downgraded
+    every match.
+  </div>
+
+  <div class="prose">
+    <p>Prompt-contract rules learned from live data (each one bought by a real failure in bootstrap
+    testing):</p>
+    <ul>
+      <li><strong>Reactions are NEW, not MATCH</strong> — "X reacts to Y's prediction" is different news
+      from the prediction.</li>
+      <li><strong>Peripheral mentions are NO_CLAIM, not WRONG_SUBJECT</strong> — an early prompt dropped
+      division news that involved the fighter as context; readers wanted it.</li>
+      <li><strong>Canonical text must be strictly headline-supported</strong> — the model once invented
+      "UFC defeat at the White House." Now: never invent; too ambiguous → UNSURE.</li>
+      <li><strong>Known residual:</strong> headlines that discuss the fighter without naming them ("Usman
+      walks through the division") still resolve WRONG_SUBJECT — evidence-bound, fixed when 2e brings
+      article bodies.</li>
+    </ul>
+  </div>
+
+  <h2 id="s6"><span class="num">6</span>The lifecycle: rumor to confirmed</h2>
+  <div class="prose">
+    <p>Statuses live on the claim, never on articles, and transitions are driven by <strong>rules, not an
+    LLM</strong> — the LLM's job ends at "what does this article assert, and how is it sourced?" Phase 1
+    deliberately ships the <em>conservative core</em>: claims are born rumor (or born confirmed via an
+    official source), and the only path to confirmed is <strong>ufc.com asserting it</strong>. Counting
+    "two independent sources" waits for phase 2, when article bodies make independence detectable (§7).</p>
+  </div>
+
+  <div class="fig">
+    <svg viewBox="0 0 800 300" width="800" role="img" aria-label="Claim status state machine, phase 1 live states solid, phase 2 dashed">
+      <rect x="60" y="110" width="150" height="52" rx="26" fill="var(--amber-bg)" stroke="var(--amber)" stroke-width="1.5"/>
+      <text x="135" y="141" text-anchor="middle" class="t-disp" font-size="15" fill="var(--amber)">RUMOR</text>
+
+      <rect x="360" y="110" width="170" height="52" rx="26" fill="var(--green-bg)" stroke="var(--green)" stroke-width="1.5"/>
+      <text x="445" y="141" text-anchor="middle" class="t-disp" font-size="15" fill="var(--green)">CONFIRMED</text>
+
+      <rect x="360" y="20" width="150" height="46" rx="23" fill="var(--red-bg)" stroke="var(--red)" stroke-width="1.5" stroke-dasharray="6 4"/>
+      <text x="435" y="42" text-anchor="middle" class="t-disp" font-size="14" fill="var(--red)">DENIED</text>
+      <text x="435" y="58" text-anchor="middle" font-size="9" class="t-soft">phase 2</text>
+
+      <rect x="60" y="228" width="150" height="46" rx="23" fill="var(--grey-bg)" stroke="var(--ink-soft)" stroke-width="1.5" stroke-dasharray="6 4"/>
+      <text x="135" y="250" text-anchor="middle" class="t-disp" font-size="14" fill="var(--ink-soft)">STALE</text>
+      <text x="135" y="266" text-anchor="middle" font-size="9" class="t-soft">phase 2</text>
+
+      <rect x="620" y="228" width="165" height="46" rx="23" fill="var(--blue-bg)" stroke="var(--blue)" stroke-width="1.5" stroke-dasharray="6 4"/>
+      <text x="702" y="250" text-anchor="middle" class="t-disp" font-size="14" fill="var(--blue)">SUPERSEDED</text>
+      <text x="702" y="266" text-anchor="middle" font-size="9" class="t-soft">phase 2</text>
+
+      <path d="M10 136 L60 136" stroke="var(--ink-soft)" stroke-width="1.5"/>
+      <path d="M60 136 l-9 -5 v10 z" fill="var(--ink-soft)"/>
+      <text x="6" y="122" font-size="10" class="t-soft">new claim,</text>
+      <text x="6" y="134" font-size="10" class="t-soft">non-official</text>
+
+      <path d="M445 200 L445 162" stroke="var(--green)" stroke-width="1.5"/>
+      <path d="M445 162 l-5 9 h10 z" fill="var(--green)"/>
+      <text x="452" y="190" font-size="10" fill="var(--green)">born confirmed: ufc.com announces first</text>
+
+      <path d="M210 128 L360 128" stroke="var(--green)" stroke-width="2"/>
+      <path d="M360 128 l-10 -5 v10 z" fill="var(--green)"/>
+      <text x="222" y="106" font-size="11" fill="var(--green)">ufc.com asserts it — live</text>
+      <text x="222" y="120" font-size="10" class="t-soft">2nd independent chain — phase 2</text>
+
+      <path d="M210 150 C 260 172 300 60 360 48" stroke="var(--red)" stroke-width="1.5" fill="none" stroke-dasharray="6 4"/>
+      <path d="M360 48 l-10 -2 4 9 z" fill="var(--red)"/>
+      <text x="228" y="76" font-size="11" fill="var(--red)">credible denial</text>
+
+      <path d="M135 162 L135 228" stroke="var(--ink-soft)" stroke-width="1.5" stroke-dasharray="6 4"/>
+      <path d="M135 228 l-5 -9 h10 z" fill="var(--ink-soft)"/>
+      <text x="145" y="200" font-size="11" class="t-soft">no new evidence in 14 days</text>
+
+      <path d="M530 150 C 590 170 610 210 620 236" stroke="var(--blue)" stroke-width="1.5" fill="none" stroke-dasharray="6 4"/>
+      <path d="M620 236 l-9 -6 9 -4 z" fill="var(--blue)"/>
+      <text x="556" y="196" font-size="11" fill="var(--blue)">reality changed:</text>
+      <text x="556" y="210" font-size="11" fill="var(--blue)">new claim replaces</text>
+    </svg>
+    <div class="figcap">Fig. 5 — The state machine. Solid = live today (phase 1). Dashed = designed, waiting on phase 2.</div>
+  </div>
+
+  <table>
+    <tr><th>Status</th><th></th><th>Entry rule (deterministic)</th></tr>
+    <tr><td><span class="tag rumor">Rumor</span></td><td><span class="tag live">Live</span></td>
+        <td>New claim from any non-official source, whatever its confidence language — conservative by design</td></tr>
+    <tr><td><span class="tag confirmed">Confirmed</span></td><td><span class="tag live">Live</span></td>
+        <td>ufc.com asserts it (born confirmed, or rumor → confirmed with a threaded ✅ reply). The official-source
+        list is one domain because all three fighters are UFC; <code>pflmma.com</code> parked in config for the
+        day a watched fighter signs elsewhere. Record trackers (Tapology, Sherdog, ESPN) are high-credibility
+        media — they will corroborate in phase 2, never born-confirm.</td></tr>
+    <tr><td><span class="tag denied">Denied</span></td><td><span class="tag phase2">Phase 2</span></td>
+        <td>A source with stance <code>denies</code> attaches and rules rank it (official denial &gt; original
+        outlet's walk-back &gt; other). Stance is already captured today; the transition isn't wired.</td></tr>
+    <tr><td><span class="tag stale">Stale</span></td><td><span class="tag phase2">Phase 2</span></td>
+        <td>No new evidence for ~14 days (window is a guess; MMA negotiation cycles may argue for 30)</td></tr>
+    <tr><td><span class="tag superseded">Superseded</span></td><td><span class="tag phase2">Phase 2</span></td>
+        <td>New claim created with <code>supersedes</code> pointing here (date change, opponent change)</td></tr>
+  </table>
+
+  <div class="callout green">
+    <strong>The armed trap.</strong> Claim #3 — Fighter A's UFC Paris announcement, rumor, five sources —
+    sits waiting for ufc.com coverage. When it arrives, the bot's first autonomous rumor→confirmed threaded
+    reply fires with zero code changes.
+  </div>
+
+  <h2 id="s7"><span class="num">7</span>Independence — the hard 20% <span class="tag phase2" style="vertical-align:middle">Phase 2</span></h2>
+  <div class="prose">
+    <p><em>Designed, not built — needs 2e article bodies.</em> "Two sources" is worthless if the second
+    copied the first: XSPORT translating MMA Junkie is <strong>one</strong> reporting chain, not two.
+    Corroboration hinges on telling echoes from independent reports. Signals, cheapest first:</p>
+    <ul>
+      <li><strong>Attribution text (strongest).</strong> Echoes usually confess in their own body:
+      "as reported by MMA Junkie". The matcher reads bodies in 2e anyway — an
+      <code>attributes_to</code> field comes free.</li>
+      <li><strong>Original reporting markers.</strong> "told <em>us</em>", "in an interview with
+      <em>this publication</em>", exclusive quotes → origin candidate.</li>
+      <li><strong>Timing.</strong> Earliest sighting in a cluster is the presumed origin (verified on live
+      data: MMA Junkie preceded both echoes).</li>
+      <li><strong>Same-org detection.</strong> A curated outlet-family map, grown lazily as false
+      corroborations appear.</li>
+    </ul>
+    <p>Default when unsure: <strong>echo</strong>. The asymmetric cost rules this: a false "confirmed"
+    tells the group fiction is fact; a delayed confirmation just waits for the promotion's own
+    announcement, which always comes. Bias toward skepticism — the same reasoning that made phase 1
+    ufc.com-only.</p>
+  </div>
+
+  <h2 id="s8"><span class="num">8</span>What the group actually sees</h2>
+  <div class="prose">
+    <p>Posting is "one message per <em>claim event</em>", not per article. The claim <em>type</em> picks
+    the ceremony; the claim <em>event</em> picks the timing. Headlines post as-is when they're in the
+    group's languages (uk/en); anything else is translated to English by Gemini and labeled
+    <em>"(translated from es)"</em> — one language, never both. The headline is plain text; the
+    <strong>source name is the clickable link</strong>.</p>
+  </div>
+
+  <table>
+    <tr><th>Claim event</th><th></th><th>Post behavior</th></tr>
+    <tr><td>New claim, born <span class="tag confirmed">confirmed</span>, type announcement</td>
+        <td><span class="tag live">Live</span></td>
+        <td>🚨 Ceremonial standalone post, loud</td></tr>
+    <tr><td>New claim, <span class="tag rumor">rumor</span>, lifecycle type (announcement / negotiation / injury / result)</td>
+        <td><span class="tag live">Live</span></td>
+        <td>🕵️ <b>Rumor</b> line at the top of the hourly digest — the group loves gossip, it just needs honest labeling</td></tr>
+    <tr><td><span class="tag rumor">Rumor</span> → <span class="tag confirmed">confirmed</span></td>
+        <td><span class="tag live">Live</span></td>
+        <td>✅ <b>Reply to the original rumor message</b> (via stored <code>tg_message_id</code>) — the threaded story</td></tr>
+    <tr><td>Everything else claim-worthy or claim-free (quotes, NO_CLAIM, UNSURE)</td>
+        <td><span class="tag live">Live</span></td>
+        <td>One line in the hourly digest, silent delivery</td></tr>
+    <tr><td>Corroboration attached (still rumor)</td>
+        <td><span class="tag live">Live</span></td>
+        <td>No message — evidence recorded silently. (Display of "also covered by…" is a phase-2 taste decision: edit vs. reply.)</td></tr>
+    <tr><td><span class="tag rumor">Rumor</span> → <span class="tag denied">denied</span> · superseding claims</td>
+        <td><span class="tag phase2">Phase 2</span></td>
+        <td>Reply to original: "❌ Fight is off per …" / "📅 Moved to June 6"</td></tr>
+  </table>
+
+  <div class="prose"><p>The rumor→confirmed thread, concretely (this is what the armed Fighter A trap will produce):</p></div>
+  <div class="tg">
+    <div class="from">FighterBot · Tue 14:00</div>
+    🕵️ <b>Rumor:</b> Fighter A set for UFC Paris card on September 6 — <a>MMA Junkie</a>
+  </div>
+  <div class="tg" style="margin-left:34px">
+    <div class="from">FighterBot · Thu 09:00 — replying to ↑</div>
+    ✅ <b>Confirmed</b> — UFC announced the bout officially. <a>ufc.com</a>
+  </div>
+
+  <h2 id="s9"><span class="num">9</span>Operations &amp; reliability</h2>
+  <div class="prose">
+    <p>The bot runs unattended; every failure mode found in production has a specific answer:</p>
+  </div>
+  <table>
+    <tr><th>Failure</th><th>Answer</th><th>Principle</th></tr>
+    <tr><td>Google News 503s (load-shedding of shared cloud IPs — the laptop gets 200s while Cloud Run
+        gets 503s: IP reputation)</td>
+        <td>Cron at :17 (dodges the top-of-hour stampede) + one retry per feed after 75s (waves outlast
+        30s — measured, tuned)</td>
+        <td>Measure, then tune</td></tr>
+    <tr><td>A run fails anyway</td>
+        <td>Loses nothing: the 24h fetch window means the next hourly run re-covers it. Data loss starts
+        only after ~24h of <em>continuous</em> outage.</td>
+        <td>Overlapping idempotent sweeps</td></tr>
+    <tr><td>Repeated failures</td>
+        <td>Cloud Monitoring alert emails on 2+ failed attempts within 2h (single blips don't deserve
+        inbox noise); fatal in-run errors additionally DM the admin directly — never the group</td>
+        <td>Alert on patterns, not blips</td></tr>
+    <tr><td>Matcher LLM down or confused</td>
+        <td>Fail open: UNSURE → the article still posts via article-level rules, no claim invented;
+        <code>normalizeVerdict</code> catches malformed answers before they hit the database</td>
+        <td>Never lose news; abstention beats invention</td></tr>
+    <tr><td>Wrong confirmation ever issued</td>
+        <td>Status is derived state — the rules engine can recompute any claim's status from stored
+        evidence at any time; unmerge = delete a <code>claim_sources</code> row and rerun</td>
+        <td>Make wrong states cheap to repair</td></tr>
+    <tr><td>Runaway cost</td>
+        <td><code>max-instances=1</code>, request-based billing, Anthropic spend cap; LLM spend tracks the
+        <em>news rate</em>, not the archive size</td>
+        <td>Structural ceilings, not vigilance</td></tr>
+  </table>
+
+  <h2 id="s10"><span class="num">10</span>Cost &amp; scale</h2>
+  <table>
+    <tr><th>Component</th><th>Volume (live)</th><th>Monthly</th></tr>
+    <tr><td>Cloud Run (job + dormant service)</td><td class="mono-c">~24 short runs/day</td><td>≈ $0 (request-billed, free tier)</td></tr>
+    <tr><td>Neon Postgres</td><td class="mono-c">&lt;1 MB data</td><td>$0 — ~10× headroom in free tier</td></tr>
+    <tr><td>Gemini embeddings + translation</td><td class="mono-c">~5–20 calls/day</td><td>$0 — 10–20× headroom in free tier</td></tr>
+    <tr><td>Haiku matcher</td><td class="mono-c">~3–10 calls/day</td><td>~$0.30–0.90 — the only paid component</td></tr>
+  </table>
+  <div class="prose">
+    <p>Total: <strong>under a dollar a month.</strong> The escalation-ladder economics hold: the archive
+    can grow 100× and only the (free) pgvector search notices. Fits the planned $10 Anthropic cap with a
+    10× margin. Exact vector scans are fine at this scale; an HNSW index becomes worth it around
+    ~100K+ rows — years away.</p>
+  </div>
+
+  <h2 id="s11"><span class="num">11</span>The autonomous improvement loop</h2>
+  <div class="prose">
+    <p>The system maintains itself. A scheduled self-improvement session runs every ~6 hours
+    (<span class="mono">~18:47 / 00:47 / 06:47 / 12:47 PT</span> — between hunter runs) and:</p>
+    <ul>
+      <li><strong>Reads its continuity first:</strong> <code>docs/checkin-log.md</code> (the append-only
+      run log — each session's trace, newest on top), <code>TODO.md</code>, and recent git history.</li>
+      <li><strong>Audits the last window:</strong> run results, matcher verdicts, held items, claim
+      births, feed health — data first, opinions second.</li>
+      <li><strong>Acts under the decide-act-report policy:</strong> when in doubt, take the best decision
+      for the project and report it post-operationally for correction — don't stall. Ask-first is reserved
+      for: destroying schema/data, adding paid services, contradicting a documented decision, or changing
+      what the group experiences in an undesigned way.</li>
+      <li><strong>Commits every session</strong> — even a no-change run appends its log entry. Then posts
+      a concise chat report: 📊 data findings · 🔧 changes · 💡 proposals · 👁 watch items.</li>
+    </ul>
+    <p>Hard rules baked into every run: never post to the group or any DM; never print secret values
+    (command substitution only); never delete data. The first autonomous run already shipped real code —
+    the <code>normalizeVerdict</code> gate (§5), including catching the pg-bigint-vs-JSON-number id
+    comparison bug live.</p>
+    <p><strong>Parked evolutions</strong> (specs written, deliberately not built):
+    <span class="mono">docs/sandboxed-autonomy.md</span> — moving this loop into an ephemeral sandbox
+    (GitHub Actions cron) with scoped credentials so even a fully poisoned run is harmless; and hourly
+    database snapshots to an always-free GCS bucket (TODO), since Neon's free tier keeps only a 6-hour
+    restore window.</p>
+  </div>
+
+  <h2 id="s12"><span class="num">12</span>Roadmap &amp; watch items</h2>
+  <div class="prose">
+    <p><strong>Build sequence ahead:</strong></p>
+    <ul>
+      <li><strong>2e — direct publisher feeds + article bodies</strong> (Readability extraction). Unlocks
+      phase 2 independence, fixes WRONG_SUBJECT headline-blindness, sidesteps Google's machine-blocked
+      wrapped URLs.</li>
+      <li><strong>5 phase 2 — the full lifecycle:</strong> independence-counted corroboration, denials,
+      supersede flow, corroboration display (edit vs. reply — taste decision pending).</li>
+      <li><strong>Step 6 — conversational responder</strong> with memory and web search ("where to
+      watch?"), through the dormant webhook service. This is where Mastra + TypeScript enter — single
+      structured calls (the matcher) never needed an agent framework; a tool-using conversational agent
+      does.</li>
+      <li><strong>Deploy automation:</strong> GitHub remote + Actions (also the prerequisite for the
+      sandboxed autonomy spec and phone-started cloud sessions).</li>
+    </ul>
+    <p><strong>Standing watch items</strong> (tracked by the autonomous loop):</p>
+    <ul>
+      <li><code>prediction</code> — the claim type the model keeps reaching for; coerced to
+      <code>other</code> for now, extend the enum if the warning recurs.</li>
+      <li>503s under the 75s retry; escalation path is jittered delay, then 2e direct feeds early.</li>
+      <li>The 0.80 embedding threshold — revisit if false holds appear.</li>
+      <li>Canonical-name flubs (an Islam/Khabib mix-up observed once) — Sonnet escalation if it becomes a
+      pattern.</li>
+      <li>Multi-claim articles (v1 extracts one primary claim), cross-fighter claims ("Fighter B vs
+      Fighter A" would touch two watchlists), storyline threading above claims, a lazy source blocklist
+      for keyword-stuffing aggregators, the 14-vs-30-day staleness window — all observed, parked until
+      the data insists.</li>
+    </ul>
+  </div>
+
+  <div class="footer">
+    FighterBot · living architecture overview · updated 2026-08-08 ·
+    companion to <span class="mono">fighterbot-spec.md</span>, <span class="mono">TODO.md</span>,
+    <span class="mono">docs/checkin-log.md</span>, <span class="mono">docs/sandboxed-autonomy.md</span>.
+    Formerly <span class="mono">claims-architecture.html</span> (the step-5 design doc) — that design is
+    now §2–§8 of reality. History in git.
+  </div>
+</main>

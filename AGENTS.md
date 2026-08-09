@@ -13,7 +13,7 @@ bot — explaining *why* beats delivering silently.
 | **[docs/self-improvement.md](docs/self-improvement.md)** | **How autonomous check-in runs decide things. Read before changing anything.** |
 | [docs/checkin-log.md](docs/checkin-log.md) | What each 6-hourly run found and did. Newest on top. |
 | [TODO.md](TODO.md) | Build sequence, open questions, and the triggers that promote a watch item into work. |
-| [docs/claims-architecture.html](docs/claims-architecture.html) | Step-5 design: claims as living facts, articles as immutable evidence. |
+| [docs/architecture-overview.html](docs/architecture-overview.html) | Living architecture overview — the system as built (pipeline, claims layer, ops, autonomy). |
 | [fighterbot-spec.md](fighterbot-spec.md) | The original spec. |
 
 ## How a run works
