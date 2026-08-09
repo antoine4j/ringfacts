@@ -7,6 +7,16 @@ as the chat report: data / changes / proposals / next attention.
 
 ---
 
+## 2026-08-09 — bodies backfilled over the whole archive; digest tier threshold measured (manual session, Anton driving)
+
+- 📊 Anton named a real asymmetry: claim-bearing articles get canonicalized and aggregated, everything else is passed to the group as the publisher's raw headline — so the items the system understood least are shown rawest. Measured: of 36 posted items, **24 are raw digest lines**, 11 naming no fighter in the headline. First pass said "defer, only 4/60 items have bodies"; Anton pushed back that 2e was hours old, not days — correctly. **`backfill-bodies.js`** replays the live decode+extract ladder over the pre-2e archive: body coverage 4/60 → **49/60**, no week-long wait.
+- 📊 **Threshold read off the data.** Among items with a usable body, claim-bearing articles name the fighter 2–12×; the junk cluster 0–1×. Clean gap at 1|2, same shape as the 0.80 dup and 0.10 drift thresholds. Rejected: name-in-headline alone (#26 is a real Fighter B story headlined "30-1 UFC welterweight") and first-mention position (#7 is legitimate at 71% depth). The 300ch floor is load-bearing — #12 is claim-bearing, headline-anonymous, 1× off a 141ch og-description blurb. Candidate rule demotes 6/36 posted, 0 claim-bearing, catching all three of today's complaints. **Not built** — it changes what the group sees; awaiting Anton.
+- 🔧 Fetch telemetry, from the backfill's failures: **decode is 63/63, zero network** (the fragile half is holding; the batchexecute slow path still unused). All 11 remaining failures are publisher-side. **5 of 11 are Bloody Elbow 403s** — yet its RSS carries full article text, so the same outlet yields bodies free via the direct rail and 403s via Google News. **Sherdog is the silent one: 4/4 bodies are sub-300ch og-description blurbs** — counted as success, useless in practice. `mshale.com` produced both of the archive's pure-junk items (a Bravo talk-show clip, an iRacing entry list).
+- 🔧 Fixed in the backfill: it was discarding a successful decode whenever the body fetch 403'd, leaving 9 rows without a `resolved_url` that Gate 1 dedups on. hunter.js:299 never had this bug. All 60 items now carry a resolved_url.
+- 👁 Next fetch work, in value order: store the extraction rung per item (console-only today, so silent-thin outlets like Sherdog need a manual audit to spot); treat sub-300ch as no-body rather than success; reuse direct-feed content for Google-discovered articles from the same outlet (fixes Bloody Elbow outright).
+
+---
+
 ## 2026-08-09 — 2e watch item fired: furniture mentions fixed (manual session, Anton reported)
 
 - 📊 Anton read the group digest and couldn't find "Fighter C" in the posted articles — correctly. Items #56/#58/#60 (Bloody Elbow direct feed) matched only through invisible markup: an image `alt` ("Fighter C v Gaethje" photo caption, Cormier piece), an href URL slug (Ruffy piece), and a visible "LATEST NEWS" cross-promo block (Machado Garry piece). `matchesFighter` searched raw feed HTML; the matcher then jittered NO_CLAIM instead of WRONG_SUBJECT — the exact watch item logged at 2e ship, trigger ("digest bloats with tangential items") fired.
