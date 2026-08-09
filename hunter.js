@@ -10,11 +10,13 @@
 // DRY_RUN=1 prints instead of posting and skips DB writes (reads still work).
 
 import { sendTelegramMessage, escapeHtml } from "./lib/telegram.js";
-import {
-  openDb, knownUrls, nearestRecent, insertItem, itemIdByUrl,
-  activeClaims, insertClaim, linkClaimSource, claimOfItem, setClaimMessageId, confirmClaim,
-  claimLinkDrifts, markUnposted,
-} from "./lib/db.js";
+import { openDb } from "./lib/db.js";
+// Imported as a namespace, not as loose functions, because the whole namespace
+// IS the seam: `deps.store` swaps every database call at once (test/fake-store.js
+// answers the same twelve calls from a Map). Faking one level lower — a client
+// that answers SQL strings — would be a fake that drifts from Postgres in
+// silence, which is the opposite of what a test is for.
+import * as realStore from "./lib/db.js";
 import { embedTexts, EMBEDDING_MODEL } from "./lib/embeddings.js";
 import { translateToEnglish } from "./lib/translate.js";
 import { matchItem } from "./lib/matcher.js";
@@ -99,8 +101,8 @@ async function fetchFeed(alias) {
   return res.text();
 }
 
-async function fetchFreshItems(subject, directItems = []) {
-  const cutoff = Date.now() - HOURS_BACK * 3_600_000;
+async function fetchFreshItems(subject, directItems = [], hoursBack = HOURS_BACK) {
+  const cutoff = Date.now() - hoursBack * 3_600_000;
   const items = [];
   for (const alias of subject.aliases) {
     const found = parseRssItems(await fetchFeed(alias));
@@ -186,8 +188,8 @@ const CLAIM_DRIFT_GAP = Number(process.env.CLAIM_DRIFT_GAP || 0.1);
 // chain onto an unrelated matchmaking claim. We can't re-read the article
 // without an LLM call, but we can ask the cheaper question: does this headline
 // sit far closer to some OTHER claim than to the one it is about to join?
-async function inheritanceDrifts(db, item, claimId) {
-  const verdict = await claimLinkDrifts(db, item, claimId, CLAIM_DRIFT_GAP);
+async function inheritanceDrifts(deps, db, item, claimId) {
+  const verdict = await deps.store.claimLinkDrifts(db, item, claimId, CLAIM_DRIFT_GAP);
   if (!verdict.drifts) return false; // false, or null = unmeasurable -> old behaviour
   console.warn(
     `${item.subject}: claim drift — not inheriting #${claimId} (${verdict.mine.similarity.toFixed(3)}); ` +
@@ -208,28 +210,54 @@ async function inheritanceDrifts(db, item, claimId) {
 // group sees changes) and leave it unlinked, which is already a recognised
 // state: audit-swallowed-confirmations.js calls unlinked held items
 // "reconciler candidates".
-async function holdAsDup(db, item, role, neighborId = item.nearestItem, reason = "embedding") {
+async function holdAsDup(deps, db, item, role, neighborId = item.nearestItem, reason = "embedding") {
   item.posted = false;
   item.heldReason = reason;
-  if (!db || DRY_RUN) return;
-  const itemId = await insertItem(db, item);
-  const inherited = await claimOfItem(db, neighborId);
+  if (!db || deps.dryRun) return;
+  const itemId = await deps.store.insertItem(db, item);
+  const inherited = await deps.store.claimOfItem(db, neighborId);
   if (!itemId || !inherited) return;
-  if (await inheritanceDrifts(db, item, inherited)) return;
-  await linkClaimSource(db, itemId, inherited, role);
+  if (await inheritanceDrifts(deps, db, item, inherited)) return;
+  await deps.store.linkClaimSource(db, itemId, inherited, role);
 }
 
+// Everything this function reaches outside itself arrives through `deps`, and
+// every default is the real thing — so production behaviour is exactly what it
+// was before the parameter existed, and a test can substitute one piece at a
+// time. The four network-touching calls (embeddings, matcher, body fetch, URL
+// decode) plus Telegram and the database are the whole surface.
+//
+// dryRun/chatId/matcherEnabled are read from the environment ONCE at import in
+// the constants above, which is right for a job process and useless for a test
+// that needs to vary them per case — so they are overridable here too.
+//
 // Exported alongside digestLine/alsoMentioningLine so the full tier decision
 // (isTangential -> array split -> "also mentioning" line -> suppression) is
 // directly checkable with a synthetic item, without waiting for real news to
 // land in exactly the right shape.
-export async function huntSubject(db, subject, directItems = []) {
-  const fetched = await fetchFreshItems(subject, directItems);
+export async function huntSubject(db, subject, directItems = [], overrides = {}) {
+  const deps = {
+    store: realStore,
+    embedTexts,
+    matchItem,
+    fetchArticleBody,
+    decodeGoogleNewsUrl,
+    translate: translateToEnglish,
+    sendMessage: sendTelegramMessage,
+    dryRun: DRY_RUN,
+    chatId: CHAT_ID,
+    hoursBack: HOURS_BACK,
+    // A missing key means no matcher — same fail-open path as a matcher error,
+    // and the reason the dup gate is re-applied to official items further down.
+    matcherEnabled: Boolean(process.env.ANTHROPIC_API_KEY),
+    ...overrides,
+  };
+  const fetched = await fetchFreshItems(subject, directItems, deps.hoursBack);
 
   // Gate 1: exact URLs we already know. Flood cap applies to UNSEEN items
   // (newest first), so a busy-day backlog drains at 5/run across successive
   // sweeps instead of being shadowed by newer known items.
-  const known = db ? await knownUrls(db, fetched.map((i) => i.url)) : new Set();
+  const known = db ? await deps.store.knownUrls(db, fetched.map((i) => i.url)) : new Set();
   const unseen = fetched.filter((i) => !known.has(i.url));
   const candidates = unseen.slice(0, MAX_ITEMS_PER_SUBJECT);
   if (unseen.length > candidates.length) {
@@ -244,7 +272,7 @@ export async function huntSubject(db, subject, directItems = []) {
   let vectors = null;
   if (db) {
     try {
-      vectors = await embedTexts(candidates.map((i) => i.title));
+      vectors = await deps.embedTexts(candidates.map((i) => i.title));
     } catch (err) {
       console.warn(`${subject.name}: embedding failed, URL dedup only:`, err.message);
     }
@@ -265,7 +293,7 @@ export async function huntSubject(db, subject, directItems = []) {
     // Compare against stored rows BEFORE inserting this one, so an item
     // never matches itself. Recorded for every item — the similarity
     // distribution is threshold-tuning data.
-    const nearest = item.embedding ? await nearestRecent(db, subject.name, item.embedding) : null;
+    const nearest = item.embedding ? await deps.store.nearestRecent(db, subject.name, item.embedding) : null;
     item.nearestSimilarity = nearest?.similarity ?? null;
     item.nearestItem = nearest?.id ?? null;
 
@@ -287,7 +315,7 @@ export async function huntSubject(db, subject, directItems = []) {
       console.log(
         `${subject.name}: held as dup (${nearest.similarity.toFixed(2)} vs "${nearest.title.slice(0, 60)}"): ${item.title.slice(0, 60)}`
       );
-      await holdAsDup(db, item, "echo");
+      await holdAsDup(deps, db, item, "echo");
       continue;
     }
 
@@ -298,18 +326,18 @@ export async function huntSubject(db, subject, directItems = []) {
     // Everything here is a bonus: any failure leaves the item headline-only,
     // which is exactly yesterday's pipeline.
     try {
-      const resolved = await decodeGoogleNewsUrl(item.url);
+      const resolved = await deps.decodeGoogleNewsUrl(item.url);
       item.resolvedUrl = resolved ?? null; // null = wrapped URL we couldn't open
       if (resolved && resolved !== item.url && db) {
-        const dupId = await itemIdByUrl(db, resolved);
+        const dupId = await deps.store.itemIdByUrl(db, resolved);
         if (dupId) {
           console.log(`${subject.name}: held as url dup (decoded to stored item #${dupId}): ${item.title.slice(0, 60)}`);
-          await holdAsDup(db, item, "echo", dupId, "url");
+          await holdAsDup(deps, db, item, "echo", dupId, "url");
           continue;
         }
       }
       if (item.resolvedUrl || item.feedContent) {
-        const r = await fetchArticleBody(item.resolvedUrl, { feedContent: item.feedContent });
+        const r = await deps.fetchArticleBody(item.resolvedUrl, { feedContent: item.feedContent });
         item.body = r.body;
         item.bodyFetchedAt = r.fetchedAt ?? null;
         item.bodyVia = r.via;
@@ -331,10 +359,10 @@ export async function huntSubject(db, subject, directItems = []) {
     // verdict IS the dedup decision). Fail-open: matcher trouble -> UNSURE ->
     // the item posts like it always did.
     let verdict = { verdict: "UNSURE" };
-    if (db && process.env.ANTHROPIC_API_KEY) {
+    if (db && deps.matcherEnabled) {
       try {
-        const knownClaims = await activeClaims(db, subject.name, item.embedding);
-        verdict = await matchItem({
+        const knownClaims = await deps.store.activeClaims(db, subject.name, item.embedding);
+        verdict = await deps.matchItem({
           subject: subject.name, item, candidates: knownClaims,
           confusables: subject.confusables,
         });
@@ -350,7 +378,7 @@ export async function huntSubject(db, subject, directItems = []) {
       // Namesake / junk: recorded for audit, never posted, never a claim.
       item.posted = false;
       item.heldReason = "wrong_subject";
-      if (db && !DRY_RUN) await insertItem(db, item);
+      if (db && !deps.dryRun) await deps.store.insertItem(db, item);
       continue;
     }
 
@@ -358,17 +386,17 @@ export async function huntSubject(db, subject, directItems = []) {
       // Same fact, another sighting: held as evidence.
       item.posted = false;
       item.heldReason = "llm";
-      if (db && !DRY_RUN) {
-        const itemId = await insertItem(db, item);
+      if (db && !deps.dryRun) {
+        const itemId = await deps.store.insertItem(db, item);
         if (itemId) {
-          await linkClaimSource(db, itemId, verdict.match_claim_id,
+          await deps.store.linkClaimSource(db, itemId, verdict.match_claim_id,
             official ? "official" : "echo", verdict.stance ?? "asserts");
         }
         // Conservative lifecycle (phase 1): ONLY an official source flips
         // rumor -> confirmed. Independence counting waits for 2e bodies.
         // Official denials: logged + linked for now; auto-deny is phase 2.
         if (official && (verdict.stance ?? "asserts") === "asserts") {
-          const c = await confirmClaim(db, verdict.match_claim_id);
+          const c = await deps.store.confirmClaim(db, verdict.match_claim_id);
           if (c) confirmations.push({ text: c.canonical_text, replyTo: c.tg_message_id, item });
         }
       }
@@ -385,7 +413,7 @@ export async function huntSubject(db, subject, directItems = []) {
       console.log(
         `${subject.name}: matcher ${verdict.verdict}, holding official dup (${nearest.similarity.toFixed(2)} vs "${nearest.title.slice(0, 60)}"): ${item.title.slice(0, 60)}`
       );
-      await holdAsDup(db, item, "official");
+      await holdAsDup(deps, db, item, "official");
       continue;
     }
 
@@ -399,23 +427,23 @@ export async function huntSubject(db, subject, directItems = []) {
     // still posts — as a source link on one shared line, not as a headline.
     // Claim sources are exempt by construction: whatever fed a claim earns
     // its own line. Keyed on isRealClaim, not claimId — claimId is null under
-    // DRY_RUN and with no db, and this must demote identically either way.
+    // a dry run and with no db, and this must demote identically either way.
     item.digestTier = !isRealClaim && isTangential(item, subject.matchNames) ? "tangential" : "main";
     item.posted = true;
-    const itemId = db && !DRY_RUN ? await insertItem(db, item) : null;
+    const itemId = db && !deps.dryRun ? await deps.store.insertItem(db, item) : null;
     item.dbId = itemId;
 
     if (isRealClaim) {
       const status = official || nc.sourcing === "official" ? "confirmed" : "rumor";
       let claimId = null;
-      if (db && !DRY_RUN && itemId) {
+      if (db && !deps.dryRun && itemId) {
         let claimVec = null;
-        try { claimVec = (await embedTexts([nc.canonical_text]))?.[0] ?? null; } catch {}
-        claimId = await insertClaim(db, {
+        try { claimVec = (await deps.embedTexts([nc.canonical_text]))?.[0] ?? null; } catch {}
+        claimId = await deps.store.insertClaim(db, {
           subject: subject.name, type: nc.type, canonicalText: nc.canonical_text,
           facts: nc.facts, status, embedding: claimVec, embeddingModel: EMBEDDING_MODEL,
         });
-        await linkClaimSource(db, itemId, claimId, official ? "official" : "origin");
+        await deps.store.linkClaimSource(db, itemId, claimId, official ? "official" : "origin");
       }
       if (nc.type === domain.ceremonyType && status === "confirmed") {
         ceremonies.push({ claimId, text: nc.canonical_text, item });
@@ -444,7 +472,7 @@ export async function huntSubject(db, subject, directItems = []) {
   for (const item of digestItems) {
     if (GROUP_LANGUAGES.has(item.edition)) continue;
     try {
-      item.displayTitle = await translateToEnglish(cleanTitle(item));
+      item.displayTitle = await deps.translate(cleanTitle(item));
     } catch (err) {
       console.warn(`translate failed for "${item.title.slice(0, 40)}":`, err.message);
     }
@@ -453,11 +481,11 @@ export async function huntSubject(db, subject, directItems = []) {
   // 1. Ceremonies: one standalone post per confirmed announcement.
   for (const c of ceremonies) {
     const msg = `🚨 <b>${escapeHtml(domain.ceremonyLabel)}</b>\n\n<b>${escapeHtml(c.text)}</b>\n\n— <a href="${escapeHtml(c.item.url)}">${escapeHtml(c.item.source)}</a>`;
-    if (DRY_RUN) {
+    if (deps.dryRun) {
       console.log(`\n--- would post (ceremony) ---\n${msg}\n`);
     } else {
-      const mid = await sendTelegramMessage(CHAT_ID, msg, { html: true, noPreview: true });
-      if (db && c.claimId) await setClaimMessageId(db, c.claimId, mid);
+      const mid = await deps.sendMessage(deps.chatId, msg, { html: true, noPreview: true });
+      if (db && c.claimId) await deps.store.setClaimMessageId(db, c.claimId, mid);
     }
   }
 
@@ -474,13 +502,13 @@ export async function huntSubject(db, subject, directItems = []) {
   if (tangential.length > 0 && lines.length > 0) lines.push(alsoMentioningLine(tangential));
   if (lines.length > 0) {
     const message = `🔎 <b>${escapeHtml(subject.name)}</b>\n\n${lines.join("\n\n")}`;
-    if (DRY_RUN) {
+    if (deps.dryRun) {
       console.log(`\n--- would post ---\n${message}\n`);
     } else {
-      const mid = await sendTelegramMessage(CHAT_ID, message, { html: true, noPreview: true });
+      const mid = await deps.sendMessage(deps.chatId, message, { html: true, noPreview: true });
       if (db && mid) {
-        for (const r of rumorPosts) if (r.claimId) await setClaimMessageId(db, r.claimId, mid);
-        for (const cid of digestClaims) await setClaimMessageId(db, cid, mid);
+        for (const r of rumorPosts) if (r.claimId) await deps.store.setClaimMessageId(db, r.claimId, mid);
+        for (const cid of digestClaims) await deps.store.setClaimMessageId(db, cid, mid);
       }
     }
   } else if (tangential.length > 0) {
@@ -492,18 +520,18 @@ export async function huntSubject(db, subject, directItems = []) {
     // re-measuring thresholds — so correct it, or the next measurement reads
     // items as broadcast that never were.
     console.log(`${subject.name}: ${tangential.length} tangential item(s) only — nothing broadcast`);
-    if (db && !DRY_RUN) {
-      await markUnposted(db, tangential.map((i) => i.dbId).filter(Boolean), "tangential");
+    if (db && !deps.dryRun) {
+      await deps.store.markUnposted(db, tangential.map((i) => i.dbId).filter(Boolean), "tangential");
     }
   }
 
   // 3. Confirmations: threaded replies to the original rumor post.
   for (const c of confirmations) {
     const msg = `✅ <b>Confirmed</b> — ${escapeHtml(c.text)}\n<a href="${escapeHtml(c.item.url)}">${escapeHtml(c.item.source)}</a>`;
-    if (DRY_RUN) {
+    if (deps.dryRun) {
       console.log(`\n--- would post (confirmation) ---\n${msg}\n`);
     } else {
-      await sendTelegramMessage(CHAT_ID, msg, { html: true, noPreview: true, replyTo: c.replyTo });
+      await deps.sendMessage(deps.chatId, msg, { html: true, noPreview: true, replyTo: c.replyTo });
     }
   }
 }
