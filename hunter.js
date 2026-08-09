@@ -529,7 +529,18 @@ async function main() {
   outletResults.forEach((r, i) => {
     if (r.status === "fulfilled") {
       directItems.push(...r.value);
-      console.log(`direct feed ${OUTLETS[i].id}: ${r.value.length} items`);
+      // Matched/discarded counts close the pipeline's one silent blind spot.
+      // Outlet feeds are name-filtered BEFORE anything is stored, so an item
+      // no subject matches leaves no trace at all — unlike a Google News miss,
+      // which reaches the matcher and is stored as WRONG_SUBJECT. A matchNames
+      // stem that stopped working (an inflected surname the stem no longer
+      // covers) would therefore look exactly like quiet news, which
+      // docs/self-improvement.md §5 tells runs NOT to act on. A sustained
+      // "0 matched" here is the evidence that separates the two.
+      const matched = r.value.filter((it) => subjects.some((s) => matchesSubject(it, s))).length;
+      console.log(
+        `direct feed ${OUTLETS[i].id}: ${r.value.length} items, ${matched} matched, ${r.value.length - matched} discarded`,
+      );
     } else {
       console.warn(`direct feed ${OUTLETS[i].id} failed:`, r.reason.message);
     }

@@ -95,6 +95,15 @@ or repetitive. Only a *specific item that should have posted and didn't* is
 evidence, and that earns an investigation of why that item was dropped, not a
 blanket adjustment.
 
+**The one exception, and where to check it.** Outlet feeds are name-filtered
+before storage, so a dead `matchNames` stem drops real coverage leaving no row
+behind — indistinguishable from quiet news by any query. The hunter logs
+`direct feed <outlet>: N items, M matched, K discarded` every run for exactly
+this. An outlet reporting `0 matched` across many consecutive runs is a real
+signal worth chasing; low posted-counts still are not. Note the logs are the
+whole record here (Cloud Logging retains 30 days) — nothing about discarded
+items reaches the database.
+
 **The case that named this principle (2026-08-09).** The 18:17 run fetched 12
 items for one subject, found 2 unseen, and posted nothing: one was held at 0.84
 against a Spanish-language story it duplicated, the other at 0.98 against the
