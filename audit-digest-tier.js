@@ -26,34 +26,34 @@
 //   DATABASE_URL=$(gcloud secrets versions access latest --secret=neon-db-url) \
 //     node audit-digest-tier.js
 import { openDb } from "/Users/anton/Projects/fighter-bot/lib/db.js";
+import { matchNamesOf } from "/Users/anton/Projects/fighter-bot/lib/fighters.js";
+import {
+  mentionsName, countMentions, isTangential,
+  MIN_BODY_FOR_JUDGEMENT, MAX_MENTIONS_TO_DEMOTE,
+} from "/Users/anton/Projects/fighter-bot/lib/tier.js";
 
-// Mirrors hunter.js:47-72 (FIGHTERS is not exported and importing runs a hunt).
-const MATCH_NAMES = {
-  "Fighter A": ["Fighter A", "Fighter A"],
-  "Fighter B": ["Fighter B", "Fighter B"],
-  "Fighter C": ["Fighter C", "Fighter C"],
-};
+// The rule and the watchlist both come from lib/ — this script exists to
+// re-measure the thresholds the hunter runs on, so a private copy of either
+// would let the measurement drift away from the thing being measured.
+const hasName = (text, fighter) => mentionsName(text, matchNamesOf(fighter));
 
-const hasName = (text, fighter) =>
-  !!text && MATCH_NAMES[fighter].some((n) => text.toLowerCase().includes(n.toLowerCase()));
-
-// The candidate tier signal, once enough bodies exist to tune it: a story that
-// is ABOUT someone names them repeatedly and early; a "LATEST NEWS" sidebar
-// names them once, deep in. `first` is the position as a fraction of the body,
-// so it stays comparable across articles of different length.
+// Audit-only telemetry. `first` (position of the earliest mention, as a
+// fraction of body length) was EVALUATED AND REJECTED as a tier signal —
+// item #7 is a legitimate division story first mentioning the fighter at 71%
+// depth — so it lives here, not in lib/tier.js, and is reported for context
+// only. `count` is the signal the rule actually uses.
 function density(text, fighter) {
   if (!text) return null;
+  const names = matchNamesOf(fighter);
+  const count = countMentions(text, names);
+  if (!count) return { count: 0, first: null };
   const lower = text.toLowerCase();
-  let count = 0;
   let first = null;
-  for (const n of MATCH_NAMES[fighter]) {
-    const needle = n.toLowerCase();
-    for (let at = lower.indexOf(needle); at >= 0; at = lower.indexOf(needle, at + 1)) {
-      count++;
-      if (first === null || at < first) first = at;
-    }
+  for (const n of names) {
+    const at = lower.indexOf(n.toLowerCase());
+    if (at >= 0 && (first === null || at < first)) first = at;
   }
-  return count ? { count, first: +(first / text.length).toFixed(2) } : { count: 0, first: null };
+  return { count, first: +(first / text.length).toFixed(2) };
 }
 
 const db = await openDb();
@@ -105,21 +105,12 @@ if (withBody.length) {
   }
 }
 
-// Candidate rule, evaluated against the archive. Demote ONLY on positive
-// evidence of a non-mention: we must have a usable body (a 75-char
-// og-description blurb cannot support a density judgment, and a 403 gives us
-// nothing at all), the name must be absent from the headline, and the body
-// must name them at most once. Anything we could not measure is kept — a
-// missing body is not evidence of irrelevance.
-const MIN_BODY_FOR_JUDGEMENT = 300;
-const MAX_MENTIONS_TO_DEMOTE = 1;
-const wouldDemote = (it) => {
-  if (hasName(it.title, it.fighter)) return false;
-  if (!it.body || it.body.length < MIN_BODY_FOR_JUDGEMENT) return false;
-  return density(it.body, it.fighter).count <= MAX_MENTIONS_TO_DEMOTE;
-};
+// The LIVE rule, imported — not a local re-implementation. Running the exact
+// function the hunter runs is what makes this script a regression test: if
+// lib/tier.js drifts, these numbers move.
+const wouldDemote = (it) => isTangential(it, matchNamesOf(it.fighter));
 
-console.log(`\n--- CANDIDATE RULE: no name in headline + body >= ${MIN_BODY_FOR_JUDGEMENT}ch + <= ${MAX_MENTIONS_TO_DEMOTE} mention(s) ---`);
+console.log(`\n--- LIVE RULE (lib/tier.js): no name in headline + body >= ${MIN_BODY_FOR_JUDGEMENT}ch + <= ${MAX_MENTIONS_TO_DEMOTE} mention(s) ---`);
 const claimMentions = items.filter((i) => i.in_claim && i.body)
   .map((i) => density(i.body, i.fighter).count).sort((a, b) => a - b);
 console.log(`claim-bearing items mention the fighter ${claimMentions[0]}-${claimMentions.at(-1)}× ` +

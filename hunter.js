@@ -22,6 +22,8 @@ import { isOfficialSource } from "./lib/sources.js";
 import { OUTLETS, fetchOutletItems, matchesFighter } from "./lib/feeds.js";
 import { decodeGoogleNewsUrl, isGoogleWrapped } from "./lib/googlenews.js";
 import { fetchArticleBody, decodeEntities } from "./lib/extract.js";
+import { FIGHTERS } from "./lib/fighters.js";
+import { isTangential } from "./lib/tier.js";
 
 // Editions the group reads as-is. Headlines from any other edition are
 // translated to English at posting time, labeled as translated (§17.5:
@@ -37,41 +39,6 @@ const MAX_ITEMS_PER_FIGHTER = 5;
 // a UK<->EN translated pair measured 0.841; unrelated same-fighter pairs
 // topped out at 0.702. 0.80 splits that gap.
 const SEMANTIC_DUP_THRESHOLD = Number(process.env.SEMANTIC_DUP_THRESHOLD || 0.8);
-
-// Aliases are search queries, not display names. First draft (spec §17.4 is
-// still open): Cyrillic aliases matter most for the fighters western media
-// ignores. Each alias pairs with a Google News language edition.
-// matchNames (2e) filter outlet-wide direct feeds down to this fighter —
-// surname stems only, so Ukrainian case endings still match (Fighter Cя/Fighter Cї
-// both contain "Fighter C").
-const FIGHTERS = [
-  {
-    name: "Fighter A",
-    aliases: [
-      { query: '"Fighter A"', edition: "en" },
-      { query: '"Fighter A"', edition: "uk" },
-    ],
-    matchNames: ["Fighter A", "Fighter A"],
-  },
-  {
-    name: "Fighter B",
-    aliases: [
-      { query: '"Fighter B"', edition: "en" },
-      { query: '"Fighter B"', edition: "uk" },
-    ],
-    matchNames: ["Fighter B", "Fighter B"],
-  },
-  {
-    name: "Fighter C",
-    aliases: [
-      { query: '"Fighter C"', edition: "en" },
-      // Same Latin spelling in Spanish — only the edition differs. Spain's
-      // press covers him as a domestic athlete (added 2026-08-07).
-      { query: '"Fighter C"', edition: "es" },
-    ],
-    matchNames: ["Fighter C", "Fighter C"],
-  },
-];
 
 // Google News RSS needs matching language/country params per edition,
 // otherwise Cyrillic queries return the (empty) English edition.
