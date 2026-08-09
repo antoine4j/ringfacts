@@ -1,0 +1,627 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>FighterBot — the test suite</title>
+<style>
+  :root {
+    --paper:      #f5f7f5;
+    --surface:    #ffffff;
+    --ink:        #16211e;
+    --muted:      #5c6b67;
+    --rule:       #dde3e0;
+    --rule-firm:  #c3cdc9;
+    --accent:     #1b6a57;
+    --free:       #2f7a53;
+    --gated:      #9c5f17;
+    --excluded:   #6b4e8c;
+    --code-bg:    #eceff0;
+
+    --serif: "Iowan Old Style", "Charter", "Palatino Linotype", Palatino, Georgia, serif;
+    --mono: ui-monospace, "SF Mono", "SFMono-Regular", Menlo, Consolas, monospace;
+
+    --measure: 68ch;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --paper:     #0e1513;
+      --surface:   #151e1b;
+      --ink:       #e7eeea;
+      --muted:     #94a49e;
+      --rule:      #253330;
+      --rule-firm: #354641;
+      --accent:    #57bda1;
+      --free:      #5fc08d;
+      --gated:     #d9a05a;
+      --excluded:  #a98fd0;
+      --code-bg:   #1b2623;
+    }
+  }
+  :root[data-theme="dark"] {
+    --paper:     #0e1513;
+    --surface:   #151e1b;
+    --ink:       #e7eeea;
+    --muted:     #94a49e;
+    --rule:      #253330;
+    --rule-firm: #354641;
+    --accent:    #57bda1;
+    --free:      #5fc08d;
+    --gated:     #d9a05a;
+    --excluded:  #a98fd0;
+    --code-bg:   #1b2623;
+  }
+  :root[data-theme="light"] {
+    --paper:     #f5f7f5;
+    --surface:   #ffffff;
+    --ink:       #16211e;
+    --muted:     #5c6b67;
+    --rule:      #dde3e0;
+    --rule-firm: #c3cdc9;
+    --accent:    #1b6a57;
+    --free:      #2f7a53;
+    --gated:     #9c5f17;
+    --excluded:  #6b4e8c;
+    --code-bg:   #eceff0;
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    padding: 0 1.5rem 6rem;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: var(--serif);
+    font-size: 17px;
+    line-height: 1.62;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .wrap { max-width: var(--measure); margin: 0 auto; }
+  .wide { max-width: 900px; margin: 0 auto; }
+
+  /* ---------- masthead ---------- */
+  header { padding: 4.5rem 0 2rem; }
+  .eyebrow {
+    font-family: var(--mono);
+    font-size: 0.7rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin: 0 0 1.1rem;
+  }
+  h1 {
+    font-size: clamp(2rem, 5vw, 2.9rem);
+    line-height: 1.1;
+    font-weight: 600;
+    margin: 0 0 1rem;
+    text-wrap: balance;
+    letter-spacing: -0.015em;
+  }
+  .standfirst {
+    font-size: 1.15rem;
+    color: var(--muted);
+    margin: 0;
+    text-wrap: pretty;
+  }
+
+  .figures {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.6rem 1rem;
+    margin: 2.5rem 0 0;
+    padding: 1.4rem 0 0;
+    border-top: 1px solid var(--rule);
+  }
+  .figure strong {
+    display: block;
+    font-family: var(--mono);
+    font-size: 1.7rem;
+    font-weight: 500;
+    letter-spacing: -0.02em;
+    font-variant-numeric: tabular-nums;
+    color: var(--accent);
+  }
+  .figure span {
+    font-family: var(--mono);
+    font-size: 0.7rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+
+  /* ---------- sections ---------- */
+  section { margin-top: 4rem; }
+  h2 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin: 0 0 0.4rem;
+    letter-spacing: -0.01em;
+    text-wrap: balance;
+  }
+  h2 + .sub {
+    color: var(--muted);
+    margin: 0 0 2rem;
+    font-size: 1.02rem;
+  }
+  p { margin: 0 0 1.1rem; }
+  p:last-child { margin-bottom: 0; }
+
+  code {
+    font-family: var(--mono);
+    font-size: 0.85em;
+    background: var(--code-bg);
+    padding: 0.12em 0.38em;
+    border-radius: 3px;
+  }
+
+  /* ---------- the ladder ---------- */
+  .ladder {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    margin: 0 0 1rem;
+    border: 1px solid var(--rule);
+    background: var(--surface);
+  }
+  .rung {
+    display: grid;
+    grid-template-columns: 3.2rem 1fr auto;
+    gap: 1rem;
+    align-items: center;
+    padding: 0.95rem 1.1rem;
+    border-bottom: 1px solid var(--rule);
+  }
+  .rung:last-child { border-bottom: 0; }
+  .rung-n {
+    font-family: var(--mono);
+    font-size: 0.72rem;
+    letter-spacing: 0.08em;
+    color: var(--muted);
+    text-transform: uppercase;
+  }
+  .rung-name { font-weight: 600; }
+  .rung-name em {
+    display: block;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 0.87rem;
+    color: var(--muted);
+  }
+  .needs {
+    font-family: var(--mono);
+    font-size: 0.7rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    white-space: nowrap;
+    padding: 0.25rem 0.6rem;
+    border: 1px solid currentColor;
+    border-radius: 999px;
+  }
+  .needs.free     { color: var(--free); }
+  .needs.gated    { color: var(--gated); }
+  .needs.excluded { color: var(--excluded); }
+
+  .gate-band {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.6rem 1.1rem;
+    background: var(--code-bg);
+    border-bottom: 1px solid var(--rule);
+    font-family: var(--mono);
+    font-size: 0.7rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--accent);
+  }
+  .gate-band::before {
+    content: "";
+    flex: 0 0 1.6rem;
+    height: 1px;
+    background: currentColor;
+  }
+
+  /* ---------- tier panels ---------- */
+  .tier {
+    background: var(--surface);
+    border: 1px solid var(--rule);
+    border-left: 3px solid var(--tier-color, var(--accent));
+    padding: 1.5rem 1.6rem;
+    margin-bottom: 1.5rem;
+  }
+  .tier.t1 { --tier-color: var(--free); }
+  .tier.t2 { --tier-color: var(--free); }
+  .tier.t3 { --tier-color: var(--gated); }
+  .tier.t4 { --tier-color: var(--excluded); }
+
+  .tier-head {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 0.75rem;
+    margin-bottom: 0.9rem;
+  }
+  .tier-head h3 {
+    font-size: 1.2rem;
+    margin: 0;
+    font-weight: 600;
+  }
+  .tier-count {
+    font-family: var(--mono);
+    font-size: 0.72rem;
+    color: var(--muted);
+    font-variant-numeric: tabular-nums;
+  }
+  .tier dl {
+    margin: 0;
+    display: grid;
+    grid-template-columns: 7.5rem 1fr;
+    gap: 0.55rem 1rem;
+  }
+  .tier dt {
+    font-family: var(--mono);
+    font-size: 0.68rem;
+    letter-spacing: 0.09em;
+    text-transform: uppercase;
+    color: var(--muted);
+    padding-top: 0.34em;
+  }
+  .tier dd { margin: 0; }
+  .tier dd ul { margin: 0; padding-left: 1.1rem; }
+  .tier dd li { margin-bottom: 0.3rem; }
+
+  .sample {
+    margin-top: 1.1rem;
+    padding: 0.85rem 1rem;
+    background: var(--code-bg);
+    font-family: var(--mono);
+    font-size: 0.78rem;
+    line-height: 1.7;
+    overflow-x: auto;
+    color: var(--muted);
+  }
+  .sample b { color: var(--ink); font-weight: 500; }
+
+  /* ---------- findings ---------- */
+  .finding {
+    border-top: 1px solid var(--rule);
+    padding: 1.5rem 0;
+  }
+  .finding:last-child { border-bottom: 1px solid var(--rule); }
+  .finding h3 {
+    font-size: 1.08rem;
+    margin: 0 0 0.5rem;
+    font-weight: 600;
+  }
+  .found-by {
+    font-family: var(--mono);
+    font-size: 0.67rem;
+    letter-spacing: 0.09em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin: 0 0 0.6rem;
+  }
+  .finding p { margin: 0 0 0.7rem; font-size: 0.97rem; }
+
+  /* ---------- commands ---------- */
+  pre {
+    background: var(--surface);
+    border: 1px solid var(--rule);
+    border-left: 3px solid var(--accent);
+    padding: 1rem 1.1rem;
+    overflow-x: auto;
+    font-family: var(--mono);
+    font-size: 0.8rem;
+    line-height: 1.75;
+    margin: 0 0 1rem;
+  }
+  pre .c { color: var(--muted); }
+
+  blockquote {
+    margin: 0;
+    padding-left: 1.2rem;
+    border-left: 2px solid var(--rule-firm);
+    color: var(--muted);
+    font-size: 1.02rem;
+  }
+
+  footer {
+    margin-top: 5rem;
+    padding-top: 1.4rem;
+    border-top: 1px solid var(--rule);
+    font-family: var(--mono);
+    font-size: 0.72rem;
+    color: var(--muted);
+    line-height: 1.9;
+  }
+
+  @media (max-width: 620px) {
+    .figures { grid-template-columns: repeat(2, 1fr); }
+    .rung { grid-template-columns: 1fr auto; }
+    .rung-n { display: none; }
+    .tier dl { grid-template-columns: 1fr; gap: 0.2rem 0; }
+    .tier dt { padding-top: 0.7rem; }
+  }
+</style>
+</head>
+<body>
+
+<header class="wrap">
+  <p class="eyebrow">FighterBot · 9 August 2026</p>
+  <h1>What the tests cover, and what they deliberately don&rsquo;t</h1>
+  <p class="standfirst">
+    Three tiers, split by what each one <em>needs</em> rather than by what it is called.
+    That single distinction is the whole design: this repository commits to itself,
+    unattended, every six hours, so the tests that gate a commit have to run with no
+    network, no API keys, and no database.
+  </p>
+
+  <div class="figures">
+    <div class="figure"><strong>95</strong><span>checks on every commit</span></div>
+    <div class="figure"><strong>0.43s</strong><span>to run them</span></div>
+    <div class="figure"><strong>19</strong><span>more against real SQL</span></div>
+    <div class="figure"><strong>0</strong><span>credentials required</span></div>
+  </div>
+</header>
+
+<section class="wrap">
+  <h2>The one idea</h2>
+  <p class="sub">Everything else follows from where the gate falls.</p>
+
+  <p>
+    Before this, verification was four scripts at the repository root, each written the
+    day something broke. None ran together, most needed live credentials, and nothing
+    failed when they did. That was survivable while every commit was typed by hand.
+  </p>
+  <p>
+    It stopped being survivable once the check-in runs began committing code at 4am.
+    <code>self-improvement.md</code> §4 tells those runs to verify before claiming &mdash;
+    but a principle nothing enforces is a principle that erodes. So the tests that
+    <em>gate</em> a commit must be runnable by an agent with nothing mounted.
+  </p>
+</section>
+
+<section class="wide">
+  <div class="ladder">
+    <div class="gate-band">pre-commit gate &mdash; blocks the commit if anything below fails</div>
+
+    <div class="rung">
+      <span class="rung-n">Tier 1</span>
+      <span class="rung-name">Unit &amp; fixture<em>Do the pure functions compute the right answer?</em></span>
+      <span class="needs free">nothing</span>
+    </div>
+    <div class="rung">
+      <span class="rung-n">Tier 2</span>
+      <span class="rung-name">Pipeline<em>Are those functions plugged together correctly?</em></span>
+      <span class="needs free">nothing</span>
+    </div>
+    <div class="rung">
+      <span class="rung-n">Tier 3</span>
+      <span class="rung-name">Real SQL<em>Does Postgres agree with what the code believes?</em></span>
+      <span class="needs gated">a Neon branch</span>
+    </div>
+    <div class="rung">
+      <span class="rung-n">&mdash;</span>
+      <span class="rung-name">Matcher eval<em>How often does the LLM get it right? (not built yet)</em></span>
+      <span class="needs excluded">not a test</span>
+    </div>
+  </div>
+  <p class="wrap" style="color: var(--muted); font-size: 0.92rem;">
+    The gate covers the two tiers that need nothing. Tier&nbsp;3 skips itself when
+    <code>TEST_DATABASE_URL</code> is unset, so it never blocks a session that has no
+    secrets. The fourth row is not a test at all &mdash; see below.
+  </p>
+</section>
+
+<section class="wide">
+  <h2 class="wrap">The tiers</h2>
+  <p class="sub wrap">What each one is responsible for, and how it avoids the network.</p>
+
+  <div class="tier t1">
+    <div class="tier-head">
+      <h3>Tier 1 &mdash; Unit &amp; fixture</h3>
+      <span class="tier-count">64 checks · lib/*.test.js</span>
+    </div>
+    <dl>
+      <dt>Question</dt>
+      <dd>Given this input, does this one function return the right thing?</dd>
+      <dt>Covers</dt>
+      <dd>
+        <ul>
+          <li><b>The outlet name filter</b> &mdash; the highest-stakes function in the repo. Feeds are filtered <em>before</em> storage, so a dead surname stem drops real coverage leaving no row behind. No query can tell that apart from quiet news.</li>
+          <li><b>Verdict validation</b> &mdash; every way a model answer can be malformed, and the downgrade each one earns.</li>
+          <li><b>The five-rung extraction ladder</b> &mdash; which rung fires, and the paragraph-doubling pathology that once inflated a mention count.</li>
+          <li><b>The digest tier rule</b> &mdash; its boundary, plus the three &ldquo;we cannot tell&rdquo; escapes that must never demote.</li>
+        </ul>
+      </dd>
+      <dt>Fixtures</dt>
+      <dd>Reduced structural skeletons, not saved article pages &mdash; small enough to read, and no republishing of other people&rsquo;s articles into a public repo. Each names the pathology it encodes.</dd>
+    </dl>
+    <div class="sample">
+      <b>✓</b> a Cyrillic stem matches declined forms<br>
+      <b>✓</b> a name in an image alt attribute does not match<br>
+      <b>✓</b> a numeric id from the model matches a string id from Postgres<br>
+      <b>✓</b> a body too short to judge is never demoted
+    </div>
+  </div>
+
+  <div class="tier t2">
+    <div class="tier-head">
+      <h3>Tier 2 &mdash; Pipeline</h3>
+      <span class="tier-count">30 checks · test/pipeline.test.js</span>
+    </div>
+    <dl>
+      <dt>Question</dt>
+      <dd>Feed real articles through the real hunt &mdash; what posted, what was held, and why?</dd>
+      <dt>How</dt>
+      <dd>The hunt function gained one optional <code>deps</code> parameter whose every default is the real implementation, so production behaviour is unchanged. Tests swap in a scripted matcher, a scripted embedder, and an in-memory store. Articles are handed in directly, so no feed is ever fetched.</dd>
+      <dt>Covers</dt>
+      <dd>
+        <ul>
+          <li>Both duplicate gates &mdash; the URL gate under both identities, and the 0.80 semantic threshold with its official-source exemption <em>and</em> the re-application that stops a matcher outage turning every official echo into a repeat post.</li>
+          <li>The digest tier split, and the suppression branch that corrects rows back to unposted so later threshold measurements stay honest.</li>
+          <li>Claim lifecycle: rumour born, official confirmation, echo held as evidence.</li>
+          <li><b>Every fail-open path</b> &mdash; asserted in the docs for months, verified by nothing until now.</li>
+        </ul>
+      </dd>
+      <dt>Fidelity</dt>
+      <dd>The fake store returns ids as <em>strings</em>, because every id column is <code>bigint</code> and Postgres does. A fake that returned numbers would hide the exact bug that nearly shipped last week.</dd>
+    </dl>
+    <div class="sample">
+      <b>✓</b> an embedding outage degrades to URL-only dedup and still posts<br>
+      <b>✓</b> a matcher outage becomes UNSURE and the article posts as it always did<br>
+      <b>✓</b> when everything was tangential, nothing is broadcast at all<br>
+      <b>✓</b> suppressed rows are corrected to posted=false so the audit stays honest
+    </div>
+  </div>
+
+  <div class="tier t3">
+    <div class="tier-head">
+      <h3>Tier 3 &mdash; Real SQL</h3>
+      <span class="tier-count">19 checks · test/sql.test.js · opt-in</span>
+    </div>
+    <dl>
+      <dt>Question</dt>
+      <dd>Does the actual database behave the way the code assumes?</dd>
+      <dt>Why separate</dt>
+      <dd>A fake can never check pgvector&rsquo;s cosine arithmetic, whether <code>ON CONFLICT</code> returns null instead of throwing, or whether the schema still has the columns the code writes. Those need real Postgres.</dd>
+      <dt>Safety</dt>
+      <dd>Runs against a Neon <em>branch</em> &mdash; copy-on-write off main, so it carries the real schema and real data shape without touching the evidence record. It refuses to run against main, tags every row it writes with a per-run key, and removes them afterwards.</dd>
+    </dl>
+    <div class="sample">
+      <b>✓</b> knownUrls matches on url and on resolved_url alike<br>
+      <b>✓</b> similarity is 1 &minus; cosine distance, and the nearest row wins<br>
+      <b>✓</b> confirmClaim flips a rumor exactly once<br>
+      <b>✓</b> the embedding column&rsquo;s width matches what the embedder requests
+    </div>
+  </div>
+
+  <div class="tier t4">
+    <div class="tier-head">
+      <h3>The matcher &mdash; deliberately not tested</h3>
+      <span class="tier-count">designed, not built</span>
+    </div>
+    <dl>
+      <dt>Why</dt>
+      <dd>Four runs of byte-identical code on the same article returned <code>NO_CLAIM</code> three times and <code>NEW</code> once. Any assertion built on that flakes, and a suite you learn to ignore is worse than no suite at all. So the matcher is stubbed in every tier above.</dd>
+      <dt>Instead</dt>
+      <dd>A separate eval: roughly thirty labelled articles from the archive, each run several times, scored as a <em>pass rate with spread</em> rather than pass or fail. Run by hand when the prompt changes; never on commit.</dd>
+      <dt>First job</dt>
+      <dd>Settle a question already sitting open in the backlog &mdash; run the corpus at the default sampling temperature and at zero, compare the rates, and the decision stops being a guess.</dd>
+    </dl>
+  </div>
+</section>
+
+<section class="wrap">
+  <h2>What it caught on the way in</h2>
+  <p class="sub">Four real defects, none of which were found by reasoning about the code.</p>
+
+  <div class="finding">
+    <p class="found-by">found by &mdash; a dry run against live feeds</p>
+    <h3>Every non-English headline was posting untranslated</h3>
+    <p>
+      The new dependency object was written with <code>translateToEnglish</code> as
+      JavaScript shorthand, so its key was <code>translateToEnglish</code> while the call
+      site read <code>deps.translate</code>. Translation failed on every foreign-language
+      article &mdash; and because that path fails open, the original headline posted and
+      nothing looked wrong.
+    </p>
+    <p>
+      <strong>All thirty pipeline tests passed</strong>, because each one supplies its own
+      dependencies and none exercised the defaults. The suite now checks its own wiring at
+      the source level, and that check has been verified to fail when the bug is put back.
+    </p>
+  </div>
+
+  <div class="finding">
+    <p class="found-by">found by &mdash; mutating the thresholds on purpose</p>
+    <h3>The freshness window had no coverage at all</h3>
+    <p>
+      Changing the duplicate threshold broke three tests; changing the tier rule broke
+      three more. Changing how far back the hunt looks broke <em>nothing</em> &mdash; every
+      test pinned that value explicitly, so the filter itself was never exercised. Two
+      tests added.
+    </p>
+  </div>
+
+  <div class="finding">
+    <p class="found-by">found by &mdash; tier 3, on its first run</p>
+    <h3>One number lived in two places with nothing connecting them</h3>
+    <p>
+      The schema declares a 768-wide vector column; the embedder asked the API for 768 as a
+      private constant. Changing either alone would have failed every insert at runtime in
+      the cloud, with no local signal. The constant is now shared, and the test asserts the
+      columns match it.
+    </p>
+  </div>
+
+  <div class="finding">
+    <p class="found-by">found by &mdash; reading the files being committed</p>
+    <h3>A real watchlist name was about to re-enter the public repo</h3>
+    <p>
+      Two tracked files still named an actual tracked subject &mdash; the thing a commit
+      last week set out to remove. Both now use a synthetic name, as the fixtures do.
+    </p>
+  </div>
+</section>
+
+<section class="wrap">
+  <h2>Running them</h2>
+  <p class="sub">The first command is the one that matters.</p>
+
+<pre><span class="c"># every commit runs this automatically; 0.43s, offline</span>
+npm test
+
+<span class="c"># once per clone, to enable the gate</span>
+git config core.hooksPath .githooks
+
+<span class="c"># the SQL tier, against a branch — never main</span>
+TEST_DATABASE_URL=$(neonctl connection-string test \
+  --project-id calm-mouse-60802247) npm run test:sql
+
+<span class="c"># still required before deploying — stubs cannot see real wiring</span>
+DRY_RUN=1 node hunter.js</pre>
+
+  <blockquote>
+    The tests do not replace the dry run. They stub the network on purpose, which means
+    they cannot see whether the real parts are plugged into each other. Stubs verify
+    logic; only a real run verifies wiring &mdash; which is exactly how the translation bug
+    was caught after the whole suite went green.
+  </blockquote>
+</section>
+
+<section class="wrap">
+  <h2>What this deliberately leaves out</h2>
+  <p class="sub">Each omission is a decision, not an oversight.</p>
+  <p>
+    <strong>No CI.</strong> The commit hook is the gate. Deployment runs from
+    <code>setup.sh</code>, not a pipeline, so a hosted workflow would test code that is
+    already committed and add a second place for the rules to live.
+  </p>
+  <p>
+    <strong>No coverage threshold.</strong> A percentage target rewards testing whatever is
+    cheapest to test &mdash; here that would be the message formatters, not the name filter
+    that can silently lose an entire outlet.
+  </p>
+  <p>
+    <strong>No mocking library.</strong> The seams are ordinary function parameters with
+    real defaults. Nothing is patched at runtime.
+  </p>
+  <p>
+    <strong>The audit scripts stay as they are.</strong> They measure production data to
+    tune thresholds. That is instrumentation, not testing, and merging the two would break
+    the measurement discipline the thresholds depend on.
+  </p>
+</section>
+
+<footer class="wrap">
+  FighterBot · test suite overview · 9 August 2026<br>
+  Design note: docs/superpowers/specs/2026-08-09-test-suite-design.md<br>
+  Suite: lib/*.test.js · test/pipeline.test.js · test/sql.test.js · .githooks/pre-commit
+</footer>
+
+</body>
+</html>
