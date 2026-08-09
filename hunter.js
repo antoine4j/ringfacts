@@ -276,12 +276,19 @@ async function huntFighter(db, fighter, directItems = []) {
         const r = await fetchArticleBody(item.resolvedUrl, { feedContent: item.feedContent });
         item.body = r.body;
         item.bodyFetchedAt = r.fetchedAt ?? null;
+        item.bodyVia = r.via;
         console.log(
           `${fighter.name}: body ${r.body ? `${r.body.length} chars via ${r.via}` : `none (${r.via})`}: ${item.title.slice(0, 50)}`
         );
+      } else {
+        // Google's wrapper didn't decode and there's no feed body to fall
+        // back on — fetchArticleBody was never even called. Distinct from a
+        // null body_via on a pre-migration row.
+        item.bodyVia = "decode-failed";
       }
     } catch (err) {
       console.warn(`${fighter.name}: body step failed (headline-only):`, err.message);
+      item.bodyVia ??= "step-error";
     }
 
     // Gate 3: the claim matcher (absorbs the gray-zone judge — a MATCH-as-echo

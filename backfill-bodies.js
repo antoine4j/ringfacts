@@ -12,6 +12,12 @@
 // furniture that fired the original bug. body_fetched_at vs seen_at records
 // the gap for anyone reading the rows later.
 //
+// Also stamps body_via (which extraction rung succeeded, or which failure
+// stopped it) — added 2026-08-09 alongside the live pipeline. NOTE: rows
+// backfilled before that date already have a body, so `WHERE body IS NULL`
+// skips them and their body_via stays null forever. Not worth a special-case
+// re-fetch just to label history; body_fetched_at already marks them.
+//
 // Dry run by default (fetches, reports, writes nothing). Run from the laptop:
 //   DATABASE_URL=$(gcloud secrets versions access latest --secret=neon-db-url) \
 //     node backfill-bodies.js
@@ -42,7 +48,13 @@ try {
     if (!row.resolved_url && isGoogleWrapped(row.url)) {
       const real = await decodeGoogleNewsUrl(row.url);
       if (real) { target = real; decoded++; }
-      else { rungs["decode-failed"] = (rungs["decode-failed"] ?? 0) + 1; continue; }
+      else {
+        rungs["decode-failed"] = (rungs["decode-failed"] ?? 0) + 1;
+        // Record the attempt even though it failed — a null body_via is
+        // indistinguishable from "never tried"; this row WAS tried.
+        if (COMMIT) await db.query("UPDATE items SET body_via = $2 WHERE id = $1", [row.id, "decode-failed"]);
+        continue;
+      }
     }
 
     // Store the decoded URL even when the body fetch fails. Decoding is the
@@ -60,12 +72,15 @@ try {
     rungs[via] = (rungs[via] ?? 0) + 1;
     console.log(`#${String(row.id).padStart(2)} ${via.padEnd(16)} ${body ? String(body.length).padStart(5) + "ch" : "  -  "}  ${row.title.slice(0, 58)}`);
 
-    if (body && COMMIT) {
+    if (COMMIT) {
+      // Always record `via`, even on failure — an http-403 row shows we tried
+      // and the publisher refused, which is the audit signal this column
+      // exists for. Only overwrite body/body_fetched_at when we got one.
       await db.query(
-        "UPDATE items SET body = $2, body_fetched_at = $3 WHERE id = $1",
-        [row.id, body, fetchedAt]
+        "UPDATE items SET body = COALESCE($2, body), body_fetched_at = COALESCE($3, body_fetched_at), body_via = $4 WHERE id = $1",
+        [row.id, body, fetchedAt, via]
       );
-      stored++;
+      if (body) stored++;
     }
     await sleep(DELAY_MS);
   }

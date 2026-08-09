@@ -38,6 +38,13 @@ ALTER TABLE items ADD COLUMN IF NOT EXISTS rss_description text;  -- raw RSS <de
 ALTER TABLE items ADD COLUMN IF NOT EXISTS resolved_url text;
 ALTER TABLE items ADD COLUMN IF NOT EXISTS body text;
 ALTER TABLE items ADD COLUMN IF NOT EXISTS body_fetched_at timestamptz;
+-- Which extraction rung produced `body` (or which failure stopped it) —
+-- 'feed-content' | 'json-ld' | 'article-tag' | 'paragraphs' | 'og-description'
+-- | 'no-extract' | 'decode-failed' | 'no-url' | 'not-html' | 'timeout' |
+-- 'http-<status>' | 'error-<name>'. Without this an outlet can "succeed" with
+-- a useless blurb (Sherdog: 4/4 og-description, ~100 chars) and look fine in
+-- aggregate. null = pre-migration row, never means success.
+ALTER TABLE items ADD COLUMN IF NOT EXISTS body_via text;
 CREATE INDEX IF NOT EXISTS items_resolved_url_idx ON items (resolved_url);
 
 -- ============================================================================
