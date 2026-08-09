@@ -6,7 +6,7 @@ CREATE EXTENSION IF NOT EXISTS vector;
 CREATE TABLE IF NOT EXISTS items (
   id            bigint GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
   url           text NOT NULL UNIQUE,        -- exact-dup lock
-  fighter       text NOT NULL,
+  subject       text NOT NULL,
   title         text NOT NULL,
   source        text NOT NULL DEFAULT '',
   published_at  timestamptz NOT NULL,
@@ -18,8 +18,8 @@ CREATE TABLE IF NOT EXISTS items (
   embedding_model text
 );
 
--- Speeds up "recent rows for this fighter" semantic-dup lookups.
-CREATE INDEX IF NOT EXISTS items_fighter_seen_idx ON items (fighter, seen_at);
+-- Speeds up "recent rows for this subject" semantic-dup lookups.
+CREATE INDEX IF NOT EXISTS items_subject_seen_idx ON items (subject, seen_at);
 
 -- Decision-audit + capture columns (added 2026-08-06, "collect data first").
 -- nearest_* are recorded for EVERY item, posted or held — the similarity
@@ -61,7 +61,7 @@ ALTER TABLE items ADD COLUMN IF NOT EXISTS digest_tier text;
 
 CREATE TABLE IF NOT EXISTS claims (
   id             bigint GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
-  fighter        text NOT NULL,
+  subject        text NOT NULL,
   type           text NOT NULL,      -- announcement|result|injury|quote|prediction|negotiation|lifestyle|other
   canonical_text text NOT NULL,      -- one English sentence, quote-anchored
   facts          jsonb NOT NULL DEFAULT '{}',
@@ -85,4 +85,4 @@ CREATE TABLE IF NOT EXISTS claim_sources (
   PRIMARY KEY (item_id, claim_id)
 );
 
-CREATE INDEX IF NOT EXISTS claims_fighter_status_idx ON claims (fighter, status);
+CREATE INDEX IF NOT EXISTS claims_subject_status_idx ON claims (subject, status);

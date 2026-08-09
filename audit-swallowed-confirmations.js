@@ -1,7 +1,7 @@
 // Audit (READ-ONLY): how much did the Gate 2 / official-source bug cost us?
 //
 // Before the fix, an official item that scored >= SEMANTIC_DUP_THRESHOLD
-// against any stored headline for the same fighter was held by the embedding
+// against any stored headline for the same subject was held by the embedding
 // dup gate and linked as an "echo" — it never reached the matcher, so
 // confirmClaim never ran. Any claim still sitting at 'rumor' with an official
 // item underneath it is a confirmation the group never got.

@@ -1,14 +1,14 @@
 // Integration check for the digest tier rule (2026-08-09). Drives the real
-// huntFighter() with synthetic candidates through the real pipeline — real
+// huntSubject() with synthetic candidates through the real pipeline — real
 // embedding + matcher calls, but DRY_RUN semantics: no DB writes, no
 // Telegram sends. Exists because the rule's boundary cases (lib/tier.js) and
 // the message formatting (digestLine/alsoMentioningLine) are unit-checkable
 // on their own, but the WIRING between them — matcher verdict -> isTangential
 // -> array split -> "also mentioning" line vs suppression — only shows up by
-// actually running huntFighter, and real news doesn't always cooperate by
+// actually running huntSubject, and real news doesn't always cooperate by
 // having a genuinely tangential item on hand when you need one.
 //
-// Requires DRY_RUN=1 in the environment (huntFighter reads it at import
+// Requires DRY_RUN=1 in the environment (huntSubject reads it at import
 // time) or every send/write below becomes real. Run from the laptop:
 //   DATABASE_URL=$(gcloud secrets versions access latest --secret=neon-db-url) \
 //   GEMINI_API_KEY=$(gcloud secrets versions access latest --secret=gemini-api-key) \
@@ -20,10 +20,10 @@ if (process.env.DRY_RUN !== "1") {
 }
 
 import { openDb } from "./lib/db.js";
-import { huntFighter } from "./hunter.js";
+import { huntSubject } from "./hunter.js";
 
 const db = await openDb();
-const fighter = { name: "Fighter C", aliases: [], matchNames: ["Fighter C", "Fighter C"] };
+const subject = { name: "Fighter C", aliases: [], matchNames: ["Fighter C", "Fighter C"] };
 
 // Both bodies sit comfortably above the 400ch feed-content floor (extract.js
 // MIN_FEED_TEXT) so rung 0 fires without a live network fetch to a fake
@@ -65,5 +65,5 @@ console.log("Expect: item A (no headline name, 1 body mention) -> tangential, fo
 console.log('"Also mentioning". Item B (headline names him) -> its own bullet. One message,');
 console.log("not suppressed, since a real line exists.\n");
 
-await huntFighter(db, fighter, items);
+await huntSubject(db, subject, items);
 await db.end();

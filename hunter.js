@@ -1,5 +1,5 @@
 // FighterBot hunter — slice 2b: memory + dedup.
-// Each run: fetch Google News RSS per fighter -> drop URLs already in the DB
+// Each run: fetch Google News RSS per subject -> drop URLs already in the DB
 // -> embed the rest -> hold back semantic duplicates (same story, different
 // outlet/language) -> post what's genuinely new -> record everything.
 //
@@ -19,10 +19,10 @@ import { embedTexts, EMBEDDING_MODEL } from "./lib/embeddings.js";
 import { translateToEnglish } from "./lib/translate.js";
 import { matchItem } from "./lib/matcher.js";
 import { isOfficialSource } from "./lib/sources.js";
-import { OUTLETS, fetchOutletItems, matchesFighter } from "./lib/feeds.js";
+import { OUTLETS, fetchOutletItems, matchesSubject } from "./lib/feeds.js";
 import { decodeGoogleNewsUrl, isGoogleWrapped } from "./lib/googlenews.js";
 import { fetchArticleBody, decodeEntities } from "./lib/extract.js";
-import { FIGHTERS } from "./lib/fighters.js";
+import { SUBJECTS } from "./lib/subjects.js";
 import { isTangential } from "./lib/tier.js";
 import { domain } from "./domain/index.js";
 import { fileURLToPath } from "node:url";
@@ -36,9 +36,9 @@ const DRY_RUN = process.env.DRY_RUN === "1";
 const CHAT_ID = process.env.TELEGRAM_CHAT_ID;
 const ADMIN_CHAT_ID = process.env.ADMIN_CHAT_ID; // failure DMs go here, never the group
 const HOURS_BACK = Number(process.env.HOURS_BACK || 24);
-const MAX_ITEMS_PER_FIGHTER = 5;
+const MAX_ITEMS_PER_SUBJECT = 5;
 // Cosine similarity above this = same story. Tuned on real data 2026-08-06:
-// a UK<->EN translated pair measured 0.841; unrelated same-fighter pairs
+// a UK<->EN translated pair measured 0.841; unrelated same-subject pairs
 // topped out at 0.702. 0.80 splits that gap.
 const SEMANTIC_DUP_THRESHOLD = Number(process.env.SEMANTIC_DUP_THRESHOLD || 0.8);
 
@@ -99,10 +99,10 @@ async function fetchFeed(alias) {
   return res.text();
 }
 
-async function fetchFreshItems(fighter, directItems = []) {
+async function fetchFreshItems(subject, directItems = []) {
   const cutoff = Date.now() - HOURS_BACK * 3_600_000;
   const items = [];
-  for (const alias of fighter.aliases) {
+  for (const alias of subject.aliases) {
     const found = parseRssItems(await fetchFeed(alias));
     for (const item of found) {
       item.edition = alias.edition;
@@ -110,13 +110,13 @@ async function fetchFreshItems(fighter, directItems = []) {
     }
     items.push(...found);
   }
-  // Direct-feed items that name this fighter (2e). Cloned: the outlet pool is
-  // shared across fighters, and the pipeline stamps per-fighter fields.
-  items.push(...directItems.filter((i) => matchesFighter(i, fighter)).map((i) => ({ ...i })));
+  // Direct-feed items that name this subject (2e). Cloned: the outlet pool is
+  // shared across subjects, and the pipeline stamps per-subject fields.
+  items.push(...directItems.filter((i) => matchesSubject(i, subject)).map((i) => ({ ...i })));
   // Fresh only, newest first. In-run URL dedup across aliases and outlets;
   // cross-run dedup is the database's job. NOTE: no cap here — capping before
   // the known-URL check would let newer known items permanently shadow older
-  // unseen ones. The cap is applied to unseen candidates in huntFighter.
+  // unseen ones. The cap is applied to unseen candidates in huntSubject.
   const seen = new Set();
   return items
     .filter((item) => item.publishedAt.getTime() > cutoff)
@@ -190,7 +190,7 @@ async function inheritanceDrifts(db, item, claimId) {
   const verdict = await claimLinkDrifts(db, item, claimId, CLAIM_DRIFT_GAP);
   if (!verdict.drifts) return false; // false, or null = unmeasurable -> old behaviour
   console.warn(
-    `${item.fighter}: claim drift — not inheriting #${claimId} (${verdict.mine.similarity.toFixed(3)}); ` +
+    `${item.subject}: claim drift — not inheriting #${claimId} (${verdict.mine.similarity.toFixed(3)}); ` +
       `claim #${verdict.best.id} fits better (${verdict.best.similarity.toFixed(3)}, ` +
       `gap ${verdict.gap.toFixed(3)}): ${item.title.slice(0, 60)}`
   );
@@ -223,20 +223,20 @@ async function holdAsDup(db, item, role, neighborId = item.nearestItem, reason =
 // (isTangential -> array split -> "also mentioning" line -> suppression) is
 // directly checkable with a synthetic item, without waiting for real news to
 // land in exactly the right shape.
-export async function huntFighter(db, fighter, directItems = []) {
-  const fetched = await fetchFreshItems(fighter, directItems);
+export async function huntSubject(db, subject, directItems = []) {
+  const fetched = await fetchFreshItems(subject, directItems);
 
   // Gate 1: exact URLs we already know. Flood cap applies to UNSEEN items
   // (newest first), so a busy-day backlog drains at 5/run across successive
   // sweeps instead of being shadowed by newer known items.
   const known = db ? await knownUrls(db, fetched.map((i) => i.url)) : new Set();
   const unseen = fetched.filter((i) => !known.has(i.url));
-  const candidates = unseen.slice(0, MAX_ITEMS_PER_FIGHTER);
+  const candidates = unseen.slice(0, MAX_ITEMS_PER_SUBJECT);
   if (unseen.length > candidates.length) {
-    console.log(`${fighter.name}: capped ${unseen.length} unseen to ${candidates.length}, rest next run`);
+    console.log(`${subject.name}: capped ${unseen.length} unseen to ${candidates.length}, rest next run`);
   }
   if (candidates.length === 0) {
-    console.log(`${fighter.name}: ${fetched.length} fetched, nothing new`);
+    console.log(`${subject.name}: ${fetched.length} fetched, nothing new`);
     return;
   }
 
@@ -246,7 +246,7 @@ export async function huntFighter(db, fighter, directItems = []) {
     try {
       vectors = await embedTexts(candidates.map((i) => i.title));
     } catch (err) {
-      console.warn(`${fighter.name}: embedding failed, URL dedup only:`, err.message);
+      console.warn(`${subject.name}: embedding failed, URL dedup only:`, err.message);
     }
   }
 
@@ -258,14 +258,14 @@ export async function huntFighter(db, fighter, directItems = []) {
   const tangential = [];    // demoted: one shared "also mentioning" line, not a bullet
 
   for (const [i, item] of candidates.entries()) {
-    item.fighter = fighter.name;
+    item.subject = subject.name;
     item.embedding = vectors?.[i] ?? null;
     item.embeddingModel = EMBEDDING_MODEL;
 
     // Compare against stored rows BEFORE inserting this one, so an item
     // never matches itself. Recorded for every item — the similarity
     // distribution is threshold-tuning data.
-    const nearest = item.embedding ? await nearestRecent(db, fighter.name, item.embedding) : null;
+    const nearest = item.embedding ? await nearestRecent(db, subject.name, item.embedding) : null;
     item.nearestSimilarity = nearest?.similarity ?? null;
     item.nearestItem = nearest?.id ?? null;
 
@@ -285,7 +285,7 @@ export async function huntFighter(db, fighter, directItems = []) {
     // The exemption is a deferral, not a waiver — see the re-apply below.
     if (dup && !official) {
       console.log(
-        `${fighter.name}: held as dup (${nearest.similarity.toFixed(2)} vs "${nearest.title.slice(0, 60)}"): ${item.title.slice(0, 60)}`
+        `${subject.name}: held as dup (${nearest.similarity.toFixed(2)} vs "${nearest.title.slice(0, 60)}"): ${item.title.slice(0, 60)}`
       );
       await holdAsDup(db, item, "echo");
       continue;
@@ -303,7 +303,7 @@ export async function huntFighter(db, fighter, directItems = []) {
       if (resolved && resolved !== item.url && db) {
         const dupId = await itemIdByUrl(db, resolved);
         if (dupId) {
-          console.log(`${fighter.name}: held as url dup (decoded to stored item #${dupId}): ${item.title.slice(0, 60)}`);
+          console.log(`${subject.name}: held as url dup (decoded to stored item #${dupId}): ${item.title.slice(0, 60)}`);
           await holdAsDup(db, item, "echo", dupId, "url");
           continue;
         }
@@ -314,7 +314,7 @@ export async function huntFighter(db, fighter, directItems = []) {
         item.bodyFetchedAt = r.fetchedAt ?? null;
         item.bodyVia = r.via;
         console.log(
-          `${fighter.name}: body ${r.body ? `${r.body.length} chars via ${r.via}` : `none (${r.via})`}: ${item.title.slice(0, 50)}`
+          `${subject.name}: body ${r.body ? `${r.body.length} chars via ${r.via}` : `none (${r.via})`}: ${item.title.slice(0, 50)}`
         );
       } else {
         // Google's wrapper didn't decode and there's no feed body to fall
@@ -323,7 +323,7 @@ export async function huntFighter(db, fighter, directItems = []) {
         item.bodyVia = "decode-failed";
       }
     } catch (err) {
-      console.warn(`${fighter.name}: body step failed (headline-only):`, err.message);
+      console.warn(`${subject.name}: body step failed (headline-only):`, err.message);
       item.bodyVia ??= "step-error";
     }
 
@@ -333,14 +333,14 @@ export async function huntFighter(db, fighter, directItems = []) {
     let verdict = { verdict: "UNSURE" };
     if (db && process.env.ANTHROPIC_API_KEY) {
       try {
-        const knownClaims = await activeClaims(db, fighter.name, item.embedding);
-        verdict = await matchItem({ fighter: fighter.name, item, candidates: knownClaims });
+        const knownClaims = await activeClaims(db, subject.name, item.embedding);
+        verdict = await matchItem({ subject: subject.name, item, candidates: knownClaims });
       } catch (err) {
-        console.warn(`${fighter.name}: matcher failed (fail-open):`, err.message);
+        console.warn(`${subject.name}: matcher failed (fail-open):`, err.message);
       }
     }
     console.log(
-      `${fighter.name}: matcher ${verdict.verdict}${verdict.match_claim_id ? " #" + verdict.match_claim_id : ""}: ${item.title.slice(0, 60)}`
+      `${subject.name}: matcher ${verdict.verdict}${verdict.match_claim_id ? " #" + verdict.match_claim_id : ""}: ${item.title.slice(0, 60)}`
     );
 
     if (verdict.verdict === "WRONG_SUBJECT") {
@@ -380,7 +380,7 @@ export async function huntFighter(db, fighter, directItems = []) {
     // UNSURE, missing API key) turns every official echo into a duplicate post.
     if (official && dup && ["UNSURE", "NO_CLAIM"].includes(verdict.verdict)) {
       console.log(
-        `${fighter.name}: matcher ${verdict.verdict}, holding official dup (${nearest.similarity.toFixed(2)} vs "${nearest.title.slice(0, 60)}"): ${item.title.slice(0, 60)}`
+        `${subject.name}: matcher ${verdict.verdict}, holding official dup (${nearest.similarity.toFixed(2)} vs "${nearest.title.slice(0, 60)}"): ${item.title.slice(0, 60)}`
       );
       await holdAsDup(db, item, "official");
       continue;
@@ -391,13 +391,13 @@ export async function huntFighter(db, fighter, directItems = []) {
     const isRealClaim = nc && !domain.ignoredTypes.includes(nc.type); // docs §5
 
     // Digest tier (TODO step 4, thresholds measured in audit-digest-tier.js):
-    // an article that never names the fighter in its headline and names them
+    // an article that never names the subject in its headline and names them
     // at most once in a body long enough to judge is ABOUT someone else. It
     // still posts — as a source link on one shared line, not as a headline.
     // Claim sources are exempt by construction: whatever fed a claim earns
     // its own line. Keyed on isRealClaim, not claimId — claimId is null under
     // DRY_RUN and with no db, and this must demote identically either way.
-    item.digestTier = !isRealClaim && isTangential(item, fighter.matchNames) ? "tangential" : "main";
+    item.digestTier = !isRealClaim && isTangential(item, subject.matchNames) ? "tangential" : "main";
     item.posted = true;
     const itemId = db && !DRY_RUN ? await insertItem(db, item) : null;
     item.dbId = itemId;
@@ -409,7 +409,7 @@ export async function huntFighter(db, fighter, directItems = []) {
         let claimVec = null;
         try { claimVec = (await embedTexts([nc.canonical_text]))?.[0] ?? null; } catch {}
         claimId = await insertClaim(db, {
-          fighter: fighter.name, type: nc.type, canonicalText: nc.canonical_text,
+          subject: subject.name, type: nc.type, canonicalText: nc.canonical_text,
           facts: nc.facts, status, embedding: claimVec, embeddingModel: EMBEDDING_MODEL,
         });
         await linkClaimSource(db, itemId, claimId, official ? "official" : "origin");
@@ -429,7 +429,7 @@ export async function huntFighter(db, fighter, directItems = []) {
 
   const postedCount = ceremonies.length + rumorPosts.length + digestItems.length + tangential.length;
   console.log(
-    `${fighter.name}: ${fetched.length} fetched, ${candidates.length} unseen, ${postedCount} posted ` +
+    `${subject.name}: ${fetched.length} fetched, ${candidates.length} unseen, ${postedCount} posted ` +
       `(${tangential.length} tangential), ${confirmations.length} confirmation(s)`
   );
 
@@ -470,7 +470,7 @@ export async function huntFighter(db, fighter, directItems = []) {
   ];
   if (tangential.length > 0 && lines.length > 0) lines.push(alsoMentioningLine(tangential));
   if (lines.length > 0) {
-    const message = `🔎 <b>${escapeHtml(fighter.name)}</b>\n\n${lines.join("\n\n")}`;
+    const message = `🔎 <b>${escapeHtml(subject.name)}</b>\n\n${lines.join("\n\n")}`;
     if (DRY_RUN) {
       console.log(`\n--- would post ---\n${message}\n`);
     } else {
@@ -488,7 +488,7 @@ export async function huntFighter(db, fighter, directItems = []) {
     // and audit-digest-tier.js partitions the archive on that column when
     // re-measuring thresholds — so correct it, or the next measurement reads
     // items as broadcast that never were.
-    console.log(`${fighter.name}: ${tangential.length} tangential item(s) only — nothing broadcast`);
+    console.log(`${subject.name}: ${tangential.length} tangential item(s) only — nothing broadcast`);
     if (db && !DRY_RUN) {
       await markUnposted(db, tangential.map((i) => i.dbId).filter(Boolean), "tangential");
     }
@@ -516,7 +516,7 @@ async function main() {
   if (!db) console.warn("No DATABASE_URL — running without dedup memory.");
 
   // Direct publisher feeds (2e): one fetch per outlet per run, shared across
-  // fighters. A dead outlet is a warning, never a failed run — and if Google
+  // subjects. A dead outlet is a warning, never a failed run — and if Google
   // 503s a whole run, these still deliver (the documented escalation path).
   const directItems = [];
   const outletResults = await Promise.allSettled(OUTLETS.map((o) => fetchOutletItems(o)));
@@ -531,17 +531,17 @@ async function main() {
 
   try {
     let failures = 0;
-    for (const fighter of FIGHTERS) {
+    for (const subject of SUBJECTS) {
       try {
-        await huntFighter(db, fighter, directItems);
+        await huntSubject(db, subject, directItems);
       } catch (err) {
-        // One broken feed must not kill the other fighters' hunts.
+        // One broken feed must not kill the other subjects' hunts.
         failures++;
-        console.error(`${fighter.name}: hunt failed:`, err);
+        console.error(`${subject.name}: hunt failed:`, err);
       }
     }
-    if (failures === FIGHTERS.length) {
-      throw new Error("every fighter hunt failed"); // job run shows red
+    if (failures === SUBJECTS.length) {
+      throw new Error("every subject hunt failed"); // job run shows red
     }
   } finally {
     if (db) await db.end();

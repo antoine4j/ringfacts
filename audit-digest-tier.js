@@ -1,22 +1,22 @@
 // Measures the "unrefined digest" question (2026-08-09): two thirds of what the
 // group sees is a raw publisher headline, and the weakest items land there —
 // the digest is the bucket for everything the matcher did NOT turn into a claim.
-// Asks whether the fighter's name sits in the HEADLINE or only in the BODY.
+// Asks whether the subject's name sits in the HEADLINE or only in the BODY.
 // Read-only: no writes, no posting, no LLM calls.
 //
 // Measured 2026-08-09 over 60 items / 36 posted, after backfill-bodies.js took
 // body coverage from 4 to 49. Findings:
-//   - 24 of 36 posted items were raw digest lines; 11 named no fighter in the
+//   - 24 of 36 posted items were raw digest lines; 11 named no subject in the
 //     headline. Name-in-headline alone is REJECTED as a tier key: #26 is a real
 //     Fighter B story headlined "30-1 UFC welterweight", and epithet headlines are
 //     routine in MMA press.
 //   - Body mention COUNT separates cleanly. Among items with a usable body,
-//     claim-bearing articles name the fighter 2-12x; the junk cluster names
+//     claim-bearing articles name the subject 2-12x; the junk cluster names
 //     them 0-1x. Gap at 1|2, read off the data like the 0.80 dup threshold.
 //   - First-occurrence POSITION does not separate and is not used: #7 is a
 //     legitimate division story whose first mention sits at 71% depth.
 //   - The 300ch floor is load-bearing. #12 is claim-bearing, headline does not
-//     name the fighter, body scores 1x — and its body is a 141ch og-description
+//     name the subject, body scores 1x — and its body is a 141ch og-description
 //     blurb. Without the floor the rule would demote a real claim source.
 //   - Known residual: #23 names Fighter C in a celebrity-listicle headline and
 //     never in the body. Headline mentions are reader-visible so the rule keeps
@@ -25,26 +25,26 @@
 // Run:
 //   DATABASE_URL=$(gcloud secrets versions access latest --secret=neon-db-url) \
 //     node audit-digest-tier.js
-import { openDb } from "/Users/anton/Projects/fighter-bot/lib/db.js";
-import { matchNamesOf } from "/Users/anton/Projects/fighter-bot/lib/fighters.js";
+import { openDb } from "./lib/db.js";
+import { matchNamesOf } from "./lib/subjects.js";
 import {
   mentionsName, countMentions, isTangential,
   MIN_BODY_FOR_JUDGEMENT, MAX_MENTIONS_TO_DEMOTE,
-} from "/Users/anton/Projects/fighter-bot/lib/tier.js";
+} from "./lib/tier.js";
 
 // The rule and the watchlist both come from lib/ — this script exists to
 // re-measure the thresholds the hunter runs on, so a private copy of either
 // would let the measurement drift away from the thing being measured.
-const hasName = (text, fighter) => mentionsName(text, matchNamesOf(fighter));
+const hasName = (text, subject) => mentionsName(text, matchNamesOf(subject));
 
 // Audit-only telemetry. `first` (position of the earliest mention, as a
 // fraction of body length) was EVALUATED AND REJECTED as a tier signal —
-// item #7 is a legitimate division story first mentioning the fighter at 71%
+// item #7 is a legitimate division story first mentioning the subject at 71%
 // depth — so it lives here, not in lib/tier.js, and is reported for context
 // only. `count` is the signal the rule actually uses.
-function density(text, fighter) {
+function density(text, subject) {
   if (!text) return null;
-  const names = matchNamesOf(fighter);
+  const names = matchNamesOf(subject);
   const count = countMentions(text, names);
   if (!count) return { count: 0, first: null };
   const lower = text.toLowerCase();
@@ -60,7 +60,7 @@ const db = await openDb();
 
 // claim_sources tells us which items were REFINED (fed a claim) vs raw digest.
 const { rows: items } = await db.query(`
-  SELECT i.id, i.fighter, i.title, i.source, i.posted, i.held_reason,
+  SELECT i.id, i.subject, i.title, i.source, i.posted, i.held_reason,
          i.found_via, i.published_at, i.body IS NOT NULL AS has_body,
          left(i.body, 4000) AS body,
          EXISTS (SELECT 1 FROM claim_sources cs WHERE cs.item_id = i.id) AS in_claim
@@ -69,8 +69,8 @@ const { rows: items } = await db.query(`
 `);
 
 const bucket = (it) => {
-  const inTitle = hasName(it.title, it.fighter);
-  const inBody = hasName(it.body, it.fighter);
+  const inTitle = hasName(it.title, it.subject);
+  const inBody = hasName(it.body, it.subject);
   if (inTitle) return "title";
   if (inBody) return "body-only";
   return "neither";
@@ -100,7 +100,7 @@ console.log(`\nbody coverage: ${withBody.length}/${items.length} items` +
 if (withBody.length) {
   console.log("mention density (posted, body-bearing) — count / first-position:");
   for (const it of withBody.filter((i) => i.posted)) {
-    const d = density(it.body, it.fighter);
+    const d = density(it.body, it.subject);
     console.log(`  #${it.id} ${String(d.count).padStart(2)}×  first@${d.first ?? "-"}  ${it.in_claim ? "claim " : "digest"}  ${it.title.slice(0, 58)}`);
   }
 }
@@ -108,21 +108,21 @@ if (withBody.length) {
 // The LIVE rule, imported — not a local re-implementation. Running the exact
 // function the hunter runs is what makes this script a regression test: if
 // lib/tier.js drifts, these numbers move.
-const wouldDemote = (it) => isTangential(it, matchNamesOf(it.fighter));
+const wouldDemote = (it) => isTangential(it, matchNamesOf(it.subject));
 
 console.log(`\n--- LIVE RULE (lib/tier.js): no name in headline + body >= ${MIN_BODY_FOR_JUDGEMENT}ch + <= ${MAX_MENTIONS_TO_DEMOTE} mention(s) ---`);
 const claimMentions = items.filter((i) => i.in_claim && i.body)
-  .map((i) => density(i.body, i.fighter).count).sort((a, b) => a - b);
-console.log(`claim-bearing items mention the fighter ${claimMentions[0]}-${claimMentions.at(-1)}× ` +
+  .map((i) => density(i.body, i.subject).count).sort((a, b) => a - b);
+console.log(`claim-bearing items mention the subject ${claimMentions[0]}-${claimMentions.at(-1)}× ` +
   `(the floor the threshold must stay under)`);
 console.log(`would demote ${posted.filter(wouldDemote).length} of ${posted.length} posted items; ` +
   `${posted.filter((i) => i.in_claim && wouldDemote(i)).length} of them claim-bearing (must be 0):`);
 for (const it of posted.filter(wouldDemote)) {
-  console.log(`  #${it.id} ${density(it.body, it.fighter).count}×  ${it.title.slice(0, 66)}`);
+  console.log(`  #${it.id} ${density(it.body, it.subject).count}×  ${it.title.slice(0, 66)}`);
 }
 console.log(`kept despite no headline name (unmeasurable or genuinely about them):`);
-for (const it of posted.filter((i) => !hasName(i.title, i.fighter) && !wouldDemote(i))) {
-  const d = it.body ? `${density(it.body, it.fighter).count}× / ${it.body.length}ch` : "no body";
+for (const it of posted.filter((i) => !hasName(i.title, i.subject) && !wouldDemote(i))) {
+  const d = it.body ? `${density(it.body, it.subject).count}× / ${it.body.length}ch` : "no body";
   console.log(`  #${it.id} ${d.padEnd(14)} ${it.title.slice(0, 62)}`);
 }
 
@@ -130,11 +130,11 @@ console.log(`\n--- RAW DIGEST LINES WITH NO NAME IN THE HEADLINE (the tier-down 
 const candidates = rawDigest.filter((i) => bucket(i) !== "title");
 if (!candidates.length) console.log("(none)");
 for (const it of candidates) {
-  console.log(`\n#${it.id} [${bucket(it)}] ${it.fighter} — ${it.source} (${it.found_via ?? "?"})`);
+  console.log(`\n#${it.id} [${bucket(it)}] ${it.subject} — ${it.source} (${it.found_via ?? "?"})`);
   console.log(`  "${it.title}"`);
   if (it.body) {
     // Show the name's neighbourhood so the mention can be judged in context.
-    const names = MATCH_NAMES[it.fighter];
+    const names = MATCH_NAMES[it.subject];
     const lower = it.body.toLowerCase();
     for (const n of names) {
       const at = lower.indexOf(n.toLowerCase());

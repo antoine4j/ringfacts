@@ -30,7 +30,7 @@ const RESET = process.env.RESET === "1";
 
 const db = await openDb();
 const { rows: items } = await db.query(
-  `SELECT id, fighter, title, source, published_at, found_via, nearest_item, held_reason,
+  `SELECT id, subject, title, source, published_at, found_via, nearest_item, held_reason,
           body, rss_description, embedding::text AS embedding_text
      FROM items ORDER BY seen_at, id`
 );
@@ -68,7 +68,7 @@ if (RESET) {
 
 // In-memory claim store — authoritative during the pass in BOTH modes
 // (the archive starts claimless and we process single-threaded).
-const claims = [];           // {id, memId, fighter, type, status, canonical_text, sources: [...]}
+const claims = [];           // {id, memId, subject, type, status, canonical_text, sources: [...]}
 const itemClaim = new Map(); // item db id -> claim record
 let nextMemId = 1;
 
@@ -92,14 +92,14 @@ for (const row of items) {
 
   // Held-as-dup items inherit their neighbor's claim, no LLM — but through
   // the SAME drift guard as the live pipeline (hunter.js holdAsDup): if some
-  // other claim of this fighter fits the item far better, the hold stands but
+  // other claim of this subject fits the item far better, the hold stands but
   // the link is refused. Only measurable in COMMIT mode, where the replayed
   // claims exist in the DB with embeddings; the dry preview inherits blindly
   // (drifts=null -> old behaviour), which the preview report should mention.
   if (row.held_reason === "embedding" && itemClaim.has(row.nearest_item)) {
     const claim = itemClaim.get(row.nearest_item);
     if (COMMIT && claim.id && row.embedding_text) {
-      const probe = { fighter: row.fighter, embedding: JSON.parse(row.embedding_text) };
+      const probe = { subject: row.subject, embedding: JSON.parse(row.embedding_text) };
       const v = await claimLinkDrifts(db, probe, claim.id, 0.1);
       if (v.drifts) {
         console.log(
@@ -118,12 +118,12 @@ for (const row of items) {
   }
 
   const candidates = claims
-    .filter((c) => c.fighter === row.fighter && ["rumor", "confirmed"].includes(c.status))
+    .filter((c) => c.subject === row.subject && ["rumor", "confirmed"].includes(c.status))
     .map((c) => ({ id: c.memId, status: c.status, type: c.type, canonical_text: c.canonical_text }));
 
   let verdict;
   try {
-    verdict = await matchItem({ fighter: row.fighter, item, candidates });
+    verdict = await matchItem({ subject: row.subject, item, candidates });
   } catch (err) {
     console.error(`matcher failed on item ${row.id}: ${err.message}`);
     tally.unsure++;
@@ -132,7 +132,7 @@ for (const row of items) {
 
   if (verdict.verdict === "WRONG_SUBJECT") {
     tally.wrong_subject++;
-    console.log(`WRONG_SUBJECT: [${row.fighter}] ${row.title.slice(0, 70)} (${row.source})`);
+    console.log(`WRONG_SUBJECT: [${row.subject}] ${row.title.slice(0, 70)} (${row.source})`);
     continue;
   }
   if (verdict.verdict === "NO_CLAIM" || (verdict.new_claim?.type === "lifestyle")) {
@@ -141,12 +141,12 @@ for (const row of items) {
   }
   if (verdict.verdict === "UNSURE") {
     tally.unsure++;
-    console.log(`UNSURE: [${row.fighter}] ${row.title.slice(0, 70)}`);
+    console.log(`UNSURE: [${row.subject}] ${row.title.slice(0, 70)}`);
     continue;
   }
 
   if (verdict.verdict === "MATCH") {
-    const claim = claims.find((c) => c.memId === verdict.match_claim_id && c.fighter === row.fighter);
+    const claim = claims.find((c) => c.memId === verdict.match_claim_id && c.subject === row.subject);
     if (!claim) { tally.unsure++; continue; }
     const role = official ? "official" : "echo";
     claim.sources.push({ itemId: row.id, role });
@@ -166,7 +166,7 @@ for (const row of items) {
   const claim = {
     memId: nextMemId++,
     id: null,
-    fighter: row.fighter,
+    subject: row.subject,
     type: nc.type,
     status,
     canonical_text: nc.canonical_text,
@@ -176,7 +176,7 @@ for (const row of items) {
     let vec = null;
     try { vec = (await embedTexts([nc.canonical_text]))?.[0] ?? null; } catch {}
     claim.id = await insertClaim(db, {
-      fighter: row.fighter, type: nc.type, canonicalText: nc.canonical_text,
+      subject: row.subject, type: nc.type, canonicalText: nc.canonical_text,
       facts: nc.facts, status, embedding: vec, embeddingModel: EMBEDDING_MODEL,
     });
     await linkClaimSource(db, row.id, claim.id, official ? "official" : "origin");
@@ -212,7 +212,7 @@ console.log(`\n=== ${COMMIT ? "COMMITTED" : "DRY RUN"} — tally ===`);
 console.log(tally);
 console.log(`\n=== claims (${claims.length}) ===`);
 for (const c of claims) {
-  console.log(`\n[${c.fighter}] ${c.type} (${c.status}) — ${c.sources.length} source(s)`);
+  console.log(`\n[${c.subject}] ${c.type} (${c.status}) — ${c.sources.length} source(s)`);
   console.log(`  "${c.canonical_text}"`);
 }
 await db.end();
