@@ -13,7 +13,7 @@ import { sendTelegramMessage, escapeHtml } from "./lib/telegram.js";
 import {
   openDb, knownUrls, nearestRecent, insertItem, itemIdByUrl,
   activeClaims, insertClaim, linkClaimSource, claimOfItem, setClaimMessageId, confirmClaim,
-  claimLinkDrifts,
+  claimLinkDrifts, markUnposted,
 } from "./lib/db.js";
 import { embedTexts, EMBEDDING_MODEL } from "./lib/embeddings.js";
 import { translateToEnglish } from "./lib/translate.js";
@@ -24,6 +24,7 @@ import { decodeGoogleNewsUrl, isGoogleWrapped } from "./lib/googlenews.js";
 import { fetchArticleBody, decodeEntities } from "./lib/extract.js";
 import { FIGHTERS } from "./lib/fighters.js";
 import { isTangential } from "./lib/tier.js";
+import { fileURLToPath } from "node:url";
 
 // Editions the group reads as-is. Headlines from any other edition are
 // translated to English at posting time, labeled as translated (§17.5:
@@ -132,11 +133,40 @@ function cleanTitle(item) {
 
 // Telegram HTML mode: headline stays plain text (calmer to read), the short
 // source name carries the link. Translated headlines are labeled — never
-// presented as the original.
-function digestLine(item) {
+// presented as the original. The href is escaped: both parsers decode HTML
+// entities into the URL (hunter.js pick(), feeds.js), so a WordPress feed's
+// "?utm_source=rss&utm_medium=rss" reaches here with a bare "&" — Telegram's
+// HTML mode rejects that and sendTelegramMessage fails the WHOLE message
+// silently, even though every item in it is already stored posted=true.
+// Exported (only these three) so the message-formatting logic — dedup,
+// escaping — is directly checkable without running main(), which this module
+// does unconditionally on import.
+export function digestLine(item) {
   const title = item.displayTitle ?? cleanTitle(item);
   const label = item.displayTitle ? ` (translated from ${item.edition})` : "";
-  return `• ${escapeHtml(title)} — <a href="${item.url}">${escapeHtml(item.source)}</a>${label}, ${hoursAgo(item.publishedAt)}h ago`;
+  return `• ${escapeHtml(title)} — <a href="${escapeHtml(item.url)}">${escapeHtml(item.source)}</a>${label}, ${hoursAgo(item.publishedAt)}h ago`;
+}
+
+// Tangential items: stored and linked, but not worth a headline. One link per
+// outlet — candidates arrive newest-first (fetchFreshItems sorts at :121), so
+// the first item seen for a given source is its newest. Falls back to the URL
+// hostname when source is empty (parseRssItems can return "" for a missing
+// <source> tag), which would otherwise render an invisible zero-width link.
+export function alsoMentioningLine(items) {
+  const bySource = new Map();
+  for (const item of items) {
+    const name = item.source.trim() || hostOf(item.resolvedUrl ?? item.url);
+    const key = name.toLowerCase();
+    if (!bySource.has(key)) bySource.set(key, { name, url: item.resolvedUrl ?? item.url });
+  }
+  const links = [...bySource.values()].map(
+    (s) => `<a href="${escapeHtml(s.url)}">${escapeHtml(s.name)}</a>`
+  );
+  return `↘ Also mentioning: ${links.join(" · ")}`;
+}
+
+function hostOf(url) {
+  try { return new URL(url).hostname.replace(/^www\./, ""); } catch { return "source"; }
 }
 
 // How much worse the inherited claim may fit before we refuse to inherit.
@@ -220,6 +250,7 @@ async function huntFighter(db, fighter, directItems = []) {
   const ceremonies = [];    // announcements born confirmed -> standalone 🚨
   const confirmations = []; // rumor->confirmed transitions -> threaded replies
   const digestClaims = [];  // claim ids whose home message is the digest
+  const tangential = [];    // demoted: one shared "also mentioning" line, not a bullet
 
   for (const [i, item] of candidates.entries()) {
     item.fighter = fighter.name;
@@ -353,8 +384,18 @@ async function huntFighter(db, fighter, directItems = []) {
     // NO_CLAIM / UNSURE / NEW from here on: the item itself gets posted.
     const nc = verdict.verdict === "NEW" ? verdict.new_claim : null;
     const isRealClaim = nc && nc.type !== "lifestyle"; // lifestyle == NO_CLAIM (docs §5)
+
+    // Digest tier (TODO step 4, thresholds measured in audit-digest-tier.js):
+    // an article that never names the fighter in its headline and names them
+    // at most once in a body long enough to judge is ABOUT someone else. It
+    // still posts — as a source link on one shared line, not as a headline.
+    // Claim sources are exempt by construction: whatever fed a claim earns
+    // its own line. Keyed on isRealClaim, not claimId — claimId is null under
+    // DRY_RUN and with no db, and this must demote identically either way.
+    item.digestTier = !isRealClaim && isTangential(item, fighter.matchNames) ? "tangential" : "main";
     item.posted = true;
     const itemId = db && !DRY_RUN ? await insertItem(db, item) : null;
+    item.dbId = itemId;
 
     if (isRealClaim) {
       const status = official || nc.sourcing === "official" ? "confirmed" : "rumor";
@@ -378,16 +419,20 @@ async function huntFighter(db, fighter, directItems = []) {
       }
       if (claimId) digestClaims.push(claimId); // quotes etc. ride the digest
     }
-    digestItems.push(item);
+    (item.digestTier === "tangential" ? tangential : digestItems).push(item);
   }
 
-  const postedCount = ceremonies.length + rumorPosts.length + digestItems.length;
+  const postedCount = ceremonies.length + rumorPosts.length + digestItems.length + tangential.length;
   console.log(
-    `${fighter.name}: ${fetched.length} fetched, ${candidates.length} unseen, ${postedCount} posted, ${confirmations.length} confirmation(s)`
+    `${fighter.name}: ${fetched.length} fetched, ${candidates.length} unseen, ${postedCount} posted ` +
+      `(${tangential.length} tangential), ${confirmations.length} confirmation(s)`
   );
 
   // Translate digest headlines the group can't read (claim texts are already
-  // English). Fail-open: a failed translation posts the original.
+  // English). Tangential items are deliberately excluded — the "also
+  // mentioning" line shows only source names, so translating their headlines
+  // would be a wasted Gemini call. Fail-open: a failed translation posts the
+  // original.
   for (const item of digestItems) {
     if (GROUP_LANGUAGES.has(item.edition)) continue;
     try {
@@ -399,7 +444,7 @@ async function huntFighter(db, fighter, directItems = []) {
 
   // 1. Ceremonies: one standalone post per confirmed announcement.
   for (const c of ceremonies) {
-    const msg = `🚨 <b>Fight announced</b>\n\n<b>${escapeHtml(c.text)}</b>\n\n— <a href="${c.item.url}">${escapeHtml(c.item.source)}</a>`;
+    const msg = `🚨 <b>Fight announced</b>\n\n<b>${escapeHtml(c.text)}</b>\n\n— <a href="${escapeHtml(c.item.url)}">${escapeHtml(c.item.source)}</a>`;
     if (DRY_RUN) {
       console.log(`\n--- would post (ceremony) ---\n${msg}\n`);
     } else {
@@ -408,13 +453,17 @@ async function huntFighter(db, fighter, directItems = []) {
     }
   }
 
-  // 2. The digest: rumor lines first, then regular items.
+  // 2. The digest: rumor lines first, then regular items, then one shared
+  // line for everything demoted as tangential. Attached only when there's a
+  // real line to attach it to — see the suppression branch below for when
+  // tangential items are the ONLY thing a run produced.
   const lines = [
     ...rumorPosts.map(
-      (r) => `🕵️ <b>Rumor:</b> ${escapeHtml(r.text)} — <a href="${r.item.url}">${escapeHtml(r.item.source)}</a>, ${hoursAgo(r.item.publishedAt)}h ago`
+      (r) => `🕵️ <b>Rumor:</b> ${escapeHtml(r.text)} — <a href="${escapeHtml(r.item.url)}">${escapeHtml(r.item.source)}</a>, ${hoursAgo(r.item.publishedAt)}h ago`
     ),
     ...digestItems.map(digestLine),
   ];
+  if (tangential.length > 0 && lines.length > 0) lines.push(alsoMentioningLine(tangential));
   if (lines.length > 0) {
     const message = `🔎 <b>${escapeHtml(fighter.name)}</b>\n\n${lines.join("\n\n")}`;
     if (DRY_RUN) {
@@ -426,11 +475,23 @@ async function huntFighter(db, fighter, directItems = []) {
         for (const cid of digestClaims) await setClaimMessageId(db, cid, mid);
       }
     }
+  } else if (tangential.length > 0) {
+    // Every posted item this run was tangential — a message with nothing but
+    // a header and an "also mentioning" line is exactly the noise this rule
+    // exists to remove, so nothing is sent. But these rows were already
+    // written with posted=true (set before we knew the run's total shape),
+    // and audit-digest-tier.js partitions the archive on that column when
+    // re-measuring thresholds — so correct it, or the next measurement reads
+    // items as broadcast that never were.
+    console.log(`${fighter.name}: ${tangential.length} tangential item(s) only — nothing broadcast`);
+    if (db && !DRY_RUN) {
+      await markUnposted(db, tangential.map((i) => i.dbId).filter(Boolean), "tangential");
+    }
   }
 
   // 3. Confirmations: threaded replies to the original rumor post.
   for (const c of confirmations) {
-    const msg = `✅ <b>Confirmed</b> — ${escapeHtml(c.text)}\n<a href="${c.item.url}">${escapeHtml(c.item.source)}</a>`;
+    const msg = `✅ <b>Confirmed</b> — ${escapeHtml(c.text)}\n<a href="${escapeHtml(c.item.url)}">${escapeHtml(c.item.source)}</a>`;
     if (DRY_RUN) {
       console.log(`\n--- would post (confirmation) ---\n${msg}\n`);
     } else {
@@ -482,14 +543,20 @@ async function main() {
   }
 }
 
-main().catch(async (err) => {
-  console.error(err);
-  // Self-report to the admin's DM, best-effort: if Telegram itself is what
-  // broke, this can't deliver — the GCP failure alert is the backstop.
-  if (ADMIN_CHAT_ID && !DRY_RUN) {
-    try {
-      await sendTelegramMessage(ADMIN_CHAT_ID, `⚠️ Hunter run failed: ${err.message}`);
-    } catch {}
-  }
-  process.exit(1);
-});
+// Guarded so a script can `import { digestLine, alsoMentioningLine } from
+// "./hunter.js"` — e.g. to check message formatting directly — without
+// triggering a live hunt. `node hunter.js` (local runs, the Cloud Run job)
+// is unaffected: argv[1] equals this file's path in that case.
+if (process.argv[1] === fileURLToPath(import.meta.url)) {
+  main().catch(async (err) => {
+    console.error(err);
+    // Self-report to the admin's DM, best-effort: if Telegram itself is what
+    // broke, this can't deliver — the GCP failure alert is the backstop.
+    if (ADMIN_CHAT_ID && !DRY_RUN) {
+      try {
+        await sendTelegramMessage(ADMIN_CHAT_ID, `⚠️ Hunter run failed: ${err.message}`);
+      } catch {}
+    }
+    process.exit(1);
+  });
+}

@@ -47,6 +47,14 @@ ALTER TABLE items ADD COLUMN IF NOT EXISTS body_fetched_at timestamptz;
 ALTER TABLE items ADD COLUMN IF NOT EXISTS body_via text;
 CREATE INDEX IF NOT EXISTS items_resolved_url_idx ON items (resolved_url);
 
+-- Digest tier (2026-08-09, lib/tier.js): 'main' | 'tangential'. Set ONLY on
+-- items that reached the posted path — never on held dups, WRONG_SUBJECT, or
+-- MATCH-as-echo, so this column means "how the digest showed this item", not
+-- "was this item judged relevant". Deliberately NOT held_reason, which must
+-- keep meaning "why the group never saw this" (bootstrap-claims.js and
+-- audit-swallowed-confirmations.js both read it that way).
+ALTER TABLE items ADD COLUMN IF NOT EXISTS digest_tier text;
+
 -- ============================================================================
 -- Claims layer (step 5, phase 1 — docs/claims-architecture.html).
 -- Articles (items) are immutable evidence; claims are living facts.
