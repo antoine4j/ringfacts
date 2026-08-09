@@ -756,17 +756,19 @@
 
   <h2 id="s10"><span class="num">10</span>Cost &amp; scale</h2>
   <table>
-    <tr><th>Component</th><th>Volume (live)</th><th>Monthly</th></tr>
-    <tr><td>Cloud Run (job + dormant service)</td><td class="mono-c">~24 short runs/day</td><td>≈ $0 (request-billed, free tier)</td></tr>
-    <tr><td>Neon Postgres</td><td class="mono-c">&lt;1 MB data</td><td>$0 — ~10× headroom in free tier</td></tr>
-    <tr><td>Gemini embeddings + translation</td><td class="mono-c">~5–20 calls/day</td><td>$0 — 10–20× headroom in free tier</td></tr>
-    <tr><td>Haiku matcher</td><td class="mono-c">~3–10 calls/day</td><td>~$0.30–0.90 — the only paid component</td></tr>
+    <tr><th>Component</th><th>Volume (measured 2026-08-09, post-2e)</th><th>Monthly</th></tr>
+    <tr><td>Cloud Run (hunter job + dormant service)</td><td class="mono-c">24 hunter runs/day + 4 self-improvement check-ins</td><td>≈ $0 (request-billed, free tier)</td></tr>
+    <tr><td>Neon Postgres</td><td class="mono-c">8.5 MB data (512 MB free-tier cap)</td><td>$0 — ~60× headroom</td></tr>
+    <tr><td>Gemini embeddings + translation</td><td class="mono-c">~19 embed calls/day (one per new item, incl. held dups)</td><td>$0 — comfortable free-tier headroom</td></tr>
+    <tr><td>Haiku matcher</td><td class="mono-c">~12 calls/day (up from ~3–10 pre-2e: direct feeds widened the funnel)</td><td>~$0.30–1.50 — the only paid component</td></tr>
   </table>
   <div class="prose">
-    <p>Total: <strong>under a dollar a month.</strong> The escalation-ladder economics hold: the archive
-    can grow 100× and only the (free) pgvector search notices. Fits the planned $10 Anthropic cap with a
-    10× margin. Exact vector scans are fine at this scale; an HNSW index becomes worth it around
-    ~100K+ rows — years away.</p>
+    <p>Total: <strong>still under two dollars a month.</strong> 2e added a discovery rail (6 outlet feeds,
+    fetched free) and a body-fetch step (plain HTTP GETs to publisher sites, also free) — neither touches
+    a billed API, so the wider funnel shows up only as more Haiku matcher calls, and even doubling that
+    volume barely moves the total. The escalation-ladder economics hold: the archive can grow 100× and
+    only the (free) pgvector search notices. Fits the planned $10 Anthropic cap with a wide margin. Exact
+    vector scans are fine at this scale; an HNSW index becomes worth it around ~100K+ rows — years away.</p>
   </div>
 
   <h2 id="s11"><span class="num">11</span>The autonomous improvement loop</h2>
