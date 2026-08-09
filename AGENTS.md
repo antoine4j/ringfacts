@@ -18,10 +18,15 @@ bot — explaining *why* beats delivering silently.
 
 ## How a run works
 
-Hourly at :17 — fetch Google News RSS per fighter (multi-language aliases) →
-drop URLs already seen → hold semantic duplicates (pgvector, cosine ≥ 0.80) →
-ask a Haiku matcher what each survivor is about (`MATCH` / `NEW` / `NO_CLAIM` /
-`WRONG_SUBJECT` / `UNSURE`) → post. Tables: `items`, `claims`, `claim_sources`.
+Hourly at :17 — fetch Google News RSS per fighter (multi-language aliases) +
+six direct publisher feeds (lib/feeds.js, filtered per fighter by name) →
+drop URLs already seen (either identity: `url` or `resolved_url`) → hold
+semantic duplicates (pgvector, cosine ≥ 0.80) → for survivors only: decode
+Google's wrapped URL and fetch/extract the article body (lib/googlenews.js,
+lib/extract.js — best-effort, headline-only on any failure) → ask a Haiku
+matcher what each survivor is about, body excerpt included (`MATCH` / `NEW` /
+`NO_CLAIM` / `WRONG_SUBJECT` / `UNSURE`) → post. Tables: `items`, `claims`,
+`claim_sources`.
 
 Every gate fails open: no embeddings degrades to URL-only dedup, a matcher error
 becomes `UNSURE` and the article posts as it always did. The one fatal condition

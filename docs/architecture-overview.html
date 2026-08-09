@@ -149,9 +149,9 @@
       <path d="M410 88 l-5 -9 h10 z" fill="var(--ink-soft)"/>
 
       <rect x="30" y="96" width="190" height="64" rx="4" fill="var(--card)" stroke="var(--ink)"/>
-      <text x="125" y="118" text-anchor="middle" font-size="12" font-weight="600">Google News RSS</text>
-      <text x="125" y="134" text-anchor="middle" font-size="10" class="t-soft">en · uk · es editions</text>
-      <text x="125" y="148" text-anchor="middle" font-size="10" class="t-soft">per-fighter alias queries</text>
+      <text x="125" y="118" text-anchor="middle" font-size="12" font-weight="600">Two discovery rails</text>
+      <text x="125" y="134" text-anchor="middle" font-size="10" class="t-soft">Google News (en·uk·es queries)</text>
+      <text x="125" y="148" text-anchor="middle" font-size="10" class="t-soft">+ 6 publisher feeds (2e)</text>
       <path d="M220 128 L298 128" stroke="var(--ink-soft)" stroke-width="1.5"/>
       <path d="M298 128 l-9 -5 v10 z" fill="var(--ink-soft)"/>
 
@@ -389,65 +389,78 @@
       <li><code>supersedes</code> — claims are never edited when reality changes; a new claim supersedes the
       old ("moved to June 6" supersedes "on May 9"). History stays intact. (Column exists; the flow that
       writes it is phase 2.)</li>
-      <li><code>rss_description</code> — Google News's own related-coverage links per item, captured for
-      future mining as a free "same story" signal.</li>
+      <li><code>rss_description</code> — Google News's own related-coverage links per item. Captured
+      "for later mining" on 2026-08-06; the mining arrived with 2e — it now feeds the matcher as
+      secondary evidence for archive items with no body.</li>
+      <li><code>resolved_url / body / body_fetched_at</code> (2e) — the real article address once
+      Google's wrapper is decoded (same as <code>url</code> for direct-feed items), and the extracted
+      article text (capped ~10k chars). Null body = headline-only; every consumer tolerates it.
+      <code>url</code> stays the identity; both columns feed the URL gate so the same story arriving
+      from two rails is one item.</li>
     </ul>
   </div>
 
   <h2 id="s4"><span class="num">4</span>The hourly pipeline</h2>
   <div class="prose">
-    <p>Every hour at :17, the hunter sweeps a <strong>24-hour window</strong> of Google News RSS per
-    fighter per language edition. The window overlapping the hourly cadence ~24× is the reliability
-    trick: any single failed run loses <em>nothing</em>, because the next run re-covers it. Each unseen
-    item then descends the three-gate ladder — each gate cheaper than the next is smart:</p>
+    <p>Every hour at :17, the hunter sweeps a <strong>24-hour window</strong> of two discovery rails:
+    Google News RSS per fighter per language edition, and — since 2e — six direct publisher feeds
+    (fetched once, filtered per fighter by name; real URLs, and an independent rail if Google sheds our
+    IP). The window overlapping the hourly cadence ~24× is the reliability trick: any single failed run
+    loses <em>nothing</em>, because the next run re-covers it. Each unseen item then descends the
+    ladder — cheap gates first, and network only for items that earned it:</p>
   </div>
 
   <div class="fig">
-    <svg viewBox="0 0 820 420" width="820" role="img" aria-label="Pipeline: RSS fetch, URL gate, embedding gate, claim matcher, then claims and poster">
+    <svg viewBox="0 0 820 420" width="820" role="img" aria-label="Pipeline: two discovery rails, URL gate, embedding gate, body step, claim matcher, then claims and poster">
       <g font-size="12">
-        <rect x="15" y="30" width="180" height="52" rx="4" fill="var(--card)" stroke="var(--ink)"/>
-        <text x="105" y="52" text-anchor="middle">RSS fetch</text>
-        <text x="105" y="68" text-anchor="middle" class="t-soft" font-size="10">24h window · retry after 75s</text>
+        <rect x="15" y="30" width="150" height="52" rx="4" fill="var(--card)" stroke="var(--ink)"/>
+        <text x="90" y="52" text-anchor="middle">Discovery ×2</text>
+        <text x="90" y="68" text-anchor="middle" class="t-soft" font-size="10">Google News + 6 outlet feeds</text>
 
-        <rect x="215" y="30" width="180" height="52" rx="4" fill="var(--card)" stroke="var(--ink)"/>
-        <text x="305" y="52" text-anchor="middle">Gate 1 — URL</text>
-        <text x="305" y="68" text-anchor="middle" class="t-soft" font-size="10">seen exact URL → skip, free</text>
+        <rect x="175" y="30" width="150" height="52" rx="4" fill="var(--card)" stroke="var(--ink)"/>
+        <text x="250" y="52" text-anchor="middle">Gate 1 — URL</text>
+        <text x="250" y="68" text-anchor="middle" class="t-soft" font-size="10">either identity seen → skip</text>
 
-        <rect x="415" y="30" width="180" height="52" rx="4" fill="var(--card)" stroke="var(--ink)"/>
-        <text x="505" y="52" text-anchor="middle">Gate 2 — Embedding</text>
-        <text x="505" y="68" text-anchor="middle" class="t-soft" font-size="10">sim ≥ 0.80 vs 7-day items → held</text>
+        <rect x="335" y="30" width="150" height="52" rx="4" fill="var(--card)" stroke="var(--ink)"/>
+        <text x="410" y="52" text-anchor="middle">Gate 2 — Embedding</text>
+        <text x="410" y="68" text-anchor="middle" class="t-soft" font-size="10">sim ≥ 0.80 → held</text>
 
-        <rect x="615" y="30" width="190" height="52" rx="4" fill="var(--blue-bg)" stroke="var(--blue)" stroke-width="1.5"/>
-        <text x="710" y="52" text-anchor="middle" font-weight="600">Gate 3 — Matcher</text>
-        <text x="710" y="68" text-anchor="middle" class="t-soft" font-size="10">one Haiku call, forced verdict</text>
+        <rect x="495" y="30" width="150" height="52" rx="4" fill="var(--card)" stroke="var(--green)" stroke-width="1.5"/>
+        <text x="570" y="52" text-anchor="middle">Body step (2e)</text>
+        <text x="570" y="68" text-anchor="middle" class="t-soft" font-size="10">decode URL · fetch · extract</text>
+
+        <rect x="655" y="30" width="150" height="52" rx="4" fill="var(--blue-bg)" stroke="var(--blue)" stroke-width="1.5"/>
+        <text x="730" y="52" text-anchor="middle" font-weight="600">Gate 3 — Matcher</text>
+        <text x="730" y="68" text-anchor="middle" class="t-soft" font-size="10">Haiku + body excerpt</text>
       </g>
       <g stroke="var(--ink-soft)" stroke-width="1.5" fill="none">
-        <path d="M195 56 L215 56"/><path d="M395 56 L415 56"/><path d="M595 56 L615 56"/>
+        <path d="M165 56 L175 56"/><path d="M325 56 L335 56"/><path d="M485 56 L495 56"/><path d="M645 56 L655 56"/>
       </g>
       <g fill="var(--ink-soft)">
-        <path d="M215 56 l-9 -5 v10 z"/><path d="M415 56 l-9 -5 v10 z"/><path d="M615 56 l-9 -5 v10 z"/>
+        <path d="M175 56 l-9 -5 v10 z"/><path d="M335 56 l-9 -5 v10 z"/><path d="M495 56 l-9 -5 v10 z"/><path d="M655 56 l-9 -5 v10 z"/>
       </g>
+      <text x="570" y="98" text-anchor="middle" font-size="9" class="t-soft">best-effort: any failure → headline-only, exactly the old pipeline</text>
 
       <g stroke="var(--amber)" stroke-width="1.5" fill="none" stroke-dasharray="5 4">
-        <path d="M505 82 L505 150"/>
+        <path d="M410 82 L410 150"/>
       </g>
-      <path d="M505 150 l-5 -9 h10 z" fill="var(--amber)"/>
-      <rect x="405" y="152" width="200" height="48" rx="4" fill="var(--amber-bg)" stroke="var(--amber)"/>
-      <text x="505" y="172" text-anchor="middle" font-size="12" font-weight="600">Held → linked as echo</text>
-      <text x="505" y="188" text-anchor="middle" font-size="10" class="t-soft">inherits its neighbour's claim, no LLM</text>
+      <path d="M410 150 l-5 -9 h10 z" fill="var(--amber)"/>
+      <rect x="310" y="152" width="200" height="48" rx="4" fill="var(--amber-bg)" stroke="var(--amber)"/>
+      <text x="410" y="172" text-anchor="middle" font-size="12" font-weight="600">Held → linked as echo</text>
+      <text x="410" y="188" text-anchor="middle" font-size="10" class="t-soft">inherits neighbour's claim (drift-guarded), no LLM</text>
 
-      <path d="M710 82 L710 150" stroke="var(--blue)" stroke-width="1.5" fill="none"/>
-      <path d="M710 150 l-5 -9 h10 z" fill="var(--blue)"/>
-      <rect x="630" y="152" width="175" height="48" rx="4" fill="var(--card)" stroke="var(--blue)" stroke-width="1.5"/>
-      <text x="717" y="172" text-anchor="middle" font-size="12" font-weight="600">normalizeVerdict</text>
-      <text x="717" y="188" text-anchor="middle" font-size="10" class="t-soft">validation gate — see §5</text>
+      <path d="M730 82 L730 150" stroke="var(--blue)" stroke-width="1.5" fill="none"/>
+      <path d="M730 150 l-5 -9 h10 z" fill="var(--blue)"/>
+      <rect x="640" y="152" width="165" height="48" rx="4" fill="var(--card)" stroke="var(--blue)" stroke-width="1.5"/>
+      <text x="722" y="172" text-anchor="middle" font-size="12" font-weight="600">normalizeVerdict</text>
+      <text x="722" y="188" text-anchor="middle" font-size="10" class="t-soft">validation gate — see §5</text>
 
       <g stroke="var(--blue)" stroke-width="1.5" fill="none">
-        <path d="M505 200 L505 236"/>
-        <path d="M717 200 L717 218 L560 218 L560 236"/>
+        <path d="M410 200 L410 236"/>
+        <path d="M722 200 L722 218 L560 218 L560 236"/>
       </g>
       <g fill="var(--blue)">
-        <path d="M505 236 l-5 -9 h10 z"/><path d="M560 236 l-5 -9 h10 z"/>
+        <path d="M410 236 l-5 -9 h10 z"/><path d="M560 236 l-5 -9 h10 z"/>
       </g>
       <rect x="300" y="240" width="400" height="52" rx="4" fill="var(--blue-bg)" stroke="var(--blue)" stroke-width="1.5"/>
       <text x="500" y="262" text-anchor="middle" font-size="13" font-weight="600">CLAIMS + CLAIM_SOURCES</text>
@@ -459,12 +472,21 @@
       <text x="500" y="355" text-anchor="middle" font-size="13" font-weight="600">POSTER</text>
       <text x="500" y="374" text-anchor="middle" font-size="11" class="t-soft">translate non-uk/en → English · 🚨 ceremony · 🕵️ rumor lines · digest · ✅ threaded confirmations</text>
     </svg>
-    <div class="figcap">Fig. 4 — One hourly run, as deployed. Amber path: held duplicates don't exit — they become claim evidence.</div>
+    <div class="figcap">Fig. 4 — One hourly run, as deployed. Amber path: held duplicates don't exit — they become claim evidence. Green box: the 2e body step, network only for items past the free gates.</div>
   </div>
 
   <div class="prose">
     <p>Details that matter in production:</p>
     <ul>
+      <li><strong>The body step is downstream of the free gates on purpose</strong> (2e, spec §11
+      shallow-before-deep): held dups and known URLs never cost network. For each matcher-bound item —
+      decode Google's wrapper (zero-network base64 for current tokens; the batchexecute fallback has a
+      per-run circuit breaker), catch the cross-source duplicate a decode can reveal (same story already
+      stored from a direct feed → held as echo through the drift guard), then fetch and extract the
+      article (zero-dependency ladder: feed content → JSON-LD <code>articleBody</code> →
+      <code>&lt;article&gt;</code> → paragraphs → og:description, the winning rung logged as quality
+      telemetry). Direct-feed items usually skip the fetch entirely — WordPress feeds ship whole
+      articles in <code>content:encoded</code>.</li>
       <li><strong>The flood cap applies to unseen items only</strong> (max 5 per fighter per run,
       newest-first, truncation logged). An earlier version capped before the URL gate — which let
       already-known items permanently shadow older unseen ones. Found by questioning, fixed.</li>
@@ -490,10 +512,12 @@
   <h2 id="s5"><span class="num">5</span>Claim matching in detail</h2>
   <div class="prose">
     <p>The matcher is the intelligence concentrated at the top of the ladder. For each item that survives
-    the free gates, one Haiku call receives the headline, source, timing — and <strong>all active claims
-    for that fighter</strong>, similarity-ordered ("order, don't cut": a top-3 cutoff was measured risky
-    because metaphor headlines bury the right candidate). Forced tool use means the answer is always a
-    parseable verdict — no JSON scraping. Five verdicts:</p>
+    the free gates, one Haiku call receives the headline, source, timing, <strong>a body excerpt when one
+    exists</strong> (first 1200 chars — 2e; archive items get Google's related-coverage cluster from
+    <code>rss_description</code> instead) — and <strong>all active claims for that fighter</strong>,
+    similarity-ordered ("order, don't cut": a top-3 cutoff was measured risky because metaphor headlines
+    bury the right candidate). Forced tool use means the answer is always a parseable verdict — no JSON
+    scraping. Five verdicts:</p>
   </div>
 
   <table>
@@ -534,11 +558,15 @@
       from the prediction.</li>
       <li><strong>Peripheral mentions are NO_CLAIM, not WRONG_SUBJECT</strong> — an early prompt dropped
       division news that involved the fighter as context; readers wanted it.</li>
-      <li><strong>Canonical text must be strictly headline-supported</strong> — the model once invented
-      "UFC defeat at the White House." Now: never invent; too ambiguous → UNSURE.</li>
-      <li><strong>Known residual:</strong> headlines that discuss the fighter without naming them ("Usman
-      walks through the division") still resolve WRONG_SUBJECT — evidence-bound, fixed when 2e brings
-      article bodies.</li>
+      <li><strong>Canonical text must be strictly evidence-supported</strong> (headline + body excerpt) —
+      the model once invented "UFC defeat at the White House." Now: never invent; too ambiguous → UNSURE.</li>
+      <li><strong>Headline-blindness is fixed for new items</strong> (2e): a body that clearly concerns
+      the fighter overrides a headline that never names them ("Usman walks through the division"). The
+      pre-2e archive has no bodies, so old items of that shape stay dropped — accepted.</li>
+      <li><strong>New watch item (2e):</strong> direct feeds admit articles about <em>other</em> fighters
+      whose body merely mentions ours; the matcher's WRONG_SUBJECT-vs-NO_CLAIM boundary jitters on these
+      (both verdicts observed on the same Cormier/Aspinall item in consecutive runs). Tighten the
+      contract if the digest bloats or real stories get dropped.</li>
     </ul>
   </div>
 
@@ -627,7 +655,8 @@
 
   <h2 id="s7"><span class="num">7</span>Independence — the hard 20% <span class="tag phase2" style="vertical-align:middle">Phase 2</span></h2>
   <div class="prose">
-    <p><em>Designed, not built — needs 2e article bodies.</em> "Two sources" is worthless if the second
+    <p><em>Designed, not built — but 2e delivered its prerequisite (bodies + real URLs), so this is now
+    buildable.</em> "Two sources" is worthless if the second
     copied the first: XSPORT translating MMA Junkie is <strong>one</strong> reporting chain, not two.
     Corroboration hinges on telling echoes from independent reports. Signals, cheapest first:</p>
     <ul>
@@ -697,8 +726,9 @@
     <tr><td>Google News 503s (load-shedding of shared cloud IPs — the laptop gets 200s while Cloud Run
         gets 503s: IP reputation)</td>
         <td>Cron at :17 (dodges the top-of-hour stampede) + one retry per feed after 75s (waves outlast
-        30s — measured, tuned)</td>
-        <td>Measure, then tune</td></tr>
+        30s — measured, tuned) + since 2e, six direct publisher feeds keep delivering even when Google
+        blanks a whole run</td>
+        <td>Measure, then tune — then diversify</td></tr>
     <tr><td>A run fails anyway</td>
         <td>Loses nothing: the 24h fetch window means the next hourly run re-covers it. Data loss starts
         only after ~24h of <em>continuous</em> outage.</td>
@@ -767,11 +797,12 @@
   <div class="prose">
     <p><strong>Build sequence ahead:</strong></p>
     <ul>
-      <li><strong>2e — direct publisher feeds + article bodies</strong> (Readability extraction). Unlocks
-      phase 2 independence, fixes WRONG_SUBJECT headline-blindness, sidesteps Google's machine-blocked
-      wrapped URLs.</li>
-      <li><strong>5 phase 2 — the full lifecycle:</strong> independence-counted corroboration, denials,
-      supersede flow, corroboration display (edit vs. reply — taste decision pending).</li>
+      <li><strong>2e — SHIPPED 2026-08-08</strong> (see §4): six direct outlet feeds, wrapped-URL decode,
+      zero-dep body extraction, matcher reads excerpts, full claims re-bootstrap (claims #9–16, drifted
+      links cleaned, argmax mismatches 7→2). Phase 2's prerequisite is delivered.</li>
+      <li><strong>5 phase 2 — the full lifecycle, NOW UNBLOCKED:</strong> independence-counted
+      corroboration (attribution text is readable in bodies), denials, supersede flow, corroboration
+      display (edit vs. reply — taste decision pending).</li>
       <li><strong>Step 6 — conversational responder</strong> with memory and web search ("where to
       watch?"), through the dormant webhook service. This is where Mastra + TypeScript enter — single
       structured calls (the matcher) never needed an agent framework; a tool-using conversational agent
@@ -781,9 +812,12 @@
     </ul>
     <p><strong>Standing watch items</strong> (tracked by the autonomous loop):</p>
     <ul>
-      <li><code>prediction</code> — the claim type the model keeps reaching for; coerced to
-      <code>other</code> for now, extend the enum if the warning recurs.</li>
-      <li>503s under the 75s retry; escalation path is jittered delay, then 2e direct feeds early.</li>
+      <li>2e telemetry: decode success rate (fast path 3/3 at launch), per-outlet fetch 403s, which
+      extraction rung wins, dup-hold volume with two rails on.</li>
+      <li>Peripheral body-mention items from outlet feeds: WRONG_SUBJECT (drop) vs NO_CLAIM (digest)
+      jitters on the same story — tighten the prompt contract if the digest bloats or real news drops.</li>
+      <li>503s under the 75s retry; direct feeds now cover a Google blackout, so escalation is only
+      about lost <em>Google-exclusive</em> discoveries.</li>
       <li>The 0.80 embedding threshold — revisit if false holds appear.</li>
       <li>Canonical-name flubs (an Islam/Khabib mix-up observed once) — Sonnet escalation if it becomes a
       pattern.</li>

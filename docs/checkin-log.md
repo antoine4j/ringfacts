@@ -17,6 +17,15 @@ as the chat report: data / changes / proposals / next attention.
 
 ---
 
+## 2026-08-08 ~22:30 PDT — 2e shipped: direct feeds, bodies, full re-bootstrap (manual session, Anton driving)
+
+- 🔧 **2e built and deployed** (commits 065ace8..c7ddc48): six verified outlet feeds (UFC official — ufc.com/rss/news EXISTS —, MMA Fighting, Bloody Elbow, Sherdog, Sport.ua uk, Marca es); Google wrapped-URL decode (base64 fast path covers all current tokens, batchexecute + breaker for new-style); zero-dep body ladder with rung telemetry; matcher reads 1200-char excerpts; bodies fetched only post-Gate-2 (shallow-before-deep). `prediction` joined the enum; official-source regex consolidated to lib/sources.js. Job timeout 600→900s.
+- 🔧 **Full claims re-bootstrap** (RESET=1 COMMIT=1, snapshot kept, items untouched): 8 claims rebuilt as #9–16. Claim #4's garbled text ("Someone has requested… Khabib Makhachev") is gone; Prates thread anchor (tg 43) re-attached to claim #16. Bootstrap's inherit path got the same drift guard as the hunter (it had re-created 5 drifted links; deleted by the same measurement). Audit after: argmax mismatches 7→2 (both deliberate matcher links), verify-drift 0 refusable, swallowed-confirmations clean.
+- 📊 First live run with 2e: 6 outlets fetched (180 items pooled), 5 unseen Fighter C items, bodies 2.1–2.6k chars all via free feed-content rung, one 0.99 cross-outlet dup held, 3 digest posts. Sport.ua is already carrying the Fighter A UFC-Paris story — the confirmation trap (claim #11) now has a uk-language rail too.
+- 👁 Watch: peripheral body-mention items from outlet feeds jitter between WRONG_SUBJECT (dropped) and NO_CLAIM (posted) — observed both verdicts on the same Cormier/Aspinall item in consecutive runs; if the digest bloats with tangential items or real ones get dropped, tighten the prompt contract. Also: decode success rate (fast path 3/3 so far), per-outlet 403s, dup-hold volume with feeds on.
+
+---
+
 ## 2026-08-08 ~16:00 PDT — verdict validation gate (first autonomous run)
 
 - 📊 Window 11:45–16:00 PDT: 3 runs, all green (75s retry never even fired — zero 503s since the fix). 3 items: 1 posted, 2 held as embedding dups (0.83, 0.87 — both correctly linked as echoes to claims 4 and 7). 1 new claim: #8 negotiation, "Carlos Prates warns against Fighter C moving to welterweight" (1 source). No confirmations; Fighter A trap still armed. No WRONG_SUBJECT, no UNSURE this window (1 UNSURE at 10:53 PDT, fail-open worked).
