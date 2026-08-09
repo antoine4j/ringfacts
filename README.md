@@ -1,12 +1,14 @@
 # FighterBot
 
-A Telegram bot that hunts MMA news about a small watchlist of fighters and posts
-what actually matters to a private group — filtering out the near-duplicate
-re-posts, the wrong-subject stories, and the articles that merely mention a
-fighter in passing.
+A news tracker for public figures. It watches a small list of people, works out
+which stories are actually *about* them, tracks each claim from rumour to
+confirmation, and posts the result to a private Telegram group — dropping the
+near-duplicate re-posts, the wrong-subject stories, and the articles that only
+mention someone in passing.
 
-It runs as an hourly Cloud Run Job on GCP with Neon Postgres + pgvector for
-memory, and costs effectively nothing (everything sits inside free tiers).
+It ships configured for MMA, which is what it runs as in production: an hourly
+Cloud Run Job on GCP with Neon Postgres + pgvector for memory, inside free tiers
+throughout.
 
 This is a learning project as much as a working bot. The commit history, the
 [spec](fighterbot-spec.md), and the [check-in log](docs/checkin-log.md) are kept
@@ -17,8 +19,8 @@ were measured and then rejected.
 
 Every hour, the hunter:
 
-1. **Fetches** Google News RSS per fighter (with multi-language name aliases)
-   plus six direct publisher feeds.
+1. **Fetches** Google News RSS per subject (with multi-language name aliases)
+   plus a set of direct publisher feeds.
 2. **Drops** anything already seen, by URL or by resolved URL after unwrapping
    Google's redirect links.
 3. **Holds semantic duplicates** — the same story from a different outlet, or in
@@ -36,6 +38,24 @@ Every gate fails open. No embeddings degrades to URL-only dedup; a matcher error
 posts the article as it always would have. The single fatal condition is a
 configured-but-unreachable database — posting without memory would re-spam the
 group every hour.
+
+## Two kinds of configuration
+
+The pipeline above knows nothing about MMA. Two things do, and they are
+deliberately separate:
+
+**The domain** ([`domain/`](domain/README.md)) is *what kind of thing* is being
+tracked: which outlets to read, whose word counts as authoritative, the claim
+vocabulary, and the nouns spliced into the matcher prompt. `DOMAIN=mma` is the
+default. [`domain/example-music.js`](domain/example-music.js) is a second one,
+written to prove the seam is real — it is clearly labelled as never having been
+run, with unverified feeds and unmeasured thresholds.
+
+**The watchlist** (`watchlist.js`) is *who* is tracked. It is gitignored:
+publishing the machinery is the point, publishing a personal watchlist is not.
+[`watchlist.example.js`](watchlist.example.js) documents the shape, including
+the per-subject `confusables` hints that tell the matcher which namesakes and
+relatives to watch out for.
 
 ## Design notes worth reading
 
@@ -59,7 +79,8 @@ database, and a Telegram bot token.
 
 ```bash
 npm ci
-cp .env.example .env    # then fill in your chat ids
+cp .env.example .env                    # then fill in your chat ids
+cp watchlist.example.js watchlist.js    # then fill in your own subjects
 npm run dev
 ```
 
@@ -74,6 +95,17 @@ ADMIN_CHAT_ID=... ALLOWED_CHAT_IDS=... ./setup.sh
 ```
 
 Any unset variable aborts the script rather than half-deploying.
+
+Note that `watchlist.js` is gitignored but **not** excluded from deploys — see
+[.gcloudignore](.gcloudignore). Gitignored means "not in the public repo", not
+"absent from production", so deploys must run somewhere that has a real one.
+
+## Scope, and what this isn't
+
+This tracks **public figures** through **published news**: RSS feeds and article
+pages that anyone can read. There is nothing here that accesses private data,
+and it would be a poor tool for surveilling a private individual — it works by
+reading what the press has already printed about someone.
 
 ## On secrets
 

@@ -6,8 +6,13 @@
 // deep in a run. Adding a domain is one import plus one map entry.
 
 import mma from "./mma.js";
+import exampleMusic from "./example-music.js";
 
-const DOMAINS = { mma };
+// "example-music" is a template, not working configuration — it has never been
+// run against live feeds. It is registered so the validation below actually
+// checks it, which is the point of shipping it: a second domain that passes
+// the same startup contract is evidence the seam is real.
+const DOMAINS = { mma, "example-music": exampleMusic };
 
 const id = process.env.DOMAIN || "mma";
 const active = DOMAINS[id];
