@@ -218,7 +218,11 @@ async function holdAsDup(db, item, role, neighborId = item.nearestItem, reason =
   await linkClaimSource(db, itemId, inherited, role);
 }
 
-async function huntFighter(db, fighter, directItems = []) {
+// Exported alongside digestLine/alsoMentioningLine so the full tier decision
+// (isTangential -> array split -> "also mentioning" line -> suppression) is
+// directly checkable with a synthetic item, without waiting for real news to
+// land in exactly the right shape.
+export async function huntFighter(db, fighter, directItems = []) {
   const fetched = await fetchFreshItems(fighter, directItems);
 
   // Gate 1: exact URLs we already know. Flood cap applies to UNSEEN items
