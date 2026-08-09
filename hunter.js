@@ -13,6 +13,7 @@ import { sendTelegramMessage, escapeHtml } from "./lib/telegram.js";
 import {
   openDb, knownUrls, nearestRecent, insertItem,
   activeClaims, insertClaim, linkClaimSource, claimOfItem, setClaimMessageId, confirmClaim,
+  claimLinkDrifts,
 } from "./lib/db.js";
 import { embedTexts, EMBEDDING_MODEL } from "./lib/embeddings.js";
 import { translateToEnglish } from "./lib/translate.js";
@@ -174,16 +175,53 @@ function digestLine(item) {
   return `• ${escapeHtml(title)} — <a href="${item.url}">${escapeHtml(item.source)}</a>${label}, ${hoursAgo(item.publishedAt)}h ago`;
 }
 
+// How much worse the inherited claim may fit before we refuse to inherit.
+// Measured 2026-08-08 over all 28 live links: the links that had drifted onto
+// a foreign claim sat 0.107-0.214 below the item's best-fitting claim, while
+// links that were right but looked wrong (claim 4, whose garbled canonical
+// text under-scores its own evidence) sat 0.076-0.082 below. 0.10 splits the
+// observed gap — same way the 0.80 dup threshold was picked.
+const CLAIM_DRIFT_GAP = Number(process.env.CLAIM_DRIFT_GAP || 0.1);
+
+// Would inheriting `claimId` be a mistake? Dup-gate inheritance is transitive:
+// B is held against A and takes A's claim, then C is held against B and takes
+// it too. Every hop clears 0.80 against the PREVIOUS headline, so the chain can
+// walk somewhere its starting claim never was — observed live, where a story
+// about Fighter C's manager blasting Ali Abdelaziz rode a 0.802 -> 0.869 -> 0.974
+// chain onto an unrelated matchmaking claim. We can't re-read the article
+// without an LLM call, but we can ask the cheaper question: does this headline
+// sit far closer to some OTHER claim than to the one it is about to join?
+async function inheritanceDrifts(db, item, claimId) {
+  const verdict = await claimLinkDrifts(db, item, claimId, CLAIM_DRIFT_GAP);
+  if (!verdict.drifts) return false; // false, or null = unmeasurable -> old behaviour
+  console.warn(
+    `${item.fighter}: claim drift — not inheriting #${claimId} (${verdict.mine.similarity.toFixed(3)}); ` +
+      `claim #${verdict.best.id} fits better (${verdict.best.similarity.toFixed(3)}, ` +
+      `gap ${verdict.gap.toFixed(3)}): ${item.title.slice(0, 60)}`
+  );
+  return true;
+}
+
 // Held as a semantic duplicate: recorded for audit, never posted, and linked
 // to whatever claim its nearest neighbor already supports — held dups inherit
 // the claim link instead of paying for extraction (docs §5).
+//
+// A drifted link is worse than no link: claim_sources rows are what phase 2
+// counts for corroboration and what a confirmation ceremony lists as evidence,
+// so a foreign article credited here becomes a wrong statement to the group
+// later. On drift we keep the hold (the item still never posts — nothing the
+// group sees changes) and leave it unlinked, which is already a recognised
+// state: audit-swallowed-confirmations.js calls unlinked held items
+// "reconciler candidates".
 async function holdAsDup(db, item, role) {
   item.posted = false;
   item.heldReason = "embedding";
   if (!db || DRY_RUN) return;
   const itemId = await insertItem(db, item);
   const inherited = await claimOfItem(db, item.nearestItem);
-  if (itemId && inherited) await linkClaimSource(db, itemId, inherited, role);
+  if (!itemId || !inherited) return;
+  if (await inheritanceDrifts(db, item, inherited)) return;
+  await linkClaimSource(db, itemId, inherited, role);
 }
 
 async function huntFighter(db, fighter) {

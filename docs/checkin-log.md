@@ -7,6 +7,16 @@ as the chat report: data / changes / proposals / next attention.
 
 ---
 
+## 2026-08-08 ~19:45 PDT — claim drift found and fenced
+
+- 📊 Window 16:00–19:45 PDT: 4 runs, 1 failed (17:17 PDT — Google 503 on all three feeds, survived the 75s retry); 19:17 green, nothing new. That is 1 failure in the 7 runs since the retry shipped and it did NOT trip the 2-in-2h alert, so the documented escalation trigger (jitter / 2e feeds) has **not** fired — left alone deliberately. 3 items, 0 posted: 2 held as embedding dups, 1 WRONG_SUBJECT (Spanish Makhachev-vs-McGregor piece that never names Fighter C — the known headline-blindness case, correct on headline-only evidence, more 2e ammunition). No new claims, no confirmations. Totals: 54 items, 8 claims, 28 links, 0 confirmed.
+- 📊 Ran the predecessor's audit script: **the swallowed-confirmation bug never fired in production** (0 official items ever held). The 18:22 fix was preventive and is deployed; the Fighter A trap is armed for real now.
+- 🔧 **Claim drift, found by measuring:** dup inheritance is transitive, and a 0.802 → 0.869 → 0.974 chain walked an "Fighter C's manager blasts Ali Abdelaziz" story onto claim #4 (a matchmaking claim). 7 of 28 links sit on a claim that is not their nearest; claim 4 had 3 foreign sources. Held dups now compare to the claim's own canonical text before linking — if another claim fits ≥ 0.10 better, the item stays held but **unlinked** (a wrong evidence row is worse than none: phase 2 counts these for corroboration and a confirmation post shows them to the group). Threshold read off the data, not guessed: drifted links sat 0.107–0.214 below the best-fitting claim, correct-but-awkward ones 0.076–0.082. Replayed all 28 links: refuses exactly the 3 bad dup-gate links, keeps all 24 good ones. Matcher-made links are never second-guessed — only the cheap gate is. Deployed.
+- 💡 Claim #4's canonical text is wrong in two ways — "Someone has requested…" (no actor) and "Khabib Makhachev" (a fusion of Khabib Nurmagomedov and Islam Makhachev). It is why that claim under-scores its own evidence. Fixing stored canonical text is a data edit, so proposing rather than doing: rewrite #4, or let a re-extraction pass own it.
+- 👁 Whether the drift warning fires again (and on which claims), the armed Fighter A confirmation, and 503 frequency against the 2-in-2h alert.
+
+---
+
 ## 2026-08-08 ~16:00 PDT — verdict validation gate (first autonomous run)
 
 - 📊 Window 11:45–16:00 PDT: 3 runs, all green (75s retry never even fired — zero 503s since the fix). 3 items: 1 posted, 2 held as embedding dups (0.83, 0.87 — both correctly linked as echoes to claims 4 and 7). 1 new claim: #8 negotiation, "Carlos Prates warns against Fighter C moving to welterweight" (1 source). No confirmations; Fighter A trap still armed. No WRONG_SUBJECT, no UNSURE this window (1 UNSURE at 10:53 PDT, fail-open worked).

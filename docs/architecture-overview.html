@@ -471,6 +471,17 @@
       <li><strong>Held ≥ 0.80 inherits the claim of its nearest neighbour</strong> as an
       <code>echo</code> — corroboration recorded for free, no LLM spent. The 0.80 threshold is measured,
       not guessed: a real translated pair scored 0.841, unrelated pairs ≤ 0.702.</li>
+      <li><strong>…but inheritance is checked against the claim itself</strong> (added 2026-08-08).
+      Inheritance is transitive — B is held against A and takes A's claim, then C is held against B and
+      takes it too — and every hop only has to clear 0.80 against the <em>previous headline</em>, so a
+      chain can walk somewhere its starting claim never was. It did: a story about Fighter C's manager
+      blasting Ali Abdelaziz rode a 0.802 → 0.869 → 0.974 chain onto an unrelated matchmaking claim.
+      Before linking, the item is now compared to the claim's own canonical text; if some other claim
+      fits at least <strong>0.10</strong> better, the item stays held but unlinked (a wrong evidence row
+      is worse than none — phase 2 counts these rows for corroboration, and a confirmation post lists
+      them to the group). The 0.10 came off the live data: measured across all 28 links, drifted ones sat
+      0.107–0.214 below the item's best-fitting claim, while correct-but-awkward ones sat 0.076–0.082
+      below. Matcher-made links are never second-guessed — only the cheap gate is.</li>
       <li><strong>Everything is idempotent.</strong> Re-running any part (migrations, backfills, the hunt
       itself) is always safe — the URL gate and <code>IF NOT EXISTS</code> guards make reruns no-ops.</li>
     </ul>
