@@ -100,6 +100,36 @@ Note that `watchlist.js` is gitignored but **not** excluded from deploys — see
 [.gcloudignore](.gcloudignore). Gitignored means "not in the public repo", not
 "absent from production", so deploys must run somewhere that has a real one.
 
+## Tests
+
+```bash
+npm test                            # offline, no credentials, ~0.4s
+git config core.hooksPath .githooks # once per clone: run them before each commit
+```
+
+Three tiers, split by what they need rather than by what they're called — see
+[docs/test-suite-overview.html](docs/test-suite-overview.html) for the tour and
+[the design note](docs/superpowers/specs/2026-08-09-test-suite-design.md) for why.
+
+| Tier | Needs | Covers |
+|---|---|---|
+| Unit + fixture | nothing | the pure functions: name filtering, verdict validation, the extraction ladder, the tier rule |
+| Pipeline | nothing | the wiring: both dedup gates, the digest tier, claim lifecycle, and every fail-open path |
+| SQL | `TEST_DATABASE_URL` | what a fake can't check: pgvector's arithmetic, dual-identity lookups, schema agreement |
+
+The first two run on every commit, which is the whole point — this repo commits
+to itself unattended every six hours. The SQL tier is opt-in and expects a Neon
+*branch*, never `main`:
+
+```bash
+TEST_DATABASE_URL=$(neonctl connection-string test --project-id <id>) npm run test:sql
+```
+
+The claim matcher is deliberately **not** asserted anywhere: it is an LLM call
+that returns different verdicts for identical input. Stubbing it everywhere is
+what keeps the suite trustworthy; measuring it belongs in a separate eval scored
+as a pass rate, not a pass/fail test.
+
 ## Scope, and what this isn't
 
 This tracks **public figures** through **published news**: RSS feeds and article

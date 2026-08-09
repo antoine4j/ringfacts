@@ -1,0 +1,25 @@
+#!/bin/sh
+# Runs the offline test tiers before every commit.
+#
+# This matters more here than in most repos: FighterBot edits and commits its
+# own code every six hours, unattended. docs/self-improvement.md §4 tells those
+# runs to verify before claiming, but a principle nothing enforces is a
+# principle that erodes. This is the enforcement.
+#
+# Only tiers 1 and 2 run — they need no network, no API keys and no database,
+# so this stays honest in a check-in session that has no credentials mounted.
+# The SQL tier is opt-in (npm run test:sql against a Neon branch).
+#
+# Installed by setup.sh, or by hand:
+#   git config core.hooksPath .githooks
+#
+# --no-verify skips this. An autonomous run must not: a red suite is a finding
+# to report, not an obstacle to route around.
+
+if ! npm test --silent; then
+  echo ""
+  echo "pre-commit: tests failed — commit aborted."
+  echo "Fix the failure, or if the test itself is now wrong, change the test"
+  echo "deliberately and say why in the commit message."
+  exit 1
+fi

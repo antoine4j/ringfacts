@@ -45,8 +45,18 @@ code is expected stable and the group's post history becomes a contract.
 
 ## Working rules
 
+- **Run the tests.** `npm test` — offline, no credentials, under a second. A
+  `pre-commit` hook runs it automatically; enable it once per clone with
+  `git config core.hooksPath .githooks`. `npm run test:sql` additionally checks
+  the real queries against a Neon branch (`TEST_DATABASE_URL`), never main.
+  Never commit with `--no-verify`: a red suite is a finding to report, not an
+  obstacle to route around.
 - **Verify before claiming.** Code changes get a `DRY_RUN=1` local run before
-  deploying; `DRY_RUN=1` prints instead of posting and skips DB writes.
+  deploying; `DRY_RUN=1` prints instead of posting and skips DB writes. The
+  tests do not replace this — they stub the network by design, so only a dry
+  run exercises the real feeds, the real matcher, and the default wiring
+  between them. That distinction is not theoretical: a mis-keyed dependency
+  once passed every test and was caught by the dry run.
 - **Deploy with the exact command in [setup.sh](setup.sh)** — it carries the
   secret mounts, timeouts, and env vars.
 - **Never post to the Telegram group** (`${TELEGRAM_CHAT_ID}`) from a development

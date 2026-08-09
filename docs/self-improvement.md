@@ -71,7 +71,22 @@ edits itself while he's asleep. A no-change entry is a valid commit.
 ## 4. Verify before claiming
 
 Code changes get a `DRY_RUN=1` local run before deploying, and behaviour claims
-in the report get evidence behind them. Two examples of why: the "Fighter A and
+in the report get evidence behind them.
+
+**Since 2026-08-09 this is enforced, not merely asked for.** A `pre-commit` hook
+runs `npm test` — the offline tiers, no credentials, under a second — so a run
+that breaks something cannot commit it while Anton is asleep. Never bypass it
+with `--no-verify`: a red suite is a finding to report in the check-in log, not
+an obstacle to route around. If a test is genuinely wrong now, change it
+deliberately and say why in the commit message.
+
+**The tests do not replace the dry run, and the reason is worth remembering.**
+They stub the network on purpose, which means they cannot see the wiring between
+the real pieces. The seam refactor that introduced them shipped with a
+dependency whose key was misspelled; every non-English headline silently posted
+untranslated, all 27 pipeline tests passed, and a `DRY_RUN=1` run against live
+feeds found it in one line of output. Stubs verify logic. Only a real run
+verifies that the parts are plugged into each other. Two examples of why: the "Fighter A and
 Fighter B fetched 0 items" pattern looked like a broken feed and turned out to be
 genuine quiet (verified by fetching all six alias feeds directly); and the
 verdict-validation change nearly shipped with a bug where Postgres returns claim
