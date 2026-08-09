@@ -12,12 +12,9 @@
 import { openDb, insertClaim, linkClaimSource, claimOfItem } from "./lib/db.js";
 import { embedTexts, EMBEDDING_MODEL } from "./lib/embeddings.js";
 import { matchItem } from "./lib/matcher.js";
+import { isOfficialSource } from "./lib/sources.js";
 
 const COMMIT = process.env.COMMIT === "1";
-
-function isOfficialSource(source) {
-  return /^ufc(\.com)?$/i.test(source.trim());
-}
 
 const db = await openDb();
 const { rows: items } = await db.query(

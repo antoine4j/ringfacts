@@ -37,7 +37,7 @@ ALTER TABLE items ADD COLUMN IF NOT EXISTS rss_description text;  -- raw RSS <de
 CREATE TABLE IF NOT EXISTS claims (
   id             bigint GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
   fighter        text NOT NULL,
-  type           text NOT NULL,      -- announcement|result|injury|quote|negotiation|lifestyle|other
+  type           text NOT NULL,      -- announcement|result|injury|quote|prediction|negotiation|lifestyle|other
   canonical_text text NOT NULL,      -- one English sentence, quote-anchored
   facts          jsonb NOT NULL DEFAULT '{}',
   status         text NOT NULL,      -- rumor|confirmed|denied|stale|superseded

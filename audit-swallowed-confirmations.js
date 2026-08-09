@@ -11,9 +11,7 @@
 //   node audit-swallowed-confirmations.js
 
 import { openDb } from "./lib/db.js";
-
-// Must stay in sync with isOfficialSource() in hunter.js (v1: ufc.com only).
-const OFFICIAL_SOURCE_RE = "^ufc(\\.com)?$";
+import { OFFICIAL_SOURCE_SQL } from "./lib/sources.js";
 
 const db = await openDb();
 try {
@@ -28,7 +26,7 @@ try {
       WHERE i.held_reason = 'embedding'
         AND i.source ~* $1
       ORDER BY c.status, i.published_at DESC`,
-    [OFFICIAL_SOURCE_RE]
+    [OFFICIAL_SOURCE_SQL]
   );
 
   // 2. Official items held as dups whose neighbor had NO claim — no link was
@@ -42,7 +40,7 @@ try {
         AND i.source ~* $1
         AND cs.item_id IS NULL
       ORDER BY i.published_at DESC`,
-    [OFFICIAL_SOURCE_RE]
+    [OFFICIAL_SOURCE_SQL]
   );
 
   const stuck = linked.filter((r) => r.status === "rumor");

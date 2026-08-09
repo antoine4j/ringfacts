@@ -18,12 +18,7 @@ import {
 import { embedTexts, EMBEDDING_MODEL } from "./lib/embeddings.js";
 import { translateToEnglish } from "./lib/translate.js";
 import { matchItem } from "./lib/matcher.js";
-
-// Official sources born-confirm claims (docs §6/§11, resolved 2026-08-08).
-// v1 list = ufc.com only; pflmma.com parked until a watched fighter signs there.
-function isOfficialSource(source) {
-  return /^ufc(\.com)?$/i.test(source.trim());
-}
+import { isOfficialSource } from "./lib/sources.js";
 
 // Editions the group reads as-is. Headlines from any other edition are
 // translated to English at posting time, labeled as translated (§17.5:
