@@ -24,6 +24,7 @@ import { decodeGoogleNewsUrl, isGoogleWrapped } from "./lib/googlenews.js";
 import { fetchArticleBody, decodeEntities } from "./lib/extract.js";
 import { FIGHTERS } from "./lib/fighters.js";
 import { isTangential } from "./lib/tier.js";
+import { domain } from "./domain/index.js";
 import { fileURLToPath } from "node:url";
 
 // Editions the group reads as-is. Headlines from any other edition are
@@ -387,7 +388,7 @@ export async function huntFighter(db, fighter, directItems = []) {
 
     // NO_CLAIM / UNSURE / NEW from here on: the item itself gets posted.
     const nc = verdict.verdict === "NEW" ? verdict.new_claim : null;
-    const isRealClaim = nc && nc.type !== "lifestyle"; // lifestyle == NO_CLAIM (docs §5)
+    const isRealClaim = nc && !domain.ignoredTypes.includes(nc.type); // docs §5
 
     // Digest tier (TODO step 4, thresholds measured in audit-digest-tier.js):
     // an article that never names the fighter in its headline and names them
@@ -413,11 +414,11 @@ export async function huntFighter(db, fighter, directItems = []) {
         });
         await linkClaimSource(db, itemId, claimId, official ? "official" : "origin");
       }
-      if (nc.type === "announcement" && status === "confirmed") {
+      if (nc.type === domain.ceremonyType && status === "confirmed") {
         ceremonies.push({ claimId, text: nc.canonical_text, item });
         continue;
       }
-      if (status === "rumor" && ["announcement", "result", "injury", "negotiation"].includes(nc.type)) {
+      if (status === "rumor" && domain.loudTypes.includes(nc.type)) {
         rumorPosts.push({ claimId, text: nc.canonical_text, item });
         continue;
       }
@@ -448,7 +449,7 @@ export async function huntFighter(db, fighter, directItems = []) {
 
   // 1. Ceremonies: one standalone post per confirmed announcement.
   for (const c of ceremonies) {
-    const msg = `🚨 <b>Fight announced</b>\n\n<b>${escapeHtml(c.text)}</b>\n\n— <a href="${escapeHtml(c.item.url)}">${escapeHtml(c.item.source)}</a>`;
+    const msg = `🚨 <b>${escapeHtml(domain.ceremonyLabel)}</b>\n\n<b>${escapeHtml(c.text)}</b>\n\n— <a href="${escapeHtml(c.item.url)}">${escapeHtml(c.item.source)}</a>`;
     if (DRY_RUN) {
       console.log(`\n--- would post (ceremony) ---\n${msg}\n`);
     } else {

@@ -4,6 +4,7 @@
 import http from "node:http";
 import Anthropic from "@anthropic-ai/sdk";
 import { sendTelegramMessage } from "./lib/telegram.js";
+import { domain } from "./domain/index.js";
 
 const PORT = process.env.PORT || 8080;
 const WEBHOOK_SECRET = process.env.TELEGRAM_WEBHOOK_SECRET;
@@ -19,9 +20,11 @@ const ALLOWED_CHAT_IDS = new Set(
 
 const anthropic = new Anthropic(); // reads ANTHROPIC_API_KEY from env
 
+// The watchlist is deliberately NOT named here: this responder has no news
+// access, so naming subjects would only invite it to invent facts about them.
 const SYSTEM_PROMPT =
-  "You are FighterBot, a Telegram bot that will eventually track MMA fighters " +
-  "(Fighter A, Fighter B, Fighter C) for a group of Ukrainian MMA fans. " +
+  `You are a Telegram bot that will eventually track ${domain.prompt.domainNoun} ` +
+  `${domain.prompt.peerPlural} for a small private group. ` +
   "Right now you are a bare-bones test version with no tools, no news access, and no memory — " +
   "each message reaches you in isolation. Be honest about that when asked. " +
   "Keep replies short and chat-friendly. Reply in the language the user writes in.";
