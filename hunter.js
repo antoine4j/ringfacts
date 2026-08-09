@@ -174,6 +174,18 @@ function digestLine(item) {
   return `• ${escapeHtml(title)} — <a href="${item.url}">${escapeHtml(item.source)}</a>${label}, ${hoursAgo(item.publishedAt)}h ago`;
 }
 
+// Held as a semantic duplicate: recorded for audit, never posted, and linked
+// to whatever claim its nearest neighbor already supports — held dups inherit
+// the claim link instead of paying for extraction (docs §5).
+async function holdAsDup(db, item, role) {
+  item.posted = false;
+  item.heldReason = "embedding";
+  if (!db || DRY_RUN) return;
+  const itemId = await insertItem(db, item);
+  const inherited = await claimOfItem(db, item.nearestItem);
+  if (itemId && inherited) await linkClaimSource(db, itemId, inherited, role);
+}
+
 async function huntFighter(db, fighter) {
   const fetched = await fetchFreshItems(fighter);
 
@@ -219,19 +231,25 @@ async function huntFighter(db, fighter) {
     item.nearestSimilarity = nearest?.similarity ?? null;
     item.nearestItem = nearest?.id ?? null;
 
+    const official = isOfficialSource(item.source);
+    const dup = Boolean(nearest && nearest.similarity >= SEMANTIC_DUP_THRESHOLD);
+
     // Gate 2: confident embedding dup -> held; inherits its neighbor's claim
     // link as an echo, no LLM needed (docs §5).
-    if (nearest && nearest.similarity >= SEMANTIC_DUP_THRESHOLD) {
-      item.posted = false;
-      item.heldReason = "embedding";
+    //
+    // Official sources are exempt, because this gate is most likely to fire
+    // exactly when it must not: an official confirmation headline is BY
+    // CONSTRUCTION near-identical to the rumor it confirms, so holding it
+    // here would swallow the rumor -> confirmed transition (docs §6) — the
+    // one edge the claims layer exists to catch. Official items go to the
+    // matcher instead, so the confirm decision rests on read meaning rather
+    // than on 0.80 cosine; the loudest thing the bot does earns the LLM call.
+    // The exemption is a deferral, not a waiver — see the re-apply below.
+    if (dup && !official) {
       console.log(
         `${fighter.name}: held as dup (${nearest.similarity.toFixed(2)} vs "${nearest.title.slice(0, 60)}"): ${item.title.slice(0, 60)}`
       );
-      if (db && !DRY_RUN) {
-        const itemId = await insertItem(db, item);
-        const inherited = await claimOfItem(db, item.nearestItem);
-        if (itemId && inherited) await linkClaimSource(db, itemId, inherited, "echo");
-      }
+      await holdAsDup(db, item, "echo");
       continue;
     }
 
@@ -250,8 +268,6 @@ async function huntFighter(db, fighter) {
     console.log(
       `${fighter.name}: matcher ${verdict.verdict}${verdict.match_claim_id ? " #" + verdict.match_claim_id : ""}: ${item.title.slice(0, 60)}`
     );
-
-    const official = isOfficialSource(item.source);
 
     if (verdict.verdict === "WRONG_SUBJECT") {
       // Namesake / junk: recorded for audit, never posted, never a claim.
@@ -279,6 +295,20 @@ async function huntFighter(db, fighter) {
           if (c) confirmations.push({ text: c.canonical_text, replyTo: c.tg_message_id, item });
         }
       }
+      continue;
+    }
+
+    // Gate 2, re-applied. The official exemption above bought this item a
+    // matcher call so it could reach MATCH (-> confirm, already returned) or
+    // NEW (-> born-confirmed claim, handled below). On UNSURE / NO_CLAIM
+    // there is no claim to act on, so the reason to skip the dup gate is
+    // gone and the gate stands — otherwise a matcher outage (fail-open
+    // UNSURE, missing API key) turns every official echo into a duplicate post.
+    if (official && dup && ["UNSURE", "NO_CLAIM"].includes(verdict.verdict)) {
+      console.log(
+        `${fighter.name}: matcher ${verdict.verdict}, holding official dup (${nearest.similarity.toFixed(2)} vs "${nearest.title.slice(0, 60)}"): ${item.title.slice(0, 60)}`
+      );
+      await holdAsDup(db, item, "official");
       continue;
     }
 
