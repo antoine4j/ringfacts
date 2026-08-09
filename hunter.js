@@ -11,7 +11,7 @@
 
 import { sendTelegramMessage, escapeHtml } from "./lib/telegram.js";
 import {
-  openDb, knownUrls, nearestRecent, insertItem,
+  openDb, knownUrls, nearestRecent, insertItem, itemIdByUrl,
   activeClaims, insertClaim, linkClaimSource, claimOfItem, setClaimMessageId, confirmClaim,
   claimLinkDrifts,
 } from "./lib/db.js";
@@ -19,6 +19,9 @@ import { embedTexts, EMBEDDING_MODEL } from "./lib/embeddings.js";
 import { translateToEnglish } from "./lib/translate.js";
 import { matchItem } from "./lib/matcher.js";
 import { isOfficialSource } from "./lib/sources.js";
+import { OUTLETS, fetchOutletItems, matchesFighter } from "./lib/feeds.js";
+import { decodeGoogleNewsUrl, isGoogleWrapped } from "./lib/googlenews.js";
+import { fetchArticleBody, decodeEntities } from "./lib/extract.js";
 
 // Editions the group reads as-is. Headlines from any other edition are
 // translated to English at posting time, labeled as translated (§17.5:
@@ -38,6 +41,9 @@ const SEMANTIC_DUP_THRESHOLD = Number(process.env.SEMANTIC_DUP_THRESHOLD || 0.8)
 // Aliases are search queries, not display names. First draft (spec §17.4 is
 // still open): Cyrillic aliases matter most for the fighters western media
 // ignores. Each alias pairs with a Google News language edition.
+// matchNames (2e) filter outlet-wide direct feeds down to this fighter —
+// surname stems only, so Ukrainian case endings still match (Fighter Cя/Fighter Cї
+// both contain "Fighter C").
 const FIGHTERS = [
   {
     name: "Fighter A",
@@ -45,6 +51,7 @@ const FIGHTERS = [
       { query: '"Fighter A"', edition: "en" },
       { query: '"Fighter A"', edition: "uk" },
     ],
+    matchNames: ["Fighter A", "Fighter A"],
   },
   {
     name: "Fighter B",
@@ -52,6 +59,7 @@ const FIGHTERS = [
       { query: '"Fighter B"', edition: "en" },
       { query: '"Fighter B"', edition: "uk" },
     ],
+    matchNames: ["Fighter B", "Fighter B"],
   },
   {
     name: "Fighter C",
@@ -61,6 +69,7 @@ const FIGHTERS = [
       // press covers him as a domestic athlete (added 2026-08-07).
       { query: '"Fighter C"', edition: "es" },
     ],
+    matchNames: ["Fighter C", "Fighter C"],
   },
 ];
 
@@ -101,16 +110,6 @@ function parseRssItems(xml) {
   return items;
 }
 
-function decodeEntities(text) {
-  return text
-    .replace(/<!\[CDATA\[([\s\S]*?)\]\]>/g, "$1")
-    .replace(/&amp;/g, "&")
-    .replace(/&lt;/g, "<")
-    .replace(/&gt;/g, ">")
-    .replace(/&quot;/g, '"')
-    .replace(/&#39;/g, "'");
-}
-
 function hoursAgo(date) {
   return Math.round((Date.now() - date.getTime()) / 3_600_000);
 }
@@ -131,7 +130,7 @@ async function fetchFeed(alias) {
   return res.text();
 }
 
-async function fetchFreshItems(fighter) {
+async function fetchFreshItems(fighter, directItems = []) {
   const cutoff = Date.now() - HOURS_BACK * 3_600_000;
   const items = [];
   for (const alias of fighter.aliases) {
@@ -142,9 +141,12 @@ async function fetchFreshItems(fighter) {
     }
     items.push(...found);
   }
-  // Fresh only, newest first. In-run URL dedup across aliases; cross-run
-  // dedup is the database's job. NOTE: no cap here — capping before the
-  // known-URL check would let newer known items permanently shadow older
+  // Direct-feed items that name this fighter (2e). Cloned: the outlet pool is
+  // shared across fighters, and the pipeline stamps per-fighter fields.
+  items.push(...directItems.filter((i) => matchesFighter(i, fighter)).map((i) => ({ ...i })));
+  // Fresh only, newest first. In-run URL dedup across aliases and outlets;
+  // cross-run dedup is the database's job. NOTE: no cap here — capping before
+  // the known-URL check would let newer known items permanently shadow older
   // unseen ones. The cap is applied to unseen candidates in huntFighter.
   const seen = new Set();
   return items
@@ -208,19 +210,19 @@ async function inheritanceDrifts(db, item, claimId) {
 // group sees changes) and leave it unlinked, which is already a recognised
 // state: audit-swallowed-confirmations.js calls unlinked held items
 // "reconciler candidates".
-async function holdAsDup(db, item, role) {
+async function holdAsDup(db, item, role, neighborId = item.nearestItem, reason = "embedding") {
   item.posted = false;
-  item.heldReason = "embedding";
+  item.heldReason = reason;
   if (!db || DRY_RUN) return;
   const itemId = await insertItem(db, item);
-  const inherited = await claimOfItem(db, item.nearestItem);
+  const inherited = await claimOfItem(db, neighborId);
   if (!itemId || !inherited) return;
   if (await inheritanceDrifts(db, item, inherited)) return;
   await linkClaimSource(db, itemId, inherited, role);
 }
 
-async function huntFighter(db, fighter) {
-  const fetched = await fetchFreshItems(fighter);
+async function huntFighter(db, fighter, directItems = []) {
+  const fetched = await fetchFreshItems(fighter, directItems);
 
   // Gate 1: exact URLs we already know. Flood cap applies to UNSEEN items
   // (newest first), so a busy-day backlog drains at 5/run across successive
@@ -284,6 +286,35 @@ async function huntFighter(db, fighter) {
       );
       await holdAsDup(db, item, "echo");
       continue;
+    }
+
+    // Body step (2e), only for items that made it past the free gates — held
+    // dups and known URLs never cost network. Decode Google's wrapper to the
+    // real URL, catch the cross-source duplicate that reveals (a story we
+    // already stored from a direct feed), then fetch + extract the article.
+    // Everything here is a bonus: any failure leaves the item headline-only,
+    // which is exactly yesterday's pipeline.
+    try {
+      const resolved = await decodeGoogleNewsUrl(item.url);
+      item.resolvedUrl = resolved ?? null; // null = wrapped URL we couldn't open
+      if (resolved && resolved !== item.url && db) {
+        const dupId = await itemIdByUrl(db, resolved);
+        if (dupId) {
+          console.log(`${fighter.name}: held as url dup (decoded to stored item #${dupId}): ${item.title.slice(0, 60)}`);
+          await holdAsDup(db, item, "echo", dupId, "url");
+          continue;
+        }
+      }
+      if (item.resolvedUrl || item.feedContent) {
+        const r = await fetchArticleBody(item.resolvedUrl, { feedContent: item.feedContent });
+        item.body = r.body;
+        item.bodyFetchedAt = r.fetchedAt ?? null;
+        console.log(
+          `${fighter.name}: body ${r.body ? `${r.body.length} chars via ${r.via}` : `none (${r.via})`}: ${item.title.slice(0, 50)}`
+        );
+      }
+    } catch (err) {
+      console.warn(`${fighter.name}: body step failed (headline-only):`, err.message);
     }
 
     // Gate 3: the claim matcher (absorbs the gray-zone judge — a MATCH-as-echo
@@ -444,11 +475,25 @@ async function main() {
   const db = process.env.DATABASE_URL ? await openDb() : null;
   if (!db) console.warn("No DATABASE_URL — running without dedup memory.");
 
+  // Direct publisher feeds (2e): one fetch per outlet per run, shared across
+  // fighters. A dead outlet is a warning, never a failed run — and if Google
+  // 503s a whole run, these still deliver (the documented escalation path).
+  const directItems = [];
+  const outletResults = await Promise.allSettled(OUTLETS.map((o) => fetchOutletItems(o)));
+  outletResults.forEach((r, i) => {
+    if (r.status === "fulfilled") {
+      directItems.push(...r.value);
+      console.log(`direct feed ${OUTLETS[i].id}: ${r.value.length} items`);
+    } else {
+      console.warn(`direct feed ${OUTLETS[i].id} failed:`, r.reason.message);
+    }
+  });
+
   try {
     let failures = 0;
     for (const fighter of FIGHTERS) {
       try {
-        await huntFighter(db, fighter);
+        await huntFighter(db, fighter, directItems);
       } catch (err) {
         // One broken feed must not kill the other fighters' hunts.
         failures++;
