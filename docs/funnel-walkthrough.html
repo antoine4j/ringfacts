@@ -316,7 +316,11 @@
   <h2 id="s5"><span class="stage-no">§5</span>Gate 3 — What is this article actually about?</h2>
   <p class="rule">One Haiku call per survivor: the headline, source, a body excerpt when there is one,
   and every currently active claim for the subject. Forced tool use means the answer is always one of
-  five verdicts — never free text to parse.</p>
+  five verdicts — never free text to parse. The same call answers a second, independent question in the
+  same breath: <strong>how prominent is the subject in this article</strong> —
+  <code>central</code>, <code>supporting</code>, or <code>passing</code>. The verdict says what the
+  article <em>asserts</em>; the role says who it is <em>about</em>. §6 is where the role earns its
+  keep.</p>
   <p class="note">The same real thread — Ali Abdelaziz predicting Usman Nurmagomedov beats Topuria —
   walks through all five below, over five real articles across four days and three outlets in two
   languages.</p>
@@ -386,17 +390,17 @@
   <p class="note">NO_CLAIM: about the subject's world, but asserts nothing claim-worthy — division
   context, reactions, lifestyle. UNSURE: the matcher genuinely can't tell, and abstains rather than
   guess. Both post through the normal digest exactly as if no claims layer existed at all — which is
-  where §6 picks up.</p>
+  where §6 picks up, with the role judgment riding along.</p>
 
   <h2 id="s6"><span class="stage-no">§6</span>Digest tier — does this earn its own headline?</h2>
   <p class="rule">Every NO_CLAIM or UNSURE item — the ones with no claim to anchor a decision to — gets
   one more check before posting. A headline that names the subject always keeps its own bullet.
-  Otherwise, either of two signals folds it into a single shared "↘ Also mentioning" line: the matcher's
-  own <strong>subject_role</strong> judgment — <code>passing</code>, the subject named only as background
-  color, reported in the same call as the §5 verdict, so it costs nothing extra — or, as the measured
-  fallback, a body long enough to judge (≥300 characters) that names the subject <strong>at most
-  once</strong>. The LLM signal can only <em>add</em> demotions, never rescue: any answer but
-  <code>passing</code> falls through to the count rule unchanged.</p>
+  Otherwise, either of two signals folds it into a single shared "↘ Also mentioning" line: the §5 role
+  came back <strong><code>passing</code></strong>, or — as the measured fallback — the body is long
+  enough to judge (≥300 characters) and names the subject <strong>at most once</strong>. The two are
+  deliberately unequal. The count rule was read off real archive data; the role judgment is new and
+  unmeasured, so it may only <em>add</em> demotions, never rescue: <code>central</code> and
+  <code>supporting</code> change nothing, and the count rule decides as it always did.</p>
   <div class="callout blue">
     <strong>The Topuria / Salkilld story, end to end</strong>
     The Sports Illustrated item from §4 is a NO_CLAIM: about Salkilld, not Topuria, who appears in
