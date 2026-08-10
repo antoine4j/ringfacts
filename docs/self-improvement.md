@@ -113,6 +113,29 @@ which real-world check a given change actually needs:
 The point is not "always run everything" — it's not skipping the one check
 that would have actually caught the bug because the offline suite was green.
 
+**Claims in the docs need sources too, and the matcher's verdict is not one
+of the columns (2026-08-10).** The public walkthrough cited an article as a
+NO_CLAIM example. It was a real article and a real archive row, so a database
+check "passed" — but that row was ingested 2026-08-07 and the matcher did not
+exist until 2026-08-08. The article had never received any verdict at all; it
+posted because at that point everything posted.
+
+The trap is that `items` records the *consequences* of a verdict, never the
+verdict itself. `posted = true` with a null `held_reason` is the shared shape
+of NO_CLAIM, UNSURE, a NEW whose type is ignored, and any row predating the
+claims layer entirely. Reading a verdict back off that shape is a guess
+wearing the costume of a query. **Cloud Logging is the only record of what the
+matcher actually said** (`matcher NO_CLAIM: <title>`, 30-day retention,
+scheduled runs only) — so a doc that names a verdict must cite a log line, and
+a doc that names an article from before a feature shipped must check that
+feature's commit date. `held_reason = 'wrong_subject'` is the one verdict the
+database does record directly.
+
+Generalised: when writing a factual claim into a tracked document, check it
+against the artifact that *records* the fact, not one that merely correlates
+with it — and prefer naming the real item over describing it, because a named
+item can be re-verified by a reader and a paraphrase cannot.
+
 ## 5. Silence is a success state
 
 A quiet group is not a broken bot. The point of this system is that the Telegram

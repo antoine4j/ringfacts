@@ -167,7 +167,7 @@
   <code>docs/test-suite-overview.html</code>.</p>
 
   <figure>
-    <svg viewBox="0 0 760 805" role="img" aria-label="Funnel shape of the archive, refreshed to this snapshot: two discovery rails feed Gate 1, which Cloud Logging shows performing 1208 URL checks and keeping 85; 90 items in total reach the remaining gates, 37 held as near-duplicates, 53 reached the matcher, 8 dropped as the wrong subject, 2 held as a matched fact, 41 posted, and of those 10 became named claims corroborated by 42 linked sources">
+    <svg viewBox="0 0 760 805" role="img" aria-label="Funnel shape of the archive, refreshed to this snapshot: two discovery rails feed Gate 1, which Cloud Logging shows performing 1248 URL checks and keeping 90; 95 items in total reach the remaining gates, 40 held as near-duplicates, 55 reached the matcher, 9 dropped as the wrong subject, 3 held as a matched fact, 41 posted, and of those 10 became named claims corroborated by 46 linked sources">
       <g font-family="ui-monospace, SFMono-Regular, Menlo, monospace" fill="currentColor">
 
         <!-- top band: discovery + Gate 1. Measured, not guessed — pulled from Cloud Logging,
@@ -178,28 +178,28 @@
 
         <rect x="50" y="55" width="660" height="85" rx="4" fill="none" stroke="currentColor" stroke-width="1.3" opacity=".35"/>
         <a href="#s2"><text x="380" y="80" text-anchor="middle" font-size="12" fill="var(--red)">Gate 1 — drop anything with a known URL, silently <tspan class="tag" fill="currentColor">(§2)</tspan></text></a>
-        <text x="380" y="99" text-anchor="middle" font-size="11">1,208 URL checks → 85 new, 1,123 already known</text>
+        <text x="380" y="99" text-anchor="middle" font-size="11">1,248 URL checks → 90 new, 1,158 already known</text>
         <text x="380" y="118" text-anchor="middle" font-size="10" opacity=".65">+ 5 more via one untracked manual run — not counted here</text>
 
         <path d="M380 140 L380 175" stroke="currentColor" stroke-width="1.3" opacity=".55" fill="none"/>
         <path d="M380 175 l-6 -10 h12 z" fill="currentColor" opacity=".55"/>
-        <text x="380" y="195" text-anchor="middle" font-size="13" font-weight="600">90 items reach the remaining gates</text>
+        <text x="380" y="195" text-anchor="middle" font-size="13" font-weight="600">95 items reach the remaining gates</text>
 
         <!-- funnel outline below: exact archive counts, trapezoid segments narrowing top to
              bottom, generous width so labels never touch an edge -->
         <polygon points="50,215 710,215 660,305 100,305" fill="none" stroke="currentColor" stroke-width="1.3" opacity=".35"/>
-        <a href="#s3"><text x="380" y="265" text-anchor="middle" font-size="12" fill="var(--red)">37 held — near-duplicate <tspan class="tag" fill="currentColor">(§3)</tspan></text></a>
+        <a href="#s3"><text x="380" y="265" text-anchor="middle" font-size="12" fill="var(--red)">40 held — near-duplicate <tspan class="tag" fill="currentColor">(§3)</tspan></text></a>
         <text x="380" y="285" text-anchor="middle" font-size="10" opacity=".65">cosine ≥ 0.80 — inherits the neighbour's claim, free</text>
 
         <polygon points="100,305 660,305 610,395 150,395" fill="none" stroke="currentColor" stroke-width="1.3" opacity=".35"/>
-        <text x="380" y="355" text-anchor="middle" font-size="12">53 reach the matcher</text>
+        <text x="380" y="355" text-anchor="middle" font-size="12">55 reach the matcher</text>
         <text x="380" y="373" text-anchor="middle" font-size="10" opacity=".65"><a href="#s4">body fetched <tspan class="tag">(§4)</tspan></a> · <a href="#s5">Haiku reads it <tspan class="tag">(§5)</tspan></a></text>
 
         <polygon points="150,395 610,395 570,485 190,485" fill="none" stroke="currentColor" stroke-width="1.3" opacity=".35"/>
-        <a href="#s5"><text x="380" y="445" text-anchor="middle" font-size="12" fill="var(--red)">8 dropped — wrong subject <tspan class="tag" fill="currentColor">(§5)</tspan></text></a>
+        <a href="#s5"><text x="380" y="445" text-anchor="middle" font-size="12" fill="var(--red)">9 dropped — wrong subject <tspan class="tag" fill="currentColor">(§5)</tspan></text></a>
 
         <polygon points="190,485 570,485 530,575 230,575" fill="none" stroke="currentColor" stroke-width="1.3" opacity=".35"/>
-        <a href="#s5"><text x="380" y="535" text-anchor="middle" font-size="12" fill="var(--blue)">2 held — same fact (MATCH) <tspan class="tag" fill="currentColor">(§5)</tspan></text></a>
+        <a href="#s5"><text x="380" y="535" text-anchor="middle" font-size="12" fill="var(--blue)">3 held — same fact (MATCH) <tspan class="tag" fill="currentColor">(§5)</tspan></text></a>
 
         <polygon points="230,575 530,575 510,665 250,665" fill="var(--grey-bg)" stroke="currentColor" stroke-width="1.3" opacity=".7"/>
         <a href="#s5"><text x="380" y="615" text-anchor="middle" font-weight="700" font-size="15">41 posted</text></a>
@@ -209,14 +209,14 @@
         <path d="M380 665 L380 693" stroke="var(--blue)" stroke-width="1.5" fill="none"/>
         <path d="M380 693 l-6 -10 h12 z" fill="var(--blue)"/>
         <rect x="190" y="699" width="380" height="42" rx="5" fill="var(--blue-bg)" stroke="var(--blue)"/>
-        <a href="#s7"><text x="380" y="725" text-anchor="middle" fill="var(--blue)" font-weight="700" font-size="13">10 claims · 42 corroborating links <tspan class="tag" fill="currentColor">(§7)</tspan></text></a>
+        <a href="#s7"><text x="380" y="725" text-anchor="middle" fill="var(--blue)" font-weight="700" font-size="13">10 claims · 46 corroborating links <tspan class="tag" fill="currentColor">(§7)</tspan></text></a>
       </g>
     </svg>
     <figcaption><strong>Fig. 1</strong> — The whole shape, discovery to claims, refreshed to this
     snapshot. Gate 1's numbers come from Cloud Logging, not the database — dropped items are never
     written to a row, so this is the one gate the archive itself can't measure. Even Cloud Logging
-    misses one slice: 5 of the 90 items below arrived through a single manual run that predates its
-    view entirely, which is why "1,208 checked → 85 new" and "90 items reach the remaining gates"
+    misses one slice: 5 of the 95 items below arrived through a single manual run that predates its
+    view entirely, which is why "1,248 checked → 90 new" and "95 items reach the remaining gates"
     aren't quite the same number. One further row pre-dates the held_reason/digest_tier columns and
     isn't broken out below either — a rounding error in an otherwise exact set of counts.</figcaption>
   </figure>
@@ -238,8 +238,8 @@
   everything ever stored → dropped silently, no database write at all. This is the only gate that costs
   nothing — no embedding, no fetch, no LLM call.</p>
   <p class="stat-line">The database has no record of this gate — dropped items are never written. Cloud
-  Logging does: across every scheduled run since 2026-08-07, <b>1,208 URL checks → 85 new</b>
-  (<b>93%</b> already known, dropped). See Fig. 1.</p>
+  Logging does: across every scheduled run since 2026-08-07, <b>1,248 URL checks → 90 new</b>
+  (<b>93%</b> already known, dropped — 1,158 of 1,248). See Fig. 1.</p>
   <p class="note">Survivors are capped at <strong>5 unseen items per subject per run</strong>, newest
   first, applied after this gate — so on a busy day the newest 5 unseen items go through now, and
   whatever's left over is simply picked up next run. Nothing is lost, only delayed.</p>
@@ -250,7 +250,7 @@
   whatever claim its nearest neighbour already supports, recorded as corroboration for free, no LLM
   spent. The threshold is measured, not guessed: a real translated pair of the same story scored 0.841;
   unrelated same-subject pairs never rose above 0.702.</p>
-  <p class="stat-line"><b>37 of 90</b> items were held here — the single biggest gate in the funnel.</p>
+  <p class="stat-line"><b>40 of 95</b> items were held here — the single biggest gate in the funnel.</p>
   <div class="cards">
     <div class="card">
       <p class="hl">"Manager believes Usman Nurmagomedov walks through UFC lightweight contenders, with
@@ -275,14 +275,20 @@
   real article address, then the body is extracted through a ladder — cheapest and most reliable first —
   and every attempt is logged, success or failure:</p>
   <table class="mini">
-    <tr><th>Rung</th><th>Source</th><th class="num">Times, live archive</th></tr>
-    <tr><td>0 — feed content</td><td>the outlet's own RSS already contains the article</td><td class="num">3</td></tr>
-    <tr><td>1 — JSON-LD</td><td>a machine-readable copy embedded for search engines</td><td class="num">2</td></tr>
+    <tr><th>Rung</th><th>Source</th><th class="num">Times recorded</th></tr>
+    <tr><td>0 — feed content</td><td>the outlet's own RSS already contains the article</td><td class="num">4</td></tr>
+    <tr><td>1 — JSON-LD</td><td>a machine-readable copy embedded for search engines</td><td class="num">3</td></tr>
     <tr><td>2 — <code>&lt;article&gt;</code> tag</td><td>the page's own article paragraphs</td><td class="num">2</td></tr>
-    <tr><td>3 — all paragraphs</td><td>every <code>&lt;p&gt;</code> on the page, cruder</td><td class="num">1</td></tr>
+    <tr><td>3 — all paragraphs</td><td>every <code>&lt;p&gt;</code> on the page, cruder</td><td class="num">2</td></tr>
     <tr><td>4 — og:description</td><td>a one-sentence meta summary, last resort</td><td class="num">0</td></tr>
-    <tr><td>— failed (403 / no extract)</td><td>every attempt logged even on failure</td><td class="num">15</td></tr>
+    <tr><td>— failed (403 / no extract)</td><td>every attempt logged even on failure</td><td class="num">16</td></tr>
   </table>
+  <p class="note">Those 27 do not add up to the 55 items that reach this step, and the gap is honest
+  rather than missing data: the <code>body_via</code> column that records which rung won only shipped
+  partway through the archive's life. Items processed before it exist with a body and no rung — 49 of
+  them got their text later from a one-off backfill script, which is also why the mention counts in §6
+  could be recomputed for articles nobody re-fetched. Telemetry starts when you add it, not when the
+  behaviour starts.</p>
   <div class="callout">
     <strong>The fix this walkthrough exists to explain (2026-08-10)</strong>
     Sports Illustrated's page renders its own lede paragraphs <em>twice</em> inside
@@ -321,9 +327,23 @@
   <code>central</code>, <code>supporting</code>, or <code>passing</code>. The verdict says what the
   article <em>asserts</em>; the role says who it is <em>about</em>. §6 is where the role earns its
   keep.</p>
+  <table class="mini">
+    <tr><th>Verdict — all five</th><th>Meaning</th><th>What happens to the article</th></tr>
+    <tr><td class="mono">NEW</td><td>a claim-worthy fact not on file</td><td>opens a claim · posts as a rumor line</td></tr>
+    <tr><td class="mono">MATCH</td><td>a fact already on file, sighted again</td><td>linked as corroboration · not posted</td></tr>
+    <tr><td class="mono">WRONG_SUBJECT</td><td>not about this subject at all</td><td>dropped · never posted</td></tr>
+    <tr><td class="mono">NO_CLAIM</td><td>their world, but asserts nothing recordable</td><td>posts through the digest (§6)</td></tr>
+    <tr><td class="mono">UNSURE</td><td>can't tell — abstains rather than guess</td><td>posts through the digest (§6)</td></tr>
+  </table>
+  <table class="mini">
+    <tr><th>subject_role — all three</th><th>Meaning</th><th>Effect on the digest (§6)</th></tr>
+    <tr><td class="mono">central</td><td>the article is about them</td><td>none yet — the count rule decides</td></tr>
+    <tr><td class="mono">supporting</td><td>they act in it: quoted, involved</td><td>none yet — the count rule decides</td></tr>
+    <tr><td class="mono">passing</td><td>named as background colour in someone else's story</td><td>folds into "Also mentioning"</td></tr>
+  </table>
   <p class="note">The same real thread — Ali Abdelaziz predicting Usman Nurmagomedov beats Topuria —
-  walks through all five below, over five real articles across four days and three outlets in two
-  languages.</p>
+  supplies most of the examples below: it produced a NEW, two MATCHes, and the corroboration stack §7
+  ends on, across five days and four outlets in two languages.</p>
 
   <h3 style="font-family:var(--disp);font-size:1.05rem;margin:1.8em 0 .3em;">NEW — a claim-worthy fact not seen before</h3>
   <div class="cards single">
@@ -337,26 +357,21 @@
   <h3 style="font-family:var(--disp);font-size:1.05rem;margin:1.8em 0 .3em;">MATCH — the same fact, sighted again</h3>
   <div class="cards">
     <div class="card">
-      <p class="hl">"Ali Abdelaziz says no UFC star can beat Usman Nurmagomedov"</p>
-      <div class="meta"><span class="src">MMA Sucka · Aug 7</span><span class="chip match">MATCH → echo</span></div>
-    </div>
-    <div class="card">
-      <p class="hl">"Topuria, objetivo Nurmagomedov: 'Usman hará que se rinda'"</p>
-      <div class="meta"><span class="src">Diario AS (es) · Aug 8</span><span class="chip match">MATCH → echo</span></div>
-    </div>
-    <div class="card">
       <p class="hl">"Abdelaziz Calls Out Topuria For Nurmagomedov's UFC Debut"</p>
-      <div class="meta"><span class="src">boxingnews.com · Aug 9</span><span class="chip match">MATCH → echo</span></div>
+      <div class="meta"><span class="src">boxingnews.com · Aug 9</span><span class="chip match">MATCH #13 → echo</span></div>
     </div>
     <div class="card">
-      <p class="hl">"Max Holloway reacts to Ali Abdelaziz claiming Usman Nurmagomedov would dominate him
-      in the UFC"</p>
-      <div class="meta"><span class="src">Bloody Elbow · Aug 9</span><span class="chip match">MATCH → echo</span></div>
+      <p class="hl">"Daniel Cormier rejects Ali Abdelaziz's 'absolutely crazy' take about Usman
+      Nurmagomedov"</p>
+      <div class="meta"><span class="src">Bloody Elbow · Aug 10</span><span class="chip match">MATCH #13 → echo</span></div>
     </div>
   </div>
-  <p class="note">All four are linked as evidence for claim #13, silently — the group sees no repeat
-  posts. This is corroboration recorded, not noise discarded, which is the entire reason the claims layer
-  exists (§7).</p>
+  <p class="note">Both are linked as evidence for claim #13 and neither is posted — the group never sees
+  a repeat of a fact it already has. Worth noticing what is <em>not</em> in this pair: two further
+  articles in the same thread never reached the matcher at all, because Gate 2 recognised them as
+  near-duplicates one step earlier and they inherited the claim for free (§3). Identical corroboration,
+  one gate sooner, one Haiku call cheaper — the funnel doing exactly what it is shaped to do. §7 shows
+  the finished stack, with each source labelled by the gate that caught it.</p>
 
   <h3 style="font-family:var(--disp);font-size:1.05rem;margin:1.8em 0 .3em;">WRONG_SUBJECT — not about this subject at all</h3>
   <div class="cards">
@@ -378,8 +393,8 @@
   <h3 style="font-family:var(--disp);font-size:1.05rem;margin:1.8em 0 .3em;">NO_CLAIM &amp; UNSURE — posts, but no fact recorded</h3>
   <div class="cards">
     <div class="card">
-      <p class="hl">"Arman Tsarukyan vs Mauricio Ruffy at UFC 311: Implications for the rest of 155"</p>
-      <div class="meta"><span class="src">Yahoo Sports</span><span class="chip posted">NO_CLAIM · posted</span></div>
+      <p class="hl">"Matchmaking the lightweight top 10 while Justin Gaethje sits out until 2027"</p>
+      <div class="meta"><span class="src">Bloody Elbow</span><span class="chip posted">NO_CLAIM · posted</span></div>
     </div>
     <div class="card">
       <p class="hl">"Ilia Topuria Taken to Task over Meeting with Ferran Torres"</p>
@@ -444,32 +459,58 @@
   <p class="rule">Everything the funnel does exists to feed this table. A claim is one row per
   real-world fact: a canonical English sentence, a type, a status that starts as <span
   class="chip rumor" style="vertical-align:middle">rumor</span> and moves to <span class="chip confirmed"
-  style="vertical-align:middle">confirmed</span> only when an official source asserts it. Everything
-  MATCH-linked above is corroboration recorded against exactly one such row.</p>
+  style="vertical-align:middle">confirmed</span> only when an official source asserts it. Every
+  corroborating sighting above — however it was caught, by the matcher, by Gate 2's inheritance, or by a
+  retroactive backfill — is recorded against exactly one such row.</p>
+
+  <p class="note">Two of those statuses are all the system has ever written. The schema
+  (<code>schema.sql</code>, the <code>claims.status</code> column) reserves five, and it is worth being
+  plain about which three are vocabulary rather than behaviour:</p>
+  <table class="mini">
+    <tr><th>status — all five</th><th>State</th><th>What it would mean</th></tr>
+    <tr><td class="mono">rumor</td><td>live</td><td>the starting state of every claim · stays in the matcher's candidate list</td></tr>
+    <tr><td class="mono">confirmed</td><td>live</td><td>an official source asserted it · stays in the candidate list</td></tr>
+    <tr><td class="mono">denied</td><td>reserved — never written</td><td>a source of record contradicted the claim</td></tr>
+    <tr><td class="mono">stale</td><td>reserved — never written</td><td>the claim aged out without ever resolving</td></tr>
+    <tr><td class="mono">superseded</td><td>reserved — never written</td><td>a later claim replaced it (the <code>supersedes</code> column exists for this)</td></tr>
+  </table>
+  <p class="note">No code path writes the last three: the matcher writes only <code>rumor</code>, and the
+  one promotion that exists moves <code>rumor</code> → <code>confirmed</code>. Their only live consequence
+  is already wired, though — the query that assembles a subject's active claims selects
+  <code>status IN ('rumor','confirmed')</code>, so writing any of the other three would quietly drop that
+  claim out of the candidate list the matcher is shown, and the fact would stop being matchable. That is
+  the retirement mechanism, built but never fired. Nothing yet decides <em>when</em> a claim has been
+  denied, gone stale, or been replaced — that judgment is the unbuilt part.</p>
 
   <div class="claim-card">
     <div class="id">CLAIM #13 · prediction · Topuria</div>
-    <div class="text">Ali Abdelaziz predicts Usman Nurmagomedov will finish Topuria.</div>
+    <div class="text">Ali Abdelaziz predicts Usman Nurmagomedov will finish Ilia Topuria.</div>
     <ul class="sources-list">
-      <li><span>MMA Sucka — "Head Kick KO"…</span><span class="role">origin · Aug 6</span></li>
-      <li><span>MMA Sucka — "no UFC star can beat…"</span><span class="role">echo · Aug 7</span></li>
-      <li><span>Diario AS (es) — "objetivo Nurmagomedov"</span><span class="role">echo · Aug 8</span></li>
-      <li><span>boxingnews.com — "Calls Out Topuria"</span><span class="role">echo · Aug 9</span></li>
-      <li><span>Bloody Elbow — Holloway reacts</span><span class="role">echo · Aug 9</span></li>
+      <li><span>MMA Sucka — "Head Kick KO"…</span><span class="role">origin · NEW · Aug 6</span></li>
+      <li><span>MMA Sucka — "no UFC star can beat…"</span><span class="role">echo · Gate 2 · Aug 7</span></li>
+      <li><span>Diario AS (es) — "objetivo Nurmagomedov"</span><span class="role">echo · backfill · Aug 8</span></li>
+      <li><span>boxingnews.com — "Calls Out Topuria"</span><span class="role">echo · Gate 3 · Aug 9</span></li>
+      <li><span>Bloody Elbow — Holloway reacts</span><span class="role">echo · Gate 2 · Aug 9</span></li>
+      <li><span>Bloody Elbow — Cormier rejects the take</span><span class="role">echo · Gate 3 · Aug 10</span></li>
     </ul>
   </div>
-  <p class="stat-line"><b>5 sources</b> · 3 outlets · 2 languages · 4 days · still <b>rumor</b> — no
+  <p class="note">Read the right-hand column and the whole funnel is visible in one stack. One article
+  opened the claim. Two were caught by Gate 2 as near-duplicates and inherited it for free, no LLM
+  spent. Two reached Gate 3 and the matcher recognised the fact it already had. One — the Spanish
+  article — predates the claims layer and was linked when the archive was replayed through the matcher
+  after the fact. Six sightings, one row.</p>
+  <p class="stat-line"><b>6 sources</b> · 4 outlets · 2 languages · 5 days · still <b>rumor</b> — no
   official source has weighed in on a prediction, and structurally none likely will.</p>
 
-  <p class="note">Across the whole archive: <strong>10 claims, 42 corroborating links, zero confirmed</strong>
+  <p class="note">Across the whole archive: <strong>10 claims, 46 corroborating links, zero confirmed</strong>
   yet. The rumor → confirmed transition is real and wired — one threaded "✅ Confirmed" reply the moment
   UFC.com covers a pending announcement — it just hasn't fired live. That state machine, the ceremony
   posts, and everything downstream of a claim (§8 onward) is the other document's territory:
   <code>docs/architecture-overview.html §6–§8</code>.</p>
 
   <div class="footer">
-    <p>FighterBot · funnel walkthrough · real archive, 2026-08-10 snapshot · 90 items processed,
-    41 posted, 10 claims, 42 links.</p>
+    <p>FighterBot · funnel walkthrough · real archive, 2026-08-10 snapshot · 95 items processed,
+    41 posted, 10 claims, 46 links.</p>
     <p>Companion pages in the repo: <code>docs/architecture-overview.html</code> (the whole system),
     <code>docs/test-suite-overview.html</code> (how it's tested). Those pages keep the Subject A/B/C
     pseudonym scheme throughout; this one names Ilia Topuria (Subject C) directly, since his real name
