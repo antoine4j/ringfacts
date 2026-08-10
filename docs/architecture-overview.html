@@ -607,9 +607,9 @@
       a paragraph identical to an earlier one is dropped before the mention count runs — both where the
       extractor reads <code>&lt;article&gt;</code>/<code>&lt;p&gt;</code> tags directly, and at rung 0,
       where a publisher's own feed ships the whole article (<code>content:encoded</code>) and would
-      otherwise flatten to one line before any duplicate could be spotted. <span class="mono">
-      verify-body-dedup.js</span> guards both paths; a walkthrough of this exact item, gate by gate, is
-      linked at the foot of this page.</li>
+      otherwise flatten to one line before any duplicate could be spotted. <code>lib/extract.test.js</code>
+      ("duplicated paragraphs (SI pathology, item #72)") guards both paths; a walkthrough of this exact
+      item, gate by gate, is linked at the foot of this page.</li>
     </ul>
   </div>
 
@@ -889,7 +889,7 @@
     <span class="mono">docs/checkin-log.md</span>, <span class="mono">docs/sandboxed-autonomy.md</span>,
     <span class="mono">docs/test-suite-overview.html</span> (the system as tested, sibling to this page).
     For a funnel-only, example-driven walkthrough of §4–§5 — every gate, real archived items, gate by
-    gate — see <a href="https://claude.ai/code/artifact/dee822e1-5726-4072-a4fa-15220fb5d9ca">the funnel deep-dive</a>.
+    gate — see <a href="funnel-walkthrough.html">the funnel deep-dive</a>.
     Formerly <span class="mono">claims-architecture.html</span> (the step-5 design doc) — that design is
     now §2–§8 of reality. History in git.
   </div>

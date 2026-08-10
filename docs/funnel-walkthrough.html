@@ -1,0 +1,432 @@
+<title>FighterBot · The Funnel</title>
+<style>
+  :root {
+    --paper: #f7f8f6; --card: #ffffff; --ink: #22262b; --ink-soft: #5a6169;
+    --line: #d9dcd7; --line-strong: #c3c7c0;
+    --red: #b5122e; --red-bg: #f3dadd;
+    --blue: #24507a; --blue-bg: #dde7f0;
+    --amber: #a4650a; --amber-bg: #f6e8d0;
+    --green: #1e6b3a; --green-bg: #ddeee1;
+    --grey-bg: #e6e8e4; --grey-ink: #5a6169;
+    --mono: ui-monospace, "SF Mono", SFMono-Regular, Menlo, Consolas, monospace;
+    --disp: "Avenir Next Condensed", "Arial Narrow", "Helvetica Neue", sans-serif;
+    --body: -apple-system, "Segoe UI", system-ui, sans-serif;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --paper: #191c1f; --card: #22262b; --ink: #e8eae6; --ink-soft: #9aa2a9;
+      --line: #3a4046; --line-strong: #4b5158;
+      --red: #e05a6e; --red-bg: #3a2428;
+      --blue: #7fa8cf; --blue-bg: #223142;
+      --amber: #d99a3d; --amber-bg: #3a3020;
+      --green: #6cbd88; --green-bg: #20321f;
+      --grey-bg: #2c3034; --grey-ink: #9aa2a9;
+    }
+  }
+  :root[data-theme="dark"] {
+    --paper: #191c1f; --card: #22262b; --ink: #e8eae6; --ink-soft: #9aa2a9;
+    --line: #3a4046; --line-strong: #4b5158;
+    --red: #e05a6e; --red-bg: #3a2428;
+    --blue: #7fa8cf; --blue-bg: #223142;
+    --amber: #d99a3d; --amber-bg: #3a3020;
+    --green: #6cbd88; --green-bg: #20321f;
+    --grey-bg: #2c3034; --grey-ink: #9aa2a9;
+  }
+  :root[data-theme="light"] {
+    --paper: #f7f8f6; --card: #ffffff; --ink: #22262b; --ink-soft: #5a6169;
+    --line: #d9dcd7; --line-strong: #c3c7c0;
+    --red: #b5122e; --red-bg: #f3dadd;
+    --blue: #24507a; --blue-bg: #dde7f0;
+    --amber: #a4650a; --amber-bg: #f6e8d0;
+    --green: #1e6b3a; --green-bg: #ddeee1;
+    --grey-bg: #e6e8e4; --grey-ink: #5a6169;
+  }
+
+  * { box-sizing: border-box; }
+  body { background: var(--paper); color: var(--ink); font-family: var(--body);
+         line-height: 1.6; margin: 0; font-size: 16px; }
+  main { max-width: 800px; margin: 0 auto; padding: 48px 24px 100px; }
+  a { color: var(--blue); }
+  code { font-family: var(--mono); font-size: .92em; background: var(--grey-bg);
+         padding: .1em .35em; border-radius: 3px; }
+  .mono { font-family: var(--mono); }
+
+  .eyebrow { font-family: var(--disp); text-transform: uppercase; letter-spacing: .14em;
+             font-size: .8rem; color: var(--red); font-weight: 600; }
+  h1 { font-family: var(--disp); font-weight: 700; font-size: 2.5rem; line-height: 1.06;
+       letter-spacing: .003em; margin: .2em 0 .25em; text-wrap: balance; }
+  .sub { color: var(--ink-soft); font-size: 1.08rem; max-width: 620px; margin: 0 0 6px; }
+  .companion { font-size: .86rem; color: var(--ink-soft); border-left: 2px solid var(--line-strong);
+               padding-left: 12px; margin: 22px 0 8px; }
+  .companion code { background: none; padding: 0; }
+
+  h2 { font-family: var(--disp); font-weight: 600; font-size: 1.5rem; letter-spacing: .01em;
+       margin: 3em 0 .1em; display: flex; align-items: baseline; gap: .5em; }
+  h2 .stage-no { font-family: var(--mono); font-size: .62em; font-weight: 400; color: var(--ink-soft);
+                 border: 1px solid var(--line-strong); border-radius: 999px; padding: .15em .7em; }
+  .rule { font-size: 1.04rem; margin: .5em 0 1.3em; max-width: 660px; }
+  .rule strong { color: var(--ink); }
+  p.note { color: var(--ink-soft); font-size: .93rem; max-width: 660px; }
+
+  .stat-line { font-family: var(--mono); font-size: .84rem; color: var(--ink-soft);
+               margin: -.4em 0 1.4em; }
+  .stat-line b { color: var(--ink); font-weight: 600; }
+
+  figure { margin: 1.6em 0 0; }
+  figure svg { width: 100%; height: auto; display: block; }
+  figcaption { font-size: .85rem; color: var(--ink-soft); margin-top: 10px; max-width: 620px; }
+
+  .cards { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin: 1.1em 0 1.6em; }
+  @media (max-width: 620px) { .cards { grid-template-columns: 1fr; } }
+  .cards.single { grid-template-columns: 1fr; }
+  .card { background: var(--card); border: 1px solid var(--line); border-radius: 6px;
+          padding: 14px 16px; }
+  .card .hl { font-size: .96rem; font-weight: 500; line-height: 1.4; margin: 0 0 8px; }
+  .card .meta { display: flex; justify-content: space-between; align-items: center;
+                font-size: .78rem; color: var(--ink-soft); gap: 8px; flex-wrap: wrap; }
+  .card .src { font-family: var(--mono); }
+
+  .chip { display: inline-block; font-family: var(--mono); font-size: .72rem; font-weight: 600;
+          letter-spacing: .02em; padding: .25em .6em; border-radius: 4px; white-space: nowrap; }
+  .chip.held   { background: var(--grey-bg); color: var(--grey-ink); }
+  .chip.posted { background: transparent; color: var(--ink); border: 1px solid var(--line-strong); }
+  .chip.match  { background: var(--blue-bg); color: var(--blue); }
+  .chip.new    { background: var(--blue); color: var(--card); }
+  .chip.rumor  { background: var(--amber-bg); color: var(--amber); }
+  .chip.confirmed { background: var(--green-bg); color: var(--green); }
+
+  .callout { background: var(--card); border: 1px solid var(--line); border-left: 3px solid var(--red);
+             border-radius: 4px; padding: 14px 18px; margin: 1.4em 0; font-size: .95rem; }
+  .callout.blue { border-left-color: var(--blue); }
+  .callout strong { display: block; margin-bottom: 4px; }
+
+  table.mini { width: 100%; border-collapse: collapse; font-size: .85rem; margin: 1em 0 1.6em; }
+  table.mini th, table.mini td { text-align: left; padding: 6px 10px; border-bottom: 1px solid var(--line); }
+  table.mini th { color: var(--ink-soft); font-weight: 600; font-size: .78rem;
+                  text-transform: uppercase; letter-spacing: .04em; }
+  table.mini td.num, table.mini th.num { text-align: right; font-family: var(--mono);
+                                          font-variant-numeric: tabular-nums; }
+
+  .before-after { display: grid; grid-template-columns: 1fr auto 1fr; gap: 0 16px; align-items: center;
+                  margin: 1.2em 0 1.6em; }
+  .before-after .col { background: var(--card); border: 1px solid var(--line); border-radius: 6px;
+                        padding: 14px 16px; }
+  .before-after .col.before { border-color: var(--red); }
+  .before-after .col.after { border-color: var(--green); }
+  .before-after .label { font-family: var(--disp); text-transform: uppercase; letter-spacing: .08em;
+                          font-size: .72rem; font-weight: 700; margin-bottom: 8px; }
+  .before-after .col.before .label { color: var(--red); }
+  .before-after .col.after .label { color: var(--green); }
+  .before-after .arrow { color: var(--ink-soft); font-size: 1.3rem; }
+  .before-after dl { margin: 0; font-family: var(--mono); font-size: .82rem; }
+  .before-after dt { color: var(--ink-soft); display: inline; }
+  .before-after dd { display: inline; margin: 0 0 0 .4em; color: var(--ink); font-weight: 600; }
+  .before-after .row { margin: .3em 0; }
+  @media (max-width: 560px) {
+    .before-after { grid-template-columns: 1fr; }
+    .before-after .arrow { transform: rotate(90deg); justify-self: center; }
+  }
+
+  .quote { font-family: var(--mono); font-size: .82rem; background: var(--grey-bg);
+           border-radius: 5px; padding: 10px 14px; color: var(--ink); margin: .8em 0; }
+  .quote .who { color: var(--ink-soft); }
+
+  .claim-card { background: var(--blue-bg); border: 1px solid var(--blue); border-radius: 6px;
+                padding: 18px 20px; margin: 1.2em 0; }
+  .claim-card .id { font-family: var(--mono); font-size: .78rem; color: var(--blue); }
+  .claim-card .text { font-size: 1.15rem; font-weight: 600; margin: .3em 0 .7em; color: var(--ink);
+                       text-wrap: balance; }
+  .sources-list { list-style: none; padding: 0; margin: .8em 0 0; border-top: 1px dashed var(--line-strong);
+                  padding-top: .8em; }
+  .sources-list li { display: flex; justify-content: space-between; gap: 10px; font-size: .84rem;
+                      padding: 4px 0; }
+  .sources-list .role { font-family: var(--mono); font-size: .72rem; color: var(--ink-soft);
+                         white-space: nowrap; }
+
+  .footer { margin-top: 80px; padding-top: 18px; border-top: 1px solid var(--line);
+            color: var(--ink-soft); font-size: .82rem; }
+  .footer p { margin: .5em 0; }
+</style>
+
+<main>
+  <div class="eyebrow">FighterBot · Pipeline Walkthrough</div>
+  <h1>Raw headlines in. Verified claims out.</h1>
+  <p class="sub">Every gate the hourly hunt runs an article through, in order, illustrated with real
+  items pulled from the live archive — not invented examples. Names of the three tracked fighters are
+  shown as Fighter A/B/C, matching the rest of the repo; everyone else named below is real.</p>
+  <p class="companion">This page covers the funnel only — discovery through claims. For the whole system
+  (the Telegram service, operations, cost, the autonomous improvement loop) see
+  <code>docs/architecture-overview.html</code> in the repo; for how it's tested, see
+  <code>docs/test-suite-overview.html</code>.</p>
+
+  <figure>
+    <svg viewBox="0 0 760 640" role="img" aria-label="Funnel shape of the live archive: 85 items reached the gates, 33 held as near-duplicates, 52 reached the matcher, 8 dropped as the wrong subject, 2 held as a matched fact, 41 posted, and of those 10 became named claims corroborated by 38 linked sources">
+      <g font-family="ui-monospace, SFMono-Regular, Menlo, monospace" fill="currentColor">
+
+        <!-- funnel outline: trapezoid segments narrowing top to bottom, generous width so labels never touch an edge -->
+        <text x="380" y="30" text-anchor="middle" font-size="13" font-weight="600">85 items survive Gate 1</text>
+
+        <polygon points="50,50 710,50 660,140 100,140" fill="none" stroke="currentColor" stroke-width="1.3" opacity=".35"/>
+        <text x="380" y="100" text-anchor="middle" font-size="12" fill="var(--red)">33 held — near-duplicate</text>
+        <text x="380" y="120" text-anchor="middle" font-size="10" opacity=".65">cosine ≥ 0.80 — inherits the neighbour's claim, free</text>
+
+        <polygon points="100,140 660,140 610,230 150,230" fill="none" stroke="currentColor" stroke-width="1.3" opacity=".35"/>
+        <text x="380" y="190" text-anchor="middle" font-size="12">52 reach the matcher</text>
+        <text x="380" y="208" text-anchor="middle" font-size="10" opacity=".65">body fetched, Haiku reads it</text>
+
+        <polygon points="150,230 610,230 570,320 190,320" fill="none" stroke="currentColor" stroke-width="1.3" opacity=".35"/>
+        <text x="380" y="280" text-anchor="middle" font-size="12" fill="var(--red)">8 dropped — wrong subject</text>
+
+        <polygon points="190,320 570,320 530,410 230,410" fill="none" stroke="currentColor" stroke-width="1.3" opacity=".35"/>
+        <text x="380" y="370" text-anchor="middle" font-size="12" fill="var(--blue)">2 held — same fact (MATCH)</text>
+
+        <polygon points="230,410 530,410 510,500 250,500" fill="var(--grey-bg)" stroke="currentColor" stroke-width="1.3" opacity=".7"/>
+        <text x="380" y="450" text-anchor="middle" font-weight="700" font-size="15">41 posted</text>
+        <text x="380" y="470" text-anchor="middle" font-size="10" opacity=".8">NO_CLAIM · UNSURE · rumor · ceremony</text>
+        <text x="380" y="486" text-anchor="middle" font-size="10" opacity=".8">split again by digest tier — §6</text>
+
+        <path d="M380 500 L380 528" stroke="var(--blue)" stroke-width="1.5" fill="none"/>
+        <path d="M380 528 l-6 -10 h12 z" fill="var(--blue)"/>
+        <rect x="190" y="534" width="380" height="42" rx="5" fill="var(--blue-bg)" stroke="var(--blue)"/>
+        <text x="380" y="560" text-anchor="middle" fill="var(--blue)" font-weight="700" font-size="13">10 claims · 38 corroborating links</text>
+      </g>
+    </svg>
+    <figcaption><strong>Fig. 1</strong> — The shape of the archive today: every item that ever cleared
+    Gate 1 (already-known URLs), and where it ended up. Two rails feed the top of this funnel before it
+    even starts — see §1.</figcaption>
+  </figure>
+
+  <h2><span class="stage-no">§1</span>Discovery — two rails, one window</h2>
+  <p class="rule">Every hour, for every tracked subject: <strong>Google News RSS</strong>, queried once
+  per language edition the subject gets covered in (English always; Ukrainian and Spanish where it
+  applies), plus <strong>six direct publisher feeds</strong> — UFC.com, MMA Fighting, Bloody Elbow,
+  Sherdog, Sport.ua, Marca — fetched once per run and filtered per subject by matching surname stems in
+  both scripts. Both rails only look at the last 24 hours.</p>
+  <p class="stat-line">One real run: <b>6 outlets fetched, 180 items pooled</b> across all three subjects
+  — of which <b>5 were unseen</b> for Fighter C. <span style="opacity:.7">— docs/checkin-log.md,
+  2026-08-09</span></p>
+  <p class="note">The 24-hour window overlapping the hourly cadence ~24× is deliberate: a single failed
+  run loses nothing, because the next run re-covers the same ground.</p>
+
+  <h2><span class="stage-no">§2</span>Gate 1 — Have we already seen this URL?</h2>
+  <p class="rule">Exact match on <code>url</code> or its decoded <code>resolved_url</code> against
+  everything ever stored → dropped silently, no database write at all. This is the only gate that costs
+  nothing — no embedding, no fetch, no LLM call.</p>
+  <p class="note">Survivors are capped at <strong>5 unseen items per subject per run</strong>, newest
+  first. The cap applies <em>after</em> this gate on purpose: an earlier version capped the raw feed
+  before checking what was already known, which let a busy day's backlog of new items get permanently
+  shadowed by items already in the database. Whatever the cap holds back is simply picked up next run —
+  nothing is lost, only delayed.</p>
+
+  <h2><span class="stage-no">§3</span>Gate 2 — Same story, different link?</h2>
+  <p class="rule">The survivor's headline is embedded and compared against the subject's recent items.
+  <strong>Cosine similarity ≥ 0.80</strong> → held back, never posted — but not discarded: it inherits
+  whatever claim its nearest neighbour already supports, recorded as corroboration for free, no LLM
+  spent. The threshold is measured, not guessed: a real translated pair of the same story scored 0.841;
+  unrelated same-subject pairs never rose above 0.702.</p>
+  <p class="stat-line"><b>33 of 85</b> items were held here — the single biggest gate in the funnel.</p>
+  <div class="cards">
+    <div class="card">
+      <p class="hl">"Manager believes Usman Nurmagomedov walks through UFC lightweight contenders, with
+      one exception"</p>
+      <div class="meta"><span class="src">Sherdog</span><span class="chip held">held · sim 1.00</span></div>
+    </div>
+    <div class="card">
+      <p class="hl">"Fighter C's manager claims he'd beat every Ali Abdelaziz fighter: 'If we fought
+      Gaethje again…'"</p>
+      <div class="meta"><span class="src">Bloody Elbow</span><span class="chip held">held · sim 0.99</span></div>
+    </div>
+  </div>
+  <p class="note">Official sources (UFC.com) are exempt from this gate specifically — a confirmation
+  headline is, by construction, near-identical to the rumor it confirms, so holding it here would
+  swallow the exact transition the claims layer exists to catch. And inheritance itself is checked: if
+  an item actually reads closer to some <em>other</em> claim than the one it's about to be linked to, it
+  stays held but unlinked rather than becoming a wrong piece of evidence. Both mechanisms are detailed in
+  <code>docs/architecture-overview.html §4</code>.</p>
+
+  <h2><span class="stage-no">§4</span>The body step — reading past the headline</h2>
+  <p class="rule">Only for items that survived both free gates. Google's wrapped URL is decoded to the
+  real article address, then the body is extracted through a ladder — cheapest and most reliable first —
+  and every attempt is logged, success or failure:</p>
+  <table class="mini">
+    <tr><th>Rung</th><th>Source</th><th class="num">Times, live archive</th></tr>
+    <tr><td>0 — feed content</td><td>the outlet's own RSS already contains the article</td><td class="num">3</td></tr>
+    <tr><td>1 — JSON-LD</td><td>a machine-readable copy embedded for search engines</td><td class="num">2</td></tr>
+    <tr><td>2 — <code>&lt;article&gt;</code> tag</td><td>the page's own article paragraphs</td><td class="num">2</td></tr>
+    <tr><td>3 — all paragraphs</td><td>every <code>&lt;p&gt;</code> on the page, cruder</td><td class="num">1</td></tr>
+    <tr><td>4 — og:description</td><td>a one-sentence meta summary, last resort</td><td class="num">0</td></tr>
+    <tr><td>— failed (403 / no extract)</td><td>every attempt logged even on failure</td><td class="num">15</td></tr>
+  </table>
+  <div class="callout">
+    <strong>The fix this walkthrough exists to explain (2026-08-10)</strong>
+    Sports Illustrated's page renders its own lede paragraphs <em>twice</em> inside
+    <code>&lt;article&gt;</code> — measured live: 24 paragraphs, only 17 unique. Rung 2 joined both
+    copies without noticing, so a single passing mention of Fighter C got counted twice. That doubled
+    count is what breaks §6 below.
+  </div>
+  <div class="before-after">
+    <div class="col before">
+      <div class="label">Before the fix</div>
+      <dl>
+        <div class="row"><dt>body:</dt><dd>5,799 chars</dd></div>
+        <div class="row"><dt>Fighter&nbsp;C mentions:</dt><dd>2</dd></div>
+        <div class="row"><dt>rung:</dt><dd>article-tag</dd></div>
+      </dl>
+    </div>
+    <div class="arrow">→</div>
+    <div class="col after">
+      <div class="label">After the fix</div>
+      <dl>
+        <div class="row"><dt>body:</dt><dd>4,286 chars</dd></div>
+        <div class="row"><dt>Fighter&nbsp;C mentions:</dt><dd>1</dd></div>
+        <div class="row"><dt>rung:</dt><dd>article-tag</dd></div>
+      </dl>
+    </div>
+  </div>
+  <p class="note">Fixed by dropping a paragraph identical to one already kept, before anything downstream
+  counts mentions — both at rung 2 and at rung 0, where a publisher's own feed ships the whole article and
+  would otherwise be flattened to one line before any duplicate could be spotted.</p>
+
+  <h2><span class="stage-no">§5</span>Gate 3 — What is this article actually about?</h2>
+  <p class="rule">One Haiku call per survivor: the headline, source, a body excerpt when there is one,
+  and every currently active claim for the subject. Forced tool use means the answer is always one of
+  five verdicts — never free text to parse.</p>
+  <p class="note">The same real thread — Ali Abdelaziz predicting Usman Nurmagomedov beats Fighter C —
+  walks through all five below, over five real articles across four days and three outlets in two
+  languages.</p>
+
+  <h3 style="font-family:var(--disp);font-size:1.05rem;margin:1.8em 0 .3em;">NEW — a claim-worthy fact not seen before</h3>
+  <div class="cards single">
+    <div class="card">
+      <p class="hl">"'Head Kick KO': Ali Abdelaziz Predicts Usman Nurmagomedov Finishes Fighter C and
+      Other UFC Elites"</p>
+      <div class="meta"><span class="src">MMA Sucka · Aug 6</span><span class="chip new">NEW → claim #13</span></div>
+    </div>
+  </div>
+
+  <h3 style="font-family:var(--disp);font-size:1.05rem;margin:1.8em 0 .3em;">MATCH — the same fact, sighted again</h3>
+  <div class="cards">
+    <div class="card">
+      <p class="hl">"Ali Abdelaziz says no UFC star can beat Usman Nurmagomedov"</p>
+      <div class="meta"><span class="src">MMA Sucka · Aug 7</span><span class="chip match">MATCH → echo</span></div>
+    </div>
+    <div class="card">
+      <p class="hl">"Topuria, objetivo Nurmagomedov: 'Usman hará que se rinda'"</p>
+      <div class="meta"><span class="src">Diario AS (es) · Aug 8</span><span class="chip match">MATCH → echo</span></div>
+    </div>
+    <div class="card">
+      <p class="hl">"Abdelaziz Calls Out Fighter C For Nurmagomedov's UFC Debut"</p>
+      <div class="meta"><span class="src">boxingnews.com · Aug 9</span><span class="chip match">MATCH → echo</span></div>
+    </div>
+    <div class="card">
+      <p class="hl">"Max Holloway reacts to Ali Abdelaziz claiming Usman Nurmagomedov would dominate him
+      in the UFC"</p>
+      <div class="meta"><span class="src">Bloody Elbow · Aug 9</span><span class="chip match">MATCH → echo</span></div>
+    </div>
+  </div>
+  <p class="note">All four are linked as evidence for claim #13, silently — the group sees no repeat
+  posts. This is corroboration recorded, not noise discarded, which is the entire reason the claims layer
+  exists (§7).</p>
+
+  <h3 style="font-family:var(--disp);font-size:1.05rem;margin:1.8em 0 .3em;">WRONG_SUBJECT — not about this subject at all</h3>
+  <div class="cards">
+    <div class="card">
+      <p class="hl">"Salkilld sigue imparable: Somete a Gamrot y se dispara en la división de Topuria"
+      <span style="opacity:.6">(the Spanish twin of the §4 story — same fight, Fighter C named only as
+      the division marker)</span></p>
+      <div class="meta"><span class="src">Eurosport (es)</span><span class="chip held">dropped</span></div>
+    </div>
+    <div class="card">
+      <p class="hl">"Morning Report | Dakota Ditcheva broke both hands at PFL New York"</p>
+      <div class="meta"><span class="src">MMA Fighting</span><span class="chip held">dropped</span></div>
+    </div>
+  </div>
+  <p class="note">Never posted, never a claim. The Eurosport item is the instructive one: the matcher
+  read this correctly on the first pass — the exact case §6 is about is the English version of the
+  <em>same</em> underlying Salkilld story slipping past on a technicality one gate later.</p>
+
+  <h3 style="font-family:var(--disp);font-size:1.05rem;margin:1.8em 0 .3em;">NO_CLAIM &amp; UNSURE — posts, but no fact recorded</h3>
+  <div class="cards">
+    <div class="card">
+      <p class="hl">"Arman Tsarukyan vs Mauricio Ruffy at UFC 311: Implications for the rest of 155"</p>
+      <div class="meta"><span class="src">Yahoo Sports</span><span class="chip posted">NO_CLAIM · posted</span></div>
+    </div>
+    <div class="card">
+      <p class="hl"><em>(one real UNSURE, 2026-08-09 10:53 PDT — the matcher couldn't decide from what it
+      was shown)</em></p>
+      <div class="meta"><span class="src">— fail-open —</span><span class="chip posted">UNSURE · posted</span></div>
+    </div>
+  </div>
+  <p class="note">NO_CLAIM: about the subject's world, but asserts nothing claim-worthy — division
+  context, reactions, lifestyle. UNSURE: the matcher genuinely can't tell, and abstains rather than
+  guess. Both post through the normal digest exactly as if no claims layer existed at all — which is
+  where §6 picks up.</p>
+
+  <h2><span class="stage-no">§6</span>Digest tier — does this earn its own headline?</h2>
+  <p class="rule">Every NO_CLAIM or UNSURE item — the ones with no claim to anchor a decision to — gets
+  one more check before posting: does its own headline name the subject? If not, and the body is long
+  enough to judge (≥300 characters) and names the subject <strong>at most once</strong>, it folds into a
+  single shared "↘ Also mentioning" line instead of taking a bullet of its own.</p>
+  <div class="callout blue">
+    <strong>The Fighter C / Salkilld story, end to end</strong>
+    The Sports Illustrated item from §4 is a NO_CLAIM: about Salkilld, not Fighter C, who appears in
+    exactly one sentence. It should have folded into "also mentioning." Because that sentence was
+    doubled by the extraction bug, the mention count read 2 instead of 1 — one over the threshold — and
+    it kept a full headline in the Fighter C digest it hadn't earned. The tier rule was never wrong; the
+    body handed to it was.
+  </div>
+  <div class="before-after">
+    <div class="col before">
+      <div class="label">Before</div>
+      <dl>
+        <div class="row"><dt>mentions:</dt><dd>2</dd></div>
+        <div class="row"><dt>result:</dt><dd>main — own headline</dd></div>
+      </dl>
+    </div>
+    <div class="arrow">→</div>
+    <div class="col after">
+      <div class="label">After</div>
+      <dl>
+        <div class="row"><dt>mentions:</dt><dd>1</dd></div>
+        <div class="row"><dt>result:</dt><dd>tangential — folded in</dd></div>
+      </dl>
+    </div>
+  </div>
+  <p class="note">This tier is new enough (2026-08-09) that it has fired only 5 times in the live
+  archive so far, all of them "main" — this fix's first real test <em>is</em> this item.</p>
+
+  <h2><span class="stage-no">§7</span>Claims — the distilled output</h2>
+  <p class="rule">Everything the funnel does exists to feed this table. A claim is one row per
+  real-world fact: a canonical English sentence, a type, a status that starts as <span
+  class="chip rumor" style="vertical-align:middle">rumor</span> and moves to <span class="chip confirmed"
+  style="vertical-align:middle">confirmed</span> only when an official source asserts it. Everything
+  MATCH-linked above is corroboration recorded against exactly one such row.</p>
+
+  <div class="claim-card">
+    <div class="id">CLAIM #13 · prediction · Fighter C</div>
+    <div class="text">Ali Abdelaziz predicts Usman Nurmagomedov will finish Fighter C.</div>
+    <ul class="sources-list">
+      <li><span>MMA Sucka — "Head Kick KO"…</span><span class="role">origin · Aug 6</span></li>
+      <li><span>MMA Sucka — "no UFC star can beat…"</span><span class="role">echo · Aug 7</span></li>
+      <li><span>Diario AS (es) — "objetivo Nurmagomedov"</span><span class="role">echo · Aug 8</span></li>
+      <li><span>boxingnews.com — "Calls Out Fighter C"</span><span class="role">echo · Aug 9</span></li>
+      <li><span>Bloody Elbow — Holloway reacts</span><span class="role">echo · Aug 9</span></li>
+    </ul>
+  </div>
+  <p class="stat-line"><b>5 sources</b> · 3 outlets · 2 languages · 4 days · still <b>rumor</b> — no
+  official source has weighed in on a prediction, and structurally none likely will.</p>
+
+  <p class="note">Across the whole archive: <strong>10 claims, 38 corroborating links, zero confirmed</strong>
+  yet. The rumor → confirmed transition is real and wired — one threaded "✅ Confirmed" reply the moment
+  UFC.com covers a pending announcement — it just hasn't fired live. That state machine, the ceremony
+  posts, and everything downstream of a claim (§8 onward) is the other document's territory:
+  <code>docs/architecture-overview.html §6–§8</code>.</p>
+
+  <div class="footer">
+    <p>FighterBot · funnel walkthrough · real archive, 2026-08-10 snapshot · 85 items processed,
+    41 posted, 10 claims, 38 links.</p>
+    <p>Companion pages in the repo: <code>docs/architecture-overview.html</code> (the whole system),
+    <code>docs/test-suite-overview.html</code> (how it's tested). Subject names pseudonymized as
+    Fighter A/B/C, matching every tracked file in the repo; third-party names are real.</p>
+  </div>
+</main>
