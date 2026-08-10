@@ -74,6 +74,10 @@
 
   figure { margin: 1.6em 0 0; }
   figure svg { width: 100%; height: auto; display: block; }
+  figure svg a { cursor: pointer; color: inherit; }
+  figure svg a:hover text, figure svg a:focus-visible text { text-decoration: underline; }
+  figure svg a:focus-visible { outline: 2px solid var(--blue); outline-offset: 3px; }
+  figure svg .tag { opacity: .55; font-weight: 400; }
   figcaption { font-size: .85rem; color: var(--ink-soft); margin-top: 10px; max-width: 620px; }
 
   .cards { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin: 1.1em 0 1.6em; }
@@ -165,12 +169,13 @@
       <g font-family="ui-monospace, SFMono-Regular, Menlo, monospace" fill="currentColor">
 
         <!-- top band: discovery + Gate 1. Measured, not guessed — pulled from Cloud Logging,
-             which records what the database itself cannot (dropped items are never written). -->
-        <text x="380" y="25" text-anchor="middle" font-size="13" font-weight="600">Two discovery rails, every hour</text>
-        <text x="380" y="41" text-anchor="middle" font-size="10" opacity=".65">Google News (en·uk·es) + 6 direct outlet feeds — §1</text>
+             which records what the database itself cannot (dropped items are never written).
+             Each band's §N tag links to its section below — click to jump. -->
+        <a href="#s1"><text x="380" y="25" text-anchor="middle" font-size="13" font-weight="600">Two discovery rails, every hour <tspan class="tag" font-size="11">(§1)</tspan></text></a>
+        <text x="380" y="41" text-anchor="middle" font-size="10" opacity=".65">Google News (en·uk·es) + 6 direct outlet feeds</text>
 
         <rect x="50" y="55" width="660" height="85" rx="4" fill="none" stroke="currentColor" stroke-width="1.3" opacity=".35"/>
-        <text x="380" y="80" text-anchor="middle" font-size="12" fill="var(--red)">Gate 1 — drop anything with a known URL, silently</text>
+        <a href="#s2"><text x="380" y="80" text-anchor="middle" font-size="12" fill="var(--red)">Gate 1 — drop anything with a known URL, silently <tspan class="tag" fill="currentColor">(§2)</tspan></text></a>
         <text x="380" y="99" text-anchor="middle" font-size="11">1,208 URL checks → 85 new, 1,123 already known</text>
         <text x="380" y="118" text-anchor="middle" font-size="10" opacity=".65">+ 5 more via one untracked manual run — not counted here</text>
 
@@ -181,28 +186,28 @@
         <!-- funnel outline below: exact archive counts, trapezoid segments narrowing top to
              bottom, generous width so labels never touch an edge -->
         <polygon points="50,215 710,215 660,305 100,305" fill="none" stroke="currentColor" stroke-width="1.3" opacity=".35"/>
-        <text x="380" y="265" text-anchor="middle" font-size="12" fill="var(--red)">37 held — near-duplicate</text>
+        <a href="#s3"><text x="380" y="265" text-anchor="middle" font-size="12" fill="var(--red)">37 held — near-duplicate <tspan class="tag" fill="currentColor">(§3)</tspan></text></a>
         <text x="380" y="285" text-anchor="middle" font-size="10" opacity=".65">cosine ≥ 0.80 — inherits the neighbour's claim, free</text>
 
         <polygon points="100,305 660,305 610,395 150,395" fill="none" stroke="currentColor" stroke-width="1.3" opacity=".35"/>
         <text x="380" y="355" text-anchor="middle" font-size="12">53 reach the matcher</text>
-        <text x="380" y="373" text-anchor="middle" font-size="10" opacity=".65">body fetched, Haiku reads it</text>
+        <text x="380" y="373" text-anchor="middle" font-size="10" opacity=".65"><a href="#s4">body fetched <tspan class="tag">(§4)</tspan></a> · <a href="#s5">Haiku reads it <tspan class="tag">(§5)</tspan></a></text>
 
         <polygon points="150,395 610,395 570,485 190,485" fill="none" stroke="currentColor" stroke-width="1.3" opacity=".35"/>
-        <text x="380" y="445" text-anchor="middle" font-size="12" fill="var(--red)">8 dropped — wrong subject</text>
+        <a href="#s5"><text x="380" y="445" text-anchor="middle" font-size="12" fill="var(--red)">8 dropped — wrong subject <tspan class="tag" fill="currentColor">(§5)</tspan></text></a>
 
         <polygon points="190,485 570,485 530,575 230,575" fill="none" stroke="currentColor" stroke-width="1.3" opacity=".35"/>
-        <text x="380" y="535" text-anchor="middle" font-size="12" fill="var(--blue)">2 held — same fact (MATCH)</text>
+        <a href="#s5"><text x="380" y="535" text-anchor="middle" font-size="12" fill="var(--blue)">2 held — same fact (MATCH) <tspan class="tag" fill="currentColor">(§5)</tspan></text></a>
 
         <polygon points="230,575 530,575 510,665 250,665" fill="var(--grey-bg)" stroke="currentColor" stroke-width="1.3" opacity=".7"/>
-        <text x="380" y="615" text-anchor="middle" font-weight="700" font-size="15">41 posted</text>
+        <a href="#s5"><text x="380" y="615" text-anchor="middle" font-weight="700" font-size="15">41 posted</text></a>
         <text x="380" y="635" text-anchor="middle" font-size="10" opacity=".8">NO_CLAIM · UNSURE · rumor · ceremony</text>
-        <text x="380" y="651" text-anchor="middle" font-size="10" opacity=".8">+2 held back: 1 suppressed, 1 legacy</text>
+        <a href="#s6"><text x="380" y="651" text-anchor="middle" font-size="10" opacity=".8">+2 held back: 1 suppressed, 1 legacy <tspan class="tag">(§6)</tspan></text></a>
 
         <path d="M380 665 L380 693" stroke="var(--blue)" stroke-width="1.5" fill="none"/>
         <path d="M380 693 l-6 -10 h12 z" fill="var(--blue)"/>
         <rect x="190" y="699" width="380" height="42" rx="5" fill="var(--blue-bg)" stroke="var(--blue)"/>
-        <text x="380" y="725" text-anchor="middle" fill="var(--blue)" font-weight="700" font-size="13">10 claims · 42 corroborating links</text>
+        <a href="#s7"><text x="380" y="725" text-anchor="middle" fill="var(--blue)" font-weight="700" font-size="13">10 claims · 42 corroborating links <tspan class="tag" fill="currentColor">(§7)</tspan></text></a>
       </g>
     </svg>
     <figcaption><strong>Fig. 1</strong> — The whole shape, discovery to claims, refreshed to this
@@ -214,7 +219,7 @@
     isn't broken out below either — a rounding error in an otherwise exact set of counts.</figcaption>
   </figure>
 
-  <h2><span class="stage-no">§1</span>Discovery — two rails, one window</h2>
+  <h2 id="s1"><span class="stage-no">§1</span>Discovery — two rails, one window</h2>
   <p class="rule">Every hour, for every tracked subject: <strong>Google News RSS</strong>, queried once
   per language edition the subject gets covered in (English always; Ukrainian and Spanish where it
   applies), plus <strong>six direct publisher feeds</strong> — UFC.com, MMA Fighting, Bloody Elbow,
@@ -226,7 +231,7 @@
   <p class="note">The 24-hour window overlapping the hourly cadence ~24× is deliberate: a single failed
   run loses nothing, because the next run re-covers the same ground.</p>
 
-  <h2><span class="stage-no">§2</span>Gate 1 — Have we already seen this URL?</h2>
+  <h2 id="s2"><span class="stage-no">§2</span>Gate 1 — Have we already seen this URL?</h2>
   <p class="rule">Exact match on <code>url</code> or its decoded <code>resolved_url</code> against
   everything ever stored → dropped silently, no database write at all. This is the only gate that costs
   nothing — no embedding, no fetch, no LLM call.</p>
@@ -237,7 +242,7 @@
   first, applied after this gate — so on a busy day the newest 5 unseen items go through now, and
   whatever's left over is simply picked up next run. Nothing is lost, only delayed.</p>
 
-  <h2><span class="stage-no">§3</span>Gate 2 — Same story, different link?</h2>
+  <h2 id="s3"><span class="stage-no">§3</span>Gate 2 — Same story, different link?</h2>
   <p class="rule">The survivor's headline is embedded and compared against the subject's recent items.
   <strong>Cosine similarity ≥ 0.80</strong> → held back, never posted — but not discarded: it inherits
   whatever claim its nearest neighbour already supports, recorded as corroboration for free, no LLM
@@ -263,7 +268,7 @@
   stays held but unlinked rather than becoming a wrong piece of evidence. Both mechanisms are detailed in
   <code>docs/architecture-overview.html §4</code>.</p>
 
-  <h2><span class="stage-no">§4</span>The body step — reading past the headline</h2>
+  <h2 id="s4"><span class="stage-no">§4</span>The body step — reading past the headline</h2>
   <p class="rule">Only for items that survived both free gates. Google's wrapped URL is decoded to the
   real article address, then the body is extracted through a ladder — cheapest and most reliable first —
   and every attempt is logged, success or failure:</p>
@@ -306,7 +311,7 @@
   counts mentions — both at rung 2 and at rung 0, where a publisher's own feed ships the whole article and
   would otherwise be flattened to one line before any duplicate could be spotted.</p>
 
-  <h2><span class="stage-no">§5</span>Gate 3 — What is this article actually about?</h2>
+  <h2 id="s5"><span class="stage-no">§5</span>Gate 3 — What is this article actually about?</h2>
   <p class="rule">One Haiku call per survivor: the headline, source, a body excerpt when there is one,
   and every currently active claim for the subject. Forced tool use means the answer is always one of
   five verdicts — never free text to parse.</p>
@@ -381,7 +386,7 @@
   guess. Both post through the normal digest exactly as if no claims layer existed at all — which is
   where §6 picks up.</p>
 
-  <h2><span class="stage-no">§6</span>Digest tier — does this earn its own headline?</h2>
+  <h2 id="s6"><span class="stage-no">§6</span>Digest tier — does this earn its own headline?</h2>
   <p class="rule">Every NO_CLAIM or UNSURE item — the ones with no claim to anchor a decision to — gets
   one more check before posting: does its own headline name the subject? If not, and the body is long
   enough to judge (≥300 characters) and names the subject <strong>at most once</strong>, it folds into a
@@ -418,7 +423,7 @@
   suppressed outright instead: a message with nothing but a header and one shared line is exactly the
   noise this rule exists to remove, so nothing was sent for Subject C that run at all.</p>
 
-  <h2><span class="stage-no">§7</span>Claims — the distilled output</h2>
+  <h2 id="s7"><span class="stage-no">§7</span>Claims — the distilled output</h2>
   <p class="rule">Everything the funnel does exists to feed this table. A claim is one row per
   real-world fact: a canonical English sentence, a type, a status that starts as <span
   class="chip rumor" style="vertical-align:middle">rumor</span> and moves to <span class="chip confirmed"
