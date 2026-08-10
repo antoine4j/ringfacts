@@ -55,11 +55,17 @@ default. [`domain/example-music.js`](domain/example-music.js) is a second one,
 written to prove the seam is real — it is clearly labelled as never having been
 run, with unverified feeds and unmeasured thresholds.
 
-**The watchlist** (`watchlist.js`) is *who* is tracked. It is gitignored:
-publishing the machinery is the point, publishing a personal watchlist is not.
-[`watchlist.example.js`](watchlist.example.js) documents the shape, including
-the per-subject `confusables` hints that tell the matcher which namesakes and
-relatives to watch out for.
+**The watchlist** ([`watchlist.js`](watchlist.js)) is *who* is tracked — the
+real one this bot runs on, three fighters, checked in. It carries the search
+aliases per language edition and the per-subject `confusables` hints that tell
+the matcher which namesakes and relatives to watch out for.
+
+It was briefly gitignored, on the theory that the machinery was the interesting
+part and the list was private. That turned out to be a fiction: the walkthroughs
+below quote real headlines about these people, and a repo that hides the list
+while showing the coverage is only pretending. Everything is public and
+consistent instead. [`watchlist.example.js`](watchlist.example.js) documents the
+shape for anyone starting their own.
 
 ## Design notes worth reading
 
@@ -84,7 +90,7 @@ database, and a Telegram bot token.
 ```bash
 npm ci
 cp .env.example .env                    # then fill in your chat ids
-cp watchlist.example.js watchlist.js    # then fill in your own subjects
+cp watchlist.example.js watchlist.js    # replaces the shipped watchlist with yours
 npm run dev
 ```
 
@@ -106,9 +112,10 @@ again: both surfaces receive every value by *reference* to Secret Manager, and
 That is not tidiness — a deploy that carries a value can corrupt it, and on
 2026-08-09/10 two did, costing twenty hours of silent non-delivery.
 
-Note that `watchlist.js` is gitignored but **not** excluded from deploys — see
-[.gcloudignore](.gcloudignore). Gitignored means "not in the public repo", not
-"absent from production", so deploys must run somewhere that has a real one.
+Note that [.gcloudignore](.gcloudignore) exists so gcloud does not derive its
+upload rules from `.gitignore`. It mattered acutely when the watchlist was
+gitignored — the deploy succeeded and the container died at startup — and it
+still guards every other ignored file that production needs.
 
 ## Tests
 

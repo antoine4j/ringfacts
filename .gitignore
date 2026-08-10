@@ -2,8 +2,10 @@ node_modules/
 .env
 .env.*
 !.env.example
-watchlist.js
-!watchlist.example.js
+# watchlist.js is TRACKED (2026-08-10). It was gitignored while the plan was to
+# keep the tracked people private; publishing the docs that show real headlines
+# made that inconsistent, so the whole thing is public and self-consistent
+# instead. watchlist.example.js stays as the documented shape for other people.
 *.db
 *.sqlite
 .DS_Store

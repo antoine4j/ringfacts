@@ -1,11 +1,14 @@
 # What NOT to upload to Cloud Build. This file exists specifically to break
-# gcloud's default behaviour: with no .gcloudignore, gcloud derives one from
-# .gitignore, which would exclude watchlist.js — the deploy would succeed and
-# the container would die at startup with "watchlist.js not found".
+# gcloud's default behaviour: with no .gcloudignore, gcloud derives its upload
+# rules from .gitignore. The rule to remember is that gitignored means "not in
+# the public repo", NOT "absent from production" — the two lists answer
+# different questions and must be maintained separately.
 #
-# So: gitignored means "not in the public repo", NOT "absent from production".
-# The watchlist is uploaded from the deploying machine and baked into the
-# image. Deploys must therefore run somewhere that has a real watchlist.js.
+# The case that proved it: watchlist.js was gitignored, gcloud therefore
+# omitted it, the deploy succeeded, and the container died at startup with
+# "watchlist.js not found". The watchlist is tracked now, so that specific
+# trap is gone — but every entry below is still a file gcloud would happily
+# infer the wrong answer about.
 
 .git
 .gitignore
