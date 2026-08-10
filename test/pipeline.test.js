@@ -457,6 +457,153 @@ describe("fail-open", () => {
     // the suppression branch above has to correct posted after the fact.
     assert.equal(store.rows.items.length, 1);
   });
+
+  // The outage this was written for (2026-08-10): a deploy blanked
+  // TELEGRAM_CHAT_ID and every send returned 400 "chat not found" for 20
+  // hours. sendTelegramMessage handles that by logging and returning null — it
+  // does NOT throw — so the test above never covered it, and three items sat
+  // in the archive marked posted=true that the group never received. Nothing
+  // in the database disagreed with them, which is what made the outage
+  // invisible to every query.
+  describe("a send that fails without throwing", () => {
+    const dead = { sendMessage: async () => null }; // what a 400 actually returns
+
+    test("every item in the lost digest is walked back to posted=false", async () => {
+      const store = createFakeStore();
+      await huntSubject(DB, SUBJECT, [makeItem()], deps({ store, ...dead }));
+      assert.equal(store.rows.items[0].posted, false);
+      assert.equal(store.rows.items[0].held_reason, "send_failed");
+    });
+
+    // One message carries every line, so one failure loses the folded items
+    // too — they are only ever offered on that shared line.
+    test("folded items are lost with the message that carried them", async () => {
+      const store = createFakeStore();
+      await huntSubject(DB, SUBJECT, [
+        makeItem(),
+        makeItem({ title: "Someone else eyes a top-10 fight", mentions: 1, source: "Sherdog" }),
+      ], deps({
+        store, ...dead,
+        embedTexts: async (t) => t.map((_, i) => [Math.cos(i * 2), Math.sin(i * 2)]),
+      }));
+      assert.deepEqual(store.rows.items.map((r) => [r.posted, r.held_reason]),
+        [[false, "send_failed"], [false, "send_failed"]]);
+    });
+
+    // A claim is a fact we learned, not a message we sent. Losing the post
+    // must not lose the knowledge — and the null tg_message_id already means
+    // "nothing to thread a confirmation under".
+    test("the claim survives, without a message id", async () => {
+      const store = createFakeStore();
+      await huntSubject(DB, SUBJECT, [makeItem()], deps({
+        store, ...dead,
+        matchItem: async () => ({
+          verdict: "NEW",
+          new_claim: { type: "quote", sourcing: "reported", canonical_text: "Testov spoke", facts: {} },
+        }),
+      }));
+      assert.equal(store.rows.claims.length, 1);
+      assert.equal(store.rows.claims[0].tg_message_id, null);
+      assert.equal(store.rows.items[0].posted, false);
+    });
+
+    // The guard in the other direction: a delivered message must never be
+    // walked back, or the archive starts under-reporting instead.
+    test("a delivered message leaves posted=true alone", async () => {
+      const store = createFakeStore();
+      await huntSubject(DB, SUBJECT, [makeItem()], deps({ store }));
+      assert.equal(store.rows.items[0].posted, true);
+      assert.equal(store.rows.items[0].held_reason, null);
+    });
+  });
+
+  // Marking a lost item unposted is only honest bookkeeping — Gate 1 blocks
+  // rediscovery, so without this the group never sees it. The next run that
+  // can send carries it.
+  describe("the resend pass", () => {
+    const dead = { sendMessage: async () => null };
+
+    // The whole loop, in one test: run 1 loses the item, run 2 delivers it.
+    test("an item lost to a failed send is carried by the next run", async () => {
+      const store = createFakeStore();
+      await huntSubject(DB, SUBJECT, [makeItem()], deps({ store, ...dead }));
+      assert.equal(store.rows.items[0].held_reason, "send_failed");
+
+      sent.length = 0;
+      await huntSubject(DB, SUBJECT, [], deps({ store })); // nothing new this hour
+      assert.match(digest().text, /Testov books a return/, "the lost headline is carried");
+      assert.equal(store.rows.items[0].posted, true, "and the row says so again");
+      assert.equal(store.rows.items[0].held_reason, null);
+    });
+
+    test("it is carried once, not every hour after", async () => {
+      const store = createFakeStore();
+      await huntSubject(DB, SUBJECT, [makeItem()], deps({ store, ...dead }));
+      await huntSubject(DB, SUBJECT, [], deps({ store }));
+      sent.length = 0;
+      await huntSubject(DB, SUBJECT, [], deps({ store }));
+      assert.equal(sent.length, 0, "a delivered item must not come back");
+    });
+
+    // A retry that keeps failing must not escape the walk-back, or the row
+    // ends up claiming a delivery that failed twice.
+    test("a second failure leaves it queued rather than losing it", async () => {
+      const store = createFakeStore();
+      await huntSubject(DB, SUBJECT, [makeItem()], deps({ store, ...dead }));
+      await huntSubject(DB, SUBJECT, [], deps({ store, ...dead }));
+      assert.equal(store.rows.items[0].posted, false);
+      assert.equal(store.rows.items[0].held_reason, "send_failed");
+    });
+
+    // Self-limiting by design: an outage that outlasts the news window stops
+    // trailing the digest instead of posting week-old headlines forever.
+    test("news older than the discovery window is not resurrected", async () => {
+      const store = createFakeStore();
+      await huntSubject(DB, SUBJECT, [makeItem()], deps({ store, ...dead }));
+      // The outage outlasted the news: age the stored row past the window the
+      // hunter discovers within. (Feeding a 40h-old item instead would prove
+      // nothing — fetchFreshItems drops it before it is ever stored.)
+      store.rows.items[0].published_at = new Date(Date.now() - 40 * 3600_000);
+      sent.length = 0;
+      await huntSubject(DB, SUBJECT, [], deps({ store }));
+      assert.equal(sent.length, 0);
+      assert.equal(store.rows.items[0].held_reason, "send_failed", "still on the record, just not posted");
+    });
+
+    // held_reason's other values are decisions. A retry must never undo one.
+    test("duplicates and wrong-subject rows are never resent", async () => {
+      const store = createFakeStore();
+      await huntSubject(DB, SUBJECT, [makeItem()], deps({
+        store, matchItem: async () => ({ verdict: "WRONG_SUBJECT" }),
+      }));
+      sent.length = 0;
+      await huntSubject(DB, SUBJECT, [], deps({ store }));
+      assert.equal(sent.length, 0);
+      assert.equal(store.rows.items[0].held_reason, "wrong_subject");
+    });
+
+    // Rebuilt rows carry a language, so a Spanish headline still gets
+    // translated a run later — and a row from before the column existed says
+    // nothing rather than claiming a translation it never had.
+    test("a resent foreign headline is still translated", async () => {
+      const store = createFakeStore();
+      await huntSubject(DB, SUBJECT, [makeItem({ edition: "es", title: "Testov vuelve en marzo" })],
+        deps({ store, ...dead }));
+      sent.length = 0;
+      await huntSubject(DB, SUBJECT, [], deps({ store }));
+      assert.match(digest().text, /\(translated from es\)/);
+    });
+
+    test("a row with no stored language posts as filed, never mislabelled", async () => {
+      const store = createFakeStore();
+      await huntSubject(DB, SUBJECT, [makeItem()], deps({ store, ...dead }));
+      store.rows.items[0].edition = null; // a row written before the column existed
+      sent.length = 0;
+      await huntSubject(DB, SUBJECT, [], deps({ store }));
+      assert.doesNotMatch(digest().text, /translated from/);
+      assert.match(digest().text, /Testov books a return/);
+    });
+  });
 });
 
 describe("presentation", () => {

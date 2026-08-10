@@ -282,7 +282,17 @@ export async function huntSubject(db, subject, directItems = [], overrides = {})
   if (unseen.length > candidates.length) {
     console.log(`${subject.name}: capped ${unseen.length} unseen to ${candidates.length}, rest next run`);
   }
-  if (candidates.length === 0) {
+  // Items an earlier run stored but could not deliver, for this run to carry.
+  // Fetched HERE, above the nothing-new return, because the most likely hour
+  // for a retry is a quiet one — an outage does not schedule itself around the
+  // news. Returning early on "nothing new" would strand them until the next
+  // hour that happened to find something, which could be days.
+  //
+  // Read even under DRY_RUN so a dry run previews what a real one would carry;
+  // nothing is written back, because the write only happens on a real send.
+  const resends = db ? await deps.store.pendingResends(db, subject.name, HOURS_BACK) : [];
+
+  if (candidates.length === 0 && resends.length === 0) {
     console.log(`${subject.name}: ${fetched.length} fetched, nothing new`);
     return;
   }
@@ -490,12 +500,51 @@ export async function huntSubject(db, subject, directItems = [], overrides = {})
       `(${tangential.length} tangential), ${confirmations.length} confirmation(s)`
   );
 
+  // Resend pass: items an earlier run stored but could not deliver, carried by
+  // the next run that can. They ride this run's digest as ordinary bullets
+  // rather than a message of their own — one message reads better than two,
+  // and digestLine already stamps each with its real age, so a recovered item
+  // announces its own lateness instead of pretending to be fresh.
+  //
+  // This lives here, not in a separate scheduled job, for the same reason: a
+  // second job posting to the same group would race the hourly digest and
+  // duplicate this entire formatting path. The hourly run is already the
+  // retry.
+  //
+  // Rebuilt from the row, so only what the row stores is available — no body,
+  // no embedding, no verdict. None of that is needed to render a bullet, and
+  // the tier decision was already made and recorded when the item first came
+  // through. Deliberately NOT re-judged: re-running the matcher would spend a
+  // call to re-derive an answer we already have, and could quietly change it.
+  //
+  // One fidelity cost, accepted knowingly: an item that first went out as a
+  // 🕵️ Rumor line comes back as an ordinary bullet, because the row stores the
+  // publisher's headline and the claim sentence lives on the claim. Late and
+  // plainer beats lost.
+  for (const row of resends) {
+    const item = {
+      dbId: row.id, title: row.title, source: row.source ?? "",
+      url: row.resolved_url ?? row.url, publishedAt: new Date(row.published_at),
+      edition: row.edition, resent: true,
+    };
+    (row.digest_tier === "tangential" ? tangential : digestItems).push(item);
+  }
+  if (resends.length) {
+    console.log(`${subject.name}: carrying ${resends.length} item(s) from a failed send`);
+  }
+
   // Translate digest headlines the group can't read (claim texts are already
   // English). Tangential items are deliberately excluded — the "also
   // mentioning" line shows only source names, so translating their headlines
   // would be a wasted Gemini call. Fail-open: a failed translation posts the
   // original.
+  //
+  // A resent row whose edition is null predates the edition column: its
+  // language is genuinely unknown, so it posts as filed. Guessing would be
+  // worse than late — a mislabelled "(translated from …)" claims a provenance
+  // that isn't true.
   for (const item of digestItems) {
+    if (item.resent && !item.edition) continue;
     if (GROUP_LANGUAGES.has(item.edition)) continue;
     try {
       item.displayTitle = await deps.translate(cleanTitle(item));
@@ -503,6 +552,26 @@ export async function huntSubject(db, subject, directItems = [], overrides = {})
       console.warn(`translate failed for "${item.title.slice(0, 40)}":`, err.message);
     }
   }
+
+  // Rows are written posted=true before any message is built, because the send
+  // is the last thing that happens and the row has to exist for the claim to
+  // link to. So a send that FAILS leaves the archive asserting the group saw
+  // something it never did — which is not a bookkeeping detail: held_reason is
+  // documented as "why the group never saw this" (schema.sql), bootstrap and
+  // the swallowed-confirmations audit both read it that way, and
+  // audit-digest-tier.js partitions on `posted` when re-measuring thresholds.
+  //
+  // This is not hypothetical. A deploy on 2026-08-09 blanked TELEGRAM_CHAT_ID;
+  // every send for the next 20 hours returned "chat not found" while three
+  // items sat in the archive marked posted=true. Nothing in the database
+  // disagreed with them, so no query could have found the outage.
+  const sendFailed = async (items, what) => {
+    const ids = items.map((i) => i.dbId).filter(Boolean);
+    console.error(`${subject.name}: ${what} send failed — ${ids.length} item(s) marked unposted`);
+    if (db && !deps.dryRun && ids.length) {
+      await deps.store.markUnposted(db, ids, "send_failed");
+    }
+  };
 
   // 1. Ceremonies: one standalone post per confirmed announcement.
   for (const c of ceremonies) {
@@ -512,6 +581,7 @@ export async function huntSubject(db, subject, directItems = [], overrides = {})
     } else {
       const mid = await deps.sendMessage(deps.chatId, msg, { html: true, noPreview: true });
       if (db && c.claimId) await deps.store.setClaimMessageId(db, c.claimId, mid);
+      if (!mid) await sendFailed([c.item], "ceremony");
     }
   }
 
@@ -535,7 +605,20 @@ export async function huntSubject(db, subject, directItems = [], overrides = {})
       if (db && mid) {
         for (const r of rumorPosts) if (r.claimId) await deps.store.setClaimMessageId(db, r.claimId, mid);
         for (const cid of digestClaims) await deps.store.setClaimMessageId(db, cid, mid);
+        // Delivered at last: the rows that were carrying 'send_failed' go back
+        // to saying the group has seen them.
+        const recovered = [...digestItems, ...tangential].filter((i) => i.resent).map((i) => i.dbId);
+        if (recovered.length) {
+          await deps.store.markPosted(db, recovered);
+          console.log(`${subject.name}: ${recovered.length} recovered item(s) delivered`);
+        }
       }
+      // One message carries every line, so one failure loses all of them —
+      // the rumor items, the bullets, and anything folded into the shared
+      // line. The claims stay: a claim is a fact we learned, not a message we
+      // sent, and its null tg_message_id already means "nothing to thread a
+      // confirmation under".
+      if (!mid) await sendFailed([...rumorPosts.map((r) => r.item), ...digestItems, ...tangential], "digest");
     }
   } else if (tangential.length > 0) {
     // Every posted item this run was tangential — a message with nothing but

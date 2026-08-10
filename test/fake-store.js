@@ -135,6 +135,7 @@ export function createFakeStore({ items = [], claims = [], claimSources = [] } =
         body_via: item.bodyVia ?? null,
         digest_tier: item.digestTier ?? null,
         subject_role: item.subjectRole ?? null,
+        edition: item.edition ?? null,
       };
       rows.items.push(row);
       return row.id;
@@ -165,6 +166,24 @@ export function createFakeStore({ items = [], claims = [], claimSources = [] } =
       for (const id of ids) {
         const row = rows.items.find((r) => String(r.id) === String(id));
         if (row) Object.assign(row, { posted: false, held_reason: reason });
+      }
+    },
+
+    // Mirrors the real query's filters exactly, including the age window —
+    // a fake that returned everything would let a test pass while production
+    // silently reposted week-old news.
+    async pendingResends(_db, subject, hoursBack) {
+      const cutoff = Date.now() - hoursBack * 3_600_000;
+      return rows.items
+        .filter((r) => r.subject === subject && r.held_reason === "send_failed" && !r.posted)
+        .filter((r) => new Date(r.published_at).getTime() > cutoff)
+        .sort((a, b) => new Date(b.published_at) - new Date(a.published_at));
+    },
+
+    async markPosted(_db, ids) {
+      for (const id of ids) {
+        const row = rows.items.find((r) => String(r.id) === String(id));
+        if (row) Object.assign(row, { posted: true, held_reason: null });
       }
     },
 

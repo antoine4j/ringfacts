@@ -19,7 +19,7 @@ import pg from "pg";
 import {
   knownUrls, itemIdByUrl, nearestRecent, insertItem, markUnposted,
   activeClaims, insertClaim, linkClaimSource, claimOfItem, claimSimilarities,
-  claimLinkDrifts, setClaimMessageId, confirmClaim,
+  claimLinkDrifts, setClaimMessageId, confirmClaim, pendingResends, markPosted,
 } from "../lib/db.js";
 import { EMBEDDING_DIMENSIONS } from "../lib/embeddings.js";
 
@@ -55,10 +55,14 @@ before(async () => {
 after(async () => {
   if (!db) return;
   // Scoped to this run's own rows only. The items table is the evidence record.
-  await db.query("DELETE FROM claim_sources WHERE claim_id IN (SELECT id FROM claims WHERE subject = $1)", [SUBJECT]);
-  await db.query("DELETE FROM claim_sources WHERE item_id IN (SELECT id FROM items WHERE subject = $1)", [SUBJECT]);
-  await db.query("DELETE FROM claims WHERE subject = $1", [SUBJECT]);
-  await db.query("DELETE FROM items WHERE subject = $1", [SUBJECT]);
+  // LIKE, not =, because the resend tests need a second subject to prove one
+  // subject's lost item never leaks into another's digest; both carry this
+  // run's unique prefix, and nothing else in the table can.
+  const mine = `${SUBJECT}%`;
+  await db.query("DELETE FROM claim_sources WHERE claim_id IN (SELECT id FROM claims WHERE subject LIKE $1)", [mine]);
+  await db.query("DELETE FROM claim_sources WHERE item_id IN (SELECT id FROM items WHERE subject LIKE $1)", [mine]);
+  await db.query("DELETE FROM claims WHERE subject LIKE $1", [mine]);
+  await db.query("DELETE FROM items WHERE subject LIKE $1", [mine]);
   await db.end();
 });
 
@@ -84,6 +88,7 @@ describe("schema agrees with lib/db.js", { skip }, () => {
       "url", "subject", "title", "source", "published_at", "posted", "embedding", "embedding_model",
       "nearest_similarity", "nearest_item", "held_reason", "found_via", "rss_description",
       "resolved_url", "body", "body_fetched_at", "body_via", "digest_tier", "subject_role",
+      "edition",
     ];
     assert.deepEqual(written.filter((c) => !have.has(c)), []);
   });
@@ -252,5 +257,78 @@ describe("markUnposted", { skip }, () => {
     await markUnposted(db, [], "tangential");
     const { rows } = await db.query("SELECT posted FROM items WHERE id = $1", [id]);
     assert.equal(rows[0].posted, true);
+  });
+});
+
+// The resend queue (2026-08-10). The fake store reimplements these filters in
+// JavaScript, so tier 2 only proves the hunter uses them — not that the SQL
+// says what the JavaScript says. The age window in particular is Postgres
+// interval arithmetic on a string-typed parameter, which no fake exercises.
+describe("pendingResends", { skip }, () => {
+  // Every test gets its own subject. The whole point of these assertions is
+  // "the query returns nothing", and rows from an earlier test in the same
+  // file would satisfy the query and make an empty expectation fail — or
+  // worse, make a broken filter look fine. The after() hook clears the whole
+  // prefix.
+  let n = 0;
+  const scope = () => `${SUBJECT}_${n++}`;
+  const failed = (subject, over = {}) =>
+    item({ subject, posted: false, heldReason: "send_failed", ...over });
+
+  test("returns exactly the items a failed send left owed to the group", async () => {
+    const s = scope();
+    const id = await insertItem(db, failed(s));
+    const found = await pendingResends(db, s, 24);
+    assert.deepEqual(found.map((r) => String(r.id)), [String(id)]);
+  });
+
+  // held_reason's other values are decisions. A retry must never undo one, or
+  // a duplicate the system deliberately withheld comes back an hour later.
+  test("never returns a duplicate, a wrong subject, or a delivered item", async () => {
+    const s = scope();
+    await insertItem(db, item({ subject: s, posted: false, heldReason: "embedding" }));
+    await insertItem(db, item({ subject: s, posted: false, heldReason: "wrong_subject" }));
+    await insertItem(db, item({ subject: s, posted: false, heldReason: "tangential" }));
+    await insertItem(db, item({ subject: s, posted: true }));
+    assert.deepEqual(await pendingResends(db, s, 24), []);
+  });
+
+  // A row that was resent and delivered has posted=true again; the NOT posted
+  // filter is what stops it looping back every hour thereafter.
+  test("a delivered row leaves the queue even if held_reason lingers", async () => {
+    const s = scope();
+    const id = await insertItem(db, failed(s));
+    await db.query("UPDATE items SET posted = true WHERE id = $1", [id]);
+    assert.deepEqual(await pendingResends(db, s, 24), []);
+  });
+
+  // The self-limiting property: an outage that outlasts the news window stops
+  // trailing the digest instead of posting stale headlines forever.
+  test("the age window is measured on publication, not on when it was stored", async () => {
+    const s = scope();
+    await insertItem(db, failed(s, { publishedAt: new Date(Date.now() - 40 * 3600_000) }));
+    assert.deepEqual(await pendingResends(db, s, 24), [], "older than the window");
+    assert.equal((await pendingResends(db, s, 48)).length, 1, "and inside a wider one it returns");
+  });
+
+  test("another subject's lost item is not carried into this one's digest", async () => {
+    const mine = scope(), theirs = scope();
+    await insertItem(db, failed(theirs));
+    assert.deepEqual(await pendingResends(db, mine, 24), []);
+  });
+
+  test("markPosted clears the reason, so the row stops claiming it was withheld", async () => {
+    const id = await insertItem(db, failed(scope()));
+    await markPosted(db, [id]);
+    const { rows } = await db.query("SELECT posted, held_reason FROM items WHERE id = $1", [id]);
+    assert.equal(rows[0].posted, true);
+    assert.equal(rows[0].held_reason, null);
+  });
+
+  test("markPosted with no ids updates nothing", async () => {
+    const id = await insertItem(db, failed(scope()));
+    await markPosted(db, []);
+    const { rows } = await db.query("SELECT posted FROM items WHERE id = $1", [id]);
+    assert.equal(rows[0].posted, false);
   });
 });

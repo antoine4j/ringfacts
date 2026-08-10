@@ -26,7 +26,14 @@ CREATE INDEX IF NOT EXISTS items_subject_seen_idx ON items (subject, seen_at);
 -- distribution is what tunes dedup thresholds later.
 ALTER TABLE items ADD COLUMN IF NOT EXISTS nearest_similarity real;
 ALTER TABLE items ADD COLUMN IF NOT EXISTS nearest_item bigint REFERENCES items(id);
-ALTER TABLE items ADD COLUMN IF NOT EXISTS held_reason text;      -- 'embedding' | 'llm' (2d)
+-- Why the group never saw this item: 'embedding' (Gate 2 near-duplicate) |
+-- 'llm' (matcher MATCH, held as evidence) | 'wrong_subject' | 'official' (an
+-- official-source dup the matcher found nothing new in) | 'tangential' (the
+-- whole run folded, so the message would have been an empty shell) |
+-- 'send_failed' (2026-08-10: the row is written posted=true before the message
+-- is built, so a Telegram failure has to walk it back or the archive claims a
+-- delivery that never happened).
+ALTER TABLE items ADD COLUMN IF NOT EXISTS held_reason text;
 ALTER TABLE items ADD COLUMN IF NOT EXISTS found_via text;        -- which query alias caught it
 ALTER TABLE items ADD COLUMN IF NOT EXISTS rss_description text;  -- raw RSS <description>, mined later
 
@@ -63,6 +70,16 @@ ALTER TABLE items ADD COLUMN IF NOT EXISTS digest_tier text;
 -- did with it, so it stays comparable across the whole archive.
 -- null = matcher off, matcher failed, or a pre-migration row.
 ALTER TABLE items ADD COLUMN IF NOT EXISTS subject_role text;
+
+-- The feed edition ("en", "es", "uk"…) the item arrived from (2026-08-10).
+-- Live runs never needed it stored — translation happens in the same pass that
+-- fetched the item. The resend path does: an item recovered from a failed send
+-- is rebuilt from its row hours later, and without this the digest cannot tell
+-- a Spanish headline that needs translating from an English one that does not,
+-- and would label the English one "(translated from undefined)". Null on rows
+-- written before this column existed, which the resend path reads as "unknown
+-- language, post the headline as filed" rather than guessing.
+ALTER TABLE items ADD COLUMN IF NOT EXISTS edition text;
 
 -- ============================================================================
 -- Claims layer (step 5, phase 1 — docs/claims-architecture.html).
