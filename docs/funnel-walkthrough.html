@@ -390,9 +390,13 @@
 
   <h2 id="s6"><span class="stage-no">§6</span>Digest tier — does this earn its own headline?</h2>
   <p class="rule">Every NO_CLAIM or UNSURE item — the ones with no claim to anchor a decision to — gets
-  one more check before posting: does its own headline name the subject? If not, and the body is long
-  enough to judge (≥300 characters) and names the subject <strong>at most once</strong>, it folds into a
-  single shared "↘ Also mentioning" line instead of taking a bullet of its own.</p>
+  one more check before posting. A headline that names the subject always keeps its own bullet.
+  Otherwise, either of two signals folds it into a single shared "↘ Also mentioning" line: the matcher's
+  own <strong>subject_role</strong> judgment — <code>passing</code>, the subject named only as background
+  color, reported in the same call as the §5 verdict, so it costs nothing extra — or, as the measured
+  fallback, a body long enough to judge (≥300 characters) that names the subject <strong>at most
+  once</strong>. The LLM signal can only <em>add</em> demotions, never rescue: any answer but
+  <code>passing</code> falls through to the count rule unchanged.</p>
   <div class="callout blue">
     <strong>The Topuria / Salkilld story, end to end</strong>
     The Sports Illustrated item from §4 is a NO_CLAIM: about Salkilld, not Topuria, who appears in
@@ -423,7 +427,12 @@
   "tangential" — a Mark Zuckerberg viral-video story that named Topuria once in passing. That run had
   nothing else to post for Topuria, so the item wasn't folded into an "Also mentioning" line — it was
   suppressed outright instead: a message with nothing but a header and one shared line is exactly the
-  noise this rule exists to remove, so nothing was sent for Topuria that run at all.</p>
+  noise this rule exists to remove, so nothing was sent for Topuria that run at all. The role check is
+  newer still (2026-08-10), and it exists because of the one case counting could never have caught: an
+  article about Guram Kutateladze that named Topuria twice — once as a teammate, once as a man in
+  someone else's corner, pure background color both times — and so cleared the ≤1 threshold honestly.
+  That was the first item the tier got wrong on its own terms rather than on a body handed to it
+  broken.</p>
 
   <h2 id="s7"><span class="stage-no">§7</span>Claims — the distilled output</h2>
   <p class="rule">Everything the funnel does exists to feed this table. A claim is one row per
