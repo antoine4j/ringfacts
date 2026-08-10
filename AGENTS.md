@@ -1,7 +1,8 @@
 # RingFacts
 
 A Telegram bot that hunts MMA news about three fighters (Donchenko, Amosov,
-Topuria) and posts what matters to a small private group. Runs as an hourly
+Topuria — the watchlist in [watchlist.js](watchlist.js)) and posts what
+matters to a small private group. Runs as an hourly
 Cloud Run Job on GCP (`us-west1`; see [setup.sh](setup.sh)), with Neon Postgres +
 pgvector for memory. RingFacts is Anton's learning project as much as it is a
 bot — explaining *why* beats delivering silently.
@@ -25,8 +26,10 @@ semantic duplicates (pgvector, cosine ≥ 0.80) → for survivors only: decode
 Google's wrapped URL and fetch/extract the article body (lib/googlenews.js,
 lib/extract.js — best-effort, headline-only on any failure) → ask a Haiku
 matcher what each survivor is about, body excerpt included (`MATCH` / `NEW` /
-`NO_CLAIM` / `WRONG_SUBJECT` / `UNSURE`) → post. Tables: `items`, `claims`,
-`claim_sources`.
+`NO_CLAIM` / `WRONG_SUBJECT` / `UNSURE`, plus a `subject_role` prominence
+judgment) → tier the digest (lib/tier.js: role first, then the measured
+mention-count rule; tangential items fold into one "Also mentioning" line) →
+post. Tables: `items`, `claims`, `claim_sources`.
 
 Every gate fails open: no embeddings degrades to URL-only dedup, a matcher error
 becomes `UNSURE` and the article posts as it always did. The one fatal condition

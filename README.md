@@ -8,7 +8,11 @@ mention someone in passing.
 
 It ships configured for combat sports (MMA), which is what it runs as in
 production: an hourly Cloud Run Job on GCP with Neon Postgres + pgvector for
-memory, inside free tiers throughout.
+memory, both inside free tiers, plus two LLM providers doing different jobs —
+Claude Haiku 4.5 makes the judgment call (the claim matcher), Gemini does the
+mechanical ones (`gemini-embedding-001` for the semantic dedup gate,
+Flash-Lite for headline translation). LLM spend is the one real cost,
+hard-capped at $5/month.
 
 Renamed from *FighterBot* on 2026-08-10 — the commit history and the deployed
 GCP resource names (`fighterbot`, `fighterbot-hunter`) still carry the old
@@ -34,14 +38,22 @@ Every hour, the hunter:
    article tag → paragraphs → og:description), recording which rung produced it.
 5. **Asks a Haiku matcher** what each article is actually about, body excerpt
    included — is this a new claim, an echo of a claim already tracked, no claim
-   at all, or a different subject entirely?
+   at all, or a different subject entirely? The same forced-tool call also
+   records how prominently the subject figures in the article's own text
+   (`central` / `supporting` / `passing`).
 6. **Posts**, threading follow-ups under the original story and folding merely
-   tangential articles into one shared line.
+   tangential articles into one shared "Also mentioning" line — demotion
+   decided by the matcher's prominence verdict first, then by a mention-count
+   rule measured on the live archive.
 
 Every gate fails open. No embeddings degrades to URL-only dedup; a matcher error
-posts the article as it always would have. The single fatal condition is a
-configured-but-unreachable database — posting without memory would re-spam the
-group every hour.
+posts the article as it always would have. A failed Telegram send walks its rows
+back to unposted, and the next run that can deliver picks them up — bounded by
+the same freshness window discovery uses, so an outage delays news rather than
+silently eating it. Each direct feed also logs how many items it matched and
+discarded, so a dead name filter reads as sustained `0 matched` instead of a
+quiet news day. The single fatal condition is a configured-but-unreachable
+database — posting without memory would re-spam the group every hour.
 
 ## Two kinds of configuration
 
@@ -71,6 +83,10 @@ shape for anyone starting their own.
 
 The interesting parts aren't the plumbing, they're the judgment calls:
 
+- **[docs/funnel-walkthrough.html](docs/funnel-walkthrough.html)** — start
+  here: real articles from the live archive followed through every stage of
+  the funnel, discovery to claim, with the verdicts production actually
+  recorded — including the ones that were wrong.
 - **[docs/architecture-overview.html](docs/architecture-overview.html)** — the
   system as actually built: pipeline, claims layer, ops, autonomy.
 - **[lib/tier.js](lib/tier.js)** — thresholds measured against real archived
@@ -78,6 +94,13 @@ The interesting parts aren't the plumbing, they're the judgment calls:
   they don't get reintroduced.
 - **[docs/self-improvement.md](docs/self-improvement.md)** — how the scheduled
   autonomous check-in runs are allowed to decide things.
+- **[docs/sandboxed-autonomy.md](docs/sandboxed-autonomy.md)** — the parked
+  design for letting those runs go fully unattended: scope the credentials so
+  that even a fully prompt-injected run is harmless. Written down,
+  deliberately not built yet.
+- **[TODO.md](TODO.md)** — the build sequence as it actually unfolded,
+  measured decisions and rejected alternatives included, plus the open
+  question that challenges the project's own framing.
 - **[ringfacts-spec.md](ringfacts-spec.md)** — the original spec, including
   empirically verified Telegram behavior (privacy mode, group→supergroup ID
   changes) that shaped the design.
