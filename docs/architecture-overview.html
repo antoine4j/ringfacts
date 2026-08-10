@@ -630,6 +630,17 @@
       its bullet. Every verdict's role is stored on the item so <code>audit-digest-tier.js</code> can
       cross-tab LLM-vs-count agreement over real data — that dataset, not intuition, decides whether the
       LLM ever earns more authority.</li>
+      <li><strong>The "also mentioning" line stopped hiding an outlet's second story
+      (2026-08-10):</strong> the line grouped folded articles by outlet and rendered one link each — the
+      newest — so an outlet with two demoted stories in one run had its older one appear nowhere. That
+      line is the <em>only</em> place a folded article is ever offered, and Gate 1's URL check guarantees
+      no later run offers it again, so the story was reachable from the archive and from nothing else. It
+      now renders both, numbered newest-first (<code>Bloody Elbow (1) · Bloody Elbow (2)</code>); a bare
+      repeated name reads as a bug, and the index is what earns the second link its place. Numbering
+      appears only where an outlet has more than one, and identical URLs still collapse — the same article
+      reached twice is one story. The case has never occurred in the live archive, which is why it shipped
+      with a forced integration check (<code>verify-digest-tier.js</code>) rather than waiting for news to
+      produce one.</li>
     </ul>
   </div>
 

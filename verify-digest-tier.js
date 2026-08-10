@@ -39,6 +39,18 @@ const tangentialBody =
   "shot once the current contenders are sorted out through eliminators. Testov has been " +
   "mentioned as a measuring stick for how far the division has come, though no formal talks " +
   "are underway between either camp at this early stage of the process.";
+// A SECOND tangential story from the same outlet as the first (2026-08-10), so
+// the run renders the numbered "(1) · (2)" form. Deliberately about a different
+// event in different words: two tangential bodies that read alike would be
+// caught by Gate 2's 0.80 similarity check and never reach the tier at all,
+// which is the failure mode that would make this check quietly prove nothing.
+const secondTangentialBody =
+  "Ticket sales for the promotion's return to the arena opened this morning, with the venue " +
+  "reporting strong early demand from a market that has waited three years for a card of this " +
+  "size. Local officials pointed to the economic case, citing hotel bookings and restaurant " +
+  "traffic around previous events downtown. The broadcast window has not been finalised. Among " +
+  "the names floated for the co-main slot was Testov, though the promotion has said nothing " +
+  "publicly and no bout agreement has been sent to any camp for that position on the card.";
 const mainBody =
   "Testov Example spoke to reporters today about his training camp and upcoming plans for the " +
   'rest of the year, touching on his mindset and preparation routine. "I feel ready for ' +
@@ -53,6 +65,13 @@ const items = [
     url: "https://example-test-wire.invalid/tangential-" + Date.now(),
     publishedAt: new Date(Date.now() - 3 * 3600_000),
     feedContent: `<p>${tangentialBody}</p>`,
+    source: "Test Wire A", edition: "en", foundVia: "synthetic", rssDescription: null,
+  },
+  {
+    title: "Arena ticket sales open for the promotion's return downtown",
+    url: "https://example-test-wire.invalid/tangential2-" + Date.now(),
+    publishedAt: new Date(Date.now() - 2 * 3600_000),
+    feedContent: `<p>${secondTangentialBody}</p>`,
     source: "Test Wire A", edition: "en", foundVia: "synthetic", rssDescription: null,
   },
   {
@@ -89,9 +108,10 @@ const tapMatcher = async (args) => {
   return verdict;
 };
 
-console.log("Expect: item A (no headline name, 1 body mention) -> tangential, folded into");
-console.log('"Also mentioning". Item B (headline names him) -> its own bullet. One message,');
-console.log("not suppressed, since a real line exists.");
+console.log("Expect: items A and C (no headline name, 1 body mention each) -> tangential, folded");
+console.log('into "Also mentioning". Both are from "Test Wire A", so that one outlet must render');
+console.log('as TWO numbered links — "Test Wire A (1) · Test Wire A (2)" — not one. Item B');
+console.log("(headline names him) -> its own bullet. One message, not suppressed.");
 console.log("On the new axis: A should come back subject_role=passing, B=central. That is an");
 console.log("expectation, not an assertion — this script reports what Haiku said, and the");
 console.log("matcher samples at the API default, so one run is not evidence (see TODO.md).\n");

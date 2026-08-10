@@ -150,21 +150,40 @@ export function digestLine(item) {
   return `• ${escapeHtml(title)} — <a href="${escapeHtml(item.url)}">${escapeHtml(item.source)}</a>${label}, ${hoursAgo(item.publishedAt)}h ago`;
 }
 
-// Tangential items: stored and linked, but not worth a headline. One link per
-// outlet — candidates arrive newest-first (fetchFreshItems sorts at :121), so
-// the first item seen for a given source is its newest. Falls back to the URL
-// hostname when source is empty (parseRssItems can return "" for a missing
-// <source> tag), which would otherwise render an invisible zero-width link.
+// Tangential items: stored and linked, but not worth a headline. Grouped by
+// outlet so the line stays scannable, and ordered newest-first within each
+// outlet because candidates arrive that way (fetchFreshItems sorts at :121).
+//
+// An outlet with two demoted stories in one run gets both links, numbered
+// "Bloody Elbow (1) · Bloody Elbow (2)". The first version showed only the
+// newest, which read cleanly but made the older story unreachable: the message
+// is the only place a demoted article is ever offered, and Gate 1 means a later
+// run will never offer it again. A bare repeated name reads as a bug, so the
+// index is what earns the second link its place. Numbering appears only when an
+// outlet actually has more than one — a lone "Sherdog (1)" would imply a
+// missing sibling.
+//
+// Falls back to the URL hostname when source is empty (parseRssItems can return
+// "" for a missing <source> tag), which would otherwise render an invisible
+// zero-width link. Identical URLs collapse: the same article reached twice is
+// one story, not two, and must not be numbered as if it were two.
 export function alsoMentioningLine(items) {
   const bySource = new Map();
   for (const item of items) {
     const name = item.source.trim() || hostOf(item.resolvedUrl ?? item.url);
     const key = name.toLowerCase();
-    if (!bySource.has(key)) bySource.set(key, { name, url: item.resolvedUrl ?? item.url });
+    const url = item.resolvedUrl ?? item.url;
+    if (!bySource.has(key)) bySource.set(key, { name, urls: [] });
+    const outlet = bySource.get(key);
+    if (!outlet.urls.includes(url)) outlet.urls.push(url);
   }
-  const links = [...bySource.values()].map(
-    (s) => `<a href="${escapeHtml(s.url)}">${escapeHtml(s.name)}</a>`
-  );
+  const links = [];
+  for (const { name, urls } of bySource.values()) {
+    for (const [i, url] of urls.entries()) {
+      const label = urls.length > 1 ? `${name} (${i + 1})` : name;
+      links.push(`<a href="${escapeHtml(url)}">${escapeHtml(label)}</a>`);
+    }
+  }
   return `↘ Also mentioning: ${links.join(" · ")}`;
 }
 
