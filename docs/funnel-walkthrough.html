@@ -342,7 +342,7 @@
   keep.</p>
   <table class="mini">
     <tr><th>Verdict — all five</th><th>Meaning</th><th>What happens to the article</th></tr>
-    <tr><td class="mono">NEW</td><td>a claim-worthy fact not on file</td><td>opens a claim · always keeps its own headline</td></tr>
+    <tr><td class="mono">NEW</td><td>a claim-worthy fact not on file</td><td>opens a claim · never folded by §6</td></tr>
     <tr><td class="mono">MATCH</td><td>a fact already on file, sighted again</td><td>linked as corroboration · not posted</td></tr>
     <tr><td class="mono">WRONG_SUBJECT</td><td>not about this subject at all</td><td>dropped · never posted</td></tr>
     <tr><td class="mono">NO_CLAIM</td><td>their world, but asserts nothing recordable</td><td>goes to §6, which decides how it posts</td></tr>
@@ -484,6 +484,29 @@
   folded, there is no bullet for that shared line to sit under, and a message of nothing but a header and
   a row of outlet names is precisely the noise this stage exists to remove — so nothing is sent for that
   subject at all.</p>
+  <p>One clarification the two cards above invite. The ladder's answer is stored as
+  <code>digest_tier</code>, and it has exactly two values: <code>tangential</code>, which always means
+  folded, and <code>main</code>, which means only <em>not folded</em> — not "shows its headline."
+  Anything that opened a claim is set to <code>main</code> without consulting the ladder, and may then
+  leave by a route that discards the headline anyway, because once the system has extracted a fact it
+  trusts its own sentence more than the publisher's wording. Five shapes reach the group in all:</p>
+  <table class="mini">
+    <tr><th>Shape</th><th>Where it appears</th><th>What the reader sees</th></tr>
+    <tr><td>🚨 Ceremony</td><td>its own standalone message</td>
+        <td>the claim sentence — headline not shown</td></tr>
+    <tr><td>🕵️ Rumor</td><td>a line in the digest</td>
+        <td>the claim sentence — headline not shown</td></tr>
+    <tr><td>• Bullet</td><td>a line in the digest</td>
+        <td>publisher's headline, outlet, hours ago</td></tr>
+    <tr><td>↘ Also mentioning</td><td>one shared line, last in the digest</td>
+        <td>outlet names only, deduped</td></tr>
+    <tr><td>✅ Confirmed</td><td>a threaded reply to the original rumor</td>
+        <td>the claim sentence and the official source</td></tr>
+  </table>
+  <p class="note">And the ways an article appears nowhere: MATCH held as evidence (§5), WRONG_SUBJECT
+  dropped (§5), a Gate 2 near-duplicate (§3), and the all-folded run above — which also writes the
+  suppression back to the row it had already marked as posted, so a later measurement doesn't count as
+  broadcast something the group never saw.</p>
   <div class="callout blue">
     <strong>The Topuria / Salkilld story, end to end</strong>
     The Sports Illustrated item from §4 is a NO_CLAIM: about Salkilld, not Topuria, who appears in
