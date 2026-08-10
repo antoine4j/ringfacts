@@ -27,7 +27,7 @@ section — only once the log shows it recurring.
 
 **The case that named this principle (2026-08-08).** The claim matcher was given
 seven claim types to choose from. Asked to file *"Ali Abdelaziz predicts Usman
-Nurmagomedov will finish Fighter C"*, Haiku ignored the list and answered
+Nurmagomedov will finish Ilia Topuria"*, Haiku ignored the list and answered
 `prediction` — a better word than any on offer, but not one we'd taught it. The
 tempting move was to add an eighth type. The move we made was to coerce it to
 `other`, log the coercion, and write down that a recurrence earns it a real box.
@@ -86,8 +86,8 @@ the real pieces. The seam refactor that introduced them shipped with a
 dependency whose key was misspelled; every non-English headline silently posted
 untranslated, all 27 pipeline tests passed, and a `DRY_RUN=1` run against live
 feeds found it in one line of output. Stubs verify logic. Only a real run
-verifies that the parts are plugged into each other. Two examples of why: the "Fighter A and
-Fighter B fetched 0 items" pattern looked like a broken feed and turned out to be
+verifies that the parts are plugged into each other. Two examples of why: the "Donchenko and
+Amosov fetched 0 items" pattern looked like a broken feed and turned out to be
 genuine quiet (verified by fetching all six alias feeds directly); and the
 verdict-validation change nearly shipped with a bug where Postgres returns claim
 ids as strings (`"7"`) while the model answers with numbers (`7`) — which would

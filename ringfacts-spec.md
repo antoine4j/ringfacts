@@ -17,16 +17,16 @@ RingFacts is a personal, conversational Telegram agent that tracks a small watch
 - **Users:** Anton + a small group of friends (Ukrainian MMA fans). Single private Telegram group chat.
 - **Not** a public product at MVP stage. No multi-tenant support, no onboarding flows, no auth beyond Telegram group membership.
 - **Initial watchlist (seed data):**
-  - Fighter A — upcoming fights and career news
-  - Fighter B — upcoming fights and career news
-  - Fighter C — recovery progress, interviews, return-to-fight news
+  - Daniel Donchenko — upcoming fights and career news
+  - Yaroslav Amosov — upcoming fights and career news
+  - Ilia Topuria — recovery progress, interviews, return-to-fight news
 
 ## 3. Functional Requirements
 
 ### 3.1 Proactive news delivery (the "hunter")
 - On a schedule (cron), discover news about watchlist fighters from configured sources.
 - **Scope of "news" is broader than fight announcements.** Event types include: fight scheduled, fight result, injury, recovery updates, notable interviews, callouts, general significant career news. RingFacts is a per-fighter career tracker, not just a fight alarm.
-- **Relevance judgment is the core AI feature.** An LLM decides "is this worth interrupting the group for?" with a **tunable importance threshold**. Example calibration: Fighter C giving his first big interview after a loss → notify. Fighter B getting a fight scheduled → notify. Minor gym footage → probably not.
+- **Relevance judgment is the core AI feature.** An LLM decides "is this worth interrupting the group for?" with a **tunable importance threshold**. Example calibration: Topuria giving his first big interview after a loss → notify. Amosov getting a fight scheduled → notify. Minor gym footage → probably not.
 - **Deduplication:** never re-notify about news already delivered (requires persistent state of what was sent).
 
 ### 3.2 Rumor vs. confirmed tracking
@@ -154,7 +154,7 @@ Two **distinct** judgments — do not conflate them:
 - Bonus: the timeline is itself a valuable artifact — a clean, algorithm-free career log per fighter the group can browse. Candidate future feature.
 
 ### 12.2 Importance scoring
-- Importance is **relative to the fighter's own history**, not a property of the item alone. Example: "Fighter C did an interview" = noise; "Fighter C's *first* interview after a loss" = important. The timeline is the context that makes this judgment possible.
+- Importance is **relative to the fighter's own history**, not a property of the item alone. Example: "Topuria did an interview" = noise; "Topuria's *first* interview after a loss" = important. The timeline is the context that makes this judgment possible.
 - At **write time**, agent assigns each saved fact an explicit **importance score (e.g. 1–5)** using the timeline as context, stored alongside the date and source/trust tier.
 - **Notification threshold = tunable line on importance.** Post to the group only if importance ≥ threshold.
 - **Only important facts (>= threshold) are recorded to the timeline.** The timeline is a curated highlight reel, not a noise log — this is a deliberate decision (better artifact, matches what the group cares about).
@@ -302,7 +302,7 @@ Guided hands-on setup: create the GCP project → enable APIs → get Cloud Run 
 ## 17. Open Questions (resolve before/at build start)
 
 1. **LLM provider/model** for the relevance judgment and conversational agent — not yet chosen (affects free-budget math; API calls are the one recurring cost not yet nailed down).
-2. **Exact source list per fighter** — which Telegram channels / news sites / email digests actually cover Fighter A and Fighter B reliably (Fighter C has abundant coverage; the other two may be sparse).
+2. **Exact source list per fighter** — which Telegram channels / news sites / email digests actually cover Donchenko and Amosov reliably (Topuria has abundant coverage; the other two may be sparse).
 3. **State store choice** — SQLite vs. flat files vs. something Mastra prefers.
 4. **Cron frequency** — hourly was discussed as the reference point; confirm.
 5. **Language** — should the bot post in Ukrainian, English, or mixed?

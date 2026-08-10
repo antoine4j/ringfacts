@@ -1,7 +1,7 @@
 # RingFacts
 
-A Telegram bot that hunts MMA news about three fighters (Fighter A, Fighter B,
-Fighter C) and posts what matters to a small private group. Runs as an hourly
+A Telegram bot that hunts MMA news about three fighters (Donchenko, Amosov,
+Topuria) and posts what matters to a small private group. Runs as an hourly
 Cloud Run Job on GCP (`us-west1`; see [setup.sh](setup.sh)), with Neon Postgres +
 pgvector for memory. RingFacts is Anton's learning project as much as it is a
 bot — explaining *why* beats delivering silently.
