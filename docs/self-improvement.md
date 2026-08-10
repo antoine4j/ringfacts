@@ -168,7 +168,41 @@ first. Zero posted was the correct outcome — the same story in three dresses. 
 run reading only the summary line would have seen "0 posted" for many hours
 straight and been tempted to fix something that was working.
 
-## 6. Explain changes in plain English
+## 6. Configuration is carried by reference, never by value
+
+A deploy that carries a *value* can corrupt it. A deploy that carries a *name*
+cannot. Everything the bot needs — tokens, keys, database URL, and now chat ids
+— arrives as a Secret Manager reference, and `setup.sh` refuses to finish if any
+literal value is left on either surface.
+
+This is not about secrecy. A Telegram chat id is not sensitive, which is exactly
+why it spent two months as a plain env var. The risk was never disclosure; it was
+**custody**. `gcloud run deploy --set-env-vars` replaces a service's entire
+variable list rather than merging into it, so every deploy had to retype every
+value correctly, from whatever shell was running it.
+
+**The case that named this principle (2026-08-09 → 08-10).** A deploy from a
+shell missing `TELEGRAM_CHAT_ID` wrote an empty string. Every send for the next
+twenty hours returned `400 chat not found` while the archive recorded each item
+as delivered — the failure was invisible to every query, because rows are written
+`posted=true` before the send, a failed send only logged, and the admin
+self-report went through the same broken config. The recovery deploy then wrote
+the ids as `['-4812309756']`, a shell array's string form, which is also a
+perfectly good string and also rejected by Telegram, so the outage survived its
+own fix. Three lessons, all now enforced in code rather than remembered:
+
+1. **By reference, not by value** — the four secrets went through all of this
+   untouched, because a deploy never held their contents.
+2. **Refuse, don't limp** — `lib/chat-ids.js` rejects a chat id that is not a
+   bare integer at startup, instead of letting Telegram reject it one message at
+   a time. Every malformed value that actually shipped is now a unit test.
+3. **State the region** — a Cloud Run job name is unique only within a region.
+   Six deploys followed an ambient `run/region` that had changed, silently
+   *creating* a second job in us-central1; every verified fix landed there while
+   the scheduler kept running the broken build in us-west1. Verification that
+   does not confirm *which* thing it inspected is not verification.
+
+## 7. Explain changes in plain English
 
 FighterBot is a learning project. Reports and commit messages say what changed
 and *why it mattered*, in language that teaches rather than just logs. Code

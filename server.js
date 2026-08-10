@@ -5,18 +5,17 @@ import http from "node:http";
 import Anthropic from "@anthropic-ai/sdk";
 import { sendTelegramMessage } from "./lib/telegram.js";
 import { domain } from "./domain/index.js";
+import { readChatIds } from "./lib/chat-ids.js";
 
 const PORT = process.env.PORT || 8080;
 const WEBHOOK_SECRET = process.env.TELEGRAM_WEBHOOK_SECRET;
 
-// Chat whitelist (spec §15): admin DM + test group, from env (not a secret,
-// just not something someone else's clone of this repo should inherit).
-const ALLOWED_CHAT_IDS = new Set(
-  (process.env.ALLOWED_CHAT_IDS || "")
-    .split(",")
-    .filter(Boolean)
-    .map(Number),
-);
+// Chat whitelist (spec §15): admin DM + test group. Derived from the same
+// telegram-chat-ids secret the hunter reads, rather than kept as its own
+// comma-separated copy — one fact, one place (lib/chat-ids.js). An unset
+// secret yields an empty Set, which drops every update; that is the correct
+// direction to fail for a whitelist, and it is logged per message below.
+const ALLOWED_CHAT_IDS = new Set(readChatIds({ required: false }).allowed);
 
 const anthropic = new Anthropic(); // reads ANTHROPIC_API_KEY from env
 

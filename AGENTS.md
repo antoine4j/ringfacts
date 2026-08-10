@@ -59,8 +59,17 @@ code is expected stable and the group's post history becomes a contract.
   once passed every test and was caught by the dry run.
 - **Deploy with the exact command in [setup.sh](setup.sh)** — it carries the
   secret mounts, timeouts, and env vars.
-- **Never post to the Telegram group** (`${TELEGRAM_CHAT_ID}`) from a development
-  or check-in session. Failure self-reports go to the admin DM only.
+- **Never post to the Telegram group** (the `group` id in `TELEGRAM_CHAT_IDS`)
+  from a development or check-in session. Failure self-reports go to the admin
+  DM only.
+- **Deploy with `--region` stated explicitly.** A Cloud Run job name is unique
+  only within a region; without the flag, `gcloud run jobs deploy` follows the
+  ambient `run/region` config and will happily CREATE a second job of the same
+  name elsewhere rather than update the one you meant.
+- **Never pass config values to a deploy.** Both surfaces take every value by
+  reference to Secret Manager. `--set-env-vars` replaces a service's whole
+  variable list, so any deploy from a shell missing a value silently writes an
+  empty one; `setup.sh` asserts no literal env vars survive.
 - **Never print secret values.** Use command substitution:
   `DATABASE_URL=$(gcloud secrets versions access latest --secret=neon-db-url)`.
 - **Never delete data.** The items table is the evidence record.

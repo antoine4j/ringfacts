@@ -26,6 +26,7 @@ import { decodeGoogleNewsUrl, isGoogleWrapped } from "./lib/googlenews.js";
 import { fetchArticleBody, decodeEntities } from "./lib/extract.js";
 import { loadSubjects } from "./lib/subjects.js";
 import { digestTierFor } from "./lib/tier.js";
+import { readChatIds } from "./lib/chat-ids.js";
 import { domain } from "./domain/index.js";
 import { fileURLToPath } from "node:url";
 
@@ -35,8 +36,12 @@ import { fileURLToPath } from "node:url";
 const GROUP_LANGUAGES = new Set(["en", "uk"]);
 
 const DRY_RUN = process.env.DRY_RUN === "1";
-const CHAT_ID = process.env.TELEGRAM_CHAT_ID;
-const ADMIN_CHAT_ID = process.env.ADMIN_CHAT_ID; // failure DMs go here, never the group
+// Both come from the single telegram-chat-ids secret (lib/chat-ids.js explains
+// why). `required: false` so a DRY_RUN or an offline test run with no chat
+// configured still imports — but a value that IS present and malformed throws
+// here, at startup, instead of failing one message at a time in production.
+// ADMIN_CHAT_ID takes the failure self-reports; they never go to the group.
+const { group: CHAT_ID, admin: ADMIN_CHAT_ID } = readChatIds({ required: false });
 const HOURS_BACK = Number(process.env.HOURS_BACK || 24);
 const MAX_ITEMS_PER_SUBJECT = 5;
 // Cosine similarity above this = same story. Tuned on real data 2026-08-06:
@@ -647,7 +652,7 @@ export async function huntSubject(db, subject, directItems = [], overrides = {})
 
 async function main() {
   if (!DRY_RUN && !CHAT_ID) {
-    throw new Error("TELEGRAM_CHAT_ID is required unless DRY_RUN=1");
+    throw new Error("TELEGRAM_CHAT_IDS is required unless DRY_RUN=1");
   }
   // Before the database and the feeds: a missing watchlist is a config error,
   // and there is no point opening connections to discover it.

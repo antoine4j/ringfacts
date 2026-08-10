@@ -90,11 +90,17 @@ Cloud Scheduler, IAM, the Telegram webhook). It requires a handful of
 environment variables identifying *your* project and chats:
 
 ```bash
-PROJECT_ID=... NEON_PROJECT_ID=... TELEGRAM_CHAT_ID=... \
-ADMIN_CHAT_ID=... ALLOWED_CHAT_IDS=... ./setup.sh
+PROJECT_ID=... NEON_PROJECT_ID=... ./setup.sh
 ```
 
 Any unset variable aborts the script rather than half-deploying.
+
+The first run additionally needs `TELEGRAM_CHAT_ID` and `ADMIN_CHAT_ID`, used
+once to seed the `telegram-chat-ids` secret. After that no deploy reads them
+again: both surfaces receive every value by *reference* to Secret Manager, and
+`setup.sh` refuses to finish if either one is left carrying a literal value.
+That is not tidiness — a deploy that carries a value can corrupt it, and on
+2026-08-09/10 two did, costing twenty hours of silent non-delivery.
 
 Note that `watchlist.js` is gitignored but **not** excluded from deploys — see
 [.gcloudignore](.gcloudignore). Gitignored means "not in the public repo", not
