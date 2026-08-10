@@ -131,6 +131,19 @@
     .before-after .arrow { transform: rotate(90deg); justify-self: center; }
   }
 
+  /* Two mock Telegram messages, side by side — the point of §6 is what the
+     group actually receives, which no amount of prose renders as clearly. */
+  .tg-pair { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 1.2em 0 1.6em; }
+  .tg { background: var(--card); border: 1px solid var(--line); border-radius: 6px; padding: 14px 16px; }
+  .tg .label { font-family: var(--disp); text-transform: uppercase; letter-spacing: .08em;
+               font-size: .72rem; font-weight: 700; margin-bottom: 10px; color: var(--ink-soft); }
+  .tg .hdr { font-weight: 700; margin-bottom: .8em; font-size: .9rem; }
+  .tg .line { font-size: .84rem; line-height: 1.5; margin: .6em 0; }
+  .tg .ell { color: var(--ink-soft); font-size: .8rem; }
+  .tg .lnk { color: var(--blue); text-decoration: underline; }
+  .tg .also { color: var(--ink-soft); }
+  @media (max-width: 560px) { .tg-pair { grid-template-columns: 1fr; } }
+
   .quote { font-family: var(--mono); font-size: .82rem; background: var(--grey-bg);
            border-radius: 5px; padding: 10px 14px; color: var(--ink); margin: .8em 0; }
   .quote .who { color: var(--ink-soft); }
@@ -419,6 +432,11 @@
   claim has earned a line. Everything else that posts — NO_CLAIM, UNSURE, and the NEW verdicts whose
   claim type the digest ignores — goes down a three-rung ladder. The rungs run <strong>in order</strong>
   and the first one that answers wins; nothing below it is consulted.</p>
+  <p>There are only two answers. The article keeps a bullet of its own, or it is <strong>folded</strong>
+  — the code's word is <code>tangential</code> — meaning it is merged with every other demoted article
+  from that run into one shared line naming nothing but their outlets. Folding is a demotion, not a
+  rejection: the article still posts, and the reader can still reach it. It just stops taking up a
+  headline.</p>
   <table class="mini">
     <tr><th>In order</th><th>The question</th><th>If it answers</th></tr>
     <tr><td class="mono">1</td><td>Does the <strong>headline</strong> name the subject?</td>
@@ -437,15 +455,35 @@
   been measured yet, so it is allowed to accuse but not to acquit. When the matcher is off or its answer
   is missing, the role is simply absent, rung 2 stays silent, and the ladder is byte-for-byte the rule
   that shipped a day earlier.</p>
-  <p>The two outcomes look very different in the group. <strong>Keeps its own headline</strong> means a
-  bullet of its own carrying the publisher's headline verbatim, translated into English first if it
-  isn't. <strong>Folded</strong> means the headline is thrown away: the article survives only as its
-  outlet's name, linked, on one shared <span class="mono">↘ Also mentioning:</span> line at the bottom —
-  and two folded articles from the same outlet collapse to a single link. There is a third outcome the
-  ladder doesn't decide. If <em>everything</em> a run found for a subject folded, there is no bullet for
-  that shared line to hang beneath, and a message consisting of nothing but a header and a row of outlet
-  names is precisely the noise this stage exists to remove — so nothing is sent for that subject at
-  all.</p>
+  <p>Both outcomes post. The difference is how much of the article the group is shown. Here is the real
+  Kutateladze item from rung 2, rendered each way inside the same digest message:</p>
+  <div class="tg-pair">
+    <div class="tg">
+      <div class="label">Keeps its own headline</div>
+      <div class="hdr">🔎 Ilia Topuria</div>
+      <div class="line ell">⋮ the run's other bullets</div>
+      <div class="line">• Khamzat Chimaev's teammate returns as clash of ex-UFC stars headlines brand new
+      MMA org's first card — <span class="lnk">Bloody Elbow</span>, 0h ago</div>
+    </div>
+    <div class="tg">
+      <div class="label">Folded</div>
+      <div class="hdr">🔎 Ilia Topuria</div>
+      <div class="line ell">⋮ the run's other bullets</div>
+      <div class="line also">↘ Also mentioning: <span class="lnk">Bloody Elbow</span></div>
+    </div>
+  </div>
+  <p>A bullet is the whole article as the reader meets it: the publisher's headline verbatim — translated
+  into English first if it isn't — the outlet as a link, and how long ago it ran. Folding keeps only the
+  link. The headline is thrown away, the timestamp with it, and what remains is the outlet's name on one
+  shared line at the bottom of the message, which <em>every</em> folded article that run shares. Two
+  folded articles become <span class="mono">Bloody Elbow · MMA Junkie</span> on that same line, and two
+  from the same outlet collapse to a single link. So the reader can still get to the story in one tap;
+  what they no longer get is a headline competing for attention with news that is actually about the
+  subject.</p>
+  <p>There is a third outcome the ladder doesn't decide. If <em>everything</em> a run found for a subject
+  folded, there is no bullet for that shared line to sit under, and a message of nothing but a header and
+  a row of outlet names is precisely the noise this stage exists to remove — so nothing is sent for that
+  subject at all.</p>
   <div class="callout blue">
     <strong>The Topuria / Salkilld story, end to end</strong>
     The Sports Illustrated item from §4 is a NO_CLAIM: about Salkilld, not Topuria, who appears in
