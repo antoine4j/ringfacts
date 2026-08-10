@@ -8,7 +8,7 @@
 // body coverage from 4 to 49. Findings:
 //   - 24 of 36 posted items were raw digest lines; 11 named no subject in the
 //     headline. Name-in-headline alone is REJECTED as a tier key: #26 is a real
-//     Fighter B story headlined "30-1 UFC welterweight", and epithet headlines are
+//     Subject B story headlined "30-1 UFC welterweight", and epithet headlines are
 //     routine in MMA press.
 //   - Body mention COUNT separates cleanly. Among items with a usable body,
 //     claim-bearing articles name the subject 2-12x; the junk cluster names
@@ -18,7 +18,7 @@
 //   - The 300ch floor is load-bearing. #12 is claim-bearing, headline does not
 //     name the subject, body scores 1x — and its body is a 141ch og-description
 //     blurb. Without the floor the rule would demote a real claim source.
-//   - Known residual: #23 names Fighter C in a celebrity-listicle headline and
+//   - Known residual: #23 names Subject C in a celebrity-listicle headline and
 //     never in the body. Headline mentions are reader-visible so the rule keeps
 //     it; closing that needs a second rule and there is one example of it.
 //

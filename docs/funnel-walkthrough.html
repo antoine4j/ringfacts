@@ -152,8 +152,9 @@
   <div class="eyebrow">FighterBot · Pipeline Walkthrough</div>
   <h1>Raw headlines in. Verified claims out.</h1>
   <p class="sub">Every gate the hourly hunt runs an article through, in order, illustrated with real
-  items pulled from the live archive — not invented examples. Names of the three tracked fighters are
-  shown as Fighter A/B/C, matching the rest of the repo; everyone else named below is real.</p>
+  items pulled from the live archive — not invented examples. The three tracked subjects are shown as
+  Subject A/B/C, matching the rest of the repo — except inside quoted headlines, where the pseudonym
+  stays "Fighter" so the quote doesn't read like it was edited. Everyone else named below is real.</p>
   <p class="companion">This page covers the funnel only — discovery through claims. For the whole system
   (the Telegram service, operations, cost, the autonomous improvement loop) see
   <code>docs/architecture-overview.html</code> in the repo; for how it's tested, see
@@ -220,7 +221,7 @@
   Sherdog, Sport.ua, Marca — fetched once per run and filtered per subject by matching surname stems in
   both scripts. Both rails only look at the last 24 hours.</p>
   <p class="stat-line">One real run: <b>6 outlets fetched, 180 items pooled</b> across all three subjects
-  — of which <b>5 were unseen</b> for Fighter C. <span style="opacity:.7">— docs/checkin-log.md,
+  — of which <b>5 were unseen</b> for Subject C. <span style="opacity:.7">— docs/checkin-log.md,
   2026-08-09</span></p>
   <p class="note">The 24-hour window overlapping the hourly cadence ~24× is deliberate: a single failed
   run loses nothing, because the next run re-covers the same ground.</p>
@@ -233,10 +234,8 @@
   Logging does: across every scheduled run since 2026-08-07, <b>1,208 URL checks → 85 new</b>
   (<b>93%</b> already known, dropped). See Fig. 1.</p>
   <p class="note">Survivors are capped at <strong>5 unseen items per subject per run</strong>, newest
-  first. The cap applies <em>after</em> this gate on purpose: an earlier version capped the raw feed
-  before checking what was already known, which let a busy day's backlog of new items get permanently
-  shadowed by items already in the database. Whatever the cap holds back is simply picked up next run —
-  nothing is lost, only delayed.</p>
+  first, applied after this gate — so on a busy day the newest 5 unseen items go through now, and
+  whatever's left over is simply picked up next run. Nothing is lost, only delayed.</p>
 
   <h2><span class="stage-no">§3</span>Gate 2 — Same story, different link?</h2>
   <p class="rule">The survivor's headline is embedded and compared against the subject's recent items.
@@ -281,7 +280,7 @@
     <strong>The fix this walkthrough exists to explain (2026-08-10)</strong>
     Sports Illustrated's page renders its own lede paragraphs <em>twice</em> inside
     <code>&lt;article&gt;</code> — measured live: 24 paragraphs, only 17 unique. Rung 2 joined both
-    copies without noticing, so a single passing mention of Fighter C got counted twice. That doubled
+    copies without noticing, so a single passing mention of Subject C got counted twice. That doubled
     count is what breaks §6 below.
   </div>
   <div class="before-after">
@@ -289,7 +288,7 @@
       <div class="label">Before the fix</div>
       <dl>
         <div class="row"><dt>body:</dt><dd>5,799 chars</dd></div>
-        <div class="row"><dt>Fighter&nbsp;C mentions:</dt><dd>2</dd></div>
+        <div class="row"><dt>Subject&nbsp;C mentions:</dt><dd>2</dd></div>
         <div class="row"><dt>rung:</dt><dd>article-tag</dd></div>
       </dl>
     </div>
@@ -298,7 +297,7 @@
       <div class="label">After the fix</div>
       <dl>
         <div class="row"><dt>body:</dt><dd>4,286 chars</dd></div>
-        <div class="row"><dt>Fighter&nbsp;C mentions:</dt><dd>1</dd></div>
+        <div class="row"><dt>Subject&nbsp;C mentions:</dt><dd>1</dd></div>
         <div class="row"><dt>rung:</dt><dd>article-tag</dd></div>
       </dl>
     </div>
@@ -311,7 +310,7 @@
   <p class="rule">One Haiku call per survivor: the headline, source, a body excerpt when there is one,
   and every currently active claim for the subject. Forced tool use means the answer is always one of
   five verdicts — never free text to parse.</p>
-  <p class="note">The same real thread — Ali Abdelaziz predicting Usman Nurmagomedov beats Fighter C —
+  <p class="note">The same real thread — Ali Abdelaziz predicting Usman Nurmagomedov beats Subject C —
   walks through all five below, over five real articles across four days and three outlets in two
   languages.</p>
 
@@ -352,7 +351,7 @@
   <div class="cards">
     <div class="card">
       <p class="hl">"Salkilld sigue imparable: Somete a Gamrot y se dispara en la división de Topuria"
-      <span style="opacity:.6">(the Spanish twin of the §4 story — same fight, Fighter C named only as
+      <span style="opacity:.6">(the Spanish twin of the §4 story — same fight, Subject C named only as
       the division marker)</span></p>
       <div class="meta"><span class="src">Eurosport (es)</span><span class="chip held">dropped</span></div>
     </div>
@@ -388,11 +387,11 @@
   enough to judge (≥300 characters) and names the subject <strong>at most once</strong>, it folds into a
   single shared "↘ Also mentioning" line instead of taking a bullet of its own.</p>
   <div class="callout blue">
-    <strong>The Fighter C / Salkilld story, end to end</strong>
-    The Sports Illustrated item from §4 is a NO_CLAIM: about Salkilld, not Fighter C, who appears in
+    <strong>The Subject C / Salkilld story, end to end</strong>
+    The Sports Illustrated item from §4 is a NO_CLAIM: about Salkilld, not Subject C, who appears in
     exactly one sentence. It should have folded into "also mentioning." Because that sentence was
     doubled by the extraction bug, the mention count read 2 instead of 1 — one over the threshold — and
-    it kept a full headline in the Fighter C digest it hadn't earned. The tier rule was never wrong; the
+    it kept a full headline in the Subject C digest it hadn't earned. The tier rule was never wrong; the
     body handed to it was.
   </div>
   <div class="before-after">
@@ -414,10 +413,10 @@
   </div>
   <p class="note">This tier is new enough (2026-08-09) that it has fired only 6 times in the live
   archive so far: 5 "main" (including this one, pre-fix) and, as of this snapshot, one genuine
-  "tangential" — a Mark Zuckerberg viral-video story that named Fighter C once in passing. That run had
-  nothing else to post for Fighter C, so the item wasn't folded into an "Also mentioning" line — it was
+  "tangential" — a Mark Zuckerberg viral-video story that named Subject C once in passing. That run had
+  nothing else to post for Subject C, so the item wasn't folded into an "Also mentioning" line — it was
   suppressed outright instead: a message with nothing but a header and one shared line is exactly the
-  noise this rule exists to remove, so nothing was sent for Fighter C that run at all.</p>
+  noise this rule exists to remove, so nothing was sent for Subject C that run at all.</p>
 
   <h2><span class="stage-no">§7</span>Claims — the distilled output</h2>
   <p class="rule">Everything the funnel does exists to feed this table. A claim is one row per
@@ -427,7 +426,7 @@
   MATCH-linked above is corroboration recorded against exactly one such row.</p>
 
   <div class="claim-card">
-    <div class="id">CLAIM #13 · prediction · Fighter C</div>
+    <div class="id">CLAIM #13 · prediction · Subject C</div>
     <div class="text">Ali Abdelaziz predicts Usman Nurmagomedov will finish Fighter C.</div>
     <ul class="sources-list">
       <li><span>MMA Sucka — "Head Kick KO"…</span><span class="role">origin · Aug 6</span></li>
@@ -451,6 +450,6 @@
     41 posted, 10 claims, 42 links.</p>
     <p>Companion pages in the repo: <code>docs/architecture-overview.html</code> (the whole system),
     <code>docs/test-suite-overview.html</code> (how it's tested). Subject names pseudonymized as
-    Fighter A/B/C, matching every tracked file in the repo; third-party names are real.</p>
+    Subject A/B/C, matching every tracked file in the repo; third-party names are real.</p>
   </div>
 </main>

@@ -184,7 +184,7 @@ const CLAIM_DRIFT_GAP = Number(process.env.CLAIM_DRIFT_GAP || 0.1);
 // B is held against A and takes A's claim, then C is held against B and takes
 // it too. Every hop clears 0.80 against the PREVIOUS headline, so the chain can
 // walk somewhere its starting claim never was — observed live, where a story
-// about Fighter C's manager blasting Ali Abdelaziz rode a 0.802 -> 0.869 -> 0.974
+// about Subject C's manager blasting Ali Abdelaziz rode a 0.802 -> 0.869 -> 0.974
 // chain onto an unrelated matchmaking claim. We can't re-read the article
 // without an LLM call, but we can ask the cheaper question: does this headline
 // sit far closer to some OTHER claim than to the one it is about to join?
