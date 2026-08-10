@@ -134,6 +134,7 @@ export function createFakeStore({ items = [], claims = [], claimSources = [] } =
         body: item.body ?? null,
         body_via: item.bodyVia ?? null,
         digest_tier: item.digestTier ?? null,
+        subject_role: item.subjectRole ?? null,
       };
       rows.items.push(row);
       return row.id;

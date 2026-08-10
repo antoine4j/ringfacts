@@ -21,6 +21,7 @@ if (process.env.DRY_RUN !== "1") {
 
 import { openDb } from "./lib/db.js";
 import { huntSubject } from "./hunter.js";
+import { matchItem } from "./lib/matcher.js";
 
 const db = await openDb();
 // Synthetic subject: the fixture bodies below are written around this name, so
@@ -63,9 +64,52 @@ const items = [
   },
 ];
 
+// The subject_role tap (2026-08-10). The matcher now also answers how
+// prominent the subject is in the article ("central" | "supporting" |
+// "passing"), and the pipeline stores it on the item row — but this script
+// runs DRY_RUN=1, so no row is ever written and there is nothing to SELECT
+// afterwards. huntSubject also CLONES direct-feed items (hunter.js
+// fetchFreshItems), so the objects in `items` above are not the ones the
+// pipeline decorates either.
+//
+// So read the signal where it is born: wrap the real matchItem through
+// huntSubject's `overrides` seam. This is a TAP, not a stub — the live Haiku
+// call still happens and its verdict is handed back untouched; we only copy
+// what came out of it. Keyed by URL, the one field that survives the clone.
+const roleByUrl = new Map();
+const tapMatcher = async (args) => {
+  const verdict = await matchItem(args);
+  roleByUrl.set(args.item.url, {
+    verdict: verdict.verdict,
+    // `?? null` because this reads as undefined until the matcher change
+    // lands — an absent field must show as "the matcher answered nothing",
+    // not crash the check that exists to observe it.
+    role: verdict.subject_role ?? null,
+  });
+  return verdict;
+};
+
 console.log("Expect: item A (no headline name, 1 body mention) -> tangential, folded into");
 console.log('"Also mentioning". Item B (headline names him) -> its own bullet. One message,');
-console.log("not suppressed, since a real line exists.\n");
+console.log("not suppressed, since a real line exists.");
+console.log("On the new axis: A should come back subject_role=passing, B=central. That is an");
+console.log("expectation, not an assertion — this script reports what Haiku said, and the");
+console.log("matcher samples at the API default, so one run is not evidence (see TODO.md).\n");
 
-await huntSubject(db, subject, items);
+await huntSubject(db, subject, items, { matchItem: tapMatcher });
+
+// The whole point of the tap: the new axis, item by item, end to end.
+console.log("\n--- subject_role, as the live matcher answered it ---");
+for (const item of items) {
+  const seen = roleByUrl.get(item.url);
+  const role = !seen
+    ? "(matcher never ran for this item — held at an earlier gate?)"
+    : (seen.role ?? "(none — matcher returned no subject_role)");
+  console.log(`  ${(seen?.verdict ?? "-").padEnd(13)} role=${String(role).padEnd(12)} ${item.title.slice(0, 52)}`);
+}
+if (!roleByUrl.size) {
+  console.log("  (no matcher calls at all: ANTHROPIC_API_KEY unset, so huntSubject took its");
+  console.log("   fail-open path and every item was treated as UNSURE)");
+}
+
 await db.end();

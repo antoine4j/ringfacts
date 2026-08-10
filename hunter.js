@@ -25,7 +25,7 @@ import { OUTLETS, fetchOutletItems, matchesSubject } from "./lib/feeds.js";
 import { decodeGoogleNewsUrl, isGoogleWrapped } from "./lib/googlenews.js";
 import { fetchArticleBody, decodeEntities } from "./lib/extract.js";
 import { loadSubjects } from "./lib/subjects.js";
-import { isTangential } from "./lib/tier.js";
+import { digestTierFor } from "./lib/tier.js";
 import { domain } from "./domain/index.js";
 import { fileURLToPath } from "node:url";
 
@@ -232,7 +232,7 @@ async function holdAsDup(deps, db, item, role, neighborId = item.nearestItem, re
 // that needs to vary them per case — so they are overridable here too.
 //
 // Exported alongside digestLine/alsoMentioningLine so the full tier decision
-// (isTangential -> array split -> "also mentioning" line -> suppression) is
+// (digestTierFor -> array split -> "also mentioning" line -> suppression) is
 // directly checkable with a synthetic item, without waiting for real news to
 // land in exactly the right shape.
 export async function huntSubject(db, subject, directItems = [], overrides = {}) {
@@ -373,6 +373,11 @@ export async function huntSubject(db, subject, directItems = [], overrides = {})
     console.log(
       `${subject.name}: matcher ${verdict.verdict}${verdict.match_claim_id ? " #" + verdict.match_claim_id : ""}: ${item.title.slice(0, 60)}`
     );
+    // Recorded on EVERY matcher-seen item, before any branch returns — the
+    // wrong_subject and match rows are archive too, and a prominence judgement
+    // is only worth re-measuring later if it was kept for all of them. Same
+    // null convention as bodyVia: null means we never got an answer.
+    item.subjectRole = verdict.subject_role ?? null;
 
     if (verdict.verdict === "WRONG_SUBJECT") {
       // Namesake / junk: recorded for audit, never posted, never a claim.
@@ -421,14 +426,16 @@ export async function huntSubject(db, subject, directItems = [], overrides = {})
     const nc = verdict.verdict === "NEW" ? verdict.new_claim : null;
     const isRealClaim = nc && !domain.ignoredTypes.includes(nc.type); // docs §5
 
-    // Digest tier (TODO step 4, thresholds measured in audit-digest-tier.js):
-    // an article that never names the subject in its headline and names them
-    // at most once in a body long enough to judge is ABOUT someone else. It
-    // still posts — as a source link on one shared line, not as a headline.
-    // Claim sources are exempt by construction: whatever fed a claim earns
-    // its own line. Keyed on isRealClaim, not claimId — claimId is null under
-    // a dry run and with no db, and this must demote identically either way.
-    item.digestTier = !isRealClaim && isTangential(item, subject.matchNames) ? "tangential" : "main";
+    // Digest tier (lib/tier.js): is this article ABOUT the subject, or does it
+    // merely sit next to news about them? The matcher's role judgement leads —
+    // it read the sentence and can say a name was only background color — and
+    // the measured mention-count rule sits underneath as the fallback for
+    // every item the matcher said nothing useful about. Demoted items still
+    // post, as a source link on one shared line rather than a headline.
+    // Claim sources are exempt by construction: whatever fed a claim earns its
+    // own line. Keyed on isRealClaim, not claimId — claimId is null under a
+    // dry run and with no db, and this must demote identically either way.
+    item.digestTier = isRealClaim ? "main" : digestTierFor(item, subject.matchNames, item.subjectRole);
     item.posted = true;
     const itemId = db && !deps.dryRun ? await deps.store.insertItem(db, item) : null;
     item.dbId = itemId;

@@ -55,6 +55,15 @@ CREATE INDEX IF NOT EXISTS items_resolved_url_idx ON items (resolved_url);
 -- audit-swallowed-confirmations.js both read it that way).
 ALTER TABLE items ADD COLUMN IF NOT EXISTS digest_tier text;
 
+-- Subject role (2026-08-10, lib/matcher.js): 'central' | 'supporting' |
+-- 'passing' — the matcher's judgement of how prominent the subject is in the
+-- article's OWN text, reported alongside every verdict. Unlike digest_tier,
+-- which is posted-path-only, this is set on EVERY matcher-seen item including
+-- wrong_subject and match rows: it describes the article, not what the digest
+-- did with it, so it stays comparable across the whole archive.
+-- null = matcher off, matcher failed, or a pre-migration row.
+ALTER TABLE items ADD COLUMN IF NOT EXISTS subject_role text;
+
 -- ============================================================================
 -- Claims layer (step 5, phase 1 — docs/claims-architecture.html).
 -- Articles (items) are immutable evidence; claims are living facts.

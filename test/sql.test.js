@@ -83,7 +83,7 @@ describe("schema agrees with lib/db.js", { skip }, () => {
     const written = [
       "url", "subject", "title", "source", "published_at", "posted", "embedding", "embedding_model",
       "nearest_similarity", "nearest_item", "held_reason", "found_via", "rss_description",
-      "resolved_url", "body", "body_fetched_at", "body_via", "digest_tier",
+      "resolved_url", "body", "body_fetched_at", "body_via", "digest_tier", "subject_role",
     ];
     assert.deepEqual(written.filter((c) => !have.has(c)), []);
   });

@@ -331,6 +331,75 @@ describe("the digest tier", () => {
     }));
     assert.match(digest().text, /🕵️ <b>Rumor:<\/b> Testov is injured/);
   });
+
+  // The matcher's role judgement, end to end (2026-08-10). Item #73 is the
+  // motivating failure: an article about Guram Kutateladze named the subject
+  // twice — as an opponent's cornerman — which cleared the <=1-mention
+  // threshold, so the count rule kept a full headline for pure background
+  // color. The role now demotes it; the count rule stays underneath as the
+  // fallback for every item the matcher said nothing useful about.
+  describe("the matcher's role judgement", () => {
+    // Item #73's shape: two mentions (the count rule keeps it), no name in the
+    // headline, and a matcher that read the article and called it background.
+    const cornerman = () =>
+      makeItem({ title: "Kutateladze eyes a top-10 fight", mentions: 2, source: "Sherdog" });
+
+    test("a passing role folds in an article the mention count would have kept", async () => {
+      const store = createFakeStore();
+      await huntSubject(DB, SUBJECT, [makeItem(), cornerman()], deps({
+        store,
+        embedTexts: async (t) => t.map((_, i) => [Math.cos(i * 2), Math.sin(i * 2)]),
+        matchItem: async ({ item }) => ({
+          verdict: "NO_CLAIM",
+          subject_role: item.title.startsWith("Kutateladze") ? "passing" : "central",
+        }),
+      }));
+      const text = digest().text;
+      assert.match(text, /Testov books a return/, "the real story keeps its headline");
+      assert.doesNotMatch(text, /Kutateladze eyes/, "the cornerman article loses its headline");
+      assert.match(text, /↘ Also mentioning: <a href="[^"]*">Sherdog<\/a>/);
+      assert.equal(store.rows.items.find((r) => r.title.startsWith("Kutateladze")).subject_role, "passing");
+    });
+
+    // The two rules are OR: the role can demote, but it can never rescue.
+    // Pinned at the pipeline level as well as in lib/tier.test.js, because
+    // this is the direction a "trust the model" refactor would break first.
+    test("a central role does not rescue an item the mention count demotes", async () => {
+      const store = createFakeStore();
+      await huntSubject(DB, SUBJECT, [makeItem(), tangential()], deps({
+        store,
+        embedTexts: async (t) => t.map((_, i) => [Math.cos(i * 2), Math.sin(i * 2)]),
+        matchItem: async () => ({ verdict: "NO_CLAIM", subject_role: "central" }),
+      }));
+      assert.doesNotMatch(digest().text, /Someone else eyes/);
+      assert.match(digest().text, /↘ Also mentioning/);
+    });
+
+    // The role describes the ARTICLE, not what the digest did with it, so it
+    // is kept even on rows the group never sees — that is what makes the
+    // archive re-measurable later.
+    test("the role is stored on a wrong_subject row, which never reaches the digest", async () => {
+      const store = createFakeStore();
+      await huntSubject(DB, SUBJECT, [makeItem()], deps({
+        store, matchItem: async () => ({ verdict: "WRONG_SUBJECT", subject_role: "passing" }),
+      }));
+      assert.equal(sent.length, 0);
+      assert.equal(store.rows.items[0].held_reason, "wrong_subject");
+      assert.equal(store.rows.items[0].subject_role, "passing");
+    });
+
+    test("a matcher outage stores a null role and leaves the mention count in charge", async () => {
+      const store = createFakeStore();
+      await huntSubject(DB, SUBJECT, [makeItem(), tangential()], deps({
+        store,
+        embedTexts: async (t) => t.map((_, i) => [Math.cos(i * 2), Math.sin(i * 2)]),
+        matchItem: async () => { throw new Error("anthropic 500"); },
+      }));
+      for (const row of store.rows.items) assert.equal(row.subject_role, null);
+      assert.match(digest().text, /Testov books a return/, "the count rule kept the real story");
+      assert.match(digest().text, /↘ Also mentioning/, "and still demoted the 1-mention item");
+    });
+  });
 });
 
 // AGENTS.md states that every gate fails open, and that the one fatal condition
