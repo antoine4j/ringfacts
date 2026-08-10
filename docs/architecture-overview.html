@@ -133,11 +133,23 @@
 
   <h2 id="s1"><span class="num">1</span>The system at a glance</h2>
   <div class="prose">
-    <p>FighterBot tracks three MMA fighters — Daniil Fighter A, Fighter B, Fighter C — for a
-    Ukrainian fan group on Telegram. There is deliberately <strong>no UI</strong>: the Telegram group is
-    the entire product surface. One repo, one container image, two entry points: a webhook
-    <em>service</em> (the future conversational rail) and the hourly hunter <em>job</em> — same image,
-    different <code>--command/--args</code>.</p>
+    <p>FighterBot tracks a private watchlist of subjects — currently three MMA fighters, shown here as
+    Fighter A, Fighter B, Fighter C — for a Ukrainian fan group on Telegram. There is deliberately
+    <strong>no UI</strong>: the Telegram group is the entire product surface. One repo, one container
+    image, two entry points: a webhook <em>service</em> (the future conversational rail) and the hourly
+    hunter <em>job</em> — same image, different <code>--command/--args</code>.</p>
+  </div>
+
+  <div class="callout">
+    <strong>The domain seam (2026-08-09).</strong> The pipeline itself no longer knows what a "fighter"
+    is — the DB column, the watchlist field, and every internal name are <code>subject</code>
+    (§3, renamed from <code>fighter</code> throughout the code and schema). MMA-specific knowledge — the
+    outlet list, the official-source rule, the claim vocabulary, the prompt language — moved into one
+    file, <code>domain/mma.js</code>, selected by the <code>DOMAIN</code> env var. A second, unrun domain
+    (<code>domain/example-music.js</code>) exists purely as proof the seam holds for a different subject
+    area, not as working configuration. The watchlist itself — who is actually tracked — lives in a
+    gitignored <code>watchlist.js</code> and is never committed; every name in this document is a
+    stand-in for that reason.
   </div>
 
   <div class="fig">
@@ -314,15 +326,16 @@
       <rect x="15" y="30" width="230" height="30" rx="4" fill="var(--red-bg)"/>
       <text x="30" y="50" class="t-disp" font-size="13" fill="var(--red)">items (live)</text>
       <g class="t-mono" font-size="11">
-        <text x="30" y="80">id            bigint PK</text>
-        <text x="30" y="98">url           text unique</text>
-        <text x="30" y="116">fighter, title, source</text>
-        <text x="30" y="134">published_at, seen_at</text>
-        <text x="30" y="152">embedding     vector(768)</text>
-        <text x="30" y="170">nearest_similarity real</text>
-        <text x="30" y="188">nearest_item  → items.id</text>
-        <text x="30" y="206">held_reason   embedding|llm|…</text>
-        <text x="30" y="224">found_via, rss_description</text>
+        <text x="30" y="78">id            bigint PK</text>
+        <text x="30" y="94">url           text unique</text>
+        <text x="30" y="110">subject, title, source</text>
+        <text x="30" y="126">published_at, seen_at</text>
+        <text x="30" y="142">embedding     vector(768)</text>
+        <text x="30" y="158">nearest_similarity, nearest_item</text>
+        <text x="30" y="174">held_reason   embedding|llm|…</text>
+        <text x="30" y="190">found_via, rss_description</text>
+        <text x="30" y="206">resolved_url, body, body_via</text>
+        <text x="30" y="222">digest_tier   main | tangential</text>
       </g>
 
       <rect x="300" y="60" width="230" height="158" rx="4" fill="var(--card)" stroke="var(--ink-soft)" stroke-width="1.5"/>
@@ -342,7 +355,7 @@
       <text x="600" y="40" class="t-disp" font-size="13" fill="var(--blue)">claims (live)</text>
       <g class="t-mono" font-size="11">
         <text x="600" y="70">id             bigint PK</text>
-        <text x="600" y="88">fighter        text</text>
+        <text x="600" y="88">subject        text</text>
         <text x="600" y="106">type           announcement |</text>
         <text x="600" y="122">   result | injury | quote | ...</text>
         <text x="600" y="140">canonical_text text (EN)</text>
@@ -397,6 +410,13 @@
       article text (capped ~10k chars). Null body = headline-only; every consumer tolerates it.
       <code>url</code> stays the identity; both columns feed the URL gate so the same story arriving
       from two rails is one item.</li>
+      <li><code>body_via</code> (2e) — which rung of the extraction ladder produced <code>body</code>, or
+      which failure stopped it (<code>feed-content</code> is the richest rung; <code>og-description</code>
+      the thinnest). Quality telemetry, not decoration: it is what let the 2026-08-10 dedup fix (§5) trace
+      a wrong post back to the specific rung that produced the doubled body.</li>
+      <li><code>digest_tier</code> (2026-08-09, <code>lib/tier.js</code>) — <code>main</code> or
+      <code>tangential</code>, set only on items that actually posted. Decides whether an article earns
+      its own headline or folds into a shared "↘ Also mentioning" line (§5).</li>
     </ul>
   </div>
 
@@ -578,6 +598,18 @@
       mention count), and the body names them ≤1×. Threshold measured over the archive: claim-bearing
       articles name the fighter 2–12× in their body, the junk cluster 0–1×, a clean gap. Claim-producing
       items are exempt by construction.</li>
+      <li><strong>Duplicated paragraphs were feeding the tier rule a false mention count
+      (2026-08-10):</strong> Sports Illustrated renders its own lede paragraphs twice inside
+      <code>&lt;article&gt;</code> (measured live: 24 paragraphs, 17 unique). A story about an untracked
+      fighter that named Fighter C in exactly one passing sentence therefore counted 2 mentions — one over
+      the demote threshold — and posted a full headline in the Fighter C digest it should not have earned.
+      The tier rule itself was never wrong; the body handed to it was. Fixed in <code>lib/extract.js</code>:
+      a paragraph identical to an earlier one is dropped before the mention count runs — both where the
+      extractor reads <code>&lt;article&gt;</code>/<code>&lt;p&gt;</code> tags directly, and at rung 0,
+      where a publisher's own feed ships the whole article (<code>content:encoded</code>) and would
+      otherwise flatten to one line before any duplicate could be spotted. <span class="mono">
+      verify-body-dedup.js</span> guards both paths; a walkthrough of this exact item, gate by gate, is
+      linked at the foot of this page.</li>
     </ul>
   </div>
 
@@ -852,9 +884,12 @@
   </div>
 
   <div class="footer">
-    FighterBot · living architecture overview · updated 2026-08-09 ·
+    FighterBot · living architecture overview · updated 2026-08-10 ·
     companion to <span class="mono">fighterbot-spec.md</span>, <span class="mono">TODO.md</span>,
-    <span class="mono">docs/checkin-log.md</span>, <span class="mono">docs/sandboxed-autonomy.md</span>.
+    <span class="mono">docs/checkin-log.md</span>, <span class="mono">docs/sandboxed-autonomy.md</span>,
+    <span class="mono">docs/test-suite-overview.html</span> (the system as tested, sibling to this page).
+    For a funnel-only, example-driven walkthrough of §4–§5 — every gate, real archived items, gate by
+    gate — see <a href="https://claude.ai/code/artifact/dee822e1-5726-4072-a4fa-15220fb5d9ca">the funnel deep-dive</a>.
     Formerly <span class="mono">claims-architecture.html</span> (the step-5 design doc) — that design is
     now §2–§8 of reality. History in git.
   </div>
