@@ -94,6 +94,25 @@ ids as strings (`"7"`) while the model answers with numbers (`7`) — which woul
 have silently downgraded *every* real match. A live call caught it. Neither
 would have been caught by reasoning alone.
 
+**Scale verification to what the change can't see, not just to habit
+(2026-08-10).** As the pipeline grows, "ran the offline tests" and "the code
+looks right" stop being enough evidence on their own — use judgment about
+which real-world check a given change actually needs:
+
+- Touches a query, `schema.sql`, or anything in `lib/db.js` → run
+  `npm run test:sql` (tier 3, real pgvector arithmetic and constraints
+  against a Neon branch, never main). Tiers 1–2 fake the database and cannot
+  catch a query that's wrong against the real one.
+- Touches wiring between modules, a prompt, or anything network-facing →
+  `DRY_RUN=1` against live feeds, per the misspelled-dependency and
+  string/int-id cases above.
+- A pure in-module logic change with no schema or cross-module surface
+  (e.g. a threshold constant, a pure function) can reasonably rely on tiers
+  1–2 alone.
+
+The point is not "always run everything" — it's not skipping the one check
+that would have actually caught the bug because the offline suite was green.
+
 ## 5. Silence is a success state
 
 A quiet group is not a broken bot. The point of this system is that the Telegram
