@@ -1,4 +1,4 @@
-<title>FighterBot · Architecture Overview</title>
+<title>RingFacts · Architecture Overview</title>
 <style>
   :root {
     --paper: #f7f8f6;
@@ -109,7 +109,7 @@
 </style>
 
 <main>
-  <div class="eyebrow">FighterBot · Living Document · as built</div>
+  <div class="eyebrow">RingFacts · Living Document · as built</div>
   <h1>Architecture Overview</h1>
   <p class="sub">How the bot actually works: the hourly hunt, the three-gate dedup ladder, the claims
   layer, posting, operations, and the autonomous improvement loop. Began life 2026-08-06 as the step-5
@@ -133,7 +133,7 @@
 
   <h2 id="s1"><span class="num">1</span>The system at a glance</h2>
   <div class="prose">
-    <p>FighterBot tracks a private watchlist of subjects — currently three MMA fighters, shown here as
+    <p>RingFacts tracks a private watchlist of subjects — currently three MMA fighters, shown here as
     Subject A, Subject B, Subject C — for a Ukrainian fan group on Telegram. There is deliberately
     <strong>no UI</strong>: the Telegram group is the entire product surface. One repo, one container
     image, two entry points: a webhook <em>service</em> (the future conversational rail) and the hourly
@@ -783,11 +783,11 @@
 
   <div class="prose"><p>The rumor→confirmed thread, concretely (this is what the armed Subject A trap will produce):</p></div>
   <div class="tg">
-    <div class="from">FighterBot · Tue 14:00</div>
+    <div class="from">RingFacts · Tue 14:00</div>
     🕵️ <b>Rumor:</b> Fighter A set for UFC Paris card on September 6 — <a>MMA Junkie</a>
   </div>
   <div class="tg" style="margin-left:34px">
-    <div class="from">FighterBot · Thu 09:00 — replying to ↑</div>
+    <div class="from">RingFacts · Thu 09:00 — replying to ↑</div>
     ✅ <b>Confirmed</b> — UFC announced the bout officially. <a>ufc.com</a>
   </div>
 
@@ -917,8 +917,8 @@
   </div>
 
   <div class="footer">
-    FighterBot · living architecture overview · updated 2026-08-10 ·
-    companion to <span class="mono">fighterbot-spec.md</span>, <span class="mono">TODO.md</span>,
+    RingFacts · living architecture overview · updated 2026-08-10 ·
+    companion to <span class="mono">ringfacts-spec.md</span>, <span class="mono">TODO.md</span>,
     <span class="mono">docs/checkin-log.md</span>, <span class="mono">docs/sandboxed-autonomy.md</span>,
     <span class="mono">docs/test-suite-overview.html</span> (the system as tested, sibling to this page).
     For a funnel-only, example-driven walkthrough of §4–§5 — every gate, real archived items, gate by

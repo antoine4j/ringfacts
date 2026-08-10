@@ -1,4 +1,4 @@
-// FighterBot hunter — slice 2b: memory + dedup.
+// RingFacts hunter — slice 2b: memory + dedup.
 // Each run: fetch Google News RSS per subject -> drop URLs already in the DB
 // -> embed the rest -> hold back semantic duplicates (same story, different
 // outlet/language) -> post what's genuinely new -> record everything.

@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# FighterBot — GCP infrastructure setup (captured from the live build, 2026-08-06).
+# RingFacts — GCP infrastructure setup (captured from the live build, 2026-08-06).
 # Rerunnable record of everything done via CLI. Spec §16.7: console once, script forever.
 #
 # Manual prerequisites (done in the console, not scriptable):
@@ -43,6 +43,10 @@ NEON_PROJECT_ID="${NEON_PROJECT_ID:?set NEON_PROJECT_ID to your Neon project id}
 TELEGRAM_CHAT_ID="${TELEGRAM_CHAT_ID:-}"   # first run only; see header
 ADMIN_CHAT_ID="${ADMIN_CHAT_ID:-}"         # first run only; see header
 REGION="us-west1"
+# The project was renamed FighterBot -> RingFacts on 2026-08-10, but these
+# identifiers name resources already deployed and running. Changing them here
+# would not rename anything on GCP — it would provision a second stack beside
+# the live one. They keep the old name until a deliberate migration.
 SERVICE="fighterbot"
 JOB="fighterbot-hunter"
 

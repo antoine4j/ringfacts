@@ -1,4 +1,4 @@
-# FighterBot
+# RingFacts
 
 A news tracker for public figures. It watches a small list of people, works out
 which stories are actually *about* them, tracks each claim from rumour to
@@ -6,12 +6,16 @@ confirmation, and posts the result to a private Telegram group — dropping the
 near-duplicate re-posts, the wrong-subject stories, and the articles that only
 mention someone in passing.
 
-It ships configured for MMA, which is what it runs as in production: an hourly
-Cloud Run Job on GCP with Neon Postgres + pgvector for memory, inside free tiers
-throughout.
+It ships configured for combat sports (MMA), which is what it runs as in
+production: an hourly Cloud Run Job on GCP with Neon Postgres + pgvector for
+memory, inside free tiers throughout.
+
+Renamed from *FighterBot* on 2026-08-10 — the commit history and the deployed
+GCP resource names (`fighterbot`, `fighterbot-hunter`) still carry the old
+name; see the note in [setup.sh](setup.sh) for why the resources keep it.
 
 This is a learning project as much as a working bot. The commit history, the
-[spec](fighterbot-spec.md), and the [check-in log](docs/checkin-log.md) are kept
+[spec](ringfacts-spec.md), and the [check-in log](docs/checkin-log.md) are kept
 deliberately verbose about *why* decisions were made — including the ones that
 were measured and then rejected.
 
@@ -68,7 +72,7 @@ The interesting parts aren't the plumbing, they're the judgment calls:
   they don't get reintroduced.
 - **[docs/self-improvement.md](docs/self-improvement.md)** — how the scheduled
   autonomous check-in runs are allowed to decide things.
-- **[fighterbot-spec.md](fighterbot-spec.md)** — the original spec, including
+- **[ringfacts-spec.md](ringfacts-spec.md)** — the original spec, including
   empirically verified Telegram behavior (privacy mode, group→supergroup ID
   changes) that shaped the design.
 

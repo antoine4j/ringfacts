@@ -1,4 +1,4 @@
--- FighterBot schema (slice 2b). Applied by migrate.js; safe to re-run.
+-- RingFacts schema (slice 2b). Applied by migrate.js; safe to re-run.
 
 -- pgvector: adds the `vector` column type + nearest-neighbor operators.
 CREATE EXTENSION IF NOT EXISTS vector;

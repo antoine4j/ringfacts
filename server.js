@@ -1,4 +1,4 @@
-// FighterBot — dummy responder for end-to-end infrastructure test.
+// RingFacts — dummy responder for end-to-end infrastructure test.
 // One job: Telegram webhook in -> Claude reply out. No tools, no memory, no Mastra yet.
 
 import http from "node:http";
@@ -70,7 +70,7 @@ const server = http.createServer(async (req, res) => {
   // Health check / hello page.
   if (req.method === "GET") {
     res.writeHead(200, { "Content-Type": "text/plain" });
-    res.end("FighterBot dummy is alive.\n");
+    res.end("RingFacts dummy is alive.\n");
     return;
   }
 
@@ -101,5 +101,5 @@ const server = http.createServer(async (req, res) => {
 });
 
 server.listen(PORT, () => {
-  console.log(`FighterBot dummy listening on :${PORT}`);
+  console.log(`RingFacts dummy listening on :${PORT}`);
 });

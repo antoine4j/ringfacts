@@ -1,9 +1,9 @@
-# FighterBot
+# RingFacts
 
 A Telegram bot that hunts MMA news about three fighters (Fighter A, Fighter B,
 Fighter C) and posts what matters to a small private group. Runs as an hourly
 Cloud Run Job on GCP (`us-west1`; see [setup.sh](setup.sh)), with Neon Postgres +
-pgvector for memory. FighterBot is Anton's learning project as much as it is a
+pgvector for memory. RingFacts is Anton's learning project as much as it is a
 bot — explaining *why* beats delivering silently.
 
 ## Read these first
@@ -14,7 +14,7 @@ bot — explaining *why* beats delivering silently.
 | [docs/checkin-log.md](docs/checkin-log.md) | What each 6-hourly run found and did. Newest on top. |
 | [TODO.md](TODO.md) | Build sequence, open questions, and the triggers that promote a watch item into work. |
 | [docs/architecture-overview.html](docs/architecture-overview.html) | Living architecture overview — the system as built (pipeline, claims layer, ops, autonomy). |
-| [fighterbot-spec.md](fighterbot-spec.md) | The original spec. |
+| [ringfacts-spec.md](ringfacts-spec.md) | The original spec. |
 
 ## How a run works
 

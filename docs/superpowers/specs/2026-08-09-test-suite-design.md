@@ -2,7 +2,7 @@
 
 ## Why now
 
-FighterBot has no test framework. What it has is four scripts at the repo root,
+RingFacts has no test framework. What it has is four scripts at the repo root,
 each written the day an incident happened: `verify-body-dedup.js`,
 `verify-digest-tier.js`, and two `audit-*.js` scripts that read production data.
 None of them run together, most need live credentials, and nothing fails when

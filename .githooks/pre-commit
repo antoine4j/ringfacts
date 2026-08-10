@@ -1,7 +1,7 @@
 #!/bin/sh
 # Runs the offline test tiers before every commit.
 #
-# This matters more here than in most repos: FighterBot edits and commits its
+# This matters more here than in most repos: RingFacts edits and commits its
 # own code every six hours, unattended. docs/self-improvement.md §4 tells those
 # runs to verify before claiming, but a principle nothing enforces is a
 # principle that erodes. This is the enforcement.

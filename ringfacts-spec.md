@@ -1,10 +1,10 @@
-# FighterBot — Project Specification
+# RingFacts — Project Specification
 
 ## 1. Overview
 
-FighterBot is a personal, conversational Telegram agent that tracks a small watchlist of MMA fighters and proactively delivers relevant career news to a private group chat shared by Anton and his friends. It replaces algorithm-driven scrolling (Instagram, news feeds) with a push-based, distraction-free news channel scoped to exactly the fighters the group cares about.
+RingFacts is a personal, conversational Telegram agent that tracks a small watchlist of MMA fighters and proactively delivers relevant career news to a private group chat shared by Anton and his friends. It replaces algorithm-driven scrolling (Instagram, news feeds) with a push-based, distraction-free news channel scoped to exactly the fighters the group cares about.
 
-**Core motivation (the "why"):** Checking fighter news today means opening Instagram, getting pulled into adjacent recommended content, and losing time/attention. FighterBot inverts the model: news comes to the user, only for chosen fighters, with nothing adjacent attached.
+**Core motivation (the "why"):** Checking fighter news today means opening Instagram, getting pulled into adjacent recommended content, and losing time/attention. RingFacts inverts the model: news comes to the user, only for chosen fighters, with nothing adjacent attached.
 
 **Secondary motivation:** This is a learning project for building a production-grade agentic system with real usage and real edge cases. Start as a single agent with tools; evolve into multi-agent orchestration only when real edge cases demand it.
 
@@ -25,7 +25,7 @@ FighterBot is a personal, conversational Telegram agent that tracks a small watc
 
 ### 3.1 Proactive news delivery (the "hunter")
 - On a schedule (cron), discover news about watchlist fighters from configured sources.
-- **Scope of "news" is broader than fight announcements.** Event types include: fight scheduled, fight result, injury, recovery updates, notable interviews, callouts, general significant career news. FighterBot is a per-fighter career tracker, not just a fight alarm.
+- **Scope of "news" is broader than fight announcements.** Event types include: fight scheduled, fight result, injury, recovery updates, notable interviews, callouts, general significant career news. RingFacts is a per-fighter career tracker, not just a fight alarm.
 - **Relevance judgment is the core AI feature.** An LLM decides "is this worth interrupting the group for?" with a **tunable importance threshold**. Example calibration: Fighter C giving his first big interview after a loss → notify. Fighter B getting a fight scheduled → notify. Minor gym footage → probably not.
 - **Deduplication:** never re-notify about news already delivered (requires persistent state of what was sent).
 
@@ -36,7 +36,7 @@ FighterBot is a personal, conversational Telegram agent that tracks a small watc
 - **Rumors are a feature, not noise.** Deliver rumors immediately, clearly labeled ("Rumor — source: X, not confirmed"), because they build anticipation in the group. Then track the claim over time and post a follow-up when status changes ("Confirmed — fighter posted it himself"). This claim-lifecycle tracking (rumor → confirmed / debunked) is a key differentiator and a natural place for future multi-agent complexity.
 
 ### 3.3 Conversational follow-up (the "responder")
-- Bot lives in the group chat and responds when tagged (@FighterBot).
+- Bot lives in the group chat and responds when tagged (@RingFacts).
 - Users can follow up on any delivered news item, e.g. "Tell me more about this opponent. How does he stack up against our guy?"
 - Requires conversation context/memory (who "him" refers to, which news item is being discussed). Memory implementation deferred — Mastra's built-in capabilities are the planned starting point.
 - Responder must feel responsive → webhook-based delivery from Telegram (not polling).
@@ -218,7 +218,7 @@ Embeddings are used for two things:
 - SSH stays permanently as the manual access path even after deploys are automated.
 
 ### 14.4 Docker notes (mechanics)
-- No prebuilt FighterBot image exists — **build your own**: start from the official Node base image (auto-pulled on first build), Dockerfile copies the Mastra app in, installs deps, runs it. Container runs with restart-on-boot.
+- No prebuilt RingFacts image exists — **build your own**: start from the official Node base image (auto-pulled on first build), Dockerfile copies the Mastra app in, installs deps, runs it. Container runs with restart-on-boot.
 - Phase one shortcut allowed: run the Node app directly (no Docker) just to prove the pipe, then containerize for reliability.
 
 ### 14.5 Build order for this layer (don't build all three at once)

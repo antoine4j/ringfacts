@@ -1,5 +1,5 @@
 {
-  "name": "fighter-bot",
+  "name": "ringfacts",
   "version": "0.1.0",
   "description": "A Telegram bot that hunts MMA news for a watchlist of fighters and posts only what matters, with semantic dedup and an LLM matcher.",
   "license": "MIT",

@@ -1,4 +1,4 @@
-# FighterBot — autonomous check-in log
+# RingFacts — autonomous check-in log
 
 Append-only. One entry per scheduled self-improvement run (newest on top).
 Each run MUST append its entry and commit, even when nothing was changed —

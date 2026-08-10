@@ -1,6 +1,6 @@
-# How FighterBot improves itself
+# How RingFacts improves itself
 
-FighterBot audits itself every 6 hours: a scheduled Claude run reads the logs,
+RingFacts audits itself every 6 hours: a scheduled Claude run reads the logs,
 queries the database, judges the last window's behaviour, and is allowed to
 change the code. This file is the standing instruction set for those runs —
 the *how we decide*, as opposed to `TODO.md` (what to build next) and
@@ -204,7 +204,7 @@ own fix. Three lessons, all now enforced in code rather than remembered:
 
 ## 7. Explain changes in plain English
 
-FighterBot is a learning project. Reports and commit messages say what changed
+RingFacts is a learning project. Reports and commit messages say what changed
 and *why it mattered*, in language that teaches rather than just logs. Code
 comments in this repo follow the same rule — they explain the reasoning behind a
 decision, not the syntax on the line below.
