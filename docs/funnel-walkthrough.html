@@ -329,18 +329,23 @@
   keep.</p>
   <table class="mini">
     <tr><th>Verdict — all five</th><th>Meaning</th><th>What happens to the article</th></tr>
-    <tr><td class="mono">NEW</td><td>a claim-worthy fact not on file</td><td>opens a claim · posts as a rumor line</td></tr>
+    <tr><td class="mono">NEW</td><td>a claim-worthy fact not on file</td><td>opens a claim · always keeps its own headline</td></tr>
     <tr><td class="mono">MATCH</td><td>a fact already on file, sighted again</td><td>linked as corroboration · not posted</td></tr>
     <tr><td class="mono">WRONG_SUBJECT</td><td>not about this subject at all</td><td>dropped · never posted</td></tr>
-    <tr><td class="mono">NO_CLAIM</td><td>their world, but asserts nothing recordable</td><td>posts through the digest (§6)</td></tr>
-    <tr><td class="mono">UNSURE</td><td>can't tell — abstains rather than guess</td><td>posts through the digest (§6)</td></tr>
+    <tr><td class="mono">NO_CLAIM</td><td>their world, but asserts nothing recordable</td><td>goes to §6, which decides how it posts</td></tr>
+    <tr><td class="mono">UNSURE</td><td>can't tell — abstains rather than guess</td><td>goes to §6, which decides how it posts</td></tr>
   </table>
   <table class="mini">
-    <tr><th>subject_role — all three</th><th>Meaning</th><th>Effect on the digest (§6)</th></tr>
-    <tr><td class="mono">central</td><td>the article is about them</td><td>none yet — the count rule decides</td></tr>
-    <tr><td class="mono">supporting</td><td>they act in it: quoted, involved</td><td>none yet — the count rule decides</td></tr>
+    <tr><th>subject_role — all three</th><th>Meaning</th><th>Effect on the §6 decision</th></tr>
+    <tr><td class="mono">central</td><td>the article is about them</td><td>none — falls through to the count rule</td></tr>
+    <tr><td class="mono">supporting</td><td>they act in it: quoted, involved</td><td>none — falls through to the count rule</td></tr>
     <tr><td class="mono">passing</td><td>named as background colour in someone else's story</td><td>folds into "Also mentioning"</td></tr>
   </table>
+  <p class="note">Two things the tables are easy to misread. "Goes to §6" is not "posts with its headline
+  intact" — §6 decides that, and may drop the headline entirely. And <code>central</code> is not a
+  promotion: only <code>passing</code> changes any outcome. The role is nonetheless recorded on
+  <em>every</em> article the matcher sees, including the ones it drops and holds, so its agreement with
+  the count rule can be measured on real data later.</p>
   <p class="note">The same real thread — Ali Abdelaziz predicting Usman Nurmagomedov beats Topuria —
   supplies most of the examples below: it produced a NEW, two MATCHes, and the corroboration stack §7
   ends on, across five days and four outlets in two languages.</p>
@@ -410,14 +415,37 @@
   which is where §6 picks up, with the role judgment riding along.</p>
 
   <h2 id="s6"><span class="stage-no">§6</span>Digest tier — does this earn its own headline?</h2>
-  <p class="rule">Every NO_CLAIM or UNSURE item — the ones with no claim to anchor a decision to — gets
-  one more check before posting. A headline that names the subject always keeps its own bullet.
-  Otherwise, either of two signals folds it into a single shared "↘ Also mentioning" line: the §5 role
-  came back <strong><code>passing</code></strong>, or — as the measured fallback — the body is long
-  enough to judge (≥300 characters) and names the subject <strong>at most once</strong>. The two are
-  deliberately unequal. The count rule was read off real archive data; the role judgment is new and
-  unmeasured, so it may only <em>add</em> demotions, never rescue: <code>central</code> and
-  <code>supporting</code> change nothing, and the count rule decides as it always did.</p>
+  <p class="rule">An article that opened a claim keeps its own headline, full stop — whatever fed a
+  claim has earned a line. Everything else that posts — NO_CLAIM, UNSURE, and the NEW verdicts whose
+  claim type the digest ignores — goes down a three-rung ladder. The rungs run <strong>in order</strong>
+  and the first one that answers wins; nothing below it is consulted.</p>
+  <table class="mini">
+    <tr><th>In order</th><th>The question</th><th>If it answers</th></tr>
+    <tr><td class="mono">1</td><td>Does the <strong>headline</strong> name the subject?</td>
+        <td>keeps its own headline — stop</td></tr>
+    <tr><td class="mono">2</td><td>Did §5 report the role as <code>passing</code>?</td>
+        <td>folded — stop</td></tr>
+    <tr><td class="mono">3</td><td>Is the body long enough to judge (≥300 characters) and does it name
+        the subject <strong>at most once</strong>?</td>
+        <td>yes → folded · no → keeps its own headline</td></tr>
+  </table>
+  <p>Reading that ladder answers the question people ask first: the two rules are not weighed against
+  each other. A <code>central</code> or <code>supporting</code> role does not <em>answer</em> rung 2, so
+  the article simply drops to rung 3 and the counting rule decides it exactly as it did before the role
+  existed. The role can only ever add a demotion, never cancel one. That asymmetry is deliberate: the
+  count threshold was read off real archived articles, while the role is one model's opinion and has not
+  been measured yet, so it is allowed to accuse but not to acquit. When the matcher is off or its answer
+  is missing, the role is simply absent, rung 2 stays silent, and the ladder is byte-for-byte the rule
+  that shipped a day earlier.</p>
+  <p>The two outcomes look very different in the group. <strong>Keeps its own headline</strong> means a
+  bullet of its own carrying the publisher's headline verbatim, translated into English first if it
+  isn't. <strong>Folded</strong> means the headline is thrown away: the article survives only as its
+  outlet's name, linked, on one shared <span class="mono">↘ Also mentioning:</span> line at the bottom —
+  and two folded articles from the same outlet collapse to a single link. There is a third outcome the
+  ladder doesn't decide. If <em>everything</em> a run found for a subject folded, there is no bullet for
+  that shared line to hang beneath, and a message consisting of nothing but a header and a row of outlet
+  names is precisely the noise this stage exists to remove — so nothing is sent for that subject at
+  all.</p>
   <div class="callout blue">
     <strong>The Topuria / Salkilld story, end to end</strong>
     The Sports Illustrated item from §4 is a NO_CLAIM: about Salkilld, not Topuria, who appears in
@@ -443,15 +471,14 @@
       </dl>
     </div>
   </div>
-  <p class="note">This tier is new enough (2026-08-09) that it has fired only 6 times in the live
-  archive so far: 5 "main" (including this one, pre-fix) and, as of this snapshot, one genuine
-  "tangential" — a Mark Zuckerberg viral-video story that named Topuria once in passing. That run had
-  nothing else to post for Topuria, so the item wasn't folded into an "Also mentioning" line — it was
-  suppressed outright instead: a message with nothing but a header and one shared line is exactly the
-  noise this rule exists to remove, so nothing was sent for Topuria that run at all. The role check is
-  newer still (2026-08-10), and it exists because of the one case counting could never have caught: an
-  article about Guram Kutateladze that named Topuria twice — once as a teammate, once as a man in
-  someone else's corner, pure background color both times — and so cleared the ≤1 threshold honestly.
+  <p class="note">Both of this stage's real cases were decided at rung 3, which is the only rung that
+  existed until yesterday. The tier is new enough (2026-08-09) that it has fired just 6 times in the live
+  archive: 5 kept their headline (including the Salkilld item above, pre-fix) and one folded — a Mark
+  Zuckerberg viral-video story naming Topuria once in passing, which was the whole of that run's Topuria
+  news and so triggered the third outcome above: nothing was sent for him at all. Rung 2 is newer still
+  (2026-08-10), and it exists because of the one case rung 3 could never have caught: an article about
+  Guram Kutateladze that named Topuria twice — once as a teammate, once as a man in someone else's
+  corner, pure background color both times — and so cleared the ≤1 threshold honestly.
   That was the first item the tier got wrong on its own terms rather than on a body handed to it
   broken.</p>
 
