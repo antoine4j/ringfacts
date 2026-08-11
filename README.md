@@ -22,6 +22,9 @@ This is a learning project as much as a working bot. The commit history, the
 deliberately verbose about *why* decisions were made — including the ones that
 were measured and then rejected.
 
+This project is being created by directing Claude Code and using it as a
+design partner.
+
 ## What a run does
 
 Every hour, the hunter:
