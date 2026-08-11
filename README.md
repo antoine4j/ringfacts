@@ -92,8 +92,8 @@ The interesting parts aren't the plumbing, they're the judgment calls:
 - **[lib/tier.js](lib/tier.js)** — thresholds measured against real archived
   data rather than guessed, with the two rejected alternatives documented so
   they don't get reintroduced.
-- **[docs/self-improvement.md](docs/self-improvement.md)** — how the scheduled
-  autonomous check-in runs are allowed to decide things.
+- **[docs/self-improvement.md](docs/self-improvement.md)** — how scheduled
+  check-in runs are allowed to decide things.
 - **[docs/sandboxed-autonomy.md](docs/sandboxed-autonomy.md)** — the parked
   design for letting those runs go fully unattended: scope the credentials so
   that even a fully prompt-injected run is harmless. Written down,
@@ -157,8 +157,10 @@ Three tiers, split by what they need rather than by what they're called — see
 | Pipeline | nothing | the wiring: both dedup gates, the digest tier, claim lifecycle, and every fail-open path |
 | SQL | `TEST_DATABASE_URL` | what a fake can't check: pgvector's arithmetic, dual-identity lookups, schema agreement |
 
-The first two run on every commit, which is the whole point — this repo commits
-to itself unattended every six hours. The SQL tier is opt-in and expects a Neon
+The first two run on every commit, which is the whole point — commits here come
+from scheduled check-in sessions as well as from a person at a keyboard, so the
+gate cannot depend on anyone remembering to run it. The SQL tier is opt-in and
+expects a Neon
 *branch*, never `main`:
 
 ```bash
