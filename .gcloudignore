@@ -21,3 +21,7 @@ node_modules
 .neon
 claims-snapshot-*.json
 .claude
+# Tracked in git (reviewable), useless in the container: the labelled evaluation
+# corpus is tuning data for the sandbox bench, and six of its items are
+# fabricated fixtures. Nothing on the hunter's path reads it.
+corpus
