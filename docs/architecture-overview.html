@@ -106,6 +106,16 @@
   .tg a { color: var(--blue); }
   .footer { margin-top: 70px; padding-top: 16px; border-top: 1px solid var(--line);
             color: var(--ink-soft); font-size: .8rem; }
+  /* "In code" strip: sits directly under a section heading and says which files
+     implement the section above it. Line numbers are a pointer, not a contract —
+     they drift; the file names do not. */
+  .where { font-family: var(--mono); font-size: .76rem; color: var(--ink-soft);
+           background: var(--grey-bg); border-radius: 3px; padding: 7px 11px;
+           margin: 0 0 14px; line-height: 1.75; }
+  .where b { font-family: var(--disp); text-transform: uppercase; letter-spacing: .08em;
+             font-weight: 600; color: var(--red); margin-right: .6em; font-size: .78rem; }
+  .where .f { color: var(--ink); font-weight: 600; }
+  .where .sep { opacity: .45; margin: 0 .45em; }
 </style>
 
 <main>
@@ -115,9 +125,12 @@
   layer, posting, operations, and the autonomous improvement loop. Began life 2026-08-06 as the step-5
   design doc; converted 2026-08-08 into the current-state overview after that design shipped.
   Updated as the system evolves — history lives in git.</p>
+  <p class="sub" style="font-size:.92rem">Every section opens with a grey <b>In code</b> strip naming the
+  files that implement it. Line numbers drift with edits; the file names don't.</p>
 
   <nav class="toc" aria-label="Contents">
     <a href="#s1"><b>1</b> System at a glance</a>
+    <a href="#s1-code"><b>1b</b> Where the code lives</a>
     <a href="#s2"><b>2</b> Two-layer model</a>
     <a href="#s3"><b>3</b> Data model</a>
     <a href="#s4"><b>4</b> The hourly pipeline</a>
@@ -132,6 +145,13 @@
   </nav>
 
   <h2 id="s1"><span class="num">1</span>The system at a glance</h2>
+  <div class="where"><b>In code</b>
+    <span class="f">hunter.js</span> the job<span class="sep">·</span>
+    <span class="f">server.js</span> the webhook<span class="sep">·</span>
+    <span class="f">domain/index.js</span> picks the domain<span class="sep">·</span>
+    <span class="f">watchlist.js</span> who is tracked (gitignored)<span class="sep">·</span>
+    <span class="f">setup.sh</span> + <span class="f">Dockerfile</span> the deploy
+  </div>
   <div class="prose">
     <p>RingFacts tracks a private watchlist of subjects — currently three MMA fighters, shown here as
     Subject A, Subject B, Subject C — for a Ukrainian fan group on Telegram. There is deliberately
@@ -230,7 +250,72 @@
     a small LLM, and the LLM only sees items the free gates couldn't settle. Same ladder, every layer.
   </div>
 
+  <h3 id="s1-code">Where the code lives</h3>
+  <div class="prose">
+    <p>About 2,000 lines of production JavaScript, and roughly the same again in tests. There is no
+    framework and no build step: plain ES modules, <code>node hunter.js</code>. The shape is one
+    orchestrator and a set of single-purpose modules it calls — <strong>every decision the pipeline
+    makes lives in <code>hunter.js</code>; every module under <code>lib/</code> answers one question and
+    holds no opinion about the run.</strong> That is the rule to keep in your head when reading any of
+    this.</p>
+  </div>
+
+  <table>
+    <tr><th>File</th><th>Lines</th><th>What it owns</th></tr>
+    <tr><td class="mono-c">hunter.js</td><td class="mono-c">726</td>
+        <td><strong>The orchestrator.</strong> The order of the gates, what to do with each verdict,
+        what gets posted and in what shape. Two exported line-formatters
+        (<code>digestLine</code>, <code>alsoMentioningLine</code>) and one exported pipeline
+        (<code>huntSubject</code>)</td></tr>
+    <tr><td class="mono-c">server.js</td><td class="mono-c">105</td>
+        <td>The Telegram webhook. Deployed, near-dormant; the future conversational rail</td></tr>
+    <tr><td class="mono-c">lib/feeds.js<br>lib/googlenews.js</td><td class="mono-c">88<br>107</td>
+        <td>Discovery. Publisher RSS + name filter; decoding Google's wrapper URLs to real ones</td></tr>
+    <tr><td class="mono-c">lib/extract.js</td><td class="mono-c">183</td>
+        <td>HTML → readable text. The four-rung body ladder and the 10,000-char stored cap</td></tr>
+    <tr><td class="mono-c">lib/embeddings.js<br>lib/translate.js</td><td class="mono-c">36<br>28</td>
+        <td>The two Gemini calls, one each. Thin wrappers by design</td></tr>
+    <tr><td class="mono-c">lib/matcher.js</td><td class="mono-c">199</td>
+        <td>The one Haiku call: prompt, forced tool schema, and the normaliser that makes a verdict
+        safe to branch on</td></tr>
+    <tr><td class="mono-c">lib/tier.js</td><td class="mono-c">99</td>
+        <td>Headline or shared line. Pure functions, no I/O — the reason it can be replayed over the
+        archive in a second</td></tr>
+    <tr><td class="mono-c">lib/db.js</td><td class="mono-c">254</td>
+        <td>Every SQL statement in the project. Sixteen named functions; nothing else opens a query</td></tr>
+    <tr><td class="mono-c">lib/telegram.js<br>lib/chat-ids.js</td><td class="mono-c">36<br>91</td>
+        <td>Sending, and parsing the one secret that holds both chat ids</td></tr>
+    <tr><td class="mono-c">lib/subjects.js<br>watchlist.js</td><td class="mono-c">48<br>40</td>
+        <td>Who is tracked. The watchlist is gitignored and never committed</td></tr>
+    <tr><td class="mono-c">domain/mma.js</td><td class="mono-c">79</td>
+        <td>Everything the pipeline would have to forget to track something other than fighters:
+        outlets, claim types, the official-source rule, prompt language</td></tr>
+    <tr><td class="mono-c">schema.sql<br>migrate.js</td><td class="mono-c">—<br>52</td>
+        <td>Three tables, and the idempotent script that applies them</td></tr>
+    <tr><td class="mono-c">test/</td><td class="mono-c">1,211</td>
+        <td>The pipeline harness (see below), the fake store, and the real-Postgres checks</td></tr>
+    <tr><td class="mono-c">corpus/</td><td class="mono-c">705</td>
+        <td>48 labelled articles plus the scripts that score the rules against them</td></tr>
+  </table>
+
+  <div class="callout blue">
+    <strong>The seam that matters for testing: <code>huntSubject(db, subject, directItems, overrides)</code>.</strong>
+    Its first act is to build a <code>deps</code> object — the store, the embedder, the matcher, the body
+    fetcher, the translator, the Telegram sender — and <code>overrides</code> is spread over the top of
+    it. From that line on, the pipeline never reaches for a real service by name; it calls
+    <code>deps.something</code>. So the whole engine can be lifted onto a bench: hand it articles as
+    <code>directItems</code> (which skips discovery entirely), swap any subset of the six dependencies,
+    and leave the rest real. <code>test/pipeline.test.js</code> already does exactly this with all six
+    faked. A bench that keeps the real matcher and points the store at a throwaway database is the same
+    move with a different set of overrides — <em>no refactor required.</em>
+  </div>
+
   <h2 id="s2"><span class="num">2</span>The two-layer model</h2>
+  <div class="where"><b>In code</b>
+    <span class="f">schema.sql</span> the two tables and the join<span class="sep">·</span>
+    <span class="f">lib/db.js</span> every read and write<span class="sep">·</span>
+    <span class="f">domain/mma.js</span> the claim vocabulary
+  </div>
   <div class="prose">
     <p>The core idea of the claims layer, live since 2026-08-08: <em>the thing the group cares about is
     not an article</em> — it's the underlying fact. The <span style="color:var(--red);font-weight:600">red
@@ -314,6 +399,12 @@
   </div>
 
   <h2 id="s3"><span class="num">3</span>Data model</h2>
+  <div class="where"><b>In code</b>
+    <span class="f">schema.sql</span> the definition<span class="sep">·</span>
+    <span class="f">migrate.js</span> applies it (idempotent)<span class="sep">·</span>
+    <span class="f">lib/db.js</span> the 16 functions that are the only way in<span class="sep">·</span>
+    <span class="f">test/sql.test.js</span> checks them against real Postgres
+  </div>
   <div class="prose">
     <p>Three tables, all live in Neon. <code>items</code> carries the evidence plus a full dedup audit
     trail (why was this held, against what, at what similarity); <code>claims</code> and
@@ -428,6 +519,12 @@
   </div>
 
   <h2 id="s4"><span class="num">4</span>The hourly pipeline</h2>
+  <div class="where"><b>In code</b>
+    <span class="f">hunter.js</span> — <span class="f">main()</span> at 653 opens the DB and fetches the
+    publisher feeds once, then calls <span class="f">huntSubject()</span> at 262 per subject.
+    Everything below happens inside that one function: gates at 281 / 305 / 392, the per-item loop
+    322–500, posting 508–651.
+  </div>
   <div class="prose">
     <p>Every hour at :17, the hunter sweeps a <strong>24-hour window</strong> of two discovery rails:
     Google News RSS per fighter per language edition, and — since 2e — six direct publisher feeds
@@ -537,6 +634,12 @@
   </div>
 
   <h2 id="s5"><span class="num">5</span>Claim matching in detail</h2>
+  <div class="where"><b>In code</b>
+    <span class="f">lib/matcher.js</span> the prompt, the forced tool schema, the verdict
+    normaliser<span class="sep">·</span>
+    <span class="f">domain/mma.js</span> the claim types and prompt fragments<span class="sep">·</span>
+    <span class="f">hunter.js:392–457</span> acts on the verdict
+  </div>
   <div class="prose">
     <p>The matcher is the intelligence concentrated at the top of the ladder. For each item that survives
     the free gates, one Haiku call receives the headline, source, timing, <strong>a body excerpt when one
@@ -645,6 +748,12 @@
   </div>
 
   <h2 id="s6"><span class="num">6</span>The lifecycle: rumor to confirmed</h2>
+  <div class="where"><b>In code</b>
+    <span class="f">lib/sources.js</span> what counts as official<span class="sep">·</span>
+    <span class="f">hunter.js:436–443</span> the one place a claim flips<span class="sep">·</span>
+    <span class="f">lib/db.js</span> <span class="f">confirmClaim</span>,
+    <span class="f">setClaimMessageId</span> (the id that makes the reply thread possible)
+  </div>
   <div class="prose">
     <p>Statuses live on the claim, never on articles, and transitions are driven by <strong>rules, not an
     LLM</strong> — the LLM's job ends at "what does this article assert, and how is it sourced?" Phase 1
@@ -728,6 +837,11 @@
   </div>
 
   <h2 id="s7"><span class="num">7</span>Independence — the hard 20% <span class="tag phase2" style="vertical-align:middle">Phase 2</span></h2>
+  <div class="where"><b>In code</b>
+    not built. The data it would need is already being collected:
+    <span class="f">claim_sources</span> in <span class="f">schema.sql</span>, written by
+    <span class="f">lib/db.js:linkClaimSource</span>.
+  </div>
   <div class="prose">
     <p><em>Designed, not built — but 2e delivered its prerequisite (bodies + real URLs), so this is now
     buildable.</em> "Two sources" is worthless if the second
@@ -751,6 +865,15 @@
   </div>
 
   <h2 id="s8"><span class="num">8</span>What the group actually sees</h2>
+  <div class="where"><b>In code</b>
+    <span class="f">hunter.js</span> — <span class="f">digestLine</span> 152 and
+    <span class="f">alsoMentioningLine</span> 175 write one line each; 508–651 assembles and sends
+    (resends, translation, ceremonies, digest, confirmations)<span class="sep">·</span>
+    <span class="f">lib/tier.js</span> decides headline vs shared line<span class="sep">·</span>
+    <span class="f">lib/telegram.js</span> the send<span class="sep">·</span>
+    <span class="f">lib/translate.js</span><span class="sep">·</span>
+    <span class="f">lib/chat-ids.js</span>
+  </div>
   <div class="prose">
     <p>Posting is "one message per <em>claim event</em>", not per article. The claim <em>type</em> picks
     the ceremony; the claim <em>event</em> picks the timing. Headlines post as-is when they're in the
@@ -792,6 +915,14 @@
   </div>
 
   <h2 id="s9"><span class="num">9</span>Operations &amp; reliability</h2>
+  <div class="where"><b>In code</b>
+    <span class="f">setup.sh</span> the whole cloud side, re-runnable<span class="sep">·</span>
+    <span class="f">Dockerfile</span><span class="sep">·</span>
+    <span class="f">migrate.js</span><span class="sep">·</span>
+    <span class="f">hunter.js:713–726</span> the failure self-report to the admin DM<span class="sep">·</span>
+    <span class="f">audit-*.js</span>, <span class="f">verify-digest-tier.js</span>,
+    <span class="f">backfill-*.js</span> one-off operator scripts, run by hand
+  </div>
   <div class="prose">
     <p>The bot runs unattended; every failure mode found in production has a specific answer:</p>
   </div>
@@ -826,6 +957,13 @@
   </table>
 
   <h2 id="s10"><span class="num">10</span>Cost &amp; scale</h2>
+  <div class="where"><b>In code</b>
+    the three knobs that set the bill —
+    <span class="f">hunter.js:45</span> <span class="f">MAX_ITEMS_PER_SUBJECT&nbsp;=&nbsp;5</span><span class="sep">·</span>
+    <span class="f">lib/matcher.js:10</span> the model, <span class="f">:82</span> the 1,200-char
+    excerpt cap<span class="sep">·</span>
+    <span class="f">lib/extract.js:20</span> the 10,000-char stored body cap
+  </div>
   <table>
     <tr><th>Component</th><th>Volume (measured 2026-08-09, post-2e)</th><th>Monthly</th></tr>
     <tr><td>Cloud Run (hunter job + dormant service)</td><td class="mono-c">24 hunter runs/day + 4 self-improvement check-ins</td><td>≈ $0 (request-billed, free tier)</td></tr>
@@ -843,6 +981,13 @@
   </div>
 
   <h2 id="s11"><span class="num">11</span>The autonomous improvement loop</h2>
+  <div class="where"><b>In code</b>
+    prose, not code —
+    <span class="f">AGENTS.md</span> the entry point<span class="sep">·</span>
+    <span class="f">docs/self-improvement.md</span> the working rules<span class="sep">·</span>
+    <span class="f">docs/checkin-log.md</span> the run history<span class="sep">·</span>
+    <span class="f">corpus/</span> the 48 labelled articles the rules are now measured against
+  </div>
   <div class="prose">
     <p>The system maintains itself. A scheduled self-improvement session runs every ~6 hours
     (<span class="mono">~18:47 / 00:47 / 06:47 / 12:47 PT</span> — between hunter runs) and:</p>
@@ -870,6 +1015,9 @@
   </div>
 
   <h2 id="s12"><span class="num">12</span>Roadmap &amp; watch items</h2>
+  <div class="where"><b>In code</b>
+    <span class="f">TODO.md</span> is the live list; this section is its summary.
+  </div>
   <div class="prose">
     <p><strong>Build sequence ahead:</strong></p>
     <ul>
