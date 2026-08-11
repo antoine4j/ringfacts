@@ -163,6 +163,17 @@
   .footer { margin-top: 80px; padding-top: 18px; border-top: 1px solid var(--line);
             color: var(--ink-soft); font-size: .82rem; }
   .footer p { margin: .5em 0; }
+
+  /* "In code" strip: sits directly under a stage heading and says which files
+     implement that stage. Line numbers are a pointer, not a contract — they
+     drift with edits; the file names do not. */
+  .where { font-family: var(--mono); font-size: .76rem; color: var(--ink-soft);
+           background: var(--grey-bg); border-radius: 3px; padding: 7px 11px;
+           margin: 0 0 14px; line-height: 1.75; }
+  .where b { font-family: var(--disp, inherit); text-transform: uppercase; letter-spacing: .08em;
+             font-weight: 700; color: var(--red); margin-right: .6em; font-size: .74rem; }
+  .where .f { color: var(--ink); font-weight: 600; }
+  .where .sep { opacity: .45; margin: 0 .45em; }
 </style>
 
 <main>
@@ -178,6 +189,12 @@
   (the Telegram service, operations, cost, the autonomous improvement loop) see
   <code>docs/architecture-overview.html</code> in the repo; for how it's tested, see
   <code>docs/test-suite-overview.html</code>.</p>
+  <p class="companion">Each stage below opens with a grey <b>In code</b> strip naming the files that
+  implement it. One thing to hold onto while reading them: <strong>§1 through §7 all happen inside a
+  single function</strong>, <code>huntSubject()</code> in <code>hunter.js</code>, which runs once per
+  tracked subject per hour. The gates are not separate services or separate passes — they are
+  consecutive <code>if</code> statements in one loop over at most five articles. Line numbers drift with
+  edits; the file names don't.</p>
 
   <figure>
     <svg viewBox="0 0 760 805" role="img" aria-label="Funnel shape of the archive, refreshed to this snapshot: two discovery rails feed Gate 1, which Cloud Logging shows performing 1248 URL checks and keeping 90; 95 items in total reach the remaining gates, 40 held as near-duplicates, 55 reached the matcher, 9 dropped as the wrong subject, 3 held as a matched fact, 41 posted, and of those 10 became named claims corroborated by 46 linked sources">
@@ -235,6 +252,14 @@
   </figure>
 
   <h2 id="s1"><span class="stage-no">§1</span>Discovery — two rails, one window</h2>
+  <div class="where"><b>In code</b>
+    <span class="f">hunter.js:669–689</span> fetches the six outlet feeds once per run<span class="sep">·</span>
+    <span class="f">hunter.js:109</span> <span class="f">fetchFreshItems()</span> adds the Google
+    queries per subject<span class="sep">·</span>
+    <span class="f">lib/feeds.js</span> parse + name filter<span class="sep">·</span>
+    <span class="f">domain/mma.js</span> the outlet list<span class="sep">·</span>
+    <span class="f">lib/subjects.js</span> + <span class="f">watchlist.js</span> who is tracked
+  </div>
   <p class="rule">Every hour, for every tracked subject: <strong>Google News RSS</strong>, queried once
   per language edition the subject gets covered in (English always; Ukrainian and Spanish where it
   applies), plus <strong>six direct publisher feeds</strong> — UFC.com, MMA Fighting, Bloody Elbow,
@@ -247,6 +272,11 @@
   run loses nothing, because the next run re-covers the same ground.</p>
 
   <h2 id="s2"><span class="stage-no">§2</span>Gate 1 — Have we already seen this URL?</h2>
+  <div class="where"><b>In code</b>
+    <span class="f">hunter.js:281–287</span> — four lines<span class="sep">·</span>
+    <span class="f">lib/db.js:19</span> <span class="f">knownUrls()</span> the one query<span class="sep">·</span>
+    the 5-per-run cap is <span class="f">hunter.js:45</span>
+  </div>
   <p class="rule">Exact match on <code>url</code> or its decoded <code>resolved_url</code> against
   everything ever stored → dropped silently, no database write at all. This is the only gate that costs
   nothing — no embedding, no fetch, no LLM call.</p>
@@ -258,6 +288,15 @@
   whatever's left over is simply picked up next run. Nothing is lost, only delayed.</p>
 
   <h2 id="s3"><span class="stage-no">§3</span>Gate 2 — Same story, different link?</h2>
+  <div class="where"><b>In code</b>
+    <span class="f">hunter.js:305–315</span> embeds the batch<span class="sep">·</span>
+    <span class="f">:330–352</span> compares and holds<span class="sep">·</span>
+    <span class="f">:237</span> <span class="f">holdAsDup()</span> writes the row and inherits the
+    neighbour's claim<span class="sep">·</span>
+    <span class="f">lib/embeddings.js</span> the Gemini call<span class="sep">·</span>
+    <span class="f">lib/db.js:47</span> <span class="f">nearestRecent()</span> the pgvector query<span class="sep">·</span>
+    the 0.80 threshold is <span class="f">hunter.js:49</span>
+  </div>
   <p class="rule">The survivor's headline is embedded and compared against the subject's recent items.
   <strong>Cosine similarity ≥ 0.80</strong> → held back, never posted — but not discarded: it inherits
   whatever claim its nearest neighbour already supports, recorded as corroboration for free, no LLM
@@ -284,6 +323,12 @@
   <code>docs/architecture-overview.html §4</code>.</p>
 
   <h2 id="s4"><span class="stage-no">§4</span>The body step — reading past the headline</h2>
+  <div class="where"><b>In code</b>
+    <span class="f">hunter.js:356–391</span> drives it<span class="sep">·</span>
+    <span class="f">lib/googlenews.js</span> unwraps Google's URL<span class="sep">·</span>
+    <span class="f">lib/extract.js</span> fetch, strip HTML, the four-rung ladder, the 10,000-char
+    stored cap (<span class="f">:20</span>)
+  </div>
   <p class="rule">Only for items that survived both free gates. Google's wrapped URL is decoded to the
   real article address, then the body is extracted through a ladder — cheapest and most reliable first —
   and every attempt is logged, success or failure:</p>
@@ -333,6 +378,16 @@
   would otherwise be flattened to one line before any duplicate could be spotted.</p>
 
   <h2 id="s5"><span class="stage-no">§5</span>Gate 3 — What is this article actually about?</h2>
+  <div class="where"><b>In code</b>
+    <span class="f">lib/matcher.js</span> is the whole model call — the forced tool schema
+    (<span class="f">:15</span>), <span class="f">buildPrompt()</span> (<span class="f">:72</span>),
+    and <span class="f">normalizeVerdict()</span> (<span class="f">:124</span>), which is what makes a
+    verdict safe to branch on<span class="sep">·</span>
+    <span class="f">hunter.js:392–457</span> branches on it: WRONG_SUBJECT at
+    <span class="f">:416</span>, MATCH at <span class="f">:424</span>, the official re-check at
+    <span class="f">:445</span><span class="sep">·</span>
+    <span class="f">domain/mma.js</span> supplies the claim types and the prompt's domain words
+  </div>
   <p class="rule">One Haiku call per survivor: the headline, source, a body excerpt when there is one,
   and every currently active claim for the subject. Forced tool use means the answer is always one of
   five verdicts — never free text to parse. The same call answers a second, independent question in the
@@ -428,6 +483,16 @@
   which is where §6 picks up, with the role judgment riding along.</p>
 
   <h2 id="s6"><span class="stage-no">§6</span>Digest tier — does this earn its own headline?</h2>
+  <div class="where"><b>In code</b>
+    <span class="f">lib/tier.js</span> the rule itself — <span class="f">digestTierFor()</span> at
+    <span class="f">:95</span> is the three lines that decide<span class="sep">·</span>
+    <span class="f">hunter.js:472</span> the single call, and the
+    <span class="f">isRealClaim</span> exemption in front of it<span class="sep">·</span>
+    <span class="f">hunter.js:175</span> <span class="f">alsoMentioningLine()</span> renders the
+    demoted ones<span class="sep">·</span>
+    measured by <span class="f">audit-digest-tier.js</span> and
+    <span class="f">corpus/measure-tier.js</span>
+  </div>
   <p class="rule">An article that opened a claim keeps its own headline, full stop — whatever fed a
   claim has earned a line. Everything else that posts — NO_CLAIM, UNSURE, and the NEW verdicts whose
   claim type the digest ignores — goes down a three-rung ladder. The rungs run <strong>in order</strong>
@@ -553,6 +618,15 @@
   broken.</p>
 
   <h2 id="s7"><span class="stage-no">§7</span>Claims — the distilled output</h2>
+  <div class="where"><b>In code</b>
+    <span class="f">hunter.js:477–500</span> births the claim and routes it (ceremony, rumor, or
+    digest)<span class="sep">·</span>
+    <span class="f">hunter.js:508–651</span> assembles and sends every message<span class="sep">·</span>
+    <span class="f">lib/db.js</span> <span class="f">insertClaim</span>,
+    <span class="f">linkClaimSource</span>, <span class="f">confirmClaim</span>,
+    <span class="f">setClaimMessageId</span><span class="sep">·</span>
+    <span class="f">lib/telegram.js</span> the send
+  </div>
   <p class="rule">Everything the funnel does exists to feed this table. A claim is one row per
   real-world fact: a canonical English sentence, a type, a status that starts as <span
   class="chip rumor" style="vertical-align:middle">rumor</span> and moves to <span class="chip confirmed"
