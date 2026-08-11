@@ -1,0 +1,829 @@
+{
+  "split": "tune",
+  "generated_from": "items table (RingFacts archive)",
+  "item_count": 25,
+  "items": [
+    {
+      "key": "a16",
+      "split": "tune",
+      "synthetic": false,
+      "class": "announcement",
+      "archive_id": 16,
+      "subject": "Daniel Donchenko",
+      "title": "Данило Донченко наступний бій у UFC проведе на початку вересня – Спорт 24 - sport24.ua",
+      "source": "sport24.ua",
+      "url": "https://sport24.ua/uk/box/news/160955-neperemozhniy-ukrayinets-otrimav-novogo-supernika-v-ufc-vidoma-data-boyu",
+      "published_at": "2026-07-31T11:19:00.000Z",
+      "edition": null,
+      "body": "Український боєць змішаних єдиноборств Данило Донченко проведе свій наступний поєдинок 5 вересня на турнірі UFC Fight Night у Парижі. Суперником 24-річного українця стане американець Пунахеле Соріано. Бій стане для Донченка четвертим під егідою найсильнішого ММА-промоушену світу, якщо враховувати фінал шоу The Ultimate Fighter. Соріано підходить до протистояння з українцем на серії з чотирьох перемог поспіль. Загалом за час виступів в UFC американець провів 11 поєдинків, а серед його останніх перемог – бої проти Мігеля Баєзи, Уроша Медіча, Ніколая Вєрєтєннікова та Раміза Браїмая. Донченко наразі не знає поразок у UFC. Українець виграв усі три попередні поєдинки в організації. Спочатку Данило здолав Родріго Сезінандо, змусивши бразильця здатися через задушливий прийом, після чого переміг Алекса Мороно рішенням суддів. У своєму останньому бою українець яскраво нокаутував шведа Теодора Бергргрена. Головною подією UFC Fight Night у Парижі стане поєдинок у легкій вазі між новозеландцем Деном Хукером і французьким дебютантом UFC Саладіном Парнассом. Донченко розгромив суперника нокаутом у другому раунді та здобув третю перемогу в UFC",
+      "body_chars": 1145,
+      "body_via": null,
+      "production": {
+        "posted": true,
+        "held_reason": null,
+        "digest_tier": null,
+        "subject_role": null
+      },
+      "expect": {
+        "verdict": "NEW",
+        "subject_role": "central",
+        "digest_tier": "main",
+        "mention_kind": null,
+        "claim_type": "announcement",
+        "sourcing": "reported",
+        "facts": {
+          "opponent": "Punahele Soriano",
+          "event": "UFC Fight Night 287",
+          "date": "2026-09-05",
+          "location": "Paris"
+        }
+      },
+      "note": "Cleanest of the Donchenko cluster: opponent, event, date and location all in 1,145 chars of Ukrainian prose. The reference case for announcement extraction."
+    },
+    {
+      "key": "a17",
+      "split": "tune",
+      "synthetic": false,
+      "class": "announcement",
+      "archive_id": 17,
+      "subject": "Daniel Donchenko",
+      "title": "Українець дізнався ім'я наступного суперника в UFC – відома дата та суперник - Футбол 24",
+      "source": "Футбол 24",
+      "url": "https://football24.ua/sport/news/ukrayinets-diznavsya-imya-nastupnoho-supernyka-v-ufc-vidoma-data-ta-supernyk-956498",
+      "published_at": "2026-07-31T10:20:00.000Z",
+      "edition": null,
+      "body": "Український боєць змішаних єдиноборств Данило Донченко продовжить виступи в найсильнішому промоушені світу. Наступний поєдинок 24-річного представника напівсередньої ваги відбудеться 5 вересня на турнірі UFC Fight Night, який прийматиме Париж. Легенда UFC готовий отримати російське громадянство: \"Немає безпечнішого місця\" Суперником українця стане досвідчений американець Пунахеле Соріано. За час виступів у UFC він провів уже 11 поєдинків, а до майбутнього бою підходить із серією з чотирьох перемог поспіль. У своїх останніх виступах Соріано здолав Мігеля Баєзу, Уроша Медіча, Ніколая Вєрєтєннікова та Раміза Браїмая. Для Донченка це буде четвертий бій під егідою UFC, якщо враховувати фінал шоу The Ultimate Fighter. Українець поки що залишається непереможним у промоушені – він виграв усі три попередні поєдинки. Спочатку Данило достроково переміг бразильця Родріго Сезінандо, змусивши суперника здатися через задушливий прийом. Після цього українець здолав рішенням суддів американця Алекса Мороно, а в останньому виступі ефектно нокаутував шведського бійця Теодора Бергррена. Головною подією турніру UFC Fight Night у Парижі стане бій у легкій вазі між новозеландцем Деном Хукером і дебютантом UFC із Франції Саладіном Парнассом. Допис, поширений Daniil DonchenKO (@donchen.ko.daniil) Екс-чемпіон UFC зізнався, що відмовляється від поєдинку з Усиком: \"Я поважаю його\"",
+      "body_chars": 1375,
+      "body_via": null,
+      "production": {
+        "posted": false,
+        "held_reason": "embedding",
+        "digest_tier": null,
+        "subject_role": null
+      },
+      "expect": {
+        "verdict": "MATCH",
+        "subject_role": "central",
+        "digest_tier": "main",
+        "mention_kind": null,
+        "claim_type": "announcement",
+        "sourcing": "reported",
+        "facts": {
+          "opponent": "Punahele Soriano",
+          "event": "UFC Fight Night",
+          "date": "2026-09-05",
+          "location": "Paris"
+        }
+      },
+      "note": "Same announcement, second outlet, same day. Should MATCH #16's claim as an echo, not open a second claim."
+    },
+    {
+      "key": "a20",
+      "split": "tune",
+      "synthetic": false,
+      "class": "announcement",
+      "archive_id": 20,
+      "subject": "Daniel Donchenko",
+      "title": "Донченко проведе бій з Соріано на UFC у Парижі - ukr.net",
+      "source": "ukr.net",
+      "url": "https://www.ukr.net/news/details/sport/118731436.html",
+      "published_at": "2026-07-30T15:01:03.000Z",
+      "edition": null,
+      "body": "Український боєць напівсередньої ваги Данило Донченко (14-2) проведе бій 5 вересня на турнірі UFC Fight Night 287 у Парижі. Суперником Донченка стане",
+      "body_chars": 149,
+      "body_via": null,
+      "production": {
+        "posted": false,
+        "held_reason": "embedding",
+        "digest_tier": null,
+        "subject_role": null
+      },
+      "expect": {
+        "verdict": "MATCH",
+        "subject_role": "central",
+        "digest_tier": "main",
+        "mention_kind": null,
+        "claim_type": "announcement",
+        "sourcing": "reported",
+        "facts": {
+          "opponent": "Punahele Soriano",
+          "event": "UFC Fight Night 287",
+          "date": "2026-09-05",
+          "location": "Paris"
+        }
+      },
+      "note": "149-char body truncated mid-sentence ('Суперником Донченка стане') — the opponent is in the HEADLINE only. Tests whether extraction reads title+body together."
+    },
+    {
+      "key": "a1",
+      "split": "tune",
+      "synthetic": false,
+      "class": "claim_news",
+      "archive_id": 1,
+      "subject": "Yaroslav Amosov",
+      "title": "Yaroslav Amosov Touted as Future UFC Welterweight Champion - heavy.com",
+      "source": "heavy.com",
+      "url": "https://heavy.com/sports/ufc/yaroslav-amosov-future-ufc-welterweight-champion/",
+      "published_at": "2026-08-07T02:20:00.000Z",
+      "edition": null,
+      "body": "UFC welterweight contender Yaroslav Amosov is being touted as a future UFC welterweight champion by American Top Team teammate Jorge Masvidal. Amosov, a former Bellator MMA welterweight champion, made his UFC debut last December and submitted veteran gatekeeper Neil Magny in the first round with an anaconda choke. He then followed that up with an even more impressive performance at UFC 328 when he submitted Joel Alvarez with a second-round arm-triangle choke. Jorge Masvidal Says Yaroslav Amosov Will Be Future UFC Champ Speaking on the \"Deep Waters\" podcast, Amosov's teammate at ATT, Masvidal, gushed about the 32-year-old Ukrainian native, suggesting he has what it takes to beat UFC welterweight champion Islam Makhachev. \"He's a bad fight for everybody. Even Makhachev, all the way down to No. 10, Yaroslav is that good. He's a bad fight for all these guys,\" Masvidal said (via MMAjunkie.com). \"Nightmare for Makhachev. Bigger, longer, and I'm going to say probably stronger, as well, and his wrestling. He's also, I think, a two-time world champion in Sambo, something like this. So, he's going to be all right with the body locks, the foot sweeps, the in-close fighting that Makhachev does. Yaroslav will be able to outshine him probably.\" https://twitter.com/UFConParamount/status/2084315941911855486?s=20 Yaroslav Amosov Was Bellator MMA Champion Before joining the UFC, Amosov was the Bellator MMA welterweight champion, showing that he has what it takes to be a world champion in a major mixed martial arts organization. Obviously, the UFC is superior to what Bellator MMA was before it folded into PFL, but still, what Amosov did in Bellator MMA showed that he had what it takes to be a welterweight contender in the UFC, and through his first two fights inside the Octagon, he's definitely shown that he has what it takes to be a UFC welterweight title contender. Overall in his MMA career, Amosov is 30-1 with 22 wins coming by stoppage. His lone loss came in 2023 when he was knocked out by the underrated Jason Jackson. Otherwise, he's been perfect through his mixed martial arts campaign, and after going 2-0 in the UFC, is due for a big fight next time out.",
+      "body_chars": 2179,
+      "body_via": null,
+      "production": {
+        "posted": true,
+        "held_reason": null,
+        "digest_tier": null,
+        "subject_role": null
+      },
+      "expect": {
+        "verdict": "NEW",
+        "subject_role": "central",
+        "digest_tier": "main",
+        "mention_kind": null,
+        "claim_type": "prediction",
+        "sourcing": "reported",
+        "facts": {}
+      },
+      "note": "Masvidal tips Amosov as future welterweight champion. Origin of claim #9 in the live archive."
+    },
+    {
+      "key": "a44",
+      "split": "tune",
+      "synthetic": false,
+      "class": "claim_news",
+      "archive_id": 44,
+      "subject": "Ilia Topuria",
+      "title": "Ilia Topuria releases first statement since UFC White House defeat - Yahoo Sports",
+      "source": "Yahoo Sports",
+      "url": "https://sports.yahoo.com/videos/ilia-topuria-releases-first-statement-183711712.html?format=embed",
+      "published_at": "2026-08-08T07:31:20.000Z",
+      "edition": null,
+      "body": "Ilia Topuria praised Justin Gaethje after losing the lightweight crown by fourth-round technical knockout on Sunday, marking the first defeat of his professional career.\nIn the UFC White House headliner, Topuria’s corner stopped the bout, and he later detailed on Instagram vision loss in both eyes during the fight. Justin Gaethje’s performance drew respect from Ilia Topuria, who wrote there were no excuses and that it was Gaethje’s night.\nTopuria entered Sunday on a nine-fight UFC run that included winning featherweight and lightweight titles and finishes of Alexander Volkanovski, Max Holloway, and Charles Oliveira. He indicated plans to heal and pursue a rematch with Gaethje.",
+      "body_chars": 685,
+      "body_via": null,
+      "production": {
+        "posted": true,
+        "held_reason": null,
+        "digest_tier": null,
+        "subject_role": null
+      },
+      "expect": {
+        "verdict": "NEW",
+        "subject_role": "central",
+        "digest_tier": "main",
+        "mention_kind": null,
+        "claim_type": "quote",
+        "sourcing": "official",
+        "facts": {
+          "opponent": "Justin Gaethje",
+          "method": "TKO round 4"
+        }
+      },
+      "note": "Topuria's own first statement after the Gaethje loss, quoting his Instagram. Subject speaking about himself — the strongest sourcing tier short of a promotion."
+    },
+    {
+      "key": "a50",
+      "split": "tune",
+      "synthetic": false,
+      "class": "claim_news",
+      "archive_id": 50,
+      "subject": "Ilia Topuria",
+      "title": "Carlos Prates warns Ilia Topuria, explains why the UFC superstar's possible welterweight move is a bad idea - MMA Sucka",
+      "source": "MMA Sucka",
+      "url": "https://mmasucka.com/news/carlos-prates-warns-ilia-topuria-explains-why-the-ufc-superstars-potential-welterweight-move-bad/",
+      "published_at": "2026-08-08T20:42:10.000Z",
+      "edition": null,
+      "body": "Carlos Prates believes that Ilia Topuria potentially moving up to the welterweight division would be a bad idea for the UFC superstar. Topuria, who's regarded as one of the most popular athletes in MMA and beyond, previously competed at featherweight and currently fights in the lightweight division. \"El Matador\" is a former UFC featherweight and lightweight champion, but many of his critics often argue that -- despite having held championship gold -- he's undersized for the lightweight division. Carlos Prates warns Ilia Topuria against plans for a potential move up to the UFC welterweight division During a recent appearance on Canal Golpe Baixo, Carlos Prates addressed various topics, including the long-running speculation regarding Ilia Topuria's possible foray at welterweight. Topuria is coming off the first defeat of his professional MMA career, as he lost his UFC lightweight championship via fourth-round TKO to Justin Gaethje at UFC Freedom 250 in June. He expressed interest in a rematch against Gaethje, but the latter has maintained that he's unlikely to give the Georgian-Spaniard a rematch. Prior to the loss, Topuria was linked to a potential super-fight against former UFC lightweight kingpin and reigning UFC welterweight titleholder Islam Makhachev . Some speculated that he'd beat Gaethje and move up to welterweight to dethrone Makhachev. Carlos Prates alluded to the welterweight discussions surrounding Topuria and warned that it'd be a terrible move for the former two-division UFC champion. The Brazilian fighter appeared to allude to the significant size difference, in height and weight, between Topuria and some of the top welterweights like himself and Michael Morales. Prates stated, \"He was going to die, man.\" He added, \"Imagine him fighting me. Imagine him fighting (Michael) Morales.\" Insinuating that the size difference would factor into Topuria's durability as well, he claimed that the smaller fighter would get touched and go down against the elites of the welterweight division. Prates said, \"Topuria can punch.\" The KO artist noted, however, that there's a huge difference in size and power that the former featherweight would be unable to overcome in the heavier weight class. Watch Carlos Prates scoff at the possibility of Ilia Topuria's entry into the UFC welterweight division below: Carlos Prates is on the cusp of his maiden shot at UFC world championship gold Carlos Prates stands at the No. 1 spot in the UFC welterweight division on the official Meta UFC rankings as of this time. He's fresh off a victory against former UFC welterweight champion Jack Della Maddalena, whom he bested via TKO in May. Meanwhile, the No. 2-ranked Ian Machado Garry, who survived a near KO/TKO stoppage to previously outpoint Prates, is scheduled to fight for the title. Garry will take on Islam Makhachev for the UFC welterweight title in the headlining match of UFC 330 on August 15. Intriguingly, the No. 3-ranked Michael Morales is expected to weigh in as the official backup/replacement fighter for the Makhachev-Garry clash in case either of the headliners withdraw due to injury/other reasons. As such, some have conjectured that Morales could set himself up for the next title shot by weighing in for the backup role. Nevertheless, Prates has consistently suggested that he's been told that he'd face the Makhachev vs. Garry winner for the UFC welterweight belt, in what would mark his first UFC title shot.",
+      "body_chars": 3454,
+      "body_via": null,
+      "production": {
+        "posted": true,
+        "held_reason": null,
+        "digest_tier": null,
+        "subject_role": null
+      },
+      "expect": {
+        "verdict": "NEW",
+        "subject_role": "central",
+        "digest_tier": "main",
+        "mention_kind": null,
+        "claim_type": "quote",
+        "sourcing": "reported",
+        "facts": {
+          "opponent": "Carlos Prates"
+        }
+      },
+      "note": "Prates warns Topuria off welterweight. Headline names him; body is about him throughout."
+    },
+    {
+      "key": "a43",
+      "split": "tune",
+      "synthetic": false,
+      "class": "claim_news",
+      "archive_id": 43,
+      "subject": "Ilia Topuria",
+      "title": "“You Sound Like a Clown”: Malki Kawa Blasts Ali Abdelaziz Over Ilia Topuria Criticisms - MMA Sucka",
+      "source": "MMA Sucka",
+      "url": "https://mmasucka.com/news/you-sound-like-a-clown-malki-kawa-blasts-ali-abdelaziz-over-ilia-topuria-criticisms/",
+      "published_at": "2026-08-08T06:48:20.000Z",
+      "edition": null,
+      "body": "The MMA managerial scene is often as wild as the fights inside the Octagon, and the latest war of words proves that the beef doesn't stop when the cage door closes. Dominance MMA Management CEO Ali Abdelaziz kicked off the drama by targeting former UFC Featherweight Champion Ilia Topuria while hyping up his star client, Usman Nurmagomedov . Abdelaziz recently appeared on the Pound for Pound podcast to discuss Nurmagomedov's future after the undefeated 22-0 fighter finished his Professional Fighters League contract with a first-round stoppage of Archie Colgan on July 31. The manager made bold claims about how the lightweight standout would roll through UFC contenders like Max Holloway , Paddy Pimblett , and Charles Oliveira. Abdelaziz even took a swipe at Topuria, asserting that Nurmagomedov would make \"El Matador\" quit if they met inside the cage. He also claimed the only competitive fight for Nurmagomedov would be against top lightweight contender Arman Tsarukyan. Those comments did not sit well with Topuria s manager, Malki Kawa of First Round Management. Kawa took straight to his Instagram story to unleash a scathing response aimed directly at Abdelaziz. Malki Kawa Fires Back at Dominance MMA Kawa held nothing back, firing off a fiery defense of his marquee fighter while shredding Abdelaziz s entire management roster. \"Ilia would annihilate 100% of your roster, including if he fought Justin Gaethje again, he would beat the shit out of him,\" Kawa posted. Addressing names like Pimblett, current lightweight champion Islam Makhachev , Nurmagomedov, and Gaethje, Kawa added that none of it mattered. \" Shut the f** k up, stop hyping your guys, you sound like a f*king clown. \" 𝕏 X / Twitter @FightluckBet status/20859423 Will render as live embed on publish Addressing Topuria s recent performances , Kawa added a simple defense: \"Ilia had a bad night, that's it.\" The bad blood between these two management powerhouses isn't entirely new. Abdelaziz manages some of the biggest names under the Zuffa banner, including former interim champion Justin Gaethje and dominant UFC Welterweight champion Islam Makhachev. Topuria remains one of the most explosive stars in MMA today, known for his dangerous boxing and dynamic wrestling. While Nurmagomedov has not officially signed with the UFC yet, the verbal sparring between Abdelaziz and Kawa shows that fight fans might be in for even more drama outside the cage than inside it.",
+      "body_chars": 2450,
+      "body_via": null,
+      "production": {
+        "posted": true,
+        "held_reason": null,
+        "digest_tier": null,
+        "subject_role": null
+      },
+      "expect": {
+        "verdict": "NEW",
+        "subject_role": "central",
+        "digest_tier": "main",
+        "mention_kind": null,
+        "claim_type": "quote",
+        "sourcing": "reported",
+        "facts": {}
+      },
+      "note": "Manager war: Kawa vs Abdelaziz over Topuria. Central even though the speakers are managers, not fighters."
+    },
+    {
+      "key": "a110",
+      "split": "tune",
+      "synthetic": false,
+      "class": "assessment",
+      "archive_id": 110,
+      "subject": "Ilia Topuria",
+      "title": "Tsarukyan's Coach On Ruffy Vs Topuria Danger - boxingnews.com",
+      "source": "boxingnews.com",
+      "url": "https://boxingnews.com/news/tsarukyan-coach-ruffy-topuria-danger/",
+      "published_at": "2026-08-11T07:01:44.000Z",
+      "edition": "en",
+      "body": "Arman Tsarukyan 's coach sees more danger in Mauricio Ruffy's striking than in Ilia Topuria's punching power. Marcos da Matta told Brazilian podcast Connect Cast that Ruffy brings a wider toolbox to the cage than the current featherweight champion, per Sherdog. The American Top Team coach broke down how Ruffy's arsenal stacks up against Topuria's more focused attack ahead of Tsarukyan's co-main event bout with Ruffy at UFC 331 in Los Angeles on Sept. 19. 🎟️ Get tickets: Buy tickets to UFC 331 on Ticketmaster → Get Tickets · Ticketmaster Da Matta acknowledged the obvious contrast in styles between grappler Tsarukyan and striker Ruffy before turning his attention to how the Brazilian's variety separates him from other elite strikers. \"Ruffy might be the most dangerous and versatile guy in the division,\" he said. \"Topuria is dangerous, but he relies on two or three techniques — like the hook to the body, the overhand right and maybe one or two others. Ruffy has kicks, knees, punches from both sides… He switches stances and throws spinning kicks—he is truly very dangerous.\" The assessment comes as Tsarukyan looks to protect his top-five lightweight ranking against a rising threat in Ruffy. Topuria, meanwhile, continues his reign at featherweight after knocking out Max Holloway and Alexander Volkanovski in back-to-back title defenses. UFC 331 goes down Sept. 19 with the Tsarukyan-Ruffy clash anchoring the co-main event slot. The boxingnews.com MMA desk covers UFC, PFL and Bellator events — fight-night recaps, weigh-in reports, and event previews across every weight class. Fight announcements, results, and analysis delivered to your inbox. No spam. Unsubscribe anytime.",
+      "body_chars": 1692,
+      "body_via": "article-tag",
+      "production": {
+        "posted": true,
+        "held_reason": null,
+        "digest_tier": "main",
+        "subject_role": "passing"
+      },
+      "expect": {
+        "verdict": "NO_CLAIM",
+        "subject_role": "passing",
+        "digest_tier": "tangential",
+        "mention_kind": "assessment",
+        "claim_type": null,
+        "sourcing": null,
+        "facts": {}
+      },
+      "note": "Tsarukyan's coach rates Ruffy's arsenal above Topuria's. Posted as a full headline on 2026-08-11 — the case that started the tier rework. Useful to the group, but not a headline."
+    },
+    {
+      "key": "a8",
+      "split": "tune",
+      "synthetic": false,
+      "class": "assessment",
+      "archive_id": 8,
+      "subject": "Ilia Topuria",
+      "title": "Makhachev On Topuria And Chimaev Losses - boxingnews.com",
+      "source": "boxingnews.com",
+      "url": "https://boxingnews.com/news/makhachev-topuria-chimaev-losses",
+      "published_at": "2026-08-06T21:30:47.000Z",
+      "edition": null,
+      "body": "Islam Makhachev is drawing motivation from watching Ilia Topuria and Khamzat Chimaev drop their UFC titles in stunning upsets this year. The welterweight champion defends his belt against Ian Machado Garry at UFC 330 later this month in Philadelphia. Makhachev won the welterweight strap by defeating Jack Della Maddalena at UFC 322, adding a second division title to his lightweight crown and extending his winning streak to 16 fights. 🎟️ Get tickets: Buy tickets to UFC 330 on Ticketmaster → Get Tickets · Ticketmaster Asked by MMA Junkie what he took from watching Topuria and Chimaev lose their belts, Makhachev credited his training camp for keeping him grounded. \"We talk inside the team also about the guys who lost because maybe some of them lose their focus,\" he said, per a report from Bloody Elbow. \"Maybe some of them, you know, not staying training hard but everybody knows in our gym, it's not working like that.\" The Dagestani champion said his coaches push him regardless of his championship status. He added that everyone in the gym trains at the same intensity whether they hold a title or not. 🎟️ Get tickets: Buy tickets to UFC 330 on Ticketmaster → Makhachev has not lost since a knockout defeat to Adriano Martins at UFC 192. Garry presents a unique challenge with his takedown defense, which could force Makhachev to rely more on striking than his typical wrestling-heavy approach. The fight headlines UFC 330 in Philadelphia. Tom Rashid handles UFC and major MMA coverage for boxingnews.com — fight-night live blogs, post-event recaps, and division rankings across lightweight, welterweight and middleweight. Fight announcements, results, and analysis delivered to your inbox. No spam. Unsubscribe anytime.",
+      "body_chars": 1732,
+      "body_via": null,
+      "production": {
+        "posted": true,
+        "held_reason": null,
+        "digest_tier": null,
+        "subject_role": null
+      },
+      "expect": {
+        "verdict": "NO_CLAIM",
+        "subject_role": "passing",
+        "digest_tier": "tangential",
+        "mention_kind": "assessment",
+        "claim_type": null,
+        "sourcing": null,
+        "facts": {}
+      },
+      "note": "Makhachev on what he took from the Topuria and Chimaev upsets. A champion assessing the subject, inside his own fight preview."
+    },
+    {
+      "key": "a116",
+      "split": "tune",
+      "synthetic": false,
+      "class": "context",
+      "archive_id": 116,
+      "subject": "Ilia Topuria",
+      "title": "Makhachev, ante la ‘maldición’ que ya tumbó a Chimaev y Topuria - SPORT",
+      "source": "SPORT",
+      "url": "https://www.sport.es/es/noticias/ufc/makhachev-maldicion-tumbo-chimaev-topuria-133265150",
+      "published_at": "2026-08-11T12:37:25.000Z",
+      "edition": "es",
+      "body": "Suele decirse que las artes marciales mixtas son el deporte en el que el favorito es menos favorito. Y el motivo es bastante claro. Aunque un peleador sea técnicamente superior a su rival, una mano, una patada o una mala lectura pueden cambiarlo todo en cuestión de segundos. Todo el mundo tiene un plan hasta que recibe el primer golpe serio. Esa imprevisibilidad es precisamente lo que hace que las MMA no dejen de sorprendernos nunca, algo que podría volver a suceder este próximo fin de semana en Philadelphia, en el combate estelar del UFC 330 entre Islam Makhachev e Ian Machado Garry. El daguestaní, actual campeón del peso wélter de la UFC y número uno del ranking libra por libra de la promotora, llega a su primera defensa en las 170 libras como amplio favorito en las casas de apuestas y en la opinión popular. Los motivos son evidentes. Doble campeón, señalado ya por muchos como el mejor peso ligero de la historia, con cuatro defensas a sus espaldas en las 155 libras y con uno de los juegos de lucha más dominantes que se han visto en la compañía, Makhachev es un problema enorme para cualquier rival. Solo ha perdido una vez en su carrera dentro de la UFC, hace ya más de diez años, cuando cayó noqueado ante Adriano Martins en 2015. Desde entonces, campeones, excampeones y leyendas han sido víctimas de un estilo daguestaní perfeccionado hasta parecer casi indestructible. Control, presión, derribos, amenaza constante de sumisión y una capacidad muy alta para castigar cada error del rival. Pese a esa superioridad, al menos sobre el papel, este año la UFC ya ha dejado claro que los favoritos están más en peligro que nunca. A lo largo de 2026 hemos visto dos de las mayores sorpresas recientes de la compañía: las derrotas de Khamzat Chimaev e Ilia Topuria en la que era la primera defensa de sus respectivos títulos. Primero cayó el campeón del peso medio. Después, el campeón del peso ligero. Ahora, Makhachev tratará de evitar esa particular maldición de las primeras defensas. El primero fue Chimaev, que en el mes de mayo sufrió la primera derrota profesional de su carrera ante Sean Strickland. Era un combate en el que el checheno debía imponer su grappling y pasar por encima del excampeón estadounidense, pero acabó atrapado en una pelea muy incómoda, larga y desgastante. Strickland llevó el duelo a aguas profundas con su particular estilo de striking, ritmo constante y defensa, hasta recuperar el cinturón del peso medio por segunda vez. Tan solo un mes después llegó el turno de Ilia Topuria en la Casa Blanca. El escenario parecía perfecto para el ‘Matador’: los jardines sur del edificio presidencial estadounidense, con Donald Trump en primera fila y un evento histórico para la UFC. Topuria partía como gran favorito ante Justin Gaethje, en un combate que muchos veían como una defensa relativamente cómoda para el por entonces campeón. Pero la noche acabó convertida en pesadilla. Gaethje dio la campanada, rompió el plan de pelea de Ilia y fue acumulando daño hasta dejar una de las imágenes más duras de la carrera del hispanogeorgiano. El rostro de Topuria terminó muy castigado y la esquina decidió detener el combate antes del quinto asalto. ‘The Highlight’ se coronó así como nuevo rey de las 155 libras en uno de los grandes golpes de efecto de los últimos años. Ahora, después de ese infausto UFC 329 entre Conor McGregor y Max Holloway, que apenas duró unos segundos por la lesión del irlandés, la pelota está en el tejado de Islam Makhachev. El daguestaní afronta su primer gran reto como campeón wélter ante un rival que representa un perfil físico muy distinto al de sus últimos oponentes. Ian Machado Garry no tiene la lucha de Makhachev ni su capacidad de control en el suelo, pero sí cuenta con armas que pueden incomodar al campeón. Es largo, supera el 1,90 de altura, tiene buena envergadura, sabe moverse bien por fuera y trabaja con un striking ordenado, basado en tocar, salir y no quedarse demasiado tiempo en la zona de peligro. El irlandés deberá moverse de forma circular, no regalar la espalda contra la jaula y evitar que Islam recorte distancias con facilidad. Si el daguestaní consigue cerrarle contra la reja, entrar a las piernas y llevar el combate al suelo, la pelea puede empezar a inclinarse rápido de su lado. Makhachev no suele perdonar errores y, cuando encuentra una ventaja, la exprime hasta convertirla en dominio.",
+      "body_chars": 4394,
+      "body_via": "json-ld",
+      "production": {
+        "posted": true,
+        "held_reason": null,
+        "digest_tier": "main",
+        "subject_role": "passing"
+      },
+      "expect": {
+        "verdict": "NO_CLAIM",
+        "subject_role": "passing",
+        "digest_tier": "tangential",
+        "mention_kind": "context",
+        "claim_type": null,
+        "sourcing": null,
+        "facts": {}
+      },
+      "note": "UFC 330 preview; Topuria is one of two cautionary examples in a 'curse of the first defence' narrative. Note the Topuria passage sits past char 1,500 — beyond today's matcher excerpt."
+    },
+    {
+      "key": "a9",
+      "split": "tune",
+      "synthetic": false,
+      "class": "context",
+      "archive_id": 9,
+      "subject": "Ilia Topuria",
+      "title": "Islam Makhachev motivated by Ilia Topuria, Khamzat Chimaev's shocking losses ahead of UFC 330 - BJPenn.com",
+      "source": "BJPenn.com",
+      "url": "https://www.bjpenn.com/mma-news/islam-makhachev/islam-makhachev-motivated-ilia-topuria-khamzat-chimaev-losses-ufc-330/",
+      "published_at": "2026-08-06T21:25:02.000Z",
+      "edition": null,
+      "body": "Home » MMA News » Islam Makhachev » Islam Makhachev motivated by Ilia Topuria, Khamzat Chimaev’s&hellip; Trending: Colby Covington praises Arman Tsarukyan following RAF 11 match: \"You’re gonna be the UFC lightweight champ\" Credit: Chris Unger/Jeff Bottari/Zuffa LLC/ UFC welterweight champion Islam Makhachev is using Ilia Topuria and Khamzat Chimaev’s shocking losses as fuel for UFC 330. Islam Makhachev will defend the UFC welterweight throne and his spot atop the pound-for-pound rankings against Ian Machado Garry later this month at UFC 330. Makhachev returns to the Octagon after becoming the latest UFC two-division champion by defeating Jack Della Maddalena at UFC 322. Garry presents a unique challenge for Makhachev at UFC 330. The talented striker possesses some of the best takedown defense in the promotion, and Makhachev may have to utilize non-wrestling avenues to get the victory. Makhachev’s return comes after what’s been a year of upsets in the UFC Octagon. Ilia Topuria and Khamzat Chimaev both lost their UFC titles and undefeated records in stunning upsets. While Topuria and Chimaev’s missteps could be viewed as a sign of caution to Makhachev, the UFC welterweight champion uses them as fuel. In a recent interview with MMA Junkie , Makhachev was asked about what he took from watching Topuria and Chimaev’s shocking missteps ahead of UFC 330. “Yeah, sure. We talk inside the team also about the guys who lost because maybe some of them lose their focus,” Makhachev said. “Maybe some of them, you know, not staying training hard but everybody knows in our gym, it’s not working like that. We’re always training so hard. More than everybody and we stay, no matter champions or not champions. \"Inside the gym, we’re all the same and all our coaches are pushing us really hard.” ( h/t Bloody Elbow ) Makhachev hasn’t lost since a knockout defeat to Adriano Martins at UFC 192. He’ll look to keep his 16-fight winning streak intact in Philadelphia at UFC 330. What is your prediction for Islam Makhachev vs. Ian Machado Garry? Let us know your predictions in the comments! This article appeared first on BJPENN.COM Previous Conor McGregor backs ‘stud’ Ian Machado Garry despite fan criticism ahead of UFC 330 Next Robert Whittaker called out by former UFC champ for light heavyweight return Topics: VIDEO | Jared Gordon slams online troll with a head kick in brutal spar Curtis Calhoun - August 7, 2026 // 0 Comments UFC Arman Tsarukyan 'strengthened his case' for title shot by accepting new UFC 331 matchup Curtis Calhoun - August 7, 2026 // 0 Comments UFC Hall of Famer Daniel Cormier believes Arman Tsarukyan's gameness makes him undeniable for a lightweight title shot. Arman Tsarukyan will look to secure a UFC lightweight title shot when he faces&hellip; Read more UFC Ian Machado Garry abandons social media after 'online backlash' before UFC 330 Curtis Calhoun - August 7, 2026 // 0 Comments UFC welterweight contender Ian Machado Garry says he's gone radio silent on social media ahead of his showdown with Islam Makhachev. Ian Machado Garry is days away from squaring off against UFC&hellip; Read more Conor McGregor Conor McGregor urged to retire by combat sports icon Alistair Overeem: \"His body was finished five years ago\" Fernando Quiles Jr. - August 7, 2026 // 0 Comments While Conor McGregor intends on having at least one more pro MMA bout, Alistair Overeem advises against it. McGregor has been injured throughout his career, and he's needed to undergo five procedures.&hellip; Read more Billy Quarantillo UFC Vegas 120 weigh-ins survive scale mishap at last minute, Mateusz Gamrot vs. Quillan Salkilld official Fernando Quiles Jr. - August 7, 2026 // 0 Comments The UFC Vegas 120 weigh-ins didn't end without a little drama, but fans will be pleased to know the results. All 24 fighters scheduled for the Meta Apex event ultimately made weight&hellip; Read more Conor McGregor motivated by two UFC legends amid second ACL surgery: \"The Mac is back, baby\" Fernando Quiles Jr. - August 7, 2026 // 0 Comments UFC Robert Whittaker lays out possible opponents for light heavyweight run Harry Kettle - August 7, 2026 // 0 Comments Former UFC champion Robert Whittaker has laid out a few possible opponents for his light heavyweight stint. Robert Whittaker made a winning start to life in the light heavyweight division last month&hellip; Read more Paulo Costa Magomed Ankalaev's manager wants to see him fight Paulo Costa Harry Kettle - August 7, 2026 // 0 Comments Magomed Ankalaev’s manager is interested in seeing him face off against Paulo Costa while Carlos Ulberg continues his recovery. Following on from his win over Bogdan Guskov, Magomed Ankalaev believes he is&hellip; Read more Ian Garry Ian Machado Garry wants Conor McGregor to return and go out 'with a bang' Harry Kettle - August 7, 2026 // 0 Comments UFC welterweight Ian Machado Garry has given his thoughts on what should be next for Conor McGregor in mixed martial arts. As we know, Conor McGregor fell short in his comeback fight&hellip; Read more UFC Robert Whittaker called out by former UFC champ for light heavyweight return Curtis Calhoun - August 6, 2026 // 0 Comments A former UFC light heavyweight champ wants a shot at Robert Whittaker after the former middleweight king's successful 205-pound debut. Former UFC middleweight champion Robert Whittaker's move to the light heavyweight division&hellip; Read more",
+      "body_chars": 5425,
+      "body_via": null,
+      "production": {
+        "posted": true,
+        "held_reason": null,
+        "digest_tier": null,
+        "subject_role": null
+      },
+      "expect": {
+        "verdict": "NO_CLAIM",
+        "subject_role": "passing",
+        "digest_tier": "tangential",
+        "mention_kind": "context",
+        "claim_type": null,
+        "sourcing": null,
+        "facts": {}
+      },
+      "note": "Same underlying story as #8 from a different outlet, but framed as Makhachev's motivation — context rather than assessment. The pair tests the assessment/context boundary."
+    },
+    {
+      "key": "a115",
+      "split": "tune",
+      "synthetic": false,
+      "class": "orbit",
+      "archive_id": 115,
+      "subject": "Ilia Topuria",
+      "title": "León reúne a Carolina Marín, Carlos Moyá y uno de los hombres clave de Ilia Topuria - Digital de León",
+      "source": "Digital de León",
+      "url": "https://www.digitaldeleon.com/articulo/noticias-leon/leon-reune-carolina-marin-carlos-moya-uno-hombres-clave-ilia-topuria/20260811130000223101.html",
+      "published_at": "2026-08-11T11:00:00.000Z",
+      "edition": "es",
+      "body": "León tiene una cita importante con el deporte en septiembre. Y esta vez no será para ver competir a sus protagonistas, sino para escuchar todo lo que normalmente queda detrás de una medalla, un título o una victoria. El X Foro Internacional del Deporte Ciudad de León ABANCA (FID) cumple diez años y ya empieza a poner nombres propios a una edición que promete. Los tres primeros confirmados hablan por sí solos: Carolina Marín, Carlos Moyá y el doctor Aldo Martínez, responsable de rendimiento deportivo de Ilia Topuria. Carolina Marín, mucho más que sus medallas Probablemente sea uno de los nombres que menos presentación necesita. Carolina Marín llegará a León para contar su historia, y hay mucho que contar. Campeona olímpica y tres veces campeona del mundo de bádminton, su carrera no ha sido precisamente un camino sencillo. Junto a los grandes triunfos también ha tenido que convivir con lesiones y momentos especialmente duros. Caerse, volver, empezar prácticamente de cero y regresar a lo más alto. Esa parte menos visible del deporte será precisamente una de las que compartirá con el público leonés. Carlos Moyá también estará en León El tenis tendrá su espacio con otro nombre que marcó una época. Carlos Moyá, campeón de Roland Garros y ex número uno del mundo, será otro de los protagonistas del décimo aniversario del FID. Esta vez no habrá raquetas ni tierra batida de por medio. El escenario será el Auditorio Ciudad de León, donde el mallorquín podrá mirar atrás y compartir algunas de las experiencias acumuladas durante toda una vida ligada al tenis profesional. El trabajo que hay detrás de Ilia Topuria Quizá su rostro no resulte tan familiar, pero su trabajo está muy cerca de uno de los grandes nombres actuales del deporte. El doctor Aldo Martínez es director de rendimiento deportivo de Ilia Topuria y especialista en alto rendimiento. Martínez estará en el Auditorio el 24 de septiembre, a las 19:00 horas, para hablar de motivación, preparación y liderazgo. En definitiva, de ese trabajo diario que pocas veces aparece ante las cámaras, pero que puede marcar la diferencia cuando llega el momento de competir. La opción prioritaria de la Cultural para reforzar la delantera se enfría Diez años trayendo historias del deporte a León El X FID Ciudad de León ABANCA se celebrará del 22 al 26 de septiembre en el Auditorio Ciudad de León. Carolina Marín, Carlos Moyá y Aldo Martínez son, por ahora, los primeros nombres anunciados para una edición que servirá además para celebrar los diez años del foro. Las entradas ya están a la venta, mientras la organización continúa desvelando quiénes completarán el cartel de este aniversario. 756517930_4496162030660575_4111804566441335065_n",
+      "body_chars": 2709,
+      "body_via": "json-ld",
+      "production": {
+        "posted": true,
+        "held_reason": null,
+        "digest_tier": "main",
+        "subject_role": "passing"
+      },
+      "expect": {
+        "verdict": "NO_CLAIM",
+        "subject_role": "passing",
+        "digest_tier": "tangential",
+        "mention_kind": "orbit",
+        "claim_type": null,
+        "sourcing": null,
+        "facts": {}
+      },
+      "note": "City news about a sports conference in León; Topuria appears only as a credential in his performance doctor's bio. Posted as a full headline on 2026-08-11."
+    },
+    {
+      "key": "a37",
+      "split": "tune",
+      "synthetic": false,
+      "class": "orbit",
+      "archive_id": 37,
+      "subject": "Ilia Topuria",
+      "title": "El avilesino detrás de la recuperación de Topuria y de la Selección Española de fútbol - El Comercio",
+      "source": "El Comercio",
+      "url": "https://www.elcomercio.es/aviles/roberto-rocha-avilesino-recuperacion-ilia-topuria-seleccion-espanola-futbol-20260807184833-nt.html",
+      "published_at": "2026-08-07T20:28:08.000Z",
+      "edition": null,
+      "body": "Ver la cara de Ilia Topuria como si nada hubiese pasado poco más de un mes después de las imágenes que impactaron al mundo ... tras su primera derrota profesional en UFC en la Casa Blanca parece un milagro. No queda casi ni rastro de las lesiones profundas que sufrió en su rostro el luchador hispano-georgiano, y en esa recuperación rápida seguramente tiene mucho que ver la tecnología que utiliza.El avilesino Roberto Rocha lleva años cuidando a deportistas de élite con la empresa a la que representa, la multinacional CTN, de la que es director de ventas en los países hispanohablantes y en otros enclaves en los que está en expansión. Topuria ya era imagen de la marca tras probar la 'congelación' que acelera la regeneración tras grandes esfuerzos y sus combates, y ahora no ha dudado en ponerse de nuevo en las manos de la tecnología para recuperarse a fondo y volver a retar a la UFC cuanto antes.El luchador dispone en su domicilio de Miami de la tecnología necesaria para mejorar su recuperación y ha recurrido a ella para reducir la inflamación tras la pelea. El enfoque terapéutico de la tecnología de CTN se basa en un «triángulo de recuperación» que incluye tratamientos hiperbáricos, crioterapia de cuerpo entero sin nitrógeno y fotobiomodulación. Además, se emplea la crioterapia localizada para reducir la inflamación, disminuir el dolor y mejorar la movilidad en caso de ser necesario.Topuria, con residencia habitual en Miami, aplica la crioterapia en el cuerpo entero, además de localizar el tratamiento en aquellas partes en las que tenga dolores puntuales, como la cara y las manos. La maquinaria de CTN le ayuda a reducir la inflamación y el dolor y mejorar la movilidad.Este tratamiento también está detrás de los éxitos de la Selección Española de fútbol, recientemente campeona del mundo. Rocha ha supervisado en los últimos años la instalación de las máquinas de crioterapia en domicilios particulares de jugadores como Mikel Merino o Fabián Ruiz, además de proveer a la Federación Española de Fútbol, que ha equipado con su tecnología la sede de Las Rozas, donde los futbolistas han podido recuperarse desde la última Eurocopa, que también ganaron, hasta el éxito del pasado Campeonato del Mundo en Estados Unidos. La empresa que representa Roberto Rocha tiene una amplia lista de clientes entre deportistas de élite, como competidores olímpicos.Pero los beneficios de la crioterapia tienen una aplicación igualmente en personas que no practican deporte, ya que ayuda al cierre de cicatrices, mejorar la movilidad o reducir el dolor y las inflamaciones. La base es el frío de la crioterapia y también tiene aplicación en el mundo de la estética para trabajar la piel frente a enfermedades como la soriasis o el acné.Uno de los últimos proyectos en los que participa Rocha es la aplicación de la tecnología CTN en el Principado de Asturias. En concreto, en Gijón, dentro de los servicios que ofrece el Centro de Fisioterapia Roza, además el gimnasio Eleva-T, ubicado en Oviedo.",
+      "body_chars": 3004,
+      "body_via": null,
+      "production": {
+        "posted": true,
+        "held_reason": null,
+        "digest_tier": null,
+        "subject_role": null
+      },
+      "expect": {
+        "verdict": "NO_CLAIM",
+        "subject_role": "supporting",
+        "digest_tier": "tangential",
+        "mention_kind": "orbit",
+        "claim_type": null,
+        "sourcing": null,
+        "facts": {}
+      },
+      "note": "Profile of the technician behind Topuria's facial-injury recovery. Orbit, but genuinely about his recovery — the class's upper bound, and a fair place to disagree with the label."
+    },
+    {
+      "key": "a23",
+      "split": "tune",
+      "synthetic": false,
+      "class": "lifestyle",
+      "archive_id": 23,
+      "subject": "Ilia Topuria",
+      "title": "Ibiza, el refugio VIP del verano: así disfrutan de la isla Leonardo DiCaprio, Ilia Topuria o Mar Flores - HOLA",
+      "source": "HOLA",
+      "url": "https://www.hola.com/actualidad/20260807916866/ibiza-refugio-vip-verano-asi-disfrutan-isla-leonardo-dicaprio-ilia-topuria-mar-flores/",
+      "published_at": "2026-08-07T08:50:00.000Z",
+      "edition": null,
+      "body": "Ibiza vuelve a convertirse este verano en uno de los grandes puntos de encuentro para rostros conocidos, una isla que ofrece una amplia variedad de ocio y entretenimiento bajo ese estilo de vida mediterráneo que seduce, año tras año, a celebrities nacionales e internacionales. Sus calas, sus atardeceres y su oferta gastronómica y cultural hacen que, durante los meses estivales, la isla reúna a un auténtico mosaico de personajes públicos que buscan desconexión, diversión y, sobre todo, tiempo en familia y con amigos.Las playas, los chiringuitos exclusivos, los yates y las fiestas más selectas son algunos de los grandes reclamos de este enclave en el que, un verano más, hemos visto relajarse a la familia Beckham, que navegó entre Ibiza y Formentera; a varios jugadores de la selección española de fútbol, como Marcos Llorente o Ferran Torres; y también a Andrea Casiraghi y su esposa Tatiana Santo Domingo, habituales de la isla y que suelen tener este rincón del Mediterráneo entre sus destinos estivales preferidos.",
+      "body_chars": 1025,
+      "body_via": null,
+      "production": {
+        "posted": true,
+        "held_reason": null,
+        "digest_tier": null,
+        "subject_role": null
+      },
+      "expect": {
+        "verdict": "NO_CLAIM",
+        "subject_role": "passing",
+        "digest_tier": "tangential",
+        "mention_kind": "orbit",
+        "claim_type": "lifestyle",
+        "sourcing": null,
+        "facts": {}
+      },
+      "note": "Celebrity listicle: Ibiza as a VIP summer refuge, Topuria one name among DiCaprio and others. Headline names him — the residual-#23 case tier.js documents."
+    },
+    {
+      "key": "a48",
+      "split": "tune",
+      "synthetic": false,
+      "class": "lifestyle",
+      "archive_id": 48,
+      "subject": "Ilia Topuria",
+      "title": "Ilia Topuria Taken to Task over Meeting with Ferran Torres - MMA Sucka",
+      "source": "MMA Sucka",
+      "url": "https://mmasucka.com/news/manager-roasts-ilia-topuria-over-viral-night-out-with-ferran-torres/",
+      "published_at": "2026-08-08T17:43:24.000Z",
+      "edition": null,
+      "body": "UFC featherweight star Ilia Topuria recently found himself at the center of the internet's attention after footage surfaced of him partying in Ibiza alongside FC Barcelona forward Ferran Torres. The clip, recorded at the famous Ushua a nightclub, showed the two Spanish sports icons letting loose during Torres' post-FIFA World Cup celebrations. Naturally, social media users turned the dramatic club embrace into an instant viral sensation, flooding comment sections across multiple platforms. While fight fans and casual observers offered endless commentary on the clip, nobody had a better reaction than Topuria s manager, Malki Kawa of First Round Management. Kawa took to his social media channels to poke fun at his marquee client in a hilarious video response. 𝕏 X / Twitter @ChampRDS status/20859668 Will render as live embed on publish As the former featherweight champion reached out and grabbed Kawa s arm during a candid moment behind the scenes, the veteran manager seized the opportunity to roast the fighter about the nightclub footage. \"Can somebody please tell him that I'm not in that video?\" Kawa joked while pulling his arm away as Topuria grinned beside him. \"Stop, stop, somebody tell this guy.\" A \"Shark Mentality\" Reunion for Ilia Topuria, Ferran Torres The viral club clip might have raised a few eyebrows online, but the bond between these two elite athletes runs far deeper than a wild night out in the Balearic Islands. Torres, who netted the winning goal for the Spain national football team in the World Cup final, has long credited Topuria with completely transforming his athletic mindset. The 26-year-old footballer previously revealed that meeting the Georgian-Spanish fighter inspired him to adopt his famous \"shark mentality,\" a shift that drastically overhauled his daily training discipline, recovery habits, and nutritional routines. Topuria, who boasts an impressive 16-1 professional mixed martial arts record featuring highlight-reel Octagon victories over Alexander Volkanovski and Max Holloway , has been enjoying some well-deserved rest following his high-stakes summer clash against former interim lightweight champion Justin Gaethje . Whether Topuria is plotting his next move toward reclaiming UFC gold or unwinding with fellow champions in Spain, his management team clearly knows how to keep him grounded. Mixed martial arts fans are eagerly awaiting news on when \"El Matador\" will step back inside the Octagon, but for now, he might want to think twice before grabbing his manager's arm.",
+      "body_chars": 2539,
+      "body_via": null,
+      "production": {
+        "posted": true,
+        "held_reason": null,
+        "digest_tier": null,
+        "subject_role": null
+      },
+      "expect": {
+        "verdict": "NO_CLAIM",
+        "subject_role": "central",
+        "digest_tier": "tangential",
+        "mention_kind": null,
+        "claim_type": "lifestyle",
+        "sourcing": null,
+        "facts": {}
+      },
+      "note": "Topuria partying with Ferran Torres in Ibiza. Genuinely central to the article and still worthless to the group — role=central must not rescue a lifestyle item."
+    },
+    {
+      "key": "a39",
+      "split": "tune",
+      "synthetic": false,
+      "class": "wrong_subject",
+      "archive_id": 39,
+      "subject": "Yaroslav Amosov",
+      "title": "IRacing INDY 500 | Open Setup | Timeslot 3 Yaroslav Amosov (K8E7JbZC8S) - Mshale",
+      "source": "Mshale",
+      "url": "https://mshale.com/e9f2be52/f0ea6edcRXJNTLZn25k",
+      "published_at": "2026-08-07T16:23:28.000Z",
+      "edition": null,
+      "body": null,
+      "body_chars": 0,
+      "body_via": "http-403",
+      "production": {
+        "posted": true,
+        "held_reason": null,
+        "digest_tier": null,
+        "subject_role": null
+      },
+      "expect": {
+        "verdict": "WRONG_SUBJECT",
+        "subject_role": "passing",
+        "digest_tier": null,
+        "mention_kind": null,
+        "claim_type": null,
+        "sourcing": null,
+        "facts": {}
+      },
+      "note": "An iRacing entry list carrying a namesake 'Yaroslav Amosov'. The confusable the watchlist names explicitly."
+    },
+    {
+      "key": "a65",
+      "split": "tune",
+      "synthetic": false,
+      "class": "wrong_subject",
+      "archive_id": 65,
+      "subject": "Yaroslav Amosov",
+      "title": "UFC 330 roundtable: Is Islam Makhachev the next pound-for-pound great to fall?",
+      "source": "MMA Fighting",
+      "url": "https://www.mmafighting.com/ufc/503650/ufc-330-roundtable-is-islam-makhachev-the-next-pound-for-pound-great-to-fall",
+      "published_at": "2026-08-09T13:00:00.000Z",
+      "edition": null,
+      "body": "NEW YORK, NEW YORK - NOVEMBER 15: Islam Makhachev of Russia enters the Octagon in the UFC welterweight championship fight during the UFC 322 event at Madison Square Garden on November 15, 2025 in New York City. (Photo by Jeff Bottari/Zuffa LLC) Islam Makhachev is no stranger to impressive title defenses, but for the first time, he enters the octagon as welterweight champion and against a challenger with no shortage of confidence. What does Ian Machado Garry have to lose? Everyone expects Makhachev to run through him, but if Garry authors an upset, he could join Justin Gaethje, Ciryl Gane, and Sean Strickland on the list of underdogs that have turned the pound-for-pound rankings upside down. Let’s see just how wacky 2026 can get. Ahead of UFC 330 on Saturday, MMA Fighting’s Alexander K. Lee, Mike Heck, and Damon Martin discuss what these defenses mean for champions Islam Makhachev and Mackenzie Dern, plus we pick our most intriguing undercard fight of the lineup. 1. Out of 10, how much of an upset would Ian Machado Garry beating Islam Makhachev be? Lee: I’ll put it at a solid 9, though I’m actually leaning closer to 8 because, well, look how things have gone for the (so-called) Pound-for-Pound elite this year. In February, our top 4 P4P was Makhachev, Ilia Topuria, Alex Pereira, and Khamzat Chimaev. I don’t know if you heard, but Topuria, Pereira, and Chimaev? All three caught losses. It’s not unrealistic to think Makhachev could be next, especially given how Garry stacks up against him. “The Future” has size, skill, and—I say this in the most complimentary way possible—he’s just damn annoying to fight. Personally, a Garry win wouldn’t crack the very top of my biggest upsets ever list (Serra over GSP, Peña over Nunes, Rockhold over Bisping, to name a few), though that shouldn’t diminish his accomplishment if he somehow beats the best fighter in the world. I just won’t be flabbergasted, that’s all. Heck: I’ll give it 6.5. Is it an upset? Sure. Is it a major one? No. It wouldn’t be the biggest shocker of the year. It wouldn’t even be the second, and it might not even be in the top 5 of 2026 – that is, unless Garry absolutely destroys Makhachev. Mahachev’s résumé is equal parts impressive and weird. There are glaring names missing from his lightweight run, and as I’ve said many, many, many times, that’s not his fault. Makhachev agreed and signed to fight the toughest dudes and it’s in no way his problem if the opponents didn’t make it to the fight. So I find myself wondering one question when it comes to this fight with Garry: Would this be the best win of Makhachev’s career? Not in terms of star power or name value, but from a stylistic and level of difficulty perspective? Honestly, I think it would be. Jack Della Maddalena couldn’t have been a better matchup on paper for Makhachev, same with Charles Oliveira. Dustin Poirier overachieved, Renato Moicano had absolutely no chance and the second Alexander Volkanovski fight went the only way it could have under the circumstances. That probably leaves the first Volk fight as his best win and toughest fight based on where he was at. “IMG” isn’t going to make this pretty, but he has shown an ability to take away a fighter’s best weapon and stay out of danger. If Makhachev can find a way to steamroll a guy like him, it will be super impressive to me. I’ll also add that Machado Garry winning on Saturday will officially surpass Sean Strickland’s first title win as the funniest outcome in the history of the sport. Martin: Let’s go 8 and that’s mostly built around Garry being a really good welterweight, but not exactly a serious threat to hurt and/or knockout somebody like Makhachev. Make no mistake, Garry earned this opportunity, especially with Shavkat Rakhmonov still sidelined with no real indication on when he might return. Garry has thumped former champions like Belal Muhammad and overall he’s 10-1 in the UFC. Unfortunately, Garry’s reputation lately has been built around delivering less than thrilling decisions that usually play out with the Irish welterweight simply outpointing his competition rather than actually running roughshod over anybody. In other words, Garry finds ways to win, but he’s not exactly thrilling anybody with his performances. Against somebody like Makhachev, that just feels like disaster waiting to happen. Makhachev is one of the most well-rounded fighters on the planet and his grappling and submission skills are second to none. If he doesn’t feel any real danger shooting inside, getting the clinch or just wrestling Garry to the ground, then it feels almost inevitable that Makhachev is going to bring this fight into his world and then it’s just a matter of time before he scores a finish. Garry somehow countering that and actually hurting Makhachev or shutting down his grappling game enough to win a decision would be a massive upset no matter how you cut it. 2. Is Mackenzie Dern the true strawweight queen with a successful title defense? Martin: Until Zhang Weili flat out declares that she’s never fighting at strawweight again, Dern is going to live in her shadow. That doesn’t mean Dern should just gift-wrap her title and hand it over to Zhang—assuming she’s coming back at 115 pounds—but it’s impossible to ignore a great former champion from that division who never technically lost her belt. Zhang gave up the strawweight title to pursue a flyweight championship, but that didn’t work out too well for her so right now she’s kind of stuck in limbo. But the moment Zhang declares her intention to return to strawweight, she immediately becomes the uncrowned champion. That shouldn’t stop Dern from doing her thing. She’s favored to beat Gillian Robertson and unless something truly wacky happens, that’s a very winnable fight for her. Dern doesn’t have to look over her shoulder for now because Zhang hasn’t said much of anything about her future lately. Until she does, the strawweight division still runs through one of the most dominant women’s champions in the history of the UFC. Lee: You know what? Yeah. I’m picking Robertson to win (blatant Canada bias, I’m not proud), so that makes it even more meaningful to me if Dern manages to leave Philadelphia with gold around her waist. But even if you view this title defense as purely perfunctory, I still think a Dern win certifies her as the true strawweight champion. Sorry, Weili, you only get to pursue sidequests for so long before you have to relinquish your crown to a deserving successor. Don’t get me wrong, if Zhang vs. Dern gets booked, Zhang should be a -1000 favorite. But currently, it isn’t, and there’s a chance it doesn’t happen anytime soon. Give Dern her flowers. Heck: Has Zhang retired from fighting? Because that’s the only way the answer is yes. Look, I don’t want to take away from Dern climbing the mountain and capturing gold. What she has accomplished is incredible and deserves praise, and Zhang made a choice to give up the belt to go up and try to be a two-division champion. But let’s not kid ourselves with what the UFC is trying to accomplish here. They are trying to get Dern a title defense under her belt to make a fight with Zhang bigger. She should run over Robertson on Saturday. Pretty much everything Robertson brings to the table, Dern does better, outside of an outside wrestling takedown. Robertson earned her shot, despite struggling a bit with a fighter she should’ve 30-24’d in her most recent outing. This co-main event checks off a couple of boxes on the road to the fight the UFC is trying to get to. But every time the UFC tries to do this, it falls apart, so we’ll see how it plays out. 3. What’s your UFC 330 low-key banger? Heck: Guys, I don’t know if you’re aware, but this numbered event is nowhere near the quality of the past three, or the White House card, but it’s still not the worst of the year. So finding low-key bangers is pretty easy. I’ll go with the second fight of the Jalin Turner comeback tour against Kaue Fernandes because it’s going to be fun as hell for as long as it lasts, and I also expect Turner to get a highlight-reel finish that we’ll be talking about when the card is over. Martin: I’m going with Joel Alvarez vs. Chidi Njokuani providing some much needed fireworks on the prelim card. While this one came together on short notice with Alvarez jumping on the card very late in the process, the stakes are still high for both fighters. Njokuani is coming off two losses in a row and Alvarez just recently fell to Yaroslav Amosov, which stopped his four-fight win streak. Both fighters are capable of producing a highlight-reel finish and while it’s possible Njokuani or Alvarez plays it safe to avoid another loss, it’s more likely they go out there and look for the kill to get back in the win column. This is the kind of matchup that could produce a jaw-dropping finish so don’t blink when these two start throwing strikes on Saturday night. Lee : I’m fully aware that pitting a 40-year-old Barboza in there with a certified killer like Esteban Ribovics is a recipe for sadness, but what can I say, I’m not ready to stop waving the Barboza flag just yet. For the longest time, Barboza was my de facto answer for “MMA fighter I’d pick to win any striking duel,” and while he’s long past his prime, I still believe he can summon some of that old magic. So no, I doubt Barboza wins, but I’m glad he’s getting one last (?) main card appearance and an opponent who will engage him on his terms. Once more, with feeling.",
+      "body_chars": 9513,
+      "body_via": "feed-content",
+      "production": {
+        "posted": false,
+        "held_reason": "wrong_subject",
+        "digest_tier": null,
+        "subject_role": null
+      },
+      "expect": {
+        "verdict": "WRONG_SUBJECT",
+        "subject_role": "passing",
+        "digest_tier": null,
+        "mention_kind": null,
+        "claim_type": null,
+        "sourcing": null,
+        "facts": {}
+      },
+      "note": "UFC 330 roundtable about Makhachev vs Garry, filed under Amosov. 9,513 chars of feed content that never concerns him."
+    },
+    {
+      "key": "a95",
+      "split": "tune",
+      "synthetic": false,
+      "class": "wrong_subject",
+      "archive_id": 95,
+      "subject": "Ilia Topuria",
+      "title": "UFC 2026: próximos eventos, peleas y divisiones - Bwin",
+      "source": "Bwin",
+      "url": "https://www.bwin.es/es/sports/news/category/otros-deportes-tenis-baloncesto-f1-ciclismo-y-mas/ufc/",
+      "published_at": "2026-08-10T17:35:50.000Z",
+      "edition": null,
+      "body": "Deportes Live Casino Poker Acceder ¡Regístrate ahora! Fútbol Fútbol La Liga Champions League Premier League Europa League Copa Del Rey Conference League Segunda División Supercopa de España Bundesliga Ligue 1 Serie A Internacionales Copa Libertadores. Copa Sudamericana UEFA Nations League (Liga de Naciones) Copa América Otras Ligas Deportes Deportes Tenis Moto GP F1 Ciclismo Baloncesto Balonmano Boxeo UFC Hockey Béisbol Dardos Rugby NFL Golf Guías de Apuestas Apuestas deportivas Apuestas deportivas Apostar en fútbol Apostar en tenis Apostar en baloncesto Apostar en F1 Apostar en UFC Apostar en boxeo Apuestas en directo Contacto Utilizamos cookies y cookies de terceros. Puede modificar las opciones y obtener más información en nuestra política de Cookies . Si continúa navegando, consideramos que acepta su uso. bwin.es está administrada por ElectraWorks (Ceuta) SA (anteriormente denominada ElectraWorks (Malta) Plc). La Dirección General de Ordenación del Juego ha concedido a ElectraWorks (Malta) las siguientes licencias generales: OTROS JUEGOS No/Ref: 5-11/GO/N0461246A/SGR y APUESTAS No/Ref: 6-11/GA/N0461246A/SGR, y las siguientes licencias singulares: MÁQUINAS DE AZAR No/Ref: MAZ/2014/014, RULETA No/Ref: 8-11/RLT/N0461246A/SGR, BLACKJACK No/Ref: 9-11/BLJ/N0461246A/SGR, APUESTAS DEPORTIVAS DE CONTRAPARTIDA No/Ref: 10-11/ADC/N0461246A/SGR y PÓQUER No/Ref: 11-11/POR/N0461246A/SGR. Sigue UFC en 2026: próximos eventos, peleas, divisiones, campeones, Ilia Topuria, Islam Makhachev y mercados disponibles en bwin. La UFC reúne durante todo el año eventos numerados, UFC Fight Night y combates por los campeonatos de las distintas divisiones de artes marciales mixtas. Islam Makhachev, Ian Machado Garry, Justin Gaethje, Ilia Topuria, Khamzat Chimaev, Alex Pereira y otros luchadores forman parte de un calendario que cambia continuamente a medida que se confirman nuevas carteleras y peleas. Esta sección de bwin funciona como hub permanente para seguir próximos eventos UFC, peleas, divisiones, campeones, luchadores, resultados y funcionamiento de las MMA . Para consultar los eventos y mercados disponibles puedes acceder a las apuestas de UFC y deportes de combate en bwin . El siguiente gran evento numerado es UFC 330: Makhachev vs Machado Garry , programado para el 15 de agosto de 2026 en Filadelfia. El combate estelar enfrenta al campeón del peso wélter Islam Makhachev con Ian Machado Garry . Los mercados habilitados pueden consultarse en la sección de deportes de combate de bwin . La UFC confirma sus carteleras progresivamente durante la temporada. Entre las próximas citas ya anunciadas destacan: Este bloque debe actualizarse cada vez que UFC confirme nuevas carteleras para mantener siempre visibles los siguientes eventos. Islam Makhachev e Ian Machado Garry protagonizan el combate principal de UFC 330. Makhachev compite actualmente como campeón del peso wélter después de conquistar el cinturón en 2025. Machado Garry llega al combate como uno de los principales contendientes de la división. La pelea por el campeonato está programada a cinco asaltos salvo que termine antes mediante KO/TKO, sumisión u otra resolución contemplada por el reglamento. Ilia Topuria sigue siendo una de las principales referencias de UFC para el público español. En junio de 2026 defendió el campeonato del peso ligero frente a Justin Gaethje en UFC Freedom 250. Topuria perdió el cinturón después de que el combate terminara por TKO al final del cuarto asalto. Por este motivo, los contenidos que todavía presentan Topuria vs Gaethje como un próximo combate deben actualizarse para reflejar que la pelea ya se ha disputado. Puedes ampliar su trayectoria en la guía de Ilia Topuria en UFC . Justin Gaethje conquistó el campeonato indiscutido del peso ligero después de derrotar a Ilia Topuria en UFC Freedom 250. El resultado modificó la situación competitiva de una de las divisiones con mayor seguimiento de UFC. Las futuras peleas de la categoría deben analizarse a partir del nuevo escenario del campeonato y del ranking actualizado. La UFC organiza diferentes tipos de carteleras a lo largo del año. Cartelera identificada mediante numeración, como UFC 330. Evento independiente con una pelea estelar y una cartelera completa. Combate en el que se disputa o defiende un cinturón. Segundo combate principal dentro del evento. Combates que preceden a la cartelera principal. UFC organiza sus peleas mediante divisiones de peso. Cada luchador debe cumplir el límite correspondiente durante el pesaje oficial. En el MMA femenino existen también divisiones específicas como peso paja, peso mosca y peso gallo. Los luchadores deben cumplir el límite establecido para su división antes del combate. En peleas que no son por el título puede existir una tolerancia reglamentaria de una libra sobre el límite estándar de la categoría. En los combates por un campeonato, el peso debe ajustarse a las condiciones específicas de la división. Cuando un luchador no cumple el peso acordado pueden cambiar las condiciones deportivas y contractuales de la pelea. Un combate de artes marciales mixtas puede resolverse mediante diferentes métodos. El luchador queda incapacitado para continuar después de un golpe permitido. El árbitro u otra figura autorizada detiene la pelea al considerar que un luchador no puede defenderse adecuadamente. Un luchador se rinde ante una técnica de grappling o el árbitro detiene la acción. Los jueces determinan el resultado cuando se completan todos los asaltos. El resultado deriva de una infracción contemplada por el reglamento. Las puntuaciones de los jueces producen un resultado igualado. Cuando el combate llega al final, tres jueces valoran cada asalto. La puntuación tiene en cuenta principalmente las acciones efectivas realizadas durante el combate. Golpeo, grappling, derribos, intentos de sumisión y control deben interpretarse según los criterios establecidos por las reglas unificadas de MMA. Las tarjetas pueden producir una decisión unánime, dividida o mayoritaria, además de diferentes modalidades de empate. La duración depende del tipo de combate. Existe un descanso entre asaltos y la pelea puede terminar antes mediante KO/TKO, sumisión u otra resolución reglamentaria. Las artes marciales mixtas permiten combinar técnicas procedentes de diferentes disciplinas. Golpes realizados dentro de las técnicas permitidas. Derribos, defensa de derribos y control de posiciones. Trabajo de agarres, control en el suelo y sumisiones. Trabajo de corta distancia y control del rival. El perfil de cada luchador puede combinar varias de estas áreas en proporciones diferentes. Cada división puede tener un campeón reconocido por UFC. El cinturón puede cambiar de manos cuando el campeón pierde una defensa o cuando se produce una situación de título vacante. También puede existir temporalmente un campeón interino bajo determinadas circunstancias. Cuando un campeón indiscutido se enfrenta al campeón interino de la misma categoría puede producirse una pelea de unificación. Las divisiones cuentan con rankings que ordenan a los principales contendientes. La posición puede influir en el contexto de futuras peleas, pero no existe una relación automática por la que el número uno del ranking reciba siempre inmediatamente una oportunidad titular. Las lesiones, resultados, disponibilidad y decisiones deportivas pueden alterar el camino hacia el campeonato. Por este motivo, el ranking utilizado en una previa debe actualizarse poco antes del evento. El crecimiento del seguimiento de UFC en España está relacionado especialmente con luchadores vinculados al deporte español. Ilia Topuria ha ocupado un papel central durante los últimos años después de competir como campeón en distintas etapas de su trayectoria dentro de la organización. Las futuras piezas relacionadas con luchadores españoles deben mantenerse actualizadas según división, ranking, resultados y próximo rival confirmado. UFC regresará a Shanghái a finales de agosto. La actividad comenzará el 28 de agosto con las semifinales de Road to UFC Season 5 y continuará el sábado 29 con UFC Fight Night Shanghai. Ambos eventos tendrán lugar en el Shanghai Oriental Sports Center. La cartelera definitiva debe actualizarse conforme queden confirmados todos los combates. El análisis de un combate debe apoyarse en información deportiva concreta. División: determina los límites de peso y contexto competitivo. Últimos cinco combates: muestran la actividad reciente. Récord profesional: permite revisar victorias, derrotas y empates. Métodos de victoria: ayudan a distinguir decisiones, KO/TKO y sumisiones. Striking: volumen, precisión y defensa de golpes. Wrestling: derribos y defensa de derribos. Grappling: control en suelo y sumisiones. Alcance: puede modificar el combate en distancia. Cardio: adquiere especial importancia en peleas largas. Experiencia a cinco asaltos: relevante en estelares y campeonatos. Pesaje: confirma las condiciones físicas oficiales antes del evento. Para apostar en UFC puedes acceder a la sección de deportes de combate de bwin , seleccionar el evento y abrir el combate correspondiente. Permite seleccionar qué luchador gana la pelea. Diferencia entre KO/TKO, sumisión, decisión u otros resultados disponibles. Permite seleccionar si la pelea supera o queda por debajo de una línea determinada. Se refiere a que el luchador gana mediante las tarjetas de los jueces. Se refiere a una victoria mediante golpeo bajo las condiciones específicas del mercado. Se refiere a una victoria mediante una técnica de sumisión. Permite seleccionar en qué asalto termina el combate cuando el mercado está disponible. Los mercados concretos dependen de cada combate y deben comprobarse directamente antes de realizar una selección. Estos dos mercados responden a preguntas diferentes. El mercado de ganador solo necesita identificar al vencedor de la pelea. El mercado de método de victoria exige además acertar cómo se produce el desenlace bajo las condiciones esp",
+      "body_chars": 10000,
+      "body_via": "paragraphs",
+      "production": {
+        "posted": false,
+        "held_reason": "wrong_subject",
+        "digest_tier": null,
+        "subject_role": null
+      },
+      "expect": {
+        "verdict": "WRONG_SUBJECT",
+        "subject_role": "passing",
+        "digest_tier": null,
+        "mention_kind": null,
+        "claim_type": null,
+        "sourcing": null,
+        "facts": {}
+      },
+      "note": "A betting site's UFC events index. 10,000 chars that are almost entirely navigation furniture — the extraction ladder's worst case."
+    },
+    {
+      "key": "a3",
+      "split": "tune",
+      "synthetic": false,
+      "class": "wrong_subject",
+      "archive_id": 3,
+      "subject": "Yaroslav Amosov",
+      "title": "May 9, 2026; Newark, New Jersey, UNITED STATES; Joel Alvarez (red gloves) fights Yaroslav Amosov (blue gloves) during UFC 328 at Prudential Center. Mandatory Credit: John Jones-Imagn Images - The Lufkin Daily News",
+      "source": "The Lufkin Daily News",
+      "url": "https://lufkindailynews.com/news_reuters/national/may-9-2026-newark-new-jersey-united-states-joel-alvarez-red-gloves-fights-yaroslav-amosov/image_ca23342f-086d-522e-a0bb-849b736a14c2.html",
+      "published_at": "2026-08-06T14:30:50.000Z",
+      "edition": null,
+      "body": "May 9, 2026; Newark, New Jersey, UNITED STATES; Joel Alvarez (red gloves) fights Yaroslav Amosov (blue gloves) during UFC 328 at Prudential Center. Mandatory Credit: John Jones-Imagn Images Sorry, there are no recent results for popular commented articles. LufkinDailyNews.com 300 Ellis Ave., Lufkin, TX 75904 Phone : 936-632-6631 Newsroom Email : news@lufkindailynews.com Circulation Email : circulation@lufkindailynews.com Your browser is out of date and potentially vulnerable to security risks. We recommend switching to one of the following browsers: Account processing issue - the email address may already exist Must be at least 8 characters, not contain repeating characters (e.g., 111), and not contain sequential numbers (e.g., 123). Get a link to the latest e-Edition delivered to your inbox on our publication days. Sign up today! Start your morning with the top headlines each day. Sign up today! Get the latest breaking news from The Lufkin News newsroom. Sign up today! Get the latest local, college and national sports headlines delivered to your inbox every morning. Get the latest local and national police reports every day in your inbox. Receive the daily weather forecast and the weekly outlook in your inbox each morning. Receive the most recent obituaries every afternoon. Receive monthly updates on the latest issues of Charm East Texas magazine. Sign up to receive emails about our exciting Deals, Contests, & Special Offers! Your account has been registered, and you are now logged in. Invalid password or account does not exist Submitting this form below will send a message to your email with a link to change your password. An email message containing instructions on how to reset your password has been sent to the email address listed on your account. Must be at least 8 characters, not contain repeating characters (e.g., 111), and not contain sequential numbers (e.g., 123). Secure transaction. Secure transaction. Cancel anytime. Your gift purchase was successful! Your purchase was successful, and you are now logged in.",
+      "body_chars": 2055,
+      "body_via": null,
+      "production": {
+        "posted": true,
+        "held_reason": null,
+        "digest_tier": null,
+        "subject_role": null
+      },
+      "expect": {
+        "verdict": "WRONG_SUBJECT",
+        "subject_role": "passing",
+        "digest_tier": null,
+        "mention_kind": null,
+        "claim_type": null,
+        "sourcing": null,
+        "facts": {}
+      },
+      "note": "A wire PHOTO CAPTION naming Amosov and Alvarez at UFC 328, plus newspaper boilerplate. No article exists. matcher.js says furniture-only mentions are WRONG_SUBJECT — this is the canonical instance, and it posted anyway."
+    },
+    {
+      "key": "a105",
+      "split": "tune",
+      "synthetic": false,
+      "class": "wrong_subject",
+      "archive_id": 105,
+      "subject": "Yaroslav Amosov",
+      "title": "Helicopter Crashes While Fighting Massive Widemouth 2 Fire In Central Utah Yaroslav Amosov (TnU70BdCv8) - mshale.com",
+      "source": "mshale.com",
+      "url": "https://mshale.com/6bcd1a9e/dddf81f6GwUHRS3oYkA",
+      "published_at": "2026-08-10T22:37:05.000Z",
+      "edition": "en",
+      "body": null,
+      "body_chars": 0,
+      "body_via": "http-403",
+      "production": {
+        "posted": false,
+        "held_reason": "wrong_subject",
+        "digest_tier": null,
+        "subject_role": "passing"
+      },
+      "expect": {
+        "verdict": "WRONG_SUBJECT",
+        "subject_role": "passing",
+        "digest_tier": null,
+        "mention_kind": null,
+        "claim_type": null,
+        "sourcing": null,
+        "facts": {}
+      },
+      "note": "Keyword-stuffed junk: a helicopter crash headline with 'Yaroslav Amosov' appended. Headline-only (403) — the matcher gets nothing but the title."
+    },
+    {
+      "key": "a111",
+      "split": "tune",
+      "synthetic": false,
+      "class": "duplicate",
+      "archive_id": 111,
+      "subject": "Ilia Topuria",
+      "title": "Arman Tsarukyan’s coach: Mauricio Ruffy is more dangerous than Ilia Topuria - Sherdog",
+      "source": "Sherdog",
+      "url": "https://news.google.com/rss/articles/CBMitAFBVV95cUxOOW91NWpIYm9xTDB3UXYxUW5LZ1dkUEhhVDE1bGtvQk1PWE02Slh5bmQ1ZE42aVoyX1JuTFNYVk9rT3NBSE82bjRUVk81RlpQNGxnckF0Z0I3SHhtNEQ5c3RQZUhFMGpGQjNxQkVJcDlGUjdZX0FqYno2S3h3eDVlV21GTXlINWoyd3VDT1RmbnhtdmRpWFdSUkczTmtwNWROSnhyS3ZPX3VkZVZ5T1pxWVlKRW3SAboBQVVfeXFMTWZSVmo1TEI0b0ExRG41LVppY3pMNW54WXZ6Xzc4OXlMbU5HakNBUW1UTGpwYjFxQjZld3RPUGFWWHhFbWxzbTRBWVAzbm5NRXE5SHZncnRGSC1wTFpQek1JZ0w3c3NSSE85bG1Kd3BXeGNPSmlpX3dZOG0teGFRM0ItNlUyTGRpR0Zva0YyTzFQT1djZEt5MnFuY05lVGttRkZrbnhBaUhNUU1RVkdnYi12WVZUWDBXVkRR?oc=5",
+      "published_at": "2026-08-11T07:00:44.000Z",
+      "edition": "en",
+      "body": null,
+      "body_chars": 0,
+      "body_via": null,
+      "production": {
+        "posted": false,
+        "held_reason": "embedding",
+        "digest_tier": null,
+        "subject_role": null
+      },
+      "expect": {
+        "verdict": "MATCH",
+        "subject_role": "passing",
+        "digest_tier": null,
+        "mention_kind": null,
+        "claim_type": null,
+        "sourcing": null,
+        "facts": {},
+        "dedup_against": "a110"
+      },
+      "note": "Sherdog's own version of the story boxingnews.com echoed. Held at 0.888 in production — and note the ORIGINAL was held against the echo, because the aggregator's timestamp was 7 minutes fresher."
+    },
+    {
+      "key": "a13",
+      "split": "tune",
+      "synthetic": false,
+      "class": "duplicate",
+      "archive_id": 13,
+      "subject": "Yaroslav Amosov",
+      "title": "Masvidal On Amosov Versus Makhachev Matchup - boxingnews.com",
+      "source": "boxingnews.com",
+      "url": "https://boxingnews.com/news/masvidal-amosov-makhachev-matchup/",
+      "published_at": "2026-08-07T06:20:24.000Z",
+      "edition": null,
+      "body": "Jorge Masvidal believes former Bellator welterweight champion Yaroslav Amosov would pose serious problems for Islam Makhachev and the entire UFC welterweight division. Masvidal, speaking on the Deep Waters podcast, called the Ukrainian fighter a bad stylistic matchup for everyone in the welterweight top 10 and even the lightweight champion. \"He's a bad fight for everybody,\" Masvidal said, per Sherdog. \"Even Makhachev, all the way down to No. 10, Yaroslav is that good.\" The former title challenger broke down specific advantages Amosov holds over the Dagestani champion. \"Nightmare for Makhachev,\" Masvidal added. \"Bigger, longer, and I'm going to say probably stronger, as well.\" Masvidal pointed to Amosov's sambo credentials and wrestling pedigree as keys to handling Makhachev's body lock and foot sweep game. Amosov trains at American Top Team alongside Masvidal and Dustin Poirier, who also praised the Ukrainian's skill set in the same discussion. The former Bellator champion has opened his UFC run with submission wins over Neil Magny and Joel Alvarez. Makhachev currently holds the lightweight strap but has teased a move to welterweight for legacy fights. No timeline exists for that jump or for Amosov earning a title shot in his new promotion. Photo: Chamatkar Sandhu / Wikimedia Commons , CC BY 3.0 Tom Rashid handles UFC and major MMA coverage for boxingnews.com — fight-night live blogs, post-event recaps, and division rankings across lightweight, welterweight and middleweight. Fight announcements, results, and analysis delivered to your inbox. No spam. Unsubscribe anytime.",
+      "body_chars": 1597,
+      "body_via": null,
+      "production": {
+        "posted": false,
+        "held_reason": "embedding",
+        "digest_tier": null,
+        "subject_role": null
+      },
+      "expect": {
+        "verdict": "MATCH",
+        "subject_role": "supporting",
+        "digest_tier": null,
+        "mention_kind": null,
+        "claim_type": null,
+        "sourcing": null,
+        "facts": {},
+        "dedup_against": "a4"
+      },
+      "note": "boxingnews.com's rewrite of the Masvidal-on-Amosov quote. Same claim, different words."
+    },
+    {
+      "key": "s1",
+      "split": "tune",
+      "synthetic": true,
+      "class": "announcement",
+      "archive_id": null,
+      "subject": "Yaroslav Amosov",
+      "title": "Yaroslav Amosov to face Michael Morales at UFC 334 in December - MMA Junkie",
+      "source": "MMA Junkie",
+      "url": "https://synthetic-fixture.invalid/amosov-morales-ufc334",
+      "published_at": "2026-11-02T14:10:00.000Z",
+      "edition": "en",
+      "body": "Yaroslav Amosov will return to the octagon against Michael Morales at UFC 334 on Dec. 12 in Las Vegas, two people with knowledge of the matchup told MMA Junkie on Monday. The promotion has not yet made a formal announcement. Amosov (30-1 MMA, 2-0 UFC) has looked untouchable since arriving from Bellator, submitting Neil Magny with an anaconda choke on debut and finishing Joel Alvarez with a second-round arm-triangle at UFC 328 in May. The 32-year-old Ukrainian has not lost since 2021. Morales (18-0 MMA, 6-0 UFC) brings an unbeaten record of his own and is coming off a first-round knockout of Gilbert Burns in September. The welterweight bout is expected to serve as the UFC 334 co-main event, beneath a lightweight title fight yet to be confirmed. A win would likely put Amosov in the top five at 170 pounds and, according to his American Top Team coaches, within one fight of a title shot. \"He has been ready for this for a year,\" teammate Jorge Masvidal said of the matchup.",
+      "body_chars": 982,
+      "body_via": "synthetic",
+      "production": null,
+      "expect": {
+        "verdict": "NEW",
+        "subject_role": "central",
+        "digest_tier": "main",
+        "mention_kind": null,
+        "claim_type": "announcement",
+        "sourcing": "reported",
+        "facts": {
+          "opponent": "Michael Morales",
+          "event": "UFC 334",
+          "date": "2026-12-12",
+          "location": "Las Vegas"
+        }
+      },
+      "note": "The Amosov announcement the archive is missing. Reported-not-official ('has not yet made a formal announcement') so it should be born a rumor, not confirmed."
+    },
+    {
+      "key": "s2",
+      "split": "tune",
+      "synthetic": true,
+      "class": "announcement",
+      "archive_id": null,
+      "subject": "Ilia Topuria",
+      "title": "Ilia Topuria buscará la revancha ante Justin Gaethje en Madrid - Marca",
+      "source": "Marca",
+      "url": "https://synthetic-fixture.invalid/topuria-gaethje-revancha-madrid",
+      "published_at": "2026-11-04T09:30:00.000Z",
+      "edition": "es",
+      "body": "Ilia Topuria tendrá su revancha. El hispano-georgiano se medirá de nuevo a Justin Gaethje el 27 de febrero en el Movistar Arena de Madrid, en el que será el primer evento numerado de la UFC celebrado en España, según confirmaron a Marca fuentes cercanas a la negociación. El combate, que encabezará UFC 336, pondrá en juego el cinturón del peso ligero que Gaethje arrebató a Topuria el pasado junio en la Casa Blanca, donde El Matador cayó por TKO en el cuarto asalto y sufrió la primera derrota de su carrera profesional. Topuria, que reveló haber perdido visión en ambos ojos durante aquel combate, recibió el alta médica completa en octubre. Su equipo llevaba meses reclamando públicamente la revancha inmediata. \"Nunca hubo otra opción\", declaró su mánager, Malki Kawa. La UFC no ha emitido todavía un comunicado oficial, aunque Dana White adelantó en septiembre que el regreso de Topuria se produciría en España.",
+      "body_chars": 917,
+      "body_via": "synthetic",
+      "production": null,
+      "expect": {
+        "verdict": "NEW",
+        "subject_role": "central",
+        "digest_tier": "main",
+        "mention_kind": null,
+        "claim_type": "announcement",
+        "sourcing": "reported",
+        "facts": {
+          "opponent": "Justin Gaethje",
+          "event": "UFC 336",
+          "date": "2027-02-27",
+          "location": "Madrid"
+        }
+      },
+      "note": "Spanish-language announcement. Also tests translation: the digest must label the headline '(translated from es)'."
+    },
+    {
+      "key": "s3",
+      "split": "tune",
+      "synthetic": true,
+      "class": "announcement",
+      "archive_id": null,
+      "subject": "Ilia Topuria",
+      "title": "Topuria's team in talks over February return, no bout agreement signed - Bloody Elbow",
+      "source": "Bloody Elbow",
+      "url": "https://synthetic-fixture.invalid/topuria-february-return-talks",
+      "published_at": "2026-11-04T16:45:00.000Z",
+      "edition": "en",
+      "body": "Ilia Topuria's return may be closer than expected, but nothing is signed. Sources indicate the former two-division champion's management has held preliminary discussions with the UFC about a February date, with a rematch against lightweight champion Justin Gaethje the outcome both camps are said to prefer. No bout agreement has been sent to either fighter, and a person close to Gaethje cautioned that the champion has also been offered alternatives. Topuria has not competed since losing the title at the promotion's White House card in June, a fourth-round TKO that ended a nine-fight unbeaten run. He has spent the intervening months recovering from facial injuries and, by his own account, temporary vision loss. Madrid has been repeatedly floated as a venue, though the UFC has not committed to a Spanish event and no arena has been booked. Talks are described as ongoing.",
+      "body_chars": 879,
+      "body_via": "synthetic",
+      "production": null,
+      "expect": {
+        "verdict": "MATCH",
+        "subject_role": "central",
+        "digest_tier": "main",
+        "mention_kind": null,
+        "claim_type": "negotiation",
+        "sourcing": "rumored",
+        "facts": {
+          "opponent": "Justin Gaethje",
+          "event": null,
+          "date": null,
+          "location": "Madrid"
+        }
+      },
+      "note": "Deliberately hedged version of s2 — 'in talks', 'nothing signed', 'no bout agreement'. Must come back sourcing=rumored with null date/event, and MATCH s2's claim rather than opening a rival one."
+    }
+  ]
+}
