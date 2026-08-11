@@ -11,8 +11,7 @@ production: an hourly Cloud Run Job on GCP with Neon Postgres + pgvector for
 memory, both inside free tiers, plus two LLM providers doing different jobs —
 Claude Haiku 4.5 makes the judgment call (the claim matcher), Gemini does the
 mechanical ones (`gemini-embedding-001` for the semantic dedup gate,
-Flash-Lite for headline translation). LLM spend is the one real cost,
-hard-capped at $5/month.
+Flash-Lite for headline translation). LLM spend is the one real cost.
 
 Renamed from *FighterBot* on 2026-08-10 — the commit history and the deployed
 GCP resource names (`fighterbot`, `fighterbot-hunter`) still carry the old
