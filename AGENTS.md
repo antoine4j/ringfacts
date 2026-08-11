@@ -77,4 +77,16 @@ code is expected stable and the group's post history becomes a contract.
 - **Never print secret values.** Use command substitution:
   `DATABASE_URL=$(gcloud secrets versions access latest --secret=neon-db-url)`.
 - **Never delete data.** The items table is the evidence record.
+- **Write commits for a stranger.** This history is public. The subject says
+  what changed; the body says why it was worth changing, what was measured,
+  and what was considered and rejected — the same standard the docs are held
+  to. No private context ("as discussed", "per Anton's ask"), and no finding
+  left in a session transcript that belongs in the message. Keep the
+  `Co-Authored-By` trailer: the README states how this project is made, so the
+  trailers agree with it rather than needing to be hidden.
+- **One finished change per commit.** Wording iterations, a fix to the commit
+  before it, and abandoned attempts get squashed before they land — the
+  history should show decisions, not the keystrokes that arrived at them. That
+  freedom ends at `git push`: once a public remote has a commit, fix forward
+  with a new one, never rewrite.
 - Comments explain reasoning, not syntax. Match the surrounding density.
