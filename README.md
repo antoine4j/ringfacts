@@ -85,12 +85,12 @@ shape for anyone starting their own.
 
 The interesting parts aren't the plumbing, they're the judgment calls:
 
-- **[The Funnel](https://antoine4j.github.io/RingFacts/funnel-walkthrough.html)**
+- **[The Funnel](https://antoine4j.github.io/ringfacts/funnel-walkthrough.html)**
   ([source](docs/funnel-walkthrough.html)) — start here: real articles from the
   live archive followed through every stage of the funnel, discovery to claim,
   with the verdicts production actually recorded — including the ones that were
   wrong.
-- **[Architecture Overview](https://antoine4j.github.io/RingFacts/architecture-overview.html)**
+- **[Architecture Overview](https://antoine4j.github.io/ringfacts/architecture-overview.html)**
   ([source](docs/architecture-overview.html)) — the system as actually built:
   pipeline, claims layer, ops, autonomy.
 - **[lib/tier.js](lib/tier.js)** — thresholds measured against real archived
@@ -152,7 +152,7 @@ git config core.hooksPath .githooks # once per clone: run them before each commi
 ```
 
 Three tiers, split by what they need rather than by what they're called — see
-[the test-suite overview](https://antoine4j.github.io/RingFacts/test-suite-overview.html) for the tour and
+[the test-suite overview](https://antoine4j.github.io/ringfacts/test-suite-overview.html) for the tour and
 [the design note](docs/superpowers/specs/2026-08-09-test-suite-design.md) for why.
 
 | Tier | Needs | Covers |
