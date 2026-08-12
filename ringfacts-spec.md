@@ -1,5 +1,30 @@
 # RingFacts — Project Specification
 
+> **Status: historical.** This is the original plan, written on 2026-08-06 and
+> checked in with the repo's first commit, before any of the pipeline existed.
+> It is kept as a record of what was expected, not as a description of what
+> runs. Where it disagrees with the code, the code is right —
+> [the architecture overview](https://antoine4j.github.io/ringfacts/architecture-overview.html)
+> describes the system as built, and [TODO.md](TODO.md) records how it got there.
+>
+> The plan survived contact unevenly. The largest divergences:
+>
+> | The plan said | What exists |
+> |---|---|
+> | Mastra as the agent framework (§4) | No framework at all. Two dependencies: the Anthropic SDK and `pg` |
+> | Self-hosted on an old MacBook, behind a Cloudflare tunnel, deployed by a self-hosted runner (§4, §14) | Cloud Run. §16 records that pivot and is the one section that already carries its own supersession note |
+> | SQLite with a vector extension (§13) | Neon Postgres + pgvector, one store instead of two |
+> | Importance scored 1–5 against a tunable threshold — "the core AI feature" (§3.1, §12) | Never built. A matcher returns a claim verdict plus a prominence judgment, and a tier rule measured on the archive decides how prominently an item posts |
+> | A timeline holding only important facts, junk reduced to a hash (§12.2) | Every candidate is stored in full. The items table is the evidence record |
+> | Instagram notification emails as the first source (§5) | Google News RSS per subject, plus direct publisher feeds |
+> | A conversational responder with memory and tools (§3.3) | `server.js` answers one message at a time, with neither |
+>
+> The open questions in §17 are all resolved: the models are Claude Haiku 4.5
+> for the matcher and Gemini for embeddings and translation, the cron runs
+> hourly at :17, name aliases are per-language in the watchlist, and headlines
+> are translated to English at posting time rather than the bot picking a
+> language.
+
 ## 1. Overview
 
 RingFacts is a personal, conversational Telegram agent that tracks a small watchlist of MMA fighters and proactively delivers relevant career news to a private group chat shared by Anton and his friends. It replaces algorithm-driven scrolling (Instagram, news feeds) with a push-based, distraction-free news channel scoped to exactly the fighters the group cares about.
