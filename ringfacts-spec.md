@@ -27,7 +27,7 @@
 
 ## 1. Overview
 
-RingFacts is a personal, conversational Telegram agent that tracks a small watchlist of MMA fighters and proactively delivers relevant career news to a private group chat shared by Anton and his friends. It replaces algorithm-driven scrolling (Instagram, news feeds) with a push-based, distraction-free news channel scoped to exactly the fighters the group cares about.
+RingFacts is a personal, conversational Telegram agent that tracks a small watchlist of MMA fighters and proactively delivers relevant career news to a private Telegram group. It replaces algorithm-driven scrolling (Instagram, news feeds) with a push-based, distraction-free news channel scoped to exactly the fighters the group cares about.
 
 **Core motivation (the "why"):** Checking fighter news today means opening Instagram, getting pulled into adjacent recommended content, and losing time/attention. RingFacts inverts the model: news comes to the user, only for chosen fighters, with nothing adjacent attached.
 
@@ -39,7 +39,7 @@ RingFacts is a personal, conversational Telegram agent that tracks a small watch
 
 ## 2. Users & Usage Context
 
-- **Users:** Anton + a small group of friends (Ukrainian MMA fans). Single private Telegram group chat.
+- **Users:** a small private Telegram group of MMA fans.
 - **Not** a public product at MVP stage. No multi-tenant support, no onboarding flows, no auth beyond Telegram group membership.
 - **Initial watchlist (seed data):**
   - Daniel Donchenko — upcoming fights and career news
@@ -257,11 +257,11 @@ Embeddings are used for two things:
 
 - **Bot created:** `@${BOT_USERNAME}`. Token captured and stored securely. Test group created with bot added.
 - **Chat IDs captured (whitelist seeds):** admin DM = `${ADMIN_CHAT_ID}` (positive; in private chats chat.id == user id). Test group = `${TELEGRAM_CHAT_ID}` (negative, `"type":"group"`). Real values live in the `telegram-chat-ids` secret (one JSON line, `{"group":…,"admin":…}`) and in `.env` for local runs, never in the repo. The webhook whitelist is *derived* from those two rather than stored separately — see [lib/chat-ids.js](lib/chat-ids.js).
-- **Privacy mode behavior — VERIFIED empirically:** in groups, plain @mentions do NOT reach the bot. Only slash commands (e.g. `/start@${BOT_USERNAME}`) and replies to the bot's own messages pass the filter. **Design consequence for the Responder:** conversational follow-ups from friends must be *replies* to the bot's posts (natural gesture anyway) or commands — not bare mentions. DMs are unfiltered: every message arrives.
-- **Group → supergroup upgrade caveat:** the test group is currently a basic "group" (plain negative ID, no -100 prefix). Telegram silently upgrades groups to supergroups when certain settings change — **and the chat ID changes** to a new -100-prefixed number. Mitigation: log rejected/unknown chat IDs so an upgrade doesn't look like a mystery outage; expect the real friends' group may be a supergroup from birth.
+- **Privacy mode behavior — VERIFIED empirically:** in groups, plain @mentions do NOT reach the bot. Only slash commands (e.g. `/start@${BOT_USERNAME}`) and replies to the bot's own messages pass the filter. **Design consequence for the Responder:** conversational follow-ups from the group must be *replies* to the bot's posts (natural gesture anyway) or commands — not bare mentions. DMs are unfiltered: every message arrives.
+- **Group → supergroup upgrade caveat:** the test group is currently a basic "group" (plain negative ID, no -100 prefix). Telegram silently upgrades groups to supergroups when certain settings change — **and the chat ID changes** to a new -100-prefixed number. Mitigation: log rejected/unknown chat IDs so an upgrade doesn't look like a mystery outage; expect the real group may be a supergroup from birth.
 - **Update anatomy notes:** Telegram pre-parses messages — `entities` array labels commands/mentions/URLs (no regex needed). `update_id` is the ack counter. `language_code` of sender is included (useful for the bilingual group).
 - **getUpdates vs webhook:** `getUpdates` (browser/API pull) works only while no webhook is registered; they're mutually exclusive. Used it to capture chat IDs pre-infrastructure.
-- **Whitelist rule (day one):** webhook handler drops any update whose chat.id is not in {DM, test group, friends' group}; strangers get silence. Bot username is discoverable/guessable — whitelist is the lock, not obscurity.
+- **Whitelist rule (day one):** webhook handler drops any update whose chat.id is not in {DM, test group, the real group}; strangers get silence. Bot username is discoverable/guessable — whitelist is the lock, not obscurity.
 
 ## 16. Cloud-First Architecture Pivot (supersedes self-host plan in Sec. 4 & 14)
 

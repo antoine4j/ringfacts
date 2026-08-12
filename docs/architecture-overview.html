@@ -149,12 +149,13 @@
     <span class="f">hunter.js</span> the job<span class="sep">·</span>
     <span class="f">server.js</span> the webhook<span class="sep">·</span>
     <span class="f">domain/index.js</span> picks the domain<span class="sep">·</span>
-    <span class="f">watchlist.js</span> who is tracked (gitignored)<span class="sep">·</span>
+    <span class="f">watchlist.js</span> who is tracked<span class="sep">·</span>
     <span class="f">setup.sh</span> + <span class="f">Dockerfile</span> the deploy
   </div>
   <div class="prose">
-    <p>RingFacts tracks a private watchlist of subjects — currently three MMA fighters, shown here as
-    Subject A, Subject B, Subject C — for a Ukrainian fan group on Telegram. There is deliberately
+    <p>RingFacts tracks a watchlist of subjects — currently three MMA fighters, called
+    Subject A (Daniel Donchenko), Subject B (Yaroslav Amosov) and Subject C (Ilia Topuria)
+    throughout this page — for a fan group on Telegram. There is deliberately
     <strong>no UI</strong>: the Telegram group is the entire product surface. One repo, one container
     image, two entry points: a webhook <em>service</em> (the future conversational rail) and the hourly
     hunter <em>job</em> — same image, different <code>--command/--args</code>.</p>
@@ -167,9 +168,10 @@
     outlet list, the official-source rule, the claim vocabulary, the prompt language — moved into one
     file, <code>domain/mma.js</code>, selected by the <code>DOMAIN</code> env var. A second, unrun domain
     (<code>domain/example-music.js</code>) exists purely as proof the seam holds for a different subject
-    area, not as working configuration. The watchlist itself — who is actually tracked — lives in a
-    gitignored <code>watchlist.js</code> and is never committed; every name in this document is a
-    stand-in for that reason.
+    area, not as working configuration. The watchlist itself — who is actually tracked — is committed
+    as <code>watchlist.js</code>, with <code>watchlist.example.js</code> documenting the shape for
+    anyone starting their own. The Subject A/B/C labels above are shorthand for readability, mapped
+    to real names on first use; they conceal nothing.
   </div>
 
   <div class="fig">
@@ -286,7 +288,7 @@
     <tr><td class="mono-c">lib/telegram.js<br>lib/chat-ids.js</td><td class="mono-c">36<br>91</td>
         <td>Sending, and parsing the one secret that holds both chat ids</td></tr>
     <tr><td class="mono-c">lib/subjects.js<br>watchlist.js</td><td class="mono-c">48<br>40</td>
-        <td>Who is tracked. The watchlist is gitignored and never committed</td></tr>
+        <td>Who is tracked. Committed; <span class="mono-c">watchlist.example.js</span> documents the shape</td></tr>
     <tr><td class="mono-c">domain/mma.js</td><td class="mono-c">79</td>
         <td>Everything the pipeline would have to forget to track something other than fighters:
         outlets, claim types, the official-source rule, prompt language</td></tr>
