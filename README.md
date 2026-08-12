@@ -17,10 +17,9 @@ Renamed from *FighterBot* on 2026-08-10 — the commit history and the deployed
 GCP resource names (`fighterbot`, `fighterbot-hunter`) still carry the old
 name; see the note in [setup.sh](setup.sh) for why the resources keep it.
 
-This is a learning project as much as a working bot. The commit history, the
-[spec](ringfacts-spec.md), and the [check-in log](docs/checkin-log.md) are kept
-deliberately verbose about *why* decisions were made — including the ones that
-were measured and then rejected.
+This is a learning project as much as a working bot. The commit history and
+[TODO.md](TODO.md) are kept deliberately verbose about *why* decisions were
+made — including the ones that were measured and then rejected.
 
 This project is being created by directing Claude Code and using it as a
 design partner.
@@ -105,11 +104,6 @@ The interesting parts aren't the plumbing, they're the judgment calls:
 - **[TODO.md](TODO.md)** — the build sequence as it actually unfolded,
   measured decisions and rejected alternatives included, plus the open
   question that challenges the project's own framing.
-- **[ringfacts-spec.md](ringfacts-spec.md)** — the original plan, written
-  before any code and kept unrewritten. Its header lists where the plan and
-  the built system diverge, which is most of the interesting part. Still the
-  best record of the empirically verified Telegram behavior (privacy mode,
-  group→supergroup ID changes) that shaped the design.
 
 ## Running it
 
