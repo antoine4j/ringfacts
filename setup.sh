@@ -138,13 +138,26 @@ echo "Deployed: $SERVICE_URL"
 # neonctl projects create --name fighter-bot --region-id aws-us-west-2
 # Connection string (contains the DB password) goes straight into Secret
 # Manager via a pipe — never printed. tr -d '\n' per the day-one lesson.
+#
+# --database-name is stated rather than left to the branch default. The default
+# database was renamed neondb -> prod once the bench got its own database beside
+# it, and a script that resolves "whatever the default is" would write a URL to
+# a database that no longer exists on any project set up from scratch.
 if ! gcloud secrets describe neon-db-url >/dev/null 2>&1; then
-  neonctl connection-string --project-id "$NEON_PROJECT_ID" | tr -d '\n' | \
+  neonctl connection-string --project-id "$NEON_PROJECT_ID" --database-name prod | tr -d '\n' | \
     gcloud secrets create neon-db-url --data-file=-
-  gcloud secrets add-iam-policy-binding neon-db-url \
-    --member="serviceAccount:$RUNTIME_SA" \
-    --role="roles/secretmanager.secretAccessor"
 fi
+
+# Outside the guard above, deliberately. Deleting a secret deletes its IAM
+# policy with it, so a secret that was recreated by hand exists (the guard is
+# false) while the runtime service account can no longer read it — and the job
+# fails at instance startup, before hunter.js runs. With the grant inside the
+# guard, rerunning this script could not repair that, which is the first thing
+# anyone would try. add-iam-policy-binding is idempotent, so it costs nothing to
+# run every time.
+gcloud secrets add-iam-policy-binding neon-db-url \
+  --member="serviceAccount:$RUNTIME_SA" \
+  --role="roles/secretmanager.secretAccessor" >/dev/null
 
 # Apply the schema (idempotent; see schema.sql):
 # DATABASE_URL=$(gcloud secrets versions access latest --secret=neon-db-url) node migrate.js
