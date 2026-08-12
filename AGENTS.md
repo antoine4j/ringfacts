@@ -16,7 +16,7 @@ bot — explaining *why* beats delivering silently.
 | [TODO.md](TODO.md) | Build sequence, open questions, and the triggers that promote a watch item into work. |
 | [docs/architecture-overview.html](docs/architecture-overview.html) | Living architecture overview — the system as built (pipeline, claims layer, ops, autonomy). |
 | [corpus/README.md](corpus/README.md) | The labelled evaluation corpus — 48 articles, `tune` + `holdout`. Labels are what the system *should* answer, so it is deliberately red against today's code. |
-| [ringfacts-spec.md](ringfacts-spec.md) | The original spec. |
+| [ringfacts-spec.md](ringfacts-spec.md) | The original plan. Historical — its header lists where it diverges from what runs. Do not treat it as a description of the system. |
 
 ## How a run works
 

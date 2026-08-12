@@ -105,9 +105,11 @@ The interesting parts aren't the plumbing, they're the judgment calls:
 - **[TODO.md](TODO.md)** — the build sequence as it actually unfolded,
   measured decisions and rejected alternatives included, plus the open
   question that challenges the project's own framing.
-- **[ringfacts-spec.md](ringfacts-spec.md)** — the original spec, including
-  empirically verified Telegram behavior (privacy mode, group→supergroup ID
-  changes) that shaped the design.
+- **[ringfacts-spec.md](ringfacts-spec.md)** — the original plan, written
+  before any code and kept unrewritten. Its header lists where the plan and
+  the built system diverge, which is most of the interesting part. Still the
+  best record of the empirically verified Telegram behavior (privacy mode,
+  group→supergroup ID changes) that shaped the design.
 
 ## Running it
 
