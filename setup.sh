@@ -83,7 +83,10 @@ if ! gcloud secrets describe telegram-webhook-secret >/dev/null 2>&1; then
 fi
 
 # --- Chat ids (one secret, three uses) --------------------------------------
-# Seeded once from the shell, then never read from the shell again. Format is
+# The shell supplies the values exactly ONCE, here, to create the secret. Every
+# deploy afterwards passes only the secret's NAME (--set-secrets below); Cloud
+# Run fetches the value at container start and the app reads it as an ordinary
+# env var — no shell, no seeding step, no redeploy to rotate. Format is
 # a single JSON line, parsed and VALIDATED by lib/chat-ids.js, which refuses a
 # chat id that is not a bare integer instead of letting Telegram reject it one
 # message at a time. tr -d '\n' per the day-one lesson above.
