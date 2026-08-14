@@ -973,45 +973,66 @@ async function sendConfirmations(deps, confirmations) {
   }
 }
 
-async function main() {
-  if (!DRY_RUN && !CHAT_ID) {
+/**
+ * Assembles the dependency set a run starts on — the same seam pattern as
+ * buildDeps, one level up. Every default is the real implementation. The
+ * variable is named `mainDeps` at every use site so this seam and huntSubject's
+ * each get their own exact wiring test.
+ *
+ * @param {object} overrides  Test replacements, merged over the defaults.
+ * @returns {object}
+ *
+ * History: docs/decisions.md#deps-seam
+ */
+function buildMainDeps(overrides) {
+  return {
+    loadSubjects,
+    openDb,
+    fetchOutletItems,
+    huntSubject,
+    outlets: OUTLETS,
+    dryRun: DRY_RUN,
+    chatId: CHAT_ID,
+    databaseUrl: process.env.DATABASE_URL,
+    ...overrides,
+  };
+}
+
+/**
+ * One whole run: config check, load the watchlist, open the database, fetch
+ * the shared outlet feeds, then hunt every subject.
+ * Exported for test/startup.test.js; the entry guard below is what runs it in
+ * production.
+ *
+ * @param {object} overrides  Test replacements for buildMainDeps.
+ * @returns {Promise<void>}
+ */
+export async function main(overrides = {}) {
+  const mainDeps = buildMainDeps(overrides);
+
+  // Config first: nowhere to post and not a dry run is a startup error.
+  if (!mainDeps.dryRun && !mainDeps.chatId) {
     throw new Error("TELEGRAM_CHAT_IDS is required unless DRY_RUN=1");
   }
+
   // Before the database and the feeds: a missing watchlist is a config error,
   // and there is no point opening connections to discover it.
-  const subjects = await loadSubjects();
+  const subjects = await mainDeps.loadSubjects();
+
   // No DATABASE_URL (secret-free local run) -> no dedup. But if a DB is
   // configured and unreachable, fail the whole run: memory-less posting
   // would re-spam the group every hour.
-  const db = process.env.DATABASE_URL ? await openDb() : null;
+  const db = mainDeps.databaseUrl ? await mainDeps.openDb() : null;
   if (!db) console.warn("No DATABASE_URL — running without dedup memory.");
 
-  // Direct publisher feeds: one fetch per outlet per run, shared across
-  // subjects. A dead outlet is a warning, never a failed run — and if Google
-  // 503s a whole run, these still deliver.
-  const directItems = [];
-  const outletResults = await Promise.allSettled(OUTLETS.map((o) => fetchOutletItems(o)));
-  outletResults.forEach((r, i) => {
-    if (r.status === "fulfilled") {
-      directItems.push(...r.value);
-      // Outlet feeds are name-filtered before anything is stored, so a rotted
-      // matchNames stem would look exactly like quiet news; these counts are
-      // the evidence that separates the two.
-      // History: docs/decisions.md#outlet-match-counters
-      const matched = r.value.filter((it) => subjects.some((s) => matchesSubject(it, s))).length;
-      console.log(
-        `direct feed ${OUTLETS[i].id}: ${r.value.length} items, ${matched} matched, ${r.value.length - matched} discarded`,
-      );
-    } else {
-      console.warn(`direct feed ${OUTLETS[i].id} failed:`, r.reason.message);
-    }
-  });
+  const directItems = await collectDirectItems(mainDeps, subjects);
 
+  // Hunt every subject, closing the database no matter how the run ends.
   try {
     let failures = 0;
     for (const subject of subjects) {
       try {
-        await huntSubject(db, subject, directItems);
+        await mainDeps.huntSubject(db, subject, directItems);
       } catch (err) {
         // One broken feed must not kill the other subjects' hunts.
         failures++;
@@ -1024,6 +1045,42 @@ async function main() {
   } finally {
     if (db) await db.end();
   }
+}
+
+/**
+ * Fetches the direct publisher feeds: one fetch per outlet per run, shared
+ * across subjects. A dead outlet is a warning, never a failed run — and if
+ * Google 503s a whole run, these still deliver.
+ *
+ * @param {object} mainDeps
+ * @param {object[]} subjects  The watchlist, for the match counters.
+ * @returns {Promise<object[]>}  The pooled items from every healthy outlet.
+ */
+async function collectDirectItems(mainDeps, subjects) {
+  const directItems = [];
+  const results = await Promise.allSettled(
+    mainDeps.outlets.map((outlet) => mainDeps.fetchOutletItems(outlet))
+  );
+
+  results.forEach((result, index) => {
+    const outletId = mainDeps.outlets[index].id;
+    if (result.status !== "fulfilled") {
+      console.warn(`direct feed ${outletId} failed:`, result.reason.message);
+      return;
+    }
+    directItems.push(...result.value);
+
+    // Outlet feeds are name-filtered before anything is stored, so a rotted
+    // matchNames stem would look exactly like quiet news; these counts are
+    // the evidence that separates the two.
+    // History: docs/decisions.md#outlet-match-counters
+    const matched = result.value.filter((item) => subjects.some((subject) => matchesSubject(item, subject))).length;
+    console.log(
+      `direct feed ${outletId}: ${result.value.length} items, ${matched} matched, ${result.value.length - matched} discarded`,
+    );
+  });
+
+  return directItems;
 }
 
 // Run a hunt only when executed directly (`node hunter.js`), so tests and
