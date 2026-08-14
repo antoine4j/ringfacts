@@ -51,7 +51,9 @@ export function createFakeStore({ items = [], claims = [], claimSources = [] } =
   let nextClaimId = 1;
 
   const rows = {
-    items: items.map((i) => ({ id: String(nextItemId++), ...i })),
+    // seen_at defaults to now — a seeded row is "recently seen" unless the
+    // test says otherwise, mirroring the column's insert-time default.
+    items: items.map((i) => ({ id: String(nextItemId++), seen_at: new Date(), ...i })),
     claims: claims.map((c) => ({ id: String(nextClaimId++), status: "rumor", tg_message_id: null, ...c })),
     claimSources: [...claimSources],
   };
@@ -74,10 +76,17 @@ export function createFakeStore({ items = [], claims = [], claimSources = [] } =
     },
 
     // Same shape the real query returns: the single nearest row with a
-    // similarity, or null. Only rows carrying an embedding can be nearest.
-    async nearestRecent(_db, subject, embedding) {
+    // similarity, or null. Mirrors the real filters exactly: an embedding,
+    // POSTED unless the DUP_ANCHORS_ALL kill switch is on, and seen inside
+    // the window — a fake that ignored them would let the chain defect
+    // (docs/decisions.md#posted-anchors) pass every pipeline test.
+    async nearestRecent(_db, subject, embedding, days = Number(process.env.DUP_ANCHOR_WINDOW_DAYS || 7)) {
+      const anchorsAll = process.env.DUP_ANCHORS_ALL === "1";
+      const cutoff = Date.now() - days * 24 * 3_600_000;
       const scored = rows.items
         .filter((r) => r.subject === subject && r.embedding)
+        .filter((r) => anchorsAll || r.posted === true)
+        .filter((r) => new Date(r.seen_at).getTime() > cutoff)
         .map((r) => ({ id: r.id, title: r.title, source: r.source, similarity: cosine(embedding, r.embedding) }))
         .sort((a, b) => b.similarity - a.similarity);
       return scored[0] ?? null;
@@ -120,6 +129,7 @@ export function createFakeStore({ items = [], claims = [], claimSources = [] } =
       const row = {
         id: String(nextItemId++),
         url: item.url,
+        seen_at: new Date(),
         subject: item.subject,
         title: item.title,
         source: item.source,

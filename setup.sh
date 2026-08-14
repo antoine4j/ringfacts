@@ -162,14 +162,14 @@ gcloud secrets add-iam-policy-binding neon-db-url \
 # Apply the schema (idempotent; see schema.sql):
 # DATABASE_URL=$(gcloud secrets versions access latest --secret=neon-db-url) node migrate.js
 # Embed any rows recorded while the embedding key was missing/failing:
-# DATABASE_URL=$(...) GEMINI_API_KEY=$(...) node backfill-embeddings.js
+# DATABASE_URL=$(...) GEMINI_API_KEY=$(...) node scripts/backfill-embeddings.js
 # Claims bootstrap (step 5): replay archive through the matcher. Dry by default:
-# DATABASE_URL=$(...) GEMINI_API_KEY=$(...) ANTHROPIC_API_KEY=$(...) node bootstrap-claims.js
-# COMMIT=1 ... node bootstrap-claims.js   # done 2026-08-08: 7 claims, 23 links
+# DATABASE_URL=$(...) GEMINI_API_KEY=$(...) ANTHROPIC_API_KEY=$(...) node scripts/bootstrap-claims.js
+# COMMIT=1 ... node scripts/bootstrap-claims.js   # done 2026-08-08: 7 claims, 23 links
 # Full re-bootstrap (2e): wipes claims + claim_sources (NEVER items), replays
 # the archive through the body-aware matcher, re-attaches tg_message_id
 # anchors by origin item. Destructive to derived state only; snapshots first.
-# RESET=1 COMMIT=1 ... node bootstrap-claims.js
+# RESET=1 COMMIT=1 ... node scripts/bootstrap-claims.js
 
 # --- Hunter job (spec §9 step 2) ---------------------------------------------
 # Same image as the service, different entry point (--command/--args override
@@ -252,6 +252,8 @@ echo
 # gcloud beta monitoring channels create --display-name="admin email" \
 #   --type=email --channel-labels=email_address="${ALERT_EMAIL}"
 # gcloud alpha monitoring policies create --policy-from-file=alert-policy.json
+#   (alert-policy.json was a one-off local file, not kept in the repo — recreate
+#   from the filter description above if the policy ever needs rebuilding)
 
 # --- Smoke tests ------------------------------------------------------------
 curl -s "$SERVICE_URL/"                                   # expect: alive message

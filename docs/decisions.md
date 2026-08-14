@@ -57,6 +57,9 @@ it started on. Observed live as a `0.802 → 0.869 → 0.974` chain. The existin
 `inheritanceDrifts` guard prevents the wrong *claim link* but not the wrong
 *hold*: the article still never reaches the group.
 
+**Resolved 2026-08-14** — see [posted-anchors](#posted-anchors--only-posted-articles-anchor-the-dup-gate):
+held articles are no longer neighbours, so the chain cannot form.
+
 ## tangential-line — Demoted items share one line, with numbered repeats
 *2026-08-09*
 
@@ -109,7 +112,8 @@ becomes a wrong statement to the group later.
 
 What the guard does *not* do: it prevents the wrong claim link, not the wrong
 hold — the article still never reaches the group. See the known limitation
-under [dup-threshold](#dup-threshold).
+under [dup-threshold](#dup-threshold) — resolved 2026-08-14 by
+[posted-anchors](#posted-anchors--only-posted-articles-anchor-the-dup-gate).
 
 ## tier-keying — The digest tier keys on "is a real claim", not on a claim id
 *2026-08-09*
@@ -294,3 +298,36 @@ therefore look exactly like quiet news, which `docs/self-improvement.md` §5
 tells runs *not* to act on. The per-outlet "N items, M matched, K discarded"
 log line is the evidence that separates the two: a sustained "0 matched" is a
 rotted stem, not a quiet day.
+
+## posted-anchors — Only posted articles anchor the dup gate
+*2026-08-14*
+
+`nearestRecent` now requires `posted` on anchor rows; held articles stay
+recorded but are nobody's neighbour. This closes the chain defect recorded
+under [dup-threshold](#dup-threshold): with held items as anchors, B was held
+for resembling A, C for resembling B, and clusters drifted onto genuinely
+different news.
+
+Decided by replaying the archive, not by taste (`scripts/replay-dedup.js`,
+read-only; full output in a run's `tmp/replay-dedup.json`). Measured over 187
+embedded items / 8 days:
+
+- The replay of the *old* rule reproduced every recorded gate decision, so the
+  instrument is trusted. (Four explainable exceptions: two early rows whose
+  neighbours had no embeddings yet at decision time, and two Donchenko rows
+  held at 0.798 — *below* the 0.80 threshold, most plausibly a tuning-era
+  plain-env override on the job; the code has compared `>= 0.80` since
+  2026-08-06.)
+- **61 chains** of length ≥ 3 existed in the recorded nearest-pointers; the
+  longest ran 9 hops.
+- Under posted-only anchors, **13 holds flip to posts** (~1.6/day): mostly
+  genuinely different stories the chain had wrongly blocked, plus the cost
+  side — two same-story paraphrases sitting just under the threshold and one
+  junk item now relying on the matcher's wrong-subject net. Anton accepted
+  that trade explicitly.
+- **The window stays 7 days, measured**: every held echo with a posted
+  lookalike arrived within 6.0 days of it, and the 7/14/21/28-day variants
+  produced identical results. The chain was the only thing extending memory.
+
+Revertibility: `DUP_ANCHORS_ALL=1` restores held-as-anchor without a deploy;
+`DUP_ANCHOR_WINDOW_DAYS` overrides the window. Both read at query time.
