@@ -205,9 +205,15 @@ own fix. Three lessons, all now enforced in code rather than remembered:
 ## 7. Explain changes in plain English
 
 RingFacts is a learning project. Reports and commit messages say what changed
-and *why it mattered*, in language that teaches rather than just logs. Code
-comments in this repo follow the same rule — they explain the reasoning behind a
-decision, not the syntax on the line below.
+and *why it mattered*, in language that teaches rather than just logs.
+
+Code follows the same rule, but the *why* has its own home. Recording it inline
+was tried and it failed: `hunter.js` reached 35% comments, thirteen blocks of
+eight lines or more, and Anton could no longer review his own project — which
+cost a real dedup bug that sat unnoticed in a 390-line function. So the
+reasoning goes to [decisions.md](decisions.md) and the code keeps a one-line
+pointer to it. Nothing is thrown away; it just stops standing between the reader
+and the code. See [code-style.md](code-style.md).
 
 ---
 

@@ -13,6 +13,8 @@ bot — explaining *why* beats delivering silently.
 |---|---|
 | **[docs/self-improvement.md](docs/self-improvement.md)** | **How autonomous check-in runs decide things. Read before changing anything.** |
 | [docs/checkin-log.md](docs/checkin-log.md) | What each 6-hourly run found and did. Newest on top. |
+| **[docs/code-style.md](docs/code-style.md)** | **How code in this repo is written, and why. Read before writing any.** |
+| [docs/decisions.md](docs/decisions.md) | Why the code is the way it is — measurements, incidents, rejected alternatives. Code points here instead of carrying it. |
 | [TODO.md](TODO.md) | Build sequence, open questions, and the triggers that promote a watch item into work. |
 | [docs/architecture-overview.html](docs/architecture-overview.html) | Living architecture overview — the system as built (pipeline, claims layer, ops, autonomy). |
 | [corpus/README.md](corpus/README.md) | The labelled evaluation corpus — 48 articles, `tune` + `holdout`. Labels are what the system *should* answer, so it is deliberately red against today's code. |
@@ -89,4 +91,10 @@ code is expected stable and the group's post history becomes a contract.
   history should show decisions, not the keystrokes that arrived at them. That
   freedom ends at `git push`: once a public remote has a commit, fix forward
   with a new one, never rewrite.
-- Comments explain reasoning, not syntax. Match the surrounding density.
+- **Write code Anton can read** — [docs/code-style.md](docs/code-style.md) has
+  the rules and a worked before/after. The load-bearing ones: a JSDoc block on
+  every function (`@param`/`@returns` included — they drive editor hovers); a
+  one-line comment above each block inside a function, saying what it does; no
+  decision history in code, it goes to [docs/decisions.md](docs/decisions.md)
+  and the code keeps a one-line pointer; functions under ~50 lines; no short
+  names. There is deliberately no linter — review is the gate.
