@@ -101,6 +101,13 @@ describe("alsoMentioningLine", () => {
     assert.deepEqual(labels(line), ["mmajunkie.com"]);
   });
 
+  // The fallback's own fallback: when the URL will not even parse, the link
+  // still gets a visible generic label rather than crashing the digest build.
+  test("an empty source with an unparsable URL falls back to the word 'source'", () => {
+    const line = alsoMentioningLine([item("", "not a url")]);
+    assert.deepEqual(labels(line), ["source"]);
+  });
+
   // A WordPress feed's utm params arrive with a bare "&". Telegram rejects the
   // WHOLE message on that, losing every item in the digest.
   test("ampersands in URLs and names are escaped, not passed through raw", () => {

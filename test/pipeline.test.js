@@ -92,12 +92,12 @@ test("the fake store answers everything lib/db.js exports", async () => {
 // is unusual for a test, but this is the one bug class the seam introduced and
 // nothing else catches it without paying for real network calls.
 describe("the deps seam is wired to itself", () => {
-  test("every deps.X used in hunter.js is a key the deps object defines", async () => {
+  test("every deps.X used in hunter.js is a key buildDeps defines", async () => {
     const { readFile } = await import("node:fs/promises");
     const src = await readFile(new URL("../hunter.js", import.meta.url), "utf8");
 
-    const literal = src.match(/const deps = \{([\s\S]*?)\n  \};/);
-    assert.ok(literal, "could not find the deps literal — has huntSubject been restructured?");
+    const literal = src.match(/function buildDeps\([^)]*\) \{\n  return \{([\s\S]*?)\n  \};/);
+    assert.ok(literal, "could not find the literal buildDeps returns — has the seam been restructured?");
     const defined = new Set(
       [...literal[1].matchAll(/^\s{4}(?:\.\.\.\w+|(\w+))\s*[:,]/gm)].map((m) => m[1]).filter(Boolean)
     );
@@ -228,6 +228,25 @@ describe("gate 2 — semantic duplicates", () => {
     });
   }
 
+  // The deferral ends the other way too: when the matcher DOES find something
+  // to act on, the claim outranks the embedding echo and the item posts.
+  test("an official duplicate posts when the matcher mints a new claim", async () => {
+    const [stored, incoming] = vectorsWithSimilarity(0.95);
+    const store = createFakeStore({
+      items: [{ url: "https://example.test/rumor", subject: SUBJECT.name, title: "Testov targeted", embedding: stored }],
+    });
+    await huntSubject(DB, SUBJECT, [makeItem({ source: "UFC" })], deps({
+      store,
+      embedTexts: async () => [incoming],
+      matchItem: async () => ({
+        verdict: "NEW",
+        new_claim: { type: "quote", sourcing: "reported", canonical_text: "Testov says he wants March", facts: {} },
+      }),
+    }));
+    assert.equal(sent.length, 1, "the item posts despite the embedding echo");
+    assert.equal(store.rows.items.at(-1).posted, true);
+  });
+
   // Inheriting a neighbour's claim is how a held duplicate earns its place in
   // the evidence record without paying for an LLM call. The positive case is
   // pinned above; this is the guard against inheriting the wrong one.
@@ -312,6 +331,24 @@ describe("gate 3 — the matcher's verdicts", () => {
     assert.equal(store.rows.claims.length, 0);
     assert.match(digest().text, /^🔎/);
     assert.doesNotMatch(digest().text, /Rumor:/);
+  });
+
+  // Quote-grade claims get no line of their own — the digest IS their home
+  // message, and the claim must remember it so a later confirmation can reply
+  // into the right thread.
+  test("a digest-riding claim records the digest as its home message", async () => {
+    const store = createFakeStore();
+    await huntSubject(DB, SUBJECT, [makeItem()], deps({
+      store,
+      matchItem: async () => ({
+        verdict: "NEW",
+        new_claim: { type: "quote", sourcing: "reported", canonical_text: "Testov says he wants March", facts: {} },
+      }),
+    }));
+    assert.match(digest().text, /^🔎/);
+    assert.doesNotMatch(digest().text, /Rumor:/, "no rumor line — a quote is not loud");
+    assert.equal(store.rows.claims[0].status, "rumor");
+    assert.ok(store.rows.claims[0].tg_message_id, "the digest's message id lands on the claim");
   });
 
   // The conservative lifecycle, from the other side. The official MATCH above
