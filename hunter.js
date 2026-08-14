@@ -57,7 +57,7 @@ const EDITIONS = {
   es: "hl=es&gl=ES&ceid=ES:es",
 };
 
-function feedUrl(alias) {
+export function feedUrl(alias) {
   return (
     "https://news.google.com/rss/search?q=" +
     encodeURIComponent(alias.query) +
@@ -68,7 +68,7 @@ function feedUrl(alias) {
 
 // RSS is machine-generated and regular, so a regex parse is fine at this
 // stage; a real XML parser can come in when we add messier sources.
-function parseRssItems(xml) {
+export function parseRssItems(xml) {
   const items = [];
   for (const [, block] of xml.matchAll(/<item>([\s\S]*?)<\/item>/g)) {
     const pick = (tag) =>
@@ -95,7 +95,7 @@ function hoursAgo(date) {
 // worst case (all aliases failing twice) stays within the job timeout.
 const RETRY_DELAY_MS = Number(process.env.RETRY_DELAY_MS || 75_000); // 30s proved too short for Google's waves
 
-async function fetchFeed(alias) {
+export async function fetchFeed(alias) {
   let res = await fetch(feedUrl(alias));
   if (!res.ok) {
     console.warn(`RSS fetch ${res.status} for ${alias.query} — retrying in ${RETRY_DELAY_MS / 1000}s`);
@@ -106,7 +106,7 @@ async function fetchFeed(alias) {
   return res.text();
 }
 
-async function fetchFreshItems(subject, directItems = [], hoursBack = HOURS_BACK) {
+export async function fetchFreshItems(subject, directItems = [], hoursBack = HOURS_BACK) {
   const cutoff = Date.now() - hoursBack * 3_600_000;
   const items = [];
   for (const alias of subject.aliases) {
@@ -146,9 +146,9 @@ function cleanTitle(item) {
 // "?utm_source=rss&utm_medium=rss" reaches here with a bare "&" — Telegram's
 // HTML mode rejects that and sendTelegramMessage fails the WHOLE message
 // silently, even though every item in it is already stored posted=true.
-// Exported (only these three) so the message-formatting logic — dedup,
-// escaping — is directly checkable without running main(), which this module
-// does unconditionally on import.
+// Exported so the message-formatting logic — dedup, escaping — is directly
+// checkable (test/message.test.js). Importing this module never starts a hunt:
+// main() runs only behind the argv guard at the bottom of the file.
 export function digestLine(item) {
   const title = item.displayTitle ?? cleanTitle(item);
   const label = item.displayTitle ? ` (translated from ${item.edition})` : "";
