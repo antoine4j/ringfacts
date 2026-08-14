@@ -586,7 +586,20 @@ async function recordOutcome(deps, db, outcome) {
 
   // Another sighting of a known claim: stored and linked as evidence.
   if (outcome.kind === "match") {
-    if (!db || deps.dryRun) return;
+    if (!db) return;
+
+    // A dry run previews the confirmation a real run would create, reading
+    // the claim without flipping it. Nothing is written.
+    // History: docs/decisions.md#dry-run-confirmation-preview
+    if (deps.dryRun) {
+      if (outcome.official && outcome.stance === "asserts") {
+        const rumor = await deps.store.claimIfRumor(db, outcome.claimId);
+        if (rumor) {
+          outcome.confirmation = { text: rumor.canonical_text, replyTo: rumor.tg_message_id, item };
+        }
+      }
+      return;
+    }
     const itemId = await deps.store.insertItem(db, item);
     if (itemId) {
       await deps.store.linkClaimSource(db, itemId, outcome.claimId,
@@ -964,9 +977,6 @@ async function sendConfirmations(deps, confirmations) {
   for (const confirmation of confirmations) {
     const message = `✅ <b>Confirmed</b> — ${escapeHtml(confirmation.text)}\n<a href="${escapeHtml(confirmation.item.url)}">${escapeHtml(confirmation.item.source)}</a>`;
     if (deps.dryRun) {
-      // Unreachable today: a confirmation is only created when the DB is
-      // written, which a dry run never does. Whether a dry run should preview
-      // confirmations is an open decision.
       console.log(`\n--- would post (confirmation) ---\n${message}\n`);
     } else {
       await deps.sendMessage(deps.chatId, message, { html: true, noPreview: true, replyTo: confirmation.replyTo });

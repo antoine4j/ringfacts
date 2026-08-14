@@ -924,11 +924,33 @@ describe("dry run", () => {
   test("a held duplicate is not written either", async () => {
     const [stored, incoming] = vectorsWithSimilarity(0.84);
     const store = createFakeStore({
-      items: [{ url: "https://example.test/first", subject: SUBJECT.name, title: "Testov books a return", embedding: stored }],
+      items: [{ url: "https://example.test/first", subject: SUBJECT.name, title: "Testov books a return", embedding: stored, posted: true }],
     });
     await huntSubject(DB, SUBJECT, [makeItem()], deps({ store, dryRun: true, embedTexts: async () => [incoming] }));
 
     assert.equal(store.rows.items.length, 1, "only the row that was already there");
+  });
+
+  // A confirmation is previewed by READING the claim, never by flipping it —
+  // the rehearsal must show everything a real run would say while the rumor
+  // stays a rumor. History: docs/decisions.md#dry-run-confirmation-preview
+  test("a confirmation is previewed and the rumor stays a rumor", async (t) => {
+    const log = t.mock.method(console, "log");
+    const store = createFakeStore({
+      claims: [{ subject: SUBJECT.name, type: "announcement", canonical_text: "Testov fights in March", status: "rumor", tg_message_id: 777 }],
+    });
+    await huntSubject(DB, SUBJECT, [makeItem({ source: "UFC" })], deps({
+      store,
+      dryRun: true,
+      matchItem: async () => ({ verdict: "MATCH", match_claim_id: "1", stance: "asserts" }),
+    }));
+
+    assert.equal(sent.length, 0, "nothing reaches Telegram");
+    assert.equal(store.rows.items.length, 0, "nothing reaches the database");
+    assert.equal(store.rows.claims[0].status, "rumor", "the flip is previewed, not performed");
+    const preview = log.mock.calls.find((call) => String(call.arguments[0]).includes("would post (confirmation)"));
+    assert.ok(preview, "the confirmation preview is printed");
+    assert.match(String(preview.arguments[0]), /Testov fights in March/);
   });
 
   // The resend queue is READ under a dry run, so the preview shows what a real

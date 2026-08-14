@@ -103,6 +103,14 @@ export function createFakeStore({ items = [], claims = [], claimSources = [] } =
       return rows.claimSources.find((s) => String(s.item_id) === String(itemId))?.claim_id ?? null;
     },
 
+    // The read half of confirmClaim, for the dry-run confirmation preview:
+    // same row, same rumor-only guard, no flip.
+    async claimIfRumor(_db, claimId) {
+      const claim = rows.claims.find((c) => String(c.id) === String(claimId) && c.status === "rumor");
+      if (!claim) return null;
+      return { canonical_text: claim.canonical_text, tg_message_id: claim.tg_message_id };
+    },
+
     async claimSimilarities(_db, subject, embedding) {
       return rows.claims
         .filter((c) => c.subject === subject && c.embedding)
