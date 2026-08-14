@@ -11,3 +11,7 @@ node_modules/
 .DS_Store
 .neon
 claims-snapshot-*.json
+# Throwaway scripts written to answer one question — a decode check, a key
+# check. They are kept on disk because rerunning one is often useful, and out of
+# git because none of them are part of how the bot works.
+tmp/
