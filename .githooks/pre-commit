@@ -1,10 +1,11 @@
 #!/bin/sh
 # Runs the offline test tiers before every commit.
 #
-# This matters more here than in most repos: RingFacts edits and commits its
-# own code every six hours, unattended. docs/self-improvement.md §4 tells those
-# runs to verify before claiming, but a principle nothing enforces is a
-# principle that erodes. This is the enforcement.
+# This matters more here than in most repos, because the committer is not always
+# a person at a keyboard: an agent session can commit here with nothing mounted.
+# docs/self-improvement.md §4 tells such a run to verify before claiming, but a
+# principle nothing enforces is a principle that erodes. This is the enforcement,
+# and it holds whoever is committing.
 #
 # Only tiers 1 and 2 run — they need no network, no API keys and no database,
 # so this stays honest in a check-in session that has no credentials mounted.
