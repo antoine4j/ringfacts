@@ -19,7 +19,7 @@ import { translateToEnglish } from "./lib/translate.js";
 import { matchItem } from "./lib/matcher.js";
 import { isOfficialSource } from "./lib/sources.js";
 import { OUTLETS, fetchOutletItems, matchesSubject } from "./lib/feeds.js";
-import { decodeGoogleNewsUrl, isGoogleWrapped } from "./lib/googlenews.js";
+import { decodeGoogleNewsUrl } from "./lib/googlenews.js";
 import { fetchArticleBody, decodeEntities } from "./lib/extract.js";
 import { loadSubjects } from "./lib/subjects.js";
 import { digestTierFor } from "./lib/tier.js";
@@ -51,6 +51,12 @@ const EDITIONS = {
   es: "hl=es&gl=ES&ceid=ES:es",
 };
 
+/**
+ * Builds the Google News RSS search URL for one alias.
+ *
+ * @param {object} alias  `{ query, edition }` from the subject's watchlist.
+ * @returns {string}
+ */
 export function feedUrl(alias) {
   return (
     "https://news.google.com/rss/search?q=" +
@@ -60,13 +66,24 @@ export function feedUrl(alias) {
   );
 }
 
-// RSS is machine-generated and regular, so a regex parse is fine at this
-// stage; a real XML parser can come in when we add messier sources.
+/**
+ * Parses a Google News RSS document into plain item objects.
+ * RSS is machine-generated and regular, so a regex parse is fine at this
+ * stage; a real XML parser can come in when we add messier sources.
+ *
+ * @param {string} xml  The raw RSS body.
+ * @returns {object[]}  `{ title, url, source, rssDescription, publishedAt }` per item.
+ */
 export function parseRssItems(xml) {
   const items = [];
+
   for (const [, block] of xml.matchAll(/<item>([\s\S]*?)<\/item>/g)) {
-    const pick = (tag) =>
-      decodeEntities(block.match(new RegExp(`<${tag}[^>]*>([\\s\\S]*?)</${tag}>`))?.[1] ?? "");
+    // One tag's inner text, entity-decoded; a missing tag yields "".
+    const pick = (tag) => {
+      const match = block.match(new RegExp(`<${tag}[^>]*>([\\s\\S]*?)</${tag}>`));
+      return decodeEntities(match?.[1] ?? "");
+    };
+
     items.push({
       title: pick("title"),
       url: pick("link"),
@@ -77,30 +94,47 @@ export function parseRssItems(xml) {
       publishedAt: new Date(block.match(/<pubDate>(.*?)<\/pubDate>/)?.[1] ?? 0),
     });
   }
-  return items;
-}
 
-function hoursAgo(date) {
-  return Math.round((Date.now() - date.getTime()) / 3_600_000);
+  return items;
 }
 
 // One retry after a pause rides out Google's intermittent load shedding.
 // History: docs/decisions.md#retry-delay
-const RETRY_DELAY_MS = Number(process.env.RETRY_DELAY_MS || 75_000); // 30s proved too short for Google's waves
+const RETRY_DELAY_MS = Number(process.env.RETRY_DELAY_MS || 75_000);
 
+/**
+ * Fetches one alias's RSS feed, retrying once after a pause on a bad status.
+ *
+ * @param {object} alias  `{ query, edition }`.
+ * @returns {Promise<string>}  The RSS body.
+ */
 export async function fetchFeed(alias) {
   let res = await fetch(feedUrl(alias));
+
+  // One retry, then give up loudly.
   if (!res.ok) {
     console.warn(`RSS fetch ${res.status} for ${alias.query} — retrying in ${RETRY_DELAY_MS / 1000}s`);
     await new Promise((resolve) => setTimeout(resolve, RETRY_DELAY_MS));
     res = await fetch(feedUrl(alias));
   }
   if (!res.ok) throw new Error(`RSS fetch ${res.status} for ${alias.query} (after retry)`);
+
   return res.text();
 }
 
+/**
+ * Gathers every fresh item for one subject: all its Google News aliases plus
+ * the direct publisher feeds, newest first, each URL kept once.
+ *
+ * @param {object} subject      One watchlist subject.
+ * @param {object[]} directItems  The shared per-run pool from the outlet feeds.
+ * @param {number} hoursBack    Freshness window in hours.
+ * @returns {Promise<object[]>}
+ */
 export async function fetchFreshItems(subject, directItems = [], hoursBack = HOURS_BACK) {
   const cutoff = Date.now() - hoursBack * 3_600_000;
+
+  // Google News, one fetch per alias, each item stamped with where it was found.
   const items = [];
   for (const alias of subject.aliases) {
     const found = parseRssItems(await fetchFeed(alias));
@@ -110,104 +144,43 @@ export async function fetchFreshItems(subject, directItems = [], hoursBack = HOU
     }
     items.push(...found);
   }
+
   // Direct-feed items that name this subject. Cloned: the outlet pool is
   // shared across subjects, and the pipeline stamps per-subject fields.
-  items.push(...directItems.filter((i) => matchesSubject(i, subject)).map((i) => ({ ...i })));
-  // Fresh only, newest first. In-run URL dedup across aliases and outlets;
-  // cross-run dedup is the database's job. Deliberately no cap here.
-  // History: docs/decisions.md#flood-cap-order
-  const seen = new Set();
-  return items
-    .filter((item) => item.publishedAt.getTime() > cutoff)
-    .sort((a, b) => b.publishedAt - a.publishedAt)
-    .filter((item) => !seen.has(item.url) && seen.add(item.url));
-}
-
-// Google News titles end in " - Source"; we show the source ourselves, so
-// strip that suffix when it matches.
-function cleanTitle(item) {
-  return item.title.endsWith(` - ${item.source}`)
-    ? item.title.slice(0, -` - ${item.source}`.length)
-    : item.title;
-}
-
-// One digest bullet: plain headline, the source name carries the link, and a
-// translated headline is labeled. Every value is escaped — an unescaped "&" in
-// an href makes Telegram silently reject the whole message.
-// Exported for test/message.test.js; importing this module never starts a hunt.
-// History: docs/decisions.md#telegram-html-escaping
-export function digestLine(item) {
-  const title = item.displayTitle ?? cleanTitle(item);
-  const label = item.displayTitle ? ` (translated from ${item.edition})` : "";
-  return `• ${escapeHtml(title)} — <a href="${escapeHtml(item.url)}">${escapeHtml(item.source)}</a>${label}, ${hoursAgo(item.publishedAt)}h ago`;
-}
-
-// The one shared line for demoted items: source links grouped by outlet,
-// numbered only when an outlet has more than one story.
-// History: docs/decisions.md#tangential-line
-export function alsoMentioningLine(items) {
-  const bySource = new Map();
-  for (const item of items) {
-    const name = item.source.trim() || hostOf(item.resolvedUrl ?? item.url);
-    const key = name.toLowerCase();
-    const url = item.resolvedUrl ?? item.url;
-    if (!bySource.has(key)) bySource.set(key, { name, urls: [] });
-    const outlet = bySource.get(key);
-    if (!outlet.urls.includes(url)) outlet.urls.push(url);
+  for (const item of directItems) {
+    if (matchesSubject(item, subject)) items.push({ ...item });
   }
-  const links = [];
-  for (const { name, urls } of bySource.values()) {
-    for (const [i, url] of urls.entries()) {
-      const label = urls.length > 1 ? `${name} (${i + 1})` : name;
-      links.push(`<a href="${escapeHtml(url)}">${escapeHtml(label)}</a>`);
-    }
+
+  // Fresh only. Cross-run dedup is the database's job, and there is
+  // deliberately no cap here. History: docs/decisions.md#flood-cap-order
+  const fresh = items.filter((item) => item.publishedAt.getTime() > cutoff);
+
+  // Newest first.
+  fresh.sort((a, b) => b.publishedAt - a.publishedAt);
+
+  // In-run URL dedup across aliases and outlets: the first sighting wins.
+  const seenUrls = new Set();
+  const unique = [];
+  for (const item of fresh) {
+    if (seenUrls.has(item.url)) continue;
+    seenUrls.add(item.url);
+    unique.push(item);
   }
-  return `↘ Also mentioning: ${links.join(" · ")}`;
+  return unique;
 }
 
-function hostOf(url) {
-  try { return new URL(url).hostname.replace(/^www\./, ""); } catch { return "source"; }
-}
-
-// How much worse the inherited claim may fit before we refuse to inherit.
-// History: docs/decisions.md#claim-drift-gap
-const CLAIM_DRIFT_GAP = Number(process.env.CLAIM_DRIFT_GAP || 0.1);
-
-// Would inheriting `claimId` be a mistake? Dup chains are transitive and can
-// walk onto a foreign claim, so ask the cheaper-than-an-LLM question: does this
-// headline sit far closer to some OTHER claim than the one it would join?
-// History: docs/decisions.md#claim-drift-gap
-async function inheritanceDrifts(deps, db, item, claimId) {
-  const verdict = await deps.store.claimLinkDrifts(db, item, claimId, CLAIM_DRIFT_GAP);
-  if (!verdict.drifts) return false; // false, or null = unmeasurable -> old behaviour
-  console.warn(
-    `${item.subject}: claim drift — not inheriting #${claimId} (${verdict.mine.similarity.toFixed(3)}); ` +
-      `claim #${verdict.best.id} fits better (${verdict.best.similarity.toFixed(3)}, ` +
-      `gap ${verdict.gap.toFixed(3)}): ${item.title.slice(0, 60)}`
-  );
-  return true;
-}
-
-// Held as a semantic duplicate: recorded for audit, never posted, and linked to
-// its neighbour's claim — unless that link would drift onto a foreign claim, in
-// which case the hold stands and the item stays unlinked.
-// History: docs/decisions.md#claim-drift-gap
-async function holdAsDup(deps, db, item, role, neighborId = item.nearestItem, reason = "embedding") {
-  item.posted = false;
-  item.heldReason = reason;
-  if (!db || deps.dryRun) return;
-  const itemId = await deps.store.insertItem(db, item);
-  const inherited = await deps.store.claimOfItem(db, neighborId);
-  if (!itemId || !inherited) return;
-  if (await inheritanceDrifts(deps, db, item, inherited)) return;
-  await deps.store.linkClaimSource(db, itemId, inherited, role);
-}
-
-// Everything this function reaches outside itself arrives through `deps`, and
-// every default is the real thing — a test substitutes one piece at a time and
-// production behaviour is unchanged. History: docs/decisions.md#deps-seam
-export async function huntSubject(db, subject, directItems = [], overrides = {}) {
-  const deps = {
+/**
+ * Assembles the dependency set a hunt runs on. Every default is the real
+ * implementation, so a test substitutes one piece at a time and production
+ * behaviour is unchanged.
+ *
+ * @param {object} overrides  Test replacements, merged over the defaults.
+ * @returns {object}  The seam every stage reaches outside itself through.
+ *
+ * History: docs/decisions.md#deps-seam
+ */
+function buildDeps(overrides) {
+  return {
     store: realStore,
     embedTexts,
     matchItem,
@@ -219,41 +192,445 @@ export async function huntSubject(db, subject, directItems = [], overrides = {})
     chatId: CHAT_ID,
     hoursBack: HOURS_BACK,
     // A missing key means no matcher — same fail-open path as a matcher error,
-    // and the reason the dup gate is re-applied to official items further down.
+    // and the reason the dup gate is re-applied to official items later.
     matcherEnabled: Boolean(process.env.ANTHROPIC_API_KEY),
     ...overrides,
   };
-  const fetched = await fetchFreshItems(subject, directItems, deps.hoursBack);
+}
 
-  // Gate 1: exact URLs we already know. The flood cap applies to unseen items
-  // only. History: docs/decisions.md#flood-cap-order
-  const known = db ? await deps.store.knownUrls(db, fetched.map((i) => i.url)) : new Set();
-  const unseen = fetched.filter((i) => !known.has(i.url));
-  const candidates = unseen.slice(0, MAX_ITEMS_PER_SUBJECT);
-  if (unseen.length > candidates.length) {
-    console.log(`${subject.name}: capped ${unseen.length} unseen to ${candidates.length}, rest next run`);
-  }
-  // Items an earlier run stored but could not deliver, fetched above the
-  // nothing-new return so a quiet hour still carries them. Read even under
-  // DRY_RUN (a dry run previews the carry; nothing is written back).
-  // History: docs/decisions.md#resend-pass
-  const resends = db ? await deps.store.pendingResends(db, subject.name, HOURS_BACK) : [];
+/**
+ * Runs the whole pipeline for one subject: discover, dedup, classify, record,
+ * and deliver. The stages below appear in the file in the order they run here.
+ *
+ * @param {object|null} db      Open database, or null for a memory-less run.
+ * @param {object} subject      One watchlist subject.
+ * @param {object[]} directItems  The shared per-run pool from the outlet feeds.
+ * @param {object} overrides    Test replacements for buildDeps.
+ * @returns {Promise<void>}
+ */
+export async function huntSubject(db, subject, directItems = [], overrides = {}) {
+  const deps = buildDeps(overrides);
 
+  // Discover this run's candidates and any stranded earlier deliveries.
+  const { fetched, candidates } = await collectCandidates(deps, db, subject, directItems);
+  const resends = await loadPendingResends(deps, db, subject);
   if (candidates.length === 0 && resends.length === 0) {
     console.log(`${subject.name}: ${fetched.length} fetched, nothing new`);
     return;
   }
 
-  // Gate 2: semantic duplicates. Embedding failure degrades to URL-only dedup.
-  let vectors = null;
-  if (db) {
-    try {
-      vectors = await deps.embedTexts(candidates.map((i) => i.title));
-    } catch (err) {
-      console.warn(`${subject.name}: embedding failed, URL dedup only:`, err.message);
-    }
+  // One batch embedding call for every candidate title.
+  const vectors = await embedTitles(deps, db, subject, candidates);
+
+  // Classify each candidate and write its rows, strictly in order: item N's
+  // insert must land before item N+1's nearest-neighbour query.
+  const outcomes = [];
+  for (const [index, item] of candidates.entries()) {
+    const outcome = await classifyItem(deps, db, subject, item, vectors?.[index] ?? null);
+    await recordOutcome(deps, db, outcome);
+    outcomes.push(outcome);
   }
 
+  // Sort the outcomes into messages, translate what the group can't read, send.
+  const messages = assembleMessages(subject, fetched.length, outcomes, resends);
+  await translateForeignHeadlines(deps, messages.digestItems);
+  await deliver(deps, db, subject, messages);
+}
+
+/**
+ * Stage 1 — fetch the feeds, drop URLs already stored, apply the per-subject cap.
+ *
+ * @param {object} deps
+ * @param {object|null} db
+ * @param {object} subject
+ * @param {object[]} directItems
+ * @returns {Promise<{ fetched: object[], candidates: object[] }>}
+ */
+async function collectCandidates(deps, db, subject, directItems) {
+  const fetched = await fetchFreshItems(subject, directItems, deps.hoursBack);
+
+  // Gate 1: exact URLs we already know. The flood cap applies to unseen items
+  // only. History: docs/decisions.md#flood-cap-order
+  const known = db ? await deps.store.knownUrls(db, fetched.map((item) => item.url)) : new Set();
+  const unseen = fetched.filter((item) => !known.has(item.url));
+  const candidates = unseen.slice(0, MAX_ITEMS_PER_SUBJECT);
+  if (unseen.length > candidates.length) {
+    console.log(`${subject.name}: capped ${unseen.length} unseen to ${candidates.length}, rest next run`);
+  }
+
+  return { fetched, candidates };
+}
+
+/**
+ * Stage 2 — items an earlier run stored but could not deliver. Fetched before
+ * the nothing-new return so a quiet hour still carries them, and read even
+ * under DRY_RUN (a dry run previews the carry; nothing is written back).
+ * History: docs/decisions.md#resend-pass
+ *
+ * @param {object} deps
+ * @param {object|null} db
+ * @param {object} subject
+ * @returns {Promise<object[]>}  Stored rows, not pipeline items.
+ */
+async function loadPendingResends(deps, db, subject) {
+  if (!db) return [];
+  return deps.store.pendingResends(db, subject.name, HOURS_BACK);
+}
+
+/**
+ * Stage 3 — one batch embedding call for the candidate titles. Embedding
+ * failure degrades to URL-only dedup, never to a failed run.
+ *
+ * @param {object} deps
+ * @param {object|null} db
+ * @param {object} subject
+ * @param {object[]} candidates
+ * @returns {Promise<number[][]|null>}  One vector per candidate, or null.
+ */
+async function embedTitles(deps, db, subject, candidates) {
+  if (!db) return null;
+
+  try {
+    return await deps.embedTexts(candidates.map((item) => item.title));
+  } catch (err) {
+    console.warn(`${subject.name}: embedding failed, URL dedup only:`, err.message);
+    return null;
+  }
+}
+
+/**
+ * Stage 4 — decides what one item is: a duplicate to hold, a wrong-subject
+ * namesake, another sighting of a known claim, or something to post. Reads the
+ * database, never writes it; every decision comes back as one outcome object
+ * for recordOutcome.
+ *
+ * @param {object} deps
+ * @param {object|null} db
+ * @param {object} subject
+ * @param {object} item
+ * @param {number[]|null} vector  This item's title embedding.
+ * @returns {Promise<object>}  `{ kind: "held"|"wrong-subject"|"match"|"post", item, ... }`.
+ */
+async function classifyItem(deps, db, subject, item, vector) {
+  // Stamp the fields every stored row carries.
+  item.subject = subject.name;
+  item.embedding = vector;
+  item.embeddingModel = EMBEDDING_MODEL;
+
+  // Nearest stored neighbour, looked up BEFORE this item is inserted so an
+  // item never matches itself. Recorded on every item — the similarity
+  // distribution is threshold-tuning data.
+  const nearest = item.embedding ? await deps.store.nearestRecent(db, subject.name, item.embedding) : null;
+  item.nearestSimilarity = nearest?.similarity ?? null;
+  item.nearestItem = nearest?.id ?? null;
+
+  const official = isOfficialSource(item.source);
+
+  // Gate 2: a confident embedding duplicate is held, no LLM needed.
+  const earlyHold = checkDuplicateGate(subject, item, nearest, official, null);
+  if (earlyHold) return heldOutcome(item, earlyHold, item.nearestItem, "embedding");
+
+  // Body step: decode Google's wrapper, catch the cross-source duplicate the
+  // real URL reveals, then fetch and extract the article.
+  const urlDuplicateId = await extractBody(deps, db, subject, item);
+  if (urlDuplicateId) return heldOutcome(item, "echo", urlDuplicateId, "url");
+
+  // Gate 3: the claim matcher (absorbs the gray-zone judge — a MATCH-as-echo
+  // verdict IS the dedup decision).
+  const verdict = await askMatcher(deps, db, subject, item);
+
+  // Namesake / junk: recorded for audit, never posted, never a claim.
+  if (verdict.verdict === "WRONG_SUBJECT") {
+    item.posted = false;
+    item.heldReason = "wrong_subject";
+    return { kind: "wrong-subject", item };
+  }
+
+  // Same fact, another sighting: held as evidence.
+  if (verdict.verdict === "MATCH" && verdict.match_claim_id) {
+    item.posted = false;
+    item.heldReason = "llm";
+    return {
+      kind: "match",
+      item,
+      claimId: verdict.match_claim_id,
+      official,
+      stance: verdict.stance ?? "asserts",
+    };
+  }
+
+  // Gate 2, re-applied: the official exemption was a deferral, not a waiver.
+  const lateHold = checkDuplicateGate(subject, item, nearest, official, verdict);
+  if (lateHold) return heldOutcome(item, lateHold, item.nearestItem, "embedding");
+
+  // NO_CLAIM / UNSURE / NEW from here on: the item itself gets posted.
+  const newClaim = verdict.verdict === "NEW" ? verdict.new_claim : null;
+  const isRealClaim = Boolean(newClaim && !domain.ignoredTypes.includes(newClaim.type)); // docs §5
+
+  // Digest tier (lib/tier.js): is this article ABOUT the subject, or does it
+  // merely sit next to news about them? The matcher's role judgement leads;
+  // the mention-count rule is the fallback. Keyed on isRealClaim, not claimId.
+  // History: docs/decisions.md#tier-keying
+  item.digestTier = isRealClaim ? "main" : digestTierFor(item, subject.matchNames, item.subjectRole);
+  item.posted = true;
+
+  // A brand-new claim is born confirmed only on official sourcing.
+  const status = isRealClaim
+    ? (official || newClaim.sourcing === "official" ? "confirmed" : "rumor")
+    : null;
+
+  return { kind: "post", item, newClaim, isRealClaim, official, status, claimId: null };
+}
+
+/**
+ * Marks an item held and shapes the outcome recordOutcome stores it under.
+ *
+ * @param {object} item
+ * @param {string} role        Claim-link role: "echo" or "official".
+ * @param {number|null} neighborId  The stored item whose claim it may inherit.
+ * @param {string} reason      What held it: "embedding" or "url".
+ * @returns {object}
+ */
+function heldOutcome(item, role, neighborId, reason) {
+  item.posted = false;
+  item.heldReason = reason;
+  return { kind: "held", item, role, neighborId };
+}
+
+/**
+ * Gate 2: should this item be held as a semantic duplicate? Applied twice per
+ * item. Before the matcher (`verdict` null) official sources are exempt — an
+ * official confirmation is near-identical to the rumor it confirms, and
+ * holding it would swallow the rumor -> confirmed transition. After the
+ * matcher, on UNSURE / NO_CLAIM there is no claim to act on, so the reason to
+ * skip the gate is gone and it stands.
+ * History: docs/decisions.md#official-exemption
+ *
+ * @param {object} subject
+ * @param {object} item
+ * @param {object|null} nearest   Nearest stored neighbour with its similarity.
+ * @param {boolean} official
+ * @param {object|null} verdict   The matcher's verdict, or null before it ran.
+ * @returns {string|null}  The claim-link role to hold under, or null to pass.
+ */
+function checkDuplicateGate(subject, item, nearest, official, verdict) {
+  const isDuplicate = Boolean(nearest && nearest.similarity >= SEMANTIC_DUP_THRESHOLD);
+  if (!isDuplicate) return null;
+
+  // First application: hold every non-official duplicate outright.
+  if (!verdict) {
+    if (official) return null;
+    console.log(
+      `${subject.name}: held as dup (${nearest.similarity.toFixed(2)} vs "${nearest.title.slice(0, 60)}"): ${item.title.slice(0, 60)}`
+    );
+    return "echo";
+  }
+
+  // Re-application: the deferred official duplicate, with no claim to act on.
+  if (official && ["UNSURE", "NO_CLAIM"].includes(verdict.verdict)) {
+    console.log(
+      `${subject.name}: matcher ${verdict.verdict}, holding official dup (${nearest.similarity.toFixed(2)} vs "${nearest.title.slice(0, 60)}"): ${item.title.slice(0, 60)}`
+    );
+    return "official";
+  }
+
+  return null;
+}
+
+/**
+ * The body step, only for items past the free gates: decode Google's wrapper,
+ * check whether the real URL is already stored, then fetch and extract the
+ * article text onto the item. All of it is a bonus — any failure leaves the
+ * item headline-only.
+ *
+ * @param {object} deps
+ * @param {object|null} db
+ * @param {object} subject
+ * @param {object} item
+ * @returns {Promise<number|null>}  A stored item id when the decoded URL is a
+ *   duplicate (the caller holds this item), otherwise null.
+ */
+async function extractBody(deps, db, subject, item) {
+  try {
+    const resolved = await deps.decodeGoogleNewsUrl(item.url);
+    item.resolvedUrl = resolved ?? null; // null = wrapped URL we couldn't open
+
+    // The decoded URL can reveal a cross-source duplicate Gate 1 missed.
+    if (resolved && resolved !== item.url && db) {
+      const duplicateId = await deps.store.itemIdByUrl(db, resolved);
+      if (duplicateId) {
+        console.log(`${subject.name}: held as url dup (decoded to stored item #${duplicateId}): ${item.title.slice(0, 60)}`);
+        return duplicateId;
+      }
+    }
+
+    // Fetch the article body, or fall back to the feed's own content.
+    if (item.resolvedUrl || item.feedContent) {
+      const bodyResult = await deps.fetchArticleBody(item.resolvedUrl, { feedContent: item.feedContent });
+      item.body = bodyResult.body;
+      item.bodyFetchedAt = bodyResult.fetchedAt ?? null;
+      item.bodyVia = bodyResult.via;
+      console.log(
+        `${subject.name}: body ${bodyResult.body ? `${bodyResult.body.length} chars via ${bodyResult.via}` : `none (${bodyResult.via})`}: ${item.title.slice(0, 50)}`
+      );
+    } else {
+      // Google's wrapper didn't decode and there's no feed body to fall
+      // back on — fetchArticleBody was never even called. Distinct from a
+      // null body_via on a pre-migration row.
+      item.bodyVia = "decode-failed";
+    }
+  } catch (err) {
+    console.warn(`${subject.name}: body step failed (headline-only):`, err.message);
+    item.bodyVia ??= "step-error";
+  }
+
+  return null;
+}
+
+/**
+ * Asks the claim matcher what this item is. Fail-open: matcher trouble ->
+ * UNSURE -> the item posts like it always did.
+ *
+ * @param {object} deps
+ * @param {object|null} db
+ * @param {object} subject
+ * @param {object} item
+ * @returns {Promise<object>}  The matcher's verdict object.
+ */
+async function askMatcher(deps, db, subject, item) {
+  let verdict = { verdict: "UNSURE" };
+
+  if (db && deps.matcherEnabled) {
+    try {
+      const knownClaims = await deps.store.activeClaims(db, subject.name, item.embedding);
+      verdict = await deps.matchItem({
+        subject: subject.name, item, candidates: knownClaims,
+        confusables: subject.confusables,
+      });
+    } catch (err) {
+      console.warn(`${subject.name}: matcher failed (fail-open):`, err.message);
+    }
+  }
+  console.log(
+    `${subject.name}: matcher ${verdict.verdict}${verdict.match_claim_id ? " #" + verdict.match_claim_id : ""}: ${item.title.slice(0, 60)}`
+  );
+
+  // Recorded on every matcher-seen item before any branch returns, so the
+  // archive stays re-measurable. Null means we never got an answer.
+  item.subjectRole = verdict.subject_role ?? null;
+
+  return verdict;
+}
+
+// How much worse the inherited claim may fit before we refuse to inherit.
+// History: docs/decisions.md#claim-drift-gap
+const CLAIM_DRIFT_GAP = Number(process.env.CLAIM_DRIFT_GAP || 0.1);
+
+/**
+ * Would inheriting `claimId` be a mistake? Dup chains are transitive and can
+ * walk onto a foreign claim, so ask the cheaper-than-an-LLM question: does this
+ * headline sit far closer to some OTHER claim than the one it would join?
+ * History: docs/decisions.md#claim-drift-gap
+ *
+ * @param {object} deps
+ * @param {object} db
+ * @param {object} item
+ * @param {number} claimId  The claim the item is about to inherit.
+ * @returns {Promise<boolean>}
+ */
+async function inheritanceDrifts(deps, db, item, claimId) {
+  const verdict = await deps.store.claimLinkDrifts(db, item, claimId, CLAIM_DRIFT_GAP);
+  if (!verdict.drifts) return false; // false, or null = unmeasurable -> old behaviour
+
+  console.warn(
+    `${item.subject}: claim drift — not inheriting #${claimId} (${verdict.mine.similarity.toFixed(3)}); ` +
+      `claim #${verdict.best.id} fits better (${verdict.best.similarity.toFixed(3)}, ` +
+      `gap ${verdict.gap.toFixed(3)}): ${item.title.slice(0, 60)}`
+  );
+  return true;
+}
+
+/**
+ * Stage 5 — every database write for one classified item. On a dry run, or
+ * with no database, nothing is written. A "match" outcome may gain a
+ * `confirmation` entry here (a rumor an official source just confirmed).
+ *
+ * @param {object} deps
+ * @param {object|null} db
+ * @param {object} outcome  From classifyItem.
+ * @returns {Promise<void>}
+ */
+async function recordOutcome(deps, db, outcome) {
+  const { item } = outcome;
+
+  // Held as a duplicate: recorded for audit, never posted, and linked to its
+  // neighbour's claim — unless that link would drift onto a foreign claim, in
+  // which case the hold stands and the item stays unlinked.
+  // History: docs/decisions.md#claim-drift-gap
+  if (outcome.kind === "held") {
+    if (!db || deps.dryRun) return;
+    const itemId = await deps.store.insertItem(db, item);
+    const inheritedClaimId = await deps.store.claimOfItem(db, outcome.neighborId);
+    if (!itemId || !inheritedClaimId) return;
+    if (await inheritanceDrifts(deps, db, item, inheritedClaimId)) return;
+    await deps.store.linkClaimSource(db, itemId, inheritedClaimId, outcome.role);
+    return;
+  }
+
+  // Wrong subject: the row is the audit trail, nothing links to it.
+  if (outcome.kind === "wrong-subject") {
+    if (db && !deps.dryRun) await deps.store.insertItem(db, item);
+    return;
+  }
+
+  // Another sighting of a known claim: stored and linked as evidence.
+  if (outcome.kind === "match") {
+    if (!db || deps.dryRun) return;
+    const itemId = await deps.store.insertItem(db, item);
+    if (itemId) {
+      await deps.store.linkClaimSource(db, itemId, outcome.claimId,
+        outcome.official ? "official" : "echo", outcome.stance);
+    }
+    // Conservative lifecycle: only an official source that asserts flips
+    // rumor -> confirmed. Denials are linked as evidence, never acted on.
+    if (outcome.official && outcome.stance === "asserts") {
+      const confirmed = await deps.store.confirmClaim(db, outcome.claimId);
+      if (confirmed) {
+        outcome.confirmation = { text: confirmed.canonical_text, replyTo: confirmed.tg_message_id, item };
+      }
+    }
+    return;
+  }
+
+  // "post": the item row, and — when the matcher minted a real claim — the
+  // claim row plus its origin link.
+  const itemId = db && !deps.dryRun ? await deps.store.insertItem(db, item) : null;
+  item.dbId = itemId;
+
+  if (outcome.isRealClaim && db && !deps.dryRun && itemId) {
+    // The claim gets its own embedding; a failure just leaves it vector-less.
+    let claimVector = null;
+    try { claimVector = (await deps.embedTexts([outcome.newClaim.canonical_text]))?.[0] ?? null; } catch {}
+
+    outcome.claimId = await deps.store.insertClaim(db, {
+      subject: item.subject, type: outcome.newClaim.type, canonicalText: outcome.newClaim.canonical_text,
+      facts: outcome.newClaim.facts, status: outcome.status, embedding: claimVector, embeddingModel: EMBEDDING_MODEL,
+    });
+    await deps.store.linkClaimSource(db, itemId, outcome.claimId, outcome.official ? "official" : "origin");
+  }
+}
+
+/**
+ * Stage 6 — sorts the recorded outcomes into the messages this run will send,
+ * and folds in the resends from an earlier failed delivery.
+ *
+ * @param {object} subject
+ * @param {number} fetchedCount  How many items discovery returned, for the log.
+ * @param {object[]} outcomes    From classifyItem/recordOutcome, in order.
+ * @param {object[]} resends     Stored rows from loadPendingResends.
+ * @returns {object}  `{ ceremonies, rumorPosts, confirmations, digestClaims, digestItems, tangential }`.
+ */
+function assembleMessages(subject, fetchedCount, outcomes, resends) {
   const digestItems = [];   // NO_CLAIM / UNSURE items + quote-grade claims
   const rumorPosts = [];    // lifecycle claims born as rumor -> 🕵️ lines
   const ceremonies = [];    // announcements born confirmed -> standalone 🚨
@@ -261,177 +638,38 @@ export async function huntSubject(db, subject, directItems = [], overrides = {})
   const digestClaims = [];  // claim ids whose home message is the digest
   const tangential = [];    // demoted: one shared "also mentioning" line, not a bullet
 
-  for (const [i, item] of candidates.entries()) {
-    item.subject = subject.name;
-    item.embedding = vectors?.[i] ?? null;
-    item.embeddingModel = EMBEDDING_MODEL;
+  for (const outcome of outcomes) {
+    // A confirmed rumor surfaces regardless of what its sighting item became.
+    if (outcome.confirmation) confirmations.push(outcome.confirmation);
+    if (outcome.kind !== "post") continue;
 
-    // Compare against stored rows BEFORE inserting this one, so an item
-    // never matches itself. Recorded for every item — the similarity
-    // distribution is threshold-tuning data.
-    const nearest = item.embedding ? await deps.store.nearestRecent(db, subject.name, item.embedding) : null;
-    item.nearestSimilarity = nearest?.similarity ?? null;
-    item.nearestItem = nearest?.id ?? null;
+    const { item, newClaim, isRealClaim, status, claimId } = outcome;
 
-    const official = isOfficialSource(item.source);
-    const dup = Boolean(nearest && nearest.similarity >= SEMANTIC_DUP_THRESHOLD);
-
-    // Gate 2: confident embedding dup -> held, inheriting its neighbour's
-    // claim link as an echo, no LLM needed. Official sources are exempt (an
-    // official confirmation is near-identical to the rumor it confirms, and
-    // holding it would swallow the rumor -> confirmed transition), but the
-    // exemption is a deferral, not a waiver — see the re-apply below.
-    // History: docs/decisions.md#official-exemption
-    if (dup && !official) {
-      console.log(
-        `${subject.name}: held as dup (${nearest.similarity.toFixed(2)} vs "${nearest.title.slice(0, 60)}"): ${item.title.slice(0, 60)}`
-      );
-      await holdAsDup(deps, db, item, "echo");
-      continue;
-    }
-
-    // Body step, only for items past the free gates: decode Google's wrapper,
-    // catch the cross-source duplicate the real URL reveals, then fetch and
-    // extract the article. All of it is a bonus — any failure leaves the item
-    // headline-only.
-    try {
-      const resolved = await deps.decodeGoogleNewsUrl(item.url);
-      item.resolvedUrl = resolved ?? null; // null = wrapped URL we couldn't open
-      if (resolved && resolved !== item.url && db) {
-        const dupId = await deps.store.itemIdByUrl(db, resolved);
-        if (dupId) {
-          console.log(`${subject.name}: held as url dup (decoded to stored item #${dupId}): ${item.title.slice(0, 60)}`);
-          await holdAsDup(deps, db, item, "echo", dupId, "url");
-          continue;
-        }
-      }
-      if (item.resolvedUrl || item.feedContent) {
-        const r = await deps.fetchArticleBody(item.resolvedUrl, { feedContent: item.feedContent });
-        item.body = r.body;
-        item.bodyFetchedAt = r.fetchedAt ?? null;
-        item.bodyVia = r.via;
-        console.log(
-          `${subject.name}: body ${r.body ? `${r.body.length} chars via ${r.via}` : `none (${r.via})`}: ${item.title.slice(0, 50)}`
-        );
-      } else {
-        // Google's wrapper didn't decode and there's no feed body to fall
-        // back on — fetchArticleBody was never even called. Distinct from a
-        // null body_via on a pre-migration row.
-        item.bodyVia = "decode-failed";
-      }
-    } catch (err) {
-      console.warn(`${subject.name}: body step failed (headline-only):`, err.message);
-      item.bodyVia ??= "step-error";
-    }
-
-    // Gate 3: the claim matcher (absorbs the gray-zone judge — a MATCH-as-echo
-    // verdict IS the dedup decision). Fail-open: matcher trouble -> UNSURE ->
-    // the item posts like it always did.
-    let verdict = { verdict: "UNSURE" };
-    if (db && deps.matcherEnabled) {
-      try {
-        const knownClaims = await deps.store.activeClaims(db, subject.name, item.embedding);
-        verdict = await deps.matchItem({
-          subject: subject.name, item, candidates: knownClaims,
-          confusables: subject.confusables,
-        });
-      } catch (err) {
-        console.warn(`${subject.name}: matcher failed (fail-open):`, err.message);
-      }
-    }
-    console.log(
-      `${subject.name}: matcher ${verdict.verdict}${verdict.match_claim_id ? " #" + verdict.match_claim_id : ""}: ${item.title.slice(0, 60)}`
-    );
-    // Recorded on every matcher-seen item before any branch returns, so the
-    // archive stays re-measurable. Null means we never got an answer.
-    item.subjectRole = verdict.subject_role ?? null;
-
-    if (verdict.verdict === "WRONG_SUBJECT") {
-      // Namesake / junk: recorded for audit, never posted, never a claim.
-      item.posted = false;
-      item.heldReason = "wrong_subject";
-      if (db && !deps.dryRun) await deps.store.insertItem(db, item);
-      continue;
-    }
-
-    if (verdict.verdict === "MATCH" && verdict.match_claim_id) {
-      // Same fact, another sighting: held as evidence.
-      item.posted = false;
-      item.heldReason = "llm";
-      if (db && !deps.dryRun) {
-        const itemId = await deps.store.insertItem(db, item);
-        if (itemId) {
-          await deps.store.linkClaimSource(db, itemId, verdict.match_claim_id,
-            official ? "official" : "echo", verdict.stance ?? "asserts");
-        }
-        // Conservative lifecycle: only an official source that asserts flips
-        // rumor -> confirmed. Denials are linked as evidence, never acted on.
-        if (official && (verdict.stance ?? "asserts") === "asserts") {
-          const c = await deps.store.confirmClaim(db, verdict.match_claim_id);
-          if (c) confirmations.push({ text: c.canonical_text, replyTo: c.tg_message_id, item });
-        }
-      }
-      continue;
-    }
-
-    // Gate 2, re-applied: on UNSURE / NO_CLAIM there is no claim to act on, so
-    // the reason to skip the dup gate is gone and the gate stands.
-    // History: docs/decisions.md#official-exemption
-    if (official && dup && ["UNSURE", "NO_CLAIM"].includes(verdict.verdict)) {
-      console.log(
-        `${subject.name}: matcher ${verdict.verdict}, holding official dup (${nearest.similarity.toFixed(2)} vs "${nearest.title.slice(0, 60)}"): ${item.title.slice(0, 60)}`
-      );
-      await holdAsDup(deps, db, item, "official");
-      continue;
-    }
-
-    // NO_CLAIM / UNSURE / NEW from here on: the item itself gets posted.
-    const nc = verdict.verdict === "NEW" ? verdict.new_claim : null;
-    const isRealClaim = nc && !domain.ignoredTypes.includes(nc.type); // docs §5
-
-    // Digest tier (lib/tier.js): is this article ABOUT the subject, or does it
-    // merely sit next to news about them? The matcher's role judgement leads;
-    // the mention-count rule is the fallback. Keyed on isRealClaim, not claimId.
-    // History: docs/decisions.md#tier-keying
-    item.digestTier = isRealClaim ? "main" : digestTierFor(item, subject.matchNames, item.subjectRole);
-    item.posted = true;
-    const itemId = db && !deps.dryRun ? await deps.store.insertItem(db, item) : null;
-    item.dbId = itemId;
-
+    // A real new claim picks its own message type; quotes etc. ride the digest.
     if (isRealClaim) {
-      const status = official || nc.sourcing === "official" ? "confirmed" : "rumor";
-      let claimId = null;
-      if (db && !deps.dryRun && itemId) {
-        let claimVec = null;
-        try { claimVec = (await deps.embedTexts([nc.canonical_text]))?.[0] ?? null; } catch {}
-        claimId = await deps.store.insertClaim(db, {
-          subject: subject.name, type: nc.type, canonicalText: nc.canonical_text,
-          facts: nc.facts, status, embedding: claimVec, embeddingModel: EMBEDDING_MODEL,
-        });
-        await deps.store.linkClaimSource(db, itemId, claimId, official ? "official" : "origin");
-      }
-      if (nc.type === domain.ceremonyType && status === "confirmed") {
-        ceremonies.push({ claimId, text: nc.canonical_text, item });
+      if (newClaim.type === domain.ceremonyType && status === "confirmed") {
+        ceremonies.push({ claimId, text: newClaim.canonical_text, item });
         continue;
       }
-      if (status === "rumor" && domain.loudTypes.includes(nc.type)) {
-        rumorPosts.push({ claimId, text: nc.canonical_text, item });
+      if (status === "rumor" && domain.loudTypes.includes(newClaim.type)) {
+        rumorPosts.push({ claimId, text: newClaim.canonical_text, item });
         continue;
       }
-      if (claimId) digestClaims.push(claimId); // quotes etc. ride the digest
+      if (claimId) digestClaims.push(claimId);
     }
+
     (item.digestTier === "tangential" ? tangential : digestItems).push(item);
   }
 
   const postedCount = ceremonies.length + rumorPosts.length + digestItems.length + tangential.length;
   console.log(
-    `${subject.name}: ${fetched.length} fetched, ${candidates.length} unseen, ${postedCount} posted ` +
+    `${subject.name}: ${fetchedCount} fetched, ${outcomes.length} unseen, ${postedCount} posted ` +
       `(${tangential.length} tangential), ${confirmations.length} confirmation(s)`
   );
 
-  // Resend pass: items an earlier run stored but could not deliver ride this
-  // run's digest as ordinary bullets, rebuilt from the row and deliberately
-  // not re-judged. History: docs/decisions.md#resend-pass
+  // Resend pass: stranded items ride this run's digest as ordinary bullets,
+  // rebuilt from the row and deliberately not re-judged.
+  // History: docs/decisions.md#resend-pass
   for (const row of resends) {
     const item = {
       dbId: row.id, title: row.title, source: row.source ?? "",
@@ -444,10 +682,33 @@ export async function huntSubject(db, subject, directItems = [], overrides = {})
     console.log(`${subject.name}: carrying ${resends.length} item(s) from a failed send`);
   }
 
-  // Translate digest headlines the group can't read (claim texts are already
-  // English). Tangential items are excluded, a null-edition resend posts as
-  // filed, and a failed translation posts the original.
-  // History: docs/decisions.md#translation-rules
+  return { ceremonies, rumorPosts, confirmations, digestClaims, digestItems, tangential };
+}
+
+/**
+ * Strips the " - Source" suffix Google News appends when it matches the item's
+ * source; we show the source ourselves.
+ *
+ * @param {object} item
+ * @returns {string}
+ */
+function cleanTitle(item) {
+  return item.title.endsWith(` - ${item.source}`)
+    ? item.title.slice(0, -` - ${item.source}`.length)
+    : item.title;
+}
+
+/**
+ * Stage 7 — translates digest headlines the group can't read (claim texts are
+ * already English). Tangential items are excluded, a null-edition resend posts
+ * as filed, and a failed translation posts the original.
+ * History: docs/decisions.md#translation-rules
+ *
+ * @param {object} deps
+ * @param {object[]} digestItems  Mutated: gains `displayTitle` where translated.
+ * @returns {Promise<void>}
+ */
+async function translateForeignHeadlines(deps, digestItems) {
   for (const item of digestItems) {
     if (item.resent && !item.edition) continue;
     if (GROUP_LANGUAGES.has(item.edition)) continue;
@@ -457,78 +718,257 @@ export async function huntSubject(db, subject, directItems = [], overrides = {})
       console.warn(`translate failed for "${item.title.slice(0, 40)}":`, err.message);
     }
   }
+}
 
-  // Rows are written posted=true before any send, so a failed send must walk
-  // them back — or the archive asserts the group saw something it never did.
-  // History: docs/decisions.md#send-failure-walkback
-  const sendFailed = async (items, what) => {
-    const ids = items.map((i) => i.dbId).filter(Boolean);
-    console.error(`${subject.name}: ${what} send failed — ${ids.length} item(s) marked unposted`);
-    if (db && !deps.dryRun && ids.length) {
-      await deps.store.markUnposted(db, ids, "send_failed");
-    }
-  };
+/**
+ * Whole hours since `date`, for the "3h ago" digest suffix.
+ *
+ * @param {Date} date
+ * @returns {number}
+ */
+function hoursAgo(date) {
+  return Math.round((Date.now() - date.getTime()) / 3_600_000);
+}
 
-  // 1. Ceremonies: one standalone post per confirmed announcement.
-  for (const c of ceremonies) {
-    const msg = `🚨 <b>${escapeHtml(domain.ceremonyLabel)}</b>\n\n<b>${escapeHtml(c.text)}</b>\n\n— <a href="${escapeHtml(c.item.url)}">${escapeHtml(c.item.source)}</a>`;
-    if (deps.dryRun) {
-      console.log(`\n--- would post (ceremony) ---\n${msg}\n`);
-    } else {
-      const mid = await deps.sendMessage(deps.chatId, msg, { html: true, noPreview: true });
-      if (db && c.claimId) await deps.store.setClaimMessageId(db, c.claimId, mid);
-      if (!mid) await sendFailed([c.item], "ceremony");
+/**
+ * Renders one digest bullet: plain headline, the source name carries the link,
+ * and a translated headline is labeled. Every value is escaped — an unescaped
+ * "&" in an href makes Telegram silently reject the whole message.
+ * Exported for test/message.test.js; importing this module never starts a hunt.
+ *
+ * @param {object} item
+ * @returns {string}  Telegram HTML.
+ *
+ * History: docs/decisions.md#telegram-html-escaping
+ */
+export function digestLine(item) {
+  const title = item.displayTitle ?? cleanTitle(item);
+  const label = item.displayTitle ? ` (translated from ${item.edition})` : "";
+  return `• ${escapeHtml(title)} — <a href="${escapeHtml(item.url)}">${escapeHtml(item.source)}</a>${label}, ${hoursAgo(item.publishedAt)}h ago`;
+}
+
+/**
+ * Renders the one shared line carrying every demoted item, as source links
+ * rather than headlines.
+ *
+ * @param {object[]} items  Demoted items, newest first.
+ * @returns {string}  Telegram HTML: "↘ Also mentioning: Sherdog · ESPN (1) · ESPN (2)"
+ *
+ * History: docs/decisions.md#tangential-line
+ */
+export function alsoMentioningLine(items) {
+  const outlets = groupByOutlet(items);
+  const links = [];
+
+  // Number the links only when an outlet has more than one, so a lone
+  // "Sherdog (1)" never implies a missing sibling.
+  for (const { name, urls } of outlets) {
+    for (const [index, url] of urls.entries()) {
+      const label = urls.length > 1 ? `${name} (${index + 1})` : name;
+      links.push(anchor(url, label));
     }
   }
 
-  // 2. The digest: rumor lines first, then regular items, then one shared line
-  // for the tangential — attached only when there is a real line above it.
-  const lines = [
-    ...rumorPosts.map(
-      (r) => `🕵️ <b>Rumor:</b> ${escapeHtml(r.text)} — <a href="${escapeHtml(r.item.url)}">${escapeHtml(r.item.source)}</a>, ${hoursAgo(r.item.publishedAt)}h ago`
-    ),
-    ...digestItems.map(digestLine),
-  ];
+  return `↘ Also mentioning: ${links.join(" · ")}`;
+}
+
+/**
+ * Groups items by outlet, keeping input order within each group.
+ * Identical URLs collapse — the same article reached twice is one story.
+ *
+ * @param {object[]} items
+ * @returns {{ name: string, urls: string[] }[]}
+ */
+function groupByOutlet(items) {
+  const byName = new Map();
+
+  for (const item of items) {
+    // Fall back to the hostname: a missing <source> tag would otherwise
+    // render an invisible, zero-width link.
+    const name = item.source.trim() || hostOf(articleUrl(item));
+    const key = name.toLowerCase();
+    if (!byName.has(key)) byName.set(key, { name, urls: [] });
+
+    const outlet = byName.get(key);
+    const url = articleUrl(item);
+    if (!outlet.urls.includes(url)) outlet.urls.push(url);
+  }
+
+  return [...byName.values()];
+}
+
+/** The real article URL, once Google's wrapper has been decoded. */
+function articleUrl(item) {
+  return item.resolvedUrl ?? item.url;
+}
+
+/** An escaped Telegram HTML anchor. */
+function anchor(url, label) {
+  return `<a href="${escapeHtml(url)}">${escapeHtml(label)}</a>`;
+}
+
+/**
+ * The link's hostname without "www.", or "source" when the URL won't parse.
+ *
+ * @param {string} url
+ * @returns {string}
+ */
+function hostOf(url) {
+  try {
+    return new URL(url).hostname.replace(/^www\./, "");
+  } catch {
+    return "source";
+  }
+}
+
+/**
+ * Stage 8 — sends the three message types, in order: standalone ceremonies,
+ * the digest, then confirmation replies.
+ *
+ * @param {object} deps
+ * @param {object|null} db
+ * @param {object} subject
+ * @param {object} messages  From assembleMessages.
+ * @returns {Promise<void>}
+ */
+async function deliver(deps, db, subject, messages) {
+  await sendCeremonies(deps, db, subject, messages.ceremonies);
+  await sendDigest(deps, db, subject, messages);
+  await sendConfirmations(deps, messages.confirmations);
+}
+
+/**
+ * Walks back rows written posted=true before a send that then failed — or the
+ * archive asserts the group saw something it never did.
+ * History: docs/decisions.md#send-failure-walkback
+ *
+ * @param {object} deps
+ * @param {object|null} db
+ * @param {object} subject
+ * @param {object[]} items  The items the failed message carried.
+ * @param {string} what     Which message type failed, for the log.
+ * @returns {Promise<void>}
+ */
+async function markSendFailed(deps, db, subject, items, what) {
+  const ids = items.map((item) => item.dbId).filter(Boolean);
+  console.error(`${subject.name}: ${what} send failed — ${ids.length} item(s) marked unposted`);
+  if (db && !deps.dryRun && ids.length) {
+    await deps.store.markUnposted(db, ids, "send_failed");
+  }
+}
+
+/**
+ * One standalone post per confirmed announcement.
+ *
+ * @param {object} deps
+ * @param {object|null} db
+ * @param {object} subject
+ * @param {object[]} ceremonies
+ * @returns {Promise<void>}
+ */
+async function sendCeremonies(deps, db, subject, ceremonies) {
+  for (const ceremony of ceremonies) {
+    const message = `🚨 <b>${escapeHtml(domain.ceremonyLabel)}</b>\n\n<b>${escapeHtml(ceremony.text)}</b>\n\n— <a href="${escapeHtml(ceremony.item.url)}">${escapeHtml(ceremony.item.source)}</a>`;
+    if (deps.dryRun) {
+      console.log(`\n--- would post (ceremony) ---\n${message}\n`);
+      continue;
+    }
+
+    const messageId = await deps.sendMessage(deps.chatId, message, { html: true, noPreview: true });
+    if (db && ceremony.claimId) await deps.store.setClaimMessageId(db, ceremony.claimId, messageId);
+    if (!messageId) await markSendFailed(deps, db, subject, [ceremony.item], "ceremony");
+  }
+}
+
+/**
+ * The digest: rumor lines first, then regular bullets, then one shared line
+ * for the tangential — attached only when there is a real line above it.
+ *
+ * @param {object} deps
+ * @param {object|null} db
+ * @param {object} subject
+ * @param {object} messages  From assembleMessages.
+ * @returns {Promise<void>}
+ */
+async function sendDigest(deps, db, subject, messages) {
+  const { rumorPosts, digestItems, tangential, digestClaims } = messages;
+
+  // Build the lines in display order.
+  const lines = [];
+  for (const rumor of rumorPosts) {
+    lines.push(
+      `🕵️ <b>Rumor:</b> ${escapeHtml(rumor.text)} — <a href="${escapeHtml(rumor.item.url)}">${escapeHtml(rumor.item.source)}</a>, ${hoursAgo(rumor.item.publishedAt)}h ago`
+    );
+  }
+  for (const item of digestItems) {
+    lines.push(digestLine(item));
+  }
   if (tangential.length > 0 && lines.length > 0) lines.push(alsoMentioningLine(tangential));
-  if (lines.length > 0) {
-    const message = `🔎 <b>${escapeHtml(subject.name)}</b>\n\n${lines.join("\n\n")}`;
-    if (deps.dryRun) {
-      console.log(`\n--- would post ---\n${message}\n`);
-    } else {
-      const mid = await deps.sendMessage(deps.chatId, message, { html: true, noPreview: true });
-      if (db && mid) {
-        for (const r of rumorPosts) if (r.claimId) await deps.store.setClaimMessageId(db, r.claimId, mid);
-        for (const cid of digestClaims) await deps.store.setClaimMessageId(db, cid, mid);
-        // Delivered at last: the rows that were carrying 'send_failed' go back
-        // to saying the group has seen them.
-        const recovered = [...digestItems, ...tangential].filter((i) => i.resent).map((i) => i.dbId);
-        if (recovered.length) {
-          await deps.store.markPosted(db, recovered);
-          console.log(`${subject.name}: ${recovered.length} recovered item(s) delivered`);
-        }
+
+  // Every posted item this run was tangential — a header plus an "also
+  // mentioning" line is exactly the noise this rule removes, so nothing is
+  // sent, and the rows already written posted=true are corrected.
+  // History: docs/decisions.md#send-failure-walkback
+  if (lines.length === 0) {
+    if (tangential.length > 0) {
+      console.log(`${subject.name}: ${tangential.length} tangential item(s) only — nothing broadcast`);
+      if (db && !deps.dryRun) {
+        await deps.store.markUnposted(db, tangential.map((item) => item.dbId).filter(Boolean), "tangential");
       }
-      // One message carries every line, so one failure loses all of them. The
-      // claims stay: a claim is a fact we learned, not a message we sent.
-      if (!mid) await sendFailed([...rumorPosts.map((r) => r.item), ...digestItems, ...tangential], "digest");
     }
-  } else if (tangential.length > 0) {
-    // Every posted item this run was tangential — a header plus an "also
-    // mentioning" line is exactly the noise this rule removes, so nothing is
-    // sent, and the rows already written posted=true are corrected.
-    // History: docs/decisions.md#send-failure-walkback
-    console.log(`${subject.name}: ${tangential.length} tangential item(s) only — nothing broadcast`);
-    if (db && !deps.dryRun) {
-      await deps.store.markUnposted(db, tangential.map((i) => i.dbId).filter(Boolean), "tangential");
+    return;
+  }
+
+  const message = `🔎 <b>${escapeHtml(subject.name)}</b>\n\n${lines.join("\n\n")}`;
+  if (deps.dryRun) {
+    console.log(`\n--- would post ---\n${message}\n`);
+    return;
+  }
+
+  const messageId = await deps.sendMessage(deps.chatId, message, { html: true, noPreview: true });
+  if (db && messageId) {
+    // The digest is these claims' home message.
+    for (const rumor of rumorPosts) {
+      if (rumor.claimId) await deps.store.setClaimMessageId(db, rumor.claimId, messageId);
+    }
+    for (const claimId of digestClaims) {
+      await deps.store.setClaimMessageId(db, claimId, messageId);
+    }
+
+    // Delivered at last: the rows that were carrying 'send_failed' go back
+    // to saying the group has seen them.
+    const recovered = [...digestItems, ...tangential].filter((item) => item.resent).map((item) => item.dbId);
+    if (recovered.length) {
+      await deps.store.markPosted(db, recovered);
+      console.log(`${subject.name}: ${recovered.length} recovered item(s) delivered`);
     }
   }
 
-  // 3. Confirmations: threaded replies to the original rumor post.
-  for (const c of confirmations) {
-    const msg = `✅ <b>Confirmed</b> — ${escapeHtml(c.text)}\n<a href="${escapeHtml(c.item.url)}">${escapeHtml(c.item.source)}</a>`;
+  // One message carries every line, so one failure loses all of them. The
+  // claims stay: a claim is a fact we learned, not a message we sent.
+  if (!messageId) {
+    await markSendFailed(deps, db, subject,
+      [...rumorPosts.map((rumor) => rumor.item), ...digestItems, ...tangential], "digest");
+  }
+}
+
+/**
+ * Confirmations: threaded replies to the original rumor post.
+ *
+ * @param {object} deps
+ * @param {object[]} confirmations
+ * @returns {Promise<void>}
+ */
+async function sendConfirmations(deps, confirmations) {
+  for (const confirmation of confirmations) {
+    const message = `✅ <b>Confirmed</b> — ${escapeHtml(confirmation.text)}\n<a href="${escapeHtml(confirmation.item.url)}">${escapeHtml(confirmation.item.source)}</a>`;
     if (deps.dryRun) {
-      console.log(`\n--- would post (confirmation) ---\n${msg}\n`);
+      // Unreachable today: a confirmation is only created when the DB is
+      // written, which a dry run never does. Whether a dry run should preview
+      // confirmations is an open decision.
+      console.log(`\n--- would post (confirmation) ---\n${message}\n`);
     } else {
-      await deps.sendMessage(deps.chatId, msg, { html: true, noPreview: true, replyTo: c.replyTo });
+      await deps.sendMessage(deps.chatId, message, { html: true, noPreview: true, replyTo: confirmation.replyTo });
     }
   }
 }
