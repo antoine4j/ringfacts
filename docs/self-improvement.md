@@ -94,6 +94,24 @@ ids as strings (`"7"`) while the model answers with numbers (`7`) — which woul
 have silently downgraded *every* real match. A live call caught it. Neither
 would have been caught by reasoning alone.
 
+**Measure it, don't estimate it (2026-08-13).** When a claim about this codebase
+has a number behind it — how well covered something is, how big it is, how often
+a thing happens — run the command that produces the number and report the
+number. An impression formed by reading the code is not evidence, and it is
+wrong often enough to matter:
+
+- "the pipeline tests look thorough" — `node --test --experimental-test-coverage`
+  put `hunter.js` at 79% of functions, with the entire Google News discovery
+  layer at zero.
+- "the comments are a bit verbose" — 35% of the file, thirteen blocks of eight
+  lines or more.
+- "these new tests cover that branch" — only a mutation check proves it. Break
+  the branch, confirm the test fails, restore. A test that passes against broken
+  code reports safety that is not there.
+
+The cost is one command. The alternative is a confident sentence that turns out
+to be false, which is worse than saying nothing.
+
 **Scale verification to what the change can't see, not just to habit
 (2026-08-10).** As the pipeline grows, "ran the offline tests" and "the code
 looks right" stop being enough evidence on their own — use judgment about
