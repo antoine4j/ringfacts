@@ -1,4 +1,4 @@
-// RingFacts hunter — slice 2b: memory + dedup.
+// The RingFacts hunter.
 // Each run: fetch Google News RSS per subject -> drop URLs already in the DB
 // -> embed the rest -> hold back semantic duplicates (same story, different
 // outlet/language) -> post what's genuinely new -> record everything.
@@ -11,11 +11,8 @@
 
 import { sendTelegramMessage, escapeHtml } from "./lib/telegram.js";
 import { openDb } from "./lib/db.js";
-// Imported as a namespace, not as loose functions, because the whole namespace
-// IS the seam: `deps.store` swaps every database call at once (test/fake-store.js
-// answers the same twelve calls from a Map). Faking one level lower — a client
-// that answers SQL strings — would be a fake that drifts from Postgres in
-// silence, which is the opposite of what a test is for.
+// The namespace IS the test seam: `deps.store` swaps every database call at
+// once. History: docs/decisions.md#deps-seam
 import * as realStore from "./lib/db.js";
 import { embedTexts, EMBEDDING_MODEL } from "./lib/embeddings.js";
 import { translateToEnglish } from "./lib/translate.js";
@@ -30,23 +27,20 @@ import { readChatIds } from "./lib/chat-ids.js";
 import { domain } from "./domain/index.js";
 import { fileURLToPath } from "node:url";
 
-// Editions the group reads as-is. Headlines from any other edition are
-// translated to English at posting time, labeled as translated (§17.5:
-// the DB keeps originals; translation is presentation only).
+// Editions the group reads as-is; anything else is translated at posting time
+// and labeled. History: docs/decisions.md#translation-rules
 const GROUP_LANGUAGES = new Set(["en", "uk"]);
 
 const DRY_RUN = process.env.DRY_RUN === "1";
-// Both come from the single telegram-chat-ids secret (lib/chat-ids.js explains
-// why). `required: false` so a DRY_RUN or an offline test run with no chat
-// configured still imports — but a value that IS present and malformed throws
-// here, at startup, instead of failing one message at a time in production.
-// ADMIN_CHAT_ID takes the failure self-reports; they never go to the group.
+// From the single telegram-chat-ids secret (lib/chat-ids.js explains why).
+// `required: false` lets a dry or offline run import with no chat configured; a
+// present-but-malformed value still throws at startup. ADMIN_CHAT_ID takes the
+// failure self-reports; they never go to the group.
 const { group: CHAT_ID, admin: ADMIN_CHAT_ID } = readChatIds({ required: false });
 const HOURS_BACK = Number(process.env.HOURS_BACK || 24);
 const MAX_ITEMS_PER_SUBJECT = 5;
-// Cosine similarity above this = same story. Tuned on real data 2026-08-06:
-// a UK<->EN translated pair measured 0.841; unrelated same-subject pairs
-// topped out at 0.702. 0.80 splits that gap.
+// Cosine similarity above this = same story.
+// History: docs/decisions.md#dup-threshold
 const SEMANTIC_DUP_THRESHOLD = Number(process.env.SEMANTIC_DUP_THRESHOLD || 0.8);
 
 // Google News RSS needs matching language/country params per edition,
@@ -90,9 +84,8 @@ function hoursAgo(date) {
   return Math.round((Date.now() - date.getTime()) / 3_600_000);
 }
 
-// Google News intermittently sheds load from cloud-datacenter IPs (503s,
-// ~1-2 runs/day observed). One retry after a pause rides out the wave;
-// worst case (all aliases failing twice) stays within the job timeout.
+// One retry after a pause rides out Google's intermittent load shedding.
+// History: docs/decisions.md#retry-delay
 const RETRY_DELAY_MS = Number(process.env.RETRY_DELAY_MS || 75_000); // 30s proved too short for Google's waves
 
 export async function fetchFeed(alias) {
@@ -117,13 +110,12 @@ export async function fetchFreshItems(subject, directItems = [], hoursBack = HOU
     }
     items.push(...found);
   }
-  // Direct-feed items that name this subject (2e). Cloned: the outlet pool is
+  // Direct-feed items that name this subject. Cloned: the outlet pool is
   // shared across subjects, and the pipeline stamps per-subject fields.
   items.push(...directItems.filter((i) => matchesSubject(i, subject)).map((i) => ({ ...i })));
   // Fresh only, newest first. In-run URL dedup across aliases and outlets;
-  // cross-run dedup is the database's job. NOTE: no cap here — capping before
-  // the known-URL check would let newer known items permanently shadow older
-  // unseen ones. The cap is applied to unseen candidates in huntSubject.
+  // cross-run dedup is the database's job. Deliberately no cap here.
+  // History: docs/decisions.md#flood-cap-order
   const seen = new Set();
   return items
     .filter((item) => item.publishedAt.getTime() > cutoff)
@@ -139,39 +131,20 @@ function cleanTitle(item) {
     : item.title;
 }
 
-// Telegram HTML mode: headline stays plain text (calmer to read), the short
-// source name carries the link. Translated headlines are labeled — never
-// presented as the original. The href is escaped: both parsers decode HTML
-// entities into the URL (hunter.js pick(), feeds.js), so a WordPress feed's
-// "?utm_source=rss&utm_medium=rss" reaches here with a bare "&" — Telegram's
-// HTML mode rejects that and sendTelegramMessage fails the WHOLE message
-// silently, even though every item in it is already stored posted=true.
-// Exported so the message-formatting logic — dedup, escaping — is directly
-// checkable (test/message.test.js). Importing this module never starts a hunt:
-// main() runs only behind the argv guard at the bottom of the file.
+// One digest bullet: plain headline, the source name carries the link, and a
+// translated headline is labeled. Every value is escaped — an unescaped "&" in
+// an href makes Telegram silently reject the whole message.
+// Exported for test/message.test.js; importing this module never starts a hunt.
+// History: docs/decisions.md#telegram-html-escaping
 export function digestLine(item) {
   const title = item.displayTitle ?? cleanTitle(item);
   const label = item.displayTitle ? ` (translated from ${item.edition})` : "";
   return `• ${escapeHtml(title)} — <a href="${escapeHtml(item.url)}">${escapeHtml(item.source)}</a>${label}, ${hoursAgo(item.publishedAt)}h ago`;
 }
 
-// Tangential items: stored and linked, but not worth a headline. Grouped by
-// outlet so the line stays scannable, and ordered newest-first within each
-// outlet because candidates arrive that way (fetchFreshItems sorts at :121).
-//
-// An outlet with two demoted stories in one run gets both links, numbered
-// "Bloody Elbow (1) · Bloody Elbow (2)". The first version showed only the
-// newest, which read cleanly but made the older story unreachable: the message
-// is the only place a demoted article is ever offered, and Gate 1 means a later
-// run will never offer it again. A bare repeated name reads as a bug, so the
-// index is what earns the second link its place. Numbering appears only when an
-// outlet actually has more than one — a lone "Sherdog (1)" would imply a
-// missing sibling.
-//
-// Falls back to the URL hostname when source is empty (parseRssItems can return
-// "" for a missing <source> tag), which would otherwise render an invisible
-// zero-width link. Identical URLs collapse: the same article reached twice is
-// one story, not two, and must not be numbered as if it were two.
+// The one shared line for demoted items: source links grouped by outlet,
+// numbered only when an outlet has more than one story.
+// History: docs/decisions.md#tangential-line
 export function alsoMentioningLine(items) {
   const bySource = new Map();
   for (const item of items) {
@@ -197,21 +170,13 @@ function hostOf(url) {
 }
 
 // How much worse the inherited claim may fit before we refuse to inherit.
-// Measured 2026-08-08 over all 28 live links: the links that had drifted onto
-// a foreign claim sat 0.107-0.214 below the item's best-fitting claim, while
-// links that were right but looked wrong (claim 4, whose garbled canonical
-// text under-scores its own evidence) sat 0.076-0.082 below. 0.10 splits the
-// observed gap — same way the 0.80 dup threshold was picked.
+// History: docs/decisions.md#claim-drift-gap
 const CLAIM_DRIFT_GAP = Number(process.env.CLAIM_DRIFT_GAP || 0.1);
 
-// Would inheriting `claimId` be a mistake? Dup-gate inheritance is transitive:
-// B is held against A and takes A's claim, then C is held against B and takes
-// it too. Every hop clears 0.80 against the PREVIOUS headline, so the chain can
-// walk somewhere its starting claim never was — observed live, where a story
-// about Subject C's manager blasting Ali Abdelaziz rode a 0.802 -> 0.869 -> 0.974
-// chain onto an unrelated matchmaking claim. We can't re-read the article
-// without an LLM call, but we can ask the cheaper question: does this headline
-// sit far closer to some OTHER claim than to the one it is about to join?
+// Would inheriting `claimId` be a mistake? Dup chains are transitive and can
+// walk onto a foreign claim, so ask the cheaper-than-an-LLM question: does this
+// headline sit far closer to some OTHER claim than the one it would join?
+// History: docs/decisions.md#claim-drift-gap
 async function inheritanceDrifts(deps, db, item, claimId) {
   const verdict = await deps.store.claimLinkDrifts(db, item, claimId, CLAIM_DRIFT_GAP);
   if (!verdict.drifts) return false; // false, or null = unmeasurable -> old behaviour
@@ -223,17 +188,10 @@ async function inheritanceDrifts(deps, db, item, claimId) {
   return true;
 }
 
-// Held as a semantic duplicate: recorded for audit, never posted, and linked
-// to whatever claim its nearest neighbor already supports — held dups inherit
-// the claim link instead of paying for extraction (docs §5).
-//
-// A drifted link is worse than no link: claim_sources rows are what phase 2
-// counts for corroboration and what a confirmation ceremony lists as evidence,
-// so a foreign article credited here becomes a wrong statement to the group
-// later. On drift we keep the hold (the item still never posts — nothing the
-// group sees changes) and leave it unlinked, which is already a recognised
-// state: audit-swallowed-confirmations.js calls unlinked held items
-// "reconciler candidates".
+// Held as a semantic duplicate: recorded for audit, never posted, and linked to
+// its neighbour's claim — unless that link would drift onto a foreign claim, in
+// which case the hold stands and the item stays unlinked.
+// History: docs/decisions.md#claim-drift-gap
 async function holdAsDup(deps, db, item, role, neighborId = item.nearestItem, reason = "embedding") {
   item.posted = false;
   item.heldReason = reason;
@@ -246,19 +204,8 @@ async function holdAsDup(deps, db, item, role, neighborId = item.nearestItem, re
 }
 
 // Everything this function reaches outside itself arrives through `deps`, and
-// every default is the real thing — so production behaviour is exactly what it
-// was before the parameter existed, and a test can substitute one piece at a
-// time. The four network-touching calls (embeddings, matcher, body fetch, URL
-// decode) plus Telegram and the database are the whole surface.
-//
-// dryRun/chatId/matcherEnabled are read from the environment ONCE at import in
-// the constants above, which is right for a job process and useless for a test
-// that needs to vary them per case — so they are overridable here too.
-//
-// Exported alongside digestLine/alsoMentioningLine so the full tier decision
-// (digestTierFor -> array split -> "also mentioning" line -> suppression) is
-// directly checkable with a synthetic item, without waiting for real news to
-// land in exactly the right shape.
+// every default is the real thing — a test substitutes one piece at a time and
+// production behaviour is unchanged. History: docs/decisions.md#deps-seam
 export async function huntSubject(db, subject, directItems = [], overrides = {}) {
   const deps = {
     store: realStore,
@@ -278,23 +225,18 @@ export async function huntSubject(db, subject, directItems = [], overrides = {})
   };
   const fetched = await fetchFreshItems(subject, directItems, deps.hoursBack);
 
-  // Gate 1: exact URLs we already know. Flood cap applies to UNSEEN items
-  // (newest first), so a busy-day backlog drains at 5/run across successive
-  // sweeps instead of being shadowed by newer known items.
+  // Gate 1: exact URLs we already know. The flood cap applies to unseen items
+  // only. History: docs/decisions.md#flood-cap-order
   const known = db ? await deps.store.knownUrls(db, fetched.map((i) => i.url)) : new Set();
   const unseen = fetched.filter((i) => !known.has(i.url));
   const candidates = unseen.slice(0, MAX_ITEMS_PER_SUBJECT);
   if (unseen.length > candidates.length) {
     console.log(`${subject.name}: capped ${unseen.length} unseen to ${candidates.length}, rest next run`);
   }
-  // Items an earlier run stored but could not deliver, for this run to carry.
-  // Fetched HERE, above the nothing-new return, because the most likely hour
-  // for a retry is a quiet one — an outage does not schedule itself around the
-  // news. Returning early on "nothing new" would strand them until the next
-  // hour that happened to find something, which could be days.
-  //
-  // Read even under DRY_RUN so a dry run previews what a real one would carry;
-  // nothing is written back, because the write only happens on a real send.
+  // Items an earlier run stored but could not deliver, fetched above the
+  // nothing-new return so a quiet hour still carries them. Read even under
+  // DRY_RUN (a dry run previews the carry; nothing is written back).
+  // History: docs/decisions.md#resend-pass
   const resends = db ? await deps.store.pendingResends(db, subject.name, HOURS_BACK) : [];
 
   if (candidates.length === 0 && resends.length === 0) {
@@ -334,17 +276,12 @@ export async function huntSubject(db, subject, directItems = [], overrides = {})
     const official = isOfficialSource(item.source);
     const dup = Boolean(nearest && nearest.similarity >= SEMANTIC_DUP_THRESHOLD);
 
-    // Gate 2: confident embedding dup -> held; inherits its neighbor's claim
-    // link as an echo, no LLM needed (docs §5).
-    //
-    // Official sources are exempt, because this gate is most likely to fire
-    // exactly when it must not: an official confirmation headline is BY
-    // CONSTRUCTION near-identical to the rumor it confirms, so holding it
-    // here would swallow the rumor -> confirmed transition (docs §6) — the
-    // one edge the claims layer exists to catch. Official items go to the
-    // matcher instead, so the confirm decision rests on read meaning rather
-    // than on 0.80 cosine; the loudest thing the bot does earns the LLM call.
-    // The exemption is a deferral, not a waiver — see the re-apply below.
+    // Gate 2: confident embedding dup -> held, inheriting its neighbour's
+    // claim link as an echo, no LLM needed. Official sources are exempt (an
+    // official confirmation is near-identical to the rumor it confirms, and
+    // holding it would swallow the rumor -> confirmed transition), but the
+    // exemption is a deferral, not a waiver — see the re-apply below.
+    // History: docs/decisions.md#official-exemption
     if (dup && !official) {
       console.log(
         `${subject.name}: held as dup (${nearest.similarity.toFixed(2)} vs "${nearest.title.slice(0, 60)}"): ${item.title.slice(0, 60)}`
@@ -353,12 +290,10 @@ export async function huntSubject(db, subject, directItems = [], overrides = {})
       continue;
     }
 
-    // Body step (2e), only for items that made it past the free gates — held
-    // dups and known URLs never cost network. Decode Google's wrapper to the
-    // real URL, catch the cross-source duplicate that reveals (a story we
-    // already stored from a direct feed), then fetch + extract the article.
-    // Everything here is a bonus: any failure leaves the item headline-only,
-    // which is exactly yesterday's pipeline.
+    // Body step, only for items past the free gates: decode Google's wrapper,
+    // catch the cross-source duplicate the real URL reveals, then fetch and
+    // extract the article. All of it is a bonus — any failure leaves the item
+    // headline-only.
     try {
       const resolved = await deps.decodeGoogleNewsUrl(item.url);
       item.resolvedUrl = resolved ?? null; // null = wrapped URL we couldn't open
@@ -407,10 +342,8 @@ export async function huntSubject(db, subject, directItems = [], overrides = {})
     console.log(
       `${subject.name}: matcher ${verdict.verdict}${verdict.match_claim_id ? " #" + verdict.match_claim_id : ""}: ${item.title.slice(0, 60)}`
     );
-    // Recorded on EVERY matcher-seen item, before any branch returns — the
-    // wrong_subject and match rows are archive too, and a prominence judgement
-    // is only worth re-measuring later if it was kept for all of them. Same
-    // null convention as bodyVia: null means we never got an answer.
+    // Recorded on every matcher-seen item before any branch returns, so the
+    // archive stays re-measurable. Null means we never got an answer.
     item.subjectRole = verdict.subject_role ?? null;
 
     if (verdict.verdict === "WRONG_SUBJECT") {
@@ -431,9 +364,8 @@ export async function huntSubject(db, subject, directItems = [], overrides = {})
           await deps.store.linkClaimSource(db, itemId, verdict.match_claim_id,
             official ? "official" : "echo", verdict.stance ?? "asserts");
         }
-        // Conservative lifecycle (phase 1): ONLY an official source flips
-        // rumor -> confirmed. Independence counting waits for 2e bodies.
-        // Official denials: logged + linked for now; auto-deny is phase 2.
+        // Conservative lifecycle: only an official source that asserts flips
+        // rumor -> confirmed. Denials are linked as evidence, never acted on.
         if (official && (verdict.stance ?? "asserts") === "asserts") {
           const c = await deps.store.confirmClaim(db, verdict.match_claim_id);
           if (c) confirmations.push({ text: c.canonical_text, replyTo: c.tg_message_id, item });
@@ -442,12 +374,9 @@ export async function huntSubject(db, subject, directItems = [], overrides = {})
       continue;
     }
 
-    // Gate 2, re-applied. The official exemption above bought this item a
-    // matcher call so it could reach MATCH (-> confirm, already returned) or
-    // NEW (-> born-confirmed claim, handled below). On UNSURE / NO_CLAIM
-    // there is no claim to act on, so the reason to skip the dup gate is
-    // gone and the gate stands — otherwise a matcher outage (fail-open
-    // UNSURE, missing API key) turns every official echo into a duplicate post.
+    // Gate 2, re-applied: on UNSURE / NO_CLAIM there is no claim to act on, so
+    // the reason to skip the dup gate is gone and the gate stands.
+    // History: docs/decisions.md#official-exemption
     if (official && dup && ["UNSURE", "NO_CLAIM"].includes(verdict.verdict)) {
       console.log(
         `${subject.name}: matcher ${verdict.verdict}, holding official dup (${nearest.similarity.toFixed(2)} vs "${nearest.title.slice(0, 60)}"): ${item.title.slice(0, 60)}`
@@ -461,14 +390,9 @@ export async function huntSubject(db, subject, directItems = [], overrides = {})
     const isRealClaim = nc && !domain.ignoredTypes.includes(nc.type); // docs §5
 
     // Digest tier (lib/tier.js): is this article ABOUT the subject, or does it
-    // merely sit next to news about them? The matcher's role judgement leads —
-    // it read the sentence and can say a name was only background color — and
-    // the measured mention-count rule sits underneath as the fallback for
-    // every item the matcher said nothing useful about. Demoted items still
-    // post, as a source link on one shared line rather than a headline.
-    // Claim sources are exempt by construction: whatever fed a claim earns its
-    // own line. Keyed on isRealClaim, not claimId — claimId is null under a
-    // dry run and with no db, and this must demote identically either way.
+    // merely sit next to news about them? The matcher's role judgement leads;
+    // the mention-count rule is the fallback. Keyed on isRealClaim, not claimId.
+    // History: docs/decisions.md#tier-keying
     item.digestTier = isRealClaim ? "main" : digestTierFor(item, subject.matchNames, item.subjectRole);
     item.posted = true;
     const itemId = db && !deps.dryRun ? await deps.store.insertItem(db, item) : null;
@@ -505,27 +429,9 @@ export async function huntSubject(db, subject, directItems = [], overrides = {})
       `(${tangential.length} tangential), ${confirmations.length} confirmation(s)`
   );
 
-  // Resend pass: items an earlier run stored but could not deliver, carried by
-  // the next run that can. They ride this run's digest as ordinary bullets
-  // rather than a message of their own — one message reads better than two,
-  // and digestLine already stamps each with its real age, so a recovered item
-  // announces its own lateness instead of pretending to be fresh.
-  //
-  // This lives here, not in a separate scheduled job, for the same reason: a
-  // second job posting to the same group would race the hourly digest and
-  // duplicate this entire formatting path. The hourly run is already the
-  // retry.
-  //
-  // Rebuilt from the row, so only what the row stores is available — no body,
-  // no embedding, no verdict. None of that is needed to render a bullet, and
-  // the tier decision was already made and recorded when the item first came
-  // through. Deliberately NOT re-judged: re-running the matcher would spend a
-  // call to re-derive an answer we already have, and could quietly change it.
-  //
-  // One fidelity cost, accepted knowingly: an item that first went out as a
-  // 🕵️ Rumor line comes back as an ordinary bullet, because the row stores the
-  // publisher's headline and the claim sentence lives on the claim. Late and
-  // plainer beats lost.
+  // Resend pass: items an earlier run stored but could not deliver ride this
+  // run's digest as ordinary bullets, rebuilt from the row and deliberately
+  // not re-judged. History: docs/decisions.md#resend-pass
   for (const row of resends) {
     const item = {
       dbId: row.id, title: row.title, source: row.source ?? "",
@@ -539,15 +445,9 @@ export async function huntSubject(db, subject, directItems = [], overrides = {})
   }
 
   // Translate digest headlines the group can't read (claim texts are already
-  // English). Tangential items are deliberately excluded — the "also
-  // mentioning" line shows only source names, so translating their headlines
-  // would be a wasted Gemini call. Fail-open: a failed translation posts the
-  // original.
-  //
-  // A resent row whose edition is null predates the edition column: its
-  // language is genuinely unknown, so it posts as filed. Guessing would be
-  // worse than late — a mislabelled "(translated from …)" claims a provenance
-  // that isn't true.
+  // English). Tangential items are excluded, a null-edition resend posts as
+  // filed, and a failed translation posts the original.
+  // History: docs/decisions.md#translation-rules
   for (const item of digestItems) {
     if (item.resent && !item.edition) continue;
     if (GROUP_LANGUAGES.has(item.edition)) continue;
@@ -558,18 +458,9 @@ export async function huntSubject(db, subject, directItems = [], overrides = {})
     }
   }
 
-  // Rows are written posted=true before any message is built, because the send
-  // is the last thing that happens and the row has to exist for the claim to
-  // link to. So a send that FAILS leaves the archive asserting the group saw
-  // something it never did — which is not a bookkeeping detail: held_reason is
-  // documented as "why the group never saw this" (schema.sql), bootstrap and
-  // the swallowed-confirmations audit both read it that way, and
-  // audit-digest-tier.js partitions on `posted` when re-measuring thresholds.
-  //
-  // This is not hypothetical. A deploy on 2026-08-09 blanked TELEGRAM_CHAT_ID;
-  // every send for the next 20 hours returned "chat not found" while three
-  // items sat in the archive marked posted=true. Nothing in the database
-  // disagreed with them, so no query could have found the outage.
+  // Rows are written posted=true before any send, so a failed send must walk
+  // them back — or the archive asserts the group saw something it never did.
+  // History: docs/decisions.md#send-failure-walkback
   const sendFailed = async (items, what) => {
     const ids = items.map((i) => i.dbId).filter(Boolean);
     console.error(`${subject.name}: ${what} send failed — ${ids.length} item(s) marked unposted`);
@@ -590,10 +481,8 @@ export async function huntSubject(db, subject, directItems = [], overrides = {})
     }
   }
 
-  // 2. The digest: rumor lines first, then regular items, then one shared
-  // line for everything demoted as tangential. Attached only when there's a
-  // real line to attach it to — see the suppression branch below for when
-  // tangential items are the ONLY thing a run produced.
+  // 2. The digest: rumor lines first, then regular items, then one shared line
+  // for the tangential — attached only when there is a real line above it.
   const lines = [
     ...rumorPosts.map(
       (r) => `🕵️ <b>Rumor:</b> ${escapeHtml(r.text)} — <a href="${escapeHtml(r.item.url)}">${escapeHtml(r.item.source)}</a>, ${hoursAgo(r.item.publishedAt)}h ago`
@@ -618,21 +507,15 @@ export async function huntSubject(db, subject, directItems = [], overrides = {})
           console.log(`${subject.name}: ${recovered.length} recovered item(s) delivered`);
         }
       }
-      // One message carries every line, so one failure loses all of them —
-      // the rumor items, the bullets, and anything folded into the shared
-      // line. The claims stay: a claim is a fact we learned, not a message we
-      // sent, and its null tg_message_id already means "nothing to thread a
-      // confirmation under".
+      // One message carries every line, so one failure loses all of them. The
+      // claims stay: a claim is a fact we learned, not a message we sent.
       if (!mid) await sendFailed([...rumorPosts.map((r) => r.item), ...digestItems, ...tangential], "digest");
     }
   } else if (tangential.length > 0) {
-    // Every posted item this run was tangential — a message with nothing but
-    // a header and an "also mentioning" line is exactly the noise this rule
-    // exists to remove, so nothing is sent. But these rows were already
-    // written with posted=true (set before we knew the run's total shape),
-    // and audit-digest-tier.js partitions the archive on that column when
-    // re-measuring thresholds — so correct it, or the next measurement reads
-    // items as broadcast that never were.
+    // Every posted item this run was tangential — a header plus an "also
+    // mentioning" line is exactly the noise this rule removes, so nothing is
+    // sent, and the rows already written posted=true are corrected.
+    // History: docs/decisions.md#send-failure-walkback
     console.log(`${subject.name}: ${tangential.length} tangential item(s) only — nothing broadcast`);
     if (db && !deps.dryRun) {
       await deps.store.markUnposted(db, tangential.map((i) => i.dbId).filter(Boolean), "tangential");
@@ -663,22 +546,18 @@ async function main() {
   const db = process.env.DATABASE_URL ? await openDb() : null;
   if (!db) console.warn("No DATABASE_URL — running without dedup memory.");
 
-  // Direct publisher feeds (2e): one fetch per outlet per run, shared across
+  // Direct publisher feeds: one fetch per outlet per run, shared across
   // subjects. A dead outlet is a warning, never a failed run — and if Google
-  // 503s a whole run, these still deliver (the documented escalation path).
+  // 503s a whole run, these still deliver.
   const directItems = [];
   const outletResults = await Promise.allSettled(OUTLETS.map((o) => fetchOutletItems(o)));
   outletResults.forEach((r, i) => {
     if (r.status === "fulfilled") {
       directItems.push(...r.value);
-      // Matched/discarded counts close the pipeline's one silent blind spot.
-      // Outlet feeds are name-filtered BEFORE anything is stored, so an item
-      // no subject matches leaves no trace at all — unlike a Google News miss,
-      // which reaches the matcher and is stored as WRONG_SUBJECT. A matchNames
-      // stem that stopped working (an inflected surname the stem no longer
-      // covers) would therefore look exactly like quiet news, which
-      // docs/self-improvement.md §5 tells runs NOT to act on. A sustained
-      // "0 matched" here is the evidence that separates the two.
+      // Outlet feeds are name-filtered before anything is stored, so a rotted
+      // matchNames stem would look exactly like quiet news; these counts are
+      // the evidence that separates the two.
+      // History: docs/decisions.md#outlet-match-counters
       const matched = r.value.filter((it) => subjects.some((s) => matchesSubject(it, s))).length;
       console.log(
         `direct feed ${OUTLETS[i].id}: ${r.value.length} items, ${matched} matched, ${r.value.length - matched} discarded`,
@@ -707,10 +586,8 @@ async function main() {
   }
 }
 
-// Guarded so a script can `import { digestLine, alsoMentioningLine } from
-// "./hunter.js"` — e.g. to check message formatting directly — without
-// triggering a live hunt. `node hunter.js` (local runs, the Cloud Run job)
-// is unaffected: argv[1] equals this file's path in that case.
+// Run a hunt only when executed directly (`node hunter.js`), so tests and
+// scripts can import from this module without starting one.
 if (process.argv[1] === fileURLToPath(import.meta.url)) {
   main().catch(async (err) => {
     console.error(err);
