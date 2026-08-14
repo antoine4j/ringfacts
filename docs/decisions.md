@@ -331,3 +331,18 @@ embedded items / 8 days:
 
 Revertibility: `DUP_ANCHORS_ALL=1` restores held-as-anchor without a deploy;
 `DUP_ANCHOR_WINDOW_DAYS` overrides the window. Both read at query time.
+
+## dry-run-confirmation-preview — A dry run previews confirmations by reading, not flipping
+*2026-08-14*
+
+A confirmation is created when `confirmClaim` writes the rumor→confirmed flip,
+and a dry run writes nothing — so for its first week the dry run silently
+omitted confirmations from its preview, and the preview branch in the send
+path was dead code. Since dry runs are the pre-deploy rehearsal and
+confirmations are the rarest, least-rehearsed event in the system, Anton
+decided the rehearsal must show them.
+
+The mechanism keeps dry-run semantics exact: reads happen, writes never do.
+`claimIfRumor` (lib/db.js) is the read half of `confirmClaim` — same row, same
+rumor-only guard, no UPDATE — and the dry run uses it to build the same
+preview a real run would send, while the rumor stays a rumor.
