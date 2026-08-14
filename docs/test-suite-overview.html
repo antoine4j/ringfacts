@@ -354,9 +354,9 @@
   <h1>What the tests cover, and what they deliberately don&rsquo;t</h1>
   <p class="standfirst">
     Three tiers, split by what each one <em>needs</em> rather than by what it is called.
-    That single distinction is the whole design: this repository commits to itself,
-    unattended, every six hours, so the tests that gate a commit have to run with no
-    network, no API keys, and no database.
+    That single distinction is the whole design: the tests that gate a commit have to run
+    with no network, no API keys, and no database, so the gate holds whoever is committing
+    &mdash; including an agent session with nothing mounted.
   </p>
 
   <div class="figures">
@@ -377,8 +377,8 @@
     failed when they did. That was survivable while every commit was typed by hand.
   </p>
   <p>
-    It stopped being survivable once the check-in runs began committing code at 4am.
-    <code>self-improvement.md</code> §4 tells those runs to verify before claiming &mdash;
+    It stopped being survivable the moment unattended check-in runs became possible.
+    <code>self-improvement.md</code> §4 tells such a run to verify before claiming &mdash;
     but a principle nothing enforces is a principle that erodes. So the tests that
     <em>gate</em> a commit must be runnable by an agent with nothing mounted.
   </p>
