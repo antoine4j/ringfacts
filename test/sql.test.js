@@ -174,6 +174,19 @@ describe("nearestRecent — pgvector's arithmetic, not ours", { skip }, () => {
     assert.equal(await nearestRecent(db, lonely, vectorAt(0)), null);
     await db.query("DELETE FROM items WHERE subject = $1", [lonely]);
   });
+
+  // Held rows are not anchors — the chain-break, asserted against the real
+  // SQL, not just the fake. History: docs/decisions.md#posted-anchors
+  test("a held row is never the nearest, however similar", async () => {
+    const chained = `${SUBJECT}_chained`;
+    await insertItem(db, item({
+      url: `https://example.test/${chained}/held`, subject: chained,
+      title: "a held echo", embedding: vectorAt(0), embeddingModel: "test", posted: false,
+    }));
+    assert.equal(await nearestRecent(db, chained, vectorAt(0)), null,
+      "an identical held row must not anchor the gate");
+    await db.query("DELETE FROM items WHERE subject = $1", [chained]);
+  });
 });
 
 describe("claims", { skip }, () => {

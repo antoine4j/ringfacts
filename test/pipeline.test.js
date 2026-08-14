@@ -16,7 +16,7 @@ import { test, describe, beforeEach } from "node:test";
 import assert from "node:assert/strict";
 import { huntSubject } from "../hunter.js";
 import * as realStore from "../lib/db.js";
-import { createFakeStore, vectorsWithSimilarity, assertStoreInterfaceMatches } from "./fake-store.js";
+import { createFakeStore, vectorsWithSimilarity, vectorAt, assertStoreInterfaceMatches } from "./fake-store.js";
 
 const SUBJECT = { name: "Testov Example", aliases: [], matchNames: ["Testov"], confusables: null };
 const DB = { fake: true }; // stands in for the pg client; only the store touches it
@@ -165,7 +165,7 @@ describe("gate 2 — semantic duplicates", () => {
   test("above 0.80 the item is held, not posted, and inherits its neighbour's claim", async () => {
     const [stored, incoming] = vectorsWithSimilarity(0.84);
     const store = createFakeStore({
-      items: [{ url: "https://example.test/first", subject: SUBJECT.name, title: "Testov books a return", embedding: stored }],
+      items: [{ url: "https://example.test/first", subject: SUBJECT.name, title: "Testov books a return", embedding: stored, posted: true }],
       claims: [{ subject: SUBJECT.name, type: "announcement", canonical_text: "Testov returns in March", embedding: stored }],
       claimSources: [{ item_id: "1", claim_id: "1", role: "origin", stance: "asserts" }],
     });
@@ -182,7 +182,7 @@ describe("gate 2 — semantic duplicates", () => {
   test("below 0.80 the item posts", async () => {
     const [stored, incoming] = vectorsWithSimilarity(0.79);
     const store = createFakeStore({
-      items: [{ url: "https://example.test/first", subject: SUBJECT.name, title: "Something else", embedding: stored }],
+      items: [{ url: "https://example.test/first", subject: SUBJECT.name, title: "Something else", embedding: stored, posted: true }],
     });
     await huntSubject(DB, SUBJECT, [makeItem()], deps({ store, embedTexts: async () => [incoming] }));
     assert.equal(sent.length, 1);
@@ -196,7 +196,7 @@ describe("gate 2 — semantic duplicates", () => {
   test("an official source above the threshold is exempted and reaches the matcher", async () => {
     const [stored, incoming] = vectorsWithSimilarity(0.95);
     const store = createFakeStore({
-      items: [{ url: "https://example.test/rumor", subject: SUBJECT.name, title: "Testov targeted for March", embedding: stored }],
+      items: [{ url: "https://example.test/rumor", subject: SUBJECT.name, title: "Testov targeted for March", embedding: stored, posted: true }],
       claims: [{ subject: SUBJECT.name, type: "announcement", canonical_text: "Testov fights in March", status: "rumor", embedding: stored }],
       claimSources: [{ item_id: "1", claim_id: "1", role: "origin", stance: "asserts" }],
     });
@@ -218,7 +218,7 @@ describe("gate 2 — semantic duplicates", () => {
     test(`an official duplicate is re-held when the matcher says ${verdict}`, async () => {
       const [stored, incoming] = vectorsWithSimilarity(0.95);
       const store = createFakeStore({
-        items: [{ url: "https://example.test/rumor", subject: SUBJECT.name, title: "Testov targeted", embedding: stored }],
+        items: [{ url: "https://example.test/rumor", subject: SUBJECT.name, title: "Testov targeted", embedding: stored, posted: true }],
       });
       await huntSubject(DB, SUBJECT, [makeItem({ source: "UFC" })], deps({
         store, embedTexts: async () => [incoming], matchItem: async () => ({ verdict }),
@@ -233,7 +233,7 @@ describe("gate 2 — semantic duplicates", () => {
   test("an official duplicate posts when the matcher mints a new claim", async () => {
     const [stored, incoming] = vectorsWithSimilarity(0.95);
     const store = createFakeStore({
-      items: [{ url: "https://example.test/rumor", subject: SUBJECT.name, title: "Testov targeted", embedding: stored }],
+      items: [{ url: "https://example.test/rumor", subject: SUBJECT.name, title: "Testov targeted", embedding: stored, posted: true }],
     });
     await huntSubject(DB, SUBJECT, [makeItem({ source: "UFC" })], deps({
       store,
@@ -262,7 +262,7 @@ describe("gate 2 — semantic duplicates", () => {
     // claim 1, but sits much closer to claim 2 — the signature of a dup chain
     // that has walked somewhere its starting claim never was.
     const store = createFakeStore({
-      items: [{ url: "https://example.test/first", subject: SUBJECT.name, title: "Testov books a return", embedding: neighbourVec }],
+      items: [{ url: "https://example.test/first", subject: SUBJECT.name, title: "Testov books a return", embedding: neighbourVec, posted: true }],
       claims: [
         { subject: SUBJECT.name, type: "announcement", canonical_text: "Testov returns in March", embedding: neighbourVec },
         { subject: SUBJECT.name, type: "matchmaking", canonical_text: "Testov's manager blasts a rival", embedding: incomingVec },
@@ -274,6 +274,79 @@ describe("gate 2 — semantic duplicates", () => {
     assert.equal(store.rows.items.at(-1).held_reason, "embedding", "still held — the guard does not rescue it");
     assert.equal(store.sourcesOf("1").length, 1, "but not credited to the claim it drifted from");
     assert.equal(store.sourcesOf("2").length, 0, "and not silently reassigned to the closer one either");
+  });
+
+  // The chain-break, pinned. Held articles used to be comparison anchors, so
+  // holds chained — B held for resembling A, C for resembling B — and clusters
+  // drifted away from the story they started on (a live 0.802 -> 0.869 ->
+  // 0.974 chain blocked genuinely different news). Now only POSTED articles
+  // anchor the gate. History: docs/decisions.md#posted-anchors
+  describe("held articles are not anchors", () => {
+    // A at 0°, B at 33°, C at 66°: adjacent pairs are 0.84-similar (dup),
+    // A and C only 0.41 (different stories).
+    const [vecA, vecB] = [vectorAt(0), vectorAt(33)];
+    const vecC = vectorAt(66);
+
+    test("an article resembling only a HELD item posts — the chain cannot grow", async () => {
+      const store = createFakeStore({
+        items: [
+          { url: "https://example.test/a", subject: SUBJECT.name, title: "Testov books a return", embedding: vecA, posted: true },
+          { url: "https://example.test/b", subject: SUBJECT.name, title: "Testov books return, say sources", embedding: vecB, posted: false, held_reason: "embedding" },
+        ],
+      });
+      await huntSubject(DB, SUBJECT, [makeItem({ title: "Testov opens a gym in Kyiv" })], deps({ store, embedTexts: async () => [vecC] }));
+      assert.equal(sent.length, 1, "resembling a held echo is not resembling the group's feed");
+      assert.equal(store.rows.items.at(-1).posted, true);
+    });
+
+    test("an article resembling a POSTED item is still held", async () => {
+      const store = createFakeStore({
+        items: [{ url: "https://example.test/a", subject: SUBJECT.name, title: "Testov books a return", embedding: vecA, posted: true }],
+      });
+      await huntSubject(DB, SUBJECT, [makeItem()], deps({ store, embedTexts: async () => [vectorAt(33)] }));
+      assert.equal(sent.length, 0, "the ordinary duplicate case is unchanged");
+      assert.equal(store.rows.items.at(-1).held_reason, "embedding");
+    });
+
+    test("DUP_ANCHORS_ALL=1 restores held-as-anchor without a deploy", async () => {
+      process.env.DUP_ANCHORS_ALL = "1";
+      try {
+        const store = createFakeStore({
+          items: [
+            { url: "https://example.test/a", subject: SUBJECT.name, title: "Testov books a return", embedding: vecA, posted: true },
+            { url: "https://example.test/b", subject: SUBJECT.name, title: "Testov books return, say sources", embedding: vecB, posted: false, held_reason: "embedding" },
+          ],
+        });
+        await huntSubject(DB, SUBJECT, [makeItem({ title: "Testov opens a gym in Kyiv" })], deps({ store, embedTexts: async () => [vecC] }));
+        assert.equal(sent.length, 0, "the kill switch brings the old behaviour back");
+      } finally {
+        delete process.env.DUP_ANCHORS_ALL;
+      }
+    });
+
+    // The look-back window, measured 2026-08-14: every echo arrived within 6
+    // days of its posted anchor, so the window stays 7 days.
+    test("an anchor older than the window no longer holds anything", async () => {
+      const store = createFakeStore({
+        items: [{
+          url: "https://example.test/old", subject: SUBJECT.name, title: "Testov books a return",
+          embedding: vecA, posted: true, seen_at: new Date(Date.now() - 8 * 24 * 3_600_000),
+        }],
+      });
+      await huntSubject(DB, SUBJECT, [makeItem()], deps({ store, embedTexts: async () => [vectorAt(33)] }));
+      assert.equal(sent.length, 1, "an 8-day-old anchor is outside the 7-day window");
+    });
+
+    test("an anchor inside the window still holds", async () => {
+      const store = createFakeStore({
+        items: [{
+          url: "https://example.test/recent", subject: SUBJECT.name, title: "Testov books a return",
+          embedding: vecA, posted: true, seen_at: new Date(Date.now() - 6 * 24 * 3_600_000),
+        }],
+      });
+      await huntSubject(DB, SUBJECT, [makeItem()], deps({ store, embedTexts: async () => [vectorAt(33)] }));
+      assert.equal(sent.length, 0);
+    });
   });
 });
 

@@ -317,8 +317,9 @@ async function classifyItem(deps, db, subject, item, vector) {
   item.embedding = vector;
   item.embeddingModel = EMBEDDING_MODEL;
 
-  // Nearest stored neighbour, looked up BEFORE this item is inserted so an
-  // item never matches itself. Recorded on every item — the similarity
+  // Nearest POSTED neighbour (held articles are nobody's anchor — History:
+  // docs/decisions.md#posted-anchors), looked up BEFORE this item is inserted
+  // so an item never matches itself. Recorded on every item — the similarity
   // distribution is threshold-tuning data.
   const nearest = item.embedding ? await deps.store.nearestRecent(db, subject.name, item.embedding) : null;
   item.nearestSimilarity = nearest?.similarity ?? null;
