@@ -64,7 +64,7 @@ function deps(over = {}) {
       sent.push({ chatId, text });
       return 5000 + sent.length; // a Telegram message id
     }),
-    dryRun: false,
+    dryRun: over.dryRun ?? false,
     chatId: "-100TEST",
     matcherEnabled: over.matcherEnabled ?? true,
     hoursBack: 24,
@@ -227,6 +227,35 @@ describe("gate 2 — semantic duplicates", () => {
       assert.equal(store.rows.items.at(-1).posted, false);
     });
   }
+
+  // Inheriting a neighbour's claim is how a held duplicate earns its place in
+  // the evidence record without paying for an LLM call. The positive case is
+  // pinned above; this is the guard against inheriting the wrong one.
+  //
+  // What the guard does NOT do, deliberately: it stops the bad claim link, not
+  // the bad hold. The item is still never posted. That limitation is real and
+  // recorded in docs/decisions.md#dup-threshold — this test pins today's
+  // behaviour, it does not endorse it.
+  test("a held duplicate is not credited to a claim it has drifted away from", async () => {
+    const [neighbourVec, incomingVec] = vectorsWithSimilarity(0.84);
+
+    // The incoming headline is a near-duplicate of a stored item belonging to
+    // claim 1, but sits much closer to claim 2 — the signature of a dup chain
+    // that has walked somewhere its starting claim never was.
+    const store = createFakeStore({
+      items: [{ url: "https://example.test/first", subject: SUBJECT.name, title: "Testov books a return", embedding: neighbourVec }],
+      claims: [
+        { subject: SUBJECT.name, type: "announcement", canonical_text: "Testov returns in March", embedding: neighbourVec },
+        { subject: SUBJECT.name, type: "matchmaking", canonical_text: "Testov's manager blasts a rival", embedding: incomingVec },
+      ],
+      claimSources: [{ item_id: "1", claim_id: "1", role: "origin", stance: "asserts" }],
+    });
+    await huntSubject(DB, SUBJECT, [makeItem()], deps({ store, embedTexts: async () => [incomingVec] }));
+
+    assert.equal(store.rows.items.at(-1).held_reason, "embedding", "still held — the guard does not rescue it");
+    assert.equal(store.sourcesOf("1").length, 1, "but not credited to the claim it drifted from");
+    assert.equal(store.sourcesOf("2").length, 0, "and not silently reassigned to the closer one either");
+  });
 });
 
 describe("gate 3 — the matcher's verdicts", () => {
@@ -283,6 +312,84 @@ describe("gate 3 — the matcher's verdicts", () => {
     assert.equal(store.rows.claims.length, 0);
     assert.match(digest().text, /^🔎/);
     assert.doesNotMatch(digest().text, /Rumor:/);
+  });
+
+  // The conservative lifecycle, from the other side. The official MATCH above
+  // flips rumor -> confirmed; this pins that an ordinary outlet saying the same
+  // thing does NOT. Without it, dropping the `official &&` guard would start
+  // firing confirmations off any outlet with the whole suite still green.
+  test("a non-official MATCH is held as evidence and leaves the claim a rumor", async () => {
+    const store = createFakeStore({
+      items: [{ url: "https://example.test/first", subject: SUBJECT.name, title: "Testov targeted for March" }],
+      claims: [{ subject: SUBJECT.name, type: "announcement", canonical_text: "Testov fights in March", status: "rumor" }],
+    });
+    await huntSubject(DB, SUBJECT, [makeItem()], deps({
+      store,
+      matchItem: async () => ({ verdict: "MATCH", match_claim_id: "1", stance: "asserts" }),
+    }));
+
+    assert.equal(sent.length, 0, "a matched echo reaches nobody");
+    const held = store.rows.items.at(-1);
+    assert.equal(held.posted, false);
+    assert.equal(held.held_reason, "llm");
+    assert.equal(store.sourcesOf("1").at(-1).role, "echo", "recorded as evidence, not as an official source");
+    assert.equal(store.rows.claims[0].status, "rumor", "only an official source confirms");
+  });
+
+  // A denial is evidence too, and it is the one official item that must not
+  // confirm anything. Getting this backwards would announce a fight the sport's
+  // own governing body just said was not happening.
+  test("an official denial is recorded but confirms nothing", async () => {
+    const store = createFakeStore({
+      claims: [{ subject: SUBJECT.name, type: "announcement", canonical_text: "Testov fights in March", status: "rumor" }],
+    });
+    await huntSubject(DB, SUBJECT, [makeItem({ source: "UFC" })], deps({
+      store,
+      matchItem: async () => ({ verdict: "MATCH", match_claim_id: "1", stance: "denies" }),
+    }));
+
+    assert.equal(store.rows.claims[0].status, "rumor", "a denial must never confirm");
+    assert.equal(store.sourcesOf("1").at(-1).stance, "denies");
+    assert.equal(store.sourcesOf("1").at(-1).role, "official", "still credited as official — it is the source that matters");
+    assert.ok(!sent.some((m) => m.text.startsWith("✅")), "and no confirmation is announced");
+  });
+
+  // The visible half of the lifecycle: a confirmation is a reply under the
+  // message that carried the rumor, not a new post nobody can place.
+  test("a confirmation is threaded under the message that announced the rumor", async () => {
+    const store = createFakeStore();
+    const calls = [];
+
+    // The default fake drops its options; this one keeps them, because replyTo
+    // is the whole point of the test.
+    const recording = async (chatId, text, options = {}) => {
+      calls.push({ text, options });
+      sent.push({ chatId, text });
+      return 5000 + calls.length;
+    };
+
+    // Run 1: the rumor posts, and the claim remembers which message carried it.
+    await huntSubject(DB, SUBJECT, [makeItem()], deps({
+      store,
+      sendMessage: recording,
+      matchItem: async () => ({
+        verdict: "NEW",
+        new_claim: { type: "announcement", sourcing: "reported", canonical_text: "Testov fights in March", facts: {} },
+      }),
+    }));
+    const rumorMessageId = store.rows.claims[0].tg_message_id;
+    assert.ok(rumorMessageId, "the rumor's message id was recorded");
+
+    // Run 2: an official source confirms it.
+    await huntSubject(DB, SUBJECT, [makeItem({ source: "UFC" })], deps({
+      store,
+      sendMessage: recording,
+      matchItem: async () => ({ verdict: "MATCH", match_claim_id: "1", stance: "asserts" }),
+    }));
+
+    const confirmation = calls.find((c) => c.text.startsWith("✅"));
+    assert.ok(confirmation, "a confirmation was sent");
+    assert.equal(confirmation.options.replyTo, rumorMessageId, "and it replies into the rumor's thread");
   });
 });
 
@@ -637,6 +744,97 @@ describe("presentation", () => {
     await huntSubject(DB, SUBJECT, [makeItem({ title: "Two other people fight", feedContent: "<p>No mention here at all, at any point in the article body.</p>" })], deps({ store }));
     assert.equal(sent.length, 0);
     assert.equal(store.rows.items.length, 0, "a discarded item leaves no row — §5's blind spot");
+  });
+});
+
+// Google wraps its links, so the real address is only known after a decode.
+// Both outcomes of that decode have consequences, and neither fires under the
+// default deps — where decodeGoogleNewsUrl is a no-op and every fixture carries
+// feedContent.
+describe("the body step", () => {
+  test("a wrapper that decodes onto a stored article is held as a url duplicate", async () => {
+    const store = createFakeStore({
+      items: [{ url: "https://example.test/real", subject: SUBJECT.name, title: "Testov books a return" }],
+    });
+    await huntSubject(DB, SUBJECT, [makeItem({ url: "https://news.google.test/wrapped" })], deps({
+      store,
+      decodeGoogleNewsUrl: async () => "https://example.test/real",
+    }));
+
+    assert.equal(sent.length, 0, "the same story does not post twice");
+    const held = store.rows.items.at(-1);
+    assert.equal(held.posted, false);
+    assert.equal(held.held_reason, "url", "distinct from an embedding hold — this one is certain");
+  });
+
+  // Distinct from the step-error case: fetchArticleBody was never called at
+  // all, rather than called and failed. The archive keeps the difference so a
+  // later measurement can tell a broken decoder from a broken fetch.
+  test("a wrapper that will not decode leaves the item headline-only, distinctly labelled", async () => {
+    const store = createFakeStore();
+    await huntSubject(DB, SUBJECT, [makeItem({ feedContent: null })], deps({
+      store,
+      decodeGoogleNewsUrl: async () => null,
+    }));
+
+    assert.equal(sent.length, 1, "it still posts — the body was always a bonus");
+    assert.equal(store.rows.items[0].body, null);
+    assert.equal(store.rows.items[0].body_via, "decode-failed");
+  });
+});
+
+// AGENTS.md requires a DRY_RUN=1 pass before every deploy, which makes this the
+// most relied-on safety mechanism in the project — and it had no test at all.
+// The guarantee: reads happen, writes and sends do not.
+describe("dry run", () => {
+  test("an ordinary item is neither stored nor sent", async () => {
+    const store = createFakeStore();
+    await huntSubject(DB, SUBJECT, [makeItem()], deps({ store, dryRun: true }));
+
+    assert.equal(sent.length, 0, "nothing reaches Telegram");
+    assert.equal(store.rows.items.length, 0, "and nothing reaches the database");
+  });
+
+  test("a claim is previewed without being written", async () => {
+    const store = createFakeStore();
+    await huntSubject(DB, SUBJECT, [makeItem({ source: "UFC" })], deps({
+      store,
+      dryRun: true,
+      matchItem: async () => ({
+        verdict: "NEW",
+        new_claim: { type: "announcement", sourcing: "official", canonical_text: "Testov fights Rivalov in March", facts: {} },
+      }),
+    }));
+
+    assert.equal(sent.length, 0, "the ceremony is printed, never posted");
+    assert.equal(store.rows.claims.length, 0);
+    assert.equal(store.rows.items.length, 0);
+  });
+
+  test("a held duplicate is not written either", async () => {
+    const [stored, incoming] = vectorsWithSimilarity(0.84);
+    const store = createFakeStore({
+      items: [{ url: "https://example.test/first", subject: SUBJECT.name, title: "Testov books a return", embedding: stored }],
+    });
+    await huntSubject(DB, SUBJECT, [makeItem()], deps({ store, dryRun: true, embedTexts: async () => [incoming] }));
+
+    assert.equal(store.rows.items.length, 1, "only the row that was already there");
+  });
+
+  // The resend queue is READ under a dry run, so the preview shows what a real
+  // run would carry. What it must not do is consume the queue — a rehearsal
+  // that swallowed a pending item would lose it for good.
+  test("the resend queue is left intact", async () => {
+    const store = createFakeStore();
+    await huntSubject(DB, SUBJECT, [makeItem()], deps({ store, sendMessage: async () => null }));
+    assert.equal(store.rows.items[0].held_reason, "send_failed");
+
+    sent.length = 0;
+    await huntSubject(DB, SUBJECT, [], deps({ store, dryRun: true }));
+
+    assert.equal(sent.length, 0, "nothing is sent");
+    assert.equal(store.rows.items[0].posted, false, "and the item is still queued");
+    assert.equal(store.rows.items[0].held_reason, "send_failed");
   });
 });
 
