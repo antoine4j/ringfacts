@@ -9,9 +9,21 @@
 
 export const SUBJECTS = [
   {
-    name: "Daniel Donchenko",
+    // "Daniil", not "Daniel" — ufc.com/athlete/daniil-donchenko, and the
+    // spelling every English outlet uses. The typo cost us the whole English
+    // half of this subject: the alias is a quoted exact phrase, so it matched
+    // nothing, and found_via never once recorded en "Daniel Donchenko" while
+    // uk "Данило Донченко" brought in 5 items. His UFC Paris booking was
+    // covered in English by Heavy, SI and Yahoo and we saw none of it.
+    //
+    // `name` is also the subject KEY in items and claims, so this rename came
+    // with a migration (2026-08-13, 5 items + claim #11). It has to match the
+    // spelling in the articles: the matcher is told to answer WRONG_SUBJECT
+    // when the subject "appears NOWHERE in the headline or body", and would
+    // have been holding the wrong first name against every English piece.
+    name: "Daniil Donchenko",
     aliases: [
-      { query: '"Daniel Donchenko"', edition: "en" },
+      { query: '"Daniil Donchenko"', edition: "en" },
       { query: '"Данило Донченко"', edition: "uk" },
     ],
     matchNames: ["Donchenko", "Донченко"],
