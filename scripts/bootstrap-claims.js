@@ -16,14 +16,14 @@
 //                      confirmations keep working.
 //
 //   DATABASE_URL=$(...) GEMINI_API_KEY=$(...) ANTHROPIC_API_KEY=$(...) \
-//   node bootstrap-claims.js            # dry run
-//   COMMIT=1 ... node bootstrap-claims.js
+//   node scripts/bootstrap-claims.js            # dry run
+//   COMMIT=1 ... node scripts/bootstrap-claims.js
 
 import { writeFileSync } from "node:fs";
-import { openDb, insertClaim, linkClaimSource, claimOfItem, claimLinkDrifts } from "./lib/db.js";
-import { embedTexts, EMBEDDING_MODEL } from "./lib/embeddings.js";
-import { matchItem } from "./lib/matcher.js";
-import { isOfficialSource } from "./lib/sources.js";
+import { openDb, insertClaim, linkClaimSource, claimOfItem, claimLinkDrifts } from "../lib/db.js";
+import { embedTexts, EMBEDDING_MODEL } from "../lib/embeddings.js";
+import { matchItem } from "../lib/matcher.js";
+import { isOfficialSource } from "../lib/sources.js";
 
 const COMMIT = process.env.COMMIT === "1";
 const RESET = process.env.RESET === "1";

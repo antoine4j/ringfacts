@@ -3,10 +3,10 @@
 // missing. Run from the laptop:
 //   DATABASE_URL=$(gcloud secrets versions access latest --secret=neon-db-url) \
 //   GEMINI_API_KEY=$(gcloud secrets versions access latest --secret=gemini-api-key) \
-//   node backfill-embeddings.js
+//   node scripts/backfill-embeddings.js
 
-import { openDb } from "./lib/db.js";
-import { embedTexts, EMBEDDING_MODEL } from "./lib/embeddings.js";
+import { openDb } from "../lib/db.js";
+import { embedTexts, EMBEDDING_MODEL } from "../lib/embeddings.js";
 
 const db = await openDb();
 try {

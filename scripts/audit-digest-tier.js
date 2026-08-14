@@ -35,13 +35,13 @@
 //
 // Run:
 //   DATABASE_URL=$(gcloud secrets versions access latest --secret=neon-db-url) \
-//     node audit-digest-tier.js
-import { openDb } from "./lib/db.js";
-import { loadSubjects, matchNamesOf } from "./lib/subjects.js";
+//     node scripts/audit-digest-tier.js
+import { openDb } from "../lib/db.js";
+import { loadSubjects, matchNamesOf } from "../lib/subjects.js";
 import {
   mentionsName, countMentions, isTangential, digestTierFor,
   MIN_BODY_FOR_JUDGEMENT, MAX_MENTIONS_TO_DEMOTE,
-} from "./lib/tier.js";
+} from "../lib/tier.js";
 
 // The rule and the watchlist both come from lib/ — this script exists to
 // re-measure the thresholds the hunter runs on, so a private copy of either

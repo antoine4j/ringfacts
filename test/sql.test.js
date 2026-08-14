@@ -242,7 +242,7 @@ describe("claims", { skip }, () => {
 
 describe("markUnposted", { skip }, () => {
   // The suppression branch: rows written posted=true before a run knew its own
-  // shape have to be corrected, or audit-digest-tier.js re-measures thresholds
+  // shape have to be corrected, or scripts/audit-digest-tier.js re-measures thresholds
   // against items it believes were broadcast and never were.
   test("corrects posted to false and records why", async () => {
     const id = await insertItem(db, item({ posted: true }));

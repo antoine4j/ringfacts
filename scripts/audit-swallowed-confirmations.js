@@ -8,10 +8,10 @@
 //
 // Writes nothing. Run from the laptop:
 //   DATABASE_URL=$(gcloud secrets versions access latest --secret=neon-db-url) \
-//   node audit-swallowed-confirmations.js
+//   node scripts/audit-swallowed-confirmations.js
 
-import { openDb } from "./lib/db.js";
-import { OFFICIAL_SOURCE_SQL } from "./lib/sources.js";
+import { openDb } from "../lib/db.js";
+import { OFFICIAL_SOURCE_SQL } from "../lib/sources.js";
 
 const db = await openDb();
 try {

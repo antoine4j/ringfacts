@@ -25,3 +25,8 @@ claims-snapshot-*.json
 # corpus is tuning data for the sandbox bench, and six of its items are
 # fabricated fixtures. Nothing on the hunter's path reads it.
 corpus
+# Same reasoning: the test suite, the laptop-run operational scripts, and the
+# docs are all reviewable in git and unread by anything in production.
+test
+scripts
+docs

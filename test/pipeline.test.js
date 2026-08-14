@@ -454,7 +454,7 @@ describe("the digest tier", () => {
   });
 
   // Those rows were written posted=true before the run knew its own shape, and
-  // audit-digest-tier.js partitions the archive on that column when re-measuring
+  // scripts/audit-digest-tier.js partitions the archive on that column when re-measuring
   // thresholds — so a suppressed run has to correct itself, or the next
   // measurement reads items as broadcast that never were.
   test("suppressed rows are corrected to posted=false so the audit stays honest", async () => {
