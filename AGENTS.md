@@ -63,6 +63,12 @@ code is expected stable and the group's post history becomes a contract.
   run exercises the real feeds, the real matcher, and the default wiring
   between them. That distinction is not theoretical: a mis-keyed dependency
   once passed every test and was caught by the dry run.
+- **Measure it, don't estimate it.** If a claim has a number behind it — test
+  coverage, file size, how often something fires — run the command and report
+  the number. `node --test --experimental-test-coverage` for coverage; a
+  mutation check (break the branch, confirm the test fails, restore) for whether
+  a test is worth anything. Reading the code and forming an impression is not
+  evidence. See docs/self-improvement.md §4.
 - **Deploy with the exact command in [setup.sh](setup.sh)** — it carries the
   secret mounts, timeouts, and env vars.
 - **Never post to the Telegram group** (the `group` id in `TELEGRAM_CHAT_IDS`)
