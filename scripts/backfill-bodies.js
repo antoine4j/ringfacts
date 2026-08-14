@@ -20,12 +20,12 @@
 //
 // Dry run by default (fetches, reports, writes nothing). Run from the laptop:
 //   DATABASE_URL=$(gcloud secrets versions access latest --secret=neon-db-url) \
-//     node backfill-bodies.js
+//     node scripts/backfill-bodies.js
 //   ... then again with COMMIT=1 to store.
 
-import { openDb } from "./lib/db.js";
-import { decodeGoogleNewsUrl, isGoogleWrapped } from "./lib/googlenews.js";
-import { fetchArticleBody } from "./lib/extract.js";
+import { openDb } from "../lib/db.js";
+import { decodeGoogleNewsUrl, isGoogleWrapped } from "../lib/googlenews.js";
+import { fetchArticleBody } from "../lib/extract.js";
 
 const COMMIT = process.env.COMMIT === "1";
 // Politeness: these are other people's servers and this is a burst of requests

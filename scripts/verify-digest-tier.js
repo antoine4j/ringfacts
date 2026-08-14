@@ -13,15 +13,15 @@
 //   DATABASE_URL=$(gcloud secrets versions access latest --secret=neon-db-url) \
 //   GEMINI_API_KEY=$(gcloud secrets versions access latest --secret=gemini-api-key) \
 //   ANTHROPIC_API_KEY=$(gcloud secrets versions access latest --secret=anthropic-api-key) \
-//   DRY_RUN=1 node verify-digest-tier.js
+//   DRY_RUN=1 node scripts/verify-digest-tier.js
 
 if (process.env.DRY_RUN !== "1") {
   throw new Error("run with DRY_RUN=1 — this script sends synthetic items through the real pipeline");
 }
 
-import { openDb } from "./lib/db.js";
-import { huntSubject } from "./hunter.js";
-import { matchItem } from "./lib/matcher.js";
+import { openDb } from "../lib/db.js";
+import { huntSubject } from "../hunter.js";
+import { matchItem } from "../lib/matcher.js";
 
 const db = await openDb();
 // Synthetic subject: the fixture bodies below are written around this name, so
