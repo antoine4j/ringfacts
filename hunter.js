@@ -975,7 +975,7 @@ async function sendDigest(deps, db, subject, messages) {
  */
 async function sendConfirmations(deps, confirmations) {
   for (const confirmation of confirmations) {
-    const message = `✅ <b>Confirmed</b> — ${escapeHtml(confirmation.text)}\n<a href="${escapeHtml(confirmation.item.url)}">${escapeHtml(confirmation.item.source)}</a>`;
+    const message = `✅ <b>Confirmed</b> — ${escapeHtml(confirmation.text)}\n${anchor(articleUrl(confirmation.item), confirmation.item.source)}`;
     if (deps.dryRun) {
       console.log(`\n--- would post (confirmation) ---\n${message}\n`);
     } else {

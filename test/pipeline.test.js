@@ -501,6 +501,37 @@ describe("gate 3 — the matcher's verdicts", () => {
     assert.ok(confirmation, "a confirmation was sent");
     assert.equal(confirmation.options.replyTo, rumorMessageId, "and it replies into the rumor's thread");
   });
+
+  // The confirmation's link must be the decoded publisher URL, not Google's
+  // wrapper — the digest lines already do this via articleUrl, and the one
+  // send site that didn't shipped a news.google.com redirect to the group
+  // (Donchenko claim #11, 2026-08-31).
+  test("a confirmation links the decoded article URL, not Google's wrapper", async () => {
+    const store = createFakeStore();
+
+    // Run 1: the rumor arrives and posts.
+    await huntSubject(DB, SUBJECT, [makeItem()], deps({
+      store,
+      matchItem: async () => ({
+        verdict: "NEW",
+        new_claim: { type: "announcement", sourcing: "reported", canonical_text: "Testov fights in March", facts: {} },
+      }),
+    }));
+
+    // Run 2: an official source confirms it, found via the Google rail — the
+    // item's own url is the wrapper, and only the decode step knows the real one.
+    const wrapped = "https://news.google.com/rss/articles/CBMiWRAPPED?oc=5";
+    await huntSubject(DB, SUBJECT, [makeItem({ url: wrapped, source: "UFC" })], deps({
+      store,
+      decodeGoogleNewsUrl: async () => "https://www.ufc.com/news/testov-confirmed",
+      matchItem: async () => ({ verdict: "MATCH", match_claim_id: "1", stance: "asserts" }),
+    }));
+
+    const confirmation = sent.find((m) => m.text.startsWith("✅"));
+    assert.ok(confirmation, "a confirmation was sent");
+    assert.ok(confirmation.text.includes("https://www.ufc.com/news/testov-confirmed"), "it links the publisher URL");
+    assert.ok(!confirmation.text.includes("news.google.com"), "and never the wrapper");
+  });
 });
 
 describe("the digest tier", () => {
