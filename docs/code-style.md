@@ -26,6 +26,7 @@ developer, and the code should be too.
 What it does, its parameters, what it returns. One or two sentences. Never an
 essay.
 
+{% raw %}
 ```js
 /**
  * Groups items by outlet, keeping input order within each group.
@@ -34,6 +35,7 @@ essay.
  * @returns {{ name: string, urls: string[] }[]}
  */
 ```
+{% endraw %}
 
 The `@param` and `@returns` tags are not decoration — they make the editor show
 you what a variable is when you hover it. That is most of TypeScript's help with
@@ -150,6 +152,7 @@ export function alsoMentioningLine(items) {
 
 ### After
 
+{% raw %}
 ```js
 /**
  * Renders the one shared line carrying every demoted item, as source links
@@ -211,6 +214,7 @@ function anchor(url, label) {
   return `<a href="${escapeHtml(url)}">${escapeHtml(label)}</a>`;
 }
 ```
+{% endraw %}
 
 ### The trade, stated plainly
 
