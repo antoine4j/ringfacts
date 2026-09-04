@@ -61,13 +61,16 @@ names the goal it moves.
    mint — the gates only act on a wrong name or an old date). The first
    baseline reported for this item (29/45) was void: the bench passed the
    subject object, not its name.
-   **Next lever, from the eleven remaining misses:** every one is a
-   bucket-3 article the tier rule keeps as main because the role is
-   `central` — the June loss retold (#3, #6, #22, #308, #106), lifestyle
-   (#48, #425), other fighters' stories that quote him (#30, #249, #389,
-   #507). That is the mention-kind field (§4 usefulness-gradient bullet):
-   one more matcher question, "what kind of information about him is this",
-   scored against the same corpus.
+   **Then the reader's test, same evening** (docs/decisions.md#news-for-followers):
+   a fourth matcher field, "would a follower learn something new about
+   him", with Anton's rulings as the examples; a `no` folds a non-event, a
+   loud claim is never folded. Tune **34 → 37/45**, holdout **29 → 32/44**,
+   holdout stability 37 → 41/44. Column `items.news_for_followers`; kill
+   switch `NEWS_GATE_OFF=1`. Still missed, about half the time each: a
+   rival's prediction list (#30), "the one fighter who can beat X" (#249),
+   his old fight in a caption or clip (#3, #106), Gaethje-manager profiles
+   (#6, #22). Watch for a week: no bucket-2 article folded (every fold is a
+   row with `news_for_followers='no'` and `held_reason='tangential'`).
 4. **Active verification via web search** (G4, and G2's stale-event clause) —
    concept discussed 2026-09-03/04, no design yet. On a new fight claim, search
    for it and sort results by domain trust: official domain confirms,

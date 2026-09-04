@@ -517,6 +517,13 @@
       <em>every</em> matcher-seen item (wrong-subject and match rows included) — deliberately, because
       it doubles as the audit dataset for measuring the LLM signal against the mention-count rule (§5).
       Null = matcher off or failed.</li>
+      <li><code>news_for_followers</code> (2026-09-04) — the matcher's answer to the reader's own test
+      (goals.md): would a follower of the subject learn something new about <em>him</em> — <code>yes</code>
+      or <code>no</code>, asked in the same tool call with the readers' graded rulings as the examples.
+      A <code>no</code> folds a non-event into the mentions archive even when the matcher minted a quote
+      for it; a loud claim (booking, result, injury) is never folded this way. Stored on every row so a
+      fold is auditable. <code>NEWS_GATE_OFF=1</code> is the kill switch. Null = matcher off, failed, or
+      an older answer, and changes nothing. History: docs/decisions.md#news-for-followers.</li>
     </ul>
   </div>
 

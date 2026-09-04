@@ -13,7 +13,8 @@ as the chat report: data / changes / proposals / next attention.
 📊 **Holdout, once** (after the cap was raised): 25/44 → **29/44**, false loud claims 6 → 3. Dry run on test keys: 10 unseen items, no errors, nothing posted.
 🔧 **Changes** (committed, pushed, **deployed** — see the deploy line below): lib/matcher.js gates + domain/mma.js `claimTypeGuide`/`roleGuide` · bench `--repeat`, `--split`, `bucket` step, token line, subject-name fix · corpus/graded-2026-09.json · spec §5 gate paragraph · docs/decisions.md#claim-discipline.
 💡 **Proposals** (Anton): none new — the cap is raised ($20, shared across keys); the stronger-but-cheaper model idea is parked in TODO with its trigger.
-👁 **Next attention**: a week of claims under the new gates (fewer 🕵️ lines; a real result or injury must still mint); then the mention-kind field against the same corpus — all eleven remaining tune misses are bucket-3 articles with role `central`.
+📊 **Second change, the reader's test** (docs/decisions.md#news-for-followers): a fourth matcher field, "would a follower learn something new about him", examples = Anton's rulings. Tune 34 → **37/45**, holdout 29 → **32/44**, stability 41/44. Deployed with an additive column. Bench spend for the day ≈ $10 of the $20 cap.
+👁 **Next attention**: a week of claims and folds under the new gates — fewer 🕵️ lines, a real result or injury must still mint, no bucket-2 article with `news_for_followers='no'`; the remaining misses (rival prediction lists, old fights in captions/clips, other fighters' profiles) are the trigger for the parked stronger-model note.
 
 ## 2026-09-04 08:30–17:00 PDT — grading applied, mentions parked, the bench scores as a rate (Anton present; Fable 5.1)
 

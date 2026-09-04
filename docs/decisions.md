@@ -598,3 +598,52 @@ every prompt it had ever sent read "[object Object]" as the fighter's name,
 and the first "baseline" (29/45) was void. Fixed with a spy test. The lesson
 is recorded in self-improvement §4 terms: a model never says the input is
 garbage; only reading the actual prompt text catches it.
+
+## news-for-followers — The reader's own test, asked of the model
+*2026-09-04*
+
+After claim discipline (#claim-discipline) every remaining miss on the
+graded month was a bucket-3 article the tier rule kept as a main item: the
+subject's old loss retold in another fighter's story, a rival's prediction
+list, lifestyle, training trivia. The matcher's existing answers were not
+wrong on their own terms — "supporting" for Topuria in a Gaethje profile is
+defensible — they just never asked Anton's question: *would a follower of
+this fighter learn something new about him?*
+
+**Decision.** Ask exactly that, as a fourth field in the same tool call:
+`news_for_followers: yes | no`, with Anton's own borderline rulings (the
+`prompt` split of corpus/graded-2026-09.json) reworded as the examples, and
+the "other fighter's story" pattern spelled out. Code routes on it
+conservatively: a **loud claim is never folded** (an event is news whatever
+the model thinks of the article); a `no` on anything else folds the article
+into the mentions archive and drops any quote-grade claim the model minted
+for it; `null` changes nothing. Stored on every row (`items.news_for_followers`,
+additive column) so a fold can be audited; `NEWS_GATE_OFF=1` restores the
+previous routing without a deploy.
+
+**Measured** (tune 45 items and holdout 44, K=5, test key):
+
+| | tune | bucket 2 | bucket 3 | holdout | bucket 2 | bucket 3 |
+|---|---|---|---|---|---|---|
+| production prompt (before today) | 22/45 | 8/13 | 13/31 | 25/44 | 8/13 | 17/31 |
+| claim discipline, shipped earlier today | 34/45 | 13/13 | 20/31 | 29/44 | 10/13 | 19/31 |
+| + the question, abstract examples (v4) | 35/45 | 12/13 | 22/31 | — | | |
+| **+ the other-fighter pattern (v5, shipped)** | **37/45** | 11/13 | 25/31 | **32/44** | 8/13 | 24/31 |
+
+The field is precise in one direction: on the tune split no bucket-2
+article got a `no` in v4, and in v5 the two bucket-2 items that ended in
+bucket 3 (#445 tune, #266 holdout) were folded by the *role* rule as
+`passing`, as they already were before today — headline-only items about
+Gaethje and Pimblett. The one bucket-2 item the new gate itself folded
+(#47) is a repeat of #43, which Anton ruled bucket 3; its label is the
+inconsistent one. Limiting the fold to articles with a body was recomputed
+offline and changes nothing on tune and one item each way on holdout, so it
+was not added. Prompt grew from ~4,300 to ~5,200 characters (+17% input
+tokens per call). Stability on holdout 37 → 41 of 44.
+
+**What it did not fix**, for the next pass: a rival's prediction list
+(#30), a "one fighter who can beat X" quote (#249), his old fight in a
+photo caption or highlights clip (#3, #106), the Gaethje-manager profiles
+(#6, #22) — the model still reads these as news about him about half the
+time. That is judgment the prompt may not reach; the parked stronger-model
+note in TODO names the trigger.
