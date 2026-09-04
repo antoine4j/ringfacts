@@ -48,6 +48,30 @@ names the goal it moves.
    headline + first ~300 chars of body instead of the headline alone, and
    re-measure the gap between the 5 known repeats and their non-repeat
    neighbours. Not built.
+3c. **Tune the matcher prompt against Anton's buckets** (G2, G4) — **baseline
+   measured 2026-09-04**, nothing changed yet. `node bench/run.js --step
+   bucket --from corpus/graded-2026-09.json --split tune --repeat 5` (225
+   Haiku calls on the test key, ≈$0.53): the pipeline's bucket matches
+   Anton's on **29/45 tune items (64%)**; 32/45 fully stable across 5 runs;
+   bucket 2 only **4/13** right, bucket 3 24/31. The misses are not mostly
+   the mention-kind gradient: **10 of 16 are loud claims minted on
+   non-events** — "announcement" for a public appearance (#575) and for
+   Donchenko interviews (#203, #298, #321), "injury" for Gaethje's hands
+   (#449) and McGregor's operation (#38), "result" for a physio profile
+   (#37). The archive confirms it is live behaviour: #449 and #575 minted
+   rumor claims in production. Each false loud claim is a 🕵️ line the group
+   sees (G2) and a rumor waiting on an official answer that will never come
+   (G4). The other misses: three bucket-3 items the tier rule keeps because
+   the role is `central` (#8, #48, #425 — the mention-kind field's cases),
+   and two bucket-2 items held (#4 now `passing`, #445 `wrong_subject` on a
+   headline-only Gaethje quote). Plan, in order: (1) tighten the claim-type
+   rules in `lib/matcher.js` — a loud type needs a specific event about the
+   subject (opponent/event/date for announcement, the subject's own injury,
+   a fight result) and everything else is quote/other/NO_CLAIM — using the
+   14 `prompt`-split items as few-shot examples where they help; (2) re-run
+   the tune split, K=5, compare against this baseline; (3) only when done,
+   run `--split holdout` once; (4) live DRY_RUN before deploy. Bucket 3 with
+   `central` (the mention-kind field) is the step after.
 4. **Active verification via web search** (G4, and G2's stale-event clause) —
    concept discussed 2026-09-03/04, no design yet. On a new fight claim, search
    for it and sort results by domain trust: official domain confirms,
