@@ -15,3 +15,6 @@ claims-snapshot-*.json
 # check. They are kept on disk because rerunning one is often useful, and out of
 # git because none of them are part of how the bot works.
 tmp/
+
+# Bench run records: local artifacts, one JSON per run (bench/run.js)
+bench/runs/
