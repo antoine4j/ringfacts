@@ -7,7 +7,7 @@ import { test, describe } from "node:test";
 import assert from "node:assert/strict";
 import { parseEnvFile, mapBenchEnv } from "../bench/env.js";
 import { toPipelineItem, resolveSubject, itemsFromFile } from "../bench/items.js";
-import { STEPS, runStep } from "../bench/steps.js";
+import { STEPS, runStep, aggregateRuns, bucketFor } from "../bench/steps.js";
 import { parseArgs } from "../bench/args.js";
 
 const SUBJECTS = [
@@ -144,22 +144,102 @@ describe("bench/steps — one named step, its dependencies handed in", () => {
     ];
     const result = await runStep(STEPS.tier, items, ctx());
     assert.equal(result.rows.length, 2);
-    assert.deepEqual(result.summary, { total: 2, scored: 2, ok: 1 });
+    assert.equal(result.summary.total, 2); assert.equal(result.summary.scored, 2); assert.equal(result.summary.ok, 1);
   });
 });
 
 describe("bench/args", () => {
   test("parses --step, --from, --keys, --limit and --sink", () => {
     const args = parseArgs(["--step", "tier", "--from", "corpus/tune.json", "--keys", "a1,a2", "--limit", "5", "--sink"]);
-    assert.deepEqual(args, { step: "tier", from: "corpus/tune.json", keys: ["a1", "a2"], limit: 5, sink: true });
+    assert.deepEqual(args, { step: "tier", from: "corpus/tune.json", keys: ["a1", "a2"], split: null, limit: 5, repeat: 1, sink: true });
   });
 
   test("defaults: corpus tune split, no keys, no limit, no sink", () => {
-    assert.deepEqual(parseArgs(["--step", "matcher"]), { step: "matcher", from: "corpus/tune.json", keys: null, limit: null, sink: false });
+    assert.deepEqual(parseArgs(["--step", "matcher"]), { step: "matcher", from: "corpus/tune.json", keys: null, split: null, limit: null, repeat: 1, sink: false });
   });
 
   test("a missing or unknown step is an error naming the choices", () => {
     assert.throws(() => parseArgs([]), /--step/);
     assert.throws(() => parseArgs(["--step", "nope"]), /tier/);
+  });
+});
+
+describe("bench — the goals.md bucket, and K runs folded into one answer", () => {
+  const domain = { loudTypes: ["announcement", "result"], ignoredTypes: ["lifestyle"] };
+  const NEW = (type) => ({ verdict: "NEW", subject_role: "central", new_claim: { type } });
+
+  test("bucketFor mirrors the hunter's routing", () => {
+    assert.deepEqual(bucketFor({ verdict: "WRONG_SUBJECT" }, "main", domain), { bucket: "3", outcome: "wrong_subject" });
+    assert.deepEqual(bucketFor(NEW("announcement"), "tangential", domain), { bucket: "1", outcome: "claim:announcement" });
+    assert.deepEqual(bucketFor(NEW("quote"), "tangential", domain), { bucket: "2", outcome: "claim:quote" });
+    assert.deepEqual(bucketFor(NEW("lifestyle"), "tangential", domain), { bucket: "3", outcome: "tangential" });
+    assert.deepEqual(bucketFor({ verdict: "NO_CLAIM", subject_role: "passing" }, "tangential", domain), { bucket: "3", outcome: "tangential" });
+    assert.deepEqual(bucketFor({ verdict: "NO_CLAIM", subject_role: "central" }, "main", domain), { bucket: "2", outcome: "main" });
+  });
+
+  test("bucket step: the matcher's role feeds the tier rule, and the bucket is scored", async () => {
+    const ctx = {
+      subjects: SUBJECTS, domain,
+      digestTierFor: (item, names, role) => (role === "passing" ? "tangential" : "main"),
+      matchItem: async () => ({ verdict: "NO_CLAIM", subject_role: "passing" }),
+    };
+    const row = await STEPS.bucket.run(corpusItem({ expect: { bucket: 3 } }), ctx);
+    assert.equal(row.got, "3");
+    assert.equal(row.want, "3");
+    assert.equal(row.ok, true);
+    assert.equal(row.outcome, "tangential");
+    assert.equal(row.role, "passing");
+  });
+
+  test("aggregateRuns: the modal answer wins, agree counts its votes, errors do not vote", () => {
+    const runs = [
+      { key: "a1", got: "2", want: "2", ok: true },
+      { key: "a1", got: "3", want: "2", ok: false },
+      { key: "a1", got: "2", want: "2", ok: true },
+      { key: "a1", error: "boom" },
+    ];
+    const folded = aggregateRuns(runs);
+    assert.equal(folded.got, "2");
+    assert.equal(folded.ok, true);
+    assert.equal(folded.runs, 4);
+    assert.equal(folded.agree, 2);
+    assert.deepEqual(folded.votes, { 2: 2, 3: 1 });
+    assert.equal(aggregateRuns([{ key: "a1", error: "boom" }]).error, "boom");
+  });
+
+  test("runStep with repeat asks K times, keeps row order under concurrency, and counts stable rows", async () => {
+    let calls = 0;
+    const ctx = {
+      subjects: SUBJECTS, domain,
+      digestTierFor: () => "main",
+      // The first row flips between two answers; the second always agrees.
+      matchItem: async ({ item }) => {
+        calls++;
+        const flip = item.key === "a1" && calls % 2 === 0;
+        return { verdict: "NO_CLAIM", subject_role: flip ? "passing" : "central" };
+      },
+    };
+    ctx.digestTierFor = (item, names, role) => (role === "passing" ? "tangential" : "main");
+    const items = [corpusItem({ key: "a1", expect: { bucket: 2 } }), corpusItem({ key: "a2", expect: { bucket: 2 } })];
+    const { rows, summary } = await runStep(STEPS.bucket, items, ctx, { repeat: 4, concurrency: 3 });
+    assert.deepEqual(rows.map((r) => r.key), ["a1", "a2"]);
+    assert.equal(calls, 8);
+    assert.equal(rows[1].agree, 4);
+    assert.equal(summary.repeat, 4);
+    assert.equal(summary.stable >= 1, true);
+    assert.deepEqual(summary.byWant["2"], { scored: 2, ok: summary.ok });
+  });
+
+  test("args: --split, --repeat, and a bad repeat", () => {
+    const args = parseArgs(["--step", "bucket", "--split", "tune", "--repeat", "5"]);
+    assert.equal(args.split, "tune");
+    assert.equal(args.repeat, 5);
+    assert.throws(() => parseArgs(["--step", "bucket", "--repeat", "0"]), /--repeat/);
+  });
+
+  test("items: --split narrows to one split before keys and limit", () => {
+    const wrapped = { items: [corpusItem({ key: "a1", split: "tune" }), corpusItem({ key: "a2", split: "holdout" }), corpusItem({ key: "a3", split: "tune" })] };
+    assert.deepEqual(itemsFromFile(wrapped, { split: "tune" }).map((i) => i.key), ["a1", "a3"]);
+    assert.deepEqual(itemsFromFile(wrapped, { split: "tune", limit: 1 }).map((i) => i.key), ["a1"]);
   });
 });

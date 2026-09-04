@@ -49,15 +49,17 @@ export function resolveSubject(subjects, name) {
 
 /**
  * The rows of a corpus file (or a bare array), optionally narrowed to some
- * keys and capped. Key order follows the file, not the --keys list.
+ * keys or to one split, and capped. Key order follows the file, not the
+ * --keys list.
  *
  * @param {object|object[]} parsed  the JSON as read
- * @param {{ keys?: string[]|null, limit?: number|null }} options
+ * @param {{ keys?: string[]|null, split?: string|null, limit?: number|null }} options
  * @returns {object[]}
  */
-export function itemsFromFile(parsed, { keys = null, limit = null } = {}) {
+export function itemsFromFile(parsed, { keys = null, split = null, limit = null } = {}) {
   const all = Array.isArray(parsed) ? parsed : parsed.items ?? [];
-  const wanted = keys ? all.filter((row) => keys.includes(row.key)) : all;
+  const inSplit = split ? all.filter((row) => row.split === split) : all;
+  const wanted = keys ? inSplit.filter((row) => keys.includes(row.key)) : inSplit;
   return limit ? wanted.slice(0, limit) : wanted;
 }
 
@@ -65,7 +67,7 @@ export function itemsFromFile(parsed, { keys = null, limit = null } = {}) {
  * Reads and narrows a corpus file from disk.
  *
  * @param {string} path
- * @param {{ keys?: string[]|null, limit?: number|null }} options
+ * @param {{ keys?: string[]|null, split?: string|null, limit?: number|null }} options
  * @returns {Promise<object[]>}
  */
 export async function loadItems(path, options) {

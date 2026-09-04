@@ -10,12 +10,29 @@ node bench/run.js --step tier                         # free, offline: the tier 
 node bench/run.js --step matcher --keys a16,a18       # real Haiku calls, on the TEST key
 node bench/run.js --step extract --limit 5            # live fetches: which rung produced a body
 node bench/run.js --step untrusted --from my.json     # the bench database's record for each domain
+node bench/run.js --step bucket --from corpus/graded-2026-09.json --split tune --repeat 5
+                                                      # which goals.md bucket the pipeline gives each
+                                                      # graded article, 5 runs each, modal answer scored
 node bench/reset.js                                   # empty tables, current schema
 node bench/reset.js --from /tmp/backup.json.gz        # ...then a daily backup restored into it
 ```
 
 Every run prints a table (`ok` / `XX` against the corpus label when there is
-one, `!!` for an error) and writes the full rows to `bench/runs/` (gitignored).
+one, `!!` for an error), a per-label line, and the tokens spent, and writes
+the full rows to `bench/runs/` (gitignored).
+
+## Scoring as a rate
+
+The matcher is not deterministic, so a single run is a sample. `--repeat K`
+asks the step K times per article and scores the **modal** answer; each row
+shows `[agree/K]`, and the summary counts how many rows gave the same answer
+every time. Four calls run at once for the paid steps. `--split tune` narrows
+a corpus file to one split — keep `holdout` closed until a change is done, and
+never put `prompt` items in a scored run once they are in the prompt.
+
+The `spent:` line is measured tokens (the API reports them on every reply)
+times Haiku's list price from memory; the Anthropic console is the number
+that counts.
 
 ## What it will never touch
 
@@ -43,7 +60,5 @@ from the context, which is why they can be tested without a key.
 
 ## Not built yet
 
-The scoring harness (K repeats per item, per-class rates with spread — the
-matcher is not deterministic, so a single run is a sample), a `full` step
-that drives `huntSubject` end to end into the bench database, recorded-LLM
-replay, and `--sink`. TODO.md lists them in order.
+A `full` step that drives `huntSubject` end to end into the bench database,
+recorded-LLM replay, and `--sink`. TODO.md lists them in order.
