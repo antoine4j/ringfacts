@@ -42,8 +42,10 @@ Every hour, the hunter:
    at all, or a different subject entirely? The same forced-tool call also
    records how prominently the subject figures in the article's own text
    (`central` / `supporting` / `passing`).
-6. **Posts**, threading follow-ups under the original story and folding merely
-   tangential articles into one shared "Also mentioning" line — demotion
+6. **Posts**, threading follow-ups under the original story. Merely
+   tangential articles — the fighter named in passing in someone else's
+   story — never ride the hourly message; they queue for a once-a-day
+   mentions digest, one quiet list of links grouped by fighter. Demotion is
    decided by the matcher's prominence verdict first, then by a mention-count
    rule measured on the live archive.
 

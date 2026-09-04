@@ -26,6 +26,7 @@ import { digestTierFor } from "./lib/tier.js";
 import { readChatIds } from "./lib/chat-ids.js";
 import { runBackup, isBackupRun } from "./lib/backup.js";
 import { domainOf, isUntrustedSource } from "./lib/untrusted.js";
+import { renderMentionsDigest } from "./lib/mentions.js";
 import { domain } from "./domain/index.js";
 import { fileURLToPath } from "node:url";
 
@@ -46,6 +47,9 @@ const MAX_ITEMS_PER_SUBJECT = 5;
 const BACKUP_BUCKET = process.env.BACKUP_BUCKET;
 const BACKUP_ENABLED = Boolean(BACKUP_BUCKET || process.env.CLOUD_RUN_JOB);
 const BACKUP_HOUR_UTC = Number(process.env.BACKUP_HOUR_UTC || 11);
+// The mentions digest sweeps queued mentions this many days back; older ones
+// age out unsent — a stale "next Saturday" link reads dead.
+const MENTIONS_WINDOW_DAYS = Number(process.env.MENTIONS_WINDOW_DAYS || 7);
 // Cosine similarity above this = same story.
 // History: docs/decisions.md#dup-threshold
 const SEMANTIC_DUP_THRESHOLD = Number(process.env.SEMANTIC_DUP_THRESHOLD || 0.8);
@@ -389,7 +393,13 @@ async function classifyItem(deps, db, subject, item, vector) {
   // the mention-count rule is the fallback. Keyed on isRealClaim, not claimId.
   // History: docs/decisions.md#tier-keying
   item.digestTier = isRealClaim ? "main" : digestTierFor(item, subject.matchNames, item.subjectRole);
-  item.posted = true;
+
+  // Two speeds of delivery: real news posts now; a tangential mention is
+  // queued for the daily mentions digest and never rides the hourly message.
+  // History: docs/decisions.md#mentions-digest
+  const isQueuedMention = item.digestTier === "tangential";
+  item.posted = !isQueuedMention;
+  item.heldReason = isQueuedMention ? "tangential" : null;
 
   // A brand-new claim is born confirmed only on official sourcing.
   const status = isRealClaim
@@ -692,7 +702,7 @@ function assembleMessages(subject, fetchedCount, outcomes, resends) {
   const ceremonies = [];    // announcements born confirmed -> standalone 🚨
   const confirmations = []; // rumor->confirmed transitions -> threaded replies
   const digestClaims = [];  // claim ids whose home message is the digest
-  const tangential = [];    // demoted: one shared "also mentioning" line, not a bullet
+  const tangential = [];    // demoted: queued for the daily mentions digest, not sent here
 
   for (const outcome of outcomes) {
     // A confirmed rumor surfaces regardless of what its sighting item became.
@@ -717,22 +727,24 @@ function assembleMessages(subject, fetchedCount, outcomes, resends) {
     (item.digestTier === "tangential" ? tangential : digestItems).push(item);
   }
 
-  const postedCount = ceremonies.length + rumorPosts.length + digestItems.length + tangential.length;
+  const postedCount = ceremonies.length + rumorPosts.length + digestItems.length;
   console.log(
-    `${subject.name}: ${fetchedCount} fetched, ${outcomes.length} unseen, ${postedCount} posted ` +
-      `(${tangential.length} tangential), ${confirmations.length} confirmation(s)`
+    `${subject.name}: ${fetchedCount} fetched, ${outcomes.length} unseen, ${postedCount} posted, ` +
+      `${tangential.length} queued for the mentions digest, ${confirmations.length} confirmation(s)`
   );
 
   // Resend pass: stranded items ride this run's digest as ordinary bullets,
   // rebuilt from the row and deliberately not re-judged.
   // History: docs/decisions.md#resend-pass
   for (const row of resends) {
-    const item = {
+    // A tangential row that once failed a send belongs to the mentions
+    // digest's sweep now, not to this message.
+    if (row.digest_tier === "tangential") continue;
+    digestItems.push({
       dbId: row.id, title: row.title, source: row.source ?? "",
       url: row.resolved_url ?? row.url, publishedAt: new Date(row.published_at),
       edition: row.edition, resent: true,
-    };
-    (row.digest_tier === "tangential" ? tangential : digestItems).push(item);
+    });
   }
   if (resends.length) {
     console.log(`${subject.name}: carrying ${resends.length} item(s) from a failed send`);
@@ -803,55 +815,7 @@ export function digestLine(item) {
   return `• ${escapeHtml(title)} — <a href="${escapeHtml(item.url)}">${escapeHtml(item.source)}</a>${label}, ${hoursAgo(item.publishedAt)}h ago`;
 }
 
-/**
- * Renders the one shared line carrying every demoted item, as source links
- * rather than headlines.
- *
- * @param {object[]} items  Demoted items, newest first.
- * @returns {string}  Telegram HTML: "↘ Also mentioning: Sherdog · ESPN (1) · ESPN (2)"
- *
- * History: docs/decisions.md#tangential-line
- */
-export function alsoMentioningLine(items) {
-  const outlets = groupByOutlet(items);
-  const links = [];
 
-  // Number the links only when an outlet has more than one, so a lone
-  // "Sherdog (1)" never implies a missing sibling.
-  for (const { name, urls } of outlets) {
-    for (const [index, url] of urls.entries()) {
-      const label = urls.length > 1 ? `${name} (${index + 1})` : name;
-      links.push(anchor(url, label));
-    }
-  }
-
-  return `↘ Also mentioning: ${links.join(" · ")}`;
-}
-
-/**
- * Groups items by outlet, keeping input order within each group.
- * Identical URLs collapse — the same article reached twice is one story.
- *
- * @param {object[]} items
- * @returns {{ name: string, urls: string[] }[]}
- */
-function groupByOutlet(items) {
-  const byName = new Map();
-
-  for (const item of items) {
-    // Fall back to the hostname: a missing <source> tag would otherwise
-    // render an invisible, zero-width link.
-    const name = item.source.trim() || hostOf(articleUrl(item));
-    const key = name.toLowerCase();
-    if (!byName.has(key)) byName.set(key, { name, urls: [] });
-
-    const outlet = byName.get(key);
-    const url = articleUrl(item);
-    if (!outlet.urls.includes(url)) outlet.urls.push(url);
-  }
-
-  return [...byName.values()];
-}
 
 /** The real article URL, once Google's wrapper has been decoded. */
 function articleUrl(item) {
@@ -863,19 +827,6 @@ function anchor(url, label) {
   return `<a href="${escapeHtml(url)}">${escapeHtml(label)}</a>`;
 }
 
-/**
- * The link's hostname without "www.", or "source" when the URL won't parse.
- *
- * @param {string} url
- * @returns {string}
- */
-function hostOf(url) {
-  try {
-    return new URL(url).hostname.replace(/^www\./, "");
-  } catch {
-    return "source";
-  }
-}
 
 /**
  * Stage 8 — sends the three message types, in order: standalone ceremonies,
@@ -959,19 +910,11 @@ async function sendDigest(deps, db, subject, messages) {
   for (const item of digestItems) {
     lines.push(digestLine(item));
   }
-  if (tangential.length > 0 && lines.length > 0) lines.push(alsoMentioningLine(tangential));
 
-  // Every posted item this run was tangential — a header plus an "also
-  // mentioning" line is exactly the noise this rule removes, so nothing is
-  // sent, and the rows already written posted=true are corrected.
-  // History: docs/decisions.md#send-failure-walkback
+  // Nothing but queued mentions this run: nothing to broadcast. Their rows
+  // were written posted=false already; the mentions digest sweeps them.
   if (lines.length === 0) {
-    if (tangential.length > 0) {
-      console.log(`${subject.name}: ${tangential.length} tangential item(s) only — nothing broadcast`);
-      if (db && !deps.dryRun) {
-        await deps.store.markUnposted(db, tangential.map((item) => item.dbId).filter(Boolean), "tangential");
-      }
-    }
+    if (tangential.length > 0) console.log(`${subject.name}: ${tangential.length} mention(s) queued — nothing broadcast`);
     return;
   }
 
@@ -993,7 +936,7 @@ async function sendDigest(deps, db, subject, messages) {
 
     // Delivered at last: the rows that were carrying 'send_failed' go back
     // to saying the group has seen them.
-    const recovered = [...digestItems, ...tangential].filter((item) => item.resent).map((item) => item.dbId);
+    const recovered = digestItems.filter((item) => item.resent).map((item) => item.dbId);
     if (recovered.length) {
       await deps.store.markPosted(db, recovered);
       console.log(`${subject.name}: ${recovered.length} recovered item(s) delivered`);
@@ -1004,7 +947,7 @@ async function sendDigest(deps, db, subject, messages) {
   // claims stay: a claim is a fact we learned, not a message we sent.
   if (!messageId) {
     await markSendFailed(deps, db, subject,
-      [...rumorPosts.map((rumor) => rumor.item), ...digestItems, ...tangential], "digest");
+      [...rumorPosts.map((rumor) => rumor.item), ...digestItems], "digest");
   }
 }
 
@@ -1047,6 +990,9 @@ function buildMainDeps(overrides) {
     dryRun: DRY_RUN,
     chatId: CHAT_ID,
     databaseUrl: process.env.DATABASE_URL,
+    store: realStore,
+    sendMessage: sendTelegramMessage,
+    mentionsWindowDays: MENTIONS_WINDOW_DAYS,
     backup: (db) => runBackup({ db, store: realStore, fetch, bucket: BACKUP_BUCKET, now: new Date() }),
     backupEnabled: BACKUP_ENABLED,
     backupHourUtc: BACKUP_HOUR_UTC,
@@ -1108,6 +1054,56 @@ export async function main(overrides = {}) {
 }
 
 /**
+ * The daily mentions digest (`node hunter.js --mentions`): sweeps every
+ * tangential row the hourly runs queued, posts one message grouped by
+ * fighter, and marks the rows delivered. Nothing queued means nothing sent.
+ * History: docs/decisions.md#mentions-digest
+ *
+ * @param {object} overrides  Test replacements for buildMainDeps.
+ * @returns {Promise<void>}
+ */
+export async function sendMentionsDigest(overrides = {}) {
+  const mainDeps = buildMainDeps(overrides);
+  if (!mainDeps.dryRun && !mainDeps.chatId) {
+    throw new Error("TELEGRAM_CHAT_IDS is required unless DRY_RUN=1");
+  }
+  if (!mainDeps.databaseUrl) {
+    console.warn("No DATABASE_URL — no queue to sweep.");
+    return;
+  }
+
+  const db = await mainDeps.openDb();
+  try {
+    const rows = await mainDeps.store.unsweptMentions(db, mainDeps.mentionsWindowDays);
+    if (rows.length === 0) {
+      console.log("mentions digest: nothing queued");
+      return;
+    }
+
+    // Watchlist order for the groups; the rows are already newest first.
+    const subjects = await mainDeps.loadSubjects();
+    const message = renderMentionsDigest(rows, subjects.map((subject) => subject.name));
+    console.log(`mentions digest: ${rows.length} queued mention(s)`);
+
+    if (mainDeps.dryRun) {
+      console.log(`\n--- would post ---\n${message}\n`);
+      return;
+    }
+
+    // Delivered rows leave the queue; a failed send leaves them for tomorrow.
+    const messageId = await mainDeps.sendMessage(mainDeps.chatId, message, { html: true, noPreview: true });
+    if (messageId) {
+      await mainDeps.store.markPosted(db, rows.map((row) => row.id));
+      console.log(`mentions digest: delivered ${rows.length} mention(s)`);
+    } else {
+      console.error("mentions digest: send failed, rows stay queued");
+    }
+  } finally {
+    await db.end();
+  }
+}
+
+/**
  * Runs the daily backup when this hourly run is the one scheduled for it.
  * Needs a real database, a real run, and the backup switched on.
  *
@@ -1160,10 +1156,12 @@ async function collectDirectItems(mainDeps, subjects) {
   return directItems;
 }
 
-// Run a hunt only when executed directly (`node hunter.js`), so tests and
-// scripts can import from this module without starting one.
+// Run only when executed directly, so tests and scripts can import from this
+// module without starting anything: `node hunter.js` hunts, `--mentions`
+// sends the daily mentions digest instead.
 if (process.argv[1] === fileURLToPath(import.meta.url)) {
-  main().catch(async (err) => {
+  const entry = process.argv.includes("--mentions") ? sendMentionsDigest : main;
+  entry().catch(async (err) => {
     console.error(err);
     // Self-report to the admin's DM, best-effort: if Telegram itself is what
     // broke, this can't deliver — the GCP failure alert is the backstop.

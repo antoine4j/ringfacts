@@ -435,3 +435,66 @@ have been muzzled by a ratio rule and are protected by the bodies condition.
 **Failure mode accepted with eyes open:** a domain must first earn a
 majority-junk record before it can silently lose one real article, and the
 held row remains findable by the check-in runs.
+
+## tier-reorder — The matcher's "passing" outranks a name in the headline
+*2026-09-04*
+
+`digestTierFor` (lib/tier.js) used to let a headline that named the subject
+keep its full line whatever the matcher said. That was the residual-#23
+decision of 2026-08-09: a name the reader can see, folded, reads as a bug.
+Anton reversed it on 2026-08-11 after three posts in one day (#110, #115,
+#116) were backdrop mentions saved only by their headline — for a subject
+whose press is name-rich, the escape was not an edge case but the main door.
+The measurement then (corpus 64% → 88%, zero regressions) sat unbuilt for
+three weeks.
+
+**Built 2026-09-04.** A `passing` role now demotes before the headline check.
+`TIER_PASSING_OVERRIDES_HEADLINE=0` restores the old order without a deploy,
+the precedent `TIER_MAX_MENTIONS` set. A null or failed role still leaves the
+headline escape and the count rule in charge, byte for byte.
+
+**Re-measured the same day** (`corpus/measure-tier.js`, the corpus having
+been relabelled since August): 33 scored items, **18/33 (55%) → 26/33
+(79%)**, eight items change, all eight in the right direction, zero
+regressions. Over the live archive (`measure-tier.js` section B) 15 posted
+items would have folded — and all 15 were graded bucket 3 in the same day's
+grading pass (docs/grading/2026-09-04-posted-30d.md), so no story the group
+should have seen as a headline is lost. The gap that remains (the corpus's
+seven wrong items) is `supporting` and `central` articles that are still not
+about him — the mention-kind field, not the ordering.
+
+## mentions-digest — Two speeds of delivery
+*2026-09-04*
+
+Demoting a mention only helps if it lands somewhere. Until today a demoted
+item rode the hourly digest as one link in an "↘ Also mentioning" line — or,
+when the run had nothing else, was held with `held_reason: 'tangential'` and
+never retried. Anton's call on 2026-08-11: **real news posts on the hour;
+folded mentions accumulate and ship once a day** in one message grouped by
+fighter, or not at all when there is nothing. Carrying them to the next real
+digest was rejected (for a recovering fighter that may be weeks away, and
+carried mentions age out undelivered); weekly was rejected (a stale "next
+Saturday" link reads dead).
+
+**Built 2026-09-04.** The hourly run writes a tangential item `posted=false,
+held_reason='tangential', digest_tier='tangential'` from the start — no
+walk-back — and its message carries no mention line at all. The "↘ Also
+mentioning" line and its helpers are gone. `node hunter.js --mentions`
+(`sendMentionsDigest`) sweeps `unsweptMentions` (digest_tier + posted, not
+held_reason, so a row that once failed a send is still swept) inside a
+7-day window (`MENTIONS_WINDOW_DAYS`), renders one message (lib/mentions.js:
+watchlist order, newest first, one line per distinct headline with every
+outlet that carried it, Google's " - Outlet" suffix stripped), posts it, and
+marks the rows posted. A failed send leaves them queued for tomorrow.
+
+**Not yet scheduled.** goals.md says a new post format ships only after Anton
+has seen it. The Cloud Run job and its daily Cloud Scheduler trigger are in
+setup.sh; the preview from a dry run against the archive is in the 2026-09-04
+check-in entry. Until the trigger exists, queued mentions wait in the
+database and age out after seven days — the design's own answer to stale
+links, and nothing the group would have wanted loudly anyway.
+
+**Deliberately left out:** translation of foreign headlines (the mention
+is a quiet link, not a headline the group reads; revisit if Anton wants it),
+and the usefulness gradient inside mentions (assessment > context > orbit) —
+the digest makes misranking cheap, so the examples pile up first.
