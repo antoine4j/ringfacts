@@ -1,5 +1,23 @@
 # RingFacts — Next Steps
 
+## Current priorities (triaged with Anton 2026-08-26, reaffirmed 2026-09-03)
+
+Ranked for the project goal — useful news for the fan group:
+
+1. **Stop the mshale.com spam** — the untrusted-source rule, design approved
+   2026-09-03, spelled out under the reopened junk-domain bullet (§4). Build next.
+2. **Ship the tier reorder + daily mentions digest** — both designed, measured
+   (64% → 88% on the corpus, zero regressions), decided 2026-08-11, never built.
+   Details in the two §4 bullets (`subject_role: 'passing'` reorder; scheduled
+   mentions digest).
+3. **Stop old fights posting as fresh news** — needs event dates reliably in
+   `claims.facts` first; facts extraction is measured-weak (8/13 claims empty,
+   never evaluated). The 5-phase-2 recency bullet holds the details.
+
+Below the line, deliberately: the sandbox bench and matcher-eval scoring
+harness (infrastructure that de-risks #2/#3 but delivers no news by itself),
+DB backups (safety, not quality).
+
 ## Safety (Anton, console)
 - [x] **GCP budget alert (2026-08-09):** $5/month, project-scoped, email tripwire at 50/90/100/150% to the billing admin (`${ALERT_EMAIL}`). Created via `gcloud billing budgets create` (Billing Budget API enabled to allow it). `max-instances=1` still caps compute physically; this is the visibility layer on top.
 - [x] **Anthropic hard spend cap (2026-08-09):** set to $5/mo (Anton, console.anthropic.com). The one cap that truly matters — LLM API is the only real runaway risk (spec §16.4).
@@ -9,6 +27,7 @@
   - **[x] The corpus exists: `corpus/` (2026-08-11).** 48 labelled articles — 25 `tune` / 23 `holdout`, split per class so both sides see every class, across eight classes (`announcement`, `claim_news`, `assessment`, `context`, `orbit`, `lifestyle`, `wrong_subject`, `duplicate`). `build.js` regenerates both files from the live table and is where the labels and their reasoning live; the JSON is the artifact. **Labels are what the system SHOULD answer, not what it does** — `a110`/`a115`/`a116` all record `production.digest_tier: 'main'` against `expect.digest_tier: 'tangential'`, so the corpus is red against today's code by construction. Six items are fabricated (`s1`–`s6`, `synthetic: true`, `*.invalid` URLs) because the archive cannot supply what they cover: an Amosov or Topuria announcement, any confirmation at all (zero in the archive, so nothing else exercises `confirmClaim` or the 🚨 ceremony), the rumor/reported/official gradient, and an adversarial near-miss about Ilia's brother. Known gaps are written down in `corpus/README.md` rather than left to be rediscovered — thin classes, one real announcement cluster, no `injury`/`result`/`denial` items, and only the three current watchlist subjects.
   - **Still to build: the scoring harness.** Load a split, run each item K times through the real matcher, compare against `expect`, report per-class rates with spread. Two constraints it must respect, both already load-bearing: score as a **rate**, never pass/fail (the nondeterminism item below); and **never tune against `holdout.json`** — its only value is having never been used. Natural first home is the sandbox test bench (Housekeeping), since "throw a corpus at the engine and see what it does" is the same machinery.
 - [ ] **Sandbox test bench (aligned with Anton 2026-08-11, not built):** a standing instance of the engine — its own DB branch, its own Telegram chat, its own logs — with an input hatch, so a collection of articles can be thrown at it and the reaction watched. Exists because announcements are too rare to develop against: Donchenko's was the only one, and the next Amosov one may be months away. Shape as agreed:
+  - **State as of 2026-09-03 — credentials exist, zero code.** A 2026-08-12 session prepped `bench/.env.bench` (gitignored, live values): a dedicated `bench` database on the Neon main branch, test-only Anthropic/Gemini keys, and a throwaway Telegram group (`BENCH_CHAT_ID` — sidesteps the `TELEGRAM_CHAT_IDS` third-key idea below, which may now be unnecessary). `bench/runs/` is empty and nothing in the repo references `bench/`. Remaining work, in build order agreed with Anton: **(1)** the runner — load a JSON article file, drive `huntSubject` with overrides (`hoursBack: Infinity` per the trap below), record every decision to `bench/runs/`; **(2)** the reset — one command back to empty schema, without which run #2 is eaten by dedup; **(3)** the scoring harness (the matcher-eval item above — compare a run against corpus labels, K repeats, per-class rates); **(4)** recorded-LLM replay mode; **(5)** the URL-list producer (lowest — corpus + hand fixtures cover most needs). Items 1+2 are the minimum useful bench; `scripts/verify-digest-tier.js` is the working precedent for driving the pipeline through the seam.
   - **Resettability is the defining requirement, not a convenience.** Tuning means running the same corpus twice, and Gate 1 drops any URL already in `items` while Gate 2 holds anything near it — so a second run of an unreset bench produces silence and reads as "your change broke everything". A Neon branch is copy-on-write and cheap to re-cut, so "reset" can mean delete-and-re-branch rather than cleanup SQL.
   - **One input shape, three producers.** The engine only ever accepts a file of article records; those come from exporting archive rows, fetching a URL list, or hand-writing fixtures. `corpus/*.json` is already that shape. Hand-written matters most — it is the only way to test an Amosov announcement before it happens.
   - **Live-or-recorded LLM calls, switchable.** Live answers "is the matcher any good at announcements"; recorded (capture once, replay after) answers "does this threshold do what I think" with the sampler held still. Different questions, both wanted.
