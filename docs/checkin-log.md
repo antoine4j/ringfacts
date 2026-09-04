@@ -7,6 +7,29 @@ as the chat report: data / changes / proposals / next attention.
 
 ---
 
+## 2026-09-04 00:30–08:30 PDT — first autonomous pass against docs/goals.md (Anton asleep; Fable 5.1)
+
+📊 **Data**: 103 posts in 30 days pre-graded → **G2 precision 37%** (target 90%); 66 bucket-3, 6 mshale spam, 3 stale, 8 repeats; G1 1/1 (Donchenko Paris booking posted + confirmed). 06:21 UTC run failed on a Google 503 wave (all three), 07:17 recovered — known mode, nothing new.
+🔧 **Changes** (all deployed unless noted): daily GCS backup + restore path (bucket `fighter-bot-504723-backups`, 30-day rotation + retention; first backup due 11:17 UTC — **verify next session**) · untrusted-source rule (re-measured over 597 items: mshale only, 4 posted spams caught, zero casualties) · tier reorder (`passing` beats the headline; corpus 55% → 79%, zero regressions; 15 posted archive items would fold, all graded bucket 3) · two-speed delivery: tangential items queue for a daily mentions digest, the "Also mentioning" line is gone · `fighterbot-mentions` job created, **trigger NOT created** (Anton must see the format; preview below) · the bench (`bench/run.js`, `bench/reset.js`) smoke-tested on the test keys · dedup misses measured (five live repeats at 0.71–0.76: headline-embedding limit, not a threshold) · search-verification spec drafted from a one-call spike.
+💡 **Proposals** (Anton): confirm the grading (docs/grading/2026-09-04-posted-30d.md) · look at the mentions digest preview and say yes/no to the daily trigger (`setup.sh`, commented line) · review docs/superpowers/specs/2026-09-04-search-verification-design.md · lock the backup bucket's retention policy (irreversible) or not · push the 14 unpushed commits.
+👁 **Next attention**: the 11:17 UTC backup object; first live `held_reason: 'untrusted_source'` rows; the queue of tangential rows growing while the trigger waits (7-day age-out); precision after a week of the reorder.
+
+Mentions digest preview (dry run over the archive's 7-day queue, 17 rows → collapsed lines):
+```
+📎 Mentions — articles that name them in passing
+
+Daniil Donchenko
+• Punahele Soriano | Happiest In The Background — UFC.com
+
+Ilia Topuria
+• Song Yadong's coach wants him to avenge the KO loss … — Bloody Elbow
+• Arman Tsarukyan under fire for leaving Charles Oliveira off … — Bloody Elbow
+• UFC champ Justin Gaethje isn't fighting for the rest of 2026 … — Yahoo Sports
+• Opinion: Justin Gaethje's UFC title demands are getting harder to defend — Sherdog · Sherdog
+• Usman Nurmagomedov refutes claim that you're only high level … — Yahoo Sports UK · MMA Junkie
+  (… 8 more)
+```
+
 ## 2026-08-09 — digest tier shipped: tangential articles fold into one line (manual session, Anton driving; implementation on Sonnet 5 per an approved plan)
 
 - 🔧 **Shipped** the tier rule measured earlier today: an article whose headline never names the fighter and whose body (≥300ch) names them ≤1× folds into a shared "↘ Also mentioning: Source1 · Source2" line instead of its own bullet. Nothing dropped — still `posted=true`, still stored and linked; just not a headline. Rule lives in `lib/tier.js`, imported by both `hunter.js` and `audit-digest-tier.js` so re-measurement can't drift from production. New `digest_tier` column, deliberately not `held_reason` (that column means "why the group never saw this"; tangential items are still shown).
