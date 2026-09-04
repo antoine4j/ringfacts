@@ -112,20 +112,28 @@ names the goal it moves.
    grading session. Instead: Anton replies to the bot's post in the group —
    "👎 junk", "2 dup", "this is a 2", or a sentence — and the webhook
    (server.js, today a stub) stores it. Design:
-   - *Identify the article.* Posts stay grouped per fighter per run, so the
-     bullets get numbers ("1." "2."). Three ways in, most reliable first: the
-     number; a Telegram quote-reply (the selected bullet text comes with the
-     update, matched to the post's own headlines); a description, resolved
-     by Haiku choosing among the two-to-five headlines of that post only.
+   - *Where.* Primary path, found by Anton's own test: **forward the post to
+     the bot's private chat**, then reply to the forward with the verdict.
+     The forward carries the post's full text including the link behind
+     each source name — the article URL, which is the key in `items`. So a
+     forwarded post identifies its articles exactly, in order, with no
+     model. The group never sees the exchange, and the bot needs no new
+     access: Anton's DM is already on the webhook whitelist, the group is
+     not, and stays that way. Reply-in-group (message id + number, or a
+     quote-reply) can come later as the one-tap version.
+   - *Identify the article.* URLs from the forward give the post's two-to-
+     five items; the bullets get numbers ("1." "2.") so "2 junk" is exact.
+     A description ("the interview") is resolved by Haiku choosing among
+     those headlines only.
    - *Confirm or ask.* The bot answers one line: "Got it, 2 of 3: bucket 3,
      junk." If it cannot tell the item or the verdict it asks "Which one?
      1 … 2 … 3 …"; the answer completes the row. A correction ("no, dup")
      replied to the confirmation fixes the row. The bot speaks only when
-     replied to; clarifications may move to Anton's DM if the group feels
-     noisy.
+     replied to, in the DM.
    - *Schema, additive.* `items.tg_message_id` (the post an item went out
-     in; alerts already keep theirs on the claim). New table `feedback`:
-     id, tg_message_id, line_no, item_id, claim_id, verdict (up/down),
+     in; optional under the forward path, kept for reply-in-group later).
+     New table `feedback`: id, forwarded_text (verbatim), tg_message_id
+     (nullable), line_no, item_id, claim_id, verdict (up/down),
      reason (junk/dup/old/wrong/loud/missed), wanted_bucket, note (verbatim),
      from_user, status (pending/confirmed), bot_message_id (the question,
      so the answer links back by reply), created_at. State lives in the
