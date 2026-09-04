@@ -22,7 +22,13 @@ names the goal it moves.
    reputable outlets corroborate, everything else is noise. The same tool
    resolves event dates (unblocks #5) and runs the G1 recall probe. The real
    work is the domain trust list, not the search call. Architectural: needs a
-   spec before code.
+   spec before code. **Key handling (Anton 2026-09-04):** the search call uses
+   its own Anthropic key (`ANTHROPIC_SEARCH_KEY`, test twin
+   `ANTHROPIC_SEARCH_TEST_KEY` in `bench/.env.bench`) so console cost splits
+   LLM from search. Secret Manager sits at its free-tier ceiling of active
+   secrets, so the production key must NOT become a sixth secret — fold it
+   into an existing one (JSON, the way `TELEGRAM_CHAT_IDS` travels) or replace
+   a version.
 5. **Stop old fights posting as fresh news** (G2) — needs event dates reliably in
    `claims.facts` first; facts extraction is measured-weak (8/13 claims empty,
    never evaluated). Search (#4) may get the date directly instead. The
