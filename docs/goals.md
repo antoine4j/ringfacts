@@ -77,6 +77,31 @@ Two rulings from Anton (2026-09-04) that fix the line:
 The 2-versus-3 boundary is tuned from Anton's graded verdicts, not from
 Claude's judgment. Each borderline verdict becomes a worked example here.
 
+**Worked examples from the first grading pass** (2026-09-04, items in
+`docs/grading/2026-09-04-posted-30d.md`):
+
+| item | what it was | bucket | the line it draws |
+|---|---|---|---|
+| #21 | Usman's camp asks for Topuria as a first fight | 3 | Someone else wanting him is about them, not him. |
+| #50 | Prates warns him off a welterweight move | 3 | Advice or a callout aimed at him is not information about him. |
+| #256 | Tsarukyan names his next opponent | 3 | A rival's pick is not grounded speculation about his next fight. |
+| #43 | Two managers argue over criticism of him | 3 | A feud about him is still a feud between others. |
+| #318, #340 | His trainers on vision drills and muscle | 3 | Training trivia; compare #547. |
+| #194, #226 | Makhachev on his loss and the face-off | 2 | The champion assessing him is substance about him. |
+| #279 | Mendez: he needs several wins before Makhachev | 2 | A top coach on his path. |
+| #523 | A doctor on his nose damage | 2 | Injury analysis, like #341. |
+| #291, #320 | His childhood; joining territorial defence in 2022 | 2 | His own substantial account of his life. (#380, one lesson from his divorce, stayed 3 — depth matters.) |
+| #547 | His boxing coach on what sets him apart | 2 | Breaking down his game. |
+
+Reading of the line (Claude's, to be tested against the next pass): **others
+acting toward him → 3; others assessing him → 2; him on himself → 2 when
+substantial.**
+
+**Possible fourth bucket, "lifestyle"** (Anton, 2026-09-04, on #366 —
+Donchenko's fishing and breakdance hobbies): personal-life updates that are
+not junk but do not belong in the main digest. Not a rule yet; the next pass
+should count how many bucket-3 items are really this.
+
 ## G3. Nothing repeats
 
 **Success:** **zero** posts about a story the group has already been shown —
