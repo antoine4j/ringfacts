@@ -9,14 +9,19 @@ names the goal it moves.
    untrusted-source rule (docs/decisions.md#untrusted-source). Watch: the first
    live `held_reason: 'untrusted_source'` rows, and that no non-mshale domain
    ever trips it.
-2. ~~**First measurement pass**~~ — **done 2026-09-04, awaiting Anton's
-   confirmation** ([docs/grading/2026-09-04-posted-30d.md](docs/grading/2026-09-04-posted-30d.md)).
-   Pre-graded, 103 posts in 30 days: **G2 precision 37%** (target 90%) — 66
-   of 103 are bucket 3, mostly articles about Makhachev, Gaethje, Tsarukyan or
-   Usman with our fighter as backdrop; 6 spam; 3 stale; **8 repeats** of an
-   already-posted story (G3), all missed by the dedup gate. G1: the one career
-   event in the window (Donchenko booked for Paris) posted and confirmed;
-   recall probe found nothing missed, weak evidence. Re-run monthly.
+2. ~~**First measurement pass**~~ — **done and graded by Anton 2026-09-04**
+   ([docs/grading/2026-09-04-posted-30d.md](docs/grading/2026-09-04-posted-30d.md)).
+   103 posts in 30 days: **G2 precision 33%** (target 90%) — 69 of 103 are
+   bucket 3, mostly articles about Makhachev, Gaethje, Tsarukyan or Usman with
+   our fighter as backdrop, plus other fighters calling him out or naming his
+   next opponent; 6 spam; 3 stale; **8 repeats** of an already-posted story
+   (G3), all missed by the dedup gate. Pre-grading agreed with Anton on 98 of
+   103; the five misses were all Claude being generous with bucket 2 on
+   "others acting toward him" items (worked examples in goals.md). G1: the
+   one career event in the window (Donchenko booked for Paris) posted and
+   confirmed; recall probe found nothing missed, weak evidence. Re-run
+   monthly; next pass also grades a sample of the holds (goals.md G2, "both
+   directions") and counts how many bucket-3 items are really "lifestyle".
 3. ~~**Ship the tier reorder + daily mentions digest** (G2)~~ — **built
    2026-09-04** (docs/decisions.md#tier-reorder, #mentions-digest). Reorder
    re-measured 55% → 79% on the relabelled corpus, zero regressions; 15
