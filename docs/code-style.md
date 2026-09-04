@@ -277,3 +277,56 @@ Two reasons not to:
 
 Review is the gate. If that stops working, revisit — but revisit deliberately,
 rather than adding ESLint because it seemed tidy.
+
+## What tests a change needs
+
+Agreed with Anton 2026-09-04. Three tiers, each catching a failure the others
+cannot; a change needs the tiers that apply to it.
+
+1. **Unit tests with fake dependencies — always.** Synthetic inputs, seconds,
+   run by the pre-commit hook. They test logic: parsing, threshold arithmetic,
+   claim state transitions, the verdict validator. Every new function gets
+   one. They cannot see wiring — the misspelled translator key passed all 27
+   of them (self-improvement §4).
+2. **Corpus score with real articles — for anything that judges.** The
+   labelled corpus (`corpus/`, real archive items with Anton's verdict
+   attached) is the ground truth for the matcher, the tier rule, and any
+   future judgment step such as a search verifier. The output is a score, not
+   pass/fail — the model is not deterministic and "64% → 88%" is the useful
+   answer. A change to a judgment step reports the score before and after.
+   Real data only: synthetic articles have no keyword-stuffed spam, no site
+   navigation menus, no Ukrainian blogs, and those are what break things. The
+   corpus grows from Anton's monthly grading pass (goals.md, G2).
+3. **Live smoke — before deploy, then observe after.** The order matters:
+   first a local `DRY_RUN=1` run against the real feeds (fetches, decides,
+   posts nothing) — that is the gate, and a change does not deploy until it
+   passes. Then deploy, then the deploy-and-observe window from
+   self-improvement §8 to see what it actually catches over a few days. The
+   only tier that sees whether the parts are plugged into each other.
+
+The bench runner (TODO.md, priority 6) is what lets Anton run tier 2 himself
+from a fresh session.
+
+## Commits
+
+This is a public repository, and the history is part of what it shows. Rules:
+
+1. **One logical change per commit.** A feature, a fix, a doc decision — not
+   a working session. Fix-ups to something not yet pushed get folded into the
+   commit they fix (`git commit --amend`, or an interactive squash), never
+   pushed as "fix typo". Once pushed, history is not rewritten.
+2. **The subject line names the change for a stranger.** Plain English,
+   under 72 characters, what changed and — when it fits — what it was for:
+   *"Confirmation posts link the decoded article URL, not Google's wrapper"*.
+   No prefixes, no ticket codes, no "WIP", no "update docs".
+3. **The body says why.** What was wrong or missing, what was measured, what
+   was considered and rejected — enough that the commit teaches, per
+   self-improvement §7. Decisions worth finding later also get an entry in
+   [decisions.md](decisions.md); the commit body is not the only record.
+4. **Nothing private.** No secret values, no personal data, no chat-ids or
+   keys — command substitution and env names only. The Telegram group and
+   its members are never described in a way that identifies them.
+5. **Tests pass before the commit exists.** The pre-commit hook enforces it;
+   `--no-verify` is not used (self-improvement §4).
+6. **Attribution line at the end** when Claude wrote it:
+   `Co-Authored-By: Claude <model> <noreply@anthropic.com>`.
