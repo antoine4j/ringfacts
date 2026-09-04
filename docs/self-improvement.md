@@ -227,6 +227,11 @@ own fix. Three lessons, all now enforced in code rather than remembered:
 RingFacts is a learning project. Reports and commit messages say what changed
 and *why it mattered*, in language that teaches rather than just logs.
 
+**Announce every task switch in the chat** (Anton, 2026-09-04): one explicit
+line — "Task switch: X is done, now on Y" — so the transcript reads as blocks
+of work, one per task, when he browses it later. In the desktop app, mark a
+chapter as well.
+
 Code follows the same rule, but the *why* has its own home. Recording it inline
 was tried and it failed: `hunter.js` reached 35% comments, thirteen blocks of
 eight lines or more, and Anton could no longer review his own project — which
