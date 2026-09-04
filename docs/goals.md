@@ -34,9 +34,11 @@ archive — did it arrive, did it post, how late. Recorded in
 Anton, and **zero** posts that are spam, a namesake, or a stale event
 re-published as fresh.
 
-**Measured** monthly: Claude puts the posted list in front of Anton, Anton
-replies with the numbers of the bad ones (about 15 minutes). Verdicts go into
-`docs/article-feedback.md` verbatim.
+**Measured** monthly: Claude pre-grades every posted item — reads the body,
+assigns a bucket, writes a one-line reason with the link — and puts the list
+in front of Anton, who confirms or overrules (about 15 minutes; Anton,
+2026-09-04: "you can label them yourself, I will just confirm"). His verdicts
+go into `docs/article-feedback.md` verbatim.
 
 ### What "useful" means — the three buckets
 
