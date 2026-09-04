@@ -331,3 +331,15 @@ and nothing constructs its own client at import time. The rules:
    composition root is one readable literal; no hidden globals, no
    environment lookups scattered through modules. If a reader cannot tell
    from `buildDeps` what a run talks to, the seam has drifted.
+
+## 10. Delegate bulk reading to a cheaper subagent
+
+Anton, 2026-09-04. Work that is mostly reading and little judgment — grading
+a hundred article bodies into buckets, tabulating a replay, summarising logs
+— goes to a subagent on a cheaper model that returns a table, so the main
+session's context stays about decisions and the cost stays proportionate.
+Only when it makes sense: the judgment calls (a threshold, a design, a
+borderline article) stay in the main session, and a subagent's output is
+data to verify, not a verdict to trust. The first grading pass
+(docs/grading/2026-09-04-posted-30d.md) was done in the main context; it is
+the case this rule is for.

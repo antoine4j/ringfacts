@@ -9,15 +9,26 @@ names the goal it moves.
    untrusted-source rule (docs/decisions.md#untrusted-source). Watch: the first
    live `held_reason: 'untrusted_source'` rows, and that no non-mshale domain
    ever trips it.
-2. **First measurement pass** (G1, G2, G3) — pull the last 30 days of posted
-   items for Anton to grade; hand-list the real career events for the same
-   window and check each against the archive. The first real numbers for the
-   goals; every later priority call is checked against them.
-3. **Ship the tier reorder + daily mentions digest** (G2) — both designed, measured
+2. ~~**First measurement pass**~~ — **done 2026-09-04, awaiting Anton's
+   confirmation** ([docs/grading/2026-09-04-posted-30d.md](docs/grading/2026-09-04-posted-30d.md)).
+   Pre-graded, 103 posts in 30 days: **G2 precision 37%** (target 90%) — 66
+   of 103 are bucket 3, mostly articles about Makhachev, Gaethje, Tsarukyan or
+   Usman with our fighter as backdrop; 6 spam; 3 stale; **8 repeats** of an
+   already-posted story (G3), all missed by the dedup gate. G1: the one career
+   event in the window (Donchenko booked for Paris) posted and confirmed;
+   recall probe found nothing missed, weak evidence. Re-run monthly.
+3. **Ship the tier reorder + daily mentions digest** (G2) — **now the biggest
+   lever: it targets the 66 bucket-3 posts directly.** Both designed, measured
    (64% → 88% on the corpus, zero regressions), decided 2026-08-11, never built.
    Details in the two §4 bullets (`subject_role: 'passing'` reorder; scheduled
    mentions digest). The three-bucket rule in goals.md is the target the tier
-   should converge on.
+   should converge on; the grading pass shows "supporting" items are mostly
+   bucket 3 too, so the reorder alone will not reach 90%.
+3b. **Why did the dedup gate miss 8 repeats?** (G3, new 2026-09-04) — the
+   Masvidal quote posted four times (#1, #2, #4, #26), the manager feud three
+   times (#43, #45, #47), three more pairs. Cross-language and same-story
+   different-angle pairs; measure their actual similarities against the 0.80
+   threshold before touching anything (self-improvement §5).
 4. **Active verification via web search** (G4, and G2's stale-event clause) —
    concept discussed 2026-09-03/04, no design yet. On a new fight claim, search
    for it and sort results by domain trust: official domain confirms,
