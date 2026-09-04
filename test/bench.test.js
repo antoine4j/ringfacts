@@ -121,6 +121,17 @@ describe("bench/steps — one named step, its dependencies handed in", () => {
     assert.equal(row.ok, true);
   });
 
+  test("matcher and bucket hand the matcher the subject's NAME, as the hunter does", async () => {
+    // Regression: the bench passed the subject object, so every prompt read
+    // "[object Object]" as the fighter's name (2026-09-04). The baseline
+    // measured that way was worthless.
+    const seen = [];
+    const spy = ctx({ matchItem: async ({ subject }) => { seen.push(subject); return { verdict: "NO_CLAIM", subject_role: "central" }; }, domain: { loudTypes: [], ignoredTypes: [] } });
+    await STEPS.matcher.run(corpusItem(), spy);
+    await STEPS.bucket.run(corpusItem(), spy);
+    assert.deepEqual(seen, ["Daniil Donchenko", "Daniil Donchenko"]);
+  });
+
   test("matcher: an unresolvable subject is reported, not thrown", async () => {
     const row = await STEPS.matcher.run(corpusItem({ subject: "Nobody Known" }), ctx());
     assert.match(row.error, /subject/);
