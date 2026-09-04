@@ -43,3 +43,12 @@ archive row (`items.id`), where the embedding, tier, and body live.
   - Training trivia from his coaches (#318, #340) is 3; a coach breaking down *his game* (#547) is 2.
   - Anton wants a future **lifestyle** category for updates like #366 (Donchenko's fishing and breakdance hobbies) — not junk, not for the main digest.
   - Eurosport (#445) geoblocks Anton; the verdict there rests on Claude's summary. Worth remembering when a Eurosport post is graded again.
+
+---
+
+## 📋 2026-09-04 (evening) — The callout rule, sharpened
+
+- **Comment** (Anton, in chat): "I think callout specifically should be bucket 2, like if other fighter says I want to fight Topuria. But if another fighter says Topuria should fight <somebody else> - it's bucket 2. With authority, it might be more important, but within limits, like champ Makhachev's opinion on who Topuria might fight, or Makhachev's coach'd opinion." Then, confirming Claude's reading of the second sentence as bucket 3: "I agree with your correction, do as you said."
+- **Rule**: a fighter saying *I want to fight him* → **2**. A fighter saying *he should fight someone else* → **3**. An authority (the champion, the champion's coach) on who he might fight → **2**, within limits.
+- **Effect**: #21 (Usman's camp asks for Topuria as a first fight) goes back to 2. Precision for the window becomes 35 / 103 = 34%. #50 (Prates warns him off welterweight) and #256 (Tsarukyan picks his next opponent) stay 3.
+- **Also decided**: the mentions digest is held back — Anton does not want tangential articles in the chat at all; a single link to an aggregated page is the only shape he would consider (TODO).

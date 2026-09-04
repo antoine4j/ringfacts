@@ -11,13 +11,13 @@ names the goal it moves.
    ever trips it.
 2. ~~**First measurement pass**~~ — **done and graded by Anton 2026-09-04**
    ([docs/grading/2026-09-04-posted-30d.md](docs/grading/2026-09-04-posted-30d.md)).
-   103 posts in 30 days: **G2 precision 33%** (target 90%) — 69 of 103 are
+   103 posts in 30 days: **G2 precision 34%** (target 90%) — 68 of 103 are
    bucket 3, mostly articles about Makhachev, Gaethje, Tsarukyan or Usman with
    our fighter as backdrop, plus other fighters calling him out or naming his
    next opponent; 6 spam; 3 stale; **8 repeats** of an already-posted story
-   (G3), all missed by the dedup gate. Pre-grading agreed with Anton on 98 of
-   103; the five misses were all Claude being generous with bucket 2 on
-   "others acting toward him" items (worked examples in goals.md). G1: the
+   (G3), all missed by the dedup gate. Pre-grading agreed with Anton on 99 of
+   103; the misses were Claude being generous with bucket 2 on "others
+   steering him elsewhere" items (worked examples in goals.md). G1: the
    one career event in the window (Donchenko booked for Paris) posted and
    confirmed; recall probe found nothing missed, weak evidence. Re-run
    monthly; next pass also grades a sample of the holds (goals.md G2, "both
@@ -26,10 +26,13 @@ names the goal it moves.
    2026-09-04** (docs/decisions.md#tier-reorder, #mentions-digest). Reorder
    re-measured 55% → 79% on the relabelled corpus, zero regressions; 15
    posted archive items would have folded, all 15 graded bucket 3. Hourly
-   runs now queue mentions instead of sending them. **Waiting on Anton:** the
-   daily trigger for `fighterbot-mentions` is not created until he has seen
-   the preview (check-in log 2026-09-04); until then queued mentions age out
-   at 7 days. Next lever after this: the grading pass shows `supporting` and
+   runs now queue mentions instead of sending them. **Digest held back
+   (Anton, 2026-09-04 evening):** no tangential articles in the chat at all,
+   so the daily trigger is never created; queued rows stay in the archive as
+   held items. Future idea, parked: **one link to a public page** that
+   aggregates the week's mentions per fighter (a static page on a public
+   host — not the backup bucket; GitHub Pages or a second bucket). Revisit
+   when the main digest is near 90%. Next lever after this: the grading pass shows `supporting` and
    some `central` items are bucket 3 too, so the reorder alone will not reach
    90% — that is the mention-kind field (§4 usefulness-gradient bullet).
 3b. **Why did the dedup gate miss 8 repeats?** (G3) — **measured 2026-09-04,
