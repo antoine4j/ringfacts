@@ -346,3 +346,43 @@ The mechanism keeps dry-run semantics exact: reads happen, writes never do.
 `claimIfRumor` (lib/db.js) is the read half of `confirmClaim` — same row, same
 rumor-only guard, no UPDATE — and the dry run uses it to build the same
 preview a real run would send, while the rumor stays a rumor.
+
+## gcs-backup — A daily copy of the evidence record, outside Neon
+*2026-09-04*
+
+Neon's free tier keeps six hours of point-in-time restore and nothing else.
+Until today a mistaken migration, a bad script, or a poisoned autonomous
+session had a six-hour window to be noticed before the archive — every
+article, every verdict, every claim link since 2026-08-06 — was gone for good.
+The boundaries Anton set for autonomous work (self-improvement §8) make a
+backup the precondition for any destructive migration, so it went in first.
+
+**Shape.** `lib/backup.js`, zero dependencies: `SELECT *` on the three tables,
+gzipped JSON, one media upload to GCS through the JSON API with the job's own
+service-account token from the metadata server. Restore is
+`scripts/restore-backup.js` → `restoreTables` in `lib/db.js`, which inserts
+rows with their original ids (`OVERRIDING SYSTEM VALUE`), skips rows that
+already exist, and moves each identity sequence past the highest restored id.
+Round-tripped on the Neon `test` branch: a vector and a jsonb value survive
+the JSON round trip unchanged (test/sql.test.js).
+
+**Daily, not hourly.** The 2026-08-08 design said hourly. Measured against the
+free tier: 5 GB-months of storage, and the database is 8.5 MB with embeddings
+that compress poorly — hourly with 30-day rotation would sit at ~2 GB and
+climb with the archive; daily is ~100 MB. The gap a daily copy leaves is
+covered by Neon's six-hour restore for anything recent. The backup runs on
+the hourly hunt whose UTC hour matches `BACKUP_HOUR_UTC` (default 11, i.e.
+04:17 Pacific), after the news is out, and never fails the run.
+
+**The bucket by convention, not by config.** setup.sh refuses to deploy a job
+carrying plain env vars (docs/self-improvement.md §6), so the bucket name is
+derived: `<project-id>-backups`, project id from the metadata server. Locally
+`BACKUP_BUCKET` overrides it; without either the backup is off.
+
+**Rotation and protection are the bucket's, not the code's.** A lifecycle rule
+deletes objects after 30 days; a 30-day retention policy stops anything —
+including the job's own token — from deleting or overwriting one earlier.
+Watch item: the hunter runs as the default compute service account, which
+holds `roles/editor` on the project, so "create-only" is enforced by the
+retention policy alone (unlocked; locking is irreversible and Anton's call),
+not by IAM. Narrowing that account is separate work.

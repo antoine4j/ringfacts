@@ -174,6 +174,26 @@ gcloud secrets add-iam-policy-binding neon-db-url \
 # anchors by origin item. Destructive to derived state only; snapshots first.
 # RESET=1 COMMIT=1 ... node scripts/bootstrap-claims.js
 
+# --- Backup bucket (docs/decisions.md#gcs-backup) ----------------------------
+# The hunter copies the three tables here once a day (lib/backup.js). The name
+# is a convention the code derives from the project id — the job carries no
+# plain env vars (see the assertion after the job deploy), so it cannot be
+# told the name. Standard class in a US region keeps it inside the always-free
+# 5 GB; the lifecycle rule rotates at 30 days and the retention policy stops
+# anything, the job's own token included, from deleting a copy sooner.
+BACKUP_BUCKET="gs://${PROJECT_ID}-backups"
+if ! gcloud storage buckets describe "$BACKUP_BUCKET" >/dev/null 2>&1; then
+  gcloud storage buckets create "$BACKUP_BUCKET" --location="$REGION" \
+    --default-storage-class=STANDARD --uniform-bucket-level-access --public-access-prevention
+  LIFECYCLE=$(mktemp)
+  printf '{"rule":[{"action":{"type":"Delete"},"condition":{"age":30}}]}' > "$LIFECYCLE"
+  gcloud storage buckets update "$BACKUP_BUCKET" --lifecycle-file="$LIFECYCLE" --retention-period=30d
+  rm -f "$LIFECYCLE"
+fi
+# Restore a copy (rows keep their ids; existing rows are left alone):
+# gcloud storage cp "$BACKUP_BUCKET/backups/<stamp>.json.gz" /tmp/backup.json.gz
+# DATABASE_URL=$(gcloud secrets versions access latest --secret=neon-db-url) node scripts/restore-backup.js /tmp/backup.json.gz
+
 # --- Hunter job (spec §9 step 2) ---------------------------------------------
 # Same image as the service, different entry point (--command/--args override
 # the Dockerfile CMD). max-retries=0: a buggy run fails once, visibly, instead

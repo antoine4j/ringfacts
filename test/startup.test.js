@@ -35,6 +35,10 @@ function mainDeps(over = {}) {
     dryRun: over.dryRun ?? true,
     chatId: over.chatId ?? null,
     databaseUrl: over.databaseUrl,
+    backup: over.backup ?? (async () => { throw new Error("backup must not be called in this test"); }),
+    backupEnabled: over.backupEnabled ?? false,
+    backupHourUtc: over.backupHourUtc ?? 11,
+    now: over.now ?? (() => new Date("2026-09-04T11:17:00Z")),
   };
 }
 
@@ -176,5 +180,57 @@ describe("the entry guard", () => {
     });
     assert.equal(result.status, 1, "the run fails loudly, not quietly");
     assert.match(result.stderr, /TELEGRAM_CHAT_IDS is required/);
+  });
+});
+
+describe("the daily backup", () => {
+  // The backup is a mainDeps seam like everything else: a function that gets
+  // the open database. main() decides WHEN; runBackup decides HOW.
+  const backupDeps = (over = {}) => {
+    const backups = [];
+    const deps = mainDeps({
+      dryRun: false,
+      chatId: "-100",
+      databaseUrl: "postgres://example",
+      openDb: async () => ({ end: async () => {} }),
+      backup: async (db) => { backups.push(db); },
+      backupEnabled: true,
+      backupHourUtc: 11,
+      now: () => new Date("2026-09-04T11:17:00Z"),
+      ...over,
+    });
+    deps.backups = backups;
+    return deps;
+  };
+
+  test("runs once, with the open database, when it is the backup hour", async () => {
+    const deps = backupDeps();
+    await main(deps);
+    assert.equal(deps.backups.length, 1);
+    assert.equal(deps.backups[0], deps.hunts[0].db, "the same handle the hunts used");
+  });
+
+  test("is skipped outside the backup hour", async () => {
+    const deps = backupDeps({ now: () => new Date("2026-09-04T12:17:00Z") });
+    await main(deps);
+    assert.equal(deps.backups.length, 0);
+  });
+
+  test("is skipped on a dry run", async () => {
+    const deps = backupDeps({ dryRun: true });
+    await main(deps);
+    assert.equal(deps.backups.length, 0);
+  });
+
+  test("is skipped when the backup is switched off", async () => {
+    const deps = backupDeps({ backupEnabled: false });
+    await main(deps);
+    assert.equal(deps.backups.length, 0);
+  });
+
+  test("is skipped without a database — there is nothing to back up", async () => {
+    const deps = backupDeps({ databaseUrl: undefined, openDb: async () => { throw new Error("no"); } });
+    await main(deps);
+    assert.equal(deps.backups.length, 0);
   });
 });

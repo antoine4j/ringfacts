@@ -952,6 +952,12 @@
         <td>Status is derived state — the rules engine can recompute any claim's status from stored
         evidence at any time; unmerge = delete a <code>claim_sources</code> row and rerun</td>
         <td>Make wrong states cheap to repair</td></tr>
+    <tr><td>Data lost in Neon (bad migration, bad script, poisoned session)</td>
+        <td>Neon's free tier restores 6 hours back; beyond that, the 11:17 UTC hunt copies all three
+        tables as gzipped JSON to <code>&lt;project&gt;-backups</code> on GCS (lib/backup.js), 30-day
+        rotation, 30-day retention lock; <code>scripts/restore-backup.js</code> puts rows back with
+        their original ids</td>
+        <td>A copy outside the thing that can break</td></tr>
     <tr><td>Runaway cost</td>
         <td><code>max-instances=1</code>, request-based billing, Anthropic spend cap; LLM spend tracks the
         <em>news rate</em>, not the archive size</td>
@@ -1011,9 +1017,8 @@
     comparison bug live.</p>
     <p><strong>Parked evolutions</strong> (specs written, deliberately not built):
     <span class="mono">docs/sandboxed-autonomy.md</span> — moving this loop into an ephemeral sandbox
-    (GitHub Actions cron) with scoped credentials so even a fully poisoned run is harmless; and hourly
-    database snapshots to an always-free GCS bucket (TODO), since Neon's free tier keeps only a 6-hour
-    restore window.</p>
+    (GitHub Actions cron) with scoped credentials so even a fully poisoned run is harmless. The daily
+    database backup to GCS shipped 2026-09-04 (§9).</p>
   </div>
 
   <h2 id="s12"><span class="num">12</span>Roadmap &amp; watch items</h2>

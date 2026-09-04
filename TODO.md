@@ -41,9 +41,8 @@ names the goal it moves.
    to exercise steps himself without reading code; the matcher-eval scoring
    harness folds into it.
 
-Below the line, deliberately: DB backups are safety, not quality — but §8
-makes the GCS backup a precondition for any destructive migration, so it is
-built first regardless of rank.
+Below the line, deliberately: nothing at the moment — the GCS backup shipped
+2026-09-04 as the precondition §8 sets for any destructive migration.
 
 ## Safety (Anton, console)
 - [x] **GCP budget alert (2026-08-09):** $5/month, project-scoped, email tripwire at 50/90/100/150% to the billing admin (`${ALERT_EMAIL}`). Created via `gcloud billing budgets create` (Billing Budget API enabled to allow it). `max-instances=1` still caps compute physically; this is the visibility layer on top.
@@ -71,7 +70,7 @@ built first regardless of rank.
 
 - [x] Hunter failure notifications (2026-08-06): Cloud Monitoring alert → email on failed job executions; plus in-code self-report — hunter DMs Anton (never the group) on fatal errors. Sentry evaluated, skipped: error volume too small to gain from it; revisit if multi-agent steps make failures subtle.
 - [x] Destroy webhook-secret v1 (2026-08-09): the newline-bugged dead version. `gcloud secrets versions destroy 1 --secret=telegram-webhook-secret`. Frees a Secret Manager free-tier version slot; v2 (live, mounted) untouched.
-- [ ] **Hourly DB backups to GCS (designed 2026-08-08, not built):** Neon free tier = 6h point-in-time restore only, no external backups. Design: after each hunt, the hunter dumps all tables (plain SELECTs → gzipped JSON, no pg_dump) to a GCS bucket in us-west1 — inside GCS's always-free 5GB, so $0 forever (DB <1MB). Rotation via bucket lifecycle rule (30d auto-delete, enforced by Google, no code). Security: hunter's SA gets object-CREATE only, never delete — a poisoned agent can add snapshots but not destroy them. ~30 lines in hunter.js + `gsutil mb` + lifecycle rule in setup.sh.
+- [x] **Daily DB backup to GCS — SHIPPED 2026-09-04** (designed hourly 2026-08-08; daily after measuring the free tier against an 8.5 MB database with poorly-compressing embeddings). `lib/backup.js` + `scripts/restore-backup.js`; bucket `fighter-bot-504723-backups`, 30-day lifecycle delete + 30-day retention policy; runs on the 11:17 UTC hunt. History: docs/decisions.md#gcs-backup. Still open: the compute service account is `roles/editor`, so create-only is the retention policy's doing, not IAM's.
 - [x] Delete the `hello` crash-course service (2026-08-06)
 
 ## Build sequence (spec §9, cloud-first per §16)

@@ -20,6 +20,7 @@ import {
   knownUrls, itemIdByUrl, nearestRecent, insertItem, markUnposted,
   activeClaims, insertClaim, linkClaimSource, claimOfItem, claimSimilarities,
   claimLinkDrifts, setClaimMessageId, confirmClaim, pendingResends, markPosted,
+  dumpTables, restoreTables,
 } from "../lib/db.js";
 import { EMBEDDING_DIMENSIONS } from "../lib/embeddings.js";
 
@@ -343,5 +344,60 @@ describe("pendingResends", { skip }, () => {
     await markPosted(db, []);
     const { rows } = await db.query("SELECT posted FROM items WHERE id = $1", [id]);
     assert.equal(rows[0].posted, false);
+  });
+});
+
+describe("dumpTables / restoreTables — the backup round trip", { skip }, () => {
+  // Write rows, dump, delete them, restore from the dump, and expect them back
+  // with the SAME ids — a backup that renumbers rows breaks every claim link.
+  test("rows deleted after a dump come back with their original ids", async () => {
+    const itemId = await insertItem(db, item({ title: "Backed up headline" }));
+    const claimId = await insertClaim(db, {
+      subject: SUBJECT, type: "announcement", canonicalText: "Testov to fight Rivalov",
+      facts: { opponent: "Rivalov" }, status: "rumor", embedding: vectorAt(10),
+      embeddingModel: "test-model",
+    });
+    await linkClaimSource(db, itemId, claimId, "origin");
+
+    const dump = await dumpTables(db);
+    const myItems = dump.items.filter((row) => row.id === itemId);
+    const myClaims = dump.claims.filter((row) => row.id === claimId);
+    const myLinks = dump.claim_sources.filter((row) => row.claim_id === claimId);
+    assert.equal(myItems.length, 1);
+    assert.equal(myClaims.length, 1);
+    assert.equal(myLinks.length, 1);
+
+    await db.query("DELETE FROM claim_sources WHERE claim_id = $1", [claimId]);
+    await db.query("DELETE FROM claims WHERE id = $1", [claimId]);
+    await db.query("DELETE FROM items WHERE id = $1", [itemId]);
+
+    const restored = await restoreTables(db, { items: myItems, claims: myClaims, claim_sources: myLinks });
+    assert.deepEqual(restored, { items: 1, claims: 1, claim_sources: 1 });
+
+    const { rows: items } = await db.query("SELECT id, title FROM items WHERE id = $1", [itemId]);
+    assert.equal(items[0]?.title, "Backed up headline");
+    const { rows: claims } = await db.query("SELECT id, facts, embedding IS NOT NULL AS has_vec FROM claims WHERE id = $1", [claimId]);
+    assert.deepEqual(claims[0]?.facts, { opponent: "Rivalov" });
+    assert.equal(claims[0]?.has_vec, true, "the vector survived the JSON round trip");
+    const { rows: links } = await db.query("SELECT role FROM claim_sources WHERE item_id = $1 AND claim_id = $2", [itemId, claimId]);
+    assert.equal(links[0]?.role, "origin");
+  });
+
+  test("restoring rows that already exist is a no-op, not an error", async () => {
+    const itemId = await insertItem(db, item({ title: "Already here" }));
+    const dump = await dumpTables(db);
+    const mine = dump.items.filter((row) => row.id === itemId);
+    const restored = await restoreTables(db, { items: mine, claims: [], claim_sources: [] });
+    assert.deepEqual(restored, { items: 0, claims: 0, claim_sources: 0 });
+  });
+
+  test("after a restore, new rows get ids above the restored ones", async () => {
+    const itemId = await insertItem(db, item({ title: "Sequence anchor" }));
+    const dump = await dumpTables(db);
+    const mine = dump.items.filter((row) => row.id === itemId);
+    await db.query("DELETE FROM items WHERE id = $1", [itemId]);
+    await restoreTables(db, { items: mine, claims: [], claim_sources: [] });
+    const nextId = await insertItem(db, item({ title: "After restore" }));
+    assert.ok(Number(nextId) > Number(itemId), `${nextId} should exceed ${itemId}`);
   });
 });
