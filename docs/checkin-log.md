@@ -7,6 +7,13 @@ as the chat report: data / changes / proposals / next attention.
 
 ---
 
+## 2026-09-04 08:30–17:00 PDT — grading applied, mentions parked, the bench scores as a rate (Anton present; Fable 5.1)
+
+📊 **Data**: Anton graded the 103 posts — agreed with 99 of 103 pre-grades; **G2 precision 34%** (35/103); the 2-vs-3 line is now ten worked examples in goals.md (callout at him → 2, steering him elsewhere → 3, authority assessing him → 2, him on himself → 2 when substantial). Bench baseline on the graded month (tune split, 45 items × 5 runs, ≈$0.53 on the test key): **pipeline bucket = Anton's bucket 29/45 (64%)**, bucket 2 only 4/13; **10 of 16 misses are loud claims minted on non-events**, two of them live rumor claims in the archive (#449, #575).
+🔧 **Changes**: rulings applied to the grading doc, article-feedback, goals.md · mentions digest held back for good (no tangential articles in the chat; trigger never created; page idea parked in TODO) · bench: `--repeat K` modal scoring with stability, `--split`, a `bucket` step mirroring the hunter's routing, tokens spent per run · corpus/graded-2026-09.json: the 103 graded articles with Anton's bucket, split prompt/tune/holdout · 19 commits pushed (six subject lines shortened to the 72-char rule first).
+💡 **Proposals** (Anton): none pending beyond the search-verification spec review.
+👁 **Next attention**: TODO 3c — the claim-type prompt work against the baseline above; the queued tangential rows are archive-only now; first live `untrusted_source` holds.
+
 ## 2026-09-04 00:30–08:30 PDT — first autonomous pass against docs/goals.md (Anton asleep; Fable 5.1)
 
 📊 **Data**: 103 posts in 30 days pre-graded → **G2 precision 37%** (target 90%); 66 bucket-3, 6 mshale spam, 3 stale, 8 repeats; G1 1/1 (Donchenko Paris booking posted + confirmed). 06:21 UTC run failed on a Google 503 wave (all three), 07:17 recovered — known mode, nothing new.
