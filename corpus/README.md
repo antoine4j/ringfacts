@@ -12,7 +12,9 @@ fabricated items rather than left as a single example.
 | `holdout.json` | 23 items. **Control set — do not tune against it.** Run it once when you think you're done. |
 | `build.js` | Regenerates both from the live `items` table. The record of how each label was chosen. |
 | `measure-tier.js` | Scores both tier orderings against the labels. No LLM, no writes, free, instant. |
-| `measure-matcher.js` | Asks Haiku the same question K times per item and reports stability + accuracy. Costs money. |
+| `measure-matcher.js` | Asks Haiku the same question K times per item and reports stability + accuracy. Costs money. Superseded by `bench/run.js --repeat`, which does the same on the test keys. |
+| `graded-2026-09.json` | 103 posted articles from Aug 5 – Sep 4, each with the goals.md **bucket** Anton confirmed (`expect.bucket`), in three splits: `prompt` (the 14 worked examples from goals.md, reserved as few-shot material), `tune` (45) and `holdout` (44), balanced per bucket. |
+| `graded.js`, `build-graded.js` | Regenerate that file from the grading doc and the archive. The labels are Anton's, not Claude's. |
 
 Both measure scripts are **read-only** — `measure-tier.js` makes no database call
 that isn't a `SELECT`, `measure-matcher.js` opens the database only to read
@@ -109,15 +111,11 @@ placeholders would not test a matcher whose job is recognising real people.
 
 ## Using it
 
-Nothing consumes these files yet — the harness that will is the sandbox in
-`TODO.md`. Until it exists, the corpus is read directly:
+The bench reads these files: `node bench/run.js --step <step> --from
+corpus/<file>.json [--split s] [--repeat K]` (bench/README.md). The `bucket`
+step scores `expect.bucket`; `tier` and `matcher` score the older fields.
 
-```bash
-node -e 'const c=require("./corpus/tune.json");
-  console.log(c.items.filter(i=>i.class==="announcement").map(i=>i.key))'
-```
-
-Two rules for whoever builds the scoring:
+Two rules for scoring:
 
 1. **Score as a rate, not pass/fail.** The matcher samples at the API default
    temperature and has returned different verdicts for the same input
