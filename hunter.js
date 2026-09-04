@@ -598,6 +598,7 @@ async function askMatcher(deps, db, subject, item) {
   console.log(
     `${subject.name}: matcher ${verdict.verdict}${verdict.match_claim_id ? " #" + verdict.match_claim_id : ""}: ${item.title.slice(0, 60)}`
   );
+  if (verdict.reasoning) console.log(`${subject.name}:   because: ${verdict.reasoning}`);
 
   // Recorded on every matcher-seen item before any branch returns, so the
   // archive stays re-measurable. Null means we never got an answer.
