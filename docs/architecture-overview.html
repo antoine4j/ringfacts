@@ -667,6 +667,12 @@
         driver also named Subject B), relatives (Subject C's brother), keyword-stuffed junk</td>
         <td>Recorded with <code>held_reason='wrong_subject'</code>, never posted, never a claim. This absorbed
         the planned step-3 fighter filter.</td></tr>
+    <tr><td class="mono-c">(untrusted source)</td><td>Not a verdict but a veto after the matcher: the item's
+        domain has ≥5 prior items, ≥50% of them wrong-subject, and has never yielded a body — keyword spam
+        the matcher cannot see through from a headline (lib/untrusted.js)</td>
+        <td>Recorded with <code>held_reason='untrusted_source'</code>, never posted, never a claim. The
+        matcher still runs first, so the domain's record keeps growing. Measured 2026-09-04: one domain
+        trips it, zero casualties.</td></tr>
     <tr><td class="mono-c">UNSURE</td><td>Cannot decide from available evidence — abstention beats guessing</td>
         <td>Fail-open: the article posts normally, no claim invented. Matcher API errors resolve the same way.</td></tr>
   </table>
