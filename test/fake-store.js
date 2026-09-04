@@ -221,6 +221,17 @@ export function createFakeStore({ items = [], claims = [], claimSources = [] } =
       return { canonical_text: claim.canonical_text, tg_message_id: claim.tg_message_id };
     },
 
+    // Same reading as the SQL: domain of resolved_url, else url, minus www.
+    async domainRecord(_db, domain) {
+      const hostOf = (url) => { try { return new URL(url).hostname.replace(/^www\./, ""); } catch { return null; } };
+      const mine = rows.items.filter((r) => hostOf(r.resolved_url ?? r.url) === domain);
+      return {
+        items: mine.length,
+        wrongSubject: mine.filter((r) => r.held_reason === "wrong_subject").length,
+        bodies: mine.filter((r) => r.body).length,
+      };
+    },
+
     // --- backup ------------------------------------------------------------
     async dumpTables() {
       return {

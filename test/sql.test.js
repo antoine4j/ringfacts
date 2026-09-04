@@ -20,7 +20,7 @@ import {
   knownUrls, itemIdByUrl, nearestRecent, insertItem, markUnposted,
   activeClaims, insertClaim, linkClaimSource, claimOfItem, claimSimilarities,
   claimLinkDrifts, setClaimMessageId, confirmClaim, pendingResends, markPosted,
-  dumpTables, restoreTables,
+  dumpTables, restoreTables, domainRecord,
 } from "../lib/db.js";
 import { EMBEDDING_DIMENSIONS } from "../lib/embeddings.js";
 
@@ -399,5 +399,25 @@ describe("dumpTables / restoreTables — the backup round trip", { skip }, () =>
     await restoreTables(db, { items: mine, claims: [], claim_sources: [] });
     const nextId = await insertItem(db, item({ title: "After restore" }));
     assert.ok(Number(nextId) > Number(itemId), `${nextId} should exceed ${itemId}`);
+  });
+});
+
+describe("domainRecord — the untrusted-source aggregate", { skip }, () => {
+  // Domain is taken from resolved_url when present, else url, minus www. —
+  // which is what makes "Mshale" and "mshale.com" and a Google wrapper of
+  // either all land on one record.
+  test("counts items, wrong-subject holds and bodies for one domain", async () => {
+    const domain = `${SUBJECT.replace(/[^a-z0-9]/gi, "").toLowerCase()}.test`;
+    await insertItem(db, item({ url: `https://www.${domain}/a`, posted: false, heldReason: "wrong_subject" }));
+    await insertItem(db, item({ url: "https://news.google.com/rss/x", resolvedUrl: `https://${domain}/b`, posted: false, heldReason: "wrong_subject" }));
+    await insertItem(db, item({ url: `https://${domain}/c`, posted: true, body: "A real body" }));
+    await insertItem(db, item({ url: "https://elsewhere.test/d", posted: true }));
+
+    const record = await domainRecord(db, domain);
+    assert.deepEqual(record, { items: 3, wrongSubject: 2, bodies: 1 });
+  });
+
+  test("an unknown domain has an empty record", async () => {
+    assert.deepEqual(await domainRecord(db, "never-seen.test"), { items: 0, wrongSubject: 0, bodies: 0 });
   });
 });

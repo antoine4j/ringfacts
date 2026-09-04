@@ -386,3 +386,52 @@ Watch item: the hunter runs as the default compute service account, which
 holds `roles/editor` on the project, so "create-only" is enforced by the
 retention policy alone (unlocked; locking is irreversible and Anton's call),
 not by IAM. Narrowing that account is separate work.
+
+## untrusted-source — A domain earns a hold by its own record
+*2026-09-04*
+
+The mshale.com problem, in one line: keyword spam that puts "Yaroslav Amosov"
+in a title and tag list over three sentences of nonsense, arriving through
+Google News under two display names. The matcher catches the self-incriminating
+headlines and leaks the vague ones, because a headline-only judgment cannot
+beat keyword stuffing that contains the subject's full name — and the site
+403s every body fetch, so the matcher never gets more than the headline. By
+2026-09-04 the archive held 60 mshale items; 54 had been held wrong-subject,
+zero had ever yielded a body, and five had reached the group.
+
+**Considered and rejected.** A blocklist for mshale.com (2026-08-09: papers
+over a matcher job; 2026-08-15: reopened when the pattern outgrew the namesake
+theory). "No body ⇒ hold" (9 of 13 posted-without-body items were legitimate,
+including Anton's liked Tribuna piece — Bloody Elbow, Diario AS and Eurosport
+block fetchers too). A wrong-subject ratio alone (Bloody Elbow runs 35%, MMA
+Fighting 45% — normal for surname-filtered feeds; a ratio rule sits one bad
+week from muzzling a real outlet).
+
+**Chosen (Anton, 2026-09-03): three conditions, all required.** Hold an item
+when its domain has **≥5 prior archive items**, **≥50% of them held
+wrong-subject**, and **zero bodies ever extracted**. The bodies condition is
+what separates spam from blocked-but-real outlets; the history floor is what
+stops a new domain being judged on two items. Keyed on the domain of
+`resolved_url ?? url` (lib/untrusted.js `domainOf`), never the display
+source name. Unresolved Google items pool under news.google.com, where the
+mixed record means the rule can never fire — the safe direction.
+
+**Placement.** After the matcher, before anything can post or mint a claim
+(`classifyItem` in hunter.js): the matcher keeps growing the domain's record,
+and spam never becomes a claim. Held rows carry `held_reason:
+'untrusted_source'` and stay in the archive, reviewable. One aggregate query
+(`domainRecord` in lib/db.js), one pure function (`isUntrustedSource`), kill
+switch `UNTRUSTED_SOURCE_OFF=1`, thresholds `UNTRUSTED_MIN_ITEMS` /
+`UNTRUSTED_MIN_RATIO`. The rule self-disarms if a domain ever yields a body.
+
+**Measured 2026-09-04** (`scripts/audit-untrusted-source.js`, point-in-time
+replay over 597 items on a Neon branch of production): mshale.com is the only
+domain that ever trips it. It would have held 55 items, 4 of them posted
+(#143, #198, #334, #596) — all four spam; #27 and #39 predate the five-item
+floor, the accepted cold-start cost. Zero non-mshale holds. Yahoo Sports
+(12/22 wrong-subject, 22 bodies) and MMA Fighting (11/22, 18 bodies) would
+have been muzzled by a ratio rule and are protected by the bodies condition.
+
+**Failure mode accepted with eyes open:** a domain must first earn a
+majority-junk record before it can silently lose one real article, and the
+held row remains findable by the check-in runs.
