@@ -1,22 +1,43 @@
 # RingFacts — Next Steps
 
-## Current priorities (triaged with Anton 2026-08-26, reaffirmed 2026-09-03)
+## Current priorities (re-sorted under docs/goals.md, 2026-09-04)
 
-Ranked for the project goal — useful news for the fan group:
+Goals and success criteria live in [docs/goals.md](docs/goals.md). Each item
+names the goal it moves.
 
-1. **Stop the mshale.com spam** — the untrusted-source rule, design approved
+1. **Stop the mshale.com spam** (G2) — the untrusted-source rule, design approved
    2026-09-03, spelled out under the reopened junk-domain bullet (§4). Build next.
-2. **Ship the tier reorder + daily mentions digest** — both designed, measured
+2. **First measurement pass** (G1, G2, G3) — pull the last 30 days of posted
+   items for Anton to grade; hand-list the real career events for the same
+   window and check each against the archive. The first real numbers for the
+   goals; every later priority call is checked against them.
+3. **Ship the tier reorder + daily mentions digest** (G2) — both designed, measured
    (64% → 88% on the corpus, zero regressions), decided 2026-08-11, never built.
    Details in the two §4 bullets (`subject_role: 'passing'` reorder; scheduled
-   mentions digest).
-3. **Stop old fights posting as fresh news** — needs event dates reliably in
+   mentions digest). The three-bucket rule in goals.md is the target the tier
+   should converge on.
+4. **Active verification via web search** (G4, and G2's stale-event clause) —
+   concept discussed 2026-09-03/04, no design yet. On a new fight claim, search
+   for it and sort results by domain trust: official domain confirms,
+   reputable outlets corroborate, everything else is noise. The same tool
+   resolves event dates (unblocks #5) and runs the G1 recall probe. The real
+   work is the domain trust list, not the search call. Architectural: needs a
+   spec before code.
+5. **Stop old fights posting as fresh news** (G2) — needs event dates reliably in
    `claims.facts` first; facts extraction is measured-weak (8/13 claims empty,
-   never evaluated). The 5-phase-2 recency bullet holds the details.
+   never evaluated). Search (#4) may get the date directly instead. The
+   5-phase-2 recency bullet holds the details.
 
-Below the line, deliberately: the sandbox bench and matcher-eval scoring
-harness (infrastructure that de-risks #2/#3 but delivers no news by itself),
-DB backups (safety, not quality).
+6. **The bench runner** (all goals; Anton's ask 2026-09-04, self-improvement §9)
+   — the harness that runs a battery of articles through any one pipeline
+   step from a fresh session, on the test keys and bench database. Minimum
+   useful version: runner + reset. Moves above the line because Anton wants
+   to exercise steps himself without reading code; the matcher-eval scoring
+   harness folds into it.
+
+Below the line, deliberately: DB backups are safety, not quality — but §8
+makes the GCS backup a precondition for any destructive migration, so it is
+built first regardless of rank.
 
 ## Safety (Anton, console)
 - [x] **GCP budget alert (2026-08-09):** $5/month, project-scoped, email tripwire at 50/90/100/150% to the billing admin (`${ALERT_EMAIL}`). Created via `gcloud billing budgets create` (Billing Budget API enabled to allow it). `max-instances=1` still caps compute physically; this is the visibility layer on top.
