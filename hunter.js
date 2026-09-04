@@ -25,6 +25,7 @@ import { loadSubjects } from "./lib/subjects.js";
 import { digestTierFor } from "./lib/tier.js";
 import { readChatIds } from "./lib/chat-ids.js";
 import { runBackup, isBackupRun } from "./lib/backup.js";
+import { domainOf, isUntrustedSource } from "./lib/untrusted.js";
 import { domain } from "./domain/index.js";
 import { fileURLToPath } from "node:url";
 
@@ -315,7 +316,7 @@ async function embedTitles(deps, db, subject, candidates) {
  * @param {object} subject
  * @param {object} item
  * @param {number[]|null} vector  This item's title embedding.
- * @returns {Promise<object>}  `{ kind: "held"|"wrong-subject"|"match"|"post", item, ... }`.
+ * @returns {Promise<object>}  `{ kind: "held"|"wrong-subject"|"untrusted"|"match"|"post", item, ... }`.
  */
 async function classifyItem(deps, db, subject, item, vector) {
   // Stamp the fields every stored row carries.
@@ -370,6 +371,15 @@ async function classifyItem(deps, db, subject, item, vector) {
   const lateHold = checkDuplicateGate(subject, item, nearest, official, verdict);
   if (lateHold) return heldOutcome(item, lateHold, item.nearestItem, "embedding");
 
+  // Untrusted source: keyword spam the matcher could not see through, judged
+  // by the domain's own record. After the matcher on purpose, so the record
+  // keeps growing; before anything can post or mint a claim.
+  if (await isFromUntrustedSource(deps, db, subject, item)) {
+    item.posted = false;
+    item.heldReason = "untrusted_source";
+    return { kind: "untrusted", item };
+  }
+
   // NO_CLAIM / UNSURE / NEW from here on: the item itself gets posted.
   const newClaim = verdict.verdict === "NEW" ? verdict.new_claim : null;
   const isRealClaim = Boolean(newClaim && !domain.ignoredTypes.includes(newClaim.type)); // docs §5
@@ -387,6 +397,31 @@ async function classifyItem(deps, db, subject, item, vector) {
     : null;
 
   return { kind: "post", item, newClaim, isRealClaim, official, status, claimId: null };
+}
+
+/**
+ * Does this item's domain have the record that earns a hold? Needs a database
+ * — the record IS the archive — and a parseable real address.
+ * History: docs/decisions.md#untrusted-source
+ *
+ * @param {object} deps
+ * @param {object|null} db
+ * @param {object} subject
+ * @param {object} item
+ * @returns {Promise<boolean>}
+ */
+async function isFromUntrustedSource(deps, db, subject, item) {
+  if (!db) return false;
+  const domain = domainOf(item.resolvedUrl ?? item.url);
+  if (!domain) return false;
+
+  const record = await deps.store.domainRecord(db, domain);
+  const untrusted = isUntrustedSource(record);
+  if (untrusted) {
+    console.log(`${subject.name}: held, untrusted source ${domain} ` +
+      `(${record.wrongSubject}/${record.items} wrong-subject, ${record.bodies} bodies): ${item.title.slice(0, 60)}`);
+  }
+  return untrusted;
 }
 
 /**
@@ -584,8 +619,9 @@ async function recordOutcome(deps, db, outcome) {
     return;
   }
 
-  // Wrong subject: the row is the audit trail, nothing links to it.
-  if (outcome.kind === "wrong-subject") {
+  // Wrong subject or untrusted source: the row is the audit trail, nothing
+  // links to it.
+  if (outcome.kind === "wrong-subject" || outcome.kind === "untrusted") {
     if (db && !deps.dryRun) await deps.store.insertItem(db, item);
     return;
   }

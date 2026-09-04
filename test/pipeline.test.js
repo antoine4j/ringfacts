@@ -1007,3 +1007,75 @@ describe("no database configured (local dry runs)", () => {
     assert.equal(sent.length, 1);
   });
 });
+
+describe("the untrusted-source veto", () => {
+  // Five prior items from the same domain, three of them wrong-subject, none
+  // with a body: the record that earns a hold. Keyed on the domain of the
+  // resolved URL, never the display source name.
+  const spamHistory = () => Array.from({ length: 5 }, (_, i) => ({
+    url: `https://news.google.com/rss/articles/spam-${i}`,
+    resolved_url: `https://www.mshale.com/2026/08/keyword-${i}/`,
+    subject: SUBJECT.name, title: `Testov keyword ${i}`, source: i % 2 ? "Mshale" : "mshale.com",
+    posted: i >= 3, held_reason: i < 3 ? "wrong_subject" : null, body: null, embedding: null,
+  }));
+
+  test("an item from a domain with a majority-junk, body-less record is held, not posted", async () => {
+    const store = createFakeStore({ items: spamHistory() });
+    const item = makeItem({
+      url: "https://www.mshale.com/2026/09/spam-new/",
+      source: "Mshale", feedContent: null, rssDescription: null,
+      title: "Testov news today and other stories",
+    });
+    const fetchArticleBody = async () => ({ body: null, via: "http-403" });
+    await huntSubject(DB, SUBJECT, [item], deps({ store, extra: { fetchArticleBody } }));
+
+    const stored = store.item(item.url);
+    assert.equal(stored.posted, false);
+    assert.equal(stored.held_reason, "untrusted_source");
+    assert.equal(digest(), undefined, "nothing reached the group");
+  });
+
+  test("the veto beats a NEW verdict — spam never mints a claim", async () => {
+    const store = createFakeStore({ items: spamHistory() });
+    const item = makeItem({
+      url: "https://www.mshale.com/2026/09/spam-claim/",
+      source: "Mshale", feedContent: null, rssDescription: null,
+    });
+    const fetchArticleBody = async () => ({ body: null, via: "http-403" });
+    const matchItem = async () => ({
+      verdict: "NEW",
+      new_claim: { type: "announcement", canonical_text: "Testov to fight Rivalov", facts: {}, sourcing: "reported" },
+    });
+    await huntSubject(DB, SUBJECT, [item], deps({ store, matchItem, extra: { fetchArticleBody } }));
+
+    assert.equal(store.rows.claims.length, 0);
+    assert.equal(store.item(item.url).held_reason, "untrusted_source");
+  });
+
+  test("a domain that has ever yielded a body is trusted, whatever its ratio", async () => {
+    const history = spamHistory();
+    history[4].body = bodyWith(3);
+    const store = createFakeStore({ items: history });
+    const item = makeItem({
+      url: "https://www.mshale.com/2026/09/real-new/",
+      source: "Mshale", feedContent: null, rssDescription: null,
+    });
+    const fetchArticleBody = async () => ({ body: null, via: "http-403" });
+    await huntSubject(DB, SUBJECT, [item], deps({ store, extra: { fetchArticleBody } }));
+
+    assert.equal(store.item(item.url).posted, true);
+  });
+
+  test("the record is keyed on the resolved domain, so a Google-wrapped item is judged by its real host", async () => {
+    const store = createFakeStore({ items: spamHistory() });
+    const item = makeItem({
+      url: "https://news.google.com/rss/articles/wrapped-new",
+      source: "Mshale", feedContent: null, rssDescription: null,
+    });
+    const decodeGoogleNewsUrl = async () => "https://www.mshale.com/2026/09/new-keyword/";
+    const fetchArticleBody = async () => ({ body: null, via: "http-403" });
+    await huntSubject(DB, SUBJECT, [item], deps({ store, decodeGoogleNewsUrl, extra: { fetchArticleBody } }));
+
+    assert.equal(store.item(item.url).held_reason, "untrusted_source");
+  });
+});

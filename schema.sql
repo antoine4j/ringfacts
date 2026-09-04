@@ -32,7 +32,8 @@ ALTER TABLE items ADD COLUMN IF NOT EXISTS nearest_item bigint REFERENCES items(
 -- whole run folded, so the message would have been an empty shell) |
 -- 'send_failed' (2026-08-10: the row is written posted=true before the message
 -- is built, so a Telegram failure has to walk it back or the archive claims a
--- delivery that never happened).
+-- delivery that never happened) | 'untrusted_source' (2026-09-04: the domain's
+-- own record — majority wrong-subject, never a body — says keyword spam).
 ALTER TABLE items ADD COLUMN IF NOT EXISTS held_reason text;
 ALTER TABLE items ADD COLUMN IF NOT EXISTS found_via text;        -- which query alias caught it
 ALTER TABLE items ADD COLUMN IF NOT EXISTS rss_description text;  -- raw RSS <description>, mined later
