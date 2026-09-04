@@ -10,6 +10,8 @@ It is versioned in the repo on purpose. Working principles that live only in an
 agent's private memory are invisible to Anton and evaporate if that memory is
 reset; here they are reviewable, correctable in a pull request, and part of the
 project's history. **Read this file at the start of every autonomous run.**
+What the project is *for* is in [docs/goals.md](goals.md); what a session may
+change is §8 below.
 
 ---
 
@@ -237,3 +239,90 @@ and the code. See [code-style.md](code-style.md).
 
 *Amending this file is itself a legitimate outcome of a check-in run: if a
 principle here proves wrong in practice, change it and say so in the log.*
+
+## 8. Boundaries — what an autonomous session may change
+
+Agreed with Anton 2026-09-04, alongside [docs/goals.md](goals.md). This is the
+latitude, stated so a session does not have to guess it. The ask-first list in
+§2 still applies on top.
+
+**Code: full latitude.** Any change, including architectural ones, is fair
+game because git makes it reversible. Experiment: deploy a change to Cloud
+Run, let it run for a couple of days, measure what it caught against the
+goals, change it again. Conditions: it follows [docs/code-style.md](code-style.md),
+the tests pass, and the report says what was deployed and why. Anton reviews
+the code periodically; readability is not optional because nobody is watching.
+
+**Database: data is never lost.** Schema changes and migrations are allowed.
+Prefer additive changes (new column, new table). A destructive migration —
+dropping or rewriting columns, moving data between tables — is allowed only
+with a backup taken immediately before it and checked to be restorable.
+Neon's free tier keeps six hours of point-in-time restore and nothing else,
+so the hourly backup to GCS in TODO.md (designed 2026-08-08) is the standing
+safety net and should exist before any destructive migration runs.
+
+**API keys: production and test are separate.** The deployed job reads its
+keys from Secret Manager. Tests, the bench, replays, and any local experiment
+use the test keys in `bench/.env.bench`, so Anton can read the production
+cost apart from the development cost in each provider's console. Never point
+a local run at the production keys.
+
+**Telegram: the real group is off limits from a session.** Posting there is
+what the deployed job does; a session verifies with `DRY_RUN=1` or the bench
+group (`BENCH_CHAT_ID`). Anything that changes *what kind of thing* the group
+sees — a new post format, a new voice, a new cadence — is shown to Anton
+before it deploys (goals.md, constraints).
+
+**External tools.** A web search tool may be used once Anton has provided the
+key or enabled it and set a budget. Any other new vendor or paid service is
+ask-first (§2).
+
+**Documents a session keeps current.** Two records with different jobs, kept
+apart on purpose:
+
+- [docs/architecture-overview.html](architecture-overview.html) — the
+  technical specification of the system *as it is now*. Current state only,
+  no history. When the code changes shape, this changes with it.
+- [docs/decisions.md](decisions.md) — the logical history: why the code is
+  the way it is, what was measured, what was rejected. This is not the git
+  log; a commit says what changed, a decision entry says what was chosen
+  between and why.
+
+Plus [TODO.md](../TODO.md) for what comes next, and
+[docs/checkin-log.md](checkin-log.md) for what each run found and did.
+
+**Spend caps are Anton's.** Both $5/month caps stay where they are; a session
+never raises one.
+
+## 9. Stay in the project folder; build every step testable
+
+Two more boundaries from Anton, 2026-09-04.
+
+**Filesystem: this repository only.** A session reads and writes inside
+`/Users/anton/Projects/fighter-bot` (plus its own scratchpad and the Claude
+memory directory). It does not browse or change anything else on the
+machine. If a task seems to need a file from elsewhere — a screenshot, a
+download — ask; do not go looking.
+
+**Every step is testable in isolation, and there is a harness to prove it.**
+The pipeline is wired the way Java's Spring wires beans, minus the XML: one
+composition root builds a dependencies object, every external call (database,
+embedder, translator, matcher, fetcher, Telegram, search) goes through it,
+and nothing constructs its own client at import time. The rules:
+
+1. **A step is a function of its inputs and its dependencies.** No module
+   reaches for the network, the database, or an API key on its own; it is
+   handed a client. `hunter.js`'s `buildDeps` is the pattern; the test
+   `the deps seam is wired to itself` guards it. New modules follow it, and
+   modules that still build a client at load time get converted when touched.
+2. **Every step can be run alone against a battery of articles.** The bench
+   (`bench/`, credentials present, runner not yet built) is the harness:
+   from any fresh session Anton can ask for a run of N articles — from
+   `corpus/`, from the archive, or pasted — through one named step (the
+   matcher, the tier rule, the extractor, the dedup gate, the search
+   verifier) with real or fake dependencies, and get a table back. It uses
+   the test keys (§8) and the bench database, never production.
+3. **Reading the wiring is enough to see what is plugged in.** The
+   composition root is one readable literal; no hidden globals, no
+   environment lookups scattered through modules. If a reader cannot tell
+   from `buildDeps` what a run talks to, the seam has drifted.
