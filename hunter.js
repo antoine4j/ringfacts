@@ -24,6 +24,7 @@ import { fetchArticleBody, decodeEntities } from "./lib/extract.js";
 import { loadSubjects } from "./lib/subjects.js";
 import { digestTierFor } from "./lib/tier.js";
 import { readChatIds } from "./lib/chat-ids.js";
+import { runBackup, isBackupRun } from "./lib/backup.js";
 import { domain } from "./domain/index.js";
 import { fileURLToPath } from "node:url";
 
@@ -39,6 +40,11 @@ const DRY_RUN = process.env.DRY_RUN === "1";
 const { group: CHAT_ID, admin: ADMIN_CHAT_ID } = readChatIds({ required: false });
 const HOURS_BACK = Number(process.env.HOURS_BACK || 24);
 const MAX_ITEMS_PER_SUBJECT = 5;
+// Daily backup: on inside Cloud Run (the job carries no plain env vars, so the
+// bucket is derived from the project id) or when BACKUP_BUCKET names one.
+const BACKUP_BUCKET = process.env.BACKUP_BUCKET;
+const BACKUP_ENABLED = Boolean(BACKUP_BUCKET || process.env.CLOUD_RUN_JOB);
+const BACKUP_HOUR_UTC = Number(process.env.BACKUP_HOUR_UTC || 11);
 // Cosine similarity above this = same story.
 // History: docs/decisions.md#dup-threshold
 const SEMANTIC_DUP_THRESHOLD = Number(process.env.SEMANTIC_DUP_THRESHOLD || 0.8);
@@ -1005,6 +1011,10 @@ function buildMainDeps(overrides) {
     dryRun: DRY_RUN,
     chatId: CHAT_ID,
     databaseUrl: process.env.DATABASE_URL,
+    backup: (db) => runBackup({ db, store: realStore, fetch, bucket: BACKUP_BUCKET, now: new Date() }),
+    backupEnabled: BACKUP_ENABLED,
+    backupHourUtc: BACKUP_HOUR_UTC,
+    now: () => new Date(),
     ...overrides,
   };
 }
@@ -1053,9 +1063,29 @@ export async function main(overrides = {}) {
     if (failures === subjects.length) {
       throw new Error("every subject hunt failed"); // job run shows red
     }
+
+    // Once a day, after the news is out: copy the evidence record to GCS.
+    await backupIfDue(mainDeps, db);
   } finally {
     if (db) await db.end();
   }
+}
+
+/**
+ * Runs the daily backup when this hourly run is the one scheduled for it.
+ * Needs a real database, a real run, and the backup switched on.
+ *
+ * @param {object} mainDeps
+ * @param {object|null} db
+ * @returns {Promise<void>}
+ */
+async function backupIfDue(mainDeps, db) {
+  const isDue = isBackupRun(mainDeps.now(), mainDeps.backupHourUtc);
+  const canBackup = db && !mainDeps.dryRun && mainDeps.backupEnabled;
+  if (!isDue || !canBackup) return;
+
+  const written = await mainDeps.backup(db);
+  if (written) console.log(`backup written: ${written}`);
 }
 
 /**

@@ -221,6 +221,30 @@ export function createFakeStore({ items = [], claims = [], claimSources = [] } =
       return { canonical_text: claim.canonical_text, tg_message_id: claim.tg_message_id };
     },
 
+    // --- backup ------------------------------------------------------------
+    async dumpTables() {
+      return {
+        items: rows.items.map((r) => ({ ...r })),
+        claims: rows.claims.map((c) => ({ ...c })),
+        claim_sources: rows.claimSources.map((s) => ({ ...s })),
+      };
+    },
+
+    // Rows keep their ids; existing ids are skipped, like ON CONFLICT DO NOTHING.
+    async restoreTables(_db, tables) {
+      const counts = { items: 0, claims: 0, claim_sources: 0 };
+      const restore = (target, incoming, keyOf) => {
+        const present = new Set(target.map(keyOf));
+        const fresh = (incoming ?? []).filter((row) => !present.has(keyOf(row)));
+        target.push(...fresh);
+        return fresh.length;
+      };
+      counts.items = restore(rows.items, tables.items, (r) => String(r.id));
+      counts.claims = restore(rows.claims, tables.claims, (c) => String(c.id));
+      counts.claim_sources = restore(rows.claimSources, tables.claim_sources, (s) => `${s.item_id}:${s.claim_id}`);
+      return counts;
+    },
+
     // --- test-side helpers, not part of the lib/db.js interface ------------
     rows,
     item: (url) => rows.items.find((r) => r.url === url),
