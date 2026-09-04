@@ -532,3 +532,63 @@ for hours — is what the warning line and the direct feeds now cover.
 Kept: the retry itself (a wave usually passes in 75 s), and the throw
 inside `fetchFeed` (a caller that wants the error still gets it; only the
 per-subject loop stops treating it as fatal).
+
+## claim-discipline — Loud claims need a concrete event about the subject
+*2026-09-04*
+
+The first grading pass, scored through the bench against Anton's buckets,
+showed the matcher minting alert-grade claims on non-events: "result" for
+the subject's June loss whenever an August article mentioned it (five
+items), "injury" for an opponent's broken hands and for another fighter's
+operation, "announcement" for a public appearance and for a trainer's
+guess at a return date. Each such claim is a 🕵️ line the group sees (G2)
+and a rumor no official source will ever resolve (G4). Two of them were
+live rumor claims in the archive (#449, #575).
+
+**Measured** on the graded month's tune split (45 items, K=5, test key;
+the older 48-item corpus as a regression set, K=3):
+
+| | pipeline bucket = Anton's | bucket 2 right | bucket 3 right | false loud claims | old corpus |
+|---|---|---|---|---|---|
+| production prompt | 22/45 | 8/13 | 13/31 | 13 | 11/25 |
+| v1: claim types defined, role guidance | 30/45 | 12/13 | 17/31 | 7 | 13/25 |
+| v2: result / injury / quote tightened + subject-name gate | 35/45 | 13/13 | 21/31 | 4 | 12/25 |
+| **v3: + stale-result gate** | **34/45** | **13/13** | **20/31** | **0** | **13/25** |
+
+v2 and v3 are within noise of each other on the total; v3 is chosen because
+every one of its remaining misses is a bucket-3 article shown as a main
+item — the mention-kind problem, next in TODO — and none is a false claim.
+Stability rose from 36/45 to 40/45 items giving the same answer all five
+times. The holdout split was **not** run: the test key reached its monthly
+spend cap on the first holdout call. It runs once when the cap is raised.
+
+**Decision.** Three changes, prompt first and code where the prompt kept
+failing:
+
+1. `domain.prompt.claimTypeGuide` — every claim type defined in one line
+   with its negative cases, as domain data (the same place the type list
+   lives). The loud types (`loudTypes`) "require a concrete, new event about
+   the subject personally"; when torn, choose quote/other. A callout is a
+   quote; negotiation is the promotion or both camps working on a fight.
+   `roleGuide` says a notable person's assessment of the subject makes him
+   "supporting", not "passing".
+2. `normalizeVerdict` gate: a NEW claim whose canonical sentence names none
+   of the subject's `matchNames` → NO_CLAIM. The model kept writing claims
+   about the other fighter in the story.
+3. `normalizeVerdict` gate: a `result` whose `facts.date` is more than 14
+   days before the article → NO_CLAIM. The prompt asks for the date; without
+   one the gate does nothing.
+
+Both gates keep `subject_role` for the tier rule and act only on evidence.
+
+**Considered and not done.** Few-shot examples from the 14 `prompt`-split
+items: the definitions alone moved the number, and the prompt is already
+~4,300 characters; examples stay in reserve for the mention-kind work. A
+"stale event" rule on announcements (TODO 5) — different problem, needs
+event dates on claims first.
+
+**Found on the way.** The bench handed the matcher the subject *object*, so
+every prompt it had ever sent read "[object Object]" as the fighter's name,
+and the first "baseline" (29/45) was void. Fixed with a spy test. The lesson
+is recorded in self-improvement §4 terms: a model never says the input is
+garbage; only reading the actual prompt text catches it.

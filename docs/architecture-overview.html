@@ -686,6 +686,16 @@
     foreign-key crash path). Ids compare <em>as strings</em>, because Postgres returns bigints as
     <code>"7"</code> while the model answers <code>7</code> — a naive check would have silently downgraded
     every match.
+    <br><br>
+    <strong>Two more gates, 2026-09-04 (the graded month, TODO 3c).</strong> A NEW claim whose canonical
+    sentence never names the subject (by any watchlist <code>matchNames</code> stem) → NO_CLAIM: the model
+    minted an "injury" for an opponent's broken hands and a "result" for another fighter's win. A
+    <code>result</code> whose <code>facts.date</code> lies more than 14 days before the article's
+    publication → NO_CLAIM: the subject's June loss was re-minted as news by every August article that
+    mentioned it. Both keep <code>subject_role</code>, which the tier rule still needs; both act only on
+    evidence (no names given, or no readable date, passes). The prompt itself now defines every claim type
+    with its negative cases (<code>domain.prompt.claimTypeGuide</code>) — the loud types require a concrete
+    new event about the subject personally.
   </div>
 
   <div class="prose">
