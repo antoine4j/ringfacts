@@ -13,7 +13,7 @@
 import { test, describe } from "node:test";
 import assert from "node:assert/strict";
 import { spawnSync } from "node:child_process";
-import { main } from "../hunter.js";
+import { main, sendMentionsDigest } from "../hunter.js";
 
 const SUBJECTS = [
   { name: "Testov Example", aliases: [], matchNames: ["Testov"] },
@@ -39,6 +39,9 @@ function mainDeps(over = {}) {
     backupEnabled: over.backupEnabled ?? false,
     backupHourUtc: over.backupHourUtc ?? 11,
     now: over.now ?? (() => new Date("2026-09-04T11:17:00Z")),
+    store: over.store,
+    sendMessage: over.sendMessage,
+    mentionsWindowDays: over.mentionsWindowDays ?? 7,
   };
 }
 
@@ -232,5 +235,74 @@ describe("the daily backup", () => {
     const deps = backupDeps({ databaseUrl: undefined, openDb: async () => { throw new Error("no"); } });
     await main(deps);
     assert.equal(deps.backups.length, 0);
+  });
+});
+
+describe("the mentions digest", () => {
+  // Sweeps the tangential rows the hourly runs queued, posts one message
+  // grouped by subject, and marks them delivered. Driven through mainDeps
+  // like main() itself.
+  const QUEUE = [
+    { id: "11", subject: "Testov Example", url: "https://a.test/1", title: "Someone else eyes a fight", source: "Sherdog", published_at: new Date("2026-09-04T06:00:00Z"), edition: "en" },
+    { id: "12", subject: "Rivalov Example", url: "https://b.test/2", title: "Rivalov named in a list", source: "MMA Junkie", published_at: new Date("2026-09-04T05:00:00Z"), edition: "en" },
+    { id: "13", subject: "Testov Example", url: "https://c.test/3", title: "A coach compares Testov", source: "Bloody Elbow", published_at: new Date("2026-09-04T01:00:00Z"), edition: "en" },
+  ];
+  const mentionsDeps = (over = {}) => {
+    const sent = [];
+    const marked = [];
+    const deps = mainDeps({
+      dryRun: false,
+      chatId: "-100",
+      databaseUrl: "postgres://example",
+      openDb: async () => ({ end: async () => {} }),
+      store: {
+        unsweptMentions: over.unsweptMentions ?? (async () => QUEUE),
+        markPosted: async (_db, ids) => { marked.push(...ids); },
+      },
+      sendMessage: over.sendMessage ?? (async (chatId, text) => { sent.push({ chatId, text }); return 777; }),
+      ...over,
+    });
+    deps.sent = sent;
+    deps.marked = marked;
+    return deps;
+  };
+
+  test("posts one message, grouped by subject, and marks the rows delivered", async () => {
+    const deps = mentionsDeps();
+    await sendMentionsDigest(deps);
+    assert.equal(deps.sent.length, 1);
+    const { text } = deps.sent[0];
+    assert.match(text, /Testov Example/);
+    assert.match(text, /Rivalov Example/);
+    assert.ok(text.indexOf("Testov Example") < text.indexOf("Rivalov Example"), "subjects in watchlist order");
+    assert.match(text, /<a href="https:\/\/a\.test\/1">Someone else eyes a fight<\/a>/);
+    assert.match(text, /Sherdog/);
+    assert.deepEqual(deps.marked.sort(), ["11", "12", "13"]);
+  });
+
+  test("with nothing queued, nothing is sent and nothing is marked", async () => {
+    const deps = mentionsDeps({ unsweptMentions: async () => [] });
+    await sendMentionsDigest(deps);
+    assert.equal(deps.sent.length, 0);
+    assert.equal(deps.marked.length, 0);
+  });
+
+  test("a dry run renders the message and marks nothing", async () => {
+    const deps = mentionsDeps({ dryRun: true, chatId: null });
+    await sendMentionsDigest(deps);
+    assert.equal(deps.sent.length, 0);
+    assert.equal(deps.marked.length, 0);
+  });
+
+  test("a failed send leaves the rows queued for the next sweep", async () => {
+    const deps = mentionsDeps({ sendMessage: async () => null });
+    await sendMentionsDigest(deps);
+    assert.equal(deps.marked.length, 0);
+  });
+
+  test("without a database there is no queue to sweep", async () => {
+    const deps = mentionsDeps({ databaseUrl: undefined, openDb: async () => { throw new Error("no"); } });
+    await sendMentionsDigest(deps);
+    assert.equal(deps.sent.length, 0);
   });
 });

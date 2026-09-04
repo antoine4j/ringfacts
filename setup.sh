@@ -255,6 +255,32 @@ gcloud scheduler jobs create http fighterbot-hunter-hourly \
   --http-method=POST \
   --oauth-service-account-email="hunter-scheduler@${PROJECT_ID}.iam.gserviceaccount.com" || true
 
+# --- Mentions digest (docs/decisions.md#mentions-digest) ----------------------
+# Same image, third entry point: `node hunter.js --mentions` sweeps the
+# tangential rows the hourly runs queued and posts one message a day, grouped
+# by fighter. Same secrets as the hunter, same no-plain-env-vars rule.
+gcloud run jobs deploy fighterbot-mentions \
+  --region="$REGION" \
+  --source . \
+  --command node --args hunter.js,--mentions \
+  --clear-env-vars \
+  --set-secrets=TELEGRAM_BOT_TOKEN=telegram-bot-token:latest,DATABASE_URL=neon-db-url:latest,TELEGRAM_CHAT_IDS=telegram-chat-ids:latest \
+  --max-retries=0 \
+  --task-timeout=300 \
+  --memory=512Mi \
+  --quiet
+
+# The daily trigger. NOT created until Anton has seen the message format
+# (docs/goals.md, constraints): run this line by hand once he says yes.
+# 18:00 UTC = 11:00 Pacific / 21:00 Kyiv, when the day's mentions have
+# accumulated and the group is awake.
+# gcloud scheduler jobs create http fighterbot-mentions-daily \
+#   --location="$REGION" \
+#   --schedule="0 18 * * *" \
+#   --uri="https://run.googleapis.com/v2/projects/${PROJECT_ID}/locations/${REGION}/jobs/fighterbot-mentions:run" \
+#   --http-method=POST \
+#   --oauth-service-account-email="hunter-scheduler@${PROJECT_ID}.iam.gserviceaccount.com"
+
 # --- Point Telegram's webhook at the service --------------------------------
 # Command substitution pulls secret values straight from Secret Manager into
 # the request without echoing them. allowed_updates trims noise (no joins/edits).

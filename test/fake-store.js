@@ -232,6 +232,18 @@ export function createFakeStore({ items = [], claims = [], claimSources = [] } =
       };
     },
 
+    // The mentions digest's queue: tangential rows the group has not seen,
+    // newest first. Keyed on digest_tier + posted, not held_reason, so a row
+    // that failed a send once still gets swept.
+    async unsweptMentions(_db, days) {
+      const cutoff = Date.now() - days * 24 * 3_600_000;
+      return rows.items
+        .filter((r) => r.digest_tier === "tangential" && !r.posted)
+        .filter((r) => new Date(r.seen_at).getTime() > cutoff)
+        .sort((a, b) => new Date(b.published_at) - new Date(a.published_at))
+        .map((r) => ({ id: r.id, subject: r.subject, url: r.resolved_url ?? r.url, title: r.title, source: r.source, published_at: r.published_at, edition: r.edition }));
+    },
+
     // --- backup ------------------------------------------------------------
     async dumpTables() {
       return {

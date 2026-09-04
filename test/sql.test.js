@@ -20,7 +20,7 @@ import {
   knownUrls, itemIdByUrl, nearestRecent, insertItem, markUnposted,
   activeClaims, insertClaim, linkClaimSource, claimOfItem, claimSimilarities,
   claimLinkDrifts, setClaimMessageId, confirmClaim, pendingResends, markPosted,
-  dumpTables, restoreTables, domainRecord,
+  dumpTables, restoreTables, domainRecord, unsweptMentions,
 } from "../lib/db.js";
 import { EMBEDDING_DIMENSIONS } from "../lib/embeddings.js";
 
@@ -419,5 +419,23 @@ describe("domainRecord — the untrusted-source aggregate", { skip }, () => {
 
   test("an unknown domain has an empty record", async () => {
     assert.deepEqual(await domainRecord(db, "never-seen.test"), { items: 0, wrongSubject: 0, bodies: 0 });
+  });
+});
+
+describe("unsweptMentions — the mentions digest's queue", { skip }, () => {
+  test("returns tangential rows not yet delivered, newest first, within the window", async () => {
+    const fresh = await insertItem(db, item({ title: "Fresh mention", posted: false, heldReason: "tangential", digestTier: "tangential" }));
+    const older = await insertItem(db, item({
+      title: "Older mention", posted: false, heldReason: "tangential", digestTier: "tangential",
+      publishedAt: new Date(Date.now() - 2 * 3_600_000),
+    }));
+    await insertItem(db, item({ title: "Already swept", posted: true, digestTier: "tangential" }));
+    await insertItem(db, item({ title: "A main item", posted: true, digestTier: "main" }));
+    await insertItem(db, item({ title: "A held dup", posted: false, heldReason: "embedding", digestTier: null }));
+
+    const rows = await unsweptMentions(db, 7);
+    const mine = rows.filter((row) => row.subject === SUBJECT);
+    assert.deepEqual(mine.map((row) => row.id), [fresh, older]);
+    assert.ok(mine.every((row) => "url" in row && "title" in row && "source" in row && "published_at" in row));
   });
 });

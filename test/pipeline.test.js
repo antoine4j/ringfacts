@@ -538,7 +538,10 @@ describe("the digest tier", () => {
   const tangential = () =>
     makeItem({ title: "Someone else eyes a top-10 fight", mentions: 1, source: "Sherdog" });
 
-  test("a tangential item folds into one shared line instead of a headline", async () => {
+  // Two speeds of delivery (2026-09-04): real news posts on the hourly run;
+  // a tangential item is stored for the daily mentions digest and never
+  // appears in the hourly message at all — not as a headline, not as a line.
+  test("a tangential item is queued for the mentions digest, not sent hourly", async () => {
     const store = createFakeStore();
     await huntSubject(DB, SUBJECT, [makeItem(), tangential()], deps({
       store, embedTexts: async (t) => t.map((_, i) => [Math.cos(i * 2), Math.sin(i * 2)]),
@@ -546,22 +549,23 @@ describe("the digest tier", () => {
     const text = digest().text;
     assert.match(text, /Testov books a return/, "the real story keeps its headline");
     assert.doesNotMatch(text, /Someone else eyes/, "the tangential headline is not shown");
-    assert.match(text, /↘ Also mentioning: <a href="[^"]*">Sherdog<\/a>/);
+    assert.doesNotMatch(text, /Also mentioning/, "and no longer rides as a link line either");
+
+    const queued = store.rows.items.find((r) => r.title.startsWith("Someone else"));
+    assert.equal(queued.posted, false);
+    assert.equal(queued.held_reason, "tangential");
+    assert.equal(queued.digest_tier, "tangential");
   });
 
-  // A message with nothing but a header and an "Also mentioning" line is
-  // exactly the noise the rule exists to remove.
   test("when everything was tangential, nothing is broadcast at all", async () => {
     const store = createFakeStore();
     await huntSubject(DB, SUBJECT, [tangential()], deps({ store }));
     assert.equal(sent.length, 0);
   });
 
-  // Those rows were written posted=true before the run knew its own shape, and
-  // scripts/audit-digest-tier.js partitions the archive on that column when re-measuring
-  // thresholds — so a suppressed run has to correct itself, or the next
-  // measurement reads items as broadcast that never were.
-  test("suppressed rows are corrected to posted=false so the audit stays honest", async () => {
+  // The row is written in its final state from the start — no posted=true
+  // that a later step has to walk back.
+  test("a queued row is posted=false from the start so the audit stays honest", async () => {
     const store = createFakeStore();
     await huntSubject(DB, SUBJECT, [tangential()], deps({ store }));
     assert.equal(store.rows.items[0].posted, false);
@@ -605,7 +609,8 @@ describe("the digest tier", () => {
       const text = digest().text;
       assert.match(text, /Testov books a return/, "the real story keeps its headline");
       assert.doesNotMatch(text, /Kutateladze eyes/, "the cornerman article loses its headline");
-      assert.match(text, /↘ Also mentioning: <a href="[^"]*">Sherdog<\/a>/);
+      const queued = store.rows.items.find((r) => r.title.startsWith("Kutateladze"));
+      assert.equal(queued.digest_tier, "tangential", "and waits for the mentions digest");
       assert.equal(store.rows.items.find((r) => r.title.startsWith("Kutateladze")).subject_role, "passing");
     });
 
@@ -620,7 +625,8 @@ describe("the digest tier", () => {
         matchItem: async () => ({ verdict: "NO_CLAIM", subject_role: "central" }),
       }));
       assert.doesNotMatch(digest().text, /Someone else eyes/);
-      assert.match(digest().text, /↘ Also mentioning/);
+      assert.doesNotMatch(digest().text, /Also mentioning/);
+      assert.equal(store.rows.items.find((r) => r.title.startsWith("Someone else")).digest_tier, "tangential");
     });
 
     // The role describes the ARTICLE, not what the digest did with it, so it
@@ -645,7 +651,8 @@ describe("the digest tier", () => {
       }));
       for (const row of store.rows.items) assert.equal(row.subject_role, null);
       assert.match(digest().text, /Testov books a return/, "the count rule kept the real story");
-      assert.match(digest().text, /↘ Also mentioning/, "and still demoted the 1-mention item");
+      assert.doesNotMatch(digest().text, /Someone else eyes/, "and still demoted the 1-mention item");
+      assert.equal(store.rows.items.find((r) => r.title.startsWith("Someone else")).digest_tier, "tangential");
     });
   });
 });
@@ -723,9 +730,9 @@ describe("fail-open", () => {
       assert.equal(store.rows.items[0].held_reason, "send_failed");
     });
 
-    // One message carries every line, so one failure loses the folded items
-    // too — they are only ever offered on that shared line.
-    test("folded items are lost with the message that carried them", async () => {
+    // A queued mention never rode the message, so a failed send does not
+    // touch it — it stays queued for the mentions digest, not marked failed.
+    test("a queued mention is untouched by the failed send", async () => {
       const store = createFakeStore();
       await huntSubject(DB, SUBJECT, [
         makeItem(),
@@ -735,7 +742,7 @@ describe("fail-open", () => {
         embedTexts: async (t) => t.map((_, i) => [Math.cos(i * 2), Math.sin(i * 2)]),
       }));
       assert.deepEqual(store.rows.items.map((r) => [r.posted, r.held_reason]),
-        [[false, "send_failed"], [false, "send_failed"]]);
+        [[false, "send_failed"], [false, "tangential"]]);
     });
 
     // A claim is a fact we learned, not a message we sent. Losing the post

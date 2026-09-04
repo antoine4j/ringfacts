@@ -32,9 +32,10 @@ Google's wrapped URL and fetch/extract the article body (lib/googlenews.js,
 lib/extract.js — best-effort, headline-only on any failure) → ask a Haiku
 matcher what each survivor is about, body excerpt included (`MATCH` / `NEW` /
 `NO_CLAIM` / `WRONG_SUBJECT` / `UNSURE`, plus a `subject_role` prominence
-judgment) → tier the digest (lib/tier.js: role first, then the measured
-mention-count rule; tangential items fold into one "Also mentioning" line) →
-post. Tables: `items`, `claims`, `claim_sources`.
+judgment) → tier the digest (lib/tier.js: a `passing` role first, then the
+headline, then the measured mention-count rule; tangential items are queued
+for the daily mentions digest, `node hunter.js --mentions`, never the hourly
+message) → post. Tables: `items`, `claims`, `claim_sources`.
 
 Every gate fails open: no embeddings degrades to URL-only dedup, a matcher error
 becomes `UNSURE` and the article posts as it always did. The one fatal condition
