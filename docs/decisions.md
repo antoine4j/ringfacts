@@ -494,6 +494,16 @@ check-in entry. Until the trigger exists, queued mentions wait in the
 database and age out after seven days — the design's own answer to stale
 links, and nothing the group would have wanted loudly anyway.
 
+**Held back 2026-09-04, the same evening.** After the first grading pass
+Anton decided he does not want a slew of tangential articles in the chat at
+all — the mentions tier is the pipeline's approximation of bucket 3, and a
+daily digest of it would deliver bucket 3 on purpose. The trigger is not
+created and will not be; the code path stays (it is the sweep a future
+aggregated page would use), and queued rows sit in the archive as held,
+auditable items. The only delivery shape Anton would consider is **one link to
+a page** that aggregates them — needs a public host the backup bucket
+deliberately is not; parked in TODO until the main digest is near 90%.
+
 **Deliberately left out:** translation of foreign headlines (the mention
 is a quiet link, not a headline the group reads; revisit if Anton wants it),
 and the usefulness gradient inside mentions (assessment > context > orbit) —
