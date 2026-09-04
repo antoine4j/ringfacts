@@ -106,64 +106,81 @@ names the goal it moves.
    the stable side (English, one line, names the fighter). If the sort ever
    proves too weak, embed headline + first paragraph instead — the same
    experiment 3b wants for repeats, so do them together.
-3e. **Feedback in the group: reply to a post, the verdict lands in the
-   corpus** (all four goals; designed with Anton 2026-09-04 evening, build
+3e. **Feedback by talking to the bot: forward a post, say the verdict, it
+   lands in the corpus** (all four goals; designed with Anton 2026-09-04,
+   refined in his voice chat the same day — tmp/ holds the handoff; build
    after fight week). Today a ruling reaches the bench only through a
-   grading session. Instead: Anton replies to the bot's post in the group —
-   "👎 junk", "2 dup", "this is a 2", or a sentence — and the webhook
-   (server.js, today a stub) stores it. Design:
-   - *Where.* Primary path, found by Anton's own test: **forward the post to
-     the bot's private chat**, then reply to the forward with the verdict.
-     The forward carries the post's full text including the link behind
-     each source name — the article URL, which is the key in `items`. So a
-     forwarded post identifies its articles exactly, in order, with no
-     model. The group never sees the exchange, and the bot needs no new
-     access: Anton's DM is already on the webhook whitelist, the group is
-     not, and stays that way. Reply-in-group (message id + number, or a
-     quote-reply) can come later as the one-tap version.
-   - *Identify the article.* URLs from the forward give the post's two-to-
-     five items; the bullets get numbers ("1." "2.") so "2 junk" is exact.
-     A description ("the interview") is resolved by Haiku choosing among
-     those headlines only.
-   - *Confirm or ask.* The bot answers one line: "Got it, 2 of 3: bucket 3,
-     junk." If it cannot tell the item or the verdict it asks "Which one?
-     1 … 2 … 3 …"; the answer completes the row. A correction ("no, dup")
-     replied to the confirmation fixes the row. The bot speaks only when
-     replied to, in the DM.
-   - *Schema, additive.* `items.tg_message_id` (the post an item went out
-     in; optional under the forward path, kept for reply-in-group later).
-     New table `feedback`: id, forwarded_text (verbatim), tg_message_id
-     (nullable), line_no, item_id, claim_id, verdict (up/down),
-     reason (junk/dup/old/wrong/loud/missed), wanted_bucket, note (verbatim),
-     from_user, status (pending/confirmed), bot_message_id (the question,
-     so the answer links back by reply), created_at. State lives in the
-     row, never in the process.
+   grading session. The bot's conversational side (server.js) is a stub
+   with no tools and no memory; this gives it its first job.
+   - *Channel.* Anton's private chat with the bot, never the group. He
+     forwards a post from the group, then talks normally. The bot needs no
+     new access: the DM is already on the webhook whitelist, the group is
+     not and stays that way. Locked to Anton's Telegram user id — his
+     verdicts are the training signal; anything from another id is rejected.
+   - *Session = the forward.* Each forward starts a fresh session; every
+     message after it belongs to that session until the next forward or a
+     TTL of about a day. Not cleared on commit, so "also mark it as too
+     promotional" works after a write. No summarization, no retrieval, no
+     reply-to-switch-topics in v1. Session state lives in Neon, never in
+     the process (Cloud Run scales to zero; use Neon's pooled connection
+     string from the service). Small store interface so Redis could replace
+     it if session reads ever get hot.
+   - *Session holds the article set plus a focus pointer.* On forward, the
+     post's links (article URLs, the key in `items`) resolve to its two-to-
+     five items; all are stored with which one is in focus, so "this one is
+     junk" then "no, the second one" works without re-forwarding. Bullets
+     are numbered so "2 junk" is exact; a description is resolved by Haiku
+     choosing among that post's headlines only.
+   - *Existing feedback loads on forward.* Items and any feedback rows about
+     them are fetched in the same step, before the bot answers. Prior
+     verdicts are surfaced: "you said this was junk last week — still?"
+   - *Propose and commit are two tools.* `propose_feedback` classifies
+     Anton's words into a draft (item, verdict up/down, reason from the
+     enum junk/dup/old/wrong/loud/missed, wanted bucket, note verbatim) and
+     shows it; `commit_feedback` writes it. The split means the model
+     structurally cannot write without confirmation. Several verdicts in
+     one message → several drafts, each with an id, so "yes to the first
+     two, not the third" maps cleanly. Approve/edit/skip as an inline
+     keyboard on the proposal — one tap, no text parsing.
+   - *Never write without explicit confirmation.* No timeout auto-write, no
+     silent write. A pending draft stays pending; on return or on the next
+     forward the bot leads with "we never saved your note on the last one —
+     want me to?" Losing feedback beats storing something unapproved.
+   - *Ask, don't guess.* Unknown article → ask which. Unclear reason → ask a
+     specific follow-up, never invent a rationale. Message with no active
+     session → "I've lost track of which article that was, mind forwarding
+     it again?" Off-topic → "feedback only, for now".
+   - *Telegram mechanics.* Typing indicator re-fired in a loop during tool
+     chains (it expires after ~5 s; 8 s of silence feels broken); better, a
+     short placeholder message edited in place with the answer (a bot's
+     edits to its own DM messages show no "edited" label — the no-edit rule
+     is about the group). Parallel reads are fine; keep propose→commit
+     sequential so approvals stay unambiguous. Dedupe Telegram retries by
+     update_id.
+   - *Partner, not a form.* "Why did it post this?" is answerable only if
+     the hunter stores the matcher's `reasoning` per item (today a log line)
+     — one additive column, `items.matcher_reasoning`. A changed verdict is
+     a new row that supersedes the old (as claims do); the corpus takes the
+     latest per article.
+   - *Schema, additive.* `items.matcher_reasoning`; `items.tg_message_id`
+     (optional, keeps a reply-in-group path open). New `feedback`: id,
+     item_id, claim_id (alerts), verdict, reason, wanted_bucket, note,
+     forwarded_text, from_user, supersedes, created_at. New `sessions`:
+     one per forward — user id, item ids, focus, pending drafts, started,
+     expires. Plus a table of DM turns, stored before anything else.
    - *Into the bench.* corpus/build-graded.js gains feedback rows as a
      second input beside the grading table: item id + wanted bucket + note
-     → corpus entry, split by hash. Rebuilt at the weekly grading pass, so
-     bench numbers stay comparable between rebuilds. Notes with a phrase
-     are the raw material for prompt examples (as the 13 rulings are now).
-   - *Memory.* Every DM turn, Anton's and the bot's, is stored before
-     anything else happens; nothing lives in the process. A *topic* is a
-     forwarded post plus every turn about it; the latest forward is current
-     for 24 h; a reply to an older forward or confirmation switches back.
-     The model sees the active topic plus the last few turns only. A changed
-     verdict is a new row that supersedes the old one (as claims do); the
-     corpus takes the latest per article.
-   - *Partner, not a form.* "Why did it post this?" is answerable only if
-     the hunter stores the matcher's `reasoning` per item (today a log line
-     only) — one additive column, `items.matcher_reasoning`. Several
-     verdicts in one message → several rows. Model down → the turn is
-     already stored, the bot says "saved, I'll read it later", pending turns
-     are parsed on the next run. Telegram retries → dedupe by update_id.
-     Off-topic questions → "feedback only, for now". One grader in v1.
-   - *Not in v1.* Reacting live to a verdict (merging claims on "dup",
-     holding a source on "junk"), talking about a post without replying to
-     it, and misses: a miss is not a post, so it stays with the weekly
-     held-items sample or a "missed <link>" message.
-   - *Preconditions.* The real group on the webhook whitelist (listen only,
-     never post there); a Haiku call ≈ $0.001 per reply; the numbered
-     bullets are a post-format change — show it in the test group first.
+     → corpus entry, split by hash. Rebuilt at the weekly grading pass so
+     bench numbers stay comparable. Notes with a phrase are the raw
+     material for prompt examples (as the 13 rulings are now).
+   - *Not in v1.* Acting on a verdict live (merging claims on "dup",
+     holding a source on "junk"); talking about a post without forwarding
+     it; a second grader; misses — a miss is not a post, so it stays with
+     the weekly held-items sample or a "missed <link>" message.
+   - *Preconditions and cost.* One Haiku call per message ≈ $0.001; the
+     forward costs nothing. Numbered bullets are a post-format change —
+     show it in the test group first. Build order: session table and the
+     two tool definitions first, agreed with Anton, then code.
 4. **Active verification via web search** (G4, and G2's stale-event clause) —
    concept discussed 2026-09-03/04, no design yet. On a new fight claim, search
    for it and sort results by domain trust: official domain confirms,
