@@ -195,6 +195,37 @@ describe("fetchFreshItems", () => {
     assert.equal(items.length, 1, "one story, however many aliases found it");
   });
 
+  // 2026-09-04, twice in one night: Google 503'd every alias after the retry
+  // and the whole subject hunt threw — including the direct-feed items that
+  // had fetched fine. A dead Google alias is a warning; the run goes on with
+  // what it has. History: docs/decisions.md#google-outage-degrades
+  test("a Google alias that fails after its retry is skipped; the rest still arrive", async () => {
+    globalThis.fetch = async (url) =>
+      url.includes("ceid=UA:uk")
+        ? { ok: false, status: 503, text: async () => "" }
+        : { ok: true, status: 200, text: async () => rss(rssItem({ link: "https://example.test/en", pubDate: hoursAgo(2) })) };
+    const direct = [{ title: "Testov via outlet", url: "https://outlet.test/1", publishedAt: new Date(Date.now() - 3_600_000), source: "Outlet" }];
+
+    const items = await fetchFreshItems(subject, direct, 24);
+
+    assert.deepEqual(items.map((i) => i.url), ["https://outlet.test/1", "https://example.test/en"]);
+  });
+
+  test("when every alias fails, the direct-feed items alone come back and the loss is reported", async () => {
+    globalThis.fetch = async () => ({ ok: false, status: 503, text: async () => "" });
+    const direct = [{ title: "Testov via outlet", url: "https://outlet.test/1", publishedAt: new Date(Date.now() - 3_600_000), source: "Outlet" }];
+    const warnings = [];
+    const original = console.warn;
+    console.warn = (...args) => warnings.push(args.join(" "));
+    try {
+      const items = await fetchFreshItems(subject, direct, 24);
+      assert.deepEqual(items.map((i) => i.url), ["https://outlet.test/1"]);
+      assert.ok(warnings.some((w) => /Google News down for Testov Example: 2\/2 aliases failed/.test(w)), warnings.join("\n"));
+    } finally {
+      console.warn = original;
+    }
+  });
+
   // The cutoff is what stops a re-run from re-reading a week of feed.
   test("items older than the window are dropped before anything else runs", async () => {
     serveByEdition({

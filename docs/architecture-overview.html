@@ -949,8 +949,9 @@
     <tr><td>Google News 503s (load-shedding of shared cloud IPs — the laptop gets 200s while Cloud Run
         gets 503s: IP reputation)</td>
         <td>Cron at :17 (dodges the top-of-hour stampede) + one retry per feed after 75s (waves outlast
-        30s — measured, tuned) + since 2e, six direct publisher feeds keep delivering even when Google
-        blanks a whole run</td>
+        30s — measured, tuned) + six direct publisher feeds keep delivering when Google blanks a run —
+        since 2026-09-04 a dead alias is skipped with a warning rather than failing the subject's hunt,
+        so those feeds actually reach the group during an outage</td>
         <td>Measure, then tune — then diversify</td></tr>
     <tr><td>A run fails anyway</td>
         <td>Loses nothing: the 24h fetch window means the next hourly run re-covers it. Data loss starts
