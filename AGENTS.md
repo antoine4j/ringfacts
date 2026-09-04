@@ -11,6 +11,7 @@ bot — explaining *why* beats delivering silently.
 
 | File | What it holds |
 |---|---|
+| **[docs/goals.md](docs/goals.md)** | **What the project is for, as four measurable goals (G1–G4) with success criteria and the three-bucket "useful" rule. Every piece of work names the goal it moves.** |
 | **[docs/self-improvement.md](docs/self-improvement.md)** | **How autonomous check-in runs decide things. Read before changing anything.** |
 | [docs/checkin-log.md](docs/checkin-log.md) | What each 6-hourly run found and did. Newest on top. |
 | **[docs/code-style.md](docs/code-style.md)** | **How code in this repo is written, and why. Read before writing any.** |
