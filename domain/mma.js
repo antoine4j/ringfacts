@@ -84,6 +84,18 @@ export default {
       "prediction — a forecast about the subject's fight or path.",
       "other — a career fact that fits nothing above (a contract, a camp change, a ranking move, a status update).",
     ],
+    // What "the same fact" means for MATCH. Two live failures on 2026-09-04
+    // pulled in opposite directions: Topuria's video letter to his son became
+    // three claims (three angles on one fact), and a fight-week rehearsal
+    // matched the weigh-in, the result, the bonus and the callout to the
+    // booking claim (five facts folded into one event). The rule names both.
+    // Claims of these types describe a fight BEFORE it happens. The candidate
+    // list marks them, at the point of decision, so a result article is not
+    // read as "the prediction came true" (the model's own words, 2026-09-04).
+    bookingTypes: ["announcement", "negotiation", "prediction"],
+    bookingNote: "— a BOOKING, i.e. the fight before it happens; an article saying this fight HAPPENED and how it ended is a result, a different fact, NOT this claim",
+    sameFactGuide:
+      "MATCH is about the FACT, not the story. The same fact told from another angle — a different line from the same video or interview, a different detail of the same booking, the same statement retold — is MATCH. But the STAGES of one fight are DIFFERENT facts: the booking, the weigh-in, the result, a bonus, the post-fight callout, a medical suspension. A result is NEW (type result) even when the booking claim is listed — an article that a booked or predicted fight HAPPENED and how it ended does not \"confirm\" the booking, it reports a new fact; a LOSS is the subject's result just as much as a win, whoever the headline makes the actor; a weigh-in or bonus is NEW (type other); a callout is NEW (type quote). Never fold a later stage into the booking. Worked example: listed claim \"X will fight Y at Event Z\"; article \"X beats Y by decision at Event Z\" → NEW, type result, NOT a MATCH; article \"X and Y make weight for Event Z\" → NEW, type other.",
     // The reader's own test (goals.md, "what useful means"): would a follower
     // of the subject learn something new about HIM from this article? The
     // examples are Anton's rulings from the first grading pass — the

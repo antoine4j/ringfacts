@@ -660,3 +660,66 @@ photo caption or highlights clip (#3, #106), the Gaethje-manager profiles
 (#6, #22) — the model still reads these as news about him about half the
 time. That is judgment the prompt may not reach; the parked stronger-model
 note in TODO names the trigger.
+
+## fight-stages — A booking is not a result, and the model needs room to think
+*2026-09-04, evening of the first live hour on the claim-discipline code*
+
+Donchenko fights Soriano at UFC Paris on Saturday 2026-09-06, the first fight
+week under the new matcher. A rehearsal on the test key — his four real
+claims as the candidate list, five made-up but realistic articles (weigh-in,
+win, loss, bonus, post-fight callout), three runs each — came back **MATCH
+#49 fifteen times out of fifteen**. Claim 49 is the booking ("will fight
+Soriano at UFC Paris"). A MATCH is held as evidence, so the fight's result
+would have been logged as "another sighting of the booking" and never posted.
+Goal 1 would have failed on the one event the group is waiting for.
+
+The same evening the opposite failure showed up live: Topuria's video letter
+to his son became claims 51, 52 and 53 and two messages (200, 201), three
+angles on one fact ("201 and 200 are the same news" — Anton). One rule had
+to name both edges: MATCH is about the fact, not the story — the same fact
+from another angle is a MATCH, but the stages of one fight (booking, weigh-in,
+result, bonus, callout) are different facts.
+
+**What moved the model, in order of effect.**
+
+1. *The rule alone did nothing.* With the stages rule in the prompt the
+   result article was still MATCH 3/3. Asked to explain itself in prose
+   first, the same model on the same prompt answered NEW/result and quoted
+   the rule back. The forced tool call gave it no room to think: it had to
+   pick a verdict as its first token, and MATCH was the cautious exit.
+2. *A `reasoning` field, first in the tool schema, required.* The model
+   fills tool fields in schema order, so one or two sentences of its own
+   come before the verdict. Result articles went from 0/6 to 5/6 NEW. About
+   150 extra output tokens per call, under $0.001. The hunter prints the
+   sentence as a `because:` line under each verdict, so a live decision can
+   be audited without re-running the model; it is not stored.
+3. *Marking booking claims in the candidate list.* The model's own reasoning
+   on the remaining folds was "the article confirms the prediction came
+   true" — the word *prediction* on claim 49 did the damage. Candidates of
+   type announcement, negotiation or prediction now carry a note at the
+   point of decision: "a BOOKING; an article saying this fight HAPPENED and
+   how it ended is a result, a different fact, NOT this claim". After that,
+   MATCH disappeared from the rehearsal: win 5/6 NEW and 1 UNSURE, loss
+   6/6, weigh-in 4/6 with 2 UNSURE. UNSURE posts the article as a plain
+   digest line, so neither answer swallows the result.
+
+A wording that tried to explain "earlier stage of the same event" inside the
+reasoning field's description made things worse (weigh-in back to 4/5 MATCH)
+and was reverted: the description stays a plain "what is the article's fact,
+does any listed claim state that same fact", and the domain rule carries the
+stages and a worked example.
+
+**Regression check.** Tune split of the graded month, bucket step, K=3:
+**37 → 38/45**, bucket 2 still 13/13, stability 39/45 (was 41/45 at K=5).
+Two clips that used to fold — "Makhachev on Topuria's loss" and a UFC 328
+highlights reel — started minting `result` with no usable date, the loud
+type the stale gate cannot judge without one. So a result claim whose
+`facts.date` is not YYYY-MM or YYYY-MM-DD is demoted to `other`: still a
+claim, never a 🕵️ line. With the gate, false loud claims on the split stay
+at **0**; the rehearsal after it: win 3/4 NEW result and 1 UNSURE, loss 3/4
+and 1 UNSURE, weigh-in 1 NEW and 3 UNSURE, **no MATCH in 12 runs**.
+
+**What to watch on Saturday.** The result should appear as a 🕵️ result line
+within an hour of the first article, then a confirmation reply once ufc.com
+or the UFC feed carries it. Every later result article must MATCH the new
+result claim, not the booking. The weigh-in on Friday is the first live test.

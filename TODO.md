@@ -78,6 +78,19 @@ names the goal it moves.
    bench next: a prompt rule "a claim is an event, not an angle" with items
    620/626/627 as the worked example, plus a mint-time guard comparing the
    new canonical sentence against the subject's recent claims by embedding.
+   **Same evening, the other edge, shipped** (docs/decisions.md#fight-stages):
+   a fight-week rehearsal folded the weigh-in, the result, the bonus and the
+   callout into the booking claim, 15/15 MATCH — the result would never have
+   posted. Three changes: a `reasoning` field first in the tool schema (the
+   model thinks before the forced verdict), booking-type claims marked as
+   bookings in the candidate list, and a "stages are separate facts" rule
+   with a worked example; plus a gate demoting a `result` with no readable
+   fight date to `other`. Tune 37 → 38/45, false loud claims 0, rehearsal
+   0 MATCH in 12. Watch UFC Paris (Sat 2026-09-06): the result must post as
+   a 🕵️ result line within the hour, later result articles must MATCH it,
+   and the Friday weigh-in is the first live test. The `because:` log line
+   under each verdict is the audit trail. The Topuria one-story-three-claims
+   case above is NOT fixed by this: still to bench.
 3d. **Cap the claim list the matcher reads** (G3, cost) — **Anton, 2026-09-04:
    "important, do soon".** Today `activeClaims` hands the matcher every
    rumor/confirmed claim for the subject, sorted by headline-to-claim

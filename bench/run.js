@@ -50,6 +50,8 @@ async function buildContext() {
     const matcher = await import("../lib/matcher.js");
     ctx.matchItem = matcher.matchItem;
     ctx.usageTotals = matcher.usageTotals;
+    ctx.matcherModel = matcher.MATCHER_MODEL;
+    console.log(`matcher model: ${matcher.MATCHER_MODEL}`);
   }
   if (step.needs.includes("network")) {
     ctx.fetchArticleBody = (await import("../lib/extract.js")).fetchArticleBody;
@@ -74,7 +76,12 @@ function printTable(rows) {
 // Haiku 4.5 list prices per million tokens, from memory on 2026-09-04 —
 // the console is the number that counts; this line is for the order of
 // magnitude of a run.
-const PRICE_PER_MILLION = { input: 1, output: 5 };
+// Keyed by model-name prefix; an unknown model prints tokens only. 2026-09-04:
+// a Sonnet run was reported at Haiku prices, three to five times too low.
+const PRICE_PER_MILLION = {
+  "claude-haiku-4-5": { input: 1, output: 5 },
+  "claude-sonnet-5": { input: 3, output: 15 },
+};
 
 /**
  * What the run spent: measured tokens, and the price they imply.
@@ -82,9 +89,13 @@ const PRICE_PER_MILLION = { input: 1, output: 5 };
  * @param {{ calls: number, inputTokens: number, outputTokens: number }} totals
  * @returns {string}
  */
-function costLine(totals) {
-  const dollars = (totals.inputTokens * PRICE_PER_MILLION.input + totals.outputTokens * PRICE_PER_MILLION.output) / 1e6;
-  return `spent: ${totals.calls} calls, ${totals.inputTokens} input + ${totals.outputTokens} output tokens ≈ $${dollars.toFixed(3)} at list price`;
+function costLine(totals, model) {
+  const tokens = `spent: ${totals.calls} calls, ${totals.inputTokens} input + ${totals.outputTokens} output tokens`;
+  const key = Object.keys(PRICE_PER_MILLION).find((prefix) => model.startsWith(prefix));
+  if (!key) return `${tokens} (no list price on file for ${model})`;
+  const price = PRICE_PER_MILLION[key];
+  const dollars = (totals.inputTokens * price.input + totals.outputTokens * price.output) / 1e6;
+  return `${tokens} ≈ $${dollars.toFixed(3)} at ${key} list price`;
 }
 
 /**
@@ -114,7 +125,7 @@ try {
   const stable = summary.repeat ? `; ${summary.stable}/${summary.total} gave the same answer all ${summary.repeat} times` : "";
   console.log(`\n${summary.total} item(s)${score}${stable}`);
   if (summary.scored) console.log(perLabel(summary));
-  if (ctx.usageTotals) console.log(costLine(ctx.usageTotals()));
+  if (ctx.usageTotals) console.log(costLine(ctx.usageTotals(), ctx.matcherModel));
 
   // The record of the run, for a later comparison.
   const stamp = new Date().toISOString().replace(/[:.]/g, "-").slice(0, 19);
