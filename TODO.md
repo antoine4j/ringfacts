@@ -143,6 +143,20 @@ names the goal it moves.
      → corpus entry, split by hash. Rebuilt at the weekly grading pass, so
      bench numbers stay comparable between rebuilds. Notes with a phrase
      are the raw material for prompt examples (as the 13 rulings are now).
+   - *Memory.* Every DM turn, Anton's and the bot's, is stored before
+     anything else happens; nothing lives in the process. A *topic* is a
+     forwarded post plus every turn about it; the latest forward is current
+     for 24 h; a reply to an older forward or confirmation switches back.
+     The model sees the active topic plus the last few turns only. A changed
+     verdict is a new row that supersedes the old one (as claims do); the
+     corpus takes the latest per article.
+   - *Partner, not a form.* "Why did it post this?" is answerable only if
+     the hunter stores the matcher's `reasoning` per item (today a log line
+     only) — one additive column, `items.matcher_reasoning`. Several
+     verdicts in one message → several rows. Model down → the turn is
+     already stored, the bot says "saved, I'll read it later", pending turns
+     are parsed on the next run. Telegram retries → dedupe by update_id.
+     Off-topic questions → "feedback only, for now". One grader in v1.
    - *Not in v1.* Reacting live to a verdict (merging claims on "dup",
      holding a source on "junk"), talking about a post without replying to
      it, and misses: a miss is not a post, so it stays with the weekly
