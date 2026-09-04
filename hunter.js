@@ -574,7 +574,7 @@ async function askMatcher(deps, db, subject, item) {
       const knownClaims = await deps.store.activeClaims(db, subject.name, item.embedding);
       verdict = await deps.matchItem({
         subject: subject.name, item, candidates: knownClaims,
-        confusables: subject.confusables,
+        confusables: subject.confusables, subjectNames: subject.matchNames,
       });
     } catch (err) {
       console.warn(`${subject.name}: matcher failed (fail-open):`, err.message);

@@ -68,6 +68,28 @@ export default {
     factFields: "opponent, event, date, location, method",
     sourcingHint:
       "official = promotion announced it; reported = outlet states as fact; rumored = hedged (in talks, targeted, sources say)",
+    // What each claim type means, in the words the model reads. The loud
+    // types (loudTypes above) earn their own alert line in the group, so
+    // they are defined narrowly: a concrete, new event about the subject
+    // himself. Everything softer is quote / prediction / other. Written
+    // 2026-09-04 after the graded month showed the matcher minting
+    // "announcement" for a public appearance and "injury" for an opponent's
+    // damaged hands (TODO 3c).
+    claimTypeGuide: [
+      "announcement — a specific fight FOR THE SUBJECT is booked, targeted, or officially set: an opponent and/or an event or date is named. A return \"expected\" or \"planned\", a training-camp date, a trainer's estimate, a public appearance, or a wish to fight someone is NOT an announcement.",
+      "result — the outcome of a fight the subject fought in the last few days, reported as news. The subject's earlier win or loss mentioned in a profile, a preview, a photo caption, or another fighter's story (\"after beating the subject\", \"since losing to the subject\") is NOT a result: NO_CLAIM. A result always gives the fight's date in facts.date (YYYY-MM-DD, or YYYY-MM if only the month is known).",
+      "injury — the subject's OWN injury, surgery, or medical status, reported as new. An expert or doctor analysing an injury already known, or an update on recovery, is a quote. Another fighter's injury, even one sustained against the subject, is not the subject's injury: NO_CLAIM.",
+      "negotiation — the promotion or both camps working on a specific fight for the subject: an offer, terms, a bout agreement in progress. A fighter or manager merely calling the subject out (\"I want to fight him\") is a quote.",
+      "quote — the subject, or someone notable, says something substantive ABOUT the subject: an opinion, an assessment, a callout, a stated intention. This is the default for interviews. If the subject is only one name inside someone else's story — a third fighter is called out, the subject is on a list or used as a comparison — that is not a quote about the subject: NO_CLAIM, role passing.",
+      "prediction — a forecast about the subject's fight or path.",
+      "other — a career fact that fits nothing above (a contract, a camp change, a ranking move, a status update).",
+    ],
+    // How to read subject_role when the article's substance is someone's
+    // words about the subject: named in the headline and discussed at
+    // length is supporting, not passing. Passing is reserved for background
+    // colour. Same origin as claimTypeGuide.
+    roleGuide:
+      "When the article's substance is a notable person's assessment OF the subject — a champion on the subject's loss, a rival's coach breaking down the subject's game, a doctor on the subject's injury — the subject is \"supporting\" even though someone else is speaking. \"passing\" is for background colour only: a comparison, a name in a list, an opponent's teammate.",
     // Fallback for watchlist entries that supply no `confusables` of their
     // own. Deliberately names nobody: concrete hints belong on the subject
     // they describe, in the (private) watchlist. Naming real people here put
