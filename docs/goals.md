@@ -40,6 +40,14 @@ in front of Anton, who confirms or overrules (about 15 minutes; Anton,
 2026-09-04: "you can label them yourself, I will just confirm"). His verdicts
 go into `docs/article-feedback.md` verbatim.
 
+**Both directions, every time** (Anton, 2026-09-04). Every pipeline decision
+is stored with its reason (`held_reason`, `digest_tier`, `subject_role`), so
+the pass grades what was **held** as well as what posted: a sample of the
+wrong-subject, tangential, untrusted-source and duplicate holds from the same
+window, each asked "should this have posted?". A real story wrongly held is a
+G1 failure and is found only by looking at the holds. The pipeline stays
+traceable for this reason: nothing is dropped without a row and a reason.
+
 ### What "useful" means — the three buckets
 
 Every article about a watched fighter lands in exactly one bucket.
