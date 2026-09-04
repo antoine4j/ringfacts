@@ -71,6 +71,13 @@ names the goal it moves.
    his old fight in a caption or clip (#3, #106), Gaethje-manager profiles
    (#6, #22). Watch for a week: no bucket-2 article folded (every fold is a
    row with `news_for_followers='no'` and `held_reason='tangential'`).
+   **First live hour (17:17 UTC) found the next weak spot: repeats at the
+   claim level.** One story (Topuria's video letter to his son) became
+   claims 51, 52, 53 and messages 200 and 201 — three angles on one event,
+   each called NEW (docs/article-feedback.md, 2026-09-04 evening). Fix to
+   bench next: a prompt rule "a claim is an event, not an angle" with items
+   620/626/627 as the worked example, plus a mint-time guard comparing the
+   new canonical sentence against the subject's recent claims by embedding.
 3d. **Cap the claim list the matcher reads** (G3, cost) — **Anton, 2026-09-04:
    "important, do soon".** Today `activeClaims` hands the matcher every
    rumor/confirmed claim for the subject, sorted by headline-to-claim

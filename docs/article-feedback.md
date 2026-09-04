@@ -52,3 +52,15 @@ archive row (`items.id`), where the embedding, tier, and body live.
 - **Rule**: a fighter saying *I want to fight him* → **2**. A fighter saying *he should fight someone else* → **3**. An authority (the champion, the champion's coach) on who he might fight → **2**, within limits.
 - **Effect**: #21 (Usman's camp asks for Topuria as a first fight) goes back to 2. Precision for the window becomes 35 / 103 = 34%. #50 (Prates warns him off welterweight) and #256 (Tsarukyan picks his next opponent) stay 3.
 - **Also decided**: the mentions digest is held back — Anton does not want tangential articles in the chat at all; a single link to an aggregated page is the only shape he would consider (TODO).
+
+## 2026-09-04 evening — one story, three claims (messages 200 and 201)
+
+Items 620, 626 and 627 (Topuria's video letter to his son after the Gaethje loss)
+became claims 51, 52 and 53 and were posted as message 200 and then, an hour
+later, message 201 with two lines. Anton: "201 and 200 are the same news."
+The matcher saw three angles ("announced his return", "made a short film about
+the loss", "returned to social media") and treated each as a new fact. The
+headline embedding held three other rewrites (0.81–0.82) but not these two.
+
+Ruling: a claim is an event, not an angle. Same video, same fight, same
+statement → MATCH, whatever detail the article leads with.
