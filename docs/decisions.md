@@ -498,3 +498,27 @@ links, and nothing the group would have wanted loudly anyway.
 is a quiet link, not a headline the group reads; revisit if Anton wants it),
 and the usefulness gradient inside mentions (assessment > context > orbit) —
 the digest makes misranking cheap, so the examples pile up first.
+
+## google-outage-degrades — A dead Google alias is a warning, not a failed hunt
+*2026-09-04*
+
+Twice in one night (06:21 and 08:17 UTC) Google News answered 503 for all
+three subjects, the single 75-second retry failed too, and every subject
+hunt threw — `every subject hunt failed`, the run red. The six direct
+publisher feeds had fetched fine in the same run and were thrown away with
+it. The 2f note of 2026-08-08 said the direct feeds meant "a Google outage
+no longer blinds the run"; the code had never been made to agree.
+
+**Now** (`fetchFreshItems`, hunter.js): an alias whose fetch fails after the
+retry is skipped with a warning naming the status, and the hunt continues
+with the other aliases and the direct-feed items. When every alias of a
+subject fails, one more line says so — `Google News down for <subject>:
+N/N aliases failed` — because a blinded run reporting "nothing new" must
+not read as quiet news (self-improvement §5); the check-in runs grep for
+it. The run stays green: the alert on failed executions was firing for a
+known transient cause, and the thing worth alerting on — nothing delivered
+for hours — is what the warning line and the direct feeds now cover.
+
+Kept: the retry itself (a wave usually passes in 75 s), and the throw
+inside `fetchFeed` (a caller that wants the error still gets it; only the
+per-subject loop stops treating it as fatal).

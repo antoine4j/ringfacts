@@ -145,15 +145,32 @@ export async function fetchFeed(alias) {
 export async function fetchFreshItems(subject, directItems = [], hoursBack = HOURS_BACK) {
   const cutoff = Date.now() - hoursBack * 3_600_000;
 
-  // Google News, one fetch per alias, each item stamped with where it was found.
+  // Google News, one fetch per alias, each item stamped with where it was
+  // found. An alias that fails after its retry is skipped, not fatal: the
+  // direct feeds below are the alternate source, and a Google outage must
+  // not throw them away. History: docs/decisions.md#google-outage-degrades
   const items = [];
+  let failedAliases = 0;
   for (const alias of subject.aliases) {
-    const found = parseRssItems(await fetchFeed(alias));
+    let found;
+    try {
+      found = parseRssItems(await fetchFeed(alias));
+    } catch (err) {
+      failedAliases++;
+      console.warn(`${subject.name}: alias skipped — ${err.message}`);
+      continue;
+    }
     for (const item of found) {
       item.edition = alias.edition;
       item.foundVia = `${alias.edition} ${alias.query}`;
     }
     items.push(...found);
+  }
+
+  // Every alias down is worth its own line: a check-in run greps for it, and
+  // "nothing new" from a blinded run must not read as quiet news (§5).
+  if (subject.aliases.length > 0 && failedAliases === subject.aliases.length) {
+    console.warn(`Google News down for ${subject.name}: ${failedAliases}/${subject.aliases.length} aliases failed; continuing on direct feeds only`);
   }
 
   // Direct-feed items that name this subject. Cloned: the outlet pool is
