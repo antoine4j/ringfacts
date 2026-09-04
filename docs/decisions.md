@@ -593,6 +593,19 @@ items: the definitions alone moved the number, and the prompt is already
 "stale event" rule on announcements (TODO 5) — different problem, needs
 event dates on claims first.
 
+**Amended the same evening: an announcement must name a fight.** At 16:17
+UTC, minutes before the first deploy, the old code posted "Ilia Topuria
+anuncia su vuelta a la UFC" (item #620) as claim #51: type `announcement`,
+sourcing `official` (his own words), facts `{}` — born **confirmed**, and
+the 🚨 *Fight announced* ceremony went to the group (message 200) for a
+fight that does not exist. The prompt's new definition would have called
+it a quote, but a definition is not a guarantee. Gate added to
+`normalizeVerdict`: an announcement whose facts carry no opponent, event,
+or date becomes type `other` — still a real claim and a main item, never a
+ceremony, never a rumor line. Claim #51 was corrected in place
+(`announcement` → `other`, status untouched, the Telegram message left for
+Anton to decide on).
+
 **Found on the way.** The bench handed the matcher the subject *object*, so
 every prompt it had ever sent read "[object Object]" as the fighter's name,
 and the first "baseline" (29/45) was void. Fixed with a spy test. The lesson
