@@ -106,6 +106,42 @@ names the goal it moves.
    the stable side (English, one line, names the fighter). If the sort ever
    proves too weak, embed headline + first paragraph instead — the same
    experiment 3b wants for repeats, so do them together.
+3e. **Feedback in the group: reply to a post, the verdict lands in the
+   corpus** (all four goals; designed with Anton 2026-09-04 evening, build
+   after fight week). Today a ruling reaches the bench only through a
+   grading session. Instead: Anton replies to the bot's post in the group —
+   "👎 junk", "2 dup", "this is a 2", or a sentence — and the webhook
+   (server.js, today a stub) stores it. Design:
+   - *Identify the article.* Posts stay grouped per fighter per run, so the
+     bullets get numbers ("1." "2."). Three ways in, most reliable first: the
+     number; a Telegram quote-reply (the selected bullet text comes with the
+     update, matched to the post's own headlines); a description, resolved
+     by Haiku choosing among the two-to-five headlines of that post only.
+   - *Confirm or ask.* The bot answers one line: "Got it, 2 of 3: bucket 3,
+     junk." If it cannot tell the item or the verdict it asks "Which one?
+     1 … 2 … 3 …"; the answer completes the row. A correction ("no, dup")
+     replied to the confirmation fixes the row. The bot speaks only when
+     replied to; clarifications may move to Anton's DM if the group feels
+     noisy.
+   - *Schema, additive.* `items.tg_message_id` (the post an item went out
+     in; alerts already keep theirs on the claim). New table `feedback`:
+     id, tg_message_id, line_no, item_id, claim_id, verdict (up/down),
+     reason (junk/dup/old/wrong/loud/missed), wanted_bucket, note (verbatim),
+     from_user, status (pending/confirmed), bot_message_id (the question,
+     so the answer links back by reply), created_at. State lives in the
+     row, never in the process.
+   - *Into the bench.* corpus/build-graded.js gains feedback rows as a
+     second input beside the grading table: item id + wanted bucket + note
+     → corpus entry, split by hash. Rebuilt at the weekly grading pass, so
+     bench numbers stay comparable between rebuilds. Notes with a phrase
+     are the raw material for prompt examples (as the 13 rulings are now).
+   - *Not in v1.* Reacting live to a verdict (merging claims on "dup",
+     holding a source on "junk"), talking about a post without replying to
+     it, and misses: a miss is not a post, so it stays with the weekly
+     held-items sample or a "missed <link>" message.
+   - *Preconditions.* The real group on the webhook whitelist (listen only,
+     never post there); a Haiku call ≈ $0.001 per reply; the numbered
+     bullets are a post-format change — show it in the test group first.
 4. **Active verification via web search** (G4, and G2's stale-event clause) —
    concept discussed 2026-09-03/04, no design yet. On a new fight claim, search
    for it and sort results by domain trust: official domain confirms,
