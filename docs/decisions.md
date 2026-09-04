@@ -559,8 +559,14 @@ v2 and v3 are within noise of each other on the total; v3 is chosen because
 every one of its remaining misses is a bucket-3 article shown as a main
 item — the mention-kind problem, next in TODO — and none is a false claim.
 Stability rose from 36/45 to 40/45 items giving the same answer all five
-times. The holdout split was **not** run: the test key reached its monthly
-spend cap on the first holdout call. It runs once when the cap is raised.
+times. **Holdout, run once** (44 items, K=5, after Anton raised the shared
+cap): production prompt **25/44**, v3 **29/44**; false loud claims 6 → 3.
+The three survivors are two `result` claims the model gave no date for
+(the gate acts only on evidence) and one `announcement` for a betting
+preview of a fight that really is booked. The gain generalises; it is not
+a fit to the tune split. Live `DRY_RUN=1` on the test keys and the test
+branch: 10 unseen items across three subjects, all decided without error,
+nothing posted. Deployed the same evening.
 
 **Decision.** Three changes, prompt first and code where the prompt kept
 failing:

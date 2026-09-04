@@ -49,18 +49,18 @@ names the goal it moves.
    re-measure the gap between the 5 known repeats and their non-repeat
    neighbours. Not built.
 3c. ~~**Tune the matcher prompt against Anton's buckets**~~ (G2, G4) —
-   **built 2026-09-04, deploy pending the dry run** (docs/decisions.md#claim-discipline).
+   **shipped 2026-09-04** (docs/decisions.md#claim-discipline); holdout
+   25/44 → 29/44, dry run clean.
    On the graded month's tune split (45 items, K=5) the pipeline's bucket
    went from **22/45 to 34/45**, bucket 2 from 8/13 to 13/13, false loud
    claims from 13 to **0**; the old corpus 11/25 → 13/25, no regressions.
    Three changes: claim types defined with negative cases as domain data;
    a gate that drops a NEW claim not naming the subject; a gate that drops a
-   "result" dated more than 14 days before the article. **Blocked on two
-   things**: the test key hit its monthly spend cap on the first holdout
-   call, so (a) the holdout split has not been run and (b) the `DRY_RUN=1`
-   live smoke that gates a deploy cannot exercise the matcher — both wait
-   for Anton to raise the cap. The first baseline reported for this item
-   (29/45) was void: the bench passed the subject object, not its name.
+   "result" dated more than 14 days before the article. Watch for a week:
+   fewer 🕵️ lines, no real event missed (a real result or injury must still
+   mint — the gates only act on a wrong name or an old date). The first
+   baseline reported for this item (29/45) was void: the bench passed the
+   subject object, not its name.
    **Next lever, from the eleven remaining misses:** every one is a
    bucket-3 article the tier rule keeps as main because the role is
    `central` — the June loss retold (#3, #6, #22, #308, #106), lifestyle
