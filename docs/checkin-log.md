@@ -7,6 +7,13 @@ as the chat report: data / changes / proposals / next attention.
 
 ---
 
+## 2026-09-04 17:00–18:00 PDT — claim discipline, measured; deploy waits on the test key (autonomous; Fable 5.1)
+
+📊 **Data**: the bench's first "baseline" was void — it sent "[object Object]" as the fighter's name. True baseline on the graded month's tune split (45 items × 5 runs): **22/45** agree with Anton's bucket, 13 false loud claims. After three rounds (claim types defined with negative cases; a gate dropping claims that never name the subject; a gate dropping "result" claims dated >14 days before the article): **34/45**, bucket 2 13/13, **false loud claims 0**, stability 36→40/45; old corpus 11→13/25, no regressions. Every remaining miss is a bucket-3 article kept as main because the role is `central` — the mention-kind field is the next lever. Production untouched and healthy (16:17 UTC run made its matcher calls). Spent ≈ $4.7 on the test key across seven bench runs before it hit its monthly cap.
+🔧 **Changes** (committed, pushed, **not deployed**): lib/matcher.js gates + domain/mma.js `claimTypeGuide`/`roleGuide` · bench `--repeat`, `--split`, `bucket` step, token line, subject-name fix · corpus/graded-2026-09.json · spec §5 gate paragraph · docs/decisions.md#claim-discipline.
+💡 **Proposals** (Anton): raise the **test** key's monthly cap in the console (it blocks both the holdout run and the `DRY_RUN=1` smoke that gates the deploy; ≈$1.50 more finishes both) — then the deploy is one session away.
+👁 **Next attention**: holdout once, dry run, deploy, observe a week of claims; then the mention-kind field against the same corpus.
+
 ## 2026-09-04 08:30–17:00 PDT — grading applied, mentions parked, the bench scores as a rate (Anton present; Fable 5.1)
 
 📊 **Data**: Anton graded the 103 posts — agreed with 99 of 103 pre-grades; **G2 precision 34%** (35/103); the 2-vs-3 line is now ten worked examples in goals.md (callout at him → 2, steering him elsewhere → 3, authority assessing him → 2, him on himself → 2 when substantial). Bench baseline on the graded month (tune split, 45 items × 5 runs, ≈$0.53 on the test key): **pipeline bucket = Anton's bucket 29/45 (64%)**, bucket 2 only 4/13; **10 of 16 misses are loud claims minted on non-events**, two of them live rumor claims in the archive (#449, #575).
