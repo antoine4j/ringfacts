@@ -18,6 +18,7 @@ bot — explaining *why* beats delivering silently.
 | [docs/decisions.md](docs/decisions.md) | Why the code is the way it is — measurements, incidents, rejected alternatives. Code points here instead of carrying it. |
 | [TODO.md](TODO.md) | Build sequence, open questions, and the triggers that promote a watch item into work. |
 | [docs/architecture-overview.html](docs/architecture-overview.html) | Living architecture overview — the system as built (pipeline, claims layer, ops, autonomy). |
+| [bench/README.md](bench/README.md) | The bench: run a battery of articles through one pipeline step on the TEST keys and the bench database, from any session. Never production keys, never the group. |
 | [corpus/README.md](corpus/README.md) | The labelled evaluation corpus — 48 articles, `tune` + `holdout`. Labels are what the system *should* answer, so it is deliberately red against today's code. |
 | [docs/article-feedback.md](docs/article-feedback.md) | Anton's verdicts on delivered articles, verbatim, with tuning signals. When he likes or dislikes an article, it goes here. Check rule changes against it. |
 | [ringfacts-spec.md](ringfacts-spec.md) | The original plan. Historical — its header lists where it diverges from what runs. Do not treat it as a description of the system. |
