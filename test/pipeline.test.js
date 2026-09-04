@@ -1086,3 +1086,42 @@ describe("the untrusted-source veto", () => {
     assert.equal(store.item(item.url).held_reason, "untrusted_source");
   });
 });
+
+describe("the reader's test: nothing new folds, an event never does", () => {
+  const claim = (type) => ({ type, sourcing: "reported", canonical_text: "Testov did a thing", facts: {} });
+
+  test("a quote the matcher marks 'no' is folded as a mention, no claim minted, answer stored", async () => {
+    const store = createFakeStore();
+    await huntSubject(DB, SUBJECT, [makeItem()], deps({
+      store, matchItem: async () => ({ verdict: "NEW", subject_role: "central", news_for_followers: "no", new_claim: claim("quote") }),
+    }));
+    const row = store.rows.items.at(-1);
+    assert.equal(row.digest_tier, "tangential");
+    assert.equal(row.held_reason, "tangential");
+    assert.equal(row.news_for_followers, "no");
+    assert.equal(store.rows.claims.length, 0, "no claim for a quote nobody learns from");
+    assert.equal(sent.length, 0);
+  });
+
+  test("a loud claim marked 'no' still posts as an event", async () => {
+    const store = createFakeStore();
+    await huntSubject(DB, SUBJECT, [makeItem()], deps({
+      store, matchItem: async () => ({ verdict: "NEW", subject_role: "central", news_for_followers: "no", new_claim: claim("announcement") }),
+    }));
+    assert.equal(store.rows.items.at(-1).digest_tier, "main");
+    assert.equal(store.rows.claims.length, 1);
+  });
+
+  test("NEWS_GATE_OFF=1 leaves the old routing byte for byte", async () => {
+    process.env.NEWS_GATE_OFF = "1";
+    try {
+      const store = createFakeStore();
+      await huntSubject(DB, SUBJECT, [makeItem()], deps({
+        store, matchItem: async () => ({ verdict: "NO_CLAIM", subject_role: "central", news_for_followers: "no" }),
+      }));
+      assert.equal(store.rows.items.at(-1).digest_tier, "main");
+    } finally {
+      delete process.env.NEWS_GATE_OFF;
+    }
+  });
+});

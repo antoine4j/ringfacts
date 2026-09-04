@@ -254,3 +254,13 @@ describe("bench — the goals.md bucket, and K runs folded into one answer", () 
     assert.deepEqual(itemsFromFile(wrapped, { split: "tune", limit: 1 }).map((i) => i.key), ["a1"]);
   });
 });
+
+describe("bench — the reader's test folds non-events, never events", () => {
+  const domain = { loudTypes: ["announcement", "result"], ignoredTypes: ["lifestyle"] };
+  test("bucketFor: nothing new folds a quote and a no-claim item; a loud claim stays 1", () => {
+    assert.deepEqual(bucketFor({ verdict: "NEW", news_for_followers: "no", new_claim: { type: "quote" } }, "main", domain), { bucket: "3", outcome: "nothing_new" });
+    assert.deepEqual(bucketFor({ verdict: "NO_CLAIM", news_for_followers: "no", subject_role: "central" }, "main", domain), { bucket: "3", outcome: "nothing_new" });
+    assert.deepEqual(bucketFor({ verdict: "NEW", news_for_followers: "no", new_claim: { type: "result" } }, "main", domain), { bucket: "1", outcome: "claim:result" });
+    assert.deepEqual(bucketFor({ verdict: "NO_CLAIM", news_for_followers: "yes", subject_role: "central" }, "main", domain), { bucket: "2", outcome: "main" });
+  });
+});

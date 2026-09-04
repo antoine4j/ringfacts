@@ -72,6 +72,12 @@ ALTER TABLE items ADD COLUMN IF NOT EXISTS digest_tier text;
 -- null = matcher off, matcher failed, or a pre-migration row.
 ALTER TABLE items ADD COLUMN IF NOT EXISTS subject_role text;
 
+-- The matcher's answer to the reader's own test (goals.md): would a follower
+-- learn something new about him — 'yes' / 'no' (2026-09-04). A 'no' folds a
+-- non-event into the mentions archive; stored so every fold is auditable.
+-- null = matcher off, failed, or a pre-migration row.
+ALTER TABLE items ADD COLUMN IF NOT EXISTS news_for_followers text;
+
 -- The feed edition ("en", "es", "uk"…) the item arrived from (2026-08-10).
 -- Live runs never needed it stored — translation happens in the same pass that
 -- fetched the item. The resend path does: an item recovered from a failed send

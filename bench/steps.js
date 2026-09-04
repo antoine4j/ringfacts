@@ -26,6 +26,7 @@ function result(row, fields) {
  *
  *   wrong subject                      -> 3 (held)
  *   NEW claim of a loud type           -> 1 (a career event)
+ *   news_for_followers "no"            -> 3 (folded; a loud claim is exempt)
  *   NEW claim of any other real type   -> 2 (main digest)
  *   NO_CLAIM / UNSURE / ignored type   -> tier: main -> 2, tangential -> 3
  *
@@ -37,11 +38,9 @@ function result(row, fields) {
 export function bucketFor(verdict, tier, domain) {
   if (verdict.verdict === "WRONG_SUBJECT") return { bucket: "3", outcome: "wrong_subject" };
   const type = verdict.verdict === "NEW" ? verdict.new_claim?.type : null;
-  if (type && !domain.ignoredTypes.includes(type)) {
-    return domain.loudTypes.includes(type)
-      ? { bucket: "1", outcome: `claim:${type}` }
-      : { bucket: "2", outcome: `claim:${type}` };
-  }
+  if (type && domain.loudTypes.includes(type)) return { bucket: "1", outcome: `claim:${type}` };
+  if (verdict.news_for_followers === "no") return { bucket: "3", outcome: "nothing_new" };
+  if (type && !domain.ignoredTypes.includes(type)) return { bucket: "2", outcome: `claim:${type}` };
   return tier === "tangential" ? { bucket: "3", outcome: "tangential" } : { bucket: "2", outcome: "main" };
 }
 
@@ -104,7 +103,7 @@ export const STEPS = {
       const { bucket, outcome } = bucketFor(verdict, tier, ctx.domain);
       const want = row.expect?.bucket === undefined || row.expect?.bucket === null ? null : String(row.expect.bucket);
       return result(row, {
-        ...scored(bucket, want), outcome, role: verdict.subject_role ?? null, verdict: verdict.verdict,
+        ...scored(bucket, want), outcome, role: verdict.subject_role ?? null, news: verdict.news_for_followers ?? null, verdict: verdict.verdict,
         claim: verdict.new_claim ? `${verdict.new_claim.type}: ${verdict.new_claim.canonical_text}` : null,
       });
     },

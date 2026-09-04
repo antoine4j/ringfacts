@@ -154,6 +154,7 @@ export function createFakeStore({ items = [], claims = [], claimSources = [] } =
         digest_tier: item.digestTier ?? null,
         subject_role: item.subjectRole ?? null,
         edition: item.edition ?? null,
+        news_for_followers: item.newsForFollowers ?? null,
       };
       rows.items.push(row);
       return row.id;

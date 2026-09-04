@@ -35,6 +35,8 @@ import { fileURLToPath } from "node:url";
 const GROUP_LANGUAGES = new Set(["en", "uk"]);
 
 const DRY_RUN = process.env.DRY_RUN === "1";
+// Read at call time so the run's environment can flip it without a deploy.
+const newsGateOn = () => process.env.NEWS_GATE_OFF !== "1";
 // From the single telegram-chat-ids secret (lib/chat-ids.js explains why).
 // `required: false` lets a dry or offline run import with no chat configured; a
 // present-but-malformed value still throws at startup. ADMIN_CHAT_ID takes the
@@ -402,14 +404,27 @@ async function classifyItem(deps, db, subject, item, vector) {
   }
 
   // NO_CLAIM / UNSURE / NEW from here on: the item itself gets posted.
-  const newClaim = verdict.verdict === "NEW" ? verdict.new_claim : null;
+  const candidateClaim = verdict.verdict === "NEW" ? verdict.new_claim : null;
+  const isLoud = Boolean(candidateClaim && domain.loudTypes.includes(candidateClaim.type));
+
+  // The reader's test (goals.md): would a follower learn something new about
+  // him? A "no" folds a non-event into the mentions archive even when the
+  // matcher minted a quote for it — a quote nobody learns from is not news.
+  // A loud claim (a booking, a result, an injury) is never folded this way:
+  // an event is news whatever the model thinks of the article. Null (matcher
+  // off, failed, or an older answer) changes nothing. NEWS_GATE_OFF=1 is the
+  // kill switch. History: docs/decisions.md#news-for-followers
+  const nothingNew = item.newsForFollowers === "no" && !isLoud && newsGateOn();
+  const newClaim = nothingNew ? null : candidateClaim;
   const isRealClaim = Boolean(newClaim && !domain.ignoredTypes.includes(newClaim.type)); // docs §5
 
   // Digest tier (lib/tier.js): is this article ABOUT the subject, or does it
   // merely sit next to news about them? The matcher's role judgement leads;
   // the mention-count rule is the fallback. Keyed on isRealClaim, not claimId.
   // History: docs/decisions.md#tier-keying
-  item.digestTier = isRealClaim ? "main" : digestTierFor(item, subject.matchNames, item.subjectRole);
+  item.digestTier = isRealClaim ? "main"
+    : nothingNew ? "tangential"
+    : digestTierFor(item, subject.matchNames, item.subjectRole);
 
   // Two speeds of delivery: real news posts now; a tangential mention is
   // queued for the daily mentions digest and never rides the hourly message.
@@ -587,6 +602,7 @@ async function askMatcher(deps, db, subject, item) {
   // Recorded on every matcher-seen item before any branch returns, so the
   // archive stays re-measurable. Null means we never got an answer.
   item.subjectRole = verdict.subject_role ?? null;
+  item.newsForFollowers = verdict.news_for_followers ?? null;
 
   return verdict;
 }
