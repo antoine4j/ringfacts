@@ -27,11 +27,19 @@ names the goal it moves.
    at 7 days. Next lever after this: the grading pass shows `supporting` and
    some `central` items are bucket 3 too, so the reorder alone will not reach
    90% — that is the mention-kind field (§4 usefulness-gradient bullet).
-3b. **Why did the dedup gate miss 8 repeats?** (G3, new 2026-09-04) — the
-   Masvidal quote posted four times (#1, #2, #4, #26), the manager feud three
-   times (#43, #45, #47), three more pairs. Cross-language and same-story
-   different-angle pairs; measure their actual similarities against the 0.80
-   threshold before touching anything (self-improvement §5).
+3b. **Why did the dedup gate miss 8 repeats?** (G3) — **measured 2026-09-04,
+   nothing changed.** Three pairs (#1/#4, #2/#4, #9/#8) are the 2026-08-06
+   bootstrap batch, inserted in the same second with no anchors — history, not
+   a live miss. The five live pairs measure **0.712–0.761** (es/en pairs
+   0.72–0.75; the en pair #45/#43 0.761), all under 0.80, and their recorded
+   nearest neighbours were *other* stories at 0.75–0.80. So headline
+   embeddings do not separate same-story-different-angle pairs from
+   different-story-same-fighter pairs — the 2026-08-06 observation, now with
+   numbers — and lowering the threshold would hold real news (§5). The
+   experiment that settles it, replayable offline over the archive: embed
+   headline + first ~300 chars of body instead of the headline alone, and
+   re-measure the gap between the 5 known repeats and their non-repeat
+   neighbours. Not built.
 4. **Active verification via web search** (G4, and G2's stale-event clause) —
    concept discussed 2026-09-03/04, no design yet. On a new fight claim, search
    for it and sort results by domain trust: official domain confirms,
