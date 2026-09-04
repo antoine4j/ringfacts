@@ -272,6 +272,14 @@ use the test keys in `bench/.env.bench`, so Anton can read the production
 cost apart from the development cost in each provider's console. Never point
 a local run at the production keys.
 
+**The Anthropic spend cap is one number for every key, test and production
+alike** (Anton, 2026-09-04, after a bench run hit it). A test-key run that
+exhausts the cap silences the production matcher until the month rolls over
+or Anton raises the limit. So: before a paid bench run, know roughly what
+the month has spent (the bench prints each run's tokens; the console has the
+total); leave at least a third of the cap for production; and if a run fails
+on the usage-limit error, stop everything paid and tell Anton at once.
+
 **Telegram: the real group is off limits from a session.** Posting there is
 what the deployed job does; a session verifies with `DRY_RUN=1` or the bench
 group (`BENCH_CHAT_ID`). Anything that changes *what kind of thing* the group
