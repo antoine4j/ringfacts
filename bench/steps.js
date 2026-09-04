@@ -81,7 +81,7 @@ export const STEPS = {
       if (!subject) return result(row, { error: `no subject matches "${row.subject}"` });
       const item = { ...toPipelineItem(row), body: row.body ?? null };
       const candidates = ctx.candidatesFor ? await ctx.candidatesFor(subject) : [];
-      const verdict = await ctx.matchItem({ subject: subject.name, item, candidates, confusables: subject.confusables ?? null });
+      const verdict = await ctx.matchItem({ subject: subject.name, item, candidates, confusables: subject.confusables ?? null, subjectNames: subject.matchNames });
       const got = [verdict.verdict, verdict.new_claim?.type ?? "-", verdict.subject_role ?? "-"].join("/");
       const want = row.expect
         ? [row.expect.verdict ?? "-", row.expect.claim_type ?? "-", row.expect.subject_role ?? "-"].join("/")
@@ -99,11 +99,14 @@ export const STEPS = {
       if (!subject) return result(row, { error: `no subject matches "${row.subject}"` });
       const item = { ...toPipelineItem(row), body: row.body ?? null };
       const candidates = ctx.candidatesFor ? await ctx.candidatesFor(subject) : [];
-      const verdict = await ctx.matchItem({ subject: subject.name, item, candidates, confusables: subject.confusables ?? null });
+      const verdict = await ctx.matchItem({ subject: subject.name, item, candidates, confusables: subject.confusables ?? null, subjectNames: subject.matchNames });
       const tier = ctx.digestTierFor({ title: item.title, body: row.body ?? null }, subject.matchNames, verdict.subject_role ?? null);
       const { bucket, outcome } = bucketFor(verdict, tier, ctx.domain);
       const want = row.expect?.bucket === undefined || row.expect?.bucket === null ? null : String(row.expect.bucket);
-      return result(row, { ...scored(bucket, want), outcome, role: verdict.subject_role ?? null, verdict: verdict.verdict });
+      return result(row, {
+        ...scored(bucket, want), outcome, role: verdict.subject_role ?? null, verdict: verdict.verdict,
+        claim: verdict.new_claim ? `${verdict.new_claim.type}: ${verdict.new_claim.canonical_text}` : null,
+      });
     },
   },
 
