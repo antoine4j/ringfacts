@@ -124,6 +124,25 @@ Two rules for scoring:
 2. **Keep the holdout closed.** Its only value is having never been tuned
    against. Run it at the end of a change, not during.
 
+## Labels that Anton's grading overruled
+
+The 2026-08-11 labels were Claude's reading; the 2026-09-04 grading pass is
+Anton's, and where they disagree Anton's bucket is the truth (goals.md).
+Two labels here now sit on the wrong side of his line and are left as they
+are, so the old files stay a stable regression set — but a run that "misses"
+them is not a regression:
+
+- `a30` (Abdelaziz predicts a KO of Topuria among four fights) is labelled
+  `NEW / prediction / main`; Anton graded it **bucket 3** — the subject is one
+  name in someone else's prediction list.
+- `a67` (Abdelaziz calls out Topuria for Nurmagomedov's debut) is labelled
+  `negotiation`; Anton's rule makes a callout a **quote** (bucket 2), with
+  `negotiation` reserved for the promotion or both camps working on a fight.
+
+The graded month (`graded-2026-09.json`) is the corpus to tune against now;
+these 48 items remain the check that announcements, duplicates and
+wrong-subject cases still behave.
+
 ## Known gaps
 
 Honest about what 48 items do not cover:
