@@ -53,6 +53,12 @@ archive row (`items.id`), where the embedding, tier, and body live.
 - **Effect**: #21 (Usman's camp asks for Topuria as a first fight) goes back to 2. Precision for the window becomes 35 / 103 = 34%. #50 (Prates warns him off welterweight) and #256 (Tsarukyan picks his next opponent) stay 3.
 - **Also decided**: the mentions digest is held back — Anton does not want tangential articles in the chat at all; a single link to an aggregated page is the only shape he would consider (TODO).
 
+## 📋 2026-09-05 — The all-articles review: a reply to a callout is about him
+
+- **Comment** (Anton, in chat, reviewing the stories in docs/grading/2026-09-05-all-articles.md): "I think both #34 and #43 should be bucket 2, because one is reaction to another."
+- **Rule**: Abdelaziz asking for Topuria as Usman's first fight (#34) is a callout at him → **2** (the 09-04 evening rule). Kawa, Topuria's manager, firing back at him (#43) is the reaction to that callout → **2** as well. Reverses the 09-04 morning ruling on #43 ("a feud about him is still a feud between others"); the worked example in goals.md is updated.
+- **Also from the same review**: the group saw the Abdelaziz–Kawa exchange nine times over Aug 7–11 as separate posts; as stories it is two roots (#34, #43) with 34 members between them, of which the group should have seen two. Stories are named by their root (TODO 3f).
+
 ## 2026-09-04 evening — one story, three claims (messages 200 and 201)
 
 Items 620, 626 and 627 (Topuria's video letter to his son after the Gaethje loss)

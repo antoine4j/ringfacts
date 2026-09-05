@@ -85,7 +85,7 @@ Claude's judgment. Each borderline verdict becomes a worked example here.
 | #21 | Usman's camp asks for Topuria as a first fight | 2 | A callout — *I want to fight him* — is about him (Anton, evening ruling). |
 | #50 | Prates warns him off a welterweight move | 3 | Advice or a callout aimed at him is not information about him. |
 | #256 | Tsarukyan names his next opponent | 3 | A rival saying *he should fight someone else* is not about him. The champion or the champion's coach saying it would be 2, within limits. |
-| #43 | Two managers argue over criticism of him | 3 | A feud about him is still a feud between others. |
+| #43 | His manager fires back at the manager who called him out | 2 | A reaction to a callout at him is about him, like the callout itself (Anton, 2026-09-05, reversing the 09-04 ruling of 3). |
 | #318, #340 | His trainers on vision drills and muscle | 3 | Training trivia; compare #547. |
 | #194, #226 | Makhachev on his loss and the face-off | 2 | The champion assessing him is substance about him. |
 | #279 | Mendez: he needs several wins before Makhachev | 2 | A top coach on his path. |
@@ -94,9 +94,9 @@ Claude's judgment. Each borderline verdict becomes a worked example here.
 | #547 | His boxing coach on what sets him apart | 2 | Breaking down his game. |
 
 Reading of the line (confirmed by Anton the same evening): **a callout at
-him → 2; others steering him elsewhere → 3, unless it is an authority such
-as the champion or his coach → 2 within limits; others assessing him → 2;
-him on himself → 2 when substantial.**
+him → 2, and his camp's reply to it → 2; others steering him elsewhere → 3,
+unless it is an authority such as the champion or his coach → 2 within
+limits; others assessing him → 2; him on himself → 2 when substantial.**
 
 **Possible fourth bucket, "lifestyle"** (Anton, 2026-09-04, on #366 —
 Donchenko's fishing and breakdance hobbies): personal-life updates that are
