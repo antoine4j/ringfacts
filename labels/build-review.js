@@ -158,6 +158,11 @@ function linkRefs(hint) {
   return withItems.replace(/"(fine|missed|junk|dup|old|wrong|loud|other)"/g, `"[$1](${CODES_ANCHOR})"`);
 }
 
+/** Escapes pipes so a verdict fits one table cell. */
+function escapeInline(text) {
+  return text.replaceAll("|", "\\|");
+}
+
 /** A headline cut to 70 characters, pipes escaped for a table cell. */
 function shortTitle(title) {
   const cut = title.length > 70 ? title.slice(0, 67) + "…" : title;
@@ -221,7 +226,7 @@ for (const id of ids) {
   const second = blind.get(id);
   const story = storyLine(id, stories, postedIds);
   const sure = isGraded ? isPlainGraded(label) : item.posted ? false : isSure(item.group, label, second, postedIds);
-  if (!sure) forAnton.push({ id, url: item.url, title: item.title, hint: hintFor(item, label, second) + (story ? `; ${story}` : "") });
+  if (!sure) forAnton.push({ id, url: item.url, title: item.title, hint: hintFor(item, label, second) + (story ? `; ${story}` : ""), verdict: antonCells.get(id) ?? "" });
 
   // Group tally: confirmed / overturned / unsure.
   const group = item.group;
@@ -289,11 +294,14 @@ Rows with no usable body (page furniture or nothing), per outlet, top 15:
 |---|---|
 ${bodyLines.join("\n")}
 
-## For Anton — ${forAnton.length} rows
+## For Anton — ${forAnton.length} rows, ${forAnton.filter((row) => row.verdict).length} done
 
-| # | article | why it needs you |
-|---|---|---|
-${forAnton.map((row) => `| #${row.id} | [${shortTitle(row.title)}](${row.url}) | ${linkRefs(row.hint)} |`).join("\n")}
+A row is done when "your verdict" is filled (from the Anton column of the
+main table). Blank = still waiting for you.
+
+| # | article | why it needs you | your verdict |
+|---|---|---|---|
+${forAnton.map((row) => `| #${row.id} | [${shortTitle(row.title)}](${row.url}) | ${linkRefs(row.hint)} | ${row.verdict ? "✅ " + escapeInline(row.verdict) : ""} |`).join("\n")}
 
 ## Items
 
