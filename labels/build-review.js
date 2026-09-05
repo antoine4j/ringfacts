@@ -286,7 +286,7 @@ defined in one place, [docs/goals.md, "The reason codes"](../goals.md#the-reason
 ${tallyLines.join("\n")}
 
 **Held articles the reviewer thinks were real news (bucket 1 or 2):** ${misses.length}
-${misses.map((id) => `#${id}`).join(", ")}
+${misses.map((id) => `[#${id}](${inputs.get(id).url})`).join(", ")}
 
 Rows with no usable body (page furniture or nothing), per outlet, top 15:
 
