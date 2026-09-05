@@ -120,6 +120,23 @@ function hintFor(item, label, second) {
   return "no second reading";
 }
 
+const CODES_ANCHOR = "../goals.md#the-reason-codes--why-an-article-got-its-bucket";
+
+/**
+ * Turns every "#N" in a hint into a link to that article, and every quoted
+ * reason code into a link to its definition.
+ *
+ * @param {string} hint
+ * @returns {string}
+ */
+function linkRefs(hint) {
+  const withItems = hint.replace(/#(\d+)/g, (match, id) => {
+    const item = inputs.get(Number(id));
+    return item ? `[#${id}](${item.url})` : match;
+  });
+  return withItems.replace(/"(fine|missed|junk|dup|old|wrong|loud|other)"/g, `"[$1](${CODES_ANCHOR})"`);
+}
+
 /** A headline cut to 70 characters, pipes escaped for a table cell. */
 function shortTitle(title) {
   const cut = title.length > 70 ? title.slice(0, 67) + "…" : title;
@@ -229,7 +246,7 @@ ${bodyLines.join("\n")}
 
 | # | article | why it needs you |
 |---|---|---|
-${forAnton.map((row) => `| #${row.id} | [${shortTitle(row.title)}](${row.url}) | ${row.hint} |`).join("\n")}
+${forAnton.map((row) => `| #${row.id} | [${shortTitle(row.title)}](${row.url}) | ${linkRefs(row.hint)} |`).join("\n")}
 
 ## Items
 
