@@ -226,6 +226,16 @@ for (const [id, cell] of antonCells) {
 }
 const stories = buildStories(forStories);
 
+// The bucket each story carries, read from its root: Anton's word first.
+const rootBucket = new Map();
+for (const root of stories.membersOf.keys()) {
+  const label = standing.get(root);
+  if (!label) continue;
+  const cell = antonCells.get(root);
+  const verdict = cell ? readAntonCell(cell, { ...label, posted: inputs.get(root).posted }) : null;
+  rootBucket.set(root, verdict ? verdict.bucket : label.bucket);
+}
+
 // Pass two: one sheet row per item, in id order; the numbers table is
 // tallied as we go.
 const rows = [];
@@ -241,7 +251,7 @@ for (const id of ids) {
   const machine = machineSaid(item);
   const isGraded = graded.has(id);
   const second = blind.get(id);
-  const story = storyLine(id, stories, postedIds);
+  const story = storyLine(id, stories, postedIds, rootBucket);
   const sure = isGraded ? isPlainGraded(label) : item.posted ? false : isSure(item.group, label, second, postedIds);
   if (!sure) forAnton.push({ id, url: item.url, title: item.title, hint: hintFor(item, label, second) + (story ? `; ${story}` : ""), verdict: antonCells.get(id) ?? "", stored: storedAs(id, item, label, antonCells.get(id), stories) });
 
