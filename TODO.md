@@ -254,7 +254,9 @@ names the goal it moves.
      junk swallowed by junk is not counted as a cost. **Anton's call:
      switch to all anchors at 0.85 now, and build the 0.78–0.85 band
      question for the matcher ("same fact, or a reaction to it?") as the
-     next step.** Not changed.
+     next step.** Not changed. The full menu of options, incremental to
+     architectural, with cost estimates and a recommendation:
+     [docs/story-matching-options.md](docs/story-matching-options.md).
 3g. **Do not post Eurosport links** (G2) — *Anton, 2026-09-05: "we should
    not post Eurosport to chat coz looks like we can't read it from the US."*
    eurosport.es geoblocks US readers (Anton hit it on #47, #82, #86, #121,
