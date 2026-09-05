@@ -48,7 +48,8 @@ export function resolveRoot(id, labels) {
 }
 
 /**
- * One line describing an article's story for the review sheet.
+ * One line describing an article's story for the review sheet: every
+ * member, root first, then which of them the group saw.
  *
  * @param {number} id
  * @param {{ rootOf: Map<number, number>, membersOf: Map<number, number[]> }} stories
@@ -58,12 +59,9 @@ export function resolveRoot(id, labels) {
 export function storyLine(id, stories, postedIds) {
   const root = stories.rootOf.get(id) ?? (stories.membersOf.has(id) ? id : null);
   if (root === null) return "";
-  const members = stories.membersOf.get(root) ?? [];
-  const all = [root, ...members];
-  const others = members.filter((member) => member !== id);
+  const all = [root, ...(stories.membersOf.get(root) ?? [])];
   const posted = all.filter((member) => postedIds.has(member));
-  const head = root === id ? `root of a story` : `same story as #${root}`;
-  const alsoPart = others.length ? ` — also ${others.map((member) => `#${member}`).join(", ")}` : "";
-  const postedPart = posted.length ? ` (posted: ${posted.map((member) => `#${member}`).join(", ")})` : " (none posted)";
-  return `${head}${alsoPart}${postedPart}`;
+  const list = all.map((member) => `#${member}`).join(", ");
+  const postedPart = posted.length ? `posted: ${posted.map((member) => `#${member}`).join(", ")}` : "none posted";
+  return `story: ${list} (root #${root}; ${postedPart})`;
 }

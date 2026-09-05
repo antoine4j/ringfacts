@@ -79,12 +79,12 @@ describe("storyLine", () => {
 
   test("for member 57, describes as same story with members and posted filter", () => {
     const result = storyLine(57, stories, postedIds);
-    assert.equal(result, "same story as #30 — also #34, #46, #49 (posted: #30, #46)");
+    assert.equal(result, "story: #30, #34, #46, #49, #57 (root #30; posted: #30, #46)");
   });
 
   test("for root 30, describes as root of story with all members and posted filter", () => {
     const result = storyLine(30, stories, postedIds);
-    assert.equal(result, "root of a story — also #34, #46, #49, #57 (posted: #30, #46)");
+    assert.equal(result, "story: #30, #34, #46, #49, #57 (root #30; posted: #30, #46)");
   });
 
   test("for non-story article 99, returns empty string", () => {
@@ -94,12 +94,12 @@ describe("storyLine", () => {
 
   test("storyLine with no posted ids shows (none posted)", () => {
     const result = storyLine(57, stories, new Set());
-    assert.equal(result, "same story as #30 — also #34, #46, #49 (none posted)");
+    assert.equal(result, "story: #30, #34, #46, #49, #57 (root #30; none posted)");
   });
 
   test("storyLine for member with all articles posted", () => {
     const allPosted = new Set([30, 34, 46, 49, 57]);
     const result = storyLine(57, stories, allPosted);
-    assert.equal(result, "same story as #30 — also #34, #46, #49 (posted: #30, #34, #46, #49, #57)");
+    assert.equal(result, "story: #30, #34, #46, #49, #57 (root #30; posted: #30, #34, #46, #49, #57)");
   });
 });
