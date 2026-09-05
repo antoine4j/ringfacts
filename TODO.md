@@ -230,6 +230,31 @@ names the goal it moves.
      labels/export of memberships → bench step `story` (offline, one
      SELECT for embeddings, no LLM) → the table in front of Anton →
      then the gate.
+   - **MEASURED 2026-09-05** ([docs/grading/2026-09-05-story-gate.md](docs/grading/2026-09-05-story-gate.md);
+     `labels/export-stories.js` → `labels/measure-story-gate.js`, pure
+     replay in `labels/story-gate.js`, 674 articles, 341 labelled repeats,
+     333 first arrivals, 7-day window, cascade included). Three findings.
+     **(1) The root guard does not separate.** A genuinely new story that
+     resembles an old one sits as close to that story's root (median
+     0.825) as a true repeat does (median 0.817); T_root 0.55–0.70 changes
+     the counts by a handful either way. The 19 useful lookalikes are
+     *connected* stories — a reply to a callout, a coach answering a
+     coach, an analysis after an analysis — and no embedding threshold
+     tells "same fact" from "same topic". The guard belongs in the
+     matcher, as anticipated. **(2) Today's rule posts half the repeats
+     again.** Posted-only anchors at 0.80 hold 173 of 341 repeats and post
+     168 as new, swallowing 7 useful stories. **(3) All anchors at 0.85
+     beats it on both counts**, cascade included: holds 247 (72%), posts
+     94 again, swallows 5 useful stories. 0.82 holds 292 and swallows 13;
+     0.80 holds 302 and swallows 19. Both knobs are env-overridable today
+     (`DUP_ANCHORS_ALL=1`, `SEMANTIC_DUP_THRESHOLD=0.85`), so the first
+     step is a config change, not a deploy. Caveats: the labels for
+     bucket-3 chains were weak — three garbage-bag stories (#308, #16,
+     #569) were split by headline before measuring, and more may exist;
+     junk swallowed by junk is not counted as a cost. **Anton's call:
+     switch to all anchors at 0.85 now, and build the 0.78–0.85 band
+     question for the matcher ("same fact, or a reaction to it?") as the
+     next step.** Not changed.
 3g. **Do not post Eurosport links** (G2) — *Anton, 2026-09-05: "we should
    not post Eurosport to chat coz looks like we can't read it from the US."*
    eurosport.es geoblocks US readers (Anton hit it on #47, #82, #86, #121,
