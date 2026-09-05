@@ -158,6 +158,23 @@ function linkRefs(hint) {
   return withItems.replace(/"(fine|missed|junk|dup|old|wrong|loud|other)"/g, `"[$1](${CODES_ANCHOR})"`);
 }
 
+/**
+ * What Anton's cell will be stored as: bucket, reason and root.
+ *
+ * @param {number} id
+ * @param {object} item
+ * @param {object} label  The label shown in the row.
+ * @param {string|undefined} cell
+ * @param {{ rootOf: Map<number, number> }} stories
+ * @returns {string}  "" when the cell is blank.
+ */
+function storedAs(id, item, label, cell, stories) {
+  if (!cell) return "";
+  const verdict = readAntonCell(cell, { ...label, posted: item.posted });
+  const root = verdict.reason === "dup" ? (stories.rootOf.get(id) ?? verdict.dup_of) : null;
+  return `**${verdict.bucket}** ${verdict.reason}${root ? ` of #${root}` : ""}`;
+}
+
 /** Escapes pipes so a verdict fits one table cell. */
 function escapeInline(text) {
   return text.replaceAll("|", "\\|");
@@ -226,7 +243,7 @@ for (const id of ids) {
   const second = blind.get(id);
   const story = storyLine(id, stories, postedIds);
   const sure = isGraded ? isPlainGraded(label) : item.posted ? false : isSure(item.group, label, second, postedIds);
-  if (!sure) forAnton.push({ id, url: item.url, title: item.title, hint: hintFor(item, label, second) + (story ? `; ${story}` : ""), verdict: antonCells.get(id) ?? "" });
+  if (!sure) forAnton.push({ id, url: item.url, title: item.title, hint: hintFor(item, label, second) + (story ? `; ${story}` : ""), verdict: antonCells.get(id) ?? "", stored: storedAs(id, item, label, antonCells.get(id), stories) });
 
   // Group tally: confirmed / overturned / unsure.
   const group = item.group;
@@ -297,11 +314,13 @@ ${bodyLines.join("\n")}
 ## For Anton — ${forAnton.length} rows, ${forAnton.filter((row) => row.verdict).length} done
 
 A row is done when "your verdict" is filled (from the Anton column of the
-main table). Blank = still waiting for you.
+main table). Blank = still waiting for you. "stored as" is how the code
+reads your words: bucket, reason code, and the story root for a dup —
+check it says what you meant.
 
-| # | article | why it needs you | your verdict |
-|---|---|---|---|
-${forAnton.map((row) => `| #${row.id} | [${shortTitle(row.title)}](${row.url}) | ${linkRefs(row.hint)} | ${row.verdict ? "✅ " + escapeInline(row.verdict) : ""} |`).join("\n")}
+| # | article | why it needs you | your verdict | stored as |
+|---|---|---|---|---|
+${forAnton.map((row) => `| #${row.id} | [${shortTitle(row.title)}](${row.url}) | ${linkRefs(row.hint)} | ${row.verdict ? "✅ " + escapeInline(row.verdict) : ""} | ${row.stored} |`).join("\n")}
 
 ## Items
 
