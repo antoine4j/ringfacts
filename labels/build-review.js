@@ -132,7 +132,7 @@ function currentLabel(id, byPriority) {
  * @returns {string}
  */
 function hintFor(item, label, second) {
-  if (item.posted && label.author === "user") return `your note reads as "${label.reason}"${label.dup_of ? ` of #${label.dup_of}` : ""} — confirm the code`;
+  if (item.posted && label.author === "user") return `your 09-04 note ("${label.why}") reads as "${label.reason}" — confirm the code`;
   if (item.posted) return `posted; reviewer says ${label.bucket} ${label.reason}`;
   if (label.bucket !== 3) return `held, but looks like real news (bucket ${label.bucket})`;
   if (label === second) return "second reader overturned the first";
