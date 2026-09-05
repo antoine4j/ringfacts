@@ -98,10 +98,12 @@ him → 2, and his camp's reply to it → 2; others steering him elsewhere → 3
 unless it is an authority such as the champion or his coach → 2 within
 limits; others assessing him → 2; him on himself → 2 when substantial.**
 
-**Possible fourth bucket, "lifestyle"** (Anton, 2026-09-04, on #366 —
-Donchenko's fishing and breakdance hobbies): personal-life updates that are
-not junk but do not belong in the main digest. Not a rule yet; the next pass
-should count how many bucket-3 items are really this.
+**Lifestyle stories are bucket 2** (Anton, 2026-09-05, on #208 — Donchenko
+calling the grandmother who opposed his career — and #366, his fishing and
+breakdance hobbies, reversing the 09-04 ruling of 3): a personal-life story
+about a watched fighter is not career news, but it is about him and the
+group wants it. "Technically not about the career, but I love such stories
+and want them in 2 for now." No separate lifestyle bucket for now.
 
 ### The reason codes — why an article got its bucket
 
