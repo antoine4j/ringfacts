@@ -230,6 +230,15 @@ names the goal it moves.
      labels/export of memberships → bench step `story` (offline, one
      SELECT for embeddings, no LLM) → the table in front of Anton →
      then the gate.
+3g. **Do not post Eurosport links** (G2) — *Anton, 2026-09-05: "we should
+   not post Eurosport to chat coz looks like we can't read it from the US."*
+   eurosport.es geoblocks US readers (Anton hit it on #47, #82, #86, #121,
+   #676); our fetcher gets no body either (17 headline-only rows in the
+   all-articles sheet). Shape to decide: when a story's root is Eurosport,
+   post another member's link instead (the story rule from 3f makes that
+   easy); if Eurosport is the only outlet, hold or post title-only. Not a
+   blocklist for judging — the article still counts as news, only the link
+   changes. Not built; Anton's call on the shape.
 4. **Active verification via web search** (G4, and G2's stale-event clause) —
    concept discussed 2026-09-03/04, no design yet. On a new fight claim, search
    for it and sort results by domain trust: official domain confirms,
