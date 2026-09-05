@@ -172,7 +172,8 @@ function storedAs(id, item, label, cell, stories) {
   if (!cell) return "";
   const verdict = readAntonCell(cell, { ...label, posted: item.posted });
   const root = verdict.reason === "dup" ? (stories.rootOf.get(id) ?? verdict.dup_of) : null;
-  return `**${verdict.bucket}** ${verdict.reason}${root ? ` of #${root}` : ""}`;
+  const rootPart = root ? ` of #${root}${rootBucket.has(root) ? ` (bucket ${rootBucket.get(root)})` : ""}` : "";
+  return `**${verdict.bucket}** ${verdict.reason}${rootPart}`;
 }
 
 /** Escapes pipes so a verdict fits one table cell. */
