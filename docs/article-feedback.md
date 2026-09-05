@@ -58,6 +58,7 @@ archive row (`items.id`), where the embedding, tier, and body live.
 - **Comment** (Anton, in chat, reviewing the stories in docs/grading/2026-09-05-all-articles.md): "I think both #34 and #43 should be bucket 2, because one is reaction to another."
 - **Rule**: Abdelaziz asking for Topuria as Usman's first fight (#34) is a callout at him → **2** (the 09-04 evening rule). Kawa, Topuria's manager, firing back at him (#43) is the reaction to that callout → **2** as well. Reverses the 09-04 morning ruling on #43 ("a feud about him is still a feud between others"); the worked example in goals.md is updated.
 - **Also from the same review**: the group saw the Abdelaziz–Kawa exchange nine times over Aug 7–11 as separate posts; as stories it is two roots (#34, #43) with 34 members between them, of which the group should have seen two. Stories are named by their root (TODO 3f).
+- **Lifestyle, later the same day**: on #208 (Donchenko phoning the grandmother who opposed his career, after his win) Anton: "technically they are not about career. So it should be 3, but I like it and want it in 2 for now." Then: "Bring #366 to 2" (the fishing and breakdance piece, graded 3 on 09-04). **Rule**: a personal-life story about a watched fighter is bucket **2**; the "possible lifestyle bucket" note in goals.md becomes this ruling.
 
 ## 2026-09-04 evening — one story, three claims (messages 200 and 201)
 
