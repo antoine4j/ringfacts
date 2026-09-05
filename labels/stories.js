@@ -54,14 +54,16 @@ export function resolveRoot(id, labels) {
  * @param {number} id
  * @param {{ rootOf: Map<number, number>, membersOf: Map<number, number[]> }} stories
  * @param {Set<number>} postedIds
+ * @param {Map<number, number>} [bucketOf]  Root id -> its bucket, when known.
  * @returns {string}  "" when the article belongs to no story.
  */
-export function storyLine(id, stories, postedIds) {
+export function storyLine(id, stories, postedIds, bucketOf = new Map()) {
   const root = stories.rootOf.get(id) ?? (stories.membersOf.has(id) ? id : null);
   if (root === null) return "";
   const all = [root, ...(stories.membersOf.get(root) ?? [])];
   const posted = all.filter((member) => postedIds.has(member));
   const list = all.map((member) => `#${member}`).join(", ");
   const postedPart = posted.length ? `posted: ${posted.map((member) => `#${member}`).join(", ")}` : "none posted";
-  return `story: ${list} (root #${root}; ${postedPart})`;
+  const bucketPart = bucketOf.has(root) ? `, bucket ${bucketOf.get(root)}` : "";
+  return `story: ${list} (root #${root}${bucketPart}; ${postedPart})`;
 }
