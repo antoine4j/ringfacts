@@ -290,7 +290,7 @@ for (const id of ids) {
   rows.push(formatSheetRow({
     id, url: item.url, date: shortDate(item.published_at), fighter: lastName(item.fighter),
     source: item.source, machine, bucket: label.bucket, author: label.author,
-    reason: label.reason, dup_of: stories.rootOf.get(id) ?? label.dup_of, dupOfBucket: rootBucket.get(stories.rootOf.get(id)), why: story ? `${label.why} [${story}]` : label.why, anton: antonCells.get(id) ?? (sure ? AS_GRADED : ""),
+    reason: label.reason, dup_of: stories.rootOf.get(id) ?? (forStories.get(id)?.reason === "dup" ? label.dup_of : null), dupOfBucket: rootBucket.get(stories.rootOf.get(id)), why: story ? `${label.why} [${story}]` : label.why, anton: antonCells.get(id) ?? (sure ? AS_GRADED : ""),
   }));
 }
 
