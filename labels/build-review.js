@@ -10,12 +10,14 @@ import { parseGradingRow, finalBucket } from "../corpus/graded.js";
 import { deriveReason } from "./derive-reason.js";
 import { formatSheetRow, machineSaid } from "./sheet.js";
 import { overturns } from "./doubts.js";
+import { isSure, isPlainGraded, labelsAgree } from "./certainty.js";
 
 const INPUT_DIR = "tmp/labels/input";
 const OUTPUT_DIR = "tmp/labels/output";
 const GRADING_DOC = "docs/grading/2026-09-04-posted-30d.md";
 const SHEET = "docs/grading/2026-09-05-all-articles.md";
-const AS_GRADED = "as graded — check reason";
+const AS_GRADED = "as graded";
+const BLIND_DIRS = [join(OUTPUT_DIR, "blind"), "tmp/labels/audit"];
 
 /**
  * Loads every export batch, keyed by item id, with its group name.
@@ -45,6 +47,24 @@ function loadLabels(author) {
   for (const name of readdirSync(dir)) {
     if (!name.endsWith(".json")) continue;
     for (const row of JSON.parse(readFileSync(join(dir, name), "utf8"))) labels.set(row.id, { ...row, author });
+  }
+  return labels;
+}
+
+/**
+ * Independent second readings (blind Sonnet batches and the audit sample),
+ * keyed by item id.
+ *
+ * @returns {Map<number, object>}
+ */
+function loadBlind() {
+  const labels = new Map();
+  for (const dir of BLIND_DIRS) {
+    if (!existsSync(dir)) continue;
+    for (const name of readdirSync(dir)) {
+      if (!/^(blind-\d+|sample-50-audit)\.json$/.test(name)) continue;
+      for (const row of JSON.parse(readFileSync(join(dir, name), "utf8"))) labels.set(row.id, { ...row, author: "sonnet" });
+    }
   }
   return labels;
 }
@@ -82,6 +102,24 @@ function currentLabel(id, byPriority) {
   return null;
 }
 
+/**
+ * One short line saying why a row needs Anton.
+ *
+ * @param {object} item
+ * @param {object} label
+ * @param {object|null} second
+ * @returns {string}
+ */
+function hintFor(item, label, second) {
+  if (item.posted && label.author === "user") return `your note reads as "${label.reason}"${label.dup_of ? ` of #${label.dup_of}` : ""} — confirm the code`;
+  if (item.posted) return `posted; reviewer says ${label.bucket} ${label.reason}`;
+  if (label.bucket !== 3) return `held, but looks like real news (bucket ${label.bucket})`;
+  if (label === second) return "second reader overturned the first";
+  if (label.confidence === "low" || second?.confidence === "low") return "a reader was unsure";
+  if (label.author !== "haiku") return "re-read after a disagreement";
+  return "no second reading";
+}
+
 /** Formats an ISO timestamp as MM-DD. */
 function shortDate(iso) {
   return String(iso).slice(5, 10);
@@ -95,20 +133,30 @@ function lastName(fullName) {
 const inputs = loadInputs();
 const graded = loadGraded();
 const byPriority = [loadLabels("claude"), loadLabels("sonnet"), loadLabels("haiku")];
+const blind = loadBlind();
+const postedIds = new Set([...inputs.values()].filter((item) => item.posted).map((item) => item.id));
 
 // One sheet row per item, in id order; the numbers table is tallied as we go.
 const ids = [...inputs.keys()].sort((a, b) => a - b);
 const rows = [];
+const forAnton = [];
 const tally = {};
 const misses = [];
 const bodyQuality = {};
 let unlabelled = 0;
 for (const id of ids) {
   const item = inputs.get(id);
-  const label = graded.get(id) ?? currentLabel(id, byPriority);
+  let label = graded.get(id) ?? currentLabel(id, byPriority);
   if (!label) { unlabelled += 1; continue; }
   const machine = machineSaid(item);
   const isGraded = graded.has(id);
+
+  // A blind second reading that disagrees with a first pass wins (Sonnet
+  // over Haiku) and marks the row for Anton; one that agrees makes it sure.
+  const second = blind.get(id);
+  if (second && label.author === "haiku" && !labelsAgree(label, second, postedIds)) label = second;
+  const sure = isGraded ? isPlainGraded(label) : item.posted ? false : isSure(item.group, label, second, postedIds);
+  if (!sure) forAnton.push({ id, hint: hintFor(item, label, second) });
 
   // Group tally: confirmed / overturned / unsure.
   const group = item.group;
@@ -126,7 +174,7 @@ for (const id of ids) {
   rows.push(formatSheetRow({
     id, url: item.url, date: shortDate(item.published_at), fighter: lastName(item.fighter),
     source: item.source, machine, bucket: label.bucket, author: label.author,
-    reason: label.reason, dup_of: label.dup_of, why: label.why, anton: isGraded ? AS_GRADED : "",
+    reason: label.reason, dup_of: label.dup_of, why: label.why, anton: sure ? AS_GRADED : "",
   }));
 }
 
@@ -141,13 +189,17 @@ the pipeline did; **Claude** is the reviewer's bucket (Haiku first pass, marked
 \`(sonnet)\` where Sonnet re-read a doubt, \`(claude)\` where Claude ruled);
 **reason** is the label code that goes into the \`feedback\` table; **why** is
 the reviewer's one line. The 103 posts Anton graded on 2026-09-04 carry his
-bucket and his note verbatim, with the reason code derived from the note —
-those rows say **"${AS_GRADED}"** in the Anton column.
+bucket and his note verbatim, with the reason code derived from the note.
 
-**Anton's column**: leave "as graded" to accept the row; otherwise write the
-correction — a bucket digit, and/or a reason code, and/or "dup of #N" — with
-any words you like. Nothing is written to the database until this file is
-done.
+**Anton's column** is pre-filled **"as graded"** where two independent
+readers agreed the article is not for the group (or the wrong-subject hold
+was confirmed), and where a graded post's derived code is plain. It is
+**blank** where a reader was unsure, two readers disagreed, a held article
+looks like real news, or a derived code needs a look — those rows are listed
+under "For Anton" below. Fill each blank with "as graded" or the correction:
+a bucket digit, and/or a reason code, and/or "dup of #N", any words around
+it. A row left blank gets no user label. Nothing is written to the database
+until this file is done.
 
 Reason codes: fine · missed · junk · dup · old · wrong · loud · other —
 defined in one place, [docs/goals.md, "The reason codes"](../goals.md#the-reason-codes--why-an-article-got-its-bucket).
@@ -167,6 +219,12 @@ Rows with no usable body (page furniture or nothing), per outlet, top 15:
 |---|---|
 ${bodyLines.join("\n")}
 
+## For Anton — ${forAnton.length} rows
+
+| # | why it needs you |
+|---|---|
+${forAnton.map((row) => `| #${row.id} | ${row.hint} |`).join("\n")}
+
 ## Items
 
 | # | date | fighter | source | machine said | Claude | reason | dup of | why | Anton |
@@ -174,4 +232,4 @@ ${bodyLines.join("\n")}
 ${rows.join("\n")}
 `;
 writeFileSync(SHEET, doc);
-console.error(`Wrote ${rows.length} rows to ${SHEET}; unlabelled: ${unlabelled}; misses: ${misses.length}`);
+console.error(`Wrote ${rows.length} rows to ${SHEET}; unlabelled: ${unlabelled}; misses: ${misses.length}; for Anton: ${forAnton.length}`);
