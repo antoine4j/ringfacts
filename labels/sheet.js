@@ -9,12 +9,13 @@ const AUTHORS = ["haiku", "sonnet", "claude", "user"];
  * Shape: `| [#16](url) | 08-07 | Donchenko | sport24.ua | posted | **1** | fine | | why | Anton |`
  *
  * @param {object} row  { id, url, date, fighter, source, machine, bucket,
- *   author, reason, dup_of, why, anton }
+ *   author, reason, dup_of, dupOfBucket?, why, anton }  dupOfBucket, when
+ *   given, shows the root's bucket next to its id.
  * @returns {string}
  */
 export function formatSheetRow(row) {
   const bucket = row.author === "haiku" ? `**${row.bucket}**` : `**${row.bucket}** (${row.author})`;
-  const dupOf = row.dup_of ? `#${row.dup_of}` : "";
+  const dupOf = row.dup_of ? `#${row.dup_of}${row.dupOfBucket ? ` (bucket ${row.dupOfBucket})` : ""}` : "";
   const cells = [
     `[#${row.id}](${row.url})`,
     row.date,
