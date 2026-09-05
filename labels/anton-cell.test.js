@@ -67,6 +67,19 @@ describe("readAntonCell — 'as graded' acceptance", () => {
   });
 });
 
+describe("readAntonCell — held and posted sides", () => {
+  test('"2 fine" on a held row is recorded as missed, with no dup_of', () => {
+    const result = readAntonCell("2 — fine, I want to hear it", makeReviewer());
+    assert.equal(result.reason, "missed");
+    assert.equal(result.dup_of, null);
+  });
+
+  test("a #N mention on a useful row does not leave a dup_of behind", () => {
+    const result = readAntonCell("2 — same remarks as #46, borderline", makeReviewer());
+    assert.deepEqual([result.bucket, result.reason, result.dup_of], [2, "missed", null]);
+  });
+});
+
 describe("readAntonCell — bucket digit overrides", () => {
   test('bare digit "2" on a held row becomes "missed"; on a posted row "fine"', () => {
     const held = readAntonCell("2", makeReviewer());
@@ -139,8 +152,8 @@ describe("readAntonCell — reason code and dup_of overrides", () => {
 });
 
 describe("readAntonCell — edge cases", () => {
-  test("digit with reason override (e.g., '2 fine') uses both overrides", () => {
-    const reviewer = makeReviewer({ reason: "dup" });
+  test("digit with reason override (e.g., '2 fine') uses both overrides on a posted row", () => {
+    const reviewer = makeReviewer({ reason: "dup", posted: true });
     const result = readAntonCell("2 fine", reviewer);
     assert.deepEqual(result, {
       bucket: 2,
