@@ -42,14 +42,14 @@ describe("readAntonCell — 'as graded' acceptance", () => {
     });
   });
 
-  test('"as graded — check reason" accepts reviewer values with accepted: true', () => {
+  test('"as graded — <his words>" accepts the reviewer values and keeps his words as the note', () => {
     const reviewer = makeReviewer();
     const result = readAntonCell("as graded — check reason", reviewer);
     assert.deepEqual(result, {
       bucket: 3,
       reason: "dup",
       dup_of: 45,
-      note: "Same quote as #45",
+      note: "as graded — check reason",
       accepted: true,
     });
   });
@@ -64,6 +64,13 @@ describe("readAntonCell — 'as graded' acceptance", () => {
       note: "Same quote as #45",
       accepted: true,
     });
+  });
+});
+
+describe("readAntonCell — 'as graded' consistency", () => {
+  test("accepting a dup label on a bucket-2 row stores bucket 3", () => {
+    const result = readAntonCell("as graded — yes, dup", { bucket: 2, reason: "dup", dup_of: 4, why: "repeat of #4" });
+    assert.deepEqual([result.bucket, result.reason, result.dup_of, result.note], [3, "dup", 4, "as graded — yes, dup"]);
   });
 });
 

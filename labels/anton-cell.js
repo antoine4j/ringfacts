@@ -20,7 +20,9 @@ export function readAntonCell(cell, reviewer) {
 
   // "as graded" (with or without the "check reason" reminder) = accept.
   if (/^as graded\b/i.test(text)) {
-    return { bucket: reviewer.bucket, reason: reviewer.reason, dup_of: reviewer.dup_of, note: reviewer.why, accepted: true };
+    const bucket = ["dup", "junk", "old"].includes(reviewer.reason) ? 3 : reviewer.bucket;
+    const note = text.length > "as graded".length ? text : reviewer.why;
+    return { bucket, reason: reviewer.reason, dup_of: reviewer.dup_of, note, accepted: true };
   }
 
   // A correction: take whatever he wrote, keep the rest from the reviewer.
