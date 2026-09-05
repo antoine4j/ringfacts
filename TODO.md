@@ -168,6 +168,21 @@ names the goal it moves.
      forwarded_text, from_user, supersedes, created_at. New `sessions`:
      one per forward — user id, item ids, focus, pending drafts, started,
      expires. Plus a table of DM turns, stored before anything else.
+   - *One labelling system first (Anton, 2026-09-04 late evening).* Before
+     the bot: every article ever captured gets a label in ONE place, the
+     `feedback` table (schema.sql), and the bench file is generated from it.
+     Row: wanted_bucket, reason (fine/junk/dup/old/wrong/loud/missed/other),
+     dup_of, note verbatim, author (haiku/sonnet/claude/user), confidence,
+     source, supersedes. Never update, always insert; `user` rows win.
+     Back-fill plan, by group: the 103 graded posts converted from the
+     grading doc as author=user; 7 newer posts pre-labelled; held-as-dup
+     (207) checked against the stored nearest item; held-as-matched (146)
+     against the claim's origin — the group where real news gets swallowed;
+     wrong-subject (147) and folded (47) read and confirmed. Haiku subagents
+     read (subscription, not the API cap), Sonnet re-reads doubts, Anton
+     rules on the rest via one review sheet shaped like
+     docs/grading/2026-09-04-posted-30d.md plus "machine said" and "dup of"
+     columns. The August corpus files retire into unit tests afterwards.
    - *Into the bench.* corpus/build-graded.js gains feedback rows as a
      second input beside the grading table: item id + wanted bucket + note
      → corpus entry, split by hash. Rebuilt at the weekly grading pass so
@@ -181,6 +196,40 @@ names the goal it moves.
      forward costs nothing. Numbered bullets are a post-format change —
      show it in the test group first. Build order: session table and the
      two tool definitions first, agreed with Anton, then code.
+3f. **Dedup by story: nearest member, root guard** (G3) — *agreed with
+   Anton 2026-09-05 while reviewing the all-articles sheet; measure first,
+   ship only after he sees the numbers.* The sheet showed the same story
+   nine times (Abdelaziz vs Kawa, Aug 7–11), posted three times, and the
+   labels chained (57 → 49 → 34 → 30) the way the August dedup gate did.
+   - *The unit is the story, named by its root* — the earliest article.
+     In the `feedback` table `dup_of` always names the root, never a
+     middle link (the writer resolves chains); "all duplicates of #30" is
+     one query, "did the group see it" the same query filtered to posted.
+     No schema change.
+   - *The gate.* A new headline joins story S when (1) its nearest
+     **member** of S — posted or held, translations included — is above
+     T_member (today's 0.80), **and** (2) it is not a stranger to the
+     **root** of S: above a lower T_root. (2) is what stops drift
+     (docs/decisions.md#posted-anchors) and lets held members anchor
+     again, which the posted-only rule gave up. The hold is recorded as
+     "dup of story S via member M". Root-only anchoring was considered
+     and rejected: a Ukrainian rewrite sits far from the English root and
+     near the Ukrainian member.
+   - *T_root is measured, not guessed.* From the sheet's ~250 labelled
+     memberships: similarity of every true member to its root (the
+     genuine low tail is translations) versus the drift cases and Anton's
+     "not the same story" overturns. Bench table per (T_member, T_root):
+     members caught, members missed, strangers admitted. Guess for scale
+     only: 0.65–0.70. If the two distributions overlap badly the guard
+     belongs in the matcher, not the embedding.
+   - *Floor.* Same fact, no shared words (weigh-in in Ukrainian and
+     English) stays the matcher's job; the story labels are its test set
+     too — human clusters versus claim clusters is a direct matcher
+     measurement.
+   - *Order.* After the feedback table is written (3e's first step):
+     labels/export of memberships → bench step `story` (offline, one
+     SELECT for embeddings, no LLM) → the table in front of Anton →
+     then the gate.
 4. **Active verification via web search** (G4, and G2's stale-event clause) —
    concept discussed 2026-09-03/04, no design yet. On a new fight claim, search
    for it and sort results by domain trust: official domain confirms,
