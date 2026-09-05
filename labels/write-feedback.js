@@ -87,8 +87,11 @@ function rowsFor(sheetRow, reviewer, graded) {
     : null;
 
   // Anton's row: from his cell, with gaps filled from what the sheet shows.
+  // A graded post with a blank cell still carries his 09-04 note as the
+  // shown label, so it is read as "as graded": his word either way.
   const shown = { bucket: sheetRow.bucket, reason: sheetRow.reason, dup_of: sheetRow.dup_of, why: sheetRow.why, posted: sheetRow.machine === "posted" };
-  const decision = readAntonCell(sheetRow.anton, shown);
+  const cell = sheetRow.anton || (sheetRow.author === "user" ? "as graded" : "");
+  const decision = readAntonCell(cell, shown);
   const userRow = decision
     ? { item_id: sheetRow.id, bucket: decision.bucket, reason: decision.reason, dup_of: decision.dup_of, note: decision.note, author: "user", confidence: "high", source: graded ? "grading-doc" : "review-sheet" }
     : null;
