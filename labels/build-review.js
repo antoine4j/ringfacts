@@ -267,7 +267,12 @@ for (const id of ids) {
   const second = blind.get(id);
   const story = storyLine(id, stories, postedIds, rootBucket);
   const sure = isGraded ? isPlainGraded(label) : item.posted ? false : isSure(item.group, label, second, postedIds);
-  if (!sure) forAnton.push({ id, url: item.url, title: item.title, hint: hintFor(item, label, second) + (story ? `; ${story}` : ""), verdict: antonCells.get(id) ?? "", stored: storedAs(id, item, label, antonCells.get(id), stories) });
+  // Anton's eyes go to the held articles the reviewer calls real news (they
+  // decide G1) and to rows he has already ruled on; the rest stay blank and
+  // are stored under the reviewer's name.
+  const heldRealNews = !item.posted && label.bucket !== 3;
+  const hisOwnWord = antonCells.has(id) && !isStoryRuledCell(antonCells.get(id));
+  if (heldRealNews || hisOwnWord) forAnton.push({ id, url: item.url, title: item.title, hint: hintFor(item, label, second) + (story ? `; ${story}` : ""), verdict: antonCells.get(id) ?? "", stored: storedAs(id, item, label, antonCells.get(id), stories) });
 
   // Group tally: confirmed / overturned / unsure.
   const group = item.group;
@@ -311,11 +316,14 @@ fine — the writer resolves it to the root.
 readers agreed the article is not for the group (or the wrong-subject hold
 was confirmed), and where a graded post's derived code is plain. It is
 **blank** where a reader was unsure, two readers disagreed, a held article
-looks like real news, or a derived code needs a look — those rows are listed
-under "For Anton" below. Fill each blank with "as graded" or the correction:
-a bucket digit, and/or a reason code, and/or "dup of #N", any words around
-it. A row left blank gets no user label. Nothing is written to the database
-until this file is done.
+looks like real news, or a derived code needs a look. Of those, only the
+held articles the reviewer calls real news (bucket 1 or 2) are listed under
+"For Anton" below — they decide whether G1 is met, and each is either a
+story the group should have heard or a reviewer being too generous. Fill a
+row with "as graded" or the correction: a bucket digit, and/or a reason
+code, and/or "dup of #N", any words around it. A row left blank gets no
+user label: it is stored under the reviewer's name only. Nothing is written
+to the database until this file is done.
 
 Reason codes: fine · missed · junk · dup · old · wrong · loud · other —
 defined in one place, [docs/goals.md, "The reason codes"](../goals.md#the-reason-codes--why-an-article-got-its-bucket).
