@@ -56,139 +56,139 @@ Rows with no usable body (page furniture or nothing), per outlet, top 15:
 
 ## For Anton — 131 rows
 
-| # | why it needs you |
-|---|---|
-| #1 | your note reads as "dup" of #4 — confirm the code |
-| #2 | your note reads as "dup" of #4 — confirm the code |
-| #3 | your note reads as "old" — confirm the code |
-| #9 | your note reads as "dup" of #8 — confirm the code |
-| #26 | your note reads as "dup" of #4 — confirm the code |
-| #34 | held, but looks like real news (bucket 2) |
-| #45 | your note reads as "dup" of #43 — confirm the code |
-| #46 | your note reads as "dup" of #30 — confirm the code |
-| #47 | your note reads as "dup" of #43 — confirm the code |
-| #49 | re-read after a disagreement |
-| #51 | re-read after a disagreement |
-| #54 | held, but looks like real news (bucket 2) |
-| #57 | re-read after a disagreement |
-| #61 | re-read after a disagreement |
-| #66 | re-read after a disagreement |
-| #82 | held, but looks like real news (bucket 2) |
-| #94 | re-read after a disagreement |
-| #100 | a reader was unsure |
-| #106 | your note reads as "old" — confirm the code |
-| #107 | a reader was unsure |
-| #109 | second reader overturned the first |
-| #113 | a reader was unsure |
-| #121 | held, but looks like real news (bucket 2) |
-| #124 | held, but looks like real news (bucket 2) |
-| #127 | re-read after a disagreement |
-| #128 | re-read after a disagreement |
-| #129 | held, but looks like real news (bucket 2) |
-| #134 | re-read after a disagreement |
-| #137 | re-read after a disagreement |
-| #141 | re-read after a disagreement |
-| #142 | a reader was unsure |
-| #144 | re-read after a disagreement |
-| #146 | re-read after a disagreement |
-| #167 | held, but looks like real news (bucket 2) |
-| #174 | held, but looks like real news (bucket 2) |
-| #208 | held, but looks like real news (bucket 2) |
-| #221 | re-read after a disagreement |
-| #235 | a reader was unsure |
-| #242 | re-read after a disagreement |
-| #243 | held, but looks like real news (bucket 2) |
-| #251 | held, but looks like real news (bucket 2) |
-| #254 | held, but looks like real news (bucket 2) |
-| #255 | re-read after a disagreement |
-| #258 | a reader was unsure |
-| #263 | a reader was unsure |
-| #268 | held, but looks like real news (bucket 2) |
-| #271 | held, but looks like real news (bucket 2) |
-| #280 | a reader was unsure |
-| #284 | a reader was unsure |
-| #293 | re-read after a disagreement |
-| #294 | held, but looks like real news (bucket 2) |
-| #299 | re-read after a disagreement |
-| #301 | held, but looks like real news (bucket 2) |
-| #302 | held, but looks like real news (bucket 2) |
-| #307 | held, but looks like real news (bucket 2) |
-| #309 | re-read after a disagreement |
-| #322 | held, but looks like real news (bucket 2) |
-| #329 | your note reads as "old" — confirm the code |
-| #337 | held, but looks like real news (bucket 2) |
-| #345 | your note reads as "dup" of #327 — confirm the code |
-| #351 | re-read after a disagreement |
-| #358 | held, but looks like real news (bucket 2) |
-| #361 | re-read after a disagreement |
-| #364 | held, but looks like real news (bucket 2) |
-| #369 | held, but looks like real news (bucket 2) |
-| #379 | held, but looks like real news (bucket 2) |
-| #381 | held, but looks like real news (bucket 2) |
-| #382 | held, but looks like real news (bucket 2) |
-| #384 | re-read after a disagreement |
-| #385 | re-read after a disagreement |
-| #401 | held, but looks like real news (bucket 2) |
-| #418 | a reader was unsure |
-| #423 | held, but looks like real news (bucket 2) |
-| #424 | re-read after a disagreement |
-| #427 | re-read after a disagreement |
-| #430 | re-read after a disagreement |
-| #443 | re-read after a disagreement |
-| #444 | re-read after a disagreement |
-| #446 | re-read after a disagreement |
-| #451 | held, but looks like real news (bucket 2) |
-| #456 | held, but looks like real news (bucket 2) |
-| #463 | re-read after a disagreement |
-| #467 | re-read after a disagreement |
-| #470 | held, but looks like real news (bucket 2) |
-| #474 | re-read after a disagreement |
-| #480 | re-read after a disagreement |
-| #485 | re-read after a disagreement |
-| #490 | held, but looks like real news (bucket 2) |
-| #496 | re-read after a disagreement |
-| #498 | re-read after a disagreement |
-| #499 | re-read after a disagreement |
-| #505 | re-read after a disagreement |
-| #506 | re-read after a disagreement |
-| #512 | held, but looks like real news (bucket 1) |
-| #521 | held, but looks like real news (bucket 2) |
-| #524 | held, but looks like real news (bucket 2) |
-| #530 | re-read after a disagreement |
-| #534 | re-read after a disagreement |
-| #536 | re-read after a disagreement |
-| #537 | held, but looks like real news (bucket 2) |
-| #538 | re-read after a disagreement |
-| #542 | re-read after a disagreement |
-| #543 | re-read after a disagreement |
-| #544 | re-read after a disagreement |
-| #546 | re-read after a disagreement |
-| #549 | re-read after a disagreement |
-| #550 | re-read after a disagreement |
-| #567 | a reader was unsure |
-| #568 | held, but looks like real news (bucket 2) |
-| #572 | held, but looks like real news (bucket 2) |
-| #583 | a reader was unsure |
-| #599 | held, but looks like real news (bucket 2) |
-| #601 | held, but looks like real news (bucket 2) |
-| #602 | posted; reviewer says 2 fine |
-| #604 | re-read after a disagreement |
-| #606 | held, but looks like real news (bucket 2) |
-| #610 | posted; reviewer says 3 junk |
-| #617 | re-read after a disagreement |
-| #618 | re-read after a disagreement |
-| #619 | held, but looks like real news (bucket 2) |
-| #620 | posted; reviewer says 1 fine |
-| #625 | re-read after a disagreement |
-| #626 | posted; reviewer says 2 fine |
-| #627 | posted; reviewer says 3 dup |
-| #642 | posted; reviewer says 1 fine |
-| #653 | posted; reviewer says 1 fine |
-| #661 | posted; reviewer says 3 junk |
-| #662 | a reader was unsure |
-| #670 | re-read after a disagreement |
-| #672 | a reader was unsure |
-| #676 | held, but looks like real news (bucket 2) |
+| # | article | why it needs you |
+|---|---|---|
+| #1 | [Yaroslav Amosov Touted as Future UFC Welterweight Champion - heavy.com](https://heavy.com/sports/ufc/yaroslav-amosov-future-ufc-welterweight-champion/) | your note reads as "dup" of #4 — confirm the code |
+| #2 | [«Амосов — це кошмар для махачева»: Масвідаль пояснив, чому українец…](https://xsport.ua/ua/mma_s/news/amosov-tse-koshmar-dlya-makhacheva-masvidal-poyasnyv-chomu-ukrayinets-zdaten-zdolaty-chempiona-ufc/) | your note reads as "dup" of #4 — confirm the code |
+| #3 | [May 9, 2026; Newark, New Jersey, UNITED STATES; Joel Alvarez (red g…](https://lufkindailynews.com/news_reuters/national/may-9-2026-newark-new-jersey-united-states-joel-alvarez-red-gloves-fights-yaroslav-amosov/image_ca23342f-086d-522e-a0bb-849b736a14c2.html) | your note reads as "old" — confirm the code |
+| #9 | [Islam Makhachev motivated by Ilia Topuria, Khamzat Chimaev's shocki…](https://www.bjpenn.com/mma-news/islam-makhachev/islam-makhachev-motivated-ilia-topuria-khamzat-chimaev-losses-ufc-330/) | your note reads as "dup" of #8 — confirm the code |
+| #26 | [Islam Makhachev warned of 'nightmare' fight against 30-1 UFC welter…](https://bloodyelbow.com/2026/08/07/islam-makhachev-warned-of-nightmare-fight-against-30-1-ufc-welterweight-who-is-stronger-than-him/) | your note reads as "dup" of #4 — confirm the code |
+| #34 | [Ali Abdelaziz says no UFC star can beat Usman Nurmagomedov - MMA Sucka](https://mmasucka.com/news/i-want-ilia-topuria-ali-abdelaziz-predicts-usman-nurmagomedovs-ufc-domination-says-only-arman-tsaruk/) | held, but looks like real news (bucket 2) |
+| #45 | [Ilia Topuria's manager claims he'd beat every Ali Abdelaziz fighter…](https://bloodyelbow.com/2026/08/08/ilia-topurias-manager-claims-hed-beat-every-ali-abdelaziz-fighter-if-we-fought-gaethje-again/) | your note reads as "dup" of #43 — confirm the code |
+| #46 | [Topuria, objetivo Nurmagomedov: “Usman hará que se rinda” - Diario AS](https://as.com/masdeporte/polideportivo/topuria-objetivo-nurmagomedov-usman-hara-que-se-rinda-f202608-n/) | your note reads as "dup" of #30 — confirm the code |
+| #47 | [El mánager de Topuria contraataca al clan Nurmagomedov: "Aniquilarí…](https://www.eurosport.es/mma/ufc/2026/manager-topuria-contraataca-clan-nurmagomedov-aniquilaria-100-plantilla_sto23326370/story.shtml) | your note reads as "dup" of #43 — confirm the code |
+| #49 | [Usman Nurmagomedov’s manager reveals who he is targeting in potenti…](https://bloodyelbow.com/2026/08/08/usman-nurmagomedovs-manager-reveals-who-he-is-targeting-in-potential-ufc-debut/) | re-read after a disagreement |
+| #51 | [Ilia Topuria’s Manager Blasts Ali Abdelaziz Over Usman Nurmagomedov…](https://heavy.com/sports/ufc/ilia-topuria-manager-blasts-abdelaziz-nurmagomedov-prediction/) | re-read after a disagreement |
+| #54 | [El entrenador de Usman Nurmagomedov: «Nuestro reto más difícil serí…](https://www.abc.es/deportes/mma/entrenador-usman-nurmagomedov-reto-dificil-ilia-topuria-20260809015230-nt.html) | held, but looks like real news (bucket 2) |
+| #57 | [Usman Nurmagomedov’s manager reveals who he is targeting in potenti…](https://bloodyelbow.com/2026/08/08/usman-nurmagomedovs-manager-reveals-who-he-is-targeting-in-potential-ufc-debut/) | re-read after a disagreement |
+| #61 | [Ilia Topuria’s manager claims he’d beat every Ali Abdelaziz fighter…](https://bloodyelbow.com/2026/08/08/ilia-topurias-manager-claims-hed-beat-every-ali-abdelaziz-fighter-if-we-fought-gaethje-again/) | re-read after a disagreement |
+| #66 | [Max Holloway reacts to Ali Abdelaziz claiming Usman Nurmagomedov wo…](https://bloodyelbow.com/2026/08/09/max-holloway-reacts-to-ali-abdelaziz-claiming-usman-nurmagomedov-would-dominate-him-in-the-ufc/) | re-read after a disagreement |
+| #82 | [El regreso de Topuria asusta al entrenador de Makhachev: "Va a ser …](https://news.google.com/rss/articles/CBMi1AFBVV95cUxNUmczajBIanJiQjY2SVdrM2k2TmJkY0FITnVrSU5fNEktSWo5a0hvM1JzQk9VQ29BWnNmeFN1a2g4U1BGUU1VbGd1YU9uSy1kWUJJaGtna21ZUTZpbF9IWmN5bkFWMkRoVk1zczE5U1RuMEtfV2xCcUNFN2Ywd0VnVjVldE1NYzF6eHR0b1R4QTlUUUJLa1k4RFl5dks3OW9ud1JQQUNUUURrTnhlVzVnUE0xcUJ3Vzg1TllJV1hMYUF6SlRLQkxsTU9FWml6Sk9zY0FYQg?oc=5) | held, but looks like real news (bucket 2) |
+| #94 | [Daniel Cormier rejects Ali Abdelaziz’s ‘absolutely crazy’ take abou…](https://bloodyelbow.com/2026/08/10/daniel-cormier-rejects-ali-abdelazizs-absolutely-crazy-take-about-usman-nurmagomedov/) | re-read after a disagreement |
+| #100 | [El regreso de Topuria crea recelo en la UFC - Estadio Deportivo](https://news.google.com/rss/articles/CBMikwFBVV95cUxOczVIeGE0cDZEQ3BOT3paTWs0MldlaDR3R01jTEVsYktTMFI0Ync1cmgwX002LXhVdFF3X3dETzdXMFdYYktOWnBSNTJsZW9DM09pZW9MMFFTdWFjOHRwdmJGLTd5cUJMdXQtY0tvc1NBVHFwQnFObWdxd2ZmN1VvbDFGSkVtdFFzMThxZUhaVjJCeWM?oc=5) | a reader was unsure |
+| #106 | [UFC 328 Highlights: Joel Alvarez vs Yaroslav Amosov - 247Sports](https://247sports.com/embed/video/JTdCJTIyc2l0ZUtleSUyMiUzQTE0MDclMkMlMjJpZCUyMiUzQSUyMjYzZmQ5ZDVhLWU1NDktNDAwYi05MzlkLWM2M2JhMzQ5NGVkMyUyMiUyQyUyMnVybCUyMiUzQSUyMiUyMiUyQyUyMnZpZGVvcyUyMiUzQSU1QiU1RCUyQyUyMmFwJTIyJTNBdHJ1ZSUyQyUyMndzJTIyJTNBdHJ1ZSUyQyUyMmZ2JTIyJTNBMCUyQyUyMm5hbWUlMjIlM0ElMjJVRkMlMjAzMjglMjBIaWdobGlnaHRzJTNBJTIwSm9lbCUyMEFsdmFyZXolMjB2cyUyMFlhcm9zbGF2JTIwQW1vc292JTIyJTJDJTIyaW1hZ2UlMjIlM0ElMjIlMjIlMkMlMjJjbGFzc05hbWUlMjIlM0ElMjJ2aWRlby1wYWdlLXZpZGVvJTIyJTJDJTIybWQlMjIlM0ExJTJDJTIyaXNGYXN0VmlkZW8lMjIlM0FmYWxzZSUyQyUyMmlzQXBwJTIyJTNBZmFsc2UlN0Q=/) | your note reads as "old" — confirm the code |
+| #107 | [Ilia Topuria ya tiene un objetivo para volver a UFC tras su primera…](https://news.google.com/rss/articles/CBMi0wFBVV95cUxPZGtXbnZHQ1I0Y2JoTnFJTDBfQzZSUzEwR0M2OTcxa1pRc2VZWVNydlFMbDhRdlBub3liSlVlU3hmSWFHZ2NQTVIzUVF6OUtMNVgxa0JSSjBSU3NYRUlFcjVNOFh6eXNFSTdSTlFZVmVkZ19LX2M1Y2hHN2d1M09USndpSTd5ZlI2ckI0dVRFVkdLT2pEcEhTOU5RdFZ4ejlNZTF4NUNtdkpKdm1FLTlKYXNlbWFRQWNpblNYVmRGS2FSUkRLUFVIbFZodjc2Y3BHbmpv?oc=5) | a reader was unsure |
+| #109 | [Topuria's Manager Blasts Abdelaziz Over Nurmagomedov Claims - boxin…](https://news.google.com/rss/articles/CBMifkFVX3lxTE5RQzQyREVST0Ftdy03bDRnU0hvX3NPdG5LLU42YzdCZ05EbGE3MHAwcG10cHRzMThoVVI0eHVjQXBWZmU3a2JQX0JDMl96LXYxUUJKRUhBTjJWbzdIOG50ODBwbEV1ZEpHUk82ZE9INERzOFVmak9hTk90WFRBdw?oc=5) | second reader overturned the first |
+| #113 | [Ilia Topuria's manager has words for Ali Abdelaziz - Sherdog](https://news.google.com/rss/articles/CBMimgFBVV95cUxOYnRzX3pyUDNfOVJKVVFSa2hUeTI0Z0VHbUFILVdHX0kwbWJkWDRKU0xhZ182NVRSaGtoak9talRIb3F1a0VZY0RmTktPNng0TGlYcHdQVGN1WUpZTGRwZ2VtNmFGdko3STRGN2V3SDkyU2xfOGFvR0E2Z2ZxckMxdmJlVWFBQnJCWFl0eXU5OTFMb3IxTHMwdWdn0gGaAUFVX3lxTE5idHNfenJQM185UkpVUVJraFR5MjRnRUdtQUgtV0dfSTBtYmRYNEpTTGFnXzY1VFJoa2hqT21qVEhvcXVrRVljRGZOS082eDRMaVhwd1BUY3VZSllMZHBnZW02YUZ2SjdJNEY3ZXdIOTJTbF84YW9HQTZnZnFyQzF2YmVVYUFCckJYWXR5dTk5MUxvcjFMczB1Z2c?oc=5) | a reader was unsure |
+| #121 | [El inesperado halago de Makhachev a Topuria en su ausencia: "Espero…](https://news.google.com/rss/articles/CBMizgFBVV95cUxOWU1hUDBQTUp2TDhzcmV3Z2EyZWZ1c1FRT3BvVE00SUIwQU9WQWhvc1hidUNhUUs2SlYtUU8teWc1a2FLVlNxbDJRNnBZemRIOWhkOVRoZS1QSDIzUER4Q1dlVXRSZFFtdC0yOFdDMTR5ek9oQ0pacGtkc01QNF9KRXd1SG1aY3ZiYjBoai1lWE5CcFJ5UzM2MmpvWWxrZ19HdVI2RjM1Q1JibnY0QkNNaVZHWVBfSmVmbEl1b3lvTnRWQ3J3clNQaUl1Q3FnZw?oc=5) | held, but looks like real news (bucket 2) |
+| #124 | [Makhachev On Topuria's UFC 250 Loss To Gaethje - boxingnews.com](https://news.google.com/rss/articles/CBMibkFVX3lxTE56dWQwU3dfdkxDOEcyLXBTU2JPazdfOC1PUTlrT1BEQkJVTEdJZXR4aDQ5SmVFdnlZTHNhMlhzazQ2Q2ZiWmF3c1hPc21fUnZlQ1Z4UUpVQk53b2l6M1kxZXhSb1RlOFdKbUdOejNB?oc=5) | held, but looks like real news (bucket 2) |
+| #127 | [Daniel Cormier calls out Usman Nurmagomedov's manager for 'absolute…](https://news.google.com/rss/articles/CBMi3wFBVV95cUxOaTRycEx0XzFpWHk3bzJRaVhVZFBBNWtsRkZhZmlKaTZlT0xZUURqWF84RnFmYzdkMUNEeURJbVdDcVdHVlpMbEJESWVrMzYzbHBWY3JnRTVURFM1RDliQmRWa0FWdHZGWmhUWWp1LUM4SUlpdk9qcm16S2FPSU41Rk9DUUU1YTNmNFFBdjZyQ3ZWYlMtQVZITUNVcFhMTzBISTJPZktHNUJwQUt3eVpUTlNUazhPVEx5TVBuak04NVJ3RWxJSTc0TER5YjlnZXlIbXl6WW52WENyemdRbGFn?oc=5) | re-read after a disagreement |
+| #128 | [Islam Makhachev Believes 'Good Fighter' Ilia Topuria Will Become Ch…](https://news.google.com/rss/articles/CBMie0FVX3lxTFBDZ21OZ2FqT1E2UGRVMkRaRTNRRTdac0JfWlRsbjZDTUZmZk5rMnpVS2pIUzdZaWZaSjN4LTlMYnd6S2trNWI3M2RpSWxkWFVydnBub2kxOFRfTWxBc2NVVHV5allVUkNxa2tnS2w1aW5BbV9RY3N5Vzc3MA?oc=5) | re-read after a disagreement |
+| #129 | [El mánager de Ilia Topuria pide la revancha inmediata con Justin Ga…](https://news.google.com/rss/articles/CBMiqgFBVV95cUxNZ2QzSlByZUZhSWxCSXg3TEZMUnZ5endhMGI0ajR6dnRUZzhia2JiOG5UWlVnOUxTbjBaalh6V21rNFJCVVNYZW9IdGdER0RZQzNRUXFVUTMtNkpLTUFObFFzSUtacFQ5ekdsUUFqU3NiQzhQX0ozNWF0YzkwX1RLeFVFeDN1RXVGLUhPY3BuNFYycXJEaWNBU0dJR3RlZzg4ek9qcXdZUzFFd9IBrwFBVV95cUxNSE9vNFphOEx6YW9WYlFSVC1naERSX29BX3VLQkFpZmREMlFxNDdoQXJJdzQyajV5WnRBdUM2QjhpeXp3MFZETEY0UXZYSmF5ZHlhdWQ4aUJ1VXcwclRBRHVid0IwSzdvMVlnYjJ5V1F6ajZMVVFHdzNZOUltQkNvSklPN1hCVXJrcUs3NzhpVWZPQ0xUVGdibDEzN1ljS3RndFFUaVRGMFdURzd3UUU0?oc=5) | held, but looks like real news (bucket 2) |
+| #134 | [Rankings UFC actualizados (11 de agosto): Quillan Salkilld sigue su…](https://news.google.com/rss/articles/CBMiZ0FVX3lxTE9XaG9UNVNTN3lnYzVPRE1iekNOZ1hSd1NfOE50VDMtV1R5cWZwTTVPVTBwWHNhTThqT1RPSzUxT2ZUMzdLNlFhWFJHOVRrU1JnY21iMDhSMWs4YzQ5dW1XOHlSTkNzbTg?oc=5) | re-read after a disagreement |
+| #137 | [Makhachev, sobre Topuria: "Si se centra, puede ser campeón otra vez"](https://www.marca.com/combates-ufc/2026/08/12/makhachev-sobre-topuria-centra-campeon-vez.html) | re-read after a disagreement |
+| #141 | [Islam Makhachev shares words of encouragement for Ilia Topuria: "I …](https://news.google.com/rss/articles/CBMiwgFBVV95cUxOUnFCZW9NdnkwSHVCb0hEYjcyZkxxdVJHVTk5Q1BodDZHdXNLVXdWSUluSDRPamVfdHRZVDFWeWRaZktxdFMyQ1hka2sxaUdoSnVLZC1CdXNwcDJ3TmRmUGsySnNfRWtCdVRoeEhxd1FVUGlfMFdESFEwUFdvUnRhZmRkb3ZjSWVWZkxmVHBtcE8ySmxjdFNQU1hRVUdfMzRjU1BqekJkakJCR0RHOHhIY1ZpY1hMNVY0TVJIZl9XRUIzdw?oc=5) | re-read after a disagreement |
+| #142 | [¿Cuándo es la próxima pelea de Ilia Topuria? ¿Quién es su rival? Fe…](https://news.google.com/rss/articles/CBMiwgFBVV95cUxPWnRLWXgyM3RTcHdtVlFKMExKcFpVUlhjUXpVWDZybkdpQmZBWHVaUmE3SXpjdGVpLXVOWlBkNElGMU1neTdFMVJmLXhxSzZoTUl3MXBtM1JXN3N6N0s4enI0WnliUE5TZENFWGo0RURLcTBDOVV1U0JSXy16eWxOeDZMR3ZYQ2lMeHpqQnpCcEJtemZxNzdPUXhDZDdqcGMzYnNQdXRzYjBCNnYtd1Z0V0oyaUhDRHpqektER2pQOFdxUQ?oc=5) | a reader was unsure |
+| #144 | [Islam Makhachev questions Ilia Topuria celebrating night before UFC…](https://news.google.com/rss/articles/CBMiwAFBVV95cUxQU2EwaDBmRlFSTTJkVE96Wkpuc3ZtdUUwblpnazJGVVZxWTF2UldTNVNwYmxwakFzanNaX1Y2M0lVbWRpdTFIaEZHakdWZWxfb3dmRDJFWG5URXNIalBvZ19PeGg3VUZyc1JRX2EyeG1YZGloZW9Cd1lFUXp0YVVjbGZoZFhTOU1QY05xRTRYSHlTSEgxZmVPaURtUTlmZEdPeVdRalVmYUtiRFJMRHhSZHFOT1RFVXpNN2xoaFhISmM?oc=5) | re-read after a disagreement |
+| #146 | [Topuria tiene claro su regreso a la UFC: "Queremos ese combate" - L…](https://news.google.com/rss/articles/CBMivwFBVV95cUxNRWlUUFF4TWppZkFfcjJGRFkzeTZGakZGT0l1TmM2UnkyUUd4YTFsQ0pTTWFrZVdMYU5WODhDQUZjeEtPeFhCallPRTQ4c2ltZERvbG9vWkFiT2trVm5iVHJsRDN3X3BVYWpyM3RJUHlDTTBpRHF3OVNUTU1nUXhRU3dQWVd1Zzk2dTFPMzM5SDFnakcyYl9mS2Z3MkFsaE9xMzUxSTNpRE40bndhMnR0azY0S3Q4YngxUDF5SFpoY9IB0wFBVV95cUxPNzVFQjE5YndGVmkxZ3J6aVRiU3Rfell0WU92VWRfU1dWanU4U2FKdmRVTEp4M2U0MjR5Rzh4QUVveEtyR2VKU3ZDN1hEVTFFS3R6aFk0N3kxSDBpQ3RZMjliRktiZjV3bDJUc3Utc29jMEhmVTM4WEpTODVEdXZqZ1YzWDhkckdTYTRnWV95Um5kSU9hRXFIcmFMSWN1ZDJkVWt1Y0g0aGV2WHl4YTN5bVQ5Sno0UTMtVFFXaEFGZGJUNWdlbVVVMGpQSE1TQkg5RHJB?oc=5) | re-read after a disagreement |
+| #167 | [Islam Makhachev, sobre Ilia Topuria: "Perdió el enfoque y subestimó…](https://news.google.com/rss/articles/CBMi7gFBVV95cUxQaGtlX1dZaHhaa0dpNjFHc3dneDQzZHRlbURFVTdSY1ZfdlJMRVBUYnQxVXlCWlM5Wnk0SlJkV0lpTXFoWXpINWlIZ3l6Y19rdW5rcmhvOXU3R1RaZ09pWnNSZWw3UUZ3ZE1YNTJUOFlFUkl4Wi1kcG5pOE5ZNkZaOGhwcVBXTDhJVXlvWTIzVHlwS3FCRXdIRExjY2VCczFxcWswWmJsaFBnalpjMUxqbWVPNGpyUXJJTUxJakNCbWZXS3cxdTF3SENzRzVuSU5ER01lY3FvTUswczlXMEEwNVhHa0J0dGZuZjdFWWdn0gH7AUFVX3lxTE1iNHlTTWdYUnN3bFRISU9iWDBkMllGeTd4Tk9lUFQycmxSYjdiV3czRXllcVpOd1FUVUF0QmJHcFNIQ2RfTkVHRHRsN2ZBX2dFaXB4dGotWlAxMUJvMTkzcm1vVjFsRHR1WFYwSEtZZkRVVWdkdm0wNF9fQkI0QVplUDlna0s0YlBvTE1UQ1hmeFEwMDVKNFdXZDU5b1JWS29heERvb2o5VVVFUmg3aW44a1dSZmJFSkZySmxVUWthcFRQOFVDQ2tSSC1nRDhYd0lhLVlOV29tZkcyaU8zS1I4RE5mM3ZvOUNMcEJwdGhTTk1Hdm1lT3RiREEw?oc=5) | held, but looks like real news (bucket 2) |
+| #174 | [Islam Makhachev cree que Ilia Topuria puede recuperar el cinturón: …](https://news.google.com/rss/articles/CBMi2gFBVV95cUxPT3NPbGFtTnIxR3FDTXFCczgwbjRadnRub3BWZTFrelB1dnIyWFg0WDZ5T2VyYVg2cFJpMzRBa2I3WWUyalVIeHNydVVROFh5UEJOVzBQd3ByNDZtOWNrRnBCdlVnbzVMYTgzQThSemxPcGc4bUY1ZWloQXlXX3NDZDFERW4wbkFOa0s3enJXTzNFWnp0TElUVDEtVnhEMUgwNzdJcGlvYk15aVcxZ2tBM3hEOUQ0OFR4Z1pkSXBjNkVlSnNjbnJ1V3N5U0pJakd6Qk9FYXJMOXBJdw?oc=5) | held, but looks like real news (bucket 2) |
+| #208 | [«Можу заробляти непогані гроші». Бабуся українського бійця UFC прот…](https://sport.nv.ua/ukr/amp/danijil-donchenko-rozpoviv-pro-rozmovu-z-babuseyu-pislya-peremogi-v-ufc-50632852.html) | held, but looks like real news (bucket 2) |
+| #221 | [España sigue en caida libre en la UFC - SPORT](https://www.sport.es/es/videos/ufc/20260816/espana-sigue-caida-libre-ufc/133412923.shtml) | re-read after a disagreement |
+| #235 | [La evolución de la recuperación de Topuria y su fecha de regreso: "…](https://news.google.com/rss/articles/CBMi6gFBVV95cUxQNWtwcVVkR3pQd2Q3NVQtSXcwTWUzem9DOTFmelBzbUE1ZWRXZlRGYjIxUGc1THp5ekVWNVVtQ2txdUtoNENVaUN3QmFqcVR2UmRzQlZUQmJuaEo0TDlWUmRiSF9VZXhEREhsallwcUtsQWgwYnJneFpXYVJNdHhGT0c1aGY3QmsxVmFPaVFpRkNfOVdGX1kwRnZlZHYzcWw5LVpQMmpqRTVUU0hrWHNaUFlPdHNYX2pMU3Z0UFVDVU05S1dYNHpPUXctQnYyV3YtaktjZUV0Z1VwZkNUaXFOcG43SFNTZFpzNkE?oc=5) | a reader was unsure |
+| #242 | [El manager de Ilia Topuria pide la revancha contra Justin Gaethje: …](https://www.20minutos.es/deportes/manager-ilia-topuria-pide-revancha-contra-justin-gaethje-queremos-esta-pelea_7026564_0.html) | re-read after a disagreement |
+| #243 | [Jesús Gallo, preparador físico de Topuria: "No podía ver, no podía …](https://news.google.com/rss/articles/CBMijAFBVV95cUxNcDlTdU1nbHZuZURYN0Fra29hZENHZVJhU2NpWGtBbzFIUTB4Z1F4NE5OdHVfSEg1TFpMQUNsRGYtd1RDczBLT0ROOHp5NV9CUDhGZG5sMDBkZG51LXVtcUFQN0lOVURFNHJPcHp0dURmaVZHUTFqd0tjdDRjX1pJYjQ5YXNtUkQ0OV9EVdIBjAFBVV95cUxNOGpYS3l6OVcta1c2aVIzZnlwWmtERTlqMUdzYkM1SUhncS1QSURId0Nud0Y3bkhsOGk0VjZBU2RUUHJjcGJ4c0tfdXRsa0dRc2Zwa3BIN1NHLVJQcXdxRFF1aTVRLTBTbU5mUkEyWUhfSTFIWWxNeVlkOEdhcmlaYVp3a1FnTjQyMVJhSg?oc=5) | held, but looks like real news (bucket 2) |
+| #251 | [Jesús Gallo, preparador físico de Topuria: “Puede estar listo para …](https://as.com/masdeporte/polideportivo/jesus-gallo-preparador-fisico-de-topuria-puede-estar-listo-para-final-de-ano-f202608-n/) | held, but looks like real news (bucket 2) |
+| #254 | [Хто стане наступним суперником Ярослава Амосова в UFC: п’ять найбіл…](https://news.google.com/rss/articles/CBMitgFBVV95cUxQYzRXZlJRdVhEWUVVZ3ZUb3ZmVnJBcjBBcTF0bndDQ3BqUEwyaC1PU0hIMG94X0luTVZDUXAwUHJFRllYNzJ5dTU1dUo2bHJIQUktTXBQM18xMERjak9TSWktVFdsZFhqNVhUdTlSamg4TlZmallnd1lyVmNDQ2dHRGlpNnBQS1F3MVl3REdwYmlheFJFaHZHRmZoM056dmJYaFRmaXBQWDgycFlFeWJSUmkzbnFWQdIBuwFBVV95cUxNRldyQ2ZKckM4WVhLbkY3R25mS3BvNmZFSzE4YVFKcks2dEFSbUI0dWpRWmhoN2d2RmVBUUowNlNKNTVOSUJzZ1NSZVRjT2RRU2tSS2pfNVVWdy1nSXpvbTBvVGxXZnBCcnBzTVdVVk1pbjVkei1EZEhuVkxOVmxoVVVESndLMkp0WE0ybTlRQ0lOd3N3NnlQczE2M0poQW1VN25uLVJUdVJfMDZocm80a1A2MlVEQWFRWnhJ?oc=5) | held, but looks like real news (bucket 2) |
+| #255 | [Хто стане наступним суперником Ярослава Амосова в UFC: п’ять найбіл…](https://news.google.com/rss/articles/CBMiuwFBVV95cUxNRldyQ2ZKckM4WVhLbkY3R25mS3BvNmZFSzE4YVFKcks2dEFSbUI0dWpRWmhoN2d2RmVBUUowNlNKNTVOSUJzZ1NSZVRjT2RRU2tSS2pfNVVWdy1nSXpvbTBvVGxXZnBCcnBzTVdVVk1pbjVkei1EZEhuVkxOVmxoVVVESndLMkp0WE0ybTlRQ0lOd3N3NnlQczE2M0poQW1VN25uLVJUdVJfMDZocm80a1A2MlVEQWFRWnhJ0gG7AUFVX3lxTE1GV3JDZkpyQzhZWEtuRjdHbmZLcG82ZkVLMThhUUpySzZ0QVJtQjR1alFaaGg3Z3ZGZUFRSjA2U0o1NU5JQnNnU1JlVGNPZFFTa1JLal81VVZ3LWdJem9tMG9UbFdmcEJycHNNV1VWTWluNWR6LURkSG5WTE5WbGhVVURKd0sySnRYTTJtOVFDSU53c3c2eVBzMTYzSmhBbVU3bm4tUlR1Ul8wNmhybzRrUDYyVURBYVFaeEk?oc=5) | re-read after a disagreement |
+| #258 | [Islam Makhachev’s greatness questioned by UFC legend who makes argu…](https://bloodyelbow.com/2026/08/19/islam-makhachevs-greatness-questioned-by-ufc-legend-who-makes-argument-for-ilia-topuria-comparison/) | a reader was unsure |
+| #263 | [Ilia Topuria next fight? ‘Easy’ Michael Chandler, according to UFC …](https://news.google.com/rss/articles/CBMiqgFBVV95cUxQUU5SUnMzMy1wTVp5UHdaZFNWbFlZbFI1VHg0WERVdFhwU3BjLThfWWdkeFdRZm9kczdIUzVvMm14eFQydm9Td2trX0xxR1ZTNDNRQmw0TER5VlNMRkFCM0pzOFNxbHU0akF0V3V5MDRQTU43MUQzUl83a2taNHNwdU9JNFlqdURCQ2ZQVmVIRGQ5NmNoUGZvREtJVjVrUGxUdmg4aElqb3k1Zw?oc=5) | a reader was unsure |
+| #268 | [Video Así piensa Ilia Topuria, "El Matador" de la UFC - Clarin.com](https://news.google.com/rss/articles/CBMihgFBVV95cUxORG1OcFVxODNVclFBeFQ4ZEg1MGxjRzNkWW1DdWsxcEVaenlsemFaNDdfRDVoS0MtNVRuR212WXVMbWV0STU0bWwyb3FDQ21wMFRxTHF4QS1CMF94OHE3eEdqZUpDN0RUTm91bWdOVUtyQWk0RzQ5OWdYMjd6QlN3NE1tUTNlZw?oc=5) | held, but looks like real news (bucket 2) |
+| #271 | [El preparador de Topuria pone fecha a su regreso y desvela nuevos d…](https://www.larazon.es/deportes/preparador-topuria-pone-fecha-regreso-desvela-nuevos-datos-calvario-podia-ver-respirar_202608206a86e55ea046ad6ebcbc65fc.html) | held, but looks like real news (bucket 2) |
+| #280 | [“Just Rich Kid”: Paddy Pimblett Blasts Arman Tsarukyan While Callin…](https://news.google.com/rss/articles/CBMitgFBVV95cUxQa3NjNXo4VlNWUHFUTVp4Z0E0T1dwUnlMTmVxb20zLU1ZMTR0OFdBYkRBNjQwcDVDNGZGbGJqcFJHSUdNbE9hNy05UUFMV1Y5NnIyNmtqRl9tblU3R3pfelhOaXltTXRYSm9xSGZLR2c2RDFab3pCdjdlUnRaNklOZEFTcU83WVFjU0FnbnQ4dTN1RTJreDBKRFpxN2xCOWJ4VFMzVHBaZ0pUNG5NNmVRQWkyMHdkZw?oc=5) | a reader was unsure |
+| #284 | [Arman Tsarukyan Takes Another Shot at Ilia Topuria With Disrespectf…](https://news.google.com/rss/articles/CBMidEFVX3lxTE9wZ3FQTE9wMHRUSWY1b2htQ3JBMzhtd0pxcXU5XzFqc2FVM0ZwS1UxbzFDRHl2VGZpbzloMEpmNldlWV8tMmZ2Ty1WNzlLQ0dFUU1KWWRWSXE3LUR1Tkc3cDNGWWEyMTNwbUxUYlhMOFFGMXdF?oc=5) | a reader was unsure |
+| #293 | [UFC Fans Drop Definitive Take on Whether Islam Makhachev vs. Ilia T…](https://mmasucka.com/news/ufc-fans-drops-definitive-take-on-whether-islam-makhachev-vs-ilia-topuria-was-still-possible/) | re-read after a disagreement |
+| #294 | [Paddy Pimblett: 'No respect' for Arman Tsarukyan, Ilia Topuria beef…](https://news.google.com/rss/articles/CBMiuAFBVV95cUxPZVBZNDI5NWRzdlJyMWY3YThLR0JSV3R3TkJHM0FVR3hReldtUllPSnk1T2hJRC1McXRjUERQbEFLV1BNMHVTSDIyQmdNSWNaRGdPQkdYTlVmNl9sNUxhMzNrUmVuN0lhUUJkbjA5S0FlV0NpTHFPNVN5eEYxN0RvVVlnckRIdmJhbHd0cW94NUFoYUZYUGRCdkNxZWVPNTRxS1o0X2VoZVlHa1RZYzRXQVRIaVR6TDZM0gG-AUFVX3lxTE5HR1ZwMmF4cE1MNi1adE03eEhQekltLTNwSl94bml4eFJzc2diS243TkRRLXVQRnBjRTJvZnhjRmFERzlwNG5KbHlSeWlYa1phcGFySmNoZmhyWUJobGFEeHpVdFFaRXRnZi1PdHFGa21ydHMyaVRRb2VSYThqYS1RQXplcF9DMjFjczctSGFMYlZacGgxaUxKcHRHQjB5QkdjaFJaMjFPcWNaLTdVN0VaNVp4T0N5bXRkelJFc3c?oc=5) | held, but looks like real news (bucket 2) |
+| #299 | [Paddy Pimblett agradece a Gaethje por ganar a Ilia Topuria en UFC F…](https://www.mundodeportivo.com/ufc/20260821/1004218200/paddy-pimblett-agradece-gaethje-vencer-ilia-topuria-ufc-freedom-250-agradable-verte-vencer.html) | re-read after a disagreement |
+| #301 | [«Полетів хейт». Боєць ММА пояснив, після чого в UFC уникають боїв у…](https://sport.nv.ua/ukr/mma/danilo-donchenko-rozpoviv-chomu-ufc-ne-organizovuye-boji-ukrajinciv-proti-rosiyan-50634679.html) | held, but looks like real news (bucket 2) |
+| #302 | [«Ти тут нікому не потрібен». Донченко сказав, за що можуть вигнати …](https://news.google.com/rss/articles/CBMivwFBVV95cUxQSXlNUVlJeDFqUjQ0SGJKTHAzSF9PZ1IybUlMaGVXdWpZUVVaVklDeUVkSkVfMlZnX3R1Z1ZZVmV2anJIX3kzbGF1M0RoX2pfak8tc2ltNGUxQ0RVRWlKT2lfQWktXzV3RV95MG9DQThoVHRDUThlckItS1VUbVp2cURoaUFNaU9NZmF6NUdJVkFXTDlZX1VCLWdPaFA5V0tsZDZ4cC1oSFBIQVE5NWZuU3ExV3g2TmlqUklhTkd0SdIBvwFBVV95cUxQMmoyVDBsV2pjQ2xIakJXTlpoSTROeFRUSUd5SS1TRWE2MWVjOHlZaVdKbzB5ME8tWnBIMnJLeEpnQnpUMjdTX1UyOFd3bnVFdGRJbFhPQUh2VjQwYWlUWVZWTXV3bzhQdU9kNWRzV3VYNlc1RE5jaUhSekxJWXEtYUliWndjTG93SjZmdUM4R0dwUDliU1E3ZnNlZlVJY3o1bk9pYS1Ia2stRE1GZldsa2ktakJrRkZXVjl4QUoyVQ?oc=5) | held, but looks like real news (bucket 2) |
+| #307 | [Paddy Pimblett: 'No respect' for Arman Tsarukyan, Ilia Topuria beef…](https://www.sherdog.com/news/news/Paddy-Pimblett-No-respect-for-Arman-Tsarukyan-Ilia-Topuria-beef-is-different-202462) | held, but looks like real news (bucket 2) |
+| #309 | [«Ти тут нікому не потрібен». Донченко сказав, за що можуть вигнати …](https://news.google.com/rss/articles/CBMivwFBVV95cUxQMmoyVDBsV2pjQ2xIakJXTlpoSTROeFRUSUd5SS1TRWE2MWVjOHlZaVdKbzB5ME8tWnBIMnJLeEpnQnpUMjdTX1UyOFd3bnVFdGRJbFhPQUh2VjQwYWlUWVZWTXV3bzhQdU9kNWRzV3VYNlc1RE5jaUhSekxJWXEtYUliWndjTG93SjZmdUM4R0dwUDliU1E3ZnNlZlVJY3o1bk9pYS1Ia2stRE1GZldsa2ktakJrRkZXVjl4QUoyVdIBvwFBVV95cUxQMmoyVDBsV2pjQ2xIakJXTlpoSTROeFRUSUd5SS1TRWE2MWVjOHlZaVdKbzB5ME8tWnBIMnJLeEpnQnpUMjdTX1UyOFd3bnVFdGRJbFhPQUh2VjQwYWlUWVZWTXV3bzhQdU9kNWRzV3VYNlc1RE5jaUhSekxJWXEtYUliWndjTG93SjZmdUM4R0dwUDliU1E3ZnNlZlVJY3o1bk9pYS1Ia2stRE1GZldsa2ktakJrRkZXVjl4QUoyVQ?oc=5) | re-read after a disagreement |
+| #322 | [«Платили 1500 гривень за перемогу». Боєць UFC розповів про бої в ки…](https://sport.nv.ua/ukr/mma/danijil-donchenko-rozpoviv-koli-pochav-zaroblyati-na-boyah-u-mma-50634875.html) | held, but looks like real news (bucket 2) |
+| #329 | [UFC 328: Yaroslav Amosov full post-fight interview - Yahoo Sports](https://sports.yahoo.com/videos/ufc-328-yaroslav-amosov-post-015728362.html?format=embed) | your note reads as "old" — confirm the code |
+| #337 | [Islam Makhachev vs. Ilia Topuria Is Closer Than Ever, Here’s Why - …](https://deadspin.com/islam-makhachev-vs-ilia-topuria-is-closer-than-ever-heres-why/) | held, but looks like real news (bucket 2) |
+| #345 | [El gran amigo de Topuria en la UFC da una nueva actualización de su…](https://www.eurosport.es/mma/ufc/2026/actualizacion-estado-topuria-derrota-gaethje-salud-animo-regreso-pelea_sto23330817/story.shtml) | your note reads as "dup" of #327 — confirm the code |
+| #351 | [Michael Bisping leaks potential Paddy Pimblett title fight to take …](https://bloodyelbow.com/2026/08/24/michael-bisping-leaks-potential-paddy-pimblett-title-fight-to-take-place-at-ufc-334/) | re-read after a disagreement |
+| #358 | [‘F*ck Those People’: Merab Dvalishvili Slams Ilia Topuria Critics -…](https://mmasucka.com/news/fck-those-people-merab-dvalishvili-slams-ilia-topuria-critics/) | held, but looks like real news (bucket 2) |
+| #361 | ["Ilia Topuria está disfrutando de la vida" - Mundo Deportivo](https://news.google.com/rss/articles/CBMixAFBVV95cUxOTEhtaEhTazloLWJReXpKeEtWMmI1M2RmVGgxTGI1blQwZmNldEktWkpHTnU3LXlXeHN3bFpuQ19FaXpFR05Hc3BUWFA1Sy1HZjdWcml4TWN1dnVnQUdSMDNHNDg1aHZRemN0eW9vS1RhZ1BSM2tsZTZBYzFySFZYR0ZHNzRvT0RxTHg5M1RJVWF3aDVHUkdrcTF4aXNLbWxpcjJwWGtYZmVFYjItM3pvVW11U3NxYk82enVIQXlCQWVxZHcx0gHSAUFVX3lxTE5HU2lZcXotTTdKQUluSWtnSUZTSkRBaHZvLS1ncG1OZ2RyWXl1aWFuYjNjVWVxTXBRYjhscm55MmRvcjcwVDl5a2xEUE9Qalo3Zm9JY2pBT1pMU1lfV09aUWozczQ4U25Qd1JsU2JjT3g5QU5yNGZDeE5lVVB1U3dxMkxDNUQxZEt5OFRtbnR6Z0FPcEJ1bnliOHlWODIyQnNkTmx4SlRYa2Ntb3lRaF8wSnBmcGVfcVZZVk9jWC1OQTh0aU41MWFuWjNvRXVicE8wQQ?oc=5) | re-read after a disagreement |
+| #364 | [«Це коштує втричі дорожче». Даниїл Донченко назвав різницю між Укра…](https://news.google.com/rss/articles/CBMiuwFBVV95cUxOMlZ4RW5adkZVNlRfamEwRXRrNUJWN3BTYzFtZnEtWWhxT2VBVU8wcE9LZHY4RklUS3lOMmxsMEpfNEFORkt3akJaWjM1WmJob000LVRDY0NwOG5pdUxpb3FPYXBOUFlfbW5xc2FzdXV5QUlGOHhYM1pKTGd2WER3N1BzVXFTZk9VcUIxcmNtY1ExWHU2dnJUbDc0U1RtV2N3MTlrN1l1ZS0wTzBfdjdxbDdWY0pLb1FLUS1V0gG7AUFVX3lxTE1kRmRtUlpTM2ZoTnZ5Y1pYVGR3eV8xSl9TNUhSZ1JpNTIwbGV4RzI0S2pnMWg2T01hU3JiR0F0N3JVTGVWejVVQVdMOG4yZFFYZEFmUWluSkR0Uy11aGVGcUpXTlBfcnNoLTBHcXI0OUk2OEtyUk5pR25tRk1SU3I4Vy01bmdTWGxxRUl5a090SDluMTlUS0ZoRkwxTjhRTV9TcjRvSFNTMUJ2RlNhMDQ5b1lXOFpVZUJyTWs?oc=5) | held, but looks like real news (bucket 2) |
+| #369 | [La deseada pelea de Ilia Topuria frente a Islam Makhachev se compli…](https://www.20minutos.es/deportes/deseada-pelea-ilia-topuria-frente-islam-makhachev-se-complica-creo-que-me-esperan-menos-tres-combates_7029128_0.html) | held, but looks like real news (bucket 2) |
+| #379 | [Will Ilia Topuria Return Into Championship Territory Again? - MMA S…](https://mmasucka.com/news/will-ilia-topuria-get-back-into-championship-territory-again/) | held, but looks like real news (bucket 2) |
+| #381 | [Ilia Topuria Slams Back At Paddy Pimblett’s Trash Talk - MMA Sucka](https://mmasucka.com/news/ilia-topuria-slams-back-at-paddy-pimbletts-trash-talk/) | held, but looks like real news (bucket 2) |
+| #382 | [UFC Analyst Explains Why Ilia Topuria’s Next Fight Matters - MMA Sucka](https://mmasucka.com/news/ufc-analyst-details-why-next-fight-will-be-critical-for-ilia-topuria/) | held, but looks like real news (bucket 2) |
+| #384 | [Will Ilia Topuria Get Back Into Championship Territory Again? - MMA…](https://mmasucka.com/opinion/will-ilia-topuria-get-back-into-championship-territory-again/) | re-read after a disagreement |
+| #385 | [Ilia Topuria Slams Back At Paddy Pimblett’s Trash Talk - MMA Sucka](http://mmasucka.com/news/ilia-topuria-slams-back-at-paddy-pimbletts-trash-talk/) | re-read after a disagreement |
+| #401 | [Ilia Topuria ya tiene fecha de vuelta y no habrá que esperar a 2027…](https://news.google.com/rss/articles/CBMiogFBVV95cUxNYTlmcU93NTBoWEp2bXJIdWFseGFUTjZ1QUpyREhXTi1HSnVURUlWRzNxOGY4MkJBZC1NZk82RXBodjF2YUJLcnd5RXZfMDZHNUdUM19fLVpXY2JpZC1ZZ19wUTJsVVNQVlRDUGtjU0N6NlZuejlCZ2tMVjdkS0NIT3pmd1dTYkhCZGI5TFBVenpYRmJUQWJDWHRiVkI3cFJpRHc?oc=5) | held, but looks like real news (bucket 2) |
+| #418 | [Перемога - Архів за 10 травня 2026 року - Вечірній Київ](https://vechirniy.kyiv.ua/tag/987/archive/2026/05/10/) | a reader was unsure |
+| #423 | [Pimblett quiere luchar contra Topuria: "Es un completo idiota, así …](https://www.larazon.es/deportes/pimblett-quiere-luchar-topuria-completo-idiota-asi-que-encantaria-pelear-darle-cana_202608286a913db5ae2f3735da198875.html) | held, but looks like real news (bucket 2) |
+| #424 | [Usman Nurmagomedov Trashes UFC Lightweight Top Ten - boxingnews.com](https://boxingnews.com/news/usman-nurmagomedov-ufc-lightweight-top-ten) | re-read after a disagreement |
+| #427 | [Ilia Topuria (29 años): 'Siempre fui un niño al que no le gustaban …](https://www.sport.es/es/noticias/ufc/ilia-topuria-nino-no-gustaban-confrontaciones-calle-133726113) | re-read after a disagreement |
+| #430 | [Charles Oliveira’s coach names opponents worthy of BMF title fights…](https://www.mmafighting.com/ufc/507242/charles-oliveiras-coach-names-opponents-worthy-of-bmf-title-fights-and-why-arman-tsarukyan-isnt-one) | re-read after a disagreement |
+| #443 | [Gaethje se planta: no a Topuria y adiós a pelear este año - Diario AS](https://as.com/masdeporte/polideportivo/gaethje-se-planta-no-a-topuria-y-adios-a-pelear-este-ano-f202608-n/) | re-read after a disagreement |
+| #444 | [Justin Gaethje, blessé depuis son combat face à Ilia Topuria - La S…](https://lasueur.com/justin-gaethje-blesse-depuis-combat-ilia-topuria-29-8-2026) | re-read after a disagreement |
+| #446 | [‘Still Can’t Punch’ – Justin Gaethje Reveals Lasting Damage From Il…](http://mmasucka.com/news/still-cant-punch-justin-gaethje-reveals-lasting-damage-from-ilia-topuria-fight/) | re-read after a disagreement |
+| #451 | [Paddy Pimblett calienta una futura pelea con Ilia Topuria: «Me enca…](https://www.abc.es/deportes/mma/paddy-pimblett-calienta-futura-pelea-ilia-topuria-20260825015716-nt.html) | held, but looks like real news (bucket 2) |
+| #456 | [El entrenador de Makhachev aleja el posible combate contra Ilia Top…](https://www.infobae.com/espana/deportes/2026/08/30/el-entrenador-de-makhachev-aleja-el-posible-combate-contra-ilia-topuria-su-derrota-ha-cambiado-el-rumbo-de-esa-pelea/) | held, but looks like real news (bucket 2) |
+| #463 | [Justin Gaethje still recovering from UFC White House, won’t return …](https://www.mmafighting.com/ufc/507810/justin-gaethje-still-recovering-from-ufc-white-house-wont-return-until-2027-i-still-cant-punch-anything) | re-read after a disagreement |
+| #467 | [Justin Gaethje Opens Up On Injuries That Will Keep Him Out Until 20…](https://www.lowkickmma.com/justin-gaethje-opens-up-on-injuries-that-will-keep-him-out-until-2027/) | re-read after a disagreement |
+| #470 | [Hooker On Topuria Avoiding Nurmagomedov Bout - boxingnews.com](https://boxingnews.com/news/hooker-topuria-nurmagomedov-ufc) | held, but looks like real news (bucket 2) |
+| #474 | [Коефіцієнти на бій Донченко – Соріано - Tribuna.com](https://ua.tribuna.com/uk/amp/betting/blogs/3179669-koefitsiyenty-na-biy-donchenko-soriano/) | re-read after a disagreement |
+| #480 | [El reto en el horizonte de Topuria ante 'el nuevo Makhachev': "Nadi…](https://www.eurosport.es/mma/ufc/2026/nuevo-reto-ilia-topuria-nuevo-makhachev-usman-nurmagomedov-nadie-quiere-aceptar-ese-riesgo_sto23332823/story.shtml) | re-read after a disagreement |
+| #485 | [Розклад головних поєдинків тижня: Донченко – Соріано - Tribuna.com](https://news.google.com/rss/articles/CBMiqgFBVV95cUxPU3lUcmV2WXFGckZqWGJLMnRMYTZhcVctcm1oVGpGM080bnc5RDdidTNHLXZielNwNzFqb2lNUm9TSk4xSzZjUjZXdmRZYVFNVFRrUTd0bXd3QmpvUFZzVFY2Yk5PMkdOVC0zempDWjIzR0M5RWRwWEI3cEJjRVdsYjF5dHZudWhLTV9ObWxjT3NpVWxIdXJVOEUyT2kwSVc1aER1b0RJWFdBd9IBqgFBVV95cUxPU3lUcmV2WXFGckZqWGJLMnRMYTZhcVctcm1oVGpGM080bnc5RDdidTNHLXZielNwNzFqb2lNUm9TSk4xSzZjUjZXdmRZYVFNVFRrUTd0bXd3QmpvUFZzVFY2Yk5PMkdOVC0zempDWjIzR0M5RWRwWEI3cEJjRVdsYjF5dHZudWhLTV9ObWxjT3NpVWxIdXJVOEUyT2kwSVc1aER1b0RJWFdBdw?oc=5) | re-read after a disagreement |
+| #490 | [Daniil Donchenko Got His Wish - UFC.com](https://www.ufc.com/news/daniil-donchenko-got-his-wish-ufc-paris) | held, but looks like real news (bucket 2) |
+| #496 | [Dan Hooker Predicts Justin Gaethje vs. Paddy Pimblett 2 - MMA Sucka](https://mmasucka.com/news/whatever-the-fck-he-wants-dan-hooker-backs-justin-gaethje-to-choose-his-next-fight-but-predicts-padd/) | re-read after a disagreement |
+| #498 | [Justin Gaethje would entertain Conor McGregor fight but doubts it h…](https://mmajunkie.usatoday.com/story/sports/ufc/2026/08/31/ufc-justin-gaethje-would-fight-conor-mcgregor-2027-doubtful/91543335007/) | re-read after a disagreement |
+| #499 | [Justin Gaethje Reacts To Potential Conor McGregor Fight: "I Would E…](https://www.lowkickmma.com/justin-gaethje-on-potential-conor-mcgregor-fight/) | re-read after a disagreement |
+| #505 | [Arman Tsarukyan Explains Why UFC Would Not Make Ilia Topuria Vs. Pa…](https://www.lowkickmma.com/arman-tsarukyan-ufc-ilia-topuria-paddy-pimblett/) | re-read after a disagreement |
+| #506 | [Arman Tsarukyan: Why the UFC won’t make Ilia Topuria vs. Paddy Pimb…](https://bloodyelbow.com/2026/08/31/arman-tsarukyan-why-the-ufc-wont-make-ilia-topuria-vs-paddy-pimblett-next/) | re-read after a disagreement |
+| #512 | [Joaquín Gomis, campeón de España de judo: "No conozco a nadie con e…](https://www.sport.es/es/noticias/outdoor/joaquin-gomis-campeon-espana-judo-nivel-ilia-topuria-133819819) | held, but looks like real news (bucket 1) |
+| #521 | [Daniil Donchenko: "I Have Everything And Even More" \| UFC Paris - u…](https://www.ufc.com/video/159726) | held, but looks like real news (bucket 2) |
+| #524 | [Sean O’Malley weighs in on Ilia Topuria vs. Paddy Pimblett rumors a…](https://mmasucka.com/news/sean-omalley-weighs-in-on-ilia-topuria-vs-paddy-pimblett-rumors-and-shares-his-verdict/) | held, but looks like real news (bucket 2) |
+| #530 | [Topuria podría volver en diciembre ante Pimblett: "He oído rumores,…](https://www.eurosport.es/mma/ufc/2026/ilia-topuria-vuelta-pelea-paddy-pimblett-las-vegas-fecha_sto23333256/story.shtml) | re-read after a disagreement |
+| #534 | [Justin Gaethje says his UFC legacy is ‘fulfilled’ after Topuria win](https://www.sherdog.com/news/news/Justin-Gaethje-says-his-UFC-legacy-is-fulfilled-after-Topuria-win-202627) | re-read after a disagreement |
+| #536 | [Sean O’Malley Picks Paddy Pimblett Over Ilia Topuria Amid December …](https://middleeasy.com/mma-news/sean-omalley-paddy-pimblett-ilia-topuria-december-rumor/) | re-read after a disagreement |
+| #537 | [Inside Ilia Topuria's Gruelling Recovery After Shocking White House…](https://streamlinefeed.co.ke/news/inside-ilia-topuria-gruelling-recovery-after-shocking-white-house-title-loss) | held, but looks like real news (bucket 2) |
+| #538 | [Charles Oliveira quiere adelantar a Topuria y pelear con Justin Gae…](https://www.20minutos.es/deportes/charles-oliveira-quiere-adelantar-topuria-pelear-con-justin-gaethje-con-varios-cinturones-juego-no-hay-escapatoria_7030538_0.html) | re-read after a disagreement |
+| #542 | [La reprimenda de Dana White a Usman, posible fichaje de la UFC y ri…](https://news.google.com/rss/articles/CBMi7AFBVV95cUxPZzU5SW4xSlhLQzk4NjA1bWZDUk9XTHBKdFNuZDVzaGVESFlCOFdTcFZRazU1em5BR0pDbUEwdEp0TUU5MHI5OW01cHpZVWFPTzZoWmJLLVJYNldYczlaSGNYZU1maFhjcDlibE9DVV8zeFkyWWtGTmFSa2tKOTNoTGE0eGp5UFJYN1MxODN1WW9vT2xieXpQR0pEVEhKZC1PR0dScFhiUWh1bGVBNEl2R0lTMmQ2Z1NMczFDeU1hcTJRc2UxX2Flcm5rOFdpUXJNd3haQzYxTnhtay11dHc1Y2JnZS12T1ZRVjNhMg?oc=5) | re-read after a disagreement |
+| #543 | [Ilia Topuria (29 años): «No hay alimento sin el que no pueda vivir,…](https://news.google.com/rss/articles/CBMi-wFBVV95cUxPSGZ2QzVNZjRrcm1zOV9zb2ZYSEZBU3RlRWFiVUFBS3psTzZCekVtOTZyQkR6V3ZESWFmeFBiVl9VUzVVU3UyckkxakhaRFBBbHVHVkkzMkFtdl9ESGpDb2ZYR0lDcThjY2JQQ25NbFp5cUs1eW5vb283eHJCaXh0ZGE1ZmtmZ2lyZ0UxR2doXzlNUnZVT1dLY25VMmVWaVNuSzFCWTNQM0FuV2RvNkZHRkt2ZFlFdGp1UmZGa08yZE0zLWZuV3BHTlQwYUF2N09TOVVBT3MybTd2R0tCX3RmWDU2QVdYcjFEU1oycExZVG1rY0lDMzNRV2NGUdIBgAJBVV95cUxPaTduZ0Vrc2RqYnQ2OVZkRW9seXM2UENaOFkxWDVnUTBpWGF3MTNDOEtqNDlKUGpnTVlxZ3k4eTVYVm9wejk3YnlXZFBLV2NtcnpQdDFzdFRCeXFQRGZ1aUFFLUdxbUY0ZzFPdnlRSGtiM3hDaHl1dXVvWDhTNUE1TGNUTElWNHdnajlrc21sZDQ4Wk4xSzBVYkJYT3dUZGwtUTF1Yy15aGdhLS1IWkNHRGlNZmtpSVZKN29QT241clFwWTlMem8wQlF0QTk0VTRWRG5tNHo0ZVBMTEE2d2VxUEtPcTU0QnRWZm1vRTExNlFhT29PdThlUUV5d2V6bWJF?oc=5) | re-read after a disagreement |
+| #544 | [O'Malley ve posible el Topuria vs Pimblett de cara al mes de diciem…](https://www.mundodeportivo.com/ufc/20260902/1004222493/malley-ve-posible-topuria-vs-pimblett-cara-mes-diciembre.html) | re-read after a disagreement |
+| #546 | [Justin Gaethje believes his legacy is already cemented after world …](https://www.cbssports.com/ufc/news/justin-gaethje-ufc-legacy-record-next-fight/) | re-read after a disagreement |
+| #549 | [Justin Gaethje prefers Conor McGregor fight over avenging losses: ‘…](https://sports.yahoo.com/articles/justin-gaethje-prefers-conor-mcgregor-180000921.html) | re-read after a disagreement |
+| #550 | [Justin Gaethje prefers Conor McGregor fight over avenging losses: ‘…](https://www.mmafighting.com/ufc/508288/justin-gaethje-prefers-conor-mcgregor-fight-over-avenging-losses-fun-to-shut-him-up) | re-read after a disagreement |
+| #567 | [Daniil Donchenko vs Punahele Soriano UFC Paris Prediction, Odds & P…](https://www.tonyspicks.com/2026/09/03/daniil-donchenko-vs-punahele-soriano-ufc-paris-picks-prediction-september-5-2026/) | a reader was unsure |
+| #568 | [Usman Nurmagomedov vuelva a atacar a Topuria: "Se creía superior y …](https://news.google.com/rss/articles/CBMi9AFBVV95cUxOM0g2Y0RudTNqOV9KUFY0bTZ0WEwtc296OXYwUUVPbWsxTmdpTlZEQzI3dzJjT2dSeEItRUIzZjFiX2hZUTZQZ0FBVTBaLU5OVWtFYmdiTFFBTWEwSEpPZ3lqLXo0NldLdkQ5T0JsYjBqS2xBamRkZHdrSzI1b0R6ZGdZd0txY0RyR0tpMTVGYmdoVUNPLXI2LTNVV3k1OG4tSGs0eW5RVFRuTTRMakdrNHU1cWtwUExaMWZfRi03NGRWV1JNNmdDc2tOMmJodFhUMTlkWldwY2luaEZ6U2RBa1Y3TkJWN0NVSnh2d21PQXZZeDR2?oc=5) | held, but looks like real news (bucket 2) |
+| #572 | [New Ilia Topuria update as former UFC champion’s plan to return to …](https://bloodyelbow.com/2026/09/03/new-ilia-topuria-update-as-former-ufc-champions-plan-to-return-to-the-public-eye-revealed/) | held, but looks like real news (bucket 2) |
+| #583 | [Daniil Donchenko vs Punahele Soriano Prediction - 9/5/2026 - ATS.io](https://ats.io/mma/daniil-donchenko-vs-punahele-soriano-prediction-preview-9-5-2026/) | a reader was unsure |
+| #599 | [Найважчий бій для Донченка. Що чекає на українця в Парижі](https://sport.ua/uk/news/903883-nayvazhchiy-biy-dlya-donchenka-shcho-chekaie-na-ukraintsya-v-parizhi) | held, but looks like real news (bucket 2) |
+| #601 | [Данило Донченко та Пунахеле Соріано показали однакову вагу перед бо…](https://champion.com.ua/ukr/mma/danilo-donchenko-ta-punahele-soriano-pokazali-odnakovu-vagu-pered-boyem-na-ufc-fight-night-287-1084503/) | held, but looks like real news (bucket 2) |
+| #602 | [Данило Донченко: «Ввечері, думаю, 86 кг буду важити» - Tribuna.com](https://ua.tribuna.com/uk/boxing/1000000373419-danylo-donchenko-vvecheri-dumayu-86-kh-budu-vazhyty/) | posted; reviewer says 2 fine |
+| #604 | [Українець Донченко у головному шоу UFC: хто це і що за суперник - T…](https://news.google.com/rss/articles/CBMirgFBVV95cUxQVzdEbHNHdEt6NzZfTHZvMzdFMXd4dTFlbFQ2MGJPV09RSEhSMEVwOEFJa3Z6V2pTQWlvcVVJTTlOZl9rWVd1S01XVlhhTDJWc1BpUFVETUZ4YVFnaVBmREE4Rzh2TVhUMl9mSWd5VWdRZVpKeDhhOFJYd3NfNXFxVjBRQ2kya0tKdnd1RWJ2eG9HVHdFR3cyWG5NWVBEVnp5RjdYcm83a2t0VlBJX1HSAbMBQVVfeXFMTWJoUEZ0cVdEU2hpTkhWVEVJcXFXaUFCRmhjZFN5cDd2dUgyX2ZvM0tOUVFGV2s0R1VwS2xmdzB0dUF0MEVHS2Y4QnI4UUsyNW5yLWE2cDEtNHZ4SVJyTVZScGpzZERBNEpEdlZrY0VFYjNZVmVYbGdvbWZNZlhwbXVoMVRpdWV1SnZ3OE9iLW80YWhLbzNUY2E5a0xmcllxYWRJaTlYaTZKWWtYUTI4a282UW8?oc=5) | re-read after a disagreement |
+| #606 | [Joaquín Gomis, campeón de España de judo: "No conozco a nadie con e…](https://www.elperiodico.com/es/deportes/20260904/joaquin-gomis-campeon-espana-judo-nivel-ilia-topuria-dv-et-133945117) | held, but looks like real news (bucket 2) |
+| #610 | [Paddy Pimblett backed to KO Ilia Topuria by beloved teammate Molly …](https://bloodyelbow.com/2026/09/04/paddy-pimblett-backed-to-ko-ilia-topuria-by-beloved-teammate-molly-mccann/) | posted; reviewer says 3 junk |
+| #617 | [Донченко та Соріано показали однакову вагу напередодні бою на турні…](https://ua.tribuna.com/uk/boxing/1000000373417-donchenko-ta-soriano-pokazaly-odnakovu-vahu-naperedodni/) | re-read after a disagreement |
+| #618 | [Донченко та Соріано показали однакову вагу напередодні бою на турні…](https://ua.tribuna.com/uk/amp/boxing/1000000373417-donchenko-ta-soriano-pokazaly-odnakovu-vahu-naperedodni/) | re-read after a disagreement |
+| #619 | [Найважчий бій для Донченка. Що чекає на українця в Парижі - Sport.ua](https://sport.ua/uk/news/903883-nayvazhchiy-biy-dlya-donchenka-shcho-chekaie-na-ukraintsya-v-parizhi) | held, but looks like real news (bucket 2) |
+| #620 | [Ilia Topuria anuncia su vuelta a la UFC: "Después de visitar ese in…](https://www.20minutos.es/deportes/ilia-topuria-anuncia-su-vuelta-ufc-despues-visitar-ese-infierno-soy-mas-fuerte-que-antes_7033071_0.html) | posted; reviewer says 1 fine |
+| #625 | [Донченко і Соріано зійшлися на вагах: обом по 77,11 кг - Duflu -](https://duflu.org.ua/donchenko-i-soriano-ziishlysia-na-vahakh-obom-po-7711-kh/) | re-read after a disagreement |
+| #626 | [Egomaniacal Ilia Topuria creates UFC short film turning Justin Gaet…](https://www.mmamania.com/ufc-white-house-2026-fight-card-start-time-full-results-dana-white-conor-mcgregor-cbs-mma/469393/egomaniac-ilia-topuria-ufc-short-film-turning-justin-gaethje-beating-heroic-father-son-journey) | posted; reviewer says 2 fine |
+| #627 | [Topuria Breaks Silence After UFC White House Loss - boxingnews.com](https://boxingnews.com/news/topuria-breaks-silence-ufc-white-house-loss) | posted; reviewer says 3 dup |
+| #642 | [Донченко та Соріано провели битву поглядів - Tribuna.com](https://ua.tribuna.com/uk/amp/boxing/1000000373539-donchenko-ta-soriano-provely-bytvu-pohlyadiv/) | posted; reviewer says 1 fine |
+| #653 | [Daniil Donchenko vs. Punahele Soriano, UFC Fight Night 287 ceremoni…](https://lufkindailynews.com/news_reuters/national/daniil-donchenko-vs-punahele-soriano-ufc-fight-night-287-ceremonial-weigh-ins-faceoff/image_cd47fdd9-c4b5-502a-bb2c-ce61a416b758.html) | posted; reviewer says 1 fine |
+| #661 | [UFC Paris Predictions for Hooker vs. Parnasse - lindyssports.com](https://lindyssports.com/other-sports/ufc-paris-predictions-for-hooker-vs-parnasse) | posted; reviewer says 3 junk |
+| #662 | [Ferran Torres Reacts To Ilia Topuria's Emotional Comeback Post And …](https://www.lowkickmma.com/ferran-torres-responds-to-ilia-topurias-comeback-post-to-son-hugo/) | a reader was unsure |
+| #670 | [Українець Донченко у головному шоу UFC: хто це і що за суперник - T…](https://news.google.com/rss/articles/CBMiswFBVV95cUxNYmhQRnRxV0RTaGlOSFZURUlxcVdpQUJGaGNkU3lwN3Z1SDJfZm8zS05RUUZXazRHVXBLbGZ3MHR1QXQwRUdLZjhCcjhRSzI1bnItYTZwMS00dnhJUnJNVlJwanNkREE0SkR2VmtjRUViM1lWZVhsZ29tZk1mWHBtdWgxVGl1ZXVKdnc4T2ItbzRhaEtvM1RjYTlrTGZyWXFhZElpOVhpNkpZa1hRMjhrbzZRb9IBswFBVV95cUxNYmhQRnRxV0RTaGlOSFZURUlxcVdpQUJGaGNkU3lwN3Z1SDJfZm8zS05RUUZXazRHVXBLbGZ3MHR1QXQwRUdLZjhCcjhRSzI1bnItYTZwMS00dnhJUnJNVlJwanNkREE0SkR2VmtjRUViM1lWZVhsZ29tZk1mWHBtdWgxVGl1ZXVKdnc4T2ItbzRhaEtvM1RjYTlrTGZyWXFhZElpOVhpNkpZa1hRMjhrbzZRbw?oc=5) | re-read after a disagreement |
+| #672 | [Daniil Donchenko eyes rankings spot with Punahele Soriano win at UF…](https://news.google.com/rss/articles/CBMiwgFBVV95cUxQQUpTQnhhSE1fbGJ4TmY2OTJaMGRxaHpCZGFKY0R6V0NQOEZ4RjRaRG11MldaWXZIc2N6VFBFY1M1SVl0aTljbUFVdTdmemxNZHNtZGtUc1lkMVE4UTVQOTNJTE4zZUJsLU5tVXBsN2VLOTZCTTVsamZuUzRkNGdkZmdoRUU2LTdHVGZ2MDVnQ1VMWmNpRzBVd3h1ZDhtajY4dEVfQnZORDdZVHhlMEUzRUFHTjQ0dWxHTzFhaEwxRE11QQ?oc=5) | a reader was unsure |
+| #676 | [¿Habrá Topuria-Pimblett en diciembre?: "A todos les ha llegado el r…](https://www.eurosport.es/mma/ufc/2026/habra-topuria-pimblett-en-diciembre-a-todos-les-ha-llegado-el-rumor-de-la-misma-manera_vid60097181/video.shtml) | held, but looks like real news (bucket 2) |
 
 ## Items
 
