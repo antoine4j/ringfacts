@@ -119,3 +119,29 @@ CREATE TABLE IF NOT EXISTS claim_sources (
 );
 
 CREATE INDEX IF NOT EXISTS claims_subject_status_idx ON claims (subject, status);
+
+-- Labels: one row per article per author — whoever judged it. Agreed with
+-- Anton 2026-09-04 evening as THE single place an article's label lives; the
+-- grading sheets and corpus files are printouts of this table, never sources.
+-- Rows are updated in place (Anton: a supersede chain "just complicates
+-- things"): a new opinion from the same author replaces the old one, and the
+-- current label is the `user` row when there is one, else the reviewer's.
+-- The pipeline's own diagnosis (posted, held_reason, nearest_item,
+-- claim_sources) is NOT copied here — the review sheet joins the two.
+-- Bucket and reason definitions: docs/goals.md, "The reason codes".
+CREATE TABLE IF NOT EXISTS feedback (
+  id            bigint GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+  item_id       bigint NOT NULL REFERENCES items(id),
+  claim_id      bigint REFERENCES claims(id),   -- when the label is about an alert post
+  wanted_bucket smallint NOT NULL CHECK (wanted_bucket IN (1, 2, 3)),
+  reason        text NOT NULL CHECK (reason IN ('fine','junk','dup','old','wrong','loud','missed','other')),
+  dup_of        bigint REFERENCES items(id),    -- required when reason = 'dup'
+  note          text NOT NULL DEFAULT '',        -- the words, verbatim
+  author        text NOT NULL CHECK (author IN ('haiku','sonnet','claude','user')),
+  confidence    text NOT NULL CHECK (confidence IN ('high','medium','low')),
+  source        text NOT NULL CHECK (source IN ('backfill','grading-doc','review-sheet','bot')),
+  created_at    timestamptz NOT NULL DEFAULT now(),
+  updated_at    timestamptz NOT NULL DEFAULT now(),
+  UNIQUE (item_id, author),
+  CHECK (reason <> 'dup' OR dup_of IS NOT NULL)
+);
