@@ -12,6 +12,7 @@ import { openDb } from "../lib/db.js";
 import { parseSheetRow } from "./sheet.js";
 import { readAntonCell } from "./anton-cell.js";
 import { parseGradingRow } from "../corpus/graded.js";
+import { resolveRoot } from "./stories.js";
 
 const SHEET = "docs/grading/2026-09-05-all-articles.md";
 const GRADING_DOC = "docs/grading/2026-09-04-posted-30d.md";
@@ -110,7 +111,20 @@ for (const sheetRow of sheetRows) {
     throw new Error(`#${sheetRow.id}: dup without dup_of`);
   }
 }
-console.error(`${sheetRows.length} sheet rows -> ${pending.length} feedback rows; ${unreviewed} rows have an empty Anton cell`);
+// Every dup points at its story's root: follow chains through the user
+// rows (Anton's word) where they exist, else the reviewer's.
+const currentByItem = new Map();
+for (const row of pending) {
+  const existing = currentByItem.get(row.item_id);
+  if (!existing || row.author === "user") currentByItem.set(row.item_id, { reason: row.reason, dup_of: row.dup_of });
+}
+let rerooted = 0;
+for (const row of pending) {
+  if (row.reason !== "dup") continue;
+  const root = resolveRoot(row.item_id, currentByItem);
+  if (root !== row.dup_of) { row.dup_of = root; rerooted += 1; }
+}
+console.error(`${sheetRows.length} sheet rows -> ${pending.length} feedback rows; ${unreviewed} rows have an empty Anton cell; ${rerooted} dup links re-pointed at their root`);
 if (DRY_RUN) { console.error("DRY_RUN=1: nothing written"); process.exit(0); }
 
 // Write in id order, one statement per row.

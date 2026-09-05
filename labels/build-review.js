@@ -11,6 +11,9 @@ import { deriveReason } from "./derive-reason.js";
 import { formatSheetRow, machineSaid } from "./sheet.js";
 import { overturns } from "./doubts.js";
 import { isSure, isPlainGraded, labelsAgree } from "./certainty.js";
+import { buildStories, storyLine } from "./stories.js";
+import { parseSheetRow } from "./sheet.js";
+import { readAntonCell } from "./anton-cell.js";
 
 const INPUT_DIR = "tmp/labels/input";
 const OUTPUT_DIR = "tmp/labels/output";
@@ -67,6 +70,24 @@ function loadBlind() {
     }
   }
   return labels;
+}
+
+/**
+ * Anton's cells from the sheet as it stands, keyed by id, so a rebuild
+ * never loses a verdict he has already written (or given in chat and
+ * recorded with labels/set-anton.js). Pre-filled "as graded" cells are
+ * not kept: the certainty rule decides those afresh.
+ *
+ * @returns {Map<number, string>}
+ */
+function loadAntonCells() {
+  const cells = new Map();
+  if (!existsSync(SHEET)) return cells;
+  for (const line of readFileSync(SHEET, "utf8").split("\n")) {
+    const row = parseSheetRow(line);
+    if (row && row.anton && row.anton !== AS_GRADED) cells.set(row.id, row.anton);
+  }
+  return cells;
 }
 
 /**
@@ -159,8 +180,32 @@ const byPriority = [loadLabels("claude"), loadLabels("sonnet"), loadLabels("haik
 const blind = loadBlind();
 const postedIds = new Set([...inputs.values()].filter((item) => item.posted).map((item) => item.id));
 
-// One sheet row per item, in id order; the numbers table is tallied as we go.
+// Pass one: the label that stands for every item (a disagreeing blind
+// reading wins over a first pass), so stories can be resolved before the
+// rows are written.
 const ids = [...inputs.keys()].sort((a, b) => a - b);
+const standing = new Map();
+for (const id of ids) {
+  let label = graded.get(id) ?? currentLabel(id, byPriority);
+  if (!label) continue;
+  const second = blind.get(id);
+  if (second && label.author === "haiku" && !labelsAgree(label, second, postedIds)) label = second;
+  standing.set(id, label);
+}
+const antonCells = loadAntonCells();
+
+// Stories follow Anton's word where he has ruled, else the standing label.
+const forStories = new Map(standing);
+for (const [id, cell] of antonCells) {
+  const label = standing.get(id);
+  if (!label) continue;
+  const verdict = readAntonCell(cell, { ...label, posted: inputs.get(id).posted });
+  if (verdict) forStories.set(id, { reason: verdict.reason, dup_of: verdict.dup_of });
+}
+const stories = buildStories(forStories);
+
+// Pass two: one sheet row per item, in id order; the numbers table is
+// tallied as we go.
 const rows = [];
 const forAnton = [];
 const tally = {};
@@ -169,17 +214,14 @@ const bodyQuality = {};
 let unlabelled = 0;
 for (const id of ids) {
   const item = inputs.get(id);
-  let label = graded.get(id) ?? currentLabel(id, byPriority);
+  const label = standing.get(id);
   if (!label) { unlabelled += 1; continue; }
   const machine = machineSaid(item);
   const isGraded = graded.has(id);
-
-  // A blind second reading that disagrees with a first pass wins (Sonnet
-  // over Haiku) and marks the row for Anton; one that agrees makes it sure.
   const second = blind.get(id);
-  if (second && label.author === "haiku" && !labelsAgree(label, second, postedIds)) label = second;
+  const story = storyLine(id, stories, postedIds);
   const sure = isGraded ? isPlainGraded(label) : item.posted ? false : isSure(item.group, label, second, postedIds);
-  if (!sure) forAnton.push({ id, url: item.url, title: item.title, hint: hintFor(item, label, second) });
+  if (!sure) forAnton.push({ id, url: item.url, title: item.title, hint: hintFor(item, label, second) + (story ? `; ${story}` : "") });
 
   // Group tally: confirmed / overturned / unsure.
   const group = item.group;
@@ -197,7 +239,7 @@ for (const id of ids) {
   rows.push(formatSheetRow({
     id, url: item.url, date: shortDate(item.published_at), fighter: lastName(item.fighter),
     source: item.source, machine, bucket: label.bucket, author: label.author,
-    reason: label.reason, dup_of: label.dup_of, why: label.why, anton: sure ? AS_GRADED : "",
+    reason: label.reason, dup_of: stories.rootOf.get(id) ?? label.dup_of, why: story ? `${label.why} [${story}]` : label.why, anton: antonCells.get(id) ?? (sure ? AS_GRADED : ""),
   }));
 }
 
@@ -213,6 +255,11 @@ the pipeline did; **Claude** is the reviewer's bucket (Haiku first pass, marked
 **reason** is the label code that goes into the \`feedback\` table; **why** is
 the reviewer's one line. The 103 posts Anton graded on 2026-09-04 carry his
 bucket and his note verbatim, with the reason code derived from the note.
+
+**Stories.** A dup row's "dup of" names the **root**, the earliest article
+of the story, never a middle link; the why cell lists the whole story and
+which members the group saw. Writing "dup of #N" with any member's id is
+fine — the writer resolves it to the root.
 
 **Anton's column** is pre-filled **"as graded"** where two independent
 readers agreed the article is not for the group (or the wrong-subject hold
