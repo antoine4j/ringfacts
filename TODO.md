@@ -264,6 +264,30 @@ names the goal it moves.
    easy); if Eurosport is the only outlet, hold or post title-only. Not a
    blocklist for judging — the article still counts as news, only the link
    changes. Not built; Anton's call on the shape.
+3h. **Decode the Google URL before the early dup hold; give held items a
+   body** (G1, G3) — *diagnosed 2026-09-05 while chasing the "identical
+   re-ingests" in the all-articles sheet (#49/#57, #70/#71, #91/#92,
+   #97–#102, #109/#119, #114/#133, #189/#193).* The url hold did not fail:
+   it never got the chance. `hunter.js` runs the embedding gate (early
+   hold, line ~354) BEFORE `extractBody` (line ~366), so an item held as
+   an embedding dup is stored with its wrapped Google URL, no
+   `resolved_url` and no body. Measured since Aug 9: **206 embedding
+   holds, 4 resolved, 2 with a body**; every other outcome is ~98%
+   resolved. So the direct-feed copy arriving later matches nothing and
+   is held by embedding too — 12 same-address pairs in the archive, none
+   posted twice, all noise. The bigger cost: **197 of the 315
+   headline-only rows in the review are embedding holds by construction**
+   — the readers, and any future dedup-by-story, judged them blind. The
+   decoder itself works (all four sample URLs decode in ~250 ms via the
+   slow path; `decode-failed` is 10 rows total). Proposed shape: decode
+   (cheap, no LLM) before the early hold so the address is known; fetch
+   the body for held items too (~200 page fetches a month) so the story
+   labels and the feedback bot see text. Also from the same pass: of the
+   23 held-but-real-news rows, **12 were held by the matcher with a body
+   in hand** (Donchenko interviews, opinion pieces, lifestyle — the
+   bucket rules Anton set this week are not in the matcher's prompt), 10
+   by the embedding gate (the "connected story" cases 3f measured), 1 by
+   wrong-subject. Not built; Anton's call on order against 3e/3f.
 4. **Active verification via web search** (G4, and G2's stale-event clause) —
    concept discussed 2026-09-03/04, no design yet. On a new fight claim, search
    for it and sort results by domain trust: official domain confirms,
