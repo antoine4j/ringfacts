@@ -120,6 +120,12 @@ function hintFor(item, label, second) {
   return "no second reading";
 }
 
+/** A headline cut to 70 characters, pipes escaped for a table cell. */
+function shortTitle(title) {
+  const cut = title.length > 70 ? title.slice(0, 67) + "…" : title;
+  return cut.replaceAll("|", "\\|").replaceAll("[", "(").replaceAll("]", ")");
+}
+
 /** Formats an ISO timestamp as MM-DD. */
 function shortDate(iso) {
   return String(iso).slice(5, 10);
@@ -156,7 +162,7 @@ for (const id of ids) {
   const second = blind.get(id);
   if (second && label.author === "haiku" && !labelsAgree(label, second, postedIds)) label = second;
   const sure = isGraded ? isPlainGraded(label) : item.posted ? false : isSure(item.group, label, second, postedIds);
-  if (!sure) forAnton.push({ id, hint: hintFor(item, label, second) });
+  if (!sure) forAnton.push({ id, url: item.url, title: item.title, hint: hintFor(item, label, second) });
 
   // Group tally: confirmed / overturned / unsure.
   const group = item.group;
@@ -221,9 +227,9 @@ ${bodyLines.join("\n")}
 
 ## For Anton — ${forAnton.length} rows
 
-| # | why it needs you |
-|---|---|
-${forAnton.map((row) => `| #${row.id} | ${row.hint} |`).join("\n")}
+| # | article | why it needs you |
+|---|---|---|
+${forAnton.map((row) => `| #${row.id} | [${shortTitle(row.title)}](${row.url}) | ${row.hint} |`).join("\n")}
 
 ## Items
 
