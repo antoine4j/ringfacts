@@ -103,6 +103,28 @@ Donchenko's fishing and breakdance hobbies): personal-life updates that are
 not junk but do not belong in the main digest. Not a rule yet; the next pass
 should count how many bucket-3 items are really this.
 
+### The reason codes — why an article got its bucket
+
+One code per label, stored in the `feedback` table next to the bucket. The
+bucket says *where* an article belongs; the reason says *what went wrong*
+(or right). Added 2026-09-05 for the all-articles grading pass.
+
+| code | meaning | goes with |
+|---|---|---|
+| `fine` | bucket 1 or 2 content that posted, or would have been right to post | bucket 1–2 |
+| `missed` | bucket 1 or 2 content that was **held** — the group never saw it (a G1 failure) | bucket 1–2 |
+| `junk` | not about him: backdrop, one name in a list, spam, a namesake, a listicle | bucket 3 |
+| `dup` | the same story the group already saw — same fact, any outlet or language; `dup_of` names the earlier article | bucket 3 |
+| `old` | a stale event re-reported as fresh: an old fight, a caption of a past event | bucket 3 |
+| `wrong` | the facts are wrong, or a rumor was presented as official (a G4 failure) | bucket 3 |
+| `loud` | a 🚨 alert for something that is not a career event | bucket 3 |
+| `other` | none of the above; the note says what | bucket 3 |
+
+**Same story** means the same *fact*, not the same topic: two outlets on one
+Masvidal quote are a dup; a weigh-in, the result and the post-fight bonus are
+three different facts about one fight; a new quote from the same person on a
+new day is a new story; a translation is a dup.
+
 ## G3. Nothing repeats
 
 **Success:** **zero** posts about a story the group has already been shown —

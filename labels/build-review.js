@@ -149,8 +149,8 @@ correction — a bucket digit, and/or a reason code, and/or "dup of #N" — with
 any words you like. Nothing is written to the database until this file is
 done.
 
-Reason codes: fine · missed · junk · dup · old · wrong · loud · other
-(definitions in docs/goals.md and the feedback table comment in schema.sql).
+Reason codes: fine · missed · junk · dup · old · wrong · loud · other —
+defined in one place, [docs/goals.md, "The reason codes"](../goals.md#the-reason-codes--why-an-article-got-its-bucket).
 
 ## The numbers
 
