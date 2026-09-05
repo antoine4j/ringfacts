@@ -5,6 +5,21 @@
 import { REASONS } from "./validate.js";
 
 /**
+ * The cell the sheet fills in for a story member once Anton has ruled on
+ * the story's root: his ruling on the root covers every member he saw
+ * listed under it. Rebuilt every time, never kept, so a changed ruling on
+ * the root flows through.
+ */
+export function storyRuledCell(root) {
+  return `dup of #${root} (story ruled at #${root})`;
+}
+
+/** True for a cell written by storyRuledCell, not by Anton himself. */
+export function isStoryRuledCell(cell) {
+  return /\(story ruled at #\d+\)$/.test((cell ?? "").trim());
+}
+
+/**
  * Turns Anton's cell into the user's label, filling gaps from the
  * reviewer's label. Returns null when the cell is blank (not reviewed).
  *

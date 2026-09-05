@@ -13,7 +13,7 @@ import { overturns } from "./doubts.js";
 import { isSure, isPlainGraded, labelsAgree } from "./certainty.js";
 import { buildStories, storyLine } from "./stories.js";
 import { parseSheetRow } from "./sheet.js";
-import { readAntonCell } from "./anton-cell.js";
+import { readAntonCell, storyRuledCell, isStoryRuledCell } from "./anton-cell.js";
 
 const INPUT_DIR = "tmp/labels/input";
 const OUTPUT_DIR = "tmp/labels/output";
@@ -75,8 +75,9 @@ function loadBlind() {
 /**
  * Anton's cells from the sheet as it stands, keyed by id, so a rebuild
  * never loses a verdict he has already written (or given in chat and
- * recorded with labels/set-anton.js). Pre-filled "as graded" cells are
- * not kept: the certainty rule decides those afresh.
+ * recorded with labels/set-anton.js). Pre-filled "as graded" cells and
+ * story-ruled cells are not kept: the certainty rule and the story rule
+ * decide those afresh.
  *
  * @returns {Map<number, string>}
  */
@@ -85,7 +86,7 @@ function loadAntonCells() {
   if (!existsSync(SHEET)) return cells;
   for (const line of readFileSync(SHEET, "utf8").split("\n")) {
     const row = parseSheetRow(line);
-    if (row && row.anton && row.anton !== AS_GRADED) cells.set(row.id, row.anton);
+    if (row && row.anton && row.anton !== AS_GRADED && !isStoryRuledCell(row.anton)) cells.set(row.id, row.anton);
   }
   return cells;
 }
@@ -237,6 +238,18 @@ for (const root of stories.membersOf.keys()) {
   rootBucket.set(root, verdict ? verdict.bucket : label.bucket);
 }
 
+// A ruling on a story's root covers its members: the members he has not
+// ruled on himself are filled in as dups of that root.
+let inherited = 0;
+for (const [root, members] of stories.membersOf) {
+  if (!antonCells.has(root)) continue;
+  for (const id of members) {
+    if (id === root || antonCells.has(id) || !standing.has(id)) continue;
+    antonCells.set(id, storyRuledCell(root));
+    inherited += 1;
+  }
+}
+
 // Pass two: one sheet row per item, in id order; the numbers table is
 // tallied as we go.
 const rows = [];
@@ -324,7 +337,9 @@ ${bodyLines.join("\n")}
 
 ## For Anton — ${forAnton.length} rows, ${forAnton.filter((row) => row.verdict).length} done
 
-A row is done when "your verdict" is filled (from the Anton column of the
+A row is also done when you have ruled on its story's root: the members
+you saw listed under that root are filled in as dups of it, marked
+"(story ruled at #root)". A row is done when "your verdict" is filled (from the Anton column of the
 main table). Blank = still waiting for you. "stored as" is how the code
 reads your words: bucket, reason code, and the story root for a dup —
 check it says what you meant.
@@ -340,4 +355,4 @@ ${forAnton.map((row) => `| #${row.id} | [${shortTitle(row.title)}](${row.url}) |
 ${rows.join("\n")}
 `;
 writeFileSync(SHEET, doc);
-console.error(`Wrote ${rows.length} rows to ${SHEET}; unlabelled: ${unlabelled}; misses: ${misses.length}; for Anton: ${forAnton.length}`);
+console.error(`Wrote ${rows.length} rows to ${SHEET}; unlabelled: ${unlabelled}; misses: ${misses.length}; for Anton: ${forAnton.length}; story-ruled cells: ${inherited}`);

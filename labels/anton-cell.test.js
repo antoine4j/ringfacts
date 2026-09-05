@@ -4,7 +4,7 @@
 
 import { test, describe } from "node:test";
 import assert from "node:assert/strict";
-import { readAntonCell } from "./anton-cell.js";
+import { readAntonCell, storyRuledCell, isStoryRuledCell } from "./anton-cell.js";
 
 /** A valid reviewer object, overridable per test. */
 function makeReviewer(overrides = {}) {
@@ -187,5 +187,19 @@ describe("readAntonCell — edge cases", () => {
       note: "old",
       accepted: false,
     });
+  });
+});
+
+describe("story-ruled cells", () => {
+  test("storyRuledCell reads as a dup of the root", () => {
+    const result = readAntonCell(storyRuledCell(43), makeReviewer({ bucket: 2, reason: "missed", dup_of: null }));
+    assert.deepEqual([result.bucket, result.reason, result.dup_of], [3, "dup", 43]);
+  });
+
+  test("isStoryRuledCell tells the sheet's own cells from Anton's", () => {
+    assert.equal(isStoryRuledCell(storyRuledCell(43)), true);
+    assert.equal(isStoryRuledCell("dup of #43 — same as #45"), false);
+    assert.equal(isStoryRuledCell(""), false);
+    assert.equal(isStoryRuledCell(null), false);
   });
 });
