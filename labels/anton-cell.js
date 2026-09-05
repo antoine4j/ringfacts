@@ -34,10 +34,15 @@ export function readAntonCell(cell, reviewer) {
   const usefulReasons = ["fine", "missed"];
   if (bucket !== 3 && !usefulReasons.includes(reason)) reason = reviewer.posted ? "fine" : "missed";
   if (bucket === 3 && usefulReasons.includes(reason)) reason = "junk";
+
+  // "fine" is the posted-side code and "missed" the held-side one; a useful
+  // article is one or the other depending on what the group saw.
+  if (bucket !== 3) reason = reviewer.posted ? "fine" : "missed";
+  const dupOfValue = reason === "dup" ? (dupOf ? Number(dupOf[1]) : reviewer.dup_of) : null;
   return {
     bucket,
     reason,
-    dup_of: dupOf ? Number(dupOf[1]) : reason === "dup" ? reviewer.dup_of : null,
+    dup_of: dupOfValue,
     note: text,
     accepted: false,
   };
