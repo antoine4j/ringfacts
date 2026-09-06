@@ -96,6 +96,16 @@ export default {
     bookingNote: "— a BOOKING, i.e. the fight before it happens; an article saying this fight HAPPENED and how it ended is a result, a different fact, NOT this claim",
     sameFactGuide:
       "MATCH is about the FACT, not the story. The same fact told from another angle — a different line from the same video or interview, a different detail of the same booking, the same statement retold — is MATCH. But the STAGES of one fight are DIFFERENT facts: the booking, the weigh-in, the result, a bonus, the post-fight callout, a medical suspension. A result is NEW (type result) even when the booking claim is listed — an article that a booked or predicted fight HAPPENED and how it ended does not \"confirm\" the booking, it reports a new fact; a LOSS is the subject's result just as much as a win, whoever the headline makes the actor; a weigh-in or bonus is NEW (type other); a callout is NEW (type quote). Never fold a later stage into the booking. Worked example: listed claim \"X will fight Y at Event Z\"; article \"X beats Y by decision at Event Z\" → NEW, type result, NOT a MATCH; article \"X and Y make weight for Event Z\" → NEW, type other.",
+    // What "one story" means around a fight, where a single event generates a
+    // week of coverage from many angles. Measured on the labelled archive
+    // before it was adopted; see docs/decisions.md#stories-as-objects.
+    fightWeekShape: `Around a fight, each angle is its own story, and a piece joins only the story that reports the same angle:
+  · betting odds — one story per bookmaker (DraftKings, FanDuel, Bet365, a local book each count separately)
+  · the promotion's own feature or interview with the fighter (UFC.com, the UFC channel)
+  · a preview or statistical breakdown by an outlet
+  · the weigh-in and the face-off
+  · the result, and afterwards the post-fight bonus, the medical suspension, the callout
+The fighter's own announcement (a return, a booking, a retirement) is never a repeat of an earlier report that he was planning or expected to do it: the report teases, the announcement delivers — new.`,
     // The reader's own test (goals.md, "what useful means"): would a follower
     // of the subject learn something new about HIM from this article? The
     // examples are Anton's rulings from the first grading pass — the
