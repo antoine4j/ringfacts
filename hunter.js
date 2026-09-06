@@ -1,10 +1,13 @@
 // The RingFacts hunter.
 // Each run: fetch Google News RSS per subject -> drop URLs already in the DB
-// -> embed the rest -> hold back semantic duplicates (same story, different
-// outlet/language) -> post what's genuinely new -> record everything.
+// -> fetch the article bodies -> embed headline plus body -> ask the decider
+// which story each article is -> post the ones that open a story -> record
+// everything. The unit is the story, not the claim.
+// History: docs/decisions.md#stories-as-objects
 //
 // Degradation ladder: no DATABASE_URL -> no dedup (local dry runs);
-// embedding API down -> URL dedup only. DB configured but unreachable is
+// embedding API down -> URL dedup only; decider unavailable -> the old
+// similarity threshold stands in for it. DB configured but unreachable is
 // fatal — posting without memory would re-spam the group.
 //
 // DRY_RUN=1 prints instead of posting and skips DB writes (reads still work).
@@ -52,9 +55,13 @@ const BACKUP_HOUR_UTC = Number(process.env.BACKUP_HOUR_UTC || 11);
 // The mentions digest sweeps queued mentions this many days back; older ones
 // age out unsent — a stale "next Saturday" link reads dead.
 const MENTIONS_WINDOW_DAYS = Number(process.env.MENTIONS_WINDOW_DAYS || 7);
-// Cosine similarity above this = same story.
-// History: docs/decisions.md#dup-threshold
-const SEMANTIC_DUP_THRESHOLD = Number(process.env.SEMANTIC_DUP_THRESHOLD || 0.8);
+// The fallback gate's line: with no decider, cosine similarity above this
+// counts as the same story. Reads the old env name so a deployed override
+// still applies. History: docs/decisions.md#stories-as-objects
+const FALLBACK_DUP_THRESHOLD = Number(process.env.SEMANTIC_DUP_THRESHOLD || 0.85);
+// How far back the decider's shortlist looks, and how many stories it offers.
+const STORY_WINDOW_DAYS = Number(process.env.STORY_WINDOW_DAYS || 7);
+const STORY_SHORTLIST = Number(process.env.STORY_SHORTLIST || 3);
 
 // Google News RSS needs matching language/country params per edition,
 // otherwise Cyrillic queries return the (empty) English edition.
@@ -221,8 +228,8 @@ function buildDeps(overrides) {
     dryRun: DRY_RUN,
     chatId: CHAT_ID,
     hoursBack: HOURS_BACK,
-    // A missing key means no matcher — same fail-open path as a matcher error,
-    // and the reason the dup gate is re-applied to official items later.
+    // A missing key means no decider — same path as a thrown call, and what
+    // puts the fallback threshold gate in charge for the run.
     matcherEnabled: Boolean(process.env.ANTHROPIC_API_KEY),
     ...overrides,
   };
@@ -249,14 +256,18 @@ export async function huntSubject(db, subject, directItems = [], overrides = {})
     return;
   }
 
-  // One batch embedding call for every candidate title.
-  const vectors = await embedTitles(deps, db, subject, candidates);
+  // Bodies first: decode Google's wrapper, catch the url duplicate, fetch the
+  // text. The decider reads the article, so the article has to exist first.
+  const urlDuplicates = await fetchBodies(deps, db, subject, candidates);
+
+  // One batch embedding call: headline plus the first 1500 characters of body.
+  const vectors = await embedCandidates(deps, db, subject, candidates);
 
   // Classify each candidate and write its rows, strictly in order: item N's
-  // insert must land before item N+1's nearest-neighbour query.
+  // insert must land before item N+1's shortlist query.
   const outcomes = [];
   for (const [index, item] of candidates.entries()) {
-    const outcome = await classifyItem(deps, db, subject, item, vectors?.[index] ?? null);
+    const outcome = await classifyItem(deps, db, subject, item, vectors?.[index] ?? null, urlDuplicates.get(item));
     await recordOutcome(deps, db, outcome);
     outcomes.push(outcome);
   }
@@ -308,7 +319,43 @@ async function loadPendingResends(deps, db, subject) {
 }
 
 /**
- * Stage 3 — one batch embedding call for the candidate titles. Embedding
+ * Stage 3 — the body step for every candidate: decode Google's wrapper, catch
+ * the cross-source duplicate the real URL reveals, fetch and extract the
+ * article text. Runs before the embedding and before the decider, so a held
+ * article carries its address and its text like any other.
+ * History: docs/decisions.md#stories-as-objects
+ *
+ * @param {object} deps
+ * @param {object|null} db
+ * @param {object} subject
+ * @param {object[]} candidates  Mutated: each gains `resolvedUrl`, `body`, `bodyVia`.
+ * @returns {Promise<Map<object, string>>}  The candidates whose decoded URL is
+ *   already stored, mapped to that stored item's id.
+ */
+async function fetchBodies(deps, db, subject, candidates) {
+  const urlDuplicates = new Map();
+  for (const item of candidates) {
+    const duplicateId = await extractBody(deps, db, subject, item);
+    if (duplicateId) urlDuplicates.set(item, duplicateId);
+  }
+  return urlDuplicates;
+}
+
+/**
+ * What one item is embedded as: the headline, plus the opening of the article
+ * body when there is one. The body is what separates two articles that share a
+ * headline, so the vector has to carry it.
+ * Exported so a stored row can be re-embedded exactly the way it was first.
+ *
+ * @param {object} item
+ * @returns {string}
+ */
+export function embeddingText(item) {
+  return item.body ? `${item.title}\n\n${item.body.slice(0, 1500)}` : item.title;
+}
+
+/**
+ * Stage 4 — one batch embedding call for the candidate texts. Embedding
  * failure degrades to URL-only dedup, never to a failed run.
  *
  * @param {object} deps
@@ -317,11 +364,11 @@ async function loadPendingResends(deps, db, subject) {
  * @param {object[]} candidates
  * @returns {Promise<number[][]|null>}  One vector per candidate, or null.
  */
-async function embedTitles(deps, db, subject, candidates) {
+async function embedCandidates(deps, db, subject, candidates) {
   if (!db) return null;
 
   try {
-    return await deps.embedTexts(candidates.map((item) => item.title));
+    return await deps.embedTexts(candidates.map(embeddingText));
   } catch (err) {
     console.warn(`${subject.name}: embedding failed, URL dedup only:`, err.message);
     return null;
@@ -329,19 +376,21 @@ async function embedTitles(deps, db, subject, candidates) {
 }
 
 /**
- * Stage 4 — decides what one item is: a duplicate to hold, a wrong-subject
- * namesake, another sighting of a known claim, or something to post. Reads the
- * database, never writes it; every decision comes back as one outcome object
- * for recordOutcome.
+ * Stage 5 — decides what one item is: an article we already have under some
+ * address, a namesake, another sighting of a story we are already telling, or
+ * a story of its own. Reads the database, never writes it; every decision
+ * comes back as one outcome object for recordOutcome.
+ * History: docs/decisions.md#stories-as-objects
  *
  * @param {object} deps
  * @param {object|null} db
  * @param {object} subject
  * @param {object} item
- * @param {number[]|null} vector  This item's title embedding.
+ * @param {number[]|null} vector  This item's headline-plus-body embedding.
+ * @param {string|undefined} urlDuplicateId  Set when stage 3 decoded onto a stored item.
  * @returns {Promise<object>}  `{ kind: "held"|"wrong-subject"|"untrusted"|"match"|"post", item, ... }`.
  */
-async function classifyItem(deps, db, subject, item, vector) {
+async function classifyItem(deps, db, subject, item, vector, urlDuplicateId) {
   // Stamp the fields every stored row carries.
   item.subject = subject.name;
   item.embedding = vector;
@@ -349,69 +398,94 @@ async function classifyItem(deps, db, subject, item, vector) {
 
   // Nearest POSTED neighbour (held articles are nobody's anchor — History:
   // docs/decisions.md#posted-anchors), looked up BEFORE this item is inserted
-  // so an item never matches itself. Recorded on every item — the similarity
-  // distribution is threshold-tuning data.
+  // so an item never matches itself. Audit columns only now: it decides
+  // nothing unless the decider is unavailable.
   const nearest = item.embedding ? await deps.store.nearestRecent(db, subject.name, item.embedding) : null;
   item.nearestSimilarity = nearest?.similarity ?? null;
   item.nearestItem = nearest?.id ?? null;
 
   const official = isOfficialSource(item.source);
 
-  // Gate 2: a confident embedding duplicate is held, no LLM needed.
-  const earlyHold = checkDuplicateGate(subject, item, nearest, official, null);
-  if (earlyHold) return heldOutcome(item, earlyHold, item.nearestItem, "embedding");
-
-  // Body step: decode Google's wrapper, catch the cross-source duplicate the
-  // real URL reveals, then fetch and extract the article.
-  const urlDuplicateId = await extractBody(deps, db, subject, item);
+  // The same address under another wrapper: certainly the same article.
   if (urlDuplicateId) return heldOutcome(item, "echo", urlDuplicateId, "url");
 
-  // Gate 3: the claim matcher (absorbs the gray-zone judge — a MATCH-as-echo
-  // verdict IS the dedup decision).
-  const verdict = await askMatcher(deps, db, subject, item);
+  // The decider: which of this subject's recent stories is this article, if any?
+  const decision = await decideStory(deps, db, subject, item);
 
   // Namesake / junk: recorded for audit, never posted, never a claim.
-  if (verdict.verdict === "WRONG_SUBJECT") {
+  if (decision.verdict === "WRONG_SUBJECT") {
     item.posted = false;
     item.heldReason = "wrong_subject";
     return { kind: "wrong-subject", item };
   }
 
-  // Same fact, another sighting: held as evidence.
-  if (verdict.verdict === "MATCH" && verdict.match_claim_id) {
-    item.posted = false;
-    item.heldReason = "llm";
-    return {
-      kind: "match",
-      item,
-      claimId: verdict.match_claim_id,
-      official,
-      stance: verdict.stance ?? "asserts",
-    };
+  // A story we are already telling: held as another sighting of it.
+  if (decision.decision === "join") return joinOutcome(item, decision, official);
+
+  // No decider this run: the old similarity threshold stands in for it, so a
+  // matcher outage cannot turn every echo into a second post.
+  if (decision.unavailable) {
+    const fallbackRole = checkDuplicateGate(subject, item, nearest);
+    if (fallbackRole) return heldOutcome(item, fallbackRole, item.nearestItem, "embedding");
   }
 
-  // Gate 2, re-applied: the official exemption was a deferral, not a waiver.
-  const lateHold = checkDuplicateGate(subject, item, nearest, official, verdict);
-  if (lateHold) return heldOutcome(item, lateHold, item.nearestItem, "embedding");
-
-  // Untrusted source: keyword spam the matcher could not see through, judged
-  // by the domain's own record. After the matcher on purpose, so the record
-  // keeps growing; before anything can post or mint a claim.
+  // Untrusted source: keyword spam the decider could not see through, judged
+  // by the domain's own record. After the decider on purpose, so the record
+  // keeps growing; before anything can post or open a story.
   if (await isFromUntrustedSource(deps, db, subject, item)) {
     item.posted = false;
     item.heldReason = "untrusted_source";
     return { kind: "untrusted", item };
   }
 
-  // NO_CLAIM / UNSURE / NEW from here on: the item itself gets posted.
-  const candidateClaim = verdict.verdict === "NEW" ? verdict.new_claim : null;
+  return postOutcome(subject, item, decision, official);
+}
+
+/**
+ * The join branch: this article says what a story we already carry says, so it
+ * is held and recorded on that story — and on the story's claim, when it has one.
+ *
+ * @param {object} item
+ * @param {object} decision  The decider's answer, carrying the shortlist it saw.
+ * @param {boolean} official
+ * @returns {object}
+ */
+function joinOutcome(item, decision, official) {
+  const story = namedStory(decision);
+  item.posted = false;
+  item.heldReason = "story";
+  item.storyId = namedStoryId(decision);
+  item.storyDecision = "join";
+  return {
+    kind: "match",
+    item,
+    storyId: item.storyId,
+    claimId: story?.claim_id ?? null,
+    official,
+    stance: decision.stance ?? "asserts",
+  };
+}
+
+/**
+ * The post branch: this article opens a story of its own, either brand new or
+ * a reaction to one we already carry. The claim, the digest tier and the
+ * delivery speed are decided here exactly as they were before stories existed.
+ *
+ * @param {object} subject
+ * @param {object} item
+ * @param {object} decision
+ * @param {boolean} official
+ * @returns {object}
+ */
+function postOutcome(subject, item, decision, official) {
+  const candidateClaim = decision.verdict === "NEW" ? decision.new_claim : null;
   const isLoud = Boolean(candidateClaim && domain.loudTypes.includes(candidateClaim.type));
 
   // The reader's test (goals.md): would a follower learn something new about
   // him? A "no" folds a non-event into the mentions archive even when the
-  // matcher minted a quote for it — a quote nobody learns from is not news.
+  // decider minted a quote for it — a quote nobody learns from is not news.
   // A loud claim (a booking, a result, an injury) is never folded this way:
-  // an event is news whatever the model thinks of the article. Null (matcher
+  // an event is news whatever the model thinks of the article. Null (decider
   // off, failed, or an older answer) changes nothing. NEWS_GATE_OFF=1 is the
   // kill switch. History: docs/decisions.md#news-for-followers
   const nothingNew = item.newsForFollowers === "no" && !isLoud && newsGateOn();
@@ -419,7 +493,7 @@ async function classifyItem(deps, db, subject, item, vector) {
   const isRealClaim = Boolean(newClaim && !domain.ignoredTypes.includes(newClaim.type)); // docs §5
 
   // Digest tier (lib/tier.js): is this article ABOUT the subject, or does it
-  // merely sit next to news about them? The matcher's role judgement leads;
+  // merely sit next to news about them? The decider's role judgement leads;
   // the mention-count rule is the fallback. Keyed on isRealClaim, not claimId.
   // History: docs/decisions.md#tier-keying
   item.digestTier = isRealClaim ? "main"
@@ -438,7 +512,36 @@ async function classifyItem(deps, db, subject, item, vector) {
     ? (official || newClaim.sourcing === "official" ? "confirmed" : "rumor")
     : null;
 
-  return { kind: "post", item, newClaim, isRealClaim, official, status, claimId: null };
+  return {
+    kind: "post", item, newClaim, isRealClaim, official, status, claimId: null,
+    fact: decision.fact ?? item.title,
+    decision: decision.decision ?? "new",
+    reactsTo: decision.decision === "reaction" ? namedStoryId(decision) : null,
+  };
+}
+
+/**
+ * The shortlist row the decider pointed at, or null. Ids are compared as
+ * strings on purpose: Postgres bigints arrive from pg as strings ("7") while
+ * the model answers with a JSON number (7).
+ *
+ * @param {object} decision
+ * @returns {object|null}
+ */
+function namedStory(decision) {
+  if (decision.story_id === null || decision.story_id === undefined) return null;
+  return (decision.stories ?? []).find((story) => String(story.id) === String(decision.story_id)) ?? null;
+}
+
+/**
+ * That story's id as a string, or null when the decider named none.
+ *
+ * @param {object} decision
+ * @returns {string|null}
+ */
+function namedStoryId(decision) {
+  if (decision.story_id === null || decision.story_id === undefined) return null;
+  return namedStory(decision)?.id ?? String(decision.story_id);
 }
 
 /**
@@ -470,7 +573,7 @@ async function isFromUntrustedSource(deps, db, subject, item) {
  * Marks an item held and shapes the outcome recordOutcome stores it under.
  *
  * @param {object} item
- * @param {string} role        Claim-link role: "echo" or "official".
+ * @param {string} role        Claim-link role for the neighbour's claim: "echo".
  * @param {number|null} neighborId  The stored item whose claim it may inherit.
  * @param {string} reason      What held it: "embedding" or "url".
  * @returns {object}
@@ -482,50 +585,31 @@ function heldOutcome(item, role, neighborId, reason) {
 }
 
 /**
- * Gate 2: should this item be held as a semantic duplicate? Applied twice per
- * item. Before the matcher (`verdict` null) official sources are exempt — an
- * official confirmation is near-identical to the rumor it confirms, and
- * holding it would swallow the rumor -> confirmed transition. After the
- * matcher, on UNSURE / NO_CLAIM there is no claim to act on, so the reason to
- * skip the gate is gone and it stands.
- * History: docs/decisions.md#official-exemption
+ * The fallback gate: with no decider this run, should this item be held as a
+ * near duplicate of a posted neighbour? There is no official exemption any
+ * more — the exemption only ever existed to defer official items to a second
+ * application of this gate, and the decider replaced that.
+ * History: docs/decisions.md#stories-as-objects
  *
  * @param {object} subject
  * @param {object} item
  * @param {object|null} nearest   Nearest stored neighbour with its similarity.
- * @param {boolean} official
- * @param {object|null} verdict   The matcher's verdict, or null before it ran.
  * @returns {string|null}  The claim-link role to hold under, or null to pass.
  */
-function checkDuplicateGate(subject, item, nearest, official, verdict) {
-  const isDuplicate = Boolean(nearest && nearest.similarity >= SEMANTIC_DUP_THRESHOLD);
+function checkDuplicateGate(subject, item, nearest) {
+  const isDuplicate = Boolean(nearest && nearest.similarity >= FALLBACK_DUP_THRESHOLD);
   if (!isDuplicate) return null;
 
-  // First application: hold every non-official duplicate outright.
-  if (!verdict) {
-    if (official) return null;
-    console.log(
-      `${subject.name}: held as dup (${nearest.similarity.toFixed(2)} vs "${nearest.title.slice(0, 60)}"): ${item.title.slice(0, 60)}`
-    );
-    return "echo";
-  }
-
-  // Re-application: the deferred official duplicate, with no claim to act on.
-  if (official && ["UNSURE", "NO_CLAIM"].includes(verdict.verdict)) {
-    console.log(
-      `${subject.name}: matcher ${verdict.verdict}, holding official dup (${nearest.similarity.toFixed(2)} vs "${nearest.title.slice(0, 60)}"): ${item.title.slice(0, 60)}`
-    );
-    return "official";
-  }
-
-  return null;
+  console.log(
+    `${subject.name}: fallback hold, dup (${nearest.similarity.toFixed(2)} vs "${nearest.title.slice(0, 60)}"): ${item.title.slice(0, 60)}`
+  );
+  return "echo";
 }
 
 /**
- * The body step, only for items past the free gates: decode Google's wrapper,
- * check whether the real URL is already stored, then fetch and extract the
- * article text onto the item. All of it is a bonus — any failure leaves the
- * item headline-only.
+ * The body step for one item: decode Google's wrapper, check whether the real
+ * URL is already stored, then fetch and extract the article text onto the
+ * item. All of it is a bonus — any failure leaves the item headline-only.
  *
  * @param {object} deps
  * @param {object|null} db
@@ -572,40 +656,48 @@ async function extractBody(deps, db, subject, item) {
 }
 
 /**
- * Asks the claim matcher what this item is. Fail-open: matcher trouble ->
- * UNSURE -> the item posts like it always did.
+ * Asks the decider which story this article is. It is shown the subject's
+ * closest recent stories and answers join / new / reaction / wrong_subject.
+ * Fail-soft: no database, no key, or a thrown call comes back UNSURE and
+ * flagged unavailable, which is what puts the fallback gate in charge.
  *
  * @param {object} deps
  * @param {object|null} db
  * @param {object} subject
  * @param {object} item
- * @returns {Promise<object>}  The matcher's verdict object.
+ * @returns {Promise<object>}  The verdict, plus the `stories` shortlist it saw.
  */
-async function askMatcher(deps, db, subject, item) {
-  let verdict = { verdict: "UNSURE" };
+async function decideStory(deps, db, subject, item) {
+  let decision = { verdict: "UNSURE", decision: null, unavailable: true, stories: [] };
 
   if (db && deps.matcherEnabled) {
     try {
-      const knownClaims = await deps.store.activeClaims(db, subject.name, item.embedding);
-      verdict = await deps.matchItem({
-        subject: subject.name, item, candidates: knownClaims,
+      // No embedding means no shortlist to rank; the decider then judges the
+      // article on its own and everything it finds is new.
+      const stories = item.embedding
+        ? await deps.store.storyShortlist(db, subject.name, item.embedding, { top: STORY_SHORTLIST, days: STORY_WINDOW_DAYS })
+        : [];
+      const verdict = await deps.matchItem({
+        subject: subject.name, item, stories,
         confusables: subject.confusables, subjectNames: subject.matchNames,
       });
+      decision = { ...verdict, stories };
     } catch (err) {
-      console.warn(`${subject.name}: matcher failed (fail-open):`, err.message);
+      console.warn(`${subject.name}: decider failed (fallback gate takes over):`, err.message);
     }
   }
+  const named = decision.story_id ? ` #${decision.story_id}` : "";
   console.log(
-    `${subject.name}: matcher ${verdict.verdict}${verdict.match_claim_id ? " #" + verdict.match_claim_id : ""}: ${item.title.slice(0, 60)}`
+    `${subject.name}: matcher ${decision.decision ?? decision.verdict}${named}: ${item.title.slice(0, 60)}`
   );
-  if (verdict.reasoning) console.log(`${subject.name}:   because: ${verdict.reasoning}`);
+  if (decision.reasoning) console.log(`${subject.name}:   because: ${decision.reasoning}`);
 
-  // Recorded on every matcher-seen item before any branch returns, so the
+  // Recorded on every decider-seen item before any branch returns, so the
   // archive stays re-measurable. Null means we never got an answer.
-  item.subjectRole = verdict.subject_role ?? null;
-  item.newsForFollowers = verdict.news_for_followers ?? null;
+  item.subjectRole = decision.subject_role ?? null;
+  item.newsForFollowers = decision.news_for_followers ?? null;
 
-  return verdict;
+  return decision;
 }
 
 // How much worse the inherited claim may fit before we refuse to inherit.
@@ -637,9 +729,9 @@ async function inheritanceDrifts(deps, db, item, claimId) {
 }
 
 /**
- * Stage 5 — every database write for one classified item. On a dry run, or
- * with no database, nothing is written. A "match" outcome may gain a
- * `confirmation` entry here (a rumor an official source just confirmed).
+ * Stage 6 — every database write for one classified item, dispatched by what
+ * the item turned out to be. On a dry run, or with no database, nothing is
+ * written.
  *
  * @param {object} deps
  * @param {object|null} db
@@ -647,67 +739,104 @@ async function inheritanceDrifts(deps, db, item, claimId) {
  * @returns {Promise<void>}
  */
 async function recordOutcome(deps, db, outcome) {
-  const { item } = outcome;
-
-  // Held as a duplicate: recorded for audit, never posted, and linked to its
-  // neighbour's claim — unless that link would drift onto a foreign claim, in
-  // which case the hold stands and the item stays unlinked.
-  // History: docs/decisions.md#claim-drift-gap
-  if (outcome.kind === "held") {
-    if (!db || deps.dryRun) return;
-    const itemId = await deps.store.insertItem(db, item);
-    const inheritedClaimId = await deps.store.claimOfItem(db, outcome.neighborId);
-    if (!itemId || !inheritedClaimId) return;
-    if (await inheritanceDrifts(deps, db, item, inheritedClaimId)) return;
-    await deps.store.linkClaimSource(db, itemId, inheritedClaimId, outcome.role);
-    return;
-  }
+  if (outcome.kind === "held") return recordHeld(deps, db, outcome);
 
   // Wrong subject or untrusted source: the row is the audit trail, nothing
   // links to it.
   if (outcome.kind === "wrong-subject" || outcome.kind === "untrusted") {
-    if (db && !deps.dryRun) await deps.store.insertItem(db, item);
+    if (db && !deps.dryRun) await deps.store.insertItem(db, outcome.item);
     return;
   }
 
-  // Another sighting of a known claim: stored and linked as evidence.
-  if (outcome.kind === "match") {
-    if (!db) return;
+  if (outcome.kind === "match") return recordJoin(deps, db, outcome);
+  return recordPost(deps, db, outcome);
+}
 
-    // A dry run previews the confirmation a real run would create, reading
-    // the claim without flipping it. Nothing is written.
-    // History: docs/decisions.md#dry-run-confirmation-preview
-    if (deps.dryRun) {
-      if (outcome.official && outcome.stance === "asserts") {
-        const rumor = await deps.store.claimIfRumor(db, outcome.claimId);
-        if (rumor) {
-          outcome.confirmation = { text: rumor.canonical_text, replyTo: rumor.tg_message_id, item };
-        }
-      }
-      return;
-    }
-    const itemId = await deps.store.insertItem(db, item);
-    if (itemId) {
-      await deps.store.linkClaimSource(db, itemId, outcome.claimId,
-        outcome.official ? "official" : "echo", outcome.stance);
-    }
-    // Conservative lifecycle: only an official source that asserts flips
-    // rumor -> confirmed. Denials are linked as evidence, never acted on.
-    if (outcome.official && outcome.stance === "asserts") {
-      const confirmed = await deps.store.confirmClaim(db, outcome.claimId);
-      if (confirmed) {
-        outcome.confirmation = { text: confirmed.canonical_text, replyTo: confirmed.tg_message_id, item };
-      }
+/**
+ * A url duplicate: recorded for audit, never posted, and given its neighbour's
+ * story and claim — unless that claim link would drift onto a foreign claim,
+ * in which case the hold stands and the item stays unlinked.
+ * History: docs/decisions.md#claim-drift-gap
+ *
+ * @param {object} deps
+ * @param {object|null} db
+ * @param {object} outcome
+ * @returns {Promise<void>}
+ */
+async function recordHeld(deps, db, outcome) {
+  const { item } = outcome;
+  if (!db || deps.dryRun) return;
+  const itemId = await deps.store.insertItem(db, item);
+  if (!itemId) return;
+
+  // The same article under another address belongs to the same story.
+  const inheritedStoryId = await deps.store.storyOfItem(db, outcome.neighborId);
+  if (inheritedStoryId) await deps.store.setItemStory(db, itemId, inheritedStoryId, "join");
+
+  const inheritedClaimId = await deps.store.claimOfItem(db, outcome.neighborId);
+  if (!inheritedClaimId) return;
+  if (await inheritanceDrifts(deps, db, item, inheritedClaimId)) return;
+  await deps.store.linkClaimSource(db, itemId, inheritedClaimId, outcome.role);
+}
+
+/**
+ * A join: stored on its story, and linked as evidence to that story's claim
+ * when the story has one. The item already carries story_id/story_decision.
+ * A "match" outcome may gain a `confirmation` here — a rumor an official
+ * source just confirmed.
+ *
+ * @param {object} deps
+ * @param {object|null} db
+ * @param {object} outcome
+ * @returns {Promise<void>}
+ */
+async function recordJoin(deps, db, outcome) {
+  const { item } = outcome;
+  if (!db) return;
+
+  // A dry run previews the confirmation a real run would create, reading the
+  // claim without flipping it. Nothing is written.
+  // History: docs/decisions.md#dry-run-confirmation-preview
+  if (deps.dryRun) {
+    if (outcome.claimId && outcome.official && outcome.stance === "asserts") {
+      const rumor = await deps.store.claimIfRumor(db, outcome.claimId);
+      if (rumor) outcome.confirmation = { text: rumor.canonical_text, replyTo: rumor.tg_message_id, item };
     }
     return;
   }
 
-  // "post": the item row, and — when the matcher minted a real claim — the
-  // claim row plus its origin link.
+  const itemId = await deps.store.insertItem(db, item);
+  if (itemId && outcome.claimId) {
+    await deps.store.linkClaimSource(db, itemId, outcome.claimId,
+      outcome.official ? "official" : "echo", outcome.stance);
+  }
+
+  // Conservative lifecycle: only an official source that asserts flips
+  // rumor -> confirmed. Denials are linked as evidence, never acted on.
+  if (outcome.claimId && outcome.official && outcome.stance === "asserts") {
+    const confirmed = await deps.store.confirmClaim(db, outcome.claimId);
+    if (confirmed) {
+      outcome.confirmation = { text: confirmed.canonical_text, replyTo: confirmed.tg_message_id, item };
+    }
+  }
+}
+
+/**
+ * A post: the item row, the claim row when the decider minted a real claim,
+ * and the story this article opens — rooted at the article itself.
+ *
+ * @param {object} deps
+ * @param {object|null} db
+ * @param {object} outcome
+ * @returns {Promise<void>}
+ */
+async function recordPost(deps, db, outcome) {
+  const { item } = outcome;
   const itemId = db && !deps.dryRun ? await deps.store.insertItem(db, item) : null;
   item.dbId = itemId;
+  if (!itemId) return;
 
-  if (outcome.isRealClaim && db && !deps.dryRun && itemId) {
+  if (outcome.isRealClaim) {
     // The claim gets its own embedding; a failure just leaves it vector-less.
     let claimVector = null;
     try { claimVector = (await deps.embedTexts([outcome.newClaim.canonical_text]))?.[0] ?? null; } catch {}
@@ -718,10 +847,18 @@ async function recordOutcome(deps, db, outcome) {
     });
     await deps.store.linkClaimSource(db, itemId, outcome.claimId, outcome.official ? "official" : "origin");
   }
+
+  // The story, opened last so it can carry the claim id the mint just
+  // returned, and pointed at the story it answers when it is a reaction.
+  outcome.storyId = await deps.store.insertStory(db, {
+    subject: item.subject, rootItem: itemId, fact: outcome.fact,
+    reactsTo: outcome.reactsTo, claimId: outcome.claimId, decidedBy: "story",
+  });
+  await deps.store.setItemStory(db, itemId, outcome.storyId, outcome.decision);
 }
 
 /**
- * Stage 6 — sorts the recorded outcomes into the messages this run will send,
+ * Stage 7 — sorts the recorded outcomes into the messages this run will send,
  * and folds in the resends from an earlier failed delivery.
  *
  * @param {object} subject
@@ -801,7 +938,7 @@ function cleanTitle(item) {
 }
 
 /**
- * Stage 7 — translates digest headlines the group can't read (claim texts are
+ * Stage 8 — translates digest headlines the group can't read (claim texts are
  * already English). Tangential items are excluded, a null-edition resend posts
  * as filed, and a failed translation posts the original.
  * History: docs/decisions.md#translation-rules
@@ -863,7 +1000,7 @@ function anchor(url, label) {
 
 
 /**
- * Stage 8 — sends the three message types, in order: standalone ceremonies,
+ * Stage 9 — sends the three message types, in order: standalone ceremonies,
  * the digest, then confirmation replies.
  *
  * @param {object} deps
