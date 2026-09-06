@@ -103,8 +103,15 @@ on the swallowed pairs (five of D's ten folds were right and became labels).
 - Only 167 of 315 missing bodies could be fetched (127 sites answer 403);
   that ceiling applies to production too.
 
-**Recommendation, revised:** A now as a config change; build D with B
-inside it; H when the feedback bot exists. The fetched bodies, the
+**Recommendation, revised (and re-checked the same day):** A now as a
+config change; build D with B inside it; H when the feedback bot exists.
+The same-day checks (grading doc, "The hypotheses, tested the same day"):
+a wider shortlist does not help; D repeats within ±4 held and ±3 swallowed
+over three runs, so a single run cannot show a change smaller than that;
+the two rules Anton's rulings produced make placement better but do not
+provably cut swallowed stories, and fight week stays the hard case; about
+half the held-item bodies are reachable from Google's network, the same
+sites block either way. The fetched bodies, the
 re-embedded vectors and D's 1348 verdicts are kept in tmp/labels/ on
 Anton's machine (gitignored) and seed the backfill when D goes live.
 
