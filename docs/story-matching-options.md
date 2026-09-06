@@ -78,6 +78,7 @@ Cascade replay, 341 labelled repeats, 333 first arrivals.
 | B: headline + body, all anchors ≥ 0.88 | 236 | 98 | 110 | 4 | $0 (fetches) |
 | **D, headline only** | 286 | 218 | 60 | 8 | ≈ $1.90 |
 | **D, with bodies (B as input)** | **311** | **256** | **35** | 6 | ≈ $2.30 |
+| **D built into the pipeline, one pass (evening)** | 301 (309 never posted) | 262 | 45 (all bucket 3) | 5 | ≈ $4.65 |
 
 Out of 346 repeats and 328 first arrivals, after Anton's 2026-09-06 rulings
 on the swallowed pairs (five of D's ten folds were right and became labels).
@@ -115,4 +116,4 @@ sites block either way. The fetched bodies, the
 re-embedded vectors and D's 1348 verdicts are kept in tmp/labels/ on
 Anton's machine (gitignored) and seed the backfill when D goes live.
 
-Anton's decision: pending (2026-09-06).
+Anton's decision (2026-09-06): "if A is a stopgap, implement D with B inside now." Built the same evening on branch `measure-story-matching`, backfilled, bench-gated, not deployed — docs/decisions.md#stories-as-objects and the evening section of the grading doc carry the real code's numbers (the prompt is 2.5× the prototype's, so the pass costs $3.48, about $4.65 a month; two useful articles now fall to wrong subject; #598 still folds into #490).

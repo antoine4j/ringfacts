@@ -723,3 +723,67 @@ and 1 UNSURE, weigh-in 1 NEW and 3 UNSURE, **no MATCH in 12 runs**.
 within an hour of the first article, then a confirmation reply once ufc.com
 or the UFC feed carries it. Every later result article must MATCH the new
 result claim, not the booking. The weigh-in on Friday is the first live test.
+
+## stories-as-objects — The unit of "already seen" is the story, decided by the model
+*2026-09-06 (built on branch `measure-story-matching`, not deployed)*
+
+**Chosen between.** Four ways to stop repeats were measured on the labelled
+archive (docs/story-matching-options.md): tune the embedding threshold (A),
+fetch bodies before the hold (B), a similarity band referee (C), and stories
+as objects (D). A and B could not tell "same fact" from "same topic" — a
+connected story sits as close to a root as a repeat does. D placed two and a
+half times as many repeats in the right story as A. Anton's decision
+2026-09-06: build D with B inside it, on the branch, bench-gated.
+
+**What it is.** A `stories` table: root article, one-sentence fact, the
+claim it minted (if any), and `reacts_to`. Every article carries
+`items.story_id` and `story_decision` (join / new / reaction). The hunter now
+fetches the body first, embeds headline + body, retrieves the three stories of
+the last 7 days with the closest member, and the matcher's one Haiku call
+answers **join / new / reaction / wrong_subject** plus the bucket fields it
+always answered. A join is held (`held_reason = 'story'`) and linked to the
+story's claim like a MATCH used to be, so rumor → confirmed is untouched.
+The old threshold gate remains only as the fallback when the decider cannot
+answer (no key, a thrown call, an UNSURE), at 0.85 on all anchors — Anton's
+option A. Stories rather than `claims.reacts_to`: claims keep their lifecycle
+semantics and a NO_CLAIM article can still anchor a story.
+
+**Backfilled** the same day, additively: 193 stories over 624 archived
+articles from the `feedback` labels and the archive's own nearest-item
+record; 43 carry their claim; 161 wrong-subject and untrusted holds stay
+story-less by design; no chains.
+
+**Measured, the real code (bench/story.js, one pass, body text, Haiku 4.5).**
+Of 346 labelled repeats: 301 held (262 in the right story, 39 in a
+neighbouring one), 45 missed — every one a bucket-3 repeat, and 8 of those
+dropped as wrong subject, so **309 never posted**; the prototype's three
+unchanged runs sat at 308–315. Useful stories swallowed **5** (band 6–11):
+#21 → #5 and #243 → #135 are the same remarks by the labels' own later
+rulings, #100 → #77 is the "somewhat separate" opinion piece, #594 → #567 two
+outlets' odds-and-pick pieces, and #598 → #490 a fight preview folded into
+the UFC.com feature — the one fold Anton would not want. The fight-week
+block rescued #490 (its own story now). Shortlist recall 306/346. The gate
+line read FAIL on "held ≥ 307" because it did not count the 8 dropped
+repeats; the gate now counts "never posted".
+
+**The new cost the prototype could not show:** the merged prompt calls 197
+articles wrong subject. 139 of them production had held the same way; of the
+58 it adds, 56 are bucket-3 junk and **2 are useful articles the group did
+see** — #5 (Abdelaziz asking for Topuria, ruled a callout → bucket 2) and
+#366 (Donchenko's fishing story, ruled lifestyle → bucket 2). One run cannot
+say whether that is the prompt or noise; it is the first thing to watch.
+
+**Spend.** 674 calls, 2.66M input + 163k output tokens = **$3.48 a pass**,
+about $4.65 a month at 900 articles — twice the prototype, because the
+production rules (claim types, roles, the reader's test) make the prompt
+2.5× longer. It replaces the matcher call, which carried the same rules, so
+the added spend is the shortlist lines. Prompt caching does not engage: the
+rules block is smaller than Haiku's minimum cacheable prefix (cache reads
+0). TEST key this month after the pass: $13.97 of the shared $20 cap, so
+the bucket regression on the graded month (about $0.50) was **not run** —
+the one-third reserve for production comes first. It is the next paid run.
+
+**Not shipped.** The branch waits for Anton to read this table. Three
+things before a deploy: the bucket regression (tune split, K=3, was 38/45
+with 0 false loud claims); a second look at #5 and #366; and his prompt
+review for content (docs/article-feedback.md rulings vs the rules block).
