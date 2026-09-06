@@ -257,6 +257,20 @@ names the goal it moves.
      next step.** Not changed. The full menu of options, incremental to
      architectural, with cost estimates and a recommendation:
      [docs/story-matching-options.md](docs/story-matching-options.md).
+   - **B AND D MEASURED 2026-09-06** ([docs/grading/2026-09-06-story-matching.md](docs/grading/2026-09-06-story-matching.md),
+     local branch `measure-story-matching`, nothing deployed). **B alone
+     does not move the gate**: bodies (167 of 315 fetched, the rest 403)
+     make repeats and connected stories closer in equal measure; the best
+     body threshold (all anchors 0.88: 235 held / 106 missed / 5
+     swallowed) equals A. **D wins clearly**: stories as objects, top-3 by
+     embedding, one Haiku call — with bodies holds 307 of 341 repeats,
+     places 244 correctly (A: 97), misses 34 (A: 94), swallows 10 useful
+     (A: 5; 9 of the 10 are Anton's labels, mostly fight-week previews
+     folded into the odds story). Measured cost $1.74 per 674 articles,
+     about $2.30 a month, under a dollar over what the matcher spends
+     now. Weak joint: the true story is outside the top three for 65 of
+     341 repeats; try top-5. **Anton's call: build D (with B as its
+     input), or ship A now and D after.**
 3g. **Do not post Eurosport links** (G2) — *Anton, 2026-09-05: "we should
    not post Eurosport to chat coz looks like we can't read it from the US."*
    eurosport.es geoblocks US readers (Anton hit it on #47, #82, #86, #121,
