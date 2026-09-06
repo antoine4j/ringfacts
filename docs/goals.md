@@ -105,6 +105,15 @@ about a watched fighter is not career news, but it is about him and the
 group wants it. "Technically not about the career, but I love such stories
 and want them in 2 for now." No separate lifestyle bucket for now.
 
+**One interview is one story** (Anton, 2026-09-05 on #121, the Makhachev
+interview with 24 members; sharpened 2026-09-06 on #208/#203 and #300/#298,
+two Sport.nv.ua excerpts each from one Donchenko interview): the group gets
+the link to the interview once. A second article quoting another passage of
+the same interview is a repeat of that story, whatever bucket the passage
+would earn on its own — the lifestyle ruling above does not make an excerpt
+its own post. "Ideally, I'd like to see link to an interview, and I'm not
+sure I need all these quotes from the same interview."
+
 ### The reason codes — why an article got its bucket
 
 One code per label, stored in the `feedback` table next to the bucket. The
