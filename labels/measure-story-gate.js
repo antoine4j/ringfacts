@@ -2,7 +2,7 @@
 // labels/export-stories.js) and prints the threshold table for TODO 3f.
 // Offline, no database, no LLM.
 //
-//   node labels/measure-story-gate.js [--window 7] > docs/grading/<date>-story-gate.md
+//   node labels/measure-story-gate.js [--window 7] [--vectors tmp/labels/vectors-body.json] > docs/grading/<date>-story-gate.md
 //
 // Prints: the distributions the thresholds must separate, today's rule as
 // a baseline, then one row per (T_member, T_root) pair.
@@ -16,11 +16,19 @@ const HERE = dirname(fileURLToPath(import.meta.url));
 const INPUT = join(HERE, "..", "tmp/labels/stories.json");
 const windowArg = process.argv.indexOf("--window");
 const WINDOW_DAYS = windowArg > 0 ? Number(process.argv[windowArg + 1]) : 7;
+// --vectors <file>: replay over other vectors ({ [id]: vector }, e.g. from
+// labels/embed-bodies.js) instead of the ones stored in items — option B.
+const vecArg = process.argv.indexOf("--vectors");
+const VECTORS = vecArg > 0 ? process.argv[vecArg + 1] : null;
 
 const T_MEMBER = [0.75, 0.78, 0.80, 0.82, 0.85];
 const T_ROOT = [0, 0.55, 0.60, 0.65, 0.70, 0.75];
 
 const items = JSON.parse(readFileSync(INPUT, "utf8"));
+if (VECTORS) {
+  const vecs = JSON.parse(readFileSync(VECTORS, "utf8"));
+  for (const it of items) if (vecs[it.id]) it.vec = vecs[it.id];
+}
 const records = observe(items, { windowDays: WINDOW_DAYS });
 const byId = new Map(records.map((r) => [r.id, r]));
 
@@ -42,7 +50,7 @@ console.log(`# Story gate, replayed over the labelled archive
 
 Source: the \`feedback\` table as of ${new Date().toISOString().slice(0, 10)} (current label per
 article: user > claude > sonnet > haiku), embeddings from \`items\`
-(gemini-embedding-001), window ${WINDOW_DAYS} days, same subject only. Earlier items
+(gemini-embedding-001${VECTORS ? ", re-embedded on headline + body from " + VECTORS : ""}), window ${WINDOW_DAYS} days, same subject only. Earlier items
 sit in their labelled stories, so the numbers isolate the thresholds from
 cascade effects. ${items.length} articles, ${records.filter((r) => r.isMember).length} story members (later arrivals of a
 labelled story), ${records.filter((r) => !r.isMember).length} first arrivals (story roots and singletons).
