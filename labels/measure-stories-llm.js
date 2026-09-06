@@ -8,7 +8,11 @@
 // database, no posting. Verdicts are cached per run in tmp/labels/, so a
 // rerun replays them without a call.
 //
-//   node labels/measure-stories-llm.js --mode title|body [--top 3] [--limit N]
+//   node labels/measure-stories-llm.js --mode title|body [--top 3] [--rules] [--run 2] [--limit N]
+//
+// --rules adds the two lines Anton's 2026-09-06 rulings asked for (a fight
+// is not one story for the week; an announcement is never a repeat of a
+// tease). --run N is a repeat run under its own cache, for the spread.
 
 import { readFileSync, writeFileSync, existsSync } from "node:fs";
 import { dirname, join } from "node:path";
@@ -26,7 +30,10 @@ const TOP = Number(arg("--top", 3));
 const LIMIT = Number(arg("--limit", Infinity));
 const MODEL = "claude-haiku-4-5-20251001";
 const WINDOW_MS = 7 * 24 * 3_600_000;
-const CACHE = join(DIR, `d-verdicts-${MODE}.json`);
+const RULES = process.argv.includes("--rules");
+const RUN = arg("--run", null);
+const TAG = [MODE, TOP !== 3 ? `top${TOP}` : null, RULES ? "rules" : null, RUN ? `r${RUN}` : null].filter(Boolean).join("-");
+const CACHE = join(DIR, `d-verdicts-${TAG}.json`);
 
 const items = JSON.parse(readFileSync(join(DIR, "stories.json"), "utf8"));
 const bodies = existsSync(join(DIR, "bodies.json")) ? JSON.parse(readFileSync(join(DIR, "bodies.json"), "utf8")) : {};
@@ -70,7 +77,9 @@ Rules:
 - join only when the article reports the SAME news as a listed story. Same interview, same quote, same announcement, same result — join, even if the headline picks a different sentence from it.
 - Different remarks by the same person on different occasions are different stories. A story about a fight and a reaction to that fight are different stories.
 - reaction when someone ELSE responds to a listed story. Name the story it answers.
-- new when no listed story is this news. Write the fact as one plain sentence.`;
+- new when no listed story is this news. Write the fact as one plain sentence.${RULES ? `
+- A fight is not one story for the whole of fight week. Betting odds from one bookmaker, odds from another, an official feature with the fighter's own quotes, a statistical preview, the weigh-in, the result: each is its own story. Join only a piece that repeats the same one.
+- The fighter's own announcement (a return, a booking, a retirement) is never a repeat of an earlier report that he was planning or expected to do it. The report teases; the announcement delivers: new.` : ""}`;
 
 async function decide(subject, it, candidates) {
   if (cache[it.id]) return cache[it.id];
@@ -142,7 +151,7 @@ for (const it of sorted) {
 }
 const cost = (usage.input * 1 + usage.output * 5) / 1e6;
 const row = (label, t) => `| ${label} | ${t.caught + t.misplaced} | ${t.caught} | ${t.misplaced} | ${t.missed} | ${t.swallowedUseful} | ${t.swallowedJunk} | ${t.reactions} | ${t.oracleInShortlist}/${t.membersWithShortlist} |`;
-console.log(`## D, ${MODE} text, top-${TOP} shortlist, ${MODEL}
+console.log(`## D, ${MODE} text, top-${TOP} shortlist${RULES ? ", fight-week and announcement rules in the prompt" : ""}${RUN ? `, repeat run ${RUN}` : ""}, ${MODEL}
 
 | rows | held | caught | misplaced | missed | useful swallowed | junk swallowed | reactions | true story in shortlist |
 |---|---|---|---|---|---|---|---|---|
