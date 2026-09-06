@@ -87,10 +87,20 @@ What the table counts:
 
 - **held** — labelled repeats the matcher folded into some story: `caught`
   (the right story) plus `misplaced` (the wrong one).
-- **missed** — a labelled repeat it opened a new story for.
+- **never posted** — every labelled repeat the group never sees a second
+  time: `held` plus the repeats the matcher called `wrong_subject`. A
+  `wrong_subject` verdict drops the article before it can post, so
+  production never shows it as a repeat either — that is why this, not
+  `held` alone, is the number the gate checks.
+- **missed** — a labelled repeat it opened a new story for. A
+  `wrong_subject` repeat is counted here too, since it also failed to join.
 - **useful / junk swallowed** — a labelled first arrival it folded into an
   existing story. Useful means Anton's bucket said it was worth posting; that
   is a story the readers never see, and the number the gate cares about.
+- **useful dropped as wrong subject** — a labelled first arrival worth
+  posting (bucket 1 or 2) that the matcher called `wrong_subject`: a real
+  article dropped before anyone saw it, not just swallowed into another
+  story.
 - **reactions**, and **true story in shortlist** — how often the right story
   was even on the menu, which separates a shortlist failure from a model one.
 
