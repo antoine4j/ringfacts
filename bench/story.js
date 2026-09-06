@@ -30,10 +30,12 @@ const PRICE_CACHE_WRITE = 1.25;
 
 // The ship gate (task 5 brief): the archive must have this many repeats the
 // group never sees a second time (never posted), may swallow no more than
-// this many useful first arrivals, and must not fold the three articles
+// this many useful first arrivals, may drop no more than this many useful
+// first arrivals as the wrong subject, and must not fold the three articles
 // Anton called separate stories into #474.
 const MIN_HELD = 307;
 const MAX_USEFUL_SWALLOWED = 9;
+const MAX_USEFUL_DROPPED = 3;
 const FORBIDDEN_FOLD = { target: 474, items: [490, 594, 598] };
 
 /** When an item arrived, in milliseconds. */
@@ -224,8 +226,9 @@ function countOne(tally, { item, verdict, isRepeat, trueStory, predictedRootById
 
 /**
  * The ship gate: enough repeats never posted twice, few enough useful first
- * arrivals swallowed, and none of the three articles Anton called separate
- * stories folded into #474.
+ * arrivals swallowed, few enough useful first arrivals dropped as the wrong
+ * subject, and none of the three articles Anton called separate stories
+ * folded into #474.
  *
  * @param {object} tally                        the all-rows tally
  * @param {Record<number, object>} verdictsById  the cached verdicts
@@ -236,6 +239,11 @@ export function gate(tally, verdictsById) {
 
   if (tally.neverPosted < MIN_HELD) reasons.push(`never posted ${tally.neverPosted} < ${MIN_HELD}`);
   if (tally.swallowedUseful > MAX_USEFUL_SWALLOWED) reasons.push(`useful swallowed ${tally.swallowedUseful} > ${MAX_USEFUL_SWALLOWED}`);
+
+  // Dropping a repeat as the wrong subject costs nothing — it was never going
+  // to be posted. Dropping a useful first arrival loses the group an article
+  // it would have seen, so it gets its own ceiling.
+  if (tally.usefulDropped > MAX_USEFUL_DROPPED) reasons.push(`useful dropped ${tally.usefulDropped} > ${MAX_USEFUL_DROPPED}`);
 
   // A fold can be indirect: #594 joins a story that itself joined #474.
   for (const itemId of FORBIDDEN_FOLD.items) {

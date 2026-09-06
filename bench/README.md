@@ -107,9 +107,10 @@ What the table counts:
 `wrong_subject` and UNSURE are reported under the table. Each opens a story of
 its own, so they neither join nor anchor a repeat.
 
-The ship gate: **held ≥ 307**, **useful swallowed ≤ 9**, and none of #490,
-#594 or #598 folded into #474 (the three Anton ruled separate stories). The
-run ends in a `## gate` line, `PASS` or `FAIL` with the reasons.
+The ship gate: **never posted ≥ 307**, **useful swallowed ≤ 9**, **useful
+dropped as wrong subject ≤ 3**, and none of #490, #594 or #598 folded into
+#474 (the three Anton ruled separate stories). The run ends in a `## gate`
+line, `PASS` or `FAIL` with the reasons.
 
 ### The noise band
 

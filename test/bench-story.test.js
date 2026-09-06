@@ -292,6 +292,29 @@ test("gate fails when too many useful first arrivals are swallowed", () => {
   assert.match(result.reasons[0], /useful swallowed/);
 });
 
+test("gate fails when too many useful first arrivals are dropped as the wrong subject", () => {
+  const tally = passingTally();
+  tally.usefulDropped = 4;
+
+  const result = gate(tally, {});
+
+  assert.equal(result.pass, false);
+  assert.match(result.reasons[0], /useful dropped/);
+});
+
+// A repeat dropped as the wrong subject was never going to be posted, so it
+// costs the group nothing — only first arrivals count against this ceiling.
+test("gate passes when the wrong-subject drops are repeats rather than useful arrivals", () => {
+  const tally = passingTally();
+  tally.dropped = 40;
+  tally.usefulDropped = 3;
+
+  const result = gate(tally, {});
+
+  assert.equal(result.pass, true);
+  assert.deepEqual(result.reasons, []);
+});
+
 test("gate fails on a direct fold of 490 into 474", () => {
   const result = gate(passingTally(), { 490: { decision: "join", story: 474 } });
 
