@@ -333,6 +333,24 @@ names the goal it moves.
    line in the message builder; a `facts.odds` field on the claim keeps the
    numbers. Separate stories per bookmaker, per the 09-06 ruling in
    docs/article-feedback.md. Not built.
+3k. **A cheaper decider, measured** (cost; asked by Anton 2026-09-06: "It
+   makes me want to switch to a cheaper model from another vendor … I don't
+   care where my data is routed since it's news anyway") — the live bot's
+   one Haiku 4.5 call costs about $4.75 a month at 900 articles; the bench
+   costs $3.50 a pass, and that is what limited today's measuring. Add a
+   second matcher backend behind the deps seam (one module; the prompt and
+   the tool schema stay), then run the story gate (three passes) and the
+   bucket regression on it and put the tables beside Haiku's. Candidates by
+   price per million in / out (list prices, September 2026, verified by
+   search): Gemini 2.5 Flash-Lite $0.10 / $0.40 (retires 2026-10-16; 3.1
+   Flash-Lite $0.25 / $1.50 after) · DeepSeek V4 Flash $0.22 / $0.66
+   off-peak, double at peak · Qwen3.8 Flash $0.14 / $0.42 (Singapore
+   endpoint; Beijing 60–70% cheaper) · Qwen3.5 Flash $0.10 / $0.40 · GLM-4.5
+   Air $0.20 / $1.10, GLM-4.5-Flash free · GPT-5 nano $0.05 / $0.40 · Kimi
+   K2.5 $0.60 / $3.00. Gemini first: already a vendor here (embeddings), free
+   tier may cover our volume, forced function calling supported. The
+   decision is the bench's, not the price list's: a model that judges "same
+   news" worse is dearer than Haiku at any price. Not built.
 3j. **Levels of authority for who is speaking** (G2) — *Anton, 2026-09-06,
    on #382/#379 (a journalist and a UFC analyst assessing Topuria): "which
    is not really authority for me … maybe we need to establish different
