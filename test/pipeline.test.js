@@ -228,6 +228,34 @@ describe("the threshold gate — only when the decider cannot answer", () => {
     assert.equal(store.rows.items.at(-1).posted, true);
   });
 
+  // UNSURE from a WORKING decider ("cannot decide", not "never ran") must
+  // reach this same fallback gate — an abstention is not a verdict either.
+  test("a working decider's UNSURE is held by the fallback gate above the line", async () => {
+    const [stored, incoming] = vectorsWithSimilarity(0.9);
+    const store = createFakeStore({
+      items: [{ url: "https://example.test/first", subject: SUBJECT.name, title: "Testov books a return", embedding: stored, posted: true }],
+    });
+    await huntSubject(DB, SUBJECT, [makeItem()], deps({
+      store, embedTexts: async () => [incoming],
+      matchItem: async () => ({ verdict: "UNSURE", decision: null }),
+    }));
+    assert.equal(sent.length, 0, "UNSURE is still no verdict to act on");
+    assert.equal(store.rows.items.at(-1).posted, false);
+    assert.equal(store.rows.items.at(-1).held_reason, "embedding");
+  });
+
+  test("a working decider's UNSURE posts below the fallback line", async () => {
+    const [stored, incoming] = vectorsWithSimilarity(0.5);
+    const store = createFakeStore({
+      items: [{ url: "https://example.test/first", subject: SUBJECT.name, title: "Something else", embedding: stored, posted: true }],
+    });
+    await huntSubject(DB, SUBJECT, [makeItem()], deps({
+      store, embedTexts: async () => [incoming],
+      matchItem: async () => ({ verdict: "UNSURE", decision: null }),
+    }));
+    assert.equal(sent.length, 1, "no near duplicate, so UNSURE still lets it through");
+  });
+
   // Inheriting a neighbour's claim is how a held duplicate earns its place in
   // the evidence record without paying for an LLM call. The positive case is
   // pinned above; this is the guard against inheriting the wrong one.
@@ -600,6 +628,19 @@ describe("stories — the decider places every article", () => {
     assert.equal(store.rows.claimSources.length, 0, "no claim, nothing to link");
   });
 
+  // A story id the decider names but the shortlist never offered it must
+  // never be written into items.story_id — a dangling id there would break
+  // storyOfItem for the next article that inherits from this one.
+  test("a story id outside the shortlist is not written as this item's story", async () => {
+    const store = seedStory();
+    await huntSubject(DB, SUBJECT, [makeItem()], deps({
+      store,
+      embedTexts: async () => [vectorAt(0)],
+      matchItem: async () => ({ verdict: "MATCH", decision: "join", story_id: 999, stance: "asserts" }),
+    }));
+    assert.equal(store.rows.items.at(-1).story_id, null);
+  });
+
   test("new: the item posts and opens a story rooted at itself; a real claim is minted and the story carries it", async () => {
     const store = createFakeStore();
     await huntSubject(DB, SUBJECT, [makeItem()], deps({
@@ -621,6 +662,17 @@ describe("stories — the decider places every article", () => {
     assert.equal(story.decided_by, "story");
     assert.equal(row.story_id, story.id);
     assert.equal(row.story_decision, "new");
+  });
+
+  // A post that reaches the group without the decider ever judging it (no
+  // key, no answer, or UNSURE) opens a story nobody placed — the story's
+  // decided_by must say so, distinctly from a story the decider actually named.
+  test("a post let through by the fallback gate is decided_by fallback, not story", async () => {
+    const store = createFakeStore();
+    await huntSubject(DB, SUBJECT, [makeItem()], deps({ store, matcherEnabled: false }));
+
+    assert.equal(sent.length, 1, "no near duplicate, so it posts");
+    assert.equal(store.rows.stories[0].decided_by, "fallback");
   });
 
   test("new without a claim still opens a story", async () => {
@@ -685,6 +737,32 @@ describe("stories — the decider places every article", () => {
     assert.deepEqual(offered.map((story) => story.id), ["1", "2", "3"], "the three nearest, nearest first");
     assert.equal(offered.length, 3, "STORY_SHORTLIST is 3 — the 60° story does not fit");
     assert.ok(!offered.some((story) => story.id === "5"), "and the 9-day-old story is outside the window");
+  });
+
+  // An embedding outage used to leave decideStory with no shortlist to offer
+  // ([] when item.embedding is falsy), so the decider could only ever say
+  // "new" and every echo re-posted for as long as the outage lasted.
+  // storyShortlist's recency fallback fixes that: no vector to rank by, but
+  // the live stories are still offered, so a join is still possible.
+  test("an embedding outage still offers the decider a shortlist, and a join holds the item", async () => {
+    const store = seedStory();
+    let offered;
+    await huntSubject(DB, SUBJECT, [makeItem()], deps({
+      store,
+      embedTexts: async () => { throw new Error("gemini down"); },
+      matchItem: async ({ stories }) => {
+        offered = stories;
+        return { verdict: "MATCH", decision: "join", story_id: 1, stance: "asserts" };
+      },
+    }));
+
+    assert.deepEqual(offered.map((story) => story.id), ["1"], "the live story is offered despite the outage");
+    assert.equal(sent.length, 0, "a join reaches nobody");
+    const held = store.rows.items.at(-1);
+    assert.equal(held.posted, false);
+    assert.equal(held.held_reason, "story");
+    assert.equal(held.story_id, "1");
+    assert.equal(held.embedding, null, "no vector was ever produced");
   });
 
   test("a url duplicate inherits its neighbour's story and claim", async () => {
@@ -1116,6 +1194,28 @@ describe("the body step", () => {
     const held = store.rows.items.at(-1);
     assert.equal(held.posted, false);
     assert.equal(held.held_reason, "url", "distinct from an embedding hold — this one is certain");
+  });
+
+  // The neighbour predates stories as objects (or was itself held before one
+  // opened), so there is nothing to inherit a story from — but a claim link
+  // is a separate inheritance, and it must still happen.
+  test("a url duplicate with no neighbour story still inherits the neighbour's claim", async () => {
+    const store = createFakeStore({
+      items: [{ url: "https://example.test/real", subject: SUBJECT.name, title: "Testov books a return" }],
+      claims: [{ subject: SUBJECT.name, type: "announcement", canonical_text: "Testov returns in March" }],
+      claimSources: [{ item_id: "1", claim_id: "1", role: "origin", stance: "asserts" }],
+    });
+    await huntSubject(DB, SUBJECT, [makeItem({ url: "https://news.google.test/wrapped" })], deps({
+      store,
+      decodeGoogleNewsUrl: async () => "https://example.test/real",
+    }));
+
+    const held = store.rows.items.at(-1);
+    assert.equal(held.posted, false);
+    assert.equal(held.held_reason, "url");
+    assert.equal(held.story_id, null, "no story to inherit");
+    assert.equal(store.sourcesOf("1").length, 2, "the claim is still inherited");
+    assert.equal(store.sourcesOf("1").at(-1).role, "echo");
   });
 
   // Distinct from the step-error case: fetchArticleBody was never called at

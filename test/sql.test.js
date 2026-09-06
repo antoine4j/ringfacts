@@ -306,6 +306,32 @@ describe("stories", { skip }, () => {
     assert.equal(shortlist.length, 2, "the stale story falls outside the 7 day window");
     assert.equal(String(shortlist[0].id), String(nearStoryId), "the 30 degree member is closer to a 25 degree query than the 80 degree one");
   });
+
+  // An embedding outage passes null through, unable to rank anything — the
+  // fallback branch offers the most recently opened live stories instead,
+  // still respecting the window and still excluding a story with no live
+  // member (TODO 3f, fix round 1).
+  test("storyShortlist with a null embedding falls back to the most recent live stories", async () => {
+    const s = `${SUBJECT}_shortlist_null`;
+    const older = await insertItem(db, item({ subject: s, embedding: vectorAt(0), embeddingModel: "test" }));
+    const olderStoryId = await insertStory(db, story(older, { subject: s }));
+    await setItemStory(db, older, olderStoryId, "new");
+
+    const newer = await insertItem(db, item({ subject: s, embedding: vectorAt(90), embeddingModel: "test" }));
+    const newerStoryId = await insertStory(db, story(newer, { subject: s }));
+    await setItemStory(db, newer, newerStoryId, "new");
+
+    const stale = await insertItem(db, item({ subject: s, embedding: vectorAt(45), embeddingModel: "test" }));
+    const staleStoryId = await insertStory(db, story(stale, { subject: s }));
+    await setItemStory(db, stale, staleStoryId, "new");
+    await db.query("UPDATE items SET seen_at = now() - interval '30 days' WHERE id = $1", [stale]);
+
+    const shortlist = await storyShortlist(db, s, null, { days: 7 });
+    assert.equal(shortlist.length, 2, "the stale story falls outside the 7 day window");
+    assert.equal(String(shortlist[0].id), String(newerStoryId), "most recently opened first");
+    assert.equal(String(shortlist[1].id), String(olderStoryId));
+    assert.equal(shortlist[0].similarity, null, "nothing to rank by");
+  });
 });
 
 describe("markUnposted", { skip }, () => {
