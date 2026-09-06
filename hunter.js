@@ -329,15 +329,34 @@ async function loadPendingResends(deps, db, subject) {
  * @param {object|null} db
  * @param {object} subject
  * @param {object[]} candidates  Mutated: each gains `resolvedUrl`, `body`, `bodyVia`.
- * @returns {Promise<Map<object, string>>}  The candidates whose decoded URL is
- *   already stored, mapped to that stored item's id.
+ * @returns {Promise<Map<object, object>>}  The duplicate candidates, mapped to
+ *   `{ storedId }` when the address is already in the archive, or
+ *   `{ twinOf }` when an earlier candidate of this same run has it.
  */
 async function fetchBodies(deps, db, subject, candidates) {
   const urlDuplicates = new Map();
+  const firstByAddress = new Map();
+
   for (const item of candidates) {
-    const duplicateId = await extractBody(deps, db, subject, item);
-    if (duplicateId) urlDuplicates.set(item, duplicateId);
+    const storedId = await extractBody(deps, db, subject, item);
+    if (storedId) {
+      urlDuplicates.set(item, { storedId });
+      continue;
+    }
+
+    // Two wrappers of one article in the same run: nothing is stored yet, so
+    // the later one is marked a twin of the earlier and picks up its row id
+    // in the classify loop, which runs in this same order.
+    const address = item.resolvedUrl ?? item.url;
+    const firstItem = firstByAddress.get(address);
+    if (firstItem) {
+      console.log(`${subject.name}: held as url dup (same address as an earlier item this run): ${item.title.slice(0, 60)}`);
+      urlDuplicates.set(item, { twinOf: firstItem });
+    } else {
+      firstByAddress.set(address, item);
+    }
   }
+
   return urlDuplicates;
 }
 
@@ -387,10 +406,11 @@ async function embedCandidates(deps, db, subject, candidates) {
  * @param {object} subject
  * @param {object} item
  * @param {number[]|null} vector  This item's headline-plus-body embedding.
- * @param {string|undefined} urlDuplicateId  Set when stage 3 decoded onto a stored item.
+ * @param {object|undefined} urlDuplicate  Set when stage 3 found this item's
+ *   address elsewhere: `{ storedId }` in the archive, `{ twinOf }` this run.
  * @returns {Promise<object>}  `{ kind: "held"|"wrong-subject"|"untrusted"|"match"|"post", item, ... }`.
  */
-async function classifyItem(deps, db, subject, item, vector, urlDuplicateId) {
+async function classifyItem(deps, db, subject, item, vector, urlDuplicate) {
   // Stamp the fields every stored row carries.
   item.subject = subject.name;
   item.embedding = vector;
@@ -406,8 +426,13 @@ async function classifyItem(deps, db, subject, item, vector, urlDuplicateId) {
 
   const official = isOfficialSource(item.source);
 
-  // The same address under another wrapper: certainly the same article.
-  if (urlDuplicateId) return heldOutcome(item, "echo", urlDuplicateId, "url");
+  // The same address under another wrapper: certainly the same article. A
+  // twin's neighbour is the row the earlier item just got, which is null when
+  // that item was never stored (a dry run, or an insert that returned null).
+  if (urlDuplicate) {
+    const neighborId = urlDuplicate.twinOf ? urlDuplicate.twinOf.dbId ?? null : urlDuplicate.storedId;
+    return heldOutcome(item, "echo", neighborId, "url");
+  }
 
   // The decider: which of this subject's recent stories is this article, if any?
   const decision = await decideStory(deps, db, subject, item);
@@ -756,7 +781,7 @@ async function recordOutcome(deps, db, outcome) {
   // Wrong subject or untrusted source: the row is the audit trail, nothing
   // links to it.
   if (outcome.kind === "wrong-subject" || outcome.kind === "untrusted") {
-    if (db && !deps.dryRun) await deps.store.insertItem(db, outcome.item);
+    outcome.item.dbId = db && !deps.dryRun ? await deps.store.insertItem(db, outcome.item) : null;
     return;
   }
 
@@ -777,9 +802,17 @@ async function recordOutcome(deps, db, outcome) {
  */
 async function recordHeld(deps, db, outcome) {
   const { item } = outcome;
-  if (!db || deps.dryRun) return;
+  if (!db || deps.dryRun) {
+    item.dbId = null;
+    return;
+  }
   const itemId = await deps.store.insertItem(db, item);
+  item.dbId = itemId;
   if (!itemId) return;
+
+  // A same-run twin whose first wrapper was never stored has no neighbour to
+  // inherit from; the hold itself still stands.
+  if (!outcome.neighborId) return;
 
   // The same article under another address belongs to the same story.
   const inheritedStoryId = await deps.store.storyOfItem(db, outcome.neighborId);
@@ -804,6 +837,7 @@ async function recordHeld(deps, db, outcome) {
  */
 async function recordJoin(deps, db, outcome) {
   const { item } = outcome;
+  item.dbId = null;
   if (!db) return;
 
   // A dry run previews the confirmation a real run would create, reading the
@@ -818,6 +852,7 @@ async function recordJoin(deps, db, outcome) {
   }
 
   const itemId = await deps.store.insertItem(db, item);
+  item.dbId = itemId;
   if (itemId && outcome.claimId) {
     await deps.store.linkClaimSource(db, itemId, outcome.claimId,
       outcome.official ? "official" : "echo", outcome.stance);

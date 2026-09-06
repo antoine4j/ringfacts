@@ -1218,6 +1218,53 @@ describe("the body step", () => {
     assert.equal(store.sourcesOf("1").at(-1).role, "echo");
   });
 
+  // Two Google wrappers of one article arriving in the same run. Nothing is
+  // stored when the bodies are fetched, so the second wrapper is only caught
+  // by being marked a twin of the first.
+  test("two wrappers of one article in one run: the second is held as a url duplicate", async () => {
+    const store = createFakeStore();
+    await huntSubject(DB, SUBJECT, [
+      makeItem({ url: "https://news.google.test/wrapped-a", title: "Testov books a return for March" }),
+      makeItem({ url: "https://news.google.test/wrapped-b", title: "Testov set for a March return, says manager" }),
+    ], deps({
+      store,
+      decodeGoogleNewsUrl: async () => "https://example.test/real",
+    }));
+
+    const [first, second] = store.rows.items;
+    assert.equal(store.rows.items.length, 2, "both rows are kept for the audit trail");
+    assert.equal(second.posted, false);
+    assert.equal(second.held_reason, "url");
+    assert.equal(second.story_id, first.story_id, "the twin inherits the story the first one opened");
+    assert.ok(first.story_id, "the first wrapper opened a story");
+    assert.match(digest().text, /Testov books a return for March/);
+    assert.doesNotMatch(digest().text, /says manager/, "only one line is built for one article");
+  });
+
+  // A dry run stores nothing, so the twin has no first row to point at. The
+  // hold has to stand on its own — and a held item never reaches the decider,
+  // which is what the call count shows.
+  test("under DRY_RUN the second wrapper of one run is still held", async () => {
+    const store = createFakeStore();
+    const decided = [];
+    await huntSubject(DB, SUBJECT, [
+      makeItem({ url: "https://news.google.test/wrapped-a", title: "Testov books a return for March" }),
+      makeItem({ url: "https://news.google.test/wrapped-b", title: "Testov set for a March return, says manager" }),
+    ], deps({
+      store,
+      dryRun: true,
+      decodeGoogleNewsUrl: async () => "https://example.test/real",
+      matchItem: async ({ item }) => {
+        decided.push(item.title);
+        return { verdict: "NO_CLAIM", decision: "new", fact: item.title };
+      },
+    }));
+
+    assert.equal(store.rows.items.length, 0, "a dry run writes nothing");
+    assert.deepEqual(decided, ["Testov books a return for March"], "the twin is held before the decider");
+    assert.equal(sent.length, 0, "a dry run sends nothing either");
+  });
+
   // Distinct from the step-error case: fetchArticleBody was never called at
   // all, rather than called and failed. The archive keeps the difference so a
   // later measurement can tell a broken decoder from a broken fetch.
