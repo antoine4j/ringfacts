@@ -783,7 +783,9 @@ rules block is smaller than Haiku's minimum cacheable prefix (cache reads
 the bucket regression on the graded month (about $0.50) was **not run** —
 the one-third reserve for production comes first. It is the next paid run.
 
-**Not shipped.** The branch waits for Anton to read this table. Three
+**Shipped 2026-09-06 night** on Anton's word (image `64fecc7a`), with pass 2 at 304 never posted / 7 swallowed — the bottom of the band — and the three watch items below open. Earlier text kept as written:
+
+**Not shipped, as first written.** The branch waits for Anton to read this table. Three
 things before a deploy: the bucket regression (tune split, K=3, was 38/45
 with 0 false loud claims); a second look at #5 and #366; and his prompt
 review for content (docs/article-feedback.md rulings vs the rules block).
