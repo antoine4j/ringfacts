@@ -350,7 +350,18 @@ names the goal it moves.
    K2.5 $0.60 / $3.00. Gemini first: already a vendor here (embeddings), free
    tier may cover our volume, forced function calling supported. The
    decision is the bench's, not the price list's: a model that judges "same
-   news" worse is dearer than Haiku at any price. Not built.
+   news" worse is dearer than Haiku at any price. Anton's ruling (2026-09-06, in
+   chat): privacy is no factor for news and an open-source prompt;
+   production cost is not the worry, the testing loop is — "we will do
+   probably far more testing than we had done before … tune this pipeline
+   to the highest precision possible". So: **Qwen3.8 Flash on the Beijing
+   endpoint as the primary candidate, Gemini Flash-Lite as the comparison**;
+   the model we tune on is the model production runs, so the first job on
+   either is to reproduce today's tables (story gate, bucket regression)
+   before any tuning. Gemini's free tier (30 requests a minute, 1,500 a
+   day on Flash-Lite) covers production and nearly a bench pass a day;
+   Qwen's free quota (1M tokens per model, Singapore only, 90 days) covers a
+   smoke test, not a pass. Not built.
 3j. **Levels of authority for who is speaking** (G2) — *Anton, 2026-09-06,
    on #382/#379 (a journalist and a UFC analyst assessing Topuria): "which
    is not really authority for me … maybe we need to establish different
