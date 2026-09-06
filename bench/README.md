@@ -62,3 +62,57 @@ from the context, which is why they can be tested without a key.
 
 A `full` step that drives `huntSubject` end to end into the bench database,
 recorded-LLM replay, and `--sink`. TODO.md lists them in order.
+
+## The story gate
+
+The labelled archive (674 articles Anton graded, `tmp/labels/`) replayed
+through the **real** matcher — `lib/matcher.js`, the same code the hunt runs —
+and scored against his labels.
+
+```bash
+node bench/story.js --decider fake --mode body --limit 60   # free: no key, no calls, checks the wiring
+node bench/story.js --mode body                             # the paid pass, about $1.85
+node bench/story.js --mode body --repeat 3                  # three passes and the spread
+node bench/story.js --mode title                            # headline-only, the old hold's shape
+node bench/story.js --top 5 --no-shape                      # a bigger shortlist, fight-week rules off
+```
+
+Articles arrive in the order they really arrived, per subject. Each one is
+offered the top-3 stories of the last 7 days by embedding similarity (max over
+all of a story's members) and the matcher answers join / new / reaction /
+wrong_subject. The stories are the matcher's **own** — a cascade, not an
+oracle, so an early mistake is still there ten articles later.
+
+What the table counts:
+
+- **held** — labelled repeats the matcher folded into some story: `caught`
+  (the right story) plus `misplaced` (the wrong one).
+- **missed** — a labelled repeat it opened a new story for.
+- **useful / junk swallowed** — a labelled first arrival it folded into an
+  existing story. Useful means Anton's bucket said it was worth posting; that
+  is a story the readers never see, and the number the gate cares about.
+- **reactions**, and **true story in shortlist** — how often the right story
+  was even on the menu, which separates a shortlist failure from a model one.
+
+`wrong_subject` and UNSURE are reported under the table. Each opens a story of
+its own, so they neither join nor anchor a repeat.
+
+The ship gate: **held ≥ 307**, **useful swallowed ≤ 9**, and none of #490,
+#594 or #598 folded into #474 (the three Anton ruled separate stories). The
+run ends in a `## gate` line, `PASS` or `FAIL` with the reasons.
+
+### The noise band
+
+The matcher is not deterministic. A single run cannot show a change smaller
+than about **±4 held** or **±3 useful swallowed** — that is drift, not your
+edit. For a real comparison run `--repeat 3` and read the spread line, or
+compare modal answers. One run is a sample; say so when you report it.
+
+### The budget rule
+
+A full pass is about **$1.85** on the TEST key, and the Anthropic monthly cap
+is shared with production — spending it here takes it away from the live hunt.
+So: run the free `--decider fake` pass first to check the wiring, run the paid
+pass once, and reread the cache. Verdicts are cached per run in
+`tmp/labels/bench-story-<tag>-r<k>.json`, so a rerun of the same settings
+costs nothing; delete the cache file to pay for a fresh sample.
