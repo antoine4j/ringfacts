@@ -2,6 +2,10 @@
 // building claims + claim_sources from history (docs §11). Never posts to
 // Telegram. Rerunnable: items already linked to a claim are skipped.
 //
+// The claim-candidate shape this script was built around was retired
+// 2026-09-06 (matchItem now takes `stories`, story rows as objects, not a
+// claim list); this measures the decider against an empty shortlist only.
+//
 // Dry run (default): in-memory claims, prints planned clusters — the
 // acceptance test. COMMIT=1 writes to the database.
 //
@@ -117,13 +121,9 @@ for (const row of items) {
     continue;
   }
 
-  const candidates = claims
-    .filter((c) => c.subject === row.subject && ["rumor", "confirmed"].includes(c.status))
-    .map((c) => ({ id: c.memId, status: c.status, type: c.type, canonical_text: c.canonical_text }));
-
   let verdict;
   try {
-    verdict = await matchItem({ subject: row.subject, item, candidates });
+    verdict = await matchItem({ subject: row.subject, item, stories: [] });
   } catch (err) {
     console.error(`matcher failed on item ${row.id}: ${err.message}`);
     tally.unsure++;

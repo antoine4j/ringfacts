@@ -1,6 +1,10 @@
 // LOCAL EXPERIMENT — measures how STABLE and how ACCURATE Haiku's subject_role
 // and verdict are, by asking the same question K times per item.
 //
+// The claim-candidate shape this script was built around was retired
+// 2026-09-06 (matchItem now takes `stories`, story rows as objects, not a
+// claim list); this measures the decider against an empty shortlist only.
+//
 // Safety: the ONLY database call is activeClaims() — a SELECT. Nothing that
 // writes is imported at all (no insertItem, insertClaim, markUnposted,
 // markPosted, linkClaimSource, setClaimMessageId, confirmClaim), and there is
@@ -48,7 +52,7 @@ async function worker() {
         subject: i.subject,
         item: { title: i.title, body: i.body, rssDescription: null,
                 source: i.source, publishedAt: new Date(i.published_at), foundVia: null },
-        candidates: claimsBySubject.get(i.subject),
+        stories: [],
         confusables: undefined,
       });
       out = { verdict: v.verdict, role: v.subject_role ?? null };
