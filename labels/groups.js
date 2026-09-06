@@ -5,6 +5,18 @@
 export const BODY_CLIP = 1200;
 
 /**
+ * Is this hold the matcher's own "same story" answer? Two names for one
+ * decision: "llm" is what the old matcher's MATCH wrote, "story" is what the
+ * story decider's join writes, and "official" is the retired exemption.
+ *
+ * @param {string|null} heldReason
+ * @returns {boolean}
+ */
+export function isMatchHold(heldReason) {
+  return heldReason === "llm" || heldReason === "story" || heldReason === "official";
+}
+
+/**
  * Sorts an archived item into its review group. Each group gets one
  * question in the labelling pass (see the plan in TODO 3e).
  *
@@ -15,7 +27,7 @@ export const BODY_CLIP = 1200;
 export function groupOf(item, gradedIds) {
   if (item.posted) return gradedIds.has(item.id) ? "posted-graded" : "posted-new";
   if (item.held_reason === "embedding") return "dup";
-  if (item.held_reason === "llm" || item.held_reason === "official") return "matched";
+  if (isMatchHold(item.held_reason)) return "matched";
   if (item.held_reason === "wrong_subject") return "wrong-subject";
   return "folded";
 }

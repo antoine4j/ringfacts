@@ -2,6 +2,8 @@
 // docs/grading/2026-09-05-all-articles.md, and markdown row -> label for
 // labels/write-feedback.js. Pure; no I/O.
 
+import { isMatchHold } from "./groups.js";
+
 const AUTHORS = ["haiku", "sonnet", "claude", "user"];
 
 /**
@@ -97,7 +99,7 @@ export function machineSaid(item) {
   if (item.posted) return "posted";
   const counterpart = item.counterpart;
   if (item.held_reason === "embedding") return `held: dup of #${counterpart?.id ?? "?"}`;
-  if (item.held_reason === "llm" || item.held_reason === "official") {
+  if (isMatchHold(item.held_reason)) {
     const origin = counterpart?.origin?.id ? ` (origin #${counterpart.origin.id})` : "";
     return `held: matched claim #${counterpart?.claim_id ?? "?"}${origin}`;
   }

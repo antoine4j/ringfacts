@@ -103,6 +103,15 @@ describe("machineSaid", () => {
     assert.equal(machineSaid(item), "held: matched claim #7 (origin #3)");
   });
 
+  test("a story join reads the same as an old matcher MATCH", () => {
+    const item = {
+      posted: false,
+      held_reason: "story",
+      counterpart: { claim_id: 7, origin: { id: 3 } },
+    };
+    assert.equal(machineSaid(item), "held: matched claim #7 (origin #3)");
+  });
+
   test("held: matched claim #C without an origin", () => {
     const item = { posted: false, held_reason: "official", counterpart: { claim_id: 9 } };
     assert.equal(machineSaid(item), "held: matched claim #9");

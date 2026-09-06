@@ -14,7 +14,7 @@ import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
 import { openDb } from "../lib/db.js";
 import { parseGradingRow } from "../corpus/graded.js";
-import { groupOf, clipBody } from "./groups.js";
+import { groupOf, clipBody, isMatchHold } from "./groups.js";
 
 const HERE = dirname(fileURLToPath(import.meta.url));
 const ROOT = join(HERE, "..");
@@ -151,7 +151,7 @@ function buildRow(item, byId, claimLinks, earlier) {
   if (item.held_reason === "embedding" && item.nearest_item) {
     const nearest = byId.get(item.nearest_item);
     row.counterpart = { kind: "nearest", similarity: item.nearest_similarity, ...(nearest ? evidence(nearest) : { id: item.nearest_item }) };
-  } else if (item.held_reason === "llm" || item.held_reason === "official") {
+  } else if (isMatchHold(item.held_reason)) {
     const link = claimLinks.get(item.id);
     const origin = link?.origin_item ? byId.get(link.origin_item) : null;
     row.counterpart = link ? { kind: "claim", ...link, origin: origin ? evidence(origin) : null } : null;

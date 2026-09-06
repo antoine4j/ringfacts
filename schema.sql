@@ -26,14 +26,18 @@ CREATE INDEX IF NOT EXISTS items_subject_seen_idx ON items (subject, seen_at);
 -- distribution is what tunes dedup thresholds later.
 ALTER TABLE items ADD COLUMN IF NOT EXISTS nearest_similarity real;
 ALTER TABLE items ADD COLUMN IF NOT EXISTS nearest_item bigint REFERENCES items(id);
--- Why the group never saw this item: 'embedding' (Gate 2 near-duplicate) |
--- 'llm' (matcher MATCH, held as evidence) | 'wrong_subject' | 'official' (an
--- official-source dup the matcher found nothing new in) | 'tangential' (the
+-- Why the group never saw this item: 'story' (2026-09-06: a join — the story
+-- decider placed this article on a story we already carry) | 'embedding' (the
+-- fallback gate's near-duplicate, which now only runs when the decider is
+-- unavailable or unsure) | 'llm' (matcher MATCH, held as evidence — the older
+-- name for the same kind of hold as 'story') | 'wrong_subject' | 'official'
+-- (an official-source dup the matcher found nothing new in) | 'tangential' (the
 -- whole run folded, so the message would have been an empty shell) |
 -- 'send_failed' (2026-08-10: the row is written posted=true before the message
 -- is built, so a Telegram failure has to walk it back or the archive claims a
 -- delivery that never happened) | 'untrusted_source' (2026-09-04: the domain's
 -- own record — majority wrong-subject, never a body — says keyword spam).
+-- A 'wrong_subject' or 'untrusted_source' hold never belongs to a story.
 ALTER TABLE items ADD COLUMN IF NOT EXISTS held_reason text;
 ALTER TABLE items ADD COLUMN IF NOT EXISTS found_via text;        -- which query alias caught it
 ALTER TABLE items ADD COLUMN IF NOT EXISTS rss_description text;  -- raw RSS <description>, mined later
