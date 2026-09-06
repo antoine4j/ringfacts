@@ -304,6 +304,20 @@ names the goal it moves.
    bucket rules Anton set this week are not in the matcher's prompt), 10
    by the embedding gate (the "connected story" cases 3f measured), 1 by
    wrong-subject. Not built; Anton's call on order against 3e/3f.
+3i. **Betting odds, extracted and printed in the message** (G2, wanted) —
+   *Anton, 2026-09-06, judging the fight-week pieces: "I maybe want to see
+   betting odds posted from a western company like DraftKings … And really,
+   I'd prefer bets extracted in the future and posted in a message."* Today
+   an odds article is a link like any other (#594 posted, #474 held as
+   junk). Wanted: when a fight-week article carries a line for a watched
+   fighter, pull the numbers out of the body (fighter, price, bookmaker,
+   date) and print them in the post — "Odds: Donchenko −150 / Soriano +130
+   (DraftKings, Sep 4)" — instead of, or under, the link. Western books
+   preferred; a Ukrainian bookmaker's blog was not wanted. The matcher
+   already reads the body, so this is one more field in its tool, plus a
+   line in the message builder; a `facts.odds` field on the claim keeps the
+   numbers. Separate stories per bookmaker, per the 09-06 ruling in
+   docs/article-feedback.md. Not built.
 4. **Active verification via web search** (G4, and G2's stale-event clause) —
    concept discussed 2026-09-03/04, no design yet. On a new fight claim, search
    for it and sort results by domain trust: official domain confirms,
