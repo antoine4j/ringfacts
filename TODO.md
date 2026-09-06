@@ -318,6 +318,16 @@ names the goal it moves.
    line in the message builder; a `facts.odds` field on the claim keeps the
    numbers. Separate stories per bookmaker, per the 09-06 ruling in
    docs/article-feedback.md. Not built.
+3j. **Levels of authority for who is speaking** (G2) — *Anton, 2026-09-06,
+   on #382/#379 (a journalist and a UFC analyst assessing Topuria): "which
+   is not really authority for me … maybe we need to establish different
+   level of authority."* The 09-05 rule made "others assessing him" bucket
+   2 without asking who the other is. Proposed levels, to confirm with him:
+   the fighter and his own team (trainer, manager, coach) · the promotion
+   and officials · fighters and coaches who face him · journalists and
+   analysts. The last level may not earn a post on its own. Once ruled,
+   the matcher's `subject_role` gets a sibling field (`speaker_level`) and
+   the bucket rules in goals.md say which levels post. Not decided.
 4. **Active verification via web search** (G4, and G2's stale-event clause) —
    concept discussed 2026-09-03/04, no design yet. On a new fight claim, search
    for it and sort results by domain trust: official domain confirms,
