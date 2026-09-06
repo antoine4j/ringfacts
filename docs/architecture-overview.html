@@ -527,6 +527,19 @@
     </ul>
   </div>
 
+  <div class="callout" style="border-left:4px solid #b58900;padding:8px 12px;margin:12px 0">
+    <p><strong>Stories (branch <code>measure-story-matching</code>, 2026-09-06, not yet deployed).</strong>
+    The unit of "the group has seen this" becomes the <em>story</em>: a <code>stories</code> row holds the
+    root article, a one-sentence fact, the claim it minted (if any) and <code>reacts_to</code>; every article
+    carries <code>items.story_id</code> and <code>story_decision</code> (join / new / reaction). The stage order
+    changes to: candidates → <strong>bodies first</strong> (decode, url-duplicate check, fetch) → one batch
+    embedding of headline + body → per item: the top-3 stories of the last 7 days by closest member are
+    offered to the matcher, whose one call now answers <strong>join / new / reaction / wrong_subject</strong>
+    with the same bucket fields as before. A join is held (<code>held_reason = 'story'</code>) and linked to
+    the story's claim exactly as a MATCH was, so §5–§6 (claims, rumor → confirmed) are unchanged. The
+    embedding threshold below survives only as the fallback when the decider cannot answer (0.85, all
+    anchors). Record and numbers: <code>docs/decisions.md#stories-as-objects</code>.</p>
+  </div>
   <h2 id="s4"><span class="num">4</span>The hourly pipeline</h2>
   <div class="where"><b>In code</b>
     <span class="f">hunter.js</span> — <span class="f">main()</span> at 653 opens the DB and fetches the

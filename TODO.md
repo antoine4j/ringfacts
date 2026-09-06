@@ -271,6 +271,19 @@ names the goal it moves.
      now. Weak joint: the true story is outside the top three for 65 of
      341 repeats; try top-5. **Anton's call: build D (with B as its
      input), or ship A now and D after.**
+   - **BUILT 2026-09-06 evening** (Anton: "if A is a stopgap, implement D
+     with B inside now"; branch `measure-story-matching`, not deployed;
+     docs/decisions.md#stories-as-objects): `stories` table + `items.story_id`,
+     bodies fetched before the decision, headline + body embedded, top-3
+     stories of 7 days offered, the matcher answers join / new / reaction /
+     wrong_subject; the threshold gate is the fallback at 0.85 on all
+     anchors. Backfilled 193 stories over 624 articles. **Real code, one
+     pass (bench/story.js): 309 of 346 repeats never posted, no useful
+     repeat missed, 5 useful swallowed (#598 → #490 the one that matters),
+     2 useful articles newly dropped as wrong subject (#5, #366), $3.48 a
+     pass ≈ $4.65 a month.** Before a deploy: the bucket regression (not
+     run — TEST key at $13.97 of the shared $20), a look at #5/#366, and
+     Anton's content review of the rules block.
 3g. **Do not post Eurosport links** (G2) — *Anton, 2026-09-05: "we should
    not post Eurosport to chat coz looks like we can't read it from the US."*
    eurosport.es geoblocks US readers (Anton hit it on #47, #82, #86, #121,
@@ -303,7 +316,9 @@ names the goal it moves.
    in hand** (Donchenko interviews, opinion pieces, lifestyle — the
    bucket rules Anton set this week are not in the matcher's prompt), 10
    by the embedding gate (the "connected story" cases 3f measured), 1 by
-   wrong-subject. Not built; Anton's call on order against 3e/3f.
+   wrong-subject. **Done by construction on the 3f branch (2026-09-06):**
+   the body step now runs before anything is judged, so every stored item
+   has its decoded address and its body when the site allows it.
 3i. **Betting odds, extracted and printed in the message** (G2, wanted) —
    *Anton, 2026-09-06, judging the fight-week pieces: "I maybe want to see
    betting odds posted from a western company like DraftKings … And really,

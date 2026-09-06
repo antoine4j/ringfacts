@@ -283,3 +283,37 @@ D's cost is steady at $1.74–1.85 per pass over 674 articles.
 
 TEST Anthropic key spent today: $3.28 (first two runs) + $1.85 + $1.84 +
 $1.75 + $1.75 = **$10.47**. Gemini: free tier.
+
+## The real code, one pass (evening, bench/story.js)
+
+D was built into the pipeline the same evening (branch
+`measure-story-matching`; docs/decisions.md#stories-as-objects). The
+replay now runs the production matcher — the story rules merged with the
+claim-type, role and reader's-test rules, plus the fight-week block — over
+the same 674 articles.
+
+| rows | held | never posted | caught | misplaced | missed | useful swallowed | useful dropped as wrong subject | junk swallowed | reactions | true story in shortlist |
+|---|---|---|---|---|---|---|---|---|---|---|
+| all 674 (346 repeats, 328 first arrivals) | 301 | 309 | 262 | 39 | 45 | 5 | 2 (+1 production also held) | 32 | 32 | 306/346 |
+| Anton's rows (309 repeats, 304 first arrivals) | 276 | — | 240 | 36 | 33 | 5 | — | 29 | 18 | 276/309 |
+
+- **Repeats:** 309 never posted against the prototype's 308–315; every
+  one of the 45 misses is a bucket-3 repeat (25 called new, 9 reaction, 8
+  wrong subject, 3 unsure). No useful repeat was missed.
+- **Swallowed useful (5):** #21 → #5 (Abdelaziz's remarks, two outlets —
+  the labels' own 09-06 ruling on #34 says the same), #243 → #135 (the
+  Gallo interview, one link), #100 → #77 ("somewhat separate"), #594 → #567
+  (two outlets' odds-and-pick pieces), **#598 → #490** (the preview into
+  the UFC.com feature — the fold that matters). #490 itself is rescued by
+  the fight-week block; #594 no longer joins the Tribuna odds (#474).
+- **Wrong subject:** 197 verdicts. 139 match production's own holds; 56
+  more are bucket-3 junk; **#5 and #366 are useful articles the group saw**
+  and the decider would now drop. #337 (Deadspin, no body) was held by
+  production too.
+- **Agreement with the prototype** on join / not-join: 306 of 346 repeats.
+- **Spend:** 674 calls, 2,663,332 input + 163,127 output tokens, **$3.48**
+  (cache read 0). TEST key this month: $13.97.
+- Gate as first written: FAIL, held 301 < 307. Gate as it now stands
+  (never posted ≥ 307, useful swallowed ≤ 9, fight-week three not under
+  #474): PASS on the numbers above, with #598 → #490 and the two useful
+  wrong-subject drops recorded as the open costs.
