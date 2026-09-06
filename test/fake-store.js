@@ -46,6 +46,65 @@ export function vectorsWithSimilarity(sim) {
   return [vectorAt(0), vectorAt(deg)];
 }
 
+/**
+ * The live stories of a subject: those with a member seen inside the window.
+ * Shared by both storyShortlist branches.
+ *
+ * @param {object} rows  The fake store's tables.
+ * @param {string} subject
+ * @param {number} days
+ * @returns {object[]}  Story rows.
+ */
+function liveStoriesFor(rows, subject, days) {
+  const cutoff = Date.now() - days * 24 * 3_600_000;
+  const liveStoryIds = new Set(
+    rows.items
+      .filter((r) => r.subject === subject && r.story_id && new Date(r.seen_at).getTime() > cutoff)
+      .map((r) => String(r.story_id))
+  );
+  return rows.stories.filter((story) => liveStoryIds.has(String(story.id)));
+}
+
+/**
+ * The shortlist fields a story carries, minus `similarity` — the two ranking
+ * branches fill that in their own way.
+ *
+ * @param {object} rows
+ * @param {object} story
+ * @returns {object}
+ */
+function describeStory(rows, story) {
+  const root = rows.items.find((r) => String(r.id) === String(story.root_item));
+  const claim = story.claim_id ? rows.claims.find((c) => String(c.id) === String(story.claim_id)) : null;
+  return {
+    id: story.id,
+    fact: story.fact,
+    root_item: story.root_item,
+    root_title: root?.title ?? null,
+    claim_id: story.claim_id ?? null,
+    reacts_to: story.reacts_to ?? null,
+    claim_type: claim?.type ?? null,
+    claim_status: claim?.status ?? null,
+    members: rows.items.filter((r) => String(r.story_id) === String(story.id)).length,
+  };
+}
+
+/**
+ * storyShortlist's fallback for a null embedding: the most recently opened
+ * live stories, newest first, similarity null.
+ *
+ * @param {object} rows
+ * @param {object[]} liveStories
+ * @param {number} top
+ * @returns {object[]}
+ */
+function recentStoryShortlist(rows, liveStories, top) {
+  return [...liveStories]
+    .sort((a, b) => new Date(b.first_seen_at) - new Date(a.first_seen_at))
+    .slice(0, top)
+    .map((story) => ({ ...describeStory(rows, story), similarity: null }));
+}
+
 export function createFakeStore({ items = [], claims = [], claimSources = [], stories = [] } = {}) {
   let nextItemId = 1;
   let nextClaimId = 1;
@@ -107,36 +166,19 @@ export function createFakeStore({ items = [], claims = [], claimSources = [], st
 
     // The stories the decider is offered, computed the way the real query
     // groups them: a story is eligible if some item of this subject on it was
-    // seen inside the window, and it is scored (and shown at all) only over
-    // its members that carry an embedding — a story with none never appears,
-    // exactly like the SQL's inner join on embedded members.
+    // seen inside the window. A null embedding cannot rank anything, so it
+    // falls back to the most recently opened live stories instead — mirrors
+    // lib/db.js#storyShortlist's fallback branch.
     async storyShortlist(_db, subject, embedding, { top = 3, days = 7 } = {}) {
-      const cutoff = Date.now() - days * 24 * 3_600_000;
-      const liveStoryIds = new Set(
-        rows.items
-          .filter((r) => r.subject === subject && r.story_id && new Date(r.seen_at).getTime() > cutoff)
-          .map((r) => String(r.story_id))
-      );
+      const liveStories = liveStoriesFor(rows, subject, days);
+      if (embedding === null) return recentStoryShortlist(rows, liveStories, top);
+
       const scored = [];
-      for (const story of rows.stories) {
-        if (!liveStoryIds.has(String(story.id))) continue;
+      for (const story of liveStories) {
         const members = rows.items.filter((r) => String(r.story_id) === String(story.id) && r.embedding);
         if (members.length === 0) continue;
         const similarities = members.map((m) => cosine(embedding, m.embedding));
-        const root = rows.items.find((r) => String(r.id) === String(story.root_item));
-        const claim = story.claim_id ? rows.claims.find((c) => String(c.id) === String(story.claim_id)) : null;
-        scored.push({
-          id: story.id,
-          fact: story.fact,
-          root_item: story.root_item,
-          root_title: root?.title ?? null,
-          claim_id: story.claim_id ?? null,
-          reacts_to: story.reacts_to ?? null,
-          claim_type: claim?.type ?? null,
-          claim_status: claim?.status ?? null,
-          members: members.length,
-          similarity: Math.max(...similarities),
-        });
+        scored.push({ ...describeStory(rows, story), similarity: Math.max(...similarities) });
       }
       return scored.sort((a, b) => b.similarity - a.similarity).slice(0, top);
     },

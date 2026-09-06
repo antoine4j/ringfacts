@@ -422,9 +422,12 @@ async function classifyItem(deps, db, subject, item, vector, urlDuplicateId) {
   // A story we are already telling: held as another sighting of it.
   if (decision.decision === "join") return joinOutcome(item, decision, official);
 
-  // No decider this run: the old similarity threshold stands in for it, so a
-  // matcher outage cannot turn every echo into a second post.
-  if (decision.unavailable) {
+  // No decider this run, or a working decider that could not decide: either
+  // way there is no verdict to act on, so the old similarity threshold stands
+  // in — a matcher outage or an UNSURE answer must not turn every echo into a
+  // second post.
+  if (decision.unavailable || decision.decision === null) {
+    if (!decision.unavailable) console.log(`${subject.name}: fallback (UNSURE): ${item.title.slice(0, 60)}`);
     const fallbackRole = checkDuplicateGate(subject, item, nearest);
     if (fallbackRole) return heldOutcome(item, fallbackRole, item.nearestItem, "embedding");
   }
@@ -512,10 +515,17 @@ function postOutcome(subject, item, decision, official) {
     ? (official || newClaim.sourcing === "official" ? "confirmed" : "rumor")
     : null;
 
+  // The decider answered ("new" or "reaction") only when it actually judged
+  // the article; a null decision.decision means the fallback threshold gate
+  // let this item through on its own — the story it opens is not one the
+  // decider placed.
+  const decidedByModel = decision.decision === "new" || decision.decision === "reaction";
+
   return {
     kind: "post", item, newClaim, isRealClaim, official, status, claimId: null,
     fact: decision.fact ?? item.title,
     decision: decision.decision ?? "new",
+    decidedBy: decidedByModel ? "story" : "fallback",
     reactsTo: decision.decision === "reaction" ? namedStoryId(decision) : null,
   };
 }
@@ -534,14 +544,15 @@ function namedStory(decision) {
 }
 
 /**
- * That story's id as a string, or null when the decider named none.
+ * That story's id as a string, or null when the decider named none — or
+ * named one not on the shortlist it was shown, which must never write a
+ * dangling id into items.story_id or stories.reacts_to.
  *
  * @param {object} decision
  * @returns {string|null}
  */
 function namedStoryId(decision) {
-  if (decision.story_id === null || decision.story_id === undefined) return null;
-  return namedStory(decision)?.id ?? String(decision.story_id);
+  return namedStory(decision)?.id ?? null;
 }
 
 /**
@@ -659,7 +670,9 @@ async function extractBody(deps, db, subject, item) {
  * Asks the decider which story this article is. It is shown the subject's
  * closest recent stories and answers join / new / reaction / wrong_subject.
  * Fail-soft: no database, no key, or a thrown call comes back UNSURE and
- * flagged unavailable, which is what puts the fallback gate in charge.
+ * flagged unavailable; a working decider can also answer UNSURE on its own
+ * (`decision: null`, not flagged unavailable) — both put the fallback gate
+ * in charge, since UNSURE means the same thing either way: no verdict to act on.
  *
  * @param {object} deps
  * @param {object|null} db
@@ -672,11 +685,10 @@ async function decideStory(deps, db, subject, item) {
 
   if (db && deps.matcherEnabled) {
     try {
-      // No embedding means no shortlist to rank; the decider then judges the
-      // article on its own and everything it finds is new.
-      const stories = item.embedding
-        ? await deps.store.storyShortlist(db, subject.name, item.embedding, { top: STORY_SHORTLIST, days: STORY_WINDOW_DAYS })
-        : [];
+      // A null embedding (the embedder is down) still gets a shortlist —
+      // storyShortlist falls back to recency — so an embedding outage cannot
+      // starve the decider into calling everything new.
+      const stories = await deps.store.storyShortlist(db, subject.name, item.embedding, { top: STORY_SHORTLIST, days: STORY_WINDOW_DAYS });
       const verdict = await deps.matchItem({
         subject: subject.name, item, stories,
         confusables: subject.confusables, subjectNames: subject.matchNames,
@@ -852,7 +864,7 @@ async function recordPost(deps, db, outcome) {
   // returned, and pointed at the story it answers when it is a reaction.
   outcome.storyId = await deps.store.insertStory(db, {
     subject: item.subject, rootItem: itemId, fact: outcome.fact,
-    reactsTo: outcome.reactsTo, claimId: outcome.claimId, decidedBy: "story",
+    reactsTo: outcome.reactsTo, claimId: outcome.claimId, decidedBy: outcome.decidedBy,
   });
   await deps.store.setItemStory(db, itemId, outcome.storyId, outcome.decision);
 }
