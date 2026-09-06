@@ -7,7 +7,8 @@
 //     node labels/export-stories.js
 //
 // Output: tmp/labels/stories.json — [{ id, subject, title, source, posted,
-// seen_at, published_at, reason, dup_of, vec }], in id order. tmp/ is
+// seen_at, published_at, reason, dup_of, vec, url, resolved_url, body, body_via,
+// held_reason }], in id order (the text columns feed the B/D measurements). tmp/ is
 // gitignored (the vectors alone are ~10 MB).
 
 import { writeFileSync, mkdirSync } from "node:fs";
@@ -21,12 +22,13 @@ const OUT = join(HERE, "..", "tmp/labels/stories.json");
 const client = await openDb();
 const { rows } = await client.query(`
   WITH current AS (
-    SELECT DISTINCT ON (item_id) item_id, wanted_bucket, reason, dup_of
+    SELECT DISTINCT ON (item_id) item_id, wanted_bucket, reason, dup_of, author
       FROM feedback
      ORDER BY item_id, array_position(ARRAY['user','claude','sonnet','haiku'], author)
   )
   SELECT i.id, i.subject, i.title, i.source, i.posted, i.seen_at, i.published_at,
-         c.wanted_bucket AS bucket, c.reason, c.dup_of, i.embedding::text AS vec
+         c.wanted_bucket AS bucket, c.reason, c.dup_of, c.author, i.embedding::text AS vec,
+         i.url, i.resolved_url, i.body, i.body_via, i.held_reason
     FROM items i JOIN current c ON c.item_id = i.id
    WHERE i.embedding IS NOT NULL
    ORDER BY i.id`);
@@ -34,8 +36,9 @@ await client.end();
 
 const out = rows.map((r) => ({
   id: Number(r.id), subject: r.subject, title: r.title, source: r.source, posted: r.posted,
-  seen_at: r.seen_at, published_at: r.published_at, bucket: r.bucket, reason: r.reason,
+  seen_at: r.seen_at, published_at: r.published_at, bucket: r.bucket, reason: r.reason, author: r.author,
   dup_of: r.dup_of === null ? null : Number(r.dup_of), vec: JSON.parse(r.vec),
+  url: r.url, resolved_url: r.resolved_url, body: r.body, body_via: r.body_via, held_reason: r.held_reason,
 }));
 mkdirSync(dirname(OUT), { recursive: true });
 writeFileSync(OUT, JSON.stringify(out));
