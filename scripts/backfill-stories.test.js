@@ -119,7 +119,7 @@ test("the fact is the root's origin claim text when it has one, else the root's 
   const withClaim = planStories(
     [item({ id: 5, title: "Fighter signs new deal" })],
     new Map(),
-    new Map([[5, "Canonical: fighter signed a multi-fight deal."]])
+    new Map([[5, { claimId: 900, text: "Canonical: fighter signed a multi-fight deal." }]])
   );
   assert.equal(withClaim.stories[0].fact, "Canonical: fighter signed a multi-fight deal.");
 
@@ -129,6 +129,39 @@ test("the fact is the root's origin claim text when it has one, else the root's 
     new Map()
   );
   assert.equal(withoutClaim.stories[0].fact, "Fighter signs new deal");
+});
+
+test("claimId is set from the claims map when the root minted one, else null", () => {
+  const withClaim = planStories(
+    [item({ id: 5, title: "Fighter signs new deal" })],
+    new Map(),
+    new Map([[5, { claimId: 900, text: "Canonical text" }]])
+  );
+  assert.equal(withClaim.stories[0].claimId, "900");
+
+  const withoutClaim = planStories(
+    [item({ id: 5, title: "Fighter signs new deal" })],
+    new Map(),
+    new Map()
+  );
+  assert.equal(withoutClaim.stories[0].claimId, null);
+});
+
+test("two items naming each other as dup_of become one story rooted at the lower id", () => {
+  const items = [
+    item({ id: 1, title: "First report" }),
+    item({ id: 2, title: "Second report" }),
+  ];
+  const labels = new Map([
+    [1, { reason: "dup", dup_of: 2 }],
+    [2, { reason: "dup", dup_of: 1 }],
+  ]);
+
+  const plan = planStories(items, labels, new Map());
+
+  assert.equal(plan.stories.length, 1);
+  assert.equal(plan.stories[0].rootItem, "1");
+  assert.deepEqual(plan.stories[0].members, ["1", "2"]);
 });
 
 test("numeric and string ids are treated the same, in ascending numeric order", () => {
