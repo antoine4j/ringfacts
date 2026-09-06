@@ -184,3 +184,102 @@ folded into the tease). Two of the six are what D must learn before it
 ships: **a fight is not one story for the week**, and **the fighter's own
 announcement is never a repeat of a report about his plans**. Both are
 prompt lines, testable on this archive for about $1.75.
+
+## The hypotheses, tested the same day
+
+Anton asked for every hypothesis that needs no input from him to be
+checked. Same archive, same corrected labels, TEST keys only.
+
+### 1. A top-5 shortlist fixes the misplacements — refuted
+
+`--top 5`, body text, $1.85. The true story reached the shortlist for 294
+of 346 repeats (top-3: 288), but misplaced stayed at 55, missed rose from
+35 to 38 and useful swallowed from 6 to 10. More candidates gave Haiku
+more chances to join the wrong story. The shortlist is not the bottleneck;
+the judgement is.
+
+| shortlist | held | caught | misplaced | missed | useful swallowed | true story offered |
+|---|---|---|---|---|---|---|
+| top-3 | 311 | 256 | 55 | 35 | 6 | 288/346 |
+| top-5 | 308 | 253 | 55 | 38 | 10 | 294/346 |
+
+### 5. Anton's two new rules in the prompt cut the swallowed set — partly confirmed
+
+`--rules` adds two lines: a fight is not one story for the week (odds
+per bookmaker, the official feature, a statistical preview, the weigh-in,
+the result are separate); the fighter's own announcement is never a
+repeat of a report that he was planning it. Body text, top-3, $1.84.
+
+| prompt | held | caught | misplaced | missed | useful swallowed | reactions |
+|---|---|---|---|---|---|---|
+| without the rules | 311 | 256 | 55 | 35 | 6 | 32 |
+| with the rules | 301 | 260 | 41 | 45 | 5 | 39 |
+
+The announcement rule works: #620 is its own story. Misplacements fell by
+14 and correct placements rose. But the fight-week rule only moved the
+problem: #490 (UFC.com) became its own story, and then #521 (the second
+UFC.com interview) and #598 (the Ukrainian preview) were folded into it,
+and #594 (ClutchPoints odds) into #567 (another prediction piece). Misses
+rose by ten, mostly fight-week pieces that were repeats now opened as new
+stories. Fight week is genuinely hard for a one-line rule: the same fight,
+many angles, and Anton wants most angles once. Caveat: tested on the same
+articles the rules came from; it shows the lines act, not that they
+generalise.
+
+### 4. Body yield from Google's network — confirmed, slightly worse
+
+The 315 addresses probed once each from a Cloud Build job (Google's
+network, four parallel steps, same browser user-agent as the bot):
+
+| from | HTTP 200 | 403 | 429 (rate-limited) | other |
+|---|---|---|---|---|
+| Anton's machine (sequential, 4 at a time) | 186 | 127 | 0 | 2 |
+| Cloud Build (4 parallel steps) | 144 | 153 | 16 | 2 |
+
+126 of the 127 addresses that answered 403 locally answered 403 from
+Google too; 43 that opened locally were refused or rate-limited from
+Google. **Roughly half of the held-item bodies are reachable from the
+cloud, and the sites that block are the same ones.** The 16 rate limits
+came from probing one site's pages back to back; the hourly job spreads
+them out. Mshale, Yahoo and Bloody Elbow remain headline-only either way.
+
+### 2. D is stable across runs — confirmed, with a noise band to respect
+
+The body, top-3 run repeated twice more under fresh caches ($1.75 each):
+
+| run | held | caught | misplaced | missed | useful swallowed | junk swallowed |
+|---|---|---|---|---|---|---|
+| 1 | 311 | 256 | 55 | 35 | 6 | 62 |
+| 2 | 315 | 255 | 60 | 31 | 11 | 56 |
+| 3 | 308 | 249 | 59 | 38 | 9 | 65 |
+
+568 of 674 articles got the same decision (join / new / reaction) in all
+three runs (84%). The headline numbers move by a few either way: held
+308–315, missed 31–38, **useful swallowed 6–11**. Two consequences for the
+other tests:
+
+- The top-5 run's 10 swallowed and the rules run's 5 are both inside that
+  band. Neither changes the swallowed count in a way one run can show.
+  What the rules run did move is outside the band: misplaced 41 against
+  55–60, and missed 45 against 31–38. So the rules make placement more
+  accurate and hold fewer repeats; on swallowed stories they are not
+  proven either way.
+- Any future comparison needs three runs or a modal answer per article,
+  as the bench does for the matcher (`--repeat`).
+
+D's cost is steady at $1.74–1.85 per pass over 674 articles.
+
+### Where that leaves the seven
+
+| # | hypothesis | result |
+|---|---|---|
+| 1 | top-5 shortlist fixes misplacements | **refuted** — recall up, placement unchanged |
+| 2 | D is stable | **confirmed** — ±4 held, ±3 swallowed, 84% identical decisions |
+| 3 | live cost and time fit the hourly job | open — needs D built in pipeline shape |
+| 4 | cloud body yield ≈ local | **confirmed** — 144 vs 186 of 315, same blockers |
+| 5 | the two rules cut swallowed stories | **partly** — placement better, misses up, swallowed inside noise; fight week still hard |
+| 6 | reactions are right | open — needs a reaction field and Anton's 32 rulings |
+| 7 | gains hold on a fresh month | open — September, after A and D are live |
+
+TEST Anthropic key spent today: $3.28 (first two runs) + $1.85 + $1.84 +
+$1.75 + $1.75 = **$10.47**. Gemini: free tier.
