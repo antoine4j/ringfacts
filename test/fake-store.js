@@ -46,9 +46,10 @@ export function vectorsWithSimilarity(sim) {
   return [vectorAt(0), vectorAt(deg)];
 }
 
-export function createFakeStore({ items = [], claims = [], claimSources = [] } = {}) {
+export function createFakeStore({ items = [], claims = [], claimSources = [], stories = [] } = {}) {
   let nextItemId = 1;
   let nextClaimId = 1;
+  let nextStoryId = 1;
 
   const rows = {
     // seen_at defaults to now — a seeded row is "recently seen" unless the
@@ -56,6 +57,7 @@ export function createFakeStore({ items = [], claims = [], claimSources = [] } =
     items: items.map((i) => ({ id: String(nextItemId++), seen_at: new Date(), ...i })),
     claims: claims.map((c) => ({ id: String(nextClaimId++), status: "rumor", tg_message_id: null, ...c })),
     claimSources: [...claimSources],
+    stories: stories.map((s) => ({ id: String(nextStoryId++), first_seen_at: new Date(), ...s })),
   };
 
   const store = {
@@ -101,6 +103,62 @@ export function createFakeStore({ items = [], claims = [], claimSources = [] } =
     async claimOfItem(_db, itemId) {
       if (!itemId) return null;
       return rows.claimSources.find((s) => String(s.item_id) === String(itemId))?.claim_id ?? null;
+    },
+
+    // The stories the decider is offered, computed the way the real query
+    // groups them: a story is eligible if some item of this subject on it was
+    // seen inside the window, and it is scored (and shown at all) only over
+    // its members that carry an embedding — a story with none never appears,
+    // exactly like the SQL's inner join on embedded members.
+    async storyShortlist(_db, subject, embedding, { top = 3, days = 7 } = {}) {
+      const cutoff = Date.now() - days * 24 * 3_600_000;
+      const liveStoryIds = new Set(
+        rows.items
+          .filter((r) => r.subject === subject && r.story_id && new Date(r.seen_at).getTime() > cutoff)
+          .map((r) => String(r.story_id))
+      );
+      const scored = [];
+      for (const story of rows.stories) {
+        if (!liveStoryIds.has(String(story.id))) continue;
+        const members = rows.items.filter((r) => String(r.story_id) === String(story.id) && r.embedding);
+        if (members.length === 0) continue;
+        const similarities = members.map((m) => cosine(embedding, m.embedding));
+        const root = rows.items.find((r) => String(r.id) === String(story.root_item));
+        const claim = story.claim_id ? rows.claims.find((c) => String(c.id) === String(story.claim_id)) : null;
+        scored.push({
+          id: story.id,
+          fact: story.fact,
+          root_item: story.root_item,
+          root_title: root?.title ?? null,
+          claim_id: story.claim_id ?? null,
+          reacts_to: story.reacts_to ?? null,
+          claim_type: claim?.type ?? null,
+          claim_status: claim?.status ?? null,
+          members: members.length,
+          similarity: Math.max(...similarities),
+        });
+      }
+      return scored.sort((a, b) => b.similarity - a.similarity).slice(0, top);
+    },
+
+    // The story a stored item belongs to, or null.
+    async storyOfItem(_db, itemId) {
+      if (!itemId) return null;
+      return rows.items.find((r) => String(r.id) === String(itemId))?.story_id ?? null;
+    },
+
+    // One story row, or null.
+    async storyById(_db, storyId) {
+      const story = rows.stories.find((s) => String(s.id) === String(storyId));
+      if (!story) return null;
+      return {
+        id: story.id,
+        subject: story.subject,
+        fact: story.fact,
+        root_item: story.root_item,
+        claim_id: story.claim_id ?? null,
+        reacts_to: story.reacts_to ?? null,
+      };
     },
 
     // The read half of confirmClaim, for the dry-run confirmation preview:
@@ -155,9 +213,34 @@ export function createFakeStore({ items = [], claims = [], claimSources = [] } =
         subject_role: item.subjectRole ?? null,
         edition: item.edition ?? null,
         news_for_followers: item.newsForFollowers ?? null,
+        story_id: item.storyId ?? null,
+        story_decision: item.storyDecision ?? null,
       };
       rows.items.push(row);
       return row.id;
+    },
+
+    // Opens a story rooted at an item. Returns the new id, a string like the
+    // real store's bigint.
+    async insertStory(_db, story) {
+      const row = {
+        id: String(nextStoryId++),
+        subject: story.subject,
+        root_item: String(story.rootItem),
+        fact: story.fact,
+        reacts_to: story.reactsTo ?? null,
+        claim_id: story.claimId ?? null,
+        decided_by: story.decidedBy,
+        first_seen_at: new Date(),
+      };
+      rows.stories.push(row);
+      return row.id;
+    },
+
+    // Records which story an item belongs to and how it got there.
+    async setItemStory(_db, itemId, storyId, decision) {
+      const row = rows.items.find((r) => String(r.id) === String(itemId));
+      if (row) Object.assign(row, { story_id: String(storyId), story_decision: decision });
     },
 
     async insertClaim(_db, claim) {
