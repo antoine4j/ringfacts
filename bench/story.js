@@ -28,9 +28,10 @@ const PRICE_OUTPUT = 5;
 const PRICE_CACHE_READ = 0.1;
 const PRICE_CACHE_WRITE = 1.25;
 
-// The ship gate (task 5 brief): the archive must hold this many repeats, may
-// swallow no more than this many useful first arrivals, and must not fold
-// the three articles Anton called separate stories into #474.
+// The ship gate (task 5 brief): the archive must have this many repeats the
+// group never sees a second time (never posted), may swallow no more than
+// this many useful first arrivals, and must not fold the three articles
+// Anton called separate stories into #474.
 const MIN_HELD = 307;
 const MAX_USEFUL_SWALLOWED = 9;
 const FORBIDDEN_FOLD = { target: 474, items: [490, 594, 598] };
@@ -135,8 +136,8 @@ export function applyDecision(stories, item, verdict) {
 /** A fresh, empty tally. */
 function emptyTally() {
   return {
-    caught: 0, misplaced: 0, missed: 0, members: 0,
-    swallowedUseful: 0, swallowedJunk: 0, newStories: 0,
+    caught: 0, misplaced: 0, missed: 0, dropped: 0, neverPosted: 0, members: 0,
+    swallowedUseful: 0, swallowedJunk: 0, usefulDropped: 0, newStories: 0,
     reactions: 0, wrongSubject: 0, unsure: 0,
     oracleInShortlist: 0, membersWithShortlist: 0,
   };
@@ -148,8 +149,14 @@ function emptyTally() {
  *
  * A labelled repeat is caught when it joined a story of the same labelled
  * story, misplaced when it joined a different one, missed when it did not
- * join at all. A labelled first arrival that joined anything is swallowed —
- * useful when Anton's bucket says it was worth posting, junk otherwise.
+ * join at all, dropped when the matcher called it wrong_subject (a
+ * wrong_subject article never posts, so production never shows it as a
+ * repeat — dropped is also still counted in missed). neverPosted is
+ * caught + misplaced + dropped: every repeat that the group never sees a
+ * second time. A labelled first arrival that joined anything is swallowed —
+ * useful when Anton's bucket says it was worth posting, junk otherwise. A
+ * first-arrival wrong_subject on a bucket-1/2 article is usefulDropped: a
+ * real article the group never saw at all.
  *
  * @param {object[]} items                     the labelled items in the run
  * @param {Record<number, object>} verdictsById  the cached verdicts
@@ -169,6 +176,10 @@ export function score(items, verdictsById, predictedRootById) {
     for (const tally of tallies) countOne(tally, { item, verdict, isRepeat, trueStory, predictedRootById });
   }
 
+  // neverPosted rolls up every repeat the group never sees twice: held
+  // (caught or misplaced) plus dropped as wrong_subject.
+  for (const tally of [all, user]) tally.neverPosted = tally.caught + tally.misplaced + tally.dropped;
+
   return { all, user };
 }
 
@@ -185,10 +196,14 @@ function countOne(tally, { item, verdict, isRepeat, trueStory, predictedRootById
   if (verdict.decision === null || verdict.decision === undefined) tally.unsure += 1;
   const joined = verdict.decision === "join";
 
-  // A first arrival that joined anything swallowed a story of its own.
+  // A first arrival that joined anything swallowed a story of its own. One
+  // called wrong_subject and worth posting (bucket 1 or 2) never reaches the
+  // group at all — that is usefulDropped, a real cost the swallow counts
+  // do not show.
   if (!isRepeat) {
     tally.newStories += 1;
     if (joined) tally[(item.bucket ?? 3) === 3 ? "swallowedJunk" : "swallowedUseful"] += 1;
+    if (verdict.decision === "wrong_subject" && (item.bucket ?? 3) <= 2) tally.usefulDropped += 1;
     return;
   }
 
@@ -197,6 +212,9 @@ function countOne(tally, { item, verdict, isRepeat, trueStory, predictedRootById
   if (!joined) tally.missed += 1;
   else if (landedRight) tally.caught += 1;
   else tally.misplaced += 1;
+  // A wrong_subject repeat is dropped, not posted — production never shows
+  // it as a repeat, but it still counts in missed above.
+  if (verdict.decision === "wrong_subject") tally.dropped += 1;
 
   // What the shortlist could have offered, whatever the model then chose.
   tally.membersWithShortlist += 1;
@@ -205,9 +223,9 @@ function countOne(tally, { item, verdict, isRepeat, trueStory, predictedRootById
 }
 
 /**
- * The ship gate: enough repeats held, few enough useful first arrivals
- * swallowed, and none of the three articles Anton called separate stories
- * folded into #474.
+ * The ship gate: enough repeats never posted twice, few enough useful first
+ * arrivals swallowed, and none of the three articles Anton called separate
+ * stories folded into #474.
  *
  * @param {object} tally                        the all-rows tally
  * @param {Record<number, object>} verdictsById  the cached verdicts
@@ -215,9 +233,8 @@ function countOne(tally, { item, verdict, isRepeat, trueStory, predictedRootById
  */
 export function gate(tally, verdictsById) {
   const reasons = [];
-  const held = tally.caught + tally.misplaced;
 
-  if (held < MIN_HELD) reasons.push(`held ${held} < ${MIN_HELD}`);
+  if (tally.neverPosted < MIN_HELD) reasons.push(`never posted ${tally.neverPosted} < ${MIN_HELD}`);
   if (tally.swallowedUseful > MAX_USEFUL_SWALLOWED) reasons.push(`useful swallowed ${tally.swallowedUseful} > ${MAX_USEFUL_SWALLOWED}`);
 
   // A fold can be indirect: #594 joins a story that itself joined #474.
@@ -509,10 +526,12 @@ function tableRow(label, tally) {
   const cells = [
     label,
     tally.caught + tally.misplaced,
+    tally.neverPosted,
     tally.caught,
     tally.misplaced,
     tally.missed,
     tally.swallowedUseful,
+    tally.usefulDropped,
     tally.swallowedJunk,
     tally.reactions,
     `${tally.oracleInShortlist}/${tally.membersWithShortlist}`,
@@ -584,8 +603,8 @@ function printReport({ options, sorted, model, rows, allTallies, gates, usage, e
 
   console.log(`## The story gate — ${sorted.length} labelled articles, ${options.mode} text, top-${options.top} shortlist${shape}, ${model}
 
-| rows | held | caught | misplaced | missed | useful swallowed | junk swallowed | reactions | true story in shortlist |
-|---|---|---|---|---|---|---|---|---|
+| rows | held | never posted | caught | misplaced | missed | useful swallowed | useful dropped as wrong subject | junk swallowed | reactions | true story in shortlist |
+|---|---|---|---|---|---|---|---|---|---|---|
 ${rows.join("\n")}
 
 Off-menu verdicts in the last run: ${last.wrongSubject} wrong_subject, ${last.unsure} unsure (each counted as a story of its own).
@@ -593,7 +612,7 @@ ${options.repeat > 1 ? spreadLine(allTallies) + "\n" : ""}
 Spent this run: ${usage.calls} calls, ${usage.inputTokens} input + ${usage.outputTokens} output tokens, cache read ${usage.cacheReadTokens} + cache write ${usage.cacheWriteTokens} tokens ≈ $${cost.toFixed(2)} at Haiku 4.5 list price ($${PRICE_INPUT}/M input, $${PRICE_OUTPUT}/M output, $${PRICE_CACHE_READ}/M cache read, $${PRICE_CACHE_WRITE}/M cache write). ${errors} errors treated as UNSURE.
 
 ## gate
-${failed.length === 0 ? "PASS" : `FAIL — ${reasons.join("; ")}`}`);
+${failed.length === 0 ? "PASS" : `FAIL — ${reasons.join("; ")}`} (useful dropped as wrong subject: ${last.usefulDropped})`);
 }
 
 // Only when run as a script: importing this file for its pure parts must

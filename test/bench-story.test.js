@@ -148,14 +148,60 @@ test("score counts caught, missed and the two kinds of swallowed", () => {
   assert.equal(all.caught, 1);
   assert.equal(all.misplaced, 0);
   assert.equal(all.missed, 1);
+  assert.equal(all.dropped, 0);
+  assert.equal(all.neverPosted, 1);
   assert.equal(all.newStories, 3);
   assert.equal(all.swallowedJunk, 1);
   assert.equal(all.swallowedUseful, 1);
+  assert.equal(all.usefulDropped, 0);
   assert.equal(all.oracleInShortlist, 2);
   // Item 5 is Claude's row, so Anton's tally loses that useful swallow.
   assert.equal(user.swallowedUseful, 0);
   assert.equal(user.swallowedJunk, 1);
   assert.equal(user.caught, 1);
+});
+
+test("score counts a wrong_subject repeat as dropped, still missed, and rolls it into neverPosted", () => {
+  const items = [
+    makeItem({ id: 1, day: 0 }),
+    makeItem({ id: 2, day: 1, reason: "dup", dup_of: 1 }),
+    makeItem({ id: 3, day: 2, reason: "dup", dup_of: 1 }),
+  ];
+  const verdicts = {
+    1: { decision: "new", story: null, candidates: [] },
+    2: { decision: "wrong_subject", story: null, candidates: [1] },
+    3: { decision: "join", story: 1, candidates: [1] },
+  };
+  const predicted = new Map([[1, 1], [2, 2], [3, 1]]);
+
+  const { all } = score(items, verdicts, predicted);
+
+  assert.equal(all.missed, 1);
+  assert.equal(all.dropped, 1);
+  assert.equal(all.caught, 1);
+  // A wrong_subject article never posts, so it never becomes a repeat the
+  // group sees again: neverPosted is caught + misplaced + dropped, 1 + 0 + 1.
+  assert.equal(all.neverPosted, 2);
+});
+
+test("score counts a wrong_subject first arrival as usefulDropped only when the bucket says it was worth posting", () => {
+  const items = [
+    makeItem({ id: 1, day: 0, bucket: 1 }),
+    makeItem({ id: 2, day: 1, bucket: 2 }),
+    makeItem({ id: 3, day: 2, bucket: 3 }),
+  ];
+  const verdicts = {
+    1: { decision: "wrong_subject", story: null, candidates: [] },
+    2: { decision: "wrong_subject", story: null, candidates: [] },
+    3: { decision: "wrong_subject", story: null, candidates: [] },
+  };
+  const predicted = new Map([[1, 1], [2, 2], [3, 3]]);
+
+  const { all } = score(items, verdicts, predicted);
+
+  // Buckets 1 and 2 are useful; bucket 3 (junk) is not.
+  assert.equal(all.usefulDropped, 2);
+  assert.equal(all.wrongSubject, 3);
 });
 
 test("score calls a join into the wrong labelled story misplaced", () => {
@@ -196,7 +242,11 @@ test("score reports wrong_subject and unsure separately", () => {
 
 /** A tally that clears the ship gate, so a test can spoil one number at a time. */
 function passingTally() {
-  return { caught: 300, misplaced: 10, missed: 60, members: 370, swallowedUseful: 5, swallowedJunk: 40, newStories: 300, reactions: 20, wrongSubject: 3, unsure: 1, oracleInShortlist: 340, membersWithShortlist: 370 };
+  return {
+    caught: 300, misplaced: 10, missed: 60, dropped: 0, neverPosted: 310, members: 370,
+    swallowedUseful: 5, swallowedJunk: 40, usefulDropped: 2, newStories: 300,
+    reactions: 20, wrongSubject: 3, unsure: 1, oracleInShortlist: 340, membersWithShortlist: 370,
+  };
 }
 
 test("gate passes on a clean tally", () => {
@@ -206,15 +256,30 @@ test("gate passes on a clean tally", () => {
   assert.deepEqual(result.reasons, []);
 });
 
-test("gate fails when too few repeats are held", () => {
+test("gate fails when too few repeats are never posted", () => {
   const tally = passingTally();
-  tally.caught = 250;
+  tally.neverPosted = 250;
 
   const result = gate(tally, {});
 
   assert.equal(result.pass, false);
   assert.equal(result.reasons.length, 1);
-  assert.match(result.reasons[0], /held/);
+  assert.match(result.reasons[0], /never posted/);
+});
+
+test("gate passes on neverPosted even when caught + misplaced alone is below the threshold", () => {
+  // Held (caught + misplaced) is only 250, but the wrong_subject drops push
+  // neverPosted past 307 — the gate reads neverPosted, not held.
+  const tally = passingTally();
+  tally.caught = 240;
+  tally.misplaced = 10;
+  tally.dropped = 60;
+  tally.neverPosted = tally.caught + tally.misplaced + tally.dropped;
+
+  const result = gate(tally, {});
+
+  assert.equal(result.pass, true);
+  assert.deepEqual(result.reasons, []);
 });
 
 test("gate fails when too many useful first arrivals are swallowed", () => {
