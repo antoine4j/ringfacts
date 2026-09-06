@@ -285,8 +285,8 @@ describe("stories", { skip }, () => {
   // Two stories, three items at 0, 30 and 80 degrees; a query at 25 degrees
   // sits closer to the 30 degree member, so its story must rank first. The
   // 0 degree item is backdated past the window, so its story never appears —
-  // the inner join on embedded members means "no eligible member" is the
-  // same as "no story", not a similarity of zero.
+  // only the window decides that, and a story with no embedded member is
+  // ranked last rather than dropped (the test below).
   test("storyShortlist ranks by the closest member and excludes a story seen outside the window", async () => {
     const s = `${SUBJECT}_shortlist`;
     const near = await insertItem(db, item({ subject: s, embedding: vectorAt(30), embeddingModel: "test" }));
@@ -305,6 +305,27 @@ describe("stories", { skip }, () => {
     const shortlist = await storyShortlist(db, s, vectorAt(25), { days: 7 });
     assert.equal(shortlist.length, 2, "the stale story falls outside the 7 day window");
     assert.equal(String(shortlist[0].id), String(nearStoryId), "the 30 degree member is closer to a 25 degree query than the 80 degree one");
+  });
+
+  // The members join takes every member, so a story whose members all lack an
+  // embedding still reaches the decider — nothing can score it, so it sorts
+  // last on NULLS LAST rather than disappearing from the menu.
+  test("storyShortlist keeps a story with no embedded member, ranked last", async () => {
+    const s = `${SUBJECT}_shortlist_unembedded`;
+    const embedded = await insertItem(db, item({ subject: s, embedding: vectorAt(30), embeddingModel: "test" }));
+    const embeddedStoryId = await insertStory(db, story(embedded, { subject: s }));
+    await setItemStory(db, embedded, embeddedStoryId, "new");
+
+    const vectorless = await insertItem(db, item({ subject: s }));
+    const vectorlessStoryId = await insertStory(db, story(vectorless, { subject: s }));
+    await setItemStory(db, vectorless, vectorlessStoryId, "new");
+
+    const shortlist = await storyShortlist(db, s, vectorAt(25), { days: 7 });
+    assert.equal(shortlist.length, 2, "the vector-less story is still offered");
+    assert.equal(String(shortlist[0].id), String(embeddedStoryId));
+    assert.equal(String(shortlist[1].id), String(vectorlessStoryId), "unscored sorts last");
+    assert.equal(shortlist[1].similarity, null, "no embedded member to score");
+    assert.equal(shortlist[1].members, 1, "the member count counts it all the same");
   });
 
   // An embedding outage passes null through, unable to rank anything — the

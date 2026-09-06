@@ -173,14 +173,22 @@ export function createFakeStore({ items = [], claims = [], claimSources = [], st
       const liveStories = liveStoriesFor(rows, subject, days);
       if (embedding === null) return recentStoryShortlist(rows, liveStories, top);
 
+      // Only embedded members can be scored, but a story whose members are
+      // all vector-less still belongs on the menu — it sorts last, with a
+      // null similarity, exactly as the SQL's NULLS LAST puts it.
       const scored = [];
       for (const story of liveStories) {
-        const members = rows.items.filter((r) => String(r.story_id) === String(story.id) && r.embedding);
-        if (members.length === 0) continue;
-        const similarities = members.map((m) => cosine(embedding, m.embedding));
-        scored.push({ ...describeStory(rows, story), similarity: Math.max(...similarities) });
+        const embedded = rows.items.filter((r) => String(r.story_id) === String(story.id) && r.embedding);
+        const similarities = embedded.map((member) => cosine(embedding, member.embedding));
+        const similarity = similarities.length ? Math.max(...similarities) : null;
+        scored.push({ ...describeStory(rows, story), similarity });
       }
-      return scored.sort((a, b) => b.similarity - a.similarity).slice(0, top);
+      scored.sort((a, b) => {
+        if (a.similarity === null) return b.similarity === null ? 0 : 1;
+        if (b.similarity === null) return -1;
+        return b.similarity - a.similarity;
+      });
+      return scored.slice(0, top);
     },
 
     // The story a stored item belongs to, or null.
