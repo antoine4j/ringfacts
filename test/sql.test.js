@@ -21,6 +21,7 @@ import {
   activeClaims, insertClaim, linkClaimSource, claimOfItem, claimSimilarities,
   claimLinkDrifts, setClaimMessageId, confirmClaim, pendingResends, markPosted,
   dumpTables, restoreTables, domainRecord, unsweptMentions,
+  insertStory, setItemStory, storyShortlist, storyOfItem, storyById,
 } from "../lib/db.js";
 import { EMBEDDING_DIMENSIONS } from "../lib/embeddings.js";
 
@@ -62,6 +63,8 @@ after(async () => {
   const mine = `${SUBJECT}%`;
   await db.query("DELETE FROM claim_sources WHERE claim_id IN (SELECT id FROM claims WHERE subject LIKE $1)", [mine]);
   await db.query("DELETE FROM claim_sources WHERE item_id IN (SELECT id FROM items WHERE subject LIKE $1)", [mine]);
+  // Stories reference items, so they must go before the items they root on.
+  await db.query("DELETE FROM stories WHERE subject LIKE $1", [mine]);
   await db.query("DELETE FROM claims WHERE subject LIKE $1", [mine]);
   await db.query("DELETE FROM items WHERE subject LIKE $1", [mine]);
   await db.end();
@@ -89,7 +92,7 @@ describe("schema agrees with lib/db.js", { skip }, () => {
       "url", "subject", "title", "source", "published_at", "posted", "embedding", "embedding_model",
       "nearest_similarity", "nearest_item", "held_reason", "found_via", "rss_description",
       "resolved_url", "body", "body_fetched_at", "body_via", "digest_tier", "subject_role",
-      "edition",
+      "edition", "story_id", "story_decision",
     ];
     assert.deepEqual(written.filter((c) => !have.has(c)), []);
   });
@@ -251,6 +254,53 @@ describe("claims", { skip }, () => {
     await insertClaim(db, claim({ subject: noVec }));
     assert.deepEqual(await claimSimilarities(db, noVec, vectorAt(0)), []);
     await db.query("DELETE FROM claims WHERE subject = $1", [noVec]);
+  });
+});
+
+describe("stories", { skip }, () => {
+  const story = (rootItem, over = {}) => ({
+    subject: SUBJECT, rootItem, fact: "A one-sentence account of the news", decidedBy: "story", ...over,
+  });
+
+  test("a story round-trips through insertStory and storyById", async () => {
+    const root = await insertItem(db, item());
+    const storyId = await insertStory(db, story(root));
+    const found = await storyById(db, storyId);
+    assert.equal(String(found.id), String(storyId));
+    assert.equal(found.fact, "A one-sentence account of the news");
+    assert.equal(String(found.root_item), String(root));
+  });
+
+  test("setItemStory is read back by storyOfItem", async () => {
+    const root = await insertItem(db, item());
+    const storyId = await insertStory(db, story(root));
+    await setItemStory(db, root, storyId, "new");
+    assert.equal(await storyOfItem(db, root), storyId);
+  });
+
+  // Two stories, three items at 0, 30 and 80 degrees; a query at 25 degrees
+  // sits closer to the 30 degree member, so its story must rank first. The
+  // 0 degree item is backdated past the window, so its story never appears —
+  // the inner join on embedded members means "no eligible member" is the
+  // same as "no story", not a similarity of zero.
+  test("storyShortlist ranks by the closest member and excludes a story seen outside the window", async () => {
+    const s = `${SUBJECT}_shortlist`;
+    const near = await insertItem(db, item({ subject: s, embedding: vectorAt(30), embeddingModel: "test" }));
+    const nearStoryId = await insertStory(db, story(near, { subject: s }));
+    await setItemStory(db, near, nearStoryId, "new");
+
+    const far = await insertItem(db, item({ subject: s, embedding: vectorAt(80), embeddingModel: "test" }));
+    const farStoryId = await insertStory(db, story(far, { subject: s }));
+    await setItemStory(db, far, farStoryId, "new");
+
+    const stale = await insertItem(db, item({ subject: s, embedding: vectorAt(0), embeddingModel: "test" }));
+    const staleStoryId = await insertStory(db, story(stale, { subject: s }));
+    await setItemStory(db, stale, staleStoryId, "new");
+    await db.query("UPDATE items SET seen_at = now() - interval '30 days' WHERE id = $1", [stale]);
+
+    const shortlist = await storyShortlist(db, s, vectorAt(25), { days: 7 });
+    assert.equal(shortlist.length, 2, "the stale story falls outside the 7 day window");
+    assert.equal(String(shortlist[0].id), String(nearStoryId), "the 30 degree member is closer to a 25 degree query than the 80 degree one");
   });
 });
 

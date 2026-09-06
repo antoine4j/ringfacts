@@ -120,6 +120,34 @@ CREATE TABLE IF NOT EXISTS claim_sources (
 
 CREATE INDEX IF NOT EXISTS claims_subject_status_idx ON claims (subject, status);
 
+-- Stories (2026-09-06, docs/decisions.md#stories-as-objects): the unit of
+-- "the group has seen this". One row per piece of news; every article that
+-- reports it points here through items.story_id. `fact` is the decider's
+-- one-sentence statement of the news; `claim_id` is set when the story
+-- minted a claim (the lifecycle stays on claims); `reacts_to` links a
+-- reply, rebuttal or follow-up to the story it answers; `decided_by` says
+-- who placed the root: 'story' (the live decider), 'backfill' (the labels
+-- or the archive's own record).
+CREATE TABLE IF NOT EXISTS stories (
+  id            bigint GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+  subject       text NOT NULL,
+  root_item     bigint NOT NULL REFERENCES items(id),
+  fact          text NOT NULL,
+  reacts_to     bigint REFERENCES stories(id),
+  claim_id      bigint REFERENCES claims(id),
+  decided_by    text NOT NULL,
+  first_seen_at timestamptz NOT NULL DEFAULT now()
+);
+CREATE INDEX IF NOT EXISTS stories_subject_seen_idx ON stories (subject, first_seen_at);
+
+-- Which story an article belongs to, and how it got there: 'join' (a
+-- repeat, held), 'new' (it opened the story), 'reaction' (it opened a story
+-- that answers another). Null on rows from before stories existed and on
+-- rows that never reached the decider (wrong subject, untrusted source).
+ALTER TABLE items ADD COLUMN IF NOT EXISTS story_id bigint REFERENCES stories(id);
+ALTER TABLE items ADD COLUMN IF NOT EXISTS story_decision text;
+CREATE INDEX IF NOT EXISTS items_story_idx ON items (story_id);
+
 -- Labels: one row per article per author — whoever judged it. Agreed with
 -- Anton 2026-09-04 evening as THE single place an article's label lives; the
 -- grading sheets and corpus files are printouts of this table, never sources.
