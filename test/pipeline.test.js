@@ -55,7 +55,7 @@ function deps(over = {}) {
   return {
     store: over.store,
     embedTexts: over.embedTexts ?? (async (texts) => texts.map(() => [1, 0])),
-    matchItem: over.matchItem ?? (async () => ({ verdict: "NO_CLAIM" })),
+    matchItem: over.matchItem ?? (async ({ item }) => ({ verdict: "NO_CLAIM", decision: "new", fact: item.title })),
     // No decode and no fetch: every fixture carries feedContent, so rung 0
     // fires and the body step never reaches the network.
     decodeGoogleNewsUrl: over.decodeGoogleNewsUrl ?? (async (url) => url),
@@ -159,17 +159,25 @@ describe("gate 1 — URLs already seen", () => {
   });
 });
 
-describe("gate 2 — semantic duplicates", () => {
-  // The threshold is 0.80, measured: a translated pair sat at 0.841, unrelated
-  // same-subject pairs topped out at 0.702. Both sides of the line are pinned.
-  test("above 0.80 the item is held, not posted, and inherits its neighbour's claim", async () => {
-    const [stored, incoming] = vectorsWithSimilarity(0.84);
+// The threshold gate is no longer a gate in the pipeline — the decider places
+// every article. It survives as the fallback for the runs where there is no
+// decider: no key, or a call that threw. Every test here runs with the decider
+// unavailable, because that is the only state in which the gate fires at all.
+// History: docs/decisions.md#stories-as-objects
+describe("the threshold gate — only when the decider cannot answer", () => {
+  // No key this run: the decider never runs, the gate stands in for it.
+  const noDecider = { matcherEnabled: false };
+
+  // The fallback line is 0.85, raised from 0.80 when the gate stopped being
+  // the main separator (measured 2026-09-06). Both sides of it are pinned.
+  test("above 0.85 the item is held, not posted, and inherits its neighbour's claim", async () => {
+    const [stored, incoming] = vectorsWithSimilarity(0.9);
     const store = createFakeStore({
       items: [{ url: "https://example.test/first", subject: SUBJECT.name, title: "Testov books a return", embedding: stored, posted: true }],
       claims: [{ subject: SUBJECT.name, type: "announcement", canonical_text: "Testov returns in March", embedding: stored }],
       claimSources: [{ item_id: "1", claim_id: "1", role: "origin", stance: "asserts" }],
     });
-    await huntSubject(DB, SUBJECT, [makeItem()], deps({ store, embedTexts: async () => [incoming] }));
+    await huntSubject(DB, SUBJECT, [makeItem()], deps({ store, ...noDecider, embedTexts: async () => [incoming] }));
 
     assert.equal(sent.length, 0, "a held duplicate reaches nobody");
     const held = store.rows.items.at(-1);
@@ -179,71 +187,44 @@ describe("gate 2 — semantic duplicates", () => {
     assert.equal(store.sourcesOf("1").at(-1).role, "echo");
   });
 
-  test("below 0.80 the item posts", async () => {
-    const [stored, incoming] = vectorsWithSimilarity(0.79);
+  test("below 0.85 the item posts", async () => {
+    const [stored, incoming] = vectorsWithSimilarity(0.84);
     const store = createFakeStore({
       items: [{ url: "https://example.test/first", subject: SUBJECT.name, title: "Something else", embedding: stored, posted: true }],
     });
-    await huntSubject(DB, SUBJECT, [makeItem()], deps({ store, embedTexts: async () => [incoming] }));
+    await huntSubject(DB, SUBJECT, [makeItem()], deps({ store, ...noDecider, embedTexts: async () => [incoming] }));
     assert.equal(sent.length, 1);
     assert.match(digest().text, /Testov books a return/);
   });
 
-  // The exemption exists because an official confirmation headline is BY
-  // CONSTRUCTION near-identical to the rumor it confirms — holding it here
-  // would swallow the rumor -> confirmed transition, the one edge the claims
-  // layer exists to catch.
-  test("an official source above the threshold is exempted and reaches the matcher", async () => {
-    const [stored, incoming] = vectorsWithSimilarity(0.95);
-    const store = createFakeStore({
-      items: [{ url: "https://example.test/rumor", subject: SUBJECT.name, title: "Testov targeted for March", embedding: stored, posted: true }],
-      claims: [{ subject: SUBJECT.name, type: "announcement", canonical_text: "Testov fights in March", status: "rumor", embedding: stored }],
-      claimSources: [{ item_id: "1", claim_id: "1", role: "origin", stance: "asserts" }],
-    });
-    let sawMatcher = false;
-    await huntSubject(DB, SUBJECT, [makeItem({ source: "UFC" })], deps({
-      store,
-      embedTexts: async () => [incoming],
-      matchItem: async () => { sawMatcher = true; return { verdict: "MATCH", match_claim_id: "1", stance: "asserts" }; },
-    }));
-    assert.ok(sawMatcher, "official items must reach the matcher despite the dup gate");
-    assert.equal(store.rows.claims[0].status, "confirmed", "official MATCH flips rumor -> confirmed");
-    assert.ok(sent.some((m) => m.text.startsWith("✅")), "a confirmation is posted");
-  });
-
-  // The exemption is a deferral, not a waiver. If the matcher produced nothing
-  // to act on, the reason to skip the gate is gone — otherwise a matcher outage
-  // turns every official echo into a duplicate post.
-  for (const verdict of ["UNSURE", "NO_CLAIM"]) {
-    test(`an official duplicate is re-held when the matcher says ${verdict}`, async () => {
-      const [stored, incoming] = vectorsWithSimilarity(0.95);
-      const store = createFakeStore({
-        items: [{ url: "https://example.test/rumor", subject: SUBJECT.name, title: "Testov targeted", embedding: stored, posted: true }],
-      });
-      await huntSubject(DB, SUBJECT, [makeItem({ source: "UFC" })], deps({
-        store, embedTexts: async () => [incoming], matchItem: async () => ({ verdict }),
-      }));
-      assert.equal(sent.length, 0, "the re-applied gate holds it");
-      assert.equal(store.rows.items.at(-1).posted, false);
-    });
-  }
-
-  // The deferral ends the other way too: when the matcher DOES find something
-  // to act on, the claim outranks the embedding echo and the item posts.
-  test("an official duplicate posts when the matcher mints a new claim", async () => {
+  // The official exemption is gone with the second application it deferred to.
+  // With no decider there is nothing to defer to, and an exempted official
+  // echo would simply post the same story twice.
+  test("an official duplicate is held too — the exemption went with the second gate", async () => {
     const [stored, incoming] = vectorsWithSimilarity(0.95);
     const store = createFakeStore({
       items: [{ url: "https://example.test/rumor", subject: SUBJECT.name, title: "Testov targeted", embedding: stored, posted: true }],
     });
     await huntSubject(DB, SUBJECT, [makeItem({ source: "UFC" })], deps({
+      store, ...noDecider, embedTexts: async () => [incoming],
+    }));
+    assert.equal(sent.length, 0);
+    assert.equal(store.rows.items.at(-1).held_reason, "embedding");
+  });
+
+  // The gate is the fallback, not a second opinion: when the decider DID
+  // answer, a near-identical neighbour changes nothing.
+  test("with the decider answering, a near-identical neighbour does not hold anything", async () => {
+    const [stored, incoming] = vectorsWithSimilarity(0.95);
+    const store = createFakeStore({
+      items: [{ url: "https://example.test/rumor", subject: SUBJECT.name, title: "Testov targeted", embedding: stored, posted: true }],
+    });
+    await huntSubject(DB, SUBJECT, [makeItem()], deps({
       store,
       embedTexts: async () => [incoming],
-      matchItem: async () => ({
-        verdict: "NEW",
-        new_claim: { type: "quote", sourcing: "reported", canonical_text: "Testov says he wants March", facts: {} },
-      }),
+      matchItem: async () => ({ verdict: "NO_CLAIM", decision: "new", fact: "Testov opens a gym" }),
     }));
-    assert.equal(sent.length, 1, "the item posts despite the embedding echo");
+    assert.equal(sent.length, 1, "the decider called it a new story, so it posts");
     assert.equal(store.rows.items.at(-1).posted, true);
   });
 
@@ -252,11 +233,11 @@ describe("gate 2 — semantic duplicates", () => {
   // pinned above; this is the guard against inheriting the wrong one.
   //
   // What the guard does NOT do, deliberately: it stops the bad claim link, not
-  // the bad hold. The item is still never posted. That limitation is real and
-  // recorded in docs/decisions.md#dup-threshold — this test pins today's
-  // behaviour, it does not endorse it.
+  // the bad hold. The item is still never posted.
   test("a held duplicate is not credited to a claim it has drifted away from", async () => {
-    const [neighbourVec, incomingVec] = vectorsWithSimilarity(0.84);
+    // 0.88: above the fallback line, and far enough from the closer claim
+    // that the 0.1 drift gap is cleanly cleared rather than sitting on it.
+    const [neighbourVec, incomingVec] = vectorsWithSimilarity(0.88);
 
     // The incoming headline is a near-duplicate of a stored item belonging to
     // claim 1, but sits much closer to claim 2 — the signature of a dup chain
@@ -269,7 +250,7 @@ describe("gate 2 — semantic duplicates", () => {
       ],
       claimSources: [{ item_id: "1", claim_id: "1", role: "origin", stance: "asserts" }],
     });
-    await huntSubject(DB, SUBJECT, [makeItem()], deps({ store, embedTexts: async () => [incomingVec] }));
+    await huntSubject(DB, SUBJECT, [makeItem()], deps({ store, ...noDecider, embedTexts: async () => [incomingVec] }));
 
     assert.equal(store.rows.items.at(-1).held_reason, "embedding", "still held — the guard does not rescue it");
     assert.equal(store.sourcesOf("1").length, 1, "but not credited to the claim it drifted from");
@@ -278,14 +259,13 @@ describe("gate 2 — semantic duplicates", () => {
 
   // The chain-break, pinned. Held articles used to be comparison anchors, so
   // holds chained — B held for resembling A, C for resembling B — and clusters
-  // drifted away from the story they started on (a live 0.802 -> 0.869 ->
-  // 0.974 chain blocked genuinely different news). Now only POSTED articles
+  // drifted away from the story they started on. Now only POSTED articles
   // anchor the gate. History: docs/decisions.md#posted-anchors
   describe("held articles are not anchors", () => {
-    // A at 0°, B at 33°, C at 66°: adjacent pairs are 0.84-similar (dup),
-    // A and C only 0.41 (different stories).
-    const [vecA, vecB] = [vectorAt(0), vectorAt(33)];
-    const vecC = vectorAt(66);
+    // A at 0°, B at 25°, C at 50°: adjacent pairs are 0.91-similar (dup),
+    // A and C only 0.64 (different stories).
+    const [vecA, vecB] = [vectorAt(0), vectorAt(25)];
+    const vecC = vectorAt(50);
 
     test("an article resembling only a HELD item posts — the chain cannot grow", async () => {
       const store = createFakeStore({
@@ -294,7 +274,7 @@ describe("gate 2 — semantic duplicates", () => {
           { url: "https://example.test/b", subject: SUBJECT.name, title: "Testov books return, say sources", embedding: vecB, posted: false, held_reason: "embedding" },
         ],
       });
-      await huntSubject(DB, SUBJECT, [makeItem({ title: "Testov opens a gym in Kyiv" })], deps({ store, embedTexts: async () => [vecC] }));
+      await huntSubject(DB, SUBJECT, [makeItem({ title: "Testov opens a gym in Kyiv" })], deps({ store, ...noDecider, embedTexts: async () => [vecC] }));
       assert.equal(sent.length, 1, "resembling a held echo is not resembling the group's feed");
       assert.equal(store.rows.items.at(-1).posted, true);
     });
@@ -303,7 +283,7 @@ describe("gate 2 — semantic duplicates", () => {
       const store = createFakeStore({
         items: [{ url: "https://example.test/a", subject: SUBJECT.name, title: "Testov books a return", embedding: vecA, posted: true }],
       });
-      await huntSubject(DB, SUBJECT, [makeItem()], deps({ store, embedTexts: async () => [vectorAt(33)] }));
+      await huntSubject(DB, SUBJECT, [makeItem()], deps({ store, ...noDecider, embedTexts: async () => [vectorAt(25)] }));
       assert.equal(sent.length, 0, "the ordinary duplicate case is unchanged");
       assert.equal(store.rows.items.at(-1).held_reason, "embedding");
     });
@@ -317,7 +297,7 @@ describe("gate 2 — semantic duplicates", () => {
             { url: "https://example.test/b", subject: SUBJECT.name, title: "Testov books return, say sources", embedding: vecB, posted: false, held_reason: "embedding" },
           ],
         });
-        await huntSubject(DB, SUBJECT, [makeItem({ title: "Testov opens a gym in Kyiv" })], deps({ store, embedTexts: async () => [vecC] }));
+        await huntSubject(DB, SUBJECT, [makeItem({ title: "Testov opens a gym in Kyiv" })], deps({ store, ...noDecider, embedTexts: async () => [vecC] }));
         assert.equal(sent.length, 0, "the kill switch brings the old behaviour back");
       } finally {
         delete process.env.DUP_ANCHORS_ALL;
@@ -333,7 +313,7 @@ describe("gate 2 — semantic duplicates", () => {
           embedding: vecA, posted: true, seen_at: new Date(Date.now() - 8 * 24 * 3_600_000),
         }],
       });
-      await huntSubject(DB, SUBJECT, [makeItem()], deps({ store, embedTexts: async () => [vectorAt(33)] }));
+      await huntSubject(DB, SUBJECT, [makeItem()], deps({ store, ...noDecider, embedTexts: async () => [vectorAt(25)] }));
       assert.equal(sent.length, 1, "an 8-day-old anchor is outside the 7-day window");
     });
 
@@ -344,16 +324,16 @@ describe("gate 2 — semantic duplicates", () => {
           embedding: vecA, posted: true, seen_at: new Date(Date.now() - 6 * 24 * 3_600_000),
         }],
       });
-      await huntSubject(DB, SUBJECT, [makeItem()], deps({ store, embedTexts: async () => [vectorAt(33)] }));
+      await huntSubject(DB, SUBJECT, [makeItem()], deps({ store, ...noDecider, embedTexts: async () => [vectorAt(25)] }));
       assert.equal(sent.length, 0);
     });
   });
 });
 
-describe("gate 3 — the matcher's verdicts", () => {
+describe("the decider's verdicts", () => {
   test("WRONG_SUBJECT is recorded and never posted", async () => {
     const store = createFakeStore();
-    await huntSubject(DB, SUBJECT, [makeItem()], deps({ store, matchItem: async () => ({ verdict: "WRONG_SUBJECT" }) }));
+    await huntSubject(DB, SUBJECT, [makeItem()], deps({ store, matchItem: async () => ({ verdict: "WRONG_SUBJECT", decision: "wrong_subject" }) }));
     assert.equal(sent.length, 0);
     assert.equal(store.rows.items[0].held_reason, "wrong_subject");
     assert.equal(store.rows.claims.length, 0, "and never becomes a claim");
@@ -364,7 +344,7 @@ describe("gate 3 — the matcher's verdicts", () => {
     await huntSubject(DB, SUBJECT, [makeItem()], deps({
       store,
       matchItem: async () => ({
-        verdict: "NEW",
+        verdict: "NEW", decision: "new", fact: "Testov fights in March",
         new_claim: { type: "announcement", sourcing: "reported", canonical_text: "Testov fights in March", facts: {} },
       }),
     }));
@@ -380,7 +360,7 @@ describe("gate 3 — the matcher's verdicts", () => {
     await huntSubject(DB, SUBJECT, [makeItem({ source: "UFC" })], deps({
       store,
       matchItem: async () => ({
-        verdict: "NEW",
+        verdict: "NEW", decision: "new", fact: "Testov fights Rivalov in March",
         new_claim: { type: "announcement", sourcing: "official", canonical_text: "Testov fights Rivalov in March", facts: {} },
       }),
     }));
@@ -397,7 +377,7 @@ describe("gate 3 — the matcher's verdicts", () => {
     await huntSubject(DB, SUBJECT, [makeItem()], deps({
       store,
       matchItem: async () => ({
-        verdict: "NEW",
+        verdict: "NEW", decision: "new", fact: "Testov opened a restaurant",
         new_claim: { type: "lifestyle", sourcing: "reported", canonical_text: "Testov opened a restaurant", facts: {} },
       }),
     }));
@@ -414,7 +394,7 @@ describe("gate 3 — the matcher's verdicts", () => {
     await huntSubject(DB, SUBJECT, [makeItem()], deps({
       store,
       matchItem: async () => ({
-        verdict: "NEW",
+        verdict: "NEW", decision: "new", fact: "Testov says he wants March",
         new_claim: { type: "quote", sourcing: "reported", canonical_text: "Testov says he wants March", facts: {} },
       }),
     }));
@@ -424,24 +404,25 @@ describe("gate 3 — the matcher's verdicts", () => {
     assert.ok(store.rows.claims[0].tg_message_id, "the digest's message id lands on the claim");
   });
 
-  // The conservative lifecycle, from the other side. The official MATCH above
-  // flips rumor -> confirmed; this pins that an ordinary outlet saying the same
+  // The conservative lifecycle, from the other side. An official join flips
+  // rumor -> confirmed; this pins that an ordinary outlet saying the same
   // thing does NOT. Without it, dropping the `official &&` guard would start
   // firing confirmations off any outlet with the whole suite still green.
-  test("a non-official MATCH is held as evidence and leaves the claim a rumor", async () => {
+  test("a non-official join is held as evidence and leaves the claim a rumor", async () => {
     const store = createFakeStore({
-      items: [{ url: "https://example.test/first", subject: SUBJECT.name, title: "Testov targeted for March" }],
+      items: [{ url: "https://example.test/first", subject: SUBJECT.name, title: "Testov targeted for March", embedding: vectorAt(0), posted: true, story_id: "1" }],
       claims: [{ subject: SUBJECT.name, type: "announcement", canonical_text: "Testov fights in March", status: "rumor" }],
+      stories: [{ subject: SUBJECT.name, root_item: "1", fact: "Testov fights in March", claim_id: "1", decided_by: "story" }],
     });
     await huntSubject(DB, SUBJECT, [makeItem()], deps({
       store,
-      matchItem: async () => ({ verdict: "MATCH", match_claim_id: "1", stance: "asserts" }),
+      matchItem: async () => ({ verdict: "MATCH", decision: "join", story_id: 1, stance: "asserts" }),
     }));
 
-    assert.equal(sent.length, 0, "a matched echo reaches nobody");
+    assert.equal(sent.length, 0, "a joined echo reaches nobody");
     const held = store.rows.items.at(-1);
     assert.equal(held.posted, false);
-    assert.equal(held.held_reason, "llm");
+    assert.equal(held.held_reason, "story");
     assert.equal(store.sourcesOf("1").at(-1).role, "echo", "recorded as evidence, not as an official source");
     assert.equal(store.rows.claims[0].status, "rumor", "only an official source confirms");
   });
@@ -451,11 +432,13 @@ describe("gate 3 — the matcher's verdicts", () => {
   // own governing body just said was not happening.
   test("an official denial is recorded but confirms nothing", async () => {
     const store = createFakeStore({
+      items: [{ url: "https://example.test/first", subject: SUBJECT.name, title: "Testov targeted for March", embedding: vectorAt(0), posted: true, story_id: "1" }],
       claims: [{ subject: SUBJECT.name, type: "announcement", canonical_text: "Testov fights in March", status: "rumor" }],
+      stories: [{ subject: SUBJECT.name, root_item: "1", fact: "Testov fights in March", claim_id: "1", decided_by: "story" }],
     });
     await huntSubject(DB, SUBJECT, [makeItem({ source: "UFC" })], deps({
       store,
-      matchItem: async () => ({ verdict: "MATCH", match_claim_id: "1", stance: "denies" }),
+      matchItem: async () => ({ verdict: "MATCH", decision: "join", story_id: 1, stance: "denies" }),
     }));
 
     assert.equal(store.rows.claims[0].status, "rumor", "a denial must never confirm");
@@ -483,7 +466,7 @@ describe("gate 3 — the matcher's verdicts", () => {
       store,
       sendMessage: recording,
       matchItem: async () => ({
-        verdict: "NEW",
+        verdict: "NEW", decision: "new", fact: "Testov fights in March",
         new_claim: { type: "announcement", sourcing: "reported", canonical_text: "Testov fights in March", facts: {} },
       }),
     }));
@@ -494,7 +477,7 @@ describe("gate 3 — the matcher's verdicts", () => {
     await huntSubject(DB, SUBJECT, [makeItem({ source: "UFC" })], deps({
       store,
       sendMessage: recording,
-      matchItem: async () => ({ verdict: "MATCH", match_claim_id: "1", stance: "asserts" }),
+      matchItem: async () => ({ verdict: "MATCH", decision: "join", story_id: 1, stance: "asserts" }),
     }));
 
     const confirmation = calls.find((c) => c.text.startsWith("✅"));
@@ -513,7 +496,7 @@ describe("gate 3 — the matcher's verdicts", () => {
     await huntSubject(DB, SUBJECT, [makeItem()], deps({
       store,
       matchItem: async () => ({
-        verdict: "NEW",
+        verdict: "NEW", decision: "new", fact: "Testov fights in March",
         new_claim: { type: "announcement", sourcing: "reported", canonical_text: "Testov fights in March", facts: {} },
       }),
     }));
@@ -524,13 +507,233 @@ describe("gate 3 — the matcher's verdicts", () => {
     await huntSubject(DB, SUBJECT, [makeItem({ url: wrapped, source: "UFC" })], deps({
       store,
       decodeGoogleNewsUrl: async () => "https://www.ufc.com/news/testov-confirmed",
-      matchItem: async () => ({ verdict: "MATCH", match_claim_id: "1", stance: "asserts" }),
+      matchItem: async () => ({ verdict: "MATCH", decision: "join", story_id: 1, stance: "asserts" }),
     }));
 
     const confirmation = sent.find((m) => m.text.startsWith("✅"));
     assert.ok(confirmation, "a confirmation was sent");
     assert.ok(confirmation.text.includes("https://www.ufc.com/news/testov-confirmed"), "it links the publisher URL");
     assert.ok(!confirmation.text.includes("news.google.com"), "and never the wrapper");
+  });
+});
+
+// The story is the unit. Every article the decider sees is placed: it joins a
+// story we already carry, opens one of its own, or opens one that answers
+// another. History: docs/decisions.md#stories-as-objects
+describe("stories — the decider places every article", () => {
+  // A seeded story with one posted, embedded member, so the shortlist can
+  // offer it and a join has something real to land on.
+  const seedStory = ({ claim = true, angle = 0 } = {}) => createFakeStore({
+    items: [{
+      url: "https://example.test/first", subject: SUBJECT.name, title: "Testov targeted for March",
+      embedding: vectorAt(angle), posted: true, story_id: "1",
+    }],
+    claims: claim ? [{ subject: SUBJECT.name, type: "announcement", canonical_text: "Testov fights in March", status: "rumor" }] : [],
+    claimSources: claim ? [{ item_id: "1", claim_id: "1", role: "origin", stance: "asserts" }] : [],
+    stories: [{ subject: SUBJECT.name, root_item: "1", fact: "Testov fights in March", claim_id: claim ? "1" : null, decided_by: "story" }],
+  });
+
+  test("bodies are fetched before the decision and the embedding is of headline + body", async () => {
+    const store = createFakeStore();
+    const embedded = [];
+    let bodyAtDecision;
+    const item = makeItem({ feedContent: null });
+    await huntSubject(DB, SUBJECT, [item], deps({
+      store,
+      embedTexts: async (texts) => { embedded.push(...texts); return texts.map(() => [1, 0]); },
+      matchItem: async ({ item: seen }) => {
+        bodyAtDecision = seen.body;
+        return { verdict: "NO_CLAIM", decision: "new", fact: "Testov did a thing" };
+      },
+      extra: { fetchArticleBody: async () => ({ body: "BODY TEXT", via: "fake" }) },
+    }));
+
+    assert.deepEqual(embedded, [`${item.title}\n\nBODY TEXT`], "headline, blank line, body");
+    assert.equal(bodyAtDecision, "BODY TEXT", "the decider read the article, not just the headline");
+  });
+
+  test("join: the item is held, records the story, and links the story's claim as echo", async () => {
+    const store = seedStory();
+    await huntSubject(DB, SUBJECT, [makeItem()], deps({
+      store,
+      embedTexts: async () => [vectorAt(0)],
+      matchItem: async () => ({ verdict: "MATCH", decision: "join", story_id: 1, stance: "asserts" }),
+    }));
+
+    assert.equal(sent.length, 0, "a join reaches nobody");
+    const held = store.rows.items.at(-1);
+    assert.equal(held.posted, false);
+    assert.equal(held.held_reason, "story");
+    assert.equal(held.story_id, "1");
+    assert.equal(held.story_decision, "join");
+    assert.equal(store.sourcesOf("1").length, 2, "linked to the story's claim as evidence");
+    assert.equal(store.sourcesOf("1").at(-1).role, "echo");
+    assert.equal(store.rows.stories.length, 1, "a join opens no story of its own");
+  });
+
+  test("join by an official source confirms the story's rumor", async () => {
+    const store = seedStory();
+    await huntSubject(DB, SUBJECT, [makeItem({ source: "UFC" })], deps({
+      store,
+      embedTexts: async () => [vectorAt(0)],
+      matchItem: async () => ({ verdict: "MATCH", decision: "join", story_id: 1, stance: "asserts" }),
+    }));
+
+    assert.equal(store.rows.claims[0].status, "confirmed", "an official join flips rumor -> confirmed");
+    assert.equal(store.sourcesOf("1").at(-1).role, "official");
+    assert.ok(sent.some((message) => message.text.startsWith("✅")), "a confirmation is posted");
+  });
+
+  // A story whose claim never existed: the join still lands on the story, and
+  // there is simply nothing in the claims table to link it to.
+  test("a join onto a claimless story is still recorded on the story", async () => {
+    const store = seedStory({ claim: false });
+    await huntSubject(DB, SUBJECT, [makeItem()], deps({
+      store,
+      embedTexts: async () => [vectorAt(0)],
+      matchItem: async () => ({ verdict: "MATCH", decision: "join", story_id: 1, stance: "asserts" }),
+    }));
+
+    const held = store.rows.items.at(-1);
+    assert.equal(held.story_id, "1");
+    assert.equal(held.held_reason, "story");
+    assert.equal(store.rows.claimSources.length, 0, "no claim, nothing to link");
+  });
+
+  test("new: the item posts and opens a story rooted at itself; a real claim is minted and the story carries it", async () => {
+    const store = createFakeStore();
+    await huntSubject(DB, SUBJECT, [makeItem()], deps({
+      store,
+      matchItem: async () => ({
+        verdict: "NEW", decision: "new", fact: "Testov fights Rivalov in March",
+        new_claim: { type: "announcement", sourcing: "reported", canonical_text: "Testov fights Rivalov in March", facts: {} },
+      }),
+    }));
+
+    assert.equal(sent.length, 1, "a new story is what posting is for");
+    assert.equal(store.rows.stories.length, 1);
+    const story = store.rows.stories[0];
+    const row = store.rows.items.at(-1);
+    assert.equal(story.root_item, row.id, "rooted at the article that opened it");
+    assert.equal(story.fact, "Testov fights Rivalov in March");
+    assert.equal(story.claim_id, store.rows.claims[0].id, "and carrying the claim it minted");
+    assert.equal(story.reacts_to, null);
+    assert.equal(story.decided_by, "story");
+    assert.equal(row.story_id, story.id);
+    assert.equal(row.story_decision, "new");
+  });
+
+  test("new without a claim still opens a story", async () => {
+    const store = createFakeStore();
+    await huntSubject(DB, SUBJECT, [makeItem()], deps({
+      store,
+      matchItem: async () => ({ verdict: "NO_CLAIM", decision: "new", fact: "Testov trained in Kyiv this week" }),
+    }));
+
+    assert.equal(store.rows.claims.length, 0, "nothing claim-worthy was asserted");
+    assert.equal(store.rows.stories.length, 1);
+    assert.equal(store.rows.stories[0].fact, "Testov trained in Kyiv this week");
+    assert.equal(store.rows.stories[0].claim_id, null);
+    assert.equal(store.rows.items.at(-1).story_decision, "new");
+  });
+
+  test("reaction: opens a story that points at the one it answers", async () => {
+    const store = seedStory();
+    await huntSubject(DB, SUBJECT, [makeItem({ title: "Rivalov answers Testov" })], deps({
+      store,
+      embedTexts: async () => [vectorAt(0)],
+      matchItem: async () => ({ verdict: "NO_CLAIM", decision: "reaction", story_id: 1, fact: "Rivalov answers Testov's callout" }),
+    }));
+
+    assert.equal(store.rows.stories.length, 2, "a reaction is its own story");
+    const reaction = store.rows.stories.at(-1);
+    assert.equal(reaction.reacts_to, "1", "and it points at the story it answers");
+    assert.equal(reaction.fact, "Rivalov answers Testov's callout");
+    assert.equal(store.rows.items.at(-1).story_decision, "reaction");
+    assert.equal(store.rows.items.at(-1).posted, true, "a reaction is news of its own");
+  });
+
+  test("the shortlist offered to the decider is the top 3 stories of the last 7 days by closest member", async () => {
+    // Four live stories at 0°, 10°, 20° and 60°, plus a fifth whose only
+    // member was seen 9 days ago — closest of all, and out of the window.
+    const members = [
+      { angle: 0, seenDaysAgo: 0 }, { angle: 10, seenDaysAgo: 0 },
+      { angle: 20, seenDaysAgo: 0 }, { angle: 60, seenDaysAgo: 0 },
+      { angle: 2, seenDaysAgo: 9 },
+    ];
+    const store = createFakeStore({
+      items: members.map((member, index) => ({
+        url: `https://example.test/story-${index}`, subject: SUBJECT.name, title: `Testov story ${index}`,
+        embedding: vectorAt(member.angle), posted: true, story_id: String(index + 1),
+        seen_at: new Date(Date.now() - member.seenDaysAgo * 24 * 3_600_000),
+      })),
+      stories: members.map((_, index) => ({
+        subject: SUBJECT.name, root_item: String(index + 1), fact: `Fact ${index}`, decided_by: "story",
+      })),
+    });
+
+    let offered;
+    await huntSubject(DB, SUBJECT, [makeItem()], deps({
+      store,
+      embedTexts: async () => [vectorAt(4)],
+      matchItem: async ({ stories }) => {
+        offered = stories;
+        return { verdict: "NO_CLAIM", decision: "new", fact: "Something else entirely" };
+      },
+    }));
+
+    assert.deepEqual(offered.map((story) => story.id), ["1", "2", "3"], "the three nearest, nearest first");
+    assert.equal(offered.length, 3, "STORY_SHORTLIST is 3 — the 60° story does not fit");
+    assert.ok(!offered.some((story) => story.id === "5"), "and the 9-day-old story is outside the window");
+  });
+
+  test("a url duplicate inherits its neighbour's story and claim", async () => {
+    const store = seedStory();
+    store.rows.items[0].url = "https://example.test/real";
+    await huntSubject(DB, SUBJECT, [makeItem({ url: "https://news.google.test/wrapped" })], deps({
+      store,
+      decodeGoogleNewsUrl: async () => "https://example.test/real",
+    }));
+
+    const held = store.rows.items.at(-1);
+    assert.equal(held.posted, false);
+    assert.equal(held.held_reason, "url", "the address settles it — no decider needed");
+    assert.equal(held.story_id, "1", "the same article is the same story");
+    assert.equal(held.story_decision, "join");
+    assert.equal(store.sourcesOf("1").at(-1).role, "echo");
+  });
+
+  test("when the decider throws, the threshold gate holds a near duplicate and the item never posts twice", async () => {
+    const [stored, incoming] = vectorsWithSimilarity(0.9);
+    const store = createFakeStore({
+      items: [{ url: "https://example.test/first", subject: SUBJECT.name, title: "Testov books a return", embedding: stored, posted: true }],
+    });
+    await huntSubject(DB, SUBJECT, [makeItem()], deps({
+      store,
+      embedTexts: async () => [incoming],
+      matchItem: async () => { throw new Error("anthropic 500"); },
+    }));
+
+    assert.equal(sent.length, 0, "the fallback caught what the decider could not judge");
+    assert.equal(store.rows.items.at(-1).posted, false);
+    assert.equal(store.rows.items.at(-1).held_reason, "embedding");
+    assert.equal(store.rows.stories.length, 0, "and a hold opens no story");
+  });
+
+  test("DRY_RUN writes no story", async () => {
+    const store = createFakeStore();
+    await huntSubject(DB, SUBJECT, [makeItem()], deps({
+      store,
+      dryRun: true,
+      matchItem: async () => ({
+        verdict: "NEW", decision: "new", fact: "Testov fights Rivalov in March",
+        new_claim: { type: "announcement", sourcing: "reported", canonical_text: "Testov fights Rivalov in March", facts: {} },
+      }),
+    }));
+
+    assert.equal(store.rows.stories.length, 0);
+    assert.equal(store.rows.items.length, 0);
+    assert.equal(store.rows.claims.length, 0);
   });
 });
 
@@ -577,7 +780,7 @@ describe("the digest tier", () => {
     await huntSubject(DB, SUBJECT, [tangential()], deps({
       store,
       matchItem: async () => ({
-        verdict: "NEW",
+        verdict: "NEW", decision: "new", fact: "Testov is injured",
         new_claim: { type: "injury", sourcing: "reported", canonical_text: "Testov is injured", facts: {} },
       }),
     }));
@@ -602,7 +805,7 @@ describe("the digest tier", () => {
         store,
         embedTexts: async (t) => t.map((_, i) => [Math.cos(i * 2), Math.sin(i * 2)]),
         matchItem: async ({ item }) => ({
-          verdict: "NO_CLAIM",
+          verdict: "NO_CLAIM", decision: "new", fact: item.title,
           subject_role: item.title.startsWith("Kutateladze") ? "passing" : "central",
         }),
       }));
@@ -622,7 +825,7 @@ describe("the digest tier", () => {
       await huntSubject(DB, SUBJECT, [makeItem(), tangential()], deps({
         store,
         embedTexts: async (t) => t.map((_, i) => [Math.cos(i * 2), Math.sin(i * 2)]),
-        matchItem: async () => ({ verdict: "NO_CLAIM", subject_role: "central" }),
+        matchItem: async () => ({ verdict: "NO_CLAIM", decision: "new", fact: "Testov did a thing", subject_role: "central" }),
       }));
       assert.doesNotMatch(digest().text, /Someone else eyes/);
       assert.doesNotMatch(digest().text, /Also mentioning/);
@@ -635,7 +838,7 @@ describe("the digest tier", () => {
     test("the role is stored on a wrong_subject row, which never reaches the digest", async () => {
       const store = createFakeStore();
       await huntSubject(DB, SUBJECT, [makeItem()], deps({
-        store, matchItem: async () => ({ verdict: "WRONG_SUBJECT", subject_role: "passing" }),
+        store, matchItem: async () => ({ verdict: "WRONG_SUBJECT", decision: "wrong_subject", subject_role: "passing" }),
       }));
       assert.equal(sent.length, 0);
       assert.equal(store.rows.items[0].held_reason, "wrong_subject");
@@ -684,7 +887,7 @@ describe("fail-open", () => {
     const store = createFakeStore();
     let called = false;
     await huntSubject(DB, SUBJECT, [makeItem()], deps({
-      store, matcherEnabled: false, matchItem: async () => { called = true; return { verdict: "NO_CLAIM" }; },
+      store, matcherEnabled: false, matchItem: async () => { called = true; return { verdict: "NO_CLAIM", decision: "new", fact: "x" }; },
     }));
     assert.equal(called, false);
     assert.equal(sent.length, 1);
@@ -753,7 +956,7 @@ describe("fail-open", () => {
       await huntSubject(DB, SUBJECT, [makeItem()], deps({
         store, ...dead,
         matchItem: async () => ({
-          verdict: "NEW",
+          verdict: "NEW", decision: "new", fact: "Testov spoke",
           new_claim: { type: "quote", sourcing: "reported", canonical_text: "Testov spoke", facts: {} },
         }),
       }));
@@ -829,7 +1032,7 @@ describe("fail-open", () => {
     test("duplicates and wrong-subject rows are never resent", async () => {
       const store = createFakeStore();
       await huntSubject(DB, SUBJECT, [makeItem()], deps({
-        store, matchItem: async () => ({ verdict: "WRONG_SUBJECT" }),
+        store, matchItem: async () => ({ verdict: "WRONG_SUBJECT", decision: "wrong_subject" }),
       }));
       sent.length = 0;
       await huntSubject(DB, SUBJECT, [], deps({ store }));
@@ -949,7 +1152,7 @@ describe("dry run", () => {
       store,
       dryRun: true,
       matchItem: async () => ({
-        verdict: "NEW",
+        verdict: "NEW", decision: "new", fact: "Testov fights Rivalov in March",
         new_claim: { type: "announcement", sourcing: "official", canonical_text: "Testov fights Rivalov in March", facts: {} },
       }),
     }));
@@ -975,16 +1178,18 @@ describe("dry run", () => {
   test("a confirmation is previewed and the rumor stays a rumor", async (t) => {
     const log = t.mock.method(console, "log");
     const store = createFakeStore({
+      items: [{ url: "https://example.test/first", subject: SUBJECT.name, title: "Testov targeted for March", embedding: vectorAt(0), posted: true, story_id: "1" }],
       claims: [{ subject: SUBJECT.name, type: "announcement", canonical_text: "Testov fights in March", status: "rumor", tg_message_id: 777 }],
+      stories: [{ subject: SUBJECT.name, root_item: "1", fact: "Testov fights in March", claim_id: "1", decided_by: "story" }],
     });
     await huntSubject(DB, SUBJECT, [makeItem({ source: "UFC" })], deps({
       store,
       dryRun: true,
-      matchItem: async () => ({ verdict: "MATCH", match_claim_id: "1", stance: "asserts" }),
+      matchItem: async () => ({ verdict: "MATCH", decision: "join", story_id: 1, stance: "asserts" }),
     }));
 
     assert.equal(sent.length, 0, "nothing reaches Telegram");
-    assert.equal(store.rows.items.length, 0, "nothing reaches the database");
+    assert.equal(store.rows.items.length, 1, "only the seeded row — nothing new reaches the database");
     assert.equal(store.rows.claims[0].status, "rumor", "the flip is previewed, not performed");
     const preview = log.mock.calls.find((call) => String(call.arguments[0]).includes("would post (confirmation)"));
     assert.ok(preview, "the confirmation preview is printed");
@@ -1050,7 +1255,7 @@ describe("the untrusted-source veto", () => {
     });
     const fetchArticleBody = async () => ({ body: null, via: "http-403" });
     const matchItem = async () => ({
-      verdict: "NEW",
+      verdict: "NEW", decision: "new", fact: "Testov to fight Rivalov",
       new_claim: { type: "announcement", canonical_text: "Testov to fight Rivalov", facts: {}, sourcing: "reported" },
     });
     await huntSubject(DB, SUBJECT, [item], deps({ store, matchItem, extra: { fetchArticleBody } }));
@@ -1093,7 +1298,7 @@ describe("the reader's test: nothing new folds, an event never does", () => {
   test("a quote the matcher marks 'no' is folded as a mention, no claim minted, answer stored", async () => {
     const store = createFakeStore();
     await huntSubject(DB, SUBJECT, [makeItem()], deps({
-      store, matchItem: async () => ({ verdict: "NEW", subject_role: "central", news_for_followers: "no", new_claim: claim("quote") }),
+      store, matchItem: async () => ({ verdict: "NEW", decision: "new", fact: "Testov did a thing", subject_role: "central", news_for_followers: "no", new_claim: claim("quote") }),
     }));
     const row = store.rows.items.at(-1);
     assert.equal(row.digest_tier, "tangential");
@@ -1106,7 +1311,7 @@ describe("the reader's test: nothing new folds, an event never does", () => {
   test("a loud claim marked 'no' still posts as an event", async () => {
     const store = createFakeStore();
     await huntSubject(DB, SUBJECT, [makeItem()], deps({
-      store, matchItem: async () => ({ verdict: "NEW", subject_role: "central", news_for_followers: "no", new_claim: claim("announcement") }),
+      store, matchItem: async () => ({ verdict: "NEW", decision: "new", fact: "Testov did a thing", subject_role: "central", news_for_followers: "no", new_claim: claim("announcement") }),
     }));
     assert.equal(store.rows.items.at(-1).digest_tier, "main");
     assert.equal(store.rows.claims.length, 1);
@@ -1117,7 +1322,7 @@ describe("the reader's test: nothing new folds, an event never does", () => {
     try {
       const store = createFakeStore();
       await huntSubject(DB, SUBJECT, [makeItem()], deps({
-        store, matchItem: async () => ({ verdict: "NO_CLAIM", subject_role: "central", news_for_followers: "no" }),
+        store, matchItem: async () => ({ verdict: "NO_CLAIM", decision: "new", fact: "Testov did a thing", subject_role: "central", news_for_followers: "no" }),
       }));
       assert.equal(store.rows.items.at(-1).digest_tier, "main");
     } finally {
