@@ -71,3 +71,10 @@ headline embedding held three other rewrites (0.81–0.82) but not these two.
 
 Ruling: a claim is an event, not an angle. Same video, same fight, same
 statement → MATCH, whatever detail the article leads with.
+
+## 📋 2026-09-06 — Fight week: four pieces about one fight are four stories
+
+- **Context**: judging the useful stories option D swallowed (docs/grading/2026-09-06-story-matching.md). D folded #490, #594 and #598 into #474, the first odds piece about Donchenko–Soriano.
+- **Comment** (Anton, in chat): "these 4 articles are different, 474 is betting odds in Ukrainian betting company Beton it seems like, 490 is great article about Donchenko full of quotes from his interview and it's official source, 594 is betting odds from a different betting company - DraftKings, 598 - preview of a fight, statistical analysis of both fighters. From this I maybe want to see betting odds posted from a western company like DraftKings, and official article full with Donchenko interview quotes."
+- **Rule**: a fight is not one story for the whole of fight week. The odds from one bookmaker, the odds from another, an official long-form with the fighter's own quotes, and a statistical preview are **separate stories**; a matcher that folds them together is wrong on all three counts. Labels stand: #490 → 2, #594 → 2, #598 → 2, #474 → 3.
+- **Signals**: an official source (UFC.com) full of the fighter's quotes is wanted. Odds from a Western bookmaker (DraftKings) are wanted; odds from a Ukrainian bookmaker's blog were not ("maybe" — a preference, not yet a rule).
