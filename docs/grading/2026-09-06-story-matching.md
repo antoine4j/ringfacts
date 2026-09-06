@@ -148,3 +148,39 @@ D says "reaction" 32 times. The labels have no reaction field, so those are
 scored as new stories (right when the labels also open a story there, a
 miss when the labels call it a repeat). A reaction field in the feedback
 table would let the next run score this properly.
+
+## Rescored after Anton's rulings, 2026-09-06
+
+Anton judged the ten swallowed pairs from the articles
+(docs/article-feedback.md, three entries dated 2026-09-06). Five folds were
+right: #34 → #5, #135 → #77, #445 → #443 (one set of remarks, one link),
+#208 → #203 and #300 → #298 (one interview, one link). Those labels moved
+to dup in the `feedback` table and the members of the three folded roots
+were re-rooted (54 rows, no chains). Five stayed separate: the three
+fight-week pieces (#490, #594, #598 — "these 4 articles are different"),
+#100 (a journalist's own argument), #620 (the announcement, not the
+tease). #382 stays separate too, with an open question on whether
+journalists and analysts earn a post at all (TODO 3j).
+
+Same runs, same cached verdicts, scored against the corrected labels
+(346 repeats, 328 first arrivals):
+
+| rule | held | caught | misplaced | missed | useful swallowed | junk swallowed |
+|---|---|---|---|---|---|---|
+| today: posted anchors ≥ 0.80, headline | 174 | 100 | 74 | 172 | 6 | 4 |
+| A: all anchors ≥ 0.85, headline | 248 | 107 | 141 | 98 | 4 | 25 |
+| B: all anchors ≥ 0.88, headline + body | 236 | 98 | 138 | 110 | 4 | 22 |
+| **D, headline only** | 286 | 218 | 68 | 60 | 8 | 47 |
+| **D, headline + body** | **311** | **256** | 55 | **35** | **6** | 62 |
+| D, headline + body, Anton's rows only | 283 of 309 | 235 | 48 | 26 | 5 | 56 |
+
+True story in the top-3 shortlist: 288 of 346 (83%). Of the 58 misses,
+Haiku joined a wrong story in 43.
+
+The six D still swallows, with bodies: #490, #594, #598 (fight week folded
+into the odds piece — the 09-06 ruling says four stories), #100 and #382
+(opinion built on an interview or a segment), #620 (the announcement
+folded into the tease). Two of the six are what D must learn before it
+ships: **a fight is not one story for the week**, and **the fighter's own
+announcement is never a repeat of a report about his plans**. Both are
+prompt lines, testable on this archive for about $1.75.
