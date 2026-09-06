@@ -787,3 +787,14 @@ the one-third reserve for production comes first. It is the next paid run.
 things before a deploy: the bucket regression (tune split, K=3, was 38/45
 with 0 false loud claims); a second look at #5 and #366; and his prompt
 review for content (docs/article-feedback.md rulings vs the rules block).
+
+## embedding-outage-shortlist — With no embedding, the decider is offered the newest stories
+*2026-09-06*
+
+Before, an embedding outage left the decider with an empty shortlist: nothing
+to rank by meant nothing to offer, so every article came back "new" and every
+echo of that hour posted a second time. Now `storyShortlist` with a null
+embedding returns the most recent stories of the window instead, newest first,
+similarity null — the decider reads the facts and can still join one. The
+threshold fallback cannot cover this, because it needs the same vector that is
+missing.
