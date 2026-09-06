@@ -23,18 +23,19 @@ import { openDb, insertStory, setItemStory } from "../lib/db.js";
  * @param {Map<string|number, { reason: string, dup_of: string|number|null }>} labels
  *   the current label per item id (feedback table, one row per item already resolved
  *   to whichever author wins: user > claude > sonnet > haiku).
- * @param {Map<string|number, string>} claimTexts
- *   the origin/official claim's canonical_text per item id, when it minted one.
+ * @param {Map<string|number, { claimId: string|number, text: string }>} claims
+ *   the origin/official claim per item id, when it minted one: claimId is the
+ *   database id `stories.claim_id` should carry, text is its canonical_text.
  * @returns {{ stories: object[], skipped: number }}
  *   Each story is either new — { rootItem, subject, fact, members, claimId, decidedBy } —
  *   or an attachment to a story that already exists — { existingStoryId, members }.
- *   claimId is always null: this planner only has claim TEXT to work with, not ids.
+ *   claimId is the root's claim id (as a string) when it minted one, else null.
  *   Member ids and rootItem are strings, per the id normalisation above.
  */
-export function planStories(items, labels, claimTexts) {
+export function planStories(items, labels, claims) {
   const itemsById = new Map(items.map((item) => [String(item.id), item]));
   const normalizedLabels = normalizeKeys(labels);
-  const normalizedClaimTexts = normalizeKeys(claimTexts);
+  const normalizedClaims = normalizeKeys(claims);
 
   // Ascending id order keeps the plan deterministic and matches the order
   // stories actually happened in (lower ids arrived first).
@@ -57,7 +58,7 @@ export function planStories(items, labels, claimTexts) {
   }
 
   const stories = [
-    ...buildNewStories(newStoryMembers, itemsById, normalizedClaimTexts),
+    ...buildNewStories(newStoryMembers, itemsById, normalizedClaims),
     ...buildExistingAttachments(existingStoryMembers),
   ];
   return { stories, skipped };
@@ -69,6 +70,12 @@ export function planStories(items, labels, claimTexts) {
  * root of its own. Follows dup_of chains and unlabelled held items'
  * nearest_item chains, memoizing so a chain is walked once, and breaking
  * cycles by treating a revisited id as its own root.
+ *
+ * A cycle (two items each naming the other as dup_of, or a nearest_item loop)
+ * cannot be resolved to either one, so the id already being resolved when the
+ * cycle is hit becomes the root — which, walked in ascending id order, is
+ * always the lower id. Every id on that cycle ends up a member of that one
+ * story rather than a story of its own.
  *
  * @param {string} itemId
  * @param {Map<string, object>} itemsById
@@ -139,16 +146,18 @@ function normalizeKeys(map) {
  *
  * @param {Map<string, string[]>} membersByRoot
  * @param {Map<string, object>} itemsById
- * @param {Map<string, string>} claimTexts
+ * @param {Map<string, { claimId: string|number, text: string }>} claims
  * @returns {object[]}  sorted by rootItem, ascending
  */
-function buildNewStories(membersByRoot, itemsById, claimTexts) {
+function buildNewStories(membersByRoot, itemsById, claims) {
   const stories = [];
   for (const [rootItem, members] of membersByRoot) {
     const root = itemsById.get(rootItem);
-    const fact = claimTexts.get(rootItem) ?? root.title;
+    const claim = claims.get(rootItem);
+    const fact = claim?.text ?? root.title;
+    const claimId = claim ? String(claim.claimId) : null;
     const sortedMembers = [...members].sort((a, b) => Number(a) - Number(b));
-    stories.push({ rootItem, subject: root.subject, fact, members: sortedMembers, claimId: null, decidedBy: "backfill" });
+    stories.push({ rootItem, subject: root.subject, fact, members: sortedMembers, claimId, decidedBy: "backfill" });
   }
   return stories.sort((a, b) => Number(a.rootItem) - Number(b.rootItem));
 }
@@ -165,17 +174,21 @@ function buildExistingAttachments(membersByStoryId) {
 
 /**
  * Reads the pieces planStories needs straight from the database: the
- * archive's own items (minus items held for the wrong subject, which never
- * reach a story), the current label per item, and the origin/official
- * claim text per item.
+ * archive's own items (minus items held for the wrong subject or from an
+ * untrusted source, which never reach a story per schema.sql's held_reason
+ * comment), the current label per item, and the origin/official claim per
+ * item.
  *
  * @param {import("pg").Client} db
- * @returns {Promise<{ items: object[], labels: Map, claimTexts: Map }>}
+ * @returns {Promise<{ items: object[], labels: Map, claims: Map }>}
  */
 async function loadArchive(db) {
   const { rows: items } = await db.query(
     `SELECT id, subject, title, posted, nearest_item, story_id, seen_at
-       FROM items WHERE held_reason IS DISTINCT FROM 'wrong_subject' ORDER BY id`
+       FROM items
+      WHERE held_reason IS DISTINCT FROM 'wrong_subject'
+        AND held_reason IS DISTINCT FROM 'untrusted_source'
+      ORDER BY id`
   );
   const { rows: labelRows } = await db.query(
     `WITH current AS (
@@ -185,15 +198,17 @@ async function loadArchive(db) {
      )
      SELECT item_id, reason, dup_of FROM current`
   );
+  // Origin beats official when an item's root minted both; lowest claim_id
+  // breaks any further tie.
   const { rows: claimRows } = await db.query(
-    `SELECT DISTINCT ON (cs.item_id) cs.item_id, c.canonical_text
+    `SELECT DISTINCT ON (cs.item_id) cs.item_id, cs.claim_id, c.canonical_text
        FROM claim_sources cs JOIN claims c ON c.id = cs.claim_id
       WHERE cs.role IN ('origin', 'official')
-      ORDER BY cs.item_id, cs.claim_id`
+      ORDER BY cs.item_id, array_position(ARRAY['origin', 'official'], cs.role), cs.claim_id`
   );
   const labels = new Map(labelRows.map((row) => [String(row.item_id), { reason: row.reason, dup_of: row.dup_of }]));
-  const claimTexts = new Map(claimRows.map((row) => [String(row.item_id), row.canonical_text]));
-  return { items, labels, claimTexts };
+  const claims = new Map(claimRows.map((row) => [String(row.item_id), { claimId: row.claim_id, text: row.canonical_text }]));
+  return { items, labels, claims };
 }
 
 /**
@@ -255,8 +270,8 @@ async function main() {
   const dryRun = process.env.DRY_RUN !== "0";
   const db = await openDb();
   try {
-    const { items, labels, claimTexts } = await loadArchive(db);
-    const plan = planStories(items, labels, claimTexts);
+    const { items, labels, claims } = await loadArchive(db);
+    const plan = planStories(items, labels, claims);
     if (dryRun) {
       printPlan(plan);
     } else {
