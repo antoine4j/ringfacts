@@ -2,9 +2,9 @@
 // building claims + claim_sources from history (docs §11). Never posts to
 // Telegram. Rerunnable: items already linked to a claim are skipped.
 //
-// The claim-candidate shape this script was built around was retired
-// 2026-09-06 (matchItem now takes `stories`, story rows as objects, not a
-// claim list); this measures the decider against an empty shortlist only.
+// RETIRED 2026-09-06: bootstrap-claims.js predates stories. It is kept for
+// the history it records; scripts/backfill-stories.js is the replacement.
+// Every run now exits 1 before touching anything.
 //
 // Dry run (default): in-memory claims, prints planned clusters — the
 // acceptance test. COMMIT=1 writes to the database.
@@ -28,6 +28,12 @@ import { openDb, insertClaim, linkClaimSource, claimOfItem, claimLinkDrifts } fr
 import { embedTexts, EMBEDDING_MODEL } from "../lib/embeddings.js";
 import { matchItem } from "../lib/matcher.js";
 import { isOfficialSource } from "../lib/sources.js";
+
+// Retired: the matcher takes stories now, so this script can only ever hand
+// it an empty shortlist — every article would come back new and COMMIT=1
+// would mint one claim per item. It stops before it can read the archive.
+console.error("bootstrap-claims.js predates stories (2026-09-06); use scripts/backfill-stories.js");
+process.exit(1);
 
 const COMMIT = process.env.COMMIT === "1";
 const RESET = process.env.RESET === "1";
