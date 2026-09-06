@@ -1,3 +1,6 @@
+// SUPERSEDED by bench/story.js, which replays the same archive through the
+// real pipeline matcher. Kept for the cached 2026-09-06 verdicts it measured.
+//
 // Option D measured (docs/story-matching-options.md): stories as objects,
 // embeddings shortlist, one Haiku call decides. Replays the labelled archive
 // in arrival order, per subject. Each story is { root, fact, members,
