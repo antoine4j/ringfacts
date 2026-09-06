@@ -65,4 +65,42 @@ review, 12 were held by the matcher with the body in hand (Donchenko
 interviews, opinion pieces, lifestyle). That is the prompt not knowing
 Anton's rules, and H is the fix for it.
 
-Anton's decision: pending (2026-09-06 morning).
+## Measured, 2026-09-06
+
+B and D were run on a local branch against the same archive
+([grading/2026-09-06-story-matching.md](grading/2026-09-06-story-matching.md)).
+Cascade replay, 341 labelled repeats, 333 first arrivals.
+
+| rule | held | placed right | missed | useful swallowed | cost / month |
+|---|---|---|---|---|---|
+| today (posted anchors ≥ 0.80) | 173 | 106 | 168 | 7 | $0 |
+| A: all anchors ≥ 0.85 | 247 | 97 | 94 | 5 | $0 |
+| B: headline + body, all anchors ≥ 0.88 | 235 | 100 | 106 | 5 | $0 (fetches) |
+| **D, headline only** | 284 | 211 | 57 | 10 | ≈ $1.90 |
+| **D, with bodies (B as input)** | **307** | **244** | **34** | 10 | ≈ $2.30 |
+
+- **B by itself changes nothing at the gate.** Bodies bring repeats
+  closer together and connected stories closer too; the best body
+  threshold is the same trade as A. B is worth building only as D's input,
+  where it adds 23 held and 33 correctly placed repeats.
+- **D is the real gain**: two and a half times as many repeats placed in
+  the right story as A, a third of A's misses, at a measured $1.74 per
+  674 articles on Haiku 4.5 (the estimate above, $3–5, was high; D
+  reshapes the matcher call, so the added spend is under a dollar a
+  month). The price is 10 swallowed useful stories against A's 5, nine of
+  them Anton's labels: fight-week previews folded into the odds story,
+  a trainer's second interview folded into his first. The shortlist misses
+  the true story for one repeat in five; a top-5 shortlist is the first
+  thing to try.
+- **H stays unmeasured** on purpose: Anton's rows are the answer key, so
+  teaching the prompt with them and scoring on them would be circular. It
+  waits for new labels from the feedback bot.
+- Only 167 of 315 missing bodies could be fetched (127 sites answer 403);
+  that ceiling applies to production too.
+
+**Recommendation, revised:** A now as a config change; build D with B
+inside it; H when the feedback bot exists. The fetched bodies, the
+re-embedded vectors and D's 1348 verdicts are kept in tmp/labels/ on
+Anton's machine (gitignored) and seed the backfill when D goes live.
+
+Anton's decision: pending (2026-09-06).
