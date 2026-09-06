@@ -126,10 +126,21 @@ describe("bench/steps — one named step, its dependencies handed in", () => {
     // "[object Object]" as the fighter's name (2026-09-04). The baseline
     // measured that way was worthless.
     const seen = [];
-    const spy = ctx({ matchItem: async ({ subject }) => { seen.push(subject); return { verdict: "NO_CLAIM", subject_role: "central" }; }, domain: { loudTypes: [], ignoredTypes: [] } });
+    const seenStories = [];
+    const spy = ctx({
+      matchItem: async ({ subject, stories }) => {
+        seen.push(subject);
+        seenStories.push(stories);
+        return { verdict: "NO_CLAIM", subject_role: "central" };
+      },
+      domain: { loudTypes: [], ignoredTypes: [] },
+    });
     await STEPS.matcher.run(corpusItem(), spy);
     await STEPS.bucket.run(corpusItem(), spy);
     assert.deepEqual(seen, ["Daniil Donchenko", "Daniil Donchenko"]);
+    // No storiesFor hook on this ctx — the step must still hand matchItem an
+    // array, never undefined, or matchItem's own array check would throw.
+    assert.ok(seenStories.every((stories) => Array.isArray(stories)));
   });
 
   test("matcher: an unresolvable subject is reported, not thrown", async () => {

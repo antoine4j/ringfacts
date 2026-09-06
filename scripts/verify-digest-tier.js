@@ -97,6 +97,9 @@ const items = [
 // what came out of it. Keyed by URL, the one field that survives the clone.
 const roleByUrl = new Map();
 const tapMatcher = async (args) => {
+  // Forwards args whole, so whatever shape the hunter passes matchItem — the
+  // `stories` shortlist now, not the old `candidates` claim list — reaches
+  // the real matchItem unchanged; this tap only reads back what came out.
   const verdict = await matchItem(args);
   roleByUrl.set(args.item.url, {
     verdict: verdict.verdict,
