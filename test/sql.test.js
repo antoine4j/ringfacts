@@ -61,6 +61,10 @@ after(async () => {
   // subject's lost item never leaks into another's digest; both carry this
   // run's unique prefix, and nothing else in the table can.
   const mine = `${SUBJECT}%`;
+  // items.story_id -> stories and stories.root_item -> items form a cycle, so
+  // neither table can be deleted first while both still point at each other.
+  // Break the cycle by clearing the item side before either table is deleted.
+  await db.query("UPDATE items SET story_id = NULL WHERE subject LIKE $1", [mine]);
   await db.query("DELETE FROM claim_sources WHERE claim_id IN (SELECT id FROM claims WHERE subject LIKE $1)", [mine]);
   await db.query("DELETE FROM claim_sources WHERE item_id IN (SELECT id FROM items WHERE subject LIKE $1)", [mine]);
   // Stories reference items, so they must go before the items they root on.
