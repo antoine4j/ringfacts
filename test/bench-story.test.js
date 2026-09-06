@@ -5,7 +5,7 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
 import { vectorAt } from "./fake-store.js";
-import { liveStories, rankStories, toShortlistRow, applyDecision, score, gate } from "../bench/story.js";
+import { liveStories, rankStories, toShortlistRow, applyDecision, score, gate, withRetry } from "../bench/story.js";
 
 const DAY_MS = 24 * 3_600_000;
 const WEEK_MS = 7 * DAY_MS;
@@ -244,4 +244,29 @@ test("gate fails on a fold into 474 through another story", () => {
 
   assert.equal(result.pass, false);
   assert.match(result.reasons[0], /#594/);
+});
+
+test("withRetry succeeds after two failures", async () => {
+  let calls = 0;
+  const fn = async () => {
+    calls++;
+    if (calls < 3) throw new Error("transient blip");
+    return "ok";
+  };
+
+  const result = await withRetry(fn, { attempts: 3, delayMs: 1 });
+
+  assert.equal(result, "ok");
+  assert.equal(calls, 3);
+});
+
+test("withRetry does not retry a usage-limit error", async () => {
+  let calls = 0;
+  const fn = async () => {
+    calls++;
+    throw new Error("monthly usage limit reached");
+  };
+
+  await assert.rejects(() => withRetry(fn, { attempts: 3, delayMs: 1 }), /usage limit/);
+  assert.equal(calls, 1);
 });

@@ -22,9 +22,11 @@ const HERE = dirname(fileURLToPath(import.meta.url));
 const LABELS_DIR = join(HERE, "..", "tmp/labels");
 const WINDOW_MS = 7 * 24 * 3_600_000;
 
-// Haiku 4.5 list price, dollars per million tokens.
+// Haiku 4.5 list price, dollars per million tokens (5-minute cache).
 const PRICE_INPUT = 1;
 const PRICE_OUTPUT = 5;
+const PRICE_CACHE_READ = 0.1;
+const PRICE_CACHE_WRITE = 1.25;
 
 // The ship gate (task 5 brief): the archive must hold this many repeats, may
 // swallow no more than this many useful first arrivals, and must not fold
@@ -392,11 +394,40 @@ async function runOnce(sorted, decide, options, runIndex) {
   return { verdictsById: cache, predictedRootById };
 }
 
+/** Thrown by Anthropic when the account has hit its spend cap. The cap is
+ * shared with production, so this must stop the run rather than retry. */
+const USAGE_LIMIT_PATTERN = /usage|billing|limit|credit/i;
+
 /**
- * Builds the real decider: one matchItem call per article, cached.
+ * Retries a fallible async call, except a usage-limit error, which is fatal
+ * immediately — the Anthropic cap is shared with production.
+ *
+ * @param {() => Promise<*>} fn
+ * @param {{ attempts: number, delayMs: number }} options  delayMs is per attempt, backing off as delayMs × attempt
+ * @returns {Promise<*>}
+ */
+export async function withRetry(fn, { attempts, delayMs }) {
+  let lastError;
+
+  for (let attempt = 1; attempt <= attempts; attempt++) {
+    try {
+      return await fn();
+    } catch (error) {
+      if (USAGE_LIMIT_PATTERN.test(error.message)) throw error;
+      lastError = error;
+      if (attempt < attempts) await new Promise((resolve) => setTimeout(resolve, delayMs * attempt));
+    }
+  }
+
+  throw lastError;
+}
+
+/**
+ * Builds the real decider: one matchItem call per article, cached, retried
+ * on transient errors.
  *
  * @param {object} options
- * @returns {Promise<{ decide: Function, usage: Function, model: string }>}
+ * @returns {Promise<{ decide: Function, usage: Function, model: string, errorCount: Function }>}
  */
 async function realDecider(options) {
   const { loadBenchEnv } = await import("./env.js");
@@ -404,6 +435,8 @@ async function realDecider(options) {
   // Imported only now: lib/matcher.js builds its Anthropic client at import
   // time, so the env has to be in place first.
   const { matchItem, usageTotals, MATCHER_MODEL } = await import("../lib/matcher.js");
+
+  let errors = 0;
 
   const decide = async ({ subject, item, shortlist }) => {
     const pipelineItem = {
@@ -414,23 +447,41 @@ async function realDecider(options) {
       foundVia: null,
     };
     const surname = subject.split(" ").pop();
-    const verdict = await matchItem({
-      subject,
-      item: pipelineItem,
-      stories: shortlist.map(toShortlistRow),
-      subjectNames: [surname],
-      fightWeekShape: options.fightWeekShape,
-    });
+    const candidates = shortlist.map((story) => story.root);
+
+    let verdict;
+    try {
+      verdict = await withRetry(
+        () =>
+          matchItem({
+            subject,
+            item: pipelineItem,
+            stories: shortlist.map(toShortlistRow),
+            subjectNames: [surname],
+            fightWeekShape: options.fightWeekShape,
+          }),
+        { attempts: 3, delayMs: 2000 },
+      );
+    } catch (error) {
+      if (USAGE_LIMIT_PATTERN.test(error.message)) {
+        throw new Error(`Anthropic usage/billing limit hit — stopping the run: ${error.message}`);
+      }
+      // Three transient failures in a row: record as UNSURE and move on,
+      // rather than aborting the whole paid cascade over one bad item.
+      errors++;
+      return { decision: null, story: null, fact: item.title, reasoning: `error: ${error.message}`, candidates };
+    }
+
     return {
       decision: verdict.decision ?? null,
       story: verdict.story_id === null || verdict.story_id === undefined ? null : Number(verdict.story_id),
       fact: verdict.fact ?? null,
       reasoning: verdict.reasoning ?? "",
-      candidates: shortlist.map((story) => story.root),
+      candidates,
     };
   };
 
-  return { decide, usage: usageTotals, model: MATCHER_MODEL };
+  return { decide, usage: usageTotals, model: MATCHER_MODEL, errorCount: () => errors };
 }
 
 /** The free decider: no env, no matcher import, no key. */
@@ -439,7 +490,12 @@ function fakeDecider() {
     ...fakeDecide(item, shortlist),
     candidates: shortlist.map((story) => story.root),
   });
-  return { decide, usage: () => ({ calls: 0, inputTokens: 0, outputTokens: 0, cacheReadTokens: 0, cacheWriteTokens: 0 }), model: "fake decider (similarity ≥ 0.85)" };
+  return {
+    decide,
+    usage: () => ({ calls: 0, inputTokens: 0, outputTokens: 0, cacheReadTokens: 0, cacheWriteTokens: 0 }),
+    model: "fake decider (similarity ≥ 0.85)",
+    errorCount: () => 0,
+  };
 }
 
 /**
@@ -489,7 +545,7 @@ async function main() {
   const options = parseArguments(process.argv);
   const items = loadItems(options.mode);
   const sorted = [...items].sort((a, b) => arrivalOf(a) - arrivalOf(b) || a.id - b.id).slice(0, options.limit);
-  const { decide, usage, model } = options.decider === "fake" ? fakeDecider() : await realDecider(options);
+  const { decide, usage, model, errorCount } = options.decider === "fake" ? fakeDecider() : await realDecider(options);
 
   const rows = [];
   const allTallies = [];
@@ -506,17 +562,21 @@ async function main() {
     gates.push(gate(all, verdictsById));
   }
 
-  printReport({ options, sorted, model, rows, allTallies, gates, usage: usage() });
+  printReport({ options, sorted, model, rows, allTallies, gates, usage: usage(), errors: errorCount() });
 }
 
 /**
  * Prints the table, the extra counts, the money and the gate.
  *
- * @param {object} args  options, sorted, model, rows, allTallies, gates, usage
+ * @param {object} args  options, sorted, model, rows, allTallies, gates, usage, errors
  * @returns {void}
  */
-function printReport({ options, sorted, model, rows, allTallies, gates, usage }) {
-  const cost = (usage.inputTokens * PRICE_INPUT + usage.outputTokens * PRICE_OUTPUT) / 1e6;
+function printReport({ options, sorted, model, rows, allTallies, gates, usage, errors }) {
+  const inputCost = usage.inputTokens * PRICE_INPUT;
+  const outputCost = usage.outputTokens * PRICE_OUTPUT;
+  const cacheReadCost = usage.cacheReadTokens * PRICE_CACHE_READ;
+  const cacheWriteCost = usage.cacheWriteTokens * PRICE_CACHE_WRITE;
+  const cost = (inputCost + outputCost + cacheReadCost + cacheWriteCost) / 1e6;
   const shape = options.fightWeekShape ? "" : ", no fight-week shape";
   const last = allTallies[allTallies.length - 1];
   const failed = gates.filter((one) => !one.pass);
@@ -530,7 +590,7 @@ ${rows.join("\n")}
 
 Off-menu verdicts in the last run: ${last.wrongSubject} wrong_subject, ${last.unsure} unsure (each counted as a story of its own).
 ${options.repeat > 1 ? spreadLine(allTallies) + "\n" : ""}
-Spent this run: ${usage.calls} calls, ${usage.inputTokens} input + ${usage.outputTokens} output tokens (cache read ${usage.cacheReadTokens}) ≈ $${cost.toFixed(2)} at Haiku 4.5 list price (cached verdicts cost nothing).
+Spent this run: ${usage.calls} calls, ${usage.inputTokens} input + ${usage.outputTokens} output tokens, cache read ${usage.cacheReadTokens} + cache write ${usage.cacheWriteTokens} tokens ≈ $${cost.toFixed(2)} at Haiku 4.5 list price ($${PRICE_INPUT}/M input, $${PRICE_OUTPUT}/M output, $${PRICE_CACHE_READ}/M cache read, $${PRICE_CACHE_WRITE}/M cache write). ${errors} errors treated as UNSURE.
 
 ## gate
 ${failed.length === 0 ? "PASS" : `FAIL — ${reasons.join("; ")}`}`);
