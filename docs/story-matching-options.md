@@ -73,11 +73,14 @@ Cascade replay, 341 labelled repeats, 333 first arrivals.
 
 | rule | held | placed right | missed | useful swallowed | cost / month |
 |---|---|---|---|---|---|
-| today (posted anchors ≥ 0.80) | 173 | 106 | 168 | 7 | $0 |
-| A: all anchors ≥ 0.85 | 247 | 97 | 94 | 5 | $0 |
-| B: headline + body, all anchors ≥ 0.88 | 235 | 100 | 106 | 5 | $0 (fetches) |
-| **D, headline only** | 284 | 211 | 57 | 10 | ≈ $1.90 |
-| **D, with bodies (B as input)** | **307** | **244** | **34** | 10 | ≈ $2.30 |
+| today (posted anchors ≥ 0.80) | 174 | 100 | 172 | 6 | $0 |
+| A: all anchors ≥ 0.85 | 248 | 107 | 98 | 4 | $0 |
+| B: headline + body, all anchors ≥ 0.88 | 236 | 98 | 110 | 4 | $0 (fetches) |
+| **D, headline only** | 286 | 218 | 60 | 8 | ≈ $1.90 |
+| **D, with bodies (B as input)** | **311** | **256** | **35** | 6 | ≈ $2.30 |
+
+Out of 346 repeats and 328 first arrivals, after Anton's 2026-09-06 rulings
+on the swallowed pairs (five of D's ten folds were right and became labels).
 
 - **B by itself changes nothing at the gate.** Bodies bring repeats
   closer together and connected stories closer too; the best body
@@ -87,11 +90,13 @@ Cascade replay, 341 labelled repeats, 333 first arrivals.
   the right story as A, a third of A's misses, at a measured $1.74 per
   674 articles on Haiku 4.5 (the estimate above, $3–5, was high; D
   reshapes the matcher call, so the added spend is under a dollar a
-  month). The price is 10 swallowed useful stories against A's 5, nine of
-  them Anton's labels: fight-week previews folded into the odds story,
-  a trainer's second interview folded into his first. The shortlist misses
-  the true story for one repeat in five; a top-5 shortlist is the first
-  thing to try.
+  month). The price is 6 swallowed useful stories against A's 4: three
+  fight-week pieces folded into the odds story, two opinion pieces, and
+  Topuria's return announcement folded into the report that teased it.
+  Two of those are prompt lines to add and re-test (a fight is not one
+  story for the week; the fighter's own announcement is never a repeat of
+  a report about his plans). The shortlist misses the true story for one
+  repeat in six; a top-5 shortlist is the next knob.
 - **H stays unmeasured** on purpose: Anton's rows are the answer key, so
   teaching the prompt with them and scoring on them would be circular. It
   waits for new labels from the feedback bot.
