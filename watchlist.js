@@ -5,7 +5,10 @@
 // Aliases are search queries, not display names. Cyrillic aliases matter most
 // for the subjects western media ignores. matchNames filter outlet-wide direct
 // feeds down to one subject — surname stems only, so Ukrainian case endings
-// still match (Топурія/Топурії both contain "Топурі").
+// still match (Топурія/Топурії both contain "Топурі"). Cut the stem short
+// enough that EVERY declined form contains it, and check the whole paradigm:
+// -ко surnames drop their final -о (Донченка, Донченку), so a nominative
+// pasted in as a stem goes blind to most of the paradigm.
 
 export const SUBJECTS = [
   {
@@ -26,7 +29,14 @@ export const SUBJECTS = [
       { query: '"Daniil Donchenko"', edition: "en" },
       { query: '"Данило Донченко"', edition: "uk" },
     ],
-    matchNames: ["Donchenko", "Донченко"],
+    // "Донченк", not "Донченко" (fixed 2026-09-10). Ukrainian declines -ко
+    // surnames by replacing the final -о, and Донченка (gen/acc) and Донченку
+    // (dat/voc/loc) do not contain the nominative — so the old stem went blind
+    // to them. It kept matching Донченком and Донченкові, whose endings put an
+    // -о back after the stem, which is why the breakage was partial and quiet.
+    // Different rule from Амосов/Топурі, where every ending is added to a stem
+    // the nominative already contains.
+    matchNames: ["Donchenko", "Донченк"],
   },
   {
     name: "Yaroslav Amosov",
