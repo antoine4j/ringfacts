@@ -14,7 +14,7 @@ fabricated items rather than left as a single example.
 | `measure-tier.js` | Scores both tier orderings against the labels. No LLM, no writes, free, instant. |
 | `measure-matcher.js` | Asks Haiku the same question K times per item and reports stability + accuracy. Costs money. Superseded by `bench/run.js --repeat`, which does the same on the test keys. |
 | `graded-2026-09.json` | 103 posted articles from Aug 5 – Sep 4, each with the goals.md **bucket** Anton confirmed (`expect.bucket`), in three splits: `prompt` (the 14 worked examples from goals.md, reserved as few-shot material), `tune` (45) and `holdout` (44), balanced per bucket. |
-| `graded.js`, `build-graded.js` | Regenerate that file from the grading doc and the archive. The labels are Anton's, not Claude's. |
+| `graded.js`, `build-graded.js` | Regenerate that file from the grading doc and the archive. The buckets are the ones Anton confirmed — but confirming is mostly what happened: 43 of the 45 tune rows and 44 of the 44 holdout rows are a blanket "as graded" on a reviewer model's label, not a verdict written from scratch. Read scores against this file as agreement with a ratified model, not with a person. |
 
 Both measure scripts are **read-only** — `measure-tier.js` makes no database call
 that isn't a `SELECT`, `measure-matcher.js` opens the database only to read

@@ -97,6 +97,39 @@ discarded, so a dead name filter reads as sustained `0 matched` instead of a
 quiet news day. The single fatal condition is a configured-but-unreachable
 database — posting without memory would re-spam the group every hour.
 
+## How it is measured
+
+Claims about a pipeline like this are cheap, so the numbers here are read out
+of the live database and the repo rather than remembered.
+
+**Does it post a story once?** Since the story decider went live on 2026-09-06,
+**45 stories reached the Telegram group and every one of them arrived exactly
+once.** Across the whole archive, which includes the months before the decider
+existed, 145 stories posted once and 9 posted more than once — every repeat
+from the earlier threshold-only era. Reproduce it by grouping `items` on
+`story_id` and counting `posted` per story.
+
+**Is it actually hourly?** 143 of the last 168 hours produced archived items.
+The job is a Cloud Scheduler entry firing at `:17`.
+
+**The labelled corpus** is [`corpus/graded-2026-09.json`](corpus/README.md):
+103 articles posted between Aug 5 and Sep 4, each carrying the
+[goals.md](docs/goals.md) bucket it should have had, split into `prompt` (14
+worked examples, reserved as few-shot material), `tune` (45) and `holdout`
+(44). [`bench/`](bench/README.md) runs a battery of articles through **one**
+pipeline step at a time, on test keys and a separate database, so a change to
+the tier rule can be scored without touching production or waiting for news.
+
+**What is weak about that corpus, stated plainly.** Its labels were produced by
+a model and then reviewed, and most of the review was acceptance rather than
+independent judgement: of the 45 articles in the tune split, 43 carry a blanket
+"as graded" and 2 are written in a person's own words; the holdout split is 44
+of 44 acceptances. That is a real limit on what any score against it means — a
+label the reviewer model got wrong survives into the answer key, and models are
+then scored on whether they reproduce it. A story-by-story regrading is
+underway to replace it, and until that lands, scores against this corpus should
+be read as agreement with a ratified model rather than agreement with a person.
+
 ## Two kinds of configuration
 
 The pipeline above knows nothing about MMA. Two things do, and they are
