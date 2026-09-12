@@ -88,14 +88,30 @@ fires it (Anton, 2026-09-04). In production today those articles are recorded
 and never shown — dropped, in effect, not queued. Turning them on is one
 scheduler entry; nobody has decided they are wanted.
 
-Every gate fails open. No embeddings degrades to URL-only dedup; a matcher error
-posts the article as it always would have. A failed Telegram send walks its rows
-back to unposted, and the next run that can deliver picks them up — bounded by
-the same freshness window discovery uses, so an outage delays news rather than
-silently eating it. Each direct feed also logs how many items it matched and
-discarded, so a dead name filter reads as sustained `0 matched` instead of a
-quiet news day. The single fatal condition is a configured-but-unreachable
-database — posting without memory would re-spam the group every hour.
+**Nothing that fails takes the run down with it, and nothing is lost from the
+archive** — but "fails open" would overstate it, because the fallbacks are
+deliberately more cautious than the thing they replace. If the decider errors
+or answers UNSURE, the old similarity threshold stands in, and at ≥ 0.85 it
+*holds* an article the decider might well have posted; with no verdict there is
+also no claim, so the mention-count rule decides the tier and can demote the
+article to the mentions queue that nothing currently drains. A decider outage
+therefore costs coverage, quietly, rather than spilling repeats into the group —
+which is the right way round for a group of three people, and worth knowing
+when reading a quiet hour. Below the threshold, or with no embedding to compare
+against, the article does post.
+
+The other degradations are genuinely open. No embeddings drops to URL-only
+dedup and the story shortlist falls back to recency, so an embedder outage
+cannot starve the decider into calling everything new. Body extraction is all
+bonus: any failure leaves the item headline-only and the decider works from the
+headline. A failed Telegram send walks its rows back to unposted and the next
+run that can deliver picks them up — bounded by the same freshness window
+discovery uses, so an outage delays news rather than silently eating it. Each
+direct feed logs how many items it matched and discarded, so a dead name filter
+reads as sustained `0 matched` instead of a quiet news day. A single subject's
+hunt failing is survivable; only *every* subject failing marks the run red. The
+one fatal condition is a configured-but-unreachable database — posting without
+memory would re-spam the group every hour.
 
 ## Where it stands
 
