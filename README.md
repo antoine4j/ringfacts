@@ -97,77 +97,67 @@ discarded, so a dead name filter reads as sustained `0 matched` instead of a
 quiet news day. The single fatal condition is a configured-but-unreachable
 database — posting without memory would re-spam the group every hour.
 
-## How it is measured
+## Where it stands
 
-Claims about a pipeline like this are cheap, so the numbers here are read out
-of the live database and the repo rather than remembered.
+Running hourly since 2026-08-07. **1,112 articles archived, grouped into 251
+stories, 167 of them posted to the group.** Thresholds in the pipeline are
+measured against that archive rather than guessed — [`lib/tier.js`](lib/tier.js)
+carries the measurement and the two alternatives that were tested and rejected,
+so they don't get reintroduced.
 
-**Does it post a story once?** The live decider has opened **54 stories** since
-it shipped on 2026-09-06. **45 of them reached the Telegram group, each exactly
-once; the other 9 were held in full.** Across the whole archive, which includes
-the months before the decider existed, 145 stories posted once and 9 posted
-more than once — every repeat from the earlier threshold-only era. Reproduce it
-by joining `items` to `stories` where `decided_by = 'story'` and counting
-`posted` per story.
+**What can be said about repeats:** of the 54 stories the live decider has
+opened since it shipped, 45 reached the group and each arrived once. That
+counts *story objects*, though, and the objects are the pipeline's own — read
+one occasion as two stories and both post while the number stays clean. There
+is measurable room for that: 15 pairs of posted articles sit in different
+stories while being near-identical by embedding distance.
 
-**And that number is narrower than it sounds.** It says no *story object* was
-posted twice. It is measured against the pipeline's own grouping, which is the
-very thing under test: if the decider reads one occasion as two stories, both
-get posted, the group sees the same news twice, and this metric still reads
-clean. The question it answers is internal consistency, not whether a reader
-saw a repeat.
+**What cannot be said yet: how often it sends the right thing.** That needs a
+pair of numbers — of what it sent, how much was worth sending; of what was
+worth sending, how much it sent — and the second has no denominator you can
+query. A story the pipeline never recognised has no row to count. It only
+exists once a person has read the archive and said what was there.
 
-There is measurable room for that. Among articles the group saw, **15 pairs sit
-in two different stories the live decider opened while being 0.80 or closer by
-embedding distance**, the nearest two at 0.927 and 0.918 — for instance one
-Matt Brown remark about rebooking Gaethje–Topuria filed as S214 and again as
-S216, and Gaethje's "easy to predict" line posted in English as S223 and S236
-and possibly a third time in Spanish as S244. Similarity is not proof of a
-repeat; two people reacting to the same event on the same day are genuinely two
-pieces of news, and only a person reading them can say which is which. That is
-precisely the judgement the regrading below exists to collect.
+So that is what is being built now: a grading tool that shows the archive story
+by story with the pipeline's own answer **hidden** until asked for, and records
+the verdict plus the reasoning in the grader's words. 251 stories to work
+through. Until it lands, this project quotes no effectiveness percentage,
+because picking one would mean picking whichever denominator flattered it.
 
-So: no story posted twice, an upper bound of 15 places where that might not
-mean what it sounds like, and no effectiveness figure yet. Reproduce the bound
-by joining `items` to itself on `nearest_item` where both rows are `posted` and
-their `story_id`s differ.
+## Decisions that changed the shape
 
-**Is it actually hourly?** 143 of the last 168 hours produced archived items.
-The job is a Cloud Scheduler entry firing at `:17`.
+The interesting history is the reversals, not the additions.
 
-**The labelled corpus** is [`corpus/graded-2026-09.json`](corpus/README.md):
-103 articles posted between Aug 5 and Sep 4, each carrying the
-[goals.md](docs/goals.md) bucket it should have had, split into `prompt` (14
-worked examples, reserved as few-shot material), `tune` (45) and `holdout`
-(44). [`bench/`](bench/README.md) runs a battery of articles through **one**
-pipeline step at a time, on test keys and a separate database, so a change to
-the tier rule can be scored without touching production or waiting for news.
+**The unit moved from claims to stories** (2026-09-06). The system used to
+remember *claims* — assertions it had extracted. It turned out the thing that
+needs remembering is *"have we told the group this piece of news"*, which is a
+story: one statement, one event, one day. Claims still exist and still track
+rumour → confirmation, but they are no longer what dedup reasons about.
 
-**What there is no number for yet: whether it sends the right things.** That
-needs a pair, and each half needs a denominator:
+**Similarity stopped being the gate.** Cosine distance at a threshold decided
+repeats for the first month. It cannot separate two outlets writing up one
+press conference from two people reacting to one event — the vectors look the
+same and the answers differ. An LLM now makes that call against a shortlist of
+recent stories, and the threshold became the fallback for when it is
+unavailable.
 
-- **Precision** — *of the stories it sent, how many were worth sending?* The
-  denominator is readable from the database today: 45.
-- **Recall** — *of the stories worth sending, how many did it send?* This
-  denominator cannot be read from the database at all. A story the pipeline
-  never recognised has no row in `stories`; it is sitting unnoticed among the
-  articles held as off-subject. The denominator only exists once a person has
-  read the archive and said what was there.
+**Bodies moved ahead of the decision.** The pipeline used to dedup first and
+fetch article text only for survivors, which is cheaper and wrong: the decider
+reads the article, so the article has to exist before it can decide.
 
-That asymmetry is the whole reason for the regrading described next. Until it
-is done, quoting a single percentage would mean picking whichever denominator
-flattered the result — and a system can score perfectly on either half alone by
-sending nothing, or by sending everything.
+**A single measurement run cannot settle a comparison.** Repeat passes of the
+same model on the same prompt disagree enough that one run is not evidence —
+which is why [`bench/run.js`](bench/README.md) takes `--repeat` and the
+scoreboard records every pass rather than the best one.
 
-**What is weak about the corpus, stated plainly.** Its labels were produced by
-a model and then reviewed, and most of the review was acceptance rather than
-independent judgement: of the 45 articles in the tune split, 43 carry a blanket
-"as graded" and 2 are written in a person's own words; the holdout split is 44
-of 44 acceptances. That is a real limit on what any score against it means — a
-label the reviewer model got wrong survives into the answer key, and models are
-then scored on whether they reproduce it. A story-by-story regrading is
-underway to replace it, and until that lands, scores against this corpus should
-be read as agreement with a ratified model rather than agreement with a person.
+**The labelled corpus turned out to be mostly ratification.**
+[`corpus/graded-2026-09.json`](corpus/README.md) holds 103 labelled articles,
+but of the 45 in its tune split, 43 are a blanket "as graded" on a reviewer
+model's label rather than a verdict written from scratch; the holdout is 44 of
+44. A label the reviewer got wrong survives into the answer key, and other
+models are then scored on reproducing it. Finding that is what started the
+regrading described above — and why the new tool hides the machine's answer
+until after a human one exists.
 
 ## Two kinds of configuration
 
