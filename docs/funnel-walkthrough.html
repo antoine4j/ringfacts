@@ -178,513 +178,294 @@
 
 <main>
   <div class="eyebrow">RingFacts · Pipeline Walkthrough</div>
-  <h1>Raw headlines in. Verified claims out.</h1>
-  <p class="sub">Every gate the hourly hunt runs an article through, in order, illustrated with real
-  items pulled from the live archive — not invented examples. Most examples below follow one tracked
-  subject, <strong>Ilia Topuria</strong> (Subject C, the shorthand label used throughout
-  <code>docs/architecture-overview.html</code>) — named in full here, as everywhere else in the
-  repo: the watchlist is committed, so there is nothing for a label to hide. Everyone
-  else named below is real.</p>
-  <p class="companion">This page covers the funnel only — discovery through claims. For the whole system
-  (the Telegram service, operations, cost, the autonomous improvement loop) see
-  <code>docs/architecture-overview.html</code> in the repo; for how it's tested, see
-  <code>docs/test-suite-overview.html</code>.</p>
-  <p class="companion">Each stage below opens with a grey <b>In code</b> strip naming the files that
-  implement it. One thing to hold onto while reading them: <strong>§1 through §7 all happen inside a
-  single function</strong>, <code>huntSubject()</code> in <code>hunter.js</code>, which runs once per
-  tracked subject per hour. The gates are not separate services or separate passes — they are
-  consecutive <code>if</code> statements in one loop over at most five articles. Line numbers drift with
-  edits; the file names don't.</p>
+  <h1>Raw headlines in. One message out.</h1>
+  <p class="sub">Every gate an article passes through, in the order the code runs them, with real
+  items from the live archive. This page describes <code>main</code> as it is today — where it and
+  the code disagree, the code is right.</p>
+  <p class="companion">All of this happens inside one function, <code>huntSubject()</code> in
+  <code>hunter.js</code>, which runs once per tracked fighter per hour. The gates are not separate
+  services or separate passes — they are consecutive <code>if</code> statements in one loop over at
+  most five articles. For the system around the funnel, see
+  <a href="architecture-overview.html">the architecture overview</a>.</p>
 
-  <figure>
-    <svg viewBox="0 0 760 805" role="img" aria-label="Funnel shape of the archive, refreshed to this snapshot: two discovery rails feed Gate 1, which Cloud Logging shows performing 1248 URL checks and keeping 90; 95 items in total reach the remaining gates, 40 held as near-duplicates, 55 reached the matcher, 9 dropped as the wrong subject, 3 held as a matched fact, 41 posted, and of those 10 became named claims corroborated by 46 linked sources">
-      <g font-family="ui-monospace, SFMono-Regular, Menlo, monospace" fill="currentColor">
-
-        <!-- top band: discovery + Gate 1. Measured, not guessed — pulled from Cloud Logging,
-             which records what the database itself cannot (dropped items are never written).
-             Each band's §N tag links to its section below — click to jump. -->
-        <a href="#s1"><text x="380" y="25" text-anchor="middle" font-size="13" font-weight="600">Two discovery rails, every hour <tspan class="tag" font-size="11">(§1)</tspan></text></a>
-        <text x="380" y="41" text-anchor="middle" font-size="10" opacity=".65">Google News (en·uk·es) + 6 direct outlet feeds</text>
-
-        <rect x="50" y="55" width="660" height="85" rx="4" fill="none" stroke="currentColor" stroke-width="1.3" opacity=".35"/>
-        <a href="#s2"><text x="380" y="80" text-anchor="middle" font-size="12" fill="var(--red)">Gate 1 — drop anything with a known URL, silently <tspan class="tag" fill="currentColor">(§2)</tspan></text></a>
-        <text x="380" y="99" text-anchor="middle" font-size="11">1,248 URL checks → 90 new, 1,158 already known</text>
-        <text x="380" y="118" text-anchor="middle" font-size="10" opacity=".65">+ 5 more via one untracked manual run — not counted here</text>
-
-        <path d="M380 140 L380 175" stroke="currentColor" stroke-width="1.3" opacity=".55" fill="none"/>
-        <path d="M380 175 l-6 -10 h12 z" fill="currentColor" opacity=".55"/>
-        <text x="380" y="195" text-anchor="middle" font-size="13" font-weight="600">95 items reach the remaining gates</text>
-
-        <!-- funnel outline below: exact archive counts, trapezoid segments narrowing top to
-             bottom, generous width so labels never touch an edge -->
-        <polygon points="50,215 710,215 660,305 100,305" fill="none" stroke="currentColor" stroke-width="1.3" opacity=".35"/>
-        <a href="#s3"><text x="380" y="265" text-anchor="middle" font-size="12" fill="var(--red)">40 held — near-duplicate <tspan class="tag" fill="currentColor">(§3)</tspan></text></a>
-        <text x="380" y="285" text-anchor="middle" font-size="10" opacity=".65">cosine ≥ 0.80 — inherits the neighbour's claim, free</text>
-
-        <polygon points="100,305 660,305 610,395 150,395" fill="none" stroke="currentColor" stroke-width="1.3" opacity=".35"/>
-        <text x="380" y="355" text-anchor="middle" font-size="12">55 reach the matcher</text>
-        <text x="380" y="373" text-anchor="middle" font-size="10" opacity=".65"><a href="#s4">body fetched <tspan class="tag">(§4)</tspan></a> · <a href="#s5">Haiku reads it <tspan class="tag">(§5)</tspan></a></text>
-
-        <polygon points="150,395 610,395 570,485 190,485" fill="none" stroke="currentColor" stroke-width="1.3" opacity=".35"/>
-        <a href="#s5"><text x="380" y="445" text-anchor="middle" font-size="12" fill="var(--red)">9 dropped — wrong subject <tspan class="tag" fill="currentColor">(§5)</tspan></text></a>
-
-        <polygon points="190,485 570,485 530,575 230,575" fill="none" stroke="currentColor" stroke-width="1.3" opacity=".35"/>
-        <a href="#s5"><text x="380" y="535" text-anchor="middle" font-size="12" fill="var(--blue)">3 held — same fact (MATCH) <tspan class="tag" fill="currentColor">(§5)</tspan></text></a>
-
-        <polygon points="230,575 530,575 510,665 250,665" fill="var(--grey-bg)" stroke="currentColor" stroke-width="1.3" opacity=".7"/>
-        <a href="#s5"><text x="380" y="615" text-anchor="middle" font-weight="700" font-size="15">41 posted</text></a>
-        <text x="380" y="635" text-anchor="middle" font-size="10" opacity=".8">NO_CLAIM · UNSURE · rumor · ceremony</text>
-        <a href="#s6"><text x="380" y="651" text-anchor="middle" font-size="10" opacity=".8">+2 held back: 1 suppressed, 1 legacy <tspan class="tag">(§6)</tspan></text></a>
-
-        <path d="M380 665 L380 693" stroke="var(--blue)" stroke-width="1.5" fill="none"/>
-        <path d="M380 693 l-6 -10 h12 z" fill="var(--blue)"/>
-        <rect x="190" y="699" width="380" height="42" rx="5" fill="var(--blue-bg)" stroke="var(--blue)"/>
-        <a href="#s7"><text x="380" y="725" text-anchor="middle" fill="var(--blue)" font-weight="700" font-size="13">10 claims · 46 corroborating links <tspan class="tag" fill="currentColor">(§7)</tspan></text></a>
-      </g>
-    </svg>
-    <figcaption><strong>Fig. 1</strong> — The whole shape, discovery to claims, refreshed to this
-    snapshot. Gate 1's numbers come from Cloud Logging, not the database — dropped items are never
-    written to a row, so this is the one gate the archive itself can't measure. Even Cloud Logging
-    misses one slice: 5 of the 95 items below arrived through a single manual run that predates its
-    view entirely, which is why "1,248 checked → 90 new" and "95 items reach the remaining gates"
-    aren't quite the same number. One further row pre-dates the held_reason/digest_tier columns and
-    isn't broken out below either — a rounding error in an otherwise exact set of counts.</figcaption>
-  </figure>
-
-  <h2 id="s1"><span class="stage-no">§1</span>Discovery — two rails, one window</h2>
-  <div class="where"><b>In code</b>
-    <span class="f">hunter.js:669–689</span> fetches the six outlet feeds once per run<span class="sep">·</span>
-    <span class="f">hunter.js:109</span> <span class="f">fetchFreshItems()</span> adds the Google
-    queries per subject<span class="sep">·</span>
-    <span class="f">lib/feeds.js</span> parse + name filter<span class="sep">·</span>
-    <span class="f">domain/mma.js</span> the outlet list<span class="sep">·</span>
-    <span class="f">lib/subjects.js</span> + <span class="f">watchlist.js</span> who is tracked
+  <h2><span class="stage-no">The shape</span></h2>
+  <p class="rule">Of <strong>1,114 articles</strong> ever fetched, <strong>167 reached the group</strong>.
+  Everything below is an account of what happened to the other 947.</p>
+  <div class="stat-line">
+    <b>285</b> too similar to something already sent &nbsp;·&nbsp;
+    <b>209</b> a story already told &nbsp;·&nbsp;
+    <b>189</b> not about this fighter &nbsp;·&nbsp;
+    <b>169</b> the same fact, sighted again &nbsp;·&nbsp;
+    <b>167</b> posted &nbsp;·&nbsp;
+    <b>56</b> he was only background &nbsp;·&nbsp;
+    <b>37</b> the same page twice &nbsp;·&nbsp;
+    <b>1</b> a spam domain
   </div>
-  <p class="rule">Every hour, for every tracked subject: <strong>Google News RSS</strong>, queried once
-  per language edition the subject gets covered in (English always; Ukrainian and Spanish where it
-  applies), plus <strong>six direct publisher feeds</strong> — UFC.com, MMA Fighting, Bloody Elbow,
-  Sherdog, Sport.ua, Marca — fetched once per run and filtered per subject by matching surname stems in
-  both scripts. Both rails only look at the last 24 hours.</p>
-  <p class="stat-line">One real run: <b>6 outlets fetched, 180 items pooled</b> across all three subjects
-  — of which <b>5 were unseen</b> for Topuria. <span style="opacity:.7">— docs/checkin-log.md,
-  2026-08-09</span></p>
-  <p class="note">The 24-hour window overlapping the hourly cadence ~24× is deliberate: a single failed
-  run loses nothing, because the next run re-covers the same ground.</p>
 
-  <h2 id="s2"><span class="stage-no">§2</span>Gate 1 — Have we already seen this URL?</h2>
+  <h2 id="s1"><span class="stage-no">§1</span>Where articles come from</h2>
   <div class="where"><b>In code</b>
-    <span class="f">hunter.js:281–287</span> — four lines<span class="sep">·</span>
-    <span class="f">lib/db.js:19</span> <span class="f">knownUrls()</span> the one query<span class="sep">·</span>
-    the 5-per-run cap is <span class="f">hunter.js:45</span>
+    <span class="f">hunter.js</span> <span class="mono">fetchFreshItems</span><span class="sep">·</span>
+    <span class="f">lib/feeds.js</span> publisher feeds<span class="sep">·</span>
+    <span class="f">domain/mma.js</span> the outlet list
   </div>
-  <p class="rule">Exact match on <code>url</code> or its decoded <code>resolved_url</code> against
-  everything ever stored → dropped silently, no database write at all. This is the only gate that costs
-  nothing — no embedding, no fetch, no LLM call.</p>
-  <p class="stat-line">The database has no record of this gate — dropped items are never written. Cloud
-  Logging does: across every scheduled run since 2026-08-07, <b>1,248 URL checks → 90 new</b>
-  (<b>93%</b> already known, dropped — 1,158 of 1,248). See Fig. 1.</p>
-  <p class="note">Survivors are capped at <strong>5 unseen items per subject per run</strong>, newest
-  first, applied after this gate — so on a busy day the newest 5 unseen items go through now, and
-  whatever's left over is simply picked up next run. Nothing is lost, only delayed.</p>
+  <p class="rule">Two independent sources, so one going down does not blind the bot.</p>
 
-  <h2 id="s3"><span class="stage-no">§3</span>Gate 2 — Same story, different link?</h2>
+  <p><b>Google News</b>, searched once per name alias. Each fighter is searched in every language his
+  press is written in — English, Ukrainian, Spanish — because a Ukrainian fighter's biggest coverage
+  is often in Ukrainian and an English-only search never sees it.</p>
+
+  <p><b>Six publisher feeds</b> — UFC, MMA Fighting, Bloody Elbow, Sherdog, Sport.ua, Marca — fetched
+  once per run for everybody, then filtered by name. These matter for two reasons: they give real,
+  fetchable article addresses rather than Google's wrappers, and they keep working when Google starts
+  refusing our datacenter's requests.</p>
+
+  <p>Only articles published in the last 24 hours count, and at most five per fighter per run. Each
+  feed logs how many items it matched and how many it threw away — a name filter that has quietly
+  stopped matching looks exactly like a quiet news week, and these counts are what tell them apart.</p>
+
+  <h2 id="s2"><span class="stage-no">§2</span>Have we seen this address?</h2>
   <div class="where"><b>In code</b>
-    <span class="f">hunter.js:305–315</span> embeds the batch<span class="sep">·</span>
-    <span class="f">:330–352</span> compares and holds<span class="sep">·</span>
-    <span class="f">:237</span> <span class="f">holdAsDup()</span> writes the row and inherits the
-    neighbour's claim<span class="sep">·</span>
-    <span class="f">lib/embeddings.js</span> the Gemini call<span class="sep">·</span>
-    <span class="f">lib/db.js:47</span> <span class="f">nearestRecent()</span> the pgvector query<span class="sep">·</span>
-    the 0.80 threshold is <span class="f">hunter.js:49</span>
+    <span class="f">hunter.js</span> <span class="mono">collectCandidates</span><span class="sep">·</span>
+    <span class="f">lib/db.js</span> <span class="mono">knownUrls</span>
   </div>
-  <p class="rule">The survivor's headline is embedded and compared against the subject's recent items.
-  <strong>Cosine similarity ≥ 0.80</strong> → held back, never posted — but not discarded: it inherits
-  whatever claim its nearest neighbour already supports, recorded as corroboration for free, no LLM
-  spent. The threshold is measured, not guessed: a real translated pair of the same story scored 0.841;
-  unrelated same-subject pairs never rose above 0.702.</p>
-  <p class="stat-line"><b>40 of 95</b> items were held here — the single biggest gate in the funnel.</p>
+  <p class="rule">The cheapest question first, asked in one database round trip for the whole batch.</p>
+  <p>An address already in the database is dropped before anything expensive happens. Both addresses
+  count: the one the feed gave us, and the real one behind a Google wrapper, so the same article
+  arriving from both rails is caught once.</p>
+
+  <h2 id="s3"><span class="stage-no">§3</span>Read the article</h2>
+  <div class="where"><b>In code</b>
+    <span class="f">lib/googlenews.js</span> unwrapping<span class="sep">·</span>
+    <span class="f">lib/extract.js</span> the text ladder
+  </div>
+  <p class="rule">This happens <strong>before</strong> any decision about duplicates, because the
+  thing that makes the decision needs to read the article.</p>
+
+  <p>Google News hands out redirect links — <code>news.google.com/rss/articles/CBMi…</code> — that
+  work in a browser and resist a script. The token is where the real address hides, and most of them
+  can be decoded locally with no network call at all. Failure is fine: the item continues with just
+  its headline.</p>
+
+  <p>Once the real address is known, the page is fetched and the text pulled out by trying five
+  things in order, best first. There is no readability library — the consumer is a 1,200-character
+  excerpt, not a reader view, so the opening paragraphs are all that matter and news sites put them
+  in predictable places.</p>
+
+  <div class="stat-line">
+    <b>423</b> json-ld &nbsp;·&nbsp; <b>215</b> article tag &nbsp;·&nbsp; <b>140</b> paragraphs
+    &nbsp;·&nbsp; <b>74</b> the feed's own content &nbsp;·&nbsp; <b>46</b> a meta description only
+    &nbsp;·&nbsp; <b>904 of 1,114</b> articles have readable text
+  </div>
+
+  <p class="note">Which rung produced the text is recorded on every row. Without it an outlet can
+  "succeed" with a useless one-line blurb and look healthy in the totals.</p>
+
+  <h2 id="s4"><span class="stage-no">§4</span>Shortlist three stories</h2>
+  <div class="where"><b>In code</b>
+    <span class="f">lib/embeddings.js</span><span class="sep">·</span>
+    <span class="f">lib/db.js</span> <span class="mono">storyShortlist</span>
+  </div>
+  <p class="rule">Vectors no longer decide anything. They pick the candidates.</p>
+  <p>The headline and the first 1,500 characters of body go to Gemini, which returns a list of
+  numbers representing the meaning. Articles about the same event land near each other even across
+  languages. That closeness is used to pull up the <strong>three</strong> nearest stories from the
+  last <strong>seven days</strong> — the menu the decider gets to choose from.</p>
+
+  <p class="note">If the embedding service is down, the shortlist falls back to the most recently
+  opened stories instead. The decider still gets a menu; an outage cannot trick it into calling
+  everything new.</p>
+
+  <h2 id="s5"><span class="stage-no">§5</span>The decision</h2>
+  <div class="where"><b>In code</b>
+    <span class="f">lib/matcher.js</span> prompt, form, and validation<span class="sep">·</span>
+    <span class="f">hunter.js</span> <span class="mono">decideStory</span>
+  </div>
+  <p class="rule">One Claude Haiku call. It sees the article and three one-line story summaries, and
+  must fill in a form — its reasoning first, then one of four answers.</p>
+
+  <h3>join — this is a story we have already told</h3>
+  <p>Held. The group has seen this news; the article is recorded as another sighting of it.</p>
   <div class="cards">
     <div class="card">
-      <p class="hl">"Manager believes Usman Nurmagomedov walks through UFC lightweight contenders, with
-      one exception"</p>
-      <div class="meta"><span class="src">Sherdog</span><span class="chip held">held · sim 1.00</span></div>
+      <p class="hl">Belal Muhammad: Ilia Topuria quit vs. Justin Gaethje, doesn't deserve rematch</p>
+      <div class="meta"><span class="src">Yahoo Sports</span> <span class="chip held">held · join</span></div>
     </div>
     <div class="card">
-      <p class="hl">"Topuria's manager claims he'd beat every Ali Abdelaziz fighter: 'If we fought
-      Gaethje again…'"</p>
-      <div class="meta"><span class="src">Bloody Elbow</span><span class="chip held">held · sim 0.99</span></div>
+      <p class="hl">Dana White confirmó que Ilia Topuria está listo para pelear y analiza dos cruces</p>
+      <div class="meta"><span class="src">Agencia NOVA</span> <span class="chip held">held · join</span></div>
     </div>
   </div>
-  <p class="note">Official sources (UFC.com) are exempt from this gate specifically — a confirmation
-  headline is, by construction, near-identical to the rumor it confirms, so holding it here would
-  swallow the exact transition the claims layer exists to catch. And inheritance itself is checked: if
-  an item actually reads closer to some <em>other</em> claim than the one it's about to be linked to, it
-  stays held but unlinked rather than becoming a wrong piece of evidence. Both mechanisms are detailed in
-  <code>docs/architecture-overview.html §4</code>.</p>
+  <p class="note">The second one is in Spanish and joined an English story. That is the whole point of
+  comparing meaning rather than words — and the reason the decision is worth paying a model for.</p>
 
-  <h2 id="s4"><span class="stage-no">§4</span>The body step — reading past the headline</h2>
-  <div class="where"><b>In code</b>
-    <span class="f">hunter.js:356–391</span> drives it<span class="sep">·</span>
-    <span class="f">lib/googlenews.js</span> unwraps Google's URL<span class="sep">·</span>
-    <span class="f">lib/extract.js</span> fetch, strip HTML, the four-rung ladder, the 10,000-char
-    stored cap (<span class="f">:20</span>)
-  </div>
-  <p class="rule">Only for items that survived both free gates. Google's wrapped URL is decoded to the
-  real article address, then the body is extracted through a ladder — cheapest and most reliable first —
-  and every attempt is logged, success or failure:</p>
-  <table class="mini">
-    <tr><th>Rung</th><th>Source</th><th class="num">Times recorded</th></tr>
-    <tr><td>0 — feed content</td><td>the outlet's own RSS already contains the article</td><td class="num">4</td></tr>
-    <tr><td>1 — JSON-LD</td><td>a machine-readable copy embedded for search engines</td><td class="num">3</td></tr>
-    <tr><td>2 — <code>&lt;article&gt;</code> tag</td><td>the page's own article paragraphs</td><td class="num">2</td></tr>
-    <tr><td>3 — all paragraphs</td><td>every <code>&lt;p&gt;</code> on the page, cruder</td><td class="num">2</td></tr>
-    <tr><td>4 — og:description</td><td>a one-sentence meta summary, last resort</td><td class="num">0</td></tr>
-    <tr><td>— failed (403 / no extract)</td><td>every attempt logged even on failure</td><td class="num">16</td></tr>
-  </table>
-  <p class="note">Those 27 do not add up to the 55 items that reach this step, and the gap is honest
-  rather than missing data: the <code>body_via</code> column that records which rung won only shipped
-  partway through the archive's life. Items processed before it exist with a body and no rung — 49 of
-  them got their text later from a one-off backfill script, which is also why the mention counts in §6
-  could be recomputed for articles nobody re-fetched. Telemetry starts when you add it, not when the
-  behaviour starts.</p>
   <div class="callout">
-    <strong>The fix this walkthrough exists to explain (2026-08-10)</strong>
-    Sports Illustrated's page renders its own lede paragraphs <em>twice</em> inside
-    <code>&lt;article&gt;</code> — measured live: 24 paragraphs, only 17 unique. Rung 2 joined both
-    copies without noticing, so a single passing mention of Topuria got counted twice. That doubled
-    count is what breaks §6 below.
+    <b>The biggest story in the archive holds 50 articles and the group saw one of them.</b>
+    “Dana White confirms Ilia Topuria is ready to fight again with the UFC considering two options” —
+    forty-nine repeats, in three languages, held.
   </div>
-  <div class="before-after">
-    <div class="col before">
-      <div class="label">Before the fix</div>
-      <dl>
-        <div class="row"><dt>body:</dt><dd>5,799 chars</dd></div>
-        <div class="row"><dt>Topuria mentions:</dt><dd>2</dd></div>
-        <div class="row"><dt>rung:</dt><dd>article-tag</dd></div>
-      </dl>
-    </div>
-    <div class="arrow">→</div>
-    <div class="col after">
-      <div class="label">After the fix</div>
-      <dl>
-        <div class="row"><dt>body:</dt><dd>4,286 chars</dd></div>
-        <div class="row"><dt>Topuria mentions:</dt><dd>1</dd></div>
-        <div class="row"><dt>rung:</dt><dd>article-tag</dd></div>
-      </dl>
-    </div>
-  </div>
-  <p class="note">Fixed by dropping a paragraph identical to one already kept, before anything downstream
-  counts mentions — both at rung 2 and at rung 0, where a publisher's own feed ships the whole article and
-  would otherwise be flattened to one line before any duplicate could be spotted.</p>
 
-  <h2 id="s5"><span class="stage-no">§5</span>Gate 3 — What is this article actually about?</h2>
-  <div class="where"><b>In code</b>
-    <span class="f">lib/matcher.js</span> is the whole model call — the forced tool schema
-    (<span class="f">:15</span>), <span class="f">buildPrompt()</span> (<span class="f">:72</span>),
-    and <span class="f">normalizeVerdict()</span> (<span class="f">:124</span>), which is what makes a
-    verdict safe to branch on<span class="sep">·</span>
-    <span class="f">hunter.js:392–457</span> branches on it: WRONG_SUBJECT at
-    <span class="f">:416</span>, MATCH at <span class="f">:424</span>, the official re-check at
-    <span class="f">:445</span><span class="sep">·</span>
-    <span class="f">domain/mma.js</span> supplies the claim types and the prompt's domain words
-  </div>
-  <p class="rule">One Haiku call per survivor: the headline, source, a body excerpt when there is one,
-  and every currently active claim for the subject. Forced tool use means the answer is always one of
-  five verdicts — never free text to parse. The same call answers a second, independent question in the
-  same breath: <strong>how prominent is the subject in this article</strong> —
-  <code>central</code>, <code>supporting</code>, or <code>passing</code>. The verdict says what the
-  article <em>asserts</em>; the role says who it is <em>about</em>. §6 is where the role earns its
-  keep.</p>
-  <table class="mini">
-    <tr><th>Verdict — all five</th><th>Meaning</th><th>What happens to the article</th></tr>
-    <tr><td class="mono">NEW</td><td>a claim-worthy fact not on file</td><td>opens a claim · never folded by §6</td></tr>
-    <tr><td class="mono">MATCH</td><td>a fact already on file, sighted again</td><td>linked as corroboration · not posted</td></tr>
-    <tr><td class="mono">WRONG_SUBJECT</td><td>not about this subject at all</td><td>dropped · never posted</td></tr>
-    <tr><td class="mono">NO_CLAIM</td><td>their world, but asserts nothing recordable</td><td>goes to §6, which decides how it posts</td></tr>
-    <tr><td class="mono">UNSURE</td><td>can't tell — abstains rather than guess</td><td>goes to §6, which decides how it posts</td></tr>
-  </table>
-  <table class="mini">
-    <tr><th>subject_role — all three</th><th>Meaning</th><th>Effect on the §6 decision</th></tr>
-    <tr><td class="mono">central</td><td>the article is about them</td><td>none — falls through to the count rule</td></tr>
-    <tr><td class="mono">supporting</td><td>they act in it: quoted, involved</td><td>none — falls through to the count rule</td></tr>
-    <tr><td class="mono">passing</td><td>named as background colour in someone else's story</td><td>folds into "Also mentioning"</td></tr>
-  </table>
-  <p class="note">Two things the tables are easy to misread. "Goes to §6" is not "posts with its headline
-  intact" — §6 decides that, and may drop the headline entirely. And <code>central</code> is not a
-  promotion: only <code>passing</code> changes any outcome. The role is nonetheless recorded on
-  <em>every</em> article the matcher sees, including the ones it drops and holds, so its agreement with
-  the count rule can be measured on real data later.</p>
-  <p class="note">The same real thread — Ali Abdelaziz predicting Usman Nurmagomedov beats Topuria —
-  supplies most of the examples below: it produced a NEW, two MATCHes, and the corroboration stack §7
-  ends on, across five days and four outlets in two languages.</p>
+  <h3>new — news none of the listed stories covers</h3>
+  <p>Posts, and opens a story of its own. The model writes one plain sentence saying what the news is;
+  that sentence becomes the story's description and the first line the next article is compared
+  against.</p>
 
-  <h3 style="font-family:var(--disp);font-size:1.05rem;margin:1.8em 0 .3em;">NEW — a claim-worthy fact not seen before</h3>
+  <h3>reaction — someone answering a story we carry</h3>
+  <p>Its own news, recorded as pointing at the story it answers. This is the distinction a similarity
+  score cannot make: the reply and the thing replied to are about the same subject, in the same words,
+  on the same day, and they are two different pieces of news.</p>
   <div class="cards single">
     <div class="card">
-      <p class="hl">"'Head Kick KO': Ali Abdelaziz Predicts Usman Nurmagomedov Finishes Topuria and
-      Other UFC Elites"</p>
-      <div class="meta"><span class="src">MMA Sucka · Aug 6</span><span class="chip new">NEW → claim #13</span></div>
+      <p class="hl">Ilia Topuria vs. Paddy Pimblett has never made more sense</p>
+      <div class="meta"><span class="src">Yahoo Sports</span> <span class="chip new">new story · answers</span></div>
+      <p class="note" style="margin-top:8px">→ “Paddy Pimblett said he would love to fight Ilia
+      Topuria in December”</p>
     </div>
   </div>
 
-  <h3 style="font-family:var(--disp);font-size:1.05rem;margin:1.8em 0 .3em;">MATCH — the same fact, sighted again</h3>
+  <h3>wrong_subject — not about this fighter at all</h3>
+  <p>Recorded, never posted, never linked to anything. Almost always an article about somebody else
+  that happens to name him.</p>
   <div class="cards">
     <div class="card">
-      <p class="hl">"Abdelaziz Calls Out Topuria For Nurmagomedov's UFC Debut"</p>
-      <div class="meta"><span class="src">boxingnews.com · Aug 9</span><span class="chip match">MATCH #13 → echo</span></div>
+      <p class="hl">First man to beat Justin Gaethje believes he benefits from an Arman Tsarukyan win</p>
+      <div class="meta"><span class="src">Bloody Elbow</span> <span class="chip held">wrong subject</span></div>
     </div>
     <div class="card">
-      <p class="hl">"Daniel Cormier rejects Ali Abdelaziz's 'absolutely crazy' take about Usman
-      Nurmagomedov"</p>
-      <div class="meta"><span class="src">Bloody Elbow · Aug 10</span><span class="chip match">MATCH #13 → echo</span></div>
+      <p class="hl">Alex Pereira says he'll 'mess Paulo Costa's life up' in 205 return</p>
+      <div class="meta"><span class="src">Bloody Elbow</span> <span class="chip held">wrong subject</span></div>
     </div>
   </div>
-  <p class="note">Both are linked as evidence for claim #13 and neither is posted — the group never sees
-  a repeat of a fact it already has. Worth noticing what is <em>not</em> in this pair: two further
-  articles in the same thread never reached the matcher at all, because Gate 2 recognised them as
-  near-duplicates one step earlier and they inherited the claim for free (§3). Identical corroboration,
-  one gate sooner, one Haiku call cheaper — the funnel doing exactly what it is shaped to do. §7 shows
-  the finished stack, with each source labelled by the gate that caught it.</p>
+  <p class="note">The rule is narrower than it looks. An article mostly about another fighter that
+  genuinely involves this one — as a rival, a comparison, context — is <em>not</em> the wrong subject.
+  It is news with no claim, and readers still see it. Wrong subject means dropped.</p>
 
-  <h3 style="font-family:var(--disp);font-size:1.05rem;margin:1.8em 0 .3em;">WRONG_SUBJECT — not about this subject at all</h3>
-  <div class="cards">
-    <div class="card">
-      <p class="hl">"Salkilld sigue imparable: Somete a Gamrot y se dispara en la división de Topuria"
-      <span style="opacity:.6">(the Spanish twin of the §4 story — same fight, Topuria named only as
-      the division marker)</span></p>
-      <div class="meta"><span class="src">Eurosport (es)</span><span class="chip held">dropped</span></div>
-    </div>
-    <div class="card">
-      <p class="hl">"Morning Report | Dakota Ditcheva broke both hands at PFL New York"</p>
-      <div class="meta"><span class="src">MMA Fighting</span><span class="chip held">dropped</span></div>
-    </div>
+  <div class="callout">
+    <b>The answer is never trusted as written.</b> Every field is checked against the values it is
+    allowed to take. An off-menu claim type is coerced rather than stored. A story id the model was
+    never shown is discarded — unchecked, it throws a foreign-key error that kills the rest of that
+    fighter's hour. A claim that does not name the fighter is dropped. Every correction goes toward
+    caution.
   </div>
-  <p class="note">Never posted, never a claim. The Eurosport item is the instructive one: the matcher
-  read this correctly on the first pass — the exact case §6 is about is the English version of the
-  <em>same</em> underlying Salkilld story slipping past on a technicality one gate later.</p>
 
-  <h3 style="font-family:var(--disp);font-size:1.05rem;margin:1.8em 0 .3em;">NO_CLAIM &amp; UNSURE — posts, but no fact recorded</h3>
-  <div class="cards">
-    <div class="card">
-      <p class="hl">"Matchmaking the lightweight top 10 while Justin Gaethje sits out until 2027"</p>
-      <div class="meta"><span class="src">Bloody Elbow</span><span class="chip posted">NO_CLAIM · posted</span></div>
-    </div>
-    <div class="card">
-      <p class="hl">"Ilia Topuria Taken to Task over Meeting with Ferran Torres"</p>
-      <div class="meta"><span class="src">MMA Sucka</span><span class="chip posted">UNSURE · posted</span></div>
-    </div>
-  </div>
-  <p class="note">NO_CLAIM: about the subject's world, but asserts nothing claim-worthy — division
-  context, reactions, lifestyle. UNSURE: the matcher genuinely can't tell, and abstains rather than
-  guess. The Ferran Torres item is the archive's only UNSURE so far, and it earns the label — a viral
-  nightclub clip is lifestyle noise the system ignores by design, except that Topuria's own manager
-  posted a mocking video reply, which is a quote of a sort. The matcher declined to decide whether that
-  counted. Both verdicts post through the normal digest exactly as if no claims layer existed at all —
-  which is where §6 picks up, with the role judgment riding along.</p>
-
-  <h2 id="s6"><span class="stage-no">§6</span>Digest tier — does this earn its own headline?</h2>
+  <h2 id="s6"><span class="stage-no">§6</span>When the decider cannot answer</h2>
   <div class="where"><b>In code</b>
-    <span class="f">lib/tier.js</span> the rule itself — <span class="f">digestTierFor()</span> at
-    <span class="f">:95</span> is the three lines that decide<span class="sep">·</span>
-    <span class="f">hunter.js:472</span> the single call, and the
-    <span class="f">isRealClaim</span> exemption in front of it<span class="sep">·</span>
-    <span class="f">hunter.js:175</span> <span class="f">alsoMentioningLine()</span> renders the
-    demoted ones<span class="sep">·</span>
-    measured by <span class="f">audit-digest-tier.js</span> and
-    <span class="f">corpus/measure-tier.js</span>
+    <span class="f">hunter.js</span> <span class="mono">checkDuplicateGate</span>
   </div>
-  <p class="rule">An article that opened a claim keeps its own headline, full stop — whatever fed a
-  claim has earned a line. Everything else that posts — NO_CLAIM, UNSURE, and the NEW verdicts whose
-  claim type the digest ignores — goes down a three-rung ladder. The rungs run <strong>in order</strong>
-  and the first one that answers wins; nothing below it is consulted.</p>
-  <p>There are only two answers. The article keeps a bullet of its own, or it is <strong>folded</strong>
-  — the code's word is <code>tangential</code> — meaning it is merged with every other demoted article
-  from that run into one shared line naming nothing but their outlets. Folding is a demotion, not a
-  rejection: the article still posts, and the reader can still reach it. It just stops taking up a
-  headline.</p>
-  <table class="mini">
-    <tr><th>In order</th><th>The question</th><th>If it answers</th></tr>
-    <tr><td class="mono">1</td><td>Does the <strong>headline</strong> name the subject?</td>
-        <td>keeps its own headline — stop</td></tr>
-    <tr><td class="mono">2</td><td>Did §5 report the role as <code>passing</code>?</td>
-        <td>folded — stop</td></tr>
-    <tr><td class="mono">3</td><td>Is the body long enough to judge (≥300 characters) and does it name
-        the subject <strong>at most once</strong>?</td>
-        <td>yes → folded · no → keeps its own headline</td></tr>
-  </table>
-  <p>Reading that ladder answers the question people ask first: the two rules are not weighed against
-  each other. A <code>central</code> or <code>supporting</code> role does not <em>answer</em> rung 2, so
-  the article simply drops to rung 3 and the counting rule decides it exactly as it did before the role
-  existed. The role can only ever add a demotion, never cancel one. That asymmetry is deliberate: the
-  count threshold was read off real archived articles, while the role is one model's opinion and has not
-  been measured yet, so it is allowed to accuse but not to acquit. When the matcher is off or its answer
-  is missing, the role is simply absent, rung 2 stays silent, and the ladder is byte-for-byte the rule
-  that shipped a day earlier.</p>
-  <p>Both outcomes post. The difference is how much of the article the group is shown. Here is the real
-  Kutateladze item from rung 2, rendered each way inside the same digest message:</p>
-  <div class="tg-pair">
-    <div class="tg">
-      <div class="label">Keeps its own headline</div>
-      <div class="hdr">🔎 Ilia Topuria</div>
-      <div class="line ell">⋮ the run's other bullets</div>
-      <div class="line">• Khamzat Chimaev's teammate returns as clash of ex-UFC stars headlines brand new
-      MMA org's first card — <span class="lnk">Bloody Elbow</span>, 0h ago</div>
-    </div>
-    <div class="tg">
-      <div class="label">Folded</div>
-      <div class="hdr">🔎 Ilia Topuria</div>
-      <div class="line ell">⋮ the run's other bullets</div>
-      <div class="line also">↘ Also mentioning: <span class="lnk">Bloody Elbow</span></div>
-    </div>
-  </div>
-  <p>A bullet is the whole article as the reader meets it: the publisher's headline verbatim — translated
-  into English first if it isn't — the outlet as a link, and how long ago it ran. Folding keeps only the
-  link. The headline is thrown away, the timestamp with it, and what remains is the outlet's name on one
-  shared line at the bottom of the message, which <em>every</em> folded article that run shares. Two
-  folded articles become <span class="mono">Bloody Elbow · MMA Junkie</span> on that same line. So the
-  reader can still get to the story in one tap; what they no longer get is a headline competing for
-  attention with news that is actually about the subject.</p>
-  <p class="note">One outlet with two folded stories in the same run gets <em>both</em> links, numbered
-  newest-first: <span class="mono">Bloody Elbow (1) · Bloody Elbow (2)</span>. Until 2026-08-10 the line
-  showed only the newest, which read cleanly and quietly cost something — the message is the only place a
-  folded article is ever offered, and Gate 1 guarantees no later run offers it again, so the older story
-  became unreachable. A bare repeated outlet name reads as a bug; the index is what earns the second link
-  its place. The numbers appear only where an outlet actually has more than one, since a lone
-  <span class="mono">Sherdog (1)</span> would imply a sibling that isn't there. Nothing was ever lost from
-  the record either way: every folded article had its own archived row, with its own URL, before the
-  message was built — and a folded article can never be a claim source, because anything that opened a
-  claim skips the ladder entirely.</p>
-  <p>There is a third outcome the ladder doesn't decide. If <em>everything</em> a run found for a subject
-  folded, there is no bullet for that shared line to sit under, and a message of nothing but a header and
-  a row of outlet names is precisely the noise this stage exists to remove — so nothing is sent for that
-  subject at all.</p>
-  <p>One clarification the two cards above invite. The ladder's answer is stored as
-  <code>digest_tier</code>, and it has exactly two values: <code>tangential</code>, which always means
-  folded, and <code>main</code>, which means only <em>not folded</em> — not "shows its headline."
-  Anything that opened a claim is set to <code>main</code> without consulting the ladder, and may then
-  leave by a route that discards the headline anyway, because once the system has extracted a fact it
-  trusts its own sentence more than the publisher's wording. Five shapes reach the group in all:</p>
-  <table class="mini">
-    <tr><th>Shape</th><th>Where it appears</th><th>What the reader sees</th></tr>
-    <tr><td>🚨 Ceremony</td><td>its own standalone message</td>
-        <td>the claim sentence — headline not shown</td></tr>
-    <tr><td>🕵️ Rumor</td><td>a line in the digest</td>
-        <td>the claim sentence — headline not shown</td></tr>
-    <tr><td>• Bullet</td><td>a line in the digest</td>
-        <td>publisher's headline, outlet, hours ago</td></tr>
-    <tr><td>↘ Also mentioning</td><td>one shared line, last in the digest</td>
-        <td>outlet names only, deduped</td></tr>
-    <tr><td>✅ Confirmed</td><td>a threaded reply to the original rumor</td>
-        <td>the claim sentence and the official source</td></tr>
-  </table>
-  <p class="note">And the ways an article appears nowhere: MATCH held as evidence (§5), WRONG_SUBJECT
-  dropped (§5), a Gate 2 near-duplicate (§3), and the all-folded run above — which also writes the
-  suppression back to the row it had already marked as posted, so a later measurement doesn't count as
-  broadcast something the group never saw.</p>
-  <div class="callout blue">
-    <strong>The Topuria / Salkilld story, end to end</strong>
-    The Sports Illustrated item from §4 is a NO_CLAIM: about Salkilld, not Topuria, who appears in
-    exactly one sentence. It should have folded into "also mentioning." Because that sentence was
-    doubled by the extraction bug, the mention count read 2 instead of 1 — one over the threshold — and
-    it kept a full headline in Topuria's digest it hadn't earned. The tier rule was never wrong; the
-    body handed to it was.
-  </div>
-  <div class="before-after">
-    <div class="col before">
-      <div class="label">Before</div>
-      <dl>
-        <div class="row"><dt>mentions:</dt><dd>2</dd></div>
-        <div class="row"><dt>result:</dt><dd>main — own headline</dd></div>
-      </dl>
-    </div>
-    <div class="arrow">→</div>
-    <div class="col after">
-      <div class="label">After</div>
-      <dl>
-        <div class="row"><dt>mentions:</dt><dd>1</dd></div>
-        <div class="row"><dt>result:</dt><dd>tangential — folded in</dd></div>
-      </dl>
-    </div>
-  </div>
-  <p class="note">Both of this stage's real cases were decided at rung 3, which is the only rung that
-  existed until yesterday. The tier is new enough (2026-08-09) that it has fired just 6 times in the live
-  archive: 5 kept their headline (including the Salkilld item above, pre-fix) and one folded — a Mark
-  Zuckerberg viral-video story naming Topuria once in passing, which was the whole of that run's Topuria
-  news and so triggered the third outcome above: nothing was sent for him at all. Rung 2 is newer still
-  (2026-08-10), and it exists because of the one case rung 3 could never have caught: an article about
-  Guram Kutateladze that named Topuria twice — once as a teammate, once as a man in someone else's
-  corner, pure background color both times — and so cleared the ≤1 threshold honestly.
-  That was the first item the tier got wrong on its own terms rather than on a body handed to it
-  broken.</p>
+  <p class="rule">The old similarity rule stands in: closer than <strong>0.85</strong> to something
+  already posted, and the article is held.</p>
+  <p>This is the fallback, not the gate. It fires when the model errors or answers that it cannot
+  tell. <b>It is more cautious than the thing it replaces</b> — it can hold an article the decider
+  would have posted, and with no verdict there is also no claim, so the counting rule in §8 decides
+  prominence and can fold the article away entirely. A decider outage costs coverage quietly rather
+  than spilling repeats into the group.</p>
+  <p class="note">285 articles in the archive were held this way. Most of them predate the decider,
+  when this rule was the gate rather than the net under it.</p>
 
-  <h2 id="s7"><span class="stage-no">§7</span>Claims — the distilled output</h2>
+  <h2 id="s7"><span class="stage-no">§7</span>Is the site itself spam?</h2>
+  <div class="where"><b>In code</b><span class="f">lib/untrusted.js</span></div>
+  <p class="rule">Three conditions, all required: at least five articles seen from the domain, more
+  than half already judged not about anyone, and <strong>never once</strong> a readable body.</p>
+  <p>Some sites stuff fighter names into unrelated content to get indexed. All three tests are needed
+  because any one alone catches innocents: a bad ratio alone would silence real outlets whose
+  name-filtered feeds run 35–45% off-target, and a blocked fetcher alone would silence real outlets
+  that refuse cloud servers. The check runs <em>after</em> the decider, so the domain's record keeps
+  growing from its verdicts.</p>
+
+  <h2 id="s8"><span class="stage-no">§8</span>Is he actually in this story?</h2>
   <div class="where"><b>In code</b>
-    <span class="f">hunter.js:477–500</span> births the claim and routes it (ceremony, rumor, or
-    digest)<span class="sep">·</span>
-    <span class="f">hunter.js:508–651</span> assembles and sends every message<span class="sep">·</span>
-    <span class="f">lib/db.js</span> <span class="f">insertClaim</span>,
-    <span class="f">linkClaimSource</span>, <span class="f">confirmClaim</span>,
-    <span class="f">setClaimMessageId</span><span class="sep">·</span>
-    <span class="f">lib/telegram.js</span> the send
+    <span class="f">lib/tier.js</span><span class="sep">·</span>
+    <span class="f">hunter.js</span> <span class="mono">postOutcome</span>
   </div>
-  <p class="rule">Everything the funnel does exists to feed this table. A claim is one row per
-  real-world fact: a canonical English sentence, a type, a status that starts as <span
-  class="chip rumor" style="vertical-align:middle">rumor</span> and moves to <span class="chip confirmed"
-  style="vertical-align:middle">confirmed</span> only when an official source asserts it. Every
-  corroborating sighting above — however it was caught, by the matcher, by Gate 2's inheritance, or by a
-  retroactive backfill — is recorded against exactly one such row.</p>
+  <p class="rule">Real news about somebody else, in which our fighter is background colour, does not
+  earn a headline.</p>
 
-  <p class="note">Two of those statuses are all the system has ever written. The schema
-  (<code>schema.sql</code>, the <code>claims.status</code> column) reserves five, and it is worth being
-  plain about which three are vocabulary rather than behaviour:</p>
-  <table class="mini">
-    <tr><th>status — all five</th><th>State</th><th>What it would mean</th></tr>
-    <tr><td class="mono">rumor</td><td>live</td><td>the starting state of every claim · stays in the matcher's candidate list</td></tr>
-    <tr><td class="mono">confirmed</td><td>live</td><td>an official source asserted it · stays in the candidate list</td></tr>
-    <tr><td class="mono">denied</td><td>reserved — never written</td><td>a source of record contradicted the claim</td></tr>
-    <tr><td class="mono">stale</td><td>reserved — never written</td><td>the claim aged out without ever resolving</td></tr>
-    <tr><td class="mono">superseded</td><td>reserved — never written</td><td>a later claim replaced it (the <code>supersedes</code> column exists for this)</td></tr>
-  </table>
-  <p class="note">No code path writes the last three: the matcher writes only <code>rumor</code>, and the
-  one promotion that exists moves <code>rumor</code> → <code>confirmed</code>. Their only live consequence
-  is already wired, though — the query that assembles a subject's active claims selects
-  <code>status IN ('rumor','confirmed')</code>, so writing any of the other three would quietly drop that
-  claim out of the candidate list the matcher is shown, and the fact would stop being matchable. That is
-  the retirement mechanism, built but never fired. Nothing yet decides <em>when</em> a claim has been
-  denied, gone stale, or been replaced — that judgment is the unbuilt part.</p>
+  <p>Two rules, joined by OR. <b>The decider's judgement:</b> it read the article and called him
+  <code>passing</code> — background colour, a comparison, an opponent's cornerman. <b>A counting rule
+  measured against the archive:</b> the headline does not name him, the body is long enough to judge,
+  and it names him once or not at all.</p>
 
-  <div class="claim-card">
-    <div class="id">CLAIM #13 · prediction · Topuria</div>
-    <div class="text">Ali Abdelaziz predicts Usman Nurmagomedov will finish Ilia Topuria.</div>
-    <ul class="sources-list">
-      <li><span>MMA Sucka — "Head Kick KO"…</span><span class="role">origin · NEW · Aug 6</span></li>
-      <li><span>MMA Sucka — "no UFC star can beat…"</span><span class="role">echo · Gate 2 · Aug 7</span></li>
-      <li><span>Diario AS (es) — "objetivo Nurmagomedov"</span><span class="role">echo · backfill · Aug 8</span></li>
-      <li><span>boxingnews.com — "Calls Out Topuria"</span><span class="role">echo · Gate 3 · Aug 9</span></li>
-      <li><span>Bloody Elbow — Holloway reacts</span><span class="role">echo · Gate 2 · Aug 9</span></li>
-      <li><span>Bloody Elbow — Cormier rejects the take</span><span class="role">echo · Gate 3 · Aug 10</span></li>
-    </ul>
+  <p class="note">Neither rule can rescue what the other rejects. One was measured; the other is a
+  model's opinion. Giving either a veto over the other made the results worse.</p>
+
+  <p>Separately, the decider answers <b>would a follower learn anything from this</b>. A "no" folds
+  the article away even when it technically contains a quote — a quote nobody learns from is not news.
+  A booking, result, injury or negotiation is never folded this way: an event is news whatever a model
+  thinks of the article describing it.</p>
+
+  <div class="cards">
+    <div class="card">
+      <p class="hl">Gaethje On Possible Retirement After UFC Title Win</p>
+      <div class="meta"><span class="src">boxingnews.com</span> <span class="chip held">passing · no</span></div>
+    </div>
+    <div class="card">
+      <p class="hl">Throwback: Ilia Topuria Stressed On The Importance Of Carbs</p>
+      <div class="meta"><span class="src">MMA Sucka</span> <span class="chip held">central · no</span></div>
+    </div>
   </div>
-  <p class="note">Read the right-hand column and the whole funnel is visible in one stack. One article
-  opened the claim. Two were caught by Gate 2 as near-duplicates and inherited it for free, no LLM
-  spent. Two reached Gate 3 and the matcher recognised the fact it already had. One — the Spanish
-  article — predates the claims layer and was linked when the archive was replayed through the matcher
-  after the fact. Six sightings, one row.</p>
-  <p class="stat-line"><b>6 sources</b> · 4 outlets · 2 languages · 5 days · still <b>rumor</b> — no
-  official source has weighed in on a prediction, and structurally none likely will.</p>
+  <p class="note">The second is the interesting one: the article really is about him — the model said
+  <code>central</code> — and it was still folded, because a follower learns nothing from it. Being
+  about someone is not the same as being news about them.</p>
 
-  <p class="note">Across the whole archive: <strong>10 claims, 46 corroborating links, zero confirmed</strong>
-  yet. The rumor → confirmed transition is real and wired — one threaded "✅ Confirmed" reply the moment
-  UFC.com covers a pending announcement — it just hasn't fired live. That state machine, the ceremony
-  posts, and everything downstream of a claim (§8 onward) is the other document's territory:
-  <code>docs/architecture-overview.html §6–§8</code>.</p>
+  <div class="callout">
+    <b>Folded articles are queued, not deleted.</b> 56 of them are recorded waiting for a daily digest
+    job. That job exists and nothing schedules it, so in practice these are recorded and never shown.
+  </div>
+
+  <h2 id="s9"><span class="stage-no">§9</span>What gets sent</h2>
+  <div class="where"><b>In code</b>
+    <span class="f">hunter.js</span> <span class="mono">assembleMessages</span> → <span class="mono">deliver</span>
+  </div>
+  <p class="rule">Three kinds of message, and only one of them ever gets a post to itself.</p>
+
+  <p><b>A ceremony</b> — a confirmed fight announcement, standalone.</p>
+  <p><b>The digest</b> — one message per fighter per hour carrying everything else: rumours about big
+  things as marked lines at the top, then bullets with headline, source link, and how long ago it was
+  published. Spanish headlines are translated; English and Ukrainian are left alone because the group
+  reads both.</p>
+  <p><b>A confirmation</b> — a reply threaded under the message where the rumour first appeared, so
+  the update lands beneath the thing it updates instead of scrolling away from it.</p>
+
+  <div class="tg">
+    <span class="from">🔎 Ilia Topuria</span><br><br>
+    🕵️ <b>Rumor:</b> Dana White said a potential fight between Ilia Topuria and Paddy Pimblett has
+    enough hype — <span style="color:var(--blue)">MMA Fighting</span>, 2h ago<br><br>
+    • Ilia Topuria's manager dismisses Paddy Pimblett fight —
+    <span style="color:var(--blue)">Bloody Elbow</span>, 5h ago
+  </div>
+
+  <h2 id="s10"><span class="stage-no">§10</span>What gets written down</h2>
+  <div class="where"><b>In code</b>
+    <span class="f">hunter.js</span> <span class="mono">recordOutcome</span><span class="sep">·</span>
+    <span class="f">schema.sql</span>
+  </div>
+  <p class="rule">Every article is stored, including everything rejected. The record of what was
+  thrown away is what makes the throwing-away checkable.</p>
+
+  <p>A posted article writes its row, opens a story, and — when it asserts a real fact about a
+  fighter's career — mints a <b>claim</b>: one English sentence, with a type and a status. A claim is
+  born <span class="chip rumor">rumor</span> unless it came from an official source, which for MMA
+  means <code>ufc.com</code> and nothing else. Later articles saying the same thing are linked to it
+  as evidence, and if an official one arrives asserting it, the claim flips to
+  <span class="chip confirmed">confirmed</span> and the bot replies to its own original message.</p>
+
+  <div class="cards">
+    <div class="card">
+      <p class="hl">Daniil Donchenko defeated Punahele Soriano by unanimous decision at UFC Fight Night 287</p>
+      <div class="meta"><span class="src">result</span> <span class="chip confirmed">confirmed · 28 sources</span></div>
+    </div>
+    <div class="card">
+      <p class="hl">Ilia Topuria announced his return to the UFC after recovering from a double orbital fracture</p>
+      <div class="meta"><span class="src">other</span> <span class="chip confirmed">confirmed · 29 sources</span></div>
+    </div>
+  </div>
+
+  <p class="note">Denials are linked as evidence and never acted on. Nothing in the code flips a claim
+  because one outlet pushed back.</p>
 
   <div class="footer">
-    <p>RingFacts · funnel walkthrough · real archive, 2026-08-10 snapshot · 95 items processed,
-    41 posted, 10 claims, 46 links.</p>
-    <p>Companion pages in the repo: <code>docs/architecture-overview.html</code> (the whole system),
-    <code>docs/test-suite-overview.html</code> (how it's tested). Those pages use Subject A/B/C as
-    shorthand and map each label to its real name on first use; this one uses the names directly.
-    Third-party names are real throughout.</p>
+    RingFacts · the funnel as built on <span class="mono">main</span> · every example is a real row
+    from the live archive · companion to
+    <a href="architecture-overview.html">the architecture overview</a>.
+    Written with Claude Code; where this page and the code disagree, the code is right.
   </div>
 </main>
