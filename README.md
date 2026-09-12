@@ -28,15 +28,8 @@ This is a learning project as much as a working bot. The commit history and
 made — including the ones that were measured and then rejected.
 
 This project is being created by directing Claude Code and using it as a
-design partner. This file is written the same way, and it has the failure mode
-that implies: prose that was accurate when written, left standing after the
-code moved underneath it. Three claims here were wrong that way and were
-corrected on 2026-09-11 by reading `hunter.js` rather than trusting the
-sentence — the dedup threshold (quoted as 0.80, actually 0.85), the promise
-that every gate fails open (a decider outage now *holds* articles rather than
-posting them), and a repeats figure that turned out to be measured against the
-grouping it was testing. Where this document and the code disagree, the code is
-right; corrections are welcome as issues.
+design partner. It is in flux: where this file and the code disagree, the code
+is right.
 
 ## The unit: a story
 
@@ -96,92 +89,19 @@ fires it (Anton, 2026-09-04). In production today those articles are recorded
 and never shown — dropped, in effect, not queued. Turning them on is one
 scheduler entry; nobody has decided they are wanted.
 
-**Nothing that fails takes the run down with it, and nothing is lost from the
-archive** — but "fails open" would overstate it, because the fallbacks are
-deliberately more cautious than the thing they replace. If the decider errors
-or answers UNSURE, the old similarity threshold stands in, and at ≥ 0.85 it
-*holds* an article the decider might well have posted; with no verdict there is
-also no claim, so the mention-count rule decides the tier and can demote the
-article to the mentions queue that nothing currently drains. A decider outage
-therefore costs coverage, quietly, rather than spilling repeats into the group —
-which is the right way round for a group of three people, and worth knowing
-when reading a quiet hour. Below the threshold, or with no embedding to compare
-against, the article does post.
+Nothing that fails takes the run down, and nothing is lost from the archive —
+but the fallbacks are more cautious than what they replace, so "fails open"
+would overstate it. If the decider errors or is unsure, the old similarity
+threshold stands in and can hold an article the decider might have posted. A
+decider outage costs coverage rather than spilling repeats, which is the right
+way round for a group of three people.
 
-The other degradations are genuinely open. No embeddings drops to URL-only
-dedup and the story shortlist falls back to recency, so an embedder outage
-cannot starve the decider into calling everything new. Body extraction is all
-bonus: any failure leaves the item headline-only and the decider works from the
-headline. A failed Telegram send walks its rows back to unposted and the next
-run that can deliver picks them up — bounded by the same freshness window
-discovery uses, so an outage delays news rather than silently eating it. Each
-direct feed logs how many items it matched and discarded, so a dead name filter
-reads as sustained `0 matched` instead of a quiet news day. A single subject's
-hunt failing is survivable; only *every* subject failing marks the run red. The
-one fatal condition is a configured-but-unreachable database — posting without
-memory would re-spam the group every hour.
-
-## Where it stands
-
-Running hourly since 2026-08-07. **1,112 articles archived, grouped into 251
-stories, 167 of them posted to the group.** Thresholds in the pipeline are
-measured against that archive rather than guessed — [`lib/tier.js`](lib/tier.js)
-carries the measurement and the two alternatives that were tested and rejected,
-so they don't get reintroduced.
-
-**What can be said about repeats:** of the 54 stories the live decider has
-opened since it shipped, 45 reached the group and each arrived once. That
-counts *story objects*, though, and the objects are the pipeline's own — read
-one occasion as two stories and both post while the number stays clean. There
-is measurable room for that: 15 pairs of posted articles sit in different
-stories while being near-identical by embedding distance.
-
-**What cannot be said yet: how often it sends the right thing.** That needs a
-pair of numbers — of what it sent, how much was worth sending; of what was
-worth sending, how much it sent — and the second has no denominator you can
-query. A story the pipeline never recognised has no row to count. It only
-exists once a person has read the archive and said what was there.
-
-So that is what is being built now: a grading tool that shows the archive story
-by story with the pipeline's own answer **hidden** until asked for, and records
-the verdict plus the reasoning in the grader's words. 251 stories to work
-through. Until it lands, this project quotes no effectiveness percentage,
-because picking one would mean picking whichever denominator flattered it.
-
-## Decisions that changed the shape
-
-The interesting history is the reversals, not the additions.
-
-**The unit moved from claims to stories** (2026-09-06). The system used to
-remember *claims* — assertions it had extracted. It turned out the thing that
-needs remembering is *"have we told the group this piece of news"*, which is a
-story: one statement, one event, one day. Claims still exist and still track
-rumour → confirmation, but they are no longer what dedup reasons about.
-
-**Similarity stopped being the gate.** Cosine distance at a threshold decided
-repeats for the first month. It cannot separate two outlets writing up one
-press conference from two people reacting to one event — the vectors look the
-same and the answers differ. An LLM now makes that call against a shortlist of
-recent stories, and the threshold became the fallback for when it is
-unavailable.
-
-**Bodies moved ahead of the decision.** The pipeline used to dedup first and
-fetch article text only for survivors, which is cheaper and wrong: the decider
-reads the article, so the article has to exist before it can decide.
-
-**A single measurement run cannot settle a comparison.** Repeat passes of the
-same model on the same prompt disagree enough that one run is not evidence —
-which is why [`bench/run.js`](bench/README.md) takes `--repeat` and the
-scoreboard records every pass rather than the best one.
-
-**The labelled corpus turned out to be mostly ratification.**
-[`corpus/graded-2026-09.json`](corpus/README.md) holds 103 labelled articles,
-but of the 45 in its tune split, 43 are a blanket "as graded" on a reviewer
-model's label rather than a verdict written from scratch; the holdout is 44 of
-44. A label the reviewer got wrong survives into the answer key, and other
-models are then scored on reproducing it. Finding that is what started the
-regrading described above — and why the new tool hides the machine's answer
-until after a human one exists.
+Everything else degrades openly. No embeddings drops to URL-only dedup and the
+story shortlist falls back to recency. Body extraction is a bonus; failure
+leaves the item headline-only. A failed Telegram send walks its rows back to
+unposted and a later run picks them up. The one fatal condition is a
+configured-but-unreachable database — posting without memory would re-spam the
+group every hour.
 
 ## Two kinds of configuration
 
