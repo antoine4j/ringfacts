@@ -110,9 +110,27 @@ more than once — every repeat from the earlier threshold-only era. Reproduce i
 by joining `items` to `stories` where `decided_by = 'story'` and counting
 `posted` per story.
 
-That is a claim about **repeats**, and it is the only effectiveness number this
-project currently has. It is not a claim that the right 45 stories were chosen —
-see below.
+**And that number is narrower than it sounds.** It says no *story object* was
+posted twice. It is measured against the pipeline's own grouping, which is the
+very thing under test: if the decider reads one occasion as two stories, both
+get posted, the group sees the same news twice, and this metric still reads
+clean. The question it answers is internal consistency, not whether a reader
+saw a repeat.
+
+There is measurable room for that. Among articles the group saw, **15 pairs sit
+in two different stories the live decider opened while being 0.80 or closer by
+embedding distance**, the nearest two at 0.927 and 0.918 — for instance one
+Matt Brown remark about rebooking Gaethje–Topuria filed as S214 and again as
+S216, and Gaethje's "easy to predict" line posted in English as S223 and S236
+and possibly a third time in Spanish as S244. Similarity is not proof of a
+repeat; two people reacting to the same event on the same day are genuinely two
+pieces of news, and only a person reading them can say which is which. That is
+precisely the judgement the regrading below exists to collect.
+
+So: no story posted twice, an upper bound of 15 places where that might not
+mean what it sounds like, and no effectiveness figure yet. Reproduce the bound
+by joining `items` to itself on `nearest_item` where both rows are `posted` and
+their `story_id`s differ.
 
 **Is it actually hourly?** 143 of the last 168 hours produced archived items.
 The job is a Cloud Scheduler entry firing at `:17`.
