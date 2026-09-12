@@ -28,7 +28,15 @@ This is a learning project as much as a working bot. The commit history and
 made — including the ones that were measured and then rejected.
 
 This project is being created by directing Claude Code and using it as a
-design partner.
+design partner. This file is written the same way, and it has the failure mode
+that implies: prose that was accurate when written, left standing after the
+code moved underneath it. Three claims here were wrong that way and were
+corrected on 2026-09-11 by reading `hunter.js` rather than trusting the
+sentence — the dedup threshold (quoted as 0.80, actually 0.85), the promise
+that every gate fails open (a decider outage now *holds* articles rather than
+posting them), and a repeats figure that turned out to be measured against the
+grouping it was testing. Where this document and the code disagree, the code is
+right; corrections are welcome as issues.
 
 ## The unit: a story
 
