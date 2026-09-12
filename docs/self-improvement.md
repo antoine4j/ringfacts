@@ -351,3 +351,36 @@ borderline article) stay in the main session, and a subagent's output is
 data to verify, not a verdict to trust. The first grading pass
 (docs/grading/2026-09-04-posted-30d.md) was done in the main context; it is
 the case this rule is for.
+
+## 11. The public description is part of the system
+
+Four things describe this project to people who will never read the code:
+`README.md`, the GitHub repo description and its topics, and the two pages
+published from `/docs` — the architecture overview and the funnel walkthrough.
+They are served straight off `main`, so a push updates them within the minute,
+and the repo is linked from a CV. That makes them load-bearing in a way
+internal notes are not: a wrong sentence there is read by strangers as a
+statement about the author's judgement.
+
+A change to how the pipeline works is therefore not finished when the tests
+pass. If the change touches the order of the gates, what decides what, a
+threshold, a model, or a message type, all four surfaces get re-read in the
+same session and corrected in the same push.
+
+**Prose does not fail loudly, which is why this needs a rule.** Code that goes
+stale breaks a test. A sentence that goes stale simply keeps being read. Every
+error found in these pages on 2026-09-11 had the same shape — true on the day
+it was written, left standing while the code moved underneath it:
+
+- the duplicate threshold quoted as 0.80, when the constant had read 0.85 for
+  weeks
+- "every gate fails open", written when the embedding gate ran *before* the
+  matcher; once the decider took over, a decider outage began *holding*
+  articles instead of posting them — the opposite of the promise
+- a repeats figure that counted the pipeline's own story objects, and so was
+  measured against the very grouping it was being offered as evidence for
+
+None of those were invented. Each was a fact that expired. So the check is
+always against the code, never against memory or against the previous version
+of the sentence — and when the two disagree, the code is right, which is what
+these pages now tell the reader in as many words.
