@@ -9,9 +9,15 @@ mention someone in passing.
 It ships configured for combat sports (MMA), which is what it runs as in
 production: an hourly Cloud Run Job on GCP with Neon Postgres + pgvector for
 memory, both inside free tiers, plus two LLM providers doing different jobs —
-Claude Haiku 4.5 makes the judgment call (the claim matcher), Gemini does the
-mechanical ones (`gemini-embedding-001` for the semantic dedup gate,
-Flash-Lite for headline translation). LLM spend is the one real cost.
+Claude Haiku 4.5 makes the judgment call (the story decider), Gemini does the
+mechanical ones (`gemini-embedding-001` for the embeddings,
+`gemini-flash-lite-latest` for headline translation). LLM spend is the one
+real cost.
+
+**On this document and the running system.** Deploys here are manual and
+deliberate, so `main` is routinely ahead of what is live. This file describes
+the code on `main`; where the two differ, the difference is a pending deploy
+rather than a description of behaviour you would observe in the group.
 
 Renamed from *FighterBot* on 2026-08-10 — the commit history and the deployed
 GCP resource names (`fighterbot`, `fighterbot-hunter`) still carry the old
@@ -24,30 +30,63 @@ made — including the ones that were measured and then rejected.
 This project is being created by directing Claude Code and using it as a
 design partner.
 
+## The unit: a story
+
+A **story** is one piece of news — one statement, one event, on one day — and
+every article reporting it points at the same row. It is the unit of "the group
+has already seen this", and it is what the hourly run is really deciding about:
+not *is this article a duplicate of that article*, but *is this article the
+story we are already telling*.
+
+That matters because the two questions have different answers. Nine outlets
+writing up the same press conference are nine articles and one story. A fight
+recap and the booking it settles are two stories that share every name in them.
+Similarity cannot tell those apart; the decider is asked to.
+
 ## What a run does
 
 Every hour, the hunter:
 
 1. **Fetches** Google News RSS per subject (with multi-language name aliases)
-   plus a set of direct publisher feeds.
+   plus a set of direct publisher feeds, `HOURS_BACK=24` of freshness, first
+   sighting winning within a run.
 2. **Drops** anything already seen, by URL or by resolved URL after unwrapping
    Google's redirect links.
-3. **Holds semantic duplicates** — the same story from a different outlet, or in
-   a different language — using pgvector cosine similarity at ≥ 0.80.
-4. **Reads the article** for survivors only: decodes the wrapped URL and
+3. **Reads the article**, before deciding anything about it: decodes the
+   wrapped URL, catches the same address arriving under a second wrapper, and
    extracts the body through a zero-dependency ladder (feed content → JSON-LD →
-   article tag → paragraphs → og:description), recording which rung produced it.
-5. **Asks a Haiku matcher** what each article is actually about, body excerpt
-   included — is this a new claim, an echo of a claim already tracked, no claim
-   at all, or a different subject entirely? The same forced-tool call also
-   records how prominently the subject figures in the article's own text
-   (`central` / `supporting` / `passing`).
-6. **Posts**, threading follow-ups under the original story. Merely
-   tangential articles — the fighter named in passing in someone else's
-   story — never ride the hourly message; they queue for a once-a-day
-   mentions digest, one quiet list of links grouped by fighter. Demotion is
-   decided by the matcher's prominence verdict first, then by a mention-count
-   rule measured on the live archive.
+   article tag → paragraphs → og:description), recording which rung produced
+   it. This runs ahead of the dedup decision rather than after it, which is the
+   order it was in before 2026-09-06 — the decider reads the article, so the
+   article has to exist first.
+4. **Embeds** the headline plus the first 1500 characters of the body, one
+   batch call. The nearest already-posted neighbour is recorded for every item,
+   posted or held, but it is audit data: on its own it now decides nothing.
+5. **Asks the decider** — one forced Haiku tool call — which of this subject's
+   recent stories this article is. It sees a shortlist of the 3 closest stories
+   from the last 7 days, ranked by embedding distance, and answers `join` (a
+   repeat of one of them, held), `new` (news no listed story has), `reaction`
+   (someone answering a listed story — its own news, linked to that one), or
+   `wrong_subject`. The same call reports how prominently the subject figures
+   in the article's own text (`central` / `supporting` / `passing`) and whether
+   a follower would learn anything from it.
+6. **Falls back to the threshold** only when the decider is unavailable or
+   answers UNSURE: pgvector cosine similarity at ≥ 0.85 holds the article as a
+   near-duplicate. This was the main gate until 2026-09-06 and is now the net
+   under a decider outage — a matcher error must not turn every echo into a
+   second post.
+7. **Posts**, threading follow-ups under the story they answer. A new story can
+   mint a claim, born `rumor` unless the source is official. Merely tangential
+   articles — the fighter named in passing in someone else's story — never ride
+   the hourly message. Demotion is decided by the decider's prominence verdict
+   first, then by a mention-count rule measured on the live archive.
+
+**The mentions digest is built but not scheduled.** Tangential articles are
+written to the archive with `held_reason = 'tangential'` and the
+`fighterbot-mentions` job exists to collect them, but no Cloud Scheduler entry
+fires it (Anton, 2026-09-04). In production today those articles are recorded
+and never shown — dropped, in effect, not queued. Turning them on is one
+scheduler entry; nobody has decided they are wanted.
 
 Every gate fails open. No embeddings degrades to URL-only dedup; a matcher error
 posts the article as it always would have. A failed Telegram send walks its rows
@@ -156,7 +195,7 @@ Three tiers, split by what they need rather than by what they're called — see
 | Tier | Needs | Covers |
 |---|---|---|
 | Unit + fixture | nothing | the pure functions: name filtering, verdict validation, the extraction ladder, the tier rule |
-| Pipeline | nothing | the wiring: both dedup gates, the digest tier, claim lifecycle, and every fail-open path |
+| Pipeline | nothing | the wiring: the story decider and the threshold fallback under it, the digest tier, claim lifecycle, and every fail-open path |
 | SQL | `TEST_DATABASE_URL` | what a fake can't check: pgvector's arithmetic, dual-identity lookups, schema agreement |
 
 The first two run on every commit, which is the whole point — commits here come
@@ -169,7 +208,7 @@ expects a Neon
 TEST_DATABASE_URL=$(neonctl connection-string test --project-id <id>) npm run test:sql
 ```
 
-The claim matcher is deliberately **not** asserted anywhere: it is an LLM call
+The decider is deliberately **not** asserted anywhere: it is an LLM call
 that returns different verdicts for identical input. Stubbing it everywhere is
 what keeps the suite trustworthy; measuring it belongs in a separate eval scored
 as a pass rate, not a pass/fail test.
