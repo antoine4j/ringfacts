@@ -102,12 +102,17 @@ database — posting without memory would re-spam the group every hour.
 Claims about a pipeline like this are cheap, so the numbers here are read out
 of the live database and the repo rather than remembered.
 
-**Does it post a story once?** Since the story decider went live on 2026-09-06,
-**45 stories reached the Telegram group and every one of them arrived exactly
-once.** Across the whole archive, which includes the months before the decider
-existed, 145 stories posted once and 9 posted more than once — every repeat
-from the earlier threshold-only era. Reproduce it by grouping `items` on
-`story_id` and counting `posted` per story.
+**Does it post a story once?** The live decider has opened **54 stories** since
+it shipped on 2026-09-06. **45 of them reached the Telegram group, each exactly
+once; the other 9 were held in full.** Across the whole archive, which includes
+the months before the decider existed, 145 stories posted once and 9 posted
+more than once — every repeat from the earlier threshold-only era. Reproduce it
+by joining `items` to `stories` where `decided_by = 'story'` and counting
+`posted` per story.
+
+That is a claim about **repeats**, and it is the only effectiveness number this
+project currently has. It is not a claim that the right 45 stories were chosen —
+see below.
 
 **Is it actually hourly?** 143 of the last 168 hours produced archived items.
 The job is a Cloud Scheduler entry firing at `:17`.
@@ -120,7 +125,23 @@ worked examples, reserved as few-shot material), `tune` (45) and `holdout`
 pipeline step at a time, on test keys and a separate database, so a change to
 the tier rule can be scored without touching production or waiting for news.
 
-**What is weak about that corpus, stated plainly.** Its labels were produced by
+**What there is no number for yet: whether it sends the right things.** That
+needs a pair, and each half needs a denominator:
+
+- **Precision** — *of the stories it sent, how many were worth sending?* The
+  denominator is readable from the database today: 45.
+- **Recall** — *of the stories worth sending, how many did it send?* This
+  denominator cannot be read from the database at all. A story the pipeline
+  never recognised has no row in `stories`; it is sitting unnoticed among the
+  articles held as off-subject. The denominator only exists once a person has
+  read the archive and said what was there.
+
+That asymmetry is the whole reason for the regrading described next. Until it
+is done, quoting a single percentage would mean picking whichever denominator
+flattered the result — and a system can score perfectly on either half alone by
+sending nothing, or by sending everything.
+
+**What is weak about the corpus, stated plainly.** Its labels were produced by
 a model and then reviewed, and most of the review was acceptance rather than
 independent judgement: of the 45 articles in the tune split, 43 carry a blanket
 "as graded" and 2 are written in a person's own words; the holdout split is 44
