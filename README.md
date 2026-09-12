@@ -1,7 +1,12 @@
 # RingFacts
 
-A news tracker for public figures. It watches a small list of people, works out
-which stories are actually *about* them, tracks each claim from rumour to
+I follow a few athletes, and keeping up meant opening an app built to keep me
+scrolling. I didn't want to go where the news is — I wanted the news to come to
+me. Only the parts that matter, gathered from all the coverage, in the chat I
+already have with my friends.
+
+That is what this is. It watches a small list of people, works out which
+stories are actually *about* them, tracks each claim from rumour to
 confirmation, and posts the result to a private Telegram group — dropping the
 near-duplicate re-posts, the wrong-subject stories, and the articles that only
 mention someone in passing.
@@ -78,7 +83,7 @@ Every hour, the hunter:
    second post.
 7. **Posts**, threading follow-ups under the story they answer. A new story can
    mint a claim, born `rumor` unless the source is official. Merely tangential
-   articles — the fighter named in passing in someone else's story — never ride
+   articles — the athlete named in passing in someone else's story — never ride
    the hourly message. Demotion is decided by the decider's prominence verdict
    first, then by a mention-count rule measured on the live archive.
 
@@ -116,7 +121,7 @@ written to prove the seam is real — it is clearly labelled as never having bee
 run, with unverified feeds and unmeasured thresholds.
 
 **The watchlist** ([`watchlist.js`](watchlist.js)) is *who* is tracked — the
-real one this bot runs on, three fighters, checked in. It carries the search
+real one this bot runs on, three athletes, checked in. It carries the search
 aliases per language edition and the per-subject `confusables` hints that tell
 the matcher which namesakes and relatives to watch out for.
 
