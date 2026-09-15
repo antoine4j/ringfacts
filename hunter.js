@@ -1030,7 +1030,7 @@ function hoursAgo(date) {
 export function digestLine(item) {
   const title = item.displayTitle ?? cleanTitle(item);
   const label = item.displayTitle ? ` (translated from ${item.edition})` : "";
-  return `• ${escapeHtml(title)} — <a href="${escapeHtml(item.url)}">${escapeHtml(item.source)}</a>${label}, ${hoursAgo(item.publishedAt)}h ago`;
+  return `• ${escapeHtml(title)} — ${anchor(articleUrl(item), item.source)}${label}, ${hoursAgo(item.publishedAt)}h ago`;
 }
 
 
@@ -1093,7 +1093,7 @@ async function markSendFailed(deps, db, subject, items, what) {
  */
 async function sendCeremonies(deps, db, subject, ceremonies) {
   for (const ceremony of ceremonies) {
-    const message = `🚨 <b>${escapeHtml(domain.ceremonyLabel)}</b>\n\n<b>${escapeHtml(ceremony.text)}</b>\n\n— <a href="${escapeHtml(ceremony.item.url)}">${escapeHtml(ceremony.item.source)}</a>`;
+    const message = `🚨 <b>${escapeHtml(domain.ceremonyLabel)}</b>\n\n<b>${escapeHtml(ceremony.text)}</b>\n\n— ${anchor(articleUrl(ceremony.item), ceremony.item.source)}`;
     if (deps.dryRun) {
       console.log(`\n--- would post (ceremony) ---\n${message}\n`);
       continue;
@@ -1122,7 +1122,7 @@ async function sendDigest(deps, db, subject, messages) {
   const lines = [];
   for (const rumor of rumorPosts) {
     lines.push(
-      `🕵️ <b>Rumor:</b> ${escapeHtml(rumor.text)} — <a href="${escapeHtml(rumor.item.url)}">${escapeHtml(rumor.item.source)}</a>, ${hoursAgo(rumor.item.publishedAt)}h ago`
+      `🕵️ <b>Rumor:</b> ${escapeHtml(rumor.text)} — ${anchor(articleUrl(rumor.item), rumor.item.source)}, ${hoursAgo(rumor.item.publishedAt)}h ago`
     );
   }
   for (const item of digestItems) {

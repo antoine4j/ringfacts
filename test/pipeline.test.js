@@ -543,6 +543,49 @@ describe("the decider's verdicts", () => {
     assert.ok(confirmation.text.includes("https://www.ufc.com/news/testov-confirmed"), "it links the publisher URL");
     assert.ok(!confirmation.text.includes("news.google.com"), "and never the wrapper");
   });
+
+  // The same rule for the other three send sites: Telegram's "Open Link"
+  // dialog shows the href, so a wrapper there hides where the reader is going.
+  describe("every message type links the decoded article URL", () => {
+    const wrapped = "https://news.google.com/rss/articles/CBMiWRAPPED?oc=5";
+    const real = "https://www.example.test/news/testov-march";
+    const run = (overrides) => huntSubject(DB, SUBJECT, [makeItem({ url: wrapped, ...overrides.item })], deps({
+      store: createFakeStore(),
+      decodeGoogleNewsUrl: async () => real,
+      matchItem: overrides.matchItem,
+    }));
+
+    test("a digest line", async () => {
+      await run({ matchItem: async () => ({ verdict: "NEW", decision: "new", fact: "Testov trains", new_claim: null }) });
+      assert.ok(digest().text.includes(real), "it links the publisher URL");
+      assert.ok(!digest().text.includes("news.google.com"), "and never the wrapper");
+    });
+
+    test("a rumor line", async () => {
+      await run({
+        matchItem: async () => ({
+          verdict: "NEW", decision: "new", fact: "Testov fights in March",
+          new_claim: { type: "announcement", sourcing: "reported", canonical_text: "Testov fights in March", facts: {} },
+        }),
+      });
+      assert.match(digest().text, /Rumor:/);
+      assert.ok(digest().text.includes(real), "it links the publisher URL");
+      assert.ok(!digest().text.includes("news.google.com"), "and never the wrapper");
+    });
+
+    test("a ceremony post", async () => {
+      await run({
+        item: { source: "UFC" },
+        matchItem: async () => ({
+          verdict: "NEW", decision: "new", fact: "Testov fights Rivalov in March",
+          new_claim: { type: "announcement", sourcing: "official", canonical_text: "Testov fights Rivalov in March", facts: {} },
+        }),
+      });
+      const ceremony = sent.find((m) => m.text.startsWith("🚨"));
+      assert.ok(ceremony.text.includes(real), "it links the publisher URL");
+      assert.ok(!ceremony.text.includes("news.google.com"), "and never the wrapper");
+    });
+  });
 });
 
 // The story is the unit. Every article the decider sees is placed: it joins a
