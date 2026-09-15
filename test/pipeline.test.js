@@ -1193,6 +1193,36 @@ describe("presentation", () => {
     assert.match(digest().text, /\(translated from es\)/);
   });
 
+  // The live bug of 2026-09: Google's English edition returned Marca and AS
+  // articles, the edition said "en", and the Spanish posted as filed.
+  test("a Spanish headline found through an English feed is still translated", async () => {
+    const store = createFakeStore();
+    const title = "Testov explica el secreto para haber ganado a su rival";
+    await huntSubject(DB, SUBJECT, [makeItem({ edition: "en", title })], deps({ store }));
+    assert.match(digest().text, new RegExp(`EN\\(${title}\\)`));
+    assert.match(digest().text, /\(translated from es\)/);
+  });
+
+  test("an English headline from an English feed never reaches the translator", async () => {
+    const store = createFakeStore();
+    const asked = [];
+    await huntSubject(DB, SUBJECT, [makeItem()], deps({
+      store, translate: async (text) => { asked.push(text); return `EN(${text})`; },
+    }));
+    assert.deepEqual(asked, []);
+    assert.doesNotMatch(digest().text, /translated from/);
+  });
+
+  test("a translation that only echoes the headline back posts without a label", async () => {
+    const store = createFakeStore();
+    const title = "Testov explica el secreto para haber ganado a su rival";
+    await huntSubject(DB, SUBJECT, [makeItem({ edition: "en", title })], deps({
+      store, translate: async (text) => text,
+    }));
+    assert.match(digest().text, /Testov explica el secreto/);
+    assert.doesNotMatch(digest().text, /translated from/);
+  });
+
   test("a translation failure posts the original headline rather than nothing", async () => {
     const store = createFakeStore();
     await huntSubject(DB, SUBJECT, [makeItem({ edition: "es", title: "Testov vuelve en marzo" })], deps({

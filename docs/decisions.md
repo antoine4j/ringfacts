@@ -282,6 +282,23 @@ presentation only. Tangential items are excluded: the shared line shows only
 source names, so translating their headlines would be a wasted Gemini call.
 Fail-open: a failed translation posts the original headline.
 
+*2026-09-15 — the edition is not the language.* An item's `edition` names the
+feed that found it, and Google's English edition returns Spanish and French
+articles (Marca, AS, La Sueur). Those were tagged "en", skipped, and posted in
+Spanish. Now a group-language edition still has its headline read by `eld`
+(offline n-gram detection, no API call, lib/language.js); a Latin-script
+headline it reliably calls non-English is translated and labelled with the
+detected language. Measured on 304 English and 768 Spanish/French/Portuguese
+Google News headlines: the unconstrained detector misread 27 English headlines
+(fighter names read as Tagalog, Slovenian, Dutch), so detection is limited to
+en/es/fr/pt/it/de/uk/ru — then 0 English headlines were misread and 22 foreign
+ones missed, nearly all bare names or English text. Cyrillic is never flagged:
+short Ukrainian reads as Russian, and the group reads Ukrainian. A translation
+that only echoes the headline back drops the label. Rejected: asking Gemini to
+translate every headline and return English unchanged — a free-tier call per
+bullet, and the model decides whether a label is true. `eld/small` over
+`medium`: same accuracy, ~50 MB less inside a 512 MiB job.
+
 A resent row whose `edition` is null predates the edition column. Its language
 is genuinely unknown, so it posts as filed — guessing would be worse than
 plain, because a mislabelled "(translated from …)" claims a provenance that

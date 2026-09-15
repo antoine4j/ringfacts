@@ -241,7 +241,7 @@ exists. It becomes eight named stages:
 | `classifyItem` | Per item: nearest neighbour → dup gate → body → matcher → one named outcome |
 | `recordOutcome` | Every database write for one item |
 | `assembleMessages` | Sort outcomes into ceremonies / rumors / digest / tangential, fold in resends |
-| `translateForeignHeadlines` | The Gemini pass, digest bullets only |
+| `translateForeignHeadlines` | Read each headline's language, then the Gemini pass, digest bullets only |
 | `deliver` | Send the three message types; mark rows unposted if a send fails |
 
 `classifyItem` is the largest and carries its own helpers — `checkDuplicateGate`,

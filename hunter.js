@@ -19,6 +19,7 @@ import { openDb } from "./lib/db.js";
 import * as realStore from "./lib/db.js";
 import { embedTexts, EMBEDDING_MODEL } from "./lib/embeddings.js";
 import { translateToEnglish } from "./lib/translate.js";
+import { foreignHeadlineLanguage } from "./lib/language.js";
 import { matchItem } from "./lib/matcher.js";
 import { isOfficialSource } from "./lib/sources.js";
 import { OUTLETS, fetchOutletItems, matchesSubject } from "./lib/feeds.js";
@@ -997,9 +998,20 @@ function cleanTitle(item) {
 async function translateForeignHeadlines(deps, digestItems) {
   for (const item of digestItems) {
     if (item.resent && !item.edition) continue;
-    if (GROUP_LANGUAGES.has(item.edition)) continue;
+    // The edition names the feed that found the article, not the language it
+    // is written in — Google's English edition carries Spanish articles too.
+    // So a group-language edition still gets its headline read.
+    const headline = cleanTitle(item);
+    const language = GROUP_LANGUAGES.has(item.edition) ? foreignHeadlineLanguage(headline) : item.edition;
+    if (!language) continue;
     try {
-      item.displayTitle = await deps.translate(cleanTitle(item));
+      const translated = await deps.translate(headline);
+      // An echo is not a translation: a misread English headline must not
+      // wear a "(translated from …)" label it never earned.
+      if (translated && translated.trim().toLowerCase() !== headline.trim().toLowerCase()) {
+        item.displayTitle = translated;
+        item.translatedFrom = language;
+      }
     } catch (err) {
       console.warn(`translate failed for "${item.title.slice(0, 40)}":`, err.message);
     }
@@ -1029,7 +1041,7 @@ function hoursAgo(date) {
  */
 export function digestLine(item) {
   const title = item.displayTitle ?? cleanTitle(item);
-  const label = item.displayTitle ? ` (translated from ${item.edition})` : "";
+  const label = item.displayTitle ? ` (translated from ${item.translatedFrom ?? item.edition})` : "";
   return `• ${escapeHtml(title)} — ${anchor(articleUrl(item), item.source)}${label}, ${hoursAgo(item.publishedAt)}h ago`;
 }
 
