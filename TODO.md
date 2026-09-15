@@ -372,6 +372,22 @@ names the goal it moves.
    analysts. The last level may not earn a post on its own. Once ruled,
    the matcher's `subject_role` gets a sibling field (`speaker_level`) and
    the bucket rules in goals.md say which levels post. Not decided.
+3l. **Does URL dedup miss the same page under a dressed-up address?** (G3) —
+   found 2026-09-14 while fixing the grader's same-page marks (branch
+   measure-story-matching, `grader/twins.mjs`). In the 2026-09-10 snapshot, 15
+   pairs of stored articles in the same story are one page under two
+   addresses: 12 differ only by a trailing slash (boxingnews.com, e.g.
+   `/news/topuria-manager-blasts-abdelaziz-nurmagomedov` with and without `/`),
+   2 by `utm_*` tracking parameters (bjpenn.com RSS), 1 by a `?ref=` referral
+   tag (sherdog.com). Both copies were stored, which suggests the run's "drop
+   anything already seen, by URL or resolved URL" step compares addresses
+   exactly. To do: read that step (hunter.js "held as url dup", lib/db.js) and
+   confirm; count normalized-address twins in the production archive, and how
+   many were posted (SELECTs only); if real, an additive normalization with
+   tests, measured, not deployed. The grader's `addressKey()` is a reference
+   (strip trailing slash, `utm_*`/`ref`/`fbclid`/`gclid`, fragment; keep
+   page-selecting parameters), but the pipeline must not import the grader.
+   Not checked.
 4. **Active verification via web search** (G4, and G2's stale-event clause) —
    concept discussed 2026-09-03/04, no design yet. On a new fight claim, search
    for it and sort results by domain trust: official domain confirms,
