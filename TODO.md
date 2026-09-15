@@ -388,6 +388,21 @@ names the goal it moves.
    (strip trailing slash, `utm_*`/`ref`/`fbclid`/`gclid`, fragment; keep
    page-selecting parameters), but the pipeline must not import the grader.
    Not checked.
+3m. **A follow level per fighter, applied in code** (G2) — *Anton, 2026-09-14,
+   grading S2 (Masvidal: Amosov a "nightmare" for Makhachev): worth sending
+   for him because Amosov is from Ukraine, as he and his group are — "I'd like
+   … to be able to grade neutrally, but then … a setting that could ratchet up
+   importance … if it's Amosov or Donchenko, then we're going to send a little
+   more news … and could be not a LLM decision."* Grading stays neutral: the
+   grader's "worth sending?" now asks for the news as if about any watched
+   fighter, and his own pull goes in "personal interest". The preference
+   becomes a per-fighter setting in the watchlist (e.g. a close-follow level
+   for Amosov and Donchenko) that the posting decision reads — pure code, the
+   same place as postOutcome() — lowering the bar so a borderline story about
+   a close-follow fighter still posts. Measure before building: apply the rule
+   to his neutral grading plus personal interest and count the extra posts per
+   fighter. Sibling of 3j (who is speaking) — both are levels the code applies
+   after the matcher classifies. Not built.
 4. **Active verification via web search** (G4, and G2's stale-event clause) —
    concept discussed 2026-09-03/04, no design yet. On a new fight claim, search
    for it and sort results by domain trust: official domain confirms,
