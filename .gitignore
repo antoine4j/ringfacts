@@ -18,3 +18,22 @@ tmp/
 
 # Bench run records: local artifacts, one JSON per run (bench/run.js)
 bench/runs/
+
+# Experiment artifacts (experiments/<date>-<name>/). What is tracked is the
+# record and the machinery: the findings, the exact prompt each pass ran with,
+# and the scripts. What is not is everything derivable from those — and the
+# sampled article bodies, which are other people's copyrighted text and do not
+# belong in a public repository. A pull script plus a frozen sample id list is
+# the reproducible part; the corpus itself stays local.
+experiments/*/raw/
+experiments/*/data/
+experiments/*/spotcheck/
+experiments/*/results-p*.json
+experiments/*/REPORT.html
+experiments/*/__pycache__/
+experiments/*/*.bak
+# questions.json is whatever the builder last wrote; the per-pass snapshots
+# (questions-pN.json) are the record. probe.mjs was a one-question schema check
+# against a scratch database, the same class of throwaway as tmp/ above.
+experiments/*/questions.json
+experiments/*/probe.mjs
