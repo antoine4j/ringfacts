@@ -373,6 +373,21 @@ names the goal it moves.
    the matcher's `subject_role` gets a sibling field (`speaker_level`) and
    the bucket rules in goals.md say which levels post. Not decided.
 3l. **Does URL dedup miss the same page under a dressed-up address?** (G3) —
+   **CONFIRMED with a live pair, 2026-09-18.** Items **#773 and #790** are one
+   Sport.ua article, id `904629`, fetched twice:
+
+       https://sport.ua/uk/news/904629-donchenko-peremig-soriano-…
+       https://sport.ua/uk/amp/news/904629-donchenko-peremig-soriano-…
+
+   The second is the **AMP edition** — same page, `/amp/` inserted in the path.
+   Both arrived via Google News with different `rss/articles/` wrappers, so the
+   raw URLs never matched and neither did the resolved ones. Worse for any
+   body-based fallback: the AMP copy carries **3,196 characters against 10,000**,
+   so the two are not even textually identical. Found while spot-checking the
+   role-questions experiment, where both were classified separately and both
+   would have been sent. A canonicalisation rule that strips `/amp/` (and
+   `?amp`, `.amp`, `/amp` suffixes) would have caught this one.
+   —
    found 2026-09-14 while fixing the grader's same-page marks (branch
    measure-story-matching, `grader/twins.mjs`). In the 2026-09-10 snapshot, 15
    pairs of stored articles in the same story are one page under two
