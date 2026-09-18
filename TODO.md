@@ -418,6 +418,50 @@ names the goal it moves.
    to his neutral grading plus personal interest and count the extra posts per
    fighter. Sibling of 3j (who is speaking) — both are levels the code applies
    after the matcher classifies. Not built.
+3n. **Standing is not access — and it may need its own question set** (G2) —
+   *Anton, 2026-09-18, on the speaker ruling: "We should mark it a future
+   setting perhaps, fine for now. This seems like it will need a mode
+   differentiated questions set."* **Marked, not built. The 3j/3m rule as
+   shipped is fine to run on.**
+
+   **The crack.** 3j ranks speakers by *standing* — who are you to judge him.
+   Measured 2026-09-18 in the role-questions experiment: that is only half of
+   what the ranking is actually doing. Two articles the speaker filter drops:
+
+   - *Merab: "Topuria está bien y con una actitud muy positiva"* — an update on
+     his recovery
+   - *Tsarukyan picks surprising name for Topuria's next opponent*
+
+   Merab is `another_fighter` by role and so scores near the bottom, but he had
+   **been to see Topuria**. The news is his firsthand knowledge of the man's
+   condition, which has nothing to do with his standing to judge him. A Fable
+   reviewer reached the same point unprompted and put it best: *"I bucketed on
+   what he knows, not what he is."*
+
+   So the speaker question is two questions wearing one coat — **standing** (who
+   are you to judge him) and **access** (do you actually know something). Asking
+   only the first mis-drops exactly the articles where a low-standing speaker has
+   real information, which is a small pile but a valuable one.
+
+   **The mode-differentiated set.** A single fixed question set has to serve
+   every article, so it asks each question at the blandest useful altitude. The
+   alternative is a cheap first pass over everything plus a second, *different*
+   set fired only at articles that need it — here, "does this speaker have
+   firsthand access?" asked only where standing is low but something substantial
+   is being said. **Cost makes this practical rather than theoretical:** JEV
+   measured at **$0.04 per million input tokens** and **0.22 s median latency**,
+   so a second pass over a few dozen articles is rounding error. The whole
+   12-pass experiment over 300 articles cost $0.52.
+
+   **Before building:** the standing/access split has been observed, not
+   measured — nobody has counted how many articles it actually costs us. Count
+   that first over the frozen sample in
+   `experiments/2026-09-17-role-questions/`, where the answers already exist.
+   Sibling of 3j (who is speaking) and 3m (follow level per fighter); all three
+   are levels the code applies after classification, and this one is the first
+   that may need the classifier asked a second question rather than the code
+   reading the first answer differently.
+
 4. **Active verification via web search** (G4, and G2's stale-event clause) —
    concept discussed 2026-09-03/04, no design yet. On a new fight claim, search
    for it and sort results by domain trust: official domain confirms,
