@@ -565,6 +565,44 @@ Below the line, deliberately: nothing at the moment — the GCS backup shipped
   - Observed 2026-08-06: headline embeddings miss same-story-different-angle pairs (~0.70 sim, e.g. two articles on the same Masvidal quote). True fix is claim extraction: canonical claim + source list ordered by published_at (earliest ≈ original; translations/echoes append quietly as "also covered by").
 - [ ] 6. Conversational follow-ups with memory + web search. Decisions parked for build time: Mastra + TypeScript enter here (responder is born TS; hunter stays JS, converts opportunistically); responder is architecturally a separate service — home is an open question: Cloud Run (the dormant `fighterbot` webhook service already exists, one vendor, no function-timeout worries) vs Vercel (nicer TS/Mastra DX, free Hobby tier, but a second vendor holding secrets). Lean: Cloud Run, unless the responder grows a web UI.
 
+7. **A reading app for the group — the other end of every Telegram link** (G2,
+   G3) — *Anton, 2026-09-18: "we will be reporting some stories to Telegram like
+   summarized nicely in substance and link to go expand more and the link will go
+   to the part of the application where we don't have yet … a web part, kind of
+   similar to the grader application that we built, but that will be for users.
+   So anyone from the group can open the link to see more and then browse and
+   slice and dice articles by story, by fighter, by time, by outlet … so that
+   they can go and see what are all articles in that story."* **No design yet.
+   Nothing built.**
+
+   What it changes, and why it is worth recording now rather than when it is
+   built: **it moves the cost of a borderline article.** Today every bucket-2
+   decision is a decision to interrupt people, because the chat is the only
+   place an article can exist. With a page behind the link, a marginal item does
+   not have to interrupt anyone — it only has to be *findable*. That reopens
+   questions we have been answering under the wrong constraint, including how
+   fat the digest should be (the role-questions experiment currently composes
+   ~5.6 digest items a day after dedup) and whether tangential mentions need to
+   be dropped at all or merely demoted to the page.
+
+   **Precursor already parked in item 3**: "one link to a public page that
+   aggregates the week's mentions per fighter (a static page on a public host)".
+   This is that idea grown up — per-story rather than per-week, and browsable
+   rather than static. Item 3's version can be retired if this is built.
+
+   **Reuse:** the grader app on branch `measure-story-matching`
+   (`grader/public/`, `grader/export.mjs`) is the same shape — a static page over
+   an exported slice of the archive, no server. It is built for one grader rather
+   than a group, but the export path and the story-grouping are the parts worth
+   lifting.
+
+   **Open before any design:** who may read it (the archive holds every article
+   we ever fetched, not only what was posted); whether it is static-exported or
+   live against the database; whether a story needs a stable public id in the
+   Telegram link; and whether it wants the responder's home (item 6, Cloud Run vs
+   Vercel) — the note there says "lean Cloud Run, **unless the responder grows a
+   web UI**", and this is that unless.
+
 ## Deploy automation
 - [ ] GitHub remote + Actions workflow: push to main → deploy to Cloud Run (spec §16.1). Retires manual `gcloud run deploy`.
 - [ ] **Sandboxed autonomy (parked 2026-08-08, Anton sitting on it):** move the self-improvement routine into an ephemeral sandbox (GitHub Actions cron preferred) with scoped credentials so even a fully poisoned run is harmless. Full spec: docs/sandboxed-autonomy.md. Until then: local scheduled task + manual approvals.
