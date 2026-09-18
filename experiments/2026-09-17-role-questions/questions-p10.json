@@ -1,0 +1,88 @@
+{
+ "role": {
+  "type": "choice",
+  "instructions": "What is the watched fighter in this article? Judge by what the article DOES with him, not by whether his name appears.",
+  "criteria": {
+   "the_subject": "The article is about him. He is the person it reports on.",
+   "one_of_several_subjects": "He shares the article with others - it reports on two or more people and none of them is the single focus.",
+   "the_one_being_talked_about": "Somebody else is the speaker or the actor, and the watched fighter is who their callout, assessment, defence or prediction is ABOUT. The story may be framed around the other person; its new claim is still a verdict on him.",
+   "a_bystander": "The article reports an exchange, argument or event between other people. He is named but is not a party to it and nobody passes judgement on him.",
+   "background": "His past fight, loss or record appears only as context in somebody else's story, and nobody makes a new claim about him. Test: delete every sentence naming him - if the story still stands, he is background. If anyone judges him, defends him, dismisses him, answers him or discusses his future, he is NOT background.",
+   "mentioned_only": "His name appears in a list, a sub-heading or a single passing line, and nothing at all is said about him.",
+   "not_in_the_article_body": "He is not in the article at all - his name is only in a sidebar, a related-links block or site navigation that came in with the text.",
+   "not_in_this_list": "None of the above fits. Choose this only when a fitting answer exists but is not in this list - not when you are merely unsure."
+  }
+ },
+ "whose_judgement": {
+  "type": "choice",
+  "instructions": "Whose judgement of the watched fighter does this article carry? If more than one, pick the one with the most standing to judge him. Note: sharing a gym or a team gives a fighter NO extra standing - a team in this sport is only the club they train at.",
+  "criteria": {
+   "himself": "The watched fighter speaking about himself.",
+   "his_camp": "His own coach, trainer, manager, doctor or promoter - the people who work for him. NOT another fighter who trains at the same gym.",
+   "an_opponent_or_their_camp": "A fighter who faces him, has faced him, or is publicly being linked to a fight with him - or that fighter's coach or manager.",
+   "the_champion_or_a_top_authority": "The champion of his division, a leading coach with no stake in him, a doctor, or the promotion and its officials.",
+   "a_pundit_or_commentator": "A broadcaster, commentator, analyst or podcaster who covers the sport but does not compete in it or work for anyone in it - Joe Rogan, a UFC colour commentator, a journalist speaking on air.",
+   "another_fighter": "Any other fighter, however well known - including one from the same gym or team. Training in the same place gives no special standing.",
+   "the_article_author": "The judgement is the writer's own, in their own voice, not quoted from anyone.",
+   "no_one_judges_him": "Nobody, the author included, passes judgement on him. The article only reports facts.",
+   "not_in_this_list": "None of the above fits. Choose this only when a fitting answer exists but is not in this list - not when you are merely unsure."
+  }
+ },
+ "what_is_done": {
+  "type": "choice",
+  "instructions": "What is being done with respect to the watched fighter?",
+  "criteria": {
+   "calling_him_out": "Asking to fight him, challenging him, or demanding him as an opponent.",
+   "assessing_him": "Judging his ability, his game, his career, his chances or his condition - by anyone, including himself.",
+   "defending_him": "Replying on his behalf to an attack or a callout aimed at him.",
+   "steering_him_elsewhere": "Saying he should fight somebody else, or advising him about his division or weight class.",
+   "he_tells_his_own_story": "He recounts his own past or inner life - childhood, family, the war, how a defeat felt, a message to someone close. NOT his view of an upcoming fight, NOT his opinion of another fighter, NOT his plans or predictions. If the text carries no words from him about his own life, do not choose this.",
+   "he_gives_his_view": "He comments on an opponent, another fighter, a fight or the sport. The news is his opinion, not his life and not his own ability.",
+   "covering_his_event": "He is the actor in routine fight-week coverage - a weigh-in, a faceoff, a press conference, a media day. It is reported; nobody judges him.",
+   "naming_him_in_passing": "Mentioning him without saying anything substantial about him.",
+   "nothing_of_the_sort": "None of these happens. Nobody acts on him or speaks about him in any of these ways.",
+   "not_in_this_list": "None of the above fits. Choose this only when a fitting answer exists but is not in this list - not when you are merely unsure."
+  }
+ },
+ "news_kind": {
+  "type": "choice",
+  "instructions": "What kind of news is this about the watched fighter?",
+  "criteria": {
+   "announcement": "A specific fight for him is booked or set - an opponent, event or date is named.",
+   "result": "The outcome of a fight he fought in the last few days.",
+   "injury": "His own new injury, surgery or medical status.",
+   "negotiation": "The promotion or both camps working on a fight for him - an offer, terms, talks.",
+   "quote": "He, or someone notable, says something substantial about him - an opinion, an assessment, a callout, a stated intention.",
+   "prediction": "A forecast about his fight or his path.",
+   "preview": "Written ahead of a fight that is already known - a card preview, a weigh-in, a how-to-watch, a reminder that the fight is coming. The fight is not being announced here; it was announced earlier.",
+   "other_career_fact": "A career fact fitting nothing else - a contract, a camp change, a ranking move.",
+   "lifestyle": "Personal life, not career.",
+   "no_news_about_him": "Nothing has happened to him and nothing is forecast about him.",
+   "not_in_this_list": "None of the above fits. Choose this only when a fitting answer exists but is not in this list - not when you are merely unsure."
+  }
+ },
+ "sourcing": {
+  "type": "choice",
+  "instructions": "How firmly is the NEW claim this article makes about the watched fighter established? Judge the news this article itself carries, not background facts it assumes or events it merely mentions in passing.",
+  "criteria": {
+   "official": "The promotion, or his own camp, has announced it - and that announcement is what this article is reporting.",
+   "reported": "An outlet states it as settled fact in its own voice, with no official announcement behind it.",
+   "rumored": "Hedged - in talks, targeted, expected, set to, sources say, a report that he may.",
+   "only_a_quote_no_event": "Nothing has happened to him. What this article carries is that somebody said something - an opinion, a prediction, a callout, a challenge. The remark itself may be perfectly well sourced; there is simply no event here to rate.",
+   "no_factual_claim": "Not even a remark. The article is the writer's own analysis, ranking, preview or retrospective, and carries no new claim about him.",
+   "not_in_this_list": "None of the above fits. Choose this only when a fitting answer exists but is not in this list - not when you are merely unsure."
+  }
+ },
+ "novelty": {
+  "type": "choice",
+  "instructions": "Does this article carry information about the watched fighter that somebody who follows him closely would not already have? Judge only what is new here, not whether the article is well written or important.",
+  "criteria": {
+   "new_and_substantial": "It reports something about him that was not known before - a new fact, a fresh quote, a development, a stated plan.",
+   "small_new_detail": "Something genuinely new but minor - he made weight, a training video surfaced, a start time was confirmed.",
+   "restates_known_facts": "Everything it says about him was already known. It recaps a fight already reported, a booking already announced, or his record. The writing often gives it away - 'recall that', 'as reported earlier', a result written up days later as retrospect.",
+   "filler_no_information": "It is about him but tells a follower nothing - padding, generic praise, a stub, a headline with no substance behind it.",
+   "nothing_about_him": "It carries no information about him at all.",
+   "not_in_this_list": "None of the above fits. Choose this only when a fitting answer exists but is not in this list - not when you are merely unsure."
+  }
+ }
+}

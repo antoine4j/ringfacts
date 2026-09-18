@@ -1,0 +1,3302 @@
+{
+ "1": {
+  "bucket": 2,
+  "why": "assessing_him by another_fighter",
+  "per_order": [
+   2,
+   2,
+   2
+  ],
+  "stable": true,
+  "min_agree": 3
+ },
+ "2": {
+  "bucket": 2,
+  "why": "assessing_him by another_fighter",
+  "per_order": [
+   2,
+   2,
+   2
+  ],
+  "stable": true,
+  "min_agree": 3
+ },
+ "3": {
+  "bucket": 3,
+  "why": "naming_him_in_passing",
+  "per_order": [
+   3,
+   3,
+   3
+  ],
+  "stable": true,
+  "min_agree": 3
+ },
+ "4": {
+  "bucket": 2,
+  "why": "assessing_him by another_fighter",
+  "per_order": [
+   2,
+   2,
+   2
+  ],
+  "stable": true,
+  "min_agree": 3
+ },
+ "6": {
+  "bucket": 3,
+  "why": "he is only backdrop",
+  "per_order": [
+   3,
+   3,
+   3
+  ],
+  "stable": true,
+  "min_agree": 2
+ },
+ "10": {
+  "bucket": 3,
+  "why": "he is only backdrop",
+  "per_order": [
+   2,
+   3,
+   3
+  ],
+  "stable": false,
+  "min_agree": 2
+ },
+ "13": {
+  "bucket": 2,
+  "why": "assessing_him by another_fighter",
+  "per_order": [
+   2,
+   2,
+   2
+  ],
+  "stable": true,
+  "min_agree": 3
+ },
+ "14": {
+  "bucket": 2,
+  "why": "assessing_him by another_fighter",
+  "per_order": [
+   2,
+   2,
+   2
+  ],
+  "stable": true,
+  "min_agree": 3
+ },
+ "16": {
+  "bucket": 1,
+  "why": "announcement + reported",
+  "per_order": [
+   1,
+   1,
+   1
+  ],
+  "stable": true,
+  "min_agree": 3
+ },
+ "17": {
+  "bucket": 1,
+  "why": "announcement + reported",
+  "per_order": [
+   1,
+   1,
+   1
+  ],
+  "stable": true,
+  "min_agree": 3
+ },
+ "18": {
+  "bucket": 1,
+  "why": "announcement + reported",
+  "per_order": [
+   1,
+   1,
+   1
+  ],
+  "stable": true,
+  "min_agree": 3
+ },
+ "25": {
+  "bucket": 3,
+  "why": "nothing_of_the_sort",
+  "per_order": [
+   3,
+   3,
+   3
+  ],
+  "stable": true,
+  "min_agree": 3
+ },
+ "33": {
+  "bucket": 2,
+  "why": "assessing_him by another_fighter",
+  "per_order": [
+   2,
+   2,
+   2
+  ],
+  "stable": true,
+  "min_agree": 3
+ },
+ "34": {
+  "bucket": 2,
+  "why": "calling_him_out by an_opponent_or_their_camp",
+  "per_order": [
+   2,
+   3,
+   2
+  ],
+  "stable": false,
+  "min_agree": 2
+ },
+ "38": {
+  "bucket": 3,
+  "why": "he is only backdrop",
+  "per_order": [
+   3,
+   3,
+   3
+  ],
+  "stable": true,
+  "min_agree": 2
+ },
+ "44": {
+  "bucket": 1,
+  "why": "result + reported",
+  "per_order": [
+   2,
+   1,
+   1
+  ],
+  "stable": false,
+  "min_agree": 2
+ },
+ "51": {
+  "bucket": 2,
+  "why": "defending_him by his_camp",
+  "per_order": [
+   2,
+   2,
+   2
+  ],
+  "stable": true,
+  "min_agree": 3
+ },
+ "55": {
+  "bucket": 3,
+  "why": "he is only backdrop",
+  "per_order": [
+   3,
+   2,
+   3
+  ],
+  "stable": false,
+  "min_agree": 2
+ },
+ "60": {
+  "bucket": 3,
+  "why": "naming_him_in_passing",
+  "per_order": [
+   3,
+   3,
+   3
+  ],
+  "stable": true,
+  "min_agree": 3
+ },
+ "65": {
+  "bucket": 3,
+  "why": "he is only backdrop",
+  "per_order": [
+   3,
+   3,
+   3
+  ],
+  "stable": true,
+  "min_agree": 3
+ },
+ "71": {
+  "bucket": 2,
+  "why": "defending_him by his_camp",
+  "per_order": [
+   2,
+   2,
+   2
+  ],
+  "stable": true,
+  "min_agree": 3
+ },
+ "78": {
+  "bucket": 3,
+  "why": "he is only backdrop",
+  "per_order": [
+   3,
+   3,
+   3
+  ],
+  "stable": true,
+  "min_agree": 3
+ },
+ "84": {
+  "bucket": 2,
+  "why": "defending_him by his_camp",
+  "per_order": [
+   2,
+   2,
+   2
+  ],
+  "stable": true,
+  "min_agree": 3
+ },
+ "90": {
+  "bucket": 2,
+  "why": "defending_him by his_camp",
+  "per_order": [
+   3,
+   2,
+   2
+  ],
+  "stable": false,
+  "min_agree": 2
+ },
+ "96": {
+  "bucket": 2,
+  "why": "assessing_him by another_fighter",
+  "per_order": [
+   2,
+   2,
+   2
+  ],
+  "stable": true,
+  "min_agree": 3
+ },
+ "97": {
+  "bucket": 2,
+  "why": "defending_him by an_opponent_or_their_camp",
+  "per_order": [
+   2,
+   2,
+   2
+  ],
+  "stable": true,
+  "min_agree": 2
+ },
+ "102": {
+  "bucket": 2,
+  "why": "defending_him by an_opponent_or_their_camp",
+  "per_order": [
+   2,
+   2,
+   2
+  ],
+  "stable": true,
+  "min_agree": 2
+ },
+ "115": {
+  "bucket": 3,
+  "why": "naming_him_in_passing",
+  "per_order": [
+   3,
+   3,
+   3
+  ],
+  "stable": true,
+  "min_agree": 2
+ },
+ "119": {
+  "bucket": 2,
+  "why": "defending_him by his_camp",
+  "per_order": [
+   2,
+   2,
+   2
+  ],
+  "stable": true,
+  "min_agree": 2
+ },
+ "125": {
+  "bucket": 3,
+  "why": "naming_him_in_passing",
+  "per_order": [
+   3,
+   3,
+   3
+  ],
+  "stable": true,
+  "min_agree": 2
+ },
+ "129": {
+  "bucket": 2,
+  "why": "calling_him_out by his_camp",
+  "per_order": [
+   2,
+   2,
+   2
+  ],
+  "stable": true,
+  "min_agree": 2
+ },
+ "134": {
+  "bucket": 3,
+  "why": "naming_him_in_passing",
+  "per_order": [
+   3,
+   3,
+   3
+  ],
+  "stable": true,
+  "min_agree": 3
+ },
+ "138": {
+  "bucket": 3,
+  "why": "he is only backdrop",
+  "per_order": [
+   3,
+   3,
+   3
+  ],
+  "stable": true,
+  "min_agree": 3
+ },
+ "144": {
+  "bucket": 2,
+  "why": "assessing_him by the_champion_or_a_top_authority",
+  "per_order": [
+   2,
+   2,
+   2
+  ],
+  "stable": true,
+  "min_agree": 3
+ },
+ "148": {
+  "bucket": 2,
+  "why": "assessing_him by an_opponent_or_their_camp",
+  "per_order": [
+   2,
+   2,
+   2
+  ],
+  "stable": true,
+  "min_agree": 2
+ },
+ "152": {
+  "bucket": 2,
+  "why": "assessing_him by his_camp",
+  "per_order": [
+   2,
+   2,
+   2
+  ],
+  "stable": true,
+  "min_agree": 2
+ },
+ "158": {
+  "bucket": 2,
+  "why": "assessing_him by the_article_author",
+  "per_order": [
+   2,
+   2,
+   2
+  ],
+  "stable": true,
+  "min_agree": 3
+ },
+ "166": {
+  "bucket": 3,
+  "why": "he is only backdrop",
+  "per_order": [
+   3,
+   3,
+   3
+  ],
+  "stable": true,
+  "min_agree": 3
+ },
+ "170": {
+  "bucket": 3,
+  "why": "he is only backdrop",
+  "per_order": [
+   3,
+   3,
+   3
+  ],
+  "stable": true,
+  "min_agree": 3
+ },
+ "174": {
+  "bucket": 3,
+  "why": "he is only backdrop",
+  "per_order": [
+   3,
+   3,
+   3
+  ],
+  "stable": true,
+  "min_agree": 3
+ },
+ "181": {
+  "bucket": 3,
+  "why": "he is only backdrop",
+  "per_order": [
+   3,
+   3,
+   3
+  ],
+  "stable": true,
+  "min_agree": 2
+ },
+ "186": {
+  "bucket": 3,
+  "why": "he is only backdrop",
+  "per_order": [
+   3,
+   3,
+   3
+  ],
+  "stable": true,
+  "min_agree": 3
+ },
+ "187": {
+  "bucket": 3,
+  "why": "he is only backdrop",
+  "per_order": [
+   3,
+   3,
+   3
+  ],
+  "stable": true,
+  "min_agree": 3
+ },
+ "193": {
+  "bucket": 2,
+  "why": "defending_him by an_opponent_or_their_camp",
+  "per_order": [
+   2,
+   2,
+   2
+  ],
+  "stable": true,
+  "min_agree": 2
+ },
+ "200": {
+  "bucket": 3,
+  "why": "he is only backdrop",
+  "per_order": [
+   3,
+   3,
+   3
+  ],
+  "stable": true,
+  "min_agree": 3
+ },
+ "203": {
+  "bucket": 2,
+  "why": "he_tells_his_own_story by himself",
+  "per_order": [
+   2,
+   2,
+   2
+  ],
+  "stable": true,
+  "min_agree": 3
+ },
+ "204": {
+  "bucket": 2,
+  "why": "assessing_him by the_article_author",
+  "per_order": [
+   2,
+   3,
+   2
+  ],
+  "stable": false,
+  "min_agree": 2
+ },
+ "207": {
+  "bucket": 3,
+  "why": "he is only backdrop",
+  "per_order": [
+   3,
+   3,
+   3
+  ],
+  "stable": true,
+  "min_agree": 2
+ },
+ "208": {
+  "bucket": 2,
+  "why": "he_tells_his_own_story by himself",
+  "per_order": [
+   2,
+   2,
+   2
+  ],
+  "stable": true,
+  "min_agree": 2
+ },
+ "214": {
+  "bucket": 3,
+  "why": "he is only backdrop",
+  "per_order": [
+   3,
+   3,
+   3
+  ],
+  "stable": true,
+  "min_agree": 2
+ },
+ "224": {
+  "bucket": 3,
+  "why": "he is only backdrop",
+  "per_order": [
+   3,
+   3,
+   3
+  ],
+  "stable": true,
+  "min_agree": 2
+ },
+ "228": {
+  "bucket": 3,
+  "why": "he is only backdrop",
+  "per_order": [
+   3,
+   3,
+   3
+  ],
+  "stable": true,
+  "min_agree": 2
+ },
+ "230": {
+  "bucket": 3,
+  "why": "he is only backdrop",
+  "per_order": [
+   2,
+   3,
+   3
+  ],
+  "stable": false,
+  "min_agree": 2
+ },
+ "233": {
+  "bucket": 2,
+  "why": "assessing_him by the_article_author",
+  "per_order": [
+   2,
+   2,
+   2
+  ],
+  "stable": true,
+  "min_agree": 3
+ },
+ "238": {
+  "bucket": 3,
+  "why": "he is only backdrop",
+  "per_order": [
+   3,
+   3,
+   3
+  ],
+  "stable": true,
+  "min_agree": 2
+ },
+ "244": {
+  "bucket": 3,
+  "why": "he is only backdrop",
+  "per_order": [
+   2,
+   3,
+   3
+  ],
+  "stable": false,
+  "min_agree": 2
+ },
+ "247": {
+  "bucket": 3,
+  "why": "he is only backdrop",
+  "per_order": [
+   2,
+   3,
+   3
+  ],
+  "stable": false,
+  "min_agree": 2
+ },
+ "249": {
+  "bucket": 3,
+  "why": "he is only backdrop",
+  "per_order": [
+   3,
+   3,
+   3
+  ],
+  "stable": true,
+  "min_agree": 2
+ },
+ "256": {
+  "bucket": 3,
+  "why": "he is only backdrop",
+  "per_order": [
+   3,
+   3,
+   3
+  ],
+  "stable": true,
+  "min_agree": 2
+ },
+ "261": {
+  "bucket": 3,
+  "why": "he is only backdrop",
+  "per_order": [
+   3,
+   3,
+   3
+  ],
+  "stable": true,
+  "min_agree": 2
+ },
+ "269": {
+  "bucket": 3,
+  "why": "he is only backdrop",
+  "per_order": [
+   3,
+   3,
+   3
+  ],
+  "stable": true,
+  "min_agree": 2
+ },
+ "273": {
+  "bucket": 3,
+  "why": "he is only backdrop",
+  "per_order": [
+   3,
+   3,
+   3
+  ],
+  "stable": true,
+  "min_agree": 3
+ },
+ "279": {
+  "bucket": 2,
+  "why": "assessing_him by his_camp",
+  "per_order": [
+   2,
+   2,
+   2
+  ],
+  "stable": true,
+  "min_agree": 3
+ },
+ "283": {
+  "bucket": 3,
+  "why": "he is only backdrop",
+  "per_order": [
+   3,
+   3,
+   3
+  ],
+  "stable": true,
+  "min_agree": 3
+ },
+ "287": {
+  "bucket": 2,
+  "why": "steering_him_elsewhere by an_opponent_or_their_camp",
+  "per_order": [
+   2,
+   2,
+   2
+  ],
+  "stable": true,
+  "min_agree": 3
+ },
+ "291": {
+  "bucket": 2,
+  "why": "he_tells_his_own_story by himself",
+  "per_order": [
+   2,
+   2,
+   2
+  ],
+  "stable": true,
+  "min_agree": 3
+ },
+ "297": {
+  "bucket": 3,
+  "why": "naming_him_in_passing",
+  "per_order": [
+   3,
+   3,
+   3
+  ],
+  "stable": true,
+  "min_agree": 2
+ },
+ "298": {
+  "bucket": 2,
+  "why": "he_tells_his_own_story by himself",
+  "per_order": [
+   2,
+   2,
+   2
+  ],
+  "stable": true,
+  "min_agree": 3
+ },
+ "300": {
+  "bucket": 2,
+  "why": "he_tells_his_own_story by himself",
+  "per_order": [
+   2,
+   2,
+   2
+  ],
+  "stable": true,
+  "min_agree": 3
+ },
+ "301": {
+  "bucket": 2,
+  "why": "he_tells_his_own_story by himself",
+  "per_order": [
+   2,
+   2,
+   2
+  ],
+  "stable": true,
+  "min_agree": 3
+ },
+ "305": {
+  "bucket": 2,
+  "why": "he_tells_his_own_story by his_camp",
+  "per_order": [
+   2,
+   1,
+   2
+  ],
+  "stable": false,
+  "min_agree": 2
+ },
+ "311": {
+  "bucket": 2,
+  "why": "assessing_him by an_opponent_or_their_camp",
+  "per_order": [
+   2,
+   2,
+   2
+  ],
+  "stable": true,
+  "min_agree": 3
+ },
+ "316": {
+  "bucket": 3,
+  "why": "he is only backdrop",
+  "per_order": [
+   3,
+   3,
+   3
+  ],
+  "stable": true,
+  "min_agree": 2
+ },
+ "320": {
+  "bucket": 2,
+  "why": "he_tells_his_own_story by himself",
+  "per_order": [
+   1,
+   2,
+   2
+  ],
+  "stable": false,
+  "min_agree": 2
+ },
+ "321": {
+  "bucket": 2,
+  "why": "he_tells_his_own_story by himself",
+  "per_order": [
+   2,
+   2,
+   1
+  ],
+  "stable": false,
+  "min_agree": 2
+ },
+ "322": {
+  "bucket": 2,
+  "why": "he_tells_his_own_story by himself",
+  "per_order": [
+   2,
+   2,
+   2
+  ],
+  "stable": true,
+  "min_agree": 3
+ },
+ "323": {
+  "bucket": 3,
+  "why": "naming_him_in_passing",
+  "per_order": [
+   3,
+   3,
+   3
+  ],
+  "stable": true,
+  "min_agree": 2
+ },
+ "327": {
+  "bucket": 2,
+  "why": "assessing_him by another_fighter",
+  "per_order": [
+   2,
+   2,
+   2
+  ],
+  "stable": true,
+  "min_agree": 3
+ },
+ "335": {
+  "bucket": 3,
+  "why": "naming_him_in_passing",
+  "per_order": [
+   3,
+   3,
+   3
+  ],
+  "stable": true,
+  "min_agree": 2
+ },
+ "339": {
+  "bucket": 2,
+  "why": "assessing_him by an_opponent_or_their_camp",
+  "per_order": [
+   2,
+   2,
+   2
+  ],
+  "stable": true,
+  "min_agree": 3
+ },
+ "342": {
+  "bucket": 2,
+  "why": "he_tells_his_own_story by no_one_judges_him",
+  "per_order": [
+   2,
+   2,
+   2
+  ],
+  "stable": true,
+  "min_agree": 3
+ },
+ "349": {
+  "bucket": 2,
+  "why": "assessing_him by another_fighter",
+  "per_order": [
+   2,
+   2,
+   2
+  ],
+  "stable": true,
+  "min_agree": 3
+ },
+ "353": {
+  "bucket": 3,
+  "why": "he is only backdrop",
+  "per_order": [
+   3,
+   3,
+   3
+  ],
+  "stable": true,
+  "min_agree": 1
+ },
+ "361": {
+  "bucket": 2,
+  "why": "assessing_him by another_fighter",
+  "per_order": [
+   2,
+   2,
+   2
+  ],
+  "stable": true,
+  "min_agree": 2
+ },
+ "368": {
+  "bucket": 2,
+  "why": "assessing_him by another_fighter",
+  "per_order": [
+   2,
+   2,
+   2
+  ],
+  "stable": true,
+  "min_agree": 2
+ },
+ "373": {
+  "bucket": 2,
+  "why": "he_tells_his_own_story by himself",
+  "per_order": [
+   2,
+   2,
+   2
+  ],
+  "stable": true,
+  "min_agree": 3
+ },
+ "380": {
+  "bucket": 2,
+  "why": "he_tells_his_own_story by himself",
+  "per_order": [
+   2,
+   2,
+   2
+  ],
+  "stable": true,
+  "min_agree": 2
+ },
+ "385": {
+  "bucket": 2,
+  "why": "defending_him by an_opponent_or_their_camp",
+  "per_order": [
+   2,
+   2,
+   2
+  ],
+  "stable": true,
+  "min_agree": 2
+ },
+ "397": {
+  "bucket": 2,
+  "why": "assessing_him by an_opponent_or_their_camp",
+  "per_order": [
+   2,
+   2,
+   2
+  ],
+  "stable": true,
+  "min_agree": 2
+ },
+ "402": {
+  "bucket": 2,
+  "why": "assessing_him by his_camp",
+  "per_order": [
+   2,
+   2,
+   2
+  ],
+  "stable": true,
+  "min_agree": 3
+ },
+ "408": {
+  "bucket": 3,
+  "why": "he is only backdrop",
+  "per_order": [
+   3,
+   3,
+   3
+  ],
+  "stable": true,
+  "min_agree": 3
+ },
+ "412": {
+  "bucket": 2,
+  "why": "assessing_him by his_camp",
+  "per_order": [
+   2,
+   2,
+   2
+  ],
+  "stable": true,
+  "min_agree": 3
+ },
+ "416": {
+  "bucket": 3,
+  "why": "naming_him_in_passing",
+  "per_order": [
+   3,
+   3,
+   3
+  ],
+  "stable": true,
+  "min_agree": 3
+ },
+ "423": {
+  "bucket": 3,
+  "why": "he is only backdrop",
+  "per_order": [
+   3,
+   3,
+   3
+  ],
+  "stable": true,
+  "min_agree": 3
+ },
+ "427": {
+  "bucket": 2,
+  "why": "he_tells_his_own_story by himself",
+  "per_order": [
+   2,
+   2,
+   2
+  ],
+  "stable": true,
+  "min_agree": 2
+ },
+ "431": {
+  "bucket": 3,
+  "why": "he is only backdrop",
+  "per_order": [
+   3,
+   3,
+   3
+  ],
+  "stable": true,
+  "min_agree": 3
+ },
+ "435": {
+  "bucket": 3,
+  "why": "he is only backdrop",
+  "per_order": [
+   3,
+   3,
+   3
+  ],
+  "stable": true,
+  "min_agree": 2
+ },
+ "442": {
+  "bucket": 3,
+  "why": "he is only backdrop",
+  "per_order": [
+   3,
+   3,
+   3
+  ],
+  "stable": true,
+  "min_agree": 3
+ },
+ "447": {
+  "bucket": 3,
+  "why": "naming_him_in_passing",
+  "per_order": [
+   3,
+   3,
+   3
+  ],
+  "stable": true,
+  "min_agree": 2
+ },
+ "453": {
+  "bucket": 3,
+  "why": "he is only backdrop",
+  "per_order": [
+   3,
+   3,
+   3
+  ],
+  "stable": true,
+  "min_agree": 2
+ },
+ "457": {
+  "bucket": 3,
+  "why": "naming_him_in_passing",
+  "per_order": [
+   3,
+   3,
+   3
+  ],
+  "stable": true,
+  "min_agree": 2
+ },
+ "462": {
+  "bucket": 3,
+  "why": "he is only backdrop",
+  "per_order": [
+   3,
+   3,
+   3
+  ],
+  "stable": true,
+  "min_agree": 2
+ },
+ "467": {
+  "bucket": 3,
+  "why": "he is only backdrop",
+  "per_order": [
+   3,
+   3,
+   3
+  ],
+  "stable": true,
+  "min_agree": 3
+ },
+ "476": {
+  "bucket": 3,
+  "why": "he is only backdrop",
+  "per_order": [
+   3,
+   3,
+   3
+  ],
+  "stable": true,
+  "min_agree": 1
+ },
+ "484": {
+  "bucket": 3,
+  "why": "he is only backdrop",
+  "per_order": [
+   3,
+   3,
+   3
+  ],
+  "stable": true,
+  "min_agree": 3
+ },
+ "490": {
+  "bucket": 1,
+  "why": "announcement + official",
+  "per_order": [
+   1,
+   1,
+   1
+  ],
+  "stable": true,
+  "min_agree": 3
+ },
+ "491": {
+  "bucket": 1,
+  "why": "announcement + official",
+  "per_order": [
+   1,
+   1,
+   1
+  ],
+  "stable": true,
+  "min_agree": 3
+ },
+ "492": {
+  "bucket": 3,
+  "why": "he is only backdrop",
+  "per_order": [
+   3,
+   3,
+   3
+  ],
+  "stable": true,
+  "min_agree": 3
+ },
+ "494": {
+  "bucket": 1,
+  "why": "announcement + official",
+  "per_order": [
+   1,
+   1,
+   1
+  ],
+  "stable": true,
+  "min_agree": 3
+ },
+ "497": {
+  "bucket": 2,
+  "why": "he_tells_his_own_story by himself",
+  "per_order": [
+   2,
+   2,
+   2
+  ],
+  "stable": true,
+  "min_agree": 3
+ },
+ "500": {
+  "bucket": 3,
+  "why": "naming_him_in_passing",
+  "per_order": [
+   3,
+   3,
+   3
+  ],
+  "stable": true,
+  "min_agree": 1
+ },
+ "503": {
+  "bucket": 3,
+  "why": "he is only backdrop",
+  "per_order": [
+   3,
+   3,
+   3
+  ],
+  "stable": true,
+  "min_agree": 3
+ },
+ "508": {
+  "bucket": 2,
+  "why": "assessing_him by the_article_author",
+  "per_order": [
+   2,
+   2,
+   2
+  ],
+  "stable": true,
+  "min_agree": 3
+ },
+ "510": {
+  "bucket": 1,
+  "why": "announcement + official",
+  "per_order": [
+   1,
+   1,
+   1
+  ],
+  "stable": true,
+  "min_agree": 3
+ },
+ "516": {
+  "bucket": 2,
+  "why": "calling_him_out by another_fighter",
+  "per_order": [
+   2,
+   2,
+   2
+  ],
+  "stable": true,
+  "min_agree": 3
+ },
+ "520": {
+  "bucket": 3,
+  "why": "naming_him_in_passing",
+  "per_order": [
+   3,
+   3,
+   3
+  ],
+  "stable": true,
+  "min_agree": 3
+ },
+ "521": {
+  "bucket": 2,
+  "why": "he_tells_his_own_story by himself",
+  "per_order": [
+   2,
+   2,
+   2
+  ],
+  "stable": true,
+  "min_agree": 3
+ },
+ "525": {
+  "bucket": 3,
+  "why": "he is only backdrop",
+  "per_order": [
+   3,
+   3,
+   3
+  ],
+  "stable": true,
+  "min_agree": 3
+ },
+ "529": {
+  "bucket": 3,
+  "why": "he is only backdrop",
+  "per_order": [
+   3,
+   3,
+   3
+  ],
+  "stable": true,
+  "min_agree": 2
+ },
+ "532": {
+  "bucket": 3,
+  "why": "he is only backdrop",
+  "per_order": [
+   3,
+   3,
+   3
+  ],
+  "stable": true,
+  "min_agree": 2
+ },
+ "533": {
+  "bucket": 2,
+  "why": "calling_him_out by another_fighter",
+  "per_order": [
+   2,
+   2,
+   2
+  ],
+  "stable": true,
+  "min_agree": 3
+ },
+ "540": {
+  "bucket": 2,
+  "why": "calling_him_out by another_fighter",
+  "per_order": [
+   2,
+   2,
+   2
+  ],
+  "stable": true,
+  "min_agree": 3
+ },
+ "547": {
+  "bucket": 2,
+  "why": "assessing_him by his_camp",
+  "per_order": [
+   2,
+   2,
+   2
+  ],
+  "stable": true,
+  "min_agree": 3
+ },
+ "551": {
+  "bucket": 3,
+  "why": "he is only backdrop",
+  "per_order": [
+   3,
+   3,
+   3
+  ],
+  "stable": true,
+  "min_agree": 2
+ },
+ "555": {
+  "bucket": 2,
+  "why": "assessing_him by the_article_author",
+  "per_order": [
+   2,
+   2,
+   2
+  ],
+  "stable": true,
+  "min_agree": 3
+ },
+ "556": {
+  "bucket": 3,
+  "why": "he is only backdrop",
+  "per_order": [
+   3,
+   3,
+   3
+  ],
+  "stable": true,
+  "min_agree": 2
+ },
+ "560": {
+  "bucket": 3,
+  "why": "he is only backdrop",
+  "per_order": [
+   3,
+   3,
+   3
+  ],
+  "stable": true,
+  "min_agree": 3
+ },
+ "563": {
+  "bucket": 2,
+  "why": "assessing_him by the_article_author",
+  "per_order": [
+   2,
+   2,
+   2
+  ],
+  "stable": true,
+  "min_agree": 3
+ },
+ "565": {
+  "bucket": 3,
+  "why": "he is only backdrop",
+  "per_order": [
+   3,
+   3,
+   3
+  ],
+  "stable": true,
+  "min_agree": 2
+ },
+ "572": {
+  "bucket": 2,
+  "why": "assessing_him by a_pundit_or_commentator",
+  "per_order": [
+   2,
+   2,
+   2
+  ],
+  "stable": true,
+  "min_agree": 2
+ },
+ "576": {
+  "bucket": 3,
+  "why": "he is only backdrop",
+  "per_order": [
+   3,
+   3,
+   3
+  ],
+  "stable": true,
+  "min_agree": 2
+ },
+ "580": {
+  "bucket": 3,
+  "why": "he is only backdrop",
+  "per_order": [
+   3,
+   3,
+   3
+  ],
+  "stable": true,
+  "min_agree": 2
+ },
+ "585": {
+  "bucket": 3,
+  "why": "he is only backdrop",
+  "per_order": [
+   3,
+   3,
+   3
+  ],
+  "stable": true,
+  "min_agree": 2
+ },
+ "588": {
+  "bucket": 3,
+  "why": "he is only backdrop",
+  "per_order": [
+   3,
+   3,
+   3
+  ],
+  "stable": true,
+  "min_agree": 3
+ },
+ "592": {
+  "bucket": 2,
+  "why": "assessing_him by a_pundit_or_commentator",
+  "per_order": [
+   2,
+   2,
+   2
+  ],
+  "stable": true,
+  "min_agree": 2
+ },
+ "594": {
+  "bucket": 2,
+  "why": "assessing_him by the_article_author",
+  "per_order": [
+   2,
+   2,
+   2
+  ],
+  "stable": true,
+  "min_agree": 3
+ },
+ "599": {
+  "bucket": 1,
+  "why": "announcement + reported",
+  "per_order": [
+   2,
+   1,
+   1
+  ],
+  "stable": false,
+  "min_agree": 2
+ },
+ "601": {
+  "bucket": 1,
+  "why": "announcement + official",
+  "per_order": [
+   1,
+   1,
+   1
+  ],
+  "stable": true,
+  "min_agree": 2
+ },
+ "603": {
+  "bucket": 2,
+  "why": "assessing_him by the_article_author",
+  "per_order": [
+   2,
+   2,
+   2
+  ],
+  "stable": true,
+  "min_agree": 3
+ },
+ "605": {
+  "bucket": 1,
+  "why": "announcement + reported",
+  "per_order": [
+   1,
+   1,
+   1
+  ],
+  "stable": true,
+  "min_agree": 3
+ },
+ "606": {
+  "bucket": 2,
+  "why": "assessing_him by another_fighter",
+  "per_order": [
+   2,
+   2,
+   2
+  ],
+  "stable": true,
+  "min_agree": 3
+ },
+ "608": {
+  "bucket": 2,
+  "why": "assessing_him by the_article_author",
+  "per_order": [
+   2,
+   2,
+   2
+  ],
+  "stable": true,
+  "min_agree": 3
+ },
+ "609": {
+  "bucket": 3,
+  "why": "he is only backdrop",
+  "per_order": [
+   3,
+   3,
+   3
+  ],
+  "stable": true,
+  "min_agree": 2
+ },
+ "613": {
+  "bucket": 1,
+  "why": "announcement + official",
+  "per_order": [
+   1,
+   1,
+   1
+  ],
+  "stable": true,
+  "min_agree": 2
+ },
+ "614": {
+  "bucket": 2,
+  "why": "he_tells_his_own_story by himself",
+  "per_order": [
+   2,
+   2,
+   2
+  ],
+  "stable": true,
+  "min_agree": 3
+ },
+ "616": {
+  "bucket": 1,
+  "why": "announcement + official",
+  "per_order": [
+   1,
+   1,
+   1
+  ],
+  "stable": true,
+  "min_agree": 2
+ },
+ "619": {
+  "bucket": 2,
+  "why": "assessing_him by the_article_author",
+  "per_order": [
+   2,
+   2,
+   1
+  ],
+  "stable": false,
+  "min_agree": 2
+ },
+ "620": {
+  "bucket": 2,
+  "why": "he_tells_his_own_story by himself",
+  "per_order": [
+   2,
+   2,
+   2
+  ],
+  "stable": true,
+  "min_agree": 3
+ },
+ "623": {
+  "bucket": 2,
+  "why": "assessing_him by the_article_author",
+  "per_order": [
+   2,
+   2,
+   2
+  ],
+  "stable": true,
+  "min_agree": 3
+ },
+ "625": {
+  "bucket": 1,
+  "why": "announcement + official",
+  "per_order": [
+   1,
+   1,
+   1
+  ],
+  "stable": true,
+  "min_agree": 2
+ },
+ "627": {
+  "bucket": 2,
+  "why": "he_tells_his_own_story by himself",
+  "per_order": [
+   2,
+   2,
+   2
+  ],
+  "stable": true,
+  "min_agree": 3
+ },
+ "632": {
+  "bucket": 2,
+  "why": "he_tells_his_own_story by himself",
+  "per_order": [
+   2,
+   2,
+   2
+  ],
+  "stable": true,
+  "min_agree": 3
+ },
+ "636": {
+  "bucket": 2,
+  "why": "he_tells_his_own_story by himself",
+  "per_order": [
+   2,
+   2,
+   2
+  ],
+  "stable": true,
+  "min_agree": 2
+ },
+ "641": {
+  "bucket": 2,
+  "why": "assessing_him by the_article_author",
+  "per_order": [
+   2,
+   2,
+   2
+  ],
+  "stable": true,
+  "min_agree": 3
+ },
+ "643": {
+  "bucket": 3,
+  "why": "he is only backdrop",
+  "per_order": [
+   3,
+   3,
+   3
+  ],
+  "stable": true,
+  "min_agree": 3
+ },
+ "647": {
+  "bucket": 2,
+  "why": "he_tells_his_own_story by himself",
+  "per_order": [
+   2,
+   2,
+   2
+  ],
+  "stable": true,
+  "min_agree": 3
+ },
+ "651": {
+  "bucket": 2,
+  "why": "he_tells_his_own_story by himself",
+  "per_order": [
+   2,
+   2,
+   2
+  ],
+  "stable": true,
+  "min_agree": 3
+ },
+ "653": {
+  "bucket": 3,
+  "why": "naming_him_in_passing",
+  "per_order": [
+   3,
+   3,
+   3
+  ],
+  "stable": true,
+  "min_agree": 3
+ },
+ "654": {
+  "bucket": 2,
+  "why": "assessing_him by a_pundit_or_commentator",
+  "per_order": [
+   2,
+   2,
+   2
+  ],
+  "stable": true,
+  "min_agree": 3
+ },
+ "655": {
+  "bucket": 2,
+  "why": "assessing_him by no_one_judges_him",
+  "per_order": [
+   2,
+   2,
+   2
+  ],
+  "stable": true,
+  "min_agree": 3
+ },
+ "659": {
+  "bucket": 2,
+  "why": "he_tells_his_own_story by himself",
+  "per_order": [
+   2,
+   2,
+   2
+  ],
+  "stable": true,
+  "min_agree": 3
+ },
+ "666": {
+  "bucket": 2,
+  "why": "he_tells_his_own_story by himself",
+  "per_order": [
+   2,
+   2,
+   2
+  ],
+  "stable": true,
+  "min_agree": 3
+ },
+ "672": {
+  "bucket": 2,
+  "why": "assessing_him by himself",
+  "per_order": [
+   1,
+   2,
+   2
+  ],
+  "stable": false,
+  "min_agree": 2
+ },
+ "673": {
+  "bucket": 2,
+  "why": "assessing_him by a_pundit_or_commentator",
+  "per_order": [
+   2,
+   2,
+   2
+  ],
+  "stable": true,
+  "min_agree": 2
+ },
+ "675": {
+  "bucket": 2,
+  "why": "he_tells_his_own_story by himself",
+  "per_order": [
+   2,
+   2,
+   2
+  ],
+  "stable": true,
+  "min_agree": 2
+ },
+ "681": {
+  "bucket": 2,
+  "why": "assessing_him by a_pundit_or_commentator",
+  "per_order": [
+   2,
+   2,
+   2
+  ],
+  "stable": true,
+  "min_agree": 2
+ },
+ "682": {
+  "bucket": 2,
+  "why": "he_tells_his_own_story by himself",
+  "per_order": [
+   2,
+   2,
+   2
+  ],
+  "stable": true,
+  "min_agree": 2
+ },
+ "683": {
+  "bucket": 1,
+  "why": "result + reported",
+  "per_order": [
+   1,
+   1,
+   1
+  ],
+  "stable": true,
+  "min_agree": 3
+ },
+ "686": {
+  "bucket": 1,
+  "why": "announcement + official",
+  "per_order": [
+   1,
+   1,
+   1
+  ],
+  "stable": true,
+  "min_agree": 2
+ },
+ "687": {
+  "bucket": 1,
+  "why": "announcement + official",
+  "per_order": [
+   1,
+   1,
+   1
+  ],
+  "stable": true,
+  "min_agree": 2
+ },
+ "688": {
+  "bucket": 1,
+  "why": "announcement + official",
+  "per_order": [
+   1,
+   1,
+   1
+  ],
+  "stable": true,
+  "min_agree": 2
+ },
+ "690": {
+  "bucket": 1,
+  "why": "announcement + reported",
+  "per_order": [
+   1,
+   1,
+   1
+  ],
+  "stable": true,
+  "min_agree": 2
+ },
+ "692": {
+  "bucket": 2,
+  "why": "assessing_him by the_article_author",
+  "per_order": [
+   2,
+   2,
+   2
+  ],
+  "stable": true,
+  "min_agree": 3
+ },
+ "693": {
+  "bucket": 2,
+  "why": "he_tells_his_own_story by himself",
+  "per_order": [
+   2,
+   2,
+   2
+  ],
+  "stable": true,
+  "min_agree": 2
+ },
+ "697": {
+  "bucket": 2,
+  "why": "he_tells_his_own_story by himself",
+  "per_order": [
+   2,
+   2,
+   2
+  ],
+  "stable": true,
+  "min_agree": 3
+ },
+ "698": {
+  "bucket": 2,
+  "why": "assessing_him by the_article_author",
+  "per_order": [
+   2,
+   2,
+   2
+  ],
+  "stable": true,
+  "min_agree": 3
+ },
+ "702": {
+  "bucket": 2,
+  "why": "he_tells_his_own_story by himself",
+  "per_order": [
+   2,
+   2,
+   2
+  ],
+  "stable": true,
+  "min_agree": 3
+ },
+ "709": {
+  "bucket": 2,
+  "why": "assessing_him by the_article_author",
+  "per_order": [
+   2,
+   2,
+   2
+  ],
+  "stable": true,
+  "min_agree": 3
+ },
+ "710": {
+  "bucket": 3,
+  "why": "he is only backdrop",
+  "per_order": [
+   3,
+   3,
+   3
+  ],
+  "stable": true,
+  "min_agree": 3
+ },
+ "714": {
+  "bucket": 1,
+  "why": "result + reported",
+  "per_order": [
+   1,
+   1,
+   1
+  ],
+  "stable": true,
+  "min_agree": 3
+ },
+ "717": {
+  "bucket": 2,
+  "why": "he_tells_his_own_story by himself",
+  "per_order": [
+   2,
+   2,
+   2
+  ],
+  "stable": true,
+  "min_agree": 1
+ },
+ "723": {
+  "bucket": 2,
+  "why": "he_tells_his_own_story by himself",
+  "per_order": [
+   2,
+   2,
+   2
+  ],
+  "stable": true,
+  "min_agree": 3
+ },
+ "728": {
+  "bucket": 2,
+  "why": "he_tells_his_own_story by himself",
+  "per_order": [
+   2,
+   2,
+   2
+  ],
+  "stable": true,
+  "min_agree": 3
+ },
+ "731": {
+  "bucket": 1,
+  "why": "result + reported",
+  "per_order": [
+   1,
+   1,
+   1
+  ],
+  "stable": true,
+  "min_agree": 3
+ },
+ "732": {
+  "bucket": 1,
+  "why": "result + reported",
+  "per_order": [
+   2,
+   1,
+   1
+  ],
+  "stable": false,
+  "min_agree": 2
+ },
+ "733": {
+  "bucket": 1,
+  "why": "result + official",
+  "per_order": [
+   1,
+   1,
+   1
+  ],
+  "stable": true,
+  "min_agree": 2
+ },
+ "735": {
+  "bucket": 1,
+  "why": "result + reported",
+  "per_order": [
+   1,
+   1,
+   1
+  ],
+  "stable": true,
+  "min_agree": 3
+ },
+ "736": {
+  "bucket": 1,
+  "why": "result + reported",
+  "per_order": [
+   1,
+   1,
+   1
+  ],
+  "stable": true,
+  "min_agree": 3
+ },
+ "737": {
+  "bucket": 1,
+  "why": "result + official",
+  "per_order": [
+   1,
+   1,
+   1
+  ],
+  "stable": true,
+  "min_agree": 3
+ },
+ "740": {
+  "bucket": 1,
+  "why": "result + official",
+  "per_order": [
+   1,
+   1,
+   1
+  ],
+  "stable": true,
+  "min_agree": 2
+ },
+ "743": {
+  "bucket": 2,
+  "why": "assessing_him by the_article_author",
+  "per_order": [
+   2,
+   2,
+   2
+  ],
+  "stable": true,
+  "min_agree": 3
+ },
+ "744": {
+  "bucket": 2,
+  "why": "he_tells_his_own_story by the_article_author",
+  "per_order": [
+   2,
+   2,
+   2
+  ],
+  "stable": true,
+  "min_agree": 2
+ },
+ "745": {
+  "bucket": 1,
+  "why": "announcement + reported",
+  "per_order": [
+   1,
+   1,
+   1
+  ],
+  "stable": true,
+  "min_agree": 3
+ },
+ "746": {
+  "bucket": 1,
+  "why": "result + official",
+  "per_order": [
+   1,
+   1,
+   1
+  ],
+  "stable": true,
+  "min_agree": 3
+ },
+ "747": {
+  "bucket": 1,
+  "why": "result + reported",
+  "per_order": [
+   1,
+   1,
+   1
+  ],
+  "stable": true,
+  "min_agree": 2
+ },
+ "755": {
+  "bucket": 2,
+  "why": "he_tells_his_own_story by himself",
+  "per_order": [
+   2,
+   2,
+   2
+  ],
+  "stable": true,
+  "min_agree": 3
+ },
+ "758": {
+  "bucket": 1,
+  "why": "result + reported",
+  "per_order": [
+   1,
+   1,
+   1
+  ],
+  "stable": true,
+  "min_agree": 3
+ },
+ "759": {
+  "bucket": 1,
+  "why": "result + reported",
+  "per_order": [
+   1,
+   1,
+   1
+  ],
+  "stable": true,
+  "min_agree": 3
+ },
+ "762": {
+  "bucket": 3,
+  "why": "he is only backdrop",
+  "per_order": [
+   3,
+   3,
+   3
+  ],
+  "stable": true,
+  "min_agree": 3
+ },
+ "765": {
+  "bucket": 1,
+  "why": "result + reported",
+  "per_order": [
+   1,
+   1,
+   1
+  ],
+  "stable": true,
+  "min_agree": 3
+ },
+ "767": {
+  "bucket": 1,
+  "why": "result + reported",
+  "per_order": [
+   1,
+   1,
+   1
+  ],
+  "stable": true,
+  "min_agree": 3
+ },
+ "768": {
+  "bucket": 1,
+  "why": "result + reported",
+  "per_order": [
+   1,
+   1,
+   1
+  ],
+  "stable": true,
+  "min_agree": 3
+ },
+ "771": {
+  "bucket": 2,
+  "why": "he_tells_his_own_story by himself",
+  "per_order": [
+   2,
+   2,
+   2
+  ],
+  "stable": true,
+  "min_agree": 3
+ },
+ "772": {
+  "bucket": 1,
+  "why": "result + reported",
+  "per_order": [
+   1,
+   1,
+   1
+  ],
+  "stable": true,
+  "min_agree": 3
+ },
+ "773": {
+  "bucket": 1,
+  "why": "result + reported",
+  "per_order": [
+   1,
+   1,
+   1
+  ],
+  "stable": true,
+  "min_agree": 3
+ },
+ "774": {
+  "bucket": 2,
+  "why": "assessing_him by the_article_author",
+  "per_order": [
+   2,
+   2,
+   2
+  ],
+  "stable": true,
+  "min_agree": 2
+ },
+ "776": {
+  "bucket": 1,
+  "why": "result + reported",
+  "per_order": [
+   1,
+   1,
+   1
+  ],
+  "stable": true,
+  "min_agree": 3
+ },
+ "778": {
+  "bucket": 2,
+  "why": "calling_him_out by himself",
+  "per_order": [
+   2,
+   2,
+   2
+  ],
+  "stable": true,
+  "min_agree": 2
+ },
+ "779": {
+  "bucket": 1,
+  "why": "result + reported",
+  "per_order": [
+   1,
+   1,
+   1
+  ],
+  "stable": true,
+  "min_agree": 2
+ },
+ "780": {
+  "bucket": 1,
+  "why": "result + reported",
+  "per_order": [
+   1,
+   1,
+   1
+  ],
+  "stable": true,
+  "min_agree": 3
+ },
+ "782": {
+  "bucket": 1,
+  "why": "result + reported",
+  "per_order": [
+   1,
+   1,
+   1
+  ],
+  "stable": true,
+  "min_agree": 3
+ },
+ "783": {
+  "bucket": 1,
+  "why": "result + reported",
+  "per_order": [
+   1,
+   1,
+   1
+  ],
+  "stable": true,
+  "min_agree": 3
+ },
+ "785": {
+  "bucket": 1,
+  "why": "result + official",
+  "per_order": [
+   1,
+   1,
+   1
+  ],
+  "stable": true,
+  "min_agree": 2
+ },
+ "786": {
+  "bucket": 1,
+  "why": "result + reported",
+  "per_order": [
+   1,
+   1,
+   1
+  ],
+  "stable": true,
+  "min_agree": 3
+ },
+ "788": {
+  "bucket": 2,
+  "why": "he_tells_his_own_story by himself",
+  "per_order": [
+   2,
+   2,
+   2
+  ],
+  "stable": true,
+  "min_agree": 2
+ },
+ "789": {
+  "bucket": 2,
+  "why": "he_tells_his_own_story by himself",
+  "per_order": [
+   2,
+   2,
+   2
+  ],
+  "stable": true,
+  "min_agree": 2
+ },
+ "790": {
+  "bucket": 1,
+  "why": "result + reported",
+  "per_order": [
+   1,
+   1,
+   1
+  ],
+  "stable": true,
+  "min_agree": 3
+ },
+ "794": {
+  "bucket": 2,
+  "why": "he_tells_his_own_story by himself",
+  "per_order": [
+   2,
+   2,
+   2
+  ],
+  "stable": true,
+  "min_agree": 2
+ },
+ "797": {
+  "bucket": 2,
+  "why": "he_tells_his_own_story by himself",
+  "per_order": [
+   2,
+   2,
+   2
+  ],
+  "stable": true,
+  "min_agree": 2
+ },
+ "798": {
+  "bucket": 2,
+  "why": "he_tells_his_own_story by a_pundit_or_commentator",
+  "per_order": [
+   2,
+   2,
+   2
+  ],
+  "stable": true,
+  "min_agree": 3
+ },
+ "803": {
+  "bucket": 2,
+  "why": "he_tells_his_own_story by a_pundit_or_commentator",
+  "per_order": [
+   2,
+   2,
+   2
+  ],
+  "stable": true,
+  "min_agree": 2
+ },
+ "807": {
+  "bucket": 3,
+  "why": "he is only backdrop",
+  "per_order": [
+   2,
+   3,
+   3
+  ],
+  "stable": false,
+  "min_agree": 2
+ },
+ "811": {
+  "bucket": 3,
+  "why": "he is only backdrop",
+  "per_order": [
+   3,
+   3,
+   3
+  ],
+  "stable": true,
+  "min_agree": 2
+ },
+ "813": {
+  "bucket": 2,
+  "why": "calling_him_out by himself",
+  "per_order": [
+   2,
+   2,
+   2
+  ],
+  "stable": true,
+  "min_agree": 2
+ },
+ "817": {
+  "bucket": 1,
+  "why": "result + reported",
+  "per_order": [
+   1,
+   1,
+   1
+  ],
+  "stable": true,
+  "min_agree": 3
+ },
+ "820": {
+  "bucket": 3,
+  "why": "he is only backdrop",
+  "per_order": [
+   3,
+   3,
+   3
+  ],
+  "stable": true,
+  "min_agree": 3
+ },
+ "823": {
+  "bucket": 1,
+  "why": "result + official",
+  "per_order": [
+   1,
+   1,
+   1
+  ],
+  "stable": true,
+  "min_agree": 2
+ },
+ "826": {
+  "bucket": 1,
+  "why": "result + reported",
+  "per_order": [
+   1,
+   1,
+   1
+  ],
+  "stable": true,
+  "min_agree": 2
+ },
+ "828": {
+  "bucket": 2,
+  "why": "assessing_him by a_pundit_or_commentator",
+  "per_order": [
+   2,
+   2,
+   2
+  ],
+  "stable": true,
+  "min_agree": 3
+ },
+ "829": {
+  "bucket": 1,
+  "why": "result + reported",
+  "per_order": [
+   1,
+   1,
+   1
+  ],
+  "stable": true,
+  "min_agree": 3
+ },
+ "833": {
+  "bucket": 2,
+  "why": "assessing_him by a_pundit_or_commentator",
+  "per_order": [
+   2,
+   2,
+   2
+  ],
+  "stable": true,
+  "min_agree": 3
+ },
+ "838": {
+  "bucket": 2,
+  "why": "calling_him_out by an_opponent_or_their_camp",
+  "per_order": [
+   2,
+   2,
+   2
+  ],
+  "stable": true,
+  "min_agree": 3
+ },
+ "843": {
+  "bucket": 3,
+  "why": "he is only backdrop",
+  "per_order": [
+   3,
+   3,
+   3
+  ],
+  "stable": true,
+  "min_agree": 3
+ },
+ "850": {
+  "bucket": 2,
+  "why": "assessing_him by an_opponent_or_their_camp",
+  "per_order": [
+   2,
+   2,
+   2
+  ],
+  "stable": true,
+  "min_agree": 3
+ },
+ "851": {
+  "bucket": 2,
+  "why": "calling_him_out by himself",
+  "per_order": [
+   2,
+   2,
+   2
+  ],
+  "stable": true,
+  "min_agree": 3
+ },
+ "852": {
+  "bucket": 2,
+  "why": "he_tells_his_own_story by himself",
+  "per_order": [
+   2,
+   2,
+   2
+  ],
+  "stable": true,
+  "min_agree": 3
+ },
+ "856": {
+  "bucket": 3,
+  "why": "he is only backdrop",
+  "per_order": [
+   3,
+   3,
+   3
+  ],
+  "stable": true,
+  "min_agree": 3
+ },
+ "861": {
+  "bucket": 3,
+  "why": "naming_him_in_passing",
+  "per_order": [
+   3,
+   3,
+   3
+  ],
+  "stable": true,
+  "min_agree": 3
+ },
+ "862": {
+  "bucket": 2,
+  "why": "assessing_him by a_pundit_or_commentator",
+  "per_order": [
+   2,
+   2,
+   2
+  ],
+  "stable": true,
+  "min_agree": 2
+ },
+ "866": {
+  "bucket": 2,
+  "why": "assessing_him by a_pundit_or_commentator",
+  "per_order": [
+   2,
+   2,
+   2
+  ],
+  "stable": true,
+  "min_agree": 3
+ },
+ "871": {
+  "bucket": 3,
+  "why": "he is only backdrop",
+  "per_order": [
+   3,
+   3,
+   3
+  ],
+  "stable": true,
+  "min_agree": 3
+ },
+ "875": {
+  "bucket": 2,
+  "why": "he_tells_his_own_story by himself",
+  "per_order": [
+   2,
+   2,
+   2
+  ],
+  "stable": true,
+  "min_agree": 3
+ },
+ "879": {
+  "bucket": 2,
+  "why": "steering_him_elsewhere by another_fighter",
+  "per_order": [
+   2,
+   2,
+   2
+  ],
+  "stable": true,
+  "min_agree": 2
+ },
+ "883": {
+  "bucket": 2,
+  "why": "he_tells_his_own_story by the_champion_or_a_top_authority",
+  "per_order": [
+   2,
+   2,
+   2
+  ],
+  "stable": true,
+  "min_agree": 3
+ },
+ "887": {
+  "bucket": 2,
+  "why": "assessing_him by a_pundit_or_commentator",
+  "per_order": [
+   2,
+   2,
+   2
+  ],
+  "stable": true,
+  "min_agree": 3
+ },
+ "889": {
+  "bucket": 3,
+  "why": "he is only backdrop",
+  "per_order": [
+   3,
+   3,
+   3
+  ],
+  "stable": true,
+  "min_agree": 2
+ },
+ "892": {
+  "bucket": 2,
+  "why": "calling_him_out by an_opponent_or_their_camp",
+  "per_order": [
+   2,
+   3,
+   2
+  ],
+  "stable": false,
+  "min_agree": 2
+ },
+ "896": {
+  "bucket": 2,
+  "why": "assessing_him by an_opponent_or_their_camp",
+  "per_order": [
+   2,
+   2,
+   2
+  ],
+  "stable": true,
+  "min_agree": 3
+ },
+ "901": {
+  "bucket": 2,
+  "why": "steering_him_elsewhere by another_fighter",
+  "per_order": [
+   2,
+   2,
+   2
+  ],
+  "stable": true,
+  "min_agree": 3
+ },
+ "905": {
+  "bucket": 2,
+  "why": "steering_him_elsewhere by another_fighter",
+  "per_order": [
+   2,
+   2,
+   2
+  ],
+  "stable": true,
+  "min_agree": 3
+ },
+ "909": {
+  "bucket": 3,
+  "why": "he is only backdrop",
+  "per_order": [
+   3,
+   3,
+   3
+  ],
+  "stable": true,
+  "min_agree": 3
+ },
+ "913": {
+  "bucket": 2,
+  "why": "calling_him_out by an_opponent_or_their_camp",
+  "per_order": [
+   2,
+   2,
+   2
+  ],
+  "stable": true,
+  "min_agree": 2
+ },
+ "917": {
+  "bucket": 2,
+  "why": "assessing_him by a_pundit_or_commentator",
+  "per_order": [
+   2,
+   2,
+   2
+  ],
+  "stable": true,
+  "min_agree": 3
+ },
+ "921": {
+  "bucket": 3,
+  "why": "he is only backdrop",
+  "per_order": [
+   3,
+   3,
+   3
+  ],
+  "stable": true,
+  "min_agree": 3
+ },
+ "926": {
+  "bucket": 2,
+  "why": "steering_him_elsewhere by a_pundit_or_commentator",
+  "per_order": [
+   2,
+   2,
+   2
+  ],
+  "stable": true,
+  "min_agree": 2
+ },
+ "930": {
+  "bucket": 2,
+  "why": "he_tells_his_own_story by himself",
+  "per_order": [
+   2,
+   2,
+   2
+  ],
+  "stable": true,
+  "min_agree": 3
+ },
+ "933": {
+  "bucket": 2,
+  "why": "assessing_him by the_article_author",
+  "per_order": [
+   2,
+   2,
+   2
+  ],
+  "stable": true,
+  "min_agree": 2
+ },
+ "934": {
+  "bucket": 2,
+  "why": "assessing_him by the_article_author",
+  "per_order": [
+   2,
+   2,
+   2
+  ],
+  "stable": true,
+  "min_agree": 3
+ },
+ "937": {
+  "bucket": 3,
+  "why": "he is only backdrop",
+  "per_order": [
+   3,
+   3,
+   3
+  ],
+  "stable": true,
+  "min_agree": 2
+ },
+ "944": {
+  "bucket": 3,
+  "why": "he is only backdrop",
+  "per_order": [
+   3,
+   3,
+   3
+  ],
+  "stable": true,
+  "min_agree": 2
+ },
+ "948": {
+  "bucket": 3,
+  "why": "naming_him_in_passing",
+  "per_order": [
+   3,
+   3,
+   3
+  ],
+  "stable": true,
+  "min_agree": 3
+ },
+ "953": {
+  "bucket": 3,
+  "why": "naming_him_in_passing",
+  "per_order": [
+   3,
+   3,
+   3
+  ],
+  "stable": true,
+  "min_agree": 2
+ },
+ "958": {
+  "bucket": 2,
+  "why": "assessing_him by the_champion_or_a_top_authority",
+  "per_order": [
+   2,
+   2,
+   2
+  ],
+  "stable": true,
+  "min_agree": 3
+ },
+ "963": {
+  "bucket": 3,
+  "why": "he is only backdrop",
+  "per_order": [
+   3,
+   3,
+   3
+  ],
+  "stable": true,
+  "min_agree": 3
+ },
+ "968": {
+  "bucket": 2,
+  "why": "he_tells_his_own_story by himself",
+  "per_order": [
+   2,
+   2,
+   2
+  ],
+  "stable": true,
+  "min_agree": 2
+ },
+ "972": {
+  "bucket": 2,
+  "why": "assessing_him by the_champion_or_a_top_authority",
+  "per_order": [
+   2,
+   2,
+   2
+  ],
+  "stable": true,
+  "min_agree": 2
+ },
+ "975": {
+  "bucket": 3,
+  "why": "he is only backdrop",
+  "per_order": [
+   3,
+   3,
+   3
+  ],
+  "stable": true,
+  "min_agree": 2
+ },
+ "977": {
+  "bucket": 3,
+  "why": "he is only backdrop",
+  "per_order": [
+   3,
+   3,
+   3
+  ],
+  "stable": true,
+  "min_agree": 3
+ },
+ "983": {
+  "bucket": 3,
+  "why": "he is only backdrop",
+  "per_order": [
+   3,
+   3,
+   3
+  ],
+  "stable": true,
+  "min_agree": 3
+ },
+ "991": {
+  "bucket": 2,
+  "why": "steering_him_elsewhere by the_champion_or_a_top_authority",
+  "per_order": [
+   2,
+   2,
+   2
+  ],
+  "stable": true,
+  "min_agree": 3
+ },
+ "998": {
+  "bucket": 2,
+  "why": "assessing_him by the_champion_or_a_top_authority",
+  "per_order": [
+   2,
+   2,
+   2
+  ],
+  "stable": true,
+  "min_agree": 3
+ },
+ "1002": {
+  "bucket": 2,
+  "why": "he_tells_his_own_story by the_champion_or_a_top_authority",
+  "per_order": [
+   2,
+   2,
+   2
+  ],
+  "stable": true,
+  "min_agree": 2
+ },
+ "1008": {
+  "bucket": 2,
+  "why": "assessing_him by the_champion_or_a_top_authority",
+  "per_order": [
+   2,
+   2,
+   2
+  ],
+  "stable": true,
+  "min_agree": 3
+ },
+ "1016": {
+  "bucket": 2,
+  "why": "assessing_him by another_fighter",
+  "per_order": [
+   2,
+   2,
+   2
+  ],
+  "stable": true,
+  "min_agree": 2
+ },
+ "1020": {
+  "bucket": 2,
+  "why": "assessing_him by the_champion_or_a_top_authority",
+  "per_order": [
+   2,
+   2,
+   2
+  ],
+  "stable": true,
+  "min_agree": 3
+ },
+ "1027": {
+  "bucket": 3,
+  "why": "he is only backdrop",
+  "per_order": [
+   3,
+   3,
+   2
+  ],
+  "stable": false,
+  "min_agree": 2
+ },
+ "1031": {
+  "bucket": 2,
+  "why": "assessing_him by the_champion_or_a_top_authority",
+  "per_order": [
+   2,
+   2,
+   2
+  ],
+  "stable": true,
+  "min_agree": 3
+ },
+ "1036": {
+  "bucket": 2,
+  "why": "assessing_him by the_champion_or_a_top_authority",
+  "per_order": [
+   2,
+   2,
+   2
+  ],
+  "stable": true,
+  "min_agree": 3
+ },
+ "1040": {
+  "bucket": 3,
+  "why": "he is only backdrop",
+  "per_order": [
+   3,
+   3,
+   3
+  ],
+  "stable": true,
+  "min_agree": 3
+ },
+ "1045": {
+  "bucket": 2,
+  "why": "assessing_him by a_pundit_or_commentator",
+  "per_order": [
+   2,
+   2,
+   3
+  ],
+  "stable": false,
+  "min_agree": 2
+ },
+ "1050": {
+  "bucket": 3,
+  "why": "he is only backdrop",
+  "per_order": [
+   3,
+   3,
+   3
+  ],
+  "stable": true,
+  "min_agree": 2
+ },
+ "1058": {
+  "bucket": 2,
+  "why": "assessing_him by the_champion_or_a_top_authority",
+  "per_order": [
+   2,
+   2,
+   2
+  ],
+  "stable": true,
+  "min_agree": 3
+ },
+ "1066": {
+  "bucket": 2,
+  "why": "steering_him_elsewhere by the_champion_or_a_top_authority",
+  "per_order": [
+   2,
+   2,
+   2
+  ],
+  "stable": true,
+  "min_agree": 2
+ },
+ "1072": {
+  "bucket": 3,
+  "why": "he is only backdrop",
+  "per_order": [
+   3,
+   3,
+   3
+  ],
+  "stable": true,
+  "min_agree": 3
+ },
+ "1076": {
+  "bucket": 2,
+  "why": "assessing_him by the_champion_or_a_top_authority",
+  "per_order": [
+   2,
+   2,
+   2
+  ],
+  "stable": true,
+  "min_agree": 3
+ },
+ "1080": {
+  "bucket": 3,
+  "why": "he is only backdrop",
+  "per_order": [
+   3,
+   3,
+   3
+  ],
+  "stable": true,
+  "min_agree": 2
+ },
+ "1085": {
+  "bucket": 3,
+  "why": "naming_him_in_passing",
+  "per_order": [
+   3,
+   3,
+   3
+  ],
+  "stable": true,
+  "min_agree": 2
+ },
+ "1089": {
+  "bucket": 3,
+  "why": "he is only backdrop",
+  "per_order": [
+   3,
+   3,
+   3
+  ],
+  "stable": true,
+  "min_agree": 3
+ },
+ "1093": {
+  "bucket": 3,
+  "why": "he is only backdrop",
+  "per_order": [
+   3,
+   3,
+   3
+  ],
+  "stable": true,
+  "min_agree": 2
+ },
+ "1097": {
+  "bucket": 3,
+  "why": "he is only backdrop",
+  "per_order": [
+   3,
+   3,
+   3
+  ],
+  "stable": true,
+  "min_agree": 2
+ },
+ "1101": {
+  "bucket": 2,
+  "why": "he_tells_his_own_story by the_champion_or_a_top_authority",
+  "per_order": [
+   2,
+   2,
+   2
+  ],
+  "stable": true,
+  "min_agree": 3
+ },
+ "1125": {
+  "bucket": 2,
+  "why": "calling_him_out by himself",
+  "per_order": [
+   2,
+   2,
+   2
+  ],
+  "stable": true,
+  "min_agree": 2
+ },
+ "1129": {
+  "bucket": 2,
+  "why": "calling_him_out by himself",
+  "per_order": [
+   2,
+   2,
+   2
+  ],
+  "stable": true,
+  "min_agree": 2
+ },
+ "1146": {
+  "bucket": 3,
+  "why": "he is only backdrop",
+  "per_order": [
+   3,
+   3,
+   3
+  ],
+  "stable": true,
+  "min_agree": 3
+ },
+ "1150": {
+  "bucket": 3,
+  "why": "he is only backdrop",
+  "per_order": [
+   3,
+   3,
+   3
+  ],
+  "stable": true,
+  "min_agree": 3
+ },
+ "1160": {
+  "bucket": 3,
+  "why": "he is only backdrop",
+  "per_order": [
+   3,
+   3,
+   3
+  ],
+  "stable": true,
+  "min_agree": 3
+ },
+ "1161": {
+  "bucket": 3,
+  "why": "he is only backdrop",
+  "per_order": [
+   3,
+   3,
+   3
+  ],
+  "stable": true,
+  "min_agree": 2
+ },
+ "1172": {
+  "bucket": 2,
+  "why": "he_tells_his_own_story by himself",
+  "per_order": [
+   2,
+   2,
+   2
+  ],
+  "stable": true,
+  "min_agree": 3
+ },
+ "1200": {
+  "bucket": 3,
+  "why": "he is only backdrop",
+  "per_order": [
+   3,
+   3,
+   3
+  ],
+  "stable": true,
+  "min_agree": 2
+ },
+ "1260": {
+  "bucket": 2,
+  "why": "assessing_him by another_fighter",
+  "per_order": [
+   2,
+   2,
+   2
+  ],
+  "stable": true,
+  "min_agree": 3
+ }
+}

@@ -1,0 +1,9602 @@
+{
+ "1": {
+  "role": {
+   "choice": "the_one_being_talked_about",
+   "agree": 2,
+   "conf": 0.643
+  },
+  "whose_judgement": {
+   "choice": "another_fighter",
+   "agree": 3,
+   "conf": 0.93
+  },
+  "what_is_done": {
+   "choice": "assessing_him",
+   "agree": 3,
+   "conf": 1.0
+  },
+  "news_kind": {
+   "choice": "quote",
+   "agree": 3,
+   "conf": 0.7
+  },
+  "sourcing": {
+   "choice": "only_a_quote_no_event",
+   "agree": 3,
+   "conf": 0.96
+  },
+  "novelty": {
+   "choice": "new_and_substantial",
+   "agree": 3,
+   "conf": 0.503
+  }
+ },
+ "2": {
+  "role": {
+   "choice": "the_one_being_talked_about",
+   "agree": 3,
+   "conf": 0.953
+  },
+  "whose_judgement": {
+   "choice": "another_fighter",
+   "agree": 3,
+   "conf": 0.943
+  },
+  "what_is_done": {
+   "choice": "assessing_him",
+   "agree": 3,
+   "conf": 0.997
+  },
+  "news_kind": {
+   "choice": "quote",
+   "agree": 3,
+   "conf": 0.827
+  },
+  "sourcing": {
+   "choice": "only_a_quote_no_event",
+   "agree": 3,
+   "conf": 0.983
+  },
+  "novelty": {
+   "choice": "new_and_substantial",
+   "agree": 3,
+   "conf": 0.557
+  }
+ },
+ "3": {
+  "role": {
+   "choice": "mentioned_only",
+   "agree": 3,
+   "conf": 0.483
+  },
+  "whose_judgement": {
+   "choice": "no_one_judges_him",
+   "agree": 3,
+   "conf": 0.98
+  },
+  "what_is_done": {
+   "choice": "naming_him_in_passing",
+   "agree": 2,
+   "conf": 0.447
+  },
+  "news_kind": {
+   "choice": "announcement",
+   "agree": 3,
+   "conf": 0.453
+  },
+  "sourcing": {
+   "choice": "no_factual_claim",
+   "agree": 3,
+   "conf": 0.77
+  },
+  "novelty": {
+   "choice": "filler_no_information",
+   "agree": 3,
+   "conf": 0.5
+  }
+ },
+ "4": {
+  "role": {
+   "choice": "the_one_being_talked_about",
+   "agree": 3,
+   "conf": 0.93
+  },
+  "whose_judgement": {
+   "choice": "another_fighter",
+   "agree": 3,
+   "conf": 0.827
+  },
+  "what_is_done": {
+   "choice": "assessing_him",
+   "agree": 3,
+   "conf": 0.993
+  },
+  "news_kind": {
+   "choice": "quote",
+   "agree": 3,
+   "conf": 0.98
+  },
+  "sourcing": {
+   "choice": "only_a_quote_no_event",
+   "agree": 3,
+   "conf": 0.997
+  },
+  "novelty": {
+   "choice": "new_and_substantial",
+   "agree": 3,
+   "conf": 0.4
+  }
+ },
+ "6": {
+  "role": {
+   "choice": "background",
+   "agree": 3,
+   "conf": 0.85
+  },
+  "whose_judgement": {
+   "choice": "his_camp",
+   "agree": 3,
+   "conf": 0.683
+  },
+  "what_is_done": {
+   "choice": "assessing_him",
+   "agree": 2,
+   "conf": 0.35
+  },
+  "news_kind": {
+   "choice": "quote",
+   "agree": 3,
+   "conf": 0.497
+  },
+  "sourcing": {
+   "choice": "only_a_quote_no_event",
+   "agree": 3,
+   "conf": 0.52
+  },
+  "novelty": {
+   "choice": "new_and_substantial",
+   "agree": 3,
+   "conf": 0.24
+  }
+ },
+ "10": {
+  "role": {
+   "choice": "the_one_being_talked_about",
+   "agree": 3,
+   "conf": 0.933
+  },
+  "whose_judgement": {
+   "choice": "an_opponent_or_their_camp",
+   "agree": 2,
+   "conf": 0.577
+  },
+  "what_is_done": {
+   "choice": "calling_him_out",
+   "agree": 3,
+   "conf": 0.6
+  },
+  "news_kind": {
+   "choice": "quote",
+   "agree": 2,
+   "conf": 0.503
+  },
+  "sourcing": {
+   "choice": "only_a_quote_no_event",
+   "agree": 3,
+   "conf": 0.99
+  },
+  "novelty": {
+   "choice": "new_and_substantial",
+   "agree": 3,
+   "conf": 0.413
+  }
+ },
+ "13": {
+  "role": {
+   "choice": "the_one_being_talked_about",
+   "agree": 3,
+   "conf": 0.977
+  },
+  "whose_judgement": {
+   "choice": "another_fighter",
+   "agree": 3,
+   "conf": 0.857
+  },
+  "what_is_done": {
+   "choice": "assessing_him",
+   "agree": 3,
+   "conf": 0.99
+  },
+  "news_kind": {
+   "choice": "quote",
+   "agree": 3,
+   "conf": 0.987
+  },
+  "sourcing": {
+   "choice": "only_a_quote_no_event",
+   "agree": 3,
+   "conf": 0.977
+  },
+  "novelty": {
+   "choice": "new_and_substantial",
+   "agree": 3,
+   "conf": 0.457
+  }
+ },
+ "14": {
+  "role": {
+   "choice": "the_one_being_talked_about",
+   "agree": 2,
+   "conf": 0.667
+  },
+  "whose_judgement": {
+   "choice": "another_fighter",
+   "agree": 3,
+   "conf": 0.913
+  },
+  "what_is_done": {
+   "choice": "assessing_him",
+   "agree": 3,
+   "conf": 1.0
+  },
+  "news_kind": {
+   "choice": "quote",
+   "agree": 3,
+   "conf": 0.77
+  },
+  "sourcing": {
+   "choice": "only_a_quote_no_event",
+   "agree": 3,
+   "conf": 0.973
+  },
+  "novelty": {
+   "choice": "new_and_substantial",
+   "agree": 3,
+   "conf": 0.433
+  }
+ },
+ "16": {
+  "role": {
+   "choice": "the_subject",
+   "agree": 3,
+   "conf": 0.99
+  },
+  "whose_judgement": {
+   "choice": "no_one_judges_him",
+   "agree": 3,
+   "conf": 0.663
+  },
+  "what_is_done": {
+   "choice": "covering_his_event",
+   "agree": 3,
+   "conf": 0.35
+  },
+  "news_kind": {
+   "choice": "announcement",
+   "agree": 3,
+   "conf": 0.98
+  },
+  "sourcing": {
+   "choice": "reported",
+   "agree": 3,
+   "conf": 0.73
+  },
+  "novelty": {
+   "choice": "new_and_substantial",
+   "agree": 3,
+   "conf": 0.82
+  }
+ },
+ "17": {
+  "role": {
+   "choice": "the_subject",
+   "agree": 3,
+   "conf": 0.927
+  },
+  "whose_judgement": {
+   "choice": "no_one_judges_him",
+   "agree": 3,
+   "conf": 0.643
+  },
+  "what_is_done": {
+   "choice": "covering_his_event",
+   "agree": 3,
+   "conf": 0.577
+  },
+  "news_kind": {
+   "choice": "announcement",
+   "agree": 3,
+   "conf": 0.99
+  },
+  "sourcing": {
+   "choice": "reported",
+   "agree": 3,
+   "conf": 0.69
+  },
+  "novelty": {
+   "choice": "new_and_substantial",
+   "agree": 3,
+   "conf": 0.823
+  }
+ },
+ "18": {
+  "role": {
+   "choice": "the_subject",
+   "agree": 3,
+   "conf": 0.977
+  },
+  "whose_judgement": {
+   "choice": "the_article_author",
+   "agree": 2,
+   "conf": 0.503
+  },
+  "what_is_done": {
+   "choice": "covering_his_event",
+   "agree": 3,
+   "conf": 0.64
+  },
+  "news_kind": {
+   "choice": "announcement",
+   "agree": 3,
+   "conf": 0.977
+  },
+  "sourcing": {
+   "choice": "reported",
+   "agree": 3,
+   "conf": 0.543
+  },
+  "novelty": {
+   "choice": "new_and_substantial",
+   "agree": 3,
+   "conf": 0.75
+  }
+ },
+ "25": {
+  "role": {
+   "choice": "the_subject",
+   "agree": 3,
+   "conf": 0.917
+  },
+  "whose_judgement": {
+   "choice": "no_one_judges_him",
+   "agree": 3,
+   "conf": 0.67
+  },
+  "what_is_done": {
+   "choice": "not_in_this_list",
+   "agree": 2,
+   "conf": 0.25
+  },
+  "news_kind": {
+   "choice": "lifestyle",
+   "agree": 3,
+   "conf": 1.0
+  },
+  "sourcing": {
+   "choice": "reported",
+   "agree": 3,
+   "conf": 0.973
+  },
+  "novelty": {
+   "choice": "new_and_substantial",
+   "agree": 3,
+   "conf": 0.47
+  }
+ },
+ "33": {
+  "role": {
+   "choice": "the_one_being_talked_about",
+   "agree": 3,
+   "conf": 0.977
+  },
+  "whose_judgement": {
+   "choice": "another_fighter",
+   "agree": 3,
+   "conf": 0.857
+  },
+  "what_is_done": {
+   "choice": "assessing_him",
+   "agree": 3,
+   "conf": 0.99
+  },
+  "news_kind": {
+   "choice": "quote",
+   "agree": 3,
+   "conf": 0.987
+  },
+  "sourcing": {
+   "choice": "only_a_quote_no_event",
+   "agree": 3,
+   "conf": 0.98
+  },
+  "novelty": {
+   "choice": "new_and_substantial",
+   "agree": 3,
+   "conf": 0.463
+  }
+ },
+ "34": {
+  "role": {
+   "choice": "the_one_being_talked_about",
+   "agree": 3,
+   "conf": 0.96
+  },
+  "whose_judgement": {
+   "choice": "an_opponent_or_their_camp",
+   "agree": 3,
+   "conf": 0.83
+  },
+  "what_is_done": {
+   "choice": "calling_him_out",
+   "agree": 3,
+   "conf": 0.76
+  },
+  "news_kind": {
+   "choice": "quote",
+   "agree": 3,
+   "conf": 0.943
+  },
+  "sourcing": {
+   "choice": "only_a_quote_no_event",
+   "agree": 3,
+   "conf": 0.977
+  },
+  "novelty": {
+   "choice": "new_and_substantial",
+   "agree": 3,
+   "conf": 0.23
+  }
+ },
+ "38": {
+  "role": {
+   "choice": "not_in_the_article_body",
+   "agree": 3,
+   "conf": 0.497
+  },
+  "whose_judgement": {
+   "choice": "himself",
+   "agree": 3,
+   "conf": 0.633
+  },
+  "what_is_done": {
+   "choice": "he_tells_his_own_story",
+   "agree": 3,
+   "conf": 0.633
+  },
+  "news_kind": {
+   "choice": "injury",
+   "agree": 3,
+   "conf": 0.743
+  },
+  "sourcing": {
+   "choice": "reported",
+   "agree": 2,
+   "conf": 0.243
+  },
+  "novelty": {
+   "choice": "new_and_substantial",
+   "agree": 2,
+   "conf": 0.343
+  }
+ },
+ "44": {
+  "role": {
+   "choice": "the_subject",
+   "agree": 3,
+   "conf": 0.993
+  },
+  "whose_judgement": {
+   "choice": "an_opponent_or_their_camp",
+   "agree": 2,
+   "conf": 0.397
+  },
+  "what_is_done": {
+   "choice": "he_gives_his_view",
+   "agree": 3,
+   "conf": 0.513
+  },
+  "news_kind": {
+   "choice": "result",
+   "agree": 2,
+   "conf": 0.587
+  },
+  "sourcing": {
+   "choice": "reported",
+   "agree": 3,
+   "conf": 0.55
+  },
+  "novelty": {
+   "choice": "new_and_substantial",
+   "agree": 3,
+   "conf": 0.867
+  }
+ },
+ "51": {
+  "role": {
+   "choice": "the_one_being_talked_about",
+   "agree": 3,
+   "conf": 0.9
+  },
+  "whose_judgement": {
+   "choice": "his_camp",
+   "agree": 3,
+   "conf": 0.967
+  },
+  "what_is_done": {
+   "choice": "defending_him",
+   "agree": 3,
+   "conf": 0.98
+  },
+  "news_kind": {
+   "choice": "quote",
+   "agree": 3,
+   "conf": 0.963
+  },
+  "sourcing": {
+   "choice": "only_a_quote_no_event",
+   "agree": 3,
+   "conf": 0.96
+  },
+  "novelty": {
+   "choice": "new_and_substantial",
+   "agree": 3,
+   "conf": 0.593
+  }
+ },
+ "55": {
+  "role": {
+   "choice": "the_one_being_talked_about",
+   "agree": 3,
+   "conf": 0.897
+  },
+  "whose_judgement": {
+   "choice": "his_camp",
+   "agree": 3,
+   "conf": 0.957
+  },
+  "what_is_done": {
+   "choice": "defending_him",
+   "agree": 3,
+   "conf": 0.97
+  },
+  "news_kind": {
+   "choice": "quote",
+   "agree": 3,
+   "conf": 0.93
+  },
+  "sourcing": {
+   "choice": "only_a_quote_no_event",
+   "agree": 3,
+   "conf": 0.927
+  },
+  "novelty": {
+   "choice": "new_and_substantial",
+   "agree": 3,
+   "conf": 0.563
+  }
+ },
+ "60": {
+  "role": {
+   "choice": "mentioned_only",
+   "agree": 3,
+   "conf": 0.47
+  },
+  "whose_judgement": {
+   "choice": "no_one_judges_him",
+   "agree": 2,
+   "conf": 0.317
+  },
+  "what_is_done": {
+   "choice": "naming_him_in_passing",
+   "agree": 3,
+   "conf": 0.507
+  },
+  "news_kind": {
+   "choice": "quote",
+   "agree": 3,
+   "conf": 0.447
+  },
+  "sourcing": {
+   "choice": "only_a_quote_no_event",
+   "agree": 3,
+   "conf": 0.587
+  },
+  "novelty": {
+   "choice": "nothing_about_him",
+   "agree": 3,
+   "conf": 0.487
+  }
+ },
+ "65": {
+  "role": {
+   "choice": "background",
+   "agree": 3,
+   "conf": 0.69
+  },
+  "whose_judgement": {
+   "choice": "a_pundit_or_commentator",
+   "agree": 3,
+   "conf": 0.853
+  },
+  "what_is_done": {
+   "choice": "naming_him_in_passing",
+   "agree": 3,
+   "conf": 0.653
+  },
+  "news_kind": {
+   "choice": "no_news_about_him",
+   "agree": 3,
+   "conf": 0.503
+  },
+  "sourcing": {
+   "choice": "no_factual_claim",
+   "agree": 3,
+   "conf": 0.703
+  },
+  "novelty": {
+   "choice": "nothing_about_him",
+   "agree": 3,
+   "conf": 0.41
+  }
+ },
+ "71": {
+  "role": {
+   "choice": "the_one_being_talked_about",
+   "agree": 3,
+   "conf": 0.973
+  },
+  "whose_judgement": {
+   "choice": "his_camp",
+   "agree": 3,
+   "conf": 0.95
+  },
+  "what_is_done": {
+   "choice": "defending_him",
+   "agree": 3,
+   "conf": 0.987
+  },
+  "news_kind": {
+   "choice": "quote",
+   "agree": 3,
+   "conf": 0.987
+  },
+  "sourcing": {
+   "choice": "only_a_quote_no_event",
+   "agree": 3,
+   "conf": 0.997
+  },
+  "novelty": {
+   "choice": "new_and_substantial",
+   "agree": 3,
+   "conf": 0.347
+  }
+ },
+ "78": {
+  "role": {
+   "choice": "the_one_being_talked_about",
+   "agree": 3,
+   "conf": 0.99
+  },
+  "whose_judgement": {
+   "choice": "an_opponent_or_their_camp",
+   "agree": 3,
+   "conf": 0.97
+  },
+  "what_is_done": {
+   "choice": "calling_him_out",
+   "agree": 3,
+   "conf": 0.943
+  },
+  "news_kind": {
+   "choice": "quote",
+   "agree": 3,
+   "conf": 0.837
+  },
+  "sourcing": {
+   "choice": "only_a_quote_no_event",
+   "agree": 3,
+   "conf": 0.763
+  },
+  "novelty": {
+   "choice": "new_and_substantial",
+   "agree": 3,
+   "conf": 0.457
+  }
+ },
+ "84": {
+  "role": {
+   "choice": "the_one_being_talked_about",
+   "agree": 3,
+   "conf": 0.853
+  },
+  "whose_judgement": {
+   "choice": "his_camp",
+   "agree": 3,
+   "conf": 0.61
+  },
+  "what_is_done": {
+   "choice": "defending_him",
+   "agree": 3,
+   "conf": 0.987
+  },
+  "news_kind": {
+   "choice": "quote",
+   "agree": 3,
+   "conf": 0.997
+  },
+  "sourcing": {
+   "choice": "only_a_quote_no_event",
+   "agree": 3,
+   "conf": 0.943
+  },
+  "novelty": {
+   "choice": "new_and_substantial",
+   "agree": 3,
+   "conf": 0.5
+  }
+ },
+ "90": {
+  "role": {
+   "choice": "the_one_being_talked_about",
+   "agree": 3,
+   "conf": 0.977
+  },
+  "whose_judgement": {
+   "choice": "his_camp",
+   "agree": 3,
+   "conf": 0.953
+  },
+  "what_is_done": {
+   "choice": "defending_him",
+   "agree": 3,
+   "conf": 0.993
+  },
+  "news_kind": {
+   "choice": "quote",
+   "agree": 3,
+   "conf": 0.99
+  },
+  "sourcing": {
+   "choice": "only_a_quote_no_event",
+   "agree": 3,
+   "conf": 0.993
+  },
+  "novelty": {
+   "choice": "new_and_substantial",
+   "agree": 2,
+   "conf": 0.343
+  }
+ },
+ "96": {
+  "role": {
+   "choice": "the_one_being_talked_about",
+   "agree": 3,
+   "conf": 0.977
+  },
+  "whose_judgement": {
+   "choice": "another_fighter",
+   "agree": 3,
+   "conf": 0.703
+  },
+  "what_is_done": {
+   "choice": "assessing_him",
+   "agree": 3,
+   "conf": 0.987
+  },
+  "news_kind": {
+   "choice": "quote",
+   "agree": 3,
+   "conf": 0.993
+  },
+  "sourcing": {
+   "choice": "only_a_quote_no_event",
+   "agree": 3,
+   "conf": 1.0
+  },
+  "novelty": {
+   "choice": "new_and_substantial",
+   "agree": 2,
+   "conf": 0.28
+  }
+ },
+ "97": {
+  "role": {
+   "choice": "the_one_being_talked_about",
+   "agree": 3,
+   "conf": 0.93
+  },
+  "whose_judgement": {
+   "choice": "an_opponent_or_their_camp",
+   "agree": 3,
+   "conf": 0.913
+  },
+  "what_is_done": {
+   "choice": "calling_him_out",
+   "agree": 2,
+   "conf": 0.483
+  },
+  "news_kind": {
+   "choice": "quote",
+   "agree": 3,
+   "conf": 0.98
+  },
+  "sourcing": {
+   "choice": "only_a_quote_no_event",
+   "agree": 3,
+   "conf": 0.847
+  },
+  "novelty": {
+   "choice": "new_and_substantial",
+   "agree": 3,
+   "conf": 0.657
+  }
+ },
+ "102": {
+  "role": {
+   "choice": "the_one_being_talked_about",
+   "agree": 3,
+   "conf": 0.937
+  },
+  "whose_judgement": {
+   "choice": "an_opponent_or_their_camp",
+   "agree": 3,
+   "conf": 0.8
+  },
+  "what_is_done": {
+   "choice": "defending_him",
+   "agree": 3,
+   "conf": 0.597
+  },
+  "news_kind": {
+   "choice": "quote",
+   "agree": 3,
+   "conf": 0.977
+  },
+  "sourcing": {
+   "choice": "only_a_quote_no_event",
+   "agree": 3,
+   "conf": 0.857
+  },
+  "novelty": {
+   "choice": "new_and_substantial",
+   "agree": 3,
+   "conf": 0.403
+  }
+ },
+ "115": {
+  "role": {
+   "choice": "mentioned_only",
+   "agree": 1,
+   "conf": 0.267
+  },
+  "whose_judgement": {
+   "choice": "no_one_judges_him",
+   "agree": 2,
+   "conf": 0.443
+  },
+  "what_is_done": {
+   "choice": "naming_him_in_passing",
+   "agree": 3,
+   "conf": 0.75
+  },
+  "news_kind": {
+   "choice": "no_news_about_him",
+   "agree": 2,
+   "conf": 0.493
+  },
+  "sourcing": {
+   "choice": "no_factual_claim",
+   "agree": 2,
+   "conf": 0.287
+  },
+  "novelty": {
+   "choice": "small_new_detail",
+   "agree": 3,
+   "conf": 0.21
+  }
+ },
+ "119": {
+  "role": {
+   "choice": "the_one_being_talked_about",
+   "agree": 3,
+   "conf": 0.97
+  },
+  "whose_judgement": {
+   "choice": "his_camp",
+   "agree": 3,
+   "conf": 0.787
+  },
+  "what_is_done": {
+   "choice": "defending_him",
+   "agree": 3,
+   "conf": 0.997
+  },
+  "news_kind": {
+   "choice": "quote",
+   "agree": 3,
+   "conf": 0.987
+  },
+  "sourcing": {
+   "choice": "only_a_quote_no_event",
+   "agree": 3,
+   "conf": 0.937
+  },
+  "novelty": {
+   "choice": "new_and_substantial",
+   "agree": 3,
+   "conf": 0.337
+  }
+ },
+ "125": {
+  "role": {
+   "choice": "mentioned_only",
+   "agree": 1,
+   "conf": 0.337
+  },
+  "whose_judgement": {
+   "choice": "his_camp",
+   "agree": 2,
+   "conf": 0.46
+  },
+  "what_is_done": {
+   "choice": "naming_him_in_passing",
+   "agree": 3,
+   "conf": 0.75
+  },
+  "news_kind": {
+   "choice": "no_news_about_him",
+   "agree": 2,
+   "conf": 0.51
+  },
+  "sourcing": {
+   "choice": "no_factual_claim",
+   "agree": 2,
+   "conf": 0.3
+  },
+  "novelty": {
+   "choice": "small_new_detail",
+   "agree": 3,
+   "conf": 0.287
+  }
+ },
+ "129": {
+  "role": {
+   "choice": "the_subject",
+   "agree": 3,
+   "conf": 0.71
+  },
+  "whose_judgement": {
+   "choice": "his_camp",
+   "agree": 3,
+   "conf": 0.963
+  },
+  "what_is_done": {
+   "choice": "calling_him_out",
+   "agree": 2,
+   "conf": 0.393
+  },
+  "news_kind": {
+   "choice": "quote",
+   "agree": 3,
+   "conf": 0.567
+  },
+  "sourcing": {
+   "choice": "only_a_quote_no_event",
+   "agree": 3,
+   "conf": 0.793
+  },
+  "novelty": {
+   "choice": "new_and_substantial",
+   "agree": 3,
+   "conf": 0.81
+  }
+ },
+ "134": {
+  "role": {
+   "choice": "not_in_the_article_body",
+   "agree": 3,
+   "conf": 0.797
+  },
+  "whose_judgement": {
+   "choice": "no_one_judges_him",
+   "agree": 3,
+   "conf": 0.847
+  },
+  "what_is_done": {
+   "choice": "naming_him_in_passing",
+   "agree": 3,
+   "conf": 0.513
+  },
+  "news_kind": {
+   "choice": "no_news_about_him",
+   "agree": 3,
+   "conf": 0.527
+  },
+  "sourcing": {
+   "choice": "no_factual_claim",
+   "agree": 3,
+   "conf": 0.953
+  },
+  "novelty": {
+   "choice": "nothing_about_him",
+   "agree": 3,
+   "conf": 0.75
+  }
+ },
+ "138": {
+  "role": {
+   "choice": "the_one_being_talked_about",
+   "agree": 3,
+   "conf": 0.993
+  },
+  "whose_judgement": {
+   "choice": "the_champion_or_a_top_authority",
+   "agree": 3,
+   "conf": 0.587
+  },
+  "what_is_done": {
+   "choice": "assessing_him",
+   "agree": 3,
+   "conf": 0.997
+  },
+  "news_kind": {
+   "choice": "quote",
+   "agree": 3,
+   "conf": 0.997
+  },
+  "sourcing": {
+   "choice": "only_a_quote_no_event",
+   "agree": 3,
+   "conf": 0.887
+  },
+  "novelty": {
+   "choice": "restates_known_facts",
+   "agree": 2,
+   "conf": 0.317
+  }
+ },
+ "144": {
+  "role": {
+   "choice": "the_one_being_talked_about",
+   "agree": 3,
+   "conf": 0.987
+  },
+  "whose_judgement": {
+   "choice": "the_champion_or_a_top_authority",
+   "agree": 3,
+   "conf": 0.52
+  },
+  "what_is_done": {
+   "choice": "assessing_him",
+   "agree": 3,
+   "conf": 0.92
+  },
+  "news_kind": {
+   "choice": "quote",
+   "agree": 3,
+   "conf": 0.99
+  },
+  "sourcing": {
+   "choice": "only_a_quote_no_event",
+   "agree": 3,
+   "conf": 0.917
+  },
+  "novelty": {
+   "choice": "restates_known_facts",
+   "agree": 3,
+   "conf": 0.417
+  }
+ },
+ "148": {
+  "role": {
+   "choice": "the_one_being_talked_about",
+   "agree": 3,
+   "conf": 0.817
+  },
+  "whose_judgement": {
+   "choice": "an_opponent_or_their_camp",
+   "agree": 3,
+   "conf": 0.493
+  },
+  "what_is_done": {
+   "choice": "assessing_him",
+   "agree": 3,
+   "conf": 0.983
+  },
+  "news_kind": {
+   "choice": "quote",
+   "agree": 3,
+   "conf": 0.96
+  },
+  "sourcing": {
+   "choice": "only_a_quote_no_event",
+   "agree": 3,
+   "conf": 0.46
+  },
+  "novelty": {
+   "choice": "new_and_substantial",
+   "agree": 3,
+   "conf": 0.763
+  }
+ },
+ "152": {
+  "role": {
+   "choice": "the_one_being_talked_about",
+   "agree": 2,
+   "conf": 0.573
+  },
+  "whose_judgement": {
+   "choice": "his_camp",
+   "agree": 3,
+   "conf": 0.953
+  },
+  "what_is_done": {
+   "choice": "assessing_him",
+   "agree": 3,
+   "conf": 0.987
+  },
+  "news_kind": {
+   "choice": "injury",
+   "agree": 2,
+   "conf": 0.507
+  },
+  "sourcing": {
+   "choice": "only_a_quote_no_event",
+   "agree": 3,
+   "conf": 0.51
+  },
+  "novelty": {
+   "choice": "new_and_substantial",
+   "agree": 3,
+   "conf": 0.863
+  }
+ },
+ "158": {
+  "role": {
+   "choice": "not_in_the_article_body",
+   "agree": 3,
+   "conf": 0.303
+  },
+  "whose_judgement": {
+   "choice": "the_article_author",
+   "agree": 3,
+   "conf": 0.807
+  },
+  "what_is_done": {
+   "choice": "assessing_him",
+   "agree": 3,
+   "conf": 0.8
+  },
+  "news_kind": {
+   "choice": "preview",
+   "agree": 3,
+   "conf": 0.777
+  },
+  "sourcing": {
+   "choice": "no_factual_claim",
+   "agree": 3,
+   "conf": 0.3
+  },
+  "novelty": {
+   "choice": "restates_known_facts",
+   "agree": 3,
+   "conf": 0.557
+  }
+ },
+ "166": {
+  "role": {
+   "choice": "the_one_being_talked_about",
+   "agree": 3,
+   "conf": 0.943
+  },
+  "whose_judgement": {
+   "choice": "the_champion_or_a_top_authority",
+   "agree": 2,
+   "conf": 0.577
+  },
+  "what_is_done": {
+   "choice": "assessing_him",
+   "agree": 3,
+   "conf": 0.973
+  },
+  "news_kind": {
+   "choice": "quote",
+   "agree": 3,
+   "conf": 0.877
+  },
+  "sourcing": {
+   "choice": "only_a_quote_no_event",
+   "agree": 3,
+   "conf": 0.99
+  },
+  "novelty": {
+   "choice": "new_and_substantial",
+   "agree": 3,
+   "conf": 0.47
+  }
+ },
+ "170": {
+  "role": {
+   "choice": "the_one_being_talked_about",
+   "agree": 3,
+   "conf": 0.987
+  },
+  "whose_judgement": {
+   "choice": "the_champion_or_a_top_authority",
+   "agree": 3,
+   "conf": 0.427
+  },
+  "what_is_done": {
+   "choice": "assessing_him",
+   "agree": 3,
+   "conf": 0.973
+  },
+  "news_kind": {
+   "choice": "quote",
+   "agree": 3,
+   "conf": 0.987
+  },
+  "sourcing": {
+   "choice": "only_a_quote_no_event",
+   "agree": 3,
+   "conf": 0.867
+  },
+  "novelty": {
+   "choice": "restates_known_facts",
+   "agree": 3,
+   "conf": 0.5
+  }
+ },
+ "174": {
+  "role": {
+   "choice": "the_one_being_talked_about",
+   "agree": 3,
+   "conf": 0.993
+  },
+  "whose_judgement": {
+   "choice": "an_opponent_or_their_camp",
+   "agree": 3,
+   "conf": 0.597
+  },
+  "what_is_done": {
+   "choice": "assessing_him",
+   "agree": 3,
+   "conf": 0.973
+  },
+  "news_kind": {
+   "choice": "quote",
+   "agree": 3,
+   "conf": 1.0
+  },
+  "sourcing": {
+   "choice": "only_a_quote_no_event",
+   "agree": 3,
+   "conf": 0.983
+  },
+  "novelty": {
+   "choice": "new_and_substantial",
+   "agree": 3,
+   "conf": 0.383
+  }
+ },
+ "181": {
+  "role": {
+   "choice": "mentioned_only",
+   "agree": 3,
+   "conf": 0.373
+  },
+  "whose_judgement": {
+   "choice": "himself",
+   "agree": 3,
+   "conf": 0.327
+  },
+  "what_is_done": {
+   "choice": "naming_him_in_passing",
+   "agree": 2,
+   "conf": 0.473
+  },
+  "news_kind": {
+   "choice": "quote",
+   "agree": 3,
+   "conf": 0.467
+  },
+  "sourcing": {
+   "choice": "only_a_quote_no_event",
+   "agree": 3,
+   "conf": 0.523
+  },
+  "novelty": {
+   "choice": "nothing_about_him",
+   "agree": 3,
+   "conf": 0.467
+  }
+ },
+ "186": {
+  "role": {
+   "choice": "background",
+   "agree": 1,
+   "conf": 0.23
+  },
+  "whose_judgement": {
+   "choice": "a_pundit_or_commentator",
+   "agree": 3,
+   "conf": 0.987
+  },
+  "what_is_done": {
+   "choice": "naming_him_in_passing",
+   "agree": 2,
+   "conf": 0.353
+  },
+  "news_kind": {
+   "choice": "quote",
+   "agree": 3,
+   "conf": 0.507
+  },
+  "sourcing": {
+   "choice": "only_a_quote_no_event",
+   "agree": 3,
+   "conf": 0.627
+  },
+  "novelty": {
+   "choice": "nothing_about_him",
+   "agree": 3,
+   "conf": 0.377
+  }
+ },
+ "187": {
+  "role": {
+   "choice": "background",
+   "agree": 3,
+   "conf": 0.647
+  },
+  "whose_judgement": {
+   "choice": "an_opponent_or_their_camp",
+   "agree": 3,
+   "conf": 0.867
+  },
+  "what_is_done": {
+   "choice": "naming_him_in_passing",
+   "agree": 3,
+   "conf": 0.803
+  },
+  "news_kind": {
+   "choice": "no_news_about_him",
+   "agree": 3,
+   "conf": 0.32
+  },
+  "sourcing": {
+   "choice": "only_a_quote_no_event",
+   "agree": 3,
+   "conf": 0.437
+  },
+  "novelty": {
+   "choice": "nothing_about_him",
+   "agree": 3,
+   "conf": 0.407
+  }
+ },
+ "193": {
+  "role": {
+   "choice": "the_one_being_talked_about",
+   "agree": 3,
+   "conf": 0.75
+  },
+  "whose_judgement": {
+   "choice": "an_opponent_or_their_camp",
+   "agree": 3,
+   "conf": 0.447
+  },
+  "what_is_done": {
+   "choice": "defending_him",
+   "agree": 3,
+   "conf": 0.957
+  },
+  "news_kind": {
+   "choice": "quote",
+   "agree": 3,
+   "conf": 0.987
+  },
+  "sourcing": {
+   "choice": "only_a_quote_no_event",
+   "agree": 3,
+   "conf": 0.92
+  },
+  "novelty": {
+   "choice": "new_and_substantial",
+   "agree": 3,
+   "conf": 0.41
+  }
+ },
+ "200": {
+  "role": {
+   "choice": "background",
+   "agree": 3,
+   "conf": 0.797
+  },
+  "whose_judgement": {
+   "choice": "another_fighter",
+   "agree": 3,
+   "conf": 0.633
+  },
+  "what_is_done": {
+   "choice": "naming_him_in_passing",
+   "agree": 3,
+   "conf": 0.69
+  },
+  "news_kind": {
+   "choice": "quote",
+   "agree": 2,
+   "conf": 0.433
+  },
+  "sourcing": {
+   "choice": "only_a_quote_no_event",
+   "agree": 3,
+   "conf": 0.67
+  },
+  "novelty": {
+   "choice": "nothing_about_him",
+   "agree": 3,
+   "conf": 0.333
+  }
+ },
+ "203": {
+  "role": {
+   "choice": "the_subject",
+   "agree": 3,
+   "conf": 1.0
+  },
+  "whose_judgement": {
+   "choice": "himself",
+   "agree": 3,
+   "conf": 0.87
+  },
+  "what_is_done": {
+   "choice": "he_tells_his_own_story",
+   "agree": 3,
+   "conf": 0.54
+  },
+  "news_kind": {
+   "choice": "quote",
+   "agree": 3,
+   "conf": 0.797
+  },
+  "sourcing": {
+   "choice": "only_a_quote_no_event",
+   "agree": 3,
+   "conf": 0.653
+  },
+  "novelty": {
+   "choice": "new_and_substantial",
+   "agree": 3,
+   "conf": 0.94
+  }
+ },
+ "204": {
+  "role": {
+   "choice": "mentioned_only",
+   "agree": 3,
+   "conf": 0.353
+  },
+  "whose_judgement": {
+   "choice": "the_article_author",
+   "agree": 3,
+   "conf": 0.86
+  },
+  "what_is_done": {
+   "choice": "assessing_him",
+   "agree": 3,
+   "conf": 0.663
+  },
+  "news_kind": {
+   "choice": "prediction",
+   "agree": 3,
+   "conf": 0.687
+  },
+  "sourcing": {
+   "choice": "no_factual_claim",
+   "agree": 3,
+   "conf": 0.783
+  },
+  "novelty": {
+   "choice": "restates_known_facts",
+   "agree": 2,
+   "conf": 0.333
+  }
+ },
+ "207": {
+  "role": {
+   "choice": "background",
+   "agree": 3,
+   "conf": 0.55
+  },
+  "whose_judgement": {
+   "choice": "another_fighter",
+   "agree": 3,
+   "conf": 0.26
+  },
+  "what_is_done": {
+   "choice": "naming_him_in_passing",
+   "agree": 3,
+   "conf": 0.52
+  },
+  "news_kind": {
+   "choice": "prediction",
+   "agree": 3,
+   "conf": 0.513
+  },
+  "sourcing": {
+   "choice": "no_factual_claim",
+   "agree": 3,
+   "conf": 0.497
+  },
+  "novelty": {
+   "choice": "nothing_about_him",
+   "agree": 3,
+   "conf": 0.633
+  }
+ },
+ "208": {
+  "role": {
+   "choice": "the_subject",
+   "agree": 3,
+   "conf": 0.993
+  },
+  "whose_judgement": {
+   "choice": "himself",
+   "agree": 3,
+   "conf": 0.83
+  },
+  "what_is_done": {
+   "choice": "he_tells_his_own_story",
+   "agree": 3,
+   "conf": 0.89
+  },
+  "news_kind": {
+   "choice": "quote",
+   "agree": 3,
+   "conf": 0.547
+  },
+  "sourcing": {
+   "choice": "only_a_quote_no_event",
+   "agree": 3,
+   "conf": 0.363
+  },
+  "novelty": {
+   "choice": "new_and_substantial",
+   "agree": 3,
+   "conf": 0.72
+  }
+ },
+ "214": {
+  "role": {
+   "choice": "background",
+   "agree": 3,
+   "conf": 0.89
+  },
+  "whose_judgement": {
+   "choice": "the_champion_or_a_top_authority",
+   "agree": 3,
+   "conf": 0.68
+  },
+  "what_is_done": {
+   "choice": "naming_him_in_passing",
+   "agree": 2,
+   "conf": 0.487
+  },
+  "news_kind": {
+   "choice": "other_career_fact",
+   "agree": 3,
+   "conf": 0.183
+  },
+  "sourcing": {
+   "choice": "only_a_quote_no_event",
+   "agree": 2,
+   "conf": 0.363
+  },
+  "novelty": {
+   "choice": "restates_known_facts",
+   "agree": 3,
+   "conf": 0.75
+  }
+ },
+ "224": {
+  "role": {
+   "choice": "the_one_being_talked_about",
+   "agree": 2,
+   "conf": 0.31
+  },
+  "whose_judgement": {
+   "choice": "a_pundit_or_commentator",
+   "agree": 2,
+   "conf": 0.47
+  },
+  "what_is_done": {
+   "choice": "he_fought",
+   "agree": 3,
+   "conf": 0.303
+  },
+  "news_kind": {
+   "choice": "result",
+   "agree": 2,
+   "conf": 0.46
+  },
+  "sourcing": {
+   "choice": "only_a_quote_no_event",
+   "agree": 2,
+   "conf": 0.287
+  },
+  "novelty": {
+   "choice": "nothing_about_him",
+   "agree": 3,
+   "conf": 0.517
+  }
+ },
+ "228": {
+  "role": {
+   "choice": "the_one_being_talked_about",
+   "agree": 3,
+   "conf": 0.903
+  },
+  "whose_judgement": {
+   "choice": "an_opponent_or_their_camp",
+   "agree": 3,
+   "conf": 0.777
+  },
+  "what_is_done": {
+   "choice": "he_gives_his_view",
+   "agree": 2,
+   "conf": 0.397
+  },
+  "news_kind": {
+   "choice": "negotiation",
+   "agree": 3,
+   "conf": 0.83
+  },
+  "sourcing": {
+   "choice": "reported",
+   "agree": 2,
+   "conf": 0.43
+  },
+  "novelty": {
+   "choice": "new_and_substantial",
+   "agree": 3,
+   "conf": 0.643
+  }
+ },
+ "230": {
+  "role": {
+   "choice": "not_in_the_article_body",
+   "agree": 3,
+   "conf": 0.387
+  },
+  "whose_judgement": {
+   "choice": "a_pundit_or_commentator",
+   "agree": 3,
+   "conf": 0.9
+  },
+  "what_is_done": {
+   "choice": "assessing_him",
+   "agree": 3,
+   "conf": 0.8
+  },
+  "news_kind": {
+   "choice": "result",
+   "agree": 3,
+   "conf": 0.71
+  },
+  "sourcing": {
+   "choice": "no_factual_claim",
+   "agree": 3,
+   "conf": 0.347
+  },
+  "novelty": {
+   "choice": "restates_known_facts",
+   "agree": 2,
+   "conf": 0.327
+  }
+ },
+ "233": {
+  "role": {
+   "choice": "one_of_several_subjects",
+   "agree": 3,
+   "conf": 0.6
+  },
+  "whose_judgement": {
+   "choice": "the_article_author",
+   "agree": 3,
+   "conf": 0.797
+  },
+  "what_is_done": {
+   "choice": "assessing_him",
+   "agree": 3,
+   "conf": 0.983
+  },
+  "news_kind": {
+   "choice": "other_career_fact",
+   "agree": 3,
+   "conf": 0.85
+  },
+  "sourcing": {
+   "choice": "reported",
+   "agree": 3,
+   "conf": 0.503
+  },
+  "novelty": {
+   "choice": "restates_known_facts",
+   "agree": 3,
+   "conf": 0.733
+  }
+ },
+ "238": {
+  "role": {
+   "choice": "the_one_being_talked_about",
+   "agree": 3,
+   "conf": 0.707
+  },
+  "whose_judgement": {
+   "choice": "a_pundit_or_commentator",
+   "agree": 3,
+   "conf": 0.973
+  },
+  "what_is_done": {
+   "choice": "assessing_him",
+   "agree": 3,
+   "conf": 0.413
+  },
+  "news_kind": {
+   "choice": "quote",
+   "agree": 3,
+   "conf": 0.503
+  },
+  "sourcing": {
+   "choice": "only_a_quote_no_event",
+   "agree": 3,
+   "conf": 0.393
+  },
+  "novelty": {
+   "choice": "filler_no_information",
+   "agree": 3,
+   "conf": 0.353
+  }
+ },
+ "244": {
+  "role": {
+   "choice": "the_one_being_talked_about",
+   "agree": 3,
+   "conf": 0.99
+  },
+  "whose_judgement": {
+   "choice": "an_opponent_or_their_camp",
+   "agree": 3,
+   "conf": 0.583
+  },
+  "what_is_done": {
+   "choice": "assessing_him",
+   "agree": 3,
+   "conf": 0.997
+  },
+  "news_kind": {
+   "choice": "quote",
+   "agree": 3,
+   "conf": 0.997
+  },
+  "sourcing": {
+   "choice": "only_a_quote_no_event",
+   "agree": 3,
+   "conf": 0.95
+  },
+  "novelty": {
+   "choice": "new_and_substantial",
+   "agree": 3,
+   "conf": 0.39
+  }
+ },
+ "247": {
+  "role": {
+   "choice": "the_one_being_talked_about",
+   "agree": 3,
+   "conf": 0.573
+  },
+  "whose_judgement": {
+   "choice": "a_pundit_or_commentator",
+   "agree": 3,
+   "conf": 0.727
+  },
+  "what_is_done": {
+   "choice": "assessing_him",
+   "agree": 3,
+   "conf": 0.447
+  },
+  "news_kind": {
+   "choice": "prediction",
+   "agree": 3,
+   "conf": 0.78
+  },
+  "sourcing": {
+   "choice": "only_a_quote_no_event",
+   "agree": 3,
+   "conf": 0.923
+  },
+  "novelty": {
+   "choice": "new_and_substantial",
+   "agree": 3,
+   "conf": 0.29
+  }
+ },
+ "249": {
+  "role": {
+   "choice": "the_one_being_talked_about",
+   "agree": 3,
+   "conf": 0.793
+  },
+  "whose_judgement": {
+   "choice": "an_opponent_or_their_camp",
+   "agree": 3,
+   "conf": 0.94
+  },
+  "what_is_done": {
+   "choice": "assessing_him",
+   "agree": 3,
+   "conf": 0.817
+  },
+  "news_kind": {
+   "choice": "quote",
+   "agree": 2,
+   "conf": 0.463
+  },
+  "sourcing": {
+   "choice": "only_a_quote_no_event",
+   "agree": 3,
+   "conf": 0.977
+  },
+  "novelty": {
+   "choice": "restates_known_facts",
+   "agree": 3,
+   "conf": 0.22
+  }
+ },
+ "256": {
+  "role": {
+   "choice": "the_one_being_talked_about",
+   "agree": 3,
+   "conf": 0.983
+  },
+  "whose_judgement": {
+   "choice": "another_fighter",
+   "agree": 2,
+   "conf": 0.49
+  },
+  "what_is_done": {
+   "choice": "steering_him_elsewhere",
+   "agree": 3,
+   "conf": 0.657
+  },
+  "news_kind": {
+   "choice": "prediction",
+   "agree": 3,
+   "conf": 0.767
+  },
+  "sourcing": {
+   "choice": "only_a_quote_no_event",
+   "agree": 3,
+   "conf": 0.967
+  },
+  "novelty": {
+   "choice": "new_and_substantial",
+   "agree": 3,
+   "conf": 0.55
+  }
+ },
+ "261": {
+  "role": {
+   "choice": "not_in_the_article_body",
+   "agree": 2,
+   "conf": 0.327
+  },
+  "whose_judgement": {
+   "choice": "the_article_author",
+   "agree": 2,
+   "conf": 0.273
+  },
+  "what_is_done": {
+   "choice": "he_tells_his_own_story",
+   "agree": 2,
+   "conf": 0.3
+  },
+  "news_kind": {
+   "choice": "no_news_about_him",
+   "agree": 3,
+   "conf": 0.387
+  },
+  "sourcing": {
+   "choice": "no_factual_claim",
+   "agree": 3,
+   "conf": 0.407
+  },
+  "novelty": {
+   "choice": "nothing_about_him",
+   "agree": 3,
+   "conf": 0.607
+  }
+ },
+ "269": {
+  "role": {
+   "choice": "the_one_being_talked_about",
+   "agree": 3,
+   "conf": 0.997
+  },
+  "whose_judgement": {
+   "choice": "another_fighter",
+   "agree": 3,
+   "conf": 0.52
+  },
+  "what_is_done": {
+   "choice": "steering_him_elsewhere",
+   "agree": 3,
+   "conf": 0.883
+  },
+  "news_kind": {
+   "choice": "prediction",
+   "agree": 3,
+   "conf": 0.487
+  },
+  "sourcing": {
+   "choice": "only_a_quote_no_event",
+   "agree": 3,
+   "conf": 0.983
+  },
+  "novelty": {
+   "choice": "new_and_substantial",
+   "agree": 3,
+   "conf": 0.553
+  }
+ },
+ "273": {
+  "role": {
+   "choice": "the_one_being_talked_about",
+   "agree": 3,
+   "conf": 0.957
+  },
+  "whose_judgement": {
+   "choice": "an_opponent_or_their_camp",
+   "agree": 3,
+   "conf": 0.72
+  },
+  "what_is_done": {
+   "choice": "calling_him_out",
+   "agree": 3,
+   "conf": 0.97
+  },
+  "news_kind": {
+   "choice": "quote",
+   "agree": 3,
+   "conf": 0.97
+  },
+  "sourcing": {
+   "choice": "only_a_quote_no_event",
+   "agree": 3,
+   "conf": 0.937
+  },
+  "novelty": {
+   "choice": "new_and_substantial",
+   "agree": 3,
+   "conf": 0.253
+  }
+ },
+ "279": {
+  "role": {
+   "choice": "the_one_being_talked_about",
+   "agree": 3,
+   "conf": 0.813
+  },
+  "whose_judgement": {
+   "choice": "his_camp",
+   "agree": 3,
+   "conf": 0.933
+  },
+  "what_is_done": {
+   "choice": "assessing_him",
+   "agree": 3,
+   "conf": 0.967
+  },
+  "news_kind": {
+   "choice": "quote",
+   "agree": 3,
+   "conf": 0.827
+  },
+  "sourcing": {
+   "choice": "only_a_quote_no_event",
+   "agree": 3,
+   "conf": 0.937
+  },
+  "novelty": {
+   "choice": "new_and_substantial",
+   "agree": 3,
+   "conf": 0.853
+  }
+ },
+ "283": {
+  "role": {
+   "choice": "the_one_being_talked_about",
+   "agree": 3,
+   "conf": 0.947
+  },
+  "whose_judgement": {
+   "choice": "an_opponent_or_their_camp",
+   "agree": 3,
+   "conf": 0.87
+  },
+  "what_is_done": {
+   "choice": "calling_him_out",
+   "agree": 3,
+   "conf": 0.57
+  },
+  "news_kind": {
+   "choice": "quote",
+   "agree": 3,
+   "conf": 1.0
+  },
+  "sourcing": {
+   "choice": "only_a_quote_no_event",
+   "agree": 3,
+   "conf": 0.963
+  },
+  "novelty": {
+   "choice": "restates_known_facts",
+   "agree": 3,
+   "conf": 0.247
+  }
+ },
+ "287": {
+  "role": {
+   "choice": "the_one_being_talked_about",
+   "agree": 3,
+   "conf": 0.803
+  },
+  "whose_judgement": {
+   "choice": "an_opponent_or_their_camp",
+   "agree": 3,
+   "conf": 0.87
+  },
+  "what_is_done": {
+   "choice": "steering_him_elsewhere",
+   "agree": 3,
+   "conf": 0.593
+  },
+  "news_kind": {
+   "choice": "quote",
+   "agree": 3,
+   "conf": 0.917
+  },
+  "sourcing": {
+   "choice": "only_a_quote_no_event",
+   "agree": 3,
+   "conf": 0.76
+  },
+  "novelty": {
+   "choice": "restates_known_facts",
+   "agree": 3,
+   "conf": 0.413
+  }
+ },
+ "291": {
+  "role": {
+   "choice": "the_subject",
+   "agree": 3,
+   "conf": 1.0
+  },
+  "whose_judgement": {
+   "choice": "himself",
+   "agree": 3,
+   "conf": 0.907
+  },
+  "what_is_done": {
+   "choice": "he_tells_his_own_story",
+   "agree": 3,
+   "conf": 1.0
+  },
+  "news_kind": {
+   "choice": "lifestyle",
+   "agree": 3,
+   "conf": 0.943
+  },
+  "sourcing": {
+   "choice": "only_a_quote_no_event",
+   "agree": 3,
+   "conf": 0.727
+  },
+  "novelty": {
+   "choice": "new_and_substantial",
+   "agree": 3,
+   "conf": 0.77
+  }
+ },
+ "297": {
+  "role": {
+   "choice": "mentioned_only",
+   "agree": 3,
+   "conf": 0.687
+  },
+  "whose_judgement": {
+   "choice": "the_champion_or_a_top_authority",
+   "agree": 3,
+   "conf": 0.48
+  },
+  "what_is_done": {
+   "choice": "naming_him_in_passing",
+   "agree": 3,
+   "conf": 0.943
+  },
+  "news_kind": {
+   "choice": "no_news_about_him",
+   "agree": 2,
+   "conf": 0.427
+  },
+  "sourcing": {
+   "choice": "only_a_quote_no_event",
+   "agree": 3,
+   "conf": 0.53
+  },
+  "novelty": {
+   "choice": "filler_no_information",
+   "agree": 3,
+   "conf": 0.49
+  }
+ },
+ "298": {
+  "role": {
+   "choice": "the_subject",
+   "agree": 3,
+   "conf": 1.0
+  },
+  "whose_judgement": {
+   "choice": "himself",
+   "agree": 3,
+   "conf": 0.923
+  },
+  "what_is_done": {
+   "choice": "he_tells_his_own_story",
+   "agree": 3,
+   "conf": 0.893
+  },
+  "news_kind": {
+   "choice": "quote",
+   "agree": 3,
+   "conf": 0.553
+  },
+  "sourcing": {
+   "choice": "only_a_quote_no_event",
+   "agree": 3,
+   "conf": 0.483
+  },
+  "novelty": {
+   "choice": "new_and_substantial",
+   "agree": 3,
+   "conf": 0.843
+  }
+ },
+ "300": {
+  "role": {
+   "choice": "the_subject",
+   "agree": 3,
+   "conf": 0.987
+  },
+  "whose_judgement": {
+   "choice": "himself",
+   "agree": 3,
+   "conf": 0.843
+  },
+  "what_is_done": {
+   "choice": "he_tells_his_own_story",
+   "agree": 3,
+   "conf": 0.957
+  },
+  "news_kind": {
+   "choice": "quote",
+   "agree": 3,
+   "conf": 0.57
+  },
+  "sourcing": {
+   "choice": "reported",
+   "agree": 2,
+   "conf": 0.393
+  },
+  "novelty": {
+   "choice": "new_and_substantial",
+   "agree": 3,
+   "conf": 0.82
+  }
+ },
+ "301": {
+  "role": {
+   "choice": "the_subject",
+   "agree": 3,
+   "conf": 0.993
+  },
+  "whose_judgement": {
+   "choice": "himself",
+   "agree": 3,
+   "conf": 0.83
+  },
+  "what_is_done": {
+   "choice": "he_gives_his_view",
+   "agree": 3,
+   "conf": 0.997
+  },
+  "news_kind": {
+   "choice": "quote",
+   "agree": 3,
+   "conf": 0.967
+  },
+  "sourcing": {
+   "choice": "only_a_quote_no_event",
+   "agree": 3,
+   "conf": 0.827
+  },
+  "novelty": {
+   "choice": "new_and_substantial",
+   "agree": 3,
+   "conf": 0.903
+  }
+ },
+ "305": {
+  "role": {
+   "choice": "the_subject",
+   "agree": 3,
+   "conf": 1.0
+  },
+  "whose_judgement": {
+   "choice": "himself",
+   "agree": 2,
+   "conf": 0.49
+  },
+  "what_is_done": {
+   "choice": "he_tells_his_own_story",
+   "agree": 3,
+   "conf": 0.6
+  },
+  "news_kind": {
+   "choice": "lifestyle",
+   "agree": 2,
+   "conf": 0.553
+  },
+  "sourcing": {
+   "choice": "reported",
+   "agree": 3,
+   "conf": 0.35
+  },
+  "novelty": {
+   "choice": "new_and_substantial",
+   "agree": 3,
+   "conf": 0.75
+  }
+ },
+ "311": {
+  "role": {
+   "choice": "the_one_being_talked_about",
+   "agree": 3,
+   "conf": 0.763
+  },
+  "whose_judgement": {
+   "choice": "an_opponent_or_their_camp",
+   "agree": 3,
+   "conf": 0.977
+  },
+  "what_is_done": {
+   "choice": "assessing_him",
+   "agree": 3,
+   "conf": 0.987
+  },
+  "news_kind": {
+   "choice": "quote",
+   "agree": 3,
+   "conf": 0.787
+  },
+  "sourcing": {
+   "choice": "only_a_quote_no_event",
+   "agree": 3,
+   "conf": 0.87
+  },
+  "novelty": {
+   "choice": "new_and_substantial",
+   "agree": 3,
+   "conf": 0.74
+  }
+ },
+ "316": {
+  "role": {
+   "choice": "not_in_the_article_body",
+   "agree": 3,
+   "conf": 0.357
+  },
+  "whose_judgement": {
+   "choice": "the_champion_or_a_top_authority",
+   "agree": 3,
+   "conf": 0.277
+  },
+  "what_is_done": {
+   "choice": "covering_his_event",
+   "agree": 2,
+   "conf": 0.157
+  },
+  "news_kind": {
+   "choice": "other_career_fact",
+   "agree": 3,
+   "conf": 0.793
+  },
+  "sourcing": {
+   "choice": "reported",
+   "agree": 3,
+   "conf": 0.723
+  },
+  "novelty": {
+   "choice": "new_and_substantial",
+   "agree": 3,
+   "conf": 0.537
+  }
+ },
+ "320": {
+  "role": {
+   "choice": "the_subject",
+   "agree": 3,
+   "conf": 1.0
+  },
+  "whose_judgement": {
+   "choice": "himself",
+   "agree": 3,
+   "conf": 0.5
+  },
+  "what_is_done": {
+   "choice": "he_tells_his_own_story",
+   "agree": 3,
+   "conf": 1.0
+  },
+  "news_kind": {
+   "choice": "quote",
+   "agree": 3,
+   "conf": 0.347
+  },
+  "sourcing": {
+   "choice": "reported",
+   "agree": 3,
+   "conf": 0.437
+  },
+  "novelty": {
+   "choice": "new_and_substantial",
+   "agree": 3,
+   "conf": 0.653
+  }
+ },
+ "321": {
+  "role": {
+   "choice": "the_subject",
+   "agree": 3,
+   "conf": 1.0
+  },
+  "whose_judgement": {
+   "choice": "himself",
+   "agree": 3,
+   "conf": 0.863
+  },
+  "what_is_done": {
+   "choice": "he_tells_his_own_story",
+   "agree": 3,
+   "conf": 1.0
+  },
+  "news_kind": {
+   "choice": "lifestyle",
+   "agree": 3,
+   "conf": 0.443
+  },
+  "sourcing": {
+   "choice": "only_a_quote_no_event",
+   "agree": 2,
+   "conf": 0.307
+  },
+  "novelty": {
+   "choice": "new_and_substantial",
+   "agree": 3,
+   "conf": 0.723
+  }
+ },
+ "322": {
+  "role": {
+   "choice": "the_subject",
+   "agree": 3,
+   "conf": 1.0
+  },
+  "whose_judgement": {
+   "choice": "himself",
+   "agree": 3,
+   "conf": 0.887
+  },
+  "what_is_done": {
+   "choice": "he_tells_his_own_story",
+   "agree": 3,
+   "conf": 1.0
+  },
+  "news_kind": {
+   "choice": "quote",
+   "agree": 3,
+   "conf": 0.367
+  },
+  "sourcing": {
+   "choice": "only_a_quote_no_event",
+   "agree": 2,
+   "conf": 0.42
+  },
+  "novelty": {
+   "choice": "new_and_substantial",
+   "agree": 3,
+   "conf": 0.733
+  }
+ },
+ "323": {
+  "role": {
+   "choice": "the_subject",
+   "agree": 3,
+   "conf": 0.27
+  },
+  "whose_judgement": {
+   "choice": "his_camp",
+   "agree": 3,
+   "conf": 0.693
+  },
+  "what_is_done": {
+   "choice": "naming_him_in_passing",
+   "agree": 3,
+   "conf": 0.443
+  },
+  "news_kind": {
+   "choice": "other_career_fact",
+   "agree": 3,
+   "conf": 0.527
+  },
+  "sourcing": {
+   "choice": "only_a_quote_no_event",
+   "agree": 3,
+   "conf": 0.48
+  },
+  "novelty": {
+   "choice": "small_new_detail",
+   "agree": 3,
+   "conf": 0.507
+  }
+ },
+ "327": {
+  "role": {
+   "choice": "the_one_being_talked_about",
+   "agree": 3,
+   "conf": 0.983
+  },
+  "whose_judgement": {
+   "choice": "another_fighter",
+   "agree": 3,
+   "conf": 0.49
+  },
+  "what_is_done": {
+   "choice": "assessing_him",
+   "agree": 3,
+   "conf": 0.983
+  },
+  "news_kind": {
+   "choice": "quote",
+   "agree": 3,
+   "conf": 0.98
+  },
+  "sourcing": {
+   "choice": "only_a_quote_no_event",
+   "agree": 3,
+   "conf": 0.927
+  },
+  "novelty": {
+   "choice": "new_and_substantial",
+   "agree": 3,
+   "conf": 0.437
+  }
+ },
+ "335": {
+  "role": {
+   "choice": "mentioned_only",
+   "agree": 2,
+   "conf": 0.427
+  },
+  "whose_judgement": {
+   "choice": "himself",
+   "agree": 3,
+   "conf": 0.42
+  },
+  "what_is_done": {
+   "choice": "naming_him_in_passing",
+   "agree": 3,
+   "conf": 0.573
+  },
+  "news_kind": {
+   "choice": "no_news_about_him",
+   "agree": 3,
+   "conf": 0.61
+  },
+  "sourcing": {
+   "choice": "no_factual_claim",
+   "agree": 3,
+   "conf": 0.497
+  },
+  "novelty": {
+   "choice": "nothing_about_him",
+   "agree": 3,
+   "conf": 0.76
+  }
+ },
+ "339": {
+  "role": {
+   "choice": "the_one_being_talked_about",
+   "agree": 3,
+   "conf": 0.957
+  },
+  "whose_judgement": {
+   "choice": "an_opponent_or_their_camp",
+   "agree": 3,
+   "conf": 0.68
+  },
+  "what_is_done": {
+   "choice": "assessing_him",
+   "agree": 3,
+   "conf": 0.933
+  },
+  "news_kind": {
+   "choice": "quote",
+   "agree": 3,
+   "conf": 0.887
+  },
+  "sourcing": {
+   "choice": "only_a_quote_no_event",
+   "agree": 3,
+   "conf": 0.97
+  },
+  "novelty": {
+   "choice": "new_and_substantial",
+   "agree": 3,
+   "conf": 0.49
+  }
+ },
+ "342": {
+  "role": {
+   "choice": "one_of_several_subjects",
+   "agree": 3,
+   "conf": 0.99
+  },
+  "whose_judgement": {
+   "choice": "no_one_judges_him",
+   "agree": 3,
+   "conf": 0.473
+  },
+  "what_is_done": {
+   "choice": "he_tells_his_own_story",
+   "agree": 3,
+   "conf": 0.863
+  },
+  "news_kind": {
+   "choice": "other_career_fact",
+   "agree": 3,
+   "conf": 0.653
+  },
+  "sourcing": {
+   "choice": "reported",
+   "agree": 3,
+   "conf": 0.81
+  },
+  "novelty": {
+   "choice": "restates_known_facts",
+   "agree": 3,
+   "conf": 0.463
+  }
+ },
+ "349": {
+  "role": {
+   "choice": "the_one_being_talked_about",
+   "agree": 3,
+   "conf": 0.76
+  },
+  "whose_judgement": {
+   "choice": "another_fighter",
+   "agree": 3,
+   "conf": 0.933
+  },
+  "what_is_done": {
+   "choice": "assessing_him",
+   "agree": 3,
+   "conf": 0.997
+  },
+  "news_kind": {
+   "choice": "quote",
+   "agree": 3,
+   "conf": 0.98
+  },
+  "sourcing": {
+   "choice": "only_a_quote_no_event",
+   "agree": 3,
+   "conf": 0.87
+  },
+  "novelty": {
+   "choice": "new_and_substantial",
+   "agree": 3,
+   "conf": 0.5
+  }
+ },
+ "353": {
+  "role": {
+   "choice": "background",
+   "agree": 3,
+   "conf": 0.653
+  },
+  "whose_judgement": {
+   "choice": "himself",
+   "agree": 3,
+   "conf": 0.37
+  },
+  "what_is_done": {
+   "choice": "naming_him_in_passing",
+   "agree": 3,
+   "conf": 0.637
+  },
+  "news_kind": {
+   "choice": "lifestyle",
+   "agree": 3,
+   "conf": 0.303
+  },
+  "sourcing": {
+   "choice": "only_a_quote_no_event",
+   "agree": 3,
+   "conf": 0.523
+  },
+  "novelty": {
+   "choice": "nothing_about_him",
+   "agree": 2,
+   "conf": 0.303
+  }
+ },
+ "361": {
+  "role": {
+   "choice": "the_subject",
+   "agree": 3,
+   "conf": 0.717
+  },
+  "whose_judgement": {
+   "choice": "another_fighter",
+   "agree": 3,
+   "conf": 0.89
+  },
+  "what_is_done": {
+   "choice": "assessing_him",
+   "agree": 3,
+   "conf": 0.983
+  },
+  "news_kind": {
+   "choice": "lifestyle",
+   "agree": 2,
+   "conf": 0.55
+  },
+  "sourcing": {
+   "choice": "only_a_quote_no_event",
+   "agree": 3,
+   "conf": 0.66
+  },
+  "novelty": {
+   "choice": "new_and_substantial",
+   "agree": 2,
+   "conf": 0.307
+  }
+ },
+ "368": {
+  "role": {
+   "choice": "the_subject",
+   "agree": 3,
+   "conf": 0.903
+  },
+  "whose_judgement": {
+   "choice": "another_fighter",
+   "agree": 3,
+   "conf": 0.66
+  },
+  "what_is_done": {
+   "choice": "assessing_him",
+   "agree": 3,
+   "conf": 0.947
+  },
+  "news_kind": {
+   "choice": "quote",
+   "agree": 2,
+   "conf": 0.54
+  },
+  "sourcing": {
+   "choice": "only_a_quote_no_event",
+   "agree": 3,
+   "conf": 0.407
+  },
+  "novelty": {
+   "choice": "new_and_substantial",
+   "agree": 3,
+   "conf": 0.393
+  }
+ },
+ "373": {
+  "role": {
+   "choice": "the_subject",
+   "agree": 3,
+   "conf": 0.88
+  },
+  "whose_judgement": {
+   "choice": "himself",
+   "agree": 3,
+   "conf": 0.253
+  },
+  "what_is_done": {
+   "choice": "he_gives_his_view",
+   "agree": 3,
+   "conf": 0.94
+  },
+  "news_kind": {
+   "choice": "quote",
+   "agree": 3,
+   "conf": 0.863
+  },
+  "sourcing": {
+   "choice": "only_a_quote_no_event",
+   "agree": 3,
+   "conf": 0.783
+  },
+  "novelty": {
+   "choice": "new_and_substantial",
+   "agree": 3,
+   "conf": 0.777
+  }
+ },
+ "380": {
+  "role": {
+   "choice": "the_subject",
+   "agree": 3,
+   "conf": 1.0
+  },
+  "whose_judgement": {
+   "choice": "himself",
+   "agree": 3,
+   "conf": 0.82
+  },
+  "what_is_done": {
+   "choice": "he_tells_his_own_story",
+   "agree": 3,
+   "conf": 0.99
+  },
+  "news_kind": {
+   "choice": "lifestyle",
+   "agree": 3,
+   "conf": 0.813
+  },
+  "sourcing": {
+   "choice": "only_a_quote_no_event",
+   "agree": 2,
+   "conf": 0.487
+  },
+  "novelty": {
+   "choice": "new_and_substantial",
+   "agree": 3,
+   "conf": 0.88
+  }
+ },
+ "385": {
+  "role": {
+   "choice": "the_subject",
+   "agree": 3,
+   "conf": 0.577
+  },
+  "whose_judgement": {
+   "choice": "an_opponent_or_their_camp",
+   "agree": 3,
+   "conf": 0.857
+  },
+  "what_is_done": {
+   "choice": "defending_him",
+   "agree": 2,
+   "conf": 0.397
+  },
+  "news_kind": {
+   "choice": "quote",
+   "agree": 3,
+   "conf": 0.983
+  },
+  "sourcing": {
+   "choice": "only_a_quote_no_event",
+   "agree": 3,
+   "conf": 0.817
+  },
+  "novelty": {
+   "choice": "new_and_substantial",
+   "agree": 3,
+   "conf": 0.567
+  }
+ },
+ "397": {
+  "role": {
+   "choice": "the_one_being_talked_about",
+   "agree": 3,
+   "conf": 0.78
+  },
+  "whose_judgement": {
+   "choice": "an_opponent_or_their_camp",
+   "agree": 2,
+   "conf": 0.32
+  },
+  "what_is_done": {
+   "choice": "assessing_him",
+   "agree": 3,
+   "conf": 0.927
+  },
+  "news_kind": {
+   "choice": "quote",
+   "agree": 3,
+   "conf": 0.9
+  },
+  "sourcing": {
+   "choice": "only_a_quote_no_event",
+   "agree": 3,
+   "conf": 0.92
+  },
+  "novelty": {
+   "choice": "new_and_substantial",
+   "agree": 2,
+   "conf": 0.303
+  }
+ },
+ "402": {
+  "role": {
+   "choice": "the_subject",
+   "agree": 3,
+   "conf": 0.963
+  },
+  "whose_judgement": {
+   "choice": "his_camp",
+   "agree": 3,
+   "conf": 0.93
+  },
+  "what_is_done": {
+   "choice": "assessing_him",
+   "agree": 3,
+   "conf": 0.993
+  },
+  "news_kind": {
+   "choice": "prediction",
+   "agree": 3,
+   "conf": 0.487
+  },
+  "sourcing": {
+   "choice": "rumored",
+   "agree": 3,
+   "conf": 0.603
+  },
+  "novelty": {
+   "choice": "new_and_substantial",
+   "agree": 3,
+   "conf": 0.877
+  }
+ },
+ "408": {
+  "role": {
+   "choice": "the_one_being_talked_about",
+   "agree": 3,
+   "conf": 0.953
+  },
+  "whose_judgement": {
+   "choice": "another_fighter",
+   "agree": 3,
+   "conf": 0.633
+  },
+  "what_is_done": {
+   "choice": "assessing_him",
+   "agree": 3,
+   "conf": 0.75
+  },
+  "news_kind": {
+   "choice": "quote",
+   "agree": 3,
+   "conf": 1.0
+  },
+  "sourcing": {
+   "choice": "only_a_quote_no_event",
+   "agree": 3,
+   "conf": 0.977
+  },
+  "novelty": {
+   "choice": "restates_known_facts",
+   "agree": 3,
+   "conf": 0.667
+  }
+ },
+ "412": {
+  "role": {
+   "choice": "the_subject",
+   "agree": 3,
+   "conf": 0.943
+  },
+  "whose_judgement": {
+   "choice": "his_camp",
+   "agree": 3,
+   "conf": 0.95
+  },
+  "what_is_done": {
+   "choice": "assessing_him",
+   "agree": 3,
+   "conf": 0.993
+  },
+  "news_kind": {
+   "choice": "injury",
+   "agree": 3,
+   "conf": 0.663
+  },
+  "sourcing": {
+   "choice": "rumored",
+   "agree": 3,
+   "conf": 0.58
+  },
+  "novelty": {
+   "choice": "new_and_substantial",
+   "agree": 3,
+   "conf": 0.883
+  }
+ },
+ "416": {
+  "role": {
+   "choice": "mentioned_only",
+   "agree": 3,
+   "conf": 0.647
+  },
+  "whose_judgement": {
+   "choice": "another_fighter",
+   "agree": 3,
+   "conf": 0.86
+  },
+  "what_is_done": {
+   "choice": "naming_him_in_passing",
+   "agree": 3,
+   "conf": 0.443
+  },
+  "news_kind": {
+   "choice": "quote",
+   "agree": 3,
+   "conf": 0.913
+  },
+  "sourcing": {
+   "choice": "only_a_quote_no_event",
+   "agree": 3,
+   "conf": 0.977
+  },
+  "novelty": {
+   "choice": "small_new_detail",
+   "agree": 1,
+   "conf": 0.203
+  }
+ },
+ "423": {
+  "role": {
+   "choice": "the_one_being_talked_about",
+   "agree": 3,
+   "conf": 0.957
+  },
+  "whose_judgement": {
+   "choice": "an_opponent_or_their_camp",
+   "agree": 3,
+   "conf": 0.867
+  },
+  "what_is_done": {
+   "choice": "calling_him_out",
+   "agree": 3,
+   "conf": 0.94
+  },
+  "news_kind": {
+   "choice": "quote",
+   "agree": 3,
+   "conf": 0.987
+  },
+  "sourcing": {
+   "choice": "only_a_quote_no_event",
+   "agree": 3,
+   "conf": 0.88
+  },
+  "novelty": {
+   "choice": "restates_known_facts",
+   "agree": 3,
+   "conf": 0.74
+  }
+ },
+ "427": {
+  "role": {
+   "choice": "the_subject",
+   "agree": 3,
+   "conf": 1.0
+  },
+  "whose_judgement": {
+   "choice": "himself",
+   "agree": 3,
+   "conf": 0.93
+  },
+  "what_is_done": {
+   "choice": "he_tells_his_own_story",
+   "agree": 3,
+   "conf": 1.0
+  },
+  "news_kind": {
+   "choice": "lifestyle",
+   "agree": 3,
+   "conf": 0.583
+  },
+  "sourcing": {
+   "choice": "only_a_quote_no_event",
+   "agree": 3,
+   "conf": 0.873
+  },
+  "novelty": {
+   "choice": "new_and_substantial",
+   "agree": 3,
+   "conf": 0.86
+  }
+ },
+ "431": {
+  "role": {
+   "choice": "the_one_being_talked_about",
+   "agree": 3,
+   "conf": 0.953
+  },
+  "whose_judgement": {
+   "choice": "another_fighter",
+   "agree": 3,
+   "conf": 0.663
+  },
+  "what_is_done": {
+   "choice": "assessing_him",
+   "agree": 3,
+   "conf": 0.7
+  },
+  "news_kind": {
+   "choice": "quote",
+   "agree": 3,
+   "conf": 0.967
+  },
+  "sourcing": {
+   "choice": "only_a_quote_no_event",
+   "agree": 3,
+   "conf": 0.703
+  },
+  "novelty": {
+   "choice": "restates_known_facts",
+   "agree": 3,
+   "conf": 0.753
+  }
+ },
+ "435": {
+  "role": {
+   "choice": "the_one_being_talked_about",
+   "agree": 3,
+   "conf": 0.98
+  },
+  "whose_judgement": {
+   "choice": "an_opponent_or_their_camp",
+   "agree": 3,
+   "conf": 0.513
+  },
+  "what_is_done": {
+   "choice": "calling_him_out",
+   "agree": 3,
+   "conf": 0.38
+  },
+  "news_kind": {
+   "choice": "quote",
+   "agree": 3,
+   "conf": 0.97
+  },
+  "sourcing": {
+   "choice": "only_a_quote_no_event",
+   "agree": 3,
+   "conf": 0.78
+  },
+  "novelty": {
+   "choice": "restates_known_facts",
+   "agree": 3,
+   "conf": 0.28
+  }
+ },
+ "442": {
+  "role": {
+   "choice": "the_one_being_talked_about",
+   "agree": 3,
+   "conf": 0.95
+  },
+  "whose_judgement": {
+   "choice": "an_opponent_or_their_camp",
+   "agree": 3,
+   "conf": 0.957
+  },
+  "what_is_done": {
+   "choice": "assessing_him",
+   "agree": 3,
+   "conf": 0.97
+  },
+  "news_kind": {
+   "choice": "quote",
+   "agree": 3,
+   "conf": 0.813
+  },
+  "sourcing": {
+   "choice": "only_a_quote_no_event",
+   "agree": 3,
+   "conf": 0.777
+  },
+  "novelty": {
+   "choice": "new_and_substantial",
+   "agree": 3,
+   "conf": 0.65
+  }
+ },
+ "447": {
+  "role": {
+   "choice": "one_of_several_subjects",
+   "agree": 3,
+   "conf": 0.493
+  },
+  "whose_judgement": {
+   "choice": "the_article_author",
+   "agree": 3,
+   "conf": 0.707
+  },
+  "what_is_done": {
+   "choice": "assessing_him",
+   "agree": 3,
+   "conf": 0.597
+  },
+  "news_kind": {
+   "choice": "prediction",
+   "agree": 2,
+   "conf": 0.39
+  },
+  "sourcing": {
+   "choice": "no_factual_claim",
+   "agree": 3,
+   "conf": 0.85
+  },
+  "novelty": {
+   "choice": "restates_known_facts",
+   "agree": 3,
+   "conf": 0.643
+  }
+ },
+ "453": {
+  "role": {
+   "choice": "background",
+   "agree": 2,
+   "conf": 0.263
+  },
+  "whose_judgement": {
+   "choice": "himself",
+   "agree": 2,
+   "conf": 0.207
+  },
+  "what_is_done": {
+   "choice": "defending_him",
+   "agree": 3,
+   "conf": 0.283
+  },
+  "news_kind": {
+   "choice": "no_news_about_him",
+   "agree": 2,
+   "conf": 0.33
+  },
+  "sourcing": {
+   "choice": "only_a_quote_no_event",
+   "agree": 3,
+   "conf": 0.497
+  },
+  "novelty": {
+   "choice": "nothing_about_him",
+   "agree": 3,
+   "conf": 0.51
+  }
+ },
+ "457": {
+  "role": {
+   "choice": "mentioned_only",
+   "agree": 3,
+   "conf": 0.457
+  },
+  "whose_judgement": {
+   "choice": "no_one_judges_him",
+   "agree": 3,
+   "conf": 0.42
+  },
+  "what_is_done": {
+   "choice": "naming_him_in_passing",
+   "agree": 3,
+   "conf": 0.653
+  },
+  "news_kind": {
+   "choice": "no_news_about_him",
+   "agree": 3,
+   "conf": 0.553
+  },
+  "sourcing": {
+   "choice": "no_factual_claim",
+   "agree": 2,
+   "conf": 0.24
+  },
+  "novelty": {
+   "choice": "nothing_about_him",
+   "agree": 3,
+   "conf": 0.567
+  }
+ },
+ "462": {
+  "role": {
+   "choice": "the_one_being_talked_about",
+   "agree": 3,
+   "conf": 0.503
+  },
+  "whose_judgement": {
+   "choice": "an_opponent_or_their_camp",
+   "agree": 3,
+   "conf": 0.553
+  },
+  "what_is_done": {
+   "choice": "naming_him_in_passing",
+   "agree": 2,
+   "conf": 0.323
+  },
+  "news_kind": {
+   "choice": "quote",
+   "agree": 2,
+   "conf": 0.363
+  },
+  "sourcing": {
+   "choice": "only_a_quote_no_event",
+   "agree": 2,
+   "conf": 0.243
+  },
+  "novelty": {
+   "choice": "small_new_detail",
+   "agree": 1,
+   "conf": 0.147
+  }
+ },
+ "467": {
+  "role": {
+   "choice": "the_one_being_talked_about",
+   "agree": 3,
+   "conf": 0.79
+  },
+  "whose_judgement": {
+   "choice": "an_opponent_or_their_camp",
+   "agree": 3,
+   "conf": 0.477
+  },
+  "what_is_done": {
+   "choice": "assessing_him",
+   "agree": 2,
+   "conf": 0.313
+  },
+  "news_kind": {
+   "choice": "quote",
+   "agree": 3,
+   "conf": 0.66
+  },
+  "sourcing": {
+   "choice": "only_a_quote_no_event",
+   "agree": 3,
+   "conf": 0.52
+  },
+  "novelty": {
+   "choice": "restates_known_facts",
+   "agree": 2,
+   "conf": 0.273
+  }
+ },
+ "476": {
+  "role": {
+   "choice": "background",
+   "agree": 3,
+   "conf": 0.917
+  },
+  "whose_judgement": {
+   "choice": "an_opponent_or_their_camp",
+   "agree": 3,
+   "conf": 0.543
+  },
+  "what_is_done": {
+   "choice": "naming_him_in_passing",
+   "agree": 3,
+   "conf": 0.643
+  },
+  "news_kind": {
+   "choice": "quote",
+   "agree": 1,
+   "conf": 0.317
+  },
+  "sourcing": {
+   "choice": "only_a_quote_no_event",
+   "agree": 2,
+   "conf": 0.243
+  },
+  "novelty": {
+   "choice": "restates_known_facts",
+   "agree": 2,
+   "conf": 0.287
+  }
+ },
+ "484": {
+  "role": {
+   "choice": "the_one_being_talked_about",
+   "agree": 3,
+   "conf": 0.58
+  },
+  "whose_judgement": {
+   "choice": "an_opponent_or_their_camp",
+   "agree": 3,
+   "conf": 0.553
+  },
+  "what_is_done": {
+   "choice": "naming_him_in_passing",
+   "agree": 3,
+   "conf": 0.327
+  },
+  "news_kind": {
+   "choice": "quote",
+   "agree": 3,
+   "conf": 0.57
+  },
+  "sourcing": {
+   "choice": "only_a_quote_no_event",
+   "agree": 3,
+   "conf": 0.373
+  },
+  "novelty": {
+   "choice": "restates_known_facts",
+   "agree": 2,
+   "conf": 0.23
+  }
+ },
+ "490": {
+  "role": {
+   "choice": "the_subject",
+   "agree": 3,
+   "conf": 0.99
+  },
+  "whose_judgement": {
+   "choice": "himself",
+   "agree": 3,
+   "conf": 0.507
+  },
+  "what_is_done": {
+   "choice": "covering_his_event",
+   "agree": 3,
+   "conf": 0.507
+  },
+  "news_kind": {
+   "choice": "preview",
+   "agree": 3,
+   "conf": 0.61
+  },
+  "sourcing": {
+   "choice": "official",
+   "agree": 3,
+   "conf": 0.807
+  },
+  "novelty": {
+   "choice": "new_and_substantial",
+   "agree": 3,
+   "conf": 0.687
+  }
+ },
+ "491": {
+  "role": {
+   "choice": "the_subject",
+   "agree": 3,
+   "conf": 0.99
+  },
+  "whose_judgement": {
+   "choice": "himself",
+   "agree": 3,
+   "conf": 0.467
+  },
+  "what_is_done": {
+   "choice": "covering_his_event",
+   "agree": 3,
+   "conf": 0.483
+  },
+  "news_kind": {
+   "choice": "preview",
+   "agree": 3,
+   "conf": 0.637
+  },
+  "sourcing": {
+   "choice": "official",
+   "agree": 3,
+   "conf": 0.71
+  },
+  "novelty": {
+   "choice": "new_and_substantial",
+   "agree": 3,
+   "conf": 0.68
+  }
+ },
+ "492": {
+  "role": {
+   "choice": "the_one_being_talked_about",
+   "agree": 2,
+   "conf": 0.307
+  },
+  "whose_judgement": {
+   "choice": "himself",
+   "agree": 3,
+   "conf": 0.6
+  },
+  "what_is_done": {
+   "choice": "he_tells_his_own_story",
+   "agree": 3,
+   "conf": 0.317
+  },
+  "news_kind": {
+   "choice": "injury",
+   "agree": 3,
+   "conf": 0.683
+  },
+  "sourcing": {
+   "choice": "reported",
+   "agree": 3,
+   "conf": 0.37
+  },
+  "novelty": {
+   "choice": "new_and_substantial",
+   "agree": 3,
+   "conf": 0.567
+  }
+ },
+ "494": {
+  "role": {
+   "choice": "the_subject",
+   "agree": 3,
+   "conf": 0.983
+  },
+  "whose_judgement": {
+   "choice": "himself",
+   "agree": 3,
+   "conf": 0.46
+  },
+  "what_is_done": {
+   "choice": "covering_his_event",
+   "agree": 3,
+   "conf": 0.423
+  },
+  "news_kind": {
+   "choice": "preview",
+   "agree": 3,
+   "conf": 0.54
+  },
+  "sourcing": {
+   "choice": "official",
+   "agree": 3,
+   "conf": 0.81
+  },
+  "novelty": {
+   "choice": "new_and_substantial",
+   "agree": 3,
+   "conf": 0.69
+  }
+ },
+ "497": {
+  "role": {
+   "choice": "the_subject",
+   "agree": 3,
+   "conf": 1.0
+  },
+  "whose_judgement": {
+   "choice": "himself",
+   "agree": 3,
+   "conf": 0.553
+  },
+  "what_is_done": {
+   "choice": "he_tells_his_own_story",
+   "agree": 3,
+   "conf": 0.987
+  },
+  "news_kind": {
+   "choice": "quote",
+   "agree": 3,
+   "conf": 0.5
+  },
+  "sourcing": {
+   "choice": "only_a_quote_no_event",
+   "agree": 3,
+   "conf": 0.443
+  },
+  "novelty": {
+   "choice": "restates_known_facts",
+   "agree": 2,
+   "conf": 0.373
+  }
+ },
+ "500": {
+  "role": {
+   "choice": "mentioned_only",
+   "agree": 3,
+   "conf": 0.94
+  },
+  "whose_judgement": {
+   "choice": "no_one_judges_him",
+   "agree": 2,
+   "conf": 0.427
+  },
+  "what_is_done": {
+   "choice": "naming_him_in_passing",
+   "agree": 3,
+   "conf": 0.687
+  },
+  "news_kind": {
+   "choice": "preview",
+   "agree": 2,
+   "conf": 0.457
+  },
+  "sourcing": {
+   "choice": "no_factual_claim",
+   "agree": 3,
+   "conf": 0.32
+  },
+  "novelty": {
+   "choice": "nothing_about_him",
+   "agree": 2,
+   "conf": 0.257
+  }
+ },
+ "503": {
+  "role": {
+   "choice": "the_one_being_talked_about",
+   "agree": 3,
+   "conf": 0.813
+  },
+  "whose_judgement": {
+   "choice": "an_opponent_or_their_camp",
+   "agree": 3,
+   "conf": 0.673
+  },
+  "what_is_done": {
+   "choice": "assessing_him",
+   "agree": 3,
+   "conf": 0.663
+  },
+  "news_kind": {
+   "choice": "quote",
+   "agree": 3,
+   "conf": 0.76
+  },
+  "sourcing": {
+   "choice": "only_a_quote_no_event",
+   "agree": 3,
+   "conf": 0.317
+  },
+  "novelty": {
+   "choice": "new_and_substantial",
+   "agree": 3,
+   "conf": 0.293
+  }
+ },
+ "508": {
+  "role": {
+   "choice": "one_of_several_subjects",
+   "agree": 3,
+   "conf": 0.647
+  },
+  "whose_judgement": {
+   "choice": "the_article_author",
+   "agree": 3,
+   "conf": 0.75
+  },
+  "what_is_done": {
+   "choice": "assessing_him",
+   "agree": 3,
+   "conf": 0.93
+  },
+  "news_kind": {
+   "choice": "other_career_fact",
+   "agree": 3,
+   "conf": 0.793
+  },
+  "sourcing": {
+   "choice": "reported",
+   "agree": 3,
+   "conf": 0.62
+  },
+  "novelty": {
+   "choice": "restates_known_facts",
+   "agree": 3,
+   "conf": 0.657
+  }
+ },
+ "510": {
+  "role": {
+   "choice": "mentioned_only",
+   "agree": 3,
+   "conf": 0.883
+  },
+  "whose_judgement": {
+   "choice": "no_one_judges_him",
+   "agree": 3,
+   "conf": 0.927
+  },
+  "what_is_done": {
+   "choice": "naming_him_in_passing",
+   "agree": 3,
+   "conf": 0.633
+  },
+  "news_kind": {
+   "choice": "preview",
+   "agree": 3,
+   "conf": 0.947
+  },
+  "sourcing": {
+   "choice": "official",
+   "agree": 3,
+   "conf": 0.573
+  },
+  "novelty": {
+   "choice": "small_new_detail",
+   "agree": 3,
+   "conf": 0.503
+  }
+ },
+ "516": {
+  "role": {
+   "choice": "the_one_being_talked_about",
+   "agree": 3,
+   "conf": 0.56
+  },
+  "whose_judgement": {
+   "choice": "another_fighter",
+   "agree": 3,
+   "conf": 0.81
+  },
+  "what_is_done": {
+   "choice": "assessing_him",
+   "agree": 2,
+   "conf": 0.42
+  },
+  "news_kind": {
+   "choice": "quote",
+   "agree": 3,
+   "conf": 0.53
+  },
+  "sourcing": {
+   "choice": "only_a_quote_no_event",
+   "agree": 3,
+   "conf": 0.917
+  },
+  "novelty": {
+   "choice": "restates_known_facts",
+   "agree": 3,
+   "conf": 0.533
+  }
+ },
+ "520": {
+  "role": {
+   "choice": "not_in_the_article_body",
+   "agree": 3,
+   "conf": 0.457
+  },
+  "whose_judgement": {
+   "choice": "an_opponent_or_their_camp",
+   "agree": 3,
+   "conf": 0.403
+  },
+  "what_is_done": {
+   "choice": "naming_him_in_passing",
+   "agree": 3,
+   "conf": 0.54
+  },
+  "news_kind": {
+   "choice": "no_news_about_him",
+   "agree": 3,
+   "conf": 0.567
+  },
+  "sourcing": {
+   "choice": "no_factual_claim",
+   "agree": 3,
+   "conf": 0.277
+  },
+  "novelty": {
+   "choice": "nothing_about_him",
+   "agree": 3,
+   "conf": 0.61
+  }
+ },
+ "521": {
+  "role": {
+   "choice": "the_subject",
+   "agree": 3,
+   "conf": 0.92
+  },
+  "whose_judgement": {
+   "choice": "himself",
+   "agree": 3,
+   "conf": 0.917
+  },
+  "what_is_done": {
+   "choice": "covering_his_event",
+   "agree": 3,
+   "conf": 0.707
+  },
+  "news_kind": {
+   "choice": "preview",
+   "agree": 3,
+   "conf": 0.54
+  },
+  "sourcing": {
+   "choice": "only_a_quote_no_event",
+   "agree": 3,
+   "conf": 0.497
+  },
+  "novelty": {
+   "choice": "filler_no_information",
+   "agree": 3,
+   "conf": 0.79
+  }
+ },
+ "525": {
+  "role": {
+   "choice": "the_one_being_talked_about",
+   "agree": 3,
+   "conf": 0.98
+  },
+  "whose_judgement": {
+   "choice": "an_opponent_or_their_camp",
+   "agree": 2,
+   "conf": 0.56
+  },
+  "what_is_done": {
+   "choice": "assessing_him",
+   "agree": 3,
+   "conf": 0.833
+  },
+  "news_kind": {
+   "choice": "quote",
+   "agree": 3,
+   "conf": 0.95
+  },
+  "sourcing": {
+   "choice": "only_a_quote_no_event",
+   "agree": 3,
+   "conf": 0.88
+  },
+  "novelty": {
+   "choice": "restates_known_facts",
+   "agree": 3,
+   "conf": 0.573
+  }
+ },
+ "529": {
+  "role": {
+   "choice": "the_one_being_talked_about",
+   "agree": 3,
+   "conf": 0.65
+  },
+  "whose_judgement": {
+   "choice": "himself",
+   "agree": 2,
+   "conf": 0.387
+  },
+  "what_is_done": {
+   "choice": "he_gives_his_view",
+   "agree": 2,
+   "conf": 0.36
+  },
+  "news_kind": {
+   "choice": "quote",
+   "agree": 3,
+   "conf": 0.36
+  },
+  "sourcing": {
+   "choice": "only_a_quote_no_event",
+   "agree": 2,
+   "conf": 0.273
+  },
+  "novelty": {
+   "choice": "new_and_substantial",
+   "agree": 3,
+   "conf": 0.417
+  }
+ },
+ "532": {
+  "role": {
+   "choice": "the_one_being_talked_about",
+   "agree": 3,
+   "conf": 0.657
+  },
+  "whose_judgement": {
+   "choice": "himself",
+   "agree": 2,
+   "conf": 0.39
+  },
+  "what_is_done": {
+   "choice": "he_gives_his_view",
+   "agree": 2,
+   "conf": 0.417
+  },
+  "news_kind": {
+   "choice": "quote",
+   "agree": 3,
+   "conf": 0.38
+  },
+  "sourcing": {
+   "choice": "official",
+   "agree": 1,
+   "conf": 0.267
+  },
+  "novelty": {
+   "choice": "new_and_substantial",
+   "agree": 2,
+   "conf": 0.423
+  }
+ },
+ "533": {
+  "role": {
+   "choice": "the_one_being_talked_about",
+   "agree": 3,
+   "conf": 0.987
+  },
+  "whose_judgement": {
+   "choice": "another_fighter",
+   "agree": 3,
+   "conf": 0.607
+  },
+  "what_is_done": {
+   "choice": "calling_him_out",
+   "agree": 2,
+   "conf": 0.35
+  },
+  "news_kind": {
+   "choice": "quote",
+   "agree": 3,
+   "conf": 0.923
+  },
+  "sourcing": {
+   "choice": "only_a_quote_no_event",
+   "agree": 3,
+   "conf": 0.97
+  },
+  "novelty": {
+   "choice": "filler_no_information",
+   "agree": 3,
+   "conf": 0.463
+  }
+ },
+ "540": {
+  "role": {
+   "choice": "the_one_being_talked_about",
+   "agree": 3,
+   "conf": 0.98
+  },
+  "whose_judgement": {
+   "choice": "another_fighter",
+   "agree": 3,
+   "conf": 0.593
+  },
+  "what_is_done": {
+   "choice": "calling_him_out",
+   "agree": 2,
+   "conf": 0.357
+  },
+  "news_kind": {
+   "choice": "quote",
+   "agree": 3,
+   "conf": 0.92
+  },
+  "sourcing": {
+   "choice": "only_a_quote_no_event",
+   "agree": 3,
+   "conf": 0.97
+  },
+  "novelty": {
+   "choice": "filler_no_information",
+   "agree": 3,
+   "conf": 0.407
+  }
+ },
+ "547": {
+  "role": {
+   "choice": "the_subject",
+   "agree": 3,
+   "conf": 0.483
+  },
+  "whose_judgement": {
+   "choice": "his_camp",
+   "agree": 3,
+   "conf": 1.0
+  },
+  "what_is_done": {
+   "choice": "assessing_him",
+   "agree": 3,
+   "conf": 0.997
+  },
+  "news_kind": {
+   "choice": "quote",
+   "agree": 3,
+   "conf": 1.0
+  },
+  "sourcing": {
+   "choice": "only_a_quote_no_event",
+   "agree": 3,
+   "conf": 0.89
+  },
+  "novelty": {
+   "choice": "new_and_substantial",
+   "agree": 3,
+   "conf": 0.687
+  }
+ },
+ "551": {
+  "role": {
+   "choice": "background",
+   "agree": 3,
+   "conf": 0.85
+  },
+  "whose_judgement": {
+   "choice": "an_opponent_or_their_camp",
+   "agree": 3,
+   "conf": 0.32
+  },
+  "what_is_done": {
+   "choice": "naming_him_in_passing",
+   "agree": 3,
+   "conf": 0.56
+  },
+  "news_kind": {
+   "choice": "result",
+   "agree": 2,
+   "conf": 0.36
+  },
+  "sourcing": {
+   "choice": "only_a_quote_no_event",
+   "agree": 2,
+   "conf": 0.45
+  },
+  "novelty": {
+   "choice": "nothing_about_him",
+   "agree": 3,
+   "conf": 0.283
+  }
+ },
+ "555": {
+  "role": {
+   "choice": "one_of_several_subjects",
+   "agree": 3,
+   "conf": 0.82
+  },
+  "whose_judgement": {
+   "choice": "the_article_author",
+   "agree": 3,
+   "conf": 0.753
+  },
+  "what_is_done": {
+   "choice": "assessing_him",
+   "agree": 3,
+   "conf": 0.93
+  },
+  "news_kind": {
+   "choice": "prediction",
+   "agree": 2,
+   "conf": 0.553
+  },
+  "sourcing": {
+   "choice": "no_factual_claim",
+   "agree": 3,
+   "conf": 0.43
+  },
+  "novelty": {
+   "choice": "restates_known_facts",
+   "agree": 3,
+   "conf": 0.463
+  }
+ },
+ "556": {
+  "role": {
+   "choice": "background",
+   "agree": 3,
+   "conf": 0.75
+  },
+  "whose_judgement": {
+   "choice": "the_article_author",
+   "agree": 2,
+   "conf": 0.327
+  },
+  "what_is_done": {
+   "choice": "naming_him_in_passing",
+   "agree": 3,
+   "conf": 0.293
+  },
+  "news_kind": {
+   "choice": "quote",
+   "agree": 3,
+   "conf": 0.853
+  },
+  "sourcing": {
+   "choice": "only_a_quote_no_event",
+   "agree": 3,
+   "conf": 0.65
+  },
+  "novelty": {
+   "choice": "restates_known_facts",
+   "agree": 3,
+   "conf": 0.627
+  }
+ },
+ "560": {
+  "role": {
+   "choice": "background",
+   "agree": 3,
+   "conf": 0.703
+  },
+  "whose_judgement": {
+   "choice": "an_opponent_or_their_camp",
+   "agree": 3,
+   "conf": 0.44
+  },
+  "what_is_done": {
+   "choice": "naming_him_in_passing",
+   "agree": 3,
+   "conf": 0.343
+  },
+  "news_kind": {
+   "choice": "quote",
+   "agree": 3,
+   "conf": 0.67
+  },
+  "sourcing": {
+   "choice": "only_a_quote_no_event",
+   "agree": 2,
+   "conf": 0.43
+  },
+  "novelty": {
+   "choice": "restates_known_facts",
+   "agree": 3,
+   "conf": 0.323
+  }
+ },
+ "563": {
+  "role": {
+   "choice": "one_of_several_subjects",
+   "agree": 3,
+   "conf": 0.76
+  },
+  "whose_judgement": {
+   "choice": "the_article_author",
+   "agree": 3,
+   "conf": 0.797
+  },
+  "what_is_done": {
+   "choice": "assessing_him",
+   "agree": 3,
+   "conf": 0.953
+  },
+  "news_kind": {
+   "choice": "prediction",
+   "agree": 2,
+   "conf": 0.49
+  },
+  "sourcing": {
+   "choice": "no_factual_claim",
+   "agree": 3,
+   "conf": 0.453
+  },
+  "novelty": {
+   "choice": "restates_known_facts",
+   "agree": 3,
+   "conf": 0.477
+  }
+ },
+ "565": {
+  "role": {
+   "choice": "background",
+   "agree": 3,
+   "conf": 0.833
+  },
+  "whose_judgement": {
+   "choice": "the_article_author",
+   "agree": 3,
+   "conf": 0.277
+  },
+  "what_is_done": {
+   "choice": "naming_him_in_passing",
+   "agree": 2,
+   "conf": 0.413
+  },
+  "news_kind": {
+   "choice": "quote",
+   "agree": 2,
+   "conf": 0.297
+  },
+  "sourcing": {
+   "choice": "no_factual_claim",
+   "agree": 3,
+   "conf": 0.323
+  },
+  "novelty": {
+   "choice": "restates_known_facts",
+   "agree": 3,
+   "conf": 0.483
+  }
+ },
+ "572": {
+  "role": {
+   "choice": "the_subject",
+   "agree": 3,
+   "conf": 0.973
+  },
+  "whose_judgement": {
+   "choice": "a_pundit_or_commentator",
+   "agree": 3,
+   "conf": 0.403
+  },
+  "what_is_done": {
+   "choice": "assessing_him",
+   "agree": 3,
+   "conf": 0.62
+  },
+  "news_kind": {
+   "choice": "quote",
+   "agree": 3,
+   "conf": 0.447
+  },
+  "sourcing": {
+   "choice": "rumored",
+   "agree": 2,
+   "conf": 0.433
+  },
+  "novelty": {
+   "choice": "new_and_substantial",
+   "agree": 3,
+   "conf": 0.783
+  }
+ },
+ "576": {
+  "role": {
+   "choice": "background",
+   "agree": 3,
+   "conf": 0.833
+  },
+  "whose_judgement": {
+   "choice": "the_champion_or_a_top_authority",
+   "agree": 2,
+   "conf": 0.327
+  },
+  "what_is_done": {
+   "choice": "naming_him_in_passing",
+   "agree": 3,
+   "conf": 0.567
+  },
+  "news_kind": {
+   "choice": "quote",
+   "agree": 3,
+   "conf": 0.83
+  },
+  "sourcing": {
+   "choice": "only_a_quote_no_event",
+   "agree": 3,
+   "conf": 0.56
+  },
+  "novelty": {
+   "choice": "nothing_about_him",
+   "agree": 2,
+   "conf": 0.403
+  }
+ },
+ "580": {
+  "role": {
+   "choice": "not_in_the_article_body",
+   "agree": 3,
+   "conf": 0.463
+  },
+  "whose_judgement": {
+   "choice": "the_article_author",
+   "agree": 3,
+   "conf": 0.657
+  },
+  "what_is_done": {
+   "choice": "naming_him_in_passing",
+   "agree": 3,
+   "conf": 0.343
+  },
+  "news_kind": {
+   "choice": "other_career_fact",
+   "agree": 3,
+   "conf": 0.707
+  },
+  "sourcing": {
+   "choice": "reported",
+   "agree": 3,
+   "conf": 0.403
+  },
+  "novelty": {
+   "choice": "nothing_about_him",
+   "agree": 3,
+   "conf": 0.45
+  }
+ },
+ "585": {
+  "role": {
+   "choice": "background",
+   "agree": 3,
+   "conf": 0.697
+  },
+  "whose_judgement": {
+   "choice": "himself",
+   "agree": 2,
+   "conf": 0.337
+  },
+  "what_is_done": {
+   "choice": "naming_him_in_passing",
+   "agree": 3,
+   "conf": 0.447
+  },
+  "news_kind": {
+   "choice": "quote",
+   "agree": 3,
+   "conf": 0.713
+  },
+  "sourcing": {
+   "choice": "only_a_quote_no_event",
+   "agree": 2,
+   "conf": 0.46
+  },
+  "novelty": {
+   "choice": "restates_known_facts",
+   "agree": 2,
+   "conf": 0.24
+  }
+ },
+ "588": {
+  "role": {
+   "choice": "background",
+   "agree": 3,
+   "conf": 0.56
+  },
+  "whose_judgement": {
+   "choice": "himself",
+   "agree": 3,
+   "conf": 0.76
+  },
+  "what_is_done": {
+   "choice": "naming_him_in_passing",
+   "agree": 2,
+   "conf": 0.517
+  },
+  "news_kind": {
+   "choice": "preview",
+   "agree": 3,
+   "conf": 0.673
+  },
+  "sourcing": {
+   "choice": "official",
+   "agree": 3,
+   "conf": 0.58
+  },
+  "novelty": {
+   "choice": "new_and_substantial",
+   "agree": 3,
+   "conf": 0.44
+  }
+ },
+ "592": {
+  "role": {
+   "choice": "the_subject",
+   "agree": 3,
+   "conf": 0.753
+  },
+  "whose_judgement": {
+   "choice": "a_pundit_or_commentator",
+   "agree": 3,
+   "conf": 0.86
+  },
+  "what_is_done": {
+   "choice": "assessing_him",
+   "agree": 2,
+   "conf": 0.373
+  },
+  "news_kind": {
+   "choice": "quote",
+   "agree": 3,
+   "conf": 0.273
+  },
+  "sourcing": {
+   "choice": "rumored",
+   "agree": 3,
+   "conf": 0.44
+  },
+  "novelty": {
+   "choice": "new_and_substantial",
+   "agree": 3,
+   "conf": 0.657
+  }
+ },
+ "594": {
+  "role": {
+   "choice": "one_of_several_subjects",
+   "agree": 3,
+   "conf": 0.677
+  },
+  "whose_judgement": {
+   "choice": "the_article_author",
+   "agree": 3,
+   "conf": 0.7
+  },
+  "what_is_done": {
+   "choice": "assessing_him",
+   "agree": 3,
+   "conf": 0.95
+  },
+  "news_kind": {
+   "choice": "prediction",
+   "agree": 3,
+   "conf": 0.977
+  },
+  "sourcing": {
+   "choice": "no_factual_claim",
+   "agree": 3,
+   "conf": 0.33
+  },
+  "novelty": {
+   "choice": "restates_known_facts",
+   "agree": 3,
+   "conf": 0.363
+  }
+ },
+ "599": {
+  "role": {
+   "choice": "the_subject",
+   "agree": 3,
+   "conf": 0.897
+  },
+  "whose_judgement": {
+   "choice": "the_article_author",
+   "agree": 3,
+   "conf": 0.807
+  },
+  "what_is_done": {
+   "choice": "assessing_him",
+   "agree": 3,
+   "conf": 0.9
+  },
+  "news_kind": {
+   "choice": "preview",
+   "agree": 3,
+   "conf": 0.86
+  },
+  "sourcing": {
+   "choice": "official",
+   "agree": 2,
+   "conf": 0.337
+  },
+  "novelty": {
+   "choice": "new_and_substantial",
+   "agree": 3,
+   "conf": 0.363
+  }
+ },
+ "601": {
+  "role": {
+   "choice": "the_subject",
+   "agree": 2,
+   "conf": 0.513
+  },
+  "whose_judgement": {
+   "choice": "no_one_judges_him",
+   "agree": 3,
+   "conf": 0.897
+  },
+  "what_is_done": {
+   "choice": "covering_his_event",
+   "agree": 3,
+   "conf": 1.0
+  },
+  "news_kind": {
+   "choice": "preview",
+   "agree": 3,
+   "conf": 1.0
+  },
+  "sourcing": {
+   "choice": "official",
+   "agree": 3,
+   "conf": 0.857
+  },
+  "novelty": {
+   "choice": "small_new_detail",
+   "agree": 3,
+   "conf": 0.89
+  }
+ },
+ "603": {
+  "role": {
+   "choice": "one_of_several_subjects",
+   "agree": 3,
+   "conf": 0.493
+  },
+  "whose_judgement": {
+   "choice": "the_article_author",
+   "agree": 3,
+   "conf": 0.787
+  },
+  "what_is_done": {
+   "choice": "assessing_him",
+   "agree": 3,
+   "conf": 0.93
+  },
+  "news_kind": {
+   "choice": "prediction",
+   "agree": 3,
+   "conf": 0.963
+  },
+  "sourcing": {
+   "choice": "reported",
+   "agree": 3,
+   "conf": 0.46
+  },
+  "novelty": {
+   "choice": "restates_known_facts",
+   "agree": 3,
+   "conf": 0.74
+  }
+ },
+ "605": {
+  "role": {
+   "choice": "one_of_several_subjects",
+   "agree": 3,
+   "conf": 0.82
+  },
+  "whose_judgement": {
+   "choice": "no_one_judges_him",
+   "agree": 3,
+   "conf": 0.603
+  },
+  "what_is_done": {
+   "choice": "covering_his_event",
+   "agree": 3,
+   "conf": 0.65
+  },
+  "news_kind": {
+   "choice": "announcement",
+   "agree": 3,
+   "conf": 0.747
+  },
+  "sourcing": {
+   "choice": "reported",
+   "agree": 3,
+   "conf": 0.777
+  },
+  "novelty": {
+   "choice": "restates_known_facts",
+   "agree": 3,
+   "conf": 0.357
+  }
+ },
+ "606": {
+  "role": {
+   "choice": "the_one_being_talked_about",
+   "agree": 3,
+   "conf": 0.777
+  },
+  "whose_judgement": {
+   "choice": "another_fighter",
+   "agree": 3,
+   "conf": 0.637
+  },
+  "what_is_done": {
+   "choice": "assessing_him",
+   "agree": 3,
+   "conf": 0.94
+  },
+  "news_kind": {
+   "choice": "quote",
+   "agree": 3,
+   "conf": 0.957
+  },
+  "sourcing": {
+   "choice": "only_a_quote_no_event",
+   "agree": 3,
+   "conf": 0.617
+  },
+  "novelty": {
+   "choice": "new_and_substantial",
+   "agree": 3,
+   "conf": 0.543
+  }
+ },
+ "608": {
+  "role": {
+   "choice": "one_of_several_subjects",
+   "agree": 3,
+   "conf": 0.713
+  },
+  "whose_judgement": {
+   "choice": "the_article_author",
+   "agree": 3,
+   "conf": 0.723
+  },
+  "what_is_done": {
+   "choice": "assessing_him",
+   "agree": 3,
+   "conf": 0.793
+  },
+  "news_kind": {
+   "choice": "preview",
+   "agree": 3,
+   "conf": 0.79
+  },
+  "sourcing": {
+   "choice": "no_factual_claim",
+   "agree": 3,
+   "conf": 0.46
+  },
+  "novelty": {
+   "choice": "restates_known_facts",
+   "agree": 3,
+   "conf": 0.38
+  }
+ },
+ "609": {
+  "role": {
+   "choice": "the_one_being_talked_about",
+   "agree": 3,
+   "conf": 0.853
+  },
+  "whose_judgement": {
+   "choice": "himself",
+   "agree": 3,
+   "conf": 0.677
+  },
+  "what_is_done": {
+   "choice": "he_gives_his_view",
+   "agree": 3,
+   "conf": 0.533
+  },
+  "news_kind": {
+   "choice": "preview",
+   "agree": 2,
+   "conf": 0.487
+  },
+  "sourcing": {
+   "choice": "only_a_quote_no_event",
+   "agree": 3,
+   "conf": 0.56
+  },
+  "novelty": {
+   "choice": "new_and_substantial",
+   "agree": 3,
+   "conf": 0.847
+  }
+ },
+ "613": {
+  "role": {
+   "choice": "mentioned_only",
+   "agree": 3,
+   "conf": 0.94
+  },
+  "whose_judgement": {
+   "choice": "the_article_author",
+   "agree": 3,
+   "conf": 0.523
+  },
+  "what_is_done": {
+   "choice": "covering_his_event",
+   "agree": 3,
+   "conf": 0.607
+  },
+  "news_kind": {
+   "choice": "preview",
+   "agree": 3,
+   "conf": 0.95
+  },
+  "sourcing": {
+   "choice": "official",
+   "agree": 3,
+   "conf": 0.543
+  },
+  "novelty": {
+   "choice": "small_new_detail",
+   "agree": 3,
+   "conf": 0.81
+  }
+ },
+ "614": {
+  "role": {
+   "choice": "the_subject",
+   "agree": 3,
+   "conf": 0.997
+  },
+  "whose_judgement": {
+   "choice": "himself",
+   "agree": 3,
+   "conf": 0.827
+  },
+  "what_is_done": {
+   "choice": "covering_his_event",
+   "agree": 3,
+   "conf": 0.987
+  },
+  "news_kind": {
+   "choice": "preview",
+   "agree": 3,
+   "conf": 0.877
+  },
+  "sourcing": {
+   "choice": "only_a_quote_no_event",
+   "agree": 3,
+   "conf": 0.703
+  },
+  "novelty": {
+   "choice": "small_new_detail",
+   "agree": 2,
+   "conf": 0.53
+  }
+ },
+ "616": {
+  "role": {
+   "choice": "the_subject",
+   "agree": 3,
+   "conf": 0.553
+  },
+  "whose_judgement": {
+   "choice": "the_article_author",
+   "agree": 3,
+   "conf": 0.807
+  },
+  "what_is_done": {
+   "choice": "assessing_him",
+   "agree": 2,
+   "conf": 0.587
+  },
+  "news_kind": {
+   "choice": "preview",
+   "agree": 2,
+   "conf": 0.543
+  },
+  "sourcing": {
+   "choice": "official",
+   "agree": 3,
+   "conf": 0.89
+  },
+  "novelty": {
+   "choice": "small_new_detail",
+   "agree": 3,
+   "conf": 0.573
+  }
+ },
+ "619": {
+  "role": {
+   "choice": "the_subject",
+   "agree": 3,
+   "conf": 0.88
+  },
+  "whose_judgement": {
+   "choice": "the_article_author",
+   "agree": 3,
+   "conf": 0.8
+  },
+  "what_is_done": {
+   "choice": "assessing_him",
+   "agree": 3,
+   "conf": 0.88
+  },
+  "news_kind": {
+   "choice": "preview",
+   "agree": 3,
+   "conf": 0.867
+  },
+  "sourcing": {
+   "choice": "official",
+   "agree": 2,
+   "conf": 0.337
+  },
+  "novelty": {
+   "choice": "new_and_substantial",
+   "agree": 3,
+   "conf": 0.387
+  }
+ },
+ "620": {
+  "role": {
+   "choice": "the_subject",
+   "agree": 3,
+   "conf": 1.0
+  },
+  "whose_judgement": {
+   "choice": "himself",
+   "agree": 3,
+   "conf": 0.973
+  },
+  "what_is_done": {
+   "choice": "he_tells_his_own_story",
+   "agree": 3,
+   "conf": 1.0
+  },
+  "news_kind": {
+   "choice": "quote",
+   "agree": 3,
+   "conf": 0.81
+  },
+  "sourcing": {
+   "choice": "official",
+   "agree": 3,
+   "conf": 0.84
+  },
+  "novelty": {
+   "choice": "new_and_substantial",
+   "agree": 3,
+   "conf": 0.85
+  }
+ },
+ "623": {
+  "role": {
+   "choice": "one_of_several_subjects",
+   "agree": 3,
+   "conf": 0.6
+  },
+  "whose_judgement": {
+   "choice": "the_article_author",
+   "agree": 3,
+   "conf": 0.853
+  },
+  "what_is_done": {
+   "choice": "assessing_him",
+   "agree": 3,
+   "conf": 0.907
+  },
+  "news_kind": {
+   "choice": "preview",
+   "agree": 3,
+   "conf": 0.59
+  },
+  "sourcing": {
+   "choice": "no_factual_claim",
+   "agree": 3,
+   "conf": 0.64
+  },
+  "novelty": {
+   "choice": "restates_known_facts",
+   "agree": 3,
+   "conf": 0.427
+  }
+ },
+ "625": {
+  "role": {
+   "choice": "the_subject",
+   "agree": 2,
+   "conf": 0.523
+  },
+  "whose_judgement": {
+   "choice": "no_one_judges_him",
+   "agree": 3,
+   "conf": 0.89
+  },
+  "what_is_done": {
+   "choice": "covering_his_event",
+   "agree": 3,
+   "conf": 1.0
+  },
+  "news_kind": {
+   "choice": "preview",
+   "agree": 3,
+   "conf": 1.0
+  },
+  "sourcing": {
+   "choice": "official",
+   "agree": 3,
+   "conf": 0.677
+  },
+  "novelty": {
+   "choice": "small_new_detail",
+   "agree": 3,
+   "conf": 0.903
+  }
+ },
+ "627": {
+  "role": {
+   "choice": "the_subject",
+   "agree": 3,
+   "conf": 1.0
+  },
+  "whose_judgement": {
+   "choice": "himself",
+   "agree": 3,
+   "conf": 0.697
+  },
+  "what_is_done": {
+   "choice": "he_tells_his_own_story",
+   "agree": 3,
+   "conf": 0.997
+  },
+  "news_kind": {
+   "choice": "quote",
+   "agree": 3,
+   "conf": 0.82
+  },
+  "sourcing": {
+   "choice": "reported",
+   "agree": 3,
+   "conf": 0.45
+  },
+  "novelty": {
+   "choice": "new_and_substantial",
+   "agree": 3,
+   "conf": 0.883
+  }
+ },
+ "632": {
+  "role": {
+   "choice": "the_subject",
+   "agree": 3,
+   "conf": 1.0
+  },
+  "whose_judgement": {
+   "choice": "himself",
+   "agree": 3,
+   "conf": 0.967
+  },
+  "what_is_done": {
+   "choice": "he_tells_his_own_story",
+   "agree": 3,
+   "conf": 1.0
+  },
+  "news_kind": {
+   "choice": "quote",
+   "agree": 3,
+   "conf": 0.693
+  },
+  "sourcing": {
+   "choice": "only_a_quote_no_event",
+   "agree": 2,
+   "conf": 0.343
+  },
+  "novelty": {
+   "choice": "new_and_substantial",
+   "agree": 3,
+   "conf": 0.743
+  }
+ },
+ "636": {
+  "role": {
+   "choice": "the_subject",
+   "agree": 3,
+   "conf": 1.0
+  },
+  "whose_judgement": {
+   "choice": "himself",
+   "agree": 3,
+   "conf": 0.957
+  },
+  "what_is_done": {
+   "choice": "he_tells_his_own_story",
+   "agree": 3,
+   "conf": 1.0
+  },
+  "news_kind": {
+   "choice": "quote",
+   "agree": 3,
+   "conf": 0.767
+  },
+  "sourcing": {
+   "choice": "only_a_quote_no_event",
+   "agree": 2,
+   "conf": 0.417
+  },
+  "novelty": {
+   "choice": "new_and_substantial",
+   "agree": 3,
+   "conf": 0.95
+  }
+ },
+ "641": {
+  "role": {
+   "choice": "one_of_several_subjects",
+   "agree": 3,
+   "conf": 0.523
+  },
+  "whose_judgement": {
+   "choice": "the_article_author",
+   "agree": 3,
+   "conf": 0.813
+  },
+  "what_is_done": {
+   "choice": "assessing_him",
+   "agree": 3,
+   "conf": 0.673
+  },
+  "news_kind": {
+   "choice": "prediction",
+   "agree": 3,
+   "conf": 0.527
+  },
+  "sourcing": {
+   "choice": "no_factual_claim",
+   "agree": 3,
+   "conf": 0.637
+  },
+  "novelty": {
+   "choice": "restates_known_facts",
+   "agree": 3,
+   "conf": 0.473
+  }
+ },
+ "643": {
+  "role": {
+   "choice": "the_one_being_talked_about",
+   "agree": 3,
+   "conf": 0.833
+  },
+  "whose_judgement": {
+   "choice": "another_fighter",
+   "agree": 3,
+   "conf": 0.89
+  },
+  "what_is_done": {
+   "choice": "assessing_him",
+   "agree": 3,
+   "conf": 0.77
+  },
+  "news_kind": {
+   "choice": "prediction",
+   "agree": 3,
+   "conf": 0.567
+  },
+  "sourcing": {
+   "choice": "only_a_quote_no_event",
+   "agree": 3,
+   "conf": 0.937
+  },
+  "novelty": {
+   "choice": "new_and_substantial",
+   "agree": 2,
+   "conf": 0.25
+  }
+ },
+ "647": {
+  "role": {
+   "choice": "the_subject",
+   "agree": 3,
+   "conf": 0.923
+  },
+  "whose_judgement": {
+   "choice": "himself",
+   "agree": 3,
+   "conf": 0.777
+  },
+  "what_is_done": {
+   "choice": "he_tells_his_own_story",
+   "agree": 3,
+   "conf": 0.933
+  },
+  "news_kind": {
+   "choice": "quote",
+   "agree": 3,
+   "conf": 0.66
+  },
+  "sourcing": {
+   "choice": "reported",
+   "agree": 3,
+   "conf": 0.363
+  },
+  "novelty": {
+   "choice": "filler_no_information",
+   "agree": 3,
+   "conf": 0.657
+  }
+ },
+ "651": {
+  "role": {
+   "choice": "the_subject",
+   "agree": 3,
+   "conf": 1.0
+  },
+  "whose_judgement": {
+   "choice": "himself",
+   "agree": 3,
+   "conf": 0.89
+  },
+  "what_is_done": {
+   "choice": "he_tells_his_own_story",
+   "agree": 3,
+   "conf": 1.0
+  },
+  "news_kind": {
+   "choice": "quote",
+   "agree": 3,
+   "conf": 0.827
+  },
+  "sourcing": {
+   "choice": "only_a_quote_no_event",
+   "agree": 3,
+   "conf": 0.59
+  },
+  "novelty": {
+   "choice": "new_and_substantial",
+   "agree": 3,
+   "conf": 0.907
+  }
+ },
+ "653": {
+  "role": {
+   "choice": "mentioned_only",
+   "agree": 3,
+   "conf": 0.44
+  },
+  "whose_judgement": {
+   "choice": "no_one_judges_him",
+   "agree": 3,
+   "conf": 0.96
+  },
+  "what_is_done": {
+   "choice": "covering_his_event",
+   "agree": 3,
+   "conf": 0.963
+  },
+  "news_kind": {
+   "choice": "preview",
+   "agree": 3,
+   "conf": 0.957
+  },
+  "sourcing": {
+   "choice": "no_factual_claim",
+   "agree": 3,
+   "conf": 0.647
+  },
+  "novelty": {
+   "choice": "filler_no_information",
+   "agree": 3,
+   "conf": 0.643
+  }
+ },
+ "654": {
+  "role": {
+   "choice": "mentioned_only",
+   "agree": 3,
+   "conf": 0.787
+  },
+  "whose_judgement": {
+   "choice": "a_pundit_or_commentator",
+   "agree": 3,
+   "conf": 0.8
+  },
+  "what_is_done": {
+   "choice": "naming_him_in_passing",
+   "agree": 3,
+   "conf": 0.413
+  },
+  "news_kind": {
+   "choice": "prediction",
+   "agree": 2,
+   "conf": 0.417
+  },
+  "sourcing": {
+   "choice": "only_a_quote_no_event",
+   "agree": 2,
+   "conf": 0.33
+  },
+  "novelty": {
+   "choice": "nothing_about_him",
+   "agree": 3,
+   "conf": 0.137
+  }
+ },
+ "655": {
+  "role": {
+   "choice": "one_of_several_subjects",
+   "agree": 2,
+   "conf": 0.34
+  },
+  "whose_judgement": {
+   "choice": "no_one_judges_him",
+   "agree": 3,
+   "conf": 0.563
+  },
+  "what_is_done": {
+   "choice": "assessing_him",
+   "agree": 3,
+   "conf": 0.417
+  },
+  "news_kind": {
+   "choice": "prediction",
+   "agree": 3,
+   "conf": 0.78
+  },
+  "sourcing": {
+   "choice": "no_factual_claim",
+   "agree": 3,
+   "conf": 0.843
+  },
+  "novelty": {
+   "choice": "nothing_about_him",
+   "agree": 3,
+   "conf": 0.553
+  }
+ },
+ "659": {
+  "role": {
+   "choice": "the_subject",
+   "agree": 3,
+   "conf": 1.0
+  },
+  "whose_judgement": {
+   "choice": "himself",
+   "agree": 3,
+   "conf": 0.973
+  },
+  "what_is_done": {
+   "choice": "he_tells_his_own_story",
+   "agree": 3,
+   "conf": 1.0
+  },
+  "news_kind": {
+   "choice": "quote",
+   "agree": 3,
+   "conf": 0.847
+  },
+  "sourcing": {
+   "choice": "only_a_quote_no_event",
+   "agree": 3,
+   "conf": 0.63
+  },
+  "novelty": {
+   "choice": "new_and_substantial",
+   "agree": 3,
+   "conf": 0.95
+  }
+ },
+ "666": {
+  "role": {
+   "choice": "the_subject",
+   "agree": 3,
+   "conf": 1.0
+  },
+  "whose_judgement": {
+   "choice": "himself",
+   "agree": 3,
+   "conf": 0.797
+  },
+  "what_is_done": {
+   "choice": "he_tells_his_own_story",
+   "agree": 3,
+   "conf": 1.0
+  },
+  "news_kind": {
+   "choice": "quote",
+   "agree": 3,
+   "conf": 0.913
+  },
+  "sourcing": {
+   "choice": "only_a_quote_no_event",
+   "agree": 3,
+   "conf": 0.32
+  },
+  "novelty": {
+   "choice": "new_and_substantial",
+   "agree": 3,
+   "conf": 0.893
+  }
+ },
+ "672": {
+  "role": {
+   "choice": "the_subject",
+   "agree": 3,
+   "conf": 0.977
+  },
+  "whose_judgement": {
+   "choice": "himself",
+   "agree": 3,
+   "conf": 0.657
+  },
+  "what_is_done": {
+   "choice": "he_gives_his_view",
+   "agree": 3,
+   "conf": 0.817
+  },
+  "news_kind": {
+   "choice": "preview",
+   "agree": 2,
+   "conf": 0.47
+  },
+  "sourcing": {
+   "choice": "only_a_quote_no_event",
+   "agree": 2,
+   "conf": 0.327
+  },
+  "novelty": {
+   "choice": "new_and_substantial",
+   "agree": 3,
+   "conf": 0.887
+  }
+ },
+ "673": {
+  "role": {
+   "choice": "one_of_several_subjects",
+   "agree": 3,
+   "conf": 0.51
+  },
+  "whose_judgement": {
+   "choice": "a_pundit_or_commentator",
+   "agree": 3,
+   "conf": 0.873
+  },
+  "what_is_done": {
+   "choice": "assessing_him",
+   "agree": 3,
+   "conf": 0.887
+  },
+  "news_kind": {
+   "choice": "prediction",
+   "agree": 3,
+   "conf": 0.957
+  },
+  "sourcing": {
+   "choice": "no_factual_claim",
+   "agree": 2,
+   "conf": 0.31
+  },
+  "novelty": {
+   "choice": "small_new_detail",
+   "agree": 3,
+   "conf": 0.57
+  }
+ },
+ "675": {
+  "role": {
+   "choice": "the_subject",
+   "agree": 3,
+   "conf": 1.0
+  },
+  "whose_judgement": {
+   "choice": "himself",
+   "agree": 3,
+   "conf": 0.857
+  },
+  "what_is_done": {
+   "choice": "he_tells_his_own_story",
+   "agree": 3,
+   "conf": 1.0
+  },
+  "news_kind": {
+   "choice": "quote",
+   "agree": 3,
+   "conf": 0.747
+  },
+  "sourcing": {
+   "choice": "only_a_quote_no_event",
+   "agree": 2,
+   "conf": 0.31
+  },
+  "novelty": {
+   "choice": "new_and_substantial",
+   "agree": 3,
+   "conf": 0.85
+  }
+ },
+ "681": {
+  "role": {
+   "choice": "one_of_several_subjects",
+   "agree": 2,
+   "conf": 0.473
+  },
+  "whose_judgement": {
+   "choice": "a_pundit_or_commentator",
+   "agree": 3,
+   "conf": 0.787
+  },
+  "what_is_done": {
+   "choice": "assessing_him",
+   "agree": 3,
+   "conf": 0.667
+  },
+  "news_kind": {
+   "choice": "prediction",
+   "agree": 3,
+   "conf": 0.973
+  },
+  "sourcing": {
+   "choice": "no_factual_claim",
+   "agree": 3,
+   "conf": 0.363
+  },
+  "novelty": {
+   "choice": "small_new_detail",
+   "agree": 3,
+   "conf": 0.543
+  }
+ },
+ "682": {
+  "role": {
+   "choice": "the_subject",
+   "agree": 3,
+   "conf": 1.0
+  },
+  "whose_judgement": {
+   "choice": "himself",
+   "agree": 3,
+   "conf": 0.79
+  },
+  "what_is_done": {
+   "choice": "he_tells_his_own_story",
+   "agree": 3,
+   "conf": 0.987
+  },
+  "news_kind": {
+   "choice": "quote",
+   "agree": 3,
+   "conf": 0.837
+  },
+  "sourcing": {
+   "choice": "reported",
+   "agree": 2,
+   "conf": 0.36
+  },
+  "novelty": {
+   "choice": "new_and_substantial",
+   "agree": 3,
+   "conf": 0.933
+  }
+ },
+ "683": {
+  "role": {
+   "choice": "mentioned_only",
+   "agree": 3,
+   "conf": 0.817
+  },
+  "whose_judgement": {
+   "choice": "no_one_judges_him",
+   "agree": 3,
+   "conf": 0.9
+  },
+  "what_is_done": {
+   "choice": "he_fought",
+   "agree": 3,
+   "conf": 0.79
+  },
+  "news_kind": {
+   "choice": "result",
+   "agree": 3,
+   "conf": 0.99
+  },
+  "sourcing": {
+   "choice": "reported",
+   "agree": 3,
+   "conf": 0.56
+  },
+  "novelty": {
+   "choice": "restates_known_facts",
+   "agree": 2,
+   "conf": 0.357
+  }
+ },
+ "686": {
+  "role": {
+   "choice": "the_subject",
+   "agree": 3,
+   "conf": 0.697
+  },
+  "whose_judgement": {
+   "choice": "no_one_judges_him",
+   "agree": 3,
+   "conf": 0.87
+  },
+  "what_is_done": {
+   "choice": "covering_his_event",
+   "agree": 3,
+   "conf": 1.0
+  },
+  "news_kind": {
+   "choice": "preview",
+   "agree": 3,
+   "conf": 0.987
+  },
+  "sourcing": {
+   "choice": "official",
+   "agree": 3,
+   "conf": 0.607
+  },
+  "novelty": {
+   "choice": "small_new_detail",
+   "agree": 3,
+   "conf": 0.53
+  }
+ },
+ "687": {
+  "role": {
+   "choice": "the_subject",
+   "agree": 3,
+   "conf": 0.77
+  },
+  "whose_judgement": {
+   "choice": "the_article_author",
+   "agree": 2,
+   "conf": 0.443
+  },
+  "what_is_done": {
+   "choice": "covering_his_event",
+   "agree": 3,
+   "conf": 0.71
+  },
+  "news_kind": {
+   "choice": "preview",
+   "agree": 3,
+   "conf": 0.95
+  },
+  "sourcing": {
+   "choice": "official",
+   "agree": 3,
+   "conf": 0.58
+  },
+  "novelty": {
+   "choice": "small_new_detail",
+   "agree": 3,
+   "conf": 0.6
+  }
+ },
+ "688": {
+  "role": {
+   "choice": "the_subject",
+   "agree": 3,
+   "conf": 0.747
+  },
+  "whose_judgement": {
+   "choice": "the_article_author",
+   "agree": 3,
+   "conf": 0.463
+  },
+  "what_is_done": {
+   "choice": "covering_his_event",
+   "agree": 3,
+   "conf": 0.67
+  },
+  "news_kind": {
+   "choice": "preview",
+   "agree": 3,
+   "conf": 0.963
+  },
+  "sourcing": {
+   "choice": "official",
+   "agree": 3,
+   "conf": 0.547
+  },
+  "novelty": {
+   "choice": "small_new_detail",
+   "agree": 3,
+   "conf": 0.593
+  }
+ },
+ "690": {
+  "role": {
+   "choice": "the_subject",
+   "agree": 3,
+   "conf": 0.967
+  },
+  "whose_judgement": {
+   "choice": "the_article_author",
+   "agree": 3,
+   "conf": 0.8
+  },
+  "what_is_done": {
+   "choice": "assessing_him",
+   "agree": 3,
+   "conf": 0.957
+  },
+  "news_kind": {
+   "choice": "preview",
+   "agree": 3,
+   "conf": 0.84
+  },
+  "sourcing": {
+   "choice": "reported",
+   "agree": 2,
+   "conf": 0.417
+  },
+  "novelty": {
+   "choice": "new_and_substantial",
+   "agree": 2,
+   "conf": 0.33
+  }
+ },
+ "692": {
+  "role": {
+   "choice": "one_of_several_subjects",
+   "agree": 3,
+   "conf": 0.753
+  },
+  "whose_judgement": {
+   "choice": "the_article_author",
+   "agree": 3,
+   "conf": 0.693
+  },
+  "what_is_done": {
+   "choice": "assessing_him",
+   "agree": 3,
+   "conf": 0.883
+  },
+  "news_kind": {
+   "choice": "prediction",
+   "agree": 3,
+   "conf": 0.883
+  },
+  "sourcing": {
+   "choice": "no_factual_claim",
+   "agree": 3,
+   "conf": 0.597
+  },
+  "novelty": {
+   "choice": "restates_known_facts",
+   "agree": 3,
+   "conf": 0.633
+  }
+ },
+ "693": {
+  "role": {
+   "choice": "the_subject",
+   "agree": 3,
+   "conf": 1.0
+  },
+  "whose_judgement": {
+   "choice": "himself",
+   "agree": 3,
+   "conf": 0.937
+  },
+  "what_is_done": {
+   "choice": "he_tells_his_own_story",
+   "agree": 3,
+   "conf": 1.0
+  },
+  "news_kind": {
+   "choice": "quote",
+   "agree": 3,
+   "conf": 0.93
+  },
+  "sourcing": {
+   "choice": "only_a_quote_no_event",
+   "agree": 3,
+   "conf": 0.43
+  },
+  "novelty": {
+   "choice": "new_and_substantial",
+   "agree": 3,
+   "conf": 0.967
+  }
+ },
+ "697": {
+  "role": {
+   "choice": "the_subject",
+   "agree": 3,
+   "conf": 1.0
+  },
+  "whose_judgement": {
+   "choice": "himself",
+   "agree": 3,
+   "conf": 0.923
+  },
+  "what_is_done": {
+   "choice": "he_tells_his_own_story",
+   "agree": 3,
+   "conf": 1.0
+  },
+  "news_kind": {
+   "choice": "quote",
+   "agree": 3,
+   "conf": 0.777
+  },
+  "sourcing": {
+   "choice": "only_a_quote_no_event",
+   "agree": 3,
+   "conf": 0.53
+  },
+  "novelty": {
+   "choice": "new_and_substantial",
+   "agree": 3,
+   "conf": 0.947
+  }
+ },
+ "698": {
+  "role": {
+   "choice": "one_of_several_subjects",
+   "agree": 3,
+   "conf": 0.737
+  },
+  "whose_judgement": {
+   "choice": "the_article_author",
+   "agree": 3,
+   "conf": 0.72
+  },
+  "what_is_done": {
+   "choice": "assessing_him",
+   "agree": 3,
+   "conf": 0.907
+  },
+  "news_kind": {
+   "choice": "prediction",
+   "agree": 3,
+   "conf": 0.867
+  },
+  "sourcing": {
+   "choice": "no_factual_claim",
+   "agree": 3,
+   "conf": 0.58
+  },
+  "novelty": {
+   "choice": "restates_known_facts",
+   "agree": 3,
+   "conf": 0.647
+  }
+ },
+ "702": {
+  "role": {
+   "choice": "the_subject",
+   "agree": 3,
+   "conf": 1.0
+  },
+  "whose_judgement": {
+   "choice": "himself",
+   "agree": 3,
+   "conf": 0.57
+  },
+  "what_is_done": {
+   "choice": "he_tells_his_own_story",
+   "agree": 3,
+   "conf": 0.897
+  },
+  "news_kind": {
+   "choice": "quote",
+   "agree": 3,
+   "conf": 0.987
+  },
+  "sourcing": {
+   "choice": "only_a_quote_no_event",
+   "agree": 3,
+   "conf": 0.793
+  },
+  "novelty": {
+   "choice": "new_and_substantial",
+   "agree": 3,
+   "conf": 0.98
+  }
+ },
+ "709": {
+  "role": {
+   "choice": "the_one_being_talked_about",
+   "agree": 3,
+   "conf": 0.467
+  },
+  "whose_judgement": {
+   "choice": "the_article_author",
+   "agree": 3,
+   "conf": 0.88
+  },
+  "what_is_done": {
+   "choice": "assessing_him",
+   "agree": 3,
+   "conf": 0.867
+  },
+  "news_kind": {
+   "choice": "prediction",
+   "agree": 3,
+   "conf": 0.973
+  },
+  "sourcing": {
+   "choice": "no_factual_claim",
+   "agree": 3,
+   "conf": 0.433
+  },
+  "novelty": {
+   "choice": "restates_known_facts",
+   "agree": 3,
+   "conf": 0.677
+  }
+ },
+ "710": {
+  "role": {
+   "choice": "not_in_the_article_body",
+   "agree": 2,
+   "conf": 0.557
+  },
+  "whose_judgement": {
+   "choice": "no_one_judges_him",
+   "agree": 3,
+   "conf": 0.74
+  },
+  "what_is_done": {
+   "choice": "naming_him_in_passing",
+   "agree": 3,
+   "conf": 0.49
+  },
+  "news_kind": {
+   "choice": "no_news_about_him",
+   "agree": 2,
+   "conf": 0.433
+  },
+  "sourcing": {
+   "choice": "no_factual_claim",
+   "agree": 3,
+   "conf": 0.343
+  },
+  "novelty": {
+   "choice": "nothing_about_him",
+   "agree": 3,
+   "conf": 0.393
+  }
+ },
+ "714": {
+  "role": {
+   "choice": "one_of_several_subjects",
+   "agree": 3,
+   "conf": 0.907
+  },
+  "whose_judgement": {
+   "choice": "the_article_author",
+   "agree": 3,
+   "conf": 0.917
+  },
+  "what_is_done": {
+   "choice": "he_fought",
+   "agree": 3,
+   "conf": 0.963
+  },
+  "news_kind": {
+   "choice": "result",
+   "agree": 3,
+   "conf": 1.0
+  },
+  "sourcing": {
+   "choice": "reported",
+   "agree": 3,
+   "conf": 0.277
+  },
+  "novelty": {
+   "choice": "new_and_substantial",
+   "agree": 3,
+   "conf": 0.72
+  }
+ },
+ "717": {
+  "role": {
+   "choice": "the_subject",
+   "agree": 3,
+   "conf": 1.0
+  },
+  "whose_judgement": {
+   "choice": "himself",
+   "agree": 3,
+   "conf": 0.837
+  },
+  "what_is_done": {
+   "choice": "he_tells_his_own_story",
+   "agree": 3,
+   "conf": 1.0
+  },
+  "news_kind": {
+   "choice": "quote",
+   "agree": 3,
+   "conf": 0.64
+  },
+  "sourcing": {
+   "choice": "reported",
+   "agree": 2,
+   "conf": 0.23
+  },
+  "novelty": {
+   "choice": "new_and_substantial",
+   "agree": 3,
+   "conf": 0.893
+  }
+ },
+ "723": {
+  "role": {
+   "choice": "the_subject",
+   "agree": 3,
+   "conf": 1.0
+  },
+  "whose_judgement": {
+   "choice": "himself",
+   "agree": 3,
+   "conf": 0.98
+  },
+  "what_is_done": {
+   "choice": "he_tells_his_own_story",
+   "agree": 3,
+   "conf": 0.993
+  },
+  "news_kind": {
+   "choice": "quote",
+   "agree": 3,
+   "conf": 0.873
+  },
+  "sourcing": {
+   "choice": "only_a_quote_no_event",
+   "agree": 3,
+   "conf": 0.33
+  },
+  "novelty": {
+   "choice": "new_and_substantial",
+   "agree": 3,
+   "conf": 0.96
+  }
+ },
+ "728": {
+  "role": {
+   "choice": "the_subject",
+   "agree": 3,
+   "conf": 1.0
+  },
+  "whose_judgement": {
+   "choice": "himself",
+   "agree": 3,
+   "conf": 0.893
+  },
+  "what_is_done": {
+   "choice": "he_tells_his_own_story",
+   "agree": 3,
+   "conf": 0.95
+  },
+  "news_kind": {
+   "choice": "quote",
+   "agree": 3,
+   "conf": 0.987
+  },
+  "sourcing": {
+   "choice": "only_a_quote_no_event",
+   "agree": 3,
+   "conf": 0.77
+  },
+  "novelty": {
+   "choice": "new_and_substantial",
+   "agree": 3,
+   "conf": 0.74
+  }
+ },
+ "731": {
+  "role": {
+   "choice": "the_subject",
+   "agree": 3,
+   "conf": 0.997
+  },
+  "whose_judgement": {
+   "choice": "the_article_author",
+   "agree": 3,
+   "conf": 0.853
+  },
+  "what_is_done": {
+   "choice": "he_fought",
+   "agree": 3,
+   "conf": 0.75
+  },
+  "news_kind": {
+   "choice": "result",
+   "agree": 3,
+   "conf": 1.0
+  },
+  "sourcing": {
+   "choice": "reported",
+   "agree": 3,
+   "conf": 0.897
+  },
+  "novelty": {
+   "choice": "restates_known_facts",
+   "agree": 3,
+   "conf": 0.457
+  }
+ },
+ "732": {
+  "role": {
+   "choice": "the_subject",
+   "agree": 3,
+   "conf": 0.977
+  },
+  "whose_judgement": {
+   "choice": "the_article_author",
+   "agree": 3,
+   "conf": 0.433
+  },
+  "what_is_done": {
+   "choice": "he_fought",
+   "agree": 3,
+   "conf": 0.91
+  },
+  "news_kind": {
+   "choice": "result",
+   "agree": 3,
+   "conf": 1.0
+  },
+  "sourcing": {
+   "choice": "reported",
+   "agree": 2,
+   "conf": 0.413
+  },
+  "novelty": {
+   "choice": "new_and_substantial",
+   "agree": 3,
+   "conf": 0.807
+  }
+ },
+ "733": {
+  "role": {
+   "choice": "the_subject",
+   "agree": 3,
+   "conf": 0.913
+  },
+  "whose_judgement": {
+   "choice": "the_article_author",
+   "agree": 3,
+   "conf": 0.91
+  },
+  "what_is_done": {
+   "choice": "he_fought",
+   "agree": 3,
+   "conf": 1.0
+  },
+  "news_kind": {
+   "choice": "result",
+   "agree": 3,
+   "conf": 1.0
+  },
+  "sourcing": {
+   "choice": "official",
+   "agree": 3,
+   "conf": 0.437
+  },
+  "novelty": {
+   "choice": "new_and_substantial",
+   "agree": 3,
+   "conf": 0.487
+  }
+ },
+ "735": {
+  "role": {
+   "choice": "the_subject",
+   "agree": 3,
+   "conf": 0.99
+  },
+  "whose_judgement": {
+   "choice": "the_article_author",
+   "agree": 3,
+   "conf": 0.947
+  },
+  "what_is_done": {
+   "choice": "he_fought",
+   "agree": 3,
+   "conf": 1.0
+  },
+  "news_kind": {
+   "choice": "result",
+   "agree": 3,
+   "conf": 1.0
+  },
+  "sourcing": {
+   "choice": "reported",
+   "agree": 3,
+   "conf": 0.823
+  },
+  "novelty": {
+   "choice": "new_and_substantial",
+   "agree": 3,
+   "conf": 0.663
+  }
+ },
+ "736": {
+  "role": {
+   "choice": "the_subject",
+   "agree": 3,
+   "conf": 0.983
+  },
+  "whose_judgement": {
+   "choice": "the_article_author",
+   "agree": 3,
+   "conf": 0.827
+  },
+  "what_is_done": {
+   "choice": "he_fought",
+   "agree": 3,
+   "conf": 0.657
+  },
+  "news_kind": {
+   "choice": "result",
+   "agree": 3,
+   "conf": 1.0
+  },
+  "sourcing": {
+   "choice": "reported",
+   "agree": 3,
+   "conf": 0.923
+  },
+  "novelty": {
+   "choice": "filler_no_information",
+   "agree": 2,
+   "conf": 0.337
+  }
+ },
+ "737": {
+  "role": {
+   "choice": "one_of_several_subjects",
+   "agree": 3,
+   "conf": 0.87
+  },
+  "whose_judgement": {
+   "choice": "the_article_author",
+   "agree": 3,
+   "conf": 0.753
+  },
+  "what_is_done": {
+   "choice": "he_fought",
+   "agree": 3,
+   "conf": 1.0
+  },
+  "news_kind": {
+   "choice": "result",
+   "agree": 3,
+   "conf": 0.993
+  },
+  "sourcing": {
+   "choice": "official",
+   "agree": 2,
+   "conf": 0.447
+  },
+  "novelty": {
+   "choice": "new_and_substantial",
+   "agree": 3,
+   "conf": 0.447
+  }
+ },
+ "740": {
+  "role": {
+   "choice": "the_subject",
+   "agree": 3,
+   "conf": 0.887
+  },
+  "whose_judgement": {
+   "choice": "himself",
+   "agree": 3,
+   "conf": 0.617
+  },
+  "what_is_done": {
+   "choice": "he_gives_his_view",
+   "agree": 3,
+   "conf": 0.423
+  },
+  "news_kind": {
+   "choice": "result",
+   "agree": 3,
+   "conf": 0.957
+  },
+  "sourcing": {
+   "choice": "official",
+   "agree": 2,
+   "conf": 0.267
+  },
+  "novelty": {
+   "choice": "filler_no_information",
+   "agree": 3,
+   "conf": 0.703
+  }
+ },
+ "743": {
+  "role": {
+   "choice": "the_subject",
+   "agree": 3,
+   "conf": 0.993
+  },
+  "whose_judgement": {
+   "choice": "the_article_author",
+   "agree": 3,
+   "conf": 0.793
+  },
+  "what_is_done": {
+   "choice": "covering_his_event",
+   "agree": 3,
+   "conf": 0.907
+  },
+  "news_kind": {
+   "choice": "preview",
+   "agree": 2,
+   "conf": 0.347
+  },
+  "sourcing": {
+   "choice": "reported",
+   "agree": 3,
+   "conf": 0.887
+  },
+  "novelty": {
+   "choice": "filler_no_information",
+   "agree": 3,
+   "conf": 0.587
+  }
+ },
+ "744": {
+  "role": {
+   "choice": "the_subject",
+   "agree": 3,
+   "conf": 0.99
+  },
+  "whose_judgement": {
+   "choice": "himself",
+   "agree": 2,
+   "conf": 0.42
+  },
+  "what_is_done": {
+   "choice": "he_fought",
+   "agree": 2,
+   "conf": 0.497
+  },
+  "news_kind": {
+   "choice": "quote",
+   "agree": 3,
+   "conf": 0.797
+  },
+  "sourcing": {
+   "choice": "only_a_quote_no_event",
+   "agree": 3,
+   "conf": 0.62
+  },
+  "novelty": {
+   "choice": "new_and_substantial",
+   "agree": 3,
+   "conf": 0.763
+  }
+ },
+ "745": {
+  "role": {
+   "choice": "the_subject",
+   "agree": 2,
+   "conf": 0.473
+  },
+  "whose_judgement": {
+   "choice": "no_one_judges_him",
+   "agree": 3,
+   "conf": 0.697
+  },
+  "what_is_done": {
+   "choice": "covering_his_event",
+   "agree": 3,
+   "conf": 0.52
+  },
+  "news_kind": {
+   "choice": "announcement",
+   "agree": 3,
+   "conf": 0.917
+  },
+  "sourcing": {
+   "choice": "reported",
+   "agree": 3,
+   "conf": 0.827
+  },
+  "novelty": {
+   "choice": "restates_known_facts",
+   "agree": 3,
+   "conf": 0.327
+  }
+ },
+ "746": {
+  "role": {
+   "choice": "the_subject",
+   "agree": 3,
+   "conf": 0.903
+  },
+  "whose_judgement": {
+   "choice": "a_pundit_or_commentator",
+   "agree": 3,
+   "conf": 0.487
+  },
+  "what_is_done": {
+   "choice": "he_fought",
+   "agree": 2,
+   "conf": 0.397
+  },
+  "news_kind": {
+   "choice": "result",
+   "agree": 3,
+   "conf": 0.98
+  },
+  "sourcing": {
+   "choice": "official",
+   "agree": 3,
+   "conf": 0.25
+  },
+  "novelty": {
+   "choice": "filler_no_information",
+   "agree": 3,
+   "conf": 0.683
+  }
+ },
+ "747": {
+  "role": {
+   "choice": "the_subject",
+   "agree": 3,
+   "conf": 1.0
+  },
+  "whose_judgement": {
+   "choice": "the_article_author",
+   "agree": 3,
+   "conf": 0.787
+  },
+  "what_is_done": {
+   "choice": "he_fought",
+   "agree": 3,
+   "conf": 0.973
+  },
+  "news_kind": {
+   "choice": "result",
+   "agree": 3,
+   "conf": 1.0
+  },
+  "sourcing": {
+   "choice": "reported",
+   "agree": 3,
+   "conf": 0.73
+  },
+  "novelty": {
+   "choice": "new_and_substantial",
+   "agree": 3,
+   "conf": 0.747
+  }
+ },
+ "755": {
+  "role": {
+   "choice": "the_subject",
+   "agree": 3,
+   "conf": 1.0
+  },
+  "whose_judgement": {
+   "choice": "himself",
+   "agree": 3,
+   "conf": 0.877
+  },
+  "what_is_done": {
+   "choice": "he_tells_his_own_story",
+   "agree": 3,
+   "conf": 1.0
+  },
+  "news_kind": {
+   "choice": "quote",
+   "agree": 3,
+   "conf": 0.677
+  },
+  "sourcing": {
+   "choice": "reported",
+   "agree": 3,
+   "conf": 0.477
+  },
+  "novelty": {
+   "choice": "new_and_substantial",
+   "agree": 3,
+   "conf": 0.967
+  }
+ },
+ "758": {
+  "role": {
+   "choice": "the_subject",
+   "agree": 3,
+   "conf": 0.993
+  },
+  "whose_judgement": {
+   "choice": "the_article_author",
+   "agree": 3,
+   "conf": 0.863
+  },
+  "what_is_done": {
+   "choice": "he_fought",
+   "agree": 3,
+   "conf": 0.99
+  },
+  "news_kind": {
+   "choice": "result",
+   "agree": 3,
+   "conf": 1.0
+  },
+  "sourcing": {
+   "choice": "reported",
+   "agree": 3,
+   "conf": 0.757
+  },
+  "novelty": {
+   "choice": "new_and_substantial",
+   "agree": 3,
+   "conf": 0.703
+  }
+ },
+ "759": {
+  "role": {
+   "choice": "the_subject",
+   "agree": 3,
+   "conf": 0.993
+  },
+  "whose_judgement": {
+   "choice": "the_article_author",
+   "agree": 3,
+   "conf": 0.943
+  },
+  "what_is_done": {
+   "choice": "he_fought",
+   "agree": 3,
+   "conf": 1.0
+  },
+  "news_kind": {
+   "choice": "result",
+   "agree": 3,
+   "conf": 1.0
+  },
+  "sourcing": {
+   "choice": "reported",
+   "agree": 3,
+   "conf": 0.85
+  },
+  "novelty": {
+   "choice": "new_and_substantial",
+   "agree": 3,
+   "conf": 0.657
+  }
+ },
+ "762": {
+  "role": {
+   "choice": "the_one_being_talked_about",
+   "agree": 3,
+   "conf": 0.567
+  },
+  "whose_judgement": {
+   "choice": "his_camp",
+   "agree": 3,
+   "conf": 0.923
+  },
+  "what_is_done": {
+   "choice": "assessing_him",
+   "agree": 3,
+   "conf": 0.453
+  },
+  "news_kind": {
+   "choice": "quote",
+   "agree": 3,
+   "conf": 0.73
+  },
+  "sourcing": {
+   "choice": "only_a_quote_no_event",
+   "agree": 3,
+   "conf": 0.943
+  },
+  "novelty": {
+   "choice": "small_new_detail",
+   "agree": 3,
+   "conf": 0.267
+  }
+ },
+ "765": {
+  "role": {
+   "choice": "the_subject",
+   "agree": 3,
+   "conf": 1.0
+  },
+  "whose_judgement": {
+   "choice": "the_article_author",
+   "agree": 2,
+   "conf": 0.413
+  },
+  "what_is_done": {
+   "choice": "he_fought",
+   "agree": 3,
+   "conf": 1.0
+  },
+  "news_kind": {
+   "choice": "result",
+   "agree": 3,
+   "conf": 1.0
+  },
+  "sourcing": {
+   "choice": "reported",
+   "agree": 3,
+   "conf": 0.777
+  },
+  "novelty": {
+   "choice": "new_and_substantial",
+   "agree": 2,
+   "conf": 0.403
+  }
+ },
+ "767": {
+  "role": {
+   "choice": "the_subject",
+   "agree": 3,
+   "conf": 0.99
+  },
+  "whose_judgement": {
+   "choice": "the_article_author",
+   "agree": 3,
+   "conf": 0.73
+  },
+  "what_is_done": {
+   "choice": "he_fought",
+   "agree": 3,
+   "conf": 1.0
+  },
+  "news_kind": {
+   "choice": "result",
+   "agree": 3,
+   "conf": 1.0
+  },
+  "sourcing": {
+   "choice": "reported",
+   "agree": 3,
+   "conf": 0.903
+  },
+  "novelty": {
+   "choice": "new_and_substantial",
+   "agree": 3,
+   "conf": 0.663
+  }
+ },
+ "768": {
+  "role": {
+   "choice": "the_subject",
+   "agree": 3,
+   "conf": 0.987
+  },
+  "whose_judgement": {
+   "choice": "the_article_author",
+   "agree": 3,
+   "conf": 0.79
+  },
+  "what_is_done": {
+   "choice": "he_fought",
+   "agree": 3,
+   "conf": 1.0
+  },
+  "news_kind": {
+   "choice": "result",
+   "agree": 3,
+   "conf": 1.0
+  },
+  "sourcing": {
+   "choice": "reported",
+   "agree": 3,
+   "conf": 0.66
+  },
+  "novelty": {
+   "choice": "new_and_substantial",
+   "agree": 3,
+   "conf": 0.447
+  }
+ },
+ "771": {
+  "role": {
+   "choice": "the_subject",
+   "agree": 3,
+   "conf": 1.0
+  },
+  "whose_judgement": {
+   "choice": "himself",
+   "agree": 3,
+   "conf": 0.89
+  },
+  "what_is_done": {
+   "choice": "he_tells_his_own_story",
+   "agree": 3,
+   "conf": 1.0
+  },
+  "news_kind": {
+   "choice": "lifestyle",
+   "agree": 3,
+   "conf": 0.703
+  },
+  "sourcing": {
+   "choice": "only_a_quote_no_event",
+   "agree": 3,
+   "conf": 0.423
+  },
+  "novelty": {
+   "choice": "new_and_substantial",
+   "agree": 3,
+   "conf": 0.937
+  }
+ },
+ "772": {
+  "role": {
+   "choice": "the_subject",
+   "agree": 3,
+   "conf": 0.99
+  },
+  "whose_judgement": {
+   "choice": "the_article_author",
+   "agree": 3,
+   "conf": 0.76
+  },
+  "what_is_done": {
+   "choice": "he_fought",
+   "agree": 3,
+   "conf": 1.0
+  },
+  "news_kind": {
+   "choice": "result",
+   "agree": 3,
+   "conf": 1.0
+  },
+  "sourcing": {
+   "choice": "reported",
+   "agree": 3,
+   "conf": 0.593
+  },
+  "novelty": {
+   "choice": "new_and_substantial",
+   "agree": 3,
+   "conf": 0.48
+  }
+ },
+ "773": {
+  "role": {
+   "choice": "the_subject",
+   "agree": 3,
+   "conf": 0.983
+  },
+  "whose_judgement": {
+   "choice": "the_article_author",
+   "agree": 3,
+   "conf": 0.88
+  },
+  "what_is_done": {
+   "choice": "he_fought",
+   "agree": 3,
+   "conf": 0.993
+  },
+  "news_kind": {
+   "choice": "result",
+   "agree": 3,
+   "conf": 1.0
+  },
+  "sourcing": {
+   "choice": "reported",
+   "agree": 3,
+   "conf": 0.767
+  },
+  "novelty": {
+   "choice": "new_and_substantial",
+   "agree": 3,
+   "conf": 0.7
+  }
+ },
+ "774": {
+  "role": {
+   "choice": "the_subject",
+   "agree": 3,
+   "conf": 0.997
+  },
+  "whose_judgement": {
+   "choice": "the_article_author",
+   "agree": 2,
+   "conf": 0.44
+  },
+  "what_is_done": {
+   "choice": "he_fought",
+   "agree": 2,
+   "conf": 0.467
+  },
+  "news_kind": {
+   "choice": "quote",
+   "agree": 3,
+   "conf": 0.777
+  },
+  "sourcing": {
+   "choice": "only_a_quote_no_event",
+   "agree": 3,
+   "conf": 0.507
+  },
+  "novelty": {
+   "choice": "new_and_substantial",
+   "agree": 3,
+   "conf": 0.743
+  }
+ },
+ "776": {
+  "role": {
+   "choice": "the_subject",
+   "agree": 3,
+   "conf": 0.99
+  },
+  "whose_judgement": {
+   "choice": "the_champion_or_a_top_authority",
+   "agree": 3,
+   "conf": 0.477
+  },
+  "what_is_done": {
+   "choice": "he_fought",
+   "agree": 3,
+   "conf": 0.997
+  },
+  "news_kind": {
+   "choice": "result",
+   "agree": 3,
+   "conf": 1.0
+  },
+  "sourcing": {
+   "choice": "reported",
+   "agree": 3,
+   "conf": 0.54
+  },
+  "novelty": {
+   "choice": "new_and_substantial",
+   "agree": 3,
+   "conf": 0.813
+  }
+ },
+ "778": {
+  "role": {
+   "choice": "the_subject",
+   "agree": 3,
+   "conf": 0.977
+  },
+  "whose_judgement": {
+   "choice": "himself",
+   "agree": 3,
+   "conf": 0.363
+  },
+  "what_is_done": {
+   "choice": "he_fought",
+   "agree": 2,
+   "conf": 0.487
+  },
+  "news_kind": {
+   "choice": "quote",
+   "agree": 3,
+   "conf": 0.73
+  },
+  "sourcing": {
+   "choice": "only_a_quote_no_event",
+   "agree": 3,
+   "conf": 0.827
+  },
+  "novelty": {
+   "choice": "restates_known_facts",
+   "agree": 3,
+   "conf": 0.543
+  }
+ },
+ "779": {
+  "role": {
+   "choice": "the_subject",
+   "agree": 3,
+   "conf": 0.987
+  },
+  "whose_judgement": {
+   "choice": "the_article_author",
+   "agree": 3,
+   "conf": 0.69
+  },
+  "what_is_done": {
+   "choice": "he_fought",
+   "agree": 3,
+   "conf": 0.98
+  },
+  "news_kind": {
+   "choice": "result",
+   "agree": 3,
+   "conf": 1.0
+  },
+  "sourcing": {
+   "choice": "reported",
+   "agree": 3,
+   "conf": 0.527
+  },
+  "novelty": {
+   "choice": "new_and_substantial",
+   "agree": 3,
+   "conf": 0.64
+  }
+ },
+ "780": {
+  "role": {
+   "choice": "the_subject",
+   "agree": 3,
+   "conf": 0.997
+  },
+  "whose_judgement": {
+   "choice": "the_article_author",
+   "agree": 3,
+   "conf": 0.493
+  },
+  "what_is_done": {
+   "choice": "he_fought",
+   "agree": 3,
+   "conf": 1.0
+  },
+  "news_kind": {
+   "choice": "result",
+   "agree": 3,
+   "conf": 1.0
+  },
+  "sourcing": {
+   "choice": "reported",
+   "agree": 3,
+   "conf": 0.803
+  },
+  "novelty": {
+   "choice": "new_and_substantial",
+   "agree": 3,
+   "conf": 0.603
+  }
+ },
+ "782": {
+  "role": {
+   "choice": "the_subject",
+   "agree": 3,
+   "conf": 0.987
+  },
+  "whose_judgement": {
+   "choice": "the_champion_or_a_top_authority",
+   "agree": 3,
+   "conf": 0.583
+  },
+  "what_is_done": {
+   "choice": "he_fought",
+   "agree": 3,
+   "conf": 0.997
+  },
+  "news_kind": {
+   "choice": "result",
+   "agree": 3,
+   "conf": 1.0
+  },
+  "sourcing": {
+   "choice": "reported",
+   "agree": 3,
+   "conf": 0.54
+  },
+  "novelty": {
+   "choice": "restates_known_facts",
+   "agree": 3,
+   "conf": 0.537
+  }
+ },
+ "783": {
+  "role": {
+   "choice": "the_subject",
+   "agree": 3,
+   "conf": 1.0
+  },
+  "whose_judgement": {
+   "choice": "the_champion_or_a_top_authority",
+   "agree": 3,
+   "conf": 0.45
+  },
+  "what_is_done": {
+   "choice": "he_fought",
+   "agree": 3,
+   "conf": 1.0
+  },
+  "news_kind": {
+   "choice": "result",
+   "agree": 3,
+   "conf": 1.0
+  },
+  "sourcing": {
+   "choice": "reported",
+   "agree": 3,
+   "conf": 0.667
+  },
+  "novelty": {
+   "choice": "new_and_substantial",
+   "agree": 3,
+   "conf": 0.54
+  }
+ },
+ "785": {
+  "role": {
+   "choice": "the_subject",
+   "agree": 3,
+   "conf": 1.0
+  },
+  "whose_judgement": {
+   "choice": "the_champion_or_a_top_authority",
+   "agree": 3,
+   "conf": 0.513
+  },
+  "what_is_done": {
+   "choice": "he_fought",
+   "agree": 3,
+   "conf": 0.973
+  },
+  "news_kind": {
+   "choice": "result",
+   "agree": 3,
+   "conf": 1.0
+  },
+  "sourcing": {
+   "choice": "official",
+   "agree": 2,
+   "conf": 0.503
+  },
+  "novelty": {
+   "choice": "new_and_substantial",
+   "agree": 3,
+   "conf": 0.697
+  }
+ },
+ "786": {
+  "role": {
+   "choice": "the_subject",
+   "agree": 3,
+   "conf": 0.987
+  },
+  "whose_judgement": {
+   "choice": "the_article_author",
+   "agree": 3,
+   "conf": 0.87
+  },
+  "what_is_done": {
+   "choice": "he_fought",
+   "agree": 3,
+   "conf": 1.0
+  },
+  "news_kind": {
+   "choice": "result",
+   "agree": 3,
+   "conf": 1.0
+  },
+  "sourcing": {
+   "choice": "reported",
+   "agree": 3,
+   "conf": 0.81
+  },
+  "novelty": {
+   "choice": "new_and_substantial",
+   "agree": 3,
+   "conf": 0.71
+  }
+ },
+ "788": {
+  "role": {
+   "choice": "the_subject",
+   "agree": 3,
+   "conf": 1.0
+  },
+  "whose_judgement": {
+   "choice": "himself",
+   "agree": 3,
+   "conf": 0.707
+  },
+  "what_is_done": {
+   "choice": "he_tells_his_own_story",
+   "agree": 3,
+   "conf": 0.547
+  },
+  "news_kind": {
+   "choice": "quote",
+   "agree": 3,
+   "conf": 0.99
+  },
+  "sourcing": {
+   "choice": "reported",
+   "agree": 3,
+   "conf": 0.457
+  },
+  "novelty": {
+   "choice": "new_and_substantial",
+   "agree": 3,
+   "conf": 0.903
+  }
+ },
+ "789": {
+  "role": {
+   "choice": "the_subject",
+   "agree": 3,
+   "conf": 0.92
+  },
+  "whose_judgement": {
+   "choice": "himself",
+   "agree": 3,
+   "conf": 0.677
+  },
+  "what_is_done": {
+   "choice": "calling_him_out",
+   "agree": 3,
+   "conf": 0.493
+  },
+  "news_kind": {
+   "choice": "quote",
+   "agree": 3,
+   "conf": 0.983
+  },
+  "sourcing": {
+   "choice": "only_a_quote_no_event",
+   "agree": 3,
+   "conf": 0.943
+  },
+  "novelty": {
+   "choice": "new_and_substantial",
+   "agree": 3,
+   "conf": 0.953
+  }
+ },
+ "790": {
+  "role": {
+   "choice": "the_subject",
+   "agree": 3,
+   "conf": 0.937
+  },
+  "whose_judgement": {
+   "choice": "the_article_author",
+   "agree": 3,
+   "conf": 0.827
+  },
+  "what_is_done": {
+   "choice": "he_fought",
+   "agree": 3,
+   "conf": 0.983
+  },
+  "news_kind": {
+   "choice": "result",
+   "agree": 3,
+   "conf": 1.0
+  },
+  "sourcing": {
+   "choice": "reported",
+   "agree": 3,
+   "conf": 0.687
+  },
+  "novelty": {
+   "choice": "new_and_substantial",
+   "agree": 3,
+   "conf": 0.757
+  }
+ },
+ "794": {
+  "role": {
+   "choice": "the_subject",
+   "agree": 3,
+   "conf": 0.943
+  },
+  "whose_judgement": {
+   "choice": "himself",
+   "agree": 3,
+   "conf": 0.687
+  },
+  "what_is_done": {
+   "choice": "he_fought",
+   "agree": 2,
+   "conf": 0.437
+  },
+  "news_kind": {
+   "choice": "quote",
+   "agree": 3,
+   "conf": 0.973
+  },
+  "sourcing": {
+   "choice": "only_a_quote_no_event",
+   "agree": 3,
+   "conf": 0.907
+  },
+  "novelty": {
+   "choice": "new_and_substantial",
+   "agree": 3,
+   "conf": 0.967
+  }
+ },
+ "797": {
+  "role": {
+   "choice": "the_subject",
+   "agree": 3,
+   "conf": 0.95
+  },
+  "whose_judgement": {
+   "choice": "himself",
+   "agree": 3,
+   "conf": 0.717
+  },
+  "what_is_done": {
+   "choice": "calling_him_out",
+   "agree": 3,
+   "conf": 0.49
+  },
+  "news_kind": {
+   "choice": "quote",
+   "agree": 3,
+   "conf": 0.983
+  },
+  "sourcing": {
+   "choice": "only_a_quote_no_event",
+   "agree": 3,
+   "conf": 0.933
+  },
+  "novelty": {
+   "choice": "new_and_substantial",
+   "agree": 3,
+   "conf": 0.947
+  }
+ },
+ "798": {
+  "role": {
+   "choice": "the_one_being_talked_about",
+   "agree": 2,
+   "conf": 0.427
+  },
+  "whose_judgement": {
+   "choice": "a_pundit_or_commentator",
+   "agree": 3,
+   "conf": 0.623
+  },
+  "what_is_done": {
+   "choice": "he_tells_his_own_story",
+   "agree": 3,
+   "conf": 0.537
+  },
+  "news_kind": {
+   "choice": "negotiation",
+   "agree": 3,
+   "conf": 0.873
+  },
+  "sourcing": {
+   "choice": "rumored",
+   "agree": 3,
+   "conf": 0.967
+  },
+  "novelty": {
+   "choice": "new_and_substantial",
+   "agree": 3,
+   "conf": 0.72
+  }
+ },
+ "803": {
+  "role": {
+   "choice": "the_one_being_talked_about",
+   "agree": 3,
+   "conf": 0.683
+  },
+  "whose_judgement": {
+   "choice": "a_pundit_or_commentator",
+   "agree": 3,
+   "conf": 0.823
+  },
+  "what_is_done": {
+   "choice": "assessing_him",
+   "agree": 2,
+   "conf": 0.443
+  },
+  "news_kind": {
+   "choice": "prediction",
+   "agree": 3,
+   "conf": 0.667
+  },
+  "sourcing": {
+   "choice": "rumored",
+   "agree": 3,
+   "conf": 0.51
+  },
+  "novelty": {
+   "choice": "new_and_substantial",
+   "agree": 3,
+   "conf": 0.357
+  }
+ },
+ "807": {
+  "role": {
+   "choice": "the_one_being_talked_about",
+   "agree": 3,
+   "conf": 0.873
+  },
+  "whose_judgement": {
+   "choice": "a_pundit_or_commentator",
+   "agree": 3,
+   "conf": 0.793
+  },
+  "what_is_done": {
+   "choice": "assessing_him",
+   "agree": 3,
+   "conf": 0.777
+  },
+  "news_kind": {
+   "choice": "prediction",
+   "agree": 3,
+   "conf": 0.82
+  },
+  "sourcing": {
+   "choice": "rumored",
+   "agree": 3,
+   "conf": 0.84
+  },
+  "novelty": {
+   "choice": "new_and_substantial",
+   "agree": 3,
+   "conf": 0.44
+  }
+ },
+ "811": {
+  "role": {
+   "choice": "not_in_the_article_body",
+   "agree": 2,
+   "conf": 0.293
+  },
+  "whose_judgement": {
+   "choice": "himself",
+   "agree": 3,
+   "conf": 0.49
+  },
+  "what_is_done": {
+   "choice": "assessing_him",
+   "agree": 2,
+   "conf": 0.297
+  },
+  "news_kind": {
+   "choice": "no_news_about_him",
+   "agree": 3,
+   "conf": 0.397
+  },
+  "sourcing": {
+   "choice": "no_factual_claim",
+   "agree": 3,
+   "conf": 0.437
+  },
+  "novelty": {
+   "choice": "nothing_about_him",
+   "agree": 3,
+   "conf": 0.283
+  }
+ },
+ "813": {
+  "role": {
+   "choice": "the_subject",
+   "agree": 3,
+   "conf": 0.94
+  },
+  "whose_judgement": {
+   "choice": "himself",
+   "agree": 3,
+   "conf": 0.667
+  },
+  "what_is_done": {
+   "choice": "calling_him_out",
+   "agree": 2,
+   "conf": 0.48
+  },
+  "news_kind": {
+   "choice": "quote",
+   "agree": 3,
+   "conf": 0.97
+  },
+  "sourcing": {
+   "choice": "only_a_quote_no_event",
+   "agree": 3,
+   "conf": 0.933
+  },
+  "novelty": {
+   "choice": "new_and_substantial",
+   "agree": 3,
+   "conf": 0.937
+  }
+ },
+ "817": {
+  "role": {
+   "choice": "the_subject",
+   "agree": 3,
+   "conf": 0.99
+  },
+  "whose_judgement": {
+   "choice": "the_article_author",
+   "agree": 3,
+   "conf": 0.657
+  },
+  "what_is_done": {
+   "choice": "he_fought",
+   "agree": 3,
+   "conf": 0.94
+  },
+  "news_kind": {
+   "choice": "result",
+   "agree": 3,
+   "conf": 1.0
+  },
+  "sourcing": {
+   "choice": "reported",
+   "agree": 3,
+   "conf": 0.643
+  },
+  "novelty": {
+   "choice": "new_and_substantial",
+   "agree": 3,
+   "conf": 0.71
+  }
+ },
+ "820": {
+  "role": {
+   "choice": "the_one_being_talked_about",
+   "agree": 3,
+   "conf": 0.88
+  },
+  "whose_judgement": {
+   "choice": "an_opponent_or_their_camp",
+   "agree": 3,
+   "conf": 0.753
+  },
+  "what_is_done": {
+   "choice": "naming_him_in_passing",
+   "agree": 3,
+   "conf": 0.393
+  },
+  "news_kind": {
+   "choice": "quote",
+   "agree": 3,
+   "conf": 0.703
+  },
+  "sourcing": {
+   "choice": "only_a_quote_no_event",
+   "agree": 3,
+   "conf": 0.667
+  },
+  "novelty": {
+   "choice": "new_and_substantial",
+   "agree": 2,
+   "conf": 0.23
+  }
+ },
+ "823": {
+  "role": {
+   "choice": "the_subject",
+   "agree": 3,
+   "conf": 0.997
+  },
+  "whose_judgement": {
+   "choice": "himself",
+   "agree": 2,
+   "conf": 0.31
+  },
+  "what_is_done": {
+   "choice": "he_fought",
+   "agree": 3,
+   "conf": 0.973
+  },
+  "news_kind": {
+   "choice": "result",
+   "agree": 3,
+   "conf": 1.0
+  },
+  "sourcing": {
+   "choice": "official",
+   "agree": 2,
+   "conf": 0.44
+  },
+  "novelty": {
+   "choice": "new_and_substantial",
+   "agree": 3,
+   "conf": 0.763
+  }
+ },
+ "826": {
+  "role": {
+   "choice": "the_subject",
+   "agree": 3,
+   "conf": 1.0
+  },
+  "whose_judgement": {
+   "choice": "no_one_judges_him",
+   "agree": 3,
+   "conf": 0.41
+  },
+  "what_is_done": {
+   "choice": "he_fought",
+   "agree": 3,
+   "conf": 0.997
+  },
+  "news_kind": {
+   "choice": "result",
+   "agree": 3,
+   "conf": 1.0
+  },
+  "sourcing": {
+   "choice": "reported",
+   "agree": 3,
+   "conf": 0.65
+  },
+  "novelty": {
+   "choice": "restates_known_facts",
+   "agree": 3,
+   "conf": 0.617
+  }
+ },
+ "828": {
+  "role": {
+   "choice": "the_one_being_talked_about",
+   "agree": 3,
+   "conf": 0.65
+  },
+  "whose_judgement": {
+   "choice": "a_pundit_or_commentator",
+   "agree": 3,
+   "conf": 0.78
+  },
+  "what_is_done": {
+   "choice": "assessing_him",
+   "agree": 3,
+   "conf": 0.693
+  },
+  "news_kind": {
+   "choice": "negotiation",
+   "agree": 3,
+   "conf": 0.62
+  },
+  "sourcing": {
+   "choice": "rumored",
+   "agree": 3,
+   "conf": 0.853
+  },
+  "novelty": {
+   "choice": "new_and_substantial",
+   "agree": 3,
+   "conf": 0.607
+  }
+ },
+ "829": {
+  "role": {
+   "choice": "the_subject",
+   "agree": 3,
+   "conf": 1.0
+  },
+  "whose_judgement": {
+   "choice": "the_champion_or_a_top_authority",
+   "agree": 2,
+   "conf": 0.393
+  },
+  "what_is_done": {
+   "choice": "he_fought",
+   "agree": 3,
+   "conf": 0.993
+  },
+  "news_kind": {
+   "choice": "result",
+   "agree": 3,
+   "conf": 1.0
+  },
+  "sourcing": {
+   "choice": "reported",
+   "agree": 3,
+   "conf": 0.803
+  },
+  "novelty": {
+   "choice": "new_and_substantial",
+   "agree": 3,
+   "conf": 0.61
+  }
+ },
+ "833": {
+  "role": {
+   "choice": "the_one_being_talked_about",
+   "agree": 3,
+   "conf": 0.63
+  },
+  "whose_judgement": {
+   "choice": "a_pundit_or_commentator",
+   "agree": 3,
+   "conf": 0.913
+  },
+  "what_is_done": {
+   "choice": "assessing_him",
+   "agree": 3,
+   "conf": 0.563
+  },
+  "news_kind": {
+   "choice": "prediction",
+   "agree": 3,
+   "conf": 0.983
+  },
+  "sourcing": {
+   "choice": "only_a_quote_no_event",
+   "agree": 3,
+   "conf": 0.627
+  },
+  "novelty": {
+   "choice": "restates_known_facts",
+   "agree": 3,
+   "conf": 0.387
+  }
+ },
+ "838": {
+  "role": {
+   "choice": "the_one_being_talked_about",
+   "agree": 3,
+   "conf": 0.963
+  },
+  "whose_judgement": {
+   "choice": "an_opponent_or_their_camp",
+   "agree": 3,
+   "conf": 0.48
+  },
+  "what_is_done": {
+   "choice": "calling_him_out",
+   "agree": 3,
+   "conf": 0.533
+  },
+  "news_kind": {
+   "choice": "quote",
+   "agree": 3,
+   "conf": 0.753
+  },
+  "sourcing": {
+   "choice": "only_a_quote_no_event",
+   "agree": 3,
+   "conf": 0.577
+  },
+  "novelty": {
+   "choice": "new_and_substantial",
+   "agree": 3,
+   "conf": 0.167
+  }
+ },
+ "843": {
+  "role": {
+   "choice": "the_one_being_talked_about",
+   "agree": 3,
+   "conf": 0.947
+  },
+  "whose_judgement": {
+   "choice": "an_opponent_or_their_camp",
+   "agree": 3,
+   "conf": 0.773
+  },
+  "what_is_done": {
+   "choice": "calling_him_out",
+   "agree": 3,
+   "conf": 0.57
+  },
+  "news_kind": {
+   "choice": "quote",
+   "agree": 3,
+   "conf": 0.8
+  },
+  "sourcing": {
+   "choice": "only_a_quote_no_event",
+   "agree": 3,
+   "conf": 0.62
+  },
+  "novelty": {
+   "choice": "nothing_about_him",
+   "agree": 3,
+   "conf": 0.24
+  }
+ },
+ "850": {
+  "role": {
+   "choice": "the_one_being_talked_about",
+   "agree": 3,
+   "conf": 0.823
+  },
+  "whose_judgement": {
+   "choice": "an_opponent_or_their_camp",
+   "agree": 3,
+   "conf": 0.517
+  },
+  "what_is_done": {
+   "choice": "assessing_him",
+   "agree": 3,
+   "conf": 0.87
+  },
+  "news_kind": {
+   "choice": "prediction",
+   "agree": 3,
+   "conf": 0.577
+  },
+  "sourcing": {
+   "choice": "rumored",
+   "agree": 3,
+   "conf": 0.503
+  },
+  "novelty": {
+   "choice": "new_and_substantial",
+   "agree": 3,
+   "conf": 0.443
+  }
+ },
+ "851": {
+  "role": {
+   "choice": "the_subject",
+   "agree": 3,
+   "conf": 0.957
+  },
+  "whose_judgement": {
+   "choice": "himself",
+   "agree": 3,
+   "conf": 0.42
+  },
+  "what_is_done": {
+   "choice": "calling_him_out",
+   "agree": 2,
+   "conf": 0.533
+  },
+  "news_kind": {
+   "choice": "quote",
+   "agree": 3,
+   "conf": 0.883
+  },
+  "sourcing": {
+   "choice": "only_a_quote_no_event",
+   "agree": 3,
+   "conf": 0.817
+  },
+  "novelty": {
+   "choice": "new_and_substantial",
+   "agree": 3,
+   "conf": 0.88
+  }
+ },
+ "852": {
+  "role": {
+   "choice": "the_subject",
+   "agree": 3,
+   "conf": 0.997
+  },
+  "whose_judgement": {
+   "choice": "himself",
+   "agree": 3,
+   "conf": 0.98
+  },
+  "what_is_done": {
+   "choice": "he_gives_his_view",
+   "agree": 3,
+   "conf": 0.403
+  },
+  "news_kind": {
+   "choice": "quote",
+   "agree": 3,
+   "conf": 0.797
+  },
+  "sourcing": {
+   "choice": "only_a_quote_no_event",
+   "agree": 3,
+   "conf": 0.763
+  },
+  "novelty": {
+   "choice": "new_and_substantial",
+   "agree": 2,
+   "conf": 0.403
+  }
+ },
+ "856": {
+  "role": {
+   "choice": "background",
+   "agree": 2,
+   "conf": 0.517
+  },
+  "whose_judgement": {
+   "choice": "the_article_author",
+   "agree": 3,
+   "conf": 0.887
+  },
+  "what_is_done": {
+   "choice": "assessing_him",
+   "agree": 2,
+   "conf": 0.393
+  },
+  "news_kind": {
+   "choice": "injury",
+   "agree": 3,
+   "conf": 0.693
+  },
+  "sourcing": {
+   "choice": "reported",
+   "agree": 3,
+   "conf": 0.523
+  },
+  "novelty": {
+   "choice": "restates_known_facts",
+   "agree": 3,
+   "conf": 0.453
+  }
+ },
+ "861": {
+  "role": {
+   "choice": "mentioned_only",
+   "agree": 2,
+   "conf": 0.457
+  },
+  "whose_judgement": {
+   "choice": "a_pundit_or_commentator",
+   "agree": 3,
+   "conf": 0.817
+  },
+  "what_is_done": {
+   "choice": "assessing_him",
+   "agree": 3,
+   "conf": 0.413
+  },
+  "news_kind": {
+   "choice": "prediction",
+   "agree": 3,
+   "conf": 0.887
+  },
+  "sourcing": {
+   "choice": "no_factual_claim",
+   "agree": 3,
+   "conf": 0.74
+  },
+  "novelty": {
+   "choice": "filler_no_information",
+   "agree": 3,
+   "conf": 0.5
+  }
+ },
+ "862": {
+  "role": {
+   "choice": "the_one_being_talked_about",
+   "agree": 3,
+   "conf": 0.65
+  },
+  "whose_judgement": {
+   "choice": "a_pundit_or_commentator",
+   "agree": 3,
+   "conf": 0.887
+  },
+  "what_is_done": {
+   "choice": "assessing_him",
+   "agree": 3,
+   "conf": 0.66
+  },
+  "news_kind": {
+   "choice": "prediction",
+   "agree": 3,
+   "conf": 0.623
+  },
+  "sourcing": {
+   "choice": "rumored",
+   "agree": 3,
+   "conf": 0.8
+  },
+  "novelty": {
+   "choice": "new_and_substantial",
+   "agree": 3,
+   "conf": 0.473
+  }
+ },
+ "866": {
+  "role": {
+   "choice": "the_one_being_talked_about",
+   "agree": 2,
+   "conf": 0.647
+  },
+  "whose_judgement": {
+   "choice": "a_pundit_or_commentator",
+   "agree": 3,
+   "conf": 0.963
+  },
+  "what_is_done": {
+   "choice": "assessing_him",
+   "agree": 3,
+   "conf": 0.897
+  },
+  "news_kind": {
+   "choice": "quote",
+   "agree": 3,
+   "conf": 0.897
+  },
+  "sourcing": {
+   "choice": "only_a_quote_no_event",
+   "agree": 3,
+   "conf": 0.597
+  },
+  "novelty": {
+   "choice": "new_and_substantial",
+   "agree": 3,
+   "conf": 0.53
+  }
+ },
+ "871": {
+  "role": {
+   "choice": "the_one_being_talked_about",
+   "agree": 3,
+   "conf": 0.967
+  },
+  "whose_judgement": {
+   "choice": "an_opponent_or_their_camp",
+   "agree": 3,
+   "conf": 0.82
+  },
+  "what_is_done": {
+   "choice": "calling_him_out",
+   "agree": 3,
+   "conf": 0.493
+  },
+  "news_kind": {
+   "choice": "quote",
+   "agree": 3,
+   "conf": 0.987
+  },
+  "sourcing": {
+   "choice": "only_a_quote_no_event",
+   "agree": 3,
+   "conf": 0.827
+  },
+  "novelty": {
+   "choice": "restates_known_facts",
+   "agree": 3,
+   "conf": 0.563
+  }
+ },
+ "875": {
+  "role": {
+   "choice": "the_subject",
+   "agree": 3,
+   "conf": 1.0
+  },
+  "whose_judgement": {
+   "choice": "himself",
+   "agree": 3,
+   "conf": 0.633
+  },
+  "what_is_done": {
+   "choice": "he_tells_his_own_story",
+   "agree": 3,
+   "conf": 1.0
+  },
+  "news_kind": {
+   "choice": "lifestyle",
+   "agree": 2,
+   "conf": 0.547
+  },
+  "sourcing": {
+   "choice": "only_a_quote_no_event",
+   "agree": 2,
+   "conf": 0.413
+  },
+  "novelty": {
+   "choice": "new_and_substantial",
+   "agree": 3,
+   "conf": 0.54
+  }
+ },
+ "879": {
+  "role": {
+   "choice": "the_one_being_talked_about",
+   "agree": 3,
+   "conf": 0.983
+  },
+  "whose_judgement": {
+   "choice": "another_fighter",
+   "agree": 3,
+   "conf": 0.73
+  },
+  "what_is_done": {
+   "choice": "assessing_him",
+   "agree": 2,
+   "conf": 0.583
+  },
+  "news_kind": {
+   "choice": "quote",
+   "agree": 3,
+   "conf": 0.717
+  },
+  "sourcing": {
+   "choice": "only_a_quote_no_event",
+   "agree": 2,
+   "conf": 0.513
+  },
+  "novelty": {
+   "choice": "new_and_substantial",
+   "agree": 3,
+   "conf": 0.393
+  }
+ },
+ "883": {
+  "role": {
+   "choice": "the_subject",
+   "agree": 3,
+   "conf": 0.803
+  },
+  "whose_judgement": {
+   "choice": "the_champion_or_a_top_authority",
+   "agree": 3,
+   "conf": 0.38
+  },
+  "what_is_done": {
+   "choice": "he_tells_his_own_story",
+   "agree": 3,
+   "conf": 0.487
+  },
+  "news_kind": {
+   "choice": "negotiation",
+   "agree": 3,
+   "conf": 0.93
+  },
+  "sourcing": {
+   "choice": "rumored",
+   "agree": 3,
+   "conf": 0.99
+  },
+  "novelty": {
+   "choice": "new_and_substantial",
+   "agree": 3,
+   "conf": 0.867
+  }
+ },
+ "887": {
+  "role": {
+   "choice": "the_one_being_talked_about",
+   "agree": 3,
+   "conf": 0.807
+  },
+  "whose_judgement": {
+   "choice": "a_pundit_or_commentator",
+   "agree": 3,
+   "conf": 0.78
+  },
+  "what_is_done": {
+   "choice": "assessing_him",
+   "agree": 3,
+   "conf": 0.887
+  },
+  "news_kind": {
+   "choice": "quote",
+   "agree": 3,
+   "conf": 0.91
+  },
+  "sourcing": {
+   "choice": "only_a_quote_no_event",
+   "agree": 3,
+   "conf": 0.843
+  },
+  "novelty": {
+   "choice": "restates_known_facts",
+   "agree": 3,
+   "conf": 0.56
+  }
+ },
+ "889": {
+  "role": {
+   "choice": "the_one_being_talked_about",
+   "agree": 3,
+   "conf": 0.587
+  },
+  "whose_judgement": {
+   "choice": "an_opponent_or_their_camp",
+   "agree": 3,
+   "conf": 0.48
+  },
+  "what_is_done": {
+   "choice": "calling_him_out",
+   "agree": 3,
+   "conf": 0.687
+  },
+  "news_kind": {
+   "choice": "quote",
+   "agree": 3,
+   "conf": 0.87
+  },
+  "sourcing": {
+   "choice": "reported",
+   "agree": 2,
+   "conf": 0.477
+  },
+  "novelty": {
+   "choice": "small_new_detail",
+   "agree": 2,
+   "conf": 0.267
+  }
+ },
+ "892": {
+  "role": {
+   "choice": "the_one_being_talked_about",
+   "agree": 3,
+   "conf": 0.943
+  },
+  "whose_judgement": {
+   "choice": "an_opponent_or_their_camp",
+   "agree": 3,
+   "conf": 0.933
+  },
+  "what_is_done": {
+   "choice": "calling_him_out",
+   "agree": 3,
+   "conf": 0.937
+  },
+  "news_kind": {
+   "choice": "quote",
+   "agree": 3,
+   "conf": 0.973
+  },
+  "sourcing": {
+   "choice": "only_a_quote_no_event",
+   "agree": 3,
+   "conf": 0.883
+  },
+  "novelty": {
+   "choice": "restates_known_facts",
+   "agree": 3,
+   "conf": 0.703
+  }
+ },
+ "896": {
+  "role": {
+   "choice": "the_subject",
+   "agree": 3,
+   "conf": 0.72
+  },
+  "whose_judgement": {
+   "choice": "an_opponent_or_their_camp",
+   "agree": 2,
+   "conf": 0.423
+  },
+  "what_is_done": {
+   "choice": "assessing_him",
+   "agree": 3,
+   "conf": 0.79
+  },
+  "news_kind": {
+   "choice": "prediction",
+   "agree": 3,
+   "conf": 0.747
+  },
+  "sourcing": {
+   "choice": "rumored",
+   "agree": 3,
+   "conf": 0.853
+  },
+  "novelty": {
+   "choice": "new_and_substantial",
+   "agree": 3,
+   "conf": 0.51
+  }
+ },
+ "901": {
+  "role": {
+   "choice": "the_one_being_talked_about",
+   "agree": 3,
+   "conf": 0.923
+  },
+  "whose_judgement": {
+   "choice": "another_fighter",
+   "agree": 3,
+   "conf": 0.81
+  },
+  "what_is_done": {
+   "choice": "steering_him_elsewhere",
+   "agree": 3,
+   "conf": 0.653
+  },
+  "news_kind": {
+   "choice": "quote",
+   "agree": 3,
+   "conf": 0.803
+  },
+  "sourcing": {
+   "choice": "only_a_quote_no_event",
+   "agree": 3,
+   "conf": 0.597
+  },
+  "novelty": {
+   "choice": "new_and_substantial",
+   "agree": 3,
+   "conf": 0.373
+  }
+ },
+ "905": {
+  "role": {
+   "choice": "the_one_being_talked_about",
+   "agree": 3,
+   "conf": 0.96
+  },
+  "whose_judgement": {
+   "choice": "another_fighter",
+   "agree": 3,
+   "conf": 0.683
+  },
+  "what_is_done": {
+   "choice": "steering_him_elsewhere",
+   "agree": 3,
+   "conf": 0.853
+  },
+  "news_kind": {
+   "choice": "quote",
+   "agree": 3,
+   "conf": 0.933
+  },
+  "sourcing": {
+   "choice": "only_a_quote_no_event",
+   "agree": 3,
+   "conf": 0.78
+  },
+  "novelty": {
+   "choice": "new_and_substantial",
+   "agree": 3,
+   "conf": 0.403
+  }
+ },
+ "909": {
+  "role": {
+   "choice": "the_one_being_talked_about",
+   "agree": 3,
+   "conf": 0.743
+  },
+  "whose_judgement": {
+   "choice": "another_fighter",
+   "agree": 3,
+   "conf": 0.75
+  },
+  "what_is_done": {
+   "choice": "assessing_him",
+   "agree": 3,
+   "conf": 0.533
+  },
+  "news_kind": {
+   "choice": "quote",
+   "agree": 3,
+   "conf": 0.987
+  },
+  "sourcing": {
+   "choice": "only_a_quote_no_event",
+   "agree": 3,
+   "conf": 0.927
+  },
+  "novelty": {
+   "choice": "restates_known_facts",
+   "agree": 3,
+   "conf": 0.47
+  }
+ },
+ "913": {
+  "role": {
+   "choice": "the_one_being_talked_about",
+   "agree": 3,
+   "conf": 0.487
+  },
+  "whose_judgement": {
+   "choice": "an_opponent_or_their_camp",
+   "agree": 3,
+   "conf": 0.583
+  },
+  "what_is_done": {
+   "choice": "calling_him_out",
+   "agree": 2,
+   "conf": 0.447
+  },
+  "news_kind": {
+   "choice": "prediction",
+   "agree": 3,
+   "conf": 0.607
+  },
+  "sourcing": {
+   "choice": "rumored",
+   "agree": 2,
+   "conf": 0.38
+  },
+  "novelty": {
+   "choice": "restates_known_facts",
+   "agree": 3,
+   "conf": 0.44
+  }
+ },
+ "917": {
+  "role": {
+   "choice": "the_one_being_talked_about",
+   "agree": 2,
+   "conf": 0.663
+  },
+  "whose_judgement": {
+   "choice": "a_pundit_or_commentator",
+   "agree": 3,
+   "conf": 0.917
+  },
+  "what_is_done": {
+   "choice": "assessing_him",
+   "agree": 3,
+   "conf": 0.937
+  },
+  "news_kind": {
+   "choice": "quote",
+   "agree": 3,
+   "conf": 0.963
+  },
+  "sourcing": {
+   "choice": "only_a_quote_no_event",
+   "agree": 3,
+   "conf": 0.77
+  },
+  "novelty": {
+   "choice": "new_and_substantial",
+   "agree": 3,
+   "conf": 0.657
+  }
+ },
+ "921": {
+  "role": {
+   "choice": "the_one_being_talked_about",
+   "agree": 3,
+   "conf": 0.99
+  },
+  "whose_judgement": {
+   "choice": "an_opponent_or_their_camp",
+   "agree": 3,
+   "conf": 0.813
+  },
+  "what_is_done": {
+   "choice": "calling_him_out",
+   "agree": 3,
+   "conf": 0.867
+  },
+  "news_kind": {
+   "choice": "quote",
+   "agree": 3,
+   "conf": 0.97
+  },
+  "sourcing": {
+   "choice": "only_a_quote_no_event",
+   "agree": 3,
+   "conf": 0.75
+  },
+  "novelty": {
+   "choice": "restates_known_facts",
+   "agree": 3,
+   "conf": 0.5
+  }
+ },
+ "926": {
+  "role": {
+   "choice": "the_one_being_talked_about",
+   "agree": 3,
+   "conf": 0.74
+  },
+  "whose_judgement": {
+   "choice": "a_pundit_or_commentator",
+   "agree": 3,
+   "conf": 0.95
+  },
+  "what_is_done": {
+   "choice": "assessing_him",
+   "agree": 3,
+   "conf": 0.773
+  },
+  "news_kind": {
+   "choice": "quote",
+   "agree": 3,
+   "conf": 0.86
+  },
+  "sourcing": {
+   "choice": "only_a_quote_no_event",
+   "agree": 3,
+   "conf": 0.757
+  },
+  "novelty": {
+   "choice": "new_and_substantial",
+   "agree": 3,
+   "conf": 0.483
+  }
+ },
+ "930": {
+  "role": {
+   "choice": "the_subject",
+   "agree": 3,
+   "conf": 1.0
+  },
+  "whose_judgement": {
+   "choice": "himself",
+   "agree": 3,
+   "conf": 0.763
+  },
+  "what_is_done": {
+   "choice": "he_tells_his_own_story",
+   "agree": 3,
+   "conf": 0.747
+  },
+  "news_kind": {
+   "choice": "quote",
+   "agree": 3,
+   "conf": 0.987
+  },
+  "sourcing": {
+   "choice": "only_a_quote_no_event",
+   "agree": 3,
+   "conf": 0.537
+  },
+  "novelty": {
+   "choice": "new_and_substantial",
+   "agree": 3,
+   "conf": 0.847
+  }
+ },
+ "933": {
+  "role": {
+   "choice": "the_subject",
+   "agree": 3,
+   "conf": 0.977
+  },
+  "whose_judgement": {
+   "choice": "the_article_author",
+   "agree": 3,
+   "conf": 0.55
+  },
+  "what_is_done": {
+   "choice": "assessing_him",
+   "agree": 3,
+   "conf": 0.807
+  },
+  "news_kind": {
+   "choice": "prediction",
+   "agree": 3,
+   "conf": 0.963
+  },
+  "sourcing": {
+   "choice": "only_a_quote_no_event",
+   "agree": 2,
+   "conf": 0.35
+  },
+  "novelty": {
+   "choice": "new_and_substantial",
+   "agree": 3,
+   "conf": 0.487
+  }
+ },
+ "934": {
+  "role": {
+   "choice": "the_subject",
+   "agree": 3,
+   "conf": 0.977
+  },
+  "whose_judgement": {
+   "choice": "the_article_author",
+   "agree": 3,
+   "conf": 0.597
+  },
+  "what_is_done": {
+   "choice": "assessing_him",
+   "agree": 3,
+   "conf": 0.783
+  },
+  "news_kind": {
+   "choice": "prediction",
+   "agree": 3,
+   "conf": 0.973
+  },
+  "sourcing": {
+   "choice": "no_factual_claim",
+   "agree": 2,
+   "conf": 0.417
+  },
+  "novelty": {
+   "choice": "new_and_substantial",
+   "agree": 3,
+   "conf": 0.41
+  }
+ },
+ "937": {
+  "role": {
+   "choice": "the_one_being_talked_about",
+   "agree": 3,
+   "conf": 0.49
+  },
+  "whose_judgement": {
+   "choice": "himself",
+   "agree": 2,
+   "conf": 0.257
+  },
+  "what_is_done": {
+   "choice": "naming_him_in_passing",
+   "agree": 2,
+   "conf": 0.353
+  },
+  "news_kind": {
+   "choice": "quote",
+   "agree": 3,
+   "conf": 0.703
+  },
+  "sourcing": {
+   "choice": "only_a_quote_no_event",
+   "agree": 3,
+   "conf": 0.617
+  },
+  "novelty": {
+   "choice": "nothing_about_him",
+   "agree": 3,
+   "conf": 0.557
+  }
+ },
+ "944": {
+  "role": {
+   "choice": "the_one_being_talked_about",
+   "agree": 3,
+   "conf": 0.99
+  },
+  "whose_judgement": {
+   "choice": "an_opponent_or_their_camp",
+   "agree": 3,
+   "conf": 0.963
+  },
+  "what_is_done": {
+   "choice": "he_fought",
+   "agree": 3,
+   "conf": 0.73
+  },
+  "news_kind": {
+   "choice": "result",
+   "agree": 3,
+   "conf": 0.543
+  },
+  "sourcing": {
+   "choice": "only_a_quote_no_event",
+   "agree": 2,
+   "conf": 0.437
+  },
+  "novelty": {
+   "choice": "new_and_substantial",
+   "agree": 3,
+   "conf": 0.607
+  }
+ },
+ "948": {
+  "role": {
+   "choice": "mentioned_only",
+   "agree": 2,
+   "conf": 0.327
+  },
+  "whose_judgement": {
+   "choice": "another_fighter",
+   "agree": 3,
+   "conf": 0.67
+  },
+  "what_is_done": {
+   "choice": "he_gives_his_view",
+   "agree": 2,
+   "conf": 0.317
+  },
+  "news_kind": {
+   "choice": "quote",
+   "agree": 3,
+   "conf": 0.7
+  },
+  "sourcing": {
+   "choice": "only_a_quote_no_event",
+   "agree": 3,
+   "conf": 0.74
+  },
+  "novelty": {
+   "choice": "nothing_about_him",
+   "agree": 3,
+   "conf": 0.627
+  }
+ },
+ "953": {
+  "role": {
+   "choice": "the_one_being_talked_about",
+   "agree": 3,
+   "conf": 0.647
+  },
+  "whose_judgement": {
+   "choice": "no_one_judges_him",
+   "agree": 2,
+   "conf": 0.297
+  },
+  "what_is_done": {
+   "choice": "naming_him_in_passing",
+   "agree": 3,
+   "conf": 0.513
+  },
+  "news_kind": {
+   "choice": "quote",
+   "agree": 3,
+   "conf": 0.83
+  },
+  "sourcing": {
+   "choice": "only_a_quote_no_event",
+   "agree": 3,
+   "conf": 0.78
+  },
+  "novelty": {
+   "choice": "nothing_about_him",
+   "agree": 3,
+   "conf": 0.333
+  }
+ },
+ "958": {
+  "role": {
+   "choice": "the_subject",
+   "agree": 2,
+   "conf": 0.59
+  },
+  "whose_judgement": {
+   "choice": "the_champion_or_a_top_authority",
+   "agree": 3,
+   "conf": 1.0
+  },
+  "what_is_done": {
+   "choice": "assessing_him",
+   "agree": 3,
+   "conf": 0.957
+  },
+  "news_kind": {
+   "choice": "quote",
+   "agree": 3,
+   "conf": 0.95
+  },
+  "sourcing": {
+   "choice": "official",
+   "agree": 3,
+   "conf": 0.617
+  },
+  "novelty": {
+   "choice": "new_and_substantial",
+   "agree": 3,
+   "conf": 0.73
+  }
+ },
+ "963": {
+  "role": {
+   "choice": "the_one_being_talked_about",
+   "agree": 3,
+   "conf": 0.997
+  },
+  "whose_judgement": {
+   "choice": "an_opponent_or_their_camp",
+   "agree": 3,
+   "conf": 0.71
+  },
+  "what_is_done": {
+   "choice": "assessing_him",
+   "agree": 3,
+   "conf": 0.77
+  },
+  "news_kind": {
+   "choice": "quote",
+   "agree": 3,
+   "conf": 0.997
+  },
+  "sourcing": {
+   "choice": "only_a_quote_no_event",
+   "agree": 3,
+   "conf": 0.933
+  },
+  "novelty": {
+   "choice": "restates_known_facts",
+   "agree": 3,
+   "conf": 0.503
+  }
+ },
+ "968": {
+  "role": {
+   "choice": "the_subject",
+   "agree": 3,
+   "conf": 1.0
+  },
+  "whose_judgement": {
+   "choice": "himself",
+   "agree": 3,
+   "conf": 0.703
+  },
+  "what_is_done": {
+   "choice": "he_tells_his_own_story",
+   "agree": 3,
+   "conf": 0.647
+  },
+  "news_kind": {
+   "choice": "quote",
+   "agree": 3,
+   "conf": 0.987
+  },
+  "sourcing": {
+   "choice": "only_a_quote_no_event",
+   "agree": 2,
+   "conf": 0.49
+  },
+  "novelty": {
+   "choice": "new_and_substantial",
+   "agree": 3,
+   "conf": 0.627
+  }
+ },
+ "972": {
+  "role": {
+   "choice": "the_subject",
+   "agree": 2,
+   "conf": 0.56
+  },
+  "whose_judgement": {
+   "choice": "the_champion_or_a_top_authority",
+   "agree": 3,
+   "conf": 0.96
+  },
+  "what_is_done": {
+   "choice": "assessing_him",
+   "agree": 3,
+   "conf": 0.917
+  },
+  "news_kind": {
+   "choice": "quote",
+   "agree": 3,
+   "conf": 0.927
+  },
+  "sourcing": {
+   "choice": "only_a_quote_no_event",
+   "agree": 2,
+   "conf": 0.407
+  },
+  "novelty": {
+   "choice": "new_and_substantial",
+   "agree": 3,
+   "conf": 0.77
+  }
+ },
+ "975": {
+  "role": {
+   "choice": "background",
+   "agree": 2,
+   "conf": 0.327
+  },
+  "whose_judgement": {
+   "choice": "himself",
+   "agree": 3,
+   "conf": 0.7
+  },
+  "what_is_done": {
+   "choice": "naming_him_in_passing",
+   "agree": 3,
+   "conf": 0.63
+  },
+  "news_kind": {
+   "choice": "quote",
+   "agree": 3,
+   "conf": 0.5
+  },
+  "sourcing": {
+   "choice": "only_a_quote_no_event",
+   "agree": 3,
+   "conf": 0.753
+  },
+  "novelty": {
+   "choice": "new_and_substantial",
+   "agree": 2,
+   "conf": 0.27
+  }
+ },
+ "977": {
+  "role": {
+   "choice": "the_one_being_talked_about",
+   "agree": 3,
+   "conf": 0.957
+  },
+  "whose_judgement": {
+   "choice": "an_opponent_or_their_camp",
+   "agree": 3,
+   "conf": 0.79
+  },
+  "what_is_done": {
+   "choice": "assessing_him",
+   "agree": 3,
+   "conf": 0.45
+  },
+  "news_kind": {
+   "choice": "quote",
+   "agree": 3,
+   "conf": 0.887
+  },
+  "sourcing": {
+   "choice": "only_a_quote_no_event",
+   "agree": 3,
+   "conf": 0.413
+  },
+  "novelty": {
+   "choice": "restates_known_facts",
+   "agree": 3,
+   "conf": 0.29
+  }
+ },
+ "983": {
+  "role": {
+   "choice": "the_one_being_talked_about",
+   "agree": 3,
+   "conf": 0.983
+  },
+  "whose_judgement": {
+   "choice": "an_opponent_or_their_camp",
+   "agree": 3,
+   "conf": 0.92
+  },
+  "what_is_done": {
+   "choice": "assessing_him",
+   "agree": 3,
+   "conf": 0.9
+  },
+  "news_kind": {
+   "choice": "quote",
+   "agree": 3,
+   "conf": 0.883
+  },
+  "sourcing": {
+   "choice": "only_a_quote_no_event",
+   "agree": 3,
+   "conf": 0.67
+  },
+  "novelty": {
+   "choice": "restates_known_facts",
+   "agree": 3,
+   "conf": 0.343
+  }
+ },
+ "991": {
+  "role": {
+   "choice": "the_one_being_talked_about",
+   "agree": 3,
+   "conf": 0.683
+  },
+  "whose_judgement": {
+   "choice": "the_champion_or_a_top_authority",
+   "agree": 3,
+   "conf": 0.92
+  },
+  "what_is_done": {
+   "choice": "assessing_him",
+   "agree": 3,
+   "conf": 0.583
+  },
+  "news_kind": {
+   "choice": "quote",
+   "agree": 3,
+   "conf": 0.577
+  },
+  "sourcing": {
+   "choice": "only_a_quote_no_event",
+   "agree": 3,
+   "conf": 0.657
+  },
+  "novelty": {
+   "choice": "new_and_substantial",
+   "agree": 3,
+   "conf": 0.62
+  }
+ },
+ "998": {
+  "role": {
+   "choice": "the_subject",
+   "agree": 3,
+   "conf": 0.717
+  },
+  "whose_judgement": {
+   "choice": "the_champion_or_a_top_authority",
+   "agree": 3,
+   "conf": 0.997
+  },
+  "what_is_done": {
+   "choice": "assessing_him",
+   "agree": 3,
+   "conf": 0.92
+  },
+  "news_kind": {
+   "choice": "quote",
+   "agree": 3,
+   "conf": 0.8
+  },
+  "sourcing": {
+   "choice": "official",
+   "agree": 3,
+   "conf": 0.64
+  },
+  "novelty": {
+   "choice": "new_and_substantial",
+   "agree": 3,
+   "conf": 0.88
+  }
+ },
+ "1002": {
+  "role": {
+   "choice": "the_subject",
+   "agree": 3,
+   "conf": 0.737
+  },
+  "whose_judgement": {
+   "choice": "the_champion_or_a_top_authority",
+   "agree": 3,
+   "conf": 0.467
+  },
+  "what_is_done": {
+   "choice": "assessing_him",
+   "agree": 3,
+   "conf": 0.417
+  },
+  "news_kind": {
+   "choice": "quote",
+   "agree": 3,
+   "conf": 0.863
+  },
+  "sourcing": {
+   "choice": "rumored",
+   "agree": 2,
+   "conf": 0.363
+  },
+  "novelty": {
+   "choice": "new_and_substantial",
+   "agree": 3,
+   "conf": 0.63
+  }
+ },
+ "1008": {
+  "role": {
+   "choice": "the_subject",
+   "agree": 3,
+   "conf": 0.683
+  },
+  "whose_judgement": {
+   "choice": "the_champion_or_a_top_authority",
+   "agree": 3,
+   "conf": 0.993
+  },
+  "what_is_done": {
+   "choice": "assessing_him",
+   "agree": 3,
+   "conf": 0.937
+  },
+  "news_kind": {
+   "choice": "quote",
+   "agree": 3,
+   "conf": 0.937
+  },
+  "sourcing": {
+   "choice": "official",
+   "agree": 3,
+   "conf": 0.44
+  },
+  "novelty": {
+   "choice": "new_and_substantial",
+   "agree": 3,
+   "conf": 0.613
+  }
+ },
+ "1016": {
+  "role": {
+   "choice": "the_one_being_talked_about",
+   "agree": 3,
+   "conf": 0.973
+  },
+  "whose_judgement": {
+   "choice": "another_fighter",
+   "agree": 3,
+   "conf": 0.45
+  },
+  "what_is_done": {
+   "choice": "assessing_him",
+   "agree": 3,
+   "conf": 0.757
+  },
+  "news_kind": {
+   "choice": "quote",
+   "agree": 3,
+   "conf": 0.93
+  },
+  "sourcing": {
+   "choice": "only_a_quote_no_event",
+   "agree": 3,
+   "conf": 0.643
+  },
+  "novelty": {
+   "choice": "new_and_substantial",
+   "agree": 3,
+   "conf": 0.44
+  }
+ },
+ "1020": {
+  "role": {
+   "choice": "the_subject",
+   "agree": 3,
+   "conf": 0.78
+  },
+  "whose_judgement": {
+   "choice": "the_champion_or_a_top_authority",
+   "agree": 3,
+   "conf": 1.0
+  },
+  "what_is_done": {
+   "choice": "assessing_him",
+   "agree": 3,
+   "conf": 0.973
+  },
+  "news_kind": {
+   "choice": "quote",
+   "agree": 3,
+   "conf": 0.74
+  },
+  "sourcing": {
+   "choice": "official",
+   "agree": 3,
+   "conf": 0.593
+  },
+  "novelty": {
+   "choice": "new_and_substantial",
+   "agree": 3,
+   "conf": 0.647
+  }
+ },
+ "1027": {
+  "role": {
+   "choice": "the_one_being_talked_about",
+   "agree": 3,
+   "conf": 0.967
+  },
+  "whose_judgement": {
+   "choice": "another_fighter",
+   "agree": 3,
+   "conf": 0.733
+  },
+  "what_is_done": {
+   "choice": "steering_him_elsewhere",
+   "agree": 3,
+   "conf": 0.583
+  },
+  "news_kind": {
+   "choice": "quote",
+   "agree": 3,
+   "conf": 0.98
+  },
+  "sourcing": {
+   "choice": "only_a_quote_no_event",
+   "agree": 3,
+   "conf": 0.95
+  },
+  "novelty": {
+   "choice": "restates_known_facts",
+   "agree": 3,
+   "conf": 0.28
+  }
+ },
+ "1031": {
+  "role": {
+   "choice": "the_subject",
+   "agree": 3,
+   "conf": 0.96
+  },
+  "whose_judgement": {
+   "choice": "the_champion_or_a_top_authority",
+   "agree": 3,
+   "conf": 0.987
+  },
+  "what_is_done": {
+   "choice": "assessing_him",
+   "agree": 3,
+   "conf": 0.953
+  },
+  "news_kind": {
+   "choice": "quote",
+   "agree": 3,
+   "conf": 0.627
+  },
+  "sourcing": {
+   "choice": "official",
+   "agree": 3,
+   "conf": 0.31
+  },
+  "novelty": {
+   "choice": "new_and_substantial",
+   "agree": 3,
+   "conf": 0.563
+  }
+ },
+ "1036": {
+  "role": {
+   "choice": "the_subject",
+   "agree": 3,
+   "conf": 0.883
+  },
+  "whose_judgement": {
+   "choice": "the_champion_or_a_top_authority",
+   "agree": 3,
+   "conf": 0.99
+  },
+  "what_is_done": {
+   "choice": "assessing_him",
+   "agree": 3,
+   "conf": 0.85
+  },
+  "news_kind": {
+   "choice": "quote",
+   "agree": 3,
+   "conf": 0.77
+  },
+  "sourcing": {
+   "choice": "only_a_quote_no_event",
+   "agree": 3,
+   "conf": 0.377
+  },
+  "novelty": {
+   "choice": "new_and_substantial",
+   "agree": 2,
+   "conf": 0.373
+  }
+ },
+ "1040": {
+  "role": {
+   "choice": "the_one_being_talked_about",
+   "agree": 3,
+   "conf": 0.99
+  },
+  "whose_judgement": {
+   "choice": "an_opponent_or_their_camp",
+   "agree": 3,
+   "conf": 0.977
+  },
+  "what_is_done": {
+   "choice": "assessing_him",
+   "agree": 3,
+   "conf": 0.787
+  },
+  "news_kind": {
+   "choice": "quote",
+   "agree": 3,
+   "conf": 0.997
+  },
+  "sourcing": {
+   "choice": "only_a_quote_no_event",
+   "agree": 3,
+   "conf": 0.943
+  },
+  "novelty": {
+   "choice": "new_and_substantial",
+   "agree": 3,
+   "conf": 0.72
+  }
+ },
+ "1045": {
+  "role": {
+   "choice": "one_of_several_subjects",
+   "agree": 3,
+   "conf": 0.33
+  },
+  "whose_judgement": {
+   "choice": "a_pundit_or_commentator",
+   "agree": 3,
+   "conf": 0.513
+  },
+  "what_is_done": {
+   "choice": "naming_him_in_passing",
+   "agree": 2,
+   "conf": 0.24
+  },
+  "news_kind": {
+   "choice": "quote",
+   "agree": 3,
+   "conf": 0.817
+  },
+  "sourcing": {
+   "choice": "only_a_quote_no_event",
+   "agree": 3,
+   "conf": 0.877
+  },
+  "novelty": {
+   "choice": "filler_no_information",
+   "agree": 3,
+   "conf": 0.85
+  }
+ },
+ "1050": {
+  "role": {
+   "choice": "background",
+   "agree": 3,
+   "conf": 0.787
+  },
+  "whose_judgement": {
+   "choice": "the_champion_or_a_top_authority",
+   "agree": 2,
+   "conf": 0.467
+  },
+  "what_is_done": {
+   "choice": "assessing_him",
+   "agree": 2,
+   "conf": 0.417
+  },
+  "news_kind": {
+   "choice": "quote",
+   "agree": 3,
+   "conf": 0.7
+  },
+  "sourcing": {
+   "choice": "only_a_quote_no_event",
+   "agree": 3,
+   "conf": 0.66
+  },
+  "novelty": {
+   "choice": "restates_known_facts",
+   "agree": 3,
+   "conf": 0.577
+  }
+ },
+ "1058": {
+  "role": {
+   "choice": "the_subject",
+   "agree": 3,
+   "conf": 0.79
+  },
+  "whose_judgement": {
+   "choice": "the_champion_or_a_top_authority",
+   "agree": 3,
+   "conf": 0.993
+  },
+  "what_is_done": {
+   "choice": "assessing_him",
+   "agree": 3,
+   "conf": 0.943
+  },
+  "news_kind": {
+   "choice": "quote",
+   "agree": 3,
+   "conf": 0.597
+  },
+  "sourcing": {
+   "choice": "official",
+   "agree": 3,
+   "conf": 0.907
+  },
+  "novelty": {
+   "choice": "new_and_substantial",
+   "agree": 3,
+   "conf": 0.86
+  }
+ },
+ "1066": {
+  "role": {
+   "choice": "the_subject",
+   "agree": 3,
+   "conf": 0.777
+  },
+  "whose_judgement": {
+   "choice": "the_champion_or_a_top_authority",
+   "agree": 2,
+   "conf": 0.433
+  },
+  "what_is_done": {
+   "choice": "steering_him_elsewhere",
+   "agree": 2,
+   "conf": 0.513
+  },
+  "news_kind": {
+   "choice": "prediction",
+   "agree": 3,
+   "conf": 0.83
+  },
+  "sourcing": {
+   "choice": "rumored",
+   "agree": 3,
+   "conf": 0.763
+  },
+  "novelty": {
+   "choice": "new_and_substantial",
+   "agree": 3,
+   "conf": 0.68
+  }
+ },
+ "1072": {
+  "role": {
+   "choice": "the_one_being_talked_about",
+   "agree": 3,
+   "conf": 0.983
+  },
+  "whose_judgement": {
+   "choice": "an_opponent_or_their_camp",
+   "agree": 3,
+   "conf": 0.97
+  },
+  "what_is_done": {
+   "choice": "assessing_him",
+   "agree": 3,
+   "conf": 0.693
+  },
+  "news_kind": {
+   "choice": "quote",
+   "agree": 3,
+   "conf": 0.967
+  },
+  "sourcing": {
+   "choice": "only_a_quote_no_event",
+   "agree": 3,
+   "conf": 0.727
+  },
+  "novelty": {
+   "choice": "new_and_substantial",
+   "agree": 3,
+   "conf": 0.47
+  }
+ },
+ "1076": {
+  "role": {
+   "choice": "the_subject",
+   "agree": 3,
+   "conf": 0.97
+  },
+  "whose_judgement": {
+   "choice": "the_champion_or_a_top_authority",
+   "agree": 3,
+   "conf": 0.937
+  },
+  "what_is_done": {
+   "choice": "assessing_him",
+   "agree": 3,
+   "conf": 0.9
+  },
+  "news_kind": {
+   "choice": "prediction",
+   "agree": 3,
+   "conf": 0.64
+  },
+  "sourcing": {
+   "choice": "rumored",
+   "agree": 3,
+   "conf": 0.503
+  },
+  "novelty": {
+   "choice": "small_new_detail",
+   "agree": 2,
+   "conf": 0.377
+  }
+ },
+ "1080": {
+  "role": {
+   "choice": "mentioned_only",
+   "agree": 3,
+   "conf": 0.497
+  },
+  "whose_judgement": {
+   "choice": "his_camp",
+   "agree": 3,
+   "conf": 0.667
+  },
+  "what_is_done": {
+   "choice": "naming_him_in_passing",
+   "agree": 2,
+   "conf": 0.173
+  },
+  "news_kind": {
+   "choice": "no_news_about_him",
+   "agree": 3,
+   "conf": 0.5
+  },
+  "sourcing": {
+   "choice": "reported",
+   "agree": 3,
+   "conf": 0.263
+  },
+  "novelty": {
+   "choice": "nothing_about_him",
+   "agree": 3,
+   "conf": 0.473
+  }
+ },
+ "1085": {
+  "role": {
+   "choice": "not_in_the_article_body",
+   "agree": 2,
+   "conf": 0.467
+  },
+  "whose_judgement": {
+   "choice": "another_fighter",
+   "agree": 2,
+   "conf": 0.24
+  },
+  "what_is_done": {
+   "choice": "naming_him_in_passing",
+   "agree": 3,
+   "conf": 0.39
+  },
+  "news_kind": {
+   "choice": "quote",
+   "agree": 2,
+   "conf": 0.52
+  },
+  "sourcing": {
+   "choice": "only_a_quote_no_event",
+   "agree": 3,
+   "conf": 0.623
+  },
+  "novelty": {
+   "choice": "nothing_about_him",
+   "agree": 3,
+   "conf": 0.68
+  }
+ },
+ "1089": {
+  "role": {
+   "choice": "the_one_being_talked_about",
+   "agree": 3,
+   "conf": 0.317
+  },
+  "whose_judgement": {
+   "choice": "the_champion_or_a_top_authority",
+   "agree": 3,
+   "conf": 0.96
+  },
+  "what_is_done": {
+   "choice": "assessing_him",
+   "agree": 3,
+   "conf": 0.693
+  },
+  "news_kind": {
+   "choice": "quote",
+   "agree": 3,
+   "conf": 0.557
+  },
+  "sourcing": {
+   "choice": "only_a_quote_no_event",
+   "agree": 3,
+   "conf": 0.713
+  },
+  "novelty": {
+   "choice": "restates_known_facts",
+   "agree": 3,
+   "conf": 0.383
+  }
+ },
+ "1093": {
+  "role": {
+   "choice": "the_one_being_talked_about",
+   "agree": 3,
+   "conf": 0.397
+  },
+  "whose_judgement": {
+   "choice": "himself",
+   "agree": 2,
+   "conf": 0.263
+  },
+  "what_is_done": {
+   "choice": "naming_him_in_passing",
+   "agree": 3,
+   "conf": 0.593
+  },
+  "news_kind": {
+   "choice": "quote",
+   "agree": 2,
+   "conf": 0.317
+  },
+  "sourcing": {
+   "choice": "only_a_quote_no_event",
+   "agree": 3,
+   "conf": 0.453
+  },
+  "novelty": {
+   "choice": "nothing_about_him",
+   "agree": 3,
+   "conf": 0.483
+  }
+ },
+ "1097": {
+  "role": {
+   "choice": "the_one_being_talked_about",
+   "agree": 3,
+   "conf": 0.963
+  },
+  "whose_judgement": {
+   "choice": "another_fighter",
+   "agree": 2,
+   "conf": 0.373
+  },
+  "what_is_done": {
+   "choice": "steering_him_elsewhere",
+   "agree": 3,
+   "conf": 0.963
+  },
+  "news_kind": {
+   "choice": "quote",
+   "agree": 3,
+   "conf": 0.83
+  },
+  "sourcing": {
+   "choice": "only_a_quote_no_event",
+   "agree": 3,
+   "conf": 0.913
+  },
+  "novelty": {
+   "choice": "restates_known_facts",
+   "agree": 3,
+   "conf": 0.4
+  }
+ },
+ "1101": {
+  "role": {
+   "choice": "the_subject",
+   "agree": 3,
+   "conf": 0.997
+  },
+  "whose_judgement": {
+   "choice": "the_champion_or_a_top_authority",
+   "agree": 3,
+   "conf": 0.69
+  },
+  "what_is_done": {
+   "choice": "he_tells_his_own_story",
+   "agree": 3,
+   "conf": 0.827
+  },
+  "news_kind": {
+   "choice": "quote",
+   "agree": 3,
+   "conf": 0.79
+  },
+  "sourcing": {
+   "choice": "only_a_quote_no_event",
+   "agree": 3,
+   "conf": 0.697
+  },
+  "novelty": {
+   "choice": "new_and_substantial",
+   "agree": 3,
+   "conf": 0.927
+  }
+ },
+ "1125": {
+  "role": {
+   "choice": "the_subject",
+   "agree": 3,
+   "conf": 0.923
+  },
+  "whose_judgement": {
+   "choice": "himself",
+   "agree": 3,
+   "conf": 0.957
+  },
+  "what_is_done": {
+   "choice": "he_gives_his_view",
+   "agree": 3,
+   "conf": 0.747
+  },
+  "news_kind": {
+   "choice": "quote",
+   "agree": 3,
+   "conf": 0.98
+  },
+  "sourcing": {
+   "choice": "only_a_quote_no_event",
+   "agree": 3,
+   "conf": 0.923
+  },
+  "novelty": {
+   "choice": "new_and_substantial",
+   "agree": 3,
+   "conf": 0.95
+  }
+ },
+ "1129": {
+  "role": {
+   "choice": "the_subject",
+   "agree": 3,
+   "conf": 0.92
+  },
+  "whose_judgement": {
+   "choice": "himself",
+   "agree": 3,
+   "conf": 0.957
+  },
+  "what_is_done": {
+   "choice": "he_gives_his_view",
+   "agree": 3,
+   "conf": 0.73
+  },
+  "news_kind": {
+   "choice": "quote",
+   "agree": 3,
+   "conf": 0.987
+  },
+  "sourcing": {
+   "choice": "only_a_quote_no_event",
+   "agree": 3,
+   "conf": 0.917
+  },
+  "novelty": {
+   "choice": "new_and_substantial",
+   "agree": 3,
+   "conf": 0.95
+  }
+ },
+ "1146": {
+  "role": {
+   "choice": "the_one_being_talked_about",
+   "agree": 3,
+   "conf": 0.99
+  },
+  "whose_judgement": {
+   "choice": "the_champion_or_a_top_authority",
+   "agree": 3,
+   "conf": 0.887
+  },
+  "what_is_done": {
+   "choice": "assessing_him",
+   "agree": 3,
+   "conf": 0.973
+  },
+  "news_kind": {
+   "choice": "quote",
+   "agree": 3,
+   "conf": 0.99
+  },
+  "sourcing": {
+   "choice": "only_a_quote_no_event",
+   "agree": 3,
+   "conf": 0.93
+  },
+  "novelty": {
+   "choice": "restates_known_facts",
+   "agree": 3,
+   "conf": 0.36
+  }
+ },
+ "1150": {
+  "role": {
+   "choice": "the_one_being_talked_about",
+   "agree": 3,
+   "conf": 0.987
+  },
+  "whose_judgement": {
+   "choice": "the_champion_or_a_top_authority",
+   "agree": 3,
+   "conf": 0.807
+  },
+  "what_is_done": {
+   "choice": "assessing_him",
+   "agree": 3,
+   "conf": 0.883
+  },
+  "news_kind": {
+   "choice": "quote",
+   "agree": 3,
+   "conf": 1.0
+  },
+  "sourcing": {
+   "choice": "only_a_quote_no_event",
+   "agree": 3,
+   "conf": 0.96
+  },
+  "novelty": {
+   "choice": "restates_known_facts",
+   "agree": 2,
+   "conf": 0.37
+  }
+ },
+ "1160": {
+  "role": {
+   "choice": "the_one_being_talked_about",
+   "agree": 3,
+   "conf": 0.867
+  },
+  "whose_judgement": {
+   "choice": "the_champion_or_a_top_authority",
+   "agree": 3,
+   "conf": 0.903
+  },
+  "what_is_done": {
+   "choice": "assessing_him",
+   "agree": 3,
+   "conf": 0.98
+  },
+  "news_kind": {
+   "choice": "quote",
+   "agree": 3,
+   "conf": 0.987
+  },
+  "sourcing": {
+   "choice": "only_a_quote_no_event",
+   "agree": 3,
+   "conf": 0.983
+  },
+  "novelty": {
+   "choice": "new_and_substantial",
+   "agree": 2,
+   "conf": 0.213
+  }
+ },
+ "1161": {
+  "role": {
+   "choice": "not_in_the_article_body",
+   "agree": 3,
+   "conf": 0.42
+  },
+  "whose_judgement": {
+   "choice": "himself",
+   "agree": 3,
+   "conf": 0.307
+  },
+  "what_is_done": {
+   "choice": "he_tells_his_own_story",
+   "agree": 3,
+   "conf": 0.283
+  },
+  "news_kind": {
+   "choice": "no_news_about_him",
+   "agree": 3,
+   "conf": 0.467
+  },
+  "sourcing": {
+   "choice": "no_factual_claim",
+   "agree": 3,
+   "conf": 0.31
+  },
+  "novelty": {
+   "choice": "nothing_about_him",
+   "agree": 3,
+   "conf": 0.633
+  }
+ },
+ "1172": {
+  "role": {
+   "choice": "the_subject",
+   "agree": 3,
+   "conf": 0.987
+  },
+  "whose_judgement": {
+   "choice": "himself",
+   "agree": 3,
+   "conf": 0.863
+  },
+  "what_is_done": {
+   "choice": "he_fought",
+   "agree": 3,
+   "conf": 0.373
+  },
+  "news_kind": {
+   "choice": "quote",
+   "agree": 3,
+   "conf": 0.907
+  },
+  "sourcing": {
+   "choice": "only_a_quote_no_event",
+   "agree": 3,
+   "conf": 0.773
+  },
+  "novelty": {
+   "choice": "new_and_substantial",
+   "agree": 3,
+   "conf": 0.95
+  }
+ },
+ "1200": {
+  "role": {
+   "choice": "mentioned_only",
+   "agree": 3,
+   "conf": 0.543
+  },
+  "whose_judgement": {
+   "choice": "his_camp",
+   "agree": 3,
+   "conf": 0.747
+  },
+  "what_is_done": {
+   "choice": "assessing_him",
+   "agree": 2,
+   "conf": 0.527
+  },
+  "news_kind": {
+   "choice": "prediction",
+   "agree": 3,
+   "conf": 0.373
+  },
+  "sourcing": {
+   "choice": "only_a_quote_no_event",
+   "agree": 3,
+   "conf": 0.38
+  },
+  "novelty": {
+   "choice": "nothing_about_him",
+   "agree": 2,
+   "conf": 0.177
+  }
+ },
+ "1260": {
+  "role": {
+   "choice": "the_subject",
+   "agree": 3,
+   "conf": 0.677
+  },
+  "whose_judgement": {
+   "choice": "another_fighter",
+   "agree": 3,
+   "conf": 0.36
+  },
+  "what_is_done": {
+   "choice": "he_gives_his_view",
+   "agree": 3,
+   "conf": 0.953
+  },
+  "news_kind": {
+   "choice": "quote",
+   "agree": 3,
+   "conf": 0.807
+  },
+  "sourcing": {
+   "choice": "only_a_quote_no_event",
+   "agree": 3,
+   "conf": 0.877
+  },
+  "novelty": {
+   "choice": "new_and_substantial",
+   "agree": 3,
+   "conf": 0.917
+  }
+ }
+}

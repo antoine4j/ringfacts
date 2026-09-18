@@ -1,0 +1,1502 @@
+{
+ "1": {
+  "bucket": 2,
+  "why": "assessing_him by another_fighter",
+  "stable": true
+ },
+ "2": {
+  "bucket": 2,
+  "why": "assessing_him by another_fighter",
+  "stable": true
+ },
+ "3": {
+  "bucket": 3,
+  "why": "nothing new: filler_no_information",
+  "stable": true
+ },
+ "4": {
+  "bucket": 2,
+  "why": "assessing_him by another_fighter",
+  "stable": true
+ },
+ "6": {
+  "bucket": 2,
+  "why": "assessing_him by his_camp",
+  "stable": false
+ },
+ "10": {
+  "bucket": 2,
+  "why": "calling_him_out by an_opponent_or_their_camp",
+  "stable": true
+ },
+ "13": {
+  "bucket": 2,
+  "why": "assessing_him by another_fighter",
+  "stable": true
+ },
+ "14": {
+  "bucket": 2,
+  "why": "assessing_him by another_fighter",
+  "stable": true
+ },
+ "16": {
+  "bucket": 1,
+  "why": "announcement + reported",
+  "stable": true
+ },
+ "17": {
+  "bucket": 1,
+  "why": "announcement + reported",
+  "stable": true
+ },
+ "18": {
+  "bucket": 1,
+  "why": "announcement + reported",
+  "stable": true
+ },
+ "25": {
+  "bucket": 2,
+  "why": "not_in_this_list by no_one_judges_him",
+  "stable": false
+ },
+ "33": {
+  "bucket": 2,
+  "why": "assessing_him by another_fighter",
+  "stable": true
+ },
+ "34": {
+  "bucket": 2,
+  "why": "calling_him_out by an_opponent_or_their_camp",
+  "stable": false
+ },
+ "38": {
+  "bucket": 3,
+  "why": "nothing new: nothing_about_him",
+  "stable": true
+ },
+ "44": {
+  "bucket": 1,
+  "why": "result + reported",
+  "stable": false
+ },
+ "51": {
+  "bucket": 2,
+  "why": "defending_him by his_camp",
+  "stable": true
+ },
+ "55": {
+  "bucket": 2,
+  "why": "defending_him by his_camp",
+  "stable": true
+ },
+ "60": {
+  "bucket": 3,
+  "why": "nothing new: nothing_about_him",
+  "stable": true
+ },
+ "65": {
+  "bucket": 3,
+  "why": "nothing new: nothing_about_him",
+  "stable": true
+ },
+ "71": {
+  "bucket": 2,
+  "why": "defending_him by his_camp",
+  "stable": true
+ },
+ "78": {
+  "bucket": 2,
+  "why": "calling_him_out by an_opponent_or_their_camp",
+  "stable": true
+ },
+ "84": {
+  "bucket": 2,
+  "why": "defending_him by his_camp",
+  "stable": true
+ },
+ "90": {
+  "bucket": 2,
+  "why": "defending_him by his_camp",
+  "stable": false
+ },
+ "96": {
+  "bucket": 2,
+  "why": "assessing_him by another_fighter",
+  "stable": false
+ },
+ "97": {
+  "bucket": 2,
+  "why": "calling_him_out by an_opponent_or_their_camp",
+  "stable": true
+ },
+ "102": {
+  "bucket": 2,
+  "why": "defending_him by an_opponent_or_their_camp",
+  "stable": true
+ },
+ "115": {
+  "bucket": 3,
+  "why": "naming_him_in_passing",
+  "stable": true
+ },
+ "119": {
+  "bucket": 2,
+  "why": "defending_him by his_camp",
+  "stable": true
+ },
+ "125": {
+  "bucket": 3,
+  "why": "naming_him_in_passing",
+  "stable": true
+ },
+ "129": {
+  "bucket": 2,
+  "why": "calling_him_out by his_camp",
+  "stable": true
+ },
+ "134": {
+  "bucket": 3,
+  "why": "nothing new: nothing_about_him",
+  "stable": true
+ },
+ "138": {
+  "bucket": 2,
+  "why": "assessing_him by the_champion_or_a_top_authority",
+  "stable": false
+ },
+ "144": {
+  "bucket": 3,
+  "why": "nothing new: restates_known_facts",
+  "stable": true
+ },
+ "148": {
+  "bucket": 2,
+  "why": "assessing_him by an_opponent_or_their_camp",
+  "stable": true
+ },
+ "152": {
+  "bucket": 2,
+  "why": "assessing_him by his_camp",
+  "stable": true
+ },
+ "158": {
+  "bucket": 3,
+  "why": "nothing new: restates_known_facts",
+  "stable": true
+ },
+ "166": {
+  "bucket": 2,
+  "why": "assessing_him by the_champion_or_a_top_authority",
+  "stable": true
+ },
+ "170": {
+  "bucket": 3,
+  "why": "nothing new: restates_known_facts",
+  "stable": true
+ },
+ "174": {
+  "bucket": 2,
+  "why": "assessing_him by an_opponent_or_their_camp",
+  "stable": true
+ },
+ "181": {
+  "bucket": 3,
+  "why": "nothing new: nothing_about_him",
+  "stable": true
+ },
+ "186": {
+  "bucket": 3,
+  "why": "nothing new: nothing_about_him",
+  "stable": true
+ },
+ "187": {
+  "bucket": 3,
+  "why": "nothing new: nothing_about_him",
+  "stable": true
+ },
+ "193": {
+  "bucket": 2,
+  "why": "defending_him by an_opponent_or_their_camp",
+  "stable": true
+ },
+ "200": {
+  "bucket": 3,
+  "why": "nothing new: nothing_about_him",
+  "stable": true
+ },
+ "203": {
+  "bucket": 2,
+  "why": "he_tells_his_own_story by himself",
+  "stable": true
+ },
+ "204": {
+  "bucket": 3,
+  "why": "nothing new: restates_known_facts",
+  "stable": true
+ },
+ "207": {
+  "bucket": 3,
+  "why": "nothing new: nothing_about_him",
+  "stable": true
+ },
+ "208": {
+  "bucket": 2,
+  "why": "he_tells_his_own_story by himself",
+  "stable": true
+ },
+ "214": {
+  "bucket": 3,
+  "why": "nothing new: restates_known_facts",
+  "stable": true
+ },
+ "224": {
+  "bucket": 3,
+  "why": "nothing new: nothing_about_him",
+  "stable": true
+ },
+ "228": {
+  "bucket": 2,
+  "why": "calling_him_out by an_opponent_or_their_camp",
+  "stable": false
+ },
+ "230": {
+  "bucket": 3,
+  "why": "nothing new: restates_known_facts",
+  "stable": true
+ },
+ "233": {
+  "bucket": 3,
+  "why": "nothing new: restates_known_facts",
+  "stable": true
+ },
+ "238": {
+  "bucket": 3,
+  "why": "nothing new: filler_no_information",
+  "stable": true
+ },
+ "244": {
+  "bucket": 2,
+  "why": "assessing_him by an_opponent_or_their_camp",
+  "stable": true
+ },
+ "247": {
+  "bucket": 2,
+  "why": "assessing_him by a_pundit_or_commentator",
+  "stable": true
+ },
+ "249": {
+  "bucket": 3,
+  "why": "nothing new: restates_known_facts",
+  "stable": true
+ },
+ "256": {
+  "bucket": 2,
+  "why": "steering_him_elsewhere by another_fighter",
+  "stable": true
+ },
+ "261": {
+  "bucket": 3,
+  "why": "nothing new: nothing_about_him",
+  "stable": true
+ },
+ "269": {
+  "bucket": 2,
+  "why": "steering_him_elsewhere by another_fighter",
+  "stable": true
+ },
+ "273": {
+  "bucket": 2,
+  "why": "calling_him_out by an_opponent_or_their_camp",
+  "stable": false
+ },
+ "279": {
+  "bucket": 2,
+  "why": "assessing_him by his_camp",
+  "stable": true
+ },
+ "283": {
+  "bucket": 3,
+  "why": "nothing new: restates_known_facts",
+  "stable": true
+ },
+ "287": {
+  "bucket": 3,
+  "why": "nothing new: restates_known_facts",
+  "stable": true
+ },
+ "291": {
+  "bucket": 2,
+  "why": "he_tells_his_own_story by himself",
+  "stable": true
+ },
+ "297": {
+  "bucket": 3,
+  "why": "nothing new: filler_no_information",
+  "stable": true
+ },
+ "298": {
+  "bucket": 2,
+  "why": "he_tells_his_own_story by himself",
+  "stable": true
+ },
+ "300": {
+  "bucket": 2,
+  "why": "he_tells_his_own_story by himself",
+  "stable": true
+ },
+ "301": {
+  "bucket": 2,
+  "why": "he_gives_his_view by himself",
+  "stable": true
+ },
+ "305": {
+  "bucket": 2,
+  "why": "he_tells_his_own_story by himself",
+  "stable": false
+ },
+ "311": {
+  "bucket": 2,
+  "why": "assessing_him by an_opponent_or_their_camp",
+  "stable": true
+ },
+ "316": {
+  "bucket": 3,
+  "why": "not_in_the_article_body",
+  "stable": false
+ },
+ "320": {
+  "bucket": 2,
+  "why": "he_tells_his_own_story by himself",
+  "stable": true
+ },
+ "321": {
+  "bucket": 2,
+  "why": "he_tells_his_own_story by himself",
+  "stable": true
+ },
+ "322": {
+  "bucket": 2,
+  "why": "he_tells_his_own_story by himself",
+  "stable": true
+ },
+ "323": {
+  "bucket": 3,
+  "why": "naming_him_in_passing",
+  "stable": true
+ },
+ "327": {
+  "bucket": 2,
+  "why": "assessing_him by another_fighter",
+  "stable": true
+ },
+ "335": {
+  "bucket": 3,
+  "why": "nothing new: nothing_about_him",
+  "stable": true
+ },
+ "339": {
+  "bucket": 2,
+  "why": "assessing_him by an_opponent_or_their_camp",
+  "stable": true
+ },
+ "342": {
+  "bucket": 3,
+  "why": "nothing new: restates_known_facts",
+  "stable": true
+ },
+ "349": {
+  "bucket": 2,
+  "why": "assessing_him by another_fighter",
+  "stable": true
+ },
+ "353": {
+  "bucket": 3,
+  "why": "nothing new: nothing_about_him",
+  "stable": false
+ },
+ "361": {
+  "bucket": 2,
+  "why": "assessing_him by another_fighter",
+  "stable": true
+ },
+ "368": {
+  "bucket": 2,
+  "why": "assessing_him by another_fighter",
+  "stable": true
+ },
+ "373": {
+  "bucket": 2,
+  "why": "he_gives_his_view by himself",
+  "stable": true
+ },
+ "380": {
+  "bucket": 2,
+  "why": "he_tells_his_own_story by himself",
+  "stable": true
+ },
+ "385": {
+  "bucket": 2,
+  "why": "calling_him_out by an_opponent_or_their_camp",
+  "stable": true
+ },
+ "397": {
+  "bucket": 2,
+  "why": "assessing_him by an_opponent_or_their_camp",
+  "stable": false
+ },
+ "402": {
+  "bucket": 2,
+  "why": "assessing_him by his_camp",
+  "stable": true
+ },
+ "408": {
+  "bucket": 3,
+  "why": "nothing new: restates_known_facts",
+  "stable": true
+ },
+ "412": {
+  "bucket": 2,
+  "why": "assessing_him by his_camp",
+  "stable": true
+ },
+ "416": {
+  "bucket": 3,
+  "why": "nothing new: filler_no_information",
+  "stable": true
+ },
+ "423": {
+  "bucket": 3,
+  "why": "nothing new: restates_known_facts",
+  "stable": true
+ },
+ "427": {
+  "bucket": 2,
+  "why": "he_tells_his_own_story by himself",
+  "stable": true
+ },
+ "431": {
+  "bucket": 3,
+  "why": "nothing new: restates_known_facts",
+  "stable": true
+ },
+ "435": {
+  "bucket": 3,
+  "why": "nothing new: restates_known_facts",
+  "stable": true
+ },
+ "442": {
+  "bucket": 2,
+  "why": "assessing_him by an_opponent_or_their_camp",
+  "stable": true
+ },
+ "447": {
+  "bucket": 3,
+  "why": "nothing new: restates_known_facts",
+  "stable": true
+ },
+ "453": {
+  "bucket": 3,
+  "why": "nothing new: nothing_about_him",
+  "stable": true
+ },
+ "457": {
+  "bucket": 3,
+  "why": "nothing new: nothing_about_him",
+  "stable": true
+ },
+ "462": {
+  "bucket": 2,
+  "why": "assessing_him by an_opponent_or_their_camp",
+  "stable": false
+ },
+ "467": {
+  "bucket": 3,
+  "why": "nothing new: restates_known_facts",
+  "stable": true
+ },
+ "476": {
+  "bucket": 3,
+  "why": "nothing new: restates_known_facts",
+  "stable": true
+ },
+ "484": {
+  "bucket": 3,
+  "why": "nothing new: restates_known_facts",
+  "stable": false
+ },
+ "490": {
+  "bucket": 2,
+  "why": "assessing_him by himself",
+  "stable": true
+ },
+ "491": {
+  "bucket": 2,
+  "why": "assessing_him by himself",
+  "stable": true
+ },
+ "492": {
+  "bucket": 1,
+  "why": "injury + reported",
+  "stable": true
+ },
+ "494": {
+  "bucket": 2,
+  "why": "assessing_him by himself",
+  "stable": true
+ },
+ "497": {
+  "bucket": 3,
+  "why": "nothing new: restates_known_facts",
+  "stable": true
+ },
+ "500": {
+  "bucket": 3,
+  "why": "nothing new: restates_known_facts",
+  "stable": true
+ },
+ "503": {
+  "bucket": 2,
+  "why": "assessing_him by an_opponent_or_their_camp",
+  "stable": true
+ },
+ "508": {
+  "bucket": 3,
+  "why": "nothing new: restates_known_facts",
+  "stable": true
+ },
+ "510": {
+  "bucket": 3,
+  "why": "mentioned_only",
+  "stable": true
+ },
+ "516": {
+  "bucket": 3,
+  "why": "nothing new: restates_known_facts",
+  "stable": true
+ },
+ "520": {
+  "bucket": 3,
+  "why": "nothing new: nothing_about_him",
+  "stable": true
+ },
+ "521": {
+  "bucket": 3,
+  "why": "nothing new: filler_no_information",
+  "stable": true
+ },
+ "525": {
+  "bucket": 3,
+  "why": "nothing new: restates_known_facts",
+  "stable": true
+ },
+ "529": {
+  "bucket": 2,
+  "why": "he_gives_his_view by himself",
+  "stable": false
+ },
+ "532": {
+  "bucket": 3,
+  "why": "naming_him_in_passing",
+  "stable": true
+ },
+ "533": {
+  "bucket": 3,
+  "why": "nothing new: filler_no_information",
+  "stable": true
+ },
+ "540": {
+  "bucket": 3,
+  "why": "nothing new: filler_no_information",
+  "stable": true
+ },
+ "547": {
+  "bucket": 2,
+  "why": "assessing_him by his_camp",
+  "stable": true
+ },
+ "551": {
+  "bucket": 3,
+  "why": "nothing new: nothing_about_him",
+  "stable": true
+ },
+ "555": {
+  "bucket": 3,
+  "why": "nothing new: restates_known_facts",
+  "stable": true
+ },
+ "556": {
+  "bucket": 3,
+  "why": "nothing new: restates_known_facts",
+  "stable": true
+ },
+ "560": {
+  "bucket": 3,
+  "why": "nothing new: restates_known_facts",
+  "stable": true
+ },
+ "563": {
+  "bucket": 3,
+  "why": "nothing new: restates_known_facts",
+  "stable": true
+ },
+ "565": {
+  "bucket": 3,
+  "why": "nothing new: restates_known_facts",
+  "stable": true
+ },
+ "572": {
+  "bucket": 2,
+  "why": "assessing_him by a_pundit_or_commentator",
+  "stable": true
+ },
+ "576": {
+  "bucket": 3,
+  "why": "nothing new: restates_known_facts",
+  "stable": true
+ },
+ "580": {
+  "bucket": 3,
+  "why": "nothing new: nothing_about_him",
+  "stable": true
+ },
+ "585": {
+  "bucket": 3,
+  "why": "nothing new: nothing_about_him",
+  "stable": true
+ },
+ "588": {
+  "bucket": 2,
+  "why": "he_tells_his_own_story by himself",
+  "stable": false
+ },
+ "592": {
+  "bucket": 3,
+  "why": "nothing_of_the_sort",
+  "stable": false
+ },
+ "594": {
+  "bucket": 3,
+  "why": "nothing new: restates_known_facts",
+  "stable": true
+ },
+ "599": {
+  "bucket": 2,
+  "why": "assessing_him by the_article_author",
+  "stable": true
+ },
+ "601": {
+  "bucket": 2,
+  "why": "covering_his_event by no_one_judges_him",
+  "stable": true
+ },
+ "603": {
+  "bucket": 3,
+  "why": "nothing new: restates_known_facts",
+  "stable": true
+ },
+ "605": {
+  "bucket": 3,
+  "why": "nothing new: restates_known_facts",
+  "stable": true
+ },
+ "606": {
+  "bucket": 2,
+  "why": "assessing_him by another_fighter",
+  "stable": true
+ },
+ "608": {
+  "bucket": 3,
+  "why": "nothing new: restates_known_facts",
+  "stable": true
+ },
+ "609": {
+  "bucket": 2,
+  "why": "he_gives_his_view by himself",
+  "stable": true
+ },
+ "613": {
+  "bucket": 3,
+  "why": "mentioned_only",
+  "stable": true
+ },
+ "614": {
+  "bucket": 2,
+  "why": "covering_his_event by himself",
+  "stable": true
+ },
+ "616": {
+  "bucket": 2,
+  "why": "assessing_him by the_article_author",
+  "stable": true
+ },
+ "619": {
+  "bucket": 2,
+  "why": "assessing_him by the_article_author",
+  "stable": true
+ },
+ "620": {
+  "bucket": 2,
+  "why": "he_tells_his_own_story by himself",
+  "stable": true
+ },
+ "623": {
+  "bucket": 3,
+  "why": "nothing new: restates_known_facts",
+  "stable": true
+ },
+ "625": {
+  "bucket": 2,
+  "why": "covering_his_event by no_one_judges_him",
+  "stable": true
+ },
+ "627": {
+  "bucket": 2,
+  "why": "he_tells_his_own_story by himself",
+  "stable": true
+ },
+ "632": {
+  "bucket": 2,
+  "why": "he_tells_his_own_story by himself",
+  "stable": true
+ },
+ "636": {
+  "bucket": 2,
+  "why": "he_tells_his_own_story by himself",
+  "stable": true
+ },
+ "641": {
+  "bucket": 3,
+  "why": "nothing new: restates_known_facts",
+  "stable": true
+ },
+ "643": {
+  "bucket": 3,
+  "why": "nothing new: nothing_about_him",
+  "stable": false
+ },
+ "647": {
+  "bucket": 3,
+  "why": "nothing new: filler_no_information",
+  "stable": true
+ },
+ "651": {
+  "bucket": 2,
+  "why": "he_tells_his_own_story by himself",
+  "stable": true
+ },
+ "653": {
+  "bucket": 3,
+  "why": "nothing new: filler_no_information",
+  "stable": true
+ },
+ "654": {
+  "bucket": 3,
+  "why": "nothing new: restates_known_facts",
+  "stable": true
+ },
+ "655": {
+  "bucket": 3,
+  "why": "nothing new: nothing_about_him",
+  "stable": true
+ },
+ "659": {
+  "bucket": 2,
+  "why": "he_tells_his_own_story by himself",
+  "stable": true
+ },
+ "666": {
+  "bucket": 2,
+  "why": "he_tells_his_own_story by himself",
+  "stable": true
+ },
+ "672": {
+  "bucket": 2,
+  "why": "he_gives_his_view by himself",
+  "stable": true
+ },
+ "673": {
+  "bucket": 2,
+  "why": "assessing_him by a_pundit_or_commentator",
+  "stable": true
+ },
+ "675": {
+  "bucket": 2,
+  "why": "he_tells_his_own_story by himself",
+  "stable": true
+ },
+ "681": {
+  "bucket": 2,
+  "why": "assessing_him by a_pundit_or_commentator",
+  "stable": true
+ },
+ "682": {
+  "bucket": 2,
+  "why": "he_tells_his_own_story by himself",
+  "stable": true
+ },
+ "683": {
+  "bucket": 3,
+  "why": "nothing new: restates_known_facts",
+  "stable": true
+ },
+ "686": {
+  "bucket": 2,
+  "why": "covering_his_event by no_one_judges_him",
+  "stable": true
+ },
+ "687": {
+  "bucket": 2,
+  "why": "covering_his_event by the_article_author",
+  "stable": true
+ },
+ "688": {
+  "bucket": 2,
+  "why": "covering_his_event by the_article_author",
+  "stable": true
+ },
+ "690": {
+  "bucket": 2,
+  "why": "assessing_him by the_article_author",
+  "stable": true
+ },
+ "692": {
+  "bucket": 3,
+  "why": "nothing new: restates_known_facts",
+  "stable": true
+ },
+ "693": {
+  "bucket": 2,
+  "why": "he_tells_his_own_story by himself",
+  "stable": true
+ },
+ "697": {
+  "bucket": 2,
+  "why": "he_tells_his_own_story by himself",
+  "stable": true
+ },
+ "698": {
+  "bucket": 3,
+  "why": "nothing new: restates_known_facts",
+  "stable": true
+ },
+ "702": {
+  "bucket": 2,
+  "why": "he_tells_his_own_story by himself",
+  "stable": true
+ },
+ "709": {
+  "bucket": 3,
+  "why": "nothing new: restates_known_facts",
+  "stable": true
+ },
+ "710": {
+  "bucket": 3,
+  "why": "nothing new: nothing_about_him",
+  "stable": true
+ },
+ "714": {
+  "bucket": 1,
+  "why": "result + reported",
+  "stable": false
+ },
+ "717": {
+  "bucket": 2,
+  "why": "he_tells_his_own_story by himself",
+  "stable": true
+ },
+ "723": {
+  "bucket": 2,
+  "why": "he_tells_his_own_story by himself",
+  "stable": true
+ },
+ "728": {
+  "bucket": 2,
+  "why": "he_tells_his_own_story by himself",
+  "stable": true
+ },
+ "731": {
+  "bucket": 3,
+  "why": "nothing new: restates_known_facts",
+  "stable": false
+ },
+ "732": {
+  "bucket": 2,
+  "why": "calling_him_out by the_article_author",
+  "stable": false
+ },
+ "733": {
+  "bucket": 1,
+  "why": "result + official",
+  "stable": true
+ },
+ "735": {
+  "bucket": 1,
+  "why": "result + reported",
+  "stable": true
+ },
+ "736": {
+  "bucket": 3,
+  "why": "nothing new: restates_known_facts",
+  "stable": true
+ },
+ "737": {
+  "bucket": 1,
+  "why": "result + reported",
+  "stable": true
+ },
+ "740": {
+  "bucket": 3,
+  "why": "nothing new: filler_no_information",
+  "stable": true
+ },
+ "743": {
+  "bucket": 3,
+  "why": "nothing new: filler_no_information",
+  "stable": true
+ },
+ "744": {
+  "bucket": 2,
+  "why": "covering_his_event by the_article_author",
+  "stable": true
+ },
+ "745": {
+  "bucket": 3,
+  "why": "nothing new: restates_known_facts",
+  "stable": true
+ },
+ "746": {
+  "bucket": 3,
+  "why": "nothing new: filler_no_information",
+  "stable": true
+ },
+ "747": {
+  "bucket": 1,
+  "why": "result + reported",
+  "stable": true
+ },
+ "755": {
+  "bucket": 2,
+  "why": "he_tells_his_own_story by himself",
+  "stable": true
+ },
+ "758": {
+  "bucket": 1,
+  "why": "result + reported",
+  "stable": true
+ },
+ "759": {
+  "bucket": 1,
+  "why": "result + reported",
+  "stable": true
+ },
+ "762": {
+  "bucket": 2,
+  "why": "assessing_him by his_camp",
+  "stable": false
+ },
+ "765": {
+  "bucket": 1,
+  "why": "result + reported",
+  "stable": false
+ },
+ "767": {
+  "bucket": 1,
+  "why": "result + reported",
+  "stable": true
+ },
+ "768": {
+  "bucket": 1,
+  "why": "result + reported",
+  "stable": true
+ },
+ "771": {
+  "bucket": 2,
+  "why": "he_tells_his_own_story by himself",
+  "stable": true
+ },
+ "772": {
+  "bucket": 1,
+  "why": "result + reported",
+  "stable": true
+ },
+ "773": {
+  "bucket": 1,
+  "why": "result + reported",
+  "stable": true
+ },
+ "774": {
+  "bucket": 2,
+  "why": "covering_his_event by the_article_author",
+  "stable": true
+ },
+ "776": {
+  "bucket": 1,
+  "why": "result + reported",
+  "stable": true
+ },
+ "778": {
+  "bucket": 3,
+  "why": "nothing new: restates_known_facts",
+  "stable": true
+ },
+ "779": {
+  "bucket": 1,
+  "why": "result + reported",
+  "stable": true
+ },
+ "780": {
+  "bucket": 1,
+  "why": "result + reported",
+  "stable": true
+ },
+ "782": {
+  "bucket": 3,
+  "why": "nothing new: restates_known_facts",
+  "stable": true
+ },
+ "783": {
+  "bucket": 1,
+  "why": "result + reported",
+  "stable": true
+ },
+ "785": {
+  "bucket": 1,
+  "why": "result + official",
+  "stable": true
+ },
+ "786": {
+  "bucket": 1,
+  "why": "result + reported",
+  "stable": true
+ },
+ "788": {
+  "bucket": 2,
+  "why": "he_tells_his_own_story by himself",
+  "stable": true
+ },
+ "789": {
+  "bucket": 2,
+  "why": "calling_him_out by himself",
+  "stable": true
+ },
+ "790": {
+  "bucket": 1,
+  "why": "result + reported",
+  "stable": true
+ },
+ "794": {
+  "bucket": 2,
+  "why": "calling_him_out by himself",
+  "stable": true
+ },
+ "797": {
+  "bucket": 2,
+  "why": "calling_him_out by himself",
+  "stable": true
+ },
+ "798": {
+  "bucket": 2,
+  "why": "he_tells_his_own_story by a_pundit_or_commentator",
+  "stable": true
+ },
+ "803": {
+  "bucket": 2,
+  "why": "he_tells_his_own_story by a_pundit_or_commentator",
+  "stable": true
+ },
+ "807": {
+  "bucket": 2,
+  "why": "assessing_him by a_pundit_or_commentator",
+  "stable": true
+ },
+ "811": {
+  "bucket": 3,
+  "why": "nothing new: nothing_about_him",
+  "stable": true
+ },
+ "813": {
+  "bucket": 2,
+  "why": "calling_him_out by himself",
+  "stable": true
+ },
+ "817": {
+  "bucket": 1,
+  "why": "result + reported",
+  "stable": true
+ },
+ "820": {
+  "bucket": 2,
+  "why": "calling_him_out by an_opponent_or_their_camp",
+  "stable": true
+ },
+ "823": {
+  "bucket": 1,
+  "why": "result + official",
+  "stable": true
+ },
+ "826": {
+  "bucket": 3,
+  "why": "nothing new: restates_known_facts",
+  "stable": true
+ },
+ "828": {
+  "bucket": 2,
+  "why": "assessing_him by a_pundit_or_commentator",
+  "stable": true
+ },
+ "829": {
+  "bucket": 1,
+  "why": "result + reported",
+  "stable": true
+ },
+ "833": {
+  "bucket": 3,
+  "why": "nothing new: restates_known_facts",
+  "stable": true
+ },
+ "838": {
+  "bucket": 2,
+  "why": "calling_him_out by an_opponent_or_their_camp",
+  "stable": true
+ },
+ "843": {
+  "bucket": 3,
+  "why": "nothing new: nothing_about_him",
+  "stable": true
+ },
+ "850": {
+  "bucket": 2,
+  "why": "assessing_him by an_opponent_or_their_camp",
+  "stable": true
+ },
+ "851": {
+  "bucket": 2,
+  "why": "calling_him_out by himself",
+  "stable": true
+ },
+ "852": {
+  "bucket": 2,
+  "why": "assessing_him by himself",
+  "stable": false
+ },
+ "856": {
+  "bucket": 3,
+  "why": "nothing new: restates_known_facts",
+  "stable": true
+ },
+ "861": {
+  "bucket": 3,
+  "why": "nothing new: filler_no_information",
+  "stable": true
+ },
+ "862": {
+  "bucket": 2,
+  "why": "assessing_him by a_pundit_or_commentator",
+  "stable": true
+ },
+ "866": {
+  "bucket": 2,
+  "why": "assessing_him by a_pundit_or_commentator",
+  "stable": true
+ },
+ "871": {
+  "bucket": 3,
+  "why": "nothing new: restates_known_facts",
+  "stable": true
+ },
+ "875": {
+  "bucket": 2,
+  "why": "he_tells_his_own_story by himself",
+  "stable": true
+ },
+ "879": {
+  "bucket": 2,
+  "why": "steering_him_elsewhere by another_fighter",
+  "stable": true
+ },
+ "883": {
+  "bucket": 2,
+  "why": "he_tells_his_own_story by the_champion_or_a_top_authority",
+  "stable": true
+ },
+ "887": {
+  "bucket": 3,
+  "why": "nothing new: restates_known_facts",
+  "stable": true
+ },
+ "889": {
+  "bucket": 2,
+  "why": "calling_him_out by an_opponent_or_their_camp",
+  "stable": true
+ },
+ "892": {
+  "bucket": 3,
+  "why": "nothing new: restates_known_facts",
+  "stable": true
+ },
+ "896": {
+  "bucket": 2,
+  "why": "assessing_him by an_opponent_or_their_camp",
+  "stable": true
+ },
+ "901": {
+  "bucket": 2,
+  "why": "steering_him_elsewhere by another_fighter",
+  "stable": true
+ },
+ "905": {
+  "bucket": 2,
+  "why": "steering_him_elsewhere by another_fighter",
+  "stable": false
+ },
+ "909": {
+  "bucket": 3,
+  "why": "nothing new: restates_known_facts",
+  "stable": true
+ },
+ "913": {
+  "bucket": 3,
+  "why": "nothing new: restates_known_facts",
+  "stable": true
+ },
+ "917": {
+  "bucket": 2,
+  "why": "assessing_him by a_pundit_or_commentator",
+  "stable": true
+ },
+ "921": {
+  "bucket": 3,
+  "why": "nothing new: restates_known_facts",
+  "stable": true
+ },
+ "926": {
+  "bucket": 2,
+  "why": "steering_him_elsewhere by a_pundit_or_commentator",
+  "stable": true
+ },
+ "930": {
+  "bucket": 2,
+  "why": "he_tells_his_own_story by himself",
+  "stable": true
+ },
+ "933": {
+  "bucket": 2,
+  "why": "assessing_him by the_article_author",
+  "stable": true
+ },
+ "934": {
+  "bucket": 2,
+  "why": "assessing_him by the_article_author",
+  "stable": false
+ },
+ "937": {
+  "bucket": 3,
+  "why": "nothing new: nothing_about_him",
+  "stable": true
+ },
+ "944": {
+  "bucket": 2,
+  "why": "assessing_him by an_opponent_or_their_camp",
+  "stable": false
+ },
+ "948": {
+  "bucket": 3,
+  "why": "nothing new: nothing_about_him",
+  "stable": true
+ },
+ "953": {
+  "bucket": 3,
+  "why": "nothing new: nothing_about_him",
+  "stable": true
+ },
+ "958": {
+  "bucket": 2,
+  "why": "assessing_him by the_champion_or_a_top_authority",
+  "stable": true
+ },
+ "963": {
+  "bucket": 3,
+  "why": "nothing new: restates_known_facts",
+  "stable": true
+ },
+ "968": {
+  "bucket": 2,
+  "why": "he_tells_his_own_story by himself",
+  "stable": true
+ },
+ "972": {
+  "bucket": 2,
+  "why": "assessing_him by the_champion_or_a_top_authority",
+  "stable": true
+ },
+ "975": {
+  "bucket": 3,
+  "why": "naming_him_in_passing",
+  "stable": true
+ },
+ "977": {
+  "bucket": 3,
+  "why": "nothing new: restates_known_facts",
+  "stable": true
+ },
+ "983": {
+  "bucket": 3,
+  "why": "nothing new: restates_known_facts",
+  "stable": true
+ },
+ "991": {
+  "bucket": 2,
+  "why": "steering_him_elsewhere by the_champion_or_a_top_authority",
+  "stable": true
+ },
+ "998": {
+  "bucket": 2,
+  "why": "assessing_him by the_champion_or_a_top_authority",
+  "stable": true
+ },
+ "1002": {
+  "bucket": 2,
+  "why": "assessing_him by the_champion_or_a_top_authority",
+  "stable": true
+ },
+ "1008": {
+  "bucket": 2,
+  "why": "assessing_him by the_champion_or_a_top_authority",
+  "stable": true
+ },
+ "1016": {
+  "bucket": 2,
+  "why": "assessing_him by another_fighter",
+  "stable": true
+ },
+ "1020": {
+  "bucket": 2,
+  "why": "assessing_him by the_champion_or_a_top_authority",
+  "stable": true
+ },
+ "1027": {
+  "bucket": 3,
+  "why": "nothing new: restates_known_facts",
+  "stable": true
+ },
+ "1031": {
+  "bucket": 2,
+  "why": "assessing_him by the_champion_or_a_top_authority",
+  "stable": true
+ },
+ "1036": {
+  "bucket": 2,
+  "why": "assessing_him by the_champion_or_a_top_authority",
+  "stable": true
+ },
+ "1040": {
+  "bucket": 2,
+  "why": "assessing_him by an_opponent_or_their_camp",
+  "stable": true
+ },
+ "1045": {
+  "bucket": 3,
+  "why": "nothing new: filler_no_information",
+  "stable": true
+ },
+ "1050": {
+  "bucket": 3,
+  "why": "nothing new: restates_known_facts",
+  "stable": true
+ },
+ "1058": {
+  "bucket": 2,
+  "why": "assessing_him by the_champion_or_a_top_authority",
+  "stable": true
+ },
+ "1066": {
+  "bucket": 2,
+  "why": "steering_him_elsewhere by the_champion_or_a_top_authority",
+  "stable": true
+ },
+ "1072": {
+  "bucket": 2,
+  "why": "assessing_him by an_opponent_or_their_camp",
+  "stable": true
+ },
+ "1076": {
+  "bucket": 2,
+  "why": "assessing_him by the_champion_or_a_top_authority",
+  "stable": true
+ },
+ "1080": {
+  "bucket": 3,
+  "why": "nothing new: nothing_about_him",
+  "stable": true
+ },
+ "1085": {
+  "bucket": 3,
+  "why": "nothing new: nothing_about_him",
+  "stable": true
+ },
+ "1089": {
+  "bucket": 3,
+  "why": "nothing new: restates_known_facts",
+  "stable": true
+ },
+ "1093": {
+  "bucket": 3,
+  "why": "nothing new: nothing_about_him",
+  "stable": true
+ },
+ "1097": {
+  "bucket": 3,
+  "why": "nothing new: restates_known_facts",
+  "stable": false
+ },
+ "1101": {
+  "bucket": 2,
+  "why": "he_tells_his_own_story by the_champion_or_a_top_authority",
+  "stable": true
+ },
+ "1125": {
+  "bucket": 2,
+  "why": "he_gives_his_view by himself",
+  "stable": true
+ },
+ "1129": {
+  "bucket": 2,
+  "why": "he_gives_his_view by himself",
+  "stable": true
+ },
+ "1146": {
+  "bucket": 3,
+  "why": "nothing new: restates_known_facts",
+  "stable": true
+ },
+ "1150": {
+  "bucket": 3,
+  "why": "nothing new: restates_known_facts",
+  "stable": false
+ },
+ "1160": {
+  "bucket": 2,
+  "why": "assessing_him by the_champion_or_a_top_authority",
+  "stable": true
+ },
+ "1161": {
+  "bucket": 3,
+  "why": "nothing new: nothing_about_him",
+  "stable": true
+ },
+ "1172": {
+  "bucket": 2,
+  "why": "assessing_him by himself",
+  "stable": true
+ },
+ "1200": {
+  "bucket": 3,
+  "why": "nothing new: nothing_about_him",
+  "stable": true
+ },
+ "1260": {
+  "bucket": 2,
+  "why": "he_gives_his_view by another_fighter",
+  "stable": true
+ }
+}
