@@ -204,3 +204,36 @@ strips.
   beats occasion appended — AUC 0.926 vs 0.918, errors 423 vs 455, overlap
   1.7% vs 2.3%. Word order in the embedded text matters; the occasion
   weighs more up front. Carried into the standard arms (3q and arm 4).
+
+## Pass 3 spot read, and pass 4
+Pass 3 fixed what it aimed at: #732 now carries only the callout, #1050/#948
+are NO CLAIM, no claim fails to name the fighter (3 → 0), meta-phrasing 1.
+#817 (the next-day column) is extracted as the result for the THIRD time —
+`kind` came back new_event. Three prompt shapes have not moved it; parked as
+not crackable by wording alone (a date check — fight date well before the
+article date — would catch it in code).
+**But NO CLAIM jumped 19 → 73**, and 54 articles that had a pass-2 claim
+lost it. The classifier's `role` on those: 18 background / 11 mentioned_only
+(fair), but **18 "the one being talked about"** — Pimblett wanting Topuria
+next (#273), Usman saying he quit on the stool (#431/#435), Hooker on whether
+he'd risk Usman (#533/#540), Gaethje on a rematch (#1093). All claims ABOUT
+him, all sent to NO CLAIM as "about someone else". The exact defect the
+classifier had with `background`, reproduced in the extractor.
+**Pass 4:** about_someone_else gets the classifier's delete test — delete
+every sentence naming him; if the story still stands, it is about someone
+else — and an example of another fighter wanting him next as a claim.
+Prediction: NO CLAIM back to 35–45; the 18 recover; coverage ≥ 97%; arm 4
+AUC balanced holds ≥ 0.93. Cost ~$0.06; spend after ≈ $0.30.
+
+## Pass 3 scored — a regression, kept on the record
+| arm | AUC full | AUC balanced | overlap | errors @ best | coverage |
+|---|---|---|---|---|---|
+| 3q occasion-first claim (p2) | 0.926 | 0.908 | 1.7% | 423 / 5921 | 100% |
+| 3q occasion-first claim (p3) | 0.904 | 0.881 | 4.8% | 466 / 4366 | **88%** |
+| 4 claim + headline+lead (p2) | **0.944** | **0.930** | **1.5%** | **398 / 6542** | 100% |
+| 4 claim + headline+lead (p3) | 0.933 | 0.911 | 1.5% | 424 / 6542 | 100% |
+The `kind`-first shape fixed the three cases it was aimed at and lost 25
+articles of real coverage to "about someone else". Net: worse than pass 2 on
+every arm. Pass 2 stays the best prompt so far; pass 4 keeps the kind field
+and the one-fact rule but repairs the over-fire. If pass 4 does not beat
+pass 2's arm 4 (398 errors, balanced 0.930), the kind field goes.
