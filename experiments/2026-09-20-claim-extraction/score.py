@@ -34,13 +34,13 @@ def embed(arm, texts):
         req = urllib.request.Request(
             f"https://generativelanguage.googleapis.com/v1beta/models/{MODEL}:batchEmbedContents?key={api}",
             data=body, headers={"Content-Type": "application/json"})
-        for attempt in range(8):
+        for attempt in range(14):                      # free-tier Gemini throttles hard: be patient, never give up early
             try:
                 with urllib.request.urlopen(req, timeout=60) as r: res = json.loads(r.read())
                 break
             except urllib.error.HTTPError as e:
-                if e.code in (429, 500, 503) and attempt < 7:
-                    wait = min(60, 2 ** attempt * 3); print(f"  {arm}: HTTP {e.code}, waiting {wait}s"); time.sleep(wait); continue
+                if e.code in (429, 500, 503) and attempt < 13:
+                    wait = min(120, 2 ** attempt * 3); print(f"  {arm}: HTTP {e.code}, waiting {wait}s"); time.sleep(wait); continue
                 raise
         for (i, _), emb in zip(chunk, res["embeddings"]):
             out[i] = emb["values"]; json.dump(out[i], open(f"{d}/{i}.json", "w"))

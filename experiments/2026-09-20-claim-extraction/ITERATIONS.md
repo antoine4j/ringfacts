@@ -131,3 +131,16 @@ Prediction before the run: same-story pairs under 0.80 fall from 65 (mostly
 story-022/090/112 instalments) and result↔column false merges fall; balanced
 AUC rises above 0.83. Beating 0.918 is the open question. Cost ~$0.06.
 Spend so far: ~$0.09.
+- Pass 2 ran: $0.06, 242/300 claims changed, NO CLAIM 39 → 19, `occasion`
+  filled on 246/300, median claim 136 chars (was 112).
+  Spot read of the pass-1 failure cases: the preview (#599) is FIXED — now the
+  analysis's own point, not "scheduled to fight". The NV instalments share
+  occasion "Interview with NV", as intended. But the next-day column (#817)
+  STILL comes back as the result, with the fight as its occasion — the
+  sharpened instruction and the column example did not reach it. And the
+  drop in NO CLAIM has a cost: 3 claims now fail to name the fighter (#556,
+  #643, #1050 — Gaethje/McCann pieces where Topuria is peripheral); pass 1
+  had 0. One line to add for pass 3: about somebody else → NO CLAIM.
+- Arm 4 (pass-1 claim + headline + lead) died on Gemini 429 after 8 retries:
+  two embedding jobs were running at once on the free tier. Backoff raised to
+  14 attempts / 120 s cap; embedders now run one at a time.
