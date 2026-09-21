@@ -24,5 +24,18 @@
   "best_errors": 542,
   "miss_at_080": 148,
   "false_at_080": 628
+ },
+ {
+  "arm": "3 extracted claim",
+  "n_same": 654,
+  "n_diff": 4485,
+  "median_same": 0.9182546877054506,
+  "median_diff": 0.7536769029836113,
+  "overlap": 0.05172798216276477,
+  "auc": 0.8758181365680369,
+  "best_threshold": 0.95,
+  "best_errors": 509,
+  "miss_at_080": 65,
+  "false_at_080": 1572
  }
 ]

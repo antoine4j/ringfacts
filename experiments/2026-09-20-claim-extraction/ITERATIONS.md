@@ -71,3 +71,47 @@ Coverage risk: NO CLAIM firing on articles that belong to multi-article stories.
   json_object; never set max_tokens; put field specs + examples in the prompt)
   and the Qwen3.8-Flash-Next card (non-thinking sampling temp 0.7/top_p 0.8 —
   I keep temperature 0 for reproducible comparisons; noted as a choice).
+
+## Pass 1 result — the claim arm LOSES on the ruler, and the reason is definitional
+$0.070, 300 articles, 39 NO CLAIM (5 inside multi-article stories, all defensible:
+Gaethje-centred pieces and a boilerplate weigh-in page). Claims median 112 chars.
+
+| arm | AUC full | AUC balanced | best thr → errors |
+|---|---|---|---|
+| 1 headline | 0.895 | 0.875 | 0.84 → 572 |
+| 2 headline+lead (prod) | 0.918 | 0.918 | 0.89 → 542 |
+| **3 extracted claim** | **0.876** | **0.830** | 0.95 → 509 (fewer pairs) |
+
+Medians: claim same 0.918 / different 0.754 — everything is closer together.
+Short sentences about the same fighter crowd in embedding space.
+
+**But the worst "false merges" are not extraction errors.** They are pairs
+whose claims are word-for-word identical — "Donchenko is scheduled to fight
+Soriano at UFC Paris" across SIX ruler stories (055, 056, 066, 073.0/1/2: each
+preview column or outlet's restatement was clustered as its own story), and
+"Donchenko defeated Soriano by unanimous decision" across the event-wide
+results pages (073.3) and the result story (073.4). The extractor is right
+that these assert one fact. **The ruler was built by OCCASION (one piece of
+coverage); the claim separates by FACT.** For G3 — nothing repeats — the
+reader's question is "do I already know this?", and six previews of one
+booking are repeats. So on these pairs the claim is closer to the goal than
+the ruler is.
+
+**The worst misses are the mirror image:** the NV interview published as
+instalments (#298 TUF backstage, #320 territorial defence, #322 Kyiv club
+purses) is one occasion in the ruler and three facts in the claims. For a
+reader those are three different things to learn. Again the claim's reading
+is the reader's reading.
+
+So pass 1's AUC drop is largely measuring ruler-vs-claim disagreement on what
+a "story" is, not extraction quality. That is a question for Anton (fact or
+occasion?), recorded below. What IS an extraction problem: claims are short
+and same-shaped, so genuinely different remarks by the same person on
+different occasions sit too close (different-story median 0.754 vs the lead's
+0.698). The claim drops the thing that distinguishes them — WHERE and WHEN it
+was said.
+
+Fields (exact match): actor agrees on 98% of same-story pairs but also 36% of
+different-story pairs; event 67% vs 43%; date 86% vs 63% but filled on only
+20%. Fields identify the EVENT, not the story about it — useful for "same
+fight?", useless for "same news?". The third option is not a dedup on its own.
