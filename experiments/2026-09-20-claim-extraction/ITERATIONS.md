@@ -178,3 +178,25 @@ Prediction: 073.5↔073.4 and 073.4↔093 false merges disappear; claims not
 naming the fighter → 0; NO CLAIM rises back toward 30–40; balanced AUC for
 claim+occasion above 0.90. Risk: `kind` misfires and sends real news to
 NO CLAIM — coverage must stay ≥ 97%. Cost ~$0.06; spend after ≈ $0.24.
+
+## Arm 4 — the claim ADDS to what production embeds; it should not replace it
+Text embedded: pass-2 claim + occasion, then the headline, then the first
+1500 chars — i.e. production's input with one sentence in front. Same 676 /
+5,866 pairs as production (nothing drops out), same embedding model.
+
+| | AUC full | AUC balanced | overlap | errors at best thr |
+|---|---|---|---|---|
+| 2 headline+lead (production) | 0.918 | 0.918 | 5.0% | 542 @ 0.89 |
+| 3o claim+occasion alone | 0.918 | 0.897 | 2.3% | 455 @ 0.91 (fewer pairs) |
+| **4 claim+occasion + headline+lead** | **0.944** | **0.930** | **1.5%** | **398 @ 0.89** |
+
+**27% fewer errors at production's own best threshold, on the identical pair
+set.** The balanced view — the hard stories — rises from 0.918 to 0.930, the
+first arm to beat production there. Overlap falls from 5.0% to 1.5%.
+
+Reading: the claim carries the substance and the lead carries the
+distinguishing detail; each alone loses something the other has. For the
+whiteboard: the Extractor's sentence goes INTO the dedup embedding alongside
+the text, not instead of it. This also makes the fact-vs-occasion dispute
+matter less, because the lead keeps occasion-level detail the sentence
+strips.
