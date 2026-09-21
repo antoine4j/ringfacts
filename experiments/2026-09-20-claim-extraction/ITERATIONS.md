@@ -163,3 +163,18 @@ Prediction check: balanced AUC rose above 0.83 — yes (0.882 / 0.897). Beat
 lowest of any arm. The sentence with where-and-when attached is the best
 single text we have for telling stories apart at the tails.
 Spend so far ≈ $0.17 of the $1.00.
+
+## Pass 3 — decide the KIND first, one fact per claim, about-someone-else → NO CLAIM
+From pass-2 errors. (a) #817 (next-day column) still came back as the result:
+the instruction and example were not enough for a small model, so the shape
+changes — a `kind` field is decided FIRST (fill order matters; production
+learned the same with `reasoning` first) and the claim rule is keyed on it:
+analysis → the verdict, restatement → NO CLAIM. (b) #732 packed result +
+callout into one sentence and matched both the result story and the callout
+story: one fact per claim, the NEW thing wins. (c) #1050/#948/#556/#643 —
+claims that never name the fighter, one phrased "the article mentions a
+report…": about_someone_else → NO CLAIM, and no meta-phrasing.
+Prediction: 073.5↔073.4 and 073.4↔093 false merges disappear; claims not
+naming the fighter → 0; NO CLAIM rises back toward 30–40; balanced AUC for
+claim+occasion above 0.90. Risk: `kind` misfires and sends real news to
+NO CLAIM — coverage must stay ≥ 97%. Cost ~$0.06; spend after ≈ $0.24.
