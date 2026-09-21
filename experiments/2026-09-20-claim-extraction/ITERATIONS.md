@@ -264,3 +264,22 @@ Temperature 0 does not mean deterministic (the classifier experiment: 2.8% of
 answers moved on identical input). Without this number, 396 vs 398 and
 0.929 vs 0.930 cannot be called ties or differences. Prediction: some claims
 change wording; arm-4 errors move by fewer than 15. Cost $0.06; spend ≈ $0.36.
+
+## What the remaining 396 errors are (arm 4, pass 4, threshold 0.90)
+73 false merges + 323 misses.
+- **54 of the 73 false merges (74%) sit inside the fact-vs-occasion dispute**:
+  the 073.x family (preview / live page / result / column of one fight) and
+  the six-outlet booking restatement. The claims are right that these assert
+  one fact; the ruler splits them by occasion. The 19 outside it are mostly
+  prediction/odds columns from different outlets for the same card — which a
+  reader would also call one thing.
+- **The misses are six big same-occasion stories**: the 24-outlet result
+  (66), Topuria's letter to his son (42), Gaethje's podcast dissection (36),
+  the 9-part essay (28), Pimblett's Dublin interview (28), Dana White on Jim
+  Rome (21). One occasion, many angles; each outlet's claim picks a different
+  fact from it, and the ruler says they are one story.
+So the residual is overwhelmingly definitional. The extractor separates by
+FACT; the ruler groups by OCCASION. Which one dedup should use is Anton's
+call, and the answer probably differs by stage: fact-level for "have we told
+the group this?", occasion-level for "show me all articles in this story".
+Arm 4 hedges both because the lead keeps occasion detail the claim strips.
