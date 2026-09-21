@@ -130,6 +130,40 @@ part of why it wins.
 - Qwen3.8 Flash was the only model tried, per the brief. Whether Haiku
   extracts better is a different experiment.
 
+### What's next
+
+**Needs Anton — these change what gets built**
+1. **Fact or occasion?** The one real decision. Three quarters of the residual
+   error is this disagreement. It may differ by stage: fact-level for "have we
+   told the group already", occasion-level for the reading app (TODO 7).
+2. **Is arm 4 worth shipping?** It cuts dedup errors 27% at production's own
+   threshold — but measured on a frozen 300-article sample, never live.
+3. **Budget**: ~$0.60 of the $1.00 unspent. Which of the below is worth it.
+
+**Doable without him, roughly in value order**
+4. **The #817 date check, in code not prompt.** If the fight date is well
+   before the article date, it is not a new event. Kills the one failure five
+   prompt passes could not. Free — the extractor already returns `date`.
+5. **Anton's excerpt idea, and it matters more than it sounds.** Trim the body
+   to a window around the fighter's name and re-run arm 4. Production only
+   sends the first 1500 characters, so if a name-centred window holds up, the
+   Extractor gets better input for the same tokens. ~$0.06.
+6. **The third dedup option, properly tested.** Match on the structured fields
+   (opponent / event / date) with no similarity at all. Field agreement was
+   measured (actor 98% same-story vs 36% different; event 67% vs 43%) but
+   never scored as a dedup. Free — no model calls, fields already extracted.
+7. **Embedding vs embedding-then-LLM.** Anton raised it and it was never
+   tested: production's shape is top-K by embedding, then an LLM decides.
+   Does the LLM pass earn its cost once claims are in the embedding? ~$0.20.
+8. **A second extraction model.** Only Qwen3.8 Flash was tried, per the brief.
+   The decider scoreboard is a different task and does not transfer.
+9. **The threshold.** Production uses 0.80; arm 4's best is 0.90. A one-line
+   change, but validate before touching production.
+
+**Blocked**
+10. Live validation — the sample is frozen and must not be re-pulled.
+11. A bigger blind set — 22 articles is exhausted, and only Anton can grade it.
+
 ### Reproduce
     PASS=n python3 run.py --one        # one live call: reasoning tokens, cost
     PASS=n python3 run.py --yes        # ~$0.06–0.09 per pass, cached
