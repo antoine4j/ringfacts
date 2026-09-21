@@ -1,0 +1,67 @@
+ruler: 136 clusters -> 676 same-story pairs, 5866 different-story pairs (same fighter, ≤3 days)
+
+[1 headline]  coverage: 212/212 articles in multi-article stories have a claim (100%)
+  BALANCED (<=6 pairs/story, 150 pairs): AUC 0.875   best thr 0.92 -> 137 errors   median same 0.787
+  FULL: same-story pairs 676  different-story pairs 5866
+  median similarity   same 0.790   different 0.636   gap +0.154
+  different-story pairs scoring above the median same-story pair: 5.7%   (lower is better)
+  AUC (chance a same pair outscores a different pair): 0.895
+  best threshold 0.84: 572 errors of 6542
+  at production's 0.80: misses 375/676 same-story pairs, falsely merges 290/5866
+
+[2 headline+lead]  coverage: 212/212 articles in multi-article stories have a claim (100%)
+  BALANCED (<=6 pairs/story, 150 pairs): AUC 0.918   best thr 0.98 -> 139 errors   median same 0.844
+  FULL: same-story pairs 676  different-story pairs 5866
+  median similarity   same 0.841   different 0.698   gap +0.144
+  different-story pairs scoring above the median same-story pair: 5.0%   (lower is better)
+  AUC (chance a same pair outscores a different pair): 0.918
+  best threshold 0.89: 542 errors of 6542
+  at production's 0.80: misses 148/676 same-story pairs, falsely merges 628/5866
+  3-p2: 20/281 embedded
+  3-p2: 40/281 embedded
+  3-p2: 60/281 embedded
+  3-p2: 80/281 embedded
+  3-p2: 100/281 embedded
+  3-p2: 120/281 embedded
+  3-p2: 140/281 embedded
+  3-p2: 160/281 embedded
+  3-p2: 180/281 embedded
+  3-p2: 200/281 embedded
+  3-p2: 220/281 embedded
+  3-p2: 240/281 embedded
+  3-p2: 260/281 embedded
+  3-p2: 280/281 embedded
+  3-p2: 281/281 embedded
+
+[3 extracted claim]  coverage: 211/212 articles in multi-article stories have a claim (100%)
+  BALANCED (<=6 pairs/story, 149 pairs): AUC 0.882   best thr 0.96 -> 152 errors   median same 0.902
+  FULL: same-story pairs 675  different-story pairs 5246
+  median similarity   same 0.913   different 0.736   gap +0.177
+  different-story pairs scoring above the median same-story pair: 3.2%   (lower is better)
+  AUC (chance a same pair outscores a different pair): 0.905
+  best threshold 0.92: 499 errors of 5921
+  at production's 0.80: misses 83/675 same-story pairs, falsely merges 1362/5246
+  3o-p2: 20/281 embedded
+  3o-p2: 40/281 embedded
+  3o-p2: 60/281 embedded
+  3o-p2: 80/281 embedded
+  3o-p2: 100/281 embedded
+  3o-p2: 120/281 embedded
+  3o-p2: 140/281 embedded
+  3o-p2: 160/281 embedded
+  3o-p2: 180/281 embedded
+  3o-p2: 200/281 embedded
+  3o-p2: 220/281 embedded
+  3o-p2: 240/281 embedded
+  3o-p2: 260/281 embedded
+  3o-p2: 280/281 embedded
+  3o-p2: 281/281 embedded
+
+[3o claim + occasion]  coverage: 211/212 articles in multi-article stories have a claim (100%)
+  BALANCED (<=6 pairs/story, 149 pairs): AUC 0.897   best thr 0.98 -> 141 errors   median same 0.892
+  FULL: same-story pairs 675  different-story pairs 5246
+  median similarity   same 0.910   different 0.728   gap +0.182
+  different-story pairs scoring above the median same-story pair: 2.3%   (lower is better)
+  AUC (chance a same pair outscores a different pair): 0.918
+  best threshold 0.91: 455 errors of 5921
+  at production's 0.80: misses 74/675 same-story pairs, falsely merges 1194/5246

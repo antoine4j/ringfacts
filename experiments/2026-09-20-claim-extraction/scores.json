@@ -27,15 +27,28 @@
  },
  {
   "arm": "3 extracted claim",
-  "n_same": 654,
-  "n_diff": 4485,
-  "median_same": 0.9182546877054506,
-  "median_diff": 0.7536769029836113,
-  "overlap": 0.05172798216276477,
-  "auc": 0.8758181365680369,
-  "best_threshold": 0.95,
-  "best_errors": 509,
-  "miss_at_080": 65,
-  "false_at_080": 1572
+  "n_same": 675,
+  "n_diff": 5246,
+  "median_same": 0.9128814029645397,
+  "median_diff": 0.7357037041359623,
+  "overlap": 0.03221502096835684,
+  "auc": 0.9053210206012341,
+  "best_threshold": 0.92,
+  "best_errors": 499,
+  "miss_at_080": 83,
+  "false_at_080": 1362
+ },
+ {
+  "arm": "3o claim + occasion",
+  "n_same": 675,
+  "n_diff": 5246,
+  "median_same": 0.9102399151971203,
+  "median_diff": 0.7282214844783097,
+  "overlap": 0.022683949675943577,
+  "auc": 0.9178235269199814,
+  "best_threshold": 0.91,
+  "best_errors": 455,
+  "miss_at_080": 74,
+  "false_at_080": 1194
  }
 ]

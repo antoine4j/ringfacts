@@ -144,3 +144,22 @@ Spend so far: ~$0.09.
 - Arm 4 (pass-1 claim + headline + lead) died on Gemini 429 after 8 retries:
   two embedding jobs were running at once on the free tier. Backoff raised to
   14 attempts / 120 s cap; embedders now run one at a time.
+
+## Pass 2 result — real gain; occasion is worth having; production is now matched, not beaten
+Embeddings moved to OpenRouter's google/gemini-embedding-001 at 768 dims
+(verified cosine 1.0000 against Google-direct on a probe) after the free tier
+stalled the claim arm twice. Same model as production, no throttle, ~1 cent.
+
+| arm | AUC full | AUC balanced | overlap | best thr → errors |
+|---|---|---|---|---|
+| 2 headline+lead (prod) | 0.918 | 0.918 | 5.0% | 0.89 → 542 / 6542 (8.3%) |
+| 3 pass-1 claim | 0.876 | 0.830 | 5.2% | 0.95 → 509 / 5139 |
+| 3 pass-2 claim | 0.905 | 0.882 | 3.2% | 0.92 → 499 / 5921 |
+| **3o pass-2 claim + occasion** | **0.918** | **0.897** | **2.3%** | **0.91 → 455 / 5921 (7.7%)** |
+
+Prediction check: balanced AUC rose above 0.83 — yes (0.882 / 0.897). Beat
+0.918 — on the full set it ties; on the balanced (hard-story) set it does not.
+`occasion` alone is worth +0.013 full AUC and cuts overlap 3.2% → 2.3%, the
+lowest of any arm. The sentence with where-and-when attached is the best
+single text we have for telling stories apart at the tails.
+Spend so far ≈ $0.17 of the $1.00.

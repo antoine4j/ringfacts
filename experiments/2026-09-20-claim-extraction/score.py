@@ -13,10 +13,10 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 ARTS = {str(r["id"]): r for r in json.load(open(f"{HERE}/../2026-09-17-role-questions/data/articles.json"))}
 MODEL, DIM, BATCH = "gemini-embedding-001", 768, 20
 
-def key():
+def key(name="OPENROUTER_TEST_API_KEY"):
     for l in open(f"{HERE}/../../bench/.env.bench"):
-        if l.startswith("GEMINI_TEST_API_KEY="): return l.split("=", 1)[1].strip().strip('"').strip("'")
-    raise SystemExit("GEMINI_TEST_API_KEY not in bench/.env.bench")
+        if l.startswith(name + "="): return l.split("=", 1)[1].strip().strip('"').strip("'")
+    raise SystemExit(f"{name} not in bench/.env.bench")
 
 def embed(arm, texts):
     """texts: {id: text} -> {id: vector}; cached per arm+id."""
@@ -29,11 +29,11 @@ def embed(arm, texts):
     api = key() if todo else None
     for n in range(0, len(todo), BATCH):
         chunk = todo[n:n+BATCH]
-        body = json.dumps({"requests": [{"model": f"models/{MODEL}", "content": {"parts": [{"text": t}]},
-                                         "outputDimensionality": DIM} for _, t in chunk]}).encode()
-        req = urllib.request.Request(
-            f"https://generativelanguage.googleapis.com/v1beta/models/{MODEL}:batchEmbedContents?key={api}",
-            data=body, headers={"Content-Type": "application/json"})
+        # Same model, via OpenRouter: paid, unthrottled, and verified byte-identical to Google-direct 768d
+        # (cosine 1.0000 on a probe, 2026-09-21). Google's free tier stalled the claim arm twice.
+        body = json.dumps({"model": f"google/{MODEL}", "input": [t for _, t in chunk], "dimensions": DIM}).encode()
+        req = urllib.request.Request("https://openrouter.ai/api/v1/embeddings", data=body,
+                                     headers={"Authorization": f"Bearer {api}", "Content-Type": "application/json"})
         for attempt in range(14):                      # free-tier Gemini throttles hard: be patient, never give up early
             try:
                 with urllib.request.urlopen(req, timeout=60) as r: res = json.loads(r.read())
@@ -42,9 +42,9 @@ def embed(arm, texts):
                 if e.code in (429, 500, 503) and attempt < 13:
                     wait = min(120, 2 ** attempt * 3); print(f"  {arm}: HTTP {e.code}, waiting {wait}s"); time.sleep(wait); continue
                 raise
-        for (i, _), emb in zip(chunk, res["embeddings"]):
-            out[i] = emb["values"]; json.dump(out[i], open(f"{d}/{i}.json", "w"))
-        print(f"  {arm}: {min(n+BATCH, len(todo))}/{len(todo)} embedded"); time.sleep(1.0)
+        for (i, _), emb in zip(chunk, sorted(res["data"], key=lambda e: e["index"])):
+            out[i] = emb["embedding"][:DIM]; json.dump(out[i], open(f"{d}/{i}.json", "w"))
+        print(f"  {arm}: {min(n+BATCH, len(todo))}/{len(todo)} embedded")
     return out
 
 def cos(a, b):
