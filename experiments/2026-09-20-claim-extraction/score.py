@@ -110,7 +110,13 @@ if __name__ == "__main__":
         arms["3 extracted claim"] = {str(r["id"]): r["claim"] for r in ok}
         if any(r.get("occasion") for r in ok):      # pass 2+: attribute the occasion field separately
             arms["3o claim + occasion"] = {str(r["id"]): r["claim"] + (f" ({r['occasion']})" if r.get("occasion") else "") for r in ok}
+            occ_first = lambda r: (f"{r['occasion']}: " if r.get("occasion") else "") + r["claim"]
+            arms["3q occasion-first + claim"] = {str(r["id"]): occ_first(r) for r in ok}
+            # arm 4: the claim in FRONT of what production embeds - every article, nothing drops out
+            byid = {str(r["id"]): r for r in cl}
+            arms["4 occasion-first claim + headline + lead"] = {a: ((occ_first(byid[a]) + "\n\n") if a in {str(r["id"]) for r in ok} else "")
+                                                                 + ARTS[a]["title"] + "\n\n" + ARTS[a]["body"][:1500] for a in ids}
     story = {a: c["key"] for c in ruler for a in c["articles"]}
     tag = sys.argv[sys.argv.index("--claims")+1].replace("claims-", "").replace(".json", "") if "--claims" in sys.argv else ""
-    results = [report(arm, embed((arm.split()[0] if not arm.startswith("3") else arm.split()[0] + "-" + tag), texts), same, diff, story) for arm, texts in arms.items()]
+    results = [report(arm, embed((arm.split()[0] if arm[0] in "12" else arm.split()[0] + "-" + tag), texts), same, diff, story) for arm, texts in arms.items()]
     json.dump(results, open(f"{HERE}/scores.json", "w"), indent=1)

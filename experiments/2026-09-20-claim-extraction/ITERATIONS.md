@@ -200,3 +200,7 @@ whiteboard: the Extractor's sentence goes INTO the dedup embedding alongside
 the text, not instead of it. This also makes the fact-vs-occasion dispute
 matter less, because the lead keeps occasion-level detail the sentence
 strips.
+- Free variant on pass 2: occasion FIRST ("MightyCast podcast: Gaethje says…")
+  beats occasion appended — AUC 0.926 vs 0.918, errors 423 vs 455, overlap
+  1.7% vs 2.3%. Word order in the embedded text matters; the occasion
+  weighs more up front. Carried into the standard arms (3q and arm 4).
