@@ -1,0 +1,5 @@
+{"key": "story-037", "decision": "split", "why": "Three articles report Topuria's Charlas Adictivas podcast remarks on school bullying in Georgia; #380 reports a separate remark about his divorce (listen to his mother) with no link to that podcast, so it is a different statement.",
+ "substories": [
+  {"description": "Topuria on the Charlas Adictivas podcast recalls being bullied at school in Georgia with his brother and feeling fear", "articles": ["291", "427", "497"]},
+  {"description": "Topuria says the biggest lesson from his divorce was to listen to his mother", "articles": ["380"]}
+ ]}

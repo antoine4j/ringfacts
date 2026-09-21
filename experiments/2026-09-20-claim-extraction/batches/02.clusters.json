@@ -1,0 +1,98 @@
+{
+  "batch": "02",
+  "clusters": [
+    {
+      "key": "02-a",
+      "description": "Abdelaziz on the Pound 4 Pound podcast: Usman Nurmagomedov would beat the whole UFC lightweight roster, wants Topuria as his first UFC fight and says Usman would make him quit; only Tsarukyan is a real challenge",
+      "articles": [10, 34, 78],
+      "confidence": "high",
+      "reacts_to": null,
+      "doubt": "#78 (ABC) frames it around Makhachev's manager and the old Topuria-Makhachev feud, but the news is the same podcast remarks."
+    },
+    {
+      "key": "02-b",
+      "description": "Kawa (Topuria's manager) fires back at Abdelaziz in a social media video: Topuria 'would annihilate 100% of your roster', would beat Gaethje in a rematch, had a bad night, is still No. 1",
+      "articles": [51, 55, 71, 84, 90, 102, 97, 119],
+      "confidence": "high",
+      "reacts_to": "02-a",
+      "doubt": "#102/#97 (MARCA) put Abdelaziz's quote in the headline and retell both sides, but the hook is Kawa's response; #55 is Yahoo's syndication of #51."
+    },
+    {
+      "key": "02-c",
+      "description": "Abdelaziz tells MMA Junkie that Gaethje is not retiring, will fight in 2027 and only wants a massive fight",
+      "articles": [6],
+      "confidence": "high",
+      "reacts_to": null,
+      "doubt": "Same manager and same week as 02-a, but a different interview (MMA Junkie, not the podcast) about a different client."
+    },
+    {
+      "key": "02-d",
+      "description": "ABC lifestyle feature on Topuria's favourite restaurant in Spain (Nou Collonet on Tabarca island)",
+      "articles": [25],
+      "confidence": "high",
+      "reacts_to": null,
+      "doubt": null
+    },
+    {
+      "key": "02-e",
+      "description": "McGregor posts his first message after knee surgery (ACL/meniscus from UFC 329) - about someone else, Topuria not involved",
+      "articles": [38],
+      "confidence": "high",
+      "reacts_to": null,
+      "doubt": null
+    },
+    {
+      "key": "02-f",
+      "description": "Topuria's Instagram statement after losing to Gaethje: praises Gaethje, no excuses, reveals vision loss in both eyes, plans to heal and pursue a rematch",
+      "articles": [44],
+      "confidence": "medium",
+      "reacts_to": null,
+      "doubt": "Dated Aug 8 but describes the June fight as 'on Sunday' and calls it his first statement, so it may be a stale or re-published piece; the fight result itself is not in this batch."
+    },
+    {
+      "key": "02-g",
+      "description": "Ian Machado Garry says Khabib is one of the greatest despite retiring early - about someone else, Topuria only appears in a 'latest news' link",
+      "articles": [60],
+      "confidence": "high",
+      "reacts_to": null,
+      "doubt": null
+    },
+    {
+      "key": "02-h",
+      "description": "Leon's FID sports forum announces Carolina Marin, Carlos Moya and Aldo Martinez (Topuria's performance doctor) as speakers",
+      "articles": [115, 125],
+      "confidence": "high",
+      "reacts_to": null,
+      "doubt": "Two identical copies of the same article; about Topuria's doctor rather than Topuria."
+    },
+    {
+      "key": "02-i",
+      "description": "mma.es generic UFC rankings update page (11 August)",
+      "articles": [134],
+      "confidence": "high",
+      "reacts_to": null,
+      "doubt": null
+    },
+    {
+      "key": "02-j",
+      "description": "Kawa calls for an immediate Gaethje rematch in a social media post, after meeting Topuria in Miami as he recovers from facial injuries",
+      "articles": [129],
+      "confidence": "medium",
+      "reacts_to": null,
+      "doubt": "The text cuts off at 'en una publicacion de redes so...', so I cannot tell if this is the same Kawa video as 02-b (which mentions a Gaethje rematch) or a separate post; the framing (immediate rematch, Miami meeting, recovery) reads like a new post."
+    },
+    {
+      "key": "02-k",
+      "description": "Makhachev on Demetrious Johnson's MightyCast: Topuria lost focus, underestimated Gaethje, celebrated the night before, but can be champion again if he refocuses",
+      "articles": [138, 144],
+      "confidence": "high",
+      "reacts_to": null,
+      "doubt": null
+    }
+  ],
+  "uncertain_pairs": [
+    {"a": 129, "b": 71, "why": "Both are Kawa social media posts mentioning a Gaethje rematch within two days of each other; #129 could be ABC's reading of the same video rather than a new post."},
+    {"a": 102, "b": 78, "why": "MARCA's headline quotes Abdelaziz ('Usman would make Topuria submit') and half the body is his podcast remarks, so it could be filed under the Abdelaziz story instead of Kawa's response."},
+    {"a": 6, "b": 34, "why": "Same manager talking about his clients in the same week; if the MMA Junkie interview and the podcast were the same appearance, these would be one story."}
+  ]
+}

@@ -1,0 +1,68 @@
+{
+  "batch": "14",
+  "clusters": [
+    {
+      "key": "14-a",
+      "description": "Fight result: Donchenko beats Punahele Soriano by unanimous decision (30-27, 30-27, 29-28) at UFC Fight Night 287 in Paris, his 4th UFC win",
+      "articles": [736, 765, 767, 768, 772, 826, 780, 779, 776, 823, 785, 782, 829],
+      "confidence": "high",
+      "reacts_to": null,
+      "doubt": "823 and 829 also mention the Daniel Rodriguez callout, but their core is the result; 768/772 are the same Sport.ua video page twice with nav-only body."
+    },
+    {
+      "key": "14-b",
+      "description": "Post-fight interviews: Donchenko calls out Daniel Rodriguez, asks for a 5-round fight at the end-of-year event or at the APEX (in-cage with Bisping, then backstage to UFC.com)",
+      "articles": [746, 740, 778, 789, 794, 797, 813],
+      "confidence": "medium",
+      "reacts_to": "14-a",
+      "doubt": "The in-cage octagon interview (746, 778) and the backstage UFC.com interview (740) are two occasions; merged because MMA Junkie (794 and its syndications) reports the callout as one story spanning both."
+    },
+    {
+      "key": "14-c",
+      "description": "Sport.ua roundup of Donchenko's post-fight statements in Paris (thanks to Ukrainians and other remarks)",
+      "articles": [744, 774],
+      "confidence": "medium",
+      "reacts_to": "14-a",
+      "doubt": "Body is nav-only so judged on headline; the statements may be the same octagon interview as 14-b or a separate press-conference occasion."
+    },
+    {
+      "key": "14-d",
+      "description": "Pre-fight preview: Donchenko to face Soriano at UFC Fight Night 287 in Paris on Sept 5 (112.ua via Sport.ua)",
+      "articles": [745],
+      "confidence": "high",
+      "reacts_to": null,
+      "doubt": null
+    },
+    {
+      "key": "14-e",
+      "description": "MMA Mania UFC Paris live results / play-by-play page for the whole event, which merely lists Donchenko vs Soriano on the card",
+      "articles": [737],
+      "confidence": "high",
+      "reacts_to": null,
+      "doubt": null
+    },
+    {
+      "key": "14-f",
+      "description": "112.ua (via Sport.ua) roundup of Donchenko's Paris appearance: weigh-in, octagon and press conference",
+      "articles": [743],
+      "confidence": "low",
+      "reacts_to": null,
+      "doubt": "Thin AI-style rewrite with no concrete event; it may be a photo/video gallery, or a rewrite of the same Sport.ua statements piece as 14-c."
+    },
+    {
+      "key": "14-g",
+      "description": "Sport.ua analysis column on the Soriano fight: Donchenko dominated but could have done better and did not get the knockout",
+      "articles": [817],
+      "confidence": "low",
+      "reacts_to": "14-a",
+      "doubt": "Body is nav-only; headline reads like an opinion/analysis piece published two days later, but it could just be a late fight report belonging in 14-a."
+    }
+  ],
+  "uncertain_pairs": [
+    {"a": 744, "b": 778, "why": "Sport.ua's 'statements in Paris' piece may be the same in-cage interview with Bisping that Champion.com.ua reports as the Rodriguez callout."},
+    {"a": 746, "b": 740, "why": "The octagon interview and the backstage post-fight interview are different occasions and could be split into two stories."},
+    {"a": 817, "b": 785, "why": "The Sport.ua 'destroyed Soriano, could have done better' piece may be a plain fight report rather than a separate analysis column."},
+    {"a": 743, "b": 744, "why": "Both are same-day Sport.ua-sourced Paris roundups and 743's mention of a press conference may point to the same statements as 744."},
+    {"a": 823, "b": 778, "why": "Hromadske's result piece also reports the Daniel Rodriguez callout, so it partly covers the 14-b story."}
+  ]
+}

@@ -1,0 +1,74 @@
+{
+  "rulings": [
+    {
+      "a": "737",
+      "b": "692",
+      "ruling": "different",
+      "confidence": "high",
+      "why": "737 is the live-results page ('UFC PARIS QUICK RESULTS ... Parnasse def. Hooker by KO'); 692 is a pre-event picks column ('Pick: Parnasse ... Pick: Ziam') written before any result existed."
+    },
+    {
+      "a": "745",
+      "b": "687",
+      "ruling": "same",
+      "confidence": "medium",
+      "why": "745 credits Sport.ua and repeats the watch-online page's facts verbatim: 'Accor Arena', main card, 'Початок ... 23:00 за київським часом' matches 687's 'вийдуть в октагон орієнтовно о 23:00 за київським часом'; both are the same bout preview."
+    },
+    {
+      "a": "790",
+      "b": "746",
+      "ruling": "different",
+      "confidence": "medium",
+      "why": "790 is a round-by-round fight report ('Один із суддів віддав останній раунд гавайцю ... 30:27, 30:27, 29:28') that only mentions the French remark in one closing line; 746 is the Bisping in-cage interview itself."
+    },
+    {
+      "a": "746",
+      "b": "740",
+      "ruling": "different",
+      "confidence": "medium",
+      "why": "Two separate occasions: 746 'Talks With Michael Bisping' in the octagon, 740 'Talks With UFC.com' backstage; neither transcript is available to show the backstage one merely repeats the callout."
+    },
+    {
+      "a": "744",
+      "b": "778",
+      "ruling": "different",
+      "confidence": "high",
+      "why": "744 is the press-conference Q&A ('на пресс-конференції ... першим йому питання задав я'); 778 is the in-cage moment ('дав інтерв'ю в центрі клітки ... Майклу Біспінгу ... вихопив мікрофон') naming Rodriguez."
+    },
+    {
+      "a": "817",
+      "b": "785",
+      "ruling": "same",
+      "confidence": "medium",
+      "why": "Both report the same fight result with the same cards ('30–27, 30–27 і 29–28 для Донченка' / '30:27, 30:27, 29:28') and the Rodriguez callout; 817 adds opinion and pre-fight quotes but its news is still the Soriano win."
+    },
+    {
+      "a": "743",
+      "b": "744",
+      "ruling": "same",
+      "confidence": "high",
+      "why": "743 credits Sport.ua and paraphrases 744's lead exactly: 'на церемонії зважування, в октагоні та на прес-конференції' mirrors 744's 'запалював на церемонії зважування, потім ... в октагоні, а потім ... на пресс-конференції'."
+    },
+    {
+      "a": "817",
+      "b": "829",
+      "ruling": "same",
+      "confidence": "medium",
+      "why": "829 is a plain report of the same win ('одноголосним рішенням ... 30-27, 30-27 та 29-28 ... викликав на бій ... Даніеля Родрігеса'); 817 covers the same result and callout with added analysis, not a separate news event."
+    },
+    {
+      "a": "852",
+      "b": "1125",
+      "ruling": "different",
+      "confidence": "medium",
+      "why": "852 is a post-win address to fans ('дякую всій країні ... Сподіваюся, що мені дадуть гарний бій') with no opponent named; 1125 is a separate 'коментарі «Чемпіону»' five days later explaining the Rodriguez pick ('він 15-й номер рейтингу')."
+    },
+    {
+      "a": "933",
+      "b": "1125",
+      "ruling": "different",
+      "confidence": "high",
+      "why": "933 is an author's column weighing five candidates ('хто може стати наступним суперником ... Холланд ... Магні ... Медич') and cites an earlier 'легкими грошима' remark; 1125 is a new direct comment to Champion with different quotes."
+    }
+  ]
+}

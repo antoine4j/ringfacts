@@ -1,0 +1,72 @@
+{
+ "key": "story-073",
+ "decision": "split",
+ "why": "Chained cluster mixes two pre-fight columns, the fight-day live-stream page, event-wide card results, the Donchenko result reports and a next-day analysis column.",
+ "substories": [
+  {
+   "description": "Sport.ua 4 Sep journalist preview 'the hardest fight for Donchenko' (same page captured twice) plus the 112.ua rewrite citing it",
+   "articles": [
+    "599",
+    "619",
+    "605"
+   ]
+  },
+  {
+   "description": "Sport.ua 5 Sep second pre-fight column 'Donchenko on the UFC main card: big challenge, dangerous opponent' (different author/piece from the 4 Sep preview)",
+   "articles": [
+    "690"
+   ]
+  },
+  {
+   "description": "Sport.ua fight-day 'watch online LIVE' page for Donchenko vs Soriano (two captures) plus the 112.ua schedule announcement (Accor Arena, 23:00 Kyiv, main card) rewritten from it",
+   "articles": [
+    "687",
+    "688",
+    "745"
+   ]
+  },
+  {
+   "description": "Event-wide UFC Paris results / live-blog pages for the whole Hooker vs Parnasse card, where the Donchenko bout is one line among many",
+   "articles": [
+    "683",
+    "714",
+    "737"
+   ]
+  },
+  {
+   "description": "Fight result: Donchenko beats Soriano by unanimous decision (30-27, 30-27, 29-28) at UFC Fight Night 287 in Paris, 4th UFC win, incl. Rodriguez call-out mention; all outlets and languages",
+   "articles": [
+    "731",
+    "732",
+    "733",
+    "735",
+    "736",
+    "747",
+    "758",
+    "759",
+    "765",
+    "767",
+    "768",
+    "772",
+    "773",
+    "776",
+    "779",
+    "780",
+    "782",
+    "783",
+    "785",
+    "786",
+    "790",
+    "823",
+    "826",
+    "829"
+   ]
+  },
+  {
+   "description": "Sport.ua 7 Sep next-day analysis column: Donchenko dominated but could have done better, no KO; top-15 and five-round questions",
+   "articles": [
+    "817"
+   ]
+  }
+ ]
+}

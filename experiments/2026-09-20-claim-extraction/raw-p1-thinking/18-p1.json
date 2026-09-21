@@ -1,0 +1,30 @@
+{
+ "parsed": {
+  "claim": "Daniil Donchenko will fight Punahele Soriano at a UFC Fight Night event in Paris on September 5."
+ },
+ "usage": {
+  "prompt_tokens": 3710,
+  "completion_tokens": 452,
+  "total_tokens": 4162,
+  "cost": 0.00076894,
+  "is_byok": false,
+  "prompt_tokens_details": {
+   "cached_tokens": 0,
+   "cache_write_tokens": 0,
+   "audio_tokens": 0,
+   "video_tokens": 0
+  },
+  "cost_details": {
+   "upstream_inference_cost": 0.00076894,
+   "upstream_inference_prompt_cost": 0.0005565,
+   "upstream_inference_completions_cost": 0.00021244
+  },
+  "completion_tokens_details": {
+   "reasoning_tokens": 414,
+   "image_tokens": 0,
+   "audio_tokens": 0
+  }
+ },
+ "_seconds": 11.54,
+ "_model": "qwen/qwen3.8-flash"
+}

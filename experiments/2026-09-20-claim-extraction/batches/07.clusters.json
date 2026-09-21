@@ -1,0 +1,78 @@
+{
+  "batch": "07",
+  "clusters": [
+    {
+      "key": "07-a",
+      "description": "Topuria's first post since the Gaethje loss: an emotional video/letter to his son Hugo about losing and getting back up (Friday 4 Sep)",
+      "articles": [632, 636, 682, 697, 675, 717],
+      "confidence": "high",
+      "reacts_to": null,
+      "doubt": "682's body is Yahoo boilerplate with no article text; placed here on date (4 Sep) and headline only."
+    },
+    {
+      "key": "07-b",
+      "description": "Topuria publishes a long 9-part essay ('This Is Me' / exclusive for Marca, Saturday 5 Sep) about his childhood, the loss, his broken face and wanting to return without erasing the defeat",
+      "articles": [702, 693, 723, 728, 755, 788, 771, 875],
+      "confidence": "medium",
+      "reacts_to": null,
+      "doubt": "Published one day after the Hugo video and several outlets (755, 875, 728) cover both; 728 attributes the essay quotes to Instagram, 875's visible body mostly recaps the Hugo letter while its headline is an essay quote."
+    },
+    {
+      "key": "07-c",
+      "description": "Jon Anik (Anik Bros YouTube) says UFC is having internal conversations about an immediate Gaethje vs Topuria rematch",
+      "articles": [798, 803, 807, 828, 833],
+      "confidence": "high",
+      "reacts_to": null,
+      "doubt": "798's body is boilerplate and says 'according to reports' without naming Anik, but date and framing match."
+    },
+    {
+      "key": "07-d",
+      "description": "Paddy Pimblett (Eze Talks Sports interview at McCann's Dublin bout) says nobody has contacted him about a December Topuria fight, lists Arman/Gaethje/Ruffy/Oliveira as options",
+      "articles": [820, 838, 843],
+      "confidence": "medium",
+      "reacts_to": null,
+      "doubt": "843's body is boilerplate; assigned by headline, date and the Dublin ringside photo caption. 838 also reports Anik's rematch remarks in its second half."
+    },
+    {
+      "key": "07-e",
+      "description": "Molly McCann says Pimblett will win a UFC belt in 2027, same year she wins a boxing title (about McCann/Pimblett, Topuria only mentioned)",
+      "articles": [643],
+      "confidence": "high",
+      "reacts_to": null,
+      "doubt": null
+    },
+    {
+      "key": "07-f",
+      "description": "RAF Moscow (Chimaev vs Woodley) loses its US streaming option on Fox Nation; Topuria appears only in a 'latest news' link",
+      "articles": [710],
+      "confidence": "high",
+      "reacts_to": null,
+      "doubt": null
+    },
+    {
+      "key": "07-g",
+      "description": "OkDiario interview with Fran Ortega, Topuria's physiotherapist, on recovery and rest",
+      "articles": [762],
+      "confidence": "high",
+      "reacts_to": null,
+      "doubt": null
+    },
+    {
+      "key": "07-h",
+      "description": "Michael 'Venom' Page puts on another dull decision at UFC Paris after promising to take risks (no Topuria content at all)",
+      "articles": [811],
+      "confidence": "high",
+      "reacts_to": null,
+      "doubt": null
+    }
+  ],
+  "uncertain_pairs": [
+    {"a": 755, "b": 632, "why": "755 gives roughly equal space to the Hugo video and the essay; it could belong with the video cluster instead of the essay cluster."},
+    {"a": 728, "b": 675, "why": "728 quotes essay lines ('defeat did not extinguish the fire') but attributes them to Instagram and opens with the Hugo post, so it may really be a Hugo-video article."},
+    {"a": 875, "b": 632, "why": "875's headline is the essay's parents/promise quote but its visible body is a recap of the Hugo letter plus older quotes."},
+    {"a": 693, "b": 636, "why": "Video to Hugo (Friday) and essay (Saturday) are one day apart, same theme, same author; a reviewer could argue they are one 'Topuria breaks silence' story."},
+    {"a": 682, "b": 693, "why": "682's body is Yahoo boilerplate; 'breaks silence with emotional message' could describe the essay rather than the Hugo video."},
+    {"a": 838, "b": 828, "why": "838 is a Pimblett interview piece but its second half reports Anik's rematch comments; it touches both stories."},
+    {"a": 843, "b": 838, "why": "843's body is boilerplate, so it was matched to the Pimblett Dublin interview on headline and photo caption alone."}
+  ]
+}

@@ -1,0 +1,92 @@
+{
+  "batch": "15",
+  "clusters": [
+    {
+      "key": "15-a",
+      "description": "Fight result: Donchenko beats Punahele Soriano by unanimous decision at UFC Fight Night 287 in Paris",
+      "articles": [817, 829],
+      "confidence": "medium",
+      "reacts_to": null,
+      "doubt": "817's body is only site navigation boilerplate, so it is placed on its headline alone; 829 also mentions the Rodriguez callout at the end but is mainly a result recap."
+    },
+    {
+      "key": "15-b",
+      "description": "Donchenko's post-fight callout of Daniel Rodriguez, elaborated backstage to UFC News (wants end-of-year card or a five-round APEX fight)",
+      "articles": [797, 813, 851],
+      "confidence": "high",
+      "reacts_to": "15-a",
+      "doubt": null
+    },
+    {
+      "key": "15-c",
+      "description": "Donchenko's Ukrainian-language post-fight message (Champion.com.ua): the win was important, clean face, hopes UFC gives him a good next fight",
+      "articles": [852],
+      "confidence": "medium",
+      "reacts_to": "15-a",
+      "doubt": "These are different quotes from the same post-fight period as 15-b; it could be the same interview with a different sentence picked, or a separate address to fans."
+    },
+    {
+      "key": "15-d",
+      "description": "MMA Fighting 'On To the Next One' podcast on matches to make after UFC Paris (mainly Parnasse/Hooker; Donchenko mentioned among others)",
+      "articles": [861],
+      "confidence": "high",
+      "reacts_to": null,
+      "doubt": null
+    },
+    {
+      "key": "15-e",
+      "description": "Daniel Rodriguez responds to Donchenko's callout on Instagram stories with a middle-finger emoji",
+      "articles": [889],
+      "confidence": "high",
+      "reacts_to": "15-b",
+      "doubt": null
+    },
+    {
+      "key": "15-f",
+      "description": "Sport.ua analysis piece: five possible next opponents for Donchenko",
+      "articles": [933, 934],
+      "confidence": "high",
+      "reacts_to": null,
+      "doubt": "934's body is boilerplate; merged on identical headline and same date/outlet as 933."
+    },
+    {
+      "key": "15-g",
+      "description": "Donchenko explains to Champion why he picked Rodriguez: 15th-ranked, the most convenient top-15 opponent, no point aiming at top-5/top-10 yet",
+      "articles": [1125, 1129],
+      "confidence": "high",
+      "reacts_to": null,
+      "doubt": "Two identical copies from the same outlet; the underlying Champion interview may be the one 852 also draws on."
+    },
+    {
+      "key": "15-h",
+      "description": "Tom Aspinall vacates the UFC heavyweight title over his eye injury (does not mention Donchenko)",
+      "articles": [1161],
+      "confidence": "high",
+      "reacts_to": null,
+      "doubt": null
+    },
+    {
+      "key": "15-i",
+      "description": "Sport.ua interview: Donchenko says he is no worse than Kamaru Usman and talks about Ukrainians in the UFC",
+      "articles": [1172],
+      "confidence": "medium",
+      "reacts_to": null,
+      "doubt": "Body is only site boilerplate, so this rests on the headline alone."
+    },
+    {
+      "key": "15-j",
+      "description": "Donchenko on Bowks Talking Bouts compares Makhachev's 18-win streak unfavourably to Anderson Silva's and names Amosov as the real test",
+      "articles": [1260],
+      "confidence": "high",
+      "reacts_to": null,
+      "doubt": null
+    }
+  ],
+  "uncertain_pairs": [
+    {"a": 829, "b": 797, "why": "829 reports the fight result but also the in-cage Rodriguez callout, so it could sit with the callout story instead of the result."},
+    {"a": 817, "b": 829, "why": "Merged only on 817's headline; if 817 is actually a technical breakdown or opinion piece it would be its own story."},
+    {"a": 852, "b": 1125, "why": "Both are Donchenko quotes given to Champion in the week after the fight and may come from one interview published in parts."},
+    {"a": 933, "b": 1125, "why": "933 already paraphrases Donchenko calling Rodriguez top-15, aged, stylistically convenient and 'easy money', which is the content of 1125, so 933 may be reporting that same interview rather than only analysing."},
+    {"a": 1172, "b": 1260, "why": "Both are mid-September Donchenko interviews about the welterweight top (Usman, Amosov) and could be one media sitting reported by two outlets, though the sources named differ."}
+  ]
+}

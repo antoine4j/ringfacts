@@ -1,0 +1,67 @@
+{
+  "clusters": [
+    {
+      "key": "s012",
+      "decision": "keep",
+      "why": "All nine report Malki Kawa's social-media video answering Abdelaziz; MARCA #97/#102 headline Abdelaziz's quote but their news peg is Kawa's reply ('Guerra entre el Team Topuria y el Team Khabib'), quoting Abdelaziz only as the setup."
+    },
+    {
+      "key": "s039",
+      "decision": "keep",
+      "why": "All five carry the same Merab Dvalishvili Helen Yee quotes; Infobae #402's return-date headline is lifted from the same speculation already in Marca #349, with the Gallo interview only rehashed as background, so it is a rewrite of the Merab update, not a fresh story."
+    },
+    {
+      "key": "s063",
+      "decision": "split",
+      "why": "#565 is Ben Fowlkes' column built on a different Gaethje interview (Sports Illustrated: hands still hurt, sitting out 2026), not the UFC on Paramount+ sit-down that #551/#556/#560/#585 report.",
+      "substories": [
+        {
+          "description": "Gaethje's UFC on Paramount+ sit-down: would rather fight McGregor than rematch Topuria, Oliveira or Holloway; will wait for Tsarukyan-Ruffy; next fight in 2027",
+          "articles": ["551", "556", "560", "585"]
+        },
+        {
+          "description": "Uncrowned/Yahoo column on Gaethje's Sports Illustrated interview: both hands still hurt, will enjoy being champion for the rest of 2026, may weigh pros and cons of fighting again; what that means for Tsarukyan and the division",
+          "articles": ["565"]
+        }
+      ]
+    },
+    {
+      "key": "s070",
+      "decision": "keep",
+      "why": "Every article's quotes come from the Saturday 'This Is Me' essay (Marca exclusive / his website); the Friday Hugo video is mentioned only as background in #728, #755 and #875, none of which is primarily about it."
+    },
+    {
+      "key": "s072",
+      "decision": "keep",
+      "why": "All eight quote the same Eze Talks Sports ringside interview in Dublin; #838 and #913 pad with Jon Anik's rematch claim as context, and #892 misattributes it to DAZN, but the news peg in each is Pimblett's 'smash his head in / nobody has spoken to me' remarks."
+    },
+    {
+      "key": "s097",
+      "decision": "keep",
+      "why": "All eight are Q&A excerpts attributed to one NV sit-down ('у розмові з журналістом NV'), cross-linked to each other and published in pieces; nothing in the text shows a second sitting, so one interview stays one story."
+    },
+    {
+      "key": "s119",
+      "decision": "split",
+      "why": "The cluster mixes the fight result with two separate post-fight interviews (in-cage with Bisping, then backstage to UFC.com) and a Sport.ua next-day assessment column; #737's captured text does include the live result and play-by-play, so it stays with the result.",
+      "substories": [
+        {
+          "description": "Fight result: Donchenko beats Punahele Soriano by unanimous decision (30-27, 30-27, 29-28) on the UFC Paris (Fight Night 287) main card, his 4th UFC win, dropping him in round 1; includes event-wide results and live-blog pages listing the bout",
+          "articles": ["683", "714", "731", "732", "733", "735", "736", "737", "747", "758", "759", "765", "767", "768", "772", "773", "776", "779", "780", "782", "783", "785", "786", "790", "823", "826", "829"]
+        },
+        {
+          "description": "In-cage octagon interview with Michael Bisping right after the win: Donchenko grabs the mic and calls out Daniel Rodriguez",
+          "articles": ["746", "778"]
+        },
+        {
+          "description": "Backstage post-fight interview with UFC.com: Donchenko elaborates the Rodriguez callout (end-of-year card or a five-round APEX fight), explains he did not rush off the ground because he knew he had won, 'living the American dream'",
+          "articles": ["740", "789", "794", "797", "813", "851"]
+        },
+        {
+          "description": "Sport.ua next-day analysis column: Donchenko dominated Soriano but could have done better and did not get the knockout; top-15 and five-round questions",
+          "articles": ["817"]
+        }
+      ]
+    }
+  ]
+}

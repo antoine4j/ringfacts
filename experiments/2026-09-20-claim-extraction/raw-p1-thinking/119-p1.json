@@ -1,0 +1,34 @@
+{
+ "parsed": {
+  "claim": "Ilia Topuria's manager Malki Kawa defended Topuria against Ali Abdelaziz's claims and stated that Topuria would beat every fighter Abdelaziz represents.",
+  "actor": "Malki Kawa",
+  "opponent": null,
+  "event": null,
+  "date": null
+ },
+ "usage": {
+  "prompt_tokens": 622,
+  "completion_tokens": 968,
+  "total_tokens": 1590,
+  "cost": 0.00054826,
+  "is_byok": false,
+  "prompt_tokens_details": {
+   "cached_tokens": 0,
+   "cache_write_tokens": 0,
+   "audio_tokens": 0,
+   "video_tokens": 0
+  },
+  "cost_details": {
+   "upstream_inference_cost": 0.00054826,
+   "upstream_inference_prompt_cost": 9.33e-05,
+   "upstream_inference_completions_cost": 0.00045496
+  },
+  "completion_tokens_details": {
+   "reasoning_tokens": 890,
+   "image_tokens": 0,
+   "audio_tokens": 0
+  }
+ },
+ "_seconds": 27.75,
+ "_model": "qwen/qwen3.8-flash"
+}

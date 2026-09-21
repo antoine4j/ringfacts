@@ -1,0 +1,102 @@
+{
+  "batch": "09",
+  "clusters": [
+    {
+      "key": "09-a",
+      "description": "Gaethje on Demetrious Johnson's MightyCast dissects the Topuria win: predictable footwork, emotional mistakes, overconfidence, and that he won't fight again in 2026",
+      "articles": [963, 944, 983, 1040, 1072, 977],
+      "confidence": "high",
+      "reacts_to": null,
+      "doubt": "One podcast appearance covered several angles (footwork, emotions, 2026 plans); each outlet leads with a different one, and 977 leads with the no-fight-in-2026 remark."
+    },
+    {
+      "key": "09-b",
+      "description": "Dana White tells The Jim Rome Show that Topuria is 'ready to fight' and either a Gaethje rematch or a Pimblett fight 'sounds good'",
+      "articles": [958, 1008, 972, 991, 998, 1020, 1031, 1036, 1058, 1076],
+      "confidence": "high",
+      "reacts_to": null,
+      "doubt": "1076 (Marca, a day later) picks a different quote from the same Jim Rome interview and frames it as UFC indecision."
+    },
+    {
+      "key": "09-c",
+      "description": "Eddie Alvarez tells MMA Junkie an immediate Gaethje-Topuria rematch is a mistake; Topuria should rebuild first",
+      "articles": [1016, 1027],
+      "confidence": "high",
+      "reacts_to": null,
+      "doubt": null
+    },
+    {
+      "key": "09-d",
+      "description": "Yahoo's 'The Boys in the Back' podcast episode reacts to Topuria being ready to fight, plus Noche UFC and Garcia-Benn previews",
+      "articles": [1045],
+      "confidence": "medium",
+      "reacts_to": "09-b",
+      "doubt": "It is a show listing rather than a report; it reacts to the White remarks but is not itself that news."
+    },
+    {
+      "key": "09-e",
+      "description": "Fans on X react to Dana White floating a Topuria vs Pimblett non-title headliner",
+      "articles": [1066],
+      "confidence": "medium",
+      "reacts_to": "09-b",
+      "doubt": "A fan-reaction roundup built on the White interview; could be folded into 09-b."
+    },
+    {
+      "key": "09-f",
+      "description": "Paddy Pimblett tells Eze Obas he has no fight booked, expects a December return, and nobody has spoken to him about Topuria",
+      "articles": [953],
+      "confidence": "high",
+      "reacts_to": null,
+      "doubt": null
+    },
+    {
+      "key": "09-g",
+      "description": "Arman Tsarukyan tells Paramount he wants to beat Makhachev's lightweight defence record ahead of UFC 331 vs Ruffy",
+      "articles": [937],
+      "confidence": "high",
+      "reacts_to": null,
+      "doubt": "Headline names Topuria but the body is about Tsarukyan's ambitions."
+    },
+    {
+      "key": "09-h",
+      "description": "Gaethje says he hopes Tsarukyan 'gets hit hard' by Ruffy at UFC 331 and just wants a violent fight",
+      "articles": [948],
+      "confidence": "medium",
+      "reacts_to": null,
+      "doubt": "Source of the remark is not stated in the excerpt; may be the same MightyCast appearance as 09-a and 09-i."
+    },
+    {
+      "key": "09-i",
+      "description": "Gaethje on MightyCast says Tsarukyan deserves a title shot on merit but understands the UFC's hesitancy",
+      "articles": [1050],
+      "confidence": "medium",
+      "reacts_to": null,
+      "doubt": "Same podcast as 09-a, but the remark is about Tsarukyan and only mentions Topuria in passing."
+    },
+    {
+      "key": "09-j",
+      "description": "Topuria appears in a TBC advertisement in Georgia promising to come back stronger",
+      "articles": [968],
+      "confidence": "high",
+      "reacts_to": null,
+      "doubt": null
+    },
+    {
+      "key": "09-k",
+      "description": "Alexandre Pantoja posts a message of support to Topuria after his return to the public eye",
+      "articles": [1002],
+      "confidence": "high",
+      "reacts_to": null,
+      "doubt": "Reacts to Topuria's 12-page essay and comeback video, which are not in this batch."
+    }
+  ],
+  "uncertain_pairs": [
+    {"a": 977, "b": 944, "why": "977 leads with Gaethje's no-fight-in-2026 remark, which could be its own story rather than part of the Topuria breakdown from the same podcast."},
+    {"a": 948, "b": 1050, "why": "Both are Gaethje talking about Tsarukyan, likely from the same MightyCast appearance, but on different points (fight preference vs title-shot merit)."},
+    {"a": 1050, "b": 944, "why": "Same MightyCast appearance; split only because 1050 is about Tsarukyan and merely mentions Topuria."},
+    {"a": 1066, "b": 1036, "why": "1066 is a fan-reaction roundup to the same White interview and could be treated as the same story."},
+    {"a": 1045, "b": 1036, "why": "1045 is a podcast episode reacting to White's 'ready to fight' remark and could be merged into that story."},
+    {"a": 1076, "b": 1036, "why": "1076 uses a different quote from the same Jim Rome interview a day later; kept together but the framing differs."},
+    {"a": 1002, "b": 968, "why": "Both are follow-ups to Topuria's return to the public eye, but one is Pantoja's message and the other Topuria's own Georgian ad."}
+  ]
+}

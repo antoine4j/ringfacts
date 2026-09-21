@@ -1,0 +1,34 @@
+{
+ "parsed": {
+  "claim": "Ali Abdelaziz stated that he wants Ilia Topuria to be Usman Nurmagomedov's first fight if Nurmagomedov signs with the UFC.",
+  "actor": "Ali Abdelaziz",
+  "opponent": "Usman Nurmagomedov",
+  "event": null,
+  "date": null
+ },
+ "usage": {
+  "prompt_tokens": 922,
+  "completion_tokens": 719,
+  "total_tokens": 1641,
+  "cost": 0.00047623,
+  "is_byok": false,
+  "prompt_tokens_details": {
+   "cached_tokens": 0,
+   "cache_write_tokens": 0,
+   "audio_tokens": 0,
+   "video_tokens": 0
+  },
+  "cost_details": {
+   "upstream_inference_cost": 0.00047623,
+   "upstream_inference_prompt_cost": 0.0001383,
+   "upstream_inference_completions_cost": 0.00033793
+  },
+  "completion_tokens_details": {
+   "reasoning_tokens": 637,
+   "image_tokens": 0,
+   "audio_tokens": 0
+  }
+ },
+ "_seconds": 21.22,
+ "_model": "qwen/qwen3.8-flash"
+}

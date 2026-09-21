@@ -1,0 +1,34 @@
+{
+ "parsed": {
+  "claim": "Daniil Donchenko is scheduled to fight Punahele Soriano at UFC Fight Night in Paris on September 5.",
+  "actor": "Daniil Donchenko",
+  "opponent": "Punahele Soriano",
+  "event": "UFC Fight Night in Paris",
+  "date": "2026-09-05"
+ },
+ "usage": {
+  "prompt_tokens": 702,
+  "completion_tokens": 863,
+  "total_tokens": 1565,
+  "cost": 0.00051091,
+  "is_byok": false,
+  "prompt_tokens_details": {
+   "cached_tokens": 0,
+   "cache_write_tokens": 0,
+   "audio_tokens": 0,
+   "video_tokens": 0
+  },
+  "cost_details": {
+   "upstream_inference_cost": 0.00051091,
+   "upstream_inference_prompt_cost": 0.0001053,
+   "upstream_inference_completions_cost": 0.00040561
+  },
+  "completion_tokens_details": {
+   "reasoning_tokens": 770,
+   "image_tokens": 0,
+   "audio_tokens": 0
+  }
+ },
+ "_seconds": 26.45,
+ "_model": "qwen/qwen3.8-flash"
+}

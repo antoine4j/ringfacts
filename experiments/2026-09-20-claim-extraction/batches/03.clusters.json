@@ -1,0 +1,29 @@
+{
+  "batch": "03",
+  "clusters": [
+    {"key": "03-a", "description": "Makhachev on Demetrious Johnson's MightyCast: Topuria lost focus/celebrated before Gaethje fight, but 'if he focuses he can be champion again'", "articles": [138, 144, 148, 170, 174, 244], "confidence": "high", "reacts_to": null, "doubt": "Outlets pick different sentences (celebration video vs. 'can be champion again') and 244 runs six days late, but all cite the same DJ podcast conversation."},
+    {"key": "03-b", "description": "Tsarukyan (UFC on Paramount+ interview) says Topuria's next fight should be an easy one against Michael Chandler before a title run", "articles": [256, 287, 269], "confidence": "high", "reacts_to": null, "doubt": null},
+    {"key": "03-c", "description": "Malki Kawa (Topuria's manager) posts on social media asking for an immediate Gaethje rematch", "articles": [129], "confidence": "medium", "reacts_to": null, "doubt": "Could be the same social post as the Kawa remarks in 193, which also contain a 'would kill Gaethje in a rematch' line."},
+    {"key": "03-d", "description": "Kawa (Topuria's manager) answers Abdelaziz's prediction that Usman Nurmagomedov would finish Topuria: 'shut up, Ilia would annihilate 100% of your roster'", "articles": [193], "confidence": "medium", "reacts_to": null, "doubt": "Article bundles the Abdelaziz reply with a Gaethje-rematch defense that may be the 129 post."},
+    {"key": "03-e", "description": "Jesus Gallo (Topuria's S&C coach) talks to Jorge Ebro on YouTube about Topuria's recovery from facial fractures and a likely return date", "articles": [152], "confidence": "high", "reacts_to": null, "doubt": null},
+    {"key": "03-f", "description": "Makhachev at the UFC 330 post-fight press conference says he accepted a White House fight with Topuria for good money and it fell apart the next day over Topuria's pay demands", "articles": [228], "confidence": "high", "reacts_to": null, "doubt": "Same speaker and same topic family as 03-a but a different occasion (press conference, not the podcast)."},
+    {"key": "03-g", "description": "Paul Hughes says Topuria is the only UFC fighter with a chance against Usman Nurmagomedov", "articles": [249], "confidence": "high", "reacts_to": null, "doubt": null},
+    {"key": "03-h", "description": "SPORT interview with creator 'MMARC' about his book on the UFC boom and Topuria's role in it", "articles": [238], "confidence": "high", "reacts_to": null, "doubt": null},
+    {"key": "03-i", "description": "ABC exclusive with Javier Mendez (Makhachev's coach) ahead of UFC 330; says Topuria will come back stronger", "articles": [166], "confidence": "high", "reacts_to": null, "doubt": null},
+    {"key": "03-j", "description": "mma.es routine UFC rankings update (11 Aug); Topuria only appears in the tables", "articles": [134], "confidence": "high", "reacts_to": null, "doubt": null},
+    {"key": "03-k", "description": "ABC profile of Ian Machado Garry before UFC 330; about Garry, not Topuria", "articles": [158], "confidence": "high", "reacts_to": null, "doubt": null},
+    {"key": "03-l", "description": "Makhachev tells TMZ he wants to retire at a UFC event in Moscow; Topuria not the subject", "articles": [181], "confidence": "high", "reacts_to": null, "doubt": null},
+    {"key": "03-m", "description": "Joe Rogan calls Paddy Pimblett the most fun UFC fighter; Topuria only in a sidebar link", "articles": [186], "confidence": "high", "reacts_to": null, "doubt": null},
+    {"key": "03-n", "description": "Israel Adesanya picks Garry to upset Makhachev at UFC 330", "articles": [200], "confidence": "high", "reacts_to": null, "doubt": null},
+    {"key": "03-o", "description": "Bloody Elbow reader poll: 74% pick Makhachev over Garry at UFC 330", "articles": [207], "confidence": "high", "reacts_to": null, "doubt": null},
+    {"key": "03-p", "description": "Dana White dismisses a UFC White House weather conspiracy theory (UFC 330 week)", "articles": [214], "confidence": "medium", "reacts_to": null, "doubt": "Body text is mostly page chrome; the Topuria link is only through the White House event."},
+    {"key": "03-q", "description": "Myktybek Orolbai choked out by Jeremiah Wells at UFC 330 after being hyped as a Makhachev threat", "articles": [224], "confidence": "high", "reacts_to": null, "doubt": null},
+    {"key": "03-r", "description": "Yahoo UFC power rankings after UFC 330", "articles": [233], "confidence": "high", "reacts_to": null, "doubt": null},
+    {"key": "03-s", "description": "Namo Fazil claims he was attacked by 15 Chechens before his Contender Series loss (MMA Fighting Morning Report)", "articles": [261], "confidence": "high", "reacts_to": null, "doubt": null}
+  ],
+  "uncertain_pairs": [
+    {"a": 129, "b": 193, "why": "Both quote Kawa on a Gaethje rematch from social media; 193's rematch line may be the same post as 129, though 193's main news is the reply to Abdelaziz three days later."},
+    {"a": 228, "b": 138, "why": "Both are Makhachev on Topuria in UFC 330 week and 138 already references the 'Topuria asked for more money' claim, but 228 is the post-fight press conference and 138 the DJ podcast."},
+    {"a": 148, "b": 144, "why": "148 folds in the 'should never have thrown a party' remark without naming the source, which could be an earlier Makhachev comment rather than the MightyCast; kept together because 144 places it on the same podcast."}
+  ]
+}

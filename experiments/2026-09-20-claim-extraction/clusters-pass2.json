@@ -1,0 +1,2431 @@
+{
+ "clusters": [
+  {
+   "key": "s000",
+   "from": [
+    "m000"
+   ],
+   "articles": [
+    "1",
+    "2",
+    "4",
+    "13",
+    "14",
+    "33",
+    "96"
+   ],
+   "descriptions": [
+    "Masvidal on the Deep Waters podcast calls ATT teammate Amosov a 'nightmare' for Makhachev and a bad fight for the whole welterweight top 10"
+   ],
+   "split_candidate": null
+  },
+  {
+   "key": "s001",
+   "from": [
+    "m001"
+   ],
+   "articles": [
+    "1146",
+    "1150",
+    "1160"
+   ],
+   "descriptions": [
+    "Makhachev tells Ushatayka he does not consider Amosov dangerous (cites the Jackson loss), rates Prates/Morales/Rakhmonov equal, and says Garry will be champion after he leaves"
+   ],
+   "split_candidate": null
+  },
+  {
+   "key": "s002",
+   "from": [
+    "m002"
+   ],
+   "articles": [
+    "3"
+   ],
+   "descriptions": [
+    "Lufkin Daily News photo-caption page of Alvarez vs Amosov at UFC 328 (no article body, only site boilerplate)"
+   ],
+   "split_candidate": null
+  },
+  {
+   "key": "s003",
+   "from": [
+    "m003"
+   ],
+   "articles": [
+    "65"
+   ],
+   "descriptions": [
+    "MMA Fighting roundtable previewing UFC 330 (Makhachev vs Garry); Amosov not in the excerpt"
+   ],
+   "split_candidate": null
+  },
+  {
+   "key": "s004",
+   "from": [
+    "m004"
+   ],
+   "articles": [
+    "187"
+   ],
+   "descriptions": [
+    "Neil Magny tells Mike Bohn that Garry can upset Makhachev at UFC 330"
+   ],
+   "split_candidate": null
+  },
+  {
+   "key": "s005",
+   "from": [
+    "m005"
+   ],
+   "articles": [
+    "204"
+   ],
+   "descriptions": [
+    "Sport.ua opinion piece: five reasons Makhachev loses to Garry (body is only site navigation)"
+   ],
+   "split_candidate": null
+  },
+  {
+   "key": "s006",
+   "from": [
+    "m006"
+   ],
+   "articles": [
+    "230"
+   ],
+   "descriptions": [
+    "MMA Fighting post-UFC 330 report on Makhachev's decision win over Garry"
+   ],
+   "split_candidate": null
+  },
+  {
+   "key": "s007",
+   "from": [
+    "m007"
+   ],
+   "articles": [
+    "247"
+   ],
+   "descriptions": [
+    "Brendan Schaub on The Fighter and The Kid says the UFC will make Garry's road back to a title shot hard after his loss"
+   ],
+   "split_candidate": null
+  },
+  {
+   "key": "s008",
+   "from": [
+    "m008"
+   ],
+   "articles": [
+    "342"
+   ],
+   "descriptions": [
+    "24 \u041a\u0430\u043d\u0430\u043b feature on Ukrainian sports champions who joined the armed forces"
+   ],
+   "split_candidate": null
+  },
+  {
+   "key": "s009",
+   "from": [
+    "m009"
+   ],
+   "articles": [
+    "975"
+   ],
+   "descriptions": [
+    "24 \u041a\u0430\u043d\u0430\u043b interview with Daniil Donchenko after his UFC Paris win over Soriano"
+   ],
+   "split_candidate": null
+  },
+  {
+   "key": "s010",
+   "from": [
+    "m010"
+   ],
+   "articles": [
+    "1200"
+   ],
+   "descriptions": [
+    "24 \u041a\u0430\u043d\u0430\u043b interview with MMA manager Vladyslav Soroka about the Ukrainian MMA scene (Amosov only mentioned)"
+   ],
+   "split_candidate": null
+  },
+  {
+   "key": "s011",
+   "from": [
+    "m011"
+   ],
+   "articles": [
+    "10",
+    "34",
+    "78"
+   ],
+   "descriptions": [
+    "Abdelaziz on the Pound 4 Pound podcast: Usman Nurmagomedov would beat the whole UFC lightweight roster, wants Topuria as his first UFC fight and says Usman would make him quit; only Tsarukyan is a real challenge"
+   ],
+   "split_candidate": null
+  },
+  {
+   "key": "s012",
+   "from": [
+    "m012",
+    "m023"
+   ],
+   "articles": [
+    "51",
+    "55",
+    "71",
+    "84",
+    "90",
+    "97",
+    "102",
+    "119",
+    "193"
+   ],
+   "descriptions": [
+    "Kawa (Topuria's manager) fires back at Abdelaziz in a social media video: Topuria 'would annihilate 100% of your roster', would beat Gaethje in a rematch, had a bad night, is still No. 1",
+    "Kawa (Topuria's manager) answers Abdelaziz's prediction that Usman Nurmagomedov would finish Topuria: 'shut up, Ilia would annihilate 100% of your roster'"
+   ],
+   "split_candidate": "MARCA #102 headlines Abdelaziz's own quote and may belong with the Abdelaziz podcast (m011)."
+  },
+  {
+   "key": "s013",
+   "from": [
+    "m013"
+   ],
+   "articles": [
+    "6"
+   ],
+   "descriptions": [
+    "Abdelaziz tells MMA Junkie that Gaethje is not retiring, will fight in 2027 and only wants a massive fight"
+   ],
+   "split_candidate": null
+  },
+  {
+   "key": "s014",
+   "from": [
+    "m014"
+   ],
+   "articles": [
+    "25"
+   ],
+   "descriptions": [
+    "ABC lifestyle feature on Topuria's favourite restaurant in Spain (Nou Collonet on Tabarca island)"
+   ],
+   "split_candidate": null
+  },
+  {
+   "key": "s015",
+   "from": [
+    "m015"
+   ],
+   "articles": [
+    "38"
+   ],
+   "descriptions": [
+    "McGregor posts his first message after knee surgery (ACL/meniscus from UFC 329) - about someone else, Topuria not involved"
+   ],
+   "split_candidate": null
+  },
+  {
+   "key": "s016",
+   "from": [
+    "m016"
+   ],
+   "articles": [
+    "44"
+   ],
+   "descriptions": [
+    "Topuria's Instagram statement after losing to Gaethje: praises Gaethje, no excuses, reveals vision loss in both eyes, plans to heal and pursue a rematch"
+   ],
+   "split_candidate": null
+  },
+  {
+   "key": "s017",
+   "from": [
+    "m017"
+   ],
+   "articles": [
+    "60"
+   ],
+   "descriptions": [
+    "Ian Machado Garry says Khabib is one of the greatest despite retiring early - about someone else, Topuria only appears in a 'latest news' link"
+   ],
+   "split_candidate": null
+  },
+  {
+   "key": "s018",
+   "from": [
+    "m018"
+   ],
+   "articles": [
+    "115",
+    "125"
+   ],
+   "descriptions": [
+    "Leon's FID sports forum announces Carolina Marin, Carlos Moya and Aldo Martinez (Topuria's performance doctor) as speakers"
+   ],
+   "split_candidate": null
+  },
+  {
+   "key": "s019",
+   "from": [
+    "m019"
+   ],
+   "articles": [
+    "134"
+   ],
+   "descriptions": [
+    "mma.es generic UFC rankings update page (11 August)",
+    "mma.es routine UFC rankings update (11 Aug); Topuria only appears in the tables"
+   ],
+   "split_candidate": null
+  },
+  {
+   "key": "s020",
+   "from": [
+    "m020"
+   ],
+   "articles": [
+    "129"
+   ],
+   "descriptions": [
+    "Kawa calls for an immediate Gaethje rematch in a social media post, after meeting Topuria in Miami as he recovers from facial injuries",
+    "Malki Kawa (Topuria's manager) posts on social media asking for an immediate Gaethje rematch"
+   ],
+   "split_candidate": null
+  },
+  {
+   "key": "s021",
+   "from": [
+    "m021"
+   ],
+   "articles": [
+    "138",
+    "144",
+    "148",
+    "170",
+    "174",
+    "244"
+   ],
+   "descriptions": [
+    "Makhachev on Demetrious Johnson's MightyCast: Topuria lost focus, underestimated Gaethje, celebrated the night before, but can be champion again if he refocuses",
+    "Makhachev on Demetrious Johnson's MightyCast: Topuria lost focus/celebrated before Gaethje fight, but 'if he focuses he can be champion again'"
+   ],
+   "split_candidate": null
+  },
+  {
+   "key": "s022",
+   "from": [
+    "m022"
+   ],
+   "articles": [
+    "256",
+    "269",
+    "287"
+   ],
+   "descriptions": [
+    "Tsarukyan (UFC on Paramount+ interview) says Topuria's next fight should be an easy one against Michael Chandler before a title run",
+    "Tsarukyan (UFC on Paramount+ interview) says Topuria should take an easy fight with Michael Chandler next before chasing the title again"
+   ],
+   "split_candidate": null
+  },
+  {
+   "key": "s023",
+   "from": [
+    "m024",
+    "m042"
+   ],
+   "articles": [
+    "152",
+    "412"
+   ],
+   "descriptions": [
+    "Jesus Gallo (Topuria's S&C coach) talks to Jorge Ebro on YouTube about Topuria's recovery from facial fractures and a likely return date",
+    "Jesus Gallo (Topuria's physical trainer, Jorge Ebro YouTube interview) says Topuria could be physically ready by December but 2027 is the likely return",
+    "Trainer Jesus Gallo (on Jorge Ebro's YouTube) says Topuria could be physically ready by December but 2027 is more likely"
+   ],
+   "split_candidate": null
+  },
+  {
+   "key": "s024",
+   "from": [
+    "m025"
+   ],
+   "articles": [
+    "228"
+   ],
+   "descriptions": [
+    "Makhachev at the UFC 330 post-fight press conference says he accepted a White House fight with Topuria for good money and it fell apart the next day over Topuria's pay demands"
+   ],
+   "split_candidate": null
+  },
+  {
+   "key": "s025",
+   "from": [
+    "m026",
+    "m049"
+   ],
+   "articles": [
+    "249",
+    "339"
+   ],
+   "descriptions": [
+    "Paul Hughes says Topuria is the only UFC fighter with a chance against Usman Nurmagomedov"
+   ],
+   "split_candidate": null
+  },
+  {
+   "key": "s026",
+   "from": [
+    "m027"
+   ],
+   "articles": [
+    "238"
+   ],
+   "descriptions": [
+    "SPORT interview with creator 'MMARC' about his book on the UFC boom and Topuria's role in it"
+   ],
+   "split_candidate": null
+  },
+  {
+   "key": "s027",
+   "from": [
+    "m028"
+   ],
+   "articles": [
+    "166"
+   ],
+   "descriptions": [
+    "ABC exclusive with Javier Mendez (Makhachev's coach) ahead of UFC 330; says Topuria will come back stronger"
+   ],
+   "split_candidate": null
+  },
+  {
+   "key": "s028",
+   "from": [
+    "m029"
+   ],
+   "articles": [
+    "158"
+   ],
+   "descriptions": [
+    "ABC profile of Ian Machado Garry before UFC 330; about Garry, not Topuria"
+   ],
+   "split_candidate": null
+  },
+  {
+   "key": "s029",
+   "from": [
+    "m030"
+   ],
+   "articles": [
+    "181"
+   ],
+   "descriptions": [
+    "Makhachev tells TMZ he wants to retire at a UFC event in Moscow; Topuria not the subject"
+   ],
+   "split_candidate": null
+  },
+  {
+   "key": "s030",
+   "from": [
+    "m031"
+   ],
+   "articles": [
+    "186"
+   ],
+   "descriptions": [
+    "Joe Rogan calls Paddy Pimblett the most fun UFC fighter; Topuria only in a sidebar link"
+   ],
+   "split_candidate": null
+  },
+  {
+   "key": "s031",
+   "from": [
+    "m032"
+   ],
+   "articles": [
+    "200"
+   ],
+   "descriptions": [
+    "Israel Adesanya picks Garry to upset Makhachev at UFC 330"
+   ],
+   "split_candidate": null
+  },
+  {
+   "key": "s032",
+   "from": [
+    "m033"
+   ],
+   "articles": [
+    "207"
+   ],
+   "descriptions": [
+    "Bloody Elbow reader poll: 74% pick Makhachev over Garry at UFC 330"
+   ],
+   "split_candidate": null
+  },
+  {
+   "key": "s033",
+   "from": [
+    "m034"
+   ],
+   "articles": [
+    "214"
+   ],
+   "descriptions": [
+    "Dana White dismisses a UFC White House weather conspiracy theory (UFC 330 week)"
+   ],
+   "split_candidate": null
+  },
+  {
+   "key": "s034",
+   "from": [
+    "m035"
+   ],
+   "articles": [
+    "224"
+   ],
+   "descriptions": [
+    "Myktybek Orolbai choked out by Jeremiah Wells at UFC 330 after being hyped as a Makhachev threat"
+   ],
+   "split_candidate": null
+  },
+  {
+   "key": "s035",
+   "from": [
+    "m036"
+   ],
+   "articles": [
+    "233"
+   ],
+   "descriptions": [
+    "Yahoo UFC power rankings after UFC 330"
+   ],
+   "split_candidate": null
+  },
+  {
+   "key": "s036",
+   "from": [
+    "m037"
+   ],
+   "articles": [
+    "261"
+   ],
+   "descriptions": [
+    "Namo Fazil claims he was attacked by 15 Chechens before his Contender Series loss (MMA Fighting Morning Report)",
+    "Namo Fazil claims he was attacked by 15 Chechens at the hotel before his Contender Series loss (MMA Fighting Morning Report)"
+   ],
+   "split_candidate": null
+  },
+  {
+   "key": "s037",
+   "from": [
+    "m038"
+   ],
+   "articles": [
+    "273",
+    "283"
+   ],
+   "descriptions": [
+    "Pimblett (Green Light podcast) wants Topuria or Tsarukyan next and says he will terrorize them, unlike Holloway or Oliveira whom he respects"
+   ],
+   "split_candidate": null
+  },
+  {
+   "key": "s038",
+   "from": [
+    "m039",
+    "m058"
+   ],
+   "articles": [
+    "279",
+    "311",
+    "442"
+   ],
+   "descriptions": [
+    "Javier Mendez (Makhachev's coach, Red Corner MMA interview) says Topuria needs more than one impressive win before a Makhachev superfight",
+    "Javier Mendez (Makhachev's coach) tells Red Corner MMA that Topuria's loss changed the course of a Makhachev fight; he needs more than one win and is too small"
+   ],
+   "split_candidate": null
+  },
+  {
+   "key": "s039",
+   "from": [
+    "m040"
+   ],
+   "articles": [
+    "327",
+    "349",
+    "368",
+    "397",
+    "402"
+   ],
+   "descriptions": [
+    "Merab Dvalishvili tells Helen Yee that Topuria is fine, very positive, enjoying life and will come back to take his belt",
+    "Merab Dvalishvili gives an update on Topuria: he is fine, enjoying life, and will come back and reclaim his belt"
+   ],
+   "split_candidate": "Infobae #402 headlines the Gallo return-date news (m042) with a Merab body."
+  },
+  {
+   "key": "s040",
+   "from": [
+    "m041"
+   ],
+   "articles": [
+    "361"
+   ],
+   "descriptions": [
+    "Merab Dvalishvili on Ariel Helwani's podcast says Topuria is having a great time, has always been a happy guy, and nobody will stop him when he returns"
+   ],
+   "split_candidate": null
+  },
+  {
+   "key": "s041",
+   "from": [
+    "m043"
+   ],
+   "articles": [
+    "305"
+   ],
+   "descriptions": [
+    "SPORT profile of Topuria's Alicante neighbourhood and the Climent Club gym where he and his brother started"
+   ],
+   "split_candidate": null
+  },
+  {
+   "key": "s042",
+   "from": [
+    "m044"
+   ],
+   "articles": [
+    "323"
+   ],
+   "descriptions": [
+    "Doctor Aldo (Topuria's physical trainer) explains the Brock string eye-training exercise on social media"
+   ],
+   "split_candidate": null
+  },
+  {
+   "key": "s043",
+   "from": [
+    "m045",
+    "m057"
+   ],
+   "articles": [
+    "291",
+    "427",
+    "497"
+   ],
+   "descriptions": [
+    "Topuria recalls being bullied at school in Georgia with his brother Aleksandre and feeling afraid",
+    "Topuria on the Charlas Adictivas podcast about his hard childhood in Georgia, school bullying and feeling fear"
+   ],
+   "split_candidate": null
+  },
+  {
+   "key": "s044",
+   "from": [
+    "m046"
+   ],
+   "articles": [
+    "373"
+   ],
+   "descriptions": [
+    "Topuria on Joe Rogan's podcast says he was never a Demetrious Johnson fan because he thought his nickname was Mickey Mouse"
+   ],
+   "split_candidate": null
+  },
+  {
+   "key": "s045",
+   "from": [
+    "m047"
+   ],
+   "articles": [
+    "385"
+   ],
+   "descriptions": [
+    "Topuria answers Pimblett's trash talk: 'Spaniards don't get knocked out either, be careful what you wish for'"
+   ],
+   "split_candidate": null
+  },
+  {
+   "key": "s046",
+   "from": [
+    "m048"
+   ],
+   "articles": [
+    "380"
+   ],
+   "descriptions": [
+    "Topuria says the biggest lesson from his divorce was to listen to his mother",
+    "Topuria says the lesson of his divorce is to listen to his mother"
+   ],
+   "split_candidate": null
+  },
+  {
+   "key": "s047",
+   "from": [
+    "m050"
+   ],
+   "articles": [
+    "353"
+   ],
+   "descriptions": [
+    "Justin Gaethje on Sports Illustrated's In The Corner talks about beating Topuria at the White House, his legacy and what is next"
+   ],
+   "split_candidate": null
+  },
+  {
+   "key": "s048",
+   "from": [
+    "m051"
+   ],
+   "articles": [
+    "297"
+   ],
+   "descriptions": [
+    "SPORT interview with OKTAGON co-founder Pavol Neruda about the promotion's growth and Spain, mentioning WOW FC and Topuria in passing"
+   ],
+   "split_candidate": null
+  },
+  {
+   "key": "s049",
+   "from": [
+    "m052"
+   ],
+   "articles": [
+    "316"
+   ],
+   "descriptions": [
+    "Anthony Hernandez prepared his UFC return training with Sean Strickland at Xtreme Couture"
+   ],
+   "split_candidate": null
+  },
+  {
+   "key": "s050",
+   "from": [
+    "m053"
+   ],
+   "articles": [
+    "335"
+   ],
+   "descriptions": [
+    "Ketlen Vieira posts a statement after losing to Cris Cyborg at PFL Tampa despite missing weight by seven pounds"
+   ],
+   "split_candidate": null
+  },
+  {
+   "key": "s051",
+   "from": [
+    "m054"
+   ],
+   "articles": [
+    "408",
+    "431",
+    "435"
+   ],
+   "descriptions": [
+    "Usman Nurmagomedov's Sport24 interview trashing UFC lightweights (Topuria quit on his stool, Pimblett, Chandler, BSD, Tsarukyan) and rejecting the idea that only UFC fighters are elite"
+   ],
+   "split_candidate": null
+  },
+  {
+   "key": "s052",
+   "from": [
+    "m055"
+   ],
+   "articles": [
+    "416"
+   ],
+   "descriptions": [
+    "Umar Nurmagomedov tells MMA Junkie his brother Usman is ready for Gaethje, Topuria, Tsarukyan"
+   ],
+   "split_candidate": null
+  },
+  {
+   "key": "s053",
+   "from": [
+    "m056"
+   ],
+   "articles": [
+    "423"
+   ],
+   "descriptions": [
+    "Paddy Pimblett says he wants to fight Topuria, calling him a complete idiot, after his UFC 329 win"
+   ],
+   "split_candidate": null
+  },
+  {
+   "key": "s054",
+   "from": [
+    "m059"
+   ],
+   "articles": [
+    "447"
+   ],
+   "descriptions": [
+    "MMA Sucka analysis of the lightweight title picture before UFC 331 (Tsarukyan, Oliveira, Ruffy)"
+   ],
+   "split_candidate": null
+  },
+  {
+   "key": "s055",
+   "from": [
+    "m060"
+   ],
+   "articles": [
+    "453"
+   ],
+   "descriptions": [
+    "Usman Nurmagomedov's Instagram statement denying he tried to elbow Song Yadong after Umar's KO at UFC Shanghai (Topuria only mentioned in a sidebar)"
+   ],
+   "split_candidate": null
+  },
+  {
+   "key": "s056",
+   "from": [
+    "m061"
+   ],
+   "articles": [
+    "457"
+   ],
+   "descriptions": [
+    "DJ Ben Nicky samples Pimblett's 'we don't get knocked out' quote at Creamfields (Topuria not the subject)"
+   ],
+   "split_candidate": null
+  },
+  {
+   "key": "s057",
+   "from": [
+    "m062"
+   ],
+   "articles": [
+    "462",
+    "467",
+    "476",
+    "484",
+    "492",
+    "503"
+   ],
+   "descriptions": [
+    "Gaethje's Sports Illustrated interview: hands still hurt, can't punch, won't fight until 2027, doesn't want an immediate Topuria rematch but UFC has the final say"
+   ],
+   "split_candidate": null
+  },
+  {
+   "key": "s058",
+   "from": [
+    "m063"
+   ],
+   "articles": [
+    "508"
+   ],
+   "descriptions": [
+    "Yahoo weekly UFC power rankings after Fight Night 286 Shanghai"
+   ],
+   "split_candidate": null
+  },
+  {
+   "key": "s059",
+   "from": [
+    "m064"
+   ],
+   "articles": [
+    "516",
+    "525"
+   ],
+   "descriptions": [
+    "Arman Tsarukyan on the Deep Waters podcast: doubts UFC books Topuria vs Pimblett, and wants five title defenses to beat Makhachev's record",
+    "Arman Tsarukyan on the Deep Waters podcast: doubts UFC will book Topuria vs Pimblett, and says he wants five lightweight title defenses to beat Makhachev's record"
+   ],
+   "split_candidate": null
+  },
+  {
+   "key": "s060",
+   "from": [
+    "m065"
+   ],
+   "articles": [
+    "520"
+   ],
+   "descriptions": [
+    "Song Yadong tells BiliBili he doesn't hold Usman Nurmagomedov's cage run-in against him",
+    "Song Yadong comments on Usman Nurmagomedov's elbow gesture after UFC Shanghai (about someone else; Topuria not in the text)"
+   ],
+   "split_candidate": null
+  },
+  {
+   "key": "s061",
+   "from": [
+    "m066"
+   ],
+   "articles": [
+    "533",
+    "540"
+   ],
+   "descriptions": [
+    "Dan Hooker, ahead of UFC Paris, says top lightweights like Topuria won't risk fighting an unranked Usman Nurmagomedov",
+    "Dan Hooker ahead of UFC Paris says no top lightweight, Topuria included, will risk fighting unranked Usman Nurmagomedov if he joins UFC (same MARCA article twice)"
+   ],
+   "split_candidate": null
+  },
+  {
+   "key": "s062",
+   "from": [
+    "m067"
+   ],
+   "articles": [
+    "547"
+   ],
+   "descriptions": [
+    "Javi Climent (Topuria's boxing coach) interview on what makes Topuria special: his ability to imitate any movement instantly"
+   ],
+   "split_candidate": null
+  },
+  {
+   "key": "s063",
+   "from": [
+    "m068"
+   ],
+   "articles": [
+    "551",
+    "556",
+    "560",
+    "565",
+    "585"
+   ],
+   "descriptions": [
+    "Justin Gaethje's UFC on Paramount+ sit-down interview: would rather fight McGregor than rematch Topuria/Oliveira/Holloway, hands still hurt, sitting out rest of 2026"
+   ],
+   "split_candidate": "Article #565 is attributed to Sports Illustrated and may belong to the SI interview (m062), not the Paramount+ one."
+  },
+  {
+   "key": "s064",
+   "from": [
+    "m069"
+   ],
+   "articles": [
+    "576"
+   ],
+   "descriptions": [
+    "Justin Gaethje tells CBS Sports the Holloway KO loss was a 'huge building block' and he has no retirement timeline"
+   ],
+   "split_candidate": null
+  },
+  {
+   "key": "s065",
+   "from": [
+    "m070"
+   ],
+   "articles": [
+    "572",
+    "592"
+   ],
+   "descriptions": [
+    "Reporter Alvaro Colmenero says Topuria will return to the public eye within days in September after months recovering"
+   ],
+   "split_candidate": null
+  },
+  {
+   "key": "s066",
+   "from": [
+    "m071"
+   ],
+   "articles": [
+    "580"
+   ],
+   "descriptions": [
+    "Israel Adesanya spotted training with Volkanovski and Ruffy in Sydney after leaving City Kickboxing (about someone else; Topuria only in a 'latest news' link)"
+   ],
+   "split_candidate": null
+  },
+  {
+   "key": "s067",
+   "from": [
+    "m072"
+   ],
+   "articles": [
+    "606"
+   ],
+   "descriptions": [
+    "Judoka Joaquin Gomis on the Ground and Pound podcast praises Topuria's grappling level and calls the Gaethje loss a 1% chance"
+   ],
+   "split_candidate": null
+  },
+  {
+   "key": "s068",
+   "from": [
+    "m073"
+   ],
+   "articles": [
+    "620",
+    "627",
+    "632",
+    "636",
+    "647",
+    "651",
+    "659",
+    "666",
+    "675",
+    "682",
+    "697",
+    "717"
+   ],
+   "descriptions": [
+    "Topuria breaks his silence with a video letter to his son Hugo ('after going through that hell, I'm stronger than before'), his first post since the Gaethje loss",
+    "Topuria's first post since the Gaethje loss: an emotional video/letter to his son Hugo about losing and getting back up (Friday 4 Sep)"
+   ],
+   "split_candidate": null
+  },
+  {
+   "key": "s069",
+   "from": [
+    "m074"
+   ],
+   "articles": [
+    "643"
+   ],
+   "descriptions": [
+    "Molly McCann tells Bloody Elbow she and Paddy Pimblett will both win world titles in 2027 (about someone else; Topuria only in a link)",
+    "Molly McCann says Pimblett will win a UFC belt in 2027, same year she wins a boxing title (about McCann/Pimblett, Topuria only mentioned)"
+   ],
+   "split_candidate": null
+  },
+  {
+   "key": "s070",
+   "from": [
+    "m075"
+   ],
+   "articles": [
+    "693",
+    "702",
+    "723",
+    "728",
+    "755",
+    "771",
+    "788",
+    "875"
+   ],
+   "descriptions": [
+    "Topuria publishes a long 9-part essay ('This Is Me' / exclusive for Marca, Saturday 5 Sep) about his childhood, the loss, his broken face and wanting to return without erasing the defeat",
+    "Estadio Deportivo recap of Topuria's letter to his son / essay after the Gaethje loss, padded with his older quotes on handling defeat"
+   ],
+   "split_candidate": "Essay cluster contains recaps of the Friday Hugo video (#755, #728, #875) alongside the Saturday essay."
+  },
+  {
+   "key": "s071",
+   "from": [
+    "m076"
+   ],
+   "articles": [
+    "798",
+    "803",
+    "807",
+    "828",
+    "833",
+    "862"
+   ],
+   "descriptions": [
+    "Jon Anik (Anik Bros YouTube) says UFC is having internal conversations about an immediate Gaethje vs Topuria rematch",
+    "Jon Anik says on his Anik Bros channel there are 'internal conversations' in the UFC about an immediate Gaethje vs Topuria rematch"
+   ],
+   "split_candidate": null
+  },
+  {
+   "key": "s072",
+   "from": [
+    "m077"
+   ],
+   "articles": [
+    "820",
+    "838",
+    "843",
+    "871",
+    "892",
+    "913",
+    "921",
+    "953"
+   ],
+   "descriptions": [
+    "Paddy Pimblett (Eze Talks Sports interview at McCann's Dublin bout) says nobody has contacted him about a December Topuria fight, lists Arman/Gaethje/Ruffy/Oliveira as options",
+    "Paddy Pimblett, ringside in Dublin (Eze Obas interview), says he'd 'love to smash Topuria's head in' but nobody has called him; lists Arman/Gaethje/Ruffy/Charles and hopes for December",
+    "Paddy Pimblett tells Eze Obas he has no fight booked, expects a December return, and nobody has spoken to him about Topuria"
+   ],
+   "split_candidate": "ABC #913 body analyses Anik's rematch claim (m076); #838 is half Anik."
+  },
+  {
+   "key": "s073",
+   "from": [
+    "m078"
+   ],
+   "articles": [
+    "710"
+   ],
+   "descriptions": [
+    "RAF Moscow (Chimaev vs Woodley) loses its US streaming option on Fox Nation; Topuria appears only in a 'latest news' link"
+   ],
+   "split_candidate": null
+  },
+  {
+   "key": "s074",
+   "from": [
+    "m079"
+   ],
+   "articles": [
+    "762"
+   ],
+   "descriptions": [
+    "OkDiario interview with Fran Ortega, Topuria's physiotherapist, on recovery and rest"
+   ],
+   "split_candidate": null
+  },
+  {
+   "key": "s075",
+   "from": [
+    "m080"
+   ],
+   "articles": [
+    "811"
+   ],
+   "descriptions": [
+    "Michael 'Venom' Page puts on another dull decision at UFC Paris after promising to take risks (no Topuria content at all)"
+   ],
+   "split_candidate": null
+  },
+  {
+   "key": "s076",
+   "from": [
+    "m081"
+   ],
+   "articles": [
+    "883"
+   ],
+   "descriptions": [
+    "UFC fans on social media blast the rumoured Gaethje-Topuria rematch after Anik's leak ('a disgrace')"
+   ],
+   "split_candidate": null
+  },
+  {
+   "key": "s077",
+   "from": [
+    "m082"
+   ],
+   "articles": [
+    "850",
+    "896"
+   ],
+   "descriptions": [
+    "Tim Welch on Sean O'Malley's podcast says there are rumours of Pimblett vs Topuria in December; O'Malley says he leans Paddy"
+   ],
+   "split_candidate": null
+  },
+  {
+   "key": "s078",
+   "from": [
+    "m083"
+   ],
+   "articles": [
+    "856"
+   ],
+   "descriptions": [
+    "MARCA review of Spanish fighters' 2026 in the UFC: debutants Hecher Sosa and Fabia Sintes save the year; Topuria only mentioned"
+   ],
+   "split_candidate": null
+  },
+  {
+   "key": "s079",
+   "from": [
+    "m084"
+   ],
+   "articles": [
+    "866",
+    "917",
+    "926"
+   ],
+   "descriptions": [
+    "Joe Rogan on the JRE MMA Show warns Topuria not to rush back after the Gaethje damage, citing Volkanovski's quick return as the cautionary example"
+   ],
+   "split_candidate": null
+  },
+  {
+   "key": "s080",
+   "from": [
+    "m085"
+   ],
+   "articles": [
+    "879",
+    "901",
+    "905"
+   ],
+   "descriptions": [
+    "Matt Brown on The Fighter vs The Writer podcast says an immediate Gaethje rematch could 'ruin Ilia Topuria's life'; suggests a tune-up like Moicano first"
+   ],
+   "split_candidate": null
+  },
+  {
+   "key": "s081",
+   "from": [
+    "m086"
+   ],
+   "articles": [
+    "887",
+    "909"
+   ],
+   "descriptions": [
+    "Josh Hokit's X tirade saying neither Topuria nor Pereira deserves a title shot next, triggered by Pereira's video asking for a Gane rematch"
+   ],
+   "split_candidate": null
+  },
+  {
+   "key": "s082",
+   "from": [
+    "m087",
+    "m096"
+   ],
+   "articles": [
+    "930",
+    "968"
+   ],
+   "descriptions": [
+    "Topuria's new message to Georgian fans in a TBC advert: 'my greatest victories are still to come', promises to return stronger",
+    "Topuria appears in a TBC advertisement in Georgia promising to come back stronger"
+   ],
+   "split_candidate": null
+  },
+  {
+   "key": "s083",
+   "from": [
+    "m088"
+   ],
+   "articles": [
+    "937"
+   ],
+   "descriptions": [
+    "Arman Tsarukyan tells Paramount he wants to beat Makhachev's lightweight defence record; Topuria only mentioned in the headline",
+    "Arman Tsarukyan tells Paramount he wants to beat Makhachev's lightweight defence record ahead of UFC 331 vs Ruffy"
+   ],
+   "split_candidate": null
+  },
+  {
+   "key": "s084",
+   "from": [
+    "m089",
+    "m095"
+   ],
+   "articles": [
+    "944",
+    "963",
+    "977",
+    "983",
+    "1040",
+    "1050",
+    "1072",
+    "1093"
+   ],
+   "descriptions": [
+    "Justin Gaethje on Demetrious Johnson's podcast dissects the Topuria win: 'terrible emotional mistakes', feet never change rhythm, 'he forgot who he was'",
+    "Gaethje on Demetrious Johnson's MightyCast dissects the Topuria win: predictable footwork, emotional mistakes, overconfidence, and that he won't fight again in 2026",
+    "Justin Gaethje's MightyCast interview with Demetrious Johnson: Topuria's footwork was easy to predict, and he won't fight again this year while he recovers",
+    "Gaethje on MightyCast says Tsarukyan deserves a title shot on merit but understands the UFC's hesitancy"
+   ],
+   "split_candidate": null
+  },
+  {
+   "key": "s085",
+   "from": [
+    "m090"
+   ],
+   "articles": [
+    "958",
+    "972",
+    "991",
+    "998",
+    "1008",
+    "1020",
+    "1031",
+    "1036",
+    "1058",
+    "1076"
+   ],
+   "descriptions": [
+    "Dana White tells The Jim Rome Show that Topuria is 'ready to fight' and either a Gaethje rematch or a Pimblett fight 'sounds good'",
+    "Dana White on the Jim Rome show says Topuria is healed and ready, and the UFC is weighing a Gaethje rematch vs a Pimblett fight"
+   ],
+   "split_candidate": null
+  },
+  {
+   "key": "s086",
+   "from": [
+    "m091"
+   ],
+   "articles": [
+    "1016",
+    "1027"
+   ],
+   "descriptions": [
+    "Eddie Alvarez tells MMA Junkie an immediate Gaethje-Topuria rematch is a mistake; Topuria should rebuild first"
+   ],
+   "split_candidate": null
+  },
+  {
+   "key": "s087",
+   "from": [
+    "m092"
+   ],
+   "articles": [
+    "1045"
+   ],
+   "descriptions": [
+    "Yahoo's 'The Boys in the Back' podcast episode reacts to Topuria being ready to fight, plus Noche UFC and Garcia-Benn previews"
+   ],
+   "split_candidate": null
+  },
+  {
+   "key": "s088",
+   "from": [
+    "m093"
+   ],
+   "articles": [
+    "1066"
+   ],
+   "descriptions": [
+    "Fans on X react to Dana White floating a Topuria vs Pimblett non-title headliner",
+    "Fan reactions online to Dana White hinting Topuria vs Pimblett could headline a numbered card without a title"
+   ],
+   "split_candidate": null
+  },
+  {
+   "key": "s089",
+   "from": [
+    "m094"
+   ],
+   "articles": [
+    "948"
+   ],
+   "descriptions": [
+    "Gaethje says he hopes Tsarukyan 'gets hit hard' by Ruffy at UFC 331 and just wants a violent fight"
+   ],
+   "split_candidate": null
+  },
+  {
+   "key": "s090",
+   "from": [
+    "m097"
+   ],
+   "articles": [
+    "1002"
+   ],
+   "descriptions": [
+    "Alexandre Pantoja posts a message of support to Topuria after his return to the public eye"
+   ],
+   "split_candidate": null
+  },
+  {
+   "key": "s091",
+   "from": [
+    "m098"
+   ],
+   "articles": [
+    "1089"
+   ],
+   "descriptions": [
+    "Dana White says there is a lot of money left on the table for Gaethje to make (i.e. he should not retire)"
+   ],
+   "split_candidate": null
+  },
+  {
+   "key": "s092",
+   "from": [
+    "m099"
+   ],
+   "articles": [
+    "1097"
+   ],
+   "descriptions": [
+    "Belal Muhammad says Topuria does not deserve an immediate Gaethje rematch and should fight Paddy Pimblett instead"
+   ],
+   "split_candidate": null
+  },
+  {
+   "key": "s093",
+   "from": [
+    "m100"
+   ],
+   "articles": [
+    "1101"
+   ],
+   "descriptions": [
+    "Topuria, in a 1Win video, says he no longer ties his happiness to achieving goals and now lives in the present"
+   ],
+   "split_candidate": null
+  },
+  {
+   "key": "s094",
+   "from": [
+    "m101"
+   ],
+   "articles": [
+    "1080"
+   ],
+   "descriptions": [
+    "Myllena Messias's manager responds after Tapology flags her recent bout as a fake fight (Topuria only appears in a sidebar link)"
+   ],
+   "split_candidate": null
+  },
+  {
+   "key": "s095",
+   "from": [
+    "m102"
+   ],
+   "articles": [
+    "1085"
+   ],
+   "descriptions": [
+    "Alex Pereira says he will drop back to 205 to fight Paulo Costa if he does not get a heavyweight shot (does not concern Topuria)"
+   ],
+   "split_candidate": null
+  },
+  {
+   "key": "s096",
+   "from": [
+    "m103"
+   ],
+   "articles": [
+    "16",
+    "17",
+    "18"
+   ],
+   "descriptions": [
+    "Donchenko vs Punahele Soriano booked for UFC Fight Night Paris on 5 September (Ukrainian outlets report the booking)"
+   ],
+   "split_candidate": null
+  },
+  {
+   "key": "s097",
+   "from": [
+    "m104"
+   ],
+   "articles": [
+    "203",
+    "208",
+    "298",
+    "300",
+    "301",
+    "320",
+    "321",
+    "322"
+   ],
+   "descriptions": [
+    "NV's long sit-down interview with Donchenko, published in pieces over Aug 15-22 (bonus to church, grandmother call, TUF house, Dana White request, Ukrainians vs Russians, university/Thailand, TrO in 2022, Kyiv club pay)"
+   ],
+   "split_candidate": "Eight NV pieces across Aug 15-22 may be two interview sittings (UFC-focused Aug 21 vs biography Aug 22)."
+  },
+  {
+   "key": "s098",
+   "from": [
+    "m105"
+   ],
+   "articles": [
+    "490",
+    "491",
+    "494"
+   ],
+   "descriptions": [
+    "UFC.com feature 'Daniil Donchenko Got His Wish' by E. Spencer Kyte ahead of Paris (three copies, one from the Japanese-localised page)"
+   ],
+   "split_candidate": null
+  },
+  {
+   "key": "s099",
+   "from": [
+    "m106"
+   ],
+   "articles": [
+    "521"
+   ],
+   "descriptions": [
+    "UFC.com video interview with Donchenko before Paris: 'I Have Everything And Even More'"
+   ],
+   "split_candidate": null
+  },
+  {
+   "key": "s100",
+   "from": [
+    "m107"
+   ],
+   "articles": [
+    "529",
+    "532",
+    "609"
+   ],
+   "descriptions": [
+    "UFC.com feature on opponent Punahele Soriano ('Happiest In The Background'), mentions Donchenko only as the opponent (two copies)",
+    "Soriano tells UFC.com he doesn't want the 31-second Medic KO to define him ('lucky win' pressure quote), reproduced by MiddleEasy"
+   ],
+   "split_candidate": null
+  },
+  {
+   "key": "s101",
+   "from": [
+    "m108"
+   ],
+   "articles": [
+    "588"
+   ],
+   "descriptions": [
+    "KHON2 (Hawaii) interview with Soriano from Xtreme Couture about injuries, car accident and daughter's birthday; Donchenko only named as opponent",
+    "Soriano interview from Xtreme Couture (KHON2) about leg tears, car accident and daughter's birthday delaying his return"
+   ],
+   "split_candidate": null
+  },
+  {
+   "key": "s102",
+   "from": [
+    "m109"
+   ],
+   "articles": [
+    "555",
+    "563"
+   ],
+   "descriptions": [
+    "MMA Mania predictions/odds column for UFC Paris main card (syndicated on Yahoo)",
+    "MMA Mania's UFC Paris main-card predictions/odds column, syndicated to Yahoo"
+   ],
+   "split_candidate": null
+  },
+  {
+   "key": "s103",
+   "from": [
+    "m110"
+   ],
+   "articles": [
+    "500"
+   ],
+   "descriptions": [
+    "Nathaniel Wood gets new opponent Pavel Andrusca at UFC Paris; Donchenko appears only in the card listing"
+   ],
+   "split_candidate": null
+  },
+  {
+   "key": "s104",
+   "from": [
+    "m111"
+   ],
+   "articles": [
+    "510"
+   ],
+   "descriptions": [
+    "Bloody Elbow UFC Paris preview: start times, full card, how to watch"
+   ],
+   "split_candidate": null
+  },
+  {
+   "key": "s105",
+   "from": [
+    "m112"
+   ],
+   "articles": [
+    "594"
+   ],
+   "descriptions": [
+    "ClutchPoints prediction and odds column for Donchenko vs Soriano"
+   ],
+   "split_candidate": null
+  },
+  {
+   "key": "s106",
+   "from": [
+    "m113",
+    "m114",
+    "m133"
+   ],
+   "articles": [
+    "599",
+    "605",
+    "619",
+    "690",
+    "745"
+   ],
+   "descriptions": [
+    "Sport.ua preview 'the hardest fight for Donchenko, what awaits him in Paris' (same page captured twice)",
+    "112.ua short announcement that Donchenko fights Soriano on Sep 5 in Paris, citing Sport.ua",
+    "Pre-fight preview: Donchenko faces Soriano on the UFC Paris main card, a big challenge and dangerous opponent (Sport.ua preview and 112.ua rewrite citing Sport.ua)",
+    "Pre-fight preview: Donchenko to face Soriano at UFC Fight Night 287 in Paris on Sept 5 (112.ua via Sport.ua)"
+   ],
+   "split_candidate": null
+  },
+  {
+   "key": "s107",
+   "from": [
+    "m115"
+   ],
+   "articles": [
+    "603"
+   ],
+   "descriptions": [
+    "Liontips betting tip for Donchenko vs Soriano"
+   ],
+   "split_candidate": null
+  },
+  {
+   "key": "s108",
+   "from": [
+    "m116"
+   ],
+   "articles": [
+    "601",
+    "613",
+    "625"
+   ],
+   "descriptions": [
+    "UFC Paris official weigh-in results: Donchenko and Soriano both make 170 lb / 77.11 kg, all 28 fighters on weight"
+   ],
+   "split_candidate": null
+  },
+  {
+   "key": "s109",
+   "from": [
+    "m117"
+   ],
+   "articles": [
+    "614"
+   ],
+   "descriptions": [
+    "Donchenko's remarks after the weigh-in (via Balu Fighting League Pro): feels fine, plans to rehydrate to about 86 kg"
+   ],
+   "split_candidate": null
+  },
+  {
+   "key": "s110",
+   "from": [
+    "m118"
+   ],
+   "articles": [
+    "608"
+   ],
+   "descriptions": [
+    "The Stats Zone preview and prediction for Donchenko vs Soriano with event facts"
+   ],
+   "split_candidate": null
+  },
+  {
+   "key": "s111",
+   "from": [
+    "m119"
+   ],
+   "articles": [
+    "616"
+   ],
+   "descriptions": [
+    "Champion.com.ua event announcement/preview: Donchenko on the UFC Fight Night 287 main card vs Soriano"
+   ],
+   "split_candidate": null
+  },
+  {
+   "key": "s112",
+   "from": [
+    "m120"
+   ],
+   "articles": [
+    "623"
+   ],
+   "descriptions": [
+    "Uncrowned/Yahoo UFC Paris preview and predictions focused on Hooker vs Parnasse"
+   ],
+   "split_candidate": null
+  },
+  {
+   "key": "s113",
+   "from": [
+    "m121"
+   ],
+   "articles": [
+    "655"
+   ],
+   "descriptions": [
+    "BetMGM predictions and odds page for Donchenko vs Soriano"
+   ],
+   "split_candidate": null
+  },
+  {
+   "key": "s114",
+   "from": [
+    "m122"
+   ],
+   "articles": [
+    "641"
+   ],
+   "descriptions": [
+    "DraftKings Network best bets for UFC Paris, led by Hooker vs Parnasse"
+   ],
+   "split_candidate": null
+  },
+  {
+   "key": "s115",
+   "from": [
+    "m123"
+   ],
+   "articles": [
+    "654"
+   ],
+   "descriptions": [
+    "MMA Junkie staff and reader picks for UFC Fight Night 287"
+   ],
+   "split_candidate": null
+  },
+  {
+   "key": "s116",
+   "from": [
+    "m124",
+    "m134"
+   ],
+   "articles": [
+    "653",
+    "686"
+   ],
+   "descriptions": [
+    "Ceremonial weigh-in faceoff video/photo of Donchenko and Soriano (Lufkin Daily News wire item)",
+    "Donchenko and Soriano hold their staredown at the UFC Paris ceremonial weigh-ins (XSPORT)"
+   ],
+   "split_candidate": null
+  },
+  {
+   "key": "s117",
+   "from": [
+    "m125"
+   ],
+   "articles": [
+    "673",
+    "681"
+   ],
+   "descriptions": [
+    "MMA Junkie analyst Dan Tom picks Soriano to upset Donchenko by R2 KO, syndicated to Yahoo",
+    "MMA Junkie/Yahoo (Dan Tom) prediction and pick for Donchenko vs Soriano"
+   ],
+   "split_candidate": null
+  },
+  {
+   "key": "s118",
+   "from": [
+    "m126"
+   ],
+   "articles": [
+    "672"
+   ],
+   "descriptions": [
+    "Donchenko tells Bowks Talking Bouts (via BJPenn) that the winner of the Soriano fight should enter the top 15; sizes up Soriano's power",
+    "Donchenko interview on Bowks Talking Bouts: says whoever finishes the fight gets a top-15 ranking, breaks down Soriano's decision-heavy streak"
+   ],
+   "split_candidate": null
+  },
+  {
+   "key": "s119",
+   "from": [
+    "m127",
+    "m129",
+    "m130",
+    "m135"
+   ],
+   "articles": [
+    "683",
+    "714",
+    "731",
+    "732",
+    "733",
+    "735",
+    "736",
+    "737",
+    "740",
+    "746",
+    "747",
+    "758",
+    "759",
+    "765",
+    "767",
+    "768",
+    "772",
+    "773",
+    "776",
+    "778",
+    "779",
+    "780",
+    "782",
+    "783",
+    "785",
+    "786",
+    "789",
+    "790",
+    "794",
+    "797",
+    "813",
+    "817",
+    "823",
+    "826",
+    "829",
+    "851"
+   ],
+   "descriptions": [
+    "UFC Paris results: Donchenko beats Soriano by unanimous decision (30-27 x2, 29-28); Parnasse KOs Hooker",
+    "UFC Paris (Hooker vs Parnasse) event-wide results and live play-by-play pages that list Donchenko's win among all fights",
+    "MMA Mania UFC Paris live results / play-by-play page for the whole event, which merely lists Donchenko vs Soriano on the card",
+    "Fight result: Donchenko beats Punahele Soriano by unanimous decision (30-27, 30-27, 29-28) on the UFC Paris main card, dropping him in round 1",
+    "Donchenko's in-cage octagon interview with Michael Bisping after the win (UFC.com video page)",
+    "Donchenko's separate backstage post-fight interview with UFC.com (video page)",
+    "Post-fight interviews: Donchenko calls out Daniel Rodriguez, asks for a 5-round fight at the end-of-year event or at the APEX (in-cage with Bisping, then backstage to UFC.com)",
+    "Donchenko's post-fight callout of Daniel Rodriguez, elaborated backstage to UFC News (wants end-of-year card or a five-round APEX fight)",
+    "Fight result: Donchenko beats Punahele Soriano by unanimous decision (30-27, 30-27, 29-28) at UFC Fight Night 287 in Paris, his 4th UFC win",
+    "Sport.ua analysis column on the Soriano fight: Donchenko dominated but could have done better and did not get the knockout",
+    "Fight result: Donchenko beats Punahele Soriano by unanimous decision at UFC Fight Night 287 in Paris"
+   ],
+   "split_candidate": "Article #737's captured text is pre-event preview, not results; the rest is the result at event scope."
+  },
+  {
+   "key": "s120",
+   "from": [
+    "m128"
+   ],
+   "articles": [
+    "687",
+    "688"
+   ],
+   "descriptions": [
+    "Sport.ua live-stream/online page for Donchenko vs Soriano on fight day",
+    "Sport.ua 'watch online LIVE' page for Donchenko vs Soriano at UFC Paris"
+   ],
+   "split_candidate": null
+  },
+  {
+   "key": "s121",
+   "from": [
+    "m131"
+   ],
+   "articles": [
+    "692",
+    "698"
+   ],
+   "descriptions": [
+    "MMA Fighting staff predictions for the whole UFC Paris card (Donchenko vs Soriano mentioned as one of the main-card bouts)"
+   ],
+   "split_candidate": null
+  },
+  {
+   "key": "s122",
+   "from": [
+    "m132"
+   ],
+   "articles": [
+    "709"
+   ],
+   "descriptions": [
+    "DraftKings Network betting prediction and pick for Donchenko vs Soriano (Donchenko -238, pick: Donchenko by finish)"
+   ],
+   "split_candidate": null
+  },
+  {
+   "key": "s123",
+   "from": [
+    "m136"
+   ],
+   "articles": [
+    "744",
+    "774"
+   ],
+   "descriptions": [
+    "Sport.ua roundup of Donchenko's post-fight statements in Paris (thanks to Ukrainians and other remarks)"
+   ],
+   "split_candidate": null
+  },
+  {
+   "key": "s124",
+   "from": [
+    "m137"
+   ],
+   "articles": [
+    "743"
+   ],
+   "descriptions": [
+    "112.ua (via Sport.ua) roundup of Donchenko's Paris appearance: weigh-in, octagon and press conference"
+   ],
+   "split_candidate": null
+  },
+  {
+   "key": "s125",
+   "from": [
+    "m138"
+   ],
+   "articles": [
+    "852"
+   ],
+   "descriptions": [
+    "Donchenko's Ukrainian-language post-fight message (Champion.com.ua): the win was important, clean face, hopes UFC gives him a good next fight"
+   ],
+   "split_candidate": null
+  },
+  {
+   "key": "s126",
+   "from": [
+    "m139"
+   ],
+   "articles": [
+    "861"
+   ],
+   "descriptions": [
+    "MMA Fighting 'On To the Next One' podcast on matches to make after UFC Paris (mainly Parnasse/Hooker; Donchenko mentioned among others)"
+   ],
+   "split_candidate": null
+  },
+  {
+   "key": "s127",
+   "from": [
+    "m140"
+   ],
+   "articles": [
+    "889"
+   ],
+   "descriptions": [
+    "Daniel Rodriguez responds to Donchenko's callout on Instagram stories with a middle-finger emoji"
+   ],
+   "split_candidate": null
+  },
+  {
+   "key": "s128",
+   "from": [
+    "m141"
+   ],
+   "articles": [
+    "933",
+    "934"
+   ],
+   "descriptions": [
+    "Sport.ua analysis piece: five possible next opponents for Donchenko"
+   ],
+   "split_candidate": null
+  },
+  {
+   "key": "s129",
+   "from": [
+    "m142"
+   ],
+   "articles": [
+    "1125",
+    "1129"
+   ],
+   "descriptions": [
+    "Donchenko explains to Champion why he picked Rodriguez: 15th-ranked, the most convenient top-15 opponent, no point aiming at top-5/top-10 yet"
+   ],
+   "split_candidate": null
+  },
+  {
+   "key": "s130",
+   "from": [
+    "m143"
+   ],
+   "articles": [
+    "1161"
+   ],
+   "descriptions": [
+    "Tom Aspinall vacates the UFC heavyweight title over his eye injury (does not mention Donchenko)"
+   ],
+   "split_candidate": null
+  },
+  {
+   "key": "s131",
+   "from": [
+    "m144"
+   ],
+   "articles": [
+    "1172"
+   ],
+   "descriptions": [
+    "Sport.ua interview: Donchenko says he is no worse than Kamaru Usman and talks about Ukrainians in the UFC"
+   ],
+   "split_candidate": null
+  },
+  {
+   "key": "s132",
+   "from": [
+    "m145"
+   ],
+   "articles": [
+    "1260"
+   ],
+   "descriptions": [
+    "Donchenko on Bowks Talking Bouts compares Makhachev's 18-win streak unfavourably to Anderson Silva's and names Amosov as the real test"
+   ],
+   "split_candidate": null
+  }
+ ],
+ "pair_rulings": [
+  {
+   "a": "1160",
+   "b": "1150",
+   "ruling": "same",
+   "why": "Same Ushatayka interview with Makhachev; only the lead differs."
+  },
+  {
+   "a": "96",
+   "b": "4",
+   "ruling": "same",
+   "why": "Quotes and attribution match; a Yahoo summary four days later is late coverage, not a new segment."
+  },
+  {
+   "a": "230",
+   "b": "247",
+   "ruling": "different",
+   "why": "MMA Fighting staff roundtable vs Schaub's podcast take: two occasions, two speakers."
+  },
+  {
+   "a": "65",
+   "b": "204",
+   "ruling": "different",
+   "why": "Two outlets' own preview opinion pieces, not one piece of news."
+  },
+  {
+   "a": "129",
+   "b": "71",
+   "ruling": "cannot_tell",
+   "why": "The Miami-visit detail suggests a fresh Aug 11 post, but ABC could be re-reading the Aug 8 video."
+  },
+  {
+   "a": "102",
+   "b": "78",
+   "ruling": "cannot_tell",
+   "why": "MARCA's headline and half the body are Abdelaziz; which remark is the news peg decides the cluster."
+  },
+  {
+   "a": "6",
+   "b": "34",
+   "ruling": "different",
+   "why": "MMA Junkie interview about Gaethje's future vs Pound 4 Pound podcast about Usman; different topics and named sources."
+  },
+  {
+   "a": "129",
+   "b": "193",
+   "ruling": "different",
+   "why": "193's news is Kawa's reply to Abdelaziz (the Aug 8 video); 129 is the separate rematch post."
+  },
+  {
+   "a": "228",
+   "b": "138",
+   "ruling": "different",
+   "why": "UFC 330 post-fight press conference vs DJ's podcast: two occasions."
+  },
+  {
+   "a": "148",
+   "b": "144",
+   "ruling": "same",
+   "why": "The 'party the night before' remark is the MightyCast content and 144 places it on that podcast."
+  },
+  {
+   "a": "273",
+   "b": "283",
+   "ruling": "same",
+   "why": "Same day, same demand (Topuria or Tsarukyan next); nothing in the descriptions points to a second Pimblett appearance."
+  },
+  {
+   "a": "361",
+   "b": "349",
+   "ruling": "different",
+   "why": "Helwani podcast vs Helen Yee interview, both named; same message on two occasions."
+  },
+  {
+   "a": "402",
+   "b": "412",
+   "ruling": "cannot_tell",
+   "why": "Infobae headlines the Gallo return-date news with a Merab body; a two-story article until read."
+  },
+  {
+   "a": "305",
+   "b": "412",
+   "ruling": "cannot_tell",
+   "why": "If the SPORT profile really leads with Gallo's return-timing line it is early coverage of the same interview; the description calls it a neighbourhood profile."
+  },
+  {
+   "a": "373",
+   "b": "385",
+   "ruling": "cannot_tell",
+   "why": "Clips posted seconds apart may be one Rogan episode, but the Pimblett reply could be a separate clip; Topuria was publicly silent until Sept 4, so these may be old recirculated clips."
+  },
+  {
+   "a": "373",
+   "b": "380",
+   "ruling": "cannot_tell",
+   "why": "Same-day English clip; no source named for the divorce quote."
+  },
+  {
+   "a": "291",
+   "b": "380",
+   "ruling": "cannot_tell",
+   "why": "Two personal confessions with no source named; could be one long interview."
+  },
+  {
+   "a": "402",
+   "b": "412",
+   "ruling": "cannot_tell",
+   "why": "Duplicate of the earlier pair; same reasoning."
+  },
+  {
+   "a": "397",
+   "b": "402",
+   "ruling": "same",
+   "why": "Matching quotes; Helen Yee routinely interviews at wrestling events, so both venue descriptions fit one interview."
+  },
+  {
+   "a": "380",
+   "b": "427",
+   "ruling": "cannot_tell",
+   "why": "Divorce lesson and childhood remarks may both be Charlas Adictivas; nothing in the descriptions confirms it."
+  },
+  {
+   "a": "435",
+   "b": "408",
+   "ruling": "same",
+   "why": "Built on the same Sport24 interview; the PFL rejection is another remark from the same sitting."
+  },
+  {
+   "a": "516",
+   "b": "525",
+   "ruling": "same",
+   "why": "One Deep Waters appearance is one story by the working rule, whatever remark leads."
+  },
+  {
+   "a": "520",
+   "b": "453",
+   "ruling": "different",
+   "why": "Two speakers, two statements; Song's is a reaction to Usman's."
+  },
+  {
+   "a": "516",
+   "b": "525",
+   "ruling": "same",
+   "why": "Duplicate of the earlier pair; same reasoning."
+  },
+  {
+   "a": "565",
+   "b": "551",
+   "ruling": "cannot_tell",
+   "why": "565 is attributed to Sports Illustrated and about sitting out 2026, so it may belong to the SI interview (m062) rather than the Paramount+ one."
+  },
+  {
+   "a": "576",
+   "b": "551",
+   "ruling": "different",
+   "why": "CBS Sports interview vs Paramount+ interview, both named."
+  },
+  {
+   "a": "572",
+   "b": "620",
+   "ruling": "different",
+   "why": "A reporter's prediction of the return vs the return itself."
+  },
+  {
+   "a": "755",
+   "b": "632",
+   "ruling": "cannot_tell",
+   "why": "Equal space to the Hugo video and the essay; which leads is unknowable from the description."
+  },
+  {
+   "a": "728",
+   "b": "675",
+   "ruling": "cannot_tell",
+   "why": "Instagram attribution and Hugo opening point to the video, but the quoted lines are the essay's."
+  },
+  {
+   "a": "875",
+   "b": "632",
+   "ruling": "cannot_tell",
+   "why": "Essay headline, Hugo-letter body."
+  },
+  {
+   "a": "693",
+   "b": "636",
+   "ruling": "different",
+   "why": "Video to Hugo on Friday and the nine-part essay on Saturday are two publications."
+  },
+  {
+   "a": "682",
+   "b": "693",
+   "ruling": "cannot_tell",
+   "why": "Yahoo body is boilerplate; 'breaks silence' fits either the video or the essay."
+  },
+  {
+   "a": "838",
+   "b": "828",
+   "ruling": "different",
+   "why": "The Pimblett Dublin interview is the peg; Anik's remarks are background in the second half."
+  },
+  {
+   "a": "843",
+   "b": "838",
+   "ruling": "cannot_tell",
+   "why": "Matched on headline and photo caption only; body is navigation junk."
+  },
+  {
+   "a": "883",
+   "b": "862",
+   "ruling": "different",
+   "why": "Fan backlash to Anik's leak is a reaction story by the working rule."
+  },
+  {
+   "a": "913",
+   "b": "862",
+   "ruling": "cannot_tell",
+   "why": "Headline carries the Pimblett quote, body analyses Anik's rematch claim."
+  },
+  {
+   "a": "843",
+   "b": "838",
+   "ruling": "cannot_tell",
+   "why": "Duplicate of the earlier pair; same reasoning."
+  },
+  {
+   "a": "866",
+   "b": "917",
+   "ruling": "cannot_tell",
+   "why": "An X clip of JRE is usually the same episode, but different sentences and Rogan's frequent Topuria remarks leave room for two occasions."
+  },
+  {
+   "a": "887",
+   "b": "909",
+   "ruling": "same",
+   "why": "Same Hokit tweet series; whether Topuria is the subject is a relevance question, not a clustering one."
+  },
+  {
+   "a": "896",
+   "b": "850",
+   "ruling": "cannot_tell",
+   "why": "Feud explainer with the O'Malley quote only in the headline; peg unclear."
+  },
+  {
+   "a": "977",
+   "b": "944",
+   "ruling": "same",
+   "why": "Same MightyCast interview; the no-fight-in-2026 line is another remark from it."
+  },
+  {
+   "a": "948",
+   "b": "1050",
+   "ruling": "cannot_tell",
+   "why": "948 names no source; Gaethje did several interviews that week."
+  },
+  {
+   "a": "1050",
+   "b": "944",
+   "ruling": "same",
+   "why": "Same MightyCast appearance; one interview is one story."
+  },
+  {
+   "a": "1066",
+   "b": "1036",
+   "ruling": "different",
+   "why": "Fan-reaction roundup is a reaction story."
+  },
+  {
+   "a": "1045",
+   "b": "1036",
+   "ruling": "different",
+   "why": "Podcast episode reacting to White's remark is a reaction story."
+  },
+  {
+   "a": "1076",
+   "b": "1036",
+   "ruling": "same",
+   "why": "Different quote from the same Jim Rome interview."
+  },
+  {
+   "a": "1002",
+   "b": "968",
+   "ruling": "different",
+   "why": "Pantoja's support message vs Topuria's own advert."
+  },
+  {
+   "a": "1066",
+   "b": "1058",
+   "ruling": "different",
+   "why": "Fan tweets on top of White's remark make it a reaction story."
+  },
+  {
+   "a": "1072",
+   "b": "1093",
+   "ruling": "same",
+   "why": "Two remarks from one MightyCast interview."
+  },
+  {
+   "a": "1089",
+   "b": "1058",
+   "ruling": "cannot_tell",
+   "why": "Could be the same Jim Rome appearance; scraped body too broken to confirm."
+  },
+  {
+   "a": "1101",
+   "b": "1058",
+   "ruling": "different",
+   "why": "Lead is the 1Win mindset quote; White's confirmation is the back half."
+  },
+  {
+   "a": "203",
+   "b": "298",
+   "ruling": "cannot_tell",
+   "why": "Six days apart with the same journalist; could be one sitting published in parts or two sittings."
+  },
+  {
+   "a": "298",
+   "b": "321",
+   "ruling": "cannot_tell",
+   "why": "Adjacent dates but a shift from UFC topics to biography could mean a second sitting."
+  },
+  {
+   "a": "521",
+   "b": "490",
+   "ruling": "different",
+   "why": "A written Kyte feature and an on-camera UFC.com video are produced separately even in the same fight week."
+  },
+  {
+   "a": "588",
+   "b": "529",
+   "ruling": "different",
+   "why": "Different quotes and locations; separate Soriano interviews."
+  },
+  {
+   "a": "510",
+   "b": "555",
+   "ruling": "different",
+   "why": "How-to-watch guide vs predictions column."
+  },
+  {
+   "a": "588",
+   "b": "532",
+   "ruling": "different",
+   "why": "Entirely different quotes and subjects."
+  },
+  {
+   "a": "605",
+   "b": "599",
+   "ruling": "same",
+   "why": "112.ua cites Sport.ua, same day, same fight; a rewrite is coverage of the same preview."
+  },
+  {
+   "a": "613",
+   "b": "601",
+   "ruling": "same",
+   "why": "Same official weigh-in; scope (whole card vs one line) does not change the event."
+  },
+  {
+   "a": "653",
+   "b": "601",
+   "ruling": "different",
+   "why": "Ceremonial faceoff and official weigh-in are separate events on the same day."
+  },
+  {
+   "a": "687",
+   "b": "683",
+   "ruling": "cannot_tell",
+   "why": "Captured body of the Sport.ua live page shows no result."
+  },
+  {
+   "a": "681",
+   "b": "709",
+   "ruling": "different",
+   "why": "Two outlets' own pick columns."
+  },
+  {
+   "a": "683",
+   "b": "786",
+   "ruling": "same",
+   "why": "Same unanimous-decision result; only the scope differs."
+  },
+  {
+   "a": "737",
+   "b": "692",
+   "ruling": "cannot_tell",
+   "why": "Captured text is the preview portion of a live blog; unclear whether the page is results or predictions."
+  },
+  {
+   "a": "745",
+   "b": "687",
+   "ruling": "cannot_tell",
+   "why": "112.ua's source could be the Sport.ua preview or the watch-online page; the 23:00 start time fits either."
+  },
+  {
+   "a": "732",
+   "b": "746",
+   "ruling": "same",
+   "why": "LowKick's headline leads with the Rodriguez callout, so its peg is the octagon interview, not the scorecards."
+  },
+  {
+   "a": "790",
+   "b": "746",
+   "ruling": "cannot_tell",
+   "why": "'Spoke French' headline describes the octagon moment; body may be a result report."
+  },
+  {
+   "a": "746",
+   "b": "740",
+   "ruling": "cannot_tell",
+   "why": "In-cage and backstage interviews are two occasions; one story only if backstage merely repeats the callout."
+  },
+  {
+   "a": "744",
+   "b": "778",
+   "ruling": "cannot_tell",
+   "why": "Sport.ua's 'statements in Paris' may be the Bisping interview or the press conference."
+  },
+  {
+   "a": "746",
+   "b": "740",
+   "ruling": "cannot_tell",
+   "why": "Duplicate of the earlier pair; same reasoning."
+  },
+  {
+   "a": "817",
+   "b": "785",
+   "ruling": "cannot_tell",
+   "why": "Could be a plain fight report or a separate analysis column; headline alone does not settle it."
+  },
+  {
+   "a": "743",
+   "b": "744",
+   "ruling": "cannot_tell",
+   "why": "Both Sport.ua-sourced same-day roundups; 743 spans weigh-in, octagon and presser, 744 only statements."
+  },
+  {
+   "a": "823",
+   "b": "778",
+   "ruling": "different",
+   "why": "Result is the lead; the callout is a mention inside a result report."
+  },
+  {
+   "a": "829",
+   "b": "797",
+   "ruling": "different",
+   "why": "Result is the lead; the callout is a mention."
+  },
+  {
+   "a": "817",
+   "b": "829",
+   "ruling": "cannot_tell",
+   "why": "Merged on headline only; if 817 is an opinion or technical column it is its own story."
+  },
+  {
+   "a": "852",
+   "b": "1125",
+   "ruling": "cannot_tell",
+   "why": "Two Champion pieces five days apart; could be one interview published in parts."
+  },
+  {
+   "a": "933",
+   "b": "1125",
+   "ruling": "cannot_tell",
+   "why": "933 already carries the Rodriguez reasoning three days before 1125; source of those quotes unknown."
+  },
+  {
+   "a": "1172",
+   "b": "1260",
+   "ruling": "different",
+   "why": "Sport.ua interview vs Bowks Talking Bouts podcast, different topics (Usman comparison vs Makhachev streak)."
+  }
+ ]
+}

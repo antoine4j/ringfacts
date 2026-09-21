@@ -1,0 +1,28 @@
+[
+ {
+  "arm": "1 headline",
+  "n_same": 676,
+  "n_diff": 5866,
+  "median_same": 0.7901172261668765,
+  "median_diff": 0.6359646393608842,
+  "overlap": 0.057279236276849645,
+  "auc": 0.8951986374191258,
+  "best_threshold": 0.84,
+  "best_errors": 572,
+  "miss_at_080": 375,
+  "false_at_080": 290
+ },
+ {
+  "arm": "2 headline+lead",
+  "n_same": 676,
+  "n_diff": 5866,
+  "median_same": 0.8413917887106241,
+  "median_diff": 0.697559500245394,
+  "overlap": 0.050119331742243436,
+  "auc": 0.9179985151620914,
+  "best_threshold": 0.89,
+  "best_errors": 542,
+  "miss_at_080": 148,
+  "false_at_080": 628
+ }
+]

@@ -1,0 +1,99 @@
+{
+  "batch": "06",
+  "clusters": [
+    {
+      "key": "06-a",
+      "description": "Arman Tsarukyan on the Deep Waters podcast: doubts UFC will book Topuria vs Pimblett, and says he wants five lightweight title defenses to beat Makhachev's record",
+      "articles": [516, 525],
+      "confidence": "medium",
+      "reacts_to": null,
+      "doubt": "Same podcast appearance but two unrelated remarks (Pimblett booking vs title-defense record); merged on the 'same interview' rule, could reasonably be split."
+    },
+    {
+      "key": "06-b",
+      "description": "Song Yadong comments on Usman Nurmagomedov's elbow gesture after UFC Shanghai (about someone else; Topuria not in the text)",
+      "articles": [520],
+      "confidence": "high",
+      "reacts_to": null,
+      "doubt": null
+    },
+    {
+      "key": "06-c",
+      "description": "Dan Hooker ahead of UFC Paris says no top lightweight, Topuria included, will risk fighting unranked Usman Nurmagomedov if he joins UFC (same MARCA article twice)",
+      "articles": [540, 533],
+      "confidence": "high",
+      "reacts_to": null,
+      "doubt": null
+    },
+    {
+      "key": "06-d",
+      "description": "Javi Climent (Topuria's boxing coach) interview on what makes Topuria special: his ability to imitate any movement instantly",
+      "articles": [547],
+      "confidence": "high",
+      "reacts_to": null,
+      "doubt": null
+    },
+    {
+      "key": "06-e",
+      "description": "Justin Gaethje's UFC on Paramount+ sit-down interview: would rather fight McGregor than rematch Topuria/Oliveira/Holloway, hands still hurt, sitting out rest of 2026",
+      "articles": [551, 556, 560, 585, 565],
+      "confidence": "medium",
+      "reacts_to": null,
+      "doubt": "565 is an Uncrowned analysis piece that cites Sports Illustrated rather than the Paramount+ video directly, and its angle (Gaethje sitting out 2026) differs from the McGregor angle; merged because the quotes come from the same interview."
+    },
+    {
+      "key": "06-f",
+      "description": "Justin Gaethje tells CBS Sports the Holloway KO loss was a 'huge building block' and he has no retirement timeline",
+      "articles": [576],
+      "confidence": "high",
+      "reacts_to": null,
+      "doubt": "Separate CBS Sports interview, not the Paramount+ one, though it lands in the same week with overlapping themes."
+    },
+    {
+      "key": "06-g",
+      "description": "Reporter Alvaro Colmenero says Topuria will return to the public eye within days in September after months recovering",
+      "articles": [572, 592],
+      "confidence": "high",
+      "reacts_to": null,
+      "doubt": null
+    },
+    {
+      "key": "06-h",
+      "description": "Israel Adesanya spotted training with Volkanovski and Ruffy in Sydney after leaving City Kickboxing (about someone else; Topuria only in a 'latest news' link)",
+      "articles": [580],
+      "confidence": "high",
+      "reacts_to": null,
+      "doubt": null
+    },
+    {
+      "key": "06-i",
+      "description": "Judoka Joaquin Gomis on the Ground and Pound podcast praises Topuria's grappling level and calls the Gaethje loss a 1% chance",
+      "articles": [606],
+      "confidence": "high",
+      "reacts_to": null,
+      "doubt": "Article also re-quotes Topuria's old post-fight statement to Gaethje, but that is background, not the news."
+    },
+    {
+      "key": "06-j",
+      "description": "Topuria breaks his silence with a video letter to his son Hugo ('after going through that hell, I'm stronger than before'), his first post since the Gaethje loss",
+      "articles": [620, 666, 659, 627, 651, 647, 632, 636, 682],
+      "confidence": "high",
+      "reacts_to": null,
+      "doubt": "647 and 682 have no usable body text (comment policy / nav garbage), so they were placed on headline alone; 620 frames it as announcing a UFC return, which is the same video read more aggressively."
+    },
+    {
+      "key": "06-k",
+      "description": "Molly McCann tells Bloody Elbow she and Paddy Pimblett will both win world titles in 2027 (about someone else; Topuria only in a link)",
+      "articles": [643],
+      "confidence": "high",
+      "reacts_to": null,
+      "doubt": null
+    }
+  ],
+  "uncertain_pairs": [
+    {"a": 516, "b": 525, "why": "Same Deep Waters podcast appearance, but the Pimblett-booking remark and the five-title-defenses remark are separate claims that a human might want as two stories."},
+    {"a": 565, "b": 551, "why": "565 quotes Gaethje via Sports Illustrated and is about him sitting out 2026, while 551 is about the McGregor remark; both appear to come from the same Paramount+ interview but 565 could be a distinct story."},
+    {"a": 576, "b": 551, "why": "Both are Gaethje talking about his future the same week, but 576 is a CBS Sports interview and 551 the Paramount+ one; kept split as different occasions."},
+    {"a": 572, "b": 620, "why": "572 is a reporter predicting Topuria's return to the public eye and 620 is that return actually happening a day later; a loose grouper could merge them, kept split as prediction vs event."}
+  ]
+}

@@ -1,0 +1,99 @@
+{
+  "batch": "01",
+  "clusters": [
+    {
+      "key": "01-a",
+      "description": "Masvidal on the Deep Waters podcast calls ATT teammate Amosov a 'nightmare' for Makhachev and a bad fight for the whole welterweight top 10",
+      "articles": [4, 2, 1, 14, 13, 33, 96],
+      "confidence": "high",
+      "reacts_to": null,
+      "doubt": "#96 is four days later and a summary rewrite, and #1/#14 frame it as 'future champion', but all quote the same Deep Waters segment."
+    },
+    {
+      "key": "01-b",
+      "description": "Makhachev tells Ushatayka he does not consider Amosov dangerous (cites the Jackson loss), rates Prates/Morales/Rakhmonov equal, and says Garry will be champion after he leaves",
+      "articles": [1150, 1146, 1160],
+      "confidence": "high",
+      "reacts_to": "01-a",
+      "doubt": "The question Makhachev answers cites Poirier's remark, not Masvidal's, but Poirier's view is part of cluster 01-a and #1146 explicitly ties it to the 'nightmare' label; #1160 leads with the contender rankings rather than Amosov."
+    },
+    {
+      "key": "01-c",
+      "description": "Lufkin Daily News photo-caption page of Alvarez vs Amosov at UFC 328 (no article body, only site boilerplate)",
+      "articles": [3],
+      "confidence": "high",
+      "reacts_to": null,
+      "doubt": "Page is junk; date is 2026-08-06 but the photo is from the May fight, so it belongs to no live story in this batch."
+    },
+    {
+      "key": "01-d",
+      "description": "MMA Fighting roundtable previewing UFC 330 (Makhachev vs Garry); Amosov not in the excerpt",
+      "articles": [65],
+      "confidence": "high",
+      "reacts_to": null,
+      "doubt": null
+    },
+    {
+      "key": "01-e",
+      "description": "Neil Magny tells Mike Bohn that Garry can upset Makhachev at UFC 330",
+      "articles": [187],
+      "confidence": "high",
+      "reacts_to": null,
+      "doubt": null
+    },
+    {
+      "key": "01-f",
+      "description": "Sport.ua opinion piece: five reasons Makhachev loses to Garry (body is only site navigation)",
+      "articles": [204],
+      "confidence": "medium",
+      "reacts_to": null,
+      "doubt": "Only the headline is usable; the body excerpt is site navigation."
+    },
+    {
+      "key": "01-g",
+      "description": "MMA Fighting post-UFC 330 report on Makhachev's decision win over Garry",
+      "articles": [230],
+      "confidence": "high",
+      "reacts_to": null,
+      "doubt": "This is a reaction to the UFC 330 result, but no article in the batch reports the result itself, so there is nothing to point reacts_to at."
+    },
+    {
+      "key": "01-h",
+      "description": "Brendan Schaub on The Fighter and The Kid says the UFC will make Garry's road back to a title shot hard after his loss",
+      "articles": [247],
+      "confidence": "high",
+      "reacts_to": null,
+      "doubt": "Also a reaction to the UFC 330 result; same missing-result issue as 01-g."
+    },
+    {
+      "key": "01-i",
+      "description": "24 Канал feature on Ukrainian sports champions who joined the armed forces",
+      "articles": [342],
+      "confidence": "high",
+      "reacts_to": null,
+      "doubt": null
+    },
+    {
+      "key": "01-j",
+      "description": "24 Канал interview with Daniil Donchenko after his UFC Paris win over Soriano",
+      "articles": [975],
+      "confidence": "high",
+      "reacts_to": null,
+      "doubt": null
+    },
+    {
+      "key": "01-k",
+      "description": "24 Канал interview with MMA manager Vladyslav Soroka about the Ukrainian MMA scene (Amosov only mentioned)",
+      "articles": [1200],
+      "confidence": "high",
+      "reacts_to": null,
+      "doubt": null
+    }
+  ],
+  "uncertain_pairs": [
+    {"a": 1160, "b": 1150, "why": "#1160 leads with Makhachev ranking Prates/Morales/Rakhmonov while #1150 leads with the Amosov dismissal, but both come from the same Ushatayka interview so I merged them."},
+    {"a": 96, "b": 4, "why": "#96 is a Yahoo summary four days after the podcast; it could be a re-airing rather than the same segment, but the quotes and attribution match so I merged them."},
+    {"a": 230, "b": 247, "why": "Both are post-UFC 330 reactions to Makhachev beating Garry, but one is an MMA Fighting staff roundtable and the other is Schaub's podcast take, so I split them."},
+    {"a": 65, "b": 204, "why": "Both are UFC 330 previews weighing a Garry upset, but they are different outlets' own opinion pieces rather than one piece of news, so I split them."}
+  ]
+}

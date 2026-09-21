@@ -1,0 +1,29 @@
+{
+  "batch": "05",
+  "clusters": [
+    {"key": "05-a", "description": "Topuria says the lesson of his divorce is to listen to his mother", "articles": [380], "confidence": "medium", "reacts_to": null, "doubt": "Source is a tweet clip of an interview; it may be the same Charlas Adictivas podcast as 05-g, which would make it one story."},
+    {"key": "05-b", "description": "Merab Dvalishvili gives an update on Topuria: he is fine, enjoying life, and will come back and reclaim his belt", "articles": [397, 402], "confidence": "medium", "reacts_to": null, "doubt": "Infobae's headline is about a return date (the Gallo claim in 05-c) but its body is Merab's Helen Yee interview; heraldo places Merab's quote 'at a wrestling tournament', so they may be two separate Merab occasions."},
+    {"key": "05-c", "description": "Trainer Jesus Gallo (on Jorge Ebro's YouTube) says Topuria could be physically ready by December but 2027 is more likely", "articles": [412], "confidence": "high", "reacts_to": null, "doubt": null},
+    {"key": "05-d", "description": "Usman Nurmagomedov's Sport24 interview trashing UFC lightweights (Topuria quit on his stool, Pimblett, Chandler, BSD, Tsarukyan) and rejecting the idea that only UFC fighters are elite", "articles": [408, 431, 435], "confidence": "medium", "reacts_to": null, "doubt": "NY Fights folds in separate news (Usman turning down a $2M-per-fight PFL offer, Abdelaziz's earlier Topuria jab) around the same Sport24 quotes; it could be its own roundup story."},
+    {"key": "05-e", "description": "Umar Nurmagomedov tells MMA Junkie his brother Usman is ready for Gaethje, Topuria, Tsarukyan", "articles": [416], "confidence": "high", "reacts_to": null, "doubt": null},
+    {"key": "05-f", "description": "Paddy Pimblett says he wants to fight Topuria, calling him a complete idiot, after his UFC 329 win", "articles": [423], "confidence": "high", "reacts_to": null, "doubt": null},
+    {"key": "05-g", "description": "Topuria on the Charlas Adictivas podcast about his hard childhood in Georgia, school bullying and feeling fear", "articles": [427, 497], "confidence": "high", "reacts_to": null, "doubt": "Estadio Deportivo mixes in older quotes (documentary, other interviews) but leads with the same podcast line."},
+    {"key": "05-h", "description": "Javier Mendez (Makhachev's coach) tells Red Corner MMA that Topuria's loss changed the course of a Makhachev fight; he needs more than one win and is too small", "articles": [442], "confidence": "high", "reacts_to": null, "doubt": null},
+    {"key": "05-i", "description": "MMA Sucka analysis of the lightweight title picture before UFC 331 (Tsarukyan, Oliveira, Ruffy)", "articles": [447], "confidence": "high", "reacts_to": null, "doubt": null},
+    {"key": "05-j", "description": "Usman Nurmagomedov's Instagram statement denying he tried to elbow Song Yadong after Umar's KO at UFC Shanghai (Topuria only mentioned in a sidebar)", "articles": [453], "confidence": "high", "reacts_to": null, "doubt": null},
+    {"key": "05-k", "description": "DJ Ben Nicky samples Pimblett's 'we don't get knocked out' quote at Creamfields (Topuria not the subject)", "articles": [457], "confidence": "high", "reacts_to": null, "doubt": null},
+    {"key": "05-l", "description": "Gaethje's Sports Illustrated interview: hands still hurt, can't punch, won't fight until 2027, doesn't want an immediate Topuria rematch but UFC has the final say", "articles": [462, 484, 467, 476, 492, 503], "confidence": "high", "reacts_to": null, "doubt": "MARCA leads with the 'UFC has the last word' rematch line rather than the injury line, but cites the same SI interview."},
+    {"key": "05-m", "description": "Yahoo weekly UFC power rankings after Fight Night 286 Shanghai", "articles": [508], "confidence": "high", "reacts_to": null, "doubt": null},
+    {"key": "05-n", "description": "Arman Tsarukyan on the Deep Waters podcast: doubts UFC books Topuria vs Pimblett, and wants five title defenses to beat Makhachev's record", "articles": [516, 525], "confidence": "medium", "reacts_to": null, "doubt": "Same podcast appearance but two unrelated remarks; merged on the same-interview rule, nearly split by topic."},
+    {"key": "05-o", "description": "Song Yadong tells BiliBili he doesn't hold Usman Nurmagomedov's cage run-in against him", "articles": [520], "confidence": "high", "reacts_to": "05-j", "doubt": "Reacts to the elbow incident itself rather than to Usman's statement; linked to 05-j as the nearest cluster."},
+    {"key": "05-p", "description": "Dan Hooker, ahead of UFC Paris, says top lightweights like Topuria won't risk fighting an unranked Usman Nurmagomedov", "articles": [540], "confidence": "high", "reacts_to": null, "doubt": null}
+  ],
+  "uncertain_pairs": [
+    {"a": 402, "b": 412, "why": "Infobae's headline (return late 2026 or early 2027) matches Gallo's claim in 412, while its visible body is about Merab's update; the article may cover both."},
+    {"a": 397, "b": 402, "why": "heraldo says Merab spoke 'during a wrestling tournament' and Infobae says 'interview with Helen Yee'; the quotes match, but they could be two separate Merab occasions."},
+    {"a": 380, "b": 427, "why": "The divorce lesson and the childhood remarks could both come from the same Charlas Adictivas podcast, which would make them one story."},
+    {"a": 435, "b": 408, "why": "NY Fights is built on the same Sport24 quotes but its headline news is Usman rejecting a $2M PFL deal, which could be a separate story."},
+    {"a": 516, "b": 525, "why": "Both are from Tsarukyan's Deep Waters appearance but cover unrelated topics (Topuria-Pimblett booking vs five title defenses); nearly split."},
+    {"a": 520, "b": 453, "why": "Both are statements about the same Shanghai elbow moment, one from Usman and one from Song; nearly merged as one 'elbow debate' story."}
+  ]
+}

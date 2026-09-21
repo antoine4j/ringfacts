@@ -1,0 +1,91 @@
+{
+  "batch": "10",
+  "clusters": [
+    {
+      "key": "10-a",
+      "description": "Dana White on the Jim Rome show says Topuria is healed and ready, and the UFC is weighing a Gaethje rematch vs a Pimblett fight",
+      "articles": [1058, 1076],
+      "confidence": "high",
+      "reacts_to": null,
+      "doubt": null
+    },
+    {
+      "key": "10-b",
+      "description": "Fan reactions online to Dana White hinting Topuria vs Pimblett could headline a numbered card without a title",
+      "articles": [1066],
+      "confidence": "medium",
+      "reacts_to": "10-a",
+      "doubt": "It restates White's hint but the article's actual content is a roundup of fan tweets, so I treated it as a reaction rather than the same story."
+    },
+    {
+      "key": "10-c",
+      "description": "Justin Gaethje's MightyCast interview with Demetrious Johnson: Topuria's footwork was easy to predict, and he won't fight again this year while he recovers",
+      "articles": [1072, 1093],
+      "confidence": "medium",
+      "reacts_to": null,
+      "doubt": "Both pieces quote the same Demetrious Johnson / MightyCast sit-down, but one covers the Topuria game plan and the other his retirement and injuries, so they read as different topics from one interview."
+    },
+    {
+      "key": "10-d",
+      "description": "Dana White says there is a lot of money left on the table for Gaethje to make (i.e. he should not retire)",
+      "articles": [1089],
+      "confidence": "low",
+      "reacts_to": null,
+      "doubt": "The body is almost entirely page navigation junk, so I cannot tell whether this quote comes from the same Jim Rome interview as 10-a or a different appearance."
+    },
+    {
+      "key": "10-e",
+      "description": "Belal Muhammad says Topuria does not deserve an immediate Gaethje rematch and should fight Paddy Pimblett instead",
+      "articles": [1097],
+      "confidence": "high",
+      "reacts_to": null,
+      "doubt": null
+    },
+    {
+      "key": "10-f",
+      "description": "Topuria, in a 1Win video, says he no longer ties his happiness to achieving goals and now lives in the present",
+      "articles": [1101],
+      "confidence": "high",
+      "reacts_to": null,
+      "doubt": "The second half of the article recaps Dana White saying Topuria is ready, but the news it leads with is the 1Win quote."
+    },
+    {
+      "key": "10-g",
+      "description": "Myllena Messias's manager responds after Tapology flags her recent bout as a fake fight (Topuria only appears in a sidebar link)",
+      "articles": [1080],
+      "confidence": "high",
+      "reacts_to": null,
+      "doubt": null
+    },
+    {
+      "key": "10-h",
+      "description": "Alex Pereira says he will drop back to 205 to fight Paulo Costa if he does not get a heavyweight shot (does not concern Topuria)",
+      "articles": [1085],
+      "confidence": "high",
+      "reacts_to": null,
+      "doubt": null
+    }
+  ],
+  "uncertain_pairs": [
+    {
+      "a": 1066,
+      "b": 1058,
+      "why": "Both are built on Dana White's Jim Rome remark about Topuria vs Pimblett; 1066 just adds fan tweets on top, so it could be counted as the same story rather than a reaction."
+    },
+    {
+      "a": 1072,
+      "b": 1093,
+      "why": "Both quote Gaethje's MightyCast interview with Demetrious Johnson, but one is about Topuria's footwork and the other about retirement, so a reviewer might split them into two remarks."
+    },
+    {
+      "a": 1089,
+      "b": 1058,
+      "why": "White's 'money left on the table' comment about Gaethje may come from the same Jim Rome appearance where he discussed Topuria's return, but the scraped body is too broken to confirm."
+    },
+    {
+      "a": 1101,
+      "b": 1058,
+      "why": "1101 devotes its back half to Dana White confirming Topuria is ready, so it partly reports the same news as 10-a even though its lead is the 1Win mindset quote."
+    }
+  ]
+}

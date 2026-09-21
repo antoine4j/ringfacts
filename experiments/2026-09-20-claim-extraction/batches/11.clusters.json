@@ -1,0 +1,84 @@
+{
+  "batch": "11",
+  "clusters": [
+    {
+      "key": "11-a",
+      "description": "Donchenko vs Punahele Soriano booked for UFC Fight Night Paris on 5 September (Ukrainian outlets report the booking)",
+      "articles": [16, 17, 18],
+      "confidence": "high",
+      "reacts_to": null,
+      "doubt": "Article 18's body is only site navigation, so it was placed on headline and date alone."
+    },
+    {
+      "key": "11-b",
+      "description": "NV's long sit-down interview with Donchenko, published in pieces over Aug 15-22 (bonus to church, grandmother call, TUF house, Dana White request, Ukrainians vs Russians, university/Thailand, TrO in 2022, Kyiv club pay)",
+      "articles": [203, 208, 298, 300, 301, 320, 321, 322],
+      "confidence": "medium",
+      "reacts_to": null,
+      "doubt": "All eight are Q&A excerpts credited to the same NV journalist and cross-reference each other, so I treated them as one interview, but they span three publication dates and could be more than one sitting."
+    },
+    {
+      "key": "11-c",
+      "description": "UFC.com feature 'Daniil Donchenko Got His Wish' by E. Spencer Kyte ahead of Paris (three copies, one from the Japanese-localised page)",
+      "articles": [490, 491, 494],
+      "confidence": "high",
+      "reacts_to": null,
+      "doubt": null
+    },
+    {
+      "key": "11-d",
+      "description": "UFC.com video interview with Donchenko before Paris: 'I Have Everything And Even More'",
+      "articles": [521],
+      "confidence": "medium",
+      "reacts_to": null,
+      "doubt": "The page is a video stub with almost no text; it may be the same sit-down that fed the written 'Got His Wish' feature."
+    },
+    {
+      "key": "11-e",
+      "description": "UFC.com feature on opponent Punahele Soriano ('Happiest In The Background'), mentions Donchenko only as the opponent (two copies)",
+      "articles": [529, 532],
+      "confidence": "high",
+      "reacts_to": null,
+      "doubt": null
+    },
+    {
+      "key": "11-f",
+      "description": "KHON2 (Hawaii) interview with Soriano from Xtreme Couture about injuries, car accident and daughter's birthday; Donchenko only named as opponent",
+      "articles": [588],
+      "confidence": "high",
+      "reacts_to": null,
+      "doubt": "Different quotes and setting from the UFC.com Soriano feature, so kept separate."
+    },
+    {
+      "key": "11-g",
+      "description": "MMA Mania predictions/odds column for UFC Paris main card (syndicated on Yahoo)",
+      "articles": [555, 563],
+      "confidence": "high",
+      "reacts_to": null,
+      "doubt": "Yahoo copy is mostly page chrome, but the byline and opening sentence match MMA Mania."
+    },
+    {
+      "key": "11-h",
+      "description": "Nathaniel Wood gets new opponent Pavel Andrusca at UFC Paris; Donchenko appears only in the card listing",
+      "articles": [500],
+      "confidence": "high",
+      "reacts_to": null,
+      "doubt": null
+    },
+    {
+      "key": "11-i",
+      "description": "Bloody Elbow UFC Paris preview: start times, full card, how to watch",
+      "articles": [510],
+      "confidence": "high",
+      "reacts_to": null,
+      "doubt": null
+    }
+  ],
+  "uncertain_pairs": [
+    {"a": 203, "b": 298, "why": "Both are NV Q&A excerpts with the same journalist but published six days apart; they could be two separate interview sessions rather than one."},
+    {"a": 298, "b": 321, "why": "Same NV interview series, adjacent dates; the Aug 22 pieces are biography-focused and might be a different sitting from the Aug 21 UFC-focused ones."},
+    {"a": 521, "b": 490, "why": "The UFC.com video interview and the written 'Got His Wish' feature were produced by the same outlet in the same fight week and may come from the same conversation."},
+    {"a": 588, "b": 529, "why": "Both are pre-fight Soriano interviews about his comeback, but the quotes and locations differ so they look like separate occasions."},
+    {"a": 510, "b": 555, "why": "Both are generic UFC Paris preview pieces from the same week, but one is a how-to-watch guide and the other a predictions column."}
+  ]
+}

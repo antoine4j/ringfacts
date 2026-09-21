@@ -1,0 +1,102 @@
+{
+  "batch": "13",
+  "clusters": [
+    {
+      "key": "13-a",
+      "description": "Fight result: Donchenko beats Punahele Soriano by unanimous decision (30-27, 30-27, 29-28) on the UFC Paris main card, dropping him in round 1",
+      "articles": [735, 759, 786, 733, 732, 758, 773, 790, 731, 783, 747],
+      "confidence": "high",
+      "reacts_to": null,
+      "doubt": "732, 747 and the Sport.ua trio (758/773/790) fold in bits of the octagon interview (Rodriguez callout, speaking French), but their text is overwhelmingly the fight recap."
+    },
+    {
+      "key": "13-b",
+      "description": "Donchenko's in-cage octagon interview with Michael Bisping after the win (UFC.com video page)",
+      "articles": [746],
+      "confidence": "medium",
+      "reacts_to": "13-a",
+      "doubt": "Video page with no transcript; the callout of Daniel Rodriguez reported in 732/747 most likely came from this interview."
+    },
+    {
+      "key": "13-c",
+      "description": "Donchenko's separate backstage post-fight interview with UFC.com (video page)",
+      "articles": [740],
+      "confidence": "medium",
+      "reacts_to": "13-a",
+      "doubt": "Video page with no transcript; it is a different sitting from the Bisping octagon interview, so kept apart under the 'different occasion' rule."
+    },
+    {
+      "key": "13-d",
+      "description": "UFC Paris (Hooker vs Parnasse) event-wide results and live play-by-play pages that list Donchenko's win among all fights",
+      "articles": [683, 714, 737],
+      "confidence": "medium",
+      "reacts_to": null,
+      "doubt": "These report the same Donchenko result as 13-a but are about the whole card; 737's captured text is still the pre-event preview portion of the live blog."
+    },
+    {
+      "key": "13-e",
+      "description": "MMA Fighting staff predictions for the whole UFC Paris card (Donchenko vs Soriano mentioned as one of the main-card bouts)",
+      "articles": [692, 698],
+      "confidence": "high",
+      "reacts_to": null,
+      "doubt": null
+    },
+    {
+      "key": "13-f",
+      "description": "MMA Junkie/Yahoo (Dan Tom) prediction and pick for Donchenko vs Soriano",
+      "articles": [681],
+      "confidence": "medium",
+      "reacts_to": null,
+      "doubt": "Same genre and fight as 709 but a different author's own analysis, so treated as its own piece rather than shared news."
+    },
+    {
+      "key": "13-g",
+      "description": "DraftKings Network betting prediction and pick for Donchenko vs Soriano (Donchenko -238, pick: Donchenko by finish)",
+      "articles": [709],
+      "confidence": "medium",
+      "reacts_to": null,
+      "doubt": "See 13-f; two independent prediction columns on the same fight could arguably be one preview story."
+    },
+    {
+      "key": "13-h",
+      "description": "Donchenko interview on Bowks Talking Bouts: says whoever finishes the fight gets a top-15 ranking, breaks down Soriano's decision-heavy streak",
+      "articles": [672],
+      "confidence": "high",
+      "reacts_to": null,
+      "doubt": null
+    },
+    {
+      "key": "13-i",
+      "description": "Sport.ua 'watch online LIVE' page for Donchenko vs Soriano at UFC Paris",
+      "articles": [687, 688],
+      "confidence": "high",
+      "reacts_to": null,
+      "doubt": "Both bodies are navigation boilerplate only; matched on identical headline."
+    },
+    {
+      "key": "13-j",
+      "description": "Pre-fight preview: Donchenko faces Soriano on the UFC Paris main card, a big challenge and dangerous opponent (Sport.ua preview and 112.ua rewrite citing Sport.ua)",
+      "articles": [690, 745],
+      "confidence": "low",
+      "reacts_to": null,
+      "doubt": "690's body is boilerplate only; 745 cites Sport.ua and stresses the main-card slot and start time, which matches 690's headline but could equally be a rewrite of the LIVE page (687)."
+    },
+    {
+      "key": "13-k",
+      "description": "Donchenko and Soriano hold their staredown at the UFC Paris ceremonial weigh-ins (XSPORT)",
+      "articles": [686],
+      "confidence": "high",
+      "reacts_to": null,
+      "doubt": null
+    }
+  ],
+  "uncertain_pairs": [
+    {"a": 681, "b": 709, "why": "Both are prediction/pick columns for the same Donchenko vs Soriano fight; they could be one 'fight preview' story instead of two author-specific pieces."},
+    {"a": 683, "b": 786, "why": "The event-wide results page reports exactly the same Donchenko-beats-Soriano result as the fight-result cluster; the only difference is scope (whole card vs one fight)."},
+    {"a": 737, "b": 692, "why": "737's captured text is the pre-event preview part of MMA Mania's live blog, which reads much like the MMA Fighting predictions piece rather than a results page."},
+    {"a": 745, "b": 687, "why": "112.ua says it is rewriting Sport.ua and mentions the 23:00 Kyiv start time, which is what a 'watch online' page would carry; its source may be 687 rather than 690."},
+    {"a": 732, "b": 746, "why": "LowKick's headline leads with the Daniel Rodriguez callout, which is a post-fight statement from the octagon interview rather than the fight result itself."},
+    {"a": 790, "b": 746, "why": "Sport.ua's headline 'spoke French' describes the octagon interview moment, so part of this article belongs to the interview story."},
+    {"a": 746, "b": 740, "why": "Two UFC.com interview videos from the same night; if the backstage interview repeats the octagon remarks, they could be one 'post-fight remarks' story."}
+  ]
+}

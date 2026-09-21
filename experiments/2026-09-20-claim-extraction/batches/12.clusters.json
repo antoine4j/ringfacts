@@ -1,0 +1,32 @@
+{
+  "batch": "12",
+  "clusters": [
+    {"key": "12-a", "description": "Soriano tells UFC.com he doesn't want the 31-second Medic KO to define him ('lucky win' pressure quote), reproduced by MiddleEasy", "articles": [532, 609], "confidence": "high", "reacts_to": null, "doubt": null},
+    {"key": "12-b", "description": "MMA Mania's UFC Paris main-card predictions/odds column, syndicated to Yahoo", "articles": [555, 563], "confidence": "high", "reacts_to": null, "doubt": null},
+    {"key": "12-c", "description": "Soriano interview from Xtreme Couture (KHON2) about leg tears, car accident and daughter's birthday delaying his return", "articles": [588], "confidence": "medium", "reacts_to": null, "doubt": "Could be the same interview session as the UFC.com piece, but the quotes and topics do not overlap at all."},
+    {"key": "12-d", "description": "ClutchPoints prediction and odds column for Donchenko vs Soriano", "articles": [594], "confidence": "high", "reacts_to": null, "doubt": null},
+    {"key": "12-e", "description": "Sport.ua preview 'the hardest fight for Donchenko, what awaits him in Paris' (same page captured twice)", "articles": [599, 619], "confidence": "high", "reacts_to": null, "doubt": "Body text is only site navigation, so the match rests on identical headline, outlet and date."},
+    {"key": "12-f", "description": "112.ua short announcement that Donchenko fights Soriano on Sep 5 in Paris, citing Sport.ua", "articles": [605], "confidence": "low", "reacts_to": null, "doubt": "It credits Sport.ua and may be a rewrite of the Sport.ua preview (12-e), but the Sport.ua body is unreadable so I could not confirm."},
+    {"key": "12-g", "description": "Liontips betting tip for Donchenko vs Soriano", "articles": [603], "confidence": "high", "reacts_to": null, "doubt": null},
+    {"key": "12-h", "description": "UFC Paris official weigh-in results: Donchenko and Soriano both make 170 lb / 77.11 kg, all 28 fighters on weight", "articles": [601, 625, 613], "confidence": "medium", "reacts_to": null, "doubt": "MMA Fighting's piece is about the whole card and leads with Parnasse; Donchenko is one line in the list, but it reports the same weigh-in event."},
+    {"key": "12-i", "description": "Donchenko's remarks after the weigh-in (via Balu Fighting League Pro): feels fine, plans to rehydrate to about 86 kg", "articles": [614], "confidence": "high", "reacts_to": "12-h", "doubt": null},
+    {"key": "12-j", "description": "The Stats Zone preview and prediction for Donchenko vs Soriano with event facts", "articles": [608], "confidence": "high", "reacts_to": null, "doubt": null},
+    {"key": "12-k", "description": "Champion.com.ua event announcement/preview: Donchenko on the UFC Fight Night 287 main card vs Soriano", "articles": [616], "confidence": "high", "reacts_to": null, "doubt": null},
+    {"key": "12-l", "description": "Uncrowned/Yahoo UFC Paris preview and predictions focused on Hooker vs Parnasse", "articles": [623], "confidence": "high", "reacts_to": null, "doubt": null},
+    {"key": "12-m", "description": "BetMGM predictions and odds page for Donchenko vs Soriano", "articles": [655], "confidence": "medium", "reacts_to": null, "doubt": "Body captured is only CSS, so judged on headline alone."},
+    {"key": "12-n", "description": "DraftKings Network best bets for UFC Paris, led by Hooker vs Parnasse", "articles": [641], "confidence": "high", "reacts_to": null, "doubt": null},
+    {"key": "12-o", "description": "MMA Junkie staff and reader picks for UFC Fight Night 287", "articles": [654], "confidence": "high", "reacts_to": null, "doubt": null},
+    {"key": "12-p", "description": "Ceremonial weigh-in faceoff video/photo of Donchenko and Soriano (Lufkin Daily News wire item)", "articles": [653], "confidence": "medium", "reacts_to": null, "doubt": "Ceremonial faceoff is a separate event from the official weigh-in, but it is close in time and topic to 12-h."},
+    {"key": "12-q", "description": "MMA Junkie analyst Dan Tom picks Soriano to upset Donchenko by R2 KO, syndicated to Yahoo", "articles": [673, 681], "confidence": "high", "reacts_to": null, "doubt": null},
+    {"key": "12-r", "description": "Donchenko tells Bowks Talking Bouts (via BJPenn) that the winner of the Soriano fight should enter the top 15; sizes up Soriano's power", "articles": [672], "confidence": "high", "reacts_to": null, "doubt": null},
+    {"key": "12-s", "description": "UFC Paris results: Donchenko beats Soriano by unanimous decision (30-27 x2, 29-28); Parnasse KOs Hooker", "articles": [683], "confidence": "high", "reacts_to": null, "doubt": null},
+    {"key": "12-t", "description": "Sport.ua live-stream/online page for Donchenko vs Soriano on fight day", "articles": [687], "confidence": "low", "reacts_to": null, "doubt": "Body is only site navigation; a live page may have been updated with the result, which would make it part of 12-s."}
+  ],
+  "uncertain_pairs": [
+    {"a": 588, "b": 532, "why": "Both are Soriano pre-fight interviews from the same week and could come from one media session, but the quotes and subjects are entirely different."},
+    {"a": 605, "b": 599, "why": "112.ua explicitly cites Sport.ua, so it may be a rewrite of the Sport.ua preview, but the Sport.ua body text is unreadable."},
+    {"a": 613, "b": 601, "why": "Same official weigh-in event, but MMA Fighting's piece is about the whole card and Parnasse, with Donchenko as one line."},
+    {"a": 653, "b": 601, "why": "Ceremonial weigh-in faceoff and official weigh-in are the same day and same fighters, though technically separate events."},
+    {"a": 687, "b": 683, "why": "A fight-day live page from Sport.ua likely ended up reporting the same result as MMA Fighting, but the captured body shows no result."}
+  ]
+}
