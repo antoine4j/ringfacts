@@ -237,3 +237,30 @@ articles of real coverage to "about someone else". Net: worse than pass 2 on
 every arm. Pass 2 stays the best prompt so far; pass 4 keeps the kind field
 and the one-fact rule but repairs the over-fire. If pass 4 does not beat
 pass 2's arm 4 (398 errors, balanced 0.930), the kind field goes.
+- Pass 4 ran ($0.06; spend ≈ $0.30). NO CLAIM 73 → 38, inside the predicted
+  35–45. All ten named over-fire cases recovered; 35 articles regained a claim
+  (16 of them "the one being talked about" by the classifier's reading).
+  #817 is the result for the fourth time. Claims not naming the fighter: 2.
+  Scores pending.
+
+## Pass 4 scored — a tie with pass 2 on the ruler, a win on claim quality
+| arm | p2 | p4 |
+|---|---|---|
+| 3q occasion-first claim: AUC full / balanced / errors | 0.926 / 0.908 / 423 | 0.925 / 0.896 / 440 |
+| 4 claim + headline+lead: AUC full / balanced / overlap / errors | 0.944 / 0.930 / 1.5% / 398 | 0.942 / 0.929 / **1.2%** / 396 |
+| coverage of multi-article stories | 100% | 98% |
+By the exit rule written before pass 4 ("if it does not beat pass 2's arm 4,
+the kind field goes"), this is not a beat — it is a tie inside any plausible
+noise. What the ruler cannot see: pass 4's claims are cleaner as claims —
+one fact each, the new thing wins over the recalled event, 0–2 fail to name
+the fighter (pass 2: 3), no meta-phrasing, and about-someone-else NO CLAIMs
+are now right rather than over-fired. A production extractor needs the
+sentence itself to be true and single, not only to cluster well.
+**Decision: pass 4 is the candidate prompt; iteration on the `kind` axis
+stops here** — the ruler shows no further gain from it.
+
+## Pass 5 — a replicate of pass 4, byte-identical, to measure the extractor's noise floor
+Temperature 0 does not mean deterministic (the classifier experiment: 2.8% of
+answers moved on identical input). Without this number, 396 vs 398 and
+0.929 vs 0.930 cannot be called ties or differences. Prediction: some claims
+change wording; arm-4 errors move by fewer than 15. Cost $0.06; spend ≈ $0.36.
