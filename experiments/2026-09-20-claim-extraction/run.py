@@ -70,7 +70,9 @@ def main():
     api = key(); os.makedirs(f"{HERE}/raw", exist_ok=True)
     def work(it):
         p = f"{HERE}/raw/{it['id']}-p{PASS}.json"
-        if os.path.exists(p): return it, json.load(open(p))
+        if os.path.exists(p):
+            cached = json.load(open(p))
+            if "_error" not in cached: return it, cached          # a cached ERROR is retried, not reused
         o = call(api, system, fill(user_tpl, it)); json.dump(o, open(p, "w"), indent=1); return it, o
     t0 = time.time(); out = []
     with ThreadPoolExecutor(max_workers=6) as ex:
