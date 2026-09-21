@@ -58,6 +58,85 @@ around the fighter's name and see whether results hold.
 - Extraction and clustering are both LLM judgements and could share blind
   spots. They are different tasks on different inputs; acceptable for a test.
 
+## Where this got to — 2026-09-21 morning
+
+Five extraction passes on Qwen3.8 Flash, **$0.40 of the $1.00 budget**, one
+replicate, every change logged with its prediction before it ran. Full
+blow-by-blow in `ITERATIONS.md`.
+
+### The result
+
+| text embedded | AUC full | AUC balanced (hard stories) | tail overlap | errors at best threshold |
+|---|---|---|---|---|
+| headline only | 0.895 | 0.875 | 5.7% | 572 / 6542 |
+| headline + lead — **what production embeds today** | 0.918 | 0.918 | 5.0% | 542 / 6542 |
+| extracted claim alone (pass 4) | 0.925 | 0.896 | 2.2% | 440 / 5503 |
+| **claim + occasion, in front of headline + lead (pass 4)** | **0.942** | **0.929** | **1.2%** | **396 / 6542** |
+
+Noise floor, measured with a byte-identical replicate: about ±8 errors,
+±0.003 AUC. So:
+
+1. **The claim alone does not beat production.** It ties on the headline
+   number and loses on hard stories. Short one-sentence claims about the same
+   fighter crowd together in embedding space.
+2. **The claim in front of production's own input beats it clearly** — 27%
+   fewer errors at production's best threshold, on the identical pair set,
+   and the first text to win on the balanced view. The sentence carries the
+   substance; the lead carries the distinguishing detail. **For the
+   whiteboard: the Extractor's sentence goes INTO the dedup embedding
+   alongside the text, not instead of it.**
+3. **Where and when matters, and word order matters.** An `occasion` field
+   ("MightyCast podcast", "post-fight presser") is worth +0.013 AUC, and
+   putting it first in the embedded text is worth more than appending it.
+
+### What the prompt learned, pass by pass
+
+- Pass 1 (approved prompt + "examples are scenarios, not templates"): claims
+  came back as the well-known event the article recalls — previews and
+  next-day columns as "Donchenko is scheduled to fight / defeated Soriano".
+- Pass 2: "the article's own news, what a reader learns here and nowhere
+  earlier" + `occasion`. Fixed the preview. Best ruler score of the run.
+- Pass 3: a `kind` field decided FIRST (field order is fill order), one fact
+  per claim, about-someone-else → NO CLAIM. Fixed the callout-packed-with-the-
+  result, the meta-phrasing and the unnamed-fighter claims — and over-fired
+  "about someone else" on eighteen articles where another fighter talks
+  ABOUT him. The classifier's `background` defect, reproduced. Regression.
+- Pass 4: the classifier's delete test ("delete every sentence naming him; if
+  the story still stands, it is about someone else"). Recovered all of them.
+  Ties pass 2 on the ruler; cleaner claims. **The candidate prompt is
+  `prompt-p4.md`.**
+
+### The finding that matters more than the score
+
+**Three quarters of the remaining false merges, and all of the big misses,
+are one disagreement about what a "story" is.** The ruler (built by reading)
+groups by *occasion*: one interview, one fight, one column. The extractor
+separates by *fact*: six previews restating one booking are one claim; one
+long interview published in instalments is several. For "have we told the
+group this already?" the fact is what the reader cares about. For "show me
+every article in this story" (TODO item 7) the occasion is. **That choice is
+Anton's, and the answer may differ by stage.** Arm 4 hedges both, which is
+part of why it wins.
+
+### Not cracked
+
+- **#817**, a next-day column, is extracted as the fight result in all five
+  passes, through four prompt shapes. Wording will not move it. A date check
+  in code — fight date well before article date → not a new event — would.
+- **Temperature 0 is not deterministic through OpenRouter**: 136 of 300
+  claims re-worded on identical input. Harmless for the score, important for
+  anything that compares two extractions of one article.
+- Two claims in 300 still fail to name the fighter.
+- Qwen3.8 Flash was the only model tried, per the brief. Whether Haiku
+  extracts better is a different experiment.
+
+### Reproduce
+    PASS=n python3 run.py --one        # one live call: reasoning tokens, cost
+    PASS=n python3 run.py --yes        # ~$0.06–0.09 per pass, cached
+    python3 score.py --claims claims-pN.json
+The prompt each pass ran with is `prompt-pN.md`. `clusters.json` is the
+ruler (v2); `clusters-v1-chained.json` is the one with the merge bug, kept.
+
 ## Files
 
 `batches/` inputs for the clustering agents · `clusters.json` the ruler ·

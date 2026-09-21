@@ -283,3 +283,20 @@ FACT; the ruler groups by OCCASION. Which one dedup should use is Anton's
 call, and the answer probably differs by stage: fact-level for "have we told
 the group this?", occasion-level for "show me all articles in this story".
 Arm 4 hedges both because the lead keeps occasion detail the claim strips.
+
+## Pass 5 — the replicate. Temperature 0 is not deterministic through OpenRouter.
+Byte-identical prompt to pass 4. **136 of 300 claims came back worded
+differently**; NO CLAIM flipped on 4, `kind` on 10. ($0.092 — the pass-4
+prompt is longer; spend ≈ $0.40 of $1.00.)
+| arm 4 | p4 | p5 (replicate) |
+|---|---|---|
+| AUC full / balanced | 0.942 / 0.929 | 0.939 / 0.927 |
+| errors @ 0.90 | 396 | 404 |
+| overlap | 1.2% | 1.2% |
+**Noise floor for arm 4: about ±8 errors, ±0.003 AUC.** Read back through
+that: pass 2 vs pass 4 (398 vs 396; 0.930 vs 0.929) is a genuine tie; pass 3
+(424) was a real regression; arm 4 vs production (398 vs 542; 0.944 vs
+0.918) is far outside noise and real. Stopping here — the last two passes
+moved nothing the ruler can see, and the remaining levers are not prompt
+wording: the fact-vs-occasion definition (Anton's call) and a date check in
+code for the next-day column.
