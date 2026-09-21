@@ -16,6 +16,7 @@ bot — explaining *why* beats delivering silently.
 | [docs/checkin-log.md](docs/checkin-log.md) | What each 6-hourly run found and did. Newest on top. |
 | **[docs/code-style.md](docs/code-style.md)** | **How code in this repo is written, and why. Read before writing any.** |
 | [docs/decisions.md](docs/decisions.md) | Why the code is the way it is — measurements, incidents, rejected alternatives. Code points here instead of carrying it. |
+| **[docs/lessons.md](docs/lessons.md)** | **What the experiments have taught us about the data and the models — findings with evidence, confidence and caveats, not rules. Read before designing or running an experiment; add to it when one ends.** |
 | [TODO.md](TODO.md) | Build sequence, open questions, and the triggers that promote a watch item into work. |
 | [docs/architecture-overview.html](docs/architecture-overview.html) | Living architecture overview — the system as built (pipeline, claims layer, ops, autonomy). |
 | [bench/README.md](bench/README.md) | The bench: run a battery of articles through one pipeline step on the TEST keys and the bench database, from any session. Never production keys, never the group. |
