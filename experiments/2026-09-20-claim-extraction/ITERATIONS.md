@@ -115,3 +115,19 @@ Fields (exact match): actor agrees on 98% of same-story pairs but also 36% of
 different-story pairs; event 67% vs 43%; date 86% vs 63% but filled on only
 20%. Fields identify the EVENT, not the story about it — useful for "same
 fight?", useless for "same news?". The third option is not a dedup on its own.
+
+## Pass 2 — own-news sharpened, plus an `occasion` field  (from pass-1 errors, not from the idea list)
+Two changes, both traced to pass 1:
+1. Previews, next-day columns and "next opponent" analyses came back as the
+   result/booking they recall (073.0/073.5/110 ↔ 073.4). The claim instruction
+   now says the news is what the reader learns HERE and nowhere earlier, and
+   two examples show the failure shapes: a next-day column (news = the verdict)
+   and a next-opponents list (news = the options).
+2. Different remarks by one person crowd together and one interview's
+   instalments fall apart, because the sentence carries neither where nor when.
+   New field `occasion` (podcast / essay / presser / post / event / date).
+   Arm 3 will be scored as claim alone AND claim + occasion, to attribute.
+Prediction before the run: same-story pairs under 0.80 fall from 65 (mostly
+story-022/090/112 instalments) and result↔column false merges fall; balanced
+AUC rises above 0.83. Beating 0.918 is the open question. Cost ~$0.06.
+Spend so far: ~$0.09.

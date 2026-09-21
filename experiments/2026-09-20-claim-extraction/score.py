@@ -106,8 +106,11 @@ if __name__ == "__main__":
     }
     if "--claims" in sys.argv:
         cl = json.load(open(sys.argv[sys.argv.index("--claims")+1]))
-        arms["3 extracted claim"] = {str(r["id"]): r["claim"] for r in cl if r.get("claim") and r["claim"] != "NO CLAIM"}
+        ok = [r for r in cl if r.get("claim") and r["claim"] != "NO CLAIM"]
+        arms["3 extracted claim"] = {str(r["id"]): r["claim"] for r in ok}
+        if any(r.get("occasion") for r in ok):      # pass 2+: attribute the occasion field separately
+            arms["3o claim + occasion"] = {str(r["id"]): r["claim"] + (f" ({r['occasion']})" if r.get("occasion") else "") for r in ok}
     story = {a: c["key"] for c in ruler for a in c["articles"]}
     tag = sys.argv[sys.argv.index("--claims")+1].replace("claims-", "").replace(".json", "") if "--claims" in sys.argv else ""
-    results = [report(arm, embed((arm.split()[0] if not arm.startswith("3") else "3-" + tag), texts), same, diff, story) for arm, texts in arms.items()]
+    results = [report(arm, embed((arm.split()[0] if not arm.startswith("3") else arm.split()[0] + "-" + tag), texts), same, diff, story) for arm, texts in arms.items()]
     json.dump(results, open(f"{HERE}/scores.json", "w"), indent=1)
