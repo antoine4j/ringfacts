@@ -399,9 +399,11 @@ itself has reintroduced the error in §1's second entry. Only Anton answers them
   knows which is right.
 - **Where does a pundit sit?** FB: `whose_judgement` decides nothing because
   the rules never consult it. RF's owner ruling O1 counts analysis only from
-  his own coach or the booked opponent's coach; FB's ruling admits "the
-  champion or a top authority". **These two rulings, both Anton's, are not
-  the same line** — worth settling once.
+  his own coach or the booked opponent's coach; FB's earlier ruling admitted
+  "the champion or a top authority". **Settled 2026-09-22, by voice: the
+  coach line holds** — "managers are mostly showmen". Recorded verbatim in
+  `experiments/2026-09-17-role-questions/verdicts.md`. Still open: whether it
+  narrows only third-party *analysis* or every speaker category.
 - **How much of the remaining variance is the model?** RF: a second salted run
   of its final config, not yet run. FB: the extraction replicate says ±8 errors
   on arm 4, but the classifier's 7% unstable articles sit on the 2-vs-3 line

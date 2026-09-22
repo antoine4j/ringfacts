@@ -114,3 +114,19 @@ to smash his head in'*
 2. **Speaker alone is not enough, and he is right.** Recorded as an open design
    point, not yet solved.
 
+
+## 2026-09-22 — speakers: only the coach, kept from the isolated project
+
+Anton, by voice, on the discrepancy between the two projects' speaker rulings:
+
+> "in that isolated project, I decided that only coach matters for reporting
+> to the group. And I think I will keep that moving forward because those
+> managers, they generate a lot of back and forth. And, you know, managers
+> are mostly showmans."
+
+Read with ringfacts-experiment ruling O1: analysis of him counts only from
+**his own coach or the coach of the opponent he is actually booked against**.
+This narrows the 2026-09-18 ruling above, which admitted "the champion or a
+top authority". Managers are out. **Not yet confirmed by him:** whether this
+touches only third-party *analysis* (as O1 did) or also the "opponent or
+their camp" and "champion / UFC" speaker categories for other kinds of news.
