@@ -635,3 +635,55 @@ Below the line, deliberately: nothing at the moment — the GCS backup shipped
 - [ ] Cron frequency — hourly chosen and running (2b); revisit only if limits or noise say otherwise
 - [ ] Alias lists per fighter — first draft live in hunter.js (Latin + uk-Cyrillic); expand if coverage gaps show (e.g. ru-Cyrillic spellings)
 - [ ] Bot output language (spec §17.5) — precedent set 2026-08-07: uk/en headlines post as-is; other languages translate to **English**, labeled "(translated from xx)", via Gemini free tier. Still open: language of the bot's own voice (announcements, replies).
+
+   **The storyboard — Anton, 2026-09-22, by voice, while driving.** The
+   reading app now has a name and a role in the pipeline, and it dissolves
+   the fact-versus-occasion question rather than answering it.
+
+   His words, lightly trimmed for speech-to-text: *"between the dedup and
+   semantic deduplication and decider, there needs to be a step non-existent
+   right now … that article gets settled in a database either as its own
+   story or joins the existing story that is represented by an extracted
+   claim … I'm inclined to think for now that we should be focusing on
+   occasion at all times for simplicity to start with … we should have a
+   web UI that anybody can log in … see all the news about their fighters
+   neatly organized into stories with a time slider, scrollable, expandable
+   … filters like fight, lifestyle, camp updates … let's call this website a
+   storyboard … only big updates like a fight announcement or fight result
+   get posted directly to the channel. Everything else, even bucket two and
+   three, gets posted as a digest once weekly. And before posting that, we
+   run an agent through the storyboard to curate the narrative update …
+   'during the last week there was a war of words between Topuria and Usman
+   Nurmagomedov's managers about their possible matchup. To read more, click
+   here' … the next week's digest agent can read the previous digest and
+   all the stories that arrived and say 'last week's controversy about the
+   Topuria–Gaethje gloves continued' … there might be 50 articles, but only
+   like 20 stories … It's dealing with fact and occasion in a different way
+   versus deciding directly what should be posted."*
+
+   What this settles, as of that call:
+   - **The story unit in the database is the occasion** — one interview,
+     one fight, one presser — "for simplicity to start with". The
+     three-instalment NV interview is one story on the board.
+   - **The channel gets two speeds:** big events (a booking, a result)
+     straight through; everything else once a week as a *synthesized*
+     digest, one sentence per story with a link to the board. This is the
+     `mentions-digest` decision in `docs/decisions.md` grown up: the digest
+     is written by an agent reading the week's stories and last week's
+     digest, not assembled from headlines.
+   - **The fact side lives in the digest agent, not in dedup.** Six
+     previews of one booking are one story on the board and one line in the
+     digest; the three interview instalments are one story on the board
+     and one line that names all three subjects. Neither needs dedup to
+     decide what a "fact" is.
+   - **Per-fighter follow level (item 3n) moves to the decider**, choosing
+     what subset of the board reaches the chat for each fighter.
+   - **The filters are the classifier's closed-set answers** — the role,
+     what-is-done and news-kind questions from the role-questions
+     experiment are the slice-and-dice axes.
+
+   Still undecided, and his to decide: what exactly is a "big update" that
+   bypasses the weekly digest (his examples: a fight announcement, a fight
+   result — bucket 1 as composed today); who may read the board; the
+   mechanics of "joins the existing story" for the cases above, which he
+   said he wants to think about separately.
