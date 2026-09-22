@@ -1,283 +1,423 @@
 # Lessons — what we know about the data and the models
 
-What the experiments have taught us, across experiments, in a form a fresh
-agent can read in a few minutes. **These are findings, not rules.** Design
-decisions live on the whiteboard (`docs/design/system.excalidraw`) and in
-`docs/decisions.md`; how to work lives in `docs/self-improvement.md`. This
-file says what was measured, so the next agent can build on it — or doubt it
-and check.
+What the experiments have taught us, across experiments and across two
+independent projects, in a form a fresh agent can read in a few minutes.
+**These are findings, not rules.** Design decisions live on the whiteboard
+(`docs/design/system.excalidraw`) and in `docs/decisions.md`; how to work lives
+in `docs/self-improvement.md`. This file says what was measured, so the next
+agent can build on it — or doubt it and check.
+
+## Provenance — two projects, kept apart on purpose
+
+Two attempts at the same task were run in isolation, so that agreement between
+them means something. Where both found a thing without contact, the entry says
+**found independently by both** — that is the strongest signal in this file,
+and the one neither project could produce alone.
+
+| | **FB** — this repo (`fighter-bot`) | **RF** — `ringfacts-experiment` |
+|---|---|---|
+| Shape | Stage-by-stage experiments on a frozen sample; the whiteboard names the stages | One end-to-end pipeline, 11 full passes (runs A–N) |
+| Corpus | 300 articles, stratified from the production archive (all 19 Amosov, all 99 Donchenko, 182 Topuria), 7 Aug – 17 Sep 2026 | 956 articles, 169 outlets, 34 days (7 Aug – 9 Sep 2026), four languages, replayed **one at a time in arrival order, no lookahead** |
+| Models | JEV (`jev-latest`, closed-set classifier); Qwen3.8 Flash (extraction); `gemini-embedding-001` 768d | `qwen/qwen3.7-flash`, one call answering four questions per article; no embeddings |
+| Human labels | ~23 bucket judgements project-wide; 1 of the 300 (#838) | 18 borderline articles, Y/N with reasons; a 40-article held-out sheet, unmarked |
+| Spend | $0.81 classifier + $0.40 extraction | $1.30 |
+| Ids | `#N` = article N of the 300 | `RF-L01…L29` lessons, `#N` = article N of the 956; the two numberings do not line up |
+
+Full RF material: `LESSONS.md` and `DECISIONS.md` in that repo. Its open
+questions are carried at the bottom of this file **unanswered**, as it asked.
 
 ## How to read and write this file
 
-Every entry has the same four parts:
+Every entry has the same parts:
 
-- **Claim** — one sentence.
-- **Evidence** — the number, and the folder it came from, so it can be rerun.
-- **Confidence** — `measured` (replicated, noise floor known) · `observed
-  once` (one run, no replicate) · `hunch` (a reading, not a measurement).
-- **Does not say / would overturn it** — the caveat. What the finding does
-  *not* license, and what result would retire it.
+- **Claim** — one sentence, in the heading.
+- **Scope** — `general` (any LLM pipeline that filters by judgement) · `domain`
+  (news feeds) · `corpus` (this feed; a hypothesis elsewhere) · `harness` (this
+  model or stack; re-check before carrying).
+- **Evidence** — the number, and where it came from, so it can be rerun.
+- **Confidence** — `measured` (a number stands behind it; replicated where it
+  matters) · `observed` (it happened, not quantified) · `hunch` (a reading).
+- **Does not say / would overturn it** — what the finding does *not* license,
+  and what result would retire it.
 
 Rules for adding to it:
 
-- An entry needs a number or a named counterexample. A hunch may go in, but
-  labelled `hunch`.
+- An entry needs a number or a named counterexample. A hunch may go in, labelled.
 - Dated. A finding about a model is a finding about that model on that day.
-- **Not append-only.** When a later experiment overturns an entry, rewrite it
-  in place and move the old claim to *Superseded* at the bottom, with both
-  dates. Two contradicting entries are worse than none.
-- Group by subject, not by experiment. Keep it to roughly 25 entries; past
-  that, merge entries or retire them — a file nobody finishes teaches nothing.
-- A finding is not a decision. If you find yourself writing "so we should",
-  stop — that sentence belongs in `decisions.md` or on the whiteboard.
+- **Not append-only.** When a later result overturns an entry, rewrite it in
+  place and move the old claim to *Superseded*, with both dates.
+- Group by subject, not by experiment or project. Keep it to roughly 35
+  entries; past that, merge or retire — a file nobody finishes teaches nothing.
+- A finding is not a decision. If you are writing "so we should", stop — that
+  sentence belongs in `decisions.md` or on the whiteboard.
+- On contradiction between projects, suspect the setup before the finding, and
+  record both with the difference that explains them.
 
 ---
 
 ## 1. Method — how to run an experiment here
 
 ### Measure the noise floor before reading any delta
-*2026-09-17, reinforced 2026-09-21*
-- **Claim:** models here are not deterministic, and the noise is large enough to
-  look like a result.
-- **Evidence:** JEV, byte-identical input: 42 of 1,500 answers moved (2.8%).
-  Three per-question "movements" already written up were inside that band and
-  had to be retracted. Qwen3.8 Flash at temperature 0 through OpenRouter:
-  136 of 300 claims re-worded on an identical prompt, ±8 dedup errors, ±0.003
-  AUC. `experiments/2026-09-17-role-questions/ITERATIONS.md` pass 4;
+`general` · `measured` · **found independently by both** · *FB 2026-09-17, 09-21; RF-L22*
+- **Evidence (FB):** JEV, byte-identical input: 42 of 1,500 answers moved
+  (2.8%). Three per-question "movements" already written up were inside that
+  band and had to be retracted. Qwen3.8 Flash at temperature 0 through
+  OpenRouter: 136 of 300 claims re-worded, ±8 dedup errors, ±0.003 AUC.
+  `experiments/2026-09-17-role-questions/ITERATIONS.md` pass 4;
   `experiments/2026-09-20-claim-extraction/ITERATIONS.md` pass 5.
-- **Confidence:** measured, twice.
-- **Does not say:** that the noise is uniform — see the next entry. **Would
-  overturn:** a replicate that moves nothing; then this model has changed.
+- **Evidence (RF):** temperature 0, pinned seed, salted cache: two runs agreed
+  on 86.8% of articles but shared only 33 of ~50 sent items. A borderline story
+  has roughly a coin's chance of being told. RF called it *the largest error
+  source in the project.*
+- **Does not say:** that the noise is uniform — see §2. **Would overturn:** a
+  replicate that moves nothing; then the model has changed.
 
-### There is no ground truth, and every accuracy number should say so
-*2026-09-17*
-- **Claim:** almost nothing is graded by Anton, so "accuracy" here means
-  agreement with a model's reading, not with the truth.
-- **Evidence:** ~23 articles project-wide carry his own bucket judgement; 1 of
-  the 300 in the experiment sample (#838). Fable readers supplied second
-  opinions on ~90 more; they are labelled as such in `fable-verdicts.json`.
-- **Confidence:** measured (it is a count).
-- **Does not say:** that unlabelled work is worthless. Coverage of an option
-  list, escape-hatch weight, and same-story separation are all measurable
-  without labels. **Would overturn:** a graded set of a few hundred articles.
+### An agent grading its own system is not measuring anything; there is no ground truth
+`general` · `measured` · **found independently by both** · *FB 2026-09-17; RF-L02, L03*
+- **Evidence (FB):** ~23 articles project-wide carry Anton's own bucket
+  judgement; 1 of the 300 (#838). Fable readers gave second opinions on ~90;
+  labelled as such in `fable-verdicts.json`. "Accuracy" here means agreement
+  with a model's reading.
+- **Evidence (RF):** three times a correct decision was reported as a failure
+  because a model probe disagreed with the pipeline and both were models. Once
+  the owner's `Y` label for the article was already committed in the repo and
+  was not consulted. Three prompt versions were tuned and scored on the same 18
+  labels; 18/18 measured encoding, not correctness.
+- **Carry (RF's rule):** before calling any item a failure, grep the label
+  store. Split labels on arrival; never score on the tuning set.
+- **Does not say:** that unlabelled work is worthless. Option-list coverage,
+  escape-hatch weight, same-story separation and G4 (source domain) are all
+  measurable without labels.
+
+### A handful of labels beats months of engineering — for taste, not mechanics
+`general` · `measured` · *RF-L01; FB agrees by omission, 2026-09-18*
+- **Evidence (RF):** seven runs of real mechanical fixes left agreement with the
+  owner at 12 of 18, where the untouched baseline was. Encoding his 18 labels as
+  rules took it to 17–18 of 18 and cut output from 49 messages to 16. The fixes
+  were real; what was wrong was *where the line sat*, and nothing in the data
+  can tell you that.
+- **Evidence (FB):** the 22-article blind set is exhausted; every open question
+  in both experiment READMEs is one only Anton can answer.
+- **Does not say:** that labels help with checkable facts (see G4 below).
 
 ### Confidence measures the menu, not the article
-*2026-09-18*
-- **Claim:** a closed-set model's confidence tells you how well the options
-  fit, not how well it read. A missing option is invisible in the numbers.
+`harness` · `observed` · *FB 2026-09-18*
 - **Evidence:** #817 was `assessing_him` at 0.97; once `he_fought` existed it
-  was `he_fought` at 0.94. #829 went 0.24 → 0.99 when one option was added.
-  `experiments/2026-09-17-role-questions/ITERATIONS.md`, "Anton reads the
-  report".
-- **Confidence:** observed once (two articles, same direction).
-- **Does not say:** that confidence is useless — above 0.6 it is stable, see
-  §2. **Would overturn:** a case where adding a fitting option left a high
-  confidence unchanged.
+  was `he_fought` at 0.94. #829 went 0.24 → 0.99 when one option was added. A
+  missing option is invisible in the numbers.
+- **Does not say:** that confidence is useless — above 0.6 it is stable, §2.
 
 ### Guard the metric you tune toward
-*2026-09-17*
-- **Claim:** a question can be made confident by stripping its nuance until one
-  option swallows everything.
-- **Evidence:** `sourcing` in pass 1 read confident at 0.83 while answering
-  `reported` 81% of the time; the entropy of its answer mix was 0.99 bits.
-  Measuring entropy beside confidence caught it.
-- **Confidence:** observed once.
-- **Does not say:** which guard fits a different metric. Name one per
-  experiment, up front.
+`general` · `observed` · *FB 2026-09-17*
+- **Evidence:** `sourcing` read confident at 0.83 while answering `reported`
+  81% of the time; entropy of its answer mix 0.99 bits. Measuring entropy
+  beside confidence caught it. Name one guard per experiment, up front.
 
 ### Change one thing, then look at every article that moved
-*2026-09-18, Anton's rule*
-- **Claim:** tuning a question in isolation is misleading, because most
-  question-level changes never reach a bucket.
+`general` · `measured` · *FB 2026-09-18, Anton's rule*
 - **Evidence:** `whose_judgement` decides **0%** of buckets in the final rules,
   `sourcing` 12%, the other four 60–81%. `he_fought` was added, tested, and
-  found to change one bucket by accident. `evaluate.py` in the classifier
-  folder prints `<-- never` beside any question the rules do not consult.
-- **Confidence:** measured.
+  changed one bucket by accident. `evaluate.py` prints `<-- never` beside any
+  question the rules do not consult.
 - **Does not say:** that an unconsulted question is useless — `he_fought` was
   kept as a pressure valve so fight reports stop polluting `assessing_him`.
+
+### Make absence visible: trace every item, print what the system believes
+`general` · `measured` · *RF-L23, L25; FB agrees, 2026-09-18*
+- **Evidence (RF):** 1,915 decision rows for 956 articles; two bugs found only
+  because items were visibly missing from that table. A swallowed fight result
+  sat undetected through three runs and two audits until every run printed the
+  fights it believed happened beside the message that reported each.
+- **Evidence (FB):** the sample's unusable bodies (#521, #653, #230) were found
+  by reading the escape-hatch tail, not by an error.
+- **Carry:** the log shows what was sent; it cannot show what should have been.
+
+### Ask several questions in one call when they share a reading
+`general` · `measured` · **found independently by both** · *FB 2026-09-17; RF-L18, A7*
+- **Evidence:** JEV answers six closed questions per article in one call, ~4–5
+  cents per 300. RF answered four (about him · already sent · when · what to
+  say) in one call, ~810 per run, ~$0.09.
+- **Does not say:** that unrelated questions should share a call.
+
+### Cheap model, expensive discipline
+`harness` · `measured` · **found independently by both** · *FB; RF-L26, M1*
+- **Evidence:** RF, 11 full passes for $1.30; the worst quality problems were
+  its own parsing bug and its own measurement. FB, 18 classifier passes for
+  $0.81 and 5 extraction passes for $0.40; the money went to replicates and
+  reversals, which is what bought the noise-floor finding.
 
 ---
 
 ## 2. JEV — the closed-set classifier (TypeSafe "systemone", `jev-latest`)
 
 ### Answers at confidence ≥ 0.6 are stable; below 0.4 they are near coin flips
-*2026-09-17*
-- **Evidence:** across a rerun and a full reversal of every option list,
-  1,039 answers at ≥0.6 moved 0 times; 277 at 0.4–0.6 flipped 2.9%; 184 below
-  0.4 flipped 18.5%. `ITERATIONS.md` passes 4–5.
-- **Confidence:** measured.
-- **Does not say:** that 0.6 is the right *policy* threshold — that is a
-  decision. It says the model's own behaviour has an edge there. **Would
+`harness` · `measured` · *FB 2026-09-17*
+- **Evidence:** across a rerun and a full reversal of every option list, 1,039
+  answers at ≥0.6 moved 0 times; 277 at 0.4–0.6 flipped 2.9%; 184 below 0.4
+  flipped 18.5%.
+- **Does not say:** that 0.6 is the right *policy* threshold. **Would
   overturn:** a new model version; re-measure before reusing the number.
 
 ### Option order moves answers, but not toward the first position
-*2026-09-17*
-- **Evidence:** reversing every option list flipped 126 of 1,500 answers, 3x
-  the noise floor, in every question. But options moved *earlier* gained −0.6
-  answers on average and those moved *later* +0.9 — no first-position bias.
-  The flips sit where confidence is low (median 0.39; only 12 above 0.6).
-- **Confidence:** measured (one reversal, against a replicate).
-- **Does not say:** why the order matters. **Would overturn:** a shuffle that
-  shows a consistent positional drift.
+`harness` · `measured` · *FB 2026-09-17*
+- **Evidence:** reversing every list flipped 126 of 1,500 (3x the floor). But
+  options moved earlier gained −0.6 answers on average, those moved later +0.9
+  — no first-position bias. Flips sit where confidence is low (median 0.39).
 
 ### Composing the bucket in code absorbs most of the jitter
-*2026-09-17*
+`general` · `measured` · *FB 2026-09-17*
 - **Evidence:** across three option orders only 58% of articles had every
-  answer unanimous, yet 93% (279/300) landed in the same bucket. The rules
-  collapse many answers onto three outputs. Final: passes 16–18.
-- **Confidence:** measured.
+  answer unanimous, yet 93% (279/300) landed in the same bucket.
 - **Does not say:** that composition fixes wrong answers — it hides *unstable*
-  ones. And a single low-confidence answer can still decide alone: #55 went to
-  bucket 3 on `role = background` at 0.24 over three answers above 0.9.
+  ones. And one low answer can still decide alone: #55 went to bucket 3 on
+  `role = background` at 0.24 over three answers above 0.9.
 
 ### An option defined by content instead of function becomes a sink
-*2026-09-18*
+`general` · `measured` · *FB 2026-09-18*
 - **Evidence:** `role = background` ("his past fight is used as backdrop")
-  fired on 85/300 and was wrong ~60% of the time, because every Topuria article
-  mentions his June loss. The missing option — "he is the one being talked
-  about" — was named independently by five Fable readers. Added, it took
-  101/300; `background` fell to 17; escape-hatch weight on `role` fell 14x.
-  #476/#503, one Gaethje interview at two outlets, is the proof pair.
-- **Confidence:** measured (no labels needed for the escape-hatch figure).
-- **Does not say:** that the current option lists are complete. `what_is_done`
-  still carries the highest escape weight.
+  fired on 85/300, wrong ~60%, because every Topuria article mentions his June
+  loss. The missing option — "he is the one being talked about" — was named by
+  five Fable readers independently. Added: 101/300; `background` 85 → 17;
+  escape weight on `role` fell 14x. Proof pair #476/#503, one interview at two
+  outlets.
 
 ### The escape hatch finds missing options at the probability level, not the argmax
-*2026-09-17*
+`harness` · `observed` · *FB 2026-09-17*
 - **Evidence:** the hatch *won* 1 of 1,800 answers; it *carried weight* (>0.15)
-  on 22 — and every real gap found that night was in those 22.
-- **Confidence:** observed once.
-- **Does not say:** what the hatch should mean. Anton's reading — "this question
-  does not apply here" — is a design choice, tested in pass 14.
+  on 22 — and every real gap found was in those 22.
 
 ### "About him" is necessary, not sufficient — novelty was a missing question
-*2026-09-18*
-- **Evidence:** a 22-article blind check scored 17/22, and all five misses were
-  articles entirely about the fighter with nothing new in them (#605 restates a
-  July booking; #743 is filler). Adding `novelty` took bucket 2 from 69% to 51%
-  and the blind check to 18/22 (18/19 excluding the reviewer's own ambiguous
-  calls). Cost: bucket stability 95% → 93%, because novelty is the least
-  confident question (0.55).
-- **Confidence:** measured, but on a 22-article blind set that is now exhausted.
-- **Does not say:** that novelty should be asked of the classifier alone. "Is
-  it new in the text" is readable; "has the group been told" is not — the
-  outlet's own framing ("нагадаємо", a recap two days later) is the tell for
-  the first, and only dedup can answer the second.
+`domain` · `measured` · *FB 2026-09-18*
+- **Evidence:** blind check 17/22; all five misses were articles entirely about
+  the fighter with nothing new (#605 restates a July booking). Adding `novelty`
+  took bucket 2 from 69% to 51%, the blind check to 18/22. Cost: stability
+  95% → 93%; novelty is the least confident question (0.55).
+- **Does not say:** that novelty is one question. "Is it new *in the text*"
+  is readable (the outlet's own framing, "нагадаємо"); "has the group been
+  told" is not, and only dedup can answer it.
 
-### The same article at two URLs reaches the classifier twice
-*2026-09-19*
-- **Evidence:** #773 and #790 are one Sport.ua article, `/uk/news/904629` and
-  `/uk/amp/news/904629`. URL dedup missed it; both would have been sent. The AMP
-  copy carries 3,196 characters against 10,000. TODO 3l.
-- **Confidence:** observed once (one live pair).
-- **Does not say:** how common it is.
+### A rescue lane needs a condition that can fail — "about him", tested by function
+`general` · `observed` · **found independently by both** · *FB 2026-09-21; RF-L19, D3*
+- **Evidence (RF):** a rule rescuing dismissed items when a real event was
+  detected sent a restaurant feature, an empty page and a third party's
+  opinion, until it also required "the article is about the subject".
+- **Evidence (FB):** deciding `kind` first over-fired "about someone else" on
+  18 articles where another fighter talks *about* him. The delete test —
+  "delete every sentence naming him; if the story still stands, it is about
+  someone else" — recovered all 18. The same defect as `background`, found
+  three times across two projects.
 
 ---
 
 ## 3. The articles
 
-### The sample is stratified, not proportional
-*2026-09-17*
-- 300 of 1,021 articles with text, drawn to keep rare fighters: all 19 Amosov,
-  all 99 Donchenko, 182 Topuria, 7 Aug – 17 Sep. Frozen at
+### The FB sample is stratified, not proportional
+`corpus` · `measured` · *FB 2026-09-17*
+- 300 of 1,021 with text, drawn to keep rare fighters. Frozen at
   `experiments/2026-09-17-role-questions/data/articles.json`; never re-pull.
-- **Does not say:** anything about the production mix — Topuria dominates
-  there. Ratios measured here do not transfer as ratios.
+  Ratios measured on it do not transfer as ratios. RF's 956 is the whole feed:
+  of its final 16 messages, 12 were one fighter, 4 another, **0 Amosov** in 34
+  days (RF-L13). Coverage is as lumpy as the press.
 
-### Production sees a third of the text
-*2026-09-20*
-- **Evidence:** `hunter.js` embeds headline + `body.slice(0, 1500)`;
-  `lib/matcher.js` sends `body.slice(0, 1200)`. 92% of sample articles are
-  longer than that; the model sees ~32% of the text, and on Sport.ua pages the
-  first 1,500 characters are largely site navigation.
-- **Confidence:** measured (it is a count over the sample).
-- **Does not say:** that more text helps. Untested — Anton's proposal is a
-  window around the fighter's name; see the extraction README, "What's next".
+### A fifth of the feed has no usable body
+`corpus` · `measured` · **found independently by both** · *RF-L08; FB 2026-09-18*
+- **Evidence (RF):** 182 of 956 arrived as headline only — paywalls, video,
+  JS shells. A bug that crashed all 182 was found by their absence from the
+  trace. **(FB):** #521, #653, #230 are video stubs or boilerplate;
+  `not_in_the_article_body` is the weakest option (0.47). A scraping defect
+  wearing a classifier costume.
 
-### Some article bodies are unusable, and no question can fix that
-*2026-09-18*
-- **Evidence:** #521, #653, #230 are video stubs or pure boilerplate.
-  `not_in_the_article_body` is the weakest option in the set (0.47, unanimous
-  on 5 of 12). A scraping defect wearing a classifier costume.
-- **Confidence:** observed once.
+### Boilerplate contaminates the text; a focused excerpt around the subject beats a prefix
+`domain` · `measured` · **found independently by both, RF tested it** · *RF-L09; FB 2026-09-20*
+- **Evidence (RF):** two unrelated stories scored 0.76 lexical overlap because
+  both pages carried the same navigation menu. What worked was not a threshold
+  but showing the model sentences naming the subject, their neighbours, and the
+  lead — fewer tokens, no contamination. Bout opponents had to share a
+  *sentence* with the tracked man (D7): a 320-char window still let "Pimblett
+  submitted Saint Denis" pass in a Topuria piece.
+- **Evidence (FB):** production embeds headline + first 1,500 chars
+  (`hunter.js`) and the matcher sends 1,200 (`lib/matcher.js`); 92% of sample
+  articles are longer, the model sees ~32% of the text, and on Sport.ua the
+  first 1,500 chars are largely navigation. Anton proposed a name-centred
+  window; FB has **not tested it** — RF's result says it is worth ~$0.06.
+- **Does not say:** that a window works for embeddings — RF used no
+  embeddings.
+
+### Speculation outnumbers events by two orders of magnitude
+`domain` · `measured` · *RF-L12; FB agrees, 2026-09-18*
+- **Evidence (RF):** 34 days, three fighters: roughly one booking, one result,
+  a handful of injuries; hundreds of articles discussing what might happen.
+  **(FB):** bucket 2 (about him, no firm event) is 51% after novelty, 69%
+  before; bucket 1 (a firm, new event) is 29 of 300.
+
+### Cross-language duplication is most of the work
+`domain` · `measured` · **found independently by both** · *RF-L11; FB 2026-09-18*
+- **Evidence (RF):** 276 of 956 folded into stories already sent; six articles,
+  five outlets, three languages, one happening. **(FB):** of 255 unposted
+  sample articles, 143 were held for similarity, not for being bucket 3. One
+  Sport.ua page reached the classifier twice via `/uk/news/` and
+  `/uk/amp/news/` (#773/#790, TODO 3l).
+
+### Inflected names break naive matching, invisibly
+`domain` · `measured` · *RF-L10, D8 — **not checked in FB***
+- **Evidence (RF):** Slavic surnames decline and the ending *replaces* rather
+  than appends (Донченко → Донченка → Донченку). Prefix match on the nominative
+  lost six articles, three real stories, with no trace — an article never
+  judged is not a decision you can audit. Fix: stem + bounded ending, accept
+  false positives.
+- **Carry:** check what production's name matching does before trusting recall.
+
+### Arrival order is not publication order
+`corpus` · `measured` · *RF-L07 — **not checked in FB***
+- **Evidence (RF):** median lag site-timestamp → arrival ≈ 1 h; 90th percentile
+  7–16 h; max 23 h (a since-fixed collector defect). State which clock you quote.
 
 ### Question tokens, not article tokens, dominate JEV's bill
-*2026-09-17*
-- **Evidence:** 40% of billed tokens were the question set re-sent 300 times
-  (1,277 × 300 of 962,105). One pass over 300 costs ~4–5 cents; the whole
-  18-pass experiment cost $0.81.
-- **Confidence:** measured. Whether the API batches or caches is unchecked.
+`harness` · `measured` · *FB 2026-09-17*
+- 40% of billed tokens were the question set re-sent 300 times. Whether the API
+  batches or caches is unchecked.
 
 ---
 
-## 4. Extraction and embeddings (Qwen3.8 Flash; `gemini-embedding-001` 768d)
+## 4. Extraction, facts and embeddings
+
+### Extraction proposes; a rule must dispose — and "was it the article's own news" is that rule
+`general` · `measured` · **found independently by both** · *RF-L17, D4; FB 2026-09-21 pass 2*
+- **Evidence (RF):** asked for scheduled fights, the model invented **seven**
+  bookings — opponents read off event posters, "who should he face" columns
+  turned into fixtures. Each was mentioned 3–10 times, so corroboration could
+  not separate them from the one real booking. What did: *was this fact ever an
+  article's own reported news?* The real one was; none of the seven were.
+- **Evidence (FB):** pass 1 claims came back as the well-known event the
+  article recalls. Pass 2's fix was the same test in prompt form — "the
+  article's own news, what a reader learns here and nowhere earlier" — and it
+  was the best-scoring wording of the run.
+- **Does not say:** that the prompt form catches everything: FB's #817 (next
+  entry) slipped through five passes of it.
+
+### Prompt wording cannot see dates; a fact memory can
+`general` · `measured` · **found independently by both** · *FB 2026-09-21; RF-L28, A4, D1*
+- **Evidence (FB):** #817, a column two days after a fight, is extracted as the
+  result in all five passes through four prompt shapes. The extractor already
+  returns `date`; fight date ≪ article date is a check code can make.
+- **Evidence (RF):** ~45 articles reporting Donchenko's win were folded into
+  the month-old booking story and the group was never told he won — the worst
+  failure in that project. Fix: a `bout` table filled from **every** judged
+  article, background mentions included, so a fight known to be completed can
+  no longer be sent as a booking. What you have told people and what is true
+  are different stores.
 
 ### A one-sentence claim alone does not separate stories better than production's text
-*2026-09-21*
-- **Evidence:** on 136 story clusters over the same 300 articles, claim-alone
-  AUC 0.925 vs headline+lead 0.918 — but 0.896 vs 0.918 on the balanced (hard
-  stories) view. Short claims about one fighter crowd together.
-  `experiments/2026-09-20-claim-extraction/README.md`, result table.
-- **Confidence:** measured against a ±0.003 floor.
-- **Does not say:** that the claim is useless — next entry. **Would overturn:**
-  a different extraction model or a longer claim format winning alone.
+`harness` · `measured` · *FB 2026-09-21*
+- **Evidence:** on 136 story clusters, claim-alone AUC 0.925 vs headline+lead
+  0.918 — but 0.896 vs 0.918 on hard stories. Short claims about one fighter
+  crowd together. `experiments/2026-09-20-claim-extraction/README.md`.
 
 ### The claim in front of production's text beats production's text
-*2026-09-21*
-- **Evidence:** claim + occasion prepended to headline + first 1500 chars:
-  AUC 0.942 / balanced 0.929, tail overlap 1.2%, 396 errors vs 542 at the best
-  threshold, on the identical pair set. Far outside the ±8 floor. The occasion
-  field alone is worth +0.013 AUC, and putting it first beats appending it
+`harness` · `measured` · *FB 2026-09-21*
+- **Evidence:** claim + occasion prepended to headline + first 1,500 chars: AUC
+  0.942 / 0.929 balanced, overlap 1.2%, 396 errors vs 542 on the identical pair
+  set, against a ±8 floor. `occasion` alone +0.013 AUC; first beats appended
   (0.926 vs 0.918).
-- **Confidence:** measured, one replicate, one model, frozen sample.
 - **Does not say:** that it holds live, or at production's 0.80 threshold
-  (arm 4's best is 0.90). Never validated outside the frozen 300.
-
-### Deciding the article's kind first reproduces the classifier's "background" defect
-*2026-09-21*
-- **Evidence:** a `kind` field filled before the claim (field order is fill
-  order) over-fired "about someone else" on 18 articles where another fighter
-  talks *about* him. The delete test — "delete every sentence naming him; if
-  the story still stands, it is about someone else" — recovered all 18.
-- **Confidence:** observed once, but it is the same defect as §2, found twice.
-
-### The residual dedup error is definitional: fact versus occasion
-*2026-09-21*
-- **Evidence:** three quarters of remaining false merges and all large misses
-  are one disagreement. The ruler (built by reading) groups by *occasion* — one
-  interview, one fight, one column. The extractor separates by *fact* — six
-  previews restating one booking are one claim; one interview in instalments is
-  several.
-- **Confidence:** measured on the error list, but the ruler is Fable's
-  judgement, not Anton's.
-- **Does not say:** which is right. "Have we told the group?" wants the fact;
-  "show me everything in this story" wants the occasion. **Undecided; Anton's
-  call, and it may differ by stage.**
-
-### Prompt wording cannot see dates
-*2026-09-21*
-- **Evidence:** #817, a column published two days after a fight, is extracted
-  as the fight result in all five passes through four prompt shapes.
-- **Confidence:** measured (five passes).
-- **Does not say:** that it cannot be caught — the extractor already returns a
-  `date` field, and fight date ≪ article date is a check code can make.
+  (arm 4's best is 0.90). Frozen sample, one model, never validated outside.
 
 ### Structured fields agree on same-story pairs, but also on different ones
-*2026-09-21*
-- **Evidence:** exact-match agreement, same-story vs different-story pairs:
-  actor 98% vs 36%; event 67% vs 43%; date 86% vs 63%, but date is filled on
-  only part of the set.
-- **Confidence:** observed once; never scored as a dedup.
-- **Does not say:** whether field-matching could replace similarity. Untested.
+`corpus` · `observed` · *FB 2026-09-21*
+- actor 98% vs 36%; event 67% vs 43%; date 86% vs 63%, sparsely filled. Never
+  scored as a dedup.
+
+### A label can change while the content does not
+`general` · `measured` · *RF-L20, D2 — no FB counterpart yet*
+- **Evidence (RF):** dedup could be overridden when a story "moved on",
+  detected by its event label shifting soft → hard. The same vision-loss story,
+  filed `personal_life` Monday and `injury` Tuesday, cleared the test and the
+  group read it twice. A promotion past dedup must be earned by content.
+
+---
+
+## 5. Harness — the model and our own code
+
+### Models echo your formatting back, and a swallowed exception eats the decision
+`general` · `measured` · *RF-L14 — no FB counterpart yet*
+- **Evidence (RF):** candidates rendered `[7] summary`; the model answered
+  `duplicate_of: "[7]"`; `int("[7]")` raised; an `except` swallowed it; the
+  duplicate was discarded and the group got the same news repeatedly. Nearly
+  every apparent judgement failure in the early runs was this bug. The instinct
+  was to buy a dearer model, which would have fixed nothing.
+
+### Reasoning off for rubric classification; never cache a non-answer
+`harness` · `measured` · **found independently by both** · *RF-L15, D9; FB 2026-09-20*
+- **Evidence (RF):** all 11 calls of the first smoke test returned empty
+  content, the whole 700-token budget spent on reasoning. **(FB):** extraction
+  pass 1 ran with reasoning on, 837 of 917 completion tokens, 2.4x the cost
+  estimate; aborted after 28 calls. FB also cached HTTP 429 errors and reused
+  them as results until fixed.
+
+### Never put database ids in a prompt
+`harness` · `measured` · *RF-L16, D6 — check `lib/matcher.js` before assuming FB is clean*
+- **Evidence (RF):** a global story-id sequence made every prompt unique;
+  three runs shared 0 cache hits of 812 calls, read as "of course the prompt
+  changed" for three runs. Numbering 1..n inside the prompt took the last run
+  to 338 hits. The money is the small part: a run that cannot replay cannot be
+  separated from the model's weather.
+
+### Compare versions numerically
+`general` · `measured` · *RF-L21*
+- `"v10" >= "v8"` is false. A whole run executed with none of its rules and
+  read as a regression from new wording. Print an assertion that the rules are
+  present in the built prompt.
+
+### Exactly one goal was provable: the one with an external referent
+`general` · `measured` · *RF-L06, J8*
+- "Confirmed" only if the source domain is `ufc.com`, computed from the input
+  and enforced over the output text: 0 violations in every run, claimed
+  absolutely. The three judgement goals were argued about for the whole project.
+  When a requirement can be restated as a property of the input, do that.
+
+---
+
+## 6. The questions both projects reached and neither could answer
+
+These are carried **unanswered**. An agent that resolves one by choosing for
+itself has reintroduced the error in §1's second entry. Only Anton answers them.
+
+- **What is one piece of news?** RF-L05, L27, M6 and FB's "fact versus
+  occasion" are the same question. RF: one subject gave one outlet several
+  interviews in a week — one piece or four? 22 articles in its final run turn
+  on it. RF also built a *topic* bucket while believing it had built a *story*
+  (148 articles absorbed, one message, a fight result 34 hours late in a
+  subordinate clause) and names the *development* — a point at which a
+  follower learns something new — as the right unit. FB: the ruler groups by
+  occasion, the extractor by fact; three quarters of residual dedup error is
+  that disagreement. **Both landed here independently. The answer may differ
+  by stage** (digest vs reading app, TODO 7).
+- **What volume is right?** RF-L04: the owner's objection was never that a
+  message was wrong, but that forty defensible analyses make a group stop
+  reading — a property of the stream, in none of the four goals. RF ended at
+  16 messages in 34 days; FB's rules give ~5.6 digest items a day. Neither
+  knows which is right.
+- **Where does a pundit sit?** FB: `whose_judgement` decides nothing because
+  the rules never consult it. RF's owner ruling O1 counts analysis only from
+  his own coach or the booked opponent's coach; FB's ruling admits "the
+  champion or a top authority". **These two rulings, both Anton's, are not
+  the same line** — worth settling once.
+- **How much of the remaining variance is the model?** RF: a second salted run
+  of its final config, not yet run. FB: the extraction replicate says ±8 errors
+  on arm 4, but the classifier's 7% unstable articles sit on the 2-vs-3 line
+  where the judgement is genuinely hard.
 
 ---
 
 ## Superseded
 
-- *2026-09-17 → 2026-09-17:* "`official` became a sink partly because it sat
-  first in its list." Withdrawn the same night by the reversal test above; the
-  23x enrichment of the literal word "official" in the migrating articles still
-  stands.
-- *2026-09-17 → 2026-09-18:* "Bucket 2 is 69% of articles." That was before
-  the novelty question existed; it is 51% with it.
+- *2026-09-17 → 2026-09-17 (FB):* "`official` became a sink partly because it
+  sat first in its list." Withdrawn the same night by the reversal test; the
+  23x enrichment of the literal word "official" still stands.
+- *2026-09-17 → 2026-09-18 (FB):* "Bucket 2 is 69% of articles." Before the
+  novelty question; 51% with it.
+- *RF J4 → O1 (RF):* "Analysis by anyone counts as substance." Reversed by
+  the owner — one breakdown is interesting, forty are why a group stops
+  reading. The single largest correction in that project.
+- *RF J5 → D1 (RF):* "Only the first sighting of a story is sent." Superseded
+  by the development override after a fight result was never sent.
