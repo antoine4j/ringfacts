@@ -123,18 +123,18 @@ function keep(r){
     (!f.q||(r.t+' '+r.o+' '+r.id+' '+r.claim+' '+r.occ).toLowerCase().includes(f.q.toLowerCase()));}
 const S_N={}; S.forEach(s=>S_N[s.key]=s.n);
 function tile(r){
-  const rew=r.rew?'<span class="flag">re-worded on replicate</span>':'';
-  const kf=r.kflip?`<span class="flag">kind flipped on replicate (${esc(KL[r.kind5]||r.kind5)})</span>`:'';
+  const rew=r.rew?'<span class="flag">worded differently on a second run</span>':'';
+  const kf=r.kflip?`<span class="flag">kind changed on a second run (${esc(KL[r.kind5]||r.kind5)})</span>`:'';
   const claim=r.claim?`<div class="claim">${esc(r.claim)}</div>`:'<div class="claim none">NO CLAIM</div>';
   const occ=r.occ?`<div class="occ">where / when: ${esc(r.occ)}</div>`:'';
   const fl=[['actor',r.actor],['opponent',r.opp],['event',r.event],['date',r.date]].filter(x=>x[1])
     .map(x=>`<span>${x[0]} <b>${esc(x[1])}</b></span>`).join('');
-  const rep=r.rew?`<div class="rep">replicate run said: ${r.claim5?esc(r.claim5):'<i>NO CLAIM</i>'}</div>`:'';
+  const rep=r.rew?`<div class="rep">second run, same input, said: ${r.claim5?esc(r.claim5):'<i>NO CLAIM</i>'}</div>`:'';
   return `<div class="art" data-k="${r.kind}">
     <div class="top"><span class="bdg" data-k="${r.kind}">${esc(KL[r.kind]||r.kind)}</span>
     <span class="ttl">${r.u?`<a href="${r.u}" target="_blank" rel="noopener">${esc(r.t)}</a>`:esc(r.t)}</span></div>
     <div class="meta"><span>#${r.id}</span><span>${r.d}</span><span>${esc(r.f)}</span><span>${esc(r.o)}</span>
-    <span>${r.chars.toLocaleString()} chars</span>${rew}${kf}${r.rew?'<button class="tog">show replicate</button>':''}</div>
+    <span>${r.chars.toLocaleString()} chars</span>${rew}${kf}${r.rew?'<button class="tog">compare second run</button>':''}</div>
     <div class="two"><div><div class="lbl">what production embeds (headline + first 1,500 chars)</div>
     <div class="lead">${esc(r.lead)||'<i>no body</i>'}</div></div>
     <div><div class="lbl">what the extractor returned</div>${claim}${occ}<div class="fields">${fl}</div></div></div>${rep}</div>`;}
@@ -189,18 +189,18 @@ agree. Nothing here was posted anywhere.</p>
 {opts("group", [("story","grouped by story"),("date","flat, newest first")], "", default="story")}
 {opts("fighter", [(f,f) for f in fighters], "all fighters")}
 {opts("kind", [(k, KLABEL[k]) for k, _ in kinds.most_common()], "all kinds")}
-{opts("flag", [("multi","only stories with 2+ articles"),("rew","re-worded on replicate"),("kflip","kind flipped on replicate"),("none","NO CLAIM"),("date","carries a date")], "everything")}
+{opts("flag", [("multi","only stories with 2+ articles"),("rew","worded differently on a second run"),("kflip","kind changed on a second run"),("none","NO CLAIM"),("date","carries a date")], "everything")}
 <input id="q" placeholder="search headline, claim, outlet or id">
 <span class="count" id="count"></span></div>
 <div id="list"></div>
 <p class="sub" style="margin-top:26px">Things worth looking for. <b>Inside one story, do the claims say the same thing?</b>
 If six previews of one booking read as one claim, dedup can fold them; if a three-part interview reads as three claims,
 that is the fact-versus-occasion question in the flesh. <b>Is the where-and-when right?</b> It is the field that separates two
-remarks by the same man on different days. <b>&ldquo;Re-worded on replicate&rdquo;</b> means the identical prompt came back
+remarks by the same man on different days. <b>&ldquo;Worded differently on a second run&rdquo;</b> means the identical prompt came back
 with different words the second time &mdash; harmless when the meaning held, telling when it did not; click
-<i>show replicate</i> to compare. The known miss is <b>#817</b>, a next-day column extracted as the result.</p>
+<i>compare second run</i> to compare. The known miss is <b>#817</b>, a next-day column extracted as the result.</p>
 </div><script>const DATA={json.dumps(rows, ensure_ascii=False)},STORIES={json.dumps(stories, ensure_ascii=False)},KL={json.dumps(KLABEL)};{JS}</script></body></html>"""
 open(f"{HERE}/REPORT.html", "w").write(doc)
 print(f"wrote REPORT.html  ({len(doc)/1024:.0f} KB, {len(rows)} articles, {len(stories)} stories, {multi} with 2+ articles)")
 print(f"  kinds: " + ", ".join(f"{KLABEL[k]} {n}" for k, n in kinds.most_common()))
-print(f"  re-worded on replicate {rew}, kind flipped {kflip}, occasion filled {occ}, dated {dated}")
+print(f"  worded differently on a second run {rew}, kind flipped {kflip}, occasion filled {occ}, dated {dated}")
