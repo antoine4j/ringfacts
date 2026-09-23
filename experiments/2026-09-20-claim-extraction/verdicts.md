@@ -32,6 +32,33 @@ lost by the one-sentence rule, not by the source. Evidence for README 9b.
 Anton, by voice: *"also story-124 is correctly grouped."*
 Ruling on the ruler: one story.
 
+## 2026-09-22 — story-112 (Gaethje on MightyCast, 9 articles): one story, by occasion
+
+Anton, by voice, reviewing REPORT.html:
+
+> "These two articles [#948, #1050] are definitely part of one occasion —
+> Gaethje on MightyCast. All different takes are his quotes from there. So
+> story-112 is one story about his comments about Topuria on MightyCast.
+> Therefore 948 and 1050 are part of the story by occasion, but not part of
+> it by facts. I'd rather prefer they'd be grouped by occasion in this story
+> than creating standalone stories. And in a digest they can simply be
+> ignored as not substance, while agent can summarize all those who have
+> extracts about Topuria. So story-112 is correctly grouped."
+
+**Ruling on the ruler:** one story. **Design ruling, first one stated on a
+concrete case:** the story unit is the occasion, even when it pulls in
+articles that carry no fact about the watched fighter; those stay in the
+story and are simply not substance for the digest. The digest agent
+summarises from the articles that have a claim about him.
+
+Checked while he asked: #948 was in pass 1 and pass 2 as a story of its own
+(m094 → s089). It joined story-112 only in the third pass, the full-text
+re-read, where the reader saw "MightyCast / Demetrious Johnson" in the body
+— grouped by podcast, as he guessed. And #948 is in the sample at all only
+because its Bloody Elbow feed body carries a "LATEST NEWS" cross-link whose
+text names Topuria; production's matcher called it `passing` and did not
+post it.
+
 The ruler's own eight low-confidence pair rulings are in
 `clusters.json` under `low_confidence_rulings` and flagged in `REPORT.html`
 under "the ruler was unsure".

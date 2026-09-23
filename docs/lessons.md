@@ -257,6 +257,10 @@ Rules for adding to it:
   articles are longer, the model sees ~32% of the text, and on Sport.ua the
   first 1,500 chars are largely navigation. Anton proposed a name-centred
   window; FB has **not tested it** — RF's result says it is worth ~$0.06.
+- **Also (FB, 2026-09-22):** furniture puts articles *into* the pipeline,
+  not only noise into their text. #948, a Gaethje-on-Tsarukyan piece, is in
+  the Topuria sample because a "LATEST NEWS" cross-link in its feed body
+  names Topuria; the article itself says nothing about him.
 - **Does not say:** that a window works for embeddings — RF used no
   embeddings.
 
