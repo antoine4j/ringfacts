@@ -90,7 +90,8 @@ for a, b in diff:
         dis[story_of[b]]["merge"].append([b, a, story_of[a], round(sim[(a, b)], 2)])
 
 stories = [{"key": c["key"], "dis": (dis[c["key"]] if c["key"] in dis and (dis[c["key"]]["split"] or dis[c["key"]]["merge"]) else None), "desc": story_desc[c["key"]], "n": len(c["articles"]), "ruled": ruled.get(c["key"]),
-            "newest": max(str(arts[a]["published_at"])[:10] for a in c["articles"])} for c in ruler]
+            "newest": max(str(arts[a]["published_at"])[:10] for a in c["articles"]),
+            "oldest": min(str(arts[a]["published_at"])[:10] for a in c["articles"])} for c in ruler]
 stories.sort(key=lambda s: s["newest"], reverse=True)
 
 CSS = """
@@ -167,7 +168,7 @@ padding:11px 13px;margin-bottom:7px}
 
 JS = r"""
 const D=DATA, S=STORIES, box=document.getElementById('list');
-const f={fighter:'',kind:'',flag:'',group:'story',q:''};
+const f={fighter:'',kind:'',flag:'',group:'story',sort:'new',q:''};
 function keep(r){
   return (!f.fighter||r.f===f.fighter)&&(!f.kind||r.kind===f.kind)&&
     (f.flag!=='rew'||r.rew)&&(f.flag!=='kflip'||r.kflip)&&(f.flag!=='none'||!r.claim)&&
@@ -199,7 +200,8 @@ function render(){
   const out=D.filter(keep); let h='';
   if(f.group==='story'){
     const by={}; out.forEach(r=>(by[r.story]=by[r.story]||[]).push(r));
-    S.forEach(s=>{const rs=by[s.key]; if(!rs) return; const open=!collapsed.has(s.key);
+    const SS=f.sort==='old'?S.slice().sort((a,b)=>a.oldest<b.oldest?-1:a.oldest>b.oldest?1:0):S;
+    SS.forEach(s=>{const rs=by[s.key]; if(!rs) return; const open=!collapsed.has(s.key);
       const dz=s.dis?`<span class="dis">extractor disagrees${s.dis.split.length?` · would split: ${s.dis.split.length} of ${s.dis.pairs} pairs apart (${Math.round(100*s.dis.split.length/s.dis.pairs)}%)`:''}${s.dis.merge.length?` · would merge with ${[...new Set(s.dis.merge.map(m=>m[2]))].join(', ')}`:''}</span>`:'';
       const items=s.dis?s.dis.split.slice().sort((a,b)=>a[2]-b[2]).map(x=>`apart #${x[0]} \u2194 #${x[1]} at ${x[2]}`).concat(s.dis.merge.slice().sort((a,b)=>b[3]-a[3]).map(x=>`together #${x[0]} \u2194 #${x[1]} (${x[2]}) at ${x[3]}`)):[];
       const dl=s.dis&&open?`<div class="disl">${items.slice(0,10).join(' &middot; ')}${items.length>10?` &middot; +${items.length-10} more`:''}</div>`:'';
@@ -208,7 +210,7 @@ function render(){
           <span class="sn">${s.n} article${s.n>1?'s':''} in the ruler${rs.length<s.n?', '+rs.length+' shown':''}</span></div>${dl}`;
       if(open) h+=rs.slice().sort((a,b)=>a.d<b.d?-1:1).map(tile).join('');
       h+=`</section>`;});
-  } else h=out.map(tile).join('');
+  } else h=(f.sort==='old'?out.slice().sort((a,b)=>a.d<b.d?-1:1):out).map(tile).join('');
   document.getElementById('count').textContent=out.length+' of '+D.length+' articles';
   box.innerHTML=h||'<p style="color:var(--dim)">Nothing matches.</p>';}
 function esc(s){const d=document.createElement('div');d.textContent=s;return d.innerHTML}
@@ -217,7 +219,7 @@ box.addEventListener('click',e=>{
   const st=e.target.closest('.story'); if(st&&!e.target.closest('a')){const k=st.dataset.key; collapsed.has(k)?collapsed.delete(k):collapsed.add(k); render();}});
 document.getElementById('shut').addEventListener('click',()=>{S.forEach(s=>collapsed.add(s.key));render()});
 document.getElementById('openall').addEventListener('click',()=>{collapsed.clear();render()});
-['fighter','kind','flag','group'].forEach(k=>document.getElementById(k).addEventListener('change',e=>{f[k]=e.target.value;render()}));
+['fighter','kind','flag','group','sort'].forEach(k=>document.getElementById(k).addEventListener('change',e=>{f[k]=e.target.value;render()}));
 document.getElementById('q').addEventListener('input',e=>{f.q=e.target.value;render()});
 render();
 // Theme: auto -> light -> dark, remembered per browser. The stylesheet already
@@ -262,7 +264,8 @@ agree. Nothing here was posted anywhere.</p>
 <div class="tile"><div class="n">{occ} / {dated}</div><div class="l">carry a where-and-when / carry a date</div></div>
 </div>
 <div class="bar">
-{opts("group", [("story","grouped by story"),("date","flat, newest first")], "", default="story")}
+{opts("group", [("story","grouped by story"),("date","flat, no grouping")], "", default="story")}
+{opts("sort", [("new","newest first (by a story's last article)"),("old","oldest first (by a story's first article)")], "", default="new")}
 {opts("fighter", [(f,f) for f in fighters], "all fighters")}
 {opts("kind", [(k, KLABEL[k]) for k, _ in kinds.most_common()], "all kinds")}
 {opts("flag", [("multi","only stories with 2+ articles"),("rew","worded differently on a second run"),("kflip","kind changed on a second run"),("none","NO CLAIM"),("date","carries a date"),("doubt","the ruler was unsure about the grouping"),("dis","extractor and ruler disagree"),("ruled","stories Anton has ruled on"),("unruled","stories not yet ruled on")], "everything")}
