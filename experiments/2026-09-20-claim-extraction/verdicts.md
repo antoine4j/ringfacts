@@ -151,6 +151,22 @@ announcement, result, etc."* **Ruled firm.** The guard is a design
 decision now, not a hypothesis; a single misread article lands in the wrong
 pile, it does not silence a story.
 
+## 2026-09-23 — story-105 (#879, #901, #905): the grouping is right
+
+Anton, by voice: *"105, 107 — correct."* Ruling on the ruler: one story.
+
+## 2026-09-23 — story-107 (#887, #909): the grouping is right
+
+Anton, by voice: *"105, 107 — correct."* Ruling on the ruler: one story.
+
+## 2026-09-23 — story-105 (#879, #901, #905): the grouping is right
+
+Anton, by voice: *"105, 107 — correct."* Ruling on the ruler: one story.
+
+## 2026-09-23 — story-107 (#887, #909): the grouping is right
+
+Anton, by voice: *"105, 107 — correct."* Ruling on the ruler: one story.
+
 The ruler's own eight low-confidence pair rulings are in
 `clusters.json` under `low_confidence_rulings` and flagged in `REPORT.html`
 under "the ruler was unsure".
