@@ -5,6 +5,12 @@ claims. **The only ground truth in this folder.** A ruling on the ruler
 outranks every score here: when one lands, `clusters.json` is rebuilt from it
 and every arm is re-scored, and the old numbers are kept in `ITERATIONS.md`.
 
+**What a ruling on the ruler tests — Anton, 2026-09-22:** *"What I'm looking
+for is the coherence at the core story level."* A story is right when every
+article in it shares the same core: the same occasion and the same main news.
+Extracts may differ in wording, pick different quotes from that occasion, or
+carry side mentions of other matters; none of that breaks the grouping.
+
 Format, one block per ruling:
 
     ## YYYY-MM-DD — #a and #b are one story / are different stories / claim on #n is wrong
