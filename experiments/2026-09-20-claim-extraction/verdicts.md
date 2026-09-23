@@ -276,6 +276,26 @@ for the chat or the digest, so either grouping serves.
 
 ## 2026-09-23 — story-073.2 (#687, #688, #745): the grouping is right — see the pre-fight entry above
 
+## 2026-09-23 — story-090 (#693, #702, #723, #728, #755, #771, #788, #875): the grouping is right
+
+Anton, by voice, after checking #875's quotes against the essay itself
+(https://iliatopuriaoficial.com/este-soy-yo/): *"Then I agree with grouping
+for 90. In reality I would probably read his essay once and that's it, as a
+main source."*
+
+What was checked: #875's headline and spine are verbatim from the essay
+(prologue, chapter 1, chapter 2); its quotes on defeat and on street fights
+are older, pre-loss lines the article itself calls "manifestaciones previas";
+the Alicante remark is "from some other interview". Peg is the essay; the
+rest is padding — as Fable's own description said. #728 opens on the Hugo
+Instagram post and quotes essay lines attributed to Instagram; a bridge
+article between story-080 (the video letter, 4 Sep) and this one (5 Sep).
+Both stay where Fable put them. Fable had flagged both #728 and #875 as
+uncertain in passes 1 and 2; pass 3 kept them here without recording why.
+
+**Product note, his:** for a primary source like this, one link to the
+source itself is the digest; the eight write-ups add nothing he would read.
+
 The ruler's own eight low-confidence pair rulings are in
 `clusters.json` under `low_confidence_rulings` and flagged in `REPORT.html`
 under "the ruler was unsure".
