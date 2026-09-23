@@ -322,6 +322,23 @@ Rules for adding to it:
 - **Does not say:** that it holds live, or at production's 0.80 threshold
   (arm 4's best is 0.90). Frozen sample, one model, never validated outside.
 
+### Embeddings do not separate a fight's preview from its result, with or without the claim
+`harness` · `measured` · *FB 2026-09-22*
+- **Evidence:** Donchenko vs Soriano, UFC Paris. 216 pairs of a preview
+  article and a result article published within 3 days of each other.
+  Production's text (headline + lead): median cosine 0.775, max 0.926, **82
+  of 216 above production's 0.80 threshold**. The claim-in-front arm (4,
+  pass 4): median **0.813**, max 0.939, 118 above 0.80 and **18 above its own
+  best threshold of 0.90**. The claim makes it *worse*, because both claims
+  name the same two men and the same event. Top pair: "Donchenko will meet
+  Soriano at UFC Paris" vs "Donchenko beat Soriano at UFC Fight Night" at
+  0.939. Measured from `emb-cache/` in the extraction folder.
+- **Does not say:** that a booking and a result are one story — Anton's
+  ruling is that they are not (different occasions). It says similarity
+  alone cannot enforce that; the classifier's `news_kind` (booking vs
+  result) or the extractor's `date` has to. **Would overturn:** an embedding
+  input that carries the event stage and pushes these pairs below threshold.
+
 ### Structured fields agree on same-story pairs, but also on different ones
 `corpus` · `observed` · *FB 2026-09-21*
 - actor 98% vs 36%; event 67% vs 43%; date 86% vs 63%, sparsely filled. Never
