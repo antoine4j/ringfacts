@@ -17,6 +17,13 @@ for d in CL.get("low_confidence_rulings", []):
     for a, other in ((d["a"], d["b"]), (d["b"], d["a"])):
         doubt[a].append({"other": other, "ruling": d["ruling"], "why": d["why"]})
 
+# Anton's rulings, parsed from verdicts.md headings of the form
+#   ## 2026-09-22 — story-125 (#a, #b): the grouping is right
+ruled = {}
+for line in open(f"{HERE}/verdicts.md"):
+    m = re.match(r"## (\d{4}-\d{2}-\d{2}) — (story-[\d.]+)[^:]*: (.+)$", line.strip())
+    if m: ruled[m.group(2)] = {"d": m.group(1), "what": m.group(3).strip()}
+
 KLABEL = {
  "new_event":          "A new event",
  "new_remark":         "Somebody said something new",
@@ -55,21 +62,21 @@ for a in sorted(arts, key=lambda x: arts[x]["published_at"], reverse=True):
         "doubt": doubt.get(a, []),
     })
 
-stories = [{"key": c["key"], "desc": story_desc[c["key"]], "n": len(c["articles"]),
+stories = [{"key": c["key"], "desc": story_desc[c["key"]], "n": len(c["articles"]), "ruled": ruled.get(c["key"]),
             "newest": max(str(arts[a]["published_at"])[:10] for a in c["articles"])} for c in ruler]
 stories.sort(key=lambda s: s["newest"], reverse=True)
 
 CSS = """
 :root{--bg:#fbfaf8;--fg:#1a1917;--dim:#6b6762;--line:#e4e0da;--card:#fff;
 --ev:#c2410c;--evbg:#fff1e9;--rm:#1d4ed8;--rmbg:#eef2ff;--an:#6d28d9;--anbg:#f3eeff;
---no:#6b6762;--nobg:#f2f0ed;--warn:#a16207}
+--no:#6b6762;--nobg:#f2f0ed;--warn:#a16207;--ok:#15803d;--okbg:#eaf7ee}
 :root:not([data-theme=light]){@media(prefers-color-scheme:dark){
 :root{--bg:#171614;--fg:#eceae6;--dim:#9a948c;--line:#302d29;--card:#1f1e1b;
 --ev:#fb923c;--evbg:#3a2314;--rm:#93b4fd;--rmbg:#1b2440;--an:#c4b5fd;--anbg:#2a2140;
---no:#9a948c;--nobg:#27251f;--warn:#d9a441}}}
+--no:#9a948c;--nobg:#27251f;--warn:#d9a441;--ok:#4ade80;--okbg:#14301d}}}
 :root[data-theme=dark]{--bg:#171614;--fg:#eceae6;--dim:#9a948c;--line:#302d29;--card:#1f1e1b;
 --ev:#fb923c;--evbg:#3a2314;--rm:#93b4fd;--rmbg:#1b2440;--an:#c4b5fd;--anbg:#2a2140;
---no:#9a948c;--nobg:#27251f;--warn:#d9a441}
+--no:#9a948c;--nobg:#27251f;--warn:#d9a441;--ok:#4ade80;--okbg:#14301d}
 *{box-sizing:border-box}
 body{margin:0;background:var(--bg);color:var(--fg);font:15px/1.55 ui-sans-serif,-apple-system,"Segoe UI",sans-serif}
 .wrap{max-width:1180px;margin:0 auto;padding:28px 16px 80px}
@@ -90,6 +97,8 @@ display:flex;gap:10px;align-items:baseline;flex-wrap:wrap}
 .story .k{font-size:11.5px;color:var(--dim);font-variant-numeric:tabular-nums;white-space:nowrap}
 .story .sd{font-size:13.5px;font-weight:500;flex:1;min-width:240px}
 .story .sn{font-size:12px;color:var(--dim);white-space:nowrap}
+.story.isruled{border-bottom-color:var(--ok)}
+.ruled{font-size:11.5px;font-weight:600;color:var(--ok);background:var(--okbg);padding:2px 8px;border-radius:20px;white-space:nowrap}
 .art{background:var(--card);border:1px solid var(--line);border-left-width:3px;border-radius:8px;
 padding:11px 13px;margin-bottom:7px}
 .art[data-k="new_event"]{border-left-color:var(--ev)} .art[data-k="new_remark"],.art[data-k="reaction"]{border-left-color:var(--rm)}
@@ -127,10 +136,11 @@ const f={fighter:'',kind:'',flag:'',group:'story',q:''};
 function keep(r){
   return (!f.fighter||r.f===f.fighter)&&(!f.kind||r.kind===f.kind)&&
     (f.flag!=='rew'||r.rew)&&(f.flag!=='kflip'||r.kflip)&&(f.flag!=='none'||!r.claim)&&
-    (f.flag!=='multi'||S_N[r.story]>1)&&(f.flag!=='date'||r.date)&&(f.flag!=='doubt'||r.doubt.length)&&
+    (f.flag!=='multi'||S_N[r.story]>1)&&(f.flag!=='date'||r.date)&&(f.flag!=='doubt'||r.doubt.length)&&(f.flag!=='ruled'||S_R[r.story])&&(f.flag!=='unruled'||!S_R[r.story])&&
     (!f.q||(r.t+' '+r.o+' '+r.id+' '+r.claim+' '+r.occ).toLowerCase().includes(f.q.toLowerCase()));}
 const S_N={}; S.forEach(s=>S_N[s.key]=s.n);
 const S_OF={}; D.forEach(r=>S_OF[r.id]=r.story);
+const S_R={}; S.forEach(s=>S_R[s.key]=!!s.ruled);
 function tile(r){
   const rew=r.rew?'<span class="flag">worded differently on a second run</span>':'';
   const kf=r.kflip?`<span class="flag">kind changed on a second run (${esc(KL[r.kind5]||r.kind5)})</span>`:'';
@@ -153,7 +163,8 @@ function render(){
   if(f.group==='story'){
     const by={}; out.forEach(r=>(by[r.story]=by[r.story]||[]).push(r));
     S.forEach(s=>{const rs=by[s.key]; if(!rs) return;
-      h+=`<div class="story"><span class="k">${esc(s.key)}</span><span class="sd">${esc(s.desc)}</span>
+      const rb=s.ruled?`<span class="ruled" title="${esc(s.ruled.what)}">Anton ruled: ${esc(s.ruled.what)} · ${s.ruled.d}</span>`:'';
+      h+=`<div class="story ${s.ruled?'isruled':''}"><span class="k">${esc(s.key)}</span><span class="sd">${esc(s.desc)}</span>${rb}
           <span class="sn">${s.n} article${s.n>1?'s':''} in the ruler${rs.length<s.n?', '+rs.length+' shown':''}</span></div>`;
       h+=rs.slice().sort((a,b)=>a.d<b.d?-1:1).map(tile).join('');});
   } else h=out.map(tile).join('');
@@ -194,13 +205,14 @@ agree. Nothing here was posted anywhere.</p>
 <div class="tile"><div class="n" style="color:var(--an)">{kinds["analysis"]}</div><div class="l">a writer&rsquo;s own verdict</div></div>
 <div class="tile"><div class="n" style="color:var(--no)">{kinds["about_someone_else"] + kinds["restatement"] + kinds["no_text"]}</div><div class="l">no claim &mdash; about someone else, restated, or no text</div></div>
 <div class="tile"><div class="n">{rew}</div><div class="l">re-worded when run again on identical input ({kflip} changed kind)</div></div>
+<div class="tile"><div class="n" style="color:var(--ok)">{len(ruled)} / {multi}</div><div class="l">stories Anton has ruled on, of the {multi} with 2+ articles</div></div>
 <div class="tile"><div class="n">{occ} / {dated}</div><div class="l">carry a where-and-when / carry a date</div></div>
 </div>
 <div class="bar">
 {opts("group", [("story","grouped by story"),("date","flat, newest first")], "", default="story")}
 {opts("fighter", [(f,f) for f in fighters], "all fighters")}
 {opts("kind", [(k, KLABEL[k]) for k, _ in kinds.most_common()], "all kinds")}
-{opts("flag", [("multi","only stories with 2+ articles"),("rew","worded differently on a second run"),("kflip","kind changed on a second run"),("none","NO CLAIM"),("date","carries a date"),("doubt","the ruler was unsure about the grouping")], "everything")}
+{opts("flag", [("multi","only stories with 2+ articles"),("rew","worded differently on a second run"),("kflip","kind changed on a second run"),("none","NO CLAIM"),("date","carries a date"),("doubt","the ruler was unsure about the grouping"),("ruled","stories Anton has ruled on"),("unruled","stories not yet ruled on")], "everything")}
 <input id="q" placeholder="search headline, claim, outlet or id">
 <span class="count" id="count"></span></div>
 <div id="list"></div>
