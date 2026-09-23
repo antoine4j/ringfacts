@@ -236,6 +236,39 @@ pending:** on its own, or with story-073.2 (which holds #745, another 112.ua
 fixture note a day later). First split ruling in this folder; the ruler is
 rebuilt from these once the pass is done.
 
+## 2026-09-23 — story-073.0 + story-073.1 (#599, #619, #690): MERGE into one story
+
+Anton, by voice: *"073.0 and 073.1 can be the same story — slightly different
+articles but ultimately the same type of analysis, especially if these were
+some of the first articles to announce this fight, articles that came out
+around the announcement time."*
+
+**Ruling:** the two Sport.ua pre-fight columns (4 Sep, captured twice, and
+5 Sep) are one story. Together with the 073.0 split above, the pre-fight
+side becomes: {#599, #619, #690} the Sport.ua preview columns; #605 goes with
+073.2 (below) as a fixture note — placed there on the "let it land" principle,
+Anton did not rule on #605's destination explicitly.
+
+## 2026-09-23 — story-073.2 (#687, #688, #745, + #605): the grouping is right; the ruler's doubt was wrong
+
+Anton: *"073.2: one article from 112.ua is a very simple announcement with
+tournament details, and another one from Sport.ua is an announcement of the
+entire UFC event and where to watch."* One story.
+
+On the ruler's low-confidence pair #687 ↔ #683 (ruled "same"): *"When I
+opened the article, it's not updated. Article #687 still talks about the
+fight that will happen. It doesn't have any results in it, and it has links
+to the live broadcast. Same with #688 — it's actually the same article. 073.3
+is already results. So if the ruler thinks #687 was the same as #683, I think
+that's wrong, because #683 is truly about results."*
+
+**Ruling:** #687/#688 (pre-fight live page) and #683 (results page) are
+different stories. The final ruler already has them apart — that "same"
+ruling was the one my merge bug chained and the re-split undid — so this
+confirms the current grouping and retires the doubt. The ruler's "Оновлено
+06 вересня 02:00" note came from a captured body; the live page he opened
+shows no update.
+
 The ruler's own eight low-confidence pair rulings are in
 `clusters.json` under `low_confidence_rulings` and flagged in `REPORT.html`
 under "the ruler was unsure".
