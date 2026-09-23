@@ -245,11 +245,12 @@ around the announcement time."*
 
 **Ruling:** the two Sport.ua pre-fight columns (4 Sep, captured twice, and
 5 Sep) are one story. Together with the 073.0 split above, the pre-fight
-side becomes: {#599, #619, #690} the Sport.ua preview columns; #605 goes with
-073.2 (below) as a fixture note — placed there on the "let it land" principle,
-Anton did not rule on #605's destination explicitly.
+side becomes: {#599, #619, #690} the Sport.ua preview columns. **#605's
+destination is not ruled.** Anton, when I proposed placing it with 073.2:
+*"For now, keep everything like it just was previously."* Nothing in
+clusters.json moves until the pass is over and he says so.
 
-## 2026-09-23 — story-073.2 (#687, #688, #745, + #605): the grouping is right; the ruler's doubt was wrong
+## 2026-09-23 — story-073.2 (#687, #688, #745): the grouping is right; the ruler's doubt was wrong
 
 Anton: *"073.2: one article from 112.ua is a very simple announcement with
 tournament details, and another one from Sport.ua is an announcement of the
