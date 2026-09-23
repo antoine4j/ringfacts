@@ -180,6 +180,18 @@ part of why it wins.
     (TODO 7), so the richer extraction feeds that even if dedup keeps using
     only the lead fact. ~$0.10 per pass; the prompt is the only change.
 
+**Anton's read of the result — 2026-09-22, after reviewing the report**
+9c. *"Embedding comparison is useless for this task, unless we increase the
+    extract size to include more details — but that may add more disparity
+    than precision. Basically, we need to find a way to match each new
+    article to one of the existing stories. And that is a real problem that
+    current production struggles with too."* The sharper form: similarity
+    finds candidates (arm 4's 27% is real) but cannot decide membership —
+    the claim-only threshold that best fits the ruler is 0.95, under which
+    three near-identical claims (story-125, 0.91–0.94) fall "apart". The
+    join-or-start-a-story step he named for the whiteboard is a matching
+    problem, to be designed and tested as its own stage.
+
 **Blocked**
 10. Live validation — the sample is frozen and must not be re-pulled.
 11. A bigger blind set — 22 articles is exhausted, and only Anton can grade it.
