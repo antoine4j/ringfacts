@@ -331,15 +331,18 @@ ruling that forty analyses make a group stop reading.
 
 **Applied at rebuild, not now.** Nothing in clusters.json moves until the
 pass is over. Members he named: 066 (#555, #563), 081 (#623), 088 (#673,
-#681), 089 (#692, #698). **Five more single-article prediction stories exist
+#681), 089 (#692, #698). **Six more single-article prediction stories exist
 that he did not name** — 072 ClutchPoints (#594), 075 Liontips (#603), 077
-Stats Zone (#608), 086 BetMGM (#655, no text), 091 DraftKings (#709). Under
-the rule as stated they belong in the same story; **not ruled** — to confirm.
+Stats Zone (#608), 082 DraftKings best bets (#641), 086 BetMGM (#655, no
+text), 091 DraftKings pick (#709). Under the rule as stated they belong in
+the same story; **not ruled** — to confirm. Edges left out on purpose: 058
+and 079 are fixture previews with no pick; 073.0's Sport.ua column does pick
+Donchenko but is already ruled as-is on the pre-fight side.
 
-Checked, since he asked in passing: of the nine prediction articles with a
-claim, six pick Soriano (066 ×2, 081, 088 ×2, 089 ×2) and three pick
-Donchenko (072, 077, 091 — the betting-side pieces, matching his memory that
-Donchenko was the favourite by the odds).
+Checked, since he asked in passing: of the twelve prediction articles with
+a claim, eight pick Soriano (066 ×2, 075, 081, 088 ×2, 089 ×2 — the MMA
+media) and four pick Donchenko (072, 077, 082, 091 — the betting side,
+matching his memory that Donchenko was the favourite by the odds).
 
 The ruler's own eight low-confidence pair rulings are in
 `clusters.json` under `low_confidence_rulings` and flagged in `REPORT.html`
