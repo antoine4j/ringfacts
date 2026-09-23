@@ -62,7 +62,34 @@ for a in sorted(arts, key=lambda x: arts[x]["published_at"], reverse=True):
         "doubt": doubt.get(a, []),
     })
 
-stories = [{"key": c["key"], "desc": story_desc[c["key"]], "n": len(c["articles"]), "ruled": ruled.get(c["key"]),
+# Where the extractor and the ruler disagree. The extractor's view of "same
+# story" is the cosine of its own text (claim + occasion, arm 3o, pass 4) at
+# that arm's best single threshold on the ruler's pairs; the ruler's view is
+# the cluster. A same-story pair below the threshold is a split the extractor
+# would make; a different-story pair above it is a merge it would make. Only
+# pairs dedup actually faces are counted: same fighter, within 3 days.
+import os, sys; sys.path.insert(0, HERE); import score
+VARM = "3o-p4"
+vec = {}
+for a in arts:
+    fp = f"{HERE}/emb-cache/{VARM}/{a}.json"
+    if os.path.exists(fp): vec[a] = json.load(open(fp))
+same, diff = score.pairs(ruler)
+same = [(a, b) for a, b in same if a in vec and b in vec]
+diff = [(a, b) for a, b in diff if a in vec and b in vec]
+sim = {pr: score.cos(vec[pr[0]], vec[pr[1]]) for pr in same + diff}
+THR = min((sum(sim[pr] < t for pr in same) + sum(sim[pr] >= t for pr in diff), t)
+          for t in [x / 100 for x in range(60, 99)])[1]
+dis = collections.defaultdict(lambda: {"split": [], "merge": [], "pairs": 0})
+for a, b in same: dis[story_of[a]]["pairs"] += 1
+for a, b in same:
+    if sim[(a, b)] < THR: dis[story_of[a]]["split"].append([a, b, round(sim[(a, b)], 2)])
+for a, b in diff:
+    if sim[(a, b)] >= THR:
+        dis[story_of[a]]["merge"].append([a, b, story_of[b], round(sim[(a, b)], 2)])
+        dis[story_of[b]]["merge"].append([b, a, story_of[a], round(sim[(a, b)], 2)])
+
+stories = [{"key": c["key"], "dis": (dis[c["key"]] if c["key"] in dis and (dis[c["key"]]["split"] or dis[c["key"]]["merge"]) else None), "desc": story_desc[c["key"]], "n": len(c["articles"]), "ruled": ruled.get(c["key"]),
             "newest": max(str(arts[a]["published_at"])[:10] for a in c["articles"])} for c in ruler]
 stories.sort(key=lambda s: s["newest"], reverse=True)
 
@@ -94,10 +121,17 @@ input{flex:1;min-width:150px}
 .count{color:var(--dim);font-size:13px;margin-left:auto;font-variant-numeric:tabular-nums}
 .story{margin:22px 0 8px;padding-bottom:5px;border-bottom:1px solid var(--line);
 display:flex;gap:10px;align-items:baseline;flex-wrap:wrap}
-.story .k{font-size:11.5px;color:var(--dim);font-variant-numeric:tabular-nums;white-space:nowrap}
+.story{cursor:pointer;user-select:none;position:sticky;top:0;background:var(--bg);z-index:1;padding-top:6px}
+.story .car{font-size:12px;color:var(--dim);width:12px;flex:0 0 12px}
+.story .k{font-size:13px;font-weight:700;color:var(--fg);font-variant-numeric:tabular-nums;white-space:nowrap;
+background:var(--card);border:1px solid var(--line);border-radius:5px;padding:1px 7px}
+.story.shut .sd{color:var(--dim);font-weight:400}
+.btn{font:inherit;font-size:12.5px;padding:6px 10px;border:1px solid var(--line);border-radius:6px;background:var(--bg);color:var(--fg);cursor:pointer}
 .story .sd{font-size:13.5px;font-weight:500;flex:1;min-width:240px}
 .story .sn{font-size:12px;color:var(--dim);white-space:nowrap}
 .story.isruled{border-bottom-color:var(--ok)}
+.dis{font-size:11.5px;font-weight:600;color:var(--warn);white-space:nowrap}
+.disl{font-size:12px;color:var(--dim);margin:-4px 0 8px 22px}
 .ruled{font-size:11.5px;font-weight:600;color:var(--ok);background:var(--okbg);padding:2px 8px;border-radius:20px;white-space:nowrap}
 .art{background:var(--card);border:1px solid var(--line);border-left-width:3px;border-radius:8px;
 padding:11px 13px;margin-bottom:7px}
@@ -136,11 +170,13 @@ const f={fighter:'',kind:'',flag:'',group:'story',q:''};
 function keep(r){
   return (!f.fighter||r.f===f.fighter)&&(!f.kind||r.kind===f.kind)&&
     (f.flag!=='rew'||r.rew)&&(f.flag!=='kflip'||r.kflip)&&(f.flag!=='none'||!r.claim)&&
-    (f.flag!=='multi'||S_N[r.story]>1)&&(f.flag!=='date'||r.date)&&(f.flag!=='doubt'||r.doubt.length)&&(f.flag!=='ruled'||S_R[r.story])&&(f.flag!=='unruled'||!S_R[r.story])&&
+    (f.flag!=='multi'||S_N[r.story]>1)&&(f.flag!=='date'||r.date)&&(f.flag!=='doubt'||r.doubt.length)&&(f.flag!=='ruled'||S_R[r.story])&&(f.flag!=='dis'||S_D[r.story])&&(f.flag!=='unruled'||!S_R[r.story])&&
     (!f.q||(r.t+' '+r.o+' '+r.id+' '+r.claim+' '+r.occ).toLowerCase().includes(f.q.toLowerCase()));}
 const S_N={}; S.forEach(s=>S_N[s.key]=s.n);
 const S_OF={}; D.forEach(r=>S_OF[r.id]=r.story);
 const S_R={}; S.forEach(s=>S_R[s.key]=!!s.ruled);
+const S_D={}; S.forEach(s=>S_D[s.key]=!!s.dis);
+const collapsed=new Set();
 function tile(r){
   const rew=r.rew?'<span class="flag">worded differently on a second run</span>':'';
   const kf=r.kflip?`<span class="flag">kind changed on a second run (${esc(KL[r.kind5]||r.kind5)})</span>`:'';
@@ -163,15 +199,23 @@ function render(){
   if(f.group==='story'){
     const by={}; out.forEach(r=>(by[r.story]=by[r.story]||[]).push(r));
     S.forEach(s=>{const rs=by[s.key]; if(!rs) return;
+      const dz=s.dis?`<span class="dis">extractor disagrees${s.dis.split.length?` · would split: ${s.dis.split.length} of ${s.dis.pairs} pairs apart (${Math.round(100*s.dis.split.length/s.dis.pairs)}%)`:''}${s.dis.merge.length?` · would merge with ${[...new Set(s.dis.merge.map(m=>m[2]))].join(', ')}`:''}</span>`:'';
+      const items=s.dis?s.dis.split.slice().sort((a,b)=>a[2]-b[2]).map(x=>`apart #${x[0]} \u2194 #${x[1]} at ${x[2]}`).concat(s.dis.merge.slice().sort((a,b)=>b[3]-a[3]).map(x=>`together #${x[0]} \u2194 #${x[1]} (${x[2]}) at ${x[3]}`)):[];
+      const dl=s.dis&&open?`<div class="disl">${items.slice(0,10).join(' &middot; ')}${items.length>10?` &middot; +${items.length-10} more`:''}</div>`:'';
       const rb=s.ruled?`<span class="ruled" title="${esc(s.ruled.what)}">Anton ruled: ${esc(s.ruled.what)} · ${s.ruled.d}</span>`:'';
-      h+=`<div class="story ${s.ruled?'isruled':''}"><span class="k">${esc(s.key)}</span><span class="sd">${esc(s.desc)}</span>${rb}
-          <span class="sn">${s.n} article${s.n>1?'s':''} in the ruler${rs.length<s.n?', '+rs.length+' shown':''}</span></div>`;
-      h+=rs.slice().sort((a,b)=>a.d<b.d?-1:1).map(tile).join('');});
+      const open=!collapsed.has(s.key);
+      h+=`<div class="story ${s.ruled?'isruled':''} ${open?'':'shut'}" data-key="${esc(s.key)}"><span class="car">${open?'\u25BE':'\u25B8'}</span><span class="k">${esc(s.key)}</span><span class="sd">${esc(s.desc)}</span>${rb}${dz}
+          <span class="sn">${s.n} article${s.n>1?'s':''} in the ruler${rs.length<s.n?', '+rs.length+' shown':''}</span></div>${dl}`;
+      if(open) h+=rs.slice().sort((a,b)=>a.d<b.d?-1:1).map(tile).join('');});
   } else h=out.map(tile).join('');
   document.getElementById('count').textContent=out.length+' of '+D.length+' articles';
   box.innerHTML=h||'<p style="color:var(--dim)">Nothing matches.</p>';}
 function esc(s){const d=document.createElement('div');d.textContent=s;return d.innerHTML}
-box.addEventListener('click',e=>{if(e.target.classList.contains('tog'))e.target.closest('.art').classList.toggle('open')});
+box.addEventListener('click',e=>{
+  if(e.target.classList.contains('tog')){e.target.closest('.art').classList.toggle('open');return;}
+  const st=e.target.closest('.story'); if(st&&!e.target.closest('a')){const k=st.dataset.key; collapsed.has(k)?collapsed.delete(k):collapsed.add(k); render();}});
+document.getElementById('shut').addEventListener('click',()=>{S.forEach(s=>collapsed.add(s.key));render()});
+document.getElementById('openall').addEventListener('click',()=>{collapsed.clear();render()});
 ['fighter','kind','flag','group'].forEach(k=>document.getElementById(k).addEventListener('change',e=>{f[k]=e.target.value;render()}));
 document.getElementById('q').addEventListener('input',e=>{f.q=e.target.value;render()});
 render();
@@ -206,14 +250,16 @@ agree. Nothing here was posted anywhere.</p>
 <div class="tile"><div class="n" style="color:var(--no)">{kinds["about_someone_else"] + kinds["restatement"] + kinds["no_text"]}</div><div class="l">no claim &mdash; about someone else, restated, or no text</div></div>
 <div class="tile"><div class="n">{rew}</div><div class="l">re-worded when run again on identical input ({kflip} changed kind)</div></div>
 <div class="tile"><div class="n" style="color:var(--ok)">{len(ruled)} / {multi}</div><div class="l">stories Anton has ruled on, of the {multi} with 2+ articles</div></div>
+<div class="tile"><div class="n" style="color:var(--warn)">{len(dis)}</div><div class="l">stories where the extractor&rsquo;s own text disagrees with the ruler</div></div>
 <div class="tile"><div class="n">{occ} / {dated}</div><div class="l">carry a where-and-when / carry a date</div></div>
 </div>
 <div class="bar">
 {opts("group", [("story","grouped by story"),("date","flat, newest first")], "", default="story")}
 {opts("fighter", [(f,f) for f in fighters], "all fighters")}
 {opts("kind", [(k, KLABEL[k]) for k, _ in kinds.most_common()], "all kinds")}
-{opts("flag", [("multi","only stories with 2+ articles"),("rew","worded differently on a second run"),("kflip","kind changed on a second run"),("none","NO CLAIM"),("date","carries a date"),("doubt","the ruler was unsure about the grouping"),("ruled","stories Anton has ruled on"),("unruled","stories not yet ruled on")], "everything")}
+{opts("flag", [("multi","only stories with 2+ articles"),("rew","worded differently on a second run"),("kflip","kind changed on a second run"),("none","NO CLAIM"),("date","carries a date"),("doubt","the ruler was unsure about the grouping"),("dis","extractor and ruler disagree"),("ruled","stories Anton has ruled on"),("unruled","stories not yet ruled on")], "everything")}
 <input id="q" placeholder="search headline, claim, outlet or id">
+<button class="btn" id="shut">collapse all</button><button class="btn" id="openall">expand all</button>
 <span class="count" id="count"></span></div>
 <div id="list"></div>
 <p class="sub" style="margin-top:26px">Things worth looking for. <b>Inside one story, do the claims say the same thing?</b>
@@ -225,9 +271,15 @@ with different words the second time &mdash; harmless when the meaning held, tel
 <b>The grouping itself is a model’s reading, not yours.</b> Where two articles sit in one story and should not, or in two and
 should be one, that is a ruling on the ruler and outranks everything else on this page — every score in the experiment is
 measured against it. The ruler flagged its own doubts on {ndoubt} pairs; filter to <i>the ruler was unsure</i> to see them.
+<b>&ldquo;Extractor disagrees&rdquo;</b> on a story header means the extractor&rsquo;s own text &mdash; the claim plus
+where-and-when, embedded &mdash; would put two of the story&rsquo;s articles apart (a <i>split</i>) or would pull in an
+article from another story (a <i>merge</i>), at that text&rsquo;s best single threshold of {THR:.2f} on the pairs dedup
+actually faces: same fighter, within three days. It is Qwen&rsquo;s reading against Fable&rsquo;s, neither of them yours;
+where they disagree is where your ruling is worth most.
 Write rulings in <code>verdicts.md</code> next to this file, and the ruler gets rebuilt and re-scored from them.</p>
 </div><script>const DATA={json.dumps(rows, ensure_ascii=False)},STORIES={json.dumps(stories, ensure_ascii=False)},KL={json.dumps(KLABEL)};{JS}</script></body></html>"""
 open(f"{HERE}/REPORT.html", "w").write(doc)
 print(f"wrote REPORT.html  ({len(doc)/1024:.0f} KB, {len(rows)} articles, {len(stories)} stories, {multi} with 2+ articles)")
 print(f"  kinds: " + ", ".join(f"{KLABEL[k]} {n}" for k, n in kinds.most_common()))
+print(f"  extractor vs ruler: threshold {THR:.2f}, {len([k for k in dis if dis[k]['split'] or dis[k]['merge']])} stories disagree")
 print(f"  worded differently on a second run {rew}, kind flipped {kflip}, occasion filled {occ}, dated {dated}")
