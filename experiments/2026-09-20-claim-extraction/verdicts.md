@@ -110,6 +110,24 @@ Ruling on the ruler: one story. **Design rule stated:** an article belongs to
 the story of its main news; a side mention that could tie it to another story
 does not pull it there, even when that other story is likely to grow.
 
+## 2026-09-22 — design principle: edge articles may land either way
+
+Anton, by voice, during the ruler review:
+
+> "If some article works for both stories, then if the comparison is
+> genuinely not sure, then I guess it's okay, and whatever story that article
+> joins, let it be. We're not chasing precision here. We're chasing the
+> grouping around the core. I would trust outlets that if the news is
+> significant enough it will appear more than once and it will resurface as
+> its own story. So that same non-determinism will help us group it into the
+> core stories. And the articles that are truly on the edge, it doesn't
+> matter which story they join, considering that most of it will be
+> summarized by the digest agent anyway. This is my idea to work around
+> non-determinism while being clear on substance."
+
+Not a ruling on a story; a rule for the join-or-start step on the
+whiteboard. Recorded here because it was said while ruling.
+
 The ruler's own eight low-confidence pair rulings are in
 `clusters.json` under `low_confidence_rulings` and flagged in `REPORT.html`
 under "the ruler was unsure".
