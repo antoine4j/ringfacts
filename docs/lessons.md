@@ -357,7 +357,10 @@ Rules for adding to it:
 - **The classifier can tell them apart where the embedding cannot** (same
   day, consensus pass 16): all 24 Soriano result articles answer `result`,
   all 3 booking articles `announcement`, the 5 weigh-in pieces `preview`;
-  no crossover. One fight, 42 articles.
+  no crossover. One fight, 42 articles — the complete set for that fight,
+  since the sample holds every Donchenko article with text. Anton ruled it
+  firm enough to build on: a single misread lands one article in the wrong
+  pile; it does not silence a story.
 - **Does not say:** that a booking and a result are one story — Anton's
   ruling is that they are not (different occasions). It says similarity
   alone cannot enforce that; the classifier's `news_kind` can, on this

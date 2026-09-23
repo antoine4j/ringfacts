@@ -144,6 +144,13 @@ articles read as a booking, zero bookings as a result. One fight, 42
 articles — enough to say the guard is worth building, not enough to say it
 never fails.
 
+Anton, on hearing the 42 was the complete set for that fight: *"If 42
+articles were just ruled with no mistakes, I think it's firm enough. Even if
+one article is mistaken, no biggie — we still have distinct piles:
+announcement, result, etc."* **Ruled firm.** The guard is a design
+decision now, not a hypothesis; a single misread article lands in the wrong
+pile, it does not silence a story.
+
 The ruler's own eight low-confidence pair rulings are in
 `clusters.json` under `low_confidence_rulings` and flagged in `REPORT.html`
 under "the ruler was unsure".
