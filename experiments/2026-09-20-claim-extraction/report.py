@@ -126,6 +126,7 @@ display:flex;gap:10px;align-items:baseline;flex-wrap:wrap}
 .story .k{font-size:13px;font-weight:700;color:var(--fg);font-variant-numeric:tabular-nums;white-space:nowrap;
 background:var(--card);border:1px solid var(--line);border-radius:5px;padding:1px 7px}
 .story.shut .sd{color:var(--dim);font-weight:400}
+.theme{font:inherit;font-size:12.5px;padding:6px 10px;border:1px solid var(--line);border-radius:6px;background:var(--bg);color:var(--fg);cursor:pointer;margin-left:6px}
 .btn{font:inherit;font-size:12.5px;padding:6px 10px;border:1px solid var(--line);border-radius:6px;background:var(--bg);color:var(--fg);cursor:pointer}
 .story .sd{font-size:13.5px;font-weight:500;flex:1;min-width:240px}
 .story .sn{font-size:12px;color:var(--dim);white-space:nowrap}
@@ -203,9 +204,10 @@ function render(){
       const items=s.dis?s.dis.split.slice().sort((a,b)=>a[2]-b[2]).map(x=>`apart #${x[0]} \u2194 #${x[1]} at ${x[2]}`).concat(s.dis.merge.slice().sort((a,b)=>b[3]-a[3]).map(x=>`together #${x[0]} \u2194 #${x[1]} (${x[2]}) at ${x[3]}`)):[];
       const dl=s.dis&&open?`<div class="disl">${items.slice(0,10).join(' &middot; ')}${items.length>10?` &middot; +${items.length-10} more`:''}</div>`:'';
       const rb=s.ruled?`<span class="ruled" title="${esc(s.ruled.what)}">Anton ruled: ${esc(s.ruled.what)} · ${s.ruled.d}</span>`:'';
-      h+=`<div class="story ${s.ruled?'isruled':''} ${open?'':'shut'}" data-key="${esc(s.key)}"><span class="car">${open?'\u25BE':'\u25B8'}</span><span class="k">${esc(s.key)}</span><span class="sd">${esc(s.desc)}</span>${rb}${dz}
+      h+=`<section class="sgrp"><div class="story ${s.ruled?'isruled':''} ${open?'':'shut'}" data-key="${esc(s.key)}"><span class="car">${open?'\u25BE':'\u25B8'}</span><span class="k">${esc(s.key)}</span><span class="sd">${esc(s.desc)}</span>${rb}${dz}
           <span class="sn">${s.n} article${s.n>1?'s':''} in the ruler${rs.length<s.n?', '+rs.length+' shown':''}</span></div>${dl}`;
-      if(open) h+=rs.slice().sort((a,b)=>a.d<b.d?-1:1).map(tile).join('');});
+      if(open) h+=rs.slice().sort((a,b)=>a.d<b.d?-1:1).map(tile).join('');
+      h+=`</section>`;});
   } else h=out.map(tile).join('');
   document.getElementById('count').textContent=out.length+' of '+D.length+' articles';
   box.innerHTML=h||'<p style="color:var(--dim)">Nothing matches.</p>';}
@@ -218,6 +220,13 @@ document.getElementById('openall').addEventListener('click',()=>{collapsed.clear
 ['fighter','kind','flag','group'].forEach(k=>document.getElementById(k).addEventListener('change',e=>{f[k]=e.target.value;render()}));
 document.getElementById('q').addEventListener('input',e=>{f.q=e.target.value;render()});
 render();
+// Theme: auto -> light -> dark, remembered per browser. The stylesheet already
+// honours data-theme on <html>; this only sets it.
+(function(){const b=document.getElementById('theme'),R=document.documentElement,K='report-theme';
+ const L={auto:'\u25D0 auto',light:'\u2600 light',dark:'\u263E dark'};let m='auto';
+ try{m=localStorage.getItem(K)||'auto'}catch(e){}
+ function ap(){if(m==='auto')R.removeAttribute('data-theme');else R.setAttribute('data-theme',m);b.textContent=L[m];}
+ b.addEventListener('click',()=>{m=m==='auto'?'light':m==='light'?'dark':'auto';try{localStorage.setItem(K,m)}catch(e){}ap()});ap();})();
 """
 
 def opts(name, vals, lbl, default=""):
@@ -258,7 +267,7 @@ agree. Nothing here was posted anywhere.</p>
 {opts("kind", [(k, KLABEL[k]) for k, _ in kinds.most_common()], "all kinds")}
 {opts("flag", [("multi","only stories with 2+ articles"),("rew","worded differently on a second run"),("kflip","kind changed on a second run"),("none","NO CLAIM"),("date","carries a date"),("doubt","the ruler was unsure about the grouping"),("dis","extractor and ruler disagree"),("ruled","stories Anton has ruled on"),("unruled","stories not yet ruled on")], "everything")}
 <input id="q" placeholder="search headline, claim, outlet or id">
-<button class="btn" id="shut">collapse all</button><button class="btn" id="openall">expand all</button>
+<button class="btn" id="shut">collapse all</button><button class="btn" id="openall">expand all</button><button class="theme" id="theme">auto</button>
 <span class="count" id="count"></span></div>
 <div id="list"></div>
 <p class="sub" style="margin-top:26px">Things worth looking for. <b>Inside one story, do the claims say the same thing?</b>

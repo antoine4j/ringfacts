@@ -142,6 +142,7 @@ grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:14px 26px}
 .lo{color:var(--warn)}
 .tog,.tog2{cursor:pointer;font-size:12px;color:var(--dim);background:none;border:none;padding:0;text-decoration:underline}
 .tog2{margin-left:9px}
+.theme{font:inherit;font-size:12.5px;padding:6px 10px;border:1px solid var(--line);border-radius:6px;background:var(--bg);color:var(--fg);cursor:pointer;margin-left:6px}
 @media(max-width:640px){.wrap{padding:18px 16px 60px}.count{margin-left:0;width:100%}}
 """
 
@@ -196,6 +197,13 @@ box.addEventListener('click',e=>{
 ['fighter','bucket','speaker'].forEach(k=>document.getElementById(k).addEventListener('change',e=>{f[k]=e.target.value;render()}));
 document.getElementById('q').addEventListener('input',e=>{f.q=e.target.value;render()});
 render();
+// Theme: auto -> light -> dark, remembered per browser. The stylesheet already
+// honours data-theme on <html>; this only sets it.
+(function(){const b=document.getElementById('theme'),R=document.documentElement,K='report-theme';
+ const L={auto:'\u25D0 auto',light:'\u2600 light',dark:'\u263E dark'};let m='auto';
+ try{m=localStorage.getItem(K)||'auto'}catch(e){}
+ function ap(){if(m==='auto')R.removeAttribute('data-theme');else R.setAttribute('data-theme',m);b.textContent=L[m];}
+ b.addEventListener('click',()=>{m=m==='auto'?'light':m==='light'?'dark':'auto';try{localStorage.setItem(K,m)}catch(e){}ap()});ap();})();
 """
 
 def opts(name, vals, lbl):
@@ -228,6 +236,7 @@ this is the experiment, not production.</p>
 {opts("bucket", [("1","bucket 1 — loud"),("2","bucket 2 — digest"),("3","bucket 3 — not sent")], "all buckets")}
 {opts("speaker", [(s,s) for s in speakers], "any speaker")}
 <input id="q" placeholder="search headline, outlet or id">
+<button class="theme" id="theme">auto</button>
 <span class="count" id="count"></span></div>
 <div id="list"></div>
 <p class="sub" style="margin-top:26px">Click <b>answers</b> on any article to see all six questions and
