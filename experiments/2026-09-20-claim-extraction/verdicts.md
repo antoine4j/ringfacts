@@ -302,6 +302,45 @@ Anton, by voice: *"Story 80 is also correctly grouped. It's all about the
 message, the video to his son, published on Instagram."* One story, one
 artifact: the Instagram video letter to Hugo, 4 Sep. Twelve articles.
 
+## 2026-09-23 — story-084 (#653, #686): the grouping is right
+
+Anton, by voice: *"Story 84 is also correct. It's a ceremonial weigh-in and
+face-off. This is a real, separate occasion leading to the fight."*
+
+## 2026-09-23 — stories 066, 081, 088, 089 — predictions of the Soriano fight: MERGE at rebuild, by type of news
+
+Anton, by voice:
+
+> "81, 88, 89 and 66 are all predictions from different outlets and authors
+> about the same Donchenko fight. So I would group them probably into the
+> same story. I understand why Fable grouped them differently — these are
+> truly different occasions, from different outlets, by different authors.
+> They all pick Soriano, funny enough … Regardless of that, despite it truly
+> being different occasions, I think they should be grouped by the type of
+> the news, which is the prediction of a concrete fight. Because I wouldn't
+> want multiple mentions of prediction of the same fight — there can be
+> potentially endless predictions; every outlet can think they are entitled
+> to give predictions, and that's what's going on apparently."
+
+**Ruling:** one story, "predictions of Donchenko vs Soriano", regardless of
+outlet or author. **A new grouping rule, the first exception to occasion:**
+for a genre that every outlet reproduces at will — predictions, odds,
+betting tips — the story is the *type of news about a concrete event*, not
+the occasion. Reason: volume, not principle; the same reason as the RF
+ruling that forty analyses make a group stop reading.
+
+**Applied at rebuild, not now.** Nothing in clusters.json moves until the
+pass is over. Members he named: 066 (#555, #563), 081 (#623), 088 (#673,
+#681), 089 (#692, #698). **Five more single-article prediction stories exist
+that he did not name** — 072 ClutchPoints (#594), 075 Liontips (#603), 077
+Stats Zone (#608), 086 BetMGM (#655, no text), 091 DraftKings (#709). Under
+the rule as stated they belong in the same story; **not ruled** — to confirm.
+
+Checked, since he asked in passing: of the nine prediction articles with a
+claim, six pick Soriano (066 ×2, 081, 088 ×2, 089 ×2) and three pick
+Donchenko (072, 077, 091 — the betting-side pieces, matching his memory that
+Donchenko was the favourite by the odds).
+
 The ruler's own eight low-confidence pair rulings are in
 `clusters.json` under `low_confidence_rulings` and flagged in `REPORT.html`
 under "the ruler was unsure".
