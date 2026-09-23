@@ -252,12 +252,29 @@ Then, stepping back:
 > where-to-watch page. I don't know if it makes any difference if it's a
 > separate story, but I understand and respect Fable's grouping."
 
-**Ruling: none. The three stories stay exactly as Fable built them.** No
-split, no merge, no move; the earlier draft of this entry that proposed a
-split and a merge is withdrawn at his instruction. What is recorded is the
-judgement itself: on the pre-fight side the boundary between "the fight is
-announced" and "a column about the fight" is one he does not need drawn, and
-either grouping would serve the chat and the digest.
+Then, on the articles inside them: *"#605 and #745 are kind of similar in
+substance, but I respect Fable's decision that the first one was released
+before the fight and the second one is kind of a reminder on the day of the
+fight. So I think it's the right grouping again, but I wouldn't be surprised
+if in the pipeline they would be added to the same story leading up to the
+fight."*
+
+**Ruling: the grouping is right for 073.0, 073.1 and 073.2, as Fable built
+them.** Mark them ruled. No split, no merge, no move; the earlier draft that
+proposed a split and a merge is withdrawn at his instruction.
+
+**Caveat, his:** *"Because it's late, maybe in the future I will take a fresh
+second look, and maybe I will see some more differentiation for articles
+leading up to the fight. So this is an open area."* The pre-fight side is
+ruled for now and flagged for a second look; the boundary between "the fight
+is announced" and "a column about the fight" is one he does not need drawn
+for the chat or the digest, so either grouping serves.
+
+## 2026-09-23 — story-073.0 (#599, #619, #605): the grouping is right — see the pre-fight entry above
+
+## 2026-09-23 — story-073.1 (#690): the grouping is right — see the pre-fight entry above
+
+## 2026-09-23 — story-073.2 (#687, #688, #745): the grouping is right — see the pre-fight entry above
 
 The ruler's own eight low-confidence pair rulings are in
 `clusters.json` under `low_confidence_rulings` and flagged in `REPORT.html`
