@@ -166,7 +166,11 @@ part of why it wins.
     that article I think, otherwise we are losing fidelity. But it's for the
     future passes."* Today's prompt returns ONE sentence, ONE fact, naming him;
     when Makhachev says two things about Amosov in one interview, one is
-    dropped. Keep the exclusion of what is said about others — that part is
+    dropped. **Concrete case, story-125:** Makhachev's reason for not rating
+    Amosov ("someone stopped his wrestling") is in the text of all three
+    articles; the extractor kept it in one (#1146) and dropped it in two
+    (#1150, #1160). Anton spotted it on first read. Keep the exclusion of
+    what is said about others — that part is
     by design and he confirmed it. What changes: `claim` becomes a list of
     facts about him (or a lead claim plus "also said"). What it touches:
     (a) the dedup embedding — arm 4 was measured with one sentence in front
