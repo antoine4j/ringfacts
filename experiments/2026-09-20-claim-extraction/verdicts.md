@@ -167,6 +167,40 @@ Anton, by voice: *"105, 107 — correct."* Ruling on the ruler: one story.
 
 Anton, by voice: *"105, 107 — correct."* Ruling on the ruler: one story.
 
+## 2026-09-23 — story-073.4 (#731, #732, #733, #735, #736, #747, … +18): the grouping is right
+
+Anton, by voice, from headlines: *"073.4 is clearly about a fact of Donchenko
+winning over Soriano."* One story: the result.
+
+## 2026-09-23 — story-073.5 (#817): the grouping is right
+
+*"073.5 is about assessment of how he did that. So it's kind of post-result
+analysis, not the declaration of the result."* One story, its own occasion.
+(This is #817, the article the extractor reads as the result in every pass;
+Anton's reading confirms it is a column, so that extraction is wrong.)
+
+## 2026-09-23 — story-073.3 (#683, #714, #737): the grouping is right
+
+*"073.3 is about the whole event results, where Donchenko's result is still
+mentioned there."* One story, the card-wide results. **Nesting rule stated:**
+*"Donchenko's fight is one occasion inside a different occasion that is a
+UFC event, so they are reported separately in terms of a core story, but one
+includes another."*
+
+## 2026-09-23 — story-095 (#746, #778): the grouping is right
+
+*"095 is the octagon interview and a callout of Rodriguez."* One story.
+
+## 2026-09-23 — story-093 (#740, #789, #794, #797, #813, #851): the grouping is right
+
+*"093 is a post-fight backstage interview, which is another occasion."* One
+story, separate from 095: two sittings, two occasions, though the callout is
+the same. *"These seem to be all stories post-fight, and I think they are
+correctly [split] by occasion."*
+
+On the story headers in REPORT.html (Fable's one-line descriptions, written
+when it grouped): *"describes what the story is about pretty well."*
+
 The ruler's own eight low-confidence pair rulings are in
 `clusters.json` under `low_confidence_rulings` and flagged in `REPORT.html`
 under "the ruler was unsure".
