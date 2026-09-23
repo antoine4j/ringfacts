@@ -334,8 +334,10 @@ pass is over. Members he named: 066 (#555, #563), 081 (#623), 088 (#673,
 #681), 089 (#692, #698). **Six more single-article prediction stories exist
 that he did not name** — 072 ClutchPoints (#594), 075 Liontips (#603), 077
 Stats Zone (#608), 082 DraftKings best bets (#641), 086 BetMGM (#655, no
-text), 091 DraftKings pick (#709). Under the rule as stated they belong in
-the same story; **not ruled** — to confirm. Edges left out on purpose: 058
+text), 091 DraftKings pick (#709). **Ruled 2026-09-23:** *"All these
+articles should be part of the same prediction story."* So the merged story
+at rebuild is all ten: 066, 072, 075, 077, 081, 082, 086, 088, 089, 091 —
+thirteen articles, "predictions of Donchenko vs Soriano". Edges left out on purpose: 058
 and 079 are fixture previews with no pick; 073.0's Sport.ua column does pick
 Donchenko but is already ruled as-is on the pre-fight side.
 
@@ -356,6 +358,18 @@ answered NO CLAIM correctly. The live page predicts Donchenko. Upstream
 defect; recorded in `docs/lessons.md` under unusable bodies. For the ruler,
 086 remains a prediction story by its headline and Anton's reading of the
 page; still unruled on the merge question.
+
+## 2026-09-23 — predictions: what the extractor should return for them
+
+Anton, by voice: *"Additionally, for predictions we may ask the model to
+extract who is the predicted winner in a given prediction, or maybe even
+what odds are, so it can be later reported by the digest agent."*
+
+A direction for the extractor prompt, not a ruling on the ruler: for
+`kind = analysis` that is a pick, add `predicted_winner` and, where the
+text gives them, `odds`. The digest line then writes itself: "eight of
+twelve picks went Soriano; the books had Donchenko at −238." Recorded in the
+README's next steps beside the multi-fact direction (9b).
 
 The ruler's own eight low-confidence pair rulings are in
 `clusters.json` under `low_confidence_rulings` and flagged in `REPORT.html`

@@ -180,6 +180,14 @@ part of why it wins.
     (TODO 7), so the richer extraction feeds that even if dedup keeps using
     only the lead fact. ~$0.10 per pass; the prompt is the only change.
 
+9d. **Predictions: extract the pick, and the odds if given** — Anton,
+    2026-09-23, ruling the Soriano predictions one story: *"for predictions
+    we may ask the model to extract who is the predicted winner in a given
+    prediction, or maybe even what odds are, so it can be later reported by
+    the digest agent."* Two fields on `analysis` claims that are picks:
+    `predicted_winner`, `odds`. Cheap; same pass as 9b. On the sample: 12
+    picks with text, 8 Soriano, 4 Donchenko, one odds line (Donchenko −238).
+
 **Anton's read of the result — 2026-09-22, after reviewing the report**
 9c. *"Embedding comparison is useless for this task, unless we increase the
     extract size to include more details — but that may add more disparity
