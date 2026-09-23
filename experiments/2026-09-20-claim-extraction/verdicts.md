@@ -391,6 +391,36 @@ README's next steps beside the multi-fact direction (9b).
 
 ## 2026-09-23 — story-091 (#709): one story with the other Soriano predictions — merge at rebuild
 
+## 2026-09-23 — story-094 (#743, #744, #774): SPLIT — #743 comes out; #744 + #774 are the press conference
+
+Anton, by voice: *"The story heading says it's post-fight statements, but
+#743 is not really part of the story. It's just basically an empty mention
+that he participated in the tournament. So that's one ruling. Then the two
+articles #744 and #774 are exactly the same, from the same outlet. It's kind
+of a summary of his octagon and backstage interviews, I want to say — but
+it's in Ukrainian — maybe it's a third interview, I'm not sure."*
+
+Checked, #744's body past the navigation: it is a **third sitting** — the
+post-fight press conference in the media room. Sport.ua's own reporter was
+in the press pool, asked the first three questions in Ukrainian, and prints
+the Q&A (third round "under control", followed the game plan, heard "Slava
+Ukraini" from the arena). It then notes that the Rodriguez callout was said
+in the octagon and *repeated* at the presser. So: a different occasion from
+095 (in-cage, Bisping) and 093 (backstage, UFC.com). The extractor's
+"occasion: press conference in Paris" was right.
+
+#743 (112.ua, 834 chars, "as Sport.ua reports: Donchenko took part in a
+tournament in Paris where he showed his skills at the weigh-in, in the
+octagon and at the press conference") is a content-farm rewrite with no
+fact; the extractor's claim "participated in a tournament in Paris" is
+faithful to it. Fable had it at low confidence: *"thin AI-style rewrite with
+no concrete event."*
+
+**Ruling:** #744 + #774 stay one story — the Paris post-fight press
+conference. #743 leaves it and stands alone (an empty mention; bucket 3
+territory for the classifier, not a story that needs a home). Applied at
+rebuild.
+
 The ruler's own eight low-confidence pair rulings are in
 `clusters.json` under `low_confidence_rulings` and flagged in `REPORT.html`
 under "the ruler was unsure".
