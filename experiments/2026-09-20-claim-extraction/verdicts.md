@@ -128,6 +128,22 @@ Anton, by voice, during the ruler review:
 Not a ruling on a story; a rule for the join-or-start step on the
 whiteboard. Recorded here because it was said while ruling.
 
+## 2026-09-22 — the guard for events: use the classifier's news-kind
+
+Anton, by voice: *"To prevent results riding on the back of a fight
+announcement, we should leverage classification results from the classifier
+to put those apart. The classifier is a high-level model that read the whole
+article, so it should be able to tell — of course we should test it — but I
+would think it should be able to tell announcement from results."*
+
+Tested on the spot, Donchenko–Soriano, classifier consensus pass 16: the 24
+result articles all answer `result`; the 3 August booking articles all
+answer `announcement`; the 5 weigh-in pieces `preview`; the 9 fight-week
+previews split `preview` / `prediction` / one `announcement`. Zero result
+articles read as a booking, zero bookings as a result. One fight, 42
+articles — enough to say the guard is worth building, not enough to say it
+never fails.
+
 The ruler's own eight low-confidence pair rulings are in
 `clusters.json` under `low_confidence_rulings` and flagged in `REPORT.html`
 under "the ruler was unsure".

@@ -354,11 +354,15 @@ Rules for adding to it:
   name the same two men and the same event. Top pair: "Donchenko will meet
   Soriano at UFC Paris" vs "Donchenko beat Soriano at UFC Fight Night" at
   0.939. Measured from `emb-cache/` in the extraction folder.
+- **The classifier can tell them apart where the embedding cannot** (same
+  day, consensus pass 16): all 24 Soriano result articles answer `result`,
+  all 3 booking articles `announcement`, the 5 weigh-in pieces `preview`;
+  no crossover. One fight, 42 articles.
 - **Does not say:** that a booking and a result are one story — Anton's
   ruling is that they are not (different occasions). It says similarity
-  alone cannot enforce that; the classifier's `news_kind` (booking vs
-  result) or the extractor's `date` has to. **Would overturn:** an embedding
-  input that carries the event stage and pushes these pairs below threshold.
+  alone cannot enforce that; the classifier's `news_kind` can, on this
+  case, and the extractor's `date` is a second check. **Would overturn:** a
+  fight where result articles read as `announcement` at confidence ≥0.6.
 
 ### Structured fields agree on same-story pairs, but also on different ones
 `corpus` · `observed` · *FB 2026-09-21*
