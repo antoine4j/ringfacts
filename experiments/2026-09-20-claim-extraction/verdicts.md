@@ -346,7 +346,9 @@ a claim, eight pick Soriano (066 ×2, 075, 081, 088 ×2, 089 ×2 — the MMA
 media) and four pick Donchenko (072, 077, 082, 091 — the betting side,
 matching his memory that Donchenko was the favourite by the odds).
 
-## 2026-09-23 — story-086 (#655): NO CLAIM is a scraping failure, not an extraction one
+## 2026-09-23 — story-086 (#655): one story with the other Soriano predictions — merge at rebuild
+
+(NO CLAIM here is a scraping failure, not an extraction one — see below.)
 
 Anton, by voice: *"Interesting is that 86 says no claim both times, but in
 the article it actually clearly predicts Donchenko winning."*
@@ -370,6 +372,24 @@ A direction for the extractor prompt, not a ruling on the ruler: for
 text gives them, `odds`. The digest line then writes itself: "eight of
 twelve picks went Soriano; the books had Donchenko at −238." Recorded in the
 README's next steps beside the multi-fact direction (9b).
+
+## 2026-09-23 — story-066 (#555, #563): one story with the other Soriano predictions — merge at rebuild
+
+## 2026-09-23 — story-072 (#594): one story with the other Soriano predictions — merge at rebuild
+
+## 2026-09-23 — story-075 (#603): one story with the other Soriano predictions — merge at rebuild
+
+## 2026-09-23 — story-077 (#608): one story with the other Soriano predictions — merge at rebuild
+
+## 2026-09-23 — story-081 (#623): one story with the other Soriano predictions — merge at rebuild
+
+## 2026-09-23 — story-082 (#641): one story with the other Soriano predictions — merge at rebuild
+
+## 2026-09-23 — story-088 (#673, #681): one story with the other Soriano predictions — merge at rebuild
+
+## 2026-09-23 — story-089 (#692, #698): one story with the other Soriano predictions — merge at rebuild
+
+## 2026-09-23 — story-091 (#709): one story with the other Soriano predictions — merge at rebuild
 
 The ruler's own eight low-confidence pair rulings are in
 `clusters.json` under `low_confidence_rulings` and flagged in `REPORT.html`
