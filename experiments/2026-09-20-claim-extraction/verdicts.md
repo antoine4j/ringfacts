@@ -296,6 +296,12 @@ uncertain in passes 1 and 2; pass 3 kept them here without recording why.
 **Product note, his:** for a primary source like this, one link to the
 source itself is the digest; the eight write-ups add nothing he would read.
 
+## 2026-09-23 — story-080 (#620, #627, #632, #636, #647, #651, #659, #666, #675, #682, #697, #717): the grouping is right
+
+Anton, by voice: *"Story 80 is also correctly grouped. It's all about the
+message, the video to his son, published on Instagram."* One story, one
+artifact: the Instagram video letter to Hugo, 4 Sep. Twelve articles.
+
 The ruler's own eight low-confidence pair rulings are in
 `clusters.json` under `low_confidence_rulings` and flagged in `REPORT.html`
 under "the ruler was unsure".
