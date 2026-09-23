@@ -198,12 +198,11 @@ function render(){
   const out=D.filter(keep); let h='';
   if(f.group==='story'){
     const by={}; out.forEach(r=>(by[r.story]=by[r.story]||[]).push(r));
-    S.forEach(s=>{const rs=by[s.key]; if(!rs) return;
+    S.forEach(s=>{const rs=by[s.key]; if(!rs) return; const open=!collapsed.has(s.key);
       const dz=s.dis?`<span class="dis">extractor disagrees${s.dis.split.length?` · would split: ${s.dis.split.length} of ${s.dis.pairs} pairs apart (${Math.round(100*s.dis.split.length/s.dis.pairs)}%)`:''}${s.dis.merge.length?` · would merge with ${[...new Set(s.dis.merge.map(m=>m[2]))].join(', ')}`:''}</span>`:'';
       const items=s.dis?s.dis.split.slice().sort((a,b)=>a[2]-b[2]).map(x=>`apart #${x[0]} \u2194 #${x[1]} at ${x[2]}`).concat(s.dis.merge.slice().sort((a,b)=>b[3]-a[3]).map(x=>`together #${x[0]} \u2194 #${x[1]} (${x[2]}) at ${x[3]}`)):[];
       const dl=s.dis&&open?`<div class="disl">${items.slice(0,10).join(' &middot; ')}${items.length>10?` &middot; +${items.length-10} more`:''}</div>`:'';
       const rb=s.ruled?`<span class="ruled" title="${esc(s.ruled.what)}">Anton ruled: ${esc(s.ruled.what)} · ${s.ruled.d}</span>`:'';
-      const open=!collapsed.has(s.key);
       h+=`<div class="story ${s.ruled?'isruled':''} ${open?'':'shut'}" data-key="${esc(s.key)}"><span class="car">${open?'\u25BE':'\u25B8'}</span><span class="k">${esc(s.key)}</span><span class="sd">${esc(s.desc)}</span>${rb}${dz}
           <span class="sn">${s.n} article${s.n>1?'s':''} in the ruler${rs.length<s.n?', '+rs.length+' shown':''}</span></div>${dl}`;
       if(open) h+=rs.slice().sort((a,b)=>a.d<b.d?-1:1).map(tile).join('');});
@@ -250,7 +249,7 @@ agree. Nothing here was posted anywhere.</p>
 <div class="tile"><div class="n" style="color:var(--no)">{kinds["about_someone_else"] + kinds["restatement"] + kinds["no_text"]}</div><div class="l">no claim &mdash; about someone else, restated, or no text</div></div>
 <div class="tile"><div class="n">{rew}</div><div class="l">re-worded when run again on identical input ({kflip} changed kind)</div></div>
 <div class="tile"><div class="n" style="color:var(--ok)">{len(ruled)} / {multi}</div><div class="l">stories Anton has ruled on, of the {multi} with 2+ articles</div></div>
-<div class="tile"><div class="n" style="color:var(--warn)">{len(dis)}</div><div class="l">stories where the extractor&rsquo;s own text disagrees with the ruler</div></div>
+<div class="tile"><div class="n" style="color:var(--warn)">{sum(1 for k in dis if dis[k]["split"] or dis[k]["merge"])}</div><div class="l">stories where the extractor&rsquo;s own text disagrees with the ruler</div></div>
 <div class="tile"><div class="n">{occ} / {dated}</div><div class="l">carry a where-and-when / carry a date</div></div>
 </div>
 <div class="bar">
