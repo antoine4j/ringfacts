@@ -160,6 +160,22 @@ part of why it wins.
 9. **The threshold.** Production uses 0.80; arm 4's best is 0.90. A one-line
    change, but validate before touching production.
 
+**A direction, not yet a pass — Anton, 2026-09-22, reading the report**
+9b. **Extract everything said about the watched fighter, not one fact.** His
+    words: *"We need to extract everything that was said about our fighter in
+    that article I think, otherwise we are losing fidelity. But it's for the
+    future passes."* Today's prompt returns ONE sentence, ONE fact, naming him;
+    when Makhachev says two things about Amosov in one interview, one is
+    dropped. Keep the exclusion of what is said about others — that part is
+    by design and he confirmed it. What changes: `claim` becomes a list of
+    facts about him (or a lead claim plus "also said"). What it touches:
+    (a) the dedup embedding — arm 4 was measured with one sentence in front
+    of the lead, and several sentences may crowd or may sharpen; re-score,
+    do not assume; (b) the fact-vs-occasion split — several facts from one
+    occasion is exactly the case the storyboard's weekly digest agent needs
+    (TODO 7), so the richer extraction feeds that even if dedup keeps using
+    only the lead fact. ~$0.10 per pass; the prompt is the only change.
+
 **Blocked**
 10. Live validation — the sample is frozen and must not be re-pulled.
 11. A bigger blind set — 22 articles is exhausted, and only Anton can grade it.
