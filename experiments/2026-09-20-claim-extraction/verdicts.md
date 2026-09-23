@@ -68,6 +68,26 @@ Topuria just being ready to fight — and it's all fine."*
 Ruling on the ruler: one story (the occasion). On the claims: the variation
 between "ready to fight" and "Gaethje or Pimblett next" is acceptable.
 
+## 2026-09-22 — story-109 (#930, #968): the grouping is right
+
+Anton, by voice: *"109, 116, 099, 104, 110 — correct."* Ruling on the ruler: one story.
+
+## 2026-09-22 — story-116 (#1016, #1027): the grouping is right
+
+Anton, by voice: *"109, 116, 099, 104, 110 — correct."* Ruling on the ruler: one story.
+
+## 2026-09-22 — story-099 (#820, #838, #843, #871, #892, #913, #921, #953): the grouping is right
+
+Anton, by voice: *"109, 116, 099, 104, 110 — correct."* Ruling on the ruler: one story.
+
+## 2026-09-22 — story-104 (#866, #917, #926): the grouping is right
+
+Anton, by voice: *"109, 116, 099, 104, 110 — correct."* Ruling on the ruler: one story.
+
+## 2026-09-22 — story-110 (#933, #934): the grouping is right
+
+Anton, by voice: *"109, 116, 099, 104, 110 — correct."* Ruling on the ruler: one story.
+
 The ruler's own eight low-confidence pair rulings are in
 `clusters.json` under `low_confidence_rulings` and flagged in `REPORT.html`
 under "the ruler was unsure".
