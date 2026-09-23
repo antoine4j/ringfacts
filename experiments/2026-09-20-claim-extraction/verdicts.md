@@ -59,6 +59,15 @@ because its Bloody Elbow feed body carries a "LATEST NEWS" cross-link whose
 text names Topuria; production's matcher called it `passing` and did not
 post it.
 
+## 2026-09-22 — story-113 (#958, #972, #991, #998, #1008, #1020, #1031, #1036, #1058, #1076): the grouping is right
+
+Anton, by voice: *"story-113 is correctly grouped by Dana White interview
+with Jim Rome. And the extracts are very similar although they vary slightly
+by the fact — from Gaethje and Pimblett being the candidates for Topuria to
+Topuria just being ready to fight — and it's all fine."*
+Ruling on the ruler: one story (the occasion). On the claims: the variation
+between "ready to fight" and "Gaethje or Pimblett next" is acceptable.
+
 The ruler's own eight low-confidence pair rulings are in
 `clusters.json` under `low_confidence_rulings` and flagged in `REPORT.html`
 under "the ruler was unsure".
