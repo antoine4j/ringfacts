@@ -241,8 +241,13 @@ Rules for adding to it:
 - **Evidence (RF):** 182 of 956 arrived as headline only — paywalls, video,
   JS shells. A bug that crashed all 182 was found by their absence from the
   trace. **(FB):** #521, #653, #230 are video stubs or boilerplate;
-  `not_in_the_article_body` is the weakest option (0.47). A scraping defect
-  wearing a classifier costume.
+  `not_in_the_article_body` is the weakest option (0.47). And a body can be
+  *present and still empty*: #655, BetMGM's prediction page, was stored as
+  10,000 characters of inline stylesheet — the "paragraphs" rung caught a
+  `<p>` full of CSS. The extractor said NO CLAIM twice, correctly; the page
+  itself predicts Donchenko wins. Anton found it by opening the page
+  (2026-09-23). Three of 300 bodies read as CSS by brace density; #655 is
+  the clear case. A scraping defect wearing a classifier costume.
 
 ### Boilerplate contaminates the text; a focused excerpt around the subject beats a prefix
 `domain` · `measured` · **found independently by both, RF tested it** · *RF-L09; FB 2026-09-20*

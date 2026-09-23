@@ -344,6 +344,19 @@ a claim, eight pick Soriano (066 ×2, 075, 081, 088 ×2, 089 ×2 — the MMA
 media) and four pick Donchenko (072, 077, 082, 091 — the betting side,
 matching his memory that Donchenko was the favourite by the odds).
 
+## 2026-09-23 — story-086 (#655): NO CLAIM is a scraping failure, not an extraction one
+
+Anton, by voice: *"Interesting is that 86 says no claim both times, but in
+the article it actually clearly predicts Donchenko winning."*
+
+Checked: the stored body of #655 is 10,000 characters of inline CSS
+(`background-origin:content-box; …`) — the body extractor's "paragraphs"
+rung caught a stylesheet in a `<p>`. The extractor never saw an article and
+answered NO CLAIM correctly. The live page predicts Donchenko. Upstream
+defect; recorded in `docs/lessons.md` under unusable bodies. For the ruler,
+086 remains a prediction story by its headline and Anton's reading of the
+page; still unruled on the merge question.
+
 The ruler's own eight low-confidence pair rulings are in
 `clusters.json` under `low_confidence_rulings` and flagged in `REPORT.html`
 under "the ruler was unsure".
