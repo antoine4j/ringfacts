@@ -88,6 +88,22 @@ Anton, by voice: *"109, 116, 099, 104, 110 — correct."* Ruling on the ruler: o
 
 Anton, by voice: *"109, 116, 099, 104, 110 — correct."* Ruling on the ruler: one story.
 
+## 2026-09-22 — story-100 (#850, #896): the grouping is right
+
+Anton, by voice, after hearing the ruler's doubt:
+
+> "100 correct. The rivalry piece is the context to the quote, gives nothing
+> new; the quote itself as O'Malley's opinion is what matters. Parnasse's
+> mention is interesting, it's not main … it could also be a reason to lump
+> it with some other article that talks more about Parnasse. And I'm sure
+> there will be more articles discussing Parnasse and Topuria. So I would
+> let this article stay with story 100, focusing only on O'Malley and almost
+> ignoring Parnasse."
+
+Ruling on the ruler: one story. **Design rule stated:** an article belongs to
+the story of its main news; a side mention that could tie it to another story
+does not pull it there, even when that other story is likely to grow.
+
 The ruler's own eight low-confidence pair rulings are in
 `clusters.json` under `low_confidence_rulings` and flagged in `REPORT.html`
 under "the ruler was unsure".
