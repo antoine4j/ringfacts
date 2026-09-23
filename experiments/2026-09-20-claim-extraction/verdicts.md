@@ -27,6 +27,11 @@ where someone stopped his wrestling") is in the text of all three articles;
 the extractor kept it in #1146 and dropped it in #1150 and #1160. Fidelity
 lost by the one-sentence rule, not by the source. Evidence for README 9b.
 
+## 2026-09-22 — story-124 (#1125, #1129): the grouping is right
+
+Anton, by voice: *"also story-124 is correctly grouped."*
+Ruling on the ruler: one story.
+
 The ruler's own eight low-confidence pair rulings are in
 `clusters.json` under `low_confidence_rulings` and flagged in `REPORT.html`
 under "the ruler was unsure".
