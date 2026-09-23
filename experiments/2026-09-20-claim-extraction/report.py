@@ -1,0 +1,206 @@
+"""Build a browsable HTML report of what the extractor pulled from all 300 articles.
+
+Self-contained: data is embedded, no server, no network, no model calls.
+Regenerate any time with `python3 report.py`. Reads the candidate pass (4)
+and its byte-identical replicate (5) so every re-worded claim is flagged.
+"""
+import json, collections, html, re
+
+HERE  = __import__("os").path.dirname(__import__("os").path.abspath(__file__))
+arts  = {str(r["id"]): r for r in json.load(open(f"{HERE}/../2026-09-17-role-questions/data/articles.json"))}
+P4    = {c["id"]: c for c in json.load(open(f"{HERE}/claims-p4.json"))}
+P5    = {c["id"]: c for c in json.load(open(f"{HERE}/claims-p5.json"))}
+ruler = json.load(open(f"{HERE}/clusters.json"))["clusters"]
+
+KLABEL = {
+ "new_event":          "A new event",
+ "new_remark":         "Somebody said something new",
+ "reaction":           "A reaction to earlier news",
+ "analysis":           "A writer’s own verdict",
+ "restatement":        "Restates known news",
+ "about_someone_else": "About someone else",
+ "no_text":            "No usable text",
+}
+LEAD = 1500     # what production embeds after the headline (hunter.js)
+SHOW = 320      # how much of that lead the tile shows before "…"
+
+story_of, story_desc = {}, {}
+for c in ruler:
+    for a in c["articles"]: story_of[a] = c["key"]
+    story_desc[c["key"]] = c["descriptions"][0] if c["descriptions"] else ""
+
+def clean(s):
+    return re.sub(r"\s+", " ", s or "").strip()
+
+rows = []
+for a in sorted(arts, key=lambda x: arts[x]["published_at"], reverse=True):
+    r, c4, c5 = arts[a], P4[a], P5[a]
+    lead = clean(r.get("body") or "")[:LEAD]
+    rows.append({
+        "id": a, "d": str(r["published_at"])[:10], "f": r["subject"], "o": r["source"],
+        "t": r["title"], "u": r.get("url") or "", "chars": len(r.get("body") or ""),
+        "lead": lead[:SHOW] + ("…" if len(lead) > SHOW else ""),
+        "kind": c4["kind"], "claim": c4["claim"] or "", "occ": c4.get("occasion") or "",
+        "actor": c4.get("actor") or "", "opp": c4.get("opponent") or "",
+        "event": c4.get("event") or "", "date": c4.get("date") or "",
+        "rew": (c4["claim"] or "") != (c5["claim"] or ""),
+        "kflip": c4["kind"] != c5["kind"],
+        "claim5": c5["claim"] or "", "kind5": c5["kind"],
+        "story": story_of.get(a, ""),
+    })
+
+stories = [{"key": c["key"], "desc": story_desc[c["key"]], "n": len(c["articles"]),
+            "newest": max(str(arts[a]["published_at"])[:10] for a in c["articles"])} for c in ruler]
+stories.sort(key=lambda s: s["newest"], reverse=True)
+
+CSS = """
+:root{--bg:#fbfaf8;--fg:#1a1917;--dim:#6b6762;--line:#e4e0da;--card:#fff;
+--ev:#c2410c;--evbg:#fff1e9;--rm:#1d4ed8;--rmbg:#eef2ff;--an:#6d28d9;--anbg:#f3eeff;
+--no:#6b6762;--nobg:#f2f0ed;--warn:#a16207}
+:root:not([data-theme=light]){@media(prefers-color-scheme:dark){
+:root{--bg:#171614;--fg:#eceae6;--dim:#9a948c;--line:#302d29;--card:#1f1e1b;
+--ev:#fb923c;--evbg:#3a2314;--rm:#93b4fd;--rmbg:#1b2440;--an:#c4b5fd;--anbg:#2a2140;
+--no:#9a948c;--nobg:#27251f;--warn:#d9a441}}}
+:root[data-theme=dark]{--bg:#171614;--fg:#eceae6;--dim:#9a948c;--line:#302d29;--card:#1f1e1b;
+--ev:#fb923c;--evbg:#3a2314;--rm:#93b4fd;--rmbg:#1b2440;--an:#c4b5fd;--anbg:#2a2140;
+--no:#9a948c;--nobg:#27251f;--warn:#d9a441}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);font:15px/1.55 ui-sans-serif,-apple-system,"Segoe UI",sans-serif}
+.wrap{max-width:1180px;margin:0 auto;padding:28px 16px 80px}
+h1{font-size:23px;margin:0 0 4px;letter-spacing:-.01em}
+.sub{color:var(--dim);font-size:13.5px;margin-bottom:22px}
+.tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin-bottom:20px}
+.tile{background:var(--card);border:1px solid var(--line);border-radius:9px;padding:13px 14px}
+.tile .n{font-size:26px;font-weight:600;letter-spacing:-.02em;font-variant-numeric:tabular-nums}
+.tile .l{color:var(--dim);font-size:12px;margin-top:2px}
+.bar{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-bottom:14px;
+background:var(--card);border:1px solid var(--line);border-radius:9px;padding:11px 13px}
+select,input{font:inherit;font-size:13.5px;padding:6px 9px;border:1px solid var(--line);
+border-radius:6px;background:var(--bg);color:var(--fg)}
+input{flex:1;min-width:150px}
+.count{color:var(--dim);font-size:13px;margin-left:auto;font-variant-numeric:tabular-nums}
+.story{margin:22px 0 8px;padding-bottom:5px;border-bottom:1px solid var(--line);
+display:flex;gap:10px;align-items:baseline;flex-wrap:wrap}
+.story .k{font-size:11.5px;color:var(--dim);font-variant-numeric:tabular-nums;white-space:nowrap}
+.story .sd{font-size:13.5px;font-weight:500;flex:1;min-width:240px}
+.story .sn{font-size:12px;color:var(--dim);white-space:nowrap}
+.art{background:var(--card);border:1px solid var(--line);border-left-width:3px;border-radius:8px;
+padding:11px 13px;margin-bottom:7px}
+.art[data-k="new_event"]{border-left-color:var(--ev)} .art[data-k="new_remark"],.art[data-k="reaction"]{border-left-color:var(--rm)}
+.art[data-k="analysis"]{border-left-color:var(--an)} .art[data-k="restatement"],.art[data-k="about_someone_else"],.art[data-k="no_text"]{border-left-color:var(--no)}
+.top{display:flex;gap:9px;align-items:baseline;flex-wrap:wrap}
+.bdg{font-size:11px;font-weight:600;padding:2px 7px;border-radius:20px;white-space:nowrap}
+.bdg[data-k="new_event"]{background:var(--evbg);color:var(--ev)}
+.bdg[data-k="new_remark"],.bdg[data-k="reaction"]{background:var(--rmbg);color:var(--rm)}
+.bdg[data-k="analysis"]{background:var(--anbg);color:var(--an)}
+.bdg[data-k="restatement"],.bdg[data-k="about_someone_else"],.bdg[data-k="no_text"]{background:var(--nobg);color:var(--no)}
+.ttl{font-weight:500;flex:1;min-width:230px}
+.ttl a{color:inherit;text-decoration:none} .ttl a:hover{text-decoration:underline}
+.meta{color:var(--dim);font-size:12.5px;margin-top:4px;display:flex;gap:9px;flex-wrap:wrap;align-items:center}
+.flag{color:var(--warn);font-size:11.5px;font-weight:600}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:10px 26px;margin-top:9px}
+@media(max-width:760px){.two{grid-template-columns:1fr}}
+.lbl{font-size:11.5px;color:var(--dim);text-transform:uppercase;letter-spacing:.04em;margin-bottom:3px}
+.lead{font-size:13px;color:var(--dim);line-height:1.45}
+.claim{font-size:14.5px;line-height:1.4}
+.claim.none{color:var(--dim);font-style:italic}
+.occ{font-size:12.5px;color:var(--dim);margin-top:4px}
+.fields{font-size:12px;color:var(--dim);margin-top:6px;display:flex;gap:12px;flex-wrap:wrap}
+.fields b{color:var(--fg);font-weight:500}
+.rep{display:none;margin-top:8px;padding-top:8px;border-top:1px dashed var(--line);font-size:13px;color:var(--dim)}
+.art.open .rep{display:block}
+.tog{cursor:pointer;font-size:12px;color:var(--dim);background:none;border:none;padding:0;text-decoration:underline}
+@media(max-width:640px){.wrap{padding:18px 16px 60px}.count{margin-left:0;width:100%}}
+"""
+
+JS = r"""
+const D=DATA, S=STORIES, box=document.getElementById('list');
+const f={fighter:'',kind:'',flag:'',group:'story',q:''};
+function keep(r){
+  return (!f.fighter||r.f===f.fighter)&&(!f.kind||r.kind===f.kind)&&
+    (f.flag!=='rew'||r.rew)&&(f.flag!=='kflip'||r.kflip)&&(f.flag!=='none'||!r.claim)&&
+    (f.flag!=='multi'||S_N[r.story]>1)&&(f.flag!=='date'||r.date)&&
+    (!f.q||(r.t+' '+r.o+' '+r.id+' '+r.claim+' '+r.occ).toLowerCase().includes(f.q.toLowerCase()));}
+const S_N={}; S.forEach(s=>S_N[s.key]=s.n);
+function tile(r){
+  const rew=r.rew?'<span class="flag">re-worded on replicate</span>':'';
+  const kf=r.kflip?`<span class="flag">kind flipped on replicate (${esc(KL[r.kind5]||r.kind5)})</span>`:'';
+  const claim=r.claim?`<div class="claim">${esc(r.claim)}</div>`:'<div class="claim none">NO CLAIM</div>';
+  const occ=r.occ?`<div class="occ">where / when: ${esc(r.occ)}</div>`:'';
+  const fl=[['actor',r.actor],['opponent',r.opp],['event',r.event],['date',r.date]].filter(x=>x[1])
+    .map(x=>`<span>${x[0]} <b>${esc(x[1])}</b></span>`).join('');
+  const rep=r.rew?`<div class="rep">replicate run said: ${r.claim5?esc(r.claim5):'<i>NO CLAIM</i>'}</div>`:'';
+  return `<div class="art" data-k="${r.kind}">
+    <div class="top"><span class="bdg" data-k="${r.kind}">${esc(KL[r.kind]||r.kind)}</span>
+    <span class="ttl">${r.u?`<a href="${r.u}" target="_blank" rel="noopener">${esc(r.t)}</a>`:esc(r.t)}</span></div>
+    <div class="meta"><span>#${r.id}</span><span>${r.d}</span><span>${esc(r.f)}</span><span>${esc(r.o)}</span>
+    <span>${r.chars.toLocaleString()} chars</span>${rew}${kf}${r.rew?'<button class="tog">show replicate</button>':''}</div>
+    <div class="two"><div><div class="lbl">what production embeds (headline + first 1,500 chars)</div>
+    <div class="lead">${esc(r.lead)||'<i>no body</i>'}</div></div>
+    <div><div class="lbl">what the extractor returned</div>${claim}${occ}<div class="fields">${fl}</div></div></div>${rep}</div>`;}
+function render(){
+  const out=D.filter(keep); let h='';
+  if(f.group==='story'){
+    const by={}; out.forEach(r=>(by[r.story]=by[r.story]||[]).push(r));
+    S.forEach(s=>{const rs=by[s.key]; if(!rs) return;
+      h+=`<div class="story"><span class="k">${esc(s.key)}</span><span class="sd">${esc(s.desc)}</span>
+          <span class="sn">${s.n} article${s.n>1?'s':''} in the ruler${rs.length<s.n?', '+rs.length+' shown':''}</span></div>`;
+      h+=rs.slice().sort((a,b)=>a.d<b.d?-1:1).map(tile).join('');});
+  } else h=out.map(tile).join('');
+  document.getElementById('count').textContent=out.length+' of '+D.length+' articles';
+  box.innerHTML=h||'<p style="color:var(--dim)">Nothing matches.</p>';}
+function esc(s){const d=document.createElement('div');d.textContent=s;return d.innerHTML}
+box.addEventListener('click',e=>{if(e.target.classList.contains('tog'))e.target.closest('.art').classList.toggle('open')});
+['fighter','kind','flag','group'].forEach(k=>document.getElementById(k).addEventListener('change',e=>{f[k]=e.target.value;render()}));
+document.getElementById('q').addEventListener('input',e=>{f.q=e.target.value;render()});
+render();
+"""
+
+def opts(name, vals, lbl, default=""):
+    o = "".join(f'<option value="{html.escape(str(v))}"{" selected" if v == default else ""}>{html.escape(str(l))}</option>'
+                for v, l in vals)
+    return f'<select id="{name}"><option value="">{lbl}</option>{o}</select>' if not default else \
+           f'<select id="{name}">{o}</select>'
+
+kinds = collections.Counter(r["kind"] for r in rows)
+rew, kflip = sum(r["rew"] for r in rows), sum(r["kflip"] for r in rows)
+occ, dated = sum(1 for r in rows if r["occ"]), sum(1 for r in rows if r["date"])
+multi = sum(1 for s in stories if s["n"] > 1)
+fighters = sorted({r["f"] for r in rows})
+
+doc = f"""<!DOCTYPE html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Claim Extraction Report</title><style>{CSS}</style></head><body><div class="wrap">
+<h1>What the extractor pulled from 300 articles</h1>
+<p class="sub">Same frozen sample as the classifier. Qwen3.8 Flash read each whole article and returned one
+sentence of news, where and when it happened, and what kind of news it is (prompt <code>prompt-p4.md</code>).
+Left of each tile is what production embeds today; right is what the extractor returned. Articles are grouped
+by the ruler &mdash; the 136 stories a reader built by hand &mdash; so you can see whether the claims inside one story
+agree. Nothing here was posted anywhere.</p>
+<div class="tiles">
+<div class="tile"><div class="n" style="color:var(--ev)">{kinds["new_event"]}</div><div class="l">a new event</div></div>
+<div class="tile"><div class="n" style="color:var(--rm)">{kinds["new_remark"] + kinds["reaction"]}</div><div class="l">somebody said something ({kinds["reaction"]} of them reactions)</div></div>
+<div class="tile"><div class="n" style="color:var(--an)">{kinds["analysis"]}</div><div class="l">a writer&rsquo;s own verdict</div></div>
+<div class="tile"><div class="n" style="color:var(--no)">{kinds["about_someone_else"] + kinds["restatement"] + kinds["no_text"]}</div><div class="l">no claim &mdash; about someone else, restated, or no text</div></div>
+<div class="tile"><div class="n">{rew}</div><div class="l">re-worded when run again on identical input ({kflip} changed kind)</div></div>
+<div class="tile"><div class="n">{occ} / {dated}</div><div class="l">carry a where-and-when / carry a date</div></div>
+</div>
+<div class="bar">
+{opts("group", [("story","grouped by story"),("date","flat, newest first")], "", default="story")}
+{opts("fighter", [(f,f) for f in fighters], "all fighters")}
+{opts("kind", [(k, KLABEL[k]) for k, _ in kinds.most_common()], "all kinds")}
+{opts("flag", [("multi","only stories with 2+ articles"),("rew","re-worded on replicate"),("kflip","kind flipped on replicate"),("none","NO CLAIM"),("date","carries a date")], "everything")}
+<input id="q" placeholder="search headline, claim, outlet or id">
+<span class="count" id="count"></span></div>
+<div id="list"></div>
+<p class="sub" style="margin-top:26px">Things worth looking for. <b>Inside one story, do the claims say the same thing?</b>
+If six previews of one booking read as one claim, dedup can fold them; if a three-part interview reads as three claims,
+that is the fact-versus-occasion question in the flesh. <b>Is the where-and-when right?</b> It is the field that separates two
+remarks by the same man on different days. <b>&ldquo;Re-worded on replicate&rdquo;</b> means the identical prompt came back
+with different words the second time &mdash; harmless when the meaning held, telling when it did not; click
+<i>show replicate</i> to compare. The known miss is <b>#817</b>, a next-day column extracted as the result.</p>
+</div><script>const DATA={json.dumps(rows, ensure_ascii=False)},STORIES={json.dumps(stories, ensure_ascii=False)},KL={json.dumps(KLABEL)};{JS}</script></body></html>"""
+open(f"{HERE}/REPORT.html", "w").write(doc)
+print(f"wrote REPORT.html  ({len(doc)/1024:.0f} KB, {len(rows)} articles, {len(stories)} stories, {multi} with 2+ articles)")
+print(f"  kinds: " + ", ".join(f"{KLABEL[k]} {n}" for k, n in kinds.most_common()))
+print(f"  re-worded on replicate {rew}, kind flipped {kflip}, occasion filled {occ}, dated {dated}")
