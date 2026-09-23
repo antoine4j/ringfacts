@@ -682,6 +682,16 @@ Below the line, deliberately: nothing at the moment — the GCS backup shipped
      what-is-done and news-kind questions from the role-questions
      experiment are the slice-and-dice axes.
 
+   - **An arc above the story — 2026-09-23.** Reviewing the Soriano fight
+     (booking, previews, result, next-day column, octagon interview, backstage
+     interview: eight stories), Anton: *"there probably should be this
+     overarching story … but it doesn't mean we need to reflect it on the
+     storyboard — if the reporting agent is able to stitch a coherent story
+     together … just put it all in one sentence, that would effectively mean
+     binding it into the same overarching story."* So the digest agent stitches
+     related stories into one line; whether the arc also becomes a data object
+     is left open.
+
    Still undecided, and his to decide: what exactly is a "big update" that
    bypasses the weekly digest (his examples: a fight announcement, a fight
    result — bucket 1 as composed today); who may read the board; the

@@ -182,10 +182,28 @@ Anton's reading confirms it is a column, so that extraction is wrong.)
 ## 2026-09-23 — story-073.3 (#683, #714, #737): the grouping is right
 
 *"073.3 is about the whole event results, where Donchenko's result is still
-mentioned there."* One story, the card-wide results. **Nesting rule stated:**
-*"Donchenko's fight is one occasion inside a different occasion that is a
-UFC event, so they are reported separately in terms of a core story, but one
-includes another."*
+mentioned there."* One story, the card-wide results. *"Donchenko's fight is one occasion inside
+a different occasion that is a UFC event, so they are reported separately in
+terms of a core story, but one includes another."* — **an observation about
+reality, not a domain-model rule**, he clarified straight after: *"I didn't
+really mean that in our domain model one story should nest inside another."*
+
+On 073.5 vs 073.4: *"I wouldn't be upset if 073.5 was grouped together with
+073.4, which is the result itself, but it's a neat bonus that Fable discerned
+the difference, including by date."* So: separate is right, merged would be
+acceptable — an edge case under the "let it land" principle.
+
+**The overarching span, for the storyboard / digest — his words:** *"All of
+these stories might be under the same overarching span, which would be
+Donchenko's fight with Soriano … announcement, speculations, result,
+analysis, octagon interview, backstage interview, it's all about this fight.
+There probably should be this overarching story. But it doesn't mean we
+necessarily need to reflect it on the storyboard — if the reporting agent is
+able to stitch a coherent story together and say, well, this fight happened
+and there was analysis, he gave an octagon interview and a backstage
+interview, just put it all in one sentence — that would effectively mean
+binding it into the same overarching story."* Recorded as a design thought:
+the arc may live in the digest agent's prose rather than in the data model.
 
 ## 2026-09-23 — story-095 (#746, #778): the grouping is right
 
