@@ -10,7 +10,12 @@ HERE  = __import__("os").path.dirname(__import__("os").path.abspath(__file__))
 arts  = {str(r["id"]): r for r in json.load(open(f"{HERE}/../2026-09-17-role-questions/data/articles.json"))}
 P4    = {c["id"]: c for c in json.load(open(f"{HERE}/claims-p4.json"))}
 P5    = {c["id"]: c for c in json.load(open(f"{HERE}/claims-p5.json"))}
-ruler = json.load(open(f"{HERE}/clusters.json"))["clusters"]
+CL    = json.load(open(f"{HERE}/clusters.json"))
+ruler = CL["clusters"]
+doubt = collections.defaultdict(list)       # article id -> the ruler's own low-confidence pair rulings naming it
+for d in CL.get("low_confidence_rulings", []):
+    for a, other in ((d["a"], d["b"]), (d["b"], d["a"])):
+        doubt[a].append({"other": other, "ruling": d["ruling"], "why": d["why"]})
 
 KLABEL = {
  "new_event":          "A new event",
@@ -47,6 +52,7 @@ for a in sorted(arts, key=lambda x: arts[x]["published_at"], reverse=True):
         "kflip": c4["kind"] != c5["kind"],
         "claim5": c5["claim"] or "", "kind5": c5["kind"],
         "story": story_of.get(a, ""),
+        "doubt": doubt.get(a, []),
     })
 
 stories = [{"key": c["key"], "desc": story_desc[c["key"]], "n": len(c["articles"]),
@@ -107,6 +113,8 @@ padding:11px 13px;margin-bottom:7px}
 .occ{font-size:12.5px;color:var(--dim);margin-top:4px}
 .fields{font-size:12px;color:var(--dim);margin-top:6px;display:flex;gap:12px;flex-wrap:wrap}
 .fields b{color:var(--fg);font-weight:500}
+.doubt{margin-top:8px;padding:7px 9px;border-radius:6px;background:var(--nobg);font-size:12.5px;line-height:1.4}
+.doubt .why{color:var(--dim);font-style:italic}
 .rep{display:none;margin-top:8px;padding-top:8px;border-top:1px dashed var(--line);font-size:13px;color:var(--dim)}
 .art.open .rep{display:block}
 .tog{cursor:pointer;font-size:12px;color:var(--dim);background:none;border:none;padding:0;text-decoration:underline}
@@ -119,9 +127,10 @@ const f={fighter:'',kind:'',flag:'',group:'story',q:''};
 function keep(r){
   return (!f.fighter||r.f===f.fighter)&&(!f.kind||r.kind===f.kind)&&
     (f.flag!=='rew'||r.rew)&&(f.flag!=='kflip'||r.kflip)&&(f.flag!=='none'||!r.claim)&&
-    (f.flag!=='multi'||S_N[r.story]>1)&&(f.flag!=='date'||r.date)&&
+    (f.flag!=='multi'||S_N[r.story]>1)&&(f.flag!=='date'||r.date)&&(f.flag!=='doubt'||r.doubt.length)&&
     (!f.q||(r.t+' '+r.o+' '+r.id+' '+r.claim+' '+r.occ).toLowerCase().includes(f.q.toLowerCase()));}
 const S_N={}; S.forEach(s=>S_N[s.key]=s.n);
+const S_OF={}; D.forEach(r=>S_OF[r.id]=r.story);
 function tile(r){
   const rew=r.rew?'<span class="flag">worded differently on a second run</span>':'';
   const kf=r.kflip?`<span class="flag">kind changed on a second run (${esc(KL[r.kind5]||r.kind5)})</span>`:'';
@@ -129,6 +138,7 @@ function tile(r){
   const occ=r.occ?`<div class="occ">where / when: ${esc(r.occ)}</div>`:'';
   const fl=[['actor',r.actor],['opponent',r.opp],['event',r.event],['date',r.date]].filter(x=>x[1])
     .map(x=>`<span>${x[0]} <b>${esc(x[1])}</b></span>`).join('');
+  const db=r.doubt.length?r.doubt.map(d=>`<div class="doubt"><span class="flag">ruler was unsure</span> — ruled <b>${d.ruling}</b> from #${d.other}${S_OF[d.other]&&S_OF[d.other]!==r.story?` (${esc(S_OF[d.other])})`:''}: <span class="why">${esc(d.why)}</span></div>`).join(''):'';
   const rep=r.rew?`<div class="rep">second run, same input, said: ${r.claim5?esc(r.claim5):'<i>NO CLAIM</i>'}</div>`:'';
   return `<div class="art" data-k="${r.kind}">
     <div class="top"><span class="bdg" data-k="${r.kind}">${esc(KL[r.kind]||r.kind)}</span>
@@ -137,7 +147,7 @@ function tile(r){
     <span>${r.chars.toLocaleString()} chars</span>${rew}${kf}${r.rew?'<button class="tog">compare second run</button>':''}</div>
     <div class="two"><div><div class="lbl">what production embeds (headline + first 1,500 chars)</div>
     <div class="lead">${esc(r.lead)||'<i>no body</i>'}</div></div>
-    <div><div class="lbl">what the extractor returned</div>${claim}${occ}<div class="fields">${fl}</div></div></div>${rep}</div>`;}
+    <div><div class="lbl">what the extractor returned</div>${claim}${occ}<div class="fields">${fl}</div></div></div>${db}${rep}</div>`;}
 function render(){
   const out=D.filter(keep); let h='';
   if(f.group==='story'){
@@ -166,6 +176,7 @@ kinds = collections.Counter(r["kind"] for r in rows)
 rew, kflip = sum(r["rew"] for r in rows), sum(r["kflip"] for r in rows)
 occ, dated = sum(1 for r in rows if r["occ"]), sum(1 for r in rows if r["date"])
 multi = sum(1 for s in stories if s["n"] > 1)
+ndoubt = len(CL.get("low_confidence_rulings", []))
 fighters = sorted({r["f"] for r in rows})
 
 doc = f"""<!DOCTYPE html><html lang="en"><head><meta charset="utf-8">
@@ -189,7 +200,7 @@ agree. Nothing here was posted anywhere.</p>
 {opts("group", [("story","grouped by story"),("date","flat, newest first")], "", default="story")}
 {opts("fighter", [(f,f) for f in fighters], "all fighters")}
 {opts("kind", [(k, KLABEL[k]) for k, _ in kinds.most_common()], "all kinds")}
-{opts("flag", [("multi","only stories with 2+ articles"),("rew","worded differently on a second run"),("kflip","kind changed on a second run"),("none","NO CLAIM"),("date","carries a date")], "everything")}
+{opts("flag", [("multi","only stories with 2+ articles"),("rew","worded differently on a second run"),("kflip","kind changed on a second run"),("none","NO CLAIM"),("date","carries a date"),("doubt","the ruler was unsure about the grouping")], "everything")}
 <input id="q" placeholder="search headline, claim, outlet or id">
 <span class="count" id="count"></span></div>
 <div id="list"></div>
@@ -198,7 +209,11 @@ If six previews of one booking read as one claim, dedup can fold them; if a thre
 that is the fact-versus-occasion question in the flesh. <b>Is the where-and-when right?</b> It is the field that separates two
 remarks by the same man on different days. <b>&ldquo;Worded differently on a second run&rdquo;</b> means the identical prompt came back
 with different words the second time &mdash; harmless when the meaning held, telling when it did not; click
-<i>compare second run</i> to compare. The known miss is <b>#817</b>, a next-day column extracted as the result.</p>
+<i>compare second run</i> to compare. The known miss is <b>#817</b>, a next-day column extracted as the result.
+<b>The grouping itself is a model’s reading, not yours.</b> Where two articles sit in one story and should not, or in two and
+should be one, that is a ruling on the ruler and outranks everything else on this page — every score in the experiment is
+measured against it. The ruler flagged its own doubts on {ndoubt} pairs; filter to <i>the ruler was unsure</i> to see them.
+Write rulings in <code>verdicts.md</code> next to this file, and the ruler gets rebuilt and re-scored from them.</p>
 </div><script>const DATA={json.dumps(rows, ensure_ascii=False)},STORIES={json.dumps(stories, ensure_ascii=False)},KL={json.dumps(KLABEL)};{JS}</script></body></html>"""
 open(f"{HERE}/REPORT.html", "w").write(doc)
 print(f"wrote REPORT.html  ({len(doc)/1024:.0f} KB, {len(rows)} articles, {len(stories)} stories, {multi} with 2+ articles)")
