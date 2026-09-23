@@ -703,7 +703,10 @@ Below the line, deliberately: nothing at the moment — the GCS backup shipped
      days after a fight." Needs the fight date, which is the result story's
      date — the fact memory again — plus the classifier's speaker answer
      (himself) and the extractor's occasion. Window length (three days, a
-     week) is his to set.
+     week) is his to set. **Open, at his instruction:** what to do when
+     several interviews land in the window — the Soriano week had three
+     sittings in 24 hours (octagon, backstage, press conference). Three
+     direct messages, one, or a stitched one; not decided.
 
    Still undecided, and his to decide: the exact list of what bypasses the
    weekly digest (so far: a fight announcement, a fight result, his own
