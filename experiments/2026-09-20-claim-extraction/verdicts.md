@@ -219,6 +219,23 @@ correctly [split] by occasion."*
 On the story headers in REPORT.html (Fable's one-line descriptions, written
 when it grouped): *"describes what the story is about pretty well."*
 
+## 2026-09-23 — story-073.0 (#599, #619, #605): SPLIT — #605 comes out
+
+Anton, by voice: *"073.0 says that it's two articles. It definitely looks like
+two of the same articles, but #605 does not rewrite those two articles. I
+don't know why it decided that it rewrites citing it. 112.ua seems to be just
+a standalone article that announces this event."*
+
+Checked: #605 opens "Як повідомляє Sport.ua:" — it does cite Sport.ua, which
+is what the ruler keyed on — but it is a 715-char fixture announcement, not a
+rewrite of the 10,000-char preview column that #599/#619 are (same page,
+captured twice). Different occasion.
+
+**Ruling:** #599 + #619 stay one story. #605 leaves it. **Destination
+pending:** on its own, or with story-073.2 (which holds #745, another 112.ua
+fixture note a day later). First split ruling in this folder; the ruler is
+rebuilt from these once the pass is done.
+
 The ruler's own eight low-confidence pair rulings are in
 `clusters.json` under `low_confidence_rulings` and flagged in `REPORT.html`
 under "the ruler was unsure".
