@@ -692,8 +692,21 @@ Below the line, deliberately: nothing at the moment — the GCS backup shipped
      related stories into one line; whether the arc also becomes a data object
      is left open.
 
-   Still undecided, and his to decide: what exactly is a "big update" that
-   bypasses the weekly digest (his examples: a fight announcement, a fight
-   result — bucket 1 as composed today); who may read the board; the
+   - **The post-fight window — 2026-09-23.** Reviewing the three Donchenko
+     post-fight sittings (octagon, backstage, press conference), Anton:
+     *"Every interview in the post-fight week, or any interview in the next
+     three days post-fight — which will include octagon remarks, the
+     post-fight conference, and maybe some other post-fight interview — it
+     would be nice to see them reported directly instead of digest."* So the
+     set of things that bypass the weekly digest grows from "a booking, a
+     result" to "a booking, a result, and the fighter's own words in the
+     days after a fight." Needs the fight date, which is the result story's
+     date — the fact memory again — plus the classifier's speaker answer
+     (himself) and the extractor's occasion. Window length (three days, a
+     week) is his to set.
+
+   Still undecided, and his to decide: the exact list of what bypasses the
+   weekly digest (so far: a fight announcement, a fight result, his own
+   interviews in the post-fight window); who may read the board; the
    mechanics of "joins the existing story" for the cases above, which he
    said he wants to think about separately.
