@@ -219,56 +219,45 @@ correctly [split] by occasion."*
 On the story headers in REPORT.html (Fable's one-line descriptions, written
 when it grouped): *"describes what the story is about pretty well."*
 
-## 2026-09-23 — story-073.0 (#599, #619, #605): SPLIT — #605 comes out
+## 2026-09-23 — story-073.0, 073.1, 073.2 — the pre-fight side: genuinely unsure; Fable's grouping stands
 
-Anton, by voice: *"073.0 says that it's two articles. It definitely looks like
-two of the same articles, but #605 does not rewrite those two articles. I
-don't know why it decided that it rewrites citing it. 112.ua seems to be just
-a standalone article that announces this event."*
+Anton, by voice, in two steps.
 
-Checked: #605 opens "Як повідомляє Sport.ua:" — it does cite Sport.ua, which
-is what the ruler keyed on — but it is a 715-char fixture announcement, not a
-rewrite of the 10,000-char preview column that #599/#619 are (same page,
-captured twice). Different occasion.
+First, on 073.0: *"It definitely looks like two of the same articles, but
+#605 does not rewrite those two articles … 112.ua seems to be just a
+standalone article that announces this event."* (Checked: #605 does open
+"Як повідомляє Sport.ua", but it is a 715-char fixture note, not a rewrite of
+the 10,000-char column that #599/#619 are.) On 073.2: *"One article from
+112.ua is a very simple announcement with tournament details, and another
+one from Sport.ua is an announcement of the entire UFC event and where to
+watch."* On the ruler's low-confidence pair #687 ↔ #683: *"#687 still talks
+about the fight that will happen. It doesn't have any results in it … 073.3
+is already results. So if the ruler thinks #687 was the same as #683, I
+think that's wrong."* — the final ruler already has them apart; the doubt is
+retired.
 
-**Ruling:** #599 + #619 stay one story. #605 leaves it. **Destination
-pending:** on its own, or with story-073.2 (which holds #745, another 112.ua
-fixture note a day later). First split ruling in this folder; the ruler is
-rebuilt from these once the pass is done.
+Then, stepping back:
 
-## 2026-09-23 — story-073.0 + story-073.1 (#599, #619, #690): MERGE into one story
+> "I myself genuinely am unsure whether 073.0, 073.1 and 073.2 are different
+> stories. These are all announcements of the same thing, with slightly
+> different variations of analysis. So I wouldn't be surprised if they all
+> would be put in the same story by the pipeline. If we can extract more
+> details from that analysis, could be interesting, but ultimately I don't
+> know if I even need those details. When the fight is announced, I want to
+> see that in the chat. And then in the digest I just want to see that the
+> fight is announced across several outlets with different takes on analysis
+> of the fight, or something even shorter. But I see how Fable tried to
+> group it by occasion — the first analysis of what awaits him in Paris, then
+> a second pre-fight column with a slightly different take, then the fight-day
+> where-to-watch page. I don't know if it makes any difference if it's a
+> separate story, but I understand and respect Fable's grouping."
 
-Anton, by voice: *"073.0 and 073.1 can be the same story — slightly different
-articles but ultimately the same type of analysis, especially if these were
-some of the first articles to announce this fight, articles that came out
-around the announcement time."*
-
-**Ruling:** the two Sport.ua pre-fight columns (4 Sep, captured twice, and
-5 Sep) are one story. Together with the 073.0 split above, the pre-fight
-side becomes: {#599, #619, #690} the Sport.ua preview columns. **#605's
-destination is not ruled.** Anton, when I proposed placing it with 073.2:
-*"For now, keep everything like it just was previously."* Nothing in
-clusters.json moves until the pass is over and he says so.
-
-## 2026-09-23 — story-073.2 (#687, #688, #745): the grouping is right; the ruler's doubt was wrong
-
-Anton: *"073.2: one article from 112.ua is a very simple announcement with
-tournament details, and another one from Sport.ua is an announcement of the
-entire UFC event and where to watch."* One story.
-
-On the ruler's low-confidence pair #687 ↔ #683 (ruled "same"): *"When I
-opened the article, it's not updated. Article #687 still talks about the
-fight that will happen. It doesn't have any results in it, and it has links
-to the live broadcast. Same with #688 — it's actually the same article. 073.3
-is already results. So if the ruler thinks #687 was the same as #683, I think
-that's wrong, because #683 is truly about results."*
-
-**Ruling:** #687/#688 (pre-fight live page) and #683 (results page) are
-different stories. The final ruler already has them apart — that "same"
-ruling was the one my merge bug chained and the re-split undid — so this
-confirms the current grouping and retires the doubt. The ruler's "Оновлено
-06 вересня 02:00" note came from a captured body; the live page he opened
-shows no update.
+**Ruling: none. The three stories stay exactly as Fable built them.** No
+split, no merge, no move; the earlier draft of this entry that proposed a
+split and a merge is withdrawn at his instruction. What is recorded is the
+judgement itself: on the pre-fight side the boundary between "the fight is
+announced" and "a column about the fight" is one he does not need drawn, and
+either grouping would serve the chat and the digest.
 
 The ruler's own eight low-confidence pair rulings are in
 `clusters.json` under `low_confidence_rulings` and flagged in `REPORT.html`
