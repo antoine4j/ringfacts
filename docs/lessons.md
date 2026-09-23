@@ -132,6 +132,23 @@ Rules for adding to it:
   by reading the escape-hatch tail, not by an error.
 - **Carry:** the log shows what was sent; it cannot show what should have been.
 
+### Review extracts by convergence, and spot-check where convergence would lie
+`general` · `observed` · *FB 2026-09-22, Anton's method*
+- **Claim:** when each article is extracted in isolation, agreement between
+  extracts of one story is evidence against invention, and a reviewer can
+  judge extracts instead of reading articles.
+- **Evidence:** Anton reviewed the extraction report by extracts alone,
+  reading articles only to spot-check. His reasoning: each call sees one
+  article and nothing else, so independent extracts that converge were not
+  hallucinated. Story-125: three outlets, three claims agreeing on the fact;
+  a check of the bodies confirmed the detail one claim kept was in all three.
+- **Does not say:** that convergence catches a *shared* misreading. Pass 1's
+  previews all converged on the booking they recalled; #817 converges with
+  the 24 result articles because it restates the result; RF's seven invented
+  bookings were each corroborated 3–10 times (RF-L17). Aim spot-checks at
+  what all articles can repeat and still be wrong about: is it new, the
+  where-and-when, the date against the article's date.
+
 ### Ask several questions in one call when they share a reading
 `general` · `measured` · **found independently by both** · *FB 2026-09-17; RF-L18, A7*
 - **Evidence:** JEV answers six closed questions per article in one call, ~4–5
