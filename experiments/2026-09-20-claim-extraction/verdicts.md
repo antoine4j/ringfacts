@@ -458,3 +458,24 @@ On #102 in story-008, the pair the ruler marked low-confidence (#102 vs
 #78), Anton, by voice: *"#102 contains the reply, and it kind of recaps what
 the reply was to. But ultimately it's the reply, and it belongs to story
 eight."* The ruler's low-confidence placement stands: it was the right call.
+
+## 2026-09-25 — story-014 (#138, #144, #148, #170, #174, #244): correct
+
+Anton, by voice: *"014 is correct. The quotes or the extracts are slightly
+different, which is fine, because different outlets may feature different
+quotes in different order, or they may focus on different aspects of that
+podcast — especially it was like an hour-long podcast. So this is something
+to keep in mind. The silver thread here is that it's the same podcast with
+Demetrious Johnson. But I'm curious — maybe we'll have to test — does the
+model understand that Demetrious Johnson is the same guy as Mighty Mouse,
+and that MightyCast is Demetrious Johnson's podcast? The when-and-where
+source is cited slightly differently in different extracts, but it's
+ultimately the same source."*
+
+What the extractor wrote for the occasion, across the six articles: "Interview
+with Demetrious Johnson ahead of UFC 330", "MightyCast podcast", "Demetrious
+Johnson's podcast", "Interview with Demetrious Johnson", "Interview with
+Demetrius Johnson", "Conversation with Demetrious Johnson". Same on both
+runs. Six spellings of one occasion. Whether a matcher joins "MightyCast
+podcast" to "Interview with Demetrious Johnson" without being told they are
+the same thing is an open test for the matching stage.

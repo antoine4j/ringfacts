@@ -200,6 +200,20 @@ part of why it wins.
     join-or-start-a-story step he named for the whiteboard is a matching
     problem, to be designed and tested as its own stage.
 
+9e. **Test whether the matcher knows one source under several names** —
+    Anton, 2026-09-25, ruling story-014 correct: *"does the model understand
+    that Demetrious Johnson is the same guy as Mighty Mouse, and that
+    MightyCast is Demetrious Johnson's podcast? The when-and-where source is
+    cited slightly differently in different extracts, but it's ultimately the
+    same source."* The six articles of one hour-long podcast got six
+    occasion strings, identical on both runs: "Interview with Demetrious
+    Johnson ahead of UFC 330", "MightyCast podcast", "Demetrious Johnson's
+    podcast", "Interview with Demetrious Johnson", "Interview with Demetrius
+    Johnson", "Conversation with Demetrious Johnson". Outlets also quote
+    different parts of a long sitting, in a different order — expected, not
+    a grouping fault. A test for the matching stage: given two of these,
+    does it join them, and does it need to be told the aliases?
+
 **Blocked**
 10. Live validation — the sample is frozen and must not be re-pulled.
 11. A bigger blind set — 22 articles is exhausted, and only Anton can grade it.
