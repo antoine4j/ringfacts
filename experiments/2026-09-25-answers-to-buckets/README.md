@@ -1,6 +1,6 @@
 # Answers to buckets — which answers place an article, and which isolate a claim
 
-**2026-09-25. Read `REPORT.html` first** (`python3 build-report.py` regenerates
+**2026-09-25. Read `REPORT.html` first, then `TYPES.html`** (`python3 build-report.py` regenerates
 it): executive summary, plain-English method, findings, the proposed mapping
 from classifier and extractor answers to bucket 1 / 2 / 3, and the proposed
 question set. This file is the index.
@@ -40,6 +40,7 @@ question set. This file is the index.
 | `score.py` → `scores-A.json` / `scores-B.json` | the v2 consensus, the mapping (old rules, v2 draft, v2 corrected, with and without the speaker gate) against Anton's buckets; extractor v2 grouping signals, consistency, replicate |
 | `sensitivity-v2.json` | which v2 question the bucket depends on, which options no rule reads |
 | `build-report.py` → `REPORT.html` | the write-up; every number pulled from the JSON files |
+| `types.py` → `TYPES.html`, `types.json` | the second report: what types of news the 129 claims are, sorted by hand into four families and 28 types; one reader's sorting, not a ruling |
 
 ## Ground truth, stated once
 
