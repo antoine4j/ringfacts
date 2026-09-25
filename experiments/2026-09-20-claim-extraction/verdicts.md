@@ -524,3 +524,5 @@ together as one story, because the digest agent will have access to all
 articles to date at the same time, and all the extraction details and
 classification flags."* Recorded as a digest-agent test case under TODO
 item 7.
+
+## 2026-09-25 — story-032 (#249, #339): correct
