@@ -215,9 +215,14 @@ function render(){
   }
   $("#list").innerHTML=parts.join(""); $("#cnt").textContent=`${n} claims · ${na} articles`;
 }
-document.querySelectorAll(".bar select,.bar input").forEach(e=>e.addEventListener("input",render));
+document.querySelectorAll(".bar select:not(#theme),.bar input").forEach(e=>e.addEventListener("input",render));
 $("#open").onclick=()=>document.querySelectorAll("details.claim").forEach(d=>d.open=true);
 $("#close").onclick=()=>document.querySelectorAll("details.claim").forEach(d=>d.open=false);
+// theme: system follows the OS; light or dark is remembered in this browser only
+function applyTheme(t){ if(t==="system") document.documentElement.removeAttribute("data-theme"); else document.documentElement.dataset.theme=t; $("#theme").value=t; }
+let saved="system"; try{ saved=localStorage.getItem("board-theme")||"system"; }catch(e){}
+applyTheme(saved);
+$("#theme").addEventListener("input",e=>{ applyTheme(e.target.value); try{ localStorage.setItem("board-theme",e.target.value); }catch(err){} });
 render();
 if(location.hash){const el=document.querySelector(location.hash); if(el){el.closest("details.claim").open=true; el.scrollIntoView();}}
 """
@@ -249,6 +254,7 @@ Yellow "suspected" chips are what the data alone suggests, not labels, until rul
 <label class="ck"><input type="checkbox" id="flagged">suspected body issue</label>
 <input type="search" id="q" placeholder="#id, headline, extract, outlet">
 <button id="open">open all</button><button id="close">close all</button>
+<select id="theme" title="theme"><option value="system">system theme</option><option value="light">light</option><option value="dark">dark</option></select>
 <span class="cnt" id="cnt"></span>
 </div>
 <div id="list"></div>
