@@ -621,3 +621,16 @@ On story-059, Anton, by voice: *"We need to record it — what if there's more
 than one fact? And if we change the prompt, how is grouping going to change?
 Grouping might get more difficult if the extract is bigger. So it's an open
 question that we'll need to test."* Recorded under README item 9b.
+
+## 2026-09-25 — story-063 (#533, #540): correct
+
+## 2026-09-25 — story-068 (#572, #592): correct
+
+## 2026-09-25 — story-065 (#551, #556, #560, #585): correct
+
+## 2026-09-25 — story-074 (#601, #613, #625): correct
+
+Anton, by voice: *"63, 68, 65, 74 (fight story, official weigh-in) —
+correct."* Story-074 is the UFC Paris official weigh-in, the event's own
+occasion, kept apart from the ceremonial weigh-in and face-off (story-084,
+ruled correct 2026-09-23).
