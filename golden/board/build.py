@@ -122,7 +122,8 @@ body{margin:0;background:var(--bg);color:var(--fg);font:15px/1.5 ui-sans-serif,-
 h1{font-size:22px;margin:0 0 4px}
 .sub{color:var(--dim);font-size:13.5px;margin-bottom:18px}
 .tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:10px;margin-bottom:16px}
-.tile{background:var(--card);border:1px solid var(--line);border-radius:9px;padding:11px 13px}
+.tile{background:var(--card);border:1px solid var(--line);border-radius:9px;padding:11px 13px;font:inherit;color:inherit;text-align:left;cursor:pointer}
+.tile:hover{border-color:var(--dim)}.tile.on{border-color:var(--cls);background:var(--clsbg)}
 .tile .n{font-size:24px;font-weight:600;font-variant-numeric:tabular-nums}
 .tile .l{color:var(--dim);font-size:12px}
 .bar{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-bottom:14px;background:var(--card);border:1px solid var(--line);border-radius:9px;padding:10px 12px;position:sticky;top:0;z-index:2}
@@ -205,17 +206,22 @@ function claim(s){
 }
 function render(){
   const f=$("#f").value, k=$("#k").value, b=$("#b").value, q=$("#q").value.trim().toLowerCase();
-  const size=$("#size").value, doubt=$("#doubt").checked, unruled=$("#unruled").checked, flagged=$("#flagged").checked;
+  const size=$("#size").value, doubt=$("#doubt").checked, ruled=$("#ruled").value, flagged=$("#flagged").checked;
   let n=0, na=0; const parts=[];
   for(const s of DATA){
     if(f&&s.f!==f) continue; if(k&&!s.kinds.includes(k)) continue; if(b&&!s.buckets.includes(+b)) continue;
-    if(size==="1"&&s.n!==1) continue; if(size==="2"&&s.n<2) continue; if(doubt&&!s.fable.pass1_doubts.length) continue; if(unruled&&s.ruled) continue; if(flagged&&!s.flagged) continue;
+    if(size==="1"&&s.n!==1) continue; if(size==="2"&&s.n<2) continue; if(doubt&&!s.fable.pass1_doubts.length) continue; if(ruled==="1"&&!s.ruled) continue; if(ruled==="0"&&s.ruled) continue; if(flagged&&!s.flagged) continue;
     if(q&&!(s.key.includes(q)||s.cards.some(c=>c.id===q.replace("#","")||c.t.toLowerCase().includes(q)||(c.ex.claim||"").toLowerCase().includes(q)||c.o.toLowerCase().includes(q)))) continue;
     n++; na+=s.n; parts.push(claim(s));
   }
-  $("#list").innerHTML=parts.join(""); $("#cnt").textContent=`${n} claims · ${na} articles`;
+  $("#list").innerHTML=parts.join(""); $("#cnt").textContent=`${n} claims · ${na} articles`; markTiles();
 }
 document.querySelectorAll(".bar select:not(#theme),.bar input").forEach(e=>e.addEventListener("input",render));
+const FILTERS=["f","k","b","size","doubt","ruled","flagged","q"];
+function resetFilters(){ for(const id of FILTERS){ const el=$("#"+id); if(el.type==="checkbox") el.checked=false; else el.value=""; } }
+function markTiles(){ const state=FILTERS.map(id=>{const el=$("#"+id); return id+"="+(el.type==="checkbox"?(el.checked?"1":""):el.value);}).filter(x=>!x.endsWith("=")).join("&");
+  document.querySelectorAll(".tile").forEach(t=>t.classList.toggle("on", t.dataset.set==="reset"?state==="":t.dataset.set===state)); }
+document.querySelectorAll(".tile").forEach(t=>t.addEventListener("click",()=>{ resetFilters(); if(t.dataset.set!=="reset"){ const [id,v]=t.dataset.set.split("="); const el=$("#"+id); if(el.type==="checkbox") el.checked=true; else el.value=v; } render(); }));
 $("#open").onclick=()=>document.querySelectorAll("details.claim").forEach(d=>d.open=true);
 $("#close").onclick=()=>document.querySelectorAll("details.claim").forEach(d=>d.open=false);
 // theme: system follows the OS; light or dark is remembered in this browser only
@@ -237,12 +243,12 @@ page = f"""<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name
 <div class="sub">300 articles in {len(out)} claims (ruler v3). One claim = one occasion. Blue chips are the classifier's answers, purple the extractor's.
 Yellow "suspected" chips are what the data alone suggests, not labels, until ruled. Rulings go to <code>golden/verdicts.md</code>; this page only shows them.</div>
 <div class="tiles">
-<div class="tile"><div class="n">{len(out)}</div><div class="l">claims</div></div>
-<div class="tile"><div class="n">{n_multi}</div><div class="l">with 2+ articles</div></div>
-<div class="tile"><div class="n">{len(out)-n_multi}</div><div class="l">singletons</div></div>
-<div class="tile"><div class="n">{n_ruled}</div><div class="l">ruled by Anton</div></div>
-<div class="tile"><div class="n">{n_doubt}</div><div class="l">Fable had doubts</div></div>
-<div class="tile"><div class="n">{n_flag}</div><div class="l">suspected body issue</div></div>
+<button class="tile" data-set="reset"><div class="n">{len(out)}</div><div class="l">claims · show all</div></button>
+<button class="tile" data-set="size=2"><div class="n">{n_multi}</div><div class="l">with 2+ articles</div></button>
+<button class="tile" data-set="size=1"><div class="n">{len(out)-n_multi}</div><div class="l">singletons</div></button>
+<button class="tile" data-set="ruled=1"><div class="n">{n_ruled}</div><div class="l">ruled by Anton</div></button>
+<button class="tile" data-set="doubt=1"><div class="n">{n_doubt}</div><div class="l">Fable had doubts</div></button>
+<button class="tile" data-set="flagged=1"><div class="n">{n_flag}</div><div class="l">suspected body issue</div></button>
 </div>
 <div class="bar">
 <select id="f"><option value="">all fighters</option>{opts(fighters)}</select>
@@ -250,7 +256,7 @@ Yellow "suspected" chips are what the data alone suggests, not labels, until rul
 <select id="b"><option value="">any bucket</option>{opts([1,2,3], lambda b: f"bucket {b}")}</select>
 <select id="size"><option value="">any size</option><option value="1">singletons</option><option value="2">2+ articles</option></select>
 <label class="ck"><input type="checkbox" id="doubt">Fable had doubts</label>
-<label class="ck"><input type="checkbox" id="unruled">not ruled</label>
+<select id="ruled"><option value="">ruled or not</option><option value="1">ruled</option><option value="0">not ruled</option></select>
 <label class="ck"><input type="checkbox" id="flagged">suspected body issue</label>
 <input type="search" id="q" placeholder="#id, headline, extract, outlet">
 <button id="open">open all</button><button id="close">close all</button>
