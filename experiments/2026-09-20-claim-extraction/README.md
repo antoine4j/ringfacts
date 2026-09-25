@@ -230,7 +230,7 @@ part of why it wins.
 11. A bigger blind set — 22 articles is exhausted, and only Anton can grade it.
 
 ### The ruler after Anton's review — v3, 2026-09-25
-All 48 multi-article stories ruled (verdicts.md): 45 as built, two splits
+All 48 multi-article stories ruled (`golden/verdicts.md`): 45 as built, two splits
 (094: #743 out alone; 015: Merab/Helen Yee apart from Gallo/Jorge Ebro),
 one merge (ten Soriano prediction stories into story-066, by type of news).
 `clusters.json` is now v3, 129 stories; v2 is `clusters-v2.json`,

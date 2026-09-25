@@ -8,15 +8,20 @@ stay as history; nothing new is measured on them.
 
 ## What it is
 
+**Everything lives in [`golden/`](../golden/README.md)** since 2026-09-25.
+The experiments keep their working copies; golden holds the frozen ones.
+
 - **300 articles**, 31 July – 17 September 2026, drawn from the archive of
   articles that had text. Topuria 182, Donchenko 99, Amosov 19. Frozen:
-  `experiments/2026-09-17-role-questions/data/articles.json`; `pull.mjs`
-  never runs again.
-- **136 stories** — Fable's grouping of those articles by occasion, three
-  passes: `experiments/2026-09-20-claim-extraction/clusters.json`.
-  48 stories hold more than one article, 88 are singletons.
-- **Anton's rulings**, story by story, verbatim and append-only:
-  `experiments/2026-09-20-claim-extraction/verdicts.md`. He reviews in the
+  `golden/articles.json` (copied once from the role-questions experiment;
+  `pull.mjs` never runs again).
+- **129 claims** — Fable's grouping of those articles by occasion, three
+  passes, then Anton's rulings applied (v3): `golden/claims.json`.
+  47 claims hold more than one article, 82 are singletons. A *claim* is
+  one occasion with its articles; *story* is reserved for the larger
+  thing that may span several claims, not yet labelled.
+- **Anton's rulings**, claim by claim, verbatim and append-only:
+  `golden/verdicts.md`. He reviews in the
   extraction report (`report.py` → `REPORT.html`), judging by the
   extracted claims: when independent extracts converge, the article is
   what they say it is.
@@ -58,7 +63,7 @@ Per **article**, only where it applies:
 | `same_page_as` | id of the article this is an exact copy of (the AMP edition case) | URL dedup |
 | `primary_source` | the article, or an outside link, the digest should point to | Digest writer's "link the essay, not the write-up" |
 
-Anton's words stay in `verdicts.md`. A derived `labels.json` next to it
+Anton's words stay in `golden/verdicts.md`. A derived `golden/labels.json`
 holds one row per story with the fields above, written from his rulings,
 never by hand. The report collects the fields as he rules so nothing is
 typed twice.
@@ -75,7 +80,7 @@ across otherwise.
   recorded with the design it belongs to.
 - Drawn with a fixed seed, stratified by fighter and by `kind`, so the
   test third holds results, bookings, quotes and predictions. Recorded in
-  `split.json` beside `labels.json`.
+  `golden/split.json` beside `labels.json`.
 - The ten Soriano prediction stories merge into one at rebuild and fall on
   one side together.
 - **Replay everything, score the test third.** The join-or-start test
@@ -85,7 +90,7 @@ across otherwise.
 
 ## Order of work
 
-1. Finish the rulings: 102 stories remain (88 singletons go fast).
+1. Finish the rulings: all 47 multi-article claims ruled (2026-09-25); 82 singletons remain.
 2. Pre-flag body suspects and exact copies so Anton only confirms.
 3. Add `kind`, `speaker`, `bout`, `tier` to each ruled story; derive
    `labels.json`.

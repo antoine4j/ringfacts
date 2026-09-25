@@ -17,10 +17,10 @@ for d in CL.get("low_confidence_rulings", []):
     for a, other in ((d["a"], d["b"]), (d["b"], d["a"])):
         doubt[a].append({"other": other, "ruling": d["ruling"], "why": d["why"]})
 
-# Anton's rulings, parsed from verdicts.md headings of the form
+# Anton's rulings, parsed from golden/verdicts.md (moved there 2026-09-25) headings of the form
 #   ## 2026-09-22 — story-125 (#a, #b): the grouping is right
 ruled = {}
-for line in open(f"{HERE}/verdicts.md"):
+for line in open(f"{HERE}/../../golden/verdicts.md"):
     m = re.match(r"## (\d{4}-\d{2}-\d{2}) — (story-[\d.]+)[^:]*: (.+)$", line.strip())
     if m: ruled[m.group(2)] = {"d": m.group(1), "what": m.group(3).strip()}
 
@@ -287,7 +287,7 @@ where-and-when, embedded &mdash; would put two of the story&rsquo;s articles apa
 article from another story (a <i>merge</i>), at that text&rsquo;s best single threshold of {THR:.2f} on the pairs dedup
 actually faces: same fighter, within three days. It is Qwen&rsquo;s reading against Fable&rsquo;s, neither of them yours;
 where they disagree is where your ruling is worth most.
-Write rulings in <code>verdicts.md</code> next to this file, and the ruler gets rebuilt and re-scored from them.</p>
+Write rulings in <code>golden/verdicts.md</code>, and the ruler gets rebuilt and re-scored from them.</p>
 </div><script>const DATA={json.dumps(rows, ensure_ascii=False)},STORIES={json.dumps(stories, ensure_ascii=False)},KL={json.dumps(KLABEL)};{JS}</script></body></html>"""
 open(f"{HERE}/REPORT.html", "w").write(doc)
 print(f"wrote REPORT.html  ({len(doc)/1024:.0f} KB, {len(rows)} articles, {len(stories)} stories, {multi} with 2+ articles)")
