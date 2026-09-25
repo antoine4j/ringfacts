@@ -583,3 +583,16 @@ injuries... that remain unhealed", with no occasion. Same sitting, one
 outlet writing the quote up as an injury event rather than as something
 Gaethje said. Grouping right by occasion; the kind label is the outlier,
 not the story.
+
+## 2026-09-25 — story-037.0 (#291, #427, #497): correct
+
+## 2026-09-25 — story-037.1 (#380): correct — a different sitting from 037.0
+
+Anton, by voice, having watched the attached videos: *"037.0 and 037.1
+appear to be correct. I looked at the posts with attached videos. The two
+accounts — where he talks about being bullied, and where he talks about the
+lesson from his marriage — appear to be different podcasts. He is dressed
+differently, and the camera angle is different."*
+
+The ruler had cut these apart in pass 3 (the 037.x children of one
+cluster). Confirmed by evidence no text extract carries: the video itself.
