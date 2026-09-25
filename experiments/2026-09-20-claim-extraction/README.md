@@ -179,6 +179,17 @@ part of why it wins.
     occasion is exactly the case the storyboard's weekly digest agent needs
     (TODO 7), so the richer extraction feeds that even if dedup keeps using
     only the lead fact. ~$0.10 per pass; the prompt is the only change.
+    **Second case, story-059 (2026-09-25):** MMA Mania led with Tsarukyan's
+    Pimblett remark, MMA Fighting led with his title-defence remark and
+    closed with the same Pimblett remark word for word. The two one-sentence
+    extracts looked unrelated; the bodies shared a quote. **The open
+    question he named on it, to test, not assume:** *"what if there's more
+    than one fact — and if we change the prompt, how is grouping going to
+    change? Grouping might get more difficult if the extract is bigger. So
+    it's an open question that we'll need to test."* Two directions it can
+    go: a shared quote surfaces in both extracts and pulls them together, or
+    a longer extract carries more unshared material and pushes them apart.
+    Point (a) above is the measurement.
 
 9d. **Predictions: extract the pick, and the odds if given** — Anton,
     2026-09-23, ruling the Soriano predictions one story: *"for predictions

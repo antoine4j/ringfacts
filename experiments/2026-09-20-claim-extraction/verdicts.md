@@ -616,3 +616,8 @@ Holloway. If you see Max's wrestling, it's nothing... Paddy at least has a
 takedown."* Both credit the Deep Waters podcast. One sitting; each outlet
 led with a different part of it, and the extractor's one-sentence claim
 kept only each outlet's lead.
+
+On story-059, Anton, by voice: *"We need to record it — what if there's more
+than one fact? And if we change the prompt, how is grouping going to change?
+Grouping might get more difficult if the extract is bigger. So it's an open
+question that we'll need to test."* Recorded under README item 9b.
