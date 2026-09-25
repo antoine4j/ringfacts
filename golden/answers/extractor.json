@@ -1,6 +1,24 @@
 {
- "source": "experiments/2026-09-20-claim-extraction/claims-p4.json (prompt-p4.md, the candidate prompt)",
- "note": "Field `claim` is the one-sentence extract; golden calls it the extract, since a golden claim is a group of articles.",
+ "source": "experiments/2026-09-20-claim-extraction/claims-p4.json (prompt-p4.md, the candidate prompt); second_run from claims-p5.json, a byte-identical replicate",
+ "note": "Field `claim` is the one-sentence extract; golden calls it the extract, since a golden claim is a group of articles. `second_run` is the same prompt run again unchanged: where it differs, the model was unsure.",
+ "fields": {
+  "kind": "Decide this FIRST. One of: new_event (a fight booked, a result, an injury, a signing, reported as news) | new_remark (he, or somebody about him, says something new: interview, podcast, post, presser, essay) | reaction (somebody answers a story already out) | analysis (a writer's or pundit's own verdict, preview, ranking, prediction) | restatement (repeats an event or remark already reported, adds nothing) | about_someone_else (the news is another person's and {subject} is only named in passing — test: delete every sentence that names {subject}; if the story still stands, it is about someone else. If another person calls him out, wants to fight him, assesses him, criticises him or talks about a fight with him, the article is ABOUT him — that is new_remark, not about_someone_else) | no_text (caption, stub, boilerplate, listing)",
+  "claim": "ONE plain English sentence stating ONE fact: who did what, to whom, naming {subject}. It follows from `kind`: new_event → the event; new_remark → what was said (the remark, not the event it refers to); reaction → the reply; analysis → the writer's verdict or prediction, never the result or booking it discusses; restatement, about_someone_else, no_text → write exactly NO CLAIM. When an article carries an already-reported event AND something new (a callout after a win, a reaction after a booking), the NEW thing is the claim and the event is left out. Write it as a plain statement of fact — never 'the article mentions', 'a report says', or 'it is stated that'.",
+  "occasion": "WHERE and WHEN the claimed thing was said or happened, as the text gives it: the podcast, interview, essay, press conference, social post, event or date. Two remarks by the same person on different occasions are different news; two outlets covering the same occasion are the same news. null only if the text gives nothing",
+  "actor": "who did or said it (a name), or null",
+  "opponent": "the other fighter involved, if any, or null",
+  "event": "the event or card named, if any, or null",
+  "date": "the date of the thing claimed (YYYY-MM-DD), if the text gives one, or null"
+ },
+ "kind_options": {
+  "new_event": "a fight booked, a result, an injury, a signing, reported as news",
+  "new_remark": "he, or somebody about him, says something new: interview, podcast, post, presser, essay",
+  "reaction": "somebody answers a story already out",
+  "analysis": "a writer's or pundit's own verdict, preview, ranking, prediction",
+  "restatement": "repeats an event or remark already reported, adds nothing",
+  "about_someone_else": "the news is another person's and {subject} is only named in passing — test: delete every sentence that names {subject}; if the story still stands, it is about someone else. If another person calls him out, wants to fight him, assesses him, criticises him or talks about a fight with him, the article is ABOUT him — that is new_remark, not about_someone_else",
+  "no_text": "caption, stub, boilerplate, listing"
+ },
  "articles": {
   "1": {
    "subject": "Yaroslav Amosov",
@@ -12,7 +30,16 @@
    "opponent": "Islam Makhachev",
    "event": null,
    "date": null,
-   "error": null
+   "error": null,
+   "second_run": {
+    "kind": "new_remark",
+    "claim": "Jorge Masvidal stated that Yaroslav Amosov is a bad fight for everyone, including UFC welterweight champion Islam Makhachev.",
+    "occasion": "Deep Waters podcast",
+    "actor": "Jorge Masvidal",
+    "opponent": null,
+    "event": null,
+    "date": null
+   }
   },
   "2": {
    "subject": "Yaroslav Amosov",
@@ -24,7 +51,16 @@
    "opponent": "Islam Makhachev",
    "event": null,
    "date": null,
-   "error": null
+   "error": null,
+   "second_run": {
+    "kind": "new_remark",
+    "claim": "Jorge Masvidal stated that Yaroslav Amosov is a nightmare for Islam Makhachev due to his size, strength, and sambo background.",
+    "occasion": null,
+    "actor": "Jorge Masvidal",
+    "opponent": "Islam Makhachev",
+    "event": null,
+    "date": null
+   }
   },
   "3": {
    "subject": "Yaroslav Amosov",
@@ -36,7 +72,16 @@
    "opponent": null,
    "event": null,
    "date": null,
-   "error": null
+   "error": null,
+   "second_run": {
+    "kind": "no_text",
+    "claim": "NO CLAIM",
+    "occasion": null,
+    "actor": null,
+    "opponent": null,
+    "event": null,
+    "date": null
+   }
   },
   "4": {
    "subject": "Yaroslav Amosov",
@@ -48,7 +93,16 @@
    "opponent": "Islam Makhachev",
    "event": null,
    "date": null,
-   "error": null
+   "error": null,
+   "second_run": {
+    "kind": "new_remark",
+    "claim": "Jorge Masvidal stated that Yaroslav Amosov would be a nightmare matchup for Islam Makhachev due to his size, strength, and wrestling skills.",
+    "occasion": "Deep Waters podcast",
+    "actor": "Jorge Masvidal",
+    "opponent": "Islam Makhachev",
+    "event": null,
+    "date": null
+   }
   },
   "6": {
    "subject": "Ilia Topuria",
@@ -60,7 +114,16 @@
    "opponent": null,
    "event": null,
    "date": null,
-   "error": null
+   "error": null,
+   "second_run": {
+    "kind": "about_someone_else",
+    "claim": "NO CLAIM",
+    "occasion": null,
+    "actor": null,
+    "opponent": null,
+    "event": null,
+    "date": null
+   }
   },
   "10": {
    "subject": "Ilia Topuria",
@@ -72,7 +135,16 @@
    "opponent": "Usman Nurmagomedov",
    "event": null,
    "date": null,
-   "error": null
+   "error": null,
+   "second_run": {
+    "kind": "new_remark",
+    "claim": "Ali Abdelaziz stated that Usman Nurmagomedov would make Ilia Topuria quit in their first UFC fight.",
+    "occasion": "Pound 4 Pound podcast",
+    "actor": "Ali Abdelaziz",
+    "opponent": "Usman Nurmagomedov",
+    "event": null,
+    "date": null
+   }
   },
   "13": {
    "subject": "Yaroslav Amosov",
@@ -84,7 +156,16 @@
    "opponent": "Islam Makhachev",
    "event": null,
    "date": null,
-   "error": null
+   "error": null,
+   "second_run": {
+    "kind": "new_remark",
+    "claim": "Jorge Masvidal stated on a podcast that Yaroslav Amosov would be a bad stylistic matchup for Islam Makhachev and the UFC welterweight top 10.",
+    "occasion": "Deep Waters podcast",
+    "actor": "Jorge Masvidal",
+    "opponent": "Islam Makhachev",
+    "event": null,
+    "date": null
+   }
   },
   "14": {
    "subject": "Yaroslav Amosov",
@@ -96,7 +177,16 @@
    "opponent": "Islam Makhachev",
    "event": null,
    "date": null,
-   "error": null
+   "error": null,
+   "second_run": {
+    "kind": "new_remark",
+    "claim": "Jorge Masvidal stated that Yaroslav Amosov is a bad fight for everyone, including UFC welterweight champion Islam Makhachev.",
+    "occasion": "Deep Waters podcast",
+    "actor": "Jorge Masvidal",
+    "opponent": null,
+    "event": null,
+    "date": null
+   }
   },
   "16": {
    "subject": "Daniil Donchenko",
@@ -108,7 +198,16 @@
    "opponent": "Punahele Soriano",
    "event": "UFC Fight Night in Paris",
    "date": "2026-09-05",
-   "error": null
+   "error": null,
+   "second_run": {
+    "kind": "new_event",
+    "claim": "Daniil Donchenko is scheduled to fight Punahele Soriano on September 5 at UFC Fight Night in Paris.",
+    "occasion": null,
+    "actor": "Daniil Donchenko",
+    "opponent": "Punahele Soriano",
+    "event": "UFC Fight Night in Paris",
+    "date": "2026-09-05"
+   }
   },
   "17": {
    "subject": "Daniil Donchenko",
@@ -120,7 +219,16 @@
    "opponent": "Punahele Soriano",
    "event": "UFC Fight Night in Paris",
    "date": "2026-09-05",
-   "error": null
+   "error": null,
+   "second_run": {
+    "kind": "new_event",
+    "claim": "Daniil Donchenko is scheduled to fight Punahele Soriano on September 5 at UFC Fight Night in Paris.",
+    "occasion": null,
+    "actor": "Daniil Donchenko",
+    "opponent": "Punahele Soriano",
+    "event": "UFC Fight Night in Paris",
+    "date": "2026-09-05"
+   }
   },
   "18": {
    "subject": "Daniil Donchenko",
@@ -132,7 +240,16 @@
    "opponent": "Punahel Soria",
    "event": "UFC Fight Night in Paris",
    "date": "2026-09-05",
-   "error": null
+   "error": null,
+   "second_run": {
+    "kind": "new_event",
+    "claim": "Daniil Donchenko is scheduled to fight Punahele Soriano at the UFC Fight Night event in Paris on September 5, 2026.",
+    "occasion": "UFC Fight Night in Paris",
+    "actor": "Daniil Donchenko",
+    "opponent": "Punahele Soriano",
+    "event": "UFC Fight Night",
+    "date": "2026-09-05"
+   }
   },
   "25": {
    "subject": "Ilia Topuria",
@@ -144,7 +261,16 @@
    "opponent": null,
    "event": null,
    "date": null,
-   "error": null
+   "error": null,
+   "second_run": {
+    "kind": "about_someone_else",
+    "claim": "NO CLAIM",
+    "occasion": null,
+    "actor": null,
+    "opponent": null,
+    "event": null,
+    "date": null
+   }
   },
   "33": {
    "subject": "Yaroslav Amosov",
@@ -156,7 +282,16 @@
    "opponent": "Islam Makhachev",
    "event": null,
    "date": null,
-   "error": null
+   "error": null,
+   "second_run": {
+    "kind": "new_remark",
+    "claim": "Jorge Masvidal stated on the Deep Waters podcast that Yaroslav Amosov is a bad stylistic matchup for Islam Makhachev and the UFC welterweight top 10.",
+    "occasion": "Deep Waters podcast",
+    "actor": "Jorge Masvidal",
+    "opponent": "Islam Makhachev",
+    "event": null,
+    "date": null
+   }
   },
   "34": {
    "subject": "Ilia Topuria",
@@ -168,7 +303,16 @@
    "opponent": "Usman Nurmagomedov",
    "event": null,
    "date": null,
-   "error": null
+   "error": null,
+   "second_run": {
+    "kind": "new_remark",
+    "claim": "Ali Abdelaziz stated that Usman Nurmagomedov can defeat Ilia Topuria and expressed a desire for them to fight in Topuria's first UFC bout.",
+    "occasion": "Pound for Pound podcast",
+    "actor": "Ali Abdelaziz",
+    "opponent": "Usman Nurmagomedov",
+    "event": null,
+    "date": null
+   }
   },
   "38": {
    "subject": "Ilia Topuria",
@@ -180,7 +324,16 @@
    "opponent": null,
    "event": null,
    "date": null,
-   "error": null
+   "error": null,
+   "second_run": {
+    "kind": "about_someone_else",
+    "claim": "NO CLAIM",
+    "occasion": null,
+    "actor": null,
+    "opponent": null,
+    "event": null,
+    "date": null
+   }
   },
   "44": {
    "subject": "Ilia Topuria",
@@ -192,7 +345,16 @@
    "opponent": "Justin Gaethje",
    "event": "UFC White House",
    "date": null,
-   "error": null
+   "error": null,
+   "second_run": {
+    "kind": "new_remark",
+    "claim": "Ilia Topuria stated on Instagram that he experienced vision loss in both eyes during his fight against Justin Gaethje and expressed plans to pursue a rematch.",
+    "occasion": "Instagram post following the UFC White House event",
+    "actor": "Ilia Topuria",
+    "opponent": "Justin Gaethje",
+    "event": "UFC White House",
+    "date": null
+   }
   },
   "51": {
    "subject": "Ilia Topuria",
@@ -204,7 +366,16 @@
    "opponent": null,
    "event": null,
    "date": null,
-   "error": null
+   "error": null,
+   "second_run": {
+    "kind": "reaction",
+    "claim": "Ilia Topuria's manager Malki Kawa criticized Ali Abdelaziz for predicting Usman Nurmagomedov would defeat Topuria, asserting that Topuria would annihilate Nurmagomedov and beat Justin Gaethje in a rematch.",
+    "occasion": "social media via Championship Rounds",
+    "actor": "Malki Kawa",
+    "opponent": "Usman Nurmagomedov",
+    "event": null,
+    "date": null
+   }
   },
   "55": {
    "subject": "Ilia Topuria",
@@ -216,7 +387,16 @@
    "opponent": "Usman Nurmagomedov",
    "event": null,
    "date": "2026-08-08",
-   "error": null
+   "error": null,
+   "second_run": {
+    "kind": "reaction",
+    "claim": "Ilia Topuria's manager Malki Kawa criticized Ali Abdelaziz for predicting Usman Nurmagomedov would defeat Topuria, asserting that Topuria would annihilate Nurmagomedov and other fighters on Abdelaziz's roster.",
+    "occasion": "Social media posts via Championship Rounds and Instagram",
+    "actor": "Malki Kawa",
+    "opponent": "Usman Nurmagomedov",
+    "event": null,
+    "date": "2026-08-08"
+   }
   },
   "60": {
    "subject": "Ilia Topuria",
@@ -228,7 +408,16 @@
    "opponent": "Islam Makhachev",
    "event": "UFC 330",
    "date": null,
-   "error": null
+   "error": null,
+   "second_run": {
+    "kind": "about_someone_else",
+    "claim": "NO CLAIM",
+    "occasion": null,
+    "actor": null,
+    "opponent": null,
+    "event": null,
+    "date": null
+   }
   },
   "65": {
    "subject": "Yaroslav Amosov",
@@ -240,7 +429,16 @@
    "opponent": null,
    "event": null,
    "date": null,
-   "error": null
+   "error": null,
+   "second_run": {
+    "kind": "restatement",
+    "claim": "NO CLAIM",
+    "occasion": null,
+    "actor": null,
+    "opponent": null,
+    "event": null,
+    "date": null
+   }
   },
   "71": {
    "subject": "Ilia Topuria",
@@ -252,7 +450,16 @@
    "opponent": null,
    "event": null,
    "date": null,
-   "error": null
+   "error": null,
+   "second_run": {
+    "kind": "reaction",
+    "claim": "Ilia Topuria's manager Malki Kawa responded to Ali Abdelaziz by stating that Topuria would annihilate Abdelaziz's roster and is still the No. 1 fighter in the world.",
+    "occasion": "Video posted to social media",
+    "actor": "Malki Kawa",
+    "opponent": null,
+    "event": null,
+    "date": null
+   }
   },
   "78": {
    "subject": "Ilia Topuria",
@@ -264,7 +471,16 @@
    "opponent": "Usman Nurmagomedov",
    "event": null,
    "date": null,
-   "error": null
+   "error": null,
+   "second_run": {
+    "kind": "new_remark",
+    "claim": "Ali Abdelaziz stated that he believes Usman Nurmagomedov will make Ilia Topuria submit in their potential first UFC fight.",
+    "occasion": "Pound for Pound Show",
+    "actor": "Ali Abdelaziz",
+    "opponent": "Usman Nurmagomedov",
+    "event": null,
+    "date": null
+   }
   },
   "84": {
    "subject": "Ilia Topuria",
@@ -276,7 +492,16 @@
    "opponent": "Justin Gaethje",
    "event": null,
    "date": null,
-   "error": null
+   "error": null,
+   "second_run": {
+    "kind": "reaction",
+    "claim": "Ilia Topuria's manager Malki Kawa responded to Ali Abdelaziz by stating that Topuria would crush Justin Gaethje in a rematch and remains the number one fighter in the world.",
+    "occasion": null,
+    "actor": "Malki Kawa",
+    "opponent": "Justin Gaethje",
+    "event": null,
+    "date": null
+   }
   },
   "90": {
    "subject": "Ilia Topuria",
@@ -288,7 +513,16 @@
    "opponent": null,
    "event": null,
    "date": null,
-   "error": null
+   "error": null,
+   "second_run": {
+    "kind": "reaction",
+    "claim": "Ilia Topuria's manager Malki Kawa stated that Topuria would annihilate the entire Dominance MMA roster and beat Justin Gaethje in a rematch.",
+    "occasion": "Social media post",
+    "actor": "Malki Kawa",
+    "opponent": null,
+    "event": null,
+    "date": null
+   }
   },
   "96": {
    "subject": "Yaroslav Amosov",
@@ -300,7 +534,16 @@
    "opponent": "Islam Makhachev",
    "event": null,
    "date": null,
-   "error": null
+   "error": null,
+   "second_run": {
+    "kind": "new_remark",
+    "claim": "Jorge Masvidal stated that Yaroslav Amosov presents a nightmare stylistic matchup for Islam Makhachev.",
+    "occasion": "Deep Waters program",
+    "actor": "Jorge Masvidal",
+    "opponent": "Islam Makhachev",
+    "event": null,
+    "date": null
+   }
   },
   "97": {
    "subject": "Ilia Topuria",
@@ -312,7 +555,16 @@
    "opponent": null,
    "event": null,
    "date": null,
-   "error": null
+   "error": null,
+   "second_run": {
+    "kind": "new_remark",
+    "claim": "Ali Abdelaziz stated that Usman Nurmagomedov would make Ilia Topuria tap out and knock him out.",
+    "occasion": "Pound4Pound podcast hosted by Henry Cejudo and Kamaru Usman",
+    "actor": "Ali Abdelaziz",
+    "opponent": "Usman Nurmagomedov",
+    "event": null,
+    "date": null
+   }
   },
   "102": {
    "subject": "Ilia Topuria",
@@ -324,7 +576,16 @@
    "opponent": "Usman Nurmagomedov",
    "event": null,
    "date": null,
-   "error": null
+   "error": null,
+   "second_run": {
+    "kind": "reaction",
+    "claim": "Malki Kawa, manager of Ilia Topuria, responded to Ali Abdelaziz's comments by stating that Topuria would defeat Usman Nurmagomedov and criticizing the roster.",
+    "occasion": "Social media video posted a few hours after Ali Abdelaziz's podcast appearance",
+    "actor": "Malki Kawa",
+    "opponent": "Usman Nurmagomedov",
+    "event": null,
+    "date": null
+   }
   },
   "115": {
    "subject": "Ilia Topuria",
@@ -336,7 +597,16 @@
    "opponent": null,
    "event": null,
    "date": null,
-   "error": null
+   "error": null,
+   "second_run": {
+    "kind": "about_someone_else",
+    "claim": "NO CLAIM",
+    "occasion": null,
+    "actor": null,
+    "opponent": null,
+    "event": null,
+    "date": null
+   }
   },
   "119": {
    "subject": "Ilia Topuria",
@@ -348,7 +618,16 @@
    "opponent": "Usman Nurmagomedov",
    "event": null,
    "date": null,
-   "error": null
+   "error": null,
+   "second_run": {
+    "kind": "reaction",
+    "claim": "Ilia Topuria's manager Malki Kawa responded to Ali Abdelaziz by stating that Topuria would defeat every fighter Abdelaziz represents, including Usman Nurmagomedov and Justin Gaethje.",
+    "occasion": "social media post",
+    "actor": "Malki Kawa",
+    "opponent": "Usman Nurmagomedov",
+    "event": null,
+    "date": null
+   }
   },
   "125": {
    "subject": "Ilia Topuria",
@@ -360,7 +639,16 @@
    "opponent": null,
    "event": null,
    "date": null,
-   "error": null
+   "error": null,
+   "second_run": {
+    "kind": "about_someone_else",
+    "claim": "NO CLAIM",
+    "occasion": null,
+    "actor": null,
+    "opponent": null,
+    "event": null,
+    "date": null
+   }
   },
   "129": {
    "subject": "Ilia Topuria",
@@ -372,7 +660,16 @@
    "opponent": "Justin Gaethje",
    "event": null,
    "date": null,
-   "error": null
+   "error": null,
+   "second_run": {
+    "kind": "new_remark",
+    "claim": "Ilia Topuria's manager, Malki Kawa, stated that they want an immediate rematch with Justin Gaethje.",
+    "occasion": "Social media post by Malki Kawa",
+    "actor": "Malki Kawa",
+    "opponent": "Justin Gaethje",
+    "event": null,
+    "date": null
+   }
   },
   "134": {
    "subject": "Ilia Topuria",
@@ -384,7 +681,16 @@
    "opponent": null,
    "event": null,
    "date": null,
-   "error": null
+   "error": null,
+   "second_run": {
+    "kind": "no_text",
+    "claim": "NO CLAIM",
+    "occasion": null,
+    "actor": null,
+    "opponent": null,
+    "event": null,
+    "date": null
+   }
   },
   "138": {
    "subject": "Ilia Topuria",
@@ -396,7 +702,16 @@
    "opponent": null,
    "event": "UFC 330",
    "date": null,
-   "error": null
+   "error": null,
+   "second_run": {
+    "kind": "new_remark",
+    "claim": "Islam Makhachev stated that Ilia Topuria can become a champion again if he focuses, but suggested his recent loss to Justin Gaethje may have changed his life and confidence.",
+    "occasion": "Interview with Demetrious Johnson",
+    "actor": "Islam Makhachev",
+    "opponent": null,
+    "event": null,
+    "date": null
+   }
   },
   "144": {
    "subject": "Ilia Topuria",
@@ -408,7 +723,16 @@
    "opponent": "Ilia Topuria",
    "event": null,
    "date": null,
-   "error": null
+   "error": null,
+   "second_run": {
+    "kind": "new_remark",
+    "claim": "Islam Makhachev stated that Ilia Topuria lost his focus and underestimated Justin Gaethje by celebrating a victory the night before their fight.",
+    "occasion": "MightyCast podcast",
+    "actor": "Islam Makhachev",
+    "opponent": "Ilia Topuria",
+    "event": null,
+    "date": null
+   }
   },
   "148": {
    "subject": "Ilia Topuria",
@@ -420,7 +744,16 @@
    "opponent": null,
    "event": null,
    "date": null,
-   "error": null
+   "error": null,
+   "second_run": {
+    "kind": "new_remark",
+    "claim": "Islam Makhachev stated on a podcast that Ilia Topuria can become champion again if he focuses, while noting that Topuria's life may have changed after his loss to Justin Gaethje.",
+    "occasion": "Demetrious Johnson's podcast",
+    "actor": "Islam Makhachev",
+    "opponent": null,
+    "event": null,
+    "date": null
+   }
   },
   "152": {
    "subject": "Ilia Topuria",
@@ -432,7 +765,16 @@
    "opponent": null,
    "event": null,
    "date": null,
-   "error": null
+   "error": null,
+   "second_run": {
+    "kind": "new_remark",
+    "claim": "Ilia Topuria's strength and conditioning coach, Jesús Gallo, stated that while the fighter could be physically ready by December, it is more intelligent to wait until spring 2027 for his return.",
+    "occasion": "YouTube interview with Jorge Ebro",
+    "actor": "Jesús Gallo",
+    "opponent": null,
+    "event": null,
+    "date": null
+   }
   },
   "158": {
    "subject": "Ilia Topuria",
@@ -444,7 +786,16 @@
    "opponent": null,
    "event": null,
    "date": null,
-   "error": null
+   "error": null,
+   "second_run": {
+    "kind": "about_someone_else",
+    "claim": "NO CLAIM",
+    "occasion": null,
+    "actor": null,
+    "opponent": null,
+    "event": null,
+    "date": null
+   }
   },
   "166": {
    "subject": "Ilia Topuria",
@@ -456,7 +807,16 @@
    "opponent": null,
    "event": null,
    "date": null,
-   "error": null
+   "error": null,
+   "second_run": {
+    "kind": "new_remark",
+    "claim": "Javier Méndez stated that Ilia Topuria will return stronger after his loss to Justin Gaethje.",
+    "occasion": "Interview with ABC",
+    "actor": "Javier Méndez",
+    "opponent": null,
+    "event": null,
+    "date": null
+   }
   },
   "170": {
    "subject": "Ilia Topuria",
@@ -468,7 +828,16 @@
    "opponent": "Justin Gaethje",
    "event": null,
    "date": null,
-   "error": null
+   "error": null,
+   "second_run": {
+    "kind": "new_remark",
+    "claim": "Islam Makhachev stated that he hopes Ilia Topuria rebounds from his loss to Justin Gaethje and returns to champion form.",
+    "occasion": "Interview with Demetrious Johnson",
+    "actor": "Islam Makhachev",
+    "opponent": "Ilia Topuria",
+    "event": null,
+    "date": null
+   }
   },
   "174": {
    "subject": "Ilia Topuria",
@@ -480,7 +849,16 @@
    "opponent": null,
    "event": null,
    "date": null,
-   "error": null
+   "error": null,
+   "second_run": {
+    "kind": "new_remark",
+    "claim": "Islam Makhachev stated that Ilia Topuria has time to recover from his loss and hopes he returns to become champion again.",
+    "occasion": "Interview with Demetrius Johnson",
+    "actor": "Islam Makhachev",
+    "opponent": null,
+    "event": null,
+    "date": null
+   }
   },
   "181": {
    "subject": "Ilia Topuria",
@@ -492,7 +870,16 @@
    "opponent": null,
    "event": null,
    "date": null,
-   "error": null
+   "error": null,
+   "second_run": {
+    "kind": "about_someone_else",
+    "claim": "NO CLAIM",
+    "occasion": null,
+    "actor": null,
+    "opponent": null,
+    "event": null,
+    "date": null
+   }
   },
   "186": {
    "subject": "Ilia Topuria",
@@ -504,7 +891,16 @@
    "opponent": null,
    "event": null,
    "date": null,
-   "error": null
+   "error": null,
+   "second_run": {
+    "kind": "about_someone_else",
+    "claim": "NO CLAIM",
+    "occasion": null,
+    "actor": null,
+    "opponent": null,
+    "event": null,
+    "date": null
+   }
   },
   "187": {
    "subject": "Yaroslav Amosov",
@@ -516,7 +912,16 @@
    "opponent": null,
    "event": null,
    "date": null,
-   "error": null
+   "error": null,
+   "second_run": {
+    "kind": "about_someone_else",
+    "claim": "NO CLAIM",
+    "occasion": null,
+    "actor": null,
+    "opponent": null,
+    "event": null,
+    "date": null
+   }
   },
   "193": {
    "subject": "Ilia Topuria",
@@ -528,7 +933,16 @@
    "opponent": "Usman Nurmagomedov",
    "event": null,
    "date": null,
-   "error": null
+   "error": null,
+   "second_run": {
+    "kind": "reaction",
+    "claim": "Malki Kawa responded to Ali Abdelaziz by stating that Ilia Topuria would annihilate 100% of Abdelaziz's roster.",
+    "occasion": "Response to Ali Abdelaziz's comments on the Pound4Pound podcast",
+    "actor": "Malki Kawa",
+    "opponent": "Ali Abdelaziz",
+    "event": null,
+    "date": null
+   }
   },
   "200": {
    "subject": "Ilia Topuria",
@@ -540,7 +954,16 @@
    "opponent": null,
    "event": null,
    "date": null,
-   "error": null
+   "error": null,
+   "second_run": {
+    "kind": "about_someone_else",
+    "claim": "NO CLAIM",
+    "occasion": null,
+    "actor": null,
+    "opponent": null,
+    "event": null,
+    "date": null
+   }
   },
   "203": {
    "subject": "Daniil Donchenko",
@@ -552,7 +975,16 @@
    "opponent": null,
    "event": null,
    "date": null,
-   "error": null
+   "error": null,
+   "second_run": {
+    "kind": "new_remark",
+    "claim": "Daniil Donchenko stated that he will donate 50% of his UFC Fight Night bonus to a church in his hometown of Korosten.",
+    "occasion": "Interview with NV journalist",
+    "actor": "Daniil Donchenko",
+    "opponent": null,
+    "event": null,
+    "date": null
+   }
   },
   "204": {
    "subject": "Yaroslav Amosov",
@@ -564,7 +996,16 @@
    "opponent": "Ian Garry",
    "event": "UFC 330",
    "date": "2026-08-15",
-   "error": null
+   "error": null,
+   "second_run": {
+    "kind": "analysis",
+    "claim": "A Sport.ua article analyzes five reasons why Ian Garry might defeat Islam Makhachev at UFC 330, noting that the winner will become the new champion in Yaroslav Amosov's division.",
+    "occasion": "Sport.ua article published on August 15, 2026",
+    "actor": null,
+    "opponent": "Ian Garry",
+    "event": "UFC 330",
+    "date": "2026-08-15"
+   }
   },
   "207": {
    "subject": "Ilia Topuria",
@@ -576,7 +1017,16 @@
    "opponent": null,
    "event": "UFC 330",
    "date": "2026-08-15",
-   "error": null
+   "error": null,
+   "second_run": {
+    "kind": "analysis",
+    "claim": "A Bloody Elbow fan poll analysis states that Ian Machado Garry beating Islam Makhachev would be a bigger upset than Justin Gaethje's victory over Ilia Topuria.",
+    "occasion": "Bloody Elbow TalkingPoints fan vote",
+    "actor": null,
+    "opponent": "Ilia Topuria",
+    "event": null,
+    "date": null
+   }
   },
   "208": {
    "subject": "Daniil Donchenko",
@@ -588,7 +1038,16 @@
    "opponent": null,
    "event": null,
    "date": null,
-   "error": null
+   "error": null,
+   "second_run": {
+    "kind": "new_remark",
+    "claim": "Daniil Donchenko stated that he told his grandmother after his victory that he can earn good money from MMA and does not engage in drugs or alcohol.",
+    "occasion": "Post-fight interview with NV journalist following a technical knockout win",
+    "actor": "Daniil Donchenko",
+    "opponent": null,
+    "event": null,
+    "date": null
+   }
   },
   "214": {
    "subject": "Ilia Topuria",
@@ -600,7 +1059,16 @@
    "opponent": null,
    "event": "UFC Freedom 250",
    "date": "2026-08-15",
-   "error": null
+   "error": null,
+   "second_run": {
+    "kind": "about_someone_else",
+    "claim": "NO CLAIM",
+    "occasion": null,
+    "actor": "Dana White",
+    "opponent": null,
+    "event": "UFC Freedom 250",
+    "date": "2026-08-15"
+   }
   },
   "224": {
    "subject": "Ilia Topuria",
@@ -612,7 +1080,16 @@
    "opponent": null,
    "event": null,
    "date": null,
-   "error": null
+   "error": null,
+   "second_run": {
+    "kind": "about_someone_else",
+    "claim": "NO CLAIM",
+    "occasion": null,
+    "actor": null,
+    "opponent": null,
+    "event": null,
+    "date": null
+   }
   },
   "228": {
    "subject": "Ilia Topuria",
@@ -624,7 +1101,16 @@
    "opponent": "Ilia Topuria",
    "event": "UFC 330",
    "date": null,
-   "error": null
+   "error": null,
+   "second_run": {
+    "kind": "new_remark",
+    "claim": "Islam Makhachev stated that he verbally agreed to fight Ilia Topuria at the White House event but the deal fell through because Topuria's team demanded more money.",
+    "occasion": "Post-fight press conference after UFC 330",
+    "actor": "Islam Makhachev",
+    "opponent": "Ilia Topuria",
+    "event": "UFC 330",
+    "date": null
+   }
   },
   "230": {
    "subject": "Yaroslav Amosov",
@@ -636,7 +1122,16 @@
    "opponent": null,
    "event": null,
    "date": null,
-   "error": null
+   "error": null,
+   "second_run": {
+    "kind": "about_someone_else",
+    "claim": "NO CLAIM",
+    "occasion": null,
+    "actor": null,
+    "opponent": null,
+    "event": null,
+    "date": null
+   }
   },
   "233": {
    "subject": "Ilia Topuria",
@@ -648,7 +1143,16 @@
    "opponent": "Justin Gaethje",
    "event": null,
    "date": "2026-08-17",
-   "error": null
+   "error": null,
+   "second_run": {
+    "kind": "analysis",
+    "claim": "Ilia Topuria has slipped to fifth in the UFC Power Rankings following his loss to Justin Gaethje at UFC Freedom 250.",
+    "occasion": "UFC Power Rankings article published by Yahoo Sports on August 17, 2026",
+    "actor": "Robert Pasky",
+    "opponent": null,
+    "event": null,
+    "date": "2026-08-17"
+   }
   },
   "238": {
    "subject": "Ilia Topuria",
@@ -660,7 +1164,16 @@
    "opponent": null,
    "event": null,
    "date": "2026-08-18",
-   "error": null
+   "error": null,
+   "second_run": {
+    "kind": "new_remark",
+    "claim": "Content creator Marc, known as 'MMARC', stated in an interview that without Ilia Topuria's presence as a double champion and media figure, he might not have been able to make a living from UFC content creation.",
+    "occasion": "Interview with SPORT published on 2026-08-18",
+    "actor": "Marc ('MMARC')",
+    "opponent": null,
+    "event": null,
+    "date": "2026-08-18"
+   }
   },
   "244": {
    "subject": "Ilia Topuria",
@@ -672,7 +1185,16 @@
    "opponent": null,
    "event": null,
    "date": null,
-   "error": null
+   "error": null,
+   "second_run": {
+    "kind": "new_remark",
+    "claim": "Islam Makhachev stated that Ilia Topuria can become champion again if he focuses, following his loss to Justin Gaethje.",
+    "occasion": "Conversation with Demetrious Johnson",
+    "actor": "Islam Makhachev",
+    "opponent": null,
+    "event": null,
+    "date": null
+   }
   },
   "247": {
    "subject": "Yaroslav Amosov",
@@ -684,7 +1206,16 @@
    "opponent": "Ian Machado Garry",
    "event": null,
    "date": null,
-   "error": null
+   "error": null,
+   "second_run": {
+    "kind": "analysis",
+    "claim": "Brendan Schaub predicted that if the UFC books Yaroslav Amosov against Ian Machado Garry, it would prove the promotion is no longer interested in Machado Garry.",
+    "occasion": "The Fighter and The Kid podcast",
+    "actor": "Brendan Schaub",
+    "opponent": "Ian Machado Garry",
+    "event": null,
+    "date": null
+   }
   },
   "249": {
    "subject": "Ilia Topuria",
@@ -696,7 +1227,16 @@
    "opponent": "Usman Nurmagomedov",
    "event": null,
    "date": null,
-   "error": null
+   "error": null,
+   "second_run": {
+    "kind": "new_remark",
+    "claim": "Paul Hughes stated that Ilia Topuria is the only person in the UFC who has a chance against Usman Nurmagomedov.",
+    "occasion": null,
+    "actor": "Paul Hughes",
+    "opponent": "Usman Nurmagomedov",
+    "event": null,
+    "date": null
+   }
   },
   "256": {
    "subject": "Ilia Topuria",
@@ -708,7 +1248,16 @@
    "opponent": "Michael Chandler",
    "event": null,
    "date": null,
-   "error": null
+   "error": null,
+   "second_run": {
+    "kind": "new_remark",
+    "claim": "Arman Tsarukyan stated that Ilia Topuria's next fight should be against Michael Chandler as a tune-up before returning to title contention.",
+    "occasion": "Interview on the UFC on Paramount+ YouTube channel",
+    "actor": "Arman Tsarukyan",
+    "opponent": "Michael Chandler",
+    "event": null,
+    "date": null
+   }
   },
   "261": {
    "subject": "Ilia Topuria",
@@ -720,7 +1269,16 @@
    "opponent": null,
    "event": null,
    "date": null,
-   "error": null
+   "error": null,
+   "second_run": {
+    "kind": "about_someone_else",
+    "claim": "NO CLAIM",
+    "occasion": null,
+    "actor": null,
+    "opponent": null,
+    "event": null,
+    "date": null
+   }
   },
   "269": {
    "subject": "Ilia Topuria",
@@ -732,7 +1290,16 @@
    "opponent": "Michael Chandler",
    "event": null,
    "date": null,
-   "error": null
+   "error": null,
+   "second_run": {
+    "kind": "new_remark",
+    "claim": "Arman Tsarukyan stated that Ilia Topuria should fight Michael Chandler next before working back toward another title shot.",
+    "occasion": "Interview with MMA Fighting, reported by BJPenn.com",
+    "actor": "Arman Tsarukyan",
+    "opponent": "Michael Chandler",
+    "event": null,
+    "date": null
+   }
   },
   "273": {
    "subject": "Ilia Topuria",
@@ -744,7 +1311,16 @@
    "opponent": "Ilia Topuria",
    "event": null,
    "date": "2026-08-20",
-   "error": null
+   "error": null,
+   "second_run": {
+    "kind": "new_remark",
+    "claim": "Paddy Pimblett stated that he wants to fight Ilia Topuria or Arman Tsarukyan next.",
+    "occasion": "Green Light with Chris Long podcast",
+    "actor": "Paddy Pimblett",
+    "opponent": "Ilia Topuria",
+    "event": null,
+    "date": "2026-08-20"
+   }
   },
   "279": {
    "subject": "Ilia Topuria",
@@ -756,7 +1332,16 @@
    "opponent": "Islam Makhachev",
    "event": null,
    "date": null,
-   "error": null
+   "error": null,
+   "second_run": {
+    "kind": "new_remark",
+    "claim": "Javier Mendez stated that Ilia Topuria needs multiple wins, not just one, to earn a super fight against Islam Makhachev.",
+    "occasion": "Interview with Red Corner MMA",
+    "actor": "Javier Mendez",
+    "opponent": "Islam Makhachev",
+    "event": null,
+    "date": null
+   }
   },
   "283": {
    "subject": "Ilia Topuria",
@@ -768,7 +1353,16 @@
    "opponent": "Ilia Topuria",
    "event": null,
    "date": null,
-   "error": null
+   "error": null,
+   "second_run": {
+    "kind": "new_remark",
+    "claim": "Paddy Pimblett stated that he would terrorize Ilia Topuria if they fight, despite having respect for him.",
+    "occasion": "Green Light podcast",
+    "actor": "Paddy Pimblett",
+    "opponent": "Ilia Topuria",
+    "event": null,
+    "date": null
+   }
   },
   "287": {
    "subject": "Ilia Topuria",
@@ -780,7 +1374,16 @@
    "opponent": "Michael Chandler",
    "event": null,
    "date": null,
-   "error": null
+   "error": null,
+   "second_run": {
+    "kind": "new_remark",
+    "claim": "Arman Tsarukyan stated that Michael Chandler should be Ilia Topuria's next opponent because Topuria needs an easy fight.",
+    "occasion": null,
+    "actor": "Arman Tsarukyan",
+    "opponent": "Michael Chandler",
+    "event": null,
+    "date": null
+   }
   },
   "291": {
    "subject": "Ilia Topuria",
@@ -792,7 +1395,16 @@
    "opponent": null,
    "event": null,
    "date": null,
-   "error": null
+   "error": null,
+   "second_run": {
+    "kind": "new_remark",
+    "claim": "Ilia Topuria stated that he and his brother Aleksandre were bullied in school in Georgia, which caused him fear and anxiety during recess.",
+    "occasion": null,
+    "actor": "Ilia Topuria",
+    "opponent": null,
+    "event": null,
+    "date": null
+   }
   },
   "297": {
    "subject": "Ilia Topuria",
@@ -804,7 +1416,16 @@
    "opponent": null,
    "event": null,
    "date": null,
-   "error": null
+   "error": null,
+   "second_run": {
+    "kind": "about_someone_else",
+    "claim": "NO CLAIM",
+    "occasion": null,
+    "actor": null,
+    "opponent": null,
+    "event": null,
+    "date": null
+   }
   },
   "298": {
    "subject": "Daniil Donchenko",
@@ -816,7 +1437,16 @@
    "opponent": null,
    "event": null,
    "date": "2026-08-21",
-   "error": null
+   "error": null,
+   "second_run": {
+    "kind": "new_remark",
+    "claim": "Daniil Donchenko stated in an interview that conflicts during The Ultimate Fighter were often exaggerated by fighters for the cameras, though some genuine tensions arose near the end of the show.",
+    "occasion": "Interview with NV (Sport.nv.ua)",
+    "actor": "Daniil Donchenko",
+    "opponent": null,
+    "event": null,
+    "date": "2026-08-21"
+   }
   },
   "300": {
    "subject": "Daniil Donchenko",
@@ -828,7 +1458,16 @@
    "opponent": null,
    "event": null,
    "date": "2026-08-21",
-   "error": null
+   "error": null,
+   "second_run": {
+    "kind": "new_remark",
+    "claim": "Daniil Donchenko revealed that he asked UFC President Dana White to sign his friend Dmytro instead of paying him the fight purse, but the request was ignored.",
+    "occasion": "Interview with Sport.nv.ua",
+    "actor": "Daniil Donchenko",
+    "opponent": null,
+    "event": null,
+    "date": "2026-08-21"
+   }
   },
   "301": {
    "subject": "Daniil Donchenko",
@@ -840,7 +1479,16 @@
    "opponent": null,
    "event": null,
    "date": null,
-   "error": null
+   "error": null,
+   "second_run": {
+    "kind": "new_remark",
+    "claim": "Daniil Donchenko stated that he is ready to fight Russian athletes in the UFC, but believes the organization avoids such matchups to prevent backlash.",
+    "occasion": null,
+    "actor": "Daniil Donchenko",
+    "opponent": null,
+    "event": null,
+    "date": null
+   }
   },
   "305": {
    "subject": "Ilia Topuria",
@@ -852,7 +1500,16 @@
    "opponent": null,
    "event": null,
    "date": null,
-   "error": null
+   "error": null,
+   "second_run": {
+    "kind": "new_remark",
+    "claim": "Ilia Topuria stated that he considers Alicante a paradise and would not change it for any other place in the world, despite having traveled extensively.",
+    "occasion": "Interview with SPORT regarding his neighborhood in Alicante",
+    "actor": "Ilia Topuria",
+    "opponent": null,
+    "event": null,
+    "date": "2026-08-21"
+   }
   },
   "311": {
    "subject": "Ilia Topuria",
@@ -864,7 +1521,16 @@
    "opponent": "Islam Makhachev",
    "event": null,
    "date": null,
-   "error": null
+   "error": null,
+   "second_run": {
+    "kind": "new_remark",
+    "claim": "Javier Mendez stated that Ilia Topuria's loss to Justin Gaethje changed the trajectory of a potential fight with Islam Makhachev, requiring Topuria to secure multiple impressive victories before such a matchup could occur.",
+    "occasion": "Interview with 'Red Corner MMA'",
+    "actor": "Javier Mendez",
+    "opponent": "Islam Makhachev",
+    "event": null,
+    "date": null
+   }
   },
   "316": {
    "subject": "Ilia Topuria",
@@ -876,7 +1542,16 @@
    "opponent": null,
    "event": null,
    "date": null,
-   "error": null
+   "error": null,
+   "second_run": {
+    "kind": "about_someone_else",
+    "claim": "NO CLAIM",
+    "occasion": null,
+    "actor": null,
+    "opponent": null,
+    "event": null,
+    "date": null
+   }
   },
   "320": {
    "subject": "Daniil Donchenko",
@@ -888,7 +1563,16 @@
    "opponent": null,
    "event": null,
    "date": "2026-08-22",
-   "error": null
+   "error": null,
+   "second_run": {
+    "kind": "new_remark",
+    "claim": "Daniil Donchenko stated that he and his brother attempted to join the Territorial Defense Forces on the second day of Russia's full-scale invasion but were turned away due to overcrowding, leading them to organize fundraising efforts instead.",
+    "occasion": "Interview with NV journalist",
+    "actor": "Daniil Donchenko",
+    "opponent": null,
+    "event": null,
+    "date": null
+   }
   },
   "321": {
    "subject": "Daniil Donchenko",
@@ -900,7 +1584,16 @@
    "opponent": null,
    "event": null,
    "date": "2026-08-22",
-   "error": null
+   "error": null,
+   "second_run": {
+    "kind": "new_remark",
+    "claim": "Daniil Donchenko stated that he dropped out of Kyiv Polytechnic Institute after one year to move to Thailand and focus on his professional MMA career.",
+    "occasion": "Interview with Sport.nv.ua",
+    "actor": "Daniil Donchenko",
+    "opponent": null,
+    "event": null,
+    "date": "2026-08-22"
+   }
   },
   "322": {
    "subject": "Daniil Donchenko",
@@ -912,7 +1605,16 @@
    "opponent": null,
    "event": null,
    "date": null,
-   "error": null
+   "error": null,
+   "second_run": {
+    "kind": "new_remark",
+    "claim": "Daniil Donchenko stated that he earned 1,500 hryvnias for a victory and 1,000 hryvnias for appearing in fights at a Kyiv club restaurant before his professional career took off.",
+    "occasion": "Interview with NV journalist",
+    "actor": "Daniil Donchenko",
+    "opponent": null,
+    "event": null,
+    "date": null
+   }
   },
   "323": {
    "subject": "Ilia Topuria",
@@ -924,7 +1626,16 @@
    "opponent": null,
    "event": null,
    "date": null,
-   "error": null
+   "error": null,
+   "second_run": {
+    "kind": "new_remark",
+    "claim": "Ilia Topuria's strength and conditioning coach, Doctor Aldo, explained the 'Brock cord' training method on his social media.",
+    "occasion": "social media",
+    "actor": "Doctor Aldo",
+    "opponent": null,
+    "event": null,
+    "date": null
+   }
   },
   "327": {
    "subject": "Ilia Topuria",
@@ -936,7 +1647,16 @@
    "opponent": null,
    "event": null,
    "date": null,
-   "error": null
+   "error": null,
+   "second_run": {
+    "kind": "new_remark",
+    "claim": "Merab Dvalishvili stated that Ilia Topuria is in a positive state of mind, has been away from training for nearly two months following his loss to Justin Gaethje, and will return to win the belt.",
+    "occasion": "Interview with Helen Yee",
+    "actor": "Merab Dvalishvili",
+    "opponent": "Justin Gaethje",
+    "event": "UFC Freedom 250",
+    "date": null
+   }
   },
   "335": {
    "subject": "Ilia Topuria",
@@ -948,7 +1668,16 @@
    "opponent": null,
    "event": null,
    "date": null,
-   "error": null
+   "error": null,
+   "second_run": {
+    "kind": "about_someone_else",
+    "claim": "NO CLAIM",
+    "occasion": null,
+    "actor": null,
+    "opponent": null,
+    "event": null,
+    "date": null
+   }
   },
   "339": {
    "subject": "Ilia Topuria",
@@ -960,7 +1689,16 @@
    "opponent": "Usman Nurmagomedov",
    "event": null,
    "date": null,
-   "error": null
+   "error": null,
+   "second_run": {
+    "kind": "new_remark",
+    "claim": "Paul Hughes stated that Ilia Topuria is the only UFC fighter capable of defeating Usman Nurmagomedov.",
+    "occasion": "The Ariel Helwani Show",
+    "actor": "Paul Hughes",
+    "opponent": "Usman Nurmagomedov",
+    "event": null,
+    "date": null
+   }
   },
   "342": {
    "subject": "Yaroslav Amosov",
@@ -972,7 +1710,16 @@
    "opponent": null,
    "event": null,
    "date": null,
-   "error": null
+   "error": null,
+   "second_run": {
+    "kind": "restatement",
+    "claim": "NO CLAIM",
+    "occasion": null,
+    "actor": null,
+    "opponent": null,
+    "event": null,
+    "date": null
+   }
   },
   "349": {
    "subject": "Ilia Topuria",
@@ -984,7 +1731,16 @@
    "opponent": null,
    "event": null,
    "date": null,
-   "error": null
+   "error": null,
+   "second_run": {
+    "kind": "new_remark",
+    "claim": "Merab Dvalishvili stated that Ilia Topuria is doing well, has a positive attitude, and is resting to return stronger.",
+    "occasion": "Interview with Helen Yee",
+    "actor": "Merab Dvalishvili",
+    "opponent": null,
+    "event": null,
+    "date": null
+   }
   },
   "353": {
    "subject": "Ilia Topuria",
@@ -996,7 +1752,16 @@
    "opponent": "Ilia Topuria",
    "event": null,
    "date": null,
-   "error": null
+   "error": null,
+   "second_run": {
+    "kind": "restatement",
+    "claim": "NO CLAIM",
+    "occasion": null,
+    "actor": null,
+    "opponent": null,
+    "event": null,
+    "date": null
+   }
   },
   "361": {
    "subject": "Ilia Topuria",
@@ -1008,7 +1773,16 @@
    "opponent": null,
    "event": null,
    "date": null,
-   "error": null
+   "error": null,
+   "second_run": {
+    "kind": "new_remark",
+    "claim": "Merab Dvalishvili stated that Ilia Topuria is enjoying life, recovering well physically and mentally, and will return to reclaim his belt.",
+    "occasion": "Ariel Helwani's podcast",
+    "actor": "Merab Dvalishvili",
+    "opponent": null,
+    "event": null,
+    "date": null
+   }
   },
   "368": {
    "subject": "Ilia Topuria",
@@ -1020,7 +1794,16 @@
    "opponent": null,
    "event": null,
    "date": null,
-   "error": null
+   "error": null,
+   "second_run": {
+    "kind": "new_remark",
+    "claim": "Merab Dvalishvili stated that Ilia Topuria is physically and mentally well, enjoying life, and will defeat everyone upon his return.",
+    "occasion": "Interview with Helen Yee",
+    "actor": "Merab Dvalishvili",
+    "opponent": null,
+    "event": null,
+    "date": null
+   }
   },
   "373": {
    "subject": "Ilia Topuria",
@@ -1032,7 +1815,16 @@
    "opponent": "Demetrious Johnson",
    "event": null,
    "date": null,
-   "error": null
+   "error": null,
+   "second_run": {
+    "kind": "new_remark",
+    "claim": "Ilia Topuria stated on a podcast that he was never a fan of Demetrious Johnson because he mistakenly believed Johnson's nickname was 'Mickey Mouse' instead of 'Mighty Mouse'.",
+    "occasion": "Podcast episode with Joe Rogan",
+    "actor": "Ilia Topuria",
+    "opponent": "Demetrious Johnson",
+    "event": null,
+    "date": null
+   }
   },
   "380": {
    "subject": "Ilia Topuria",
@@ -1044,7 +1836,16 @@
    "opponent": null,
    "event": null,
    "date": "2026-06-12",
-   "error": null
+   "error": null,
+   "second_run": {
+    "kind": "new_remark",
+    "claim": "Ilia Topuria stated that the greatest lesson he learned from his divorce is to listen to his mother.",
+    "occasion": "Interview with CBS on June 12, 2026",
+    "actor": "Ilia Topuria",
+    "opponent": null,
+    "event": null,
+    "date": "2026-06-12"
+   }
   },
   "385": {
    "subject": "Ilia Topuria",
@@ -1056,7 +1857,16 @@
    "opponent": "Paddy Pimblett",
    "event": null,
    "date": null,
-   "error": null
+   "error": null,
+   "second_run": {
+    "kind": "reaction",
+    "claim": "Ilia Topuria responded to Paddy Pimblett's trash talk by warning him to be careful what he wishes for and stating that Spaniards do not get knocked out.",
+    "occasion": null,
+    "actor": "Ilia Topuria",
+    "opponent": "Paddy Pimblett",
+    "event": null,
+    "date": null
+   }
   },
   "397": {
    "subject": "Ilia Topuria",
@@ -1068,7 +1878,16 @@
    "opponent": null,
    "event": null,
    "date": null,
-   "error": null
+   "error": null,
+   "second_run": {
+    "kind": "new_remark",
+    "claim": "Merab Dvalishvili stated that Ilia Topuria is recovering well and will return to reclaim his UFC lightweight title.",
+    "occasion": "During a wrestling tournament",
+    "actor": "Merab Dvalishvili",
+    "opponent": null,
+    "event": null,
+    "date": null
+   }
   },
   "402": {
    "subject": "Ilia Topuria",
@@ -1080,7 +1899,16 @@
    "opponent": null,
    "event": null,
    "date": null,
-   "error": null
+   "error": null,
+   "second_run": {
+    "kind": "new_remark",
+    "claim": "Merab Dvalishvili stated that Ilia Topuria is in good condition, has a positive attitude, and will return to win against everyone.",
+    "occasion": "Interview with journalist Helen Yee",
+    "actor": "Merab Dvalishvili",
+    "opponent": null,
+    "event": null,
+    "date": null
+   }
   },
   "408": {
    "subject": "Ilia Topuria",
@@ -1092,7 +1920,16 @@
    "opponent": "Ilia Topuria",
    "event": null,
    "date": null,
-   "error": null
+   "error": null,
+   "second_run": {
+    "kind": "new_remark",
+    "claim": "Usman Nurmagomedov criticized Ilia Topuria for quitting on his stool after the fourth round of his title loss to Justin Gaethje.",
+    "occasion": "Interview with Sport24",
+    "actor": "Usman Nurmagomedov",
+    "opponent": "Ilia Topuria",
+    "event": null,
+    "date": null
+   }
   },
   "412": {
    "subject": "Ilia Topuria",
@@ -1104,7 +1941,16 @@
    "opponent": null,
    "event": null,
    "date": null,
-   "error": null
+   "error": null,
+   "second_run": {
+    "kind": "new_remark",
+    "claim": "Jesús Gallo stated that Ilia Topuria could be physically ready to compete in December 2026, but the team's priority is a safe recovery making 2027 the more likely return date.",
+    "occasion": "Interview on Jorge Ebro's YouTube channel",
+    "actor": "Jesús Gallo",
+    "opponent": null,
+    "event": null,
+    "date": null
+   }
   },
   "416": {
    "subject": "Ilia Topuria",
@@ -1116,7 +1962,16 @@
    "opponent": "Usman Nurmagomedov",
    "event": null,
    "date": "2026-08-28",
-   "error": null
+   "error": null,
+   "second_run": {
+    "kind": "new_remark",
+    "claim": "Umar Nurmagomedov stated that his brother Usman is ready to compete against Ilia Topuria.",
+    "occasion": "Interview with MMA Junkie",
+    "actor": "Umar Nurmagomedov",
+    "opponent": "Usman Nurmagomedov",
+    "event": null,
+    "date": "2026-08-28"
+   }
   },
   "423": {
    "subject": "Ilia Topuria",
@@ -1128,7 +1983,16 @@
    "opponent": "Ilia Topuria",
    "event": null,
    "date": null,
-   "error": null
+   "error": null,
+   "second_run": {
+    "kind": "new_remark",
+    "claim": "Paddy Pimblett stated that he wants to fight Ilia Topuria and called him a complete idiot.",
+    "occasion": "Interview following his victory at UFC 329",
+    "actor": "Paddy Pimblett",
+    "opponent": "Ilia Topuria",
+    "event": null,
+    "date": null
+   }
   },
   "427": {
    "subject": "Ilia Topuria",
@@ -1140,7 +2004,16 @@
    "opponent": null,
    "event": null,
    "date": null,
-   "error": null
+   "error": null,
+   "second_run": {
+    "kind": "new_remark",
+    "claim": "Ilia Topuria stated on the podcast 'Charlas Adictivas' that he felt fear and disliked confrontations during his childhood in Georgia, despite having to defend himself against bullying.",
+    "occasion": "Podcast 'Charlas Adictivas'",
+    "actor": "Ilia Topuria",
+    "opponent": null,
+    "event": null,
+    "date": null
+   }
   },
   "431": {
    "subject": "Ilia Topuria",
@@ -1152,7 +2025,16 @@
    "opponent": "Ilia Topuria",
    "event": null,
    "date": "2026-08-28",
-   "error": null
+   "error": null,
+   "second_run": {
+    "kind": "new_remark",
+    "claim": "Usman Nurmagomedov stated that Ilia Topuria lost, quit on the stool, and said he wasn't going to continue.",
+    "occasion": "Interview with Sport24",
+    "actor": "Usman Nurmagomedov",
+    "opponent": "Ilia Topuria",
+    "event": null,
+    "date": "2026-08-28"
+   }
   },
   "435": {
    "subject": "Ilia Topuria",
@@ -1164,7 +2046,16 @@
    "opponent": "Ilia Topuria",
    "event": null,
    "date": null,
-   "error": null
+   "error": null,
+   "second_run": {
+    "kind": "new_remark",
+    "claim": "Usman Nurmagomedov stated that Ilia Topuria praised himself endlessly, lost a fight by quitting on the stool, and said he did not want to continue.",
+    "occasion": "Sport24 interview",
+    "actor": "Usman Nurmagomedov",
+    "opponent": "Ilia Topuria",
+    "event": null,
+    "date": null
+   }
   },
   "442": {
    "subject": "Ilia Topuria",
@@ -1176,7 +2067,16 @@
    "opponent": "Islam Makhachev",
    "event": null,
    "date": null,
-   "error": null
+   "error": null,
+   "second_run": {
+    "kind": "new_remark",
+    "claim": "Javier Mendez stated that Ilia Topuria's loss to Justin Gaethje has changed the trajectory of a potential fight with Islam Makhachev and that Topuria needs multiple spectacular wins to earn it.",
+    "occasion": "Interview for Red Corner MMA",
+    "actor": "Javier Mendez",
+    "opponent": "Islam Makhachev",
+    "event": null,
+    "date": null
+   }
   },
   "447": {
    "subject": "Ilia Topuria",
@@ -1188,7 +2088,16 @@
    "opponent": null,
    "event": null,
    "date": null,
-   "error": null
+   "error": null,
+   "second_run": {
+    "kind": "analysis",
+    "claim": "Ilia Topuria remains ranked No. 1 in the UFC lightweight division despite stepping away from competition to deal with matters outside the Octagon.",
+    "occasion": null,
+    "actor": "MMA Sucka",
+    "opponent": null,
+    "event": null,
+    "date": null
+   }
   },
   "453": {
    "subject": "Ilia Topuria",
@@ -1200,7 +2109,16 @@
    "opponent": null,
    "event": null,
    "date": null,
-   "error": null
+   "error": null,
+   "second_run": {
+    "kind": "about_someone_else",
+    "claim": "NO CLAIM",
+    "occasion": null,
+    "actor": null,
+    "opponent": null,
+    "event": null,
+    "date": null
+   }
   },
   "457": {
    "subject": "Ilia Topuria",
@@ -1212,7 +2130,16 @@
    "opponent": null,
    "event": null,
    "date": null,
-   "error": null
+   "error": null,
+   "second_run": {
+    "kind": "about_someone_else",
+    "claim": "NO CLAIM",
+    "occasion": null,
+    "actor": null,
+    "opponent": null,
+    "event": null,
+    "date": null
+   }
   },
   "462": {
    "subject": "Ilia Topuria",
@@ -1224,7 +2151,16 @@
    "opponent": "Ilia Topuria",
    "event": null,
    "date": null,
-   "error": null
+   "error": null,
+   "second_run": {
+    "kind": "new_remark",
+    "claim": "Justin Gaethje stated that he does not believe an immediate rematch with Ilia Topuria will be his next fight.",
+    "occasion": "Interview with Sports Illustrated",
+    "actor": "Justin Gaethje",
+    "opponent": "Ilia Topuria",
+    "event": null,
+    "date": null
+   }
   },
   "467": {
    "subject": "Ilia Topuria",
@@ -1236,7 +2172,16 @@
    "opponent": "Ilia Topuria",
    "event": null,
    "date": null,
-   "error": null
+   "error": null,
+   "second_run": {
+    "kind": "new_remark",
+    "claim": "Justin Gaethje stated that he does not believe a rematch with Ilia Topuria will be his next fight and that Topuria is likely out until next year due to injuries.",
+    "occasion": "Sports Illustrated interview",
+    "actor": "Justin Gaethje",
+    "opponent": "Ilia Topuria",
+    "event": null,
+    "date": null
+   }
   },
   "476": {
    "subject": "Ilia Topuria",
@@ -1248,7 +2193,16 @@
    "opponent": "Ilia Topuria",
    "event": "UFC Freedom 250",
    "date": null,
-   "error": null
+   "error": null,
+   "second_run": {
+    "kind": "new_event",
+    "claim": "Justin Gaethje suffered hand injuries in his win over Ilia Topuria at UFC Freedom 250 that remain unhealed.",
+    "occasion": null,
+    "actor": "Justin Gaethje",
+    "opponent": "Ilia Topuria",
+    "event": "UFC Freedom 250",
+    "date": null
+   }
   },
   "484": {
    "subject": "Ilia Topuria",
@@ -1260,7 +2214,16 @@
    "opponent": "Ilia Topuria",
    "event": null,
    "date": null,
-   "error": null
+   "error": null,
+   "second_run": {
+    "kind": "new_remark",
+    "claim": "Justin Gaethje stated that he does not believe an immediate rematch with Ilia Topuria will be his next fight.",
+    "occasion": "Interview with Sports Illustrated",
+    "actor": "Justin Gaethje",
+    "opponent": "Ilia Topuria",
+    "event": null,
+    "date": null
+   }
   },
   "490": {
    "subject": "Daniil Donchenko",
@@ -1272,7 +2235,16 @@
    "opponent": "Punahele Soriano",
    "event": "UFC Paris",
    "date": "2026-09-05",
-   "error": null
+   "error": null,
+   "second_run": {
+    "kind": "new_event",
+    "claim": "Daniil Donchenko is scheduled to fight Punahele Soriano at UFC Paris.",
+    "occasion": "UFC.com article published August 31, 2026",
+    "actor": "Daniil Donchenko",
+    "opponent": "Punahele Soriano",
+    "event": "UFC Paris",
+    "date": "2026-09-05"
+   }
   },
   "491": {
    "subject": "Daniil Donchenko",
@@ -1284,7 +2256,16 @@
    "opponent": "Punahele Soriano",
    "event": "UFC Paris",
    "date": "2026-08-31",
-   "error": null
+   "error": null,
+   "second_run": {
+    "kind": "new_event",
+    "claim": "Daniil Donchenko is scheduled to fight Punahele Soriano at UFC Paris.",
+    "occasion": "UFC article published August 31, 2026",
+    "actor": "Daniil Donchenko",
+    "opponent": "Punahele Soriano",
+    "event": "UFC Paris",
+    "date": "2026-08-31"
+   }
   },
   "492": {
    "subject": "Ilia Topuria",
@@ -1296,7 +2277,16 @@
    "opponent": "Ilia Topuria",
    "event": null,
    "date": "2026-08-31",
-   "error": null
+   "error": null,
+   "second_run": {
+    "kind": "new_remark",
+    "claim": "Justin Gaethje stated that more than two months after his fight against Ilia Topuria, both of his hands are still too sore to punch anything.",
+    "occasion": "Interview with Sports Illustrated",
+    "actor": "Justin Gaethje",
+    "opponent": "Ilia Topuria",
+    "event": null,
+    "date": "2026-08-31"
+   }
   },
   "494": {
    "subject": "Daniil Donchenko",
@@ -1308,7 +2298,16 @@
    "opponent": "Punahele Soriano",
    "event": "UFC Paris",
    "date": "2026-09-05",
-   "error": null
+   "error": null,
+   "second_run": {
+    "kind": "new_event",
+    "claim": "Daniil Donchenko is scheduled to fight Punahele Soriano at UFC Paris.",
+    "occasion": "UFC.com article published August 31, 2026",
+    "actor": "Daniil Donchenko",
+    "opponent": "Punahele Soriano",
+    "event": "UFC Paris",
+    "date": "2026-08-31"
+   }
   },
   "497": {
    "subject": "Ilia Topuria",
@@ -1320,7 +2319,16 @@
    "opponent": null,
    "event": null,
    "date": null,
-   "error": null
+   "error": null,
+   "second_run": {
+    "kind": "new_remark",
+    "claim": "Ilia Topuria stated in a podcast that he felt fear during street fights as a child because he did not like them, despite having to defend himself against bullying.",
+    "occasion": "Podcast 'Charlas Adictivas'",
+    "actor": "Ilia Topuria",
+    "opponent": null,
+    "event": null,
+    "date": null
+   }
   },
   "500": {
    "subject": "Daniil Donchenko",
@@ -1332,7 +2340,16 @@
    "opponent": "Punahele Soriano",
    "event": "UFC Paris",
    "date": null,
-   "error": null
+   "error": null,
+   "second_run": {
+    "kind": "new_event",
+    "claim": "Daniil Donchenko is scheduled to fight Punahele Soriano at UFC Paris.",
+    "occasion": null,
+    "actor": "UFC",
+    "opponent": "Punahele Soriano",
+    "event": "UFC Paris",
+    "date": "2026-08-31"
+   }
   },
   "503": {
    "subject": "Ilia Topuria",
@@ -1344,7 +2361,16 @@
    "opponent": "Ilia Topuria",
    "event": null,
    "date": null,
-   "error": null
+   "error": null,
+   "second_run": {
+    "kind": "new_remark",
+    "claim": "Justin Gaethje stated that the UFC has the final say on whether he fights Ilia Topuria in a rematch, though he personally does not believe it should be his next fight.",
+    "occasion": "Interview with Sports Illustrated",
+    "actor": "Justin Gaethje",
+    "opponent": "Ilia Topuria",
+    "event": null,
+    "date": null
+   }
   },
   "508": {
    "subject": "Ilia Topuria",
@@ -1356,7 +2382,16 @@
    "opponent": "Justin Gaethje",
    "event": null,
    "date": "2026-08-31",
-   "error": null
+   "error": null,
+   "second_run": {
+    "kind": "analysis",
+    "claim": "Ilia Topuria has slipped to fifth in the UFC power rankings after losing to Justin Gaethje at UFC Freedom 250.",
+    "occasion": "UFC power rankings following Fight Night 286 in Shanghai, China - Yahoo Sports",
+    "actor": "Robert Pasky",
+    "opponent": "Justin Gaethje",
+    "event": "UFC Freedom 250",
+    "date": "2026-08-31"
+   }
   },
   "510": {
    "subject": "Daniil Donchenko",
@@ -1368,7 +2403,16 @@
    "opponent": "Punahele Soriano",
    "event": "UFC Paris",
    "date": null,
-   "error": null
+   "error": null,
+   "second_run": {
+    "kind": "new_event",
+    "claim": "Daniil Donchenko is scheduled to fight Punahele Soriano at UFC Paris.",
+    "occasion": "UFC Paris card announcement",
+    "actor": null,
+    "opponent": "Punahele Soriano",
+    "event": "UFC Paris",
+    "date": "2026-09-05"
+   }
   },
   "516": {
    "subject": "Ilia Topuria",
@@ -1380,7 +2424,16 @@
    "opponent": "Paddy Pimblett",
    "event": null,
    "date": null,
-   "error": null
+   "error": null,
+   "second_run": {
+    "kind": "new_remark",
+    "claim": "Arman Tsarukyan stated on a podcast that he does not believe the UFC will book Ilia Topuria against Paddy Pimblett because they want to avoid another loss for Topuria and keep Pimblett in title contention.",
+    "occasion": "Deep Waters podcast",
+    "actor": "Arman Tsarukyan",
+    "opponent": "Paddy Pimblett",
+    "event": null,
+    "date": null
+   }
   },
   "520": {
    "subject": "Ilia Topuria",
@@ -1392,7 +2445,16 @@
    "opponent": null,
    "event": null,
    "date": null,
-   "error": null
+   "error": null,
+   "second_run": {
+    "kind": "about_someone_else",
+    "claim": "NO CLAIM",
+    "occasion": null,
+    "actor": null,
+    "opponent": null,
+    "event": null,
+    "date": null
+   }
   },
   "521": {
    "subject": "Daniil Donchenko",
@@ -1404,7 +2466,16 @@
    "opponent": null,
    "event": null,
    "date": null,
-   "error": null
+   "error": null,
+   "second_run": {
+    "kind": "no_text",
+    "claim": "NO CLAIM",
+    "occasion": null,
+    "actor": null,
+    "opponent": null,
+    "event": null,
+    "date": null
+   }
   },
   "525": {
    "subject": "Ilia Topuria",
@@ -1416,7 +2487,16 @@
    "opponent": "Ilia Topuria",
    "event": null,
    "date": null,
-   "error": null
+   "error": null,
+   "second_run": {
+    "kind": "new_remark",
+    "claim": "Arman Tsarukyan stated that he expects Ilia Topuria to be more motivated and focused on his training camp following his recent loss.",
+    "occasion": "Deep Waters show",
+    "actor": "Arman Tsarukyan",
+    "opponent": "Ilia Topuria",
+    "event": null,
+    "date": null
+   }
   },
   "529": {
    "subject": "Daniil Donchenko",
@@ -1428,7 +2508,16 @@
    "opponent": "Daniil Donchenko",
    "event": "UFC Paris",
    "date": null,
-   "error": null
+   "error": null,
+   "second_run": {
+    "kind": "new_remark",
+    "claim": "Punahele Soriano described Daniil Donchenko as a scary and wild opponent with young man's fire and vigor.",
+    "occasion": "Interview ahead of UFC Paris",
+    "actor": "Punahele Soriano",
+    "opponent": "Daniil Donchenko",
+    "event": "UFC Paris",
+    "date": null
+   }
   },
   "532": {
    "subject": "Daniil Donchenko",
@@ -1440,7 +2529,16 @@
    "opponent": "Daniil Donchenko",
    "event": "UFC Paris",
    "date": "2026-09-01",
-   "error": null
+   "error": null,
+   "second_run": {
+    "kind": "new_remark",
+    "claim": "Punahele Soriano described Daniil Donchenko as a scary and wild fighter with young man's fire and vigor.",
+    "occasion": "Interview for UFC.com article published September 1, 2026",
+    "actor": "Punahele Soriano",
+    "opponent": "Daniil Donchenko",
+    "event": null,
+    "date": "2026-09-01"
+   }
   },
   "533": {
    "subject": "Ilia Topuria",
@@ -1452,7 +2550,16 @@
    "opponent": "Usman Nurmagomedov",
    "event": null,
    "date": null,
-   "error": null
+   "error": null,
+   "second_run": {
+    "kind": "new_remark",
+    "claim": "Dan Hooker stated that he believes Ilia Topuria will not take the risk of fighting Usman Nurmagomedov because Nurmagomedov is unranked and not yet in the UFC.",
+    "occasion": "Interview with 'Submission Radio'",
+    "actor": "Dan Hooker",
+    "opponent": "Usman Nurmagomedov",
+    "event": null,
+    "date": null
+   }
   },
   "540": {
    "subject": "Ilia Topuria",
@@ -1464,7 +2571,16 @@
    "opponent": "Usman Nurmagomedov",
    "event": null,
    "date": null,
-   "error": null
+   "error": null,
+   "second_run": {
+    "kind": "new_remark",
+    "claim": "Dan Hooker stated that he believes Ilia Topuria will not take the risk of fighting Usman Nurmagomedov.",
+    "occasion": "Interview with 'Submission Radio'",
+    "actor": "Dan Hooker",
+    "opponent": "Usman Nurmagomedov",
+    "event": null,
+    "date": null
+   }
   },
   "547": {
    "subject": "Ilia Topuria",
@@ -1476,7 +2592,16 @@
    "opponent": null,
    "event": null,
    "date": "2026-09-02",
-   "error": null
+   "error": null,
+   "second_run": {
+    "kind": "new_remark",
+    "claim": "Ilia Topuria's boxing coach Javi Climent stated that Topuria possesses a natural talent for imitating movements instantly and is currently in the best moment of his career.",
+    "occasion": "Interview with sport.es",
+    "actor": "Javi Climent",
+    "opponent": null,
+    "event": null,
+    "date": "2026-09-02"
+   }
   },
   "551": {
    "subject": "Ilia Topuria",
@@ -1488,7 +2613,16 @@
    "opponent": "Ilia Topuria",
    "event": null,
    "date": null,
-   "error": null
+   "error": null,
+   "second_run": {
+    "kind": "new_remark",
+    "claim": "Justin Gaethje stated that he is more interested in fighting Conor McGregor than rematching Ilia Topuria.",
+    "occasion": "Speaking to UFC on Paramount+",
+    "actor": "Justin Gaethje",
+    "opponent": "Ilia Topuria",
+    "event": null,
+    "date": null
+   }
   },
   "555": {
    "subject": "Daniil Donchenko",
@@ -1500,7 +2634,16 @@
    "opponent": "Punahele Soriano",
    "event": "UFC Paris",
    "date": "2026-09-05",
-   "error": null
+   "error": null,
+   "second_run": {
+    "kind": "analysis",
+    "claim": "The writer predicts Punahele Soriano will defeat Daniil Donchenko via decision at UFC Paris.",
+    "occasion": "MMA Mania article published on September 2, 2026",
+    "actor": "MMA Mania writer",
+    "opponent": "Punahele Soriano",
+    "event": "UFC Paris",
+    "date": "2026-09-05"
+   }
   },
   "556": {
    "subject": "Ilia Topuria",
@@ -1512,7 +2655,16 @@
    "opponent": "Conor McGregor",
    "event": null,
    "date": null,
-   "error": null
+   "error": null,
+   "second_run": {
+    "kind": "new_remark",
+    "claim": "Justin Gaethje stated that he would be interested in fighting Conor McGregor, mistakenly implying a previous connection or rematch scenario involving Ilia Topuria.",
+    "occasion": "UFC on Paramount sit-down discussion",
+    "actor": "Justin Gaethje",
+    "opponent": "Conor McGregor",
+    "event": null,
+    "date": null
+   }
   },
   "560": {
    "subject": "Ilia Topuria",
@@ -1524,7 +2676,16 @@
    "opponent": "Conor McGregor",
    "event": null,
    "date": null,
-   "error": null
+   "error": null,
+   "second_run": {
+    "kind": "new_remark",
+    "claim": "Justin Gaethje stated that he would prefer to defend his title against Conor McGregor rather than Max Holloway or Charles Oliveira because Ilia Topuria has already defeated them.",
+    "occasion": "Interview with Paramount Plus",
+    "actor": "Justin Gaethje",
+    "opponent": "Conor McGregor",
+    "event": null,
+    "date": null
+   }
   },
   "563": {
    "subject": "Daniil Donchenko",
@@ -1536,7 +2697,16 @@
    "opponent": "Punahele Soriano",
    "event": "UFC Paris",
    "date": "2026-09-02",
-   "error": null
+   "error": null,
+   "second_run": {
+    "kind": "analysis",
+    "claim": "The writer predicts that Punahele Soriano will likely render Daniil Donchenko defensive early and take the driver's seat if he starts aggressively, questioning whether Donchenko has the tight boxing to stand his ground without giving up his hips.",
+    "occasion": "Yahoo Sports article published on September 2, 2026",
+    "actor": "Andrew Richardson",
+    "opponent": "Punahele Soriano",
+    "event": "UFC Paris",
+    "date": "2026-09-02"
+   }
   },
   "565": {
    "subject": "Ilia Topuria",
@@ -1548,7 +2718,16 @@
    "opponent": "Ilia Topuria",
    "event": null,
    "date": null,
-   "error": null
+   "error": null,
+   "second_run": {
+    "kind": "new_remark",
+    "claim": "Justin Gaethje stated that he is still recovering from his fight with Ilia Topuria and will not fight for the rest of 2026.",
+    "occasion": "Interview with Sports Illustrated",
+    "actor": "Justin Gaethje",
+    "opponent": "Ilia Topuria",
+    "event": null,
+    "date": null
+   }
   },
   "572": {
    "subject": "Ilia Topuria",
@@ -1560,7 +2739,16 @@
    "opponent": null,
    "event": null,
    "date": null,
-   "error": null
+   "error": null,
+   "second_run": {
+    "kind": "new_remark",
+    "claim": "Spanish reporter Alvaro Colmenero stated that Ilia Topuria will return to the public eye in September.",
+    "occasion": "Report by Alvaro Colmenero (h/t @ChampRDS)",
+    "actor": "Alvaro Colmenero",
+    "opponent": null,
+    "event": null,
+    "date": null
+   }
   },
   "576": {
    "subject": "Ilia Topuria",
@@ -1572,7 +2760,16 @@
    "opponent": "Ilia Topuria",
    "event": null,
    "date": null,
-   "error": null
+   "error": null,
+   "second_run": {
+    "kind": "new_remark",
+    "claim": "Justin Gaethje stated that his previous knockout loss to Max Holloway was a huge building block for his career and made his subsequent victory over Ilia Topuria more special.",
+    "occasion": "Interview with CBS Sports",
+    "actor": "Justin Gaethje",
+    "opponent": "Ilia Topuria",
+    "event": null,
+    "date": null
+   }
   },
   "580": {
    "subject": "Ilia Topuria",
@@ -1584,7 +2781,16 @@
    "opponent": null,
    "event": null,
    "date": null,
-   "error": null
+   "error": null,
+   "second_run": {
+    "kind": "about_someone_else",
+    "claim": "NO CLAIM",
+    "occasion": null,
+    "actor": null,
+    "opponent": null,
+    "event": null,
+    "date": null
+   }
   },
   "585": {
    "subject": "Ilia Topuria",
@@ -1596,7 +2802,16 @@
    "opponent": null,
    "event": null,
    "date": null,
-   "error": null
+   "error": null,
+   "second_run": {
+    "kind": "new_remark",
+    "claim": "Justin Gaethje stated that he does not need to avenge losses to Max Holloway and Charles Oliveira because Ilia Topuria defeated them convincingly.",
+    "occasion": "A recent YouTube video from UFC on Paramount+",
+    "actor": "Justin Gaethje",
+    "opponent": null,
+    "event": null,
+    "date": null
+   }
   },
   "588": {
    "subject": "Daniil Donchenko",
@@ -1608,7 +2823,16 @@
    "opponent": "Punahele Soriano",
    "event": "UFC Fight Night",
    "date": "2026-09-05",
-   "error": null
+   "error": null,
+   "second_run": {
+    "kind": "new_event",
+    "claim": "Daniil Donchenko is scheduled to fight Punahele Soriano in a middleweight bout at UFC Fight Night in France.",
+    "occasion": null,
+    "actor": "UFC",
+    "opponent": "Punahele Soriano",
+    "event": "UFC Fight Night",
+    "date": null
+   }
   },
   "592": {
    "subject": "Ilia Topuria",
@@ -1620,7 +2844,16 @@
    "opponent": null,
    "event": null,
    "date": "2026-09-03",
-   "error": null
+   "error": null,
+   "second_run": {
+    "kind": "new_remark",
+    "claim": "UFC analyst Alvaro Colmenero stated that Ilia Topuria will return to public life in September after recovering from injuries and taking a vacation.",
+    "occasion": "Reported by mundodeportivo.com on 2026-09-03",
+    "actor": "Alvaro Colmenero",
+    "opponent": null,
+    "event": null,
+    "date": "2026-09-03"
+   }
   },
   "594": {
    "subject": "Daniil Donchenko",
@@ -1632,7 +2865,16 @@
    "opponent": "Punahele Soriano",
    "event": "UFC Paris",
    "date": null,
-   "error": null
+   "error": null,
+   "second_run": {
+    "kind": "analysis",
+    "claim": "The writer predicts Daniil Donchenko will defeat Punahele Soriano by competitive unanimous decision.",
+    "occasion": null,
+    "actor": "ClutchPoints",
+    "opponent": "Punahele Soriano",
+    "event": "UFC Paris",
+    "date": null
+   }
   },
   "599": {
    "subject": "Daniil Donchenko",
@@ -1644,7 +2886,16 @@
    "opponent": "Punahele Soriano",
    "event": "UFC Fight Night 287",
    "date": "2026-09-05",
-   "error": null
+   "error": null,
+   "second_run": {
+    "kind": "analysis",
+    "claim": "The writer predicts that Daniil Donchenko will defeat Punahiel Soriano, possibly by stoppage in the second half of the third round.",
+    "occasion": null,
+    "actor": "Sport.ua writer",
+    "opponent": "Punahiel Soriano",
+    "event": "UFC Fight Night 287",
+    "date": null
+   }
   },
   "601": {
    "subject": "Daniil Donchenko",
@@ -1656,7 +2907,16 @@
    "opponent": "Punahel Soria",
    "event": "UFC Fight Night 287",
    "date": "2026-09-04",
-   "error": null
+   "error": null,
+   "second_run": {
+    "kind": "new_event",
+    "claim": "Daniil Donchenko and Punahele Soriano both weighed in at 77.11 kg for their upcoming fight.",
+    "occasion": "Official weigh-in procedure on the day before UFC Fight Night 287",
+    "actor": "Daniil Donchenko",
+    "opponent": "Punahele Soriano",
+    "event": "UFC Fight Night 287",
+    "date": "2026-09-04"
+   }
   },
   "603": {
    "subject": "Daniil Donchenko",
@@ -1668,7 +2928,16 @@
    "opponent": "Punahele Soriano",
    "event": "UFC fight on September 5, 2026",
    "date": "2026-09-04",
-   "error": null
+   "error": null,
+   "second_run": {
+    "kind": "analysis",
+    "claim": "Liontips predicts that Punahele Soriano will defeat Daniil Donchenko in their UFC fight on September 5, 2026.",
+    "occasion": null,
+    "actor": "Liontips",
+    "opponent": "Punahele Soriano",
+    "event": "UFC fight on September 5, 2026",
+    "date": "2026-09-04"
+   }
   },
   "605": {
    "subject": "Daniil Donchenko",
@@ -1680,7 +2949,16 @@
    "opponent": "Punahiel Soriano",
    "event": "UFC Fight Night 287",
    "date": "2026-09-05",
-   "error": null
+   "error": null,
+   "second_run": {
+    "kind": "new_event",
+    "claim": "Daniil Donchenko is scheduled to fight Punahiel Soriano in a welterweight bout at UFC Fight Night 287.",
+    "occasion": null,
+    "actor": "Daniil Donchenko",
+    "opponent": "Punahiel Soriano",
+    "event": "UFC Fight Night 287",
+    "date": "2026-09-05"
+   }
   },
   "606": {
    "subject": "Ilia Topuria",
@@ -1692,7 +2970,16 @@
    "opponent": null,
    "event": null,
    "date": null,
-   "error": null
+   "error": null,
+   "second_run": {
+    "kind": "new_remark",
+    "claim": "Joaquín Gomis stated that he has never known anyone with Ilia Topuria's level and that his recent loss was a one percent possibility.",
+    "occasion": "Interview on the Ground and Pound podcast",
+    "actor": "Joaquín Gomis",
+    "opponent": null,
+    "event": null,
+    "date": null
+   }
   },
   "608": {
    "subject": "Daniil Donchenko",
@@ -1704,7 +2991,16 @@
    "opponent": "Punahele Soriano",
    "event": "UFC Fight Night: Hooker vs Parnasse",
    "date": "2026-09-04",
-   "error": null
+   "error": null,
+   "second_run": {
+    "kind": "analysis",
+    "claim": "The writer predicts that Daniil Donchenko will defeat Punahele Soriano.",
+    "occasion": null,
+    "actor": "Owen Liao",
+    "opponent": "Punahele Soriano",
+    "event": "UFC Fight Night: Hooker vs Parnasse",
+    "date": "2026-09-04"
+   }
   },
   "609": {
    "subject": "Daniil Donchenko",
@@ -1716,7 +3012,16 @@
    "opponent": "Daniil Donchenko",
    "event": "UFC Paris",
    "date": null,
-   "error": null
+   "error": null,
+   "second_run": {
+    "kind": "new_remark",
+    "claim": "Punahele Soriano stated that Daniil Donchenko is a scary and wild fighter who brings the right kind of danger to their upcoming matchup.",
+    "occasion": "Interview with the promotion ahead of UFC Paris",
+    "actor": "Punahele Soriano",
+    "opponent": "Daniil Donchenko",
+    "event": "UFC Paris",
+    "date": null
+   }
   },
   "613": {
    "subject": "Daniil Donchenko",
@@ -1728,7 +3033,16 @@
    "opponent": "Punahele Soriano",
    "event": "UFC Paris",
    "date": "2026-09-04",
-   "error": null
+   "error": null,
+   "second_run": {
+    "kind": "new_event",
+    "claim": "Daniil Donchenko weighed in at 170 pounds for his fight against Punahele Soriano.",
+    "occasion": "UFC Paris official weigh-ins",
+    "actor": "Daniil Donchenko",
+    "opponent": "Punahele Soriano",
+    "event": "UFC Paris",
+    "date": "2026-09-04"
+   }
   },
   "614": {
    "subject": "Daniil Donchenko",
@@ -1740,7 +3054,16 @@
    "opponent": "Punahele Soriano",
    "event": "UFC Fight Night 287",
    "date": "2026-09-04",
-   "error": null
+   "error": null,
+   "second_run": {
+    "kind": "new_remark",
+    "claim": "Daniil Donchenko stated that he plans to weigh approximately 86 kg on the night of his fight against Punahele Soriano.",
+    "occasion": "Post-weigh-in interview reported by Balu Fighting League Pro",
+    "actor": "Daniil Donchenko",
+    "opponent": "Punahele Soriano",
+    "event": "UFC Fight Night 287",
+    "date": "2026-09-04"
+   }
   },
   "616": {
    "subject": "Daniil Donchenko",
@@ -1752,7 +3075,16 @@
    "opponent": "Punahele Soriano",
    "event": "UFC Fight Night 287",
    "date": "2026-09-05",
-   "error": null
+   "error": null,
+   "second_run": {
+    "kind": "new_event",
+    "claim": "Daniil Donchenko is scheduled to fight Punahele Soriano in the main card of UFC Fight Night 287.",
+    "occasion": "UFC Fight Night 287 announcement",
+    "actor": "Daniil Donchenko",
+    "opponent": "Punahele Soriano",
+    "event": "UFC Fight Night 287",
+    "date": "2026-09-05"
+   }
   },
   "619": {
    "subject": "Daniil Donchenko",
@@ -1760,7 +3092,16 @@
    "kind": "analysis",
    "claim": "The writer predicts that Daniil Donchenko will defeat Punahele Soriano at UFC Fight Night 287, possibly by stoppage in the second half of the third round.",
    "occasion": "Sport.ua article published on September 4, 2026",
-   "error": null
+   "error": null,
+   "second_run": {
+    "kind": "analysis",
+    "claim": "The writer predicts that Daniil Donchenko will defeat Punahielle Soriano, possibly by stoppage in the second half of the third round.",
+    "occasion": "Sport.ua article published on September 4, 2026",
+    "actor": null,
+    "opponent": null,
+    "event": null,
+    "date": null
+   }
   },
   "620": {
    "subject": "Ilia Topuria",
@@ -1772,7 +3113,16 @@
    "opponent": null,
    "event": null,
    "date": null,
-   "error": null
+   "error": null,
+   "second_run": {
+    "kind": "new_remark",
+    "claim": "Ilia Topuria announced via social media that he is prepared to return to UFC training following his defeat and injury against Justin Gaethje.",
+    "occasion": "Social media video message addressed to his son Hugo",
+    "actor": "Ilia Topuria",
+    "opponent": "Justin Gaethje",
+    "event": null,
+    "date": "2026-09-04"
+   }
   },
   "623": {
    "subject": "Daniil Donchenko",
@@ -1784,7 +3134,16 @@
    "opponent": "Punahele Soriano",
    "event": "UFC Paris",
    "date": "2026-09-04",
-   "error": null
+   "error": null,
+   "second_run": {
+    "kind": "analysis",
+    "claim": "The writer predicts that Daniil Donchenko will likely find himself fighting from behind against Punahele Soriano unless he can blast through Soriano's strong exterior.",
+    "occasion": "UFC Paris preview and predictions article on Yahoo Sports",
+    "actor": "Drake Riggs",
+    "opponent": "Punahele Soriano",
+    "event": "UFC Paris",
+    "date": "2026-09-04"
+   }
   },
   "625": {
    "subject": "Daniil Donchenko",
@@ -1796,7 +3155,16 @@
    "opponent": "Punahel Soria",
    "event": "UFC Fight Night 287",
    "date": "2026-09-04",
-   "error": null
+   "error": null,
+   "second_run": {
+    "kind": "new_event",
+    "claim": "Daniil Donchenko and Punahel Soriano both weighed in at 77.11 kg for their upcoming fight.",
+    "occasion": "Official weigh-in ahead of UFC Fight Night 287",
+    "actor": "Daniil Donchenko",
+    "opponent": "Punahel Soriano",
+    "event": "UFC Fight Night 287",
+    "date": "2026-09-04"
+   }
   },
   "627": {
    "subject": "Ilia Topuria",
@@ -1808,7 +3176,16 @@
    "opponent": null,
    "event": null,
    "date": null,
-   "error": null
+   "error": null,
+   "second_run": {
+    "kind": "new_remark",
+    "claim": "Ilia Topuria posted a video message to his son reflecting on his recent loss and stating that he is stronger than before.",
+    "occasion": "social media video post",
+    "actor": "Ilia Topuria",
+    "opponent": null,
+    "event": null,
+    "date": null
+   }
   },
   "632": {
    "subject": "Ilia Topuria",
@@ -1820,7 +3197,16 @@
    "opponent": null,
    "event": null,
    "date": "2026-09-04",
-   "error": null
+   "error": null,
+   "second_run": {
+    "kind": "new_remark",
+    "claim": "Ilia Topuria posted an emotional letter to his son Hugo on social media, stating that their shared experience of his recent defeat made them both stronger.",
+    "occasion": "Social media post",
+    "actor": "Ilia Topuria",
+    "opponent": null,
+    "event": null,
+    "date": null
+   }
   },
   "636": {
    "subject": "Ilia Topuria",
@@ -1832,7 +3218,16 @@
    "opponent": null,
    "event": null,
    "date": "2026-09-04",
-   "error": null
+   "error": null,
+   "second_run": {
+    "kind": "new_remark",
+    "claim": "Ilia Topuria released a video message to his son Hugo stating that losing is not important, but how one responds to defeat defines their character.",
+    "occasion": "A video posted on social media nearly three months after his loss to Justin Gaethje",
+    "actor": "Ilia Topuria",
+    "opponent": null,
+    "event": null,
+    "date": "2026-09-04"
+   }
   },
   "641": {
    "subject": "Daniil Donchenko",
@@ -1844,7 +3239,16 @@
    "opponent": "Punahele Soriano",
    "event": "UFC Fight Night: Hooker vs. Parnasse",
    "date": "2026-09-04",
-   "error": null
+   "error": null,
+   "second_run": {
+    "kind": "analysis",
+    "claim": "The writer predicts Daniil Donchenko will win his fight against Punahele Soriano by KO/TKO/DQ or submission.",
+    "occasion": "DraftKings Network article published on September 4, 2026",
+    "actor": "DraftKings Network writer",
+    "opponent": "Punahele Soriano",
+    "event": "UFC Fight Night: Hooker vs. Parnasse",
+    "date": "2026-09-04"
+   }
   },
   "643": {
    "subject": "Ilia Topuria",
@@ -1856,7 +3260,16 @@
    "opponent": null,
    "event": null,
    "date": null,
-   "error": null
+   "error": null,
+   "second_run": {
+    "kind": "about_someone_else",
+    "claim": "NO CLAIM",
+    "occasion": null,
+    "actor": null,
+    "opponent": null,
+    "event": null,
+    "date": null
+   }
   },
   "647": {
    "subject": "Ilia Topuria",
@@ -1868,7 +3281,16 @@
    "opponent": "Justin Gaethje",
    "event": "UFC Freedom 250",
    "date": null,
-   "error": null
+   "error": null,
+   "second_run": {
+    "kind": "new_remark",
+    "claim": "Ilia Topuria addressed his loss to Justin Gaethje in a letter written to his son.",
+    "occasion": "A letter penned to Topuria's son",
+    "actor": "Ilia Topuria",
+    "opponent": "Justin Gaethje",
+    "event": "UFC Freedom 250",
+    "date": null
+   }
   },
   "651": {
    "subject": "Ilia Topuria",
@@ -1880,7 +3302,16 @@
    "opponent": null,
    "event": null,
    "date": "2026-09-04",
-   "error": null
+   "error": null,
+   "second_run": {
+    "kind": "new_remark",
+    "claim": "Ilia Topuria posted a video message to his son Hugo, stating that losing the lightweight title was a lesson in character and that he is stronger than before.",
+    "occasion": "Video shared on social media",
+    "actor": "Ilia Topuria",
+    "opponent": null,
+    "event": null,
+    "date": null
+   }
   },
   "653": {
    "subject": "Daniil Donchenko",
@@ -1892,7 +3323,16 @@
    "opponent": null,
    "event": null,
    "date": null,
-   "error": null
+   "error": null,
+   "second_run": {
+    "kind": "no_text",
+    "claim": "NO CLAIM",
+    "occasion": null,
+    "actor": null,
+    "opponent": null,
+    "event": null,
+    "date": null
+   }
   },
   "654": {
    "subject": "Daniil Donchenko",
@@ -1904,7 +3344,16 @@
    "opponent": null,
    "event": "UFC Fight Night 287",
    "date": "2026-09-04",
-   "error": null
+   "error": null,
+   "second_run": {
+    "kind": "analysis",
+    "claim": "MMA Junkie readers predicted a win for Daniil Donchenko with 71% confidence.",
+    "occasion": null,
+    "actor": "MMA Junkie readers",
+    "opponent": null,
+    "event": "UFC Fight Night 287",
+    "date": null
+   }
   },
   "655": {
    "subject": "Daniil Donchenko",
@@ -1916,7 +3365,16 @@
    "opponent": null,
    "event": null,
    "date": null,
-   "error": null
+   "error": null,
+   "second_run": {
+    "kind": "no_text",
+    "claim": "NO CLAIM",
+    "occasion": null,
+    "actor": null,
+    "opponent": null,
+    "event": null,
+    "date": null
+   }
   },
   "659": {
    "subject": "Ilia Topuria",
@@ -1928,7 +3386,16 @@
    "opponent": "Justin Gaethje",
    "event": null,
    "date": "2026-09-04",
-   "error": null
+   "error": null,
+   "second_run": {
+    "kind": "new_remark",
+    "claim": "Ilia Topuria published a letter to his son reflecting on his loss to Justin Gaethje, stating that he is stronger after visiting that hell.",
+    "occasion": "Social media post (Instagram)",
+    "actor": "Ilia Topuria",
+    "opponent": "Justin Gaethje",
+    "event": null,
+    "date": "2026-09-04"
+   }
   },
   "666": {
    "subject": "Ilia Topuria",
@@ -1940,7 +3407,16 @@
    "opponent": "Justin Gaethje",
    "event": null,
    "date": null,
-   "error": null
+   "error": null,
+   "second_run": {
+    "kind": "new_remark",
+    "claim": "Ilia Topuria posted a video essay on social media reflecting on his loss to Justin Gaethje and stating that the defeat made him stronger.",
+    "occasion": "First social media post since UFC White House, published September 4, 2026",
+    "actor": "Ilia Topuria",
+    "opponent": "Justin Gaethje",
+    "event": "UFC White House",
+    "date": "2026-09-04"
+   }
   },
   "672": {
    "subject": "Daniil Donchenko",
@@ -1952,7 +3428,16 @@
    "opponent": "Punahele Soriano",
    "event": "UFC Paris",
    "date": null,
-   "error": null
+   "error": null,
+   "second_run": {
+    "kind": "new_remark",
+    "claim": "Daniil Donchenko stated that the winner of his fight against Punahele Soriano will likely enter the top 15 rankings.",
+    "occasion": "Bowks Talking Bouts",
+    "actor": "Daniil Donchenko",
+    "opponent": "Punahele Soriano",
+    "event": "UFC Paris",
+    "date": null
+   }
   },
   "673": {
    "subject": "Daniil Donchenko",
@@ -1964,7 +3449,16 @@
    "opponent": "Punahele Soriano",
    "event": "UFC Fight Night 287",
    "date": null,
-   "error": null
+   "error": null,
+   "second_run": {
+    "kind": "analysis",
+    "claim": "MMA Junkie analyst Dan Tom predicts Punahele Soriano will defeat Daniil Donchenko by knockout in Round 2.",
+    "occasion": "MMA Junkie prediction article for UFC Fight Night 287",
+    "actor": "Dan Tom",
+    "opponent": "Punahele Soriano",
+    "event": "UFC Fight Night 287",
+    "date": null
+   }
   },
   "675": {
    "subject": "Ilia Topuria",
@@ -1976,7 +3470,16 @@
    "opponent": null,
    "event": null,
    "date": "2026-09-05",
-   "error": null
+   "error": null,
+   "second_run": {
+    "kind": "new_remark",
+    "claim": "Ilia Topuria posted an emotional message to his son on Instagram declaring that he is back after suffering his first career loss.",
+    "occasion": "Instagram post",
+    "actor": "Ilia Topuria",
+    "opponent": null,
+    "event": null,
+    "date": "2026-09-05"
+   }
   },
   "681": {
    "subject": "Daniil Donchenko",
@@ -1988,7 +3491,16 @@
    "opponent": "Punahele Soriano",
    "event": "UFC Fight Night 287",
    "date": "2026-09-05",
-   "error": null
+   "error": null,
+   "second_run": {
+    "kind": "analysis",
+    "claim": "MMA Junkie analyst Dan Tom predicts Punahele Soriano will defeat Daniil Donchenko by knockout in Round 2.",
+    "occasion": "Yahoo Sports article published September 5, 2026",
+    "actor": "Dan Tom",
+    "opponent": "Punahele Soriano",
+    "event": "UFC Fight Night 287",
+    "date": "2026-09-05"
+   }
   },
   "682": {
    "subject": "Ilia Topuria",
@@ -2000,7 +3512,16 @@
    "opponent": null,
    "event": null,
    "date": "2026-09-04",
-   "error": null
+   "error": null,
+   "second_run": {
+    "kind": "new_remark",
+    "claim": "Ilia Topuria posted an emotional video message to his son on Instagram reflecting on his recent loss to Justin Gaethje.",
+    "occasion": "Instagram post",
+    "actor": "Ilia Topuria",
+    "opponent": "Justin Gaethje",
+    "event": null,
+    "date": "2026-09-04"
+   }
   },
   "683": {
    "subject": "Daniil Donchenko",
@@ -2012,7 +3533,16 @@
    "opponent": "Punahele Soriano",
    "event": "UFC Paris",
    "date": "2026-09-05",
-   "error": null
+   "error": null,
+   "second_run": {
+    "kind": "new_event",
+    "claim": "Daniil Donchenko defeated Punahele Soriano via unanimous decision at UFC Paris.",
+    "occasion": "UFC Paris",
+    "actor": "Daniil Donchenko",
+    "opponent": "Punahele Soriano",
+    "event": "UFC Paris",
+    "date": "2026-09-05"
+   }
   },
   "686": {
    "subject": "Daniil Donchenko",
@@ -2024,7 +3554,16 @@
    "opponent": "Punahele Soriano",
    "event": "UFC Fight Night 287",
    "date": "2026-09-05",
-   "error": null
+   "error": null,
+   "second_run": {
+    "kind": "new_event",
+    "claim": "Daniil Donchenko and Punahele Soriano conducted a face-off ahead of their fight at UFC Fight Night 287.",
+    "occasion": "Face-off before UFC Fight Night 287 in Paris",
+    "actor": "Daniil Donchenko",
+    "opponent": "Punahele Soriano",
+    "event": "UFC Fight Night 287",
+    "date": "2026-09-05"
+   }
   },
   "687": {
    "subject": "Daniil Donchenko",
@@ -2036,7 +3575,16 @@
    "opponent": "Punahel Soria",
    "event": "UFC Fight Night 287",
    "date": "2026-09-05",
-   "error": null
+   "error": null,
+   "second_run": {
+    "kind": "new_event",
+    "claim": "Daniil Donchenko is scheduled to fight Punahale Soriano at UFC Fight Night 287 in Paris.",
+    "occasion": "UFC Fight Night 287",
+    "actor": "Daniil Donchenko",
+    "opponent": "Punahale Soriano",
+    "event": "UFC Fight Night 287",
+    "date": "2026-09-05"
+   }
   },
   "688": {
    "subject": "Daniil Donchenko",
@@ -2048,7 +3596,16 @@
    "opponent": "Punahale Soriano",
    "event": "UFC Fight Night 287",
    "date": "2026-09-05",
-   "error": null
+   "error": null,
+   "second_run": {
+    "kind": "new_event",
+    "claim": "Daniil Donchenko is scheduled to fight Punahale Soriano at UFC Fight Night 287 in Paris.",
+    "occasion": "UFC Fight Night 287",
+    "actor": "Daniil Donchenko",
+    "opponent": "Punahale Soriano",
+    "event": "UFC Fight Night 287",
+    "date": "2026-09-05"
+   }
   },
   "690": {
    "subject": "Daniil Donchenko",
@@ -2060,7 +3617,16 @@
    "opponent": "Punahele Soriano",
    "event": "UFC Fight Night 287",
    "date": "2026-09-05",
-   "error": null
+   "error": null,
+   "second_run": {
+    "kind": "new_event",
+    "claim": "Daniil Donchenko is scheduled to fight Punahele Soriano on the main card of UFC Fight Night 287.",
+    "occasion": "UFC Fight Night 287",
+    "actor": "Daniil Donchenko",
+    "opponent": "Punahele Soriano",
+    "event": "UFC Fight Night 287",
+    "date": "2026-09-05"
+   }
   },
   "692": {
    "subject": "Daniil Donchenko",
@@ -2072,7 +3638,16 @@
    "opponent": "Punahele Soriano",
    "event": "UFC Paris",
    "date": "2026-09-04",
-   "error": null
+   "error": null,
+   "second_run": {
+    "kind": "analysis",
+    "claim": "The writer predicts that Punahele Soriano will defeat Daniil Donchenko at UFC Paris.",
+    "occasion": "MMA Fighting article published on 2026-09-05",
+    "actor": "MMA Fighting writer",
+    "opponent": "Punahele Soriano",
+    "event": "UFC Paris",
+    "date": "2026-09-05"
+   }
   },
   "693": {
    "subject": "Ilia Topuria",
@@ -2084,7 +3659,16 @@
    "opponent": "Justin Gaethje",
    "event": null,
    "date": "2026-09-05",
-   "error": null
+   "error": null,
+   "second_run": {
+    "kind": "new_remark",
+    "claim": "Ilia Topuria published an essay reflecting on his loss to Justin Gaethje, stating that while the result decides a night, character defines a life.",
+    "occasion": "An essay published by Ilia Topuria",
+    "actor": "Ilia Topuria",
+    "opponent": "Justin Gaethje",
+    "event": null,
+    "date": "2026-09-05"
+   }
   },
   "697": {
    "subject": "Ilia Topuria",
@@ -2096,7 +3680,16 @@
    "opponent": null,
    "event": null,
    "date": null,
-   "error": null
+   "error": null,
+   "second_run": {
+    "kind": "new_remark",
+    "claim": "Ilia Topuria shared an emotional message on social media to his son Hugo, stating that losing is part of life and character is the only victory no one can take away.",
+    "occasion": "Social media video post",
+    "actor": "Ilia Topuria",
+    "opponent": null,
+    "event": null,
+    "date": null
+   }
   },
   "698": {
    "subject": "Daniil Donchenko",
@@ -2108,7 +3701,16 @@
    "opponent": "Punahele Soriano",
    "event": "UFC Paris",
    "date": "2026-09-05",
-   "error": null
+   "error": null,
+   "second_run": {
+    "kind": "analysis",
+    "claim": "The writer predicts that Punahele Soriano will defeat Daniil Donchenko at UFC Paris.",
+    "occasion": "UFC Paris predictions article in MMA Fighting",
+    "actor": "MMA Fighting writer",
+    "opponent": "Punahele Soriano",
+    "event": "UFC Paris",
+    "date": null
+   }
   },
   "702": {
    "subject": "Ilia Topuria",
@@ -2120,7 +3722,16 @@
    "opponent": null,
    "event": null,
    "date": "2026-09-05",
-   "error": null
+   "error": null,
+   "second_run": {
+    "kind": "new_remark",
+    "claim": "Ilia Topuria stated in an essay that he does not want to return to the UFC merely to erase his defeat, but because he still has fire and wants to discover how far he can go.",
+    "occasion": "An essay posted on social media",
+    "actor": "Ilia Topuria",
+    "opponent": null,
+    "event": null,
+    "date": "2026-09-05"
+   }
   },
   "709": {
    "subject": "Daniil Donchenko",
@@ -2132,7 +3743,16 @@
    "opponent": "Punahele Soriano",
    "event": "UFC Paris",
    "date": "2026-09-05",
-   "error": null
+   "error": null,
+   "second_run": {
+    "kind": "analysis",
+    "claim": "The writer predicts Daniil Donchenko will win his fight against Punahele Soriano by KO/TKO/DQ or submission.",
+    "occasion": null,
+    "actor": "DraftKings Network writer",
+    "opponent": "Punahele Soriano",
+    "event": "UFC Paris",
+    "date": null
+   }
   },
   "710": {
    "subject": "Ilia Topuria",
@@ -2144,7 +3764,16 @@
    "opponent": null,
    "event": null,
    "date": null,
-   "error": null
+   "error": null,
+   "second_run": {
+    "kind": "about_someone_else",
+    "claim": "NO CLAIM",
+    "occasion": null,
+    "actor": null,
+    "opponent": null,
+    "event": null,
+    "date": null
+   }
   },
   "714": {
    "subject": "Daniil Donchenko",
@@ -2156,7 +3785,16 @@
    "opponent": "Punahele Soriano",
    "event": "UFC Paris",
    "date": "2026-09-05",
-   "error": null
+   "error": null,
+   "second_run": {
+    "kind": "new_event",
+    "claim": "Daniil Donchenko defeated Punahele Soriano by Unanimous Decision at UFC Paris.",
+    "occasion": "UFC Paris main card results",
+    "actor": "Daniil Donchenko",
+    "opponent": "Punahele Soriano",
+    "event": "UFC Paris",
+    "date": "2026-09-05"
+   }
   },
   "717": {
    "subject": "Ilia Topuria",
@@ -2168,7 +3806,16 @@
    "opponent": null,
    "event": null,
    "date": "2026-09-05",
-   "error": null
+   "error": null,
+   "second_run": {
+    "kind": "new_remark",
+    "claim": "Ilia Topuria posted an emotional message to his son on Instagram about losing and getting back up.",
+    "occasion": "Instagram post",
+    "actor": "Ilia Topuria",
+    "opponent": null,
+    "event": null,
+    "date": "2026-09-05"
+   }
   },
   "723": {
    "subject": "Ilia Topuria",
@@ -2180,7 +3827,16 @@
    "opponent": "Justin Gaethje",
    "event": "UFC Freedom 250",
    "date": null,
-   "error": null
+   "error": null,
+   "second_run": {
+    "kind": "new_remark",
+    "claim": "Ilia Topuria shared a post-fight reflection on his website stating that despite suffering his first career loss and significant injuries, he felt increased self-respect and passion for fighting.",
+    "occasion": "Post on his website following UFC Freedom 250",
+    "actor": "Ilia Topuria",
+    "opponent": "Justin Gaethje",
+    "event": "UFC Freedom 250",
+    "date": null
+   }
   },
   "728": {
    "subject": "Ilia Topuria",
@@ -2192,7 +3848,16 @@
    "opponent": "Justin Gaethje",
    "event": null,
    "date": null,
-   "error": null
+   "error": null,
+   "second_run": {
+    "kind": "new_remark",
+    "claim": "Ilia Topuria stated that his first career loss to Justin Gaethje increased his motivation and that he does not know when or where his next fight will take place.",
+    "occasion": "Instagram posts and a personal essay on his website",
+    "actor": "Ilia Topuria",
+    "opponent": "Justin Gaethje",
+    "event": null,
+    "date": null
+   }
   },
   "731": {
    "subject": "Daniil Donchenko",
@@ -2204,7 +3869,16 @@
    "opponent": "Punahele Soriano",
    "event": "UFC Fight Night 287",
    "date": "2026-09-05",
-   "error": null
+   "error": null,
+   "second_run": {
+    "kind": "new_event",
+    "claim": "Daniil Donchenko defeated Punahele Soriano by unanimous decision at UFC Fight Night 287.",
+    "occasion": "UFC Fight Night 287 in Paris, France",
+    "actor": "Daniil Donchenko",
+    "opponent": "Punahele Soriano",
+    "event": "UFC Fight Night 287",
+    "date": "2026-09-05"
+   }
   },
   "732": {
    "subject": "Daniil Donchenko",
@@ -2216,7 +3890,16 @@
    "opponent": "Punahele Soriano",
    "event": "UFC Paris",
    "date": "2026-09-05",
-   "error": null
+   "error": null,
+   "second_run": {
+    "kind": "new_remark",
+    "claim": "Daniil Donchenko called out Daniel Rodriguez for a fight at the Meta Apex later this year.",
+    "occasion": "Post-fight interview at UFC Paris",
+    "actor": "Daniil Donchenko",
+    "opponent": "Daniel Rodriguez",
+    "event": "UFC Paris",
+    "date": null
+   }
   },
   "733": {
    "subject": "Daniil Donchenko",
@@ -2228,7 +3911,16 @@
    "opponent": "Punahele Soriano",
    "event": "UFC Paris",
    "date": "2026-09-05",
-   "error": null
+   "error": null,
+   "second_run": {
+    "kind": "new_event",
+    "claim": "Daniil Donchenko defeated Punahele Soriano via unanimous decision at UFC Paris.",
+    "occasion": "UFC Paris",
+    "actor": "Daniil Donchenko",
+    "opponent": "Punahele Soriano",
+    "event": "UFC Paris",
+    "date": "2026-09-05"
+   }
   },
   "735": {
    "subject": "Daniil Donchenko",
@@ -2240,7 +3932,16 @@
    "opponent": "Punahale Soriano",
    "event": "UFC Fight Night 287",
    "date": "2026-09-05",
-   "error": null
+   "error": null,
+   "second_run": {
+    "kind": "new_event",
+    "claim": "Daniil Donchenko defeated Punahel Soria by unanimous decision at UFC Fight Night 287.",
+    "occasion": "UFC Fight Night 287 in Paris",
+    "actor": "Daniil Donchenko",
+    "opponent": "Punahel Soria",
+    "event": "UFC Fight Night 287",
+    "date": "2026-09-05"
+   }
   },
   "736": {
    "subject": "Daniil Donchenko",
@@ -2252,7 +3953,16 @@
    "opponent": "Punahiel Soriano",
    "event": "UFC Fight Night 287",
    "date": null,
-   "error": null
+   "error": null,
+   "second_run": {
+    "kind": "new_event",
+    "claim": "Daniil Donchenko defeated Punahiel Soriano at UFC Fight Night 287 in Paris.",
+    "occasion": "UFC Fight Night 287 in Paris",
+    "actor": "Daniil Donchenko",
+    "opponent": "Punahiel Soriano",
+    "event": "UFC Fight Night 287",
+    "date": null
+   }
   },
   "737": {
    "subject": "Daniil Donchenko",
@@ -2264,7 +3974,16 @@
    "opponent": "Punahele Soriano",
    "event": "UFC Paris",
    "date": "2026-09-05",
-   "error": null
+   "error": null,
+   "second_run": {
+    "kind": "new_event",
+    "claim": "Daniil Donchenko defeated Punahele Soriano by unanimous decision at UFC Paris.",
+    "occasion": "UFC Paris",
+    "actor": "Daniil Donchenko",
+    "opponent": "Punahele Soriano",
+    "event": "UFC Paris",
+    "date": "2026-09-05"
+   }
   },
   "740": {
    "subject": "Daniil Donchenko",
@@ -2276,7 +3995,16 @@
    "opponent": "Punahele Soriano",
    "event": "UFC Fight Night: Hooker vs Parnasse",
    "date": "2026-09-05",
-   "error": null
+   "error": null,
+   "second_run": {
+    "kind": "new_event",
+    "claim": "Daniil Donchenko won his welterweight fight against Punahele Soriano by decision.",
+    "occasion": "UFC Fight Night: Hooker vs Parnasse in Paris, France",
+    "actor": "Daniil Donchenko",
+    "opponent": "Punahele Soriano",
+    "event": "UFC Fight Night: Hooker vs Parnasse",
+    "date": "2026-09-05"
+   }
   },
   "743": {
    "subject": "Daniil Donchenko",
@@ -2288,7 +4016,16 @@
    "opponent": null,
    "event": "tournament in Paris",
    "date": null,
-   "error": null
+   "error": null,
+   "second_run": {
+    "kind": "new_event",
+    "claim": "Daniil Donchenko participated in a tournament in Paris.",
+    "occasion": "tournament in Paris",
+    "actor": "Daniil Donchenko",
+    "opponent": null,
+    "event": "tournament in Paris",
+    "date": null
+   }
   },
   "744": {
    "subject": "Daniil Donchenko",
@@ -2300,7 +4037,16 @@
    "opponent": "Daniel Rodriguez",
    "event": null,
    "date": "2026-09-05",
-   "error": null
+   "error": null,
+   "second_run": {
+    "kind": "new_remark",
+    "claim": "Daniil Donchenko stated that he would like to fight Daniel Rodriguez next.",
+    "occasion": "Post-fight press conference in Paris",
+    "actor": "Daniil Donchenko",
+    "opponent": "Daniel Rodriguez",
+    "event": null,
+    "date": "2026-09-05"
+   }
   },
   "745": {
    "subject": "Daniil Donchenko",
@@ -2312,7 +4058,16 @@
    "opponent": "Punahale Soriano",
    "event": "UFC Fight Night 287",
    "date": "2026-09-05",
-   "error": null
+   "error": null,
+   "second_run": {
+    "kind": "new_event",
+    "claim": "Daniil Donchenko will fight Punahale Soriano at UFC Fight Night 287.",
+    "occasion": null,
+    "actor": "Daniil Donchenko",
+    "opponent": "Punahale Soriano",
+    "event": "UFC Fight Night 287",
+    "date": "2026-09-05"
+   }
   },
   "746": {
    "subject": "Daniil Donchenko",
@@ -2324,7 +4079,16 @@
    "opponent": "Punahele Soriano",
    "event": "UFC Fight Night: Hooker vs Parnasse",
    "date": "2026-09-05",
-   "error": null
+   "error": null,
+   "second_run": {
+    "kind": "new_event",
+    "claim": "Daniil Donchenko won his welterweight fight against Punahele Soriano by unanimous decision.",
+    "occasion": "UFC Fight Night: Hooker vs Parnasse in Paris",
+    "actor": "Daniil Donchenko",
+    "opponent": "Punahele Soriano",
+    "event": "UFC Fight Night: Hooker vs Parnasse",
+    "date": "2026-09-05"
+   }
   },
   "747": {
    "subject": "Daniil Donchenko",
@@ -2336,7 +4100,16 @@
    "opponent": "Punahale Soriano",
    "event": "UFC Fight Night 287",
    "date": "2026-09-05",
-   "error": null
+   "error": null,
+   "second_run": {
+    "kind": "new_event",
+    "claim": "Daniil Donchenko defeated Punahelu Soriano by unanimous decision at UFC Fight Night 287 in Paris.",
+    "occasion": "UFC Fight Night 287 in Paris",
+    "actor": "Daniil Donchenko",
+    "opponent": "Punahelu Soriano",
+    "event": "UFC Fight Night 287",
+    "date": null
+   }
   },
   "755": {
    "subject": "Ilia Topuria",
@@ -2348,7 +4121,16 @@
    "opponent": "Justin Gaethje",
    "event": null,
    "date": "2026-09-05",
-   "error": null
+   "error": null,
+   "second_run": {
+    "kind": "new_remark",
+    "claim": "Ilia Topuria published a 9-part essay titled \"This Is Me\" on his website detailing his first career loss to Justin Gaethje and his journey in MMA.",
+    "occasion": "Published on Ilia Topuria's website on Saturday, September 5, 2026 (implied by 'On Saturday' relative to the Sept 6 publication date)",
+    "actor": "Ilia Topuria",
+    "opponent": "Justin Gaethje",
+    "event": null,
+    "date": "2026-09-05"
+   }
   },
   "758": {
    "subject": "Daniil Donchenko",
@@ -2360,7 +4142,16 @@
    "opponent": "Punahiel Soriano",
    "event": "UFC Fight Night 287",
    "date": "2026-09-05",
-   "error": null
+   "error": null,
+   "second_run": {
+    "kind": "new_event",
+    "claim": "Daniil Donchenko defeated Punahiele Soriano by decision at UFC Fight Night 287.",
+    "occasion": "UFC Fight Night 287 in Paris",
+    "actor": "Daniil Donchenko",
+    "opponent": "Punahiele Soriano",
+    "event": "UFC Fight Night 287",
+    "date": "2026-09-05"
+   }
   },
   "759": {
    "subject": "Daniil Donchenko",
@@ -2372,7 +4163,16 @@
    "opponent": "Punahel Soria",
    "event": "UFC Fight Night 287",
    "date": "2026-09-05",
-   "error": null
+   "error": null,
+   "second_run": {
+    "kind": "new_event",
+    "claim": "Daniil Donchenko defeated Punahel Soriano by unanimous decision at UFC Fight Night 287.",
+    "occasion": "UFC Fight Night 287 in Paris",
+    "actor": "Daniil Donchenko",
+    "opponent": "Punahel Soriano",
+    "event": "UFC Fight Night 287",
+    "date": "2026-09-05"
+   }
   },
   "762": {
    "subject": "Ilia Topuria",
@@ -2384,7 +4184,16 @@
    "opponent": null,
    "event": null,
    "date": "2026-09-06",
-   "error": null
+   "error": null,
+   "second_run": {
+    "kind": "new_remark",
+    "claim": "Fran Ortega, Ilia Topuria's physiotherapist, stated that rest is the invisible training and detailed the advanced technologies used in Topuria's recovery.",
+    "occasion": "Interview with OKSALUD (OkDiario)",
+    "actor": "Fran Ortega",
+    "opponent": null,
+    "event": null,
+    "date": "2026-09-06"
+   }
   },
   "765": {
    "subject": "Daniil Donchenko",
@@ -2396,7 +4205,16 @@
    "opponent": "Punahele Soriano",
    "event": "UFC Fight Night 287",
    "date": null,
-   "error": null
+   "error": null,
+   "second_run": {
+    "kind": "new_event",
+    "claim": "Daniil Donchenko defeated Punahele Soriano by unanimous decision at UFC Fight Night 287 in Paris.",
+    "occasion": "UFC Fight Night 287 in Paris",
+    "actor": "Daniil Donchenko",
+    "opponent": "Punahele Soriano",
+    "event": "UFC Fight Night 287",
+    "date": null
+   }
   },
   "767": {
    "subject": "Daniil Donchenko",
@@ -2408,7 +4226,16 @@
    "opponent": "Soriano",
    "event": "UFC in Paris",
    "date": null,
-   "error": null
+   "error": null,
+   "second_run": {
+    "kind": "new_event",
+    "claim": "Daniil Donchenko defeated Soriano by unanimous decision at a UFC tournament in Paris.",
+    "occasion": "UFC tournament in Paris",
+    "actor": "Daniil Donchenko",
+    "opponent": "Soriano",
+    "event": "UFC tournament in Paris",
+    "date": null
+   }
   },
   "768": {
    "subject": "Daniil Donchenko",
@@ -2420,7 +4247,16 @@
    "opponent": "Punahele Soriano",
    "event": "UFC Fight Night 287",
    "date": "2026-09-05",
-   "error": null
+   "error": null,
+   "second_run": {
+    "kind": "new_event",
+    "claim": "Daniil Donchenko defeated Punahele Soriano by unanimous decision at UFC Fight Night 287 in Paris.",
+    "occasion": "UFC Fight Night 287",
+    "actor": "Daniil Donchenko",
+    "opponent": "Punahele Soriano",
+    "event": "UFC Fight Night 287",
+    "date": "2026-09-05"
+   }
   },
   "771": {
    "subject": "Ilia Topuria",
@@ -2432,7 +4268,16 @@
    "opponent": null,
    "event": null,
    "date": null,
-   "error": null
+   "error": null,
+   "second_run": {
+    "kind": "new_remark",
+    "claim": "Ilia Topuria wrote an essay for Marca detailing his childhood promise to change his family's life and the emotional difficulty of moving from Georgia to Spain.",
+    "occasion": "An exclusive essay written for 'Marca'",
+    "actor": "Ilia Topuria",
+    "opponent": null,
+    "event": null,
+    "date": null
+   }
   },
   "772": {
    "subject": "Daniil Donchenko",
@@ -2441,7 +4286,16 @@
    "claim": "Daniil Donchenko defeated Punahele Soriano by unanimous decision at UFC Fight Night 287 in Paris.",
    "occasion": "UFC Fight Night 287, Paris, September 5, 2026",
    "actor": "Daniil Donchenko",
-   "error": null
+   "error": null,
+   "second_run": {
+    "kind": "new_event",
+    "claim": "Daniil Donchenko defeated Punahele Soriano by unanimous decision at UFC Fight Night 287 in Paris.",
+    "occasion": "UFC Fight Night 287, Paris, September 5, 2026",
+    "actor": "Daniil Donchenko",
+    "opponent": null,
+    "event": null,
+    "date": null
+   }
   },
   "773": {
    "subject": "Daniil Donchenko",
@@ -2453,7 +4307,16 @@
    "opponent": "Punahiele Soriano",
    "event": "UFC Fight Night 287",
    "date": "2026-09-05",
-   "error": null
+   "error": null,
+   "second_run": {
+    "kind": "new_event",
+    "claim": "Daniil Donchenko defeated Punahiele Soriano by unanimous decision at UFC Fight Night 287.",
+    "occasion": "UFC Fight Night 287 in Paris",
+    "actor": "Daniil Donchenko",
+    "opponent": "Punahiele Soriano",
+    "event": "UFC Fight Night 287",
+    "date": "2026-09-05"
+   }
   },
   "774": {
    "subject": "Daniil Donchenko",
@@ -2465,7 +4328,16 @@
    "opponent": "Daniel Rodriguez",
    "event": null,
    "date": "2026-09-05",
-   "error": null
+   "error": null,
+   "second_run": {
+    "kind": "new_remark",
+    "claim": "Daniil Donchenko stated that he would like to fight Daniel Rodriguez next.",
+    "occasion": "Press conference in Paris following his UFC fight",
+    "actor": "Daniil Donchenko",
+    "opponent": "Daniel Rodriguez",
+    "event": "UFC event in Paris",
+    "date": "2026-09-05"
+   }
   },
   "776": {
    "subject": "Daniil Donchenko",
@@ -2477,7 +4349,16 @@
    "opponent": "Punahele Soriano",
    "event": "UFC Fight Night 287",
    "date": "2026-09-06",
-   "error": null
+   "error": null,
+   "second_run": {
+    "kind": "new_event",
+    "claim": "Daniil Donchenko defeated Punahelu Soriano by unanimous decision at UFC Fight Night 287 in Paris.",
+    "occasion": "UFC Fight Night 287 in Paris",
+    "actor": "Daniil Donchenko",
+    "opponent": "Punahelu Soriano",
+    "event": "UFC Fight Night 287",
+    "date": "2026-09-06"
+   }
   },
   "778": {
    "subject": "Daniil Donchenko",
@@ -2489,7 +4370,16 @@
    "opponent": null,
    "event": "UFC Fight Night 287",
    "date": null,
-   "error": null
+   "error": null,
+   "second_run": {
+    "kind": "new_remark",
+    "claim": "Daniil Donchenko stated his desire to fight a specific opponent in the UFC during an interview with Michael Bisping.",
+    "occasion": "Post-fight interview with Michael Bisping at UFC Fight Night 287",
+    "actor": "Daniil Donchenko",
+    "opponent": null,
+    "event": "UFC Fight Night 287",
+    "date": null
+   }
   },
   "779": {
    "subject": "Daniil Donchenko",
@@ -2501,7 +4391,16 @@
    "opponent": "Punahele Soriano",
    "event": "UFC Fight Night 287",
    "date": "2026-09-05",
-   "error": null
+   "error": null,
+   "second_run": {
+    "kind": "new_event",
+    "claim": "Daniil Donchenko defeated Punahele Soriano by unanimous decision at UFC Fight Night 287 in Paris.",
+    "occasion": "UFC Fight Night 287 in Paris",
+    "actor": "Daniil Donchenko",
+    "opponent": "Punahele Soriano",
+    "event": "UFC Fight Night 287",
+    "date": "2026-09-05"
+   }
   },
   "780": {
    "subject": "Daniil Donchenko",
@@ -2513,7 +4412,16 @@
    "opponent": "Punahele Soriano",
    "event": "UFC Fight Night 287",
    "date": null,
-   "error": null
+   "error": null,
+   "second_run": {
+    "kind": "new_event",
+    "claim": "Daniil Donchenko defeated Punahele Soriano by unanimous decision at UFC Fight Night 287 in Paris.",
+    "occasion": "UFC Fight Night 287 in Paris",
+    "actor": "Daniil Donchenko",
+    "opponent": "Punahele Soriano",
+    "event": "UFC Fight Night 287",
+    "date": null
+   }
   },
   "782": {
    "subject": "Daniil Donchenko",
@@ -2525,7 +4433,16 @@
    "opponent": "Punahelu Soriano",
    "event": "UFC Fight Night 287",
    "date": null,
-   "error": null
+   "error": null,
+   "second_run": {
+    "kind": "new_event",
+    "claim": "Daniil Donchenko defeated Punahelu Soriano by unanimous decision at UFC Fight Night 287.",
+    "occasion": "UFC Fight Night 287 in Paris",
+    "actor": "Daniil Donchenko",
+    "opponent": "Punahelu Soriano",
+    "event": "UFC Fight Night 287",
+    "date": null
+   }
   },
   "783": {
    "subject": "Daniil Donchenko",
@@ -2537,7 +4454,16 @@
    "opponent": "Punahale Soriano",
    "event": "UFC Fight Night 287",
    "date": null,
-   "error": null
+   "error": null,
+   "second_run": {
+    "kind": "new_event",
+    "claim": "Daniil Donchenko defeated Punahele Soriano by unanimous decision at UFC Fight Night 287 in Paris.",
+    "occasion": "UFC Fight Night 287 in Paris",
+    "actor": "Daniil Donchenko",
+    "opponent": "Punahele Soriano",
+    "event": "UFC Fight Night 287",
+    "date": "2026-09-05"
+   }
   },
   "785": {
    "subject": "Daniil Donchenko",
@@ -2549,7 +4475,16 @@
    "opponent": "Punahale Soriano",
    "event": "UFC Fight Night 287",
    "date": "2026-09-05",
-   "error": null
+   "error": null,
+   "second_run": {
+    "kind": "new_event",
+    "claim": "Daniil Donchenko defeated Punahale Soriano by unanimous decision at UFC Fight Night 287 in Paris.",
+    "occasion": "UFC Fight Night 287 in Paris",
+    "actor": "Daniil Donchenko",
+    "opponent": "Punahale Soriano",
+    "event": "UFC Fight Night 287",
+    "date": "2026-09-05"
+   }
   },
   "786": {
    "subject": "Daniil Donchenko",
@@ -2561,7 +4496,16 @@
    "opponent": "Punahele Soriano",
    "event": "UFC Fight Night 287",
    "date": "2026-09-05",
-   "error": null
+   "error": null,
+   "second_run": {
+    "kind": "new_event",
+    "claim": "Daniil Donchenko defeated Punahele Soriano by unanimous decision at UFC Fight Night 287.",
+    "occasion": "UFC Fight Night 287 in Paris",
+    "actor": "Daniil Donchenko",
+    "opponent": "Punahele Soriano",
+    "event": "UFC Fight Night 287",
+    "date": "2026-09-05"
+   }
   },
   "788": {
    "subject": "Ilia Topuria",
@@ -2573,7 +4517,16 @@
    "opponent": "Justin Gaethje",
    "event": null,
    "date": null,
-   "error": null
+   "error": null,
+   "second_run": {
+    "kind": "new_remark",
+    "claim": "Ilia Topuria stated that he does not want to erase his defeat to Justin Gaethje but instead wants to return as a fighter who can be knocked down and still choose to get back up.",
+    "occasion": null,
+    "actor": "Ilia Topuria",
+    "opponent": "Justin Gaethje",
+    "event": null,
+    "date": null
+   }
   },
   "789": {
    "subject": "Daniil Donchenko",
@@ -2585,7 +4538,16 @@
    "opponent": "Daniel Rodriguez",
    "event": "UFC Fight Night 287",
    "date": "2026-09-06",
-   "error": null
+   "error": null,
+   "second_run": {
+    "kind": "new_remark",
+    "claim": "Daniil Donchenko called out UFC veteran Daniel Rodriguez for his next fight.",
+    "occasion": "Post-fight interview at Accor Arena in Paris following UFC Fight Night 287",
+    "actor": "Daniil Donchenko",
+    "opponent": "Daniel Rodriguez",
+    "event": "UFC Fight Night 287",
+    "date": "2026-09-06"
+   }
   },
   "790": {
    "subject": "Daniil Donchenko",
@@ -2597,7 +4559,16 @@
    "opponent": "Punahele Soriano",
    "event": "UFC Fight Night 287",
    "date": "2026-09-05",
-   "error": null
+   "error": null,
+   "second_run": {
+    "kind": "new_event",
+    "claim": "Daniil Donchenko defeated Punahele Soriano by unanimous decision at UFC Fight Night 287.",
+    "occasion": "UFC Fight Night 287 in Paris",
+    "actor": "Daniil Donchenko",
+    "opponent": "Punahele Soriano",
+    "event": "UFC Fight Night 287",
+    "date": "2026-09-05"
+   }
   },
   "794": {
    "subject": "Daniil Donchenko",
@@ -2609,7 +4580,16 @@
    "opponent": "Daniel Rodriguez",
    "event": "UFC Fight Night 287",
    "date": "2026-09-06",
-   "error": null
+   "error": null,
+   "second_run": {
+    "kind": "new_remark",
+    "claim": "Daniil Donchenko called out Daniel Rodriguez for his next fight.",
+    "occasion": "Post-fight interview at Accor Arena in Paris",
+    "actor": "Daniil Donchenko",
+    "opponent": "Daniel Rodriguez",
+    "event": "UFC Fight Night 287",
+    "date": null
+   }
   },
   "797": {
    "subject": "Daniil Donchenko",
@@ -2621,7 +4601,16 @@
    "opponent": "Daniel Rodriguez",
    "event": "UFC Fight Night 287",
    "date": "2026-09-06",
-   "error": null
+   "error": null,
+   "second_run": {
+    "kind": "new_remark",
+    "claim": "Daniil Donchenko called out UFC veteran Daniel Rodriguez for his next fight.",
+    "occasion": "Post-fight interview at Accor Arena in Paris following UFC Fight Night 287",
+    "actor": "Daniil Donchenko",
+    "opponent": "Daniel Rodriguez",
+    "event": "UFC Fight Night 287",
+    "date": "2026-09-06"
+   }
   },
   "798": {
    "subject": "Ilia Topuria",
@@ -2633,7 +4622,16 @@
    "opponent": "Justin Gaethje",
    "event": null,
    "date": null,
-   "error": null
+   "error": null,
+   "second_run": {
+    "kind": "new_event",
+    "claim": "The UFC is strongly considering a rematch between Justin Gaethje and Ilia Topuria.",
+    "occasion": null,
+    "actor": "UFC",
+    "opponent": "Justin Gaethje",
+    "event": null,
+    "date": null
+   }
   },
   "803": {
    "subject": "Ilia Topuria",
@@ -2645,7 +4643,16 @@
    "opponent": "Justin Gaethje",
    "event": null,
    "date": null,
-   "error": null
+   "error": null,
+   "second_run": {
+    "kind": "new_remark",
+    "claim": "Jon Anik stated that there are internal conversations at the UFC about potentially booking a rematch between Ilia Topuria and Justin Gaethje.",
+    "occasion": "A recent post on the Anik Bros YouTube channel",
+    "actor": "Jon Anik",
+    "opponent": "Justin Gaethje",
+    "event": null,
+    "date": null
+   }
   },
   "807": {
    "subject": "Ilia Topuria",
@@ -2657,7 +4664,16 @@
    "opponent": "Justin Gaethje",
    "event": null,
    "date": null,
-   "error": null
+   "error": null,
+   "second_run": {
+    "kind": "new_remark",
+    "claim": "Jon Anik stated that the UFC is internally discussing an immediate rematch between Justin Gaethje and Ilia Topuria.",
+    "occasion": "Anik Bros YouTube channel",
+    "actor": "Jon Anik",
+    "opponent": "Justin Gaethje",
+    "event": null,
+    "date": null
+   }
   },
   "811": {
    "subject": "Ilia Topuria",
@@ -2669,7 +4685,16 @@
    "opponent": null,
    "event": null,
    "date": null,
-   "error": null
+   "error": null,
+   "second_run": {
+    "kind": "about_someone_else",
+    "claim": "NO CLAIM",
+    "occasion": null,
+    "actor": null,
+    "opponent": null,
+    "event": null,
+    "date": null
+   }
   },
   "813": {
    "subject": "Daniil Donchenko",
@@ -2681,7 +4706,16 @@
    "opponent": "Daniel Rodriguez",
    "event": "UFC Fight Night 287",
    "date": null,
-   "error": null
+   "error": null,
+   "second_run": {
+    "kind": "new_remark",
+    "claim": "Daniil Donchenko called out Daniel Rodriguez for his next fight.",
+    "occasion": "Post-fight interview at UFC Fight Night 287 in Paris",
+    "actor": "Daniil Donchenko",
+    "opponent": "Daniel Rodriguez",
+    "event": "UFC Fight Night 287",
+    "date": null
+   }
   },
   "817": {
    "subject": "Daniil Donchenko",
@@ -2693,7 +4727,16 @@
    "opponent": "Punahele Soriano",
    "event": "UFC Fight Night 287",
    "date": "2026-09-05",
-   "error": null
+   "error": null,
+   "second_run": {
+    "kind": "new_event",
+    "claim": "Daniil Donchenko defeated Punahele Soriano by unanimous decision at UFC Fight Night 287.",
+    "occasion": "UFC Fight Night 287 in Paris, France",
+    "actor": "Daniil Donchenko",
+    "opponent": "Punahele Soriano",
+    "event": "UFC Fight Night 287",
+    "date": "2026-09-05"
+   }
   },
   "820": {
    "subject": "Ilia Topuria",
@@ -2705,7 +4748,16 @@
    "opponent": "Ilia Topuria",
    "event": null,
    "date": null,
-   "error": null
+   "error": null,
+   "second_run": {
+    "kind": "new_remark",
+    "claim": "Paddy Pimblett stated that the UFC has not approached him about a December fight with Ilia Topuria.",
+    "occasion": "Video interview published by Sherdog",
+    "actor": "Paddy Pimblett",
+    "opponent": "Ilia Topuria",
+    "event": null,
+    "date": null
+   }
   },
   "823": {
    "subject": "Daniil Donchenko",
@@ -2717,7 +4769,16 @@
    "opponent": "Punahele Soriano",
    "event": "UFC Paris",
    "date": "2026-09-06",
-   "error": null
+   "error": null,
+   "second_run": {
+    "kind": "new_event",
+    "claim": "Daniil Donchenko defeated Punahele Soriano by unanimous decision at a UFC event in Paris.",
+    "occasion": "UFC tournament in Paris",
+    "actor": "Daniil Donchenko",
+    "opponent": "Punahele Soriano",
+    "event": "UFC Paris",
+    "date": null
+   }
   },
   "826": {
    "subject": "Daniil Donchenko",
@@ -2729,7 +4790,16 @@
    "opponent": "Punahel Soriano",
    "event": "UFC Fight Night 287",
    "date": "2026-09-05",
-   "error": null
+   "error": null,
+   "second_run": {
+    "kind": "new_event",
+    "claim": "Daniil Donchenko defeated Punahelu Soriano by unanimous decision at UFC Fight Night 287.",
+    "occasion": "UFC Fight Night 287 in Paris",
+    "actor": "Daniil Donchenko",
+    "opponent": "Punahelu Soriano",
+    "event": "UFC Fight Night 287",
+    "date": "2026-09-05"
+   }
   },
   "828": {
    "subject": "Ilia Topuria",
@@ -2741,7 +4811,16 @@
    "opponent": "Justin Gaethje",
    "event": null,
    "date": null,
-   "error": null
+   "error": null,
+   "second_run": {
+    "kind": "new_remark",
+    "claim": "Jon Anik stated that the UFC is having internal conversations about a potential rematch between Ilia Topuria and Justin Gaethje.",
+    "occasion": "Anik Bros. YouTube channel video",
+    "actor": "Jon Anik",
+    "opponent": "Justin Gaethje",
+    "event": null,
+    "date": null
+   }
   },
   "829": {
    "subject": "Daniil Donchenko",
@@ -2753,7 +4832,16 @@
    "opponent": "Punahele Soriano",
    "event": "UFC Fight Night 287",
    "date": null,
-   "error": null
+   "error": null,
+   "second_run": {
+    "kind": "new_event",
+    "claim": "Daniil Donchenko defeated Punahele Soriano by unanimous decision at UFC Fight Night 287 in Paris.",
+    "occasion": "UFC Fight Night 287 in Paris",
+    "actor": "Daniil Donchenko",
+    "opponent": "Punahele Soriano",
+    "event": "UFC Fight Night 287",
+    "date": null
+   }
   },
   "833": {
    "subject": "Ilia Topuria",
@@ -2765,7 +4853,16 @@
    "opponent": "Justin Gaethje",
    "event": null,
    "date": null,
-   "error": null
+   "error": null,
+   "second_run": {
+    "kind": "analysis",
+    "claim": "UFC commentator Jon Anik predicts that a rematch between Ilia Topuria and Justin Gaethje is likely to happen.",
+    "occasion": "Anik Bros YouTube channel",
+    "actor": "Jon Anik",
+    "opponent": "Justin Gaethje",
+    "event": null,
+    "date": "2026-09-07"
+   }
   },
   "838": {
    "subject": "Ilia Topuria",
@@ -2777,7 +4874,16 @@
    "opponent": "Ilia Topuria",
    "event": null,
    "date": null,
-   "error": null
+   "error": null,
+   "second_run": {
+    "kind": "reaction",
+    "claim": "Paddy Pimblett stated he has not received a call about fighting Ilia Topuria at UFC 335 despite rumors.",
+    "occasion": "Interview with Eze Talks Sports in Dublin, Ireland",
+    "actor": "Paddy Pimblett",
+    "opponent": "Ilia Topuria",
+    "event": "UFC 335",
+    "date": null
+   }
   },
   "843": {
    "subject": "Ilia Topuria",
@@ -2789,7 +4895,16 @@
    "opponent": "Ilia Topuria",
    "event": null,
    "date": null,
-   "error": null
+   "error": null,
+   "second_run": {
+    "kind": "new_remark",
+    "claim": "Paddy Pimblett stated that he is willing to fight Ilia Topuria but has not yet been contacted by the UFC regarding a potential bout.",
+    "occasion": "Interview with Eze Obas",
+    "actor": "Paddy Pimblett",
+    "opponent": "Ilia Topuria",
+    "event": null,
+    "date": null
+   }
   },
   "850": {
    "subject": "Ilia Topuria",
@@ -2801,7 +4916,16 @@
    "opponent": "Paddy Pimblett",
    "event": null,
    "date": null,
-   "error": null
+   "error": null,
+   "second_run": {
+    "kind": "new_remark",
+    "claim": "Tim Welch stated that there are rumors of a fight between Paddy Pimblett and Ilia Topuria in December.",
+    "occasion": "Suga O'Malley podcast",
+    "actor": "Tim Welch",
+    "opponent": "Paddy Pimblett",
+    "event": null,
+    "date": null
+   }
   },
   "851": {
    "subject": "Daniil Donchenko",
@@ -2813,7 +4937,16 @@
    "opponent": "Daniel Rodriguez",
    "event": "UFC Paris",
    "date": null,
-   "error": null
+   "error": null,
+   "second_run": {
+    "kind": "new_remark",
+    "claim": "Daniil Donchenko called for a fight against Daniel Rodriguez and stated he would prefer to face him toward the end of the year.",
+    "occasion": "Post-fight interview at UFC Paris",
+    "actor": "Daniil Donchenko",
+    "opponent": "Daniel Rodriguez",
+    "event": "UFC Paris",
+    "date": null
+   }
   },
   "852": {
    "subject": "Daniil Donchenko",
@@ -2825,7 +4958,16 @@
    "opponent": "Punahelu Soriano",
    "event": "UFC Fight Night 287",
    "date": null,
-   "error": null
+   "error": null,
+   "second_run": {
+    "kind": "new_remark",
+    "claim": "Daniil Donchenko stated that he hopes to be given a good fight in the UFC and thanked his fans after his victory over Punahel Soria.",
+    "occasion": "Post-fight interview following UFC Fight Night 287",
+    "actor": "Daniil Donchenko",
+    "opponent": "Punahel Soria",
+    "event": "UFC Fight Night 287",
+    "date": null
+   }
   },
   "856": {
    "subject": "Ilia Topuria",
@@ -2837,7 +4979,16 @@
    "opponent": "Ilia Topuria",
    "event": "UFC Casa Blanca",
    "date": "2026-06-14",
-   "error": null
+   "error": null,
+   "second_run": {
+    "kind": "new_event",
+    "claim": "Ilia Topuria lost his UFC lightweight title and undefeated record to Justin Gaethje via finish at UFC Casa Blanca on June 14, 2026.",
+    "occasion": "UFC Casa Blanca",
+    "actor": "Ilia Topuria",
+    "opponent": "Justin Gaethje",
+    "event": "UFC Casa Blanca",
+    "date": "2026-06-14"
+   }
   },
   "861": {
    "subject": "Daniil Donchenko",
@@ -2849,7 +5000,16 @@
    "opponent": null,
    "event": null,
    "date": null,
-   "error": null
+   "error": null,
+   "second_run": {
+    "kind": "about_someone_else",
+    "claim": "NO CLAIM",
+    "occasion": null,
+    "actor": null,
+    "opponent": null,
+    "event": "UFC Paris",
+    "date": null
+   }
   },
   "862": {
    "subject": "Ilia Topuria",
@@ -2861,7 +5021,16 @@
    "opponent": "Justin Gaethje",
    "event": null,
    "date": null,
-   "error": null
+   "error": null,
+   "second_run": {
+    "kind": "new_remark",
+    "claim": "Jon Anik stated that there are internal conversations at the UFC about a potential rematch between Justin Gaethje and Ilia Topuria.",
+    "occasion": "Anik Bros YouTube channel",
+    "actor": "Jon Anik",
+    "opponent": "Justin Gaethje",
+    "event": null,
+    "date": null
+   }
   },
   "866": {
    "subject": "Ilia Topuria",
@@ -2873,7 +5042,16 @@
    "opponent": "Justin Gaethje",
    "event": null,
    "date": null,
-   "error": null
+   "error": null,
+   "second_run": {
+    "kind": "new_remark",
+    "claim": "Joe Rogan warned Ilia Topuria that returning to competition too soon after his loss to Justin Gaethje could do more harm than good.",
+    "occasion": null,
+    "actor": "Joe Rogan",
+    "opponent": "Justin Gaethje",
+    "event": null,
+    "date": null
+   }
   },
   "871": {
    "subject": "Ilia Topuria",
@@ -2885,7 +5063,16 @@
    "opponent": "Ilia Topuria",
    "event": null,
    "date": null,
-   "error": null
+   "error": null,
+   "second_run": {
+    "kind": "new_remark",
+    "claim": "Paddy Pimblett stated that he would love to fight Ilia Topuria but noted that nothing has been finalized regarding a potential matchup.",
+    "occasion": "Interview with Eze Talks Sports at Katie Taylor's retirement fight in Dublin",
+    "actor": "Paddy Pimblett",
+    "opponent": "Ilia Topuria",
+    "event": null,
+    "date": null
+   }
   },
   "875": {
    "subject": "Ilia Topuria",
@@ -2897,7 +5084,16 @@
    "opponent": null,
    "event": null,
    "date": null,
-   "error": null
+   "error": null,
+   "second_run": {
+    "kind": "new_remark",
+    "claim": "Ilia Topuria stated that his childhood desire to change his family's life was a promise he made to himself, which drove him to become the best fighter in the world.",
+    "occasion": "Interview with Marca (referenced in Estadio Deportivo article)",
+    "actor": "Ilia Topuria",
+    "opponent": null,
+    "event": null,
+    "date": null
+   }
   },
   "879": {
    "subject": "Ilia Topuria",
@@ -2909,7 +5105,16 @@
    "opponent": "Justin Gaethje",
    "event": null,
    "date": null,
-   "error": null
+   "error": null,
+   "second_run": {
+    "kind": "new_remark",
+    "claim": "Matt Brown stated that an immediate rematch between Justin Gaethje and Ilia Topuria could permanently damage Ilia Topuria.",
+    "occasion": "The Fighter vs. The Writer podcast",
+    "actor": "Matt Brown",
+    "opponent": "Justin Gaethje",
+    "event": null,
+    "date": null
+   }
   },
   "883": {
    "subject": "Ilia Topuria",
@@ -2921,7 +5126,16 @@
    "opponent": "Justin Gaethje",
    "event": null,
    "date": null,
-   "error": null
+   "error": null,
+   "second_run": {
+    "kind": "new_event",
+    "claim": "The UFC has held internal conversations about a potential immediate rematch between Ilia Topuria and Justin Gaethje.",
+    "occasion": "Reported by Jon Anik this past weekend",
+    "actor": "Jon Anik",
+    "opponent": "Justin Gaethje",
+    "event": null,
+    "date": null
+   }
   },
   "887": {
    "subject": "Ilia Topuria",
@@ -2933,7 +5147,16 @@
    "opponent": null,
    "event": null,
    "date": null,
-   "error": null
+   "error": null,
+   "second_run": {
+    "kind": "new_remark",
+    "claim": "Josh Hokit stated on social media that Ilia Topuria does not deserve a title shot in his next fight because he was handily destroyed and must earn his way back.",
+    "occasion": "Social media post on X",
+    "actor": "Josh Hokit",
+    "opponent": null,
+    "event": null,
+    "date": null
+   }
   },
   "889": {
    "subject": "Daniil Donchenko",
@@ -2945,7 +5168,16 @@
    "opponent": "Daniil Donchenko",
    "event": null,
    "date": null,
-   "error": null
+   "error": null,
+   "second_run": {
+    "kind": "reaction",
+    "claim": "Daniel Rodriguez responded to Daniil Donchenko's callout by sharing the post with a middle-finger emoji and Drake's \"I'm Upset\" playing in the background.",
+    "occasion": "Instagram stories",
+    "actor": "Daniel Rodriguez",
+    "opponent": "Daniil Donchenko",
+    "event": null,
+    "date": null
+   }
   },
   "892": {
    "subject": "Ilia Topuria",
@@ -2957,7 +5189,16 @@
    "opponent": "Ilia Topuria",
    "event": null,
    "date": null,
-   "error": null
+   "error": null,
+   "second_run": {
+    "kind": "new_remark",
+    "claim": "Paddy Pimblett stated that he wants to fight Ilia Topuria at the end of 2026 and expressed a desire to crush his head.",
+    "occasion": "Declarations for DAZN",
+    "actor": "Paddy Pimblett",
+    "opponent": "Ilia Topuria",
+    "event": null,
+    "date": null
+   }
   },
   "896": {
    "subject": "Ilia Topuria",
@@ -2969,7 +5210,16 @@
    "opponent": "Paddy Pimblett",
    "event": null,
    "date": null,
-   "error": null
+   "error": null,
+   "second_run": {
+    "kind": "analysis",
+    "claim": "Sean O'Malley predicts that Paddy Pimblett would likely defeat Ilia Topuria in a potential fight.",
+    "occasion": "Tim Welch's podcast with Sean O'Malley",
+    "actor": "Sean O'Malley",
+    "opponent": "Paddy Pimblett",
+    "event": null,
+    "date": null
+   }
   },
   "901": {
    "subject": "Ilia Topuria",
@@ -2981,7 +5231,16 @@
    "opponent": "Justin Gaethje",
    "event": null,
    "date": null,
-   "error": null
+   "error": null,
+   "second_run": {
+    "kind": "reaction",
+    "claim": "Matt Brown stated that the UFC risks ruining Ilia Topuria's life by granting him an immediate rematch with Justin Gaethje.",
+    "occasion": "Interview with MMAFighting",
+    "actor": "Matt Brown",
+    "opponent": "Justin Gaethje",
+    "event": null,
+    "date": null
+   }
   },
   "905": {
    "subject": "Ilia Topuria",
@@ -2993,7 +5252,16 @@
    "opponent": "Justin Gaethje",
    "event": null,
    "date": null,
-   "error": null
+   "error": null,
+   "second_run": {
+    "kind": "new_remark",
+    "claim": "Matt Brown stated that Ilia Topuria should take a tuneup bout against someone like Renato Moicano before considering a rematch with Justin Gaethje.",
+    "occasion": "MMA Fighting's \"The Fighter vs. The Writer\" podcast",
+    "actor": "Matt Brown",
+    "opponent": "Justin Gaethje",
+    "event": null,
+    "date": null
+   }
   },
   "909": {
    "subject": "Ilia Topuria",
@@ -3005,7 +5273,16 @@
    "opponent": null,
    "event": null,
    "date": "2026-09-08",
-   "error": null
+   "error": null,
+   "second_run": {
+    "kind": "new_remark",
+    "claim": "Josh Hokit stated on social media that Ilia Topuria does not deserve a title shot in his next fight because he was handily destroyed by Justin Gaethje.",
+    "occasion": "A series of X posts targeting Alex Pereira and making his case for the next shot at Ciryl Gane",
+    "actor": "Josh Hokit",
+    "opponent": null,
+    "event": null,
+    "date": "2026-09-08"
+   }
   },
   "913": {
    "subject": "Ilia Topuria",
@@ -3017,7 +5294,16 @@
    "opponent": "Ilia Topuria",
    "event": null,
    "date": null,
-   "error": null
+   "error": null,
+   "second_run": {
+    "kind": "new_remark",
+    "claim": "Paddy Pimblett stated that he would love to destroy Ilia Topuria's head but confirmed he is not currently in negotiations for a fight with him.",
+    "occasion": "An interview during a boxing event",
+    "actor": "Paddy Pimblett",
+    "opponent": "Ilia Topuria",
+    "event": null,
+    "date": null
+   }
   },
   "917": {
    "subject": "Ilia Topuria",
@@ -3029,7 +5315,16 @@
    "opponent": null,
    "event": null,
    "date": null,
-   "error": null
+   "error": null,
+   "second_run": {
+    "kind": "new_remark",
+    "claim": "Joe Rogan warned Ilia Topuria against rushing his return to competition by citing Alexander Volkanovski's experience of returning too soon after a knockout loss.",
+    "occasion": "Segment #185 of the JRE MMA Show",
+    "actor": "Joe Rogan",
+    "opponent": null,
+    "event": null,
+    "date": null
+   }
   },
   "921": {
    "subject": "Ilia Topuria",
@@ -3041,7 +5336,16 @@
    "opponent": "Ilia Topuria",
    "event": null,
    "date": null,
-   "error": null
+   "error": null,
+   "second_run": {
+    "kind": "new_remark",
+    "claim": "Paddy Pimblett stated that he would love to fight Ilia Topuria and smash his head in, but noted that no one has spoken to him about it yet.",
+    "occasion": "Interview with Eze Obas",
+    "actor": "Paddy Pimblett",
+    "opponent": "Ilia Topuria",
+    "event": null,
+    "date": null
+   }
   },
   "926": {
    "subject": "Ilia Topuria",
@@ -3053,7 +5357,16 @@
    "opponent": null,
    "event": null,
    "date": null,
-   "error": null
+   "error": null,
+   "second_run": {
+    "kind": "new_remark",
+    "claim": "Joe Rogan warned Ilia Topuria against rushing his return to the UFC, citing Alex Volkanovski's mistake of fighting too soon after a knockout loss.",
+    "occasion": "JRE Show",
+    "actor": "Joe Rogan",
+    "opponent": null,
+    "event": null,
+    "date": null
+   }
   },
   "930": {
    "subject": "Ilia Topuria",
@@ -3065,7 +5378,16 @@
    "opponent": null,
    "event": null,
    "date": null,
-   "error": null
+   "error": null,
+   "second_run": {
+    "kind": "new_remark",
+    "claim": "Ilia Topuria stated in a message to Georgian fans that his biggest UFC victories are still ahead of him and promised to return stronger.",
+    "occasion": "An announcement for TBC (Georgian public broadcaster)",
+    "actor": "Ilia Topuria",
+    "opponent": null,
+    "event": null,
+    "date": null
+   }
   },
   "933": {
    "subject": "Daniil Donchenko",
@@ -3077,7 +5399,16 @@
    "opponent": null,
    "event": null,
    "date": null,
-   "error": null
+   "error": null,
+   "second_run": {
+    "kind": "analysis",
+    "claim": "The article analyzes five potential next opponents for Daniil Donchenko, identifying Daniel Rodriguez as the most likely option due to stylistic advantages and recent losses.",
+    "occasion": null,
+    "actor": "Sport.ua",
+    "opponent": null,
+    "event": null,
+    "date": null
+   }
   },
   "934": {
    "subject": "Daniil Donchenko",
@@ -3088,7 +5419,16 @@
    "actor": "Daniil Donchenko",
    "opponent": "Daniel Rodriguez",
    "event": "UFC Fight Night 287",
-   "error": null
+   "error": null,
+   "second_run": {
+    "kind": "analysis",
+    "claim": "A writer analyzes five potential opponents for Daniil Donchenko's next fight, identifying Daniel Rodriguez as the most likely option.",
+    "occasion": "Sport.ua article published on September 9, 2026",
+    "actor": null,
+    "opponent": null,
+    "event": null,
+    "date": "2026-09-09"
+   }
   },
   "937": {
    "subject": "Ilia Topuria",
@@ -3100,7 +5440,16 @@
    "opponent": "Mauricio Ruffy",
    "event": "UFC 331",
    "date": "2026-09-20",
-   "error": null
+   "error": null,
+   "second_run": {
+    "kind": "new_remark",
+    "claim": "Arman Tsarukyan stated that he wants to break the lightweight division record by surpassing Islam Makhachev's four title defenses.",
+    "occasion": "Interview with Paramount",
+    "actor": "Arman Tsarukyan",
+    "opponent": null,
+    "event": null,
+    "date": null
+   }
   },
   "944": {
    "subject": "Ilia Topuria",
@@ -3112,7 +5461,16 @@
    "opponent": "Ilia Topuria",
    "event": null,
    "date": null,
-   "error": null
+   "error": null,
+   "second_run": {
+    "kind": "new_remark",
+    "claim": "Justin Gaethje stated that Ilia Topuria was easy to predict because his footwork never changed rhythm and he treated the fight like past wins.",
+    "occasion": "Demetrious Johnson's podcast",
+    "actor": "Justin Gaethje",
+    "opponent": "Ilia Topuria",
+    "event": null,
+    "date": null
+   }
   },
   "948": {
    "subject": "Ilia Topuria",
@@ -3124,7 +5482,16 @@
    "opponent": null,
    "event": null,
    "date": null,
-   "error": null
+   "error": null,
+   "second_run": {
+    "kind": "about_someone_else",
+    "claim": "NO CLAIM",
+    "occasion": null,
+    "actor": null,
+    "opponent": null,
+    "event": null,
+    "date": null
+   }
   },
   "953": {
    "subject": "Ilia Topuria",
@@ -3136,7 +5503,16 @@
    "opponent": "Ilia Topuria",
    "event": null,
    "date": null,
-   "error": null
+   "error": null,
+   "second_run": {
+    "kind": "new_remark",
+    "claim": "Paddy Pimblett stated that he would love to fight Ilia Topuria but no conversations have taken place regarding a potential matchup.",
+    "occasion": "Recent interview with Eze Obas",
+    "actor": "Paddy Pimblett",
+    "opponent": "Ilia Topuria",
+    "event": null,
+    "date": null
+   }
   },
   "958": {
    "subject": "Ilia Topuria",
@@ -3148,7 +5524,16 @@
    "opponent": null,
    "event": null,
    "date": "2026-09-09",
-   "error": null
+   "error": null,
+   "second_run": {
+    "kind": "new_remark",
+    "claim": "Dana White stated that Ilia Topuria is ready to fight and suggested potential opponents Justin Gaethje or Paddy Pimblett.",
+    "occasion": "Speaking to Jim Rome",
+    "actor": "Dana White",
+    "opponent": null,
+    "event": null,
+    "date": null
+   }
   },
   "963": {
    "subject": "Ilia Topuria",
@@ -3160,7 +5545,16 @@
    "opponent": "Ilia Topuria",
    "event": null,
    "date": null,
-   "error": null
+   "error": null,
+   "second_run": {
+    "kind": "new_remark",
+    "claim": "Justin Gaethje stated that Ilia Topuria committed terrible emotional errors and was unprepared for the length of their fight.",
+    "occasion": "Conversation with Demetrious Johnson",
+    "actor": "Justin Gaethje",
+    "opponent": "Ilia Topuria",
+    "event": null,
+    "date": null
+   }
   },
   "968": {
    "subject": "Ilia Topuria",
@@ -3172,7 +5566,16 @@
    "opponent": null,
    "event": null,
    "date": null,
-   "error": null
+   "error": null,
+   "second_run": {
+    "kind": "new_remark",
+    "claim": "Ilia Topuria stated in an advertisement for TBC that he is coming back even stronger and believes his greatest victories are still ahead.",
+    "occasion": "Advertisement for TBC",
+    "actor": "Ilia Topuria",
+    "opponent": null,
+    "event": null,
+    "date": null
+   }
   },
   "972": {
    "subject": "Ilia Topuria",
@@ -3184,7 +5587,16 @@
    "opponent": null,
    "event": null,
    "date": null,
-   "error": null
+   "error": null,
+   "second_run": {
+    "kind": "new_remark",
+    "claim": "Dana White stated that Ilia Topuria is ready to fight and expressed openness to a rematch with Justin Gaethje or a grudge match with Paddy Pimblett.",
+    "occasion": "Interview with Jim Rome",
+    "actor": "Dana White",
+    "opponent": null,
+    "event": null,
+    "date": "2026-09-10"
+   }
   },
   "975": {
    "subject": "Yaroslav Amosov",
@@ -3196,7 +5608,16 @@
    "opponent": null,
    "event": "UFC Paris",
    "date": "2026-09-10",
-   "error": null
+   "error": null,
+   "second_run": {
+    "kind": "new_remark",
+    "claim": "Yaroslav Amosov helped train Daniil Donchenko for his fight against Punahele Soriano.",
+    "occasion": "Exclusive interview with 24 Channel after the UFC Paris event",
+    "actor": "Daniil Donchenko",
+    "opponent": null,
+    "event": "UFC Paris",
+    "date": "2026-09-10"
+   }
   },
   "977": {
    "subject": "Ilia Topuria",
@@ -3208,7 +5629,16 @@
    "opponent": "Ilia Topuria",
    "event": null,
    "date": null,
-   "error": null
+   "error": null,
+   "second_run": {
+    "kind": "new_remark",
+    "claim": "Justin Gaethje stated that Ilia Topuria was underprepared for their fight and blamed the loss on emotional mistakes in preparation.",
+    "occasion": "Speaking with Demetrious Johnson",
+    "actor": "Justin Gaethje",
+    "opponent": "Ilia Topuria",
+    "event": null,
+    "date": null
+   }
   },
   "983": {
    "subject": "Ilia Topuria",
@@ -3220,7 +5650,16 @@
    "opponent": "Ilia Topuria",
    "event": null,
    "date": null,
-   "error": null
+   "error": null,
+   "second_run": {
+    "kind": "new_remark",
+    "claim": "Justin Gaethje stated that Ilia Topuria's lack of lateral foot movement and predictable rhythm allowed him to disrupt Topuria's game plan and secure a victory.",
+    "occasion": "Recent statement reported by MMA Sucka",
+    "actor": "Justin Gaethje",
+    "opponent": "Ilia Topuria",
+    "event": "UFC Freedom 250",
+    "date": null
+   }
   },
   "991": {
    "subject": "Ilia Topuria",
@@ -3232,7 +5671,16 @@
    "opponent": null,
    "event": null,
    "date": "2026-09-10",
-   "error": null
+   "error": null,
+   "second_run": {
+    "kind": "new_remark",
+    "claim": "Dana White stated that Justin Gaethje and Paddy Pimblett are the top two potential opponents for Ilia Topuria's next fight.",
+    "occasion": "The Jim Rome Show",
+    "actor": "Dana White",
+    "opponent": null,
+    "event": null,
+    "date": "2026-09-10"
+   }
   },
   "998": {
    "subject": "Ilia Topuria",
@@ -3244,7 +5692,16 @@
    "opponent": null,
    "event": null,
    "date": null,
-   "error": null
+   "error": null,
+   "second_run": {
+    "kind": "new_remark",
+    "claim": "Dana White stated that Ilia Topuria is ready to fight and the UFC is ready for him.",
+    "occasion": "The Jim Rome Show",
+    "actor": "Dana White",
+    "opponent": null,
+    "event": null,
+    "date": null
+   }
   },
   "1002": {
    "subject": "Ilia Topuria",
@@ -3256,7 +5713,16 @@
    "opponent": null,
    "event": null,
    "date": null,
-   "error": null
+   "error": null,
+   "second_run": {
+    "kind": "reaction",
+    "claim": "Alexandre Pantoja posted a message of support to Ilia Topuria stating that they still have much to conquer.",
+    "occasion": "Social media post with a photo alongside Ilia Topuria",
+    "actor": "Alexandre Pantoja",
+    "opponent": null,
+    "event": null,
+    "date": null
+   }
   },
   "1008": {
    "subject": "Ilia Topuria",
@@ -3268,7 +5734,16 @@
    "opponent": null,
    "event": null,
    "date": null,
-   "error": null
+   "error": null,
+   "second_run": {
+    "kind": "new_remark",
+    "claim": "Dana White stated that Ilia Topuria is ready to fight and suggested Justin Gaethje or Paddy Pimblett as potential opponents.",
+    "occasion": "Interview with Jim Rome",
+    "actor": "Dana White",
+    "opponent": null,
+    "event": null,
+    "date": null
+   }
   },
   "1016": {
    "subject": "Ilia Topuria",
@@ -3280,7 +5755,16 @@
    "opponent": "Justin Gaethje",
    "event": null,
    "date": null,
-   "error": null
+   "error": null,
+   "second_run": {
+    "kind": "new_remark",
+    "claim": "Eddie Alvarez stated that an immediate rematch between Justin Gaethje and Ilia Topuria would be a mistake because Topuria needs to rebuild confidence against a lesser opponent.",
+    "occasion": "Interview with MMA Junkie",
+    "actor": "Eddie Alvarez",
+    "opponent": "Justin Gaethje",
+    "event": null,
+    "date": null
+   }
   },
   "1020": {
    "subject": "Ilia Topuria",
@@ -3292,7 +5776,16 @@
    "opponent": null,
    "event": null,
    "date": null,
-   "error": null
+   "error": null,
+   "second_run": {
+    "kind": "new_remark",
+    "claim": "Dana White stated that Ilia Topuria is ready to fight and expressed support for either a rematch against Justin Gaethje or a bout with Paddy Pimblett.",
+    "occasion": "The Jim Rome show",
+    "actor": "Dana White",
+    "opponent": null,
+    "event": null,
+    "date": null
+   }
   },
   "1027": {
    "subject": "Ilia Topuria",
@@ -3304,7 +5797,16 @@
    "opponent": "Justin Gaethje",
    "event": null,
    "date": null,
-   "error": null
+   "error": null,
+   "second_run": {
+    "kind": "new_remark",
+    "claim": "Eddie Alvarez stated that a Justin Gaethje vs. Ilia Topuria rematch is a mistake and that Topuria should fight a lesser opponent to rebuild confidence.",
+    "occasion": null,
+    "actor": "Eddie Alvarez",
+    "opponent": "Justin Gaethje",
+    "event": null,
+    "date": null
+   }
   },
   "1031": {
    "subject": "Ilia Topuria",
@@ -3316,7 +5818,16 @@
    "opponent": null,
    "event": null,
    "date": "2026-09-10",
-   "error": null
+   "error": null,
+   "second_run": {
+    "kind": "new_remark",
+    "claim": "Dana White confirmed that Ilia Topuria is ready to return to fighting and identified Justin Gaethje and Paddy Pimblett as possible opponents.",
+    "occasion": "Thursday, September 10, 2026",
+    "actor": "Dana White",
+    "opponent": null,
+    "event": null,
+    "date": "2026-09-10"
+   }
   },
   "1036": {
    "subject": "Ilia Topuria",
@@ -3328,7 +5839,16 @@
    "opponent": null,
    "event": null,
    "date": null,
-   "error": null
+   "error": null,
+   "second_run": {
+    "kind": "new_remark",
+    "claim": "Dana White stated that Ilia Topuria is ready to fight but no decision has been made on his next opponent.",
+    "occasion": "The Jim Rome Show",
+    "actor": "Dana White",
+    "opponent": null,
+    "event": null,
+    "date": null
+   }
   },
   "1040": {
    "subject": "Ilia Topuria",
@@ -3340,7 +5860,16 @@
    "opponent": "Ilia Topuria",
    "event": null,
    "date": null,
-   "error": null
+   "error": null,
+   "second_run": {
+    "kind": "new_remark",
+    "claim": "Justin Gaethje stated that Ilia Topuria was 'very easy to predict' in their fight because he never changed his foot rhythm.",
+    "occasion": "Interview with UFC legend Demetrious Johnson",
+    "actor": "Justin Gaethje",
+    "opponent": "Ilia Topuria",
+    "event": null,
+    "date": null
+   }
   },
   "1045": {
    "subject": "Ilia Topuria",
@@ -3352,7 +5881,16 @@
    "opponent": null,
    "event": null,
    "date": "2026-09-10",
-   "error": null
+   "error": null,
+   "second_run": {
+    "kind": "new_remark",
+    "claim": "Ilia Topuria stated that he is ready to fight.",
+    "occasion": "The Boys in the Back podcast episode dated September 10, 2026",
+    "actor": "Ilia Topuria",
+    "opponent": null,
+    "event": null,
+    "date": "2026-09-10"
+   }
   },
   "1050": {
    "subject": "Ilia Topuria",
@@ -3364,7 +5902,16 @@
    "opponent": "Arman Tsarukyan",
    "event": null,
    "date": null,
-   "error": null
+   "error": null,
+   "second_run": {
+    "kind": "about_someone_else",
+    "claim": "NO CLAIM",
+    "occasion": null,
+    "actor": "Justin Gaethje",
+    "opponent": "Arman Tsarukyan",
+    "event": "MightyCast podcast",
+    "date": null
+   }
   },
   "1058": {
    "subject": "Ilia Topuria",
@@ -3376,7 +5923,16 @@
    "opponent": null,
    "event": null,
    "date": null,
-   "error": null
+   "error": null,
+   "second_run": {
+    "kind": "new_remark",
+    "claim": "Dana White stated that Ilia Topuria is ready to fight and analyzed two potential matchups: a rematch against Justin Gaethje or a fight against Paddy Pimblett.",
+    "occasion": "Interview on the Jim Rome program",
+    "actor": "Dana White",
+    "opponent": null,
+    "event": null,
+    "date": null
+   }
   },
   "1066": {
    "subject": "Ilia Topuria",
@@ -3388,7 +5944,16 @@
    "opponent": "Paddy Pimblett",
    "event": null,
    "date": null,
-   "error": null
+   "error": null,
+   "second_run": {
+    "kind": "new_remark",
+    "claim": "Dana White hinted that Ilia Topuria might face Paddy Pimblett next.",
+    "occasion": null,
+    "actor": "Dana White",
+    "opponent": "Paddy Pimblett",
+    "event": null,
+    "date": null
+   }
   },
   "1072": {
    "subject": "Ilia Topuria",
@@ -3400,7 +5965,16 @@
    "opponent": "Ilia Topuria",
    "event": null,
    "date": null,
-   "error": null
+   "error": null,
+   "second_run": {
+    "kind": "new_remark",
+    "claim": "Justin Gaethje stated that Ilia Topuria's fighting style was easy to predict because his footwork never changed rhythm or direction.",
+    "occasion": "Interview with Demetrious Johnson",
+    "actor": "Justin Gaethje",
+    "opponent": "Ilia Topuria",
+    "event": null,
+    "date": null
+   }
   },
   "1076": {
    "subject": "Ilia Topuria",
@@ -3412,7 +5986,16 @@
    "opponent": null,
    "event": null,
    "date": null,
-   "error": null
+   "error": null,
+   "second_run": {
+    "kind": "new_remark",
+    "claim": "Dana White stated that Ilia Topuria is ready to return and that the UFC faces a dilemma in choosing between a rematch with Justin Gaethje or a fight against Paddy Pimblett.",
+    "occasion": "Interview with Jim Rome",
+    "actor": "Dana White",
+    "opponent": null,
+    "event": null,
+    "date": null
+   }
   },
   "1080": {
    "subject": "Ilia Topuria",
@@ -3424,7 +6007,16 @@
    "opponent": null,
    "event": null,
    "date": null,
-   "error": null
+   "error": null,
+   "second_run": {
+    "kind": "about_someone_else",
+    "claim": "NO CLAIM",
+    "occasion": null,
+    "actor": null,
+    "opponent": null,
+    "event": null,
+    "date": null
+   }
   },
   "1085": {
    "subject": "Ilia Topuria",
@@ -3436,7 +6028,16 @@
    "opponent": null,
    "event": null,
    "date": null,
-   "error": null
+   "error": null,
+   "second_run": {
+    "kind": "about_someone_else",
+    "claim": "NO CLAIM",
+    "occasion": null,
+    "actor": null,
+    "opponent": null,
+    "event": null,
+    "date": null
+   }
   },
   "1089": {
    "subject": "Ilia Topuria",
@@ -3448,7 +6049,16 @@
    "opponent": "Justin Gaethje",
    "event": null,
    "date": null,
-   "error": null
+   "error": null,
+   "second_run": {
+    "kind": "new_remark",
+    "claim": "Dana White stated that there is a lot of money left on the table for Justin Gaethje to make and discussed whether Ilia Topuria will fight Gaethje or Paddy Pimblett next.",
+    "occasion": "Garcia vs. Benn press event",
+    "actor": "Dana White",
+    "opponent": "Justin Gaethje",
+    "event": null,
+    "date": null
+   }
   },
   "1093": {
    "subject": "Ilia Topuria",
@@ -3460,7 +6070,16 @@
    "opponent": "Ilia Topuria",
    "event": null,
    "date": null,
-   "error": null
+   "error": null,
+   "second_run": {
+    "kind": "new_remark",
+    "claim": "Justin Gaethje stated that a possible rematch against Ilia Topuria is one of the paths forward for his future in mixed martial arts.",
+    "occasion": "MightyCast YouTube channel interview",
+    "actor": "Justin Gaethje",
+    "opponent": "Ilia Topuria",
+    "event": null,
+    "date": null
+   }
   },
   "1097": {
    "subject": "Ilia Topuria",
@@ -3472,7 +6091,16 @@
    "opponent": "Paddy Pimblett",
    "event": null,
    "date": null,
-   "error": null
+   "error": null,
+   "second_run": {
+    "kind": "new_remark",
+    "claim": "Belal Muhammad stated that Ilia Topuria should fight Paddy Pimblett instead of getting an immediate rematch with Justin Gaethje.",
+    "occasion": null,
+    "actor": "Belal Muhammad",
+    "opponent": "Paddy Pimblett",
+    "event": null,
+    "date": null
+   }
   },
   "1101": {
    "subject": "Ilia Topuria",
@@ -3484,7 +6112,16 @@
    "opponent": null,
    "event": null,
    "date": null,
-   "error": null
+   "error": null,
+   "second_run": {
+    "kind": "new_remark",
+    "claim": "Ilia Topuria stated that he no longer bases his happiness on achieving goals and prefers to live in the present.",
+    "occasion": "Exclusive interview with 1Win",
+    "actor": "Ilia Topuria",
+    "opponent": null,
+    "event": null,
+    "date": null
+   }
   },
   "1125": {
    "subject": "Daniil Donchenko",
@@ -3496,7 +6133,16 @@
    "opponent": "Daniel Rodriguez",
    "event": null,
    "date": null,
-   "error": null
+   "error": null,
+   "second_run": {
+    "kind": "new_remark",
+    "claim": "Daniil Donchenko stated that he wants to fight Daniel Rodriguez because the Brazilian is ranked 15th and is the most convenient opponent for him among the top-15.",
+    "occasion": "Comment to Champion",
+    "actor": "Daniil Donchenko",
+    "opponent": "Daniel Rodriguez",
+    "event": null,
+    "date": null
+   }
   },
   "1129": {
    "subject": "Daniil Donchenko",
@@ -3508,7 +6154,16 @@
    "opponent": "Daniel Rodriguez",
    "event": null,
    "date": null,
-   "error": null
+   "error": null,
+   "second_run": {
+    "kind": "new_remark",
+    "claim": "Daniil Donchenko stated that he wants to fight Daniel Rodriguez because the Brazilian is ranked 15th and is the most convenient opponent for him among the top-15.",
+    "occasion": "Comment to Champion",
+    "actor": "Daniil Donchenko",
+    "opponent": "Daniel Rodriguez",
+    "event": null,
+    "date": null
+   }
   },
   "1146": {
    "subject": "Yaroslav Amosov",
@@ -3520,7 +6175,16 @@
    "opponent": "Yaroslav Amosov",
    "event": null,
    "date": null,
-   "error": null
+   "error": null,
+   "second_run": {
+    "kind": "new_remark",
+    "claim": "Islam Makhachev stated that he does not consider Yaroslav Amosov a dangerous opponent because he saw someone stop Amosov's wrestling.",
+    "occasion": "Interview with Ushatayka, reposted by Home of Fight",
+    "actor": "Islam Makhachev",
+    "opponent": "Yaroslav Amosov",
+    "event": null,
+    "date": null
+   }
   },
   "1150": {
    "subject": "Yaroslav Amosov",
@@ -3532,7 +6196,16 @@
    "opponent": "Yaroslav Amosov",
    "event": null,
    "date": null,
-   "error": null
+   "error": null,
+   "second_run": {
+    "kind": "new_remark",
+    "claim": "Islam Makhachev stated that he does not consider Yaroslav Amosov to be a dangerous opponent for himself.",
+    "occasion": "Interview with Dustin Poirier (as reported by XSPORT.ua)",
+    "actor": "Islam Makhachev",
+    "opponent": "Yaroslav Amosov",
+    "event": null,
+    "date": null
+   }
   },
   "1160": {
    "subject": "Yaroslav Amosov",
@@ -3544,7 +6217,16 @@
    "opponent": "Yaroslav Amosov",
    "event": null,
    "date": null,
-   "error": null
+   "error": null,
+   "second_run": {
+    "kind": "new_remark",
+    "claim": "Islam Makhachev stated that he does not consider Yaroslav Amosov a dangerous opponent.",
+    "occasion": "Interview with Ushatayka",
+    "actor": "Islam Makhachev",
+    "opponent": "Yaroslav Amosov",
+    "event": null,
+    "date": null
+   }
   },
   "1161": {
    "subject": "Daniil Donchenko",
@@ -3556,7 +6238,16 @@
    "opponent": null,
    "event": null,
    "date": null,
-   "error": null
+   "error": null,
+   "second_run": {
+    "kind": "about_someone_else",
+    "claim": "NO CLAIM",
+    "occasion": null,
+    "actor": null,
+    "opponent": null,
+    "event": null,
+    "date": null
+   }
   },
   "1172": {
    "subject": "Daniil Donchenko",
@@ -3568,7 +6259,16 @@
    "opponent": "Kamaru Usman",
    "event": null,
    "date": "2026-09-15",
-   "error": null
+   "error": null,
+   "second_run": {
+    "kind": "new_remark",
+    "claim": "Daniil Donchenko stated in an interview that he is not worse than Kamaru Usman and expressed confidence in his ability to compete with top-tier opponents.",
+    "occasion": "In an exclusive interview with Sport.ua published on September 15, 2026",
+    "actor": null,
+    "opponent": null,
+    "event": null,
+    "date": null
+   }
   },
   "1200": {
    "subject": "Yaroslav Amosov",
@@ -3580,7 +6280,16 @@
    "opponent": null,
    "event": null,
    "date": null,
-   "error": null
+   "error": null,
+   "second_run": {
+    "kind": "about_someone_else",
+    "claim": "NO CLAIM",
+    "occasion": null,
+    "actor": null,
+    "opponent": null,
+    "event": null,
+    "date": null
+   }
   },
   "1260": {
    "subject": "Daniil Donchenko",
@@ -3592,7 +6301,16 @@
    "opponent": null,
    "event": null,
    "date": null,
-   "error": null
+   "error": null,
+   "second_run": {
+    "kind": "new_remark",
+    "claim": "Daniil Donchenko stated that Islam Makhachev's record-tying win streak lacks the spectacular finishes of Anderson Silva's legacy run and identified Yaroslav Amosov as a potential threat to Makhachev.",
+    "occasion": "Bowks Talking Bouts",
+    "actor": "Daniil Donchenko",
+    "opponent": null,
+    "event": null,
+    "date": null
+   }
   }
  }
 }

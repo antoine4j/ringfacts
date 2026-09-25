@@ -13,7 +13,9 @@ load = lambda name: json.load(open(os.path.join(G, name)))
 arts = {str(r["id"]): r for r in load("articles.json")}
 claims = load("claims.json")["claims"]
 classifier = load("answers/classifier.json")["articles"]
-extractor = load("answers/extractor.json")["articles"]
+EX = load("answers/extractor.json")
+extractor = EX["articles"]
+QUESTIONS = load("answers/questions.json")["questions"]
 
 # --- Anton's rulings: heading per claim, and the verbatim text under it ------
 rulings = {}
@@ -71,6 +73,7 @@ def card(a):
         "t": r["title"], "u": r.get("url") or "", "body": r.get("body") or "",
         "chars": len(r.get("body") or ""),
         "ex": {k: ex.get(k) for k in ("kind", "claim", "occasion", "actor", "opponent", "event", "date", "error")},
+        "ex2": ex.get("second_run", {}),
         "bucket": cl.get("bucket"),
         "ans": cl.get("answers", {}),
         "flags": flags.get(a, []),
@@ -156,6 +159,21 @@ details.claim>summary .meta{color:var(--dim);font-size:13px;white-space:nowrap}
 .row .lab{font-size:11px;color:var(--dim);text-transform:uppercase;letter-spacing:.04em;align-self:center;min-width:64px}
 .extract{margin:5px 0 3px;font-size:14px}
 .extract b{color:var(--ext)}
+details.more summary{cursor:pointer;font-size:12.5px;color:var(--dim);margin-top:6px}
+details.more .q{margin:8px 0 2px;font-size:12.5px}
+details.more .q .qn{font-weight:600;color:var(--cls)}
+details.more .q .qi{color:var(--dim)}
+table.opts{border-collapse:collapse;width:100%;font-size:12.5px;margin:2px 0 6px}
+table.opts td{padding:2px 6px;border-top:1px solid var(--line);vertical-align:top}
+table.opts td.p{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap;color:var(--dim);width:44px}
+table.opts tr.pick td{font-weight:600}
+table.opts tr.pick td.p{color:var(--fg)}
+table.opts td.name{white-space:nowrap;width:190px}
+table.opts .bar{display:inline-block;height:8px;background:var(--clsbg);border-radius:2px;vertical-align:middle;margin-right:4px;padding:0;border:0;position:static}
+table.opts tr.pick .bar{background:var(--cls)}
+table.opts.ext .bar{background:var(--extbg)}
+table.opts.ext tr.pick .bar{background:var(--ext)}
+table.opts td.diff{background:var(--warnbg)}
 details.body summary{cursor:pointer;font-size:12.5px;color:var(--dim);margin-top:6px}
 details.body pre{white-space:pre-wrap;font:13.5px/1.5 inherit;margin:6px 0 0;padding:10px;border-radius:6px;background:var(--soft);max-height:420px;overflow:auto}
 .hide{display:none}
@@ -177,6 +195,32 @@ function exchips(e){
   f("occasion",e.occasion); f("actor",e.actor); f("opponent",e.opponent); f("event",e.event); f("date",e.date); if(e.error) f("error",e.error);
   return out.join("");
 }
+function pct(x){ return (x*100).toFixed(0)+"%"; }
+function optionTables(c){
+  const ans=c.ans||{}; const parts=[];
+  for(const q of Object.keys(QL)){ const a=ans[q]; const def=QDEF[q]||{options:{}}; if(!a) continue;
+    const names=Object.keys(def.options); for(const r of a.readers||[]) for(const k of Object.keys(r)) if(!names.includes(k)) names.push(k);
+    const mean=k=>{const v=(a.readers||[]).map(r=>r[k]??0); return v.length?v.reduce((x,y)=>x+y,0)/v.length:0;};
+    names.sort((x,y)=>mean(y)-mean(x));
+    parts.push(`<div class="q"><span class="qn">${esc(QL[q])}</span> <span class="qi">${esc(def.instructions||"")}</span></div>
+      <table class="opts">${names.map(k=>`<tr class="${k===a.choice?"pick":""}"><td class="name"><span class="bar" style="width:${Math.round(mean(k)*60)}px"></span>${esc(human(k))}</td>
+        <td class="p" title="mean of the readers">${pct(mean(k))}</td>${(a.readers||[]).map(r=>`<td class="p" title="one reader">${pct(r[k]??0)}</td>`).join("")}
+        <td>${esc(def.options[k]||"(not in the question as asked)")}</td></tr>`).join("")}</table>`);
+  }
+  return `<details class="more"><summary>classifier · every option, three readers' percentages</summary>${parts.join("")}</details>`;
+}
+function extractorTables(c){
+  const e=c.ex, e2=c.ex2||{};
+  const kinds=Object.keys(EXK).map(k=>`<tr class="${k===e.kind?"pick":""}"><td class="name">${esc(KL[k]||k)}<br><span style="color:var(--dim);font-weight:400">${k}</span></td><td>${esc(EXK[k])}</td></tr>`).join("");
+  const fields=["kind","claim","occasion","actor","opponent","event","date"].map(k=>{const d=(e[k]??"")!==(e2[k]??""); return `<tr><td class="name">${k==="claim"?"extract":k}<br><span style="color:var(--dim);font-weight:400">${esc(k==="kind"?"decided first":(EXF[k]||"").slice(0,90)+"…")}</span></td><td class="${d?"diff":""}">${esc(e[k]??"—")}</td><td class="${d?"diff":""}">${esc(e2[k]??"—")}</td></tr>`;}).join("");
+  return `<details class="more"><summary>extractor · the seven kinds, every field, and the second run</summary>
+    <div class="q"><span class="qn" style="color:var(--ext)">kind</span> <span class="qi">${esc(EXF.kind.split("One of:")[0])} The chosen one is bold.</span></div>
+    <table class="opts ext">${kinds}</table>
+    <div class="q"><span class="qn" style="color:var(--ext)">fields</span> <span class="qi">first run beside the second run of the same prompt, unchanged. Highlighted where they differ: that is where the model was unsure.</span></div>
+    <table class="opts ext"><tr><td class="name"></td><td><b>first run</b></td><td><b>second run</b></td></tr>${fields}</table>
+    <details class="more"><summary>the prompt's field definitions in full</summary><table class="opts ext">${Object.keys(EXF).map(k=>`<tr><td class="name">${k==="claim"?"extract (field claim)":k}</td><td>${esc(EXF[k])}</td></tr>`).join("")}</table></details>
+  </details>`;
+}
 function card(c){
   return `<div class="card" id="a${c.id}">
     <div class="head"><span class="id">#${c.id}</span><span>${c.d}</span><span>${esc(c.o)}</span><span>${c.chars} chars</span>
@@ -186,6 +230,8 @@ function card(c){
     <div class="row"><span class="lab">extractor</span><span class="chip ext">kind: <b>${esc(KL[c.ex.kind]||c.ex.kind||"—")}</b></span>${exchips(c.ex)}</div>
     ${c.ex.claim?`<div class="extract"><b>extract</b> — ${esc(c.ex.claim)}</div>`:""}
     <div class="row"><span class="lab">classifier</span>${chips(c)}</div>
+    ${optionTables(c)}
+    ${extractorTables(c)}
     <details class="body"><summary>body</summary><pre>${esc(c.body||"(empty)")}</pre></details>
   </div>`;
 }
@@ -264,7 +310,7 @@ Yellow "suspected" chips are what the data alone suggests, not labels, until rul
 <span class="cnt" id="cnt"></span>
 </div>
 <div id="list"></div>
-</div><script>const DATA={json.dumps(out, ensure_ascii=False)},KL={json.dumps(KLABEL)},QL={json.dumps(QLABEL)};{JS}</script></body></html>"""
+</div><script>const DATA={json.dumps(out, ensure_ascii=False)},KL={json.dumps(KLABEL)},QL={json.dumps(QLABEL)},QDEF={json.dumps(QUESTIONS, ensure_ascii=False)},EXF={json.dumps(EX["fields"], ensure_ascii=False)},EXK={json.dumps(EX["kind_options"], ensure_ascii=False)};{JS}</script></body></html>"""
 
 open(os.path.join(HERE, "board.html"), "w").write(page)
 print(f"board.html: {len(page)//1024} KB, {len(out)} claims, {n_ruled} ruled, {n_doubt} with doubts, {n_flag} flagged")
