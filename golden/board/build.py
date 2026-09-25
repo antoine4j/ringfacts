@@ -203,11 +203,11 @@ function optionTables(c){
     const mean=k=>{const v=(a.readers||[]).map(r=>r[k]??0); return v.length?v.reduce((x,y)=>x+y,0)/v.length:0;};
     names.sort((x,y)=>mean(y)-mean(x));
     parts.push(`<div class="q"><span class="qn">${esc(QL[q])}</span> <span class="qi">${esc(def.instructions||"")}</span></div>
-      <table class="opts">${names.map(k=>`<tr class="${k===a.choice?"pick":""}"><td class="name"><span class="bar" style="width:${Math.round(mean(k)*60)}px"></span>${esc(human(k))}</td>
+      <table class="opts"><tr><td class="name" style="color:var(--dim)">option</td><td class="p">mean</td>${(a.readers||[]).map((r,i)=>`<td class="p" title="pass ${16+i}: the same questions, option order ${["original","reversed","shuffled"][i]||i+1}">reader ${i+1}</td>`).join("")}<td style="color:var(--dim)">what the option said</td></tr>${names.map(k=>`<tr class="${k===a.choice?"pick":""}"><td class="name"><span class="bar" style="width:${Math.round(mean(k)*60)}px"></span>${esc(human(k))}</td>
         <td class="p" title="mean of the readers">${pct(mean(k))}</td>${(a.readers||[]).map(r=>`<td class="p" title="one reader">${pct(r[k]??0)}</td>`).join("")}
         <td>${esc(def.options[k]||"(not in the question as asked)")}</td></tr>`).join("")}</table>`);
   }
-  return `<details class="more"><summary>classifier · every option, three readers' percentages</summary>${parts.join("")}</details>`;
+  return `<details class="more"><summary>classifier · every option; mean, then the three readers (one model, three option orders)</summary>${parts.join("")}</details>`;
 }
 function extractorTables(c){
   const e=c.ex, e2=c.ex2||{};
