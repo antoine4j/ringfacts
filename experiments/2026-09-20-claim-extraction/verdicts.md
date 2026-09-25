@@ -479,3 +479,34 @@ Demetrius Johnson", "Conversation with Demetrious Johnson". Same on both
 runs. Six spellings of one occasion. Whether a matcher joins "MightyCast
 podcast" to "Interview with Demetrious Johnson" without being told they are
 the same thing is an open test for the matching stage.
+
+## 2026-09-25 — story-035 (#273, #283): correct
+
+Anton, by voice: *"035 is correct. Again, extracts are worded slightly
+differently, but I can clearly see that the source is the same, Green Light
+podcast."*
+
+## 2026-09-25 — story-033 (#256, #269, #287): correct
+
+## 2026-09-25 — story-022 (#203, #208, #298, #300, #301, #320, #321, #322): correct
+
+Anton, by voice: *"022 is genuinely interesting. Almost all of the extracts
+are different — these are completely different quotes or facts from the
+interview. Even I myself couldn't find a full version of that interview, or a
+recorded video version. And it's all published by the same outlet that
+reportedly took the interview. So if that's true, it's interesting how they
+reaped that interview across several articles. I would much rather love to
+see that one interview as a single article or video. And I applaud Fable
+that it was able to piece it into one story. I'm curious how — did Fable
+decide to piece it into one story based on the source and the date range, or
+is there anything in the text itself that points to the fact that these are
+excerpts from the same interview?"*
+
+Fable's own stored reason (pass 1, confidence medium): *"All eight are Q&A
+excerpts credited to the same NV journalist and cross-reference each other,
+so I treated them as one interview, but they span three publication dates
+and could be more than one sitting."* Pass 2 kept it with a split candidate
+noted (UFC topics on Aug 21 vs biography on Aug 22 might be two sittings) and
+two pair rulings of "cannot tell". Eight pieces, one story, one interview —
+the digest's primary-source rule (story-090) applies: link the interview
+once, not eight write-ups.
