@@ -4,8 +4,26 @@
     {
       "name": "golden-board",
       "runtimeExecutable": "python3",
-      "runtimeArgs": ["-m", "http.server", "8791", "--directory", "golden/board"],
+      "runtimeArgs": [
+        "-m",
+        "http.server",
+        "8791",
+        "--directory",
+        "golden/board"
+      ],
       "port": 8791
+    },
+    {
+      "name": "answers-report",
+      "runtimeExecutable": "python3",
+      "runtimeArgs": [
+        "-m",
+        "http.server",
+        "8792",
+        "--directory",
+        "experiments/2026-09-25-answers-to-buckets"
+      ],
+      "port": 8792
     }
   ]
 }

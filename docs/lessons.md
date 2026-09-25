@@ -213,6 +213,31 @@ Rules for adding to it:
   is readable (the outlet's own framing, "нагадаємо"); "has the group been
   told" is not, and only dedup can answer it.
 
+### Merging "how firm is it" into the news-kind question makes any mention of a booking a booking
+`harness` · `measured` · *FB 2026-09-25*
+- **Evidence:** a v2 question set folded sourcing into kind (booking official /
+  reported / rumoured). On 300 golden articles the model answered a booking
+  option for interviews that merely mention the booked fight: ten articles
+  Anton graded 2 composed to bucket 1, accuracy on his 154 graded rows fell
+  from 76% (six old questions) to 74%. Requiring in the *rule* that nobody is
+  quoted, or the promotion speaks, or the act is fight-week coverage, took the
+  same answers to 84% (`experiments/2026-09-25-answers-to-buckets/REPORT.html`).
+- **Does not say:** that the merge is wrong; the firmness answers themselves
+  were fine. It says the rule must ask who said it before it calls an event.
+
+### "Has a follower already heard this" is not a question one article can answer
+`general` · `measured` · *FB 2026-09-25*
+- **Evidence:** the old `novelty` question's "restates known facts" option fired
+  on nine of the 34 graded articles Anton called bucket 2: fresh quotes
+  (Makhachev on Topuria three times, Pimblett) that read as old to a model
+  with no memory. Its other half, "nothing about him / filler", was bucket 3 in
+  23 of 24. A `depth` question that asks only how much *this* text says about
+  him keeps the useful half. Of the six old questions, `sourcing` decided the
+  bucket for 35 articles in 300 and `whose_judgement` for none; the escape
+  hatch was chosen once in 1,800 answers.
+- **Does not say:** that novelty is unimportant, only that it belongs to the
+  claim store, which has the memory, not to the reader of one article.
+
 ### A rescue lane needs a condition that can fail — "about him", tested by function
 `general` · `observed` · **found independently by both** · *FB 2026-09-21; RF-L19, D3*
 - **Evidence (RF):** a rule rescuing dismissed items when a real event was
@@ -392,10 +417,24 @@ Rules for adding to it:
   of the same fighter, however old — and that is a design question, not a
   finding.
 
-### Structured fields agree on same-story pairs, but also on different ones
-`corpus` · `observed` · *FB 2026-09-21*
-- actor 98% vs 36%; event 67% vs 43%; date 86% vs 63%, sparsely filled. Never
-  scored as a dedup.
+### Structured fields split into perfect-but-rare joins and broad-but-leaky filters
+`corpus` · `measured` · *FB 2026-09-21, rescored on the v3 ruler 2026-09-25*
+- **Evidence:** 6,542 same-fighter pairs within 3 days, 745 inside one golden
+  claim. Same speaker + same host/interviewer name: precision 100%, recall 12%.
+  Shared verbatim key quote: 100% / 10%. Identical free-text occasion: 93% /
+  25%. Same kind + same actor: recall 84% but fires on 49% of different-claim
+  pairs. Bout + occasion type: recall 61%, and it merges a fight week's
+  columns, previews and predictions, which the ruler keeps apart
+  (`experiments/2026-09-25-answers-to-buckets/scores-B.json`).
+- **A person's name is the stable key, a programme's name is not.** Inside the
+  47 multi-article claims, speaker is one value in 39, the occasion's host or
+  interviewer in 35 (where filled), the free-text occasion in 4 (one podcast
+  came back under six names), the occasion *type* in 24 (the same sitting is
+  "podcast" to four outlets and "interview" to two).
+- **Does not say:** that any field decides membership; the host field was
+  filled on 63 of 300 articles, so its recall is a prompt problem before it
+  is a data problem. Would overturn it: a matcher on fields alone reaching
+  the reader's precision at above 50% recall.
 
 ### A label can change while the content does not
 `general` · `measured` · *RF-L20, D2 — no FB counterpart yet*

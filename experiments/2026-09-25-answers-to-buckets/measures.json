@@ -1,0 +1,1843 @@
+{
+ "ground_truth": {
+  "golden_articles_with_anton_bucket": 154,
+  "by_source": {
+   "anton-confirmed": 145,
+   "anton": 5,
+   "anton-words": 4
+  },
+  "bucket_dist": {
+   "2": 70,
+   "3": 72,
+   "1": 12
+  },
+  "reason_dist": {
+   "dup": 78,
+   "old": 1,
+   "fine": 13,
+   "junk": 54,
+   "missed": 8
+  }
+ },
+ "current_mapping": {
+  "recomputed_vs_golden_bucket_mismatch": 7,
+  "dist_recomputed": {
+   "2": 128,
+   "3": 143,
+   "1": 29
+  },
+  "dist_golden_file": {
+   "2": 133,
+   "3": 140,
+   "1": 27
+  }
+ },
+ "current_vs_anton": {
+  "n": 154,
+  "accuracy": 0.76,
+  "accuracy_2v3": 0.803,
+  "matrix": {
+   "anton1->rules1": 3,
+   "anton1->rules2": 8,
+   "anton1->rules3": 1,
+   "anton2->rules1": 2,
+   "anton2->rules2": 52,
+   "anton2->rules3": 16,
+   "anton3->rules1": 1,
+   "anton3->rules2": 9,
+   "anton3->rules3": 62
+  }
+ },
+ "golden_file_vs_anton": {
+  "n": 154,
+  "accuracy": 0.766,
+  "accuracy_2v3": 0.81,
+  "matrix": {
+   "anton1->rules1": 3,
+   "anton1->rules2": 8,
+   "anton1->rules3": 1,
+   "anton2->rules1": 1,
+   "anton2->rules2": 54,
+   "anton2->rules3": 15,
+   "anton3->rules1": 1,
+   "anton3->rules2": 10,
+   "anton3->rules3": 61
+  }
+ },
+ "current_vs_anton_errors": [
+  {
+   "id": "6",
+   "anton": 3,
+   "rules": 2,
+   "why": "assessing_him by his_camp",
+   "reason": "junk",
+   "kind": "about_someone_else",
+   "role": "background",
+   "does": "assessing_him",
+   "who": "his_camp",
+   "nov": "new_and_substantial",
+   "title": "“He’s the Boss”: Justin Gaethje’s Manager Confirms UFC Champ Isn’t Retiring, but",
+   "note": "as graded"
+  },
+  {
+   "id": "10",
+   "anton": 3,
+   "rules": 2,
+   "why": "calling_him_out by an_opponent_or_their_camp",
+   "reason": "junk",
+   "kind": "new_remark",
+   "role": "the_one_being_talked_about",
+   "does": "calling_him_out",
+   "who": "an_opponent_or_their_camp",
+   "nov": "new_and_substantial",
+   "title": "Manager believes Usman Nurmagomedov walks through UFC lightweight contenders, wi",
+   "note": "as graded"
+  },
+  {
+   "id": "44",
+   "anton": 2,
+   "rules": 1,
+   "why": "result + reported",
+   "reason": "fine",
+   "kind": "new_remark",
+   "role": "the_subject",
+   "does": "he_gives_his_view",
+   "who": "an_opponent_or_their_camp",
+   "nov": "new_and_substantial",
+   "title": "Ilia Topuria releases first statement since UFC White House defeat - Yahoo Sport",
+   "note": "as graded"
+  },
+  {
+   "id": "138",
+   "anton": 2,
+   "rules": 3,
+   "why": "nothing new: restates_known_facts",
+   "reason": "dup",
+   "kind": "new_remark",
+   "role": "the_one_being_talked_about",
+   "does": "assessing_him",
+   "who": "the_champion_or_a_top_authority",
+   "nov": "restates_known_facts",
+   "title": "Makhachev, sobre Topuria: \"Si se centra, puede ser campeón otra vez\" - MARCA",
+   "note": "dup of #121 (story ruled at #121)"
+  },
+  {
+   "id": "144",
+   "anton": 2,
+   "rules": 3,
+   "why": "nothing new: restates_known_facts",
+   "reason": "dup",
+   "kind": "new_remark",
+   "role": "the_one_being_talked_about",
+   "does": "assessing_him",
+   "who": "the_champion_or_a_top_authority",
+   "nov": "restates_known_facts",
+   "title": "Islam Makhachev questions Ilia Topuria celebrating night before UFC White House ",
+   "note": "dup of #121 — same interview, the celebration jab (reversing my earlier word that it was unrelated)"
+  },
+  {
+   "id": "170",
+   "anton": 2,
+   "rules": 3,
+   "why": "nothing new: restates_known_facts",
+   "reason": "dup",
+   "kind": "new_remark",
+   "role": "the_one_being_talked_about",
+   "does": "assessing_him",
+   "who": "the_champion_or_a_top_authority",
+   "nov": "restates_known_facts",
+   "title": "Islam Makhachev hopes Ilia Topuria rebounds from Justin Gaethje loss - MMA Junki",
+   "note": "dup of #121 (story ruled at #121)"
+  },
+  {
+   "id": "228",
+   "anton": 2,
+   "rules": 1,
+   "why": "negotiation + reported",
+   "reason": "dup",
+   "kind": "new_remark",
+   "role": "the_one_being_talked_about",
+   "does": "he_gives_his_view",
+   "who": "an_opponent_or_their_camp",
+   "nov": "new_and_substantial",
+   "title": "Islam Makhachev aceptó pelear con Ilia Topuria en el UFC Freedom 250: \"Me llamar",
+   "note": "as graded"
+  },
+  {
+   "id": "247",
+   "anton": 3,
+   "rules": 2,
+   "why": "assessing_him by a_pundit_or_commentator",
+   "reason": "junk",
+   "kind": "analysis",
+   "role": "the_one_being_talked_about",
+   "does": "assessing_him",
+   "who": "a_pundit_or_commentator",
+   "nov": "new_and_substantial",
+   "title": "Ian Machado Garry warned losing next fight could be ‘the end’ as UFC predicted t",
+   "note": "as graded"
+  },
+  {
+   "id": "283",
+   "anton": 2,
+   "rules": 3,
+   "why": "nothing new: restates_known_facts",
+   "reason": "dup",
+   "kind": "new_remark",
+   "role": "the_one_being_talked_about",
+   "does": "calling_him_out",
+   "who": "an_opponent_or_their_camp",
+   "nov": "restates_known_facts",
+   "title": "Paddy Pimblett: ‘I’m gonna absolutely terrorize’ Ilia Topuria, Arman Tsarukyan i",
+   "note": "as graded"
+  },
+  {
+   "id": "305",
+   "anton": 3,
+   "rules": 2,
+   "why": "he_tells_his_own_story by himself",
+   "reason": "junk",
+   "kind": "new_remark",
+   "role": "the_subject",
+   "does": "he_tells_his_own_story",
+   "who": "himself",
+   "nov": "new_and_substantial",
+   "title": "El barrio de Ilia Topuria, en Alicante y alejado de la costa: \"Todo lo que tengo",
+   "note": "as graded"
+  },
+  {
+   "id": "327",
+   "anton": 2,
+   "rules": 3,
+   "why": "assessing_him by another_fighter",
+   "reason": "fine",
+   "kind": "new_remark",
+   "role": "the_one_being_talked_about",
+   "does": "assessing_him",
+   "who": "another_fighter",
+   "nov": "new_and_substantial",
+   "title": "Merab Dvalishvili donne des nouvelles d’Ilia Topuria : « Il va revenir… » - Actu",
+   "note": "as graded"
+  },
+  {
+   "id": "339",
+   "anton": 3,
+   "rules": 2,
+   "why": "assessing_him by an_opponent_or_their_camp",
+   "reason": "dup",
+   "kind": "new_remark",
+   "role": "the_one_being_talked_about",
+   "does": "assessing_him",
+   "who": "an_opponent_or_their_camp",
+   "nov": "new_and_substantial",
+   "title": "Un ex rival de Usman cree que Topuria es el único que puede vencerle en UFC: «Co",
+   "note": "as graded"
+  },
+  {
+   "id": "349",
+   "anton": 2,
+   "rules": 3,
+   "why": "assessing_him by another_fighter",
+   "reason": "dup",
+   "kind": "new_remark",
+   "role": "the_one_being_talked_about",
+   "does": "assessing_him",
+   "who": "another_fighter",
+   "nov": "new_and_substantial",
+   "title": "Merab actualiza el estado de Topuria: \"Está bien y con una actitud muy positiva\"",
+   "note": "as graded"
+  },
+  {
+   "id": "368",
+   "anton": 2,
+   "rules": 3,
+   "why": "assessing_him by another_fighter",
+   "reason": "dup",
+   "kind": "new_remark",
+   "role": "the_subject",
+   "does": "assessing_him",
+   "who": "another_fighter",
+   "nov": "new_and_substantial",
+   "title": "\"Topuria está bien, viviendo la vida y cuando vuelva les ganará a todos\" - Estad",
+   "note": "as graded"
+  },
+  {
+   "id": "373",
+   "anton": 3,
+   "rules": 2,
+   "why": "he_gives_his_view by himself",
+   "reason": "junk",
+   "kind": "new_remark",
+   "role": "the_subject",
+   "does": "he_gives_his_view",
+   "who": "himself",
+   "nov": "new_and_substantial",
+   "title": "Ilia Topuria Discusses Why He Never Rooted for Mighty Mouse - MMA Sucka",
+   "note": "as graded"
+  },
+  {
+   "id": "380",
+   "anton": 3,
+   "rules": 2,
+   "why": "he_tells_his_own_story by himself",
+   "reason": "junk",
+   "kind": "new_remark",
+   "role": "the_subject",
+   "does": "he_tells_his_own_story",
+   "who": "himself",
+   "nov": "new_and_substantial",
+   "title": "Ilia Topuria on One Lesson Learned From His Divorce - MMA Sucka",
+   "note": "as graded"
+  },
+  {
+   "id": "492",
+   "anton": 3,
+   "rules": 1,
+   "why": "injury + reported",
+   "reason": "dup",
+   "kind": "new_remark",
+   "role": "the_one_being_talked_about",
+   "does": "he_tells_his_own_story",
+   "who": "himself",
+   "nov": "new_and_substantial",
+   "title": "Justin Gaethje Still Can’t Punch After Fighting Ilia Topuria - Yahoo Sports",
+   "note": "as graded"
+  },
+  {
+   "id": "497",
+   "anton": 2,
+   "rules": 3,
+   "why": "nothing new: restates_known_facts",
+   "reason": "dup",
+   "kind": "new_remark",
+   "role": "the_subject",
+   "does": "he_tells_his_own_story",
+   "who": "himself",
+   "nov": "restates_known_facts",
+   "title": "Ilia Topuria, luchador de la UFC: \"Siempre fui un niño al que no le gustaban las",
+   "note": "as graded"
+  },
+  {
+   "id": "521",
+   "anton": 2,
+   "rules": 3,
+   "why": "nothing new: filler_no_information",
+   "reason": "missed",
+   "kind": "no_text",
+   "role": "the_subject",
+   "does": "covering_his_event",
+   "who": "himself",
+   "nov": "filler_no_information",
+   "title": "Daniil Donchenko: \"I Have Everything And Even More\" | UFC Paris - ufc.com",
+   "note": "as graded — delegated to Claude (2026-09-05): UFC.com interview with Donchenko before Paris; him on himself."
+  },
+  {
+   "id": "529",
+   "anton": 3,
+   "rules": 2,
+   "why": "he_gives_his_view by himself",
+   "reason": "junk",
+   "kind": "new_remark",
+   "role": "the_one_being_talked_about",
+   "does": "he_gives_his_view",
+   "who": "himself",
+   "nov": "new_and_substantial",
+   "title": "Punahele Soriano | Happiest In The Background - UFC.com",
+   "note": "as graded"
+  },
+  {
+   "id": "532",
+   "anton": 3,
+   "rules": 2,
+   "why": "he_gives_his_view by himself",
+   "reason": "junk",
+   "kind": "new_remark",
+   "role": "the_one_being_talked_about",
+   "does": "he_gives_his_view",
+   "who": "himself",
+   "nov": "new_and_substantial",
+   "title": "Punahele Soriano | Happiest In The Background - UFC.com",
+   "note": "as graded"
+  },
+  {
+   "id": "592",
+   "anton": 2,
+   "rules": 3,
+   "why": "assessing_him by a_pundit_or_commentator",
+   "reason": "dup",
+   "kind": "new_remark",
+   "role": "the_subject",
+   "does": "assessing_him",
+   "who": "a_pundit_or_commentator",
+   "nov": "new_and_substantial",
+   "title": "Novedades sobre Ilia Topuria: el excampeón de UFC está listo para reaparecer púb",
+   "note": "as graded"
+  },
+  {
+   "id": "594",
+   "anton": 2,
+   "rules": 3,
+   "why": "nothing new: restates_known_facts",
+   "reason": "fine",
+   "kind": "analysis",
+   "role": "one_of_several_subjects",
+   "does": "assessing_him",
+   "who": "the_article_author",
+   "nov": "restates_known_facts",
+   "title": "Danil Donchenko vs. Punahele Soriano prediction, odds, pick for UFC Paris - Clut",
+   "note": "as graded"
+  },
+  {
+   "id": "601",
+   "anton": 1,
+   "rules": 2,
+   "why": "covering_his_event by no_one_judges_him",
+   "reason": "missed",
+   "kind": "new_event",
+   "role": "the_subject",
+   "does": "covering_his_event",
+   "who": "no_one_judges_him",
+   "nov": "small_new_detail",
+   "title": "Данило Донченко та Пунахеле Соріано показали однакову вагу перед боєм на UFC Fig",
+   "note": "as graded — delegated to Claude (2026-09-05): Both made weight: a weigh-in is a career event; one of the four weigh-in i"
+  },
+  {
+   "id": "603",
+   "anton": 2,
+   "rules": 3,
+   "why": "nothing new: restates_known_facts",
+   "reason": "dup",
+   "kind": "analysis",
+   "role": "one_of_several_subjects",
+   "does": "assessing_him",
+   "who": "the_article_author",
+   "nov": "restates_known_facts",
+   "title": "Daniil Donchenko - Punahile Soriano: betting tip (cf 2.90) for the UFC fight on ",
+   "note": "as graded"
+  },
+  {
+   "id": "605",
+   "anton": 2,
+   "rules": 3,
+   "why": "nothing new: restates_known_facts",
+   "reason": "dup",
+   "kind": "new_event",
+   "role": "one_of_several_subjects",
+   "does": "covering_his_event",
+   "who": "no_one_judges_him",
+   "nov": "restates_known_facts",
+   "title": "5 вересня українець Данило Донченко битиметься проти Соріано на UFC у Парижі - 1",
+   "note": "as graded"
+  },
+  {
+   "id": "606",
+   "anton": 2,
+   "rules": 3,
+   "why": "assessing_him by another_fighter",
+   "reason": "dup",
+   "kind": "new_remark",
+   "role": "the_one_being_talked_about",
+   "does": "assessing_him",
+   "who": "another_fighter",
+   "nov": "new_and_substantial",
+   "title": "Joaquín Gomis, campeón de España de judo: \"No conozco a nadie con el nivel de Il",
+   "note": "dup of #512 (story ruled at #512)"
+  },
+  {
+   "id": "608",
+   "anton": 2,
+   "rules": 3,
+   "why": "nothing new: restates_known_facts",
+   "reason": "dup",
+   "kind": "analysis",
+   "role": "one_of_several_subjects",
+   "does": "assessing_him",
+   "who": "the_article_author",
+   "nov": "restates_known_facts",
+   "title": "UFC Fight Night: Daniil Donchenko vs Punahele Soriano Preview & Prediction - The",
+   "note": "as graded"
+  },
+  {
+   "id": "625",
+   "anton": 1,
+   "rules": 2,
+   "why": "covering_his_event by no_one_judges_him",
+   "reason": "dup",
+   "kind": "new_event",
+   "role": "the_subject",
+   "does": "covering_his_event",
+   "who": "no_one_judges_him",
+   "nov": "small_new_detail",
+   "title": "Донченко і Соріано зійшлися на вагах: обом по 77,11 кг - Duflu -",
+   "note": "dup of #601 (story ruled at #601)"
+  },
+  {
+   "id": "632",
+   "anton": 1,
+   "rules": 2,
+   "why": "he_tells_his_own_story by himself",
+   "reason": "dup",
+   "kind": "new_remark",
+   "role": "the_subject",
+   "does": "he_tells_his_own_story",
+   "who": "himself",
+   "nov": "new_and_substantial",
+   "title": "La emotiva carta de Ilia Topuria a su hijo Hugo para anunciar su vuelta a la UFC",
+   "note": "as graded"
+  },
+  {
+   "id": "636",
+   "anton": 1,
+   "rules": 2,
+   "why": "he_tells_his_own_story by himself",
+   "reason": "dup",
+   "kind": "new_remark",
+   "role": "the_subject",
+   "does": "he_tells_his_own_story",
+   "who": "himself",
+   "nov": "new_and_substantial",
+   "title": "Ilia Topuria rompe el silencio tras su derrota y dedica un emotivo mensaje a su ",
+   "note": "as graded"
+  },
+  {
+   "id": "647",
+   "anton": 1,
+   "rules": 3,
+   "why": "nothing new: filler_no_information",
+   "reason": "dup",
+   "kind": "new_remark",
+   "role": "the_subject",
+   "does": "he_tells_his_own_story",
+   "who": "himself",
+   "nov": "filler_no_information",
+   "title": "Ilia Topuria breaks silence 'after going through that hell' with Justin Gaethje ",
+   "note": "as graded"
+  },
+  {
+   "id": "651",
+   "anton": 1,
+   "rules": 2,
+   "why": "he_tells_his_own_story by himself",
+   "reason": "dup",
+   "kind": "new_remark",
+   "role": "the_subject",
+   "does": "he_tells_his_own_story",
+   "who": "himself",
+   "nov": "new_and_substantial",
+   "title": "Topuria rompe su silencio casi tres meses después de perder el cinturón de peso ",
+   "note": "as graded"
+  },
+  {
+   "id": "655",
+   "anton": 2,
+   "rules": 3,
+   "why": "nothing new: nothing_about_him",
+   "reason": "dup",
+   "kind": "no_text",
+   "role": "one_of_several_subjects",
+   "does": "assessing_him",
+   "who": "no_one_judges_him",
+   "nov": "nothing_about_him",
+   "title": "UFC Paris: Daniil Donchenko vs. Punahele Soriano Predictions & Odds - betmgm.com",
+   "note": "as graded"
+  },
+  {
+   "id": "659",
+   "anton": 1,
+   "rules": 2,
+   "why": "he_tells_his_own_story by himself",
+   "reason": "dup",
+   "kind": "new_remark",
+   "role": "the_subject",
+   "does": "he_tells_his_own_story",
+   "who": "himself",
+   "nov": "new_and_substantial",
+   "title": "Topuria rompe su silencio tras la derrota: «Después de visitar ese infierno soy ",
+   "note": "as graded"
+  },
+  {
+   "id": "666",
+   "anton": 1,
+   "rules": 2,
+   "why": "he_tells_his_own_story by himself",
+   "reason": "dup",
+   "kind": "new_remark",
+   "role": "the_subject",
+   "does": "he_tells_his_own_story",
+   "who": "himself",
+   "nov": "new_and_substantial",
+   "title": "Ilia Topuria breaks silence in 1st post since aftermath of UFC White House loss ",
+   "note": "as graded"
+  },
+  {
+   "id": "675",
+   "anton": 1,
+   "rules": 2,
+   "why": "he_tells_his_own_story by himself",
+   "reason": "dup",
+   "kind": "new_remark",
+   "role": "the_subject",
+   "does": "he_tells_his_own_story",
+   "who": "himself",
+   "nov": "new_and_substantial",
+   "title": "Ilia Topuria Sends Emotional Message to Son After First Career Loss - Yardbarker",
+   "note": "as graded"
+  }
+ ],
+ "questions": {
+  "options": {
+   "role": [
+    "a_bystander",
+    "background",
+    "mentioned_only",
+    "not_in_the_article_body",
+    "not_in_this_list",
+    "one_of_several_subjects",
+    "the_one_being_talked_about",
+    "the_subject"
+   ],
+   "whose_judgement": [
+    "a_pundit_or_commentator",
+    "an_opponent_or_their_camp",
+    "another_fighter",
+    "himself",
+    "his_camp",
+    "no_one_judges_him",
+    "not_in_this_list",
+    "the_article_author",
+    "the_champion_or_a_top_authority"
+   ],
+   "what_is_done": [
+    "assessing_him",
+    "calling_him_out",
+    "covering_his_event",
+    "defending_him",
+    "he_fought",
+    "he_gives_his_view",
+    "he_tells_his_own_story",
+    "naming_him_in_passing",
+    "not_in_this_list",
+    "nothing_of_the_sort",
+    "steering_him_elsewhere"
+   ],
+   "news_kind": [
+    "announcement",
+    "injury",
+    "lifestyle",
+    "negotiation",
+    "no_news_about_him",
+    "not_in_this_list",
+    "other_career_fact",
+    "prediction",
+    "preview",
+    "quote",
+    "result"
+   ],
+   "sourcing": [
+    "no_factual_claim",
+    "not_in_this_list",
+    "official",
+    "only_a_quote_no_event",
+    "reported",
+    "rumored"
+   ],
+   "novelty": [
+    "filler_no_information",
+    "new_and_substantial",
+    "not_in_this_list",
+    "nothing_about_him",
+    "restates_known_facts",
+    "small_new_detail"
+   ]
+  },
+  "usage": {
+   "role": {
+    "the_one_being_talked_about": 104,
+    "mentioned_only": 20,
+    "background": 20,
+    "the_subject": 124,
+    "not_in_the_article_body": 12,
+    "one_of_several_subjects": 20
+   },
+   "whose_judgement": {
+    "another_fighter": 33,
+    "no_one_judges_him": 22,
+    "his_camp": 18,
+    "an_opponent_or_their_camp": 48,
+    "the_article_author": 52,
+    "himself": 71,
+    "a_pundit_or_commentator": 24,
+    "the_champion_or_a_top_authority": 32
+   },
+   "what_is_done": {
+    "assessing_him": 106,
+    "naming_him_in_passing": 42,
+    "calling_him_out": 22,
+    "covering_his_event": 19,
+    "not_in_this_list": 1,
+    "he_tells_his_own_story": 42,
+    "he_gives_his_view": 14,
+    "defending_him": 10,
+    "he_fought": 36,
+    "steering_him_elsewhere": 8
+   },
+   "news_kind": {
+    "quote": 160,
+    "announcement": 6,
+    "lifestyle": 10,
+    "injury": 5,
+    "result": 35,
+    "no_news_about_him": 15,
+    "preview": 25,
+    "prediction": 33,
+    "other_career_fact": 7,
+    "negotiation": 4
+   },
+   "sourcing": {
+    "only_a_quote_no_event": 168,
+    "no_factual_claim": 34,
+    "reported": 54,
+    "rumored": 16,
+    "official": 28
+   },
+   "novelty": {
+    "new_and_substantial": 173,
+    "filler_no_information": 14,
+    "nothing_about_him": 32,
+    "small_new_detail": 19,
+    "restates_known_facts": 62
+   }
+  },
+  "reader_agreement": {
+   "role": {
+    "2": 25,
+    "3": 272,
+    "1": 3
+   },
+   "whose_judgement": {
+    "3": 266,
+    "2": 34
+   },
+   "what_is_done": {
+    "3": 258,
+    "2": 42
+   },
+   "news_kind": {
+    "3": 270,
+    "2": 29,
+    "1": 1
+   },
+   "sourcing": {
+    "3": 255,
+    "2": 44,
+    "1": 1
+   },
+   "novelty": {
+    "3": 266,
+    "2": 32,
+    "1": 2
+   }
+  },
+  "mean_confidence": {
+   "role": 0.806,
+   "whose_judgement": 0.706,
+   "what_is_done": 0.737,
+   "news_kind": 0.777,
+   "sourcing": 0.646,
+   "novelty": 0.568
+  },
+  "bucket_sensitivity": {
+   "role": {
+    "articles_whose_bucket_depends_on_it": 160,
+    "top_flips": [
+     [
+      "the_subject->mentioned_only: 2->3",
+      81
+     ],
+     [
+      "the_subject->not_in_the_article_body: 2->3",
+      81
+     ],
+     [
+      "the_one_being_talked_about->mentioned_only: 2->3",
+      44
+     ],
+     [
+      "the_one_being_talked_about->not_in_the_article_body: 2->3",
+      44
+     ],
+     [
+      "the_subject->a_bystander: 1->2",
+      25
+     ],
+     [
+      "the_subject->mentioned_only: 1->3",
+      25
+     ]
+    ]
+   },
+   "whose_judgement": {
+    "articles_whose_bucket_depends_on_it": 100,
+    "top_flips": [
+     [
+      "himself->a_pundit_or_commentator: 2->3",
+      26
+     ],
+     [
+      "himself->another_fighter: 2->3",
+      26
+     ],
+     [
+      "himself->no_one_judges_him: 2->3",
+      26
+     ],
+     [
+      "himself->not_in_this_list: 2->3",
+      26
+     ],
+     [
+      "himself->the_article_author: 2->3",
+      26
+     ],
+     [
+      "an_opponent_or_their_camp->a_pundit_or_commentator: 2->3",
+      22
+     ]
+    ]
+   },
+   "what_is_done": {
+    "articles_whose_bucket_depends_on_it": 162,
+    "top_flips": [
+     [
+      "assessing_him->naming_him_in_passing: 2->3",
+      48
+     ],
+     [
+      "assessing_him->nothing_of_the_sort: 2->3",
+      48
+     ],
+     [
+      "he_tells_his_own_story->naming_him_in_passing: 2->3",
+      34
+     ],
+     [
+      "he_tells_his_own_story->nothing_of_the_sort: 2->3",
+      34
+     ],
+     [
+      "he_fought->naming_him_in_passing: 1->3",
+      23
+     ],
+     [
+      "he_fought->nothing_of_the_sort: 1->3",
+      23
+     ]
+    ]
+   },
+   "news_kind": {
+    "articles_whose_bucket_depends_on_it": 158,
+    "top_flips": [
+     [
+      "quote->no_news_about_him: 2->3",
+      92
+     ],
+     [
+      "result->lifestyle: 1->2",
+      24
+     ],
+     [
+      "result->no_news_about_him: 1->3",
+      24
+     ],
+     [
+      "result->not_in_this_list: 1->2",
+      24
+     ],
+     [
+      "result->other_career_fact: 1->2",
+      24
+     ],
+     [
+      "result->prediction: 1->2",
+      24
+     ]
+    ]
+   },
+   "sourcing": {
+    "articles_whose_bucket_depends_on_it": 35,
+    "top_flips": [
+     [
+      "reported->no_factual_claim: 1->2",
+      25
+     ],
+     [
+      "reported->not_in_this_list: 1->2",
+      25
+     ],
+     [
+      "reported->only_a_quote_no_event: 1->2",
+      25
+     ],
+     [
+      "reported->rumored: 1->2",
+      25
+     ],
+     [
+      "official->no_factual_claim: 1->2",
+      4
+     ],
+     [
+      "official->not_in_this_list: 1->2",
+      4
+     ]
+    ]
+   },
+   "novelty": {
+    "articles_whose_bucket_depends_on_it": 205,
+    "top_flips": [
+     [
+      "new_and_substantial->filler_no_information: 2->3",
+      116
+     ],
+     [
+      "new_and_substantial->nothing_about_him: 2->3",
+      116
+     ],
+     [
+      "new_and_substantial->restates_known_facts: 2->3",
+      116
+     ],
+     [
+      "restates_known_facts->not_in_this_list: 3->2",
+      39
+     ],
+     [
+      "restates_known_facts->small_new_detail: 3->2",
+      39
+     ],
+     [
+      "restates_known_facts->new_and_substantial: 3->2",
+      34
+     ]
+    ]
+   }
+  },
+  "options_no_rule_consults": {
+   "role": [
+    "a_bystander",
+    "not_in_this_list"
+   ],
+   "whose_judgement": [
+    "a_pundit_or_commentator",
+    "another_fighter",
+    "no_one_judges_him",
+    "not_in_this_list",
+    "the_article_author"
+   ],
+   "what_is_done": [
+    "covering_his_event",
+    "he_fought",
+    "not_in_this_list"
+   ],
+   "news_kind": [
+    "lifestyle",
+    "not_in_this_list",
+    "other_career_fact",
+    "prediction",
+    "preview",
+    "quote"
+   ],
+   "sourcing": [
+    "no_factual_claim",
+    "not_in_this_list",
+    "only_a_quote_no_event",
+    "rumored"
+   ],
+   "novelty": [
+    "not_in_this_list",
+    "small_new_detail"
+   ]
+  },
+  "nmi": {
+   "role~whose_judgement": 0.29,
+   "role~what_is_done": 0.33,
+   "role~news_kind": 0.26,
+   "role~sourcing": 0.27,
+   "role~novelty": 0.28,
+   "whose_judgement~what_is_done": 0.31,
+   "whose_judgement~news_kind": 0.28,
+   "whose_judgement~sourcing": 0.29,
+   "whose_judgement~novelty": 0.12,
+   "what_is_done~news_kind": 0.39,
+   "what_is_done~sourcing": 0.24,
+   "what_is_done~novelty": 0.24,
+   "news_kind~sourcing": 0.44,
+   "news_kind~novelty": 0.17,
+   "sourcing~novelty": 0.14
+  },
+  "single_question_power": {
+   "role": {
+    "best_single_question_accuracy": 0.708,
+    "per_option": {
+     "the_one_being_talked_about": {
+      "2": 38,
+      "3": 22
+     },
+     "mentioned_only": {
+      "3": 14
+     },
+     "background": {
+      "3": 16
+     },
+     "the_subject": {
+      "1": 12,
+      "3": 5,
+      "2": 26
+     },
+     "not_in_the_article_body": {
+      "3": 7
+     },
+     "one_of_several_subjects": {
+      "3": 8,
+      "2": 6
+     }
+    }
+   },
+   "whose_judgement": {
+    "best_single_question_accuracy": 0.578,
+    "per_option": {
+     "another_fighter": {
+      "2": 11,
+      "3": 11
+     },
+     "no_one_judges_him": {
+      "3": 8,
+      "1": 4,
+      "2": 2
+     },
+     "his_camp": {
+      "3": 3,
+      "2": 12
+     },
+     "an_opponent_or_their_camp": {
+      "3": 13,
+      "2": 17
+     },
+     "the_article_author": {
+      "1": 1,
+      "3": 14,
+      "2": 6
+     },
+     "himself": {
+      "3": 13,
+      "2": 16,
+      "1": 7
+     },
+     "a_pundit_or_commentator": {
+      "3": 7,
+      "2": 2
+     },
+     "the_champion_or_a_top_authority": {
+      "2": 4,
+      "3": 3
+     }
+    }
+   },
+   "what_is_done": {
+    "best_single_question_accuracy": 0.688,
+    "per_option": {
+     "assessing_him": {
+      "2": 36,
+      "3": 20
+     },
+     "naming_him_in_passing": {
+      "3": 31
+     },
+     "calling_him_out": {
+      "3": 4,
+      "2": 6
+     },
+     "covering_his_event": {
+      "1": 5,
+      "3": 2,
+      "2": 6
+     },
+     "not_in_this_list": {
+      "3": 1
+     },
+     "he_tells_his_own_story": {
+      "3": 6,
+      "2": 9,
+      "1": 7
+     },
+     "he_gives_his_view": {
+      "2": 4,
+      "3": 3
+     },
+     "defending_him": {
+      "2": 9,
+      "3": 1
+     },
+     "he_fought": {
+      "3": 1
+     },
+     "steering_him_elsewhere": {
+      "3": 3
+     }
+    }
+   },
+   "news_kind": {
+    "best_single_question_accuracy": 0.643,
+    "per_option": {
+     "quote": {
+      "2": 48,
+      "3": 28,
+      "1": 7
+     },
+     "announcement": {
+      "3": 1,
+      "1": 3,
+      "2": 1
+     },
+     "lifestyle": {
+      "3": 4,
+      "2": 2
+     },
+     "injury": {
+      "3": 2,
+      "2": 2
+     },
+     "result": {
+      "2": 1,
+      "3": 3
+     },
+     "no_news_about_him": {
+      "3": 10
+     },
+     "preview": {
+      "3": 6,
+      "2": 10,
+      "1": 2
+     },
+     "prediction": {
+      "3": 11,
+      "2": 5
+     },
+     "other_career_fact": {
+      "3": 7
+     },
+     "negotiation": {
+      "2": 1
+     }
+    }
+   },
+   "sourcing": {
+    "best_single_question_accuracy": 0.571,
+    "per_option": {
+     "only_a_quote_no_event": {
+      "2": 51,
+      "3": 40,
+      "1": 6
+     },
+     "no_factual_claim": {
+      "3": 19,
+      "2": 4
+     },
+     "reported": {
+      "1": 4,
+      "3": 9,
+      "2": 6
+     },
+     "rumored": {
+      "2": 3
+     },
+     "official": {
+      "2": 6,
+      "3": 4,
+      "1": 2
+     }
+    }
+   },
+   "novelty": {
+    "best_single_question_accuracy": 0.721,
+    "per_option": {
+     "new_and_substantial": {
+      "2": 56,
+      "3": 17,
+      "1": 9
+     },
+     "filler_no_information": {
+      "3": 5,
+      "2": 1,
+      "1": 1
+     },
+     "nothing_about_him": {
+      "3": 18,
+      "2": 1
+     },
+     "small_new_detail": {
+      "3": 7,
+      "1": 2,
+      "2": 3
+     },
+     "restates_known_facts": {
+      "2": 9,
+      "3": 25
+     }
+    }
+   }
+  },
+  "extractor_kind_vs_anton_bucket": {
+   "new_remark": {
+    "2": 48,
+    "3": 31,
+    "1": 7
+   },
+   "no_text": {
+    "3": 1,
+    "2": 2
+   },
+   "about_someone_else": {
+    "3": 22
+   },
+   "new_event": {
+    "1": 5,
+    "3": 5,
+    "2": 5
+   },
+   "reaction": {
+    "2": 9
+   },
+   "restatement": {
+    "3": 2
+   },
+   "analysis": {
+    "3": 11,
+    "2": 6
+   }
+  },
+  "extractor_kind_vs_classifier_news_kind": {
+   "about_someone_else": {
+    "quote": 8,
+    "lifestyle": 1,
+    "injury": 1,
+    "no_news_about_him": 13,
+    "preview": 1,
+    "other_career_fact": 3,
+    "result": 2,
+    "prediction": 2
+   },
+   "analysis": {
+    "prediction": 18,
+    "other_career_fact": 2,
+    "preview": 4
+   },
+   "new_event": {
+    "announcement": 5,
+    "quote": 1,
+    "preview": 15,
+    "result": 30,
+    "negotiation": 2,
+    "injury": 1
+   },
+   "new_remark": {
+    "quote": 140,
+    "result": 3,
+    "injury": 3,
+    "negotiation": 2,
+    "prediction": 12,
+    "lifestyle": 9,
+    "other_career_fact": 1,
+    "preview": 3
+   },
+   "no_text": {
+    "announcement": 1,
+    "no_news_about_him": 1,
+    "preview": 2,
+    "prediction": 1
+   },
+   "reaction": {
+    "quote": 11
+   },
+   "restatement": {
+    "no_news_about_him": 1,
+    "other_career_fact": 1
+   }
+  },
+  "extractor_kind_vs_rules_bucket": {
+   "about_someone_else": {
+    "2": 1,
+    "3": 30
+   },
+   "analysis": {
+    "3": 17,
+    "2": 7
+   },
+   "new_event": {
+    "1": 26,
+    "3": 17,
+    "2": 11
+   },
+   "new_remark": {
+    "2": 99,
+    "1": 3,
+    "3": 71
+   },
+   "no_text": {
+    "3": 5
+   },
+   "reaction": {
+    "2": 10,
+    "3": 1
+   },
+   "restatement": {
+    "3": 2
+   }
+  }
+ },
+ "pairs": {
+  "same_fighter_all": 21493,
+  "same_claim_all": 779,
+  "within_3_days": 6542,
+  "same_claim_within_3_days": 745,
+  "same_claim_beyond_3_days": 34,
+  "beyond_3_day_examples": [
+   [
+    "2",
+    "96",
+    4,
+    "claim-000"
+   ],
+   [
+    "4",
+    "96",
+    4,
+    "claim-000"
+   ],
+   [
+    "51",
+    "193",
+    6,
+    "claim-008"
+   ],
+   [
+    "55",
+    "193",
+    6,
+    "claim-008"
+   ],
+   [
+    "71",
+    "193",
+    5,
+    "claim-008"
+   ],
+   [
+    "84",
+    "193",
+    4,
+    "claim-008"
+   ],
+   [
+    "90",
+    "193",
+    4,
+    "claim-008"
+   ],
+   [
+    "97",
+    "193",
+    4,
+    "claim-008"
+   ],
+   [
+    "102",
+    "193",
+    4,
+    "claim-008"
+   ],
+   [
+    "138",
+    "244",
+    6,
+    "claim-014"
+   ],
+   [
+    "144",
+    "244",
+    6,
+    "claim-014"
+   ],
+   [
+    "148",
+    "244",
+    6,
+    "claim-014"
+   ]
+  ]
+ },
+ "grouping_signals_within_3_days": {
+  "ext.kind =": {
+   "fires_on_same_claim": 0.928,
+   "fires_on_different_claim": 0.495,
+   "precision_if_used_alone": 0.194,
+   "recall": 0.928
+  },
+  "ext.actor =": {
+   "fires_on_same_claim": 0.87,
+   "fires_on_different_claim": 0.216,
+   "precision_if_used_alone": 0.341,
+   "recall": 0.87
+  },
+  "ext.opponent =": {
+   "fires_on_same_claim": 0.401,
+   "fires_on_different_claim": 0.154,
+   "precision_if_used_alone": 0.251,
+   "recall": 0.401
+  },
+  "ext.event =": {
+   "fires_on_same_claim": 0.295,
+   "fires_on_different_claim": 0.132,
+   "precision_if_used_alone": 0.223,
+   "recall": 0.295
+  },
+  "ext.date =": {
+   "fires_on_same_claim": 0.192,
+   "fires_on_different_claim": 0.093,
+   "precision_if_used_alone": 0.21,
+   "recall": 0.192
+  },
+  "ext.occasion = (exact)": {
+   "fires_on_same_claim": 0.25,
+   "fires_on_different_claim": 0.003,
+   "precision_if_used_alone": 0.925,
+   "recall": 0.25
+  },
+  "ext.occasion words overlap ≥ 0.5": {
+   "fires_on_same_claim": 0.407,
+   "fires_on_different_claim": 0.051,
+   "precision_if_used_alone": 0.506,
+   "recall": 0.407
+  },
+  "ext.extract words overlap ≥ 0.5": {
+   "fires_on_same_claim": 0.478,
+   "fires_on_different_claim": 0.034,
+   "precision_if_used_alone": 0.644,
+   "recall": 0.478
+  },
+  "ext.kind = and actor =": {
+   "fires_on_same_claim": 0.838,
+   "fires_on_different_claim": 0.132,
+   "precision_if_used_alone": 0.449,
+   "recall": 0.838
+  },
+  "ext.actor = and (opponent = or event =)": {
+   "fires_on_same_claim": 0.483,
+   "fires_on_different_claim": 0.118,
+   "precision_if_used_alone": 0.345,
+   "recall": 0.483
+  },
+  "cls.news_kind =": {
+   "fires_on_same_claim": 0.87,
+   "fires_on_different_claim": 0.366,
+   "precision_if_used_alone": 0.234,
+   "recall": 0.87
+  },
+  "cls.role =": {
+   "fires_on_same_claim": 0.928,
+   "fires_on_different_claim": 0.366,
+   "precision_if_used_alone": 0.246,
+   "recall": 0.928
+  },
+  "cls.what_is_done =": {
+   "fires_on_same_claim": 0.897,
+   "fires_on_different_claim": 0.216,
+   "precision_if_used_alone": 0.348,
+   "recall": 0.897
+  },
+  "cls.whose_judgement =": {
+   "fires_on_same_claim": 0.672,
+   "fires_on_different_claim": 0.216,
+   "precision_if_used_alone": 0.285,
+   "recall": 0.672
+  },
+  "cls.bucket =": {
+   "fires_on_same_claim": 0.765,
+   "fires_on_different_claim": 0.389,
+   "precision_if_used_alone": 0.202,
+   "recall": 0.765
+  },
+  "same outlet": {
+   "fires_on_same_claim": 0.086,
+   "fires_on_different_claim": 0.05,
+   "precision_if_used_alone": 0.18,
+   "recall": 0.086
+  },
+  "same day": {
+   "fires_on_same_claim": 0.423,
+   "fires_on_different_claim": 0.179,
+   "precision_if_used_alone": 0.232,
+   "recall": 0.423
+  }
+ },
+ "within_claim_consistency": {
+  "ext.kind": {
+   "claims_with_one_value": 35,
+   "of": 47,
+   "claims_fully_filled": 47
+  },
+  "ext.actor": {
+   "claims_with_one_value": 40,
+   "of": 47,
+   "claims_fully_filled": 41
+  },
+  "ext.opponent": {
+   "claims_with_one_value": 29,
+   "of": 47,
+   "claims_fully_filled": 25
+  },
+  "ext.event": {
+   "claims_with_one_value": 35,
+   "of": 47,
+   "claims_fully_filled": 8
+  },
+  "ext.occasion": {
+   "claims_with_one_value": 4,
+   "of": 47,
+   "claims_fully_filled": 29
+  },
+  "ext.date": {
+   "claims_with_one_value": 29,
+   "of": 47,
+   "claims_fully_filled": 6
+  },
+  "cls.news_kind": {
+   "claims_with_one_value": 30,
+   "of": 47,
+   "claims_fully_filled": 47
+  },
+  "cls.role": {
+   "claims_with_one_value": 36,
+   "of": 47,
+   "claims_fully_filled": 47
+  },
+  "cls.what_is_done": {
+   "claims_with_one_value": 36,
+   "of": 47,
+   "claims_fully_filled": 47
+  },
+  "cls.whose_judgement": {
+   "claims_with_one_value": 25,
+   "of": 47,
+   "claims_fully_filled": 47
+  },
+  "cls.novelty": {
+   "claims_with_one_value": 25,
+   "of": 47,
+   "claims_fully_filled": 47
+  },
+  "rules bucket": {
+   "claims_with_one_value": 29,
+   "of": 47,
+   "claims_fully_filled": 47
+  }
+ },
+ "claims_split_across_buckets": {
+  "count": 18,
+  "of": 47,
+  "examples": [
+   {
+    "key": "claim-014",
+    "buckets": [
+     2,
+     3
+    ],
+    "n": 6,
+    "desc": "Makhachev on Demetrious Johnson's MightyCast: Topuria lost focus, underestimated Gaethje, "
+   },
+   {
+    "key": "claim-015.0",
+    "buckets": [
+     2,
+     3
+    ],
+    "n": 5,
+    "desc": "Merab Dvalishvili tells Helen Yee that Topuria is fine, very positive, enjoying life and w"
+   },
+   {
+    "key": "claim-032",
+    "buckets": [
+     2,
+     3
+    ],
+    "n": 2,
+    "desc": "Paul Hughes says Topuria is the only UFC fighter with a chance against Usman Nurmagomedov"
+   },
+   {
+    "key": "claim-035",
+    "buckets": [
+     2,
+     3
+    ],
+    "n": 2,
+    "desc": "Pimblett (Green Light podcast) wants Topuria or Tsarukyan next and says he will terrorize "
+   },
+   {
+    "key": "claim-037.0",
+    "buckets": [
+     2,
+     3
+    ],
+    "n": 3,
+    "desc": "Topuria on the Charlas Adictivas podcast recalls being bullied at school in Georgia with h"
+   },
+   {
+    "key": "claim-054",
+    "buckets": [
+     1,
+     2,
+     3
+    ],
+    "n": 6,
+    "desc": "Gaethje's Sports Illustrated interview: hands still hurt, can't punch, won't fight until 2"
+   },
+   {
+    "key": "claim-066",
+    "buckets": [
+     2,
+     3
+    ],
+    "n": 13,
+    "desc": "Predictions of the Donchenko vs Soriano fight (UFC Paris): picks, odds and tips from every"
+   },
+   {
+    "key": "claim-073.0",
+    "buckets": [
+     2,
+     3
+    ],
+    "n": 3,
+    "desc": "Sport.ua 4 Sep journalist preview 'the hardest fight for Donchenko' (same page captured tw"
+   },
+   {
+    "key": "claim-073.2",
+    "buckets": [
+     2,
+     3
+    ],
+    "n": 3,
+    "desc": "Sport.ua fight-day 'watch online LIVE' page for Donchenko vs Soriano (two captures) plus t"
+   },
+   {
+    "key": "claim-073.3",
+    "buckets": [
+     1,
+     3
+    ],
+    "n": 3,
+    "desc": "Event-wide UFC Paris results / live-blog pages for the whole Hooker vs Parnasse card, wher"
+   },
+   {
+    "key": "claim-073.4",
+    "buckets": [
+     1,
+     3
+    ],
+    "n": 24,
+    "desc": "Fight result: Donchenko beats Soriano by unanimous decision (30-27, 30-27, 29-28) at UFC F"
+   },
+   {
+    "key": "claim-074",
+    "buckets": [
+     2,
+     3
+    ],
+    "n": 3,
+    "desc": "UFC Paris official weigh-in results: Donchenko and Soriano both make 170 lb / 77.11 kg, al"
+   },
+   {
+    "key": "claim-080",
+    "buckets": [
+     2,
+     3
+    ],
+    "n": 12,
+    "desc": "Topuria breaks his silence with a video letter to his son Hugo ('after going through that "
+   },
+   {
+    "key": "claim-084",
+    "buckets": [
+     2,
+     3
+    ],
+    "n": 2,
+    "desc": "Ceremonial weigh-in faceoff video/photo of Donchenko and Soriano (Lufkin Daily News wire i"
+   },
+   {
+    "key": "claim-093",
+    "buckets": [
+     2,
+     3
+    ],
+    "n": 6,
+    "desc": "Backstage post-fight interview with UFC.com: Donchenko elaborates the Rodriguez callout (e"
+   }
+  ]
+ },
+ "kind_inside_claims": {
+  "claim-000": {
+   "new_remark": 7
+  },
+  "claim-003": {
+   "new_remark": 3
+  },
+  "claim-004": {
+   "new_event": 3
+  },
+  "claim-008": {
+   "new_remark": 1,
+   "reaction": 8
+  },
+  "claim-011": {
+   "about_someone_else": 2
+  },
+  "claim-014": {
+   "new_remark": 6
+  },
+  "claim-015.0": {
+   "new_remark": 5
+  },
+  "claim-015.1": {
+   "new_remark": 2
+  },
+  "claim-022": {
+   "new_remark": 8
+  },
+  "claim-032": {
+   "new_remark": 2
+  },
+  "claim-033": {
+   "new_remark": 3
+  },
+  "claim-035": {
+   "new_remark": 2
+  },
+  "claim-036": {
+   "new_remark": 3
+  },
+  "claim-037.0": {
+   "new_remark": 3
+  },
+  "claim-048": {
+   "new_remark": 3
+  },
+  "claim-054": {
+   "new_remark": 5,
+   "new_event": 1
+  },
+  "claim-055": {
+   "new_event": 3
+  },
+  "claim-059": {
+   "new_remark": 2
+  },
+  "claim-062": {
+   "new_remark": 3
+  },
+  "claim-063": {
+   "new_remark": 2
+  },
+  "claim-065": {
+   "new_remark": 4
+  },
+  "claim-066": {
+   "analysis": 12,
+   "no_text": 1
+  },
+  "claim-068": {
+   "new_remark": 2
+  },
+  "claim-073.0": {
+   "analysis": 2,
+   "new_event": 1
+  },
+  "claim-073.2": {
+   "new_event": 3
+  },
+  "claim-073.3": {
+   "new_event": 3
+  },
+  "claim-073.4": {
+   "new_event": 24
+  },
+  "claim-074": {
+   "new_event": 3
+  },
+  "claim-080": {
+   "new_remark": 12
+  },
+  "claim-084": {
+   "no_text": 1,
+   "new_event": 1
+  },
+  "claim-090": {
+   "new_remark": 8
+  },
+  "claim-093": {
+   "new_event": 1,
+   "new_remark": 5
+  },
+  "claim-094.0": {
+   "new_remark": 2
+  },
+  "claim-095": {
+   "new_event": 1,
+   "new_remark": 1
+  },
+  "claim-097": {
+   "new_event": 1,
+   "new_remark": 4,
+   "analysis": 1
+  },
+  "claim-099": {
+   "new_remark": 8
+  },
+  "claim-100": {
+   "new_remark": 1,
+   "analysis": 1
+  },
+  "claim-104": {
+   "new_remark": 3
+  },
+  "claim-105": {
+   "new_remark": 2,
+   "reaction": 1
+  },
+  "claim-107": {
+   "new_remark": 2
+  },
+  "claim-109": {
+   "new_remark": 2
+  },
+  "claim-110": {
+   "analysis": 1,
+   "new_remark": 1
+  },
+  "claim-112": {
+   "new_remark": 8,
+   "about_someone_else": 1
+  },
+  "claim-113": {
+   "new_remark": 10
+  },
+  "claim-116": {
+   "new_remark": 2
+  },
+  "claim-124": {
+   "new_remark": 2
+  },
+  "claim-125": {
+   "new_remark": 3
+  }
+ }
+}

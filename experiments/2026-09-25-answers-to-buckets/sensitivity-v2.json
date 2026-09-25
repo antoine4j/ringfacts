@@ -1,0 +1,139 @@
+{
+ "sensitivity": {
+  "role": {
+   "depends": 217,
+   "flips": [
+    [
+     "the_subject->background: 2->3",
+     89
+    ],
+    [
+     "the_subject->mentioned_only: 2->3",
+     89
+    ],
+    [
+     "the_subject->not_in_the_article_body: 2->3",
+     89
+    ],
+    [
+     "the_subject->one_of_many_on_a_list: 2->3",
+     89
+    ]
+   ]
+  },
+  "speaker": {
+   "depends": 7,
+   "flips": [
+    [
+     "himself->champion_or_promotion: 2->1",
+     4
+    ],
+    [
+     "himself->nobody: 2->1",
+     4
+    ],
+    [
+     "champion_or_promotion->another_fighter: 1->2",
+     1
+    ],
+    [
+     "champion_or_promotion->himself: 1->2",
+     1
+    ]
+   ]
+  },
+  "act": {
+   "depends": 208,
+   "flips": [
+    [
+     "assessing_him->he_speaks_of_others: 2->3",
+     92
+    ],
+    [
+     "assessing_him->naming_him_in_passing: 2->3",
+     92
+    ],
+    [
+     "assessing_him->nothing: 2->3",
+     92
+    ],
+    [
+     "assessing_him->steering_him_elsewhere: 2->3",
+     92
+    ]
+   ]
+  },
+  "kind": {
+   "depends": 203,
+   "flips": [
+    [
+     "quote->no_news_about_him: 2->3",
+     116
+    ],
+    [
+     "result->no_news_about_him: 1->3",
+     27
+    ],
+    [
+     "result->booking_rumoured: 1->2",
+     26
+    ],
+    [
+     "result->fight_week: 1->2",
+     26
+    ]
+   ]
+  },
+  "depth": {
+   "depends": 223,
+   "flips": [
+    [
+     "substantial->a_line_or_two: 2->3",
+     171
+    ],
+    [
+     "substantial->nothing_about_him: 2->3",
+     171
+    ],
+    [
+     "substantial->nothing_about_him: 1->3",
+     30
+    ],
+    [
+     "a_line_or_two->not_in_this_list: 3->2",
+     17
+    ]
+   ]
+  }
+ },
+ "unconsulted": {
+  "role": [
+   "not_in_this_list"
+  ],
+  "speaker": [
+   "another_fighter",
+   "not_in_this_list",
+   "pundit_or_journalist"
+  ],
+  "act": [
+   "answering_for_him",
+   "assessing_him",
+   "calling_him_out",
+   "he_speaks_of_himself",
+   "not_in_this_list"
+  ],
+  "kind": [
+   "booking_rumoured",
+   "fight_week",
+   "lifestyle",
+   "not_in_this_list",
+   "other_career_fact",
+   "prediction",
+   "quote"
+  ],
+  "depth": [
+   "not_in_this_list",
+   "substantial"
+  ]
+ }
+}

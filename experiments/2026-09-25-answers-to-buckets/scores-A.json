@@ -1,0 +1,3152 @@
+{
+ "ground_truth": {
+  "all": 154,
+  "clean_non_dup": 76,
+  "dist_all": {
+   "2": 70,
+   "3": 72,
+   "1": 12
+  },
+  "dist_clean": {
+   "3": 55,
+   "2": 19,
+   "1": 2
+  }
+ },
+ "classifier_passes": [
+  1,
+  2,
+  3
+ ],
+ "question_set": "A",
+ "bucket_mapping": {
+  "old rules + speaker gate (as shipped)": {
+   "all": {
+    "n": 154,
+    "accuracy": 0.76,
+    "accuracy_2v3": 0.803,
+    "matrix": {
+     "anton1->1": 3,
+     "anton1->2": 8,
+     "anton1->3": 1,
+     "anton2->1": 2,
+     "anton2->2": 52,
+     "anton2->3": 16,
+     "anton3->1": 1,
+     "anton3->2": 9,
+     "anton3->3": 62
+    }
+   },
+   "clean": {
+    "n": 76,
+    "accuracy": 0.829,
+    "accuracy_2v3": 0.838,
+    "matrix": {
+     "anton1->1": 1,
+     "anton1->2": 1,
+     "anton2->1": 1,
+     "anton2->2": 15,
+     "anton2->3": 3,
+     "anton3->2": 8,
+     "anton3->3": 47
+    }
+   },
+   "dist_300": {
+    "2": 128,
+    "3": 143,
+    "1": 29
+   }
+  },
+  "old rules, no gate": {
+   "all": {
+    "n": 154,
+    "accuracy": 0.766,
+    "accuracy_2v3": 0.81,
+    "matrix": {
+     "anton1->1": 3,
+     "anton1->2": 8,
+     "anton1->3": 1,
+     "anton2->1": 2,
+     "anton2->2": 57,
+     "anton2->3": 11,
+     "anton3->1": 1,
+     "anton3->2": 13,
+     "anton3->3": 58
+    }
+   },
+   "clean": {
+    "n": 76,
+    "accuracy": 0.816,
+    "accuracy_2v3": 0.824,
+    "matrix": {
+     "anton1->1": 1,
+     "anton1->2": 1,
+     "anton2->1": 1,
+     "anton2->2": 16,
+     "anton2->3": 2,
+     "anton3->2": 10,
+     "anton3->3": 45
+    }
+   },
+   "dist_300": {
+    "2": 151,
+    "3": 120,
+    "1": 29
+   }
+  },
+  "v2 first draft, no gate": {
+   "all": {
+    "n": 154,
+    "accuracy": 0.74,
+    "accuracy_2v3": 0.782,
+    "matrix": {
+     "anton1->1": 3,
+     "anton1->2": 8,
+     "anton1->3": 1,
+     "anton2->1": 10,
+     "anton2->2": 56,
+     "anton2->3": 4,
+     "anton3->1": 1,
+     "anton3->2": 16,
+     "anton3->3": 55
+    }
+   },
+   "clean": {
+    "n": 76,
+    "accuracy": 0.724,
+    "accuracy_2v3": 0.73,
+    "matrix": {
+     "anton1->1": 1,
+     "anton1->2": 1,
+     "anton2->1": 5,
+     "anton2->2": 12,
+     "anton2->3": 2,
+     "anton3->1": 1,
+     "anton3->2": 12,
+     "anton3->3": 42
+    }
+   },
+   "dist_300": {
+    "2": 168,
+    "3": 86,
+    "1": 46
+   }
+  },
+  "v2 rules, no gate": {
+   "all": {
+    "n": 154,
+    "accuracy": 0.792,
+    "accuracy_2v3": 0.838,
+    "matrix": {
+     "anton1->1": 3,
+     "anton1->2": 8,
+     "anton1->3": 1,
+     "anton2->1": 2,
+     "anton2->2": 64,
+     "anton2->3": 4,
+     "anton3->2": 17,
+     "anton3->3": 55
+    }
+   },
+   "clean": {
+    "n": 76,
+    "accuracy": 0.789,
+    "accuracy_2v3": 0.797,
+    "matrix": {
+     "anton1->1": 1,
+     "anton1->2": 1,
+     "anton2->2": 17,
+     "anton2->3": 2,
+     "anton3->2": 13,
+     "anton3->3": 42
+    }
+   },
+   "dist_300": {
+    "2": 178,
+    "3": 87,
+    "1": 35
+   }
+  },
+  "v2 rules + speaker gate": {
+   "all": {
+    "n": 154,
+    "accuracy": 0.766,
+    "accuracy_2v3": 0.81,
+    "matrix": {
+     "anton1->1": 3,
+     "anton1->2": 8,
+     "anton1->3": 1,
+     "anton2->1": 2,
+     "anton2->2": 52,
+     "anton2->3": 16,
+     "anton3->2": 9,
+     "anton3->3": 63
+    }
+   },
+   "clean": {
+    "n": 76,
+    "accuracy": 0.842,
+    "accuracy_2v3": 0.851,
+    "matrix": {
+     "anton1->1": 1,
+     "anton1->2": 1,
+     "anton2->2": 16,
+     "anton2->3": 3,
+     "anton3->2": 8,
+     "anton3->3": 47
+    }
+   },
+   "dist_300": {
+    "2": 135,
+    "3": 130,
+    "1": 35
+   }
+  }
+ },
+ "v2_errors": [
+  {
+   "id": "25",
+   "anton": 3,
+   "v2": 2,
+   "why": "not_in_this_list by pundit_or_journalist, lifestyle",
+   "old": 3,
+   "reason": "junk",
+   "answers": {
+    "role": "the_subject",
+    "speaker": "pundit_or_journalist",
+    "act": "not_in_this_list",
+    "kind": "lifestyle",
+    "depth": "substantial"
+   },
+   "title": "El restaurante favorito de Ilia Topuria en España: está situado en la "
+  },
+  {
+   "id": "228",
+   "anton": 2,
+   "v2": 3,
+   "why": "act: he_speaks_of_others",
+   "old": 1,
+   "reason": "dup",
+   "answers": {
+    "role": "the_one_being_talked_about",
+    "speaker": "opponent_or_their_camp",
+    "act": "he_speaks_of_others",
+    "kind": "quote",
+    "depth": "a_line_or_two"
+   },
+   "title": "Islam Makhachev aceptó pelear con Ilia Topuria en el UFC Freedom 250: "
+  },
+  {
+   "id": "233",
+   "anton": 3,
+   "v2": 2,
+   "why": "assessing_him by pundit_or_journalist, other_career_fact",
+   "old": 3,
+   "reason": "junk",
+   "answers": {
+    "role": "one_of_several_subjects",
+    "speaker": "pundit_or_journalist",
+    "act": "assessing_him",
+    "kind": "other_career_fact",
+    "depth": "substantial"
+   },
+   "title": "UFC Power Rankings following UFC 330 in Philadelphia - Yahoo Sports"
+  },
+  {
+   "id": "249",
+   "anton": 3,
+   "v2": 2,
+   "why": "assessing_him by another_fighter, prediction",
+   "old": 3,
+   "reason": "junk",
+   "answers": {
+    "role": "the_one_being_talked_about",
+    "speaker": "another_fighter",
+    "act": "assessing_him",
+    "kind": "prediction",
+    "depth": "substantial"
+   },
+   "title": "Paul Hughes Names One Fighter Who Can Beat Usman Nurmagomedov In UFC -"
+  },
+  {
+   "id": "256",
+   "anton": 3,
+   "v2": 2,
+   "why": "assessing_him by another_fighter, prediction",
+   "old": 3,
+   "reason": "junk",
+   "answers": {
+    "role": "the_one_being_talked_about",
+    "speaker": "another_fighter",
+    "act": "assessing_him",
+    "kind": "prediction",
+    "depth": "substantial"
+   },
+   "title": "Arman Tsarukyan picks surprising name for Ilia Topuria’s next opponent"
+  },
+  {
+   "id": "269",
+   "anton": 3,
+   "v2": 2,
+   "why": "assessing_him by another_fighter, prediction",
+   "old": 3,
+   "reason": "dup",
+   "answers": {
+    "role": "the_one_being_talked_about",
+    "speaker": "another_fighter",
+    "act": "assessing_him",
+    "kind": "prediction",
+    "depth": "substantial"
+   },
+   "title": "Tsarukyan On Topuria's Future After Gaethje Loss - boxingnews.com"
+  },
+  {
+   "id": "287",
+   "anton": 3,
+   "v2": 2,
+   "why": "assessing_him by opponent_or_their_camp, quote",
+   "old": 3,
+   "reason": "dup",
+   "answers": {
+    "role": "the_one_being_talked_about",
+    "speaker": "opponent_or_their_camp",
+    "act": "assessing_him",
+    "kind": "quote",
+    "depth": "substantial"
+   },
+   "title": "Tsarukyan nomme le prochain adversaire d’Ilia Topuria - La Sueur"
+  },
+  {
+   "id": "301",
+   "anton": 2,
+   "v2": 3,
+   "why": "act: he_speaks_of_others",
+   "old": 2,
+   "reason": "missed",
+   "answers": {
+    "role": "the_subject",
+    "speaker": "himself",
+    "act": "he_speaks_of_others",
+    "kind": "quote",
+    "depth": "substantial"
+   },
+   "title": "«Полетів хейт». Боєць ММА пояснив, після чого в UFC уникають боїв укра"
+  },
+  {
+   "id": "305",
+   "anton": 3,
+   "v2": 2,
+   "why": "he_speaks_of_himself by himself, injury_or_medical",
+   "old": 2,
+   "reason": "junk",
+   "answers": {
+    "role": "the_subject",
+    "speaker": "himself",
+    "act": "he_speaks_of_himself",
+    "kind": "injury_or_medical",
+    "depth": "substantial"
+   },
+   "title": "El barrio de Ilia Topuria, en Alicante y alejado de la costa: \"Todo lo"
+  },
+  {
+   "id": "339",
+   "anton": 3,
+   "v2": 2,
+   "why": "assessing_him by another_fighter, quote",
+   "old": 2,
+   "reason": "dup",
+   "answers": {
+    "role": "the_one_being_talked_about",
+    "speaker": "another_fighter",
+    "act": "assessing_him",
+    "kind": "quote",
+    "depth": "substantial"
+   },
+   "title": "Un ex rival de Usman cree que Topuria es el único que puede vencerle e"
+  },
+  {
+   "id": "342",
+   "anton": 3,
+   "v2": 2,
+   "why": "he_speaks_of_himself by himself, other_career_fact",
+   "old": 3,
+   "reason": "junk",
+   "answers": {
+    "role": "one_of_several_subjects",
+    "speaker": "himself",
+    "act": "he_speaks_of_himself",
+    "kind": "other_career_fact",
+    "depth": "substantial"
+   },
+   "title": "Змінили стадіони на передову: хто з українських чемпіонів взяв до рук "
+  },
+  {
+   "id": "380",
+   "anton": 3,
+   "v2": 2,
+   "why": "he_speaks_of_himself by himself, lifestyle",
+   "old": 2,
+   "reason": "junk",
+   "answers": {
+    "role": "the_subject",
+    "speaker": "himself",
+    "act": "he_speaks_of_himself",
+    "kind": "lifestyle",
+    "depth": "substantial"
+   },
+   "title": "Ilia Topuria on One Lesson Learned From His Divorce - MMA Sucka"
+  },
+  {
+   "id": "508",
+   "anton": 3,
+   "v2": 2,
+   "why": "assessing_him by himself, other_career_fact",
+   "old": 3,
+   "reason": "junk",
+   "answers": {
+    "role": "one_of_several_subjects",
+    "speaker": "himself",
+    "act": "assessing_him",
+    "kind": "other_career_fact",
+    "depth": "substantial"
+   },
+   "title": "UFC power rankings following Fight Night 286 in Shanghai, China - Yaho"
+  },
+  {
+   "id": "516",
+   "anton": 3,
+   "v2": 2,
+   "why": "assessing_him by another_fighter, quote",
+   "old": 3,
+   "reason": "dup",
+   "answers": {
+    "role": "the_one_being_talked_about",
+    "speaker": "another_fighter",
+    "act": "assessing_him",
+    "kind": "quote",
+    "depth": "substantial"
+   },
+   "title": "Fantasy matchmaker Arman Tsarukyan doubts UFC books Topuria vs. Pimble"
+  },
+  {
+   "id": "521",
+   "anton": 2,
+   "v2": 3,
+   "why": "depth: a line or two",
+   "old": 3,
+   "reason": "missed",
+   "answers": {
+    "role": "the_subject",
+    "speaker": "himself",
+    "act": "he_speaks_of_himself",
+    "kind": "fight_week",
+    "depth": "a_line_or_two"
+   },
+   "title": "Daniil Donchenko: \"I Have Everything And Even More\" | UFC Paris - ufc."
+  },
+  {
+   "id": "525",
+   "anton": 3,
+   "v2": 2,
+   "why": "assessing_him by another_fighter, quote",
+   "old": 3,
+   "reason": "junk",
+   "answers": {
+    "role": "the_one_being_talked_about",
+    "speaker": "another_fighter",
+    "act": "assessing_him",
+    "kind": "quote",
+    "depth": "substantial"
+   },
+   "title": "Arman Tsarukyan wants ‘at least 5’ lightweight title defenses to break"
+  },
+  {
+   "id": "555",
+   "anton": 3,
+   "v2": 2,
+   "why": "assessing_him by pundit_or_journalist, prediction",
+   "old": 3,
+   "reason": "junk",
+   "answers": {
+    "role": "one_of_several_subjects",
+    "speaker": "pundit_or_journalist",
+    "act": "assessing_him",
+    "kind": "prediction",
+    "depth": "substantial"
+   },
+   "title": "Predictions, Odds, Analysis! UFC Paris, X-Factor - MMA Mania"
+  },
+  {
+   "id": "563",
+   "anton": 3,
+   "v2": 2,
+   "why": "assessing_him by pundit_or_journalist, prediction",
+   "old": 3,
+   "reason": "junk",
+   "answers": {
+    "role": "one_of_several_subjects",
+    "speaker": "pundit_or_journalist",
+    "act": "assessing_him",
+    "kind": "prediction",
+    "depth": "substantial"
+   },
+   "title": "Predictions, Odds, Analysis! UFC Paris, X-Factor - Yahoo Sports"
+  },
+  {
+   "id": "601",
+   "anton": 1,
+   "v2": 2,
+   "why": "his_fight_week by nobody, fight_week",
+   "old": 2,
+   "reason": "missed",
+   "answers": {
+    "role": "the_subject",
+    "speaker": "nobody",
+    "act": "his_fight_week",
+    "kind": "fight_week",
+    "depth": "substantial"
+   },
+   "title": "Данило Донченко та Пунахеле Соріано показали однакову вагу перед боєм "
+  },
+  {
+   "id": "605",
+   "anton": 2,
+   "v2": 1,
+   "why": "booking_reported, fight-week coverage",
+   "old": 3,
+   "reason": "dup",
+   "answers": {
+    "role": "one_of_several_subjects",
+    "speaker": "pundit_or_journalist",
+    "act": "his_fight_week",
+    "kind": "booking_reported",
+    "depth": "a_line_or_two"
+   },
+   "title": "5 вересня українець Данило Донченко битиметься проти Соріано на UFC у "
+  },
+  {
+   "id": "616",
+   "anton": 2,
+   "v2": 1,
+   "why": "booking_official, announced or reported, not a quote",
+   "old": 2,
+   "reason": "dup",
+   "answers": {
+    "role": "the_subject",
+    "speaker": "champion_or_promotion",
+    "act": "assessing_him",
+    "kind": "booking_official",
+    "depth": "substantial"
+   },
+   "title": "Українець Донченко поб'ється із Пунахеле Соріано в мейн-карді UFC Figh"
+  },
+  {
+   "id": "623",
+   "anton": 3,
+   "v2": 2,
+   "why": "assessing_him by pundit_or_journalist, prediction",
+   "old": 3,
+   "reason": "junk",
+   "answers": {
+    "role": "one_of_several_subjects",
+    "speaker": "pundit_or_journalist",
+    "act": "assessing_him",
+    "kind": "prediction",
+    "depth": "substantial"
+   },
+   "title": "UFC Paris preview and predictions: Can Dan Hooker ruin Salahdine Parna"
+  },
+  {
+   "id": "625",
+   "anton": 1,
+   "v2": 2,
+   "why": "his_fight_week by nobody, fight_week",
+   "old": 2,
+   "reason": "dup",
+   "answers": {
+    "role": "the_subject",
+    "speaker": "nobody",
+    "act": "his_fight_week",
+    "kind": "fight_week",
+    "depth": "substantial"
+   },
+   "title": "Донченко і Соріано зійшлися на вагах: обом по 77,11 кг - Duflu -"
+  },
+  {
+   "id": "632",
+   "anton": 1,
+   "v2": 2,
+   "why": "he_speaks_of_himself by himself, quote",
+   "old": 2,
+   "reason": "dup",
+   "answers": {
+    "role": "the_subject",
+    "speaker": "himself",
+    "act": "he_speaks_of_himself",
+    "kind": "quote",
+    "depth": "substantial"
+   },
+   "title": "La emotiva carta de Ilia Topuria a su hijo Hugo para anunciar su vuelt"
+  },
+  {
+   "id": "636",
+   "anton": 1,
+   "v2": 2,
+   "why": "he_speaks_of_himself by himself, quote",
+   "old": 2,
+   "reason": "dup",
+   "answers": {
+    "role": "the_subject",
+    "speaker": "himself",
+    "act": "he_speaks_of_himself",
+    "kind": "quote",
+    "depth": "substantial"
+   },
+   "title": "Ilia Topuria rompe el silencio tras su derrota y dedica un emotivo men"
+  },
+  {
+   "id": "641",
+   "anton": 3,
+   "v2": 2,
+   "why": "assessing_him by pundit_or_journalist, prediction",
+   "old": 3,
+   "reason": "junk",
+   "answers": {
+    "role": "one_of_several_subjects",
+    "speaker": "pundit_or_journalist",
+    "act": "assessing_him",
+    "kind": "prediction",
+    "depth": "substantial"
+   },
+   "title": "Picks, Best Bets for UFC Fight: Hooker vs. Parnasse - DraftKings Netwo"
+  },
+  {
+   "id": "647",
+   "anton": 1,
+   "v2": 3,
+   "why": "depth: a line or two",
+   "old": 3,
+   "reason": "dup",
+   "answers": {
+    "role": "the_subject",
+    "speaker": "himself",
+    "act": "he_speaks_of_himself",
+    "kind": "quote",
+    "depth": "a_line_or_two"
+   },
+   "title": "Ilia Topuria breaks silence 'after going through that hell' with Justi"
+  },
+  {
+   "id": "651",
+   "anton": 1,
+   "v2": 2,
+   "why": "he_speaks_of_himself by himself, quote",
+   "old": 2,
+   "reason": "dup",
+   "answers": {
+    "role": "the_subject",
+    "speaker": "himself",
+    "act": "he_speaks_of_himself",
+    "kind": "quote",
+    "depth": "substantial"
+   },
+   "title": "Topuria rompe su silencio casi tres meses después de perder el cinturó"
+  },
+  {
+   "id": "655",
+   "anton": 2,
+   "v2": 3,
+   "why": "depth: nothing about him",
+   "old": 3,
+   "reason": "dup",
+   "answers": {
+    "role": "one_of_several_subjects",
+    "speaker": "nobody",
+    "act": "assessing_him",
+    "kind": "prediction",
+    "depth": "nothing_about_him"
+   },
+   "title": "UFC Paris: Daniil Donchenko vs. Punahele Soriano Predictions & Odds - "
+  },
+  {
+   "id": "659",
+   "anton": 1,
+   "v2": 2,
+   "why": "he_speaks_of_himself by himself, quote",
+   "old": 2,
+   "reason": "dup",
+   "answers": {
+    "role": "the_subject",
+    "speaker": "himself",
+    "act": "he_speaks_of_himself",
+    "kind": "quote",
+    "depth": "substantial"
+   },
+   "title": "Topuria rompe su silencio tras la derrota: «Después de visitar ese inf"
+  },
+  {
+   "id": "666",
+   "anton": 1,
+   "v2": 2,
+   "why": "he_speaks_of_himself by himself, quote",
+   "old": 2,
+   "reason": "dup",
+   "answers": {
+    "role": "the_subject",
+    "speaker": "himself",
+    "act": "he_speaks_of_himself",
+    "kind": "quote",
+    "depth": "substantial"
+   },
+   "title": "Ilia Topuria breaks silence in 1st post since aftermath of UFC White H"
+  },
+  {
+   "id": "675",
+   "anton": 1,
+   "v2": 2,
+   "why": "he_speaks_of_himself by himself, quote",
+   "old": 2,
+   "reason": "dup",
+   "answers": {
+    "role": "the_subject",
+    "speaker": "himself",
+    "act": "he_speaks_of_himself",
+    "kind": "quote",
+    "depth": "substantial"
+   },
+   "title": "Ilia Topuria Sends Emotional Message to Son After First Career Loss - "
+  }
+ ],
+ "v2_fixed_old_errors": [
+  "6",
+  "10",
+  "44",
+  "138",
+  "144",
+  "170",
+  "247",
+  "283",
+  "327",
+  "349",
+  "368",
+  "373",
+  "492",
+  "497",
+  "529",
+  "532",
+  "592",
+  "594",
+  "603",
+  "606",
+  "608"
+ ],
+ "v2_broke": [
+  "25",
+  "233",
+  "249",
+  "256",
+  "269",
+  "287",
+  "301",
+  "342",
+  "508",
+  "516",
+  "525",
+  "555",
+  "563",
+  "616",
+  "623",
+  "641"
+ ],
+ "classifier_v2": {
+  "reader_agreement": {
+   "role": {
+    "2": 38,
+    "3": 262
+   },
+   "speaker": {
+    "3": 274,
+    "2": 23,
+    "1": 3
+   },
+   "act": {
+    "3": 269,
+    "2": 28,
+    "1": 3
+   },
+   "kind": {
+    "2": 51,
+    "3": 248,
+    "1": 1
+   },
+   "depth": {
+    "3": 280,
+    "2": 20
+   }
+  },
+  "mean_confidence": {
+   "role": 0.791,
+   "speaker": 0.766,
+   "act": 0.795,
+   "kind": 0.731,
+   "depth": 0.852
+  },
+  "usage": {
+   "role": {
+    "the_subject": 127,
+    "the_one_being_talked_about": 94,
+    "mentioned_only": 19,
+    "background": 26,
+    "not_in_the_article_body": 12,
+    "one_of_several_subjects": 22
+   },
+   "speaker": {
+    "another_fighter": 63,
+    "nobody": 32,
+    "opponent_or_their_camp": 27,
+    "champion_or_promotion": 21,
+    "himself": 94,
+    "pundit_or_journalist": 44,
+    "his_coach_or_camp": 19
+   },
+   "act": {
+    "assessing_him": 118,
+    "naming_him_in_passing": 41,
+    "his_fight_week": 13,
+    "not_in_this_list": 1,
+    "he_speaks_of_himself": 69,
+    "answering_for_him": 11,
+    "calling_him_out": 8,
+    "nothing": 1,
+    "he_fought": 31,
+    "he_speaks_of_others": 7
+   },
+   "kind": {
+    "quote": 149,
+    "no_news_about_him": 22,
+    "booking_reported": 7,
+    "lifestyle": 8,
+    "injury_or_medical": 4,
+    "result": 33,
+    "booking_rumoured": 18,
+    "fight_week": 20,
+    "prediction": 26,
+    "other_career_fact": 5,
+    "booking_official": 8
+   },
+   "depth": {
+    "substantial": 218,
+    "nothing_about_him": 25,
+    "a_line_or_two": 57
+   }
+  },
+  "bucket_stable_across_orders": 288,
+  "per_option_anton_bucket": {
+   "role": {
+    "background": {
+     "3": 20
+    },
+    "mentioned_only": {
+     "3": 13
+    },
+    "not_in_the_article_body": {
+     "3": 7
+    },
+    "one_of_several_subjects": {
+     "3": 8,
+     "2": 6
+    },
+    "the_one_being_talked_about": {
+     "2": 35,
+     "3": 20
+    },
+    "the_subject": {
+     "2": 29,
+     "1": 12,
+     "3": 4
+    }
+   },
+   "speaker": {
+    "another_fighter": {
+     "2": 18,
+     "3": 25
+    },
+    "champion_or_promotion": {
+     "1": 2,
+     "3": 2,
+     "2": 1
+    },
+    "himself": {
+     "1": 8,
+     "3": 18,
+     "2": 19
+    },
+    "his_coach_or_camp": {
+     "2": 13,
+     "3": 3
+    },
+    "nobody": {
+     "3": 5,
+     "1": 2,
+     "2": 1
+    },
+    "opponent_or_their_camp": {
+     "3": 3,
+     "2": 11
+    },
+    "pundit_or_journalist": {
+     "3": 16,
+     "2": 7
+    }
+   },
+   "act": {
+    "answering_for_him": {
+     "2": 10,
+     "3": 1
+    },
+    "assessing_him": {
+     "2": 39,
+     "3": 26
+    },
+    "calling_him_out": {
+     "2": 2
+    },
+    "he_fought": {
+     "3": 1
+    },
+    "he_speaks_of_himself": {
+     "3": 11,
+     "2": 16,
+     "1": 7
+    },
+    "he_speaks_of_others": {
+     "2": 2,
+     "3": 3
+    },
+    "his_fight_week": {
+     "1": 5,
+     "2": 1
+    },
+    "naming_him_in_passing": {
+     "3": 29
+    },
+    "not_in_this_list": {
+     "3": 1
+    },
+    "nothing": {}
+   },
+   "kind": {
+    "booking_official": {
+     "2": 6,
+     "3": 1
+    },
+    "booking_reported": {
+     "1": 3,
+     "2": 2,
+     "3": 1
+    },
+    "booking_rumoured": {
+     "2": 2
+    },
+    "fight_week": {
+     "3": 5,
+     "2": 5,
+     "1": 2
+    },
+    "injury_or_medical": {
+     "3": 3,
+     "2": 1
+    },
+    "lifestyle": {
+     "3": 3,
+     "2": 2
+    },
+    "no_news_about_him": {
+     "3": 16
+    },
+    "other_career_fact": {
+     "3": 5
+    },
+    "prediction": {
+     "3": 12,
+     "2": 5
+    },
+    "quote": {
+     "2": 46,
+     "3": 25,
+     "1": 7
+    },
+    "result": {
+     "2": 1,
+     "3": 1
+    }
+   },
+   "depth": {
+    "a_line_or_two": {
+     "3": 35,
+     "2": 3,
+     "1": 1
+    },
+    "nothing_about_him": {
+     "3": 17,
+     "2": 1
+    },
+    "substantial": {
+     "2": 66,
+     "1": 11,
+     "3": 20
+    }
+   }
+  },
+  "hatch_picks": 1
+ },
+ "old_new_crosstab": {
+  "news_kind->kind": {
+   "announcement": {
+    "no_news_about_him": 1,
+    "booking_reported": 5
+   },
+   "injury": {
+    "injury_or_medical": 3,
+    "quote": 1,
+    "no_news_about_him": 1
+   },
+   "lifestyle": {
+    "lifestyle": 8,
+    "injury_or_medical": 1,
+    "quote": 1
+   },
+   "negotiation": {
+    "quote": 1,
+    "booking_rumoured": 3
+   },
+   "no_news_about_him": {
+    "no_news_about_him": 14,
+    "quote": 1
+   },
+   "other_career_fact": {
+    "no_news_about_him": 1,
+    "other_career_fact": 5,
+    "quote": 1
+   },
+   "prediction": {
+    "prediction": 23,
+    "booking_rumoured": 9,
+    "no_news_about_him": 1
+   },
+   "preview": {
+    "fight_week": 16,
+    "booking_official": 6,
+    "booking_reported": 1,
+    "prediction": 2
+   },
+   "quote": {
+    "quote": 143,
+    "no_news_about_him": 3,
+    "booking_rumoured": 6,
+    "prediction": 1,
+    "booking_official": 2,
+    "booking_reported": 1,
+    "fight_week": 4
+   },
+   "result": {
+    "result": 33,
+    "no_news_about_him": 1,
+    "quote": 1
+   }
+  },
+  "novelty->depth": {
+   "filler_no_information": {
+    "nothing_about_him": 2,
+    "substantial": 3,
+    "a_line_or_two": 9
+   },
+   "new_and_substantial": {
+    "substantial": 158,
+    "a_line_or_two": 13,
+    "nothing_about_him": 2
+   },
+   "nothing_about_him": {
+    "a_line_or_two": 17,
+    "nothing_about_him": 15
+   },
+   "restates_known_facts": {
+    "substantial": 45,
+    "nothing_about_him": 2,
+    "a_line_or_two": 15
+   },
+   "small_new_detail": {
+    "nothing_about_him": 4,
+    "a_line_or_two": 3,
+    "substantial": 12
+   }
+  }
+ },
+ "extractor_passes": [
+  1,
+  2
+ ],
+ "extractor_v2_fill": {
+  "facts": 251,
+  "occasion_type": 300,
+  "origin": 217,
+  "origin_person": 63,
+  "speaker": 209,
+  "occasion_date": 50,
+  "bout": 161,
+  "event": 109,
+  "key_quote": 194,
+  "predicted_winner": 21,
+  "odds": 9
+ },
+ "extractor_v2_errors": 0,
+ "extractor_v2_kind_vs_old": {
+  "about_someone_else": {
+   "new_event": 1,
+   "about_someone_else": 30
+  },
+  "analysis": {
+   "about_someone_else": 4,
+   "analysis": 20
+  },
+  "new_event": {
+   "new_event": 47,
+   "new_remark": 4,
+   "about_someone_else": 1,
+   "analysis": 1,
+   "no_text": 1
+  },
+  "new_remark": {
+   "new_remark": 164,
+   "about_someone_else": 7,
+   "reaction": 1,
+   "analysis": 1
+  },
+  "no_text": {
+   "no_text": 4,
+   "new_remark": 1
+  },
+  "reaction": {
+   "reaction": 8,
+   "new_remark": 3
+  },
+  "restatement": {
+   "about_someone_else": 1,
+   "restatement": 1
+  }
+ },
+ "facts_per_article": {
+  "2": 188,
+  "0": 49,
+  "3": 56,
+  "1": 7
+ },
+ "grouping_signals_v2": {
+  "v2 speaker = (surname)": {
+   "recall": 0.448,
+   "fires_on_different": 0.04,
+   "precision": 0.588,
+   "false_merges": 234,
+   "missed_pairs": 411
+  },
+  "v2 origin_person = (surname)": {
+   "recall": 0.115,
+   "fires_on_different": 0.002,
+   "precision": 0.869,
+   "false_merges": 13,
+   "missed_pairs": 659
+  },
+  "v2 origin = (exact)": {
+   "recall": 0.393,
+   "fires_on_different": 0.043,
+   "precision": 0.54,
+   "false_merges": 250,
+   "missed_pairs": 452
+  },
+  "v2 origin words overlap ≥ 0.5": {
+   "recall": 0.448,
+   "fires_on_different": 0.064,
+   "precision": 0.472,
+   "false_merges": 373,
+   "missed_pairs": 411
+  },
+  "v2 occasion_type =": {
+   "recall": 0.796,
+   "fires_on_different": 0.13,
+   "precision": 0.441,
+   "false_merges": 753,
+   "missed_pairs": 152
+  },
+  "v2 speaker = and occasion_type =": {
+   "recall": 0.321,
+   "fires_on_different": 0.015,
+   "precision": 0.731,
+   "false_merges": 88,
+   "missed_pairs": 506
+  },
+  "v2 speaker = and origin_person =": {
+   "recall": 0.115,
+   "fires_on_different": 0.0,
+   "precision": 1.0,
+   "false_merges": 0,
+   "missed_pairs": 659
+  },
+  "v2 speaker = and (origin_person = or origin overlap ≥ 0.5)": {
+   "recall": 0.234,
+   "fires_on_different": 0.003,
+   "precision": 0.902,
+   "false_merges": 19,
+   "missed_pairs": 571
+  },
+  "v2 bout = and kind =": {
+   "recall": 0.617,
+   "fires_on_different": 0.132,
+   "precision": 0.375,
+   "false_merges": 768,
+   "missed_pairs": 285
+  },
+  "v2 bout = and occasion_type =": {
+   "recall": 0.607,
+   "fires_on_different": 0.043,
+   "precision": 0.645,
+   "false_merges": 249,
+   "missed_pairs": 293
+  },
+  "v2 key_quote words overlap ≥ 0.5": {
+   "recall": 0.099,
+   "fires_on_different": 0.0,
+   "precision": 1.0,
+   "false_merges": 0,
+   "missed_pairs": 671
+  },
+  "v2 all facts words overlap ≥ 0.4": {
+   "recall": 0.272,
+   "fires_on_different": 0.012,
+   "precision": 0.744,
+   "false_merges": 70,
+   "missed_pairs": 542
+  },
+  "v2 lead fact words overlap ≥ 0.5": {
+   "recall": 0.501,
+   "fires_on_different": 0.02,
+   "precision": 0.766,
+   "false_merges": 114,
+   "missed_pairs": 372
+  },
+  "v2 speaker = and (origin_person = or origin overlap) OR bout = and occasion_type =": {
+   "recall": 0.765,
+   "fires_on_different": 0.046,
+   "precision": 0.682,
+   "false_merges": 266,
+   "missed_pairs": 175
+  },
+  "old occasion = (exact)": {
+   "recall": 0.25,
+   "fires_on_different": 0.003,
+   "precision": 0.925,
+   "false_merges": 15,
+   "missed_pairs": 559
+  },
+  "old extract words overlap ≥ 0.5": {
+   "recall": 0.478,
+   "fires_on_different": 0.034,
+   "precision": 0.644,
+   "false_merges": 197,
+   "missed_pairs": 389
+  },
+  "old kind = and actor =": {
+   "recall": 0.838,
+   "fires_on_different": 0.132,
+   "precision": 0.449,
+   "false_merges": 765,
+   "missed_pairs": 121
+  }
+ },
+ "within_claim_consistency_v2": {
+  "occasion_type": {
+   "one_value": 24,
+   "filled_in_all": 47,
+   "of": 47
+  },
+  "origin": {
+   "one_value": 12,
+   "filled_in_all": 26,
+   "of": 47
+  },
+  "origin_person": {
+   "one_value": 35,
+   "filled_in_all": 5,
+   "of": 47
+  },
+  "speaker": {
+   "one_value": 39,
+   "filled_in_all": 34,
+   "of": 47
+  },
+  "bout": {
+   "one_value": 30,
+   "filled_in_all": 19,
+   "of": 47
+  },
+  "occasion_date": {
+   "one_value": 39,
+   "filled_in_all": 4,
+   "of": 47
+  },
+  "kind": {
+   "one_value": 36,
+   "filled_in_all": 47,
+   "of": 47
+  }
+ },
+ "claims_v2_fields": {
+  "claim-000": [
+   {
+    "id": "1",
+    "type": "podcast",
+    "origin": "Deep Waters podcast",
+    "person": null,
+    "speaker": "Jorge Masvidal",
+    "bout": null
+   },
+   {
+    "id": "2",
+    "type": "unknown",
+    "origin": "Deep Waters",
+    "person": null,
+    "speaker": "Jorge Masvidal",
+    "bout": "Amosov vs Makhachev"
+   },
+   {
+    "id": "4",
+    "type": "podcast",
+    "origin": "Deep Waters",
+    "person": null,
+    "speaker": "Jorge Masvidal",
+    "bout": null
+   },
+   {
+    "id": "13",
+    "type": "podcast",
+    "origin": "Deep Waters podcast",
+    "person": null,
+    "speaker": "Jorge Masvidal",
+    "bout": "Amosov vs Makhachev"
+   },
+   {
+    "id": "14",
+    "type": "podcast",
+    "origin": "Deep Waters podcast",
+    "person": null,
+    "speaker": "Jorge Masvidal",
+    "bout": null
+   },
+   {
+    "id": "33",
+    "type": "podcast",
+    "origin": "Deep Waters podcast",
+    "person": null,
+    "speaker": "Jorge Masvidal",
+    "bout": "Amosov vs Makhachev"
+   },
+   {
+    "id": "96",
+    "type": "podcast",
+    "origin": "Deep Waters",
+    "person": null,
+    "speaker": "Jorge Masvidal",
+    "bout": null
+   }
+  ],
+  "claim-003": [
+   {
+    "id": "10",
+    "type": "podcast",
+    "origin": "Pound 4 Pound podcast",
+    "person": null,
+    "speaker": "Ali Abdelaziz",
+    "bout": "Topuria vs Nurmagomedov"
+   },
+   {
+    "id": "34",
+    "type": "podcast",
+    "origin": "Pound for Pound podcast",
+    "person": null,
+    "speaker": "Ali Abdelaziz",
+    "bout": "Topuria vs Nurmagomedov"
+   },
+   {
+    "id": "78",
+    "type": "podcast",
+    "origin": "Pound for Pound Show",
+    "person": null,
+    "speaker": "Ali Abdelaziz",
+    "bout": "Topuria vs Nurmagomedov"
+   }
+  ],
+  "claim-004": [
+   {
+    "id": "16",
+    "type": "announcement",
+    "origin": null,
+    "person": null,
+    "speaker": null,
+    "bout": "Donchenko vs Soriano"
+   },
+   {
+    "id": "17",
+    "type": "announcement",
+    "origin": null,
+    "person": null,
+    "speaker": null,
+    "bout": "Donchenko vs Soriano"
+   },
+   {
+    "id": "18",
+    "type": "announcement",
+    "origin": null,
+    "person": null,
+    "speaker": null,
+    "bout": "Donchenko vs Soriano"
+   }
+  ],
+  "claim-008": [
+   {
+    "id": "51",
+    "type": "social_post",
+    "origin": "Championship Rounds",
+    "person": null,
+    "speaker": "Malki Kawa",
+    "bout": null
+   },
+   {
+    "id": "55",
+    "type": "social_post",
+    "origin": "Instagram",
+    "person": null,
+    "speaker": "Malki Kawa",
+    "bout": null
+   },
+   {
+    "id": "71",
+    "type": "social_post",
+    "origin": "social media video",
+    "person": null,
+    "speaker": "Malki Kawa",
+    "bout": null
+   },
+   {
+    "id": "84",
+    "type": "statement",
+    "origin": null,
+    "person": null,
+    "speaker": "Malki Kawa",
+    "bout": "Topuria vs Gaethje"
+   },
+   {
+    "id": "90",
+    "type": "social_post",
+    "origin": "social media post",
+    "person": null,
+    "speaker": "Malki Kawa",
+    "bout": null
+   },
+   {
+    "id": "97",
+    "type": "podcast",
+    "origin": "Pound4Pound podcast",
+    "person": "Henry Cejudo and Kamaru Usman",
+    "speaker": "Ali Abdelaziz",
+    "bout": null
+   },
+   {
+    "id": "102",
+    "type": "social_post",
+    "origin": "his social media networks",
+    "person": null,
+    "speaker": "Malki Kawa",
+    "bout": null
+   },
+   {
+    "id": "119",
+    "type": "social_post",
+    "origin": null,
+    "person": null,
+    "speaker": "Malki Kawa",
+    "bout": null
+   },
+   {
+    "id": "193",
+    "type": "statement",
+    "origin": null,
+    "person": null,
+    "speaker": "Malki Kawa",
+    "bout": null
+   }
+  ],
+  "claim-011": [
+   {
+    "id": "115",
+    "type": "unknown",
+    "origin": null,
+    "person": null,
+    "speaker": null,
+    "bout": null
+   },
+   {
+    "id": "125",
+    "type": "unknown",
+    "origin": null,
+    "person": null,
+    "speaker": null,
+    "bout": null
+   }
+  ],
+  "claim-014": [
+   {
+    "id": "138",
+    "type": "podcast",
+    "origin": null,
+    "person": "Demetrious Johnson",
+    "speaker": "Islam Makhachev",
+    "bout": null
+   },
+   {
+    "id": "144",
+    "type": "podcast",
+    "origin": "MightyCast",
+    "person": "Demetrious Johnson",
+    "speaker": "Islam Makhachev",
+    "bout": "Topuria vs Gaethje"
+   },
+   {
+    "id": "148",
+    "type": "podcast",
+    "origin": "Demetrious Johnson's podcast",
+    "person": "Demetrious Johnson",
+    "speaker": "Islam Makhachev",
+    "bout": null
+   },
+   {
+    "id": "170",
+    "type": "interview",
+    "origin": null,
+    "person": "Demetrious Johnson",
+    "speaker": "Islam Makhachev",
+    "bout": "Topuria vs Gaethje"
+   },
+   {
+    "id": "174",
+    "type": "interview",
+    "origin": "interview with Demetrius Johnson",
+    "person": "Demetrius Johnson",
+    "speaker": "Islam Makhachev",
+    "bout": null
+   },
+   {
+    "id": "244",
+    "type": "podcast",
+    "origin": "conversation with Demetrious Johnson",
+    "person": "Demetrious Johnson",
+    "speaker": "Islam Makhachev",
+    "bout": null
+   }
+  ],
+  "claim-015.0": [
+   {
+    "id": "327",
+    "type": "interview",
+    "origin": "Helen Yee interview",
+    "person": "Helen Yee",
+    "speaker": "Merab Dvalishvili",
+    "bout": null
+   },
+   {
+    "id": "349",
+    "type": "interview",
+    "origin": "Helen Yee interview",
+    "person": "Helen Yee",
+    "speaker": "Merab Dvalishvili",
+    "bout": null
+   },
+   {
+    "id": "368",
+    "type": "interview",
+    "origin": "Helen Yee interview",
+    "person": "Helen Yee",
+    "speaker": "Merab Dvalishvili",
+    "bout": null
+   },
+   {
+    "id": "397",
+    "type": "unknown",
+    "origin": null,
+    "person": null,
+    "speaker": "Merab Dvalishvili",
+    "bout": null
+   },
+   {
+    "id": "402",
+    "type": "interview",
+    "origin": "Helen Yee interview",
+    "person": "Helen Yee",
+    "speaker": "Merab Dvalishvili",
+    "bout": null
+   }
+  ],
+  "claim-015.1": [
+   {
+    "id": "152",
+    "type": "podcast",
+    "origin": "YouTube charla con Jorge Ebro",
+    "person": "Jorge Ebro",
+    "speaker": "Jesús Gallo",
+    "bout": "Topuria vs Gaethje"
+   },
+   {
+    "id": "412",
+    "type": "podcast",
+    "origin": "YouTube channel of journalist Jorge Ebro",
+    "person": "Jorge Ebro",
+    "speaker": "Jesús Gallo",
+    "bout": null
+   }
+  ],
+  "claim-022": [
+   {
+    "id": "203",
+    "type": "interview",
+    "origin": "NV",
+    "person": null,
+    "speaker": "Daniil Donchenko",
+    "bout": "Donchenko vs Berggren"
+   },
+   {
+    "id": "208",
+    "type": "interview",
+    "origin": "NV",
+    "person": null,
+    "speaker": "Daniil Donchenko",
+    "bout": null
+   },
+   {
+    "id": "298",
+    "type": "interview",
+    "origin": "NV interview",
+    "person": null,
+    "speaker": "Daniil Donchenko",
+    "bout": null
+   },
+   {
+    "id": "300",
+    "type": "interview",
+    "origin": null,
+    "person": null,
+    "speaker": "Daniil Donchenko",
+    "bout": null
+   },
+   {
+    "id": "301",
+    "type": "interview",
+    "origin": null,
+    "person": null,
+    "speaker": "Daniil Donchenko",
+    "bout": null
+   },
+   {
+    "id": "320",
+    "type": "interview",
+    "origin": "NV",
+    "person": null,
+    "speaker": "Daniil Donchenko",
+    "bout": null
+   },
+   {
+    "id": "321",
+    "type": "interview",
+    "origin": null,
+    "person": null,
+    "speaker": "Daniil Donchenko",
+    "bout": null
+   },
+   {
+    "id": "322",
+    "type": "interview",
+    "origin": "NV",
+    "person": null,
+    "speaker": "Daniil Donchenko",
+    "bout": null
+   }
+  ],
+  "claim-032": [
+   {
+    "id": "249",
+    "type": "social_post",
+    "origin": "X / Twitter @fightluckbet",
+    "person": null,
+    "speaker": "Paul Hughes",
+    "bout": null
+   },
+   {
+    "id": "339",
+    "type": "podcast",
+    "origin": "The Ariel Helwani Show",
+    "person": "Ariel Helwani",
+    "speaker": "Paul Hughes",
+    "bout": null
+   }
+  ],
+  "claim-033": [
+   {
+    "id": "256",
+    "type": "interview",
+    "origin": "UFC on Paramount+ YouTube channel",
+    "person": null,
+    "speaker": "Arman Tsarukyan",
+    "bout": "Topuria vs Chandler"
+   },
+   {
+    "id": "269",
+    "type": "interview",
+    "origin": "MMA Fighting",
+    "person": null,
+    "speaker": "Arman Tsarukyan",
+    "bout": null
+   },
+   {
+    "id": "287",
+    "type": "unknown",
+    "origin": null,
+    "person": null,
+    "speaker": "Arman Tsarukyan",
+    "bout": "Topuria vs Chandler"
+   }
+  ],
+  "claim-035": [
+   {
+    "id": "273",
+    "type": "podcast",
+    "origin": "Green Light with Chris Long",
+    "person": "Chris Long",
+    "speaker": "Paddy Pimblett",
+    "bout": null
+   },
+   {
+    "id": "283",
+    "type": "podcast",
+    "origin": "Green Light podcast",
+    "person": null,
+    "speaker": "Paddy Pimblett",
+    "bout": "Topuria vs Pimblett"
+   }
+  ],
+  "claim-036": [
+   {
+    "id": "279",
+    "type": "interview",
+    "origin": "Red Corner MMA",
+    "person": null,
+    "speaker": "Javier Mendez",
+    "bout": "Topuria vs Makhachev"
+   },
+   {
+    "id": "311",
+    "type": "podcast",
+    "origin": "Red Corner MMA",
+    "person": null,
+    "speaker": "Javier Mendez",
+    "bout": "Topuria vs Makhachev"
+   },
+   {
+    "id": "442",
+    "type": "interview",
+    "origin": "Red Corner MMA",
+    "person": null,
+    "speaker": "Javier Mendez",
+    "bout": "Topuria vs Makhachev"
+   }
+  ],
+  "claim-037.0": [
+   {
+    "id": "291",
+    "type": "interview",
+    "origin": null,
+    "person": null,
+    "speaker": "Ilia Topuria",
+    "bout": null
+   },
+   {
+    "id": "427",
+    "type": "podcast",
+    "origin": "Charlas Adictivas",
+    "person": null,
+    "speaker": "Ilia Topuria",
+    "bout": null
+   },
+   {
+    "id": "497",
+    "type": "podcast",
+    "origin": "Charlas Adictivas",
+    "person": null,
+    "speaker": "Ilia Topuria",
+    "bout": null
+   }
+  ],
+  "claim-048": [
+   {
+    "id": "408",
+    "type": "interview",
+    "origin": "Sport24",
+    "person": null,
+    "speaker": "Usman Nurmagomedov",
+    "bout": null
+   },
+   {
+    "id": "431",
+    "type": "interview",
+    "origin": "Sport24",
+    "person": null,
+    "speaker": "Usman Nurmagomedov",
+    "bout": null
+   },
+   {
+    "id": "435",
+    "type": "interview",
+    "origin": "Sport24 interview",
+    "person": null,
+    "speaker": "Usman Nurmagomedov",
+    "bout": null
+   }
+  ],
+  "claim-054": [
+   {
+    "id": "462",
+    "type": "interview",
+    "origin": "Sports Illustrated",
+    "person": null,
+    "speaker": "Justin Gaethje",
+    "bout": "Topuria vs Gaethje"
+   },
+   {
+    "id": "467",
+    "type": "interview",
+    "origin": "Sports Illustrated",
+    "person": null,
+    "speaker": "Justin Gaethje",
+    "bout": "Topuria vs Gaethje"
+   },
+   {
+    "id": "476",
+    "type": "fight",
+    "origin": "UFC Freedom 250",
+    "person": null,
+    "speaker": null,
+    "bout": "Topuria vs Gaethje"
+   },
+   {
+    "id": "484",
+    "type": "interview",
+    "origin": "Sports Illustrated",
+    "person": null,
+    "speaker": "Justin Gaethje",
+    "bout": "Topuria vs Gaethje"
+   },
+   {
+    "id": "492",
+    "type": "interview",
+    "origin": "Sports Illustrated",
+    "person": null,
+    "speaker": "Justin Gaethje",
+    "bout": "Topuria vs Gaethje"
+   },
+   {
+    "id": "503",
+    "type": "interview",
+    "origin": "Sports Illustrated",
+    "person": null,
+    "speaker": "Justin Gaethje",
+    "bout": "Topuria vs Gaethje"
+   }
+  ],
+  "claim-055": [
+   {
+    "id": "490",
+    "type": "interview",
+    "origin": null,
+    "person": "E. Spencer Kyte",
+    "speaker": "Daniil Donchenko",
+    "bout": "Donchenko vs Soriano"
+   },
+   {
+    "id": "491",
+    "type": "interview",
+    "origin": null,
+    "person": "E. Spencer Kyte",
+    "speaker": "Daniil Donchenko",
+    "bout": "Donchenko vs Soriano"
+   },
+   {
+    "id": "494",
+    "type": "interview",
+    "origin": null,
+    "person": "E. Spencer Kyte",
+    "speaker": "Daniil Donchenko",
+    "bout": "Donchenko vs Soriano"
+   }
+  ],
+  "claim-059": [
+   {
+    "id": "516",
+    "type": "podcast",
+    "origin": "Deep Waters podcast",
+    "person": null,
+    "speaker": "Arman Tsarukyan",
+    "bout": "Topuria vs Pimblett"
+   },
+   {
+    "id": "525",
+    "type": "podcast",
+    "origin": "Deep Waters show",
+    "person": null,
+    "speaker": "Arman Tsarukyan",
+    "bout": null
+   }
+  ],
+  "claim-062": [
+   {
+    "id": "529",
+    "type": "interview",
+    "origin": "UFC.com",
+    "person": "E. Spencer Kyte",
+    "speaker": "Punahele Soriano",
+    "bout": "Donchenko vs Soriano"
+   },
+   {
+    "id": "532",
+    "type": "interview",
+    "origin": "UFC.com",
+    "person": "E. Spencer Kyte",
+    "speaker": "Punahele Soriano",
+    "bout": "Donchenko vs Soriano"
+   },
+   {
+    "id": "609",
+    "type": "interview",
+    "origin": null,
+    "person": null,
+    "speaker": "Punahele Soriano",
+    "bout": "Donchenko vs Soriano"
+   }
+  ],
+  "claim-063": [
+   {
+    "id": "533",
+    "type": "podcast",
+    "origin": "Submission Radio",
+    "person": null,
+    "speaker": "Dan Hooker",
+    "bout": "Topuria vs Nurmagomedov"
+   },
+   {
+    "id": "540",
+    "type": "podcast",
+    "origin": "Submission Radio",
+    "person": null,
+    "speaker": "Dan Hooker",
+    "bout": "Topuria vs Nurmagomedov"
+   }
+  ],
+  "claim-065": [
+   {
+    "id": "551",
+    "type": "interview",
+    "origin": "UFC on Paramount+",
+    "person": null,
+    "speaker": "Justin Gaethje",
+    "bout": "Topuria vs Gaethje"
+   },
+   {
+    "id": "556",
+    "type": "interview",
+    "origin": "UFC on Paramount",
+    "person": null,
+    "speaker": "Justin Gaethje",
+    "bout": null
+   },
+   {
+    "id": "560",
+    "type": "interview",
+    "origin": "Paramount Plus",
+    "person": null,
+    "speaker": "Justin Gaethje",
+    "bout": null
+   },
+   {
+    "id": "585",
+    "type": "unknown",
+    "origin": null,
+    "person": null,
+    "speaker": null,
+    "bout": null
+   }
+  ],
+  "claim-066": [
+   {
+    "id": "555",
+    "type": "column",
+    "origin": "MMA Mania",
+    "person": null,
+    "speaker": "MMA Mania",
+    "bout": "Donchenko vs Soriano"
+   },
+   {
+    "id": "563",
+    "type": "column",
+    "origin": "Yahoo Sports",
+    "person": "Andrew Richardson",
+    "speaker": "Andrew Richardson",
+    "bout": "Donchenko vs Soriano"
+   },
+   {
+    "id": "594",
+    "type": "column",
+    "origin": "ClutchPoints",
+    "person": null,
+    "speaker": "ClutchPoints",
+    "bout": "Donchenko vs Soriano"
+   },
+   {
+    "id": "603",
+    "type": "column",
+    "origin": "Liontips",
+    "person": null,
+    "speaker": "Liontips",
+    "bout": "Donchenko vs Soriano"
+   },
+   {
+    "id": "608",
+    "type": "column",
+    "origin": "The Stats Zone",
+    "person": "Owen Liao",
+    "speaker": "Owen Liao",
+    "bout": "Donchenko vs Soriano"
+   },
+   {
+    "id": "623",
+    "type": "column",
+    "origin": "Yahoo Sports",
+    "person": "Drake Riggs",
+    "speaker": "Drake Riggs",
+    "bout": "Donchenko vs Soriano"
+   },
+   {
+    "id": "641",
+    "type": "column",
+    "origin": "DraftKings Network",
+    "person": null,
+    "speaker": "DraftKings Network Analyst",
+    "bout": "Donchenko vs Soriano"
+   },
+   {
+    "id": "655",
+    "type": "unknown",
+    "origin": null,
+    "person": null,
+    "speaker": null,
+    "bout": null
+   },
+   {
+    "id": "673",
+    "type": "column",
+    "origin": "MMA Junkie",
+    "person": "Dan Tom",
+    "speaker": "Dan Tom",
+    "bout": "Donchenko vs Soriano"
+   },
+   {
+    "id": "681",
+    "type": "column",
+    "origin": "MMA Junkie",
+    "person": "Dan Tom",
+    "speaker": "Dan Tom",
+    "bout": "Donchenko vs Soriano"
+   },
+   {
+    "id": "692",
+    "type": "column",
+    "origin": "MMA Fighting",
+    "person": null,
+    "speaker": "MMA Fighting",
+    "bout": "Donchenko vs Soriano"
+   },
+   {
+    "id": "698",
+    "type": "column",
+    "origin": "MMA Fighting",
+    "person": null,
+    "speaker": "MMA Fighting",
+    "bout": "Donchenko vs Soriano"
+   },
+   {
+    "id": "709",
+    "type": "column",
+    "origin": "DraftKings Network",
+    "person": null,
+    "speaker": "DraftKings Network",
+    "bout": "Donchenko vs Soriano"
+   }
+  ],
+  "claim-068": [
+   {
+    "id": "572",
+    "type": "unknown",
+    "origin": null,
+    "person": null,
+    "speaker": "Alvaro Colmenero",
+    "bout": null
+   },
+   {
+    "id": "592",
+    "type": "broadcast",
+    "origin": null,
+    "person": "Álvaro Colmenero",
+    "speaker": "Álvaro Colmenero",
+    "bout": null
+   }
+  ],
+  "claim-073.0": [
+   {
+    "id": "599",
+    "type": "column",
+    "origin": "Sport.ua",
+    "person": null,
+    "speaker": "Sport.ua",
+    "bout": "Donchenko vs Soriano"
+   },
+   {
+    "id": "619",
+    "type": "column",
+    "origin": "Sport.ua",
+    "person": null,
+    "speaker": "Sport.ua writer",
+    "bout": "Donchenko vs Soriano"
+   },
+   {
+    "id": "605",
+    "type": "announcement",
+    "origin": "Sport.ua",
+    "person": null,
+    "speaker": null,
+    "bout": "Donchenko vs Soriano"
+   }
+  ],
+  "claim-073.2": [
+   {
+    "id": "687",
+    "type": "announcement",
+    "origin": "UFC Fight Night 287",
+    "person": null,
+    "speaker": null,
+    "bout": "Donchenko vs Soriano"
+   },
+   {
+    "id": "688",
+    "type": "announcement",
+    "origin": "UFC Fight Night 287",
+    "person": null,
+    "speaker": null,
+    "bout": "Donchenko vs Soriano"
+   },
+   {
+    "id": "745",
+    "type": "announcement",
+    "origin": "Sport.ua",
+    "person": null,
+    "speaker": null,
+    "bout": "Donchenko vs Soriano"
+   }
+  ],
+  "claim-073.3": [
+   {
+    "id": "683",
+    "type": "fight",
+    "origin": "UFC Paris",
+    "person": null,
+    "speaker": null,
+    "bout": "Donchenko vs Soriano"
+   },
+   {
+    "id": "714",
+    "type": "fight",
+    "origin": "UFC Paris",
+    "person": null,
+    "speaker": null,
+    "bout": "Donchenko vs Soriano"
+   },
+   {
+    "id": "737",
+    "type": "fight",
+    "origin": "UFC Paris",
+    "person": null,
+    "speaker": null,
+    "bout": "Donchenko vs Soriano"
+   }
+  ],
+  "claim-073.4": [
+   {
+    "id": "731",
+    "type": "fight",
+    "origin": "UFC Fight Night 287",
+    "person": null,
+    "speaker": null,
+    "bout": "Donchenko vs Soriano"
+   },
+   {
+    "id": "732",
+    "type": "fight",
+    "origin": "UFC Paris",
+    "person": null,
+    "speaker": null,
+    "bout": "Donchenko vs Soriano"
+   },
+   {
+    "id": "733",
+    "type": "fight",
+    "origin": "UFC Paris",
+    "person": null,
+    "speaker": null,
+    "bout": "Donchenko vs Soriano"
+   },
+   {
+    "id": "735",
+    "type": "fight",
+    "origin": "UFC Fight Night 287",
+    "person": null,
+    "speaker": null,
+    "bout": "Donchenko vs Soriano"
+   },
+   {
+    "id": "736",
+    "type": "fight",
+    "origin": "UFC Fight Night 287",
+    "person": null,
+    "speaker": null,
+    "bout": "Donchenko vs Soriano"
+   },
+   {
+    "id": "747",
+    "type": "fight",
+    "origin": "UFC Fight Night 287",
+    "person": null,
+    "speaker": null,
+    "bout": "Donchenko vs Soriano"
+   },
+   {
+    "id": "758",
+    "type": "fight",
+    "origin": "UFC Fight Night 287",
+    "person": null,
+    "speaker": null,
+    "bout": "Donchenko vs Soriano"
+   },
+   {
+    "id": "759",
+    "type": "fight",
+    "origin": "UFC Fight Night 287",
+    "person": null,
+    "speaker": null,
+    "bout": "Donchenko vs Soriano"
+   },
+   {
+    "id": "765",
+    "type": "fight",
+    "origin": "UFC Fight Night 287",
+    "person": null,
+    "speaker": null,
+    "bout": "Donchenko vs Soriano"
+   },
+   {
+    "id": "767",
+    "type": "fight",
+    "origin": "UFC Paris",
+    "person": null,
+    "speaker": null,
+    "bout": "Donchenko vs Soriano"
+   },
+   {
+    "id": "768",
+    "type": "fight",
+    "origin": "UFC Fight Night 287",
+    "person": null,
+    "speaker": null,
+    "bout": "Donchenko vs Soriano"
+   },
+   {
+    "id": "772",
+    "type": "fight",
+    "origin": "UFC Fight Night 287",
+    "person": null,
+    "speaker": null,
+    "bout": "Donchenko vs Soriano"
+   },
+   {
+    "id": "773",
+    "type": "fight",
+    "origin": "UFC Fight Night 287",
+    "person": null,
+    "speaker": null,
+    "bout": "Donchenko vs Soriano"
+   },
+   {
+    "id": "776",
+    "type": "fight",
+    "origin": "UFC Fight Night 287",
+    "person": null,
+    "speaker": null,
+    "bout": "Donchenko vs Soriano"
+   },
+   {
+    "id": "779",
+    "type": "fight",
+    "origin": "UFC Fight Night 287",
+    "person": null,
+    "speaker": null,
+    "bout": "Donchenko vs Soriano"
+   },
+   {
+    "id": "780",
+    "type": "fight",
+    "origin": "UFC Fight Night 287",
+    "person": null,
+    "speaker": null,
+    "bout": "Donchenko vs Soriano"
+   },
+   {
+    "id": "782",
+    "type": "fight",
+    "origin": "UFC Fight Night 287",
+    "person": null,
+    "speaker": null,
+    "bout": "Donchenko vs Soriano"
+   },
+   {
+    "id": "783",
+    "type": "fight",
+    "origin": "UFC Fight Night 287",
+    "person": null,
+    "speaker": null,
+    "bout": "Donchenko vs Soriano"
+   },
+   {
+    "id": "785",
+    "type": "fight",
+    "origin": "UFC Fight Night 287",
+    "person": null,
+    "speaker": null,
+    "bout": "Donchenko vs Soriano"
+   },
+   {
+    "id": "786",
+    "type": "fight",
+    "origin": "UFC Fight Night 287",
+    "person": null,
+    "speaker": null,
+    "bout": "Donchenko vs Soriano"
+   },
+   {
+    "id": "790",
+    "type": "fight",
+    "origin": "UFC Fight Night 287",
+    "person": null,
+    "speaker": null,
+    "bout": "Donchenko vs Soriano"
+   },
+   {
+    "id": "823",
+    "type": "fight",
+    "origin": "UFC Paris",
+    "person": null,
+    "speaker": null,
+    "bout": "Donchenko vs Soriano"
+   },
+   {
+    "id": "826",
+    "type": "fight",
+    "origin": "UFC Fight Night 287",
+    "person": null,
+    "speaker": null,
+    "bout": "Donchenko vs Soriano"
+   },
+   {
+    "id": "829",
+    "type": "fight",
+    "origin": "UFC Fight Night 287",
+    "person": null,
+    "speaker": null,
+    "bout": "Donchenko vs Soriano"
+   }
+  ],
+  "claim-074": [
+   {
+    "id": "601",
+    "type": "weigh_in",
+    "origin": "UFC Fight Night 287",
+    "person": null,
+    "speaker": null,
+    "bout": "Donchenko vs Soriano"
+   },
+   {
+    "id": "613",
+    "type": "weigh_in",
+    "origin": "UFC Paris weigh-ins",
+    "person": null,
+    "speaker": null,
+    "bout": "Donchenko vs Soriano"
+   },
+   {
+    "id": "625",
+    "type": "weigh_in",
+    "origin": "UFC Fight Night 287 weigh-in",
+    "person": null,
+    "speaker": null,
+    "bout": "Donchenko vs Soriano"
+   }
+  ],
+  "claim-080": [
+   {
+    "id": "620",
+    "type": "social_post",
+    "origin": "his social media",
+    "person": null,
+    "speaker": "Ilia Topuria",
+    "bout": null
+   },
+   {
+    "id": "627",
+    "type": "social_post",
+    "origin": "his social media",
+    "person": null,
+    "speaker": "Ilia Topuria",
+    "bout": "Topuria vs Gaethje"
+   },
+   {
+    "id": "632",
+    "type": "social_post",
+    "origin": "his Instagram",
+    "person": null,
+    "speaker": "Ilia Topuria",
+    "bout": null
+   },
+   {
+    "id": "636",
+    "type": "social_post",
+    "origin": null,
+    "person": null,
+    "speaker": "Ilia Topuria",
+    "bout": "Topuria vs Gaethje"
+   },
+   {
+    "id": "647",
+    "type": "statement",
+    "origin": null,
+    "person": null,
+    "speaker": "Ilia Topuria",
+    "bout": "Topuria vs Gaethje"
+   },
+   {
+    "id": "651",
+    "type": "social_post",
+    "origin": "his Instagram",
+    "person": null,
+    "speaker": "Ilia Topuria",
+    "bout": null
+   },
+   {
+    "id": "659",
+    "type": "social_post",
+    "origin": "his Instagram",
+    "person": null,
+    "speaker": "Ilia Topuria",
+    "bout": "Topuria vs Gaethje"
+   },
+   {
+    "id": "666",
+    "type": "social_post",
+    "origin": "Instagram",
+    "person": null,
+    "speaker": "Ilia Topuria",
+    "bout": "Topuria vs Gaethje"
+   },
+   {
+    "id": "675",
+    "type": "social_post",
+    "origin": "his Instagram",
+    "person": null,
+    "speaker": "Ilia Topuria",
+    "bout": null
+   },
+   {
+    "id": "682",
+    "type": "social_post",
+    "origin": "his Instagram account",
+    "person": null,
+    "speaker": "Ilia Topuria",
+    "bout": "Topuria vs Gaethje"
+   },
+   {
+    "id": "697",
+    "type": "social_post",
+    "origin": "his Instagram",
+    "person": null,
+    "speaker": "Ilia Topuria",
+    "bout": "Topuria vs Gaethje"
+   },
+   {
+    "id": "717",
+    "type": "social_post",
+    "origin": "his Instagram",
+    "person": null,
+    "speaker": "Ilia Topuria",
+    "bout": null
+   }
+  ],
+  "claim-084": [
+   {
+    "id": "653",
+    "type": "unknown",
+    "origin": null,
+    "person": null,
+    "speaker": null,
+    "bout": null
+   },
+   {
+    "id": "686",
+    "type": "press_conference",
+    "origin": "UFC Fight Night 287",
+    "person": null,
+    "speaker": null,
+    "bout": "Donchenko vs Soriano"
+   }
+  ],
+  "claim-090": [
+   {
+    "id": "693",
+    "type": "statement",
+    "origin": "his essay",
+    "person": null,
+    "speaker": "Ilia Topuria",
+    "bout": "Topuria vs Gaethje"
+   },
+   {
+    "id": "702",
+    "type": "social_post",
+    "origin": "his social media video/essay",
+    "person": null,
+    "speaker": "Ilia Topuria",
+    "bout": null
+   },
+   {
+    "id": "723",
+    "type": "statement",
+    "origin": "his website",
+    "person": null,
+    "speaker": "Ilia Topuria",
+    "bout": "Topuria vs Gaethje"
+   },
+   {
+    "id": "728",
+    "type": "social_post",
+    "origin": "Instagram",
+    "person": null,
+    "speaker": "Ilia Topuria",
+    "bout": null
+   },
+   {
+    "id": "755",
+    "type": "statement",
+    "origin": "his website",
+    "person": null,
+    "speaker": "Ilia Topuria",
+    "bout": "Topuria vs Gaethje"
+   },
+   {
+    "id": "771",
+    "type": "statement",
+    "origin": "Marca",
+    "person": null,
+    "speaker": "Ilia Topuria",
+    "bout": null
+   },
+   {
+    "id": "788",
+    "type": "social_post",
+    "origin": null,
+    "person": null,
+    "speaker": "Ilia Topuria",
+    "bout": null
+   },
+   {
+    "id": "875",
+    "type": "statement",
+    "origin": "letter to his son",
+    "person": null,
+    "speaker": "Ilia Topuria",
+    "bout": null
+   }
+  ],
+  "claim-093": [
+   {
+    "id": "740",
+    "type": "unknown",
+    "origin": null,
+    "person": null,
+    "speaker": null,
+    "bout": null
+   },
+   {
+    "id": "789",
+    "type": "post_fight_interview",
+    "origin": "UFC Fight Night 287",
+    "person": null,
+    "speaker": "Daniil Donchenko",
+    "bout": "Donchenko vs Soriano"
+   },
+   {
+    "id": "794",
+    "type": "post_fight_interview",
+    "origin": "UFC Fight Night 287",
+    "person": null,
+    "speaker": "Daniil Donchenko",
+    "bout": "Donchenko vs Rodriguez"
+   },
+   {
+    "id": "797",
+    "type": "post_fight_interview",
+    "origin": "UFC Fight Night 287",
+    "person": null,
+    "speaker": "Daniil Donchenko",
+    "bout": "Donchenko vs Soriano"
+   },
+   {
+    "id": "813",
+    "type": "post_fight_interview",
+    "origin": "UFC Fight Night 287 backstage interview",
+    "person": null,
+    "speaker": "Daniil Donchenko",
+    "bout": "Donchenko vs Soriano"
+   },
+   {
+    "id": "851",
+    "type": "post_fight_interview",
+    "origin": "UFC Paris",
+    "person": null,
+    "speaker": "Daniil Donchenko",
+    "bout": "Donchenko vs Soriano"
+   }
+  ],
+  "claim-094.0": [
+   {
+    "id": "744",
+    "type": "press_conference",
+    "origin": "UFC Paris media room",
+    "person": null,
+    "speaker": "Daniil Donchenko",
+    "bout": "Donchenko vs Soriano"
+   },
+   {
+    "id": "774",
+    "type": "press_conference",
+    "origin": "UFC Paris media room",
+    "person": null,
+    "speaker": "Daniil Donchenko",
+    "bout": "Donchenko vs Soriano"
+   }
+  ],
+  "claim-095": [
+   {
+    "id": "746",
+    "type": "post_fight_interview",
+    "origin": "UFC Paris",
+    "person": "Michael Bisping",
+    "speaker": "Daniil Donchenko",
+    "bout": "Donchenko vs Soriano"
+   },
+   {
+    "id": "778",
+    "type": "post_fight_interview",
+    "origin": "UFC Fight Night 287 in Paris",
+    "person": "Michael Bisping",
+    "speaker": "Daniil Donchenko",
+    "bout": null
+   }
+  ],
+  "claim-097": [
+   {
+    "id": "798",
+    "type": "broadcast",
+    "origin": "UFC broadcast commentary",
+    "person": "Jon Anik",
+    "speaker": "Jon Anik",
+    "bout": "Topuria vs Gaethje"
+   },
+   {
+    "id": "803",
+    "type": "podcast",
+    "origin": "Anik Bros YouTube channel",
+    "person": "Jon Anik",
+    "speaker": "Jon Anik",
+    "bout": "Topuria vs Gaethje"
+   },
+   {
+    "id": "807",
+    "type": "podcast",
+    "origin": "Anik Bros YouTube channel",
+    "person": "Jon Anik",
+    "speaker": "Jon Anik",
+    "bout": "Topuria vs Gaethje"
+   },
+   {
+    "id": "828",
+    "type": "podcast",
+    "origin": "Anik Bros. YouTube channel",
+    "person": "Jon Anik",
+    "speaker": "Jon Anik",
+    "bout": "Topuria vs Gaethje"
+   },
+   {
+    "id": "833",
+    "type": "podcast",
+    "origin": "Anik Bros YouTube channel",
+    "person": "Jon Anik",
+    "speaker": "Jon Anik",
+    "bout": "Topuria vs Gaethje"
+   },
+   {
+    "id": "862",
+    "type": "podcast",
+    "origin": "Anik Bros YouTube channel",
+    "person": "Jon Anik",
+    "speaker": "Jon Anik",
+    "bout": "Topuria vs Gaethje"
+   }
+  ],
+  "claim-099": [
+   {
+    "id": "820",
+    "type": "interview",
+    "origin": "Sherdog video interview",
+    "person": "Eze Obasi",
+    "speaker": "Paddy Pimblett",
+    "bout": "Topuria vs Pimblett"
+   },
+   {
+    "id": "838",
+    "type": "interview",
+    "origin": "Eze Talks Sports",
+    "person": null,
+    "speaker": "Paddy Pimblett",
+    "bout": "Topuria vs Pimblett"
+   },
+   {
+    "id": "843",
+    "type": "interview",
+    "origin": "Eze Obas interview",
+    "person": "Eze Obas",
+    "speaker": "Paddy Pimblett",
+    "bout": "Topuria vs Pimblett"
+   },
+   {
+    "id": "871",
+    "type": "interview",
+    "origin": "Eze Talks Sports",
+    "person": null,
+    "speaker": "Paddy Pimblett",
+    "bout": "Topuria vs Pimblett"
+   },
+   {
+    "id": "892",
+    "type": "interview",
+    "origin": "DAZN",
+    "person": null,
+    "speaker": "Paddy Pimblett",
+    "bout": "Topuria vs Pimblett"
+   },
+   {
+    "id": "913",
+    "type": "interview",
+    "origin": "an interview during a boxing event",
+    "person": null,
+    "speaker": "Paddy Pimblett",
+    "bout": "Topuria vs Pimblett"
+   },
+   {
+    "id": "921",
+    "type": "interview",
+    "origin": "Eze Obas interview",
+    "person": "Eze Obas",
+    "speaker": "Paddy Pimblett",
+    "bout": "Topuria vs Pimblett"
+   },
+   {
+    "id": "953",
+    "type": "interview",
+    "origin": "Eze Obas interview",
+    "person": "Eze Obas",
+    "speaker": "Paddy Pimblett",
+    "bout": "Topuria vs Pimblett"
+   }
+  ],
+  "claim-100": [
+   {
+    "id": "850",
+    "type": "podcast",
+    "origin": "Suga O'Malley podcast",
+    "person": "Sean O'Malley",
+    "speaker": "Tim Welch",
+    "bout": "Topuria vs Pimblett"
+   },
+   {
+    "id": "896",
+    "type": "podcast",
+    "origin": "Sean O'Malley's podcast",
+    "person": null,
+    "speaker": "Sean O'Malley",
+    "bout": "Topuria vs Pimblett"
+   }
+  ],
+  "claim-104": [
+   {
+    "id": "866",
+    "type": "broadcast",
+    "origin": null,
+    "person": null,
+    "speaker": "Joe Rogan",
+    "bout": "Topuria vs Gaethje"
+   },
+   {
+    "id": "917",
+    "type": "podcast",
+    "origin": "JRE MMA Show",
+    "person": "Joe Rogan",
+    "speaker": "Joe Rogan",
+    "bout": "Topuria vs Gaethje"
+   },
+   {
+    "id": "926",
+    "type": "podcast",
+    "origin": "JRE Show",
+    "person": "Joe Rogan",
+    "speaker": "Joe Rogan",
+    "bout": null
+   }
+  ],
+  "claim-105": [
+   {
+    "id": "879",
+    "type": "podcast",
+    "origin": "The Fighter vs. The Writer podcast",
+    "person": null,
+    "speaker": "Matt Brown",
+    "bout": "Topuria vs Gaethje"
+   },
+   {
+    "id": "901",
+    "type": "interview",
+    "origin": "MMAFighting",
+    "person": null,
+    "speaker": "Matt Brown",
+    "bout": "Topuria vs Gaethje"
+   },
+   {
+    "id": "905",
+    "type": "podcast",
+    "origin": "The Fighter vs. The Writer podcast",
+    "person": null,
+    "speaker": "Matt Brown",
+    "bout": "Topuria vs Gaethje"
+   }
+  ],
+  "claim-107": [
+   {
+    "id": "887",
+    "type": "social_post",
+    "origin": "X (Twitter)",
+    "person": null,
+    "speaker": "Josh Hokit",
+    "bout": null
+   },
+   {
+    "id": "909",
+    "type": "social_post",
+    "origin": "X posts",
+    "person": null,
+    "speaker": "Josh Hokit",
+    "bout": null
+   }
+  ],
+  "claim-109": [
+   {
+    "id": "930",
+    "type": "statement",
+    "origin": "TBC",
+    "person": null,
+    "speaker": "Ilia Topuria",
+    "bout": null
+   },
+   {
+    "id": "968",
+    "type": "statement",
+    "origin": "TBC advertisement",
+    "person": null,
+    "speaker": "Ilia Topuria",
+    "bout": null
+   }
+  ],
+  "claim-110": [
+   {
+    "id": "933",
+    "type": "column",
+    "origin": "Sport.ua",
+    "person": null,
+    "speaker": "Sport.ua writer",
+    "bout": null
+   },
+   {
+    "id": "934",
+    "type": "column",
+    "origin": "Sport.ua",
+    "person": null,
+    "speaker": "Sport.ua writer",
+    "bout": null
+   }
+  ],
+  "claim-112": [
+   {
+    "id": "944",
+    "type": "podcast",
+    "origin": "Demetrious Johnson's podcast",
+    "person": "Demetrious Johnson",
+    "speaker": "Justin Gaethje",
+    "bout": "Topuria vs Gaethje"
+   },
+   {
+    "id": "948",
+    "type": "unknown",
+    "origin": null,
+    "person": null,
+    "speaker": null,
+    "bout": null
+   },
+   {
+    "id": "963",
+    "type": "podcast",
+    "origin": null,
+    "person": "Demetrious Johnson",
+    "speaker": "Justin Gaethje",
+    "bout": "Topuria vs Gaethje"
+   },
+   {
+    "id": "977",
+    "type": "podcast",
+    "origin": "Demetrious Johnson's show",
+    "person": "Demetrious Johnson",
+    "speaker": "Justin Gaethje",
+    "bout": "Topuria vs Gaethje"
+   },
+   {
+    "id": "983",
+    "type": "interview",
+    "origin": null,
+    "person": null,
+    "speaker": "Justin Gaethje",
+    "bout": "Topuria vs Gaethje"
+   },
+   {
+    "id": "1040",
+    "type": "podcast",
+    "origin": "UFC legend Demetrious Johnson's show",
+    "person": "Demetrious Johnson",
+    "speaker": "Justin Gaethje",
+    "bout": "Topuria vs Gaethje"
+   },
+   {
+    "id": "1050",
+    "type": "unknown",
+    "origin": null,
+    "person": null,
+    "speaker": null,
+    "bout": null
+   },
+   {
+    "id": "1072",
+    "type": "podcast",
+    "origin": "interview with Demetrious Johnson",
+    "person": "Demetrious Johnson",
+    "speaker": "Justin Gaethje",
+    "bout": "Topuria vs Gaethje"
+   },
+   {
+    "id": "1093",
+    "type": "unknown",
+    "origin": null,
+    "person": null,
+    "speaker": null,
+    "bout": null
+   }
+  ],
+  "claim-113": [
+   {
+    "id": "958",
+    "type": "interview",
+    "origin": "Jim Rome interview",
+    "person": "Jim Rome",
+    "speaker": "Dana White",
+    "bout": null
+   },
+   {
+    "id": "972",
+    "type": "interview",
+    "origin": "Jim Rome interview",
+    "person": "Jim Rome",
+    "speaker": "Dana White",
+    "bout": null
+   },
+   {
+    "id": "991",
+    "type": "podcast",
+    "origin": "The Jim Rome Show",
+    "person": "Jim Rome",
+    "speaker": "Dana White",
+    "bout": null
+   },
+   {
+    "id": "998",
+    "type": "podcast",
+    "origin": "The Jim Rome Show",
+    "person": "Jim Rome",
+    "speaker": "Dana White",
+    "bout": null
+   },
+   {
+    "id": "1008",
+    "type": "interview",
+    "origin": "Jim Rome interview",
+    "person": "Jim Rome",
+    "speaker": "Dana White",
+    "bout": null
+   },
+   {
+    "id": "1020",
+    "type": "podcast",
+    "origin": "The Jim Rome Show",
+    "person": "Jim Rome",
+    "speaker": "Dana White",
+    "bout": null
+   },
+   {
+    "id": "1031",
+    "type": "statement",
+    "origin": null,
+    "person": null,
+    "speaker": "Dana White",
+    "bout": null
+   },
+   {
+    "id": "1036",
+    "type": "podcast",
+    "origin": "The Jim Rome Show",
+    "person": "Jim Rome",
+    "speaker": "Dana White",
+    "bout": null
+   },
+   {
+    "id": "1058",
+    "type": "interview",
+    "origin": "The Jim Rome Show",
+    "person": "Jim Rome",
+    "speaker": "Dana White",
+    "bout": null
+   },
+   {
+    "id": "1076",
+    "type": "podcast",
+    "origin": "Jim Rome interview",
+    "person": "Jim Rome",
+    "speaker": "Dana White",
+    "bout": null
+   }
+  ],
+  "claim-116": [
+   {
+    "id": "1016",
+    "type": "interview",
+    "origin": "MMA Junkie",
+    "person": null,
+    "speaker": "Eddie Alvarez",
+    "bout": "Topuria vs Gaethje"
+   },
+   {
+    "id": "1027",
+    "type": "podcast",
+    "origin": "MMA Junkie",
+    "person": null,
+    "speaker": "Eddie Alvarez",
+    "bout": "Topuria vs Gaethje"
+   }
+  ],
+  "claim-124": [
+   {
+    "id": "1125",
+    "type": "interview",
+    "origin": "Champion",
+    "person": null,
+    "speaker": "Daniil Donchenko",
+    "bout": "Donchenko vs Rodriguez"
+   },
+   {
+    "id": "1129",
+    "type": "interview",
+    "origin": "Champion",
+    "person": null,
+    "speaker": "Daniil Donchenko",
+    "bout": "Donchenko vs Rodriguez"
+   }
+  ],
+  "claim-125": [
+   {
+    "id": "1146",
+    "type": "interview",
+    "origin": "Ushatayka",
+    "person": null,
+    "speaker": "Islam Makhachev",
+    "bout": null
+   },
+   {
+    "id": "1150",
+    "type": "interview",
+    "origin": null,
+    "person": null,
+    "speaker": "Islam Makhachev",
+    "bout": null
+   },
+   {
+    "id": "1160",
+    "type": "interview",
+    "origin": "Ushatayka",
+    "person": null,
+    "speaker": "Islam Makhachev",
+    "bout": null
+   }
+  ]
+ },
+ "extractor_replicate": {
+  "kind": 293,
+  "occasion_type": 291,
+  "origin": 273,
+  "origin_person": 297,
+  "speaker": 291,
+  "bout": 284,
+  "key_quote": 269,
+  "lead_fact_identical": 183
+ }
+}

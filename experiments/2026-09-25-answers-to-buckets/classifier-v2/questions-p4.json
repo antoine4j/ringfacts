@@ -1,0 +1,75 @@
+{
+ "role": {
+  "type": "choice",
+  "instructions": "What is the watched fighter in this article? Judge by what the article DOES with him, not by whether his name appears. 'One of several subjects' means the piece reports on him and one or two others together (both fighters of his bout, say); 'one of many on a list' means a whole card, ranking or roundup where he is one entry.",
+  "criteria": {
+   "the_subject": "The article is about him. He is the person it reports on.",
+   "one_of_several_subjects": "He shares the article with others - it reports on two or more people and none of them is the single focus.",
+   "one_of_many_on_a_list": "He is one entry among many - a whole-card preview or picks piece, a power ranking, a roundup, a list of fighters - where his part is one section like everyone else's and the piece is not about him or his fight in particular.",
+   "the_one_being_talked_about": "Somebody else is the speaker or the actor, and the watched fighter is who their callout, assessment, defence or prediction is ABOUT. The story may be framed around the other person; its new claim is still about him.",
+   "background": "His past fight, loss or record appears only as context in somebody else's story, and nobody makes a new claim about him. Test: delete every sentence naming him - if the story still stands, he is background.",
+   "mentioned_only": "His name appears in a list, a sub-heading or a single passing line, and nothing at all is said about him.",
+   "not_in_the_article_body": "He is not in the article at all - his name is only in a sidebar, a related-links block or site navigation that came in with the text.",
+   "not_in_this_list": "None of the above fits. Choose this only when a fitting answer exists but is not in this list - not when you are merely unsure."
+  }
+ },
+ "speaker": {
+  "type": "choice",
+  "instructions": "Who is the source of the NEW thing this article carries about the watched fighter? If several, the one whose words or act the headline is built on. Careful: 'his' means the WATCHED fighter's - another fighter's manager is not his camp.",
+  "criteria": {
+   "himself": "The watched fighter speaking or posting.",
+   "his_coach_or_camp": "His own head coach, trainer, manager, doctor or promoter - the people who work for HIM.",
+   "opponent_or_their_camp": "A fighter he is booked against or publicly linked to a fight with, or that fighter's coach or manager.",
+   "champion_or_promotion": "The champion of his division, or the promotion and its officials (the UFC, Dana White, a matchmaker).",
+   "another_fighter": "Any other fighter, not booked or linked with him, however famous.",
+   "pundit_or_journalist": "A broadcaster, commentator, analyst, podcaster or journalist speaking in their own voice - or the article's own writer.",
+   "nobody": "No person is the source - the article reports an event or a result, or nothing at all.",
+   "not_in_this_list": "None of the above fits. Choose this only when a fitting answer exists but is not in this list - not when you are merely unsure."
+  }
+ },
+ "act": {
+  "type": "choice",
+  "instructions": "What is being done with respect to the watched fighter? The 'about him' test: is the new information ABOUT him, or only spoken BY him or NEAR him?",
+  "criteria": {
+   "calling_him_out": "Asking to fight him, challenging him, or demanding him as an opponent.",
+   "assessing_him": "A judgement of him - his ceiling, his ranking, his chances, his condition, his game, what he should do next - by a named person with standing or by the writer.",
+   "answering_for_him": "Replying on his behalf, or he himself replying, to an attack, a callout or a claim aimed at him.",
+   "steering_him_elsewhere": "Saying he should fight somebody else, or advising him about his division or weight class, without assessing him.",
+   "he_speaks_of_himself": "He talks about his own life, past, condition, plans or an upcoming fight of his - the news is about him, in his words.",
+   "he_speaks_of_others": "He comments on another fighter, someone else's fight, or the sport. The words are his, the subject is not him.",
+   "he_fought": "This fight of his is the article's news - the rounds, the finish, the decision, the scorecards, how he looked in it.",
+   "his_fight_week": "Routine build-up BEFORE his fight - a weigh-in, a staredown, a press conference, a media day, a how-to-watch.",
+   "naming_him_in_passing": "Mentioning him without saying anything substantial about him - one line, a list, a comparison, a past result as backdrop.",
+   "nothing": "None of these happens. Nobody acts on him or speaks about him in any of these ways.",
+   "not_in_this_list": "None of the above fits. Choose this only when a fitting answer exists but is not in this list - not when you are merely unsure."
+  }
+ },
+ "kind": {
+  "type": "choice",
+  "instructions": "What kind of news is this about the watched fighter, and how firm is it? Judge the news this article itself carries, not events it recalls.",
+  "criteria": {
+   "booking_official": "A specific fight for him is booked - and the promotion or his own camp announced it, and that announcement is what this article reports.",
+   "booking_reported": "A specific fight for him is stated as settled by an outlet in its own voice, with no official announcement behind it.",
+   "booking_rumoured": "A fight for him is hedged - in talks, targeted, expected, set to, sources say, being considered.",
+   "result": "The outcome of a fight he fought in the last few days.",
+   "injury_or_medical": "His own new injury, surgery, suspension or medical status.",
+   "fight_week": "A weigh-in, a faceoff, a press conference, a preview of a fight already known - the fight is not being announced here.",
+   "quote": "He, or someone notable, says something substantial about him - an opinion, an assessment, a callout, a stated intention. No event.",
+   "prediction": "A forecast or a pick about his fight or his path.",
+   "lifestyle": "His personal life, family, past, hobbies, home - not career.",
+   "other_career_fact": "A career fact fitting nothing else - a contract, a camp change, a ranking move, a signing.",
+   "no_news_about_him": "Nothing has happened to him, nothing is said about him and nothing is forecast about him.",
+   "not_in_this_list": "None of the above fits. Choose this only when a fitting answer exists but is not in this list - not when you are merely unsure."
+  }
+ },
+ "depth": {
+  "type": "choice",
+  "instructions": "How much does this article actually say about the watched fighter? Judge only this article's own text about HIM. Do not judge whether a follower has already heard it elsewhere - only whether it is here.",
+  "criteria": {
+   "substantial": "It carries real content about him - several sentences of his words, a developed judgement of him, a described event, a concrete plan or fact.",
+   "a_line_or_two": "It says something about him but only a line or two - a passing remark, a single generic sentence, a small detail such as making weight.",
+   "nothing_about_him": "It carries no content about him at all - a caption, a stub, a listing, a page where he is only a name.",
+   "not_in_this_list": "None of the above fits. Choose this only when a fitting answer exists but is not in this list - not when you are merely unsure."
+  }
+ }
+}
