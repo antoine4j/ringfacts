@@ -205,11 +205,11 @@ function claim(s){
 }
 function render(){
   const f=$("#f").value, k=$("#k").value, b=$("#b").value, q=$("#q").value.trim().toLowerCase();
-  const single=$("#single").checked, doubt=$("#doubt").checked, unruled=$("#unruled").checked, flagged=$("#flagged").checked;
+  const size=$("#size").value, doubt=$("#doubt").checked, unruled=$("#unruled").checked, flagged=$("#flagged").checked;
   let n=0, na=0; const parts=[];
   for(const s of DATA){
     if(f&&s.f!==f) continue; if(k&&!s.kinds.includes(k)) continue; if(b&&!s.buckets.includes(+b)) continue;
-    if(single&&s.n!==1) continue; if(doubt&&!s.fable.pass1_doubts.length) continue; if(unruled&&s.ruled) continue; if(flagged&&!s.flagged) continue;
+    if(size==="1"&&s.n!==1) continue; if(size==="2"&&s.n<2) continue; if(doubt&&!s.fable.pass1_doubts.length) continue; if(unruled&&s.ruled) continue; if(flagged&&!s.flagged) continue;
     if(q&&!(s.key.includes(q)||s.cards.some(c=>c.id===q.replace("#","")||c.t.toLowerCase().includes(q)||(c.ex.claim||"").toLowerCase().includes(q)||c.o.toLowerCase().includes(q)))) continue;
     n++; na+=s.n; parts.push(claim(s));
   }
@@ -248,7 +248,7 @@ Yellow "suspected" chips are what the data alone suggests, not labels, until rul
 <select id="f"><option value="">all fighters</option>{opts(fighters)}</select>
 <select id="k"><option value="">any kind</option>{opts(kinds, lambda k: KLABEL.get(k, k))}</select>
 <select id="b"><option value="">any bucket</option>{opts([1,2,3], lambda b: f"bucket {b}")}</select>
-<label class="ck"><input type="checkbox" id="single">singletons</label>
+<select id="size"><option value="">any size</option><option value="1">singletons</option><option value="2">2+ articles</option></select>
 <label class="ck"><input type="checkbox" id="doubt">Fable had doubts</label>
 <label class="ck"><input type="checkbox" id="unruled">not ruled</label>
 <label class="ck"><input type="checkbox" id="flagged">suspected body issue</label>
