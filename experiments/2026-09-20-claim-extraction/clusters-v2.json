@@ -1,13 +1,6 @@
 {
- "built": "2026-09-25",
- "version": 3,
+ "built": "2026-09-20",
  "method": "Fable subagents: window clustering (lead) -> description merge -> full-read of unresolved pairs and split candidates",
- "note": "v3 = v2 (Fable's three-pass grouping) with Anton's rulings applied after his story-by-story review of every multi-article story, 2026-09-23..25 (verdicts.md). 45 of 48 multi-article stories confirmed as built; two splits and one merge below. Singleton stories not yet reviewed. v2 kept as clusters-v2.json; v1 as clusters-v1-chained.json.",
- "applied_rulings": [
-  "story-094 split: #743 alone (empty 112.ua mention); #744 + #774 are the press conference — ruled 2026-09-23",
-  "story-015 split by occasion: Merab/Helen Yee (#327 #349 #368 #397 #402, #402 because Merab is its lead) apart from Gallo/Jorge Ebro YouTube (#152 #412) — ruled 2026-09-25",
-  "predictions merge: story-066, story-072, story-075, story-077, story-081, story-082, story-086, story-088, story-089, story-091 -> story-066, 13 articles — ruled 2026-09-23 (by type of news, not occasion: a genre every outlet reproduces at will)"
- ],
  "clusters": [
   {
    "key": "story-000",
@@ -188,34 +181,23 @@
    ]
   },
   {
-   "key": "story-015.0",
+   "key": "story-015",
    "fighter": "Ilia Topuria",
    "articles": [
+    "152",
     "327",
     "349",
     "368",
     "397",
-    "402"
-   ],
-   "from": [
-    "story-015"
-   ],
-   "descriptions": [
-    "Merab Dvalishvili tells Helen Yee that Topuria is fine, very positive, enjoying life and will come back to take his belt"
-   ]
-  },
-  {
-   "key": "story-015.1",
-   "fighter": "Ilia Topuria",
-   "articles": [
-    "152",
+    "402",
     "412"
    ],
-   "from": [
-    "story-015"
-   ],
    "descriptions": [
-    "Jesus Gallo (Topuria's S&C coach) on Jorge Ebro's YouTube: physically ready by December, 2027 the likely return (written up Aug 12 and Aug 27)"
+    "Jesus Gallo (Topuria's S&C coach) talks to Jorge Ebro on YouTube about Topuria's recovery from facial fractures and a likely return date",
+    "Jesus Gallo (Topuria's physical trainer, Jorge Ebro YouTube interview) says Topuria could be physically ready by December but 2027 is the likely return",
+    "Trainer Jesus Gallo (on Jorge Ebro's YouTube) says Topuria could be physically ready by December but 2027 is more likely",
+    "Merab Dvalishvili tells Helen Yee that Topuria is fine, very positive, enjoying life and will come back to take his belt",
+    "Merab Dvalishvili gives an update on Topuria: he is fine, enjoying life, and will come back and reclaim his belt"
    ]
   },
   {
@@ -771,33 +753,11 @@
    "fighter": "Daniil Donchenko",
    "articles": [
     "555",
-    "563",
-    "594",
-    "603",
-    "608",
-    "623",
-    "641",
-    "655",
-    "673",
-    "681",
-    "692",
-    "698",
-    "709"
-   ],
-   "from": [
-    "story-066",
-    "story-072",
-    "story-075",
-    "story-077",
-    "story-081",
-    "story-082",
-    "story-086",
-    "story-088",
-    "story-089",
-    "story-091"
+    "563"
    ],
    "descriptions": [
-    "Predictions of the Donchenko vs Soriano fight (UFC Paris): picks, odds and tips from every outlet — one story by type of news, Anton's rule"
+    "MMA Mania predictions/odds column for UFC Paris main card (syndicated on Yahoo)",
+    "MMA Mania's UFC Paris main-card predictions/odds column, syndicated to Yahoo"
    ]
   },
   {
@@ -850,6 +810,16 @@
    "descriptions": [
     "KHON2 (Hawaii) interview with Soriano from Xtreme Couture about injuries, car accident and daughter's birthday; Donchenko only named as opponent",
     "Soriano interview from Xtreme Couture (KHON2) about leg tears, car accident and daughter's birthday delaying his return"
+   ]
+  },
+  {
+   "key": "story-072",
+   "fighter": "Daniil Donchenko",
+   "articles": [
+    "594"
+   ],
+   "descriptions": [
+    "ClutchPoints prediction and odds column for Donchenko vs Soriano"
    ]
   },
   {
@@ -954,6 +924,16 @@
    ]
   },
   {
+   "key": "story-075",
+   "fighter": "Daniil Donchenko",
+   "articles": [
+    "603"
+   ],
+   "descriptions": [
+    "Liontips betting tip for Donchenko vs Soriano"
+   ]
+  },
+  {
    "key": "story-076",
    "fighter": "Ilia Topuria",
    "articles": [
@@ -961,6 +941,16 @@
    ],
    "descriptions": [
     "Judoka Joaquin Gomis on the Ground and Pound podcast praises Topuria's grappling level and calls the Gaethje loss a 1% chance"
+   ]
+  },
+  {
+   "key": "story-077",
+   "fighter": "Daniil Donchenko",
+   "articles": [
+    "608"
+   ],
+   "descriptions": [
+    "The Stats Zone preview and prediction for Donchenko vs Soriano with event facts"
    ]
   },
   {
@@ -1006,6 +996,26 @@
    ]
   },
   {
+   "key": "story-081",
+   "fighter": "Daniil Donchenko",
+   "articles": [
+    "623"
+   ],
+   "descriptions": [
+    "Uncrowned/Yahoo UFC Paris preview and predictions focused on Hooker vs Parnasse"
+   ]
+  },
+  {
+   "key": "story-082",
+   "fighter": "Daniil Donchenko",
+   "articles": [
+    "641"
+   ],
+   "descriptions": [
+    "DraftKings Network best bets for UFC Paris, led by Hooker vs Parnasse"
+   ]
+  },
+  {
    "key": "story-083",
    "fighter": "Ilia Topuria",
    "articles": [
@@ -1039,6 +1049,16 @@
    ]
   },
   {
+   "key": "story-086",
+   "fighter": "Daniil Donchenko",
+   "articles": [
+    "655"
+   ],
+   "descriptions": [
+    "BetMGM predictions and odds page for Donchenko vs Soriano"
+   ]
+  },
+  {
    "key": "story-087",
    "fighter": "Daniil Donchenko",
    "articles": [
@@ -1047,6 +1067,29 @@
    "descriptions": [
     "Donchenko tells Bowks Talking Bouts (via BJPenn) that the winner of the Soriano fight should enter the top 15; sizes up Soriano's power",
     "Donchenko interview on Bowks Talking Bouts: says whoever finishes the fight gets a top-15 ranking, breaks down Soriano's decision-heavy streak"
+   ]
+  },
+  {
+   "key": "story-088",
+   "fighter": "Daniil Donchenko",
+   "articles": [
+    "673",
+    "681"
+   ],
+   "descriptions": [
+    "MMA Junkie analyst Dan Tom picks Soriano to upset Donchenko by R2 KO, syndicated to Yahoo",
+    "MMA Junkie/Yahoo (Dan Tom) prediction and pick for Donchenko vs Soriano"
+   ]
+  },
+  {
+   "key": "story-089",
+   "fighter": "Daniil Donchenko",
+   "articles": [
+    "692",
+    "698"
+   ],
+   "descriptions": [
+    "MMA Fighting staff predictions for the whole UFC Paris card (Donchenko vs Soriano mentioned as one of the main-card bouts)"
    ]
   },
   {
@@ -1065,6 +1108,16 @@
    "descriptions": [
     "Topuria publishes a long 9-part essay ('This Is Me' / exclusive for Marca, Saturday 5 Sep) about his childhood, the loss, his broken face and wanting to return without erasing the defeat",
     "Estadio Deportivo recap of Topuria's letter to his son / essay after the Gaethje loss, padded with his older quotes on handling defeat"
+   ]
+  },
+  {
+   "key": "story-091",
+   "fighter": "Daniil Donchenko",
+   "articles": [
+    "709"
+   ],
+   "descriptions": [
+    "DraftKings Network betting prediction and pick for Donchenko vs Soriano (Donchenko -238, pick: Donchenko by finish)"
    ]
   },
   {
@@ -1093,30 +1146,16 @@
    ]
   },
   {
-   "key": "story-094.0",
+   "key": "story-094",
    "fighter": "Daniil Donchenko",
    "articles": [
+    "743",
     "744",
     "774"
    ],
-   "from": [
-    "story-094"
-   ],
    "descriptions": [
-    "Post-fight press conference: Donchenko's statements after beating Soriano (one outlet, two copies)"
-   ]
-  },
-  {
-   "key": "story-094.1",
-   "fighter": "Daniil Donchenko",
-   "articles": [
-    "743"
-   ],
-   "from": [
-    "story-094"
-   ],
-   "descriptions": [
-    "112.ua one-line mention that Donchenko fought at UFC Paris — an empty rewrite, no statement"
+    "Sport.ua roundup of Donchenko's post-fight statements in Paris (thanks to Ukrainians and other remarks)",
+    "112.ua (via Sport.ua) roundup of Donchenko's Paris appearance: weigh-in, octagon and press conference"
    ]
   },
   {
@@ -1581,5 +1620,7 @@
    "why": "687 is Sport.ua's live page for Donchenko vs Soriano at UFC Fight Night 287, 'Оновлено 06 вересня 2026, 02:00' (post-fight) and carrying the result teaser 'Українець завоював четверту звитягу поспіль'; 683 is the same card's results with 'Daniil Donchenko def. Punahele Soriano via unanimous decision' -- same fight night, but captured 687 body is preview text only"
   }
  ],
- "unresolved_conflicts": []
+ "unresolved_conflicts": [],
+ "version": 2,
+ "note": "v2: 8 suspect clusters re-read in full; 2 split. v1 (chained) kept as clusters-v1-chained.json"
 }

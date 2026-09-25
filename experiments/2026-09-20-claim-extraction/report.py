@@ -89,7 +89,7 @@ for a, b in diff:
         dis[story_of[a]]["merge"].append([a, b, story_of[b], round(sim[(a, b)], 2)])
         dis[story_of[b]]["merge"].append([b, a, story_of[a], round(sim[(a, b)], 2)])
 
-stories = [{"key": c["key"], "dis": (dis[c["key"]] if c["key"] in dis and (dis[c["key"]]["split"] or dis[c["key"]]["merge"]) else None), "desc": story_desc[c["key"]], "n": len(c["articles"]), "ruled": ruled.get(c["key"]),
+stories = [{"key": c["key"], "dis": (dis[c["key"]] if c["key"] in dis and (dis[c["key"]]["split"] or dis[c["key"]]["merge"]) else None), "desc": story_desc[c["key"]], "n": len(c["articles"]), "ruled": ruled.get(c["key"]) or ruled.get(c["key"].split(".")[0]),   # a story split at rebuild (015.0, 094.1) carries its parent's ruling
             "newest": max(str(arts[a]["published_at"])[:10] for a in c["articles"]),
             "oldest": min(str(arts[a]["published_at"])[:10] for a in c["articles"])} for c in ruler]
 stories.sort(key=lambda s: s["newest"], reverse=True)

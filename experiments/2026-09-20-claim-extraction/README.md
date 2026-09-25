@@ -229,6 +229,32 @@ part of why it wins.
 10. Live validation — the sample is frozen and must not be re-pulled.
 11. A bigger blind set — 22 articles is exhausted, and only Anton can grade it.
 
+### The ruler after Anton's review — v3, 2026-09-25
+All 48 multi-article stories ruled (verdicts.md): 45 as built, two splits
+(094: #743 out alone; 015: Merab/Helen Yee apart from Gallo/Jorge Ebro),
+one merge (ten Soriano prediction stories into story-066, by type of news).
+`clusters.json` is now v3, 129 stories; v2 is `clusters-v2.json`,
+`scores-v2.json` is every arm scored against it. Singletons not yet
+reviewed. Rescored from the cached embeddings, no new calls:
+
+| arm | pairs same/diff | AUC v2 → v3 | best threshold | errors v2 → v3 |
+|---|---|---|---|---|
+| 1 headline | 745 / 5,797 | 0.895 → 0.876 | 0.84 | 572 → 619 |
+| 2 headline + lead (production) | 745 / 5,797 | 0.918 → 0.908 | 0.89 | 542 → 609 |
+| 3 claim | 723 / 4,780 | 0.906 → 0.914 | 0.92 | 472 → 499 |
+| 3o claim + occasion | 723 / 4,780 | 0.919 → 0.922 | 0.95 | 452 → 501 |
+| 3q occasion-first + claim | 723 / 4,780 | 0.925 → 0.926 | 0.92 | 440 → 483 |
+| 4 occasion-first claim + headline + lead | 745 / 5,797 | 0.942 → 0.941 | 0.90 → 0.89 | 396 → 448 |
+
+Read: the merge added 69 same-story pairs, nearly all of them two outlets'
+picks for the same fight — the pairs an embedding is worst at, since the
+texts share only the two names and the event. Every arm's error count rose
+for that reason; the ranking of the arms did not move (4 > 3q > 3o > 3 > 2
+> 1 on AUC, as before). The production arm lost the most (AUC −0.010,
+errors +67), the claim arms gained slightly on AUC. Nothing here changes a
+conclusion; it re-states that predictions are a type-of-news story the
+embedding cannot assemble.
+
 ### Reproduce
     PASS=n python3 run.py --one        # one live call: reasoning tokens, cost
     PASS=n python3 run.py --yes        # ~$0.06–0.09 per pass, cached

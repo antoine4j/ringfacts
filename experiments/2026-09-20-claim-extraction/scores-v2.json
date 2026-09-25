@@ -1,0 +1,80 @@
+[
+ {
+  "arm": "1 headline",
+  "n_same": 676,
+  "n_diff": 5866,
+  "median_same": 0.7901172261668765,
+  "median_diff": 0.6359646393608842,
+  "overlap": 0.057279236276849645,
+  "auc": 0.8951986374191258,
+  "best_threshold": 0.84,
+  "best_errors": 572,
+  "miss_at_080": 375,
+  "false_at_080": 290
+ },
+ {
+  "arm": "2 headline+lead",
+  "n_same": 676,
+  "n_diff": 5866,
+  "median_same": 0.8413917887106241,
+  "median_diff": 0.697559500245394,
+  "overlap": 0.050119331742243436,
+  "auc": 0.9179985151620914,
+  "best_threshold": 0.89,
+  "best_errors": 542,
+  "miss_at_080": 148,
+  "false_at_080": 628
+ },
+ {
+  "arm": "3 extracted claim",
+  "n_same": 666,
+  "n_diff": 4837,
+  "median_same": 0.926606209211501,
+  "median_diff": 0.7458966375508629,
+  "overlap": 0.029977258631383088,
+  "auc": 0.9062261558643614,
+  "best_threshold": 0.92,
+  "best_errors": 472,
+  "miss_at_080": 67,
+  "false_at_080": 1299
+ },
+ {
+  "arm": "3o claim + occasion",
+  "n_same": 666,
+  "n_diff": 4837,
+  "median_same": 0.933069891337153,
+  "median_diff": 0.7395923473376268,
+  "overlap": 0.027082902625594377,
+  "auc": 0.9191327982934351,
+  "best_threshold": 0.95,
+  "best_errors": 452,
+  "miss_at_080": 63,
+  "false_at_080": 1158
+ },
+ {
+  "arm": "3q occasion-first + claim",
+  "n_same": 666,
+  "n_diff": 4837,
+  "median_same": 0.9250345586298496,
+  "median_diff": 0.719844752658648,
+  "overlap": 0.02212114947281373,
+  "auc": 0.9250599576214626,
+  "best_threshold": 0.92,
+  "best_errors": 440,
+  "miss_at_080": 80,
+  "false_at_080": 981
+ },
+ {
+  "arm": "4 occasion-first claim + headline + lead",
+  "n_same": 676,
+  "n_diff": 5866,
+  "median_same": 0.9013573122441725,
+  "median_diff": 0.7360751602671309,
+  "overlap": 0.01176270030685305,
+  "auc": 0.9422050549047061,
+  "best_threshold": 0.9,
+  "best_errors": 396,
+  "miss_at_080": 49,
+  "false_at_080": 1248
+ }
+]
