@@ -569,3 +569,17 @@ something to consider."*
 For the digest design, then: a UFC.com feature is the promotion's own
 interview with the fighter. Whether the digest ranks an official source
 above the outlets rewriting it is his to decide; noted under TODO item 7.
+
+## 2026-09-25 — story-054 (#462, #467, #476, #484, #492, #503): correct
+
+Anton, by voice: *"054 correct — seems to refer to the same interview. But
+hurt hands are mentioned in at least #484 and #476, and #476 reports it like
+a new event, an injury."*
+
+The extractor's view, both runs: five of six articles carry "Interview with
+Sports Illustrated" as the occasion and `new_remark` as the kind; #476
+(boxingnews.com) alone comes back `new_event`, "Gaethje suffered hand
+injuries... that remain unhealed", with no occasion. Same sitting, one
+outlet writing the quote up as an injury event rather than as something
+Gaethje said. Grouping right by occasion; the kind label is the outlier,
+not the story.
