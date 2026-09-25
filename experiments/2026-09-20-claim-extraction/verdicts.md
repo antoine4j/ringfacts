@@ -634,3 +634,20 @@ Anton, by voice: *"63, 68, 65, 74 (fight story, official weigh-in) —
 correct."* Story-074 is the UFC Paris official weigh-in, the event's own
 occasion, kept apart from the ceremonial weigh-in and face-off (story-084,
 ruled correct 2026-09-23).
+
+## 2026-09-25 — story-097 (#798, #803, #807, #828, #833, #862): correct
+
+Anton, by voice: *"Story 97 is correct. Interesting that article #798 is
+declared as a new event, and the extract does not reference Jon Anik. But in
+the article it says 'according to Jon Anik'."*
+
+Checked. #798 (Yahoo Sports) got the whole body, 3,200 characters, of which
+the first 1,900 are Yahoo's navigation and ad furniture; "According to UFC
+commentator Jon Anik" is at character 1,928. Both runs returned
+`new_event`, "the UFC is having internal conversations about a rematch",
+no occasion. The other five all returned `new_remark` with Anik as speaker
+and the Anik Bros YouTube channel as occasion. So the extractor had the
+attribution and dropped it, on two runs with the same input — not a
+truncation. The headline ("being strongly considered") states the rumour
+as fact, and the extractor followed the headline over the body's "according
+to". One misread in six; the grouping is right.
