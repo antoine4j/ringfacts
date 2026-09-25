@@ -510,3 +510,17 @@ noted (UFC topics on Aug 21 vs biography on Aug 22 might be two sittings) and
 two pair rulings of "cannot tell". Eight pieces, one story, one interview —
 the digest's primary-source rule (story-090) applies: link the interview
 once, not eight write-ups.
+
+On story-022, a caveat, Anton, by voice: *"Ideally they are all caught as
+the same interview, but I recognize that for a lower-level model that doesn't
+have access to all articles at the same time and just processes them as they
+arrive, comparing the extracts, it might be difficult to link them in the
+same story. This is one genuine case where the fact evidence might be more
+upfront than the occasion evidence, and that may lead to different stories.
+But these are not fake news. In the new design all of this should be in the
+digest, summarized. This should be documented as an interesting case to test
+for a digest agent — to see if the digest agent can actually piece it
+together as one story, because the digest agent will have access to all
+articles to date at the same time, and all the extraction details and
+classification flags."* Recorded as a digest-agent test case under TODO
+item 7.

@@ -713,3 +713,24 @@ Below the line, deliberately: nothing at the moment — the GCS backup shipped
    interviews in the post-fight window); who may read the board; the
    mechanics of "joins the existing story" for the cases above, which he
    said he wants to think about separately.
+
+   **A test case for the digest agent — the eight-part NV interview
+   (story-022, Anton, 2026-09-25, ruling it one story):** *"Ideally they are
+   all caught as the same interview, but I recognize that for a lower-level
+   model that doesn't have access to all articles at the same time and just
+   processes them as they arrive, comparing the extracts, it might be
+   difficult to link them in the same story. This is one genuine case where
+   the fact evidence might be more upfront than the occasion evidence, and
+   that may lead to different stories. But these are not fake news. In the
+   new design all of this should be in the digest, summarized. This should
+   be documented as an interesting case to test for a digest agent — to see
+   if the digest agent can actually piece it together as one story, because
+   the digest agent will have access to all articles to date at the same
+   time, and all the extraction details and classification flags."* The
+   case: NV published one sit-down with Donchenko as eight articles over
+   Aug 15–22 (#203, #208, #298, #300, #301, #320, #321, #322), each a
+   different fact, five naming the NV journalist, seven linking back to the
+   previous piece. Grouped right by Fable reading all eight at once; a
+   one-at-a-time matcher may well split it. The test: give the digest agent
+   the week's stories with that interview split into several, and see
+   whether its prose stitches them into one.
