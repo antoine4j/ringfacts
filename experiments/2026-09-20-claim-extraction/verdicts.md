@@ -596,3 +596,23 @@ differently, and the camera angle is different."*
 
 The ruler had cut these apart in pass 3 (the 037.x children of one
 cluster). Confirmed by evidence no text extract carries: the video itself.
+
+## 2026-09-25 — story-059 (#516, #525): correct — same Deep Waters sitting, confirmed by a shared quote
+
+Anton, by voice: *"059 is kind of interesting too. It appears to be the same
+podcast, but #516 has a video of that podcast attached — I think it's in a
+tweet — so I could watch it, and #525 doesn't have an attachment, and it
+seems to have different quotes. But I don't think Tsarukyan is on the same
+podcast twice around the same time. So it's got to be the same one, just by
+podcast. Unless you can read the articles and spot any overlap."*
+
+Overlap found, in the text. #525 (MMA Fighting) leads with the title-defence
+quote but its last two paragraphs are the Pimblett quote #516 (MMA Mania)
+is built on, near word for word: *"Topuria vs. Paddy Pimblett. The fight
+makes sense, but they're not going to do this fight because they need both,
+they don't want Paddy to lose, they don't want again Ilia to lose, so
+they're going to give to Ilia someone easy... I think he can beat Max
+Holloway. If you see Max's wrestling, it's nothing... Paddy at least has a
+takedown."* Both credit the Deep Waters podcast. One sitting; each outlet
+led with a different part of it, and the extractor's one-sentence claim
+kept only each outlet's lead.
