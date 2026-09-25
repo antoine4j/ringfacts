@@ -372,6 +372,26 @@ Rules for adding to it:
   case, and the extractor's `date` is a second check. **Would overturn:** a
   fight where result articles read as `announcement` at confidence ≥0.6.
 
+### One interview can be written up fifteen days apart — a short candidate window never sees the pair
+`corpus` · `observed` · *FB 2026-09-25, ruler review of story-015*
+- **Evidence:** Jesús Gallo (Topuria's conditioning coach) spoke once on
+  Jorge Ebro's YouTube channel. Libertad Digital wrote it up on 2026-08-12
+  (#152) and again on 2026-08-27 (#412), same outlet, same interview; Infobae
+  the same day (#402) dates the interview "a few weeks ago". Anton ruled
+  the two Gallo pieces one story by occasion. Production's dedup and every
+  pair set in these experiments look back **3 days**; that window cannot
+  put #152 and #412 in front of the same judge. Anton, ruling: *"fifteen
+  days apart, which goes against the three-day window — something we need
+  to take into account when architecting the solution."*
+- **Does not say:** how common this is — one case, found by hand, in 300
+  articles. Nor what the right look-back is: a late write-up of an old
+  sitting is one story by occasion, but a three-day window is also what
+  keeps a booking from being re-matched to itself a month later (RF's
+  148-article topic bucket, §6). The join-or-start-a-story stage needs a
+  candidate set that is not only "the last few days" — perhaps open stories
+  of the same fighter, however old — and that is a design question, not a
+  finding.
+
 ### Structured fields agree on same-story pairs, but also on different ones
 `corpus` · `observed` · *FB 2026-09-21*
 - actor 98% vs 36%; event 67% vs 43%; date 86% vs 63%, sparsely filled. Never

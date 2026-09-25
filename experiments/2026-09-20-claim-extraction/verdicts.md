@@ -526,3 +526,28 @@ classification flags."* Recorded as a digest-agent test case under TODO
 item 7.
 
 ## 2026-09-25 — story-032 (#249, #339): correct
+
+## 2026-09-25 — story-015 (#152, #327, #349, #368, #397, #402, #412): SPLIT by occasion — Merab on Helen Yee (#327, #349, #368, #397, #402) apart from Gallo on Jorge Ebro's YouTube (#152, #412)
+
+Anton, by voice: *"It seems like all the articles are about general
+recovery, background information on Topuria. But a couple of them feature
+his conditioning coach, and most of them feature another fighter and his
+friend Merab."* Then, after Fable's rationale (two piles through pass 2,
+merged in pass 3 through #402, a two-story article): *"I think we should
+split it by occasion. And the Infobae article #402 should be in Merab's pile
+because that account comes first in the article, and the physical trainer's
+account comes second."* Checked: Merab's quotes fill the first 2,700 of
+4,450 characters of #402; Gallo appears in the last third, introduced as
+"a few weeks ago". Main news places the article (the story-100 rule).
+
+At rebuild: two stories — Merab / Helen Yee: #327, #349, #368, #397, #402;
+Gallo / Jorge Ebro YouTube: #152, #412.
+
+**Caveat he asked to record, for the architecture:** *"#412 and #152 are
+fifteen days apart, which goes against the three-day window, which I
+believe is current. So this is something we need to take into account when
+architecting the solution."* The two Gallo pieces are the same interview,
+same outlet, 2026-08-12 and 2026-08-27; #402 itself dates the interview
+"a few weeks ago". A three-day candidate window never sees the pair. Any
+join-or-start-a-story stage that looks back only a few days will start a
+second story for a late write-up of an old interview.
