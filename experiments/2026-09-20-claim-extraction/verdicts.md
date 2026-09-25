@@ -424,3 +424,16 @@ rebuild.
 The ruler's own eight low-confidence pair rulings are in
 `clusters.json` under `low_confidence_rulings` and flagged in `REPORT.html`
 under "the ruler was unsure".
+
+## 2026-09-25 — story-062 (#529, #532, #609): correct
+
+Anton, by voice: *"I agree with story 62 grouping because the two UFC
+articles is the same article for different UFC domains — one of them is
+jp.ufc, is it like a Japanese domain? — and the third article, MiddleEasy,
+that's basically citing the same interview, exactly the same quotes from
+Soriano."*
+
+One occasion: the UFC.com feature interview with Soriano ("Happiest In The
+Background"). #529 and #532 are the same piece served from two UFC domains
+(published 2026-09-01); #609 is MiddleEasy's write-up of that interview
+three days later, same quotes. Coherent at the core story level.
