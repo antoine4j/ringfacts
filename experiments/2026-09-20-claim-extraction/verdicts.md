@@ -551,3 +551,21 @@ same outlet, 2026-08-12 and 2026-08-27; #402 itself dates the interview
 "a few weeks ago". A three-day candidate window never sees the pair. Any
 join-or-start-a-story stage that looks back only a few days will start a
 second story for a late write-up of an old interview.
+
+## 2026-09-25 — story-048 (#408, #431, #435): correct
+
+## 2026-09-25 — story-036 (#279, #311, #442): correct
+
+## 2026-09-25 — story-055 (#490, #491, #494): correct
+
+Anton, by voice: *"Same article, two exact copies and one Japanese domain.
+Essentially it's about fighting Soriano, but there are some interesting
+quotes in it, and it's also from an official source — it's like an official
+interview. So when it's in the digest it would be good to highlight it or
+put it first, because it's from an official source. It just looks like a
+presentable article. This is not something we necessarily should do, just
+something to consider."*
+
+For the digest design, then: a UFC.com feature is the promotion's own
+interview with the fighter. Whether the digest ranks an official source
+above the outlets rewriting it is his to decide; noted under TODO item 7.

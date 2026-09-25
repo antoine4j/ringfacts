@@ -708,6 +708,15 @@ Below the line, deliberately: nothing at the moment — the GCS backup shipped
      sittings in 24 hours (octagon, backstage, press conference). Three
      direct messages, one, or a stitched one; not decided.
 
+   **To consider, not decided — official sources first?** Anton, 2026-09-25,
+   ruling story-055 (a UFC.com feature on Donchenko before Paris, three
+   copies): *"it's also from an official source, it's like an official
+   interview. So when it's in the digest it would be good to highlight it or
+   put it first, because it's from an official source. It just looks like a
+   presentable article. This is not something we necessarily should do, just
+   something to consider."* Would need the pipeline to know which domains
+   are the promotion's own (ufc.com and its language mirrors, for a start).
+
    Still undecided, and his to decide: the exact list of what bypasses the
    weekly digest (so far: a fight announcement, a fight result, his own
    interviews in the post-fight window); who may read the board; the
