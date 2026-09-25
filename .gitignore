@@ -37,3 +37,6 @@ experiments/*/*.bak
 # against a scratch database, the same class of throwaway as tmp/ above.
 experiments/*/questions.json
 experiments/*/probe.mjs
+
+# the review board is regenerated from golden/ by golden/board/build.py
+golden/board/board.html

@@ -19,6 +19,7 @@ ruling by Anton in `verdicts.md`.
 | `answers/extractor.json` | the extractor's answer per article: kind, extract (field `claim`), occasion, actor, opponent, event, date | 300 |
 | `labels.json` | *not yet written* — per claim: kind, speaker, bout, tier; per article: body_unusable, same_page_as, primary_source | |
 | `split.json` | *not yet written* — tune/test by claim, fixed seed | |
+| `board/build.py` → `board/board.html` | the review board: every claim with its articles, every classifier and extractor answer as a chip, Anton's ruling and Fable's doubts under the header, "suspected" pre-flags for body problems and exact copies. Reads only this folder; writes nothing back. `python3 golden/board/build.py` regenerates it (the page is git-ignored) | |
 
 Words: a **claim** is a group of articles about one occasion (one
 interview, one fight, one column), the unit the ruler groups by and the
