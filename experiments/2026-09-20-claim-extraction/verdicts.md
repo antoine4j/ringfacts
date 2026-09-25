@@ -453,3 +453,8 @@ Anton, by voice, on the five above in one breath: *"004, 003, 000, 011,
 from story-003 (Abdelaziz's original Pound 4 Pound remark), which he ruled
 correct in the same breath — a reply and what it replies to are two
 occasions.
+
+On #102 in story-008, the pair the ruler marked low-confidence (#102 vs
+#78), Anton, by voice: *"#102 contains the reply, and it kind of recaps what
+the reply was to. But ultimately it's the reply, and it belongs to story
+eight."* The ruler's low-confidence placement stands: it was the right call.
