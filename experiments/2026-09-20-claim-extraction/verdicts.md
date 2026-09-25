@@ -437,3 +437,19 @@ One occasion: the UFC.com feature interview with Soriano ("Happiest In The
 Background"). #529 and #532 are the same piece served from two UFC domains
 (published 2026-09-01); #609 is MiddleEasy's write-up of that interview
 three days later, same quotes. Coherent at the core story level.
+
+## 2026-09-25 — story-004 (#16, #17, #18): correct
+
+## 2026-09-25 — story-003 (#10, #34, #78): correct
+
+## 2026-09-25 — story-000 (#1, #2, #4, #13, #14, #33, #96): correct
+
+## 2026-09-25 — story-011 (#115, #125): correct
+
+## 2026-09-25 — story-008 (#51, #55, #71, #84, #90, #97, #102, #119, #193): correct
+
+Anton, by voice, on the five above in one breath: *"004, 003, 000, 011,
+008 — correct."* Story-008 is the Kawa reply to Abdelaziz; it stays apart
+from story-003 (Abdelaziz's original Pound 4 Pound remark), which he ruled
+correct in the same breath — a reply and what it replies to are two
+occasions.
