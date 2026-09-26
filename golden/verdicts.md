@@ -651,3 +651,18 @@ attribution and dropped it, on two runs with the same input — not a
 truncation. The headline ("being strongly considered") states the rumour
 as fact, and the extractor followed the headline over the body's "according
 to". One misread in six; the grouping is right.
+
+## 2026-09-26 — claim-046 (#373) and claim-047 (#385): two claims, as built — singleton pass
+
+Anton, on the first pair Fable could not call: *"46 vs 47, podcast with
+Rogan happened in 2025, and Pimblett/BSD fight was this year, so 46 recaps
+old podcast and 47 is this year's news."*
+
+So #373 is an old Joe Rogan podcast clip recirculated in August 2026, and
+#385 is Topuria's reply to Pimblett's callout after the Pimblett–BSD fight.
+Different occasions; both stay singletons. Fable's pass-2 note had half of
+it ("these may be old recirculated clips"). Its "clipped at almost the same
+moment" came from the two X posts embedded in the articles: X post numbers
+carry their posting time, and these decode to 05:29 and 05:41 UTC on
+25 August 2026, twelve minutes apart, from two different accounts. Posting
+time says when a clip was shared, not when it was recorded.
