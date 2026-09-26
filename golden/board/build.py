@@ -171,8 +171,8 @@ details.pair>summary{cursor:pointer;color:var(--cls);font-size:13px;margin-top:4
 .card .title a{color:inherit;text-decoration:none}.card .title a:hover{text-decoration:underline}
 .row{display:flex;gap:6px;flex-wrap:wrap;margin:4px 0}
 .row .lab{font-size:11px;color:var(--dim);text-transform:uppercase;letter-spacing:.04em;align-self:center;min-width:64px}
-.extract{margin:5px 0 3px;font-size:14px}
-.extract b{color:var(--ext)}
+.extract{margin:6px 0 4px;padding:8px 12px;font-size:15.5px;line-height:1.45;background:var(--extbg);border-left:4px solid var(--ext);border-radius:6px}
+.extract .none{color:var(--dim);font-style:italic;font-size:14px}
 details.more summary{cursor:pointer;font-size:12.5px;color:var(--dim);margin-top:6px}
 details.more .q{margin:8px 0 2px;font-size:12.5px}
 details.more .q .qn{font-weight:600;color:var(--cls)}
@@ -241,8 +241,8 @@ function card(c){
       ${c.bucket?`<span class="chip cls rule">tier ${c.bucket}</span>`:""}
       ${c.flags.map(f=>`<span class="chip warn">suspected: ${esc(f)}</span>`).join("")}</div>
     <div class="title">${c.u?`<a href="${esc(c.u)}" target="_blank" rel="noopener">${esc(c.t)}</a>`:esc(c.t)}</div>
+    <div class="extract">${c.ex.claim&&c.ex.claim!=="NO CLAIM"?esc(c.ex.claim):`<span class="none">no extract — ${esc(KL[c.ex.kind]||c.ex.kind||"")}</span>`}</div>
     <div class="row"><span class="lab">extractor</span><span class="chip ext">kind: <b>${esc(KL[c.ex.kind]||c.ex.kind||"—")}</b></span>${exchips(c.ex)}</div>
-    ${c.ex.claim?`<div class="extract"><b>extract</b> — ${esc(c.ex.claim)}</div>`:""}
     <div class="row"><span class="lab">classifier</span>${chips(c)}</div>
     <div class="row"><span class="lab">v2 questions</span>${Object.entries(c.v2||{}).map(([q,a])=>`<span class="chip cls" title="${q} · ${a.agree} of 3 readers agree">${q}: <b>${esc(human(a.choice))}</b> ${a.agree<3?`<span style="opacity:.7">${a.agree}/3</span>`:""}</span>`).join("")}</div>
     ${optionTables(c)}

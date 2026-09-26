@@ -1,5 +1,5 @@
 {
- "source": "Fable's grouping doubts (claims.json low_confidence_rulings and pass-1 doubts), read by Fable on 2026-09-25 into the seven singleton pairs worth Anton's eye. Not rulings.",
+ "source": "Fable's stored pair rulings of 'cannot tell' that touch a singleton (clusters-pass2.json pair_rulings, batches/merge-decisions.json), minus the pairs Anton has already ruled. Checked against those files on 2026-09-26 after two cards written from memory were found wrong.",
  "pairs": [
   {
    "article": "373",
@@ -15,26 +15,24 @@
   {
    "article": "565",
    "other": [
-    "516",
-    "525"
+    "551"
    ],
-   "why": "A Tsarukyan quote credited to Sports Illustrated sits beside the Deep Waters podcast claim; same sitting or a separate interview?",
+   "why": "A Yahoo/Uncrowned column on Gaethje's Sports Illustrated interview. Fable could not tell whether it belongs with the Paramount+ sit-down (claim-065, #551) or with the Sports Illustrated interview itself (claim-054), and left it alone.",
    "claim": "claim-067",
    "other_claims": [
-    "claim-059"
+    "claim-065",
+    "claim-054"
    ]
   },
   {
    "article": "852",
    "other": [
-    "1125",
-    "1260"
+    "1125"
    ],
-   "why": "Two Champion pieces days apart, and 1260's underlying interview may be the one 852 draws on: one interview in parts?",
+   "why": "Two Champion pieces five days apart (#852, #1125); could be one interview published in parts.",
    "claim": "claim-101",
    "other_claims": [
-    "claim-124",
-    "claim-129"
+    "claim-124"
    ]
   },
   {
