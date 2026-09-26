@@ -673,3 +673,11 @@ embeds a clip. #385 embeds a post with Topuria's reply, and nothing in it
 points to the Rogan appearance. The captured text shows each embed only as
 "X post, will render as live embed", so Fable guessed both were clips from
 one recording; the page itself says otherwise.
+
+Anton, further: *"385 doesn't explain the source — where he voiced his
+response."* The text says only "Topuria said" before the quote, then
+embeds a post from @theufcentral, a fan account that relays quotes. Where
+he actually said it is not in the article. The pass-4 extractor left the
+occasion empty on both runs; the v2 extractor wrote "social post, X /
+Twitter", taking the relaying embed for the source — a guess the text does
+not support.

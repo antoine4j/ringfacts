@@ -59,3 +59,12 @@ by the API), about $0.30. Extractor: two passes, $0.149 and $0.043 as metered
 by OpenRouter (the second pass came back cheaper; same model, same prompt,
 same 300 bodies). Budget was $1.50 each. Nothing in `golden/` or in the
 earlier experiments was written.
+
+## For the next extractor prompt
+
+- **The origin is where the person spoke, not where the quote was shared.**
+  On #385 the text says only "Topuria said" and embeds a fan account's X
+  post; v2 filled origin "X / Twitter" and type "social post". The pass-4
+  prompt left it empty, which was right. Say in the field: a relaying
+  account, an embed or the outlet itself is not the origin; unknown is
+  null. (Anton, 2026-09-26.)
