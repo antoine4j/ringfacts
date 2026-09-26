@@ -16,6 +16,10 @@ classifier = load("answers/classifier.json")["articles"]
 EX = load("answers/extractor.json")
 extractor = EX["articles"]
 QUESTIONS = load("answers/questions.json")["questions"]
+V2 = load("answers/classifier-v2.json")
+TYPES = load("answers/types-fable.json")
+BOUTS = load("answers/bout-prefill.json")["claims"]
+PAIRS = load("answers/singleton-pairs.json")["pairs"]
 
 # --- Anton's rulings: heading per claim, and the verbatim text under it ------
 rulings = {}
@@ -75,6 +79,7 @@ def card(a):
         "ex": {k: ex.get(k) for k in ("kind", "claim", "occasion", "actor", "opponent", "event", "date", "error")},
         "ex2": ex.get("second_run", {}),
         "bucket": cl.get("bucket"),
+        "v2": {q: {"choice": v["choice"], "agree": v["agree"]} for q, v in V2["articles"].get(a, {}).items()},
         "ans": cl.get("answers", {}),
         "flags": flags.get(a, []),
     }
@@ -89,6 +94,8 @@ for c in claims:
         "oldest": cards[0]["d"], "newest": cards[-1]["d"],
         "desc": c["descriptions"], "from": c.get("from"),
         "fable": c["fable"], "ruled": ru, "cards": cards,
+        "type": TYPES["claims"][c["key"]]["type"], "family": TYPES["claims"][c["key"]]["family"],
+        "famidx": TYPES["families"].index(TYPES["claims"][c["key"]]["family"]), "bout": BOUTS.get(c["key"]),
         "flagged": any(x["flags"] for x in cards),
         "kinds": sorted({x["ex"]["kind"] for x in cards if x["ex"]["kind"]}),
         "buckets": sorted({x["bucket"] for x in cards if x["bucket"]}),
@@ -144,6 +151,11 @@ details.claim>summary .meta{color:var(--dim);font-size:13px;white-space:nowrap}
 .chip.ok{background:var(--okbg);color:var(--ok)}.chip.warn{background:var(--warnbg);color:var(--warn)}
 .chip.bad{background:var(--badbg);color:var(--bad)}
 .chip.cls{background:var(--clsbg);color:var(--cls)}.chip.ext{background:var(--extbg);color:var(--ext)}
+.chip.type{background:var(--soft);color:var(--fg);border:1px solid var(--line)}
+body.label .rule{display:none!important}
+body.label .tile[data-set="ruled=1"]{display:none}
+.batch{margin:22px 0 8px;padding:8px 12px;border-left:4px solid var(--cls);background:var(--clsbg);border-radius:6px;font-size:14px}
+.batch b{display:block}.batch .k{color:var(--dim);font-size:12.5px}
 .chip b{font-weight:600}
 .inner{padding:0 14px 12px;border-top:1px solid var(--line)}
 .block{margin:10px 0;padding:9px 12px;border-radius:8px;background:var(--soft);font-size:14px}
@@ -224,12 +236,13 @@ function extractorTables(c){
 function card(c){
   return `<div class="card" id="a${c.id}">
     <div class="head"><span class="id">#${c.id}</span><span>${c.d}</span><span>${esc(c.o)}</span><span>${c.chars} chars</span>
-      ${c.bucket?`<span class="chip cls">bucket ${c.bucket}</span>`:""}
+      ${c.bucket?`<span class="chip cls rule">bucket ${c.bucket}</span>`:""}
       ${c.flags.map(f=>`<span class="chip warn">suspected: ${esc(f)}</span>`).join("")}</div>
     <div class="title">${c.u?`<a href="${esc(c.u)}" target="_blank" rel="noopener">${esc(c.t)}</a>`:esc(c.t)}</div>
     <div class="row"><span class="lab">extractor</span><span class="chip ext">kind: <b>${esc(KL[c.ex.kind]||c.ex.kind||"—")}</b></span>${exchips(c.ex)}</div>
     ${c.ex.claim?`<div class="extract"><b>extract</b> — ${esc(c.ex.claim)}</div>`:""}
     <div class="row"><span class="lab">classifier</span>${chips(c)}</div>
+    <div class="row"><span class="lab">v2 questions</span>${Object.entries(c.v2||{}).map(([q,a])=>`<span class="chip cls" title="${q} · ${a.agree} of 3 readers agree">${q}: <b>${esc(human(a.choice))}</b> ${a.agree<3?`<span style="opacity:.7">${a.agree}/3</span>`:""}</span>`).join("")}</div>
     ${optionTables(c)}
     ${extractorTables(c)}
     <details class="body"><summary>body</summary><pre>${esc(c.body||"(empty)")}</pre></details>
@@ -240,6 +253,7 @@ function claim(s){
   const hdr=[`<span class="key">${s.key}</span>`,`<span class="desc">${esc(s.desc[0]||"")}</span>`,
     `<span class="meta">${esc(s.f.split(" ").pop())} · ${s.n} article${s.n>1?"s":""} · ${s.oldest===s.newest?s.oldest:s.oldest+" → "+s.newest}</span>`,
     r?`<span class="chip ok" title="${esc(r.what)}">ruled ${r.date}</span>`:`<span class="chip">not ruled</span>`,
+    `<span class="chip type" title="${esc(s.family)}">${esc(s.type)}</span>`, s.bout?`<span class="chip type">bout: ${esc(s.bout)}</span>`:"",
     fb.pass1_doubts.length?`<span class="chip warn">Fable had doubts</span>`:"",
     fb.pass1_confidence.length&&fb.pass1_confidence.some(x=>x!=="high")?`<span class="chip warn">confidence ${esc(fb.pass1_confidence.join("/"))}</span>`:"",
     s.flagged?`<span class="chip warn">suspected body issue</span>`:"", s.from?`<span class="chip">rebuilt from ${esc(s.from.join(", "))}</span>`:""].join("");
@@ -252,18 +266,29 @@ function claim(s){
 }
 function render(){
   const f=$("#f").value, k=$("#k").value, b=$("#b").value, q=$("#q").value.trim().toLowerCase();
+  const type=$("#type").value, label=$("#label").checked; document.body.classList.toggle("label",label);
   const size=$("#size").value, doubt=$("#doubt").checked, ruled=$("#ruled").value, flagged=$("#flagged").checked;
-  let n=0, na=0; const parts=[];
-  for(const s of DATA){
+  let n=0, na=0; const parts=[]; let last="";
+  const week=s=>{const d=new Date(s.oldest); const w=new Date(d); w.setDate(d.getDate()-((d.getDay()+6)%7)); return w.toISOString().slice(0,10);};
+  if(label&&!type&&!f&&!k&&!b&&!size&&!doubt&&!ruled&&!flagged&&!q){
+    parts.push(`<div class="batch"><b>Singleton pass, first: seven pairs Fable could not call</b><span class="k">for each, is the singleton its own claim or part of the other one? Say the article number and "own" or "joins claim-NNN". Then the suspected body issues (tile above), then the tiers.</span></div>`);
+    for(const p of PAIRS){ parts.push(`<div class="card"><div class="head"><span class="id">#${p.article}</span><span class="chip type">${p.claim}</span><span>vs</span>${p.other.map(o=>`<span class="id">#${o}</span>`).join(" ")}${p.other_claims.map(c=>`<span class="chip type">${c}</span>`).join("")}</div><div>${esc(p.why)}</div><div class="k">${[p.claim,...p.other_claims].map(c=>`<a href="#" onclick="event.preventDefault();$('#q').value='${c.replace('claim-','')}';render();">open ${c}</a>`).join(" · ")}</div></div>`); }
+  }
+  const rows=label?[...DATA].sort((a,b)=>a.famidx-b.famidx||a.type.localeCompare(b.type)||a.f.localeCompare(b.f)||a.oldest.localeCompare(b.oldest)):DATA;
+  for(const s of rows){
     if(f&&s.f!==f) continue; if(k&&!s.kinds.includes(k)) continue; if(b&&!s.buckets.includes(+b)) continue;
+    if(type&&s.type!==type) continue;
     if(size==="1"&&s.n!==1) continue; if(size==="2"&&s.n<2) continue; if(doubt&&!s.fable.pass1_doubts.length) continue; if(ruled==="1"&&!s.ruled) continue; if(ruled==="0"&&s.ruled) continue; if(flagged&&!s.flagged) continue;
     if(q&&!(s.key.includes(q)||s.cards.some(c=>c.id===q.replace("#","")||c.t.toLowerCase().includes(q)||(c.ex.claim||"").toLowerCase().includes(q)||c.o.toLowerCase().includes(q)))) continue;
+    if(label){ const key=s.family+"|"+s.type+"|"+s.f+"|"+(s.famidx===1?week(s):""); if(key!==last){ last=key; parts.push(`<div class="batch"><b>${esc(s.type)}</b><span class="k">${esc(s.family)} · ${esc(s.f)}${s.famidx===1?" · week of "+week(s):""} — say a tier per claim number, or one tier for the whole batch; skip freely</span></div>`);} }
     n++; na+=s.n; parts.push(claim(s));
   }
   $("#list").innerHTML=parts.join(""); $("#cnt").textContent=`${n} claims · ${na} articles`; markTiles();
 }
 document.querySelectorAll(".bar select:not(#theme),.bar input").forEach(e=>e.addEventListener("input",render));
-const FILTERS=["f","k","b","size","doubt","ruled","flagged","q"];
+try{ if(localStorage.getItem("board-label")==="1") $("#label").checked=true; }catch(e){}
+$("#label").addEventListener("input",e=>{ try{ localStorage.setItem("board-label", e.target.checked?"1":"0"); }catch(err){} });
+const FILTERS=["f","k","b","size","doubt","ruled","flagged","q","type"];
 function resetFilters(){ for(const id of FILTERS){ const el=$("#"+id); if(el.type==="checkbox") el.checked=false; else el.value=""; } }
 function markTiles(){ const state=FILTERS.map(id=>{const el=$("#"+id); return id+"="+(el.type==="checkbox"?(el.checked?"1":""):el.value);}).filter(x=>!x.endsWith("=")).join("&");
   document.querySelectorAll(".tile").forEach(t=>t.classList.toggle("on", t.dataset.set==="reset"?state==="":t.dataset.set===state)); }
@@ -287,7 +312,7 @@ page = f"""<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name
 <title>Golden Review Board</title><style>{CSS}</style></head><body><div class="wrap">
 <h1>Golden set · review board</h1>
 <div class="sub">300 articles in {len(out)} claims (ruler v3). One claim = one occasion. Blue chips are the classifier's answers, purple the extractor's.
-Yellow "suspected" chips are what the data alone suggests, not labels, until ruled. Rulings go to <code>golden/verdicts.md</code>; this page only shows them.</div>
+Yellow "suspected" chips and the grey type and bout chips are what the data alone suggests, not labels, until ruled. Labelling mode hides every rule output and orders the claims as a queue. Rulings go to <code>golden/verdicts.md</code>; this page only shows them.</div>
 <div class="tiles">
 <button class="tile" data-set="reset"><div class="n">{len(out)}</div><div class="l">claims · show all</div></button>
 <button class="tile" data-set="size=2"><div class="n">{n_multi}</div><div class="l">with 2+ articles</div></button>
@@ -299,18 +324,20 @@ Yellow "suspected" chips are what the data alone suggests, not labels, until rul
 <div class="bar">
 <select id="f"><option value="">all fighters</option>{opts(fighters)}</select>
 <select id="k"><option value="">any kind</option>{opts(kinds, lambda k: KLABEL.get(k, k))}</select>
-<select id="b"><option value="">any bucket</option>{opts([1,2,3], lambda b: f"bucket {b}")}</select>
+<select id="b" class="rule"><option value="">any bucket</option>{opts([1,2,3], lambda b: f"bucket {b}")}</select>
 <select id="size"><option value="">any size</option><option value="1">singletons</option><option value="2">2+ articles</option></select>
 <label class="ck"><input type="checkbox" id="doubt">Fable had doubts</label>
 <select id="ruled"><option value="">ruled or not</option><option value="1">ruled</option><option value="0">not ruled</option></select>
 <label class="ck"><input type="checkbox" id="flagged">suspected body issue</label>
+<select id="type"><option value="">any type</option>{opts(sorted({s["type"] for s in out}))}</select>
+<label class="ck" title="hides every rule output (the bucket chips) and orders the claims as a labelling queue: batches by family, fighter and week"><input type="checkbox" id="label">labelling mode</label>
 <input type="search" id="q" placeholder="#id, headline, extract, outlet">
 <button id="open">open all</button><button id="close">close all</button>
 <select id="theme" title="theme"><option value="system">system theme</option><option value="light">light</option><option value="dark">dark</option></select>
 <span class="cnt" id="cnt"></span>
 </div>
 <div id="list"></div>
-</div><script>const DATA={json.dumps(out, ensure_ascii=False)},KL={json.dumps(KLABEL)},QL={json.dumps(QLABEL)},QDEF={json.dumps(QUESTIONS, ensure_ascii=False)},EXF={json.dumps(EX["fields"], ensure_ascii=False)},EXK={json.dumps(EX["kind_options"], ensure_ascii=False)};{JS}</script></body></html>"""
+</div><script>const DATA={json.dumps(out, ensure_ascii=False)},KL={json.dumps(KLABEL)},QL={json.dumps(QLABEL)},PAIRS={json.dumps(PAIRS, ensure_ascii=False)},QDEF={json.dumps(QUESTIONS, ensure_ascii=False)},EXF={json.dumps(EX["fields"], ensure_ascii=False)},EXK={json.dumps(EX["kind_options"], ensure_ascii=False)};{JS}</script></body></html>"""
 
 open(os.path.join(HERE, "board.html"), "w").write(page)
 print(f"board.html: {len(page)//1024} KB, {len(out)} claims, {n_ruled} ruled, {n_doubt} with doubts, {n_flag} flagged")

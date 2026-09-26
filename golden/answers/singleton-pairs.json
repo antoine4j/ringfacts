@@ -1,0 +1,86 @@
+{
+ "source": "Fable's grouping doubts (claims.json low_confidence_rulings and pass-1 doubts), read by Fable on 2026-09-25 into the seven singleton pairs worth Anton's eye. Not rulings.",
+ "pairs": [
+  {
+   "article": "373",
+   "other": [
+    "385"
+   ],
+   "why": "Two Rogan clips posted minutes apart (@TitleFightMedia, @theufcentral): one podcast appearance or two? Fable ruled different, low confidence.",
+   "claim": "claim-046",
+   "other_claims": [
+    "claim-047"
+   ]
+  },
+  {
+   "article": "565",
+   "other": [
+    "516",
+    "525"
+   ],
+   "why": "A Tsarukyan quote credited to Sports Illustrated sits beside the Deep Waters podcast claim; same sitting or a separate interview?",
+   "claim": "claim-067",
+   "other_claims": [
+    "claim-059"
+   ]
+  },
+  {
+   "article": "852",
+   "other": [
+    "1125",
+    "1260"
+   ],
+   "why": "Two Champion pieces days apart, and 1260's underlying interview may be the one 852 draws on: one interview in parts?",
+   "claim": "claim-101",
+   "other_claims": [
+    "claim-124",
+    "claim-129"
+   ]
+  },
+  {
+   "article": "1089",
+   "other": [
+    "1058"
+   ],
+   "why": "Body too broken to tell whether this is the same Jim Rome appearance as the Dana White claim.",
+   "claim": "claim-121",
+   "other_claims": [
+    "claim-113"
+   ]
+  },
+  {
+   "article": "129",
+   "other": [
+    "71"
+   ],
+   "why": "Kawa video: a fresh post, or a re-read of the earlier video in the manager feud?",
+   "claim": "claim-012",
+   "other_claims": [
+    "claim-008"
+   ]
+  },
+  {
+   "article": "305",
+   "other": [
+    "412"
+   ],
+   "why": "SPORT neighbourhood profile opens with Gallo's 'ready by December' line that matches the Gallo/Jorge Ebro claim; profile or write-up?",
+   "claim": "claim-039",
+   "other_claims": [
+    "claim-015.1"
+   ]
+  },
+  {
+   "article": "817",
+   "other": [
+    "785",
+    "829"
+   ],
+   "why": "A column two days after the fight, extracted as the result in every pass; the result claim or its own next-day analysis?",
+   "claim": "claim-073.5",
+   "other_claims": [
+    "claim-073.4"
+   ]
+  }
+ ]
+}

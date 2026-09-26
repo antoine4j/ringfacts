@@ -17,6 +17,9 @@ ruling by Anton in `verdicts.md`.
 | `verdicts.md` | Anton's rulings, verbatim, **append only**. One heading per claim: `## YYYY-MM-DD — story-NNN (#ids): <ruling>` (headings keep the `story-` spelling they were written with) | 65 headings |
 | `answers/classifier.json` | the six classifier answers per article, majority of three readers, plus the bucket; `readers` = each of the three readers' probability over every option | 300 |
 | `answers/questions.json` | the six questions as asked: instructions and every option's text | 6 |
+| `answers/classifier-v2.json` | the five v2 questions from the answers-to-buckets experiment (role, speaker, act, kind, depth), majority of three orders; shown on the board, decides nothing | 300 |
+| `answers/types-fable.json` | Fable's sorting of the 129 claims into four families and 28 types (the types report); a pre-fill to check against the text, not a ruling | 129 |
+| `answers/bout-prefill.json` | the extractor's most common `bout` per claim; a pre-fill, not a ruling | 63 filled |
 | `answers/extractor.json` | the extractor's answer per article: kind, extract (field `claim`), occasion, actor, opponent, event, date; `second_run` = the same prompt run again unchanged; `fields` and `kind_options` = the prompt's own definitions | 300 |
 | `labels.json` | *not yet written* — per claim: kind, speaker, bout, tier; per article: body_unusable, same_page_as, primary_source | |
 | `split.json` | *not yet written* — tune/test by claim, fixed seed | |
