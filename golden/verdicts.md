@@ -666,3 +666,10 @@ moment" came from the two X posts embedded in the articles: X post numbers
 carry their posting time, and these decode to 05:29 and 05:41 UTC on
 25 August 2026, twelve minutes apart, from two different accounts. Posting
 time says when a clip was shared, not when it was recorded.
+
+Anton, correcting the note above: *"the two X attachments are different —
+385 is not even a video, it does not refer to a podcast."* So only #373
+embeds a clip. #385 embeds a post with Topuria's reply, and nothing in it
+points to the Rogan appearance. The captured text shows each embed only as
+"X post, will render as live embed", so Fable guessed both were clips from
+one recording; the page itself says otherwise.
