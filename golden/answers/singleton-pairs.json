@@ -1,72 +1,111 @@
 {
- "source": "Fable's stored pair rulings of 'cannot tell' that touch a singleton (clusters-pass2.json pair_rulings, batches/merge-decisions.json), minus the pairs Anton has already ruled. Checked against those files on 2026-09-26 after two cards written from memory were found wrong.",
+ "source": "Fable's stored pair rulings of 'cannot tell' that touch a singleton (clusters-pass2.json pair_rulings, batches/merge-decisions.json), minus the pairs Anton has already ruled. Checked against those files on 2026-09-26 after two cards written from memory were found wrong. Plain-language question and facts per pair written by Claude on 2026-09-26 after reading every article in each pair; the facts quote the articles, the question is what Anton decides.",
  "pairs": [
   {
    "article": "373",
    "other": [
     "385"
    ],
-   "why": "Two Rogan clips posted minutes apart (@TitleFightMedia, @theufcentral): one podcast appearance or two? Fable ruled different, low confidence.",
    "claim": "claim-046",
    "other_claims": [
     "claim-047"
-   ]
+   ],
+   "question": "Ruled 2026-09-26: two claims. #373 recirculates a 2025 Rogan podcast; #385 is this year's reply to Pimblett and names no source.",
+   "facts": [],
+   "ruled": "2026-09-26",
+   "fable_doubt": "Two Rogan clips posted minutes apart (@TitleFightMedia, @theufcentral): one podcast appearance or two? Fable ruled different, low confidence."
   },
   {
    "article": "565",
    "other": [
     "551"
    ],
-   "why": "A Yahoo/Uncrowned column on Gaethje's Sports Illustrated interview. Fable could not tell whether it belongs with the Paramount+ sit-down (claim-065, #551) or with the Sports Illustrated interview itself (claim-054), and left it alone.",
    "claim": "claim-067",
    "other_claims": [
     "claim-065",
     "claim-054"
-   ]
+   ],
+   "question": "Is a columnist's piece built on Gaethje's Sports Illustrated interview the same claim as the six write-ups of that interview (claim-054), or its own claim?",
+   "facts": [
+    "#565 is Ben Fowlkes's column on Yahoo/Uncrowned, 3 September. It quotes the Sports Illustrated interview (\"I still can't punch anything\", \"enjoy being champion for the rest of the year\") in its first third.",
+    "The rest, most of the piece, is his own analysis: what Gaethje sitting out 2026 means for Tsarukyan and the division.",
+    "claim-054 is six straight write-ups of that interview, 30 and 31 August.",
+    "The Paramount+ claim (065) is not really in play: #565 names Sports Illustrated.",
+    "Your rulings that bear on it: main news places an article; a next-day analysis column stood as its own claim (073.5)."
+   ],
+   "fable_doubt": "A Yahoo/Uncrowned column on Gaethje's Sports Illustrated interview. Fable could not tell whether it belongs with the Paramount+ sit-down (claim-065, #551) or with the Sports Illustrated interview itself (claim-054), and left it alone."
   },
   {
    "article": "852",
    "other": [
     "1125"
    ],
-   "why": "Two Champion pieces five days apart (#852, #1125); could be one interview published in parts.",
    "claim": "claim-101",
    "other_claims": [
     "claim-124"
-   ]
+   ],
+   "question": "Are Donchenko's post-fight thanks (#852, 7 Sept) and his reasons for picking Rodriguez (#1125, 12 Sept) two parts of one conversation with Champion, or two separate comments?",
+   "facts": [
+    "#852 is on Champion's own site. It gives no setting, only \"said the fighter\": the win mattered, clean face, thanks to the country, hopes for a good next fight.",
+    "#852's quotes appear in no other article of the 300.",
+    "#1125 is Sport-Express, five days later, citing \"a comment to Champion\"; it is only about why Rodriguez.",
+    "The two share no quote. The only link is the same outlet in the same week."
+   ],
+   "fable_doubt": "Two Champion pieces five days apart (#852, #1125); could be one interview published in parts."
   },
   {
    "article": "1089",
    "other": [
     "1058"
    ],
-   "why": "Body too broken to tell whether this is the same Jim Rome appearance as the Dana White claim.",
    "claim": "claim-121",
    "other_claims": [
     "claim-113"
-   ]
+   ],
+   "question": "Is Dana White's \"money left on the table\" remark about Gaethje (#1089) from the Jim Rome interview (claim-113), or a separate appearance?",
+   "facts": [
+    "Fable called the body too broken to tell. It is not: after the page menus the article is readable.",
+    "It says White spoke \"following a Garcia vs. Benn press event\", when asked about Gaethje retiring. That is a different setting from the Jim Rome show.",
+    "It also re-quotes White's \"Gaethje or Pimblett, a great problem to have\", which is the Jim Rome line, as background.",
+    "The headline and the lead are the press-event remark about Gaethje."
+   ],
+   "fable_doubt": "Body too broken to tell whether this is the same Jim Rome appearance as the Dana White claim."
   },
   {
    "article": "129",
    "other": [
     "71"
    ],
-   "why": "Kawa video: a fresh post, or a re-read of the earlier video in the manager feud?",
    "claim": "claim-012",
    "other_claims": [
     "claim-008"
-   ]
+   ],
+   "question": "Is Kawa's rematch demand (#129, ABC, 11 Aug) the same social-media video as his 8–9 Aug fire-back at Abdelaziz (claim-008), or a new post?",
+   "facts": [
+    "Fable saw text cut off before the key sentence. The full article describes the post:",
+    "an edited graphic of Topuria and Gaethje face to face reading \"Rematch\", with Kawa's line \"We want this fight\", posted after he met Topuria in Miami.",
+    "claim-008 is Kawa talking to camera, answering Abdelaziz, with a rematch mentioned in passing.",
+    "Different medium, different message, two days apart."
+   ],
+   "fable_doubt": "Kawa video: a fresh post, or a re-read of the earlier video in the manager feud?"
   },
   {
    "article": "305",
    "other": [
     "412"
    ],
-   "why": "SPORT neighbourhood profile opens with Gallo's 'ready by December' line that matches the Gallo/Jorge Ebro claim; profile or write-up?",
    "claim": "claim-039",
    "other_claims": [
     "claim-015.1"
-   ]
+   ],
+   "question": "Does SPORT's Alicante piece (#305) belong with Gallo's return-timing interview (claim-015.1) because it opens with that line, or is it its own claim?",
+   "facts": [
+    "The first two sentences recap \"his physical trainer says he could be ready by year's end, early next year is smarter\", with no name and no source.",
+    "Everything after is a profile of his Alicante neighbourhood and the Climent Club gym, with his own quotes about Alicante.",
+    "The profile speaks of the Gaethje fight \"that will be held on 14 June 2026\": it was written before the fight and republished on 21 August with a new opening.",
+    "Your rule from #402: a two-story article goes with its lead. Here the lead is two borrowed sentences; the bulk is an old profile."
+   ],
+   "fable_doubt": "SPORT neighbourhood profile opens with Gallo's 'ready by December' line that matches the Gallo/Jorge Ebro claim; profile or write-up?"
   },
   {
    "article": "817",
@@ -74,11 +113,14 @@
     "785",
     "829"
    ],
-   "why": "A column two days after the fight, extracted as the result in every pass; the result claim or its own next-day analysis?",
    "claim": "claim-073.5",
    "other_claims": [
     "claim-073.4"
-   ]
+   ],
+   "question": "Already ruled 2026-09-23 (story-073.5): the next-day column is its own claim. Nothing to settle.",
+   "facts": [],
+   "ruled": "2026-09-23",
+   "fable_doubt": "A column two days after the fight, extracted as the result in every pass; the result claim or its own next-day analysis?"
   }
  ]
 }

@@ -156,7 +156,7 @@ body.label .rule{display:none!important}
 body.label .tile[data-set="ruled=1"]{display:none}
 .batch{margin:22px 0 8px;padding:8px 12px;border-left:4px solid var(--cls);background:var(--clsbg);border-radius:6px;font-size:14px}
 .batch b{display:block}
-.paircard{cursor:pointer}.paircard:hover{border-color:var(--cls)}.paircard .pairbody{cursor:auto}
+.paircard{cursor:pointer}.pq{font-weight:600;font-size:15px;margin:6px 0 4px}.pq.done{font-weight:400;color:var(--ok)}.pf{margin:4px 0 6px;padding-left:20px;font-size:14px}.pf li{margin:2px 0}.paircard:hover{border-color:var(--cls)}.paircard .pairbody{cursor:auto}
 details.pair>summary{cursor:pointer;color:var(--cls);font-size:13px;margin-top:4px}
 .pairbody{margin-top:8px}.batch .k{color:var(--dim);font-size:12.5px}
 .chip b{font-weight:600}
@@ -275,7 +275,7 @@ function render(){
   const week=s=>{const d=new Date(s.oldest); const w=new Date(d); w.setDate(d.getDate()-((d.getDay()+6)%7)); return w.toISOString().slice(0,10);};
   if(label&&!type&&!f&&!k&&!b&&!size&&!doubt&&!ruled&&!flagged&&!q){
     parts.push(`<div class="batch"><b>Singleton pass, first: seven pairs Fable could not call</b><span class="k">for each, is the singleton its own claim or part of the other one? Say the article number and "own" or "joins claim-NNN". Then the suspected body issues (tile above), then the tiers.</span></div>`);
-    for(const p of PAIRS){ parts.push(`<div class="card paircard"><div class="head"><span class="id">#${p.article}</span><span class="chip type">${p.claim}</span><span>vs</span>${p.other.map(o=>`<span class="id">#${o}</span>`).join(" ")}${p.other_claims.map(c=>`<span class="chip type">${c}</span>`).join("")}</div><div>${esc(p.why)}</div><details class="pair"><summary>show ${[p.claim,...p.other_claims].join(" and ")} here</summary><div class="pairbody" data-keys="${[p.claim,...p.other_claims].join(",")}"></div></details></div>`); }
+    for(const p of PAIRS){ parts.push(`<div class="card paircard"><div class="head"><span class="id">#${p.article}</span><span class="chip type">${p.claim}</span><span>vs</span>${p.other.map(o=>`<span class="id">#${o}</span>`).join(" ")}${p.other_claims.map(c=>`<span class="chip type">${c}</span>`).join("")}</div>${p.ruled?`<div class="pq done">✓ ${esc(p.question)}</div>`:`<div class="pq">${esc(p.question)}</div>${p.facts.length?`<ul class="pf">${p.facts.map(f=>`<li>${esc(f)}</li>`).join("")}</ul>`:""}`}<div class="k">Fable's doubt: ${esc(p.fable_doubt)}</div><details class="pair"><summary>show ${[p.claim,...p.other_claims].join(" and ")} here</summary><div class="pairbody" data-keys="${[p.claim,...p.other_claims].join(",")}"></div></details></div>`); }
   }
   const rows=label?[...DATA].sort((a,b)=>a.famidx-b.famidx||a.type.localeCompare(b.type)||a.f.localeCompare(b.f)||a.oldest.localeCompare(b.oldest)):DATA;
   for(const s of rows){
