@@ -15,7 +15,7 @@ ruling by Anton in `verdicts.md`.
 | `articles.json` | the 300 articles: id, subject, title, source, url, published_at, body | 300 |
 | `claims.json` | the ruler, v3: one claim = one occasion with its articles; keys `claim-NNN`, `.x` = children of a split; `fable` = Fable's stored confidence and doubts from its grouping passes; `from` = the v2 keys a rebuilt claim came from | 129 |
 | `verdicts.md` | Anton's rulings, verbatim, **append only**. One heading per claim: `## YYYY-MM-DD — story-NNN (#ids): <ruling>` (headings keep the `story-` spelling they were written with) | 65 headings |
-| `answers/classifier.json` | the six classifier answers per article, majority of three readers, plus the bucket; `readers` = each of the three readers' probability over every option | 300 |
+| `answers/classifier.json` | the six classifier answers per article, majority of three readers, plus the tier; `readers` = each of the three readers' probability over every option | 300 |
 | `answers/questions.json` | the six questions as asked: instructions and every option's text | 6 |
 | `answers/classifier-v2.json` | the five v2 questions from the answers-to-buckets experiment (role, speaker, act, kind, depth), majority of three orders; shown on the board, decides nothing | 300 |
 | `answers/types-fable.json` | Fable's sorting of the 129 claims into four families and 28 types (the types report); a pre-fill to check against the text, not a ruling | 129 |
@@ -25,7 +25,7 @@ ruling by Anton in `verdicts.md`.
 | `split.json` | *not yet written* — tune/test by claim, fixed seed | |
 | `board/build.py` → `board/board.html` | the review board: every claim with its articles, every classifier and extractor answer as a chip, Anton's ruling and Fable's doubts under the header, "suspected" pre-flags for body problems and exact copies. Reads only this folder; writes nothing back. `python3 golden/board/build.py` regenerates it (the page is git-ignored) | |
 
-Words: a **claim** is a group of articles about one occasion (one
+Words: **tier** is what the older docs (goals.md, the September grading) call *bucket*: tier 1 posts now, tier 2 goes to the digest, tier 3 does not reach the group. A **claim** is a group of articles about one occasion (one
 interview, one fight, one column), the unit the ruler groups by and the
 unit production's `claims` table stores. An **extract** is the
 extractor's one-sentence answer for a single article. A **story** is the

@@ -236,7 +236,7 @@ function extractorTables(c){
 function card(c){
   return `<div class="card" id="a${c.id}">
     <div class="head"><span class="id">#${c.id}</span><span>${c.d}</span><span>${esc(c.o)}</span><span>${c.chars} chars</span>
-      ${c.bucket?`<span class="chip cls rule">bucket ${c.bucket}</span>`:""}
+      ${c.bucket?`<span class="chip cls rule">tier ${c.bucket}</span>`:""}
       ${c.flags.map(f=>`<span class="chip warn">suspected: ${esc(f)}</span>`).join("")}</div>
     <div class="title">${c.u?`<a href="${esc(c.u)}" target="_blank" rel="noopener">${esc(c.t)}</a>`:esc(c.t)}</div>
     <div class="row"><span class="lab">extractor</span><span class="chip ext">kind: <b>${esc(KL[c.ex.kind]||c.ex.kind||"—")}</b></span>${exchips(c.ex)}</div>
@@ -324,13 +324,13 @@ Yellow "suspected" chips and the grey type and bout chips are what the data alon
 <div class="bar">
 <select id="f"><option value="">all fighters</option>{opts(fighters)}</select>
 <select id="k"><option value="">any kind</option>{opts(kinds, lambda k: KLABEL.get(k, k))}</select>
-<select id="b" class="rule"><option value="">any bucket</option>{opts([1,2,3], lambda b: f"bucket {b}")}</select>
+<select id="b" class="rule"><option value="">any tier</option>{opts([1,2,3], lambda b: f"tier {b}")}</select>
 <select id="size"><option value="">any size</option><option value="1">singletons</option><option value="2">2+ articles</option></select>
 <label class="ck"><input type="checkbox" id="doubt">Fable had doubts</label>
 <select id="ruled"><option value="">ruled or not</option><option value="1">ruled</option><option value="0">not ruled</option></select>
 <label class="ck"><input type="checkbox" id="flagged">suspected body issue</label>
 <select id="type"><option value="">any type</option>{opts(sorted({s["type"] for s in out}))}</select>
-<label class="ck" title="hides every rule output (the bucket chips) and orders the claims as a labelling queue: batches by family, fighter and week"><input type="checkbox" id="label">labelling mode</label>
+<label class="ck" title="hides every rule output (the tier chips) and orders the claims as a labelling queue: batches by family, fighter and week"><input type="checkbox" id="label">labelling mode</label>
 <input type="search" id="q" placeholder="#id, headline, extract, outlet">
 <button id="open">open all</button><button id="close">close all</button>
 <select id="theme" title="theme"><option value="system">system theme</option><option value="light">light</option><option value="dark">dark</option></select>
