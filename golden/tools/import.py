@@ -21,14 +21,17 @@ pass1 = {c["key"]: c for c in load(EXT / "clusters-pass1.json")["clusters"]}
 pass2 = {c["key"]: c for c in load(EXT / "clusters-pass2.json")["clusters"]}
 claims = []
 for c in v3["clusters"]:
-    # story-NNN in v3 came from sNNN in pass 2, which came from mNNN keys in pass 1
-    base = c["key"].split(".")[0].replace("story-", "")
-    p2 = pass2.get("s" + base, {})
-    p1s = [pass1[k] for k in p2.get("from", []) if k in pass1]
+    # Fable's earlier clusters are matched by SHARED ARTICLES, never by key number:
+    # the numbering changed between passes, and matching by number attached another
+    # claim's doubts to 126 of 129 claims (found by Anton on #373, 2026-09-26).
+    mine = set(c["articles"])
+    p1s = [p for p in pass1.values() if mine & set(p["articles"])]
+    p2s = [p for p in pass2.values() if mine & set(p["articles"])]
     fable = {
+        "pass1_clusters": [p["key"] for p in p1s],
         "pass1_confidence": [p["confidence"] for p in p1s],
         "pass1_doubts": [d for p in p1s for d in p.get("doubts", [])],
-        "pass2_split_candidate": p2.get("split_candidate"),
+        "pass2_split_candidate": next((p["split_candidate"] for p in p2s if p.get("split_candidate")), None),
     }
     row = {"key": c["key"].replace("story-", "claim-"), "fighter": c["fighter"],
            "articles": c["articles"], "descriptions": c["descriptions"], "fable": fable}
