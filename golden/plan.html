@@ -1,0 +1,439 @@
+<meta charset="utf-8">
+<title>Golden Set Map</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@500&display=swap">
+<style>
+:root{
+  --ground:#F3F4F6; --panel:#FFFFFF; --ink:#1A1E27; --dim:#5E6573; --line:#DCDFE5;
+  --accent:#2B55C9; --accentbg:#E7EDFB;
+  --done:#2E7D4F; --donebg:#E3F2E8;
+  --decide:#B25E00; --decidebg:#FCEFD9;
+  --label:#6A3FB5; --labelbg:#EFE8FA;
+  --score:#1F6F8B; --scorebg:#E0F0F5;
+  --later:#7A808C; --laterbg:#ECEEF1;
+  --red:#C8372D;
+  --display:"Barlow Condensed","Arial Narrow",system-ui,sans-serif;
+  --body:"IBM Plex Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,Menlo,monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  color-scheme:dark;
+  --ground:#12151B; --panel:#1B1F27; --ink:#E7E9EE; --dim:#9AA1AE; --line:#2C323D;
+  --accent:#7C9BF0; --accentbg:#1E2A47;
+  --done:#6CC48E; --donebg:#17301F;
+  --decide:#F0A54A; --decidebg:#3A2A12;
+  --label:#B596EC; --labelbg:#2B2140;
+  --score:#6BBFDB; --scorebg:#14303A;
+  --later:#8C929E; --laterbg:#232833;
+  --red:#E4675E;
+}}
+:root[data-theme="dark"]{
+  color-scheme:dark;
+  --ground:#12151B; --panel:#1B1F27; --ink:#E7E9EE; --dim:#9AA1AE; --line:#2C323D;
+  --accent:#7C9BF0; --accentbg:#1E2A47;
+  --done:#6CC48E; --donebg:#17301F;
+  --decide:#F0A54A; --decidebg:#3A2A12;
+  --label:#B596EC; --labelbg:#2B2140;
+  --score:#6BBFDB; --scorebg:#14303A;
+  --later:#8C929E; --laterbg:#232833;
+  --red:#E4675E;
+}
+body{background:var(--ground);color:var(--ink);font:15px/1.5 var(--body);padding-inline:16px;padding-block:20px 48px}
+.wrap{max-width:1180px;margin:0 auto;display:grid;gap:28px}
+h1,h2,h3{font-family:var(--display);font-weight:700;letter-spacing:.01em;text-wrap:balance;margin:0}
+h1{font-size:40px;line-height:1}
+h2{font-size:24px;text-transform:uppercase;letter-spacing:.06em;color:var(--dim)}
+.lede{color:var(--dim);max-width:70ch;margin:6px 0 0}
+.stats{display:flex;flex-wrap:wrap;gap:8px 20px;margin-top:10px;font-variant-numeric:tabular-nums;color:var(--dim);font-size:14px}
+.stats b{color:var(--ink);font-weight:600}
+
+/* the path: a real sequence, so it is numbered */
+.path{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:8px;counter-reset:p;list-style:none;padding:0;margin:10px 0 0}
+.path li{background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:10px 12px;display:grid;gap:4px;align-content:start}
+.path .n{font-family:var(--mono);font-size:12px;color:var(--dim)}
+.path .t{font-weight:600;line-height:1.3}
+.path .s{font-size:13px;color:var(--dim);line-height:1.35}
+.path li.done{background:var(--donebg);border-color:transparent}
+.path li.done .n{color:var(--done)}
+.path li.now{border:2px solid var(--decide);background:var(--decidebg)}
+.path li.now .n{color:var(--decide);font-weight:600}
+
+.now-box{background:var(--panel);border:2px solid var(--decide);border-radius:10px;padding:14px 16px;display:grid;gap:8px}
+.now-box h3{font-size:22px;color:var(--decide)}
+.now-box ol{margin:0;padding-left:22px;display:grid;gap:4px}
+
+.filters{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.filters button{font:500 13px var(--body);border:1px solid var(--line);background:var(--panel);color:var(--ink);border-radius:999px;padding:6px 12px;cursor:pointer}
+.filters button[aria-pressed="true"]{background:var(--ink);color:var(--ground);border-color:var(--ink)}
+.filters button:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+
+/* the pipeline: stations in order, a corner-red flow line down the left on narrow screens */
+.pipe{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:14px}
+@media (max-width:420px){.pipe{grid-template-columns:1fr}}
+.st{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:14px 16px;display:grid;gap:10px;align-content:start}
+.st header{display:grid;grid-template-columns:auto 1fr auto;gap:10px;align-items:baseline}
+.st .num{font-family:var(--display);font-size:28px;line-height:1;color:var(--red)}
+.st h3{font-size:24px;line-height:1.05}
+.st .role{font-size:13.5px;color:var(--dim);margin-top:2px}
+.st .verdict{font-size:13.5px;padding:8px 10px;border-radius:6px;background:var(--ground)}
+.st.outside{opacity:.8}
+.bar{height:6px;border-radius:3px;background:var(--laterbg);overflow:hidden;display:flex}
+.bar i{display:block;height:100%;background:var(--done)}
+.count{font-family:var(--mono);font-size:12px;color:var(--dim);white-space:nowrap;font-variant-numeric:tabular-nums}
+ul.items{list-style:none;margin:0;padding:0;display:grid;gap:6px}
+ul.items li{font-size:14px;line-height:1.4}
+ul.items summary{display:grid;grid-template-columns:3.2em 6.4em 1fr 1em;gap:8px;align-items:baseline;cursor:pointer;list-style:none;padding:4px 0}
+ul.items summary::-webkit-details-marker{display:none}
+ul.items summary::after{content:"+";color:var(--dim);font-family:var(--mono);text-align:right}
+ul.items details[open] summary::after{content:"−"}
+ul.items summary:focus-visible{outline:2px solid var(--accent);outline-offset:2px;border-radius:4px}
+.why{margin:4px 0 8px calc(3.2em + 8px);padding:10px 12px;background:var(--ground);border-radius:6px;display:grid;gap:8px}
+@media (max-width:420px){.why{margin-left:0}}
+.what{margin:0}
+.why dl{margin:0;display:grid;grid-template-columns:9.5em 1fr;gap:6px 10px}
+@media (max-width:420px){.why dl{grid-template-columns:1fr}.why dd{margin-bottom:4px}}
+.why dt{font-size:11.5px;font-weight:600;letter-spacing:.05em;text-transform:uppercase;color:var(--dim);padding-top:2px}
+.why dd{margin:0}
+ul.items li[hidden]{display:none}
+.id{font-family:var(--mono);font-size:12.5px;color:var(--dim)}
+.pill{font-size:11px;font-weight:600;letter-spacing:.05em;text-transform:uppercase;padding:2px 6px;border-radius:4px;text-align:center;white-space:nowrap}
+.pill.done{background:var(--donebg);color:var(--done)}
+.pill.next{background:var(--decide);color:var(--panel)}
+.pill.todo{background:var(--panel);color:var(--ink);border:1px solid var(--line)}
+.pill.parked{background:var(--laterbg);color:var(--later)}
+.kind{font-size:11.5px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;color:var(--label);white-space:nowrap}
+.pill.decide{background:var(--decidebg);color:var(--decide)}
+.pill.label{background:var(--labelbg);color:var(--label)}
+.pill.score{background:var(--scorebg);color:var(--score)}
+.pill.later{background:var(--laterbg);color:var(--later)}
+li.is-done .txt{color:var(--dim)}
+.legend{display:flex;flex-wrap:wrap;gap:8px 16px;font-size:13px;color:var(--dim);align-items:center}
+.legend span{display:inline-flex;gap:6px;align-items:center}
+.caveats{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:14px 16px}
+.caveats ul{margin:6px 0 0;padding-left:20px;display:grid;gap:4px}
+footer{font-size:13px;color:var(--dim)}
+code{font-family:var(--mono);font-size:.9em}
+@media (prefers-reduced-motion:no-preference){.bar i{transition:width .4s ease}}
+</style>
+
+<div class="wrap">
+  <section>
+    <h1>Golden Set Map</h1>
+    <p class="lede">Everything the golden set needs before each station of the new design can be scored on it: what is done, what is next, and what waits. Tap a task to see why it matters. Point at any task by its number, for example "6.4".</p>
+    <div class="stats" id="stats"></div>
+  </section>
+
+  <section>
+    <h2>The path</h2>
+    <ol class="path" id="path"></ol>
+  </section>
+
+  <section class="now-box" id="nowbox"></section>
+
+  <section style="display:grid;gap:12px">
+    <h2>Station by station</h2>
+    <div class="legend">
+      <span><b class="pill done">✓ done</b> finished</span>
+      <span><b class="pill next">▶ next</b> the step we are on now</span>
+      <span><b class="pill todo">○ to do</b> in scope, not started</span>
+      <span><b class="pill parked">‖ parked</b> left for later, on purpose</span>
+    </div>
+    <div class="filters" role="group" aria-label="Show items">
+      <button id="f-all" data-f="all" aria-pressed="true">All</button>
+      <button id="f-open" data-f="open" aria-pressed="false">Not done yet</button>
+      <button id="f-decide" data-f="decide" aria-pressed="false">Next</button>
+      <button id="f-done" data-f="done" aria-pressed="false">Done</button>
+      <button id="f-later" data-f="later" aria-pressed="false">Parked</button>
+    </div>
+    <div class="pipe" id="pipe"></div>
+  </section>
+
+  <section class="caveats">
+    <h2>Possibly missing</h2>
+    <p class="lede">Scope questions for you: things no task covers yet.</p>
+    <ul id="gaps"></ul>
+  </section>
+
+  <section class="caveats">
+    <h2>Limits of the whole set</h2>
+    <ul>
+      <li><b>One fight week.</b> Every result article is Donchenko vs Soriano. A second week needs a fresh pull, which is your call, later.</li>
+      <li><b>Text only.</b> The 300 were drawn from articles with a body, so the headline-only path is not tested.</li>
+      <li><b>Already used for tuning.</b> The classifier went through 18 passes on these articles. That is why the tune/test split exists: a score only counts on the test third.</li>
+      <li><b>Topuria was thinned</b> (182 of his articles kept), so his time gaps read longer than they are.</li>
+    </ul>
+  </section>
+
+  <footer>Updated 2026-09-27 after ruler v4. Source: <code>golden/plan.html</code> in the repo; the rulings behind every "done" are in <code>golden/verdicts.md</code>.</footer>
+</div>
+
+<script>
+// One place to edit: the path, then each station's items.
+const PATH = [
+  {t:"Golden folder and review board", s:"300 articles frozen, board built", st:"done"},
+  {t:"Rule every multi-article claim", s:"47 claims, v3 (23–25 Sept)", st:"done"},
+  {t:"Singleton pass and body checks", s:"7 pairs, 14 checks, v4 (27 Sept)", st:"done"},
+  {t:"Four decisions", s:"before labelling starts", st:"now"},
+  {t:"Label pass, blind", s:"type, bout, speaker, tier per claim", st:""},
+  {t:"Freeze and split", s:"labels.json, split.json: 2/3 tune, 1/3 test", st:""},
+  {t:"Score each station once", s:"on the test third; recorded in decisions.md", st:""},
+];
+
+const NOW = {
+  title:"Next: four decisions, then the label pass",
+  items:[
+    ["6.4","How far apart can two articles be and still be one claim? 37 same-claim pairs are more than 3 days apart, in 10 claims."],
+    ["4.4","How closely you follow each fighter: whose words count as news about him (the coach-only ruling of 22 Sept, and does it reach beyond analysis)."],
+    ["4.3","Is the opponent's own news (his camp, his injury, his words about himself) news about our fighter?"],
+    ["6.5","Is fight-week routine (weigh-ins, face-offs, open workouts) a claim of its own?"],
+  ]
+};
+
+// Each task: id, status, the task as an action, what it involves, and why it matters at three levels.
+const T = (id, st, task, what, set, station, system) => ({id, st, task, what, why:{set, station, system}});
+
+const STATIONS = [
+  {n:1, name:"RSS reader", role:"Finds article links for each fighter.", outside:true,
+   verdict:"Not tested by this set. Whether we find every real event is measured separately, by the monthly recall check.",
+   items:[]},
+  {n:2, name:"URL dedup", role:"Drops a link we have already seen.",
+   verdict:"Skipped for now, your call. The set already holds its test cases.",
+   items:[
+    T("2.1","done","Confirm which articles are the same page saved twice",
+      "Six pairs, confirmed on the live pages: #33/#13, #125/#115, #491/#490, #540/#533, #698/#692, and #1129/#1125 (the AMP phone version beside the full page). Recorded as same_page_as.",
+      "A copy is not a second outlet reporting the news. Marking it stops a copy from counting as an easy 'same claim' win when grouping is scored.",
+      "These six are exactly the cases URL dedup should catch. They are its test set.",
+      "A copy that slips through can be posted twice. That breaks goal G3, nothing repeats."),
+    T("2.2","later","Test address clean-up on those six pairs",
+      "Remove /amp/, a trailing slash, and the Google News wrapper, then check that each pair is caught.",
+      "Needs no new labels; 2.1 already provides them.",
+      "Measures whether cheap address rules catch copies before any text is fetched.",
+      "Every copy caught here saves a page fetch and a model call further down. Parked because you chose to skip this station for now."),
+   ]},
+  {n:3, name:"Body extractor", role:"Gets the article text from the page.",
+   verdict:"Last on purpose, your call. What we learned is recorded so nothing is lost.",
+   items:[
+    T("3.1","done","Check the saved text of 14 suspicious articles against the live pages",
+      "6 copies; 8 where the saved text never names the fighter. All settled 27 Sept.",
+      "Tells us which saved texts can be trusted, so a later station is not blamed for bad input.",
+      "Gives real failure cases instead of guesses.",
+      "Every later station reads this text. When the text is wrong, every decision after it is a guess."),
+    T("3.2","done","Write down each extraction failure found",
+      "#655 saved styling code only; #134 the intro only; #230 cut at 10,000 characters; #937 a second, chained article never fetched; #852 lost its 'said on Instagram' line; #385 an embedded post we cannot see.",
+      "Keeps these from being mistaken for station errors when scoring.",
+      "This is the to-do list for the tune-up (3.4).",
+      "Shows the limits of fetching a page once without a browser."),
+    T("3.3","later","Mark every article whose saved text is unusable, across all 300",
+      "Expected 10 to 15. Two confirmed so far (#134, #655); the board pre-flags suspects.",
+      "Lets a score separate 'the station was wrong' from 'the input was garbage'. Worth asking whether this must happen before step 7, or the classifier gets scored on garbage.",
+      "Test cases for a quality check. A length check alone lets styling code through.",
+      "Design card 7: an article with no usable text needs a check and a defined fate."),
+    T("3.4","later","Tune the body extractor, then score it on the set",
+      "TODO item 8. Last, by your decision.",
+      "Uses 3.2 and 3.3 as its answer key.",
+      "The only way to know if a fix helped.",
+      "Better text lifts every station after it."),
+   ]},
+  {n:4, name:"Classifier", role:"Says what kind of article it is and who is speaking.",
+   verdict:"Answers are in. Needs your type and speaker labels, then one score.",
+   items:[
+    T("4.1","done","Store the classifier's answers for all 300 articles",
+      "Six questions, three readers each, frozen in golden/answers and shown on the board.",
+      "The output being scored is fixed and cannot drift between runs.",
+      "The baseline any new classifier design has to beat.",
+      "The classifier's answer is what the decider reads first to choose post-now or not."),
+    T("4.2","done","Try a second set of questions and sort the news into types",
+      "Five new questions. The types report found 4 families and 28 types.",
+      "The type list is the pre-fill for 4.5, so you confirm instead of typing.",
+      "Showed which questions help tell tiers apart and which add nothing.",
+      "Input to the next classifier design."),
+    T("4.3","decide","Decide whether the opponent's own news counts as news about our fighter",
+      "For example his camp's update, his injury, or what he says about himself before their fight.",
+      "Changes the tier of many claims. It must be settled before labelling, or labels follow two rules.",
+      "Defines what 'about him' means for the classifier.",
+      "This is the line between tier 2 and tier 3 in goals.md."),
+    T("4.4","decide","Decide how closely you follow each fighter: whose words count as news",
+      "The coach-only ruling of 22 Sept exists; not yet settled whether it applies beyond analysis.",
+      "The same article can be weekly for Amosov and never for Topuria. The label must use one rule per fighter.",
+      "Makes the speaker question work as a filter.",
+      "Becomes a per-fighter setting in the app, not a hard-coded law."),
+    T("4.5","label","Confirm the type of news for every claim",
+      "Pre-filled from Fable's types report; you confirm or change it.",
+      "The split is balanced by type, so the test third holds results, bookings, quotes and predictions.",
+      "The answer key for the classifier's type question.",
+      "The post-now rule is keyed on type: a booking or a result posts at once."),
+    T("4.6","label","Name the speaker with standing for every claim that is a quote",
+      "Yours to give. Nothing pre-filled.",
+      "The answer key for the speaker question.",
+      "Tests whether the classifier finds who is really speaking.",
+      "Decides which quotes reach the group (the coach-only rule)."),
+    T("4.7","score","Score the classifier once on the test third",
+      "After the freeze. Written into decisions.md beside the design.",
+      "Uses the labels exactly once, so the number is honest.",
+      "Tells us whether it is good enough or needs work.",
+      "A recorded number instead of an impression."),
+   ]},
+  {n:5, name:"Claim extractor", role:"Writes one sentence per article: what happened, and where.",
+   verdict:"Extracts are in. Only the bout needs your confirmation; bad extracts get flagged as you meet them.",
+   items:[
+    T("5.1","done","Store extracts for all 300 articles, plus a second identical run",
+      "The second run shows how much the answers change with nothing changed.",
+      "Frozen output, and a noise floor to read any difference against.",
+      "The baseline for the next extractor prompt.",
+      "The extract feeds the best grouping method (6.3) and may become the message text."),
+    T("5.2","done","Show the extract first on every board card",
+      "Extractor details sit under it.",
+      "Made reviewing 300 articles fast enough to do by hand.",
+      "Exposes a bad extract at a glance.",
+      "The same view could later become how you give feedback on live posts."),
+    T("5.3","label","Confirm the bout for every claim",
+      "Pre-filled for 63 claims; you confirm or correct.",
+      "Ties each claim to a fight: needed for the predictions merge and the post-fight window.",
+      "The answer key for the extractor's bout field.",
+      "Guards grouping: a result must never join a booking for a different fight."),
+    T("5.4","label","Flag a bad extract when you meet one",
+      "No separate pass. Only while labelling.",
+      "Gives an 'extract right or wrong' label cheaply.",
+      "Real failure cases for the next prompt.",
+      "If the extract becomes the post text, a wrong one reaches the group."),
+    T("5.5","later","Change the next prompt: origin is where the person spoke, never the account that relayed it",
+      "Written down in the answers-to-tiers experiment.",
+      "None now.",
+      "Fixes a known extraction error.",
+      "Keeps two outlets relaying one interview in the same claim."),
+   ]},
+  {n:6, name:"Semantic dedup", role:"Joins an article to a claim we have, or starts a new one.",
+   verdict:"The grouping is ruled. Two decisions left, then the replay.",
+   items:[
+    T("6.1","done","Rule every claim that has more than one article (v3)",
+      "47 claims: 45 as built, two splits, one merge (the predictions).",
+      "This is the answer key for grouping.",
+      "Defines which joins are right and which are wrong.",
+      "Goal G3: nothing repeats."),
+    T("6.2","done","Rule the seven single-article claims Fable could not place (v4)",
+      "Six stay apart; #565 joins claim-054. 128 claims.",
+      "Removes the answer-key errors Fable itself was unsure about.",
+      "Cases where joining is genuinely hard.",
+      "Same as 6.1."),
+    T("6.3","done","Rescore every grouping method on v4",
+      "Best: extract plus headline plus lead, 0.941. Production today: 0.908. From saved results, no cost.",
+      "Confirms v4 did not change any conclusion.",
+      "Shows which text to compare articles on.",
+      "Production compares headline plus lead today; the extract version separates claims better."),
+    T("6.4","decide","Decide how far back joining should look",
+      "37 same-claim pairs are more than 3 days apart, in 10 claims.",
+      "Decides whether those 37 pairs count as misses when scoring.",
+      "Sets the size of the search window.",
+      "Too short and a repeat posts again (G3). Too long and more wrong joins and more cost."),
+    T("6.5","decide","Decide whether fight-week routine is a claim of its own",
+      "Weigh-ins, face-offs, open workouts.",
+      "Changes how many fight-week articles are grouped, so the labels must follow one rule.",
+      "Tells grouping what to join.",
+      "Decides whether the group hears about each weigh-in and face-off."),
+    T("6.6","label","Check the other 74 single-article claims while labelling",
+      "Fable found no partner for them. Flag any that belong elsewhere.",
+      "An unnoticed wrong singleton is a hidden error in the answer key.",
+      "A missed join would be scored as correct.",
+      "Same as 6.1."),
+    T("6.7","score","Replay all 300 in date order and score the test side once",
+      "Test-side articles still see tune-side claims as candidates.",
+      "Uses the answer key exactly once.",
+      "The honest grouping number.",
+      "Written into decisions.md beside the design."),
+   ]},
+  {n:7, name:"Decider", role:"Post now, weekly digest, or never.",
+   verdict:"Needs your tier for every claim, given blind. The biggest part of the label pass.",
+   items:[
+    T("7.1","done","Measure how well classifier answers predict tiers",
+      "Today's rules match the September grading 76%; with the new questions 84%, measured on the same data.",
+      "Not golden. The September grading is a weaker answer key.",
+      "Shows the classifier answers carry enough to decide tiers.",
+      "Input to the decider's design."),
+    T("7.2","label","Give every claim a tier: now, weekly, or never",
+      "Blind: the rule's answer stays hidden while you choose.",
+      "The only answer key for the decider. Blind, so it is your judgement, not a confirmation of the rule.",
+      "What the decider is scored against.",
+      "Goals G1 (nothing real missed) and G2 (no junk)."),
+    T("7.3","score","Score the decider once on the test third",
+      "After the freeze.",
+      "Uses the labels exactly once.",
+      "The honest decider number.",
+      "Written into decisions.md beside the design."),
+   ]},
+  {n:8, name:"Digest writer", role:"Writes the weekly summary.",
+   verdict:"Not in this round. Two labels would test it later.",
+   items:[
+    T("8.1","later","Mark the main source for each article",
+      "Link the original essay or interview, not a write-up about it.",
+      "A new label, not needed until the digest writer exists.",
+      "Tests whether the digest links the right source.",
+      "The digest links where the news actually came from."),
+    T("8.2","later","Check the digest skips the right stories",
+      "Uses the tier labels from 7.2.",
+      "No new labels.",
+      "Tests what the digest leaves out.",
+      "Keeps the digest short."),
+   ]},
+  {n:9, name:"Telegram and storyboard", role:"Where people read it.", outside:true,
+   verdict:"Not tested by this set. Who writes the tier-1 message is a design question, not a data one.",
+   items:[]},
+];
+
+const GAPS = [
+  ["Confirmed or rumour?", "Goal G4 says 'confirmed' must come from an official source. No label records whether a booking is official or rumoured, so nothing tests it. Add a label per booking claim?"],
+  ["Unusable text before scoring", "If 3.3 waits until last, the classifier and decider are scored on articles whose saved text is garbage. Move 3.3 before step 7, or leave those articles out of the score?"],
+  ["Headline-only articles", "About 19% of the raw feed in the other project had no text. The set cannot test them. A later slice, like the second fight week."],
+];
+
+const esc = s => s.replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+
+// Top numbers
+const all = STATIONS.flatMap(s => s.items);
+const nDone = all.filter(i => i.st==="done").length;
+document.getElementById("stats").innerHTML =
+  `<span><b>300</b> articles</span><span><b>128</b> claims</span><span><b>47</b> with more than one article</span>` +
+  `<span><b>${nDone}</b> of <b>${all.length}</b> tasks done</span>` +
+  `<span><b>${all.filter(i=>i.st==="decide").length}</b> decisions waiting for you</span>`;
+
+// The path
+document.getElementById("path").innerHTML = PATH.map((p,i) =>
+  `<li class="${p.st}"><span class="n">${p.st==="done"?"✓ ":p.st==="now"?"▶ now · ":""}step ${i+1}</span><span class="t">${esc(p.t)}</span><span class="s">${esc(p.s)}</span></li>`).join("");
+
+// Now box
+document.getElementById("nowbox").innerHTML = `<h3>${esc(NOW.title)}</h3><ol>${NOW.items.map(([id,t]) => `<li><span class="id">${id}</span> ${esc(t)}</li>`).join("")}</ol>`;
+
+// Status is what you scan for; kind says what sort of work it is.
+const STATUS = {done:["done","✓ done"], decide:["next","▶ next"], label:["todo","○ to do"], score:["todo","○ to do"], later:["parked","‖ parked"]};
+const KIND = {decide:"your decision", label:"label pass", score:"scoring", later:"", done:""};
+// Stations, each task expandable with its three reasons
+const task = i => `<li class="${i.st==="done"?"is-done":""}" data-st="${i.st}"><details><summary><span class="id">${i.id}</span><span class="pill ${STATUS[i.st][0]}">${STATUS[i.st][1]}</span><span class="txt">${esc(i.task)}${KIND[i.st]?` <span class="kind">${KIND[i.st]}</span>`:""}</span></summary>
+  <div class="why">${i.what?`<p class="what">${esc(i.what)}</p>`:""}
+  <dl><dt>For the golden set</dt><dd>${esc(i.why.set)}</dd><dt>For this station</dt><dd>${esc(i.why.station)}</dd><dt>For the system</dt><dd>${esc(i.why.system)}</dd></dl></div></details></li>`;
+document.getElementById("pipe").innerHTML = STATIONS.map(s => {
+  const d = s.items.filter(i => i.st==="done").length, n = s.items.length;
+  const count = n ? `<span class="count">${d} of ${n} done</span>` : `<span class="count">not tested here</span>`;
+  const bar = n ? `<div class="bar" aria-hidden="true"><i style="width:${Math.round(100*d/n)}%"></i></div>` : "";
+  return `<article class="st${s.outside?" outside":""}" data-n="${s.n}"><header><span class="num">${s.n}</span><div><h3>${esc(s.name)}</h3><div class="role">${esc(s.role)}</div></div>${count}</header>${bar}<div class="verdict">${esc(s.verdict)}</div>${n?`<ul class="items">${s.items.map(task).join("")}</ul>`:""}</article>`;
+}).join("");
+
+// Possibly missing
+document.getElementById("gaps").innerHTML = GAPS.map(([t,d]) => `<li><b>${esc(t)}.</b> ${esc(d)}</li>`).join("");
+
+// Filters: a per-viewer convenience, remembered if storage allows
+const buttons = [...document.querySelectorAll(".filters button")];
+function apply(f){
+  buttons.forEach(b => b.setAttribute("aria-pressed", String(b.dataset.f===f)));
+  document.querySelectorAll("ul.items li").forEach(li => {
+    const st = li.dataset.st;
+    li.hidden = !(f==="all" || (f==="done" && st==="done") || (f==="decide" && st==="decide") || (f==="later" && st==="later") || (f==="open" && st!=="done" && st!=="later"));
+  });
+  document.querySelectorAll(".st").forEach(card => {
+    const lis = [...card.querySelectorAll("ul.items li")];
+    card.hidden = f!=="all" && lis.every(li => li.hidden);
+  });
+  try { localStorage.setItem("golden-plan-filter", f); } catch(e) {}
+}
+buttons.forEach(b => b.addEventListener("click", () => apply(b.dataset.f)));
+let saved = "all"; try { saved = localStorage.getItem("golden-plan-filter") || "all"; } catch(e) {}
+apply(saved);
+</script>

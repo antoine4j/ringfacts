@@ -23,6 +23,7 @@ ruling by Anton in `verdicts.md`.
 | `answers/extractor.json` | the extractor's answer per article: kind, extract (field `claim`), occasion, actor, opponent, event, date; `second_run` = the same prompt run again unchanged; `fields` and `kind_options` = the prompt's own definitions | 300 |
 | `labels.json` | *not yet written* — per claim: kind, speaker, bout, tier; per article: body_unusable, same_page_as, primary_source | |
 | `split.json` | *not yet written* — tune/test by claim, fixed seed | |
+| `plan.html` | the big picture: every pipeline station, what the golden set still needs for it, each task's status (done / next / to do / parked) and why it matters. Hand-edited: the `PATH`, `NOW` and `STATIONS` blocks at the bottom. **Update it in the same commit whenever a task changes status**; published as a private artifact at https://claude.ai/artifact/L412VXv6JRP2kFKQogBo7v (republish after editing) | |
 | `board/build.py` → `board/board.html` | the review board: every claim with its articles, every classifier and extractor answer as a chip, Anton's ruling and Fable's doubts under the header, "suspected" pre-flags for body problems and exact copies. Reads only this folder; writes nothing back. `python3 golden/board/build.py` regenerates it (the page is git-ignored) | |
 
 Words: **tier** is what the older docs (goals.md, the September grading) call *bucket*: tier 1 posts now, tier 2 goes to the digest, tier 3 does not reach the group. A **claim** is a group of articles about one occasion (one

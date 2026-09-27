@@ -91,8 +91,11 @@ across otherwise.
 
 ## Order of work
 
-1. Finish the rulings: all 47 multi-article claims ruled (2026-09-25); 82 singletons remain.
-2. Pre-flag body suspects and exact copies so Anton only confirms.
+1. Finish the rulings: all 47 multi-article claims ruled (2026-09-25); the
+   seven singleton pairs Fable could not place ruled (2026-09-27, v4). The
+   other 74 singletons stand as built and are checked in passing while labelling.
+2. Pre-flag body suspects and exact copies so Anton only confirms: done,
+   14 settled on the live pages (2026-09-27).
 3. Add `kind`, `speaker`, `bout`, `tier` to each ruled story; derive
    `labels.json`.
 4. Freeze. Draw the split. Record `split.json`.
