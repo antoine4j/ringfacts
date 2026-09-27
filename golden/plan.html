@@ -201,7 +201,7 @@ const NOW = {
   title:"Next: four decisions, then the label pass",
   items:[
     ["6.4","How far apart can two articles be and still be one claim? 37 same-claim pairs are more than 3 days apart, in 10 claims."],
-    ["4.4","How closely you follow each fighter: whose words count as news about him (the coach-only ruling of 22 Sept, and does it reach beyond analysis)."],
+    ["4.4","How closely you follow each fighter: for each kind of speaker, in (the claim can be tier 1 or 2) or out (always tier 3)."],
     ["4.3","Is the opponent's own news (his camp, his injury, his words about himself) news about our fighter?"],
     ["6.5","Is fight-week routine (weigh-ins, face-offs, open workouts) a claim of its own?"],
   ]
@@ -359,7 +359,7 @@ const STATIONS = [
       "The honest grouping number.",
       "Written into decisions.md beside the design."),
    ]},
-  {n:7, name:"Decider", role:"Post now, weekly digest, or never.",
+  {n:7, name:"Decider", role:"Tier 1 posts now, tier 2 goes to the weekly digest, tier 3 never reaches the group.",
    verdict:"Needs your tier for every claim, given blind. The biggest part of the label pass.",
    items:[
     T("7.1","done","Measure how well classifier answers predict tiers",
@@ -367,7 +367,7 @@ const STATIONS = [
       "Not golden. The September grading is a weaker answer key.",
       "Shows the classifier answers carry enough to decide tiers.",
       "Input to the decider's design."),
-    T("7.2","label","Give every claim a tier: now, weekly, or never",
+    T("7.2","label","Give every claim a tier: 1 (post now), 2 (weekly digest) or 3 (never)",
       "Blind: the rule's answer stays hidden while you choose.",
       "The only answer key for the decider. Blind, so it is your judgement, not a confirmation of the rule.",
       "What the decider is scored against.",

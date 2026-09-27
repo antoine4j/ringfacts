@@ -52,7 +52,7 @@ Per **story** (the occasion is the unit, so one word covers its articles):
 | `kind` | booking · result · quote · prediction · preview · lifestyle · injury · other | Classifier; the tier-1 rule |
 | `speaker` | himself · his_coach · opponent_coach · manager · pundit · another_fighter · none — quote stories only | Classifier (the "only the coach" rule) |
 | `bout` | a bout id such as `donchenko-soriano-2026-09-06`, or none | Join-or-start guard; predictions merge; post-fight window; the arc |
-| `tier` | now · weekly · never | Decider; the digest writer's "did it skip the right stories" |
+| `tier` | 1 (post now) · 2 (weekly digest) · 3 (never) | Decider; the digest writer's "did it skip the right stories" |
 | `extract_ok` | yes, or a note of what the extract missed | Extractor |
 | `grouping` | right, or which articles belong elsewhere | Join-or-start |
 
