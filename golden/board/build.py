@@ -147,6 +147,7 @@ details.claim>summary{list-style:none;cursor:pointer;padding:11px 14px;display:f
 details.claim>summary::-webkit-details-marker{display:none}
 details.claim>summary .key{font-family:ui-monospace,Menlo,monospace;font-size:13px;color:var(--dim)}
 details.claim>summary .desc{flex:1 1 400px;font-weight:500}
+details.claim>summary .desc .src{font-weight:400;font-size:12px;color:var(--dim);white-space:nowrap}
 details.claim>summary .meta{color:var(--dim);font-size:13px;white-space:nowrap}
 .chip{display:inline-block;font-size:12px;line-height:1.3;padding:2px 8px;border-radius:999px;background:var(--soft);color:var(--dim);white-space:nowrap}
 .chip.ok{background:var(--okbg);color:var(--ok)}.chip.warn{background:var(--warnbg);color:var(--warn)}
@@ -257,7 +258,8 @@ function card(c){
 function side(key){ const s=DATA.find(x=>x.key===key); const ids=s.cards.map(c=>"#"+c.id); return `<span class="chip type">${key}</span><span class="id">${ids.length>4?ids.slice(0,4).join(" ")+" … "+ids.length+" articles":ids.join(" ")}</span>`; }
 function claim(s){
   const fb=s.fable, r=s.ruled;
-  const hdr=[`<span class="key">${s.key}</span>`,`<span class="desc">${esc(s.desc[0]||"")}</span>`,
+  const first=s.cards[0], lbl=(first.ex&&first.ex.claim)||"(no extract)";
+  const hdr=[`<span class="key">${s.key}</span>`,`<span class="desc" title="The claim's label as the system would store it: the extract of its first article. Fable's summary is inside.">${esc(lbl)} <span class="src">extract of #${first.id}, first article</span></span>`,
     `<span class="meta">${esc(s.f.split(" ").pop())} · ${s.n} article${s.n>1?"s":""} · ${s.oldest===s.newest?s.oldest:s.oldest+" → "+s.newest}</span>`,
     r?`<span class="chip ok" title="${esc(r.what)}">ruled ${r.date}</span>`:`<span class="chip">not ruled</span>`,
     `<span class="chip type" title="${esc(s.family)}">${esc(s.type)}</span>`, s.bout?`<span class="chip type">bout: ${esc(s.bout)}</span>`:"",
@@ -265,7 +267,7 @@ function claim(s){
     fb.pass1_confidence.length&&fb.pass1_confidence.some(x=>x!=="high")?`<span class="chip warn">confidence ${esc(fb.pass1_confidence.join("/"))}</span>`:"",
     s.flagged?`<span class="chip warn">suspected body issue</span>`:"", s.from?`<span class="chip">rebuilt from ${esc(s.from.join(", "))}</span>`:""].join("");
   const inner=[];
-  if(s.desc.length>1) inner.push(`<div class="block"><h4>Fable's descriptions</h4>${s.desc.map(d=>`<div>· ${esc(d)}</div>`).join("")}</div>`);
+  inner.push(`<div class="block"><h4>Fable's summary · a reviewer who read every article; the system never has this</h4>${s.desc.map(d=>`<div>· ${esc(d)}</div>`).join("")}</div>`);
   if(fb.pass1_doubts.length||fb.pass2_split_candidate) inner.push(`<div class="block fable"><h4>Fable's doubts while grouping</h4>${fb.pass1_doubts.map(d=>`<div>· ${esc(d)}</div>`).join("")}${fb.pass2_split_candidate?`<div>· split candidate: ${esc(JSON.stringify(fb.pass2_split_candidate))}</div>`:""}</div>`);
   if(r) inner.push(`<div class="block rule"><h4>Anton's ruling · ${r.date}${s.key.includes(".")?" (parent's)":""}</h4><div><b>${esc(r.what)}</b></div>${r.text?`<pre>${md(r.text)}</pre>`:""}</div>`);
   inner.push(s.cards.map(card).join(""));
