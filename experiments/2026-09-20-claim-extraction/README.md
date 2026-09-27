@@ -255,6 +255,31 @@ errors +67), the claim arms gained slightly on AUC. Nothing here changes a
 conclusion; it re-states that predictions are a type-of-news story the
 embedding cannot assemble.
 
+### The ruler after the singleton pass — v4, 2026-09-27
+Seven singleton pairs Fable could not call were ruled (golden/verdicts.md):
+six stand as built, one joins — #565, an Uncrowned column built on
+Gaethje's Sports Illustrated quotes, into story-054, the interview itself.
+128 stories. v3 is kept as `clusters-v3.json` and `scores-v3.json`; v4 is
+built by `golden/tools/ruler-v4.py`. Rescored from the cached embeddings
+with the network blocked, so no call could happen:
+
+| arm | pairs same/diff | AUC v3 → v4 | best threshold | errors v3 → v4 |
+|---|---|---|---|---|
+| 1 headline | 748 / 5,794 | 0.876 → 0.876 | 0.84 | 619 → 622 |
+| 2 headline + lead (production) | 748 / 5,794 | 0.908 → 0.908 | 0.89 | 609 → 612 |
+| 3 claim | 726 / 4,777 | 0.914 → 0.913 | 0.92 | 499 → 502 |
+| 3o claim + occasion | 726 / 4,777 | 0.922 → 0.921 | 0.95 | 501 → 504 |
+| 3q occasion-first + claim | 726 / 4,777 | 0.926 → 0.925 | 0.92 | 483 → 486 |
+| 4 occasion-first claim + headline + lead | 748 / 5,794 | 0.941 → 0.941 | 0.89 | 448 → 451 |
+
+Read: the join turns three different-story pairs into same-story pairs
+(#565 with #476, #492, #503; the other three members are four days away,
+outside the 3-day window). Every arm misses all three at its own best
+threshold, so every arm gains exactly three errors and the ranking does
+not move. #565 is a column: it quotes the interview but writes around it,
+which is the case the embedding is worst at. Nothing here changes a
+conclusion.
+
 ### Reproduce
     PASS=n python3 run.py --one        # one live call: reasoning tokens, cost
     PASS=n python3 run.py --yes        # ~$0.06–0.09 per pass, cached

@@ -17,7 +17,7 @@ bot — explaining *why* beats delivering silently.
 | **[docs/code-style.md](docs/code-style.md)** | **How code in this repo is written, and why. Read before writing any.** |
 | [docs/decisions.md](docs/decisions.md) | Why the code is the way it is — measurements, incidents, rejected alternatives. Code points here instead of carrying it. |
 | **[docs/lessons.md](docs/lessons.md)** | **What the experiments have taught us about the data and the models — findings with evidence, confidence and caveats, not rules. Read before designing or running an experiment; add to it when one ends.** |
-| **[docs/golden-set.md](docs/golden-set.md)** | **The one labelled set every station is scored against — 300 articles, 129 claims, Anton's rulings; its caveats and the tune/test split. The data is in [golden/](golden/README.md). Supersedes corpus/ and article-feedback.md for evaluation.** |
+| **[docs/golden-set.md](docs/golden-set.md)** | **The one labelled set every station is scored against — 300 articles, 128 claims, Anton's rulings; its caveats and the tune/test split. The data is in [golden/](golden/README.md). Supersedes corpus/ and article-feedback.md for evaluation.** |
 | [TODO.md](TODO.md) | Build sequence, open questions, and the triggers that promote a watch item into work. |
 | [docs/architecture-overview.html](docs/architecture-overview.html) | Living architecture overview — the system as built (pipeline, claims layer, ops, autonomy). |
 | [bench/README.md](bench/README.md) | The bench: run a battery of articles through one pipeline step on the TEST keys and the bench database, from any session. Never production keys, never the group. |

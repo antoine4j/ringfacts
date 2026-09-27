@@ -15,9 +15,10 @@ The experiments keep their working copies; golden holds the frozen ones.
   articles that had text. Topuria 182, Donchenko 99, Amosov 19. Frozen:
   `golden/articles.json` (copied once from the role-questions experiment;
   `pull.mjs` never runs again).
-- **129 claims** — Fable's grouping of those articles by occasion, three
-  passes, then Anton's rulings applied (v3): `golden/claims.json`.
-  47 claims hold more than one article, 82 are singletons. A *claim* is
+- **128 claims** — Fable's grouping of those articles by occasion, three
+  passes, then Anton's rulings applied: every multi-article claim (v3), then
+  the singleton pass (v4, one join): `golden/claims.json`.
+  47 claims hold more than one article, 81 are singletons. A *claim* is
   one occasion with its articles; *story* is reserved for the larger
   thing that may span several claims, not yet labelled.
 - **Anton's rulings**, claim by claim, verbatim and append-only:

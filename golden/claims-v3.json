@@ -1,14 +1,13 @@
 {
- "built": "2026-09-27",
- "version": 4,
- "source": "golden/claims-v3.json + golden/tools/ruler-v4.py",
- "note": "v4 = v3 with the singleton pass applied (verdicts.md, 2026-09-27): seven singleton pairs ruled, one join (#565 claim-067 into claim-054, 'for now'), six as built; fourteen body checks settled, six pages saved twice recorded as same_page_as. v3 kept as the -v3 copies.",
+ "built": "2026-09-26",
+ "version": 3,
+ "source": "experiments/2026-09-20-claim-extraction/clusters.json (v3), keys renamed story-→claim-",
+ "note": "v3 = v2 (Fable's three-pass grouping) with Anton's rulings applied after his story-by-story review of every multi-article story, 2026-09-23..25 (verdicts.md). 45 of 48 multi-article stories confirmed as built; two splits and one merge below. Singleton stories not yet reviewed. v2 kept as clusters-v2.json; v1 as clusters-v1-chained.json.",
  "method": "Fable subagents: window clustering (lead) -> description merge -> full-read of unresolved pairs and split candidates",
  "applied_rulings": [
   "story-094 split: #743 alone (empty 112.ua mention); #744 + #774 are the press conference — ruled 2026-09-23",
   "story-015 split by occasion: Merab/Helen Yee (#327 #349 #368 #397 #402, #402 because Merab is its lead) apart from Gallo/Jorge Ebro YouTube (#152 #412) — ruled 2026-09-25",
-  "predictions merge: story-066, story-072, story-075, story-077, story-081, story-082, story-086, story-088, story-089, story-091 -> story-066, 13 articles — ruled 2026-09-23 (by type of news, not occasion: a genre every outlet reproduces at will)",
-  "singleton pass: #565 (claim-067, Uncrowned column on Gaethje's SI interview) joins claim-054 — ruled 2026-09-27 'for now' (a column built on one interview's quotes joins it)"
+  "predictions merge: story-066, story-072, story-075, story-077, story-081, story-082, story-086, story-088, story-089, story-091 -> story-066, 13 articles — ruled 2026-09-23 (by type of news, not occasion: a genre every outlet reproduces at will)"
  ],
  "low_confidence_rulings": [
   {
@@ -1329,32 +1328,23 @@
     "476",
     "484",
     "492",
-    "503",
-    "565"
+    "503"
    ],
    "descriptions": [
-    "Gaethje's Sports Illustrated interview: hands still hurt, can't punch, won't fight until 2027, doesn't want an immediate Topuria rematch but UFC has the final say",
-    "Uncrowned/Yahoo column on Gaethje's Sports Illustrated interview: both hands still hurt, will enjoy being champion for the rest of 2026, may weigh pros and cons of fighting again; what that means for Tsarukyan and the division"
+    "Gaethje's Sports Illustrated interview: hands still hurt, can't punch, won't fight until 2027, doesn't want an immediate Topuria rematch but UFC has the final say"
    ],
    "fable": {
     "pass1_clusters": [
-     "m062",
-     "m068"
+     "m062"
     ],
     "pass1_confidence": [
-     "high",
-     "medium"
+     "high"
     ],
     "pass1_doubts": [
-     "MARCA leads with the 'UFC has the last word' rematch line rather than the injury line, but cites the same SI interview.",
-     "565 is an Uncrowned analysis piece that cites Sports Illustrated rather than the Paramount+ video directly, and its angle (Gaethje sitting out 2026) differs from the McGregor angle; merged because the quotes come from the same interview."
+     "MARCA leads with the 'UFC has the last word' rematch line rather than the injury line, but cites the same SI interview."
     ],
     "pass2_split_candidate": null
-   },
-   "from": [
-    "claim-054",
-    "claim-067"
-   ]
+   }
   },
   {
    "key": "claim-055",
@@ -1664,6 +1654,28 @@
     "story-089",
     "story-091"
    ]
+  },
+  {
+   "key": "claim-067",
+   "fighter": "Ilia Topuria",
+   "articles": [
+    "565"
+   ],
+   "descriptions": [
+    "Uncrowned/Yahoo column on Gaethje's Sports Illustrated interview: both hands still hurt, will enjoy being champion for the rest of 2026, may weigh pros and cons of fighting again; what that means for Tsarukyan and the division"
+   ],
+   "fable": {
+    "pass1_clusters": [
+     "m068"
+    ],
+    "pass1_confidence": [
+     "medium"
+    ],
+    "pass1_doubts": [
+     "565 is an Uncrowned analysis piece that cites Sports Illustrated rather than the Paramount+ video directly, and its angle (Gaethje sitting out 2026) differs from the McGregor angle; merged because the quotes come from the same interview."
+    ],
+    "pass2_split_candidate": "Article #565 is attributed to Sports Illustrated and may belong to the SI interview (m062), not the Paramount+ one."
+   }
   },
   {
    "key": "claim-068",
@@ -3073,13 +3085,5 @@
     "pass2_split_candidate": null
    }
   }
- ],
- "same_page_as": {
-  "33": "13",
-  "125": "115",
-  "491": "490",
-  "540": "533",
-  "698": "692",
-  "1129": "1125"
- }
+ ]
 }
