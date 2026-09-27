@@ -751,3 +751,8 @@ different occasions."*
 Both stay as built. His reading adds what the saved text cannot show: the
 "Rematch" graphic is a story Kawa reposted from an outlet's X post, not
 his own video.
+
+Anton, correcting the note above: *"No, the rematch story is an outlet
+reposting Kawa's story from social media."* The direction is the other
+way: Kawa posted the "Rematch" story himself, and an outlet on X reposted
+it; #129 reports that repost. Still a different occasion from the video.
