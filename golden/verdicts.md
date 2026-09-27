@@ -769,3 +769,22 @@ article goes with its lead, and the lead is what the article is about, not
 the sentence it happens to open with. Also noted: the profile refers to
 the Gaethje fight as still to come ("will be held on 14 June 2026"), so it
 was written before June and republished on 21 August with a new opening.
+
+## 2026-09-27 — body checks, six articles saved twice: all copies confirmed
+
+Anton: *"these are same exact pages (URL, and page itself - full
+duplicates): 13 and 33, #125 and #115, #491 and #490, #540 and #533, #698
+and #692."*
+
+Anton, on the sixth: *"#1129 of #1125 are the same text, slightly
+different URL ("amp" part). 1129 is a column itself only, and 1125 is a
+full page with all furniture, side menu with latest news."*
+
+Recorded as same_page_as: #33 → #13 (claim-000), #125 → #115 (claim-011),
+#491 → #490 (claim-055), #540 → #533 (claim-063), #698 → #692
+(claim-066), #1129 → #1125 (claim-124). Each pair already sat in one
+claim, so no grouping changes. Checked against the stored links: #1129
+resolves to `sport-express.ua/amp/inshi/48773-…`, #1125 to the same
+address without `/amp/`; the saved text of each pair is identical
+(2,570 characters for #1125/#1129). This heading rules the copies only,
+not the rest of those six claims.

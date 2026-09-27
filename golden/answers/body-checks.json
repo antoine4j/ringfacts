@@ -14,7 +14,8 @@
     "Two different links: typically one reached through Google News and one direct, so the address check did not catch it.",
     "Both already sit in the same claim, so the grouping is unaffected; this only labels #33 as a copy (same_page_as #13)."
    ],
-   "reading": "same page"
+   "reading": "same page",
+   "ruled": "Same page, saved twice: #33 = #13. Anton, 2026-09-27."
   },
   {
    "kind": "copy",
@@ -29,7 +30,8 @@
     "Two different links: typically one reached through Google News and one direct, so the address check did not catch it.",
     "Both already sit in the same claim, so the grouping is unaffected; this only labels #125 as a copy (same_page_as #115)."
    ],
-   "reading": "same page"
+   "reading": "same page",
+   "ruled": "Same page, saved twice: #125 = #115. Anton, 2026-09-27."
   },
   {
    "kind": "copy",
@@ -44,7 +46,8 @@
     "Two different links: typically one reached through Google News and one direct, so the address check did not catch it.",
     "Both already sit in the same claim, so the grouping is unaffected; this only labels #491 as a copy (same_page_as #490)."
    ],
-   "reading": "same page"
+   "reading": "same page",
+   "ruled": "Same page, saved twice: #491 = #490. Anton, 2026-09-27."
   },
   {
    "kind": "copy",
@@ -59,7 +62,8 @@
     "Two different links: typically one reached through Google News and one direct, so the address check did not catch it.",
     "Both already sit in the same claim, so the grouping is unaffected; this only labels #540 as a copy (same_page_as #533)."
    ],
-   "reading": "same page"
+   "reading": "same page",
+   "ruled": "Same page, saved twice: #540 = #533. Anton, 2026-09-27."
   },
   {
    "kind": "copy",
@@ -74,7 +78,8 @@
     "Two different links: typically one reached through Google News and one direct, so the address check did not catch it.",
     "Both already sit in the same claim, so the grouping is unaffected; this only labels #698 as a copy (same_page_as #692)."
    ],
-   "reading": "same page"
+   "reading": "same page",
+   "ruled": "Same page, saved twice: #698 = #692. Anton, 2026-09-27."
   },
   {
    "kind": "copy",
@@ -89,7 +94,8 @@
     "Two different links: typically one reached through Google News and one direct, so the address check did not catch it.",
     "Both already sit in the same claim, so the grouping is unaffected; this only labels #1129 as a copy (same_page_as #1125)."
    ],
-   "reading": "same page"
+   "reading": "same page",
+   "ruled": "Same page, saved twice: #1129 = #1125 (AMP phone version vs full page). Anton, 2026-09-27."
   },
   {
    "kind": "fine",
