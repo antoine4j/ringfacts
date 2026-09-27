@@ -45,6 +45,17 @@ is the fastest way Anton can verify 300 articles by hand.
 
 ## Labels
 
+**Changed 2026-09-27.** Labels record what an article *is*, never what a
+reader wants: a gate (about him yes / partly / no), who is the source, what
+is done regarding him, the fact asserted and how firm it is, and the bout.
+They are given by correcting the claim map (`golden/board/map.py`), whose
+axes are defined first so every claim fits one value on each. Tiers are
+not labelled per claim any more: they come from a per-fighter settings
+table (cell → tier), checked against Anton's tier on a sample of claims.
+The table below is the earlier plan, kept for its bout, extract and
+per-article fields; `kind`, `speaker` and `tier` are superseded. Current
+order of work: [golden/plan.html](../golden/plan.html).
+
 Per **story** (the occasion is the unit, so one word covers its articles):
 
 | field | values | feeds |
