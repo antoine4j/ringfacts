@@ -799,3 +799,35 @@ The article is Conor McGregor's message after knee surgery. Topuria is
 named only in a related-article link beside it, which is how Google News
 matched it to him. The saved text is complete and correct; the page is
 simply not about him.
+
+## 2026-09-27 — body checks, the last seven: what the live pages show
+
+Anton, on each live page:
+
+- **#134 (claim-013):** *"the whole article is rankings with almost with
+  very little text and yes he is in those rankings Tapuria"* — he is one
+  row of a rankings table. Our 478 saved characters are the page's intro
+  only; the table was not captured.
+- **#158 (claim-016):** *"only the links"* — an Ian Garry profile; Topuria
+  appears only in links around it.
+- **#230 (claim-028):** *"Amosov one time in text in passing, it's a long
+  article."* — the one mention falls after our 10,000-character cut.
+- **#316 (claim-040):** *"can't find topuria of the page at all"*.
+- **#655 (claim-066):** *"real prediction article"* — the page is a real
+  Donchenko vs Soriano predictions piece; we saved only its styling code.
+- **#937 (claim-111):** *"page opens up with article about tsarukian and
+  there topuria is only in headline and links, but when I scroll past
+  footer links there is a second article with a headline "Ilia Topuria and
+  Ali Abdelaziz, Justin Gaethje's manager, clash on social media: "You know
+  perfectly well why I said it"" that mentioned Topuria several time as
+  it's an update on the online span with Abdelaziz."* — so our saved text
+  is the whole Tsarukyan article, not a partial one; Claude's reading
+  "probably partial" was wrong. The Abdelaziz piece is a separate article
+  the site chains below the first as the reader scrolls; our fetch never
+  sees it (checked: the saved text contains neither "Topuria" nor
+  "Abdelaziz").
+- **#1161 (claim-126):** *"донченко only in the links"*.
+
+Not about him, by what the page shows: #158, #316, #1161 (and #38 above).
+He is a table row (#134) or a passing mention (#230). About him: #655.
+#937's own article names him only in its headline.

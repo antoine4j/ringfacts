@@ -123,7 +123,8 @@
    ],
    "reading": "Body unusable: no article text.",
    "link": "https://www.mma.es/2026/08/11/rankings-ufc-actualizados/",
-   "check": "Ctrl+F \"Topuria\". Is he only a row in the rankings table, or is there article text about him that we did not save? Answer \"table\" or \"text\"."
+   "check": "Ctrl+F \"Topuria\". Is he only a row in the rankings table, or is there article text about him that we did not save? Answer \"table\" or \"text\".",
+   "ruled": "He is a row in the rankings table; the page is almost all table. Our save got only the intro. Anton, 2026-09-27."
   },
   {
    "kind": "fine",
@@ -137,7 +138,8 @@
    ],
    "reading": "Body fine; he is just not in it.",
    "link": "https://www.abc.es/deportes/mma/ian-garry-irlandes-quiere-vengar-conor-mcgregor-20260810015848-nt.html",
-   "check": "Ctrl+F \"Topuria\". Is it only in links, menus or \"read also\" around the article, or in the article text itself? Answer \"link\" or \"text\" (and what the sentence says)."
+   "check": "Ctrl+F \"Topuria\". Is it only in links, menus or \"read also\" around the article, or in the article text itself? Answer \"link\" or \"text\" (and what the sentence says).",
+   "ruled": "Topuria only in links around the article. Not about him. Anton, 2026-09-27."
   },
   {
    "kind": "cut",
@@ -151,7 +153,8 @@
    ],
    "reading": "Body cut short at our limit.",
    "link": "https://www.mmafighting.com/ufc/505335/ufc-330-report-what-do-we-make-of-islam-makhachevs-win-over-ian-machado-garry",
-   "check": "We saved only the first 10,000 characters. Ctrl+F \"Amosov\": is the sentence about him, or does it just name him in passing? Answer \"about him\" or \"passing\", or \"absent\"."
+   "check": "We saved only the first 10,000 characters. Ctrl+F \"Amosov\": is the sentence about him, or does it just name him in passing? Answer \"about him\" or \"passing\", or \"absent\".",
+   "ruled": "Amosov once, in passing, in a long article (after our 10,000-character cut). Anton, 2026-09-27."
   },
   {
    "kind": "fine",
@@ -165,7 +168,8 @@
    ],
    "reading": "Body fine; he is just not in it.",
    "link": "https://www.mundodeportivo.com/ufc/20260822/1004218211/rivales-companeros-entrenamiento-asi-preparado-anthony-hernandez-regreso-ufc-sean-strickland.html",
-   "check": "Ctrl+F \"Topuria\". Is it only in links, menus or \"read also\" around the article, or in the article text itself? Answer \"link\" or \"text\" (and what the sentence says)."
+   "check": "Ctrl+F \"Topuria\". Is it only in links, menus or \"read also\" around the article, or in the article text itself? Answer \"link\" or \"text\" (and what the sentence says).",
+   "ruled": "Topuria not on the page at all. Anton, 2026-09-27."
   },
   {
    "kind": "unusable",
@@ -179,7 +183,8 @@
    ],
    "reading": "Body unusable: no article text.",
    "link": "https://sports.betmgm.com/en/blog/ufc/paris-daniil-donchenko-punahele-soriano-predictions-odds-bm05/",
-   "check": "We saved only the page's styling code. Scroll: is there a real predictions article on Donchenko vs Soriano? Answer \"yes\" or \"no\"."
+   "check": "We saved only the page's styling code. Scroll: is there a real predictions article on Donchenko vs Soriano? Answer \"yes\" or \"no\".",
+   "ruled": "A real Donchenko vs Soriano predictions article. We saved only styling code. Anton, 2026-09-27."
   },
   {
    "kind": "partial",
@@ -193,7 +198,8 @@
    ],
    "reading": "Body probably partial: the capture missed the part the headline is about.",
    "link": "https://www.20minutos.es/deportes/arman-tsarukyan-convencido-que-superara-ilia-topuria-peso-ligero-quiero-batir-record-division_7032439_0.html",
-   "check": "The headline names Topuria; our saved text never does. Ctrl+F \"Topuria\": is there a passage about him that we missed, or is he only in the headline? Answer \"missed passage\" or \"headline only\"."
+   "check": "The headline names Topuria; our saved text never does. Ctrl+F \"Topuria\": is there a passage about him that we missed, or is he only in the headline? Answer \"missed passage\" or \"headline only\".",
+   "ruled": "The Tsarukyan article names Topuria only in its headline; our save is complete. A separate Topuria–Abdelaziz article loads below it on scroll. Anton, 2026-09-27."
   },
   {
    "kind": "fine",
@@ -207,7 +213,8 @@
    ],
    "reading": "Body fine; he is just not in it.",
    "link": "https://xsport.ua/ua/mma_s/news/aspinall-vidmovyvsya-vid-tytulu-chempiona-ufc-u-vazhkiy-vazi/",
-   "check": "Search the original before translating: Ctrl+F \"Донченко\" (after translating, \"Donchenko\"). Only in links, menus or \"read also\", or in the article text? Answer \"link\" or \"text\"."
+   "check": "Search the original before translating: Ctrl+F \"Донченко\" (after translating, \"Donchenko\"). Only in links, menus or \"read also\", or in the article text? Answer \"link\" or \"text\".",
+   "ruled": "Донченко only in the links. Not about him. Anton, 2026-09-27."
   }
  ]
 }
