@@ -42,6 +42,11 @@ body{background:var(--ground);color:var(--ink);font:15px/1.5 var(--body);padding
 .wrap{max-width:1180px;margin:0 auto;display:grid;gap:28px}
 h1,h2,h3{font-family:var(--display);font-weight:700;letter-spacing:.01em;text-wrap:balance;margin:0}
 h1{font-size:40px;line-height:1}
+.top{display:flex;flex-wrap:wrap;gap:12px;align-items:center;justify-content:space-between}
+.theme{display:inline-flex;border:1px solid var(--line);border-radius:999px;overflow:hidden;background:var(--panel)}
+.theme button{font:500 13px var(--body);border:0;background:transparent;color:var(--dim);padding:6px 12px;cursor:pointer}
+.theme button[aria-pressed="true"]{background:var(--ink);color:var(--ground)}
+.theme button:focus-visible{outline:2px solid var(--accent);outline-offset:-2px}
 h2{font-size:24px;text-transform:uppercase;letter-spacing:.06em;color:var(--dim)}
 .lede{color:var(--dim);max-width:70ch;margin:6px 0 0}
 .stats{display:flex;flex-wrap:wrap;gap:8px 20px;margin-top:10px;font-variant-numeric:tabular-nums;color:var(--dim);font-size:14px}
@@ -118,7 +123,12 @@ code{font-family:var(--mono);font-size:.9em}
 
 <div class="wrap">
   <section>
-    <h1>Golden Set Map</h1>
+    <div class="top"><h1>Golden Set Map</h1>
+      <div class="theme" role="group" aria-label="Colour theme">
+        <button id="t-system" data-t="system" aria-pressed="true">System</button>
+        <button id="t-light" data-t="light" aria-pressed="false">Light</button>
+        <button id="t-dark" data-t="dark" aria-pressed="false">Dark</button>
+      </div></div>
     <p class="lede">Everything the golden set needs before each station of the new design can be scored on it: what is done, what is next, and what waits. Tap a task to see why it matters. Point at any task by its number, for example "6.4".</p>
     <div class="stats" id="stats"></div>
   </section>
@@ -418,6 +428,17 @@ document.getElementById("pipe").innerHTML = STATIONS.map(s => {
 
 // Possibly missing
 document.getElementById("gaps").innerHTML = GAPS.map(([t,d]) => `<li><b>${esc(t)}.</b> ${esc(d)}</li>`).join("");
+
+// Theme: system follows the device; light or dark overrides it. Remembered if storage allows.
+function setTheme(t){
+  if (t==="system") document.documentElement.removeAttribute("data-theme");
+  else document.documentElement.setAttribute("data-theme", t);
+  document.querySelectorAll(".theme button").forEach(b => b.setAttribute("aria-pressed", String(b.dataset.t===t)));
+  try { localStorage.setItem("golden-plan-theme", t); } catch(e) {}
+}
+document.querySelectorAll(".theme button").forEach(b => b.addEventListener("click", () => setTheme(b.dataset.t)));
+let savedTheme = "system"; try { savedTheme = localStorage.getItem("golden-plan-theme") || "system"; } catch(e) {}
+setTheme(savedTheme);
 
 // Filters: a per-viewer convenience, remembered if storage allows
 const buttons = [...document.querySelectorAll(".filters button")];
