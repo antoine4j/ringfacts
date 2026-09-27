@@ -106,7 +106,7 @@ details.defs dt{font-weight:600;color:var(--ink)}details.defs dd{margin:0}
   <div class="stats" id="stats"></div>
 
   <div class="gridbox"><table class="grid" id="grid"></table></div>
-  <div class="hint">Orange line in a cell: how many of its claims carry a doubt (readers split, articles in different cells, or extract and classifier disagree on "himself").</div>
+  <div class="hint">Orange line in a cell: how many of its claims (always claims, whichever count is chosen) carry a doubt (readers split, articles in different cells, or extract and classifier disagree on "himself").</div>
 
   <section class="panel" id="panel"><div class="hint">Click a cell to list its claims.</div></section>
 
@@ -152,7 +152,7 @@ function drawGrid(){
       if (!n){ h += `<td><div class="cell empty" aria-hidden="true">·</div></td>`; continue; }
       const a = (0.10 + 0.80*Math.sqrt(n/max)).toFixed(2), other = state.unit==="claims" ? list.reduce((s,c)=>s+c.n,0)+" art." : list.length+" claims";
       const sel = state.cell && state.cell[0]===w && state.cell[1]===x ? " sel" : "";
-      h += `<td><button class="cell${a>0.55?" hot":""}${sel}" style="--a:${a}" data-w="${w}" data-x="${x}" aria-label="${esc(human(w))} × ${esc(human(x))}: ${n}"><span class="n">${n}</span><span class="m">${other}</span>${d?`<span class="d">${d} doubtful</span>`:""}</button></td>`;
+      h += `<td><button class="cell${a>0.55?" hot":""}${sel}" style="--a:${a}" data-w="${w}" data-x="${x}" aria-label="${esc(human(w))} × ${esc(human(x))}: ${n}"><span class="n">${n}</span><span class="m">${other}</span>${d?`<span class="d">${d} doubtful claim${d>1?"s":""}</span>`:""}</button></td>`;
     }
     h += `<td class="tot">${rowTotal||""}</td></tr>`;
   }
