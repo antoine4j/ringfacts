@@ -603,6 +603,23 @@ Below the line, deliberately: nothing at the moment — the GCS backup shipped
    Vercel) — the note there says "lean Cloud Run, **unless the responder grows a
    web UI**", and this is that unless.
 
+8. **Body extractor tune-up — last, it is a mechanical step** (Anton,
+   2026-09-27: *"we might use in future one of the popular libs to make sure
+   we are doing maximum to extract correctly. But since body extraction is a
+   mechanical step, I'm going to do it one of the last steps."*) Test cases
+   found in the golden singleton pass, where the saved text lost exactly the
+   sentence that sources the news, so no station could see it:
+   - **#852** (Champion.com.ua): the live page says "Про це він розповів в
+     Інстаграм" (he said this on Instagram); the saved body, 1,714
+     characters, does not contain the line.
+   - **#385** (MMA Sucka): Topuria's reply is an embedded X post; the saved
+     text shows only "X / Twitter @theufcentral status/… Will render as live
+     embed". Whether it is a video or a post, and what it says, is lost.
+   - The check to add: does the sourcing sentence survive ("told X", "on
+     Instagram", "in a comment to"), not only whether a body exists. Also:
+     the golden set's `body_unusable` pre-flags, and the headline-only path,
+     which the golden set cannot test (drawn from articles with a body).
+
 ## Deploy automation
 - [ ] GitHub remote + Actions workflow: push to main → deploy to Cloud Run (spec §16.1). Retires manual `gcloud run deploy`.
 - [ ] **Sandboxed autonomy (parked 2026-08-08, Anton sitting on it):** move the self-improvement routine into an ephemeral sandbox (GitHub Actions cron preferred) with scoped credentials so even a fully poisoned run is harmless. Full spec: docs/sandboxed-autonomy.md. Until then: local scheduled task + manual approvals.
