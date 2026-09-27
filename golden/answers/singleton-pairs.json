@@ -42,14 +42,15 @@
    "other_claims": [
     "claim-124"
    ],
-   "question": "Are Donchenko's post-fight thanks (#852, 7 Sept) and his reasons for picking Rodriguez (#1125, 12 Sept) two parts of one conversation with Champion, or two separate comments?",
+   "question": "Ruled 2026-09-27: different occasions. #852 is his own post after the fight; #1125/#1129 answer a journalist (\"in a comment to Champion\").",
    "facts": [
     "#852 is on Champion's own site. It gives no setting, only \"said the fighter\": the win mattered, clean face, thanks to the country, hopes for a good next fight.",
     "#852's quotes appear in no other article of the 300.",
     "#1125 is Sport-Express, five days later, citing \"a comment to Champion\"; it is only about why Rodriguez.",
     "The two share no quote. The only link is the same outlet in the same week."
    ],
-   "fable_doubt": "Two Champion pieces five days apart (#852, #1125); could be one interview published in parts."
+   "fable_doubt": "Two Champion pieces five days apart (#852, #1125); could be one interview published in parts.",
+   "ruled": "2026-09-27"
   },
   {
    "article": "1089",

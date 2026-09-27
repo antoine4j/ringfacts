@@ -706,3 +706,17 @@ Gaethje's status, based on his quote from the interview. Let's keep this
 ruled as we just did for now."* Kept, and marked his words "for now": a
 division analysis resting on one quote sits between the two column rules
 above, and may be revisited.
+
+## 2026-09-27 — claim-101 (#852) and claim-124 (#1125, #1129): different occasions, as built — singleton pass
+
+Anton: *"852 is a quote from Donchenko's Instagram. His analysis of his
+performance in the fight with Soriano and his look ahead, basically. 1125
+and 1129 is the same article and it appears to quote Donchenko from some
+interview; they don't seem to provide the source, but his phrasing is like
+he is answering a question in a live conversation. So I'm ruling 852
+(claim 101) vs 1125 and 1129 (claim 124) are different occasions."*
+
+Both stay as built. A note on the source: #1125's text says once, "in a
+comment to Champion", which matches his reading of a live answer to a
+journalist. #852's post names no setting in its text; Instagram is his
+reading of the page.
