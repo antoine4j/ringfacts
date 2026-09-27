@@ -22,7 +22,7 @@
    "other_claims": [
     "claim-054"
    ],
-   "question": "Is a columnist's piece built on Gaethje's Sports Illustrated interview the same claim as the six write-ups of that interview (claim-054), or its own claim?",
+   "question": "Ruled 2026-09-27: #565 joins claim-054. A column built on quotes from the Sports Illustrated interview goes with that interview.",
    "facts": [
     "#565 is Ben Fowlkes's column on Yahoo/Uncrowned, 3 September. It quotes the Sports Illustrated interview (\"I still can't punch anything\", \"enjoy being champion for the rest of the year\") in its first third.",
     "The rest, most of the piece, is his own analysis: what Gaethje sitting out 2026 means for Tsarukyan and the division.",
@@ -30,7 +30,8 @@
     "Your rulings that bear on it: main news places an article; a next-day analysis column stood as its own claim (073.5).",
     "Fable first compared #565 with the Gaethje Paramount+ claim (065, #551), then named Sports Illustrated as the likelier home. #565 names Sports Illustrated, so 065 is out of play."
    ],
-   "fable_doubt": "A Yahoo/Uncrowned column on Gaethje's Sports Illustrated interview. Fable could not tell whether it belongs with the Paramount+ sit-down (claim-065, #551) or with the Sports Illustrated interview itself (claim-054), and left it alone."
+   "fable_doubt": "A Yahoo/Uncrowned column on Gaethje's Sports Illustrated interview. Fable could not tell whether it belongs with the Paramount+ sit-down (claim-065, #551) or with the Sports Illustrated interview itself (claim-054), and left it alone.",
+   "ruled": "2026-09-27"
   },
   {
    "article": "852",

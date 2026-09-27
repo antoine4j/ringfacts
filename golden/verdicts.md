@@ -681,3 +681,22 @@ he actually said it is not in the article. The pass-4 extractor left the
 occasion empty on both runs; the v2 extractor wrote "social post, X /
 Twitter", taking the relaying embed for the source — a guess the text does
 not support.
+
+## 2026-09-27 — claim-067 (#565): JOINS claim-054 — singleton pass
+
+Anton: *"I think this opinion piece directly quoting Sports Illustrated
+should join claim 54."*
+
+#565 is Ben Fowlkes's Yahoo/Uncrowned column, 3 September. It quotes
+Gaethje's Sports Illustrated interview ("I still can't punch anything",
+"enjoy being the champion for the rest of the year"), the same lines five
+of claim-054's six write-ups carry, then analyses what it means for the
+division. It has no connection to the Paramount+ interview (claim-065):
+its text names only Sports Illustrated. Fable linked them because Sports
+Illustrated is the interviewer in 054 and only an outlet writing up the
+Paramount+ interview in 065 (#556).
+
+Read beside story-073.5 (#817, 2026-09-23): a column whose news is the
+writer's own verdict on a fight stands alone; a column built on quotes
+from one interview goes with that interview. Applied at the rebuild after
+the singleton pass.
