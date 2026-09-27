@@ -106,6 +106,8 @@ ul.items li[hidden]{display:none}
 .pill.next{background:var(--decide);color:var(--panel)}
 .pill.todo{background:var(--panel);color:var(--ink);border:1px solid var(--line)}
 .pill.parked{background:var(--laterbg);color:var(--later)}
+.prio{font-family:var(--mono);font-size:11.5px;font-weight:500;padding:1px 5px;border-radius:4px;border:1px solid currentColor}
+.prio.p1{color:var(--decide)}.prio.p2{color:var(--label)}.prio.p3{color:var(--score)}
 .kind{font-size:11.5px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;color:var(--label);white-space:nowrap}
 .pill.decide{background:var(--decidebg);color:var(--decide)}
 .pill.label{background:var(--labelbg);color:var(--label)}
@@ -147,6 +149,12 @@ code{font-family:var(--mono);font-size:.9em}
       <span><b class="pill next">▶ next</b> the step we are on now</span>
       <span><b class="pill todo">○ to do</b> in scope, not started</span>
       <span><b class="pill parked">‖ parked</b> left for later, on purpose</span>
+    </div>
+    <div class="legend">
+      <span><b class="prio p1">P1</b> blocks the next step</span>
+      <span><b class="prio p2">P2</b> needed for an honest score</span>
+      <span><b class="prio p3">P3</b> runs once the rest is done</span>
+      <span>Inside each station: P1, P2, P3, then parked, then done.</span>
     </div>
     <div class="filters" role="group" aria-label="Show items">
       <button id="f-all" data-f="all" aria-pressed="true">All</button>
@@ -415,15 +423,19 @@ document.getElementById("nowbox").innerHTML = `<h3>${esc(NOW.title)}</h3><ol>${N
 // Status is what you scan for; kind says what sort of work it is.
 const STATUS = {done:["done","✓ done"], decide:["next","▶ next"], label:["todo","○ to do"], score:["todo","○ to do"], later:["parked","‖ parked"]};
 const KIND = {decide:"your decision", label:"label pass", score:"scoring", later:"", done:""};
+// Order inside a station is "what blocks what": P1 blocks the next step, P2 is needed for an honest score,
+// P3 runs once the rest is done; then parked; done tasks stay visible at the bottom, in the order finished.
+const RANK = {decide:1, label:2, score:3, later:4, done:5};
+const PRIO = {decide:"P1", label:"P2", score:"P3"};
 // Stations, each task expandable with its three reasons
-const task = i => `<li class="${i.st==="done"?"is-done":""}" data-st="${i.st}"><details><summary><span class="id">${i.id}</span><span class="pill ${STATUS[i.st][0]}">${STATUS[i.st][1]}</span><span class="txt">${esc(i.task)}${KIND[i.st]?` <span class="kind">${KIND[i.st]}</span>`:""}</span></summary>
+const task = i => `<li class="${i.st==="done"?"is-done":""}" data-st="${i.st}"><details><summary><span class="id">${i.id}</span><span class="pill ${STATUS[i.st][0]}">${STATUS[i.st][1]}</span><span class="txt">${PRIO[i.st]?`<b class="prio p${RANK[i.st]}">${PRIO[i.st]}</b> `:""}${esc(i.task)}${KIND[i.st]?` <span class="kind">${KIND[i.st]}</span>`:""}</span></summary>
   <div class="why">${i.what?`<p class="what">${esc(i.what)}</p>`:""}
   <dl><dt>For the golden set</dt><dd>${esc(i.why.set)}</dd><dt>For this station</dt><dd>${esc(i.why.station)}</dd><dt>For the system</dt><dd>${esc(i.why.system)}</dd></dl></div></details></li>`;
 document.getElementById("pipe").innerHTML = STATIONS.map(s => {
   const d = s.items.filter(i => i.st==="done").length, n = s.items.length;
   const count = n ? `<span class="count">${d} of ${n} done</span>` : `<span class="count">not tested here</span>`;
   const bar = n ? `<div class="bar" aria-hidden="true"><i style="width:${Math.round(100*d/n)}%"></i></div>` : "";
-  return `<article class="st${s.outside?" outside":""}" data-n="${s.n}"><header><span class="num">${s.n}</span><div><h3>${esc(s.name)}</h3><div class="role">${esc(s.role)}</div></div>${count}</header>${bar}<div class="verdict">${esc(s.verdict)}</div>${n?`<ul class="items">${s.items.map(task).join("")}</ul>`:""}</article>`;
+  return `<article class="st${s.outside?" outside":""}" data-n="${s.n}"><header><span class="num">${s.n}</span><div><h3>${esc(s.name)}</h3><div class="role">${esc(s.role)}</div></div>${count}</header>${bar}<div class="verdict">${esc(s.verdict)}</div>${n?`<ul class="items">${[...s.items].sort((a,b) => RANK[a.st]-RANK[b.st]).map(task).join("")}</ul>`:""}</article>`;
 }).join("");
 
 // Possibly missing
