@@ -79,14 +79,15 @@
    "other_claims": [
     "claim-008"
    ],
-   "question": "Is Kawa's rematch demand (#129, ABC, 11 Aug) the same social-media video as his 8–9 Aug fire-back at Abdelaziz (claim-008), or a new post?",
+   "question": "Ruled 2026-09-27: different occasions. #129 is Kawa's story reposting an outlet's 'Rematch' graphic; claim-008 is his video answering Abdelaziz.",
    "facts": [
     "Fable saw text cut off before the key sentence. The full article describes the post:",
     "an edited graphic of Topuria and Gaethje face to face reading \"Rematch\", with Kawa's line \"We want this fight\", posted after he met Topuria in Miami.",
     "claim-008 is Kawa talking to camera, answering Abdelaziz, with a rematch mentioned in passing.",
     "Different medium, different message, two days apart."
    ],
-   "fable_doubt": "Kawa video: a fresh post, or a re-read of the earlier video in the manager feud?"
+   "fable_doubt": "Kawa video: a fresh post, or a re-read of the earlier video in the manager feud?",
+   "ruled": "2026-09-27"
   },
   {
    "article": "305",

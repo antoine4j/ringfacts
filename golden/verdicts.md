@@ -738,3 +738,16 @@ problem to have". #1089 says White spoke "following a Garcia vs. Benn press
 event". Both stay as built. (The board card had called "a great problem to
 have" the Jim Rome line; that was an unchecked guess by Claude and is wrong
 — the Rome articles quote White as saying both options sound good.)
+
+## 2026-09-27 — claim-012 (#129) and claim-008 (Kawa video, 9 articles): different occasions, as built — singleton pass
+
+Anton, after opening #129 and #71 on the live pages: *"These are two
+different occasions. 129 is a repost of Topuria's manager's social media
+story, and that's a repost of some outlet on X, and it's about signaling
+the rematch. The second article is a direct overview of that manager's
+reaction to Abdelaziz's appearance on Kamaru's podcast. So these are
+different occasions."*
+
+Both stay as built. His reading adds what the saved text cannot show: the
+"Rematch" graphic is a story Kawa reposted from an outlet's X post, not
+his own video.
