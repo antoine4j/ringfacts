@@ -726,3 +726,15 @@ Anton, correcting the note above: *"852 actually says 'Про це він роз
 source. The saved body of #852 (1,714 characters) does not contain that
 line: the body extraction dropped the one sentence that sources the quote,
 so every station reading the saved text saw no setting.
+
+## 2026-09-27 — claim-121 (#1089) and claim-113 (Jim Rome, 10 articles): different occasions, as built — singleton pass
+
+Anton: *"For 1089, unless quotes overlap, to me these are different
+occasions: a UFC event interview, and the Jim Rome show."*
+
+Checked: no quote in #1089 appears in any of claim-113's ten articles —
+not "two sides to this coin", not "money left on the table", not "a great
+problem to have". #1089 says White spoke "following a Garcia vs. Benn press
+event". Both stay as built. (The board card had called "a great problem to
+have" the Jim Rome line; that was an unchecked guess by Claude and is wrong
+— the Rome articles quote White as saying both options sound good.)

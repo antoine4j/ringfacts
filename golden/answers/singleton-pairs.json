@@ -61,14 +61,14 @@
    "other_claims": [
     "claim-113"
    ],
-   "question": "Is Dana White's \"money left on the table\" remark about Gaethje (#1089) from the Jim Rome interview (claim-113), or a separate appearance?",
+   "question": "Ruled 2026-09-27: different occasions. #1089 is White after a Garcia vs Benn press event; no quote overlaps the ten Jim Rome articles.",
    "facts": [
     "Fable called the body too broken to tell. It is not: after the page menus the article is readable.",
     "It says White spoke \"following a Garcia vs. Benn press event\", when asked about Gaethje retiring. That is a different setting from the Jim Rome show.",
-    "It also re-quotes White's \"Gaethje or Pimblett, a great problem to have\", which is the Jim Rome line, as background.",
     "The headline and the lead are the press-event remark about Gaethje."
    ],
-   "fable_doubt": "Body too broken to tell whether this is the same Jim Rome appearance as the Dana White claim."
+   "fable_doubt": "Body too broken to tell whether this is the same Jim Rome appearance as the Dana White claim.",
+   "ruled": "2026-09-27"
   },
   {
    "article": "129",
