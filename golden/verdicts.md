@@ -788,3 +788,14 @@ resolves to `sport-express.ua/amp/inshi/48773-…`, #1125 to the same
 address without `/amp/`; the saved text of each pair is identical
 (2,570 characters for #1125/#1129). This heading rules the copies only,
 not the rest of those six claims.
+
+## 2026-09-27 — body checks, #38 (claim-006): not about him
+
+Anton, reading the live Mundo Deportivo page translated in his browser:
+*"When I search the page for Tapuria, it's only mentioned in the link. in
+the read, read also section."* ("Tapuria" is his spelling of Topuria.)
+
+The article is Conor McGregor's message after knee surgery. Topuria is
+named only in a related-article link beside it, which is how Google News
+matched it to him. The saved text is complete and correct; the page is
+simply not about him.
