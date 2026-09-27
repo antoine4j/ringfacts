@@ -98,14 +98,15 @@
    "other_claims": [
     "claim-015.1"
    ],
-   "question": "Does SPORT's Alicante piece (#305) belong with Gallo's return-timing interview (claim-015.1) because it opens with that line, or is it its own claim?",
+   "question": "Ruled 2026-09-27: its own claim. A profile of his Alicante neighbourhood; the recovery line is only context.",
    "facts": [
     "The first two sentences recap \"his physical trainer says he could be ready by year's end, early next year is smarter\", with no name and no source.",
     "Everything after is a profile of his Alicante neighbourhood and the Climent Club gym, with his own quotes about Alicante.",
     "The profile speaks of the Gaethje fight \"that will be held on 14 June 2026\": it was written before the fight and republished on 21 August with a new opening.",
     "Your rule from #402: a two-story article goes with its lead. Here the lead is two borrowed sentences; the bulk is an old profile."
    ],
-   "fable_doubt": "SPORT neighbourhood profile opens with Gallo's 'ready by December' line that matches the Gallo/Jorge Ebro claim; profile or write-up?"
+   "fable_doubt": "SPORT neighbourhood profile opens with Gallo's 'ready by December' line that matches the Gallo/Jorge Ebro claim; profile or write-up?",
+   "ruled": "2026-09-27"
   },
   {
    "article": "817",

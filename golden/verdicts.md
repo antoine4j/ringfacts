@@ -756,3 +756,16 @@ Anton, correcting the note above: *"No, the rematch story is an outlet
 reposting Kawa's story from social media."* The direction is the other
 way: Kawa posted the "Rematch" story himself, and an outlet on X reposted
 it; #129 reports that repost. Still a different occasion from the video.
+
+## 2026-09-27 — claim-039 (#305) and claim-015.1 (Gallo on Jorge Ebro, #152, #412): different occasions, as built — singleton pass
+
+Anton: *"305 is its own claim. It's about Topuria's neighborhood, which
+only mentions his recovery perspective for context."*
+
+Both stay as built. #305 opens with two unsourced sentences recapping the
+trainer's return timing; the article itself is a profile of his Alicante
+neighbourhood and the Climent Club gym. Read beside #402 (2026-09-25): an
+article goes with its lead, and the lead is what the article is about, not
+the sentence it happens to open with. Also noted: the profile refers to
+the Gaethje fight as still to come ("will be held on 14 June 2026"), so it
+was written before June and republished on 21 August with a new opening.
