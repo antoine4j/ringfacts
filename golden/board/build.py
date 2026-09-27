@@ -20,6 +20,7 @@ V2 = load("answers/classifier-v2.json")
 TYPES = load("answers/types-fable.json")
 BOUTS = load("answers/bout-prefill.json")["claims"]
 PAIRS = load("answers/singleton-pairs.json")["pairs"]
+BODY = load("answers/body-checks.json")["items"]
 
 # --- Anton's rulings: heading per claim, and the verbatim text under it ------
 rulings = {}
@@ -277,6 +278,8 @@ function render(){
   if(label&&!type&&!f&&!k&&!b&&!size&&!doubt&&!ruled&&!flagged&&!q){
     parts.push(`<div class="batch"><b>Singleton pass, first: seven pairs Fable could not call</b><span class="k">for each, is the singleton its own claim or part of the other one? Say the article number and "own" or "joins claim-NNN". Then the suspected body issues (tile above), then the tiers.</span></div>`);
     for(const p of PAIRS){ parts.push(`<div class="card paircard"><div class="head">${side(p.claim)}<span>vs</span>${p.other_claims.map(side).join("<span>and</span>")}</div>${p.ruled?`<div class="pq done">✓ ${esc(p.question)}</div>`:`<div class="pq">${esc(p.question)}</div>${p.facts.length?`<ul class="pf">${p.facts.map(f=>`<li>${esc(f)}</li>`).join("")}</ul>`:""}`}<div class="k">Fable's doubt: ${esc(p.fable_doubt)}</div><details class="pair"><summary>show ${[p.claim,...p.other_claims].join(" and ")} here</summary><div class="pairbody" data-keys="${[p.claim,...p.other_claims].join(",")}"></div></details></div>`); }
+    parts.push(`<div class="batch"><b>Body checks: ${BODY.length} to confirm or correct</b><span class="k">six articles saved twice, then eight whose saved text never names the fighter. Each shows my reading of the saved text; say "confirm" or correct it, by article number, or "all copies confirmed".</span></div>`);
+    for(const b of BODY){ parts.push(`<div class="card paircard"><div class="head">${b.articles.map(a=>`<span class="id">#${a}</span>`).join("<span>and</span>")}<span class="chip type">${b.claim}</span></div>${b.ruled?`<div class="pq done">✓ ${esc(b.ruled)}</div>`:`<div class="pq">${esc(b.question)}</div><ul class="pf">${b.facts.map(f=>`<li>${esc(f)}</li>`).join("")}</ul><div><b>My reading:</b> ${esc(b.reading)}</div>`}<details class="pair"><summary>show ${b.claim} here</summary><div class="pairbody" data-keys="${b.claim}"></div></details></div>`); }
   }
   const rows=label?[...DATA].sort((a,b)=>a.famidx-b.famidx||a.type.localeCompare(b.type)||a.f.localeCompare(b.f)||a.oldest.localeCompare(b.oldest)):DATA;
   for(const s of rows){
@@ -344,7 +347,7 @@ Yellow "suspected" chips and the grey type and bout chips are what the data alon
 <span class="cnt" id="cnt"></span>
 </div>
 <div id="list"></div>
-</div><script>const DATA={json.dumps(out, ensure_ascii=False)},KL={json.dumps(KLABEL)},QL={json.dumps(QLABEL)},PAIRS={json.dumps(PAIRS, ensure_ascii=False)},QDEF={json.dumps(QUESTIONS, ensure_ascii=False)},EXF={json.dumps(EX["fields"], ensure_ascii=False)},EXK={json.dumps(EX["kind_options"], ensure_ascii=False)};{JS}</script></body></html>"""
+</div><script>const DATA={json.dumps(out, ensure_ascii=False)},KL={json.dumps(KLABEL)},QL={json.dumps(QLABEL)},PAIRS={json.dumps(PAIRS, ensure_ascii=False)},BODY={json.dumps(BODY, ensure_ascii=False)},QDEF={json.dumps(QUESTIONS, ensure_ascii=False)},EXF={json.dumps(EX["fields"], ensure_ascii=False)},EXK={json.dumps(EX["kind_options"], ensure_ascii=False)};{JS}</script></body></html>"""
 
 open(os.path.join(HERE, "board.html"), "w").write(page)
 print(f"board.html: {len(page)//1024} KB, {len(out)} claims, {n_ruled} ruled, {n_doubt} with doubts, {n_flag} flagged")

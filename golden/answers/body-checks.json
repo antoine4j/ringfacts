@@ -1,0 +1,191 @@
+{
+ "source": "Pre-flags from golden/board/build.py (exact copies; subject not named in the saved body), read by Claude on 2026-09-27 into plain questions. The reading is a checkable fact about the saved text, not a ruling; Anton confirms or corrects.",
+ "items": [
+  {
+   "kind": "copy",
+   "articles": [
+    "13",
+    "33"
+   ],
+   "claim": "claim-000",
+   "question": "Is #33 the same page as #13, saved twice?",
+   "facts": [
+    "Same outlet, same saved text, word for word.",
+    "Two different links: typically one reached through Google News and one direct, so the address check did not catch it.",
+    "Both already sit in the same claim, so the grouping is unaffected; this only labels #33 as a copy (same_page_as #13)."
+   ],
+   "reading": "same page"
+  },
+  {
+   "kind": "copy",
+   "articles": [
+    "115",
+    "125"
+   ],
+   "claim": "claim-011",
+   "question": "Is #125 the same page as #115, saved twice?",
+   "facts": [
+    "Same outlet, same saved text, word for word.",
+    "Two different links: typically one reached through Google News and one direct, so the address check did not catch it.",
+    "Both already sit in the same claim, so the grouping is unaffected; this only labels #125 as a copy (same_page_as #115)."
+   ],
+   "reading": "same page"
+  },
+  {
+   "kind": "copy",
+   "articles": [
+    "490",
+    "491"
+   ],
+   "claim": "claim-055",
+   "question": "Is #491 the same page as #490, saved twice?",
+   "facts": [
+    "Same outlet, same saved text, word for word.",
+    "Two different links: typically one reached through Google News and one direct, so the address check did not catch it.",
+    "Both already sit in the same claim, so the grouping is unaffected; this only labels #491 as a copy (same_page_as #490)."
+   ],
+   "reading": "same page"
+  },
+  {
+   "kind": "copy",
+   "articles": [
+    "533",
+    "540"
+   ],
+   "claim": "claim-063",
+   "question": "Is #540 the same page as #533, saved twice?",
+   "facts": [
+    "Same outlet, same saved text, word for word.",
+    "Two different links: typically one reached through Google News and one direct, so the address check did not catch it.",
+    "Both already sit in the same claim, so the grouping is unaffected; this only labels #540 as a copy (same_page_as #533)."
+   ],
+   "reading": "same page"
+  },
+  {
+   "kind": "copy",
+   "articles": [
+    "692",
+    "698"
+   ],
+   "claim": "claim-066",
+   "question": "Is #698 the same page as #692, saved twice?",
+   "facts": [
+    "Same outlet, same saved text, word for word.",
+    "Two different links: typically one reached through Google News and one direct, so the address check did not catch it.",
+    "Both already sit in the same claim, so the grouping is unaffected; this only labels #698 as a copy (same_page_as #692)."
+   ],
+   "reading": "same page"
+  },
+  {
+   "kind": "copy",
+   "articles": [
+    "1125",
+    "1129"
+   ],
+   "claim": "claim-124",
+   "question": "Is #1129 the same page as #1125, saved twice?",
+   "facts": [
+    "Same outlet, same saved text, word for word.",
+    "Two different links: typically one reached through Google News and one direct, so the address check did not catch it.",
+    "Both already sit in the same claim, so the grouping is unaffected; this only labels #1129 as a copy (same_page_as #1125)."
+   ],
+   "reading": "same page"
+  },
+  {
+   "kind": "fine",
+   "articles": [
+    "38"
+   ],
+   "claim": "claim-006",
+   "question": "#38: is the saved text the article, and is the fighter really not in it?",
+   "facts": [
+    "The saved text is complete and is about Conor McGregor's message after knee surgery. Topuria is named nowhere, not even in the headline."
+   ],
+   "reading": "Body fine; he is just not in it."
+  },
+  {
+   "kind": "unusable",
+   "articles": [
+    "134"
+   ],
+   "claim": "claim-013",
+   "question": "#134: is the saved text the article, and is the fighter really not in it?",
+   "facts": [
+    "478 characters: only the intro of an mma.es rankings page. The rankings table itself was not captured."
+   ],
+   "reading": "Body unusable: no article text."
+  },
+  {
+   "kind": "fine",
+   "articles": [
+    "158"
+   ],
+   "claim": "claim-016",
+   "question": "#158: is the saved text the article, and is the fighter really not in it?",
+   "facts": [
+    "The saved text is complete: an ABC profile of Ian Machado Garry. Topuria is not named."
+   ],
+   "reading": "Body fine; he is just not in it."
+  },
+  {
+   "kind": "cut",
+   "articles": [
+    "230"
+   ],
+   "claim": "claim-028",
+   "question": "#230: is the saved text the article, and is the fighter really not in it?",
+   "facts": [
+    "MMA Fighting's UFC 330 report, cut at 10,000 characters, our storage limit. Amosov may be mentioned after the cut."
+   ],
+   "reading": "Body cut short at our limit."
+  },
+  {
+   "kind": "fine",
+   "articles": [
+    "316"
+   ],
+   "claim": "claim-040",
+   "question": "#316: is the saved text the article, and is the fighter really not in it?",
+   "facts": [
+    "The saved text is complete: Anthony Hernandez training with Sean Strickland. Topuria is not named."
+   ],
+   "reading": "Body fine; he is just not in it."
+  },
+  {
+   "kind": "unusable",
+   "articles": [
+    "655"
+   ],
+   "claim": "claim-066",
+   "question": "#655: is the saved text the article, and is the fighter really not in it?",
+   "facts": [
+    "The saved text is the page's styling code, 10,000 characters of it. No article at all."
+   ],
+   "reading": "Body unusable: no article text."
+  },
+  {
+   "kind": "partial",
+   "articles": [
+    "937"
+   ],
+   "claim": "claim-111",
+   "question": "#937: is the saved text the article, and is the fighter really not in it?",
+   "facts": [
+    "The headline names Topuria (\"Tsarukyan convinced he will surpass Topuria\"), but the saved 1,847 characters never do; they end on Tsarukyan's past fight."
+   ],
+   "reading": "Body probably partial: the capture missed the part the headline is about."
+  },
+  {
+   "kind": "fine",
+   "articles": [
+    "1161"
+   ],
+   "claim": "claim-126",
+   "question": "#1161: is the saved text the article, and is the fighter really not in it?",
+   "facts": [
+    "The saved text is complete: Tom Aspinall vacating his title, ending with the site's gambling disclaimer. Donchenko is not named."
+   ],
+   "reading": "Body fine; he is just not in it."
+  }
+ ]
+}
