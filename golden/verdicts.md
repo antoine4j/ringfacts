@@ -720,3 +720,9 @@ Both stay as built. A note on the source: #1125's text says once, "in a
 comment to Champion", which matches his reading of a live answer to a
 journalist. #852's post names no setting in its text; Instagram is his
 reading of the page.
+
+Anton, correcting the note above: *"852 actually says 'Про це він розповів
+в Інстаграм'"* ("He said this on Instagram"). The live page names the
+source. The saved body of #852 (1,714 characters) does not contain that
+line: the body extraction dropped the one sentence that sources the quote,
+so every station reading the saved text saw no setting.
