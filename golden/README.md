@@ -14,6 +14,7 @@ ruling by Anton in `verdicts.md`.
 |---|---|---|
 | `articles.json` | the 300 articles: id, subject, title, source, url, published_at, body | 300 |
 | `claims.json` | the ruler, v4: one claim = one occasion with its articles; keys `claim-NNN`, `.x` = children of a split; `fable` = Fable's stored confidence and doubts from its grouping passes; `from` = the keys a rebuilt claim came from; `same_page_as` = articles saved twice (copy → original). Built by `tools/ruler-v4.py` from `claims-v3.json` (kept) | 128 |
+| `axes.md` | the axes labels are given on: gate (about him yes / partly / no), source, act, fact asserted, and how firm; each value defined with its boundary cases. DRAFT until Anton approves | |
 | `verdicts.md` | Anton's rulings, verbatim, **append only**. One heading per claim: `## YYYY-MM-DD — story-NNN (#ids): <ruling>` (headings keep the `story-` spelling they were written with) | 65 headings |
 | `answers/classifier.json` | the six classifier answers per article, majority of three readers, plus the tier; `readers` = each of the three readers' probability over every option | 300 |
 | `answers/questions.json` | the six questions as asked: instructions and every option's text | 6 |
