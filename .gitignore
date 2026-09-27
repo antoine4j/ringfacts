@@ -42,3 +42,5 @@ experiments/*/probe.mjs
 golden/board/board.html
 experiments/*/*/raw/
 experiments/*/TYPES.html
+# the claim map is regenerated from golden/ by golden/board/map.py
+golden/board/map.html

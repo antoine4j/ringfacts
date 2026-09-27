@@ -1,0 +1,213 @@
+<meta charset="utf-8">
+<title>Claim Map</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@500&display=swap">
+<style>
+:root{
+  --ground:#F3F4F6; --panel:#FFFFFF; --ink:#1A1E27; --dim:#5E6573; --line:#DCDFE5;
+  --accent:#2B55C9; --heat:43,85,201; --warn:#B25E00; --warnbg:#FCEFD9; --ok:#2E7D4F;
+  --red:#C8372D;
+  --display:"Barlow Condensed","Arial Narrow",system-ui,sans-serif;
+  --body:"IBM Plex Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,Menlo,monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  color-scheme:dark; --ground:#12151B; --panel:#1B1F27; --ink:#E7E9EE; --dim:#9AA1AE; --line:#2C323D;
+  --accent:#7C9BF0; --heat:124,155,240; --warn:#F0A54A; --warnbg:#3A2A12; --ok:#6CC48E; --red:#E4675E;
+}}
+:root[data-theme="dark"]{
+  color-scheme:dark; --ground:#12151B; --panel:#1B1F27; --ink:#E7E9EE; --dim:#9AA1AE; --line:#2C323D;
+  --accent:#7C9BF0; --heat:124,155,240; --warn:#F0A54A; --warnbg:#3A2A12; --ok:#6CC48E; --red:#E4675E;
+}
+body{margin:0;background:var(--ground);color:var(--ink);font:15px/1.5 var(--body);padding-inline:16px;padding-block:20px 60px}
+.wrap{max-width:1280px;margin:0 auto;display:grid;gap:18px}
+h1,h2{font-family:var(--display);font-weight:700;margin:0;text-wrap:balance}
+h1{font-size:40px;line-height:1}
+h2{font-size:22px;letter-spacing:.02em}
+.top{display:flex;flex-wrap:wrap;gap:12px;align-items:center;justify-content:space-between}
+.stamp{font-family:var(--mono);font-size:12px;color:var(--dim)}
+.lede{color:var(--dim);max-width:78ch;margin:0}
+.seg{display:inline-flex;border:1px solid var(--line);border-radius:999px;overflow:hidden;background:var(--panel)}
+.seg button{font:500 13px var(--body);border:0;background:transparent;color:var(--dim);padding:6px 12px;cursor:pointer}
+.seg button[aria-pressed="true"]{background:var(--ink);color:var(--ground)}
+.seg button:focus-visible,.cell:focus-visible,summary:focus-visible{outline:2px solid var(--accent);outline-offset:-2px}
+.controls{display:flex;flex-wrap:wrap;gap:10px 16px;align-items:center}
+.controls label{font-size:13px;color:var(--dim);display:inline-flex;gap:6px;align-items:center}
+.stats{display:flex;flex-wrap:wrap;gap:6px 18px;font-size:14px;color:var(--dim);font-variant-numeric:tabular-nums}
+.stats b{color:var(--ink)}
+
+.gridbox{overflow-x:auto;background:var(--panel);border:1px solid var(--line);border-radius:10px}
+table.grid{border-collapse:separate;border-spacing:3px;font-variant-numeric:tabular-nums;min-width:820px;padding:6px}
+.grid th{font-size:12px;font-weight:600;color:var(--dim);text-align:left;vertical-align:bottom;padding:4px 6px;line-height:1.25}
+.grid thead th{width:10%}
+.grid th.row{white-space:nowrap;text-align:right;vertical-align:middle;position:sticky;left:0;background:var(--panel);z-index:1}
+.grid th.axis{font-family:var(--display);font-size:15px;color:var(--ink);letter-spacing:.03em;text-transform:uppercase}
+.cell{min-height:58px;border-radius:6px;border:1px solid var(--line);background:rgba(var(--heat),var(--a,0));color:var(--ink);cursor:pointer;text-align:center;padding:2px;font:inherit;width:100%}
+.cell .n{display:block;font-family:var(--display);font-size:22px;font-weight:700;line-height:1.05}
+.cell .m{font-size:11px;color:var(--dim)}
+.cell.hot{color:#fff}.cell.hot .m{color:rgba(255,255,255,.85)}
+.cell.empty{background:transparent;border-style:dashed;color:var(--line);cursor:default}
+.cell.sel{outline:3px solid var(--red);outline-offset:1px}
+.cell .d{display:block;font-size:10.5px;color:var(--warn);font-weight:600}
+.cell.hot .d{color:#FFE2B8}
+td.tot,th.tot{font-size:12px;color:var(--dim);text-align:center}
+
+.panel{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:14px 16px;display:grid;gap:10px}
+.panel .kinds{display:flex;flex-wrap:wrap;gap:6px}
+.chip{display:inline-block;font-size:12px;padding:1px 7px;border-radius:999px;background:var(--ground);color:var(--dim);white-space:nowrap}
+.chip.warn{background:var(--warnbg);color:var(--warn);font-weight:600}
+.chip.fighter{background:transparent;border:1px solid var(--line);color:var(--ink)}
+ul.claims{list-style:none;margin:0;padding:0;display:grid;gap:6px}
+ul.claims summary{cursor:pointer;display:grid;grid-template-columns:auto 1fr;gap:4px 10px;padding:8px 10px;border:1px solid var(--line);border-radius:8px;list-style:none}
+ul.claims summary::-webkit-details-marker{display:none}
+ul.claims details[open] summary{border-color:var(--accent)}
+.key{font-family:var(--mono);font-size:12px;color:var(--dim);padding-top:2px}
+.lbl{font-weight:500}
+.lbl small{font-weight:400;color:var(--dim);font-size:12px}
+.chips{grid-column:2;display:flex;flex-wrap:wrap;gap:4px}
+ul.arts{list-style:none;margin:6px 0 10px 0;padding:0 0 0 12px;border-left:2px solid var(--line);display:grid;gap:10px}
+.art .t{font-size:14px}
+.art .t a{color:var(--accent)}
+.art .x{font-size:14px;margin:2px 0;padding:4px 8px;background:var(--ground);border-radius:6px}
+.art .a{display:flex;flex-wrap:wrap;gap:4px;font-size:12px}
+.art .a span{white-space:nowrap}
+.agree3{color:var(--ok)}.agree2,.agree1{color:var(--warn);font-weight:600}
+details.defs{font-size:13px;color:var(--dim)}
+details.defs dl{display:grid;grid-template-columns:minmax(9em,auto) 1fr;gap:4px 12px;margin:8px 0}
+details.defs dt{font-weight:600;color:var(--ink)}details.defs dd{margin:0}
+@media (max-width:520px){details.defs dl{grid-template-columns:1fr}}
+.hint{font-size:13px;color:var(--dim)}
+</style>
+
+<div class="wrap">
+  <section class="top">
+    <div><h1>Claim Map</h1><div class="stamp" id="stamp"></div></div>
+    <div class="seg" role="group" aria-label="Colour theme">
+      <button id="t-system" data-t="system" aria-pressed="true">System</button>
+      <button id="t-light" data-t="light" aria-pressed="false">Light</button>
+      <button id="t-dark" data-t="dark" aria-pressed="false">Dark</button>
+    </div>
+  </section>
+  <p class="lede">Every golden claim placed by the machine's answers: <b>who</b> is the source across, <b>what</b> is done regarding the fighter down. A claim goes where most of its articles go. Click a cell to spot-check its claims; doubtful ones come first. Nothing here is your label yet.</p>
+
+  <section class="controls">
+    <div class="seg" role="group" aria-label="Fighter" id="fighters">
+      <button data-f="" aria-pressed="true">All fighters</button>
+      <button data-f="Topuria" aria-pressed="false">Topuria</button>
+      <button data-f="Donchenko" aria-pressed="false">Donchenko</button>
+      <button data-f="Amosov" aria-pressed="false">Amosov</button>
+    </div>
+    <div class="seg" role="group" aria-label="Count" id="units">
+      <button data-u="claims" aria-pressed="true">Count claims</button>
+      <button data-u="articles" aria-pressed="false">Count articles</button>
+    </div>
+    <label><input type="checkbox" id="doubtonly"> only claims with a doubt</label>
+  </section>
+  <div class="stats" id="stats"></div>
+
+  <div class="gridbox"><table class="grid" id="grid"></table></div>
+  <div class="hint">Orange line in a cell: how many of its claims carry a doubt (readers split, articles in different cells, or extract and classifier disagree on "himself").</div>
+
+  <section class="panel" id="panel"><div class="hint">Click a cell to list its claims.</div></section>
+
+  <details class="defs"><summary>What each option means (the classifier's own definitions)</summary><div id="defs"></div></details>
+</div>
+
+<script>
+const DATA = /*DATA*/null;
+const state = {fighter:"", unit:"claims", doubtOnly:false, cell:null};
+const esc = s => String(s ?? "").replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const human = k => k.replace(/_/g, " ");
+const WHO = DATA.axes.speaker.map(o => o.key), WHAT = DATA.axes.act.map(o => o.key);
+const DEF = Object.fromEntries(["speaker","act","kind","depth"].flatMap(q => DATA.axes[q].map(o => [q+":"+o.key, o.def])));
+
+/** How many doubt flags a claim carries. @param {object} c a claim @returns {number} */
+const doubts = c => (c.readers_split?1:0) + (c.articles_split?1:0) + (c.who_disagrees?1:0);
+
+/** The claims the current filters let through. @returns {object[]} */
+function visible(){
+  return DATA.claims.filter(c => (!state.fighter || c.fighter===state.fighter) && (!state.doubtOnly || doubts(c)));
+}
+
+/** Draw the grid, its totals and the top numbers. */
+function drawGrid(){
+  const claims = visible(), weight = c => state.unit==="claims" ? 1 : c.n;
+  const at = (w,x) => claims.filter(c => c.who===w && c.what===x);
+  const max = Math.max(1, ...WHO.flatMap(w => WHAT.map(x => at(w,x).reduce((s,c)=>s+weight(c),0))));
+  const used = new Set(claims.map(c => c.who+"|"+c.what)).size;
+  const emptyWho = WHO.filter(w => !claims.some(c => c.who===w)), emptyWhat = WHAT.filter(x => !claims.some(c => c.what===x));
+  document.getElementById("stats").innerHTML =
+    `<span><b>${claims.length}</b> claims</span><span><b>${claims.reduce((s,c)=>s+c.n,0)}</b> articles</span>` +
+    `<span><b>${used}</b> of ${WHO.length*WHAT.length} cells used</span>` +
+    `<span><b>${claims.filter(doubts).length}</b> with a doubt</span>` +
+    `<span>never used: ${[...emptyWho.map(human), ...emptyWhat.map(human)].map(x=>`<b>${esc(x)}</b>`).join(", ") || "none"}</span>`;
+  // header row: who
+  let h = `<thead><tr><th class="axis row">what ↓ · who →</th>${WHO.map(w => `<th title="${esc(DEF["speaker:"+w])}">${esc(human(w))}</th>`).join("")}<th class="tot">total</th></tr></thead><tbody>`;
+  // one row per act, one cell per speaker
+  for (const x of WHAT){
+    const rowTotal = claims.filter(c => c.what===x).reduce((s,c)=>s+weight(c),0);
+    h += `<tr><th class="row" title="${esc(DEF["act:"+x])}">${esc(human(x))}</th>`;
+    for (const w of WHO){
+      const list = at(w,x), n = list.reduce((s,c)=>s+weight(c),0), d = list.filter(doubts).length;
+      if (!n){ h += `<td><div class="cell empty" aria-hidden="true">·</div></td>`; continue; }
+      const a = (0.10 + 0.80*Math.sqrt(n/max)).toFixed(2), other = state.unit==="claims" ? list.reduce((s,c)=>s+c.n,0)+" art." : list.length+" claims";
+      const sel = state.cell && state.cell[0]===w && state.cell[1]===x ? " sel" : "";
+      h += `<td><button class="cell${a>0.55?" hot":""}${sel}" style="--a:${a}" data-w="${w}" data-x="${x}" aria-label="${esc(human(w))} × ${esc(human(x))}: ${n}"><span class="n">${n}</span><span class="m">${other}</span>${d?`<span class="d">${d} doubtful</span>`:""}</button></td>`;
+    }
+    h += `<td class="tot">${rowTotal||""}</td></tr>`;
+  }
+  h += `<tr><th class="row tot">total</th>${WHO.map(w => `<td class="tot">${claims.filter(c=>c.who===w).reduce((s,c)=>s+weight(c),0)||""}</td>`).join("")}<td></td></tr></tbody>`;
+  const grid = document.getElementById("grid");
+  grid.innerHTML = h;
+  grid.querySelectorAll("button.cell").forEach(b => b.addEventListener("click", () => { state.cell=[b.dataset.w,b.dataset.x]; drawGrid(); drawPanel(); document.getElementById("panel").scrollIntoView({behavior:"smooth",block:"start"}); }));
+}
+
+/** One article inside an opened claim. @param {object} r an article row @returns {string} html */
+function article(r){
+  const q = (name,label) => `<span>${label}: <b class="agree${r.q[name].agree}" title="${r.q[name].agree} of 3 readers">${esc(human(r.q[name].choice))}</b> ${r.q[name].agree<3?`(${r.q[name].agree}/3)`:""}</span>`;
+  return `<li class="art"><div class="t"><span class="key">#${r.id} · ${r.date} · ${esc(r.source)}</span><br><a href="${esc(r.url)}" target="_blank" rel="noopener">${esc(r.title)}</a></div>
+    <div class="x">${esc(r.extract || "(no extract)")}</div>
+    <div class="a"><span>extractor: actor <b>${esc(r.actor||"—")}</b>${r.occasion?` · where <b>${esc(r.occasion)}</b>`:""} · ${esc(human(r.extract_kind||""))}</span></div>
+    <div class="a">${q("speaker","who")} · ${q("act","what")} · ${q("kind","kind")} · ${q("depth","depth")} · ${q("role","role")}${r.who_disagrees?` <span class="chip warn">extract and classifier disagree on "himself"</span>`:""}</div></li>`;
+}
+
+/** List the claims of the selected cell, doubtful first. */
+function drawPanel(){
+  const panel = document.getElementById("panel");
+  if (!state.cell){ panel.innerHTML = `<div class="hint">Click a cell to list its claims.</div>`; return; }
+  const [w,x] = state.cell;
+  const list = visible().filter(c => c.who===w && c.what===x).sort((a,b) => doubts(b)-doubts(a) || b.n-a.n);
+  if (!list.length){ panel.innerHTML = `<div class="hint">No claims left in this cell with the current filters.</div>`; return; }
+  const kinds = Object.entries(list.reduce((m,c) => (m[c.kind]=(m[c.kind]||0)+1, m), {})).sort((a,b)=>b[1]-a[1]);
+  panel.innerHTML = `<h2>${esc(human(w))} × ${esc(human(x))} · ${list.length} claim${list.length>1?"s":""}, ${list.reduce((s,c)=>s+c.n,0)} articles</h2>
+    <div class="hint">who: ${esc(DEF["speaker:"+w])}<br>what: ${esc(DEF["act:"+x])}</div>
+    <div class="kinds">${kinds.map(([k,n]) => `<span class="chip" title="${esc(DEF["kind:"+k])}">${esc(human(k))} ${n}</span>`).join("")}</div>
+    <ul class="claims">${list.map(c => `<li><details><summary><span class="key">${c.key}</span><span class="lbl">${esc(c.label)} <small>extract of #${c.first}</small></span>
+      <span class="chips"><span class="chip fighter">${c.fighter}</span><span class="chip">${c.n} article${c.n>1?"s":""}</span><span class="chip">${esc(human(c.kind))}</span><span class="chip">${esc(human(c.depth))}</span>
+      ${c.readers_split?`<span class="chip warn">readers split</span>`:""}${c.articles_split?`<span class="chip warn">articles in different cells</span>`:""}${c.who_disagrees?`<span class="chip warn">extract vs classifier on "himself"</span>`:""}</span></summary>
+      <ul class="arts">${c.rows.map(article).join("")}</ul></details></li>`).join("")}</ul>`;
+}
+
+// Definitions, from the classifier's own question file
+document.getElementById("defs").innerHTML = [["speaker","Who"],["act","What"],["kind","Kind"],["depth","Depth"]].map(([q,t]) =>
+  `<h2>${t}</h2><dl>${DATA.axes[q].map(o => `<dt>${esc(human(o.key))}</dt><dd>${esc(o.def)}</dd>`).join("")}</dl>`).join("");
+document.getElementById("stamp").textContent = `answers: ${DATA.version}  ·  grouping: golden ${DATA.ruler}`;
+
+// Controls
+const press = (group, attr, value) => document.querySelectorAll(`#${group} button`).forEach(b => b.setAttribute("aria-pressed", String(b.dataset[attr]===value)));
+document.querySelectorAll("#fighters button").forEach(b => b.addEventListener("click", () => { state.fighter=b.dataset.f; press("fighters","f",state.fighter); drawGrid(); drawPanel(); }));
+document.querySelectorAll("#units button").forEach(b => b.addEventListener("click", () => { state.unit=b.dataset.u; press("units","u",state.unit); drawGrid(); }));
+document.getElementById("doubtonly").addEventListener("change", e => { state.doubtOnly=e.target.checked; drawGrid(); drawPanel(); });
+
+/** Apply a colour theme and remember it if storage allows. @param {string} t system, light or dark */
+function setTheme(t){
+  if (t==="system") document.documentElement.removeAttribute("data-theme"); else document.documentElement.setAttribute("data-theme", t);
+  document.querySelectorAll(".top .seg button").forEach(b => b.setAttribute("aria-pressed", String(b.dataset.t===t)));
+  try { localStorage.setItem("claim-map-theme", t); } catch(e) {}
+}
+document.querySelectorAll(".top .seg button").forEach(b => b.addEventListener("click", () => setTheme(b.dataset.t)));
+let savedTheme = "system"; try { savedTheme = localStorage.getItem("claim-map-theme") || "system"; } catch(e) {}
+setTheme(savedTheme);
+
+drawGrid(); drawPanel();
+</script>
