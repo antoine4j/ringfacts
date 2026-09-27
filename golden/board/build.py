@@ -251,6 +251,7 @@ function card(c){
     <details class="body"><summary>body</summary><pre>${esc(c.body||"(empty)")}</pre></details>
   </div>`;
 }
+function side(key){ const s=DATA.find(x=>x.key===key); const ids=s.cards.map(c=>"#"+c.id); return `<span class="chip type">${key}</span><span class="id">${ids.length>4?ids.slice(0,4).join(" ")+" … "+ids.length+" articles":ids.join(" ")}</span>`; }
 function claim(s){
   const fb=s.fable, r=s.ruled;
   const hdr=[`<span class="key">${s.key}</span>`,`<span class="desc">${esc(s.desc[0]||"")}</span>`,
@@ -275,7 +276,7 @@ function render(){
   const week=s=>{const d=new Date(s.oldest); const w=new Date(d); w.setDate(d.getDate()-((d.getDay()+6)%7)); return w.toISOString().slice(0,10);};
   if(label&&!type&&!f&&!k&&!b&&!size&&!doubt&&!ruled&&!flagged&&!q){
     parts.push(`<div class="batch"><b>Singleton pass, first: seven pairs Fable could not call</b><span class="k">for each, is the singleton its own claim or part of the other one? Say the article number and "own" or "joins claim-NNN". Then the suspected body issues (tile above), then the tiers.</span></div>`);
-    for(const p of PAIRS){ parts.push(`<div class="card paircard"><div class="head"><span class="id">#${p.article}</span><span class="chip type">${p.claim}</span><span>vs</span>${p.other.map(o=>`<span class="id">#${o}</span>`).join(" ")}${p.other_claims.map(c=>`<span class="chip type">${c}</span>`).join("")}</div>${p.ruled?`<div class="pq done">✓ ${esc(p.question)}</div>`:`<div class="pq">${esc(p.question)}</div>${p.facts.length?`<ul class="pf">${p.facts.map(f=>`<li>${esc(f)}</li>`).join("")}</ul>`:""}`}<div class="k">Fable's doubt: ${esc(p.fable_doubt)}</div><details class="pair"><summary>show ${[p.claim,...p.other_claims].join(" and ")} here</summary><div class="pairbody" data-keys="${[p.claim,...p.other_claims].join(",")}"></div></details></div>`); }
+    for(const p of PAIRS){ parts.push(`<div class="card paircard"><div class="head">${side(p.claim)}<span>vs</span>${p.other_claims.map(side).join("<span>and</span>")}</div>${p.ruled?`<div class="pq done">✓ ${esc(p.question)}</div>`:`<div class="pq">${esc(p.question)}</div>${p.facts.length?`<ul class="pf">${p.facts.map(f=>`<li>${esc(f)}</li>`).join("")}</ul>`:""}`}<div class="k">Fable's doubt: ${esc(p.fable_doubt)}</div><details class="pair"><summary>show ${[p.claim,...p.other_claims].join(" and ")} here</summary><div class="pairbody" data-keys="${[p.claim,...p.other_claims].join(",")}"></div></details></div>`); }
   }
   const rows=label?[...DATA].sort((a,b)=>a.famidx-b.famidx||a.type.localeCompare(b.type)||a.f.localeCompare(b.f)||a.oldest.localeCompare(b.oldest)):DATA;
   for(const s of rows){
