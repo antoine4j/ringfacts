@@ -5,7 +5,7 @@
 <style>
 :root{
   --ground:#F3F4F6; --panel:#FFFFFF; --ink:#1A1E27; --dim:#5E6573; --line:#DCDFE5;
-  --accent:#2B55C9; --heat:43,85,201; --warn:#B25E00; --warnbg:#FCEFD9; --ok:#2E7D4F;
+  --accent:#2B55C9; --accentbg:#E7EDFB; --heat:43,85,201; --warn:#B25E00; --warnbg:#FCEFD9; --ok:#2E7D4F;
   --red:#C8372D;
   --display:"Barlow Condensed","Arial Narrow",system-ui,sans-serif;
   --body:"IBM Plex Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
@@ -13,38 +13,64 @@
 }
 @media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
   color-scheme:dark; --ground:#12151B; --panel:#1B1F27; --ink:#E7E9EE; --dim:#9AA1AE; --line:#2C323D;
-  --accent:#7C9BF0; --heat:124,155,240; --warn:#F0A54A; --warnbg:#3A2A12; --ok:#6CC48E; --red:#E4675E;
+  --accent:#7C9BF0; --accentbg:#1E2A47; --heat:124,155,240; --warn:#F0A54A; --warnbg:#3A2A12; --ok:#6CC48E; --red:#E4675E;
 }}
 :root[data-theme="dark"]{
   color-scheme:dark; --ground:#12151B; --panel:#1B1F27; --ink:#E7E9EE; --dim:#9AA1AE; --line:#2C323D;
-  --accent:#7C9BF0; --heat:124,155,240; --warn:#F0A54A; --warnbg:#3A2A12; --ok:#6CC48E; --red:#E4675E;
+  --accent:#7C9BF0; --accentbg:#1E2A47; --heat:124,155,240; --warn:#F0A54A; --warnbg:#3A2A12; --ok:#6CC48E; --red:#E4675E;
 }
 body{margin:0;background:var(--ground);color:var(--ink);font:15px/1.5 var(--body);padding-inline:16px;padding-block:20px 60px}
-.wrap{max-width:1280px;margin:0 auto;display:grid;gap:18px}
+.wrap{max-width:1280px;margin:0 auto;display:grid;gap:16px}
 h1,h2{font-family:var(--display);font-weight:700;margin:0;text-wrap:balance}
 h1{font-size:40px;line-height:1}
 h2{font-size:22px;letter-spacing:.02em}
 .top{display:flex;flex-wrap:wrap;gap:12px;align-items:center;justify-content:space-between}
 .stamp{font-family:var(--mono);font-size:12px;color:var(--dim)}
-.lede{color:var(--dim);max-width:78ch;margin:0}
+.lede{color:var(--dim);max-width:80ch;margin:0}
 .seg{display:inline-flex;border:1px solid var(--line);border-radius:999px;overflow:hidden;background:var(--panel)}
 .seg button{font:500 13px var(--body);border:0;background:transparent;color:var(--dim);padding:6px 12px;cursor:pointer}
 .seg button[aria-pressed="true"]{background:var(--ink);color:var(--ground)}
-.seg button:focus-visible,.cell:focus-visible,summary:focus-visible{outline:2px solid var(--accent);outline-offset:-2px}
+button:focus-visible,select:focus-visible,summary:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+
+/* the gate strip */
+.gates{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:8px}
+.gatebtn{font:inherit;text-align:left;background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:10px 12px;cursor:pointer;color:var(--ink);display:grid;gap:2px}
+.gatebtn .n{font-family:var(--display);font-size:30px;line-height:1;font-weight:700}
+.gatebtn .l{font-weight:600}
+.gatebtn .s{font-size:12.5px;color:var(--dim);line-height:1.35}
+.gatebtn[aria-pressed="true"]{border:2px solid var(--accent);background:var(--accentbg)}
+.gatebtn.warn .n{color:var(--warn)}
+
 .controls{display:flex;flex-wrap:wrap;gap:10px 16px;align-items:center}
 .controls label{font-size:13px;color:var(--dim);display:inline-flex;gap:6px;align-items:center}
+.controls select{font:500 13px var(--body);color:var(--ink);background:var(--panel);border:1px solid var(--line);border-radius:6px;padding:5px 8px}
+.slice{display:flex;flex-wrap:wrap;gap:8px;align-items:center;font-size:14px;background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:8px 12px}
+.slice b{font-weight:600}
+.slice .clear{margin-left:auto;font:500 13px var(--body);border:1px solid var(--line);background:var(--ground);color:var(--ink);border-radius:999px;padding:4px 12px;cursor:pointer}
+
+details.filters{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:8px 12px}
+details.filters>summary{cursor:pointer;font-weight:600}
+.facet{display:grid;grid-template-columns:10em 1fr;gap:6px 12px;padding:6px 0;border-top:1px solid var(--line);align-items:start}
+.facet:first-of-type{border-top:0}
+.facet .fl{font-size:13px;font-weight:600;color:var(--dim);padding-top:3px}
+.facet .fc{display:flex;flex-wrap:wrap;gap:5px}
+@media (max-width:560px){.facet{grid-template-columns:1fr}}
+.fchip{font:500 12.5px var(--body);border:1px solid var(--line);background:var(--ground);color:var(--ink);border-radius:999px;padding:2px 9px;cursor:pointer;white-space:nowrap}
+.fchip .c{color:var(--dim);font-variant-numeric:tabular-nums;margin-left:3px}
+.fchip[aria-pressed="true"]{background:var(--ink);color:var(--ground);border-color:var(--ink)}
+.fchip[aria-pressed="true"] .c{color:var(--ground)}
+.fchip:disabled{opacity:.35;cursor:default}
+
 .stats{display:flex;flex-wrap:wrap;gap:6px 18px;font-size:14px;color:var(--dim);font-variant-numeric:tabular-nums}
 .stats b{color:var(--ink)}
-
 .gridbox{overflow-x:auto;background:var(--panel);border:1px solid var(--line);border-radius:10px}
-table.grid{border-collapse:separate;border-spacing:3px;font-variant-numeric:tabular-nums;min-width:820px;padding:6px}
-.grid th{font-size:12px;font-weight:600;color:var(--dim);text-align:left;vertical-align:bottom;padding:4px 6px;line-height:1.25}
-.grid thead th{width:10%}
+table.grid{border-collapse:separate;border-spacing:3px;font-variant-numeric:tabular-nums;padding:6px}
+.grid th{font-size:12px;font-weight:600;color:var(--dim);text-align:left;vertical-align:bottom;padding:4px 6px;line-height:1.25;min-width:78px}
 .grid th.row{white-space:nowrap;text-align:right;vertical-align:middle;position:sticky;left:0;background:var(--panel);z-index:1}
 .grid th.axis{font-family:var(--display);font-size:15px;color:var(--ink);letter-spacing:.03em;text-transform:uppercase}
-.cell{min-height:58px;border-radius:6px;border:1px solid var(--line);background:rgba(var(--heat),var(--a,0));color:var(--ink);cursor:pointer;text-align:center;padding:2px;font:inherit;width:100%}
+.cell{min-height:58px;border-radius:6px;border:1px solid var(--line);background:rgba(var(--heat),var(--a,0));color:var(--ink);cursor:pointer;text-align:center;padding:3px;font:inherit;width:100%}
 .cell .n{display:block;font-family:var(--display);font-size:22px;font-weight:700;line-height:1.05}
-.cell .m{font-size:11px;color:var(--dim)}
+.cell .m{display:block;font-size:11px;color:var(--dim)}
 .cell.hot{color:#fff}.cell.hot .m{color:rgba(255,255,255,.85)}
 .cell.empty{background:transparent;border-style:dashed;color:var(--line);cursor:default}
 .cell.sel{outline:3px solid var(--red);outline-offset:1px}
@@ -53,7 +79,6 @@ table.grid{border-collapse:separate;border-spacing:3px;font-variant-numeric:tabu
 td.tot,th.tot{font-size:12px;color:var(--dim);text-align:center}
 
 .panel{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:14px 16px;display:grid;gap:10px}
-.panel .kinds{display:flex;flex-wrap:wrap;gap:6px}
 .chip{display:inline-block;font-size:12px;padding:1px 7px;border-radius:999px;background:var(--ground);color:var(--dim);white-space:nowrap}
 .chip.warn{background:var(--warnbg);color:var(--warn);font-weight:600}
 .chip.fighter{background:transparent;border:1px solid var(--line);color:var(--ink)}
@@ -69,7 +94,7 @@ ul.arts{list-style:none;margin:6px 0 10px 0;padding:0 0 0 12px;border-left:2px s
 .art .t{font-size:14px}
 .art .t a{color:var(--accent)}
 .art .x{font-size:14px;margin:2px 0;padding:4px 8px;background:var(--ground);border-radius:6px}
-.art .a{display:flex;flex-wrap:wrap;gap:4px;font-size:12px}
+.art .a{display:flex;flex-wrap:wrap;gap:4px 10px;font-size:12px}
 .art .a span{white-space:nowrap}
 .agree3{color:var(--ok)}.agree2,.agree1{color:var(--warn);font-weight:600}
 details.defs{font-size:13px;color:var(--dim)}
@@ -82,132 +107,192 @@ details.defs dt{font-weight:600;color:var(--ink)}details.defs dd{margin:0}
 <div class="wrap">
   <section class="top">
     <div><h1>Claim Map</h1><div class="stamp" id="stamp"></div></div>
-    <div class="seg" role="group" aria-label="Colour theme">
-      <button id="t-system" data-t="system" aria-pressed="true">System</button>
-      <button id="t-light" data-t="light" aria-pressed="false">Light</button>
-      <button id="t-dark" data-t="dark" aria-pressed="false">Dark</button>
+    <div class="seg" role="group" aria-label="Colour theme" id="theme">
+      <button data-t="system" aria-pressed="true">System</button>
+      <button data-t="light" aria-pressed="false">Light</button>
+      <button data-t="dark" aria-pressed="false">Dark</button>
     </div>
   </section>
-  <p class="lede">Every golden claim placed by the machine's answers: <b>who</b> is the source across, <b>what</b> is done regarding the fighter down. A claim goes where most of its articles go. Click a cell to spot-check its claims; doubtful ones come first. Nothing here is your label yet.</p>
+  <p class="lede">Every golden claim, described by the machine's answers. Start at the gate: is it about him at all? Then put any two dimensions on the axes, narrow with the filters, and click a cell to spot-check its claims, doubtful first. A claim takes the value most of its articles give. Nothing here is your label yet.</p>
+
+  <section class="gates" id="gates" aria-label="About him?"></section>
 
   <section class="controls">
-    <div class="seg" role="group" aria-label="Fighter" id="fighters">
-      <button data-f="" aria-pressed="true">All fighters</button>
-      <button data-f="Topuria" aria-pressed="false">Topuria</button>
-      <button data-f="Donchenko" aria-pressed="false">Donchenko</button>
-      <button data-f="Amosov" aria-pressed="false">Amosov</button>
-    </div>
+    <label>Across <select id="xsel"></select></label>
+    <label>Down <select id="ysel"></select></label>
     <div class="seg" role="group" aria-label="Count" id="units">
       <button data-u="claims" aria-pressed="true">Count claims</button>
       <button data-u="articles" aria-pressed="false">Count articles</button>
     </div>
     <label><input type="checkbox" id="doubtonly"> only claims with a doubt</label>
+    <label><input type="checkbox" id="showempty"> show empty rows and columns</label>
   </section>
-  <div class="stats" id="stats"></div>
 
+  <div class="slice" id="slice"></div>
+
+  <details class="filters" id="filters" open><summary>Filters · click any value to narrow; counts are claims</summary><div id="facets"></div></details>
+
+  <div class="stats" id="stats"></div>
   <div class="gridbox"><table class="grid" id="grid"></table></div>
-  <div class="hint">Orange line in a cell: how many of its claims (always claims, whichever count is chosen) carry a doubt (readers split, articles in different cells, or extract and classifier disagree on "himself").</div>
+  <div class="hint">Orange line in a cell: how many of its claims carry a doubt. A doubt is one of: the three readers split on who or what; the claim's articles land in different cells of this view; classifier and extractor disagree on "not about him"; or they disagree on whether he himself is speaking.</div>
 
   <section class="panel" id="panel"><div class="hint">Click a cell to list its claims.</div></section>
 
-  <details class="defs"><summary>What each option means (the classifier's own definitions)</summary><div id="defs"></div></details>
+  <details class="defs"><summary>What each value means</summary><div id="defs"></div></details>
 </div>
 
 <script>
 const DATA = /*DATA*/null;
-const state = {fighter:"", unit:"claims", doubtOnly:false, cell:null};
+const DIMS = DATA.dims, LABEL = Object.fromEntries(DIMS.map(d => [d.key, d.label]));
+const state = {x:"who", y:"what", unit:"claims", doubtOnly:false, showEmpty:false, gateFlag:false, filters:{}, cell:null};
 const esc = s => String(s ?? "").replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
-const human = k => k.replace(/_/g, " ");
-const WHO = DATA.axes.speaker.map(o => o.key), WHAT = DATA.axes.act.map(o => o.key);
-const DEF = Object.fromEntries(["speaker","act","kind","depth"].flatMap(q => DATA.axes[q].map(o => [q+":"+o.key, o.def])));
+const human = k => String(k).replace(/_/g, " ");
+const DEF = {};
+for (const d of DIMS) for (const o of DATA.values[d.key]) DEF[d.key+":"+o.key] = o.def;
 
-/** How many doubt flags a claim carries. @param {object} c a claim @returns {number} */
-const doubts = c => (c.readers_split?1:0) + (c.articles_split?1:0) + (c.who_disagrees?1:0);
+/** Whether a claim's articles fall in more than one cell of the current view. @param {object} c @returns {boolean} */
+const articlesSplit = c => new Set(c.rows.map(r => r.v[state.x]+"|"+r.v[state.y])).size > 1;
 
-/** The claims the current filters let through. @returns {object[]} */
-function visible(){
-  return DATA.claims.filter(c => (!state.fighter || c.fighter===state.fighter) && (!state.doubtOnly || doubts(c)));
+/** How many doubt flags a claim carries in the current view. @param {object} c @returns {number} */
+const doubts = c => (c.readers_split?1:0) + (articlesSplit(c)?1:0) + (c.gate_disagrees?1:0) + (c.who_disagrees?1:0);
+
+/** Whether a claim passes every filter, optionally ignoring one dimension (for facet counts). @param {object} c @param {string} [skip] @returns {boolean} */
+function passes(c, skip){
+  if (state.doubtOnly && !doubts(c)) return false;
+  if (state.gateFlag && skip !== "gateFlag" && !c.gate_disagrees) return false;
+  for (const [dim, set] of Object.entries(state.filters)) if (dim !== skip && set.size && !set.has(c.v[dim])) return false;
+  return true;
+}
+const visible = () => DATA.claims.filter(c => passes(c));
+
+/** Toggle one value of one dimension in the filters. @param {string} dim @param {string} val */
+function toggle(dim, val){
+  const set = state.filters[dim] || (state.filters[dim] = new Set());
+  set.has(val) ? set.delete(val) : set.add(val);
+  state.cell = null; drawAll();
 }
 
-/** Draw the grid, its totals and the top numbers. */
+/** The gate strip: yes, partly, no, and the disagreements, each a one-click filter. */
+function drawGates(){
+  const base = DATA.claims.filter(c => passes(c, "gate"));
+  const on = state.filters.gate || new Set();
+  const tile = (val, title, sub) => { const n = base.filter(c => c.v.gate===val).length;
+    return `<button class="gatebtn" data-g="${val}" aria-pressed="${on.has(val)}"><span class="n">${n}</span><span class="l">${title}</span><span class="s">${sub}</span></button>`; };
+  const nd = DATA.claims.filter(c => passes(c, "gateFlag") && c.gate_disagrees).length;
+  document.getElementById("gates").innerHTML =
+    tile("yes","About him","the claims to classify") + tile("partly","Partly about him","one of several, or a line or two") +
+    tile("no","Not about him","background, passing, someone else's news") +
+    `<button class="gatebtn warn" data-flag="1" aria-pressed="${state.gateFlag}"><span class="n">${nd}</span><span class="l">Readers disagree</span><span class="s">classifier and extractor differ on "not about him"</span></button>`;
+  document.querySelectorAll("#gates [data-g]").forEach(b => b.onclick = () => toggle("gate", b.dataset.g));
+  document.querySelector("#gates [data-flag]").onclick = () => { state.gateFlag = !state.gateFlag; state.cell=null; drawAll(); };
+}
+
+/** The filter chips: every value of every dimension, with the count it would leave. */
+function drawFacets(){
+  document.getElementById("facets").innerHTML = DIMS.filter(d => d.key !== "gate").map(d => {
+    const base = DATA.claims.filter(c => passes(c, d.key)), set = state.filters[d.key] || new Set();
+    const chips = DATA.values[d.key].map(o => { const n = base.filter(c => c.v[d.key]===o.key).length;
+      return (n || set.has(o.key)) ? `<button class="fchip" data-d="${d.key}" data-v="${esc(o.key)}" aria-pressed="${set.has(o.key)}" title="${esc(o.def)}">${esc(human(o.key))}<span class="c">${n}</span></button>` : ""; }).join("");
+    return `<div class="facet"><span class="fl">${esc(d.label)}</span><span class="fc">${chips || '<span class="hint">no claims</span>'}</span></div>`;
+  }).join("");
+  document.querySelectorAll("#facets .fchip").forEach(b => b.onclick = () => toggle(b.dataset.d, b.dataset.v));
+}
+
+/** The sentence above the grid that says which slice is on screen. */
+function drawSlice(){
+  const parts = Object.entries(state.filters).filter(([,s]) => s.size).map(([d,s]) => `<b>${esc(LABEL[d])}</b>: ${[...s].map(human).map(esc).join(" or ")}`);
+  if (state.gateFlag) parts.push(`<b>readers disagree on the gate</b>`);
+  if (state.doubtOnly) parts.push(`<b>only doubtful claims</b>`);
+  const claims = visible();
+  document.getElementById("slice").innerHTML = `<span>Showing ${parts.length ? parts.join(" · ") : "<b>all claims</b>"} — ${claims.length} claims, ${claims.reduce((s,c)=>s+c.n,0)} articles</span>` +
+    (parts.length ? `<button class="clear" id="clear">Clear all</button>` : "");
+  const clear = document.getElementById("clear");
+  if (clear) clear.onclick = () => { state.filters = {}; state.gateFlag = false; state.doubtOnly = false; document.getElementById("doubtonly").checked = false; state.cell = null; drawAll(); };
+}
+
+/** The grid for the chosen two dimensions, with totals and the top numbers. */
 function drawGrid(){
   const claims = visible(), weight = c => state.unit==="claims" ? 1 : c.n;
-  const at = (w,x) => claims.filter(c => c.who===w && c.what===x);
-  const max = Math.max(1, ...WHO.flatMap(w => WHAT.map(x => at(w,x).reduce((s,c)=>s+weight(c),0))));
-  const used = new Set(claims.map(c => c.who+"|"+c.what)).size;
-  const emptyWho = WHO.filter(w => !claims.some(c => c.who===w)), emptyWhat = WHAT.filter(x => !claims.some(c => c.what===x));
+  const X = DATA.values[state.x].map(o => o.key), Y = DATA.values[state.y].map(o => o.key);
+  const at = (a,b) => claims.filter(c => c.v[state.x]===a && c.v[state.y]===b);
+  const sum = list => list.reduce((s,c)=>s+weight(c),0);
+  const xs = state.showEmpty ? X : X.filter(a => claims.some(c => c.v[state.x]===a));
+  const ys = state.showEmpty ? Y : Y.filter(b => claims.some(c => c.v[state.y]===b));
+  const max = Math.max(1, ...xs.flatMap(a => ys.map(b => sum(at(a,b)))));
+  const never = [...X.filter(a => !DATA.claims.some(c => c.v[state.x]===a)), ...Y.filter(b => !DATA.claims.some(c => c.v[state.y]===b))];
   document.getElementById("stats").innerHTML =
-    `<span><b>${claims.length}</b> claims</span><span><b>${claims.reduce((s,c)=>s+c.n,0)}</b> articles</span>` +
-    `<span><b>${used}</b> of ${WHO.length*WHAT.length} cells used</span>` +
-    `<span><b>${claims.filter(doubts).length}</b> with a doubt</span>` +
-    `<span>never used: ${[...emptyWho.map(human), ...emptyWhat.map(human)].map(x=>`<b>${esc(x)}</b>`).join(", ") || "none"}</span>`;
-  // header row: who
-  let h = `<thead><tr><th class="axis row">what ↓ · who →</th>${WHO.map(w => `<th title="${esc(DEF["speaker:"+w])}">${esc(human(w))}</th>`).join("")}<th class="tot">total</th></tr></thead><tbody>`;
-  // one row per act, one cell per speaker
-  for (const x of WHAT){
-    const rowTotal = claims.filter(c => c.what===x).reduce((s,c)=>s+weight(c),0);
-    h += `<tr><th class="row" title="${esc(DEF["act:"+x])}">${esc(human(x))}</th>`;
-    for (const w of WHO){
-      const list = at(w,x), n = list.reduce((s,c)=>s+weight(c),0), d = list.filter(doubts).length;
+    `<span><b>${new Set(claims.map(c => c.v[state.x]+"|"+c.v[state.y])).size}</b> of ${X.length*Y.length} cells used</span>` +
+    `<span><b>${claims.filter(doubts).length}</b> claims with a doubt</span>` +
+    `<span>values no claim takes: ${never.length ? never.map(v => `<b>${esc(human(v))}</b>`).join(", ") : "none"}</span>`;
+  let h = `<thead><tr><th class="axis row">${esc(LABEL[state.y])} ↓ · ${esc(LABEL[state.x])} →</th>${xs.map(a => `<th title="${esc(DEF[state.x+":"+a])}">${esc(human(a))}</th>`).join("")}<th class="tot">total</th></tr></thead><tbody>`;
+  for (const b of ys){
+    h += `<tr><th class="row" title="${esc(DEF[state.y+":"+b])}">${esc(human(b))}</th>`;
+    for (const a of xs){
+      const list = at(a,b), n = sum(list), d = list.filter(doubts).length;
       if (!n){ h += `<td><div class="cell empty" aria-hidden="true">·</div></td>`; continue; }
-      const a = (0.10 + 0.80*Math.sqrt(n/max)).toFixed(2), other = state.unit==="claims" ? list.reduce((s,c)=>s+c.n,0)+" art." : list.length+" claims";
-      const sel = state.cell && state.cell[0]===w && state.cell[1]===x ? " sel" : "";
-      h += `<td><button class="cell${a>0.55?" hot":""}${sel}" style="--a:${a}" data-w="${w}" data-x="${x}" aria-label="${esc(human(w))} × ${esc(human(x))}: ${n}"><span class="n">${n}</span><span class="m">${other}</span>${d?`<span class="d">${d} doubtful claim${d>1?"s":""}</span>`:""}</button></td>`;
+      const alpha = (0.10 + 0.80*Math.sqrt(n/max)).toFixed(2), other = state.unit==="claims" ? list.reduce((s,c)=>s+c.n,0)+" art." : list.length+" claims";
+      const sel = state.cell && state.cell[0]===a && state.cell[1]===b ? " sel" : "";
+      h += `<td><button class="cell${alpha>0.55?" hot":""}${sel}" style="--a:${alpha}" data-a="${esc(a)}" data-b="${esc(b)}"><span class="n">${n}</span><span class="m">${other}</span>${d?`<span class="d">${d} doubtful claim${d>1?"s":""}</span>`:""}</button></td>`;
     }
-    h += `<td class="tot">${rowTotal||""}</td></tr>`;
+    h += `<td class="tot">${sum(claims.filter(c => c.v[state.y]===b))||""}</td></tr>`;
   }
-  h += `<tr><th class="row tot">total</th>${WHO.map(w => `<td class="tot">${claims.filter(c=>c.who===w).reduce((s,c)=>s+weight(c),0)||""}</td>`).join("")}<td></td></tr></tbody>`;
+  h += `<tr><th class="row tot">total</th>${xs.map(a => `<td class="tot">${sum(claims.filter(c => c.v[state.x]===a))||""}</td>`).join("")}<td class="tot">${sum(claims)}</td></tr></tbody>`;
   const grid = document.getElementById("grid");
   grid.innerHTML = h;
-  grid.querySelectorAll("button.cell").forEach(b => b.addEventListener("click", () => { state.cell=[b.dataset.w,b.dataset.x]; drawGrid(); drawPanel(); document.getElementById("panel").scrollIntoView({behavior:"smooth",block:"start"}); }));
+  grid.querySelectorAll("button.cell").forEach(btn => btn.onclick = () => { state.cell = [btn.dataset.a, btn.dataset.b]; drawGrid(); drawPanel(); document.getElementById("panel").scrollIntoView({behavior:"smooth", block:"start"}); });
 }
 
-/** One article inside an opened claim. @param {object} r an article row @returns {string} html */
+/** One article inside an opened claim: its extract and every answer. @param {object} r @returns {string} html */
 function article(r){
-  const q = (name,label) => `<span>${label}: <b class="agree${r.q[name].agree}" title="${r.q[name].agree} of 3 readers">${esc(human(r.q[name].choice))}</b> ${r.q[name].agree<3?`(${r.q[name].agree}/3)`:""}</span>`;
+  const val = (dim) => { const g = r.agree[dim]; return `<span>${esc(LABEL[dim])}: <b class="${g?"agree"+g:""}" ${g?`title="${g} of 3 readers"`:""}>${esc(human(r.v[dim]))}</b>${g && g<3 ? ` (${g}/3)` : ""}</span>`; };
   return `<li class="art"><div class="t"><span class="key">#${r.id} · ${r.date} · ${esc(r.source)}</span><br><a href="${esc(r.url)}" target="_blank" rel="noopener">${esc(r.title)}</a></div>
     <div class="x">${esc(r.extract || "(no extract)")}</div>
-    <div class="a"><span>extractor: actor <b>${esc(r.actor||"—")}</b>${r.occasion?` · where <b>${esc(r.occasion)}</b>`:""} · ${esc(human(r.extract_kind||""))}</span></div>
-    <div class="a">${q("speaker","who")} · ${q("act","what")} · ${q("kind","kind")} · ${q("depth","depth")} · ${q("role","role")}${r.who_disagrees?` <span class="chip warn">extract and classifier disagree on "himself"</span>`:""}</div></li>`;
+    <div class="a"><span>extractor: actor <b>${esc(r.actor||"—")}</b>${r.occasion?` · where <b>${esc(r.occasion)}</b>`:""}</span></div>
+    <div class="a">${["gate","who","what","fact","depth","role","extract_kind"].map(val).join("")}</div>
+    <div class="a">${r.gate_disagrees?`<span class="chip warn">classifier and extractor disagree on "not about him"</span>`:""}${r.who_disagrees?`<span class="chip warn">extract and classifier disagree on "himself"</span>`:""}</div></li>`;
 }
 
-/** List the claims of the selected cell, doubtful first. */
+/** The claims of the selected cell, doubtful first. */
 function drawPanel(){
   const panel = document.getElementById("panel");
   if (!state.cell){ panel.innerHTML = `<div class="hint">Click a cell to list its claims.</div>`; return; }
-  const [w,x] = state.cell;
-  const list = visible().filter(c => c.who===w && c.what===x).sort((a,b) => doubts(b)-doubts(a) || b.n-a.n);
+  const [a,b] = state.cell;
+  const list = visible().filter(c => c.v[state.x]===a && c.v[state.y]===b).sort((p,q) => doubts(q)-doubts(p) || q.n-p.n);
   if (!list.length){ panel.innerHTML = `<div class="hint">No claims left in this cell with the current filters.</div>`; return; }
-  const kinds = Object.entries(list.reduce((m,c) => (m[c.kind]=(m[c.kind]||0)+1, m), {})).sort((a,b)=>b[1]-a[1]);
-  panel.innerHTML = `<h2>${esc(human(w))} × ${esc(human(x))} · ${list.length} claim${list.length>1?"s":""}, ${list.reduce((s,c)=>s+c.n,0)} articles</h2>
-    <div class="hint">who: ${esc(DEF["speaker:"+w])}<br>what: ${esc(DEF["act:"+x])}</div>
-    <div class="kinds">${kinds.map(([k,n]) => `<span class="chip" title="${esc(DEF["kind:"+k])}">${esc(human(k))} ${n}</span>`).join("")}</div>
+  panel.innerHTML = `<h2>${esc(LABEL[state.x])}: ${esc(human(a))} × ${esc(LABEL[state.y])}: ${esc(human(b))} · ${list.length} claim${list.length>1?"s":""}, ${list.reduce((s,c)=>s+c.n,0)} articles</h2>
+    <div class="hint">${esc(human(a))}: ${esc(DEF[state.x+":"+a])}<br>${esc(human(b))}: ${esc(DEF[state.y+":"+b])}</div>
     <ul class="claims">${list.map(c => `<li><details><summary><span class="key">${c.key}</span><span class="lbl">${esc(c.label)} <small>extract of #${c.first}</small></span>
-      <span class="chips"><span class="chip fighter">${c.fighter}</span><span class="chip">${c.n} article${c.n>1?"s":""}</span><span class="chip">${esc(human(c.kind))}</span><span class="chip">${esc(human(c.depth))}</span>
-      ${c.readers_split?`<span class="chip warn">readers split</span>`:""}${c.articles_split?`<span class="chip warn">articles in different cells</span>`:""}${c.who_disagrees?`<span class="chip warn">extract vs classifier on "himself"</span>`:""}</span></summary>
+      <span class="chips"><span class="chip fighter">${esc(c.v.fighter)}</span><span class="chip">${c.n} article${c.n>1?"s":""}</span><span class="chip">about him: ${esc(c.v.gate)}</span><span class="chip">${esc(human(c.v.fact))}</span><span class="chip">${esc(human(c.v.depth))}</span>
+      ${c.readers_split?`<span class="chip warn">readers split</span>`:""}${articlesSplit(c)?`<span class="chip warn">articles in different cells</span>`:""}${c.gate_disagrees?`<span class="chip warn">disagree on "not about him"</span>`:""}${c.who_disagrees?`<span class="chip warn">disagree on "himself"</span>`:""}</span></summary>
       <ul class="arts">${c.rows.map(article).join("")}</ul></details></li>`).join("")}</ul>`;
 }
 
-// Definitions, from the classifier's own question file
-document.getElementById("defs").innerHTML = [["speaker","Who"],["act","What"],["kind","Kind"],["depth","Depth"]].map(([q,t]) =>
-  `<h2>${t}</h2><dl>${DATA.axes[q].map(o => `<dt>${esc(human(o.key))}</dt><dd>${esc(o.def)}</dd>`).join("")}</dl>`).join("");
-document.getElementById("stamp").textContent = `answers: ${DATA.version}  ·  grouping: golden ${DATA.ruler}`;
+/** Redraw everything that depends on the filters. */
+function drawAll(){ drawGates(); drawSlice(); drawFacets(); drawGrid(); drawPanel(); }
 
-// Controls
-const press = (group, attr, value) => document.querySelectorAll(`#${group} button`).forEach(b => b.setAttribute("aria-pressed", String(b.dataset[attr]===value)));
-document.querySelectorAll("#fighters button").forEach(b => b.addEventListener("click", () => { state.fighter=b.dataset.f; press("fighters","f",state.fighter); drawGrid(); drawPanel(); }));
-document.querySelectorAll("#units button").forEach(b => b.addEventListener("click", () => { state.unit=b.dataset.u; press("units","u",state.unit); drawGrid(); }));
-document.getElementById("doubtonly").addEventListener("change", e => { state.doubtOnly=e.target.checked; drawGrid(); drawPanel(); });
+// Axis pickers
+for (const id of ["xsel","ysel"]) document.getElementById(id).innerHTML = DIMS.map(d => `<option value="${d.key}">${esc(d.label)}</option>`).join("");
+document.getElementById("xsel").value = state.x; document.getElementById("ysel").value = state.y;
+document.getElementById("xsel").onchange = e => { state.x = e.target.value; state.cell = null; drawAll(); };
+document.getElementById("ysel").onchange = e => { state.y = e.target.value; state.cell = null; drawAll(); };
+document.querySelectorAll("#units button").forEach(b => b.onclick = () => { state.unit = b.dataset.u; document.querySelectorAll("#units button").forEach(x => x.setAttribute("aria-pressed", String(x===b))); drawGrid(); });
+document.getElementById("doubtonly").onchange = e => { state.doubtOnly = e.target.checked; state.cell = null; drawAll(); };
+document.getElementById("showempty").onchange = e => { state.showEmpty = e.target.checked; drawGrid(); };
+
+// Definitions and version stamp
+document.getElementById("defs").innerHTML = DIMS.filter(d => d.key !== "fighter").map(d =>
+  `<h2>${esc(d.label)}</h2><dl>${DATA.values[d.key].map(o => `<dt>${esc(human(o.key))}</dt><dd>${esc(o.def)}</dd>`).join("")}</dl>`).join("");
+document.getElementById("stamp").textContent = `answers: ${DATA.version}  ·  grouping: golden ${DATA.ruler}`;
 
 /** Apply a colour theme and remember it if storage allows. @param {string} t system, light or dark */
 function setTheme(t){
   if (t==="system") document.documentElement.removeAttribute("data-theme"); else document.documentElement.setAttribute("data-theme", t);
-  document.querySelectorAll(".top .seg button").forEach(b => b.setAttribute("aria-pressed", String(b.dataset.t===t)));
+  document.querySelectorAll("#theme button").forEach(b => b.setAttribute("aria-pressed", String(b.dataset.t===t)));
   try { localStorage.setItem("claim-map-theme", t); } catch(e) {}
 }
-document.querySelectorAll(".top .seg button").forEach(b => b.addEventListener("click", () => setTheme(b.dataset.t)));
+document.querySelectorAll("#theme button").forEach(b => b.onclick = () => setTheme(b.dataset.t));
 let savedTheme = "system"; try { savedTheme = localStorage.getItem("claim-map-theme") || "system"; } catch(e) {}
 setTheme(savedTheme);
 
-drawGrid(); drawPanel();
+drawAll();
 </script>
