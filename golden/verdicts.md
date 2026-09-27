@@ -700,3 +700,9 @@ Read beside story-073.5 (#817, 2026-09-23): a column whose news is the
 writer's own verdict on a fight stands alone; a column built on quotes
 from one interview goes with that interview. Applied at the rebuild after
 the singleton pass.
+
+Anton, further: *"565 is basically a division analysis on the back of
+Gaethje's status, based on his quote from the interview. Let's keep this
+ruled as we just did for now."* Kept, and marked his words "for now": a
+division analysis resting on one quote sits between the two column rules
+above, and may be revisited.
