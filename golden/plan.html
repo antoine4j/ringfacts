@@ -184,7 +184,7 @@ code{font-family:var(--mono);font-size:.9em}
     </ul>
   </section>
 
-  <footer>Updated 2026-09-27 after ruler v4. Source: <code>golden/plan.html</code> in the repo; the rulings behind every "done" are in <code>golden/verdicts.md</code>.</footer>
+  <footer>Updated 2026-09-27: labels are facts on the map's axes; tiers come from settings. Source: <code>golden/plan.html</code> in the repo; the rulings behind every "done" are in <code>golden/verdicts.md</code>.</footer>
 </div>
 
 <script>
@@ -193,24 +193,27 @@ const PATH = [
   {t:"Golden folder and review board", s:"300 articles frozen, board built", st:"done"},
   {t:"Rule every multi-article claim", s:"47 claims, v3 (23–25 Sept)", st:"done"},
   {t:"Singleton pass and body checks", s:"7 pairs, 14 checks, v4 (27 Sept)", st:"done"},
-  {t:"Four decisions", s:"before labelling starts", st:"now"},
-  {t:"Label pass, blind", s:"type, bout, speaker, tier per claim", st:""},
+  {t:"Claim map", s:"every claim on re-sliceable axes (27 Sept)", st:"done"},
+  {t:"Define the axes, check the gate", s:"each claim fits one value per axis", st:"now"},
+  {t:"Label by spot-checking the map", s:"who, what, fact and how firm, bout", st:""},
   {t:"Freeze and split", s:"labels.json, split.json: 2/3 tune, 1/3 test", st:""},
-  {t:"Score each station once", s:"on the test third; recorded in decisions.md", st:""},
+  {t:"Score each station, axis by axis", s:"on the test third; recorded in decisions.md", st:""},
+  {t:"Settings, then a tier check", s:"cell → tier per fighter; tier a sample", st:""},
 ];
 
 const NOW = {
-  title:"Next: four decisions, then the label pass",
+  title:"Next: label facts, not preferences",
   items:[
-    ["6.4","How far apart can two articles be and still be one claim? 37 same-claim pairs are more than 3 days apart, in 10 claims."],
-    ["4.4","How closely you follow each fighter: for each kind of speaker, in (the claim can be tier 1 or 2) or out (always tier 3)."],
-    ["4.3","Is the opponent's own news (his camp, his injury, his words about himself) news about our fighter?"],
-    ["6.5","Is fight-week routine (weigh-ins, face-offs, open workouts) a claim of its own?"],
+    ["4.8","Define the axes and their values so every claim fits exactly one value on each. I draft from the map; you approve. Without this neither you nor the classifier can be scored."],
+    ["4.9","Check the gate: the 'Not about him' slice (51 claims) and the 29 where classifier and extractor disagree. It is the first filter, and it looks too strict: 12 of those claims have 'himself' as the source."],
+    ["4.10","Spot-check who × what on the map, cell by cell, doubtful claims first. Your corrections are the labels."],
+    ["4.11","For bookings and other career facts: how firm, official, reported or rumoured. Goal G4 depends on it."],
   ]
 };
 
 // Each task: id, status, the task as an action, what it involves, and why it matters at three levels.
-const T = (id, st, task, what, set, station, system) => ({id, st, task, what, why:{set, station, system}});
+// p overrides the priority a status would give (P1 means "next", whatever the kind of work).
+const T = (id, st, task, what, set, station, system, p) => ({id, st, task, what, why:{set, station, system}, p});
 
 const STATIONS = [
   {n:1, name:"RSS reader", role:"Finds article links for each fighter.", outside:true,
@@ -254,8 +257,8 @@ const STATIONS = [
       "The only way to know if a fix helped.",
       "Better text lifts every station after it."),
    ]},
-  {n:4, name:"Classifier", role:"Says what kind of article it is and who is speaking.",
-   verdict:"Answers are in. Needs your type and speaker labels, then one score.",
+  {n:4, name:"Classifier", role:"Places each article on the axes: about him or not, who, what regarding him, what fact.",
+   verdict:"Answers are in and on the map. Define the axes, then correct the map: those corrections are the labels.",
    items:[
     T("4.1","done","Store the classifier's answers for all 300 articles",
       "Six questions, three readers each, frozen in golden/answers and shown on the board.",
@@ -263,32 +266,37 @@ const STATIONS = [
       "The baseline any new classifier design has to beat.",
       "The classifier's answer is what the decider reads first to choose post-now or not."),
     T("4.2","done","Try a second set of questions and sort the news into types",
-      "Five new questions. The types report found 4 families and 28 types.",
-      "The type list is the pre-fill for 4.5, so you confirm instead of typing.",
+      "Five new questions. The types report found 4 families and 28 types; the claim map now does that job with the answers themselves.",
+      "Its questions became the map's axes.",
       "Showed which questions help tell tiers apart and which add nothing.",
       "Input to the next classifier design."),
-    T("4.3","decide","Decide whether the opponent's own news counts as news about our fighter",
-      "For example his camp's update, his injury, or what he says about himself before their fight.",
-      "Changes the tier of many claims. It must be settled before labelling, or labels follow two rules.",
-      "Defines what 'about him' means for the classifier.",
-      "This is the line between tier 2 and tier 3 in goals.md."),
-    T("4.4","decide","Decide how closely you follow each fighter: whose words count as news",
-      "The coach-only ruling of 22 Sept exists; not yet settled whether it applies beyond analysis.",
-      "The same article can be weekly for Amosov and never for Topuria. The label must use one rule per fighter.",
-      "Makes the speaker question work as a filter.",
-      "Becomes a per-fighter setting in the app, not a hard-coded law."),
-    T("4.5","label","Confirm the type of news for every claim",
-      "Pre-filled from Fable's types report; you confirm or change it.",
-      "The split is balanced by type, so the test third holds results, bookings, quotes and predictions.",
-      "The answer key for the classifier's type question.",
-      "The post-now rule is keyed on type: a booking or a result posts at once."),
-    T("4.6","label","Name the speaker with standing for every claim that is a quote",
-      "Yours to give. Nothing pre-filled.",
-      "The answer key for the speaker question.",
-      "Tests whether the classifier finds who is really speaking.",
-      "Decides which quotes reach the group (the coach-only rule)."),
-    T("4.7","score","Score the classifier once on the test third",
-      "After the freeze. Written into decisions.md beside the design.",
+    T("4.8","decide","Define the axes and their values, so every claim fits exactly one value on each",
+      "I draft from the map, you approve. Known problems to settle: 'he fought' and 'fight week' sit on two axes at once; 'quote' as a kind only repeats that someone spoke; 'steering him elsewhere' is never used although such claims exist; Gaethje is both champion and his last opponent; Makhachev is a champion of another division. Also absorbs the old question of whether the opponent's own news is about him: where does it sit?",
+      "Labels against fuzzy axes cannot be scored: two careful people would put the same claim in different cells.",
+      "The classifier's questions get rewritten to match, so its answers can be scored axis by axis.",
+      "The axes are the vocabulary of the whole product: settings, the digest and the map all speak it."),
+    T("4.9","label","Check the gate: confirm or correct 'not about him' and the disagreements",
+      "On the map: the 'Not about him' tile (51 claims) and the 'Readers disagree' tile (29). The rule is my draft from the answers and looks too strict: 12 claims in that slice have 'himself' as the source. The 5 'no text' articles show here too, which also covers the unusable-text question (3.3).",
+      "The gate label per claim: about him, partly, or not.",
+      "The first filter everything else depends on.",
+      "A wrong 'no' swallows real news (G1); a wrong 'yes' lets junk through (G2).", "P1"),
+    T("4.10","label","Spot-check who × what on the map and correct the cell of each claim",
+      "Cell by cell, doubtful claims first (readers split, articles in different cells, classifier and extractor disagree). Replaces the old type and speaker labels: the 28 types collapse into cells.",
+      "The who and what labels per claim.",
+      "The answer key for the classifier's two main questions.",
+      "Can we tell these words apart reliably? This is where we find out."),
+    T("4.11","label","Mark how firm each career fact is: official, reported or rumoured",
+      "Mostly bookings. The classifier already answers it inside its kind question; this confirms it.",
+      "Nothing tested it before.",
+      "The answer key for the firmness value.",
+      "Goal G4: 'confirmed' only when an official source said it."),
+    T("4.12","done","Build the claim map: every claim on axes you can re-slice",
+      "Built 27 Sept from stored answers, no model calls: a gate (about him yes / partly / no), who, what, fact asserted, depth, role, the extractor's kind, fighter. Click a cell for its claims, doubtful first.",
+      "Top-down review: you correct placements instead of reading 300 articles one by one.",
+      "Shows where the classifier's answers land and which options are never used.",
+      "The same view may become what readers see behind 'read more'."),
+    T("4.7","score","Score the classifier once on the test third, axis by axis",
+      "After the freeze. One number per axis (gate, who, what, fact, how firm), written into decisions.md beside the design.",
       "Uses the labels exactly once, so the number is honest.",
       "Tells us whether it is good enough or needs work.",
       "A recorded number instead of an impression."),
@@ -323,7 +331,7 @@ const STATIONS = [
       "Keeps two outlets relaying one interview in the same claim."),
    ]},
   {n:6, name:"Semantic dedup: grouping into claims", role:"Joins an article to a claim we have, or starts a new one. Grouping articles into claims is this station's job.",
-   verdict:"The grouping is ruled. Two decisions left, then the replay.",
+   verdict:"The grouping is ruled and trusted. Similarity alone cannot decide joins; the three-step test comes next.",
    items:[
     T("6.1","done","Rule every claim that has more than one article (v3)",
       "47 claims: 45 as built, two splits, one merge (the predictions).",
@@ -336,7 +344,7 @@ const STATIONS = [
       "Cases where joining is genuinely hard.",
       "Same as 6.1."),
     T("6.3","done","Rescore every grouping method on v4",
-      "Best: extract plus headline plus lead, 0.941. Production today: 0.908. From saved results, no cost.",
+      "Ranking score: extract plus headline plus lead 0.941, production 0.908. As a decision it is weaker: at its best threshold the best method joins only 53% of the pairs that belong together, and 1 in 5 of its joins is wrong. Good for shortlisting candidates, not for deciding.",
       "Confirms v4 did not change any conclusion.",
       "Shows which text to compare articles on.",
       "Production compares headline plus lead today; the extract version separates claims better."),
@@ -344,39 +352,49 @@ const STATIONS = [
       "37 same-claim pairs are more than 3 days apart, in 10 claims.",
       "Decides whether those 37 pairs count as misses when scoring.",
       "Sets the size of the search window.",
-      "Too short and a repeat posts again (G3). Too long and more wrong joins and more cost."),
+      "Too short and a repeat posts again (G3). Too long and more wrong joins and more cost.", "P2"),
     T("6.5","decide","Decide whether fight-week routine is a claim of its own",
       "Weigh-ins, face-offs, open workouts.",
       "Changes how many fight-week articles are grouped, so the labels must follow one rule.",
       "Tells grouping what to join.",
-      "Decides whether the group hears about each weigh-in and face-off."),
+      "Decides whether the group hears about each weigh-in and face-off.", "P2"),
     T("6.6","label","Check the other 74 single-article claims while labelling",
       "Not reviewed by you: they stand as Fable built them. 26 carry a doubt Fable wrote down, 11 were grouped below high confidence. Flag any that belong elsewhere.",
       "An unnoticed wrong singleton is a hidden error in the answer key.",
       "A missed join would be scored as correct.",
       "Same as 6.1."),
+    T("6.8","score","Test grouping in three steps: shortlist by similarity, rule out with guards, an LLM decides the rest",
+      "Steps 1 and 2 use saved results and cost nothing. Step 3 runs only on the hard cases.",
+      "Uses the trusted grouping as the answer key.",
+      "Measures how often the right claim is on the shortlist, and how many wrong joins the guards remove.",
+      "Wrong joins swallow news; wrong starts post repeats."),
     T("6.7","score","Replay all 300 in date order and score the test side once",
       "Test-side articles still see tune-side claims as candidates.",
       "Uses the answer key exactly once.",
       "The honest grouping number.",
       "Written into decisions.md beside the design."),
    ]},
-  {n:7, name:"Decider", role:"Tier 1 posts now, tier 2 goes to the weekly digest, tier 3 never reaches the group.",
-   verdict:"Needs your tier for every claim, given blind. The biggest part of the label pass.",
+  {n:7, name:"Decider and settings", role:"Looks up the claim's cell in per-fighter settings to give tier 1, 2 or 3; only a new claim can be tier 1. The settings table is not in the diagram yet.",
+   verdict:"Tiers moved to the other side of the split: they come from settings, not from labels. A small tier sample checks the bridge.",
    items:[
     T("7.1","done","Measure how well classifier answers predict tiers",
       "Today's rules match the September grading 76%; with the new questions 84%, measured on the same data.",
       "Not golden. The September grading is a weaker answer key.",
       "Shows the classifier answers carry enough to decide tiers.",
       "Input to the decider's design."),
-    T("7.2","label","Give every claim a tier: 1 (post now), 2 (weekly digest) or 3 (never)",
-      "Blind: the rule's answer stays hidden while you choose.",
-      "The only answer key for the decider. Blind, so it is your judgement, not a confirmation of the rule.",
-      "What the decider is scored against.",
+    T("7.4","later","Build the settings table: which cells reach tier 1, 2 or 3, per fighter",
+      "Your rulings so far become the defaults: for Donchenko and Amosov you hear everyone; for Topuria only people with standing. Changeable, later by users too.",
+      "No labels; it sits on top of them.",
+      "Makes the decider a lookup instead of a judgement.",
+      "The decoupling: facts are classified once, what each reader wants is a setting."),
+    T("7.2","later","Give a tier to a sample of claims, blind, to check the bridge",
+      "After 7.4. If grid plus settings give your tier, the grid is enough; if not, it shows what the grid misses, such as depth or how big the news is.",
+      "A check, not a label for every claim.",
+      "Tests the decider end to end.",
       "Goals G1 (nothing real missed) and G2 (no junk)."),
-    T("7.3","score","Score the decider once on the test third",
-      "After the freeze.",
-      "Uses the labels exactly once.",
+    T("7.3","later","Score the decider on that sample",
+      "After the freeze and the sample.",
+      "Uses the sample once.",
       "The honest decider number.",
       "Written into decisions.md beside the design."),
    ]},
@@ -389,7 +407,7 @@ const STATIONS = [
       "Tests whether the digest links the right source.",
       "The digest links where the news actually came from."),
     T("8.2","later","Check the digest skips the right stories",
-      "Uses the tier labels from 7.2.",
+      "Uses the settings (7.4) and the tier sample (7.2).",
       "No new labels.",
       "Tests what the digest leaves out.",
       "Keeps the digest short."),
@@ -400,27 +418,12 @@ const STATIONS = [
 ];
 
 const GAPS = [
-  ["Confirmed or rumour?", "Goal G4 says 'confirmed' must come from an official source. No label records whether a booking is official or rumoured, so nothing tests it. Add a label per booking claim?"],
-  ["Unusable text before scoring", "If 3.3 waits until last, the classifier and decider are scored on articles whose saved text is garbage. Move 3.3 before step 7, or leave those articles out of the score?"],
   ["Headline-only articles", "About 19% of the raw feed in the other project had no text. The set cannot test them. A later slice, like the second fight week."],
+  ["Depth and size of news", "The grid says what kind of claim it is, not how big. Two assessments by the same person can be a full breakdown or one line. The tier sample (7.2) will show whether depth needs its own axis."],
+  ["One fight week", "Every result article is Donchenko vs Soriano. Axes tuned here may miss what a title fight or a withdrawal looks like."],
 ];
 
 const esc = s => s.replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
-
-// Top numbers
-const all = STATIONS.flatMap(s => s.items);
-const nDone = all.filter(i => i.st==="done").length;
-document.getElementById("stats").innerHTML =
-  `<span><b>300</b> articles</span><span><b>128</b> claims</span><span><b>47</b> with more than one article</span>` +
-  `<span><b>${nDone}</b> of <b>${all.length}</b> tasks done</span>` +
-  `<span><b>${all.filter(i=>i.st==="decide").length}</b> decisions waiting for you</span>`;
-
-// The path
-document.getElementById("path").innerHTML = PATH.map((p,i) =>
-  `<li class="${p.st}"><span class="n">${p.st==="done"?"✓ ":p.st==="now"?"▶ now · ":""}step ${i+1}</span><span class="t">${esc(p.t)}</span><span class="s">${esc(p.s)}</span></li>`).join("");
-
-// Now box
-document.getElementById("nowbox").innerHTML = `<h3>${esc(NOW.title)}</h3><ol>${NOW.items.map(([id,t]) => `<li><span class="id">${id}</span> ${esc(t)}</li>`).join("")}</ol>`;
 
 // Status is what you scan for; kind says what sort of work it is.
 const STATUS = {done:["done","✓ done"], decide:["next","▶ next"], label:["todo","○ to do"], score:["todo","○ to do"], later:["parked","‖ parked"]};
@@ -429,15 +432,34 @@ const KIND = {decide:"your decision", label:"label pass", score:"scoring", later
 // P3 runs once the rest is done; then parked; done tasks stay visible at the bottom, in the order finished.
 const RANK = {decide:1, label:2, score:3, later:4, done:5};
 const PRIO = {decide:"P1", label:"P2", score:"P3"};
+const prio = i => i.st==="done" || i.st==="later" ? "" : (i.p || PRIO[i.st]);
+const rank = i => prio(i) ? Number(prio(i)[1]) : RANK[i.st];
+const status = i => prio(i)==="P1" ? STATUS.decide : i.st==="decide" ? STATUS.label : STATUS[i.st];
+
+// Top numbers
+const all = STATIONS.flatMap(s => s.items);
+const nDone = all.filter(i => i.st==="done").length;
+document.getElementById("stats").innerHTML =
+  `<span><b>300</b> articles</span><span><b>128</b> claims</span><span><b>47</b> with more than one article</span>` +
+  `<span><b>${nDone}</b> of <b>${all.length}</b> tasks done</span>` +
+  `<span><b>${all.filter(i=>prio(i)==="P1").length}</b> tasks marked next</span>`;
+
+// The path
+document.getElementById("path").innerHTML = PATH.map((p,i) =>
+  `<li class="${p.st}"><span class="n">${p.st==="done"?"✓ ":p.st==="now"?"▶ now · ":""}step ${i+1}</span><span class="t">${esc(p.t)}</span><span class="s">${esc(p.s)}</span></li>`).join("");
+
+// Now box
+document.getElementById("nowbox").innerHTML = `<h3>${esc(NOW.title)}</h3><ol>${NOW.items.map(([id,t]) => `<li><span class="id">${id}</span> ${esc(t)}</li>`).join("")}</ol>`;
+
 // Stations, each task expandable with its three reasons
-const task = i => `<li class="${i.st==="done"?"is-done":""}" data-st="${i.st}"><details><summary><span class="id">${i.id}</span><span class="pill ${STATUS[i.st][0]}">${STATUS[i.st][1]}</span><span class="txt">${PRIO[i.st]?`<b class="prio p${RANK[i.st]}">${PRIO[i.st]}</b> `:""}${esc(i.task)}${KIND[i.st]?` <span class="kind">${KIND[i.st]}</span>`:""}</span></summary>
+const task = i => `<li class="${i.st==="done"?"is-done":""}" data-st="${prio(i)==="P1"?"decide":i.st}"><details><summary><span class="id">${i.id}</span><span class="pill ${status(i)[0]}">${status(i)[1]}</span><span class="txt">${prio(i)?`<b class="prio p${rank(i)}">${prio(i)}</b> `:""}${esc(i.task)}${KIND[i.st]?` <span class="kind">${KIND[i.st]}</span>`:""}</span></summary>
   <div class="why">${i.what?`<p class="what">${esc(i.what)}</p>`:""}
   <dl><dt>For the golden set</dt><dd>${esc(i.why.set)}</dd><dt>For this station</dt><dd>${esc(i.why.station)}</dd><dt>For the system</dt><dd>${esc(i.why.system)}</dd></dl></div></details></li>`;
 document.getElementById("pipe").innerHTML = STATIONS.map(s => {
   const d = s.items.filter(i => i.st==="done").length, n = s.items.length;
   const count = n ? `<span class="count">${d} of ${n} done</span>` : `<span class="count">not tested here</span>`;
   const bar = n ? `<div class="bar" aria-hidden="true"><i style="width:${Math.round(100*d/n)}%"></i></div>` : "";
-  return `<article class="st${s.outside?" outside":""}" data-n="${s.n}"><header><span class="num">${s.n}</span><div><h3>${esc(s.name)}</h3><div class="role">${esc(s.role)}</div></div>${count}</header>${bar}<div class="verdict">${esc(s.verdict)}</div>${n?`<ul class="items">${[...s.items].sort((a,b) => RANK[a.st]-RANK[b.st]).map(task).join("")}</ul>`:""}</article>`;
+  return `<article class="st${s.outside?" outside":""}" data-n="${s.n}"><header><span class="num">${s.n}</span><div><h3>${esc(s.name)}</h3><div class="role">${esc(s.role)}</div></div>${count}</header>${bar}<div class="verdict">${esc(s.verdict)}</div>${n?`<ul class="items">${[...s.items].sort((a,b) => rank(a)-rank(b)).map(task).join("")}</ul>`:""}</article>`;
 }).join("");
 
 // Possibly missing
