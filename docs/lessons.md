@@ -201,6 +201,19 @@ Rules for adding to it:
   answers in v3; or whether identical calls are cached (its own
   self-consistency recipe adds a throwaway `uid` field to each repeat).
 
+### A yes/no "does the article report X" answers whether X is mentioned, not whether it is the news
+`harness` · `measured` · *FB 2026-09-27*
+- **Evidence:** axes v4 on 300 golden articles: "Does the article report the
+  outcome of a fight of his?" said yes on 224, the fact choice (which asks
+  for the main news) said result on 88; 57 got a strong yes with another
+  fact as their news (#203, #1031). Health: 97 vs 28. Topuria's June loss
+  and recovery are background in most of his articles.
+- **Does not say:** that yes/no questions are unreliable — they were the
+  steadiest answers in the run (0–3 changes in 300 on a repeat). The
+  wording decides what they measure.
+- **Would overturn:** the same question with `false` defined as "recalled as
+  background" still firing on background mentions.
+
 ### Answers at confidence ≥ 0.6 are stable; below 0.4 they are near coin flips
 `harness` · `measured` · *FB 2026-09-17*
 - **Evidence:** across a rerun and a full reversal of every option list, 1,039

@@ -1,6 +1,6 @@
 # Axes v4 — the classifier questions rebuilt on JEV's documented capabilities
 
-**Status:** drafted 2026-09-27, reviewed with Anton, **not yet run**.
+**Status:** run 2026-09-27 on `jev-1.13.0`, four passes, 0 errors in 1,200 calls, about 5 cents a pass. Findings below.
 The questions exactly as sent: [`classifier-v4/questions.json`](classifier-v4/questions.json);
 rendered for reading: [`questions-review.html`](questions-review.html)
 (`python3 review.py questions-review.html` rebuilds it).
@@ -82,3 +82,63 @@ One call on one article to check JEV accepts the structured options and the
 score and yes/no types; then four passes of all 300 (three option orders
 for the choices, pass 4 an identical repeat for the noise floor), about
 $0.06 a pass at $0.042 per million input tokens.
+
+## What came out (article level, 300)
+
+`python3 consolidate.py` → `golden/answers/classifier-v4.json` and
+`measures.json`. A choice is the majority of three option orders; a score
+is the mean of three positions; a yes/no is the mean of three
+probabilities. Machine answers, not labels.
+
+| question | type | passes 1–3 differ | identical repeat changed |
+|---|---|---|---|
+| centrality | score | 12 | 9 |
+| source | choice | 37 | 6 |
+| act | choice | 32 | 8 |
+| fact | choice | 43 | 9 |
+| firmness | score | 32 | 24 |
+| reports his result | yes / no | 3 | 3 |
+| reports his next fight | yes / no | 3 | 2 |
+| reports his health | yes / no | 1 | 0 |
+| he speaks | yes / no | 6 | 1 |
+
+- **Stability is at v3's level, and the yes/no questions are the steadiest
+  answers yet** (0–3 changes in 300). The choices move with option order as
+  much as in v3 (source 37 vs 34, fact 43 vs 41).
+- **Firmness moves less than its 24 suggests.** The position shifts by 0.06
+  on average between identical repeats (2 articles by more than 0.5); the
+  24 are positions near a halfway point rounding to a different level.
+  Compare positions, not rounded levels.
+- **Centrality carries v3's gate almost exactly.** v3 "about him" → main
+  subject 160 of 161; "partly" → one of several 44 of 44; "not about him"
+  → not in the content 8, only mentioned 55, one of several 31, main 1.
+  The 31 are where the two versions differ, and the place to look first.
+- **#683 now separates as designed:** centrality 1.01 (only mentioned),
+  fact *result*, firmness 3.99 (official or done). Low centrality with
+  firm news is the case a computed aboutness has to catch.
+- **The result and health yes/no questions answer "is it mentioned", not
+  "is it the news".** Result says yes on 224 of 300, health on 97; 57
+  articles get a strong result-yes with another fact as their news
+  (#203, Donchenko on where his bonus goes, 0.99; #1031, Dana White says
+  Topuria is ready, 0.98). Topuria's June loss and recovery are background
+  in most of his articles, and the model reads "does the article report
+  the outcome of a fight of his" literally — the weak spot the docs name.
+  The fact choice, which asks for the main news, does not have the problem
+  (result 88). As asked, these two cannot feed aboutness.
+- **Fact now has next fight at 79 and no return value**; health 28,
+  career move 2.
+- **Source/act contradictions: 27 of 237** articles where he is at least
+  one of several subjects (v3: 23 of 205).
+- **He speaks (yes 194) and source = himself (88) are different
+  measures:** he is quoted in many articles whose news came from someone
+  else. 74 he-speaks answers sit between 0.3 and 0.7, the least sure of
+  the yes/no questions.
+
+## Next
+
+1. Anton rules on the yes/no wording for result and health: ask whether it
+   is *the news* (with `false` = recalled as background), or drop them and
+   let the fact choice carry it.
+2. Map version v4 (centrality × fact, firmness and the yes/no answers as
+   facets); the 31 "not about him → one of several" articles first.
+3. Anton's gate check (plan 4.9) on the v4 map.

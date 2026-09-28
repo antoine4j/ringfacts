@@ -1,0 +1,149 @@
+{
+ "centrality": {
+  "passes_1_3_differ": 12,
+  "repeat_changed": 9,
+  "usage": {
+   "0": 8,
+   "1": 55,
+   "2": 76,
+   "3": 161
+  },
+  "mean_spread": 0.028
+ },
+ "source": {
+  "passes_1_3_differ": 37,
+  "repeat_changed": 6,
+  "usage": {
+   "himself": 88,
+   "other_fighter": 65,
+   "media": 40,
+   "opponent_side": 38,
+   "no_one": 27,
+   "promotion": 19,
+   "his_manager": 12,
+   "his_team": 9,
+   "fans": 2
+  }
+ },
+ "act": {
+  "passes_1_3_differ": 32,
+  "repeat_changed": 8,
+  "usage": {
+   "speaks_of_himself": 65,
+   "reports_an_event": 56,
+   "assesses_him": 50,
+   "gives_news_of_him": 36,
+   "steers_him": 30,
+   "predicts_his_fight": 23,
+   "none_of_these": 15,
+   "calls_him_out": 15,
+   "answers_for_him": 10
+  }
+ },
+ "fact": {
+  "passes_1_3_differ": 43,
+  "repeat_changed": 9,
+  "usage": {
+   "result": 88,
+   "no_fact": 82,
+   "next_fight": 79,
+   "health": 28,
+   "personal_life": 16,
+   "fight_week_event": 5,
+   "career_move": 2
+  }
+ },
+ "firmness": {
+  "passes_1_3_differ": 32,
+  "repeat_changed": 24,
+  "usage": {
+   "0": 4,
+   "1": 49,
+   "2": 73,
+   "3": 84,
+   "4": 90
+  },
+  "mean_spread": 0.084
+ },
+ "reports_his_result": {
+  "passes_1_3_differ": 3,
+  "repeat_changed": 3,
+  "yes": 224,
+  "unsure_0.3_0.7": 36
+ },
+ "reports_his_next_fight": {
+  "passes_1_3_differ": 3,
+  "repeat_changed": 2,
+  "yes": 122,
+  "unsure_0.3_0.7": 57
+ },
+ "reports_his_health": {
+  "passes_1_3_differ": 1,
+  "repeat_changed": 0,
+  "yes": 97,
+  "unsure_0.3_0.7": 23
+ },
+ "he_speaks": {
+  "passes_1_3_differ": 6,
+  "repeat_changed": 1,
+  "yes": 194,
+  "unsure_0.3_0.7": 74
+ },
+ "cross_checks": {
+  "result": {
+   "fact_says_it_yes_no_denies": [
+    "65",
+    "187",
+    "861"
+   ],
+   "yes_no_says_it_fact_is_other": 139
+  },
+  "next_fight": {
+   "fact_says_it_yes_no_denies": [
+    "3",
+    "838",
+    "879",
+    "901"
+   ],
+   "yes_no_says_it_fact_is_other": 47
+  },
+  "health": {
+   "fact_says_it_yes_no_denies": [
+    "710"
+   ],
+   "yes_no_says_it_fact_is_other": 70
+  },
+  "source_act_contradictions": [
+   "18",
+   "233",
+   "305",
+   "342",
+   "490",
+   "508",
+   "529",
+   "532",
+   "594",
+   "608",
+   "686",
+   "714",
+   "732",
+   "747",
+   "758",
+   "773",
+   "776",
+   "779",
+   "785",
+   "790",
+   "817",
+   "823",
+   "829",
+   "896",
+   "933",
+   "934",
+   "1045"
+  ],
+  "articles_central": 237,
+  "he_speaks_but_source_not_himself": 128,
+  "source_himself_but_he_does_not_speak": 22
+ }
+}
