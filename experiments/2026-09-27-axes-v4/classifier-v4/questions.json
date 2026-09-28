@@ -1,0 +1,247 @@
+{
+ "about_him": {
+  "type": "score",
+  "instructions": "How much is this article about the watched fighter? Judge by the main news the article is built on - what the headline and the article as a whole are about - not by what its first sentences say. A single line counts when it carries news about him, such as his result on a card results page.",
+  "criteria": [
+   {
+    "summary": "He is not in the article's content at all.",
+    "signals": [
+     "his name appears only in links, navigation, a sidebar or 'read also'"
+    ]
+   },
+   {
+    "summary": "He is only mentioned: nothing new is said about him.",
+    "signals": [
+     "his past fight retold as background in someone else's story",
+     "his name in a list, ranking or comparison with nothing new in his entry",
+     "he talks about another fighter or the sport, not about himself, even at length"
+    ]
+   },
+   {
+    "summary": "He is one of the subjects, or his entry carries news about him.",
+    "signals": [
+     "a preview or feature on a fight of his covering both fighters",
+     "his line on a card, results list or roundup gives his result, booking or weigh-in",
+     "another fighter's own news that the article ties to a fight between the two of them"
+    ]
+   },
+   {
+    "summary": "The article's main news is about him.",
+    "signals": [
+     "something he did, or said about himself or his own career",
+     "something someone said, reported or predicted about him"
+    ]
+   }
+  ]
+ },
+ "source": {
+  "type": "choice",
+  "instructions": "Whose words or act is the new thing this article carries about the watched fighter? The person it ORIGINATED with - never the outlet, website or account that relayed it. If a journalist or podcaster passes on what someone else said, the source is that someone. If several, the one the article's main news is built on. 'His' means the WATCHED fighter's.",
+  "criteria": {
+   "himself": {
+    "what": "The watched fighter speaks, posts or writes."
+   },
+   "his_team": {
+    "what": "People who work on his fighting: his coaches, trainers, conditioning staff, sparring partners, physio, doctor.",
+    "not_for": "his manager or agent"
+   },
+   "his_manager": {
+    "what": "His manager, agent or business representative."
+   },
+   "opponent_side": {
+    "what": "A fighter he is booked against or publicly linked to a fight with, or that fighter's coach or manager.",
+    "not_for": "a fighter who merely names him or calls him out without a fight between them being discussed",
+    "examples": [
+     "the champion he lost to, talking about their rematch",
+     "his next opponent's coach at the pre-fight press conference"
+    ]
+   },
+   "promotion": {
+    "what": "The promotion and its officials (the UFC, its president, matchmakers, official channels), athletic commissions, official records."
+   },
+   "other_fighter": {
+    "what": "Any other fighter not booked or linked with him, however famous, including champions of other divisions, friends and teammates."
+   },
+   "media": {
+    "what": "A journalist, pundit, podcaster or analyst in their own voice, or the outlet's own writer; also a leak or report with no named person behind it.",
+    "examples": [
+     "a podcaster saying the promotion is discussing his rematch",
+     "a columnist's view of his chances"
+    ]
+   },
+   "fans": {
+    "what": "Fan reaction, social media crowds, comment sections."
+   },
+   "no_one": {
+    "what": "Nobody's words are the news: an event is reported as fact and nobody is quoted or credited with announcing it.",
+    "examples": [
+     "a results page listing his win",
+     "a weigh-in report"
+    ]
+   },
+   "none_of_these": {
+    "what": "None of the options above describes this article; a different answer is needed."
+   }
+  }
+ },
+ "source_fit": {
+  "type": "choice",
+  "instructions": "A question about the options, not about the answer. For whose words or act the news is, the possible answers are: himself, his team, his manager, opponent side, promotion, other fighter, media, fans, no one. Does one of them fit this article?",
+  "criteria": {
+   "fits_well": "One of these answers describes this article accurately.",
+   "fits_loosely": "The closest answer is only partly right: something about this article is not captured by any of them.",
+   "none_fits": "None of these answers describes this article: a different answer is needed."
+  }
+ },
+ "act": {
+  "type": "choice",
+  "instructions": "What does the source do regarding the watched fighter? Pick the one the article's main news is built on.",
+  "criteria": {
+   "reports_an_event": {
+    "what": "Nobody's words are the news: something happened - he fought, weighed in, faced off, was booked, a fight of his was announced or cancelled."
+   },
+   "speaks_of_himself": {
+    "what": "He himself talks about his own situation, plans, past, condition, fight or life.",
+    "not_for": "a reply by him to an attack aimed at him (that is answers_for_him)",
+    "examples": [
+     "how he rates himself",
+     "his own forecast for his fight",
+     "what he wants next"
+    ]
+   },
+   "assesses_him": {
+    "what": "Someone other than him judges him: his level, chances, performance, condition, style, place in the division.",
+    "not_for": "him judging himself"
+   },
+   "predicts_his_fight": {
+    "what": "Someone other than him gives a pick or forecast for a specific fight of his: who wins, how, in which round.",
+    "not_for": "his own forecast"
+   },
+   "calls_him_out": {
+    "what": "Someone other than him asks to fight him, challenges him, or trash-talks him."
+   },
+   "answers_for_him": {
+    "what": "A reply to an attack, a callout or a claim aimed at him - made on his behalf by someone else, or by him."
+   },
+   "steers_him": {
+    "what": "Someone other than him says what he should do next: whom he should fight, whether a rematch should happen, when to return, which weight class - including demands made on his behalf.",
+    "not_for": "what he himself says he wants next"
+   },
+   "gives_news_of_him": {
+    "what": "Someone other than him gives a factual update about him: his condition, recovery, training, whereabouts, mood or plans.",
+    "not_for": "a judgement of how good he is (that is assesses_him)"
+   },
+   "none_of_these": {
+    "what": "None of the options above describes this article; a different answer is needed."
+   }
+  }
+ },
+ "act_fit": {
+  "type": "choice",
+  "instructions": "A question about the options, not about the answer. For what the source does regarding him, the possible answers are: reports an event, speaks of himself, assesses him, predicts his fight, calls him out, answers for him, steers him, gives news of him. Does one of them fit this article?",
+  "criteria": {
+   "fits_well": "One of these answers describes this article accurately.",
+   "fits_loosely": "The closest answer is only partly right: something about this article is not captured by any of them.",
+   "none_fits": "None of these answers describes this article: a different answer is needed."
+  }
+ },
+ "fact": {
+  "type": "choice",
+  "instructions": "What new FACT about the watched fighter does the article carry, if any? A fact is something that happened or is set to happen, not an opinion about him. Choose by the article's main news. An interview, a press conference or a media day is a place where things are said, not a fact: if something said there is the news, choose that fact, or none if it is only talk.",
+  "criteria": {
+   "booking": {
+    "what": "A fight of his being set, offered, negotiated, discussed as likely, or cancelled."
+   },
+   "result": {
+    "what": "The outcome of a fight of his."
+   },
+   "fight_week_event": {
+    "what": "The routine of a fight of his, and nothing more: a weigh-in, a face-off, an open workout, the card order, start times, how to watch."
+   },
+   "health": {
+    "what": "An injury, a medical issue, surgery or recovery."
+   },
+   "return_date": {
+    "what": "When he will fight again or be available: a return date or a timeline."
+   },
+   "career_move": {
+    "what": "Retirement, a contract, a move of weight class or team, a title vacated, stripped or awarded."
+   },
+   "personal_life": {
+    "what": "His life outside the cage: family, childhood, home, hobbies, money, a life lesson."
+   },
+   "no_fact": {
+    "what": "Only opinion or talk: no new fact about him."
+   },
+   "none_of_these": {
+    "what": "None of the options above describes this article; a different answer is needed."
+   }
+  }
+ },
+ "fact_fit": {
+  "type": "choice",
+  "instructions": "A question about the options, not about the answer. For what new fact about him the article carries, the possible answers are: booking, result, fight week event, health, return date, career move, personal life, no fact. Does one of them fit this article?",
+  "criteria": {
+   "fits_well": "One of these answers describes this article accurately.",
+   "fits_loosely": "The closest answer is only partly right: something about this article is not captured by any of them.",
+   "none_fits": "None of these answers describes this article: a different answer is needed."
+  }
+ },
+ "firmness": {
+  "type": "score",
+  "instructions": "How established is the main fact this article asserts about the watched fighter, whatever kind of fact it is?",
+  "criteria": [
+   {
+    "summary": "No fact about him is asserted: only opinion, analysis or talk."
+   },
+   {
+    "summary": "A wish or a demand: someone wants it or says it should happen.",
+    "signals": [
+     "a fighter asking for the fight",
+     "his camp demanding a rematch"
+    ]
+   },
+   {
+    "summary": "A rumour: unnamed sources, a leak, 'talks', 'discussions', 'plans'.",
+    "signals": [
+     "a podcaster says the promotion is discussing it",
+     "'sources say'"
+    ]
+   },
+   {
+    "summary": "Reported: a named outlet or journalist states it, citing sources.",
+    "signals": [
+     "'ESPN reports that...'"
+    ]
+   },
+   {
+    "summary": "Official or done: the promotion or he himself states it, or it has happened.",
+    "signals": [
+     "the promotion announces the bout",
+     "he posts that he signed",
+     "a fight result"
+    ]
+   }
+  ]
+ },
+ "reports_his_result": {
+  "type": "noul",
+  "instructions": "Does the article report the outcome of a fight of his?"
+ },
+ "reports_his_booking": {
+  "type": "noul",
+  "instructions": "Does the article report that a fight of his is set, offered, negotiated or cancelled?"
+ },
+ "reports_his_health": {
+  "type": "noul",
+  "instructions": "Does the article report an injury, a medical issue or a recovery of his?"
+ },
+ "reports_his_return": {
+  "type": "noul",
+  "instructions": "Does the article say when he will fight again or be available?"
+ },
+ "he_speaks": {
+  "type": "noul",
+  "instructions": "Is he himself quoted, or does he post or write, in this article?"
+ }
+}
