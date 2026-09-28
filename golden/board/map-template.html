@@ -97,6 +97,7 @@ ul.arts{list-style:none;margin:6px 0 10px 0;padding:0 0 0 12px;border-left:2px s
 .art .x{font-size:14px;margin:2px 0;padding:4px 8px;background:var(--ground);border-radius:6px}
 .art .a{display:flex;flex-wrap:wrap;gap:4px 10px;font-size:12px}
 .art .a span{white-space:nowrap}
+.art .a .who{font-weight:600;color:var(--ink);min-width:5.5em}
 .agree3{color:var(--ok)}.agree2,.agree1{color:var(--warn);font-weight:600}
 details.defs{font-size:13px;color:var(--dim)}
 details.defs dl{display:grid;grid-template-columns:minmax(9em,auto) 1fr;gap:4px 12px;margin:8px 0}
@@ -261,8 +262,8 @@ function article(r){
   const val = (dim) => { const g = r.agree[dim]; return `<span>${esc(LABEL[dim])}: <b class="${g?"agree"+g:""}" ${g?`title="${g} of 3 readers"`:""}>${esc(human(r.v[dim]))}</b>${g && g<3 ? ` (${g}/3)` : ""}</span>`; };
   return `<li class="art"><div class="t"><span class="key">#${r.id} · ${r.date} · ${esc(r.source)}</span><br><a href="${esc(r.url)}" target="_blank" rel="noopener">${esc(r.title)}</a></div>
     <div class="x">${esc(r.extract || "(no extract)")}</div>
-    <div class="a"><span>extractor: actor <b>${esc(r.actor||"—")}</b>${r.occasion?` · where <b>${esc(r.occasion)}</b>`:""}</span></div>
-    <div class="a">${DIMS.filter(d => d.key !== "fighter").map(d => val(d.key)).join("")}</div>
+    <div class="a"><span class="who">Classifier</span>${DIMS.filter(d => !["fighter","extract_kind"].includes(d.key)).map(d => val(d.key)).join("")}</div>
+    <div class="a"><span class="who">Extractor</span><span>kind: <b>${esc(human(r.v.extract_kind))}</b></span><span>actor: <b>${esc(r.actor||"—")}</b></span>${r.occasion?`<span>where: <b>${esc(r.occasion)}</b></span>`:""}</div>
     <div class="a">${DATA.flags.filter(f => r.flags[f]).map(f => `<span class="chip warn">${esc(ALL.flag_labels[f])}</span>`).join("")}</div></li>`;
 }
 
