@@ -5,8 +5,16 @@
   "criteria": {
    "about_him": "He is the subject, or the one being talked about: the new information in this article is about him - something he did or said, or something someone said, reported or predicted about him.",
    "partly_about_him": "He is one of several subjects and gets real content: a preview or feature on his bout that covers both fighters. Also: his opponent's own news that bears on a fight between them (the opponent's injury, the opponent's plans about their rematch).",
-   "not_about_him": "The news is someone else's. He is named in passing, as background (his past fight retold in another story), as one entry in a card, ranking or list, or only in links or navigation. Him talking about another fighter or the sport, not about himself, is also not about him.",
-   "not_in_this_list": "None of the above fits. Choose this only when a fitting answer exists but is not in this list - not when you are merely unsure."
+   "not_about_him": "The news is someone else's. He is named in passing, as background (his past fight retold in another story), as one entry in a card, ranking or list, or only in links or navigation. Him talking about another fighter or the sport, not about himself, is also not about him."
+  }
+ },
+ "gate_fit": {
+  "type": "choice",
+  "instructions": "A question about the options, not about the answer. For whether the article is about him, the possible answers are: about him, partly about him, not about him. Does one of them fit this article?",
+  "criteria": {
+   "fits_well": "One of these answers describes this article accurately.",
+   "fits_loosely": "The closest answer is only partly right: something about this article is not captured by any of them.",
+   "none_fits": "None of these answers describes this article: a different answer is needed."
   }
  },
  "source": {
@@ -21,9 +29,16 @@
    "other_fighter": "Any other fighter not booked or linked with him, however famous - including champions of other divisions, friends and teammates.",
    "media": "A journalist, pundit, podcaster or analyst in their own voice, or the outlet's own writer; also a leak or report with no named person behind it.",
    "fans": "Fan reaction, social media crowds, comment sections.",
-   "no_one": "Nobody's words are the news: an event is reported as fact (a fight result, a weigh-in) and nobody is quoted or credited with announcing it.",
-   "does_not_apply": "Use only when the article is not about him at all.",
-   "not_in_this_list": "None of the above fits. Choose this only when a fitting answer exists but is not in this list - not when you are merely unsure."
+   "no_one": "Nobody's words are the news: an event is reported as fact (a fight result, a weigh-in) and nobody is quoted or credited with announcing it."
+  }
+ },
+ "source_fit": {
+  "type": "choice",
+  "instructions": "A question about the options, not about the answer. For whose words or act the news is, the possible answers are: himself, his team, his manager, opponent side, promotion, other fighter, media, fans, no one. Does one of them fit this article?",
+  "criteria": {
+   "fits_well": "One of these answers describes this article accurately.",
+   "fits_loosely": "The closest answer is only partly right: something about this article is not captured by any of them.",
+   "none_fits": "None of these answers describes this article: a different answer is needed."
   }
  },
  "act": {
@@ -37,9 +52,16 @@
    "calls_him_out": "Someone asks to fight him, challenges him, or trash-talks him.",
    "answers_for_him": "A reply to an attack, a callout or a claim aimed at him - made on his behalf by someone else, or by him.",
    "steers_him": "Someone says what he should do next: whom he should fight, whether a rematch should happen, when to return, which weight class - including demands made on his behalf.",
-   "gives_news_of_him": "Someone other than him gives a factual update about him: his condition, recovery, training, whereabouts, mood or plans.",
-   "does_not_apply": "Use only when the article is not about him at all.",
-   "not_in_this_list": "None of the above fits. Choose this only when a fitting answer exists but is not in this list - not when you are merely unsure."
+   "gives_news_of_him": "Someone other than him gives a factual update about him: his condition, recovery, training, whereabouts, mood or plans."
+  }
+ },
+ "act_fit": {
+  "type": "choice",
+  "instructions": "A question about the options, not about the answer. For what the source does regarding him, the possible answers are: reports an event, speaks of himself, assesses him, predicts his fight, calls him out, answers for him, steers him, gives news of him. Does one of them fit this article?",
+  "criteria": {
+   "fits_well": "One of these answers describes this article accurately.",
+   "fits_loosely": "The closest answer is only partly right: something about this article is not captured by any of them.",
+   "none_fits": "None of these answers describes this article: a different answer is needed."
   }
  },
  "fact": {
@@ -53,9 +75,16 @@
    "return": "When he will fight again or be available: a return date or a timeline.",
    "career_move": "Retirement, a contract, a move of weight class or team, a title vacated, stripped or awarded.",
    "personal_life": "His life outside the cage: family, childhood, home, hobbies, money, a life lesson.",
-   "none": "Only opinion or talk: no new fact about him.",
-   "does_not_apply": "Use only when the article is not about him at all.",
-   "not_in_this_list": "None of the above fits. Choose this only when a fitting answer exists but is not in this list - not when you are merely unsure."
+   "none": "Only opinion or talk: no new fact about him."
+  }
+ },
+ "fact_fit": {
+  "type": "choice",
+  "instructions": "A question about the options, not about the answer. For what new fact about him the article carries, the possible answers are: booking, result, fight week event, health, return, career move, personal life, none. Does one of them fit this article?",
+  "criteria": {
+   "fits_well": "One of these answers describes this article accurately.",
+   "fits_loosely": "The closest answer is only partly right: something about this article is not captured by any of them.",
+   "none_fits": "None of these answers describes this article: a different answer is needed."
   }
  },
  "firmness": {
@@ -65,8 +94,16 @@
    "official": "The promotion states it, or he himself (or his official account) states it.",
    "reported": "A named outlet or journalist reports it, citing sources.",
    "rumoured": "Unnamed sources, a leak, 'talks', 'discussions', 'plans', or another person's claim about what the promotion wants.",
-   "no_such_fact": "The article carries no booking, return or career move about him.",
-   "not_in_this_list": "None of the above fits. Choose this only when a fitting answer exists but is not in this list - not when you are merely unsure."
+   "no_such_fact": "The article carries no booking, return or career move about him."
+  }
+ },
+ "firmness_fit": {
+  "type": "choice",
+  "instructions": "A question about the options, not about the answer. For how firm the booking, return or career move is, the possible answers are: official, reported, rumoured, no such fact. Does one of them fit this article?",
+  "criteria": {
+   "fits_well": "One of these answers describes this article accurately.",
+   "fits_loosely": "The closest answer is only partly right: something about this article is not captured by any of them.",
+   "none_fits": "None of these answers describes this article: a different answer is needed."
   }
  }
 }

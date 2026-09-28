@@ -10,6 +10,7 @@ import json, html, sys, os
 HERE = os.path.dirname(os.path.abspath(__file__))
 TITLES = {"gate": "Gate: is it about him?", "source": "Source: whose words or act?",
           "act": "Act: what do they do regarding him?", "fact": "Fact asserted", "firmness": "How firm"}
+TITLES.update({k + "_fit": "…does one of those answers fit?" for k in list(TITLES)})
 
 
 def section(number, key, question):
