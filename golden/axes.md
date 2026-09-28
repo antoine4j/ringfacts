@@ -1,4 +1,8 @@
-# The axes — DRAFT for Anton's approval (2026-09-27)
+# The axes — approved for the first experiment (2026-09-27)
+
+**Status:** Anton approved this draft as the questions of classifier run v3
+(verdicts.md, 2026-09-27). It is a hypothesis until that run and his
+corrections on its map confirm each boundary.
 
 What a claim **is**, on four axes and one modifier. Labels record these,
 never what a reader wants; tiers come from a per-fighter settings table

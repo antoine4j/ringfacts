@@ -831,3 +831,17 @@ Anton, on each live page:
 Not about him, by what the page shows: #158, #316, #1161 (and #38 above).
 He is a table row (#134) or a passing mention (#230). About him: #655.
 #937's own article names him only in its headline.
+
+## 2026-09-27 — axes draft (golden/axes.md): approved for the first experiment
+
+Anton, on the draft's four axes, one modifier and seven proposed
+boundaries (the opponent's own news bearing on his fight is "partly";
+manager apart from his team; a champion who is also his opponent is
+"opponent side"; Makhachev and friends like Merab are "other fighter";
+a journalist's leak is "media" and "rumoured"; predictions are their own
+act; depth, novelty and place not labelled now): *"Okay I agree with your
+hypothesis for next experiment, go ahead I want to see what pans out."*
+
+Approved as the questions of the next classifier run, not as final
+rulings: the axes are revised where that run or his corrections show a
+boundary that the model or he cannot apply.

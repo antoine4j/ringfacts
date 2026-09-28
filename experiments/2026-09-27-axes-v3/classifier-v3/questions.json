@@ -1,0 +1,72 @@
+{
+ "gate": {
+  "type": "choice",
+  "instructions": "Is this article about the watched fighter? Judge by what the article is ABOUT - its lead, the news it is built on - not by whether his name appears or by its first sentence. Test: delete every sentence naming him; if the story still stands, it is not about him.",
+  "criteria": {
+   "about_him": "He is the subject, or the one being talked about: the new information in this article is about him - something he did or said, or something someone said, reported or predicted about him.",
+   "partly_about_him": "He is one of several subjects and gets real content: a preview or feature on his bout that covers both fighters. Also: his opponent's own news that bears on a fight between them (the opponent's injury, the opponent's plans about their rematch).",
+   "not_about_him": "The news is someone else's. He is named in passing, as background (his past fight retold in another story), as one entry in a card, ranking or list, or only in links or navigation. Him talking about another fighter or the sport, not about himself, is also not about him.",
+   "not_in_this_list": "None of the above fits. Choose this only when a fitting answer exists but is not in this list - not when you are merely unsure."
+  }
+ },
+ "source": {
+  "type": "choice",
+  "instructions": "Whose words or act is the new thing this article carries about the watched fighter? The person it ORIGINATED with - never the outlet, website or account that relayed it. If a journalist or podcaster passes on what someone else said, the source is that someone. If several, the one the lead is built on. 'His' means the WATCHED fighter's.",
+  "criteria": {
+   "himself": "The watched fighter speaks, posts or writes.",
+   "his_team": "People who work on his fighting: his coaches, trainers, conditioning staff, sparring partners, physio, doctor.",
+   "his_manager": "His manager, agent or business representative.",
+   "opponent_side": "A fighter he is booked against or publicly linked to a fight with - including the fighter who last beat him or whom he last beat, when a rematch is discussed - or that fighter's coach or manager. A champion who is also his opponent belongs here, not under promotion.",
+   "promotion": "The promotion and its officials (the UFC, Dana White, matchmakers, the promotion's official channels), athletic commissions, official records.",
+   "other_fighter": "Any other fighter not booked or linked with him, however famous - including champions of other divisions, friends and teammates.",
+   "media": "A journalist, pundit, podcaster or analyst in their own voice, or the outlet's own writer; also a leak or report with no named person behind it.",
+   "fans": "Fan reaction, social media crowds, comment sections.",
+   "no_one": "Nobody's words are the news: an event is reported as fact (a fight result, a weigh-in) and nobody is quoted or credited with announcing it.",
+   "does_not_apply": "Use only when the article is not about him at all.",
+   "not_in_this_list": "None of the above fits. Choose this only when a fitting answer exists but is not in this list - not when you are merely unsure."
+  }
+ },
+ "act": {
+  "type": "choice",
+  "instructions": "What does the source do regarding the watched fighter? Pick the one the article's lead is built on.",
+  "criteria": {
+   "reports_an_event": "Nobody's words are the news: something happened - he fought, weighed in, faced off, was booked, a fight of his was announced or cancelled.",
+   "speaks_of_himself": "He himself talks about his own situation, plans, past, condition, fight or life. Only when the source is himself.",
+   "assesses_him": "Someone judges him: his level, chances, performance, condition, style, place in the division.",
+   "predicts_his_fight": "A pick or forecast for a specific fight of his: who wins, how, in which round.",
+   "calls_him_out": "Someone asks to fight him, challenges him, or trash-talks him.",
+   "answers_for_him": "A reply to an attack, a callout or a claim aimed at him - made on his behalf by someone else, or by him.",
+   "steers_him": "Someone says what he should do next: whom he should fight, whether a rematch should happen, when to return, which weight class - including demands made on his behalf.",
+   "gives_news_of_him": "Someone other than him gives a factual update about him: his condition, recovery, training, whereabouts, mood or plans.",
+   "does_not_apply": "Use only when the article is not about him at all.",
+   "not_in_this_list": "None of the above fits. Choose this only when a fitting answer exists but is not in this list - not when you are merely unsure."
+  }
+ },
+ "fact": {
+  "type": "choice",
+  "instructions": "What new FACT about the watched fighter does the article carry, if any? A fact is something that happened or is set to happen, not an opinion about him. Pick the one the lead is built on.",
+  "criteria": {
+   "booking": "A fight of his being set, offered, negotiated, discussed as likely, or cancelled.",
+   "result": "The outcome of a fight of his.",
+   "fight_week_event": "A weigh-in, face-off, open workout, media day, press conference, card order, start times or how to watch - for a fight of his.",
+   "health": "An injury, a medical issue, surgery or recovery.",
+   "return": "When he will fight again or be available: a return date or a timeline.",
+   "career_move": "Retirement, a contract, a move of weight class or team, a title vacated, stripped or awarded.",
+   "personal_life": "His life outside the cage: family, childhood, home, hobbies, money, a life lesson.",
+   "none": "Only opinion or talk: no new fact about him.",
+   "does_not_apply": "Use only when the article is not about him at all.",
+   "not_in_this_list": "None of the above fits. Choose this only when a fitting answer exists but is not in this list - not when you are merely unsure."
+  }
+ },
+ "firmness": {
+  "type": "choice",
+  "instructions": "If the article carries a booking, a return date or a career move about the watched fighter: how firm is it? Otherwise answer no_such_fact.",
+  "criteria": {
+   "official": "The promotion states it, or he himself (or his official account) states it.",
+   "reported": "A named outlet or journalist reports it, citing sources.",
+   "rumoured": "Unnamed sources, a leak, 'talks', 'discussions', 'plans', or another person's claim about what the promotion wants.",
+   "no_such_fact": "The article carries no booking, return or career move about him.",
+   "not_in_this_list": "None of the above fits. Choose this only when a fitting answer exists but is not in this list - not when you are merely unsure."
+  }
+ }
+}
