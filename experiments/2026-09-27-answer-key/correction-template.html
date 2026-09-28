@@ -21,6 +21,8 @@ details.about>summary{cursor:pointer;font-weight:600;color:var(--accent)}
 details.about p,details.about ol{margin:8px 0;max-width:72ch}
 details.about li{margin:4px 0}
 .seg{flex-wrap:wrap}
+.stickybar{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--bg);border-bottom:1px solid var(--line);padding-block:8px;display:grid;gap:6px}
+.stickybar .seg button{padding:4px 9px;font-size:13px}
 .seg button .c{font-variant-numeric:tabular-nums;color:var(--dim);margin-left:4px}
 h1{font-size:24px;line-height:1.2;margin:0;text-wrap:balance}
 .lede{margin:0;color:var(--dim);max-width:68ch}
@@ -88,6 +90,8 @@ input.note{font:inherit;font-size:13px;border:1px solid var(--line);background:v
         <li>Where the readers and the classifier all agree: check the 15-article sample. If it is clean, the rest of that group can stand.</li>
       </ol>
     </details>
+  </header>
+  <div class="stickybar">
     <div class="bar">
       <div class="seg" role="group" aria-label="Show" id="filter">
         <button data-f="1" aria-pressed="true">1 · Key, readers differed</button>
@@ -102,7 +106,7 @@ input.note{font:inherit;font-size:13px;border:1px solid var(--line);background:v
       <button class="btn" id="copy">Copy my corrections as text</button>
     </div>
     <div class="banner" id="banner" hidden></div>
-  </header>
+  </div>
   <main id="list" class="wrap" style="padding:0"></main>
 </div>
 
