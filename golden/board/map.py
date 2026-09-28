@@ -38,8 +38,6 @@ V3_GATE = {"about_him": "yes", "partly_about_him": "partly", "not_about_him": "n
 # acts where the fighter is the doer but nobody is the source of words (v2), for the "himself" cross-check
 V2_EVENT_ACTS = {"he_fought", "his_fight_week", "nothing"}
 V3_HIMSELF_ACTS = {"speaks_of_himself", "answers_for_him"}
-V3_GATED = ("source", "act", "fact", "firmness")
-GATED_OUT = {"key": "gated_out", "def": "The gate says the article is not about him, so this answer is ignored."}
 
 VERSIONS = [
     {"key": "v3", "file": "answers/classifier-v3.json",
@@ -117,18 +115,13 @@ def article_row(version, article, answers, extract):
         flags["readers_split"] = agree["who"] < 3 or agree["what"] < 3
     else:
         values["gate"] = V3_GATE[values["gate"]]
-        # when the gate says "not about him", the other answers are forced guesses: shown as gated out
-        if values["gate"] == "no":
-            for key in V3_GATED:
-                values[key] = "gated_out"
         flags["gate_disagrees"] = (values["gate"] == "no") != (extract_kind in EXTRACT_SAYS_NO)
         speaker_is_him, comparable = values["source"] == "himself", bool(actor) and values["act"] != "reports_an_event"
         flags["readers_split"] = any(agree[k] < 3 for k in ("gate", "source", "act", "fact"))
-        about = values["gate"] != "no"
-        # the paired fit questions, and the rule that act depends on source
-        flags["fit_doubt"] = about and any(answers[q + "_fit"]["choice"] != "fits_well" for q in ("source", "act", "fact"))
-        flags["contradiction"] = about and ((values["act"] == "speaks_of_himself" and not speaker_is_him)
-                                            or (speaker_is_him and values["act"] not in V3_HIMSELF_ACTS))
+        # the paired fit questions, and the rule that act depends on source; the gate cuts nothing (verdicts.md, 2026-09-27)
+        flags["fit_doubt"] = any(answers[q + "_fit"]["choice"] != "fits_well" for q in ("source", "act", "fact"))
+        flags["contradiction"] = ((values["act"] == "speaks_of_himself" and not speaker_is_him)
+                                  or (speaker_is_him and values["act"] not in V3_HIMSELF_ACTS))
     flags["who_disagrees"] = comparable and actor_is_him != speaker_is_him
     extractor_no = extract_kind in EXTRACT_SAYS_NO
     classifier_no = (answers["role"]["choice"] in V2_GATE_NO_ROLES or answers["act"]["choice"] == "naming_him_in_passing"
@@ -137,7 +130,10 @@ def article_row(version, article, answers, extract):
     return {"id": str(article["id"]), "date": str(article["published_at"])[:10], "source": article["source"],
             "title": article["title"], "url": article.get("resolved_url") or article["url"],
             "extract": extract.get("claim"), "actor": actor, "occasion": extract.get("occasion"),
-            "v": values, "agree": agree, "flags": flags, "says_no": {"classifier": classifier_no, "extractor": extractor_no}}
+            "v": values, "agree": agree, "flags": flags, "says_no": {"classifier": classifier_no, "extractor": extractor_no},
+            "detail": {q: {"choice": a["choice"], "agree": a["agree"], "conf": a["conf"],
+                           "readers": [{o: round(p, 2) for o, p in r.items()} for r in a["readers"]]}
+                       for q, a in answers.items()}}
 
 
 def majority(rows, program):
@@ -197,11 +193,10 @@ def version_data(version, articles, extractor_file, claims):
                               [{"key": V3_GATE[k], "def": d} for k, d in questions["gate"]["options"].items()])
         else:
             values[key] = [{"key": k, "def": d} for k, d in questions[question]["options"].items()]
-            if version["key"] == "v3" and key in V3_GATED:
-                values[key].append(GATED_OUT)
     values["extract_kind"] = [{"key": k, "def": d} for k, d in extractor_file["kind_options"].items()]
     values["fighter"] = [{"key": f, "def": ""} for f in sorted({c["v"]["fighter"] for c in placed})]
     return {"key": version["key"], "stamp": f"{version['stamp']}  /  {EXTRACTOR_VERSION}",
+            "questions": {q: d.get("instructions", "") for q, d in questions.items()},
             "dims": [{"key": k, "label": l} for k, l in dims], "values": values, "claims": placed,
             "axes": version["axes"], "flags": [f for f in FLAG_LABELS if any(c["flags"].get(f) for c in placed)]}
 

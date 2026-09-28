@@ -845,3 +845,29 @@ hypothesis for next experiment, go ahead I want to see what pans out."*
 Approved as the questions of the next classifier run, not as final
 rulings: the axes are revised where that run or his corrections show a
 boundary that the model or he cannot apply.
+
+## 2026-09-27 — gate label, claim-073.3 (#683, with #714, #737): not "not about him"
+
+Anton, reviewing the v3 claim map: *"I think it's an issue #683 classifier
+saying not about him"*.
+
+#683 is MMA Fighting's full UFC Paris results page; Donchenko's entry is one
+line, "Daniil Donchenko def. Punahele Soriano via unanimous decision (30-27
+x2, 29-28)". The classifier (v3, all three readers) answered "not about him";
+the extractor wrote his result as a new event. The classifier followed the
+question as written, which put "one entry in a card, ranking or list" under
+"not about him" whatever the entry says. His result is a career event (goal
+G1), however short the entry.
+
+## 2026-09-27 — design: "about him" is a signal, not a blade
+
+Anton, after #683 (his result, one line on a card results page, answered
+"not about him"): *"this about him or not about him ... it's like a blade
+that cuts a big potentially useful articles it shouldn't be a blade yes or
+no we should judge whether article moves forward on the pipeline probably
+from from multiple flags or from some kind of percentages. But there
+shouldn't be one blade that cuts unanimously cuts articles away."*
+
+So the gate's answer is kept as a probability beside every other answer,
+nothing is discarded because of it, and whether an article moves on is
+decided downstream from several signals together.

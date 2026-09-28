@@ -105,6 +105,21 @@ ul.arts{list-style:none;margin:8px 0 12px 14px;padding:0;display:grid;gap:8px}
 .prog .ph{font-size:11px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--dim)}
 .prog .ph .hint{text-transform:none;letter-spacing:0;font-weight:400}
 .prog .x{font-size:14px;margin:0}
+details.prog>summary{list-style:none;cursor:pointer;display:grid;gap:3px}
+details.prog>summary::-webkit-details-marker{display:none}
+details.prog[open]>summary .ph{color:var(--accent)}
+.detail{display:grid;grid-template-columns:repeat(auto-fill,minmax(330px,1fr));gap:10px 16px;margin-top:6px;padding-top:6px;border-top:1px dashed var(--line)}
+.detail .q.fit{opacity:.85}
+.detail .qh{font-size:12.5px;margin-bottom:2px}
+table.pt{border-collapse:collapse;width:100%;font-size:12px;font-variant-numeric:tabular-nums}
+table.pt th{font-weight:500;color:var(--dim);font-size:11px;padding:1px 4px}
+table.pt td{padding:1px 4px;border-top:1px solid var(--line)}
+table.pt td.opt{white-space:nowrap}
+table.pt td.num{text-align:right;width:3.2em}
+table.pt td.mean{font-weight:600}
+table.pt tr.chosen td{background:var(--accentbg);font-weight:600}
+table.pt td.barc{width:28%}
+table.pt .bar{display:block;height:6px;border-radius:3px;background:var(--accent);opacity:.7}
 .agree3{color:var(--ok)}.agree2,.agree1{color:var(--warn);font-weight:600}
 details.defs{font-size:13px;color:var(--dim)}
 details.defs dl{display:grid;grid-template-columns:minmax(9em,auto) 1fr;gap:4px 12px;margin:8px 0}
@@ -264,14 +279,31 @@ function drawGrid(){
   });
 }
 
+/** Every classifier question for one article: each option's probability from each of the three readers, and their mean.
+ * @param {object} r an article row @returns {string} html */
+function classifierDetail(r){
+  const READERS = ["original order","reversed","shuffled"];
+  return Object.keys(DATA.questions).filter(q => r.detail[q]).map(q => {
+    const d = r.detail[q], options = Object.keys(d.readers[0]);
+    const mean = o => d.readers.reduce((s,x) => s + (x[o]||0), 0) / d.readers.length;
+    const rows = options.sort((a,b) => mean(b)-mean(a)).map(o => {
+      const m = mean(o), pct = x => `${Math.round((x||0)*100)}%`;
+      return `<tr class="${o===d.choice?"chosen":""}"><td class="opt">${esc(human(o))}</td>${d.readers.map(x => `<td class="num">${pct(x[o])}</td>`).join("")}<td class="num mean">${pct(m)}</td><td class="barc"><span class="bar" style="width:${Math.round(m*100)}%"></span></td></tr>`;
+    }).join("");
+    return `<div class="q${q.endsWith("_fit")?" fit":""}"><div class="qh" title="${esc(DATA.questions[q])}"><b>${esc(human(q))}</b> → <b>${esc(human(d.choice))}</b> <span class="hint">${d.agree}/3 readers · confidence ${Math.round(d.conf*100)}%</span></div>
+      <table class="pt"><thead><tr><th></th>${READERS.map(x => `<th class="num">${x}</th>`).join("")}<th class="num">mean</th><th></th></tr></thead><tbody>${rows}</tbody></table></div>`;
+  }).join("");
+}
+
 /** One article inside an opened claim: its extract and every answer. @param {object} r @returns {string} html */
 function article(r){
   const val = (dim) => { const g = r.agree[dim]; return `<span>${esc(LABEL[dim])}: <b class="${g?"agree"+g:""}" ${g?`title="${g} of 3 readers"`:""}>${esc(human(r.v[dim]))}</b>${g && g<3 ? ` (${g}/3)` : ""}</span>`; };
   return `<li class="art"><div class="t"><span class="key">#${r.id} · ${r.date} · ${esc(r.source)}</span><br><a href="${esc(r.url)}" target="_blank" rel="noopener">${esc(r.title)}</a></div>
     <div class="prog ext"><div class="ph">Extractor</div><div class="x">${esc(r.extract || "(no extract)")}</div>
       <div class="a"><span>kind: <b>${esc(human(r.v.extract_kind))}</b></span><span>actor: <b>${esc(r.actor||"—")}</b></span>${r.occasion?`<span>where: <b>${esc(r.occasion)}</b></span>`:""}</div></div>
-    <div class="prog cls"><div class="ph">Classifier <span class="hint">· majority of three readers; (2/3) when one differed</span></div>
-      <div class="a">${DIMS.filter(d => !["fighter","extract_kind"].includes(d.key)).map(d => val(d.key)).join("")}</div></div>
+    <details class="prog cls"><summary><div class="ph">Classifier <span class="hint">· majority of three readers; (2/3) when one differed · click for every answer's percentages</span></div>
+      <div class="a">${DIMS.filter(d => !["fighter","extract_kind"].includes(d.key)).map(d => val(d.key)).join("")}</div></summary>
+      <div class="detail">${classifierDetail(r)}</div></details>
     ${DATA.flags.some(f => r.flags[f]) ? `<div class="a">${DATA.flags.filter(f => r.flags[f]).map(f => `<span class="chip warn">${esc(ALL.flag_labels[f])}</span>`).join("")}</div>` : ""}</li>`;
 }
 

@@ -30,7 +30,11 @@ scores with that in mind.
 | **partly** | he is one of several subjects and gets real content: a preview or feature on a fight of his covering both fighters | another fighter's own news counts only when the article itself ties it to a fight between the two, booked or already fought and being discussed; a fighter only rumoured or calling him out does not (Anton, 2026-09-27: no named storyline in the rule) |
 | **no** | he is named in passing, as background, in a list or only in links; the news is someone else's | "mentioned near him is not about him" (goals.md); him speaking about someone else is **no**, even at length (goals.md, 2026-09-04) |
 
-Claims at **no** take no value on the other axes.
+**The gate is a signal, not a blade** (Anton, 2026-09-27, after #683: his
+result, one line on a results page, answered "not about him"). Every axis
+is answered and kept whatever the gate says; the gate's probabilities sit
+beside them, and whether an article moves on is decided downstream from
+several signals together.
 
 ## Source: whose words or act is the new information?
 
