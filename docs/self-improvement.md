@@ -307,6 +307,15 @@ Plus [TODO.md](../TODO.md) for what comes next, and
 **Spend caps are Anton's.** Both $5/month caps stay where they are; a session
 never raises one.
 
+**A paid run goes one pass first, then stops** (Anton, 2026-09-27). Run a
+single pass, read its answers for anything implausible (a count far from
+what the labels or the last version suggest, a yes on most articles), and
+report before running the repeats. The repeats measure stability; they are
+worth paying for only once one pass has shown the questions measure the
+right thing. Axes v4 ran all four passes before anyone read pass 1, and pass
+1 alone already showed "reports his result" saying yes on 224 of 300
+against 88 results in the fact answer.
+
 ## 9. Stay in the project folder; build every step testable
 
 Two more boundaries from Anton, 2026-09-04.
