@@ -84,15 +84,6 @@
    }
   }
  },
- "source_fit": {
-  "type": "choice",
-  "instructions": "A question about the options, not about the answer. For whose words or act the news is, the possible answers are: himself, his team, his manager, opponent side, promotion, other fighter, media, fans, no one. Does one of them fit this article?",
-  "criteria": {
-   "fits_well": "One of these answers describes this article accurately.",
-   "fits_loosely": "The closest answer is only partly right: something about this article is not captured by any of them.",
-   "none_fits": "None of these answers describes this article: a different answer is needed."
-  }
- },
  "act": {
   "type": "choice",
   "instructions": "What does the source do regarding the watched fighter? Pick the one the article's main news is built on.",
@@ -136,15 +127,6 @@
    }
   }
  },
- "act_fit": {
-  "type": "choice",
-  "instructions": "A question about the options, not about the answer. For what the source does regarding him, the possible answers are: reports an event, speaks of himself, assesses him, predicts his fight, calls him out, answers for him, steers him, gives news of him. Does one of them fit this article?",
-  "criteria": {
-   "fits_well": "One of these answers describes this article accurately.",
-   "fits_loosely": "The closest answer is only partly right: something about this article is not captured by any of them.",
-   "none_fits": "None of these answers describes this article: a different answer is needed."
-  }
- },
  "fact": {
   "type": "choice",
   "instructions": "What new FACT about the watched fighter does the article carry, if any? A fact is something that happened or is set to happen, not an opinion about him. Choose by the article's main news. An interview, a press conference or a media day is a place where things are said, not a fact: if something said there is the news, choose that fact, or none if it is only talk.",
@@ -176,15 +158,6 @@
    "none_of_these": {
     "what": "None of the options above describes this article; a different answer is needed."
    }
-  }
- },
- "fact_fit": {
-  "type": "choice",
-  "instructions": "A question about the options, not about the answer. For what new fact about him the article carries, the possible answers are: booking, result, fight week event, health, return date, career move, personal life, no fact. Does one of them fit this article?",
-  "criteria": {
-   "fits_well": "One of these answers describes this article accurately.",
-   "fits_loosely": "The closest answer is only partly right: something about this article is not captured by any of them.",
-   "none_fits": "None of these answers describes this article: a different answer is needed."
   }
  },
  "firmness": {

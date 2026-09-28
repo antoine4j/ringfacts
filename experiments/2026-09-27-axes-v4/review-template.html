@@ -20,6 +20,6 @@ section ul{margin:4px 0 0;padding-left:18px;font-size:13px;color:var(--dim)}
 section.fit{opacity:.85}
 </style>
 <div class="wrap"><h1>Classifier v4 Questions</h1>
-<p class="lede">What the classifier will be asked about each of the 300 articles, word for word. New in v4, from JEV's documentation: three question types (choice, score, yes/no), options with "not for" and examples, the article sent as named fields (watched fighter, headline, outlet, date, text), and an in-list "none of these" beside the fit questions. Point at anything by number, for example "Q1 level 2". Nothing has been run yet.</p>
+<p class="lede">What the classifier will be asked about each of the 300 articles, word for word. New in v4, from JEV's documentation: three question types (choice, score, yes/no), options with "not for" and examples, the article sent as named fields (watched fighter, headline, outlet, date, text), and an in-list "none of these" in each choice question (the separate fit questions of v3 are gone: in isolation they saw only option names, not their definitions). Point at anything by number, for example "Q1 level 2". Nothing has been run yet.</p>
 <!--QUESTIONS-->
 <p class="lede">Runs planned: 4 passes of all 300 articles. Choice questions list their options in three orders across passes 1–3 (original, reversed, shuffled); score levels and yes/no questions stay as they are, so for them passes 1–3 are plain repeats. Pass 4 repeats pass 1 exactly: the noise floor. About $0.06 per pass ($0.042 per million input tokens, output free).</p></div>
