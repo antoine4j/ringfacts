@@ -167,6 +167,32 @@ Rules for adding to it:
 
 ## 2. JEV — the closed-set classifier (TypeSafe "systemone", `jev-latest`)
 
+### What the vendor documents, read 2026-09-27 (docs.typesafe.ai)
+`harness` · `documented` · *FB 2026-09-27*
+- **Three question types**, not one: `choice` (one of a set), `score`
+  (ordered levels, 2–10; returns a continuous position between levels plus
+  a probability per level) and `noul` (a yes/no question; returns the
+  probability of yes). Everything before 2026-09-27 used only `choice`.
+- **Every question is evaluated in isolation**, and every choice option
+  against the state on its own; a question never sees another's answer.
+- **Options and levels can be structured objects** — `what`, `not_for`,
+  `examples` for an option; `summary`, `signals` for a level; `true` /
+  `false` definitions for a noul — "when the model confuses neighbours".
+- **State is best sent as an object with named fields**, not one string.
+- **English is the primary language**; others are "handled but not
+  equally well". Most golden articles are Spanish, Ukrainian or Russian.
+- **Known weak spots of jev-1.13:** literal reading ("scoping words,
+  negations, and implied conditions are read at face value"), multi-hop
+  questions, contradictory criteria, and irrelevant context as distractor.
+- **The vendor recommends an in-list "other / none of the above" option**,
+  which the v3 run replaced with paired fit questions (lesson above: the
+  escape shows gaps in its probability, not by winning).
+- **Price:** $0.042 per million input tokens, output free — a 300-article
+  pass of ten questions (1.24 M input tokens) is about $0.05.
+- **Does not say:** anything about option order, which moved 4–14% of
+  answers in v3; or whether identical calls are cached (its own
+  self-consistency recipe adds a throwaway `uid` field to each repeat).
+
 ### Answers at confidence ≥ 0.6 are stable; below 0.4 they are near coin flips
 `harness` · `measured` · *FB 2026-09-17*
 - **Evidence:** across a rerun and a full reversal of every option list, 1,039
