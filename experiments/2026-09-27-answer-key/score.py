@@ -17,8 +17,8 @@ LEVEL_NAMES = {"centrality": ["not_in_content", "only_mentioned", "one_of_severa
                "firmness": ["none", "wish", "rumour", "reported", "official_or_done"],
                "firmness__four": ["wish", "rumour", "reported", "official_or_done"],
                "firmness__f5": ["wish", "rumour", "reported", "official_or_done"]}
-# an option a variant added for what the key calls by another name: act's "only mentions him" is the guide's "none of these" (he is only mentioned)
-ALIASES = {"act": {"only_mentions_him": "none_of_these"}}
+# a classifier option the key calls by another name: act's "only mentions him" is the guide's "none of these" (he is only mentioned); source's "other fighter" was widened to "other fighter's side" (2026-09-28)
+ALIASES = {"act": {"only_mentions_him": "none_of_these"}, "source": {"other_fighter": "other_fighter_side"}}
 
 
 def value_of(variant, answer):

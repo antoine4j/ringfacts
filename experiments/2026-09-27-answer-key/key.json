@@ -239,7 +239,7 @@
      "status": "agreed"
     },
     "source": {
-     "value": "other_fighter",
+     "value": "other_fighter_side",
      "status": "agreed"
     },
     "act": {
@@ -331,7 +331,7 @@
      "status": "agreed"
     },
     "source": {
-     "value": "other_fighter",
+     "value": "other_fighter_side",
      "status": "agreed"
     },
     "act": {
@@ -377,12 +377,12 @@
      "status": "agreed"
     },
     "source": {
-     "value": "other_fighter",
+     "value": "other_fighter_side",
      "status": "majority",
      "readers": [
-      "other_fighter",
+      "other_fighter_side",
       "opponent_side",
-      "other_fighter"
+      "other_fighter_side"
      ]
     },
     "act": {
@@ -428,12 +428,12 @@
      "status": "agreed"
     },
     "source": {
-     "value": "other_fighter",
+     "value": "other_fighter_side",
      "status": "majority",
      "readers": [
-      "other_fighter",
+      "other_fighter_side",
       "opponent_side",
-      "other_fighter"
+      "other_fighter_side"
      ]
     },
     "act": {
@@ -530,7 +530,7 @@
      "status": "agreed"
     },
     "source": {
-     "value": "other_fighter",
+     "value": "other_fighter_side",
      "status": "agreed"
     },
     "act": {
@@ -627,7 +627,7 @@
      "status": "agreed"
     },
     "source": {
-     "value": "other_fighter",
+     "value": "other_fighter_side",
      "status": "agreed"
     },
     "act": {
@@ -1051,8 +1051,9 @@
      "status": "agreed"
     },
     "source": {
-     "value": "none_of_these",
-     "status": "agreed"
+     "value": "other_fighter_side",
+     "status": "agreed",
+     "rechecked": true
     },
     "act": {
      "value": "none_of_these",
@@ -1086,7 +1087,8 @@
    "notes": {
     "A": "Long interview with manager Vladyslav Soroka about Ukrainian MMA, KSW, Yakymenko and who might reach the UFC; Amosov is one clause in the lead ('is in the UFC rankings'). Source none_of_these: the speaker is a manager of other fighters, not his; act none_of_these: nobody does anything regarding him.",
     "B": "Interview with manager Vladyslav Soroka about the Ukrainian MMA scene; Amosov is named once in the lead as being in the UFC rankings. Source: Soroka manages other fighters, not Amosov, so no listed value fits ('another fighter's manager' would). Act: nobody does anything regarding Amosov.",
-    "C": ""
+    "C": "",
+    "recheck": "A: Amosov is only named in the intro as a ranked UFC fighter, so the answer is for the main content: an interview with Vladyslav Soroka, whom the article names as manager of KSW champion Yakymenko and BFL fighters (and a helper to Donchenko), not Amosov's manager. B: Amosov gets one line of scene-setting and nothing new; the main content is an interview with Vladyslav Soroka, who the article says manages the KSW champion Yakymenko and BFL fighters and helps Donchenko, so he is another fighter's manager, not Amosov's, and not media (the outlet only asks the questions)."
    }
   },
   "323": {
@@ -1327,13 +1329,9 @@
      "status": "agreed"
     },
     "source": {
-     "value": null,
-     "status": "split",
-     "readers": [
-      "none_of_these",
-      "opponent_side",
-      "other_fighter"
-     ]
+     "value": "other_fighter_side",
+     "status": "agreed",
+     "rechecked": true
     },
     "act": {
      "value": "calls_him_out",
@@ -1367,7 +1365,8 @@
    "notes": {
     "A": "Ali Abdelaziz, manager of free agent Usman Nurmagomedov, wants Topuria as Usman's first UFC fight and says Usman would make him quit; Topuria is one of six names. Source none_of_these: another fighter's manager, with no fight to Topuria booked or linked beyond his own wish (opponent_side arguable). Centrality: a callout does not lift him to one_of_several by the guide, though he gets more lines than the others. Act: callout, but 'make him quit' is also a prediction.",
     "B": "Usman Nurmagomedov's manager Abdelaziz wants Topuria as Usman's UFC debut and says Usman would make him quit; the piece runs through Hooker, Pimblett, Oliveira, Holloway, Tsarukyan too. Centrality: the guide says a callout does not lift him to one_of_several, but he is the headline pick. Source: a manager of a fighter publicly asking for the fight; no booking exists, so opponent_side is a stretch and none_of_these ('another fighter's manager') is the alternative.",
-    "C": "The speaker is Ali Abdelaziz, manager of Usman Nurmagomedov, who wants Usman to fight Topuria first; Usman is an unsigned free agent and the only link is this callout, so not opponent_side. Unsure: no value names another fighter's manager; other_fighter (his camp) is closest, none_of_these or opponent_side are arguable."
+    "C": "The speaker is Ali Abdelaziz, manager of Usman Nurmagomedov, who wants Usman to fight Topuria first; Usman is an unsigned free agent and the only link is this callout, so not opponent_side. Unsure: no value names another fighter's manager; other_fighter (his camp) is closest, none_of_these or opponent_side are arguable.",
+    "recheck": "A: The words are Ali Abdelaziz's, whom the article names as Usman Nurmagomedov's manager; Nurmagomedov is a free agent not booked against Topuria, and the only link between them is Abdelaziz's own wish for that fight, so he is another fighter's manager rather than opponent side. B: The words are Ali Abdelaziz's, whom the article names as Usman Nurmagomedov's manager; Nurmagomedov is not booked against Topuria and the only link to a fight is this manager's own wish, so it is another fighter's manager rather than opponent side."
    }
   },
   "909": {
@@ -1378,7 +1377,7 @@
      "status": "agreed"
     },
     "source": {
-     "value": "other_fighter",
+     "value": "other_fighter_side",
      "status": "agreed"
     },
     "act": {
@@ -1424,7 +1423,7 @@
      "status": "agreed"
     },
     "source": {
-     "value": "other_fighter",
+     "value": "other_fighter_side",
      "status": "agreed"
     },
     "act": {
@@ -1521,7 +1520,7 @@
      "status": "agreed"
     },
     "source": {
-     "value": "other_fighter",
+     "value": "other_fighter_side",
      "status": "agreed"
     },
     "act": {
@@ -1567,7 +1566,7 @@
      "status": "agreed"
     },
     "source": {
-     "value": "other_fighter",
+     "value": "other_fighter_side",
      "status": "agreed"
     },
     "act": {
@@ -1664,7 +1663,7 @@
      ]
     },
     "source": {
-     "value": "other_fighter",
+     "value": "other_fighter_side",
      "status": "agreed"
     },
     "act": {
@@ -1710,7 +1709,7 @@
      "status": "agreed"
     },
     "source": {
-     "value": "other_fighter",
+     "value": "other_fighter_side",
      "status": "agreed"
     },
     "act": {
@@ -2731,7 +2730,7 @@
      "status": "agreed"
     },
     "source": {
-     "value": "other_fighter",
+     "value": "other_fighter_side",
      "status": "agreed"
     },
     "act": {

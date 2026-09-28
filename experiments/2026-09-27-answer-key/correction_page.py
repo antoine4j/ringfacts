@@ -11,7 +11,7 @@ corrections are saved in the artifact's database (collection
 `corrections`, one document per article) and read back with ArtifactData;
 a copy-as-text button is the fallback. No model calls.
 """
-import json, os, re
+import json, os, re, random
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 GOLDEN = os.path.join(HERE, "../../golden")
@@ -20,7 +20,7 @@ QUESTIONS = ["centrality", "source", "act", "fact", "firmness",
 LABELS = {"centrality": "How central", "source": "Source", "act": "Act", "fact": "Fact", "firmness": "How firm",
           "reports_his_result": "Reports his result", "reports_his_next_fight": "Reports his next fight",
           "reports_his_health": "Reports his health", "he_speaks": "He speaks"}
-YES_NO = {"yes": "yes", "no": "no"}
+SAMPLE, SAMPLE_SEED = 15, 20260928
 
 
 def definitions():
@@ -47,6 +47,7 @@ def classifier_value(question, answer):
     @returns: a key value
     """
     if question == "act" and answer["choice"] == "only_mentions_him": return "none_of_these"
+    if question == "source" and answer["choice"] == "other_fighter": return "other_fighter_side"
     if "yes" in answer: return "yes" if answer["yes"] > 0.5 else "no"
     return answer["choice"]
 
@@ -75,6 +76,13 @@ def main():
                      "split": split, "settled": settled, "differs": differs})
     rows.sort(key=lambda r: r["rank"])
     for r in rows: del r["rank"]
+    # the review order: the key first, then where anyone disagrees, then a sample of where everyone agrees
+    for r in rows:
+        key_article, ties = r["part"] != "not_key", r["settled"] > 0
+        r["step"] = (1 if key_article and ties else 2 if key_article else 3 if ties else 4 if r["differs"] else 5)
+    agreeing = sorted(r["id"] for r in rows if r["step"] == 5)
+    sample = set(random.Random(SAMPLE_SEED).sample(agreeing, min(SAMPLE, len(agreeing))))
+    for r in rows: r["sample"] = r["id"] in sample
     data = {"questions": QUESTIONS, "labels": LABELS, "defs": definitions(), "articles": rows}
     template = open(os.path.join(HERE, "correction-template.html")).read()
     open(os.path.join(HERE, "correction.html"), "w").write(template.replace("/*DATA*/null", json.dumps(data, ensure_ascii=False)))

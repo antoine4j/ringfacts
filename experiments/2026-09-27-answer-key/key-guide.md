@@ -43,7 +43,7 @@ carries nothing new about him, answer for its main content.
 | `his_manager` | his manager or agent |
 | `opponent_side` | a fighter booked against him or publicly linked to a fight with him, or that fighter's coach or manager. A champion who is also his last or next opponent is opponent side (e.g. Gaethje for Topuria): the relationship to him beats the title |
 | `promotion` | the UFC and its officials (Dana White, matchmakers), commissions, official records |
-| `other_fighter` | any other fighter, including champions of other divisions and friends or teammates, unless linked to a fight with him |
+| `other_fighter_side` | any other fighter not linked to a fight with him, or that fighter's coach, manager or team: champions of other divisions, friends and teammates included (Anton, 2026-09-28: another fighter's manager had no value) |
 | `media` | journalists, pundits, podcasters, analysts, commentators, the outlet's own writer. A journalist's leak is media |
 | `fans` | social media reaction, the crowd |
 | `no_one` | an event reported with nobody speaking: a result, a weigh-in, a booking announcement |

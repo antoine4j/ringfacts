@@ -15,7 +15,13 @@
   --accent:#63B5AA; --accentbg:#1D3330; --warn:#E0A052; --warnbg:#3A2A14; --ok:#6CC38A; --okbg:#18301F; --fix:#D39BE4; --fixbg:#35203C; color-scheme:dark}
 body{background:var(--bg);color:var(--ink);font:15px/1.5 var(--sans)}
 .wrap{max-width:1000px;margin:0 auto;padding-inline:16px;padding-block:0 60px;display:grid;gap:14px}
-header.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--bg);border-bottom:1px solid var(--line);padding-block:12px;display:grid;gap:8px}
+header.top{border-bottom:1px solid var(--line);padding-block:14px;display:grid;gap:10px}
+details.about{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:10px 14px;font-size:14.5px}
+details.about>summary{cursor:pointer;font-weight:600;color:var(--accent)}
+details.about p,details.about ol{margin:8px 0;max-width:72ch}
+details.about li{margin:4px 0}
+.seg{flex-wrap:wrap}
+.seg button .c{font-variant-numeric:tabular-nums;color:var(--dim);margin-left:4px}
 h1{font-size:24px;line-height:1.2;margin:0;text-wrap:balance}
 .lede{margin:0;color:var(--dim);max-width:68ch}
 .bar{display:flex;flex-wrap:wrap;gap:8px 16px;align-items:center}
@@ -67,13 +73,28 @@ input.note{font:inherit;font-size:13px;border:1px solid var(--line);background:v
 <div class="wrap">
   <header class="top">
     <h1>Answer Key Check</h1>
-    <p class="lede">All 300 golden articles, each with nine answers from two Fable readers who labelled them blind (an Opus reader settled where they differed). Mark only what is wrong: pick the right value, and say why if it helps. The 59 answer-key articles matter most, because every classifier score rests on them; start with the ones where the readers split or needed a tie-breaker.</p>
+    <p class="lede">All 300 golden articles, each with nine answers from two Fable readers. Mark only what is wrong: in the dropdown beside a wrong answer, pick the right value; a box for <b>why</b> appears next to it (optional). When an article is done, press <b>Mark article checked</b>. Everything saves as you go.</p>
+    <details class="about"><summary>How this page works, and where to start</summary>
+      <p><b>The answer key</b> is 59 of the 300 articles, picked to cover every answer value and the known traps. The classifier questions were tuned on 39 of them ("key · tune") and checked on the other 20 ("key · held back"), which were never looked at while changing questions. Every score in the report is measured on these 59, so they matter most.</p>
+      <p><b>The other 241</b> were labelled the same way afterwards and never used for tuning. They become the rest of the golden labels.</p>
+      <p><b>How an answer was reached:</b> two Fable readers labelled each article separately and blind. "Both readers" means they agreed. Where they differed, an Opus reader answered too: "2 of 3 readers" means two matched. <b>"Readers split"</b> means all three gave different answers, so there is no answer until you choose one.</p>
+      <p><b>"Classifier v6"</b> beside an answer means the classifier disagrees with the readers there: one of them is wrong, so those are the answers worth reading.</p>
+      <p><b>You don't need to read all 300.</b> Work down the numbered filters:</p>
+      <ol>
+        <li>Key articles where the readers differed: settle these first.</li>
+        <li>The rest of the key: read the answers the classifier disagrees with.</li>
+        <li>Other articles where the readers differed.</li>
+        <li>Other articles where only the classifier differs: read just the flagged answers.</li>
+        <li>Where the readers and the classifier all agree: check the 15-article sample. If it is clean, the rest of that group can stand.</li>
+      </ol>
+    </details>
     <div class="bar">
       <div class="seg" role="group" aria-label="Show" id="filter">
-        <button data-f="first" aria-pressed="true">Start here</button>
-        <button data-f="key" aria-pressed="false">Answer key (59)</button>
-        <button data-f="ties" aria-pressed="false">Readers differed</button>
-        <button data-f="differs" aria-pressed="false">Classifier differs</button>
+        <button data-f="1" aria-pressed="true">1 · Key, readers differed</button>
+        <button data-f="2" aria-pressed="false">2 · Key, the rest</button>
+        <button data-f="3" aria-pressed="false">3 · Others, readers differed</button>
+        <button data-f="4" aria-pressed="false">4 · Others, classifier differs</button>
+        <button data-f="5" aria-pressed="false">5 · All agree: sample</button>
         <button data-f="open" aria-pressed="false">Not checked yet</button>
         <button data-f="all" aria-pressed="false">All 300</button>
       </div>
@@ -87,7 +108,7 @@ input.note{font:inherit;font-size:13px;border:1px solid var(--line);background:v
 
 <script>
 const DATA = /*DATA*/null;
-const state = {filter: "first", corrections: {}, db: null};
+const state = {filter: "1", corrections: {}, db: null};
 const esc = s => String(s ?? "").replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
 const human = v => String(v ?? "").replace(/_/g, " ");
 const DEF = {}; for (const [q, list] of Object.entries(DATA.defs)) for (const [v, d] of list) DEF[q + ":" + v] = d;
@@ -97,10 +118,8 @@ const rec = id => state.corrections[id] || {reviewed: false, fixes: {}};
 
 /** Whether an article is shown under the current filter. @param {object} a @returns {boolean} */
 function shown(a){
-  if (state.filter === "first") return a.settled > 0 && a.part !== "not_key";
-  if (state.filter === "key") return a.part !== "not_key";
-  if (state.filter === "ties") return a.settled > 0;
-  if (state.filter === "differs") return a.differs > 0;
+  if (state.filter === "5") return a.step === 5 && a.sample;
+  if (/^[1-4]$/.test(state.filter)) return a.step === Number(state.filter);
   if (state.filter === "open") return !rec(a.id).reviewed;
   return true;
 }
@@ -109,7 +128,7 @@ function shown(a){
  * @param {object} a article @param {string} q question @returns {string} html */
 function questionRow(a, q){
   const k = a.answers[q], fix = rec(a.id).fixes[q];
-  const status = k.status === "agreed" ? "both readers" : k.status === "majority" ? `2 of 3 readers (${k.readers.map(human).join(" / ")})` : `readers split: ${k.readers.map(human).join(" / ")}`;
+  const status = k.rechecked ? (k.status === "agreed" ? "both readers (re-asked 28 Sept)" : `re-asked, readers split: ${k.readers.map(human).join(" / ")}`) : k.status === "agreed" ? "both readers" : k.status === "majority" ? `2 of 3 readers (${k.readers.map(human).join(" / ")})` : `readers split: ${k.readers.map(human).join(" / ")}`;
   const cls = k.value !== null && k.classifier !== k.value ? `<span class="cls">classifier v6: <code>${esc(human(k.classifier))}</code></span>` : "";
   const opts = DATA.defs[q].map(([v]) => `<option value="${esc(v)}" ${fix && fix.value === v ? "selected" : ""}>${esc(human(v))}</option>`).join("");
   return `<div class="q${fix ? " fixed" : ""}"><div class="ql">${esc(DATA.labels[q])}</div><div class="qv">
@@ -139,8 +158,19 @@ function card(a){
   </article>`;
 }
 
+/** Put each filter's article count on its button. */
+function labelFilters(){
+  const saved = state.filter;
+  document.querySelectorAll("#filter button").forEach(b => {
+    state.filter = b.dataset.f; const n = DATA.articles.filter(shown).length;
+    let c = b.querySelector(".c"); if (!c){ c = document.createElement("span"); c.className = "c"; b.append(c); } c.textContent = n;
+  });
+  state.filter = saved;
+}
+
 /** Redraw the list and the counts. */
 function draw(){
+  labelFilters();
   const list = DATA.articles.filter(shown);
   document.getElementById("list").innerHTML = list.length ? list.map(card).join("") : `<p class="lede">Nothing here under this filter.</p>`;
   const checked = DATA.articles.filter(a => rec(a.id).reviewed).length;

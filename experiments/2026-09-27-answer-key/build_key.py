@@ -15,6 +15,8 @@ import json, os, glob, sys
 HERE = os.path.dirname(os.path.abspath(__file__))
 QUESTIONS = ["centrality", "source", "act", "fact", "firmness",
              "reports_his_result", "reports_his_next_fight", "reports_his_health", "he_speaks"]
+# values renamed after the readers ran: "other fighter" widened to his whole camp (verdicts.md, 2026-09-28)
+RENAMED = {"source": {"other_fighter": "other_fighter_side"}}
 
 
 def read(reader, folder):
@@ -26,8 +28,31 @@ def read(reader, folder):
     """
     out = {}
     for path in sorted(glob.glob(os.path.join(HERE, f"{folder}/{reader}-*.json"))):
-        for entry in json.load(open(path)): out[str(entry["id"])] = entry
+        if path.endswith("-recheck.json"): continue
+        for entry in json.load(open(path)):
+            for q, names in RENAMED.items():
+                if entry.get(q) in names: entry[q] = names[entry[q]]
+            out[str(entry["id"])] = entry
     return out
+
+
+def recheck(key):
+    """Apply re-asked questions (readers/A-recheck.json, B-recheck.json) over the merged answers.
+
+    Two blind readers answer only the re-asked question; agreement sets the value, a difference marks it split.
+    @param key: article id → merged entry, changed in place
+    """
+    paths = [os.path.join(HERE, f"readers/{r}-recheck.json") for r in ("A", "B")]
+    if not all(os.path.exists(p) for p in paths): return
+    a, b = ({str(e["id"]): e for e in json.load(open(p))} for p in paths)
+    for article_id, entry in a.items():
+        if article_id not in key: continue
+        for q in QUESTIONS:
+            if q in entry and q in b.get(article_id, {}):
+                va, vb = entry[q], b[article_id][q]
+                key[article_id]["answers"][q] = ({"value": va, "status": "agreed", "rechecked": True} if va == vb else
+                                                 {"value": None, "status": "split", "readers": [va, vb], "rechecked": True})
+                key[article_id]["notes"]["recheck"] = f"A: {entry.get('note', '')} B: {b[article_id].get('note', '')}"
 
 
 def main():
@@ -58,6 +83,7 @@ def main():
         key[article_id] = {"part": part, "answers": answers,
                            "notes": {"A": a[article_id].get("note", ""), "B": b[article_id].get("note", ""),
                                      "C": c.get(article_id, {}).get("note", "")}}
+    recheck(key)
     note = ("provisional labels for the 241 golden articles outside the key: Fable readers A and B, Opus reader C on their "
             "differences; for Anton to correct, never to tune questions on" if rest else
             "provisional answer key: Fable readers A and B, Opus reader C on their differences; not Anton's labels")

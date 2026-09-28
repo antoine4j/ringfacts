@@ -871,3 +871,14 @@ shouldn't be one blade that cuts unanimously cuts articles away."*
 So the gate's answer is kept as a probability beside every other answer,
 nothing is discarded because of it, and whether an article moves on is
 decided downstream from several signals together.
+
+## design: source "other fighter" becomes "other fighter's side" (2026-09-28)
+
+After #10 (Ali Abdelaziz, Usman Nurmagomedov's manager, wanting Topuria for
+Usman) left the answer-key readers with no value (none of these / opponent
+side / other fighter), Anton: *"It looks like we don't have a good bucket
+for another fighter's manager. Maybe we should have like other fighter's
+side (fighter, his team, his manager) as one value"*. Applied: the value
+covers another fighter not linked to a fight with him, or that fighter's
+coach, manager or team; opponent side (the linked fighter and his camp)
+stays separate.

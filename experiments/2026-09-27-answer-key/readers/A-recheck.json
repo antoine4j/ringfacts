@@ -1,0 +1,12 @@
+[
+ {"id": "10", "source": "other_fighter_side",
+  "note": "The words are Ali Abdelaziz's, whom the article names as Usman Nurmagomedov's manager; Nurmagomedov is a free agent not booked against Topuria, and the only link between them is Abdelaziz's own wish for that fight, so he is another fighter's manager rather than opponent side."},
+ {"id": "279", "source": "other_fighter_side",
+  "note": "The words are Javier Mendez's, whom the article identifies only as 'the AKA coach', a coach from another camp; the article never says he coaches Makhachev, so by the guide's rule (recognise opponent side only where the article says who the person is) he cannot be placed on the Makhachev side, though a reader who knows that would answer opponent_side."},
+ {"id": "850", "source": "other_fighter_side",
+  "note": "The rumour of Pimblett vs Topuria in December comes from Tim Welch, whom the article names as Sean O'Malley's coach, with O'Malley himself adding his pick; O'Malley is a bantamweight not linked to any fight with Topuria, so his coach is another fighter's team."},
+ {"id": "1080", "source": "other_fighter_side",
+  "note": "Topuria appears only in a 'LATEST NEWS' link, so the answer is for the main content: the new information is Alex Davis's statement, and the article names him as Myllena Messias's manager, another fighter's manager with no link to Topuria."},
+ {"id": "1200", "source": "other_fighter_side",
+  "note": "Amosov is only named in the intro as a ranked UFC fighter, so the answer is for the main content: an interview with Vladyslav Soroka, whom the article names as manager of KSW champion Yakymenko and BFL fighters (and a helper to Donchenko), not Amosov's manager."}
+]

@@ -11,7 +11,7 @@
      "status": "agreed"
     },
     "source": {
-     "value": "other_fighter",
+     "value": "other_fighter_side",
      "status": "agreed"
     },
     "act": {
@@ -58,7 +58,7 @@
      "status": "agreed"
     },
     "source": {
-     "value": "other_fighter",
+     "value": "other_fighter_side",
      "status": "agreed"
     },
     "act": {
@@ -152,7 +152,7 @@
      "status": "agreed"
     },
     "source": {
-     "value": "other_fighter",
+     "value": "other_fighter_side",
      "status": "agreed"
     },
     "act": {
@@ -246,13 +246,9 @@
      "status": "agreed"
     },
     "source": {
-     "value": null,
-     "status": "split",
-     "readers": [
-      "none_of_these",
-      "opponent_side",
-      "other_fighter"
-     ]
+     "value": "other_fighter_side",
+     "status": "agreed",
+     "rechecked": true
     },
     "act": {
      "value": "calls_him_out",
@@ -286,7 +282,8 @@
    "notes": {
     "A": "Ali Abdelaziz, manager of free agent Usman Nurmagomedov, wants Topuria as Usman's first UFC fight and says Usman would make him quit; Topuria is one of six names. Source none_of_these: another fighter's manager, with no fight to Topuria booked or linked beyond his own wish (opponent_side arguable). Centrality: a callout does not lift him to one_of_several by the guide, though he gets more lines than the others. Act: callout, but 'make him quit' is also a prediction.",
     "B": "Usman Nurmagomedov's manager Abdelaziz wants Topuria as Usman's UFC debut and says Usman would make him quit; the piece runs through Hooker, Pimblett, Oliveira, Holloway, Tsarukyan too. Centrality: the guide says a callout does not lift him to one_of_several, but he is the headline pick. Source: a manager of a fighter publicly asking for the fight; no booking exists, so opponent_side is a stretch and none_of_these ('another fighter's manager') is the alternative.",
-    "C": "The speaker is Ali Abdelaziz, manager of Usman Nurmagomedov, who wants Usman to fight Topuria first; Usman is an unsigned free agent and the only link is this callout, so not opponent_side. Unsure: no value names another fighter's manager; other_fighter (his camp) is closest, none_of_these or opponent_side are arguable."
+    "C": "The speaker is Ali Abdelaziz, manager of Usman Nurmagomedov, who wants Usman to fight Topuria first; Usman is an unsigned free agent and the only link is this callout, so not opponent_side. Unsure: no value names another fighter's manager; other_fighter (his camp) is closest, none_of_these or opponent_side are arguable.",
+    "recheck": "A: The words are Ali Abdelaziz's, whom the article names as Usman Nurmagomedov's manager; Nurmagomedov is a free agent not booked against Topuria, and the only link between them is Abdelaziz's own wish for that fight, so he is another fighter's manager rather than opponent side. B: The words are Ali Abdelaziz's, whom the article names as Usman Nurmagomedov's manager; Nurmagomedov is not booked against Topuria and the only link to a fight is this manager's own wish, so it is another fighter's manager rather than opponent side."
    },
    "body_ruling": null
   },
@@ -298,7 +295,7 @@
      "status": "agreed"
     },
     "source": {
-     "value": "other_fighter",
+     "value": "other_fighter_side",
      "status": "agreed"
     },
     "act": {
@@ -345,7 +342,7 @@
      "status": "agreed"
     },
     "source": {
-     "value": "other_fighter",
+     "value": "other_fighter_side",
      "status": "agreed"
     },
     "act": {
@@ -580,7 +577,7 @@
      "status": "agreed"
     },
     "source": {
-     "value": "other_fighter",
+     "value": "other_fighter_side",
      "status": "agreed"
     },
     "act": {
@@ -679,7 +676,7 @@
      "status": "agreed"
     },
     "source": {
-     "value": "other_fighter",
+     "value": "other_fighter_side",
      "status": "agreed"
     },
     "act": {
@@ -877,7 +874,7 @@
      "status": "agreed"
     },
     "source": {
-     "value": "other_fighter",
+     "value": "other_fighter_side",
      "status": "agreed"
     },
     "act": {
@@ -1159,7 +1156,7 @@
      "status": "agreed"
     },
     "source": {
-     "value": "other_fighter",
+     "value": "other_fighter_side",
      "status": "agreed"
     },
     "act": {
@@ -1535,7 +1532,7 @@
      "status": "agreed"
     },
     "source": {
-     "value": "other_fighter",
+     "value": "other_fighter_side",
      "status": "agreed"
     },
     "act": {
@@ -1582,7 +1579,7 @@
      "status": "agreed"
     },
     "source": {
-     "value": "other_fighter",
+     "value": "other_fighter_side",
      "status": "agreed"
     },
     "act": {
@@ -1629,12 +1626,12 @@
      "status": "agreed"
     },
     "source": {
-     "value": "other_fighter",
+     "value": "other_fighter_side",
      "status": "majority",
      "readers": [
-      "other_fighter",
+      "other_fighter_side",
       "opponent_side",
-      "other_fighter"
+      "other_fighter_side"
      ]
     },
     "act": {
@@ -1822,7 +1819,7 @@
      "status": "agreed"
     },
     "source": {
-     "value": "other_fighter",
+     "value": "other_fighter_side",
      "status": "agreed"
     },
     "act": {
@@ -1869,7 +1866,7 @@
      "status": "agreed"
     },
     "source": {
-     "value": "other_fighter",
+     "value": "other_fighter_side",
      "status": "agreed"
     },
     "act": {
@@ -1916,7 +1913,7 @@
      "status": "agreed"
     },
     "source": {
-     "value": "other_fighter",
+     "value": "other_fighter_side",
      "status": "agreed"
     },
     "act": {
@@ -2010,7 +2007,7 @@
      "status": "agreed"
     },
     "source": {
-     "value": "other_fighter",
+     "value": "other_fighter_side",
      "status": "agreed"
     },
     "act": {
@@ -2104,7 +2101,7 @@
      "status": "agreed"
     },
     "source": {
-     "value": "other_fighter",
+     "value": "other_fighter_side",
      "status": "agreed"
     },
     "act": {
@@ -2626,7 +2623,7 @@
      "status": "agreed"
     },
     "source": {
-     "value": "other_fighter",
+     "value": "other_fighter_side",
      "status": "agreed"
     },
     "act": {
@@ -2720,7 +2717,7 @@
      "status": "agreed"
     },
     "source": {
-     "value": "other_fighter",
+     "value": "other_fighter_side",
      "status": "agreed"
     },
     "act": {
@@ -2767,7 +2764,7 @@
      "status": "agreed"
     },
     "source": {
-     "value": "other_fighter",
+     "value": "other_fighter_side",
      "status": "agreed"
     },
     "act": {
@@ -2814,7 +2811,7 @@
      "status": "agreed"
     },
     "source": {
-     "value": "other_fighter",
+     "value": "other_fighter_side",
      "status": "agreed"
     },
     "act": {
@@ -2866,7 +2863,7 @@
      ]
     },
     "source": {
-     "value": "other_fighter",
+     "value": "other_fighter_side",
      "status": "agreed"
     },
     "act": {
@@ -2918,7 +2915,7 @@
      ]
     },
     "source": {
-     "value": "other_fighter",
+     "value": "other_fighter_side",
      "status": "agreed"
     },
     "act": {
@@ -2965,13 +2962,9 @@
      "status": "agreed"
     },
     "source": {
-     "value": null,
-     "status": "split",
-     "readers": [
-      "opponent_side",
-      "none_of_these",
-      "media"
-     ]
+     "value": "other_fighter_side",
+     "status": "agreed",
+     "rechecked": true
     },
     "act": {
      "value": "steers_him",
@@ -3005,7 +2998,8 @@
    "notes": {
     "A": "Javier Mendez, Makhachev's coach, says Topuria needs more than one spectacular win before a Makhachev superfight and doubts his body suits welterweight. Source: Makhachev is only a talked-about superfight opponent, so other_fighter's coach is arguable. Act: the win-count condition is a steer; the welterweight doubt is an assessment. reports_his_next_fight: the writer's line that he is expected back no sooner than spring 2027 is unsourced and secondary, so no.",
     "B": "Javier Mendez says Topuria needs more than one spectacular win before a Makhachev superfight and doubts his body suits welterweight. Source: the article names him only as 'the AKA coach', not as Makhachev's coach; if read as Makhachev's coach and Makhachev as a linked opponent, opponent_side. Act could be assesses_him (welterweight doubts). The outlet's line 'expected to return no sooner than spring 2027' is a passing timeline, not the news, so next-fight is no.",
-    "C": "Mendez gives an analyst's view in an interview; the article calls him only 'the AKA coach' and never says he coaches Makhachev, so opponent_side is not established from the text and he acts as a pundit. Unsure: none_of_these (another camp's coach) or opponent_side if his tie to Makhachev is counted."
+    "C": "Mendez gives an analyst's view in an interview; the article calls him only 'the AKA coach' and never says he coaches Makhachev, so opponent_side is not established from the text and he acts as a pundit. Unsure: none_of_these (another camp's coach) or opponent_side if his tie to Makhachev is counted.",
+    "recheck": "A: The words are Javier Mendez's, whom the article identifies only as 'the AKA coach', a coach from another camp; the article never says he coaches Makhachev, so by the guide's rule (recognise opponent side only where the article says who the person is) he cannot be placed on the Makhachev side, though a reader who knows that would answer opponent_side. B: Javier Mendez speaks, and the article names him only as 'the AKA coach', never as Makhachev's coach, so by the guide's rule he is a coach from another fighter's camp; a reader who knows he coaches Makhachev and counts the much-discussed superfight as a public link could argue opponent_side."
    },
    "body_ruling": null
   },
@@ -3020,7 +3014,7 @@
      "value": "opponent_side",
      "status": "majority",
      "readers": [
-      "other_fighter",
+      "other_fighter_side",
       "opponent_side",
       "opponent_side"
      ]
@@ -3069,7 +3063,7 @@
      "status": "agreed"
     },
     "source": {
-     "value": "other_fighter",
+     "value": "other_fighter_side",
      "status": "agreed"
     },
     "act": {
@@ -3450,7 +3444,7 @@
      "status": "agreed"
     },
     "source": {
-     "value": "other_fighter",
+     "value": "other_fighter_side",
      "status": "agreed"
     },
     "act": {
@@ -3685,7 +3679,7 @@
      "status": "agreed"
     },
     "source": {
-     "value": "other_fighter",
+     "value": "other_fighter_side",
      "status": "agreed"
     },
     "act": {
@@ -3732,7 +3726,7 @@
      "status": "agreed"
     },
     "source": {
-     "value": "other_fighter",
+     "value": "other_fighter_side",
      "status": "agreed"
     },
     "act": {
@@ -3779,7 +3773,7 @@
      "status": "agreed"
     },
     "source": {
-     "value": "other_fighter",
+     "value": "other_fighter_side",
      "status": "agreed"
     },
     "act": {
@@ -3878,7 +3872,7 @@
      "status": "agreed"
     },
     "source": {
-     "value": "other_fighter",
+     "value": "other_fighter_side",
      "status": "agreed"
     },
     "act": {
@@ -3972,7 +3966,7 @@
      "status": "agreed"
     },
     "source": {
-     "value": "other_fighter",
+     "value": "other_fighter_side",
      "status": "agreed"
     },
     "act": {
@@ -4024,7 +4018,7 @@
      "status": "agreed"
     },
     "source": {
-     "value": "other_fighter",
+     "value": "other_fighter_side",
      "status": "agreed"
     },
     "act": {
@@ -4222,7 +4216,7 @@
      "status": "agreed"
     },
     "source": {
-     "value": "other_fighter",
+     "value": "other_fighter_side",
      "status": "agreed"
     },
     "act": {
@@ -4316,7 +4310,7 @@
      "status": "agreed"
     },
     "source": {
-     "value": "other_fighter",
+     "value": "other_fighter_side",
      "status": "agreed"
     },
     "act": {
@@ -4410,7 +4404,7 @@
      "status": "agreed"
     },
     "source": {
-     "value": "other_fighter",
+     "value": "other_fighter_side",
      "status": "agreed"
     },
     "act": {
@@ -4460,7 +4454,7 @@
      "value": "opponent_side",
      "status": "majority",
      "readers": [
-      "other_fighter",
+      "other_fighter_side",
       "opponent_side",
       "opponent_side"
      ]
@@ -4556,7 +4550,7 @@
      "status": "agreed"
     },
     "source": {
-     "value": "other_fighter",
+     "value": "other_fighter_side",
      "status": "agreed"
     },
     "act": {
@@ -4603,7 +4597,7 @@
      "status": "agreed"
     },
     "source": {
-     "value": "other_fighter",
+     "value": "other_fighter_side",
      "status": "agreed"
     },
     "act": {
@@ -4744,7 +4738,7 @@
      "status": "agreed"
     },
     "source": {
-     "value": "other_fighter",
+     "value": "other_fighter_side",
      "status": "agreed"
     },
     "act": {
@@ -4791,7 +4785,7 @@
      "status": "agreed"
     },
     "source": {
-     "value": "other_fighter",
+     "value": "other_fighter_side",
      "status": "agreed"
     },
     "act": {
@@ -5504,7 +5498,7 @@
      "status": "agreed"
     },
     "source": {
-     "value": "other_fighter",
+     "value": "other_fighter_side",
      "status": "agreed"
     },
     "act": {
@@ -5556,7 +5550,7 @@
      "status": "agreed"
     },
     "source": {
-     "value": "other_fighter",
+     "value": "other_fighter_side",
      "status": "agreed"
     },
     "act": {
@@ -5655,7 +5649,7 @@
      ]
     },
     "source": {
-     "value": "other_fighter",
+     "value": "other_fighter_side",
      "status": "agreed"
     },
     "act": {
@@ -5796,7 +5790,7 @@
      "status": "agreed"
     },
     "source": {
-     "value": "other_fighter",
+     "value": "other_fighter_side",
      "status": "agreed"
     },
     "act": {
@@ -5843,7 +5837,7 @@
      "status": "agreed"
     },
     "source": {
-     "value": "other_fighter",
+     "value": "other_fighter_side",
      "status": "agreed"
     },
     "act": {
@@ -6313,7 +6307,7 @@
      "status": "agreed"
     },
     "source": {
-     "value": "other_fighter",
+     "value": "other_fighter_side",
      "status": "agreed"
     },
     "act": {
@@ -6751,7 +6745,7 @@
      "status": "agreed"
     },
     "source": {
-     "value": "other_fighter",
+     "value": "other_fighter_side",
      "status": "agreed"
     },
     "act": {
@@ -7474,7 +7468,7 @@
      "status": "agreed"
     },
     "source": {
-     "value": "other_fighter",
+     "value": "other_fighter_side",
      "status": "agreed"
     },
     "act": {
@@ -10835,7 +10829,7 @@
      "status": "agreed"
     },
     "source": {
-     "value": "other_fighter",
+     "value": "other_fighter_side",
      "status": "agreed"
     },
     "act": {
@@ -11402,13 +11396,9 @@
      "status": "agreed"
     },
     "source": {
-     "value": "media",
-     "status": "majority",
-     "readers": [
-      "other_fighter",
-      "media",
-      "media"
-     ]
+     "value": "other_fighter_side",
+     "status": "agreed",
+     "rechecked": true
     },
     "act": {
      "value": "gives_news_of_him",
@@ -11442,7 +11432,8 @@
    "notes": {
     "A": "Tim Welch (O'Malley's coach) relays a rumour of Pimblett vs Topuria in December; O'Malley then leans Pimblett. Welch is a coach and podcaster, so media would also fit; act could be predicts_his_fight for O'Malley's pick. Next fight yes only as an unsourced rumour of opponent and month.",
     "B": "Tim Welch, O'Malley's coach, says on their podcast there are rumours of Pimblett vs Topuria in December; O'Malley (other_fighter) leans Pimblett. Another fighter's coach has no listed value, so media (podcaster) chosen; other_fighter or none_of_these possible. Next fight yes on a rumoured opponent and month, though it is only a rumour. Topuria's team wanting a rematch is background.",
-    "C": "The headline news is the December Pimblett rumour, relayed by Tim Welch on O'Malley's podcast; he is not a fighter and not tied to Topuria, so he acts as a podcaster (media). Unsure: other_fighter if O'Malley's pick is taken as the main content, or none_of_these for another fighter's coach."
+    "C": "The headline news is the December Pimblett rumour, relayed by Tim Welch on O'Malley's podcast; he is not a fighter and not tied to Topuria, so he acts as a podcaster (media). Unsure: other_fighter if O'Malley's pick is taken as the main content, or none_of_these for another fighter's coach.",
+    "recheck": "A: The rumour of Pimblett vs Topuria in December comes from Tim Welch, whom the article names as Sean O'Malley's coach, with O'Malley himself adding his pick; O'Malley is a bantamweight not linked to any fight with Topuria, so his coach is another fighter's team. B: The new information (a December Pimblett fight rumour, and a pick) comes from Tim Welch, whom the article names as Sean O'Malley's coach, and from O'Malley himself, a fighter not linked to a fight with Topuria; Welch is not on Pimblett's side, so opponent_side does not apply."
    },
    "body_ruling": null
   },
@@ -11974,7 +11965,7 @@
      "status": "agreed"
     },
     "source": {
-     "value": "other_fighter",
+     "value": "other_fighter_side",
      "status": "agreed"
     },
     "act": {
@@ -12039,7 +12030,7 @@
      "value": "opponent_side",
      "status": "majority",
      "readers": [
-      "other_fighter",
+      "other_fighter_side",
       "opponent_side",
       "opponent_side"
      ]
@@ -12140,12 +12131,12 @@
      "status": "agreed"
     },
     "source": {
-     "value": "other_fighter",
+     "value": "other_fighter_side",
      "status": "majority",
      "readers": [
       "media",
-      "other_fighter",
-      "other_fighter"
+      "other_fighter_side",
+      "other_fighter_side"
      ]
     },
     "act": {
@@ -12197,7 +12188,7 @@
      "status": "agreed"
     },
     "source": {
-     "value": "other_fighter",
+     "value": "other_fighter_side",
      "status": "agreed"
     },
     "act": {
@@ -12263,7 +12254,7 @@
      "status": "majority",
      "readers": [
       "media",
-      "other_fighter",
+      "other_fighter_side",
       "media"
      ]
     },
@@ -12321,7 +12312,7 @@
      "status": "agreed"
     },
     "source": {
-     "value": "other_fighter",
+     "value": "other_fighter_side",
      "status": "agreed"
     },
     "act": {
@@ -12722,7 +12713,7 @@
      "status": "agreed"
     },
     "source": {
-     "value": "other_fighter",
+     "value": "other_fighter_side",
      "status": "agreed"
     },
     "act": {
@@ -12863,12 +12854,12 @@
      "status": "agreed"
     },
     "source": {
-     "value": "other_fighter",
+     "value": "other_fighter_side",
      "status": "majority",
      "readers": [
-      "other_fighter",
+      "other_fighter_side",
       "opponent_side",
-      "other_fighter"
+      "other_fighter_side"
      ]
     },
     "act": {
@@ -13103,7 +13094,7 @@
      "status": "agreed"
     },
     "source": {
-     "value": "other_fighter",
+     "value": "other_fighter_side",
      "status": "agreed"
     },
     "act": {
@@ -13363,7 +13354,7 @@
      "status": "agreed"
     },
     "source": {
-     "value": "other_fighter",
+     "value": "other_fighter_side",
      "status": "agreed"
     },
     "act": {
@@ -13477,7 +13468,7 @@
      "status": "agreed"
     },
     "source": {
-     "value": "other_fighter",
+     "value": "other_fighter_side",
      "status": "agreed"
     },
     "act": {
@@ -13591,7 +13582,7 @@
      "status": "agreed"
     },
     "source": {
-     "value": "other_fighter",
+     "value": "other_fighter_side",
      "status": "agreed"
     },
     "act": {
@@ -14066,8 +14057,9 @@
      "status": "agreed"
     },
     "source": {
-     "value": "none_of_these",
-     "status": "agreed"
+     "value": "other_fighter_side",
+     "status": "agreed",
+     "rechecked": true
     },
     "act": {
      "value": "none_of_these",
@@ -14101,7 +14093,8 @@
    "notes": {
     "A": "Tapology flags Myllena Messias's fake fight and her manager Alex Davis responds; Topuria appears only in an inserted 'latest news' link about a Gaethje rematch. Source none_of_these: the main content's source is another fighter's manager, which no value covers; act none_of_these since nothing concerns him.",
     "B": "Topuria appears only in a LATEST NEWS link line; the article is about Myllena Messias's fake fight. Source none_of_these: the main content's new information comes from Alex Davis, another fighter's manager (media would be the alternative, via Tapology and Nolan King). Act none_of_these: nobody does anything regarding him.",
-    "C": ""
+    "C": "",
+    "recheck": "A: Topuria appears only in a 'LATEST NEWS' link, so the answer is for the main content: the new information is Alex Davis's statement, and the article names him as Myllena Messias's manager, another fighter's manager with no link to Topuria. B: Topuria appears only in a LATEST NEWS link (page furniture); the main content is the statement of Alex Davis, who the article says manages Myllena Messias, a fighter with no link to Topuria, so another fighter's manager. Tapology's post could be read as media, but the headline's news is the manager's statement."
    },
    "body_ruling": null
   },
@@ -14113,7 +14106,7 @@
      "status": "agreed"
     },
     "source": {
-     "value": "other_fighter",
+     "value": "other_fighter_side",
      "status": "agreed"
     },
     "act": {
@@ -14259,7 +14252,7 @@
      "status": "agreed"
     },
     "source": {
-     "value": "other_fighter",
+     "value": "other_fighter_side",
      "status": "agreed"
     },
     "act": {
@@ -14462,7 +14455,7 @@
      "status": "agreed"
     },
     "source": {
-     "value": "other_fighter",
+     "value": "other_fighter_side",
      "status": "agreed"
     },
     "act": {
@@ -14509,7 +14502,7 @@
      "status": "agreed"
     },
     "source": {
-     "value": "other_fighter",
+     "value": "other_fighter_side",
      "status": "agreed"
     },
     "act": {
@@ -14556,7 +14549,7 @@
      "status": "agreed"
     },
     "source": {
-     "value": "other_fighter",
+     "value": "other_fighter_side",
      "status": "agreed"
     },
     "act": {
@@ -14603,7 +14596,7 @@
      "status": "agreed"
     },
     "source": {
-     "value": "other_fighter",
+     "value": "other_fighter_side",
      "status": "agreed"
     },
     "act": {
@@ -14702,8 +14695,9 @@
      "status": "agreed"
     },
     "source": {
-     "value": "none_of_these",
-     "status": "agreed"
+     "value": "other_fighter_side",
+     "status": "agreed",
+     "rechecked": true
     },
     "act": {
      "value": "none_of_these",
@@ -14737,7 +14731,8 @@
    "notes": {
     "A": "Long interview with manager Vladyslav Soroka about Ukrainian MMA, KSW, Yakymenko and who might reach the UFC; Amosov is one clause in the lead ('is in the UFC rankings'). Source none_of_these: the speaker is a manager of other fighters, not his; act none_of_these: nobody does anything regarding him.",
     "B": "Interview with manager Vladyslav Soroka about the Ukrainian MMA scene; Amosov is named once in the lead as being in the UFC rankings. Source: Soroka manages other fighters, not Amosov, so no listed value fits ('another fighter's manager' would). Act: nobody does anything regarding Amosov.",
-    "C": ""
+    "C": "",
+    "recheck": "A: Amosov is only named in the intro as a ranked UFC fighter, so the answer is for the main content: an interview with Vladyslav Soroka, whom the article names as manager of KSW champion Yakymenko and BFL fighters (and a helper to Donchenko), not Amosov's manager. B: Amosov gets one line of scene-setting and nothing new; the main content is an interview with Vladyslav Soroka, who the article says manages the KSW champion Yakymenko and BFL fighters and helps Donchenko, so he is another fighter's manager, not Amosov's, and not media (the outlet only asks the questions)."
    },
    "body_ruling": null
   },
