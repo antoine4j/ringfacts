@@ -38,8 +38,9 @@ per pass), `run-classifier.py`, `classifier-v3/results-p1..4.json`,
   steering option), *his manager* 13, *his team* 10.
 - **The gate is stricter than v2's derived rule.** Claims: 49 about him, 13
   partly, 66 not (v2's rule: 59 / 18 / 51). 18 claims moved from yes or
-  partly to not; in 43 claims the classifier's gate and the extractor
-  disagree on "not about him". Which is right needs Anton's check.
+  partly to not; in 37 claims the classifier's gate and the extractor
+  disagree on "not about him" (each program's majority over the claim's
+  articles; 43 if any single article counts). Which is right needs Anton's check.
 - **How firm is the weakest axis.** It should apply only to a booking, a
   return or a career move, but 45 articles about him carry a firmness on
   another kind of fact (a result, say), and 11 bookings or returns got "no
