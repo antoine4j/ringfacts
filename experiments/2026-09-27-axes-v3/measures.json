@@ -1,0 +1,136 @@
+{
+ "gate": {
+  "unanimous": 288,
+  "repeat_changed": 6,
+  "order_changed": 12,
+  "usage": {
+   "about_him": 161,
+   "not_about_him": 95,
+   "partly_about_him": 44
+  },
+  "confidence_by_fit": {
+   "fits_well": 0.779,
+   "fits_loosely": 0.993
+  }
+ },
+ "gate_fit": {
+  "unanimous": 298,
+  "repeat_changed": 0,
+  "order_changed": 2,
+  "usage": {
+   "fits_well": 299,
+   "fits_loosely": 1
+  }
+ },
+ "source": {
+  "unanimous": 266,
+  "repeat_changed": 6,
+  "order_changed": 34,
+  "usage": {
+   "himself": 108,
+   "other_fighter": 53,
+   "media": 35,
+   "opponent_side": 29,
+   "no_one": 28,
+   "promotion": 22,
+   "his_manager": 13,
+   "his_team": 10,
+   "fans": 2
+  },
+  "confidence_by_fit": {
+   "fits_well": 0.778,
+   "none_fits": 0.754
+  }
+ },
+ "source_fit": {
+  "unanimous": 295,
+  "repeat_changed": 1,
+  "order_changed": 5,
+  "usage": {
+   "fits_well": 295,
+   "none_fits": 5
+  }
+ },
+ "act": {
+  "unanimous": 267,
+  "repeat_changed": 15,
+  "order_changed": 33,
+  "usage": {
+   "speaks_of_himself": 68,
+   "reports_an_event": 60,
+   "assesses_him": 48,
+   "gives_news_of_him": 43,
+   "steers_him": 28,
+   "predicts_his_fight": 25,
+   "calls_him_out": 15,
+   "answers_for_him": 13
+  },
+  "confidence_by_fit": {
+   "fits_well": 0.807,
+   "none_fits": 0.58
+  }
+ },
+ "act_fit": {
+  "unanimous": 300,
+  "repeat_changed": 0,
+  "order_changed": 0,
+  "usage": {
+   "fits_well": 297,
+   "none_fits": 3
+  }
+ },
+ "fact": {
+  "unanimous": 259,
+  "repeat_changed": 14,
+  "order_changed": 41,
+  "usage": {
+   "none": 92,
+   "result": 68,
+   "booking": 65,
+   "return": 26,
+   "health": 23,
+   "personal_life": 16,
+   "fight_week_event": 6,
+   "career_move": 4
+  },
+  "confidence_by_fit": {
+   "fits_well": 0.653,
+   "none_fits": 0.879
+  }
+ },
+ "fact_fit": {
+  "unanimous": 294,
+  "repeat_changed": 0,
+  "order_changed": 6,
+  "usage": {
+   "fits_well": 285,
+   "none_fits": 15
+  }
+ },
+ "firmness": {
+  "unanimous": 261,
+  "repeat_changed": 9,
+  "order_changed": 39,
+  "usage": {
+   "no_such_fact": 177,
+   "rumoured": 59,
+   "official": 47,
+   "reported": 17
+  },
+  "confidence_by_fit": {
+   "fits_well": 0.632,
+   "none_fits": 0.898
+  }
+ },
+ "firmness_fit": {
+  "unanimous": 283,
+  "repeat_changed": 3,
+  "order_changed": 17,
+  "usage": {
+   "fits_well": 251,
+   "none_fits": 49
+  }
+ },
+ "source_act_contradictions": 23,
+ "articles_about_him": 205
+}

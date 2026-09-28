@@ -2,44 +2,63 @@
 
     python3 golden/board/map.py        # writes golden/board/map.html
 
-Top-down view of the golden set. Each claim is described along several
-dimensions taken from the machine's answers - a gate (is the article about
-the fighter at all), who is the source, what is done regarding him, what
-fact is asserted, depth, role, the extractor's kind, the fighter. The page
-lets you put any two on the axes, filter by any value, and open a cell to
-spot-check its claims, doubtful first. The machine's answers are shown,
-never Anton's labels: his corrections on this page are what become labels.
+Top-down view of the golden set. Each claim is described along the
+dimensions of one classifier version's answers; the page carries every
+version and a picker to switch between them. Put any two dimensions on the
+axes, filter by any value, open a cell to spot-check its claims, doubtful
+first. The machine's answers are shown, never Anton's labels: his
+corrections on this page are what become labels.
 
 A claim takes the value most of its articles give on each dimension; a tie
 goes to the article that started the claim. Reads only golden/: the stored
-classifier (v2, passes 4-6) and extractor (pass 4) answers. No model calls,
-no network. A new prompt version gets its own map by pointing the two
-ANSWER_* constants at its answer files; the page stamps which built it.
+classifier answers of each version and the extractor (pass 4). No model
+calls, no network. A new classifier version is added to VERSIONS below.
+
+v2 has no gate question, so its gate is a rule over three answers (stated
+on the page); v3 asks the gate directly, and pairs each axis with a
+question on whether its options fit.
 """
 import json, os, collections
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 GOLDEN = os.path.join(HERE, "..")
-ANSWER_CLASSIFIER = "answers/classifier-v2.json"
 ANSWER_EXTRACTOR = "answers/extractor.json"
-VERSION = "classifier v2 · passes 4–6, majority of three option orders  /  extractor · prompt pass 4"
+EXTRACTOR_VERSION = "extractor · prompt pass 4"
 
-# acts where the fighter is the doer but nobody is the source of words
-EVENT_ACTS = {"he_fought", "his_fight_week", "nothing"}
-# the gate, from the answers: which values say "not about him" and which say "only partly"
-GATE_NO_ROLES = {"background", "mentioned_only", "not_in_the_article_body"}
-GATE_PARTLY_ROLES = {"one_of_several_subjects", "one_of_many_on_a_list"}
-GATE_NO_EXTRACT = {"about_someone_else", "no_text"}
-GATE_RULE = [
-    ["no", "the classifier's role is background, mentioned only, or not in the text; or its act is 'naming him in passing'; or the extractor's kind is 'about someone else' or 'no text'"],
-    ["partly", "not 'no', and he is one of several subjects or one of a list, or the classifier's depth is 'a line or two'"],
-    ["yes", "everything else"],
+# v2's gate is derived: which answers say "not about him" and which say "only partly"
+V2_GATE_NO_ROLES = {"background", "mentioned_only", "not_in_the_article_body"}
+V2_GATE_PARTLY_ROLES = {"one_of_several_subjects", "one_of_many_on_a_list"}
+EXTRACT_SAYS_NO = {"about_someone_else", "no_text"}
+V2_GATE_RULE = [
+    ["no", "derived: the classifier's role is background, mentioned only, or not in the text; or its act is 'naming him in passing'; or the extractor's kind is 'about someone else' or 'no text'"],
+    ["partly", "derived: not 'no', and he is one of several subjects or one of a list, or the classifier's depth is 'a line or two'"],
+    ["yes", "derived: everything else"],
 ]
-# the dimensions a claim is described on: key, label, and where the value comes from
-DIMENSIONS = [
-    ("gate", "About him?"), ("who", "Who"), ("what", "What regarding him"), ("fact", "Fact asserted"),
-    ("depth", "Depth"), ("role", "Role"), ("extract_kind", "Extractor's kind"), ("fighter", "Fighter"),
+V3_GATE = {"about_him": "yes", "partly_about_him": "partly", "not_about_him": "no"}
+# acts where the fighter is the doer but nobody is the source of words (v2), for the "himself" cross-check
+V2_EVENT_ACTS = {"he_fought", "his_fight_week", "nothing"}
+V3_HIMSELF_ACTS = {"speaks_of_himself", "answers_for_him"}
+V3_GATED = ("source", "act", "fact", "firmness")
+GATED_OUT = {"key": "gated_out", "def": "The gate says the article is not about him, so this answer is ignored."}
+
+VERSIONS = [
+    {"key": "v3", "file": "answers/classifier-v3.json",
+     "stamp": "classifier v3 · the axes of golden/axes.md, majority of three option orders (pass 4 = noise floor)",
+     "dims": [("gate", "About him?", "gate"), ("source", "Source", "source"), ("act", "Act", "act"),
+              ("fact", "Fact asserted", "fact"), ("firmness", "How firm", "firmness")],
+     "axes": ("source", "act")},
+    {"key": "v2", "file": "answers/classifier-v2.json",
+     "stamp": "classifier v2 · passes 4–6, majority of three option orders",
+     "dims": [("gate", "About him?", None), ("who", "Who", "speaker"), ("what", "What regarding him", "act"),
+              ("fact", "Fact asserted", "kind"), ("depth", "Depth", "depth"), ("role", "Role", "role")],
+     "axes": ("who", "what")},
 ]
+COMMON_DIMS = [("extract_kind", "Extractor's kind"), ("fighter", "Fighter")]
+FLAG_LABELS = {
+    "readers_split": "readers split", "gate_disagrees": 'classifier and extractor disagree on "not about him"',
+    "who_disagrees": 'extract and classifier disagree on "himself"', "fit_doubt": "the classifier says no option fits well",
+    "contradiction": "source and act contradict each other",
+}
 
 
 def load(name):
@@ -60,114 +79,134 @@ def surname(fighter):
     return fighter.split()[-1]
 
 
-def gate(answers, extract_kind):
-    """Decide the gate for one article and say whether the two readers agree on it.
+def v2_gate(answers, extract_kind):
+    """The derived gate for a v2 article, and whether classifier and extractor disagree on "no".
 
-    @param answers: the article's v2 classifier answers
-    @param extract_kind: the extractor's kind for the article
-    @returns: (gate value "yes" / "partly" / "no", True when classifier and extractor disagree on "no")
+    @param answers: the article's v2 answers
+    @param extract_kind: the extractor's kind
+    @returns: ("yes" / "partly" / "no", disagreement flag)
     """
-    classifier_no = answers["role"]["choice"] in GATE_NO_ROLES or answers["act"]["choice"] == "naming_him_in_passing"
-    extractor_no = extract_kind in GATE_NO_EXTRACT
+    classifier_no = answers["role"]["choice"] in V2_GATE_NO_ROLES or answers["act"]["choice"] == "naming_him_in_passing"
+    extractor_no = extract_kind in EXTRACT_SAYS_NO
     if classifier_no or extractor_no:
         return "no", classifier_no != extractor_no
-    partly = answers["role"]["choice"] in GATE_PARTLY_ROLES or answers["depth"]["choice"] == "a_line_or_two"
+    partly = answers["role"]["choice"] in V2_GATE_PARTLY_ROLES or answers["depth"]["choice"] == "a_line_or_two"
     return ("partly" if partly else "yes"), False
 
 
-def article_row(article_id, articles, classifier, extractor):
-    """Collect what the map shows for one article: its identity and a value per dimension.
+def article_row(version, article, answers, extract):
+    """What the map shows for one article under one classifier version.
 
-    @param article_id: golden article id as a string
-    @param articles: id → golden article
-    @param classifier: id → v2 classifier answers
-    @param extractor: id → extractor answers
-    @returns: a small dict; `v` holds one value per dimension, `agree` how many of three readers gave it
+    @param version: an entry of VERSIONS
+    @param article: the golden article
+    @param answers: this version's answers for the article
+    @param extract: the extractor's answers for the article
+    @returns: identity, a value and agreement per dimension, and doubt flags
     """
-    article, answers, extract = articles[article_id], classifier[article_id], extractor[article_id]
     extract_kind = extract.get("kind") or "no_text"
-    gate_value, gate_disagrees = gate(answers, extract_kind)
-    # the extractor's actor naming the fighter is a second opinion on "himself", where someone speaks
     actor = extract.get("actor") or ""
     actor_is_him = surname(article["subject"]).lower() in actor.lower()
-    comparable = bool(actor) and answers["act"]["choice"] not in EVENT_ACTS
-    return {
-        "id": article_id, "date": str(article["published_at"])[:10], "source": article["source"],
-        "title": article["title"], "url": article.get("resolved_url") or article["url"],
-        "extract": extract.get("claim"), "actor": actor, "occasion": extract.get("occasion"),
-        "v": {"gate": gate_value, "who": answers["speaker"]["choice"], "what": answers["act"]["choice"],
-              "fact": answers["kind"]["choice"], "depth": answers["depth"]["choice"], "role": answers["role"]["choice"],
-              "extract_kind": extract_kind, "fighter": surname(article["subject"])},
-        "agree": {"who": answers["speaker"]["agree"], "what": answers["act"]["agree"], "fact": answers["kind"]["agree"],
-                  "depth": answers["depth"]["agree"], "role": answers["role"]["agree"]},
-        "gate_disagrees": gate_disagrees,
-        "who_disagrees": comparable and actor_is_him != (answers["speaker"]["choice"] == "himself"),
-    }
+    values, agree = {}, {}
+    for key, _, question in version["dims"]:
+        if question:
+            values[key], agree[key] = answers[question]["choice"], answers[question]["agree"]
+    flags = {}
+    if version["key"] == "v2":
+        values["gate"], flags["gate_disagrees"] = v2_gate(answers, extract_kind)
+        speaker_is_him, comparable = values["who"] == "himself", bool(actor) and values["what"] not in V2_EVENT_ACTS
+        flags["readers_split"] = agree["who"] < 3 or agree["what"] < 3
+    else:
+        values["gate"] = V3_GATE[values["gate"]]
+        # when the gate says "not about him", the other answers are forced guesses: shown as gated out
+        if values["gate"] == "no":
+            for key in V3_GATED:
+                values[key] = "gated_out"
+        flags["gate_disagrees"] = (values["gate"] == "no") != (extract_kind in EXTRACT_SAYS_NO)
+        speaker_is_him, comparable = values["source"] == "himself", bool(actor) and values["act"] != "reports_an_event"
+        flags["readers_split"] = any(agree[k] < 3 for k in ("gate", "source", "act", "fact"))
+        about = values["gate"] != "no"
+        # the paired fit questions, and the rule that act depends on source
+        flags["fit_doubt"] = about and any(answers[q + "_fit"]["choice"] != "fits_well" for q in ("source", "act", "fact"))
+        flags["contradiction"] = about and ((values["act"] == "speaks_of_himself" and not speaker_is_him)
+                                            or (speaker_is_him and values["act"] not in V3_HIMSELF_ACTS))
+    flags["who_disagrees"] = comparable and actor_is_him != speaker_is_him
+    values["extract_kind"], values["fighter"] = extract_kind, surname(article["subject"])
+    return {"id": str(article["id"]), "date": str(article["published_at"])[:10], "source": article["source"],
+            "title": article["title"], "url": article.get("resolved_url") or article["url"],
+            "extract": extract.get("claim"), "actor": actor, "occasion": extract.get("occasion"),
+            "v": values, "agree": agree, "flags": flags}
 
 
-def claim_row(claim, rows):
+def claim_row(claim, rows, dim_keys):
     """Describe one claim by the value most of its articles give on each dimension.
 
     @param claim: a golden claim (key, fighter, articles)
     @param rows: the claim's article rows, oldest first
-    @returns: the claim with a value per dimension and its doubt flags
+    @param dim_keys: the dimensions to decide
+    @returns: the claim with a value per dimension and its flags (any article's flag counts)
     """
     values = {}
-    for key, _ in DIMENSIONS:
+    for key in dim_keys:
         votes = collections.Counter(r["v"][key] for r in rows)
         top = max(votes.values())
         # a tie goes to the oldest article, the one that started the claim
         values[key] = next(r["v"][key] for r in rows if votes[r["v"][key]] == top)
-    return {
-        "key": claim["key"], "n": len(rows), "v": values,
-        "label": rows[0]["extract"] or rows[0]["title"], "first": rows[0]["id"],
-        "readers_split": any(r["agree"]["who"] < 3 or r["agree"]["what"] < 3 for r in rows),
-        "gate_disagrees": any(r["gate_disagrees"] for r in rows),
-        "who_disagrees": any(r["who_disagrees"] for r in rows), "rows": rows,
-    }
+    flags = {name: any(r["flags"].get(name) for r in rows) for name in FLAG_LABELS}
+    return {"key": claim["key"], "n": len(rows), "v": values, "flags": flags,
+            "label": rows[0]["extract"] or rows[0]["title"], "first": rows[0]["id"], "rows": rows}
 
 
-def axes(questions, extractor_file, placed):
-    """The ordered values of every dimension, with a definition for each where one exists.
+def version_data(version, articles, extractor_file, claims):
+    """Everything the page needs for one classifier version.
 
-    @param questions: the classifier's question file (options and definitions)
-    @param extractor_file: the extractor's answer file (its kind options)
-    @param placed: the placed claims, for the fighter list
-    @returns: dimension key → list of {key, def}
+    @param version: an entry of VERSIONS
+    @param articles: id → golden article
+    @param extractor_file: the extractor's answer file
+    @param claims: the golden claims
+    @returns: stamp, dimensions, their values with definitions, placed claims, default axes
     """
-    from_classifier = lambda q: [{"key": k, "def": d} for k, d in questions[q]["options"].items()]
-    return {
-        "gate": [{"key": k, "def": d} for k, d in GATE_RULE],
-        "who": from_classifier("speaker"), "what": from_classifier("act"), "fact": from_classifier("kind"),
-        "depth": from_classifier("depth"), "role": from_classifier("role"),
-        "extract_kind": [{"key": k, "def": d} for k, d in extractor_file["kind_options"].items()],
-        "fighter": [{"key": f, "def": ""} for f in sorted({c["v"]["fighter"] for c in placed})],
-    }
+    answers_file = load(version["file"])
+    answers, questions = answers_file["articles"], answers_file["questions"]
+    extractor = extractor_file["articles"]
+    dims = [(k, label) for k, label, _ in version["dims"]] + COMMON_DIMS
+    placed = []
+    for claim in claims:
+        rows = sorted((article_row(version, articles[a], answers[a], extractor[a]) for a in claim["articles"]),
+                      key=lambda r: (r["date"], int(r["id"])))
+        placed.append(claim_row(claim, rows, [k for k, _ in dims]))
+    # each dimension's values in the classifier's own order, with its own definitions
+    values = {}
+    for key, _, question in version["dims"]:
+        if key == "gate":
+            values["gate"] = ([{"key": k, "def": d} for k, d in V2_GATE_RULE] if version["key"] == "v2" else
+                              [{"key": V3_GATE[k], "def": d} for k, d in questions["gate"]["options"].items()])
+        else:
+            values[key] = [{"key": k, "def": d} for k, d in questions[question]["options"].items()]
+            if version["key"] == "v3" and key in V3_GATED:
+                values[key].append(GATED_OUT)
+    values["extract_kind"] = [{"key": k, "def": d} for k, d in extractor_file["kind_options"].items()]
+    values["fighter"] = [{"key": f, "def": ""} for f in sorted({c["v"]["fighter"] for c in placed})]
+    return {"key": version["key"], "stamp": f"{version['stamp']}  /  {EXTRACTOR_VERSION}",
+            "dims": [{"key": k, "label": l} for k, l in dims], "values": values, "claims": placed,
+            "axes": version["axes"], "flags": [f for f in FLAG_LABELS if any(c["flags"].get(f) for c in placed)]}
 
 
 def main():
     """Build the page from the golden folder and write map.html."""
     articles = {str(a["id"]): a for a in load("articles.json")}
-    classifier_file, extractor_file = load(ANSWER_CLASSIFIER), load(ANSWER_EXTRACTOR)
-    classifier, extractor = classifier_file["articles"], extractor_file["articles"]
+    extractor_file = load(ANSWER_EXTRACTOR)
     golden_claims = load("claims.json")
-
-    # every claim with its articles oldest first, described on every dimension
-    placed = []
-    for claim in golden_claims["claims"]:
-        rows = sorted((article_row(a, articles, classifier, extractor) for a in claim["articles"]), key=lambda r: (r["date"], int(r["id"])))
-        placed.append(claim_row(claim, rows))
-
-    data = {"version": VERSION, "ruler": f"ruler v{golden_claims['version']}", "claims": placed,
-            "dims": [{"key": k, "label": l} for k, l in DIMENSIONS],
-            "values": axes(classifier_file["questions"], extractor_file, placed)}
+    versions = [version_data(v, articles, extractor_file, golden_claims["claims"]) for v in VERSIONS]
+    data = {"ruler": f"ruler v{golden_claims['version']}", "flag_labels": FLAG_LABELS, "versions": versions}
     page = open(os.path.join(HERE, "map-template.html")).read().replace("/*DATA*/null", json.dumps(data, ensure_ascii=False))
     open(os.path.join(HERE, "map.html"), "w").write(page)
 
-    # a one-line summary, so a rebuild says what it built
-    gates = collections.Counter(c["v"]["gate"] for c in placed)
-    print(f"map.html: {len(page)//1024} KB, {len(placed)} claims; gate yes {gates['yes']}, partly {gates['partly']}, "
-          f"no {gates['no']}; {sum(c['gate_disagrees'] for c in placed)} where classifier and extractor disagree on 'not about him'")
+    # a summary per version, so a rebuild says what it built
+    print(f"map.html: {len(page)//1024} KB")
+    for v in versions:
+        gates = collections.Counter(c["v"]["gate"] for c in v["claims"])
+        flags = {f: sum(c["flags"][f] for c in v["claims"]) for f in v["flags"]}
+        print(f"  {v['key']}: {len(v['claims'])} claims; gate yes {gates['yes']}, partly {gates['partly']}, no {gates['no']}; flags {flags}")
 
 
 main()

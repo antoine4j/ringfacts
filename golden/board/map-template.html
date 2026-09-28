@@ -73,6 +73,7 @@ table.grid{border-collapse:separate;border-spacing:3px;font-variant-numeric:tabu
 .cell .m{display:block;font-size:11px;color:var(--dim)}
 .cell.hot{color:#fff}.cell.hot .m{color:rgba(255,255,255,.85)}
 .cell.empty{background:transparent;border-style:dashed;color:var(--line);cursor:default}
+.cell.impossible{background:repeating-linear-gradient(45deg,transparent 0 5px,var(--line) 5px 6px);color:var(--dim);border-style:solid}
 .cell.sel{outline:3px solid var(--red);outline-offset:1px}
 .cell .d{display:block;font-size:10.5px;color:var(--warn);font-weight:600}
 .cell.hot .d{color:#FFE2B8}
@@ -107,6 +108,7 @@ details.defs dt{font-weight:600;color:var(--ink)}details.defs dd{margin:0}
 <div class="wrap">
   <section class="top">
     <div><h1>Claim Map</h1><div class="stamp" id="stamp"></div></div>
+    <div class="seg" role="group" aria-label="Classifier version" id="versions"></div>
     <div class="seg" role="group" aria-label="Colour theme" id="theme">
       <button data-t="system" aria-pressed="true">System</button>
       <button data-t="light" aria-pressed="false">Light</button>
@@ -134,7 +136,7 @@ details.defs dt{font-weight:600;color:var(--ink)}details.defs dd{margin:0}
 
   <div class="stats" id="stats"></div>
   <div class="gridbox"><table class="grid" id="grid"></table></div>
-  <div class="hint">Orange line in a cell: how many of its claims carry a doubt. A doubt is one of: the three readers split on who or what; the claim's articles land in different cells of this view; classifier and extractor disagree on "not about him"; or they disagree on whether he himself is speaking.</div>
+  <div class="hint">Orange line in a cell: how many of its claims carry a doubt. A doubt is one of: the three readers split; the claim's articles land in different cells of this view; classifier and extractor disagree on "not about him" or on whether he himself is speaking; in v3 also: the classifier says no option fits well, or its source and act contradict each other. Hatched cells are impossible by definition.</div>
 
   <section class="panel" id="panel"><div class="hint">Click a cell to list its claims.</div></section>
 
@@ -142,24 +144,31 @@ details.defs dt{font-weight:600;color:var(--ink)}details.defs dd{margin:0}
 </div>
 
 <script>
-const DATA = /*DATA*/null;
-const DIMS = DATA.dims, LABEL = Object.fromEntries(DIMS.map(d => [d.key, d.label]));
-const state = {x:"who", y:"what", unit:"claims", doubtOnly:false, showEmpty:false, gateFlag:false, filters:{}, cell:null};
+const ALL = /*DATA*/null;
+let DATA, DIMS, LABEL, DEF;
+const state = {x:"", y:"", unit:"claims", doubtOnly:false, showEmpty:false, gateFlag:false, filters:{}, cell:null};
 const esc = s => String(s ?? "").replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
 const human = k => String(k).replace(/_/g, " ");
-const DEF = {};
-for (const d of DIMS) for (const o of DATA.values[d.key]) DEF[d.key+":"+o.key] = o.def;
 
 /** Whether a claim's articles fall in more than one cell of the current view. @param {object} c @returns {boolean} */
 const articlesSplit = c => new Set(c.rows.map(r => r.v[state.x]+"|"+r.v[state.y])).size > 1;
 
 /** How many doubt flags a claim carries in the current view. @param {object} c @returns {number} */
-const doubts = c => (c.readers_split?1:0) + (articlesSplit(c)?1:0) + (c.gate_disagrees?1:0) + (c.who_disagrees?1:0);
+const doubts = c => DATA.flags.filter(f => c.flags[f]).length + (articlesSplit(c)?1:0);
+
+/** Whether a cell is impossible by definition (v3: act depends on source). @param {string} a x value @param {string} b y value @returns {boolean} */
+function impossible(a, b){
+  if (DATA.key !== "v3") return false;
+  const pair = {[state.x]: a, [state.y]: b};
+  if (!("source" in pair) || !("act" in pair)) return false;
+  const him = pair.source === "himself", own = pair.act === "speaks_of_himself" || pair.act === "answers_for_him";
+  return (pair.act === "speaks_of_himself" && !him) || (him && !own);
+}
 
 /** Whether a claim passes every filter, optionally ignoring one dimension (for facet counts). @param {object} c @param {string} [skip] @returns {boolean} */
 function passes(c, skip){
   if (state.doubtOnly && !doubts(c)) return false;
-  if (state.gateFlag && skip !== "gateFlag" && !c.gate_disagrees) return false;
+  if (state.gateFlag && skip !== "gateFlag" && !c.flags.gate_disagrees) return false;
   for (const [dim, set] of Object.entries(state.filters)) if (dim !== skip && set.size && !set.has(c.v[dim])) return false;
   return true;
 }
@@ -178,7 +187,7 @@ function drawGates(){
   const on = state.filters.gate || new Set();
   const tile = (val, title, sub) => { const n = base.filter(c => c.v.gate===val).length;
     return `<button class="gatebtn" data-g="${val}" aria-pressed="${on.has(val)}"><span class="n">${n}</span><span class="l">${title}</span><span class="s">${sub}</span></button>`; };
-  const nd = DATA.claims.filter(c => passes(c, "gateFlag") && c.gate_disagrees).length;
+  const nd = DATA.claims.filter(c => passes(c, "gateFlag") && c.flags.gate_disagrees).length;
   document.getElementById("gates").innerHTML =
     tile("yes","About him","the claims to classify") + tile("partly","Partly about him","one of several, or a line or two") +
     tile("no","Not about him","background, passing, someone else's news") +
@@ -229,7 +238,7 @@ function drawGrid(){
     h += `<tr><th class="row" title="${esc(DEF[state.y+":"+b])}">${esc(human(b))}</th>`;
     for (const a of xs){
       const list = at(a,b), n = sum(list), d = list.filter(doubts).length;
-      if (!n){ h += `<td><div class="cell empty" aria-hidden="true">·</div></td>`; continue; }
+      if (!n){ h += impossible(a,b) ? `<td><div class="cell empty impossible" title="impossible by definition: act depends on source">×</div></td>` : `<td><div class="cell empty" aria-hidden="true">·</div></td>`; continue; }
       const alpha = (0.10 + 0.80*Math.sqrt(n/max)).toFixed(2), other = state.unit==="claims" ? list.reduce((s,c)=>s+c.n,0)+" art." : list.length+" claims";
       const sel = state.cell && state.cell[0]===a && state.cell[1]===b ? " sel" : "";
       h += `<td><button class="cell${alpha>0.55?" hot":""}${sel}" style="--a:${alpha}" data-a="${esc(a)}" data-b="${esc(b)}"><span class="n">${n}</span><span class="m">${other}</span>${d?`<span class="d">${d} doubtful claim${d>1?"s":""}</span>`:""}</button></td>`;
@@ -248,8 +257,8 @@ function article(r){
   return `<li class="art"><div class="t"><span class="key">#${r.id} · ${r.date} · ${esc(r.source)}</span><br><a href="${esc(r.url)}" target="_blank" rel="noopener">${esc(r.title)}</a></div>
     <div class="x">${esc(r.extract || "(no extract)")}</div>
     <div class="a"><span>extractor: actor <b>${esc(r.actor||"—")}</b>${r.occasion?` · where <b>${esc(r.occasion)}</b>`:""}</span></div>
-    <div class="a">${["gate","who","what","fact","depth","role","extract_kind"].map(val).join("")}</div>
-    <div class="a">${r.gate_disagrees?`<span class="chip warn">classifier and extractor disagree on "not about him"</span>`:""}${r.who_disagrees?`<span class="chip warn">extract and classifier disagree on "himself"</span>`:""}</div></li>`;
+    <div class="a">${DIMS.filter(d => d.key !== "fighter").map(d => val(d.key)).join("")}</div>
+    <div class="a">${DATA.flags.filter(f => r.flags[f]).map(f => `<span class="chip warn">${esc(ALL.flag_labels[f])}</span>`).join("")}</div></li>`;
 }
 
 /** The claims of the selected cell, doubtful first. */
@@ -262,27 +271,37 @@ function drawPanel(){
   panel.innerHTML = `<h2>${esc(LABEL[state.x])}: ${esc(human(a))} × ${esc(LABEL[state.y])}: ${esc(human(b))} · ${list.length} claim${list.length>1?"s":""}, ${list.reduce((s,c)=>s+c.n,0)} articles</h2>
     <div class="hint">${esc(human(a))}: ${esc(DEF[state.x+":"+a])}<br>${esc(human(b))}: ${esc(DEF[state.y+":"+b])}</div>
     <ul class="claims">${list.map(c => `<li><details><summary><span class="key">${c.key}</span><span class="lbl">${esc(c.label)} <small>extract of #${c.first}</small></span>
-      <span class="chips"><span class="chip fighter">${esc(c.v.fighter)}</span><span class="chip">${c.n} article${c.n>1?"s":""}</span><span class="chip">about him: ${esc(c.v.gate)}</span><span class="chip">${esc(human(c.v.fact))}</span><span class="chip">${esc(human(c.v.depth))}</span>
-      ${c.readers_split?`<span class="chip warn">readers split</span>`:""}${articlesSplit(c)?`<span class="chip warn">articles in different cells</span>`:""}${c.gate_disagrees?`<span class="chip warn">disagree on "not about him"</span>`:""}${c.who_disagrees?`<span class="chip warn">disagree on "himself"</span>`:""}</span></summary>
+      <span class="chips"><span class="chip fighter">${esc(c.v.fighter)}</span><span class="chip">${c.n} article${c.n>1?"s":""}</span><span class="chip">about him: ${esc(c.v.gate)}</span><span class="chip">${esc(human(c.v.fact))}</span>
+      ${DATA.flags.filter(f => c.flags[f]).map(f => `<span class="chip warn">${esc(ALL.flag_labels[f])}</span>`).join("")}${articlesSplit(c)?`<span class="chip warn">articles in different cells</span>`:""}</span></summary>
       <ul class="arts">${c.rows.map(article).join("")}</ul></details></li>`).join("")}</ul>`;
 }
 
 /** Redraw everything that depends on the filters. */
 function drawAll(){ drawGates(); drawSlice(); drawFacets(); drawGrid(); drawPanel(); }
 
-// Axis pickers
-for (const id of ["xsel","ysel"]) document.getElementById(id).innerHTML = DIMS.map(d => `<option value="${d.key}">${esc(d.label)}</option>`).join("");
-document.getElementById("xsel").value = state.x; document.getElementById("ysel").value = state.y;
+/** Switch the page to one classifier version: its dimensions, values, claims and default axes. @param {string} key */
+function loadVersion(key){
+  DATA = ALL.versions.find(v => v.key === key);
+  DIMS = DATA.dims; LABEL = Object.fromEntries(DIMS.map(d => [d.key, d.label]));
+  DEF = {}; for (const d of DIMS) for (const o of DATA.values[d.key]) DEF[d.key+":"+o.key] = o.def;
+  [state.x, state.y] = DATA.axes; state.filters = {}; state.gateFlag = false; state.cell = null;
+  for (const id of ["xsel","ysel"]) document.getElementById(id).innerHTML = DIMS.map(d => `<option value="${d.key}">${esc(d.label)}</option>`).join("");
+  document.getElementById("xsel").value = state.x; document.getElementById("ysel").value = state.y;
+  document.getElementById("defs").innerHTML = DIMS.filter(d => d.key !== "fighter").map(d =>
+    `<h2>${esc(d.label)}</h2><dl>${DATA.values[d.key].map(o => `<dt>${esc(human(o.key))}</dt><dd>${esc(o.def)}</dd>`).join("")}</dl>`).join("");
+  document.getElementById("stamp").textContent = `answers: ${DATA.stamp}  ·  grouping: golden ${ALL.ruler}`;
+  document.querySelectorAll("#versions button").forEach(b => b.setAttribute("aria-pressed", String(b.dataset.v === key)));
+  drawAll();
+}
+
+// Controls
+document.getElementById("versions").innerHTML = ALL.versions.map(v => `<button data-v="${v.key}" aria-pressed="false">${v.key}</button>`).join("");
+document.querySelectorAll("#versions button").forEach(b => b.onclick = () => loadVersion(b.dataset.v));
 document.getElementById("xsel").onchange = e => { state.x = e.target.value; state.cell = null; drawAll(); };
 document.getElementById("ysel").onchange = e => { state.y = e.target.value; state.cell = null; drawAll(); };
 document.querySelectorAll("#units button").forEach(b => b.onclick = () => { state.unit = b.dataset.u; document.querySelectorAll("#units button").forEach(x => x.setAttribute("aria-pressed", String(x===b))); drawGrid(); });
 document.getElementById("doubtonly").onchange = e => { state.doubtOnly = e.target.checked; state.cell = null; drawAll(); };
 document.getElementById("showempty").onchange = e => { state.showEmpty = e.target.checked; drawGrid(); };
-
-// Definitions and version stamp
-document.getElementById("defs").innerHTML = DIMS.filter(d => d.key !== "fighter").map(d =>
-  `<h2>${esc(d.label)}</h2><dl>${DATA.values[d.key].map(o => `<dt>${esc(human(o.key))}</dt><dd>${esc(o.def)}</dd>`).join("")}</dl>`).join("");
-document.getElementById("stamp").textContent = `answers: ${DATA.version}  ·  grouping: golden ${DATA.ruler}`;
 
 /** Apply a colour theme and remember it if storage allows. @param {string} t system, light or dark */
 function setTheme(t){
@@ -294,5 +313,5 @@ document.querySelectorAll("#theme button").forEach(b => b.onclick = () => setThe
 let savedTheme = "system"; try { savedTheme = localStorage.getItem("claim-map-theme") || "system"; } catch(e) {}
 setTheme(savedTheme);
 
-drawAll();
+loadVersion(ALL.versions[0].key);
 </script>

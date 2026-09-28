@@ -19,6 +19,7 @@ ruling by Anton in `verdicts.md`.
 | `answers/classifier.json` | the six classifier answers per article, majority of three readers, plus the tier; `readers` = each of the three readers' probability over every option | 300 |
 | `answers/questions.json` | the six questions as asked: instructions and every option's text | 6 |
 | `answers/classifier-v2.json` | the five v2 questions from the answers-to-buckets experiment (role, speaker, act, kind, depth), majority of three orders; shown on the board, decides nothing | 300 |
+| `answers/classifier-v3.json` | the classifier on the approved axes of `axes.md`: gate, source, act, fact, firmness, each with a paired 'does an option fit' question; majority of three option orders, `readers` = each order's probabilities. From experiments/2026-09-27-axes-v3; machine answers, not labels | 300 |
 | `answers/types-fable.json` | Fable's sorting of the 129 v3 claims (claim-067 is now inside claim-054) into four families and 28 types (the types report); a pre-fill to check against the text, not a ruling | 129 |
 | `answers/bout-prefill.json` | the extractor's most common `bout` per claim; a pre-fill, not a ruling | 63 filled |
 | `answers/extractor.json` | the extractor's answer per article: kind, extract (field `claim`), occasion, actor, opponent, event, date; `second_run` = the same prompt run again unchanged; `fields` and `kind_options` = the prompt's own definitions | 300 |
