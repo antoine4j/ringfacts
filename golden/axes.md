@@ -30,6 +30,16 @@ scores with that in mind.
 | **partly** | he is one of several subjects and gets real content: a preview or feature on a fight of his covering both fighters | another fighter's own news counts only when the article itself ties it to a fight between the two, booked or already fought and being discussed; a fighter only rumoured or calling him out does not (Anton, 2026-09-27: no named storyline in the rule) |
 | **no** | he is named in passing, as background, in a list or only in links; the news is someone else's | "mentioned near him is not about him" (goals.md); him speaking about someone else is **no**, even at length (goals.md, 2026-09-04) |
 
+**Aboutness is computed, not asked** (Anton, 2026-09-27). From v4 the
+classifier answers two separate things: how *central* he is (a score: not
+in it → mentioned → one of several → the main subject) and whether the
+article *carries news about him* (the fact answer, how firm, and yes/no
+questions for his result, booking, health, return and him speaking).
+Aboutness is a formula over those, fitted to Anton's gate labels on the
+tune third and scored once on the test third; the cut-off stays a
+per-fighter setting. #683 shows why: one line on a results page (low
+centrality) that carries his result.
+
 **The gate is a signal, not a blade** (Anton, 2026-09-27, after #683: his
 result, one line on a results page, answered "not about him"). Every axis
 is answered and kept whatever the gate says; the gate's probabilities sit

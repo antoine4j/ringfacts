@@ -1,7 +1,7 @@
 {
- "about_him": {
+ "centrality": {
   "type": "score",
-  "instructions": "How much is this article about the watched fighter? Judge by the main news the article is built on - what the headline and the article as a whole are about - not by what its first sentences say. A single line counts when it carries news about him, such as his result on a card results page.",
+  "instructions": "How central is the watched fighter to this article? Judge by how much of the article is about him - his part of the main news the article is built on - not by whether the article carries news about him (other questions ask that) and not by what its first sentences say.",
   "criteria": [
    {
     "summary": "He is not in the article's content at all.",
@@ -10,26 +10,26 @@
     ]
    },
    {
-    "summary": "He is only mentioned: nothing new is said about him.",
+    "summary": "He is only mentioned.",
     "signals": [
      "his past fight retold as background in someone else's story",
-     "his name in a list, ranking or comparison with nothing new in his entry",
+     "his name or one line in a list, card, ranking, results page or comparison",
      "he talks about another fighter or the sport, not about himself, even at length"
     ]
    },
    {
-    "summary": "He is one of the subjects, or his entry carries news about him.",
+    "summary": "He is one of several subjects.",
     "signals": [
      "a preview or feature on a fight of his covering both fighters",
-     "his line on a card, results list or roundup gives his result, booking or weigh-in",
+     "an article sharing its attention between him and one or two others",
      "another fighter's own news that the article ties to a fight between the two of them"
     ]
    },
    {
-    "summary": "The article's main news is about him.",
+    "summary": "He is the main subject.",
     "signals": [
-     "something he did, or said about himself or his own career",
-     "something someone said, reported or predicted about him"
+     "the article is about something he did, or said about himself or his own career",
+     "the article is about something someone said, reported or predicted about him"
     ]
    }
   ]
