@@ -132,7 +132,12 @@
   "instructions": "What new FACT about the watched fighter does the article carry, if any? A fact is something that happened or is set to happen, not an opinion about him. Choose by the article's main news. An interview, a press conference or a media day is a place where things are said, not a fact: if something said there is the news, choose that fact, or none if it is only talk.",
   "criteria": {
    "next_fight": {
-    "what": "News of his next fight: an opponent, a date, an offer, talks, a cancellation, or when he will be ready to fight again."
+    "what": "News of his next fight: an opponent, a date, an offer, talks, a cancellation, or when he will be ready to fight again.",
+    "not_for": "His injury or recovery itself, with no word on when he can fight (that is health); a wish or an opinion about who he should fight, such as a callout or a pundit's pick (that is no fact).",
+    "examples": [
+     "The promotion announces his bout for March.",
+     "His coach says he will be ready to fight by December."
+    ]
    },
    "result": {
     "what": "The outcome of a fight of his."
@@ -141,7 +146,12 @@
     "what": "The routine of a fight of his, and nothing more: a weigh-in, a face-off, an open workout, the card order, start times, how to watch."
    },
    "health": {
-    "what": "An injury, a medical issue, surgery or recovery."
+    "what": "An injury, a medical issue, surgery or recovery.",
+    "not_for": "Only when he will be ready to fight again, with no injury or recovery described (that is his next fight).",
+    "examples": [
+     "He had knee surgery and is in rehab.",
+     "He pulled out with a broken hand."
+    ]
    },
    "career_move": {
     "what": "Retirement, a contract, a move of weight class or team, a title vacated, stripped or awarded."
@@ -200,11 +210,19 @@
  },
  "reports_his_next_fight": {
   "type": "noul",
-  "instructions": "Does the article report news of his next fight: an opponent, a date, an offer, a cancellation, or when he will be ready?"
+  "instructions": "Does the article report news of his next fight: an opponent, a date, an offer, a cancellation, or when he will be ready?",
+  "criteria": {
+   "true": "The article reports something about his next fight as happening or planned: an opponent or a date set, offered, negotiated or cancelled, or when he will be ready to fight again.",
+   "false": "Nothing about his next fight, or only wishes and opinions about it (someone calling him out, a pundit saying who he should fight), or his recovery with no word on when he can fight."
+  }
  },
  "reports_his_health": {
   "type": "noul",
-  "instructions": "Does the article report an injury, a medical issue or a recovery of his?"
+  "instructions": "Does the article report an injury, a medical issue or a recovery of his?",
+  "criteria": {
+   "true": "The article reports an injury, an illness, a medical procedure or a recovery of his.",
+   "false": "No injury, illness or recovery of his is described, including an article that only says when he will be ready to fight again."
+  }
  },
  "he_speaks": {
   "type": "noul",

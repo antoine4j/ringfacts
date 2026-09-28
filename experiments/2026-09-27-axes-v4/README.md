@@ -60,6 +60,12 @@ is computed from separate signals instead of asked as one cut?
   about his next fight (opponent, date, offer, cancellation, readiness);
   how firm (Q5) still separates "ready in December" (reported) from a
   signed bout (official).
+- **Next fight and health each say where the other begins.** The docs ask
+  for `true` / `false` definitions when a yes/no boundary is subtle, and
+  for `not_for` where options overlap. "Ready in December" is his next
+  fight; surgery with no word on when he can fight is health; a callout or
+  a pundit's pick is opinion, not news of his next fight (it can still
+  surface in how firm, as a wish, if a later version asks it that way).
 
 ## Not in v4, on purpose
 

@@ -49,6 +49,9 @@ def section(number, key, question):
             signals = "".join(f"<li>{e(s)}</li>" for s in d.get("signals", []))
             rows.append(f'<tr><td class="o">level {level}</td><td>{e(d["summary"])}{f"<ul>{signals}</ul>" if signals else ""}</td></tr>')
         body = f"<table>{''.join(rows)}</table>"
+    elif "criteria" in question:
+        body = "".join(f'<tr><td class="o">{answer}</td><td>{e(question["criteria"][side])}</td></tr>' for side, answer in (("true", "yes"), ("false", "no")))
+        body = f"<table>{body}</table>"
     else:
         body = ""
     fit = " fit" if key.endswith("_fit") else ""

@@ -179,6 +179,14 @@ Rules for adding to it:
   `examples` for an option; `summary`, `signals` for a level; `true` /
   `false` definitions for a noul — "when the model confuses neighbours".
 - **State is best sent as an object with named fields**, not one string.
+- **Writing rules, re-read 2026-09-27** (docs.typesafe.ai/primitives,
+  /choice, /noul): one condition per yes/no question (no "A and B");
+  add `true` / `false` definitions when the yes/no boundary is subtle;
+  phrase so a higher value means yes, no double negatives; an option is a
+  plain string when it is distinct, `null` when its name says it all, an
+  object with `what` / `not_for` / `examples` only where neighbours overlap;
+  overlapping options are the first pitfall listed, because they lower
+  confidence. Check every question edit against these pages, not notes.
 - **English is the primary language**; others are "handled but not
   equally well". Most golden articles are Spanish, Ukrainian or Russian.
 - **Known weak spots of jev-1.13:** literal reading ("scoping words,
