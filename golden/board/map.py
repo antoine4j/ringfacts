@@ -53,6 +53,15 @@ CENTRALITY_TILES = [["main_subject", "Main subject", "he is what the article is 
                     ["not_in_content", "Not in the content", "only in links or furniture"]]
 
 VERSIONS = [
+    {"key": "v6", "file": "answers/classifier-v6.json",
+     "stamp": "classifier v6 · pass 1 only, one reader (v5 tuned on a 59-article answer key; how firm composed with fact)",
+     "dims": [("centrality", "How central", "centrality"), ("source", "Source", "source"), ("act", "Act", "act"),
+              ("fact", "Fact asserted", "fact"), ("firmness", "How firm", "firmness"),
+              ("result", "Reports his result", "reports_his_result"), ("next_fight", "Reports his next fight", "reports_his_next_fight"),
+              ("health", "Reports his health", "reports_his_health"), ("he_speaks", "He speaks", "he_speaks")],
+     "axes": ("fact", "centrality"), "tiles": ("centrality", CENTRALITY_TILES),
+     "disagree": ["Centrality and extractor disagree", 'for the claim as a whole, one says "only mentioned or less" / "about someone else", the other does not'],
+     "flag_labels": {"gate_disagrees": 'centrality ("only mentioned" or less) and extractor ("about someone else") disagree'}},
     {"key": "v5", "file": "answers/classifier-v5.json",
      "stamp": "classifier v5 · pass 1 only, one reader (v4 with the four yes/no questions reworded)",
      "dims": [("centrality", "How central", "centrality"), ("source", "Source", "source"), ("act", "Act", "act"),
@@ -80,7 +89,7 @@ FLAG_LABELS = {
     "contradiction": "source and act contradict each other",
     "fact_disagrees": "the fact answer and its yes/no question disagree",
     "speaks_disagrees": 'source is "himself" but "he speaks" says no',
-    "unsure": "an unsure answer: a choice under 40% confidence, or a yes/no between 30% and 70%",
+    "unsure": "an unsure answer: source, act or fact under 40% confidence",
 }
 
 
@@ -134,7 +143,7 @@ def article_row(version, article, answers, extract):
         if question:
             values[key], agree[key] = answers[question]["choice"], answers[question]["agree"]
     flags = {}
-    if version["key"] == "v5":
+    if version["key"] in ("v5", "v6"):
         return v5_row(version, article, answers, extract, values, agree)
     if version["key"] == "v2":
         values["gate"], flags["gate_disagrees"] = v2_gate(answers, extract_kind)
@@ -164,9 +173,9 @@ def article_row(version, article, answers, extract):
 
 
 def v5_row(version, article, answers, extract, values, agree):
-    """What the map shows for one article under v5, whose answers include scores and yes/no.
+    """What the map shows for one article under v5 or v6, whose answers include scores and yes/no.
 
-    @param version: the v5 entry of VERSIONS
+    @param version: the v5 or v6 entry of VERSIONS
     @param article: the golden article
     @param answers: the article's v5 answers
     @param extract: the extractor's answers for the article
@@ -185,8 +194,7 @@ def v5_row(version, article, answers, extract, values, agree):
              "fact_disagrees": any((values["fact"] == fact and values[twin] == "no") or (values["fact"] != fact and values[twin] == "yes")
                                    for fact, twin in V5_FACT_TWINS.items()),
              "speaks_disagrees": speaker_is_him and values["he_speaks"] == "no",
-             "unsure": any(a["conf"] < V5_UNSURE_CHOICE for a in answers.values() if "yes" not in a and "score" not in a)
-                       or any(a["choice"] == "unsure" for a in answers.values() if "yes" in a)}
+             "unsure": any(a["conf"] < V5_UNSURE_CHOICE for a in answers.values() if "yes" not in a and "score" not in a)}
     values["extract_kind"], values["fighter"] = extract_kind, surname(article["subject"])
     return {"id": str(article["id"]), "date": str(article["published_at"])[:10], "source": article["source"],
             "title": article["title"], "url": article.get("resolved_url") or article["url"],

@@ -1,0 +1,1413 @@
+{
+ "label": "iter4",
+ "variants": "variants/iter4.json",
+ "part": "tune",
+ "model": "jev-1.13.0",
+ "answers": {
+  "991": {
+   "source__s2": {
+    "type": "choice",
+    "choice": "promotion",
+    "confidence": 1.0,
+    "probabilities": {
+     "fans": 0.0,
+     "opponent_side": 0.0,
+     "other_fighter": 0.0,
+     "his_team": 0.0,
+     "his_manager": 0.0,
+     "none_of_these": 0.0,
+     "himself": 0.0,
+     "no_one": 0.0,
+     "promotion": 1.0,
+     "media": 0.0
+    }
+   },
+   "source__s3": {
+    "type": "choice",
+    "choice": "promotion",
+    "confidence": 1.0,
+    "probabilities": {
+     "fans": 0.0,
+     "opponent_side": 0.0,
+     "other_fighter": 0.0,
+     "his_team": 0.0,
+     "his_manager": 0.0,
+     "none_of_these": 0.0,
+     "no_one": 0.0,
+     "himself": 0.0,
+     "promotion": 1.0,
+     "media": 0.0
+    }
+   }
+  },
+  "90": {
+   "source__s2": {
+    "type": "choice",
+    "choice": "his_manager",
+    "confidence": 0.96,
+    "probabilities": {
+     "fans": 0.0,
+     "his_team": 0.0,
+     "his_manager": 0.97,
+     "promotion": 0.0,
+     "media": 0.0,
+     "none_of_these": 0.0,
+     "no_one": 0.0,
+     "opponent_side": 0.03,
+     "other_fighter": 0.0,
+     "himself": 0.0
+    }
+   },
+   "source__s3": {
+    "type": "choice",
+    "choice": "his_manager",
+    "confidence": 0.98,
+    "probabilities": {
+     "fans": 0.0,
+     "no_one": 0.0,
+     "his_manager": 0.98,
+     "promotion": 0.0,
+     "media": 0.0,
+     "none_of_these": 0.0,
+     "his_team": 0.0,
+     "opponent_side": 0.02,
+     "other_fighter": 0.0,
+     "himself": 0.0
+    }
+   }
+  },
+  "833": {
+   "source__s2": {
+    "type": "choice",
+    "choice": "media",
+    "confidence": 0.96,
+    "probabilities": {
+     "no_one": 0.0,
+     "media": 0.97,
+     "other_fighter": 0.0,
+     "opponent_side": 0.01,
+     "fans": 0.0,
+     "none_of_these": 0.0,
+     "himself": 0.02,
+     "his_manager": 0.0,
+     "promotion": 0.0,
+     "his_team": 0.0
+    }
+   },
+   "source__s3": {
+    "type": "choice",
+    "choice": "media",
+    "confidence": 0.95,
+    "probabilities": {
+     "no_one": 0.0,
+     "media": 0.97,
+     "other_fighter": 0.0,
+     "opponent_side": 0.01,
+     "fans": 0.0,
+     "none_of_these": 0.0,
+     "himself": 0.02,
+     "his_manager": 0.0,
+     "promotion": 0.0,
+     "his_team": 0.0
+    }
+   }
+  },
+  "683": {
+   "source__s2": {
+    "type": "choice",
+    "choice": "no_one",
+    "confidence": 0.98,
+    "probabilities": {
+     "promotion": 0.0,
+     "his_team": 0.0,
+     "his_manager": 0.0,
+     "none_of_these": 0.0,
+     "opponent_side": 0.0,
+     "other_fighter": 0.0,
+     "fans": 0.0,
+     "himself": 0.0,
+     "no_one": 1.0,
+     "media": 0.0
+    }
+   },
+   "source__s3": {
+    "type": "choice",
+    "choice": "no_one",
+    "confidence": 0.95,
+    "probabilities": {
+     "promotion": 0.0,
+     "his_team": 0.0,
+     "his_manager": 0.0,
+     "none_of_these": 0.0,
+     "opponent_side": 0.01,
+     "other_fighter": 0.02,
+     "fans": 0.0,
+     "himself": 0.0,
+     "no_one": 0.96,
+     "media": 0.01
+    }
+   }
+  },
+  "732": {
+   "source__s2": {
+    "type": "choice",
+    "choice": "himself",
+    "confidence": 0.78,
+    "probabilities": {
+     "promotion": 0.01,
+     "opponent_side": 0.0,
+     "fans": 0.0,
+     "himself": 0.81,
+     "his_manager": 0.0,
+     "other_fighter": 0.01,
+     "his_team": 0.0,
+     "media": 0.02,
+     "none_of_these": 0.0,
+     "no_one": 0.14
+    }
+   },
+   "source__s3": {
+    "type": "choice",
+    "choice": "himself",
+    "confidence": 0.73,
+    "probabilities": {
+     "promotion": 0.01,
+     "opponent_side": 0.0,
+     "his_manager": 0.0,
+     "himself": 0.75,
+     "fans": 0.0,
+     "other_fighter": 0.01,
+     "his_team": 0.0,
+     "media": 0.02,
+     "none_of_these": 0.0,
+     "no_one": 0.21
+    }
+   }
+  },
+  "349": {
+   "source__s2": {
+    "type": "choice",
+    "choice": "other_fighter",
+    "confidence": 1.0,
+    "probabilities": {
+     "opponent_side": 0.0,
+     "other_fighter": 1.0,
+     "himself": 0.0,
+     "promotion": 0.0,
+     "his_team": 0.0,
+     "none_of_these": 0.0,
+     "media": 0.0,
+     "no_one": 0.0,
+     "his_manager": 0.0,
+     "fans": 0.0
+    }
+   },
+   "source__s3": {
+    "type": "choice",
+    "choice": "other_fighter",
+    "confidence": 1.0,
+    "probabilities": {
+     "other_fighter": 1.0,
+     "himself": 0.0,
+     "opponent_side": 0.0,
+     "his_manager": 0.0,
+     "media": 0.0,
+     "none_of_these": 0.0,
+     "his_team": 0.0,
+     "no_one": 0.0,
+     "promotion": 0.0,
+     "fans": 0.0
+    }
+   }
+  },
+  "620": {
+   "source__s2": {
+    "type": "choice",
+    "choice": "himself",
+    "confidence": 1.0,
+    "probabilities": {
+     "media": 0.0,
+     "promotion": 0.0,
+     "opponent_side": 0.0,
+     "his_team": 0.0,
+     "fans": 0.0,
+     "no_one": 0.0,
+     "himself": 1.0,
+     "other_fighter": 0.0,
+     "his_manager": 0.0,
+     "none_of_these": 0.0
+    }
+   },
+   "source__s3": {
+    "type": "choice",
+    "choice": "himself",
+    "confidence": 1.0,
+    "probabilities": {
+     "media": 0.0,
+     "promotion": 0.0,
+     "opponent_side": 0.0,
+     "his_team": 0.0,
+     "fans": 0.0,
+     "himself": 1.0,
+     "no_one": 0.0,
+     "other_fighter": 0.0,
+     "his_manager": 0.0,
+     "none_of_these": 0.0
+    }
+   }
+  },
+  "261": {
+   "source__s2": {
+    "type": "choice",
+    "choice": "other_fighter",
+    "confidence": 0.66,
+    "probabilities": {
+     "his_manager": 0.0,
+     "his_team": 0.0,
+     "promotion": 0.01,
+     "fans": 0.0,
+     "none_of_these": 0.08,
+     "media": 0.0,
+     "opponent_side": 0.03,
+     "himself": 0.14,
+     "no_one": 0.05,
+     "other_fighter": 0.69
+    }
+   },
+   "source__s3": {
+    "type": "choice",
+    "choice": "other_fighter",
+    "confidence": 0.73,
+    "probabilities": {
+     "his_manager": 0.0,
+     "his_team": 0.0,
+     "media": 0.0,
+     "fans": 0.0,
+     "none_of_these": 0.04,
+     "promotion": 0.0,
+     "opponent_side": 0.02,
+     "himself": 0.13,
+     "no_one": 0.04,
+     "other_fighter": 0.77
+    }
+   }
+  },
+  "148": {
+   "source__s2": {
+    "type": "choice",
+    "choice": "other_fighter",
+    "confidence": 0.86,
+    "probabilities": {
+     "his_manager": 0.0,
+     "his_team": 0.01,
+     "media": 0.0,
+     "other_fighter": 0.87,
+     "fans": 0.0,
+     "himself": 0.0,
+     "none_of_these": 0.0,
+     "promotion": 0.0,
+     "opponent_side": 0.12,
+     "no_one": 0.0
+    }
+   },
+   "source__s3": {
+    "type": "choice",
+    "choice": "other_fighter",
+    "confidence": 0.85,
+    "probabilities": {
+     "his_manager": 0.0,
+     "his_team": 0.02,
+     "media": 0.0,
+     "other_fighter": 0.87,
+     "fans": 0.0,
+     "himself": 0.0,
+     "none_of_these": 0.0,
+     "promotion": 0.0,
+     "opponent_side": 0.11,
+     "no_one": 0.0
+    }
+   }
+  },
+  "953": {
+   "source__s2": {
+    "type": "choice",
+    "choice": "other_fighter",
+    "confidence": 0.82,
+    "probabilities": {
+     "media": 0.0,
+     "himself": 0.0,
+     "no_one": 0.01,
+     "his_team": 0.0,
+     "his_manager": 0.0,
+     "promotion": 0.0,
+     "none_of_these": 0.0,
+     "other_fighter": 0.84,
+     "opponent_side": 0.15000000000000002,
+     "fans": 0.0
+    }
+   },
+   "source__s3": {
+    "type": "choice",
+    "choice": "other_fighter",
+    "confidence": 0.77,
+    "probabilities": {
+     "media": 0.0,
+     "himself": 0.03,
+     "no_one": 0.03,
+     "his_team": 0.0,
+     "his_manager": 0.0,
+     "promotion": 0.0,
+     "none_of_these": 0.0,
+     "opponent_side": 0.15,
+     "other_fighter": 0.79,
+     "fans": 0.0
+    }
+   }
+  },
+  "921": {
+   "source__s2": {
+    "type": "choice",
+    "choice": "opponent_side",
+    "confidence": 0.72,
+    "probabilities": {
+     "promotion": 0.0,
+     "media": 0.02,
+     "no_one": 0.0,
+     "fans": 0.0,
+     "other_fighter": 0.22,
+     "none_of_these": 0.0,
+     "his_manager": 0.0,
+     "himself": 0.0,
+     "his_team": 0.0,
+     "opponent_side": 0.76
+    }
+   },
+   "source__s3": {
+    "type": "choice",
+    "choice": "opponent_side",
+    "confidence": 0.74,
+    "probabilities": {
+     "promotion": 0.0,
+     "media": 0.01,
+     "no_one": 0.0,
+     "fans": 0.0,
+     "other_fighter": 0.21,
+     "none_of_these": 0.0,
+     "his_manager": 0.0,
+     "himself": 0.01,
+     "his_team": 0.0,
+     "opponent_side": 0.77
+    }
+   }
+  },
+  "4": {
+   "source__s2": {
+    "type": "choice",
+    "choice": "other_fighter",
+    "confidence": 0.96,
+    "probabilities": {
+     "opponent_side": 0.02,
+     "fans": 0.0,
+     "none_of_these": 0.0,
+     "no_one": 0.0,
+     "other_fighter": 0.96,
+     "promotion": 0.0,
+     "media": 0.02,
+     "his_manager": 0.0,
+     "his_team": 0.0,
+     "himself": 0.0
+    }
+   },
+   "source__s3": {
+    "type": "choice",
+    "choice": "other_fighter",
+    "confidence": 0.97,
+    "probabilities": {
+     "opponent_side": 0.01,
+     "fans": 0.0,
+     "none_of_these": 0.0,
+     "no_one": 0.0,
+     "other_fighter": 0.98,
+     "promotion": 0.0,
+     "media": 0.01,
+     "his_manager": 0.0,
+     "his_team": 0.0,
+     "himself": 0.0
+    }
+   }
+  },
+  "1161": {
+   "source__s2": {
+    "type": "choice",
+    "choice": "other_fighter",
+    "confidence": 0.73,
+    "probabilities": {
+     "other_fighter": 0.77,
+     "his_team": 0.0,
+     "no_one": 0.04,
+     "none_of_these": 0.02,
+     "his_manager": 0.0,
+     "fans": 0.0,
+     "promotion": 0.0,
+     "opponent_side": 0.01,
+     "media": 0.0,
+     "himself": 0.16
+    }
+   },
+   "source__s3": {
+    "type": "choice",
+    "choice": "other_fighter",
+    "confidence": 0.62,
+    "probabilities": {
+     "other_fighter": 0.66,
+     "his_team": 0.0,
+     "no_one": 0.04,
+     "none_of_these": 0.03,
+     "his_manager": 0.0,
+     "fans": 0.0,
+     "media": 0.0,
+     "opponent_side": 0.01,
+     "promotion": 0.0,
+     "himself": 0.26
+    }
+   }
+  },
+  "625": {
+   "source__s2": {
+    "type": "choice",
+    "choice": "no_one",
+    "confidence": 0.85,
+    "probabilities": {
+     "media": 0.01,
+     "fans": 0.0,
+     "opponent_side": 0.0,
+     "himself": 0.11,
+     "no_one": 0.87,
+     "his_manager": 0.0,
+     "promotion": 0.01,
+     "other_fighter": 0.0,
+     "none_of_these": 0.0,
+     "his_team": 0.0
+    }
+   },
+   "source__s3": {
+    "type": "choice",
+    "choice": "no_one",
+    "confidence": 0.87,
+    "probabilities": {
+     "other_fighter": 0.0,
+     "fans": 0.0,
+     "opponent_side": 0.0,
+     "himself": 0.1,
+     "no_one": 0.89,
+     "his_manager": 0.0,
+     "promotion": 0.0,
+     "media": 0.01,
+     "none_of_these": 0.0,
+     "his_team": 0.0
+    }
+   }
+  },
+  "743": {
+   "source__s2": {
+    "type": "choice",
+    "choice": "no_one",
+    "confidence": 0.59,
+    "probabilities": {
+     "media": 0.31,
+     "his_manager": 0.0,
+     "his_team": 0.0,
+     "fans": 0.0,
+     "other_fighter": 0.0,
+     "himself": 0.04,
+     "opponent_side": 0.0,
+     "none_of_these": 0.01,
+     "promotion": 0.0,
+     "no_one": 0.64
+    }
+   },
+   "source__s3": {
+    "type": "choice",
+    "choice": "no_one",
+    "confidence": 0.71,
+    "probabilities": {
+     "his_team": 0.0,
+     "his_manager": 0.0,
+     "media": 0.23,
+     "fans": 0.0,
+     "other_fighter": 0.0,
+     "himself": 0.02,
+     "opponent_side": 0.0,
+     "no_one": 0.74,
+     "promotion": 0.0,
+     "none_of_these": 0.01
+    }
+   }
+  },
+  "510": {
+   "source__s2": {
+    "type": "choice",
+    "choice": "no_one",
+    "confidence": 0.57,
+    "probabilities": {
+     "his_manager": 0.0,
+     "other_fighter": 0.14,
+     "fans": 0.0,
+     "media": 0.08,
+     "opponent_side": 0.04,
+     "himself": 0.0,
+     "promotion": 0.12,
+     "no_one": 0.61,
+     "none_of_these": 0.01,
+     "his_team": 0.0
+    }
+   },
+   "source__s3": {
+    "type": "choice",
+    "choice": "no_one",
+    "confidence": 0.45,
+    "probabilities": {
+     "his_manager": 0.0,
+     "other_fighter": 0.17,
+     "media": 0.12,
+     "fans": 0.0,
+     "opponent_side": 0.05,
+     "himself": 0.0,
+     "promotion": 0.14,
+     "no_one": 0.51,
+     "none_of_these": 0.01,
+     "his_team": 0.0
+    }
+   }
+  },
+  "115": {
+   "source__s2": {
+    "type": "choice",
+    "choice": "his_team",
+    "confidence": 0.68,
+    "probabilities": {
+     "media": 0.04,
+     "his_team": 0.71,
+     "his_manager": 0.0,
+     "fans": 0.0,
+     "other_fighter": 0.01,
+     "himself": 0.0,
+     "none_of_these": 0.03,
+     "opponent_side": 0.0,
+     "promotion": 0.01,
+     "no_one": 0.2
+    }
+   },
+   "source__s3": {
+    "type": "choice",
+    "choice": "his_team",
+    "confidence": 0.77,
+    "probabilities": {
+     "media": 0.02,
+     "his_team": 0.79,
+     "his_manager": 0.0,
+     "other_fighter": 0.01,
+     "fans": 0.0,
+     "himself": 0.0,
+     "none_of_these": 0.02,
+     "opponent_side": 0.0,
+     "promotion": 0.01,
+     "no_one": 0.15
+    }
+   }
+  },
+  "207": {
+   "source__s2": {
+    "type": "choice",
+    "choice": "fans",
+    "confidence": 0.8,
+    "probabilities": {
+     "himself": 0.0,
+     "fans": 0.8099999999999999,
+     "his_manager": 0.0,
+     "no_one": 0.04,
+     "promotion": 0.0,
+     "other_fighter": 0.08,
+     "his_team": 0.0,
+     "none_of_these": 0.01,
+     "media": 0.02,
+     "opponent_side": 0.04
+    }
+   },
+   "source__s3": {
+    "type": "choice",
+    "choice": "fans",
+    "confidence": 0.71,
+    "probabilities": {
+     "himself": 0.0,
+     "fans": 0.75,
+     "his_manager": 0.0,
+     "no_one": 0.04,
+     "promotion": 0.0,
+     "other_fighter": 0.13,
+     "his_team": 0.0,
+     "none_of_these": 0.01,
+     "media": 0.02,
+     "opponent_side": 0.05
+    }
+   }
+  },
+  "224": {
+   "source__s2": {
+    "type": "choice",
+    "choice": "fans",
+    "confidence": 0.61,
+    "probabilities": {
+     "promotion": 0.0,
+     "his_manager": 0.0,
+     "his_team": 0.0,
+     "none_of_these": 0.02,
+     "opponent_side": 0.02,
+     "other_fighter": 0.04,
+     "fans": 0.66,
+     "himself": 0.0,
+     "no_one": 0.25,
+     "media": 0.01
+    }
+   },
+   "source__s3": {
+    "type": "choice",
+    "choice": "fans",
+    "confidence": 0.68,
+    "probabilities": {
+     "promotion": 0.0,
+     "his_team": 0.0,
+     "his_manager": 0.0,
+     "none_of_these": 0.02,
+     "opponent_side": 0.02,
+     "other_fighter": 0.03,
+     "fans": 0.72,
+     "himself": 0.0,
+     "no_one": 0.2,
+     "media": 0.01
+    }
+   }
+  },
+  "1200": {
+   "source__s2": {
+    "type": "choice",
+    "choice": "his_manager",
+    "confidence": 0.88,
+    "probabilities": {
+     "promotion": 0.0,
+     "opponent_side": 0.0,
+     "his_manager": 0.9,
+     "himself": 0.0,
+     "fans": 0.0,
+     "other_fighter": 0.01,
+     "no_one": 0.02,
+     "media": 0.02,
+     "none_of_these": 0.05,
+     "his_team": 0.0
+    }
+   },
+   "source__s3": {
+    "type": "choice",
+    "choice": "his_manager",
+    "confidence": 0.9,
+    "probabilities": {
+     "promotion": 0.0,
+     "opponent_side": 0.0,
+     "fans": 0.0,
+     "himself": 0.01,
+     "his_manager": 0.91,
+     "other_fighter": 0.01,
+     "his_team": 0.0,
+     "media": 0.02,
+     "none_of_these": 0.03,
+     "no_one": 0.02
+    }
+   }
+  },
+  "323": {
+   "source__s2": {
+    "type": "choice",
+    "choice": "his_team",
+    "confidence": 1.0,
+    "probabilities": {
+     "fans": 0.0,
+     "his_manager": 0.0,
+     "promotion": 0.0,
+     "his_team": 1.0,
+     "opponent_side": 0.0,
+     "no_one": 0.0,
+     "media": 0.0,
+     "himself": 0.0,
+     "none_of_these": 0.0,
+     "other_fighter": 0.0
+    }
+   },
+   "source__s3": {
+    "type": "choice",
+    "choice": "his_team",
+    "confidence": 1.0,
+    "probabilities": {
+     "fans": 0.0,
+     "his_manager": 0.0,
+     "promotion": 0.0,
+     "his_team": 1.0,
+     "opponent_side": 0.0,
+     "no_one": 0.0,
+     "media": 0.0,
+     "none_of_these": 0.0,
+     "himself": 0.0,
+     "other_fighter": 0.0
+    }
+   }
+  },
+  "1050": {
+   "source__s2": {
+    "type": "choice",
+    "choice": "opponent_side",
+    "confidence": 0.53,
+    "probabilities": {
+     "fans": 0.0,
+     "his_manager": 0.0,
+     "promotion": 0.03,
+     "his_team": 0.0,
+     "opponent_side": 0.58,
+     "no_one": 0.01,
+     "media": 0.01,
+     "himself": 0.0,
+     "none_of_these": 0.0,
+     "other_fighter": 0.37
+    }
+   },
+   "source__s3": {
+    "type": "choice",
+    "choice": "opponent_side",
+    "confidence": 0.69,
+    "probabilities": {
+     "fans": 0.0,
+     "his_manager": 0.0,
+     "promotion": 0.01,
+     "his_team": 0.0,
+     "opponent_side": 0.73,
+     "no_one": 0.01,
+     "media": 0.01,
+     "himself": 0.0,
+     "none_of_these": 0.0,
+     "other_fighter": 0.24
+    }
+   }
+  },
+  "230": {
+   "source__s2": {
+    "type": "choice",
+    "choice": "media",
+    "confidence": 0.51,
+    "probabilities": {
+     "fans": 0.0,
+     "his_manager": 0.0,
+     "promotion": 0.2,
+     "his_team": 0.0,
+     "opponent_side": 0.0,
+     "media": 0.56,
+     "no_one": 0.16,
+     "none_of_these": 0.03,
+     "himself": 0.02,
+     "other_fighter": 0.02
+    }
+   },
+   "source__s3": {
+    "type": "choice",
+    "choice": "media",
+    "confidence": 0.65,
+    "probabilities": {
+     "fans": 0.0,
+     "his_manager": 0.0,
+     "promotion": 0.14,
+     "his_team": 0.0,
+     "opponent_side": 0.0,
+     "no_one": 0.13,
+     "media": 0.68,
+     "himself": 0.01,
+     "none_of_these": 0.02,
+     "other_fighter": 0.01
+    }
+   }
+  },
+  "10": {
+   "source__s2": {
+    "type": "choice",
+    "choice": "opponent_side",
+    "confidence": 0.6,
+    "probabilities": {
+     "media": 0.0,
+     "his_team": 0.0,
+     "his_manager": 0.25,
+     "fans": 0.0,
+     "other_fighter": 0.08,
+     "himself": 0.01,
+     "none_of_these": 0.01,
+     "promotion": 0.0,
+     "opponent_side": 0.65,
+     "no_one": 0.0
+    }
+   },
+   "source__s3": {
+    "type": "choice",
+    "choice": "opponent_side",
+    "confidence": 0.62,
+    "probabilities": {
+     "media": 0.0,
+     "his_team": 0.0,
+     "his_manager": 0.26,
+     "fans": 0.0,
+     "other_fighter": 0.06,
+     "himself": 0.01,
+     "none_of_these": 0.01,
+     "opponent_side": 0.66,
+     "promotion": 0.0,
+     "no_one": 0.0
+    }
+   }
+  },
+  "909": {
+   "source__s2": {
+    "type": "choice",
+    "choice": "other_fighter",
+    "confidence": 0.92,
+    "probabilities": {
+     "his_manager": 0.0,
+     "other_fighter": 0.93,
+     "fans": 0.02,
+     "media": 0.01,
+     "opponent_side": 0.04,
+     "himself": 0.0,
+     "promotion": 0.0,
+     "no_one": 0.0,
+     "none_of_these": 0.0,
+     "his_team": 0.0
+    }
+   },
+   "source__s3": {
+    "type": "choice",
+    "choice": "other_fighter",
+    "confidence": 0.93,
+    "probabilities": {
+     "his_manager": 0.0,
+     "other_fighter": 0.9299999999999999,
+     "media": 0.01,
+     "fans": 0.02,
+     "opponent_side": 0.03,
+     "himself": 0.01,
+     "promotion": 0.0,
+     "no_one": 0.0,
+     "none_of_these": 0.0,
+     "his_team": 0.0
+    }
+   }
+  },
+  "181": {
+   "source__s2": {
+    "type": "choice",
+    "choice": "other_fighter",
+    "confidence": 0.62,
+    "probabilities": {
+     "other_fighter": 0.66,
+     "his_team": 0.0,
+     "no_one": 0.05,
+     "none_of_these": 0.02,
+     "his_manager": 0.0,
+     "fans": 0.0,
+     "media": 0.01,
+     "opponent_side": 0.02,
+     "promotion": 0.0,
+     "himself": 0.24
+    }
+   },
+   "source__s3": {
+    "type": "choice",
+    "choice": "other_fighter",
+    "confidence": 0.66,
+    "probabilities": {
+     "other_fighter": 0.7,
+     "his_team": 0.0,
+     "no_one": 0.03,
+     "none_of_these": 0.02,
+     "his_manager": 0.0,
+     "fans": 0.0,
+     "media": 0.01,
+     "opponent_side": 0.03,
+     "promotion": 0.0,
+     "himself": 0.21
+    }
+   }
+  },
+  "408": {
+   "source__s2": {
+    "type": "choice",
+    "choice": "other_fighter",
+    "confidence": 0.99,
+    "probabilities": {
+     "promotion": 0.0,
+     "fans": 0.0,
+     "his_manager": 0.0,
+     "none_of_these": 0.0,
+     "opponent_side": 0.01,
+     "media": 0.0,
+     "himself": 0.0,
+     "no_one": 0.0,
+     "his_team": 0.0,
+     "other_fighter": 0.99
+    }
+   },
+   "source__s3": {
+    "type": "choice",
+    "choice": "other_fighter",
+    "confidence": 0.98,
+    "probabilities": {
+     "promotion": 0.0,
+     "none_of_these": 0.0,
+     "his_manager": 0.0,
+     "fans": 0.0,
+     "opponent_side": 0.01,
+     "media": 0.0,
+     "himself": 0.0,
+     "no_one": 0.0,
+     "his_team": 0.0,
+     "other_fighter": 0.99
+    }
+   }
+  },
+  "269": {
+   "source__s2": {
+    "type": "choice",
+    "choice": "other_fighter",
+    "confidence": 0.93,
+    "probabilities": {
+     "promotion": 0.0,
+     "media": 0.0,
+     "fans": 0.0,
+     "himself": 0.0,
+     "his_team": 0.0,
+     "his_manager": 0.0,
+     "no_one": 0.0,
+     "other_fighter": 0.94,
+     "opponent_side": 0.06,
+     "none_of_these": 0.0
+    }
+   },
+   "source__s3": {
+    "type": "choice",
+    "choice": "other_fighter",
+    "confidence": 0.93,
+    "probabilities": {
+     "none_of_these": 0.0,
+     "media": 0.0,
+     "no_one": 0.0,
+     "himself": 0.0,
+     "his_team": 0.0,
+     "his_manager": 0.0,
+     "fans": 0.0,
+     "other_fighter": 0.94,
+     "opponent_side": 0.06,
+     "promotion": 0.0
+    }
+   }
+  },
+  "673": {
+   "source__s2": {
+    "type": "choice",
+    "choice": "media",
+    "confidence": 0.99,
+    "probabilities": {
+     "promotion": 0.0,
+     "his_team": 0.0,
+     "his_manager": 0.0,
+     "none_of_these": 0.0,
+     "opponent_side": 0.0,
+     "other_fighter": 0.0,
+     "fans": 0.0,
+     "himself": 0.0,
+     "no_one": 0.01,
+     "media": 0.99
+    }
+   },
+   "source__s3": {
+    "type": "choice",
+    "choice": "media",
+    "confidence": 0.99,
+    "probabilities": {
+     "promotion": 0.0,
+     "his_team": 0.0,
+     "his_manager": 0.0,
+     "none_of_these": 0.0,
+     "opponent_side": 0.0,
+     "other_fighter": 0.0,
+     "fans": 0.0,
+     "himself": 0.0,
+     "no_one": 0.01,
+     "media": 0.99
+    }
+   }
+  },
+  "1125": {
+   "source__s2": {
+    "type": "choice",
+    "choice": "himself",
+    "confidence": 1.0,
+    "probabilities": {
+     "fans": 0.0,
+     "his_team": 0.0,
+     "media": 0.0,
+     "himself": 1.0,
+     "none_of_these": 0.0,
+     "opponent_side": 0.0,
+     "his_manager": 0.0,
+     "no_one": 0.0,
+     "promotion": 0.0,
+     "other_fighter": 0.0
+    }
+   },
+   "source__s3": {
+    "type": "choice",
+    "choice": "himself",
+    "confidence": 1.0,
+    "probabilities": {
+     "fans": 0.0,
+     "his_team": 0.0,
+     "media": 0.0,
+     "himself": 1.0,
+     "none_of_these": 0.0,
+     "opponent_side": 0.0,
+     "his_manager": 0.0,
+     "no_one": 0.0,
+     "promotion": 0.0,
+     "other_fighter": 0.0
+    }
+   }
+  },
+  "746": {
+   "source__s2": {
+    "type": "choice",
+    "choice": "himself",
+    "confidence": 0.86,
+    "probabilities": {
+     "media": 0.02,
+     "promotion": 0.01,
+     "no_one": 0.09,
+     "fans": 0.0,
+     "other_fighter": 0.0,
+     "none_of_these": 0.0,
+     "his_manager": 0.0,
+     "himself": 0.88,
+     "opponent_side": 0.0,
+     "his_team": 0.0
+    }
+   },
+   "source__s3": {
+    "type": "choice",
+    "choice": "himself",
+    "confidence": 0.85,
+    "probabilities": {
+     "media": 0.01,
+     "promotion": 0.0,
+     "fans": 0.0,
+     "no_one": 0.12,
+     "other_fighter": 0.0,
+     "none_of_these": 0.0,
+     "his_manager": 0.0,
+     "himself": 0.87,
+     "opponent_side": 0.0,
+     "his_team": 0.0
+    }
+   }
+  },
+  "605": {
+   "source__s2": {
+    "type": "choice",
+    "choice": "media",
+    "confidence": 0.68,
+    "probabilities": {
+     "himself": 0.0,
+     "promotion": 0.07,
+     "no_one": 0.2,
+     "his_team": 0.0,
+     "opponent_side": 0.0,
+     "other_fighter": 0.0,
+     "none_of_these": 0.01,
+     "his_manager": 0.0,
+     "media": 0.72,
+     "fans": 0.0
+    }
+   },
+   "source__s3": {
+    "type": "choice",
+    "choice": "media",
+    "confidence": 0.61,
+    "probabilities": {
+     "himself": 0.0,
+     "promotion": 0.1,
+     "no_one": 0.25,
+     "his_team": 0.0,
+     "other_fighter": 0.0,
+     "opponent_side": 0.0,
+     "none_of_these": 0.0,
+     "his_manager": 0.0,
+     "media": 0.65,
+     "fans": 0.0
+    }
+   }
+  },
+  "500": {
+   "source__s2": {
+    "type": "choice",
+    "choice": "media",
+    "confidence": 0.5,
+    "probabilities": {
+     "media": 0.55,
+     "opponent_side": 0.02,
+     "his_team": 0.0,
+     "promotion": 0.06,
+     "none_of_these": 0.01,
+     "other_fighter": 0.05,
+     "his_manager": 0.0,
+     "himself": 0.0,
+     "fans": 0.0,
+     "no_one": 0.31
+    }
+   },
+   "source__s3": {
+    "type": "choice",
+    "choice": "media",
+    "confidence": 0.46,
+    "probabilities": {
+     "media": 0.5,
+     "opponent_side": 0.03,
+     "his_team": 0.0,
+     "promotion": 0.08,
+     "none_of_these": 0.01,
+     "other_fighter": 0.08,
+     "his_manager": 0.0,
+     "himself": 0.0,
+     "fans": 0.0,
+     "no_one": 0.3
+    }
+   }
+  },
+  "1260": {
+   "source__s2": {
+    "type": "choice",
+    "choice": "himself",
+    "confidence": 0.98,
+    "probabilities": {
+     "himself": 0.99,
+     "fans": 0.0,
+     "his_manager": 0.0,
+     "no_one": 0.0,
+     "promotion": 0.0,
+     "other_fighter": 0.0,
+     "his_team": 0.0,
+     "none_of_these": 0.0,
+     "media": 0.01,
+     "opponent_side": 0.0
+    }
+   },
+   "source__s3": {
+    "type": "choice",
+    "choice": "himself",
+    "confidence": 0.98,
+    "probabilities": {
+     "himself": 0.98,
+     "fans": 0.0,
+     "his_manager": 0.0,
+     "no_one": 0.0,
+     "promotion": 0.0,
+     "other_fighter": 0.01,
+     "his_team": 0.0,
+     "none_of_these": 0.0,
+     "media": 0.01,
+     "opponent_side": 0.0
+    }
+   }
+  },
+  "1172": {
+   "source__s2": {
+    "type": "choice",
+    "choice": "himself",
+    "confidence": 1.0,
+    "probabilities": {
+     "his_team": 0.0,
+     "media": 0.0,
+     "other_fighter": 0.0,
+     "promotion": 0.0,
+     "no_one": 0.0,
+     "opponent_side": 0.0,
+     "himself": 1.0,
+     "fans": 0.0,
+     "none_of_these": 0.0,
+     "his_manager": 0.0
+    }
+   },
+   "source__s3": {
+    "type": "choice",
+    "choice": "himself",
+    "confidence": 1.0,
+    "probabilities": {
+     "his_team": 0.0,
+     "media": 0.0,
+     "other_fighter": 0.0,
+     "promotion": 0.0,
+     "no_one": 0.0,
+     "opponent_side": 0.0,
+     "himself": 1.0,
+     "fans": 0.0,
+     "none_of_these": 0.0,
+     "his_manager": 0.0
+    }
+   }
+  },
+  "774": {
+   "source__s2": {
+    "type": "choice",
+    "choice": "himself",
+    "confidence": 0.99,
+    "probabilities": {
+     "promotion": 0.0,
+     "his_manager": 0.0,
+     "his_team": 0.0,
+     "none_of_these": 0.0,
+     "opponent_side": 0.0,
+     "other_fighter": 0.0,
+     "fans": 0.0,
+     "himself": 0.99,
+     "no_one": 0.0,
+     "media": 0.01
+    }
+   },
+   "source__s3": {
+    "type": "choice",
+    "choice": "himself",
+    "confidence": 0.99,
+    "probabilities": {
+     "promotion": 0.0,
+     "his_team": 0.0,
+     "his_manager": 0.0,
+     "none_of_these": 0.0,
+     "opponent_side": 0.0,
+     "other_fighter": 0.0,
+     "fans": 0.0,
+     "himself": 1.0,
+     "no_one": 0.0,
+     "media": 0.0
+    }
+   }
+  },
+  "490": {
+   "source__s2": {
+    "type": "choice",
+    "choice": "himself",
+    "confidence": 0.96,
+    "probabilities": {
+     "promotion": 0.03,
+     "none_of_these": 0.0,
+     "his_manager": 0.0,
+     "fans": 0.0,
+     "opponent_side": 0.0,
+     "media": 0.0,
+     "no_one": 0.0,
+     "himself": 0.97,
+     "his_team": 0.0,
+     "other_fighter": 0.0
+    }
+   },
+   "source__s3": {
+    "type": "choice",
+    "choice": "himself",
+    "confidence": 0.94,
+    "probabilities": {
+     "promotion": 0.04,
+     "none_of_these": 0.0,
+     "his_manager": 0.0,
+     "fans": 0.0,
+     "opponent_side": 0.0,
+     "media": 0.01,
+     "himself": 0.95,
+     "no_one": 0.0,
+     "his_team": 0.0,
+     "other_fighter": 0.0
+    }
+   }
+  },
+  "65": {
+   "source__s2": {
+    "type": "choice",
+    "choice": "media",
+    "confidence": 0.9,
+    "probabilities": {
+     "none_of_these": 0.01,
+     "media": 0.91,
+     "his_manager": 0.0,
+     "opponent_side": 0.01,
+     "his_team": 0.0,
+     "no_one": 0.03,
+     "other_fighter": 0.01,
+     "promotion": 0.0,
+     "himself": 0.03,
+     "fans": 0.0
+    }
+   },
+   "source__s3": {
+    "type": "choice",
+    "choice": "media",
+    "confidence": 0.87,
+    "probabilities": {
+     "none_of_these": 0.01,
+     "media": 0.89,
+     "his_manager": 0.0,
+     "opponent_side": 0.01,
+     "his_team": 0.0,
+     "no_one": 0.04,
+     "other_fighter": 0.02,
+     "himself": 0.03,
+     "promotion": 0.0,
+     "fans": 0.0
+    }
+   }
+  },
+  "247": {
+   "source__s2": {
+    "type": "choice",
+    "choice": "media",
+    "confidence": 0.9,
+    "probabilities": {
+     "media": 0.9,
+     "himself": 0.01,
+     "other_fighter": 0.02,
+     "his_team": 0.0,
+     "opponent_side": 0.04,
+     "none_of_these": 0.01,
+     "fans": 0.0,
+     "promotion": 0.01,
+     "his_manager": 0.0,
+     "no_one": 0.01
+    }
+   },
+   "source__s3": {
+    "type": "choice",
+    "choice": "media",
+    "confidence": 0.91,
+    "probabilities": {
+     "media": 0.91,
+     "himself": 0.01,
+     "other_fighter": 0.02,
+     "his_team": 0.0,
+     "opponent_side": 0.03,
+     "none_of_these": 0.01,
+     "fans": 0.0,
+     "promotion": 0.01,
+     "his_manager": 0.0,
+     "no_one": 0.01
+    }
+   }
+  }
+ },
+ "errors": []
+}

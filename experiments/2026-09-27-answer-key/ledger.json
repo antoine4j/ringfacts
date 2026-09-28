@@ -1,0 +1,44 @@
+[
+ {
+  "label": "iter1",
+  "articles": 39,
+  "questions": 9,
+  "input_tokens": 260238,
+  "dollars": 0.01093
+ },
+ {
+  "label": "iter2",
+  "articles": 39,
+  "questions": 9,
+  "input_tokens": 285198,
+  "dollars": 0.01198
+ },
+ {
+  "label": "iter3",
+  "articles": 39,
+  "questions": 6,
+  "input_tokens": 189180,
+  "dollars": 0.00795
+ },
+ {
+  "label": "v6-held",
+  "articles": 20,
+  "questions": 9,
+  "input_tokens": 115122,
+  "dollars": 0.00484
+ },
+ {
+  "label": "iter4",
+  "articles": 39,
+  "questions": 2,
+  "input_tokens": 129042,
+  "dollars": 0.00542
+ },
+ {
+  "label": "v6 full pass 1 (axes-v6/run-classifier.py)",
+  "articles": 300,
+  "questions": 9,
+  "input_tokens": 1490976,
+  "dollars": 0.06262
+ }
+]

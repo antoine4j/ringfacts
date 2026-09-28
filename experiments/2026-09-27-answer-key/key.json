@@ -1,0 +1,2819 @@
+{
+ "note": "provisional answer key: Fable readers A and B, Opus reader C on their differences; not Anton's labels",
+ "articles": {
+  "991": {
+   "part": "tune",
+   "answers": {
+    "centrality": {
+     "value": "main_subject",
+     "status": "agreed"
+    },
+    "source": {
+     "value": "promotion",
+     "status": "agreed"
+    },
+    "act": {
+     "value": "gives_news_of_him",
+     "status": "agreed"
+    },
+    "fact": {
+     "value": "next_fight",
+     "status": "agreed"
+    },
+    "firmness": {
+     "value": "official_or_done",
+     "status": "agreed"
+    },
+    "reports_his_result": {
+     "value": "no",
+     "status": "agreed"
+    },
+    "reports_his_next_fight": {
+     "value": "yes",
+     "status": "agreed"
+    },
+    "reports_his_health": {
+     "value": "no",
+     "status": "agreed"
+    },
+    "he_speaks": {
+     "value": "no",
+     "status": "agreed"
+    }
+   },
+   "notes": {
+    "A": "Dana White says Topuria is ready to fight and either Gaethje or Pimblett makes sense, but nothing is set. Act: White gives a factual update (ready to fight) but also weighs who he should fight next (steers_him). Firmness: the promotion states he is ready (official), yet the opponent part is only under consideration (rumour would also fit).",
+    "B": "Dana White says Topuria is ready to fight and that Gaethje or Pimblett are the two options, with nothing set. Firmness: the promotion states he is ready, but the opponent is explicitly undecided, so rumour is arguable; act could be steers_him. The writer's preference for Pimblett is opinion.",
+    "C": ""
+   }
+  },
+  "90": {
+   "part": "tune",
+   "answers": {
+    "centrality": {
+     "value": "main_subject",
+     "status": "agreed"
+    },
+    "source": {
+     "value": "his_manager",
+     "status": "agreed"
+    },
+    "act": {
+     "value": "answers_for_him",
+     "status": "agreed"
+    },
+    "fact": {
+     "value": "no_fact",
+     "status": "agreed"
+    },
+    "firmness": {
+     "value": "none",
+     "status": "agreed"
+    },
+    "reports_his_result": {
+     "value": "no",
+     "status": "agreed"
+    },
+    "reports_his_next_fight": {
+     "value": "no",
+     "status": "agreed"
+    },
+    "reports_his_health": {
+     "value": "no",
+     "status": "agreed"
+    },
+    "he_speaks": {
+     "value": "no",
+     "status": "agreed"
+    }
+   },
+   "notes": {
+    "A": "Kawa replies to Abdelaziz's claim that Usman Nurmagomedov would make Topuria quit: Topuria would beat the whole roster including Gaethje, still No. 1, 'when the comeback comes you will see'. Opinion and defence only, no date or opponent.",
+    "B": "Kawa answers Abdelaziz's claim that Usman Nurmagomedov would make Topuria quit; opinion only. The Gaethje loss is recalled as background.",
+    "C": ""
+   }
+  },
+  "833": {
+   "part": "tune",
+   "answers": {
+    "centrality": {
+     "value": "main_subject",
+     "status": "agreed"
+    },
+    "source": {
+     "value": "media",
+     "status": "agreed"
+    },
+    "act": {
+     "value": "gives_news_of_him",
+     "status": "agreed"
+    },
+    "fact": {
+     "value": "next_fight",
+     "status": "agreed"
+    },
+    "firmness": {
+     "value": "rumour",
+     "status": "agreed"
+    },
+    "reports_his_result": {
+     "value": "no",
+     "status": "agreed"
+    },
+    "reports_his_next_fight": {
+     "value": "yes",
+     "status": "agreed"
+    },
+    "reports_his_health": {
+     "value": "no",
+     "status": "agreed"
+    },
+    "he_speaks": {
+     "value": "no",
+     "status": "agreed"
+    }
+   },
+   "notes": {
+    "A": "Jon Anik says there are internal conversations about a Gaethje-Topuria rematch, calls it his 'non-informed speculation', and also discusses Pimblett-Oliveira and Gaethje's future. Centrality: Topuria is the headline subject but Gaethje gets nearly equal attention (one_of_several). Act: 'internal conversations' is a factual update, but Anik also forecasts the rematch and argues for it (predicts_his_fight or steers_him). Next fight yes on the talks claim, though the speaker himself labels it speculation.",
+    "B": "Commentator Jon Anik says there are 'internal conversations' about a Gaethje-Topuria rematch and predicts it will happen, while calling it his own 'non-informed speculation'. Centrality could be one_of_several since Gaethje's future and the division get as much space; act could be assesses_him; next fight yes because talks are reported, but Anik disowns them as speculation.",
+    "C": ""
+   }
+  },
+  "683": {
+   "part": "tune",
+   "answers": {
+    "centrality": {
+     "value": "only_mentioned",
+     "status": "agreed"
+    },
+    "source": {
+     "value": "no_one",
+     "status": "agreed"
+    },
+    "act": {
+     "value": "reports_an_event",
+     "status": "agreed"
+    },
+    "fact": {
+     "value": "result",
+     "status": "agreed"
+    },
+    "firmness": {
+     "value": "official_or_done",
+     "status": "agreed"
+    },
+    "reports_his_result": {
+     "value": "yes",
+     "status": "agreed"
+    },
+    "reports_his_next_fight": {
+     "value": "no",
+     "status": "agreed"
+    },
+    "reports_his_health": {
+     "value": "no",
+     "status": "agreed"
+    },
+    "he_speaks": {
+     "value": "no",
+     "status": "agreed"
+    }
+   },
+   "notes": {
+    "A": "UFC Paris results page; Donchenko's bout is one line: def. Soriano via unanimous decision (30-27 x2, 29-28).",
+    "B": "Results page for the whole UFC Paris card; Donchenko's bout is one line: unanimous decision over Soriano.",
+    "C": ""
+   }
+  },
+  "732": {
+   "part": "tune",
+   "answers": {
+    "centrality": {
+     "value": "main_subject",
+     "status": "agreed"
+    },
+    "source": {
+     "value": "no_one",
+     "status": "agreed"
+    },
+    "act": {
+     "value": "reports_an_event",
+     "status": "agreed"
+    },
+    "fact": {
+     "value": "result",
+     "status": "agreed"
+    },
+    "firmness": {
+     "value": "official_or_done",
+     "status": "agreed"
+    },
+    "reports_his_result": {
+     "value": "yes",
+     "status": "agreed"
+    },
+    "reports_his_next_fight": {
+     "value": "no",
+     "status": "agreed"
+    },
+    "reports_his_health": {
+     "value": "no",
+     "status": "agreed"
+    },
+    "he_speaks": {
+     "value": "no",
+     "status": "agreed"
+    }
+   },
+   "notes": {
+    "A": "Round-by-round report of his unanimous-decision win over Soriano at UFC Paris, plus a paraphrased callout of Daniel Rodriguez. The callout is a wish, so no next-fight news; no direct quote of his appears.",
+    "B": "Round-by-round report of his unanimous-decision win over Soriano in Paris. His callout of Daniel Rodriguez is paraphrased, not quoted, so he_speaks is no but an editor could count it; the callout is a wish, so next fight is no.",
+    "C": ""
+   }
+  },
+  "349": {
+   "part": "tune",
+   "answers": {
+    "centrality": {
+     "value": "main_subject",
+     "status": "agreed"
+    },
+    "source": {
+     "value": "other_fighter",
+     "status": "agreed"
+    },
+    "act": {
+     "value": "gives_news_of_him",
+     "status": "agreed"
+    },
+    "fact": {
+     "value": "health",
+     "status": "agreed"
+    },
+    "firmness": {
+     "value": "reported",
+     "status": "agreed"
+    },
+    "reports_his_result": {
+     "value": "no",
+     "status": "agreed"
+    },
+    "reports_his_next_fight": {
+     "value": "no",
+     "status": "agreed"
+    },
+    "reports_his_health": {
+     "value": "yes",
+     "status": "agreed"
+    },
+    "he_speaks": {
+     "value": "no",
+     "status": "agreed"
+    }
+   },
+   "notes": {
+    "A": "Merab Dvalishvili, his friend, tells Helen Yee that Topuria is well, positive and resting after the Gaethje loss; Marca recaps his fractures and speculates on an early-2027 return and possible opponents. Next fight: the return timing is the writer's guess ('todo apunta'), not reported news, so no.",
+    "B": "Merab Dvalishvili (named as his friend) tells Helen Yee that Topuria is fine, positive, resting to come back stronger. Fact health: it is an update on how he is, though 'he's fine' is thin as a fact; next_fight: the return 'early 2027' and Gaethje refusing a rematch are the writer's reading, not a set timeline. His Instagram post is mentioned, not quoted.",
+    "C": ""
+   }
+  },
+  "620": {
+   "part": "tune",
+   "answers": {
+    "centrality": {
+     "value": "main_subject",
+     "status": "agreed"
+    },
+    "source": {
+     "value": "himself",
+     "status": "agreed"
+    },
+    "act": {
+     "value": "speaks_of_himself",
+     "status": "agreed"
+    },
+    "fact": {
+     "value": "personal_life",
+     "status": "agreed"
+    },
+    "firmness": {
+     "value": "official_or_done",
+     "status": "agreed"
+    },
+    "reports_his_result": {
+     "value": "no",
+     "status": "agreed"
+    },
+    "reports_his_next_fight": {
+     "value": "no",
+     "status": "agreed"
+    },
+    "reports_his_health": {
+     "value": "yes",
+     "status": "agreed"
+    },
+    "he_speaks": {
+     "value": "yes",
+     "status": "agreed"
+    }
+   },
+   "notes": {
+    "A": "Topuria's first public message since the loss: a video letter to his son about losing and character; the outlet frames it as him being ready to return to UFC training after a double orbital fracture, with no date and only rumours of December. Fact: the message itself is family and a life lesson (personal_life), but the outlet's 'ready to return to training' framing reads as recovery (health) and the December rumour as next_fight. Health yes on that return-to-training update, though the fracture itself is background; next fight no because the December date is a passing rumour the article does not assert.",
+    "B": "Spanish. His first public message since the loss: a video to his son about losing and character (a life lesson, so personal_life), which the outlet frames as him being ready to return to training after the double orbital fracture. Fact could be health (recovery) or next_fight (a return with no date); health yes rests on the outlet's 'ready to return to training' line; the December return is only a rumour mentioned in passing.",
+    "C": ""
+   }
+  },
+  "261": {
+   "part": "tune",
+   "answers": {
+    "centrality": {
+     "value": "not_in_content",
+     "status": "agreed"
+    },
+    "source": {
+     "value": "other_fighter",
+     "status": "agreed"
+    },
+    "act": {
+     "value": "none_of_these",
+     "status": "agreed"
+    },
+    "fact": {
+     "value": "no_fact",
+     "status": "agreed"
+    },
+    "firmness": {
+     "value": "none",
+     "status": "agreed"
+    },
+    "reports_his_result": {
+     "value": "no",
+     "status": "agreed"
+    },
+    "reports_his_next_fight": {
+     "value": "no",
+     "status": "agreed"
+    },
+    "reports_his_health": {
+     "value": "no",
+     "status": "agreed"
+    },
+    "he_speaks": {
+     "value": "no",
+     "status": "agreed"
+    }
+   },
+   "notes": {
+    "A": "Morning Report on Namo Fazil's hotel-attack claim; Topuria appears only in the column's TOP STORIES link list ('Tsarukyan picks... Topuria's next opponent'). Centrality: that list is part of the column's format, but it is a list of other headlines, which the guide treats as furniture. Act none_of_these: nobody does anything regarding him.",
+    "B": "Morning Report on Namo Fazil's hotel altercation; Topuria appears only in the 'TOP STORIES' link list (a Tsarukyan headline), which I treat as read-also furniture, though it sits inside the column body so only_mentioned is arguable. Source answered for the main content: Fazil speaking.",
+    "C": ""
+   }
+  },
+  "148": {
+   "part": "tune",
+   "answers": {
+    "centrality": {
+     "value": "main_subject",
+     "status": "agreed"
+    },
+    "source": {
+     "value": "other_fighter",
+     "status": "majority",
+     "readers": [
+      "other_fighter",
+      "opponent_side",
+      "other_fighter"
+     ]
+    },
+    "act": {
+     "value": "assesses_him",
+     "status": "agreed"
+    },
+    "fact": {
+     "value": "health",
+     "status": "agreed"
+    },
+    "firmness": {
+     "value": "reported",
+     "status": "agreed"
+    },
+    "reports_his_result": {
+     "value": "no",
+     "status": "agreed"
+    },
+    "reports_his_next_fight": {
+     "value": "yes",
+     "status": "agreed"
+    },
+    "reports_his_health": {
+     "value": "yes",
+     "status": "agreed"
+    },
+    "he_speaks": {
+     "value": "no",
+     "status": "agreed"
+    }
+   },
+   "notes": {
+    "A": "Makhachev on DJ's podcast: Topuria is young, hopes he returns, if he focuses he can be champion again; then a section where his physical trainer Jesús Gallo says his recovery is remarkably fast and he is working to return next year, so 2026 is ruled out. Source: Makhachev leads the article (other_fighter; the text says Topuria asked for that fight but it is pending, so not opponent_side), but the only new fact comes from his_team. Act: assessment vs advice (steers_him). Fact: health (recovery update) vs next_fight (return in 2027). Next fight: 'not in 2026, next year' is a timeline but vague. He_speaks: his post-fight remark about underestimating Gaethje is paraphrased, no direct quote.",
+    "B": "Makhachev on a podcast: Topuria is young, can be champion again if he focuses; then physio Jesus Gallo says recovery is going fast and he is working to return next year, ruling out 2026. Source: Makhachev is publicly linked to a Topuria fight (he asked for it, still pending) so opponent_side, but other_fighter fits a champion of another division; the health news comes from his_team. Act: assessment shading into advice (steers_him). Fact: health chosen over next_fight ('no return in 2026') as the main fact; next fight yes on that readiness timing.",
+    "C": "Headline, lead and most of the body are Makhachev (a welterweight champion) assessing and advising Topuria; a fight between them is only something Topuria asked for and is still 'pendiente', so he is not a booked/linked opponent -> other_fighter. Unsure: the one hard new fact (recovery going well, no return in 2026) comes from his physical trainer Jesus Gallo, which would be his_team."
+   }
+  },
+  "953": {
+   "part": "tune",
+   "answers": {
+    "centrality": {
+     "value": "only_mentioned",
+     "status": "agreed"
+    },
+    "source": {
+     "value": "other_fighter",
+     "status": "majority",
+     "readers": [
+      "other_fighter",
+      "opponent_side",
+      "other_fighter"
+     ]
+    },
+    "act": {
+     "value": "calls_him_out",
+     "status": "agreed"
+    },
+    "fact": {
+     "value": "no_fact",
+     "status": "agreed"
+    },
+    "firmness": {
+     "value": "none",
+     "status": "agreed"
+    },
+    "reports_his_result": {
+     "value": "no",
+     "status": "agreed"
+    },
+    "reports_his_next_fight": {
+     "value": "no",
+     "status": "agreed"
+    },
+    "reports_his_health": {
+     "value": "no",
+     "status": "agreed"
+    },
+    "he_speaks": {
+     "value": "no",
+     "status": "agreed"
+    }
+   },
+   "notes": {
+    "A": "Pimblett on his own next fight (December if all goes to plan, no opponent yet); asked about Topuria he would love it but 'nothing yet, no one's spoke to me'. Centrality: one paragraph on a wished-for fight, which the guide says does not count for one_of_several. Source: Pimblett is publicly linked to a Topuria fight only by his own wish, so other_fighter rather than opponent_side. Act: a mild callout; gives_news_of_him (no talks have happened) is defensible. Fact: 'no conversations' is the absence of talks, so no_fact rather than next_fight.",
+    "B": "Pimblett's own next-fight talk; Topuria gets one paragraph where Pimblett says he'd love the fight but nobody has spoken to him. Source: Pimblett is publicly linked to a Topuria fight, so opponent_side, but other_fighter is defensible. Act: a mild 'would love to fight him' rather than a real callout. Fact: 'no conversations have taken place' is an absence of talks, taken as no_fact.",
+    "C": "Pimblett speaks: he would love to fight Topuria but no talks have happened. A fighter only calling him out is not 'linked to a fight with him', so other_fighter, not opponent_side. Unsure: 'publicly linked' could be read loosely to cover a long-running callout."
+   }
+  },
+  "921": {
+   "part": "tune",
+   "answers": {
+    "centrality": {
+     "value": "one_of_several",
+     "status": "agreed"
+    },
+    "source": {
+     "value": "opponent_side",
+     "status": "agreed"
+    },
+    "act": {
+     "value": "calls_him_out",
+     "status": "agreed"
+    },
+    "fact": {
+     "value": "no_fact",
+     "status": "agreed"
+    },
+    "firmness": {
+     "value": "none",
+     "status": "agreed"
+    },
+    "reports_his_result": {
+     "value": "no",
+     "status": "agreed"
+    },
+    "reports_his_next_fight": {
+     "value": "yes",
+     "status": "majority",
+     "readers": [
+      "yes",
+      "no",
+      "yes"
+     ]
+    },
+    "reports_his_health": {
+     "value": "no",
+     "status": "agreed"
+    },
+    "he_speaks": {
+     "value": "no",
+     "status": "agreed"
+    }
+   },
+   "notes": {
+    "A": "Pimblett (long linked to a Topuria fight) says he'd love to fight him but nothing is set; a closing line relays Anik's claim of internal talks about a Gaethje-Topuria rematch. Centrality: the guide says a callout alone does not make him one_of_several, yet the whole piece is about a fight with him, so only_mentioned or main_subject are both arguable. Fact/firmness: the main news is a wish (no_fact), but the Anik 'internal talks' line is a next_fight rumour; that same line is why next_fight is yes, though it is second-hand and brief.",
+    "B": "Pimblett, long linked to a fight with him, says he'd 'love to smash his head in' but nobody has spoken to him about it; Pimblett's other options and December plans share the piece. Centrality could be main_subject (the headline is about fighting him). Anik's 'internal talks' of a Gaethje rematch appears in one closing line, so next fight no is borderline.",
+    "C": "Pimblett's wish is a callout (no), but the article also reports Jon Anik's claim of internal talks for a Gaethje-Topuria rematch, and the guide counts an opponent 'negotiated' (talks) as next-fight news. Unsure: it is one closing line of rumour."
+   }
+  },
+  "4": {
+   "part": "tune",
+   "answers": {
+    "centrality": {
+     "value": "main_subject",
+     "status": "agreed"
+    },
+    "source": {
+     "value": "other_fighter",
+     "status": "agreed"
+    },
+    "act": {
+     "value": "assesses_him",
+     "status": "agreed"
+    },
+    "fact": {
+     "value": "no_fact",
+     "status": "agreed"
+    },
+    "firmness": {
+     "value": "none",
+     "status": "agreed"
+    },
+    "reports_his_result": {
+     "value": "no",
+     "status": "agreed"
+    },
+    "reports_his_next_fight": {
+     "value": "no",
+     "status": "agreed"
+    },
+    "reports_his_health": {
+     "value": "no",
+     "status": "agreed"
+    },
+    "he_speaks": {
+     "value": "no",
+     "status": "agreed"
+    }
+   },
+   "notes": {
+    "A": "Masvidal (a training partner, not linked to a fight with him) rates Amosov as a nightmare matchup for Makhachev; Poirier is cited agreeing. Opinion only, no fact about him.",
+    "B": "Masvidal, who trained with him at American Top Team (a teammate, so other_fighter), says he is a bad fight for everybody and a nightmare for Makhachev. His Magny and Alvarez wins are background.",
+    "C": ""
+   }
+  },
+  "342": {
+   "part": "held_back",
+   "answers": {
+    "centrality": {
+     "value": "one_of_several",
+     "status": "agreed"
+    },
+    "source": {
+     "value": "media",
+     "status": "agreed"
+    },
+    "act": {
+     "value": "gives_news_of_him",
+     "status": "agreed"
+    },
+    "fact": {
+     "value": "personal_life",
+     "status": "agreed"
+    },
+    "firmness": {
+     "value": "official_or_done",
+     "status": "majority",
+     "readers": [
+      "official_or_done",
+      "reported",
+      "official_or_done"
+     ]
+    },
+    "reports_his_result": {
+     "value": "no",
+     "status": "agreed"
+    },
+    "reports_his_next_fight": {
+     "value": "no",
+     "status": "agreed"
+    },
+    "reports_his_health": {
+     "value": "no",
+     "status": "agreed"
+    },
+    "he_speaks": {
+     "value": "yes",
+     "status": "agreed"
+    }
+   },
+   "notes": {
+    "A": "Feature on five Ukrainian athletes who joined the defence forces; Amosov gets one full section (territorial defence, fighting for Irpin, lost comrades, one quoted post, UFC debut Dec 2025). Centrality: a full section among five people, could be only_mentioned. Source/act: the section is the writer's retelling with one old quote of his, so media/gives_news_of_him, but himself/speaks_of_himself is defensible. Fact: his war service is life outside the cage but nothing here is new, so no_fact is defensible.",
+    "B": "Retrospective on Ukrainian athletes who joined the defence forces; Amosov is one of five with his own section (territorial defence, Irpin, lost comrades, UFC debut December 2025) and an old written post of his is quoted. Source/act: the writer compiles known history, nothing new; himself is the alternative since his words appear. Fact: personal_life is what the section is about, but none of it is new, so no_fact is arguable.",
+    "C": "The article's content about Amosov is his wartime service in territorial defence at Irpin (life outside the cage, personal_life) and his UFC debut; it happened and he is quoted himself -> official_or_done. Unsure: it is an old story retold in a roundup, so an editor could call it no new fact (firmness none)."
+   }
+  },
+  "1161": {
+   "part": "tune",
+   "answers": {
+    "centrality": {
+     "value": "not_in_content",
+     "status": "agreed"
+    },
+    "source": {
+     "value": "other_fighter",
+     "status": "agreed"
+    },
+    "act": {
+     "value": "none_of_these",
+     "status": "agreed"
+    },
+    "fact": {
+     "value": "no_fact",
+     "status": "agreed"
+    },
+    "firmness": {
+     "value": "none",
+     "status": "agreed"
+    },
+    "reports_his_result": {
+     "value": "no",
+     "status": "agreed"
+    },
+    "reports_his_next_fight": {
+     "value": "no",
+     "status": "agreed"
+    },
+    "reports_his_health": {
+     "value": "no",
+     "status": "agreed"
+    },
+    "he_speaks": {
+     "value": "no",
+     "status": "agreed"
+    }
+   },
+   "notes": {
+    "A": "Aspinall vacates the heavyweight title in his own words; Donchenko does not appear anywhere in the text (the only watchlist name is Amosov, in a 'read also' link). Source answered for the main content (Aspinall speaking); act none_of_these because he is absent.",
+    "B": "Aspinall vacates the heavyweight title; Donchenko is not in the text at all (the only watchlist name is Amosov, in a 'read also' link). Source answered for the main content: Aspinall speaking. Act: nobody does anything regarding Donchenko.",
+    "C": ""
+   }
+  },
+  "625": {
+   "part": "tune",
+   "answers": {
+    "centrality": {
+     "value": "one_of_several",
+     "status": "majority",
+     "readers": [
+      "one_of_several",
+      "main_subject",
+      "one_of_several"
+     ]
+    },
+    "source": {
+     "value": "no_one",
+     "status": "agreed"
+    },
+    "act": {
+     "value": "reports_an_event",
+     "status": "agreed"
+    },
+    "fact": {
+     "value": "fight_week_event",
+     "status": "agreed"
+    },
+    "firmness": {
+     "value": "official_or_done",
+     "status": "agreed"
+    },
+    "reports_his_result": {
+     "value": "no",
+     "status": "agreed"
+    },
+    "reports_his_next_fight": {
+     "value": "yes",
+     "status": "agreed"
+    },
+    "reports_his_health": {
+     "value": "no",
+     "status": "agreed"
+    },
+    "he_speaks": {
+     "value": "no",
+     "status": "agreed"
+    }
+   },
+   "notes": {
+    "A": "Weigh-in report: Donchenko and Soriano both made 77.11 kg; fight is 5 September in Paris, start times, broadcaster, his third bout of the year after beating Berggren in Baku. Centrality: a weigh-in covering both fighters, but the body is mostly about him, so main_subject is defensible. Next fight: opponent and date are stated, but as fight-week routine rather than as news of a booking.",
+    "B": "Weigh-in report: both made 77.11 kg for their bout on 5 September in Paris, with start times. Centrality: Soriano only gets his record, but a preview covering both fighters could be read as one_of_several. Next fight: the opponent and date are stated, though the booking itself is old news; his stated wish to fight in Paris is paraphrased, not quoted.",
+    "C": "A weigh-in report on his fight covering both fighters (both named in the headline, both records and weights given) fits 'a preview or feature on a fight of his covering both fighters'. Unsure: the extra background and walkout time are about Donchenko only, so main_subject is arguable."
+   }
+  },
+  "743": {
+   "part": "tune",
+   "answers": {
+    "centrality": {
+     "value": "main_subject",
+     "status": "agreed"
+    },
+    "source": {
+     "value": "no_one",
+     "status": "agreed"
+    },
+    "act": {
+     "value": "reports_an_event",
+     "status": "agreed"
+    },
+    "fact": {
+     "value": "fight_week_event",
+     "status": "agreed"
+    },
+    "firmness": {
+     "value": "official_or_done",
+     "status": "majority",
+     "readers": [
+      "reported",
+      "official_or_done",
+      "official_or_done"
+     ]
+    },
+    "reports_his_result": {
+     "value": "no",
+     "status": "agreed"
+    },
+    "reports_his_next_fight": {
+     "value": "no",
+     "status": "agreed"
+    },
+    "reports_his_health": {
+     "value": "no",
+     "status": "agreed"
+    },
+    "he_speaks": {
+     "value": "no",
+     "status": "agreed"
+    }
+   },
+   "notes": {
+    "A": "A near-content-free 112.ua piece citing Sport.ua: Donchenko took part in the Paris event and showed his skills at the weigh-in, in the octagon and at the press conference; no result, no opponent named. Source/act: an event with nobody speaking, but the piece is mostly the writer's puffery, so media/gives_news_of_him is defensible. Fact: weigh-in and presser are fight-week routine, but 'in the octagon' implies the fight without reporting it, so none_of_these (he took part) is defensible.",
+    "B": "A content-free rewrite saying Donchenko took part in the Paris event, weigh-in, octagon and press conference, with the writer's praise of his skills. Source/act: nobody is quoted, so read as an event reported; media/assesses_him is defensible given the puffery. Fact: fight-week routine is all it states; no outcome is given, so not result.",
+    "C": "The main fact is that he took part in the Paris card (weigh-in, octagon, press conference) - something that has happened -> official_or_done. The text is vague and gives no result, but it asserts a completed event."
+   }
+  },
+  "510": {
+   "part": "tune",
+   "answers": {
+    "centrality": {
+     "value": "only_mentioned",
+     "status": "agreed"
+    },
+    "source": {
+     "value": "no_one",
+     "status": "agreed"
+    },
+    "act": {
+     "value": "reports_an_event",
+     "status": "agreed"
+    },
+    "fact": {
+     "value": "fight_week_event",
+     "status": "agreed"
+    },
+    "firmness": {
+     "value": "official_or_done",
+     "status": "agreed"
+    },
+    "reports_his_result": {
+     "value": "no",
+     "status": "agreed"
+    },
+    "reports_his_next_fight": {
+     "value": "yes",
+     "status": "agreed"
+    },
+    "reports_his_health": {
+     "value": "no",
+     "status": "agreed"
+    },
+    "he_speaks": {
+     "value": "no",
+     "status": "agreed"
+    }
+   },
+   "notes": {
+    "A": "UFC Paris start-times/how-to-watch preview; Donchenko is one line in the main-card list (vs Soriano). Fact: the card line is fight-week card order but also names opponent and date, so next_fight is arguable; act and reports_his_next_fight hinge on whether a bare card line counts as carrying that fact.",
+    "B": "UFC Paris start-time and card preview; Donchenko is one line on the main-card listing (vs Soriano). Fact: card order/start times fits fight_week_event, but the listing also states his opponent and date, so next_fight is arguable both for the fact and the yes/no; source: the card speaks for itself, though the piece is the outlet's preview (media).",
+    "C": ""
+   }
+  },
+  "115": {
+   "part": "tune",
+   "answers": {
+    "centrality": {
+     "value": "only_mentioned",
+     "status": "agreed"
+    },
+    "source": {
+     "value": "no_one",
+     "status": "agreed"
+    },
+    "act": {
+     "value": "none_of_these",
+     "status": "agreed"
+    },
+    "fact": {
+     "value": "no_fact",
+     "status": "agreed"
+    },
+    "firmness": {
+     "value": "none",
+     "status": "agreed"
+    },
+    "reports_his_result": {
+     "value": "no",
+     "status": "agreed"
+    },
+    "reports_his_next_fight": {
+     "value": "no",
+     "status": "agreed"
+    },
+    "reports_his_health": {
+     "value": "no",
+     "status": "agreed"
+    },
+    "he_speaks": {
+     "value": "no",
+     "status": "agreed"
+    }
+   },
+   "notes": {
+    "A": "Announcement of speakers at a sports forum in León; Topuria appears only to identify Dr Aldo Martínez as his performance director. Source: nothing new about him, so answered for the main content, a speaker line-up announced with nobody quoted (no_one); none_of_these (the forum organisers) is defensible. Act none_of_these: nobody does anything regarding him.",
+    "B": "A León sports forum announces its speakers; Topuria's name only identifies his performance director Aldo Martinez. Source for the main content: an announcement with nobody quoted, so no_one; media (the outlet's writer) would also fit. Act: nobody does anything regarding Topuria.",
+    "C": ""
+   }
+  },
+  "203": {
+   "part": "held_back",
+   "answers": {
+    "centrality": {
+     "value": "main_subject",
+     "status": "agreed"
+    },
+    "source": {
+     "value": "himself",
+     "status": "agreed"
+    },
+    "act": {
+     "value": "speaks_of_himself",
+     "status": "agreed"
+    },
+    "fact": {
+     "value": "personal_life",
+     "status": "agreed"
+    },
+    "firmness": {
+     "value": "official_or_done",
+     "status": "agreed"
+    },
+    "reports_his_result": {
+     "value": "no",
+     "status": "agreed"
+    },
+    "reports_his_next_fight": {
+     "value": "yes",
+     "status": "agreed"
+    },
+    "reports_his_health": {
+     "value": "yes",
+     "status": "agreed"
+    },
+    "he_speaks": {
+     "value": "yes",
+     "status": "agreed"
+    }
+   },
+   "notes": {
+    "A": "NV interview: he will give half his Berggren bonus to a church in Korosten (headline), and says he badly bruised both legs in that fight, could not walk for days and has only now recovered. Fact: personal_life by the headline, but the leg injury is an equally new fact (health). Next fight yes because a closing line states Sept 5 in Paris vs Soriano, though that is context rather than the piece's news.",
+    "B": "Ukrainian. He says he will give 50% of his bonus to a church in Korosten (personal_life, the headline), that he badly bruised both legs against Berggren and has only now recovered (health update), and the piece states his 5 September fight in Paris against Soriano. The Berggren win is background.",
+    "C": ""
+   }
+  },
+  "771": {
+   "part": "held_back",
+   "answers": {
+    "centrality": {
+     "value": "main_subject",
+     "status": "agreed"
+    },
+    "source": {
+     "value": "himself",
+     "status": "agreed"
+    },
+    "act": {
+     "value": "speaks_of_himself",
+     "status": "agreed"
+    },
+    "fact": {
+     "value": "personal_life",
+     "status": "agreed"
+    },
+    "firmness": {
+     "value": "official_or_done",
+     "status": "agreed"
+    },
+    "reports_his_result": {
+     "value": "no",
+     "status": "agreed"
+    },
+    "reports_his_next_fight": {
+     "value": "no",
+     "status": "agreed"
+    },
+    "reports_his_health": {
+     "value": "no",
+     "status": "agreed"
+    },
+    "he_speaks": {
+     "value": "yes",
+     "status": "agreed"
+    }
+   },
+   "notes": {
+    "A": "Topuria's own essay for Marca, quoted at length: the promise he made himself as a child, his parents, six years apart from them, the 2008 war, arriving in Spain. Childhood and family, in his own words.",
+    "B": "Lecturas quotes Topuria's Marca essay about his childhood promise, six years apart from his parents, the 2008 war and arriving in Spain.",
+    "C": ""
+   }
+  },
+  "207": {
+   "part": "tune",
+   "answers": {
+    "centrality": {
+     "value": "only_mentioned",
+     "status": "agreed"
+    },
+    "source": {
+     "value": "fans",
+     "status": "agreed"
+    },
+    "act": {
+     "value": "none_of_these",
+     "status": "agreed"
+    },
+    "fact": {
+     "value": "no_fact",
+     "status": "agreed"
+    },
+    "firmness": {
+     "value": "none",
+     "status": "agreed"
+    },
+    "reports_his_result": {
+     "value": "no",
+     "status": "agreed"
+    },
+    "reports_his_next_fight": {
+     "value": "no",
+     "status": "agreed"
+    },
+    "reports_his_health": {
+     "value": "no",
+     "status": "agreed"
+    },
+    "he_speaks": {
+     "value": "no",
+     "status": "agreed"
+    }
+   },
+   "notes": {
+    "A": "Bloody Elbow reader poll on Garry vs Makhachev; Topuria appears once as the earlier poll comparison (Gaethje's win over him at 44%). Source: the main content is fan votes compiled by the outlet, so media is arguable. Act none_of_these: nobody does anything regarding him.",
+    "B": "Fan-poll piece on Makhachev vs Garry; Topuria appears once, as a past poll comparison (44% backed Gaethje over him). Act none_of_these: nobody does anything regarding him beyond the old vote tally, though one could read that as fans assessing him.",
+    "C": ""
+   }
+  },
+  "224": {
+   "part": "tune",
+   "answers": {
+    "centrality": {
+     "value": "only_mentioned",
+     "status": "agreed"
+    },
+    "source": {
+     "value": "media",
+     "status": "agreed"
+    },
+    "act": {
+     "value": "none_of_these",
+     "status": "agreed"
+    },
+    "fact": {
+     "value": "no_fact",
+     "status": "agreed"
+    },
+    "firmness": {
+     "value": "none",
+     "status": "agreed"
+    },
+    "reports_his_result": {
+     "value": "no",
+     "status": "agreed"
+    },
+    "reports_his_next_fight": {
+     "value": "no",
+     "status": "agreed"
+    },
+    "reports_his_health": {
+     "value": "no",
+     "status": "agreed"
+    },
+    "he_speaks": {
+     "value": "no",
+     "status": "agreed"
+    }
+   },
+   "notes": {
+    "A": "Story about Orolbai's upset loss at UFC 330; Topuria appears once inside a quoted fan tweet ('toughest fight besides Topuria'). Act none_of_these: nobody does anything regarding him.",
+    "B": "Orolbai's upset loss at UFC 330 with fan tweets; Topuria appears once inside a fan tweet ('toughest fight besides Topuria'). Source answered for the main content (the writer's report); fans is arguable since the one mention is a fan's.",
+    "C": ""
+   }
+  },
+  "1200": {
+   "part": "tune",
+   "answers": {
+    "centrality": {
+     "value": "only_mentioned",
+     "status": "agreed"
+    },
+    "source": {
+     "value": "none_of_these",
+     "status": "agreed"
+    },
+    "act": {
+     "value": "none_of_these",
+     "status": "agreed"
+    },
+    "fact": {
+     "value": "no_fact",
+     "status": "agreed"
+    },
+    "firmness": {
+     "value": "none",
+     "status": "agreed"
+    },
+    "reports_his_result": {
+     "value": "no",
+     "status": "agreed"
+    },
+    "reports_his_next_fight": {
+     "value": "no",
+     "status": "agreed"
+    },
+    "reports_his_health": {
+     "value": "no",
+     "status": "agreed"
+    },
+    "he_speaks": {
+     "value": "no",
+     "status": "agreed"
+    }
+   },
+   "notes": {
+    "A": "Long interview with manager Vladyslav Soroka about Ukrainian MMA, KSW, Yakymenko and who might reach the UFC; Amosov is one clause in the lead ('is in the UFC rankings'). Source none_of_these: the speaker is a manager of other fighters, not his; act none_of_these: nobody does anything regarding him.",
+    "B": "Interview with manager Vladyslav Soroka about the Ukrainian MMA scene; Amosov is named once in the lead as being in the UFC rankings. Source: Soroka manages other fighters, not Amosov, so no listed value fits ('another fighter's manager' would). Act: nobody does anything regarding Amosov.",
+    "C": ""
+   }
+  },
+  "323": {
+   "part": "tune",
+   "answers": {
+    "centrality": {
+     "value": "only_mentioned",
+     "status": "agreed"
+    },
+    "source": {
+     "value": "his_team",
+     "status": "agreed"
+    },
+    "act": {
+     "value": "none_of_these",
+     "status": "agreed"
+    },
+    "fact": {
+     "value": "no_fact",
+     "status": "agreed"
+    },
+    "firmness": {
+     "value": "none",
+     "status": "agreed"
+    },
+    "reports_his_result": {
+     "value": "no",
+     "status": "agreed"
+    },
+    "reports_his_next_fight": {
+     "value": "no",
+     "status": "agreed"
+    },
+    "reports_his_health": {
+     "value": "no",
+     "status": "agreed"
+    },
+    "he_speaks": {
+     "value": "no",
+     "status": "agreed"
+    }
+   },
+   "notes": {
+    "A": "Three sentences on Doctor Aldo, identified as Topuria's physical trainer, explaining the Brock string eye exercise; Topuria is only the identifying tag. Source is for the main content (his trainer). Act none_of_these: he says nothing regarding Topuria.",
+    "B": "His physical trainer (the article names Doctor Aldo as Topuria's preparador fisico) explains the Brock string eye exercise on social media; Topuria is only the identifier. Act none_of_these: he talks about a training method, not about Topuria; a stretch to call it gives_news_of_him since the text never says Topuria does the exercise.",
+    "C": ""
+   }
+  },
+  "204": {
+   "part": "held_back",
+   "answers": {
+    "centrality": {
+     "value": "only_mentioned",
+     "status": "agreed"
+    },
+    "source": {
+     "value": "media",
+     "status": "agreed"
+    },
+    "act": {
+     "value": "none_of_these",
+     "status": "agreed"
+    },
+    "fact": {
+     "value": "no_fact",
+     "status": "agreed"
+    },
+    "firmness": {
+     "value": "none",
+     "status": "agreed"
+    },
+    "reports_his_result": {
+     "value": "no",
+     "status": "agreed"
+    },
+    "reports_his_next_fight": {
+     "value": "no",
+     "status": "agreed"
+    },
+    "reports_his_health": {
+     "value": "no",
+     "status": "agreed"
+    },
+    "he_speaks": {
+     "value": "no",
+     "status": "agreed"
+    }
+   },
+   "notes": {
+    "A": "Sport.ua analysis of why Garry could beat Makhachev; Amosov is named only in the standfirst ('a new champion may appear in Amosov's division'). Act none_of_these: nobody does anything regarding him.",
+    "B": "Sport.ua analysis of why Garry could beat Makhachev; Amosov appears only in the standfirst ('a new champion may appear in Amosov's division'). Nothing is done regarding him.",
+    "C": ""
+   }
+  },
+  "1050": {
+   "part": "tune",
+   "answers": {
+    "centrality": {
+     "value": "only_mentioned",
+     "status": "agreed"
+    },
+    "source": {
+     "value": "opponent_side",
+     "status": "agreed"
+    },
+    "act": {
+     "value": "none_of_these",
+     "status": "agreed"
+    },
+    "fact": {
+     "value": "no_fact",
+     "status": "agreed"
+    },
+    "firmness": {
+     "value": "none",
+     "status": "agreed"
+    },
+    "reports_his_result": {
+     "value": "no",
+     "status": "agreed"
+    },
+    "reports_his_next_fight": {
+     "value": "no",
+     "status": "agreed"
+    },
+    "reports_his_health": {
+     "value": "no",
+     "status": "agreed"
+    },
+    "he_speaks": {
+     "value": "no",
+     "status": "agreed"
+    }
+   },
+   "notes": {
+    "A": "Gaethje (his last opponent, so opponent_side) talks about Tsarukyan's title shot; Topuria appears only as the man Gaethje beat, with a one-line aside that a rematch 'is also possible'. Act none_of_these: nothing is done regarding him. Centrality could be one_of_several if the fought-and-recalled fight counts as 'being discussed', but it is background; the trailing Topuria headlines are page furniture.",
+    "B": "Gaethje (his last opponent, so opponent side) talks about Tsarukyan's title wait; Topuria appears only as the fight Gaethje won and in the writer's aside that 'a rematch with Topuria is also possible'. Act none_of_these because nobody does anything regarding him. Centrality: an editor could call it one_of_several via the Gaethje fight; fact: the writer's 'rematch possible' could be read as next_fight talk.",
+    "C": ""
+   }
+  },
+  "230": {
+   "part": "tune",
+   "answers": {
+    "centrality": {
+     "value": "not_in_content",
+     "status": "agreed"
+    },
+    "source": {
+     "value": "media",
+     "status": "agreed"
+    },
+    "act": {
+     "value": "none_of_these",
+     "status": "agreed"
+    },
+    "fact": {
+     "value": "no_fact",
+     "status": "agreed"
+    },
+    "firmness": {
+     "value": "none",
+     "status": "agreed"
+    },
+    "reports_his_result": {
+     "value": "no",
+     "status": "agreed"
+    },
+    "reports_his_next_fight": {
+     "value": "no",
+     "status": "agreed"
+    },
+    "reports_his_health": {
+     "value": "no",
+     "status": "agreed"
+    },
+    "he_speaks": {
+     "value": "no",
+     "status": "agreed"
+    }
+   },
+   "notes": {
+    "A": "MMA Fighting roundtable on Makhachev vs Machado Garry and Dern; Amosov's name does not appear anywhere in the saved text (which is cut off mid-answer). Act none_of_these because he is absent.",
+    "B": "MMA Fighting roundtable on Makhachev vs Machado Garry and Dern; Amosov does not appear anywhere in the saved text (which is truncated). Act none_of_these because he is absent.",
+    "C": ""
+   }
+  },
+  "385": {
+   "part": "held_back",
+   "answers": {
+    "centrality": {
+     "value": "main_subject",
+     "status": "agreed"
+    },
+    "source": {
+     "value": "himself",
+     "status": "agreed"
+    },
+    "act": {
+     "value": "answers_for_him",
+     "status": "agreed"
+    },
+    "fact": {
+     "value": "no_fact",
+     "status": "agreed"
+    },
+    "firmness": {
+     "value": "none",
+     "status": "agreed"
+    },
+    "reports_his_result": {
+     "value": "no",
+     "status": "agreed"
+    },
+    "reports_his_next_fight": {
+     "value": "no",
+     "status": "agreed"
+    },
+    "reports_his_health": {
+     "value": "no",
+     "status": "agreed"
+    },
+    "he_speaks": {
+     "value": "yes",
+     "status": "agreed"
+    }
+   },
+   "notes": {
+    "A": "Pimblett calls Topuria out after beating BSD ('I'm gonna absolutely rinse their lives'); Topuria replies 'Spaniards don't get knocked out either, be careful what you wish for'. Pimblett calling him out does not make it one_of_several. No return date, UFC has no plans; injuries recalled as background.",
+    "B": "Topuria's reply ('be careful what you wish for') to Pimblett's podcast trash talk, then Pimblett's own threats. Centrality: Pimblett gets an equal section, so one_of_several is arguable, but Pimblett is only calling him out and the article is framed around Topuria's answer. Injuries and 'no confirmed return date' are background; UFC has no plans for the bout.",
+    "C": ""
+   }
+  },
+  "10": {
+   "part": "tune",
+   "answers": {
+    "centrality": {
+     "value": "only_mentioned",
+     "status": "agreed"
+    },
+    "source": {
+     "value": null,
+     "status": "split",
+     "readers": [
+      "none_of_these",
+      "opponent_side",
+      "other_fighter"
+     ]
+    },
+    "act": {
+     "value": "calls_him_out",
+     "status": "agreed"
+    },
+    "fact": {
+     "value": "no_fact",
+     "status": "agreed"
+    },
+    "firmness": {
+     "value": "none",
+     "status": "agreed"
+    },
+    "reports_his_result": {
+     "value": "no",
+     "status": "agreed"
+    },
+    "reports_his_next_fight": {
+     "value": "no",
+     "status": "agreed"
+    },
+    "reports_his_health": {
+     "value": "no",
+     "status": "agreed"
+    },
+    "he_speaks": {
+     "value": "no",
+     "status": "agreed"
+    }
+   },
+   "notes": {
+    "A": "Ali Abdelaziz, manager of free agent Usman Nurmagomedov, wants Topuria as Usman's first UFC fight and says Usman would make him quit; Topuria is one of six names. Source none_of_these: another fighter's manager, with no fight to Topuria booked or linked beyond his own wish (opponent_side arguable). Centrality: a callout does not lift him to one_of_several by the guide, though he gets more lines than the others. Act: callout, but 'make him quit' is also a prediction.",
+    "B": "Usman Nurmagomedov's manager Abdelaziz wants Topuria as Usman's UFC debut and says Usman would make him quit; the piece runs through Hooker, Pimblett, Oliveira, Holloway, Tsarukyan too. Centrality: the guide says a callout does not lift him to one_of_several, but he is the headline pick. Source: a manager of a fighter publicly asking for the fight; no booking exists, so opponent_side is a stretch and none_of_these ('another fighter's manager') is the alternative.",
+    "C": "The speaker is Ali Abdelaziz, manager of Usman Nurmagomedov, who wants Usman to fight Topuria first; Usman is an unsigned free agent and the only link is this callout, so not opponent_side. Unsure: no value names another fighter's manager; other_fighter (his camp) is closest, none_of_these or opponent_side are arguable."
+   }
+  },
+  "909": {
+   "part": "tune",
+   "answers": {
+    "centrality": {
+     "value": "only_mentioned",
+     "status": "agreed"
+    },
+    "source": {
+     "value": "other_fighter",
+     "status": "agreed"
+    },
+    "act": {
+     "value": "steers_him",
+     "status": "agreed"
+    },
+    "fact": {
+     "value": "no_fact",
+     "status": "agreed"
+    },
+    "firmness": {
+     "value": "none",
+     "status": "agreed"
+    },
+    "reports_his_result": {
+     "value": "no",
+     "status": "agreed"
+    },
+    "reports_his_next_fight": {
+     "value": "no",
+     "status": "agreed"
+    },
+    "reports_his_health": {
+     "value": "no",
+     "status": "agreed"
+    },
+    "he_speaks": {
+     "value": "no",
+     "status": "agreed"
+    }
+   },
+   "notes": {
+    "A": "Hokit's tirade is aimed at Pereira; Topuria appears in two sentences of the quotes (neither he nor Pereira deserves a title shot next, make them earn it). Centrality: two sentences inside someone else's story, but they are directly about him, so one_of_several is defensible. Act: 'make him earn it' is steering, but it reads equally as an assessment (assesses_him).",
+    "B": "Hokit's tirade is aimed at Pereira and his own claim to a Gane title shot; Topuria appears in two lines as someone who also does not deserve a title shot next. Act: 'make them earn it' is what he should do next, but it is as much an assessment (assesses_him).",
+    "C": ""
+   }
+  },
+  "187": {
+   "part": "held_back",
+   "answers": {
+    "centrality": {
+     "value": "only_mentioned",
+     "status": "agreed"
+    },
+    "source": {
+     "value": "other_fighter",
+     "status": "agreed"
+    },
+    "act": {
+     "value": "none_of_these",
+     "status": "agreed"
+    },
+    "fact": {
+     "value": "no_fact",
+     "status": "agreed"
+    },
+    "firmness": {
+     "value": "none",
+     "status": "agreed"
+    },
+    "reports_his_result": {
+     "value": "no",
+     "status": "agreed"
+    },
+    "reports_his_next_fight": {
+     "value": "no",
+     "status": "agreed"
+    },
+    "reports_his_health": {
+     "value": "no",
+     "status": "agreed"
+    },
+    "he_speaks": {
+     "value": "no",
+     "status": "agreed"
+    }
+   },
+   "notes": {
+    "A": "Neil Magny predicts Garry can upset Makhachev; Amosov is named once as one of the fighters Magny has lost to. Source is for the main content (Magny). Act none_of_these: nobody does anything regarding him.",
+    "B": "Magny predicts a Garry upset over Makhachev; Amosov is named once in a list of Magny's recent losses. Source answered for the main content (Magny); none_of_these regarding Amosov.",
+    "C": ""
+   }
+  },
+  "740": {
+   "part": "held_back",
+   "answers": {
+    "centrality": {
+     "value": "main_subject",
+     "status": "agreed"
+    },
+    "source": {
+     "value": null,
+     "status": "split",
+     "readers": [
+      "no_one",
+      "promotion",
+      "himself"
+     ]
+    },
+    "act": {
+     "value": "reports_an_event",
+     "status": "agreed"
+    },
+    "fact": {
+     "value": "result",
+     "status": "agreed"
+    },
+    "firmness": {
+     "value": "official_or_done",
+     "status": "agreed"
+    },
+    "reports_his_result": {
+     "value": "yes",
+     "status": "agreed"
+    },
+    "reports_his_next_fight": {
+     "value": "no",
+     "status": "agreed"
+    },
+    "reports_his_health": {
+     "value": "no",
+     "status": "agreed"
+    },
+    "he_speaks": {
+     "value": "no",
+     "status": "agreed"
+    }
+   },
+   "notes": {
+    "A": "UFC.com video page for Donchenko's post-fight interview; the saved text is only the caption ('decision win over Soriano') plus player furniture, none of his words. Source/act: the text carries the result with nobody quoted, but the item is a UFC page of him speaking, so 'promotion' or 'himself'/speaks_of_himself are arguable.",
+    "B": "UFC.com video page: the only content is the caption that Donchenko talks with UFC.com after his decision win over Soriano, plus Fight Pass boilerplate and an 'Up next' list. Source/act: the interview itself is not in the saved text, so I took the caption (the promotion stating the result); 'himself' would fit if the video counted.",
+    "C": "The page is his post-fight interview with UFC.com ('Donchenko talks with UFC.com'), so the new material is his own words, not the outlet relaying them. Unsure: the saved text holds no quote of his, only the decision win, which alone would be no_one."
+   }
+  },
+  "181": {
+   "part": "tune",
+   "answers": {
+    "centrality": {
+     "value": "not_in_content",
+     "status": "agreed"
+    },
+    "source": {
+     "value": "other_fighter",
+     "status": "agreed"
+    },
+    "act": {
+     "value": "none_of_these",
+     "status": "agreed"
+    },
+    "fact": {
+     "value": "no_fact",
+     "status": "agreed"
+    },
+    "firmness": {
+     "value": "none",
+     "status": "agreed"
+    },
+    "reports_his_result": {
+     "value": "no",
+     "status": "agreed"
+    },
+    "reports_his_next_fight": {
+     "value": "no",
+     "status": "agreed"
+    },
+    "reports_his_health": {
+     "value": "no",
+     "status": "agreed"
+    },
+    "he_speaks": {
+     "value": "no",
+     "status": "agreed"
+    }
+   },
+   "notes": {
+    "A": "Makhachev on wanting to retire in Moscow; Topuria appears only in a LATEST NEWS link line, not the article's text. Act none_of_these: nobody does anything regarding him.",
+    "B": "Makhachev on where he wants to retire; Topuria appears only in a 'LATEST NEWS' link line, which is page furniture. Source/act answered for the main content (Makhachev speaking about himself): none_of_these regarding Topuria.",
+    "C": ""
+   }
+  },
+  "408": {
+   "part": "tune",
+   "answers": {
+    "centrality": {
+     "value": "only_mentioned",
+     "status": "agreed"
+    },
+    "source": {
+     "value": "other_fighter",
+     "status": "agreed"
+    },
+    "act": {
+     "value": "assesses_him",
+     "status": "agreed"
+    },
+    "fact": {
+     "value": "no_fact",
+     "status": "agreed"
+    },
+    "firmness": {
+     "value": "none",
+     "status": "agreed"
+    },
+    "reports_his_result": {
+     "value": "no",
+     "status": "agreed"
+    },
+    "reports_his_next_fight": {
+     "value": "no",
+     "status": "agreed"
+    },
+    "reports_his_health": {
+     "value": "no",
+     "status": "agreed"
+    },
+    "he_speaks": {
+     "value": "no",
+     "status": "agreed"
+    }
+   },
+   "notes": {
+    "A": "Usman Nurmagomedov (PFL champion, not linked to a fight with him) mocks five UFC lightweights; Topuria gets one short quote about quitting on his stool. Centrality: one paragraph among five fighters reads as only_mentioned, but he is in the headline so one_of_several is arguable. Act: the dig is about his performance (assesses_him) but is also trash talk aimed at him (calls_him_out).",
+    "B": "PFL champion Usman Nurmagomedov digs at five UFC lightweights; Topuria gets one paragraph saying he 'quit on his stool' against Gaethje. Attention is split five ways, so only_mentioned rather than one_of_several; the dig could be read as trash talk (calls_him_out) rather than an assessment.",
+    "C": ""
+   }
+  },
+  "476": {
+   "part": "held_back",
+   "answers": {
+    "centrality": {
+     "value": "only_mentioned",
+     "status": "agreed"
+    },
+    "source": {
+     "value": "opponent_side",
+     "status": "agreed"
+    },
+    "act": {
+     "value": "none_of_these",
+     "status": "agreed"
+    },
+    "fact": {
+     "value": "no_fact",
+     "status": "agreed"
+    },
+    "firmness": {
+     "value": "none",
+     "status": "agreed"
+    },
+    "reports_his_result": {
+     "value": "no",
+     "status": "agreed"
+    },
+    "reports_his_next_fight": {
+     "value": "no",
+     "status": "agreed"
+    },
+    "reports_his_health": {
+     "value": "no",
+     "status": "agreed"
+    },
+    "he_speaks": {
+     "value": "no",
+     "status": "agreed"
+    }
+   },
+   "notes": {
+    "A": "Gaethje says his hands are still hurt and he will not return until 2027; the lightweight queue (Tsarukyan, Oliveira, Holloway) follows. Topuria is named only as the opponent in the fight where the injuries happened. Centrality: the guide's 'another fighter's news tied to a fight already fought' clause could make it one_of_several, but the fight is not discussed, only referenced. Act none_of_these: Gaethje speaks about himself, nothing regarding Topuria.",
+    "B": "Gaethje's own news (hands still hurt, no return before 2027) with Topuria named once as the fighter he beat; the next-fight discussion is about Tsarukyan, Oliveira, Holloway. Centrality: the article is another fighter's news that touches their fight, so one_of_several is arguable, but Topuria gets no real content. Act: nobody does anything regarding Topuria; Gaethje speaks of himself.",
+    "C": ""
+   }
+  },
+  "269": {
+   "part": "tune",
+   "answers": {
+    "centrality": {
+     "value": "main_subject",
+     "status": "majority",
+     "readers": [
+      "one_of_several",
+      "main_subject",
+      "main_subject"
+     ]
+    },
+    "source": {
+     "value": "other_fighter",
+     "status": "agreed"
+    },
+    "act": {
+     "value": "steers_him",
+     "status": "agreed"
+    },
+    "fact": {
+     "value": "no_fact",
+     "status": "agreed"
+    },
+    "firmness": {
+     "value": "none",
+     "status": "agreed"
+    },
+    "reports_his_result": {
+     "value": "no",
+     "status": "agreed"
+    },
+    "reports_his_next_fight": {
+     "value": "no",
+     "status": "agreed"
+    },
+    "reports_his_health": {
+     "value": "no",
+     "status": "agreed"
+    },
+    "he_speaks": {
+     "value": "no",
+     "status": "agreed"
+    }
+   },
+   "notes": {
+    "A": "Tsarukyan says Topuria, 'still recovering', should take an easy fight with Chandler before another title shot; the second half is Tsarukyan's own Ruffy fight and title claims. Centrality: roughly half about him, headline names him, so main_subject is arguable. Fact/firmness/health: 'he's still recovering' is a passing status remark from a peer; if taken as news it would be health/reported and health yes.",
+    "B": "Tsarukyan says Topuria should take Chandler, an easy fight, then work back to the title; the second half is Tsarukyan's own Ruffy fight. Centrality: half the piece is Tsarukyan's own business, so one_of_several is arguable. Source: Tsarukyan lists Topuria among people he might pick after winning the belt, a loose link, not a booked or offered fight, so other_fighter rather than opponent_side.",
+    "C": "Headline and lead are Tsarukyan saying what Topuria should do next (someone said something about him -> main_subject). Unsure: roughly half the body is Tsarukyan's own UFC 331 fight and the Oliveira controversy, so one_of_several is arguable."
+   }
+  },
+  "975": {
+   "part": "held_back",
+   "answers": {
+    "centrality": {
+     "value": "only_mentioned",
+     "status": "agreed"
+    },
+    "source": {
+     "value": "other_fighter",
+     "status": "agreed"
+    },
+    "act": {
+     "value": "none_of_these",
+     "status": "majority",
+     "readers": [
+      "none_of_these",
+      "gives_news_of_him",
+      "none_of_these"
+     ]
+    },
+    "fact": {
+     "value": "no_fact",
+     "status": "agreed"
+    },
+    "firmness": {
+     "value": "none",
+     "status": "agreed"
+    },
+    "reports_his_result": {
+     "value": "no",
+     "status": "agreed"
+    },
+    "reports_his_next_fight": {
+     "value": "no",
+     "status": "agreed"
+    },
+    "reports_his_health": {
+     "value": "no",
+     "status": "agreed"
+    },
+    "he_speaks": {
+     "value": "no",
+     "status": "agreed"
+    }
+   },
+   "notes": {
+    "A": "Long interview with Donchenko after his Paris win; Amosov comes up in two questions as a compatriot in the rankings and a training partner who helped him and invited him to his gym. Act none_of_these: Donchenko thanks/praises him as a training partner, which is not an assessment, news or a callout.",
+    "B": "Long Donchenko interview after his Soriano win; Amosov comes up in a few lines: Donchenko says Amosov helped him a lot, they wrestled together after Amosov's fight, and Amosov invited him to his gym, plus a photo caption. Act: a small training-partner update, arguably none_of_these.",
+    "C": "Interview with Donchenko; Amosov appears only as a ranking name and as a training partner who helped him and invited him to his gym - nobody assesses, steers or gives news of Amosov. Would be 'mentioned as training partner'. Unsure: 'invited me to his gym' could be read as gives_news_of_him."
+   }
+  },
+  "592": {
+   "part": "held_back",
+   "answers": {
+    "centrality": {
+     "value": "main_subject",
+     "status": "agreed"
+    },
+    "source": {
+     "value": "media",
+     "status": "agreed"
+    },
+    "act": {
+     "value": "gives_news_of_him",
+     "status": "agreed"
+    },
+    "fact": {
+     "value": "none_of_these",
+     "status": "agreed"
+    },
+    "firmness": {
+     "value": "reported",
+     "status": "agreed"
+    },
+    "reports_his_result": {
+     "value": "no",
+     "status": "agreed"
+    },
+    "reports_his_next_fight": {
+     "value": "no",
+     "status": "agreed"
+    },
+    "reports_his_health": {
+     "value": "no",
+     "status": "agreed"
+    },
+    "he_speaks": {
+     "value": "no",
+     "status": "agreed"
+    }
+   },
+   "notes": {
+    "A": "Analyst Álvaro Colmenero says Topuria will return to public life in September after three months away: July for recovering and treatments, August for holidays. Fact none_of_these: a return to public view is not a listed kind; personal_life is the nearest alternative. Health: 'July was for recovering from his injuries and treatments' is a thin update on how he is; I read it as background.",
+    "B": "Analyst Colmenero says Topuria will return to public life in September after three months away. Fact: a media comeback fits no listed kind (personal_life is the nearest alternative). Health: 'July was spent recovering from injuries and treatments' is a thin update on how he is, taken as background alongside the recalled fractures.",
+    "C": ""
+   }
+  },
+  "673": {
+   "part": "tune",
+   "answers": {
+    "centrality": {
+     "value": "one_of_several",
+     "status": "agreed"
+    },
+    "source": {
+     "value": "media",
+     "status": "agreed"
+    },
+    "act": {
+     "value": "predicts_his_fight",
+     "status": "agreed"
+    },
+    "fact": {
+     "value": "no_fact",
+     "status": "majority",
+     "readers": [
+      "no_fact",
+      "next_fight",
+      "no_fact"
+     ]
+    },
+    "firmness": {
+     "value": "none",
+     "status": "majority",
+     "readers": [
+      "none",
+      "official_or_done",
+      "none"
+     ]
+    },
+    "reports_his_result": {
+     "value": "no",
+     "status": "agreed"
+    },
+    "reports_his_next_fight": {
+     "value": "yes",
+     "status": "agreed"
+    },
+    "reports_his_health": {
+     "value": "no",
+     "status": "agreed"
+    },
+    "he_speaks": {
+     "value": "no",
+     "status": "agreed"
+    }
+   },
+   "notes": {
+    "A": "MMA Junkie analyst previews Donchenko vs Soriano and picks Soriano by KO. The main content is a pick (no_fact), but the piece also states the bout, the date and a walk-out time, so fight_week_event or next_fight at official firmness are arguable; next_fight yes rests on that stated opponent and date rather than on new news.",
+    "B": "MMA Junkie analyst picks Soriano to upset him by KO in Round 2; preview covers both fighters, and states the fight is Saturday on the Paris main card with a walkout time. Fact next_fight because the bout and date are stated; an editor could say no_fact since the piece is a prediction.",
+    "C": "The article is an analyst's pick (Soriano by KO) for an already-booked fight; the main content about him is opinion, so no_fact/none. Unsure: it also states the fight is Saturday and the ~4:10 pm walk time, which could be read as fight_week_event (official_or_done)."
+   }
+  },
+  "25": {
+   "part": "held_back",
+   "answers": {
+    "centrality": {
+     "value": "main_subject",
+     "status": "agreed"
+    },
+    "source": {
+     "value": "media",
+     "status": "agreed"
+    },
+    "act": {
+     "value": "gives_news_of_him",
+     "status": "agreed"
+    },
+    "fact": {
+     "value": "personal_life",
+     "status": "agreed"
+    },
+    "firmness": {
+     "value": "reported",
+     "status": "agreed"
+    },
+    "reports_his_result": {
+     "value": "no",
+     "status": "agreed"
+    },
+    "reports_his_next_fight": {
+     "value": "no",
+     "status": "agreed"
+    },
+    "reports_his_health": {
+     "value": "no",
+     "status": "agreed"
+    },
+    "he_speaks": {
+     "value": "no",
+     "status": "agreed"
+    }
+   },
+   "notes": {
+    "A": "The whole piece is about Topuria's favourite restaurant in Spain (Nou Collonet on Tabarca), with a food influencer's negative visit. Act: nothing in the list fits a lifestyle profile exactly; gives_news_of_him (a fact about his life) is the nearest, none_of_these is defensible.",
+    "B": "Lifestyle piece: Topuria's favourite restaurant in Spain is Nou Collonet on Tabarca, then a food creator's poor review. Centrality: he is the hook throughout but half the text is about the restaurant. Act: a lifestyle fact about him is closest to gives_news_of_him. Firmness: the outlet states it without naming a source.",
+    "C": ""
+   }
+  },
+  "1125": {
+   "part": "tune",
+   "answers": {
+    "centrality": {
+     "value": "main_subject",
+     "status": "agreed"
+    },
+    "source": {
+     "value": "himself",
+     "status": "agreed"
+    },
+    "act": {
+     "value": "speaks_of_himself",
+     "status": "agreed"
+    },
+    "fact": {
+     "value": "no_fact",
+     "status": "agreed"
+    },
+    "firmness": {
+     "value": "none",
+     "status": "agreed"
+    },
+    "reports_his_result": {
+     "value": "no",
+     "status": "agreed"
+    },
+    "reports_his_next_fight": {
+     "value": "no",
+     "status": "agreed"
+    },
+    "reports_his_health": {
+     "value": "no",
+     "status": "agreed"
+    },
+    "he_speaks": {
+     "value": "yes",
+     "status": "agreed"
+    }
+   },
+   "notes": {
+    "A": "Donchenko explains why he wants Daniel Rodriguez (No. 15) next: convenient and realistic. The guide puts a wish for an opponent under no_fact, but the firmness value 'wish' exists for exactly this, so next_fight/wish is arguable. His Soriano win is recalled in a background section only.",
+    "B": "Ukrainian. He explains why he wants Daniel Rodriguez next (ranked 15th, stylistically convenient); a wish, not a booking. His Soriano, Berggren and Morono wins are recalled as background.",
+    "C": ""
+   }
+  },
+  "856": {
+   "part": "held_back",
+   "answers": {
+    "centrality": {
+     "value": "only_mentioned",
+     "status": "majority",
+     "readers": [
+      "only_mentioned",
+      "one_of_several",
+      "only_mentioned"
+     ]
+    },
+    "source": {
+     "value": "media",
+     "status": "agreed"
+    },
+    "act": {
+     "value": "gives_news_of_him",
+     "status": "agreed"
+    },
+    "fact": {
+     "value": "no_fact",
+     "status": "majority",
+     "readers": [
+      "no_fact",
+      "health",
+      "no_fact"
+     ]
+    },
+    "firmness": {
+     "value": "none",
+     "status": "majority",
+     "readers": [
+      "none",
+      "reported",
+      "none"
+     ]
+    },
+    "reports_his_result": {
+     "value": "no",
+     "status": "agreed"
+    },
+    "reports_his_next_fight": {
+     "value": "no",
+     "status": "agreed"
+    },
+    "reports_his_health": {
+     "value": "no",
+     "status": "majority",
+     "readers": [
+      "no",
+      "yes",
+      "no"
+     ]
+    },
+    "he_speaks": {
+     "value": "no",
+     "status": "agreed"
+    }
+   },
+   "notes": {
+    "A": "Marca roundup of Spanish fighters' 2026 in the UFC; Topuria gets one paragraph as background (loss to Gaethje, fractured orbitals, nose and foot, likely out until 2027, has posted a couple of messages). Centrality: five fighters share the piece, so one_of_several is arguable. Act/fact/health: the injury and absence are recalled as background in a roundup, but a reader could take 'out until 2027' as a health update (health/reported).",
+    "B": "Year-recap of Spanish fighters in the UFC; Topuria gets one paragraph: the Gaethje loss, fractured orbitals, nose and foot, out 'very probably' until 2027, and 'a couple of messages' lately. Fact/health: the injuries and lay-off read as the writer's status update, but they could be called background to a story about the debutants; next_fight: '2027' is the writer's guess, not a timeline from anyone.",
+    "C": "A roundup of Spain's UFC year centred on two debutants; Topuria gets one recap paragraph among many fighters, his June loss and injuries retold as background -> only_mentioned, no new fact, health no. Unsure: 'will keep him out probably until 2027' is a return timeline that could make fact next_fight (firmness reported, stated by MARCA)."
+   }
+  },
+  "930": {
+   "part": "held_back",
+   "answers": {
+    "centrality": {
+     "value": "main_subject",
+     "status": "agreed"
+    },
+    "source": {
+     "value": "himself",
+     "status": "agreed"
+    },
+    "act": {
+     "value": "speaks_of_himself",
+     "status": "agreed"
+    },
+    "fact": {
+     "value": "no_fact",
+     "status": "agreed"
+    },
+    "firmness": {
+     "value": "none",
+     "status": "agreed"
+    },
+    "reports_his_result": {
+     "value": "no",
+     "status": "agreed"
+    },
+    "reports_his_next_fight": {
+     "value": "no",
+     "status": "agreed"
+    },
+    "reports_his_health": {
+     "value": "no",
+     "status": "agreed"
+    },
+    "he_speaks": {
+     "value": "yes",
+     "status": "agreed"
+    }
+   },
+   "notes": {
+    "A": "Topuria's message to Georgian fans in a TBC spot: he will come back stronger, his greatest wins are ahead. The article recaps his injuries (two orbital fractures, septum, and a foot fracture he admitted in his essay) and mentions echoes of a Gaethje rematch and rumours of Pimblett. Fact: the message is talk, but the foot fracture could be read as health news. Next fight: rematch echo and Pimblett rumour are too vague for me to count as talks. Health: injuries recalled as background rather than an update.",
+    "B": "Topuria's message to Georgian fans in a TBC ad: 'my greatest wins are still to come, I'll come back stronger', no date. Fact: a promise to return is a wish, not a fact; the foot fracture is recalled from his essay and the Gaethje/Pimblett bouts are the writer's 'echo' and 'rumours', mentioned in passing, so both taken as no.",
+    "C": ""
+   }
+  },
+  "746": {
+   "part": "tune",
+   "answers": {
+    "centrality": {
+     "value": "main_subject",
+     "status": "agreed"
+    },
+    "source": {
+     "value": "no_one",
+     "status": "agreed"
+    },
+    "act": {
+     "value": "reports_an_event",
+     "status": "agreed"
+    },
+    "fact": {
+     "value": "result",
+     "status": "agreed"
+    },
+    "firmness": {
+     "value": "official_or_done",
+     "status": "agreed"
+    },
+    "reports_his_result": {
+     "value": "yes",
+     "status": "agreed"
+    },
+    "reports_his_next_fight": {
+     "value": "no",
+     "status": "agreed"
+    },
+    "reports_his_health": {
+     "value": "no",
+     "status": "agreed"
+    },
+    "he_speaks": {
+     "value": "no",
+     "status": "agreed"
+    }
+   },
+   "notes": {
+    "A": "UFC.com video page for his Octagon interview with Bisping; the only content is the description stating his unanimous-decision win over Soriano. Source: the text carries the result with nobody speaking (no_one), though the page is his interview (himself would fit if the video counted). He_speaks no because none of his words are in the saved text.",
+    "B": "UFC.com video page for his Octagon interview; the saved text is only the caption stating his unanimous-decision win over Soriano, plus a video list. No words of his are in the text. Source could be himself (it is his interview) and result yes rests on a caption rather than a report.",
+    "C": ""
+   }
+  },
+  "605": {
+   "part": "tune",
+   "answers": {
+    "centrality": {
+     "value": "one_of_several",
+     "status": "agreed"
+    },
+    "source": {
+     "value": "no_one",
+     "status": "agreed"
+    },
+    "act": {
+     "value": "reports_an_event",
+     "status": "agreed"
+    },
+    "fact": {
+     "value": "next_fight",
+     "status": "agreed"
+    },
+    "firmness": {
+     "value": "official_or_done",
+     "status": "majority",
+     "readers": [
+      "official_or_done",
+      "reported",
+      "official_or_done"
+     ]
+    },
+    "reports_his_result": {
+     "value": "no",
+     "status": "agreed"
+    },
+    "reports_his_next_fight": {
+     "value": "yes",
+     "status": "agreed"
+    },
+    "reports_his_health": {
+     "value": "no",
+     "status": "agreed"
+    },
+    "he_speaks": {
+     "value": "no",
+     "status": "agreed"
+    }
+   },
+   "notes": {
+    "A": "Short relay of Sport.ua: Donchenko vs Soriano booked for UFC Paris on 5 Sept, one sentence on each man. Centrality: headline centres on him but the body previews both fighters. Firmness: stated as a set booking, but the only attribution is another outlet, so 'reported' is arguable.",
+    "B": "Short preview, citing Sport.ua, of Donchenko vs Soriano on 5 September in Paris, with a sentence each on both men. Centrality: the headline is his but the body covers both, so main_subject is arguable; firmness: relayed from a named outlet, though the booking itself was already settled (official_or_done).",
+    "C": "The main fact is his booked fight vs Soriano on 5 September at UFC Fight Night 287 in Paris - an official card set by the promotion -> official_or_done."
+   }
+  },
+  "129": {
+   "part": "held_back",
+   "answers": {
+    "centrality": {
+     "value": "main_subject",
+     "status": "agreed"
+    },
+    "source": {
+     "value": "his_manager",
+     "status": "agreed"
+    },
+    "act": {
+     "value": "steers_him",
+     "status": "agreed"
+    },
+    "fact": {
+     "value": "next_fight",
+     "status": "agreed"
+    },
+    "firmness": {
+     "value": "wish",
+     "status": "agreed"
+    },
+    "reports_his_result": {
+     "value": "no",
+     "status": "agreed"
+    },
+    "reports_his_next_fight": {
+     "value": "yes",
+     "status": "agreed"
+    },
+    "reports_his_health": {
+     "value": "yes",
+     "status": "agreed"
+    },
+    "he_speaks": {
+     "value": "no",
+     "status": "agreed"
+    }
+   },
+   "notes": {
+    "A": "Malki Kawa posts a 'Rematch' graphic with 'we want this fight': a demand for an immediate Gaethje rematch; the article adds that Gaethje has closed the door, the UFC may prefer Pimblett, his return will not come before 2027 (realistically March-June), and that the swelling has gone down and he is back in Miami. Fact/firmness: the main news is a wish, which the guide sends to no_fact, but the article also gives a return window and a recovery update, so next_fight/wish is my pick with no_fact/none as the alternative. Next fight: the rematch is a wish (no), but the 2027 return window is a timeline (yes), though it is the outlet's estimate.",
+    "B": "Kawa posts 'we want this fight' for an immediate Gaethje rematch; Gaethje has closed the door, UFC may prefer Pimblett, and the writer estimates Topuria's return at March to June 2027. Fact/firmness: the guide says a wish about who he should fight is no_fact, yet the firmness scale has 'wish' for exactly this, so next_fight/wish chosen with no_fact/none as the alternative; the return timing is the writer's estimate. Health: the first recovery phase (swelling down) is reported from recent images, thin but new.",
+    "C": ""
+   }
+  },
+  "687": {
+   "part": "held_back",
+   "answers": {
+    "centrality": {
+     "value": "one_of_several",
+     "status": "majority",
+     "readers": [
+      "one_of_several",
+      "main_subject",
+      "one_of_several"
+     ]
+    },
+    "source": {
+     "value": "no_one",
+     "status": "agreed"
+    },
+    "act": {
+     "value": "reports_an_event",
+     "status": "agreed"
+    },
+    "fact": {
+     "value": "fight_week_event",
+     "status": "agreed"
+    },
+    "firmness": {
+     "value": "official_or_done",
+     "status": "agreed"
+    },
+    "reports_his_result": {
+     "value": "no",
+     "status": "agreed"
+    },
+    "reports_his_next_fight": {
+     "value": "yes",
+     "status": "agreed"
+    },
+    "reports_his_health": {
+     "value": "no",
+     "status": "agreed"
+    },
+    "he_speaks": {
+     "value": "no",
+     "status": "agreed"
+    }
+   },
+   "notes": {
+    "A": "Sport.ua 'watch live' preview of Donchenko vs Soriano at UFC Paris: records, his three-fight streak, main event, start times, broadcaster. Centrality: a preview of a fight of his covering both fighters per the guide, though Soriano gets one sentence, so main_subject is defensible. Fact: card position and start times (fight_week_event) vs the bout itself (next_fight). Result: a stray line 'the Ukrainian won his fourth in a row' sits among the page's teaser links after the article body; I treated it as page furniture from a later update.",
+    "B": "Sport.ua 'watch live' preview: Donchenko vs Soriano on the Paris main card, start times, broadcaster. Centrality: opponent gets one record line, but a preview of a fight of his covering both could be one_of_several. Fact: card order and times read as fight_week_event, next_fight arguable since opponent and date are stated. Result: the stray line 'the Ukrainian won his fourth in a row' after the fight-card caption looks like a link teaser added on update, treated as page furniture.",
+    "C": "A live/preview page for his fight that gives both fighters' records and context - 'a preview or feature on a fight of his covering both fighters' -> one_of_several. Unsure: a Ukrainian outlet framing it around 'our fighter' could make main_subject arguable."
+   }
+  },
+  "500": {
+   "part": "tune",
+   "answers": {
+    "centrality": {
+     "value": "only_mentioned",
+     "status": "agreed"
+    },
+    "source": {
+     "value": "media",
+     "status": "agreed"
+    },
+    "act": {
+     "value": "none_of_these",
+     "status": "agreed"
+    },
+    "fact": {
+     "value": "no_fact",
+     "status": "agreed"
+    },
+    "firmness": {
+     "value": "none",
+     "status": "agreed"
+    },
+    "reports_his_result": {
+     "value": "no",
+     "status": "agreed"
+    },
+    "reports_his_next_fight": {
+     "value": "yes",
+     "status": "majority",
+     "readers": [
+      "yes",
+      "no",
+      "yes"
+     ]
+    },
+    "reports_his_health": {
+     "value": "no",
+     "status": "agreed"
+    },
+    "he_speaks": {
+     "value": "no",
+     "status": "agreed"
+    }
+   },
+   "notes": {
+    "A": "The story is Nathaniel Wood's new opponent (journalist Marcel Dorff's report); Donchenko appears only as a line in the full UFC Paris card list. Act none_of_these: nobody does anything regarding him. Next fight yes only because the card list states 'Daniil Donchenko vs. Punahele Soriano' for Saturday; if a card listing does not count as reporting his fight, both that and fact (next_fight) flip.",
+    "B": "Article is about Nathaniel Wood's replacement opponent Pavel Andrusca (journalist Marcel Dorff's report); Donchenko vs Soriano appears only as a line in the full card list. Act none_of_these because nothing is done regarding him. An editor could count the card line as next_fight news (opponent and event set).",
+    "C": "The article is about Wood's new opponent, but its full UFC Paris card lists Donchenko vs Soriano on Saturday; by analogy with 'his bout on a results page' counting as a result, his bout on a card list states his next fight. Unsure: it is only a line in a list, and an editor could say it is not news of his."
+   }
+  },
+  "3": {
+   "part": "held_back",
+   "answers": {
+    "centrality": {
+     "value": "only_mentioned",
+     "status": "agreed"
+    },
+    "source": {
+     "value": "no_one",
+     "status": "agreed"
+    },
+    "act": {
+     "value": "none_of_these",
+     "status": "agreed"
+    },
+    "fact": {
+     "value": "no_fact",
+     "status": "agreed"
+    },
+    "firmness": {
+     "value": "none",
+     "status": "agreed"
+    },
+    "reports_his_result": {
+     "value": "no",
+     "status": "agreed"
+    },
+    "reports_his_next_fight": {
+     "value": "no",
+     "status": "agreed"
+    },
+    "reports_his_health": {
+     "value": "no",
+     "status": "agreed"
+    },
+    "he_speaks": {
+     "value": "no",
+     "status": "agreed"
+    }
+   },
+   "notes": {
+    "A": "The saved text is a photo caption ('Joel Alvarez fights Yaroslav Amosov during UFC 328', May 9) followed by newspaper sign-up boilerplate; no outcome, no story. Act none_of_these: a caption names him and nobody does anything regarding him (reports_an_event would fit if a bare caption counts as reporting). Centrality could be not_in_content if a caption is treated as page furniture; source no_one because nobody speaks.",
+    "B": "A bare photo caption from UFC 328 (May) on a newspaper site, followed by sign-up boilerplate; no outcome is given. Act none_of_these because nobody does anything regarding him. Centrality could be not_in_content (no article body) and act could be reports_an_event (the caption says the fight happened).",
+    "C": ""
+   }
+  },
+  "297": {
+   "part": "held_back",
+   "answers": {
+    "centrality": {
+     "value": "only_mentioned",
+     "status": "agreed"
+    },
+    "source": {
+     "value": "none_of_these",
+     "status": "agreed"
+    },
+    "act": {
+     "value": "none_of_these",
+     "status": "agreed"
+    },
+    "fact": {
+     "value": "no_fact",
+     "status": "agreed"
+    },
+    "firmness": {
+     "value": "none",
+     "status": "agreed"
+    },
+    "reports_his_result": {
+     "value": "no",
+     "status": "agreed"
+    },
+    "reports_his_next_fight": {
+     "value": "no",
+     "status": "agreed"
+    },
+    "reports_his_health": {
+     "value": "no",
+     "status": "agreed"
+    },
+    "he_speaks": {
+     "value": "no",
+     "status": "agreed"
+    }
+   },
+   "notes": {
+    "A": "Long interview with OKTAGON co-founder Pavol Neruda about his promotion; Topuria appears once in the intro as a face of WOW FC's rise. Source none_of_these: the speaker is an executive of a rival promotion, not the UFC ('promotion') and not media. Act none_of_these: nobody does anything regarding him.",
+    "B": "Interview with OKTAGON co-founder Pavol Neruda about the promotion's growth and Spain; Topuria is named once in the intro as a face of WOW FC's rise. Source none_of_these: a rival promotion's boss speaks, and the guide's 'promotion' means the UFC; act none_of_these: nothing is done regarding Topuria.",
+    "C": ""
+   }
+  },
+  "1260": {
+   "part": "tune",
+   "answers": {
+    "centrality": {
+     "value": "only_mentioned",
+     "status": "agreed"
+    },
+    "source": {
+     "value": "himself",
+     "status": "agreed"
+    },
+    "act": {
+     "value": "none_of_these",
+     "status": "agreed"
+    },
+    "fact": {
+     "value": "no_fact",
+     "status": "agreed"
+    },
+    "firmness": {
+     "value": "none",
+     "status": "agreed"
+    },
+    "reports_his_result": {
+     "value": "no",
+     "status": "agreed"
+    },
+    "reports_his_next_fight": {
+     "value": "no",
+     "status": "agreed"
+    },
+    "reports_his_health": {
+     "value": "no",
+     "status": "agreed"
+    },
+    "he_speaks": {
+     "value": "yes",
+     "status": "agreed"
+    }
+   },
+   "notes": {
+    "A": "Donchenko is the speaker throughout, but he talks about Makhachev's streak vs Silva's, Garry's mindset and Amosov as the man to test the champion, not about himself; his Soriano win is one clause of background. The guide puts 'him talking about another fighter, even at length' under only_mentioned, though he is the article's voice, hence unsure. Act none_of_these: he assesses other fighters, nobody does anything regarding him.",
+    "B": "Donchenko compares Makhachev's streak with Anderson Silva's and tips Amosov as a test for the champion; his Soriano win is background. Centrality: he talks about other fighters, not himself, which the guide files under only_mentioned though he is the only speaker. Act: speaks_of_himself does not fit since he speaks of others; assesses_him would describe what he does to Makhachev, not to himself.",
+    "C": ""
+   }
+  },
+  "1172": {
+   "part": "tune",
+   "answers": {
+    "centrality": {
+     "value": "main_subject",
+     "status": "agreed"
+    },
+    "source": {
+     "value": "himself",
+     "status": "agreed"
+    },
+    "act": {
+     "value": "speaks_of_himself",
+     "status": "agreed"
+    },
+    "fact": {
+     "value": "health",
+     "status": "agreed"
+    },
+    "firmness": {
+     "value": "official_or_done",
+     "status": "agreed"
+    },
+    "reports_his_result": {
+     "value": "yes",
+     "status": "majority",
+     "readers": [
+      "yes",
+      "no",
+      "yes"
+     ]
+    },
+    "reports_his_next_fight": {
+     "value": "no",
+     "status": "agreed"
+    },
+    "reports_his_health": {
+     "value": "yes",
+     "status": "agreed"
+    },
+    "he_speaks": {
+     "value": "yes",
+     "status": "agreed"
+    }
+   },
+   "notes": {
+    "A": "Long Sport.ua interview ten days after Paris: he breaks down the Soriano win round by round and reveals an infection on Aug 4 that put him in hospital with his hand cut open and on antibiotics a month before the fight. Fact: the infection is the newest fact (health), but the win is the interview's frame (result). Result yes because the fight and its outcome are the main topic, not mere background; the text is cut before the Usman and Rodriguez parts, and no next fight is set.",
+    "B": "Ukrainian. Long post-fight interview: he reviews the Soriano win, and discloses an infection on 4 August, a hospital procedure on his arm and antibiotics a month before the fight, plus that he took no serious damage. The win itself is the occasion, not the news. Fact could be no_fact (mostly talk about the fight); the infection is past but newly detailed, so health yes is arguable. His Rodriguez request is a wish.",
+    "C": "A post-fight interview whose lead reports his win over Soriano and whose body is about that fight, so the result is the topic, not background to other news. Unsure: published 10 days after the fight, so the news is arguably the interview, not the result."
+   }
+  },
+  "774": {
+   "part": "tune",
+   "answers": {
+    "centrality": {
+     "value": "main_subject",
+     "status": "agreed"
+    },
+    "source": {
+     "value": "himself",
+     "status": "agreed"
+    },
+    "act": {
+     "value": "speaks_of_himself",
+     "status": "agreed"
+    },
+    "fact": {
+     "value": "result",
+     "status": "agreed"
+    },
+    "firmness": {
+     "value": "official_or_done",
+     "status": "agreed"
+    },
+    "reports_his_result": {
+     "value": "yes",
+     "status": "agreed"
+    },
+    "reports_his_next_fight": {
+     "value": "no",
+     "status": "agreed"
+    },
+    "reports_his_health": {
+     "value": "no",
+     "status": "agreed"
+    },
+    "he_speaks": {
+     "value": "yes",
+     "status": "agreed"
+    }
+   },
+   "notes": {
+    "A": "Sport.ua's own press-room Q&A with Donchenko after beating Soriano in Paris: the third round was under control, he followed the game plan, thanks Ukrainian fans, repeats he wants Daniel Rodriguez (a wish, so next_fight no). Fact/result: the win is the frame and he discusses it, but the piece never states the outcome as a report, so no_fact is arguable.",
+    "B": "Press-conference piece after his win over Soriano: he explains the third round, the game plan, the Ukrainian crowd, and repeats he wants Daniel Rodriguez next (a wish). Result: the win is the frame ('impressed in the octagon', 'I knew I was winning on points') rather than a stated scoreline, so an editor could call the fact no_fact.",
+    "C": ""
+   }
+  },
+  "17": {
+   "part": "held_back",
+   "answers": {
+    "centrality": {
+     "value": "main_subject",
+     "status": "agreed"
+    },
+    "source": {
+     "value": "no_one",
+     "status": "agreed"
+    },
+    "act": {
+     "value": "reports_an_event",
+     "status": "agreed"
+    },
+    "fact": {
+     "value": "next_fight",
+     "status": "agreed"
+    },
+    "firmness": {
+     "value": "official_or_done",
+     "status": "agreed"
+    },
+    "reports_his_result": {
+     "value": "no",
+     "status": "agreed"
+    },
+    "reports_his_next_fight": {
+     "value": "yes",
+     "status": "agreed"
+    },
+    "reports_his_health": {
+     "value": "no",
+     "status": "agreed"
+    },
+    "he_speaks": {
+     "value": "no",
+     "status": "agreed"
+    }
+   },
+   "notes": {
+    "A": "Donchenko's next fight set: vs Punahele Soriano on 5 Sept at UFC Fight Night Paris, with both records recapped; an Instagram post of his is embedded but no words of his appear. Firmness: stated as fact by the outlet without a cited source, so 'reported' is arguable.",
+    "B": "Booking report: Donchenko vs Soriano on 5 September at UFC Fight Night Paris, with both records; an Instagram post of his is embedded but no words are quoted. Firmness: stated flat as settled, but the text names no announcer, so 'reported' is defensible.",
+    "C": ""
+   }
+  },
+  "934": {
+   "part": "held_back",
+   "answers": {
+    "centrality": {
+     "value": "main_subject",
+     "status": "agreed"
+    },
+    "source": {
+     "value": "media",
+     "status": "agreed"
+    },
+    "act": {
+     "value": "steers_him",
+     "status": "agreed"
+    },
+    "fact": {
+     "value": "no_fact",
+     "status": "agreed"
+    },
+    "firmness": {
+     "value": "none",
+     "status": "agreed"
+    },
+    "reports_his_result": {
+     "value": "no",
+     "status": "agreed"
+    },
+    "reports_his_next_fight": {
+     "value": "no",
+     "status": "agreed"
+    },
+    "reports_his_health": {
+     "value": "no",
+     "status": "agreed"
+    },
+    "he_speaks": {
+     "value": "yes",
+     "status": "agreed"
+    }
+   },
+   "notes": {
+    "A": "Sport.ua writer lays out five possible next opponents (Rodriguez, Holland, Magny, Medic, Miller) four days after his Soriano win. Fact: an opinion piece (no_fact), but the lead does restate the win and his Rodriguez callout, so result is arguable; result no because the win is the setup, not the news. He_speaks yes rests on a two-word quoted fragment ('легкими грошима') attributed to him; a stricter reader would say no.",
+    "B": "Ukrainian. Sport.ua's own writer weighs five possible next opponents for him (Rodriguez, Holland, Magny, Medic, Miller); his Soriano win and his callout are background. His only words are a two-word quoted fragment ('легкими грошима'), so he_speaks yes is borderline.",
+    "C": ""
+   }
+  },
+  "490": {
+   "part": "tune",
+   "answers": {
+    "centrality": {
+     "value": "main_subject",
+     "status": "agreed"
+    },
+    "source": {
+     "value": "himself",
+     "status": "agreed"
+    },
+    "act": {
+     "value": "speaks_of_himself",
+     "status": "agreed"
+    },
+    "fact": {
+     "value": "next_fight",
+     "status": "agreed"
+    },
+    "firmness": {
+     "value": "official_or_done",
+     "status": "agreed"
+    },
+    "reports_his_result": {
+     "value": "no",
+     "status": "agreed"
+    },
+    "reports_his_next_fight": {
+     "value": "yes",
+     "status": "agreed"
+    },
+    "reports_his_health": {
+     "value": "no",
+     "status": "agreed"
+    },
+    "he_speaks": {
+     "value": "yes",
+     "status": "agreed"
+    }
+   },
+   "notes": {
+    "A": "UFC.com fight-week feature: Donchenko on his Berggren win, his French summers as a child, his camp in Poland, and Saturday's bout with Soriano in Paris. Fact: the set fight is the anchor (next_fight, stated by the promotion's own site), but the feature's fresh material is largely personal_life. The Berggren KO is background; the trailing 'see final results' line is page furniture.",
+    "B": "UFC.com feature ahead of his Saturday fight with Soriano in Paris, built on his quotes about the Berggren win, his French, his camp and his goals. Fact next_fight because the opponent and date are stated by the promotion's site; an editor could say no_fact (the booking was already known) or personal_life (the France summers). The closing 'took place' line is page furniture added later.",
+    "C": ""
+   }
+  },
+  "65": {
+   "part": "tune",
+   "answers": {
+    "centrality": {
+     "value": "only_mentioned",
+     "status": "agreed"
+    },
+    "source": {
+     "value": "media",
+     "status": "agreed"
+    },
+    "act": {
+     "value": "none_of_these",
+     "status": "agreed"
+    },
+    "fact": {
+     "value": "no_fact",
+     "status": "agreed"
+    },
+    "firmness": {
+     "value": "none",
+     "status": "agreed"
+    },
+    "reports_his_result": {
+     "value": "no",
+     "status": "agreed"
+    },
+    "reports_his_next_fight": {
+     "value": "no",
+     "status": "agreed"
+    },
+    "reports_his_health": {
+     "value": "no",
+     "status": "agreed"
+    },
+    "he_speaks": {
+     "value": "no",
+     "status": "agreed"
+    }
+   },
+   "notes": {
+    "A": "MMA Fighting UFC 330 roundtable; Amosov appears once as the man Joel Alvarez recently lost to, as background. Act none_of_these: nobody does anything regarding him.",
+    "B": "UFC 330 roundtable by three writers; Amosov appears once, as the man who ended Alvarez's win streak, background to a prelim pick. Nobody does anything regarding him.",
+    "C": ""
+   }
+  },
+  "1146": {
+   "part": "held_back",
+   "answers": {
+    "centrality": {
+     "value": "main_subject",
+     "status": "agreed"
+    },
+    "source": {
+     "value": "other_fighter",
+     "status": "agreed"
+    },
+    "act": {
+     "value": "assesses_him",
+     "status": "agreed"
+    },
+    "fact": {
+     "value": "no_fact",
+     "status": "agreed"
+    },
+    "firmness": {
+     "value": "none",
+     "status": "agreed"
+    },
+    "reports_his_result": {
+     "value": "no",
+     "status": "agreed"
+    },
+    "reports_his_next_fight": {
+     "value": "no",
+     "status": "agreed"
+    },
+    "reports_his_health": {
+     "value": "no",
+     "status": "agreed"
+    },
+    "he_speaks": {
+     "value": "no",
+     "status": "agreed"
+    }
+   },
+   "notes": {
+    "A": "Makhachev says Amosov is 'not a dangerous opponent', citing his loss to Jackson, and rates Garry higher; a tail section on Garry's coach. Centrality: the lead, main quote and photo are Amosov, but attention is shared with Garry. Source: Makhachev is the champion of his division and Amosov has been floated as a matchup, but no fight is booked or his last/next, so other_fighter.",
+    "B": "Makhachev tells Ushatayka Amosov is not a dangerous opponent, citing the Jackson loss, and rates Garry higher; a closing section is about Garry's coach. Centrality: Garry gets nearly as much room, so one_of_several is arguable. Source: Makhachev is the champion of his division but the text names no booked or offered fight between them, so other_fighter rather than opponent_side.",
+    "C": ""
+   }
+  },
+  "247": {
+   "part": "tune",
+   "answers": {
+    "centrality": {
+     "value": "only_mentioned",
+     "status": "agreed"
+    },
+    "source": {
+     "value": "media",
+     "status": "agreed"
+    },
+    "act": {
+     "value": "assesses_him",
+     "status": "agreed"
+    },
+    "fact": {
+     "value": "no_fact",
+     "status": "agreed"
+    },
+    "firmness": {
+     "value": "none",
+     "status": "agreed"
+    },
+    "reports_his_result": {
+     "value": "no",
+     "status": "agreed"
+    },
+    "reports_his_next_fight": {
+     "value": "no",
+     "status": "agreed"
+    },
+    "reports_his_health": {
+     "value": "no",
+     "status": "agreed"
+    },
+    "he_speaks": {
+     "value": "no",
+     "status": "agreed"
+    }
+   },
+   "notes": {
+    "A": "Schaub's piece is about Ian Machado Garry's path back; Amosov appears in one closing paragraph as a dominant grappler the UFC might book against Garry. Speculation, not a booking, so no next-fight news.",
+    "B": "Brendan Schaub on Ian Machado Garry's road back; Amosov appears in the last paragraph as a 'dominant grappler' and 'nightmare matchup' the UFC might book against Garry. A speculated matchup, not a booking, so only_mentioned, though the paragraph is more than a name-drop.",
+    "C": ""
+   }
+  }
+ }
+}

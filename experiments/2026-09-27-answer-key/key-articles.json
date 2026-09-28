@@ -1,0 +1,478 @@
+{
+ "seed": 20260927,
+ "note": "the answer key's articles; their claims must fall on the tune side of the split",
+ "articles": [
+  {
+   "id": "991",
+   "claim": "claim-113",
+   "fighter": "Ilia Topuria",
+   "language": "en",
+   "part": "tune",
+   "title": "Dana White Reveals Top 2 Potential Opponents for Ilia Topuria - Yahoo Sports"
+  },
+  {
+   "id": "90",
+   "claim": "claim-008",
+   "fighter": "Ilia Topuria",
+   "language": "en",
+   "part": "tune",
+   "title": "Manager: Ilia Topuria 'would f*cking annihilate' 100 percent of Dominance MMA roster - MMA Junkie"
+  },
+  {
+   "id": "833",
+   "claim": "claim-097",
+   "fighter": "Ilia Topuria",
+   "language": "en",
+   "part": "tune",
+   "title": "UFC commentator speculates on Ilia Topuria vs Justin Gaethje rematch - Yahoo Sports"
+  },
+  {
+   "id": "683",
+   "claim": "claim-073.3",
+   "fighter": "Daniil Donchenko",
+   "language": "en",
+   "part": "tune",
+   "title": "UFC Paris Results: Hooker vs. Parnasse"
+  },
+  {
+   "id": "732",
+   "claim": "claim-073.4",
+   "fighter": "Daniil Donchenko",
+   "language": "en",
+   "part": "tune",
+   "title": "Daniil Donchenko Dominates Punahele Soriano At UFC Paris, Calls Out Daniel Rodriguez - LowKickMMA.com"
+  },
+  {
+   "id": "349",
+   "claim": "claim-015.0",
+   "fighter": "Ilia Topuria",
+   "language": "es",
+   "part": "tune",
+   "title": "Merab actualiza el estado de Topuria: \"Está bien y con una actitud muy positiva\""
+  },
+  {
+   "id": "620",
+   "claim": "claim-080",
+   "fighter": "Ilia Topuria",
+   "language": "es",
+   "part": "tune",
+   "title": "Ilia Topuria anuncia su vuelta a la UFC: \"Después de visitar ese infierno, soy más fuerte que antes\" - 20Minutos"
+  },
+  {
+   "id": "261",
+   "claim": "claim-034",
+   "fighter": "Ilia Topuria",
+   "language": "en",
+   "part": "tune",
+   "title": "Morning Report | Namo Fazil claims he was accosted by ‘15 Chechens’ before Contender Series loss"
+  },
+  {
+   "id": "148",
+   "claim": "claim-014",
+   "fighter": "Ilia Topuria",
+   "language": "es",
+   "part": "tune",
+   "title": "Islam Makhachev aconseja a Ilia Topuria tras su derrota: «Si se centra, puede ser campeón otra vez» - OkDiario"
+  },
+  {
+   "id": "953",
+   "claim": "claim-099",
+   "fighter": "Ilia Topuria",
+   "language": "en",
+   "part": "tune",
+   "title": "Pimblett On His Next UFC Fight After BSD Win - boxingnews.com"
+  },
+  {
+   "id": "921",
+   "claim": "claim-099",
+   "fighter": "Ilia Topuria",
+   "language": "en",
+   "part": "tune",
+   "title": "Paddy Pimblett on potential Ilia Topuria fight: 'I'd love to smash his head in' - centraloregondaily.com"
+  },
+  {
+   "id": "4",
+   "claim": "claim-000",
+   "fighter": "Yaroslav Amosov",
+   "language": "en",
+   "part": "tune",
+   "title": "Jorge Masvidal: Yaroslav Amosov a 'nightmare' for Islam Makhachev - MMA Junkie"
+  },
+  {
+   "id": "342",
+   "claim": "claim-043",
+   "fighter": "Yaroslav Amosov",
+   "language": "uk",
+   "part": "held_back",
+   "title": "Змінили стадіони на передову: хто з українських чемпіонів взяв до рук зброю - 24 Канал"
+  },
+  {
+   "id": "1161",
+   "claim": "claim-126",
+   "fighter": "Daniil Donchenko",
+   "language": "uk",
+   "part": "tune",
+   "title": "Аспіналл відмовився від титулу чемпіона UFC у важкій вазі - xsport.ua"
+  },
+  {
+   "id": "625",
+   "claim": "claim-074",
+   "fighter": "Daniil Donchenko",
+   "language": "uk",
+   "part": "tune",
+   "title": "Донченко і Соріано зійшлися на вагах: обом по 77,11 кг - Duflu -"
+  },
+  {
+   "id": "743",
+   "claim": "claim-094.1",
+   "fighter": "Daniil Donchenko",
+   "language": "uk",
+   "part": "tune",
+   "title": "Данило Донченко вражає навичками на турнірі в Парижі: зважування та бій в октагоні - 112.ua"
+  },
+  {
+   "id": "510",
+   "claim": "claim-058",
+   "fighter": "Daniil Donchenko",
+   "language": "en",
+   "part": "tune",
+   "title": "UFC Paris preview: Start time, full card and how to watch Salahdine Parnasse’s debut vs Dan Hooker"
+  },
+  {
+   "id": "115",
+   "claim": "claim-011",
+   "fighter": "Ilia Topuria",
+   "language": "es",
+   "part": "tune",
+   "title": "León reúne a Carolina Marín, Carlos Moyá y uno de los hombres clave de Ilia Topuria - Digital de León"
+  },
+  {
+   "id": "203",
+   "claim": "claim-022",
+   "fighter": "Daniil Donchenko",
+   "language": "uk",
+   "part": "held_back",
+   "title": "«50% бонусу пожертвую церкві». Донченко зізнався, куди спрямує гроші за ефектну перемогу в UFC - Sport.nv.ua."
+  },
+  {
+   "id": "771",
+   "claim": "claim-090",
+   "fighter": "Ilia Topuria",
+   "language": "es",
+   "part": "held_back",
+   "title": "Ilia Topuria: “Yo veía trabajar a mi madre y a mi padre; veía la vida que llevábamos, parecida a la de millones de familias, y quería cambiarla… Por eso, cuando aquel niño sentado en una grada pensó ‘voy a ser alguien’, en realidad estaba haciéndose una p - Lecturas"
+  },
+  {
+   "id": "207",
+   "claim": "claim-024",
+   "fighter": "Ilia Topuria",
+   "language": "en",
+   "part": "tune",
+   "title": "Ian Machado Garry beating Islam Makhachev would be 2026’s biggest title upset according to fan vote"
+  },
+  {
+   "id": "224",
+   "claim": "claim-026",
+   "fighter": "Ilia Topuria",
+   "language": "en",
+   "part": "tune",
+   "title": "UFC 330 loser was being called a threat to Islam Makhachev before getting choked out by 39-year-old"
+  },
+  {
+   "id": "1200",
+   "claim": "claim-128",
+   "fighter": "Yaroslav Amosov",
+   "language": "uk",
+   "part": "tune",
+   "title": "\"Він потрапить в UFC\": відверте інтерв’ю ММА-менеджера Владислава Сороки - 24 Канал"
+  },
+  {
+   "id": "323",
+   "claim": "claim-041",
+   "fighter": "Ilia Topuria",
+   "language": "es",
+   "part": "tune",
+   "title": "¿Qué es el cordón de Brock? Doctor Aldo, preparador físico de Topuria lo analiza - SPORT"
+  },
+  {
+   "id": "204",
+   "claim": "claim-023",
+   "fighter": "Yaroslav Amosov",
+   "language": "uk",
+   "part": "held_back",
+   "title": "П'ять причин, чому Махачев програє Геррі"
+  },
+  {
+   "id": "1050",
+   "claim": "claim-112",
+   "fighter": "Ilia Topuria",
+   "language": "en",
+   "part": "tune",
+   "title": "Justin Gaethje surprisingly supports Arman Tsarukyan’s long wait for UFC title shot - BJPenn.com"
+  },
+  {
+   "id": "230",
+   "claim": "claim-028",
+   "fighter": "Yaroslav Amosov",
+   "language": "en",
+   "part": "tune",
+   "title": "UFC 330 Report: What do we make of Islam Makhachev’s win over Ian Machado Garry?"
+  },
+  {
+   "id": "385",
+   "claim": "claim-047",
+   "fighter": "Ilia Topuria",
+   "language": "en",
+   "part": "held_back",
+   "title": "Ilia Topuria Slams Back At Paddy Pimblett’s Trash Talk - MMA Sucka"
+  },
+  {
+   "id": "10",
+   "claim": "claim-003",
+   "fighter": "Ilia Topuria",
+   "language": "en",
+   "part": "tune",
+   "title": "Manager believes Usman Nurmagomedov walks through UFC lightweight contenders, with one exception - Yahoo Sports"
+  },
+  {
+   "id": "909",
+   "claim": "claim-107",
+   "fighter": "Ilia Topuria",
+   "language": "en",
+   "part": "tune",
+   "title": "Josh Hokit goes off on Alex Pereira asking for Ciryl Gane rematch: ‘I watched you get demolished’ - Yahoo Sports"
+  },
+  {
+   "id": "187",
+   "claim": "claim-020",
+   "fighter": "Yaroslav Amosov",
+   "language": "en",
+   "part": "held_back",
+   "title": "Ian Machado Garry rival Neil Magny says Islam Makhachev predictions will change ‘drastically’ early on"
+  },
+  {
+   "id": "740",
+   "claim": "claim-093",
+   "fighter": "Daniil Donchenko",
+   "language": "en",
+   "part": "held_back",
+   "title": "Daniil Donchenko Post-Fight Interview | UFC Paris - UFC.com"
+  },
+  {
+   "id": "181",
+   "claim": "claim-018",
+   "fighter": "Ilia Topuria",
+   "language": "en",
+   "part": "tune",
+   "title": "Islam Makhachev details plans for his final UFC fight with location to ‘put his gloves down’"
+  },
+  {
+   "id": "408",
+   "claim": "claim-048",
+   "fighter": "Ilia Topuria",
+   "language": "en",
+   "part": "tune",
+   "title": "Usman Nurmagomedov Roasts Ilia Topuria, Arman Tsarukyan, Paddy Pimblett, Benoit Saint Denis & Michael Chandler but Praises Quillan Salkilld - LowKickMMA.com"
+  },
+  {
+   "id": "476",
+   "claim": "claim-054",
+   "fighter": "Ilia Topuria",
+   "language": "en",
+   "part": "held_back",
+   "title": "Gaethje Says He Won't Return Until 2027 - boxingnews.com"
+  },
+  {
+   "id": "269",
+   "claim": "claim-033",
+   "fighter": "Ilia Topuria",
+   "language": "en",
+   "part": "tune",
+   "title": "Tsarukyan On Topuria's Future After Gaethje Loss - boxingnews.com"
+  },
+  {
+   "id": "975",
+   "claim": "claim-114",
+   "fighter": "Yaroslav Amosov",
+   "language": "uk",
+   "part": "held_back",
+   "title": "Запропонують ексчемпіонів – будуть цікаві бої, – інтерв’ю з українцем Донченком про кар'єру в UFC - 24 Канал"
+  },
+  {
+   "id": "592",
+   "claim": "claim-068",
+   "fighter": "Ilia Topuria",
+   "language": "es",
+   "part": "held_back",
+   "title": "Novedades sobre Ilia Topuria: el excampeón de UFC está listo para reaparecer públicamente - mundodeportivo.com"
+  },
+  {
+   "id": "673",
+   "claim": "claim-066",
+   "fighter": "Daniil Donchenko",
+   "language": "en",
+   "part": "tune",
+   "title": "Daniil Donchenko vs. Punahele Soriano prediction, pick for UFC Fight Night 287 - MMA Junkie"
+  },
+  {
+   "id": "25",
+   "claim": "claim-005",
+   "fighter": "Ilia Topuria",
+   "language": "es",
+   "part": "held_back",
+   "title": "El restaurante favorito de Ilia Topuria en España: está situado en la isla más pequeña y ofrece vistas directas al mar - ABC"
+  },
+  {
+   "id": "1125",
+   "claim": "claim-124",
+   "fighter": "Daniil Donchenko",
+   "language": "uk",
+   "part": "tune",
+   "title": "«Зручний»: український боєць Донченко пояснив вибір наступного суперника в UFC - СПОРТ-ЕКСПРЕС"
+  },
+  {
+   "id": "856",
+   "claim": "claim-102",
+   "fighter": "Ilia Topuria",
+   "language": "es",
+   "part": "held_back",
+   "title": "Los debutantes 'salvan' el 2026 de España en la UFC: Hecher Sosa y Fabià Sintes, por la puerta grande - MARCA"
+  },
+  {
+   "id": "930",
+   "claim": "claim-109",
+   "fighter": "Ilia Topuria",
+   "language": "es",
+   "part": "held_back",
+   "title": "Ilia Topuria reaparece en Georgia con un nuevo mensaje: \"Mis mayores victorias en UFC están por venir\" - Mundo Deportivo"
+  },
+  {
+   "id": "746",
+   "claim": "claim-095",
+   "fighter": "Daniil Donchenko",
+   "language": "en",
+   "part": "tune",
+   "title": "Daniil Donchenko Octagon Interview | UFC Paris - UFC.com"
+  },
+  {
+   "id": "605",
+   "claim": "claim-073.0",
+   "fighter": "Daniil Donchenko",
+   "language": "uk",
+   "part": "tune",
+   "title": "5 вересня українець Данило Донченко битиметься проти Соріано на UFC у Парижі - 112.ua"
+  },
+  {
+   "id": "129",
+   "claim": "claim-012",
+   "fighter": "Ilia Topuria",
+   "language": "es",
+   "part": "held_back",
+   "title": "El mánager de Ilia Topuria pide la revancha inmediata con Justin Gaethje - ABC"
+  },
+  {
+   "id": "687",
+   "claim": "claim-073.2",
+   "fighter": "Daniil Donchenko",
+   "language": "uk",
+   "part": "held_back",
+   "title": "Данило Донченко – Пунахеле Соріано. UFC Париж. Дивитися онлайн LIVE - Sport.ua"
+  },
+  {
+   "id": "500",
+   "claim": "claim-056",
+   "fighter": "Daniil Donchenko",
+   "language": "en",
+   "part": "tune",
+   "title": "8-0 prospect set for short-notice debut against top 15 contender at UFC Paris"
+  },
+  {
+   "id": "3",
+   "claim": "claim-001",
+   "fighter": "Yaroslav Amosov",
+   "language": "en",
+   "part": "held_back",
+   "title": "May 9, 2026; Newark, New Jersey, UNITED STATES; Joel Alvarez (red gloves) fights Yaroslav Amosov (blue gloves) during UFC 328 at Prudential Center. Mandatory Credit: John Jones-Imagn Images - The Lufkin Daily News"
+  },
+  {
+   "id": "297",
+   "claim": "claim-038",
+   "fighter": "Ilia Topuria",
+   "language": "es",
+   "part": "held_back",
+   "title": "OKTAGON, la promotora de MMA que reunió a 60.000 personas en un estadio y tiene a España en el radar: “Veo muchas similitudes entre WOW y nosotros” - SPORT"
+  },
+  {
+   "id": "1260",
+   "claim": "claim-129",
+   "fighter": "Daniil Donchenko",
+   "language": "en",
+   "part": "tune",
+   "title": "Donchenko On Makhachev's Record Streak Vs Silva's - boxingnews.com"
+  },
+  {
+   "id": "1172",
+   "claim": "claim-127",
+   "fighter": "Daniil Donchenko",
+   "language": "uk",
+   "part": "tune",
+   "title": "«Я не гірший за Усмана». Донченко – про бій з Камару та українців в UFC"
+  },
+  {
+   "id": "774",
+   "claim": "claim-094.0",
+   "fighter": "Daniil Donchenko",
+   "language": "uk",
+   "part": "tune",
+   "title": "Щирий Донченко у Парижі. Подяка українцям і інші заяви - Sport.ua"
+  },
+  {
+   "id": "17",
+   "claim": "claim-004",
+   "fighter": "Daniil Donchenko",
+   "language": "uk",
+   "part": "held_back",
+   "title": "Українець дізнався ім'я наступного суперника в UFC – відома дата та суперник - Футбол 24"
+  },
+  {
+   "id": "934",
+   "claim": "claim-110",
+   "fighter": "Daniil Donchenko",
+   "language": "uk",
+   "part": "held_back",
+   "title": "Що далі для Донченка? П'ять варіантів для українця"
+  },
+  {
+   "id": "490",
+   "claim": "claim-055",
+   "fighter": "Daniil Donchenko",
+   "language": "en",
+   "part": "tune",
+   "title": "Daniil Donchenko Got His Wish - UFC.com"
+  },
+  {
+   "id": "65",
+   "claim": "claim-010",
+   "fighter": "Yaroslav Amosov",
+   "language": "en",
+   "part": "tune",
+   "title": "UFC 330 roundtable: Is Islam Makhachev the next pound-for-pound great to fall?"
+  },
+  {
+   "id": "1146",
+   "claim": "claim-125",
+   "fighter": "Yaroslav Amosov",
+   "language": "en",
+   "part": "held_back",
+   "title": "Islam Makhachev dismisses ‘nightmare’ matchup when naming who will be the next welterweight champion"
+  },
+  {
+   "id": "247",
+   "claim": "claim-031",
+   "fighter": "Yaroslav Amosov",
+   "language": "en",
+   "part": "tune",
+   "title": "Ian Machado Garry warned losing next fight could be ‘the end’ as UFC predicted to make his run harder"
+  }
+ ]
+}

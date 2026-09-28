@@ -201,6 +201,29 @@ Rules for adding to it:
   answers in v3; or whether identical calls are cached (its own
   self-consistency recipe adds a throwaway `uid` field to each repeat).
 
+### A 59-article blind answer key makes a question change measurable for about a cent
+`harness` · `measured` · *FB 2026-09-27*
+- **Evidence:** two Fable readers labelling blind from one guide agreed on
+  511 of 531 answers (96%); an Opus reader settled 18 of the 20 splits. A
+  variant run on the 39 tune articles cost about $0.01; four rounds moved
+  act 56 → 72%, fact 59 → 82%, and the gains held on 20 held-back articles
+  (act 65 → 80%, fact 55 → 75%).
+- **Does not say:** that the key is right — it is the readers' reading of
+  a guide written by the session; Anton's corrections make it a key.
+- **Noise:** the same question moved 2 of 39 articles between identical
+  runs. A gain of one or two articles is not a finding.
+
+### A missing "nothing to say" option makes the classifier invent one; a modifier that only applies sometimes belongs in code
+`harness` · `measured` · *FB 2026-09-27*
+- **Evidence:** act had no value for "he is only mentioned, nobody does
+  anything regarding him"; on those articles it was right 11 of 29 times.
+  Adding `only_mentions_him` took act from 56% to 72%. How firm graded any
+  claim, opinions included (26%); asking four levels and setting `none` in
+  code where the fact answer is `no fact` took it to 79%, 85% held back.
+- **Also seen:** `not_for` boundaries moved fact (the result option's
+  swallowing fell from 12 wrong to 4); naming the fighter by the state
+  field alone did not; a stronger `not_for` on source changed no answer.
+
 ### A yes/no "does the article report X" answers whether X is mentioned, not whether it is the news
 `harness` · `measured` · *FB 2026-09-27*
 - **Evidence:** axes v4 on 300 golden articles: "Does the article report the

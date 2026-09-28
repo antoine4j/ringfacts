@@ -1,0 +1,112 @@
+{
+ "source__s2": {
+  "type": "choice",
+  "instructions": "Whose words or act is the new thing this article carries about the watched fighter? The person it ORIGINATED with - never the outlet, website or account that relayed it. If a journalist or podcaster passes on what someone else said, the source is that someone. If several, the one the article's main news is built on. 'His' means the WATCHED fighter's. If the article carries nothing new about him, answer for whose words or act its main content is.",
+  "criteria": {
+   "himself": {
+    "what": "The watched fighter speaks, posts or writes, and his words are what the article is built on.",
+    "not_for": "A fight or weigh-in of his reported without his words (that is no one); a writer's own analysis, list or preview that quotes him only in passing (that is media)."
+   },
+   "his_team": {
+    "what": "People who work on his fighting: his coaches, trainers, conditioning staff, sparring partners, physio, doctor.",
+    "not_for": "his manager or agent"
+   },
+   "his_manager": {
+    "what": "His manager, agent or business representative."
+   },
+   "opponent_side": {
+    "what": "A fighter he is booked against or publicly linked to a fight with, or that fighter's coach or manager.",
+    "not_for": "a fighter who merely names him or calls him out without a fight between them being discussed",
+    "examples": [
+     "the champion he lost to, talking about their rematch",
+     "his next opponent's coach at the pre-fight press conference"
+    ]
+   },
+   "promotion": {
+    "what": "The promotion and its officials (the UFC, its president, matchmakers, official channels), athletic commissions, official records.",
+    "not_for": "An outlet's own report, preview or results page about a promotion's event (that is no one or media); the promotion is the source only when it or its officials say or announce something."
+   },
+   "other_fighter": {
+    "what": "Any other fighter not booked or linked with him, however famous, including champions of other divisions, friends and teammates."
+   },
+   "media": {
+    "what": "A journalist, pundit, podcaster or analyst in their own voice, or the outlet's own writer; also a leak or report with no named person behind it.",
+    "examples": [
+     "a podcaster saying the promotion is discussing his rematch",
+     "a columnist's view of his chances"
+    ]
+   },
+   "fans": {
+    "what": "Fan reaction, social media crowds, comment sections."
+   },
+   "no_one": {
+    "what": "Nobody's words are the news: an event is reported as fact and nobody is quoted or credited with announcing it.",
+    "examples": [
+     "a results page listing his win",
+     "a weigh-in report",
+     "a fight report of his win, with no quotes behind the news"
+    ]
+   },
+   "none_of_these": {
+    "what": "None of the options above describes this article; a different answer is needed."
+   }
+  }
+ },
+ "source__s3": {
+  "type": "choice",
+  "instructions": "Whose words or act is the new thing this article carries about the watched fighter? The person it ORIGINATED with - never the outlet, website or account that relayed it. If a journalist or podcaster passes on what someone else said, the source is that someone. If several, the one the article's main news is built on. 'His' means the WATCHED fighter's. If the article carries nothing new about him, answer for whose words or act its main content is.",
+  "criteria": {
+   "himself": {
+    "what": "His own words are the news: he speaks, posts or writes, and the article is built on what he said.",
+    "not_for": "A fight or weigh-in of his reported by an outlet or a results or video page, even when the headline quotes him (that is no one); an article built on a writer's own analysis, list or preview about him (that is media).",
+    "examples": [
+     "an interview where he explains why he changed camps",
+     "his post announcing he signed a new contract"
+    ]
+   },
+   "his_team": {
+    "what": "People who work on his fighting: his coaches, trainers, conditioning staff, sparring partners, physio, doctor.",
+    "not_for": "his manager or agent"
+   },
+   "his_manager": {
+    "what": "His manager, agent or business representative."
+   },
+   "opponent_side": {
+    "what": "A fighter he is booked against or publicly linked to a fight with, or that fighter's coach or manager.",
+    "not_for": "a fighter who merely names him or calls him out without a fight between them being discussed",
+    "examples": [
+     "the champion he lost to, talking about their rematch",
+     "his next opponent's coach at the pre-fight press conference"
+    ]
+   },
+   "promotion": {
+    "what": "The promotion and its officials (the UFC, its president, matchmakers, official channels), athletic commissions, official records.",
+    "not_for": "An outlet's own report, preview or results page about a promotion's event (that is no one or media); the promotion is the source only when it or its officials say or announce something."
+   },
+   "other_fighter": {
+    "what": "Any other fighter not booked or linked with him, however famous, including champions of other divisions, friends and teammates."
+   },
+   "media": {
+    "what": "A journalist, pundit, podcaster or analyst in their own voice, or the outlet's own writer; also a leak or report with no named person behind it.",
+    "examples": [
+     "a podcaster saying the promotion is discussing his rematch",
+     "a columnist's view of his chances"
+    ]
+   },
+   "fans": {
+    "what": "Fan reaction, social media crowds, comment sections."
+   },
+   "no_one": {
+    "what": "Nobody's words are the news: an event is reported as fact and nobody is quoted or credited with announcing it.",
+    "examples": [
+     "a results page listing his win",
+     "a weigh-in report",
+     "a fight report of his win, with no quotes behind the news"
+    ]
+   },
+   "none_of_these": {
+    "what": "None of the options above describes this article; a different answer is needed."
+   }
+  }
+ }
+}

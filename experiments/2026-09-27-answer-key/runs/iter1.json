@@ -1,0 +1,7731 @@
+{
+ "label": "iter1",
+ "variants": "variants/iter1.json",
+ "part": "tune",
+ "model": "jev-1.13.0",
+ "answers": {
+  "991": {
+   "fact__v5": {
+    "type": "choice",
+    "choice": "next_fight",
+    "confidence": 0.61,
+    "probabilities": {
+     "no_fact": 0.28,
+     "next_fight": 0.66,
+     "fight_week_event": 0.0,
+     "result": 0.06,
+     "health": 0.0,
+     "none_of_these": 0.0,
+     "career_move": 0.0,
+     "personal_life": 0.0
+    }
+   },
+   "act__v5": {
+    "type": "choice",
+    "choice": "steers_him",
+    "confidence": 0.96,
+    "probabilities": {
+     "gives_news_of_him": 0.02,
+     "steers_him": 0.96,
+     "answers_for_him": 0.0,
+     "predicts_his_fight": 0.01,
+     "none_of_these": 0.0,
+     "reports_an_event": 0.01,
+     "assesses_him": 0.0,
+     "speaks_of_himself": 0.0,
+     "calls_him_out": 0.0
+    }
+   },
+   "firmness__v5": {
+    "type": "score",
+    "score": 2.81,
+    "confidence": 0.0,
+    "legend": {
+     "0": {
+      "summary": "No fact about him is asserted: only opinion, analysis or talk."
+     },
+     "1": {
+      "summary": "A wish or a demand: someone wants it or says it should happen.",
+      "signals": [
+       "a fighter asking for the fight",
+       "his camp demanding a rematch"
+      ]
+     },
+     "2": {
+      "summary": "A rumour: unnamed sources, a leak, 'talks', 'discussions', 'plans'.",
+      "signals": [
+       "a podcaster says the promotion is discussing it",
+       "'sources say'"
+      ]
+     },
+     "3": {
+      "summary": "Reported: a named outlet or journalist states it, citing sources.",
+      "signals": [
+       "'ESPN reports that...'"
+      ]
+     },
+     "4": {
+      "summary": "Official or done: the promotion or he himself states it, or it has happened.",
+      "signals": [
+       "the promotion announces the bout",
+       "he posts that he signed",
+       "a fight result"
+      ]
+     }
+    },
+    "probabilities": {
+     "0": 0.04,
+     "1": 0.09,
+     "2": 0.25,
+     "3": 0.24,
+     "4": 0.38
+    }
+   },
+   "fact__f1": {
+    "type": "choice",
+    "choice": "next_fight",
+    "confidence": 0.63,
+    "probabilities": {
+     "no_fact": 0.31,
+     "next_fight": 0.68,
+     "fight_week_event": 0.0,
+     "health": 0.0,
+     "result": 0.01,
+     "none_of_these": 0.0,
+     "career_move": 0.0,
+     "personal_life": 0.0
+    }
+   },
+   "fact__f2": {
+    "type": "choice",
+    "choice": "next_fight",
+    "confidence": 0.64,
+    "probabilities": {
+     "no_fact": 0.24,
+     "next_fight": 0.7,
+     "fight_week_event": 0.0,
+     "result": 0.06,
+     "health": 0.0,
+     "none_of_these": 0.0,
+     "career_move": 0.0,
+     "personal_life": 0.0
+    }
+   },
+   "fact__f3": {
+    "type": "choice",
+    "choice": "next_fight",
+    "confidence": 0.67,
+    "probabilities": {
+     "no_fact": 0.27,
+     "next_fight": 0.71,
+     "fight_week_event": 0.0,
+     "result": 0.02,
+     "health": 0.0,
+     "none_of_these": 0.0,
+     "career_move": 0.0,
+     "personal_life": 0.0
+    }
+   },
+   "act__a1": {
+    "type": "choice",
+    "choice": "steers_him",
+    "confidence": 0.95,
+    "probabilities": {
+     "gives_news_of_him": 0.02,
+     "steers_him": 0.96,
+     "only_mentions_him": 0.0,
+     "answers_for_him": 0.0,
+     "predicts_his_fight": 0.01,
+     "assesses_him": 0.0,
+     "reports_an_event": 0.01,
+     "none_of_these": 0.0,
+     "speaks_of_himself": 0.0,
+     "calls_him_out": 0.0
+    }
+   },
+   "act__a2": {
+    "type": "choice",
+    "choice": "steers_him",
+    "confidence": 0.95,
+    "probabilities": {
+     "steers_him": 0.96,
+     "gives_news_of_him": 0.02,
+     "only_mentions_him": 0.0,
+     "none_of_these": 0.0,
+     "predicts_his_fight": 0.01,
+     "answers_for_him": 0.0,
+     "reports_an_event": 0.01,
+     "assesses_him": 0.0,
+     "speaks_of_himself": 0.0,
+     "calls_him_out": 0.0
+    }
+   },
+   "firmness__four": {
+    "type": "score",
+    "score": 1.97,
+    "confidence": 0.0,
+    "legend": {
+     "0": {
+      "summary": "A wish or a demand: someone wants it or says it should happen.",
+      "signals": [
+       "a fighter asking for the fight",
+       "his camp demanding a rematch"
+      ]
+     },
+     "1": {
+      "summary": "A rumour: unnamed sources, a leak, 'talks', 'discussions', 'plans'.",
+      "signals": [
+       "a podcaster says the promotion is discussing it",
+       "'sources say'"
+      ]
+     },
+     "2": {
+      "summary": "Reported: a named outlet or journalist states it, citing sources.",
+      "signals": [
+       "'ESPN reports that...'"
+      ]
+     },
+     "3": {
+      "summary": "Official or done: the promotion or he himself states it, or it has happened.",
+      "signals": [
+       "the promotion announces the bout",
+       "he posts that he signed",
+       "a fight result"
+      ]
+     }
+    },
+    "probabilities": {
+     "0": 0.06,
+     "1": 0.3,
+     "2": 0.26,
+     "3": 0.38
+    }
+   }
+  },
+  "90": {
+   "fact__v5": {
+    "type": "choice",
+    "choice": "result",
+    "confidence": 0.44,
+    "probabilities": {
+     "none_of_these": 0.01,
+     "result": 0.52,
+     "next_fight": 0.01,
+     "no_fact": 0.46,
+     "personal_life": 0.0,
+     "fight_week_event": 0.0,
+     "health": 0.0,
+     "career_move": 0.0
+    }
+   },
+   "act__v5": {
+    "type": "choice",
+    "choice": "answers_for_him",
+    "confidence": 0.97,
+    "probabilities": {
+     "calls_him_out": 0.0,
+     "none_of_these": 0.0,
+     "predicts_his_fight": 0.01,
+     "reports_an_event": 0.0,
+     "assesses_him": 0.01,
+     "answers_for_him": 0.98,
+     "speaks_of_himself": 0.0,
+     "gives_news_of_him": 0.0,
+     "steers_him": 0.0
+    }
+   },
+   "firmness__v5": {
+    "type": "score",
+    "score": 0.8,
+    "confidence": 0.33,
+    "legend": {
+     "0": {
+      "summary": "No fact about him is asserted: only opinion, analysis or talk."
+     },
+     "1": {
+      "summary": "A wish or a demand: someone wants it or says it should happen.",
+      "signals": [
+       "a fighter asking for the fight",
+       "his camp demanding a rematch"
+      ]
+     },
+     "2": {
+      "summary": "A rumour: unnamed sources, a leak, 'talks', 'discussions', 'plans'.",
+      "signals": [
+       "a podcaster says the promotion is discussing it",
+       "'sources say'"
+      ]
+     },
+     "3": {
+      "summary": "Reported: a named outlet or journalist states it, citing sources.",
+      "signals": [
+       "'ESPN reports that...'"
+      ]
+     },
+     "4": {
+      "summary": "Official or done: the promotion or he himself states it, or it has happened.",
+      "signals": [
+       "the promotion announces the bout",
+       "he posts that he signed",
+       "a fight result"
+      ]
+     }
+    },
+    "probabilities": {
+     "0": 0.65,
+     "1": 0.15,
+     "2": 0.0,
+     "3": 0.14,
+     "4": 0.06
+    }
+   },
+   "fact__f1": {
+    "type": "choice",
+    "choice": "no_fact",
+    "confidence": 0.7,
+    "probabilities": {
+     "none_of_these": 0.01,
+     "result": 0.23,
+     "next_fight": 0.01,
+     "fight_week_event": 0.0,
+     "personal_life": 0.0,
+     "no_fact": 0.75,
+     "health": 0.0,
+     "career_move": 0.0
+    }
+   },
+   "fact__f2": {
+    "type": "choice",
+    "choice": "result",
+    "confidence": 0.52,
+    "probabilities": {
+     "none_of_these": 0.01,
+     "result": 0.58,
+     "next_fight": 0.01,
+     "fight_week_event": 0.0,
+     "personal_life": 0.0,
+     "no_fact": 0.4,
+     "health": 0.0,
+     "career_move": 0.0
+    }
+   },
+   "fact__f3": {
+    "type": "choice",
+    "choice": "no_fact",
+    "confidence": 0.62,
+    "probabilities": {
+     "none_of_these": 0.01,
+     "result": 0.31,
+     "next_fight": 0.01,
+     "fight_week_event": 0.0,
+     "personal_life": 0.0,
+     "no_fact": 0.67,
+     "health": 0.0,
+     "career_move": 0.0
+    }
+   },
+   "act__a1": {
+    "type": "choice",
+    "choice": "answers_for_him",
+    "confidence": 0.98,
+    "probabilities": {
+     "only_mentions_him": 0.0,
+     "calls_him_out": 0.0,
+     "none_of_these": 0.0,
+     "predicts_his_fight": 0.01,
+     "reports_an_event": 0.0,
+     "assesses_him": 0.01,
+     "answers_for_him": 0.98,
+     "gives_news_of_him": 0.0,
+     "speaks_of_himself": 0.0,
+     "steers_him": 0.0
+    }
+   },
+   "act__a2": {
+    "type": "choice",
+    "choice": "answers_for_him",
+    "confidence": 0.97,
+    "probabilities": {
+     "only_mentions_him": 0.0,
+     "calls_him_out": 0.0,
+     "none_of_these": 0.0,
+     "predicts_his_fight": 0.01,
+     "reports_an_event": 0.0,
+     "assesses_him": 0.02,
+     "answers_for_him": 0.97,
+     "gives_news_of_him": 0.0,
+     "speaks_of_himself": 0.0,
+     "steers_him": 0.0
+    }
+   },
+   "firmness__four": {
+    "type": "score",
+    "score": 0.71,
+    "confidence": 0.29,
+    "legend": {
+     "0": {
+      "summary": "A wish or a demand: someone wants it or says it should happen.",
+      "signals": [
+       "a fighter asking for the fight",
+       "his camp demanding a rematch"
+      ]
+     },
+     "1": {
+      "summary": "A rumour: unnamed sources, a leak, 'talks', 'discussions', 'plans'.",
+      "signals": [
+       "a podcaster says the promotion is discussing it",
+       "'sources say'"
+      ]
+     },
+     "2": {
+      "summary": "Reported: a named outlet or journalist states it, citing sources.",
+      "signals": [
+       "'ESPN reports that...'"
+      ]
+     },
+     "3": {
+      "summary": "Official or done: the promotion or he himself states it, or it has happened.",
+      "signals": [
+       "the promotion announces the bout",
+       "he posts that he signed",
+       "a fight result"
+      ]
+     }
+    },
+    "probabilities": {
+     "0": 0.67,
+     "1": 0.01,
+     "2": 0.26,
+     "3": 0.06
+    }
+   }
+  },
+  "833": {
+   "fact__v5": {
+    "type": "choice",
+    "choice": "result",
+    "confidence": 0.47,
+    "probabilities": {
+     "next_fight": 0.06,
+     "health": 0.0,
+     "personal_life": 0.0,
+     "result": 0.54,
+     "none_of_these": 0.01,
+     "no_fact": 0.28,
+     "fight_week_event": 0.0,
+     "career_move": 0.11
+    }
+   },
+   "act__v5": {
+    "type": "choice",
+    "choice": "steers_him",
+    "confidence": 0.83,
+    "probabilities": {
+     "assesses_him": 0.0,
+     "answers_for_him": 0.0,
+     "steers_him": 0.85,
+     "predicts_his_fight": 0.14,
+     "none_of_these": 0.0,
+     "speaks_of_himself": 0.0,
+     "reports_an_event": 0.01,
+     "calls_him_out": 0.0,
+     "gives_news_of_him": 0.0
+    }
+   },
+   "firmness__v5": {
+    "type": "score",
+    "score": 1.83,
+    "confidence": 0.68,
+    "legend": {
+     "0": {
+      "summary": "No fact about him is asserted: only opinion, analysis or talk."
+     },
+     "1": {
+      "summary": "A wish or a demand: someone wants it or says it should happen.",
+      "signals": [
+       "a fighter asking for the fight",
+       "his camp demanding a rematch"
+      ]
+     },
+     "2": {
+      "summary": "A rumour: unnamed sources, a leak, 'talks', 'discussions', 'plans'.",
+      "signals": [
+       "a podcaster says the promotion is discussing it",
+       "'sources say'"
+      ]
+     },
+     "3": {
+      "summary": "Reported: a named outlet or journalist states it, citing sources.",
+      "signals": [
+       "'ESPN reports that...'"
+      ]
+     },
+     "4": {
+      "summary": "Official or done: the promotion or he himself states it, or it has happened.",
+      "signals": [
+       "the promotion announces the bout",
+       "he posts that he signed",
+       "a fight result"
+      ]
+     }
+    },
+    "probabilities": {
+     "0": 0.11,
+     "1": 0.06,
+     "2": 0.76,
+     "3": 0.04,
+     "4": 0.03
+    }
+   },
+   "fact__f1": {
+    "type": "choice",
+    "choice": "no_fact",
+    "confidence": 0.45,
+    "probabilities": {
+     "health": 0.0,
+     "next_fight": 0.09,
+     "result": 0.19,
+     "no_fact": 0.52,
+     "fight_week_event": 0.0,
+     "personal_life": 0.01,
+     "none_of_these": 0.07,
+     "career_move": 0.12
+    }
+   },
+   "fact__f2": {
+    "type": "choice",
+    "choice": "result",
+    "confidence": 0.49,
+    "probabilities": {
+     "next_fight": 0.05,
+     "health": 0.0,
+     "result": 0.56,
+     "no_fact": 0.22,
+     "fight_week_event": 0.0,
+     "personal_life": 0.01,
+     "none_of_these": 0.02,
+     "career_move": 0.14
+    }
+   },
+   "fact__f3": {
+    "type": "choice",
+    "choice": "no_fact",
+    "confidence": 0.36,
+    "probabilities": {
+     "next_fight": 0.06,
+     "health": 0.0,
+     "result": 0.22,
+     "no_fact": 0.45,
+     "none_of_these": 0.06,
+     "fight_week_event": 0.0,
+     "personal_life": 0.02,
+     "career_move": 0.19
+    }
+   },
+   "act__a1": {
+    "type": "choice",
+    "choice": "steers_him",
+    "confidence": 0.81,
+    "probabilities": {
+     "assesses_him": 0.0,
+     "answers_for_him": 0.0,
+     "steers_him": 0.83,
+     "predicts_his_fight": 0.16,
+     "none_of_these": 0.0,
+     "reports_an_event": 0.01,
+     "speaks_of_himself": 0.0,
+     "gives_news_of_him": 0.0,
+     "calls_him_out": 0.0,
+     "only_mentions_him": 0.0
+    }
+   },
+   "act__a2": {
+    "type": "choice",
+    "choice": "steers_him",
+    "confidence": 0.85,
+    "probabilities": {
+     "assesses_him": 0.0,
+     "answers_for_him": 0.0,
+     "steers_him": 0.87,
+     "predicts_his_fight": 0.12,
+     "none_of_these": 0.0,
+     "speaks_of_himself": 0.0,
+     "reports_an_event": 0.01,
+     "gives_news_of_him": 0.0,
+     "calls_him_out": 0.0,
+     "only_mentions_him": 0.0
+    }
+   },
+   "firmness__four": {
+    "type": "score",
+    "score": 1.13,
+    "confidence": 0.81,
+    "legend": {
+     "0": {
+      "summary": "A wish or a demand: someone wants it or says it should happen.",
+      "signals": [
+       "a fighter asking for the fight",
+       "his camp demanding a rematch"
+      ]
+     },
+     "1": {
+      "summary": "A rumour: unnamed sources, a leak, 'talks', 'discussions', 'plans'.",
+      "signals": [
+       "a podcaster says the promotion is discussing it",
+       "'sources say'"
+      ]
+     },
+     "2": {
+      "summary": "Reported: a named outlet or journalist states it, citing sources.",
+      "signals": [
+       "'ESPN reports that...'"
+      ]
+     },
+     "3": {
+      "summary": "Official or done: the promotion or he himself states it, or it has happened.",
+      "signals": [
+       "the promotion announces the bout",
+       "he posts that he signed",
+       "a fight result"
+      ]
+     }
+    },
+    "probabilities": {
+     "0": 0.03,
+     "1": 0.87,
+     "2": 0.05,
+     "3": 0.05
+    }
+   }
+  },
+  "683": {
+   "fact__v5": {
+    "type": "choice",
+    "choice": "result",
+    "confidence": 1.0,
+    "probabilities": {
+     "health": 0.0,
+     "personal_life": 0.0,
+     "next_fight": 0.0,
+     "fight_week_event": 0.0,
+     "none_of_these": 0.0,
+     "result": 1.0,
+     "no_fact": 0.0,
+     "career_move": 0.0
+    }
+   },
+   "act__v5": {
+    "type": "choice",
+    "choice": "reports_an_event",
+    "confidence": 0.99,
+    "probabilities": {
+     "speaks_of_himself": 0.0,
+     "reports_an_event": 1.0,
+     "gives_news_of_him": 0.0,
+     "none_of_these": 0.0,
+     "predicts_his_fight": 0.0,
+     "steers_him": 0.0,
+     "answers_for_him": 0.0,
+     "assesses_him": 0.0,
+     "calls_him_out": 0.0
+    }
+   },
+   "firmness__v5": {
+    "type": "score",
+    "score": 3.99,
+    "confidence": 0.99,
+    "legend": {
+     "0": {
+      "summary": "No fact about him is asserted: only opinion, analysis or talk."
+     },
+     "1": {
+      "summary": "A wish or a demand: someone wants it or says it should happen.",
+      "signals": [
+       "a fighter asking for the fight",
+       "his camp demanding a rematch"
+      ]
+     },
+     "2": {
+      "summary": "A rumour: unnamed sources, a leak, 'talks', 'discussions', 'plans'.",
+      "signals": [
+       "a podcaster says the promotion is discussing it",
+       "'sources say'"
+      ]
+     },
+     "3": {
+      "summary": "Reported: a named outlet or journalist states it, citing sources.",
+      "signals": [
+       "'ESPN reports that...'"
+      ]
+     },
+     "4": {
+      "summary": "Official or done: the promotion or he himself states it, or it has happened.",
+      "signals": [
+       "the promotion announces the bout",
+       "he posts that he signed",
+       "a fight result"
+      ]
+     }
+    },
+    "probabilities": {
+     "0": 0.0,
+     "1": 0.0,
+     "2": 0.0,
+     "3": 0.0,
+     "4": 1.0
+    }
+   },
+   "fact__f1": {
+    "type": "choice",
+    "choice": "result",
+    "confidence": 1.0,
+    "probabilities": {
+     "health": 0.0,
+     "personal_life": 0.0,
+     "next_fight": 0.0,
+     "result": 1.0,
+     "none_of_these": 0.0,
+     "fight_week_event": 0.0,
+     "no_fact": 0.0,
+     "career_move": 0.0
+    }
+   },
+   "fact__f2": {
+    "type": "choice",
+    "choice": "result",
+    "confidence": 1.0,
+    "probabilities": {
+     "health": 0.0,
+     "personal_life": 0.0,
+     "next_fight": 0.0,
+     "result": 1.0,
+     "fight_week_event": 0.0,
+     "none_of_these": 0.0,
+     "career_move": 0.0,
+     "no_fact": 0.0
+    }
+   },
+   "fact__f3": {
+    "type": "choice",
+    "choice": "result",
+    "confidence": 1.0,
+    "probabilities": {
+     "health": 0.0,
+     "personal_life": 0.0,
+     "none_of_these": 0.0,
+     "fight_week_event": 0.0,
+     "next_fight": 0.0,
+     "result": 1.0,
+     "no_fact": 0.0,
+     "career_move": 0.0
+    }
+   },
+   "act__a1": {
+    "type": "choice",
+    "choice": "reports_an_event",
+    "confidence": 0.79,
+    "probabilities": {
+     "speaks_of_himself": 0.0,
+     "reports_an_event": 0.81,
+     "gives_news_of_him": 0.0,
+     "none_of_these": 0.0,
+     "predicts_his_fight": 0.0,
+     "steers_him": 0.0,
+     "answers_for_him": 0.0,
+     "assesses_him": 0.0,
+     "calls_him_out": 0.0,
+     "only_mentions_him": 0.19
+    }
+   },
+   "act__a2": {
+    "type": "choice",
+    "choice": "reports_an_event",
+    "confidence": 0.73,
+    "probabilities": {
+     "speaks_of_himself": 0.0,
+     "reports_an_event": 0.76,
+     "gives_news_of_him": 0.0,
+     "none_of_these": 0.0,
+     "predicts_his_fight": 0.0,
+     "steers_him": 0.0,
+     "answers_for_him": 0.0,
+     "assesses_him": 0.0,
+     "calls_him_out": 0.0,
+     "only_mentions_him": 0.24
+    }
+   },
+   "firmness__four": {
+    "type": "score",
+    "score": 3.0,
+    "confidence": 1.0,
+    "legend": {
+     "0": {
+      "summary": "A wish or a demand: someone wants it or says it should happen.",
+      "signals": [
+       "a fighter asking for the fight",
+       "his camp demanding a rematch"
+      ]
+     },
+     "1": {
+      "summary": "A rumour: unnamed sources, a leak, 'talks', 'discussions', 'plans'.",
+      "signals": [
+       "a podcaster says the promotion is discussing it",
+       "'sources say'"
+      ]
+     },
+     "2": {
+      "summary": "Reported: a named outlet or journalist states it, citing sources.",
+      "signals": [
+       "'ESPN reports that...'"
+      ]
+     },
+     "3": {
+      "summary": "Official or done: the promotion or he himself states it, or it has happened.",
+      "signals": [
+       "the promotion announces the bout",
+       "he posts that he signed",
+       "a fight result"
+      ]
+     }
+    },
+    "probabilities": {
+     "0": 0.0,
+     "1": 0.0,
+     "2": 0.0,
+     "3": 1.0
+    }
+   }
+  },
+  "732": {
+   "fact__v5": {
+    "type": "choice",
+    "choice": "result",
+    "confidence": 0.99,
+    "probabilities": {
+     "next_fight": 0.01,
+     "personal_life": 0.0,
+     "health": 0.0,
+     "result": 0.99,
+     "none_of_these": 0.0,
+     "no_fact": 0.0,
+     "fight_week_event": 0.0,
+     "career_move": 0.0
+    }
+   },
+   "act__v5": {
+    "type": "choice",
+    "choice": "reports_an_event",
+    "confidence": 0.88,
+    "probabilities": {
+     "gives_news_of_him": 0.0,
+     "assesses_him": 0.02,
+     "predicts_his_fight": 0.0,
+     "steers_him": 0.0,
+     "speaks_of_himself": 0.05,
+     "none_of_these": 0.0,
+     "reports_an_event": 0.89,
+     "answers_for_him": 0.0,
+     "calls_him_out": 0.04
+    }
+   },
+   "firmness__v5": {
+    "type": "score",
+    "score": 3.89,
+    "confidence": 0.91,
+    "legend": {
+     "0": {
+      "summary": "No fact about him is asserted: only opinion, analysis or talk."
+     },
+     "1": {
+      "summary": "A wish or a demand: someone wants it or says it should happen.",
+      "signals": [
+       "a fighter asking for the fight",
+       "his camp demanding a rematch"
+      ]
+     },
+     "2": {
+      "summary": "A rumour: unnamed sources, a leak, 'talks', 'discussions', 'plans'.",
+      "signals": [
+       "a podcaster says the promotion is discussing it",
+       "'sources say'"
+      ]
+     },
+     "3": {
+      "summary": "Reported: a named outlet or journalist states it, citing sources.",
+      "signals": [
+       "'ESPN reports that...'"
+      ]
+     },
+     "4": {
+      "summary": "Official or done: the promotion or he himself states it, or it has happened.",
+      "signals": [
+       "the promotion announces the bout",
+       "he posts that he signed",
+       "a fight result"
+      ]
+     }
+    },
+    "probabilities": {
+     "0": 0.0,
+     "1": 0.03,
+     "2": 0.0,
+     "3": 0.0,
+     "4": 0.97
+    }
+   },
+   "fact__f1": {
+    "type": "choice",
+    "choice": "result",
+    "confidence": 0.99,
+    "probabilities": {
+     "next_fight": 0.01,
+     "personal_life": 0.0,
+     "health": 0.0,
+     "result": 0.99,
+     "none_of_these": 0.0,
+     "no_fact": 0.0,
+     "fight_week_event": 0.0,
+     "career_move": 0.0
+    }
+   },
+   "fact__f2": {
+    "type": "choice",
+    "choice": "result",
+    "confidence": 0.98,
+    "probabilities": {
+     "next_fight": 0.02,
+     "personal_life": 0.0,
+     "health": 0.0,
+     "result": 0.98,
+     "none_of_these": 0.0,
+     "no_fact": 0.0,
+     "fight_week_event": 0.0,
+     "career_move": 0.0
+    }
+   },
+   "fact__f3": {
+    "type": "choice",
+    "choice": "result",
+    "confidence": 0.99,
+    "probabilities": {
+     "next_fight": 0.01,
+     "personal_life": 0.0,
+     "health": 0.0,
+     "result": 0.99,
+     "none_of_these": 0.0,
+     "no_fact": 0.0,
+     "fight_week_event": 0.0,
+     "career_move": 0.0
+    }
+   },
+   "act__a1": {
+    "type": "choice",
+    "choice": "reports_an_event",
+    "confidence": 0.86,
+    "probabilities": {
+     "gives_news_of_him": 0.0,
+     "assesses_him": 0.02,
+     "reports_an_event": 0.88,
+     "steers_him": 0.0,
+     "answers_for_him": 0.0,
+     "none_of_these": 0.0,
+     "speaks_of_himself": 0.06,
+     "only_mentions_him": 0.0,
+     "predicts_his_fight": 0.0,
+     "calls_him_out": 0.04
+    }
+   },
+   "act__a2": {
+    "type": "choice",
+    "choice": "reports_an_event",
+    "confidence": 0.83,
+    "probabilities": {
+     "gives_news_of_him": 0.0,
+     "assesses_him": 0.01,
+     "predicts_his_fight": 0.0,
+     "speaks_of_himself": 0.09999999999999999,
+     "reports_an_event": 0.86,
+     "only_mentions_him": 0.0,
+     "none_of_these": 0.0,
+     "answers_for_him": 0.0,
+     "steers_him": 0.0,
+     "calls_him_out": 0.03
+    }
+   },
+   "firmness__four": {
+    "type": "score",
+    "score": 2.68,
+    "confidence": 0.68,
+    "legend": {
+     "0": {
+      "summary": "A wish or a demand: someone wants it or says it should happen.",
+      "signals": [
+       "a fighter asking for the fight",
+       "his camp demanding a rematch"
+      ]
+     },
+     "1": {
+      "summary": "A rumour: unnamed sources, a leak, 'talks', 'discussions', 'plans'.",
+      "signals": [
+       "a podcaster says the promotion is discussing it",
+       "'sources say'"
+      ]
+     },
+     "2": {
+      "summary": "Reported: a named outlet or journalist states it, citing sources.",
+      "signals": [
+       "'ESPN reports that...'"
+      ]
+     },
+     "3": {
+      "summary": "Official or done: the promotion or he himself states it, or it has happened.",
+      "signals": [
+       "the promotion announces the bout",
+       "he posts that he signed",
+       "a fight result"
+      ]
+     }
+    },
+    "probabilities": {
+     "0": 0.11,
+     "1": 0.0,
+     "2": 0.0,
+     "3": 0.89
+    }
+   }
+  },
+  "349": {
+   "fact__v5": {
+    "type": "choice",
+    "choice": "health",
+    "confidence": 0.57,
+    "probabilities": {
+     "fight_week_event": 0.0,
+     "next_fight": 0.22,
+     "result": 0.01,
+     "health": 0.62,
+     "personal_life": 0.01,
+     "none_of_these": 0.0,
+     "career_move": 0.0,
+     "no_fact": 0.14
+    }
+   },
+   "act__v5": {
+    "type": "choice",
+    "choice": "gives_news_of_him",
+    "confidence": 1.0,
+    "probabilities": {
+     "speaks_of_himself": 0.0,
+     "assesses_him": 0.0,
+     "reports_an_event": 0.0,
+     "steers_him": 0.0,
+     "none_of_these": 0.0,
+     "gives_news_of_him": 1.0,
+     "predicts_his_fight": 0.0,
+     "answers_for_him": 0.0,
+     "calls_him_out": 0.0
+    }
+   },
+   "firmness__v5": {
+    "type": "score",
+    "score": 2.91,
+    "confidence": 0.83,
+    "legend": {
+     "0": {
+      "summary": "No fact about him is asserted: only opinion, analysis or talk."
+     },
+     "1": {
+      "summary": "A wish or a demand: someone wants it or says it should happen.",
+      "signals": [
+       "a fighter asking for the fight",
+       "his camp demanding a rematch"
+      ]
+     },
+     "2": {
+      "summary": "A rumour: unnamed sources, a leak, 'talks', 'discussions', 'plans'.",
+      "signals": [
+       "a podcaster says the promotion is discussing it",
+       "'sources say'"
+      ]
+     },
+     "3": {
+      "summary": "Reported: a named outlet or journalist states it, citing sources.",
+      "signals": [
+       "'ESPN reports that...'"
+      ]
+     },
+     "4": {
+      "summary": "Official or done: the promotion or he himself states it, or it has happened.",
+      "signals": [
+       "the promotion announces the bout",
+       "he posts that he signed",
+       "a fight result"
+      ]
+     }
+    },
+    "probabilities": {
+     "0": 0.02,
+     "1": 0.0,
+     "2": 0.07,
+     "3": 0.85,
+     "4": 0.06
+    }
+   },
+   "fact__f1": {
+    "type": "choice",
+    "choice": "health",
+    "confidence": 0.49,
+    "probabilities": {
+     "fight_week_event": 0.0,
+     "next_fight": 0.26,
+     "health": 0.55,
+     "result": 0.0,
+     "none_of_these": 0.01,
+     "personal_life": 0.0,
+     "career_move": 0.0,
+     "no_fact": 0.18
+    }
+   },
+   "fact__f2": {
+    "type": "choice",
+    "choice": "health",
+    "confidence": 0.57,
+    "probabilities": {
+     "no_fact": 0.14,
+     "next_fight": 0.22,
+     "health": 0.62,
+     "result": 0.01,
+     "personal_life": 0.01,
+     "none_of_these": 0.0,
+     "career_move": 0.0,
+     "fight_week_event": 0.0
+    }
+   },
+   "fact__f3": {
+    "type": "choice",
+    "choice": "health",
+    "confidence": 0.46,
+    "probabilities": {
+     "fight_week_event": 0.0,
+     "next_fight": 0.24,
+     "health": 0.53,
+     "result": 0.0,
+     "none_of_these": 0.01,
+     "personal_life": 0.01,
+     "career_move": 0.0,
+     "no_fact": 0.21
+    }
+   },
+   "act__a1": {
+    "type": "choice",
+    "choice": "gives_news_of_him",
+    "confidence": 1.0,
+    "probabilities": {
+     "speaks_of_himself": 0.0,
+     "assesses_him": 0.0,
+     "only_mentions_him": 0.0,
+     "reports_an_event": 0.0,
+     "steers_him": 0.0,
+     "none_of_these": 0.0,
+     "gives_news_of_him": 1.0,
+     "predicts_his_fight": 0.0,
+     "answers_for_him": 0.0,
+     "calls_him_out": 0.0
+    }
+   },
+   "act__a2": {
+    "type": "choice",
+    "choice": "gives_news_of_him",
+    "confidence": 1.0,
+    "probabilities": {
+     "speaks_of_himself": 0.0,
+     "assesses_him": 0.0,
+     "only_mentions_him": 0.0,
+     "reports_an_event": 0.0,
+     "steers_him": 0.0,
+     "none_of_these": 0.0,
+     "gives_news_of_him": 1.0,
+     "predicts_his_fight": 0.0,
+     "answers_for_him": 0.0,
+     "calls_him_out": 0.0
+    }
+   },
+   "firmness__four": {
+    "type": "score",
+    "score": 2.03,
+    "confidence": 0.76,
+    "legend": {
+     "0": {
+      "summary": "A wish or a demand: someone wants it or says it should happen.",
+      "signals": [
+       "a fighter asking for the fight",
+       "his camp demanding a rematch"
+      ]
+     },
+     "1": {
+      "summary": "A rumour: unnamed sources, a leak, 'talks', 'discussions', 'plans'.",
+      "signals": [
+       "a podcaster says the promotion is discussing it",
+       "'sources say'"
+      ]
+     },
+     "2": {
+      "summary": "Reported: a named outlet or journalist states it, citing sources.",
+      "signals": [
+       "'ESPN reports that...'"
+      ]
+     },
+     "3": {
+      "summary": "Official or done: the promotion or he himself states it, or it has happened.",
+      "signals": [
+       "the promotion announces the bout",
+       "he posts that he signed",
+       "a fight result"
+      ]
+     }
+    },
+    "probabilities": {
+     "0": 0.01,
+     "1": 0.09,
+     "2": 0.76,
+     "3": 0.14
+    }
+   }
+  },
+  "620": {
+   "fact__v5": {
+    "type": "choice",
+    "choice": "health",
+    "confidence": 0.53,
+    "probabilities": {
+     "none_of_these": 0.01,
+     "fight_week_event": 0.0,
+     "next_fight": 0.2,
+     "health": 0.59,
+     "result": 0.04,
+     "career_move": 0.04,
+     "personal_life": 0.09,
+     "no_fact": 0.03
+    }
+   },
+   "act__v5": {
+    "type": "choice",
+    "choice": "speaks_of_himself",
+    "confidence": 0.87,
+    "probabilities": {
+     "none_of_these": 0.0,
+     "speaks_of_himself": 0.88,
+     "answers_for_him": 0.0,
+     "predicts_his_fight": 0.0,
+     "calls_him_out": 0.0,
+     "gives_news_of_him": 0.1,
+     "steers_him": 0.0,
+     "reports_an_event": 0.02,
+     "assesses_him": 0.0
+    }
+   },
+   "firmness__v5": {
+    "type": "score",
+    "score": 3.96,
+    "confidence": 0.97,
+    "legend": {
+     "0": {
+      "summary": "No fact about him is asserted: only opinion, analysis or talk."
+     },
+     "1": {
+      "summary": "A wish or a demand: someone wants it or says it should happen.",
+      "signals": [
+       "a fighter asking for the fight",
+       "his camp demanding a rematch"
+      ]
+     },
+     "2": {
+      "summary": "A rumour: unnamed sources, a leak, 'talks', 'discussions', 'plans'.",
+      "signals": [
+       "a podcaster says the promotion is discussing it",
+       "'sources say'"
+      ]
+     },
+     "3": {
+      "summary": "Reported: a named outlet or journalist states it, citing sources.",
+      "signals": [
+       "'ESPN reports that...'"
+      ]
+     },
+     "4": {
+      "summary": "Official or done: the promotion or he himself states it, or it has happened.",
+      "signals": [
+       "the promotion announces the bout",
+       "he posts that he signed",
+       "a fight result"
+      ]
+     }
+    },
+    "probabilities": {
+     "0": 0.0,
+     "1": 0.0,
+     "2": 0.01,
+     "3": 0.01,
+     "4": 0.98
+    }
+   },
+   "fact__f1": {
+    "type": "choice",
+    "choice": "health",
+    "confidence": 0.33,
+    "probabilities": {
+     "none_of_these": 0.02,
+     "fight_week_event": 0.0,
+     "next_fight": 0.28,
+     "health": 0.39999999999999997,
+     "result": 0.01,
+     "career_move": 0.05,
+     "personal_life": 0.2,
+     "no_fact": 0.04
+    }
+   },
+   "fact__f2": {
+    "type": "choice",
+    "choice": "health",
+    "confidence": 0.53,
+    "probabilities": {
+     "none_of_these": 0.01,
+     "fight_week_event": 0.0,
+     "next_fight": 0.17,
+     "health": 0.58,
+     "result": 0.07,
+     "career_move": 0.05,
+     "personal_life": 0.1,
+     "no_fact": 0.02
+    }
+   },
+   "fact__f3": {
+    "type": "choice",
+    "choice": "health",
+    "confidence": 0.37,
+    "probabilities": {
+     "none_of_these": 0.02,
+     "health": 0.45,
+     "next_fight": 0.24,
+     "fight_week_event": 0.0,
+     "result": 0.01,
+     "career_move": 0.05,
+     "personal_life": 0.19,
+     "no_fact": 0.04
+    }
+   },
+   "act__a1": {
+    "type": "choice",
+    "choice": "speaks_of_himself",
+    "confidence": 0.85,
+    "probabilities": {
+     "none_of_these": 0.0,
+     "speaks_of_himself": 0.86,
+     "steers_him": 0.0,
+     "predicts_his_fight": 0.0,
+     "calls_him_out": 0.0,
+     "answers_for_him": 0.0,
+     "gives_news_of_him": 0.12,
+     "reports_an_event": 0.02,
+     "assesses_him": 0.0,
+     "only_mentions_him": 0.0
+    }
+   },
+   "act__a2": {
+    "type": "choice",
+    "choice": "speaks_of_himself",
+    "confidence": 0.81,
+    "probabilities": {
+     "none_of_these": 0.0,
+     "speaks_of_himself": 0.83,
+     "steers_him": 0.0,
+     "predicts_his_fight": 0.0,
+     "calls_him_out": 0.0,
+     "gives_news_of_him": 0.14,
+     "answers_for_him": 0.0,
+     "reports_an_event": 0.03,
+     "assesses_him": 0.0,
+     "only_mentions_him": 0.0
+    }
+   },
+   "firmness__four": {
+    "type": "score",
+    "score": 2.94,
+    "confidence": 0.94,
+    "legend": {
+     "0": {
+      "summary": "A wish or a demand: someone wants it or says it should happen.",
+      "signals": [
+       "a fighter asking for the fight",
+       "his camp demanding a rematch"
+      ]
+     },
+     "1": {
+      "summary": "A rumour: unnamed sources, a leak, 'talks', 'discussions', 'plans'.",
+      "signals": [
+       "a podcaster says the promotion is discussing it",
+       "'sources say'"
+      ]
+     },
+     "2": {
+      "summary": "Reported: a named outlet or journalist states it, citing sources.",
+      "signals": [
+       "'ESPN reports that...'"
+      ]
+     },
+     "3": {
+      "summary": "Official or done: the promotion or he himself states it, or it has happened.",
+      "signals": [
+       "the promotion announces the bout",
+       "he posts that he signed",
+       "a fight result"
+      ]
+     }
+    },
+    "probabilities": {
+     "0": 0.01,
+     "1": 0.02,
+     "2": 0.01,
+     "3": 0.96
+    }
+   }
+  },
+  "261": {
+   "fact__v5": {
+    "type": "choice",
+    "choice": "no_fact",
+    "confidence": 0.59,
+    "probabilities": {
+     "result": 0.01,
+     "personal_life": 0.02,
+     "fight_week_event": 0.0,
+     "career_move": 0.0,
+     "no_fact": 0.65,
+     "health": 0.02,
+     "next_fight": 0.16,
+     "none_of_these": 0.14
+    }
+   },
+   "act__v5": {
+    "type": "choice",
+    "choice": "none_of_these",
+    "confidence": 0.52,
+    "probabilities": {
+     "none_of_these": 0.5599999999999999,
+     "steers_him": 0.03,
+     "calls_him_out": 0.02,
+     "assesses_him": 0.01,
+     "reports_an_event": 0.18,
+     "predicts_his_fight": 0.02,
+     "speaks_of_himself": 0.07,
+     "gives_news_of_him": 0.05,
+     "answers_for_him": 0.06
+    }
+   },
+   "firmness__v5": {
+    "type": "score",
+    "score": 1.27,
+    "confidence": 0.0,
+    "legend": {
+     "0": {
+      "summary": "No fact about him is asserted: only opinion, analysis or talk."
+     },
+     "1": {
+      "summary": "A wish or a demand: someone wants it or says it should happen.",
+      "signals": [
+       "a fighter asking for the fight",
+       "his camp demanding a rematch"
+      ]
+     },
+     "2": {
+      "summary": "A rumour: unnamed sources, a leak, 'talks', 'discussions', 'plans'.",
+      "signals": [
+       "a podcaster says the promotion is discussing it",
+       "'sources say'"
+      ]
+     },
+     "3": {
+      "summary": "Reported: a named outlet or journalist states it, citing sources.",
+      "signals": [
+       "'ESPN reports that...'"
+      ]
+     },
+     "4": {
+      "summary": "Official or done: the promotion or he himself states it, or it has happened.",
+      "signals": [
+       "the promotion announces the bout",
+       "he posts that he signed",
+       "a fight result"
+      ]
+     }
+    },
+    "probabilities": {
+     "0": 0.58,
+     "1": 0.04,
+     "2": 0.09,
+     "3": 0.11,
+     "4": 0.18
+    }
+   },
+   "fact__f1": {
+    "type": "choice",
+    "choice": "no_fact",
+    "confidence": 0.46,
+    "probabilities": {
+     "result": 0.01,
+     "personal_life": 0.08,
+     "fight_week_event": 0.0,
+     "career_move": 0.0,
+     "no_fact": 0.52,
+     "health": 0.03,
+     "next_fight": 0.14,
+     "none_of_these": 0.22
+    }
+   },
+   "fact__f2": {
+    "type": "choice",
+    "choice": "no_fact",
+    "confidence": 0.63,
+    "probabilities": {
+     "result": 0.0,
+     "fight_week_event": 0.0,
+     "personal_life": 0.0,
+     "career_move": 0.0,
+     "no_fact": 0.68,
+     "health": 0.0,
+     "next_fight": 0.27,
+     "none_of_these": 0.04
+    }
+   },
+   "fact__f3": {
+    "type": "choice",
+    "choice": "no_fact",
+    "confidence": 0.71,
+    "probabilities": {
+     "result": 0.0,
+     "personal_life": 0.0,
+     "fight_week_event": 0.0,
+     "career_move": 0.0,
+     "no_fact": 0.75,
+     "health": 0.0,
+     "next_fight": 0.21,
+     "none_of_these": 0.04
+    }
+   },
+   "act__a1": {
+    "type": "choice",
+    "choice": "only_mentions_him",
+    "confidence": 0.76,
+    "probabilities": {
+     "answers_for_him": 0.04,
+     "steers_him": 0.05,
+     "calls_him_out": 0.01,
+     "only_mentions_him": 0.78,
+     "assesses_him": 0.0,
+     "none_of_these": 0.02,
+     "predicts_his_fight": 0.02,
+     "speaks_of_himself": 0.02,
+     "gives_news_of_him": 0.02,
+     "reports_an_event": 0.04
+    }
+   },
+   "act__a2": {
+    "type": "choice",
+    "choice": "only_mentions_him",
+    "confidence": 0.64,
+    "probabilities": {
+     "none_of_these": 0.01,
+     "calls_him_out": 0.01,
+     "steers_him": 0.18,
+     "only_mentions_him": 0.67,
+     "assesses_him": 0.01,
+     "answers_for_him": 0.01,
+     "predicts_his_fight": 0.05,
+     "speaks_of_himself": 0.0,
+     "gives_news_of_him": 0.02,
+     "reports_an_event": 0.04
+    }
+   },
+   "firmness__four": {
+    "type": "score",
+    "score": 1.58,
+    "confidence": 0.0,
+    "legend": {
+     "0": {
+      "summary": "A wish or a demand: someone wants it or says it should happen.",
+      "signals": [
+       "a fighter asking for the fight",
+       "his camp demanding a rematch"
+      ]
+     },
+     "1": {
+      "summary": "A rumour: unnamed sources, a leak, 'talks', 'discussions', 'plans'.",
+      "signals": [
+       "a podcaster says the promotion is discussing it",
+       "'sources say'"
+      ]
+     },
+     "2": {
+      "summary": "Reported: a named outlet or journalist states it, citing sources.",
+      "signals": [
+       "'ESPN reports that...'"
+      ]
+     },
+     "3": {
+      "summary": "Official or done: the promotion or he himself states it, or it has happened.",
+      "signals": [
+       "the promotion announces the bout",
+       "he posts that he signed",
+       "a fight result"
+      ]
+     }
+    },
+    "probabilities": {
+     "0": 0.23,
+     "1": 0.28,
+     "2": 0.16,
+     "3": 0.33
+    }
+   }
+  },
+  "148": {
+   "fact__v5": {
+    "type": "choice",
+    "choice": "health",
+    "confidence": 0.54,
+    "probabilities": {
+     "none_of_these": 0.0,
+     "personal_life": 0.0,
+     "result": 0.22,
+     "fight_week_event": 0.0,
+     "no_fact": 0.01,
+     "career_move": 0.0,
+     "health": 0.6,
+     "next_fight": 0.17
+    }
+   },
+   "act__v5": {
+    "type": "choice",
+    "choice": "assesses_him",
+    "confidence": 0.68,
+    "probabilities": {
+     "assesses_him": 0.73,
+     "steers_him": 0.24,
+     "gives_news_of_him": 0.02,
+     "speaks_of_himself": 0.0,
+     "answers_for_him": 0.0,
+     "reports_an_event": 0.01,
+     "predicts_his_fight": 0.0,
+     "none_of_these": 0.0,
+     "calls_him_out": 0.0
+    }
+   },
+   "firmness__v5": {
+    "type": "score",
+    "score": 3.17,
+    "confidence": 0.31,
+    "legend": {
+     "0": {
+      "summary": "No fact about him is asserted: only opinion, analysis or talk."
+     },
+     "1": {
+      "summary": "A wish or a demand: someone wants it or says it should happen.",
+      "signals": [
+       "a fighter asking for the fight",
+       "his camp demanding a rematch"
+      ]
+     },
+     "2": {
+      "summary": "A rumour: unnamed sources, a leak, 'talks', 'discussions', 'plans'.",
+      "signals": [
+       "a podcaster says the promotion is discussing it",
+       "'sources say'"
+      ]
+     },
+     "3": {
+      "summary": "Reported: a named outlet or journalist states it, citing sources.",
+      "signals": [
+       "'ESPN reports that...'"
+      ]
+     },
+     "4": {
+      "summary": "Official or done: the promotion or he himself states it, or it has happened.",
+      "signals": [
+       "the promotion announces the bout",
+       "he posts that he signed",
+       "a fight result"
+      ]
+     }
+    },
+    "probabilities": {
+     "0": 0.04,
+     "1": 0.15,
+     "2": 0.01,
+     "3": 0.2,
+     "4": 0.6
+    }
+   },
+   "fact__f1": {
+    "type": "choice",
+    "choice": "health",
+    "confidence": 0.62,
+    "probabilities": {
+     "personal_life": 0.0,
+     "none_of_these": 0.0,
+     "fight_week_event": 0.0,
+     "result": 0.06,
+     "no_fact": 0.01,
+     "career_move": 0.0,
+     "health": 0.67,
+     "next_fight": 0.26
+    }
+   },
+   "fact__f2": {
+    "type": "choice",
+    "choice": "health",
+    "confidence": 0.55,
+    "probabilities": {
+     "health": 0.61,
+     "personal_life": 0.0,
+     "fight_week_event": 0.0,
+     "result": 0.22,
+     "no_fact": 0.01,
+     "career_move": 0.0,
+     "none_of_these": 0.0,
+     "next_fight": 0.16
+    }
+   },
+   "fact__f3": {
+    "type": "choice",
+    "choice": "health",
+    "confidence": 0.65,
+    "probabilities": {
+     "none_of_these": 0.0,
+     "personal_life": 0.0,
+     "result": 0.06,
+     "fight_week_event": 0.0,
+     "no_fact": 0.01,
+     "career_move": 0.0,
+     "health": 0.7,
+     "next_fight": 0.23
+    }
+   },
+   "act__a1": {
+    "type": "choice",
+    "choice": "assesses_him",
+    "confidence": 0.61,
+    "probabilities": {
+     "assesses_him": 0.65,
+     "steers_him": 0.32,
+     "gives_news_of_him": 0.02,
+     "speaks_of_himself": 0.0,
+     "reports_an_event": 0.01,
+     "answers_for_him": 0.0,
+     "predicts_his_fight": 0.0,
+     "only_mentions_him": 0.0,
+     "none_of_these": 0.0,
+     "calls_him_out": 0.0
+    }
+   },
+   "act__a2": {
+    "type": "choice",
+    "choice": "assesses_him",
+    "confidence": 0.64,
+    "probabilities": {
+     "assesses_him": 0.68,
+     "steers_him": 0.29,
+     "gives_news_of_him": 0.02,
+     "speaks_of_himself": 0.0,
+     "reports_an_event": 0.01,
+     "answers_for_him": 0.0,
+     "predicts_his_fight": 0.0,
+     "only_mentions_him": 0.0,
+     "none_of_these": 0.0,
+     "calls_him_out": 0.0
+    }
+   },
+   "firmness__four": {
+    "type": "score",
+    "score": 2.2,
+    "confidence": 0.2,
+    "legend": {
+     "0": {
+      "summary": "A wish or a demand: someone wants it or says it should happen.",
+      "signals": [
+       "a fighter asking for the fight",
+       "his camp demanding a rematch"
+      ]
+     },
+     "1": {
+      "summary": "A rumour: unnamed sources, a leak, 'talks', 'discussions', 'plans'.",
+      "signals": [
+       "a podcaster says the promotion is discussing it",
+       "'sources say'"
+      ]
+     },
+     "2": {
+      "summary": "Reported: a named outlet or journalist states it, citing sources.",
+      "signals": [
+       "'ESPN reports that...'"
+      ]
+     },
+     "3": {
+      "summary": "Official or done: the promotion or he himself states it, or it has happened.",
+      "signals": [
+       "the promotion announces the bout",
+       "he posts that he signed",
+       "a fight result"
+      ]
+     }
+    },
+    "probabilities": {
+     "0": 0.19,
+     "1": 0.02,
+     "2": 0.21,
+     "3": 0.58
+    }
+   }
+  },
+  "953": {
+   "fact__v5": {
+    "type": "choice",
+    "choice": "no_fact",
+    "confidence": 0.89,
+    "probabilities": {
+     "none_of_these": 0.01,
+     "personal_life": 0.0,
+     "result": 0.0,
+     "fight_week_event": 0.0,
+     "no_fact": 0.91,
+     "career_move": 0.0,
+     "health": 0.0,
+     "next_fight": 0.08
+    }
+   },
+   "act__v5": {
+    "type": "choice",
+    "choice": "calls_him_out",
+    "confidence": 0.19,
+    "probabilities": {
+     "assesses_him": 0.01,
+     "steers_him": 0.02,
+     "gives_news_of_him": 0.2,
+     "speaks_of_himself": 0.19,
+     "reports_an_event": 0.03,
+     "answers_for_him": 0.03,
+     "predicts_his_fight": 0.0,
+     "none_of_these": 0.24,
+     "calls_him_out": 0.28
+    }
+   },
+   "firmness__v5": {
+    "type": "score",
+    "score": 1.35,
+    "confidence": 0.46,
+    "legend": {
+     "0": {
+      "summary": "No fact about him is asserted: only opinion, analysis or talk."
+     },
+     "1": {
+      "summary": "A wish or a demand: someone wants it or says it should happen.",
+      "signals": [
+       "a fighter asking for the fight",
+       "his camp demanding a rematch"
+      ]
+     },
+     "2": {
+      "summary": "A rumour: unnamed sources, a leak, 'talks', 'discussions', 'plans'.",
+      "signals": [
+       "a podcaster says the promotion is discussing it",
+       "'sources say'"
+      ]
+     },
+     "3": {
+      "summary": "Reported: a named outlet or journalist states it, citing sources.",
+      "signals": [
+       "'ESPN reports that...'"
+      ]
+     },
+     "4": {
+      "summary": "Official or done: the promotion or he himself states it, or it has happened.",
+      "signals": [
+       "the promotion announces the bout",
+       "he posts that he signed",
+       "a fight result"
+      ]
+     }
+    },
+    "probabilities": {
+     "0": 0.15,
+     "1": 0.66,
+     "2": 0.01,
+     "3": 0.05,
+     "4": 0.13
+    }
+   },
+   "fact__f1": {
+    "type": "choice",
+    "choice": "no_fact",
+    "confidence": 0.89,
+    "probabilities": {
+     "health": 0.0,
+     "personal_life": 0.0,
+     "fight_week_event": 0.0,
+     "result": 0.0,
+     "no_fact": 0.91,
+     "career_move": 0.0,
+     "none_of_these": 0.01,
+     "next_fight": 0.08
+    }
+   },
+   "fact__f2": {
+    "type": "choice",
+    "choice": "no_fact",
+    "confidence": 0.94,
+    "probabilities": {
+     "personal_life": 0.0,
+     "health": 0.0,
+     "fight_week_event": 0.0,
+     "result": 0.0,
+     "no_fact": 0.96,
+     "career_move": 0.0,
+     "none_of_these": 0.0,
+     "next_fight": 0.04
+    }
+   },
+   "fact__f3": {
+    "type": "choice",
+    "choice": "no_fact",
+    "confidence": 0.95,
+    "probabilities": {
+     "health": 0.0,
+     "personal_life": 0.0,
+     "fight_week_event": 0.0,
+     "result": 0.0,
+     "no_fact": 0.96,
+     "career_move": 0.0,
+     "none_of_these": 0.0,
+     "next_fight": 0.04
+    }
+   },
+   "act__a1": {
+    "type": "choice",
+    "choice": "only_mentions_him",
+    "confidence": 0.8,
+    "probabilities": {
+     "assesses_him": 0.0,
+     "steers_him": 0.01,
+     "gives_news_of_him": 0.02,
+     "speaks_of_himself": 0.05,
+     "reports_an_event": 0.0,
+     "answers_for_him": 0.01,
+     "predicts_his_fight": 0.0,
+     "only_mentions_him": 0.82,
+     "none_of_these": 0.0,
+     "calls_him_out": 0.09
+    }
+   },
+   "act__a2": {
+    "type": "choice",
+    "choice": "only_mentions_him",
+    "confidence": 0.74,
+    "probabilities": {
+     "assesses_him": 0.0,
+     "steers_him": 0.02,
+     "gives_news_of_him": 0.01,
+     "speaks_of_himself": 0.01,
+     "answers_for_him": 0.01,
+     "reports_an_event": 0.0,
+     "predicts_his_fight": 0.0,
+     "only_mentions_him": 0.77,
+     "none_of_these": 0.0,
+     "calls_him_out": 0.18
+    }
+   },
+   "firmness__four": {
+    "type": "score",
+    "score": 0.35,
+    "confidence": 0.65,
+    "legend": {
+     "0": {
+      "summary": "A wish or a demand: someone wants it or says it should happen.",
+      "signals": [
+       "a fighter asking for the fight",
+       "his camp demanding a rematch"
+      ]
+     },
+     "1": {
+      "summary": "A rumour: unnamed sources, a leak, 'talks', 'discussions', 'plans'.",
+      "signals": [
+       "a podcaster says the promotion is discussing it",
+       "'sources say'"
+      ]
+     },
+     "2": {
+      "summary": "Reported: a named outlet or journalist states it, citing sources.",
+      "signals": [
+       "'ESPN reports that...'"
+      ]
+     },
+     "3": {
+      "summary": "Official or done: the promotion or he himself states it, or it has happened.",
+      "signals": [
+       "the promotion announces the bout",
+       "he posts that he signed",
+       "a fight result"
+      ]
+     }
+    },
+    "probabilities": {
+     "0": 0.87,
+     "1": 0.01,
+     "2": 0.03,
+     "3": 0.09
+    }
+   }
+  },
+  "921": {
+   "fact__v5": {
+    "type": "choice",
+    "choice": "result",
+    "confidence": 0.61,
+    "probabilities": {
+     "next_fight": 0.08,
+     "career_move": 0.1,
+     "result": 0.66,
+     "none_of_these": 0.0,
+     "personal_life": 0.0,
+     "health": 0.0,
+     "no_fact": 0.16,
+     "fight_week_event": 0.0
+    }
+   },
+   "act__v5": {
+    "type": "choice",
+    "choice": "calls_him_out",
+    "confidence": 0.99,
+    "probabilities": {
+     "predicts_his_fight": 0.0,
+     "speaks_of_himself": 0.0,
+     "calls_him_out": 1.0,
+     "gives_news_of_him": 0.0,
+     "reports_an_event": 0.0,
+     "none_of_these": 0.0,
+     "assesses_him": 0.0,
+     "answers_for_him": 0.0,
+     "steers_him": 0.0
+    }
+   },
+   "firmness__v5": {
+    "type": "score",
+    "score": 1.7,
+    "confidence": 0.35,
+    "legend": {
+     "0": {
+      "summary": "No fact about him is asserted: only opinion, analysis or talk."
+     },
+     "1": {
+      "summary": "A wish or a demand: someone wants it or says it should happen.",
+      "signals": [
+       "a fighter asking for the fight",
+       "his camp demanding a rematch"
+      ]
+     },
+     "2": {
+      "summary": "A rumour: unnamed sources, a leak, 'talks', 'discussions', 'plans'.",
+      "signals": [
+       "a podcaster says the promotion is discussing it",
+       "'sources say'"
+      ]
+     },
+     "3": {
+      "summary": "Reported: a named outlet or journalist states it, citing sources.",
+      "signals": [
+       "'ESPN reports that...'"
+      ]
+     },
+     "4": {
+      "summary": "Official or done: the promotion or he himself states it, or it has happened.",
+      "signals": [
+       "the promotion announces the bout",
+       "he posts that he signed",
+       "a fight result"
+      ]
+     }
+    },
+    "probabilities": {
+     "0": 0.04,
+     "1": 0.6,
+     "2": 0.12,
+     "3": 0.09,
+     "4": 0.15
+    }
+   },
+   "fact__f1": {
+    "type": "choice",
+    "choice": "result",
+    "confidence": 0.38,
+    "probabilities": {
+     "next_fight": 0.14,
+     "career_move": 0.15,
+     "result": 0.46,
+     "none_of_these": 0.01,
+     "personal_life": 0.0,
+     "health": 0.0,
+     "no_fact": 0.24,
+     "fight_week_event": 0.0
+    }
+   },
+   "fact__f2": {
+    "type": "choice",
+    "choice": "result",
+    "confidence": 0.67,
+    "probabilities": {
+     "next_fight": 0.06,
+     "career_move": 0.14,
+     "result": 0.71,
+     "none_of_these": 0.0,
+     "personal_life": 0.0,
+     "health": 0.0,
+     "no_fact": 0.09,
+     "fight_week_event": 0.0
+    }
+   },
+   "fact__f3": {
+    "type": "choice",
+    "choice": "result",
+    "confidence": 0.46,
+    "probabilities": {
+     "next_fight": 0.11,
+     "career_move": 0.18,
+     "result": 0.53,
+     "none_of_these": 0.01,
+     "personal_life": 0.0,
+     "health": 0.0,
+     "no_fact": 0.17,
+     "fight_week_event": 0.0
+    }
+   },
+   "act__a1": {
+    "type": "choice",
+    "choice": "calls_him_out",
+    "confidence": 0.99,
+    "probabilities": {
+     "predicts_his_fight": 0.0,
+     "speaks_of_himself": 0.0,
+     "calls_him_out": 1.0,
+     "reports_an_event": 0.0,
+     "only_mentions_him": 0.0,
+     "gives_news_of_him": 0.0,
+     "none_of_these": 0.0,
+     "assesses_him": 0.0,
+     "answers_for_him": 0.0,
+     "steers_him": 0.0
+    }
+   },
+   "act__a2": {
+    "type": "choice",
+    "choice": "calls_him_out",
+    "confidence": 0.98,
+    "probabilities": {
+     "predicts_his_fight": 0.0,
+     "speaks_of_himself": 0.0,
+     "calls_him_out": 0.99,
+     "reports_an_event": 0.0,
+     "only_mentions_him": 0.0,
+     "gives_news_of_him": 0.0,
+     "none_of_these": 0.0,
+     "assesses_him": 0.0,
+     "answers_for_him": 0.0,
+     "steers_him": 0.01
+    }
+   },
+   "firmness__four": {
+    "type": "score",
+    "score": 0.57,
+    "confidence": 0.43,
+    "legend": {
+     "0": {
+      "summary": "A wish or a demand: someone wants it or says it should happen.",
+      "signals": [
+       "a fighter asking for the fight",
+       "his camp demanding a rematch"
+      ]
+     },
+     "1": {
+      "summary": "A rumour: unnamed sources, a leak, 'talks', 'discussions', 'plans'.",
+      "signals": [
+       "a podcaster says the promotion is discussing it",
+       "'sources say'"
+      ]
+     },
+     "2": {
+      "summary": "Reported: a named outlet or journalist states it, citing sources.",
+      "signals": [
+       "'ESPN reports that...'"
+      ]
+     },
+     "3": {
+      "summary": "Official or done: the promotion or he himself states it, or it has happened.",
+      "signals": [
+       "the promotion announces the bout",
+       "he posts that he signed",
+       "a fight result"
+      ]
+     }
+    },
+    "probabilities": {
+     "0": 0.68,
+     "1": 0.17,
+     "2": 0.04,
+     "3": 0.11
+    }
+   }
+  },
+  "4": {
+   "fact__v5": {
+    "type": "choice",
+    "choice": "result",
+    "confidence": 0.46,
+    "probabilities": {
+     "no_fact": 0.45,
+     "none_of_these": 0.02,
+     "result": 0.52,
+     "career_move": 0.01,
+     "fight_week_event": 0.0,
+     "personal_life": 0.0,
+     "health": 0.0,
+     "next_fight": 0.0
+    }
+   },
+   "act__v5": {
+    "type": "choice",
+    "choice": "assesses_him",
+    "confidence": 0.99,
+    "probabilities": {
+     "calls_him_out": 0.0,
+     "none_of_these": 0.0,
+     "steers_him": 0.0,
+     "assesses_him": 0.99,
+     "answers_for_him": 0.0,
+     "reports_an_event": 0.0,
+     "predicts_his_fight": 0.01,
+     "speaks_of_himself": 0.0,
+     "gives_news_of_him": 0.0
+    }
+   },
+   "firmness__v5": {
+    "type": "score",
+    "score": 0.72,
+    "confidence": 0.4,
+    "legend": {
+     "0": {
+      "summary": "No fact about him is asserted: only opinion, analysis or talk."
+     },
+     "1": {
+      "summary": "A wish or a demand: someone wants it or says it should happen.",
+      "signals": [
+       "a fighter asking for the fight",
+       "his camp demanding a rematch"
+      ]
+     },
+     "2": {
+      "summary": "A rumour: unnamed sources, a leak, 'talks', 'discussions', 'plans'.",
+      "signals": [
+       "a podcaster says the promotion is discussing it",
+       "'sources say'"
+      ]
+     },
+     "3": {
+      "summary": "Reported: a named outlet or journalist states it, citing sources.",
+      "signals": [
+       "'ESPN reports that...'"
+      ]
+     },
+     "4": {
+      "summary": "Official or done: the promotion or he himself states it, or it has happened.",
+      "signals": [
+       "the promotion announces the bout",
+       "he posts that he signed",
+       "a fight result"
+      ]
+     }
+    },
+    "probabilities": {
+     "0": 0.79,
+     "1": 0.0,
+     "2": 0.0,
+     "3": 0.15,
+     "4": 0.06
+    }
+   },
+   "fact__f1": {
+    "type": "choice",
+    "choice": "no_fact",
+    "confidence": 0.76,
+    "probabilities": {
+     "none_of_these": 0.02,
+     "no_fact": 0.8,
+     "result": 0.18,
+     "fight_week_event": 0.0,
+     "career_move": 0.0,
+     "personal_life": 0.0,
+     "health": 0.0,
+     "next_fight": 0.0
+    }
+   },
+   "fact__f2": {
+    "type": "choice",
+    "choice": "result",
+    "confidence": 0.56,
+    "probabilities": {
+     "none_of_these": 0.02,
+     "no_fact": 0.36,
+     "result": 0.61,
+     "fight_week_event": 0.0,
+     "career_move": 0.01,
+     "personal_life": 0.0,
+     "health": 0.0,
+     "next_fight": 0.0
+    }
+   },
+   "fact__f3": {
+    "type": "choice",
+    "choice": "no_fact",
+    "confidence": 0.64,
+    "probabilities": {
+     "no_fact": 0.68,
+     "none_of_these": 0.03,
+     "result": 0.28,
+     "career_move": 0.01,
+     "fight_week_event": 0.0,
+     "personal_life": 0.0,
+     "health": 0.0,
+     "next_fight": 0.0
+    }
+   },
+   "act__a1": {
+    "type": "choice",
+    "choice": "assesses_him",
+    "confidence": 0.99,
+    "probabilities": {
+     "only_mentions_him": 0.0,
+     "calls_him_out": 0.0,
+     "none_of_these": 0.0,
+     "steers_him": 0.0,
+     "assesses_him": 0.99,
+     "answers_for_him": 0.0,
+     "reports_an_event": 0.0,
+     "gives_news_of_him": 0.0,
+     "speaks_of_himself": 0.0,
+     "predicts_his_fight": 0.01
+    }
+   },
+   "act__a2": {
+    "type": "choice",
+    "choice": "assesses_him",
+    "confidence": 0.98,
+    "probabilities": {
+     "only_mentions_him": 0.0,
+     "calls_him_out": 0.0,
+     "none_of_these": 0.0,
+     "steers_him": 0.0,
+     "answers_for_him": 0.0,
+     "assesses_him": 0.98,
+     "reports_an_event": 0.0,
+     "speaks_of_himself": 0.0,
+     "predicts_his_fight": 0.02,
+     "gives_news_of_him": 0.0
+    }
+   },
+   "firmness__four": {
+    "type": "score",
+    "score": 1.74,
+    "confidence": 0.59,
+    "legend": {
+     "0": {
+      "summary": "A wish or a demand: someone wants it or says it should happen.",
+      "signals": [
+       "a fighter asking for the fight",
+       "his camp demanding a rematch"
+      ]
+     },
+     "1": {
+      "summary": "A rumour: unnamed sources, a leak, 'talks', 'discussions', 'plans'.",
+      "signals": [
+       "a podcaster says the promotion is discussing it",
+       "'sources say'"
+      ]
+     },
+     "2": {
+      "summary": "Reported: a named outlet or journalist states it, citing sources.",
+      "signals": [
+       "'ESPN reports that...'"
+      ]
+     },
+     "3": {
+      "summary": "Official or done: the promotion or he himself states it, or it has happened.",
+      "signals": [
+       "the promotion announces the bout",
+       "he posts that he signed",
+       "a fight result"
+      ]
+     }
+    },
+    "probabilities": {
+     "0": 0.09,
+     "1": 0.17,
+     "2": 0.66,
+     "3": 0.08
+    }
+   }
+  },
+  "1161": {
+   "fact__v5": {
+    "type": "choice",
+    "choice": "career_move",
+    "confidence": 0.3,
+    "probabilities": {
+     "result": 0.0,
+     "fight_week_event": 0.0,
+     "career_move": 0.39,
+     "next_fight": 0.0,
+     "health": 0.01,
+     "no_fact": 0.35,
+     "personal_life": 0.0,
+     "none_of_these": 0.25
+    }
+   },
+   "act__v5": {
+    "type": "choice",
+    "choice": "none_of_these",
+    "confidence": 0.32,
+    "probabilities": {
+     "assesses_him": 0.02,
+     "answers_for_him": 0.01,
+     "predicts_his_fight": 0.0,
+     "gives_news_of_him": 0.07,
+     "calls_him_out": 0.01,
+     "speaks_of_himself": 0.32,
+     "steers_him": 0.0,
+     "reports_an_event": 0.17,
+     "none_of_these": 0.4
+    }
+   },
+   "firmness__v5": {
+    "type": "score",
+    "score": 1.43,
+    "confidence": 0.0,
+    "legend": {
+     "0": {
+      "summary": "No fact about him is asserted: only opinion, analysis or talk."
+     },
+     "1": {
+      "summary": "A wish or a demand: someone wants it or says it should happen.",
+      "signals": [
+       "a fighter asking for the fight",
+       "his camp demanding a rematch"
+      ]
+     },
+     "2": {
+      "summary": "A rumour: unnamed sources, a leak, 'talks', 'discussions', 'plans'.",
+      "signals": [
+       "a podcaster says the promotion is discussing it",
+       "'sources say'"
+      ]
+     },
+     "3": {
+      "summary": "Reported: a named outlet or journalist states it, citing sources.",
+      "signals": [
+       "'ESPN reports that...'"
+      ]
+     },
+     "4": {
+      "summary": "Official or done: the promotion or he himself states it, or it has happened.",
+      "signals": [
+       "the promotion announces the bout",
+       "he posts that he signed",
+       "a fight result"
+      ]
+     }
+    },
+    "probabilities": {
+     "0": 0.63,
+     "1": 0.0,
+     "2": 0.0,
+     "3": 0.06,
+     "4": 0.31
+    }
+   },
+   "fact__f1": {
+    "type": "choice",
+    "choice": "career_move",
+    "confidence": 0.49,
+    "probabilities": {
+     "result": 0.0,
+     "fight_week_event": 0.0,
+     "next_fight": 0.0,
+     "career_move": 0.56,
+     "health": 0.01,
+     "no_fact": 0.25,
+     "personal_life": 0.0,
+     "none_of_these": 0.18
+    }
+   },
+   "fact__f2": {
+    "type": "choice",
+    "choice": "no_fact",
+    "confidence": 0.81,
+    "probabilities": {
+     "result": 0.0,
+     "fight_week_event": 0.0,
+     "next_fight": 0.0,
+     "career_move": 0.05,
+     "health": 0.0,
+     "no_fact": 0.84,
+     "personal_life": 0.0,
+     "none_of_these": 0.11
+    }
+   },
+   "fact__f3": {
+    "type": "choice",
+    "choice": "no_fact",
+    "confidence": 0.88,
+    "probabilities": {
+     "result": 0.0,
+     "none_of_these": 0.06,
+     "next_fight": 0.0,
+     "career_move": 0.04,
+     "health": 0.0,
+     "no_fact": 0.9,
+     "personal_life": 0.0,
+     "fight_week_event": 0.0
+    }
+   },
+   "act__a1": {
+    "type": "choice",
+    "choice": "only_mentions_him",
+    "confidence": 0.4,
+    "probabilities": {
+     "assesses_him": 0.02,
+     "none_of_these": 0.1,
+     "predicts_his_fight": 0.0,
+     "gives_news_of_him": 0.07,
+     "calls_him_out": 0.01,
+     "speaks_of_himself": 0.24,
+     "steers_him": 0.0,
+     "only_mentions_him": 0.47000000000000003,
+     "reports_an_event": 0.09,
+     "answers_for_him": 0.0
+    }
+   },
+   "act__a2": {
+    "type": "choice",
+    "choice": "only_mentions_him",
+    "confidence": 0.72,
+    "probabilities": {
+     "assesses_him": 0.02,
+     "none_of_these": 0.07,
+     "predicts_his_fight": 0.0,
+     "gives_news_of_him": 0.02,
+     "calls_him_out": 0.01,
+     "speaks_of_himself": 0.11,
+     "steers_him": 0.0,
+     "only_mentions_him": 0.74,
+     "reports_an_event": 0.02,
+     "answers_for_him": 0.01
+    }
+   },
+   "firmness__four": {
+    "type": "score",
+    "score": 1.84,
+    "confidence": 0.0,
+    "legend": {
+     "0": {
+      "summary": "A wish or a demand: someone wants it or says it should happen.",
+      "signals": [
+       "a fighter asking for the fight",
+       "his camp demanding a rematch"
+      ]
+     },
+     "1": {
+      "summary": "A rumour: unnamed sources, a leak, 'talks', 'discussions', 'plans'.",
+      "signals": [
+       "a podcaster says the promotion is discussing it",
+       "'sources say'"
+      ]
+     },
+     "2": {
+      "summary": "Reported: a named outlet or journalist states it, citing sources.",
+      "signals": [
+       "'ESPN reports that...'"
+      ]
+     },
+     "3": {
+      "summary": "Official or done: the promotion or he himself states it, or it has happened.",
+      "signals": [
+       "the promotion announces the bout",
+       "he posts that he signed",
+       "a fight result"
+      ]
+     }
+    },
+    "probabilities": {
+     "0": 0.35,
+     "1": 0.02,
+     "2": 0.08,
+     "3": 0.55
+    }
+   }
+  },
+  "625": {
+   "fact__v5": {
+    "type": "choice",
+    "choice": "fight_week_event",
+    "confidence": 0.88,
+    "probabilities": {
+     "none_of_these": 0.0,
+     "health": 0.0,
+     "next_fight": 0.1,
+     "fight_week_event": 0.9,
+     "result": 0.0,
+     "career_move": 0.0,
+     "personal_life": 0.0,
+     "no_fact": 0.0
+    }
+   },
+   "act__v5": {
+    "type": "choice",
+    "choice": "reports_an_event",
+    "confidence": 1.0,
+    "probabilities": {
+     "none_of_these": 0.0,
+     "speaks_of_himself": 0.0,
+     "answers_for_him": 0.0,
+     "predicts_his_fight": 0.0,
+     "gives_news_of_him": 0.0,
+     "calls_him_out": 0.0,
+     "steers_him": 0.0,
+     "reports_an_event": 1.0,
+     "assesses_him": 0.0
+    }
+   },
+   "firmness__v5": {
+    "type": "score",
+    "score": 3.98,
+    "confidence": 0.98,
+    "legend": {
+     "0": {
+      "summary": "No fact about him is asserted: only opinion, analysis or talk."
+     },
+     "1": {
+      "summary": "A wish or a demand: someone wants it or says it should happen.",
+      "signals": [
+       "a fighter asking for the fight",
+       "his camp demanding a rematch"
+      ]
+     },
+     "2": {
+      "summary": "A rumour: unnamed sources, a leak, 'talks', 'discussions', 'plans'.",
+      "signals": [
+       "a podcaster says the promotion is discussing it",
+       "'sources say'"
+      ]
+     },
+     "3": {
+      "summary": "Reported: a named outlet or journalist states it, citing sources.",
+      "signals": [
+       "'ESPN reports that...'"
+      ]
+     },
+     "4": {
+      "summary": "Official or done: the promotion or he himself states it, or it has happened.",
+      "signals": [
+       "the promotion announces the bout",
+       "he posts that he signed",
+       "a fight result"
+      ]
+     }
+    },
+    "probabilities": {
+     "0": 0.0,
+     "1": 0.0,
+     "2": 0.0,
+     "3": 0.01,
+     "4": 0.99
+    }
+   },
+   "fact__f1": {
+    "type": "choice",
+    "choice": "fight_week_event",
+    "confidence": 0.99,
+    "probabilities": {
+     "none_of_these": 0.0,
+     "health": 0.0,
+     "next_fight": 0.0,
+     "fight_week_event": 1.0,
+     "result": 0.0,
+     "career_move": 0.0,
+     "personal_life": 0.0,
+     "no_fact": 0.0
+    }
+   },
+   "fact__f2": {
+    "type": "choice",
+    "choice": "fight_week_event",
+    "confidence": 0.9,
+    "probabilities": {
+     "none_of_these": 0.0,
+     "fight_week_event": 0.91,
+     "next_fight": 0.09,
+     "health": 0.0,
+     "result": 0.0,
+     "career_move": 0.0,
+     "personal_life": 0.0,
+     "no_fact": 0.0
+    }
+   },
+   "fact__f3": {
+    "type": "choice",
+    "choice": "fight_week_event",
+    "confidence": 0.99,
+    "probabilities": {
+     "none_of_these": 0.0,
+     "fight_week_event": 0.99,
+     "next_fight": 0.01,
+     "health": 0.0,
+     "result": 0.0,
+     "career_move": 0.0,
+     "personal_life": 0.0,
+     "no_fact": 0.0
+    }
+   },
+   "act__a1": {
+    "type": "choice",
+    "choice": "reports_an_event",
+    "confidence": 1.0,
+    "probabilities": {
+     "none_of_these": 0.0,
+     "speaks_of_himself": 0.0,
+     "answers_for_him": 0.0,
+     "predicts_his_fight": 0.0,
+     "calls_him_out": 0.0,
+     "gives_news_of_him": 0.0,
+     "steers_him": 0.0,
+     "reports_an_event": 1.0,
+     "assesses_him": 0.0,
+     "only_mentions_him": 0.0
+    }
+   },
+   "act__a2": {
+    "type": "choice",
+    "choice": "reports_an_event",
+    "confidence": 1.0,
+    "probabilities": {
+     "none_of_these": 0.0,
+     "speaks_of_himself": 0.0,
+     "steers_him": 0.0,
+     "predicts_his_fight": 0.0,
+     "calls_him_out": 0.0,
+     "gives_news_of_him": 0.0,
+     "answers_for_him": 0.0,
+     "reports_an_event": 1.0,
+     "assesses_him": 0.0,
+     "only_mentions_him": 0.0
+    }
+   },
+   "firmness__four": {
+    "type": "score",
+    "score": 2.98,
+    "confidence": 0.98,
+    "legend": {
+     "0": {
+      "summary": "A wish or a demand: someone wants it or says it should happen.",
+      "signals": [
+       "a fighter asking for the fight",
+       "his camp demanding a rematch"
+      ]
+     },
+     "1": {
+      "summary": "A rumour: unnamed sources, a leak, 'talks', 'discussions', 'plans'.",
+      "signals": [
+       "a podcaster says the promotion is discussing it",
+       "'sources say'"
+      ]
+     },
+     "2": {
+      "summary": "Reported: a named outlet or journalist states it, citing sources.",
+      "signals": [
+       "'ESPN reports that...'"
+      ]
+     },
+     "3": {
+      "summary": "Official or done: the promotion or he himself states it, or it has happened.",
+      "signals": [
+       "the promotion announces the bout",
+       "he posts that he signed",
+       "a fight result"
+      ]
+     }
+    },
+    "probabilities": {
+     "0": 0.0,
+     "1": 0.0,
+     "2": 0.01,
+     "3": 0.99
+    }
+   }
+  },
+  "743": {
+   "fact__v5": {
+    "type": "choice",
+    "choice": "fight_week_event",
+    "confidence": 0.83,
+    "probabilities": {
+     "fight_week_event": 0.85,
+     "career_move": 0.01,
+     "health": 0.0,
+     "no_fact": 0.06,
+     "next_fight": 0.01,
+     "result": 0.0,
+     "personal_life": 0.0,
+     "none_of_these": 0.07
+    }
+   },
+   "act__v5": {
+    "type": "choice",
+    "choice": "reports_an_event",
+    "confidence": 0.98,
+    "probabilities": {
+     "reports_an_event": 0.98,
+     "assesses_him": 0.01,
+     "speaks_of_himself": 0.0,
+     "answers_for_him": 0.0,
+     "steers_him": 0.0,
+     "gives_news_of_him": 0.01,
+     "none_of_these": 0.0,
+     "calls_him_out": 0.0,
+     "predicts_his_fight": 0.0
+    }
+   },
+   "firmness__v5": {
+    "type": "score",
+    "score": 3.46,
+    "confidence": 0.57,
+    "legend": {
+     "0": {
+      "summary": "No fact about him is asserted: only opinion, analysis or talk."
+     },
+     "1": {
+      "summary": "A wish or a demand: someone wants it or says it should happen.",
+      "signals": [
+       "a fighter asking for the fight",
+       "his camp demanding a rematch"
+      ]
+     },
+     "2": {
+      "summary": "A rumour: unnamed sources, a leak, 'talks', 'discussions', 'plans'.",
+      "signals": [
+       "a podcaster says the promotion is discussing it",
+       "'sources say'"
+      ]
+     },
+     "3": {
+      "summary": "Reported: a named outlet or journalist states it, citing sources.",
+      "signals": [
+       "'ESPN reports that...'"
+      ]
+     },
+     "4": {
+      "summary": "Official or done: the promotion or he himself states it, or it has happened.",
+      "signals": [
+       "the promotion announces the bout",
+       "he posts that he signed",
+       "a fight result"
+      ]
+     }
+    },
+    "probabilities": {
+     "0": 0.01,
+     "1": 0.0,
+     "2": 0.0,
+     "3": 0.5,
+     "4": 0.49
+    }
+   },
+   "fact__f1": {
+    "type": "choice",
+    "choice": "fight_week_event",
+    "confidence": 0.82,
+    "probabilities": {
+     "fight_week_event": 0.85,
+     "career_move": 0.01,
+     "health": 0.0,
+     "no_fact": 0.07,
+     "next_fight": 0.01,
+     "result": 0.0,
+     "personal_life": 0.0,
+     "none_of_these": 0.06
+    }
+   },
+   "fact__f2": {
+    "type": "choice",
+    "choice": "fight_week_event",
+    "confidence": 0.77,
+    "probabilities": {
+     "fight_week_event": 0.8,
+     "health": 0.0,
+     "career_move": 0.01,
+     "no_fact": 0.07,
+     "next_fight": 0.01,
+     "none_of_these": 0.1,
+     "personal_life": 0.0,
+     "result": 0.0
+    }
+   },
+   "fact__f3": {
+    "type": "choice",
+    "choice": "fight_week_event",
+    "confidence": 0.81,
+    "probabilities": {
+     "fight_week_event": 0.83,
+     "health": 0.0,
+     "career_move": 0.01,
+     "no_fact": 0.09,
+     "next_fight": 0.01,
+     "result": 0.0,
+     "personal_life": 0.0,
+     "none_of_these": 0.06
+    }
+   },
+   "act__a1": {
+    "type": "choice",
+    "choice": "reports_an_event",
+    "confidence": 0.97,
+    "probabilities": {
+     "reports_an_event": 0.98,
+     "answers_for_him": 0.0,
+     "speaks_of_himself": 0.0,
+     "assesses_him": 0.01,
+     "steers_him": 0.0,
+     "gives_news_of_him": 0.01,
+     "only_mentions_him": 0.0,
+     "none_of_these": 0.0,
+     "calls_him_out": 0.0,
+     "predicts_his_fight": 0.0
+    }
+   },
+   "act__a2": {
+    "type": "choice",
+    "choice": "reports_an_event",
+    "confidence": 0.97,
+    "probabilities": {
+     "reports_an_event": 0.98,
+     "assesses_him": 0.01,
+     "speaks_of_himself": 0.0,
+     "answers_for_him": 0.0,
+     "steers_him": 0.0,
+     "only_mentions_him": 0.0,
+     "gives_news_of_him": 0.01,
+     "none_of_these": 0.0,
+     "calls_him_out": 0.0,
+     "predicts_his_fight": 0.0
+    }
+   },
+   "firmness__four": {
+    "type": "score",
+    "score": 2.59,
+    "confidence": 0.59,
+    "legend": {
+     "0": {
+      "summary": "A wish or a demand: someone wants it or says it should happen.",
+      "signals": [
+       "a fighter asking for the fight",
+       "his camp demanding a rematch"
+      ]
+     },
+     "1": {
+      "summary": "A rumour: unnamed sources, a leak, 'talks', 'discussions', 'plans'.",
+      "signals": [
+       "a podcaster says the promotion is discussing it",
+       "'sources say'"
+      ]
+     },
+     "2": {
+      "summary": "Reported: a named outlet or journalist states it, citing sources.",
+      "signals": [
+       "'ESPN reports that...'"
+      ]
+     },
+     "3": {
+      "summary": "Official or done: the promotion or he himself states it, or it has happened.",
+      "signals": [
+       "the promotion announces the bout",
+       "he posts that he signed",
+       "a fight result"
+      ]
+     }
+    },
+    "probabilities": {
+     "0": 0.0,
+     "1": 0.0,
+     "2": 0.39,
+     "3": 0.61
+    }
+   }
+  },
+  "510": {
+   "fact__v5": {
+    "type": "choice",
+    "choice": "next_fight",
+    "confidence": 0.86,
+    "probabilities": {
+     "next_fight": 0.88,
+     "personal_life": 0.0,
+     "career_move": 0.0,
+     "no_fact": 0.01,
+     "health": 0.0,
+     "result": 0.0,
+     "fight_week_event": 0.11,
+     "none_of_these": 0.0
+    }
+   },
+   "act__v5": {
+    "type": "choice",
+    "choice": "reports_an_event",
+    "confidence": 0.97,
+    "probabilities": {
+     "speaks_of_himself": 0.0,
+     "predicts_his_fight": 0.0,
+     "answers_for_him": 0.0,
+     "calls_him_out": 0.0,
+     "assesses_him": 0.0,
+     "reports_an_event": 0.98,
+     "steers_him": 0.0,
+     "none_of_these": 0.02,
+     "gives_news_of_him": 0.0
+    }
+   },
+   "firmness__v5": {
+    "type": "score",
+    "score": 3.73,
+    "confidence": 0.77,
+    "legend": {
+     "0": {
+      "summary": "No fact about him is asserted: only opinion, analysis or talk."
+     },
+     "1": {
+      "summary": "A wish or a demand: someone wants it or says it should happen.",
+      "signals": [
+       "a fighter asking for the fight",
+       "his camp demanding a rematch"
+      ]
+     },
+     "2": {
+      "summary": "A rumour: unnamed sources, a leak, 'talks', 'discussions', 'plans'.",
+      "signals": [
+       "a podcaster says the promotion is discussing it",
+       "'sources say'"
+      ]
+     },
+     "3": {
+      "summary": "Reported: a named outlet or journalist states it, citing sources.",
+      "signals": [
+       "'ESPN reports that...'"
+      ]
+     },
+     "4": {
+      "summary": "Official or done: the promotion or he himself states it, or it has happened.",
+      "signals": [
+       "the promotion announces the bout",
+       "he posts that he signed",
+       "a fight result"
+      ]
+     }
+    },
+    "probabilities": {
+     "0": 0.06,
+     "1": 0.0,
+     "2": 0.0,
+     "3": 0.05,
+     "4": 0.89
+    }
+   },
+   "fact__f1": {
+    "type": "choice",
+    "choice": "fight_week_event",
+    "confidence": 0.57,
+    "probabilities": {
+     "next_fight": 0.34,
+     "personal_life": 0.0,
+     "career_move": 0.0,
+     "no_fact": 0.02,
+     "health": 0.0,
+     "result": 0.0,
+     "fight_week_event": 0.63,
+     "none_of_these": 0.01
+    }
+   },
+   "fact__f2": {
+    "type": "choice",
+    "choice": "next_fight",
+    "confidence": 0.9,
+    "probabilities": {
+     "next_fight": 0.92,
+     "personal_life": 0.0,
+     "career_move": 0.0,
+     "no_fact": 0.01,
+     "health": 0.0,
+     "result": 0.0,
+     "fight_week_event": 0.07,
+     "none_of_these": 0.0
+    }
+   },
+   "fact__f3": {
+    "type": "choice",
+    "choice": "fight_week_event",
+    "confidence": 0.46,
+    "probabilities": {
+     "next_fight": 0.43,
+     "personal_life": 0.0,
+     "career_move": 0.0,
+     "no_fact": 0.03,
+     "health": 0.0,
+     "result": 0.0,
+     "fight_week_event": 0.53,
+     "none_of_these": 0.01
+    }
+   },
+   "act__a1": {
+    "type": "choice",
+    "choice": "only_mentions_him",
+    "confidence": 0.8,
+    "probabilities": {
+     "speaks_of_himself": 0.0,
+     "predicts_his_fight": 0.0,
+     "answers_for_him": 0.0,
+     "calls_him_out": 0.0,
+     "assesses_him": 0.0,
+     "reports_an_event": 0.18,
+     "only_mentions_him": 0.82,
+     "steers_him": 0.0,
+     "none_of_these": 0.0,
+     "gives_news_of_him": 0.0
+    }
+   },
+   "act__a2": {
+    "type": "choice",
+    "choice": "only_mentions_him",
+    "confidence": 0.8,
+    "probabilities": {
+     "calls_him_out": 0.0,
+     "predicts_his_fight": 0.0,
+     "answers_for_him": 0.0,
+     "steers_him": 0.0,
+     "assesses_him": 0.0,
+     "reports_an_event": 0.18,
+     "only_mentions_him": 0.82,
+     "speaks_of_himself": 0.0,
+     "none_of_these": 0.0,
+     "gives_news_of_him": 0.0
+    }
+   },
+   "firmness__four": {
+    "type": "score",
+    "score": 2.97,
+    "confidence": 0.97,
+    "legend": {
+     "0": {
+      "summary": "A wish or a demand: someone wants it or says it should happen.",
+      "signals": [
+       "a fighter asking for the fight",
+       "his camp demanding a rematch"
+      ]
+     },
+     "1": {
+      "summary": "A rumour: unnamed sources, a leak, 'talks', 'discussions', 'plans'.",
+      "signals": [
+       "a podcaster says the promotion is discussing it",
+       "'sources say'"
+      ]
+     },
+     "2": {
+      "summary": "Reported: a named outlet or journalist states it, citing sources.",
+      "signals": [
+       "'ESPN reports that...'"
+      ]
+     },
+     "3": {
+      "summary": "Official or done: the promotion or he himself states it, or it has happened.",
+      "signals": [
+       "the promotion announces the bout",
+       "he posts that he signed",
+       "a fight result"
+      ]
+     }
+    },
+    "probabilities": {
+     "0": 0.0,
+     "1": 0.0,
+     "2": 0.02,
+     "3": 0.98
+    }
+   }
+  },
+  "115": {
+   "fact__v5": {
+    "type": "choice",
+    "choice": "none_of_these",
+    "confidence": 0.48,
+    "probabilities": {
+     "none_of_these": 0.55,
+     "no_fact": 0.43,
+     "health": 0.0,
+     "result": 0.0,
+     "next_fight": 0.0,
+     "fight_week_event": 0.0,
+     "career_move": 0.01,
+     "personal_life": 0.01
+    }
+   },
+   "act__v5": {
+    "type": "choice",
+    "choice": "none_of_these",
+    "confidence": 0.37,
+    "probabilities": {
+     "reports_an_event": 0.25,
+     "steers_him": 0.0,
+     "gives_news_of_him": 0.31,
+     "speaks_of_himself": 0.0,
+     "assesses_him": 0.0,
+     "predicts_his_fight": 0.0,
+     "calls_him_out": 0.0,
+     "none_of_these": 0.44,
+     "answers_for_him": 0.0
+    }
+   },
+   "firmness__v5": {
+    "type": "score",
+    "score": 2.58,
+    "confidence": 0.05,
+    "legend": {
+     "0": {
+      "summary": "No fact about him is asserted: only opinion, analysis or talk."
+     },
+     "1": {
+      "summary": "A wish or a demand: someone wants it or says it should happen.",
+      "signals": [
+       "a fighter asking for the fight",
+       "his camp demanding a rematch"
+      ]
+     },
+     "2": {
+      "summary": "A rumour: unnamed sources, a leak, 'talks', 'discussions', 'plans'.",
+      "signals": [
+       "a podcaster says the promotion is discussing it",
+       "'sources say'"
+      ]
+     },
+     "3": {
+      "summary": "Reported: a named outlet or journalist states it, citing sources.",
+      "signals": [
+       "'ESPN reports that...'"
+      ]
+     },
+     "4": {
+      "summary": "Official or done: the promotion or he himself states it, or it has happened.",
+      "signals": [
+       "the promotion announces the bout",
+       "he posts that he signed",
+       "a fight result"
+      ]
+     }
+    },
+    "probabilities": {
+     "0": 0.26,
+     "1": 0.0,
+     "2": 0.0,
+     "3": 0.38,
+     "4": 0.36
+    }
+   },
+   "fact__f1": {
+    "type": "choice",
+    "choice": "none_of_these",
+    "confidence": 0.51,
+    "probabilities": {
+     "none_of_these": 0.57,
+     "no_fact": 0.4,
+     "health": 0.0,
+     "result": 0.0,
+     "next_fight": 0.0,
+     "fight_week_event": 0.0,
+     "career_move": 0.01,
+     "personal_life": 0.02
+    }
+   },
+   "fact__f2": {
+    "type": "choice",
+    "choice": "none_of_these",
+    "confidence": 0.44,
+    "probabilities": {
+     "none_of_these": 0.52,
+     "no_fact": 0.46,
+     "health": 0.0,
+     "result": 0.0,
+     "next_fight": 0.0,
+     "fight_week_event": 0.0,
+     "career_move": 0.01,
+     "personal_life": 0.01
+    }
+   },
+   "fact__f3": {
+    "type": "choice",
+    "choice": "none_of_these",
+    "confidence": 0.47,
+    "probabilities": {
+     "no_fact": 0.42,
+     "career_move": 0.01,
+     "health": 0.0,
+     "result": 0.0,
+     "next_fight": 0.0,
+     "fight_week_event": 0.0,
+     "none_of_these": 0.55,
+     "personal_life": 0.02
+    }
+   },
+   "act__a1": {
+    "type": "choice",
+    "choice": "only_mentions_him",
+    "confidence": 0.91,
+    "probabilities": {
+     "reports_an_event": 0.05,
+     "only_mentions_him": 0.92,
+     "steers_him": 0.0,
+     "gives_news_of_him": 0.03,
+     "answers_for_him": 0.0,
+     "assesses_him": 0.0,
+     "predicts_his_fight": 0.0,
+     "speaks_of_himself": 0.0,
+     "none_of_these": 0.0,
+     "calls_him_out": 0.0
+    }
+   },
+   "act__a2": {
+    "type": "choice",
+    "choice": "only_mentions_him",
+    "confidence": 0.93,
+    "probabilities": {
+     "reports_an_event": 0.02,
+     "only_mentions_him": 0.94,
+     "steers_him": 0.0,
+     "gives_news_of_him": 0.04,
+     "answers_for_him": 0.0,
+     "assesses_him": 0.0,
+     "calls_him_out": 0.0,
+     "predicts_his_fight": 0.0,
+     "none_of_these": 0.0,
+     "speaks_of_himself": 0.0
+    }
+   },
+   "firmness__four": {
+    "type": "score",
+    "score": 2.36,
+    "confidence": 0.36,
+    "legend": {
+     "0": {
+      "summary": "A wish or a demand: someone wants it or says it should happen.",
+      "signals": [
+       "a fighter asking for the fight",
+       "his camp demanding a rematch"
+      ]
+     },
+     "1": {
+      "summary": "A rumour: unnamed sources, a leak, 'talks', 'discussions', 'plans'.",
+      "signals": [
+       "a podcaster says the promotion is discussing it",
+       "'sources say'"
+      ]
+     },
+     "2": {
+      "summary": "Reported: a named outlet or journalist states it, citing sources.",
+      "signals": [
+       "'ESPN reports that...'"
+      ]
+     },
+     "3": {
+      "summary": "Official or done: the promotion or he himself states it, or it has happened.",
+      "signals": [
+       "the promotion announces the bout",
+       "he posts that he signed",
+       "a fight result"
+      ]
+     }
+    },
+    "probabilities": {
+     "0": 0.08,
+     "1": 0.02,
+     "2": 0.36,
+     "3": 0.54
+    }
+   }
+  },
+  "207": {
+   "fact__v5": {
+    "type": "choice",
+    "choice": "no_fact",
+    "confidence": 0.43,
+    "probabilities": {
+     "personal_life": 0.0,
+     "next_fight": 0.03,
+     "no_fact": 0.51,
+     "fight_week_event": 0.0,
+     "none_of_these": 0.02,
+     "career_move": 0.0,
+     "result": 0.44,
+     "health": 0.0
+    }
+   },
+   "act__v5": {
+    "type": "choice",
+    "choice": "predicts_his_fight",
+    "confidence": 0.35,
+    "probabilities": {
+     "predicts_his_fight": 0.42,
+     "speaks_of_himself": 0.0,
+     "steers_him": 0.0,
+     "calls_him_out": 0.0,
+     "reports_an_event": 0.04,
+     "none_of_these": 0.36,
+     "answers_for_him": 0.0,
+     "gives_news_of_him": 0.01,
+     "assesses_him": 0.17
+    }
+   },
+   "firmness__v5": {
+    "type": "score",
+    "score": 1.68,
+    "confidence": 0.0,
+    "legend": {
+     "0": {
+      "summary": "No fact about him is asserted: only opinion, analysis or talk."
+     },
+     "1": {
+      "summary": "A wish or a demand: someone wants it or says it should happen.",
+      "signals": [
+       "a fighter asking for the fight",
+       "his camp demanding a rematch"
+      ]
+     },
+     "2": {
+      "summary": "A rumour: unnamed sources, a leak, 'talks', 'discussions', 'plans'.",
+      "signals": [
+       "a podcaster says the promotion is discussing it",
+       "'sources say'"
+      ]
+     },
+     "3": {
+      "summary": "Reported: a named outlet or journalist states it, citing sources.",
+      "signals": [
+       "'ESPN reports that...'"
+      ]
+     },
+     "4": {
+      "summary": "Official or done: the promotion or he himself states it, or it has happened.",
+      "signals": [
+       "the promotion announces the bout",
+       "he posts that he signed",
+       "a fight result"
+      ]
+     }
+    },
+    "probabilities": {
+     "0": 0.54,
+     "1": 0.01,
+     "2": 0.0,
+     "3": 0.15,
+     "4": 0.3
+    }
+   },
+   "fact__f1": {
+    "type": "choice",
+    "choice": "no_fact",
+    "confidence": 0.73,
+    "probabilities": {
+     "personal_life": 0.0,
+     "next_fight": 0.01,
+     "no_fact": 0.77,
+     "fight_week_event": 0.01,
+     "none_of_these": 0.03,
+     "career_move": 0.0,
+     "result": 0.18,
+     "health": 0.0
+    }
+   },
+   "fact__f2": {
+    "type": "choice",
+    "choice": "no_fact",
+    "confidence": 0.44,
+    "probabilities": {
+     "personal_life": 0.0,
+     "next_fight": 0.01,
+     "no_fact": 0.52,
+     "fight_week_event": 0.0,
+     "none_of_these": 0.03,
+     "career_move": 0.0,
+     "result": 0.44,
+     "health": 0.0
+    }
+   },
+   "fact__f3": {
+    "type": "choice",
+    "choice": "no_fact",
+    "confidence": 0.55,
+    "probabilities": {
+     "personal_life": 0.0,
+     "next_fight": 0.01,
+     "no_fact": 0.6,
+     "fight_week_event": 0.01,
+     "none_of_these": 0.03,
+     "career_move": 0.0,
+     "result": 0.35,
+     "health": 0.0
+    }
+   },
+   "act__a1": {
+    "type": "choice",
+    "choice": "only_mentions_him",
+    "confidence": 0.78,
+    "probabilities": {
+     "only_mentions_him": 0.81,
+     "speaks_of_himself": 0.0,
+     "predicts_his_fight": 0.16,
+     "calls_him_out": 0.0,
+     "steers_him": 0.0,
+     "reports_an_event": 0.0,
+     "none_of_these": 0.0,
+     "answers_for_him": 0.0,
+     "gives_news_of_him": 0.0,
+     "assesses_him": 0.03
+    }
+   },
+   "act__a2": {
+    "type": "choice",
+    "choice": "only_mentions_him",
+    "confidence": 0.92,
+    "probabilities": {
+     "predicts_his_fight": 0.03,
+     "speaks_of_himself": 0.0,
+     "calls_him_out": 0.0,
+     "steers_him": 0.0,
+     "only_mentions_him": 0.93,
+     "reports_an_event": 0.02,
+     "none_of_these": 0.0,
+     "answers_for_him": 0.0,
+     "gives_news_of_him": 0.0,
+     "assesses_him": 0.01
+    }
+   },
+   "firmness__four": {
+    "type": "score",
+    "score": 1.85,
+    "confidence": 0.0,
+    "legend": {
+     "0": {
+      "summary": "A wish or a demand: someone wants it or says it should happen.",
+      "signals": [
+       "a fighter asking for the fight",
+       "his camp demanding a rematch"
+      ]
+     },
+     "1": {
+      "summary": "A rumour: unnamed sources, a leak, 'talks', 'discussions', 'plans'.",
+      "signals": [
+       "a podcaster says the promotion is discussing it",
+       "'sources say'"
+      ]
+     },
+     "2": {
+      "summary": "Reported: a named outlet or journalist states it, citing sources.",
+      "signals": [
+       "'ESPN reports that...'"
+      ]
+     },
+     "3": {
+      "summary": "Official or done: the promotion or he himself states it, or it has happened.",
+      "signals": [
+       "the promotion announces the bout",
+       "he posts that he signed",
+       "a fight result"
+      ]
+     }
+    },
+    "probabilities": {
+     "0": 0.26,
+     "1": 0.05,
+     "2": 0.25,
+     "3": 0.44
+    }
+   }
+  },
+  "224": {
+   "fact__v5": {
+    "type": "choice",
+    "choice": "no_fact",
+    "confidence": 0.93,
+    "probabilities": {
+     "fight_week_event": 0.0,
+     "career_move": 0.0,
+     "none_of_these": 0.02,
+     "no_fact": 0.94,
+     "health": 0.0,
+     "result": 0.04,
+     "next_fight": 0.0,
+     "personal_life": 0.0
+    }
+   },
+   "act__v5": {
+    "type": "choice",
+    "choice": "none_of_these",
+    "confidence": 0.33,
+    "probabilities": {
+     "reports_an_event": 0.17,
+     "none_of_these": 0.41000000000000003,
+     "assesses_him": 0.38,
+     "gives_news_of_him": 0.0,
+     "predicts_his_fight": 0.01,
+     "answers_for_him": 0.0,
+     "calls_him_out": 0.02,
+     "speaks_of_himself": 0.0,
+     "steers_him": 0.01
+    }
+   },
+   "firmness__v5": {
+    "type": "score",
+    "score": 1.09,
+    "confidence": 0.09,
+    "legend": {
+     "0": {
+      "summary": "No fact about him is asserted: only opinion, analysis or talk."
+     },
+     "1": {
+      "summary": "A wish or a demand: someone wants it or says it should happen.",
+      "signals": [
+       "a fighter asking for the fight",
+       "his camp demanding a rematch"
+      ]
+     },
+     "2": {
+      "summary": "A rumour: unnamed sources, a leak, 'talks', 'discussions', 'plans'.",
+      "signals": [
+       "a podcaster says the promotion is discussing it",
+       "'sources say'"
+      ]
+     },
+     "3": {
+      "summary": "Reported: a named outlet or journalist states it, citing sources.",
+      "signals": [
+       "'ESPN reports that...'"
+      ]
+     },
+     "4": {
+      "summary": "Official or done: the promotion or he himself states it, or it has happened.",
+      "signals": [
+       "the promotion announces the bout",
+       "he posts that he signed",
+       "a fight result"
+      ]
+     }
+    },
+    "probabilities": {
+     "0": 0.45,
+     "1": 0.33,
+     "2": 0.01,
+     "3": 0.07,
+     "4": 0.14
+    }
+   },
+   "fact__f1": {
+    "type": "choice",
+    "choice": "no_fact",
+    "confidence": 0.94,
+    "probabilities": {
+     "fight_week_event": 0.0,
+     "career_move": 0.0,
+     "none_of_these": 0.01,
+     "no_fact": 0.96,
+     "health": 0.0,
+     "result": 0.03,
+     "next_fight": 0.0,
+     "personal_life": 0.0
+    }
+   },
+   "fact__f2": {
+    "type": "choice",
+    "choice": "no_fact",
+    "confidence": 0.98,
+    "probabilities": {
+     "fight_week_event": 0.0,
+     "career_move": 0.0,
+     "none_of_these": 0.01,
+     "no_fact": 0.99,
+     "health": 0.0,
+     "result": 0.0,
+     "next_fight": 0.0,
+     "personal_life": 0.0
+    }
+   },
+   "fact__f3": {
+    "type": "choice",
+    "choice": "no_fact",
+    "confidence": 0.98,
+    "probabilities": {
+     "fight_week_event": 0.0,
+     "career_move": 0.0,
+     "none_of_these": 0.01,
+     "no_fact": 0.98,
+     "health": 0.0,
+     "result": 0.01,
+     "next_fight": 0.0,
+     "personal_life": 0.0
+    }
+   },
+   "act__a1": {
+    "type": "choice",
+    "choice": "only_mentions_him",
+    "confidence": 0.82,
+    "probabilities": {
+     "predicts_his_fight": 0.01,
+     "reports_an_event": 0.02,
+     "none_of_these": 0.0,
+     "assesses_him": 0.12,
+     "gives_news_of_him": 0.0,
+     "steers_him": 0.0,
+     "answers_for_him": 0.0,
+     "calls_him_out": 0.01,
+     "speaks_of_himself": 0.0,
+     "only_mentions_him": 0.84
+    }
+   },
+   "act__a2": {
+    "type": "choice",
+    "choice": "only_mentions_him",
+    "confidence": 0.89,
+    "probabilities": {
+     "predicts_his_fight": 0.01,
+     "reports_an_event": 0.0,
+     "none_of_these": 0.0,
+     "assesses_him": 0.08,
+     "gives_news_of_him": 0.0,
+     "steers_him": 0.0,
+     "answers_for_him": 0.0,
+     "calls_him_out": 0.01,
+     "speaks_of_himself": 0.0,
+     "only_mentions_him": 0.9
+    }
+   },
+   "firmness__four": {
+    "type": "score",
+    "score": 0.78,
+    "confidence": 0.22,
+    "legend": {
+     "0": {
+      "summary": "A wish or a demand: someone wants it or says it should happen.",
+      "signals": [
+       "a fighter asking for the fight",
+       "his camp demanding a rematch"
+      ]
+     },
+     "1": {
+      "summary": "A rumour: unnamed sources, a leak, 'talks', 'discussions', 'plans'.",
+      "signals": [
+       "a podcaster says the promotion is discussing it",
+       "'sources say'"
+      ]
+     },
+     "2": {
+      "summary": "Reported: a named outlet or journalist states it, citing sources.",
+      "signals": [
+       "'ESPN reports that...'"
+      ]
+     },
+     "3": {
+      "summary": "Official or done: the promotion or he himself states it, or it has happened.",
+      "signals": [
+       "the promotion announces the bout",
+       "he posts that he signed",
+       "a fight result"
+      ]
+     }
+    },
+    "probabilities": {
+     "0": 0.67,
+     "1": 0.06,
+     "2": 0.1,
+     "3": 0.17
+    }
+   }
+  },
+  "1200": {
+   "fact__v5": {
+    "type": "choice",
+    "choice": "no_fact",
+    "confidence": 0.87,
+    "probabilities": {
+     "career_move": 0.01,
+     "personal_life": 0.0,
+     "health": 0.0,
+     "fight_week_event": 0.0,
+     "result": 0.0,
+     "next_fight": 0.08,
+     "none_of_these": 0.03,
+     "no_fact": 0.88
+    }
+   },
+   "act__v5": {
+    "type": "choice",
+    "choice": "assesses_him",
+    "confidence": 0.47,
+    "probabilities": {
+     "predicts_his_fight": 0.01,
+     "assesses_him": 0.54,
+     "calls_him_out": 0.0,
+     "steers_him": 0.03,
+     "none_of_these": 0.18,
+     "reports_an_event": 0.02,
+     "answers_for_him": 0.0,
+     "speaks_of_himself": 0.0,
+     "gives_news_of_him": 0.22
+    }
+   },
+   "firmness__v5": {
+    "type": "score",
+    "score": 3.09,
+    "confidence": 0.24,
+    "legend": {
+     "0": {
+      "summary": "No fact about him is asserted: only opinion, analysis or talk."
+     },
+     "1": {
+      "summary": "A wish or a demand: someone wants it or says it should happen.",
+      "signals": [
+       "a fighter asking for the fight",
+       "his camp demanding a rematch"
+      ]
+     },
+     "2": {
+      "summary": "A rumour: unnamed sources, a leak, 'talks', 'discussions', 'plans'.",
+      "signals": [
+       "a podcaster says the promotion is discussing it",
+       "'sources say'"
+      ]
+     },
+     "3": {
+      "summary": "Reported: a named outlet or journalist states it, citing sources.",
+      "signals": [
+       "'ESPN reports that...'"
+      ]
+     },
+     "4": {
+      "summary": "Official or done: the promotion or he himself states it, or it has happened.",
+      "signals": [
+       "the promotion announces the bout",
+       "he posts that he signed",
+       "a fight result"
+      ]
+     }
+    },
+    "probabilities": {
+     "0": 0.05,
+     "1": 0.08,
+     "2": 0.15,
+     "3": 0.17,
+     "4": 0.55
+    }
+   },
+   "fact__f1": {
+    "type": "choice",
+    "choice": "no_fact",
+    "confidence": 0.8,
+    "probabilities": {
+     "career_move": 0.02,
+     "personal_life": 0.0,
+     "health": 0.0,
+     "fight_week_event": 0.0,
+     "result": 0.0,
+     "next_fight": 0.12,
+     "none_of_these": 0.03,
+     "no_fact": 0.83
+    }
+   },
+   "fact__f2": {
+    "type": "choice",
+    "choice": "no_fact",
+    "confidence": 0.97,
+    "probabilities": {
+     "career_move": 0.0,
+     "personal_life": 0.0,
+     "health": 0.0,
+     "fight_week_event": 0.0,
+     "result": 0.0,
+     "next_fight": 0.01,
+     "none_of_these": 0.01,
+     "no_fact": 0.98
+    }
+   },
+   "fact__f3": {
+    "type": "choice",
+    "choice": "no_fact",
+    "confidence": 0.96,
+    "probabilities": {
+     "career_move": 0.01,
+     "personal_life": 0.0,
+     "health": 0.0,
+     "fight_week_event": 0.0,
+     "result": 0.0,
+     "next_fight": 0.01,
+     "none_of_these": 0.02,
+     "no_fact": 0.96
+    }
+   },
+   "act__a1": {
+    "type": "choice",
+    "choice": "only_mentions_him",
+    "confidence": 0.83,
+    "probabilities": {
+     "predicts_his_fight": 0.0,
+     "assesses_him": 0.11,
+     "calls_him_out": 0.0,
+     "steers_him": 0.01,
+     "none_of_these": 0.0,
+     "reports_an_event": 0.0,
+     "answers_for_him": 0.0,
+     "only_mentions_him": 0.85,
+     "speaks_of_himself": 0.0,
+     "gives_news_of_him": 0.03
+    }
+   },
+   "act__a2": {
+    "type": "choice",
+    "choice": "only_mentions_him",
+    "confidence": 0.9,
+    "probabilities": {
+     "predicts_his_fight": 0.0,
+     "assesses_him": 0.04,
+     "calls_him_out": 0.0,
+     "steers_him": 0.01,
+     "none_of_these": 0.0,
+     "reports_an_event": 0.0,
+     "answers_for_him": 0.0,
+     "speaks_of_himself": 0.0,
+     "only_mentions_him": 0.92,
+     "gives_news_of_him": 0.03
+    }
+   },
+   "firmness__four": {
+    "type": "score",
+    "score": 2.16,
+    "confidence": 0.16,
+    "legend": {
+     "0": {
+      "summary": "A wish or a demand: someone wants it or says it should happen.",
+      "signals": [
+       "a fighter asking for the fight",
+       "his camp demanding a rematch"
+      ]
+     },
+     "1": {
+      "summary": "A rumour: unnamed sources, a leak, 'talks', 'discussions', 'plans'.",
+      "signals": [
+       "a podcaster says the promotion is discussing it",
+       "'sources say'"
+      ]
+     },
+     "2": {
+      "summary": "Reported: a named outlet or journalist states it, citing sources.",
+      "signals": [
+       "'ESPN reports that...'"
+      ]
+     },
+     "3": {
+      "summary": "Official or done: the promotion or he himself states it, or it has happened.",
+      "signals": [
+       "the promotion announces the bout",
+       "he posts that he signed",
+       "a fight result"
+      ]
+     }
+    },
+    "probabilities": {
+     "0": 0.09,
+     "1": 0.16,
+     "2": 0.26,
+     "3": 0.49
+    }
+   }
+  },
+  "323": {
+   "fact__v5": {
+    "type": "choice",
+    "choice": "no_fact",
+    "confidence": 0.91,
+    "probabilities": {
+     "no_fact": 0.92,
+     "personal_life": 0.01,
+     "none_of_these": 0.07,
+     "health": 0.0,
+     "result": 0.0,
+     "next_fight": 0.0,
+     "career_move": 0.0,
+     "fight_week_event": 0.0
+    }
+   },
+   "act__v5": {
+    "type": "choice",
+    "choice": "gives_news_of_him",
+    "confidence": 0.55,
+    "probabilities": {
+     "answers_for_him": 0.0,
+     "assesses_him": 0.01,
+     "speaks_of_himself": 0.0,
+     "calls_him_out": 0.0,
+     "reports_an_event": 0.01,
+     "gives_news_of_him": 0.61,
+     "predicts_his_fight": 0.0,
+     "steers_him": 0.0,
+     "none_of_these": 0.37
+    }
+   },
+   "firmness__v5": {
+    "type": "score",
+    "score": 1.61,
+    "confidence": 0.0,
+    "legend": {
+     "0": {
+      "summary": "No fact about him is asserted: only opinion, analysis or talk."
+     },
+     "1": {
+      "summary": "A wish or a demand: someone wants it or says it should happen.",
+      "signals": [
+       "a fighter asking for the fight",
+       "his camp demanding a rematch"
+      ]
+     },
+     "2": {
+      "summary": "A rumour: unnamed sources, a leak, 'talks', 'discussions', 'plans'.",
+      "signals": [
+       "a podcaster says the promotion is discussing it",
+       "'sources say'"
+      ]
+     },
+     "3": {
+      "summary": "Reported: a named outlet or journalist states it, citing sources.",
+      "signals": [
+       "'ESPN reports that...'"
+      ]
+     },
+     "4": {
+      "summary": "Official or done: the promotion or he himself states it, or it has happened.",
+      "signals": [
+       "the promotion announces the bout",
+       "he posts that he signed",
+       "a fight result"
+      ]
+     }
+    },
+    "probabilities": {
+     "0": 0.52,
+     "1": 0.0,
+     "2": 0.0,
+     "3": 0.32,
+     "4": 0.16
+    }
+   },
+   "fact__f1": {
+    "type": "choice",
+    "choice": "no_fact",
+    "confidence": 0.93,
+    "probabilities": {
+     "career_move": 0.0,
+     "health": 0.0,
+     "none_of_these": 0.05,
+     "personal_life": 0.01,
+     "result": 0.0,
+     "next_fight": 0.0,
+     "no_fact": 0.94,
+     "fight_week_event": 0.0
+    }
+   },
+   "fact__f2": {
+    "type": "choice",
+    "choice": "no_fact",
+    "confidence": 0.9,
+    "probabilities": {
+     "career_move": 0.0,
+     "personal_life": 0.0,
+     "health": 0.0,
+     "none_of_these": 0.07,
+     "result": 0.0,
+     "next_fight": 0.0,
+     "no_fact": 0.93,
+     "fight_week_event": 0.0
+    }
+   },
+   "fact__f3": {
+    "type": "choice",
+    "choice": "no_fact",
+    "confidence": 0.93,
+    "probabilities": {
+     "career_move": 0.0,
+     "personal_life": 0.0,
+     "health": 0.0,
+     "none_of_these": 0.06,
+     "result": 0.0,
+     "next_fight": 0.0,
+     "no_fact": 0.94,
+     "fight_week_event": 0.0
+    }
+   },
+   "act__a1": {
+    "type": "choice",
+    "choice": "only_mentions_him",
+    "confidence": 0.43,
+    "probabilities": {
+     "answers_for_him": 0.0,
+     "assesses_him": 0.01,
+     "speaks_of_himself": 0.0,
+     "calls_him_out": 0.0,
+     "gives_news_of_him": 0.43,
+     "only_mentions_him": 0.49,
+     "reports_an_event": 0.01,
+     "predicts_his_fight": 0.0,
+     "steers_him": 0.0,
+     "none_of_these": 0.06
+    }
+   },
+   "act__a2": {
+    "type": "choice",
+    "choice": "gives_news_of_him",
+    "confidence": 0.39,
+    "probabilities": {
+     "answers_for_him": 0.0,
+     "assesses_him": 0.01,
+     "speaks_of_himself": 0.01,
+     "calls_him_out": 0.0,
+     "gives_news_of_him": 0.45,
+     "only_mentions_him": 0.42,
+     "reports_an_event": 0.01,
+     "predicts_his_fight": 0.0,
+     "steers_him": 0.0,
+     "none_of_these": 0.1
+    }
+   },
+   "firmness__four": {
+    "type": "score",
+    "score": 2.16,
+    "confidence": 0.55,
+    "legend": {
+     "0": {
+      "summary": "A wish or a demand: someone wants it or says it should happen.",
+      "signals": [
+       "a fighter asking for the fight",
+       "his camp demanding a rematch"
+      ]
+     },
+     "1": {
+      "summary": "A rumour: unnamed sources, a leak, 'talks', 'discussions', 'plans'.",
+      "signals": [
+       "a podcaster says the promotion is discussing it",
+       "'sources say'"
+      ]
+     },
+     "2": {
+      "summary": "Reported: a named outlet or journalist states it, citing sources.",
+      "signals": [
+       "'ESPN reports that...'"
+      ]
+     },
+     "3": {
+      "summary": "Official or done: the promotion or he himself states it, or it has happened.",
+      "signals": [
+       "the promotion announces the bout",
+       "he posts that he signed",
+       "a fight result"
+      ]
+     }
+    },
+    "probabilities": {
+     "0": 0.07,
+     "1": 0.01,
+     "2": 0.62,
+     "3": 0.3
+    }
+   }
+  },
+  "1050": {
+   "fact__v5": {
+    "type": "choice",
+    "choice": "result",
+    "confidence": 0.47,
+    "probabilities": {
+     "result": 0.55,
+     "next_fight": 0.14,
+     "career_move": 0.0,
+     "no_fact": 0.3,
+     "personal_life": 0.0,
+     "fight_week_event": 0.0,
+     "none_of_these": 0.01,
+     "health": 0.0
+    }
+   },
+   "act__v5": {
+    "type": "choice",
+    "choice": "reports_an_event",
+    "confidence": 0.29,
+    "probabilities": {
+     "answers_for_him": 0.0,
+     "gives_news_of_him": 0.09,
+     "calls_him_out": 0.01,
+     "speaks_of_himself": 0.0,
+     "assesses_him": 0.31,
+     "none_of_these": 0.13,
+     "predicts_his_fight": 0.01,
+     "reports_an_event": 0.37,
+     "steers_him": 0.08
+    }
+   },
+   "firmness__v5": {
+    "type": "score",
+    "score": 3.35,
+    "confidence": 0.46,
+    "legend": {
+     "0": {
+      "summary": "No fact about him is asserted: only opinion, analysis or talk."
+     },
+     "1": {
+      "summary": "A wish or a demand: someone wants it or says it should happen.",
+      "signals": [
+       "a fighter asking for the fight",
+       "his camp demanding a rematch"
+      ]
+     },
+     "2": {
+      "summary": "A rumour: unnamed sources, a leak, 'talks', 'discussions', 'plans'.",
+      "signals": [
+       "a podcaster says the promotion is discussing it",
+       "'sources say'"
+      ]
+     },
+     "3": {
+      "summary": "Reported: a named outlet or journalist states it, citing sources.",
+      "signals": [
+       "'ESPN reports that...'"
+      ]
+     },
+     "4": {
+      "summary": "Official or done: the promotion or he himself states it, or it has happened.",
+      "signals": [
+       "the promotion announces the bout",
+       "he posts that he signed",
+       "a fight result"
+      ]
+     }
+    },
+    "probabilities": {
+     "0": 0.11,
+     "1": 0.02,
+     "2": 0.01,
+     "3": 0.12,
+     "4": 0.74
+    }
+   },
+   "fact__f1": {
+    "type": "choice",
+    "choice": "no_fact",
+    "confidence": 0.49,
+    "probabilities": {
+     "result": 0.3,
+     "next_fight": 0.12,
+     "career_move": 0.01,
+     "no_fact": 0.55,
+     "personal_life": 0.0,
+     "fight_week_event": 0.0,
+     "none_of_these": 0.02,
+     "health": 0.0
+    }
+   },
+   "fact__f2": {
+    "type": "choice",
+    "choice": "result",
+    "confidence": 0.51,
+    "probabilities": {
+     "result": 0.58,
+     "next_fight": 0.14,
+     "career_move": 0.0,
+     "no_fact": 0.26,
+     "personal_life": 0.0,
+     "fight_week_event": 0.0,
+     "none_of_these": 0.01,
+     "health": 0.01
+    }
+   },
+   "fact__f3": {
+    "type": "choice",
+    "choice": "no_fact",
+    "confidence": 0.4,
+    "probabilities": {
+     "next_fight": 0.13,
+     "result": 0.35,
+     "career_move": 0.0,
+     "no_fact": 0.49,
+     "personal_life": 0.0,
+     "fight_week_event": 0.0,
+     "none_of_these": 0.02,
+     "health": 0.01
+    }
+   },
+   "act__a1": {
+    "type": "choice",
+    "choice": "only_mentions_him",
+    "confidence": 0.46,
+    "probabilities": {
+     "reports_an_event": 0.16,
+     "answers_for_him": 0.0,
+     "gives_news_of_him": 0.04,
+     "none_of_these": 0.01,
+     "speaks_of_himself": 0.0,
+     "assesses_him": 0.2,
+     "only_mentions_him": 0.52,
+     "predicts_his_fight": 0.01,
+     "calls_him_out": 0.0,
+     "steers_him": 0.06
+    }
+   },
+   "act__a2": {
+    "type": "choice",
+    "choice": "only_mentions_him",
+    "confidence": 0.43,
+    "probabilities": {
+     "reports_an_event": 0.26,
+     "answers_for_him": 0.0,
+     "gives_news_of_him": 0.05,
+     "calls_him_out": 0.0,
+     "speaks_of_himself": 0.0,
+     "assesses_him": 0.14,
+     "only_mentions_him": 0.49,
+     "predicts_his_fight": 0.01,
+     "none_of_these": 0.01,
+     "steers_him": 0.04
+    }
+   },
+   "firmness__four": {
+    "type": "score",
+    "score": 2.61,
+    "confidence": 0.61,
+    "legend": {
+     "0": {
+      "summary": "A wish or a demand: someone wants it or says it should happen.",
+      "signals": [
+       "a fighter asking for the fight",
+       "his camp demanding a rematch"
+      ]
+     },
+     "1": {
+      "summary": "A rumour: unnamed sources, a leak, 'talks', 'discussions', 'plans'.",
+      "signals": [
+       "a podcaster says the promotion is discussing it",
+       "'sources say'"
+      ]
+     },
+     "2": {
+      "summary": "Reported: a named outlet or journalist states it, citing sources.",
+      "signals": [
+       "'ESPN reports that...'"
+      ]
+     },
+     "3": {
+      "summary": "Official or done: the promotion or he himself states it, or it has happened.",
+      "signals": [
+       "the promotion announces the bout",
+       "he posts that he signed",
+       "a fight result"
+      ]
+     }
+    },
+    "probabilities": {
+     "0": 0.08,
+     "1": 0.03,
+     "2": 0.09,
+     "3": 0.8
+    }
+   }
+  },
+  "230": {
+   "fact__v5": {
+    "type": "choice",
+    "choice": "no_fact",
+    "confidence": 0.6,
+    "probabilities": {
+     "next_fight": 0.0,
+     "health": 0.0,
+     "no_fact": 0.65,
+     "result": 0.17,
+     "none_of_these": 0.14,
+     "fight_week_event": 0.0,
+     "personal_life": 0.0,
+     "career_move": 0.04
+    }
+   },
+   "act__v5": {
+    "type": "choice",
+    "choice": "assesses_him",
+    "confidence": 0.6,
+    "probabilities": {
+     "assesses_him": 0.66,
+     "answers_for_him": 0.0,
+     "steers_him": 0.0,
+     "predicts_his_fight": 0.0,
+     "none_of_these": 0.13,
+     "reports_an_event": 0.21,
+     "speaks_of_himself": 0.0,
+     "calls_him_out": 0.0,
+     "gives_news_of_him": 0.0
+    }
+   },
+   "firmness__v5": {
+    "type": "score",
+    "score": 0.92,
+    "confidence": 0.23,
+    "legend": {
+     "0": {
+      "summary": "No fact about him is asserted: only opinion, analysis or talk."
+     },
+     "1": {
+      "summary": "A wish or a demand: someone wants it or says it should happen.",
+      "signals": [
+       "a fighter asking for the fight",
+       "his camp demanding a rematch"
+      ]
+     },
+     "2": {
+      "summary": "A rumour: unnamed sources, a leak, 'talks', 'discussions', 'plans'.",
+      "signals": [
+       "a podcaster says the promotion is discussing it",
+       "'sources say'"
+      ]
+     },
+     "3": {
+      "summary": "Reported: a named outlet or journalist states it, citing sources.",
+      "signals": [
+       "'ESPN reports that...'"
+      ]
+     },
+     "4": {
+      "summary": "Official or done: the promotion or he himself states it, or it has happened.",
+      "signals": [
+       "the promotion announces the bout",
+       "he posts that he signed",
+       "a fight result"
+      ]
+     }
+    },
+    "probabilities": {
+     "0": 0.77,
+     "1": 0.0,
+     "2": 0.0,
+     "3": 0.02,
+     "4": 0.21
+    }
+   },
+   "fact__f1": {
+    "type": "choice",
+    "choice": "no_fact",
+    "confidence": 0.62,
+    "probabilities": {
+     "next_fight": 0.0,
+     "health": 0.0,
+     "no_fact": 0.66,
+     "result": 0.22,
+     "none_of_these": 0.1,
+     "fight_week_event": 0.0,
+     "personal_life": 0.0,
+     "career_move": 0.02
+    }
+   },
+   "fact__f2": {
+    "type": "choice",
+    "choice": "no_fact",
+    "confidence": 0.94,
+    "probabilities": {
+     "health": 0.0,
+     "next_fight": 0.0,
+     "personal_life": 0.0,
+     "no_fact": 0.95,
+     "fight_week_event": 0.0,
+     "none_of_these": 0.04,
+     "result": 0.01,
+     "career_move": 0.0
+    }
+   },
+   "fact__f3": {
+    "type": "choice",
+    "choice": "no_fact",
+    "confidence": 0.96,
+    "probabilities": {
+     "next_fight": 0.0,
+     "health": 0.0,
+     "no_fact": 0.97,
+     "result": 0.01,
+     "none_of_these": 0.02,
+     "fight_week_event": 0.0,
+     "personal_life": 0.0,
+     "career_move": 0.0
+    }
+   },
+   "act__a1": {
+    "type": "choice",
+    "choice": "assesses_him",
+    "confidence": 0.53,
+    "probabilities": {
+     "assesses_him": 0.58,
+     "answers_for_him": 0.0,
+     "steers_him": 0.0,
+     "predicts_his_fight": 0.0,
+     "none_of_these": 0.13,
+     "reports_an_event": 0.22,
+     "speaks_of_himself": 0.0,
+     "calls_him_out": 0.0,
+     "gives_news_of_him": 0.0,
+     "only_mentions_him": 0.07
+    }
+   },
+   "act__a2": {
+    "type": "choice",
+    "choice": "only_mentions_him",
+    "confidence": 0.54,
+    "probabilities": {
+     "assesses_him": 0.12,
+     "answers_for_him": 0.0,
+     "steers_him": 0.0,
+     "predicts_his_fight": 0.0,
+     "none_of_these": 0.27,
+     "speaks_of_himself": 0.0,
+     "reports_an_event": 0.02,
+     "calls_him_out": 0.0,
+     "gives_news_of_him": 0.0,
+     "only_mentions_him": 0.59
+    }
+   },
+   "firmness__four": {
+    "type": "score",
+    "score": 1.91,
+    "confidence": 0.0,
+    "legend": {
+     "0": {
+      "summary": "A wish or a demand: someone wants it or says it should happen.",
+      "signals": [
+       "a fighter asking for the fight",
+       "his camp demanding a rematch"
+      ]
+     },
+     "1": {
+      "summary": "A rumour: unnamed sources, a leak, 'talks', 'discussions', 'plans'.",
+      "signals": [
+       "a podcaster says the promotion is discussing it",
+       "'sources say'"
+      ]
+     },
+     "2": {
+      "summary": "Reported: a named outlet or journalist states it, citing sources.",
+      "signals": [
+       "'ESPN reports that...'"
+      ]
+     },
+     "3": {
+      "summary": "Official or done: the promotion or he himself states it, or it has happened.",
+      "signals": [
+       "the promotion announces the bout",
+       "he posts that he signed",
+       "a fight result"
+      ]
+     }
+    },
+    "probabilities": {
+     "0": 0.32,
+     "1": 0.02,
+     "2": 0.09,
+     "3": 0.57
+    }
+   }
+  },
+  "10": {
+   "fact__v5": {
+    "type": "choice",
+    "choice": "no_fact",
+    "confidence": 0.89,
+    "probabilities": {
+     "next_fight": 0.07,
+     "none_of_these": 0.0,
+     "career_move": 0.02,
+     "health": 0.0,
+     "personal_life": 0.0,
+     "result": 0.01,
+     "no_fact": 0.9,
+     "fight_week_event": 0.0
+    }
+   },
+   "act__v5": {
+    "type": "choice",
+    "choice": "predicts_his_fight",
+    "confidence": 0.43,
+    "probabilities": {
+     "assesses_him": 0.17,
+     "none_of_these": 0.0,
+     "reports_an_event": 0.0,
+     "speaks_of_himself": 0.0,
+     "steers_him": 0.29,
+     "gives_news_of_him": 0.0,
+     "calls_him_out": 0.05,
+     "predicts_his_fight": 0.49,
+     "answers_for_him": 0.0
+    }
+   },
+   "firmness__v5": {
+    "type": "score",
+    "score": 1.12,
+    "confidence": 0.73,
+    "legend": {
+     "0": {
+      "summary": "No fact about him is asserted: only opinion, analysis or talk."
+     },
+     "1": {
+      "summary": "A wish or a demand: someone wants it or says it should happen.",
+      "signals": [
+       "a fighter asking for the fight",
+       "his camp demanding a rematch"
+      ]
+     },
+     "2": {
+      "summary": "A rumour: unnamed sources, a leak, 'talks', 'discussions', 'plans'.",
+      "signals": [
+       "a podcaster says the promotion is discussing it",
+       "'sources say'"
+      ]
+     },
+     "3": {
+      "summary": "Reported: a named outlet or journalist states it, citing sources.",
+      "signals": [
+       "'ESPN reports that...'"
+      ]
+     },
+     "4": {
+      "summary": "Official or done: the promotion or he himself states it, or it has happened.",
+      "signals": [
+       "the promotion announces the bout",
+       "he posts that he signed",
+       "a fight result"
+      ]
+     }
+    },
+    "probabilities": {
+     "0": 0.1,
+     "1": 0.79,
+     "2": 0.0,
+     "3": 0.11,
+     "4": 0.0
+    }
+   },
+   "fact__f1": {
+    "type": "choice",
+    "choice": "no_fact",
+    "confidence": 0.91,
+    "probabilities": {
+     "next_fight": 0.06,
+     "none_of_these": 0.0,
+     "career_move": 0.01,
+     "health": 0.0,
+     "personal_life": 0.0,
+     "result": 0.0,
+     "no_fact": 0.93,
+     "fight_week_event": 0.0
+    }
+   },
+   "fact__f2": {
+    "type": "choice",
+    "choice": "no_fact",
+    "confidence": 0.94,
+    "probabilities": {
+     "result": 0.0,
+     "none_of_these": 0.0,
+     "career_move": 0.0,
+     "health": 0.0,
+     "personal_life": 0.0,
+     "next_fight": 0.05,
+     "no_fact": 0.95,
+     "fight_week_event": 0.0
+    }
+   },
+   "fact__f3": {
+    "type": "choice",
+    "choice": "no_fact",
+    "confidence": 0.93,
+    "probabilities": {
+     "no_fact": 0.94,
+     "none_of_these": 0.0,
+     "career_move": 0.0,
+     "health": 0.0,
+     "personal_life": 0.0,
+     "next_fight": 0.06,
+     "result": 0.0,
+     "fight_week_event": 0.0
+    }
+   },
+   "act__a1": {
+    "type": "choice",
+    "choice": "predicts_his_fight",
+    "confidence": 0.49,
+    "probabilities": {
+     "assesses_him": 0.13,
+     "none_of_these": 0.0,
+     "reports_an_event": 0.0,
+     "speaks_of_himself": 0.0,
+     "steers_him": 0.25,
+     "gives_news_of_him": 0.0,
+     "calls_him_out": 0.06,
+     "predicts_his_fight": 0.55,
+     "answers_for_him": 0.0,
+     "only_mentions_him": 0.01
+    }
+   },
+   "act__a2": {
+    "type": "choice",
+    "choice": "predicts_his_fight",
+    "confidence": 0.48,
+    "probabilities": {
+     "assesses_him": 0.1,
+     "none_of_these": 0.0,
+     "reports_an_event": 0.0,
+     "speaks_of_himself": 0.0,
+     "steers_him": 0.26,
+     "gives_news_of_him": 0.0,
+     "calls_him_out": 0.1,
+     "predicts_his_fight": 0.53,
+     "answers_for_him": 0.0,
+     "only_mentions_him": 0.01
+    }
+   },
+   "firmness__four": {
+    "type": "score",
+    "score": 0.3,
+    "confidence": 0.7,
+    "legend": {
+     "0": {
+      "summary": "A wish or a demand: someone wants it or says it should happen.",
+      "signals": [
+       "a fighter asking for the fight",
+       "his camp demanding a rematch"
+      ]
+     },
+     "1": {
+      "summary": "A rumour: unnamed sources, a leak, 'talks', 'discussions', 'plans'.",
+      "signals": [
+       "a podcaster says the promotion is discussing it",
+       "'sources say'"
+      ]
+     },
+     "2": {
+      "summary": "Reported: a named outlet or journalist states it, citing sources.",
+      "signals": [
+       "'ESPN reports that...'"
+      ]
+     },
+     "3": {
+      "summary": "Official or done: the promotion or he himself states it, or it has happened.",
+      "signals": [
+       "the promotion announces the bout",
+       "he posts that he signed",
+       "a fight result"
+      ]
+     }
+    },
+    "probabilities": {
+     "0": 0.84,
+     "1": 0.02,
+     "2": 0.14,
+     "3": 0.0
+    }
+   }
+  },
+  "909": {
+   "fact__v5": {
+    "type": "choice",
+    "choice": "result",
+    "confidence": 0.7,
+    "probabilities": {
+     "next_fight": 0.02,
+     "career_move": 0.0,
+     "result": 0.74,
+     "none_of_these": 0.0,
+     "personal_life": 0.0,
+     "health": 0.0,
+     "no_fact": 0.24,
+     "fight_week_event": 0.0
+    }
+   },
+   "act__v5": {
+    "type": "choice",
+    "choice": "assesses_him",
+    "confidence": 0.36,
+    "probabilities": {
+     "steers_him": 0.2,
+     "speaks_of_himself": 0.0,
+     "calls_him_out": 0.36,
+     "reports_an_event": 0.01,
+     "gives_news_of_him": 0.0,
+     "none_of_these": 0.0,
+     "assesses_him": 0.43,
+     "answers_for_him": 0.0,
+     "predicts_his_fight": 0.0
+    }
+   },
+   "firmness__v5": {
+    "type": "score",
+    "score": 2.27,
+    "confidence": 0.0,
+    "legend": {
+     "0": {
+      "summary": "No fact about him is asserted: only opinion, analysis or talk."
+     },
+     "1": {
+      "summary": "A wish or a demand: someone wants it or says it should happen.",
+      "signals": [
+       "a fighter asking for the fight",
+       "his camp demanding a rematch"
+      ]
+     },
+     "2": {
+      "summary": "A rumour: unnamed sources, a leak, 'talks', 'discussions', 'plans'.",
+      "signals": [
+       "a podcaster says the promotion is discussing it",
+       "'sources say'"
+      ]
+     },
+     "3": {
+      "summary": "Reported: a named outlet or journalist states it, citing sources.",
+      "signals": [
+       "'ESPN reports that...'"
+      ]
+     },
+     "4": {
+      "summary": "Official or done: the promotion or he himself states it, or it has happened.",
+      "signals": [
+       "the promotion announces the bout",
+       "he posts that he signed",
+       "a fight result"
+      ]
+     }
+    },
+    "probabilities": {
+     "0": 0.2,
+     "1": 0.27,
+     "2": 0.0,
+     "3": 0.11,
+     "4": 0.42
+    }
+   },
+   "fact__f1": {
+    "type": "choice",
+    "choice": "result",
+    "confidence": 0.51,
+    "probabilities": {
+     "next_fight": 0.02,
+     "career_move": 0.0,
+     "result": 0.57,
+     "none_of_these": 0.01,
+     "personal_life": 0.0,
+     "health": 0.0,
+     "no_fact": 0.4,
+     "fight_week_event": 0.0
+    }
+   },
+   "fact__f2": {
+    "type": "choice",
+    "choice": "result",
+    "confidence": 0.75,
+    "probabilities": {
+     "career_move": 0.0,
+     "next_fight": 0.01,
+     "result": 0.79,
+     "none_of_these": 0.0,
+     "personal_life": 0.0,
+     "health": 0.0,
+     "no_fact": 0.2,
+     "fight_week_event": 0.0
+    }
+   },
+   "fact__f3": {
+    "type": "choice",
+    "choice": "result",
+    "confidence": 0.69,
+    "probabilities": {
+     "next_fight": 0.01,
+     "career_move": 0.0,
+     "result": 0.73,
+     "none_of_these": 0.01,
+     "personal_life": 0.0,
+     "health": 0.0,
+     "fight_week_event": 0.0,
+     "no_fact": 0.25
+    }
+   },
+   "act__a1": {
+    "type": "choice",
+    "choice": "assesses_him",
+    "confidence": 0.35,
+    "probabilities": {
+     "predicts_his_fight": 0.0,
+     "speaks_of_himself": 0.0,
+     "calls_him_out": 0.33,
+     "gives_news_of_him": 0.0,
+     "only_mentions_him": 0.04,
+     "reports_an_event": 0.0,
+     "none_of_these": 0.0,
+     "assesses_him": 0.42,
+     "answers_for_him": 0.0,
+     "steers_him": 0.21
+    }
+   },
+   "act__a2": {
+    "type": "choice",
+    "choice": "assesses_him",
+    "confidence": 0.46,
+    "probabilities": {
+     "predicts_his_fight": 0.0,
+     "speaks_of_himself": 0.0,
+     "calls_him_out": 0.23,
+     "reports_an_event": 0.0,
+     "only_mentions_him": 0.04,
+     "gives_news_of_him": 0.0,
+     "none_of_these": 0.0,
+     "assesses_him": 0.52,
+     "answers_for_him": 0.0,
+     "steers_him": 0.21
+    }
+   },
+   "firmness__four": {
+    "type": "score",
+    "score": 1.36,
+    "confidence": 0.0,
+    "legend": {
+     "0": {
+      "summary": "A wish or a demand: someone wants it or says it should happen.",
+      "signals": [
+       "a fighter asking for the fight",
+       "his camp demanding a rematch"
+      ]
+     },
+     "1": {
+      "summary": "A rumour: unnamed sources, a leak, 'talks', 'discussions', 'plans'.",
+      "signals": [
+       "a podcaster says the promotion is discussing it",
+       "'sources say'"
+      ]
+     },
+     "2": {
+      "summary": "Reported: a named outlet or journalist states it, citing sources.",
+      "signals": [
+       "'ESPN reports that...'"
+      ]
+     },
+     "3": {
+      "summary": "Official or done: the promotion or he himself states it, or it has happened.",
+      "signals": [
+       "the promotion announces the bout",
+       "he posts that he signed",
+       "a fight result"
+      ]
+     }
+    },
+    "probabilities": {
+     "0": 0.49,
+     "1": 0.01,
+     "2": 0.14,
+     "3": 0.36
+    }
+   }
+  },
+  "181": {
+   "fact__v5": {
+    "type": "choice",
+    "choice": "no_fact",
+    "confidence": 0.57,
+    "probabilities": {
+     "no_fact": 0.63,
+     "career_move": 0.3,
+     "health": 0.0,
+     "next_fight": 0.03,
+     "result": 0.0,
+     "fight_week_event": 0.0,
+     "none_of_these": 0.04,
+     "personal_life": 0.0
+    }
+   },
+   "act__v5": {
+    "type": "choice",
+    "choice": "speaks_of_himself",
+    "confidence": 0.46,
+    "probabilities": {
+     "reports_an_event": 0.02,
+     "steers_him": 0.0,
+     "gives_news_of_him": 0.16,
+     "answers_for_him": 0.02,
+     "assesses_him": 0.0,
+     "calls_him_out": 0.02,
+     "predicts_his_fight": 0.0,
+     "none_of_these": 0.26,
+     "speaks_of_himself": 0.52
+    }
+   },
+   "firmness__v5": {
+    "type": "score",
+    "score": 1.26,
+    "confidence": 0.0,
+    "legend": {
+     "0": {
+      "summary": "No fact about him is asserted: only opinion, analysis or talk."
+     },
+     "1": {
+      "summary": "A wish or a demand: someone wants it or says it should happen.",
+      "signals": [
+       "a fighter asking for the fight",
+       "his camp demanding a rematch"
+      ]
+     },
+     "2": {
+      "summary": "A rumour: unnamed sources, a leak, 'talks', 'discussions', 'plans'.",
+      "signals": [
+       "a podcaster says the promotion is discussing it",
+       "'sources say'"
+      ]
+     },
+     "3": {
+      "summary": "Reported: a named outlet or journalist states it, citing sources.",
+      "signals": [
+       "'ESPN reports that...'"
+      ]
+     },
+     "4": {
+      "summary": "Official or done: the promotion or he himself states it, or it has happened.",
+      "signals": [
+       "the promotion announces the bout",
+       "he posts that he signed",
+       "a fight result"
+      ]
+     }
+    },
+    "probabilities": {
+     "0": 0.49,
+     "1": 0.22,
+     "2": 0.02,
+     "3": 0.07,
+     "4": 0.2
+    }
+   },
+   "fact__f1": {
+    "type": "choice",
+    "choice": "no_fact",
+    "confidence": 0.44,
+    "probabilities": {
+     "career_move": 0.39,
+     "none_of_these": 0.06,
+     "health": 0.0,
+     "next_fight": 0.02,
+     "result": 0.0,
+     "fight_week_event": 0.0,
+     "no_fact": 0.52,
+     "personal_life": 0.01
+    }
+   },
+   "fact__f2": {
+    "type": "choice",
+    "choice": "no_fact",
+    "confidence": 0.87,
+    "probabilities": {
+     "no_fact": 0.89,
+     "career_move": 0.05,
+     "health": 0.0,
+     "next_fight": 0.01,
+     "result": 0.0,
+     "fight_week_event": 0.0,
+     "none_of_these": 0.05,
+     "personal_life": 0.0
+    }
+   },
+   "fact__f3": {
+    "type": "choice",
+    "choice": "no_fact",
+    "confidence": 0.88,
+    "probabilities": {
+     "career_move": 0.05,
+     "no_fact": 0.9,
+     "health": 0.0,
+     "next_fight": 0.0,
+     "result": 0.0,
+     "fight_week_event": 0.0,
+     "none_of_these": 0.05,
+     "personal_life": 0.0
+    }
+   },
+   "act__a1": {
+    "type": "choice",
+    "choice": "only_mentions_him",
+    "confidence": 0.76,
+    "probabilities": {
+     "reports_an_event": 0.01,
+     "only_mentions_him": 0.78,
+     "steers_him": 0.0,
+     "gives_news_of_him": 0.03,
+     "answers_for_him": 0.01,
+     "assesses_him": 0.0,
+     "calls_him_out": 0.01,
+     "speaks_of_himself": 0.16,
+     "none_of_these": 0.0,
+     "predicts_his_fight": 0.0
+    }
+   },
+   "act__a2": {
+    "type": "choice",
+    "choice": "only_mentions_him",
+    "confidence": 0.94,
+    "probabilities": {
+     "reports_an_event": 0.0,
+     "only_mentions_him": 0.94,
+     "steers_him": 0.0,
+     "gives_news_of_him": 0.01,
+     "speaks_of_himself": 0.01,
+     "assesses_him": 0.0,
+     "predicts_his_fight": 0.0,
+     "calls_him_out": 0.01,
+     "none_of_these": 0.0,
+     "answers_for_him": 0.03
+    }
+   },
+   "firmness__four": {
+    "type": "score",
+    "score": 1.05,
+    "confidence": 0.0,
+    "legend": {
+     "0": {
+      "summary": "A wish or a demand: someone wants it or says it should happen.",
+      "signals": [
+       "a fighter asking for the fight",
+       "his camp demanding a rematch"
+      ]
+     },
+     "1": {
+      "summary": "A rumour: unnamed sources, a leak, 'talks', 'discussions', 'plans'.",
+      "signals": [
+       "a podcaster says the promotion is discussing it",
+       "'sources say'"
+      ]
+     },
+     "2": {
+      "summary": "Reported: a named outlet or journalist states it, citing sources.",
+      "signals": [
+       "'ESPN reports that...'"
+      ]
+     },
+     "3": {
+      "summary": "Official or done: the promotion or he himself states it, or it has happened.",
+      "signals": [
+       "the promotion announces the bout",
+       "he posts that he signed",
+       "a fight result"
+      ]
+     }
+    },
+    "probabilities": {
+     "0": 0.59,
+     "1": 0.07,
+     "2": 0.04,
+     "3": 0.3
+    }
+   }
+  },
+  "408": {
+   "fact__v5": {
+    "type": "choice",
+    "choice": "no_fact",
+    "confidence": 0.6,
+    "probabilities": {
+     "none_of_these": 0.02,
+     "health": 0.0,
+     "next_fight": 0.0,
+     "fight_week_event": 0.0,
+     "result": 0.32,
+     "career_move": 0.0,
+     "personal_life": 0.0,
+     "no_fact": 0.66
+    }
+   },
+   "act__v5": {
+    "type": "choice",
+    "choice": "calls_him_out",
+    "confidence": 0.84,
+    "probabilities": {
+     "none_of_these": 0.0,
+     "speaks_of_himself": 0.0,
+     "answers_for_him": 0.0,
+     "predicts_his_fight": 0.0,
+     "calls_him_out": 0.86,
+     "gives_news_of_him": 0.0,
+     "steers_him": 0.0,
+     "reports_an_event": 0.0,
+     "assesses_him": 0.14
+    }
+   },
+   "firmness__v5": {
+    "type": "score",
+    "score": 2.49,
+    "confidence": 0.0,
+    "legend": {
+     "0": {
+      "summary": "No fact about him is asserted: only opinion, analysis or talk."
+     },
+     "1": {
+      "summary": "A wish or a demand: someone wants it or says it should happen.",
+      "signals": [
+       "a fighter asking for the fight",
+       "his camp demanding a rematch"
+      ]
+     },
+     "2": {
+      "summary": "A rumour: unnamed sources, a leak, 'talks', 'discussions', 'plans'.",
+      "signals": [
+       "a podcaster says the promotion is discussing it",
+       "'sources say'"
+      ]
+     },
+     "3": {
+      "summary": "Reported: a named outlet or journalist states it, citing sources.",
+      "signals": [
+       "'ESPN reports that...'"
+      ]
+     },
+     "4": {
+      "summary": "Official or done: the promotion or he himself states it, or it has happened.",
+      "signals": [
+       "the promotion announces the bout",
+       "he posts that he signed",
+       "a fight result"
+      ]
+     }
+    },
+    "probabilities": {
+     "0": 0.29,
+     "1": 0.0,
+     "2": 0.0,
+     "3": 0.33,
+     "4": 0.38
+    }
+   },
+   "fact__f1": {
+    "type": "choice",
+    "choice": "no_fact",
+    "confidence": 0.86,
+    "probabilities": {
+     "none_of_these": 0.01,
+     "health": 0.0,
+     "next_fight": 0.0,
+     "fight_week_event": 0.0,
+     "result": 0.11,
+     "career_move": 0.0,
+     "personal_life": 0.0,
+     "no_fact": 0.88
+    }
+   },
+   "fact__f2": {
+    "type": "choice",
+    "choice": "result",
+    "confidence": 0.49,
+    "probabilities": {
+     "none_of_these": 0.01,
+     "health": 0.0,
+     "next_fight": 0.0,
+     "fight_week_event": 0.0,
+     "result": 0.5700000000000001,
+     "career_move": 0.0,
+     "personal_life": 0.0,
+     "no_fact": 0.42
+    }
+   },
+   "fact__f3": {
+    "type": "choice",
+    "choice": "no_fact",
+    "confidence": 0.66,
+    "probabilities": {
+     "none_of_these": 0.01,
+     "health": 0.0,
+     "next_fight": 0.0,
+     "fight_week_event": 0.0,
+     "result": 0.28,
+     "career_move": 0.01,
+     "personal_life": 0.0,
+     "no_fact": 0.7
+    }
+   },
+   "act__a1": {
+    "type": "choice",
+    "choice": "calls_him_out",
+    "confidence": 0.87,
+    "probabilities": {
+     "none_of_these": 0.0,
+     "speaks_of_himself": 0.0,
+     "steers_him": 0.0,
+     "predicts_his_fight": 0.0,
+     "calls_him_out": 0.89,
+     "gives_news_of_him": 0.0,
+     "answers_for_him": 0.0,
+     "reports_an_event": 0.0,
+     "assesses_him": 0.11,
+     "only_mentions_him": 0.0
+    }
+   },
+   "act__a2": {
+    "type": "choice",
+    "choice": "calls_him_out",
+    "confidence": 0.87,
+    "probabilities": {
+     "none_of_these": 0.0,
+     "speaks_of_himself": 0.0,
+     "steers_him": 0.0,
+     "predicts_his_fight": 0.0,
+     "calls_him_out": 0.89,
+     "gives_news_of_him": 0.0,
+     "answers_for_him": 0.0,
+     "reports_an_event": 0.0,
+     "assesses_him": 0.11,
+     "only_mentions_him": 0.0
+    }
+   },
+   "firmness__four": {
+    "type": "score",
+    "score": 2.53,
+    "confidence": 0.53,
+    "legend": {
+     "0": {
+      "summary": "A wish or a demand: someone wants it or says it should happen.",
+      "signals": [
+       "a fighter asking for the fight",
+       "his camp demanding a rematch"
+      ]
+     },
+     "1": {
+      "summary": "A rumour: unnamed sources, a leak, 'talks', 'discussions', 'plans'.",
+      "signals": [
+       "a podcaster says the promotion is discussing it",
+       "'sources say'"
+      ]
+     },
+     "2": {
+      "summary": "Reported: a named outlet or journalist states it, citing sources.",
+      "signals": [
+       "'ESPN reports that...'"
+      ]
+     },
+     "3": {
+      "summary": "Official or done: the promotion or he himself states it, or it has happened.",
+      "signals": [
+       "the promotion announces the bout",
+       "he posts that he signed",
+       "a fight result"
+      ]
+     }
+    },
+    "probabilities": {
+     "0": 0.03,
+     "1": 0.01,
+     "2": 0.37,
+     "3": 0.59
+    }
+   }
+  },
+  "269": {
+   "fact__v5": {
+    "type": "choice",
+    "choice": "result",
+    "confidence": 0.66,
+    "probabilities": {
+     "fight_week_event": 0.0,
+     "next_fight": 0.02,
+     "none_of_these": 0.0,
+     "career_move": 0.05,
+     "result": 0.71,
+     "no_fact": 0.21,
+     "health": 0.01,
+     "personal_life": 0.0
+    }
+   },
+   "act__v5": {
+    "type": "choice",
+    "choice": "steers_him",
+    "confidence": 1.0,
+    "probabilities": {
+     "speaks_of_himself": 0.0,
+     "steers_him": 1.0,
+     "answers_for_him": 0.0,
+     "none_of_these": 0.0,
+     "calls_him_out": 0.0,
+     "assesses_him": 0.0,
+     "reports_an_event": 0.0,
+     "gives_news_of_him": 0.0,
+     "predicts_his_fight": 0.0
+    }
+   },
+   "firmness__v5": {
+    "type": "score",
+    "score": 1.93,
+    "confidence": 0.18,
+    "legend": {
+     "0": {
+      "summary": "No fact about him is asserted: only opinion, analysis or talk."
+     },
+     "1": {
+      "summary": "A wish or a demand: someone wants it or says it should happen.",
+      "signals": [
+       "a fighter asking for the fight",
+       "his camp demanding a rematch"
+      ]
+     },
+     "2": {
+      "summary": "A rumour: unnamed sources, a leak, 'talks', 'discussions', 'plans'.",
+      "signals": [
+       "a podcaster says the promotion is discussing it",
+       "'sources say'"
+      ]
+     },
+     "3": {
+      "summary": "Reported: a named outlet or journalist states it, citing sources.",
+      "signals": [
+       "'ESPN reports that...'"
+      ]
+     },
+     "4": {
+      "summary": "Official or done: the promotion or he himself states it, or it has happened.",
+      "signals": [
+       "the promotion announces the bout",
+       "he posts that he signed",
+       "a fight result"
+      ]
+     }
+    },
+    "probabilities": {
+     "0": 0.02,
+     "1": 0.64,
+     "2": 0.0,
+     "3": 0.07,
+     "4": 0.27
+    }
+   },
+   "fact__f1": {
+    "type": "choice",
+    "choice": "result",
+    "confidence": 0.39,
+    "probabilities": {
+     "fight_week_event": 0.0,
+     "next_fight": 0.03,
+     "none_of_these": 0.01,
+     "career_move": 0.11,
+     "result": 0.47,
+     "no_fact": 0.37,
+     "personal_life": 0.0,
+     "health": 0.01
+    }
+   },
+   "fact__f2": {
+    "type": "choice",
+    "choice": "result",
+    "confidence": 0.81,
+    "probabilities": {
+     "fight_week_event": 0.0,
+     "next_fight": 0.02,
+     "none_of_these": 0.0,
+     "career_move": 0.04,
+     "result": 0.85,
+     "no_fact": 0.09,
+     "personal_life": 0.0,
+     "health": 0.0
+    }
+   },
+   "fact__f3": {
+    "type": "choice",
+    "choice": "result",
+    "confidence": 0.47,
+    "probabilities": {
+     "fight_week_event": 0.0,
+     "next_fight": 0.03,
+     "none_of_these": 0.01,
+     "career_move": 0.15,
+     "result": 0.54,
+     "no_fact": 0.25,
+     "health": 0.02,
+     "personal_life": 0.0
+    }
+   },
+   "act__a1": {
+    "type": "choice",
+    "choice": "steers_him",
+    "confidence": 1.0,
+    "probabilities": {
+     "speaks_of_himself": 0.0,
+     "only_mentions_him": 0.0,
+     "steers_him": 1.0,
+     "answers_for_him": 0.0,
+     "none_of_these": 0.0,
+     "calls_him_out": 0.0,
+     "assesses_him": 0.0,
+     "gives_news_of_him": 0.0,
+     "reports_an_event": 0.0,
+     "predicts_his_fight": 0.0
+    }
+   },
+   "act__a2": {
+    "type": "choice",
+    "choice": "steers_him",
+    "confidence": 1.0,
+    "probabilities": {
+     "speaks_of_himself": 0.0,
+     "only_mentions_him": 0.0,
+     "steers_him": 1.0,
+     "answers_for_him": 0.0,
+     "none_of_these": 0.0,
+     "calls_him_out": 0.0,
+     "assesses_him": 0.0,
+     "gives_news_of_him": 0.0,
+     "reports_an_event": 0.0,
+     "predicts_his_fight": 0.0
+    }
+   },
+   "firmness__four": {
+    "type": "score",
+    "score": 0.84,
+    "confidence": 0.16,
+    "legend": {
+     "0": {
+      "summary": "A wish or a demand: someone wants it or says it should happen.",
+      "signals": [
+       "a fighter asking for the fight",
+       "his camp demanding a rematch"
+      ]
+     },
+     "1": {
+      "summary": "A rumour: unnamed sources, a leak, 'talks', 'discussions', 'plans'.",
+      "signals": [
+       "a podcaster says the promotion is discussing it",
+       "'sources say'"
+      ]
+     },
+     "2": {
+      "summary": "Reported: a named outlet or journalist states it, citing sources.",
+      "signals": [
+       "'ESPN reports that...'"
+      ]
+     },
+     "3": {
+      "summary": "Official or done: the promotion or he himself states it, or it has happened.",
+      "signals": [
+       "the promotion announces the bout",
+       "he posts that he signed",
+       "a fight result"
+      ]
+     }
+    },
+    "probabilities": {
+     "0": 0.69,
+     "1": 0.01,
+     "2": 0.08,
+     "3": 0.22
+    }
+   }
+  },
+  "673": {
+   "fact__v5": {
+    "type": "choice",
+    "choice": "next_fight",
+    "confidence": 0.65,
+    "probabilities": {
+     "fight_week_event": 0.2,
+     "next_fight": 0.7,
+     "health": 0.0,
+     "result": 0.01,
+     "personal_life": 0.0,
+     "none_of_these": 0.0,
+     "career_move": 0.06,
+     "no_fact": 0.03
+    }
+   },
+   "act__v5": {
+    "type": "choice",
+    "choice": "predicts_his_fight",
+    "confidence": 1.0,
+    "probabilities": {
+     "speaks_of_himself": 0.0,
+     "assesses_him": 0.0,
+     "reports_an_event": 0.0,
+     "steers_him": 0.0,
+     "none_of_these": 0.0,
+     "answers_for_him": 0.0,
+     "predicts_his_fight": 1.0,
+     "gives_news_of_him": 0.0,
+     "calls_him_out": 0.0
+    }
+   },
+   "firmness__v5": {
+    "type": "score",
+    "score": 3.29,
+    "confidence": 0.41,
+    "legend": {
+     "0": {
+      "summary": "No fact about him is asserted: only opinion, analysis or talk."
+     },
+     "1": {
+      "summary": "A wish or a demand: someone wants it or says it should happen.",
+      "signals": [
+       "a fighter asking for the fight",
+       "his camp demanding a rematch"
+      ]
+     },
+     "2": {
+      "summary": "A rumour: unnamed sources, a leak, 'talks', 'discussions', 'plans'.",
+      "signals": [
+       "a podcaster says the promotion is discussing it",
+       "'sources say'"
+      ]
+     },
+     "3": {
+      "summary": "Reported: a named outlet or journalist states it, citing sources.",
+      "signals": [
+       "'ESPN reports that...'"
+      ]
+     },
+     "4": {
+      "summary": "Official or done: the promotion or he himself states it, or it has happened.",
+      "signals": [
+       "the promotion announces the bout",
+       "he posts that he signed",
+       "a fight result"
+      ]
+     }
+    },
+    "probabilities": {
+     "0": 0.15,
+     "1": 0.0,
+     "2": 0.0,
+     "3": 0.12,
+     "4": 0.73
+    }
+   },
+   "fact__f1": {
+    "type": "choice",
+    "choice": "fight_week_event",
+    "confidence": 0.81,
+    "probabilities": {
+     "no_fact": 0.03,
+     "next_fight": 0.07,
+     "health": 0.0,
+     "result": 0.0,
+     "none_of_these": 0.0,
+     "personal_life": 0.0,
+     "career_move": 0.06,
+     "fight_week_event": 0.84
+    }
+   },
+   "fact__f2": {
+    "type": "choice",
+    "choice": "next_fight",
+    "confidence": 0.68,
+    "probabilities": {
+     "no_fact": 0.03,
+     "next_fight": 0.72,
+     "health": 0.0,
+     "result": 0.01,
+     "none_of_these": 0.0,
+     "personal_life": 0.0,
+     "career_move": 0.1,
+     "fight_week_event": 0.14
+    }
+   },
+   "fact__f3": {
+    "type": "choice",
+    "choice": "fight_week_event",
+    "confidence": 0.75,
+    "probabilities": {
+     "fight_week_event": 0.79,
+     "next_fight": 0.07,
+     "health": 0.0,
+     "result": 0.0,
+     "personal_life": 0.0,
+     "none_of_these": 0.0,
+     "career_move": 0.1,
+     "no_fact": 0.04
+    }
+   },
+   "act__a1": {
+    "type": "choice",
+    "choice": "predicts_his_fight",
+    "confidence": 1.0,
+    "probabilities": {
+     "speaks_of_himself": 0.0,
+     "assesses_him": 0.0,
+     "only_mentions_him": 0.0,
+     "reports_an_event": 0.0,
+     "steers_him": 0.0,
+     "none_of_these": 0.0,
+     "gives_news_of_him": 0.0,
+     "predicts_his_fight": 1.0,
+     "answers_for_him": 0.0,
+     "calls_him_out": 0.0
+    }
+   },
+   "act__a2": {
+    "type": "choice",
+    "choice": "predicts_his_fight",
+    "confidence": 1.0,
+    "probabilities": {
+     "speaks_of_himself": 0.0,
+     "assesses_him": 0.0,
+     "only_mentions_him": 0.0,
+     "reports_an_event": 0.0,
+     "steers_him": 0.0,
+     "none_of_these": 0.0,
+     "answers_for_him": 0.0,
+     "predicts_his_fight": 1.0,
+     "gives_news_of_him": 0.0,
+     "calls_him_out": 0.0
+    }
+   },
+   "firmness__four": {
+    "type": "score",
+    "score": 2.81,
+    "confidence": 0.81,
+    "legend": {
+     "0": {
+      "summary": "A wish or a demand: someone wants it or says it should happen.",
+      "signals": [
+       "a fighter asking for the fight",
+       "his camp demanding a rematch"
+      ]
+     },
+     "1": {
+      "summary": "A rumour: unnamed sources, a leak, 'talks', 'discussions', 'plans'.",
+      "signals": [
+       "a podcaster says the promotion is discussing it",
+       "'sources say'"
+      ]
+     },
+     "2": {
+      "summary": "Reported: a named outlet or journalist states it, citing sources.",
+      "signals": [
+       "'ESPN reports that...'"
+      ]
+     },
+     "3": {
+      "summary": "Official or done: the promotion or he himself states it, or it has happened.",
+      "signals": [
+       "the promotion announces the bout",
+       "he posts that he signed",
+       "a fight result"
+      ]
+     }
+    },
+    "probabilities": {
+     "0": 0.01,
+     "1": 0.0,
+     "2": 0.14,
+     "3": 0.85
+    }
+   }
+  },
+  "1125": {
+   "fact__v5": {
+    "type": "choice",
+    "choice": "no_fact",
+    "confidence": 0.54,
+    "probabilities": {
+     "fight_week_event": 0.0,
+     "no_fact": 0.6,
+     "next_fight": 0.29,
+     "result": 0.1,
+     "personal_life": 0.0,
+     "none_of_these": 0.01,
+     "career_move": 0.0,
+     "health": 0.0
+    }
+   },
+   "act__v5": {
+    "type": "choice",
+    "choice": "speaks_of_himself",
+    "confidence": 1.0,
+    "probabilities": {
+     "assesses_him": 0.0,
+     "reports_an_event": 0.0,
+     "gives_news_of_him": 0.0,
+     "calls_him_out": 0.0,
+     "speaks_of_himself": 1.0,
+     "answers_for_him": 0.0,
+     "steers_him": 0.0,
+     "predicts_his_fight": 0.0,
+     "none_of_these": 0.0
+    }
+   },
+   "firmness__v5": {
+    "type": "score",
+    "score": 1.58,
+    "confidence": 0.51,
+    "legend": {
+     "0": {
+      "summary": "No fact about him is asserted: only opinion, analysis or talk."
+     },
+     "1": {
+      "summary": "A wish or a demand: someone wants it or says it should happen.",
+      "signals": [
+       "a fighter asking for the fight",
+       "his camp demanding a rematch"
+      ]
+     },
+     "2": {
+      "summary": "A rumour: unnamed sources, a leak, 'talks', 'discussions', 'plans'.",
+      "signals": [
+       "a podcaster says the promotion is discussing it",
+       "'sources say'"
+      ]
+     },
+     "3": {
+      "summary": "Reported: a named outlet or journalist states it, citing sources.",
+      "signals": [
+       "'ESPN reports that...'"
+      ]
+     },
+     "4": {
+      "summary": "Official or done: the promotion or he himself states it, or it has happened.",
+      "signals": [
+       "the promotion announces the bout",
+       "he posts that he signed",
+       "a fight result"
+      ]
+     }
+    },
+    "probabilities": {
+     "0": 0.0,
+     "1": 0.79,
+     "2": 0.0,
+     "3": 0.04,
+     "4": 0.17
+    }
+   },
+   "fact__f1": {
+    "type": "choice",
+    "choice": "no_fact",
+    "confidence": 0.55,
+    "probabilities": {
+     "career_move": 0.0,
+     "no_fact": 0.6,
+     "next_fight": 0.37,
+     "personal_life": 0.0,
+     "result": 0.02,
+     "none_of_these": 0.01,
+     "fight_week_event": 0.0,
+     "health": 0.0
+    }
+   },
+   "fact__f2": {
+    "type": "choice",
+    "choice": "no_fact",
+    "confidence": 0.43,
+    "probabilities": {
+     "fight_week_event": 0.0,
+     "no_fact": 0.51,
+     "next_fight": 0.32,
+     "result": 0.16,
+     "personal_life": 0.0,
+     "none_of_these": 0.01,
+     "career_move": 0.0,
+     "health": 0.0
+    }
+   },
+   "fact__f3": {
+    "type": "choice",
+    "choice": "no_fact",
+    "confidence": 0.56,
+    "probabilities": {
+     "fight_week_event": 0.0,
+     "no_fact": 0.62,
+     "next_fight": 0.33,
+     "personal_life": 0.0,
+     "result": 0.04,
+     "none_of_these": 0.01,
+     "career_move": 0.0,
+     "health": 0.0
+    }
+   },
+   "act__a1": {
+    "type": "choice",
+    "choice": "speaks_of_himself",
+    "confidence": 1.0,
+    "probabilities": {
+     "assesses_him": 0.0,
+     "calls_him_out": 0.0,
+     "gives_news_of_him": 0.0,
+     "reports_an_event": 0.0,
+     "speaks_of_himself": 1.0,
+     "answers_for_him": 0.0,
+     "steers_him": 0.0,
+     "only_mentions_him": 0.0,
+     "predicts_his_fight": 0.0,
+     "none_of_these": 0.0
+    }
+   },
+   "act__a2": {
+    "type": "choice",
+    "choice": "speaks_of_himself",
+    "confidence": 1.0,
+    "probabilities": {
+     "calls_him_out": 0.0,
+     "reports_an_event": 0.0,
+     "gives_news_of_him": 0.0,
+     "assesses_him": 0.0,
+     "answers_for_him": 0.0,
+     "speaks_of_himself": 1.0,
+     "steers_him": 0.0,
+     "only_mentions_him": 0.0,
+     "predicts_his_fight": 0.0,
+     "none_of_these": 0.0
+    }
+   },
+   "firmness__four": {
+    "type": "score",
+    "score": 0.68,
+    "confidence": 0.32,
+    "legend": {
+     "0": {
+      "summary": "A wish or a demand: someone wants it or says it should happen.",
+      "signals": [
+       "a fighter asking for the fight",
+       "his camp demanding a rematch"
+      ]
+     },
+     "1": {
+      "summary": "A rumour: unnamed sources, a leak, 'talks', 'discussions', 'plans'.",
+      "signals": [
+       "a podcaster says the promotion is discussing it",
+       "'sources say'"
+      ]
+     },
+     "2": {
+      "summary": "Reported: a named outlet or journalist states it, citing sources.",
+      "signals": [
+       "'ESPN reports that...'"
+      ]
+     },
+     "3": {
+      "summary": "Official or done: the promotion or he himself states it, or it has happened.",
+      "signals": [
+       "the promotion announces the bout",
+       "he posts that he signed",
+       "a fight result"
+      ]
+     }
+    },
+    "probabilities": {
+     "0": 0.77,
+     "1": 0.0,
+     "2": 0.02,
+     "3": 0.21
+    }
+   }
+  },
+  "746": {
+   "fact__v5": {
+    "type": "choice",
+    "choice": "result",
+    "confidence": 0.98,
+    "probabilities": {
+     "no_fact": 0.02,
+     "next_fight": 0.0,
+     "fight_week_event": 0.0,
+     "health": 0.0,
+     "result": 0.98,
+     "none_of_these": 0.0,
+     "career_move": 0.0,
+     "personal_life": 0.0
+    }
+   },
+   "act__v5": {
+    "type": "choice",
+    "choice": "speaks_of_himself",
+    "confidence": 0.69,
+    "probabilities": {
+     "steers_him": 0.0,
+     "gives_news_of_him": 0.0,
+     "none_of_these": 0.0,
+     "predicts_his_fight": 0.0,
+     "assesses_him": 0.0,
+     "reports_an_event": 0.26,
+     "answers_for_him": 0.0,
+     "speaks_of_himself": 0.74,
+     "calls_him_out": 0.0
+    }
+   },
+   "firmness__v5": {
+    "type": "score",
+    "score": 3.95,
+    "confidence": 0.96,
+    "legend": {
+     "0": {
+      "summary": "No fact about him is asserted: only opinion, analysis or talk."
+     },
+     "1": {
+      "summary": "A wish or a demand: someone wants it or says it should happen.",
+      "signals": [
+       "a fighter asking for the fight",
+       "his camp demanding a rematch"
+      ]
+     },
+     "2": {
+      "summary": "A rumour: unnamed sources, a leak, 'talks', 'discussions', 'plans'.",
+      "signals": [
+       "a podcaster says the promotion is discussing it",
+       "'sources say'"
+      ]
+     },
+     "3": {
+      "summary": "Reported: a named outlet or journalist states it, citing sources.",
+      "signals": [
+       "'ESPN reports that...'"
+      ]
+     },
+     "4": {
+      "summary": "Official or done: the promotion or he himself states it, or it has happened.",
+      "signals": [
+       "the promotion announces the bout",
+       "he posts that he signed",
+       "a fight result"
+      ]
+     }
+    },
+    "probabilities": {
+     "0": 0.01,
+     "1": 0.0,
+     "2": 0.0,
+     "3": 0.0,
+     "4": 0.99
+    }
+   },
+   "fact__f1": {
+    "type": "choice",
+    "choice": "result",
+    "confidence": 0.95,
+    "probabilities": {
+     "no_fact": 0.05,
+     "next_fight": 0.0,
+     "fight_week_event": 0.0,
+     "result": 0.95,
+     "health": 0.0,
+     "none_of_these": 0.0,
+     "career_move": 0.0,
+     "personal_life": 0.0
+    }
+   },
+   "fact__f2": {
+    "type": "choice",
+    "choice": "result",
+    "confidence": 0.98,
+    "probabilities": {
+     "next_fight": 0.0,
+     "no_fact": 0.01,
+     "fight_week_event": 0.0,
+     "result": 0.99,
+     "health": 0.0,
+     "none_of_these": 0.0,
+     "career_move": 0.0,
+     "personal_life": 0.0
+    }
+   },
+   "fact__f3": {
+    "type": "choice",
+    "choice": "result",
+    "confidence": 0.97,
+    "probabilities": {
+     "no_fact": 0.03,
+     "next_fight": 0.0,
+     "fight_week_event": 0.0,
+     "result": 0.97,
+     "health": 0.0,
+     "none_of_these": 0.0,
+     "career_move": 0.0,
+     "personal_life": 0.0
+    }
+   },
+   "act__a1": {
+    "type": "choice",
+    "choice": "speaks_of_himself",
+    "confidence": 0.7,
+    "probabilities": {
+     "steers_him": 0.0,
+     "gives_news_of_him": 0.0,
+     "only_mentions_him": 0.0,
+     "none_of_these": 0.0,
+     "predicts_his_fight": 0.0,
+     "assesses_him": 0.0,
+     "reports_an_event": 0.26,
+     "answers_for_him": 0.0,
+     "speaks_of_himself": 0.74,
+     "calls_him_out": 0.0
+    }
+   },
+   "act__a2": {
+    "type": "choice",
+    "choice": "speaks_of_himself",
+    "confidence": 0.77,
+    "probabilities": {
+     "steers_him": 0.0,
+     "gives_news_of_him": 0.0,
+     "only_mentions_him": 0.0,
+     "assesses_him": 0.0,
+     "predicts_his_fight": 0.0,
+     "answers_for_him": 0.0,
+     "reports_an_event": 0.2,
+     "none_of_these": 0.0,
+     "speaks_of_himself": 0.8,
+     "calls_him_out": 0.0
+    }
+   },
+   "firmness__four": {
+    "type": "score",
+    "score": 2.99,
+    "confidence": 0.99,
+    "legend": {
+     "0": {
+      "summary": "A wish or a demand: someone wants it or says it should happen.",
+      "signals": [
+       "a fighter asking for the fight",
+       "his camp demanding a rematch"
+      ]
+     },
+     "1": {
+      "summary": "A rumour: unnamed sources, a leak, 'talks', 'discussions', 'plans'.",
+      "signals": [
+       "a podcaster says the promotion is discussing it",
+       "'sources say'"
+      ]
+     },
+     "2": {
+      "summary": "Reported: a named outlet or journalist states it, citing sources.",
+      "signals": [
+       "'ESPN reports that...'"
+      ]
+     },
+     "3": {
+      "summary": "Official or done: the promotion or he himself states it, or it has happened.",
+      "signals": [
+       "the promotion announces the bout",
+       "he posts that he signed",
+       "a fight result"
+      ]
+     }
+    },
+    "probabilities": {
+     "0": 0.0,
+     "1": 0.0,
+     "2": 0.0,
+     "3": 1.0
+    }
+   }
+  },
+  "605": {
+   "fact__v5": {
+    "type": "choice",
+    "choice": "next_fight",
+    "confidence": 1.0,
+    "probabilities": {
+     "none_of_these": 0.0,
+     "personal_life": 0.0,
+     "fight_week_event": 0.0,
+     "result": 0.0,
+     "no_fact": 0.0,
+     "career_move": 0.0,
+     "health": 0.0,
+     "next_fight": 1.0
+    }
+   },
+   "act__v5": {
+    "type": "choice",
+    "choice": "reports_an_event",
+    "confidence": 1.0,
+    "probabilities": {
+     "assesses_him": 0.0,
+     "steers_him": 0.0,
+     "gives_news_of_him": 0.0,
+     "speaks_of_himself": 0.0,
+     "reports_an_event": 1.0,
+     "answers_for_him": 0.0,
+     "predicts_his_fight": 0.0,
+     "none_of_these": 0.0,
+     "calls_him_out": 0.0
+    }
+   },
+   "firmness__v5": {
+    "type": "score",
+    "score": 3.06,
+    "confidence": 0.91,
+    "legend": {
+     "0": {
+      "summary": "No fact about him is asserted: only opinion, analysis or talk."
+     },
+     "1": {
+      "summary": "A wish or a demand: someone wants it or says it should happen.",
+      "signals": [
+       "a fighter asking for the fight",
+       "his camp demanding a rematch"
+      ]
+     },
+     "2": {
+      "summary": "A rumour: unnamed sources, a leak, 'talks', 'discussions', 'plans'.",
+      "signals": [
+       "a podcaster says the promotion is discussing it",
+       "'sources say'"
+      ]
+     },
+     "3": {
+      "summary": "Reported: a named outlet or journalist states it, citing sources.",
+      "signals": [
+       "'ESPN reports that...'"
+      ]
+     },
+     "4": {
+      "summary": "Official or done: the promotion or he himself states it, or it has happened.",
+      "signals": [
+       "the promotion announces the bout",
+       "he posts that he signed",
+       "a fight result"
+      ]
+     }
+    },
+    "probabilities": {
+     "0": 0.0,
+     "1": 0.0,
+     "2": 0.01,
+     "3": 0.9,
+     "4": 0.09
+    }
+   },
+   "fact__f1": {
+    "type": "choice",
+    "choice": "next_fight",
+    "confidence": 0.99,
+    "probabilities": {
+     "none_of_these": 0.0,
+     "personal_life": 0.0,
+     "result": 0.0,
+     "fight_week_event": 0.01,
+     "no_fact": 0.0,
+     "career_move": 0.0,
+     "health": 0.0,
+     "next_fight": 0.99
+    }
+   },
+   "fact__f2": {
+    "type": "choice",
+    "choice": "next_fight",
+    "confidence": 1.0,
+    "probabilities": {
+     "health": 0.0,
+     "none_of_these": 0.0,
+     "fight_week_event": 0.0,
+     "result": 0.0,
+     "no_fact": 0.0,
+     "career_move": 0.0,
+     "personal_life": 0.0,
+     "next_fight": 1.0
+    }
+   },
+   "fact__f3": {
+    "type": "choice",
+    "choice": "next_fight",
+    "confidence": 0.97,
+    "probabilities": {
+     "personal_life": 0.0,
+     "health": 0.0,
+     "result": 0.0,
+     "fight_week_event": 0.01,
+     "no_fact": 0.01,
+     "career_move": 0.0,
+     "none_of_these": 0.0,
+     "next_fight": 0.98
+    }
+   },
+   "act__a1": {
+    "type": "choice",
+    "choice": "reports_an_event",
+    "confidence": 1.0,
+    "probabilities": {
+     "assesses_him": 0.0,
+     "steers_him": 0.0,
+     "gives_news_of_him": 0.0,
+     "speaks_of_himself": 0.0,
+     "answers_for_him": 0.0,
+     "reports_an_event": 1.0,
+     "predicts_his_fight": 0.0,
+     "only_mentions_him": 0.0,
+     "none_of_these": 0.0,
+     "calls_him_out": 0.0
+    }
+   },
+   "act__a2": {
+    "type": "choice",
+    "choice": "reports_an_event",
+    "confidence": 1.0,
+    "probabilities": {
+     "assesses_him": 0.0,
+     "steers_him": 0.0,
+     "gives_news_of_him": 0.0,
+     "speaks_of_himself": 0.0,
+     "reports_an_event": 1.0,
+     "answers_for_him": 0.0,
+     "predicts_his_fight": 0.0,
+     "only_mentions_him": 0.0,
+     "none_of_these": 0.0,
+     "calls_him_out": 0.0
+    }
+   },
+   "firmness__four": {
+    "type": "score",
+    "score": 2.08,
+    "confidence": 0.89,
+    "legend": {
+     "0": {
+      "summary": "A wish or a demand: someone wants it or says it should happen.",
+      "signals": [
+       "a fighter asking for the fight",
+       "his camp demanding a rematch"
+      ]
+     },
+     "1": {
+      "summary": "A rumour: unnamed sources, a leak, 'talks', 'discussions', 'plans'.",
+      "signals": [
+       "a podcaster says the promotion is discussing it",
+       "'sources say'"
+      ]
+     },
+     "2": {
+      "summary": "Reported: a named outlet or journalist states it, citing sources.",
+      "signals": [
+       "'ESPN reports that...'"
+      ]
+     },
+     "3": {
+      "summary": "Official or done: the promotion or he himself states it, or it has happened.",
+      "signals": [
+       "the promotion announces the bout",
+       "he posts that he signed",
+       "a fight result"
+      ]
+     }
+    },
+    "probabilities": {
+     "0": 0.0,
+     "1": 0.01,
+     "2": 0.9,
+     "3": 0.09
+    }
+   }
+  },
+  "500": {
+   "fact__v5": {
+    "type": "choice",
+    "choice": "next_fight",
+    "confidence": 0.78,
+    "probabilities": {
+     "no_fact": 0.13,
+     "next_fight": 0.81,
+     "fight_week_event": 0.05,
+     "result": 0.0,
+     "health": 0.0,
+     "none_of_these": 0.01,
+     "career_move": 0.0,
+     "personal_life": 0.0
+    }
+   },
+   "act__v5": {
+    "type": "choice",
+    "choice": "reports_an_event",
+    "confidence": 0.89,
+    "probabilities": {
+     "gives_news_of_him": 0.01,
+     "steers_him": 0.0,
+     "assesses_him": 0.0,
+     "predicts_his_fight": 0.0,
+     "none_of_these": 0.09,
+     "reports_an_event": 0.9,
+     "answers_for_him": 0.0,
+     "speaks_of_himself": 0.0,
+     "calls_him_out": 0.0
+    }
+   },
+   "firmness__v5": {
+    "type": "score",
+    "score": 3.48,
+    "confidence": 0.56,
+    "legend": {
+     "0": {
+      "summary": "No fact about him is asserted: only opinion, analysis or talk."
+     },
+     "1": {
+      "summary": "A wish or a demand: someone wants it or says it should happen.",
+      "signals": [
+       "a fighter asking for the fight",
+       "his camp demanding a rematch"
+      ]
+     },
+     "2": {
+      "summary": "A rumour: unnamed sources, a leak, 'talks', 'discussions', 'plans'.",
+      "signals": [
+       "a podcaster says the promotion is discussing it",
+       "'sources say'"
+      ]
+     },
+     "3": {
+      "summary": "Reported: a named outlet or journalist states it, citing sources.",
+      "signals": [
+       "'ESPN reports that...'"
+      ]
+     },
+     "4": {
+      "summary": "Official or done: the promotion or he himself states it, or it has happened.",
+      "signals": [
+       "the promotion announces the bout",
+       "he posts that he signed",
+       "a fight result"
+      ]
+     }
+    },
+    "probabilities": {
+     "0": 0.09,
+     "1": 0.0,
+     "2": 0.0,
+     "3": 0.15,
+     "4": 0.76
+    }
+   },
+   "fact__f1": {
+    "type": "choice",
+    "choice": "next_fight",
+    "confidence": 0.43,
+    "probabilities": {
+     "no_fact": 0.17,
+     "next_fight": 0.51,
+     "fight_week_event": 0.3,
+     "result": 0.0,
+     "health": 0.0,
+     "none_of_these": 0.02,
+     "career_move": 0.0,
+     "personal_life": 0.0
+    }
+   },
+   "fact__f2": {
+    "type": "choice",
+    "choice": "next_fight",
+    "confidence": 0.9,
+    "probabilities": {
+     "no_fact": 0.06,
+     "next_fight": 0.9,
+     "fight_week_event": 0.03,
+     "result": 0.0,
+     "health": 0.0,
+     "career_move": 0.0,
+     "none_of_these": 0.01,
+     "personal_life": 0.0
+    }
+   },
+   "fact__f3": {
+    "type": "choice",
+    "choice": "next_fight",
+    "confidence": 0.52,
+    "probabilities": {
+     "no_fact": 0.12,
+     "next_fight": 0.58,
+     "fight_week_event": 0.28,
+     "result": 0.0,
+     "health": 0.0,
+     "career_move": 0.0,
+     "none_of_these": 0.02,
+     "personal_life": 0.0
+    }
+   },
+   "act__a1": {
+    "type": "choice",
+    "choice": "only_mentions_him",
+    "confidence": 0.92,
+    "probabilities": {
+     "steers_him": 0.0,
+     "gives_news_of_him": 0.0,
+     "only_mentions_him": 0.93,
+     "assesses_him": 0.0,
+     "predicts_his_fight": 0.0,
+     "none_of_these": 0.0,
+     "reports_an_event": 0.07,
+     "answers_for_him": 0.0,
+     "speaks_of_himself": 0.0,
+     "calls_him_out": 0.0
+    }
+   },
+   "act__a2": {
+    "type": "choice",
+    "choice": "only_mentions_him",
+    "confidence": 0.95,
+    "probabilities": {
+     "gives_news_of_him": 0.0,
+     "steers_him": 0.0,
+     "only_mentions_him": 0.96,
+     "none_of_these": 0.0,
+     "predicts_his_fight": 0.0,
+     "assesses_him": 0.0,
+     "reports_an_event": 0.04,
+     "answers_for_him": 0.0,
+     "speaks_of_himself": 0.0,
+     "calls_him_out": 0.0
+    }
+   },
+   "firmness__four": {
+    "type": "score",
+    "score": 2.86,
+    "confidence": 0.86,
+    "legend": {
+     "0": {
+      "summary": "A wish or a demand: someone wants it or says it should happen.",
+      "signals": [
+       "a fighter asking for the fight",
+       "his camp demanding a rematch"
+      ]
+     },
+     "1": {
+      "summary": "A rumour: unnamed sources, a leak, 'talks', 'discussions', 'plans'.",
+      "signals": [
+       "a podcaster says the promotion is discussing it",
+       "'sources say'"
+      ]
+     },
+     "2": {
+      "summary": "Reported: a named outlet or journalist states it, citing sources.",
+      "signals": [
+       "'ESPN reports that...'"
+      ]
+     },
+     "3": {
+      "summary": "Official or done: the promotion or he himself states it, or it has happened.",
+      "signals": [
+       "the promotion announces the bout",
+       "he posts that he signed",
+       "a fight result"
+      ]
+     }
+    },
+    "probabilities": {
+     "0": 0.01,
+     "1": 0.0,
+     "2": 0.11,
+     "3": 0.88
+    }
+   }
+  },
+  "1260": {
+   "fact__v5": {
+    "type": "choice",
+    "choice": "result",
+    "confidence": 0.86,
+    "probabilities": {
+     "next_fight": 0.0,
+     "result": 0.88,
+     "health": 0.0,
+     "personal_life": 0.0,
+     "no_fact": 0.12,
+     "none_of_these": 0.0,
+     "fight_week_event": 0.0,
+     "career_move": 0.0
+    }
+   },
+   "act__v5": {
+    "type": "choice",
+    "choice": "speaks_of_himself",
+    "confidence": 0.42,
+    "probabilities": {
+     "reports_an_event": 0.04,
+     "speaks_of_himself": 0.5,
+     "answers_for_him": 0.0,
+     "steers_him": 0.05,
+     "calls_him_out": 0.01,
+     "assesses_him": 0.36,
+     "none_of_these": 0.03,
+     "predicts_his_fight": 0.0,
+     "gives_news_of_him": 0.01
+    }
+   },
+   "firmness__v5": {
+    "type": "score",
+    "score": 1.91,
+    "confidence": 0.0,
+    "legend": {
+     "0": {
+      "summary": "No fact about him is asserted: only opinion, analysis or talk."
+     },
+     "1": {
+      "summary": "A wish or a demand: someone wants it or says it should happen.",
+      "signals": [
+       "a fighter asking for the fight",
+       "his camp demanding a rematch"
+      ]
+     },
+     "2": {
+      "summary": "A rumour: unnamed sources, a leak, 'talks', 'discussions', 'plans'.",
+      "signals": [
+       "a podcaster says the promotion is discussing it",
+       "'sources say'"
+      ]
+     },
+     "3": {
+      "summary": "Reported: a named outlet or journalist states it, citing sources.",
+      "signals": [
+       "'ESPN reports that...'"
+      ]
+     },
+     "4": {
+      "summary": "Official or done: the promotion or he himself states it, or it has happened.",
+      "signals": [
+       "the promotion announces the bout",
+       "he posts that he signed",
+       "a fight result"
+      ]
+     }
+    },
+    "probabilities": {
+     "0": 0.49,
+     "1": 0.0,
+     "2": 0.0,
+     "3": 0.15,
+     "4": 0.36
+    }
+   },
+   "fact__f1": {
+    "type": "choice",
+    "choice": "result",
+    "confidence": 0.68,
+    "probabilities": {
+     "career_move": 0.0,
+     "result": 0.72,
+     "health": 0.0,
+     "personal_life": 0.0,
+     "no_fact": 0.27,
+     "none_of_these": 0.01,
+     "fight_week_event": 0.0,
+     "next_fight": 0.0
+    }
+   },
+   "fact__f2": {
+    "type": "choice",
+    "choice": "result",
+    "confidence": 0.88,
+    "probabilities": {
+     "career_move": 0.0,
+     "result": 0.9,
+     "health": 0.0,
+     "personal_life": 0.0,
+     "no_fact": 0.1,
+     "none_of_these": 0.0,
+     "fight_week_event": 0.0,
+     "next_fight": 0.0
+    }
+   },
+   "fact__f3": {
+    "type": "choice",
+    "choice": "result",
+    "confidence": 0.76,
+    "probabilities": {
+     "career_move": 0.0,
+     "result": 0.79,
+     "health": 0.0,
+     "personal_life": 0.0,
+     "no_fact": 0.2,
+     "none_of_these": 0.01,
+     "fight_week_event": 0.0,
+     "next_fight": 0.0
+    }
+   },
+   "act__a1": {
+    "type": "choice",
+    "choice": "speaks_of_himself",
+    "confidence": 0.33,
+    "probabilities": {
+     "reports_an_event": 0.05,
+     "speaks_of_himself": 0.4,
+     "answers_for_him": 0.0,
+     "steers_him": 0.04,
+     "calls_him_out": 0.01,
+     "assesses_him": 0.34,
+     "only_mentions_him": 0.13,
+     "none_of_these": 0.02,
+     "predicts_his_fight": 0.0,
+     "gives_news_of_him": 0.01
+    }
+   },
+   "act__a2": {
+    "type": "choice",
+    "choice": "speaks_of_himself",
+    "confidence": 0.56,
+    "probabilities": {
+     "steers_him": 0.03,
+     "speaks_of_himself": 0.61,
+     "answers_for_him": 0.0,
+     "reports_an_event": 0.05,
+     "calls_him_out": 0.01,
+     "assesses_him": 0.14,
+     "only_mentions_him": 0.12,
+     "predicts_his_fight": 0.0,
+     "none_of_these": 0.02,
+     "gives_news_of_him": 0.02
+    }
+   },
+   "firmness__four": {
+    "type": "score",
+    "score": 2.5,
+    "confidence": 0.5,
+    "legend": {
+     "0": {
+      "summary": "A wish or a demand: someone wants it or says it should happen.",
+      "signals": [
+       "a fighter asking for the fight",
+       "his camp demanding a rematch"
+      ]
+     },
+     "1": {
+      "summary": "A rumour: unnamed sources, a leak, 'talks', 'discussions', 'plans'.",
+      "signals": [
+       "a podcaster says the promotion is discussing it",
+       "'sources say'"
+      ]
+     },
+     "2": {
+      "summary": "Reported: a named outlet or journalist states it, citing sources.",
+      "signals": [
+       "'ESPN reports that...'"
+      ]
+     },
+     "3": {
+      "summary": "Official or done: the promotion or he himself states it, or it has happened.",
+      "signals": [
+       "the promotion announces the bout",
+       "he posts that he signed",
+       "a fight result"
+      ]
+     }
+    },
+    "probabilities": {
+     "0": 0.03,
+     "1": 0.01,
+     "2": 0.41,
+     "3": 0.55
+    }
+   }
+  },
+  "1172": {
+   "fact__v5": {
+    "type": "choice",
+    "choice": "result",
+    "confidence": 0.44,
+    "probabilities": {
+     "result": 0.52,
+     "next_fight": 0.02,
+     "no_fact": 0.03,
+     "none_of_these": 0.0,
+     "career_move": 0.0,
+     "fight_week_event": 0.0,
+     "health": 0.43,
+     "personal_life": 0.0
+    }
+   },
+   "act__v5": {
+    "type": "choice",
+    "choice": "speaks_of_himself",
+    "confidence": 1.0,
+    "probabilities": {
+     "steers_him": 0.0,
+     "answers_for_him": 0.0,
+     "none_of_these": 0.0,
+     "gives_news_of_him": 0.0,
+     "speaks_of_himself": 1.0,
+     "reports_an_event": 0.0,
+     "calls_him_out": 0.0,
+     "assesses_him": 0.0,
+     "predicts_his_fight": 0.0
+    }
+   },
+   "firmness__v5": {
+    "type": "score",
+    "score": 2.34,
+    "confidence": 0.0,
+    "legend": {
+     "0": {
+      "summary": "No fact about him is asserted: only opinion, analysis or talk."
+     },
+     "1": {
+      "summary": "A wish or a demand: someone wants it or says it should happen.",
+      "signals": [
+       "a fighter asking for the fight",
+       "his camp demanding a rematch"
+      ]
+     },
+     "2": {
+      "summary": "A rumour: unnamed sources, a leak, 'talks', 'discussions', 'plans'.",
+      "signals": [
+       "a podcaster says the promotion is discussing it",
+       "'sources say'"
+      ]
+     },
+     "3": {
+      "summary": "Reported: a named outlet or journalist states it, citing sources.",
+      "signals": [
+       "'ESPN reports that...'"
+      ]
+     },
+     "4": {
+      "summary": "Official or done: the promotion or he himself states it, or it has happened.",
+      "signals": [
+       "the promotion announces the bout",
+       "he posts that he signed",
+       "a fight result"
+      ]
+     }
+    },
+    "probabilities": {
+     "0": 0.09,
+     "1": 0.42,
+     "2": 0.0,
+     "3": 0.04,
+     "4": 0.45
+    }
+   },
+   "fact__f1": {
+    "type": "choice",
+    "choice": "health",
+    "confidence": 0.5,
+    "probabilities": {
+     "result": 0.28,
+     "next_fight": 0.03,
+     "no_fact": 0.12,
+     "none_of_these": 0.01,
+     "career_move": 0.0,
+     "fight_week_event": 0.0,
+     "health": 0.56,
+     "personal_life": 0.0
+    }
+   },
+   "fact__f2": {
+    "type": "choice",
+    "choice": "result",
+    "confidence": 0.58,
+    "probabilities": {
+     "result": 0.64,
+     "next_fight": 0.01,
+     "none_of_these": 0.0,
+     "no_fact": 0.04,
+     "career_move": 0.0,
+     "fight_week_event": 0.0,
+     "health": 0.31,
+     "personal_life": 0.0
+    }
+   },
+   "fact__f3": {
+    "type": "choice",
+    "choice": "health",
+    "confidence": 0.37,
+    "probabilities": {
+     "result": 0.42,
+     "next_fight": 0.03,
+     "no_fact": 0.08,
+     "none_of_these": 0.01,
+     "career_move": 0.0,
+     "fight_week_event": 0.0,
+     "health": 0.46,
+     "personal_life": 0.0
+    }
+   },
+   "act__a1": {
+    "type": "choice",
+    "choice": "speaks_of_himself",
+    "confidence": 1.0,
+    "probabilities": {
+     "steers_him": 0.0,
+     "only_mentions_him": 0.0,
+     "assesses_him": 0.0,
+     "none_of_these": 0.0,
+     "gives_news_of_him": 0.0,
+     "speaks_of_himself": 1.0,
+     "reports_an_event": 0.0,
+     "calls_him_out": 0.0,
+     "answers_for_him": 0.0,
+     "predicts_his_fight": 0.0
+    }
+   },
+   "act__a2": {
+    "type": "choice",
+    "choice": "speaks_of_himself",
+    "confidence": 1.0,
+    "probabilities": {
+     "steers_him": 0.0,
+     "assesses_him": 0.0,
+     "answers_for_him": 0.0,
+     "none_of_these": 0.0,
+     "gives_news_of_him": 0.0,
+     "speaks_of_himself": 1.0,
+     "reports_an_event": 0.0,
+     "calls_him_out": 0.0,
+     "predicts_his_fight": 0.0,
+     "only_mentions_him": 0.0
+    }
+   },
+   "firmness__four": {
+    "type": "score",
+    "score": 1.29,
+    "confidence": 0.0,
+    "legend": {
+     "0": {
+      "summary": "A wish or a demand: someone wants it or says it should happen.",
+      "signals": [
+       "a fighter asking for the fight",
+       "his camp demanding a rematch"
+      ]
+     },
+     "1": {
+      "summary": "A rumour: unnamed sources, a leak, 'talks', 'discussions', 'plans'.",
+      "signals": [
+       "a podcaster says the promotion is discussing it",
+       "'sources say'"
+      ]
+     },
+     "2": {
+      "summary": "Reported: a named outlet or journalist states it, citing sources.",
+      "signals": [
+       "'ESPN reports that...'"
+      ]
+     },
+     "3": {
+      "summary": "Official or done: the promotion or he himself states it, or it has happened.",
+      "signals": [
+       "the promotion announces the bout",
+       "he posts that he signed",
+       "a fight result"
+      ]
+     }
+    },
+    "probabilities": {
+     "0": 0.55,
+     "1": 0.01,
+     "2": 0.03,
+     "3": 0.41
+    }
+   }
+  },
+  "774": {
+   "fact__v5": {
+    "type": "choice",
+    "choice": "no_fact",
+    "confidence": 0.4,
+    "probabilities": {
+     "personal_life": 0.0,
+     "none_of_these": 0.02,
+     "health": 0.0,
+     "next_fight": 0.15,
+     "fight_week_event": 0.03,
+     "career_move": 0.0,
+     "result": 0.32,
+     "no_fact": 0.48
+    }
+   },
+   "act__v5": {
+    "type": "choice",
+    "choice": "speaks_of_himself",
+    "confidence": 0.84,
+    "probabilities": {
+     "calls_him_out": 0.0,
+     "answers_for_him": 0.0,
+     "none_of_these": 0.0,
+     "reports_an_event": 0.08,
+     "speaks_of_himself": 0.86,
+     "steers_him": 0.0,
+     "gives_news_of_him": 0.03,
+     "assesses_him": 0.03,
+     "predicts_his_fight": 0.0
+    }
+   },
+   "firmness__v5": {
+    "type": "score",
+    "score": 3.2,
+    "confidence": 0.33,
+    "legend": {
+     "0": {
+      "summary": "No fact about him is asserted: only opinion, analysis or talk."
+     },
+     "1": {
+      "summary": "A wish or a demand: someone wants it or says it should happen.",
+      "signals": [
+       "a fighter asking for the fight",
+       "his camp demanding a rematch"
+      ]
+     },
+     "2": {
+      "summary": "A rumour: unnamed sources, a leak, 'talks', 'discussions', 'plans'.",
+      "signals": [
+       "a podcaster says the promotion is discussing it",
+       "'sources say'"
+      ]
+     },
+     "3": {
+      "summary": "Reported: a named outlet or journalist states it, citing sources.",
+      "signals": [
+       "'ESPN reports that...'"
+      ]
+     },
+     "4": {
+      "summary": "Official or done: the promotion or he himself states it, or it has happened.",
+      "signals": [
+       "the promotion announces the bout",
+       "he posts that he signed",
+       "a fight result"
+      ]
+     }
+    },
+    "probabilities": {
+     "0": 0.04,
+     "1": 0.17,
+     "2": 0.0,
+     "3": 0.14,
+     "4": 0.65
+    }
+   },
+   "fact__f1": {
+    "type": "choice",
+    "choice": "no_fact",
+    "confidence": 0.41,
+    "probabilities": {
+     "personal_life": 0.0,
+     "health": 0.0,
+     "next_fight": 0.15,
+     "none_of_these": 0.01,
+     "fight_week_event": 0.04,
+     "result": 0.32,
+     "no_fact": 0.48,
+     "career_move": 0.0
+    }
+   },
+   "fact__f2": {
+    "type": "choice",
+    "choice": "no_fact",
+    "confidence": 0.35,
+    "probabilities": {
+     "personal_life": 0.0,
+     "none_of_these": 0.03,
+     "health": 0.0,
+     "next_fight": 0.13,
+     "fight_week_event": 0.04,
+     "no_fact": 0.43,
+     "career_move": 0.0,
+     "result": 0.37
+    }
+   },
+   "fact__f3": {
+    "type": "choice",
+    "choice": "no_fact",
+    "confidence": 0.41,
+    "probabilities": {
+     "personal_life": 0.0,
+     "health": 0.0,
+     "next_fight": 0.15,
+     "none_of_these": 0.02,
+     "fight_week_event": 0.04,
+     "result": 0.3,
+     "no_fact": 0.49,
+     "career_move": 0.0
+    }
+   },
+   "act__a1": {
+    "type": "choice",
+    "choice": "speaks_of_himself",
+    "confidence": 0.85,
+    "probabilities": {
+     "predicts_his_fight": 0.0,
+     "calls_him_out": 0.0,
+     "none_of_these": 0.0,
+     "reports_an_event": 0.06,
+     "only_mentions_him": 0.0,
+     "speaks_of_himself": 0.86,
+     "steers_him": 0.0,
+     "gives_news_of_him": 0.05,
+     "assesses_him": 0.03,
+     "answers_for_him": 0.0
+    }
+   },
+   "act__a2": {
+    "type": "choice",
+    "choice": "speaks_of_himself",
+    "confidence": 0.86,
+    "probabilities": {
+     "calls_him_out": 0.0,
+     "predicts_his_fight": 0.0,
+     "none_of_these": 0.0,
+     "reports_an_event": 0.06,
+     "only_mentions_him": 0.0,
+     "speaks_of_himself": 0.88,
+     "steers_him": 0.0,
+     "gives_news_of_him": 0.04,
+     "answers_for_him": 0.0,
+     "assesses_him": 0.02
+    }
+   },
+   "firmness__four": {
+    "type": "score",
+    "score": 1.87,
+    "confidence": 0.0,
+    "legend": {
+     "0": {
+      "summary": "A wish or a demand: someone wants it or says it should happen.",
+      "signals": [
+       "a fighter asking for the fight",
+       "his camp demanding a rematch"
+      ]
+     },
+     "1": {
+      "summary": "A rumour: unnamed sources, a leak, 'talks', 'discussions', 'plans'.",
+      "signals": [
+       "a podcaster says the promotion is discussing it",
+       "'sources say'"
+      ]
+     },
+     "2": {
+      "summary": "Reported: a named outlet or journalist states it, citing sources.",
+      "signals": [
+       "'ESPN reports that...'"
+      ]
+     },
+     "3": {
+      "summary": "Official or done: the promotion or he himself states it, or it has happened.",
+      "signals": [
+       "the promotion announces the bout",
+       "he posts that he signed",
+       "a fight result"
+      ]
+     }
+    },
+    "probabilities": {
+     "0": 0.35,
+     "1": 0.0,
+     "2": 0.07,
+     "3": 0.58
+    }
+   }
+  },
+  "490": {
+   "fact__v5": {
+    "type": "choice",
+    "choice": "next_fight",
+    "confidence": 0.99,
+    "probabilities": {
+     "fight_week_event": 0.0,
+     "result": 0.01,
+     "health": 0.0,
+     "none_of_these": 0.0,
+     "next_fight": 0.99,
+     "no_fact": 0.0,
+     "personal_life": 0.0,
+     "career_move": 0.0
+    }
+   },
+   "act__v5": {
+    "type": "choice",
+    "choice": "reports_an_event",
+    "confidence": 0.47,
+    "probabilities": {
+     "calls_him_out": 0.0,
+     "gives_news_of_him": 0.04,
+     "assesses_him": 0.0,
+     "reports_an_event": 0.54,
+     "speaks_of_himself": 0.42,
+     "none_of_these": 0.0,
+     "steers_him": 0.0,
+     "answers_for_him": 0.0,
+     "predicts_his_fight": 0.0
+    }
+   },
+   "firmness__v5": {
+    "type": "score",
+    "score": 3.8,
+    "confidence": 0.83,
+    "legend": {
+     "0": {
+      "summary": "No fact about him is asserted: only opinion, analysis or talk."
+     },
+     "1": {
+      "summary": "A wish or a demand: someone wants it or says it should happen.",
+      "signals": [
+       "a fighter asking for the fight",
+       "his camp demanding a rematch"
+      ]
+     },
+     "2": {
+      "summary": "A rumour: unnamed sources, a leak, 'talks', 'discussions', 'plans'.",
+      "signals": [
+       "a podcaster says the promotion is discussing it",
+       "'sources say'"
+      ]
+     },
+     "3": {
+      "summary": "Reported: a named outlet or journalist states it, citing sources.",
+      "signals": [
+       "'ESPN reports that...'"
+      ]
+     },
+     "4": {
+      "summary": "Official or done: the promotion or he himself states it, or it has happened.",
+      "signals": [
+       "the promotion announces the bout",
+       "he posts that he signed",
+       "a fight result"
+      ]
+     }
+    },
+    "probabilities": {
+     "0": 0.0,
+     "1": 0.06,
+     "2": 0.0,
+     "3": 0.01,
+     "4": 0.93
+    }
+   },
+   "fact__f1": {
+    "type": "choice",
+    "choice": "next_fight",
+    "confidence": 0.88,
+    "probabilities": {
+     "fight_week_event": 0.05,
+     "result": 0.01,
+     "none_of_these": 0.0,
+     "health": 0.0,
+     "next_fight": 0.91,
+     "no_fact": 0.02,
+     "personal_life": 0.01,
+     "career_move": 0.0
+    }
+   },
+   "fact__f2": {
+    "type": "choice",
+    "choice": "next_fight",
+    "confidence": 0.99,
+    "probabilities": {
+     "fight_week_event": 0.0,
+     "result": 0.0,
+     "health": 0.0,
+     "none_of_these": 0.0,
+     "next_fight": 1.0,
+     "no_fact": 0.0,
+     "personal_life": 0.0,
+     "career_move": 0.0
+    }
+   },
+   "fact__f3": {
+    "type": "choice",
+    "choice": "next_fight",
+    "confidence": 0.9,
+    "probabilities": {
+     "fight_week_event": 0.05,
+     "result": 0.01,
+     "health": 0.0,
+     "none_of_these": 0.0,
+     "next_fight": 0.91,
+     "no_fact": 0.02,
+     "personal_life": 0.01,
+     "career_move": 0.0
+    }
+   },
+   "act__a1": {
+    "type": "choice",
+    "choice": "speaks_of_himself",
+    "confidence": 0.46,
+    "probabilities": {
+     "calls_him_out": 0.0,
+     "gives_news_of_him": 0.05,
+     "assesses_him": 0.0,
+     "only_mentions_him": 0.0,
+     "reports_an_event": 0.43,
+     "speaks_of_himself": 0.52,
+     "none_of_these": 0.0,
+     "steers_him": 0.0,
+     "answers_for_him": 0.0,
+     "predicts_his_fight": 0.0
+    }
+   },
+   "act__a2": {
+    "type": "choice",
+    "choice": "reports_an_event",
+    "confidence": 0.48,
+    "probabilities": {
+     "predicts_his_fight": 0.0,
+     "gives_news_of_him": 0.03,
+     "assesses_him": 0.0,
+     "only_mentions_him": 0.0,
+     "reports_an_event": 0.54,
+     "speaks_of_himself": 0.43,
+     "none_of_these": 0.0,
+     "steers_him": 0.0,
+     "answers_for_him": 0.0,
+     "calls_him_out": 0.0
+    }
+   },
+   "firmness__four": {
+    "type": "score",
+    "score": 2.77,
+    "confidence": 0.77,
+    "legend": {
+     "0": {
+      "summary": "A wish or a demand: someone wants it or says it should happen.",
+      "signals": [
+       "a fighter asking for the fight",
+       "his camp demanding a rematch"
+      ]
+     },
+     "1": {
+      "summary": "A rumour: unnamed sources, a leak, 'talks', 'discussions', 'plans'.",
+      "signals": [
+       "a podcaster says the promotion is discussing it",
+       "'sources say'"
+      ]
+     },
+     "2": {
+      "summary": "Reported: a named outlet or journalist states it, citing sources.",
+      "signals": [
+       "'ESPN reports that...'"
+      ]
+     },
+     "3": {
+      "summary": "Official or done: the promotion or he himself states it, or it has happened.",
+      "signals": [
+       "the promotion announces the bout",
+       "he posts that he signed",
+       "a fight result"
+      ]
+     }
+    },
+    "probabilities": {
+     "0": 0.07,
+     "1": 0.0,
+     "2": 0.01,
+     "3": 0.92
+    }
+   }
+  },
+  "65": {
+   "fact__v5": {
+    "type": "choice",
+    "choice": "no_fact",
+    "confidence": 0.25,
+    "probabilities": {
+     "none_of_these": 0.05,
+     "health": 0.0,
+     "next_fight": 0.26,
+     "fight_week_event": 0.0,
+     "result": 0.32,
+     "career_move": 0.01,
+     "personal_life": 0.0,
+     "no_fact": 0.36
+    }
+   },
+   "act__v5": {
+    "type": "choice",
+    "choice": "assesses_him",
+    "confidence": 0.35,
+    "probabilities": {
+     "none_of_these": 0.12,
+     "speaks_of_himself": 0.0,
+     "answers_for_him": 0.0,
+     "predicts_his_fight": 0.33,
+     "gives_news_of_him": 0.03,
+     "steers_him": 0.0,
+     "calls_him_out": 0.0,
+     "reports_an_event": 0.09,
+     "assesses_him": 0.43
+    }
+   },
+   "firmness__v5": {
+    "type": "score",
+    "score": 2.63,
+    "confidence": 0.0,
+    "legend": {
+     "0": {
+      "summary": "No fact about him is asserted: only opinion, analysis or talk."
+     },
+     "1": {
+      "summary": "A wish or a demand: someone wants it or says it should happen.",
+      "signals": [
+       "a fighter asking for the fight",
+       "his camp demanding a rematch"
+      ]
+     },
+     "2": {
+      "summary": "A rumour: unnamed sources, a leak, 'talks', 'discussions', 'plans'.",
+      "signals": [
+       "a podcaster says the promotion is discussing it",
+       "'sources say'"
+      ]
+     },
+     "3": {
+      "summary": "Reported: a named outlet or journalist states it, citing sources.",
+      "signals": [
+       "'ESPN reports that...'"
+      ]
+     },
+     "4": {
+      "summary": "Official or done: the promotion or he himself states it, or it has happened.",
+      "signals": [
+       "the promotion announces the bout",
+       "he posts that he signed",
+       "a fight result"
+      ]
+     }
+    },
+    "probabilities": {
+     "0": 0.33,
+     "1": 0.0,
+     "2": 0.0,
+     "3": 0.03,
+     "4": 0.64
+    }
+   },
+   "fact__f1": {
+    "type": "choice",
+    "choice": "no_fact",
+    "confidence": 0.42,
+    "probabilities": {
+     "none_of_these": 0.05,
+     "health": 0.0,
+     "next_fight": 0.11,
+     "fight_week_event": 0.01,
+     "result": 0.32,
+     "career_move": 0.02,
+     "personal_life": 0.0,
+     "no_fact": 0.49
+    }
+   },
+   "fact__f2": {
+    "type": "choice",
+    "choice": "result",
+    "confidence": 0.31,
+    "probabilities": {
+     "none_of_these": 0.05,
+     "health": 0.0,
+     "next_fight": 0.17,
+     "fight_week_event": 0.0,
+     "result": 0.4,
+     "career_move": 0.01,
+     "personal_life": 0.0,
+     "no_fact": 0.37
+    }
+   },
+   "fact__f3": {
+    "type": "choice",
+    "choice": "no_fact",
+    "confidence": 0.39,
+    "probabilities": {
+     "none_of_these": 0.05,
+     "fight_week_event": 0.01,
+     "next_fight": 0.09,
+     "health": 0.0,
+     "result": 0.37,
+     "career_move": 0.01,
+     "personal_life": 0.0,
+     "no_fact": 0.47000000000000003
+    }
+   },
+   "act__a1": {
+    "type": "choice",
+    "choice": "only_mentions_him",
+    "confidence": 0.48,
+    "probabilities": {
+     "none_of_these": 0.01,
+     "speaks_of_himself": 0.0,
+     "steers_him": 0.0,
+     "predicts_his_fight": 0.17,
+     "gives_news_of_him": 0.0,
+     "answers_for_him": 0.0,
+     "calls_him_out": 0.0,
+     "reports_an_event": 0.03,
+     "assesses_him": 0.25,
+     "only_mentions_him": 0.54
+    }
+   },
+   "act__a2": {
+    "type": "choice",
+    "choice": "only_mentions_him",
+    "confidence": 0.79,
+    "probabilities": {
+     "none_of_these": 0.01,
+     "speaks_of_himself": 0.0,
+     "steers_him": 0.0,
+     "predicts_his_fight": 0.07,
+     "calls_him_out": 0.0,
+     "gives_news_of_him": 0.0,
+     "answers_for_him": 0.0,
+     "reports_an_event": 0.03,
+     "assesses_him": 0.07,
+     "only_mentions_him": 0.81
+    }
+   },
+   "firmness__four": {
+    "type": "score",
+    "score": 2.56,
+    "confidence": 0.56,
+    "legend": {
+     "0": {
+      "summary": "A wish or a demand: someone wants it or says it should happen.",
+      "signals": [
+       "a fighter asking for the fight",
+       "his camp demanding a rematch"
+      ]
+     },
+     "1": {
+      "summary": "A rumour: unnamed sources, a leak, 'talks', 'discussions', 'plans'.",
+      "signals": [
+       "a podcaster says the promotion is discussing it",
+       "'sources say'"
+      ]
+     },
+     "2": {
+      "summary": "Reported: a named outlet or journalist states it, citing sources.",
+      "signals": [
+       "'ESPN reports that...'"
+      ]
+     },
+     "3": {
+      "summary": "Official or done: the promotion or he himself states it, or it has happened.",
+      "signals": [
+       "the promotion announces the bout",
+       "he posts that he signed",
+       "a fight result"
+      ]
+     }
+    },
+    "probabilities": {
+     "0": 0.11,
+     "1": 0.02,
+     "2": 0.07,
+     "3": 0.8
+    }
+   }
+  },
+  "247": {
+   "fact__v5": {
+    "type": "choice",
+    "choice": "no_fact",
+    "confidence": 0.93,
+    "probabilities": {
+     "health": 0.0,
+     "personal_life": 0.0,
+     "none_of_these": 0.01,
+     "result": 0.0,
+     "fight_week_event": 0.0,
+     "next_fight": 0.04,
+     "no_fact": 0.95,
+     "career_move": 0.0
+    }
+   },
+   "act__v5": {
+    "type": "choice",
+    "choice": "assesses_him",
+    "confidence": 0.65,
+    "probabilities": {
+     "speaks_of_himself": 0.0,
+     "reports_an_event": 0.02,
+     "gives_news_of_him": 0.0,
+     "none_of_these": 0.05,
+     "predicts_his_fight": 0.17,
+     "steers_him": 0.07,
+     "answers_for_him": 0.0,
+     "assesses_him": 0.69,
+     "calls_him_out": 0.0
+    }
+   },
+   "firmness__v5": {
+    "type": "score",
+    "score": 0.79,
+    "confidence": 0.34,
+    "legend": {
+     "0": {
+      "summary": "No fact about him is asserted: only opinion, analysis or talk."
+     },
+     "1": {
+      "summary": "A wish or a demand: someone wants it or says it should happen.",
+      "signals": [
+       "a fighter asking for the fight",
+       "his camp demanding a rematch"
+      ]
+     },
+     "2": {
+      "summary": "A rumour: unnamed sources, a leak, 'talks', 'discussions', 'plans'.",
+      "signals": [
+       "a podcaster says the promotion is discussing it",
+       "'sources say'"
+      ]
+     },
+     "3": {
+      "summary": "Reported: a named outlet or journalist states it, citing sources.",
+      "signals": [
+       "'ESPN reports that...'"
+      ]
+     },
+     "4": {
+      "summary": "Official or done: the promotion or he himself states it, or it has happened.",
+      "signals": [
+       "the promotion announces the bout",
+       "he posts that he signed",
+       "a fight result"
+      ]
+     }
+    },
+    "probabilities": {
+     "0": 0.64,
+     "1": 0.03,
+     "2": 0.23,
+     "3": 0.1,
+     "4": 0.0
+    }
+   },
+   "fact__f1": {
+    "type": "choice",
+    "choice": "no_fact",
+    "confidence": 0.95,
+    "probabilities": {
+     "health": 0.0,
+     "personal_life": 0.0,
+     "none_of_these": 0.01,
+     "result": 0.0,
+     "fight_week_event": 0.0,
+     "next_fight": 0.03,
+     "no_fact": 0.96,
+     "career_move": 0.0
+    }
+   },
+   "fact__f2": {
+    "type": "choice",
+    "choice": "no_fact",
+    "confidence": 0.96,
+    "probabilities": {
+     "health": 0.0,
+     "personal_life": 0.0,
+     "none_of_these": 0.0,
+     "fight_week_event": 0.0,
+     "next_fight": 0.03,
+     "result": 0.0,
+     "no_fact": 0.97,
+     "career_move": 0.0
+    }
+   },
+   "fact__f3": {
+    "type": "choice",
+    "choice": "no_fact",
+    "confidence": 0.96,
+    "probabilities": {
+     "health": 0.0,
+     "personal_life": 0.0,
+     "none_of_these": 0.0,
+     "result": 0.0,
+     "next_fight": 0.03,
+     "fight_week_event": 0.0,
+     "career_move": 0.0,
+     "no_fact": 0.97
+    }
+   },
+   "act__a1": {
+    "type": "choice",
+    "choice": "assesses_him",
+    "confidence": 0.4,
+    "probabilities": {
+     "speaks_of_himself": 0.0,
+     "reports_an_event": 0.01,
+     "gives_news_of_him": 0.0,
+     "none_of_these": 0.01,
+     "predicts_his_fight": 0.11,
+     "steers_him": 0.07,
+     "answers_for_him": 0.0,
+     "assesses_him": 0.45,
+     "calls_him_out": 0.0,
+     "only_mentions_him": 0.35
+    }
+   },
+   "act__a2": {
+    "type": "choice",
+    "choice": "assesses_him",
+    "confidence": 0.62,
+    "probabilities": {
+     "speaks_of_himself": 0.0,
+     "reports_an_event": 0.0,
+     "gives_news_of_him": 0.0,
+     "none_of_these": 0.0,
+     "predicts_his_fight": 0.07,
+     "steers_him": 0.07,
+     "answers_for_him": 0.0,
+     "assesses_him": 0.66,
+     "calls_him_out": 0.0,
+     "only_mentions_him": 0.2
+    }
+   },
+   "firmness__four": {
+    "type": "score",
+    "score": 1.13,
+    "confidence": 0.67,
+    "legend": {
+     "0": {
+      "summary": "A wish or a demand: someone wants it or says it should happen.",
+      "signals": [
+       "a fighter asking for the fight",
+       "his camp demanding a rematch"
+      ]
+     },
+     "1": {
+      "summary": "A rumour: unnamed sources, a leak, 'talks', 'discussions', 'plans'.",
+      "signals": [
+       "a podcaster says the promotion is discussing it",
+       "'sources say'"
+      ]
+     },
+     "2": {
+      "summary": "Reported: a named outlet or journalist states it, citing sources.",
+      "signals": [
+       "'ESPN reports that...'"
+      ]
+     },
+     "3": {
+      "summary": "Official or done: the promotion or he himself states it, or it has happened.",
+      "signals": [
+       "the promotion announces the bout",
+       "he posts that he signed",
+       "a fight result"
+      ]
+     }
+    },
+    "probabilities": {
+     "0": 0.1,
+     "1": 0.67,
+     "2": 0.22,
+     "3": 0.01
+    }
+   }
+  }
+ },
+ "errors": []
+}

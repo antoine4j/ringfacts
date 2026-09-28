@@ -1,0 +1,3049 @@
+{
+ "label": "v6-held",
+ "variants": "variants/v6.json",
+ "part": "held_back",
+ "model": "jev-1.13.0",
+ "answers": {
+  "342": {
+   "centrality": {
+    "type": "score",
+    "score": 1.99,
+    "confidence": 0.99,
+    "legend": {
+     "0": {
+      "summary": "He is not in the article's content at all.",
+      "signals": [
+       "his name appears only in links, navigation, a sidebar or 'read also'",
+       "the article's own text never names him; he appears only in other stories' headlines, links or tags"
+      ]
+     },
+     "1": {
+      "summary": "He is only mentioned.",
+      "signals": [
+       "his past fight retold as background in someone else's story",
+       "his name or one line in a list, card, ranking, results page or comparison",
+       "he talks about another fighter or the sport, not about himself, even at length",
+       "a few lines about him inside an article about someone else"
+      ]
+     },
+     "2": {
+      "summary": "He is one of several subjects and gets real content of his own, more than a line or two.",
+      "signals": [
+       "a preview or feature on a fight of his covering both fighters",
+       "an article sharing its attention between him and one or two others",
+       "another fighter's own news that the article ties to a fight between the two of them"
+      ]
+     },
+     "3": {
+      "summary": "He is the main subject.",
+      "signals": [
+       "the article is about something he did, or said about himself or his own career",
+       "the article is about something someone said, reported or predicted about him"
+      ]
+     }
+    },
+    "probabilities": {
+     "0": 0.0,
+     "1": 0.01,
+     "2": 0.99,
+     "3": 0.0
+    }
+   },
+   "source": {
+    "type": "choice",
+    "choice": "himself",
+    "confidence": 0.84,
+    "probabilities": {
+     "media": 0.060000000000000005,
+     "opponent_side": 0.0,
+     "his_team": 0.0,
+     "promotion": 0.0,
+     "none_of_these": 0.03,
+     "other_fighter": 0.02,
+     "his_manager": 0.0,
+     "himself": 0.86,
+     "fans": 0.0,
+     "no_one": 0.03
+    }
+   },
+   "act": {
+    "type": "choice",
+    "choice": "gives_news_of_him",
+    "confidence": 0.6,
+    "probabilities": {
+     "gives_news_of_him": 0.64,
+     "assesses_him": 0.0,
+     "answers_for_him": 0.0,
+     "calls_him_out": 0.0,
+     "predicts_his_fight": 0.0,
+     "none_of_these": 0.02,
+     "speaks_of_himself": 0.1,
+     "reports_an_event": 0.14,
+     "steers_him": 0.0,
+     "only_mentions_him": 0.1
+    }
+   },
+   "fact": {
+    "type": "choice",
+    "choice": "career_move",
+    "confidence": 0.52,
+    "probabilities": {
+     "career_move": 0.59,
+     "health": 0.0,
+     "no_fact": 0.02,
+     "personal_life": 0.16,
+     "none_of_these": 0.23,
+     "next_fight": 0.0,
+     "result": 0.0,
+     "fight_week_event": 0.0
+    }
+   },
+   "firmness__four": {
+    "type": "score",
+    "score": 2.84,
+    "confidence": 0.84,
+    "legend": {
+     "0": {
+      "summary": "A wish or a demand: someone wants it or says it should happen.",
+      "signals": [
+       "a fighter asking for the fight",
+       "his camp demanding a rematch"
+      ]
+     },
+     "1": {
+      "summary": "A rumour: unnamed sources, a leak, 'talks', 'discussions', 'plans'.",
+      "signals": [
+       "a podcaster says the promotion is discussing it",
+       "'sources say'"
+      ]
+     },
+     "2": {
+      "summary": "Reported: a named outlet or journalist states it, citing sources.",
+      "signals": [
+       "'ESPN reports that...'"
+      ]
+     },
+     "3": {
+      "summary": "Official or done: the promotion or he himself states it, or it has happened.",
+      "signals": [
+       "the promotion announces the bout",
+       "he posts that he signed",
+       "a fight result"
+      ]
+     }
+    },
+    "probabilities": {
+     "0": 0.0,
+     "1": 0.0,
+     "2": 0.15,
+     "3": 0.85
+    }
+   },
+   "reports_his_result": {
+    "type": "noul",
+    "noul": 0.02
+   },
+   "reports_his_next_fight": {
+    "type": "noul",
+    "noul": 0.03
+   },
+   "reports_his_health": {
+    "type": "noul",
+    "noul": 0.06
+   },
+   "he_speaks": {
+    "type": "noul",
+    "noul": 0.95
+   }
+  },
+  "203": {
+   "centrality": {
+    "type": "score",
+    "score": 3.0,
+    "confidence": 1.0,
+    "legend": {
+     "0": {
+      "summary": "He is not in the article's content at all.",
+      "signals": [
+       "his name appears only in links, navigation, a sidebar or 'read also'",
+       "the article's own text never names him; he appears only in other stories' headlines, links or tags"
+      ]
+     },
+     "1": {
+      "summary": "He is only mentioned.",
+      "signals": [
+       "his past fight retold as background in someone else's story",
+       "his name or one line in a list, card, ranking, results page or comparison",
+       "he talks about another fighter or the sport, not about himself, even at length",
+       "a few lines about him inside an article about someone else"
+      ]
+     },
+     "2": {
+      "summary": "He is one of several subjects and gets real content of his own, more than a line or two.",
+      "signals": [
+       "a preview or feature on a fight of his covering both fighters",
+       "an article sharing its attention between him and one or two others",
+       "another fighter's own news that the article ties to a fight between the two of them"
+      ]
+     },
+     "3": {
+      "summary": "He is the main subject.",
+      "signals": [
+       "the article is about something he did, or said about himself or his own career",
+       "the article is about something someone said, reported or predicted about him"
+      ]
+     }
+    },
+    "probabilities": {
+     "0": 0.0,
+     "1": 0.0,
+     "2": 0.0,
+     "3": 1.0
+    }
+   },
+   "source": {
+    "type": "choice",
+    "choice": "himself",
+    "confidence": 1.0,
+    "probabilities": {
+     "none_of_these": 0.0,
+     "no_one": 0.0,
+     "his_manager": 0.0,
+     "opponent_side": 0.0,
+     "his_team": 0.0,
+     "media": 0.0,
+     "other_fighter": 0.0,
+     "promotion": 0.0,
+     "himself": 1.0,
+     "fans": 0.0
+    }
+   },
+   "act": {
+    "type": "choice",
+    "choice": "speaks_of_himself",
+    "confidence": 0.98,
+    "probabilities": {
+     "none_of_these": 0.0,
+     "predicts_his_fight": 0.0,
+     "only_mentions_him": 0.0,
+     "gives_news_of_him": 0.01,
+     "calls_him_out": 0.0,
+     "assesses_him": 0.0,
+     "speaks_of_himself": 0.98,
+     "answers_for_him": 0.0,
+     "reports_an_event": 0.01,
+     "steers_him": 0.0
+    }
+   },
+   "fact": {
+    "type": "choice",
+    "choice": "personal_life",
+    "confidence": 0.62,
+    "probabilities": {
+     "none_of_these": 0.01,
+     "health": 0.03,
+     "next_fight": 0.24,
+     "personal_life": 0.67,
+     "no_fact": 0.02,
+     "fight_week_event": 0.0,
+     "career_move": 0.0,
+     "result": 0.03
+    }
+   },
+   "firmness__four": {
+    "type": "score",
+    "score": 2.86,
+    "confidence": 0.86,
+    "legend": {
+     "0": {
+      "summary": "A wish or a demand: someone wants it or says it should happen.",
+      "signals": [
+       "a fighter asking for the fight",
+       "his camp demanding a rematch"
+      ]
+     },
+     "1": {
+      "summary": "A rumour: unnamed sources, a leak, 'talks', 'discussions', 'plans'.",
+      "signals": [
+       "a podcaster says the promotion is discussing it",
+       "'sources say'"
+      ]
+     },
+     "2": {
+      "summary": "Reported: a named outlet or journalist states it, citing sources.",
+      "signals": [
+       "'ESPN reports that...'"
+      ]
+     },
+     "3": {
+      "summary": "Official or done: the promotion or he himself states it, or it has happened.",
+      "signals": [
+       "the promotion announces the bout",
+       "he posts that he signed",
+       "a fight result"
+      ]
+     }
+    },
+    "probabilities": {
+     "0": 0.04,
+     "1": 0.0,
+     "2": 0.03,
+     "3": 0.93
+    }
+   },
+   "reports_his_result": {
+    "type": "noul",
+    "noul": 0.63
+   },
+   "reports_his_next_fight": {
+    "type": "noul",
+    "noul": 0.97
+   },
+   "reports_his_health": {
+    "type": "noul",
+    "noul": 0.86
+   },
+   "he_speaks": {
+    "type": "noul",
+    "noul": 0.98
+   }
+  },
+  "771": {
+   "centrality": {
+    "type": "score",
+    "score": 3.0,
+    "confidence": 1.0,
+    "legend": {
+     "0": {
+      "summary": "He is not in the article's content at all.",
+      "signals": [
+       "his name appears only in links, navigation, a sidebar or 'read also'",
+       "the article's own text never names him; he appears only in other stories' headlines, links or tags"
+      ]
+     },
+     "1": {
+      "summary": "He is only mentioned.",
+      "signals": [
+       "his past fight retold as background in someone else's story",
+       "his name or one line in a list, card, ranking, results page or comparison",
+       "he talks about another fighter or the sport, not about himself, even at length",
+       "a few lines about him inside an article about someone else"
+      ]
+     },
+     "2": {
+      "summary": "He is one of several subjects and gets real content of his own, more than a line or two.",
+      "signals": [
+       "a preview or feature on a fight of his covering both fighters",
+       "an article sharing its attention between him and one or two others",
+       "another fighter's own news that the article ties to a fight between the two of them"
+      ]
+     },
+     "3": {
+      "summary": "He is the main subject.",
+      "signals": [
+       "the article is about something he did, or said about himself or his own career",
+       "the article is about something someone said, reported or predicted about him"
+      ]
+     }
+    },
+    "probabilities": {
+     "0": 0.0,
+     "1": 0.0,
+     "2": 0.0,
+     "3": 1.0
+    }
+   },
+   "source": {
+    "type": "choice",
+    "choice": "himself",
+    "confidence": 1.0,
+    "probabilities": {
+     "media": 0.0,
+     "fans": 0.0,
+     "promotion": 0.0,
+     "himself": 1.0,
+     "none_of_these": 0.0,
+     "his_team": 0.0,
+     "his_manager": 0.0,
+     "opponent_side": 0.0,
+     "no_one": 0.0,
+     "other_fighter": 0.0
+    }
+   },
+   "act": {
+    "type": "choice",
+    "choice": "speaks_of_himself",
+    "confidence": 1.0,
+    "probabilities": {
+     "predicts_his_fight": 0.0,
+     "gives_news_of_him": 0.0,
+     "assesses_him": 0.0,
+     "only_mentions_him": 0.0,
+     "reports_an_event": 0.0,
+     "speaks_of_himself": 1.0,
+     "none_of_these": 0.0,
+     "steers_him": 0.0,
+     "answers_for_him": 0.0,
+     "calls_him_out": 0.0
+    }
+   },
+   "fact": {
+    "type": "choice",
+    "choice": "personal_life",
+    "confidence": 0.89,
+    "probabilities": {
+     "fight_week_event": 0.0,
+     "result": 0.0,
+     "health": 0.0,
+     "none_of_these": 0.01,
+     "next_fight": 0.0,
+     "no_fact": 0.03,
+     "personal_life": 0.91,
+     "career_move": 0.05
+    }
+   },
+   "firmness__four": {
+    "type": "score",
+    "score": 2.79,
+    "confidence": 0.79,
+    "legend": {
+     "0": {
+      "summary": "A wish or a demand: someone wants it or says it should happen.",
+      "signals": [
+       "a fighter asking for the fight",
+       "his camp demanding a rematch"
+      ]
+     },
+     "1": {
+      "summary": "A rumour: unnamed sources, a leak, 'talks', 'discussions', 'plans'.",
+      "signals": [
+       "a podcaster says the promotion is discussing it",
+       "'sources say'"
+      ]
+     },
+     "2": {
+      "summary": "Reported: a named outlet or journalist states it, citing sources.",
+      "signals": [
+       "'ESPN reports that...'"
+      ]
+     },
+     "3": {
+      "summary": "Official or done: the promotion or he himself states it, or it has happened.",
+      "signals": [
+       "the promotion announces the bout",
+       "he posts that he signed",
+       "a fight result"
+      ]
+     }
+    },
+    "probabilities": {
+     "0": 0.03,
+     "1": 0.01,
+     "2": 0.1,
+     "3": 0.86
+    }
+   },
+   "reports_his_result": {
+    "type": "noul",
+    "noul": 0.04
+   },
+   "reports_his_next_fight": {
+    "type": "noul",
+    "noul": 0.03
+   },
+   "reports_his_health": {
+    "type": "noul",
+    "noul": 0.11
+   },
+   "he_speaks": {
+    "type": "noul",
+    "noul": 0.98
+   }
+  },
+  "204": {
+   "centrality": {
+    "type": "score",
+    "score": 0.64,
+    "confidence": 0.36,
+    "legend": {
+     "0": {
+      "summary": "He is not in the article's content at all.",
+      "signals": [
+       "his name appears only in links, navigation, a sidebar or 'read also'",
+       "the article's own text never names him; he appears only in other stories' headlines, links or tags"
+      ]
+     },
+     "1": {
+      "summary": "He is only mentioned.",
+      "signals": [
+       "his past fight retold as background in someone else's story",
+       "his name or one line in a list, card, ranking, results page or comparison",
+       "he talks about another fighter or the sport, not about himself, even at length",
+       "a few lines about him inside an article about someone else"
+      ]
+     },
+     "2": {
+      "summary": "He is one of several subjects and gets real content of his own, more than a line or two.",
+      "signals": [
+       "a preview or feature on a fight of his covering both fighters",
+       "an article sharing its attention between him and one or two others",
+       "another fighter's own news that the article ties to a fight between the two of them"
+      ]
+     },
+     "3": {
+      "summary": "He is the main subject.",
+      "signals": [
+       "the article is about something he did, or said about himself or his own career",
+       "the article is about something someone said, reported or predicted about him"
+      ]
+     }
+    },
+    "probabilities": {
+     "0": 0.51,
+     "1": 0.38,
+     "2": 0.07,
+     "3": 0.04
+    }
+   },
+   "source": {
+    "type": "choice",
+    "choice": "media",
+    "confidence": 0.85,
+    "probabilities": {
+     "his_manager": 0.0,
+     "his_team": 0.0,
+     "promotion": 0.0,
+     "fans": 0.0,
+     "media": 0.87,
+     "none_of_these": 0.01,
+     "opponent_side": 0.03,
+     "himself": 0.0,
+     "no_one": 0.07,
+     "other_fighter": 0.02
+    }
+   },
+   "act": {
+    "type": "choice",
+    "choice": "only_mentions_him",
+    "confidence": 0.33,
+    "probabilities": {
+     "assesses_him": 0.15,
+     "none_of_these": 0.04,
+     "reports_an_event": 0.02,
+     "speaks_of_himself": 0.0,
+     "steers_him": 0.0,
+     "gives_news_of_him": 0.0,
+     "calls_him_out": 0.0,
+     "predicts_his_fight": 0.39,
+     "answers_for_him": 0.0,
+     "only_mentions_him": 0.4
+    }
+   },
+   "fact": {
+    "type": "choice",
+    "choice": "no_fact",
+    "confidence": 0.93,
+    "probabilities": {
+     "next_fight": 0.02,
+     "none_of_these": 0.01,
+     "career_move": 0.02,
+     "health": 0.0,
+     "personal_life": 0.0,
+     "no_fact": 0.94,
+     "result": 0.0,
+     "fight_week_event": 0.01
+    }
+   },
+   "firmness__four": {
+    "type": "score",
+    "score": 1.54,
+    "confidence": 0.0,
+    "legend": {
+     "0": {
+      "summary": "A wish or a demand: someone wants it or says it should happen.",
+      "signals": [
+       "a fighter asking for the fight",
+       "his camp demanding a rematch"
+      ]
+     },
+     "1": {
+      "summary": "A rumour: unnamed sources, a leak, 'talks', 'discussions', 'plans'.",
+      "signals": [
+       "a podcaster says the promotion is discussing it",
+       "'sources say'"
+      ]
+     },
+     "2": {
+      "summary": "Reported: a named outlet or journalist states it, citing sources.",
+      "signals": [
+       "'ESPN reports that...'"
+      ]
+     },
+     "3": {
+      "summary": "Official or done: the promotion or he himself states it, or it has happened.",
+      "signals": [
+       "the promotion announces the bout",
+       "he posts that he signed",
+       "a fight result"
+      ]
+     }
+    },
+    "probabilities": {
+     "0": 0.35,
+     "1": 0.08,
+     "2": 0.25,
+     "3": 0.32
+    }
+   },
+   "reports_his_result": {
+    "type": "noul",
+    "noul": 0.03
+   },
+   "reports_his_next_fight": {
+    "type": "noul",
+    "noul": 0.11
+   },
+   "reports_his_health": {
+    "type": "noul",
+    "noul": 0.03
+   },
+   "he_speaks": {
+    "type": "noul",
+    "noul": 0.05
+   }
+  },
+  "385": {
+   "centrality": {
+    "type": "score",
+    "score": 2.62,
+    "confidence": 0.62,
+    "legend": {
+     "0": {
+      "summary": "He is not in the article's content at all.",
+      "signals": [
+       "his name appears only in links, navigation, a sidebar or 'read also'",
+       "the article's own text never names him; he appears only in other stories' headlines, links or tags"
+      ]
+     },
+     "1": {
+      "summary": "He is only mentioned.",
+      "signals": [
+       "his past fight retold as background in someone else's story",
+       "his name or one line in a list, card, ranking, results page or comparison",
+       "he talks about another fighter or the sport, not about himself, even at length",
+       "a few lines about him inside an article about someone else"
+      ]
+     },
+     "2": {
+      "summary": "He is one of several subjects and gets real content of his own, more than a line or two.",
+      "signals": [
+       "a preview or feature on a fight of his covering both fighters",
+       "an article sharing its attention between him and one or two others",
+       "another fighter's own news that the article ties to a fight between the two of them"
+      ]
+     },
+     "3": {
+      "summary": "He is the main subject.",
+      "signals": [
+       "the article is about something he did, or said about himself or his own career",
+       "the article is about something someone said, reported or predicted about him"
+      ]
+     }
+    },
+    "probabilities": {
+     "0": 0.0,
+     "1": 0.0,
+     "2": 0.38,
+     "3": 0.62
+    }
+   },
+   "source": {
+    "type": "choice",
+    "choice": "himself",
+    "confidence": 0.74,
+    "probabilities": {
+     "his_manager": 0.0,
+     "himself": 0.77,
+     "fans": 0.0,
+     "no_one": 0.0,
+     "media": 0.0,
+     "none_of_these": 0.0,
+     "other_fighter": 0.04,
+     "promotion": 0.0,
+     "his_team": 0.0,
+     "opponent_side": 0.19
+    }
+   },
+   "act": {
+    "type": "choice",
+    "choice": "answers_for_him",
+    "confidence": 0.85,
+    "probabilities": {
+     "gives_news_of_him": 0.01,
+     "assesses_him": 0.0,
+     "predicts_his_fight": 0.0,
+     "answers_for_him": 0.86,
+     "steers_him": 0.0,
+     "only_mentions_him": 0.0,
+     "speaks_of_himself": 0.0,
+     "reports_an_event": 0.0,
+     "none_of_these": 0.0,
+     "calls_him_out": 0.13
+    }
+   },
+   "fact": {
+    "type": "choice",
+    "choice": "health",
+    "confidence": 0.81,
+    "probabilities": {
+     "next_fight": 0.04,
+     "personal_life": 0.0,
+     "health": 0.83,
+     "result": 0.0,
+     "none_of_these": 0.0,
+     "no_fact": 0.13,
+     "fight_week_event": 0.0,
+     "career_move": 0.0
+    }
+   },
+   "firmness__four": {
+    "type": "score",
+    "score": 0.68,
+    "confidence": 0.32,
+    "legend": {
+     "0": {
+      "summary": "A wish or a demand: someone wants it or says it should happen.",
+      "signals": [
+       "a fighter asking for the fight",
+       "his camp demanding a rematch"
+      ]
+     },
+     "1": {
+      "summary": "A rumour: unnamed sources, a leak, 'talks', 'discussions', 'plans'.",
+      "signals": [
+       "a podcaster says the promotion is discussing it",
+       "'sources say'"
+      ]
+     },
+     "2": {
+      "summary": "Reported: a named outlet or journalist states it, citing sources.",
+      "signals": [
+       "'ESPN reports that...'"
+      ]
+     },
+     "3": {
+      "summary": "Official or done: the promotion or he himself states it, or it has happened.",
+      "signals": [
+       "the promotion announces the bout",
+       "he posts that he signed",
+       "a fight result"
+      ]
+     }
+    },
+    "probabilities": {
+     "0": 0.72,
+     "1": 0.04,
+     "2": 0.08,
+     "3": 0.16
+    }
+   },
+   "reports_his_result": {
+    "type": "noul",
+    "noul": 0.08
+   },
+   "reports_his_next_fight": {
+    "type": "noul",
+    "noul": 0.18
+   },
+   "reports_his_health": {
+    "type": "noul",
+    "noul": 0.83
+   },
+   "he_speaks": {
+    "type": "noul",
+    "noul": 0.96
+   }
+  },
+  "187": {
+   "centrality": {
+    "type": "score",
+    "score": 1.01,
+    "confidence": 0.99,
+    "legend": {
+     "0": {
+      "summary": "He is not in the article's content at all.",
+      "signals": [
+       "his name appears only in links, navigation, a sidebar or 'read also'",
+       "the article's own text never names him; he appears only in other stories' headlines, links or tags"
+      ]
+     },
+     "1": {
+      "summary": "He is only mentioned.",
+      "signals": [
+       "his past fight retold as background in someone else's story",
+       "his name or one line in a list, card, ranking, results page or comparison",
+       "he talks about another fighter or the sport, not about himself, even at length",
+       "a few lines about him inside an article about someone else"
+      ]
+     },
+     "2": {
+      "summary": "He is one of several subjects and gets real content of his own, more than a line or two.",
+      "signals": [
+       "a preview or feature on a fight of his covering both fighters",
+       "an article sharing its attention between him and one or two others",
+       "another fighter's own news that the article ties to a fight between the two of them"
+      ]
+     },
+     "3": {
+      "summary": "He is the main subject.",
+      "signals": [
+       "the article is about something he did, or said about himself or his own career",
+       "the article is about something someone said, reported or predicted about him"
+      ]
+     }
+    },
+    "probabilities": {
+     "0": 0.0,
+     "1": 0.99,
+     "2": 0.01,
+     "3": 0.0
+    }
+   },
+   "source": {
+    "type": "choice",
+    "choice": "other_fighter",
+    "confidence": 0.71,
+    "probabilities": {
+     "fans": 0.0,
+     "his_team": 0.0,
+     "media": 0.01,
+     "none_of_these": 0.01,
+     "himself": 0.01,
+     "promotion": 0.0,
+     "his_manager": 0.0,
+     "no_one": 0.06,
+     "other_fighter": 0.74,
+     "opponent_side": 0.17
+    }
+   },
+   "act": {
+    "type": "choice",
+    "choice": "only_mentions_him",
+    "confidence": 0.94,
+    "probabilities": {
+     "speaks_of_himself": 0.0,
+     "only_mentions_him": 0.95,
+     "steers_him": 0.0,
+     "answers_for_him": 0.0,
+     "none_of_these": 0.0,
+     "calls_him_out": 0.0,
+     "assesses_him": 0.01,
+     "reports_an_event": 0.02,
+     "gives_news_of_him": 0.01,
+     "predicts_his_fight": 0.01
+    }
+   },
+   "fact": {
+    "type": "choice",
+    "choice": "no_fact",
+    "confidence": 0.83,
+    "probabilities": {
+     "fight_week_event": 0.01,
+     "next_fight": 0.01,
+     "none_of_these": 0.01,
+     "career_move": 0.0,
+     "result": 0.12,
+     "no_fact": 0.85,
+     "personal_life": 0.0,
+     "health": 0.0
+    }
+   },
+   "firmness__four": {
+    "type": "score",
+    "score": 2.83,
+    "confidence": 0.83,
+    "legend": {
+     "0": {
+      "summary": "A wish or a demand: someone wants it or says it should happen.",
+      "signals": [
+       "a fighter asking for the fight",
+       "his camp demanding a rematch"
+      ]
+     },
+     "1": {
+      "summary": "A rumour: unnamed sources, a leak, 'talks', 'discussions', 'plans'.",
+      "signals": [
+       "a podcaster says the promotion is discussing it",
+       "'sources say'"
+      ]
+     },
+     "2": {
+      "summary": "Reported: a named outlet or journalist states it, citing sources.",
+      "signals": [
+       "'ESPN reports that...'"
+      ]
+     },
+     "3": {
+      "summary": "Official or done: the promotion or he himself states it, or it has happened.",
+      "signals": [
+       "the promotion announces the bout",
+       "he posts that he signed",
+       "a fight result"
+      ]
+     }
+    },
+    "probabilities": {
+     "0": 0.02,
+     "1": 0.01,
+     "2": 0.1,
+     "3": 0.87
+    }
+   },
+   "reports_his_result": {
+    "type": "noul",
+    "noul": 0.09
+   },
+   "reports_his_next_fight": {
+    "type": "noul",
+    "noul": 0.25
+   },
+   "reports_his_health": {
+    "type": "noul",
+    "noul": 0.03
+   },
+   "he_speaks": {
+    "type": "noul",
+    "noul": 0.06
+   }
+  },
+  "740": {
+   "centrality": {
+    "type": "score",
+    "score": 2.71,
+    "confidence": 0.71,
+    "legend": {
+     "0": {
+      "summary": "He is not in the article's content at all.",
+      "signals": [
+       "his name appears only in links, navigation, a sidebar or 'read also'",
+       "the article's own text never names him; he appears only in other stories' headlines, links or tags"
+      ]
+     },
+     "1": {
+      "summary": "He is only mentioned.",
+      "signals": [
+       "his past fight retold as background in someone else's story",
+       "his name or one line in a list, card, ranking, results page or comparison",
+       "he talks about another fighter or the sport, not about himself, even at length",
+       "a few lines about him inside an article about someone else"
+      ]
+     },
+     "2": {
+      "summary": "He is one of several subjects and gets real content of his own, more than a line or two.",
+      "signals": [
+       "a preview or feature on a fight of his covering both fighters",
+       "an article sharing its attention between him and one or two others",
+       "another fighter's own news that the article ties to a fight between the two of them"
+      ]
+     },
+     "3": {
+      "summary": "He is the main subject.",
+      "signals": [
+       "the article is about something he did, or said about himself or his own career",
+       "the article is about something someone said, reported or predicted about him"
+      ]
+     }
+    },
+    "probabilities": {
+     "0": 0.07,
+     "1": 0.04,
+     "2": 0.01,
+     "3": 0.88
+    }
+   },
+   "source": {
+    "type": "choice",
+    "choice": "himself",
+    "confidence": 0.9,
+    "probabilities": {
+     "opponent_side": 0.0,
+     "media": 0.01,
+     "none_of_these": 0.0,
+     "no_one": 0.08,
+     "himself": 0.91,
+     "fans": 0.0,
+     "other_fighter": 0.0,
+     "his_manager": 0.0,
+     "his_team": 0.0,
+     "promotion": 0.0
+    }
+   },
+   "act": {
+    "type": "choice",
+    "choice": "speaks_of_himself",
+    "confidence": 0.83,
+    "probabilities": {
+     "calls_him_out": 0.0,
+     "answers_for_him": 0.0,
+     "none_of_these": 0.0,
+     "reports_an_event": 0.15,
+     "only_mentions_him": 0.0,
+     "speaks_of_himself": 0.85,
+     "steers_him": 0.0,
+     "gives_news_of_him": 0.0,
+     "assesses_him": 0.0,
+     "predicts_his_fight": 0.0
+    }
+   },
+   "fact": {
+    "type": "choice",
+    "choice": "result",
+    "confidence": 0.9,
+    "probabilities": {
+     "personal_life": 0.0,
+     "health": 0.0,
+     "none_of_these": 0.0,
+     "next_fight": 0.0,
+     "fight_week_event": 0.0,
+     "no_fact": 0.09,
+     "result": 0.91,
+     "career_move": 0.0
+    }
+   },
+   "firmness__four": {
+    "type": "score",
+    "score": 2.99,
+    "confidence": 0.99,
+    "legend": {
+     "0": {
+      "summary": "A wish or a demand: someone wants it or says it should happen.",
+      "signals": [
+       "a fighter asking for the fight",
+       "his camp demanding a rematch"
+      ]
+     },
+     "1": {
+      "summary": "A rumour: unnamed sources, a leak, 'talks', 'discussions', 'plans'.",
+      "signals": [
+       "a podcaster says the promotion is discussing it",
+       "'sources say'"
+      ]
+     },
+     "2": {
+      "summary": "Reported: a named outlet or journalist states it, citing sources.",
+      "signals": [
+       "'ESPN reports that...'"
+      ]
+     },
+     "3": {
+      "summary": "Official or done: the promotion or he himself states it, or it has happened.",
+      "signals": [
+       "the promotion announces the bout",
+       "he posts that he signed",
+       "a fight result"
+      ]
+     }
+    },
+    "probabilities": {
+     "0": 0.0,
+     "1": 0.0,
+     "2": 0.0,
+     "3": 1.0
+    }
+   },
+   "reports_his_result": {
+    "type": "noul",
+    "noul": 0.68
+   },
+   "reports_his_next_fight": {
+    "type": "noul",
+    "noul": 0.04
+   },
+   "reports_his_health": {
+    "type": "noul",
+    "noul": 0.02
+   },
+   "he_speaks": {
+    "type": "noul",
+    "noul": 0.22
+   }
+  },
+  "476": {
+   "centrality": {
+    "type": "score",
+    "score": 1.04,
+    "confidence": 0.96,
+    "legend": {
+     "0": {
+      "summary": "He is not in the article's content at all.",
+      "signals": [
+       "his name appears only in links, navigation, a sidebar or 'read also'",
+       "the article's own text never names him; he appears only in other stories' headlines, links or tags"
+      ]
+     },
+     "1": {
+      "summary": "He is only mentioned.",
+      "signals": [
+       "his past fight retold as background in someone else's story",
+       "his name or one line in a list, card, ranking, results page or comparison",
+       "he talks about another fighter or the sport, not about himself, even at length",
+       "a few lines about him inside an article about someone else"
+      ]
+     },
+     "2": {
+      "summary": "He is one of several subjects and gets real content of his own, more than a line or two.",
+      "signals": [
+       "a preview or feature on a fight of his covering both fighters",
+       "an article sharing its attention between him and one or two others",
+       "another fighter's own news that the article ties to a fight between the two of them"
+      ]
+     },
+     "3": {
+      "summary": "He is the main subject.",
+      "signals": [
+       "the article is about something he did, or said about himself or his own career",
+       "the article is about something someone said, reported or predicted about him"
+      ]
+     }
+    },
+    "probabilities": {
+     "0": 0.0,
+     "1": 0.96,
+     "2": 0.03,
+     "3": 0.01
+    }
+   },
+   "source": {
+    "type": "choice",
+    "choice": "opponent_side",
+    "confidence": 0.76,
+    "probabilities": {
+     "other_fighter": 0.18,
+     "opponent_side": 0.79,
+     "fans": 0.0,
+     "his_team": 0.0,
+     "promotion": 0.0,
+     "none_of_these": 0.0,
+     "no_one": 0.01,
+     "himself": 0.02,
+     "his_manager": 0.0,
+     "media": 0.0
+    }
+   },
+   "act": {
+    "type": "choice",
+    "choice": "only_mentions_him",
+    "confidence": 0.81,
+    "probabilities": {
+     "reports_an_event": 0.07,
+     "speaks_of_himself": 0.02,
+     "answers_for_him": 0.0,
+     "only_mentions_him": 0.84,
+     "none_of_these": 0.0,
+     "gives_news_of_him": 0.07,
+     "assesses_him": 0.0,
+     "calls_him_out": 0.0,
+     "steers_him": 0.0,
+     "predicts_his_fight": 0.0
+    }
+   },
+   "fact": {
+    "type": "choice",
+    "choice": "no_fact",
+    "confidence": 0.79,
+    "probabilities": {
+     "fight_week_event": 0.0,
+     "none_of_these": 0.03,
+     "result": 0.1,
+     "career_move": 0.0,
+     "no_fact": 0.83,
+     "personal_life": 0.0,
+     "health": 0.04,
+     "next_fight": 0.0
+    }
+   },
+   "firmness__four": {
+    "type": "score",
+    "score": 2.76,
+    "confidence": 0.76,
+    "legend": {
+     "0": {
+      "summary": "A wish or a demand: someone wants it or says it should happen.",
+      "signals": [
+       "a fighter asking for the fight",
+       "his camp demanding a rematch"
+      ]
+     },
+     "1": {
+      "summary": "A rumour: unnamed sources, a leak, 'talks', 'discussions', 'plans'.",
+      "signals": [
+       "a podcaster says the promotion is discussing it",
+       "'sources say'"
+      ]
+     },
+     "2": {
+      "summary": "Reported: a named outlet or journalist states it, citing sources.",
+      "signals": [
+       "'ESPN reports that...'"
+      ]
+     },
+     "3": {
+      "summary": "Official or done: the promotion or he himself states it, or it has happened.",
+      "signals": [
+       "the promotion announces the bout",
+       "he posts that he signed",
+       "a fight result"
+      ]
+     }
+    },
+    "probabilities": {
+     "0": 0.04,
+     "1": 0.02,
+     "2": 0.06,
+     "3": 0.88
+    }
+   },
+   "reports_his_result": {
+    "type": "noul",
+    "noul": 0.21
+   },
+   "reports_his_next_fight": {
+    "type": "noul",
+    "noul": 0.14
+   },
+   "reports_his_health": {
+    "type": "noul",
+    "noul": 0.09
+   },
+   "he_speaks": {
+    "type": "noul",
+    "noul": 0.06
+   }
+  },
+  "975": {
+   "centrality": {
+    "type": "score",
+    "score": 1.07,
+    "confidence": 0.92,
+    "legend": {
+     "0": {
+      "summary": "He is not in the article's content at all.",
+      "signals": [
+       "his name appears only in links, navigation, a sidebar or 'read also'",
+       "the article's own text never names him; he appears only in other stories' headlines, links or tags"
+      ]
+     },
+     "1": {
+      "summary": "He is only mentioned.",
+      "signals": [
+       "his past fight retold as background in someone else's story",
+       "his name or one line in a list, card, ranking, results page or comparison",
+       "he talks about another fighter or the sport, not about himself, even at length",
+       "a few lines about him inside an article about someone else"
+      ]
+     },
+     "2": {
+      "summary": "He is one of several subjects and gets real content of his own, more than a line or two.",
+      "signals": [
+       "a preview or feature on a fight of his covering both fighters",
+       "an article sharing its attention between him and one or two others",
+       "another fighter's own news that the article ties to a fight between the two of them"
+      ]
+     },
+     "3": {
+      "summary": "He is the main subject.",
+      "signals": [
+       "the article is about something he did, or said about himself or his own career",
+       "the article is about something someone said, reported or predicted about him"
+      ]
+     }
+    },
+    "probabilities": {
+     "0": 0.0,
+     "1": 0.94,
+     "2": 0.04,
+     "3": 0.02
+    }
+   },
+   "source": {
+    "type": "choice",
+    "choice": "other_fighter",
+    "confidence": 0.66,
+    "probabilities": {
+     "his_team": 0.0,
+     "media": 0.01,
+     "other_fighter": 0.69,
+     "promotion": 0.0,
+     "no_one": 0.02,
+     "opponent_side": 0.01,
+     "himself": 0.25,
+     "fans": 0.0,
+     "none_of_these": 0.02,
+     "his_manager": 0.0
+    }
+   },
+   "act": {
+    "type": "choice",
+    "choice": "only_mentions_him",
+    "confidence": 0.87,
+    "probabilities": {
+     "assesses_him": 0.0,
+     "steers_him": 0.01,
+     "gives_news_of_him": 0.0,
+     "speaks_of_himself": 0.08,
+     "answers_for_him": 0.0,
+     "reports_an_event": 0.01,
+     "predicts_his_fight": 0.0,
+     "only_mentions_him": 0.89,
+     "none_of_these": 0.0,
+     "calls_him_out": 0.01
+    }
+   },
+   "fact": {
+    "type": "choice",
+    "choice": "no_fact",
+    "confidence": 0.91,
+    "probabilities": {
+     "health": 0.0,
+     "personal_life": 0.01,
+     "result": 0.01,
+     "fight_week_event": 0.0,
+     "no_fact": 0.92,
+     "career_move": 0.01,
+     "none_of_these": 0.05,
+     "next_fight": 0.0
+    }
+   },
+   "firmness__four": {
+    "type": "score",
+    "score": 1.38,
+    "confidence": 0.0,
+    "legend": {
+     "0": {
+      "summary": "A wish or a demand: someone wants it or says it should happen.",
+      "signals": [
+       "a fighter asking for the fight",
+       "his camp demanding a rematch"
+      ]
+     },
+     "1": {
+      "summary": "A rumour: unnamed sources, a leak, 'talks', 'discussions', 'plans'.",
+      "signals": [
+       "a podcaster says the promotion is discussing it",
+       "'sources say'"
+      ]
+     },
+     "2": {
+      "summary": "Reported: a named outlet or journalist states it, citing sources.",
+      "signals": [
+       "'ESPN reports that...'"
+      ]
+     },
+     "3": {
+      "summary": "Official or done: the promotion or he himself states it, or it has happened.",
+      "signals": [
+       "the promotion announces the bout",
+       "he posts that he signed",
+       "a fight result"
+      ]
+     }
+    },
+    "probabilities": {
+     "0": 0.49,
+     "1": 0.03,
+     "2": 0.09,
+     "3": 0.39
+    }
+   },
+   "reports_his_result": {
+    "type": "noul",
+    "noul": 0.04
+   },
+   "reports_his_next_fight": {
+    "type": "noul",
+    "noul": 0.09
+   },
+   "reports_his_health": {
+    "type": "noul",
+    "noul": 0.03
+   },
+   "he_speaks": {
+    "type": "noul",
+    "noul": 0.08
+   }
+  },
+  "592": {
+   "centrality": {
+    "type": "score",
+    "score": 3.0,
+    "confidence": 1.0,
+    "legend": {
+     "0": {
+      "summary": "He is not in the article's content at all.",
+      "signals": [
+       "his name appears only in links, navigation, a sidebar or 'read also'",
+       "the article's own text never names him; he appears only in other stories' headlines, links or tags"
+      ]
+     },
+     "1": {
+      "summary": "He is only mentioned.",
+      "signals": [
+       "his past fight retold as background in someone else's story",
+       "his name or one line in a list, card, ranking, results page or comparison",
+       "he talks about another fighter or the sport, not about himself, even at length",
+       "a few lines about him inside an article about someone else"
+      ]
+     },
+     "2": {
+      "summary": "He is one of several subjects and gets real content of his own, more than a line or two.",
+      "signals": [
+       "a preview or feature on a fight of his covering both fighters",
+       "an article sharing its attention between him and one or two others",
+       "another fighter's own news that the article ties to a fight between the two of them"
+      ]
+     },
+     "3": {
+      "summary": "He is the main subject.",
+      "signals": [
+       "the article is about something he did, or said about himself or his own career",
+       "the article is about something someone said, reported or predicted about him"
+      ]
+     }
+    },
+    "probabilities": {
+     "0": 0.0,
+     "1": 0.0,
+     "2": 0.0,
+     "3": 1.0
+    }
+   },
+   "source": {
+    "type": "choice",
+    "choice": "media",
+    "confidence": 1.0,
+    "probabilities": {
+     "other_fighter": 0.0,
+     "his_team": 0.0,
+     "no_one": 0.0,
+     "none_of_these": 0.0,
+     "his_manager": 0.0,
+     "fans": 0.0,
+     "media": 1.0,
+     "opponent_side": 0.0,
+     "promotion": 0.0,
+     "himself": 0.0
+    }
+   },
+   "act": {
+    "type": "choice",
+    "choice": "gives_news_of_him",
+    "confidence": 1.0,
+    "probabilities": {
+     "steers_him": 0.0,
+     "reports_an_event": 0.0,
+     "none_of_these": 0.0,
+     "assesses_him": 0.0,
+     "gives_news_of_him": 1.0,
+     "predicts_his_fight": 0.0,
+     "only_mentions_him": 0.0,
+     "calls_him_out": 0.0,
+     "speaks_of_himself": 0.0,
+     "answers_for_him": 0.0
+    }
+   },
+   "fact": {
+    "type": "choice",
+    "choice": "personal_life",
+    "confidence": 0.28,
+    "probabilities": {
+     "fight_week_event": 0.0,
+     "career_move": 0.12,
+     "none_of_these": 0.25,
+     "no_fact": 0.18,
+     "health": 0.05,
+     "result": 0.02,
+     "next_fight": 0.01,
+     "personal_life": 0.37
+    }
+   },
+   "firmness__four": {
+    "type": "score",
+    "score": 1.77,
+    "confidence": 0.76,
+    "legend": {
+     "0": {
+      "summary": "A wish or a demand: someone wants it or says it should happen.",
+      "signals": [
+       "a fighter asking for the fight",
+       "his camp demanding a rematch"
+      ]
+     },
+     "1": {
+      "summary": "A rumour: unnamed sources, a leak, 'talks', 'discussions', 'plans'.",
+      "signals": [
+       "a podcaster says the promotion is discussing it",
+       "'sources say'"
+      ]
+     },
+     "2": {
+      "summary": "Reported: a named outlet or journalist states it, citing sources.",
+      "signals": [
+       "'ESPN reports that...'"
+      ]
+     },
+     "3": {
+      "summary": "Official or done: the promotion or he himself states it, or it has happened.",
+      "signals": [
+       "the promotion announces the bout",
+       "he posts that he signed",
+       "a fight result"
+      ]
+     }
+    },
+    "probabilities": {
+     "0": 0.0,
+     "1": 0.23,
+     "2": 0.77,
+     "3": 0.0
+    }
+   },
+   "reports_his_result": {
+    "type": "noul",
+    "noul": 0.16
+   },
+   "reports_his_next_fight": {
+    "type": "noul",
+    "noul": 0.11
+   },
+   "reports_his_health": {
+    "type": "noul",
+    "noul": 0.4
+   },
+   "he_speaks": {
+    "type": "noul",
+    "noul": 0.05
+   }
+  },
+  "25": {
+   "centrality": {
+    "type": "score",
+    "score": 2.98,
+    "confidence": 0.98,
+    "legend": {
+     "0": {
+      "summary": "He is not in the article's content at all.",
+      "signals": [
+       "his name appears only in links, navigation, a sidebar or 'read also'",
+       "the article's own text never names him; he appears only in other stories' headlines, links or tags"
+      ]
+     },
+     "1": {
+      "summary": "He is only mentioned.",
+      "signals": [
+       "his past fight retold as background in someone else's story",
+       "his name or one line in a list, card, ranking, results page or comparison",
+       "he talks about another fighter or the sport, not about himself, even at length",
+       "a few lines about him inside an article about someone else"
+      ]
+     },
+     "2": {
+      "summary": "He is one of several subjects and gets real content of his own, more than a line or two.",
+      "signals": [
+       "a preview or feature on a fight of his covering both fighters",
+       "an article sharing its attention between him and one or two others",
+       "another fighter's own news that the article ties to a fight between the two of them"
+      ]
+     },
+     "3": {
+      "summary": "He is the main subject.",
+      "signals": [
+       "the article is about something he did, or said about himself or his own career",
+       "the article is about something someone said, reported or predicted about him"
+      ]
+     }
+    },
+    "probabilities": {
+     "0": 0.0,
+     "1": 0.01,
+     "2": 0.0,
+     "3": 0.99
+    }
+   },
+   "source": {
+    "type": "choice",
+    "choice": "media",
+    "confidence": 0.78,
+    "probabilities": {
+     "media": 0.81,
+     "his_team": 0.0,
+     "opponent_side": 0.0,
+     "his_manager": 0.0,
+     "promotion": 0.0,
+     "other_fighter": 0.0,
+     "himself": 0.09,
+     "no_one": 0.05,
+     "none_of_these": 0.04,
+     "fans": 0.0
+    }
+   },
+   "act": {
+    "type": "choice",
+    "choice": "gives_news_of_him",
+    "confidence": 0.8,
+    "probabilities": {
+     "reports_an_event": 0.06,
+     "only_mentions_him": 0.03,
+     "steers_him": 0.0,
+     "gives_news_of_him": 0.83,
+     "speaks_of_himself": 0.0,
+     "assesses_him": 0.0,
+     "calls_him_out": 0.0,
+     "predicts_his_fight": 0.0,
+     "none_of_these": 0.08,
+     "answers_for_him": 0.0
+    }
+   },
+   "fact": {
+    "type": "choice",
+    "choice": "personal_life",
+    "confidence": 0.99,
+    "probabilities": {
+     "career_move": 0.0,
+     "none_of_these": 0.0,
+     "health": 0.0,
+     "result": 0.0,
+     "next_fight": 0.0,
+     "fight_week_event": 0.0,
+     "no_fact": 0.0,
+     "personal_life": 1.0
+    }
+   },
+   "firmness__four": {
+    "type": "score",
+    "score": 2.19,
+    "confidence": 0.6,
+    "legend": {
+     "0": {
+      "summary": "A wish or a demand: someone wants it or says it should happen.",
+      "signals": [
+       "a fighter asking for the fight",
+       "his camp demanding a rematch"
+      ]
+     },
+     "1": {
+      "summary": "A rumour: unnamed sources, a leak, 'talks', 'discussions', 'plans'.",
+      "signals": [
+       "a podcaster says the promotion is discussing it",
+       "'sources say'"
+      ]
+     },
+     "2": {
+      "summary": "Reported: a named outlet or journalist states it, citing sources.",
+      "signals": [
+       "'ESPN reports that...'"
+      ]
+     },
+     "3": {
+      "summary": "Official or done: the promotion or he himself states it, or it has happened.",
+      "signals": [
+       "the promotion announces the bout",
+       "he posts that he signed",
+       "a fight result"
+      ]
+     }
+    },
+    "probabilities": {
+     "0": 0.0,
+     "1": 0.1,
+     "2": 0.6,
+     "3": 0.3
+    }
+   },
+   "reports_his_result": {
+    "type": "noul",
+    "noul": 0.17
+   },
+   "reports_his_next_fight": {
+    "type": "noul",
+    "noul": 0.02
+   },
+   "reports_his_health": {
+    "type": "noul",
+    "noul": 0.01
+   },
+   "he_speaks": {
+    "type": "noul",
+    "noul": 0.05
+   }
+  },
+  "856": {
+   "centrality": {
+    "type": "score",
+    "score": 1.14,
+    "confidence": 0.86,
+    "legend": {
+     "0": {
+      "summary": "He is not in the article's content at all.",
+      "signals": [
+       "his name appears only in links, navigation, a sidebar or 'read also'",
+       "the article's own text never names him; he appears only in other stories' headlines, links or tags"
+      ]
+     },
+     "1": {
+      "summary": "He is only mentioned.",
+      "signals": [
+       "his past fight retold as background in someone else's story",
+       "his name or one line in a list, card, ranking, results page or comparison",
+       "he talks about another fighter or the sport, not about himself, even at length",
+       "a few lines about him inside an article about someone else"
+      ]
+     },
+     "2": {
+      "summary": "He is one of several subjects and gets real content of his own, more than a line or two.",
+      "signals": [
+       "a preview or feature on a fight of his covering both fighters",
+       "an article sharing its attention between him and one or two others",
+       "another fighter's own news that the article ties to a fight between the two of them"
+      ]
+     },
+     "3": {
+      "summary": "He is the main subject.",
+      "signals": [
+       "the article is about something he did, or said about himself or his own career",
+       "the article is about something someone said, reported or predicted about him"
+      ]
+     }
+    },
+    "probabilities": {
+     "0": 0.0,
+     "1": 0.87,
+     "2": 0.13,
+     "3": 0.0
+    }
+   },
+   "source": {
+    "type": "choice",
+    "choice": "himself",
+    "confidence": 0.48,
+    "probabilities": {
+     "himself": 0.54,
+     "fans": 0.0,
+     "his_manager": 0.0,
+     "no_one": 0.18,
+     "promotion": 0.01,
+     "other_fighter": 0.05,
+     "his_team": 0.0,
+     "none_of_these": 0.01,
+     "media": 0.21,
+     "opponent_side": 0.0
+    }
+   },
+   "act": {
+    "type": "choice",
+    "choice": "reports_an_event",
+    "confidence": 0.65,
+    "probabilities": {
+     "reports_an_event": 0.6900000000000001,
+     "assesses_him": 0.0,
+     "gives_news_of_him": 0.25,
+     "calls_him_out": 0.0,
+     "answers_for_him": 0.0,
+     "speaks_of_himself": 0.0,
+     "steers_him": 0.0,
+     "only_mentions_him": 0.06,
+     "predicts_his_fight": 0.0,
+     "none_of_these": 0.0
+    }
+   },
+   "fact": {
+    "type": "choice",
+    "choice": "health",
+    "confidence": 0.56,
+    "probabilities": {
+     "career_move": 0.0,
+     "no_fact": 0.27,
+     "next_fight": 0.01,
+     "result": 0.09,
+     "personal_life": 0.0,
+     "none_of_these": 0.01,
+     "fight_week_event": 0.0,
+     "health": 0.62
+    }
+   },
+   "firmness__four": {
+    "type": "score",
+    "score": 2.93,
+    "confidence": 0.93,
+    "legend": {
+     "0": {
+      "summary": "A wish or a demand: someone wants it or says it should happen.",
+      "signals": [
+       "a fighter asking for the fight",
+       "his camp demanding a rematch"
+      ]
+     },
+     "1": {
+      "summary": "A rumour: unnamed sources, a leak, 'talks', 'discussions', 'plans'.",
+      "signals": [
+       "a podcaster says the promotion is discussing it",
+       "'sources say'"
+      ]
+     },
+     "2": {
+      "summary": "Reported: a named outlet or journalist states it, citing sources.",
+      "signals": [
+       "'ESPN reports that...'"
+      ]
+     },
+     "3": {
+      "summary": "Official or done: the promotion or he himself states it, or it has happened.",
+      "signals": [
+       "the promotion announces the bout",
+       "he posts that he signed",
+       "a fight result"
+      ]
+     }
+    },
+    "probabilities": {
+     "0": 0.01,
+     "1": 0.01,
+     "2": 0.03,
+     "3": 0.95
+    }
+   },
+   "reports_his_result": {
+    "type": "noul",
+    "noul": 0.57
+   },
+   "reports_his_next_fight": {
+    "type": "noul",
+    "noul": 0.59
+   },
+   "reports_his_health": {
+    "type": "noul",
+    "noul": 0.57
+   },
+   "he_speaks": {
+    "type": "noul",
+    "noul": 0.19
+   }
+  },
+  "930": {
+   "centrality": {
+    "type": "score",
+    "score": 3.0,
+    "confidence": 1.0,
+    "legend": {
+     "0": {
+      "summary": "He is not in the article's content at all.",
+      "signals": [
+       "his name appears only in links, navigation, a sidebar or 'read also'",
+       "the article's own text never names him; he appears only in other stories' headlines, links or tags"
+      ]
+     },
+     "1": {
+      "summary": "He is only mentioned.",
+      "signals": [
+       "his past fight retold as background in someone else's story",
+       "his name or one line in a list, card, ranking, results page or comparison",
+       "he talks about another fighter or the sport, not about himself, even at length",
+       "a few lines about him inside an article about someone else"
+      ]
+     },
+     "2": {
+      "summary": "He is one of several subjects and gets real content of his own, more than a line or two.",
+      "signals": [
+       "a preview or feature on a fight of his covering both fighters",
+       "an article sharing its attention between him and one or two others",
+       "another fighter's own news that the article ties to a fight between the two of them"
+      ]
+     },
+     "3": {
+      "summary": "He is the main subject.",
+      "signals": [
+       "the article is about something he did, or said about himself or his own career",
+       "the article is about something someone said, reported or predicted about him"
+      ]
+     }
+    },
+    "probabilities": {
+     "0": 0.0,
+     "1": 0.0,
+     "2": 0.0,
+     "3": 1.0
+    }
+   },
+   "source": {
+    "type": "choice",
+    "choice": "himself",
+    "confidence": 1.0,
+    "probabilities": {
+     "no_one": 0.0,
+     "media": 0.0,
+     "other_fighter": 0.0,
+     "fans": 0.0,
+     "opponent_side": 0.0,
+     "none_of_these": 0.0,
+     "promotion": 0.0,
+     "his_manager": 0.0,
+     "himself": 1.0,
+     "his_team": 0.0
+    }
+   },
+   "act": {
+    "type": "choice",
+    "choice": "speaks_of_himself",
+    "confidence": 0.97,
+    "probabilities": {
+     "reports_an_event": 0.01,
+     "assesses_him": 0.0,
+     "speaks_of_himself": 0.97,
+     "answers_for_him": 0.0,
+     "steers_him": 0.0,
+     "gives_news_of_him": 0.02,
+     "only_mentions_him": 0.0,
+     "none_of_these": 0.0,
+     "calls_him_out": 0.0,
+     "predicts_his_fight": 0.0
+    }
+   },
+   "fact": {
+    "type": "choice",
+    "choice": "no_fact",
+    "confidence": 0.34,
+    "probabilities": {
+     "fight_week_event": 0.0,
+     "career_move": 0.0,
+     "health": 0.39,
+     "no_fact": 0.43,
+     "next_fight": 0.03,
+     "result": 0.01,
+     "personal_life": 0.1,
+     "none_of_these": 0.04
+    }
+   },
+   "firmness__four": {
+    "type": "score",
+    "score": 2.02,
+    "confidence": 0.02,
+    "legend": {
+     "0": {
+      "summary": "A wish or a demand: someone wants it or says it should happen.",
+      "signals": [
+       "a fighter asking for the fight",
+       "his camp demanding a rematch"
+      ]
+     },
+     "1": {
+      "summary": "A rumour: unnamed sources, a leak, 'talks', 'discussions', 'plans'.",
+      "signals": [
+       "a podcaster says the promotion is discussing it",
+       "'sources say'"
+      ]
+     },
+     "2": {
+      "summary": "Reported: a named outlet or journalist states it, citing sources.",
+      "signals": [
+       "'ESPN reports that...'"
+      ]
+     },
+     "3": {
+      "summary": "Official or done: the promotion or he himself states it, or it has happened.",
+      "signals": [
+       "the promotion announces the bout",
+       "he posts that he signed",
+       "a fight result"
+      ]
+     }
+    },
+    "probabilities": {
+     "0": 0.26,
+     "1": 0.07,
+     "2": 0.08,
+     "3": 0.59
+    }
+   },
+   "reports_his_result": {
+    "type": "noul",
+    "noul": 0.16
+   },
+   "reports_his_next_fight": {
+    "type": "noul",
+    "noul": 0.19
+   },
+   "reports_his_health": {
+    "type": "noul",
+    "noul": 0.54
+   },
+   "he_speaks": {
+    "type": "noul",
+    "noul": 0.97
+   }
+  },
+  "129": {
+   "centrality": {
+    "type": "score",
+    "score": 2.99,
+    "confidence": 0.99,
+    "legend": {
+     "0": {
+      "summary": "He is not in the article's content at all.",
+      "signals": [
+       "his name appears only in links, navigation, a sidebar or 'read also'",
+       "the article's own text never names him; he appears only in other stories' headlines, links or tags"
+      ]
+     },
+     "1": {
+      "summary": "He is only mentioned.",
+      "signals": [
+       "his past fight retold as background in someone else's story",
+       "his name or one line in a list, card, ranking, results page or comparison",
+       "he talks about another fighter or the sport, not about himself, even at length",
+       "a few lines about him inside an article about someone else"
+      ]
+     },
+     "2": {
+      "summary": "He is one of several subjects and gets real content of his own, more than a line or two.",
+      "signals": [
+       "a preview or feature on a fight of his covering both fighters",
+       "an article sharing its attention between him and one or two others",
+       "another fighter's own news that the article ties to a fight between the two of them"
+      ]
+     },
+     "3": {
+      "summary": "He is the main subject.",
+      "signals": [
+       "the article is about something he did, or said about himself or his own career",
+       "the article is about something someone said, reported or predicted about him"
+      ]
+     }
+    },
+    "probabilities": {
+     "0": 0.0,
+     "1": 0.0,
+     "2": 0.01,
+     "3": 0.99
+    }
+   },
+   "source": {
+    "type": "choice",
+    "choice": "his_manager",
+    "confidence": 1.0,
+    "probabilities": {
+     "himself": 0.0,
+     "promotion": 0.0,
+     "no_one": 0.0,
+     "his_team": 0.0,
+     "other_fighter": 0.0,
+     "opponent_side": 0.0,
+     "none_of_these": 0.0,
+     "his_manager": 1.0,
+     "media": 0.0,
+     "fans": 0.0
+    }
+   },
+   "act": {
+    "type": "choice",
+    "choice": "steers_him",
+    "confidence": 1.0,
+    "probabilities": {
+     "assesses_him": 0.0,
+     "answers_for_him": 0.0,
+     "steers_him": 1.0,
+     "predicts_his_fight": 0.0,
+     "none_of_these": 0.0,
+     "speaks_of_himself": 0.0,
+     "reports_an_event": 0.0,
+     "gives_news_of_him": 0.0,
+     "calls_him_out": 0.0,
+     "only_mentions_him": 0.0
+    }
+   },
+   "fact": {
+    "type": "choice",
+    "choice": "next_fight",
+    "confidence": 0.74,
+    "probabilities": {
+     "next_fight": 0.78,
+     "health": 0.12,
+     "no_fact": 0.1,
+     "result": 0.0,
+     "none_of_these": 0.0,
+     "personal_life": 0.0,
+     "fight_week_event": 0.0,
+     "career_move": 0.0
+    }
+   },
+   "firmness__four": {
+    "type": "score",
+    "score": 0.18,
+    "confidence": 0.82,
+    "legend": {
+     "0": {
+      "summary": "A wish or a demand: someone wants it or says it should happen.",
+      "signals": [
+       "a fighter asking for the fight",
+       "his camp demanding a rematch"
+      ]
+     },
+     "1": {
+      "summary": "A rumour: unnamed sources, a leak, 'talks', 'discussions', 'plans'.",
+      "signals": [
+       "a podcaster says the promotion is discussing it",
+       "'sources say'"
+      ]
+     },
+     "2": {
+      "summary": "Reported: a named outlet or journalist states it, citing sources.",
+      "signals": [
+       "'ESPN reports that...'"
+      ]
+     },
+     "3": {
+      "summary": "Official or done: the promotion or he himself states it, or it has happened.",
+      "signals": [
+       "the promotion announces the bout",
+       "he posts that he signed",
+       "a fight result"
+      ]
+     }
+    },
+    "probabilities": {
+     "0": 0.93,
+     "1": 0.0,
+     "2": 0.05,
+     "3": 0.02
+    }
+   },
+   "reports_his_result": {
+    "type": "noul",
+    "noul": 0.17
+   },
+   "reports_his_next_fight": {
+    "type": "noul",
+    "noul": 0.87
+   },
+   "reports_his_health": {
+    "type": "noul",
+    "noul": 0.78
+   },
+   "he_speaks": {
+    "type": "noul",
+    "noul": 0.06
+   }
+  },
+  "687": {
+   "centrality": {
+    "type": "score",
+    "score": 2.15,
+    "confidence": 0.84,
+    "legend": {
+     "0": {
+      "summary": "He is not in the article's content at all.",
+      "signals": [
+       "his name appears only in links, navigation, a sidebar or 'read also'",
+       "the article's own text never names him; he appears only in other stories' headlines, links or tags"
+      ]
+     },
+     "1": {
+      "summary": "He is only mentioned.",
+      "signals": [
+       "his past fight retold as background in someone else's story",
+       "his name or one line in a list, card, ranking, results page or comparison",
+       "he talks about another fighter or the sport, not about himself, even at length",
+       "a few lines about him inside an article about someone else"
+      ]
+     },
+     "2": {
+      "summary": "He is one of several subjects and gets real content of his own, more than a line or two.",
+      "signals": [
+       "a preview or feature on a fight of his covering both fighters",
+       "an article sharing its attention between him and one or two others",
+       "another fighter's own news that the article ties to a fight between the two of them"
+      ]
+     },
+     "3": {
+      "summary": "He is the main subject.",
+      "signals": [
+       "the article is about something he did, or said about himself or his own career",
+       "the article is about something someone said, reported or predicted about him"
+      ]
+     }
+    },
+    "probabilities": {
+     "0": 0.0,
+     "1": 0.0,
+     "2": 0.84,
+     "3": 0.16
+    }
+   },
+   "source": {
+    "type": "choice",
+    "choice": "no_one",
+    "confidence": 0.82,
+    "probabilities": {
+     "fans": 0.0,
+     "opponent_side": 0.0,
+     "no_one": 0.85,
+     "other_fighter": 0.0,
+     "himself": 0.0,
+     "his_team": 0.0,
+     "none_of_these": 0.0,
+     "his_manager": 0.0,
+     "media": 0.11,
+     "promotion": 0.04
+    }
+   },
+   "act": {
+    "type": "choice",
+    "choice": "reports_an_event",
+    "confidence": 0.99,
+    "probabilities": {
+     "steers_him": 0.0,
+     "speaks_of_himself": 0.0,
+     "calls_him_out": 0.0,
+     "gives_news_of_him": 0.0,
+     "only_mentions_him": 0.0,
+     "reports_an_event": 1.0,
+     "none_of_these": 0.0,
+     "assesses_him": 0.0,
+     "answers_for_him": 0.0,
+     "predicts_his_fight": 0.0
+    }
+   },
+   "fact": {
+    "type": "choice",
+    "choice": "fight_week_event",
+    "confidence": 0.88,
+    "probabilities": {
+     "career_move": 0.0,
+     "next_fight": 0.06,
+     "result": 0.03,
+     "none_of_these": 0.0,
+     "personal_life": 0.0,
+     "health": 0.0,
+     "fight_week_event": 0.91,
+     "no_fact": 0.0
+    }
+   },
+   "firmness__four": {
+    "type": "score",
+    "score": 2.93,
+    "confidence": 0.93,
+    "legend": {
+     "0": {
+      "summary": "A wish or a demand: someone wants it or says it should happen.",
+      "signals": [
+       "a fighter asking for the fight",
+       "his camp demanding a rematch"
+      ]
+     },
+     "1": {
+      "summary": "A rumour: unnamed sources, a leak, 'talks', 'discussions', 'plans'.",
+      "signals": [
+       "a podcaster says the promotion is discussing it",
+       "'sources say'"
+      ]
+     },
+     "2": {
+      "summary": "Reported: a named outlet or journalist states it, citing sources.",
+      "signals": [
+       "'ESPN reports that...'"
+      ]
+     },
+     "3": {
+      "summary": "Official or done: the promotion or he himself states it, or it has happened.",
+      "signals": [
+       "the promotion announces the bout",
+       "he posts that he signed",
+       "a fight result"
+      ]
+     }
+    },
+    "probabilities": {
+     "0": 0.0,
+     "1": 0.0,
+     "2": 0.05,
+     "3": 0.95
+    }
+   },
+   "reports_his_result": {
+    "type": "noul",
+    "noul": 0.1
+   },
+   "reports_his_next_fight": {
+    "type": "noul",
+    "noul": 0.95
+   },
+   "reports_his_health": {
+    "type": "noul",
+    "noul": 0.02
+   },
+   "he_speaks": {
+    "type": "noul",
+    "noul": 0.05
+   }
+  },
+  "3": {
+   "centrality": {
+    "type": "score",
+    "score": 0.91,
+    "confidence": 0.72,
+    "legend": {
+     "0": {
+      "summary": "He is not in the article's content at all.",
+      "signals": [
+       "his name appears only in links, navigation, a sidebar or 'read also'",
+       "the article's own text never names him; he appears only in other stories' headlines, links or tags"
+      ]
+     },
+     "1": {
+      "summary": "He is only mentioned.",
+      "signals": [
+       "his past fight retold as background in someone else's story",
+       "his name or one line in a list, card, ranking, results page or comparison",
+       "he talks about another fighter or the sport, not about himself, even at length",
+       "a few lines about him inside an article about someone else"
+      ]
+     },
+     "2": {
+      "summary": "He is one of several subjects and gets real content of his own, more than a line or two.",
+      "signals": [
+       "a preview or feature on a fight of his covering both fighters",
+       "an article sharing its attention between him and one or two others",
+       "another fighter's own news that the article ties to a fight between the two of them"
+      ]
+     },
+     "3": {
+      "summary": "He is the main subject.",
+      "signals": [
+       "the article is about something he did, or said about himself or his own career",
+       "the article is about something someone said, reported or predicted about him"
+      ]
+     }
+    },
+    "probabilities": {
+     "0": 0.18,
+     "1": 0.75,
+     "2": 0.05,
+     "3": 0.02
+    }
+   },
+   "source": {
+    "type": "choice",
+    "choice": "no_one",
+    "confidence": 0.95,
+    "probabilities": {
+     "media": 0.02,
+     "fans": 0.0,
+     "promotion": 0.0,
+     "himself": 0.0,
+     "none_of_these": 0.01,
+     "his_team": 0.0,
+     "his_manager": 0.0,
+     "opponent_side": 0.0,
+     "no_one": 0.97,
+     "other_fighter": 0.0
+    }
+   },
+   "act": {
+    "type": "choice",
+    "choice": "reports_an_event",
+    "confidence": 0.86,
+    "probabilities": {
+     "calls_him_out": 0.0,
+     "gives_news_of_him": 0.0,
+     "assesses_him": 0.0,
+     "only_mentions_him": 0.12,
+     "reports_an_event": 0.88,
+     "speaks_of_himself": 0.0,
+     "none_of_these": 0.0,
+     "steers_him": 0.0,
+     "answers_for_him": 0.0,
+     "predicts_his_fight": 0.0
+    }
+   },
+   "fact": {
+    "type": "choice",
+    "choice": "no_fact",
+    "confidence": 0.51,
+    "probabilities": {
+     "fight_week_event": 0.16,
+     "result": 0.01,
+     "none_of_these": 0.05,
+     "health": 0.0,
+     "next_fight": 0.2,
+     "no_fact": 0.58,
+     "personal_life": 0.0,
+     "career_move": 0.0
+    }
+   },
+   "firmness__four": {
+    "type": "score",
+    "score": 2.94,
+    "confidence": 0.94,
+    "legend": {
+     "0": {
+      "summary": "A wish or a demand: someone wants it or says it should happen.",
+      "signals": [
+       "a fighter asking for the fight",
+       "his camp demanding a rematch"
+      ]
+     },
+     "1": {
+      "summary": "A rumour: unnamed sources, a leak, 'talks', 'discussions', 'plans'.",
+      "signals": [
+       "a podcaster says the promotion is discussing it",
+       "'sources say'"
+      ]
+     },
+     "2": {
+      "summary": "Reported: a named outlet or journalist states it, citing sources.",
+      "signals": [
+       "'ESPN reports that...'"
+      ]
+     },
+     "3": {
+      "summary": "Official or done: the promotion or he himself states it, or it has happened.",
+      "signals": [
+       "the promotion announces the bout",
+       "he posts that he signed",
+       "a fight result"
+      ]
+     }
+    },
+    "probabilities": {
+     "0": 0.01,
+     "1": 0.0,
+     "2": 0.02,
+     "3": 0.97
+    }
+   },
+   "reports_his_result": {
+    "type": "noul",
+    "noul": 0.05
+   },
+   "reports_his_next_fight": {
+    "type": "noul",
+    "noul": 0.27
+   },
+   "reports_his_health": {
+    "type": "noul",
+    "noul": 0.02
+   },
+   "he_speaks": {
+    "type": "noul",
+    "noul": 0.04
+   }
+  },
+  "297": {
+   "centrality": {
+    "type": "score",
+    "score": 0.98,
+    "confidence": 0.97,
+    "legend": {
+     "0": {
+      "summary": "He is not in the article's content at all.",
+      "signals": [
+       "his name appears only in links, navigation, a sidebar or 'read also'",
+       "the article's own text never names him; he appears only in other stories' headlines, links or tags"
+      ]
+     },
+     "1": {
+      "summary": "He is only mentioned.",
+      "signals": [
+       "his past fight retold as background in someone else's story",
+       "his name or one line in a list, card, ranking, results page or comparison",
+       "he talks about another fighter or the sport, not about himself, even at length",
+       "a few lines about him inside an article about someone else"
+      ]
+     },
+     "2": {
+      "summary": "He is one of several subjects and gets real content of his own, more than a line or two.",
+      "signals": [
+       "a preview or feature on a fight of his covering both fighters",
+       "an article sharing its attention between him and one or two others",
+       "another fighter's own news that the article ties to a fight between the two of them"
+      ]
+     },
+     "3": {
+      "summary": "He is the main subject.",
+      "signals": [
+       "the article is about something he did, or said about himself or his own career",
+       "the article is about something someone said, reported or predicted about him"
+      ]
+     }
+    },
+    "probabilities": {
+     "0": 0.03,
+     "1": 0.97,
+     "2": 0.0,
+     "3": 0.0
+    }
+   },
+   "source": {
+    "type": "choice",
+    "choice": "promotion",
+    "confidence": 0.97,
+    "probabilities": {
+     "his_team": 0.0,
+     "media": 0.0,
+     "other_fighter": 0.01,
+     "promotion": 0.98,
+     "no_one": 0.0,
+     "opponent_side": 0.0,
+     "himself": 0.0,
+     "fans": 0.0,
+     "none_of_these": 0.01,
+     "his_manager": 0.0
+    }
+   },
+   "act": {
+    "type": "choice",
+    "choice": "only_mentions_him",
+    "confidence": 0.99,
+    "probabilities": {
+     "assesses_him": 0.0,
+     "steers_him": 0.0,
+     "gives_news_of_him": 0.0,
+     "speaks_of_himself": 0.0,
+     "answers_for_him": 0.0,
+     "reports_an_event": 0.0,
+     "predicts_his_fight": 0.0,
+     "only_mentions_him": 1.0,
+     "none_of_these": 0.0,
+     "calls_him_out": 0.0
+    }
+   },
+   "fact": {
+    "type": "choice",
+    "choice": "no_fact",
+    "confidence": 0.93,
+    "probabilities": {
+     "none_of_these": 0.05,
+     "health": 0.0,
+     "result": 0.0,
+     "fight_week_event": 0.0,
+     "no_fact": 0.94,
+     "career_move": 0.01,
+     "personal_life": 0.0,
+     "next_fight": 0.0
+    }
+   },
+   "firmness__four": {
+    "type": "score",
+    "score": 1.74,
+    "confidence": 0.0,
+    "legend": {
+     "0": {
+      "summary": "A wish or a demand: someone wants it or says it should happen.",
+      "signals": [
+       "a fighter asking for the fight",
+       "his camp demanding a rematch"
+      ]
+     },
+     "1": {
+      "summary": "A rumour: unnamed sources, a leak, 'talks', 'discussions', 'plans'.",
+      "signals": [
+       "a podcaster says the promotion is discussing it",
+       "'sources say'"
+      ]
+     },
+     "2": {
+      "summary": "Reported: a named outlet or journalist states it, citing sources.",
+      "signals": [
+       "'ESPN reports that...'"
+      ]
+     },
+     "3": {
+      "summary": "Official or done: the promotion or he himself states it, or it has happened.",
+      "signals": [
+       "the promotion announces the bout",
+       "he posts that he signed",
+       "a fight result"
+      ]
+     }
+    },
+    "probabilities": {
+     "0": 0.24,
+     "1": 0.11,
+     "2": 0.3,
+     "3": 0.35
+    }
+   },
+   "reports_his_result": {
+    "type": "noul",
+    "noul": 0.02
+   },
+   "reports_his_next_fight": {
+    "type": "noul",
+    "noul": 0.03
+   },
+   "reports_his_health": {
+    "type": "noul",
+    "noul": 0.02
+   },
+   "he_speaks": {
+    "type": "noul",
+    "noul": 0.05
+   }
+  },
+  "17": {
+   "centrality": {
+    "type": "score",
+    "score": 2.72,
+    "confidence": 0.72,
+    "legend": {
+     "0": {
+      "summary": "He is not in the article's content at all.",
+      "signals": [
+       "his name appears only in links, navigation, a sidebar or 'read also'",
+       "the article's own text never names him; he appears only in other stories' headlines, links or tags"
+      ]
+     },
+     "1": {
+      "summary": "He is only mentioned.",
+      "signals": [
+       "his past fight retold as background in someone else's story",
+       "his name or one line in a list, card, ranking, results page or comparison",
+       "he talks about another fighter or the sport, not about himself, even at length",
+       "a few lines about him inside an article about someone else"
+      ]
+     },
+     "2": {
+      "summary": "He is one of several subjects and gets real content of his own, more than a line or two.",
+      "signals": [
+       "a preview or feature on a fight of his covering both fighters",
+       "an article sharing its attention between him and one or two others",
+       "another fighter's own news that the article ties to a fight between the two of them"
+      ]
+     },
+     "3": {
+      "summary": "He is the main subject.",
+      "signals": [
+       "the article is about something he did, or said about himself or his own career",
+       "the article is about something someone said, reported or predicted about him"
+      ]
+     }
+    },
+    "probabilities": {
+     "0": 0.0,
+     "1": 0.0,
+     "2": 0.27,
+     "3": 0.73
+    }
+   },
+   "source": {
+    "type": "choice",
+    "choice": "promotion",
+    "confidence": 0.31,
+    "probabilities": {
+     "his_team": 0.0,
+     "media": 0.06,
+     "other_fighter": 0.15,
+     "promotion": 0.38,
+     "no_one": 0.16,
+     "opponent_side": 0.01,
+     "himself": 0.22,
+     "fans": 0.01,
+     "none_of_these": 0.01,
+     "his_manager": 0.0
+    }
+   },
+   "act": {
+    "type": "choice",
+    "choice": "reports_an_event",
+    "confidence": 0.97,
+    "probabilities": {
+     "assesses_him": 0.0,
+     "steers_him": 0.0,
+     "gives_news_of_him": 0.02,
+     "speaks_of_himself": 0.0,
+     "reports_an_event": 0.98,
+     "answers_for_him": 0.0,
+     "predicts_his_fight": 0.0,
+     "only_mentions_him": 0.0,
+     "none_of_these": 0.0,
+     "calls_him_out": 0.0
+    }
+   },
+   "fact": {
+    "type": "choice",
+    "choice": "next_fight",
+    "confidence": 1.0,
+    "probabilities": {
+     "personal_life": 0.0,
+     "none_of_these": 0.0,
+     "fight_week_event": 0.0,
+     "result": 0.0,
+     "no_fact": 0.0,
+     "career_move": 0.0,
+     "health": 0.0,
+     "next_fight": 1.0
+    }
+   },
+   "firmness__four": {
+    "type": "score",
+    "score": 2.59,
+    "confidence": 0.59,
+    "legend": {
+     "0": {
+      "summary": "A wish or a demand: someone wants it or says it should happen.",
+      "signals": [
+       "a fighter asking for the fight",
+       "his camp demanding a rematch"
+      ]
+     },
+     "1": {
+      "summary": "A rumour: unnamed sources, a leak, 'talks', 'discussions', 'plans'.",
+      "signals": [
+       "a podcaster says the promotion is discussing it",
+       "'sources say'"
+      ]
+     },
+     "2": {
+      "summary": "Reported: a named outlet or journalist states it, citing sources.",
+      "signals": [
+       "'ESPN reports that...'"
+      ]
+     },
+     "3": {
+      "summary": "Official or done: the promotion or he himself states it, or it has happened.",
+      "signals": [
+       "the promotion announces the bout",
+       "he posts that he signed",
+       "a fight result"
+      ]
+     }
+    },
+    "probabilities": {
+     "0": 0.0,
+     "1": 0.01,
+     "2": 0.39,
+     "3": 0.6
+    }
+   },
+   "reports_his_result": {
+    "type": "noul",
+    "noul": 0.05
+   },
+   "reports_his_next_fight": {
+    "type": "noul",
+    "noul": 0.96
+   },
+   "reports_his_health": {
+    "type": "noul",
+    "noul": 0.02
+   },
+   "he_speaks": {
+    "type": "noul",
+    "noul": 0.3
+   }
+  },
+  "934": {
+   "centrality": {
+    "type": "score",
+    "score": 3.0,
+    "confidence": 1.0,
+    "legend": {
+     "0": {
+      "summary": "He is not in the article's content at all.",
+      "signals": [
+       "his name appears only in links, navigation, a sidebar or 'read also'",
+       "the article's own text never names him; he appears only in other stories' headlines, links or tags"
+      ]
+     },
+     "1": {
+      "summary": "He is only mentioned.",
+      "signals": [
+       "his past fight retold as background in someone else's story",
+       "his name or one line in a list, card, ranking, results page or comparison",
+       "he talks about another fighter or the sport, not about himself, even at length",
+       "a few lines about him inside an article about someone else"
+      ]
+     },
+     "2": {
+      "summary": "He is one of several subjects and gets real content of his own, more than a line or two.",
+      "signals": [
+       "a preview or feature on a fight of his covering both fighters",
+       "an article sharing its attention between him and one or two others",
+       "another fighter's own news that the article ties to a fight between the two of them"
+      ]
+     },
+     "3": {
+      "summary": "He is the main subject.",
+      "signals": [
+       "the article is about something he did, or said about himself or his own career",
+       "the article is about something someone said, reported or predicted about him"
+      ]
+     }
+    },
+    "probabilities": {
+     "0": 0.0,
+     "1": 0.0,
+     "2": 0.0,
+     "3": 1.0
+    }
+   },
+   "source": {
+    "type": "choice",
+    "choice": "himself",
+    "confidence": 0.73,
+    "probabilities": {
+     "none_of_these": 0.0,
+     "no_one": 0.02,
+     "his_manager": 0.0,
+     "opponent_side": 0.0,
+     "his_team": 0.0,
+     "media": 0.21,
+     "other_fighter": 0.0,
+     "promotion": 0.0,
+     "himself": 0.77,
+     "fans": 0.0
+    }
+   },
+   "act": {
+    "type": "choice",
+    "choice": "steers_him",
+    "confidence": 0.94,
+    "probabilities": {
+     "none_of_these": 0.0,
+     "predicts_his_fight": 0.01,
+     "only_mentions_him": 0.0,
+     "gives_news_of_him": 0.0,
+     "calls_him_out": 0.0,
+     "speaks_of_himself": 0.0,
+     "assesses_him": 0.03,
+     "answers_for_him": 0.0,
+     "reports_an_event": 0.01,
+     "steers_him": 0.95
+    }
+   },
+   "fact": {
+    "type": "choice",
+    "choice": "result",
+    "confidence": 0.66,
+    "probabilities": {
+     "none_of_these": 0.0,
+     "health": 0.0,
+     "next_fight": 0.04,
+     "personal_life": 0.0,
+     "no_fact": 0.25,
+     "career_move": 0.0,
+     "fight_week_event": 0.0,
+     "result": 0.71
+    }
+   },
+   "firmness__four": {
+    "type": "score",
+    "score": 1.29,
+    "confidence": 0.0,
+    "legend": {
+     "0": {
+      "summary": "A wish or a demand: someone wants it or says it should happen.",
+      "signals": [
+       "a fighter asking for the fight",
+       "his camp demanding a rematch"
+      ]
+     },
+     "1": {
+      "summary": "A rumour: unnamed sources, a leak, 'talks', 'discussions', 'plans'.",
+      "signals": [
+       "a podcaster says the promotion is discussing it",
+       "'sources say'"
+      ]
+     },
+     "2": {
+      "summary": "Reported: a named outlet or journalist states it, citing sources.",
+      "signals": [
+       "'ESPN reports that...'"
+      ]
+     },
+     "3": {
+      "summary": "Official or done: the promotion or he himself states it, or it has happened.",
+      "signals": [
+       "the promotion announces the bout",
+       "he posts that he signed",
+       "a fight result"
+      ]
+     }
+    },
+    "probabilities": {
+     "0": 0.55,
+     "1": 0.01,
+     "2": 0.02,
+     "3": 0.42
+    }
+   },
+   "reports_his_result": {
+    "type": "noul",
+    "noul": 0.44
+   },
+   "reports_his_next_fight": {
+    "type": "noul",
+    "noul": 0.16
+   },
+   "reports_his_health": {
+    "type": "noul",
+    "noul": 0.03
+   },
+   "he_speaks": {
+    "type": "noul",
+    "noul": 0.55
+   }
+  },
+  "1146": {
+   "centrality": {
+    "type": "score",
+    "score": 1.84,
+    "confidence": 0.15,
+    "legend": {
+     "0": {
+      "summary": "He is not in the article's content at all.",
+      "signals": [
+       "his name appears only in links, navigation, a sidebar or 'read also'",
+       "the article's own text never names him; he appears only in other stories' headlines, links or tags"
+      ]
+     },
+     "1": {
+      "summary": "He is only mentioned.",
+      "signals": [
+       "his past fight retold as background in someone else's story",
+       "his name or one line in a list, card, ranking, results page or comparison",
+       "he talks about another fighter or the sport, not about himself, even at length",
+       "a few lines about him inside an article about someone else"
+      ]
+     },
+     "2": {
+      "summary": "He is one of several subjects and gets real content of his own, more than a line or two.",
+      "signals": [
+       "a preview or feature on a fight of his covering both fighters",
+       "an article sharing its attention between him and one or two others",
+       "another fighter's own news that the article ties to a fight between the two of them"
+      ]
+     },
+     "3": {
+      "summary": "He is the main subject.",
+      "signals": [
+       "the article is about something he did, or said about himself or his own career",
+       "the article is about something someone said, reported or predicted about him"
+      ]
+     }
+    },
+    "probabilities": {
+     "0": 0.0,
+     "1": 0.45,
+     "2": 0.26,
+     "3": 0.29
+    }
+   },
+   "source": {
+    "type": "choice",
+    "choice": "other_fighter",
+    "confidence": 0.85,
+    "probabilities": {
+     "himself": 0.01,
+     "promotion": 0.0,
+     "no_one": 0.0,
+     "his_team": 0.0,
+     "opponent_side": 0.12,
+     "none_of_these": 0.0,
+     "other_fighter": 0.87,
+     "his_manager": 0.0,
+     "media": 0.0,
+     "fans": 0.0
+    }
+   },
+   "act": {
+    "type": "choice",
+    "choice": "assesses_him",
+    "confidence": 0.99,
+    "probabilities": {
+     "assesses_him": 1.0,
+     "answers_for_him": 0.0,
+     "steers_him": 0.0,
+     "predicts_his_fight": 0.0,
+     "none_of_these": 0.0,
+     "speaks_of_himself": 0.0,
+     "reports_an_event": 0.0,
+     "calls_him_out": 0.0,
+     "gives_news_of_him": 0.0,
+     "only_mentions_him": 0.0
+    }
+   },
+   "fact": {
+    "type": "choice",
+    "choice": "no_fact",
+    "confidence": 0.96,
+    "probabilities": {
+     "next_fight": 0.0,
+     "health": 0.0,
+     "result": 0.03,
+     "personal_life": 0.0,
+     "none_of_these": 0.0,
+     "fight_week_event": 0.0,
+     "no_fact": 0.97,
+     "career_move": 0.0
+    }
+   },
+   "firmness__four": {
+    "type": "score",
+    "score": 2.26,
+    "confidence": 0.45,
+    "legend": {
+     "0": {
+      "summary": "A wish or a demand: someone wants it or says it should happen.",
+      "signals": [
+       "a fighter asking for the fight",
+       "his camp demanding a rematch"
+      ]
+     },
+     "1": {
+      "summary": "A rumour: unnamed sources, a leak, 'talks', 'discussions', 'plans'.",
+      "signals": [
+       "a podcaster says the promotion is discussing it",
+       "'sources say'"
+      ]
+     },
+     "2": {
+      "summary": "Reported: a named outlet or journalist states it, citing sources.",
+      "signals": [
+       "'ESPN reports that...'"
+      ]
+     },
+     "3": {
+      "summary": "Official or done: the promotion or he himself states it, or it has happened.",
+      "signals": [
+       "the promotion announces the bout",
+       "he posts that he signed",
+       "a fight result"
+      ]
+     }
+    },
+    "probabilities": {
+     "0": 0.06,
+     "1": 0.03,
+     "2": 0.5,
+     "3": 0.41
+    }
+   },
+   "reports_his_result": {
+    "type": "noul",
+    "noul": 0.1
+   },
+   "reports_his_next_fight": {
+    "type": "noul",
+    "noul": 0.05
+   },
+   "reports_his_health": {
+    "type": "noul",
+    "noul": 0.03
+   },
+   "he_speaks": {
+    "type": "noul",
+    "noul": 0.08
+   }
+  }
+ },
+ "errors": []
+}

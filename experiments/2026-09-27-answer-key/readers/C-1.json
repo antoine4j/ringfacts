@@ -1,0 +1,86 @@
+[
+ {
+  "id": "148",
+  "source": "other_fighter",
+  "note": "Headline, lead and most of the body are Makhachev (a welterweight champion) assessing and advising Topuria; a fight between them is only something Topuria asked for and is still 'pendiente', so he is not a booked/linked opponent -> other_fighter. Unsure: the one hard new fact (recovery going well, no return in 2026) comes from his physical trainer Jesus Gallo, which would be his_team."
+ },
+ {
+  "id": "953",
+  "source": "other_fighter",
+  "note": "Pimblett speaks: he would love to fight Topuria but no talks have happened. A fighter only calling him out is not 'linked to a fight with him', so other_fighter, not opponent_side. Unsure: 'publicly linked' could be read loosely to cover a long-running callout."
+ },
+ {
+  "id": "921",
+  "reports_his_next_fight": "yes",
+  "note": "Pimblett's wish is a callout (no), but the article also reports Jon Anik's claim of internal talks for a Gaethje-Topuria rematch, and the guide counts an opponent 'negotiated' (talks) as next-fight news. Unsure: it is one closing line of rumour."
+ },
+ {
+  "id": "342",
+  "firmness": "official_or_done",
+  "note": "The article's content about Amosov is his wartime service in territorial defence at Irpin (life outside the cage, personal_life) and his UFC debut; it happened and he is quoted himself -> official_or_done. Unsure: it is an old story retold in a roundup, so an editor could call it no new fact (firmness none)."
+ },
+ {
+  "id": "625",
+  "centrality": "one_of_several",
+  "note": "A weigh-in report on his fight covering both fighters (both named in the headline, both records and weights given) fits 'a preview or feature on a fight of his covering both fighters'. Unsure: the extra background and walkout time are about Donchenko only, so main_subject is arguable."
+ },
+ {
+  "id": "743",
+  "firmness": "official_or_done",
+  "note": "The main fact is that he took part in the Paris card (weigh-in, octagon, press conference) - something that has happened -> official_or_done. The text is vague and gives no result, but it asserts a completed event."
+ },
+ {
+  "id": "10",
+  "source": "other_fighter",
+  "note": "The speaker is Ali Abdelaziz, manager of Usman Nurmagomedov, who wants Usman to fight Topuria first; Usman is an unsigned free agent and the only link is this callout, so not opponent_side. Unsure: no value names another fighter's manager; other_fighter (his camp) is closest, none_of_these or opponent_side are arguable."
+ },
+ {
+  "id": "740",
+  "source": "himself",
+  "note": "The page is his post-fight interview with UFC.com ('Donchenko talks with UFC.com'), so the new material is his own words, not the outlet relaying them. Unsure: the saved text holds no quote of his, only the decision win, which alone would be no_one."
+ },
+ {
+  "id": "269",
+  "centrality": "main_subject",
+  "note": "Headline and lead are Tsarukyan saying what Topuria should do next (someone said something about him -> main_subject). Unsure: roughly half the body is Tsarukyan's own UFC 331 fight and the Oliveira controversy, so one_of_several is arguable."
+ },
+ {
+  "id": "975",
+  "act": "none_of_these",
+  "note": "Interview with Donchenko; Amosov appears only as a ranking name and as a training partner who helped him and invited him to his gym - nobody assesses, steers or gives news of Amosov. Would be 'mentioned as training partner'. Unsure: 'invited me to his gym' could be read as gives_news_of_him."
+ },
+ {
+  "id": "673",
+  "fact": "no_fact",
+  "firmness": "none",
+  "note": "The article is an analyst's pick (Soriano by KO) for an already-booked fight; the main content about him is opinion, so no_fact/none. Unsure: it also states the fight is Saturday and the ~4:10 pm walk time, which could be read as fight_week_event (official_or_done)."
+ },
+ {
+  "id": "856",
+  "centrality": "only_mentioned",
+  "fact": "no_fact",
+  "firmness": "none",
+  "reports_his_health": "no",
+  "note": "A roundup of Spain's UFC year centred on two debutants; Topuria gets one recap paragraph among many fighters, his June loss and injuries retold as background -> only_mentioned, no new fact, health no. Unsure: 'will keep him out probably until 2027' is a return timeline that could make fact next_fight (firmness reported, stated by MARCA)."
+ },
+ {
+  "id": "605",
+  "firmness": "official_or_done",
+  "note": "The main fact is his booked fight vs Soriano on 5 September at UFC Fight Night 287 in Paris - an official card set by the promotion -> official_or_done."
+ },
+ {
+  "id": "687",
+  "centrality": "one_of_several",
+  "note": "A live/preview page for his fight that gives both fighters' records and context - 'a preview or feature on a fight of his covering both fighters' -> one_of_several. Unsure: a Ukrainian outlet framing it around 'our fighter' could make main_subject arguable."
+ },
+ {
+  "id": "500",
+  "reports_his_next_fight": "yes",
+  "note": "The article is about Wood's new opponent, but its full UFC Paris card lists Donchenko vs Soriano on Saturday; by analogy with 'his bout on a results page' counting as a result, his bout on a card list states his next fight. Unsure: it is only a line in a list, and an editor could say it is not news of his."
+ },
+ {
+  "id": "1172",
+  "reports_his_result": "yes",
+  "note": "A post-fight interview whose lead reports his win over Soriano and whose body is about that fight, so the result is the topic, not background to other news. Unsure: published 10 days after the fight, so the news is arguably the interview, not the result."
+ }
+]
