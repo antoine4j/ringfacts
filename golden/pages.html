@@ -1,0 +1,121 @@
+<title>FighterBot Pages</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Serif:wght@600&display=swap">
+<style>
+:root{
+  --bg:#F3F5F3; --panel:#FFFFFF; --ink:#18201D; --dim:#5B6661; --line:#DCE2DE;
+  --accent:#2B6F68; --accentbg:#E3F0EE; --live:#8A3FA0; --livebg:#F4E8F7; --old:#8B948F;
+  --sans:"IBM Plex Sans",system-ui,-apple-system,"Segoe UI",sans-serif; --serif:"IBM Plex Serif",Georgia,serif; --mono:"IBM Plex Mono",ui-monospace,Menlo,monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#121715; --panel:#1A211E; --ink:#E2E8E5; --dim:#9AA6A0; --line:#2C3531;
+  --accent:#63B5AA; --accentbg:#1D3330; --live:#D39BE4; --livebg:#35203C; --old:#6E7873; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#121715; --panel:#1A211E; --ink:#E2E8E5; --dim:#9AA6A0; --line:#2C3531;
+  --accent:#63B5AA; --accentbg:#1D3330; --live:#D39BE4; --livebg:#35203C; --old:#6E7873; color-scheme:dark}
+body{background:var(--bg);color:var(--ink);font:16px/1.6 var(--sans)}
+.wrap{max-width:900px;margin:0 auto;padding-inline:16px;padding-block:28px 64px;display:grid;gap:28px}
+h1{font-family:var(--serif);font-size:32px;line-height:1.15;margin:0;text-wrap:balance}
+h2{font-family:var(--serif);font-size:22px;line-height:1.25;margin:0 0 6px;text-wrap:balance}
+p{margin:0 0 10px;max-width:68ch}
+.lede{font-size:18px;color:var(--dim)}
+.eyebrow{font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--dim);font-weight:600}
+.pages{display:grid;gap:10px}
+.page{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:14px 16px;display:grid;gap:6px}
+.page.live{border-color:var(--live)}
+.page.old{opacity:.8}
+.top{display:flex;flex-wrap:wrap;gap:6px 12px;align-items:baseline}
+.top a{font-weight:600;font-size:18px;color:var(--accent);text-decoration-thickness:1px;text-underline-offset:3px}
+.top a:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.kind{font-size:12px;border-radius:999px;padding:1px 9px;border:1px solid var(--line);color:var(--dim);white-space:nowrap}
+.kind.live{border-color:var(--live);color:var(--live);background:var(--livebg);font-weight:600}
+.page p{margin:0;font-size:15px}
+.src{font-family:var(--mono);font-size:12.5px;color:var(--dim)}
+.tablebox{overflow-x:auto}
+table{border-collapse:collapse;width:100%;font-size:14.5px}
+th{text-align:left;font-weight:600;color:var(--dim);font-size:12.5px;padding:6px 8px;border-bottom:1px solid var(--line)}
+td{padding:8px;border-bottom:1px solid var(--line);vertical-align:top}
+ul{margin:0;padding-left:1.2em;max-width:68ch}
+li{margin:4px 0}
+code{font-family:var(--mono);font-size:.9em}
+</style>
+
+<div class="wrap">
+  <header style="display:grid;gap:8px">
+    <div class="eyebrow">FighterBot · golden set · updated 28 September 2026</div>
+    <h1>FighterBot Pages</h1>
+    <p class="lede">Every page made for the golden set and the classifier, in the order you'd use them, with what each one is for and how it works. All are private to you.</p>
+  </header>
+
+  <section>
+    <h2>Use these</h2>
+    <div class="pages">
+      <div class="page">
+        <div class="top"><a href="https://claude.ai/artifact/L412VXv6JRP2kFKQogBo7v">Golden Set Map</a><span class="kind">plan · read only</span></div>
+        <p><b>Start here.</b> The plan for finishing the golden set: every station, every task with its status and priority, and what blocks what. Your top task now is 4.16, checking the labels.</p>
+        <p class="src">golden/plan.html, edited by hand; republished whenever a task changes status</p>
+      </div>
+      <div class="page live">
+        <div class="top"><a href="https://claude.ai/artifact/RKAaSMy3eQsse3unLHLDte">Answer Key Check</a><span class="kind live">your input · saves as you go</span></div>
+        <p><b>Your work.</b> All 300 articles with the Fable readers' answers. Mark what is wrong, say why if you like, mark an article checked. The numbered filters are the order to work in; you don't need to read all 300.</p>
+        <p class="src">built by experiments/2026-09-27-answer-key/correction_page.py from golden/answers/readers-v1.json</p>
+      </div>
+      <div class="page">
+        <div class="top"><a href="https://claude.ai/artifact/RgK2xc5pCeyYixnBnHHnrB">Claim Map</a><span class="kind">explore · read only</span></div>
+        <p>All 128 claims on a grid you can re-slice: pick any two answers as axes, filter, click a cell to see its claims and every article's answers with percentages. A version picker switches between classifier v6, v5, v3 and v2.</p>
+        <p class="src">built by golden/board/map.py from golden/answers/</p>
+      </div>
+      <div class="page">
+        <div class="top"><a href="https://claude.ai/artifact/1VGcmMZasAbN6DnBtQiH9Q">Classifier v6 Report</a><span class="kind">report · read only</span></div>
+        <p>How the answer key was built, how far to trust it, what each question change did, v5 against v6, and the labelling of all 300.</p>
+        <p class="src">experiments/2026-09-27-answer-key/report.html, written by hand (its content is also in that folder's README.md)</p>
+      </div>
+      <div class="page">
+        <div class="top"><a href="https://claude.ai/artifact/AEjGBns76dFZLie7a8PC8h">Classifier v6 Questions</a><span class="kind">reference · read only</span></div>
+        <p>The nine questions the classifier asks about every article today, word for word, with every option and level. Point at anything by number, e.g. "Q4 result".</p>
+        <p class="src">built by experiments/2026-09-27-axes-v6/review.py from classifier-v6/questions.json</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>History</h2>
+    <div class="pages">
+      <div class="page old">
+        <div class="top"><a href="https://claude.ai/artifact/JEyL2Cn4BSSZZFcDpx3stR">Classifier v4 Questions</a><span class="kind">superseded</span></div>
+        <p>The v4 set you reviewed before its run: the first with scores and yes/no questions. Its result and health yes/no questions read background as news.</p>
+      </div>
+      <div class="page old">
+        <div class="top"><a href="https://claude.ai/artifact/87btxVYBL44Pa9QxNJHjSj">Classifier v3 Questions</a><span class="kind">superseded</span></div>
+        <p>The v3 set on the approved axes, with the paired "does an option fit" questions that v4 dropped.</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>How these pages work</h2>
+    <p>There are two kinds.</p>
+    <div class="tablebox"><table>
+      <thead><tr><th></th><th>Read-only pages</th><th>The Answer Key Check</th></tr></thead>
+      <tbody>
+        <tr><td><b>Which</b></td><td>Plan, Claim Map, Report, Questions</td><td>the only interactive one</td></tr>
+        <tr><td><b>What clicking does</b></td><td>Filters, pickers and the theme switch change your view only. Nothing is saved, and I can't see it.</td><td>Every correction, note and "checked" is saved the moment you make it.</td></tr>
+        <tr><td><b>Where it is saved</b></td><td>Nowhere. The page is a snapshot of files in the repo.</td><td>In the page's own small database on claude.ai. It's not on your laptop and not in the repo. It survives when I republish the page, and only you can open it.</td></tr>
+        <tr><td><b>How I read it</b></td><td>I don't need to. I build these pages from the repo.</td><td>With a tool that reads the page's database directly (<code>ArtifactData</code>). No copy and paste. I then write your corrections into the repo as your labels.</td></tr>
+        <tr><td><b>How it changes</b></td><td>I edit the source file or rerun its builder, then republish to the same link.</td><td>The same way, and your saved answers stay.</td></tr>
+      </tbody>
+    </table></div>
+    <p style="margin-top:12px">Any page also takes comments through claude.ai's comment button. I can read them when you ask me to.</p>
+  </section>
+
+  <section>
+    <h2>Why pages instead of HTML files</h2>
+    <ul>
+      <li><b>One link that stays the same.</b> A new version replaces the old one at the same address, and claude.ai keeps the earlier versions.</li>
+      <li><b>Works on your phone.</b> A local HTML file opens only on the laptop that has it.</li>
+      <li><b>Your input comes back to me.</b> On a local file, anything you click is lost unless you paste it into the chat. A page with a database hands it to me directly.</li>
+      <li><b>Nothing depends on the page alone.</b> Every page is built from files in the repo, which stays the record. If a page disappeared, I could rebuild it.</li>
+    </ul>
+    <p>So for anything you'll look at, or give answers on, a page is better for both of us. When you want the file itself, for instance to keep a copy, ask for that.</p>
+  </section>
+</div>
