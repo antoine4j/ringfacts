@@ -882,3 +882,16 @@ side (fighter, his team, his manager) as one value"*. Applied: the value
 covers another fighter not linked to a fight with him, or that fighter's
 coach, manager or team; opponent side (the linked fighter and his camp)
 stays separate.
+
+## design: centrality, "only mentioned" vs "one of several" is decided by what is new (2026-09-28)
+
+On #856 (MARCA's review of Spain's UFC year, built around debutants Sosa
+and Sintes; Topuria gets one paragraph recalling his June loss and
+fractures and a line on his recent messages) the readers split two to one
+and Anton was on the fence: *"he is both mentioned and he mentioned among
+several Spanish fighters"*. Offered two rules (A: judge what is new about
+him, not how long his part is; B: judge how many people share the article,
+up to three for "one of several"), Anton: *"A, write it into the guide"*.
+A part that only retells known things is "only mentioned" however long;
+"one of several" needs something new about him while he shares the stage.
+#856 is "only mentioned".

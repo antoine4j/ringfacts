@@ -30,6 +30,8 @@ scores with that in mind.
 | **partly** | he is one of several subjects and gets real content: a preview or feature on a fight of his covering both fighters | another fighter's own news counts only when the article itself ties it to a fight between the two, booked or already fought and being discussed; a fighter only rumoured or calling him out does not (Anton, 2026-09-27: no named storyline in the rule) |
 | **no** | he is named in passing, as background, in a list or only in links; the news is someone else's | "mentioned near him is not about him" (goals.md); him speaking about someone else is **no**, even at length (goals.md, 2026-09-04) |
 
+**Centrality: judge what is new about him, not how long his part is** (Anton, 2026-09-28, on #856). Between "only mentioned" and "one of several": a part that only retells what is already known (his last fight, injuries, record) is "only mentioned", however long; "one of several" needs something new about him while he shares the article with others.
+
 **Aboutness is computed, not asked** (Anton, 2026-09-27). From v4 the
 classifier answers two separate things: how *central* he is (a score: not
 in it → mentioned → one of several → the main subject) and whether the
