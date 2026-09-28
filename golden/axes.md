@@ -72,7 +72,7 @@ into Q5, which may be fine since we can see a correlation then"*).
 |---|---|
 | **booking** | a fight of his being set, offered, discussed or cancelled |
 | **result** | the outcome of a fight of his |
-| **fight-week event** | the routine event itself is the news: weigh-in, face-off, open workout, card order, start times; a fact said there (a withdrawal, an injury) takes that fact's value instead, and after the fight only what is said counts (Anton, 2026-09-27) |
+| **fight-week event** | the routine of a fight of his, and nothing more: weigh-in, face-off, open workout, card order, start times. An interview, press conference or media day is a place where things are said, not a fact: what is said there takes its own value, or none (Anton, 2026-09-27) |
 | **health** | injury, medical, recovery |
 | **return** | when he will fight again, availability |
 | **career move** | retirement, contract, weight class, team change |

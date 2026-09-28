@@ -66,11 +66,11 @@
  },
  "fact": {
   "type": "choice",
-  "instructions": "What new FACT about the watched fighter does the article carry, if any? A fact is something that happened or is set to happen, not an opinion about him. Pick the one the article's main news is built on.",
+  "instructions": "What new FACT about the watched fighter does the article carry, if any? A fact is something that happened or is set to happen, not an opinion about him. Choose by the article's main news. An interview, a press conference or a media day is a place where things are said, not a fact: if something said there is the news, choose that fact (a booking, a health issue, a return date, a career move), or none if it is only talk.",
   "criteria": {
    "booking": "A fight of his being set, offered, negotiated, discussed as likely, or cancelled.",
    "result": "The outcome of a fight of his.",
-   "fight_week_event": "The routine event itself is the news: a weigh-in, face-off, open workout, media day, card order, start times or how to watch - for a fight of his. If what is said at such an event carries a booking, a health issue, a return date or a career move, choose that instead. After the fight, judge only by what is said.",
+   "fight_week_event": "The routine of a fight of his, and nothing more: a weigh-in, a face-off, an open workout, the card order, start times, how to watch.",
    "health": "An injury, a medical issue, surgery or recovery.",
    "return": "When he will fight again or be available: a return date or a timeline.",
    "career_move": "Retirement, a contract, a move of weight class or team, a title vacated, stripped or awarded.",
