@@ -26,9 +26,9 @@ scores with that in mind.
 
 | value | means | boundary |
 |---|---|---|
-| **yes** | he is the subject, or the one being talked about; the new information is about him | |
-| **partly** | he is one of several subjects and gets real content: a card preview, a two-fighter feature | *proposed:* the opponent's own news that bears on his fight (Gaethje's hands, Gaethje not fighting until 2027) is **partly** |
-| **no** | he is named in passing, as background, in a list or only in links; the news is someone else's | "mentioned near him is not about him" (goals.md); him speaking about someone else is **no** (goals.md, 2026-09-04) |
+| **yes** | he is the subject, or the one being talked about: something he did, or said about himself or his own career, or something said or reported about him | |
+| **partly** | he is one of several subjects and gets real content: a preview or feature on a fight of his covering both fighters | another fighter's own news counts only when the article itself ties it to a fight between the two, booked or already fought and being discussed; a fighter only rumoured or calling him out does not (Anton, 2026-09-27: no named storyline in the rule) |
+| **no** | he is named in passing, as background, in a list or only in links; the news is someone else's | "mentioned near him is not about him" (goals.md); him speaking about someone else is **no**, even at length (goals.md, 2026-09-04) |
 
 Claims at **no** take no value on the other axes.
 

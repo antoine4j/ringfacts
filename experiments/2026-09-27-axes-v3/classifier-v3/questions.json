@@ -3,9 +3,9 @@
   "type": "choice",
   "instructions": "Is this article about the watched fighter? Judge by the main news the article is built on - what the headline and the article as a whole are about - not by whether his name appears or by what its first sentences say. Test: delete every sentence naming him; if the story still stands, it is not about him.",
   "criteria": {
-   "about_him": "He is the subject, or the one being talked about: the new information in this article is about him - something he did or said, or something someone said, reported or predicted about him.",
-   "partly_about_him": "He is one of several subjects and gets real content: a preview or feature on his bout that covers both fighters. Also: his opponent's own news that bears on a fight between them (the opponent's injury, the opponent's plans about their rematch).",
-   "not_about_him": "The news is someone else's. He is named in passing, as background (his past fight retold in another story), as one entry in a card, ranking or list, or only in links or navigation. Him talking about another fighter or the sport, not about himself, is also not about him."
+   "about_him": "He is the subject, or the one being talked about: the new information in this article is about him - something he did, or said about himself or his own career, or something someone said, reported or predicted about him.",
+   "partly_about_him": "He is one of several subjects and gets real content: a preview or feature on a fight of his covering both fighters. Also: another fighter's own news (an injury, plans, a statement) when the article itself ties it to a fight between the two of them, whether booked, or already fought and being discussed. A fighter only rumoured or calling him out does not count.",
+   "not_about_him": "The news is someone else's. He is named in passing, as background (his past fight retold in another story), as one entry in a card, ranking or list, or only in links or navigation. Him talking about another fighter or the sport, not about himself, is also not about him - even when he speaks at length."
   }
  },
  "gate_fit": {
