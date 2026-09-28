@@ -1,7 +1,7 @@
 {
  "gate": {
   "type": "choice",
-  "instructions": "Is this article about the watched fighter? Judge by what the article is ABOUT - its lead, the news it is built on - not by whether his name appears or by its first sentence. Test: delete every sentence naming him; if the story still stands, it is not about him.",
+  "instructions": "Is this article about the watched fighter? Judge by the main news the article is built on - what the headline and the article as a whole are about - not by whether his name appears or by what its first sentences say. Test: delete every sentence naming him; if the story still stands, it is not about him.",
   "criteria": {
    "about_him": "He is the subject, or the one being talked about: the new information in this article is about him - something he did or said, or something someone said, reported or predicted about him.",
    "partly_about_him": "He is one of several subjects and gets real content: a preview or feature on his bout that covers both fighters. Also: his opponent's own news that bears on a fight between them (the opponent's injury, the opponent's plans about their rematch).",
@@ -11,7 +11,7 @@
  },
  "source": {
   "type": "choice",
-  "instructions": "Whose words or act is the new thing this article carries about the watched fighter? The person it ORIGINATED with - never the outlet, website or account that relayed it. If a journalist or podcaster passes on what someone else said, the source is that someone. If several, the one the lead is built on. 'His' means the WATCHED fighter's.",
+  "instructions": "Whose words or act is the new thing this article carries about the watched fighter? The person it ORIGINATED with - never the outlet, website or account that relayed it. If a journalist or podcaster passes on what someone else said, the source is that someone. If several, the one the article's main news is built on. 'His' means the WATCHED fighter's.",
   "criteria": {
    "himself": "The watched fighter speaks, posts or writes.",
    "his_team": "People who work on his fighting: his coaches, trainers, conditioning staff, sparring partners, physio, doctor.",
@@ -28,7 +28,7 @@
  },
  "act": {
   "type": "choice",
-  "instructions": "What does the source do regarding the watched fighter? Pick the one the article's lead is built on.",
+  "instructions": "What does the source do regarding the watched fighter? Pick the one the article's main news is built on.",
   "criteria": {
    "reports_an_event": "Nobody's words are the news: something happened - he fought, weighed in, faced off, was booked, a fight of his was announced or cancelled.",
    "speaks_of_himself": "He himself talks about his own situation, plans, past, condition, fight or life. Only when the source is himself.",
@@ -44,7 +44,7 @@
  },
  "fact": {
   "type": "choice",
-  "instructions": "What new FACT about the watched fighter does the article carry, if any? A fact is something that happened or is set to happen, not an opinion about him. Pick the one the lead is built on.",
+  "instructions": "What new FACT about the watched fighter does the article carry, if any? A fact is something that happened or is set to happen, not an opinion about him. Pick the one the article's main news is built on.",
   "criteria": {
    "booking": "A fight of his being set, offered, negotiated, discussed as likely, or cancelled.",
    "result": "The outcome of a fight of his.",
