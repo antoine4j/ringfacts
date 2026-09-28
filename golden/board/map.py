@@ -130,11 +130,25 @@ def article_row(version, article, answers, extract):
         flags["contradiction"] = about and ((values["act"] == "speaks_of_himself" and not speaker_is_him)
                                             or (speaker_is_him and values["act"] not in V3_HIMSELF_ACTS))
     flags["who_disagrees"] = comparable and actor_is_him != speaker_is_him
+    extractor_no = extract_kind in EXTRACT_SAYS_NO
+    classifier_no = (answers["role"]["choice"] in V2_GATE_NO_ROLES or answers["act"]["choice"] == "naming_him_in_passing"
+                     if version["key"] == "v2" else values["gate"] == "no")
     values["extract_kind"], values["fighter"] = extract_kind, surname(article["subject"])
     return {"id": str(article["id"]), "date": str(article["published_at"])[:10], "source": article["source"],
             "title": article["title"], "url": article.get("resolved_url") or article["url"],
             "extract": extract.get("claim"), "actor": actor, "occasion": extract.get("occasion"),
-            "v": values, "agree": agree, "flags": flags}
+            "v": values, "agree": agree, "flags": flags, "says_no": {"classifier": classifier_no, "extractor": extractor_no}}
+
+
+def majority(rows, program):
+    """Whether most of a claim's articles are "not about him" in one program's view; a tie goes to the first article.
+
+    @param rows: the claim's article rows, oldest first
+    @param program: "classifier" or "extractor"
+    @returns: True when that program's majority says not about him
+    """
+    no = sum(r["says_no"][program] for r in rows)
+    return rows[0]["says_no"][program] if no * 2 == len(rows) else no * 2 > len(rows)
 
 
 def claim_row(claim, rows, dim_keys):
@@ -152,6 +166,7 @@ def claim_row(claim, rows, dim_keys):
         # a tie goes to the oldest article, the one that started the claim
         values[key] = next(r["v"][key] for r in rows if votes[r["v"][key]] == top)
     flags = {name: any(r["flags"].get(name) for r in rows) for name in FLAG_LABELS}
+    flags["gate_disagrees"] = majority(rows, "classifier") != majority(rows, "extractor")
     return {"key": claim["key"], "n": len(rows), "v": values, "flags": flags,
             "label": rows[0]["extract"] or rows[0]["title"], "first": rows[0]["id"], "rows": rows}
 

@@ -199,7 +199,7 @@ function drawGates(){
   document.getElementById("gates").innerHTML =
     tile("yes","About him","the claims to classify") + tile("partly","Partly about him","one of several, or a line or two") +
     tile("no","Not about him","background, passing, someone else's news") +
-    `<button class="gatebtn warn" data-flag="1" aria-pressed="${state.gateFlag}"><span class="n">${nd}</span><span class="l">Classifier and extractor disagree</span><span class="s">one says "not about him", the other does not</span></button>`;
+    `<button class="gatebtn warn" data-flag="1" aria-pressed="${state.gateFlag}"><span class="n">${nd}</span><span class="l">Classifier and extractor disagree</span><span class="s">for the claim as a whole (most of its articles), one says "not about him", the other does not</span></button>`;
   document.querySelectorAll("#gates [data-g]").forEach(b => b.onclick = () => toggle("gate", b.dataset.g));
   document.querySelector("#gates [data-flag]").onclick = () => { state.gateFlag = !state.gateFlag; state.cell=null; drawAll(); };
 }
