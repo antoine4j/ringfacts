@@ -44,3 +44,6 @@ experiments/*/*/raw/
 experiments/*/TYPES.html
 # the claim map is regenerated from golden/ by golden/board/map.py
 golden/board/map.html
+
+# generated from key.json by correction_page.py; published as an artifact
+experiments/2026-09-27-answer-key/correction.html

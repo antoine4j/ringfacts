@@ -1,0 +1,201 @@
+<title>Answer Key Check</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap">
+<style>
+:root{
+  --bg:#F3F5F3; --panel:#FFFFFF; --ink:#18201D; --dim:#5B6661; --line:#DCE2DE;
+  --accent:#2B6F68; --accentbg:#E3F0EE; --warn:#A8620E; --warnbg:#FBF0E0; --ok:#2F7A45; --okbg:#E4F2E7; --fix:#8A3FA0; --fixbg:#F4E8F7;
+  --sans:"IBM Plex Sans",system-ui,-apple-system,"Segoe UI",sans-serif; --mono:"IBM Plex Mono",ui-monospace,Menlo,monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#121715; --panel:#1A211E; --ink:#E2E8E5; --dim:#9AA6A0; --line:#2C3531;
+  --accent:#63B5AA; --accentbg:#1D3330; --warn:#E0A052; --warnbg:#3A2A14; --ok:#6CC38A; --okbg:#18301F; --fix:#D39BE4; --fixbg:#35203C; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#121715; --panel:#1A211E; --ink:#E2E8E5; --dim:#9AA6A0; --line:#2C3531;
+  --accent:#63B5AA; --accentbg:#1D3330; --warn:#E0A052; --warnbg:#3A2A14; --ok:#6CC38A; --okbg:#18301F; --fix:#D39BE4; --fixbg:#35203C; color-scheme:dark}
+body{background:var(--bg);color:var(--ink);font:15px/1.5 var(--sans)}
+.wrap{max-width:1000px;margin:0 auto;padding-inline:16px;padding-block:0 60px;display:grid;gap:14px}
+header.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--bg);border-bottom:1px solid var(--line);padding-block:12px;display:grid;gap:8px}
+h1{font-size:24px;line-height:1.2;margin:0;text-wrap:balance}
+.lede{margin:0;color:var(--dim);max-width:68ch}
+.bar{display:flex;flex-wrap:wrap;gap:8px 16px;align-items:center}
+.seg{display:inline-flex;border:1px solid var(--line);border-radius:8px;overflow:hidden}
+.seg button{font:inherit;font-size:13.5px;border:0;background:var(--panel);color:var(--ink);padding:6px 11px;cursor:pointer}
+.seg button+button{border-left:1px solid var(--line)}
+.seg button[aria-pressed="true"]{background:var(--accentbg);color:var(--accent);font-weight:600}
+.count{font-variant-numeric:tabular-nums;font-size:13.5px;color:var(--dim)}
+.count b{color:var(--ink)}
+.btn{font:inherit;font-size:13.5px;border:1px solid var(--line);background:var(--panel);color:var(--ink);border-radius:8px;padding:6px 11px;cursor:pointer}
+.btn:focus-visible,.seg button:focus-visible,select:focus-visible,input:focus-visible,summary:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.banner{border:1px solid var(--warn);background:var(--warnbg);border-radius:8px;padding:8px 12px;font-size:14px}
+article.card{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:14px 16px;display:grid;gap:10px}
+article.card.done{border-color:var(--ok)}
+.meta{display:flex;flex-wrap:wrap;gap:6px 12px;align-items:center;font-size:13px;color:var(--dim)}
+.id{font-family:var(--mono);font-weight:600;color:var(--ink)}
+.chip{font-size:12px;border-radius:999px;padding:1px 8px;border:1px solid var(--line);white-space:nowrap}
+.chip.split{border-color:var(--warn);color:var(--warn);background:var(--warnbg)}
+.chip.held{border-style:dashed}
+.chip.done{border-color:var(--ok);color:var(--ok);background:var(--okbg)}
+.chip.fix{border-color:var(--fix);color:var(--fix);background:var(--fixbg)}
+.title{font-weight:600;font-size:16px;line-height:1.35}
+.title a{color:inherit;text-decoration-color:var(--line);text-underline-offset:3px}
+details.more>summary{cursor:pointer;color:var(--accent);font-size:13.5px;font-weight:500}
+.text{white-space:pre-wrap;font-size:14px;max-height:340px;overflow:auto;border-left:3px solid var(--line);padding:6px 10px;margin-top:6px}
+.notes{display:grid;gap:4px;font-size:13.5px;margin-top:6px}
+.notes b{font-family:var(--mono);font-size:12px}
+.qs{display:grid;grid-template-columns:minmax(9.5em,auto) minmax(0,1fr);gap:0;border-top:1px solid var(--line)}
+.q{display:contents}
+.q>*{padding:7px 4px;border-bottom:1px solid var(--line)}
+.ql{font-size:13.5px;color:var(--dim)}
+.qv{display:flex;flex-wrap:wrap;gap:6px 10px;align-items:center}
+.val{font-family:var(--mono);font-size:13px;background:var(--accentbg);color:var(--accent);border-radius:6px;padding:1px 7px}
+.val.none{background:var(--warnbg);color:var(--warn)}
+.st{font-size:12px;color:var(--dim)}
+.st.split{color:var(--warn);font-weight:600}
+.cls{font-size:12.5px;color:var(--dim)}
+.cls code{font-family:var(--mono)}
+.q.fixed .ql{color:var(--fix);font-weight:600}
+select{font:inherit;font-size:13px;border:1px solid var(--line);background:var(--panel);color:var(--ink);border-radius:6px;padding:3px 6px;max-width:100%}
+select.changed{border-color:var(--fix);color:var(--fix);font-weight:600}
+input.note{font:inherit;font-size:13px;border:1px solid var(--line);background:var(--panel);color:var(--ink);border-radius:6px;padding:3px 7px;min-width:0;flex:1 1 14em}
+.foot{display:flex;flex-wrap:wrap;gap:8px 12px;align-items:center}
+.saved{font-size:12.5px;color:var(--dim)}
+@media (max-width:560px){.qs{grid-template-columns:1fr}.ql{border-bottom:0!important;padding-bottom:0!important}}
+@media (prefers-reduced-motion:reduce){*{scroll-behavior:auto}}
+</style>
+
+<div class="wrap">
+  <header class="top">
+    <h1>Answer Key Check</h1>
+    <p class="lede">59 golden articles, each with nine answers from two Fable readers who labelled them blind (an Opus reader settled where they differed). Mark only what is wrong: pick the right value, and say why if it helps. Articles where the readers split or needed a tie-breaker come first.</p>
+    <div class="bar">
+      <div class="seg" role="group" aria-label="Show" id="filter">
+        <button data-f="first" aria-pressed="true">Start here</button>
+        <button data-f="differs" aria-pressed="false">Classifier differs</button>
+        <button data-f="open" aria-pressed="false">Not checked yet</button>
+        <button data-f="all" aria-pressed="false">All 59</button>
+      </div>
+      <span class="count" id="count"></span>
+      <button class="btn" id="copy">Copy my corrections as text</button>
+    </div>
+    <div class="banner" id="banner" hidden></div>
+  </header>
+  <main id="list" class="wrap" style="padding:0"></main>
+</div>
+
+<script>
+const DATA = /*DATA*/null;
+const state = {filter: "first", corrections: {}, db: null};
+const esc = s => String(s ?? "").replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const human = v => String(v ?? "").replace(/_/g, " ");
+const DEF = {}; for (const [q, list] of Object.entries(DATA.defs)) for (const [v, d] of list) DEF[q + ":" + v] = d;
+
+/** This article's saved corrections, or an empty record. @param {string} id @returns {{reviewed:boolean, fixes:object}} */
+const rec = id => state.corrections[id] || {reviewed: false, fixes: {}};
+
+/** Whether an article is shown under the current filter. @param {object} a @returns {boolean} */
+function shown(a){
+  if (state.filter === "first") return a.settled > 0;
+  if (state.filter === "differs") return a.differs > 0;
+  if (state.filter === "open") return !rec(a.id).reviewed;
+  return true;
+}
+
+/** One question row: the key's value, how it was reached, v6's answer if different, and the correction control.
+ * @param {object} a article @param {string} q question @returns {string} html */
+function questionRow(a, q){
+  const k = a.answers[q], fix = rec(a.id).fixes[q];
+  const status = k.status === "agreed" ? "both readers" : k.status === "majority" ? `2 of 3 readers (${k.readers.map(human).join(" / ")})` : `readers split: ${k.readers.map(human).join(" / ")}`;
+  const cls = k.value !== null && k.classifier !== k.value ? `<span class="cls">classifier v6: <code>${esc(human(k.classifier))}</code></span>` : "";
+  const opts = DATA.defs[q].map(([v]) => `<option value="${esc(v)}" ${fix && fix.value === v ? "selected" : ""}>${esc(human(v))}</option>`).join("");
+  return `<div class="q${fix ? " fixed" : ""}"><div class="ql">${esc(DATA.labels[q])}</div><div class="qv">
+    <span class="val${k.value === null ? " none" : ""}" title="${esc(DEF[q + ":" + k.value] || "")}">${esc(k.value === null ? "no answer" : human(k.value))}</span>
+    <span class="st${k.status === "split" ? " split" : ""}">${esc(status)}</span>${cls}
+    <select data-id="${a.id}" data-q="${q}" id="s-${a.id}-${q}" class="${fix ? "changed" : ""}" aria-label="Correct value for ${esc(DATA.labels[q])}">
+      <option value="">${k.value === null ? "choose…" : "✓ right"}</option>${opts}</select>
+    ${fix ? `<input class="note" id="n-${a.id}-${q}" data-id="${a.id}" data-q="${q}" placeholder="why (optional)" value="${esc(fix.note || "")}">` : ""}
+  </div></div>`;
+}
+
+/** One article card. @param {object} a @returns {string} html */
+function card(a){
+  const r = rec(a.id), nfix = Object.keys(r.fixes).length;
+  const chips = [a.split ? `<span class="chip split">${a.split} split</span>` : "", a.settled - a.split ? `<span class="chip">${a.settled - a.split} settled by tie-breaker</span>` : "",
+    a.differs ? `<span class="chip">classifier differs on ${a.differs}</span>` : "", a.part === "held_back" ? `<span class="chip held">held back</span>` : "",
+    nfix ? `<span class="chip fix">${nfix} corrected</span>` : "", r.reviewed ? `<span class="chip done">checked</span>` : ""].join("");
+  const notes = ["A", "B", "C"].filter(k => a.notes[k]).map(k => `<div><b>${k}</b> ${esc(a.notes[k])}</div>`).join("");
+  return `<article class="card${r.reviewed ? " done" : ""}" id="a-${a.id}">
+    <div class="meta"><span class="id">#${a.id}</span><span>${esc(a.fighter)}</span><span>${esc(a.outlet)}</span><span>${a.date}</span>${chips}</div>
+    <div class="title"><a href="${esc(a.url)}" target="_blank" rel="noopener">${esc(a.title)}</a></div>
+    <details class="more"><summary>Saved text (what the readers and the classifier saw)</summary><div class="text">${esc(a.text)}</div></details>
+    <details class="more"><summary>Readers' notes</summary><div class="notes">${notes}</div></details>
+    <div class="qs">${DATA.questions.map(q => questionRow(a, q)).join("")}</div>
+    <div class="foot"><button class="btn" data-review="${a.id}">${r.reviewed ? "Checked ✓ (click to undo)" : "Mark article checked"}</button><span class="saved" id="saved-${a.id}"></span></div>
+  </article>`;
+}
+
+/** Redraw the list and the counts. */
+function draw(){
+  const list = DATA.articles.filter(shown);
+  document.getElementById("list").innerHTML = list.length ? list.map(card).join("") : `<p class="lede">Nothing here under this filter.</p>`;
+  const checked = DATA.articles.filter(a => rec(a.id).reviewed).length;
+  const fixes = DATA.articles.reduce((s, a) => s + Object.keys(rec(a.id).fixes).length, 0);
+  document.getElementById("count").innerHTML = `showing <b>${list.length}</b> · checked <b>${checked}</b> of 59 · corrections <b>${fixes}</b>`;
+}
+
+/** Save one article's record: to the page's database when available. @param {string} id */
+async function save(id){
+  const r = rec(id), el = document.getElementById("saved-" + id);
+  if (!state.db){ if (el) el.textContent = "not saved in this view — use Copy my corrections"; return; }
+  try {
+    await state.db.doc("corrections/" + id).set({reviewed: r.reviewed, fixes: r.fixes, updatedAt: new Date().toISOString()});
+    if (el) el.textContent = "saved";
+  } catch (e) { if (el) el.textContent = "could not save: " + (e && e.message || e.code || "error"); }
+}
+
+// Controls: filter, corrections, notes, checked
+document.getElementById("filter").onclick = e => { const b = e.target.closest("button"); if (!b) return;
+  state.filter = b.dataset.f; document.querySelectorAll("#filter button").forEach(x => x.setAttribute("aria-pressed", String(x === b))); draw(); };
+document.getElementById("list").addEventListener("change", e => {
+  const t = e.target, id = t.dataset.id, q = t.dataset.q; if (!id || !q) return;
+  const r = state.corrections[id] = {...rec(id), fixes: {...rec(id).fixes}};
+  if (t.tagName === "SELECT"){ if (t.value) r.fixes[q] = {value: t.value, note: (r.fixes[q] || {}).note || ""}; else delete r.fixes[q]; }
+  else if (r.fixes[q]) r.fixes[q] = {...r.fixes[q], note: t.value};
+  const scroll = window.scrollY; draw(); window.scrollTo(0, scroll); save(id);
+});
+document.getElementById("list").addEventListener("click", e => {
+  const b = e.target.closest("[data-review]"); if (!b) return;
+  const id = b.dataset.review; state.corrections[id] = {...rec(id), reviewed: !rec(id).reviewed};
+  const scroll = window.scrollY; draw(); window.scrollTo(0, scroll); save(id);
+});
+
+/** Every correction as plain text, for pasting into the chat. @returns {string} */
+function asText(){
+  const lines = [];
+  for (const a of DATA.articles){
+    const r = rec(a.id);
+    for (const [q, f] of Object.entries(r.fixes)) lines.push(`#${a.id} ${q}: key ${a.answers[q].value ?? "none"} -> ${f.value}${f.note ? " (" + f.note + ")" : ""}`);
+    if (r.reviewed && !Object.keys(r.fixes).length) lines.push(`#${a.id} checked, all right`);
+  }
+  return lines.join("\n") || "no corrections yet";
+}
+document.getElementById("copy").onclick = async () => {
+  const text = asText(), b = document.getElementById("copy");
+  try { await navigator.clipboard.writeText(text); b.textContent = "Copied"; }
+  catch (e) { const ta = document.createElement("textarea"); ta.value = text; ta.rows = 8; ta.style.width = "100%"; b.after(ta); ta.select(); b.textContent = "Select and copy the text below"; }
+  setTimeout(() => b.textContent = "Copy my corrections as text", 2500);
+};
+
+draw();
+
+// The database: load saved corrections and keep them live; without it the page still works and offers the copy
+(async () => {
+  const db = window.claude ? await window.claude.use("db") : null;
+  if (!db){ const n = document.getElementById("banner"); n.hidden = false; n.textContent = "Corrections can't be saved in this view. They stay on this page until you reload; use “Copy my corrections as text” and paste them into the chat."; return; }
+  state.db = db;
+  db.collection("corrections").onSnapshot(snap => {
+    for (const d of snap.docs){ const v = d.data() || {}; state.corrections[d.id] = {reviewed: !!v.reviewed, fixes: v.fixes || {}}; }
+    const scroll = window.scrollY; draw(); window.scrollTo(0, scroll);
+  });
+})();
+</script>
