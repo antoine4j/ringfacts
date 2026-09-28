@@ -42,7 +42,7 @@ def state_of(it):
             "published": str(it["published_at"])[:10], "article_text": it["body"]}
 
 def call(api, Q, state):
-    body = json.dumps({"state": state, "model": "jev-latest", "questions": Q}).encode()
+    body = json.dumps({"state": state, "model": "jev-1.13.0", "questions": Q}).encode()
     req = urllib.request.Request(URL, data=body, headers={"Authorization": "Bearer " + api, "Content-Type": "application/json"})
     for a in range(4):
         t0 = time.time()
