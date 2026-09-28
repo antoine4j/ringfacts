@@ -14,6 +14,14 @@ his decisions go to `verdicts.md`, and this file is rewritten to match.
 2026-09-25/27: an article goes with its lead, not its first sentence). The
 source is **where the person spoke, never the outlet that relayed it**.
 
+**What the classifier knows about the fighter: only his name.** No profile
+(division, last fight, manager, coach) is given. Anton, 2026-09-27: *"if we
+use it, we need then a mechanism to keep it updated autonomously: fighter
+may change weight class, a manager, or a coach. So I would hold off for
+now."* So "his manager", "his team" and "opponent side" can be recognised
+only where the article itself says who the person is; read those values'
+scores with that in mind.
+
 ## Gate: is the claim about him?
 
 | value | means | boundary |
