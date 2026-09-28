@@ -136,7 +136,7 @@ details.defs dt{font-weight:600;color:var(--ink)}details.defs dd{margin:0}
 
   <div class="stats" id="stats"></div>
   <div class="gridbox"><table class="grid" id="grid"></table></div>
-  <div class="hint">Orange line in a cell: how many of its claims carry a doubt. A doubt is one of: the three readers split; the claim's articles land in different cells of this view; classifier and extractor disagree on "not about him" or on whether he himself is speaking; in v3 also: the classifier says no option fits well, or its source and act contradict each other. Hatched cells are impossible by definition.</div>
+  <div class="hint">Orange line in a cell: how many of its claims carry a doubt. A doubt is one of: the three readers split (the classifier asked three times, options in three orders, not all giving the same answer); the claim's articles land in different cells of this view; classifier and extractor disagree on "not about him" or on whether he himself is speaking; in v3 also: the classifier says no option fits well, or its source and act contradict each other. Hatched cells are impossible by definition.</div>
 
   <section class="panel" id="panel"><div class="hint">Click a cell to list its claims.</div></section>
 
@@ -191,7 +191,7 @@ function drawGates(){
   document.getElementById("gates").innerHTML =
     tile("yes","About him","the claims to classify") + tile("partly","Partly about him","one of several, or a line or two") +
     tile("no","Not about him","background, passing, someone else's news") +
-    `<button class="gatebtn warn" data-flag="1" aria-pressed="${state.gateFlag}"><span class="n">${nd}</span><span class="l">Readers disagree</span><span class="s">classifier and extractor differ on "not about him"</span></button>`;
+    `<button class="gatebtn warn" data-flag="1" aria-pressed="${state.gateFlag}"><span class="n">${nd}</span><span class="l">Classifier and extractor disagree</span><span class="s">one says "not about him", the other does not</span></button>`;
   document.querySelectorAll("#gates [data-g]").forEach(b => b.onclick = () => toggle("gate", b.dataset.g));
   document.querySelector("#gates [data-flag]").onclick = () => { state.gateFlag = !state.gateFlag; state.cell=null; drawAll(); };
 }
@@ -210,7 +210,7 @@ function drawFacets(){
 /** The sentence above the grid that says which slice is on screen. */
 function drawSlice(){
   const parts = Object.entries(state.filters).filter(([,s]) => s.size).map(([d,s]) => `<b>${esc(LABEL[d])}</b>: ${[...s].map(human).map(esc).join(" or ")}`);
-  if (state.gateFlag) parts.push(`<b>readers disagree on the gate</b>`);
+  if (state.gateFlag) parts.push(`<b>classifier and extractor disagree on the gate</b>`);
   if (state.doubtOnly) parts.push(`<b>only doubtful claims</b>`);
   const claims = visible();
   document.getElementById("slice").innerHTML = `<span>Showing ${parts.length ? parts.join(" · ") : "<b>all claims</b>"} — ${claims.length} claims, ${claims.reduce((s,c)=>s+c.n,0)} articles</span>` +
