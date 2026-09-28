@@ -48,6 +48,13 @@ Claims at **no** take no value on the other axes.
 
 ## Act: what does the source do regarding him?
 
+When he himself is the source, the act is **speaks of himself** (how he
+rates himself, his own forecast, what he wants next), except a reply to an
+attack on him, which is **answers for him**. So act depends on source: some
+cells are impossible by definition, and a source/act contradiction in the
+answers is a reliability signal (Anton, 2026-09-27: *"we embed part of Q3
+into Q5, which may be fine since we can see a correlation then"*).
+
 | value | means |
 |---|---|
 | **reports an event** | nobody speaks; something happened (he fought, weighed in, was booked) |
