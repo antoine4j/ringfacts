@@ -131,8 +131,8 @@
   "type": "choice",
   "instructions": "What new FACT about the watched fighter does the article carry, if any? A fact is something that happened or is set to happen, not an opinion about him. Choose by the article's main news. An interview, a press conference or a media day is a place where things are said, not a fact: if something said there is the news, choose that fact, or none if it is only talk.",
   "criteria": {
-   "booking": {
-    "what": "A fight of his being set, offered, negotiated, discussed as likely, or cancelled."
+   "next_fight": {
+    "what": "News of his next fight: an opponent, a date, an offer, talks, a cancellation, or when he will be ready to fight again."
    },
    "result": {
     "what": "The outcome of a fight of his."
@@ -142,9 +142,6 @@
    },
    "health": {
     "what": "An injury, a medical issue, surgery or recovery."
-   },
-   "return_date": {
-    "what": "When he will fight again or be available: a return date or a timeline."
    },
    "career_move": {
     "what": "Retirement, a contract, a move of weight class or team, a title vacated, stripped or awarded."
@@ -201,17 +198,13 @@
   "type": "noul",
   "instructions": "Does the article report the outcome of a fight of his?"
  },
- "reports_his_booking": {
+ "reports_his_next_fight": {
   "type": "noul",
-  "instructions": "Does the article report that a fight of his is set, offered, negotiated or cancelled?"
+  "instructions": "Does the article report news of his next fight: an opponent, a date, an offer, a cancellation, or when he will be ready?"
  },
  "reports_his_health": {
   "type": "noul",
   "instructions": "Does the article report an injury, a medical issue or a recovery of his?"
- },
- "reports_his_return": {
-  "type": "noul",
-  "instructions": "Does the article say when he will fight again or be available?"
  },
  "he_speaks": {
   "type": "noul",

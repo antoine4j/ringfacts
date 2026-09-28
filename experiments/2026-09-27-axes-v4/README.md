@@ -9,7 +9,7 @@ rendered for reading: [`questions-review.html`](questions-review.html)
 when each question uses the question type that fits it, and when aboutness
 is computed from separate signals instead of asked as one cut?
 
-## The ten questions
+## The nine questions
 
 | # | key | type | what it asks |
 |---|---|---|---|
@@ -19,10 +19,9 @@ is computed from separate signals instead of asked as one cut?
 | Q4 | `fact` | choice + "none of these" | the new fact about him, if any |
 | Q5 | `firmness` | score, 5 levels | how established the main fact is, whatever its kind: none → a wish → a rumour → reported → official or done |
 | Q6 | `reports_his_result` | yes / no | does the article report the outcome of a fight of his? |
-| Q7 | `reports_his_booking` | yes / no | …a fight of his set, offered, negotiated or cancelled? |
+| Q7 | `reports_his_next_fight` | yes / no | …news of his next fight: an opponent, a date, an offer, a cancellation, or when he will be ready? |
 | Q8 | `reports_his_health` | yes / no | …an injury, medical issue or recovery of his? |
-| Q9 | `reports_his_return` | yes / no | …when he will fight again or be available? |
-| Q10 | `he_speaks` | yes / no | is he himself quoted, or does he post or write? |
+| Q9 | `he_speaks` | yes / no | is he himself quoted, or does he post or write? |
 
 ## What changed from v3, and why
 
@@ -52,6 +51,15 @@ is computed from separate signals instead of asked as one cut?
   date, text — the docs' recommended shape for state.
 - **Only choice questions are reordered between passes**: score levels are
   ordered by meaning, yes/no questions have no options.
+- **Booking and return are one thing: his next fight.** The draft asked
+  them apart, but all 26 articles v3 placed under "return" are Topuria's
+  comeback after the Gaethje loss; Donchenko and Amosov have none. A value
+  built on one fighter's storyline cannot be tested on anyone else, and
+  "ready in December" sat between health and booking. Every fighter is
+  always between fights, so the fact value and the yes/no question now ask
+  about his next fight (opponent, date, offer, cancellation, readiness);
+  how firm (Q5) still separates "ready in December" (reported) from a
+  signed bout (official).
 
 ## Not in v4, on purpose
 

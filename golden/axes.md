@@ -34,7 +34,7 @@ scores with that in mind.
 classifier answers two separate things: how *central* he is (a score: not
 in it → mentioned → one of several → the main subject) and whether the
 article *carries news about him* (the fact answer, how firm, and yes/no
-questions for his result, booking, health, return and him speaking).
+questions for his result, his next fight, his health and him speaking).
 Aboutness is a formula over those, fitted to Anton's gate labels on the
 tune third and scored once on the test third; the cut-off stays a
 per-fighter setting. #683 shows why: one line on a results page (low
@@ -84,16 +84,15 @@ into Q5, which may be fine since we can see a correlation then"*).
 
 | value | means |
 |---|---|
-| **booking** | a fight of his being set, offered, discussed or cancelled |
+| **next fight** | news of his next fight: an opponent, a date, an offer, talks, a cancellation, or when he will be ready. Booking and return were two values until v4; every v3 "return" was one fighter's comeback storyline, so they merged (2026-09-27) |
 | **result** | the outcome of a fight of his |
 | **fight-week event** | the routine of a fight of his, and nothing more: weigh-in, face-off, open workout, card order, start times. An interview, press conference or media day is a place where things are said, not a fact: what is said there takes its own value, or none (Anton, 2026-09-27) |
 | **health** | injury, medical, recovery |
-| **return** | when he will fight again, availability |
 | **career move** | retirement, contract, weight class, team change |
 | **personal life** | family, childhood, home, hobbies, a lesson from life |
 | **none** | opinion or talk only; no new fact |
 
-## Modifier: how firm (only for booking, return, career move)
+## Modifier: how firm (only for next fight, career move; v4 asks it of any fact)
 
 | value | means |
 |---|---|
