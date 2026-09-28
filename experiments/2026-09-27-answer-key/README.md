@@ -74,10 +74,40 @@ and wrong by the key), and composes how firm from the fact answer.
 **Cost:** $0.10 of the $1 JEV budget (`ledger.json`): $0.04 on the loop,
 $0.06 on one v6 pass of all 300. Fable/Opus readers ran on the subscription.
 
+## All 300 labelled the same way
+
+At Anton's go-ahead, the other 241 golden articles were labelled by the
+same readers from the same guide (26 Fable agents, 3 Opus tie-breakers;
+`batches-rest/`, `readers-rest/`, `build_key.py --rest` → `labels-rest.json`),
+and `build_labels.py` merges both into `golden/answers/readers-v1.json`.
+
+- **Agreement 2,052 of 2,169 answers (95%)** on the 241; across all 300,
+  2,563 agreed, 132 settled by Opus, 5 split. Fact and how firm split most
+  (213 and 215 of 241 agreed).
+- **The six exact-copy pairs got identical answers, 54 of 54**, from
+  different readers in different batches.
+- **v6 on the 241 it was never tuned on** (agreement with the readers, not
+  a test score — no question was changed on these):
+
+  | question | v5 | v6 |
+  |---|---|---|
+  | fact | 61% | 74% |
+  | how firm | 56% | 74% |
+  | act | 80% | 87% |
+  | source | 81% | 85% |
+  | centrality | 85% | 84% |
+  | yes/no | 87–97% | 87–97% |
+
+- #134, #655 (saved text unusable) and #230 (cut before his mention) are
+  flagged: their answers describe what was saved, not the article.
+- Tokens on the subscription: about 4.3 million for all readers and
+  tie-breakers (0.88 M for the key, 3.46 M for the rest).
+
 ## Next
 
 1. Anton corrects the key (the correction page), starting with the 2 split
    answers and the 18 settled by the tie-breaker; `build_key.py` then
    `score.py` rescore v4–v6.
-2. If the scores hold: passes 2–4 of v6 for stability, then labels for all
-   300 from the same readers, pre-filled for his corrections.
+2. If the scores hold: passes 2–4 of v6 for stability (about $0.19).
+3. The correction page carries all 300; after the key, the 78 articles
+   where the readers differed anywhere are the next most useful to check.

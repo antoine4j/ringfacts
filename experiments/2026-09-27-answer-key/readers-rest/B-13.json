@@ -1,0 +1,9 @@
+[
+ {"id": "623",
+  "centrality": "one_of_several", "source": "media", "act": "predicts_his_fight",
+  "fact": "next_fight", "firmness": "official_or_done",
+  "reports_his_result": "no", "reports_his_next_fight": "yes",
+  "reports_his_health": "no", "he_speaks": "no",
+  "unsure": ["act", "fact", "reports_his_next_fight"],
+  "note": "Full-card UFC Paris preview by the outlet's writer; Donchenko gets one section on his bout with Punahele Soriano, sizing up both men and leaning Soriano. Act: the section ends in a forecast, but much of it is assessment (assesses_him is the alternative). Fact / next fight: the bout, opponent and date are stated as set on Saturday's card, but a preview arguably carries only opinion, so no_fact / 'no' is defensible."}
+]

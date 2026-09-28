@@ -1,10 +1,12 @@
-"""Build the page where Anton checks the provisional answer key: correction.html.
+"""Build the page where Anton checks the readers' provisional labels for all 300 articles: correction.html.
 
     python3 correction_page.py        # writes correction.html (git-ignored), published as an artifact
 
-Every key article with its nine answers, the readers' notes, the saved text
-and what classifier v6 said where it differs. Articles the readers split on
-or a tie-breaker settled come first, then those where v6 disagrees. His
+Every golden article with its nine answers (golden/answers/readers-v1.json),
+the readers' notes, the saved text and what classifier v6 said where it
+differs. The 59 answer-key articles come first, since every score rests on
+them; within each group, articles the readers split on or a tie-breaker
+settled come first, then those where v6 disagrees. His
 corrections are saved in the artifact's database (collection
 `corrections`, one document per article) and read back with ArtifactData;
 a copy-as-text button is the fallback. No model calls.
@@ -51,7 +53,7 @@ def classifier_value(question, answer):
 
 def main():
     """Write correction.html from the key, the guide and v6."""
-    key = json.load(open(os.path.join(HERE, "key.json")))["articles"]
+    key = json.load(open(os.path.join(GOLDEN, "answers/readers-v1.json")))["articles"]
     articles = {str(a["id"]): a for a in json.load(open(os.path.join(GOLDEN, "articles.json")))}
     v6 = json.load(open(os.path.join(GOLDEN, "answers/classifier-v6.json")))["articles"]
     rows = []
@@ -68,14 +70,16 @@ def main():
         differs = sum(v["value"] is not None and v["classifier"] != v["value"] for v in answers.values())
         rows.append({"id": article_id, "part": entry["part"], "fighter": a["subject"], "title": a["title"],
                      "url": a.get("resolved_url") or a["url"], "outlet": a["source"], "date": str(a["published_at"])[:10],
-                     "text": a["body"], "answers": answers, "notes": entry["notes"],
-                     "rank": (-split, -settled, -differs, int(article_id)), "split": split, "settled": settled, "differs": differs})
+                     "text": a["body"], "answers": answers, "notes": entry["notes"], "body_ruling": entry.get("body_ruling"),
+                     "rank": (entry["part"] == "not_key", -split, -settled, -differs, int(article_id)),
+                     "split": split, "settled": settled, "differs": differs})
     rows.sort(key=lambda r: r["rank"])
     for r in rows: del r["rank"]
     data = {"questions": QUESTIONS, "labels": LABELS, "defs": definitions(), "articles": rows}
     template = open(os.path.join(HERE, "correction-template.html")).read()
     open(os.path.join(HERE, "correction.html"), "w").write(template.replace("/*DATA*/null", json.dumps(data, ensure_ascii=False)))
-    print(f"correction.html: {len(rows)} articles; first-look {sum(1 for r in rows if r['settled'])}; "
+    print(f"correction.html: {len(rows)} articles; key first-look {sum(1 for r in rows if r['settled'] and r['part'] != 'not_key')}; "
+          f"ties anywhere {sum(1 for r in rows if r['settled'])}; "
           f"v6 differs somewhere on {sum(1 for r in rows if r['differs'])}")
 
 

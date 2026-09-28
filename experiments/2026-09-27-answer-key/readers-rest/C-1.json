@@ -1,0 +1,123 @@
+[
+ {
+  "id": "287",
+  "act": "calls_him_out",
+  "note": "Tsarukyan's 'Chandler must be next, he needs an easy fight' is framed by the article itself as a provocation of his rival; ironic advice is trash talk aimed at him, not genuine steering (steers_him is the close alternative)."
+ },
+ {
+  "id": "283",
+  "source": "opponent_side",
+  "note": "Pimblett is a long-time rival publicly linked to a potential fight with Topuria (the article discusses 'potential fights'), so the guide's 'publicly linked to a fight with him' makes him opponent side rather than other_fighter."
+ },
+ {
+  "id": "1020",
+  "reports_his_health": "yes",
+  "note": "Beyond Dana's 'ready to fight', the article states as current status that he is completing recovery from both orbital fractures, the broken septum and the foot fracture, which is an update on how he is, not just background or a readiness date."
+ },
+ {
+  "id": "34",
+  "centrality": "only_mentioned",
+  "note": "The article is about Usman Nurmagomedov; Topuria is the manager's wished-for debut opponent and one name in a list of contenders. The guide says a fighter only rumoured or calling him out does not lift him to one_of_several."
+ },
+ {
+  "id": "423",
+  "source": "opponent_side",
+  "note": "The new information is Pimblett's wish to fight Topuria; Pimblett is publicly linked to a fight with him through years of rivalry and callouts, so opponent side, not other_fighter; the outlet only relays it."
+ },
+ {
+  "id": "525",
+  "centrality": "only_mentioned",
+  "note": "The article is Tsarukyan's title-defence plans; Topuria gets a background line on his loss and a short Tsarukyan quote naming him as a possible first defence, which is another fighter talking about him in a side passage, not shared attention. one_of_several is arguable given the assessment quote."
+ },
+ {
+  "id": "516",
+  "act": "steers_him",
+  "note": "Tsarukyan says Topuria vs Pimblett 'makes sense' but the UFC will give Topuria someone easy: fantasy matchmaking about who he fights next, which is steers_him; predicts_his_fight is for a pick on a fight, not on whether one gets booked."
+ },
+ {
+  "id": "820",
+  "centrality": "one_of_several",
+  "act": "gives_news_of_him",
+  "fact": "next_fight",
+  "firmness": "rumour",
+  "reports_his_next_fight": "yes",
+  "note": "The article is about a rumoured December Topuria-Pimblett fight and their shared rivalry history, so Topuria gets real content alongside Pimblett (only_mentioned arguable, since the guide discounts rumoured opponents). Pimblett's 'no one spoke to me' is a factual update on the talks about Topuria's next fight; the only fact in play is the rumour, now denied, so rumour, and it is news on the status of his next fight."
+ },
+ {
+  "id": "653",
+  "centrality": "one_of_several",
+  "act": "reports_an_event",
+  "fact": "fight_week_event",
+  "firmness": "official_or_done",
+  "note": "The saved body is only page furniture; the article itself (its title) is the ceremonial weigh-in faceoff of Donchenko vs Soriano, a fight-week routine covering both fighters with nobody speaking. A stricter reader could call him not_in_content because no body text survived."
+ },
+ {
+  "id": "609",
+  "fact": "next_fight",
+  "firmness": "official_or_done",
+  "note": "A Soriano interview previewing their booked fight; Soriano's view of Donchenko is opinion, and the only fact about Donchenko is his set upcoming bout (Soriano, 5 September, Paris), which is announced by the UFC. no_fact is the alternative if a preview's known booking is not counted as news."
+ },
+ {
+  "id": "1089",
+  "firmness": "official_or_done",
+  "note": "The main fact about Topuria is that he is ready and his next opponent is between Gaethje and Pimblett, stated by Dana White himself, and the guide keys firmness on who states it (the promotion), even though the choice is still open."
+ },
+ {
+  "id": "492",
+  "act": "steers_him",
+  "note": "Gaethje (opponent side) mostly talks about himself; regarding Topuria he says a rematch is not his next fight and guesses Topuria is still recovering, which is a view on rematch-or-not, the guide's steers_him case; his 'probably recovering' is speculation, not a factual update."
+ },
+ {
+  "id": "457",
+  "act": "none_of_these",
+  "note": "Topuria is only mentioned: the writer reports Pimblett ruled out fighting him because he expects Topuria back next year. Nobody calls him out, assesses or steers him; what would fit is 'rules out a fight with him'."
+ },
+ {
+  "id": "862",
+  "centrality": "one_of_several",
+  "note": "The article covers a possible Gaethje vs Topuria rematch, with real content on both: Topuria's next fight and Pimblett alternative, and Gaethje's retirement talk and Tsarukyan path; a feature on a fight of his covering both fighters."
+ },
+ {
+  "id": "686",
+  "reports_his_next_fight": "yes",
+  "note": "The faceoff report states his set fight against Soriano on 5 September at UFC Fight Night 287 ('going down tomorrow'), an opponent and date set; the main fact is the fight-week faceoff, but the yes/no questions can overlap."
+ },
+ {
+  "id": "692",
+  "fact": "next_fight",
+  "firmness": "official_or_done",
+  "reports_his_next_fight": "yes",
+  "note": "The pick on Donchenko vs Soriano is opinion, but the fact the article carries about him is his booked bout on the UFC Paris main card, which is set by the promotion; no_fact is the alternative if a preview's known booking is not counted as news."
+ },
+ {
+  "id": "926",
+  "reports_his_next_fight": "yes",
+  "note": "Besides Rogan's and Brown's opinions, the article relays Anik's claim of internal UFC conversations about an immediate Gaethje rematch in 2027, which is next-fight talks (rumour-level), not just a wish; Rogan's 'six months before sparring' is an opinion, not a readiness report."
+ },
+ {
+  "id": "901",
+  "fact": "next_fight",
+  "firmness": "rumour",
+  "reports_his_next_fight": "yes",
+  "note": "Brown's warning is opinion, but the article's premise and only fact is the rumoured immediate rematch ('rumors have surfaced', Anik's 'internal conversations'), which the guide lists as talks/discussions, so rumour."
+ },
+ {
+  "id": "737",
+  "centrality": "only_mentioned",
+  "note": "A live results page for the whole UFC Paris card; his bout is one of fourteen results, with a round-by-round paragraph like the others. The guide places a results page under only_mentioned."
+ },
+ {
+  "id": "641",
+  "fact": "next_fight",
+  "firmness": "official_or_done",
+  "note": "A betting preview: the pick is opinion, but the article states his set bout with Soriano on 5 September in Paris, an announced fight; no_fact is the alternative if a preview's known booking is not counted as news."
+ },
+ {
+  "id": "1002",
+  "fact": "next_fight",
+  "firmness": "rumour",
+  "reports_his_next_fight": "yes",
+  "reports_his_health": "no",
+  "note": "The lead news is Pantoja's support message (talk, not a fact); the only fact about him is the rumoured Gaethje rematch from Anik's 'internal conversations', so next_fight/rumour. The recovery line is a generic recap of his injuries, background rather than a health update."
+ }
+]

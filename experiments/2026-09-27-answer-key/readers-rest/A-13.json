@@ -1,0 +1,9 @@
+[
+ {"id": "623",
+  "centrality": "one_of_several", "source": "media", "act": "predicts_his_fight",
+  "fact": "next_fight", "firmness": "official_or_done",
+  "reports_his_result": "no", "reports_his_next_fight": "yes",
+  "reports_his_health": "no", "he_speaks": "no",
+  "unsure": ["centrality", "fact", "reports_his_next_fight"],
+  "note": "A whole-card preview of UFC Paris by the outlet's writer; Donchenko vs Soriano gets one paragraph of analysis and a lean toward Soriano. Centrality: real content but one fight among eight, so only_mentioned is arguable. Fact/next_fight: the fight is on Saturday's official card, but a preview's main content is the pick, so no_fact is arguable."}
+]
