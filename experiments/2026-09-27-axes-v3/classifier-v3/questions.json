@@ -70,7 +70,7 @@
   "criteria": {
    "booking": "A fight of his being set, offered, negotiated, discussed as likely, or cancelled.",
    "result": "The outcome of a fight of his.",
-   "fight_week_event": "A weigh-in, face-off, open workout, media day, press conference, card order, start times or how to watch - for a fight of his.",
+   "fight_week_event": "The routine event itself is the news: a weigh-in, face-off, open workout, media day, card order, start times or how to watch - for a fight of his. If what is said at such an event carries a booking, a health issue, a return date or a career move, choose that instead. After the fight, judge only by what is said.",
    "health": "An injury, a medical issue, surgery or recovery.",
    "return": "When he will fight again or be available: a return date or a timeline.",
    "career_move": "Retirement, a contract, a move of weight class or team, a title vacated, stripped or awarded.",

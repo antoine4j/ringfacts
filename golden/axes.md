@@ -72,7 +72,7 @@ into Q5, which may be fine since we can see a correlation then"*).
 |---|---|
 | **booking** | a fight of his being set, offered, discussed or cancelled |
 | **result** | the outcome of a fight of his |
-| **fight-week event** | weigh-in, face-off, open workout, press conference, card details |
+| **fight-week event** | the routine event itself is the news: weigh-in, face-off, open workout, card order, start times; a fact said there (a withdrawal, an injury) takes that fact's value instead, and after the fight only what is said counts (Anton, 2026-09-27) |
 | **health** | injury, medical, recovery |
 | **return** | when he will fight again, availability |
 | **career move** | retirement, contract, weight class, team change |
@@ -89,6 +89,7 @@ into Q5, which may be fine since we can see a correlation then"*).
 
 ## Not labelled now
 
+- **Fight-arc position** (build-up, fight week, fight night, after the fight): computed from the bout and the article's date relative to the fight, not asked of the classifier. A map dimension and a setting later ("everything around his fight").
 - **Depth** (a full breakdown or one line): the tier sample shows whether it needs an axis.
 - **Novelty** (new, a reaction, a restatement): a grouping question, not a claim property.
 - **Where it was said** (podcast, post, press conference): kept from the extractor, shown on the map, not labelled.
