@@ -46,7 +46,7 @@ button:focus-visible,select:focus-visible,summary:focus-visible{outline:2px soli
 .controls select{font:500 13px var(--body);color:var(--ink);background:var(--panel);border:1px solid var(--line);border-radius:6px;padding:5px 8px}
 .slice{display:flex;flex-wrap:wrap;gap:8px;align-items:center;font-size:14px;background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:8px 12px}
 .slice b{font-weight:600}
-.slice .clear{margin-left:auto;font:500 13px var(--body);border:1px solid var(--line);background:var(--ground);color:var(--ink);border-radius:999px;padding:4px 12px;cursor:pointer}
+.slice .clear,.panel .clear{margin-left:auto;font:500 13px var(--body);border:1px solid var(--line);background:var(--ground);color:var(--ink);border-radius:999px;padding:4px 12px;cursor:pointer}
 
 details.filters{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:8px 12px}
 details.filters>summary{cursor:pointer;font-weight:600}
@@ -138,7 +138,7 @@ details.defs dt{font-weight:600;color:var(--ink)}details.defs dd{margin:0}
   <div class="gridbox"><table class="grid" id="grid"></table></div>
   <div class="hint">Orange line in a cell: how many of its claims carry a doubt. A doubt is one of: the three readers split (the classifier asked three times, options in three orders, not all giving the same answer); the claim's articles land in different cells of this view; classifier and extractor disagree on "not about him" or on whether he himself is speaking; in v3 also: the classifier says no option fits well, or its source and act contradict each other. Hatched cells are impossible by definition.</div>
 
-  <section class="panel" id="panel"><div class="hint">Click a cell to list its claims.</div></section>
+  <section class="panel" id="panel"></section>
 
   <details class="defs"><summary>What each value means</summary><div id="defs"></div></details>
 </div>
@@ -248,7 +248,12 @@ function drawGrid(){
   h += `<tr><th class="row tot">total</th>${xs.map(a => `<td class="tot">${sum(claims.filter(c => c.v[state.x]===a))||""}</td>`).join("")}<td class="tot">${sum(claims)}</td></tr></tbody>`;
   const grid = document.getElementById("grid");
   grid.innerHTML = h;
-  grid.querySelectorAll("button.cell").forEach(btn => btn.onclick = () => { state.cell = [btn.dataset.a, btn.dataset.b]; drawGrid(); drawPanel(); document.getElementById("panel").scrollIntoView({behavior:"smooth", block:"start"}); });
+  grid.querySelectorAll("button.cell").forEach(btn => btn.onclick = () => {
+    const same = state.cell && state.cell[0]===btn.dataset.a && state.cell[1]===btn.dataset.b;
+    state.cell = same ? null : [btn.dataset.a, btn.dataset.b];
+    drawGrid(); drawPanel();
+    if (!same) document.getElementById("panel").scrollIntoView({behavior:"smooth", block:"start"});
+  });
 }
 
 /** One article inside an opened claim: its extract and every answer. @param {object} r @returns {string} html */
@@ -261,19 +266,33 @@ function article(r){
     <div class="a">${DATA.flags.filter(f => r.flags[f]).map(f => `<span class="chip warn">${esc(ALL.flag_labels[f])}</span>`).join("")}</div></li>`;
 }
 
-/** The claims of the selected cell, doubtful first. */
+/** One claim in the list, closed; it opens into its articles. @param {object} c @returns {string} html */
+function claimItem(c){
+  return `<li><details><summary><span class="key">${c.key}</span><span class="lbl">${esc(c.label)} <small>extract of #${c.first}</small></span>
+      <span class="chips"><span class="chip fighter">${esc(c.v.fighter)}</span><span class="chip">${c.n} article${c.n>1?"s":""}</span><span class="chip">about him: ${esc(c.v.gate)}</span><span class="chip">${esc(LABEL[state.x])}: ${esc(human(c.v[state.x]))}</span><span class="chip">${esc(LABEL[state.y])}: ${esc(human(c.v[state.y]))}</span>
+      ${DATA.flags.filter(f => c.flags[f]).map(f => `<span class="chip warn">${esc(ALL.flag_labels[f])}</span>`).join("")}${articlesSplit(c)?`<span class="chip warn">articles in different cells</span>`:""}</span></summary>
+      <ul class="arts">${c.rows.map(article).join("")}</ul></details></li>`;
+}
+
+/** The claims of the selected cell, or of the whole filtered slice when no cell is selected; doubtful first. */
 function drawPanel(){
   const panel = document.getElementById("panel");
-  if (!state.cell){ panel.innerHTML = `<div class="hint">Click a cell to list its claims.</div>`; return; }
-  const [a,b] = state.cell;
-  const list = visible().filter(c => c.v[state.x]===a && c.v[state.y]===b).sort((p,q) => doubts(q)-doubts(p) || q.n-p.n);
-  if (!list.length){ panel.innerHTML = `<div class="hint">No claims left in this cell with the current filters.</div>`; return; }
-  panel.innerHTML = `<h2>${esc(LABEL[state.x])}: ${esc(human(a))} × ${esc(LABEL[state.y])}: ${esc(human(b))} · ${list.length} claim${list.length>1?"s":""}, ${list.reduce((s,c)=>s+c.n,0)} articles</h2>
-    <div class="hint">${esc(human(a))}: ${esc(DEF[state.x+":"+a])}<br>${esc(human(b))}: ${esc(DEF[state.y+":"+b])}</div>
-    <ul class="claims">${list.map(c => `<li><details><summary><span class="key">${c.key}</span><span class="lbl">${esc(c.label)} <small>extract of #${c.first}</small></span>
-      <span class="chips"><span class="chip fighter">${esc(c.v.fighter)}</span><span class="chip">${c.n} article${c.n>1?"s":""}</span><span class="chip">about him: ${esc(c.v.gate)}</span><span class="chip">${esc(human(c.v.fact))}</span>
-      ${DATA.flags.filter(f => c.flags[f]).map(f => `<span class="chip warn">${esc(ALL.flag_labels[f])}</span>`).join("")}${articlesSplit(c)?`<span class="chip warn">articles in different cells</span>`:""}</span></summary>
-      <ul class="arts">${c.rows.map(article).join("")}</ul></details></li>`).join("")}</ul>`;
+  const inCell = state.cell ? c => c.v[state.x]===state.cell[0] && c.v[state.y]===state.cell[1] : () => true;
+  const list = visible().filter(inCell).sort((p,q) => doubts(q)-doubts(p) || q.n-p.n);
+  const articles = list.reduce((s,c)=>s+c.n,0);
+  let head;
+  if (state.cell){
+    const [a,b] = state.cell;
+    head = `<h2>${esc(LABEL[state.x])}: ${esc(human(a))} × ${esc(LABEL[state.y])}: ${esc(human(b))} · ${list.length} claim${list.length===1?"":"s"}, ${articles} articles</h2>
+      <div class="hint">${esc(human(a))}: ${esc(DEF[state.x+":"+a])}<br>${esc(human(b))}: ${esc(DEF[state.y+":"+b])}</div>
+      <div><button class="clear" id="showall">Show all in this slice</button> <span class="hint">or click the cell again</span></div>`;
+  } else {
+    head = `<h2>All claims in this slice · ${list.length} claim${list.length===1?"":"s"}, ${articles} articles</h2>
+      <div class="hint">Every claim the filters above let through, doubtful first. Click a cell in the grid to narrow to it.</div>`;
+  }
+  panel.innerHTML = head + (list.length ? `<ul class="claims">${list.map(claimItem).join("")}</ul>` : `<div class="hint">No claims with the current filters.</div>`);
+  const all = document.getElementById("showall");
+  if (all) all.onclick = () => { state.cell = null; drawGrid(); drawPanel(); };
 }
 
 /** Redraw everything that depends on the filters. */
