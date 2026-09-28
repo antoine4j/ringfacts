@@ -159,7 +159,7 @@ details.defs dt{font-weight:600;color:var(--ink)}details.defs dd{margin:0}
 
   <div class="stats" id="stats"></div>
   <div class="gridbox"><table class="grid" id="grid"></table></div>
-  <div class="hint">Orange line in a cell: how many of its claims carry a doubt. A doubt is one of: the three readers split (the classifier asked three times, options in three orders, not all giving the same answer); the claim's articles land in different cells of this view; classifier and extractor disagree on "not about him" or on whether he himself is speaking; in v3 also: the classifier says no option fits well, or its source and act contradict each other. Hatched cells are impossible by definition.</div>
+  <div class="hint">Orange line in a cell: how many of its claims carry a doubt. A doubt is one of: the three readers split (the classifier asked three times, options in three orders, not all giving the same answer); the claim's articles land in different cells of this view; classifier and extractor disagree on "not about him" or on whether he himself is speaking; in v3 also: the classifier says no option fits well, or its source and act contradict each other; in v5 (one pass, so no reader split): source and act contradict, the fact answer and its yes/no question disagree, source is "himself" but "he speaks" says no, or an answer is unsure. Hatched cells are impossible by definition.</div>
 
   <section class="panel" id="panel"></section>
 
@@ -179,9 +179,9 @@ const articlesSplit = c => new Set(c.rows.map(r => r.v[state.x]+"|"+r.v[state.y]
 /** How many doubt flags a claim carries in the current view. @param {object} c @returns {number} */
 const doubts = c => DATA.flags.filter(f => c.flags[f]).length + (articlesSplit(c)?1:0);
 
-/** Whether a cell is impossible by definition (v3: act depends on source). @param {string} a x value @param {string} b y value @returns {boolean} */
+/** Whether a cell is impossible by definition (v3 on: act depends on source). @param {string} a x value @param {string} b y value @returns {boolean} */
 function impossible(a, b){
-  if (DATA.key !== "v3") return false;
+  if (!DATA.act_depends_on_source) return false;
   const pair = {[state.x]: a, [state.y]: b};
   if (!("source" in pair) || !("act" in pair)) return false;
   const him = pair.source === "himself", own = pair.act === "speaks_of_himself" || pair.act === "answers_for_him";
@@ -204,24 +204,23 @@ function toggle(dim, val){
   state.cell = null; drawAll();
 }
 
-/** The gate strip: yes, partly, no, and the disagreements, each a one-click filter. */
+/** The top tiles: the gate (v2, v3) or the centrality levels (v5), and the disagreements, each a one-click filter. */
 function drawGates(){
-  const base = DATA.claims.filter(c => passes(c, "gate"));
-  const on = state.filters.gate || new Set();
-  const tile = (val, title, sub) => { const n = base.filter(c => c.v.gate===val).length;
+  const dim = DATA.tiles.dim, base = DATA.claims.filter(c => passes(c, dim));
+  const on = state.filters[dim] || new Set();
+  const tile = ([val, title, sub]) => { const n = base.filter(c => c.v[dim]===val).length;
     return `<button class="gatebtn" data-g="${val}" aria-pressed="${on.has(val)}"><span class="n">${n}</span><span class="l">${title}</span><span class="s">${sub}</span></button>`; };
   const nd = DATA.claims.filter(c => passes(c, "gateFlag") && c.flags.gate_disagrees).length;
-  document.getElementById("gates").innerHTML =
-    tile("yes","About him","the claims to classify") + tile("partly","Partly about him","one of several, or a line or two") +
-    tile("no","Not about him","background, passing, someone else's news") +
-    `<button class="gatebtn warn" data-flag="1" aria-pressed="${state.gateFlag}"><span class="n">${nd}</span><span class="l">Classifier and extractor disagree</span><span class="s">for the claim as a whole (most of its articles), one says "not about him", the other does not</span></button>`;
-  document.querySelectorAll("#gates [data-g]").forEach(b => b.onclick = () => toggle("gate", b.dataset.g));
+  const [dTitle, dSub] = DATA.tiles.disagree;
+  document.getElementById("gates").innerHTML = DATA.tiles.list.map(tile).join("") +
+    `<button class="gatebtn warn" data-flag="1" aria-pressed="${state.gateFlag}"><span class="n">${nd}</span><span class="l">${esc(dTitle)}</span><span class="s">${esc(dSub)}</span></button>`;
+  document.querySelectorAll("#gates [data-g]").forEach(b => b.onclick = () => toggle(dim, b.dataset.g));
   document.querySelector("#gates [data-flag]").onclick = () => { state.gateFlag = !state.gateFlag; state.cell=null; drawAll(); };
 }
 
 /** The filter chips: every value of every dimension, with the count it would leave. */
 function drawFacets(){
-  document.getElementById("facets").innerHTML = DIMS.filter(d => d.key !== "gate").map(d => {
+  document.getElementById("facets").innerHTML = DIMS.filter(d => d.key !== DATA.tiles.dim).map(d => {
     const base = DATA.claims.filter(c => passes(c, d.key)), set = state.filters[d.key] || new Set();
     const chips = DATA.values[d.key].map(o => { const n = base.filter(c => c.v[d.key]===o.key).length;
       return (n || set.has(o.key)) ? `<button class="fchip" data-d="${d.key}" data-v="${esc(o.key)}" aria-pressed="${set.has(o.key)}" title="${esc(o.def)}">${esc(human(o.key))}<span class="c">${n}</span></button>` : ""; }).join("");
@@ -233,7 +232,7 @@ function drawFacets(){
 /** The sentence above the grid that says which slice is on screen. */
 function drawSlice(){
   const parts = Object.entries(state.filters).filter(([,s]) => s.size).map(([d,s]) => `<b>${esc(LABEL[d])}</b>: ${[...s].map(human).map(esc).join(" or ")}`);
-  if (state.gateFlag) parts.push(`<b>classifier and extractor disagree on the gate</b>`);
+  if (state.gateFlag) parts.push(`<b>${esc(DATA.tiles.disagree[0].toLowerCase())}</b>`);
   if (state.doubtOnly) parts.push(`<b>only doubtful claims</b>`);
   const claims = visible();
   document.getElementById("slice").innerHTML = `<span>Showing ${parts.length ? parts.join(" · ") : "<b>all claims</b>"} — ${claims.length} claims, ${claims.reduce((s,c)=>s+c.n,0)} articles</span>` +
@@ -279,39 +278,51 @@ function drawGrid(){
   });
 }
 
-/** Every classifier question for one article: each option's probability from each of the three readers, and their mean.
+/** Every classifier question for one article: each option's probability from each reader, and their mean.
  * @param {object} r an article row @returns {string} html */
 function classifierDetail(r){
-  const READERS = ["original order","reversed","shuffled"];
+  const READERS = DATA.readers;
   return Object.keys(DATA.questions).filter(q => r.detail[q]).map(q => {
     const d = r.detail[q], options = Object.keys(d.readers[0]);
     const mean = o => d.readers.reduce((s,x) => s + (x[o]||0), 0) / d.readers.length;
-    const rows = options.sort((a,b) => mean(b)-mean(a)).map(o => {
+    // score levels keep their order, low to high; options and yes/no go most likely first
+    const ordered = d.score !== undefined ? options : options.sort((a,b) => mean(b)-mean(a));
+    const many = d.readers.length > 1;
+    const rows = ordered.map(o => {
       const m = mean(o), pct = x => `${Math.round((x||0)*100)}%`;
-      return `<tr class="${o===d.choice?"chosen":""}"><td class="opt">${esc(human(o))}</td>${d.readers.map(x => `<td class="num">${pct(x[o])}</td>`).join("")}<td class="num mean">${pct(m)}</td><td class="barc"><span class="bar" style="width:${Math.round(m*100)}%"></span></td></tr>`;
+      return `<tr class="${o===d.choice?"chosen":""}"><td class="opt">${esc(human(o))}</td>${d.readers.map(x => `<td class="num">${pct(x[o])}</td>`).join("")}${many?`<td class="num mean">${pct(m)}</td>`:""}<td class="barc"><span class="bar" style="width:${Math.round(m*100)}%"></span></td></tr>`;
     }).join("");
-    return `<div class="q${q.endsWith("_fit")?" fit":""}"><div class="qh" title="${esc(DATA.questions[q])}"><b>${esc(human(q))}</b> → <b>${esc(human(d.choice))}</b> <span class="hint">${d.agree}/3 readers · confidence ${Math.round(d.conf*100)}%</span></div>
-      <table class="pt"><thead><tr><th></th>${READERS.map(x => `<th class="num">${x}</th>`).join("")}<th class="num">mean</th><th></th></tr></thead><tbody>${rows}</tbody></table></div>`;
+    return `<div class="q${q.endsWith("_fit")?" fit":""}"><div class="qh" title="${esc(DATA.questions[q])}"><b>${esc(human(q))}</b> → <b>${esc(human(d.choice))}</b> <span class="hint">${answerNote(d)}</span></div>
+      <table class="pt"><thead><tr><th></th>${READERS.map(x => `<th class="num">${x}</th>`).join("")}${many?'<th class="num">mean</th>':""}<th></th></tr></thead><tbody>${rows}</tbody></table></div>`;
   }).join("");
+}
+
+/** The small print beside one answer: agreement, and the number that fits its type.
+ * @param {object} d one question's detail @returns {string} */
+function answerNote(d){
+  const agree = DATA.passes > 1 ? `${d.agree}/${DATA.passes} readers · ` : "one pass · ";
+  if (d.yes !== undefined) return agree + `probability of yes ${Math.round(d.yes*100)}%`;
+  if (d.score !== undefined) return agree + `score ${d.score.toFixed(2)} · confidence ${Math.round(d.conf*100)}%`;
+  return agree + `confidence ${Math.round(d.conf*100)}%`;
 }
 
 /** One article inside an opened claim: its extract and every answer. @param {object} r @returns {string} html */
 function article(r){
-  const val = (dim) => { const g = r.agree[dim]; return `<span>${esc(LABEL[dim])}: <b class="${g?"agree"+g:""}" ${g?`title="${g} of 3 readers"`:""}>${esc(human(r.v[dim]))}</b>${g && g<3 ? ` (${g}/3)` : ""}</span>`; };
+  const N = DATA.passes, val = (dim) => { const g = r.agree[dim]; return `<span>${esc(LABEL[dim])}: <b class="${g?(g===N?"agree3":"agree"+g):""}" ${g&&N>1?`title="${g} of ${N} readers"`:""}>${esc(human(r.v[dim]))}</b>${g && g<N ? ` (${g}/${N})` : ""}</span>`; };
   return `<li class="art"><div class="t"><span class="key">#${r.id} · ${r.date} · ${esc(r.source)}</span><br><a href="${esc(r.url)}" target="_blank" rel="noopener">${esc(r.title)}</a></div>
     <div class="prog ext"><div class="ph">Extractor</div><div class="x">${esc(r.extract || "(no extract)")}</div>
       <div class="a"><span>kind: <b>${esc(human(r.v.extract_kind))}</b></span><span>actor: <b>${esc(r.actor||"—")}</b></span>${r.occasion?`<span>where: <b>${esc(r.occasion)}</b></span>`:""}</div></div>
-    <details class="prog cls"><summary><div class="ph">Classifier <span class="hint">· majority of three readers; (2/3) when one differed · click for every answer's percentages</span></div>
+    <details class="prog cls"><summary><div class="ph">Classifier <span class="hint">· ${DATA.passes > 1 ? "majority of three readers; (2/3) when one differed" : "one pass"} · click for every answer's percentages</span></div>
       <div class="a">${DIMS.filter(d => !["fighter","extract_kind"].includes(d.key)).map(d => val(d.key)).join("")}</div></summary>
       <div class="detail">${classifierDetail(r)}</div></details>
-    ${DATA.flags.some(f => r.flags[f]) ? `<div class="a">${DATA.flags.filter(f => r.flags[f]).map(f => `<span class="chip warn">${esc(ALL.flag_labels[f])}</span>`).join("")}</div>` : ""}</li>`;
+    ${DATA.flags.some(f => r.flags[f]) ? `<div class="a">${DATA.flags.filter(f => r.flags[f]).map(f => `<span class="chip warn">${esc(DATA.flag_labels[f])}</span>`).join("")}</div>` : ""}</li>`;
 }
 
 /** One claim in the list, closed; it opens into its articles. @param {object} c @returns {string} html */
 function claimItem(c){
   return `<li><details><summary><span class="key">${c.key}</span><span class="lbl">${esc(c.label)} <small>extractor's extract of #${c.first}, the first article</small></span>
-      <span class="chips"><span class="chip fighter">${esc(c.v.fighter)}</span><span class="chip">${c.n} article${c.n>1?"s":""}</span><span class="chip">classifier · about him: ${esc(c.v.gate)} · ${esc(LABEL[state.x]).toLowerCase()}: ${esc(human(c.v[state.x]))} · ${esc(LABEL[state.y]).toLowerCase()}: ${esc(human(c.v[state.y]))}</span>
-      ${DATA.flags.filter(f => c.flags[f]).map(f => `<span class="chip warn">${esc(ALL.flag_labels[f])}</span>`).join("")}${articlesSplit(c)?`<span class="chip warn">articles in different cells</span>`:""}</span></summary>
+      <span class="chips"><span class="chip fighter">${esc(c.v.fighter)}</span><span class="chip">${c.n} article${c.n>1?"s":""}</span><span class="chip">classifier · ${esc(LABEL[DATA.tiles.dim]).toLowerCase()}: ${esc(human(c.v[DATA.tiles.dim]))} · ${esc(LABEL[state.x]).toLowerCase()}: ${esc(human(c.v[state.x]))} · ${esc(LABEL[state.y]).toLowerCase()}: ${esc(human(c.v[state.y]))}</span>
+      ${DATA.flags.filter(f => c.flags[f]).map(f => `<span class="chip warn">${esc(DATA.flag_labels[f])}</span>`).join("")}${articlesSplit(c)?`<span class="chip warn">articles in different cells</span>`:""}</span></summary>
       <ul class="arts">${c.rows.map(article).join("")}</ul></details></li>`;
 }
 

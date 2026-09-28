@@ -16,7 +16,9 @@ calls, no network. A new classifier version is added to VERSIONS below.
 
 v2 has no gate question, so its gate is a rule over three answers (stated
 on the page); v3 asks the gate directly, and pairs each axis with a
-question on whether its options fit.
+question on whether its options fit. v5 has no gate at all: aboutness is to
+be computed (golden/axes.md), so its top tiles are the centrality levels,
+and its scores and yes/no answers are sliced as named levels.
 """
 import json, os, collections
 
@@ -38,24 +40,47 @@ V3_GATE = {"about_him": "yes", "partly_about_him": "partly", "not_about_him": "n
 # acts where the fighter is the doer but nobody is the source of words (v2), for the "himself" cross-check
 V2_EVENT_ACTS = {"he_fought", "his_fight_week", "nothing"}
 V3_HIMSELF_ACTS = {"speaks_of_himself", "answers_for_him"}
+# v5: centrality levels that count as "not about him" when compared with the extractor
+V5_LOW_CENTRALITY = {"not_in_content", "only_mentioned"}
+# v5: each fact value and the yes/no question that asks for the same news
+V5_FACT_TWINS = {"result": "result", "next_fight": "next_fight", "health": "health"}
+V5_UNSURE_CHOICE = 0.4
+GATE_TILES = [["yes", "About him", "the claims to classify"], ["partly", "Partly about him", "one of several, or a line or two"],
+              ["no", "Not about him", "background, passing, someone else's news"]]
+CENTRALITY_TILES = [["main_subject", "Main subject", "he is what the article is about"],
+                    ["one_of_several", "One of several", "he shares the article with others"],
+                    ["only_mentioned", "Only mentioned", "a line, a list, background"],
+                    ["not_in_content", "Not in the content", "only in links or furniture"]]
 
 VERSIONS = [
+    {"key": "v5", "file": "answers/classifier-v5.json",
+     "stamp": "classifier v5 · pass 1 only, one reader (v4 with the four yes/no questions reworded)",
+     "dims": [("centrality", "How central", "centrality"), ("source", "Source", "source"), ("act", "Act", "act"),
+              ("fact", "Fact asserted", "fact"), ("firmness", "How firm", "firmness"),
+              ("result", "Reports his result", "reports_his_result"), ("next_fight", "Reports his next fight", "reports_his_next_fight"),
+              ("health", "Reports his health", "reports_his_health"), ("he_speaks", "He speaks", "he_speaks")],
+     "axes": ("fact", "centrality"), "tiles": ("centrality", CENTRALITY_TILES),
+     "disagree": ["Centrality and extractor disagree", 'for the claim as a whole, one says "only mentioned or less" / "about someone else", the other does not'],
+     "flag_labels": {"gate_disagrees": 'centrality ("only mentioned" or less) and extractor ("about someone else") disagree'}},
     {"key": "v3", "file": "answers/classifier-v3.json",
      "stamp": "classifier v3 · the axes of golden/axes.md, majority of three option orders (pass 4 = noise floor)",
      "dims": [("gate", "About him?", "gate"), ("source", "Source", "source"), ("act", "Act", "act"),
               ("fact", "Fact asserted", "fact"), ("firmness", "How firm", "firmness")],
-     "axes": ("source", "act")},
+     "axes": ("source", "act"), "tiles": ("gate", GATE_TILES)},
     {"key": "v2", "file": "answers/classifier-v2.json",
      "stamp": "classifier v2 · passes 4–6, majority of three option orders",
      "dims": [("gate", "About him?", None), ("who", "Who", "speaker"), ("what", "What regarding him", "act"),
               ("fact", "Fact asserted", "kind"), ("depth", "Depth", "depth"), ("role", "Role", "role")],
-     "axes": ("who", "what")},
+     "axes": ("who", "what"), "tiles": ("gate", GATE_TILES)},
 ]
 COMMON_DIMS = [("extract_kind", "Extractor's kind"), ("fighter", "Fighter")]
 FLAG_LABELS = {
     "readers_split": "readers split", "gate_disagrees": 'classifier and extractor disagree on "not about him"',
     "who_disagrees": 'extract and classifier disagree on "himself"', "fit_doubt": "the classifier says no option fits well",
     "contradiction": "source and act contradict each other",
+    "fact_disagrees": "the fact answer and its yes/no question disagree",
+    "speaks_disagrees": 'source is "himself" but "he speaks" says no',
+    "unsure": "an unsure answer: a choice under 40% confidence, or a yes/no between 30% and 70%",
 }
 
 
@@ -109,6 +134,8 @@ def article_row(version, article, answers, extract):
         if question:
             values[key], agree[key] = answers[question]["choice"], answers[question]["agree"]
     flags = {}
+    if version["key"] == "v5":
+        return v5_row(version, article, answers, extract, values, agree)
     if version["key"] == "v2":
         values["gate"], flags["gate_disagrees"] = v2_gate(answers, extract_kind)
         speaker_is_him, comparable = values["who"] == "himself", bool(actor) and values["what"] not in V2_EVENT_ACTS
@@ -132,6 +159,40 @@ def article_row(version, article, answers, extract):
             "extract": extract.get("claim"), "actor": actor, "occasion": extract.get("occasion"),
             "v": values, "agree": agree, "flags": flags, "says_no": {"classifier": classifier_no, "extractor": extractor_no},
             "detail": {q: {"choice": a["choice"], "agree": a["agree"], "conf": a["conf"],
+                           "readers": [{o: round(p, 2) for o, p in r.items()} for r in a["readers"]]}
+                       for q, a in answers.items()}}
+
+
+def v5_row(version, article, answers, extract, values, agree):
+    """What the map shows for one article under v5, whose answers include scores and yes/no.
+
+    @param version: the v5 entry of VERSIONS
+    @param article: the golden article
+    @param answers: the article's v5 answers
+    @param extract: the extractor's answers for the article
+    @param values: this article's value per question dimension, already read
+    @param agree: how many passes gave each value
+    @returns: the same row shape as article_row
+    """
+    extract_kind = extract.get("kind") or "no_text"
+    actor = extract.get("actor") or ""
+    # the checks one version's answers make against each other and against the extractor
+    speaker_is_him = values["source"] == "himself"
+    classifier_no, extractor_no = values["centrality"] in V5_LOW_CENTRALITY, extract_kind in EXTRACT_SAYS_NO
+    flags = {"gate_disagrees": classifier_no != extractor_no,
+             "who_disagrees": bool(actor) and values["act"] != "reports_an_event" and (surname(article["subject"]).lower() in actor.lower()) != speaker_is_him,
+             "contradiction": (values["act"] == "speaks_of_himself" and not speaker_is_him) or (speaker_is_him and values["act"] not in V3_HIMSELF_ACTS),
+             "fact_disagrees": any((values["fact"] == fact and values[twin] == "no") or (values["fact"] != fact and values[twin] == "yes")
+                                   for fact, twin in V5_FACT_TWINS.items()),
+             "speaks_disagrees": speaker_is_him and values["he_speaks"] == "no",
+             "unsure": any(a["conf"] < V5_UNSURE_CHOICE for a in answers.values() if "yes" not in a and "score" not in a)
+                       or any(a["choice"] == "unsure" for a in answers.values() if "yes" in a)}
+    values["extract_kind"], values["fighter"] = extract_kind, surname(article["subject"])
+    return {"id": str(article["id"]), "date": str(article["published_at"])[:10], "source": article["source"],
+            "title": article["title"], "url": article.get("resolved_url") or article["url"],
+            "extract": extract.get("claim"), "actor": actor, "occasion": extract.get("occasion"),
+            "v": values, "agree": agree, "flags": flags, "says_no": {"classifier": classifier_no, "extractor": extractor_no},
+            "detail": {q: {**{k: a[k] for k in ("choice", "agree", "conf", "score", "yes") if k in a},
                            "readers": [{o: round(p, 2) for o, p in r.items()} for r in a["readers"]]}
                        for q, a in answers.items()}}
 
@@ -195,7 +256,14 @@ def version_data(version, articles, extractor_file, claims):
             values[key] = [{"key": k, "def": d} for k, d in questions[question]["options"].items()]
     values["extract_kind"] = [{"key": k, "def": d} for k, d in extractor_file["kind_options"].items()]
     values["fighter"] = [{"key": f, "def": ""} for f in sorted({c["v"]["fighter"] for c in placed})]
+    passes = answers_file.get("passes", 3)
+    tile_dim, tiles = version["tiles"]
     return {"key": version["key"], "stamp": f"{version['stamp']}  /  {EXTRACTOR_VERSION}",
+            "passes": passes, "readers": ["original order", "reversed", "shuffled"][:passes] if passes > 1 else ["pass 1"],
+            "tiles": {"dim": tile_dim, "list": tiles, "disagree": version.get("disagree", ["Classifier and extractor disagree",
+                      'for the claim as a whole (most of its articles), one says "not about him", the other does not'])},
+            "flag_labels": {**FLAG_LABELS, **version.get("flag_labels", {})},
+            "act_depends_on_source": "source" in [k for k, _, _ in version["dims"]] and version["key"] != "v2",
             "questions": {q: d.get("instructions", "") for q, d in questions.items()},
             "dims": [{"key": k, "label": l} for k, l in dims], "values": values, "claims": placed,
             "axes": version["axes"], "flags": [f for f in FLAG_LABELS if any(c["flags"].get(f) for c in placed)]}
@@ -214,9 +282,9 @@ def main():
     # a summary per version, so a rebuild says what it built
     print(f"map.html: {len(page)//1024} KB")
     for v in versions:
-        gates = collections.Counter(c["v"]["gate"] for c in v["claims"])
+        tiles = collections.Counter(c["v"][v["tiles"]["dim"]] for c in v["claims"])
         flags = {f: sum(c["flags"][f] for c in v["claims"]) for f in v["flags"]}
-        print(f"  {v['key']}: {len(v['claims'])} claims; gate yes {gates['yes']}, partly {gates['partly']}, no {gates['no']}; flags {flags}")
+        print(f"  {v['key']}: {len(v['claims'])} claims; {v['tiles']['dim']} {dict(tiles)}; flags {flags}")
 
 
 main()
