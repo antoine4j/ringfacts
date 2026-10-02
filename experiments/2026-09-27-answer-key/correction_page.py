@@ -55,6 +55,7 @@ def classifier_value(question, answer):
 def main():
     """Write correction.html from the key, the guide and v6."""
     key = json.load(open(os.path.join(GOLDEN, "answers/readers-v1.json")))["articles"]
+    sides = json.load(open(os.path.join(GOLDEN, "split.json")))["articles"]
     articles = {str(a["id"]): a for a in json.load(open(os.path.join(GOLDEN, "articles.json")))}
     v6 = json.load(open(os.path.join(GOLDEN, "answers/classifier-v6.json")))["articles"]
     rows = []
@@ -69,24 +70,23 @@ def main():
         settled = sum(v["status"] in ("majority", "split") for v in answers.values())
         split = sum(v["status"] == "split" for v in answers.values())
         differs = sum(v["value"] is not None and v["classifier"] != v["value"] for v in answers.values())
-        rows.append({"id": article_id, "part": entry["part"], "fighter": a["subject"], "title": a["title"],
+        rows.append({"id": article_id, "part": entry["part"], "side": sides[article_id], "fighter": a["subject"], "title": a["title"],
                      "url": a.get("resolved_url") or a["url"], "outlet": a["source"], "date": str(a["published_at"])[:10],
                      "text": a["body"], "answers": answers, "notes": entry["notes"], "body_ruling": entry.get("body_ruling"),
-                     "rank": (entry["part"] == "not_key", -split, -settled, -differs, int(article_id)),
+                     "rank": (-split, -settled, -differs, int(article_id)),
                      "split": split, "settled": settled, "differs": differs})
     rows.sort(key=lambda r: r["rank"])
     for r in rows: del r["rank"]
-    # the review order: the key first, then where anyone disagrees, then a sample of where everyone agrees
+    # the review order: where the readers differed, then where only the classifier differs, then a sample of where everyone agrees
     for r in rows:
-        key_article, ties = r["part"] != "not_key", r["settled"] > 0
-        r["step"] = (1 if key_article and ties else 2 if key_article else 3 if ties else 4 if r["differs"] else 5)
-    agreeing = sorted(r["id"] for r in rows if r["step"] == 5)
+        r["step"] = 1 if r["settled"] > 0 else 2 if r["differs"] else 3
+    agreeing = sorted(r["id"] for r in rows if r["step"] == 3)
     sample = set(random.Random(SAMPLE_SEED).sample(agreeing, min(SAMPLE, len(agreeing))))
     for r in rows: r["sample"] = r["id"] in sample
     data = {"questions": QUESTIONS, "labels": LABELS, "defs": definitions(), "articles": rows}
     template = open(os.path.join(HERE, "correction-template.html")).read()
     open(os.path.join(HERE, "correction.html"), "w").write(template.replace("/*DATA*/null", json.dumps(data, ensure_ascii=False)))
-    print(f"correction.html: {len(rows)} articles; key first-look {sum(1 for r in rows if r['settled'] and r['part'] != 'not_key')}; "
+    print(f"correction.html: {len(rows)} articles; steps {dict(sorted(__import__('collections').Counter(r['step'] for r in rows).items()))}; "
           f"ties anywhere {sum(1 for r in rows if r['settled'])}; "
           f"v6 differs somewhere on {sum(1 for r in rows if r['differs'])}")
 

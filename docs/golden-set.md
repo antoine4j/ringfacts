@@ -95,6 +95,13 @@ across otherwise.
   `golden/split.json` beside `labels.json`.
 - The ten Soriano prediction stories merge into one at rebuild and fall on
   one side together.
+- **Drawn 2026-10-01** (`golden/tools/split.py`, `golden/split.json`), before
+  the labels were final, once every article had the Fable readers' labels:
+  tune 155 articles, check 40, test 105. The 38 claims the classifier
+  questions were tuned on went to tune by force; the other 90 were drawn,
+  balanced by fighter and by the readers' fact. Check is tune-side but never
+  looked at while changing questions. Results are thin in test (6 articles)
+  because the forced claims hold most of them.
 - **Replay everything, score the test third.** The join-or-start test
   must replay all 300 in date order, because a test-side result article
   must see the tune-side booking as a candidate. Only the test-side

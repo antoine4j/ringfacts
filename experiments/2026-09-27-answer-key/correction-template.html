@@ -91,17 +91,14 @@ input.note{font:inherit;font-size:13px;border:1px solid var(--line);background:v
       <div>An answer can carry both of the last two. Faded answers are unanimous: readers and classifier agree.</div>
     </div>
     <details class="about"><summary>How this page works, and where to start</summary>
-      <p><b>The answer key</b> is 59 of the 300 articles, picked to cover every answer value and the known traps. The classifier questions were tuned on 39 of them ("key · tune") and checked on the other 20 ("key · held back"), which were never looked at while changing questions. Every score in the report is measured on these 59, so they matter most.</p>
-      <p><b>The other 241</b> were labelled the same way afterwards and never used for tuning. They become the rest of the golden labels.</p>
-      <p><b>How an answer was reached:</b> two Fable readers labelled each article separately and blind. "Both readers" means they agreed. Where they differed, an Opus reader answered too: "2 of 3 readers" means two matched. <b>"Readers split"</b> means all three gave different answers, so there is no answer until you choose one.</p>
+      <p><b>Every article is on one side of the split</b> (the chip on each card). <b>Tune</b> (155): the classifier questions are changed while looking at these. <b>Check</b> (40): used to test a change, never looked at while changing. <b>Test</b> (105): scored once, at the end. Correct any of them the same way: they are all the golden set; the side only decides what the classifier may be tuned on.</p>
+      <p><b>How an answer was reached:</b> two Fable readers labelled each article separately and blind. "Both readers" means they agreed. Where they differed, an Opus reader (a different Claude model) answered that question too: "2 of 3 readers" means Opus sided with one of the two. <b>"Readers split"</b> means all three gave different answers, so there is no answer until you choose one.</p>
       <p><b>"Classifier v6"</b> beside an answer means the classifier disagrees with the readers there: one of them is wrong, so those are the answers worth reading.</p>
       <p><b>What to check on each article:</b> only the highlighted answers; each says why it is flagged (see the three labels above). The line above the answers names them. The rest are unanimous and shown faded; a glance is enough.</p>
       <p><b>You don't need to read all 300.</b> Work down the numbered filters:</p>
       <ol>
-        <li>Key articles where the readers differed: settle these first.</li>
-        <li>The rest of the key: read the answers the classifier disagrees with.</li>
-        <li>Other articles where the readers differed.</li>
-        <li>Other articles where only the classifier differs: read just the flagged answers.</li>
+        <li>Where the readers differed: settle these first.</li>
+        <li>Where only the classifier differs: read just the flagged answers.</li>
         <li>Where the readers and the classifier all agree: check the 15-article sample. If it is clean, the rest of that group can stand.</li>
       </ol>
     </details>
@@ -109,11 +106,9 @@ input.note{font:inherit;font-size:13px;border:1px solid var(--line);background:v
   <div class="stickybar">
     <div class="bar">
       <div class="seg" role="group" aria-label="Show" id="filter">
-        <button data-f="1" aria-pressed="true">1 · Key, readers differed</button>
-        <button data-f="2" aria-pressed="false">2 · Key, the rest</button>
-        <button data-f="3" aria-pressed="false">3 · Others, readers differed</button>
-        <button data-f="4" aria-pressed="false">4 · Others, classifier differs</button>
-        <button data-f="5" aria-pressed="false">5 · All agree: sample</button>
+        <button data-f="1" aria-pressed="true">1 · Readers differed</button>
+        <button data-f="2" aria-pressed="false">2 · Classifier differs</button>
+        <button data-f="3" aria-pressed="false">3 · All agree: sample</button>
         <button data-f="open" aria-pressed="false">Not checked yet</button>
         <button data-f="all" aria-pressed="false">All 300</button>
       </div>
@@ -137,8 +132,8 @@ const rec = id => state.corrections[id] || {reviewed: false, fixes: {}};
 
 /** Whether an article is shown under the current filter. @param {object} a @returns {boolean} */
 function shown(a){
-  if (state.filter === "5") return a.step === 5 && a.sample;
-  if (/^[1-4]$/.test(state.filter)) return a.step === Number(state.filter);
+  if (state.filter === "3") return a.step === 3 && a.sample;
+  if (/^[1-2]$/.test(state.filter)) return a.step === Number(state.filter);
   if (state.filter === "open") return !rec(a.id).reviewed;
   return true;
 }
@@ -148,7 +143,7 @@ function shown(a){
 function questionRow(a, q){
   const k = a.answers[q], fix = rec(a.id).fixes[q];
   const look = needsLook(k);
-  const status = k.rechecked ? (k.status === "agreed" ? "both readers (re-asked 28 Sept)" : `re-asked, readers split: ${k.readers.map(human).join(" / ")}`) : k.status === "agreed" ? "both readers" : k.status === "majority" ? `2 of 3 readers (${k.readers.map(human).join(" / ")})` : `readers split: ${k.readers.map(human).join(" / ")}`;
+  const status = k.rechecked ? (k.status === "agreed" ? "both readers (re-asked 28 Sept)" : `re-asked, readers split: ${k.readers.map(human).join(" / ")}`) : k.status === "agreed" ? "both readers" : k.status === "majority" ? `2 of 3 readers, the third Opus (${k.readers.map(human).join(" / ")})` : `readers split: ${k.readers.map(human).join(" / ")}`;
   const cls = k.value !== null && k.classifier !== k.value ? `<span class="cls">classifier v6: <code>${esc(human(k.classifier))}</code></span>` : "";
   const why = k.value === null ? `<span class="why pick">no answer · pick one</span>` :
     (k.status !== "agreed" ? `<span class="why">readers differed</span>` : "") + (k.classifier !== k.value ? `<span class="why">classifier differs</span>` : "");
@@ -170,7 +165,7 @@ const needsLook = k => k.status !== "agreed" || (k.value !== null && k.classifie
 function card(a){
   const r = rec(a.id), nfix = Object.keys(r.fixes).length;
   const chips = [a.split ? `<span class="chip split">${a.split} split</span>` : "", a.settled - a.split ? `<span class="chip">${a.settled - a.split} settled by tie-breaker</span>` : "",
-    a.differs ? `<span class="chip">classifier differs on ${a.differs}</span>` : "", a.part === "held_back" ? `<span class="chip held">key · held back</span>` : a.part === "tune" ? `<span class="chip">key · tune</span>` : "",
+    a.differs ? `<span class="chip">classifier differs on ${a.differs}</span>` : "", `<span class="chip${a.side === "test" ? " held" : ""}" title="${a.side === "tune" ? "the classifier questions may be tuned on this article" : a.side === "check" ? "used to test a change, never looked at while changing questions" : "scored once, at the end"}">${a.side}</span>`,
     a.body_ruling ? `<span class="chip split" title="${esc(a.body_ruling)}">saved text unusable or cut</span>` : "",
     nfix ? `<span class="chip fix">${nfix} corrected</span>` : "", r.reviewed ? `<span class="chip done">checked</span>` : ""].join("");
   const notes = ["A", "B", "C"].filter(k => a.notes[k]).map(k => `<div><b>${k}</b> ${esc(a.notes[k])}</div>`).join("");
