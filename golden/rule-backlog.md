@@ -1,7 +1,8 @@
 # Rule backlog
 
-Proposed rules for labelling and for the classifier that Anton has not
-decided yet. Nothing here is applied. When he rules on one, it moves out:
+The working list for the next rounds of labelling and prompting: proposed
+rules for labelling and for the classifier that Anton has not decided yet,
+with the notes from the reviews that raised them. Nothing here is applied. When he rules on one, it moves out:
 an adopted rule goes into the labelling guide
 (experiments/2026-09-27-answer-key/key-guide.md), golden/axes.md and, for
 the classifier, its questions or its composing script; his words go to
@@ -56,6 +57,26 @@ no news about him, so the yes/no news questions (result, next fight,
 health) are all "no", and how firm is "none" (already set in code). Fact
 picks the main news only; when there is news, several yes/no answers can
 be yes (a fight report that also names his next opponent).
+
+**Labels, not the classifier (Anton's blade question, 2026-10-02).** In the
+labels "no fact means no on the news questions" is a definition: it keeps
+one article's answers coherent. In the classifier it would be a blade: one
+wrong "no fact" would wipe out three answers that may be right, the #683
+problem again. So the classifier keeps answering each question on its own,
+and a contradiction stays a doubt flag (the claim map's "fact answer and its
+yes/no question disagree", 29 claims in v6), not a rule applied in code.
+Anton's argument for tolerating misses near "no fact": a significant fact
+is reported more prominently by other articles of the same claim, which
+carry it. Caveat: 81 of 128 claims are one article (most Donchenko news is
+a single Ukrainian outlet), so for small fighters a missed fact may be
+missed everywhere.
+
+**Wording alone did not settle it.** The classifier's yes/no questions went
+from "does it report" (v4: result yes on 224 of 300, read as "mentions") to
+"as its news" with background defined as no (v5), before the Fable readers
+labelled; the readers had the strict wording from the start and still split
+on #462 and #856. The line between "reports as news" and "mentions" needs
+the rule above and examples, not more rewording.
 
 ### 4. Content not in the saved text
 *Labelling flag. From #740 and #521.*
