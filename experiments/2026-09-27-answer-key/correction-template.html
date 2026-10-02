@@ -65,7 +65,10 @@ details.more>summary{cursor:pointer;color:var(--accent);font-size:13.5px;font-we
 .q.fixed .ql{color:var(--fix);font-weight:600}
 .q.look>*{background:var(--warnbg)}
 .q.look .ql{color:var(--warn);font-weight:600}
-.q.look .ql::before{content:"check · ";font-size:11px;letter-spacing:.04em;text-transform:uppercase}
+.why{font-size:11.5px;font-weight:600;border-radius:999px;padding:1px 8px;border:1px solid var(--warn);color:var(--warn);background:var(--panel);white-space:nowrap}
+.why.pick{background:var(--warn);color:var(--panel)}
+.legend{display:grid;gap:4px;font-size:14px;max-width:72ch}
+.legend div{display:flex;gap:8px;align-items:baseline;flex-wrap:wrap}
 .q.calm .val,.q.calm .st{opacity:.7}
 .todo{font-size:13.5px;color:var(--warn);font-weight:600}
 select{font:inherit;font-size:13px;border:1px solid var(--line);background:var(--panel);color:var(--ink);border-radius:6px;padding:3px 6px;max-width:100%}
@@ -81,12 +84,18 @@ input.note{font:inherit;font-size:13px;border:1px solid var(--line);background:v
   <header class="top">
     <h1>Answer Key Check</h1>
     <p class="lede">All 300 golden articles, each with nine answers from two Fable readers. Mark only what is wrong: in the dropdown beside a wrong answer, pick the right value; a box for <b>why</b> appears next to it (optional). When an article is done, press <b>Mark article checked</b>. Everything saves as you go.</p>
+    <div class="legend">
+      <div><span class="why pick">no answer · pick one</span> the three readers gave three different answers, so there is no answer yet. Choose the right value.</div>
+      <div><span class="why">readers differed</span> two of three readers agreed and their answer is shown. Check it is right.</div>
+      <div><span class="why">classifier differs</span> the readers agree, but the classifier said something else (shown beside it). One of them is wrong: check the readers' answer.</div>
+      <div>An answer can carry both of the last two. Faded answers are unanimous: readers and classifier agree.</div>
+    </div>
     <details class="about"><summary>How this page works, and where to start</summary>
       <p><b>The answer key</b> is 59 of the 300 articles, picked to cover every answer value and the known traps. The classifier questions were tuned on 39 of them ("key · tune") and checked on the other 20 ("key · held back"), which were never looked at while changing questions. Every score in the report is measured on these 59, so they matter most.</p>
       <p><b>The other 241</b> were labelled the same way afterwards and never used for tuning. They become the rest of the golden labels.</p>
       <p><b>How an answer was reached:</b> two Fable readers labelled each article separately and blind. "Both readers" means they agreed. Where they differed, an Opus reader answered too: "2 of 3 readers" means two matched. <b>"Readers split"</b> means all three gave different answers, so there is no answer until you choose one.</p>
       <p><b>"Classifier v6"</b> beside an answer means the classifier disagrees with the readers there: one of them is wrong, so those are the answers worth reading.</p>
-      <p><b>What to check on each article:</b> only the answers marked <b>CHECK</b> (highlighted): the readers did not all agree, or the classifier disagrees. The line above the answers names them. The rest are unanimous and shown faded; a glance is enough.</p>
+      <p><b>What to check on each article:</b> only the highlighted answers; each says why it is flagged (see the three labels above). The line above the answers names them. The rest are unanimous and shown faded; a glance is enough.</p>
       <p><b>You don't need to read all 300.</b> Work down the numbered filters:</p>
       <ol>
         <li>Key articles where the readers differed: settle these first.</li>
@@ -141,10 +150,12 @@ function questionRow(a, q){
   const look = needsLook(k);
   const status = k.rechecked ? (k.status === "agreed" ? "both readers (re-asked 28 Sept)" : `re-asked, readers split: ${k.readers.map(human).join(" / ")}`) : k.status === "agreed" ? "both readers" : k.status === "majority" ? `2 of 3 readers (${k.readers.map(human).join(" / ")})` : `readers split: ${k.readers.map(human).join(" / ")}`;
   const cls = k.value !== null && k.classifier !== k.value ? `<span class="cls">classifier v6: <code>${esc(human(k.classifier))}</code></span>` : "";
+  const why = k.value === null ? `<span class="why pick">no answer · pick one</span>` :
+    (k.status !== "agreed" ? `<span class="why">readers differed</span>` : "") + (k.classifier !== k.value ? `<span class="why">classifier differs</span>` : "");
   const opts = DATA.defs[q].map(([v]) => `<option value="${esc(v)}" ${fix && fix.value === v ? "selected" : ""}>${esc(human(v))}</option>`).join("");
   return `<div class="q${fix ? " fixed" : look ? " look" : " calm"}"><div class="ql">${esc(DATA.labels[q])}</div><div class="qv">
     <span class="val${k.value === null ? " none" : ""}" title="${esc(DEF[q + ":" + k.value] || "")}">${esc(k.value === null ? "no answer" : human(k.value))}</span>
-    <span class="st${k.status === "split" ? " split" : ""}">${esc(status)}</span>${cls}
+    ${fix ? "" : why}<span class="st${k.status === "split" ? " split" : ""}">${esc(status)}</span>${cls}
     <select data-id="${a.id}" data-q="${q}" id="s-${a.id}-${q}" class="${fix ? "changed" : ""}" aria-label="Correct value for ${esc(DATA.labels[q])}">
       <option value="">${k.value === null ? "choose…" : "✓ right"}</option>${opts}</select>
     ${fix ? `<input class="note" id="n-${a.id}-${q}" data-id="${a.id}" data-q="${q}" placeholder="why (optional)" value="${esc(fix.note || "")}">` : ""}
