@@ -21,6 +21,9 @@ LABELS = {"centrality": "How central", "source": "Source", "act": "Act", "fact":
           "reports_his_result": "Reports his result", "reports_his_next_fight": "Reports his next fight",
           "reports_his_health": "Reports his health", "he_speaks": "He speaks"}
 SAMPLE, SAMPLE_SEED = 15, 20260928
+# surname stems to highlight in the saved text: watchlist.js matchNames, plus the Russian spelling of Topuria
+NAME_STEMS = {"Daniil Donchenko": ["Donchenko", "Донченк"], "Yaroslav Amosov": ["Amosov", "Амосов"],
+              "Ilia Topuria": ["Topuria", "Топурі", "Топури"]}
 
 
 def definitions():
@@ -103,7 +106,7 @@ def main():
     agreeing = sorted(r["id"] for r in rows if r["step"] == 3)
     sample = set(random.Random(SAMPLE_SEED).sample(agreeing, min(SAMPLE, len(agreeing))))
     for r in rows: r["sample"] = r["id"] in sample
-    data = {"questions": QUESTIONS, "labels": LABELS, "defs": definitions(), "texts": question_texts(), "articles": rows}
+    data = {"questions": QUESTIONS, "labels": LABELS, "defs": definitions(), "texts": question_texts(), "stems": NAME_STEMS, "articles": rows}
     template = open(os.path.join(HERE, "correction-template.html")).read()
     open(os.path.join(HERE, "correction.html"), "w").write(template.replace("/*DATA*/null", json.dumps(data, ensure_ascii=False)))
     print(f"correction.html: {len(rows)} articles; steps {dict(sorted(__import__('collections').Counter(r['step'] for r in rows).items()))}; "

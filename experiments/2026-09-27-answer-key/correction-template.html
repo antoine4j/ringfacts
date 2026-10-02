@@ -69,6 +69,7 @@ details.more>summary{cursor:pointer;color:var(--accent);font-size:13.5px;font-we
 .info:hover,.info:focus-visible{color:var(--accent);border-color:var(--accent)}
 .qhelp{grid-column:1/-1;font-size:13px;color:var(--dim);background:var(--panel);border-left:3px solid var(--accent);padding:6px 10px!important}
 .qhelp b{color:var(--ink)}
+mark.name{background:#F6D54A;color:#18201D;border-radius:2px;padding:0 1px}
 .why{font-size:11.5px;font-weight:600;border-radius:999px;padding:1px 8px;border:1px solid var(--warn);color:var(--warn);background:var(--panel);white-space:nowrap}
 .why.pick{background:var(--warn);color:var(--panel)}
 .legend{display:grid;gap:4px;font-size:14px;max-width:72ch}
@@ -142,6 +143,19 @@ function shown(a){
   return true;
 }
 
+/** Escape a text and mark every occurrence of the watched fighter's surname (any case ending).
+ * @param {string} text @param {string} fighter @returns {{html:string, count:number}} */
+function markName(text, fighter){
+  const stems = (DATA.stems[fighter] || []).map(x => x.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"));
+  if (!stems.length) return {html: esc(text), count: 0};
+  const re = new RegExp(`(${stems.join("|")})[\\p{L}]*`, "giu");
+  let count = 0, html = "", last = 0;
+  for (const m of String(text ?? "").matchAll(re)){
+    html += esc(text.slice(last, m.index)) + `<mark class="name">${esc(m[0])}</mark>`; last = m.index + m[0].length; count++;
+  }
+  return {html: html + esc(String(text ?? "").slice(last)), count};
+}
+
 /** The full question as plain text, for the tooltip. @param {string} q @returns {string} */
 function helpText(q){
   const t = DATA.texts[q] || {};
@@ -179,11 +193,12 @@ function card(a){
     a.differs ? `<span class="chip">classifier differs on ${a.differs}</span>` : "", `<span class="chip${a.side === "test" ? " held" : ""}" title="${a.side === "tune" ? "the classifier questions may be tuned on this article" : a.side === "check" ? "used to test a change, never looked at while changing questions" : "scored once, at the end"}">${a.side}</span>`,
     a.body_ruling ? `<span class="chip split" title="${esc(a.body_ruling)}">saved text unusable or cut</span>` : "",
     nfix ? `<span class="chip fix">${nfix} corrected</span>` : "", r.reviewed ? `<span class="chip done">checked</span>` : ""].join("");
+  const body = markName(a.text, a.fighter);
   const notes = ["A", "B", "C"].filter(k => a.notes[k]).map(k => `<div><b>${k}</b> ${esc(a.notes[k])}</div>`).join("");
   return `<article class="card${r.reviewed ? " done" : ""}" id="a-${a.id}">
     <div class="meta"><span class="id">#${a.id}</span><span>${esc(a.fighter)}</span><span>${esc(a.outlet)}</span><span>${a.date}</span>${chips}</div>
-    <div class="title"><a href="${esc(a.url)}" target="_blank" rel="noopener">${esc(a.title)}</a></div>
-    <details class="more"><summary>Saved text (what the readers and the classifier saw)</summary><div class="text">${esc(a.text)}</div></details>
+    <div class="title"><a href="${esc(a.url)}" target="_blank" rel="noopener">${markName(a.title, a.fighter).html}</a></div>
+    <details class="more"><summary>Saved text (what the readers and the classifier saw) · his name appears ${body.count} time${body.count === 1 ? "" : "s"}</summary><div class="text">${body.html}</div></details>
     <details class="more"><summary>Readers' notes</summary><div class="notes">${notes}</div></details>
     ${(() => { const todo = DATA.questions.filter(q => needsLook(a.answers[q]) && !r.fixes[q]);
       return todo.length ? `<div class="todo">Check ${todo.length === 1 ? "this answer" : `these ${todo.length} answers`}: ${todo.map(q => esc(DATA.labels[q])).join(", ")}. The others are unanimous; a glance is enough.</div>` : `<div class="saved">Nothing flagged: the readers and the classifier all agree.</div>`; })()}
