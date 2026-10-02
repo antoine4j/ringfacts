@@ -65,6 +65,10 @@ details.more>summary{cursor:pointer;color:var(--accent);font-size:13.5px;font-we
 .q.fixed .ql{color:var(--fix);font-weight:600}
 .q.look>*{background:var(--warnbg)}
 .q.look .ql{color:var(--warn);font-weight:600}
+.info{font:inherit;font-size:12px;line-height:1;border:1px solid var(--line);background:var(--panel);color:var(--dim);border-radius:50%;width:17px;height:17px;padding:0;margin-left:5px;cursor:help;vertical-align:1px}
+.info:hover,.info:focus-visible{color:var(--accent);border-color:var(--accent)}
+.qhelp{grid-column:1/-1;font-size:13px;color:var(--dim);background:var(--panel);border-left:3px solid var(--accent);padding:6px 10px!important}
+.qhelp b{color:var(--ink)}
 .why{font-size:11.5px;font-weight:600;border-radius:999px;padding:1px 8px;border:1px solid var(--warn);color:var(--warn);background:var(--panel);white-space:nowrap}
 .why.pick{background:var(--warn);color:var(--panel)}
 .legend{display:grid;gap:4px;font-size:14px;max-width:72ch}
@@ -138,6 +142,12 @@ function shown(a){
   return true;
 }
 
+/** The full question as plain text, for the tooltip. @param {string} q @returns {string} */
+function helpText(q){
+  const t = DATA.texts[q] || {};
+  return (t.readers ? "Readers were asked: " + t.readers : "") + (t.classifier ? "\n\nClassifier v6 is asked: " + t.classifier : "");
+}
+
 /** One question row: the key's value, how it was reached, v6's answer if different, and the correction control.
  * @param {object} a article @param {string} q question @returns {string} html */
 function questionRow(a, q){
@@ -148,7 +158,7 @@ function questionRow(a, q){
   const why = k.value === null ? `<span class="why pick">no answer · pick one</span>` :
     (k.status !== "agreed" ? `<span class="why">readers differed</span>` : "") + (k.classifier !== k.value ? `<span class="why">classifier differs</span>` : "");
   const opts = DATA.defs[q].map(([v]) => `<option value="${esc(v)}" ${fix && fix.value === v ? "selected" : ""}>${esc(human(v))}</option>`).join("");
-  return `<div class="q${fix ? " fixed" : look ? " look" : " calm"}"><div class="ql">${esc(DATA.labels[q])}</div><div class="qv">
+  return `<div class="q${fix ? " fixed" : look ? " look" : " calm"}"><div class="ql">${esc(DATA.labels[q])}<button class="info" type="button" data-help="${a.id}-${q}" aria-label="Show the full question" title="${esc(helpText(q))}">i</button></div><div class="qv">
     <span class="val${k.value === null ? " none" : ""}" title="${esc(DEF[q + ":" + k.value] || "")}">${esc(k.value === null ? "no answer" : human(k.value))}</span>
     ${fix ? "" : why}<span class="st${k.status === "split" ? " split" : ""}">${esc(status)}</span>${cls}
     <select data-id="${a.id}" data-q="${q}" id="s-${a.id}-${q}" class="${fix ? "changed" : ""}" aria-label="Correct value for ${esc(DATA.labels[q])}">
@@ -222,6 +232,14 @@ document.getElementById("list").addEventListener("change", e => {
   const scroll = window.scrollY; draw(); window.scrollTo(0, scroll); save(id);
 });
 document.getElementById("list").addEventListener("click", e => {
+  const info = e.target.closest("[data-help]");
+  if (info){
+    const row = info.closest(".q"), open = row.nextElementSibling && row.nextElementSibling.classList.contains("qhelp");
+    if (open) row.nextElementSibling.remove();
+    else { const [id, ...rest] = info.dataset.help.split("-"); const q = rest.join("-"), t = DATA.texts[q] || {};
+      row.insertAdjacentHTML("afterend", `<div class="qhelp">${t.readers ? `<div><b>Readers were asked:</b> ${esc(t.readers)}</div>` : ""}${t.classifier ? `<div><b>Classifier v6 is asked:</b> ${esc(t.classifier)}</div>` : ""}</div>`); }
+    return;
+  }
   const b = e.target.closest("[data-review]"); if (!b) return;
   const id = b.dataset.review; state.corrections[id] = {...rec(id), reviewed: !rec(id).reviewed};
   const scroll = window.scrollY; draw(); window.scrollTo(0, scroll); save(id);

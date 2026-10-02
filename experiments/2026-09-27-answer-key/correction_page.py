@@ -39,6 +39,26 @@ def definitions():
     return out
 
 
+def question_texts():
+    """Each question in full: what the readers were asked (key-guide.md) and what the classifier is asked (v6).
+
+    @returns: question → {"readers": text, "classifier": text}
+    """
+    guide = open(os.path.join(HERE, "key-guide.md")).read()
+    out = {}
+    # the five main questions: the heading's question plus the paragraph before the table
+    for m in re.finditer(r"## \d\. (\w+) — (.+?)\n\n(.*?)(?=\n\| value)", guide, re.S):
+        extra = " ".join(m.group(3).split())
+        out[m.group(1)] = {"readers": (m.group(2) + (" " + extra if extra else "")).replace("`", "").strip()}
+    # the yes/no questions: one bullet each
+    for m in re.finditer(r"- \*\*(\w+)\*\* — (.+?)(?=\n- \*\*|\n\n)", guide, re.S):
+        out[m.group(1)] = {"readers": " ".join(m.group(2).replace("`", "").split())}
+    v6 = json.load(open(os.path.join(HERE, "../2026-09-27-axes-v6/classifier-v6/questions.json")))
+    for q, d in v6.items():
+        out.setdefault(q, {})["classifier"] = " ".join(d["instructions"].split())
+    return out
+
+
 def classifier_value(question, answer):
     """v6's answer in the key's terms.
 
@@ -83,7 +103,7 @@ def main():
     agreeing = sorted(r["id"] for r in rows if r["step"] == 3)
     sample = set(random.Random(SAMPLE_SEED).sample(agreeing, min(SAMPLE, len(agreeing))))
     for r in rows: r["sample"] = r["id"] in sample
-    data = {"questions": QUESTIONS, "labels": LABELS, "defs": definitions(), "articles": rows}
+    data = {"questions": QUESTIONS, "labels": LABELS, "defs": definitions(), "texts": question_texts(), "articles": rows}
     template = open(os.path.join(HERE, "correction-template.html")).read()
     open(os.path.join(HERE, "correction.html"), "w").write(template.replace("/*DATA*/null", json.dumps(data, ensure_ascii=False)))
     print(f"correction.html: {len(rows)} articles; steps {dict(sorted(__import__('collections').Counter(r['step'] for r in rows).items()))}; "
