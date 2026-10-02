@@ -1,0 +1,137 @@
+{
+ "order": [
+  "next_fight",
+  "health",
+  "result",
+  "camp",
+  "centrality",
+  "act",
+  "firmness",
+  "other"
+ ],
+ "groups": {
+  "next_fight": {
+   "title": "Next fight: news, or background?",
+   "question": "Is a booked fight, a return date or someone's guess about his next fight the article's news, or context?",
+   "articles": [
+    "228",
+    "361",
+    "462",
+    "500",
+    "503",
+    "608",
+    "609",
+    "614",
+    "616",
+    "619",
+    "641",
+    "672",
+    "673",
+    "681",
+    "686",
+    "692",
+    "709",
+    "820",
+    "843",
+    "871",
+    "887",
+    "901",
+    "905",
+    "913",
+    "921",
+    "926",
+    "983",
+    "1002",
+    "1016",
+    "1097"
+   ]
+  },
+  "health": {
+   "title": "Health: news, or background?",
+   "question": "Is an injury or a recovery the article's news, or old news retold?",
+   "articles": [
+    "627",
+    "723",
+    "856",
+    "892",
+    "998",
+    "1020"
+   ]
+  },
+  "result": {
+   "title": "Result: news, or background?",
+   "question": "Is the outcome of a fight of his the article's news, or recalled as background?",
+   "articles": [
+    "44",
+    "778",
+    "779",
+    "797",
+    "1172"
+   ]
+  },
+  "camp": {
+   "title": "Opponent, or another fighter's side?",
+   "question": "Is the person speaking linked to a fight with him (opponent side), or another fighter or his camp?",
+   "articles": [
+    "148",
+    "283",
+    "423",
+    "588",
+    "889",
+    "896",
+    "953"
+   ]
+  },
+  "centrality": {
+   "title": "How central is he?",
+   "question": "Main subject, one of several, only mentioned, or not in the content?",
+   "articles": [
+    "34",
+    "269",
+    "273",
+    "373",
+    "525",
+    "625",
+    "653",
+    "687",
+    "737",
+    "862"
+   ]
+  },
+  "act": {
+   "title": "What does the source do regarding him?",
+   "question": "Gives news of him, steers him, assesses him, calls him out, or only mentions him?",
+   "articles": [
+    "287",
+    "457",
+    "484",
+    "492",
+    "516",
+    "883",
+    "975",
+    "1045"
+   ]
+  },
+  "firmness": {
+   "title": "Reported, or official?",
+   "question": "Is the fact settled (official or done) or only reported or rumoured?",
+   "articles": [
+    "342",
+    "605",
+    "743",
+    "1089"
+   ]
+  },
+  "other": {
+   "title": "Other single cases",
+   "question": "He speaks, media or fans, and other one-off splits.",
+   "articles": [
+    "491",
+    "647",
+    "654",
+    "740",
+    "823"
+   ]
+  }
+ }
+}
