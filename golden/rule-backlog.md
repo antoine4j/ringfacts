@@ -36,7 +36,12 @@ saved text (#521). Anton: review once more articles carry his labels.
 Rule A applied to facts: a booked fight, an injury or a result restated as
 context (a preview, a weigh-in report, a card list, a recap) is background,
 so "no fact" and "no" on the yes/no question. Examples #608, #609, #614,
-#500, #856.
+#500, #856. Worked example, #856 (2026-10-01): Anton read
+"does this article report, as its news, an injury…" and saw why a reader
+said yes (the fractures are mentioned), then answered no: the injuries are
+old news, the only new thing is his return to the public eye, and the
+article is not about him. The question only works if "as its news" is read
+strictly.
 
 ### 4. Content not in the saved text
 *Labelling flag. From #740 and #521.*
