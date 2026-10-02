@@ -1,0 +1,219 @@
+[
+ {
+  "id": "828",
+  "question": "act",
+  "pick": 1,
+  "reason": "Anik (media) reports 'internal conversations to potentially try to do Gaethje vs. Topuria 2' — a factual update on his plans, not advice on what he should do.",
+  "confidence": "medium"
+ },
+ {
+  "id": "828",
+  "question": "fact",
+  "pick": 1,
+  "reason": "The article's news about him is that the UFC is considering his rematch — talks about his next fight.",
+  "confidence": "medium"
+ },
+ {
+  "id": "828",
+  "question": "firmness",
+  "pick": 1,
+  "reason": "'Internal conversations', 'strong consideration' — talks, not a booking; rumour.",
+  "confidence": "medium"
+ },
+ {
+  "id": "828",
+  "question": "reports_his_next_fight",
+  "pick": 2,
+  "reason": "It reports talks about his next opponent (Gaethje rematch under consideration), not merely a pundit's pick.",
+  "confidence": "medium"
+ },
+ {
+  "id": "861",
+  "question": "act",
+  "pick": 1,
+  "reason": "The podcast blurb says future matchups are discussed for him — media saying who he should fight next.",
+  "confidence": "medium"
+ },
+ {
+  "id": "861",
+  "question": "fact",
+  "pick": 1,
+  "reason": "His win is only a passing tag ('fellow main card winners'); the piece is about matches to make, no new fact about him.",
+  "confidence": "medium"
+ },
+ {
+  "id": "861",
+  "question": "firmness",
+  "pick": 1,
+  "reason": "No fact asserted about him, only matchmaking talk; firmness none.",
+  "confidence": "medium"
+ },
+ {
+  "id": "991",
+  "question": "act",
+  "pick": 1,
+  "reason": "White says 'Topuria's ready to fight. We're ready for him', both options open, nothing set — a status update from the promotion, not advice.",
+  "confidence": "medium"
+ },
+ {
+  "id": "991",
+  "question": "firmness",
+  "pick": 2,
+  "reason": "The promotion itself (Dana White) states he is ready and either fight is possible; the guide puts a promotion statement at official_or_done, though 'we don't have anything set' makes it thin.",
+  "confidence": "low"
+ },
+ {
+  "id": "78",
+  "question": "act",
+  "pick": 2,
+  "reason": "Abdelaziz asks for the fight ('la pelea que quiero... es Ilia Topuria') with trash talk; the 'Usman hará que se rinda' line is part of the callout for a fight that does not exist.",
+  "confidence": "medium"
+ },
+ {
+  "id": "261",
+  "question": "centrality",
+  "pick": 2,
+  "reason": "He appears only in the TOP STORIES link list ('Arman Tsarukyan picks surprising name for Ilia Topuria's next opponent'), other headlines, not in the Fazil story's prose.",
+  "confidence": "low"
+ },
+ {
+  "id": "866",
+  "question": "reports_his_health",
+  "pick": 1,
+  "reason": "Rogan's generic 'be careful how you recover' is opinion; the damage from the Gaethje fight is recalled as background, no update on his condition.",
+  "confidence": "medium"
+ },
+ {
+  "id": "492",
+  "question": "centrality",
+  "pick": 2,
+  "reason": "Gaethje's own news tied to the fight they already fought and the rematch question ('I don't think that's my next fight', 'he's probably recovering') — the guide's one_of_several case.",
+  "confidence": "medium"
+ },
+ {
+  "id": "492",
+  "question": "source",
+  "pick": 1,
+  "reason": "Only Gaethje speaks, his last opponent; Topuria has no words in the text.",
+  "confidence": "high"
+ },
+ {
+  "id": "1002",
+  "question": "act",
+  "pick": 2,
+  "reason": "The main new thing is Pantoja's message of support ('¡Todavía tenemos mucho por conquistar!'), which is encouragement, not news of him; the recovery line is the writer's recap.",
+  "confidence": "low"
+ },
+ {
+  "id": "709",
+  "question": "centrality",
+  "pick": 2,
+  "reason": "A fight preview covering both fighters: Soriano gets his record, streak, gym and odds alongside Donchenko.",
+  "confidence": "medium"
+ },
+ {
+  "id": "723",
+  "question": "reports_his_result",
+  "pick": 2,
+  "reason": "The loss ('lost via 4th round TKO') is recalled as background; the news is his written reflection.",
+  "confidence": "high"
+ },
+ {
+  "id": "442",
+  "question": "fact",
+  "pick": 2,
+  "reason": "Mendez's opinion that the loss changed the Makhachev fight and that he is too small; the Gaethje loss is background, no new fact.",
+  "confidence": "high"
+ },
+ {
+  "id": "442",
+  "question": "firmness",
+  "pick": 2,
+  "reason": "Opinion only, no fact about him asserted; firmness none.",
+  "confidence": "high"
+ },
+ {
+  "id": "510",
+  "question": "act",
+  "pick": 1,
+  "reason": "He appears only in the card listing 'Welterweight: Daniil Donchenko vs Punahele Soriano' — the event preview reports his booked fight, nobody speaks of him.",
+  "confidence": "low"
+ },
+ {
+  "id": "609",
+  "question": "act",
+  "pick": 2,
+  "reason": "Soriano (his opponent) rates him: 'scary dude, wild dude... young man's fire and vigor', the betting favourite — an assessment.",
+  "confidence": "medium"
+ },
+ {
+  "id": "203",
+  "question": "reports_his_result",
+  "pick": 1,
+  "reason": "The June win over Berggren is retold as background to an August interview about the bonus donation and his legs; not the article's news.",
+  "confidence": "medium"
+ },
+ {
+  "id": "503",
+  "question": "reports_his_health",
+  "pick": 1,
+  "reason": "'Se está recuperando de las fracturas en la nariz y sus dos orbitales' is context for the rematch timeline; the news is Gaethje's stance, not his condition.",
+  "confidence": "low"
+ },
+ {
+  "id": "193",
+  "question": "fact",
+  "pick": 2,
+  "reason": "A managers' war of words; the Usman fight is 'solo una posibilidad, sin fecha ni acuerdo', the rematch a wish — no new fact.",
+  "confidence": "medium"
+ },
+ {
+  "id": "193",
+  "question": "firmness",
+  "pick": 1,
+  "reason": "No fact asserted, only callouts and replies; firmness none.",
+  "confidence": "medium"
+ },
+ {
+  "id": "193",
+  "question": "reports_his_next_fight",
+  "pick": 1,
+  "reason": "Only a callout and a wish for a rematch; 'su regreso apunta a 2027' is a vague aside, nothing offered or set.",
+  "confidence": "medium"
+ },
+ {
+  "id": "193",
+  "question": "reports_his_health",
+  "pick": 2,
+  "reason": "'Continúa recuperándose de las fracturas' is one closing line of background, not the article's news.",
+  "confidence": "medium"
+ },
+ {
+  "id": "603",
+  "question": "firmness",
+  "pick": 2,
+  "reason": "The fact is his booked fight: 'will face Daniil Donchenko on September 5', stated as settled; a booking that has happened is official_or_done.",
+  "confidence": "medium"
+ },
+ {
+  "id": "297",
+  "question": "source",
+  "pick": 2,
+  "reason": "Nothing new about him (one mention of WOW FC); the main content is OKTAGON co-founder Pavol Neruda, a promotion official, though the guide names only the UFC.",
+  "confidence": "low"
+ },
+ {
+  "id": "798",
+  "question": "act",
+  "pick": 2,
+  "reason": "Anik (via reports) says the UFC is having internal conversations about the rematch — a factual update on his plans, not advice.",
+  "confidence": "medium"
+ },
+ {
+  "id": "148",
+  "question": "reports_his_result",
+  "pick": 1,
+  "reason": "The loss to Gaethje is recalled in the lead as background; the news is Makhachev's advice and the recovery update.",
+  "confidence": "high"
+ }
+]

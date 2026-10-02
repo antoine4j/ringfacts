@@ -110,3 +110,27 @@ A booking the UFC announced, relayed by another outlet (#605, #342).
 ### 10. Media or fans
 *Labelling. Boundary #7, 2.* A fan tweet quoted inside a journalist's
 article (#654, #883).
+
+## Candidate rules from the overnight briefs (2026-10-02, not decided)
+
+Eight briefs, one per boundary of the readers' disagreements
+(experiments/2026-09-27-answer-key/overnight/briefs/out-<group>.json;
+shown on the correction page above each group). Each offers 2–3 rules
+formed from tune/check articles only, with the answer every rule gives
+per article. The recommended ones, with the disputed majorities each
+would change:
+
+| boundary | recommended rule | changes |
+|---|---|---|
+| next fight (rule 3, 5) | "own news": yes only when a change to his next fight is the article's subject or its own new reporting; a booking that is the premise of a preview, weigh-in or pick, a recalled rumour and a hedged guess are no and no fact | 16 of 30, plus 9 unanimous "yes" on Paris previews |
+| health (rule 3) | someone named (he, his team, the UFC, a named outlet) states his condition; the writer's recap is background | 2 of 6 |
+| result (rule 3) | yes only when the headline or the first sentence's main clause states he won or lost | 2 of 5 |
+| camp (rule 6) | opponent side when the article reports a fight between them as news (booked, fought, in talks); a callout or wish is another fighter's side | 3 of 7 |
+| centrality (rule 7) | "whose news": the headline and opening decide; a body-less page is judged on its headline | 0 of 10 |
+| act (rule 9) | a plain statement about him; guesses, forecasts and a speaker's own rematch stance are none of these | 1 of 8 |
+| firmness (rule 8) | past tense or a named card and date is official or done; otherwise the speaker decides: promotion or he himself official, a named outlet or other person reported, unnamed sources or an open choice rumour | 1 of 4 |
+| other (rule 1, 10) | any direct quote is "he speaks"; a post only named as the channel does not make him the source; a fan line quoted by a journalist is fans; a statement with no content is no fact (this is rule 1, parked) | 0 of 5 |
+
+The next-fight brief is the one that matters: its rule is backlog rule 3
+written out, and it touches 25 articles. The others are small; act and
+firmness rest on two non-test articles each.

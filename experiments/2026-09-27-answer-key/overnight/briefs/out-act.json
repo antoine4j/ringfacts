@@ -1,0 +1,159 @@
+{
+ "boundary": "act",
+ "title": "What does the source do regarding him?",
+ "question": "Gives news of him, steers him, assesses him, calls him out, or only mentions him?",
+ "readings": [
+  "Words as written: if a sentence names who he should fight, that is steering; if it says how he is or when he is back, that is news of him, however hedged or joking.",
+  "Firm and aimed at him: an act needs a plain statement about him; a taunt dressed as advice is a callout, a guess ('probably', 'expects') is not news, and a speaker talking about his own next fight is not steering him.",
+  "Loudest voice: in an article with several voices (a leak plus fan reaction, a quote plus the hosts' reaction), the act is taken from whichever voice fills most of the text, not from the one that carries the new information."
+ ],
+ "signals": [
+  "The sentence says what he should do or who he should fight ('should', 'needs', 'must be next', 'book X vs him'): steers_him or calls_him_out, never news.",
+  "The article itself labels the remark as mockery or a provocation ('ironically', 'provoke', 'taunt', 'scoffed'): calls_him_out, not steers_him.",
+  "The statement about him is hedged ('probably', 'I guess', 'expects', 'I think they will'): a guess, not a factual update.",
+  "Whose next fight does the sentence govern: 'my next fight' (the speaker's own choice) or his?",
+  "He is the subject of a stated fact (he is ready, he is recovering, he was booked) rather than named inside what he did for the speaker (he helped me, he invited me).",
+  "Question 4 finds a fact. gives_news_of_him is 'someone else's factual update', so with fact no_fact it cannot be right.",
+  "With several voices, which one carries the new information about him (the question 2 source)? The act is that voice's act, not the longest voice's."
+ ],
+ "rules": [
+  {
+   "name": "Words as written",
+   "text": "Take the words as they stand: a sentence naming who he should fight or whether he should rematch is steers_him whatever the tone, and a sentence about his condition, plans, whereabouts or something he did is gives_news_of_him even when hedged or passing. When both appear, steers_him wins.",
+   "answers": {
+    "287": {
+     "act": "steers_him"
+    },
+    "457": {
+     "act": "gives_news_of_him"
+    },
+    "484": {
+     "act": "steers_him"
+    },
+    "492": {
+     "act": "steers_him"
+    },
+    "516": {
+     "act": "steers_him"
+    },
+    "883": {
+     "act": "steers_him",
+     "source": "fans"
+    },
+    "975": {
+     "act": "gives_news_of_him"
+    },
+    "1045": {
+     "act": "gives_news_of_him"
+    }
+   },
+   "flips": 4,
+   "examples": [
+    {
+     "id": "287",
+     "why": "'Chandler must be next for Topuria' names who he should fight, so steers_him; the article's 'ironically' is ignored."
+    },
+    {
+     "id": "457",
+     "why": "'Expects him to return next year' is a sentence about his plans, so gives_news_of_him, although it is a guess and fact is no_fact."
+    }
+   ]
+  },
+  {
+   "name": "Firm and aimed at him",
+   "text": "An act needs a plain statement about him: steers_him or calls_him_out when the speaker says what he should do or who he should fight (calls_him_out when the article itself frames it as mockery or a challenge), and gives_news_of_him only when the speaker states a fact about him, so never when question 4 is no_fact. A guess about him ('probably', 'expects', 'I think'), a speaker's stance on his own next fight ('not my next fight'), a forecast of what the matchmakers will do, or what he did for the speaker (helped me, invited me) is no act: none_of_these.",
+   "answers": {
+    "287": {
+     "act": "calls_him_out"
+    },
+    "457": {
+     "act": "none_of_these"
+    },
+    "484": {
+     "act": "none_of_these"
+    },
+    "492": {
+     "act": "none_of_these"
+    },
+    "516": {
+     "act": "steers_him"
+    },
+    "883": {
+     "act": "gives_news_of_him",
+     "source": "media"
+    },
+    "975": {
+     "act": "none_of_these"
+    },
+    "1045": {
+     "act": "gives_news_of_him"
+    }
+   },
+   "flips": 1,
+   "examples": [
+    {
+     "id": "287",
+     "why": "The article says Tsarukyan 'advises ironically' and 'provokes his rival': mockery framed by the text, so calls_him_out."
+    },
+    {
+     "id": "457",
+     "why": "'Expects him back next year' is hedged and the readers agree there is no fact, so no news of him: none_of_these."
+    }
+   ]
+  },
+  {
+   "name": "Framing sets tone, hedges still count",
+   "text": "Let the article's own words set the tone: a remark the text calls ironic, mocking or a provocation is calls_him_out; otherwise naming who he should fight, or refusing him a rematch, is steers_him. A statement about his condition or plans is gives_news_of_him even when hedged, and in an article with several voices the act belongs to the voice that carries the new information about him (the question 2 source).",
+   "answers": {
+    "287": {
+     "act": "calls_him_out"
+    },
+    "457": {
+     "act": "gives_news_of_him"
+    },
+    "484": {
+     "act": "steers_him"
+    },
+    "492": {
+     "act": "steers_him"
+    },
+    "516": {
+     "act": "steers_him"
+    },
+    "883": {
+     "act": "gives_news_of_him",
+     "source": "media"
+    },
+    "975": {
+     "act": "none_of_these"
+    },
+    "1045": {
+     "act": "gives_news_of_him"
+    }
+   },
+   "flips": 1,
+   "examples": [
+    {
+     "id": "287",
+     "why": "The text frames the Chandler line as a provocation, so calls_him_out."
+    },
+    {
+     "id": "457",
+     "why": "'Expects him back next year' is about his plans, so gives_news_of_him even though it is Pimblett's guess; this is where it parts from the strict rule."
+    }
+   ]
+  }
+ ],
+ "recommend": "Firm and aimed at him",
+ "why": "It follows the line Anton already drew on facts: a guess about him is not news, so it cannot be 'gives news of him' either, and act stays coherent with question 4 (no fact means no news act). It also uses only words on the page: 'ironically' and 'provoke' on 287 decide callout over steering, and 'expects' on 457 decides guess over news. The cost: a rival's refusal to rematch him, or his guess that he is hurt, lands in none_of_these although it matters to his path; relevance has to come from the other questions, not from act. It also leans on the writer flagging a taunt; a deadpan taunt with no such word will be read as steering.",
+ "per_article": {
+  "287": "The text itself calls the Chandler line ironic and a provocation: calls_him_out, not steers_him.",
+  "457": "Pimblett 'expects' him back next year and rules out the fight: a guess, no fact, so none_of_these.",
+  "484": "'I don't think that's my next fight' governs Gaethje's fight, and 'probably not until next year, still recovering' is a guess: none_of_these. Note the readers' agreed fact next_fight rests on that same guess, which Anton ruled no fact on #462.",
+  "492": "Same two Gaethje lines as 484 inside a long interview about himself: none_of_these.",
+  "516": "Tsarukyan says Topuria vs Pimblett 'makes sense' and names the kind of opponent he will get, with no mockery framing: a plain view on who he should fight, steers_him. The forecast about matchmakers alone would be no act.",
+  "883": "The new information is Anik's stated fact (the UFC held internal conversations about a rematch), source media: gives_news_of_him. The fans' 'he should fight a contender first' is steering but is not the voice carrying the news.",
+  "975": "Donchenko says Amosov helped him and invited him to his gym: about Donchenko's training, nothing stated about Amosov's own state or plans, fact no_fact: none_of_these.",
+  "1045": "'Ready to fight' is quoted flat, not hedged, and the readers find a fact: gives_news_of_him. If the quoted words are his own, it would be speaks_of_himself; the text does not say."
+ }
+}

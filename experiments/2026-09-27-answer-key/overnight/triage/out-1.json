@@ -1,0 +1,289 @@
+[
+ {
+  "id": "740",
+  "question": "act",
+  "pick": 1,
+  "reason": "Saved text is only the video blurb 'Talks With UFC.com After His Decision Win'; no words of his appear, so the text reports the win, not his speech",
+  "confidence": "low"
+ },
+ {
+  "id": "555",
+  "question": "fact",
+  "pick": 2,
+  "reason": "A pundit's preview and pick; the Sept 5 booking is background framing, the content is opinion ('Prediction: Soriano via decision')",
+  "confidence": "medium"
+ },
+ {
+  "id": "555",
+  "question": "firmness",
+  "pick": 2,
+  "reason": "No fact asserted as news, only analysis and a pick, so firmness is none",
+  "confidence": "medium"
+ },
+ {
+  "id": "555",
+  "question": "reports_his_next_fight",
+  "pick": 1,
+  "reason": "The booked fight is the premise of the preview, not reported as news; guide rules a pundit's pick out",
+  "confidence": "medium"
+ },
+ {
+  "id": "238",
+  "question": "centrality",
+  "pick": 2,
+  "reason": "Creator interview about his own career and book; Topuria is cited as the reason for the boom but nothing new about him is added",
+  "confidence": "medium"
+ },
+ {
+  "id": "238",
+  "question": "act",
+  "pick": 1,
+  "reason": "Marc talks about Topuria's cultural impact ('lo que representa fuera del octágono'), not his level or chances; nobody does anything regarding him",
+  "confidence": "low"
+ },
+ {
+  "id": "97",
+  "question": "centrality",
+  "pick": 2,
+  "reason": "The body is Abdelaziz's claim about Topuria, Kawa's reply on his behalf and Topuria's possible next fights; Usman is only rumoured/calling out, which the guide says does not share the stage",
+  "confidence": "medium"
+ },
+ {
+  "id": "97",
+  "question": "source",
+  "pick": 2,
+  "reason": "The lead frames Kawa's reply as the development ('was quick to respond'); the second half is his video, plus Abdelaziz is not booked against Topuria",
+  "confidence": "low"
+ },
+ {
+  "id": "97",
+  "question": "act",
+  "pick": 2,
+  "reason": "Kawa's video ('Shut your mouth. Ilia Topuria would 100% annihilate your roster') is a reply on Topuria's behalf to Abdelaziz's attack",
+  "confidence": "low"
+ },
+ {
+  "id": "773",
+  "question": "source",
+  "pick": 2,
+  "reason": "Fight report with nobody quoted; his octagon callout of Rodriguez is paraphrased, not his words, so the result is reported by no one",
+  "confidence": "medium"
+ },
+ {
+  "id": "551",
+  "question": "fact",
+  "pick": 2,
+  "reason": "Gaethje's TKO of Topuria is one background line; the news is Gaethje preferring McGregor over a Topuria rematch, an opinion",
+  "confidence": "high"
+ },
+ {
+  "id": "551",
+  "question": "firmness",
+  "pick": 1,
+  "reason": "No fact about Topuria asserted; only Gaethje's preference, so none",
+  "confidence": "high"
+ },
+ {
+  "id": "697",
+  "question": "reports_his_health",
+  "pick": 1,
+  "reason": "The orbital injuries and 'reportedly did not need surgery' are a closing recap behind the main news, his video message to Hugo",
+  "confidence": "medium"
+ },
+ {
+  "id": "594",
+  "question": "source",
+  "pick": 2,
+  "reason": "Pundit prediction piece; 'campaigned for a spot on the Paris card' is paraphrase, no quote of his, so the words are the outlet's",
+  "confidence": "high"
+ },
+ {
+  "id": "228",
+  "question": "act",
+  "pick": 2,
+  "reason": "Makhachev speaks ('Ali me llamó... Dije que sí') giving a factual account of the offer and its collapse; reports_an_event needs nobody speaking",
+  "confidence": "medium"
+ },
+ {
+  "id": "228",
+  "question": "firmness",
+  "pick": 1,
+  "reason": "Makhachev, a named person other than Topuria or the promotion, states it at a press conference, so reported rather than unnamed-source rumour",
+  "confidence": "medium"
+ },
+ {
+  "id": "228",
+  "question": "reports_his_next_fight",
+  "pick": 1,
+  "reason": "The offered fight was for UFC Freedom 250 in June, already past when written; nothing about a next fight is set, offered or negotiated",
+  "confidence": "medium"
+ },
+ {
+  "id": "1260",
+  "question": "centrality",
+  "pick": 2,
+  "reason": "Donchenko talks about Makhachev, Silva, Garry and Amosov, not about himself; his Soriano win is a background clause",
+  "confidence": "high"
+ },
+ {
+  "id": "1260",
+  "question": "act",
+  "pick": 2,
+  "reason": "He speaks only about other fighters, so speaks_of_himself does not apply; nobody does anything regarding him",
+  "confidence": "medium"
+ },
+ {
+  "id": "1260",
+  "question": "fact",
+  "pick": 1,
+  "reason": "The only fact about him, 'fresh off his win over Punahele Soriano', is background; the article is his opinion of others",
+  "confidence": "high"
+ },
+ {
+  "id": "1260",
+  "question": "firmness",
+  "pick": 1,
+  "reason": "No fact about him asserted as news, so none",
+  "confidence": "high"
+ },
+ {
+  "id": "115",
+  "question": "source",
+  "pick": 2,
+  "reason": "Forum lineup announcement; Martínez is named as a speaker but says nothing and nothing new about Topuria is given, so answer for the main content: an event with nobody speaking",
+  "confidence": "medium"
+ },
+ {
+  "id": "1080",
+  "question": "source",
+  "pick": 2,
+  "reason": "Topuria appears only in a LATEST NEWS link; the main content is Alex Davis, Messias's manager, so another fighter's manager, not Topuria's",
+  "confidence": "high"
+ },
+ {
+  "id": "601",
+  "question": "centrality",
+  "pick": 1,
+  "reason": "Soriano gets only his weight and record; the walk-out time, third fight of 2026, Baku win and Paris wish are all about Donchenko",
+  "confidence": "low"
+ },
+ {
+  "id": "601",
+  "question": "reports_his_next_fight",
+  "pick": 1,
+  "reason": "The article's news is the weigh-in and start times (fight-week routine); the date and opponent are stated as known, not as a booking set or changed",
+  "confidence": "low"
+ },
+ {
+  "id": "790",
+  "question": "source",
+  "pick": 2,
+  "reason": "Same fight report as 773: nobody quoted, his Rodriguez callout and French words only paraphrased, so the result is reported by no one",
+  "confidence": "medium"
+ },
+ {
+  "id": "532",
+  "question": "centrality",
+  "pick": 2,
+  "reason": "Soriano's own feature tied by the article to his booked fight with Donchenko, with Soriano's fresh take on him ('scary dude, wild dude') and the card placement",
+  "confidence": "medium"
+ },
+ {
+  "id": "532",
+  "question": "source",
+  "pick": 2,
+  "reason": "Soriano is booked against Donchenko on Saturday, so the guide's opponent_side applies over other_fighter_side",
+  "confidence": "high"
+ },
+ {
+  "id": "532",
+  "question": "act",
+  "pick": 2,
+  "reason": "Soriano assesses him: 'scary dude, wild dude... young and has that young man's fire and vigor'",
+  "confidence": "medium"
+ },
+ {
+  "id": "532",
+  "question": "fact",
+  "pick": 1,
+  "reason": "The Saturday fight is background; the only new thing about Donchenko is Soriano's opinion of him",
+  "confidence": "medium"
+ },
+ {
+  "id": "532",
+  "question": "firmness",
+  "pick": 1,
+  "reason": "No fact about him asserted as news, so none",
+  "confidence": "medium"
+ },
+ {
+  "id": "647",
+  "question": "reports_his_result",
+  "pick": 2,
+  "reason": "One-line summary: he 'addressed his loss to Gaethje' in a letter; the loss is background to the news of the letter",
+  "confidence": "medium"
+ },
+ {
+  "id": "647",
+  "question": "he_speaks",
+  "pick": 1,
+  "reason": "The saved text is one summary line plus comment-policy furniture; no words of his appear",
+  "confidence": "high"
+ },
+ {
+  "id": "794",
+  "question": "firmness",
+  "pick": 2,
+  "reason": "The callout for Rodriguez is a wish the guide treats as no fact; the fact the article asserts is his decision win with scorecards, which has happened",
+  "confidence": "low"
+ },
+ {
+  "id": "794",
+  "question": "reports_his_result",
+  "pick": 2,
+  "reason": "Reports the unanimous decision win with scorecard detail (judge Eric Colon gave Round 3 to Soriano), as news the day after, not mere background",
+  "confidence": "medium"
+ },
+ {
+  "id": "321",
+  "question": "fact",
+  "pick": 1,
+  "reason": "Childhood in Korosten, father's death, judo at 11, leaving KPI for Thailand; the Sept 5 Soriano fight is a closing footnote",
+  "confidence": "high"
+ },
+ {
+  "id": "1072",
+  "question": "fact",
+  "pick": 1,
+  "reason": "Gaethje's analysis of Topuria's footwork ('sus pies nunca cambian de ritmo') is opinion; no next opponent is named",
+  "confidence": "high"
+ },
+ {
+  "id": "1072",
+  "question": "firmness",
+  "pick": 2,
+  "reason": "No fact about him asserted, only Gaethje's assessment, so none",
+  "confidence": "high"
+ },
+ {
+  "id": "1072",
+  "question": "reports_his_result",
+  "pick": 2,
+  "reason": "The loss at UFC Freedom 250 is recalled as background to Gaethje's explanation of his game plan",
+  "confidence": "medium"
+ },
+ {
+  "id": "972",
+  "question": "firmness",
+  "pick": 2,
+  "reason": "'Topuria is ready to fight, and we're ready for him' is said by Dana White, the promotion, which the guide puts at official_or_done",
+  "confidence": "high"
+ },
+ {
+  "id": "972",
+  "question": "reports_his_health",
+  "pick": 2,
+  "reason": "Orbital fractures and Gallo's recovery update are recapped as background; the news is White saying he is ready, which the guide says is not health",
+  "confidence": "medium"
+ }
+]

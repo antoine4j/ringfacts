@@ -1,0 +1,202 @@
+{
+ "boundary": "centrality",
+ "title": "How central is he?",
+ "question": "Main subject, one of several, only mentioned, or not in the content?",
+ "readings": [
+  "Share of the text: he is main_subject if most of the body is about him, one_of_several if he gets a real paragraph, only_mentioned if a line; this is what the minority readers did on #625, #687, #737, #525 and #34.",
+  "Whose news it is: the headline and the opening paragraph say whose story this is; he is main_subject only when the story is his, one_of_several when it is a fight of his, and only_mentioned inside someone else's story however long his part; this is what the majority did on every article.",
+  "Anything said about him or by him: the guide's main_subject clause ('something someone said about him') read literally, so a callout aimed at him or his own remark about anyone makes the piece about him; this is the minority on #273 and #373."
+ ],
+ "signals": [
+  "Who the headline names as the actor: him, another fighter, or a fight of his written as 'X vs Y' or 'X – Y'.",
+  "Whether the first sentence of the body is about him or about someone else.",
+  "Verbs of wish or prediction aimed at him ('wants', 'calls out', 'would beat', 'will make him quit'): they mark the speaker's news, not his.",
+  "In a two-fighter piece, whether the other fighter gets anything beyond his name and record (a quote, his plans, his background).",
+  "Page-type markers: 'live results', 'quick results', 'fight card', lines of the form 'A def. B' — a card or results list.",
+  "Whether his own words are about himself and his career, or about another fighter or the sport.",
+  "Whether a body exists at all: saved text that is only a headline plus site boilerplate.",
+  "The share of body text about him — visible, and the signal the minority used, but rule A says not to use it between only_mentioned and one_of_several."
+ ],
+ "rules": [
+  {
+   "name": "Whose news",
+   "text": "Judge by the headline and the opening paragraph together: whose news is this? If it is his (what he did, what happened to him, what he said about himself, or what someone says about him or his next step) he is main_subject even if the rest of the article drifts to the speaker's own business; if it is a fight of his with both fighters named, one_of_several; if it is someone else's news in which he appears as a target, a wished-for opponent, a comparison, a name on a card or results list, or as a man talking about others, he is only_mentioned however long his part — and a page whose saved text is only its headline is judged on that headline.",
+   "answers": {
+    "34": {
+     "centrality": "only_mentioned"
+    },
+    "269": {
+     "centrality": "main_subject"
+    },
+    "273": {
+     "centrality": "only_mentioned"
+    },
+    "373": {
+     "centrality": "only_mentioned"
+    },
+    "525": {
+     "centrality": "only_mentioned"
+    },
+    "625": {
+     "centrality": "one_of_several"
+    },
+    "653": {
+     "centrality": "one_of_several",
+     "act": "reports_an_event",
+     "fact": "fight_week_event",
+     "firmness": "official_or_done"
+    },
+    "687": {
+     "centrality": "one_of_several"
+    },
+    "737": {
+     "centrality": "only_mentioned"
+    },
+    "862": {
+     "centrality": "one_of_several"
+    }
+   },
+   "flips": 0,
+   "examples": [
+    {
+     "id": "269",
+     "why": "Headline and lead are Tsarukyan on Topuria's next step, so main_subject, although half the body is Tsarukyan's own Ruffy fight."
+    },
+    {
+     "id": "34",
+     "why": "Headline and lead are Usman's manager on Usman; Topuria is the wished-for debut opponent, so only_mentioned despite his subheading and the closing paragraph."
+    },
+    {
+     "id": "625",
+     "why": "Headline names both men at the weigh-in, a fight of his, so one_of_several even though Soriano gets one line."
+    },
+    {
+     "id": "653",
+     "why": "Only the headline survived; it names a weigh-in faceoff of his against Soriano, so one_of_several rather than not_in_content."
+    }
+   ]
+  },
+  {
+   "name": "Two-fighter tilt",
+   "text": "Apply the whose-news test, with one refinement for an article on a fight of his: he is one_of_several only while the other fighter gets something of his own (a quote, his plans, his background). When the other fighter gets nothing beyond his name and record, the piece is about him: main_subject.",
+   "answers": {
+    "34": {
+     "centrality": "only_mentioned"
+    },
+    "269": {
+     "centrality": "main_subject"
+    },
+    "273": {
+     "centrality": "only_mentioned"
+    },
+    "373": {
+     "centrality": "only_mentioned"
+    },
+    "525": {
+     "centrality": "only_mentioned"
+    },
+    "625": {
+     "centrality": "main_subject"
+    },
+    "653": {
+     "centrality": "one_of_several",
+     "act": "reports_an_event",
+     "fact": "fight_week_event",
+     "firmness": "official_or_done"
+    },
+    "687": {
+     "centrality": "main_subject"
+    },
+    "737": {
+     "centrality": "only_mentioned"
+    },
+    "862": {
+     "centrality": "one_of_several"
+    }
+   },
+   "flips": 2,
+   "examples": [
+    {
+     "id": "625",
+     "why": "Soriano gets only his record; the body is Donchenko's weight, his walkout time, his year and his Paris wish, so main_subject."
+    },
+    {
+     "id": "862",
+     "why": "Gaethje gets his own retirement talk and 2027 return, so the rematch piece stays one_of_several."
+    },
+    {
+     "id": "653",
+     "why": "No body to tilt on; the headline names both equally, so it stays one_of_several."
+    }
+   ]
+  },
+  {
+   "name": "Words about him count",
+   "text": "Apply the whose-news test, but treat words aimed at him or spoken by him as new content about him: a callout, a prediction of how he loses, an assessment of him, or his own remark on anyone. He is main_subject when such words carry the headline and lead, one_of_several when they sit inside another fighter's story, and only_mentioned only when nobody speaks of him and he does not speak.",
+   "answers": {
+    "34": {
+     "centrality": "one_of_several"
+    },
+    "269": {
+     "centrality": "main_subject"
+    },
+    "273": {
+     "centrality": "main_subject"
+    },
+    "373": {
+     "centrality": "main_subject"
+    },
+    "525": {
+     "centrality": "one_of_several"
+    },
+    "625": {
+     "centrality": "one_of_several"
+    },
+    "653": {
+     "centrality": "one_of_several",
+     "act": "reports_an_event",
+     "fact": "fight_week_event",
+     "firmness": "official_or_done"
+    },
+    "687": {
+     "centrality": "one_of_several"
+    },
+    "737": {
+     "centrality": "only_mentioned"
+    },
+    "862": {
+     "centrality": "one_of_several"
+    }
+   },
+   "flips": 4,
+   "examples": [
+    {
+     "id": "34",
+     "why": "Abdelaziz's 'he'll make Ilia quit' and his wish for the fight are words about him inside Usman's story, so one_of_several (a flip from the majority)."
+    },
+    {
+     "id": "269",
+     "why": "Tsarukyan's advice to Topuria carries the headline and lead, so main_subject."
+    },
+    {
+     "id": "737",
+     "why": "Nobody speaks of him; the play-by-play is the writer's narration of a card, so only_mentioned."
+    }
+   ]
+  }
+ ],
+ "recommend": "Whose news",
+ "why": "It is the rule the majority readers were already applying without naming it: zero flips, and it works on every input because every article has a headline and a lead, even #653 with no body. It is decidable cold from the first lines, which is what the classifier needs, and it keeps the guide's existing clauses (a callout does not make him one_of_several; him talking about others is only_mentioned). Its cost: it trusts the headline, so a piece where he is the named target with his own subheading and the closing paragraph (#34) stays only_mentioned, a weigh-in that is nine-tenths about him (#625) stays one_of_several, and a story built on his own joke about another fighter stays only_mentioned, which some editors will find wrong. A headline that names the bigger star for clicks, or an article that turns to him only in its second half, will be under-rated.",
+ "per_article": {
+  "34": "Headline and lead are Abdelaziz on Usman; Topuria is the wished-for debut opponent and a predicted loser, so only_mentioned.",
+  "269": "Headline and lead are Tsarukyan on what Topuria should do next, so main_subject; the Ruffy half does not change whose news it is.",
+  "273": "Headline and lead are Pimblett's wish for his own next fight; Topuria is the target, so only_mentioned.",
+  "373": "Headline and lead are Topuria talking about Johnson, not about himself; the guide's 'talking about another fighter' clause holds, so only_mentioned.",
+  "525": "Headline and lead are Tsarukyan's title-defence plans; Topuria is a name he rates inside them, so only_mentioned.",
+  "625": "Headline names both at the weigh-in, a fight of his, so one_of_several, though Soriano gets one line.",
+  "653": "Only the headline survived and it names a weigh-in faceoff of his against Soriano, so one_of_several; act, fact and firmness follow from the same headline (reports_an_event, fight_week_event, official_or_done). Flag under backlog item 4 if Anton confirms the live page is a video.",
+  "687": "Headline is 'Donchenko – Soriano, watch live', a fight of his with both named, so one_of_several.",
+  "737": "Headline is the whole card's live results; his bout is one entry with a round-by-round like the others, so only_mentioned.",
+  "862": "Headline is a Gaethje–Topuria rematch, a fight of his with both named, so one_of_several."
+ }
+}

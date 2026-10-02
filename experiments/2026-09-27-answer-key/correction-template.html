@@ -72,6 +72,23 @@ details.more>summary{cursor:pointer;color:var(--accent);font-size:13.5px;font-we
 mark.name{background:#F6D54A;color:#18201D;border-radius:2px;padding:0 1px}
 .why{font-size:11.5px;font-weight:600;border-radius:999px;padding:1px 8px;border:1px solid var(--warn);color:var(--warn);background:var(--panel);white-space:nowrap}
 .why.pick{background:var(--warn);color:var(--panel)}
+.hint{font-size:12.5px;color:var(--dim)}
+.hint b{color:var(--ink);font-weight:600}
+.hint.agree b{color:var(--ok,#1f7a4d)}
+.hint.change b{color:var(--warn)}
+.group{margin:22px 0 10px;padding:12px 14px;border:1px solid var(--line);border-left:4px solid var(--accent);border-radius:10px;background:var(--panel)}
+.group h2{font-size:17px;margin:0 0 2px}
+.group .gq{font-size:14px;color:var(--dim);margin:0 0 6px}
+.group details{font-size:14px}
+.group summary{cursor:pointer;font-weight:600}
+.group ul{margin:4px 0 8px;padding-left:20px}
+.group li{margin:2px 0}
+.group .rule{margin:8px 0;padding:8px 10px;border:1px solid var(--line);border-radius:8px}
+.group .rule.rec{border-color:var(--accent);background:var(--bg)}
+.group .rule .rn{font-weight:600}
+.group .rule .rf{font-size:12.5px;color:var(--dim)}
+.group .nobrief{font-size:13px;color:var(--dim)}
+.brief{font-size:13px;color:var(--dim);border-left:3px solid var(--line);padding-left:8px}
 .legend{display:grid;gap:4px;font-size:14px;max-width:72ch}
 .legend div{display:flex;gap:8px;align-items:baseline;flex-wrap:wrap}
 .q.calm .val,.q.calm .st{opacity:.7}
@@ -94,6 +111,7 @@ input.note{font:inherit;font-size:13px;border:1px solid var(--line);background:v
       <div><span class="why">readers differed</span> two of three readers agreed and their answer is shown. Check it is right.</div>
       <div><span class="why">classifier differs</span> the readers agree, but the classifier said something else (shown beside it). One of them is wrong: check the readers' answer.</div>
       <div>An answer can carry both of the last two. Faded answers are unanimous: readers and classifier agree.</div>
+      <div><span class="hint"><b>hints</b></span> grey lines under an answer from the overnight re-reads: a third reader's pick where the classifier differs, two fresh reads of "how central" under rule A, and what a boundary's recommended rule would say. Hints, not labels: they are there to speed up your call.</div>
     </div>
     <details class="about"><summary>How this page works, and where to start</summary>
       <p><b>Every article is on one side of the split</b> (the chip on each card). <b>Tune</b> (155): the classifier questions are changed while looking at these. <b>Check</b> (40): used to test a change, never looked at while changing. <b>Test</b> (105): scored once, at the end. Correct any of them the same way: they are all the golden set; the side only decides what the classifier may be tuned on.</p>
@@ -102,7 +120,7 @@ input.note{font:inherit;font-size:13px;border:1px solid var(--line);background:v
       <p><b>What to check on each article:</b> only the highlighted answers; each says why it is flagged (see the three labels above). The line above the answers names them. The rest are unanimous and shown faded; a glance is enough.</p>
       <p><b>You don't need to read all 300.</b> Work down the numbered filters:</p>
       <ol>
-        <li>Where the readers differed: settle these first.</li>
+        <li>Where the readers differed: settle these first. They are grouped by the <b>boundary</b> the readers split on (next fight news or background, opponent or another fighter's side, how central, …), each group headed by a brief: the ways to read the question, the signals in the text, and two or three candidate rules with what each would decide. Decide the rule once; the articles under it follow.</li>
         <li>Where only the classifier differs: read just the flagged answers.</li>
         <li>Where the readers and the classifier all agree: check the 15-article sample. If it is clean, the rest of that group can stand.</li>
       </ol>
@@ -111,7 +129,7 @@ input.note{font:inherit;font-size:13px;border:1px solid var(--line);background:v
   <div class="stickybar">
     <div class="bar">
       <div class="seg" role="group" aria-label="Show" id="filter">
-        <button data-f="1" aria-pressed="true">1 · Readers differed</button>
+        <button data-f="1" aria-pressed="true">1 · Readers differed, by boundary</button>
         <button data-f="2" aria-pressed="false">2 · Classifier differs</button>
         <button data-f="3" aria-pressed="false">3 · All agree: sample</button>
         <button data-f="open" aria-pressed="false">Not checked yet</button>
@@ -179,7 +197,28 @@ function questionRow(a, q){
     <select data-id="${a.id}" data-q="${q}" id="s-${a.id}-${q}" class="${fix ? "changed" : ""}" aria-label="Correct value for ${esc(DATA.labels[q])}">
       <option value="">${k.value === null ? "choose…" : "✓ right"}</option>${opts}</select>
     ${fix ? `<input class="note" id="n-${a.id}-${q}" data-id="${a.id}" data-q="${q}" placeholder="why (optional)" value="${esc(fix.note || "")}">` : ""}
+    ${hints(k)}
   </div></div>`;
+}
+
+/** The overnight hints under one answer: the triage pick, the rule A recheck, the recommended rule's answer.
+ * @param {object} k one answer @returns {string} html, empty when there are none */
+function hints(k){
+  const out = [];
+  if (k.hint){
+    const side = k.hint.value === null ? "neither answer fits" : k.hint.value === k.value ? "sides with the readers" : k.hint.value === k.classifier ? "sides with the classifier" : `picks ${human(k.hint.value)}`;
+    out.push(`<div class="hint ${k.hint.value === k.value ? "agree" : "change"}">third reader, blind: <b>${esc(side)}</b> (${esc(k.hint.confidence || "")}) — ${esc(k.hint.reason || "")}</div>`);
+  }
+  if (k.recheck){
+    const reads = Object.entries(k.recheck).map(([letter, r]) => `${letter}: <b>${esc(human(r.centrality))}</b> (${esc(r.confidence || "")})`).join(", ");
+    const same = Object.values(k.recheck).every(r => r.centrality === k.value);
+    const notes = Object.entries(k.recheck).map(([letter, r]) => r.note ? `${letter}: ${esc(r.note)}` : "").filter(Boolean).join(" · ");
+    out.push(`<div class="hint ${same ? "agree" : "change"}">re-read under rule A — ${reads}${same ? "" : " — <b>rule A may change this</b>"}<br>${notes}</div>`);
+  }
+  if (k.rule !== undefined && k.rule !== null){
+    out.push(`<div class="hint ${k.rule === k.value ? "agree" : "change"}">the brief's recommended rule gives: <b>${esc(human(k.rule))}</b>${k.rule === k.value ? "" : " — would change this"}</div>`);
+  }
+  return out.join("");
 }
 
 /** Whether an answer needs a look: the readers did not all agree, or the classifier disagrees with them.
@@ -202,6 +241,7 @@ function card(a){
     <details class="more"><summary>Readers' notes</summary><div class="notes">${notes}</div></details>
     ${(() => { const todo = DATA.questions.filter(q => needsLook(a.answers[q]) && !r.fixes[q]);
       return todo.length ? `<div class="todo">Check ${todo.length === 1 ? "this answer" : `these ${todo.length} answers`}: ${todo.map(q => esc(DATA.labels[q])).join(", ")}. The others are unanimous; a glance is enough.</div>` : `<div class="saved">Nothing flagged: the readers and the classifier all agree.</div>`; })()}
+    ${a.brief_line ? `<div class="brief">brief: ${esc(a.brief_line)}</div>` : ""}
     <div class="qs">${DATA.questions.map(q => questionRow(a, q)).join("")}</div>
     <div class="foot"><button class="btn" data-review="${a.id}">${r.reviewed ? "Checked ✓ (click to undo)" : "Mark article checked"}</button><span class="saved" id="saved-${a.id}"></span></div>
   </article>`;
@@ -217,11 +257,35 @@ function labelFilters(){
   state.filter = saved;
 }
 
+/** Step 1's cards grouped by boundary, each group headed by its brief. @param {object[]} list @returns {string} html */
+function grouped(list){
+  return DATA.boundaries.order.map(key => {
+    const g = DATA.boundaries.groups[key], items = list.filter(a => a.boundary === key);
+    return items.length ? groupHead(key, g, items.length) + items.map(card).join("") : "";
+  }).join("") + list.filter(a => !a.boundary).map(card).join("");
+}
+
+/** A boundary group's header: its question, and the brief if the overnight agent wrote one.
+ * @param {string} key @param {object} g group @param {number} n articles under it @returns {string} html */
+function groupHead(key, g, n){
+  const b = g.brief;
+  const li = xs => (xs || []).map(x => `<li>${esc(x)}</li>`).join("");
+  const rec = r => b && [].concat(b.recommend).includes(r.name);
+  const rule = r => `<div class="rule${rec(r) ? " rec" : ""}"><div class="rn">${rec(r) ? "Recommended: " : ""}${esc(r.name)}</div><div>${esc(r.text)}</div>
+    <div class="rf">would change ${r.flips ?? "?"} of ${n} answers · examples: ${(r.examples || []).map(e => typeof e === "string" ? `#${esc(e)}` : `#${esc(e.id)} (${esc(e.why || "")})`).join("; ")}</div></div>`;
+  const body = !b ? `<div class="nobrief">No brief yet for this group.</div>` :
+    `<details><summary>Ways to read it</summary><ul>${li(b.readings)}</ul></details>
+     <details><summary>Signals in the text</summary><ul>${li(b.signals)}</ul></details>
+     <details open><summary>Candidate rules</summary>${(b.rules || []).map(rule).join("")}<p><b>Why this one:</b> ${esc(b.why || "")}</p></details>`;
+  return `<section class="group" id="g-${key}"><h2>${esc(g.title)} <span class="st">· ${n} article${n === 1 ? "" : "s"}</span></h2><p class="gq">${esc(g.question)}</p>${body}</section>`;
+}
+
 /** Redraw the list and the counts. */
 function draw(){
   labelFilters();
   const list = DATA.articles.filter(shown);
-  document.getElementById("list").innerHTML = list.length ? list.map(card).join("") : `<p class="lede">Nothing here under this filter.</p>`;
+  const html = state.filter === "1" ? grouped(list) : list.map(card).join("");
+  document.getElementById("list").innerHTML = list.length ? html : `<p class="lede">Nothing here under this filter.</p>`;
   const checked = DATA.articles.filter(a => rec(a.id).reviewed).length;
   const fixes = DATA.articles.reduce((s, a) => s + Object.keys(rec(a.id).fixes).length, 0);
   document.getElementById("count").innerHTML = `showing <b>${list.length}</b> · checked <b>${checked}</b> of 300 · corrections <b>${fixes}</b>`;

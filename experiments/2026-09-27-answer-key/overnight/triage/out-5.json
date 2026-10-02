@@ -1,0 +1,261 @@
+[
+ {
+  "id": "125",
+  "question": "source",
+  "pick": 2,
+  "reason": "Dr Aldo Martinez is named as a forum speaker; nobody speaks and nothing new about Topuria, so the main content is an event announcement with no one speaking",
+  "confidence": "medium"
+ },
+ {
+  "id": "230",
+  "question": "act",
+  "pick": 1,
+  "reason": "Amosov does not appear anywhere in the saved text (Makhachev/Garry/Dern roundtable); nobody does anything regarding him",
+  "confidence": "high"
+ },
+ {
+  "id": "585",
+  "question": "source",
+  "pick": 2,
+  "reason": "Gaethje speaks, and the article itself says he beat Topuria at UFC Freedom 250; guide: Gaethje for Topuria is opponent side",
+  "confidence": "high"
+ },
+ {
+  "id": "710",
+  "question": "centrality",
+  "pick": 2,
+  "reason": "Topuria appears only in a 'LATEST NEWS:' read-also link; the article body is about RAF Moscow streaming",
+  "confidence": "high"
+ },
+ {
+  "id": "851",
+  "question": "firmness",
+  "pick": 2,
+  "reason": "The article's fact is the unanimous-decision win over Soriano, which has happened; the Rodriguez callout is a wish and a callout is no fact per the guide",
+  "confidence": "medium"
+ },
+ {
+  "id": "851",
+  "question": "reports_his_next_fight",
+  "pick": 1,
+  "reason": "He only calls for Rodriguez and says he'd prefer end of year; nothing set, offered or negotiated",
+  "confidence": "high"
+ },
+ {
+  "id": "447",
+  "question": "source",
+  "pick": 1,
+  "reason": "Topuria gets one line (ranked No. 1 while stepping away) with nothing new; the main content is the outlet writer's own title-picture analysis",
+  "confidence": "medium"
+ },
+ {
+  "id": "917",
+  "question": "firmness",
+  "pick": 1,
+  "reason": "The injuries (two broken orbitals, septum, foot) are revealed by Topuria himself in his essay, so he states the main fact",
+  "confidence": "medium"
+ },
+ {
+  "id": "917",
+  "question": "reports_his_next_fight",
+  "pick": 1,
+  "reason": "Rematch/Pimblett 'talks swirling' are background framing; Rogan's six-months-before-sparring is opinion, no opponent or date set or offered",
+  "confidence": "medium"
+ },
+ {
+  "id": "917",
+  "question": "he_speaks",
+  "pick": 2,
+  "reason": "All of Topuria's essay is paraphrased ('he revealed', 'admitted'); only Rogan is quoted directly",
+  "confidence": "medium"
+ },
+ {
+  "id": "892",
+  "question": "centrality",
+  "pick": 1,
+  "reason": "The article is about Pimblett's callout aimed at Topuria and Topuria's recovery timing; a fighter only calling him out does not make it shared",
+  "confidence": "medium"
+ },
+ {
+  "id": "892",
+  "question": "fact",
+  "pick": 1,
+  "reason": "Main news is Pimblett's wish to fight him ('Quiero aplastarle la cabeza'); the eye injuries are 'cabe recordar' background",
+  "confidence": "medium"
+ },
+ {
+  "id": "892",
+  "question": "firmness",
+  "pick": 2,
+  "reason": "With fact no_fact the guide says firmness is none; the callout is a wish but a callout is not a fact",
+  "confidence": "medium"
+ },
+ {
+  "id": "361",
+  "question": "fact",
+  "pick": 1,
+  "reason": "Headline and Dvalishvili's words are about him enjoying life with friends and family, cinema with his son; 'se encuentra bien' and the suspension are side notes",
+  "confidence": "medium"
+ },
+ {
+  "id": "862",
+  "question": "act",
+  "pick": 2,
+  "reason": "Anik relays 'internal conversations' about Gaethje vs Topuria 2, a factual update on his plans, not advice on what Topuria should do",
+  "confidence": "medium"
+ },
+ {
+  "id": "862",
+  "question": "fact",
+  "pick": 1,
+  "reason": "Internal conversations about a rematch are 'talks' about his next fight, which the guide lists under next_fight",
+  "confidence": "medium"
+ },
+ {
+  "id": "862",
+  "question": "firmness",
+  "pick": 1,
+  "reason": "'Internal conversations' and 'rumblings' from a commentator, then 'non-informed speculation': rumour",
+  "confidence": "medium"
+ },
+ {
+  "id": "862",
+  "question": "reports_his_next_fight",
+  "pick": 1,
+  "reason": "The article reports talks (negotiation) of a specific next opponent, Gaethje, not just a wish or pick",
+  "confidence": "medium"
+ },
+ {
+  "id": "843",
+  "question": "source",
+  "pick": 1,
+  "reason": "Pimblett speaks, and the article frames a Pimblett vs Topuria fight as the live question, so he is publicly linked to a fight with him; but nothing is booked and 'no one's spoke to me', so other_fighter_side is arguable",
+  "confidence": "low"
+ },
+ {
+  "id": "533",
+  "question": "centrality",
+  "pick": 1,
+  "reason": "Hooker-Parnasse preview; Topuria appears only inside Hooker's quote about who would risk fighting Nurmagomedov",
+  "confidence": "high"
+ },
+ {
+  "id": "1076",
+  "question": "firmness",
+  "pick": 2,
+  "reason": "Dana White (promotion) says Topuria is ready to return and the choice is Gaethje or Pimblett; the promotion stating it is official_or_done",
+  "confidence": "medium"
+ },
+ {
+  "id": "385",
+  "question": "fact",
+  "pick": 2,
+  "reason": "The news is Topuria's reply to Pimblett's trash talk; the broken nose/orbitals are recalled as background with no new medical update",
+  "confidence": "medium"
+ },
+ {
+  "id": "385",
+  "question": "firmness",
+  "pick": 1,
+  "reason": "No fact asserted, only talk, so none; nothing in the text is a rumour",
+  "confidence": "high"
+ },
+ {
+  "id": "385",
+  "question": "reports_his_health",
+  "pick": 2,
+  "reason": "Past injuries recalled as background; 'en route to recovery' with no return date adds nothing new",
+  "confidence": "medium"
+ },
+ {
+  "id": "746",
+  "question": "source",
+  "pick": 2,
+  "reason": "Saved text is a video page; none of his words appear, the only information is his unanimous-decision win, an event with nobody speaking in the text",
+  "confidence": "low"
+ },
+ {
+  "id": "746",
+  "question": "act",
+  "pick": 2,
+  "reason": "The text only reports the win over Soriano and that he talked with Bisping; his speech is not in the saved text",
+  "confidence": "low"
+ },
+ {
+  "id": "10",
+  "question": "centrality",
+  "pick": 1,
+  "reason": "Article is about Abdelaziz's predictions for Nurmagomedov; Topuria is one of five named contenders and the callout adds nothing new about him",
+  "confidence": "medium"
+ },
+ {
+  "id": "10",
+  "question": "source",
+  "pick": 2,
+  "reason": "Abdelaziz is Nurmagomedov's manager; Nurmagomedov is not in the UFC and not booked, only wished for, and the guide puts another fighter's manager under other_fighter_side",
+  "confidence": "medium"
+ },
+ {
+  "id": "10",
+  "question": "act",
+  "pick": 2,
+  "reason": "'I want Ilia Topuria, first fight' is a challenge on his fighter's behalf; 'he'll make Ilia quit' is a forecast of a fight that does not exist",
+  "confidence": "low"
+ },
+ {
+  "id": "933",
+  "question": "source",
+  "pick": 2,
+  "reason": "The article is the Sport.ua writer's own analysis of five next-opponent options; Donchenko's callout is only paraphrased background",
+  "confidence": "medium"
+ },
+ {
+  "id": "933",
+  "question": "fact",
+  "pick": 2,
+  "reason": "The Soriano win is the lead's background peg; the content is speculation on who is next, no fact set",
+  "confidence": "medium"
+ },
+ {
+  "id": "933",
+  "question": "firmness",
+  "pick": 2,
+  "reason": "No fact asserted, only the writer's options; firmness none",
+  "confidence": "medium"
+ },
+ {
+  "id": "933",
+  "question": "reports_his_result",
+  "pick": 2,
+  "reason": "The win over Soriano is recalled in the lead as the peg for a 'what next' piece, not reported as the news; a careful editor could say yes",
+  "confidence": "low"
+ },
+ {
+  "id": "1101",
+  "question": "fact",
+  "pick": 2,
+  "reason": "Headline and first half are his life lesson about happiness (personal_life); Dana White's 'ready to fight' is a real next_fight fact but second",
+  "confidence": "low"
+ },
+ {
+  "id": "208",
+  "question": "fact",
+  "pick": 2,
+  "reason": "The story is his call to his grandmother who opposes his career; the 5 September Soriano fight is one line",
+  "confidence": "high"
+ },
+ {
+  "id": "208",
+  "question": "reports_his_result",
+  "pick": 2,
+  "reason": "The TKO is the first sentence but serves as background to the grandmother story; a careful editor could say yes",
+  "confidence": "low"
+ },
+ {
+  "id": "778",
+  "question": "he_speaks",
+  "pick": 2,
+  "reason": "The text says he spoke and grabbed the mic, but none of his words are quoted in the saved text",
+  "confidence": "medium"
+ }
+]

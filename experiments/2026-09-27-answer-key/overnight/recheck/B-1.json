@@ -1,0 +1,152 @@
+[
+  {
+    "id": "467",
+    "centrality": "one_of_several",
+    "confidence": "medium",
+    "note": "Gaethje (the man who beat him) predicts Topuria is out until 2027 and says he will not grant him an immediate rematch; discussion of their fought bout, not just a retold record."
+  },
+  {
+    "id": "856",
+    "centrality": "only_mentioned",
+    "confidence": "high",
+    "note": "The guide's own example: a year-in-review built on two debutants; his paragraph retells the June loss and fractures plus one line that he has posted a couple of messages."
+  },
+  {
+    "id": "484",
+    "centrality": "one_of_several",
+    "confidence": "medium",
+    "note": "Gaethje says Topuria is still recovering, probably will not fight until next year, and that a rematch is not his gut pick; his status is discussed as half of the fought bout."
+  },
+  {
+    "id": "339",
+    "centrality": "one_of_several",
+    "confidence": "medium",
+    "note": "Hughes predicts Topuria is the only UFC fighter who could beat Usman Nurmagomedov; an opinion about him, shared with Usman's free-agency story."
+  },
+  {
+    "id": "843",
+    "centrality": "only_mentioned",
+    "confidence": "medium",
+    "note": "Pimblett calls Topuria out and names other targets; Topuria's part is the retold loss and a rumoured Gaethje rematch, and a callout or rumour does not count."
+  },
+  {
+    "id": "820",
+    "centrality": "only_mentioned",
+    "confidence": "medium",
+    "note": "Pimblett denies a rumoured December fight with Topuria; the rest of Topuria's part is their old feud retold, nothing new about him."
+  },
+  {
+    "id": "892",
+    "centrality": "only_mentioned",
+    "confidence": "medium",
+    "note": "Pimblett's callout again; Topuria's part is that he is recovering from the eye injuries and will return when ready, which only restates his known status."
+  },
+  {
+    "id": "249",
+    "centrality": "one_of_several",
+    "confidence": "medium",
+    "note": "Hughes picks Topuria as the one man who could beat Usman; a fresh evaluation of him, sharing the piece with Usman and Tsarukyan's take."
+  },
+  {
+    "id": "342",
+    "centrality": "only_mentioned",
+    "confidence": "high",
+    "note": "A roundup of Ukrainian athletes who took up arms; Amosov's paragraph retells his territorial-defence service, Irpin, lost comrades and his UFC debut, all background."
+  },
+  {
+    "id": "532",
+    "centrality": "one_of_several",
+    "confidence": "medium",
+    "note": "Soriano feature tied to their booked fight; Soriano sizes Donchenko up as a scary, wild, young opponent who scared him through camp, which is new content about him."
+  },
+  {
+    "id": "599",
+    "centrality": "one_of_several",
+    "confidence": "medium",
+    "note": "Preview of his fight with Soriano: first main-card slot, bookmaker favourite, tactical breakdown and a pick; both fighters get roughly equal analysis."
+  },
+  {
+    "id": "609",
+    "centrality": "one_of_several",
+    "confidence": "medium",
+    "note": "Same Soriano feature as 532 (MiddleEasy rewrite); Soriano calls Donchenko a scary, wild young opponent and the fight is booked; new assessment of him."
+  },
+  {
+    "id": "616",
+    "centrality": "one_of_several",
+    "confidence": "medium",
+    "note": "Event announcement with Donchenko as the Ukrainian hook: main-card slot as he had asked for, how he should fight Soriano, expected walk time; shares the piece with the main event."
+  },
+  {
+    "id": "619",
+    "centrality": "one_of_several",
+    "confidence": "medium",
+    "note": "Same Sport.ua preview as 599: main-card debut, favourite status, tactical breakdown and pick; both fighters covered."
+  },
+  {
+    "id": "588",
+    "centrality": "only_mentioned",
+    "confidence": "medium",
+    "note": "Soriano feature about his setbacks and family; Donchenko gets only a record and streak line and the fact the fight is booked, nothing new about him."
+  },
+  {
+    "id": "698",
+    "centrality": "one_of_several",
+    "confidence": "medium",
+    "note": "Card predictions; his fight gets a paragraph with a fresh prediction (Soriano stops him) and an assessment of where he is as a prospect."
+  },
+  {
+    "id": "862",
+    "centrality": "one_of_several",
+    "confidence": "medium",
+    "note": "Anik reports internal UFC conversations about a Gaethje-Topuria rematch and predicts it happens; new report about his next fight, shared with Gaethje."
+  },
+  {
+    "id": "503",
+    "centrality": "one_of_several",
+    "confidence": "medium",
+    "note": "Gaethje leaves a rematch to the UFC and says Topuria will not fight until next year either; the article pairs both men's timelines for a rematch."
+  },
+  {
+    "id": "737",
+    "centrality": "one_of_several",
+    "confidence": "high",
+    "note": "Live results: round-by-round account of his fight and the result, a unanimous-decision win over Soriano; new, shared with the whole card."
+  },
+  {
+    "id": "563",
+    "centrality": "one_of_several",
+    "confidence": "medium",
+    "note": "Card predictions; his fight gets its own section with odds, an X-factor (unproven takedown defence) and a pick against him."
+  },
+  {
+    "id": "1089",
+    "centrality": "one_of_several",
+    "confidence": "medium",
+    "note": "Opens with Topuria ready to fight; White says the big talk is whether he fights Gaethje or Pimblett next; shared with Gaethje's retirement question."
+  },
+  {
+    "id": "921",
+    "centrality": "only_mentioned",
+    "confidence": "medium",
+    "note": "Pimblett's callout, with a line on the rumoured Gaethje rematch; Topuria's own part is his retold title loss, and a callout or rumour does not count."
+  },
+  {
+    "id": "641",
+    "centrality": "one_of_several",
+    "confidence": "medium",
+    "note": "Betting picks; a paragraph on his record, strike rate and a pick that he wins by finish, shared with the other card picks."
+  },
+  {
+    "id": "871",
+    "centrality": "only_mentioned",
+    "confidence": "low",
+    "note": "Pimblett callout piece; Topuria's part recaps his loss, injuries and the already-reported essay in which he broke his silence; nothing the article adds about him."
+  },
+  {
+    "id": "166",
+    "centrality": "one_of_several",
+    "confidence": "medium",
+    "note": "Méndez predicts Topuria will come back stronger, calls his boxing the best in MMA and breaks down why he lost; shared with Makhachev, Álvarez and Usman."
+  }
+]

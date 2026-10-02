@@ -4,14 +4,18 @@
 
 Every golden article with its nine answers (golden/answers/readers-v1.json),
 the readers' notes, the saved text and what classifier v6 said where it
-differs. The 59 answer-key articles come first, since every score rests on
-them; within each group, articles the readers split on or a tie-breaker
-settled come first, then those where v6 disagrees. His
-corrections are saved in the artifact's database (collection
-`corrections`, one document per article) and read back with ArtifactData;
-a copy-as-text button is the fallback. No model calls.
+differs. Step 1 (where the readers differed) is grouped by the boundary
+they differed on (boundaries.json), each group headed by its brief when
+overnight/briefs/out-<group>.json exists; the rule A recheck
+(overnight/recheck/) and the triage picks (overnight/triage/) are shown
+beside the answers they concern, as hints, never as labels. Within a
+group, articles the readers split on or a tie-breaker settled come first,
+then those where v6 disagrees. His corrections are saved in the artifact's
+database (collection `corrections`, one document per article) and read
+back with ArtifactData; a copy-as-text button is the fallback. No model calls.
 """
-import json, os, re, random
+import glob, json, os, re, random
+from boundaries import boundary_of
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 GOLDEN = os.path.join(HERE, "../../golden")
@@ -75,8 +79,40 @@ def classifier_value(question, answer):
     return answer["choice"]
 
 
+def overnight():
+    """The overnight agents' outputs, whichever exist yet.
+
+    @returns: (briefs: group → brief or None,
+               recheck: article id → reader letter → {"centrality", "confidence", "note"},
+               triage: (article id, question) → {"value": the picked answer or None, "reason", "confidence"})
+    """
+    night = os.path.join(HERE, "overnight")
+    boundaries = json.load(open(os.path.join(HERE, "boundaries.json")))
+    briefs = {}
+    for key in boundaries["order"]:
+        path = os.path.join(night, "briefs", f"out-{key}.json")
+        briefs[key] = json.load(open(path)) if os.path.exists(path) else None
+    recheck = {}
+    for path in sorted(glob.glob(os.path.join(night, "recheck", "[AB]-*.json"))):
+        letter = os.path.basename(path)[0]
+        for row in json.load(open(path)):
+            recheck.setdefault(str(row["id"]), {})[letter] = {k: row.get(k) for k in ("centrality", "confidence", "note")}
+    # a triage pick is 1, 2 or 0 (neither); the input file says which answer each number was
+    triage = {}
+    for path in sorted(glob.glob(os.path.join(night, "triage", "out-*.json"))):
+        batch = json.load(open(path.replace("out-", "in-")))
+        choices = {(str(a["id"]), c["question"]): c for a in batch for c in a["choices"]}
+        for row in json.load(open(path)):
+            c = choices.get((str(row["id"]), row["question"]))
+            if c is None: continue
+            value = {1: c["answer_1"], 2: c["answer_2"]}.get(row["pick"])
+            triage[(str(row["id"]), row["question"])] = {"value": value, "reason": row.get("reason"), "confidence": row.get("confidence")}
+    return boundaries, briefs, recheck, triage
+
+
 def main():
-    """Write correction.html from the key, the guide and v6."""
+    """Write correction.html from the key, the guide, v6 and the overnight outputs."""
+    boundaries, briefs, recheck, triage = overnight()
     key = json.load(open(os.path.join(GOLDEN, "answers/readers-v1.json")))["articles"]
     sides = json.load(open(os.path.join(GOLDEN, "split.json")))["articles"]
     articles = {str(a["id"]): a for a in json.load(open(os.path.join(GOLDEN, "articles.json")))}
@@ -89,6 +125,17 @@ def main():
             k = entry["answers"][q]
             answers[q] = {"value": k["value"], "status": k["status"], "readers": k.get("readers"),
                           "classifier": classifier_value(q, v6[article_id][q])}
+            if (article_id, q) in triage: answers[q]["hint"] = triage[(article_id, q)]
+        if article_id in recheck: answers["centrality"]["recheck"] = recheck[article_id]
+        # the boundary this article's disagreement falls on, and what the brief's recommended rule says about it
+        boundary = boundary_of(entry["answers"])
+        brief = briefs.get(boundary) if boundary else None
+        if brief:
+            # the brief recommends one rule, or one per sub-group (a list); take every recommended rule's answers
+            recommended = brief.get("recommend") if isinstance(brief.get("recommend"), list) else [brief.get("recommend")]
+            for rule in (r for r in brief.get("rules", []) if r.get("name") in recommended):
+                for q, v in (rule.get("answers", {}).get(article_id, {}) or {}).items():
+                    if q in answers: answers[q]["rule"] = v
         # why this article is worth checking first
         settled = sum(v["status"] in ("majority", "split") for v in answers.values())
         split = sum(v["status"] == "split" for v in answers.values())
@@ -96,6 +143,7 @@ def main():
         rows.append({"id": article_id, "part": entry["part"], "side": sides[article_id], "fighter": a["subject"], "title": a["title"],
                      "url": a.get("resolved_url") or a["url"], "outlet": a["source"], "date": str(a["published_at"])[:10],
                      "text": a["body"], "answers": answers, "notes": entry["notes"], "body_ruling": entry.get("body_ruling"),
+                     "boundary": boundary, "brief_line": ((brief or {}).get("per_article", {}) or {}).get(article_id),
                      "rank": (-split, -settled, -differs, int(article_id)),
                      "split": split, "settled": settled, "differs": differs})
     rows.sort(key=lambda r: r["rank"])
@@ -106,12 +154,15 @@ def main():
     agreeing = sorted(r["id"] for r in rows if r["step"] == 3)
     sample = set(random.Random(SAMPLE_SEED).sample(agreeing, min(SAMPLE, len(agreeing))))
     for r in rows: r["sample"] = r["id"] in sample
-    data = {"questions": QUESTIONS, "labels": LABELS, "defs": definitions(), "texts": question_texts(), "stems": NAME_STEMS, "articles": rows}
+    groups = {key: {"title": g["title"], "question": g["question"], "brief": briefs.get(key)} for key, g in boundaries["groups"].items()}
+    data = {"questions": QUESTIONS, "labels": LABELS, "defs": definitions(), "texts": question_texts(), "stems": NAME_STEMS,
+            "boundaries": {"order": boundaries["order"], "groups": groups}, "articles": rows}
     template = open(os.path.join(HERE, "correction-template.html")).read()
     open(os.path.join(HERE, "correction.html"), "w").write(template.replace("/*DATA*/null", json.dumps(data, ensure_ascii=False)))
     print(f"correction.html: {len(rows)} articles; steps {dict(sorted(__import__('collections').Counter(r['step'] for r in rows).items()))}; "
           f"ties anywhere {sum(1 for r in rows if r['settled'])}; "
-          f"v6 differs somewhere on {sum(1 for r in rows if r['differs'])}")
+          f"v6 differs somewhere on {sum(1 for r in rows if r['differs'])}; "
+          f"briefs {sum(1 for b in briefs.values() if b)} of {len(briefs)}, recheck on {len(recheck)} articles, triage hints {len(triage)}")
 
 
 main()

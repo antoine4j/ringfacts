@@ -1,0 +1,172 @@
+{
+  "boundary": "other",
+  "title": "Other single cases",
+  "question": "He speaks, media or fans, and other one-off splits.",
+  "subgroups": [
+    {
+      "name": "he_speaks: what counts as his words",
+      "articles": [
+        "491",
+        "823"
+      ],
+      "note": "Both tune side. #491 is made of long direct quotes; one reader's no has no reading behind it in the notes and looks like a slip. #823 is the real case: his Instagram post is paraphrased, and the only quote of his is two words recalled from after his previous win."
+    },
+    {
+      "name": "source: his words are off the page, or a fan line inside a journalist's piece",
+      "articles": [
+        "740",
+        "654"
+      ],
+      "note": "Two different source problems. #740 (test) is a video page: the caption says he talks with UFC.com after his win, but none of his words are saved; the readers went three ways. #823 (tune) carries the same doubt in its notes (the result came from his post, so 'himself' was called arguable) and is the tune-side witness. #654 (check): the only thing about him is a readers' poll figure inside a staff-picks page."
+    },
+    {
+      "name": "fact: a statement announced without its content",
+      "articles": [
+        "647"
+      ],
+      "note": "Tune side. A one-line stub: he addressed his loss in a letter to his son. Nothing of the letter is given. Readers split no_fact / personal_life, and firmness none / official_or_done with it. This is backlog rule 1 (parked by Anton on #856) in a second article."
+    }
+  ],
+  "readings": [
+    "he_speaks: yes whenever a direct quote of his stands in the saved text, however short and whenever he said it; a post or interview only mentioned or paraphrased is no.",
+    "he_speaks: yes only for words he said for this story; a two-word fragment recalled from an earlier occasion, or a paraphrased post, is no.",
+    "source: who the saved text shows speaking or acting; a video or post the text only names as where the news came from does not make him the source, so a bare result is no_one; and a fan poll quoted by a journalist is fans, because the question asks who spoke, not who published.",
+    "source: the page's nature decides; a page of his interview is himself even with no words saved (or promotion, because UFC.com states the result), and a staff-picks page is media even when the only line about him is the readers' vote.",
+    "fact: an article that says he made a statement but gives none of it carries no fact (no_fact, firmness none); a letter is a place where things are said, and nothing said is saved.",
+    "fact: writing a letter to his son about his loss is itself a life event, so personal_life, and it happened, so official_or_done."
+  ],
+  "signals": [
+    "Quotation marks or guillemets around words attributed to him (“...”, «...»): his words are on the page.",
+    "A speech verb with his name and no quote after it ('talks with UFC.com', 'reported this on Instagram', 'addressed his loss in a letter'): his words are off the page.",
+    "A recall marker before the quote ('Нагадаємо' / 'recall', 'then', 'after his previous win'): the quote is from an earlier occasion, not this story.",
+    "Video-player furniture ('This video is not available', 'Up next', 'Continue watching') making up most of the text: the page's content is a video the text does not hold.",
+    "Scores and a verdict with no speaker ('30-27, 30-27, 29-28', 'unanimous decision'): the text carries an event, source no_one.",
+    "A line labelled as readers or fans ('Readers 148-65: ... Donchenko (71%)') next to a line about the outlet's own staff ('our 11 editors'): who made the pick is written down.",
+    "The statement is named but not summarised ('addressed his loss ... in a letter') and no sentence says what it said: there is no content to classify.",
+    "Comment-policy or subscription boilerplate making up most of the saved text: a stub, whatever it is labelled."
+  ],
+  "rules": [
+    {
+      "name": "any-quote-counts",
+      "subgroup": "he_speaks: what counts as his words",
+      "text": "he_speaks is yes when a direct quote of his stands in the saved text, however short and whenever he said it. A post, letter, interview or video that the text only mentions or paraphrases, with none of his words, is no.",
+      "answers": {
+        "491": {
+          "he_speaks": "yes"
+        },
+        "823": {
+          "he_speaks": "yes"
+        },
+        "740": {
+          "he_speaks": "no"
+        },
+        "647": {
+          "he_speaks": "no"
+        },
+        "654": {
+          "he_speaks": "no"
+        }
+      },
+      "flips": 0,
+      "examples": [
+        {
+          "id": "491",
+          "why": "Long direct quotes on his camp, his French and Soriano: yes under any reading; the one no has no reading behind it."
+        },
+        {
+          "id": "823",
+          "why": "His post is paraphrased, but two of his words stand in guillemets («хороші друзі»), recalled from after his last win: yes by the letter of the question."
+        }
+      ]
+    },
+    {
+      "name": "words-on-the-page",
+      "subgroup": "source: his words are off the page, or a fan line inside a journalist's piece",
+      "text": "Source is who the saved text shows speaking or acting. A post, interview or video that the text only names as where the news came from, or as the page's content, without giving his words, does not make him the source: answer for what the text carries (a bare result is no_one, act reports_an_event). Where his speaking is itself the news (he addressed his loss in a letter), he is the source even without a quote.",
+      "answers": {
+        "740": {
+          "source": "no_one",
+          "act": "reports_an_event"
+        },
+        "823": {
+          "source": "no_one",
+          "act": "reports_an_event"
+        },
+        "647": {
+          "source": "himself",
+          "act": "speaks_of_himself"
+        }
+      },
+      "flips": 0,
+      "examples": [
+        {
+          "id": "823",
+          "why": "The text carries the result with scores; his Instagram post is only where the outlet got it, and his callout is a wish: no_one, as the readers agreed."
+        },
+        {
+          "id": "647",
+          "why": "The contrast: the whole news is that he spoke (a letter about his loss), so himself even though none of the letter is saved."
+        }
+      ]
+    },
+    {
+      "name": "who-spoke-not-who-published",
+      "subgroup": "source: his words are off the page, or a fan line inside a journalist's piece",
+      "text": "Source is who made the words or the pick, not who published them. A fan poll, reader vote or fan post quoted inside a journalist's piece is fans; the journalist's own pick, analysis or report is media. When the saved text holds only the fan figure about him, source is fans and act predicts_his_fight.",
+      "answers": {
+        "654": {
+          "source": "fans",
+          "act": "predicts_his_fight"
+        }
+      },
+      "flips": 0,
+      "examples": [
+        {
+          "id": "654",
+          "why": "The only line about him is 'Readers 148-65: ... Donchenko (71%)'; the staff's own picks are cut off after 'Here are the results:'."
+        }
+      ]
+    },
+    {
+      "name": "no-content-no-fact",
+      "subgroup": "fact: a statement announced without its content",
+      "text": "When the article says he made a statement, post or letter but gives none of what it said, fact is no_fact and firmness none: a statement is a place where things are said, and nothing said is saved. The yes/no news questions are no.",
+      "answers": {
+        "647": {
+          "fact": "no_fact",
+          "firmness": "none",
+          "reports_his_result": "no",
+          "reports_his_next_fight": "no",
+          "reports_his_health": "no",
+          "he_speaks": "no"
+        }
+      },
+      "flips": 0,
+      "examples": [
+        {
+          "id": "647",
+          "why": "One deck line, 'addressed his loss ... in a letter penned to his son', then comment-policy boilerplate; what the letter said is not on the page."
+        }
+      ]
+    }
+  ],
+  "recommend": [
+    "any-quote-counts",
+    "words-on-the-page",
+    "who-spoke-not-who-published",
+    "no-content-no-fact"
+  ],
+  "why": "All four write down the readers' majorities, so they cost no relabels; what they buy is a line the next reader can apply without judgement. The cost of any-quote-counts is that two recalled words make a yes, so he_speaks says nothing about whether he is the source (#823 is yes with source no_one); the stricter 'fresh words only' reading would flip #823 to no and would need a recall marker in the text each time. words-on-the-page settles a video page as no_one, which drops the only signal the page has (that it is his interview); the backlog's rule 4 flag for unsaved content still applies to such pages. no-content-no-fact is backlog rule 1, which Anton parked on #856; adopting it here un-parks it, and it leaves #647 with source himself and he_speaks no, the pair the classifier's rule 2 would break on.",
+  "per_article": {
+    "491": "Direct quotes throughout, so he_speaks yes; nothing else was disputed.",
+    "823": "Two quoted words of his stand in the text, so he_speaks yes; the result with scores is the news and his post is only the channel, so source no_one, act reports_an_event.",
+    "654": "Only the readers' poll figure is about him, so source fans; the staff picks are not in the saved text.",
+    "740": "The caption names his interview but holds none of his words, so he_speaks no and the text carries only the result: source no_one, act reports_an_event; UFC.com stating its own result is still an event, not a promotion statement (unsure: a case for promotion exists).",
+    "647": "He is named as having spoken, so source himself and act speaks_of_himself, but none of the letter is saved: he_speaks no, fact no_fact, firmness none."
+  },
+  "unsure": [
+    "#740: source no_one over promotion. UFC.com is both the outlet and the promotion; the guide's 'official records' could cover a UFC.com result caption. Treated the same as #823 (an outlet relaying a result) for consistency.",
+    "#491's lone no on he_speaks: no reader note supports it, so it is read as a slip rather than a boundary.",
+    "The he_speaks recommendation follows the guide's literal wording; the stricter reading may serve the product better if he_speaks is meant to flag articles where he says something new."
+  ]
+}

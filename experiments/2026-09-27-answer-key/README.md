@@ -103,11 +103,54 @@ and `build_labels.py` merges both into `golden/answers/readers-v1.json`.
 - Tokens on the subscription: about 4.3 million for all readers and
   tie-breakers (0.88 M for the key, 3.46 M for the rest).
 
+## Overnight re-reads, to cut the review down (2026-10-02)
+
+Three unattended jobs on the subscription (23 Fable agents, about 2.9 M
+tokens, no JEV), inputs and outputs under `overnight/`. All three produce
+hints for Anton's review, never labels; nothing in `readers-v1.json` changed.
+
+- **Boundary briefs** (`briefs/out-<group>.json`, one per group in
+  `boundaries.json`): the 75 articles where the readers differed, grouped
+  by the judgement they split on; for each group, the ways to read the
+  question, the signals in the text, and 2–3 candidate rules with the
+  answer each gives per article, formed from tune/check articles only.
+  Recommended rules and how many disputed majorities they would change:
+  next fight "own news" 16 of 30 (and it would overturn 9 unanimous
+  "yes" answers on Paris fight previews); camp "reported as news" 3 of 7;
+  health "someone named says how he is" 2 of 6; result "lead clause"
+  2 of 5; act "firm and aimed at him" 1 of 8; firmness "done is done"
+  1 of 4; centrality "whose news" 0 of 10; other 0 of 5. Thin evidence
+  on the small groups: act and firmness each rest on two non-test
+  articles.
+- **Rule A recheck** (`recheck/A-n.json`, `B-n.json`): two blind readers
+  re-answered centrality on the 59 articles labelled "one of several"
+  before rule A existed. **They agree on 57 of 59; both move 9 to "only
+  mentioned"** (#34, #342, #588, #820, #843, #856, #871, #892, #921: the
+  guide's own #856 example, two roundups, and the Pimblett call-out
+  pieces); the two splits are #423 and #525, both call-outs.
+- **Triage** (`triage/out-n.json`): a third blind reader chose between
+  the readers' answer and classifier v6's on the 321 answers where they
+  differ, without knowing which was which. **277 sided with the readers,
+  44 with the classifier**, none "neither"; 64 low confidence. By
+  question the classifier is backed most on fact (13 of 55) and firmness
+  (9 of 58), least on health, result and he speaks (2 of 51). Read as:
+  the labels are mostly right where the classifier differs, and the 44
+  are the first answers to check in step 2.
+
+The correction page shows all of it: step 1 grouped by boundary with the
+brief on top and a one-line "brief:" verdict per card, the two rechecks
+under "how central" (flagged when rule A may change it), and the triage
+pick under each answer the classifier disputes. One brief contradicts a
+settled ruling (#740 source: it suggests no one; Anton ruled himself):
+the ruling stands.
+
 ## Next
 
 1. Anton corrects the key (the correction page), starting with the 2 split
    answers and the 18 settled by the tie-breaker; `build_key.py` then
    `score.py` rescore v4–v6.
 2. If the scores hold: passes 2–4 of v6 for stability (about $0.19).
-3. The correction page carries all 300; after the key, the 78 articles
-   where the readers differed anywhere are the next most useful to check.
+3. The correction page carries all 300; after the key, the 75 articles
+   where the readers differed anywhere are the next most useful to check,
+   now grouped by boundary so each rule is decided once. The 9 rule A
+   moves and the 44 triage picks for the classifier are the shortest list.

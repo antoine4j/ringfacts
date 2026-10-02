@@ -1,0 +1,152 @@
+[
+  {
+    "id": "555",
+    "centrality": "one_of_several",
+    "confidence": "high",
+    "note": "Writer's pick in a five-fight card preview: Soriano by decision, with Donchenko's untested takedown defence named as the X-factor."
+  },
+  {
+    "id": "623",
+    "centrality": "one_of_several",
+    "confidence": "medium",
+    "note": "Full-card preview gives his bout a short section with a new verdict: odds are perplexing, he fights from behind unless he blasts through Soriano."
+  },
+  {
+    "id": "283",
+    "centrality": "one_of_several",
+    "confidence": "medium",
+    "note": "Pimblett's new words about him: would terrorize him, respects him but has years of beef, wants the fight; shared with Tsarukyan as the second target."
+  },
+  {
+    "id": "228",
+    "centrality": "one_of_several",
+    "confidence": "medium",
+    "note": "Makhachev's account that he accepted a White House fight with Topuria and it collapsed over Topuria's money demands; shared with Makhachev's own win and record."
+  },
+  {
+    "id": "653",
+    "centrality": "one_of_several",
+    "confidence": "low",
+    "note": "Headline only (body is page furniture): his ceremonial weigh-in faceoff with Soriano; judged on that one line of article text."
+  },
+  {
+    "id": "594",
+    "centrality": "one_of_several",
+    "confidence": "high",
+    "note": "Dedicated two-fighter preview with a new pick: Donchenko by competitive decision, over 1.5 rounds."
+  },
+  {
+    "id": "838",
+    "centrality": "one_of_several",
+    "confidence": "medium",
+    "note": "New about him: Pimblett says no one has offered him the Topuria fight, and Anik says the UFC is internally discussing Gaethje-Topuria 2."
+  },
+  {
+    "id": "605",
+    "centrality": "one_of_several",
+    "confidence": "medium",
+    "note": "Short announcement that he meets Soriano on 5 September in Paris; both fighters get a line of framing."
+  },
+  {
+    "id": "673",
+    "centrality": "one_of_several",
+    "confidence": "high",
+    "note": "Dedicated two-fighter breakdown with a new pick: Soriano by knockout in round two, plus walkout time."
+  },
+  {
+    "id": "688",
+    "centrality": "one_of_several",
+    "confidence": "medium",
+    "note": "Where-and-when-to-watch piece for his fight tonight (time, broadcaster, card); shared with Soriano."
+  },
+  {
+    "id": "798",
+    "centrality": "one_of_several",
+    "confidence": "high",
+    "note": "UFC reportedly in internal talks about an immediate Gaethje-Topuria rematch, plus his recent message to his son; shared with Gaethje's own preferences."
+  },
+  {
+    "id": "462",
+    "centrality": "one_of_several",
+    "confidence": "medium",
+    "note": "Gaethje's own news (out until 2027) tied to their fight: he rejects an immediate rematch and says Topuria is probably recovering and out until next year too."
+  },
+  {
+    "id": "608",
+    "centrality": "one_of_several",
+    "confidence": "high",
+    "note": "Dedicated two-fighter preview with a new prediction: body kicks and early pace win it for him, though the odds overrate him."
+  },
+  {
+    "id": "714",
+    "centrality": "one_of_several",
+    "confidence": "medium",
+    "note": "Event results roundup: his unanimous-decision win over Soriano described round by round, and his callout of Daniel Rodriguez."
+  },
+  {
+    "id": "807",
+    "centrality": "one_of_several",
+    "confidence": "high",
+    "note": "Anik says the UFC is weighing a direct rematch path back to the belt for him, with Tsarukyan as the alternative; shared with Gaethje's timeline."
+  },
+  {
+    "id": "977",
+    "centrality": "one_of_several",
+    "confidence": "medium",
+    "note": "Gaethje's own 2026 plans, plus a new section where he blames Topuria's preparation for the loss and a line that Topuria has confirmed he is ready to return."
+  },
+  {
+    "id": "828",
+    "centrality": "one_of_several",
+    "confidence": "high",
+    "note": "Anik says UFC brass are strongly considering Gaethje-Topuria 2 and sees a Pimblett fight as the obvious alternative; shared with Gaethje's McGregor and retirement talk."
+  },
+  {
+    "id": "492",
+    "centrality": "one_of_several",
+    "confidence": "low",
+    "note": "Long Gaethje transcript; the only new bit about him is Gaethje's gut that a rematch is not next and that Topuria is probably recovering until next year."
+  },
+  {
+    "id": "516",
+    "centrality": "one_of_several",
+    "confidence": "high",
+    "note": "Tsarukyan predicts the UFC will not book Topuria-Pimblett and will give Topuria an easy opponent instead; the piece is about that pairing."
+  },
+  {
+    "id": "687",
+    "centrality": "one_of_several",
+    "confidence": "medium",
+    "note": "Same watch page as 688: his fight tonight, time and broadcaster; shared with Soriano."
+  },
+  {
+    "id": "529",
+    "centrality": "one_of_several",
+    "confidence": "medium",
+    "note": "Soriano feature tied to their booked fight: Soriano's new assessment of him as a scary, wild, young opponent who drove his camp."
+  },
+  {
+    "id": "887",
+    "centrality": "one_of_several",
+    "confidence": "high",
+    "note": "Hokit's new statement that Topuria does not deserve a title shot next, plus Anik's rematch talk; shared with Pereira."
+  },
+  {
+    "id": "34",
+    "centrality": "only_mentioned",
+    "confidence": "medium",
+    "note": "Abdelaziz wants Topuria as Usman's first UFC fight and says Usman would make him quit; a callout inside a list of five UFC names in a piece about Usman."
+  },
+  {
+    "id": "889",
+    "centrality": "one_of_several",
+    "confidence": "high",
+    "note": "His callout of Rodriguez after UFC Paris and Rodriguez's middle-finger reply; the article is about the two of them."
+  },
+  {
+    "id": "269",
+    "centrality": "one_of_several",
+    "confidence": "medium",
+    "note": "Tsarukyan's new proposed path for him: still recovering, Chandler next, then a title shot; shared with Tsarukyan's own title claims."
+  }
+]

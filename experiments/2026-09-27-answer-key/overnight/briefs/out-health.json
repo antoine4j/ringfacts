@@ -1,0 +1,173 @@
+{
+  "boundary": "health",
+  "title": "Health: news, or background?",
+  "question": "Is an injury or a recovery the article's news, or old news retold?",
+  "input_note": "6 articles: 4 tune (627, 892, 998, 1020), 2 test (723, 856), no check side. All six split on reports_his_health; 723 and 856 also split on fact and firmness; 856 also on centrality (settled by rule A, not by this boundary).",
+  "readings": [
+    "Main-news reading: health is yes only when the injury or recovery is what the article is about, so health yes goes with fact = health and nothing else.",
+    "Any-status reading: health is yes whenever the text says how he is now (recovering, recovered, needed no surgery, out until a date), even in one aside line, whoever says it.",
+    "Who-says-it reading: health is yes when someone named in the article (he, his team, the UFC, a named outlet) states his condition or a change in it; the writer's own recap or gloss is background."
+  ],
+  "signals": [
+    "Who says the health line: a named source ('MMA Fighting reports', 'Topuria wrote on his website', Dana White) or the writer's own voice ('parece que esta recuperado', 'todo apunta a 2027').",
+    "What the line says: a change in his state (no surgery needed, cleared, recovered, out until a date) or just the list of injuries from the fight.",
+    "Tense and anchor: tied to the past fight ('suffered in the bout', 'the fight that ended with him fracturing...') or about now ('is recovering', 'did not require surgery').",
+    "Recall markers: 'cabe recordar', 'as a reminder', or a relative clause hanging off another subject ('Topuria, que ... se encuentra recuperando'). These flag the writer retelling, not reporting.",
+    "Grammar: the health line is its own sentence, or a clause inside a sentence about something else (a callout, a roundup of other fighters, the timing of a return).",
+    "Position: headline or lead, or a mid or late paragraph after the real news.",
+    "Readiness words only: 'ready to fight', 'back when he feels ready', 'out until 2027'. The guide already says these are a timeline (next fight), not health."
+  ],
+  "rules": [
+    {
+      "name": "A. Main news only",
+      "text": "reports_his_health is yes only when the injury, procedure or recovery is the article's main news about him, so fact is health. A health line beside other news (a letter, a callout, a readiness announcement) is background: no.",
+      "answers": {
+        "627": {
+          "reports_his_health": "no"
+        },
+        "723": {
+          "reports_his_health": "yes",
+          "fact": "health",
+          "firmness": "official_or_done"
+        },
+        "856": {
+          "reports_his_health": "no",
+          "fact": "no_fact",
+          "firmness": "none",
+          "centrality": "only_mentioned"
+        },
+        "892": {
+          "reports_his_health": "no"
+        },
+        "998": {
+          "reports_his_health": "no"
+        },
+        "1020": {
+          "reports_his_health": "no"
+        }
+      },
+      "flips": 3,
+      "examples": [
+        {
+          "id": "627",
+          "why": "The news is his video letter to his son (fact personal_life); the 'no surgery' line is a relayed aside, so no."
+        },
+        {
+          "id": "998",
+          "why": "The news is White's 'ready to fight' (fact next_fight); 'recovered' is the writer's gloss on it, so no."
+        },
+        {
+          "id": "892",
+          "why": "The news is Pimblett's callout; the eye-injury recovery is a 'cabe recordar' clause, so no."
+        }
+      ]
+    },
+    {
+      "name": "B. Current state, own sentence",
+      "text": "reports_his_health is yes when the article states his condition now or a change in it (recovering, recovered, cleared, needed no surgery) in a sentence of its own, whoever says it. It is no when the injury appears only inside a clause recalling the fight it came from, or when the line only says when he will be ready.",
+      "answers": {
+        "627": {
+          "reports_his_health": "yes"
+        },
+        "723": {
+          "reports_his_health": "no",
+          "fact": "no_fact",
+          "firmness": "none"
+        },
+        "856": {
+          "reports_his_health": "no",
+          "fact": "no_fact",
+          "firmness": "none",
+          "centrality": "only_mentioned"
+        },
+        "892": {
+          "reports_his_health": "no"
+        },
+        "998": {
+          "reports_his_health": "yes"
+        },
+        "1020": {
+          "reports_his_health": "yes"
+        }
+      },
+      "flips": 1,
+      "examples": [
+        {
+          "id": "627",
+          "why": "'MMA Fighting reports that Topuria ... did not require surgery' is its own sentence and a change in state, so yes."
+        },
+        {
+          "id": "1020",
+          "why": "'Ilia Topuria esta completando las recuperaciones de sus fracturas...' is its own sentence about his state now, so yes."
+        },
+        {
+          "id": "892",
+          "why": "'que, cabe recordar, se encuentra recuperando' is a recall clause inside the callout sentence, so no."
+        },
+        {
+          "id": "998",
+          "why": "'parece que el Matador esta recuperado' is its own sentence about his state, so yes, even though it is the writer's inference from 'ready'."
+        }
+      ]
+    },
+    {
+      "name": "C. Someone named says how he is",
+      "text": "reports_his_health is yes when someone the article names (he himself, his team, the promotion, a named outlet or journalist) states his injury, procedure, condition or a change in it, as a statement of its own. The writer's own recap or inference ('he seems recovered', 'he is finishing recovery', 'cabe recordar'), an injury recalled inside a sentence about the fight it came from, and a line that only says when he will be ready are all no.",
+      "answers": {
+        "627": {
+          "reports_his_health": "yes"
+        },
+        "723": {
+          "reports_his_health": "yes",
+          "fact": "health",
+          "firmness": "official_or_done"
+        },
+        "856": {
+          "reports_his_health": "no",
+          "fact": "no_fact",
+          "firmness": "none",
+          "centrality": "only_mentioned"
+        },
+        "892": {
+          "reports_his_health": "no"
+        },
+        "998": {
+          "reports_his_health": "no"
+        },
+        "1020": {
+          "reports_his_health": "no"
+        }
+      },
+      "flips": 2,
+      "examples": [
+        {
+          "id": "627",
+          "why": "A named outlet (MMA Fighting) states a change: extensive facial injuries, no surgery needed. Yes, beside the letter."
+        },
+        {
+          "id": "998",
+          "why": "The only named speaker is White, and he says 'ready to fight', not how Topuria is; 'recuperado' is the writer's inference. No (next fight stays yes)."
+        },
+        {
+          "id": "1020",
+          "why": "'Esta completando las recuperaciones de sus fracturas' has no source; it is the writer's reason for a 2027 date. No."
+        },
+        {
+          "id": "892",
+          "why": "The recovery line is the writer's 'cabe recordar' aside inside Pimblett's callout. No."
+        }
+      ]
+    }
+  ],
+  "flips_note": "flips counts input articles (all six) whose majority reader answer changes on any disputed question. 723 and 856 are test side and are counted but never cited.",
+  "recommend": "C. Someone named says how he is",
+  "why": "Attribution is visible in the text, so a reader with no backstory can apply it: look for who says the health line. It keeps the guide's existing 'only says when he will be ready' carve-out, which is exactly what splits 998 and 1020, where the one named speaker (White) talks about readiness and the recovery wording is the writer's. It costs two things: an outlet reporting a real recovery update in its own voice with no source named gets no (1020's three-fracture status line is lost as health news, though next_fight still carries the return), and a relayed one-liner from a named outlet gets yes even when it is secondary to the real story (627). Rule B has fewer flips but makes a writer's inference from 'ready' into health news (998), which the guide already rules out.",
+  "per_article": {
+    "627": "MMA Fighting (named) reports he needed no surgery, in its own sentence. Health yes. Fact stays personal_life (the letter); 'medically cleared' is readiness, not the deciding line.",
+    "723": "He himself writes 'both orbital bones fractured, my septum broken, and my foot broken'. Named source, his own statement. Health yes; fact health, firmness official_or_done. Test side.",
+    "856": "The fractures and 'out until 2027' sit in the writer's recall of the Gaethje fight inside a roundup of other fighters; no source, and 2027 is readiness. Health no, fact no_fact, firmness none; centrality only_mentioned by rule A. Test side.",
+    "892": "The writer's 'cabe recordar, se encuentra recuperando' clause inside Pimblett's callout. No one named states his condition. Health no.",
+    "998": "White says 'listo para pelear', which is readiness (next fight yes). 'Esta recuperado' is the writer's inference. Health no (flips the majority yes).",
+    "1020": "White says ready; 'esta completando las recuperaciones' is the writer's unsourced status line used to argue for 2027. Health no (flips the majority yes)."
+  }
+}

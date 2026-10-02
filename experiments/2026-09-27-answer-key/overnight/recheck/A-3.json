@@ -1,0 +1,11 @@
+[
+  {"id": "983", "centrality": "one_of_several", "confidence": "medium", "note": "Fight already fought and being discussed: Gaethje gives a new analysis of Topuria's footwork flaw and rules out a 2026 rematch; the other half is Gaethje's own recovery."},
+  {"id": "709", "centrality": "one_of_several", "confidence": "high", "note": "Preview of his fight covering both men: new is the writer's pick (Donchenko by finish) and the odds; Soriano gets his own paragraph."},
+  {"id": "625", "centrality": "one_of_several", "confidence": "medium", "note": "Both fighters made weight at 77.11 kg, a shared new fact; the body then gives his walkout time and recaps his year. Leans his way, but the news is the pair's weigh-in."},
+  {"id": "692", "centrality": "one_of_several", "confidence": "medium", "note": "Card-wide roundup, but his section is a real preview with a new pick (Soriano by KO) and a fresh assessment of him; not just a recap."},
+  {"id": "603", "centrality": "one_of_several", "confidence": "high", "note": "Betting preview of his fight: new is the tipster's verdict that the step up is too big for him and the pick for Soriano; Soriano gets as much or more space."},
+  {"id": "423", "centrality": "one_of_several", "confidence": "low", "note": "Rivalry piece: new is Pimblett's fresh callout and insult aimed at him; his own status (loss, recovery) is retold. The guide says a callout does not tie him in, which could pull this to only_mentioned."},
+  {"id": "681", "centrality": "one_of_several", "confidence": "high", "note": "Preview of his fight: new is Dan Tom's pick for Soriano by KO in round 2 and the critique of his southpaw defence; Soriano is covered equally."},
+  {"id": "690", "centrality": "one_of_several", "confidence": "medium", "note": "Feature on his fight written around him: new is the outlet's assessment, odds and game plan for him, but Soriano gets several paragraphs of his own. Leans toward main_subject."},
+  {"id": "525", "centrality": "one_of_several", "confidence": "low", "note": "Tsarukyan's story, but it carries new content about him: Tsarukyan predicts Topuria will be his first title defence and that the UFC will book him an easy fight. No fight between them is set, so this is borderline with only_mentioned."}
+]

@@ -1,0 +1,624 @@
+{
+ "boundary": "next_fight",
+ "title": "Next fight: news, or background?",
+ "question": "Is a booked fight, a return date or someone's guess about his next fight the article's news, or context?",
+ "readings": [
+  "Stated means reported: if the text anywhere names his next opponent, a date, a return timeline or talks, the article 'reports' his next fight, so the yes/no answer is yes and the booking or rumour is the fact.",
+  "New means reported: only what the article itself tells you changed about his next fight counts; a booking restated before a pick, a rumour recalled beside someone's advice, or a guess at his timing is context, so no and no_fact.",
+  "The split, which most majorities actually are: fact follows reading 2 (a pick or advice is no_fact) while the yes/no question follows reading 1 (opponent and date are stated, so yes). That is the no_fact-plus-yes pair the owner's consequence rule forbids; 14 of the 30 majorities are this pair, not a real disagreement about the article."
+ ],
+ "signals": [
+  "Fixture furniture around the fight: odds, a pick, a card list, a walkout or start time, a broadcaster, a weigh-in, a face-off. Where these frame the fight, the fight is the premise and the pick or the routine is the news.",
+  "Verbs of a fixture against verbs of a change: 'meets/takes on/faces Saturday', 'is set to', 'prepares to take on' against 'announced', 'booked', 'signed', 'offered', 'revealed', 'according to a report'.",
+  "Where it sits and what the headline names: the next-fight item as the subject of the headline and first paragraph ('Shoots Down ... December Fight Rumor') against one sentence mid-body or a closing line beside an opinion ('Warns', 'claims ... risk', 'pushes for', a callout quote).",
+  "Recall markers: 'recently said', 'recently indicated', 'reports have suggested', 'rumors have surfaced', 'as X first reported', 'growing chatter', 'mounting speculation'. The article is recalling something, not reporting it.",
+  "Hedge words of a guess: 'probably', 'I guess', 'in my gut', 'expected back', 'todo apunta', 'puras especulaciones', 'non-informed speculation'. A hedged timeline is an opinion about timing, not a date.",
+  "Who speaks and about whom: the promotion or he himself (official), his coach or an opponent giving a fact (reported), unnamed 'internal conversations' (rumour), a pundit or another fighter on what he should do (opinion). An opponent's own schedule ('I won't fight this year') is that fighter's next fight, not his.",
+  "A denial: the quoted person says no talks exist ('No one's spoke to me', 'nothing yet'). The same quote appears in five articles; it is news only where the rumour it denies is the article's subject.",
+  "Dates against the publish date: an offer or booking for a card that has already been fought is a past event, not his next fight."
+ ],
+ "rules": [
+  {
+   "name": "stated_counts",
+   "text": "If the article's own text states his next opponent, a date, a return timeline, an offer or talks about his next fight, answer reports_his_next_fight yes, even when it is a booking restated before a pick, a rumour relayed in one line, or someone's guess. Where no other fact is the article's main news, fact is next_fight at the firmness of that statement (official_or_done for a set fight or a promotion statement, reported for a named person's timeline, rumour for talks or chatter); a bare wish or callout with nothing behind it stays no.",
+   "answers": {
+    "228": {
+     "fact": "none_of_these"
+    },
+    "361": {
+     "reports_his_next_fight": "yes"
+    },
+    "462": {
+     "fact": "next_fight",
+     "reports_his_next_fight": "yes",
+     "reports_his_health": "no"
+    },
+    "500": {
+     "reports_his_next_fight": "yes"
+    },
+    "503": {
+     "fact": "next_fight",
+     "firmness": "reported",
+     "reports_his_next_fight": "yes"
+    },
+    "608": {
+     "fact": "next_fight",
+     "firmness": "official_or_done"
+    },
+    "609": {
+     "fact": "next_fight",
+     "firmness": "official_or_done"
+    },
+    "614": {
+     "reports_his_next_fight": "yes"
+    },
+    "616": {
+     "fact": "next_fight"
+    },
+    "619": {
+     "fact": "next_fight",
+     "firmness": "official_or_done",
+     "reports_his_next_fight": "yes"
+    },
+    "641": {
+     "fact": "next_fight",
+     "firmness": "official_or_done"
+    },
+    "672": {
+     "fact": "next_fight",
+     "firmness": "official_or_done"
+    },
+    "673": {
+     "fact": "next_fight",
+     "firmness": "official_or_done"
+    },
+    "681": {
+     "fact": "next_fight",
+     "firmness": "official_or_done"
+    },
+    "686": {
+     "reports_his_next_fight": "yes"
+    },
+    "692": {
+     "fact": "next_fight",
+     "firmness": "official_or_done",
+     "reports_his_next_fight": "yes"
+    },
+    "709": {
+     "fact": "next_fight",
+     "firmness": "official_or_done"
+    },
+    "820": {
+     "fact": "next_fight",
+     "firmness": "rumour",
+     "reports_his_next_fight": "yes"
+    },
+    "843": {
+     "fact": "next_fight",
+     "firmness": "rumour",
+     "reports_his_next_fight": "yes"
+    },
+    "871": {
+     "fact": "next_fight",
+     "firmness": "rumour",
+     "reports_his_next_fight": "yes"
+    },
+    "887": {
+     "fact": "next_fight",
+     "firmness": "rumour",
+     "reports_his_next_fight": "yes"
+    },
+    "901": {
+     "fact": "next_fight",
+     "firmness": "rumour",
+     "reports_his_next_fight": "yes"
+    },
+    "905": {
+     "fact": "next_fight",
+     "firmness": "rumour"
+    },
+    "913": {
+     "fact": "next_fight",
+     "firmness": "rumour",
+     "reports_his_next_fight": "yes"
+    },
+    "921": {
+     "reports_his_next_fight": "yes"
+    },
+    "926": {
+     "reports_his_next_fight": "yes"
+    },
+    "983": {
+     "fact": "next_fight",
+     "firmness": "reported",
+     "reports_his_next_fight": "yes"
+    },
+    "1002": {
+     "fact": "next_fight",
+     "firmness": "rumour",
+     "reports_his_next_fight": "yes",
+     "reports_his_health": "no"
+    },
+    "1016": {
+     "fact": "next_fight",
+     "firmness": "rumour",
+     "reports_his_next_fight": "yes"
+    },
+    "1097": {
+     "fact": "next_fight",
+     "firmness": "official_or_done",
+     "reports_his_next_fight": "yes"
+    }
+   },
+   "flips": 16,
+   "flipped_ids": [
+    "462",
+    "608",
+    "614",
+    "616",
+    "619",
+    "672",
+    "673",
+    "681",
+    "709",
+    "843",
+    "887",
+    "905",
+    "913",
+    "983",
+    "1016",
+    "1097"
+   ],
+   "also_overturns_agreed": {
+    "500": {
+     "fact": "next_fight"
+    },
+    "921": {
+     "fact": "next_fight"
+    },
+    "926": {
+     "fact": "next_fight"
+    }
+   },
+   "examples": [
+    {
+     "id": "608",
+     "why": "A preview states opponent, date and walkout time, so the booking is the fact: next_fight, official_or_done."
+    },
+    {
+     "id": "843",
+     "why": "Pimblett's own return plans, but 'growing chatter' of a Gaethje rematch is stated, so next_fight, rumour, yes."
+    },
+    {
+     "id": "983",
+     "why": "Gaethje's 'not this year' becomes a timeline for the rematch: next_fight, reported, yes."
+    },
+    {
+     "id": "672",
+     "why": "A pre-fight interview restates the Saturday booking, so next_fight, official_or_done."
+    }
+   ]
+  },
+  {
+   "name": "own_news",
+   "text": "Answer reports_his_next_fight yes only when a change to his next fight (booked, announced, offered, in talks, cancelled, a rumour denied, or a return date given by him, his side or the promotion) is what the article reports: the subject of its headline or first paragraph, or presented as the article's own new information. A fight restated as the premise of a preview, pick, weigh-in, face-off or card list ('meets Saturday', odds, walkout time), a rumour or 'reports suggest' line recalled beside someone's opinion about what he should do, and anyone's guess at his timing ('probably', 'I guess', 'expected') are context: no, and fact no_fact unless another fact is the news.",
+   "answers": {
+    "228": {
+     "fact": "none_of_these"
+    },
+    "361": {
+     "reports_his_next_fight": "no"
+    },
+    "462": {
+     "fact": "no_fact",
+     "reports_his_next_fight": "no",
+     "reports_his_health": "no"
+    },
+    "500": {
+     "reports_his_next_fight": "no"
+    },
+    "503": {
+     "fact": "no_fact",
+     "firmness": "none",
+     "reports_his_next_fight": "no"
+    },
+    "608": {
+     "fact": "no_fact",
+     "firmness": "none"
+    },
+    "609": {
+     "fact": "no_fact",
+     "firmness": "none"
+    },
+    "614": {
+     "reports_his_next_fight": "no"
+    },
+    "616": {
+     "fact": "fight_week_event"
+    },
+    "619": {
+     "fact": "no_fact",
+     "firmness": "none",
+     "reports_his_next_fight": "no"
+    },
+    "641": {
+     "fact": "no_fact",
+     "firmness": "none"
+    },
+    "672": {
+     "fact": "no_fact",
+     "firmness": "none"
+    },
+    "673": {
+     "fact": "no_fact",
+     "firmness": "none"
+    },
+    "681": {
+     "fact": "no_fact",
+     "firmness": "none"
+    },
+    "686": {
+     "reports_his_next_fight": "no"
+    },
+    "692": {
+     "fact": "no_fact",
+     "firmness": "none",
+     "reports_his_next_fight": "no"
+    },
+    "709": {
+     "fact": "no_fact",
+     "firmness": "none"
+    },
+    "820": {
+     "fact": "next_fight",
+     "firmness": "rumour",
+     "reports_his_next_fight": "yes"
+    },
+    "843": {
+     "fact": "no_fact",
+     "firmness": "none",
+     "reports_his_next_fight": "no"
+    },
+    "871": {
+     "fact": "next_fight",
+     "firmness": "rumour",
+     "reports_his_next_fight": "yes"
+    },
+    "887": {
+     "fact": "no_fact",
+     "firmness": "none",
+     "reports_his_next_fight": "no"
+    },
+    "901": {
+     "fact": "no_fact",
+     "firmness": "none",
+     "reports_his_next_fight": "no"
+    },
+    "905": {
+     "fact": "no_fact",
+     "firmness": "none"
+    },
+    "913": {
+     "fact": "no_fact",
+     "firmness": "none",
+     "reports_his_next_fight": "no"
+    },
+    "921": {
+     "reports_his_next_fight": "no"
+    },
+    "926": {
+     "reports_his_next_fight": "no"
+    },
+    "983": {
+     "fact": "no_fact",
+     "firmness": "none",
+     "reports_his_next_fight": "no"
+    },
+    "1002": {
+     "fact": "no_fact",
+     "firmness": "none",
+     "reports_his_next_fight": "no",
+     "reports_his_health": "no"
+    },
+    "1016": {
+     "fact": "no_fact",
+     "firmness": "none",
+     "reports_his_next_fight": "no"
+    },
+    "1097": {
+     "fact": "no_fact",
+     "firmness": "none",
+     "reports_his_next_fight": "no"
+    }
+   },
+   "flips": 16,
+   "flipped_ids": [
+    "361",
+    "500",
+    "503",
+    "609",
+    "641",
+    "686",
+    "692",
+    "843",
+    "887",
+    "901",
+    "913",
+    "921",
+    "926",
+    "1002",
+    "1016",
+    "1097"
+   ],
+   "also_overturns_agreed": {
+    "608": {
+     "reports_his_next_fight": "no"
+    },
+    "609": {
+     "reports_his_next_fight": "no"
+    },
+    "616": {
+     "reports_his_next_fight": "no"
+    },
+    "641": {
+     "reports_his_next_fight": "no"
+    },
+    "672": {
+     "reports_his_next_fight": "no"
+    },
+    "673": {
+     "reports_his_next_fight": "no"
+    },
+    "681": {
+     "reports_his_next_fight": "no"
+    },
+    "709": {
+     "reports_his_next_fight": "no"
+    },
+    "905": {
+     "reports_his_next_fight": "no"
+    }
+   },
+   "examples": [
+    {
+     "id": "608",
+     "why": "Card, odds, walkout time and a pick: the fight is the premise, the pick is the news, so no_fact and no."
+    },
+    {
+     "id": "820",
+     "why": "Headline and lead are the December rumour and its denial: the state of his next fight is the subject, so next_fight, rumour, yes."
+    },
+    {
+     "id": "926",
+     "why": "Rogan's advice; Anik's 'internal conversations', which he himself calls 'non-informed speculation', is a recalled line, so no."
+    },
+    {
+     "id": "361",
+     "why": "The outlet derives a 2027 return from a six-month suspension and calls it speculation: a guess, so no; the health update stays the fact."
+    }
+   ]
+  },
+  {
+   "name": "booking_is_fact",
+   "text": "Answer reports_his_next_fight yes whenever the article states a fight of his as set (opponent and date, a card slot) or quotes him or the promotion on his return, wherever it sits, a preview included; where no other fact is the main news, fact is next_fight, official_or_done. Rumours, 'reports suggest', chatter and anyone's guess are no and no_fact, unless the rumour itself is the article's subject (named as a rumour in the headline), which is next_fight, rumour, yes.",
+   "answers": {
+    "228": {
+     "fact": "none_of_these"
+    },
+    "361": {
+     "reports_his_next_fight": "no"
+    },
+    "462": {
+     "fact": "no_fact",
+     "reports_his_next_fight": "no",
+     "reports_his_health": "no"
+    },
+    "500": {
+     "reports_his_next_fight": "yes"
+    },
+    "503": {
+     "fact": "no_fact",
+     "firmness": "none",
+     "reports_his_next_fight": "no"
+    },
+    "608": {
+     "fact": "next_fight",
+     "firmness": "official_or_done"
+    },
+    "609": {
+     "fact": "next_fight",
+     "firmness": "official_or_done"
+    },
+    "614": {
+     "reports_his_next_fight": "yes"
+    },
+    "616": {
+     "fact": "next_fight"
+    },
+    "619": {
+     "fact": "next_fight",
+     "firmness": "official_or_done",
+     "reports_his_next_fight": "yes"
+    },
+    "641": {
+     "fact": "next_fight",
+     "firmness": "official_or_done"
+    },
+    "672": {
+     "fact": "next_fight",
+     "firmness": "official_or_done"
+    },
+    "673": {
+     "fact": "next_fight",
+     "firmness": "official_or_done"
+    },
+    "681": {
+     "fact": "next_fight",
+     "firmness": "official_or_done"
+    },
+    "686": {
+     "reports_his_next_fight": "yes"
+    },
+    "692": {
+     "fact": "next_fight",
+     "firmness": "official_or_done",
+     "reports_his_next_fight": "yes"
+    },
+    "709": {
+     "fact": "next_fight",
+     "firmness": "official_or_done"
+    },
+    "820": {
+     "fact": "next_fight",
+     "firmness": "rumour",
+     "reports_his_next_fight": "yes"
+    },
+    "843": {
+     "fact": "no_fact",
+     "firmness": "none",
+     "reports_his_next_fight": "no"
+    },
+    "871": {
+     "fact": "next_fight",
+     "firmness": "rumour",
+     "reports_his_next_fight": "yes"
+    },
+    "887": {
+     "fact": "no_fact",
+     "firmness": "none",
+     "reports_his_next_fight": "no"
+    },
+    "901": {
+     "fact": "no_fact",
+     "firmness": "none",
+     "reports_his_next_fight": "no"
+    },
+    "905": {
+     "fact": "no_fact",
+     "firmness": "none"
+    },
+    "913": {
+     "fact": "no_fact",
+     "firmness": "none",
+     "reports_his_next_fight": "no"
+    },
+    "921": {
+     "reports_his_next_fight": "no"
+    },
+    "926": {
+     "reports_his_next_fight": "no"
+    },
+    "983": {
+     "fact": "no_fact",
+     "firmness": "none",
+     "reports_his_next_fight": "no"
+    },
+    "1002": {
+     "fact": "no_fact",
+     "firmness": "none",
+     "reports_his_next_fight": "no",
+     "reports_his_health": "no"
+    },
+    "1016": {
+     "fact": "no_fact",
+     "firmness": "none",
+     "reports_his_next_fight": "no"
+    },
+    "1097": {
+     "fact": "next_fight",
+     "firmness": "official_or_done",
+     "reports_his_next_fight": "yes"
+    }
+   },
+   "flips": 19,
+   "flipped_ids": [
+    "361",
+    "503",
+    "608",
+    "614",
+    "616",
+    "619",
+    "672",
+    "673",
+    "681",
+    "709",
+    "843",
+    "887",
+    "901",
+    "913",
+    "921",
+    "926",
+    "1002",
+    "1016",
+    "1097"
+   ],
+   "also_overturns_agreed": {
+    "500": {
+     "fact": "next_fight"
+    },
+    "905": {
+     "reports_his_next_fight": "no"
+    }
+   },
+   "examples": [
+    {
+     "id": "673",
+     "why": "A pick, but the fight is set and stated with date and walkout time, so next_fight, official_or_done, yes."
+    },
+    {
+     "id": "871",
+     "why": "The headline names the rumoured fight, so the rumour is the subject: next_fight, rumour, yes."
+    },
+    {
+     "id": "921",
+     "why": "Callout headline; Anik's talks sit in a closing line with 'nothing has been announced', so no."
+    },
+    {
+     "id": "1002",
+     "why": "A support message; the rematch rumour is relayed at the end, so no and no_fact."
+    }
+   ]
+  }
+ ],
+ "recommend": "own_news",
+ "why": "It is the reading the owner already applied to health (#856) and to an opponent's guess at his timing (rule backlog, item 3, second worked example): count what the article tells you is new, read from the text, not what it mentions; and it makes fact and the yes/no question agree, which the readers' modal answer (no_fact plus yes, 14 of 30 majorities) does not. It costs two things. It overturns the readers' unanimous 'yes' on nine preview and interview pieces of the Paris booking (608, 641, 672, 673, 681, 709 among them) and on 905, where the booking or rumour is only the premise; those yeses came from reading 'an opponent or date set' as 'stated', the same reading the owner rejected for 'injury mentioned' in #856. And it answers no when a real item is recalled in one line inside an opinion piece (Anik's line in 905 and 1002), so a booking or return date must be caught from the article that first reports it, a risk for a fighter covered by one outlet. The subject-or-premise line for rumours (820 yes, 901 no) is the call a model will get wrong most often; the headline is the tie-breaker.",
+ "per_article": {
+  "228": "The offer and its collapse were for the June card, already fought: a past event, not his next fight. Fact stays none_of_these; next fight no.",
+  "361": "Dvalishvili's update is the news (health). The 2027 return is the outlet's own guess from the suspension, labelled speculation: no.",
+  "462": "Gaethje's own recovery is the news; on Topuria only 'I guess ... probably not until next year': a guess, so no_fact, no. Injuries recalled, health no.",
+  "500": "The story is Wood's new opponent; Donchenko is one line in the card list: no.",
+  "503": "Gaethje's opinion on the rematch plus the outlet's 'not expected back before early 2027': a guess, so no_fact, none, no.",
+  "608": "Preview: card, walkout time, odds and a pick. The fight is the premise, the pick is the news: no_fact, none (and next fight would be no).",
+  "609": "Soriano interview; 'meets Donchenko on September 5' is the premise: no_fact, none (next fight would be no).",
+  "614": "Weigh-in quotes; the Soriano fight restated as context: fight_week_event stays, next fight no.",
+  "616": "Day-before event preview with card order and start times: fight_week_event, next fight no.",
+  "619": "Preview and pick; opponent and date are the premise: no_fact, none, no.",
+  "641": "Betting picks for three fights; Donchenko's bout is a fixture: no_fact, none (next fight would be no).",
+  "672": "Pre-fight interview; 'prepares to take on Soriano Saturday' is context, his words are opinion: no_fact, none (next fight would be no).",
+  "673": "Analyst's pick with odds and walkout time: no_fact, none (next fight would be no).",
+  "681": "Yahoo copy of 673, same pick, same furniture: no_fact, none (next fight would be no).",
+  "686": "Face-off report; the 5 September bout is the premise: next fight no.",
+  "692": "Card-wide predictions; one paragraph and a pick: no_fact, none, no.",
+  "709": "Fight-day betting pick: no_fact, none (next fight would be no).",
+  "820": "Headline and lead are the December rumour and Pimblett's denial: the state of his next fight is the subject, so next_fight, rumour, yes.",
+  "843": "Pimblett's own return plans; 'growing chatter' of a rematch is one line: no_fact, none, no.",
+  "871": "Headline names the rumoured fight; 'rumors swirling' plus 'nothing yet' is the subject: next_fight, rumour, yes.",
+  "887": "Hokit's opinion; Anik's 'internal conversations' quoted at the end: no_fact, none, no.",
+  "901": "Brown's warning; 'rumors have surfaced' and Anik are the recalled premise, not the article's reporting: no_fact, none, no.",
+  "905": "Brown's advice; Anik 'recently indicated' is recalled: no_fact, none (and next fight would be no).",
+  "913": "Callout headline; the outlet's options analysis, Anik's prediction and the January attempt are recalled context: no_fact, none, no.",
+  "921": "Callout headline; Anik's talks in a closing line with 'nothing has been announced': no.",
+  "926": "Rogan's advice; Anik's line, self-labelled 'non-informed speculation', is recalled: no.",
+  "983": "Gaethje's own schedule is his next fight, not Topuria's; the writer infers no rematch this year: no_fact, none, no.",
+  "1002": "Pantoja's message; the rematch rumour is a closing line, the injuries a recap: no_fact, none, no, health no.",
+  "1016": "Alvarez's opinion; 'recent reports suggest' is the premise: no_fact, none, no.",
+  "1097": "Muhammad's opinion; Dana White 'recently said' he is ready with two options is recalled beside it: no_fact, none, no. This is the rule's clearest miss: an official item in one recalled line."
+ },
+ "notes": {
+  "scope": "Answers cover the questions this boundary decides: fact, firmness, reports_his_next_fight, and reports_his_health where it was tied to the same text. Disputes on centrality (820, 843), act (820) and source (905) belong to other boundaries and are not answered here.",
+  "health": "Health answers follow the owner's #856 ruling (recalled injuries are not health news) under every rule.",
+  "flips": "flips counts input articles whose majority answer on a disputed question changes; split questions with no majority (462 fact) are not counted. also_overturns_agreed lists where a rule contradicts a unanimous reader answer that was not in the disputed set; those are not in flips.",
+  "test_side": "Test-side articles (462, 503, 609, 614, 616, 1016, 1097) have answers and per-article lines by applying each rule; they were not used to form the rules, the examples or the recommendation.",
+  "unsure": "616 under stated_counts and booking_is_fact: the headline is the booking but the body is card order and start times; next_fight chosen, fight_week_event is arguable. The 820/871 (yes) against 843/913/921 (no) line rests on the headline naming the rumour, while all five carry the same Pimblett quote."
+ }
+}

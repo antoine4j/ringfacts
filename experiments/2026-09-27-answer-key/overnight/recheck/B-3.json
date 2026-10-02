@@ -1,0 +1,56 @@
+[
+  {
+    "id": "983",
+    "centrality": "one_of_several",
+    "confidence": "medium",
+    "note": "New: Gaethje's analysis that Topuria never changes foot rhythm and rarely moves laterally, and that a rematch cannot happen this year; the rest is Gaethje's own recovery, tied to the fight they already had."
+  },
+  {
+    "id": "709",
+    "centrality": "one_of_several",
+    "confidence": "high",
+    "note": "New: he is a -238 favourite and the author picks him to win by finish at +100; a preview of his fight covering both men."
+  },
+  {
+    "id": "625",
+    "centrality": "one_of_several",
+    "confidence": "medium",
+    "note": "New: he made weight at 77.11 kg, fight set for 5 Sept with his walkout expected ~22:00 Kyiv; the report covers both fighters' weigh-in, though he gets most of the words (borderline main_subject)."
+  },
+  {
+    "id": "692",
+    "centrality": "one_of_several",
+    "confidence": "medium",
+    "note": "New: the author predicts Soriano hurts him in a flurry for his first knockout loss; a fight-by-fight card preview where his bout gets its own prediction section among six."
+  },
+  {
+    "id": "603",
+    "centrality": "one_of_several",
+    "confidence": "high",
+    "note": "New: the tipster rates the fight too big a step for him at this stage and tips Soriano at 2.90; a preview of his fight covering both men at length."
+  },
+  {
+    "id": "423",
+    "centrality": "only_mentioned",
+    "confidence": "low",
+    "note": "New about him is only Pimblett's call-out (calls him an idiot, wants the fight); his loss and recovery are retold; the guide says a fighter calling him out does not make him one_of_several, and the article is Pimblett's story and options."
+  },
+  {
+    "id": "681",
+    "centrality": "one_of_several",
+    "confidence": "high",
+    "note": "New: analyst picks Soriano to upset him by KO in round 2, odds -240/+190, walkout ~4:10 pm ET; a preview of his fight covering both men."
+  },
+  {
+    "id": "690",
+    "centrality": "one_of_several",
+    "confidence": "medium",
+    "note": "New: he is the 1.37 favourite, SI tipped the bout as a possible Fight of the Night, and the author lays out how he should fight Soriano; a preview of his fight that also profiles Soriano, though built around him (borderline main_subject)."
+  },
+  {
+    "id": "525",
+    "centrality": "only_mentioned",
+    "confidence": "medium",
+    "note": "New about him is only Tsarukyan's speculation that Topuria would be his first title defence and that the UFC will give Topuria an easy fight; his Oliveira win and Gaethje loss are retold; he is one of many names in Tsarukyan's own story with no booked fight between them."
+  }
+]

@@ -1,0 +1,117 @@
+{
+ "boundary": "firmness",
+ "title": "Reported, or official?",
+ "question": "Is the fact settled (official or done) or only reported or rumoured?",
+ "readings": [
+  "Attribution reading: firmness names who the text makes stand behind the fact, so 'as Sport.ua reports' is reported even for a booking already on a card, and the promotion speaking is official even when it only floats options.",
+  "State reading: firmness is the fact's state as the text presents it, so a thing told as done, or a booking with a named event and date, is official whoever relays it, and an open choice is rumour even in the promotion's mouth.",
+  "Majority reading (what the readers mostly did): a relay never lowers firmness, and anything the promotion or he himself says is official, so all four come out official_or_done."
+ ],
+ "signals": [
+  "A relay opener: 'as Sport.ua reports' / 'according to'. Present in both 112.ua pieces; the only ground the dissenters had for 'reported'.",
+  "Tense: the fact is told as already happened (he fought, weighed in, debuted, joined territorial defence) versus still to come (will fight on 5 September).",
+  "A booking anchored to a named event and date (UFC Fight Night 287, 5 September, Paris) versus a fight with no card named.",
+  "A promotion official quoted directly (Dana White) versus the writer's own voice.",
+  "What the promotion's quote actually asserts: a decision ('he will fight X') versus a question or a pair of options ('Gaethje or Pimblett?', 'the big talk is').",
+  "The text's own hedges: 'reportedly', 'sources', 'talk', 'potential', 'expected', 'targeted'. None of the four has 'sources'; one has 'talk'.",
+  "Whether the outlet is the promotion itself (ufc.com). None of the four is; all are third-party outlets.",
+  "His own words quoted on the fact (a post of his) versus only the writer retelling it."
+ ],
+ "rules": [
+  {
+   "name": "Done is done; the future follows the speaker",
+   "text": "A fact told as already happened (he fought, weighed in, debuted, joined) or a booking given with its event name and date is official_or_done whoever relays it, unless the text itself hedges it ('reportedly', 'sources', 'expected'). Anything else follows who states it: a decision from the promotion or from him is official_or_done, a named outlet or any other person is reported, and unnamed sources, 'talks' or a choice left open (even by the promotion) is rumour.",
+   "answers": {
+    "342": {
+     "firmness": "official_or_done"
+    },
+    "605": {
+     "firmness": "official_or_done"
+    },
+    "743": {
+     "firmness": "official_or_done"
+    },
+    "1089": {
+     "firmness": "rumour"
+    }
+   },
+   "flips": 1,
+   "examples": [
+    {
+     "id": "605",
+     "why": "Booking named with event, date and city (UFC Fight Night 287, 5 September, Paris); the Sport.ua relay does not lower it."
+    },
+    {
+     "id": "743",
+     "why": "Weigh-in, octagon and press conference told as done; relay or not, it has happened."
+    }
+   ]
+  },
+  {
+   "name": "Follow the attribution",
+   "text": "Firmness names who the text makes stand behind the main fact. If it is attributed to a named outlet or journalist ('as Sport.ua reports') and neither the promotion nor he himself is quoted stating it, it is reported, even for a booking or a done event; if the promotion or he himself states it in the text, it is official_or_done, even when the statement leaves the choice open.",
+   "answers": {
+    "342": {
+     "firmness": "official_or_done"
+    },
+    "605": {
+     "firmness": "reported"
+    },
+    "743": {
+     "firmness": "reported"
+    },
+    "1089": {
+     "firmness": "official_or_done"
+    }
+   },
+   "flips": 2,
+   "examples": [
+    {
+     "id": "605",
+     "why": "The only one standing behind the booking in the text is Sport.ua; no UFC statement, no quote from him."
+    },
+    {
+     "id": "743",
+     "why": "Same relay opener, nobody official quoted; the writer's praise adds no firmness."
+    }
+   ]
+  },
+  {
+   "name": "A relay never downgrades",
+   "text": "A named outlet relaying a fact ('as Sport.ua reports') does not lower its firmness: judge the fact as if the outlet had written it itself. What the promotion or he himself states is official_or_done, including when the promotion only names the options for his next fight.",
+   "answers": {
+    "342": {
+     "firmness": "official_or_done"
+    },
+    "605": {
+     "firmness": "official_or_done"
+    },
+    "743": {
+     "firmness": "official_or_done"
+    },
+    "1089": {
+     "firmness": "official_or_done"
+    }
+   },
+   "flips": 0,
+   "examples": [
+    {
+     "id": "605",
+     "why": "Read as if 112.ua wrote it: a set booking, so official_or_done."
+    },
+    {
+     "id": "743",
+     "why": "Read as if 112.ua wrote it: a done event, so official_or_done."
+    }
+   ]
+  }
+ ],
+ "recommend": "Done is done; the future follows the speaker",
+ "why": "It is decidable from the text alone: tense, a named event with a date, and the text's own hedges, with no backstory needed. It keeps the majority on the relayed bookings and done events, where 'reported' would make the bot say 'reportedly' about a fight already on the card (#605) or already fought (#743), which is noise for the reader. It also reads a 'who will he fight?' quote as the guide's own 'talks' row rather than as an official fact. The cost: it trusts tense and a printed date, so a sloppy rewrite that says he 'took part' (#743 gives no result, no opponent) or an outlet that prints a date on its own authority without hedging gets 'done' or 'official', and an old story retold stays official_or_done, because newness is the backlog's rule 3, not firmness.",
+ "per_article": {
+  "342": "Writer retells his territorial-defence service and UFC debut in the past tense, and his own post is quoted: told as done, so official_or_done.",
+  "605": "Booking anchored to UFC Fight Night 287, 5 September, Paris, and no hedge in the text: official_or_done; the Sport.ua relay is just where 112.ua got it.",
+  "743": "Weigh-in, octagon and press conference told as having happened, no hedge: official_or_done, even though the piece is vague and names no result.",
+  "1089": "Nothing has happened and no card is named; Dana White only poses the choice ('Gaethje or Pimblett?', 'the big talk'), so a choice left open gives rumour, not official."
+ }
+}

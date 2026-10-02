@@ -1,0 +1,219 @@
+[
+ {
+  "id": "896",
+  "question": "he_speaks",
+  "pick": 2,
+  "reason": "His letter to his son is only paraphrased ('en la misma habla de...'); the quoted 'Sé que sufriste...' line sits in an inserted related-article headline, which is page furniture, not the article's text.",
+  "confidence": "medium"
+ },
+ {
+  "id": "60",
+  "question": "centrality",
+  "pick": 2,
+  "reason": "Topuria appears only in a 'LATEST NEWS:' link line about his manager; the article body is Garry on Khabib and never names him.",
+  "confidence": "high"
+ },
+ {
+  "id": "926",
+  "question": "fact",
+  "pick": 1,
+  "reason": "Beyond Rogan's opinion the article relays Anik: 'there had been internal discussions about an immediate rematch' and 'strong consideration' - talks about his next fight, which the guide lists under next_fight.",
+  "confidence": "low"
+ },
+ {
+  "id": "926",
+  "question": "firmness",
+  "pick": 2,
+  "reason": "The rematch rests on 'internal conversations' and 'mounting speculation', with Anik calling it non-informed speculation - talks/discussions, the guide's rumour level.",
+  "confidence": "low"
+ },
+ {
+  "id": "926",
+  "question": "reports_his_health",
+  "pick": 2,
+  "reason": "The orbital fractures, septum and foot are recalled as background to Rogan's warning; 'probably needs six months before sparring' is a pundit's guess, not an update on how he is.",
+  "confidence": "medium"
+ },
+ {
+  "id": "948",
+  "question": "centrality",
+  "pick": 2,
+  "reason": "Topuria is named only in the 'LATEST NEWS:' link about ruining his life; the body is Gaethje on Tsarukyan vs Ruffy and Makhachev.",
+  "confidence": "high"
+ },
+ {
+  "id": "948",
+  "question": "source",
+  "pick": 2,
+  "reason": "Nothing new about him, so the main content's source applies: Justin Gaethje speaks throughout, and the guide names Gaethje as opponent side for Topuria.",
+  "confidence": "high"
+ },
+ {
+  "id": "1097",
+  "question": "reports_his_health",
+  "pick": 2,
+  "reason": "Muhammad only guesses 'I am sure he is still recovering... two broken orbitals'; the injuries are recalled from the June fight, and White's 'ready to return' is about fighting, not a medical update.",
+  "confidence": "medium"
+ },
+ {
+  "id": "204",
+  "question": "act",
+  "pick": 2,
+  "reason": "Amosov appears only in the subhead ('у дивізіоні Ярослава Амосова може з'явитися новий чемпіон'); the five reasons predict Makhachev vs Garry, not any fight of his.",
+  "confidence": "high"
+ },
+ {
+  "id": "913",
+  "question": "centrality",
+  "pick": 1,
+  "reason": "Half the piece lays out Topuria's options, the other half is Pimblett's own quotes and his December plans, closing on 'el futuro de ambas estrellas' - a feature on a possible fight covering both men.",
+  "confidence": "medium"
+ },
+ {
+  "id": "643",
+  "question": "centrality",
+  "pick": 2,
+  "reason": "Topuria is named only in the inserted 'EXCLUSIVE: Paddy Pimblett backed to KO Ilia Topuria' link; McCann's body quotes never mention him.",
+  "confidence": "high"
+ },
+ {
+  "id": "643",
+  "question": "act",
+  "pick": 1,
+  "reason": "The KO prediction exists only in the link line; in the text McCann predicts '2027 me and you will both be world champions', which names no fight of Topuria's.",
+  "confidence": "high"
+ },
+ {
+  "id": "18",
+  "question": "centrality",
+  "pick": 1,
+  "reason": "Headline and lead are about Donchenko's booking ('Українець Донченко проведе бій'); Soriano gets one paragraph of record and streak as the opponent, not a shared feature.",
+  "confidence": "medium"
+ },
+ {
+  "id": "572",
+  "question": "fact",
+  "pick": 2,
+  "reason": "The news is Colmenero's claim that he 'is going to return to the public eye... in September'; the July healing and treatments are relayed as background to that, and a public re-emergence is not a listed kind.",
+  "confidence": "low"
+ },
+ {
+  "id": "682",
+  "question": "reports_his_result",
+  "pick": 1,
+  "reason": "The TKO loss to Gaethje is retold as the setting for his Instagram letter to Hugo; the article's news is the message, not the result.",
+  "confidence": "medium"
+ },
+ {
+  "id": "879",
+  "question": "fact",
+  "pick": 1,
+  "reason": "The premise is 'the promotion is exploring a second fight between the pair for 2027' per Anik/MMA Fighting - talks about his next fight, the guide's next_fight.",
+  "confidence": "medium"
+ },
+ {
+  "id": "879",
+  "question": "firmness",
+  "pick": 1,
+  "reason": "'Exploring' a rematch that 'remains speculative until... an official announcement' is talks/plans, which the guide puts at rumour.",
+  "confidence": "medium"
+ },
+ {
+  "id": "879",
+  "question": "reports_his_next_fight",
+  "pick": 1,
+  "reason": "It reports the UFC exploring a Gaethje rematch for 2027 - an opponent under discussion, not merely a pundit's pick.",
+  "confidence": "medium"
+ },
+ {
+  "id": "968",
+  "question": "reports_his_health",
+  "pick": 1,
+  "reason": "The two orbital fractures, septum and foot are recalled from the June fight and his earlier essay; the news is his TBC advert message, and 'must allow his injuries to heal' is the writer's comment.",
+  "confidence": "medium"
+ },
+ {
+  "id": "408",
+  "question": "act",
+  "pick": 1,
+  "reason": "Usman's dig ('praising himself. Lost early, sat down on a chair') is a put-down of his performance inside an argument about the lightweight top 10's level; he challenges no one to fight.",
+  "confidence": "low"
+ },
+ {
+  "id": "380",
+  "question": "reports_his_result",
+  "pick": 2,
+  "reason": "The fourth-round loss to Gaethje is one lead sentence of background; the article's news is the lesson he draws from his divorce.",
+  "confidence": "high"
+ },
+ {
+  "id": "380",
+  "question": "reports_his_health",
+  "pick": 2,
+  "reason": "'Currently, Topuria is recovering from facial injuries' is a closing status line with no new medical information, background to the divorce interview.",
+  "confidence": "medium"
+ },
+ {
+  "id": "588",
+  "question": "centrality",
+  "pick": 2,
+  "reason": "Soriano's own news is tied by the article to his booked fight with Donchenko on Saturday, with his record and streak given - the guide's booked-fight case for one_of_several.",
+  "confidence": "medium"
+ },
+ {
+  "id": "560",
+  "question": "act",
+  "pick": 1,
+  "reason": "Gaethje names Topuria only in passing ('since Topuria beat them', 'hand injury against Topuria') while discussing McGregor and his own next defence; nobody does anything regarding him.",
+  "confidence": "medium"
+ },
+ {
+  "id": "560",
+  "question": "fact",
+  "pick": 2,
+  "reason": "'His victory over Ilia Topuria' is background to Gaethje's title plans; no new fact about Topuria appears.",
+  "confidence": "high"
+ },
+ {
+  "id": "560",
+  "question": "firmness",
+  "pick": 2,
+  "reason": "No fact about him is asserted as news, so firmness is none.",
+  "confidence": "high"
+ },
+ {
+  "id": "560",
+  "question": "reports_his_result",
+  "pick": 1,
+  "reason": "The Gaethje win is recalled in one clause as the reason the division is 'cleaned out'; the news is Gaethje's McGregor idea.",
+  "confidence": "high"
+ },
+ {
+  "id": "905",
+  "question": "reports_his_next_fight",
+  "pick": 1,
+  "reason": "It relays that 'the UFC is weighing a potential Gaethje-Topuria sequel' per Anik - an opponent under consideration by the promotion, beyond Brown's opinion.",
+  "confidence": "low"
+ },
+ {
+  "id": "323",
+  "question": "centrality",
+  "pick": 1,
+  "reason": "Topuria is named once to identify Doctor Aldo as his trainer; the three sentences explain the Brock string exercise and say nothing about him.",
+  "confidence": "high"
+ },
+ {
+  "id": "323",
+  "question": "act",
+  "pick": 2,
+  "reason": "The trainer explains what the Brock string is; the text never says Topuria uses it or how he is, so no news of him is given.",
+  "confidence": "high"
+ },
+ {
+  "id": "983",
+  "question": "reports_his_result",
+  "pick": 2,
+  "reason": "The loss ('failed to fight past the fourth round') is the premise for Gaethje's footwork analysis; the article's news is the tactic, not the result.",
+  "confidence": "medium"
+ }
+]

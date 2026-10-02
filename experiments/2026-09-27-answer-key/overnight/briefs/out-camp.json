@@ -1,0 +1,95 @@
+{
+  "boundary": "camp",
+  "title": "Opponent, or another fighter's side?",
+  "question": "Is the person speaking linked to a fight with him (opponent side), or another fighter or his camp?",
+
+  "readings": [
+    "Strict: a speaker is opponent side only when the article says the two are booked to fight or already fought; everything short of that (callout, wish, rivalry, rumour) is another fighter's side.",
+    "Loose: 'publicly linked' covers any tie the article draws between the speaker and a fight with him, including a callout, a years-long rivalry, or a fight one of them asked for, so Pimblett and Rodriguez are opponent side even with nothing booked.",
+    "Event-first (one article): when the booked opponent speaks only about himself and nothing is said about the watched fighter, the source is no_one and the act is reports_an_event, the booking itself, rather than opponent_side with none_of_these."
+  ],
+
+  "signals": [
+    "Booked: the article names both fighters with a date, event or 'faces / will face on Saturday'. Always opponent side.",
+    "Fought: a past-tense result between the two ('beat', 'lost to'). Always opponent side.",
+    "In play from a third party: 'in talks', 'offered', 'the UFC is targeting', 'rumours of X vs him in December', said by an outlet, a source or the promotion, not by the speaker himself.",
+    "Wish only: 'would love to fight him', 'if I fight Ilia', 'wants', 'called him out', 'pidio la pelea'. The speaker or the watched fighter asking for it, nobody arranging it.",
+    "Explicit negatives: 'no one's spoke to me about it', 'sigue pendiente', 'the UFC has not confirmed', 'has yet to book his return'. The article itself says nothing is in motion.",
+    "Rivalry background: 'beef for years', 'enemistad desde 2021', 'rivalidad'. History between people, not a fight. The readers who went opponent side weighed this; the ones who went other fighter's side ignored it.",
+    "Whose camp wants whom: the speaker's own side naming a different opponent ('los daguestanies quieren... Usman') cuts the link.",
+    "Who actually speaks: a third fighter or coach commenting on a rumoured fight (O'Malley, Welch) is never opponent side, whatever the rumoured opponent would be."
+  ],
+
+  "rules": [
+    {
+      "name": "Booked or fought",
+      "text": "A fighter (or his coach or manager) is opponent_side only when the article itself says a fight between the two is booked (a date, an event, 'will face') or has already happened. A callout, a wish from either man, a rivalry, a rumour or 'the UFC has not confirmed' does not count: he is other_fighter_side.",
+      "answers": {
+        "148": {"source": "other_fighter_side"},
+        "283": {"source": "other_fighter_side"},
+        "423": {"source": "other_fighter_side"},
+        "588": {"source": "opponent_side", "act": "none_of_these"},
+        "889": {"source": "other_fighter_side"},
+        "896": {"source": "other_fighter_side"},
+        "953": {"source": "other_fighter_side"}
+      },
+      "flips": 3,
+      "examples": [
+        {"id": "588", "why": "Soriano 'faces Daniil Donchenko' on Saturday with time and stream: booked, so opponent side even though he talks only about himself."},
+        {"id": "953", "why": "Pimblett 'would love to fight him' but 'no one's spoke to me about it': a wish with an explicit negative, other fighter's side."},
+        {"id": "148", "why": "Topuria asked for the Makhachev fight and it 'sigue pendiente'; Makhachev's camp wants Usman instead. Nothing booked, other fighter's side."}
+      ]
+    },
+    {
+      "name": "Reported as news",
+      "text": "A fighter (or his coach or manager) is opponent_side when the article reports a fight between the two as news: booked, already fought, or in talks, offered or rumoured for a date or event by someone other than the speaker. This is the same line as reports_his_next_fight: a callout or a wish from either man is not news of a fight, so he is other_fighter_side, however long the rivalry.",
+      "answers": {
+        "148": {"source": "other_fighter_side"},
+        "283": {"source": "other_fighter_side"},
+        "423": {"source": "other_fighter_side"},
+        "588": {"source": "opponent_side", "act": "none_of_these"},
+        "889": {"source": "other_fighter_side"},
+        "896": {"source": "other_fighter_side"},
+        "953": {"source": "other_fighter_side"}
+      },
+      "flips": 3,
+      "examples": [
+        {"id": "588", "why": "The bout is reported as set (Saturday, 9 a.m. Hawaii, Paramount+): news of a fight between them, opponent side."},
+        {"id": "953", "why": "The only word on a Topuria fight is Pimblett's own wish plus 'nothing yet': no news of a fight, other fighter's side. Matches the readers' no on reports_his_next_fight."},
+        {"id": "148", "why": "The Makhachev fight appears only as something Topuria asked for; the article's fact is his recovery, not that bout. Other fighter's side."}
+      ]
+    },
+    {
+      "name": "Publicly linked",
+      "text": "A fighter (or his coach or manager) is opponent_side when the article ties him to a fight with the watched fighter in any form: booked, fought, rumoured, asked for by either man, or a rivalry the article describes as pointing to a fight. Only a fighter the article never connects to a fight with him is other_fighter_side.",
+      "answers": {
+        "148": {"source": "opponent_side"},
+        "283": {"source": "opponent_side"},
+        "423": {"source": "opponent_side"},
+        "588": {"source": "opponent_side", "act": "none_of_these"},
+        "889": {"source": "opponent_side"},
+        "896": {"source": "other_fighter_side"},
+        "953": {"source": "opponent_side"}
+      },
+      "flips": 2,
+      "examples": [
+        {"id": "148", "why": "The article says Makhachev keeps 'una importante rivalidad' with him and that Topuria asked for the fight: a tie, so opponent side. Flips the readers' majority."},
+        {"id": "953", "why": "Pimblett is asked about a Topuria matchup and wants it: a tie, so opponent side. Flips the readers' majority."},
+        {"id": "588", "why": "Booked, so opponent side under every rule."}
+      ]
+    }
+  ],
+
+  "recommend": "Reported as news",
+  "why": "It gives the same answers as 'Booked or fought' on all seven articles and the same three flips, but it also says what to do when an outlet reports talks or a rumoured date and the rumoured opponent speaks: he is opponent side, in step with question 8 saying yes. It is decidable from the text (the reader already makes this news-or-wish call for question 8) and it keeps the two axes coherent: a callout is carried by act = calls_him_out, so source does not need to double-count it. What it costs: a long rivalry everyone expects to be booked (Pimblett) stays 'other fighter's side' until an article reports talks, so the same speaker changes side from one week to the next as the booking firms up; and it inherits question 8's looseness, since one pundit's 'rumours of a December fight' is enough to flip the rumoured opponent to opponent side. If you want it tighter, take 'Booked or fought': identical here, and the difference can be settled when an article actually turns on it.",
+
+  "per_article": {
+    "148": "Makhachev speaks. The fight with him is only something Topuria asked for and it is 'pendiente'; his camp wants Usman instead. Not reported as news, so other_fighter_side (no flip). The recovery update is from his trainer Gallo, his_team; that is a separate question, not this boundary.",
+    "283": "Pimblett: 'if I fight Ilia'. Hypothetical, and the article says Topuria 'has yet to book his return'. Other_fighter_side (flips the majority).",
+    "423": "Pimblett wants the fight; the article calls it 'un posible combate' and says Topuria is recovering. A wish, nothing in motion. Other_fighter_side (flips the majority).",
+    "588": "Soriano 'faces Daniil Donchenko' on Saturday with time and stream: booked, opponent_side. He speaks only about himself, so act none_of_these; the guide says answer for the main content when nothing new is said about him, which is Soriano speaking, not the booking as an event.",
+    "889": "Rodriguez answers a callout with an emoji; 'the UFC has not confirmed whether the matchup will be booked'. No talks or offer reported, so other_fighter_side (flips the majority).",
+    "896": "The chosen source is O'Malley, who picks Pimblett in a rumoured fight; he is not tied to a fight with Topuria, so other_fighter_side under every rule. Pimblett, quoted in the same article, would be opponent_side under this rule (a December rumour is reported) and other_fighter_side under 'Booked or fought'; the only place the two rules part in this set, and it does not change the article's answer. Media vs other fighter's side here is a whose-words-lead question, not this boundary.",
+    "953": "Pimblett: 'No one's spoke to me about it.' An absence of talks. Other_fighter_side (no flip)."
+  }
+}

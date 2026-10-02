@@ -1,0 +1,167 @@
+{
+ "boundary": "result",
+ "title": "Result: news, or background?",
+ "question": "Is the outcome of a fight of his the article's news, or recalled as background?",
+ "readings": [
+  "Strict: the outcome is news only when telling it is the article's job (a fight report, his bout on a results page); a statement, interview or callout after the fight has other news, and the outcome is just the occasion.",
+  "Fresh: the outcome is news whenever the article tells it as recent ('on Saturday', 'yesterday', with the method and scores), whatever the article's angle; it becomes background only once days have passed or the text marks it as a recall.",
+  "Topic: the outcome is news whenever the fight and how it ended is what the article talks about, even ten days later in an interview; it is background only when the article is about something else."
+ ],
+ "signals": [
+  "Where the outcome sits in the lead sentence: as the main clause ('Donchenko won another bright fight') or tucked into a side clause ('praised Gaethje after losing', 'spoke about his fight against Soriano').",
+  "Recall markers in front of the outcome: 'Нагадаємо' (recall that), 'as a reminder', 'after his June loss', 'since the defeat'. A fresh report never introduces its own news this way.",
+  "Days between the fight date in the text and the published date: one day (778, 779, 797), six days (44), ten days (1172). The readers' 'unsure' notes name this gap on both the day-after and the ten-day pieces.",
+  "How much fight detail the body carries: method, round, scorecards, round-by-round (779 has all; 797 has scores and a judge's name; 44 has method and round; 778 has scores in one recall sentence; 1172 has it only in his own answers).",
+  "Who speaks: nobody (a results page, source no_one) points to the outcome as the news; him speaking (a statement, a cage or backstage interview) points to what he said as the news.",
+  "What the headline promises: 'bright scrap in Paris' (779) versus 'names next opponent' (778), 'first statement since defeat' (44), 'has veteran in mind' (797), a quote about Usman (1172)."
+ ],
+ "rules": [
+  {
+   "name": "lead_clause",
+   "text": "Say yes only when the headline, or the main clause of the article's first sentence, states that he won or lost. Say no when the outcome sits in a side clause ('after losing', 'spoke about his win'), behind a recall marker ('as a reminder', 'since his defeat'), or only deeper in the body, however recent the fight.",
+   "answers": {
+    "44": {
+     "reports_his_result": "no",
+     "fact": "health",
+     "firmness": "official_or_done"
+    },
+    "778": {
+     "reports_his_result": "no",
+     "fact": "no_fact",
+     "firmness": "none"
+    },
+    "779": {
+     "reports_his_result": "yes",
+     "fact": "result",
+     "firmness": "official_or_done"
+    },
+    "797": {
+     "reports_his_result": "no",
+     "fact": "no_fact",
+     "firmness": "none"
+    },
+    "1172": {
+     "reports_his_result": "yes",
+     "fact": "health",
+     "firmness": "official_or_done"
+    }
+   },
+   "flips": 2,
+   "examples": [
+    {
+     "id": "779",
+     "why": "Lead main clause: 'Donchenko got another bright win'. Yes."
+    },
+    {
+     "id": "778",
+     "why": "Lead: 'Donchenko spoke about the fight'; the win comes next behind 'Нагадаємо' (recall that). No, though the fight was yesterday."
+    },
+    {
+     "id": "1172",
+     "why": "Lead main clause: 'On 5 September Donchenko ... got a beautiful win'. Yes, even ten days on and even though the body is an interview."
+    }
+   ]
+  },
+  {
+   "name": "fresh_outcome",
+   "text": "Say yes when the text places the fight within seven days of the published date and states the outcome (who won and how) in a sentence of its own; the article's angle and recall words do not matter. Say no when the fight is older than seven days, undated, or the outcome is only a passing clause.",
+   "answers": {
+    "44": {
+     "reports_his_result": "yes",
+     "fact": "health",
+     "firmness": "official_or_done"
+    },
+    "778": {
+     "reports_his_result": "yes",
+     "fact": "result",
+     "firmness": "official_or_done"
+    },
+    "779": {
+     "reports_his_result": "yes",
+     "fact": "result",
+     "firmness": "official_or_done"
+    },
+    "797": {
+     "reports_his_result": "yes",
+     "fact": "result",
+     "firmness": "official_or_done"
+    },
+    "1172": {
+     "reports_his_result": "no",
+     "fact": "health",
+     "firmness": "official_or_done"
+    }
+   },
+   "flips": 2,
+   "examples": [
+    {
+     "id": "778",
+     "why": "Fight Saturday, published Sunday; the win with scores has its own sentence. Yes, despite 'Нагадаємо'."
+    },
+    {
+     "id": "779",
+     "why": "Day-after fight report. Yes."
+    },
+    {
+     "id": "1172",
+     "why": "Fight 5 September, published 15 September: ten days, past the window. No."
+    }
+   ]
+  },
+  {
+   "name": "report_only",
+   "text": "Say yes only when the article is a fight account: the headline or first sentence states that he won or lost, and the body tells the fight in the writer's voice (method, round, scores or round-by-round). A statement, interview or callout after a fight says no, however recent the fight and however much of it is retold.",
+   "answers": {
+    "44": {
+     "reports_his_result": "no",
+     "fact": "health",
+     "firmness": "official_or_done"
+    },
+    "778": {
+     "reports_his_result": "no",
+     "fact": "no_fact",
+     "firmness": "none"
+    },
+    "779": {
+     "reports_his_result": "yes",
+     "fact": "result",
+     "firmness": "official_or_done"
+    },
+    "797": {
+     "reports_his_result": "no",
+     "fact": "no_fact",
+     "firmness": "none"
+    },
+    "1172": {
+     "reports_his_result": "no",
+     "fact": "health",
+     "firmness": "official_or_done"
+    }
+   },
+   "flips": 3,
+   "examples": [
+    {
+     "id": "779",
+     "why": "Round-by-round report with scores, nobody speaking. Yes."
+    },
+    {
+     "id": "1172",
+     "why": "The intro states the win, but the body is a Q&A; the fight is retold in his answers, not by the writer. No."
+    },
+    {
+     "id": "778",
+     "why": "A callout piece; the win is one recall sentence. No."
+    }
+   ]
+  }
+ ],
+ "recommend": "lead_clause",
+ "why": "It is the only rule a reader can apply from sentence shape alone, with no day count and no judgement about what the body 'is', so blind readers and a model should land on the same answer. It keeps the owner's line from #856: an outcome told as the occasion for other news is background. It costs the day-after reaction pieces: a callout article that leads with 'he spoke about the fight' says no even though the fight was yesterday (778), and that article then carries no fact at all, because a callout is a wish; the result lives in the fight report of the same claim (779). It also says yes to a ten-day-old interview whose intro restates the win (1172), which some readers will feel is stale.",
+ "per_article": {
+  "44": "Lead main clause is 'Topuria praised Gaethje'; the loss is in the side clause 'after losing'. No. The news is his statement and the vision loss (fact health).",
+  "778": "Lead main clause is 'Donchenko spoke about the fight'; the win follows behind 'Нагадаємо'. No. The callout is a wish, so fact no_fact and firmness none.",
+  "779": "Lead main clause states the win; the body is a round-by-round report. Yes, fact result.",
+  "797": "Headline is the callout; lead main clause is 'Donchenko is pleased with his performance'. No. The scores sit deeper in the body. The Rodriguez callout is a wish, so fact no_fact, firmness none.",
+  "1172": "Lead main clause states the 5 September win. Yes, even though the piece is an interview published ten days later; the fact stays health (the August infection is the newest thing he reveals)."
+ }
+}

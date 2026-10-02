@@ -1,0 +1,233 @@
+[
+ {
+  "id": "1161",
+  "question": "centrality",
+  "pick": 1,
+  "reason": "Donchenko is nowhere in the Aspinall text; the only watchlist name is Amosov, in a trailing 'read also' link line.",
+  "confidence": "high"
+ },
+ {
+  "id": "811",
+  "question": "centrality",
+  "pick": 2,
+  "reason": "Topuria appears only in an inline 'LATEST NEWS: Jon Anik hints... Gaethje vs Ilia Topuria 2' link; the MVP article body never mentions him.",
+  "confidence": "high"
+ },
+ {
+  "id": "655",
+  "question": "centrality",
+  "pick": 1,
+  "reason": "The saved text is 10,000 chars of CSS with no article body; Donchenko appears only in the headline, not in any content.",
+  "confidence": "medium"
+ },
+ {
+  "id": "655",
+  "question": "source",
+  "pick": 1,
+  "reason": "No one speaks and nothing is written about him in the saved text; 'media' would rest on the headline alone.",
+  "confidence": "medium"
+ },
+ {
+  "id": "655",
+  "question": "act",
+  "pick": 2,
+  "reason": "The saved text contains no prediction or any act regarding him; only the headline promises 'Predictions & Odds'.",
+  "confidence": "medium"
+ },
+ {
+  "id": "655",
+  "question": "fact",
+  "pick": 2,
+  "reason": "No fact about him is carried in the saved text; the booked bout is named only in the headline.",
+  "confidence": "medium"
+ },
+ {
+  "id": "655",
+  "question": "firmness",
+  "pick": 1,
+  "reason": "With no fact asserted in the text, firmness is none.",
+  "confidence": "medium"
+ },
+ {
+  "id": "655",
+  "question": "reports_his_next_fight",
+  "pick": 2,
+  "reason": "The text reports nothing; the Donchenko vs Soriano bout is stated only in the headline.",
+  "confidence": "medium"
+ },
+ {
+  "id": "244",
+  "question": "source",
+  "pick": 1,
+  "reason": "Makhachev is now welterweight champion and the article says their fight 'finalmente no se concretó' and 'el escenario ha cambiado'; he is a champion of another division, not his last or next opponent.",
+  "confidence": "low"
+ },
+ {
+  "id": "244",
+  "question": "reports_his_health",
+  "pick": 1,
+  "reason": "Eye problems and withdrawal vs Gaethje are recalled as background; the closing 'su recuperación... será determinante' is the writer's framing, not a health update.",
+  "confidence": "medium"
+ },
+ {
+  "id": "320",
+  "question": "reports_his_next_fight",
+  "pick": 1,
+  "reason": "Body states a set opponent and date: '5 вересня Донченко проведе поєдинок у Парижі проти... Соріано', even though the piece is about the war.",
+  "confidence": "medium"
+ },
+ {
+  "id": "102",
+  "question": "centrality",
+  "pick": 1,
+  "reason": "Both statements (Abdelaziz's 'Usman haría rendirse a Ilia', Kawa's reply) are about Topuria; Usman is only a rumoured/callout opponent, which the guide says does not count for one_of_several.",
+  "confidence": "medium"
+ },
+ {
+  "id": "102",
+  "question": "source",
+  "pick": 2,
+  "reason": "The newest element is Malki Kawa, named as 'mánager de El Matador', replying 'a las pocas horas' on Topuria's behalf; Abdelaziz's line is the trigger.",
+  "confidence": "low"
+ },
+ {
+  "id": "497",
+  "question": "firmness",
+  "pick": 1,
+  "reason": "The childhood and values facts are in his own quoted words (CQ, 'Charlas Adictivas'); he himself states them.",
+  "confidence": "medium"
+ },
+ {
+  "id": "807",
+  "question": "act",
+  "pick": 2,
+  "reason": "Anik relays that the UFC 'is internally discussing an immediate rematch' and predicts it; he does not say what Topuria should do.",
+  "confidence": "medium"
+ },
+ {
+  "id": "807",
+  "question": "fact",
+  "pick": 1,
+  "reason": "'The promotion is internally discussing an immediate rematch' is talks about his next fight, not a wish.",
+  "confidence": "medium"
+ },
+ {
+  "id": "807",
+  "question": "firmness",
+  "pick": 1,
+  "reason": "Internal discussions reported second-hand by a commentator, who calls his own view 'non-informed speculation': rumour level.",
+  "confidence": "medium"
+ },
+ {
+  "id": "807",
+  "question": "reports_his_next_fight",
+  "pick": 1,
+  "reason": "Reports talks of a Gaethje rematch as the lead; talks count as next-fight news.",
+  "confidence": "medium"
+ },
+ {
+  "id": "38",
+  "question": "act",
+  "pick": 1,
+  "reason": "Topuria is not in the McGregor text at all; nobody does anything regarding him. speaks_of_himself would be McGregor, not the watched fighter.",
+  "confidence": "high"
+ },
+ {
+  "id": "887",
+  "question": "source",
+  "pick": 1,
+  "reason": "The article never says Hokit is a fighter; he writes of using 'my platform' to comment, which reads as pundit/media from the text alone.",
+  "confidence": "low"
+ },
+ {
+  "id": "887",
+  "question": "act",
+  "pick": 2,
+  "reason": "'Neither... deserve a title shot in their next fight. Make them earn it and fight their way back' is a demand about what he should do next.",
+  "confidence": "medium"
+ },
+ {
+  "id": "887",
+  "question": "reports_his_result",
+  "pick": 1,
+  "reason": "The Gaethje loss ('quit the fight on the stool') is background to Hokit's opinion, not the article's news.",
+  "confidence": "high"
+ },
+ {
+  "id": "1093",
+  "question": "source",
+  "pick": 2,
+  "reason": "Gaethje is the champion who beat Topuria at UFC Freedom 250, i.e. his last opponent; the guide's own example makes him opponent side.",
+  "confidence": "high"
+ },
+ {
+  "id": "632",
+  "question": "firmness",
+  "pick": 1,
+  "reason": "The piece is his own posted letter; the outlet's 'ya mira a su próxima pelea' rests on his words ('volver a levantarte'), so he himself states it.",
+  "confidence": "low"
+ },
+ {
+  "id": "632",
+  "question": "reports_his_health",
+  "pick": 1,
+  "reason": "'Varias secuelas... de las que ya se va recuperando' is one framing clause in the lead; the letter itself carries no health news.",
+  "confidence": "low"
+ },
+ {
+  "id": "508",
+  "question": "centrality",
+  "pick": 1,
+  "reason": "A power-rankings entry retelling the June loss and the 18-0 X status; a name in a ranking with nothing new.",
+  "confidence": "high"
+ },
+ {
+  "id": "508",
+  "question": "source",
+  "pick": 2,
+  "reason": "Nothing new about him; the content is the writer's rankings and opinions. No words of his appear.",
+  "confidence": "high"
+ },
+ {
+  "id": "508",
+  "question": "reports_his_result",
+  "pick": 1,
+  "reason": "The loss to Gaethje is recalled as background to a ranking after UFC Shanghai, not reported as the news.",
+  "confidence": "high"
+ },
+ {
+  "id": "1045",
+  "question": "centrality",
+  "pick": 1,
+  "reason": "A podcast description listing topics; his part is one line ('react to Ilia Topuria being ready to fight') among Noche UFC, Garcia vs Benn, RIZIN x PFL.",
+  "confidence": "medium"
+ },
+ {
+  "id": "1045",
+  "question": "source",
+  "pick": 2,
+  "reason": "'Ready to fight' is quoted without saying who said it; what the page carries is the hosts reacting.",
+  "confidence": "low"
+ },
+ {
+  "id": "1045",
+  "question": "fact",
+  "pick": 1,
+  "reason": "'Ilia Topuria being ready to fight' is a readiness-to-fight-again status, which the guide files under next_fight.",
+  "confidence": "medium"
+ },
+ {
+  "id": "1045",
+  "question": "firmness",
+  "pick": 1,
+  "reason": "Readiness is asserted by the outlet's listing, speaker unnamed: reported rather than official.",
+  "confidence": "low"
+ },
+ {
+  "id": "1045",
+  "question": "reports_his_next_fight",
+  "pick": 2,
+  "reason": "'Ready to fight' is a report of when he can fight again, which the guide counts as next-fight news.",
+  "confidence": "medium"
+ }
+]

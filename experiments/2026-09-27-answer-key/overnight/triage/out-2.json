@@ -1,0 +1,233 @@
+[
+ {
+  "id": "1008",
+  "question": "reports_his_health",
+  "pick": 1,
+  "reason": "News is Dana White saying he is 'ready to fight'; 'recovery has gone well' is one framing clause, and the guide says 'no' when it only says when he will be ready",
+  "confidence": "medium"
+ },
+ {
+  "id": "823",
+  "question": "source",
+  "pick": 2,
+  "reason": "'Про це він повідомив у себе в Instagram': the article sources the win to his own post, and he posts = himself; a bare result with nobody posting would be no_one",
+  "confidence": "low"
+ },
+ {
+  "id": "529",
+  "question": "centrality",
+  "pick": 2,
+  "reason": "Soriano feature tied by the article to Saturday's booked fight with Donchenko, and Soriano adds new content about him ('scary dude, wild dude... young man's fire')",
+  "confidence": "medium"
+ },
+ {
+  "id": "529",
+  "question": "source",
+  "pick": 1,
+  "reason": "Soriano is booked against him ('Saturday's meeting with Donchenko at Accor Arena'), so his words are opponent side",
+  "confidence": "high"
+ },
+ {
+  "id": "529",
+  "question": "act",
+  "pick": 1,
+  "reason": "'100 percent, man; scary dude, wild dude... young man's fire and vigor' rates his danger and level = assesses_him",
+  "confidence": "high"
+ },
+ {
+  "id": "529",
+  "question": "fact",
+  "pick": 1,
+  "reason": "The article states his next fight: Saturday vs Soriano, middle of the main card at Accor Arena; the rest is opinion. A careful editor could call the booking background and answer no_fact",
+  "confidence": "low"
+ },
+ {
+  "id": "529",
+  "question": "firmness",
+  "pick": 1,
+  "reason": "The fight is set and stated as fact ('Saturday's meeting with Donchenko'); official_or_done pairs with next_fight. Same doubt as the fact question",
+  "confidence": "low"
+ },
+ {
+  "id": "34",
+  "question": "act",
+  "pick": 1,
+  "reason": "'I want Ilia Topuria, first fight... we can make it happen' is a manager asking for the fight = callout; 'he'll make Ilia quit' is a prediction but the sub-head is 'Abdelaziz Wants Ilia Topuria'",
+  "confidence": "medium"
+ },
+ {
+  "id": "416",
+  "question": "act",
+  "pick": 2,
+  "reason": "Topuria is one name in a list of who Usman can compete with ('Gaethje, Ilia, Arman, Ruffy, anybody'); nothing is said about Topuria himself",
+  "confidence": "high"
+ },
+ {
+  "id": "300",
+  "question": "fact",
+  "pick": 1,
+  "reason": "The interview is about his TUF purse (20-50k dollars) and asking Dana to sign his friend instead; the Soriano fight is a one-line closing note ('Зазначимо, що 5 вересня...')",
+  "confidence": "medium"
+ },
+ {
+  "id": "368",
+  "question": "fact",
+  "pick": 2,
+  "reason": "Headline and lead are Merab's update on how he is ('está bien... muy fuerte'), plus fractures closed and doctors' rest advice; the 2027 return is vague background, next opponent is a wish list",
+  "confidence": "medium"
+ },
+ {
+  "id": "1172",
+  "question": "fact",
+  "pick": 2,
+  "reason": "The win is background ('п'ять днів із моменту твоєї перемоги'); the one fact he newly asserts is the infection a month before the fight ('Був у госпіталі, мені різали руку'). Mostly opinion, so either is arguable",
+  "confidence": "low"
+ },
+ {
+  "id": "1172",
+  "question": "firmness",
+  "pick": 1,
+  "reason": "He states the infection himself and the win has happened; nothing is 'talks' or unnamed sources, so rumour fits nothing here",
+  "confidence": "high"
+ },
+ {
+  "id": "958",
+  "question": "reports_his_health",
+  "pick": 1,
+  "reason": "Same text as 1008: the news is Dana White's 'ready to fight'; 'recovery has gone well' is one framing clause, and readiness alone is 'no'",
+  "confidence": "medium"
+ },
+ {
+  "id": "817",
+  "question": "source",
+  "pick": 1,
+  "reason": "A fight report: the new information is the result and the writer's own analysis ('Офіційні картки – 30–27...'); his quotes are pre-fight and retold. A result with nobody speaking = no_one",
+  "confidence": "medium"
+ },
+ {
+  "id": "934",
+  "question": "source",
+  "pick": 2,
+  "reason": "The writer picks five possible opponents himself ('Спробуймо розібратися, хто може стати наступним суперником'); Donchenko's Rodriguez callout is retold, not new",
+  "confidence": "high"
+ },
+ {
+  "id": "934",
+  "question": "fact",
+  "pick": 2,
+  "reason": "Opinion piece on who he could fight next; the win over Soriano is background and no booking is reported",
+  "confidence": "high"
+ },
+ {
+  "id": "934",
+  "question": "firmness",
+  "pick": 2,
+  "reason": "No fact asserted, only the writer's options; there are no 'talks' or sources, so not rumour",
+  "confidence": "high"
+ },
+ {
+  "id": "613",
+  "question": "act",
+  "pick": 2,
+  "reason": "He is in the weigh-in list ('Daniil Donchenko (170) vs. Punahele Soriano (170)'); the guide names 'weighed in' as reports_an_event",
+  "confidence": "medium"
+ },
+ {
+  "id": "613",
+  "question": "reports_his_next_fight",
+  "pick": 2,
+  "reason": "The weigh-in is fight-week routine (the guide's fight_week_event), not news of an opponent or date being set, offered or cancelled. A reader could say the card listing names his next fight",
+  "confidence": "low"
+ },
+ {
+  "id": "789",
+  "question": "fact",
+  "pick": 1,
+  "reason": "The article reports the result with detail the day after ('three-round unanimous decision win over Puna Soriano on Saturday's main card', one judge's Round 3); the Rodriguez callout is a wish",
+  "confidence": "medium"
+ },
+ {
+  "id": "789",
+  "question": "firmness",
+  "pick": 1,
+  "reason": "The result has happened (unanimous decision, scorecards described), so official_or_done",
+  "confidence": "medium"
+ },
+ {
+  "id": "789",
+  "question": "reports_his_result",
+  "pick": 1,
+  "reason": "The win over Soriano is reported as news of the same weekend with scorecard detail, not recalled as background",
+  "confidence": "medium"
+ },
+ {
+  "id": "256",
+  "question": "reports_his_health",
+  "pick": 2,
+  "reason": "'suffered facial injuries... recovery timetable is unclear' and 'He's still recovering' are background to Tsarukyan's pick of Chandler; no update on his condition is the news",
+  "confidence": "medium"
+ },
+ {
+  "id": "134",
+  "question": "source",
+  "pick": 1,
+  "reason": "The saved text only describes the UFC's official rankings and links to the official site; the content is the promotion's official record. Thin text, Topuria not in it",
+  "confidence": "low"
+ },
+ {
+  "id": "856",
+  "question": "source",
+  "pick": 1,
+  "reason": "Topuria's part only retells his loss, fractures and 'ha emitido un par de mensajes'; nothing new from him, so answer for the main content: the outlet's own writer",
+  "confidence": "high"
+ },
+ {
+  "id": "856",
+  "question": "act",
+  "pick": 2,
+  "reason": "Regarding him the writer gives a status line: fractures keep him out 'muy probablemente hasta 2027' and he has posted messages = a factual update on him; nobody reports an event of his as news",
+  "confidence": "low"
+ },
+ {
+  "id": "856",
+  "question": "reports_his_result",
+  "pick": 1,
+  "reason": "His June loss to Gaethje is recalled as background in a Spanish-fighters review built around two debutants",
+  "confidence": "high"
+ },
+ {
+  "id": "856",
+  "question": "reports_his_next_fight",
+  "pick": 1,
+  "reason": "'alejado del octágono muy probablemente hasta 2027' is a vague absence, not an opponent, date or readiness",
+  "confidence": "high"
+ },
+ {
+  "id": "1146",
+  "question": "centrality",
+  "pick": 1,
+  "reason": "Makhachev dismisses Amosov ('I don't think he is a dangerous opponent') but the article shares attention with Garry, whom he rates higher, and a section on Garry's coach",
+  "confidence": "medium"
+ },
+ {
+  "id": "850",
+  "question": "source",
+  "pick": 1,
+  "reason": "Tim Welch is Sean O'Malley's coach and O'Malley is a bantamweight; neither is linked to a fight with Topuria",
+  "confidence": "high"
+ },
+ {
+  "id": "592",
+  "question": "fact",
+  "pick": 1,
+  "reason": "The news is a return to public life ('volverá a la luz pública durante este mes de septiembre'), a fact of a kind not listed; not family, home, hobbies or money",
+  "confidence": "medium"
+ },
+ {
+  "id": "605",
+  "question": "source",
+  "pick": 1,
+  "reason": "A booking announcement ('5 вересня... зустрінуться Данило Донченко та Пунахієль Соріано') with nobody speaking; Sport.ua is only the relaying outlet",
+  "confidence": "medium"
+ }
+]
