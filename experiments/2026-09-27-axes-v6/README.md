@@ -27,3 +27,13 @@ rendered: `questions-review.html`):
 **Counts (300):** fact result 88 → 46 (the result yes/no says 50), no fact
 75 → 135; act only mentions him 49; how firm none 135, official 101,
 reported 39, rumour 17, wish 8.
+
+## Proposed, not adopted: source composed with "he speaks"
+
+When "he speaks" says no, drop "himself" from the source answer and take
+the next most likely option (a few lines in consolidate.py; the questions
+do not change). On stored answers, against the Fable readers' labels, it
+changed 8 tune-side answers, all 8 for the better (fight reports become
+"no one", a writer's piece "media"); it breaks video pages whose words are
+not in the saved text (#521). **Parked by the owner (2026-10-01):** to be
+reviewed separately once more articles carry his labels. Not applied.
