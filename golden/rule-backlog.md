@@ -43,6 +43,20 @@ old news, the only new thing is his return to the public eye, and the
 article is not about him. The question only works if "as its news" is read
 strictly.
 
+**Constraint (Anton, #462, 2026-10-02):** he judges "old news" from the
+backstory he knows; a model reading the article cold weighs every fact the
+same. Any rule here must be decidable from the article alone (dates, past
+tense, "after his June loss", "Gaethje guesses"). #462 is the second worked
+example: Gaethje's article recaps the fractures and guesses Topuria will not
+fight until next year; the readers split three ways on fact (next fight /
+health / no fact), Anton chose no fact.
+
+**Consequence to adopt with it:** fact "no fact" means the article carries
+no news about him, so the yes/no news questions (result, next fight,
+health) are all "no", and how firm is "none" (already set in code). Fact
+picks the main news only; when there is news, several yes/no answers can
+be yes (a fight report that also names his next opponent).
+
 ### 4. Content not in the saved text
 *Labelling flag. From #740 and #521.*
 Where the real content is a video (or otherwise not saved) and our text is
