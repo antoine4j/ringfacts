@@ -154,7 +154,8 @@ function questionRow(a, q){
   const k = a.answers[q], fix = rec(a.id).fixes[q];
   const look = needsLook(k);
   const status = k.rechecked ? (k.status === "agreed" ? "both readers (re-asked 28 Sept)" : `re-asked, readers split: ${k.readers.map(human).join(" / ")}`) : k.status === "agreed" ? "both readers" : k.status === "majority" ? `2 of 3 readers, the third Opus (${k.readers.map(human).join(" / ")})` : `readers split: ${k.readers.map(human).join(" / ")}`;
-  const cls = k.value !== null && k.classifier !== k.value ? `<span class="cls">classifier v6: <code>${esc(human(k.classifier))}</code></span>` : "";
+  const cls = k.value === null ? `<span class="cls">classifier v6 picked: <code>${esc(human(k.classifier))}</code></span>` :
+    k.classifier !== k.value ? `<span class="cls">classifier v6: <code>${esc(human(k.classifier))}</code></span>` : "";
   const why = k.value === null ? `<span class="why pick">no answer · pick one</span>` :
     (k.status !== "agreed" ? `<span class="why">readers differed</span>` : "") + (k.classifier !== k.value ? `<span class="why">classifier differs</span>` : "");
   const opts = DATA.defs[q].map(([v]) => `<option value="${esc(v)}" ${fix && fix.value === v ? "selected" : ""}>${esc(human(v))}</option>`).join("");
