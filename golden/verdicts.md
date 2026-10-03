@@ -975,3 +975,14 @@ buy this interpretation."* Of the 9 articles both re-readers moved, #34,
 #892 and #921 are corrected to only mentioned in the page's database. On
 #820 Anton had first kept one of several, then: *"if the same rule
 changes 820 to only mentioned, I can be fine with it."* All 9 moves stand.
+
+## #619: a two-fighter preview is one of several, whatever brought it to us (2026-10-02)
+
+Anton: *"By context Donchenko should be the main one, because we observe
+him; Sport.ua wouldn't write about Soriano, this article is there because
+of Donchenko. But from pure article context it makes sense to say one of
+several, because it explores Donchenko and Soriano in equal measure."*
+Confirmed as the guide's line: the label describes the article, and must
+be decidable from its text alone; why the article reached us is for the
+decider and the settings, not the label. Applies to #599 and the other
+Paris previews the centrality brief flagged as "arguably main subject".
