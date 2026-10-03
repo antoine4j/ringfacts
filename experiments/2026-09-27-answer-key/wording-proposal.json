@@ -1,5 +1,5 @@
 {
- "_about": "Proposed wording for the 'status update' fact value and a narrower 'next fight' (rule backlog item 12). NOT adopted. wording_page.py lays this over the guide and the v6 classifier questions to build the review page. Reader edits are replace / append / set on the guide's current text; classifier edits set whole fields.",
+ "_about": "Classifier wording drafted for v7 (the cls and cls_question entries), and the reader edits that tested the 'status update' value before it was adopted (reader entries; status-pilot/make_guide.py applies them to guide-before.md). wording_page.py shows the classifier entries beside v6; the readers' column on that page comes from the two guides, not from here.",
  "fact": {
   "why": "New value status_update; next_fight narrowed to news that a specific fight exists or changes.",
   "reader_question": {
@@ -87,6 +87,13 @@
     "cls": {
      "what": "A new fact about him that none of the options above describes, status update included; a different answer is needed."
     }
+   },
+   "result": {
+    "why": "The same rule on the fact value. \"An article built on his win or loss\" is dropped: it let in interviews and callouts that follow a win.",
+    "cls": {
+     "what": "The outcome of a fight of his, as the article's news: a fight report or recap of his bout, or his bout on a results page.",
+     "not_for": "A statement, interview or callout after his fight, even when it restates the outcome (that is the fact of what is said, or no fact). His past fight recalled as background to other news; another fighter's result."
+    }
    }
   }
  },
@@ -158,6 +165,29 @@
      " 'Back by spring' is not news of a specific fight, so next fight is no."
     ]
    ]
+  }
+ },
+ "centrality": {
+  "why": "\"Talking about someone else\" (3 October): he is only mentioned when he comments on another fighter and nothing in the article comes back to him.",
+  "options": {
+   "only_mentioned": {
+    "why": "One signal reworded. The old one could be read as: any article where he talks about someone else. An example that must not land here: his slip about another fighter's nickname, with that fighter answering him (#373).",
+    "cls": {
+     "signals": [
+      "his past fight retold as background in someone else's story",
+      "his name or one line in a list, card, ranking, results page or comparison",
+      "he talks about another fighter or the sport, and nothing in the article comes back to him",
+      "a few lines about him inside an article about someone else"
+     ]
+    }
+   }
+  }
+ },
+ "reports_his_result": {
+  "why": "\"Result only for an account of the fight itself\" (3 October): a statement, interview or callout after a fight is no, even when it opens by restating the win (#1172).",
+  "cls_question": {
+   "true": "The article is an account of his fight: a fight report or recap of his bout, or his bout on a results page or card results.",
+   "false": "A statement, interview or callout after his fight, even when it restates the outcome; his past fight recalled as background to other news, such as a next opponent, a quarrel or a rematch talk; or the fight is someone else's and he is not in it."
   }
  }
 }

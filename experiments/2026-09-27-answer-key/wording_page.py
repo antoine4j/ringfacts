@@ -1,7 +1,9 @@
 """Build the wording review page: every question and answer option, today's text beside the proposed text.
 
-Reads the labelling guide (what the readers see), the v6 classifier questions (what JEV sees) and
-wording-proposal.json (the proposed edits), and fills wording-template.html. Changes nothing else.
+Readers' column: the labelling guide as it stood on the morning of 2 October 2026
+(status-pilot/guide-before.md) beside the guide in force now (key-guide.md). Classifier's column:
+the v6 questions beside the wording drafted for v7 in wording-proposal.json. Fills
+wording-template.html and changes nothing else.
 
     python3 wording_page.py   ->  wording-draft.html
 """
@@ -10,7 +12,8 @@ import re
 from pathlib import Path
 
 HERE = Path(__file__).parent
-GUIDE = HERE / "status-pilot" / "guide-before.md"  # the guide before the wording was adopted
+GUIDE_BEFORE = HERE / "status-pilot" / "guide-before.md"
+GUIDE = HERE / "key-guide.md"
 CLASSIFIER = HERE.parent / "2026-09-27-axes-v6" / "classifier-v6" / "questions.json"
 PROPOSAL = HERE / "wording-proposal.json"
 TEMPLATE = HERE / "wording-template.html"
@@ -83,23 +86,6 @@ def parse_guide(text):
     return guide
 
 
-def edit(texts, change):
-    """Apply one proposed reader edit (replace / replace_many / append / set) to a list of paragraphs."""
-    if not change:
-        return list(texts)
-    if "set" in change:
-        return [change["set"]]
-    out = list(texts) or [""]
-    pairs = change.get("replace_many", []) + ([change["replace"]] if "replace" in change else [])
-    for old, new in pairs:
-        hit = [i for i, t in enumerate(out) if old in t]
-        assert hit, f"proposal text not found in guide: {old[:60]}"
-        out[hit[0]] = out[hit[0]].replace(old, new)
-    if "append" in change:
-        out[-1] += change["append"]
-    return out
-
-
 def fields(cur, prop, keys=None):
     """Pair current and proposed texts into the {k, cur, prop} rows the page diffs."""
     keys = keys or [""] * max(len(cur), len(prop))
@@ -124,11 +110,14 @@ def tag(*sides):
     return "chg" if any(f["cur"] != f["prop"] for f in rows) else "same"
 
 
-def build_question(qid, guide_q, cls_q, plan):
-    """One question: its text, then every answer option, each with reader and classifier rows."""
+def build_question(qid, before_q, guide_q, cls_q, plan):
+    """One question: its text, then every answer option, each with reader and classifier rows.
+
+    before_q and guide_q are the question in the earlier guide and in the guide in force.
+    """
     options_plan = plan.get("options", {})
-    extra = ["extra rule"] * (len(guide_q["text"]) - 1)
-    reader_q = {"fields": fields(guide_q["text"], edit(guide_q["text"], plan.get("reader_question")), [""] + extra)}
+    extra = ["extra rule"] * (max(len(before_q["text"]), len(guide_q["text"])) - 1)
+    reader_q = {"fields": fields(before_q["text"], guide_q["text"], [""] + extra)}
     criteria = cls_q["criteria"]
     if cls_q["type"] == "noul":
         cls_cur = {"instructions": cls_q["instructions"], **criteria}
@@ -140,7 +129,7 @@ def build_question(qid, guide_q, cls_q, plan):
         order = list(criteria)
         # values only the guide has go first (firmness none); new values go after the one they name
         order = [v for v in guide_q["values"] if READER_NAME.get(v, v) not in order and v not in order
-                 and v not in READER_NAME.values()] + order
+                 and v not in READER_NAME.values() and not options_plan.get(v, {}).get("new")] + order
         for name, change in options_plan.items():
             if change.get("new"):
                 order.insert(order.index(change["after"]) + 1, name)
@@ -154,8 +143,9 @@ def build_question(qid, guide_q, cls_q, plan):
         if name in READER_ABSENT:
             reader = {"absent": READER_ABSENT[name]}
         else:
-            cur = [guide_q["values"][reader_name]] if reader_name in guide_q["values"] else []
-            reader = {"fields": fields(cur, edit(cur, change.get("reader")))}
+            cur = [before_q["values"][reader_name]] if reader_name in before_q["values"] else []
+            now = [guide_q["values"][reader_name]] if reader_name in guide_q["values"] else []
+            reader = {"fields": fields(cur, now)}
         cls = {"absent": CLS_ABSENT[name]} if name in CLS_ABSENT else {"fields": cls_fields(criteria.get(name), change.get("cls"))}
         shown = name if reader_name == name else f"{name} (readers: {reader_name})"
         question["options"].append({"id": shown, "why": change.get("why", ""), "reader": reader, "cls": cls,
@@ -165,23 +155,23 @@ def build_question(qid, guide_q, cls_q, plan):
     return question
 
 
-def build_notes(guide, plan):
+def build_notes(before, guide, plan):
     """The reader-only parts of the guide: opening, the shared yes/no rule, the output example."""
     notes = []
     for key, title in [("opening", "Opening of the guide"), ("news_questions", "Shared rule for the yes/no questions"),
                        ("output", "Output example")]:
-        reader = {"fields": fields(guide[key], edit(guide[key], plan.get(key)))}
+        reader = {"fields": fields(before[key], guide[key])}
         notes.append({"title": title, "why": plan.get(key, {}).get("why", ""), "reader": reader, "tag": tag(reader)})
     return notes
 
 
 def main():
     """Build the page and print how many questions and options changed."""
-    guide = parse_guide(GUIDE.read_text())
+    before, guide = parse_guide(GUIDE_BEFORE.read_text()), parse_guide(GUIDE.read_text())
     classifier = json.loads(CLASSIFIER.read_text())
     proposal = json.loads(PROPOSAL.read_text())
-    questions = [build_question(q, guide["questions"][q], classifier[q], proposal.get(q, {})) for q in classifier]
-    data = {"questions": questions, "notes": build_notes(guide, proposal["_notes"])}
+    questions = [build_question(q, before["questions"][q], guide["questions"][q], classifier[q], proposal.get(q, {})) for q in classifier]
+    data = {"questions": questions, "notes": build_notes(before, guide, proposal["_notes"])}
     OUT.write_text(TEMPLATE.read_text().replace("/*DATA*/", json.dumps(data, ensure_ascii=False)))
     for q in questions:
         moved = [o["id"] for o in q["options"] if o["tag"] != "same"]
