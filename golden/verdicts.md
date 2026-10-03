@@ -1006,3 +1006,19 @@ the line: *"let's keep A, if there's real article content that makes the
 model go one way or another, like the third-party rumour."* The test is
 in the text: is a rumour or talks reported by someone other than the
 speaker.
+
+## #913: the same quote, framed as his options, is next-fight news (2026-10-02)
+
+ABC's piece (paywalled live; the saved text is the full article) lays out
+Topuria's two next-fight paths, the Gaethje rematch that Anik says will
+happen or the Pimblett rivalry, recalls the UFC's failed January attempt,
+and quotes Pimblett's wish as one input. The rule 3 reader took it as a
+Pimblett wish piece (no fact); Anton, on the translation: *"based on how
+it's written from Topuria's view on two options, I agree"* that the fact
+is next fight at rumour and reports his next fight is yes. The same Anik
+line is background in #1002 (a closing sentence under Pantoja's message)
+and the spine here. Anton: *"It's interesting how the writing style can
+differ. It's the same thing, but written differently, and it causes
+different flags."* That is by design: the label describes the article as
+written; the claims layer is where the same event is recognised across
+articles.
