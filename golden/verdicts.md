@@ -986,3 +986,16 @@ Confirmed as the guide's line: the label describes the article, and must
 be decidable from its text alone; why the article reached us is for the
 decider and the settings, not the label. Applies to #599 and the other
 Paris previews the centrality brief flagged as "arguably main subject".
+
+## A reported rumour is a fact at rumour firmness; a wish alone is no fact (2026-10-02)
+
+Seven Pimblett pieces from the same two days split under rule 3: #820,
+#838, #871 report a third-party rumour (Tim Welch, "rumoured for UFC 335")
+that Pimblett answers, so fact next fight at rumour, reports his next
+fight yes; #843, #892, #913, #921 carry only his wish ("I'd love to smash
+his head in", a hit list), so no fact. Anton saw the disparity, was shown
+the line and the alternative (collapse all seven to no fact), and kept
+the line: *"let's keep A, if there's real article content that makes the
+model go one way or another, like the third-party rumour."* The test is
+in the text: is a rumour or talks reported by someone other than the
+speaker.
