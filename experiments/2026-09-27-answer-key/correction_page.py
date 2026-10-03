@@ -91,7 +91,8 @@ def overnight():
     briefs = {}
     for key in boundaries["order"]:
         path = os.path.join(night, "briefs", f"out-{key}.json")
-        briefs[key] = json.load(open(path)) if os.path.exists(path) else None
+        # the agents wrote for "the owner"; the page speaks to Anton directly
+        briefs[key] = json.loads(re.sub(r"\b[Tt]he owner's\b", "your", re.sub(r"\b[Tt]he owner\b", "you", open(path).read()))) if os.path.exists(path) else None
     recheck = {}
     for path in sorted(glob.glob(os.path.join(night, "recheck", "[AB]-*.json"))):
         letter = os.path.basename(path)[0]
