@@ -1122,3 +1122,9 @@ moves (status-pilot/result.json). Anton went through them on the page:
   fact. #1089: White's line about Topuria is the frame of a Gaethje piece.
   #620: the same video letter to his son as #627 and #651, under a headline
   that says he announces his return.
+
+The 16 intended moves were then written to the page as corrections with a
+note each (status update: #958, #972, #991, #998, #1008, #1020, #1031,
+#1036, #1058, #1076, #572, #592; health: #152, #402, with #412 losing its
+next-fight yes; no fact: #129). None of the 16 cards was marked checked
+before, and the health corrections already on five of them were kept.
