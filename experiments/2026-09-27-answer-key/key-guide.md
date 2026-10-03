@@ -92,7 +92,7 @@ message; the rematch rumour is a closing line: no fact, next fight no).
 
 | value | means |
 |---|---|
-| `next_fight` | news of his next fight: an opponent, a date, an offer, talks, a cancellation, or when he will be ready to fight again. Not a wish or an opinion about who he should fight (a callout, a pundit's pick): that is `no_fact`. A rumour about his next fight reported from a third party (a coach, an outlet, "reports suggest"), even when its subject denies it, is `next_fight` at firmness `rumour`; the speaker's own wish with no reported rumour or talks is `no_fact` (Anton, 2026-10-02: #820 vs #843) |
+| `next_fight` | news of his next fight: an opponent, a date, an offer, talks, a cancellation, or when he will be ready to fight again. Not a wish or an opinion about who he should fight (a callout, a pundit's pick): that is `no_fact`. A rumour about his next fight reported from a third party (a coach, an outlet, "reports suggest"), even when its subject denies it, is `next_fight` at firmness `rumour`; the speaker's own wish with no reported rumour or talks is `no_fact` (Anton, 2026-10-02: #820 vs #843). A rumour counts only when the article gives it substance: who said it, or a date or event. "Amid rumours" framing with no who, when or where is a wish piece (#871) |
 | `result` | the outcome of a fight of his, as the news (a fight report, his bout on a results page) |
 | `fight_week_event` | the routine of a fight of his, and nothing more: weigh-in, face-off, open workout, card order, start times. An interview, press conference or media day is a place where things are said, not a fact: what is said there takes its own value, or `no_fact` |
 | `health` | injury, medical issue, surgery, recovery, as news |

@@ -996,8 +996,11 @@ fight yes; #843, #892, #913, #921 carry only his wish ("I'd love to smash
 his head in", a hit list), so no fact. #871 was first put with the rumour
 pair on its headline ("Rumored ... Grudge Fight"); Anton asked *"do we
 have a third-party rumour in 871 though?"* and the body has none, only
-the interviewer's question and Pimblett's wish, so it is no fact. The
-headline alone does not make a rumour: the text has to report one. Anton saw the disparity, was shown
+the interviewer's question and Pimblett's wish, so it was put with the wishes. The body does carry one unsourced line ("with rumors
+swirling that Topuria could make his UFC return against Pimblett");
+Anton, shown the choice (any asserted rumour counts, or only one with a
+who, when or where): *"go with no for this one."* A rumour needs
+substance; "amid rumours" framing alone is a wish piece. Anton saw the disparity, was shown
 the line and the alternative (collapse all seven to no fact), and kept
 the line: *"let's keep A, if there's real article content that makes the
 model go one way or another, like the third-party rumour."* The test is
