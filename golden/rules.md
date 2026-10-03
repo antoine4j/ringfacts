@@ -7,6 +7,14 @@ guide (experiments/2026-09-27-answer-key/key-guide.md); the day each rule
 was decided, with Anton's words, is in [verdicts.md](verdicts.md); rules
 not yet decided are in [rule-backlog.md](rule-backlog.md).
 
+**Guarded by a test.** [rules.json](rules.json) lists, for every rule here,
+the exact sentences the labelling guide must contain, and
+`golden/rules.test.js` (part of `npm test`, which runs before every commit)
+fails if one of them is no longer in the guide. So a rule cannot be dropped
+from the prompt by accident. To add a rule: add it here, add its sentences
+to rules.json, and the test also checks the two lists name the same rules.
+To reword a rule on purpose: change the guide and rules.json together.
+
 Some rules were known by a number or letter while they were being
 discussed ("rule 3", "rule A"). Those were positions in a list, nothing
 more. The old nickname is given with each rule, because the notes on the

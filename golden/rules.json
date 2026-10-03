@@ -1,0 +1,314 @@
+{
+ "about": "Every labelling rule in force (golden/rules.md), with the sentences in the readers' guide that carry it. golden/rules.test.js fails when a sentence listed here is no longer in the guide, so a rule cannot be dropped from the prompt by accident. To change a rule's wording on purpose, change the guide and the sentence here in the same commit.",
+ "guide": "experiments/2026-09-27-answer-key/key-guide.md",
+ "rules": [
+  {
+   "id": "label-the-article",
+   "name": "Label the article, not what Anton cares about",
+   "guide_must_say": [
+    "Answer what the article is, not what a reader would want."
+   ],
+   "articles": [],
+   "classifier": "n/a"
+  },
+  {
+   "id": "only-the-saved-text",
+   "name": "Only the saved text counts",
+   "guide_must_say": [
+    "reading the whole saved text",
+    "is not the article's content",
+    "do his own words appear in the saved text"
+   ],
+   "articles": [
+    "44"
+   ],
+   "classifier": "n/a"
+  },
+  {
+   "id": "only-what-is-new",
+   "name": "Only what is new",
+   "guide_must_say": [
+    "All nine answers describe the article's one main claim.",
+    "it does not set the fact, and it does not turn a yes/no question to yes"
+   ],
+   "articles": [
+    "856",
+    "462",
+    "1002"
+   ],
+   "classifier": "missing"
+  },
+  {
+   "id": "no-fact-means-nothing-else",
+   "name": "No fact means nothing else either",
+   "guide_must_say": [
+    "When the fact is no_fact, firmness is none and the three news questions (result, next fight, health) are no."
+   ],
+   "articles": [],
+   "classifier": "partly, in code"
+  },
+  {
+   "id": "fact-inside-the-main-claim",
+   "name": "A fact stated inside the main claim belongs to it",
+   "guide_must_say": [
+    "a fact stated inside the main claim belongs to it"
+   ],
+   "articles": [
+    "723"
+   ],
+   "classifier": "missing"
+  },
+  {
+   "id": "news-questions-main-or-second-fact",
+   "name": "The three news questions: the main fact or a second fact, never a mention",
+   "guide_must_say": [
+    "as the main fact, or as a second fact stated beside it",
+    "They never mean \"is it mentioned\""
+   ],
+   "articles": [],
+   "classifier": "missing"
+  },
+  {
+   "id": "new-not-long",
+   "name": "New, not long",
+   "guide_must_say": [
+    "judge what is new about him, not how long his part is"
+   ],
+   "articles": [],
+   "classifier": "missing"
+  },
+  {
+   "id": "talking-about-someone-else",
+   "name": "Talking about someone else",
+   "guide_must_say": [
+    "when nothing in the article comes back to him"
+   ],
+   "articles": [
+    "1260",
+    "373"
+   ],
+   "classifier": "drafted for v7"
+  },
+  {
+   "id": "callout-is-the-other-fighters-story",
+   "name": "A callout is the other fighter's story",
+   "guide_must_say": [
+    "is that fighter's story, never main_subject",
+    "a fighter only rumoured or calling him out does not count"
+   ],
+   "articles": [
+    "273",
+    "843",
+    "871",
+    "921",
+    "913"
+   ],
+   "classifier": "missing"
+  },
+  {
+   "id": "two-fighter-preview",
+   "name": "A two-fighter preview is one of several",
+   "guide_must_say": [
+    "a preview or feature on a fight of his covering both fighters"
+   ],
+   "articles": [
+    "619"
+   ],
+   "classifier": "in v6"
+  },
+  {
+   "id": "booked-or-fought",
+   "name": "Booked or fought",
+   "guide_must_say": [
+    "Booked or fought only",
+    "does not make him an opponent"
+   ],
+   "articles": [
+    "820"
+   ],
+   "classifier": "missing"
+  },
+  {
+   "id": "another-fighters-camp",
+   "name": "Another fighter's camp is \"other fighter's side\"",
+   "guide_must_say": [
+    "or that fighter's coach, manager or team"
+   ],
+   "articles": [],
+   "classifier": "missing"
+  },
+  {
+   "id": "fighter-is-a-fighter",
+   "name": "A fighter is a fighter, active or retired",
+   "guide_must_say": [
+    "A fighter is a fighter, active or retired"
+   ],
+   "articles": [
+    "879",
+    "905"
+   ],
+   "classifier": "missing"
+  },
+  {
+   "id": "act-needs-a-plain-statement",
+   "name": "An act needs a plain statement about him",
+   "guide_must_say": [
+    "An act needs a plain statement about him",
+    "gives_news_of_him is never the act when question 4 is no_fact"
+   ],
+   "articles": [
+    "457",
+    "484",
+    "492",
+    "975",
+    "1045"
+   ],
+   "classifier": "missing"
+  },
+  {
+   "id": "callout-not-only-literal",
+   "name": "A callout is not only a literal callout",
+   "guide_must_say": [
+    "Not only a literal callout",
+    "Mock advice is calls_him_out"
+   ],
+   "articles": [
+    "287",
+    "889"
+   ],
+   "classifier": "missing"
+  },
+  {
+   "id": "speaks-of-himself-watched-only",
+   "name": "\"Speaks of himself\" is only for the watched fighter",
+   "guide_must_say": [
+    "speaks_of_himself is only possible with source himself"
+   ],
+   "articles": [
+    "492"
+   ],
+   "classifier": "in v6"
+  },
+  {
+   "id": "next-fight-specific-fight",
+   "name": "Next fight means a specific fight exists or changes",
+   "guide_must_say": [
+    "news that a specific fight of his exists or has changed",
+    "It counts when he himself says he has a fight"
+   ],
+   "articles": [],
+   "classifier": "drafted for v7"
+  },
+  {
+   "id": "rumour-needs-who-when-where",
+   "name": "A rumour needs a who, a when or a where",
+   "guide_must_say": [
+    "A rumour counts only when the article gives it substance: who said it, or a date or event"
+   ],
+   "articles": [
+    "820",
+    "871",
+    "862",
+    "901",
+    "913"
+   ],
+   "classifier": "drafted for v7"
+  },
+  {
+   "id": "wish-is-no-fact",
+   "name": "A wish is no fact, whoever makes it",
+   "guide_must_say": [
+    "Wishes, demands, callouts, picks and guesses at his timing are all no_fact, whoever makes them"
+   ],
+   "articles": [
+    "129",
+    "851"
+   ],
+   "classifier": "in v6"
+  },
+  {
+   "id": "status-update-after-specific-kinds",
+   "name": "Status update, after the specific kinds",
+   "guide_must_say": [
+    "Pick the specific value first",
+    "news of where he stands as a fighter"
+   ],
+   "articles": [
+    "998",
+    "572",
+    "592",
+    "228"
+   ],
+   "classifier": "drafted for v7"
+  },
+  {
+   "id": "health-wins-over-return-date",
+   "name": "Health wins over a return date",
+   "guide_must_say": [
+    "however briefly, the fact is health"
+   ],
+   "articles": [
+    "152",
+    "402",
+    "412"
+   ],
+   "classifier": "drafted for v7"
+  },
+  {
+   "id": "health-follows-who-states-it",
+   "name": "Health follows who states it",
+   "guide_must_say": [
+    "states his condition as a statement of its own"
+   ],
+   "articles": [
+    "627"
+   ],
+   "classifier": "missing"
+  },
+  {
+   "id": "post-or-letter",
+   "name": "A post or letter takes the label of what it says",
+   "guide_must_say": [
+    "takes the value of what it says"
+   ],
+   "articles": [
+    "620",
+    "627",
+    "651"
+   ],
+   "classifier": "drafted for v7"
+  },
+  {
+   "id": "result-only-fight-account",
+   "name": "Result only for an account of the fight itself",
+   "guide_must_say": [
+    "Yes only for an account of the fight itself",
+    "An account of the fight itself; a statement, interview or callout after it takes the value of what is said"
+   ],
+   "articles": [
+    "1172",
+    "851",
+    "778"
+   ],
+   "classifier": "drafted for v7"
+  },
+  {
+   "id": "interview-is-a-place",
+   "name": "An interview is a place, not a fact",
+   "guide_must_say": [
+    "is a place where things are said, not a fact"
+   ],
+   "articles": [],
+   "classifier": "in v6"
+  },
+  {
+   "id": "own-unsigned-fight-is-reported",
+   "name": "His own unsigned fight is \"reported\"",
+   "guide_must_say": [
+    "when he says he has a fight but it is not signed or announced, that is reported"
+   ],
+   "articles": [],
+   "classifier": "drafted for v7"
+  }
+ ]
+}
