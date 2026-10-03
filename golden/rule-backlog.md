@@ -33,6 +33,21 @@ answers changed, all 8 for the better (fight reports become "no one", a
 writer's article "media"). Breaks video pages whose words are not in the
 saved text (#521). Anton: review once more articles carry his labels.
 
+### 13. A long interview where a hard fact is one paragraph of many
+*Labelling. From #1172, 2026-10-03. Parked by Anton: "I would park this
+thought and not change anything for now."*
+#1172 is a very long Donchenko interview after his Paris win. Under the
+health rule (a fact stated inside the main claim belongs to it) its fact is
+health, because he tells of his infection and hospital stay in his own
+words. But that is one paragraph among many about his fight, his year and
+his plans. His thought: for such articles the fact could stay no fact (or
+whatever the piece is mainly about) and health be carried only by the
+"reports his health" question, which is what a second fact is for. The two
+re-readers of 2026-10-02 split on it the same way (no fact / health).
+Related, from the same card: the saved text is cut at 10,000 characters
+(the fetcher's cap; it ends mid-word), so readers and the classifier never
+see the rest of a long page.
+
 ## Proposed, not yet discussed
 
 ### 4. Content not in the saved text
