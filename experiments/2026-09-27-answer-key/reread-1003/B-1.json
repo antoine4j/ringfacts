@@ -1,0 +1,237 @@
+[
+ {
+  "id": "k01",
+  "main_claim": "Dana White weighs Gaethje's possible retirement against the money still on the table for him, and says the big talk is whether Topuria fights Gaethje or Pimblett next.",
+  "centrality": "one_of_several",
+  "act": "gives_news_of_him",
+  "fact": "status_update",
+  "reports_his_result": "no",
+  "he_speaks": "no",
+  "unsure": [
+   "centrality",
+   "act",
+   "fact"
+  ],
+  "note": "The article is Gaethje's story, tied to a rematch with Topuria, whom he already fought; White's 'Is he going to fight Gaethje, or ... Paddy Pimblett?' names opponents only as options, which I read as status_update stated by the promotion. An editor could call Topuria only_mentioned and the White line talk with no fact (act none_of_these, fact no_fact)."
+ },
+ {
+  "id": "k02",
+  "main_claim": "Pimblett has no fight booked, expects to return in December, and would love to fight Topuria though nobody has spoken to him about it.",
+  "centrality": "only_mentioned",
+  "act": "calls_him_out",
+  "fact": "no_fact",
+  "reports_his_result": "no",
+  "he_speaks": "no",
+  "unsure": [],
+  "note": "Pimblett's own news; Topuria is a wanted opponent ('would love to fight him', 'No one's spoke to me about it'), a wish with no talks, so no fact."
+ },
+ {
+  "id": "k03",
+  "main_claim": "Pimblett says he would love to 'smash his head in' but nobody has spoken to him about a Topuria fight, and lists other names for a December return.",
+  "centrality": "only_mentioned",
+  "act": "calls_him_out",
+  "fact": "no_fact",
+  "reports_his_result": "no",
+  "he_speaks": "no",
+  "unsure": [
+   "centrality",
+   "fact"
+  ],
+  "note": "Pimblett's story and a callout; Topuria's loss, fractures and essay are recap. 'Rumors swirling' has no who, when or where, so I treat it as a wish piece, though the headline's 'rumored' fight and the long Topuria recap could support one_of_several and next_fight at rumour."
+ },
+ {
+  "id": "k04",
+  "main_claim": "Donchenko beat Punahele Soriano by unanimous decision at UFC Fight Night 287 in Paris.",
+  "centrality": "main_subject",
+  "act": "reports_an_event",
+  "fact": "result",
+  "reports_his_result": "yes",
+  "he_speaks": "no",
+  "unsure": [],
+  "note": "A fight report with scores 30-27, 30-27, 29-28 and a round-by-round account; the embedded post is the UFC's, not his, and his callout of Rodriguez is only described."
+ },
+ {
+  "id": "k05",
+  "main_claim": "Pimblett says he'd love to fight Topuria but there have been no talks, names other opponents and targets December.",
+  "centrality": "only_mentioned",
+  "act": "calls_him_out",
+  "fact": "no_fact",
+  "reports_his_result": "no",
+  "he_speaks": "no",
+  "unsure": [
+   "centrality"
+  ],
+  "note": "Pimblett's timeline and hit list; 'I'd love to smash his head in' is the callout, and the 'growing chatter' of a Gaethje rematch has no named source. The piece opens on a Topuria fight, so one_of_several is arguable."
+ },
+ {
+  "id": "k06",
+  "main_claim": "Topuria said on a podcast he was never a big fan of Demetrious Johnson because of the nickname, which he mistook for 'Mickey Mouse', and Johnson replied.",
+  "centrality": "one_of_several",
+  "act": "speaks_of_himself",
+  "fact": "no_fact",
+  "reports_his_result": "no",
+  "he_speaks": "yes",
+  "unsure": [
+   "act",
+   "centrality"
+  ],
+  "note": "His own quoted slip ('I never was a big fan of him ... Mickey Mouse') with Johnson answering him matches the guide's one_of_several case. He speaks of his own fandom, so speaks_of_himself, though it is mostly talk about another fighter and none_of_these is arguable."
+ },
+ {
+  "id": "k07",
+  "main_claim": "Merab Dvalishvili says Topuria is enjoying life, is well, and will take the belt back when he returns.",
+  "centrality": "main_subject",
+  "act": "gives_news_of_him",
+  "fact": "personal_life",
+  "reports_his_result": "no",
+  "he_speaks": "no",
+  "unsure": [
+   "fact"
+  ],
+  "note": "Built on Dvalishvili's 'Está disfrutando de la vida ... muy apegado a sus amigos y familia', plus sightings at the cinema and parties: life outside the cage. He also says 'se encuentra bien (físicamente)', a named person stating his condition, so health is a reasonable alternative; the return timing is called 'puras especulaciones'."
+ },
+ {
+  "id": "k08",
+  "main_claim": "Gaethje says his hands are still hurt, he will not fight again in 2026, and he does not think a Topuria rematch is his next fight.",
+  "centrality": "one_of_several",
+  "act": "none_of_these",
+  "fact": "no_fact",
+  "reports_his_result": "no",
+  "he_speaks": "no",
+  "unsure": [
+   "centrality"
+  ],
+  "note": "Gaethje's own news, tied to a discussed rematch with Topuria, whom he already beat. About Topuria he only guesses ('probably not going to fight until next year') and gives his own stance ('I don't think that's my next fight'), which the guide says is no act and no fact; with nothing new about Topuria, only_mentioned is arguable."
+ },
+ {
+  "id": "k09",
+  "main_claim": "Pimblett says he wants Topuria or Tsarukyan next.",
+  "centrality": "only_mentioned",
+  "act": "calls_him_out",
+  "fact": "no_fact",
+  "reports_his_result": "no",
+  "he_speaks": "no",
+  "unsure": [
+   "centrality"
+  ],
+  "note": "Pimblett's callout on a podcast ('I'd love to fight him and give him ...'); 'does not have a fight booked' is the writer's aside and the rest is the writer's speculation. He is one of two named targets and gets a paragraph, so one_of_several is arguable."
+ },
+ {
+  "id": "k10",
+  "main_claim": "Pimblett asks for a fight with Topuria at the end of the year: 'Me encantaría aplastarle la cabeza'.",
+  "centrality": "only_mentioned",
+  "act": "calls_him_out",
+  "fact": "no_fact",
+  "reports_his_result": "no",
+  "he_speaks": "no",
+  "unsure": [
+   "centrality"
+  ],
+  "note": "A callout is the other fighter's story; the eye injuries are 'cabe recordar' background and 'reaparecerá cuando se sienta plenamente preparado' is the writer's unsourced line. The headline and frame are built around Topuria, so one_of_several is arguable."
+ },
+ {
+  "id": "k11",
+  "main_claim": "Daniel Rodriguez answered Donchenko's callout on Instagram with a middle-finger emoji.",
+  "centrality": "one_of_several",
+  "act": "calls_him_out",
+  "fact": "no_fact",
+  "reports_his_result": "no",
+  "he_speaks": "no",
+  "unsure": [
+   "centrality"
+  ],
+  "note": "Rodriguez 'responded ... by sharing the callout with a middle-finger emoji': a taunt aimed at him, no new fact ('The UFC has not confirmed'). The win over Soriano is background. The piece splits between the two men; main_subject is arguable since the reply is about him."
+ },
+ {
+  "id": "k12",
+  "main_claim": "Pimblett says he would love to fight Topuria next but nobody has spoken to him about it.",
+  "centrality": "only_mentioned",
+  "act": "calls_him_out",
+  "fact": "no_fact",
+  "reports_his_result": "no",
+  "he_speaks": "no",
+  "unsure": [
+   "centrality",
+   "fact"
+  ],
+  "note": "Pimblett's callout ('I'd love to smash his head in ... No one's spoke to me about it'). The closing line that Jon Anik claimed internal talks of a Gaethje rematch is a named rumour, which could make it next_fight at rumour, but it sits as a closing aside to Pimblett's story."
+ },
+ {
+  "id": "k13",
+  "main_claim": "Donchenko beat Punahele Soriano by unanimous decision in Paris for his fourth straight UFC win.",
+  "centrality": "main_subject",
+  "act": "reports_an_event",
+  "fact": "result",
+  "reports_his_result": "yes",
+  "he_speaks": "no",
+  "unsure": [],
+  "note": "A result report with scores and two knockdowns. His Instagram post is only described, and 'хороші друзі' is a few words recalled from an earlier occasion, so he does not speak."
+ },
+ {
+  "id": "k14",
+  "main_claim": "Donchenko says Makhachev's 18-win streak is less spectacular than Anderson Silva's and that Amosov could test the champion.",
+  "centrality": "only_mentioned",
+  "act": "none_of_these",
+  "fact": "no_fact",
+  "reports_his_result": "no",
+  "he_speaks": "yes",
+  "unsure": [
+   "act",
+   "centrality"
+  ],
+  "note": "He is quoted at length but only about other fighters ('different kind of wins'), which the guide rules only_mentioned; nothing is said about him, so act is none_of_these (it would be 'he comments on others'). The guide's 'source himself means speaks_of_himself' could argue otherwise; his Soriano win is background."
+ },
+ {
+  "id": "k15",
+  "main_claim": "Debutants Hecher Sosa and Fabià Sintes saved Spain's 2026 in the UFC after losses by the established names.",
+  "centrality": "only_mentioned",
+  "act": "none_of_these",
+  "fact": "no_fact",
+  "reports_his_result": "no",
+  "he_speaks": "no",
+  "unsure": [],
+  "note": "Topuria gets a paragraph recalling the June 14 loss and fractures and one line that he 'ha emitido un par de mensajes': all recap, the guide's own example. Nobody does anything regarding him, hence none_of_these."
+ },
+ {
+  "id": "k16",
+  "main_claim": "After beating Soriano in Paris, Donchenko calls for a fight with Daniel Rodriguez, ideally at the end of the year over five rounds.",
+  "centrality": "main_subject",
+  "act": "speaks_of_himself",
+  "fact": "no_fact",
+  "reports_his_result": "no",
+  "he_speaks": "yes",
+  "unsure": [
+   "fact",
+   "reports_his_result"
+  ],
+  "note": "Headline and lead are his callout ('Please, let me fight just with him'), a wish, so no fact and result no under the after-fight-statement rule. One paragraph does recount the fight round by round, so result / yes is arguable."
+ },
+ {
+  "id": "k17",
+  "main_claim": "A preview of Donchenko vs Soriano in Paris: why it is his hardest fight, how it may go, and the writer's pick of Donchenko.",
+  "centrality": "one_of_several",
+  "act": "predicts_his_fight",
+  "fact": "no_fact",
+  "reports_his_result": "no",
+  "he_speaks": "no",
+  "unsure": [
+   "centrality",
+   "fact"
+  ],
+  "note": "A preview covering both fighters at length, ending 'я все ж таки схиляюся до перемоги Донченка'. The booking and main-card slot are the premise, not news; main_subject (the headline is about him) and fight_week_event (first main-card slot) are arguable."
+ },
+ {
+  "id": "k18",
+  "main_claim": "Pimblett, asked about a Topuria fight, says he would love to smash his head in but nobody has spoken to him about it.",
+  "centrality": "one_of_several",
+  "act": "calls_him_out",
+  "fact": "no_fact",
+  "reports_his_result": "no",
+  "he_speaks": "no",
+  "unsure": [
+   "centrality",
+   "fact"
+  ],
+  "note": "Headline and quote are Pimblett's wish ('Me encantaría destrozarle la cabeza ... Nadie me ha hablado de eso'), but half the text analyses Topuria's two options, so I gave one_of_several; only_mentioned fits the callout rule. Jon Anik 'está asegurando' the Gaethje rematch is a named rumour that could make it next_fight."
+ }
+]

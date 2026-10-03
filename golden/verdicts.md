@@ -1275,3 +1275,25 @@ All 75 cards of step 1 ("readers differed") are checked. The last rulings:
 The copy check after step 1 is clean: 33 near-identical pairs, 30 with
 identical labels, and the 3 that differ are different UFC.com video pages
 (#521, #740, #746).
+
+## The blind re-read after step 1, and what it changed (2026-10-03)
+
+Two blind readers on 35 articles under the guide as it stood after step 1
+(experiments/2026-09-27-answer-key/reread-1003). Both gave the key's
+answer on 161 of 175 answers. Five of the six rules decided on 3 October
+are carried by the wording. The sixth was half written: the guide said a
+callout article is "never main subject" and did not say a callout alone
+leaves him only mentioned; one reader of two gave one of several on all
+five Pimblett callouts. The sentence was added.
+
+- **#913: main subject becomes one of several.** Both readers: the piece
+  is built on Pimblett's quote and half of it weighs Topuria's two
+  options. Anton: *"I'm okay to go with readers."* The rule now reads: a
+  callout alone is only mentioned; when the article itself adds something
+  new about him, one of several.
+- **#516: steers him becomes none of these.** Both readers applied the
+  sentence "a forecast of what the matchmakers will do" is not an act.
+  Anton: *"okay with none of these."* This corrects the count in the
+  section above: of the eight cards in the group, six end as none of
+  these.
+- **#1089 stays no fact**, with both readers again at status update.

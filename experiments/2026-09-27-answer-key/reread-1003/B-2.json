@@ -1,0 +1,216 @@
+[
+ {
+  "id": "k19",
+  "main_claim": "Donchenko beat Punahele Soriano by unanimous decision at UFC Paris and called out Daniel Rodriguez.",
+  "centrality": "main_subject",
+  "act": "reports_an_event",
+  "fact": "result",
+  "reports_his_result": "yes",
+  "he_speaks": "no",
+  "unsure": [],
+  "note": "A round-by-round account ending in 'Official decision: Daniil Donchenko defeated Punahele Soriano by unanimous decision'. His callout of Rodriguez is only described, not quoted, so he does not speak."
+ },
+ {
+  "id": "k20",
+  "main_claim": "Topuria, in his first statement after losing to Gaethje, praised Gaethje, described vision loss in both eyes during the fight and said he plans to heal and seek a rematch.",
+  "centrality": "main_subject",
+  "act": "speaks_of_himself",
+  "fact": "health",
+  "reports_his_result": "no",
+  "he_speaks": "no",
+  "unsure": [
+   "fact",
+   "he_speaks"
+  ],
+  "note": "'He later detailed on Instagram vision loss in both eyes during the fight' is the one hard fact in his statement, so fact is health; an editor could read the piece as a post-fight reflection plus a rematch wish (no_fact). His post is paraphrased ('wrote there were no excuses'), never quoted, so he_speaks is no, though the paraphrase is close to his words. The TKO loss is the premise of the statement, not a fight account."
+ },
+ {
+  "id": "k21",
+  "main_claim": "Dana White says Topuria is ready to fight, though nothing is on the schedule, and that either a Gaethje rematch or Pimblett would be fine.",
+  "centrality": "main_subject",
+  "act": "gives_news_of_him",
+  "fact": "status_update",
+  "reports_his_result": "no",
+  "he_speaks": "no",
+  "unsure": [],
+  "note": "White: 'No lo tenemos en la agenda por ahora, pero ... Topuria está listo para pelea'; Gaethje and Pimblett are named only as options ('Ambas me parecen bien'), so it is where he stands, not a specific fight. The fractures are the writer's recap."
+ },
+ {
+  "id": "k22",
+  "main_claim": "A podcast episode blurb: the hosts react to Topuria being 'ready to fight' among several other topics and previews.",
+  "centrality": "only_mentioned",
+  "act": "none_of_these",
+  "fact": "no_fact",
+  "reports_his_result": "no",
+  "he_speaks": "no",
+  "unsure": [
+   "centrality",
+   "fact",
+   "act"
+  ],
+  "note": "He is one item in a list of episode topics ('react to Ilia Topuria being \"ready to fight\", UFC fighters speaking at..., the RIZIN x PFL title fight'); the rest is page furniture. Nothing is said about him in the text, so no act fits (none_of_these: a topic listing) and I read no new fact; an editor could take the headline's 'ready to fight' as a status_update and, since he leads the headline, a higher centrality."
+ },
+ {
+  "id": "k23",
+  "main_claim": "Donchenko, in an interview after beating Soriano, talks about the fight, his callout of Rodriguez and his UFC career.",
+  "centrality": "only_mentioned",
+  "act": "none_of_these",
+  "fact": "no_fact",
+  "reports_his_result": "no",
+  "he_speaks": "no",
+  "unsure": [],
+  "note": "The interview is Donchenko's; Amosov appears only where Donchenko says 'Ярослав мені багато допомагав ... Амосов кликав мене до себе у зал' and as a name in a question. That is what Amosov did for the speaker, which the guide rules is no act (none_of_these), and it is no news of Amosov."
+ },
+ {
+  "id": "k24",
+  "main_claim": "After beating Soriano, Donchenko took the microphone in the cage and told the UFC bosses who he wants to fight next.",
+  "centrality": "main_subject",
+  "act": "speaks_of_himself",
+  "fact": "no_fact",
+  "reports_his_result": "no",
+  "he_speaks": "no",
+  "unsure": [],
+  "note": "The news is his in-cage demand for a next opponent ('прямо заявив босам промоушену, кого прагне побачити'), a wish, so no_fact. The result is recalled ('Нагадаємо, бій ... завершився перемогою'), and none of his words are quoted in the saved text."
+ },
+ {
+  "id": "k25",
+  "main_claim": "Arman Tsarukyan mockingly says Michael Chandler should be Topuria's next opponent because he needs an easy fight.",
+  "centrality": "main_subject",
+  "act": "calls_him_out",
+  "fact": "no_fact",
+  "reports_his_result": "no",
+  "he_speaks": "no",
+  "unsure": [],
+  "note": "The article itself calls the advice ironic and a provocation ('lui conseille ironiquement', 'Une façon pour Tsarukyan de provoquer une nouvelle fois son rival'), so calls_him_out. The team's 'could return before the end of 2026' line is background."
+ },
+ {
+  "id": "k26",
+  "main_claim": "Arman Tsarukyan says Topuria vs. Pimblett makes sense but doubts the UFC will book it, expecting each to get an easier fight.",
+  "centrality": "one_of_several",
+  "act": "none_of_these",
+  "fact": "no_fact",
+  "reports_his_result": "no",
+  "he_speaks": "no",
+  "unsure": [
+   "centrality",
+   "act"
+  ],
+  "note": "Tsarukyan: 'I don't think they are gonna do this fight ... they are gonna give Ilia someone easy' is a forecast of what the matchmakers will do, which the guide rules is no act (none_of_these); 'that fight makes sense' could be read as steers_him. The piece is shared between Topuria and Pimblett (half of the quote is about Pimblett and Holloway), though an editor could call Topuria the main subject."
+ },
+ {
+  "id": "k27",
+  "main_claim": "Donchenko, in a long interview after beating Soriano, reviews the fight, reveals a hand infection and hospital procedure a month before it, and talks about his year in the UFC and what he wants next.",
+  "centrality": "main_subject",
+  "act": "speaks_of_himself",
+  "fact": "health",
+  "reports_his_result": "no",
+  "he_speaks": "yes",
+  "unsure": [
+   "fact"
+  ],
+  "note": "He states as his own statement 'у мене була інфекція 4 серпня ... Був у госпіталі, мені різали руку' and that he took no serious damage, the one hard fact in an interview that is otherwise reflection and wishes (Rodriguez, Usman); an editor could call it no_fact. The saved text is cut off mid-interview. The win is the premise of the interview, not a fight account."
+ },
+ {
+  "id": "k28",
+  "main_claim": "A DJ sampled Paddy Pimblett's 'I'm a Scouser' line at Creamfields; Pimblett is waiting for his next fight.",
+  "centrality": "only_mentioned",
+  "act": "none_of_these",
+  "fact": "no_fact",
+  "reports_his_result": "no",
+  "he_speaks": "no",
+  "unsure": [],
+  "note": "Topuria is one line: 'Pimblett ruled out a clash with Ilia Topuria, whom he expects to return next year', which is Pimblett's stance on his own next fight plus a guess, so no act (none_of_these) and no fact."
+ },
+ {
+  "id": "k29",
+  "main_claim": "Topuria returned to social media with a video letter to his son Hugo reflecting on what his first defeat taught him.",
+  "centrality": "main_subject",
+  "act": "speaks_of_himself",
+  "fact": "personal_life",
+  "reports_his_result": "no",
+  "he_speaks": "yes",
+  "unsure": [
+   "fact"
+  ],
+  "note": "The article is built on his video ('Hugo, I've been thinking about you...'), a message to his son, which the guide gives as personal_life. An editor could pick health for 'MMA Fighting reports that Topuria suffered extensive facial injuries ... but did not require surgery', or no_fact for a reflection; I read that line and the 'no timetable' line as the writer's background."
+ },
+ {
+  "id": "k30",
+  "main_claim": "Justin Gaethje says his hands are still hurt and he will not fight again in 2026, and that he does not think a Topuria rematch is his next fight.",
+  "centrality": "one_of_several",
+  "act": "none_of_these",
+  "fact": "no_fact",
+  "reports_his_result": "no",
+  "he_speaks": "no",
+  "unsure": [
+   "centrality"
+  ],
+  "note": "It is Gaethje's own news, tied by the article to the fight they already had and to the rematch being discussed, hence one_of_several; an editor could say only_mentioned since nothing new about Topuria is stated. Gaethje's words on him are a guess and his stance on his own next fight ('he's probably not going to fight until next year', 'I don't think that's my next fight'), which the guide rules is no act (none_of_these) and no fact."
+ },
+ {
+  "id": "k31",
+  "main_claim": "Nathaniel Wood gets a new short-notice opponent, 8-0 Pavel Andrusca, at UFC Paris.",
+  "centrality": "only_mentioned",
+  "act": "none_of_these",
+  "fact": "no_fact",
+  "reports_his_result": "no",
+  "he_speaks": "no",
+  "unsure": [],
+  "note": "Donchenko is only a line in the full card list ('Daniil Donchenko vs. Punahele Soriano'); a booking restated in a card list is background, and nobody does anything regarding him (none_of_these)."
+ },
+ {
+  "id": "k32",
+  "main_claim": "After making weight for the Soriano fight, Donchenko says all is well and that he plans to weigh about 86 kg by the evening.",
+  "centrality": "main_subject",
+  "act": "speaks_of_himself",
+  "fact": "fight_week_event",
+  "reports_his_result": "no",
+  "he_speaks": "yes",
+  "unsure": [
+   "fact"
+  ],
+  "note": "Built on the weigh-in: 'Обидва бійці показали вагу 77,11 кг' and his quote 'Зробили вагу, офіційно зважились ... Ввечері, думаю, 86 буду важити'. An editor could say the weigh-in is only the occasion and his rehydration plan is no_fact. The Berggren win is background."
+ },
+ {
+  "id": "k33",
+  "main_claim": "Justin Gaethje says in an interview that his hands are still too hurt to punch, that he will sit out the rest of the year, and talks about retirement, his business and possible opponents.",
+  "centrality": "only_mentioned",
+  "act": "none_of_these",
+  "fact": "no_fact",
+  "reports_his_result": "no",
+  "he_speaks": "no",
+  "unsure": [
+   "centrality"
+  ],
+  "note": "A long Gaethje interview about himself; Topuria is in one answer ('he's probably not gonna fight till next year too ... I don't think that's my next fight'), a guess and Gaethje's stance on his own next fight, so no act (none_of_these) and no fact. The headline ties it to their fight, so an editor could say one_of_several."
+ },
+ {
+  "id": "k34",
+  "main_claim": "UFC commentator Jon Anik revealed the promotion has held internal conversations about an immediate Topuria vs. Gaethje rematch, and fans reacted, many with dismay.",
+  "centrality": "main_subject",
+  "act": "gives_news_of_him",
+  "fact": "next_fight",
+  "reports_his_result": "no",
+  "he_speaks": "yes",
+  "unsure": [
+   "act",
+   "he_speaks",
+   "centrality"
+  ],
+  "note": "'Jon Anik recently revealed the promotion has held \"internal conversations\" about running things back' is a named report of talks, so next_fight, and the new information is Anik's (gives_news_of_him); the bulk of the text is fans saying what should happen ('Topuria needs to win another fight before any rematch'), which could be steers_him or assesses_him. A snippet of his website statement is quoted ('I believe in God's will...'), so he_speaks yes, though it sits at the end as context from days earlier. The rematch involves Gaethje equally, so one_of_several is arguable."
+ },
+ {
+  "id": "k35",
+  "main_claim": "Islam Makhachev says Topuria is young and a good fighter who can be champion again if he focuses; his physical trainer says his recovery is going fast and he is aiming at next year.",
+  "centrality": "main_subject",
+  "act": "assesses_him",
+  "fact": "health",
+  "reports_his_result": "no",
+  "he_speaks": "no",
+  "unsure": [
+   "act",
+   "fact"
+  ],
+  "note": "Makhachev's words ('Ilia es un buen peleador', 'Si se centra, puede ser campeón otra vez') rate his level and chances, so assesses_him, though the headline frames it as advice (steers_him). The fact comes from the closing section, where a named trainer, Jesús Gallo, 'ha revelado que El Matador tiene un poder de recuperación increíble' and a 2026 return is ruled out: a named person saying how the recovery is going is health; an editor who treats that section as outside the main claim would say no_fact."
+ }
+]

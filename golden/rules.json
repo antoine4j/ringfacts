@@ -94,7 +94,9 @@
    "name": "A callout is the other fighter's story",
    "guide_must_say": [
     "is that fighter's story, never main_subject",
-    "a fighter only rumoured or calling him out does not count"
+    "a fighter only rumoured or calling him out does not count",
+    "another fighter's own news that names him as the opponent he wants (a callout), when the article adds nothing new about him beyond that wish and a recap of his past",
+    "If the article itself goes on to add something new about him, such as weighing his options, he is one_of_several (#913)"
    ],
    "articles": [
     "273",

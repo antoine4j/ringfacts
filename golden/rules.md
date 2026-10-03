@@ -94,10 +94,13 @@ article is that fighter's story. He is never "main subject" in it, although
 a callout is, read literally, "something someone said about him". And a
 callout alone does not make him "one of several" either: it says what the
 other man wants and nothing new about him. So he is "only mentioned"
-(#273, #843, #871, #921). The same quote written up as a story about his
-own options is his story (#913, main subject).
-*Decided 2026-10-03. A softer version, where real content about him beyond
-the callout would make him "one of several", is parked: backlog 15.*
+(#273, #843, #871, #921). When the article itself goes on to add something
+new about him, such as weighing his options, he is "one of several" (#913):
+that is "new, not long" applied here.
+*Decided 2026-10-03; #913 moved from main subject to one of several the
+same day, after both blind re-readers read it so. A softer version, where
+anything said about him beyond the callout (a recap included) would make
+him "one of several", stays parked: backlog 15.*
 
 ### A two-fighter preview is one of several
 A preview or feature on a fight of his that covers both fighters is "one
