@@ -123,6 +123,24 @@ who never fought (Rogan, journalists, commentators) are media.
 
 ## What the source does
 
+### An act needs a plain statement about him
+The act is what the source does regarding him, and it has to be said
+plainly. It counts when someone says what he should do or who he should
+fight ("steers him", or "calls him out" when the article frames it as
+mockery or a challenge), or states a fact about him ("gives news of him").
+It does not count, and the act is "none of these", when there is only: a
+guess about him ("probably", "expects", "I think": #457, #484); a speaker's
+stance on his own next fight ("not my next fight", #492); a forecast of
+what the matchmakers will do; or what he did for the speaker ("he helped
+me, he invited me to his gym", #975). And "gives news of him" never goes
+with "no fact": if the article carries no news of him, nobody in it is
+giving news of him (#1045).
+The cost, accepted: a rival refusing him a rematch, or guessing he is
+hurt, is "none of these" although it bears on his path; that has to come
+from the other labels.
+*Decided 2026-10-03, card by card across the "what the source does" group;
+it is the rule the overnight brief called "firm and aimed at him".*
+
 ### A callout is not only a literal callout
 "Calls him out" covers asking to fight him, challenging him, and any taunt
 or mockery aimed at him. Advice the article itself presents as ironic or a

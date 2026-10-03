@@ -1231,3 +1231,16 @@ is about Gaethje's fight (as on #492, the video of the same interview).
 The six write-ups now read: #462, #484, #492, #476 none of these; #503
 steers him, because its headline is the rematch itself; #467 steers him,
 unchecked, to look at in a later step.
+
+## rule: an act needs a plain statement about him (2026-10-03)
+
+With the eight cards of the "what the source does" group checked, Anton
+asked: *"are we basically going with the recommended firm and aimed at him
+or not?"* Yes: his cards match that rule on all eight (the brief's own
+table had #1045 wrong, giving "gives news of him" to a card whose fact is
+no fact, against the rule's text). Against the other two candidates they
+match on one of eight (words as written) and four of eight (framing sets
+tone, hedges still count). Five of the eight ended as none of these (#457,
+#484, #492, #975, #1045); #287 calls him out, #516 steers him, #883 gives
+news of him. *"Yes, add it to the guide and rules file."* The readers had
+split on six of the eight for want of this rule.

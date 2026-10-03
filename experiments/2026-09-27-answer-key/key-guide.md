@@ -57,6 +57,18 @@ When he himself is the source, the act is `speaks_of_himself`, except a
 reply to an attack on him, which is `answers_for_him`. `speaks_of_himself`
 is only possible with source `himself`.
 
+**An act needs a plain statement about him** (Anton, 2026-10-03). Someone
+says what he should do or who he should fight (`steers_him`, or
+`calls_him_out` when the article itself frames it as mockery or a
+challenge), or states a fact about him (`gives_news_of_him`). These are no
+act, and the answer is `none_of_these`: a guess about him ("probably",
+"expects", "I think": #457, #484); a speaker's stance on his own next
+fight ("not my next fight", #492); a forecast of what the matchmakers will
+do; what he did for the speaker ("he helped me, he invited me to his gym",
+#975); and a speaker talking about himself. `gives_news_of_him` is never
+the act when question 4 is `no_fact`: if the article carries no news of
+him, nobody in it is giving news of him (#1045).
+
 | value | means |
 |---|---|
 | `reports_an_event` | nobody speaks; something happened (he fought, weighed in, was booked) |
