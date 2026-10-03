@@ -971,7 +971,7 @@ calling him out does not count) and both blind rule A re-readers' move
 to only mentioned, Anton: *"I agree only mentioned is objectively about
 the article, and he's not at the same level as Pimblett perhaps. I'll
 buy this interpretation."* Of the 9 articles both re-readers moved, #34,
-#843 and #856 already stood at only mentioned; #820 keeps Anton's own
-ruling of one of several (the denial of the rumour is news touching his
-next fight, unlike a bare callout); #342, #588, #871, #892 and #921 are
-corrected to only mentioned in the page's database.
+#843 and #856 already stood at only mentioned; #342, #588, #820, #871,
+#892 and #921 are corrected to only mentioned in the page's database. On
+#820 Anton had first kept one of several, then: *"if the same rule
+changes 820 to only mentioned, I can be fine with it."* All 9 moves stand.
