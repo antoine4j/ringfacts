@@ -205,26 +205,27 @@ function questionRow(a, q){
     <select data-id="${a.id}" data-q="${q}" id="s-${a.id}-${q}" class="${fix ? "changed" : ""}" aria-label="Correct value for ${esc(DATA.labels[q])}">
       <option value="">${k.value === null ? "choose…" : "✓ right"}</option>${opts}</select>
     ${fix ? `<input class="note" id="n-${a.id}-${q}" data-id="${a.id}" data-q="${q}" placeholder="why (optional)" value="${esc(fix.note || "")}">` : ""}
-    ${hints(k)}
+    ${hints(k, fix)}
   </div></div>`;
 }
 
 /** The overnight hints under one answer: the triage pick, the rule A recheck, the recommended rule's answer.
- * @param {object} k one answer @returns {string} html, empty when there are none */
-function hints(k){
-  const out = [];
+ * A hint agrees when it matches the answer as corrected, so an applied rule stops shouting.
+ * @param {object} k one answer @param {object|undefined} fix the saved correction, if any @returns {string} html, empty when there are none */
+function hints(k, fix){
+  const out = [], now = fix ? fix.value : k.value;
   if (k.hint){
     const side = k.hint.value === null ? "neither answer fits" : k.hint.value === k.value ? "sides with the readers" : k.hint.value === k.classifier ? "sides with the classifier" : `picks ${human(k.hint.value)}`;
-    out.push(`<div class="hint ${k.hint.value === k.value ? "agree" : "change"}">third reader, blind: <b>${esc(side)}</b> (${esc(k.hint.confidence || "")}) — ${esc(k.hint.reason || "")}</div>`);
+    out.push(`<div class="hint ${k.hint.value === now ? "agree" : "change"}">third reader, blind: <b>${esc(side)}</b> (${esc(k.hint.confidence || "")}) — ${esc(k.hint.reason || "")}</div>`);
   }
   if (k.recheck){
     const reads = Object.entries(k.recheck).map(([letter, r]) => `${letter}: <b>${esc(human(r.centrality))}</b> (${esc(r.confidence || "")})`).join(", ");
-    const same = Object.values(k.recheck).every(r => r.centrality === k.value);
+    const same = Object.values(k.recheck).every(r => r.centrality === now);
     const notes = Object.entries(k.recheck).map(([letter, r]) => r.note ? `${letter}: ${esc(r.note)}` : "").filter(Boolean).join(" · ");
     out.push(`<div class="hint ${same ? "agree" : "change"}">re-read under rule A — ${reads}${same ? "" : " — <b>rule A may change this</b>"}<br>${notes}</div>`);
   }
   if (k.rule !== undefined && k.rule !== null){
-    out.push(`<div class="hint ${k.rule === k.value ? "agree" : "change"}">the brief's recommended rule gives: <b>${esc(human(k.rule))}</b>${k.rule === k.value ? "" : " — would change this"}</div>`);
+    out.push(`<div class="hint ${k.rule === now ? "agree" : "change"}">the brief's recommended rule gives: <b>${esc(human(k.rule))}</b>${k.rule === now ? (fix ? " — applied" : "") : " — would change this"}</div>`);
   }
   return out.join("");
 }
