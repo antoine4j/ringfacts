@@ -1,0 +1,163 @@
+{
+ "_about": "Proposed wording for the 'status update' fact value and a narrower 'next fight' (rule backlog item 12). NOT adopted. wording_page.py lays this over the guide and the v6 classifier questions to build the review page. Reader edits are replace / append / set on the guide's current text; classifier edits set whole fields.",
+ "fact": {
+  "why": "New value status_update; next_fight narrowed to news that a specific fight exists or changes.",
+  "reader_question": {
+   "why": "Adds the order: specific kinds first, status update only when none fits.",
+   "replace": [
+    "A past fight or injury only recalled as background is not the article's fact.",
+    "A past fight or injury only recalled as background is not the article's fact. Pick the specific value first: result, next_fight, fight_week_event, health, career_move or personal_life. If it is not one of those six, ask whether it is news of where he stands as a fighter (ready, available, training, back in public): that is status_update. Use none_of_these only for a new fact that is neither one of the six nor about where he stands as a fighter. Use no_fact when there is no new fact at all."
+   ]
+  },
+  "cls_question": {
+   "instructions": "What new FACT about the fighter named in watched_fighter does the article carry, if any? A fact is something that happened or is set to happen, not an opinion about him. Choose by the article's main news. A statement of his readiness, availability or training is a fact too. An interview, a press conference or a media day is a place where things are said, not a fact: if something said there is the news, choose that fact, or none if it is only talk. If the article's news is about another fighter, or is only opinion, answer no fact, even when his past fights are mentioned."
+  },
+  "options": {
+   "next_fight": {
+    "why": "Narrower. Only news that a specific fight exists or changes. \"When he will be ready\" leaves. His own word that he has a fight comes in, even unsigned and unnamed.",
+    "reader": {
+     "replace": [
+      "news of his next fight: an opponent, a date, an offer, talks, a cancellation, or when he will be ready to fight again.",
+      "news that a specific fight of his exists or has changed: a fight is set, announced, offered, in talks, moved or cancelled. It counts when he himself says he has a fight, even before the promotion confirms it and even if he does not name the opponent (\"I know who, where and when\"). Not when he will be ready, that he is ready, that nothing is booked, or opponents named only as options with no talks (\"Gaethje or Pimblett, both make sense\"): those are status_update."
+     ]
+    },
+    "cls": {
+     "what": "News that a specific fight of his exists or has changed: a fight set, announced, offered, in talks, moved or cancelled, or a rumour of one that says who said it or gives a date or event. His own statement that he has a fight counts.",
+     "not_for": "His readiness or availability, or possible opponents the promotion is choosing between (that is status update). His injury or recovery (that is health). A wish or an opinion about who he should fight, such as a callout or a pundit's pick (that is no fact). A fight already booked and covered in its fight week, such as the card order, start times or how to watch (that is fight week event).",
+     "examples": [
+      "The promotion announces his bout for March.",
+      "He says he has been told his opponent, place and date, but nothing is signed.",
+      "A fighter denies a reported December fight with him."
+     ]
+    }
+   },
+   "status_update": {
+    "new": true,
+    "after": "personal_life",
+    "why": "New value. Where he stands as a fighter when no specific fight exists or changes. Includes training camp.",
+    "reader": {
+     "set": "news of where he stands as a fighter, when no specific fight exists or changes: he is ready to fight, or will not fight before a date; a return window (\"ready by December\"); nothing is booked yet; opponents named only as options; he starts training camp, or a camp or sparring update; he is back in training; his return to public life after time away is itself announced or reported. A post, a letter or an interview of his takes the value of what it says, not status_update for the mere fact that he spoke again: a message to his son is personal_life, a reflection with no fact is no_fact. Someone must state it as a fact: he himself, his team, the promotion, or a named report. Not a guess or an opinion about his timing (Gaethje thinks he will not fight until next year, #462): that is no_fact. Not how his injury or recovery is going: that is health. Not the weigh-in, face-off, open workout or card order of a fight: that is fight_week_event. Not family, home or money: that is personal_life."
+    },
+    "cls": {
+     "what": "News of his readiness, availability or training, stated as fact by him, his team, the promotion or a named report: he is ready to fight; he will be ready by a date; he has no fight booked; the promotion names possible opponents it is choosing between; he starts training camp; a camp or sparring update; he is back in training; his return to public life after time away is announced or reported.",
+     "not_for": "A specific fight set, offered, in talks, rumoured or cancelled (that is next fight). How his injury or recovery is going (that is health). The weigh-in, face-off, open workout or card order of a fight (that is fight week event). His family, home or money, or a post or letter of his about them (that is personal life). A guess or an opinion about when or whom he should fight (that is no fact).",
+     "examples": [
+      "The promotion's president says he is ready to fight and has no fight scheduled.",
+      "His coach says he will be ready to fight by December.",
+      "He starts training camp."
+     ]
+    }
+   },
+   "fight_week_event": {
+    "why": "One line added so camp news does not land here, and fight week does not land in status update.",
+    "reader": {
+     "replace": [
+      "card order, start times.",
+      "card order, start times. Training camp and sparring in the weeks or months before fight week are status_update."
+     ]
+    },
+    "cls": {
+     "not_for": "Talks, offers or a new opponent for a fight not yet set (that is next fight). Training camp or sparring before fight week (that is status update)."
+    }
+   },
+   "health": {
+    "why": "Health keeps recovery news. If a named person says how the recovery is going, it is health even when the same statement gives a return date (open question 2).",
+    "reader": {
+     "append": ", including how the recovery is going. When someone named says how he is or how the recovery is going, however briefly, the fact is health, even if the headline and most of the text are about when he will be back. If the article only says when he will be ready and describes no injury or recovery, it is status_update"
+    },
+    "cls": {
+     "what": "An injury, a medical issue, surgery or recovery, including how the recovery is going, even when the same statement also says when he will be back.",
+     "not_for": "Only when he will be ready to fight again, with no injury or recovery described (that is status update)."
+    }
+   },
+   "no_fact": {
+    "why": "Spelled out, so guesses and wishes do not drift into status update.",
+    "reader": {
+     "append": ". Wishes, demands, callouts, picks and guesses at his timing are all no_fact, whoever makes them, his own manager included (#129)"
+    },
+    "cls": {
+     "what": "Only opinion or talk: no new fact about him. Wishes, callouts, picks and guesses at his timing are not facts."
+    }
+   },
+   "none_of_these": {
+    "why": "Stays for facts that are not about where he stands as a fighter.",
+    "reader": {
+     "append": ". Check status_update first: none_of_these is for a fact that is not about where he stands as a fighter (a past negotiation revealed, #228)"
+    },
+    "cls": {
+     "what": "A new fact about him that none of the options above describes, status update included; a different answer is needed."
+    }
+   }
+  }
+ },
+ "firmness": {
+  "why": "A fighter's own word that he has a fight, still unsigned, is 'reported'.",
+  "options": {
+   "reported": {
+    "why": "His own word that he has a fight, unsigned, is \"reported\": stronger than a rumour, weaker than official. For the classifier it goes in as a signal, and a coach or other named person is added, which the guide already had.",
+    "reader": {
+     "append": "; or he himself says a fight exists but nothing is signed or announced (\"I was told who, where and when\")"
+    },
+    "cls": {
+     "summary": "Reported: a named outlet, journalist, coach or other named person states it as fact.",
+     "signals": [
+      "'ESPN reports that...'",
+      "his coach says he will be ready by December",
+      "he says he has a fight lined up that is still unsigned"
+     ]
+    }
+   },
+   "official_or_done": {
+    "why": "Readers get one exception for the unsigned fight. The classifier's summary is left alone and gets one more signal. \"The promotion says he is ready\" stays official.",
+    "reader": {
+     "append": ". One exception: when he says he has a fight but it is not signed or announced, that is reported"
+    },
+    "cls": {
+     "signals": [
+      "the promotion announces the bout",
+      "he posts that he signed",
+      "a fight result",
+      "the promotion's president says he is ready to fight"
+     ]
+    }
+   }
+  }
+ },
+ "reports_his_next_fight": {
+  "why": "Follows the narrower next fight. \"When he will be ready\" is removed. There is no yes/no question for status update.",
+  "reader_question": {
+   "set": "does it carry news that a specific fight of his exists or has changed: set, announced, offered, in talks, rumoured or denied, moved or cancelled, including his own word that he has a fight? (A rumour is a fact at low firmness, not an opinion.) no for only wishes and opinions (callouts, pundit picks), for when he will be ready or that nothing is booked, for opponents named only as options, for training and recovery news, and for another fighter's next fight that does not involve him."
+  },
+  "cls_question": {
+   "instructions": "Does this article report news of a specific upcoming fight of the fighter named in watched_fighter?",
+   "true": "The article reports news of a specific fight of his: a fight set, announced, offered, negotiated, moved or cancelled; a rumour of a fight that says who said it or gives a date or event; or his own statement that he has a fight.",
+   "false": "News of his readiness, availability or training, or possible opponents the promotion is choosing between; or only wishes and opinions (someone calling him out, a pundit saying who he should fight); or his recovery; or the next fight of another fighter that does not involve him."
+  }
+ },
+ "_notes": {
+  "news_questions": {
+   "why": "The example of a second fact used the coach's return date, which is no longer next-fight news.",
+   "replace": [
+    "(a coach gives his return date and how the recovery is going: fact next_fight, health yes)",
+    "(a fight report that also names his next opponent: fact result, next fight yes)"
+   ]
+  },
+  "output": {
+   "why": "The made-up example answered next fight yes for 'back by spring'. Under the new wording that is no.",
+   "replace_many": [
+    [
+     "\"reports_his_next_fight\": \"yes\"",
+     "\"reports_his_next_fight\": \"no\""
+    ],
+    [
+     "\"unsure\": [\"reports_his_next_fight\"]",
+     "\"unsure\": []"
+    ],
+    [
+     " Next fight: 'back by spring' is a timeline, but vague.",
+     " 'Back by spring' is not news of a specific fight, so next fight is no."
+    ]
+   ]
+  }
+ }
+}

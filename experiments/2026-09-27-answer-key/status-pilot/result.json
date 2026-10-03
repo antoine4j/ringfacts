@@ -1,0 +1,715 @@
+[
+ {
+  "id": "129",
+  "status": "both readers give a new answer",
+  "today": {
+   "fact": "next_fight",
+   "firmness": "wish",
+   "reports_his_next_fight": "yes"
+  },
+  "A": {
+   "fact": "no_fact",
+   "firmness": "none",
+   "reports_his_next_fight": "no"
+  },
+  "B": {
+   "fact": "no_fact",
+   "firmness": "none",
+   "reports_his_next_fight": "no"
+  },
+  "A_note": "A manager's wish is no_fact by the guide. Unsure on fact because the writer also says he has recovered from the surface wounds and gone back to Miami, which an editor could read as a status update, but it is the writer's own inference from photos, not a named statement.",
+  "B_note": "A manager's wish is no_fact per the guide; the recovery remarks and the 2027 timing are the writer's own inference and estimate, not a named statement.",
+  "title": "El mánager de Ilia Topuria pide la revancha inmediata con Justin Gaethje - ABC",
+  "url": "https://www.abc.es/deportes/mma/manager-ilia-topuria-pide-revancha-inmediata-justin-20260812012420-nt.html"
+ },
+ {
+  "id": "148",
+  "status": "second reader keeps today",
+  "today": {
+   "fact": "no_fact",
+   "firmness": "none",
+   "reports_his_next_fight": "no"
+  },
+  "A": {
+   "fact": "health",
+   "firmness": "reported",
+   "reports_his_next_fight": "no"
+  },
+  "B": {
+   "fact": "no_fact",
+   "firmness": "none",
+   "reports_his_next_fight": "no"
+  },
+  "A_note": "The headline claim is Makhachev's opinion (no_fact, none), but the only news about him is a named team member saying how his recovery is going, so health; an editor judging by the headline would pick no_fact.",
+  "B_note": "The main claim is Makhachev's opinion; the closing section where trainer Jesús Gallo reports a fast recovery and no return in 2026 reads as an added older report, but an editor could count it as a second claim (health, reported).",
+  "title": "Islam Makhachev aconseja a Ilia Topuria tras su derrota: «Si se centra, puede ser campeón otra vez» - OkDiario",
+  "url": "https://okdiario.com/deportes/islam-makhachev-aconseja-ilia-topuria-derrota-si-centra-puede-ser-campeon-otra-vez-19170160"
+ },
+ {
+  "id": "152",
+  "status": "both readers give a new answer",
+  "today": {
+   "fact": "next_fight",
+   "firmness": "reported",
+   "reports_his_next_fight": "yes"
+  },
+  "A": {
+   "fact": "health",
+   "firmness": "reported",
+   "reports_his_next_fight": "no"
+  },
+  "B": {
+   "fact": "health",
+   "firmness": "reported",
+   "reports_his_next_fight": "no"
+  },
+  "A_note": "His team member states how the recovery is going, so health, reported by someone other than him or the promotion. The return window names no fight.",
+  "B_note": "A named team member says how the recovery is going, so health beats the return-date framing. No specific fight is reported.",
+  "title": "El preparador de Topuria habla de la fecha de regreso del luchador: \"Es lo más inteligente\" - Libertad Digital",
+  "url": "https://www.libertaddigital.com/deportes/mas-deporte/2026-08-12/el-preparador-de-topuria-habla-de-la-fecha-de-regreso-del-luchador-es-lo-mas-inteligente-7448157/"
+ },
+ {
+  "id": "327",
+  "status": "second reader keeps today",
+  "today": {
+   "fact": "no_fact",
+   "firmness": "none",
+   "reports_his_next_fight": "no"
+  },
+  "A": {
+   "fact": "health",
+   "firmness": "reported",
+   "reports_his_next_fight": "no"
+  },
+  "B": {
+   "fact": "no_fact",
+   "firmness": "none",
+   "reports_his_next_fight": "no"
+  },
+  "A_note": "A named fighter says how he is, which the guide puts under health at reported; but it is about his mood rather than his injuries and the comeback line is a prediction, so no_fact/none or status_update is defensible.",
+  "B_note": "Another fighter's reassurance about his mood and a prediction of a comeback, with no injury, recovery detail or return window; an editor could read 'il va bien' as health or 'he will return' as status_update, at reported.",
+  "title": "Merab Dvalishvili donne des nouvelles d’Ilia Topuria : « Il va revenir… » - ActuMMA",
+  "url": "https://www.actumma.com/merab-dvalishvili-donne-des-nouvelles-dilia-topuria-il-va-revenir/189685/"
+ },
+ {
+  "id": "342",
+  "status": "both readers give a new answer",
+  "today": {
+   "fact": "personal_life",
+   "firmness": "official_or_done",
+   "reports_his_next_fight": "no"
+  },
+  "A": {
+   "fact": "no_fact",
+   "firmness": "none",
+   "reports_his_next_fight": "no"
+  },
+  "B": {
+   "fact": "no_fact",
+   "firmness": "none",
+   "reports_his_next_fight": "no"
+  },
+  "A_note": "His 2022 service and December 2025 UFC debut are retold as known background.",
+  "B_note": "Everything about him is retold history (2022 service, December 2025 UFC debut); nothing is new.",
+  "title": "Змінили стадіони на передову: хто з українських чемпіонів взяв до рук зброю - 24 Канал",
+  "url": "https://sportnews.24tv.ua/hto-iz-ukrayinskih-sportsmeniv-doluchivsya-do-sil-oboroni-shho_n3123416/amp"
+ },
+ {
+  "id": "402",
+  "status": "both readers give a new answer",
+  "today": {
+   "fact": "next_fight",
+   "firmness": "reported",
+   "reports_his_next_fight": "yes"
+  },
+  "A": {
+   "fact": "health",
+   "firmness": "reported",
+   "reports_his_next_fight": "no"
+  },
+  "B": {
+   "fact": "health",
+   "firmness": "reported",
+   "reports_his_next_fight": "no"
+  },
+  "A_note": "Named people (Gallo, Dvalishvili) say how he is, so the guide makes it health even though the headline is the return date; an editor could pick status_update for the return window. Opponents are named only as options, so next fight is no.",
+  "B_note": "Named people (Dvalishvili, coach Gallo) say how he is and that the recovery is going well, which the guide makes health even when the headline is about the return date; status_update is the other reasonable reading. Possible opponents are named only as options.",
+  "title": "Ilia Topuria ya tiene fecha de regreso al octógono tras el combate en la Casa Blanca: a final de año o principios de 2027 - Infobae",
+  "url": "https://www.infobae.com/espana/deportes/2026/08/27/ilia-topuria-ya-tiene-fecha-de-regreso-al-octogono-tras-el-combate-en-la-casa-blanca-a-final-de-ano-o-principios-de-2027/"
+ },
+ {
+  "id": "412",
+  "status": "both readers give a new answer",
+  "today": {
+   "fact": "health",
+   "firmness": "reported",
+   "reports_his_next_fight": "yes"
+  },
+  "A": {
+   "fact": "health",
+   "firmness": "reported",
+   "reports_his_next_fight": "no"
+  },
+  "B": {
+   "fact": "health",
+   "firmness": "reported",
+   "reports_his_next_fight": "no"
+  },
+  "A_note": "A named team member describes how the recovery is going, so health. Date and opponent are explicitly unknown, so next fight is no.",
+  "B_note": "A named team member updates how the recovery is going. Date and opponent are said to be unknown, so no next fight.",
+  "title": "El milagro de Topuria tras caer ante Gaethje: podría estar listo en diciembre - Libertad Digital",
+  "url": "https://www.libertaddigital.com/deportes/mas-deporte/2026-08-27/el-milagro-de-topuria-tras-caer-ante-gaethje-podria-estar-listo-en-diciembre-7452164/"
+ },
+ {
+  "id": "572",
+  "status": "both readers give a new answer",
+  "today": {
+   "fact": "none_of_these",
+   "firmness": "reported",
+   "reports_his_next_fight": "no"
+  },
+  "A": {
+   "fact": "status_update",
+   "firmness": "reported",
+   "reports_his_next_fight": "no"
+  },
+  "B": {
+   "fact": "status_update",
+   "firmness": "reported",
+   "reports_his_next_fight": "no"
+  },
+  "A_note": "A named reporter states his coming return to public life. The orbital fracture and the Gaethje/Pimblett lines are background and options, not news of a specific fight.",
+  "B_note": "A named journalist reports his return to public life. The Gaethje and Pimblett lines at the end are options and background, not a fight.",
+  "title": "New Ilia Topuria update as former UFC champion’s plan to return to ‘the public eye’ revealed",
+  "url": "https://bloodyelbow.com/2026/09/03/new-ilia-topuria-update-as-former-ufc-champions-plan-to-return-to-the-public-eye-revealed/"
+ },
+ {
+  "id": "592",
+  "status": "both readers give a new answer",
+  "today": {
+   "fact": "none_of_these",
+   "firmness": "reported",
+   "reports_his_next_fight": "no"
+  },
+  "A": {
+   "fact": "status_update",
+   "firmness": "reported",
+   "reports_his_next_fight": "no"
+  },
+  "B": {
+   "fact": "status_update",
+   "firmness": "reported",
+   "reports_his_next_fight": "no"
+  },
+  "A_note": "A named report of his return to public life after time away. The loss and fractures are recalled as background.",
+  "B_note": "A named reporter announces his return to public life. The loss and fractures are recap.",
+  "title": "Novedades sobre Ilia Topuria: el excampeón de UFC está listo para reaparecer públicamente - mundodeportivo.com",
+  "url": "https://www.mundodeportivo.com/us/ufc/20260903/1004222946/novedades-sobre-ilia-topuria-excampeon-ufc-listo-reaparecer-publicamente.html"
+ },
+ {
+  "id": "605",
+  "status": "second reader keeps today",
+  "today": {
+   "fact": "no_fact",
+   "firmness": "none",
+   "reports_his_next_fight": "no"
+  },
+  "A": {
+   "fact": "next_fight",
+   "firmness": "official_or_done",
+   "reports_his_next_fight": "yes"
+  },
+  "B": {
+   "fact": "no_fact",
+   "firmness": "none",
+   "reports_his_next_fight": "no"
+  },
+  "A_note": "The whole article is the statement that the fight takes place, so I took it as its main claim; published a day before the bout, it can equally be read as a booking restated in a preview (no_fact, none, no).",
+  "B_note": "Published the day before the fight and relayed from another outlet, so I read it as a booking restated as the premise of a preview; an editor could read the bare 'he will fight on 5 September' as next_fight at official_or_done with next fight yes.",
+  "title": "5 вересня українець Данило Донченко битиметься проти Соріано на UFC у Парижі - 112.ua",
+  "url": "https://112.ua/5-veresna-ukrainec-danilo-doncenko-bitimetsa-proti-soriano-na-ufc-u-parizi-183168"
+ },
+ {
+  "id": "620",
+  "status": "both readers give a new answer",
+  "today": {
+   "fact": "personal_life",
+   "firmness": "official_or_done",
+   "reports_his_next_fight": "no"
+  },
+  "A": {
+   "fact": "status_update",
+   "firmness": "official_or_done",
+   "reports_his_next_fight": "no"
+  },
+  "B": {
+   "fact": "status_update",
+   "firmness": "official_or_done",
+   "reports_his_next_fight": "no"
+  },
+  "A_note": "The article frames his post as an announced return to training and to public life (status_update), but the quoted text is only a life-lesson message to his son, which the guide files as personal_life; the December rumour is a passing line, so next fight is no.",
+  "B_note": "The headline and lead report his announced return to training and public life; most of the text is the message to his son, so an editor could pick personal_life. The December rumour is denied a date and has no source, so next fight is no.",
+  "title": "Ilia Topuria anuncia su vuelta a la UFC: \"Después de visitar ese infierno, soy más fuerte que antes\" - 20Minutos",
+  "url": "https://www.20minutos.es/deportes/ilia-topuria-anuncia-su-vuelta-ufc-despues-visitar-ese-infierno-soy-mas-fuerte-que-antes_7033071_0.html"
+ },
+ {
+  "id": "647",
+  "status": "second reader keeps today",
+  "today": {
+   "fact": "no_fact",
+   "firmness": "none",
+   "reports_his_next_fight": "no"
+  },
+  "A": {
+   "fact": "personal_life",
+   "firmness": "official_or_done",
+   "reports_his_next_fight": "no"
+  },
+  "B": {
+   "fact": "no_fact",
+   "firmness": "none",
+   "reports_his_next_fight": "no"
+  },
+  "A_note": "The saved text is one line; the guide says a message to his son is personal_life, but with no content shown an editor could say no_fact (a reflection on the loss).",
+  "B_note": "The saved text is one line and gives none of the letter's content, so no fact is carried; an editor could pick personal_life (a message to his son) or status_update (his return to public view), both official_or_done.",
+  "title": "Ilia Topuria breaks silence 'after going through that hell' with Justin Gaethje at UFC Freedom 250 - thepress.net",
+  "url": "https://www.thepress.net/sports/national/ilia-topuria-breaks-silence-after-going-through-that-hell-with-justin-gaethje-at-ufc-freedom/article_e7f0f7d7-52a7-5c07-9afa-1cc9cdf1dee0.html"
+ },
+ {
+  "id": "851",
+  "status": "both readers give a new answer",
+  "today": {
+   "fact": "result",
+   "firmness": "official_or_done",
+   "reports_his_next_fight": "no"
+  },
+  "A": {
+   "fact": "no_fact",
+   "firmness": "none",
+   "reports_his_next_fight": "no"
+  },
+  "B": {
+   "fact": "no_fact",
+   "firmness": "none",
+   "reports_his_next_fight": "no"
+  },
+  "A_note": "The main claim is his own callout, a wish, so no fact; the two-day-old win is described in a full paragraph, so an editor could pick result / official_or_done instead.",
+  "B_note": "The main claim is his own callout, a wish with no talks, so no_fact; the article also recounts the two-day-old win in detail, so an editor could pick result at official_or_done.",
+  "title": "Daniil Donchenko calls for Daniel Rodriguez fight after UFC Paris win - MMA Sucka",
+  "url": "https://mmasucka.com/news/daniil-donchenko-calls-for-daniel-rodriguez-fight-after-ufc-paris-win/"
+ },
+ {
+  "id": "879",
+  "status": "second reader keeps today",
+  "today": {
+   "fact": "no_fact",
+   "firmness": "none",
+   "reports_his_next_fight": "no"
+  },
+  "A": {
+   "fact": "next_fight",
+   "firmness": "rumour",
+   "reports_his_next_fight": "yes"
+  },
+  "B": {
+   "fact": "no_fact",
+   "firmness": "none",
+   "reports_his_next_fight": "no"
+  },
+  "A_note": "The rematch rumour has substance (who said it, a year) so I counted it as next_fight at rumour; but the article is built on Brown's opinion and the rumour is its premise, so no_fact / none / no is a fair alternative.",
+  "B_note": "The main claim is Brown's opinion and Anik's remark is restated as its premise; but the rumour has substance (Anik named, 2027), so an editor could pick next_fight at rumour with next fight yes.",
+  "title": "Brown On UFC Rebooking Gaethje-Topuria - boxingnews.com",
+  "url": "https://boxingnews.com/news/brown-gaethje-topuria-rematch-warning/"
+ },
+ {
+  "id": "913",
+  "status": "both readers give a new answer",
+  "today": {
+   "fact": "next_fight",
+   "firmness": "rumour",
+   "reports_his_next_fight": "yes"
+  },
+  "A": {
+   "fact": "no_fact",
+   "firmness": "none",
+   "reports_his_next_fight": "no"
+  },
+  "B": {
+   "fact": "no_fact",
+   "firmness": "none",
+   "reports_his_next_fight": "no"
+  },
+  "A_note": "I read it as the speaker's own wish with no talks, which the guide makes no_fact. Unsure because the article also says commentator Jon Anik is asserting the Gaethje rematch will happen and Pimblett denies being in negotiations, which an editor could treat as a denied rumour (next_fight, rumour, yes).",
+  "B_note": "The core is Pimblett's own wish with no talks, which the guide makes no_fact. But the article also says commentator Jon Anik asserts the Gaethje rematch will happen and that the fight is being talked about, so an editor could read a denied third-party rumour: next_fight at rumour, next fight yes.",
+  "title": "Paddy Pimblett, el archienemigo de Topuria: «Me encantaría destrozarlo...» - ABC",
+  "url": "https://www.abc.es/deportes/mma/paddy-pimblett-archienemigo-topuria-encantaria-destrozarlo-20260909013257-nt.html"
+ },
+ {
+  "id": "958",
+  "status": "both readers give a new answer",
+  "today": {
+   "fact": "next_fight",
+   "firmness": "official_or_done",
+   "reports_his_next_fight": "yes"
+  },
+  "A": {
+   "fact": "status_update",
+   "firmness": "official_or_done",
+   "reports_his_next_fight": "no"
+  },
+  "B": {
+   "fact": "status_update",
+   "firmness": "official_or_done",
+   "reports_his_next_fight": "no"
+  },
+  "A_note": "The promotion states he is ready and nothing is booked, with opponents named only as options, which is status_update and not next-fight news.",
+  "B_note": "The promotion states he is ready with nothing set; 'recovery has gone well' is the writer's own line, not a named statement on his health.",
+  "title": "Dana White confirms Ilia Topuria 'ready to fight' - Yahoo Sports",
+  "url": "https://sports.yahoo.com/articles/dana-white-confirms-ilia-topuria-224631338.html"
+ },
+ {
+  "id": "968",
+  "status": "second reader keeps today",
+  "today": {
+   "fact": "no_fact",
+   "firmness": "none",
+   "reports_his_next_fight": "no"
+  },
+  "A": {
+   "fact": "status_update",
+   "firmness": "official_or_done",
+   "reports_his_next_fight": "no"
+  },
+  "B": {
+   "fact": "no_fact",
+   "firmness": "none",
+   "reports_his_next_fight": "no"
+  },
+  "A_note": "The article reports his return to public life in Georgia after his absence (status_update), but the message itself is only a promise, so no_fact is arguable; injuries and the Gaethje and Pimblett rumours are recalled in passing, so next fight is no.",
+  "B_note": "His message is a promise with no date, fight or condition, and the injuries and rematch talk are recap; an editor could instead read 'step back into the public eye in Georgia' as a reported return to public life (status_update, official_or_done).",
+  "title": "Ilia Topuria reappears in Georgia with a new message: “My greatest victories in the UFC are still ahead of me” - Mundo Deportivo",
+  "url": "https://www.mundodeportivo.com/en/20260909/1004225472/ilia-topuria-reappears-in-georgia-with-new-message-my-greatest-victories-in-the-ufc-are-still-ahead-of-me.html"
+ },
+ {
+  "id": "972",
+  "status": "both readers give a new answer",
+  "today": {
+   "fact": "next_fight",
+   "firmness": "official_or_done",
+   "reports_his_next_fight": "yes"
+  },
+  "A": {
+   "fact": "status_update",
+   "firmness": "official_or_done",
+   "reports_his_next_fight": "no"
+  },
+  "B": {
+   "fact": "status_update",
+   "firmness": "official_or_done",
+   "reports_his_next_fight": "no"
+  },
+  "A_note": "The promotion states he is ready with nothing booked and opponents only as options; Anik's rematch talk is a closing line.",
+  "B_note": "The promotion states he is ready and nothing is booked, with opponents named only as options; Anik's belief about a rematch is a recalled closing line.",
+  "title": "Dana White reveals Ilia Topuria is ‘ready to fight,’ open to Justin Gaethje rematch (or Paddy grudge match) — ‘Sounds good to me’ - sports.yahoo.com",
+  "url": "https://sports.yahoo.com/articles/dana-white-reveals-ilia-topuria-002224767.html"
+ },
+ {
+  "id": "991",
+  "status": "both readers give a new answer",
+  "today": {
+   "fact": "next_fight",
+   "firmness": "official_or_done",
+   "reports_his_next_fight": "yes"
+  },
+  "A": {
+   "fact": "status_update",
+   "firmness": "official_or_done",
+   "reports_his_next_fight": "no"
+  },
+  "B": {
+   "fact": "status_update",
+   "firmness": "official_or_done",
+   "reports_his_next_fight": "no"
+  },
+  "A_note": "The promotion says he is ready, nothing is booked and two opponents are options with no talks: status_update by the guide. The leaked rematch idea is a background line.",
+  "B_note": "The promotion states he is ready, nothing is booked and two names are options only; the leaked-rematch line is recalled background. Next fight is no.",
+  "title": "Dana White Reveals Top 2 Potential Opponents for Ilia Topuria - Yahoo Sports",
+  "url": "https://sports.yahoo.com/articles/dana-white-reveals-top-2-061815853.html"
+ },
+ {
+  "id": "998",
+  "status": "both readers give a new answer",
+  "today": {
+   "fact": "next_fight",
+   "firmness": "official_or_done",
+   "reports_his_next_fight": "yes"
+  },
+  "A": {
+   "fact": "status_update",
+   "firmness": "official_or_done",
+   "reports_his_next_fight": "no"
+  },
+  "B": {
+   "fact": "status_update",
+   "firmness": "official_or_done",
+   "reports_his_next_fight": "no"
+  },
+  "A_note": "The promotion says he is ready, nothing is booked, and opponents are only options: status_update, official. No specific fight exists or changes.",
+  "B_note": "Ready, nothing booked, opponents as options: all status_update, stated by the promotion. 'Parece que está recuperado' is the writer's inference, not health news.",
+  "title": "Dana White confirma que Ilia Topuria está de vuelta: \"Está listo para pelear\" - 20minutos.es",
+  "url": "https://www.20minutos.es/deportes/dana-white-confirma-que-ilia-topuria-esta-vuelta-esta-listo-para-pelear_7035056_0.html"
+ },
+ {
+  "id": "1008",
+  "status": "both readers give a new answer",
+  "today": {
+   "fact": "next_fight",
+   "firmness": "official_or_done",
+   "reports_his_next_fight": "yes"
+  },
+  "A": {
+   "fact": "status_update",
+   "firmness": "official_or_done",
+   "reports_his_next_fight": "no"
+  },
+  "B": {
+   "fact": "status_update",
+   "firmness": "official_or_done",
+   "reports_his_next_fight": "no"
+  },
+  "A_note": "The promotion states he is ready and nothing is booked; opponents are named only as options, so next fight is no.",
+  "B_note": "The promotion states he is ready with nothing set; 'we don't have anything set' rules out news of a specific fight.",
+  "title": "Dana White confirms Ilia Topuria 'ready to fight' - Yardbarker",
+  "url": "https://www.yardbarker.com/mma/articles/dana_white_confirms_ilia_topuria_ready_to_fight/s1_17621_44284154"
+ },
+ {
+  "id": "1020",
+  "status": "both readers give a new answer",
+  "today": {
+   "fact": "next_fight",
+   "firmness": "official_or_done",
+   "reports_his_next_fight": "yes"
+  },
+  "A": {
+   "fact": "status_update",
+   "firmness": "official_or_done",
+   "reports_his_next_fight": "no"
+  },
+  "B": {
+   "fact": "status_update",
+   "firmness": "official_or_done",
+   "reports_his_next_fight": "no"
+  },
+  "A_note": "The promotion states he is ready and names opponents only as options, which the guide puts under status_update. The fractures line at the end is the writer's recap, not a named health statement.",
+  "B_note": "The promotion states he is ready and names opponents only as options, which the guide puts under status_update. The recovery line at the end is the writer's own recap.",
+  "title": "La UFC lo confirma: \"Ilia Topuria está listo para pelear\" - MARCA",
+  "url": "https://www.marca.com/combates-ufc/2026/09/10/ufc-confirma-ilia-topuria-listo-volver.html"
+ },
+ {
+  "id": "1031",
+  "status": "both readers give a new answer",
+  "today": {
+   "fact": "next_fight",
+   "firmness": "official_or_done",
+   "reports_his_next_fight": "yes"
+  },
+  "A": {
+   "fact": "status_update",
+   "firmness": "official_or_done",
+   "reports_his_next_fight": "no"
+  },
+  "B": {
+   "fact": "status_update",
+   "firmness": "official_or_done",
+   "reports_his_next_fight": "no"
+  },
+  "A_note": "The promotion states he is ready; opponents are named only as options and nothing is booked, so next fight is no.",
+  "B_note": "Ready, nothing booked, opponents only as options: the guide's status_update, stated by the promotion.",
+  "title": "¿Cuándo vuelve a pelear Ilia Topuria? Dana White confirma que está listo y señala dos posibles rivales - El Pespunte",
+  "url": "https://www.elpespunte.es/articulo/otros/cuando-vuelve-pelear-ilia-topuria-dana-white-confirma-que-listo-senala-dos-posibles-rivales/20260910200759150458.html"
+ },
+ {
+  "id": "1036",
+  "status": "both readers give a new answer",
+  "today": {
+   "fact": "next_fight",
+   "firmness": "official_or_done",
+   "reports_his_next_fight": "yes"
+  },
+  "A": {
+   "fact": "status_update",
+   "firmness": "official_or_done",
+   "reports_his_next_fight": "no"
+  },
+  "B": {
+   "fact": "status_update",
+   "firmness": "official_or_done",
+   "reports_his_next_fight": "no"
+  },
+  "A_note": "The promotion states he is ready and nothing is booked; Gaethje and Pimblett are named only as options.",
+  "B_note": "Ready, nothing booked, opponents as options, stated by the promotion; the rematch rumours are given no who, when or where.",
+  "title": "Dana White: Ilia Topuria ‘ready to fight’ but no decision yet on potential opponents - MMA Fighting",
+  "url": "https://www.mmafighting.com/ufc/509488/dana-white-ilia-topuria-ready-to-fight-but-no-decision-yet-on-potential-opponents"
+ },
+ {
+  "id": "1045",
+  "status": "second reader keeps today",
+  "today": {
+   "fact": "no_fact",
+   "firmness": "none",
+   "reports_his_next_fight": "no"
+  },
+  "A": {
+   "fact": "status_update",
+   "firmness": "reported",
+   "reports_his_next_fight": "no"
+  },
+  "B": {
+   "fact": "no_fact",
+   "firmness": "none",
+   "reports_his_next_fight": "no"
+  },
+  "A_note": "The only thing the blurb says about him is that he is ready to fight, with no source named; an editor could call it the premise of a reaction show (no_fact/none) or official if it is read as White's statement.",
+  "B_note": "The blurb only says pundits react to already-known news and does not say who stated he is ready; an editor could still count 'ready to fight' as status_update at reported.",
+  "title": "Ilia Topuria ready to fight, Noche UFC and Ryan Garcia vs. Conor Benn previews, more | The Boys in the Back | September 10, 2026 - Yahoo Sports",
+  "url": "https://sports.yahoo.com/video/ilia-topuria-ready-to-fight-noche-ufc-and-ryan-garcia-vs-conor-benn-previews-more--the-boys-in-the-back--september-10-2026-105410176.html"
+ },
+ {
+  "id": "1058",
+  "status": "both readers give a new answer",
+  "today": {
+   "fact": "next_fight",
+   "firmness": "official_or_done",
+   "reports_his_next_fight": "yes"
+  },
+  "A": {
+   "fact": "status_update",
+   "firmness": "official_or_done",
+   "reports_his_next_fight": "no"
+  },
+  "B": {
+   "fact": "status_update",
+   "firmness": "official_or_done",
+   "reports_his_next_fight": "no"
+  },
+  "A_note": "The promotion states he is ready and names opponents only as options; an editor could pick health because the text adds that he is cleared and recovered from his fractures.",
+  "B_note": "White's own words say only that he is ready, with opponents as options; the embedded post and the writer add that he has medical clearance and has recovered from the fractures, so an editor could pick health.",
+  "title": "Dana White confirmó que Ilia Topuria está listo para pelear y analiza dos cruces explosivos - Agencia NOVA",
+  "url": "https://www.agencianova.com/nota.asp?n=2026_9_11&id=172435&id_tiponota=206"
+ },
+ {
+  "id": "1066",
+  "status": "second reader keeps today",
+  "today": {
+   "fact": "no_fact",
+   "firmness": "none",
+   "reports_his_next_fight": "no"
+  },
+  "A": {
+   "fact": "next_fight",
+   "firmness": "rumour",
+   "reports_his_next_fight": "yes"
+  },
+  "B": {
+   "fact": "no_fact",
+   "firmness": "none",
+   "reports_his_next_fight": "no"
+  },
+  "A_note": "A hint from the promotion's head about a specific opponent is treated as a rumour with a named source; it could also be read as an opponent named only as an option (status_update, next fight no) since no date is set and White is not quoted.",
+  "B_note": "The article is fan and Alvarez opinion on top of White's already-known remark; an editor could take the lead line that he 'confirmed his return' plus White's hint as status_update at official_or_done.",
+  "title": "Dana White's Ilia Topuria vs Paddy Pimblett Hint Upsets Fan - MMA Sucka",
+  "url": "https://mmasucka.com/news/fan-unhappy-following-dana-whites-hint-at-a-potential-ilia-topuria-vs-paddy-pimblett-face-off/"
+ },
+ {
+  "id": "1076",
+  "status": "both readers give a new answer",
+  "today": {
+   "fact": "next_fight",
+   "firmness": "official_or_done",
+   "reports_his_next_fight": "yes"
+  },
+  "A": {
+   "fact": "status_update",
+   "firmness": "official_or_done",
+   "reports_his_next_fight": "no"
+  },
+  "B": {
+   "fact": "status_update",
+   "firmness": "official_or_done",
+   "reports_his_next_fight": "no"
+  },
+  "A_note": "The promotion states he is ready and names two opponents only as options, with nothing set: status_update, not next_fight.",
+  "B_note": "The promotion states he is ready and names two opponents only as options; no specific fight exists, so next fight is no.",
+  "title": "La UFC duda con Topuria: \"¿Peleará contra Gaethje o contra Pimblett?\"",
+  "url": "https://www.marca.com/combates-ufc/2026/09/11/ufc-duda-topuria-peleara-gaethje-pimblett.html"
+ },
+ {
+  "id": "1089",
+  "status": "both readers give a new answer",
+  "today": {
+   "fact": "no_fact",
+   "firmness": "none",
+   "reports_his_next_fight": "no"
+  },
+  "A": {
+   "fact": "status_update",
+   "firmness": "official_or_done",
+   "reports_his_next_fight": "no"
+  },
+  "B": {
+   "fact": "status_update",
+   "firmness": "official_or_done",
+   "reports_his_next_fight": "no"
+  },
+  "A_note": "The promotion names opponents only as options (and the lead says he is ready to fight), which is status_update; but the article is mainly about Gaethje, so an editor could say no_fact for Topuria.",
+  "B_note": "The promotion names his opponents only as options, which is status_update; but the article is mainly about Gaethje and White's line repeats what was said days before, so an editor could pick no_fact and none.",
+  "title": "White: There’s a lot of ‘money left on the table’ for ‘incredible’ Gaethje to make - Yahoo Sports",
+  "url": "https://sports.yahoo.com/articles/white-lot-money-left-table-140000283.html"
+ },
+ {
+  "id": "1101",
+  "status": "three different answers",
+  "today": {
+   "fact": "personal_life",
+   "firmness": "official_or_done",
+   "reports_his_next_fight": "no"
+  },
+  "A": {
+   "fact": "status_update",
+   "firmness": "official_or_done",
+   "reports_his_next_fight": "no"
+  },
+  "B": {
+   "fact": "no_fact",
+   "firmness": "none",
+   "reports_his_next_fight": "no"
+  },
+  "A_note": "The one hard fact is the promotion saying he is ready with opponents as options (status_update); the headline half is a mindset reflection, so no_fact or personal_life is arguable; the Pimblett-in-December rumour has a name and a month but no source and sits in one passing line, so next fight is no with doubt.",
+  "B_note": "The headline and lead are his reflection, which carries no fact; the second half restates Dana White's 'ready to fight' line, which an editor could read as a second main claim (status_update, official_or_done).",
+  "title": "Ilia Topuria Says He No Longer Ties His Happiness to Achieving His Goals - MMA Sucka",
+  "url": "https://mmasucka.com/news/ilia-topuria-says-he-no-longer-ties-his-happiness-to-achieving-his-goals/"
+ },
+ {
+  "id": "1172",
+  "status": "second reader keeps today",
+  "today": {
+   "fact": "health",
+   "firmness": "official_or_done",
+   "reports_his_next_fight": "no"
+  },
+  "A": {
+   "fact": "no_fact",
+   "firmness": "none",
+   "reports_his_next_fight": "no"
+  },
+  "B": {
+   "fact": "health",
+   "firmness": "official_or_done",
+   "reports_his_next_fight": "no"
+  },
+  "A_note": "The win of 5 September is the premise of the interview and the August infection is recalled as past; an editor could pick result or health (he says he took no serious damage).",
+  "B_note": "The one hard fact he states in the interview is the infection and hospital procedure before the fight; the rest is his view of a ten-day-old win and wishes (Rodriguez, Usman), so an editor could pick no_fact and none, or result.",
+  "title": "«Я не гірший за Усмана». Донченко – про бій з Камару та українців в UFC",
+  "url": "https://sport.ua/uk/news/907149-u-stiytsi-ya-ne-girshiy-za-usmana-donchenko-pro-biy-z-kamaru-ta-ukraintsiv-v"
+ }
+]

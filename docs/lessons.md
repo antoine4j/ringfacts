@@ -197,8 +197,15 @@ Rules for adding to it:
   escape shows gaps in its probability, not by winning).
 - **Price:** $0.042 per million input tokens, output free — a 300-article
   pass of ten questions (1.24 M input tokens) is about $0.05.
-- **Does not say:** anything about option order, which moved 4–14% of
-  answers in v3; or whether identical calls are cached (its own
+- **Option order, re-read 2026-10-02** (docs.typesafe.ai/model-jaggedness/jev-1.13):
+  the vendor now documents that the model "leans toward the option that
+  comes first" and advises reordering the options to check the answer
+  holds. That matches the 4–14% of answers option order moved in v3. The
+  same page lists double negatives and indirection, and a state padded
+  with unrelated content, as weak spots; the score page says each level is
+  judged without seeing its number or its neighbours, and that a scale
+  should measure one thing.
+- **Does not say:** whether identical calls are cached (its own
   self-consistency recipe adds a throwaway `uid` field to each repeat).
 
 ### A 59-article blind answer key makes a question change measurable for about a cent

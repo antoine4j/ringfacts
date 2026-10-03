@@ -1,0 +1,263 @@
+<title>Status Update Wording</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* layout: one reading column; each answer is a row with "now" on the left and "proposed" on the right, stacked on a phone */
+:root{
+  --bg:#f3f5f7; --panel:#ffffff; --fg:#16202b; --muted:#5b6876; --line:#d5dbe2;
+  --accent:#1f5f8b; --del-bg:#fbdcdc; --del-fg:#8a1f1f; --ins-bg:#d3f0dc; --ins-fg:#14532d;
+  --new:#7a4b00; --new-bg:#fdecc8; --open-bg:#e9e4f7; --open-fg:#40307a;
+  --sans:"IBM Plex Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,Menlo,monospace;
+}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){
+  --bg:#12171d; --panel:#1b222a; --fg:#e4e9ee; --muted:#9aa7b4; --line:#313b46;
+  --accent:#7db8e0; --del-bg:#4a2020; --del-fg:#ffb3b3; --ins-bg:#1c3f29; --ins-fg:#a6e3b8;
+  --new:#f3c66b; --new-bg:#4a3810; --open-bg:#2e2850; --open-fg:#c9bdf5; color-scheme:dark } }
+:root[data-theme="dark"]{
+  --bg:#12171d; --panel:#1b222a; --fg:#e4e9ee; --muted:#9aa7b4; --line:#313b46;
+  --accent:#7db8e0; --del-bg:#4a2020; --del-fg:#ffb3b3; --ins-bg:#1c3f29; --ins-fg:#a6e3b8;
+  --new:#f3c66b; --new-bg:#4a3810; --open-bg:#2e2850; --open-fg:#c9bdf5; color-scheme:dark }
+body{background:var(--bg);color:var(--fg);font-family:var(--sans);font-size:15px;line-height:1.55}
+.wrap{max-width:1080px;margin:0 auto;padding-inline:16px;padding-block:28px 60px;display:flex;flex-direction:column;gap:28px}
+h1{font-size:26px;font-weight:600;margin:0;text-wrap:balance}
+h2{font-size:19px;font-weight:600;margin:0;text-wrap:balance}
+p{margin:0;max-width:68ch}
+a{color:var(--accent)}
+code{font-family:var(--mono);font-size:.88em;background:var(--bg);border:1px solid var(--line);border-radius:3px;padding:0 4px}
+.lead{display:flex;flex-direction:column;gap:10px}
+.muted{color:var(--muted)}
+.sec{display:flex;flex-direction:column;gap:14px}
+.test{background:var(--panel);border:1px solid var(--line);border-left:4px solid var(--accent);padding:14px 16px;display:flex;flex-direction:column;gap:8px}
+.test ol{margin:0;padding-left:22px;display:flex;flex-direction:column;gap:6px;max-width:70ch}
+.bar{display:flex;flex-wrap:wrap;gap:8px;align-items:center;position:sticky;top:env(safe-area-inset-top,0px);background:var(--bg);padding-block:8px;z-index:2;border-bottom:1px solid var(--line)}
+.bar button{font:inherit;font-size:13px;padding:5px 12px;border:1px solid var(--line);background:var(--panel);color:var(--fg);border-radius:14px;cursor:pointer}
+.bar button[aria-pressed="true"]{background:var(--accent);color:var(--panel);border-color:var(--accent)}
+.bar button:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.legend{font-size:13px;color:var(--muted);margin-left:auto}
+.blk{background:var(--panel);border:1px solid var(--line);display:flex;flex-direction:column}
+.blk>header{display:flex;flex-wrap:wrap;gap:8px 12px;align-items:baseline;padding:12px 16px;border-bottom:1px solid var(--line)}
+.blk>header .id{font-family:var(--mono);font-weight:500;font-size:15px}
+.tag{font-size:11px;letter-spacing:.06em;text-transform:uppercase;padding:1px 7px;border-radius:3px;font-weight:600}
+.tag.new{background:var(--new-bg);color:var(--new)}
+.tag.chg{background:var(--ins-bg);color:var(--ins-fg)}
+.tag.same{background:var(--bg);color:var(--muted);border:1px solid var(--line)}
+.plain{padding:10px 16px;border-bottom:1px solid var(--line);max-width:none}
+.aud{display:grid;grid-template-columns:1fr 1fr;border-bottom:1px solid var(--line)}
+.aud:last-child{border-bottom:0}
+.aud .who{grid-column:1/-1;font-size:11px;letter-spacing:.07em;text-transform:uppercase;color:var(--muted);padding:8px 16px 0;font-weight:600}
+.col{padding:6px 16px 14px;min-width:0;display:flex;flex-direction:column;gap:8px}
+.col+.col{border-left:1px solid var(--line)}
+.col .h{font-size:12px;color:var(--muted)}
+.fld .k{font-family:var(--mono);font-size:11.5px;color:var(--muted);display:block}
+.fld{overflow-wrap:anywhere}
+del{background:var(--del-bg);color:var(--del-fg);text-decoration:line-through;text-decoration-thickness:1px;border-radius:2px}
+ins{background:var(--ins-bg);color:var(--ins-fg);text-decoration:none;border-radius:2px}
+.none{color:var(--muted);font-style:italic}
+.tw{overflow-x:auto;background:var(--panel);border:1px solid var(--line)}
+table{border-collapse:collapse;width:100%;min-width:760px;font-size:14px}
+th,td{text-align:left;vertical-align:top;padding:8px 12px;border-bottom:1px solid var(--line)}
+th{font-size:11px;letter-spacing:.07em;text-transform:uppercase;color:var(--muted);font-weight:600}
+tr:last-child td{border-bottom:0}
+td.mv{font-weight:600}
+.q{background:var(--panel);border:1px solid var(--line);padding:14px 16px;display:flex;flex-direction:column;gap:8px}
+.q h3{margin:0;font-size:15px;font-weight:600}
+.q ul{margin:0;padding-left:20px;display:flex;flex-direction:column;gap:6px;max-width:72ch}
+.rec{background:var(--open-bg);color:var(--open-fg);font-size:11px;letter-spacing:.06em;text-transform:uppercase;font-weight:600;padding:1px 6px;border-radius:3px}
+@media (max-width:720px){ .aud{grid-template-columns:1fr} .col+.col{border-left:0;border-top:1px dashed var(--line)} .legend{margin-left:0} }
+
+.qs{background:var(--panel);border:1px solid var(--line)}
+.qs>summary{cursor:pointer;list-style:none;display:flex;flex-wrap:wrap;gap:6px 12px;align-items:baseline;padding:14px 16px}
+.qs>summary::-webkit-details-marker{display:none}
+.qs>summary::before{content:"+";font-family:var(--mono);color:var(--muted);width:1ch}
+.qs[open]>summary::before{content:"\2212"}
+.qs>summary:focus-visible{outline:2px solid var(--accent);outline-offset:-2px}
+.qs>summary .n{font-size:11px;letter-spacing:.07em;text-transform:uppercase;color:var(--muted);font-weight:600}
+.qs>summary .t{font-size:17px;font-weight:600}
+.qs>summary .id{font-family:var(--mono);font-size:13px;color:var(--muted)}
+.qs>summary .cnt{font-size:13px;color:var(--muted);margin-left:auto}
+.qs[open]>summary{border-bottom:1px solid var(--line)}
+.qbody{display:flex;flex-direction:column;gap:14px;padding:14px 16px 18px}
+.part{font-size:11px;letter-spacing:.08em;text-transform:uppercase;font-weight:600;color:var(--accent)}
+.blk{background:var(--panel);border:1px solid var(--line)}
+.blk.qtext{border-left:4px solid var(--accent)}
+.opts{display:flex;flex-direction:column;gap:10px;padding-left:14px;border-left:2px solid var(--line)}
+.blk.same>header .id{color:var(--muted)}
+.col.full{grid-column:1/-1}
+.col.full+.col{border-left:0}
+.chk{display:flex;gap:6px;align-items:center;font-size:13px}
+@media (max-width:720px){ .opts{padding-left:8px} .qs>summary .cnt{margin-left:0} }
+</style>
+
+<div class="wrap">
+  <div class="lead">
+    <h1>Wording for "status update" and a narrower "next fight"</h1>
+    <p>This is a draft for you to review. Nothing has been run and nothing in the guide or the classifier has changed. All nine questions are listed below with every answer option. Open a question to see its text and its options. Where something changes, today's text is on the left and the proposed text on the right. Everything is shown twice: what the two readers get (the labelling guide), and what the classifier gets (JEV questions, v6 today).</p>
+    <p class="muted">Wording approved for a pilot run on 2 October 2026; not yet adopted into the guide. Source: backlog item 12. Only the status update proposal is marked as a change. Rules you decided earlier (opponent side, count only what is new, retired fighters) are already in the readers' text and not yet in the classifier's; you can see that gap in the unchanged cards. It is a separate sync for classifier v7.</p>
+  </div>
+
+  <div class="test">
+    <h2>The idea in four steps</h2>
+    <ol>
+      <li><b>Does the main news fit a specific kind?</b> Result, next fight, fight week event, health, career move, personal life. If yes, use it.</li>
+      <li><b>If not, is it news of where he stands as a fighter?</b> Ready, not ready before a date, nothing booked, opponents only as options, training camp, back in public. That is the new value, <code>status_update</code>.</li>
+      <li><b>Is it a new fact of some other kind?</b> Not one of the six, and not about where he stands as a fighter (a past negotiation revealed, #228). That is <code>none_of_these</code>, the last resort.</li>
+      <li><b>If there is no new fact at all</b> (a wish, a callout, a pick, a guess), it is <code>no_fact</code>.</li>
+    </ol>
+    <p>The line between next fight and status update: <b>does a specific fight exist or change?</b> If yes, next fight. If the article only says what he is doing or when he is available, status update.</p>
+  </div>
+
+  <div class="sec">
+    <h2>The nine questions and their answer options</h2>
+    <div class="bar" role="group" aria-label="View">
+      <button id="x-open" data-x="open">Expand all</button>
+      <button id="x-close" data-x="close">Collapse all</button>
+      <button id="f-both" aria-pressed="true" data-f="both">Readers and classifier</button>
+      <button id="f-reader" aria-pressed="false" data-f="reader">Readers only</button>
+      <button id="f-cls" aria-pressed="false" data-f="cls">Classifier only</button>
+      <label class="chk" for="only"><input type="checkbox" id="only"> changed only</label>
+      <span class="legend"><del>removed</del> &nbsp; <ins>added</ins></span>
+    </div>
+    <div id="blocks" class="sec"></div>
+  </div>
+
+  <div class="sec">
+    <h2>Other text the readers get</h2>
+    <p>The guide also has an opening, a shared rule for the yes/no questions, and an output example. The classifier has no equivalent.</p>
+    <div id="notes" class="sec"></div>
+  </div>
+
+
+  <div class="sec">
+    <h2>Checked against the classifier vendor's writing rules</h2>
+    <p>I re-read TypeSafe's pages on 2 October (questions, choice, score, yes/no, and the known weak spots of the model) and changed the classifier column where the first draft broke them. The readers' column is free of these limits, because the readers are full models that read the whole guide.</p>
+    <div class="tw"><table>
+      <thead><tr><th>What the vendor says</th><th>What it means for this draft</th></tr></thead>
+      <tbody>
+        <tr><td>"Write descriptions that separate the options from each other." Indirect instructions are answered less reliably.</td><td>"Pick the specific kind first, status update only if the others do not fit" is an indirect, two-step instruction, so I removed it from the classifier. The fence is carried by the "not for" lines of status update itself, which is the vendor's own method. The readers keep the order. Note: the answer still comes back as shares across all options that add up to 100%.</td></tr>
+        <tr><td>Negations, "only" and implied conditions are read at face value. Write directly.</td><td>Status update was defined as "when no specific fight exists". It is now defined by what it is: readiness, availability, training. "Even unsigned and unnamed" moved out of the definitions and into an example.</td></tr>
+        <tr><td>One condition per yes/no question.</td><td>The next-fight question is now one plain question. The list of cases sits in the yes and no definitions.</td></tr>
+        <tr><td>A scale measures one thing. Each level is judged without seeing its neighbours.</td><td>"How firm" already mixes who says it with how settled it is. An exception clause ("he says it, but unsigned") would make that worse, so the level summaries stay simple and the unsigned fight is added as a signal. <b>This is the weakest part of the draft.</b> If it misfires, the vendor's own pattern is a separate yes/no question ("is the fight signed or announced?") combined in code.</td></tr>
+        <tr><td>The model leans toward the option listed first.</td><td>Status update goes late in the list, after personal life and before no fact. When we do run, one extra pass with the options reordered would show how much the order matters. That is a paid repeat (about a cent), so it needs your yes.</td></tr>
+        <tr><td>The question and its options must not ask for different things.</td><td>The fact question said a fact is "something that happened or is set to happen". "He is ready" is neither, so I added one sentence saying a statement of his readiness, availability or training is a fact too.</td></tr>
+        <tr><td>Use "not for" and examples where neighbours overlap. Keep an "other" option.</td><td>Already the shape of v6. Status update gets both. None of these stays.</td></tr>
+      </tbody>
+    </table></div>
+  </div>
+
+  <div class="sec">
+    <h2>Where example articles would land</h2>
+    <p>From the one-reader what-if on 32 articles (read-only, already done). Under this draft 12 of the 32 change their fact. Two readers have not confirmed any of it.</p>
+    <div class="tw"><table>
+      <thead><tr><th>Article</th><th>Today</th><th>With this wording</th><th>Why</th></tr></thead>
+      <tbody id="rows"></tbody>
+    </table></div>
+  </div>
+
+  <div class="sec">
+    <h2>Three things you decided on 2 October</h2>
+    <div class="q">
+      <h3>1. The name: status update</h3>
+      <p>Broad, as you wanted, and it covers camp news. The "not for" lines do the fencing.</p>
+    </div>
+    <div class="q">
+      <h3>2. Recovery and return date in one statement: health always wins</h3>
+      <p>If someone named describes his condition, the fact is health, even when the same statement gives a return date. <a href="https://www.libertaddigital.com/deportes/mas-deporte/2026-08-12/el-preparador-de-topuria-habla-de-la-fecha-de-regreso-del-luchador-es-lo-mas-inteligente-7448157/" target="_blank" rel="noopener">#152</a>, <a href="https://www.infobae.com/espana/deportes/2026/08/27/ilia-topuria-ya-tiene-fecha-de-regreso-al-octogono-tras-el-combate-en-la-casa-blanca-a-final-de-ano-o-principios-de-2027/" target="_blank" rel="noopener">#402</a> and <a href="https://www.libertaddigital.com/deportes/mas-deporte/2026-08-27/el-milagro-de-topuria-tras-caer-ante-gaethje-podria-estar-listo-en-diciembre-7452164/" target="_blank" rel="noopener">#412</a> are three write-ups of the same interview with his coach, so they get the same label. You were not fully sure of this one ("maybe I'm making this more complicated"). The cost is that the return date is not in the label.</p>
+    </div>
+    <div class="q">
+      <h3>3. A wish is no fact, whoever makes it</h3>
+      <p>Next fight stays strict: a specific fight exists or changes. His manager asking for a rematch (<a href="https://www.abc.es/deportes/mma/manager-ilia-topuria-pide-revancha-inmediata-justin-20260812012420-nt.html" target="_blank" rel="noopener">#129</a>) is no fact. The labels "source: his manager" and "act: steers him" still carry it. Side effect: the "wish" level of how firm is no longer used by any article.</p>
+    </div>
+  </div>
+</div>
+
+<script>
+const DATA = /*DATA*/;
+const ROWS = [
+ ["#998","https://www.20minutos.es/deportes/dana-white-confirma-que-ilia-topuria-esta-vuelta-esta-listo-para-pelear_7035056_0.html","Dana White: ready to fight, not on the schedule","next fight, official, next-fight yes","status update, official, next-fight no",true,"No fight exists or changes. Nine wire copies move the same way."],
+ ["#991","https://sports.yahoo.com/articles/dana-white-reveals-top-2-061815853.html","White names Gaethje or Pimblett as options","next fight, official","status update, official",true,"Opponents only as options, no talks. Same for #1076."],
+ ["#572","https://bloodyelbow.com/2026/09/03/new-ilia-topuria-update-as-former-ufc-champions-plan-to-return-to-the-public-eye-revealed/","A reporter says he returns to public view in September","none of these","status update, reported",true,"Back in public after time away. Same for #592."],
+ ["#152","https://www.libertaddigital.com/deportes/mas-deporte/2026-08-12/el-preparador-de-topuria-habla-de-la-fecha-de-regreso-del-luchador-es-lo-mas-inteligente-7448157/","His coach on the recovery and the return date","next fight, health yes","health, next-fight no",true,"Open question 2. Under option B it would be status update. Same for #402."],
+ ["#412","https://www.libertaddigital.com/deportes/mas-deporte/2026-08-27/el-milagro-de-topuria-tras-caer-ante-gaethje-podria-estar-listo-en-diciembre-7452164/","Coach: recovery going very well, could be ready in December","health, next-fight yes","health, next-fight no",true,"Fact stays. The return date is no longer recorded."],
+ ["#16","https://sport24.ua/uk/box/news/160955-neperemozhniy-ukrayinets-otrimav-novogo-supernika-v-ufc-vidoma-data-boyu","Donchenko booked against Soriano, 5 September","next fight, official","same",false,"A specific fight is set."],
+ ["#820","https://boxingnews.com/news/pimblett-topuria-december-fight-rumor/","Pimblett denies the December rumour","next fight, rumour","same",false,"A rumour with a date, even though denied."],
+ ["#843","https://sports.yahoo.com/articles/paddy-pimblett-shares-potential-timeline-121700388.html","Pimblett's own hit list","no fact","same",false,"The speaker's own wish."],
+ ["#462","https://sports.yahoo.com/articles/justin-gaethje-still-recovering-ufc-160000249.html","Gaethje guesses Topuria will not fight until next year","no fact","same",false,"A guess at his timing, not a stated fact. This is the case that tests the status update / no fact line."],
+ ["#228","https://www.mundodeportivo.com/ufc/20260817/1004216824/islam-makhachev-acepto-pelear-ilia-topuria-ufc-freedom-250-me-llamaron-ofrecieron-buen-dinero-dije.html","Makhachev reveals a past offer that fell through","none of these","same",false,"A fact, but not about where he stands now."],
+ ["Amosov","https://sport.nv.ua/ukr/mma/yaroslav-amosov-ogolosiv-pro-novogo-supernika-ufc-pidgotovka-do-boyu-50645741.html","Outside the 300. \"I know who, where and when\", nothing signed, easing into camp","not labelled","next fight, reported, next-fight yes",true,"His own word that a fight exists. The camp part is not recorded, because the fight is the main news."]
+];
+const esc = s => s.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");
+const code = s => s.replace(/\b[a-z]+(?:_[a-z]+)+\b/g, "<code>$&</code>");
+
+// word-level diff: longest common subsequence over words
+function diff(a, b){
+  const A = a ? a.split(/\s+/) : [], B = b ? b.split(/\s+/) : [];
+  const n = A.length, m = B.length, L = Array.from({length:n+1}, () => new Uint16Array(m+1));
+  for (let i=n-1;i>=0;i--) for (let j=m-1;j>=0;j--) L[i][j] = A[i]===B[j] ? L[i+1][j+1]+1 : Math.max(L[i+1][j], L[i][j+1]);
+  const left=[], right=[]; let i=0, j=0;
+  const push = (arr, w, t) => { const last = arr[arr.length-1]; if (last && last.t===t) last.w.push(w); else arr.push({t, w:[w]}); };
+  while (i<n && j<m){
+    if (A[i]===B[j]) { push(left,A[i],""); push(right,B[j],""); i++; j++; }
+    else if (L[i+1][j] >= L[i][j+1]) { push(left,A[i],"del"); i++; }
+    else { push(right,B[j],"ins"); j++; }
+  }
+  while (i<n) push(left,A[i++],"del");
+  while (j<m) push(right,B[j++],"ins");
+  const out = arr => arr.map(p => { const t = code(esc(p.w.join(" "))); return p.t ? `<${p.t}>${t}</${p.t}>` : t; }).join(" ");
+  return [out(left), out(right)];
+}
+const changed = fields => fields.some(f => f.cur !== f.prop);
+const fld = (k, html) => `<div class="fld">${k ? `<span class="k">${k}</span>` : ""}${html}</div>`;
+
+// one audience (readers or classifier): one column when nothing changes, two when something does
+function aud(name, key, a){
+  const who = `<div class="who">${name}</div>`;
+  if (a.absent) return `<div class="aud" data-a="${key}">${who}<div class="col full"><span class="none">${esc(a.absent)}</span></div></div>`;
+  if (!changed(a.fields)) return `<div class="aud" data-a="${key}">${who}<div class="col full"><div class="h">No change</div>${a.fields.map(f => fld(f.k, code(esc(f.cur)))).join("")}</div></div>`;
+  const cur = a.fields.map(f => fld(f.k, f.cur ? diff(f.cur, f.prop)[0] : '<span class="none">does not exist today</span>')).join("");
+  const prop = a.fields.map(f => fld(f.k, f.prop ? diff(f.cur, f.prop)[1] : '<span class="none">removed</span>')).join("");
+  return `<div class="aud" data-a="${key}">${who}<div class="col"><div class="h">Now</div>${cur}</div><div class="col"><div class="h">Proposed</div>${prop}</div></div>`;
+}
+const TAGS = {new:"new", chg:"changed", same:"no change"};
+function card(title, o, extra){
+  return `<section class="blk ${extra||""} ${o.tag}" data-tag="${o.tag}">
+    <header><span class="id">${esc(title)}</span><span class="tag ${o.tag}">${TAGS[o.tag]}</span></header>
+    ${o.why ? `<p class="plain">${esc(o.why)}</p>` : ""}
+    ${aud("What the readers see (labelling guide)","reader",o.reader)}
+    ${o.cls ? aud("What the classifier sees (JEV question)","cls",o.cls) : ""}
+  </section>`;
+}
+document.getElementById("blocks").innerHTML = DATA.questions.map((q, i) => {
+  const n = q.options.filter(o => o.tag !== "same").length;
+  const cnt = q.options.length ? `${q.options.length} answer options` + (n ? `, ${n} changed or new` : "") : "yes or no";
+  return `<details class="qs" data-tag="${q.tag}">
+    <summary><span class="n">Question ${i+1}</span><span class="t">${esc(q.label)}</span><span class="id">${q.id} · ${q.kind}</span>
+      <span class="tag ${q.tag}">${TAGS[q.tag]}</span><span class="cnt">${cnt}</span></summary>
+    <div class="qbody">
+      ${q.why ? `<p>${esc(q.why)}</p>` : ""}
+      <div class="part">The question</div>
+      ${card("Question text", q.q, "qtext")}
+      ${q.options.length ? `<div class="part">Answer options (${q.options.length})</div><div class="opts">${q.options.map(o => card(o.id, o)).join("")}</div>` : ""}
+    </div></details>`;
+}).join("");
+document.getElementById("notes").innerHTML = DATA.notes.map(o => card(o.title, o)).join("");
+
+document.getElementById("rows").innerHTML = ROWS.map(r => `<tr>
+  <td><a href="${r[1]}" target="_blank" rel="noopener">${r[0]}</a><br><span class="muted">${esc(r[2])}</span></td>
+  <td>${esc(r[3])}</td><td class="${r[5] ? "mv" : ""}">${esc(r[4])}</td><td>${esc(r[6])}</td></tr>`).join("");
+
+let audF = "both";
+function apply(){
+  const only = document.getElementById("only").checked;
+  document.querySelectorAll(".aud").forEach(a => { a.hidden = audF!=="both" && a.dataset.a!==audF; });
+  document.querySelectorAll(".qs, .blk").forEach(e => { e.hidden = only && e.dataset.tag==="same"; });
+}
+document.querySelectorAll(".bar button[data-f]").forEach(btn => btn.addEventListener("click", () => {
+  audF = btn.dataset.f;
+  document.querySelectorAll(".bar button[data-f]").forEach(x => x.setAttribute("aria-pressed", x===btn));
+  apply();
+}));
+document.querySelectorAll(".bar button[data-x]").forEach(btn => btn.addEventListener("click", () => {
+  document.querySelectorAll(".qs").forEach(d => { d.open = btn.dataset.x==="open"; });
+}));
+document.getElementById("only").addEventListener("change", apply);
+</script>

@@ -1071,3 +1071,30 @@ with the definition written into the guide: they carry the second fact
 that the single fact value cannot, and in the classifier, where each
 question is answered blind to the others, a disagreement between fact and
 its question is the doubt signal.
+
+## design: "status update" approved for a reader pilot, with three rulings (2026-10-02)
+
+Backlog item 12. Anton reviewed the wording side by side (what the readers
+see, what the classifier sees) and ruled on the three open points before
+any run:
+
+- **The name is status update.** *"I will go with your pick, status
+  update. That's fine."*
+- **Recovery and return date in one statement: health.** #152, #402 and
+  #412 are three write-ups of one interview with his coach; the readers had
+  given two of them next fight and one health by headline. Ruled with
+  doubt: *"I don't know which one's better ... maybe I'm making this more
+  complicated ... let's go question two A."* The return date is then in no
+  label. Revisit if a return date is ever missed because of it.
+- **A wish is no fact, whoever makes it; next fight stays strict.** On his
+  manager's rematch demand (#129), the only "next fight, wish" in 300:
+  *"we can be opening Pandora box here ... there can be too many articles
+  falling into next fight if we're not strict about it"*, then *"I agree
+  with question three on being strict."* Source (his manager) and act
+  (steers him) still carry it. The "wish" level of how firm is now unused.
+- **The classifier stays out for now**: readers first; he returns to
+  labelling before any v7.
+
+Not yet adopted into key-guide.md: the wording is in
+experiments/2026-09-27-answer-key/wording-proposal.json and is being tested
+by blind readers (status-pilot/).

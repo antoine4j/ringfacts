@@ -1,0 +1,1502 @@
+{
+"1": {
+"fact": "no_fact",
+"firmness": "none",
+"reports_his_next_fight": "no"
+},
+"2": {
+"fact": "no_fact",
+"firmness": "none",
+"reports_his_next_fight": "no"
+},
+"3": {
+"fact": "no_fact",
+"firmness": "none",
+"reports_his_next_fight": "no"
+},
+"4": {
+"fact": "no_fact",
+"firmness": "none",
+"reports_his_next_fight": "no"
+},
+"6": {
+"fact": "no_fact",
+"firmness": "none",
+"reports_his_next_fight": "no"
+},
+"10": {
+"fact": "no_fact",
+"firmness": "none",
+"reports_his_next_fight": "no"
+},
+"13": {
+"fact": "no_fact",
+"firmness": "none",
+"reports_his_next_fight": "no"
+},
+"14": {
+"fact": "no_fact",
+"firmness": "none",
+"reports_his_next_fight": "no"
+},
+"16": {
+"fact": "next_fight",
+"firmness": "official_or_done",
+"reports_his_next_fight": "yes"
+},
+"17": {
+"fact": "next_fight",
+"firmness": "official_or_done",
+"reports_his_next_fight": "yes"
+},
+"18": {
+"fact": "next_fight",
+"firmness": "official_or_done",
+"reports_his_next_fight": "yes"
+},
+"25": {
+"fact": "personal_life",
+"firmness": "reported",
+"reports_his_next_fight": "no"
+},
+"33": {
+"fact": "no_fact",
+"firmness": "none",
+"reports_his_next_fight": "no"
+},
+"34": {
+"fact": "no_fact",
+"firmness": "none",
+"reports_his_next_fight": "no"
+},
+"38": {
+"fact": "no_fact",
+"firmness": "none",
+"reports_his_next_fight": "no"
+},
+"44": {
+"fact": "health",
+"firmness": "official_or_done",
+"reports_his_next_fight": "no"
+},
+"51": {
+"fact": "no_fact",
+"firmness": "none",
+"reports_his_next_fight": "no"
+},
+"55": {
+"fact": "no_fact",
+"firmness": "none",
+"reports_his_next_fight": "no"
+},
+"60": {
+"fact": "no_fact",
+"firmness": "none",
+"reports_his_next_fight": "no"
+},
+"65": {
+"fact": "no_fact",
+"firmness": "none",
+"reports_his_next_fight": "no"
+},
+"71": {
+"fact": "no_fact",
+"firmness": "none",
+"reports_his_next_fight": "no"
+},
+"78": {
+"fact": "no_fact",
+"firmness": "none",
+"reports_his_next_fight": "no"
+},
+"84": {
+"fact": "no_fact",
+"firmness": "none",
+"reports_his_next_fight": "no"
+},
+"90": {
+"fact": "no_fact",
+"firmness": "none",
+"reports_his_next_fight": "no"
+},
+"96": {
+"fact": "no_fact",
+"firmness": "none",
+"reports_his_next_fight": "no"
+},
+"97": {
+"fact": "no_fact",
+"firmness": "none",
+"reports_his_next_fight": "no"
+},
+"102": {
+"fact": "no_fact",
+"firmness": "none",
+"reports_his_next_fight": "no"
+},
+"115": {
+"fact": "no_fact",
+"firmness": "none",
+"reports_his_next_fight": "no"
+},
+"119": {
+"fact": "no_fact",
+"firmness": "none",
+"reports_his_next_fight": "no"
+},
+"125": {
+"fact": "no_fact",
+"firmness": "none",
+"reports_his_next_fight": "no"
+},
+"129": {
+"fact": "next_fight",
+"firmness": "wish",
+"reports_his_next_fight": "yes"
+},
+"134": {
+"fact": "no_fact",
+"firmness": "none",
+"reports_his_next_fight": "no"
+},
+"138": {
+"fact": "no_fact",
+"firmness": "none",
+"reports_his_next_fight": "no"
+},
+"144": {
+"fact": "no_fact",
+"firmness": "none",
+"reports_his_next_fight": "no"
+},
+"148": {
+"fact": "no_fact",
+"firmness": "none",
+"reports_his_next_fight": "no"
+},
+"152": {
+"fact": "next_fight",
+"firmness": "reported",
+"reports_his_next_fight": "yes"
+},
+"158": {
+"fact": "no_fact",
+"firmness": "none",
+"reports_his_next_fight": "no"
+},
+"166": {
+"fact": "no_fact",
+"firmness": "none",
+"reports_his_next_fight": "no"
+},
+"170": {
+"fact": "no_fact",
+"firmness": "none",
+"reports_his_next_fight": "no"
+},
+"174": {
+"fact": "no_fact",
+"firmness": "none",
+"reports_his_next_fight": "no"
+},
+"181": {
+"fact": "no_fact",
+"firmness": "none",
+"reports_his_next_fight": "no"
+},
+"186": {
+"fact": "no_fact",
+"firmness": "none",
+"reports_his_next_fight": "no"
+},
+"187": {
+"fact": "no_fact",
+"firmness": "none",
+"reports_his_next_fight": "no"
+},
+"193": {
+"fact": "no_fact",
+"firmness": "none",
+"reports_his_next_fight": "no"
+},
+"200": {
+"fact": "no_fact",
+"firmness": "none",
+"reports_his_next_fight": "no"
+},
+"203": {
+"fact": "personal_life",
+"firmness": "official_or_done",
+"reports_his_next_fight": "no"
+},
+"204": {
+"fact": "no_fact",
+"firmness": "none",
+"reports_his_next_fight": "no"
+},
+"207": {
+"fact": "no_fact",
+"firmness": "none",
+"reports_his_next_fight": "no"
+},
+"208": {
+"fact": "personal_life",
+"firmness": "official_or_done",
+"reports_his_next_fight": "no"
+},
+"214": {
+"fact": "no_fact",
+"firmness": "none",
+"reports_his_next_fight": "no"
+},
+"224": {
+"fact": "no_fact",
+"firmness": "none",
+"reports_his_next_fight": "no"
+},
+"228": {
+"fact": "none_of_these",
+"firmness": "reported",
+"reports_his_next_fight": "no"
+},
+"230": {
+"fact": "no_fact",
+"firmness": "none",
+"reports_his_next_fight": "no"
+},
+"233": {
+"fact": "no_fact",
+"firmness": "none",
+"reports_his_next_fight": "no"
+},
+"238": {
+"fact": "no_fact",
+"firmness": "none",
+"reports_his_next_fight": "no"
+},
+"244": {
+"fact": "no_fact",
+"firmness": "none",
+"reports_his_next_fight": "no"
+},
+"247": {
+"fact": "no_fact",
+"firmness": "none",
+"reports_his_next_fight": "no"
+},
+"249": {
+"fact": "no_fact",
+"firmness": "none",
+"reports_his_next_fight": "no"
+},
+"256": {
+"fact": "no_fact",
+"firmness": "none",
+"reports_his_next_fight": "no"
+},
+"261": {
+"fact": "no_fact",
+"firmness": "none",
+"reports_his_next_fight": "no"
+},
+"269": {
+"fact": "no_fact",
+"firmness": "none",
+"reports_his_next_fight": "no"
+},
+"273": {
+"fact": "no_fact",
+"firmness": "none",
+"reports_his_next_fight": "no"
+},
+"279": {
+"fact": "no_fact",
+"firmness": "none",
+"reports_his_next_fight": "no"
+},
+"283": {
+"fact": "no_fact",
+"firmness": "none",
+"reports_his_next_fight": "no"
+},
+"287": {
+"fact": "no_fact",
+"firmness": "none",
+"reports_his_next_fight": "no"
+},
+"291": {
+"fact": "personal_life",
+"firmness": "official_or_done",
+"reports_his_next_fight": "no"
+},
+"297": {
+"fact": "no_fact",
+"firmness": "none",
+"reports_his_next_fight": "no"
+},
+"298": {
+"fact": "no_fact",
+"firmness": "none",
+"reports_his_next_fight": "no"
+},
+"300": {
+"fact": "personal_life",
+"firmness": "official_or_done",
+"reports_his_next_fight": "no"
+},
+"301": {
+"fact": "no_fact",
+"firmness": "none",
+"reports_his_next_fight": "no"
+},
+"305": {
+"fact": "personal_life",
+"firmness": "official_or_done",
+"reports_his_next_fight": "no"
+},
+"311": {
+"fact": "no_fact",
+"firmness": "none",
+"reports_his_next_fight": "no"
+},
+"316": {
+"fact": "no_fact",
+"firmness": "none",
+"reports_his_next_fight": "no"
+},
+"320": {
+"fact": "personal_life",
+"firmness": "official_or_done",
+"reports_his_next_fight": "no"
+},
+"321": {
+"fact": "personal_life",
+"firmness": "official_or_done",
+"reports_his_next_fight": "no"
+},
+"322": {
+"fact": "personal_life",
+"firmness": "official_or_done",
+"reports_his_next_fight": "no"
+},
+"323": {
+"fact": "no_fact",
+"firmness": "none",
+"reports_his_next_fight": "no"
+},
+"327": {
+"fact": "no_fact",
+"firmness": "none",
+"reports_his_next_fight": "no"
+},
+"335": {
+"fact": "no_fact",
+"firmness": "none",
+"reports_his_next_fight": "no"
+},
+"339": {
+"fact": "no_fact",
+"firmness": "none",
+"reports_his_next_fight": "no"
+},
+"342": {
+"fact": "personal_life",
+"firmness": "official_or_done",
+"reports_his_next_fight": "no"
+},
+"349": {
+"fact": "health",
+"firmness": "reported",
+"reports_his_next_fight": "no"
+},
+"353": {
+"fact": "no_fact",
+"firmness": "none",
+"reports_his_next_fight": "no"
+},
+"361": {
+"fact": "health",
+"firmness": "reported",
+"reports_his_next_fight": "no"
+},
+"368": {
+"fact": "health",
+"firmness": "reported",
+"reports_his_next_fight": "no"
+},
+"373": {
+"fact": "no_fact",
+"firmness": "none",
+"reports_his_next_fight": "no"
+},
+"380": {
+"fact": "personal_life",
+"firmness": "official_or_done",
+"reports_his_next_fight": "no"
+},
+"385": {
+"fact": "no_fact",
+"firmness": "none",
+"reports_his_next_fight": "no"
+},
+"397": {
+"fact": "health",
+"firmness": "reported",
+"reports_his_next_fight": "no"
+},
+"402": {
+"fact": "next_fight",
+"firmness": "reported",
+"reports_his_next_fight": "yes"
+},
+"408": {
+"fact": "no_fact",
+"firmness": "none",
+"reports_his_next_fight": "no"
+},
+"412": {
+"fact": "health",
+"firmness": "reported",
+"reports_his_next_fight": "yes"
+},
+"416": {
+"fact": "no_fact",
+"firmness": "none",
+"reports_his_next_fight": "no"
+},
+"423": {
+"fact": "no_fact",
+"firmness": "none",
+"reports_his_next_fight": "no"
+},
+"427": {
+"fact": "personal_life",
+"firmness": "official_or_done",
+"reports_his_next_fight": "no"
+},
+"431": {
+"fact": "no_fact",
+"firmness": "none",
+"reports_his_next_fight": "no"
+},
+"435": {
+"fact": "no_fact",
+"firmness": "none",
+"reports_his_next_fight": "no"
+},
+"442": {
+"fact": "no_fact",
+"firmness": "none",
+"reports_his_next_fight": "no"
+},
+"447": {
+"fact": "no_fact",
+"firmness": "none",
+"reports_his_next_fight": "no"
+},
+"453": {
+"fact": "no_fact",
+"firmness": "none",
+"reports_his_next_fight": "no"
+},
+"457": {
+"fact": "no_fact",
+"firmness": "none",
+"reports_his_next_fight": "no"
+},
+"462": {
+"fact": "no_fact",
+"firmness": "none",
+"reports_his_next_fight": "no"
+},
+"467": {
+"fact": "no_fact",
+"firmness": "none",
+"reports_his_next_fight": "no"
+},
+"476": {
+"fact": "no_fact",
+"firmness": "none",
+"reports_his_next_fight": "no"
+},
+"484": {
+"fact": "no_fact",
+"firmness": "none",
+"reports_his_next_fight": "no"
+},
+"490": {
+"fact": "no_fact",
+"firmness": "none",
+"reports_his_next_fight": "no"
+},
+"491": {
+"fact": "no_fact",
+"firmness": "none",
+"reports_his_next_fight": "no"
+},
+"492": {
+"fact": "no_fact",
+"firmness": "none",
+"reports_his_next_fight": "no"
+},
+"494": {
+"fact": "no_fact",
+"firmness": "none",
+"reports_his_next_fight": "no"
+},
+"497": {
+"fact": "personal_life",
+"firmness": "official_or_done",
+"reports_his_next_fight": "no"
+},
+"500": {
+"fact": "no_fact",
+"firmness": "none",
+"reports_his_next_fight": "no"
+},
+"503": {
+"fact": "no_fact",
+"firmness": "none",
+"reports_his_next_fight": "no"
+},
+"508": {
+"fact": "no_fact",
+"firmness": "none",
+"reports_his_next_fight": "no"
+},
+"510": {
+"fact": "fight_week_event",
+"firmness": "official_or_done",
+"reports_his_next_fight": "no"
+},
+"516": {
+"fact": "no_fact",
+"firmness": "none",
+"reports_his_next_fight": "no"
+},
+"520": {
+"fact": "no_fact",
+"firmness": "none",
+"reports_his_next_fight": "no"
+},
+"521": {
+"fact": "no_fact",
+"firmness": "none",
+"reports_his_next_fight": "no"
+},
+"525": {
+"fact": "no_fact",
+"firmness": "none",
+"reports_his_next_fight": "no"
+},
+"529": {
+"fact": "no_fact",
+"firmness": "none",
+"reports_his_next_fight": "no"
+},
+"532": {
+"fact": "no_fact",
+"firmness": "none",
+"reports_his_next_fight": "no"
+},
+"533": {
+"fact": "no_fact",
+"firmness": "none",
+"reports_his_next_fight": "no"
+},
+"540": {
+"fact": "no_fact",
+"firmness": "none",
+"reports_his_next_fight": "no"
+},
+"547": {
+"fact": "no_fact",
+"firmness": "none",
+"reports_his_next_fight": "no"
+},
+"551": {
+"fact": "no_fact",
+"firmness": "none",
+"reports_his_next_fight": "no"
+},
+"555": {
+"fact": "no_fact",
+"firmness": "none",
+"reports_his_next_fight": "no"
+},
+"556": {
+"fact": "no_fact",
+"firmness": "none",
+"reports_his_next_fight": "no"
+},
+"560": {
+"fact": "no_fact",
+"firmness": "none",
+"reports_his_next_fight": "no"
+},
+"563": {
+"fact": "no_fact",
+"firmness": "none",
+"reports_his_next_fight": "no"
+},
+"565": {
+"fact": "no_fact",
+"firmness": "none",
+"reports_his_next_fight": "no"
+},
+"572": {
+"fact": "none_of_these",
+"firmness": "reported",
+"reports_his_next_fight": "no"
+},
+"576": {
+"fact": "no_fact",
+"firmness": "none",
+"reports_his_next_fight": "no"
+},
+"580": {
+"fact": "no_fact",
+"firmness": "none",
+"reports_his_next_fight": "no"
+},
+"585": {
+"fact": "no_fact",
+"firmness": "none",
+"reports_his_next_fight": "no"
+},
+"588": {
+"fact": "no_fact",
+"firmness": "none",
+"reports_his_next_fight": "no"
+},
+"592": {
+"fact": "none_of_these",
+"firmness": "reported",
+"reports_his_next_fight": "no"
+},
+"594": {
+"fact": "no_fact",
+"firmness": "none",
+"reports_his_next_fight": "no"
+},
+"599": {
+"fact": "no_fact",
+"firmness": "none",
+"reports_his_next_fight": "no"
+},
+"601": {
+"fact": "fight_week_event",
+"firmness": "official_or_done",
+"reports_his_next_fight": "no"
+},
+"603": {
+"fact": "no_fact",
+"firmness": "none",
+"reports_his_next_fight": "no"
+},
+"605": {
+"fact": "no_fact",
+"firmness": "none",
+"reports_his_next_fight": "no"
+},
+"606": {
+"fact": "no_fact",
+"firmness": "none",
+"reports_his_next_fight": "no"
+},
+"608": {
+"fact": "no_fact",
+"firmness": "none",
+"reports_his_next_fight": "no"
+},
+"609": {
+"fact": "no_fact",
+"firmness": "none",
+"reports_his_next_fight": "no"
+},
+"613": {
+"fact": "fight_week_event",
+"firmness": "official_or_done",
+"reports_his_next_fight": "no"
+},
+"614": {
+"fact": "fight_week_event",
+"firmness": "official_or_done",
+"reports_his_next_fight": "no"
+},
+"616": {
+"fact": "fight_week_event",
+"firmness": "official_or_done",
+"reports_his_next_fight": "no"
+},
+"619": {
+"fact": "no_fact",
+"firmness": "none",
+"reports_his_next_fight": "no"
+},
+"620": {
+"fact": "personal_life",
+"firmness": "official_or_done",
+"reports_his_next_fight": "no"
+},
+"623": {
+"fact": "no_fact",
+"firmness": "none",
+"reports_his_next_fight": "no"
+},
+"625": {
+"fact": "fight_week_event",
+"firmness": "official_or_done",
+"reports_his_next_fight": "no"
+},
+"627": {
+"fact": "personal_life",
+"firmness": "official_or_done",
+"reports_his_next_fight": "no"
+},
+"632": {
+"fact": "personal_life",
+"firmness": "official_or_done",
+"reports_his_next_fight": "no"
+},
+"636": {
+"fact": "personal_life",
+"firmness": "official_or_done",
+"reports_his_next_fight": "no"
+},
+"641": {
+"fact": "no_fact",
+"firmness": "none",
+"reports_his_next_fight": "no"
+},
+"643": {
+"fact": "no_fact",
+"firmness": "none",
+"reports_his_next_fight": "no"
+},
+"647": {
+"fact": "no_fact",
+"firmness": "none",
+"reports_his_next_fight": "no"
+},
+"651": {
+"fact": "personal_life",
+"firmness": "official_or_done",
+"reports_his_next_fight": "no"
+},
+"653": {
+"fact": "fight_week_event",
+"firmness": "official_or_done",
+"reports_his_next_fight": "no"
+},
+"654": {
+"fact": "no_fact",
+"firmness": "none",
+"reports_his_next_fight": "no"
+},
+"655": {
+"fact": "no_fact",
+"firmness": "none",
+"reports_his_next_fight": "no"
+},
+"659": {
+"fact": "personal_life",
+"firmness": "official_or_done",
+"reports_his_next_fight": "no"
+},
+"666": {
+"fact": "personal_life",
+"firmness": "official_or_done",
+"reports_his_next_fight": "no"
+},
+"672": {
+"fact": "no_fact",
+"firmness": "none",
+"reports_his_next_fight": "no"
+},
+"673": {
+"fact": "no_fact",
+"firmness": "none",
+"reports_his_next_fight": "no"
+},
+"675": {
+"fact": "personal_life",
+"firmness": "official_or_done",
+"reports_his_next_fight": "no"
+},
+"681": {
+"fact": "no_fact",
+"firmness": "none",
+"reports_his_next_fight": "no"
+},
+"682": {
+"fact": "personal_life",
+"firmness": "official_or_done",
+"reports_his_next_fight": "no"
+},
+"683": {
+"fact": "result",
+"firmness": "official_or_done",
+"reports_his_next_fight": "no"
+},
+"686": {
+"fact": "fight_week_event",
+"firmness": "official_or_done",
+"reports_his_next_fight": "no"
+},
+"687": {
+"fact": "fight_week_event",
+"firmness": "official_or_done",
+"reports_his_next_fight": "no"
+},
+"688": {
+"fact": "fight_week_event",
+"firmness": "official_or_done",
+"reports_his_next_fight": "no"
+},
+"690": {
+"fact": "no_fact",
+"firmness": "none",
+"reports_his_next_fight": "no"
+},
+"692": {
+"fact": "no_fact",
+"firmness": "none",
+"reports_his_next_fight": "no"
+},
+"693": {
+"fact": "health",
+"firmness": "official_or_done",
+"reports_his_next_fight": "no"
+},
+"697": {
+"fact": "personal_life",
+"firmness": "official_or_done",
+"reports_his_next_fight": "no"
+},
+"698": {
+"fact": "no_fact",
+"firmness": "none",
+"reports_his_next_fight": "no"
+},
+"702": {
+"fact": "no_fact",
+"firmness": "none",
+"reports_his_next_fight": "no"
+},
+"709": {
+"fact": "no_fact",
+"firmness": "none",
+"reports_his_next_fight": "no"
+},
+"710": {
+"fact": "no_fact",
+"firmness": "none",
+"reports_his_next_fight": "no"
+},
+"714": {
+"fact": "result",
+"firmness": "official_or_done",
+"reports_his_next_fight": "no"
+},
+"717": {
+"fact": "personal_life",
+"firmness": "official_or_done",
+"reports_his_next_fight": "no"
+},
+"723": {
+"fact": "health",
+"firmness": "official_or_done",
+"reports_his_next_fight": "no"
+},
+"728": {
+"fact": "no_fact",
+"firmness": "none",
+"reports_his_next_fight": "no"
+},
+"731": {
+"fact": "result",
+"firmness": "official_or_done",
+"reports_his_next_fight": "no"
+},
+"732": {
+"fact": "result",
+"firmness": "official_or_done",
+"reports_his_next_fight": "no"
+},
+"733": {
+"fact": "result",
+"firmness": "official_or_done",
+"reports_his_next_fight": "no"
+},
+"735": {
+"fact": "result",
+"firmness": "official_or_done",
+"reports_his_next_fight": "no"
+},
+"736": {
+"fact": "result",
+"firmness": "official_or_done",
+"reports_his_next_fight": "no"
+},
+"737": {
+"fact": "result",
+"firmness": "official_or_done",
+"reports_his_next_fight": "no"
+},
+"740": {
+"fact": "result",
+"firmness": "official_or_done",
+"reports_his_next_fight": "no"
+},
+"743": {
+"fact": "fight_week_event",
+"firmness": "official_or_done",
+"reports_his_next_fight": "no"
+},
+"744": {
+"fact": "no_fact",
+"firmness": "none",
+"reports_his_next_fight": "no"
+},
+"745": {
+"fact": "fight_week_event",
+"firmness": "official_or_done",
+"reports_his_next_fight": "no"
+},
+"746": {
+"fact": "result",
+"firmness": "official_or_done",
+"reports_his_next_fight": "no"
+},
+"747": {
+"fact": "result",
+"firmness": "official_or_done",
+"reports_his_next_fight": "no"
+},
+"755": {
+"fact": "health",
+"firmness": "official_or_done",
+"reports_his_next_fight": "no"
+},
+"758": {
+"fact": "result",
+"firmness": "official_or_done",
+"reports_his_next_fight": "no"
+},
+"759": {
+"fact": "result",
+"firmness": "official_or_done",
+"reports_his_next_fight": "no"
+},
+"762": {
+"fact": "no_fact",
+"firmness": "none",
+"reports_his_next_fight": "no"
+},
+"765": {
+"fact": "result",
+"firmness": "official_or_done",
+"reports_his_next_fight": "no"
+},
+"767": {
+"fact": "result",
+"firmness": "official_or_done",
+"reports_his_next_fight": "no"
+},
+"768": {
+"fact": "result",
+"firmness": "official_or_done",
+"reports_his_next_fight": "no"
+},
+"771": {
+"fact": "personal_life",
+"firmness": "official_or_done",
+"reports_his_next_fight": "no"
+},
+"772": {
+"fact": "result",
+"firmness": "official_or_done",
+"reports_his_next_fight": "no"
+},
+"773": {
+"fact": "result",
+"firmness": "official_or_done",
+"reports_his_next_fight": "no"
+},
+"774": {
+"fact": "no_fact",
+"firmness": "none",
+"reports_his_next_fight": "no"
+},
+"776": {
+"fact": "result",
+"firmness": "official_or_done",
+"reports_his_next_fight": "no"
+},
+"778": {
+"fact": "no_fact",
+"firmness": "none",
+"reports_his_next_fight": "no"
+},
+"779": {
+"fact": "result",
+"firmness": "official_or_done",
+"reports_his_next_fight": "no"
+},
+"780": {
+"fact": "result",
+"firmness": "official_or_done",
+"reports_his_next_fight": "no"
+},
+"782": {
+"fact": "result",
+"firmness": "official_or_done",
+"reports_his_next_fight": "no"
+},
+"783": {
+"fact": "result",
+"firmness": "official_or_done",
+"reports_his_next_fight": "no"
+},
+"785": {
+"fact": "result",
+"firmness": "official_or_done",
+"reports_his_next_fight": "no"
+},
+"786": {
+"fact": "result",
+"firmness": "official_or_done",
+"reports_his_next_fight": "no"
+},
+"788": {
+"fact": "no_fact",
+"firmness": "none",
+"reports_his_next_fight": "no"
+},
+"789": {
+"fact": "no_fact",
+"firmness": "none",
+"reports_his_next_fight": "no"
+},
+"790": {
+"fact": "result",
+"firmness": "official_or_done",
+"reports_his_next_fight": "no"
+},
+"794": {
+"fact": "no_fact",
+"firmness": "none",
+"reports_his_next_fight": "no"
+},
+"797": {
+"fact": "no_fact",
+"firmness": "none",
+"reports_his_next_fight": "no"
+},
+"798": {
+"fact": "next_fight",
+"firmness": "rumour",
+"reports_his_next_fight": "yes"
+},
+"803": {
+"fact": "next_fight",
+"firmness": "rumour",
+"reports_his_next_fight": "yes"
+},
+"807": {
+"fact": "next_fight",
+"firmness": "rumour",
+"reports_his_next_fight": "yes"
+},
+"811": {
+"fact": "no_fact",
+"firmness": "none",
+"reports_his_next_fight": "no"
+},
+"813": {
+"fact": "no_fact",
+"firmness": "none",
+"reports_his_next_fight": "no"
+},
+"817": {
+"fact": "result",
+"firmness": "official_or_done",
+"reports_his_next_fight": "no"
+},
+"820": {
+"fact": "next_fight",
+"firmness": "rumour",
+"reports_his_next_fight": "yes"
+},
+"823": {
+"fact": "result",
+"firmness": "official_or_done",
+"reports_his_next_fight": "no"
+},
+"826": {
+"fact": "result",
+"firmness": "official_or_done",
+"reports_his_next_fight": "no"
+},
+"828": {
+"fact": "next_fight",
+"firmness": "rumour",
+"reports_his_next_fight": "yes"
+},
+"829": {
+"fact": "result",
+"firmness": "official_or_done",
+"reports_his_next_fight": "no"
+},
+"833": {
+"fact": "next_fight",
+"firmness": "rumour",
+"reports_his_next_fight": "yes"
+},
+"838": {
+"fact": "next_fight",
+"firmness": "rumour",
+"reports_his_next_fight": "yes"
+},
+"843": {
+"fact": "no_fact",
+"firmness": "none",
+"reports_his_next_fight": "no"
+},
+"850": {
+"fact": "next_fight",
+"firmness": "rumour",
+"reports_his_next_fight": "yes"
+},
+"851": {
+"fact": "result",
+"firmness": "official_or_done",
+"reports_his_next_fight": "no"
+},
+"852": {
+"fact": "no_fact",
+"firmness": "none",
+"reports_his_next_fight": "no"
+},
+"856": {
+"fact": "no_fact",
+"firmness": "none",
+"reports_his_next_fight": "no"
+},
+"861": {
+"fact": "no_fact",
+"firmness": "none",
+"reports_his_next_fight": "no"
+},
+"862": {
+"fact": "next_fight",
+"firmness": "rumour",
+"reports_his_next_fight": "yes"
+},
+"866": {
+"fact": "no_fact",
+"firmness": "none",
+"reports_his_next_fight": "no"
+},
+"871": {
+"fact": "no_fact",
+"firmness": "none",
+"reports_his_next_fight": "no"
+},
+"875": {
+"fact": "personal_life",
+"firmness": "official_or_done",
+"reports_his_next_fight": "no"
+},
+"879": {
+"fact": "no_fact",
+"firmness": "none",
+"reports_his_next_fight": "no"
+},
+"883": {
+"fact": "next_fight",
+"firmness": "rumour",
+"reports_his_next_fight": "yes"
+},
+"887": {
+"fact": "no_fact",
+"firmness": "none",
+"reports_his_next_fight": "no"
+},
+"889": {
+"fact": "no_fact",
+"firmness": "none",
+"reports_his_next_fight": "no"
+},
+"892": {
+"fact": "no_fact",
+"firmness": "none",
+"reports_his_next_fight": "no"
+},
+"896": {
+"fact": "next_fight",
+"firmness": "rumour",
+"reports_his_next_fight": "yes"
+},
+"901": {
+"fact": "no_fact",
+"firmness": "none",
+"reports_his_next_fight": "no"
+},
+"905": {
+"fact": "no_fact",
+"firmness": "none",
+"reports_his_next_fight": "no"
+},
+"909": {
+"fact": "no_fact",
+"firmness": "none",
+"reports_his_next_fight": "no"
+},
+"913": {
+"fact": "next_fight",
+"firmness": "rumour",
+"reports_his_next_fight": "yes"
+},
+"917": {
+"fact": "no_fact",
+"firmness": "none",
+"reports_his_next_fight": "no"
+},
+"921": {
+"fact": "no_fact",
+"firmness": "none",
+"reports_his_next_fight": "no"
+},
+"926": {
+"fact": "no_fact",
+"firmness": "none",
+"reports_his_next_fight": "no"
+},
+"930": {
+"fact": "no_fact",
+"firmness": "none",
+"reports_his_next_fight": "no"
+},
+"933": {
+"fact": "no_fact",
+"firmness": "none",
+"reports_his_next_fight": "no"
+},
+"934": {
+"fact": "no_fact",
+"firmness": "none",
+"reports_his_next_fight": "no"
+},
+"937": {
+"fact": "no_fact",
+"firmness": "none",
+"reports_his_next_fight": "no"
+},
+"944": {
+"fact": "no_fact",
+"firmness": "none",
+"reports_his_next_fight": "no"
+},
+"948": {
+"fact": "no_fact",
+"firmness": "none",
+"reports_his_next_fight": "no"
+},
+"953": {
+"fact": "no_fact",
+"firmness": "none",
+"reports_his_next_fight": "no"
+},
+"958": {
+"fact": "next_fight",
+"firmness": "official_or_done",
+"reports_his_next_fight": "yes"
+},
+"963": {
+"fact": "no_fact",
+"firmness": "none",
+"reports_his_next_fight": "no"
+},
+"968": {
+"fact": "no_fact",
+"firmness": "none",
+"reports_his_next_fight": "no"
+},
+"972": {
+"fact": "next_fight",
+"firmness": "official_or_done",
+"reports_his_next_fight": "yes"
+},
+"975": {
+"fact": "no_fact",
+"firmness": "none",
+"reports_his_next_fight": "no"
+},
+"977": {
+"fact": "no_fact",
+"firmness": "none",
+"reports_his_next_fight": "no"
+},
+"983": {
+"fact": "no_fact",
+"firmness": "none",
+"reports_his_next_fight": "no"
+},
+"991": {
+"fact": "next_fight",
+"firmness": "official_or_done",
+"reports_his_next_fight": "yes"
+},
+"998": {
+"fact": "next_fight",
+"firmness": "official_or_done",
+"reports_his_next_fight": "yes"
+},
+"1002": {
+"fact": "no_fact",
+"firmness": "none",
+"reports_his_next_fight": "no"
+},
+"1008": {
+"fact": "next_fight",
+"firmness": "official_or_done",
+"reports_his_next_fight": "yes"
+},
+"1016": {
+"fact": "no_fact",
+"firmness": "none",
+"reports_his_next_fight": "no"
+},
+"1020": {
+"fact": "next_fight",
+"firmness": "official_or_done",
+"reports_his_next_fight": "yes"
+},
+"1027": {
+"fact": "no_fact",
+"firmness": "none",
+"reports_his_next_fight": "no"
+},
+"1031": {
+"fact": "next_fight",
+"firmness": "official_or_done",
+"reports_his_next_fight": "yes"
+},
+"1036": {
+"fact": "next_fight",
+"firmness": "official_or_done",
+"reports_his_next_fight": "yes"
+},
+"1040": {
+"fact": "no_fact",
+"firmness": "none",
+"reports_his_next_fight": "no"
+},
+"1045": {
+"fact": "no_fact",
+"firmness": "none",
+"reports_his_next_fight": "no"
+},
+"1050": {
+"fact": "no_fact",
+"firmness": "none",
+"reports_his_next_fight": "no"
+},
+"1058": {
+"fact": "next_fight",
+"firmness": "official_or_done",
+"reports_his_next_fight": "yes"
+},
+"1066": {
+"fact": "no_fact",
+"firmness": "none",
+"reports_his_next_fight": "no"
+},
+"1072": {
+"fact": "no_fact",
+"firmness": "none",
+"reports_his_next_fight": "no"
+},
+"1076": {
+"fact": "next_fight",
+"firmness": "official_or_done",
+"reports_his_next_fight": "yes"
+},
+"1080": {
+"fact": "no_fact",
+"firmness": "none",
+"reports_his_next_fight": "no"
+},
+"1085": {
+"fact": "no_fact",
+"firmness": "none",
+"reports_his_next_fight": "no"
+},
+"1089": {
+"fact": "no_fact",
+"firmness": "none",
+"reports_his_next_fight": "no"
+},
+"1093": {
+"fact": "no_fact",
+"firmness": "none",
+"reports_his_next_fight": "no"
+},
+"1097": {
+"fact": "no_fact",
+"firmness": "none",
+"reports_his_next_fight": "no"
+},
+"1101": {
+"fact": "personal_life",
+"firmness": "official_or_done",
+"reports_his_next_fight": "no"
+},
+"1125": {
+"fact": "no_fact",
+"firmness": "none",
+"reports_his_next_fight": "no"
+},
+"1129": {
+"fact": "no_fact",
+"firmness": "none",
+"reports_his_next_fight": "no"
+},
+"1146": {
+"fact": "no_fact",
+"firmness": "none",
+"reports_his_next_fight": "no"
+},
+"1150": {
+"fact": "no_fact",
+"firmness": "none",
+"reports_his_next_fight": "no"
+},
+"1160": {
+"fact": "no_fact",
+"firmness": "none",
+"reports_his_next_fight": "no"
+},
+"1161": {
+"fact": "no_fact",
+"firmness": "none",
+"reports_his_next_fight": "no"
+},
+"1172": {
+"fact": "health",
+"firmness": "official_or_done",
+"reports_his_next_fight": "no"
+},
+"1200": {
+"fact": "no_fact",
+"firmness": "none",
+"reports_his_next_fight": "no"
+},
+"1260": {
+"fact": "no_fact",
+"firmness": "none",
+"reports_his_next_fight": "no"
+}
+}
