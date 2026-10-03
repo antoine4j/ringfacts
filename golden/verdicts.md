@@ -1146,3 +1146,16 @@ answered no. *"I thought we already had rule two, but yes, add it to the
 guide."* It is rule 3 in this question's terms, and it agrees with #851
 (a callout two days after the win is no fact). Written into the guide on
 the question and on the `result` fact value.
+
+## review: the opponent-or-other-side group is done; "booked or fought" confirmed (2026-10-03)
+
+Anton checked the seven cards (#148, #283, #423, #588, #889, #896, #953)
+and asked whether he had been following the brief's recommended rule,
+"reported as news". Both rules give his answers on all seven; they differ
+only when a rumour with a date exists and the rumoured opponent speaks,
+which is #820, where he had set Pimblett to other fighter's side. *"Okay,
+I agree with the booked or fought then."* No guide change: that rule has
+been in the guide since 2026-10-02. On the way he kept `calls_him_out` on
+#953 (Pimblett's "would love to fight him" is only in the writer's words;
+the quote is "nothing yet") and on #889 (backlog 14), and kept #896 as
+next fight, rumour (a December Pimblett fight, named by Tim Welch).
