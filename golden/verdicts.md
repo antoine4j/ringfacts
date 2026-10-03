@@ -959,3 +959,19 @@ booked"*); the seven low-confidence reads (#605, #745, #852, #1045,
 #1066, #1089, #1172) applied as read, cards left unchecked for him to
 read. Written as corrections in the page's database with the rule and the
 reader's one-line main claim as the note.
+
+## #843 and the rule A moves: a callout is nothing new about him (2026-10-02)
+
+On #843 (Pimblett's return timeline and hit list, Topuria prominent in
+it) Anton was on the fence between only mentioned and one of several:
+*"Topuria is not just one of them, he's prominent, because Pimblett is
+talking about him mainly."* Shown rule A (what is new about him: only
+that Pimblett wants the fight), the guide's own line (a fighter only
+calling him out does not count) and both blind rule A re-readers' move
+to only mentioned, Anton: *"I agree only mentioned is objectively about
+the article, and he's not at the same level as Pimblett perhaps. I'll
+buy this interpretation."* Of the 9 articles both re-readers moved, #34,
+#843 and #856 already stood at only mentioned; #820 keeps Anton's own
+ruling of one of several (the denial of the rumour is news touching his
+next fight, unlike a bare callout); #342, #588, #871, #892 and #921 are
+corrected to only mentioned in the page's database.
