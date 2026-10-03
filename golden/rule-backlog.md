@@ -51,6 +51,18 @@ first 1,900 characters of the saved text are the site's menu, so a fifth of
 what was kept is page furniture: the cap is spent before the article
 starts. A fetch-quality item for the extractor, not a labelling rule.
 
+### 14. Watch: the act list has no value for "the man he called out answers back"
+*Labelling. From #889, 2026-10-03. Anton: "Rodriguez is not openly calling
+out Donchenko, he's kind of responding to his call out."*
+Donchenko called out Rodriguez; Rodriguez reposted it with a middle-finger
+emoji. All three readers chose `calls_him_out`, which the guide defines
+wider than its name ("asks to fight him, challenges him, trash talk aimed
+at him"); two noted the doubt. `answers_for_him` is the opposite thing (a
+reply on the watched fighter's behalf). Kept as `calls_him_out`. One
+article does not earn a value; on a second or third "X fires back at him"
+piece, either rename the value ("challenges or taunts him") or add a reply
+value.
+
 ## Proposed, not yet discussed
 
 ### 4. Content not in the saved text
