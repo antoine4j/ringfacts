@@ -912,3 +912,15 @@ Source and fact are separate axes: a rumour is news about his next fight
 without making the rumoured man his opponent. The next-fight question is
 reworded to say "the state of his next fight" so a rumour or a denial reads
 as yes.
+Applied the same day to all 43 articles labelled opponent side (a blind
+re-read, experiments/2026-09-27-answer-key/overnight/opponent-out.json):
+16 flip to other fighter's side (#34, #78, #166, #228, #283, #311, #423,
+#442, #820, #838, #843, #871, #889, #892, #913, #921: Pimblett's wishes
+and rumours, Méndez and Abdelaziz speaking for Makhachev or Usman
+Nurmagomedov, the Donchenko–Rodriguez callout), 27 stay (every Gaethje
+article: they fought; the Soriano pre-fight pieces: booked). Anton on
+#228, Makhachev's verbal acceptance: *"it was never officially booked…
+they would both have to accept for UFC to announce, so it doesn't
+count."* On Gaethje: *"too hard to demand the model know whether it's a
+future or a past opponent; Gaethje stays."* Written as corrections in the
+page's database with the rule as the note, not into readers-v1.json.

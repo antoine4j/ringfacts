@@ -1,0 +1,303 @@
+[
+ {
+  "id": "6",
+  "keep": true,
+  "source": "opponent_side",
+  "evidence": "Gaethje's manager Abdelaziz; 'beating Ilia Topuria via fourth-round corner TKO at UFC Freedom 250' — fought",
+  "confidence": "high"
+ },
+ {
+  "id": "34",
+  "keep": false,
+  "source": "other_fighter_side",
+  "evidence": "none — Abdelaziz speaks as Usman Nurmagomedov's manager: 'The fight I want, if he goes to the UFC, I want Ilia Topuria'; a wish, Usman not even in the UFC",
+  "confidence": "medium"
+ },
+ {
+  "id": "78",
+  "keep": false,
+  "source": "other_fighter_side",
+  "evidence": "none — Abdelaziz (as Makhachev/Usman's rep) and Méndez want Topuria as Usman's debut; Makhachev fight 'las negociaciones no fructificaron'",
+  "confidence": "medium"
+ },
+ {
+  "id": "166",
+  "keep": false,
+  "source": "other_fighter_side",
+  "evidence": "none — Méndez is Makhachev/Usman's coach; Makhachev-Topuria never booked ('ahora no tiene sentido esa pelea')",
+  "confidence": "high"
+ },
+ {
+  "id": "228",
+  "keep": false,
+  "source": "other_fighter_side",
+  "evidence": "none — Makhachev says he verbally accepted a White House fight ('dije que sí') but 'al día siguiente, Ali me dijo que no iba a pasar'; never booked, never happened",
+  "confidence": "medium"
+ },
+ {
+  "id": "283",
+  "keep": false,
+  "source": "other_fighter_side",
+  "evidence": "none — Pimblett: 'If I fight Ilia or Arman…'; Topuria 'has yet to book his return fight'",
+  "confidence": "high"
+ },
+ {
+  "id": "311",
+  "keep": false,
+  "source": "other_fighter_side",
+  "evidence": "none — Méndez (Makhachev's coach) rules the fight out; 'no llegaron a un acuerdo'",
+  "confidence": "high"
+ },
+ {
+  "id": "353",
+  "keep": true,
+  "source": "opponent_side",
+  "evidence": "Gaethje: 'title-winning performance against Ilia Topuria at the White House' — fought",
+  "confidence": "high"
+ },
+ {
+  "id": "423",
+  "keep": false,
+  "source": "other_fighter_side",
+  "evidence": "none — Pimblett 'desea enfrentarse'; 'un posible combate'",
+  "confidence": "high"
+ },
+ {
+  "id": "442",
+  "keep": false,
+  "source": "other_fighter_side",
+  "evidence": "none — Méndez (Makhachev's coach): 'las posibilidades de ver este combate se desvanecen'",
+  "confidence": "high"
+ },
+ {
+  "id": "462",
+  "keep": true,
+  "source": "opponent_side",
+  "evidence": "Gaethje: 'stopping Ilia Topuria in the UFC White House main event in June' — fought",
+  "confidence": "high"
+ },
+ {
+  "id": "467",
+  "keep": true,
+  "source": "opponent_side",
+  "evidence": "Gaethje: 'ended up dethroning Topuria… Round 4 via TKO' — fought",
+  "confidence": "high"
+ },
+ {
+  "id": "476",
+  "keep": true,
+  "source": "opponent_side",
+  "evidence": "Gaethje: 'his win over Ilia Topuria at UFC Freedom 250' — fought",
+  "confidence": "high"
+ },
+ {
+  "id": "484",
+  "keep": true,
+  "source": "opponent_side",
+  "evidence": "Gaethje: 'stopping Ilia Topuria in the UFC White House main event in June' — fought",
+  "confidence": "high"
+ },
+ {
+  "id": "492",
+  "keep": true,
+  "source": "opponent_side",
+  "evidence": "Gaethje: 'his brutal title-winning fight against Ilia Topuria at the White House' — fought",
+  "confidence": "high"
+ },
+ {
+  "id": "503",
+  "keep": true,
+  "source": "opponent_side",
+  "evidence": "Gaethje: 'finalizar a Ilia Topuria en el UFC Casa Blanca' — fought",
+  "confidence": "high"
+ },
+ {
+  "id": "529",
+  "keep": true,
+  "source": "opponent_side",
+  "evidence": "Soriano: 'Saturday's meeting with Donchenko at Accor Arena' — booked",
+  "confidence": "high"
+ },
+ {
+  "id": "532",
+  "keep": true,
+  "source": "opponent_side",
+  "evidence": "Soriano: 'Saturday's meeting with Donchenko at Accor Arena' — booked",
+  "confidence": "high"
+ },
+ {
+  "id": "551",
+  "keep": true,
+  "source": "opponent_side",
+  "evidence": "Gaethje: 'defeated Ilia Topuria via fourth-round TKO in the main event of UFC Freedom 250' — fought",
+  "confidence": "high"
+ },
+ {
+  "id": "556",
+  "keep": true,
+  "source": "opponent_side",
+  "evidence": "Gaethje: 'won the title in June over Ilia Topuria at UFC Freedom 250' — fought",
+  "confidence": "high"
+ },
+ {
+  "id": "560",
+  "keep": true,
+  "source": "opponent_side",
+  "evidence": "Gaethje: 'his victory over Ilia Topuria for the undisputed title at UFC Freedom 250' — fought",
+  "confidence": "high"
+ },
+ {
+  "id": "565",
+  "keep": true,
+  "source": "opponent_side",
+  "evidence": "Gaethje (via SI): 'the long, grueling fight with Ilia Topuria that made him a champion' — fought",
+  "confidence": "high"
+ },
+ {
+  "id": "576",
+  "keep": true,
+  "source": "opponent_side",
+  "evidence": "Gaethje: 'this win over Topuria' — fought",
+  "confidence": "high"
+ },
+ {
+  "id": "585",
+  "keep": true,
+  "source": "opponent_side",
+  "evidence": "Gaethje: 'Ilia Topuria, who he obliterated at UFC Freedom 250' — fought",
+  "confidence": "high"
+ },
+ {
+  "id": "588",
+  "keep": true,
+  "source": "opponent_side",
+  "evidence": "Soriano: 'returns to the UFC on Saturday when he faces Daniil Donchenko… scheduled for 9 a.m. Hawaii time' — booked",
+  "confidence": "high"
+ },
+ {
+  "id": "609",
+  "keep": true,
+  "source": "opponent_side",
+  "evidence": "Soriano: 'meets Daniil Donchenko on September 5 at Accor Arena in Paris' — booked",
+  "confidence": "high"
+ },
+ {
+  "id": "820",
+  "keep": false,
+  "source": "other_fighter_side",
+  "evidence": "none — Pimblett: 'No one spoke to me about it'; 'the UFC has not approached him'; rumour from Tim Welch",
+  "confidence": "high"
+ },
+ {
+  "id": "838",
+  "keep": false,
+  "source": "other_fighter_side",
+  "evidence": "none — Pimblett: 'Nothing yet. No one has spoke to me about it'; rumour of UFC 335",
+  "confidence": "high"
+ },
+ {
+  "id": "843",
+  "keep": false,
+  "source": "other_fighter_side",
+  "evidence": "none — Pimblett: 'Nothing yet. No one's spoke to me about it'",
+  "confidence": "high"
+ },
+ {
+  "id": "871",
+  "keep": false,
+  "source": "other_fighter_side",
+  "evidence": "none — 'rumors swirling'; Pimblett: 'nothing has been finalized yet'",
+  "confidence": "high"
+ },
+ {
+  "id": "889",
+  "keep": false,
+  "source": "other_fighter_side",
+  "evidence": "none — Donchenko callout, Rodriguez replies with an emoji; 'The UFC has not confirmed whether the matchup will be booked'",
+  "confidence": "high"
+ },
+ {
+  "id": "892",
+  "keep": false,
+  "source": "other_fighter_side",
+  "evidence": "none — Pimblett 'pide una pelea', 'tenemos que esperar y ver'",
+  "confidence": "high"
+ },
+ {
+  "id": "913",
+  "keep": false,
+  "source": "other_fighter_side",
+  "evidence": "none — Pimblett 'ha negado tajantemente que esté en negociaciones'; January attempt never materialised",
+  "confidence": "high"
+ },
+ {
+  "id": "921",
+  "keep": false,
+  "source": "other_fighter_side",
+  "evidence": "none — Pimblett: 'Nothing yet. No one's spoke to me about it'",
+  "confidence": "high"
+ },
+ {
+  "id": "944",
+  "keep": true,
+  "source": "opponent_side",
+  "evidence": "Gaethje: 'his fourth-round stoppage of Ilia Topuria at UFC White House' — fought",
+  "confidence": "high"
+ },
+ {
+  "id": "948",
+  "keep": true,
+  "source": "opponent_side",
+  "evidence": "Gaethje; the text only implies the past fight: 'making Justin Gaethje rematch' with Topuria, 'his first title challenger' — fought",
+  "confidence": "medium"
+ },
+ {
+  "id": "963",
+  "keep": true,
+  "source": "opponent_side",
+  "evidence": "Gaethje: 'derrotar al español… el 14 de junio de 2026' — fought",
+  "confidence": "high"
+ },
+ {
+  "id": "977",
+  "keep": true,
+  "source": "opponent_side",
+  "evidence": "Gaethje: 'The fight against Topuria… Topuria was declared medically unfit to continue after the fourth round' — fought",
+  "confidence": "high"
+ },
+ {
+  "id": "983",
+  "keep": true,
+  "source": "opponent_side",
+  "evidence": "Gaethje: 'Ilia Topuria and Justin Gaethje had a war at UFC Freedom 250' — fought",
+  "confidence": "high"
+ },
+ {
+  "id": "1040",
+  "keep": true,
+  "source": "opponent_side",
+  "evidence": "Gaethje: 'handed Topuria his first loss by stopping the Spanish-Georgian in four rounds' — fought",
+  "confidence": "high"
+ },
+ {
+  "id": "1050",
+  "keep": true,
+  "source": "opponent_side",
+  "evidence": "Gaethje: 'finished Ilia Topuria by TKO earlier this year at UFC Freedom 250' — fought",
+  "confidence": "high"
+ },
+ {
+  "id": "1072",
+  "keep": true,
+  "source": "opponent_side",
+  "evidence": "Gaethje: 'su pelea frente a Ilia Topuria en UFC Freedom 250… consiguió parar al hispano-georgiano' — fought",
+  "confidence": "high"
+ },
+ {
+  "id": "1093",
+  "keep": true,
+  "source": "opponent_side",
+  "evidence": "Gaethje: 'championship triumph at UFC Freedom 250… possible rematch against Ilia Topuria' — fought",
+  "confidence": "high"
+ }
+]
