@@ -86,12 +86,13 @@ into Q5, which may be fine since we can see a correlation then"*).
 
 | value | means |
 |---|---|
-| **next fight** | news of his next fight: an opponent, a date, an offer, talks, a cancellation, or when he will be ready. Only as the article's own news (rule 3, 2026-10-02): a booking restated as the premise of a preview or a rumour recalled beside an opinion is background, so no fact. Booking and return were two values until v4; every v3 "return" was one fighter's comeback storyline, so they merged (2026-09-27) |
+| **next fight** | news that a specific fight of his exists or has changed: set, announced, offered, in talks, moved, cancelled, or a rumour with a who, when or where. His own word that he has a fight counts, even unsigned and unnamed. When he will be ready, "nothing booked" and opponents named only as options are status update (2026-10-02); a wish is no fact, whoever makes it. Only as the article's own news (rule 3, 2026-10-02): a booking restated as the premise of a preview or a rumour recalled beside an opinion is background, so no fact. Booking and return were two values until v4; every v3 "return" was one fighter's comeback storyline, so they merged (2026-09-27) |
 | **result** | the outcome of a fight of his |
 | **fight-week event** | the routine of a fight of his, and nothing more: weigh-in, face-off, open workout, card order, start times. An interview, press conference or media day is a place where things are said, not a fact: what is said there takes its own value, or none (Anton, 2026-09-27) |
 | **health** | injury, medical, recovery |
 | **career move** | retirement, contract, weight class, team change |
 | **personal life** | family, childhood, home, hobbies, a lesson from life |
+| **status update** | (2026-10-02) where he stands as a fighter when no specific fight exists or changes: ready, not before a date, a return window, nothing booked, opponents only as options, training camp, an announced return to public life. The specific values come first: a statement of how his recovery is going is health even if it also gives a return date; a post or letter takes the value of what it says. No yes/no question of its own. Tested by blind readers on all 300 (experiments/2026-09-27-answer-key/status-pilot/) |
 | **none** | opinion or talk only; no new fact |
 
 ## Modifier: how firm (only for next fight, career move; v4 asks it of any fact)

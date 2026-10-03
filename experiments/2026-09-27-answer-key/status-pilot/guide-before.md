@@ -72,7 +72,8 @@ is only possible with source `himself`.
 ## 4. fact — what new fact about him does the article carry?
 
 A fact is something that happened or is set to happen, not an opinion.
-Choose by the article's **main news about him**. A past fight or injury only recalled as background is not the article's fact. Pick the specific value first: result, `next_fight`, `fight_week_event`, health, `career_move` or `personal_life`. If it is not one of those six, ask whether it is news of where he stands as a fighter (ready, available, training, back in public): that is `status_update`. Use `none_of_these` only for a new fact that is neither one of the six nor about where he stands as a fighter. Use `no_fact` when there is no new fact at all.
+Choose by the article's **main news about him**. A past fight or injury
+only recalled as background is not the article's fact.
 
 **Rule 3: count only what is new (Anton, 2026-10-02).** All nine answers
 describe the article's one main claim. Something mentioned on the way (a
@@ -100,15 +101,14 @@ message; the rematch rumour is a closing line: no fact, next fight no).
 
 | value | means |
 |---|---|
-| `next_fight` | news that a specific fight of his exists or has changed: a fight is set, announced, offered, in talks, moved or cancelled. It counts when he himself says he has a fight, even before the promotion confirms it and even if he does not name the opponent ("I know who, where and when"). Not when he will be ready, that he is ready, that nothing is booked, or opponents named only as options with no talks ("Gaethje or Pimblett, both make sense"): those are `status_update`. Not a wish or an opinion about who he should fight (a callout, a pundit's pick): that is `no_fact`. A rumour about his next fight reported from a third party (a coach, an outlet, "reports suggest"), even when its subject denies it, is `next_fight` at firmness `rumour`; the speaker's own wish with no reported rumour or talks is `no_fact` (Anton, 2026-10-02: #820 vs #843). A rumour counts only when the article gives it substance: who said it, or a date or event. "Amid rumours" framing with no who, when or where is a wish piece (#871) |
+| `next_fight` | news of his next fight: an opponent, a date, an offer, talks, a cancellation, or when he will be ready to fight again. Not a wish or an opinion about who he should fight (a callout, a pundit's pick): that is `no_fact`. A rumour about his next fight reported from a third party (a coach, an outlet, "reports suggest"), even when its subject denies it, is `next_fight` at firmness `rumour`; the speaker's own wish with no reported rumour or talks is `no_fact` (Anton, 2026-10-02: #820 vs #843). A rumour counts only when the article gives it substance: who said it, or a date or event. "Amid rumours" framing with no who, when or where is a wish piece (#871) |
 | `result` | the outcome of a fight of his, as the news (a fight report, his bout on a results page) |
-| `fight_week_event` | the routine of a fight of his, and nothing more: weigh-in, face-off, open workout, card order, start times. Training camp and sparring in the weeks or months before fight week are `status_update`. An interview, press conference or media day is a place where things are said, not a fact: what is said there takes its own value, or `no_fact` |
-| `health` | injury, medical issue, surgery, recovery, as news, including how the recovery is going. When someone named says how he is or how the recovery is going, however briefly, the fact is health, even if the headline and most of the text are about when he will be back. If the article only says when he will be ready and describes no injury or recovery, it is `status_update` |
+| `fight_week_event` | the routine of a fight of his, and nothing more: weigh-in, face-off, open workout, card order, start times. An interview, press conference or media day is a place where things are said, not a fact: what is said there takes its own value, or `no_fact` |
+| `health` | injury, medical issue, surgery, recovery, as news |
 | `career_move` | retirement, a contract, a move of weight class or team, a title vacated, stripped or awarded |
 | `personal_life` | his life outside the cage: family, childhood, home, hobbies, money, a life lesson |
-| `status_update` | (Anton, 2026-10-02) news of where he stands as a fighter, when no specific fight exists or changes: he is ready to fight, or will not fight before a date; a return window ("ready by December"); nothing is booked yet; opponents named only as options; he starts training camp, or a camp or sparring update; he is back in training; his return to public life after time away is itself announced or reported. A post, a letter or an interview of his takes the value of what it says, not `status_update` for the mere fact that he spoke again: a message to his son is `personal_life`, a reflection with no fact is `no_fact`. Someone must state it as a fact: he himself, his team, the promotion, or a named report. Not a guess or an opinion about his timing (Gaethje thinks he will not fight until next year, #462): that is `no_fact`. Not how his injury or recovery is going: that is health. Not the weigh-in, face-off, open workout or card order of a fight: that is `fight_week_event`. Not family, home or money: that is `personal_life`. |
-| `no_fact` | opinion or talk only; no new fact about him. Wishes, demands, callouts, picks and guesses at his timing are all `no_fact`, whoever makes them, his own manager included (#129) |
-| `none_of_these` | a new fact of a kind not listed; say which. Check `status_update` first: `none_of_these` is for a fact that is not about where he stands as a fighter (a past negotiation revealed, #228) |
+| `no_fact` | opinion or talk only; no new fact about him |
+| `none_of_these` | a new fact of a kind not listed; say which |
 
 ## 5. firmness — how established is the main fact the article asserts about him?
 
@@ -119,8 +119,8 @@ Of the main fact whatever its kind; `none` when question 4 is `no_fact`.
 | `none` | no fact about him is asserted: only opinion, analysis or talk |
 | `wish` | a wish or a demand: someone wants it or says it should happen |
 | `rumour` | unnamed sources, a leak, "talks", "discussions", "plans" |
-| `reported` | a named outlet or journalist states it, citing sources; or a person other than him or the promotion states it (e.g. his coach says he'll be ready in December); or he himself says a fight exists but nothing is signed or announced ("I was told who, where and when") |
-| `official_or_done` | the promotion or he himself states it, or it has happened (a fight result). One exception: when he says he has a fight but it is not signed or announced, that is reported |
+| `reported` | a named outlet or journalist states it, citing sources; or a person other than him or the promotion states it (e.g. his coach says he'll be ready in December) |
+| `official_or_done` | the promotion or he himself states it, or it has happened (a fight result) |
 
 ## 6–9. Four yes/no questions (answer `yes` or `no`)
 
@@ -132,14 +132,20 @@ kind of news is part of the article's main claim: as the main fact, or as
 a second fact stated beside it** (Anton, 2026-10-02). When `fact` is
 `result`, `next_fight` or `health`, its question is always `yes`. A
 question can also be `yes` while `fact` is a different kind, when the same
-statement carries both (a fight report that also names his next opponent: fact `result`, next fight `yes`). When `fact` is `no_fact`, all
+statement carries both (a coach gives his return date and how the recovery
+is going: fact `next_fight`, health `yes`). When `fact` is `no_fact`, all
 three are `no`. They never mean "is it mentioned": see rule 3 under
 question 4.
 
 - **reports_his_result** — does the article report, as its news, the outcome
   of a fight of his? `no` when his past fight is only recalled as background
   to other news.
-- **reports_his_next_fight** — does it carry news that a specific fight of his exists or has changed: set, announced, offered, in talks, rumoured or denied, moved or cancelled, including his own word that he has a fight? (A rumour is a fact at low firmness, not an opinion.) `no` for only wishes and opinions (callouts, pundit picks), for when he will be ready or that nothing is booked, for opponents named only as options, for training and recovery news, and for another fighter's next fight that does not involve him.
+- **reports_his_next_fight** — does it carry news about the state of his
+  next fight: an opponent or date set, offered, in talks, rumoured or
+  denied, cancelled, or when he will be ready? (A rumour is a fact at low
+  firmness, not an opinion.) `no` for only wishes and opinions (callouts, pundit picks), for
+  recovery with no word on when he can fight, and for another fighter's next
+  fight that does not involve him.
 - **reports_his_health** — does it report, as its news, an injury, illness,
   procedure or recovery of his, including an update on how he is? `no` when a
   past injury is only recalled as background, or it only says when he will be
@@ -159,10 +165,10 @@ For each article, one JSON object:
 {"id": "0000",
  "centrality": "main_subject", "source": "his_team", "act": "gives_news_of_him",
  "fact": "health", "firmness": "reported",
- "reports_his_result": "no", "reports_his_next_fight": "no",
+ "reports_his_result": "no", "reports_his_next_fight": "yes",
  "reports_his_health": "yes", "he_speaks": "no",
- "unsure": [],
- "note": "(made-up example) His coach says the hand surgery went well and he could be back by spring.  'Back by spring' is not news of a specific fight, so next fight is no."}
+ "unsure": ["reports_his_next_fight"],
+ "note": "(made-up example) His coach says the hand surgery went well and he could be back by spring. Next fight: 'back by spring' is a timeline, but vague."}
 ```
 
 `unsure` lists the questions where a careful editor could reasonably pick

@@ -68,8 +68,14 @@ facts (offers, pay disputes, failed bookings) or more "back in public"
 items.
 
 ### 12. A new fact value, "status update" (name open), and a narrower "next fight"
-*Labelling and classifier. Proposed 2026-10-02 from #998; NOT adopted;
-nothing applied; no run until Anton has reviewed the exact wording.*
+*Labelling: ADOPTED into the guide 2026-10-02, after Anton reviewed the
+wording side by side and a blind reader pilot on all 300 (21 articles
+where both readers give the same new answer, 16 of them intended;
+experiments/2026-09-27-answer-key/status-pilot/). Name: status update.
+Health wins over a return date in the same statement; a wish is no fact
+whoever makes it. Classifier: not yet, by his choice; the classifier
+wording is drafted in wording-proposal.json for v7. What follows is the
+record of how it was proposed.*
 
 **The problem.** #998 and nine wire copies: Dana White says "not on the
 schedule right now, but Topuria is ready to fight". Labelled next fight,

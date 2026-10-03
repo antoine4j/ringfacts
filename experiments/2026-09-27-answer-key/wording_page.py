@@ -10,7 +10,7 @@ import re
 from pathlib import Path
 
 HERE = Path(__file__).parent
-GUIDE = HERE / "key-guide.md"
+GUIDE = HERE / "status-pilot" / "guide-before.md"  # the guide before the wording was adopted
 CLASSIFIER = HERE.parent / "2026-09-27-axes-v6" / "classifier-v6" / "questions.json"
 PROPOSAL = HERE / "wording-proposal.json"
 TEMPLATE = HERE / "wording-template.html"
