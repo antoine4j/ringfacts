@@ -1,0 +1,68 @@
+[
+ {
+  "id": "pq301",
+  "main_claim": "Donchenko beat Punahele Soriano by unanimous decision at UFC Paris, his fourth straight UFC win.",
+  "centrality": "main_subject",
+  "act": "reports_an_event",
+  "fact": "result",
+  "reports_his_result": "yes",
+  "he_speaks": "no",
+  "unsure": ["act", "he_speaks"],
+  "note": "The text is a fight report: 'переміг ... одноголосним рішенням суддів — 30-27, 30-27, 29-28', two knockdowns. Act unsure because it says he announced it on his Instagram (could be speaks_of_himself), but the post is not quoted; he_speaks unsure because his only words ('хороші друзі') are recalled from after his previous win, which I read as background."
+ },
+ {
+  "id": "pq302",
+  "main_claim": "After beating Soriano at UFC Paris, Donchenko asks for a fight with Daniel Rodriguez, ideally at the end of the year over five rounds.",
+  "centrality": "main_subject",
+  "act": "speaks_of_himself",
+  "fact": "no_fact",
+  "reports_his_result": "no",
+  "he_speaks": "yes",
+  "unsure": ["fact", "reports_his_result"],
+  "note": "Headline and lead are his callout ('Please, let me fight just with him'), a wish, so no_fact and result no under the 'statement after a fight' rule. Unsure on both because one paragraph is a real round-by-round account of the fight ending in the unanimous decision, which an editor could read as a fight report beside the callout."
+ },
+ {
+  "id": "pq303",
+  "main_claim": "Topuria returns to social media with a video letter to his son Hugo about what his first defeat taught him.",
+  "centrality": "main_subject",
+  "act": "speaks_of_himself",
+  "fact": "personal_life",
+  "reports_his_result": "no",
+  "he_speaks": "yes",
+  "unsure": ["fact"],
+  "note": "The article is built on his quoted video ('Hugo, I've been thinking about you...'), a message to his son, which the guide gives as personal_life. Fact unsure: the lead frames it as his return to social media (status_update), the message is mostly reflection (no_fact), and one line cites MMA Fighting on facial injuries without surgery (health); the June loss is background."
+ },
+ {
+  "id": "pq304",
+  "main_claim": "Paddy Pimblett says he wants to fight Topuria at the end of the year and would love to 'smash his head in'.",
+  "centrality": "only_mentioned",
+  "act": "calls_him_out",
+  "fact": "no_fact",
+  "reports_his_result": "no",
+  "he_speaks": "no",
+  "unsure": ["centrality"],
+  "note": "Pimblett's quote 'Me encantaría aplastarle la cabeza' is a callout, so it is Pimblett's story and a wish, not a fact; the eye injuries come with 'cabe recordar' and are background. Centrality unsure because the writer adds that everything depends on Ilia's recovery and that he 'no está forzando la máquina', which could count as something new about him (one_of_several)."
+ },
+ {
+  "id": "pq305",
+  "main_claim": "Daniel Rodriguez answered Donchenko's post-fight callout with a middle-finger emoji on Instagram stories.",
+  "centrality": "one_of_several",
+  "act": "calls_him_out",
+  "fact": "no_fact",
+  "reports_his_result": "no",
+  "he_speaks": "no",
+  "unsure": ["centrality"],
+  "note": "Rodriguez 'responded on Instagram stories by sharing the callout with a middle-finger emoji', a taunt aimed at him, and 'The UFC has not confirmed whether the matchup will be booked', so no fact; his Soriano win is recap. Centrality unsure: it is Rodriguez's reply to Donchenko's own callout (like the guide's case of the other fighter answering him, one_of_several), but nothing new about Donchenko is added and no fight is booked, so only_mentioned is defensible."
+ },
+ {
+  "id": "pq306",
+  "main_claim": "Paddy Pimblett says he would love to fight Topuria next, though nobody has spoken to him about it and he has other options.",
+  "centrality": "only_mentioned",
+  "act": "calls_him_out",
+  "fact": "no_fact",
+  "reports_his_result": "no",
+  "he_speaks": "no",
+  "unsure": ["fact"],
+  "note": "Pimblett's 'I'd love to smash his head in, lad' with 'Nothing yet. No one's spoke to me about it' is a wish in Pimblett's own story; Topuria's title loss is recap. Fact unsure because the closing line says Jon Anik claimed internal talks of a Gaethje-Topuria rematch, a named rumour that could be next_fight; I treated it as a closing-line aside outside the main claim."
+ }
+]

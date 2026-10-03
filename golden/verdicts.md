@@ -1297,3 +1297,16 @@ five Pimblett callouts. The sentence was added.
   section above: of the eight cards in the group, six end as none of
   these.
 - **#1089 stays no fact**, with both readers again at status update.
+
+- **#148: no fact becomes health again.** Anton: *"I still think it's not
+  health because health is old news, and these injuries reverberate
+  through all news, but I get that maybe from isolated context, for the
+  model it's not clear so maybe health is fine"*, then *"yes to health on
+  148"*. A named trainer "ha revelado" that his recovery is ahead of
+  schedule, under its own subheading: "health follows who states it", and
+  a second fact beside the main claim counts. The correction to no fact
+  of 2 October had applied "only what is new" too hard; the three original
+  readers and both re-readers all said health.
+- **Rerun of the callout rule**, with the added sentence and the callouts
+  spread across batches: both readers, 95 of 95 answers as the key has
+  them. The rule is now carried by the wording.

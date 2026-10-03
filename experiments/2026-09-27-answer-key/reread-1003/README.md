@@ -35,3 +35,20 @@ against five.
 
 Other differences, each flagged by the reader as unsure: #148 fact (both
 health, key no fact), #1172 fact, #1260 act, #361 fact, #492 how central.
+
+## Round 2: the callout sentence, rerun the same day
+
+`round2/`: the seven callout articles (#273, #843, #871, #921, #892, #953,
+#913) under the guide with the added sentence, how it is in force now.
+Built to avoid the flaw above: three batches per reader, no batch with
+more than three callouts, each mixed with four unrelated articles, and a
+different grouping and order for each reader (six agents, about 542,000
+subagent tokens).
+
+**Both readers gave the key's answer on 95 of 95 answers**: only mentioned
+on the six plain callouts, one of several on #913, and all twelve unrelated
+articles unchanged.
+
+Also from round 1: #148 went back to health on Anton's word (a named
+trainer states his recovery, under its own subheading; all five readers
+who ever read it said health).

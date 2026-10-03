@@ -1,0 +1,68 @@
+[
+ {
+  "id": "pq201",
+  "main_claim": "Paddy Pimblett says he would love to fight Topuria but nobody has talked to him about it, while the writer weighs Topuria's two options (Gaethje rematch or Pimblett).",
+  "centrality": "one_of_several",
+  "act": "calls_him_out",
+  "fact": "no_fact",
+  "reports_his_result": "no",
+  "he_speaks": "no",
+  "unsure": ["centrality", "fact"],
+  "note": "Pimblett's «Me encantaría destrozarle la cabeza... Nadie me ha hablado de eso» is a wish with talks denied, so no fact; the June loss and injuries are recalled as background. Centrality: it is Pimblett's callout, but the writer spends most of the text weighing Topuria's options (rematch vs Pimblett), which the guide makes one_of_several, though an editor could read it as only_mentioned or even main_subject; fact could be status_update (options named, nothing in talks) but only the writer, not a named source, states it."
+ },
+ {
+  "id": "pq202",
+  "main_claim": "After beating Soriano in Paris, Donchenko took the microphone and told the UFC bosses who he wants to fight next.",
+  "centrality": "main_subject",
+  "act": "speaks_of_himself",
+  "fact": "no_fact",
+  "reports_his_result": "no",
+  "he_speaks": "no",
+  "unsure": ["he_speaks"],
+  "note": "The news is his post-fight callout, a wish, so no fact; the decision win is introduced with «Нагадаємо» (recall) and is a statement after a fight, so result is no. His words are only described («прямо заявив босам промоушену») and no quote of his survives in the saved text, so he_speaks is no, though the original article clearly carried his statement."
+ },
+ {
+  "id": "pq203",
+  "main_claim": "Donchenko compares Makhachev's win streak with Anderson Silva's and says Amosov could test the champion.",
+  "centrality": "only_mentioned",
+  "act": "none_of_these",
+  "fact": "no_fact",
+  "reports_his_result": "no",
+  "he_speaks": "yes",
+  "unsure": ["act", "centrality"],
+  "note": "He is quoted at length («If we will compare 18 wins from Anderson Silva and 18 wins from Makhachev...») but only about other fighters, and nothing comes back to him, which the guide rules only_mentioned; 'fresh off his win over Soriano' is background. Act is none_of_these because he is the speaker but does not speak of himself: what would fit is 'he comments on other fighters'; an editor could still pick speaks_of_himself (the rule for source himself) or main_subject by headline."
+ },
+ {
+  "id": "pq204",
+  "main_claim": "After making weight for the Soriano fight, Donchenko says he is fine and plans to be about 86 kg by the evening.",
+  "centrality": "main_subject",
+  "act": "speaks_of_himself",
+  "fact": "fight_week_event",
+  "reports_his_result": "no",
+  "he_speaks": "yes",
+  "unsure": [],
+  "note": "The article is built on the weigh-in («Обидва бійці показали вагу 77,11 кг») and his quoted words after it («Ввечері, думаю, 86 буду важити»); the fight date is restated as premise and the June win is background."
+ },
+ {
+  "id": "pq205",
+  "main_claim": "Paddy Pimblett has no fight booked, expects to return in December, and says he would love to fight Topuria but nobody has spoken to him about it.",
+  "centrality": "only_mentioned",
+  "act": "calls_him_out",
+  "fact": "no_fact",
+  "reports_his_result": "no",
+  "he_speaks": "no",
+  "unsure": ["act"],
+  "note": "Topuria appears in one passage as a wanted opponent in Pimblett's own news («he would love to fight him but added that no conversations have taken place»): a callout with nothing new about Topuria, so only_mentioned and no_fact. Act is calls_him_out because he asks to fight him, but it is a mild answer to a question, so an editor could say none_of_these (a speaker's stance on his own next fight)."
+ },
+ {
+  "id": "pq206",
+  "main_claim": "Nathaniel Wood gets a new short-notice opponent, debutant Pavel Andrusca, at UFC Paris.",
+  "centrality": "only_mentioned",
+  "act": "none_of_these",
+  "fact": "no_fact",
+  "reports_his_result": "no",
+  "he_speaks": "no",
+  "unsure": [],
+  "note": "Donchenko appears only as one line of the full card list («Daniil Donchenko vs. Punahele Soriano»), a booking restated in a card list, which is background; act is none_of_these because he is only mentioned and nobody does anything regarding him."
+ }
+]
