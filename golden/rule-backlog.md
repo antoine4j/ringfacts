@@ -8,12 +8,12 @@ an adopted rule goes into the labelling guide
 the classifier, its questions or its composing script; his words go to
 verdicts.md. A rejected rule is deleted here with one line in verdicts.md.
 
-Decided so far (not in this list): "other fighter's side" (2026-09-28),
-centrality judged by what is new, not by length (rule A, 2026-09-28),
-"where" stays unlabelled, taken from the extractor (2026-10-01), and
-"opponent side" means booked or fought, never a callout or rumour (was
-rule 6 here; 2026-10-02), and rule 3, count only what is new, for fact,
-firmness and the three news questions (was rules 3 and 5; 2026-10-02).
+**Decided rules are not in this file.** They are listed under plain names,
+each with its full description, in [rules.md](rules.md). The numbers here
+are only positions in this list, and they have gaps (3, 5 and 6) because
+those items were decided and moved out: "rule 3" is now "only what is
+new", "rule 6" is "booked or fought", and "rule A" (from an earlier
+review) is "new, not long".
 
 ## Parked by Anton, to review later
 
