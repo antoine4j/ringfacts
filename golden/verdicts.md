@@ -1159,3 +1159,16 @@ been in the guide since 2026-10-02. On the way he kept `calls_him_out` on
 #953 (Pimblett's "would love to fight him" is only in the writer's words;
 the quote is "nothing yet") and on #889 (backlog 14), and kept #896 as
 next fight, rumour (a December Pimblett fight, named by Tim Welch).
+
+## rule: "talking about another fighter" is only mentioned when nothing comes back to him (2026-10-03)
+
+#373: on a podcast Topuria says he was never a fan of Demetrious Johnson
+because he took "Mighty Mouse" for "Mickey Mouse"; Johnson jokes back at
+him. Two of three readers had applied the guide's line (him talking about
+another fighter is only mentioned, even at length). Anton: *"Why in 373
+it's only mentioned and not one of several?"* Of the 58 articles where he
+is the one speaking, only two are not main subject: #1260 (Donchenko
+comparing Makhachev's streak with Silva's; nothing comes back to him) and
+#373, where the story is his own slip and the reply is aimed at him. By
+rule A there is something new about him. Ruled one of several, and the
+guide's line gains "when nothing in the article comes back to him".
