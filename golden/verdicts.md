@@ -1172,3 +1172,17 @@ comparing Makhachev's streak with Silva's; nothing comes back to him) and
 #373, where the story is his own slip and the reply is aimed at him. By
 rule A there is something new about him. Ruled one of several, and the
 guide's line gains "when nothing in the article comes back to him".
+
+## design intent: fact and firmness together route an article; neither is a blade (2026-10-03)
+
+After the rumour audit (11 articles next fight at rumour, 6 with a rumour
+but no fact), Anton on why the fact stays "next fight" for a rumour:
+*"with this rule that we can have a fact there is a fight, but it's a
+rumor, then we avoid having a blade and we can still have ... officially
+reported fights, bookings, and rumors going to digest, for example. And
+that would be a realistic outcome."* The label records the kind of news
+and, separately, how settled it is; the decider routes by the pair (and by
+who said it): official at once, rumour to a digest. Nothing is dropped by
+a label. Consequence for the classifier: "how firm" becomes a routing
+answer, so its accuracy (about 79% in v6) matters more than before.
+"We'll need to test it."
