@@ -1058,3 +1058,16 @@ the brief's own reading of rule C had yes: its "no surgery" line is an
 older MMA Fighting report recalled by the writer, not what the article is
 built on. #148 (a trainer's line in an appended section) and #1058
 (readiness only) stay no, low confidence.
+
+## design: the three news questions are the main fact or a second fact, never a mention (2026-10-02)
+
+Anton asked whether the yes/no questions can be independent of fact, and
+if not, why they exist. Measured on all 300 with the day's corrections:
+whenever fact is result, next fight or health its question is yes (69 of
+69); a question is yes beside a different fact on 4 articles (#152, #402:
+a return date with a recovery update; #412 the mirror; #203), never beside
+no fact. Before rule 3, 57 next-fight answers were yes on mentions. Kept,
+with the definition written into the guide: they carry the second fact
+that the single fact value cannot, and in the classifier, where each
+question is answered blind to the others, a disagreement between fact and
+its question is the doubt signal.

@@ -125,8 +125,17 @@ Of the main fact whatever its kind; `none` when question 4 is `no_fact`.
 ## 6–9. Four yes/no questions (answer `yes` or `no`)
 
 Each is about the watched fighter only, never about another fighter in
-the article. Each asks "is this the article's news", not "is this in the
-text": see rule 3 under question 4. `no_fact` means `no` on the first three.
+the article.
+
+**The three news questions (result, next fight, health) say whether that
+kind of news is part of the article's main claim: as the main fact, or as
+a second fact stated beside it** (Anton, 2026-10-02). When `fact` is
+`result`, `next_fight` or `health`, its question is always `yes`. A
+question can also be `yes` while `fact` is a different kind, when the same
+statement carries both (a coach gives his return date and how the recovery
+is going: fact `next_fight`, health `yes`). When `fact` is `no_fact`, all
+three are `no`. They never mean "is it mentioned": see rule 3 under
+question 4.
 
 - **reports_his_result** — does the article report, as its news, the outcome
   of a fight of his? `no` when his past fight is only recalled as background

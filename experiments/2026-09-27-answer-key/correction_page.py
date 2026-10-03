@@ -60,6 +60,11 @@ def question_texts():
     # the yes/no questions: one bullet each
     for m in re.finditer(r"- \*\*(\w+)\*\* — (.+?)(?=\n- \*\*|\n\n)", guide, re.S):
         out[m.group(1)] = {"readers": " ".join(m.group(2).replace("`", "").split())}
+    # the three news questions share one definition, stated above their bullets
+    shared = re.search(r"\*\*The three news questions(.+?)\n\n", guide, re.S)
+    if shared:
+        text = " ".join(("The three news questions" + shared.group(1)).replace("*", "").replace("`", "").split())
+        for q in QUESTIONS[5:8]: out[q]["readers"] += " " + text
     v6 = json.load(open(os.path.join(HERE, "../2026-09-27-axes-v6/classifier-v6/questions.json")))
     for q, d in v6.items():
         out.setdefault(q, {})["classifier"] = " ".join(d["instructions"].split())
