@@ -1098,3 +1098,27 @@ any run:
 Not yet adopted into key-guide.md: the wording is in
 experiments/2026-09-27-answer-key/wording-proposal.json and is being tested
 by blind readers (status-pilot/).
+
+## review: the five articles the status-update readers moved that nobody predicted (2026-10-02)
+
+Both blind readers gave a new answer on five articles outside the intended
+moves (status-pilot/result.json). Anton went through them on the page:
+
+- **#913 changes to no fact**, replacing his ruling of the same morning
+  (next fight, rumour). *"This is something we agreed to avoid, because
+  everything will become rumor about next fight then."* A rumour with a
+  who, when or where is still next-fight news (#820, a December date); here
+  Anik's rematch claim is a passing line, as in #1002, #879, #901, and the
+  article is Pimblett's wish and the writer's analysis. Four blind readings
+  and the overnight brief's rule had all said no fact.
+- **#851 stays result.** Donchenko calls out Rodriguez two days after his
+  Paris win; the readers said no fact (the callout is the news). Anton:
+  *"it also gets on the back of his win result, which is why I believe fact
+  is a result. So it's fine as it is."* He also noted the list has no fact
+  value for the watched fighter calling someone out; it is carried by act
+  (speaks of himself: what he wants next), not by fact.
+- **#1089, #620, #342 stay as they were** (no fact; personal life;
+  personal life), against the readers' status update, status update and no
+  fact. #1089: White's line about Topuria is the frame of a Gaethje piece.
+  #620: the same video letter to his son as #627 and #651, under a headline
+  that says he announces his return.
