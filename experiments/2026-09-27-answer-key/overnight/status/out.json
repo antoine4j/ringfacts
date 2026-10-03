@@ -1,0 +1,464 @@
+[
+ {
+  "id": "16",
+  "main_claim": "Donchenko fights Punahele Soriano on 5 Sept at UFC Fight Night Paris",
+  "opponent_or_event_named": "Soriano, UFC Fight Night Paris, 5 Sept (set)",
+  "answers": {
+   "fact": "next_fight",
+   "firmness": "official_or_done",
+   "reports_his_next_fight": "yes"
+  },
+  "changed": [],
+  "quote": "проведе свій наступний поєдинок 5 вересня на турнірі UFC Fight Night у Парижі. Суперником ... стане американець Пунахеле Соріано",
+  "confidence": "high"
+ },
+ {
+  "id": "17",
+  "main_claim": "Donchenko's next fight is 5 Sept in Paris against Soriano",
+  "opponent_or_event_named": "Soriano, UFC Fight Night Paris, 5 Sept (set)",
+  "answers": {
+   "fact": "next_fight",
+   "firmness": "official_or_done",
+   "reports_his_next_fight": "yes"
+  },
+  "changed": [],
+  "quote": "Наступний поєдинок ... відбудеться 5 вересня на турнірі UFC Fight Night ... Суперником українця стане ... Пунахеле Соріано",
+  "confidence": "high"
+ },
+ {
+  "id": "18",
+  "main_claim": "Donchenko fights Soriano on 5 Sept at UFC Paris",
+  "opponent_or_event_named": "Soriano, UFC Fight Night Paris, 5 Sept (set)",
+  "answers": {
+   "fact": "next_fight",
+   "firmness": "official_or_done",
+   "reports_his_next_fight": "yes"
+  },
+  "changed": [],
+  "quote": "вийде в октагон 5 вересня на турнірі UFC Fight Night ... Суперником українця стане досвідчений Пунахеле Соріано",
+  "confidence": "high"
+ },
+ {
+  "id": "129",
+  "main_claim": "Topuria's manager Malki Kawa publicly asks for an immediate Gaethje rematch",
+  "opponent_or_event_named": "none (Gaethje rematch is only his team's own wish; the timing lines are the writer's estimate)",
+  "answers": {
+   "fact": "no_fact",
+   "firmness": "none",
+   "reports_his_next_fight": "no"
+  },
+  "changed": [
+   "fact",
+   "firmness",
+   "reports_his_next_fight"
+  ],
+  "quote": "Malki Kawa dejó un mensaje claro y directo: «Nosotros queremos esta pelea»",
+  "confidence": "medium"
+ },
+ {
+  "id": "152",
+  "main_claim": "His conditioning coach says he could be physically ready by December but spring 2027 is the sensible return",
+  "opponent_or_event_named": "none",
+  "answers": {
+   "fact": "status_update",
+   "firmness": "reported",
+   "reports_his_next_fight": "no"
+  },
+  "changed": [
+   "fact",
+   "reports_his_next_fight"
+  ],
+  "quote": "puede estar listo para diciembre ... \"lo correcto, adecuado e inteligente\" es esperar al próximo año, siendo la primavera de 2027",
+  "confidence": "high"
+ },
+ {
+  "id": "228",
+  "main_claim": "Makhachev says he accepted a White House fight with Topuria that fell through over Topuria's money demands",
+  "opponent_or_event_named": "Makhachev at UFC Freedom 250: a past offer for an event already held, not his next fight",
+  "answers": {
+   "fact": "none_of_these",
+   "firmness": "reported",
+   "reports_his_next_fight": "no"
+  },
+  "changed": [],
+  "quote": "'¿Quieres pelear en la Casa Blanca contra Ilia Topuria?' Dije que sí ... Al día siguiente, Ali me dijo que no iba a pasar",
+  "confidence": "medium"
+ },
+ {
+  "id": "402",
+  "main_claim": "A return window is being given for Topuria: end of 2026 possible, early 2027 likely (Dvalishvili and coach Gallo)",
+  "opponent_or_event_named": "none (Tsarukyan, Pimblett, Nurmagomedov only 'names that sound' in a closing paragraph)",
+  "answers": {
+   "fact": "status_update",
+   "firmness": "reported",
+   "reports_his_next_fight": "no"
+  },
+  "changed": [
+   "fact",
+   "reports_his_next_fight"
+  ],
+  "quote": "podría estar preparado para volver al octógono a finales de año, aunque parece que será a principios de 2027",
+  "confidence": "high"
+ },
+ {
+  "id": "412",
+  "main_claim": "Coach Gallo updates his recovery: going very well, could be physically ready in December, 2027 is the target",
+  "opponent_or_event_named": "none ('la fecha y el rival todavía son una incógnita')",
+  "answers": {
+   "fact": "health",
+   "firmness": "reported",
+   "reports_his_next_fight": "no"
+  },
+  "changed": [
+   "reports_his_next_fight"
+  ],
+  "quote": "La recuperación ha sido estupenda ... él podría estar listo para diciembre",
+  "confidence": "medium"
+ },
+ {
+  "id": "572",
+  "main_claim": "Reporter Colmenero says Topuria will return to the public eye in September",
+  "opponent_or_event_named": "none (Gaethje/Pimblett only pitched in the closing lines)",
+  "answers": {
+   "fact": "status_update",
+   "firmness": "reported",
+   "reports_his_next_fight": "no"
+  },
+  "changed": [
+   "fact"
+  ],
+  "quote": "I do know that Ilia is going to return to the public eye directly in the month of September",
+  "confidence": "high"
+ },
+ {
+  "id": "592",
+  "main_claim": "Analyst Colmenero says Topuria returns to public life in September",
+  "opponent_or_event_named": "none",
+  "answers": {
+   "fact": "status_update",
+   "firmness": "reported",
+   "reports_his_next_fight": "no"
+  },
+  "changed": [
+   "fact"
+  ],
+  "quote": "sí sé que Ilia regresará a la luz pública durante este mes de septiembre",
+  "confidence": "high"
+ },
+ {
+  "id": "798",
+  "main_claim": "Jon Anik says the UFC is having internal conversations about Gaethje vs Topuria 2",
+  "opponent_or_event_named": "Gaethje rematch, discussed inside the UFC",
+  "answers": {
+   "fact": "next_fight",
+   "firmness": "rumour",
+   "reports_his_next_fight": "yes"
+  },
+  "changed": [],
+  "quote": "I think there are internal conversations to potentially try to do Gaethje vs. Topuria 2",
+  "confidence": "high"
+ },
+ {
+  "id": "803",
+  "main_claim": "Jon Anik hints the UFC is internally discussing a Topuria-Gaethje rematch",
+  "opponent_or_event_named": "Gaethje rematch, discussed inside the UFC",
+  "answers": {
+   "fact": "next_fight",
+   "firmness": "rumour",
+   "reports_his_next_fight": "yes"
+  },
+  "changed": [],
+  "quote": "I think there are internal conversations to potentially try to do Gaethje vs. Topuria 2",
+  "confidence": "high"
+ },
+ {
+  "id": "807",
+  "main_claim": "Anik says the promotion is internally discussing an immediate Gaethje-Topuria rematch",
+  "opponent_or_event_named": "Gaethje rematch, discussed inside the UFC",
+  "answers": {
+   "fact": "next_fight",
+   "firmness": "rumour",
+   "reports_his_next_fight": "yes"
+  },
+  "changed": [],
+  "quote": "says the promotion is internally discussing an immediate rematch between lightweight champion Justin Gaethje and Ilia Topuria",
+  "confidence": "medium"
+ },
+ {
+  "id": "820",
+  "main_claim": "Pimblett says nobody has approached him about the rumoured December fight with Topuria",
+  "opponent_or_event_named": "Pimblett in December, rumoured (via Tim Welch), denied by Pimblett",
+  "answers": {
+   "fact": "next_fight",
+   "firmness": "rumour",
+   "reports_his_next_fight": "yes"
+  },
+  "changed": [],
+  "quote": "Tim Welch ... claimed he heard rumors that Pimblett and Topuria could meet before the end of the year",
+  "confidence": "high"
+ },
+ {
+  "id": "828",
+  "main_claim": "Anik says the UFC is heavily considering a Topuria-Gaethje rematch",
+  "opponent_or_event_named": "Gaethje rematch, discussed inside the UFC",
+  "answers": {
+   "fact": "next_fight",
+   "firmness": "rumour",
+   "reports_his_next_fight": "yes"
+  },
+  "changed": [],
+  "quote": "I think there are internal conversations to potentially try to do Gaethje vs. Topuria 2",
+  "confidence": "high"
+ },
+ {
+  "id": "833",
+  "main_claim": "Anik suggests the UFC is likely to pursue Gaethje vs Topuria 2",
+  "opponent_or_event_named": "Gaethje rematch, discussed inside the UFC",
+  "answers": {
+   "fact": "next_fight",
+   "firmness": "rumour",
+   "reports_his_next_fight": "yes"
+  },
+  "changed": [],
+  "quote": "I think there are internal conversations to potentially try to do Gaethje vs Topuria 2",
+  "confidence": "medium"
+ },
+ {
+  "id": "838",
+  "main_claim": "Pimblett says he has had no call about the rumoured UFC 335 fight with Topuria",
+  "opponent_or_event_named": "Pimblett at UFC 335 on 12 Dec, rumoured (Tim Welch), denied; also Gaethje rematch talks (Anik)",
+  "answers": {
+   "fact": "next_fight",
+   "firmness": "rumour",
+   "reports_his_next_fight": "yes"
+  },
+  "changed": [],
+  "quote": "Tim Welch, recently claimed to have heard rumors of the potential matchup taking place on December 12",
+  "confidence": "high"
+ },
+ {
+  "id": "850",
+  "main_claim": "O'Malley's coach Tim Welch says there are rumours of Pimblett vs Topuria in December",
+  "opponent_or_event_named": "Pimblett in December, rumoured",
+  "answers": {
+   "fact": "next_fight",
+   "firmness": "rumour",
+   "reports_his_next_fight": "yes"
+  },
+  "changed": [],
+  "quote": "Hay rumores de un Paddy Pimblett contra Topuria en diciembre",
+  "confidence": "high"
+ },
+ {
+  "id": "862",
+  "main_claim": "Anik says there are internal conversations about a Gaethje-Topuria rematch",
+  "opponent_or_event_named": "Gaethje rematch, discussed inside the UFC",
+  "answers": {
+   "fact": "next_fight",
+   "firmness": "rumour",
+   "reports_his_next_fight": "yes"
+  },
+  "changed": [],
+  "quote": "I think there are internal conversations to potentially try to do Gaethje vs. Topuria 2",
+  "confidence": "high"
+ },
+ {
+  "id": "883",
+  "main_claim": "Fans blast the reported plan for an immediate Topuria-Gaethje rematch leaked by Anik",
+  "opponent_or_event_named": "Gaethje rematch, discussed inside the UFC",
+  "answers": {
+   "fact": "next_fight",
+   "firmness": "rumour",
+   "reports_his_next_fight": "yes"
+  },
+  "changed": [],
+  "quote": "Jon Anik recently revealed the promotion has held \"internal conversations\" about running things back between the pair",
+  "confidence": "high"
+ },
+ {
+  "id": "896",
+  "main_claim": "Rumours of a December return against Pimblett; Welch cites them, O'Malley leans Pimblett",
+  "opponent_or_event_named": "Pimblett in December, rumoured",
+  "answers": {
+   "fact": "next_fight",
+   "firmness": "rumour",
+   "reports_his_next_fight": "yes"
+  },
+  "changed": [],
+  "quote": "Hay rumores de un Paddy Pimblett contra Topuria en diciembre",
+  "confidence": "high"
+ },
+ {
+  "id": "913",
+  "main_claim": "Pimblett says he would love to fight Topuria but denies any talks are under way",
+  "opponent_or_event_named": "Pimblett, talked about and denied by him; Gaethje rematch attributed to Anik",
+  "answers": {
+   "fact": "next_fight",
+   "firmness": "rumour",
+   "reports_his_next_fight": "yes"
+  },
+  "changed": [],
+  "quote": "Nadie me ha hablado de eso (una pelea con Ilia), así que veremos qué pasa",
+  "confidence": "low"
+ },
+ {
+  "id": "958",
+  "main_claim": "Dana White says Topuria is ready to fight; nothing scheduled, Gaethje and Pimblett both sound good",
+  "opponent_or_event_named": "none set or in talks (Gaethje and Pimblett only as options White likes)",
+  "answers": {
+   "fact": "status_update",
+   "firmness": "official_or_done",
+   "reports_his_next_fight": "no"
+  },
+  "changed": [
+   "fact",
+   "reports_his_next_fight"
+  ],
+  "quote": "We don't have him on the schedule right now, but listen, Topuria's ready to fight. We're ready for him.",
+  "confidence": "high"
+ },
+ {
+  "id": "972",
+  "main_claim": "Dana White says Topuria is ready to fight and is open to either Gaethje or Pimblett",
+  "opponent_or_event_named": "none set or in talks (two options; 'on the table' is the writer's inference)",
+  "answers": {
+   "fact": "status_update",
+   "firmness": "official_or_done",
+   "reports_his_next_fight": "no"
+  },
+  "changed": [
+   "fact",
+   "reports_his_next_fight"
+  ],
+  "quote": "we don't have him on the schedule right now, but Topuria is ready to fight, and we're ready for him",
+  "confidence": "high"
+ },
+ {
+  "id": "991",
+  "main_claim": "Dana White says Topuria is ready and that Gaethje or Pimblett both make sense, nothing set",
+  "opponent_or_event_named": "none set or in talks (two options named as good fights)",
+  "answers": {
+   "fact": "status_update",
+   "firmness": "official_or_done",
+   "reports_his_next_fight": "no"
+  },
+  "changed": [
+   "fact",
+   "reports_his_next_fight"
+  ],
+  "quote": "Topuria's ready to fight. We're ready for him ... We don't have anything set",
+  "confidence": "medium"
+ },
+ {
+  "id": "998",
+  "main_claim": "Dana White confirms Topuria is recovered and ready to fight; not on the schedule",
+  "opponent_or_event_named": "none set or in talks (two options)",
+  "answers": {
+   "fact": "status_update",
+   "firmness": "official_or_done",
+   "reports_his_next_fight": "no"
+  },
+  "changed": [
+   "fact",
+   "reports_his_next_fight"
+  ],
+  "quote": "No lo tenemos en la agenda por ahora, pero escucha: Topuria está listo para pelea",
+  "confidence": "high"
+ },
+ {
+  "id": "1008",
+  "main_claim": "Dana White says Topuria is ready to fight; nothing scheduled, both options sound good",
+  "opponent_or_event_named": "none set or in talks (two options)",
+  "answers": {
+   "fact": "status_update",
+   "firmness": "official_or_done",
+   "reports_his_next_fight": "no"
+  },
+  "changed": [
+   "fact",
+   "reports_his_next_fight"
+  ],
+  "quote": "We don't have him on the schedule right now, but listen, Topuria's ready to fight. We're ready for him.",
+  "confidence": "high"
+ },
+ {
+  "id": "1020",
+  "main_claim": "UFC's Dana White confirms Topuria is ready to fight; both options fine, return points to 2027",
+  "opponent_or_event_named": "none set or in talks (two options; 'sobre la mesa' is the writer's reading)",
+  "answers": {
+   "fact": "status_update",
+   "firmness": "official_or_done",
+   "reports_his_next_fight": "no"
+  },
+  "changed": [
+   "fact",
+   "reports_his_next_fight"
+  ],
+  "quote": "Topuria está listo para pelear, y nosotros estamos preparados para él. Ambas opciones ... me parecen bien",
+  "confidence": "high"
+ },
+ {
+  "id": "1031",
+  "main_claim": "Dana White confirms Topuria is ready to return; no date, event or opponent announced",
+  "opponent_or_event_named": "none set or in talks (Gaethje and Pimblett as possibilities, explicitly unconfirmed)",
+  "answers": {
+   "fact": "status_update",
+   "firmness": "official_or_done",
+   "reports_his_next_fight": "no"
+  },
+  "changed": [
+   "fact",
+   "reports_his_next_fight"
+  ],
+  "quote": "Dana White ha confirmado que está listo para competir, pero la UFC no ha anunciado oficialmente un evento, una fecha y un rival",
+  "confidence": "high"
+ },
+ {
+  "id": "1036",
+  "main_claim": "Dana White: Topuria ready to fight, no decision yet on opponents",
+  "opponent_or_event_named": "none set or in talks (two options; rematch rumours are background)",
+  "answers": {
+   "fact": "status_update",
+   "firmness": "official_or_done",
+   "reports_his_next_fight": "no"
+  },
+  "changed": [
+   "fact",
+   "reports_his_next_fight"
+  ],
+  "quote": "We don't have him on the schedule right now. Listen, Topuria's ready to fight, we're ready for him.",
+  "confidence": "high"
+ },
+ {
+  "id": "1058",
+  "main_claim": "Dana White confirms Topuria is cleared and ready to fight; two options weighed, return likely early 2027",
+  "opponent_or_event_named": "none set or in talks (two options)",
+  "answers": {
+   "fact": "status_update",
+   "firmness": "official_or_done",
+   "reports_his_next_fight": "no"
+  },
+  "changed": [
+   "fact",
+   "reports_his_next_fight"
+  ],
+  "quote": "Topuria está listo para pelear, y nosotros estamos preparados para él. Ambas opciones me parecen bien",
+  "confidence": "high"
+ },
+ {
+  "id": "1076",
+  "main_claim": "Dana White says Topuria is ready to return and the UFC has not chosen between Gaethje and Pimblett",
+  "opponent_or_event_named": "none set or in talks (two options, 'ni ellos mismos saben lo que hacer')",
+  "answers": {
+   "fact": "status_update",
+   "firmness": "official_or_done",
+   "reports_his_next_fight": "no"
+  },
+  "changed": [
+   "fact",
+   "reports_his_next_fight"
+  ],
+  "quote": "Dana White ... ha dicho que el peleador hispanogeorgiano está listo para volver, aunque tienen un gran dilema",
+  "confidence": "medium"
+ }
+]

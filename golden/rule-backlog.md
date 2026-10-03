@@ -67,6 +67,70 @@ note is right for now. Revisit if the next pull brings more business
 facts (offers, pay disputes, failed bookings) or more "back in public"
 items.
 
+### 12. A new fact value, "status update" (name open), and a narrower "next fight"
+*Labelling and classifier. Proposed 2026-10-02 from #998; NOT adopted;
+nothing applied; no run until Anton has reviewed the exact wording.*
+
+**The problem.** #998 and nine wire copies: Dana White says "not on the
+schedule right now, but Topuria is ready to fight". Labelled next fight,
+official, which reads as a booking. Anton: *"it's basically a comment from
+the UFC that truly nothing happened, but it will be reported as a new
+fight scheduled, with fanfare."*
+
+**The what-if** (one reader, 32 articles, overnight/status/, read-only):
+14 would move to the new value (the ten White pieces, #152 and #402 where
+his coach gives a return window, #572 and #592 "returns to public view",
+which were none of these); 15 stay next fight (three Soriano bookings,
+twelve rumour pieces); #412 keeps fact health and loses its next-fight
+yes. One reader, all 14 about Topuria, classifier untested.
+
+**Anton's positions (2026-10-02), to build the wording from:**
+- The value is meant to be broad, *"a little bit catch-all"*: any update
+  that says where he stands. Ready to fight, will not fight before a
+  date, a return window, back in public view, **and training camp**:
+  starting camp, camp and sparring updates in the months before fight
+  week. It fills the gap *"between everything else and no fact"*.
+- Risk he named: it may swallow none of these, no fact or fight week.
+  Test for it, and reinforce the fight-week line in the prompt.
+- **Next fight is for real fight news only.** The current rule (set,
+  offered, in talks, cancelled, a rumour with a who, when or where), plus:
+  the fighter himself saying a fight exists counts **even before official
+  confirmation and even unnamed**. Official confirmation is a name, a
+  date, an event, an opponent, or the promotion's own message; when it
+  comes, it is reported again.
+- Opponents named only as options (White: "Gaethje or Pimblett, both are
+  great", #991, #1076) are **not** next fight: *"these are options, not
+  even rumours"*. Status update. He does want to hear them, because the
+  source is the promotion: that is the decider's ranking, not the label.
+- How firm, when the fighter himself says nothing is signed: *"rumour,
+  probably."* (Open: Claude suggests "reported", see below.)
+- **No yes/no flag** for status update: it is the lowest fact, not worth
+  a fourth flag. Losing #412's second fact is fine.
+- The name is open; find a sensible one and test it.
+- Order of work: align the wording first; he reviews the exact text the
+  readers and the classifier will see; then two blind readers; then the
+  classifier, as on every major change. No run before that.
+
+**Worked example outside the 300** (not added to the frozen set): Amosov,
+sport.nv.ua, 2026-09-29,
+https://sport.nv.ua/ukr/mma/yaroslav-amosov-ogolosiv-pro-novogo-supernika-ufc-pidgotovka-do-boyu-50645741.html
+He says he knows his next opponent ("who, where and when"), nothing is
+signed, he does not name him, and he is easing into camp. It broke the
+draft test "is an opponent named?": the test must be whether a specific
+fight exists or changes, not whether the text names it. Anton: *"I don't
+see a sense to ignore this article now"*; pass it through the classifier
+once the wording is settled.
+
+**Open, Claude's pushback for Anton to rule on:**
+- "Recovering well" is health today. If status update takes it, health
+  empties. Proposed order: the specific values first (result, next fight,
+  fight week event, health, career move, personal life); status update
+  only when none fits; no fact when it is only opinion.
+- How firm for a fighter's own "I have a fight, unsigned": rumour
+  (Anton) or reported (a named first-hand source, stronger than Welch's
+  "heard rumours")? Underneath: how firm records who vouches, and nothing
+  records how far along the fight is.
+
 ## Candidate rules from the overnight briefs (2026-10-02, not decided)
 
 Eight briefs, one per boundary of the readers' disagreements
