@@ -1022,3 +1022,16 @@ differ. It's the same thing, but written differently, and it causes
 different flags."* That is by design: the label describes the article as
 written; the claims layer is where the same event is recognised across
 articles.
+
+## design: a retired fighter speaking as a pundit is still a fighter (2026-10-02)
+
+Matt Brown, retired, on a podcast, was labelled media on #879 and #905
+("speaks as a pundit") and other fighter's side on #901; Masvidal,
+Alvarez and McCann on podcasts were other fighter's side throughout.
+Offered rule A (a fighter is a fighter, active or retired; 2 flips) and
+rule B (speaking as a pundit makes you media; 6 flips, and a judgement
+about the role), Anton: *"Retired fighters become kind of pundits, they
+can also be podcasters, so the line is blurred. If we could make a clean
+line… but then the model has to know who's retired and who's not, and I
+don't want to introduce that complexity again. So another fighter is
+fine."* Rule A: #879 and #905 corrected to other fighter's side.

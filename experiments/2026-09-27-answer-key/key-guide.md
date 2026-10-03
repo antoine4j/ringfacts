@@ -46,7 +46,7 @@ carries nothing new about him, answer for its main content.
 | `opponent_side` | a fighter the article itself says is booked against him (a date, an event, "will face") or has already fought him, or that fighter's coach or manager. A champion who is also his last or next opponent is opponent side (e.g. Gaethje for Topuria): the relationship to him beats the title. **Booked or fought only** (Anton, 2026-10-02): a callout, a wish from either man, a rivalry, a rumour or "the UFC has not confirmed" does not make him an opponent; he is `other_fighter_side` until an article reports the fight as booked |
 | `promotion` | the UFC and its officials (Dana White, matchmakers), commissions, official records |
 | `other_fighter_side` | any other fighter not linked to a fight with him, or that fighter's coach, manager or team: champions of other divisions, friends and teammates included (Anton, 2026-09-28: another fighter's manager had no value) |
-| `media` | journalists, pundits, podcasters, analysts, commentators, the outlet's own writer. A journalist's leak is media |
+| `media` | journalists, pundits, podcasters, analysts, commentators, the outlet's own writer, none of whom fought. A journalist's leak is media. **A fighter is a fighter, active or retired** (Anton, 2026-10-02): a former fighter on a podcast or at the commentary desk is `other_fighter_side` (or `opponent_side`), not media; the venue does not change who he is, and the text rarely says who has retired |
 | `fans` | social media reaction, the crowd |
 | `no_one` | an event reported with nobody speaking: a result, a weigh-in, a booking announcement |
 | `none_of_these` | none fits; say what would |
