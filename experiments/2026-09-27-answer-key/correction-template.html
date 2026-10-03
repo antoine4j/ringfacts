@@ -118,7 +118,7 @@ input.note{font:inherit;font-size:13px;border:1px solid var(--line);background:v
       <div><span class="why">readers differed</span> two of three readers agreed and their answer is shown. Check it is right.</div>
       <div><span class="why">classifier differs</span> the readers agree, but the classifier said something else (shown beside it). One of them is wrong: check the readers' answer.</div>
       <div>An answer can carry both of the last two. Faded answers are unanimous: readers and classifier agree.</div>
-      <div><span class="hint"><b>hints</b></span> grey lines under an answer from the overnight re-reads: a third reader's pick where the classifier differs, two fresh reads of "how central" under rule A, and what a boundary's recommended rule would say. Hints, not labels: they are there to speed up your call.</div>
+      <div><span class="hint"><b>hints</b></span> grey lines under an answer from the overnight re-reads: a third reader's pick where the classifier differs, two fresh reads of "how central" under "new, not long", and what a boundary's recommended rule would say. Hints, not labels: they are there to speed up your call.</div>
     </div>
     <details class="about"><summary>How this page works, and where to start</summary>
       <p><b>Every article is on one side of the split</b> (the chip on each card). <b>Tune</b> (155): the classifier questions are changed while looking at these. <b>Check</b> (40): used to test a change, never looked at while changing. <b>Test</b> (105): scored once, at the end. Correct any of them the same way: they are all the golden set; the side only decides what the classifier may be tuned on.</p>
@@ -222,7 +222,7 @@ function hints(k, fix){
     const reads = Object.entries(k.recheck).map(([letter, r]) => `${letter}: <b>${esc(human(r.centrality))}</b> (${esc(r.confidence || "")})`).join(", ");
     const same = Object.values(k.recheck).every(r => r.centrality === now);
     const notes = Object.entries(k.recheck).map(([letter, r]) => r.note ? `${letter}: ${esc(r.note)}` : "").filter(Boolean).join(" · ");
-    out.push(`<div class="hint ${same ? "agree" : "change"}">re-read under rule A — ${reads}${same ? "" : " — <b>rule A may change this</b>"}<br>${notes}</div>`);
+    out.push(`<div class="hint ${same ? "agree" : "change"}">re-read under the rule 'new, not long' — ${reads}${same ? "" : " — <b>it may change this</b>"}<br>${notes}</div>`);
   }
   // the re-read under the status-update wording speaks up only where a reader differs from the answer shown
   if (k.reread && Object.values(k.reread).some(r => r.value !== now)){

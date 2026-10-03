@@ -84,6 +84,15 @@ def classifier_value(question, answer):
     return answer["choice"]
 
 
+def plain_names(text):
+    """Swap the nicknames rules had while under discussion for their plain names (golden/rules.md).
+
+    @param text: a brief's raw JSON text @returns: the same text with "rule 3" and "rule A" spelled out
+    """
+    text = re.sub(r"\b[Rr]ule 3\b", "'only what is new'", text)
+    return re.sub(r"\b[Rr]ule A\b", "'new, not long'", text)
+
+
 def overnight():
     """The overnight agents' outputs, whichever exist yet.
 
@@ -97,12 +106,12 @@ def overnight():
     for key in boundaries["order"]:
         path = os.path.join(night, "briefs", f"out-{key}.json")
         # the agents wrote for "the owner"; the page speaks to Anton directly
-        briefs[key] = json.loads(re.sub(r"\b[Tt]he owner's\b", "your", re.sub(r"\b[Tt]he owner\b", "you", open(path).read()))) if os.path.exists(path) else None
+        briefs[key] = json.loads(plain_names(re.sub(r"\b[Tt]he owner's\b", "your", re.sub(r"\b[Tt]he owner\b", "you", open(path).read())))) if os.path.exists(path) else None
     recheck = {}
     for path in sorted(glob.glob(os.path.join(night, "recheck", "[AB]-*.json"))):
         letter = os.path.basename(path)[0]
         for row in json.load(open(path)):
-            recheck.setdefault(str(row["id"]), {})[letter] = {k: row.get(k) for k in ("centrality", "confidence", "note")}
+            recheck.setdefault(str(row["id"]), {})[letter] = {k: plain_names(row.get(k) or "") if k == "note" else row.get(k) for k in ("centrality", "confidence", "note")}
     # a triage pick is 1, 2 or 0 (neither); the input file says which answer each number was
     triage = {}
     for path in sorted(glob.glob(os.path.join(night, "triage", "out-*.json"))):
@@ -112,7 +121,7 @@ def overnight():
             c = choices.get((str(row["id"]), row["question"]))
             if c is None: continue
             value = {1: c["answer_1"], 2: c["answer_2"]}.get(row["pick"])
-            triage[(str(row["id"]), row["question"])] = {"value": value, "reason": row.get("reason"), "confidence": row.get("confidence")}
+            triage[(str(row["id"]), row["question"])] = {"value": value, "reason": plain_names(row.get("reason") or ""), "confidence": row.get("confidence")}
     return boundaries, briefs, recheck, triage
 
 
@@ -152,7 +161,7 @@ def main():
             if (article_id, q) in triage: answers[q]["hint"] = triage[(article_id, q)]
         if article_id in recheck: answers["centrality"]["recheck"] = recheck[article_id]
         for q in ("fact", "firmness", "reports_his_next_fight"):
-            answers[q]["reread"] = {letter: {"value": row[q], "note": row.get("note")} for letter, row in rereaders.get(article_id, {}).items()}
+            answers[q]["reread"] = {letter: {"value": row[q], "note": plain_names(row.get("note") or "")} for letter, row in rereaders.get(article_id, {}).items()}
         # the boundary this article's disagreement falls on, and what the brief's recommended rule says about it
         boundary = boundary_of(entry["answers"])
         brief = briefs.get(boundary) if boundary else None
