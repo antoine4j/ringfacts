@@ -1035,3 +1035,26 @@ can also be podcasters, so the line is blurred. If we could make a clean
 line… but then the model has to know who's retired and who's not, and I
 don't want to introduce that complexity again. So another fighter is
 fine."* Rule A: #879 and #905 corrected to other fighter's side.
+
+## design: a fact stated inside the main claim belongs to it; health follows who states it (2026-10-02)
+
+On #723 (heavy.com on Topuria's essay; rule 3's re-read had turned the
+readers' fact health into no fact, the fractures being "a line inside the
+reflection") Anton: *"He genuinely mentions health details that are
+nowhere else, for example the broken foot. The main opinion is about his
+motives and his state of being, and the health is wrapped in that, but
+it's still part of the same opinion. It's not a separate news. Can we
+consider health as a flag that goes on the back of the main message?"*
+Yes, through the axes as they are: act speaks of himself carries the
+message, fact health the one hard fact in it. The test, from the health
+brief's rule C: health is yes when someone the article names states his
+condition as a statement of its own; the writer's recap is background.
+A blind re-read of the 27 articles where health was in play
+(overnight/health/) changes five, applied on his "apply": #693, #723,
+#755 (the essay pieces) and #1172 (Donchenko on his arm infection, in his
+own interview) return to the readers' fact health, official, health yes;
+#129 goes to health no (the writer reading photos). #627 stays no, where
+the brief's own reading of rule C had yes: its "no surgery" line is an
+older MMA Fighting report recalled by the writer, not what the article is
+built on. #148 (a trainer's line in an appended section) and #1058
+(readiness only) stay no, low confidence.

@@ -85,7 +85,16 @@ article alone: dates, tense, "after his June loss", "cabe recordar",
 where the line sits. When the fact is `no_fact`, firmness is `none` and
 the three news questions (result, next fight, health) are `no`. When
 there is a fact, several news questions can still be `yes` (a fight
-report that also names his next opponent). Worked examples: #856
+report that also names his next opponent). **Background is what the writer adds around the main claim; a fact
+stated inside the main claim belongs to it** (Anton, 2026-10-02). Health
+is `yes` when someone the article names (he himself, his team, the
+promotion, a named outlet) states his condition as a statement of its
+own, in the words the article is built on: Topuria's essay that lists his
+fractures (#723) is fact `health`, official, though the essay is mainly a
+reflection; act carries the message, fact the one hard fact in it. The
+writer's recap or inference ("he seems recovered", "cabe recordar"), an
+older report recalled in one line (#627), and a line that only says when
+he will be ready are `no`. Worked examples: #856
 (fractures recapped in a year-in-review: health no), #462 (Gaethje
 guesses he won't fight until next year: no fact), #1002 (Pantoja's
 message; the rematch rumour is a closing line: no fact, next fight no).

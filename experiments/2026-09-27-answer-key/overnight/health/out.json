@@ -1,0 +1,374 @@
+[
+ {
+  "id": "44",
+  "who_states_it": "he himself",
+  "quote": "he later detailed on Instagram vision loss in both eyes during the fight",
+  "answers": {
+   "fact": "health",
+   "firmness": "official_or_done",
+   "reports_his_health": "yes"
+  },
+  "changed": [],
+  "confidence": "medium",
+  "note": "His own statement, which the article is built on, discloses the vision loss; it sits inside the main claim."
+ },
+ {
+  "id": "129",
+  "who_states_it": "the writer",
+  "quote": "según las últimas imágenes publicadas de Topuria, se ha recuperado a pasos agigantados",
+  "answers": {
+   "fact": "next_fight",
+   "firmness": "wish",
+   "reports_his_health": "no"
+  },
+  "changed": [
+   "reports_his_health"
+  ],
+  "confidence": "high",
+  "note": "Recovery is the writer reading photos; the news is the manager wanting the rematch."
+ },
+ {
+  "id": "148",
+  "who_states_it": "his trainer Jesús Gallo, in a closing section",
+  "quote": "ha revelado que El Matador tiene un poder de recuperación increíble",
+  "answers": {
+   "fact": "no_fact",
+   "firmness": "none",
+   "reports_his_health": "no"
+  },
+  "changed": [],
+  "confidence": "low",
+  "note": "Article is built on Makhachev's advice; Gallo's recovery line is a tacked-on closing section, so background. Borderline: it has its own subheading."
+ },
+ {
+  "id": "152",
+  "who_states_it": "his trainer Jesús Gallo",
+  "quote": "ha asegurado que \"tiene un poder de recuperación increíble\"",
+  "answers": {
+   "fact": "next_fight",
+   "firmness": "reported",
+   "reports_his_health": "yes"
+  },
+  "changed": [],
+  "confidence": "high",
+  "note": "Gallo states how the recovery is going as its own point, in the interview the article is built on; main fact stays the return date."
+ },
+ {
+  "id": "203",
+  "who_states_it": "he himself",
+  "quote": "Я дуже сильно відбив обидві ноги, особливо праву, так що прямо декілька днів ходити не міг",
+  "answers": {
+   "fact": "personal_life",
+   "firmness": "official_or_done",
+   "reports_his_health": "yes"
+  },
+  "changed": [],
+  "confidence": "high",
+  "note": "He states the leg injury and recovery himself in the interview, and the lead flags it; main fact stays the donation."
+ },
+ {
+  "id": "349",
+  "who_states_it": "Merab Dvalishvili",
+  "quote": "Topuria está bien y tiene una actitud muy positiva",
+  "answers": {
+   "fact": "health",
+   "firmness": "reported",
+   "reports_his_health": "yes"
+  },
+  "changed": [],
+  "confidence": "high",
+  "note": "A named person updates his state; it is the headline and the core of the piece."
+ },
+ {
+  "id": "361",
+  "who_states_it": "Merab Dvalishvili",
+  "quote": "le va muy bien, y se encuentra bien (físicamente)",
+  "answers": {
+   "fact": "health",
+   "firmness": "reported",
+   "reports_his_health": "yes"
+  },
+  "changed": [],
+  "confidence": "high",
+  "note": "Named friend states he is well physically; the article is built on those words."
+ },
+ {
+  "id": "368",
+  "who_states_it": "Merab Dvalishvili",
+  "quote": "Topuria está bien y tiene una actitud muy positiva",
+  "answers": {
+   "fact": "health",
+   "firmness": "reported",
+   "reports_his_health": "yes"
+  },
+  "changed": [],
+  "confidence": "high",
+  "note": "Merab is brought in to update his physical and mental state; no other fact."
+ },
+ {
+  "id": "397",
+  "who_states_it": "Merab Dvalishvili",
+  "quote": "Está bien. Es muy positivo. Está disfrutando de la vida",
+  "answers": {
+   "fact": "health",
+   "firmness": "reported",
+   "reports_his_health": "yes"
+  },
+  "changed": [],
+  "confidence": "medium",
+  "note": "Framed as news of his recovery and health via Merab; the condition statement is thin but it is the article's core."
+ },
+ {
+  "id": "402",
+  "who_states_it": "Merab Dvalishvili and trainer Jesús Gallo",
+  "quote": "Topuria está bien y tiene una actitud muy positiva",
+  "answers": {
+   "fact": "next_fight",
+   "firmness": "reported",
+   "reports_his_health": "yes"
+  },
+  "changed": [],
+  "confidence": "high",
+  "note": "Two named people state how he is, as their own points; main fact stays the return date."
+ },
+ {
+  "id": "412",
+  "who_states_it": "his trainer Jesús Gallo",
+  "quote": "La recuperación ha sido estupenda",
+  "answers": {
+   "fact": "health",
+   "firmness": "reported",
+   "reports_his_health": "yes"
+  },
+  "changed": [],
+  "confidence": "high",
+  "note": "Gallo updates his recovery at length; the article is built on it. (December readiness alone would not count.)"
+ },
+ {
+  "id": "462",
+  "who_states_it": "Justin Gaethje, in passing",
+  "quote": "seeing as he's still recovering from some things",
+  "answers": {
+   "fact": "no_fact",
+   "firmness": "none",
+   "reports_his_health": "no"
+  },
+  "changed": [
+   "fact",
+   "firmness"
+  ],
+  "confidence": "high",
+  "note": "A rival's aside inside a guess about timing; the article is about Gaethje. Current fact was empty; guide example says no fact."
+ },
+ {
+  "id": "572",
+  "who_states_it": "reporter Alvaro Colmenero, in passing",
+  "quote": "July was clearly about healing his injuries and undergoing treatments",
+  "answers": {
+   "fact": "none_of_these",
+   "firmness": "reported",
+   "reports_his_health": "no"
+  },
+  "changed": [],
+  "confidence": "medium",
+  "note": "The reported news is his return to the public eye; healing is a passing recap and the \"recovered enough\" line is the writer's inference."
+ },
+ {
+  "id": "620",
+  "who_states_it": "the writer",
+  "quote": "en la que sufrió una doble fractura orbital",
+  "answers": {
+   "fact": "personal_life",
+   "firmness": "official_or_done",
+   "reports_his_health": "no"
+  },
+  "changed": [],
+  "confidence": "medium",
+  "note": "Fractures are a recap clause; his video says nothing about his condition. \"Ready to return to training\" is the writer's gloss, a readiness line."
+ },
+ {
+  "id": "627",
+  "who_states_it": "MMA Fighting, recalled by the writer",
+  "quote": "suffered extensive facial injuries in the bout but did not require surgery",
+  "answers": {
+   "fact": "personal_life",
+   "firmness": "official_or_done",
+   "reports_his_health": "no"
+  },
+  "changed": [],
+  "confidence": "medium",
+  "note": "A one-line recap of an older report; the article is built on the video message, which states no condition."
+ },
+ {
+  "id": "693",
+  "who_states_it": "he himself",
+  "quote": "las dos órbitas de los ojos fracturadas, el tabique y el pie rotos",
+  "answers": {
+   "fact": "health",
+   "firmness": "official_or_done",
+   "reports_his_health": "yes"
+  },
+  "changed": [
+   "fact",
+   "firmness",
+   "reports_his_health"
+  ],
+  "confidence": "medium",
+  "note": "His own essay, quoted as the body of the article, discloses the fractures; inside the main claim, and no other fact."
+ },
+ {
+  "id": "723",
+  "who_states_it": "he himself",
+  "quote": "both orbital bones fractured, my septum broken, and my foot broken",
+  "answers": {
+   "fact": "health",
+   "firmness": "official_or_done",
+   "reports_his_health": "yes"
+  },
+  "changed": [
+   "fact",
+   "firmness",
+   "reports_his_health"
+  ],
+  "confidence": "medium",
+  "note": "His own essay is the article and it states his injuries; no other fact."
+ },
+ {
+  "id": "755",
+  "who_states_it": "he himself",
+  "quote": "He also revealed that he suffered fractures to both orbital bones, a broken septum, and a broken foot",
+  "answers": {
+   "fact": "health",
+   "firmness": "official_or_done",
+   "reports_his_health": "yes"
+  },
+  "changed": [
+   "fact",
+   "firmness",
+   "reports_his_health"
+  ],
+  "confidence": "medium",
+  "note": "Article is built on his essay and says he \"revealed\" the injuries; no other fact."
+ },
+ {
+  "id": "803",
+  "who_states_it": "nobody named",
+  "quote": "Topuria's facial injuries are also said to have healed well",
+  "answers": {
+   "fact": "next_fight",
+   "firmness": "rumour",
+   "reports_his_health": "no"
+  },
+  "changed": [],
+  "confidence": "high",
+  "note": "Unattributed closing line; the news is the rematch talk."
+ },
+ {
+  "id": "856",
+  "who_states_it": "the writer",
+  "quote": "acabó con 'El Matador' con los dos orbitales, la nariz y un pie fracturados",
+  "answers": {
+   "fact": "no_fact",
+   "firmness": "none",
+   "reports_his_health": "no"
+  },
+  "changed": [],
+  "confidence": "high",
+  "note": "Injury recalled inside a year-in-review sentence about the fight."
+ },
+ {
+  "id": "892",
+  "who_states_it": "the writer",
+  "quote": "cabe recordar, se encuentra recuperando de las lesiones oculares",
+  "answers": {
+   "fact": "no_fact",
+   "firmness": "none",
+   "reports_his_health": "no"
+  },
+  "changed": [],
+  "confidence": "high",
+  "note": "Explicit \"cabe recordar\" recap around Pimblett's callout."
+ },
+ {
+  "id": "917",
+  "who_states_it": "the writer",
+  "quote": "he revealed the physical damage he suffered in the fight, including two broken orbital bones",
+  "answers": {
+   "fact": "no_fact",
+   "firmness": "none",
+   "reports_his_health": "no"
+  },
+  "changed": [],
+  "confidence": "high",
+  "note": "Essay recalled as set-up; the main claim is Rogan's opinion, and his \"needs six months\" is a guess."
+ },
+ {
+  "id": "998",
+  "who_states_it": "Dana White (readiness only)",
+  "quote": "Topuria está listo para pelea. Nosotros estamos listos para él",
+  "answers": {
+   "fact": "next_fight",
+   "firmness": "official_or_done",
+   "reports_his_health": "no"
+  },
+  "changed": [],
+  "confidence": "medium",
+  "note": "White only says he is ready to fight; \"parece que está recuperado\" is the writer's inference."
+ },
+ {
+  "id": "1002",
+  "who_states_it": "the writer",
+  "quote": "continúa inmerso en su recuperación y puesta a punto",
+  "answers": {
+   "fact": "no_fact",
+   "firmness": "none",
+   "reports_his_health": "no"
+  },
+  "changed": [],
+  "confidence": "high",
+  "note": "Writer's recap around Pantoja's message."
+ },
+ {
+  "id": "1020",
+  "who_states_it": "Dana White (readiness only)",
+  "quote": "Topuria está listo para pelear, y nosotros estamos preparados para él",
+  "answers": {
+   "fact": "next_fight",
+   "firmness": "official_or_done",
+   "reports_his_health": "no"
+  },
+  "changed": [],
+  "confidence": "high",
+  "note": "Readiness line only; the fractures sentence is the writer's closing recap."
+ },
+ {
+  "id": "1058",
+  "who_states_it": "Dana White (readiness only)",
+  "quote": "Topuria está listo para pelear, y nosotros estamos preparados para él",
+  "answers": {
+   "fact": "next_fight",
+   "firmness": "official_or_done",
+   "reports_his_health": "no"
+  },
+  "changed": [],
+  "confidence": "low",
+  "note": "White's quoted words are readiness only; \"recuperado\" and \"el alta\" come from the writer and an embedded tweet, not from a quoted statement."
+ },
+ {
+  "id": "1172",
+  "who_states_it": "he himself",
+  "quote": "у мене була інфекція 4 серпня... Був у госпіталі, мені різали руку",
+  "answers": {
+   "fact": "health",
+   "firmness": "official_or_done",
+   "reports_his_health": "yes"
+  },
+  "changed": [
+   "fact",
+   "firmness",
+   "reports_his_health"
+  ],
+  "confidence": "medium",
+  "note": "He states the infection, hospital procedure and antibiotics himself in the interview; nothing else in the saved text is a new fact (the win is the premise). Text is cut at 10,000 characters."
+ }
+]

@@ -79,7 +79,7 @@ would change:
 | boundary | recommended rule | changes |
 |---|---|---|
 | next fight (decided 2026-10-02: rule 3 adopted, this is it written out) | "own news": yes only when a change to his next fight is the article's subject or its own new reporting; a booking that is the premise of a preview, weigh-in or pick, a recalled rumour and a hedged guess are no and no fact | 16 of 30, plus 9 unanimous "yes" on Paris previews |
-| health (rule 3 adopted; this brief's narrower 'someone named' wording not yet ruled on) | someone named (he, his team, the UFC, a named outlet) states his condition; the writer's recap is background | 2 of 6 |
+| health (decided 2026-10-02: adopted, with "a fact inside the main claim belongs to it") | someone named (he, his team, the UFC, a named outlet) states his condition; the writer's recap is background | 2 of 6 |
 | result (rule 3 adopted; this brief's 'lead clause' wording not yet ruled on) | yes only when the headline or the first sentence's main clause states he won or lost | 2 of 5 |
 | camp (decided 2026-10-02: Anton took the stricter "booked or fought") | — | 3 of 7, plus every Pimblett article labelled opponent side |
 | centrality (rule 7) | "whose news": the headline and opening decide; a body-less page is judged on its headline | 0 of 10 |
