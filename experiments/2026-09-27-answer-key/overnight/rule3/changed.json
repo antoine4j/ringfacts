@@ -1,0 +1,1832 @@
+[
+ {
+  "id": "44",
+  "main_claim": "Topuria's first statement after the loss: he says he lost vision in both eyes during the fight, praises Gaethje, plans to heal and seek a rematch.",
+  "answers": {
+   "fact": "health",
+   "firmness": "official_or_done",
+   "reports_his_result": "no",
+   "reports_his_next_fight": "no",
+   "reports_his_health": "yes"
+  },
+  "changed": [
+   "reports_his_result"
+  ],
+  "evidence": "Headline 'releases first statement since UFC White House defeat'; the loss is the premise ('praised Justin Gaethje after losing the lightweight crown... on Sunday'), the news is the statement and the vision loss he 'detailed on Instagram'.",
+  "confidence": "medium",
+  "current": {
+   "fact": "health",
+   "firmness": "official_or_done",
+   "reports_his_result": "yes",
+   "reports_his_next_fight": "no",
+   "reports_his_health": "yes"
+  }
+ },
+ {
+  "id": "148",
+  "main_claim": "Makhachev's opinion on Topuria after the loss: 'Si se centra, puede ser campeon otra vez'.",
+  "answers": {
+   "fact": "no_fact",
+   "firmness": "none",
+   "reports_his_result": "no",
+   "reports_his_next_fight": "no",
+   "reports_his_health": "no"
+  },
+  "changed": [
+   "fact",
+   "firmness",
+   "reports_his_next_fight",
+   "reports_his_health"
+  ],
+  "evidence": "Headline and the whole body are Makhachev's advice ('Si se centra, puede ser campeon otra vez', 'esa pelea... le ha cambiado la vida'); the trainer's recovery note ('poder de recuperacion increible', 'se descarta el regreso en 2026') is a short tail under its own subhead, mentioned on the way.",
+  "confidence": "medium",
+  "current": {
+   "fact": "health",
+   "firmness": "reported",
+   "reports_his_result": "no",
+   "reports_his_next_fight": "yes",
+   "reports_his_health": "yes"
+  }
+ },
+ {
+  "id": "203",
+  "main_claim": "Donchenko says he will give 50% of his Performance of the Night bonus to a church in his home town Korosten.",
+  "answers": {
+   "fact": "personal_life",
+   "firmness": "official_or_done",
+   "reports_his_result": "no",
+   "reports_his_next_fight": "no",
+   "reports_his_health": "yes"
+  },
+  "changed": [
+   "reports_his_next_fight"
+  ],
+  "evidence": "'5 вересня Донченко проведе поєдинок у Парижі проти американця Пунахеле Соріано' is a closing boilerplate line restating a known booking, not the article's news. Health stays yes: he reveals for the first time that he 'травмував обидві ноги... декілька днів ходити не міг'.",
+  "confidence": "high",
+  "current": {
+   "fact": "personal_life",
+   "firmness": "official_or_done",
+   "reports_his_result": "no",
+   "reports_his_next_fight": "yes",
+   "reports_his_health": "yes"
+  }
+ },
+ {
+  "id": "208",
+  "main_claim": "Donchenko recounts what he told his grandmother, who opposes his MMA career, after his win.",
+  "answers": {
+   "fact": "personal_life",
+   "firmness": "official_or_done",
+   "reports_his_result": "no",
+   "reports_his_next_fight": "no",
+   "reports_his_health": "no"
+  },
+  "changed": [
+   "reports_his_next_fight"
+  ],
+  "evidence": "'5 вересня Донченко проведе поєдинок у Парижі проти американця Пунахеле Соріано' sits in the closing boilerplate after the quotes; a booking restated, not news.",
+  "confidence": "high",
+  "current": {
+   "fact": "personal_life",
+   "firmness": "official_or_done",
+   "reports_his_result": "no",
+   "reports_his_next_fight": "yes",
+   "reports_his_health": "no"
+  }
+ },
+ {
+  "id": "300",
+  "main_claim": "Donchenko says he earned $20-50k for the TUF final and asked Dana White to sign his friend Dmytro instead of paying him.",
+  "answers": {
+   "fact": "personal_life",
+   "firmness": "official_or_done",
+   "reports_his_result": "no",
+   "reports_his_next_fight": "no",
+   "reports_his_health": "no"
+  },
+  "changed": [
+   "reports_his_next_fight"
+  ],
+  "evidence": "'Зазначимо, що 5 вересня Даниїл Донченко проведе бій проти американця Пунахеле Соріано' is a closing note restating the booking; the article's news is the fee and the request to White.",
+  "confidence": "high",
+  "current": {
+   "fact": "personal_life",
+   "firmness": "official_or_done",
+   "reports_his_result": "no",
+   "reports_his_next_fight": "yes",
+   "reports_his_health": "no"
+  }
+ },
+ {
+  "id": "301",
+  "main_claim": "Donchenko's opinion that UFC avoids Ukrainian-vs-Russian bouts to avoid hate, and that he is ready to fight Russians.",
+  "answers": {
+   "fact": "no_fact",
+   "firmness": "none",
+   "reports_his_result": "no",
+   "reports_his_next_fight": "no",
+   "reports_his_health": "no"
+  },
+  "changed": [
+   "reports_his_next_fight"
+  ],
+  "evidence": "Fact is no_fact (talk only), so next fight is no; '5 вересня Донченко проведе поєдинок у Парижі' is closing boilerplate.",
+  "confidence": "high",
+  "current": {
+   "fact": "no_fact",
+   "firmness": "none",
+   "reports_his_result": "no",
+   "reports_his_next_fight": "yes",
+   "reports_his_health": "no"
+  }
+ },
+ {
+  "id": "305",
+  "main_claim": "Topuria's bond with his Alicante neighbourhood and the Climent Club gym where he grew up as a fighter, in his own words.",
+  "answers": {
+   "fact": "personal_life",
+   "firmness": "official_or_done",
+   "reports_his_result": "no",
+   "reports_his_next_fight": "no",
+   "reports_his_health": "no"
+  },
+  "changed": [
+   "reports_his_next_fight"
+  ],
+  "evidence": "The opening 'Su preparador fisico senala que fisicamente podria estar listo a finales de ano... apunta a principios del proximo ano' recalls the trainer's earlier statement as premise; the article's news is Alicante ('Todo lo que tengo en mi vida... esta aqui').",
+  "confidence": "high",
+  "current": {
+   "fact": "personal_life",
+   "firmness": "official_or_done",
+   "reports_his_result": "no",
+   "reports_his_next_fight": "yes",
+   "reports_his_health": "no"
+  }
+ },
+ {
+  "id": "321",
+  "main_claim": "Donchenko tells how his career began: judo at 11, dropped out of KPI after a year, moved to Thailand to train.",
+  "answers": {
+   "fact": "personal_life",
+   "firmness": "official_or_done",
+   "reports_his_result": "no",
+   "reports_his_next_fight": "no",
+   "reports_his_health": "no"
+  },
+  "changed": [
+   "reports_his_next_fight"
+  ],
+  "evidence": "'5 вересня Донченко проведе поєдинок у Парижі проти американця Пунахеле Соріано' is closing boilerplate after the interview.",
+  "confidence": "high",
+  "current": {
+   "fact": "personal_life",
+   "firmness": "official_or_done",
+   "reports_his_result": "no",
+   "reports_his_next_fight": "yes",
+   "reports_his_health": "no"
+  }
+ },
+ {
+  "id": "322",
+  "main_claim": "Donchenko recalls his early paid fights: a Kyiv restaurant club paying 1,000 UAH to appear and 1,500 for a win, then Kazakhstan purses.",
+  "answers": {
+   "fact": "personal_life",
+   "firmness": "official_or_done",
+   "reports_his_result": "no",
+   "reports_his_next_fight": "no",
+   "reports_his_health": "no"
+  },
+  "changed": [
+   "reports_his_next_fight"
+  ],
+  "evidence": "'5 вересня Донченко проведе поєдинок у Парижі проти американця Пунахеле Соріано' is closing boilerplate after the interview.",
+  "confidence": "high",
+  "current": {
+   "fact": "personal_life",
+   "firmness": "official_or_done",
+   "reports_his_result": "no",
+   "reports_his_next_fight": "yes",
+   "reports_his_health": "no"
+  }
+ },
+ {
+  "id": "361",
+  "main_claim": "Merab Dvalishvili says Topuria is enjoying life and is well physically.",
+  "answers": {
+   "fact": "health",
+   "firmness": "reported",
+   "reports_his_result": "no",
+   "reports_his_next_fight": "no",
+   "reports_his_health": "yes"
+  },
+  "changed": [
+   "reports_his_next_fight"
+  ],
+  "evidence": "'todo apunta a que Topuria no podra volver a subirse al octagono hasta 2027, si bien hay informaciones que apuntan a una posible recuperacion expres... de momento puras especulaciones' is the writer's guess at his timing, in the closing line.",
+  "confidence": "high",
+  "current": {
+   "fact": "health",
+   "firmness": "reported",
+   "reports_his_result": "no",
+   "reports_his_next_fight": "yes",
+   "reports_his_health": "yes"
+  }
+ },
+ {
+  "id": "368",
+  "main_claim": "Merab Dvalishvili updates Topuria's state: he is fine, positive, will beat everyone when he returns.",
+  "answers": {
+   "fact": "health",
+   "firmness": "reported",
+   "reports_his_result": "no",
+   "reports_his_next_fight": "no",
+   "reports_his_health": "yes"
+  },
+  "changed": [
+   "reports_his_next_fight"
+  ],
+  "evidence": "'la UFC le espera para 2027, si bien la fecha de su reaparicion esta calculada hacia mitad de ano' is an unattributed estimate of his timing; the candidate-opponent list ('Arman Tsarukyan, Paddy Pimblett o Usman Nurmagomedov') is speculation; 'El proximo combate de Topuria ya toma forma' is a read-also teaser.",
+  "confidence": "medium",
+  "current": {
+   "fact": "health",
+   "firmness": "reported",
+   "reports_his_result": "no",
+   "reports_his_next_fight": "yes",
+   "reports_his_health": "yes"
+  }
+ },
+ {
+  "id": "484",
+  "main_claim": "Gaethje guesses Topuria probably won't fight until next year either and doesn't think Topuria is his next fight.",
+  "answers": {
+   "fact": "no_fact",
+   "firmness": "none",
+   "reports_his_result": "no",
+   "reports_his_next_fight": "no",
+   "reports_his_health": "no"
+  },
+  "changed": [
+   "fact",
+   "firmness",
+   "reports_his_next_fight"
+  ],
+  "evidence": "'I guess if I'm not fighting until next year, [Topuria is] probably not going to fight until next year, too... I don't think that's my next fight, in my gut' is Gaethje's guess at his timing, the same shape as worked example #462.",
+  "confidence": "high",
+  "current": {
+   "fact": "next_fight",
+   "firmness": "reported",
+   "reports_his_result": "no",
+   "reports_his_next_fight": "yes",
+   "reports_his_health": "no"
+  }
+ },
+ {
+  "id": "490",
+  "main_claim": "Fight-week interview: Donchenko, ahead of Saturday's Paris bout with Soriano, talks about his growth, his French, and his aim to finish Soriano.",
+  "answers": {
+   "fact": "no_fact",
+   "firmness": "none",
+   "reports_his_result": "no",
+   "reports_his_next_fight": "no",
+   "reports_his_health": "no"
+  },
+  "changed": [
+   "fact",
+   "firmness",
+   "reports_his_next_fight"
+  ],
+  "evidence": "'as he readies to make his return to action this weekend in Paris, where he faces off with Punahele Soriano' is the booking restated as the premise of a preview; the body is his talk ('I have everything to win this fight, to finish this guy').",
+  "confidence": "medium",
+  "current": {
+   "fact": "next_fight",
+   "firmness": "official_or_done",
+   "reports_his_result": "no",
+   "reports_his_next_fight": "yes",
+   "reports_his_health": "no"
+  }
+ },
+ {
+  "id": "491",
+  "main_claim": "Fight-week interview: Donchenko, ahead of Saturday's Paris bout with Soriano, talks about his growth, his French, and his aim to finish Soriano.",
+  "answers": {
+   "fact": "no_fact",
+   "firmness": "none",
+   "reports_his_result": "no",
+   "reports_his_next_fight": "no",
+   "reports_his_health": "no"
+  },
+  "changed": [
+   "fact",
+   "firmness",
+   "reports_his_next_fight"
+  ],
+  "evidence": "Same text as #490: 'as he readies to make his return to action this weekend in Paris, where he faces off with Punahele Soriano' is the booking restated as the premise of a preview.",
+  "confidence": "medium",
+  "current": {
+   "fact": "next_fight",
+   "firmness": "official_or_done",
+   "reports_his_result": "no",
+   "reports_his_next_fight": "yes",
+   "reports_his_health": "no"
+  }
+ },
+ {
+  "id": "494",
+  "main_claim": "Fight-week feature: Donchenko, who asked for Paris, previews his Saturday bout with Soriano and talks about his French and his last win.",
+  "answers": {
+   "fact": "no_fact",
+   "firmness": "none",
+   "reports_his_result": "no",
+   "reports_his_next_fight": "no",
+   "reports_his_health": "no"
+  },
+  "changed": [
+   "fact",
+   "firmness",
+   "reports_his_next_fight"
+  ],
+  "evidence": "\"as he readies to make his return to action this weekend in Paris, where he faces off with Punahele Soriano\" — the booking is the premise of an interview feature; the rest is his talk about rankings, sponsors and the game plan",
+  "confidence": "medium",
+  "current": {
+   "fact": "next_fight",
+   "firmness": "official_or_done",
+   "reports_his_result": "no",
+   "reports_his_next_fight": "yes",
+   "reports_his_health": "no"
+  }
+ },
+ {
+  "id": "500",
+  "main_claim": "Nathaniel Wood gets a new opponent at UFC Paris; Donchenko appears only as a line in the full card list.",
+  "answers": {
+   "fact": "no_fact",
+   "firmness": "none",
+   "reports_his_result": "no",
+   "reports_his_next_fight": "no",
+   "reports_his_health": "no"
+  },
+  "changed": [
+   "reports_his_next_fight"
+  ],
+  "evidence": "\"Daniil Donchenko vs. Punahele Soriano\" appears only in \"Check out the full UFC Paris card below\" — a card list, background",
+  "confidence": "high",
+  "current": {
+   "fact": "no_fact",
+   "firmness": "none",
+   "reports_his_result": "no",
+   "reports_his_next_fight": "yes",
+   "reports_his_health": "no"
+  }
+ },
+ {
+  "id": "503",
+  "main_claim": "Gaethje says the UFC has the last word on a possible Topuria rematch, which he does not think should be next; both will sit out until 2027.",
+  "answers": {
+   "fact": "no_fact",
+   "firmness": "none",
+   "reports_his_result": "no",
+   "reports_his_next_fight": "no",
+   "reports_his_health": "no"
+  },
+  "changed": [
+   "fact",
+   "firmness",
+   "reports_his_next_fight"
+  ],
+  "evidence": "\"la UFC es la que tiene la última palabra ... no siento que esa deba ser mi siguiente pelea\"; \"él tampoco querrá pelear hasta el año que viene\" is Gaethje's guess at his timing; the fractures are a recap (\"se está recuperando de las fracturas\")",
+  "confidence": "high",
+  "current": {
+   "fact": "next_fight",
+   "firmness": "reported",
+   "reports_his_result": "no",
+   "reports_his_next_fight": "yes",
+   "reports_his_health": "no"
+  }
+ },
+ {
+  "id": "510",
+  "main_claim": "Event preview of UFC Paris (start times, how to watch, full card); Donchenko is one line in the main-card list.",
+  "answers": {
+   "fact": "no_fact",
+   "firmness": "none",
+   "reports_his_result": "no",
+   "reports_his_next_fight": "no",
+   "reports_his_health": "no"
+  },
+  "changed": [
+   "fact",
+   "firmness",
+   "reports_his_next_fight"
+  ],
+  "evidence": "\"Welterweight: Daniil Donchenko vs Punahele Soriano\" in the card list; the article is about the whole event, his booking is restated as a card entry",
+  "confidence": "medium",
+  "current": {
+   "fact": "fight_week_event",
+   "firmness": "official_or_done",
+   "reports_his_result": "no",
+   "reports_his_next_fight": "yes",
+   "reports_his_health": "no"
+  }
+ },
+ {
+  "id": "521",
+  "main_claim": "UFC.com video page: Donchenko speaks about his upcoming fight at UFC Paris (video furniture only).",
+  "answers": {
+   "fact": "no_fact",
+   "firmness": "none",
+   "reports_his_result": "no",
+   "reports_his_next_fight": "no",
+   "reports_his_health": "no"
+  },
+  "changed": [
+   "fact",
+   "firmness",
+   "reports_his_next_fight"
+  ],
+  "evidence": "\"Donchenko speaks to UFC.com about his upcoming fight\" — an interview premise with no saved content beyond page furniture",
+  "confidence": "medium",
+  "current": {
+   "fact": "next_fight",
+   "firmness": "official_or_done",
+   "reports_his_result": "no",
+   "reports_his_next_fight": "yes",
+   "reports_his_health": "no"
+  }
+ },
+ {
+  "id": "529",
+  "main_claim": "Soriano profile ahead of UFC Paris; he calls Donchenko a 'scary dude' and the Saturday bout is the premise.",
+  "answers": {
+   "fact": "no_fact",
+   "firmness": "none",
+   "reports_his_result": "no",
+   "reports_his_next_fight": "no",
+   "reports_his_health": "no"
+  },
+  "changed": [
+   "fact",
+   "firmness",
+   "reports_his_next_fight"
+  ],
+  "evidence": "\"Saturday's meeting with Donchenko at Accor Arena is positioned in the middle of the main card\" — booking restated as the premise of a Soriano profile; about Donchenko only Soriano's opinion (\"scary dude, wild dude\")",
+  "confidence": "high",
+  "current": {
+   "fact": "next_fight",
+   "firmness": "official_or_done",
+   "reports_his_result": "no",
+   "reports_his_next_fight": "yes",
+   "reports_his_health": "no"
+  }
+ },
+ {
+  "id": "532",
+  "main_claim": "Duplicate of 529: Soriano profile ahead of UFC Paris; Saturday's bout with Donchenko is the premise.",
+  "answers": {
+   "fact": "no_fact",
+   "firmness": "none",
+   "reports_his_result": "no",
+   "reports_his_next_fight": "no",
+   "reports_his_health": "no"
+  },
+  "changed": [
+   "fact",
+   "firmness",
+   "reports_his_next_fight"
+  ],
+  "evidence": "\"Saturday's meeting with Donchenko at Accor Arena is positioned in the middle of the main card\" — booking as premise; Soriano's opinion of him only",
+  "confidence": "high",
+  "current": {
+   "fact": "next_fight",
+   "firmness": "official_or_done",
+   "reports_his_result": "no",
+   "reports_his_next_fight": "yes",
+   "reports_his_health": "no"
+  }
+ },
+ {
+  "id": "572",
+  "main_claim": "A Spanish reporter says Topuria will return to the public eye in September.",
+  "answers": {
+   "fact": "none_of_these",
+   "firmness": "reported",
+   "reports_his_result": "no",
+   "reports_his_next_fight": "no",
+   "reports_his_health": "no"
+  },
+  "changed": [
+   "reports_his_health"
+  ],
+  "evidence": "\"Ilia is going to return to the public eye directly in the month of September\" is the news; \"A medical update on Topuria after the fight confirmed that he had suffered a broken orbital bone\" and \"July was clearly about healing his injuries\" are recap, not a health update; none_of_these = a public reappearance",
+  "confidence": "medium",
+  "current": {
+   "fact": "none_of_these",
+   "firmness": "reported",
+   "reports_his_result": "no",
+   "reports_his_next_fight": "no",
+   "reports_his_health": "yes"
+  }
+ },
+ {
+  "id": "588",
+  "main_claim": "Soriano takes his win streak to France to face Donchenko Saturday; he talks about his setbacks and family.",
+  "answers": {
+   "fact": "no_fact",
+   "firmness": "none",
+   "reports_his_result": "no",
+   "reports_his_next_fight": "no",
+   "reports_his_health": "no"
+  },
+  "changed": [
+   "fact",
+   "firmness",
+   "reports_his_next_fight"
+  ],
+  "evidence": "\"returns to the UFC on Saturday when he faces Daniil Donchenko\" — booking as premise of a Soriano preview; Donchenko gets only a record line",
+  "confidence": "high",
+  "current": {
+   "fact": "next_fight",
+   "firmness": "official_or_done",
+   "reports_his_result": "no",
+   "reports_his_next_fight": "yes",
+   "reports_his_health": "no"
+  }
+ },
+ {
+  "id": "594",
+  "main_claim": "Betting prediction and pick for Donchenko vs Soriano at UFC Paris.",
+  "answers": {
+   "fact": "no_fact",
+   "firmness": "none",
+   "reports_his_result": "no",
+   "reports_his_next_fight": "no",
+   "reports_his_health": "no"
+  },
+  "changed": [
+   "fact",
+   "firmness",
+   "reports_his_next_fight"
+  ],
+  "evidence": "\"Check out our UFC Paris odds series for our Donchenko-Soriano prediction and pick\" — a pick; the booking is its premise",
+  "confidence": "high",
+  "current": {
+   "fact": "next_fight",
+   "firmness": "official_or_done",
+   "reports_his_result": "no",
+   "reports_his_next_fight": "yes",
+   "reports_his_health": "no"
+  }
+ },
+ {
+  "id": "599",
+  "main_claim": "Preview: why the Soriano fight in Paris is the hardest and most important of Donchenko's UFC run, with a prediction.",
+  "answers": {
+   "fact": "no_fact",
+   "firmness": "none",
+   "reports_his_result": "no",
+   "reports_his_next_fight": "no",
+   "reports_his_health": "no"
+  },
+  "changed": [
+   "fact",
+   "firmness",
+   "reports_his_next_fight"
+  ],
+  "evidence": "\"5 вересня в Парижі пройде турнір ... У його карді відбудеться бій ... Розповідаємо, чому бій із гавайцем такий важливий\" — a preview with analysis; the booking (and his first main-card slot) is its premise",
+  "confidence": "high",
+  "current": {
+   "fact": "next_fight",
+   "firmness": "official_or_done",
+   "reports_his_result": "no",
+   "reports_his_next_fight": "yes",
+   "reports_his_health": "no"
+  }
+ },
+ {
+  "id": "603",
+  "main_claim": "Betting tip for Donchenko vs Soriano on September 5; the tipster picks Soriano.",
+  "answers": {
+   "fact": "no_fact",
+   "firmness": "none",
+   "reports_his_result": "no",
+   "reports_his_next_fight": "no",
+   "reports_his_health": "no"
+  },
+  "changed": [
+   "fact",
+   "firmness",
+   "reports_his_next_fight"
+  ],
+  "evidence": "\"what kind of bet to choose before this confrontation\"; \"Our prediction is that Soriano will win in 2.90\" — a pick, booking as premise",
+  "confidence": "high",
+  "current": {
+   "fact": "next_fight",
+   "firmness": "official_or_done",
+   "reports_his_result": "no",
+   "reports_his_next_fight": "yes",
+   "reports_his_health": "no"
+  }
+ },
+ {
+  "id": "605",
+  "main_claim": "Short notice, citing Sport.ua: Donchenko fights Soriano at UFC Fight Night 287 in Paris on September 5.",
+  "answers": {
+   "fact": "no_fact",
+   "firmness": "none",
+   "reports_his_result": "no",
+   "reports_his_next_fight": "no",
+   "reports_his_health": "no"
+  },
+  "changed": [
+   "fact",
+   "firmness",
+   "reports_his_next_fight"
+  ],
+  "evidence": "\"Як повідомляє Sport.ua : 5 вересня в Парижі відбудеться турнір ... де в поєдинку зустрінуться Данило Донченко та Пунахієль Соріано\" — a day-before restatement of the booking with preview filler (\"обіцяє стати яскравою подією\"); nothing announced, nothing new",
+  "confidence": "low",
+  "current": {
+   "fact": "next_fight",
+   "firmness": "official_or_done",
+   "reports_his_result": "no",
+   "reports_his_next_fight": "yes",
+   "reports_his_health": "no"
+  }
+ },
+ {
+  "id": "608",
+  "main_claim": "Preview and prediction for Donchenko vs Soriano at UFC Fight Night Paris.",
+  "answers": {
+   "fact": "no_fact",
+   "firmness": "none",
+   "reports_his_result": "no",
+   "reports_his_next_fight": "no",
+   "reports_his_health": "no"
+  },
+  "changed": [
+   "reports_his_next_fight"
+  ],
+  "evidence": "\"Daniil Donchenko vs Punahele Soriano Preview & Prediction\"; \"he should still get this done\" — a pick, booking as premise",
+  "confidence": "high",
+  "current": {
+   "fact": "no_fact",
+   "firmness": "none",
+   "reports_his_result": "no",
+   "reports_his_next_fight": "yes",
+   "reports_his_health": "no"
+  }
+ },
+ {
+  "id": "609",
+  "main_claim": "Soriano says being underestimated fuels him ahead of his UFC Paris fight with Donchenko.",
+  "answers": {
+   "fact": "no_fact",
+   "firmness": "none",
+   "reports_his_result": "no",
+   "reports_his_next_fight": "no",
+   "reports_his_health": "no"
+  },
+  "changed": [
+   "fact",
+   "firmness",
+   "reports_his_next_fight"
+  ],
+  "evidence": "\"Soriano meets Daniil Donchenko on September 5 at Accor Arena in Paris\" — booking as premise of Soriano's quotes; about Donchenko only \"scary dude, wild dude\"",
+  "confidence": "high",
+  "current": {
+   "fact": "next_fight",
+   "firmness": "official_or_done",
+   "reports_his_result": "no",
+   "reports_his_next_fight": "yes",
+   "reports_his_health": "no"
+  }
+ },
+ {
+  "id": "616",
+  "main_claim": "Event announcement for UFC Fight Night 287: Donchenko fights Soriano on the main card Saturday, with card, times and analysis.",
+  "answers": {
+   "fact": "no_fact",
+   "firmness": "none",
+   "reports_his_result": "no",
+   "reports_his_next_fight": "no",
+   "reports_his_health": "no"
+  },
+  "changed": [
+   "fact",
+   "firmness",
+   "reports_his_next_fight"
+  ],
+  "evidence": "\"Донченко отримав місце в основному карді, як і просив ще кілька місяців тому\"; \"Вихід Донченка в октагон ... приблизно о 22:00\" — card list and start times of a preview; the booking is restated as its premise",
+  "confidence": "medium",
+  "current": {
+   "fact": "fight_week_event",
+   "firmness": "official_or_done",
+   "reports_his_result": "no",
+   "reports_his_next_fight": "yes",
+   "reports_his_health": "no"
+  }
+ },
+ {
+  "id": "620",
+  "main_claim": "Topuria reappears with a video letter to his son, saying the loss made him stronger and he is ready to return to training.",
+  "answers": {
+   "fact": "personal_life",
+   "firmness": "official_or_done",
+   "reports_his_result": "no",
+   "reports_his_next_fight": "no",
+   "reports_his_health": "no"
+  },
+  "changed": [
+   "reports_his_health"
+  ],
+  "evidence": "\"en la que sufrió una doble fractura orbital\" is a recap clause; the video is a life lesson to his son (\"el carácter es la única victoria que nadie puede quitarte\"), not a health update; \"no ha anunciado una fecha concreta ... a pesar de los rumores\" keeps next fight no",
+  "confidence": "medium",
+  "current": {
+   "fact": "personal_life",
+   "firmness": "official_or_done",
+   "reports_his_result": "no",
+   "reports_his_next_fight": "no",
+   "reports_his_health": "yes"
+  }
+ },
+ {
+  "id": "623",
+  "main_claim": "UFC Paris preview and predictions for the whole card; Donchenko vs Soriano gets a paragraph of analysis.",
+  "answers": {
+   "fact": "no_fact",
+   "firmness": "none",
+   "reports_his_result": "no",
+   "reports_his_next_fight": "no",
+   "reports_his_health": "no"
+  },
+  "changed": [
+   "fact",
+   "firmness",
+   "reports_his_next_fight"
+  ],
+  "evidence": "\"Daniil Donchenko is looking to keep his momentum rolling\" ... \"he'll likely find himself fighting from behind\" — preview and pick; booking as premise",
+  "confidence": "high",
+  "current": {
+   "fact": "next_fight",
+   "firmness": "official_or_done",
+   "reports_his_result": "no",
+   "reports_his_next_fight": "yes",
+   "reports_his_health": "no"
+  }
+ },
+ {
+  "id": "625",
+  "main_claim": "Weigh-in: Donchenko and Soriano both made weight at 77.11 kg before their September 5 bout.",
+  "answers": {
+   "fact": "fight_week_event",
+   "firmness": "official_or_done",
+   "reports_his_result": "no",
+   "reports_his_next_fight": "no",
+   "reports_his_health": "no"
+  },
+  "changed": [
+   "reports_his_next_fight"
+  ],
+  "evidence": "\"успішно пройшли офіційне зважування ... 77,11 кг\" is the news; \"Поєдинок відбудеться 5 вересня в Парижі\" is the booking restated as the premise of a weigh-in report",
+  "confidence": "high",
+  "current": {
+   "fact": "fight_week_event",
+   "firmness": "official_or_done",
+   "reports_his_result": "no",
+   "reports_his_next_fight": "yes",
+   "reports_his_health": "no"
+  }
+ },
+ {
+  "id": "627",
+  "main_claim": "Topuria breaks his silence with a video letter to his son about what the Gaethje loss taught him.",
+  "answers": {
+   "fact": "personal_life",
+   "firmness": "official_or_done",
+   "reports_his_result": "no",
+   "reports_his_next_fight": "no",
+   "reports_his_health": "no"
+  },
+  "changed": [
+   "reports_his_health"
+  ],
+  "evidence": "\"MMA Fighting reports that Topuria suffered extensive facial injuries in the bout but did not require surgery\" is a recap of June, not the article's news; the news is the video (\"Character doesn't show up when everything's going your way\"); \"No timetable has been set\" and the rematch line are closing background",
+  "confidence": "medium",
+  "current": {
+   "fact": "personal_life",
+   "firmness": "official_or_done",
+   "reports_his_result": "no",
+   "reports_his_next_fight": "no",
+   "reports_his_health": "yes"
+  }
+ },
+ {
+  "id": "641",
+  "main_claim": "DraftKings best bets for UFC Paris; the writer backs Donchenko to finish Soriano.",
+  "answers": {
+   "fact": "no_fact",
+   "firmness": "none",
+   "reports_his_result": "no",
+   "reports_his_next_fight": "no",
+   "reports_his_health": "no"
+  },
+  "changed": [
+   "fact",
+   "firmness",
+   "reports_his_next_fight"
+  ],
+  "evidence": "\"I'm backing him to win by KO/TKO/DQ or submission at +100\" — a pick; booking as premise",
+  "confidence": "high",
+  "current": {
+   "fact": "next_fight",
+   "firmness": "official_or_done",
+   "reports_his_result": "no",
+   "reports_his_next_fight": "yes",
+   "reports_his_health": "no"
+  }
+ },
+ {
+  "id": "672",
+  "main_claim": "Donchenko says a finish of Soriano at UFC Paris should put him in the top 15, and sizes up his opponent.",
+  "answers": {
+   "fact": "no_fact",
+   "firmness": "none",
+   "reports_his_result": "no",
+   "reports_his_next_fight": "no",
+   "reports_his_health": "no"
+  },
+  "changed": [
+   "reports_his_next_fight"
+  ],
+  "evidence": "\"Donchenko prepares to take on Punahele Soriano at UFC Paris on Saturday\" is the premise; \"If not, definitely we will have someone from top 15 next\" is his guess, not news of his next fight",
+  "confidence": "high",
+  "current": {
+   "fact": "no_fact",
+   "firmness": "none",
+   "reports_his_result": "no",
+   "reports_his_next_fight": "yes",
+   "reports_his_health": "no"
+  }
+ },
+ {
+  "id": "673",
+  "main_claim": "MMA Junkie prediction and pick for Donchenko vs Soriano; the analyst picks Soriano by KO.",
+  "answers": {
+   "fact": "no_fact",
+   "firmness": "none",
+   "reports_his_result": "no",
+   "reports_his_next_fight": "no",
+   "reports_his_health": "no"
+  },
+  "changed": [
+   "reports_his_next_fight"
+  ],
+  "evidence": "\"I'll officially pick Soriano to score the upset with a knockout in Round 2\" — a pick; \"meet on the UFC Fight Night 287 main card Saturday\" is the booking as premise",
+  "confidence": "high",
+  "current": {
+   "fact": "no_fact",
+   "firmness": "none",
+   "reports_his_result": "no",
+   "reports_his_next_fight": "yes",
+   "reports_his_health": "no"
+  }
+ },
+ {
+  "id": "681",
+  "main_claim": "Dan Tom (MMA Junkie) picks Soriano to upset Donchenko by KO in round 2 at UFC Fight Night 287.",
+  "answers": {
+   "fact": "no_fact",
+   "firmness": "none",
+   "reports_his_result": "no",
+   "reports_his_next_fight": "no",
+   "reports_his_health": "no"
+  },
+  "changed": [
+   "reports_his_next_fight"
+  ],
+  "evidence": "\"Check out this quick breakdown of the matchup\" ... \"I'll officially pick Soriano to score the upset with a knockout in Round 2\" — the booking is the premise of a pick, not news.",
+  "confidence": "high",
+  "current": {
+   "fact": "no_fact",
+   "firmness": "none",
+   "reports_his_result": "no",
+   "reports_his_next_fight": "yes",
+   "reports_his_health": "no"
+  }
+ },
+ {
+  "id": "686",
+  "main_claim": "Donchenko and Soriano held their staredown ahead of their Sept 5 bout at UFC Fight Night 287 in Paris.",
+  "answers": {
+   "fact": "fight_week_event",
+   "firmness": "official_or_done",
+   "reports_his_result": "no",
+   "reports_his_next_fight": "no",
+   "reports_his_health": "no"
+  },
+  "changed": [
+   "reports_his_next_fight"
+  ],
+  "evidence": "\"провели битву поглядів. Очний поєдинок пройде 5 вересня\" — the bout is restated as the premise of a face-off report; June win over Berggren is a recap.",
+  "confidence": "high",
+  "current": {
+   "fact": "fight_week_event",
+   "firmness": "official_or_done",
+   "reports_his_result": "no",
+   "reports_his_next_fight": "yes",
+   "reports_his_health": "no"
+  }
+ },
+ {
+  "id": "687",
+  "main_claim": "Fight-day guide: Donchenko faces Soriano on the Paris main card tonight, walkout around 23:00 Kyiv, on Setanta/Fight Pass.",
+  "answers": {
+   "fact": "fight_week_event",
+   "firmness": "official_or_done",
+   "reports_his_result": "no",
+   "reports_his_next_fight": "no",
+   "reports_his_health": "no"
+  },
+  "changed": [
+   "reports_his_next_fight"
+  ],
+  "evidence": "\"Донченко та Соріано вийдуть в октагон орієнтовно о 23:00\" ... \"Дивитися онлайн LIVE\" — start times and card placement; the booking is the premise, not the news.",
+  "confidence": "high",
+  "current": {
+   "fact": "fight_week_event",
+   "firmness": "official_or_done",
+   "reports_his_result": "no",
+   "reports_his_next_fight": "yes",
+   "reports_his_health": "no"
+  }
+ },
+ {
+  "id": "688",
+  "main_claim": "Fight-day guide (same text as 687): Donchenko faces Soriano on the Paris main card tonight, walkout around 23:00 Kyiv.",
+  "answers": {
+   "fact": "fight_week_event",
+   "firmness": "official_or_done",
+   "reports_his_result": "no",
+   "reports_his_next_fight": "no",
+   "reports_his_health": "no"
+  },
+  "changed": [
+   "reports_his_next_fight"
+  ],
+  "evidence": "\"Донченко та Соріано вийдуть в октагон орієнтовно о 23:00\" ... \"Дивитися онлайн LIVE\" — start times and card placement; the booking is the premise, not the news.",
+  "confidence": "high",
+  "current": {
+   "fact": "fight_week_event",
+   "firmness": "official_or_done",
+   "reports_his_result": "no",
+   "reports_his_next_fight": "yes",
+   "reports_his_health": "no"
+  }
+ },
+ {
+  "id": "690",
+  "main_claim": "Sport.ua previews Donchenko vs Soriano tonight: Soriano is dangerous, Donchenko is favourite and should counter rather than brawl.",
+  "answers": {
+   "fact": "no_fact",
+   "firmness": "none",
+   "reports_his_result": "no",
+   "reports_his_next_fight": "no",
+   "reports_his_health": "no"
+  },
+  "changed": [
+   "fact",
+   "firmness",
+   "reports_his_next_fight"
+  ],
+  "evidence": "\"Соріано може здивувати, хоча й не є фаворитом\" ... \"Що слід робити Донченку\" — analysis and odds; \"5 вересня ... відбудеться турнір\" is the booking restated as the premise of a preview.",
+  "confidence": "high",
+  "current": {
+   "fact": "next_fight",
+   "firmness": "official_or_done",
+   "reports_his_result": "no",
+   "reports_his_next_fight": "yes",
+   "reports_his_health": "no"
+  }
+ },
+ {
+  "id": "692",
+  "main_claim": "MMA Fighting card predictions: the writer picks Soriano to hand Donchenko his first KO loss at UFC Paris.",
+  "answers": {
+   "fact": "no_fact",
+   "firmness": "none",
+   "reports_his_result": "no",
+   "reports_his_next_fight": "no",
+   "reports_his_health": "no"
+  },
+  "changed": [
+   "fact",
+   "firmness",
+   "reports_his_next_fight"
+  ],
+  "evidence": "\"The Ultimate Fighter 33 winner Daniil Donchenko fights the streaking Punahele Soriano\" ... \"Pick: Soriano\" — a booking restated as the premise of a pick.",
+  "confidence": "high",
+  "current": {
+   "fact": "next_fight",
+   "firmness": "official_or_done",
+   "reports_his_result": "no",
+   "reports_his_next_fight": "yes",
+   "reports_his_health": "no"
+  }
+ },
+ {
+  "id": "693",
+  "main_claim": "Topuria breaks his silence on the Gaethje loss with an essay: the result decides a night, character a life.",
+  "answers": {
+   "fact": "no_fact",
+   "firmness": "none",
+   "reports_his_result": "no",
+   "reports_his_next_fight": "no",
+   "reports_his_health": "no"
+  },
+  "changed": [
+   "fact",
+   "firmness",
+   "reports_his_health"
+  ],
+  "evidence": "\"Topuria habla por primera vez de su derrota\" ... \"deja varias reflexiones\"; the fractures (\"las dos órbitas de los ojos fracturadas, el tabique y el pie rotos\") sit inside a quote about \"aquella noche\" of 14 June, recalled as part of the reflection, not reported as the news. Alternative a careful editor could pick: personal_life (a life lesson).",
+  "confidence": "medium",
+  "current": {
+   "fact": "health",
+   "firmness": "official_or_done",
+   "reports_his_result": "no",
+   "reports_his_next_fight": "no",
+   "reports_his_health": "yes"
+  }
+ },
+ {
+  "id": "698",
+  "main_claim": "MMA Fighting card predictions (same text as 692): the writer picks Soriano to KO Donchenko at UFC Paris.",
+  "answers": {
+   "fact": "no_fact",
+   "firmness": "none",
+   "reports_his_result": "no",
+   "reports_his_next_fight": "no",
+   "reports_his_health": "no"
+  },
+  "changed": [
+   "fact",
+   "firmness",
+   "reports_his_next_fight"
+  ],
+  "evidence": "\"Daniil Donchenko fights the streaking Punahele Soriano\" ... \"Pick: Soriano\" — a booking restated as the premise of a pick.",
+  "confidence": "high",
+  "current": {
+   "fact": "next_fight",
+   "firmness": "official_or_done",
+   "reports_his_result": "no",
+   "reports_his_next_fight": "yes",
+   "reports_his_health": "no"
+  }
+ },
+ {
+  "id": "709",
+  "main_claim": "DraftKings pick: the writer takes Donchenko to finish Soriano at +100 at today's UFC Fight Night in Paris.",
+  "answers": {
+   "fact": "no_fact",
+   "firmness": "none",
+   "reports_his_result": "no",
+   "reports_his_next_fight": "no",
+   "reports_his_health": "no"
+  },
+  "changed": [
+   "reports_his_next_fight"
+  ],
+  "evidence": "\"Check out my best bet below\" ... \"I'm taking him to win this contest at +100 by KO/TKO/DQ or submission\" — the bout is the premise of a betting pick.",
+  "confidence": "high",
+  "current": {
+   "fact": "no_fact",
+   "firmness": "none",
+   "reports_his_result": "no",
+   "reports_his_next_fight": "yes",
+   "reports_his_health": "no"
+  }
+ },
+ {
+  "id": "723",
+  "main_claim": "Topuria reflects on his first loss to Gaethje: no excuses, the fire to return is bigger than before.",
+  "answers": {
+   "fact": "no_fact",
+   "firmness": "none",
+   "reports_his_result": "no",
+   "reports_his_next_fight": "no",
+   "reports_his_health": "no"
+  },
+  "changed": [
+   "fact",
+   "firmness",
+   "reports_his_health"
+  ],
+  "evidence": "\"shared a brutally honest post-fight reflection, in which he questioned his own motives\"; the injuries (\"both orbital bones fractured, my septum broken, and my foot broken\") are a line inside his quote about \"that night\", background to the reflection. Alternative: personal_life (a life lesson).",
+  "confidence": "medium",
+  "current": {
+   "fact": "health",
+   "firmness": "official_or_done",
+   "reports_his_result": "no",
+   "reports_his_next_fight": "no",
+   "reports_his_health": "yes"
+  }
+ },
+ {
+  "id": "745",
+  "main_claim": "Fight-day notice: Donchenko meets Soriano tonight on the UFC Fight Night 287 main card in Paris, show starts 23:00 Kyiv.",
+  "answers": {
+   "fact": "fight_week_event",
+   "firmness": "official_or_done",
+   "reports_his_result": "no",
+   "reports_his_next_fight": "no",
+   "reports_his_health": "no"
+  },
+  "changed": [
+   "fact",
+   "reports_his_next_fight"
+  ],
+  "evidence": "\"проведе бій проти Пунахеле Соріано ... який відбудеться 5 вересня\" (published 5 Sept) ... \"Початок шоу заплановано на 23:00\" ... \"стане частиною головного карду\" — the booking is restated on fight day with start time and card placement, no new state of the fight. A careful editor could keep next_fight / yes since the headline is the matchup itself.",
+  "confidence": "low",
+  "current": {
+   "fact": "next_fight",
+   "firmness": "official_or_done",
+   "reports_his_result": "no",
+   "reports_his_next_fight": "yes",
+   "reports_his_health": "no"
+  }
+ },
+ {
+  "id": "755",
+  "main_claim": "Topuria publishes a nine-part essay 'This Is Me' breaking down his first career loss to Gaethje and his journey.",
+  "answers": {
+   "fact": "no_fact",
+   "firmness": "none",
+   "reports_his_result": "no",
+   "reports_his_next_fight": "no",
+   "reports_his_health": "no"
+  },
+  "changed": [
+   "fact",
+   "firmness",
+   "reports_his_health"
+  ],
+  "evidence": "\"Breaks Down First Career Loss ... in Deeply Personal 9-Part Essay\"; \"He also revealed that he suffered fractures to both orbital bones, a broken septum, and a broken foot\" is one line in a chapter summary of a fight \"more than two months\" ago, background to the essay; \"I do not know what my next fight will look like\" is no state of a next fight. Alternative: personal_life (childhood, family, life lesson).",
+  "confidence": "medium",
+  "current": {
+   "fact": "health",
+   "firmness": "official_or_done",
+   "reports_his_result": "no",
+   "reports_his_next_fight": "no",
+   "reports_his_health": "yes"
+  }
+ },
+ {
+  "id": "774",
+  "main_claim": "Donchenko's post-fight press-conference remarks in Paris: the fight was under control, he followed his game plan, thanks to Ukrainian fans, and he wants Daniel Rodriguez next.",
+  "answers": {
+   "fact": "no_fact",
+   "firmness": "none",
+   "reports_his_result": "no",
+   "reports_his_next_fight": "no",
+   "reports_his_health": "no"
+  },
+  "changed": [
+   "fact",
+   "firmness",
+   "reports_his_result"
+  ],
+  "evidence": "Headline 'Подяка українцям і інші заяви'; lede 'вразив не тільки в октагоні, а і у медіа-румі'; the win is referenced only as premise ('потім він вражав в октагоні', 'Я розумів, що переміг у двох попередніх раундах'); the only forward item is a wish: 'хотів би битися із Даніелем Родрігесом'. A press conference is a place where things are said; what is said here is analysis and a wish, so no_fact.",
+  "confidence": "medium",
+  "current": {
+   "fact": "result",
+   "firmness": "official_or_done",
+   "reports_his_result": "yes",
+   "reports_his_next_fight": "no",
+   "reports_his_health": "no"
+  }
+ },
+ {
+  "id": "789",
+  "main_claim": "Donchenko calls out Daniel Rodriguez as the opponent he wants next, elaborating backstage after his Paris win.",
+  "answers": {
+   "fact": "no_fact",
+   "firmness": "none",
+   "reports_his_result": "no",
+   "reports_his_next_fight": "no",
+   "reports_his_health": "no"
+  },
+  "changed": [
+   "fact",
+   "firmness",
+   "reports_his_result"
+  ],
+  "evidence": "Headline 'has specific UFC veteran in mind for next fight'; lede 'name-dropped who he wants next'; 'Please, let me fight just with him' is a wish, 'it would be cool end of the year' is his own guess at timing. The result ('three-round unanimous decision win over Puna Soriano on Saturday') sits in paragraph three as the premise of the callout, published the day after, not as the article's news.",
+  "confidence": "medium",
+  "current": {
+   "fact": "result",
+   "firmness": "official_or_done",
+   "reports_his_result": "yes",
+   "reports_his_next_fight": "no",
+   "reports_his_health": "no"
+  }
+ },
+ {
+  "id": "794",
+  "main_claim": "Donchenko calls out Daniel Rodriguez as the opponent he wants next, elaborating backstage after his Paris win.",
+  "answers": {
+   "fact": "no_fact",
+   "firmness": "none",
+   "reports_his_result": "no",
+   "reports_his_next_fight": "no",
+   "reports_his_health": "no"
+  },
+  "changed": [
+   "fact",
+   "firmness",
+   "reports_his_result"
+  ],
+  "evidence": "Headline 'has specific UFC veteran in mind for next fight'; lede 'name-dropped who he wants next'; 'Please, let me fight just with him' is a wish, 'it would be cool end of the year' is his own guess at timing. The result ('three-round unanimous decision win over Puna Soriano on Saturday') sits in paragraph three as the premise of the callout, published the day after, not as the article's news.",
+  "confidence": "medium",
+  "current": {
+   "fact": "result",
+   "firmness": "official_or_done",
+   "reports_his_result": "yes",
+   "reports_his_next_fight": "no",
+   "reports_his_health": "no"
+  }
+ },
+ {
+  "id": "797",
+  "main_claim": "Donchenko calls out Daniel Rodriguez as the opponent he wants next, elaborating backstage after his Paris win.",
+  "answers": {
+   "fact": "no_fact",
+   "firmness": "none",
+   "reports_his_result": "no",
+   "reports_his_next_fight": "no",
+   "reports_his_health": "no"
+  },
+  "changed": [
+   "fact",
+   "firmness",
+   "reports_his_result"
+  ],
+  "evidence": "Headline 'has specific UFC veteran in mind for next fight'; lede 'name-dropped who he wants next'; 'Please, let me fight just with him' is a wish, 'it would be cool end of the year' is his own guess at timing. The result ('three-round unanimous decision win over Puna Soriano on Saturday') sits in paragraph three as the premise of the callout, published the day after, not as the article's news.",
+  "confidence": "medium",
+  "current": {
+   "fact": "result",
+   "firmness": "official_or_done",
+   "reports_his_result": "yes",
+   "reports_his_next_fight": "no",
+   "reports_his_health": "no"
+  }
+ },
+ {
+  "id": "803",
+  "main_claim": "Jon Anik says the UFC may be internally discussing a Gaethje vs Topuria 2 title rematch as Topuria's return.",
+  "answers": {
+   "fact": "next_fight",
+   "firmness": "rumour",
+   "reports_his_result": "no",
+   "reports_his_next_fight": "yes",
+   "reports_his_health": "no"
+  },
+  "changed": [
+   "reports_his_health"
+  ],
+  "evidence": "Health flips to no: 'Topuria's facial injuries are also said to have healed well, fueling talks that his comeback could be on the cards, potentially in early 2027' is the article's closing sentence, hearsay ('are also said to'), recalled on the way; the June TKO loss is recap ('back in June'). The article's news is the rematch talk.",
+  "confidence": "high",
+  "current": {
+   "fact": "next_fight",
+   "firmness": "rumour",
+   "reports_his_result": "no",
+   "reports_his_next_fight": "yes",
+   "reports_his_health": "yes"
+  }
+ },
+ {
+  "id": "813",
+  "main_claim": "Donchenko calls out Daniel Rodriguez as the opponent he wants next, elaborating backstage after his Paris win.",
+  "answers": {
+   "fact": "no_fact",
+   "firmness": "none",
+   "reports_his_result": "no",
+   "reports_his_next_fight": "no",
+   "reports_his_health": "no"
+  },
+  "changed": [
+   "fact",
+   "firmness",
+   "reports_his_result"
+  ],
+  "evidence": "Headline 'has specific UFC veteran in mind for next fight'; lede 'name-dropped who he wants next'; 'Please, let me fight just with him' is a wish, 'it would be cool end of the year' is his own guess at timing. The result ('three-round unanimous decision win over Puna Soriano on Saturday') sits in paragraph three as the premise of the callout, published the day after, not as the article's news.",
+  "confidence": "medium",
+  "current": {
+   "fact": "result",
+   "firmness": "official_or_done",
+   "reports_his_result": "yes",
+   "reports_his_next_fight": "no",
+   "reports_his_health": "no"
+  }
+ },
+ {
+  "id": "843",
+  "main_claim": "Pimblett would welcome a Topuria fight but has had no talks; the article's news is Pimblett's own December timeline and hit list.",
+  "answers": {
+   "fact": "no_fact",
+   "firmness": "none",
+   "reports_his_result": "no",
+   "reports_his_next_fight": "no",
+   "reports_his_health": "no"
+  },
+  "changed": [
+   "reports_his_next_fight"
+  ],
+  "evidence": "'I'd love to smash his head in' is a wish; 'Nothing yet. No one's spoke to me about it' is the absence of talks, not a booking rumoured or denied; the Gaethje rematch 'chatter' is one passing line. Fact is already no_fact, so under rule 3 next_fight must be no.",
+  "confidence": "medium",
+  "current": {
+   "fact": "no_fact",
+   "firmness": "none",
+   "reports_his_result": "no",
+   "reports_his_next_fight": "yes",
+   "reports_his_health": "no"
+  }
+ },
+ {
+  "id": "852",
+  "main_claim": "Donchenko gives his assessment of the Soriano win and says he hopes the UFC gives him a good next fight.",
+  "answers": {
+   "fact": "no_fact",
+   "firmness": "none",
+   "reports_his_result": "no",
+   "reports_his_next_fight": "no",
+   "reports_his_health": "no"
+  },
+  "changed": [
+   "fact",
+   "firmness",
+   "reports_his_result"
+  ],
+  "evidence": "The article opens with 'оцінив перемогу' (assessed the win) and carries only his quotes; the result itself is recapped with 'Нагадаємо, перемога над Соріано стала...' (let us recall), the rule-3 marker for background. His next fight is a hope: 'Сподіваюся, що мені дадуть гарний бій'.",
+  "confidence": "low",
+  "current": {
+   "fact": "result",
+   "firmness": "official_or_done",
+   "reports_his_result": "yes",
+   "reports_his_next_fight": "no",
+   "reports_his_health": "no"
+  }
+ },
+ {
+  "id": "879",
+  "main_claim": "Matt Brown believes an immediate Gaethje rematch could permanently damage Topuria and he should take a tune-up fight first.",
+  "answers": {
+   "fact": "no_fact",
+   "firmness": "none",
+   "reports_his_result": "no",
+   "reports_his_next_fight": "no",
+   "reports_his_health": "no"
+  },
+  "changed": [
+   "fact",
+   "firmness",
+   "reports_his_next_fight"
+  ],
+  "evidence": "'Matt Brown believes an immediate rematch ... could permanently damage' is the article; the Anik line ('recently said the promotion is exploring a second fight') is the premise he reacts to, and the article itself closes 'The rematch discussion remains speculative'. Injuries are 'reportedly suffered' background.",
+  "confidence": "high",
+  "current": {
+   "fact": "next_fight",
+   "firmness": "rumour",
+   "reports_his_result": "no",
+   "reports_his_next_fight": "yes",
+   "reports_his_health": "no"
+  }
+ },
+ {
+  "id": "887",
+  "main_claim": "Josh Hokit says Topuria (and Pereira) do not deserve a title shot in their next fight.",
+  "answers": {
+   "fact": "no_fact",
+   "firmness": "none",
+   "reports_his_result": "no",
+   "reports_his_next_fight": "no",
+   "reports_his_health": "no"
+  },
+  "changed": [
+   "reports_his_next_fight"
+  ],
+  "evidence": "'neither Ilia Topuria nor Alex Pereira deserve a ... title shot in their next fight' is opinion; the Anik 'internal conversations' quote sits in the closing paragraph (the #1002 pattern). Fact is already no_fact, so next_fight must be no.",
+  "confidence": "high",
+  "current": {
+   "fact": "no_fact",
+   "firmness": "none",
+   "reports_his_result": "no",
+   "reports_his_next_fight": "yes",
+   "reports_his_health": "no"
+  }
+ },
+ {
+  "id": "901",
+  "main_claim": "Matt Brown says the UFC risks ruining Topuria's life by making an immediate Gaethje rematch; he should fight someone like Moicano first.",
+  "answers": {
+   "fact": "no_fact",
+   "firmness": "none",
+   "reports_his_result": "no",
+   "reports_his_next_fight": "no",
+   "reports_his_health": "no"
+  },
+  "changed": [
+   "fact",
+   "firmness",
+   "reports_his_next_fight"
+  ],
+  "evidence": "'Matt Brown thinks the UFC could be risking Ilia Topuria's career' is the article; 'rumors have surfaced that the Spaniard could be set for an immediate rematch' is the premise, and the Pimblett link in the last paragraph is a wish ('a fight Pimblett still wants'). Broken orbitals are background.",
+  "confidence": "high",
+  "current": {
+   "fact": "next_fight",
+   "firmness": "rumour",
+   "reports_his_result": "no",
+   "reports_his_next_fight": "yes",
+   "reports_his_health": "no"
+  }
+ },
+ {
+  "id": "905",
+  "main_claim": "Matt Brown believes Topuria should take a tune-up bout before any Gaethje rematch.",
+  "answers": {
+   "fact": "no_fact",
+   "firmness": "none",
+   "reports_his_result": "no",
+   "reports_his_next_fight": "no",
+   "reports_his_health": "no"
+  },
+  "changed": [
+   "reports_his_next_fight"
+  ],
+  "evidence": "'Brown believes Ilia Topuria should take a tuneup bout' is the article; 'Jon Anik recently indicated the UFC is weighing a potential ... sequel' is the premise he reacts to. Fact is already no_fact, so under rule 3 next_fight must be no.",
+  "confidence": "high",
+  "current": {
+   "fact": "no_fact",
+   "firmness": "none",
+   "reports_his_result": "no",
+   "reports_his_next_fight": "yes",
+   "reports_his_health": "no"
+  }
+ },
+ {
+  "id": "913",
+  "main_claim": "Analysis: Topuria's options are a Gaethje rematch or finally fighting Pimblett, who wants it but denies any negotiations.",
+  "answers": {
+   "fact": "no_fact",
+   "firmness": "none",
+   "reports_his_result": "no",
+   "reports_his_next_fight": "no",
+   "reports_his_health": "no"
+  },
+  "changed": [
+   "reports_his_next_fight"
+  ],
+  "evidence": "'muchas han sido las conversaciones de los corrillos' frames it as chatter; 'ha negado tajantemente que esté en negociaciones' is absence of talks plus a wish ('su deseo es'); 'lo más lógico sería verle de regreso ya el próximo año' is the writer's guess at his timing (#462 pattern). Fact is already no_fact, so next_fight must be no.",
+  "confidence": "medium",
+  "current": {
+   "fact": "no_fact",
+   "firmness": "none",
+   "reports_his_result": "no",
+   "reports_his_next_fight": "yes",
+   "reports_his_health": "no"
+  }
+ },
+ {
+  "id": "917",
+  "main_claim": "Joe Rogan warns Topuria not to rush his return after the damage he took against Gaethje, citing Volkanovski.",
+  "answers": {
+   "fact": "no_fact",
+   "firmness": "none",
+   "reports_his_result": "no",
+   "reports_his_next_fight": "no",
+   "reports_his_health": "no"
+  },
+  "changed": [
+   "fact",
+   "firmness",
+   "reports_his_health"
+  ],
+  "evidence": "'Joe Rogan believes a rushed return ... could end badly' is the article; the injuries ('two broken orbital bones, a shattered septum, and a broken foot') are recapped from his essay as the premise for Rogan's opinion (#856 pattern), and 'he probably needs like six months before he's even sparring again' is Rogan's guess at timing (#462 pattern).",
+  "confidence": "medium",
+  "current": {
+   "fact": "health",
+   "firmness": "official_or_done",
+   "reports_his_result": "no",
+   "reports_his_next_fight": "no",
+   "reports_his_health": "yes"
+  }
+ },
+ {
+  "id": "921",
+  "main_claim": "Pimblett says he would be willing to fight Topuria next but nobody has spoken to him about it.",
+  "answers": {
+   "fact": "no_fact",
+   "firmness": "none",
+   "reports_his_result": "no",
+   "reports_his_next_fight": "no",
+   "reports_his_health": "no"
+  },
+  "changed": [
+   "reports_his_next_fight"
+  ],
+  "evidence": "'would be more than willing to fight Ilia Topuria next' and 'I'd love to smash his head in' are a wish; 'Nothing yet. No one's spoke to me about it' is the absence of talks; the Anik 'internal talks' line is the closing sentence (#1002 pattern). Fact is already no_fact, so next_fight must be no.",
+  "confidence": "medium",
+  "current": {
+   "fact": "no_fact",
+   "firmness": "none",
+   "reports_his_result": "no",
+   "reports_his_next_fight": "yes",
+   "reports_his_health": "no"
+  }
+ },
+ {
+  "id": "926",
+  "main_claim": "Joe Rogan's opinion that Topuria should not rush his return after the Gaethje loss.",
+  "answers": {
+   "fact": "no_fact",
+   "firmness": "none",
+   "reports_his_result": "no",
+   "reports_his_next_fight": "no",
+   "reports_his_health": "no"
+  },
+  "changed": [
+   "reports_his_next_fight"
+  ],
+  "evidence": "Main claim is 'Rogan has urged ... not to repeat the same mistake' (opinion). The June loss and injuries are recap ('after the Spaniard suffered two fractured orbital bones'); the rematch talk is recalled from an earlier report ('Commentator Jon Anik recently revealed ... internal discussions', which Anik himself calls 'non-informed speculation'): background, so next fight is no.",
+  "confidence": "medium",
+  "current": {
+   "fact": "no_fact",
+   "firmness": "none",
+   "reports_his_result": "no",
+   "reports_his_next_fight": "yes",
+   "reports_his_health": "no"
+  }
+ },
+ {
+  "id": "998",
+  "main_claim": "Dana White confirms Topuria is ready to fight again ('Topuria está listo para pelea. Nosotros estamos listos para él').",
+  "answers": {
+   "fact": "next_fight",
+   "firmness": "official_or_done",
+   "reports_his_result": "no",
+   "reports_his_next_fight": "yes",
+   "reports_his_health": "no"
+  },
+  "changed": [
+   "reports_his_health"
+  ],
+  "evidence": "Health: 'parece que el Matador está recuperado' and 'Con Topuria ya recuperado' are the article's gloss on White's 'listo para pelear'; the fracture is recapped ('terminó con una doble fractura orbital'). The news is when he can fight, not a health update: health no.",
+  "confidence": "medium",
+  "current": {
+   "fact": "next_fight",
+   "firmness": "official_or_done",
+   "reports_his_result": "no",
+   "reports_his_next_fight": "yes",
+   "reports_his_health": "yes"
+  }
+ },
+ {
+  "id": "1002",
+  "main_claim": "Alexandre Pantoja sends Topuria a message of support after his public reappearance.",
+  "answers": {
+   "fact": "no_fact",
+   "firmness": "none",
+   "reports_his_result": "no",
+   "reports_his_next_fight": "no",
+   "reports_his_health": "no"
+  },
+  "changed": [
+   "fact",
+   "firmness",
+   "reports_his_next_fight"
+  ],
+  "evidence": "Main claim is Pantoja's message ('¡Todavía tenemos mucho por conquistar!'). The rematch is a closing-line rumour ('una posible revancha frente a Gaethje emergió ... Jon Anik') and recovery is background ('continúa inmerso en su recuperación'): no_fact, firmness none, next fight no. Matches the guide's worked example for #1002.",
+  "confidence": "high",
+  "current": {
+   "fact": "next_fight",
+   "firmness": "rumour",
+   "reports_his_result": "no",
+   "reports_his_next_fight": "yes",
+   "reports_his_health": "no"
+  }
+ },
+ {
+  "id": "1016",
+  "main_claim": "Eddie Alvarez's opinion that an immediate Gaethje rematch would be a mistake.",
+  "answers": {
+   "fact": "no_fact",
+   "firmness": "none",
+   "reports_his_result": "no",
+   "reports_his_next_fight": "no",
+   "reports_his_health": "no"
+  },
+  "changed": [
+   "reports_his_next_fight"
+  ],
+  "evidence": "Main claim is 'Alvarez believes an immediate rematch ... would be a mistake' (opinion). The rematch is the premise ('recent reports suggest the UFC is considering running the fight back') and 'the timing of any rematch remains unclear': background, next fight no.",
+  "confidence": "high",
+  "current": {
+   "fact": "no_fact",
+   "firmness": "none",
+   "reports_his_result": "no",
+   "reports_his_next_fight": "yes",
+   "reports_his_health": "no"
+  }
+ },
+ {
+  "id": "1020",
+  "main_claim": "Dana White confirms Topuria is ready to fight, with a Gaethje rematch or Pimblett on the table.",
+  "answers": {
+   "fact": "next_fight",
+   "firmness": "official_or_done",
+   "reports_his_result": "no",
+   "reports_his_next_fight": "yes",
+   "reports_his_health": "no"
+  },
+  "changed": [
+   "reports_his_health"
+  ],
+  "evidence": "Health: the injuries appear only in the closing paragraph as the reason a 2026 return looks rushed ('está completando las recuperaciones de sus fracturas orbitales ... Volver a finales de este año ... suena muy precipitado'), which is the writer's timing guess plus recap, not a health update: health no.",
+  "confidence": "medium",
+  "current": {
+   "fact": "next_fight",
+   "firmness": "official_or_done",
+   "reports_his_result": "no",
+   "reports_his_next_fight": "yes",
+   "reports_his_health": "yes"
+  }
+ },
+ {
+  "id": "1045",
+  "main_claim": "A podcast episode page: the hosts react to Topuria being 'ready to fight'.",
+  "answers": {
+   "fact": "no_fact",
+   "firmness": "none",
+   "reports_his_result": "no",
+   "reports_his_next_fight": "no",
+   "reports_his_health": "no"
+  },
+  "changed": [
+   "fact",
+   "firmness",
+   "reports_his_next_fight"
+  ],
+  "evidence": "The page's own content is 'The Boys in the Back react to Ilia Topuria being \"ready to fight\"' plus previews and picks; the readiness news is the premise of a reaction show, in quotation marks, with no source or detail of its own: no_fact, next fight no.",
+  "confidence": "low",
+  "current": {
+   "fact": "next_fight",
+   "firmness": "reported",
+   "reports_his_result": "no",
+   "reports_his_next_fight": "yes",
+   "reports_his_health": "no"
+  }
+ },
+ {
+  "id": "1058",
+  "main_claim": "Dana White confirms Topuria is ready to fight and weighs Gaethje or Pimblett as his return fight.",
+  "answers": {
+   "fact": "next_fight",
+   "firmness": "official_or_done",
+   "reports_his_result": "no",
+   "reports_his_next_fight": "yes",
+   "reports_his_health": "no"
+  },
+  "changed": [
+   "reports_his_health"
+  ],
+  "evidence": "Health: 'ya cuenta con el alta' and 'ya se recuperó de las fracturas orbitales' (the latter from an embedded tweet) are the article's reading of White's 'está listo para pelear'; the news is that he can fight again, and the early-2027 line is the writer's guess at timing. Under rule 3 the health question stays on the main claim: health no.",
+  "confidence": "medium",
+  "current": {
+   "fact": "next_fight",
+   "firmness": "official_or_done",
+   "reports_his_result": "no",
+   "reports_his_next_fight": "yes",
+   "reports_his_health": "yes"
+  }
+ },
+ {
+  "id": "1066",
+  "main_claim": "Fans react angrily to Dana White hinting Topuria might face Pimblett next.",
+  "answers": {
+   "fact": "no_fact",
+   "firmness": "none",
+   "reports_his_result": "no",
+   "reports_his_next_fight": "no",
+   "reports_his_health": "no"
+  },
+  "changed": [
+   "fact",
+   "firmness",
+   "reports_his_next_fight"
+  ],
+  "evidence": "Main claim is fan reaction ('fans online didn't waste time putting forth their opinions') to a hint reported second-hand ('Dana White shed some light recently. He hinted'); the piece closes 'no set date for Topuria's return has been announced'. The hint is the premise of a reaction piece, so no_fact, firmness none, next fight no.",
+  "confidence": "low",
+  "current": {
+   "fact": "next_fight",
+   "firmness": "rumour",
+   "reports_his_result": "no",
+   "reports_his_next_fight": "yes",
+   "reports_his_health": "no"
+  }
+ },
+ {
+  "id": "1089",
+  "main_claim": "Dana White says Gaethje has money left to make and should not retire; Topuria's readiness is the frame.",
+  "answers": {
+   "fact": "no_fact",
+   "firmness": "none",
+   "reports_his_result": "no",
+   "reports_his_next_fight": "no",
+   "reports_his_health": "no"
+  },
+  "changed": [
+   "fact",
+   "firmness",
+   "reports_his_next_fight"
+  ],
+  "evidence": "The article's news is White on Gaethje's retirement ('White was asked about Gaethje's potential retirement'; 'money is left on the table for him'). About Topuria it only restates the earlier line ('Ilia Topuria is ready to fight, but is Justin Gaethje?'; 'The big talk is who [Topuria's] going to fight') as the premise. No new fact about him: no_fact, next fight no.",
+  "confidence": "low",
+  "current": {
+   "fact": "next_fight",
+   "firmness": "official_or_done",
+   "reports_his_result": "no",
+   "reports_his_next_fight": "yes",
+   "reports_his_health": "no"
+  }
+ },
+ {
+  "id": "1097",
+  "main_claim": "Belal Muhammad's opinion that Topuria should fight Pimblett rather than get an immediate Gaethje rematch.",
+  "answers": {
+   "fact": "no_fact",
+   "firmness": "none",
+   "reports_his_result": "no",
+   "reports_his_next_fight": "no",
+   "reports_his_health": "no"
+  },
+  "changed": [
+   "reports_his_next_fight"
+  ],
+  "evidence": "Main claim is 'Muhammad does not think Ilia Topuria should get an immediate rematch' (opinion). White's 'ready to return' and Gaethje's 2027 plan are recalled as context ('He recently said Topuria is ready to return'; 'Reuters reported earlier this month'): background, next fight no.",
+  "confidence": "high",
+  "current": {
+   "fact": "no_fact",
+   "firmness": "none",
+   "reports_his_result": "no",
+   "reports_his_next_fight": "yes",
+   "reports_his_health": "no"
+  }
+ },
+ {
+  "id": "1101",
+  "main_claim": "Topuria says, in a 1Win interview, that he no longer ties his happiness to achieving goals and lives in the present.",
+  "answers": {
+   "fact": "personal_life",
+   "firmness": "official_or_done",
+   "reports_his_result": "no",
+   "reports_his_next_fight": "no",
+   "reports_his_health": "no"
+  },
+  "changed": [
+   "fact",
+   "reports_his_next_fight"
+  ],
+  "evidence": "Main claim is his own words on mindset ('I don't base my happiness on any goals anymore'), a life lesson, so personal_life at official_or_done (he says it). The White 'ready to fight' section restates earlier news and the Pimblett line is a rumour with 'nothing has been confirmed yet': background, next fight no.",
+  "confidence": "medium",
+  "current": {
+   "fact": "next_fight",
+   "firmness": "official_or_done",
+   "reports_his_result": "no",
+   "reports_his_next_fight": "yes",
+   "reports_his_health": "no"
+  }
+ },
+ {
+  "id": "1172",
+  "main_claim": "Donchenko, in a long interview ten days after beating Soriano in Paris, talks about a possible Usman fight, Ukrainians in the UFC and how the fight went.",
+  "answers": {
+   "fact": "no_fact",
+   "firmness": "none",
+   "reports_his_result": "no",
+   "reports_his_next_fight": "no",
+   "reports_his_health": "no"
+  },
+  "changed": [
+   "fact",
+   "firmness",
+   "reports_his_result",
+   "reports_his_health"
+  ],
+  "evidence": "The headline and intro name the claim: '«Я не гірший за Усмана». Донченко – про бій з Камару та українців в UFC' and 'поміркував про можливий поєдинок з Камару Усманом' (his thoughts, a callout). The 5 September win is the premise ('Велике інтерв'ю ... після тріумфу в Парижі') so result no; the arm infection is recalled from a month before the fight ('у мене була інфекція 4 серпня', healed, interviewer had seen it on Instagram) so health no; fact no_fact, firmness none.",
+  "confidence": "low",
+  "current": {
+   "fact": "health",
+   "firmness": "official_or_done",
+   "reports_his_result": "yes",
+   "reports_his_next_fight": "no",
+   "reports_his_health": "yes"
+  }
+ }
+]

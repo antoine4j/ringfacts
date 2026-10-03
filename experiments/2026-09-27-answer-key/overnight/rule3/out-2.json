@@ -1,0 +1,400 @@
+[
+ {
+  "id": "494",
+  "main_claim": "Fight-week feature: Donchenko, who asked for Paris, previews his Saturday bout with Soriano and talks about his French and his last win.",
+  "answers": {
+   "fact": "no_fact",
+   "firmness": "none",
+   "reports_his_result": "no",
+   "reports_his_next_fight": "no",
+   "reports_his_health": "no"
+  },
+  "changed": [
+   "fact",
+   "firmness",
+   "reports_his_next_fight"
+  ],
+  "evidence": "\"as he readies to make his return to action this weekend in Paris, where he faces off with Punahele Soriano\" — the booking is the premise of an interview feature; the rest is his talk about rankings, sponsors and the game plan",
+  "confidence": "medium"
+ },
+ {
+  "id": "500",
+  "main_claim": "Nathaniel Wood gets a new opponent at UFC Paris; Donchenko appears only as a line in the full card list.",
+  "answers": {
+   "fact": "no_fact",
+   "firmness": "none",
+   "reports_his_result": "no",
+   "reports_his_next_fight": "no",
+   "reports_his_health": "no"
+  },
+  "changed": [
+   "reports_his_next_fight"
+  ],
+  "evidence": "\"Daniil Donchenko vs. Punahele Soriano\" appears only in \"Check out the full UFC Paris card below\" — a card list, background",
+  "confidence": "high"
+ },
+ {
+  "id": "503",
+  "main_claim": "Gaethje says the UFC has the last word on a possible Topuria rematch, which he does not think should be next; both will sit out until 2027.",
+  "answers": {
+   "fact": "no_fact",
+   "firmness": "none",
+   "reports_his_result": "no",
+   "reports_his_next_fight": "no",
+   "reports_his_health": "no"
+  },
+  "changed": [
+   "fact",
+   "firmness",
+   "reports_his_next_fight"
+  ],
+  "evidence": "\"la UFC es la que tiene la última palabra ... no siento que esa deba ser mi siguiente pelea\"; \"él tampoco querrá pelear hasta el año que viene\" is Gaethje's guess at his timing; the fractures are a recap (\"se está recuperando de las fracturas\")",
+  "confidence": "high"
+ },
+ {
+  "id": "510",
+  "main_claim": "Event preview of UFC Paris (start times, how to watch, full card); Donchenko is one line in the main-card list.",
+  "answers": {
+   "fact": "no_fact",
+   "firmness": "none",
+   "reports_his_result": "no",
+   "reports_his_next_fight": "no",
+   "reports_his_health": "no"
+  },
+  "changed": [
+   "fact",
+   "firmness",
+   "reports_his_next_fight"
+  ],
+  "evidence": "\"Welterweight: Daniil Donchenko vs Punahele Soriano\" in the card list; the article is about the whole event, his booking is restated as a card entry",
+  "confidence": "medium"
+ },
+ {
+  "id": "521",
+  "main_claim": "UFC.com video page: Donchenko speaks about his upcoming fight at UFC Paris (video furniture only).",
+  "answers": {
+   "fact": "no_fact",
+   "firmness": "none",
+   "reports_his_result": "no",
+   "reports_his_next_fight": "no",
+   "reports_his_health": "no"
+  },
+  "changed": [
+   "fact",
+   "firmness",
+   "reports_his_next_fight"
+  ],
+  "evidence": "\"Donchenko speaks to UFC.com about his upcoming fight\" — an interview premise with no saved content beyond page furniture",
+  "confidence": "medium"
+ },
+ {
+  "id": "529",
+  "main_claim": "Soriano profile ahead of UFC Paris; he calls Donchenko a 'scary dude' and the Saturday bout is the premise.",
+  "answers": {
+   "fact": "no_fact",
+   "firmness": "none",
+   "reports_his_result": "no",
+   "reports_his_next_fight": "no",
+   "reports_his_health": "no"
+  },
+  "changed": [
+   "fact",
+   "firmness",
+   "reports_his_next_fight"
+  ],
+  "evidence": "\"Saturday's meeting with Donchenko at Accor Arena is positioned in the middle of the main card\" — booking restated as the premise of a Soriano profile; about Donchenko only Soriano's opinion (\"scary dude, wild dude\")",
+  "confidence": "high"
+ },
+ {
+  "id": "532",
+  "main_claim": "Duplicate of 529: Soriano profile ahead of UFC Paris; Saturday's bout with Donchenko is the premise.",
+  "answers": {
+   "fact": "no_fact",
+   "firmness": "none",
+   "reports_his_result": "no",
+   "reports_his_next_fight": "no",
+   "reports_his_health": "no"
+  },
+  "changed": [
+   "fact",
+   "firmness",
+   "reports_his_next_fight"
+  ],
+  "evidence": "\"Saturday's meeting with Donchenko at Accor Arena is positioned in the middle of the main card\" — booking as premise; Soriano's opinion of him only",
+  "confidence": "high"
+ },
+ {
+  "id": "572",
+  "main_claim": "A Spanish reporter says Topuria will return to the public eye in September.",
+  "answers": {
+   "fact": "none_of_these",
+   "firmness": "reported",
+   "reports_his_result": "no",
+   "reports_his_next_fight": "no",
+   "reports_his_health": "no"
+  },
+  "changed": [
+   "reports_his_health"
+  ],
+  "evidence": "\"Ilia is going to return to the public eye directly in the month of September\" is the news; \"A medical update on Topuria after the fight confirmed that he had suffered a broken orbital bone\" and \"July was clearly about healing his injuries\" are recap, not a health update; none_of_these = a public reappearance",
+  "confidence": "medium"
+ },
+ {
+  "id": "588",
+  "main_claim": "Soriano takes his win streak to France to face Donchenko Saturday; he talks about his setbacks and family.",
+  "answers": {
+   "fact": "no_fact",
+   "firmness": "none",
+   "reports_his_result": "no",
+   "reports_his_next_fight": "no",
+   "reports_his_health": "no"
+  },
+  "changed": [
+   "fact",
+   "firmness",
+   "reports_his_next_fight"
+  ],
+  "evidence": "\"returns to the UFC on Saturday when he faces Daniil Donchenko\" — booking as premise of a Soriano preview; Donchenko gets only a record line",
+  "confidence": "high"
+ },
+ {
+  "id": "594",
+  "main_claim": "Betting prediction and pick for Donchenko vs Soriano at UFC Paris.",
+  "answers": {
+   "fact": "no_fact",
+   "firmness": "none",
+   "reports_his_result": "no",
+   "reports_his_next_fight": "no",
+   "reports_his_health": "no"
+  },
+  "changed": [
+   "fact",
+   "firmness",
+   "reports_his_next_fight"
+  ],
+  "evidence": "\"Check out our UFC Paris odds series for our Donchenko-Soriano prediction and pick\" — a pick; the booking is its premise",
+  "confidence": "high"
+ },
+ {
+  "id": "599",
+  "main_claim": "Preview: why the Soriano fight in Paris is the hardest and most important of Donchenko's UFC run, with a prediction.",
+  "answers": {
+   "fact": "no_fact",
+   "firmness": "none",
+   "reports_his_result": "no",
+   "reports_his_next_fight": "no",
+   "reports_his_health": "no"
+  },
+  "changed": [
+   "fact",
+   "firmness",
+   "reports_his_next_fight"
+  ],
+  "evidence": "\"5 вересня в Парижі пройде турнір ... У його карді відбудеться бій ... Розповідаємо, чому бій із гавайцем такий важливий\" — a preview with analysis; the booking (and his first main-card slot) is its premise",
+  "confidence": "high"
+ },
+ {
+  "id": "603",
+  "main_claim": "Betting tip for Donchenko vs Soriano on September 5; the tipster picks Soriano.",
+  "answers": {
+   "fact": "no_fact",
+   "firmness": "none",
+   "reports_his_result": "no",
+   "reports_his_next_fight": "no",
+   "reports_his_health": "no"
+  },
+  "changed": [
+   "fact",
+   "firmness",
+   "reports_his_next_fight"
+  ],
+  "evidence": "\"what kind of bet to choose before this confrontation\"; \"Our prediction is that Soriano will win in 2.90\" — a pick, booking as premise",
+  "confidence": "high"
+ },
+ {
+  "id": "605",
+  "main_claim": "Short notice, citing Sport.ua: Donchenko fights Soriano at UFC Fight Night 287 in Paris on September 5.",
+  "answers": {
+   "fact": "no_fact",
+   "firmness": "none",
+   "reports_his_result": "no",
+   "reports_his_next_fight": "no",
+   "reports_his_health": "no"
+  },
+  "changed": [
+   "fact",
+   "firmness",
+   "reports_his_next_fight"
+  ],
+  "evidence": "\"Як повідомляє Sport.ua : 5 вересня в Парижі відбудеться турнір ... де в поєдинку зустрінуться Данило Донченко та Пунахієль Соріано\" — a day-before restatement of the booking with preview filler (\"обіцяє стати яскравою подією\"); nothing announced, nothing new",
+  "confidence": "low"
+ },
+ {
+  "id": "608",
+  "main_claim": "Preview and prediction for Donchenko vs Soriano at UFC Fight Night Paris.",
+  "answers": {
+   "fact": "no_fact",
+   "firmness": "none",
+   "reports_his_result": "no",
+   "reports_his_next_fight": "no",
+   "reports_his_health": "no"
+  },
+  "changed": [
+   "reports_his_next_fight"
+  ],
+  "evidence": "\"Daniil Donchenko vs Punahele Soriano Preview & Prediction\"; \"he should still get this done\" — a pick, booking as premise",
+  "confidence": "high"
+ },
+ {
+  "id": "609",
+  "main_claim": "Soriano says being underestimated fuels him ahead of his UFC Paris fight with Donchenko.",
+  "answers": {
+   "fact": "no_fact",
+   "firmness": "none",
+   "reports_his_result": "no",
+   "reports_his_next_fight": "no",
+   "reports_his_health": "no"
+  },
+  "changed": [
+   "fact",
+   "firmness",
+   "reports_his_next_fight"
+  ],
+  "evidence": "\"Soriano meets Daniil Donchenko on September 5 at Accor Arena in Paris\" — booking as premise of Soriano's quotes; about Donchenko only \"scary dude, wild dude\"",
+  "confidence": "high"
+ },
+ {
+  "id": "616",
+  "main_claim": "Event announcement for UFC Fight Night 287: Donchenko fights Soriano on the main card Saturday, with card, times and analysis.",
+  "answers": {
+   "fact": "no_fact",
+   "firmness": "none",
+   "reports_his_result": "no",
+   "reports_his_next_fight": "no",
+   "reports_his_health": "no"
+  },
+  "changed": [
+   "fact",
+   "firmness",
+   "reports_his_next_fight"
+  ],
+  "evidence": "\"Донченко отримав місце в основному карді, як і просив ще кілька місяців тому\"; \"Вихід Донченка в октагон ... приблизно о 22:00\" — card list and start times of a preview; the booking is restated as its premise",
+  "confidence": "medium"
+ },
+ {
+  "id": "620",
+  "main_claim": "Topuria reappears with a video letter to his son, saying the loss made him stronger and he is ready to return to training.",
+  "answers": {
+   "fact": "personal_life",
+   "firmness": "official_or_done",
+   "reports_his_result": "no",
+   "reports_his_next_fight": "no",
+   "reports_his_health": "no"
+  },
+  "changed": [
+   "reports_his_health"
+  ],
+  "evidence": "\"en la que sufrió una doble fractura orbital\" is a recap clause; the video is a life lesson to his son (\"el carácter es la única victoria que nadie puede quitarte\"), not a health update; \"no ha anunciado una fecha concreta ... a pesar de los rumores\" keeps next fight no",
+  "confidence": "medium"
+ },
+ {
+  "id": "623",
+  "main_claim": "UFC Paris preview and predictions for the whole card; Donchenko vs Soriano gets a paragraph of analysis.",
+  "answers": {
+   "fact": "no_fact",
+   "firmness": "none",
+   "reports_his_result": "no",
+   "reports_his_next_fight": "no",
+   "reports_his_health": "no"
+  },
+  "changed": [
+   "fact",
+   "firmness",
+   "reports_his_next_fight"
+  ],
+  "evidence": "\"Daniil Donchenko is looking to keep his momentum rolling\" ... \"he'll likely find himself fighting from behind\" — preview and pick; booking as premise",
+  "confidence": "high"
+ },
+ {
+  "id": "625",
+  "main_claim": "Weigh-in: Donchenko and Soriano both made weight at 77.11 kg before their September 5 bout.",
+  "answers": {
+   "fact": "fight_week_event",
+   "firmness": "official_or_done",
+   "reports_his_result": "no",
+   "reports_his_next_fight": "no",
+   "reports_his_health": "no"
+  },
+  "changed": [
+   "reports_his_next_fight"
+  ],
+  "evidence": "\"успішно пройшли офіційне зважування ... 77,11 кг\" is the news; \"Поєдинок відбудеться 5 вересня в Парижі\" is the booking restated as the premise of a weigh-in report",
+  "confidence": "high"
+ },
+ {
+  "id": "627",
+  "main_claim": "Topuria breaks his silence with a video letter to his son about what the Gaethje loss taught him.",
+  "answers": {
+   "fact": "personal_life",
+   "firmness": "official_or_done",
+   "reports_his_result": "no",
+   "reports_his_next_fight": "no",
+   "reports_his_health": "no"
+  },
+  "changed": [
+   "reports_his_health"
+  ],
+  "evidence": "\"MMA Fighting reports that Topuria suffered extensive facial injuries in the bout but did not require surgery\" is a recap of June, not the article's news; the news is the video (\"Character doesn't show up when everything's going your way\"); \"No timetable has been set\" and the rematch line are closing background",
+  "confidence": "medium"
+ },
+ {
+  "id": "641",
+  "main_claim": "DraftKings best bets for UFC Paris; the writer backs Donchenko to finish Soriano.",
+  "answers": {
+   "fact": "no_fact",
+   "firmness": "none",
+   "reports_his_result": "no",
+   "reports_his_next_fight": "no",
+   "reports_his_health": "no"
+  },
+  "changed": [
+   "fact",
+   "firmness",
+   "reports_his_next_fight"
+  ],
+  "evidence": "\"I'm backing him to win by KO/TKO/DQ or submission at +100\" — a pick; booking as premise",
+  "confidence": "high"
+ },
+ {
+  "id": "672",
+  "main_claim": "Donchenko says a finish of Soriano at UFC Paris should put him in the top 15, and sizes up his opponent.",
+  "answers": {
+   "fact": "no_fact",
+   "firmness": "none",
+   "reports_his_result": "no",
+   "reports_his_next_fight": "no",
+   "reports_his_health": "no"
+  },
+  "changed": [
+   "reports_his_next_fight"
+  ],
+  "evidence": "\"Donchenko prepares to take on Punahele Soriano at UFC Paris on Saturday\" is the premise; \"If not, definitely we will have someone from top 15 next\" is his guess, not news of his next fight",
+  "confidence": "high"
+ },
+ {
+  "id": "673",
+  "main_claim": "MMA Junkie prediction and pick for Donchenko vs Soriano; the analyst picks Soriano by KO.",
+  "answers": {
+   "fact": "no_fact",
+   "firmness": "none",
+   "reports_his_result": "no",
+   "reports_his_next_fight": "no",
+   "reports_his_health": "no"
+  },
+  "changed": [
+   "reports_his_next_fight"
+  ],
+  "evidence": "\"I'll officially pick Soriano to score the upset with a knockout in Round 2\" — a pick; \"meet on the UFC Fight Night 287 main card Saturday\" is the booking as premise",
+  "confidence": "high"
+ }
+]

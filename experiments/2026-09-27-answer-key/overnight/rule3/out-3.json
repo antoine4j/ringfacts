@@ -1,0 +1,361 @@
+[
+ {
+  "id": "681",
+  "main_claim": "Dan Tom (MMA Junkie) picks Soriano to upset Donchenko by KO in round 2 at UFC Fight Night 287.",
+  "answers": {
+   "fact": "no_fact",
+   "firmness": "none",
+   "reports_his_result": "no",
+   "reports_his_next_fight": "no",
+   "reports_his_health": "no"
+  },
+  "changed": [
+   "reports_his_next_fight"
+  ],
+  "evidence": "\"Check out this quick breakdown of the matchup\" ... \"I'll officially pick Soriano to score the upset with a knockout in Round 2\" — the booking is the premise of a pick, not news.",
+  "confidence": "high"
+ },
+ {
+  "id": "683",
+  "main_claim": "Results page: Donchenko def. Soriano via unanimous decision (30-27 x2, 29-28) at UFC Paris.",
+  "answers": {
+   "fact": "result",
+   "firmness": "official_or_done",
+   "reports_his_result": "yes",
+   "reports_his_next_fight": "no",
+   "reports_his_health": "no"
+  },
+  "changed": [],
+  "evidence": "none changed",
+  "confidence": "high"
+ },
+ {
+  "id": "686",
+  "main_claim": "Donchenko and Soriano held their staredown ahead of their Sept 5 bout at UFC Fight Night 287 in Paris.",
+  "answers": {
+   "fact": "fight_week_event",
+   "firmness": "official_or_done",
+   "reports_his_result": "no",
+   "reports_his_next_fight": "no",
+   "reports_his_health": "no"
+  },
+  "changed": [
+   "reports_his_next_fight"
+  ],
+  "evidence": "\"провели битву поглядів. Очний поєдинок пройде 5 вересня\" — the bout is restated as the premise of a face-off report; June win over Berggren is a recap.",
+  "confidence": "high"
+ },
+ {
+  "id": "687",
+  "main_claim": "Fight-day guide: Donchenko faces Soriano on the Paris main card tonight, walkout around 23:00 Kyiv, on Setanta/Fight Pass.",
+  "answers": {
+   "fact": "fight_week_event",
+   "firmness": "official_or_done",
+   "reports_his_result": "no",
+   "reports_his_next_fight": "no",
+   "reports_his_health": "no"
+  },
+  "changed": [
+   "reports_his_next_fight"
+  ],
+  "evidence": "\"Донченко та Соріано вийдуть в октагон орієнтовно о 23:00\" ... \"Дивитися онлайн LIVE\" — start times and card placement; the booking is the premise, not the news.",
+  "confidence": "high"
+ },
+ {
+  "id": "688",
+  "main_claim": "Fight-day guide (same text as 687): Donchenko faces Soriano on the Paris main card tonight, walkout around 23:00 Kyiv.",
+  "answers": {
+   "fact": "fight_week_event",
+   "firmness": "official_or_done",
+   "reports_his_result": "no",
+   "reports_his_next_fight": "no",
+   "reports_his_health": "no"
+  },
+  "changed": [
+   "reports_his_next_fight"
+  ],
+  "evidence": "\"Донченко та Соріано вийдуть в октагон орієнтовно о 23:00\" ... \"Дивитися онлайн LIVE\" — start times and card placement; the booking is the premise, not the news.",
+  "confidence": "high"
+ },
+ {
+  "id": "690",
+  "main_claim": "Sport.ua previews Donchenko vs Soriano tonight: Soriano is dangerous, Donchenko is favourite and should counter rather than brawl.",
+  "answers": {
+   "fact": "no_fact",
+   "firmness": "none",
+   "reports_his_result": "no",
+   "reports_his_next_fight": "no",
+   "reports_his_health": "no"
+  },
+  "changed": [
+   "fact",
+   "firmness",
+   "reports_his_next_fight"
+  ],
+  "evidence": "\"Соріано може здивувати, хоча й не є фаворитом\" ... \"Що слід робити Донченку\" — analysis and odds; \"5 вересня ... відбудеться турнір\" is the booking restated as the premise of a preview.",
+  "confidence": "high"
+ },
+ {
+  "id": "692",
+  "main_claim": "MMA Fighting card predictions: the writer picks Soriano to hand Donchenko his first KO loss at UFC Paris.",
+  "answers": {
+   "fact": "no_fact",
+   "firmness": "none",
+   "reports_his_result": "no",
+   "reports_his_next_fight": "no",
+   "reports_his_health": "no"
+  },
+  "changed": [
+   "fact",
+   "firmness",
+   "reports_his_next_fight"
+  ],
+  "evidence": "\"The Ultimate Fighter 33 winner Daniil Donchenko fights the streaking Punahele Soriano\" ... \"Pick: Soriano\" — a booking restated as the premise of a pick.",
+  "confidence": "high"
+ },
+ {
+  "id": "693",
+  "main_claim": "Topuria breaks his silence on the Gaethje loss with an essay: the result decides a night, character a life.",
+  "answers": {
+   "fact": "no_fact",
+   "firmness": "none",
+   "reports_his_result": "no",
+   "reports_his_next_fight": "no",
+   "reports_his_health": "no"
+  },
+  "changed": [
+   "fact",
+   "firmness",
+   "reports_his_health"
+  ],
+  "evidence": "\"Topuria habla por primera vez de su derrota\" ... \"deja varias reflexiones\"; the fractures (\"las dos órbitas de los ojos fracturadas, el tabique y el pie rotos\") sit inside a quote about \"aquella noche\" of 14 June, recalled as part of the reflection, not reported as the news. Alternative a careful editor could pick: personal_life (a life lesson).",
+  "confidence": "medium"
+ },
+ {
+  "id": "698",
+  "main_claim": "MMA Fighting card predictions (same text as 692): the writer picks Soriano to KO Donchenko at UFC Paris.",
+  "answers": {
+   "fact": "no_fact",
+   "firmness": "none",
+   "reports_his_result": "no",
+   "reports_his_next_fight": "no",
+   "reports_his_health": "no"
+  },
+  "changed": [
+   "fact",
+   "firmness",
+   "reports_his_next_fight"
+  ],
+  "evidence": "\"Daniil Donchenko fights the streaking Punahele Soriano\" ... \"Pick: Soriano\" — a booking restated as the premise of a pick.",
+  "confidence": "high"
+ },
+ {
+  "id": "709",
+  "main_claim": "DraftKings pick: the writer takes Donchenko to finish Soriano at +100 at today's UFC Fight Night in Paris.",
+  "answers": {
+   "fact": "no_fact",
+   "firmness": "none",
+   "reports_his_result": "no",
+   "reports_his_next_fight": "no",
+   "reports_his_health": "no"
+  },
+  "changed": [
+   "reports_his_next_fight"
+  ],
+  "evidence": "\"Check out my best bet below\" ... \"I'm taking him to win this contest at +100 by KO/TKO/DQ or submission\" — the bout is the premise of a betting pick.",
+  "confidence": "high"
+ },
+ {
+  "id": "714",
+  "main_claim": "UFC.com main-card results: Donchenko beats Soriano by unanimous decision (30-27, 30-27, 29-28) for a third straight UFC win.",
+  "answers": {
+   "fact": "result",
+   "firmness": "official_or_done",
+   "reports_his_result": "yes",
+   "reports_his_next_fight": "no",
+   "reports_his_health": "no"
+  },
+  "changed": [],
+  "evidence": "none changed (the Daniel Rodriguez callout is a wish, not next-fight news)",
+  "confidence": "high"
+ },
+ {
+  "id": "723",
+  "main_claim": "Topuria reflects on his first loss to Gaethje: no excuses, the fire to return is bigger than before.",
+  "answers": {
+   "fact": "no_fact",
+   "firmness": "none",
+   "reports_his_result": "no",
+   "reports_his_next_fight": "no",
+   "reports_his_health": "no"
+  },
+  "changed": [
+   "fact",
+   "firmness",
+   "reports_his_health"
+  ],
+  "evidence": "\"shared a brutally honest post-fight reflection, in which he questioned his own motives\"; the injuries (\"both orbital bones fractured, my septum broken, and my foot broken\") are a line inside his quote about \"that night\", background to the reflection. Alternative: personal_life (a life lesson).",
+  "confidence": "medium"
+ },
+ {
+  "id": "731",
+  "main_claim": "Donchenko beat Soriano by unanimous decision at UFC Fight Night 287 in Paris, his fourth straight win.",
+  "answers": {
+   "fact": "result",
+   "firmness": "official_or_done",
+   "reports_his_result": "yes",
+   "reports_his_next_fight": "no",
+   "reports_his_health": "no"
+  },
+  "changed": [],
+  "evidence": "none changed",
+  "confidence": "high"
+ },
+ {
+  "id": "732",
+  "main_claim": "Donchenko dominated Soriano for a unanimous-decision win at UFC Paris and called out Daniel Rodriguez.",
+  "answers": {
+   "fact": "result",
+   "firmness": "official_or_done",
+   "reports_his_result": "yes",
+   "reports_his_next_fight": "no",
+   "reports_his_health": "no"
+  },
+  "changed": [],
+  "evidence": "none changed (\"called out Daniel Rodriguez\" is a wish, not news of his next fight)",
+  "confidence": "high"
+ },
+ {
+  "id": "733",
+  "main_claim": "Donchenko dropped Soriano with an elbow in round 1 and won a dominant unanimous decision at UFC Paris.",
+  "answers": {
+   "fact": "result",
+   "firmness": "official_or_done",
+   "reports_his_result": "yes",
+   "reports_his_next_fight": "no",
+   "reports_his_health": "no"
+  },
+  "changed": [],
+  "evidence": "none changed",
+  "confidence": "high"
+ },
+ {
+  "id": "735",
+  "main_claim": "Donchenko won a confident unanimous decision over Soriano in Paris, his fourth UFC win.",
+  "answers": {
+   "fact": "result",
+   "firmness": "official_or_done",
+   "reports_his_result": "yes",
+   "reports_his_next_fight": "no",
+   "reports_his_health": "no"
+  },
+  "changed": [],
+  "evidence": "none changed",
+  "confidence": "high"
+ },
+ {
+  "id": "736",
+  "main_claim": "Donchenko defeated Soriano at UFC Fight Night 287 in Paris.",
+  "answers": {
+   "fact": "result",
+   "firmness": "official_or_done",
+   "reports_his_result": "yes",
+   "reports_his_next_fight": "no",
+   "reports_his_health": "no"
+  },
+  "changed": [],
+  "evidence": "none changed",
+  "confidence": "high"
+ },
+ {
+  "id": "737",
+  "main_claim": "MMA Mania live results: Donchenko def. Soriano by unanimous decision (30-27, 30-27, 29-28), with round-by-round play-by-play.",
+  "answers": {
+   "fact": "result",
+   "firmness": "official_or_done",
+   "reports_his_result": "yes",
+   "reports_his_next_fight": "no",
+   "reports_his_health": "no"
+  },
+  "changed": [],
+  "evidence": "none changed",
+  "confidence": "high"
+ },
+ {
+  "id": "740",
+  "main_claim": "UFC.com video page: Donchenko talks with UFC.com after his decision win over Soriano at UFC Paris.",
+  "answers": {
+   "fact": "result",
+   "firmness": "official_or_done",
+   "reports_his_result": "yes",
+   "reports_his_next_fight": "no",
+   "reports_his_health": "no"
+  },
+  "changed": [],
+  "evidence": "none changed; the only claim in the text is the same-day \"Decision Win Over Punahele Soriano\", which I read as today's news rather than background. A careful editor could pick no_fact since nothing he said is in the text.",
+  "confidence": "medium"
+ },
+ {
+  "id": "745",
+  "main_claim": "Fight-day notice: Donchenko meets Soriano tonight on the UFC Fight Night 287 main card in Paris, show starts 23:00 Kyiv.",
+  "answers": {
+   "fact": "fight_week_event",
+   "firmness": "official_or_done",
+   "reports_his_result": "no",
+   "reports_his_next_fight": "no",
+   "reports_his_health": "no"
+  },
+  "changed": [
+   "fact",
+   "reports_his_next_fight"
+  ],
+  "evidence": "\"проведе бій проти Пунахеле Соріано ... який відбудеться 5 вересня\" (published 5 Sept) ... \"Початок шоу заплановано на 23:00\" ... \"стане частиною головного карду\" — the booking is restated on fight day with start time and card placement, no new state of the fight. A careful editor could keep next_fight / yes since the headline is the matchup itself.",
+  "confidence": "low"
+ },
+ {
+  "id": "746",
+  "main_claim": "UFC.com video page: Donchenko talks with Michael Bisping in the Octagon after his unanimous-decision win over Soriano.",
+  "answers": {
+   "fact": "result",
+   "firmness": "official_or_done",
+   "reports_his_result": "yes",
+   "reports_his_next_fight": "no",
+   "reports_his_health": "no"
+  },
+  "changed": [],
+  "evidence": "none changed; the only claim in the text is the same-day \"Unanimous Decision Win Over Punahele Soriano\", read as today's news. A careful editor could pick no_fact since nothing he said is in the text.",
+  "confidence": "medium"
+ },
+ {
+  "id": "747",
+  "main_claim": "Donchenko confidently beat Soriano by unanimous decision at UFC Fight Night 287 in Paris, then called out Daniel Rodriguez.",
+  "answers": {
+   "fact": "result",
+   "firmness": "official_or_done",
+   "reports_his_result": "yes",
+   "reports_his_next_fight": "no",
+   "reports_his_health": "no"
+  },
+  "changed": [],
+  "evidence": "none changed (the Rodriguez callout is a wish; the June Baku win is a recap)",
+  "confidence": "high"
+ },
+ {
+  "id": "755",
+  "main_claim": "Topuria publishes a nine-part essay 'This Is Me' breaking down his first career loss to Gaethje and his journey.",
+  "answers": {
+   "fact": "no_fact",
+   "firmness": "none",
+   "reports_his_result": "no",
+   "reports_his_next_fight": "no",
+   "reports_his_health": "no"
+  },
+  "changed": [
+   "fact",
+   "firmness",
+   "reports_his_health"
+  ],
+  "evidence": "\"Breaks Down First Career Loss ... in Deeply Personal 9-Part Essay\"; \"He also revealed that he suffered fractures to both orbital bones, a broken septum, and a broken foot\" is one line in a chapter summary of a fight \"more than two months\" ago, background to the essay; \"I do not know what my next fight will look like\" is no state of a next fight. Alternative: personal_life (childhood, family, life lesson).",
+  "confidence": "medium"
+ }
+]

@@ -1,0 +1,350 @@
+[
+ {
+  "id": "817",
+  "main_claim": "Donchenko beat Soriano by unanimous decision (30-27, 30-27, 29-28) at UFC Fight Night 287 in Paris.",
+  "answers": {
+   "fact": "result",
+   "firmness": "official_or_done",
+   "reports_his_result": "yes",
+   "reports_his_next_fight": "no",
+   "reports_his_health": "no"
+  },
+  "changed": [],
+  "evidence": "none changed",
+  "confidence": "high"
+ },
+ {
+  "id": "820",
+  "main_claim": "A December Pimblett vs Topuria fight is rumoured (Tim Welch), but Pimblett says the UFC has not approached him about it.",
+  "answers": {
+   "fact": "next_fight",
+   "firmness": "rumour",
+   "reports_his_result": "no",
+   "reports_his_next_fight": "yes",
+   "reports_his_health": "no"
+  },
+  "changed": [],
+  "evidence": "none changed",
+  "confidence": "medium"
+ },
+ {
+  "id": "823",
+  "main_claim": "Donchenko beat Soriano by unanimous decision for his fourth straight UFC win.",
+  "answers": {
+   "fact": "result",
+   "firmness": "official_or_done",
+   "reports_his_result": "yes",
+   "reports_his_next_fight": "no",
+   "reports_his_health": "no"
+  },
+  "changed": [],
+  "evidence": "none changed",
+  "confidence": "high"
+ },
+ {
+  "id": "826",
+  "main_claim": "Donchenko beat Soriano by unanimous decision at UFC Fight Night 287, his fourth straight UFC win.",
+  "answers": {
+   "fact": "result",
+   "firmness": "official_or_done",
+   "reports_his_result": "yes",
+   "reports_his_next_fight": "no",
+   "reports_his_health": "no"
+  },
+  "changed": [],
+  "evidence": "none changed",
+  "confidence": "high"
+ },
+ {
+  "id": "828",
+  "main_claim": "Jon Anik says the UFC is holding internal conversations about a Gaethje vs Topuria rematch.",
+  "answers": {
+   "fact": "next_fight",
+   "firmness": "rumour",
+   "reports_his_result": "no",
+   "reports_his_next_fight": "yes",
+   "reports_his_health": "no"
+  },
+  "changed": [],
+  "evidence": "none changed",
+  "confidence": "high"
+ },
+ {
+  "id": "829",
+  "main_claim": "Donchenko beat Soriano by unanimous decision at UFC Fight Night 287 in Paris.",
+  "answers": {
+   "fact": "result",
+   "firmness": "official_or_done",
+   "reports_his_result": "yes",
+   "reports_his_next_fight": "no",
+   "reports_his_health": "no"
+  },
+  "changed": [],
+  "evidence": "none changed",
+  "confidence": "high"
+ },
+ {
+  "id": "833",
+  "main_claim": "Jon Anik suggests the UFC is likely to pursue a Gaethje vs Topuria rematch, citing internal conversations.",
+  "answers": {
+   "fact": "next_fight",
+   "firmness": "rumour",
+   "reports_his_result": "no",
+   "reports_his_next_fight": "yes",
+   "reports_his_health": "no"
+  },
+  "changed": [],
+  "evidence": "none changed",
+  "confidence": "medium"
+ },
+ {
+  "id": "838",
+  "main_claim": "Pimblett says he has had no call about the rumoured Topuria fight at UFC 335 on December 12.",
+  "answers": {
+   "fact": "next_fight",
+   "firmness": "rumour",
+   "reports_his_result": "no",
+   "reports_his_next_fight": "yes",
+   "reports_his_health": "no"
+  },
+  "changed": [],
+  "evidence": "none changed",
+  "confidence": "medium"
+ },
+ {
+  "id": "843",
+  "main_claim": "Pimblett would welcome a Topuria fight but has had no talks; the article's news is Pimblett's own December timeline and hit list.",
+  "answers": {
+   "fact": "no_fact",
+   "firmness": "none",
+   "reports_his_result": "no",
+   "reports_his_next_fight": "no",
+   "reports_his_health": "no"
+  },
+  "changed": [
+   "reports_his_next_fight"
+  ],
+  "evidence": "'I'd love to smash his head in' is a wish; 'Nothing yet. No one's spoke to me about it' is the absence of talks, not a booking rumoured or denied; the Gaethje rematch 'chatter' is one passing line. Fact is already no_fact, so under rule 3 next_fight must be no.",
+  "confidence": "medium"
+ },
+ {
+  "id": "850",
+  "main_claim": "Tim Welch says there are rumours of a Pimblett vs Topuria fight in December.",
+  "answers": {
+   "fact": "next_fight",
+   "firmness": "rumour",
+   "reports_his_result": "no",
+   "reports_his_next_fight": "yes",
+   "reports_his_health": "no"
+  },
+  "changed": [],
+  "evidence": "none changed",
+  "confidence": "high"
+ },
+ {
+  "id": "851",
+  "main_claim": "Donchenko beat Soriano by unanimous decision at UFC Paris and called for Daniel Rodriguez next.",
+  "answers": {
+   "fact": "result",
+   "firmness": "official_or_done",
+   "reports_his_result": "yes",
+   "reports_his_next_fight": "no",
+   "reports_his_health": "no"
+  },
+  "changed": [],
+  "evidence": "none changed",
+  "confidence": "medium"
+ },
+ {
+  "id": "852",
+  "main_claim": "Donchenko gives his assessment of the Soriano win and says he hopes the UFC gives him a good next fight.",
+  "answers": {
+   "fact": "no_fact",
+   "firmness": "none",
+   "reports_his_result": "no",
+   "reports_his_next_fight": "no",
+   "reports_his_health": "no"
+  },
+  "changed": [
+   "fact",
+   "firmness",
+   "reports_his_result"
+  ],
+  "evidence": "The article opens with 'оцінив перемогу' (assessed the win) and carries only his quotes; the result itself is recapped with 'Нагадаємо, перемога над Соріано стала...' (let us recall), the rule-3 marker for background. His next fight is a hope: 'Сподіваюся, що мені дадуть гарний бій'.",
+  "confidence": "low"
+ },
+ {
+  "id": "862",
+  "main_claim": "Jon Anik says there are internal UFC conversations about an immediate Gaethje vs Topuria rematch.",
+  "answers": {
+   "fact": "next_fight",
+   "firmness": "rumour",
+   "reports_his_result": "no",
+   "reports_his_next_fight": "yes",
+   "reports_his_health": "no"
+  },
+  "changed": [],
+  "evidence": "none changed",
+  "confidence": "high"
+ },
+ {
+  "id": "871",
+  "main_claim": "With a Topuria vs Pimblett return fight rumoured, Pimblett says he would love it but no one has spoken to him about it.",
+  "answers": {
+   "fact": "next_fight",
+   "firmness": "rumour",
+   "reports_his_result": "no",
+   "reports_his_next_fight": "yes",
+   "reports_his_health": "no"
+  },
+  "changed": [],
+  "evidence": "none changed",
+  "confidence": "medium"
+ },
+ {
+  "id": "879",
+  "main_claim": "Matt Brown believes an immediate Gaethje rematch could permanently damage Topuria and he should take a tune-up fight first.",
+  "answers": {
+   "fact": "no_fact",
+   "firmness": "none",
+   "reports_his_result": "no",
+   "reports_his_next_fight": "no",
+   "reports_his_health": "no"
+  },
+  "changed": [
+   "fact",
+   "firmness",
+   "reports_his_next_fight"
+  ],
+  "evidence": "'Matt Brown believes an immediate rematch ... could permanently damage' is the article; the Anik line ('recently said the promotion is exploring a second fight') is the premise he reacts to, and the article itself closes 'The rematch discussion remains speculative'. Injuries are 'reportedly suffered' background.",
+  "confidence": "high"
+ },
+ {
+  "id": "883",
+  "main_claim": "It has emerged (via Jon Anik) that the UFC has held internal conversations about an immediate Topuria vs Gaethje rematch, and fans are angry about it.",
+  "answers": {
+   "fact": "next_fight",
+   "firmness": "rumour",
+   "reports_his_result": "no",
+   "reports_his_next_fight": "yes",
+   "reports_his_health": "no"
+  },
+  "changed": [],
+  "evidence": "none changed",
+  "confidence": "medium"
+ },
+ {
+  "id": "887",
+  "main_claim": "Josh Hokit says Topuria (and Pereira) do not deserve a title shot in their next fight.",
+  "answers": {
+   "fact": "no_fact",
+   "firmness": "none",
+   "reports_his_result": "no",
+   "reports_his_next_fight": "no",
+   "reports_his_health": "no"
+  },
+  "changed": [
+   "reports_his_next_fight"
+  ],
+  "evidence": "'neither Ilia Topuria nor Alex Pereira deserve a ... title shot in their next fight' is opinion; the Anik 'internal conversations' quote sits in the closing paragraph (the #1002 pattern). Fact is already no_fact, so next_fight must be no.",
+  "confidence": "high"
+ },
+ {
+  "id": "896",
+  "main_claim": "Rumours circulate of a Topuria return in December, most likely against Pimblett, after his letter to his son.",
+  "answers": {
+   "fact": "next_fight",
+   "firmness": "rumour",
+   "reports_his_result": "no",
+   "reports_his_next_fight": "yes",
+   "reports_his_health": "no"
+  },
+  "changed": [],
+  "evidence": "none changed",
+  "confidence": "medium"
+ },
+ {
+  "id": "901",
+  "main_claim": "Matt Brown says the UFC risks ruining Topuria's life by making an immediate Gaethje rematch; he should fight someone like Moicano first.",
+  "answers": {
+   "fact": "no_fact",
+   "firmness": "none",
+   "reports_his_result": "no",
+   "reports_his_next_fight": "no",
+   "reports_his_health": "no"
+  },
+  "changed": [
+   "fact",
+   "firmness",
+   "reports_his_next_fight"
+  ],
+  "evidence": "'Matt Brown thinks the UFC could be risking Ilia Topuria's career' is the article; 'rumors have surfaced that the Spaniard could be set for an immediate rematch' is the premise, and the Pimblett link in the last paragraph is a wish ('a fight Pimblett still wants'). Broken orbitals are background.",
+  "confidence": "high"
+ },
+ {
+  "id": "905",
+  "main_claim": "Matt Brown believes Topuria should take a tune-up bout before any Gaethje rematch.",
+  "answers": {
+   "fact": "no_fact",
+   "firmness": "none",
+   "reports_his_result": "no",
+   "reports_his_next_fight": "no",
+   "reports_his_health": "no"
+  },
+  "changed": [
+   "reports_his_next_fight"
+  ],
+  "evidence": "'Brown believes Ilia Topuria should take a tuneup bout' is the article; 'Jon Anik recently indicated the UFC is weighing a potential ... sequel' is the premise he reacts to. Fact is already no_fact, so under rule 3 next_fight must be no.",
+  "confidence": "high"
+ },
+ {
+  "id": "913",
+  "main_claim": "Analysis: Topuria's options are a Gaethje rematch or finally fighting Pimblett, who wants it but denies any negotiations.",
+  "answers": {
+   "fact": "no_fact",
+   "firmness": "none",
+   "reports_his_result": "no",
+   "reports_his_next_fight": "no",
+   "reports_his_health": "no"
+  },
+  "changed": [
+   "reports_his_next_fight"
+  ],
+  "evidence": "'muchas han sido las conversaciones de los corrillos' frames it as chatter; 'ha negado tajantemente que esté en negociaciones' is absence of talks plus a wish ('su deseo es'); 'lo más lógico sería verle de regreso ya el próximo año' is the writer's guess at his timing (#462 pattern). Fact is already no_fact, so next_fight must be no.",
+  "confidence": "medium"
+ },
+ {
+  "id": "917",
+  "main_claim": "Joe Rogan warns Topuria not to rush his return after the damage he took against Gaethje, citing Volkanovski.",
+  "answers": {
+   "fact": "no_fact",
+   "firmness": "none",
+   "reports_his_result": "no",
+   "reports_his_next_fight": "no",
+   "reports_his_health": "no"
+  },
+  "changed": [
+   "fact",
+   "firmness",
+   "reports_his_health"
+  ],
+  "evidence": "'Joe Rogan believes a rushed return ... could end badly' is the article; the injuries ('two broken orbital bones, a shattered septum, and a broken foot') are recapped from his essay as the premise for Rogan's opinion (#856 pattern), and 'he probably needs like six months before he's even sparring again' is Rogan's guess at timing (#462 pattern).",
+  "confidence": "medium"
+ },
+ {
+  "id": "921",
+  "main_claim": "Pimblett says he would be willing to fight Topuria next but nobody has spoken to him about it.",
+  "answers": {
+   "fact": "no_fact",
+   "firmness": "none",
+   "reports_his_result": "no",
+   "reports_his_next_fight": "no",
+   "reports_his_health": "no"
+  },
+  "changed": [
+   "reports_his_next_fight"
+  ],
+  "evidence": "'would be more than willing to fight Ilia Topuria next' and 'I'd love to smash his head in' are a wish; 'Nothing yet. No one's spoke to me about it' is the absence of talks; the Anik 'internal talks' line is the closing sentence (#1002 pattern). Fact is already no_fact, so next_fight must be no.",
+  "confidence": "medium"
+ }
+]

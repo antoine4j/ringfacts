@@ -1,0 +1,304 @@
+[
+ {
+  "id": "926",
+  "main_claim": "Joe Rogan's opinion that Topuria should not rush his return after the Gaethje loss.",
+  "answers": {
+   "fact": "no_fact",
+   "firmness": "none",
+   "reports_his_result": "no",
+   "reports_his_next_fight": "no",
+   "reports_his_health": "no"
+  },
+  "changed": [
+   "reports_his_next_fight"
+  ],
+  "evidence": "Main claim is 'Rogan has urged ... not to repeat the same mistake' (opinion). The June loss and injuries are recap ('after the Spaniard suffered two fractured orbital bones'); the rematch talk is recalled from an earlier report ('Commentator Jon Anik recently revealed ... internal discussions', which Anik himself calls 'non-informed speculation'): background, so next fight is no.",
+  "confidence": "medium"
+ },
+ {
+  "id": "958",
+  "main_claim": "Dana White says Topuria is ready to fight and the UFC is ready for him, with Gaethje or Pimblett as the options.",
+  "answers": {
+   "fact": "next_fight",
+   "firmness": "official_or_done",
+   "reports_his_result": "no",
+   "reports_his_next_fight": "yes",
+   "reports_his_health": "no"
+  },
+  "changed": [],
+  "evidence": "none changed",
+  "confidence": "high"
+ },
+ {
+  "id": "972",
+  "main_claim": "Dana White says Topuria is ready to fight; Gaethje rematch or Pimblett both 'sound good'.",
+  "answers": {
+   "fact": "next_fight",
+   "firmness": "official_or_done",
+   "reports_his_result": "no",
+   "reports_his_next_fight": "yes",
+   "reports_his_health": "no"
+  },
+  "changed": [],
+  "evidence": "none changed",
+  "confidence": "high"
+ },
+ {
+  "id": "991",
+  "main_claim": "Dana White names Gaethje and Pimblett as the two options for Topuria's next fight, saying he is ready to fight.",
+  "answers": {
+   "fact": "next_fight",
+   "firmness": "official_or_done",
+   "reports_his_result": "no",
+   "reports_his_next_fight": "yes",
+   "reports_his_health": "no"
+  },
+  "changed": [],
+  "evidence": "none changed",
+  "confidence": "high"
+ },
+ {
+  "id": "998",
+  "main_claim": "Dana White confirms Topuria is ready to fight again ('Topuria está listo para pelea. Nosotros estamos listos para él').",
+  "answers": {
+   "fact": "next_fight",
+   "firmness": "official_or_done",
+   "reports_his_result": "no",
+   "reports_his_next_fight": "yes",
+   "reports_his_health": "no"
+  },
+  "changed": [
+   "reports_his_health"
+  ],
+  "evidence": "Health: 'parece que el Matador está recuperado' and 'Con Topuria ya recuperado' are the article's gloss on White's 'listo para pelear'; the fracture is recapped ('terminó con una doble fractura orbital'). The news is when he can fight, not a health update: health no.",
+  "confidence": "medium"
+ },
+ {
+  "id": "1002",
+  "main_claim": "Alexandre Pantoja sends Topuria a message of support after his public reappearance.",
+  "answers": {
+   "fact": "no_fact",
+   "firmness": "none",
+   "reports_his_result": "no",
+   "reports_his_next_fight": "no",
+   "reports_his_health": "no"
+  },
+  "changed": [
+   "fact",
+   "firmness",
+   "reports_his_next_fight"
+  ],
+  "evidence": "Main claim is Pantoja's message ('¡Todavía tenemos mucho por conquistar!'). The rematch is a closing-line rumour ('una posible revancha frente a Gaethje emergió ... Jon Anik') and recovery is background ('continúa inmerso en su recuperación'): no_fact, firmness none, next fight no. Matches the guide's worked example for #1002.",
+  "confidence": "high"
+ },
+ {
+  "id": "1008",
+  "main_claim": "Dana White says Topuria is ready to fight and likes both Gaethje and Pimblett as the next fight.",
+  "answers": {
+   "fact": "next_fight",
+   "firmness": "official_or_done",
+   "reports_his_result": "no",
+   "reports_his_next_fight": "yes",
+   "reports_his_health": "no"
+  },
+  "changed": [],
+  "evidence": "none changed",
+  "confidence": "high"
+ },
+ {
+  "id": "1016",
+  "main_claim": "Eddie Alvarez's opinion that an immediate Gaethje rematch would be a mistake.",
+  "answers": {
+   "fact": "no_fact",
+   "firmness": "none",
+   "reports_his_result": "no",
+   "reports_his_next_fight": "no",
+   "reports_his_health": "no"
+  },
+  "changed": [
+   "reports_his_next_fight"
+  ],
+  "evidence": "Main claim is 'Alvarez believes an immediate rematch ... would be a mistake' (opinion). The rematch is the premise ('recent reports suggest the UFC is considering running the fight back') and 'the timing of any rematch remains unclear': background, next fight no.",
+  "confidence": "high"
+ },
+ {
+  "id": "1020",
+  "main_claim": "Dana White confirms Topuria is ready to fight, with a Gaethje rematch or Pimblett on the table.",
+  "answers": {
+   "fact": "next_fight",
+   "firmness": "official_or_done",
+   "reports_his_result": "no",
+   "reports_his_next_fight": "yes",
+   "reports_his_health": "no"
+  },
+  "changed": [
+   "reports_his_health"
+  ],
+  "evidence": "Health: the injuries appear only in the closing paragraph as the reason a 2026 return looks rushed ('está completando las recuperaciones de sus fracturas orbitales ... Volver a finales de este año ... suena muy precipitado'), which is the writer's timing guess plus recap, not a health update: health no.",
+  "confidence": "medium"
+ },
+ {
+  "id": "1031",
+  "main_claim": "Dana White confirms Topuria is ready to return; no date or opponent yet, Gaethje or Pimblett the options.",
+  "answers": {
+   "fact": "next_fight",
+   "firmness": "official_or_done",
+   "reports_his_result": "no",
+   "reports_his_next_fight": "yes",
+   "reports_his_health": "no"
+  },
+  "changed": [],
+  "evidence": "none changed",
+  "confidence": "high"
+ },
+ {
+  "id": "1036",
+  "main_claim": "Dana White says Topuria is ready to fight but no decision yet between Gaethje and Pimblett.",
+  "answers": {
+   "fact": "next_fight",
+   "firmness": "official_or_done",
+   "reports_his_result": "no",
+   "reports_his_next_fight": "yes",
+   "reports_his_health": "no"
+  },
+  "changed": [],
+  "evidence": "none changed",
+  "confidence": "high"
+ },
+ {
+  "id": "1045",
+  "main_claim": "A podcast episode page: the hosts react to Topuria being 'ready to fight'.",
+  "answers": {
+   "fact": "no_fact",
+   "firmness": "none",
+   "reports_his_result": "no",
+   "reports_his_next_fight": "no",
+   "reports_his_health": "no"
+  },
+  "changed": [
+   "fact",
+   "firmness",
+   "reports_his_next_fight"
+  ],
+  "evidence": "The page's own content is 'The Boys in the Back react to Ilia Topuria being \"ready to fight\"' plus previews and picks; the readiness news is the premise of a reaction show, in quotation marks, with no source or detail of its own: no_fact, next fight no.",
+  "confidence": "low"
+ },
+ {
+  "id": "1058",
+  "main_claim": "Dana White confirms Topuria is ready to fight and weighs Gaethje or Pimblett as his return fight.",
+  "answers": {
+   "fact": "next_fight",
+   "firmness": "official_or_done",
+   "reports_his_result": "no",
+   "reports_his_next_fight": "yes",
+   "reports_his_health": "no"
+  },
+  "changed": [
+   "reports_his_health"
+  ],
+  "evidence": "Health: 'ya cuenta con el alta' and 'ya se recuperó de las fracturas orbitales' (the latter from an embedded tweet) are the article's reading of White's 'está listo para pelear'; the news is that he can fight again, and the early-2027 line is the writer's guess at timing. Under rule 3 the health question stays on the main claim: health no.",
+  "confidence": "medium"
+ },
+ {
+  "id": "1066",
+  "main_claim": "Fans react angrily to Dana White hinting Topuria might face Pimblett next.",
+  "answers": {
+   "fact": "no_fact",
+   "firmness": "none",
+   "reports_his_result": "no",
+   "reports_his_next_fight": "no",
+   "reports_his_health": "no"
+  },
+  "changed": [
+   "fact",
+   "firmness",
+   "reports_his_next_fight"
+  ],
+  "evidence": "Main claim is fan reaction ('fans online didn't waste time putting forth their opinions') to a hint reported second-hand ('Dana White shed some light recently. He hinted'); the piece closes 'no set date for Topuria's return has been announced'. The hint is the premise of a reaction piece, so no_fact, firmness none, next fight no.",
+  "confidence": "low"
+ },
+ {
+  "id": "1076",
+  "main_claim": "Dana White says Topuria is ready to return and the UFC is deciding between a Gaethje rematch and Pimblett for his next fight.",
+  "answers": {
+   "fact": "next_fight",
+   "firmness": "official_or_done",
+   "reports_his_result": "no",
+   "reports_his_next_fight": "yes",
+   "reports_his_health": "no"
+  },
+  "changed": [],
+  "evidence": "none changed",
+  "confidence": "medium"
+ },
+ {
+  "id": "1089",
+  "main_claim": "Dana White says Gaethje has money left to make and should not retire; Topuria's readiness is the frame.",
+  "answers": {
+   "fact": "no_fact",
+   "firmness": "none",
+   "reports_his_result": "no",
+   "reports_his_next_fight": "no",
+   "reports_his_health": "no"
+  },
+  "changed": [
+   "fact",
+   "firmness",
+   "reports_his_next_fight"
+  ],
+  "evidence": "The article's news is White on Gaethje's retirement ('White was asked about Gaethje's potential retirement'; 'money is left on the table for him'). About Topuria it only restates the earlier line ('Ilia Topuria is ready to fight, but is Justin Gaethje?'; 'The big talk is who [Topuria's] going to fight') as the premise. No new fact about him: no_fact, next fight no.",
+  "confidence": "low"
+ },
+ {
+  "id": "1097",
+  "main_claim": "Belal Muhammad's opinion that Topuria should fight Pimblett rather than get an immediate Gaethje rematch.",
+  "answers": {
+   "fact": "no_fact",
+   "firmness": "none",
+   "reports_his_result": "no",
+   "reports_his_next_fight": "no",
+   "reports_his_health": "no"
+  },
+  "changed": [
+   "reports_his_next_fight"
+  ],
+  "evidence": "Main claim is 'Muhammad does not think Ilia Topuria should get an immediate rematch' (opinion). White's 'ready to return' and Gaethje's 2027 plan are recalled as context ('He recently said Topuria is ready to return'; 'Reuters reported earlier this month'): background, next fight no.",
+  "confidence": "high"
+ },
+ {
+  "id": "1101",
+  "main_claim": "Topuria says, in a 1Win interview, that he no longer ties his happiness to achieving goals and lives in the present.",
+  "answers": {
+   "fact": "personal_life",
+   "firmness": "official_or_done",
+   "reports_his_result": "no",
+   "reports_his_next_fight": "no",
+   "reports_his_health": "no"
+  },
+  "changed": [
+   "fact",
+   "reports_his_next_fight"
+  ],
+  "evidence": "Main claim is his own words on mindset ('I don't base my happiness on any goals anymore'), a life lesson, so personal_life at official_or_done (he says it). The White 'ready to fight' section restates earlier news and the Pimblett line is a rumour with 'nothing has been confirmed yet': background, next fight no.",
+  "confidence": "medium"
+ },
+ {
+  "id": "1172",
+  "main_claim": "Donchenko, in a long interview ten days after beating Soriano in Paris, talks about a possible Usman fight, Ukrainians in the UFC and how the fight went.",
+  "answers": {
+   "fact": "no_fact",
+   "firmness": "none",
+   "reports_his_result": "no",
+   "reports_his_next_fight": "no",
+   "reports_his_health": "no"
+  },
+  "changed": [
+   "fact",
+   "firmness",
+   "reports_his_result",
+   "reports_his_health"
+  ],
+  "evidence": "The headline and intro name the claim: '«Я не гірший за Усмана». Донченко – про бій з Камару та українців в UFC' and 'поміркував про можливий поєдинок з Камару Усманом' (his thoughts, a callout). The 5 September win is the premise ('Велике інтерв'ю ... після тріумфу в Парижі') so result no; the arm infection is recalled from a month before the fight ('у мене була інфекція 4 серпня', healed, interviewer had seen it on Instagram) so health no; fact no_fact, firmness none.",
+  "confidence": "low"
+ }
+]

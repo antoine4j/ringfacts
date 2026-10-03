@@ -1,0 +1,361 @@
+[
+ {
+  "id": "16",
+  "main_claim": "Donchenko's next fight is set: 5 September vs Punahele Soriano at UFC Fight Night Paris.",
+  "answers": {
+   "fact": "next_fight",
+   "firmness": "official_or_done",
+   "reports_his_result": "no",
+   "reports_his_next_fight": "yes",
+   "reports_his_health": "no"
+  },
+  "changed": [],
+  "evidence": "none changed",
+  "confidence": "high"
+ },
+ {
+  "id": "17",
+  "main_claim": "Donchenko's next fight is set: 5 September vs Punahele Soriano at UFC Fight Night Paris.",
+  "answers": {
+   "fact": "next_fight",
+   "firmness": "official_or_done",
+   "reports_his_result": "no",
+   "reports_his_next_fight": "yes",
+   "reports_his_health": "no"
+  },
+  "changed": [],
+  "evidence": "none changed",
+  "confidence": "high"
+ },
+ {
+  "id": "18",
+  "main_claim": "Donchenko's next fight is set: 5 September vs Punahele Soriano at UFC Fight Night Paris.",
+  "answers": {
+   "fact": "next_fight",
+   "firmness": "official_or_done",
+   "reports_his_result": "no",
+   "reports_his_next_fight": "yes",
+   "reports_his_health": "no"
+  },
+  "changed": [],
+  "evidence": "none changed",
+  "confidence": "high"
+ },
+ {
+  "id": "44",
+  "main_claim": "Topuria's first statement after the loss: he says he lost vision in both eyes during the fight, praises Gaethje, plans to heal and seek a rematch.",
+  "answers": {
+   "fact": "health",
+   "firmness": "official_or_done",
+   "reports_his_result": "no",
+   "reports_his_next_fight": "no",
+   "reports_his_health": "yes"
+  },
+  "changed": [
+   "reports_his_result"
+  ],
+  "evidence": "Headline 'releases first statement since UFC White House defeat'; the loss is the premise ('praised Justin Gaethje after losing the lightweight crown... on Sunday'), the news is the statement and the vision loss he 'detailed on Instagram'.",
+  "confidence": "medium"
+ },
+ {
+  "id": "129",
+  "main_claim": "Topuria's manager Malki Kawa publicly demands an immediate rematch with Gaethje: 'Nosotros queremos esta pelea'.",
+  "answers": {
+   "fact": "next_fight",
+   "firmness": "wish",
+   "reports_his_result": "no",
+   "reports_his_next_fight": "yes",
+   "reports_his_health": "yes"
+  },
+  "changed": [],
+  "evidence": "none changed",
+  "confidence": "medium"
+ },
+ {
+  "id": "148",
+  "main_claim": "Makhachev's opinion on Topuria after the loss: 'Si se centra, puede ser campeon otra vez'.",
+  "answers": {
+   "fact": "no_fact",
+   "firmness": "none",
+   "reports_his_result": "no",
+   "reports_his_next_fight": "no",
+   "reports_his_health": "no"
+  },
+  "changed": [
+   "fact",
+   "firmness",
+   "reports_his_next_fight",
+   "reports_his_health"
+  ],
+  "evidence": "Headline and the whole body are Makhachev's advice ('Si se centra, puede ser campeon otra vez', 'esa pelea... le ha cambiado la vida'); the trainer's recovery note ('poder de recuperacion increible', 'se descarta el regreso en 2026') is a short tail under its own subhead, mentioned on the way.",
+  "confidence": "medium"
+ },
+ {
+  "id": "152",
+  "main_claim": "His trainer Jesus Gallo says Topuria could physically be ready by December but the smart return is spring 2027; recovery is going remarkably well.",
+  "answers": {
+   "fact": "next_fight",
+   "firmness": "reported",
+   "reports_his_result": "no",
+   "reports_his_next_fight": "yes",
+   "reports_his_health": "yes"
+  },
+  "changed": [],
+  "evidence": "none changed",
+  "confidence": "high"
+ },
+ {
+  "id": "203",
+  "main_claim": "Donchenko says he will give 50% of his Performance of the Night bonus to a church in his home town Korosten.",
+  "answers": {
+   "fact": "personal_life",
+   "firmness": "official_or_done",
+   "reports_his_result": "no",
+   "reports_his_next_fight": "no",
+   "reports_his_health": "yes"
+  },
+  "changed": [
+   "reports_his_next_fight"
+  ],
+  "evidence": "'5 вересня Донченко проведе поєдинок у Парижі проти американця Пунахеле Соріано' is a closing boilerplate line restating a known booking, not the article's news. Health stays yes: he reveals for the first time that he 'травмував обидві ноги... декілька днів ходити не міг'.",
+  "confidence": "high"
+ },
+ {
+  "id": "208",
+  "main_claim": "Donchenko recounts what he told his grandmother, who opposes his MMA career, after his win.",
+  "answers": {
+   "fact": "personal_life",
+   "firmness": "official_or_done",
+   "reports_his_result": "no",
+   "reports_his_next_fight": "no",
+   "reports_his_health": "no"
+  },
+  "changed": [
+   "reports_his_next_fight"
+  ],
+  "evidence": "'5 вересня Донченко проведе поєдинок у Парижі проти американця Пунахеле Соріано' sits in the closing boilerplate after the quotes; a booking restated, not news.",
+  "confidence": "high"
+ },
+ {
+  "id": "300",
+  "main_claim": "Donchenko says he earned $20-50k for the TUF final and asked Dana White to sign his friend Dmytro instead of paying him.",
+  "answers": {
+   "fact": "personal_life",
+   "firmness": "official_or_done",
+   "reports_his_result": "no",
+   "reports_his_next_fight": "no",
+   "reports_his_health": "no"
+  },
+  "changed": [
+   "reports_his_next_fight"
+  ],
+  "evidence": "'Зазначимо, що 5 вересня Даниїл Донченко проведе бій проти американця Пунахеле Соріано' is a closing note restating the booking; the article's news is the fee and the request to White.",
+  "confidence": "high"
+ },
+ {
+  "id": "301",
+  "main_claim": "Donchenko's opinion that UFC avoids Ukrainian-vs-Russian bouts to avoid hate, and that he is ready to fight Russians.",
+  "answers": {
+   "fact": "no_fact",
+   "firmness": "none",
+   "reports_his_result": "no",
+   "reports_his_next_fight": "no",
+   "reports_his_health": "no"
+  },
+  "changed": [
+   "reports_his_next_fight"
+  ],
+  "evidence": "Fact is no_fact (talk only), so next fight is no; '5 вересня Донченко проведе поєдинок у Парижі' is closing boilerplate.",
+  "confidence": "high"
+ },
+ {
+  "id": "305",
+  "main_claim": "Topuria's bond with his Alicante neighbourhood and the Climent Club gym where he grew up as a fighter, in his own words.",
+  "answers": {
+   "fact": "personal_life",
+   "firmness": "official_or_done",
+   "reports_his_result": "no",
+   "reports_his_next_fight": "no",
+   "reports_his_health": "no"
+  },
+  "changed": [
+   "reports_his_next_fight"
+  ],
+  "evidence": "The opening 'Su preparador fisico senala que fisicamente podria estar listo a finales de ano... apunta a principios del proximo ano' recalls the trainer's earlier statement as premise; the article's news is Alicante ('Todo lo que tengo en mi vida... esta aqui').",
+  "confidence": "high"
+ },
+ {
+  "id": "321",
+  "main_claim": "Donchenko tells how his career began: judo at 11, dropped out of KPI after a year, moved to Thailand to train.",
+  "answers": {
+   "fact": "personal_life",
+   "firmness": "official_or_done",
+   "reports_his_result": "no",
+   "reports_his_next_fight": "no",
+   "reports_his_health": "no"
+  },
+  "changed": [
+   "reports_his_next_fight"
+  ],
+  "evidence": "'5 вересня Донченко проведе поєдинок у Парижі проти американця Пунахеле Соріано' is closing boilerplate after the interview.",
+  "confidence": "high"
+ },
+ {
+  "id": "322",
+  "main_claim": "Donchenko recalls his early paid fights: a Kyiv restaurant club paying 1,000 UAH to appear and 1,500 for a win, then Kazakhstan purses.",
+  "answers": {
+   "fact": "personal_life",
+   "firmness": "official_or_done",
+   "reports_his_result": "no",
+   "reports_his_next_fight": "no",
+   "reports_his_health": "no"
+  },
+  "changed": [
+   "reports_his_next_fight"
+  ],
+  "evidence": "'5 вересня Донченко проведе поєдинок у Парижі проти американця Пунахеле Соріано' is closing boilerplate after the interview.",
+  "confidence": "high"
+ },
+ {
+  "id": "349",
+  "main_claim": "Merab Dvalishvili gives an update on Topuria: he is fine, positive, resting to come back stronger.",
+  "answers": {
+   "fact": "health",
+   "firmness": "reported",
+   "reports_his_result": "no",
+   "reports_his_next_fight": "no",
+   "reports_his_health": "yes"
+  },
+  "changed": [],
+  "evidence": "none changed",
+  "confidence": "high"
+ },
+ {
+  "id": "361",
+  "main_claim": "Merab Dvalishvili says Topuria is enjoying life and is well physically.",
+  "answers": {
+   "fact": "health",
+   "firmness": "reported",
+   "reports_his_result": "no",
+   "reports_his_next_fight": "no",
+   "reports_his_health": "yes"
+  },
+  "changed": [
+   "reports_his_next_fight"
+  ],
+  "evidence": "'todo apunta a que Topuria no podra volver a subirse al octagono hasta 2027, si bien hay informaciones que apuntan a una posible recuperacion expres... de momento puras especulaciones' is the writer's guess at his timing, in the closing line.",
+  "confidence": "high"
+ },
+ {
+  "id": "368",
+  "main_claim": "Merab Dvalishvili updates Topuria's state: he is fine, positive, will beat everyone when he returns.",
+  "answers": {
+   "fact": "health",
+   "firmness": "reported",
+   "reports_his_result": "no",
+   "reports_his_next_fight": "no",
+   "reports_his_health": "yes"
+  },
+  "changed": [
+   "reports_his_next_fight"
+  ],
+  "evidence": "'la UFC le espera para 2027, si bien la fecha de su reaparicion esta calculada hacia mitad de ano' is an unattributed estimate of his timing; the candidate-opponent list ('Arman Tsarukyan, Paddy Pimblett o Usman Nurmagomedov') is speculation; 'El proximo combate de Topuria ya toma forma' is a read-also teaser.",
+  "confidence": "medium"
+ },
+ {
+  "id": "397",
+  "main_claim": "Merab Dvalishvili says Topuria is fine, very positive, and will come back to reclaim his belt.",
+  "answers": {
+   "fact": "health",
+   "firmness": "reported",
+   "reports_his_result": "no",
+   "reports_his_next_fight": "no",
+   "reports_his_health": "yes"
+  },
+  "changed": [],
+  "evidence": "none changed",
+  "confidence": "medium"
+ },
+ {
+  "id": "402",
+  "main_claim": "Topuria's return is being pencilled for end of 2026 or early 2027, per his trainer Gallo and Merab's update that he is well.",
+  "answers": {
+   "fact": "next_fight",
+   "firmness": "reported",
+   "reports_his_result": "no",
+   "reports_his_next_fight": "yes",
+   "reports_his_health": "yes"
+  },
+  "changed": [],
+  "evidence": "none changed",
+  "confidence": "medium"
+ },
+ {
+  "id": "412",
+  "main_claim": "His trainer Gallo says Topuria's recovery is going far better than expected; physically he could be ready in December, though 2027 is the target.",
+  "answers": {
+   "fact": "health",
+   "firmness": "reported",
+   "reports_his_result": "no",
+   "reports_his_next_fight": "yes",
+   "reports_his_health": "yes"
+  },
+  "changed": [],
+  "evidence": "none changed",
+  "confidence": "medium"
+ },
+ {
+  "id": "484",
+  "main_claim": "Gaethje guesses Topuria probably won't fight until next year either and doesn't think Topuria is his next fight.",
+  "answers": {
+   "fact": "no_fact",
+   "firmness": "none",
+   "reports_his_result": "no",
+   "reports_his_next_fight": "no",
+   "reports_his_health": "no"
+  },
+  "changed": [
+   "fact",
+   "firmness",
+   "reports_his_next_fight"
+  ],
+  "evidence": "'I guess if I'm not fighting until next year, [Topuria is] probably not going to fight until next year, too... I don't think that's my next fight, in my gut' is Gaethje's guess at his timing, the same shape as worked example #462.",
+  "confidence": "high"
+ },
+ {
+  "id": "490",
+  "main_claim": "Fight-week interview: Donchenko, ahead of Saturday's Paris bout with Soriano, talks about his growth, his French, and his aim to finish Soriano.",
+  "answers": {
+   "fact": "no_fact",
+   "firmness": "none",
+   "reports_his_result": "no",
+   "reports_his_next_fight": "no",
+   "reports_his_health": "no"
+  },
+  "changed": [
+   "fact",
+   "firmness",
+   "reports_his_next_fight"
+  ],
+  "evidence": "'as he readies to make his return to action this weekend in Paris, where he faces off with Punahele Soriano' is the booking restated as the premise of a preview; the body is his talk ('I have everything to win this fight, to finish this guy').",
+  "confidence": "medium"
+ },
+ {
+  "id": "491",
+  "main_claim": "Fight-week interview: Donchenko, ahead of Saturday's Paris bout with Soriano, talks about his growth, his French, and his aim to finish Soriano.",
+  "answers": {
+   "fact": "no_fact",
+   "firmness": "none",
+   "reports_his_result": "no",
+   "reports_his_next_fight": "no",
+   "reports_his_health": "no"
+  },
+  "changed": [
+   "fact",
+   "firmness",
+   "reports_his_next_fight"
+  ],
+  "evidence": "Same text as #490: 'as he readies to make his return to action this weekend in Paris, where he faces off with Punahele Soriano' is the booking restated as the premise of a preview.",
+  "confidence": "medium"
+ }
+]

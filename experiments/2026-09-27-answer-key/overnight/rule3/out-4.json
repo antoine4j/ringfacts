@@ -1,0 +1,346 @@
+[
+ {
+  "id": "758",
+  "main_claim": "Fight report: Donchenko beat Soriano by unanimous decision (30:27, 30:27, 29:28) at UFC Fight Night 287 in Paris.",
+  "answers": {
+   "fact": "result",
+   "firmness": "official_or_done",
+   "reports_his_result": "yes",
+   "reports_his_next_fight": "no",
+   "reports_his_health": "no"
+  },
+  "changed": [],
+  "evidence": "none changed",
+  "confidence": "high"
+ },
+ {
+  "id": "759",
+  "main_claim": "Fight report: Donchenko beat Soriano by unanimous decision (30:27, 30:27, 29:28) at UFC Fight Night 287 in Paris.",
+  "answers": {
+   "fact": "result",
+   "firmness": "official_or_done",
+   "reports_his_result": "yes",
+   "reports_his_next_fight": "no",
+   "reports_his_health": "no"
+  },
+  "changed": [],
+  "evidence": "none changed",
+  "confidence": "high"
+ },
+ {
+  "id": "765",
+  "main_claim": "Fight report: Donchenko beat Soriano by unanimous decision (30:27, 30:27, 29:28) at UFC Fight Night 287 in Paris.",
+  "answers": {
+   "fact": "result",
+   "firmness": "official_or_done",
+   "reports_his_result": "yes",
+   "reports_his_next_fight": "no",
+   "reports_his_health": "no"
+  },
+  "changed": [],
+  "evidence": "none changed",
+  "confidence": "high"
+ },
+ {
+  "id": "767",
+  "main_claim": "Fight report: Donchenko beat Soriano by unanimous decision (30:27, 30:27, 29:28) at UFC Fight Night 287 in Paris.",
+  "answers": {
+   "fact": "result",
+   "firmness": "official_or_done",
+   "reports_his_result": "yes",
+   "reports_his_next_fight": "no",
+   "reports_his_health": "no"
+  },
+  "changed": [],
+  "evidence": "none changed",
+  "confidence": "high"
+ },
+ {
+  "id": "768",
+  "main_claim": "Fight report: Donchenko beat Soriano by unanimous decision (30:27, 30:27, 29:28) at UFC Fight Night 287 in Paris.",
+  "answers": {
+   "fact": "result",
+   "firmness": "official_or_done",
+   "reports_his_result": "yes",
+   "reports_his_next_fight": "no",
+   "reports_his_health": "no"
+  },
+  "changed": [],
+  "evidence": "none changed",
+  "confidence": "high"
+ },
+ {
+  "id": "772",
+  "main_claim": "Fight report: Donchenko beat Soriano by unanimous decision (30:27, 30:27, 29:28) at UFC Fight Night 287 in Paris.",
+  "answers": {
+   "fact": "result",
+   "firmness": "official_or_done",
+   "reports_his_result": "yes",
+   "reports_his_next_fight": "no",
+   "reports_his_health": "no"
+  },
+  "changed": [],
+  "evidence": "none changed",
+  "confidence": "high"
+ },
+ {
+  "id": "773",
+  "main_claim": "Fight report: Donchenko beat Soriano by unanimous decision (30:27, 30:27, 29:28) at UFC Fight Night 287 in Paris.",
+  "answers": {
+   "fact": "result",
+   "firmness": "official_or_done",
+   "reports_his_result": "yes",
+   "reports_his_next_fight": "no",
+   "reports_his_health": "no"
+  },
+  "changed": [],
+  "evidence": "none changed",
+  "confidence": "high"
+ },
+ {
+  "id": "774",
+  "main_claim": "Donchenko's post-fight press-conference remarks in Paris: the fight was under control, he followed his game plan, thanks to Ukrainian fans, and he wants Daniel Rodriguez next.",
+  "answers": {
+   "fact": "no_fact",
+   "firmness": "none",
+   "reports_his_result": "no",
+   "reports_his_next_fight": "no",
+   "reports_his_health": "no"
+  },
+  "changed": [
+   "fact",
+   "firmness",
+   "reports_his_result"
+  ],
+  "evidence": "Headline 'Подяка українцям і інші заяви'; lede 'вразив не тільки в октагоні, а і у медіа-румі'; the win is referenced only as premise ('потім він вражав в октагоні', 'Я розумів, що переміг у двох попередніх раундах'); the only forward item is a wish: 'хотів би битися із Даніелем Родрігесом'. A press conference is a place where things are said; what is said here is analysis and a wish, so no_fact.",
+  "confidence": "medium"
+ },
+ {
+  "id": "776",
+  "main_claim": "Fight report: Donchenko beat Soriano by unanimous decision (30:27, 30:27, 29:28) at UFC Fight Night 287 in Paris.",
+  "answers": {
+   "fact": "result",
+   "firmness": "official_or_done",
+   "reports_his_result": "yes",
+   "reports_his_next_fight": "no",
+   "reports_his_health": "no"
+  },
+  "changed": [],
+  "evidence": "none changed",
+  "confidence": "high"
+ },
+ {
+  "id": "779",
+  "main_claim": "Fight report: Donchenko beat Soriano by unanimous decision (30:27, 30:27, 29:28) at UFC Fight Night 287 in Paris.",
+  "answers": {
+   "fact": "result",
+   "firmness": "official_or_done",
+   "reports_his_result": "yes",
+   "reports_his_next_fight": "no",
+   "reports_his_health": "no"
+  },
+  "changed": [],
+  "evidence": "none changed",
+  "confidence": "high"
+ },
+ {
+  "id": "780",
+  "main_claim": "Fight report: Donchenko beat Soriano by unanimous decision (30:27, 30:27, 29:28) at UFC Fight Night 287 in Paris.",
+  "answers": {
+   "fact": "result",
+   "firmness": "official_or_done",
+   "reports_his_result": "yes",
+   "reports_his_next_fight": "no",
+   "reports_his_health": "no"
+  },
+  "changed": [],
+  "evidence": "none changed",
+  "confidence": "high"
+ },
+ {
+  "id": "782",
+  "main_claim": "Fight report: Donchenko beat Soriano by unanimous decision (30:27, 30:27, 29:28) at UFC Fight Night 287 in Paris.",
+  "answers": {
+   "fact": "result",
+   "firmness": "official_or_done",
+   "reports_his_result": "yes",
+   "reports_his_next_fight": "no",
+   "reports_his_health": "no"
+  },
+  "changed": [],
+  "evidence": "none changed",
+  "confidence": "high"
+ },
+ {
+  "id": "783",
+  "main_claim": "Fight report: Donchenko beat Soriano by unanimous decision (30:27, 30:27, 29:28) at UFC Fight Night 287 in Paris.",
+  "answers": {
+   "fact": "result",
+   "firmness": "official_or_done",
+   "reports_his_result": "yes",
+   "reports_his_next_fight": "no",
+   "reports_his_health": "no"
+  },
+  "changed": [],
+  "evidence": "none changed",
+  "confidence": "high"
+ },
+ {
+  "id": "785",
+  "main_claim": "Fight report: Donchenko beat Soriano by unanimous decision (30:27, 30:27, 29:28) at UFC Fight Night 287 in Paris.",
+  "answers": {
+   "fact": "result",
+   "firmness": "official_or_done",
+   "reports_his_result": "yes",
+   "reports_his_next_fight": "no",
+   "reports_his_health": "no"
+  },
+  "changed": [],
+  "evidence": "none changed",
+  "confidence": "high"
+ },
+ {
+  "id": "786",
+  "main_claim": "Fight report: Donchenko beat Soriano by unanimous decision (30:27, 30:27, 29:28) at UFC Fight Night 287 in Paris.",
+  "answers": {
+   "fact": "result",
+   "firmness": "official_or_done",
+   "reports_his_result": "yes",
+   "reports_his_next_fight": "no",
+   "reports_his_health": "no"
+  },
+  "changed": [],
+  "evidence": "none changed",
+  "confidence": "high"
+ },
+ {
+  "id": "789",
+  "main_claim": "Donchenko calls out Daniel Rodriguez as the opponent he wants next, elaborating backstage after his Paris win.",
+  "answers": {
+   "fact": "no_fact",
+   "firmness": "none",
+   "reports_his_result": "no",
+   "reports_his_next_fight": "no",
+   "reports_his_health": "no"
+  },
+  "changed": [
+   "fact",
+   "firmness",
+   "reports_his_result"
+  ],
+  "evidence": "Headline 'has specific UFC veteran in mind for next fight'; lede 'name-dropped who he wants next'; 'Please, let me fight just with him' is a wish, 'it would be cool end of the year' is his own guess at timing. The result ('three-round unanimous decision win over Puna Soriano on Saturday') sits in paragraph three as the premise of the callout, published the day after, not as the article's news.",
+  "confidence": "medium"
+ },
+ {
+  "id": "790",
+  "main_claim": "Fight report: Donchenko beat Soriano by unanimous decision (30:27, 30:27, 29:28) at UFC Fight Night 287 in Paris.",
+  "answers": {
+   "fact": "result",
+   "firmness": "official_or_done",
+   "reports_his_result": "yes",
+   "reports_his_next_fight": "no",
+   "reports_his_health": "no"
+  },
+  "changed": [],
+  "evidence": "none changed",
+  "confidence": "high"
+ },
+ {
+  "id": "794",
+  "main_claim": "Donchenko calls out Daniel Rodriguez as the opponent he wants next, elaborating backstage after his Paris win.",
+  "answers": {
+   "fact": "no_fact",
+   "firmness": "none",
+   "reports_his_result": "no",
+   "reports_his_next_fight": "no",
+   "reports_his_health": "no"
+  },
+  "changed": [
+   "fact",
+   "firmness",
+   "reports_his_result"
+  ],
+  "evidence": "Headline 'has specific UFC veteran in mind for next fight'; lede 'name-dropped who he wants next'; 'Please, let me fight just with him' is a wish, 'it would be cool end of the year' is his own guess at timing. The result ('three-round unanimous decision win over Puna Soriano on Saturday') sits in paragraph three as the premise of the callout, published the day after, not as the article's news.",
+  "confidence": "medium"
+ },
+ {
+  "id": "797",
+  "main_claim": "Donchenko calls out Daniel Rodriguez as the opponent he wants next, elaborating backstage after his Paris win.",
+  "answers": {
+   "fact": "no_fact",
+   "firmness": "none",
+   "reports_his_result": "no",
+   "reports_his_next_fight": "no",
+   "reports_his_health": "no"
+  },
+  "changed": [
+   "fact",
+   "firmness",
+   "reports_his_result"
+  ],
+  "evidence": "Headline 'has specific UFC veteran in mind for next fight'; lede 'name-dropped who he wants next'; 'Please, let me fight just with him' is a wish, 'it would be cool end of the year' is his own guess at timing. The result ('three-round unanimous decision win over Puna Soriano on Saturday') sits in paragraph three as the premise of the callout, published the day after, not as the article's news.",
+  "confidence": "medium"
+ },
+ {
+  "id": "798",
+  "main_claim": "UFC is reportedly having internal conversations about an immediate Gaethje vs Topuria rematch, per commentator Jon Anik.",
+  "answers": {
+   "fact": "next_fight",
+   "firmness": "rumour",
+   "reports_his_result": "no",
+   "reports_his_next_fight": "yes",
+   "reports_his_health": "no"
+  },
+  "changed": [],
+  "evidence": "none changed",
+  "confidence": "high"
+ },
+ {
+  "id": "803",
+  "main_claim": "Jon Anik says the UFC may be internally discussing a Gaethje vs Topuria 2 title rematch as Topuria's return.",
+  "answers": {
+   "fact": "next_fight",
+   "firmness": "rumour",
+   "reports_his_result": "no",
+   "reports_his_next_fight": "yes",
+   "reports_his_health": "no"
+  },
+  "changed": [
+   "reports_his_health"
+  ],
+  "evidence": "Health flips to no: 'Topuria's facial injuries are also said to have healed well, fueling talks that his comeback could be on the cards, potentially in early 2027' is the article's closing sentence, hearsay ('are also said to'), recalled on the way; the June TKO loss is recap ('back in June'). The article's news is the rematch talk.",
+  "confidence": "high"
+ },
+ {
+  "id": "807",
+  "main_claim": "Jon Anik says the UFC is internally discussing an immediate Gaethje vs Topuria rematch.",
+  "answers": {
+   "fact": "next_fight",
+   "firmness": "rumour",
+   "reports_his_result": "no",
+   "reports_his_next_fight": "yes",
+   "reports_his_health": "no"
+  },
+  "changed": [],
+  "evidence": "none changed",
+  "confidence": "high"
+ },
+ {
+  "id": "813",
+  "main_claim": "Donchenko calls out Daniel Rodriguez as the opponent he wants next, elaborating backstage after his Paris win.",
+  "answers": {
+   "fact": "no_fact",
+   "firmness": "none",
+   "reports_his_result": "no",
+   "reports_his_next_fight": "no",
+   "reports_his_health": "no"
+  },
+  "changed": [
+   "fact",
+   "firmness",
+   "reports_his_result"
+  ],
+  "evidence": "Headline 'has specific UFC veteran in mind for next fight'; lede 'name-dropped who he wants next'; 'Please, let me fight just with him' is a wish, 'it would be cool end of the year' is his own guess at timing. The result ('three-round unanimous decision win over Puna Soriano on Saturday') sits in paragraph three as the premise of the callout, published the day after, not as the article's news.",
+  "confidence": "medium"
+ }
+]

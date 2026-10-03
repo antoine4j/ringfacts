@@ -942,3 +942,20 @@ his timing, which it covers) is written into the guide under question 4,
 with #856, #462 and #1002 as the worked examples. The classifier keeps
 answering each question on its own; the contradiction stays a doubt flag
 there, as decided on 2026-10-02 (the blade question).
+Applied the same day: six blind readers re-answered fact, how firm and
+the three news questions on the 134 articles the rule can touch
+(experiments/2026-09-27-answer-key/overnight/rule3/). 76 change: reports
+his next fight yes → no on 57 (fight-week previews, picks and card lists
+where the booking is the premise; interviews with a boilerplate "fights
+Soriano on 5 Sept" closer; reaction pieces where the rematch rumour is
+premise or closing line), fact next fight → no fact on 25, health → no
+fact 6, result → no fact 6, reports his health yes → no on 13 (the
+fractures recapped), result yes → no on 8. Anton's calls on the three
+open clusters: the day-after callout pieces (#774, #789, #794, #797,
+#813, #852) keep source himself and act speaks of himself, fact no fact
+(*"it's a callout, basically"*); #510 and #616 are fight week event, not
+no fact (*"announcements of the fight week after the fight was already
+booked"*); the seven low-confidence reads (#605, #745, #852, #1045,
+#1066, #1089, #1172) applied as read, cards left unchecked for him to
+read. Written as corrections in the page's database with the rule and the
+reader's one-line main claim as the note.
