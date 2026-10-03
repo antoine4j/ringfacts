@@ -101,7 +101,7 @@ message; the rematch rumour is a closing line: no fact, next fight no).
 | value | means |
 |---|---|
 | `next_fight` | news that a specific fight of his exists or has changed: a fight is set, announced, offered, in talks, moved or cancelled. It counts when he himself says he has a fight, even before the promotion confirms it and even if he does not name the opponent ("I know who, where and when"). Not when he will be ready, that he is ready, that nothing is booked, or opponents named only as options with no talks ("Gaethje or Pimblett, both make sense"): those are `status_update`. Not a wish or an opinion about who he should fight (a callout, a pundit's pick): that is `no_fact`. A rumour about his next fight reported from a third party (a coach, an outlet, "reports suggest"), even when its subject denies it, is `next_fight` at firmness `rumour`; the speaker's own wish with no reported rumour or talks is `no_fact` (Anton, 2026-10-02: #820 vs #843). A rumour counts only when the article gives it substance: who said it, or a date or event. "Amid rumours" framing with no who, when or where is a wish piece (#871) |
-| `result` | the outcome of a fight of his, as the news (a fight report, his bout on a results page) |
+| `result` | the outcome of a fight of his, as the news (a fight report, his bout on a results page). An account of the fight itself; a statement, interview or callout after it takes the value of what is said, or `no_fact` |
 | `fight_week_event` | the routine of a fight of his, and nothing more: weigh-in, face-off, open workout, card order, start times. Training camp and sparring in the weeks or months before fight week are `status_update`. An interview, press conference or media day is a place where things are said, not a fact: what is said there takes its own value, or `no_fact` |
 | `health` | injury, medical issue, surgery, recovery, as news, including how the recovery is going. When someone named says how he is or how the recovery is going, however briefly, the fact is health, even if the headline and most of the text are about when he will be back. If the article only says when he will be ready and describes no injury or recovery, it is `status_update` |
 | `career_move` | retirement, a contract, a move of weight class or team, a title vacated, stripped or awarded |
@@ -138,7 +138,12 @@ question 4.
 
 - **reports_his_result** — does the article report, as its news, the outcome
   of a fight of his? `no` when his past fight is only recalled as background
-  to other news.
+  to other news. **Yes only
+  for an account of the fight itself** (Anton, 2026-10-03): a fight report,
+  his bout on a results page. A statement, interview or callout after a
+  fight is `no`, however recent the fight and however much of it is retold,
+  even when the first sentence restates the win before the interview begins
+  (#1172, #851, #778).
 - **reports_his_next_fight** — does it carry news that a specific fight of his exists or has changed: set, announced, offered, in talks, rumoured or denied, moved or cancelled, including his own word that he has a fight? (A rumour is a fact at low firmness, not an opinion.) `no` for only wishes and opinions (callouts, pundit picks), for when he will be ready or that nothing is booked, for opponents named only as options, for training and recovery news, and for another fighter's next fight that does not involve him.
 - **reports_his_health** — does it report, as its news, an injury, illness,
   procedure or recovery of his, including an update on how he is? `no` when a

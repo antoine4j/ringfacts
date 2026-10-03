@@ -1132,3 +1132,17 @@ note each (status update: #958, #972, #991, #998, #1008, #1020, #1031,
 #1036, #1058, #1076, #572, #592; health: #152, #402, with #412 losing its
 next-fight yes; no fact: #129). None of the 16 cards was marked checked
 before, and the health corrections already on five of them were kept.
+
+## rule: "reports his result" is yes only for an account of the fight itself (2026-10-03)
+
+Anton finished the result group (#44, #778, #779, #797, #1172) and asked
+whether he had been following the brief's recommended rule. The brief
+recommended "lead clause" (yes when the headline or the first sentence's
+main clause states the outcome); his five answers match it on four and
+match "fight account only" on all five. The one that tells them apart is
+#1172, a long interview ten days after the Paris win whose first sentence
+restates the win before the interview begins: lead clause says yes, he
+answered no. *"I thought we already had rule two, but yes, add it to the
+guide."* It is rule 3 in this question's terms, and it agrees with #851
+(a callout two days after the win is no fact). Written into the guide on
+the question and on the `result` fact value.

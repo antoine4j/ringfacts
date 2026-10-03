@@ -46,7 +46,10 @@ whatever the piece is mainly about) and health be carried only by the
 re-readers of 2026-10-02 split on it the same way (no fact / health).
 Related, from the same card: the saved text is cut at 10,000 characters
 (the fetcher's cap; it ends mid-word), so readers and the classifier never
-see the rest of a long page.
+see the rest of a long page. 23 of the 300 hit that cap. On #1172 the
+first 1,900 characters of the saved text are the site's menu, so a fifth of
+what was kept is page furniture: the cap is spent before the article
+starts. A fetch-quality item for the extractor, not a labelling rule.
 
 ## Proposed, not yet discussed
 
