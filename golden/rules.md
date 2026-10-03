@@ -80,6 +80,17 @@ did or got wrong and the other fighter answers him, he is "one of several"
 (#373).
 *Decided 2026-10-03.*
 
+### A callout is the other fighter's story
+When another fighter's own news names him as the opponent he wants, the
+article is that fighter's story. He is never "main subject" in it, although
+a callout is, read literally, "something someone said about him". And a
+callout alone does not make him "one of several" either: it says what the
+other man wants and nothing new about him. So he is "only mentioned"
+(#273, #843, #871, #921). The same quote written up as a story about his
+own options is his story (#913, main subject).
+*Decided 2026-10-03. A softer version, where real content about him beyond
+the callout would make him "one of several", is parked: backlog 15.*
+
 ### A two-fighter preview is one of several
 A preview or feature on a fight of his that covers both fighters is "one
 of several", whichever fighter brought the article to us (#619).

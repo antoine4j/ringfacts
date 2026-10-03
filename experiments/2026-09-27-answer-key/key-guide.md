@@ -31,7 +31,7 @@ news about him (other questions ask that).
 | `one_of_several` | he shares the article with others and gets real content: a preview or feature on a fight of his covering both fighters; attention shared between him and one or two others; another fighter's own news that the article itself ties to a fight between the two (booked, or already fought and being discussed) — a fighter only rumoured or calling him out does not count |
 
 **Between `only_mentioned` and `one_of_several`, judge what is new about him, not how long his part is** (Anton, 2026-09-28). If his part only retells what is already known (his last fight, his injuries, his record), it is `only_mentioned`, however long, even a whole paragraph in a roundup. It is `one_of_several` only when the article adds something new about him while sharing the stage with others. Example: a year-in-review of Spanish fighters built around two debutants, where he gets a paragraph recalling his June loss and fractures and one line saying he has posted a couple of messages, is `only_mentioned`.
-| `main_subject` | the article is about him: something he did, or said about himself or his own career, or something someone said, reported or predicted about him |
+| `main_subject` | the article is about him: something he did, or said about himself or his own career, or something someone said, reported or predicted about him, when he is what the article is about. Another fighter's own news that names him as a wanted opponent (a callout) is that fighter's story, never `main_subject` (Anton, 2026-10-03, #273) |
 
 ## 2. source — whose words or act is the new information about him?
 

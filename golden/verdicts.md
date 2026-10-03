@@ -1186,3 +1186,20 @@ who said it): official at once, rumour to a digest. Nothing is dropped by
 a label. Consequence for the classifier: "how firm" becomes a routing
 answer, so its accuracy (about 79% in v6) matters more than before.
 "We'll need to test it."
+
+## rule: a callout article is the other fighter's story, never "main subject" (2026-10-03)
+
+On #273 (Pimblett wants Topuria or Tsarukyan next) Anton noticed the
+readers split between the two ends, main subject and only mentioned, and
+that their notes say the guide excludes the middle: *"Is there some tension
+here that should be resolved?"* The cause: "main subject" includes
+"something someone said about him", which a callout literally is, while
+"one of several" excludes a fighter only calling him out. He also objected
+to a rule that leans on the first paragraph (*"sometimes first paragraph is
+just the opening and the real substance comes ... after a paragraph or
+two"*), so the rule is stated by the article's main claim, judged on the
+whole text; no adopted rule depends on position. He found the exclusion on
+"one of several" harsh and asked for pushback; the softer version is parked
+(backlog 15) and he took the recommendation: *"okay, go with your
+recommendation."* The guide's main-subject line gains one sentence; the
+callout line stays; #273 stays only mentioned. No card changes.

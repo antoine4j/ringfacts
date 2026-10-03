@@ -63,6 +63,23 @@ article does not earn a value; on a second or third "X fires back at him"
 piece, either rename the value ("challenges or taunts him") or add a reply
 value.
 
+### 15. Watch: a callout article that says a lot about him
+*Labelling. From #273, 2026-10-03. Parked.*
+The guide says a fighter only calling him out does not make him "one of
+several". Anton: *"what if the callout talks at length still about our
+fighter and the article could be in some measure about him ... that
+injunction is a little bit harsh, I feel like it's forcing things ... I'm
+not saying it necessarily is, but it can be forcing things unnaturally."*
+The softer rule would be: the callout alone does not lift him, but real
+content of the article's own about him (his situation, the history between
+the two, a weighing of the matchup) makes him "one of several". Not
+adopted: no article in the 300 needs it (#273 adds three sentences of the
+writer's speculation), a flat line is easier for readers and the
+classifier, which already drifts to "one of several" here (81% on #273),
+and the nine "new, not long" moves of 2026-10-02 might not survive it.
+Revisit on the first callout article that carries real new content about
+the watched fighter; it would need a retest.
+
 ## Proposed, not yet discussed
 
 ### 4. Content not in the saved text
