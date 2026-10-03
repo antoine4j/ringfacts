@@ -57,6 +57,16 @@ A booking the UFC announced, relayed by another outlet (#605, #342).
 *Labelling. Boundary #7, 2.* A fan tweet quoted inside a journalist's
 article (#654, #883).
 
+### 11. Watch: facts the list has no value for
+*Labelling. 3 of 300, 2026-10-02.* Fact "none of these" was used for a
+revealed past negotiation that collapsed (#228, Makhachev's account of
+the White House offer and Topuria's pay demands) and for a return to
+public view (#572, #592, the same Colmenero story). Two unrelated gaps in
+three articles do not earn a value; "none of these" with the reader's
+note is right for now. Revisit if the next pull brings more business
+facts (offers, pay disputes, failed bookings) or more "back in public"
+items.
+
 ## Candidate rules from the overnight briefs (2026-10-02, not decided)
 
 Eight briefs, one per boundary of the readers' disagreements
