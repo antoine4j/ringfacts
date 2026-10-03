@@ -1203,3 +1203,17 @@ whole text; no adopted rule depends on position. He found the exclusion on
 (backlog 15) and he took the recommendation: *"okay, go with your
 recommendation."* The guide's main-subject line gains one sentence; the
 callout line stays; #273 stays only mentioned. No card changes.
+
+## rules for "what the source does": a taunt is a callout; another fighter on himself is none of these (2026-10-03)
+
+#492 (a Gaethje video interview about his own sore hands; the readers
+split three ways): Anton asked whether an opponent can "speak of himself",
+and settled on none of these: the article *"says nothing about Topuria. It
+talks about Gaethje."* The two passing lines about Topuria are a hedge and
+a guess at his timing. #287 (Tsarukyan: "Chandler must be next for
+Topuria, he really needs an easy fight", which the article calls ironic
+and a provocation): he first read it as steers him, since it names an
+opponent, then kept the readers' majority: *"I agree with your
+interpretation. Call out is not just a literal call out."* The guide's
+lines for both values now say so. Reading the words as written would have
+made #492 "steers him" as well.

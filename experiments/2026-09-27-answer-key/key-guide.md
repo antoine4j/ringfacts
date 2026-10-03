@@ -63,9 +63,9 @@ is only possible with source `himself`.
 | `speaks_of_himself` | only with source himself: his situation, plans, past, life, how he rates himself, what he wants next |
 | `assesses_him` | his level, chances, condition, performance, place in the division |
 | `predicts_his_fight` | a pick or a forecast for a fight of his |
-| `calls_him_out` | asks to fight him, challenges him, trash talk aimed at him |
+| `calls_him_out` | asks to fight him, challenges him, trash talk aimed at him. Not only a literal callout: a taunt or mockery aimed at him belongs here, including advice the article itself presents as ironic or a provocation (Anton, 2026-10-03: "Chandler must be next, he needs an easy fight", #287; a middle-finger reply to his callout, #889) |
 | `answers_for_him` | replies on his behalf (or his own reply) to an attack, a callout or a claim aimed at him |
-| `steers_him` | what he should do next: who to fight, rematch or not, weight class; includes demands made on his behalf |
+| `steers_him` | what he should do next, meant sincerely: who to fight, rematch or not, weight class; includes demands made on his behalf. Mock advice is `calls_him_out` |
 | `gives_news_of_him` | someone else's factual update on him: his condition, whereabouts, training, plans |
 | `none_of_these` | none fits, e.g. he is only mentioned and nobody does anything regarding him; say what would |
 

@@ -121,6 +121,24 @@ who he is, and the text rarely says who has retired (#879, #905). People
 who never fought (Rogan, journalists, commentators) are media.
 *Decided 2026-10-02.*
 
+## What the source does
+
+### A callout is not only a literal callout
+"Calls him out" covers asking to fight him, challenging him, and any taunt
+or mockery aimed at him. Advice the article itself presents as ironic or a
+provocation is a taunt, not advice: Tsarukyan's "Chandler must be next, he
+needs an easy fight" (#287), and Rodriguez answering his callout with a
+middle finger (#889). "Steers him" is for advice or a demand meant
+sincerely.
+*Decided 2026-10-03.*
+
+### "Speaks of himself" is only for the watched fighter
+The question is what the source does regarding him. Another fighter talking
+about his own injuries or plans does nothing regarding him: the act is
+"none of these" (#492). A hedged remark or a guess at his timing is not an
+act either.
+*Decided 2026-10-03.*
+
 ## What new fact
 
 ### Next fight means a specific fight exists or changes
