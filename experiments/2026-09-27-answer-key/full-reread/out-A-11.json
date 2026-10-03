@@ -1,0 +1,248 @@
+[
+ {
+  "id": "t1101",
+  "main_claim": "Molly McCann says she and Paddy Pimblett will both be world champions in 2027, she in boxing and he in the UFC.",
+  "centrality": "not_in_content",
+  "source": "other_fighter_side",
+  "act": "none_of_these",
+  "fact": "no_fact",
+  "firmness": "none",
+  "reports_his_result": "no",
+  "reports_his_next_fight": "no",
+  "reports_his_health": "no",
+  "he_speaks": "no",
+  "unsure": [
+   "centrality"
+  ],
+  "note": "Topuria's only appearance is the embedded cross-link 'EXCLUSIVE: Paddy Pimblett backed to KO Ilia Topuria by beloved teammate Molly McCann', page furniture, so not_in_content (only_mentioned if that line is read as body text); the main content is McCann, a retired fighter, speaking about herself and Pimblett, so source is other_fighter_side and the act is none_of_these because nobody does anything regarding him."
+ },
+ {
+  "id": "t1102",
+  "main_claim": "Jorge Masvidal says his ATT teammate Yaroslav Amosov is a bad fight for everybody at welterweight and a nightmare for champion Islam Makhachev.",
+  "centrality": "main_subject",
+  "source": "other_fighter_side",
+  "act": "assesses_him",
+  "fact": "no_fact",
+  "firmness": "none",
+  "reports_his_result": "no",
+  "reports_his_next_fight": "no",
+  "reports_his_health": "no",
+  "he_speaks": "no",
+  "unsure": [
+   "act"
+  ],
+  "note": "'He's a bad fight for everybody... Yaroslav is that good' is Masvidal's assessment of his level; the 'will be able to outshine him probably' line is a guess about a fight that does not exist, so act could be read as none_of_these. Magny and Alvarez wins are recapped background; 'due for a big fight' is the writer's opinion, no fact."
+ },
+ {
+  "id": "t1103",
+  "main_claim": "Topuria's manager Malki Kawa answers Ali Abdelaziz's claim that Usman Nurmagomedov would make Topuria quit, saying Topuria would annihilate Abdelaziz's whole roster and beat Gaethje in a rematch.",
+  "centrality": "main_subject",
+  "source": "his_manager",
+  "act": "answers_for_him",
+  "fact": "no_fact",
+  "firmness": "none",
+  "reports_his_result": "no",
+  "reports_his_next_fight": "no",
+  "reports_his_health": "no",
+  "he_speaks": "no",
+  "unsure": [],
+  "note": "Kawa 'has come to the defense of his client after Ali Abdelaziz made a bold claim', a reply on his behalf; 'when the comeback comes, you will see' and naming Pimblett, Makhachev, Nurmagomedov, Gaethje are wishes, not a fight; the Gaethje loss is retold as background."
+ },
+ {
+  "id": "t1104",
+  "main_claim": "Jorge Masvidal says Yaroslav Amosov is a bad fight for everybody and a nightmare matchup for welterweight champion Islam Makhachev.",
+  "centrality": "main_subject",
+  "source": "other_fighter_side",
+  "act": "assesses_him",
+  "fact": "no_fact",
+  "firmness": "none",
+  "reports_his_result": "no",
+  "reports_his_next_fight": "no",
+  "reports_his_health": "no",
+  "he_speaks": "no",
+  "unsure": [
+   "act"
+  ],
+  "note": "Masvidal, a training partner at ATT, assesses his level ('a bad fight for everybody', 'Nightmare for Makhachev'); the closing 'will be able to outshine him probably' is a guess, so none_of_these is arguable for act. Wins over Magny and Alvarez are background; no fight with Makhachev exists."
+ },
+ {
+  "id": "t1105",
+  "main_claim": "Ilia Topuria broke his silence after the Gaethje loss with an Instagram video letter to his son Hugo about losing, getting back up and character.",
+  "centrality": "main_subject",
+  "source": "himself",
+  "act": "speaks_of_himself",
+  "fact": "personal_life",
+  "firmness": "official_or_done",
+  "reports_his_result": "no",
+  "reports_his_next_fight": "no",
+  "reports_his_health": "no",
+  "he_speaks": "yes",
+  "unsure": [
+   "fact"
+  ],
+  "note": "The quoted letter ('Hugo, I've been thinking about you... Character is the one victory no one can take away') is a message to his son and a life lesson, so personal_life; a careful editor could call it a reflection with no fact. The Pimblett and Nurmagomedov matchups are the writer's speculation and the Gaethje TKO is background, so result and next fight are no."
+ },
+ {
+  "id": "t1106",
+  "main_claim": "Javier Mendez, coach of Islam Makhachev and Usman Nurmagomedov, says Topuria has the best boxing in MMA and will come back stronger from the Gaethje loss, while Usman would not be matched with him first.",
+  "centrality": "one_of_several",
+  "source": "other_fighter_side",
+  "act": "assesses_him",
+  "fact": "no_fact",
+  "firmness": "none",
+  "reports_his_result": "no",
+  "reports_his_next_fight": "no",
+  "reports_his_health": "no",
+  "he_speaks": "no",
+  "unsure": [
+   "centrality",
+   "act"
+  ],
+  "note": "The headline is about Topuria but most of the interview is Makhachev's camp, Joel Alvarez and Ian Garry, with Topuria getting five answers at the end ('tiene el mejor boxeo de todas las artes marciales mixtas', 'creo que va a volver bien fuerte'), so one_of_several though main_subject is arguable; Mendez coaches fighters not booked against him, so other_fighter_side, and his assessment is laced with 'creo' guesses, so act could be none_of_these."
+ },
+ {
+  "id": "t1107",
+  "main_claim": "Ahead of facing Punahele Soriano in Paris, Daniil Donchenko says he has become more patient with each UFC fight, explains how he came to speak French, and aims to finish Soriano to earn a ranking and sponsors.",
+  "centrality": "main_subject",
+  "source": "himself",
+  "act": "speaks_of_himself",
+  "fact": "no_fact",
+  "firmness": "none",
+  "reports_his_result": "no",
+  "reports_his_next_fight": "no",
+  "reports_his_health": "no",
+  "he_speaks": "yes",
+  "unsure": [
+   "fact",
+   "reports_his_next_fight"
+  ],
+  "note": "The Soriano fight 'this weekend in Paris' is the premise of a preview, so background rather than the fact; what he says is reflection, opponent assessment and goals, so no_fact, though the camp detail (prepared at Czerwony Smok in Poznan after training in Switzerland) could be read as status_update and his summers in France as personal_life, and an editor could count the booked bout as next fight news. The trailing 'Hooker vs Parnasse took place' line is page furniture."
+ },
+ {
+  "id": "t1108",
+  "main_claim": "Dana White denies the conspiracy theory that the military altered the weather for the UFC White House card.",
+  "centrality": "only_mentioned",
+  "source": "promotion",
+  "act": "none_of_these",
+  "fact": "no_fact",
+  "firmness": "none",
+  "reports_his_result": "no",
+  "reports_his_next_fight": "no",
+  "reports_his_health": "no",
+  "he_speaks": "no",
+  "unsure": [],
+  "note": "Topuria appears only as the man Gaethje upset ('Upsetting Ilia Topuria and breaking through') and in a photo caption, his past fight retold as background; the article is Dana White on the weather, so source is promotion and the act is none_of_these because nobody does anything regarding him."
+ },
+ {
+  "id": "t1109",
+  "main_claim": "Jorge Masvidal says Yaroslav Amosov's wrestling, size and reach make him a nightmare matchup for Islam Makhachev and other top welterweights.",
+  "centrality": "main_subject",
+  "source": "other_fighter_side",
+  "act": "assesses_him",
+  "fact": "no_fact",
+  "firmness": "none",
+  "reports_his_result": "no",
+  "reports_his_next_fight": "no",
+  "reports_his_health": "no",
+  "he_speaks": "no",
+  "unsure": [
+   "act"
+  ],
+  "note": "The summary says Masvidal 'praised Amosov's wrestling, size, and reach, labeling Makhachev a nightmare pairing' and itself notes it 'focuses on attributed opinions and recent results'; the Magny and Alvarez wins are background, and act could be none_of_these since the Makhachev pairing is hypothetical. The video list (Strickland on Amosov, etc.) is page furniture."
+ },
+ {
+  "id": "t1110",
+  "main_claim": "Ilia Topuria tells the 'Charlas Adictivas' podcast that he was bullied as a child in Georgia, disliked street confrontations and felt fear.",
+  "centrality": "main_subject",
+  "source": "himself",
+  "act": "speaks_of_himself",
+  "fact": "personal_life",
+  "firmness": "official_or_done",
+  "reports_his_result": "no",
+  "reports_his_next_fight": "no",
+  "reports_his_health": "no",
+  "he_speaks": "yes",
+  "unsure": [
+   "fact"
+  ],
+  "note": "His quotes ('Nos acosaban en la escuela', 'Siempre fui un niño al que no le gustaban las confrontaciones... y sentía miedo') are about his childhood, so personal_life stated by him; an editor could call a childhood reflection no_fact. The rankings and titles in the intro are background."
+ },
+ {
+  "id": "t1111",
+  "main_claim": "Daniil Donchenko beat Punahele Soriano by unanimous decision (30-27, 30-27, 29-28) at UFC Paris for his fourth straight win.",
+  "centrality": "main_subject",
+  "source": "no_one",
+  "act": "reports_an_event",
+  "fact": "result",
+  "firmness": "official_or_done",
+  "reports_his_result": "yes",
+  "reports_his_next_fight": "no",
+  "reports_his_health": "no",
+  "he_speaks": "no",
+  "unsure": [],
+  "note": "A round-by-round fight report ending 'бій завершився одностайним рішенням суддів на користь українця – 30-27, 30-27, 29-28. Для Донченка це 4-а перемога поспіль'; nobody is quoted. The boxing knockout line at the end is a 'read also' link."
+ },
+ {
+  "id": "t1112",
+  "main_claim": "Daniil Donchenko beat Punahele Soriano by unanimous decision at UFC Fight Night 287 in Paris, his third win of 2026, and called out Daniel Rodriguez afterwards.",
+  "centrality": "main_subject",
+  "source": "no_one",
+  "act": "reports_an_event",
+  "fact": "result",
+  "firmness": "official_or_done",
+  "reports_his_result": "yes",
+  "reports_his_next_fight": "no",
+  "reports_his_health": "no",
+  "he_speaks": "no",
+  "unsure": [],
+  "note": "Fight report with scorecards 30-27, 30-27, 29-28; the post-fight callout of Rodriguez ('викликав на бій') is a wish, only described and not quoted, so next fight and he_speaks are no; the embedded tweet is the UFC's, and the Berggren win is background."
+ },
+ {
+  "id": "t1113",
+  "main_claim": "Topuria's manager Malki Kawa fires back at Ali Abdelaziz's prediction that Usman Nurmagomedov would beat Topuria, calling the Gaethje loss an off night and saying Topuria would beat anyone, including Gaethje in a rematch.",
+  "centrality": "main_subject",
+  "source": "his_manager",
+  "act": "answers_for_him",
+  "fact": "no_fact",
+  "firmness": "none",
+  "reports_his_result": "no",
+  "reports_his_next_fight": "no",
+  "reports_his_health": "no",
+  "he_speaks": "no",
+  "unsure": [],
+  "note": "Kawa 'fired back at Ali Abdelaziz' and 'defended his client', a reply to a claim aimed at Topuria; 'when the comeback comes, you will see' and 'Topuria vs. Nurmagomedov could happen' are wishes and the writer's speculation, so no fact and next fight no."
+ },
+ {
+  "id": "t1114",
+  "main_claim": "Daniil Donchenko beat Punahele Soriano by unanimous decision (30:27, 30:27, 29:28) at UFC Fight Night 287 in Paris for his fourth straight UFC win.",
+  "centrality": "main_subject",
+  "source": "no_one",
+  "act": "reports_an_event",
+  "fact": "result",
+  "firmness": "official_or_done",
+  "reports_his_result": "yes",
+  "reports_his_next_fight": "no",
+  "reports_his_health": "no",
+  "he_speaks": "no",
+  "unsure": [],
+  "note": "Fight report: 'здобув перемогу одноголосним рішенням суддів — 30:27, 30:27, 29:28', with his TUF win and the Morono and Berggren fights recapped as background; the McGregor and Lesnar lines are 'ВАС ЗАЦІКАВИТЬ' links."
+ },
+ {
+  "id": "t1115",
+  "main_claim": "Joe Rogan urges Ilia Topuria not to repeat Volkanovski's mistake of rushing back after a brutal defeat, saying he probably needs six months before sparring again.",
+  "centrality": "main_subject",
+  "source": "media",
+  "act": "steers_him",
+  "fact": "no_fact",
+  "firmness": "none",
+  "reports_his_result": "no",
+  "reports_his_next_fight": "no",
+  "reports_his_health": "no",
+  "he_speaks": "no",
+  "unsure": [
+   "fact",
+   "reports_his_next_fight"
+  ],
+  "note": "Rogan (a commentator, never a fighter) sincerely advises him to be careful about his return, so steers_him with no fact; Jon Anik's 'I think there are internal conversations to potentially try to do Gaethje versus Topuria 2', which he himself calls 'non-informed speculation', could be read as a rematch rumour (next_fight, rumour) rather than a guess. The fractured orbitals and septum are recapped from his earlier statement, so health is no."
+ }
+]

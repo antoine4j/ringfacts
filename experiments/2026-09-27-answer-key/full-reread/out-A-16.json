@@ -1,0 +1,245 @@
+[
+ {
+  "id": "t1601",
+  "main_claim": "Sport.ua previews Donchenko's main-card bout against Punahele Soriano at UFC Fight Night 287 in Paris, rating him the favourite but warning about Soriano's power.",
+  "centrality": "main_subject",
+  "source": "media",
+  "act": "assesses_him",
+  "fact": "no_fact",
+  "firmness": "none",
+  "reports_his_result": "no",
+  "reports_his_next_fight": "no",
+  "reports_his_health": "no",
+  "he_speaks": "no",
+  "unsure": [
+   "centrality",
+   "act"
+  ],
+  "note": "The writer's own preview: 'Данііл Донченко – фаворит зустрічі', odds 1.37 vs 2.87, advice 'не лізти до тотального обміну ударами' and a closing forecast 'українець розбере американця'; the booking is only the premise, so no fact. Centrality could be one_of_several since the piece spends several paragraphs on Soriano's record and style, and act could be predicts_his_fight for the odds and the closing forecast."
+ },
+ {
+  "id": "t1602",
+  "main_claim": "Punahele Soriano, back from leg tears and a car accident, takes his four-fight streak to France to face Daniil Donchenko on the UFC Fight Night main card.",
+  "centrality": "one_of_several",
+  "source": "opponent_side",
+  "act": "none_of_these",
+  "fact": "no_fact",
+  "firmness": "none",
+  "reports_his_result": "no",
+  "reports_his_next_fight": "no",
+  "reports_his_health": "no",
+  "he_speaks": "no",
+  "unsure": [
+   "centrality",
+   "fact"
+  ],
+  "note": "Soriano's feature ties itself to the booked bout ('faces Daniil Donchenko in a middleweight bout in France... 9 a.m. Hawaii time'), so one_of_several, though Donchenko gets only his record and streak, so only_mentioned is arguable. Soriano speaks only about himself ('I feel really good... I'm just ready to get back in there'), which the guide makes none_of_these; the bout is the premise of a preview so no_fact, but an editor could read the scheduling line as next_fight."
+ },
+ {
+  "id": "t1603",
+  "main_claim": "Topuria returned to Instagram with his first post since the Gaethje loss, an emotional video message to his son Hugo about losing and getting back up.",
+  "centrality": "main_subject",
+  "source": "himself",
+  "act": "speaks_of_himself",
+  "fact": "personal_life",
+  "firmness": "official_or_done",
+  "reports_his_result": "no",
+  "reports_his_next_fight": "no",
+  "reports_his_health": "no",
+  "he_speaks": "yes",
+  "unsure": [
+   "fact"
+  ],
+  "note": "'Hugo, I've been thinking about you for a few days... never be afraid to lose' is a message to his son, which the guide files as personal_life; the caption 'We are back!!!' and 'his first post since the loss' could make it status_update. 'Topuria didn't announce his next opponent or a return date' and the June loss is background, so next fight and result are no."
+ },
+ {
+  "id": "t1604",
+  "main_claim": "Justin Gaethje says Topuria made 'terrible emotional mistakes' before their fight and that his defeat was his own fault.",
+  "centrality": "main_subject",
+  "source": "opponent_side",
+  "act": "assesses_him",
+  "fact": "no_fact",
+  "firmness": "none",
+  "reports_his_result": "no",
+  "reports_his_next_fight": "no",
+  "reports_his_health": "no",
+  "he_speaks": "no",
+  "unsure": [
+   "act"
+  ],
+  "note": "Gaethje, who beat him in June, judges his preparation: 'Cometió terribles errores emocionales... No estaba preparado... Es culpa suya' – opinion, no new fact; the retelling of the June 14 fight and the corner stoppage is background. The headline's 'carga contra' could be read as trash talk (calls_him_out), but the text frames it as analysis of the fight."
+ },
+ {
+  "id": "t1605",
+  "main_claim": "Donchenko beat Punahele Soriano by unanimous decision (30:27, 30:27, 29:28) at UFC Fight Night 287 in Paris.",
+  "centrality": "main_subject",
+  "source": "no_one",
+  "act": "reports_an_event",
+  "fact": "result",
+  "firmness": "official_or_done",
+  "reports_his_result": "yes",
+  "reports_his_next_fight": "no",
+  "reports_his_health": "no",
+  "he_speaks": "no",
+  "unsure": [],
+  "note": "A fight report with nobody speaking: 'одноголосним рішення суддів перемога дісталася Донченку: 30:27, 30:27, 29:28'; the groin-shot pause and his three earlier UFC wins are part of the account or background."
+ },
+ {
+  "id": "t1606",
+  "main_claim": "Islam Makhachev says Topuria lost focus and underestimated Gaethje, pointing to his celebration party the night before the White House fight.",
+  "centrality": "main_subject",
+  "source": "other_fighter_side",
+  "act": "assesses_him",
+  "fact": "no_fact",
+  "firmness": "none",
+  "reports_his_result": "no",
+  "reports_his_next_fight": "no",
+  "reports_his_health": "no",
+  "he_speaks": "no",
+  "unsure": [],
+  "note": "Makhachev, never booked against him (the superfight only 'potential'), rates his performance: 'he just underestimated him... he spent too much energy... how can you make some party... before the fight?' and guesses 'Sure, he will be back' – opinion only; the June loss is background."
+ },
+ {
+  "id": "t1607",
+  "main_claim": "Donchenko beat Soriano by unanimous decision in Paris for his fourth straight UFC win, then called for Daniel Rodriguez and addressed the crowd in French.",
+  "centrality": "main_subject",
+  "source": "no_one",
+  "act": "reports_an_event",
+  "fact": "result",
+  "firmness": "official_or_done",
+  "reports_his_result": "yes",
+  "reports_his_next_fight": "no",
+  "reports_his_health": "no",
+  "he_speaks": "no",
+  "unsure": [],
+  "note": "Round-by-round account ending '30:27, 30:27, 29:28... Донченко здобув четверту перемогу поспіль'; his wish to fight Daniel Rodriguez is a callout described, not quoted, so next fight is no and he_speaks is no."
+ },
+ {
+  "id": "t1608",
+  "main_claim": "Paul Hughes says Ilia Topuria is the only UFC fighter with a chance to beat Usman Nurmagomedov, should Nurmagomedov join the UFC.",
+  "centrality": "one_of_several",
+  "source": "other_fighter_side",
+  "act": "assesses_him",
+  "fact": "no_fact",
+  "firmness": "none",
+  "reports_his_result": "no",
+  "reports_his_next_fight": "no",
+  "reports_his_health": "no",
+  "he_speaks": "no",
+  "unsure": [
+   "centrality"
+  ],
+  "note": "Hughes: 'The only person in the UFC who has a chance against Usman Nurmagomedov is Ilia Topuria' – an assessment, with Topuria sharing the piece with Nurmagomedov's possible UFC move and Tsarukyan's section; the half built around him could make main_subject. 'no update on when El Matador will return' is the writer's line, no fact."
+ },
+ {
+  "id": "t1609",
+  "main_claim": "Justin Gaethje says a bone bruise and hand problems mean he will not fight again in 2026, and blames Topuria's loss on emotional mistakes in preparation.",
+  "centrality": "one_of_several",
+  "source": "opponent_side",
+  "act": "assesses_him",
+  "fact": "no_fact",
+  "firmness": "none",
+  "reports_his_result": "no",
+  "reports_his_next_fight": "no",
+  "reports_his_health": "no",
+  "he_speaks": "no",
+  "unsure": [
+   "fact"
+  ],
+  "note": "Gaethje's own news shares the piece with a section on Topuria: 'those emotional mistakes in preparation... it's his fault' – opinion. The closing line 'Ilia Topuria has recently confirmed that he is ready to return' is an earlier report recalled in one sentence, so no_fact, though an editor could take it as status_update."
+ },
+ {
+  "id": "t1610",
+  "main_claim": "Jorge Masvidal says Amosov is a bad matchup for the whole welterweight top 10 and a 'nightmare' for Islam Makhachev.",
+  "centrality": "main_subject",
+  "source": "other_fighter_side",
+  "act": "assesses_him",
+  "fact": "no_fact",
+  "firmness": "none",
+  "reports_his_result": "no",
+  "reports_his_next_fight": "no",
+  "reports_his_health": "no",
+  "he_speaks": "no",
+  "unsure": [],
+  "note": "Masvidal, his ATT teammate, rates his level: 'He's a bad fight for everybody... Nightmare for Makhachev... Bigger, longer, and... probably stronger'; no fight exists ('No timeline exists... for Amosov earning a title shot') and his wins over Magny and Alvarez are background."
+ },
+ {
+  "id": "t1611",
+  "main_claim": "Donchenko beat Punahele Soriano by unanimous decision at UFC Fight Night 287 in Paris, dropping him twice in the first round.",
+  "centrality": "main_subject",
+  "source": "no_one",
+  "act": "reports_an_event",
+  "fact": "result",
+  "firmness": "official_or_done",
+  "reports_his_result": "yes",
+  "reports_his_next_fight": "no",
+  "reports_his_health": "no",
+  "he_speaks": "no",
+  "unsure": [],
+  "note": "Fight report 'з посиланням на результати турніру': '30:27, 30:27, 29:28... двічі відправив Соріано в нокдаун'; his stated wish for Daniel Rodriguez is a described callout, not a quote and not a booking, so next fight and he_speaks are no."
+ },
+ {
+  "id": "t1612",
+  "main_claim": "Justin Gaethje says he does not need to avenge losses to Holloway or Oliveira because he beat Topuria, and the fight he wants most is Conor McGregor.",
+  "centrality": "only_mentioned",
+  "source": "opponent_side",
+  "act": "none_of_these",
+  "fact": "no_fact",
+  "firmness": "none",
+  "reports_his_result": "no",
+  "reports_his_next_fight": "no",
+  "reports_his_health": "no",
+  "he_speaks": "no",
+  "unsure": [],
+  "note": "Topuria appears only as Gaethje's reasoning: 'since Topuria beat them, I'm going to... justify it to myself as I got him back' – past fights retold in someone else's story. Gaethje speaks of his own next fight ('I guess it's McGregor'), which the guide says is no act regarding Topuria, hence none_of_these."
+ },
+ {
+  "id": "t1613",
+  "main_claim": "Israel Adesanya, after leaving City Kickboxing, is training at Sydney's Freestyle MMA with Alexander Volkanovski and Mauricio Ruffy ahead of his return.",
+  "centrality": "not_in_content",
+  "source": "other_fighter_side",
+  "act": "none_of_these",
+  "fact": "no_fact",
+  "firmness": "none",
+  "reports_his_result": "no",
+  "reports_his_next_fight": "no",
+  "reports_his_health": "no",
+  "he_speaks": "no",
+  "unsure": [
+   "source"
+  ],
+  "note": "Topuria appears only in a 'LATEST NEWS' link ('New Ilia Topuria update as former UFC champion's plan to return...'), page furniture. Source answers for the main content, Ruffy's post showing Adesanya at the gym (other_fighter_side), though media is arguable since the writer assembles it; nobody does anything regarding Topuria, so none_of_these."
+ },
+ {
+  "id": "t1614",
+  "main_claim": "Justin Gaethje says a knee bone bruise and hand injury rule him out for the rest of 2026 and that he has not decided whether he will retire.",
+  "centrality": "only_mentioned",
+  "source": "opponent_side",
+  "act": "none_of_these",
+  "fact": "no_fact",
+  "firmness": "none",
+  "reports_his_result": "no",
+  "reports_his_next_fight": "no",
+  "reports_his_health": "no",
+  "he_speaks": "no",
+  "unsure": [],
+  "note": "Topuria is one option in the writer's line 'the path forward includes a possible rematch against Ilia Topuria, or maybe... the winner of Tsarukyan vs Ruffy' – speculation with no who, when or where, so no_fact and next fight no. Gaethje speaks only about himself ('I haven't made a decision'), which is no act regarding Topuria, hence none_of_these."
+ },
+ {
+  "id": "t1615",
+  "main_claim": "MMA Fighting's On To the Next One podcast discusses matchmaking after UFC Paris, led by Salahdine Parnasse's win over Dan Hooker.",
+  "centrality": "only_mentioned",
+  "source": "media",
+  "act": "none_of_these",
+  "fact": "no_fact",
+  "firmness": "none",
+  "reports_his_result": "no",
+  "reports_his_next_fight": "no",
+  "reports_his_health": "no",
+  "he_speaks": "no",
+  "unsure": [
+   "act"
+  ],
+  "note": "Donchenko is a name in a list: 'future matchups are discussed for... fellow main card winners Daniil Donchenko, Kurtis Campbell, Losene Keita'; the text carries no statement about who he should fight, so none_of_these rather than steers_him, which an editor could pick since the podcast's subject is his next matchup. His win is background, so result is no."
+ }
+]

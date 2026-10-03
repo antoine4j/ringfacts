@@ -1,0 +1,254 @@
+[
+ {
+  "id": "w0701",
+  "main_claim": "OKTAGON co-founder Pavol Neruda says the promotion is half-way to becoming the 'Champions League of MMA' and wants to reach Spain within about five years.",
+  "centrality": "only_mentioned",
+  "source": "promotion",
+  "act": "none_of_these",
+  "fact": "no_fact",
+  "firmness": "none",
+  "reports_his_result": "no",
+  "reports_his_next_fight": "no",
+  "reports_his_health": "no",
+  "he_speaks": "no",
+  "unsure": [
+   "source"
+  ],
+  "note": "Topuria appears once, in the intro's 'del auge de WOW FC con Ilia Topuria y Cristiano Ronaldo'; nothing is said about him, so act is none_of_these (nobody does anything regarding him). Source is answered for the main content, an interview with a rival promotion's co-founder: 'promotion' is defined as the UFC, so none_of_these (a non-UFC promoter) is a reasonable alternative."
+ },
+ {
+  "id": "w0702",
+  "main_claim": "Dana White denies the conspiracy theory that the US military altered the weather for the UFC White House card.",
+  "centrality": "only_mentioned",
+  "source": "promotion",
+  "act": "none_of_these",
+  "fact": "no_fact",
+  "firmness": "none",
+  "reports_his_result": "no",
+  "reports_his_next_fight": "no",
+  "reports_his_health": "no",
+  "he_speaks": "no",
+  "unsure": [],
+  "note": "Topuria is named only in the recap 'Gaethje pulled off one of the biggest victories... Upsetting Ilia Topuria' and a photo caption; his June loss is background, so result is no. Source is Dana White for the main content; act is none_of_these because nobody does anything regarding Topuria."
+ },
+ {
+  "id": "w0703",
+  "main_claim": "Donchenko and Punahele Soriano faced off at the UFC Fight Night 287 ceremonial weigh-ins.",
+  "centrality": "one_of_several",
+  "source": "no_one",
+  "act": "reports_an_event",
+  "fact": "fight_week_event",
+  "firmness": "official_or_done",
+  "reports_his_result": "no",
+  "reports_his_next_fight": "no",
+  "reports_his_health": "no",
+  "he_speaks": "no",
+  "unsure": [
+   "centrality",
+   "fact",
+   "firmness"
+  ],
+  "note": "The saved text is the title 'Daniil Donchenko vs. Punahele Soriano, UFC Fight Night 287 ceremonial weigh-ins faceoff' followed only by newsletter sign-up and login boilerplate. Labelled from the title as a faceoff shared with Soriano; an editor could call it not_in_content / no_fact / none because no body text about him survived."
+ },
+ {
+  "id": "w0704",
+  "main_claim": "UFC commentator Jon Anik says there are internal UFC conversations about booking Gaethje vs. Topuria 2.",
+  "centrality": "one_of_several",
+  "source": "media",
+  "act": "gives_news_of_him",
+  "fact": "next_fight",
+  "firmness": "rumour",
+  "reports_his_result": "no",
+  "reports_his_next_fight": "yes",
+  "reports_his_health": "no",
+  "he_speaks": "no",
+  "unsure": [
+   "centrality",
+   "act",
+   "fact"
+  ],
+  "note": "Anik: 'I think there are internal conversations to potentially try to do Gaethje vs. Topuria 2' - a third-party rumour of his next fight with a named source, so next_fight at rumour; the 'I think' framing could make an editor read it as a guess (act none_of_these, fact no_fact). Centrality could be main_subject since the rematch question is about Topuria, but much of the body is Gaethje's McGregor wish, hand injury and retirement talk, so one_of_several."
+ },
+ {
+  "id": "w0705",
+  "main_claim": "All 28 UFC Paris fighters made weight, Hooker and Parnasse at 155 for the main event.",
+  "centrality": "only_mentioned",
+  "source": "no_one",
+  "act": "reports_an_event",
+  "fact": "fight_week_event",
+  "firmness": "official_or_done",
+  "reports_his_result": "no",
+  "reports_his_next_fight": "no",
+  "reports_his_health": "no",
+  "he_speaks": "no",
+  "unsure": [
+   "fact"
+  ],
+  "note": "Donchenko appears only as a line in the weigh-in list, 'Daniil Donchenko (170) vs. Punahele Soriano (170)'; the weigh-in is the article's event and he made weight, so fight_week_event, though an editor could say a name in a list carries no fact of its own. The booking is the premise of the list, so next fight is no."
+ },
+ {
+  "id": "w0706",
+  "main_claim": "Arman Tsarukyan says he wants at least five lightweight title defences to break Makhachev's record before chasing him at welterweight.",
+  "centrality": "only_mentioned",
+  "source": "other_fighter_side",
+  "act": "assesses_him",
+  "fact": "no_fact",
+  "firmness": "none",
+  "reports_his_result": "no",
+  "reports_his_next_fight": "no",
+  "reports_his_health": "no",
+  "he_speaks": "no",
+  "unsure": [
+   "centrality",
+   "act"
+  ],
+  "note": "Tsarukyan's story; Topuria gets his opinion ('Either he's going to be super good or... not going to recover', 'he's an incredible fighter') and a matchmaking forecast ('they're going to give to Ilia someone easy'), nothing new in fact. Tsarukyan is not booked against him, so other_fighter_side; the assessment could be read as a guess (none_of_these) and his two paragraphs as one_of_several."
+ },
+ {
+  "id": "w0707",
+  "main_claim": "RAF Moscow, featuring Khamzat Chimaev's return, has no confirmed US stream after Fox Nation pulled out amid sanctions concerns.",
+  "centrality": "not_in_content",
+  "source": "media",
+  "act": "none_of_these",
+  "fact": "no_fact",
+  "firmness": "none",
+  "reports_his_result": "no",
+  "reports_his_next_fight": "no",
+  "reports_his_health": "no",
+  "he_speaks": "no",
+  "unsure": [],
+  "note": "Topuria appears only in an inserted 'LATEST NEWS: Ilia Topuria recalls not recognizing himself...' link, not in the article's own text. Source is answered for the main content (the writer relaying an ESPN report); act is none_of_these because nobody does anything regarding him."
+ },
+ {
+  "id": "w0708",
+  "main_claim": "AKA coach Javier Mendez says Topuria needs more than one spectacular win before a Makhachev superfight and doubts his body suits welterweight.",
+  "centrality": "main_subject",
+  "source": "other_fighter_side",
+  "act": "assesses_him",
+  "fact": "no_fact",
+  "firmness": "none",
+  "reports_his_result": "no",
+  "reports_his_next_fight": "no",
+  "reports_his_health": "no",
+  "he_speaks": "no",
+  "unsure": [
+   "act"
+  ],
+  "note": "Mendez, Makhachev's coach, is other_fighter_side; 'he has to get another fight under his wings... even one win isn't going to be enough' and 'I don't think his body is going to translate... at the welterweight division' assess his standing, though the first part could be read as steers_him. 'Topuria is recovering and is expected to return no sooner than spring 2027' is the writer's recap, so health and fact stay no."
+ },
+ {
+  "id": "w0709",
+  "main_claim": "Justin Gaethje says Topuria made 'terrible emotional mistakes' before their White House fight and was not prepared for it.",
+  "centrality": "main_subject",
+  "source": "opponent_side",
+  "act": "assesses_him",
+  "fact": "no_fact",
+  "firmness": "none",
+  "reports_his_result": "no",
+  "reports_his_next_fight": "no",
+  "reports_his_health": "no",
+  "he_speaks": "no",
+  "unsure": [],
+  "note": "Gaethje, who fought him, judges his mindset: 'No estaba preparado para lo que pasó esa noche. Es culpa suya.' The fight and corner stoppage are retold as background to the quotes, so result is no; Topuria does not speak."
+ },
+ {
+  "id": "w0710",
+  "main_claim": "Joe Rogan urges Topuria not to rush his return after his heavy defeat, pointing to Volkanovski's quick comebacks as the mistake to avoid.",
+  "centrality": "main_subject",
+  "source": "media",
+  "act": "steers_him",
+  "fact": "no_fact",
+  "firmness": "none",
+  "reports_his_result": "no",
+  "reports_his_next_fight": "no",
+  "reports_his_health": "no",
+  "he_speaks": "no",
+  "unsure": [
+   "fact",
+   "reports_his_next_fight"
+  ],
+  "note": "Rogan ('he probably needs like six months before he's even sparring again', 'you've got to be very careful how you recover') is a podcaster, so media and steers_him; the fractures are the writer's recap, so health is no. The second half relays Anik's 'internal conversations' about a Gaethje rematch, which Anik himself calls 'non-informed speculation', so I kept it as opinion beside the main claim; an editor could count it as a sourced rumour (next_fight, rumour, next fight yes)."
+ },
+ {
+  "id": "w0711",
+  "main_claim": "Donchenko dropped Soriano with an elbow in round one and won a unanimous decision at UFC Paris.",
+  "centrality": "main_subject",
+  "source": "no_one",
+  "act": "reports_an_event",
+  "fact": "result",
+  "firmness": "official_or_done",
+  "reports_his_result": "yes",
+  "reports_his_next_fight": "no",
+  "reports_his_health": "no",
+  "he_speaks": "no",
+  "unsure": [
+   "centrality"
+  ],
+  "note": "A round-by-round fight report ending 'Official Result: Daniil Donchenko def. Punahele Soriano via Unanimous Decision (30-27, 30-27, 29-28)'. Built around his win, so main_subject, though a report covering both fighters could be read as one_of_several."
+ },
+ {
+  "id": "w0712",
+  "main_claim": "UFC Paris on September 5 is headlined by Salahdine Parnasse's debut against Dan Hooker; here are the start times, card and how to watch.",
+  "centrality": "only_mentioned",
+  "source": "media",
+  "act": "none_of_these",
+  "fact": "no_fact",
+  "firmness": "none",
+  "reports_his_result": "no",
+  "reports_his_next_fight": "no",
+  "reports_his_health": "no",
+  "he_speaks": "no",
+  "unsure": [],
+  "note": "Donchenko appears only as a line in the card list, 'Welterweight: Daniil Donchenko vs Punahele Soriano'; the booking is the premise of the card list, so next fight is no. Source is the outlet's writer for the main content; act is none_of_these because nobody does anything regarding him."
+ },
+ {
+  "id": "w0713",
+  "main_claim": "MMA Junkie staff and readers pick the UFC Paris card, with readers favouring Hooker to upset Parnasse.",
+  "centrality": "only_mentioned",
+  "source": "fans",
+  "act": "predicts_his_fight",
+  "fact": "no_fact",
+  "firmness": "none",
+  "reports_his_result": "no",
+  "reports_his_next_fight": "no",
+  "reports_his_health": "no",
+  "he_speaks": "no",
+  "unsure": [
+   "source",
+   "act"
+  ],
+  "note": "Donchenko appears only in the readers' pick line 'Readers 148-65: ... Donchenko (71%)', a fan pick for his fight, so fans and predicts_his_fight; the staff picks the piece is built on are not in the saved text, so an editor could answer media for the main content and none_of_these for a bare percentage."
+ },
+ {
+  "id": "w0714",
+  "main_claim": "Donchenko beat Punahele Soriano by unanimous decision at UFC Fight Night 287 in Paris for his fourth straight UFC win.",
+  "centrality": "main_subject",
+  "source": "no_one",
+  "act": "reports_an_event",
+  "fact": "result",
+  "firmness": "official_or_done",
+  "reports_his_result": "yes",
+  "reports_his_next_fight": "no",
+  "reports_his_health": "no",
+  "he_speaks": "no",
+  "unsure": [],
+  "note": "A fight report with the scorecards (30:27, 30:27, 29:28) and his record now 4:0 in the UFC. His post-fight callout of Daniel Rodriguez ('викликав на бій') is a wish, so next fight is no, and it is described rather than quoted, so he_speaks is no."
+ },
+ {
+  "id": "w0715",
+  "main_claim": "Ahead of facing Soriano in Paris, Donchenko reflects on his more patient win over Berggren, his French upbringing and his aim to finish Soriano and earn a ranking.",
+  "centrality": "main_subject",
+  "source": "himself",
+  "act": "speaks_of_himself",
+  "fact": "no_fact",
+  "firmness": "none",
+  "reports_his_result": "no",
+  "reports_his_next_fight": "no",
+  "reports_his_health": "no",
+  "he_speaks": "yes",
+  "unsure": [
+   "fact"
+  ],
+  "note": "An interview feature: 'I feel like every fight, I progress', 'I don't care about rankings', 'I have everything to win this fight'. The Soriano booking is the premise, so next fight is no; his summers in France ('every summer, I was one or two months in France') could be read as personal_life and the camp at Czerwony Smok in Poznan as status_update, but the piece is reflection and intent, so no_fact."
+ }
+]

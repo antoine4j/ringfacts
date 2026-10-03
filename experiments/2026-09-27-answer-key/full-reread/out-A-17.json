@@ -1,0 +1,258 @@
+[
+ {
+  "id": "t1701",
+  "main_claim": "Donchenko made weight (77.11 kg) for his Paris bout with Soriano and says he will rehydrate carefully to about 86 kg.",
+  "centrality": "main_subject",
+  "source": "himself",
+  "act": "speaks_of_himself",
+  "fact": "fight_week_event",
+  "firmness": "official_or_done",
+  "reports_his_result": "no",
+  "reports_his_next_fight": "no",
+  "reports_his_health": "no",
+  "he_speaks": "yes",
+  "unsure": [],
+  "note": "'Обидва бійці показали вагу 77,11 кг' and his quotes about rehydrating to 86 kg are the weigh-in routine; the Sept 5 bout is the premise of the weigh-in and the June win over Berggren is background, so next fight and result are no."
+ },
+ {
+  "id": "t1702",
+  "main_claim": "Gaethje says Topuria was 'very easy to predict' because his footwork never changes rhythm and he made emotional mistakes in preparation.",
+  "centrality": "main_subject",
+  "source": "opponent_side",
+  "act": "assesses_him",
+  "fact": "no_fact",
+  "firmness": "none",
+  "reports_his_result": "no",
+  "reports_his_next_fight": "no",
+  "reports_his_health": "no",
+  "he_speaks": "no",
+  "unsure": [
+   "centrality"
+  ],
+  "note": "Gaethje, who already fought him, analyses his feet and his pre-fight 'emotional mistakes'; the rematch is only 'rumours swirl' and Anik's belief, so no fact. Centrality unsure because the piece is built on Gaethje's own words and shares the stage with his win."
+ },
+ {
+  "id": "t1703",
+  "main_claim": "Gaethje tells Demetrious Johnson that Topuria's unchanging foot rhythm and overconfidence made him easy to beat at UFC White House.",
+  "centrality": "main_subject",
+  "source": "opponent_side",
+  "act": "assesses_him",
+  "fact": "no_fact",
+  "firmness": "none",
+  "reports_his_result": "no",
+  "reports_his_next_fight": "no",
+  "reports_his_health": "no",
+  "he_speaks": "no",
+  "unsure": [
+   "centrality",
+   "fact",
+   "reports_his_next_fight"
+  ],
+  "note": "'His feet never change rhythms' and 'He forgot who he was' are Gaethje assessing him; the closing line that Anik 'has heard internal talk of a rematch' is a rumour recalled at the end, so I kept no_fact but an editor could read it as next_fight at rumour firmness. Centrality unsure as in t1702."
+ },
+ {
+  "id": "t1704",
+  "main_claim": "OKTAGON co-founder Pavol Neruda discusses the promotion's growth, its 60,000-seat Frankfurt event and a possible expansion to Spain.",
+  "centrality": "only_mentioned",
+  "source": "none_of_these",
+  "act": "none_of_these",
+  "fact": "no_fact",
+  "firmness": "none",
+  "reports_his_result": "no",
+  "reports_his_next_fight": "no",
+  "reports_his_health": "no",
+  "he_speaks": "no",
+  "unsure": [
+   "source"
+  ],
+  "note": "Topuria appears once in the lead ('del auge de WOW FC con Ilia Topuria y Cristiano Ronaldo') and nowhere else. Source none_of_these: the speaker is the co-founder of a rival promotion (OKTAGON), not the UFC, so 'promotion' as defined does not fit; act none_of_these because nobody does anything regarding him."
+ },
+ {
+  "id": "t1705",
+  "main_claim": "UFC analyst Álvaro Colmenero reports that Topuria will end his media absence and return to public life in September.",
+  "centrality": "main_subject",
+  "source": "media",
+  "act": "gives_news_of_him",
+  "fact": "status_update",
+  "firmness": "reported",
+  "reports_his_result": "no",
+  "reports_his_next_fight": "no",
+  "reports_his_health": "no",
+  "he_speaks": "no",
+  "unsure": [
+   "fact",
+   "reports_his_health"
+  ],
+  "note": "'Ilia regresará a la luz pública durante este mes de septiembre' is a named analyst reporting his return to public life. Colmenero also says 'Julio estuvo claramente enfocado en recuperarse de sus lesiones y someterse a tratamientos', which an editor could count as a health statement; I read it as a timeline, with the fractures recapped as background."
+ },
+ {
+  "id": "t1706",
+  "main_claim": "Donchenko, interviewed after beating Soriano in Paris, discusses the fight, his callout of Daniel Rodriguez and which ex-champions he would like to face.",
+  "centrality": "only_mentioned",
+  "source": "other_fighter_side",
+  "act": "none_of_these",
+  "fact": "no_fact",
+  "firmness": "none",
+  "reports_his_result": "no",
+  "reports_his_next_fight": "no",
+  "reports_his_health": "no",
+  "he_speaks": "no",
+  "unsure": [],
+  "note": "Amosov appears only in a question about the rankings and in Donchenko's 'Ярослав мені багато допомагав... Амосов кликав мене до себе у зал' plus a photo caption; what he did for the speaker is no act, so none_of_these, and nothing new about Amosov is reported."
+ },
+ {
+  "id": "t1707",
+  "main_claim": "Gaethje says his hands are still hurt, he will not fight again in 2026, and he doubts a Topuria rematch is his next fight.",
+  "centrality": "one_of_several",
+  "source": "opponent_side",
+  "act": "none_of_these",
+  "fact": "no_fact",
+  "firmness": "none",
+  "reports_his_result": "no",
+  "reports_his_next_fight": "no",
+  "reports_his_health": "no",
+  "he_speaks": "no",
+  "unsure": [
+   "centrality"
+  ],
+  "note": "On Topuria, Gaethje only guesses: '[Topuria is] probably not going to fight until next year... I don't think that's my next fight', a guess plus a stance on his own next fight, so no act and no fact; the rematch 'suggestions' have no who or when. Centrality unsure: Gaethje's own news tied to their fought bout, but Topuria's part is small."
+ },
+ {
+  "id": "t1708",
+  "main_claim": "Gaethje, discussing his future with UFC on Paramount, says he will not retire yet and would like to fight Conor McGregor.",
+  "centrality": "only_mentioned",
+  "source": "opponent_side",
+  "act": "none_of_these",
+  "fact": "no_fact",
+  "firmness": "none",
+  "reports_his_result": "no",
+  "reports_his_next_fight": "no",
+  "reports_his_health": "no",
+  "he_speaks": "no",
+  "unsure": [],
+  "note": "Topuria is named only as the man Gaethje beat in June, in 'since Topuria beat them' and as holding a top-two ranking; Gaethje talks about himself, so act is none_of_these and there is no fact about Topuria."
+ },
+ {
+  "id": "t1709",
+  "main_claim": "Donchenko beat Punahele Soriano by unanimous decision (30-27, 30-27, 29-28) at UFC Fight Night 287 in Paris, dominating but failing to get the knockout.",
+  "centrality": "main_subject",
+  "source": "no_one",
+  "act": "reports_an_event",
+  "fact": "result",
+  "firmness": "official_or_done",
+  "reports_his_result": "yes",
+  "reports_his_next_fight": "no",
+  "reports_his_health": "no",
+  "he_speaks": "yes",
+  "unsure": [
+   "source",
+   "act",
+   "he_speaks"
+  ],
+  "note": "A round-by-round account ending in 'Офіційні картки – 30–27, 30–27 і 29–28 для Донченка'; the writer also judges him heavily, so media/assesses_him is defensible. His callout of Rodriguez is a wish (next fight no). He_speaks unsure: his quotes ('Він сильніший за всіх моїх попередніх суперників...') are pre-fight words recalled as context."
+ },
+ {
+  "id": "t1710",
+  "main_claim": "A DraftKings bettor previews UFC Paris and backs Donchenko to finish Soriano at +100 among picks for the card.",
+  "centrality": "one_of_several",
+  "source": "media",
+  "act": "predicts_his_fight",
+  "fact": "no_fact",
+  "firmness": "none",
+  "reports_his_result": "no",
+  "reports_his_next_fight": "no",
+  "reports_his_health": "no",
+  "he_speaks": "no",
+  "unsure": [
+   "centrality"
+  ],
+  "note": "'I'm backing him to win by KO/TKO/DQ or submission at +100' is a pundit's pick; his bout is the premise of the preview, so next fight is no. Centrality unsure: he gets one paragraph of three matchups, which could be read as only_mentioned."
+ },
+ {
+  "id": "t1711",
+  "main_claim": "Jon Anik says the UFC is internally discussing an immediate Gaethje–Topuria rematch as Gaethje's first title defence.",
+  "centrality": "one_of_several",
+  "source": "media",
+  "act": "gives_news_of_him",
+  "fact": "next_fight",
+  "firmness": "rumour",
+  "reports_his_result": "no",
+  "reports_his_next_fight": "yes",
+  "reports_his_health": "no",
+  "he_speaks": "no",
+  "unsure": [
+   "fact",
+   "firmness",
+   "act",
+   "reports_his_next_fight"
+  ],
+  "note": "The lead states 'the promotion is internally discussing an immediate rematch' and 'the UFC is weighing' it, a rumour with a named source (Anik); but Anik's own quote calls it 'my non-informed speculation... that's what I think is going to happen', so an editor could rule it a guess: no_fact, none_of_these, next fight no."
+ },
+ {
+  "id": "t1712",
+  "main_claim": "Eddie Alvarez says an immediate Topuria rematch with Gaethje would be a mistake and that Topuria should rebuild against a lesser opponent first.",
+  "centrality": "main_subject",
+  "source": "other_fighter_side",
+  "act": "steers_him",
+  "fact": "no_fact",
+  "firmness": "none",
+  "reports_his_result": "no",
+  "reports_his_next_fight": "no",
+  "reports_his_health": "no",
+  "he_speaks": "no",
+  "unsure": [
+   "act"
+  ],
+  "note": "Alvarez, a former fighter, says 'Topuria needs to rebuild confidence against a lesser opponent before challenging Gaethje again', sincere advice (steers_him), while 'His brain is still going to suffer a form of PTSD' is assessment, hence act unsure. 'Recent reports suggest the UFC is considering' is a premise with no who or when, so no fact."
+ },
+ {
+  "id": "t1713",
+  "main_claim": "At the Paris post-fight press conference Donchenko says he had the third round under control, followed his game plan, thanks Ukrainian fans and repeats that he wants Daniel Rodriguez next.",
+  "centrality": "main_subject",
+  "source": "himself",
+  "act": "speaks_of_himself",
+  "fact": "no_fact",
+  "firmness": "none",
+  "reports_his_result": "no",
+  "reports_his_next_fight": "no",
+  "reports_his_health": "no",
+  "he_speaks": "yes",
+  "unsure": [],
+  "note": "'Чесно кажучи, все було під контролем. Я просто не хотів вставати у третьому раунді' and his thanks to fans are an interview after the fight, so result is no; 'хотів би битися із Даніелем Родрігесом' is a wish, so next fight is no."
+ },
+ {
+  "id": "t1714",
+  "main_claim": "Spanish reporter Álvaro Colmenero says Topuria will return to the public eye within days, in September, after months away recovering.",
+  "centrality": "main_subject",
+  "source": "media",
+  "act": "gives_news_of_him",
+  "fact": "status_update",
+  "firmness": "reported",
+  "reports_his_result": "no",
+  "reports_his_next_fight": "no",
+  "reports_his_health": "no",
+  "he_speaks": "no",
+  "unsure": [
+   "fact",
+   "reports_his_health"
+  ],
+  "note": "'Ilia is going to return to the public eye directly in the month of September' is a named reporter on his return to public life. The broken orbital bone is an older medical update recalled, 'it sounds like he has finally recovered enough' is the writer's inference, and 'July was clearly about healing his injuries' could be read as health by another editor. Gaethje shutting down a rematch and a 'pitched' Pimblett fight are opinions."
+ },
+ {
+  "id": "t1715",
+  "main_claim": "Ahead of facing Soriano in Paris, the fight he asked for, Donchenko reflects on his growth, his French, his camp and his aim to finish Soriano and enter the Top 15.",
+  "centrality": "main_subject",
+  "source": "himself",
+  "act": "speaks_of_himself",
+  "fact": "no_fact",
+  "firmness": "none",
+  "reports_his_result": "no",
+  "reports_his_next_fight": "no",
+  "reports_his_health": "no",
+  "he_speaks": "yes",
+  "unsure": [
+   "fact"
+  ],
+  "note": "A preview built on his quotes ('If I knock this guy out... I deserve to be in the Top 15, I guess'); the Soriano booking is its premise and the Berggren KO is background. Fact unsure because the writer's aside that he spent camp 'at Czerwony Smok in Poznan, Poland' after vacation and training in Switzerland could be read as a status_update."
+ }
+]

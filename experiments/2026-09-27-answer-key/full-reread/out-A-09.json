@@ -1,0 +1,263 @@
+[
+ {
+  "id": "t0901",
+  "main_claim": "Topuria, in a new essay, says he wants to return because he still has fire, not to erase his defeat to Gaethje.",
+  "centrality": "main_subject",
+  "source": "himself",
+  "act": "speaks_of_himself",
+  "fact": "no_fact",
+  "firmness": "none",
+  "reports_his_result": "no",
+  "reports_his_next_fight": "no",
+  "reports_his_health": "no",
+  "he_speaks": "yes",
+  "unsure": [
+   "fact"
+  ],
+  "note": "The quoted essay ('No quiero volver para borrar una derrota... No sé cómo será mi próxima pelea') is a reflection with no hard fact; the Gaethje/Pimblett/Tsarukyan options are the writer's ('a pesar de no dar nombres concretos'). Fact is unsure because 'está más motivado que nunca para regresar' could be read as a status_update that he intends to come back."
+ },
+ {
+  "id": "t0902",
+  "main_claim": "Topuria breaks his silence with a nine-part essay on his loss to Gaethje, revealing fractured orbital bones, a broken septum and a broken foot, and saying he will return without trying to erase the defeat.",
+  "centrality": "main_subject",
+  "source": "himself",
+  "act": "speaks_of_himself",
+  "fact": "health",
+  "firmness": "official_or_done",
+  "reports_his_result": "no",
+  "reports_his_next_fight": "no",
+  "reports_his_health": "yes",
+  "he_speaks": "yes",
+  "unsure": [
+   "fact"
+  ],
+  "note": "'He also revealed that he suffered fractures to both orbital bones, a broken septum, and a broken foot' is his own statement of his condition inside the essay the article is built on, so fact is health stated by himself; the June loss is background and his quotes ('I do not want to come back to erase a defeat') are a reflection. Fact is unsure because the injury line is one paraphrased sentence in a long summary of a reflective essay, and no_fact is arguable."
+ },
+ {
+  "id": "t0903",
+  "main_claim": "Joe Rogan urges Topuria not to rush his return after the damage he took against Gaethje, citing Volkanovski's quick comeback as a cautionary example.",
+  "centrality": "main_subject",
+  "source": "media",
+  "act": "steers_him",
+  "fact": "no_fact",
+  "firmness": "none",
+  "reports_his_result": "no",
+  "reports_his_next_fight": "no",
+  "reports_his_health": "no",
+  "he_speaks": "no",
+  "unsure": [
+   "act",
+   "fact"
+  ],
+  "note": "Rogan ('the UFC commentator', on his podcast) says 'you've got to be very careful how you recover' and 'he probably needs like six months before he's even sparring' — sincere advice about his next move, so steers_him, though assesses_him ('a very mentally strong guy') is arguable. The fractures are recapped from his essay as the premise of Rogan's opinion and the rematch 'talks... swirling' name no source, so no_fact; fact is unsure because the article does restate his own revelation of the injuries. Topuria's words are only paraphrased ('Topuria admitted that...'), so he_speaks is no."
+ },
+ {
+  "id": "t0904",
+  "main_claim": "Topuria writes that his first loss left him with two fractured orbital bones, a broken septum and a broken foot, that he barely recognised himself in the mirror, and that the defeat made his desire to return bigger.",
+  "centrality": "main_subject",
+  "source": "himself",
+  "act": "speaks_of_himself",
+  "fact": "health",
+  "firmness": "official_or_done",
+  "reports_his_result": "no",
+  "reports_his_next_fight": "no",
+  "reports_his_health": "yes",
+  "he_speaks": "yes",
+  "unsure": [
+   "fact"
+  ],
+  "note": "His quoted words 'both orbital bones fractured, my septum broken, and my foot broken' state his condition himself, so fact is health, official; the loss itself is retold as background to his statement, so result is no. Fact is unsure because the piece is mainly a reflection on motives and no_fact is arguable."
+ },
+ {
+  "id": "t0905",
+  "main_claim": "A DJ remixed Paddy Pimblett's 'we don't get knocked out' catchphrase into a dance track at Creamfields, where 80,000 fans heard it.",
+  "centrality": "only_mentioned",
+  "source": "other_fighter_side",
+  "act": "none_of_these",
+  "fact": "no_fact",
+  "firmness": "none",
+  "reports_his_result": "no",
+  "reports_his_next_fight": "no",
+  "reports_his_health": "no",
+  "he_speaks": "no",
+  "unsure": [
+   "source"
+  ],
+  "note": "Topuria appears in one line: Pimblett 'ruled out a clash with Ilia Topuria, whom he expects to return next year' — Pimblett's stance on his own next fight plus a guess at Topuria's timing, which is no act (none_of_these) and no fact. Source is Pimblett, not booked against him, so other_fighter_side; unsure because the article's main content is a DJ and the crowd (fans) rather than any fighter."
+ },
+ {
+  "id": "t0906",
+  "main_claim": "Topuria's manager Malki Kawa hits back at Ali Abdelaziz's prediction that Usman Nurmagomedov would beat Topuria, saying Topuria had a bad night against Gaethje and would beat anyone on his comeback.",
+  "centrality": "main_subject",
+  "source": "his_manager",
+  "act": "answers_for_him",
+  "fact": "no_fact",
+  "firmness": "none",
+  "reports_his_result": "no",
+  "reports_his_next_fight": "no",
+  "reports_his_health": "no",
+  "he_speaks": "no",
+  "unsure": [
+   "act"
+  ],
+  "note": "'Ilia Topuria's manager Malki Kawa fired back at Ali Abdelaziz over his bold prediction' is a reply on his behalf to a claim aimed at him; act is unsure because much of what Kawa says is an assessment ('still in my book the No. 1 fighter in the world', 'would annihilate 100 percent of your roster'). 'When the comeback comes' names no date or fight, so no_fact."
+ },
+ {
+  "id": "t0907",
+  "main_claim": "Donchenko beat Punahele Soriano by unanimous decision at UFC Fight Night 287 in Paris on 5 September for his fourth straight UFC win.",
+  "centrality": "main_subject",
+  "source": "no_one",
+  "act": "reports_an_event",
+  "fact": "result",
+  "firmness": "official_or_done",
+  "reports_his_result": "yes",
+  "reports_his_next_fight": "no",
+  "reports_his_health": "no",
+  "he_speaks": "no",
+  "unsure": [],
+  "note": "A fight report: 'виграв одностайним рішенням суддів - 30:27, 30:27, 29:28' with the UFC's own tweet; nobody speaks and the earlier wins over Morono and Berggren are background. Trybuna is only the relaying outlet."
+ },
+ {
+  "id": "t0908",
+  "main_claim": "Islam Makhachev says he wants to end his career with a fight in Moscow, while dismissing talk that he will retire after UFC 330.",
+  "centrality": "not_in_content",
+  "source": "other_fighter_side",
+  "act": "none_of_these",
+  "fact": "no_fact",
+  "firmness": "none",
+  "reports_his_result": "no",
+  "reports_his_next_fight": "no",
+  "reports_his_health": "no",
+  "he_speaks": "no",
+  "unsure": [
+   "centrality"
+  ],
+  "note": "Topuria appears only in a 'LATEST NEWS:' link ('Islam Makhachev would never do what Ilia Topuria did before a UFC title defense'), which is page furniture, hence not_in_content; unsure because the link sits inline in the saved text and could be read as a mention. The body is Makhachev speaking about himself, so nobody does anything regarding Topuria (none_of_these) and there is no fact."
+ },
+ {
+  "id": "t0909",
+  "main_claim": "Ahead of facing Punahele Soriano in Paris, Donchenko says he is becoming a more patient fighter, explains his fluent French, and wants a finish to earn a Top 15 spot and sponsors.",
+  "centrality": "main_subject",
+  "source": "himself",
+  "act": "speaks_of_himself",
+  "fact": "no_fact",
+  "firmness": "none",
+  "reports_his_result": "no",
+  "reports_his_next_fight": "no",
+  "reports_his_health": "no",
+  "he_speaks": "yes",
+  "unsure": [
+   "centrality",
+   "fact",
+   "reports_his_next_fight"
+  ],
+  "note": "A UFC.com preview built on his own quotes ('I feel like every fight, I progress', 'I don't care about rankings', 'I need some more money'); the Soriano booking is the premise of the preview and the Berggren win is retold, so both are background and no new fact is set. Centrality is unsure because a preview covering both fighters can be one_of_several, though Soriano gets only a paragraph; fact and next fight are unsure because the booking ('faces off with Punahele Soriano... this weekend') and the camp detail ('preparing for this camp at Czerwony Smok in Poznan') could be read as next_fight or status_update."
+ },
+ {
+  "id": "t0910",
+  "main_claim": "Sean O'Malley's coach Tim Welch says there are rumours of a Pimblett vs Topuria fight in December, and O'Malley leans toward Pimblett in that match-up.",
+  "centrality": "main_subject",
+  "source": "other_fighter_side",
+  "act": "gives_news_of_him",
+  "fact": "next_fight",
+  "firmness": "rumour",
+  "reports_his_result": "no",
+  "reports_his_next_fight": "yes",
+  "reports_his_health": "no",
+  "he_speaks": "no",
+  "unsure": [
+   "centrality",
+   "act"
+  ],
+  "note": "'Hay rumores de un Paddy Pimblett contra Topuria en diciembre', said by Tim Welch, O'Malley's coach, is a third-party rumour with a named speaker and a month, so next_fight at rumour; Welch and O'Malley belong to another fighter's camp not linked to a fight with him. Centrality is unsure because the rumoured fight shares the piece with Pimblett (one_of_several), and act because O'Malley's pick ('me inclino por Paddy') makes predicts_his_fight arguable; the closing rematch wish is background."
+ },
+ {
+  "id": "t0911",
+  "main_claim": "Topuria speaks for the first time about his loss to Gaethje in an essay, revealing two fractured orbital bones and a broken septum and foot, and saying the defeat made his fire bigger.",
+  "centrality": "main_subject",
+  "source": "himself",
+  "act": "speaks_of_himself",
+  "fact": "health",
+  "firmness": "official_or_done",
+  "reports_his_result": "no",
+  "reports_his_next_fight": "no",
+  "reports_his_health": "yes",
+  "he_speaks": "yes",
+  "unsure": [
+   "fact"
+  ],
+  "note": "His quoted essay states 'las dos órbitas de los ojos fracturadas, el tabique y el pie rotos', his own statement of his condition, so fact is health, official; the loss is retold as background. Fact is unsure because the essay is mainly a reflection ('el resultado decide una noche; el carácter, una vida') and no_fact is arguable."
+ },
+ {
+  "id": "t0912",
+  "main_claim": "Paddy Pimblett says he would love to fight Topuria next ('smash his head in') but nobody has spoken to him about it, and lists other options for a December return.",
+  "centrality": "only_mentioned",
+  "source": "other_fighter_side",
+  "act": "calls_him_out",
+  "fact": "no_fact",
+  "firmness": "none",
+  "reports_his_result": "no",
+  "reports_his_next_fight": "no",
+  "reports_his_health": "no",
+  "he_speaks": "no",
+  "unsure": [
+   "centrality",
+   "fact",
+   "reports_his_next_fight"
+  ],
+  "note": "Pimblett's own news naming Topuria as the opponent he wants ('I'd love to smash his head in, lad... Nothing yet. No one's spoke to me about it') is a callout, so only_mentioned and no_fact; Pimblett is not booked against him. Unsure on all three because the closing line 'Jon Anik claimed there are internal talks of a potential rematch between Gaethje and Topuria' is a named rumour that could make him one_of_several and the fact next_fight at rumour, though it sits as a closing line."
+ },
+ {
+  "id": "t0913",
+  "main_claim": "Dana White hinted that Topuria might face Paddy Pimblett next, which drew complaints from fans wanting title-fight headliners, while Eddie Alvarez says Topuria should not get an immediate Gaethje rematch.",
+  "centrality": "main_subject",
+  "source": "promotion",
+  "act": "gives_news_of_him",
+  "fact": "next_fight",
+  "firmness": "rumour",
+  "reports_his_result": "no",
+  "reports_his_next_fight": "yes",
+  "reports_his_health": "no",
+  "he_speaks": "no",
+  "unsure": [
+   "source",
+   "fact",
+   "firmness",
+   "reports_his_next_fight"
+  ],
+  "note": "'Dana White shed some light recently. He hinted that the El Matador might face Paddy Pimblett next' is the promotion signalling a specific fight, read as next_fight at rumour since 'no set date for Topuria's return has been announced'. Unsure because a hint with no date could instead be an opponent named as an option (status_update, or no_fact), which would also change act, and because the headline's news is the fans' reaction (source fans); 'confirmed his return very soon' is the writer's unquoted line and the Gaethje injuries are background."
+ },
+ {
+  "id": "t0914",
+  "main_claim": "Dan Hooker, ahead of facing Salahdine Parnasse in Paris, says no top lightweight, Topuria included, would risk fighting Usman Nurmagomedov if he joins the UFC, which is why Hooker gets paid to welcome newcomers.",
+  "centrality": "only_mentioned",
+  "source": "other_fighter_side",
+  "act": "none_of_these",
+  "fact": "no_fact",
+  "firmness": "none",
+  "reports_his_result": "no",
+  "reports_his_next_fight": "no",
+  "reports_his_health": "no",
+  "he_speaks": "no",
+  "unsure": [
+   "act",
+   "centrality"
+  ],
+  "note": "Topuria is one line in Hooker's quote ('¿Creen que Ilia va a correr el riesgo de pelear contra un tipo no rankeado...?'), a guess about what he will do, which is no act (none_of_these) and no fact; the article is about Hooker vs Parnasse. Act is unsure because the guess could be read as assessing his willingness, and centrality because the headline carries his name although the body gives him only that sentence."
+ },
+ {
+  "id": "t0915",
+  "main_claim": "Paddy Pimblett says he would love to fight Topuria but has heard nothing official, names Tsarukyan, Gaethje, Ruffy and Oliveira as alternatives, and hopes to fight in December.",
+  "centrality": "only_mentioned",
+  "source": "other_fighter_side",
+  "act": "calls_him_out",
+  "fact": "no_fact",
+  "firmness": "none",
+  "reports_his_result": "no",
+  "reports_his_next_fight": "no",
+  "reports_his_health": "no",
+  "he_speaks": "no",
+  "unsure": [],
+  "note": "Pimblett's callout ('I'd love to smash his head in, lad... Nothing yet. No one's spoke to me about it') names Topuria as a wanted opponent with nothing new added about him, so only_mentioned, calls_him_out, no_fact. 'Growing chatter that the UFC is thinking about' a Gaethje rematch names no source, date or event, so it is 'amid rumours' framing, not a fact."
+ }
+]

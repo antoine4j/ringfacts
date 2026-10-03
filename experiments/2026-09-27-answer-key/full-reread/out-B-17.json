@@ -1,0 +1,257 @@
+[
+ {
+  "id": "w1701",
+  "main_claim": "The Stats Zone previews Donchenko vs Soriano on the Paris main card and predicts Donchenko should win, though not as comfortably as the odds suggest.",
+  "centrality": "one_of_several",
+  "source": "media",
+  "act": "predicts_his_fight",
+  "fact": "no_fact",
+  "firmness": "none",
+  "reports_his_result": "no",
+  "reports_his_next_fight": "no",
+  "reports_his_health": "no",
+  "he_speaks": "no",
+  "unsure": [
+   "fact"
+  ],
+  "note": "A preview with a section on each man and the writer's pick ('he should still get this done'); the booking, walkout time and card order are the premise of the preview, so no_fact and next fight no. Fact is unsure because an editor could read the walkout time and card listing as fight_week_event."
+ },
+ {
+  "id": "w1702",
+  "main_claim": "Topuria's physical trainer Jesus Gallo says his recovery from the orbital and nasal fractures has been excellent and he could be physically ready by December, though 2027 is the sensible target.",
+  "centrality": "main_subject",
+  "source": "his_team",
+  "act": "gives_news_of_him",
+  "fact": "health",
+  "firmness": "reported",
+  "reports_his_result": "no",
+  "reports_his_next_fight": "no",
+  "reports_his_health": "yes",
+  "he_speaks": "no",
+  "unsure": [],
+  "note": "Gallo, 'uno de los preparadores fisicos', states how the recovery is going ('La recuperacion ha sido estupenda', 'no podia ver... no podia respirar'), so the fact is health even though the headline is about a December return; 'podria estar listo en diciembre' is a return window, not a fight, so next fight no."
+ },
+ {
+  "id": "w1703",
+  "main_claim": "Sport.ua analyses why Donchenko vs Soriano in Paris is the Ukrainian's hardest UFC test and picks Donchenko to win, possibly late in round three.",
+  "centrality": "one_of_several",
+  "source": "media",
+  "act": "predicts_his_fight",
+  "fact": "no_fact",
+  "firmness": "none",
+  "reports_his_result": "no",
+  "reports_his_next_fight": "no",
+  "reports_his_health": "no",
+  "he_speaks": "no",
+  "unsure": [
+   "centrality",
+   "fact"
+  ],
+  "note": "The writer's own analysis of both men ending in a pick ('схиляюся до перемоги Донченка'); the booking is the preview's premise, so no_fact. Centrality is unsure because the piece is framed around Donchenko yet gives Soriano as much space; fact is unsure because 'вперше в кар'єрі ... в основній частині турніру' (first main-card slot) could be read as a fight_week_event about card order. The closing 'четверту звитягу поспіль' line is a read-also link, not content."
+ },
+ {
+  "id": "w1704",
+  "main_claim": "Topuria has published a nine-part essay on his website reflecting on his loss to Gaethje, revealing fractures to both orbital bones, a broken septum and a broken foot, and vowing to keep getting back up.",
+  "centrality": "main_subject",
+  "source": "himself",
+  "act": "speaks_of_himself",
+  "fact": "health",
+  "firmness": "official_or_done",
+  "reports_his_result": "no",
+  "reports_his_next_fight": "no",
+  "reports_his_health": "yes",
+  "he_speaks": "yes",
+  "unsure": [
+   "fact"
+  ],
+  "note": "His own essay states 'he suffered fractures to both orbital bones, a broken septum, and a broken foot', the one hard fact inside a reflection, so health at official; 'I do not know what my next fight will look like' is not a fight. Fact is unsure because an editor could call the essay personal_life or no_fact since most of it is life story and reflection."
+ },
+ {
+  "id": "w1705",
+  "main_claim": "After beating Soriano in Paris, Donchenko assesses his performance as a clean, dominant win and says he hopes the UFC gives him a good next fight.",
+  "centrality": "main_subject",
+  "source": "himself",
+  "act": "speaks_of_himself",
+  "fact": "no_fact",
+  "firmness": "none",
+  "reports_his_result": "no",
+  "reports_his_next_fight": "no",
+  "reports_his_health": "no",
+  "he_speaks": "yes",
+  "unsure": [
+   "fact"
+  ],
+  "note": "A post-fight interview: his quotes rate his own performance and voice a hope ('Сподіваюся, що мені дадуть гарний бій'), so the win restated in the lead and the 'Нагадаємо' recap are background and result is no. Fact is unsure because the writer's line that he 'очікує новини про свій наступний бій' (nothing booked yet) could be read as status_update."
+ },
+ {
+  "id": "w1706",
+  "main_claim": "Islam Makhachev says Topuria is a good fighter who is still young and can become champion again if he refocuses after the Gaethje loss.",
+  "centrality": "main_subject",
+  "source": "other_fighter_side",
+  "act": "assesses_him",
+  "fact": "no_fact",
+  "firmness": "none",
+  "reports_his_result": "no",
+  "reports_his_next_fight": "no",
+  "reports_his_health": "no",
+  "he_speaks": "no",
+  "unsure": [
+   "centrality"
+  ],
+  "note": "Makhachev ('aun no se han visto las caras en la jaula', so not opponent side) rates his skills and chances: 'Tiene buenos golpes, buena lucha. Si se concentra, tal vez vuelva a ser campeon'. Centrality is unsure because the last third is about Makhachev's own 2015 loss and his fight with Garry."
+ },
+ {
+  "id": "w1707",
+  "main_claim": "In a fight-week profile, Punahele Soriano explains why he likes staying under the radar and calls his Paris opponent Donchenko a scary, wild young fighter who brought out his best in camp.",
+  "centrality": "one_of_several",
+  "source": "opponent_side",
+  "act": "assesses_him",
+  "fact": "no_fact",
+  "firmness": "none",
+  "reports_his_result": "no",
+  "reports_his_next_fight": "no",
+  "reports_his_health": "no",
+  "he_speaks": "no",
+  "unsure": [
+   "centrality",
+   "act"
+  ],
+  "note": "Soriano's own feature, tied by the article to their booked fight ('Saturday's meeting with Donchenko at Accor Arena'), and Soriano is booked against him so opponent side; the booking is the premise, so no_fact. Centrality is unsure because what is said about Donchenko is one quote ('scary dude, wild dude... young man's fire and vigor'), which an editor could call only_mentioned; act is unsure because that brief remark could be read as too thin for assesses_him (none_of_these)."
+ },
+ {
+  "id": "w1708",
+  "main_claim": "Usman Nurmagomedov's manager Ali Abdelaziz says he wants Topuria as Nurmagomedov's first UFC fight if he signs and predicts Nurmagomedov would make him quit.",
+  "centrality": "only_mentioned",
+  "source": "other_fighter_side",
+  "act": "calls_him_out",
+  "fact": "no_fact",
+  "firmness": "none",
+  "reports_his_result": "no",
+  "reports_his_next_fight": "no",
+  "reports_his_health": "no",
+  "he_speaks": "no",
+  "unsure": [
+   "act"
+  ],
+  "note": "Another fighter's story naming Topuria as the wanted debut opponent ('If he goes to the UFC, I want Ilia Topuria, first fight') with no news about him, so only_mentioned; the manager of a fighter not booked against him is other_fighter_side and the wish is no_fact. Act is unsure because 'I think he'll make Ilia quit' is trash talk via a callout but could also be read as predicts_his_fight or a mere guess (none_of_these)."
+ },
+ {
+  "id": "w1709",
+  "main_claim": "Islam Makhachev says he wants to end his career with a UFC fight in Moscow, while dismissing talk that he will retire after UFC 330.",
+  "centrality": "not_in_content",
+  "source": "other_fighter_side",
+  "act": "none_of_these",
+  "fact": "no_fact",
+  "firmness": "none",
+  "reports_his_result": "no",
+  "reports_his_next_fight": "no",
+  "reports_his_health": "no",
+  "he_speaks": "no",
+  "unsure": [
+   "centrality"
+  ],
+  "note": "Topuria appears only in a 'LATEST NEWS' link ('Islam Makhachev would never do what Ilia Topuria did before a UFC title defense'), which is page furniture, so not_in_content and nobody does anything regarding him (act none_of_these; no act fits an absent subject); source answers for the main content, Makhachev speaking about himself. Centrality is unsure because an editor who counts that link line as text would pick only_mentioned."
+ },
+ {
+  "id": "w1710",
+  "main_claim": "At UFC Paris, Daniil Donchenko beat Punahele Soriano by unanimous decision (30-27, 30-27, 29-28), dropping him in round one.",
+  "centrality": "one_of_several",
+  "source": "no_one",
+  "act": "reports_an_event",
+  "fact": "result",
+  "firmness": "official_or_done",
+  "reports_his_result": "yes",
+  "reports_his_next_fight": "no",
+  "reports_his_health": "no",
+  "he_speaks": "no",
+  "unsure": [
+   "centrality"
+  ],
+  "note": "A live-results page covering the whole card; his bout gets a full round-by-round account ('Donchenko lands a combo of short punches that drops Soriano!') and the official decision, so the fact is result. Centrality is unsure because the guide puts a results page under only_mentioned, though here he gets real content rather than a line."
+ },
+ {
+  "id": "w1711",
+  "main_claim": "Joe Rogan urges Topuria not to rush his return after the damage he took against Gaethje, citing Volkanovski's quick comeback as a cautionary example.",
+  "centrality": "main_subject",
+  "source": "media",
+  "act": "steers_him",
+  "fact": "no_fact",
+  "firmness": "none",
+  "reports_his_result": "no",
+  "reports_his_next_fight": "no",
+  "reports_his_health": "no",
+  "he_speaks": "no",
+  "unsure": [
+   "fact",
+   "reports_his_health"
+  ],
+  "note": "Rogan, a commentator, gives sincere advice ('you've got to be very careful how you recover from those'); his 'probably needs like six months' is a guess, and the rematch and Pimblett 'talks' are 'swirling' with no who or when, so no fact. Fact and health are unsure because the intro recaps the essay's injury list ('two broken orbital bones, a shattered septum, and a broken foot'), which I read as background from an earlier report rather than this article's news; Topuria's essay is described, not quoted, so he_speaks no."
+ },
+ {
+  "id": "w1712",
+  "main_claim": "Topuria reappears before the Georgian public with a message for TBC promising he will return stronger and that his greatest UFC victories are still to come.",
+  "centrality": "main_subject",
+  "source": "himself",
+  "act": "speaks_of_himself",
+  "fact": "no_fact",
+  "firmness": "none",
+  "reports_his_result": "no",
+  "reports_his_next_fight": "no",
+  "reports_his_health": "no",
+  "he_speaks": "yes",
+  "unsure": [
+   "fact"
+  ],
+  "note": "His quoted message is a vow ('Les prometo a todos que volvere aun mas fuerte') with no date, fight or condition, so a message takes the value of what it says: no_fact; the fracture list and the Gaethje/Pimblett rumours are the writer's recap and closing line. Fact is unsure because the headline's 'reaparece' is a return to public life, which the guide also allows as status_update."
+ },
+ {
+  "id": "w1713",
+  "main_claim": "Israel Adesanya picks Ian Machado Garry to upset Islam Makhachev at UFC 330 because he 'believes in magic'.",
+  "centrality": "only_mentioned",
+  "source": "other_fighter_side",
+  "act": "none_of_these",
+  "fact": "no_fact",
+  "firmness": "none",
+  "reports_his_result": "no",
+  "reports_his_next_fight": "no",
+  "reports_his_health": "no",
+  "he_speaks": "no",
+  "unsure": [],
+  "note": "Topuria appears in one line as a past upset ('Justin Gaethje beating Ilia Topuria was a big upset'), so only_mentioned and nobody does anything regarding him (act none_of_these; no act fits a passing reference); source answers for the main content, Adesanya's pick."
+ },
+ {
+  "id": "w1714",
+  "main_claim": "Islam Makhachev says Topuria lost to Gaethje because he lost focus and underestimated him, pointing to Topuria's victory celebration the night before the fight.",
+  "centrality": "main_subject",
+  "source": "other_fighter_side",
+  "act": "assesses_him",
+  "fact": "no_fact",
+  "firmness": "none",
+  "reports_his_result": "no",
+  "reports_his_next_fight": "no",
+  "reports_his_health": "no",
+  "he_speaks": "no",
+  "unsure": [
+   "act"
+  ],
+  "note": "Makhachev, never booked against him ('a potential superfight ... fall through'), assesses his performance ('he spent too much energy trying to knock him out ... he became tired') and his chances ('maybe he will be champion again'). Act is unsure because the 'manifestation, bro' jest and the celebration critique could be read as mockery (calls_him_out), though the article frames it as 'no bad blood'."
+ },
+ {
+  "id": "w1715",
+  "main_claim": "In a fight-week profile, Punahele Soriano explains why he likes staying under the radar and calls his Paris opponent Donchenko a scary, wild young fighter who brought out his best in camp.",
+  "centrality": "one_of_several",
+  "source": "opponent_side",
+  "act": "assesses_him",
+  "fact": "no_fact",
+  "firmness": "none",
+  "reports_his_result": "no",
+  "reports_his_next_fight": "no",
+  "reports_his_health": "no",
+  "he_speaks": "no",
+  "unsure": [
+   "centrality",
+   "act"
+  ],
+  "note": "Same text as the other UFC.com Soriano profile: Soriano's own feature tied to their booked fight ('Saturday's meeting with Donchenko at Accor Arena'), so opponent side and one_of_several, with the booking as premise (no_fact). Centrality is unsure because Donchenko gets one quote ('scary dude, wild dude'), which an editor could call only_mentioned; act is unsure because that remark could be judged too thin for assesses_him (none_of_these)."
+ }
+]

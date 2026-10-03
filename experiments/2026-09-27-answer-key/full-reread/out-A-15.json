@@ -1,0 +1,262 @@
+[
+ {
+  "id": "t1501",
+  "main_claim": "Dana White says Ilia Topuria is ready to fight and the UFC is ready for him, with a Gaethje rematch or a Pimblett fight both acceptable options, a return more likely in early 2027.",
+  "centrality": "main_subject",
+  "source": "promotion",
+  "act": "gives_news_of_him",
+  "fact": "status_update",
+  "firmness": "official_or_done",
+  "reports_his_result": "no",
+  "reports_his_next_fight": "no",
+  "reports_his_health": "no",
+  "he_speaks": "no",
+  "unsure": [
+   "act"
+  ],
+  "note": "Dana White: 'Topuria está listo para pelear, y nosotros estamos preparados para él. Ambas opciones me parecen bien' — the promotion stating he is ready with opponents named only as options is status_update; act could be read as assesses_him (his condition) rather than gives_news_of_him. The fractures and 'completando las recuperaciones' are the writer's recap, so health is no; his essay is referred to, not quoted."
+ },
+ {
+  "id": "t1502",
+  "main_claim": "UFC commentator Jon Anik says he thinks there are internal UFC conversations about booking an immediate Gaethje vs. Topuria rematch, and predicts that is what will happen.",
+  "centrality": "main_subject",
+  "source": "media",
+  "act": "gives_news_of_him",
+  "fact": "next_fight",
+  "firmness": "rumour",
+  "reports_his_result": "no",
+  "reports_his_next_fight": "yes",
+  "reports_his_health": "no",
+  "he_speaks": "no",
+  "unsure": [
+   "act",
+   "fact",
+   "firmness",
+   "reports_his_next_fight"
+  ],
+  "note": "Anik: 'I think there are internal conversations to potentially try to do Gaethje vs. Topuria 2' — a rumour with a named speaker about a specific fight of his, so next_fight at rumour; but the 'I think' hedge and 'predictively, that's what I think is going to happen' make it readable as a guess/forecast of the matchmakers (none_of_these, no_fact, next fight no). 'Facial injuries are also said to have healed well' is unattributed background, so health is no; his message to his son is described, not quoted."
+ },
+ {
+  "id": "t1503",
+  "main_claim": "MMA Fighting previews the UFC Paris main card and picks Soriano to hand Donchenko his first knockout loss.",
+  "centrality": "one_of_several",
+  "source": "media",
+  "act": "predicts_his_fight",
+  "fact": "no_fact",
+  "firmness": "none",
+  "reports_his_result": "no",
+  "reports_his_next_fight": "no",
+  "reports_his_health": "no",
+  "he_speaks": "no",
+  "unsure": [
+   "centrality"
+  ],
+  "note": "'I like Soriano's chances of landing during a flurry and sending Donchenko to his first knockout loss. Pick: Soriano' — a pundit's pick on one of six previewed fights, booking as premise. He gets a full analysis paragraph alongside five other fights, so one_of_several, but a reader could call a card-wide predictions piece only_mentioned."
+ },
+ {
+  "id": "t1504",
+  "main_claim": "Donchenko speaks to UFC.com about his upcoming UFC Paris fight, saying he has 'everything and even more'.",
+  "centrality": "main_subject",
+  "source": "himself",
+  "act": "speaks_of_himself",
+  "fact": "no_fact",
+  "firmness": "none",
+  "reports_his_result": "no",
+  "reports_his_next_fight": "no",
+  "reports_his_health": "no",
+  "he_speaks": "yes",
+  "unsure": [
+   "he_speaks"
+  ],
+  "note": "The saved text is a video page: 'Welterweight Danil Donchenko speaks to UFC.com about his upcoming fight at UFC Fight Night: Hooker vs Parnasse' plus player furniture; the only words of his are the title quote 'I Have Everything And Even More', so he_speaks could be judged no. His booked fight is the premise of the interview, not news, so no_fact."
+ },
+ {
+  "id": "t1505",
+  "main_claim": "Daniil Donchenko beat Punahele Soriano by unanimous decision (30-27, 30-27, 29-28) at UFC Paris, extending his winning streak, and called for a fight with Daniel Rodriguez.",
+  "centrality": "one_of_several",
+  "source": "no_one",
+  "act": "reports_an_event",
+  "fact": "result",
+  "firmness": "official_or_done",
+  "reports_his_result": "yes",
+  "reports_his_next_fight": "no",
+  "reports_his_health": "no",
+  "he_speaks": "no",
+  "unsure": [
+   "centrality"
+  ],
+  "note": "'Daniil Donchenko defeats Punahele Soriano by Unanimous Decision (30-27, 30-27, 29-28)' with a round-by-round account on the UFC.com main card results page — his bout on a results page alongside four others, with real fight content, so one_of_several rather than only_mentioned. 'Called for a matchup with Daniel Rodriguez' is a wish, described not quoted, so next fight no and he_speaks no."
+ },
+ {
+  "id": "t1506",
+  "main_claim": "The Boys in the Back podcast reacts to Ilia Topuria being 'ready to fight' among several other topics, including Noche UFC and Garcia vs. Benn previews.",
+  "centrality": "only_mentioned",
+  "source": "media",
+  "act": "none_of_these",
+  "fact": "no_fact",
+  "firmness": "none",
+  "reports_his_result": "no",
+  "reports_his_next_fight": "no",
+  "reports_his_health": "no",
+  "he_speaks": "no",
+  "unsure": [
+   "centrality",
+   "act",
+   "fact"
+  ],
+  "note": "The whole content is one show blurb: 'The Boys in the Back react to Ilia Topuria being \"ready to fight\", UFC fighters speaking at the 2026 Republican Midterm Convention, the RIZIN x PFL title fight, and more' — he is one topic in a list, nobody's words about him appear (act none_of_these: nothing is done regarding him in the text), and 'ready to fight' is quoted without saying who said it, so no_fact; a reader could call it one_of_several, assesses_him, and status_update since the headline leads with him."
+ },
+ {
+  "id": "t1507",
+  "main_claim": "mma.es points readers to the updated official UFC rankings page.",
+  "centrality": "not_in_content",
+  "source": "media",
+  "act": "none_of_these",
+  "fact": "no_fact",
+  "firmness": "none",
+  "reports_his_result": "no",
+  "reports_his_next_fight": "no",
+  "reports_his_health": "no",
+  "he_speaks": "no",
+  "unsure": [],
+  "note": "The text ('Los rankings UFC reúnen en un solo lugar la clasificación oficial... Pinchando aquí puedes acceder a la web oficial') never names Topuria; the main content is the outlet's own pointer, so source media and act none_of_these because nobody does anything regarding him."
+ },
+ {
+  "id": "t1508",
+  "main_claim": "Arman Tsarukyan says Topuria is still recovering and will probably get an easy tune-up fight against Michael Chandler before returning to title contention.",
+  "centrality": "main_subject",
+  "source": "other_fighter_side",
+  "act": "steers_him",
+  "fact": "no_fact",
+  "firmness": "none",
+  "reports_his_result": "no",
+  "reports_his_next_fight": "no",
+  "reports_his_health": "no",
+  "he_speaks": "no",
+  "unsure": [
+   "centrality",
+   "act"
+  ],
+  "note": "Tsarukyan: 'probably next for him a fight with Michael Chandler... he needs someone easy, an easy fight' — the article frames it as 'a logical tune-up', so sincere steering, but 'probably' makes it a guess (none_of_these) and the 'easy fight' jab could be read as calls_him_out; the second half is Tsarukyan's own Ruffy fight and title plans, so one_of_several is arguable. No bout between them exists ('a bout is yet to materialize'), so other_fighter_side; Chandler is a guess, not talks, so no_fact; 'still recovering' is a rival's remark and the writer's recap, so health no."
+ },
+ {
+  "id": "t1509",
+  "main_claim": "Justin Gaethje says he is more interested in fighting Conor McGregor than rematching Topuria, Oliveira or Holloway.",
+  "centrality": "only_mentioned",
+  "source": "opponent_side",
+  "act": "none_of_these",
+  "fact": "no_fact",
+  "firmness": "none",
+  "reports_his_result": "no",
+  "reports_his_next_fight": "no",
+  "reports_his_health": "no",
+  "he_speaks": "no",
+  "unsure": [
+   "centrality"
+  ],
+  "note": "Gaethje: 'since Topuria beat them, I'm gonna go and justify it to myself like I got them back. I guess McGregor, it would be fun to shut him up' — Gaethje's own next-fight stance, with Topuria one of three names he would not rematch and his June loss recapped as background; act is none_of_these because a speaker's stance on his own next fight is no act regarding him. Gaethje fought him, so opponent_side; a reader could call it one_of_several since the rematch is discussed and dismissed."
+ },
+ {
+  "id": "t1510",
+  "main_claim": "A feature on Ian Garry's career ahead of his UFC 330 welterweight title fight against Islam Makhachev.",
+  "centrality": "not_in_content",
+  "source": "media",
+  "act": "none_of_these",
+  "fact": "no_fact",
+  "firmness": "none",
+  "reports_his_result": "no",
+  "reports_his_next_fight": "no",
+  "reports_his_health": "no",
+  "he_speaks": "no",
+  "unsure": [],
+  "note": "The text is about Garry, McGregor, Khabib and Makhachev ('Ian Garry llega a UFC 330... Frente a Islam Makhachev no pelea solamente por un cinturón') and never names Topuria; the writer's own feature is the main content, so source media, and act none_of_these because nobody does anything regarding him."
+ },
+ {
+  "id": "t1511",
+  "main_claim": "Dan Hooker, ahead of his UFC Paris fight with Parnasse, says nobody in the top 15 wants to risk fighting newcomers and doubts Topuria would risk fighting an unranked Usman Nurmagomedov if he joins the UFC.",
+  "centrality": "only_mentioned",
+  "source": "other_fighter_side",
+  "act": "none_of_these",
+  "fact": "no_fact",
+  "firmness": "none",
+  "reports_his_result": "no",
+  "reports_his_next_fight": "no",
+  "reports_his_health": "no",
+  "he_speaks": "no",
+  "unsure": [
+   "centrality",
+   "act"
+  ],
+  "note": "Hooker: '¿Creen que Ilia va a correr el riesgo de pelear contra un tipo no rankeado que ni siquiera es de la UFC? Nadie más quiere correr el riesgo' — a guess about what Topuria will do inside Hooker's own story about his Parnasse payday, so none_of_these as act (a reader could call it assesses_him), and only_mentioned since nothing new about Topuria is added, though the headline centres him. Hooker is not booked against him, so other_fighter_side."
+ },
+ {
+  "id": "t1512",
+  "main_claim": "Ilia Topuria recounts his hard childhood in Georgia, left with his siblings at eight when his parents went to Spain, bullied at school and afraid of street fights, and how fear and family values shaped him.",
+  "centrality": "main_subject",
+  "source": "himself",
+  "act": "speaks_of_himself",
+  "fact": "personal_life",
+  "firmness": "official_or_done",
+  "reports_his_result": "no",
+  "reports_his_next_fight": "no",
+  "reports_his_health": "no",
+  "he_speaks": "yes",
+  "unsure": [
+   "fact"
+  ],
+  "note": "Extensive quotes of his ('a los ocho años mis padres nos tuvieron que dejar... Nos acosaban en la escuela... Siempre fui un niño al que no le gustaban las peleas en la calle') on childhood and family — personal_life, though they are compiled from earlier interviews (CQ, 'Charlas Adictivas') so a reader could call it a reflection with no_fact. 'A Topuria le cuadran su próximo combate' and 'El agente de Topuria ya ha elegido a su próximo rival' are read-also headlines, not content, so next fight no."
+ },
+ {
+  "id": "t1513",
+  "main_claim": "The saved text is only stylesheet code; the headline announces a BetMGM predictions and odds piece on Donchenko vs. Soriano at UFC Paris.",
+  "centrality": "not_in_content",
+  "source": "media",
+  "act": "none_of_these",
+  "fact": "no_fact",
+  "firmness": "none",
+  "reports_his_result": "no",
+  "reports_his_next_fight": "no",
+  "reports_his_health": "no",
+  "he_speaks": "no",
+  "unsure": [
+   "centrality",
+   "source",
+   "act"
+  ],
+  "note": "The 10,000 characters of saved text are CSS ('select:focus{outline:0;border:1px solid #8a8a8a...') and never name Donchenko or Soriano, so he is not in the content and nobody does anything regarding him (none_of_these); source media is the outlet's own writer as main content. A reader judging from the headline alone could label it one_of_several / media / predicts_his_fight."
+ },
+ {
+  "id": "t1514",
+  "main_claim": "Daniil Donchenko beat Punahele Soriano by unanimous decision (30-27, 30-27, 29-28) at UFC Fight Night 287 in Paris, his fourth win in a row.",
+  "centrality": "main_subject",
+  "source": "no_one",
+  "act": "reports_an_event",
+  "fact": "result",
+  "firmness": "official_or_done",
+  "reports_his_result": "yes",
+  "reports_his_next_fight": "no",
+  "reports_his_health": "no",
+  "he_speaks": "no",
+  "unsure": [],
+  "note": "'Бій завершився за рішенням суддів з рахунком 30–27, 30–27, 29–28 на користь Донченка' — a fight result relayed from Sport.ua with nobody speaking; the closing lines about his potential are the writer's commentary, not a next fight."
+ },
+ {
+  "id": "t1515",
+  "main_claim": "Topuria's manager Malki Kawa fires back at Usman Nurmagomedov's manager Ali Abdelaziz, who claimed Usman would make Topuria tap, saying Topuria would annihilate his roster and beat Gaethje in a rematch.",
+  "centrality": "main_subject",
+  "source": "his_manager",
+  "act": "answers_for_him",
+  "fact": "no_fact",
+  "firmness": "none",
+  "reports_his_result": "no",
+  "reports_his_next_fight": "no",
+  "reports_his_health": "no",
+  "he_speaks": "no",
+  "unsure": [
+   "centrality",
+   "source",
+   "act"
+  ],
+  "note": "Abdelaziz: 'creo que Usman haría rendirse a Ilia'; Kawa, 'mánager de El Matador', replies 'Cállate la boca. Ilia Topuria aniquilaría al 100% de tu róster... Cuando llegue la revancha, lo verán' — the reply on his behalf is the development, but a reader could take Abdelaziz as the source (other_fighter_side, calls_him_out: Usman is not booked against him) and call the two-camp war one_of_several. Everything is wishes and trash talk, so no_fact; the Gaethje rematch and Pimblett are listed as possibilities with no talks, so next fight no."
+ }
+]

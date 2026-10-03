@@ -1,0 +1,258 @@
+[
+ {
+  "id": "w1301",
+  "main_claim": "Joe Rogan warns Topuria to be careful how he recovers and not to come back too soon after the Gaethje loss.",
+  "centrality": "main_subject",
+  "source": "media",
+  "act": "steers_him",
+  "fact": "no_fact",
+  "firmness": "none",
+  "reports_his_result": "no",
+  "reports_his_next_fight": "no",
+  "reports_his_health": "no",
+  "he_speaks": "yes",
+  "unsure": [
+   "act",
+   "fact"
+  ],
+  "note": "Rogan, a UFC color commentator, says 'you gotta be very careful how you recover... a lot of great fighters have made the mistake of coming back too soon' - sincere advice, so steers_him, though 'Ilia's a very mentally strong guy, I think he will bounce back' reads as assesses_him. 'Topuria hinted that he was ready to make a comeback' is a recalled hint and his Instagram quote ('after visiting that hell, I am stronger') is a reflection, so no_fact, but status_update is arguable; his quoted reel makes he_speaks yes."
+ },
+ {
+  "id": "w1302",
+  "main_claim": "UFC analyst Alvaro Colmenero says Topuria will return to public life in September after months away recovering and on holiday.",
+  "centrality": "main_subject",
+  "source": "media",
+  "act": "gives_news_of_him",
+  "fact": "status_update",
+  "firmness": "reported",
+  "reports_his_result": "no",
+  "reports_his_next_fight": "no",
+  "reports_his_health": "no",
+  "he_speaks": "no",
+  "unsure": [
+   "reports_his_health"
+  ],
+  "note": "Colmenero (named analyst) states 'Ilia regresara a la luz publica durante este mes de septiembre' - his return to public life reported by a named person, so status_update at reported. His line 'julio estuvo enfocado en recuperarse de sus lesiones y someterse a tratamientos' is a timeline rather than a statement of his condition, and the fractures paragraph is the writer's recap, so health no, but an editor could read the July line as a recovery update."
+ },
+ {
+  "id": "w1303",
+  "main_claim": "Makhachev's coach Javier Mendez says the Topuria loss changed the trajectory of a Makhachev fight, that Topuria needs more than one impressive win and that his body would not adapt to welterweight.",
+  "centrality": "main_subject",
+  "source": "other_fighter_side",
+  "act": "assesses_him",
+  "fact": "no_fact",
+  "firmness": "none",
+  "reports_his_result": "no",
+  "reports_his_next_fight": "no",
+  "reports_his_health": "no",
+  "he_speaks": "no",
+  "unsure": [
+   "act"
+  ],
+  "note": "Mendez: 'es un tipo mas pequeno. No creo que su cuerpo se vaya a adaptar... en peso welter' and 'una victoria no va a ser suficiente' - opinion on his level and prospects. The Makhachev fight was never booked ('no llegaron a un acuerdo'), so Mendez is other_fighter_side; 'Ilia debe conseguir otra victoria' could be read as steers_him. Topuria's past statements are paraphrased, not quoted."
+ },
+ {
+  "id": "w1304",
+  "main_claim": "Yahoo's weekly UFC power rankings drop Topuria to fifth after his loss to Gaethje.",
+  "centrality": "only_mentioned",
+  "source": "media",
+  "act": "assesses_him",
+  "fact": "no_fact",
+  "firmness": "none",
+  "reports_his_result": "no",
+  "reports_his_next_fight": "no",
+  "reports_his_health": "no",
+  "he_speaks": "no",
+  "unsure": [
+   "act"
+  ],
+  "note": "A ranking entry: 'Ilia Topuria has slipped to fifth on this list after losing badly to Justin Gaethje' with his loss retold as background, so only_mentioned and no_fact. The writer rates his place and his 'god-like complex', which I took as assesses_him, though none_of_these fits a ranking line where nobody engages with him."
+ },
+ {
+  "id": "w1305",
+  "main_claim": "Topuria reappears publicly with a video message to his son Hugo about the loss, saying that after visiting that hell he is stronger than before.",
+  "centrality": "main_subject",
+  "source": "himself",
+  "act": "speaks_of_himself",
+  "fact": "personal_life",
+  "firmness": "official_or_done",
+  "reports_his_result": "no",
+  "reports_his_next_fight": "no",
+  "reports_his_health": "no",
+  "he_speaks": "yes",
+  "unsure": [
+   "fact"
+  ],
+  "note": "The quoted content is a message to his son ('Hugo, llevo unos dias pensando en ti... el caracter es la unica victoria que nadie puede quitarte'), which the guide places under personal_life; the writer's framing 'preparado para el regreso a los entrenamientos' and the December return rumour ('a pesar de los rumores') are not in his words, so status_update or no_fact are reasonable alternatives and next fight is no. The orbital fracture is the writer's recap, so health no."
+ },
+ {
+  "id": "w1306",
+  "main_claim": "MMA Fighting's podcast discusses matchups for UFC Paris winners, Donchenko among them.",
+  "centrality": "only_mentioned",
+  "source": "media",
+  "act": "none_of_these",
+  "fact": "no_fact",
+  "firmness": "none",
+  "reports_his_result": "no",
+  "reports_his_next_fight": "no",
+  "reports_his_health": "no",
+  "he_speaks": "no",
+  "unsure": [
+   "act"
+  ],
+  "note": "Donchenko appears once, in a list: 'along with fellow main card winners Daniil Donchenko, Kurtis Campbell, Losene Keita, and more'. The saved text says only that future matchups 'are discussed' for him with no statement about him, so none_of_these (steers_him would need an actual suggestion in the text); his win is background, not reported as news."
+ },
+ {
+  "id": "w1307",
+  "main_claim": "MMA Fighting previews and picks every UFC Paris main-card fight, picking Soriano to knock out Donchenko.",
+  "centrality": "one_of_several",
+  "source": "media",
+  "act": "predicts_his_fight",
+  "fact": "no_fact",
+  "firmness": "none",
+  "reports_his_result": "no",
+  "reports_his_next_fight": "no",
+  "reports_his_health": "no",
+  "he_speaks": "no",
+  "unsure": [
+   "centrality"
+  ],
+  "note": "Donchenko gets a full preview paragraph for his own fight ('I like Soriano's chances of landing during a flurry and sending Donchenko to his first knockout loss. Pick: Soriano'), a preview of his fight covering both men, but it is one of six on the card so only_mentioned is defensible. The booking is the premise of the pick, so next fight no."
+ },
+ {
+  "id": "w1308",
+  "main_claim": "Justin Gaethje says Topuria was very easy to predict and made emotional mistakes in preparation for their White House fight.",
+  "centrality": "main_subject",
+  "source": "opponent_side",
+  "act": "assesses_him",
+  "fact": "no_fact",
+  "firmness": "none",
+  "reports_his_result": "no",
+  "reports_his_next_fight": "no",
+  "reports_his_health": "no",
+  "he_speaks": "no",
+  "unsure": [
+   "centrality",
+   "fact",
+   "reports_his_next_fight"
+  ],
+  "note": "Gaethje, who fought him, explains 'his feet never change rhythms... It's very easy to predict' - an assessment of his performance, and the article is built around Topuria; one_of_several fits if read as Gaethje's own interview. The rematch appears as framing ('as rumours swirl about a rematch'; Anik 'believes a rematch is the UFC's likeliest next move'), an opinion rather than reported talks, so no_fact, but an editor could count it as a next_fight rumour. An interview after the fight, so result no."
+ },
+ {
+  "id": "w1309",
+  "main_claim": "A stock photo caption of Joel Alvarez fighting Yaroslav Amosov at UFC 328, with no article text.",
+  "centrality": "only_mentioned",
+  "source": "no_one",
+  "act": "none_of_these",
+  "fact": "no_fact",
+  "firmness": "none",
+  "reports_his_result": "no",
+  "reports_his_next_fight": "no",
+  "reports_his_health": "no",
+  "he_speaks": "no",
+  "unsure": [
+   "centrality",
+   "source",
+   "act"
+  ],
+  "note": "The only content is the caption 'Joel Alvarez (red gloves) fights Yaroslav Amosov (blue gloves) during UFC 328' followed by site boilerplate; a caption line with no outcome or claim, so only_mentioned (not_in_content is arguable since there is no article body), no_one speaks and nobody does anything regarding him, hence none_of_these (reports_an_event would need an outcome or booking)."
+ },
+ {
+  "id": "w1310",
+  "main_claim": "Paddy Pimblett says he would love to fight Topuria, calling him a complete idiot.",
+  "centrality": "only_mentioned",
+  "source": "other_fighter_side",
+  "act": "calls_him_out",
+  "fact": "no_fact",
+  "firmness": "none",
+  "reports_his_result": "no",
+  "reports_his_next_fight": "no",
+  "reports_his_health": "no",
+  "he_speaks": "no",
+  "unsure": [
+   "centrality"
+  ],
+  "note": "Pimblett's callout ('es un completo idiota, asi que me encantaria pelear contra el') with Topuria's lost belt and recovery retold by the writer ('actualmente se encuentra en una etapa de recuperacion') - another fighter's wish with only a recap of him, so only_mentioned per the callout rule, though the rivalry framing gives him much space; no fight is booked, so Pimblett is other_fighter_side and the wish is no_fact."
+ },
+ {
+  "id": "w1311",
+  "main_claim": "Islam Makhachev says Topuria can be champion again if he focuses, and that he lost because he underestimated Gaethje.",
+  "centrality": "main_subject",
+  "source": "other_fighter_side",
+  "act": "assesses_him",
+  "fact": "no_fact",
+  "firmness": "none",
+  "reports_his_result": "no",
+  "reports_his_next_fight": "no",
+  "reports_his_health": "no",
+  "he_speaks": "no",
+  "unsure": [],
+  "note": "Makhachev: 'Si se centra, puede ser campeon otra vez... Ilia le infravaloro porque pensaba que le podia ganar facil' - opinion on his level and performance; the Makhachev fight was never booked, so he is other_fighter_side. 'Se le ha podido ver en algunas fotos incluso sin gafas y en buen estado' is the writer's inference, so health no; Topuria's past words are paraphrased only."
+ },
+ {
+  "id": "w1312",
+  "main_claim": "According to commentator Jon Anik, the UFC is having internal conversations about an immediate Gaethje vs. Topuria rematch.",
+  "centrality": "one_of_several",
+  "source": "media",
+  "act": "gives_news_of_him",
+  "fact": "next_fight",
+  "firmness": "rumour",
+  "reports_his_result": "no",
+  "reports_his_next_fight": "yes",
+  "reports_his_health": "no",
+  "he_speaks": "no",
+  "unsure": [
+   "centrality",
+   "act"
+  ],
+  "note": "Anik (a commentator): 'I think there are internal conversations to potentially try to do Gaethje vs. Topuria 2' - a rumour of talks with a named source, so next_fight at rumour; his 'predictively, that's what I think is going to happen' hedging makes predicts_his_fight or none_of_these arguable. He shares the piece with Gaethje (main_subject possible); his message to Hugo is described, not quoted, so he_speaks no."
+ },
+ {
+  "id": "w1313",
+  "main_claim": "Donchenko beat Punahele Soriano by unanimous decision at UFC Fight Night 287 in Paris for his fourth straight win.",
+  "centrality": "main_subject",
+  "source": "no_one",
+  "act": "reports_an_event",
+  "fact": "result",
+  "firmness": "official_or_done",
+  "reports_his_result": "yes",
+  "reports_his_next_fight": "no",
+  "reports_his_health": "no",
+  "he_speaks": "no",
+  "unsure": [],
+  "note": "A fight report: 'Бiй завершився за рiшенням суддiв з рахунком 30-27, 30-27, 29-28 на користь Донченка', nobody quoted. Result yes."
+ },
+ {
+  "id": "w1314",
+  "main_claim": "Donchenko will face Punahele Soriano on the main card of UFC Fight Night 287 in Paris on September 5.",
+  "centrality": "main_subject",
+  "source": "no_one",
+  "act": "reports_an_event",
+  "fact": "next_fight",
+  "firmness": "official_or_done",
+  "reports_his_result": "no",
+  "reports_his_next_fight": "yes",
+  "reports_his_health": "no",
+  "he_speaks": "no",
+  "unsure": [
+   "centrality",
+   "fact"
+  ],
+  "note": "'Данило Донченко з України проведе бiй проти Пунахеле Сорiано... 5 вересня' - a fight of his announced as set, with venue, weight class, start time and main-card placement, nobody speaking; published on fight day with card order and start time, so fight_week_event is arguable, and both fighters get equal billing so one_of_several is possible."
+ },
+ {
+  "id": "w1315",
+  "main_claim": "Topuria says the biggest lesson of his divorce was to listen to his mother.",
+  "centrality": "main_subject",
+  "source": "himself",
+  "act": "speaks_of_himself",
+  "fact": "personal_life",
+  "firmness": "official_or_done",
+  "reports_his_result": "no",
+  "reports_his_next_fight": "no",
+  "reports_his_health": "no",
+  "he_speaks": "yes",
+  "unsure": [],
+  "note": "Topuria quoted: 'the greatest thing I've learned is to listen to my mother... I love you, Mom', plus his CBS remarks on the divorce - his own words about his family life. 'Currently, Topuria is recovering from facial injuries' is the writer's closing recap, so health no."
+ }
+]

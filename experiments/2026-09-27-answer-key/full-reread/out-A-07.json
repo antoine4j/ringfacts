@@ -1,0 +1,261 @@
+[
+ {
+  "id": "t0701",
+  "main_claim": "Sport.ua's writer lists five fighters who could be Donchenko's next opponent after his win over Soriano, rating Daniel Rodriguez the likeliest.",
+  "centrality": "main_subject",
+  "source": "media",
+  "act": "none_of_these",
+  "fact": "no_fact",
+  "firmness": "none",
+  "reports_his_result": "no",
+  "reports_his_next_fight": "no",
+  "reports_his_health": "no",
+  "he_speaks": "no",
+  "unsure": [
+   "act",
+   "fact",
+   "he_speaks"
+  ],
+  "note": "The piece is the writer's own forecast of what the matchmakers might do ('Спробуймо розібратися, хто може стати наступним суперником'), which the guide says is no act, hence none_of_these; a reader could call his 'на місці менеджерів Донченка я від нього не відмовлявся б' steers_him. The five names are the writer's speculation, not options stated by him, his team or the UFC, so no_fact rather than status_update; the only words of his ('легкими грошима', ready to return) are recalled from the post-fight callout as background, so he_speaks is no."
+ },
+ {
+  "id": "t0702",
+  "main_claim": "Donchenko fights Punahele Soriano on the main card of UFC Fight Night 287 in Paris on Saturday, with the card, start times and his expected walkout hour listed.",
+  "centrality": "one_of_several",
+  "source": "no_one",
+  "act": "reports_an_event",
+  "fact": "fight_week_event",
+  "firmness": "official_or_done",
+  "reports_his_result": "no",
+  "reports_his_next_fight": "no",
+  "reports_his_health": "no",
+  "he_speaks": "no",
+  "unsure": [
+   "centrality",
+   "source",
+   "fact"
+  ],
+  "note": "An event preview the day before the card: his main-card slot ('отримав місце в основному карді') and walkout time ('приблизно о 22:00') are card order and start times, so fight_week_event, though the booking itself is only the premise of the preview (next fight no) and an editor could call the preview analysis no_fact. He shares the text with the Hooker–Parnasse main event and the full card, so one_of_several rather than main_subject; nobody speaks, but the embedded UFC tweet could make the source promotion."
+ },
+ {
+  "id": "t0703",
+  "main_claim": "In his first statement since losing the title to Gaethje, Topuria praised Gaethje, said he lost vision in both eyes during the fight and plans to heal and seek a rematch.",
+  "centrality": "main_subject",
+  "source": "himself",
+  "act": "speaks_of_himself",
+  "fact": "health",
+  "firmness": "official_or_done",
+  "reports_his_result": "no",
+  "reports_his_next_fight": "no",
+  "reports_his_health": "yes",
+  "he_speaks": "no",
+  "unsure": [
+   "he_speaks"
+  ],
+  "note": "'He later detailed on Instagram vision loss in both eyes during the fight' is his own statement of his condition inside the main claim, so health, official; the result is the premise of a post-fight statement (result no) and the rematch is a plan, not a fight (next fight no). His post is only paraphrased ('wrote there were no excuses'), never quoted, so he_speaks is no, though an editor could count the indirect speech."
+ },
+ {
+  "id": "t0704",
+  "main_claim": "Makhachev's coach Javier Mendez says Topuria's loss to Gaethje has changed the course of a Makhachev fight: he must win more than once and is too small for welterweight.",
+  "centrality": "main_subject",
+  "source": "other_fighter_side",
+  "act": "assesses_him",
+  "fact": "no_fact",
+  "firmness": "none",
+  "reports_his_result": "no",
+  "reports_his_next_fight": "no",
+  "reports_his_health": "no",
+  "he_speaks": "no",
+  "unsure": [
+   "act",
+   "centrality"
+  ],
+  "note": "Mendez judges his standing and physique ('No creo que, al ser un tipo más pequeño, su físico vaya a adaptarse'), which is assesses_him, though 'tendrá que conseguir más de una' could be read as steers_him. Makhachev is not booked against him, so his coach is other_fighter_side; the article is about Topuria's path, with Makhachev's own win a closing paragraph, so main_subject, though one_of_several is arguable."
+ },
+ {
+  "id": "t0705",
+  "main_claim": "Josh Hokit says neither Topuria nor Alex Pereira deserves a title shot in their next fight and both should earn their way back.",
+  "centrality": "one_of_several",
+  "source": "other_fighter_side",
+  "act": "steers_him",
+  "fact": "no_fact",
+  "firmness": "none",
+  "reports_his_result": "no",
+  "reports_his_next_fight": "no",
+  "reports_his_health": "no",
+  "he_speaks": "no",
+  "unsure": [
+   "source",
+   "act",
+   "fact",
+   "reports_his_next_fight"
+  ],
+  "note": "Hokit ('Make them earn it and fight their way back') shares the piece evenly between Topuria and Pereira; the article never says who Hokit is, so other_fighter_side rests on his '@josh_hokitufc' handle and 'my platform', and media is possible. His demand is sincere advice (steers_him) though 'got handily destroyed' edges toward assesses_him; Jon Anik's 'internal conversations to potentially try to do Gaethje vs. Topuria 2' is a rumour in the closing section, treated as background, but an editor could make it next_fight at rumour."
+ },
+ {
+  "id": "t0706",
+  "main_claim": "At the UFC Paris press conference Donchenko said he controlled the third round against Soriano, followed his game plan, thanked Ukrainian fans and repeated he wants Daniel Rodriguez next.",
+  "centrality": "main_subject",
+  "source": "himself",
+  "act": "speaks_of_himself",
+  "fact": "no_fact",
+  "firmness": "none",
+  "reports_his_result": "no",
+  "reports_his_next_fight": "no",
+  "reports_his_health": "no",
+  "he_speaks": "yes",
+  "unsure": [],
+  "note": "A post-fight interview takes the value of what is said: 'все було під контролем', his game plan and his wish to fight Rodriguez are talk and a callout, so no_fact and result no even though the win is retold; he is quoted at length (he_speaks yes)."
+ },
+ {
+  "id": "t0707",
+  "main_claim": "Topuria answers Paddy Pimblett's trash talk, warning 'Be careful what you wish for', while Pimblett says he would terrorise him; the UFC has no plans for the bout.",
+  "centrality": "main_subject",
+  "source": "himself",
+  "act": "answers_for_him",
+  "fact": "no_fact",
+  "firmness": "none",
+  "reports_his_result": "no",
+  "reports_his_next_fight": "no",
+  "reports_his_health": "no",
+  "he_speaks": "yes",
+  "unsure": [
+   "centrality",
+   "fact",
+   "reports_his_health"
+  ],
+  "note": "His quoted reply ('You're gonna see soon ... Be careful what you wish for') is his own answer to a callout; Pimblett gets a full section so one_of_several is possible, and 'you're gonna see soon' could be read as a hint of a fight, but 'UFC does not have any confirmed plans' keeps it no_fact. The broken nose and orbital fractures are the writer's recap ('Topuria received some severe injuries'), not a named update, so health no, though an editor could count 'en route to recovery'."
+ },
+ {
+  "id": "t0708",
+  "main_claim": "Alex Pereira says he will call the UFC to fight Paulo Costa at light heavyweight if he does not get a heavyweight rematch with Ciryl Gane.",
+  "centrality": "not_in_content",
+  "source": "other_fighter_side",
+  "act": "none_of_these",
+  "fact": "no_fact",
+  "firmness": "none",
+  "reports_his_result": "no",
+  "reports_his_next_fight": "no",
+  "reports_his_health": "no",
+  "he_speaks": "no",
+  "unsure": [],
+  "note": "Topuria appears only in a 'LATEST NEWS' link ('...for zero to gain Ilia Topuria rematch'), which is page furniture, so not_in_content and act none_of_these (nobody in the article does anything regarding him); source answers for the main content, Pereira speaking, who is other_fighter_side to Topuria."
+ },
+ {
+  "id": "t0709",
+  "main_claim": "Donchenko contrasts Makhachev's record-tying 18-win streak with Anderson Silva's, calls Garry mentally unready and names Amosov as the man who could test Makhachev.",
+  "centrality": "only_mentioned",
+  "source": "himself",
+  "act": "none_of_these",
+  "fact": "no_fact",
+  "firmness": "none",
+  "reports_his_result": "no",
+  "reports_his_next_fight": "no",
+  "reports_his_health": "no",
+  "he_speaks": "yes",
+  "unsure": [
+   "centrality",
+   "act"
+  ],
+  "note": "He is the only speaker and the headline carries his name, but everything he says ('If we will compare 18 wins from Anderson Silva and 18 wins from Makhachev...') is about other fighters and nothing comes back to him beyond 'fresh off his win over Soriano', which the guide rules only_mentioned; since he does not speak of himself and nobody does anything regarding him, act is none_of_these, though speaks_of_himself with main_subject is the tempting reading."
+ },
+ {
+  "id": "t0710",
+  "main_claim": "Topuria recounts that he and his brother Aleksandre were bullied at school in Georgia, that he went to school afraid, and that his brother taught him to ask for help.",
+  "centrality": "main_subject",
+  "source": "himself",
+  "act": "speaks_of_himself",
+  "fact": "personal_life",
+  "firmness": "official_or_done",
+  "reports_his_result": "no",
+  "reports_his_next_fight": "no",
+  "reports_his_health": "no",
+  "he_speaks": "yes",
+  "unsure": [
+   "fact"
+  ],
+  "note": "'A mi hermano y a mí nos acosaban en el colegio' is his own account of his childhood and family, which the guide lists under personal_life, stated by himself (official_or_done); an editor could treat the piece as a reflection with no fact."
+ },
+ {
+  "id": "t0711",
+  "main_claim": "Paddy Pimblett says he wants to fight Topuria before the end of 2026 and would 'love to crush his head', while Topuria is still recovering and will return when ready.",
+  "centrality": "only_mentioned",
+  "source": "other_fighter_side",
+  "act": "calls_him_out",
+  "fact": "no_fact",
+  "firmness": "none",
+  "reports_his_result": "no",
+  "reports_his_next_fight": "no",
+  "reports_his_health": "no",
+  "he_speaks": "no",
+  "unsure": [
+   "centrality"
+  ],
+  "note": "Pimblett's callout ('Me encantaría aplastarle la cabeza, tío, pero tenemos que esperar y ver') is another fighter's wish, not booked, so other_fighter_side and no_fact; the article adds nothing new about Topuria beyond a 'cabe recordar' recap of his eye injuries and the writer's own 'reaparecerá cuando se sienta plenamente preparado', so only_mentioned, though the headline framing could pull an editor to one_of_several."
+ },
+ {
+  "id": "t0712",
+  "main_claim": "Former UFC fighter Matt Brown says Topuria should take a tune-up bout like Renato Moicano before any Gaethje rematch, warning a repeat could ruin his life.",
+  "centrality": "main_subject",
+  "source": "other_fighter_side",
+  "act": "steers_him",
+  "fact": "no_fact",
+  "firmness": "none",
+  "reports_his_result": "no",
+  "reports_his_next_fight": "no",
+  "reports_his_health": "no",
+  "he_speaks": "no",
+  "unsure": [
+   "fact",
+   "reports_his_next_fight"
+  ],
+  "note": "Brown is a 'former UFC fighter' who never fought him, so other_fighter_side, and 'you need to put him in there with someone like a Moicano' is sincere steering with no fact; Jon Anik's line that 'the UFC is weighing a potential Gaethje-Topuria sequel' is the premise for Brown's advice rather than the news, so next fight no, but an editor could log it as next_fight at rumour. The orbital fractures are the writer's recap, so health no."
+ },
+ {
+  "id": "t0713",
+  "main_claim": "With Gaethje champion, the lightweight title picture before UFC 331 comes down to Tsarukyan, Oliveira and Ruffy, and the Tsarukyan–Ruffy result should settle who is next.",
+  "centrality": "only_mentioned",
+  "source": "media",
+  "act": "none_of_these",
+  "fact": "no_fact",
+  "firmness": "none",
+  "reports_his_result": "no",
+  "reports_his_next_fight": "no",
+  "reports_his_health": "no",
+  "he_speaks": "no",
+  "unsure": [],
+  "note": "Topuria gets a ranking line and one sentence ('remains ranked No. 1 despite stepping away from competition while dealing with matters outside the Octagon') in a roundup about three other contenders, so only_mentioned; the writer's own analysis is the source (media) and nobody does anything regarding him, hence none_of_these."
+ },
+ {
+  "id": "t0714",
+  "main_claim": "Dana White says Topuria is ready to fight and that either a Gaethje rematch or Paddy Pimblett would make sense as his next opponent, with nothing set.",
+  "centrality": "main_subject",
+  "source": "promotion",
+  "act": "gives_news_of_him",
+  "fact": "status_update",
+  "firmness": "official_or_done",
+  "reports_his_result": "no",
+  "reports_his_next_fight": "no",
+  "reports_his_health": "no",
+  "he_speaks": "no",
+  "unsure": [
+   "reports_his_next_fight"
+  ],
+  "note": "'Topuria's ready to fight. We're ready for him ... We don't have anything set' is the UFC president stating where he stands with opponents named only as options, the guide's own example of status_update at official firmness; next fight is no because nothing exists or changed, though the leaked rematch talk recalled in the body could tempt an editor to yes."
+ },
+ {
+  "id": "t0715",
+  "main_claim": "Justin Gaethje, in a sponsored interview, talks about recovering after the White House win, his golf, his charity tournaments and whether he will keep fighting or retire.",
+  "centrality": "only_mentioned",
+  "source": "opponent_side",
+  "act": "none_of_these",
+  "fact": "no_fact",
+  "firmness": "none",
+  "reports_his_result": "no",
+  "reports_his_next_fight": "no",
+  "reports_his_health": "no",
+  "he_speaks": "no",
+  "unsure": [],
+  "note": "Topuria appears only in the intro's recap of Gaethje's 'title-winning performance against Ilia Topuria at the White House'; in the saved transcript Gaethje talks about his hands, golf and future, never about Topuria, so none_of_these, and as the man who fought him Gaethje is opponent_side for the main content."
+ }
+]

@@ -1,0 +1,261 @@
+[
+ {
+  "id": "w0601",
+  "main_claim": "Paul Hughes says Ilia Topuria is the only UFC fighter with a chance to beat Usman Nurmagomedov.",
+  "centrality": "one_of_several",
+  "source": "other_fighter_side",
+  "act": "assesses_him",
+  "fact": "no_fact",
+  "firmness": "none",
+  "reports_his_result": "no",
+  "reports_his_next_fight": "no",
+  "reports_his_health": "no",
+  "he_speaks": "no",
+  "unsure": [
+   "centrality"
+  ],
+  "note": "Hughes: 'The only person in the UFC who has a chance against Usman Nurmagomedov is Ilia Topuria' is an opinion on his level, nothing new happens to him; the piece is really about Nurmagomedov's possible UFC move, so only_mentioned is defensible, but the headline and a paragraph of the writer's own take on Topuria's return make him share the stage. Hughes fought Nurmagomedov, not Topuria, so other_fighter_side; 'no update on when El Matador will return' is no fact."
+ },
+ {
+  "id": "w0602",
+  "main_claim": "Islam Makhachev says he verbally agreed to fight Topuria at UFC Freedom 250 for good money but the fight collapsed over Topuria's camp asking for more money.",
+  "centrality": "one_of_several",
+  "source": "other_fighter_side",
+  "act": "gives_news_of_him",
+  "fact": "none_of_these",
+  "firmness": "reported",
+  "reports_his_result": "no",
+  "reports_his_next_fight": "no",
+  "reports_his_health": "no",
+  "he_speaks": "no",
+  "unsure": [
+   "centrality",
+   "fact",
+   "reports_his_next_fight",
+   "act"
+  ],
+  "note": "Makhachev at the UFC 330 presser: 'Ali me llamó... ¿Quieres pelear en la Casa Blanca contra Ilia Topuria? Dije que sí... Al día siguiente, Ali me dijo que no iba a pasar' and that Topuria's side 'preguntaron por más dinero'. A past negotiation revealed is a new fact of a kind not listed (none_of_these, as the guide's #228), not a current fight set or changed, so next fight is no, though an editor could read the failed offer as next_fight/cancelled; the fight was never booked or fought, so Makhachev is other_fighter_side; the article also covers Makhachev's own win and record, hence one_of_several rather than main_subject."
+ },
+ {
+  "id": "w0603",
+  "main_claim": "Topuria's manager Malki Kawa fires back at Ali Abdelaziz's prediction that Usman Nurmagomedov would beat Topuria, saying Topuria would annihilate his whole roster and beat Gaethje in a rematch.",
+  "centrality": "main_subject",
+  "source": "his_manager",
+  "act": "answers_for_him",
+  "fact": "no_fact",
+  "firmness": "none",
+  "reports_his_result": "no",
+  "reports_his_next_fight": "no",
+  "reports_his_health": "no",
+  "he_speaks": "no",
+  "unsure": [
+   "act"
+  ],
+  "note": "'Kawa fired back at Ali Abdelaziz' and 'Guys, shut the [expletive] up. Ilia Topuria would annihilate 100 percent of your roster' is a reply to a claim aimed at him; it also rates him ('still the No. 1 fighter in the world'), so assesses_him is possible. 'When the comeback comes' names no fight or date, so no fact."
+ },
+ {
+  "id": "w0604",
+  "main_claim": "Merab Dvalishvili says Topuria is doing well, with a very positive attitude, enjoying life and strong physically and mentally, resting to come back stronger.",
+  "centrality": "main_subject",
+  "source": "other_fighter_side",
+  "act": "gives_news_of_him",
+  "fact": "health",
+  "firmness": "reported",
+  "reports_his_result": "no",
+  "reports_his_next_fight": "no",
+  "reports_his_health": "yes",
+  "he_speaks": "no",
+  "unsure": [
+   "fact",
+   "reports_his_health"
+  ],
+  "note": "Merab, a friend and fellow fighter: 'Topuria está bien y tiene una actitud muy positiva... Es muy fuerte, tanto física como mentalmente' after the fractured nose and orbitals; a named person saying how he is makes the fact health per the guide, but the words are about mood and life rather than the injury, so status_update (resting, will return) is a reasonable alternative. The writer's 'inicios de 2027' and the opponent list are guesses and options, so next fight is no."
+ },
+ {
+  "id": "w0605",
+  "main_claim": "Dana White says Topuria is ready to fight, nothing is scheduled yet, and either a Gaethje rematch or a Pimblett fight would suit the UFC.",
+  "centrality": "main_subject",
+  "source": "promotion",
+  "act": "gives_news_of_him",
+  "fact": "status_update",
+  "firmness": "official_or_done",
+  "reports_his_result": "no",
+  "reports_his_next_fight": "no",
+  "reports_his_health": "no",
+  "he_speaks": "no",
+  "unsure": [],
+  "note": "White: 'We don't have him on the schedule right now, but listen, Topuria's ready to fight' and 'we don't have anything set' - ready with nothing booked and opponents named only as options is status_update; 'Recovery has gone well' is the writer's line, so health is no, and his post to his son is described, not quoted."
+ },
+ {
+  "id": "w0606",
+  "main_claim": "Daniil Donchenko beat Punahele Soriano by unanimous decision (30:27, 30:27, 29:28) at UFC Fight Night 287 in Paris.",
+  "centrality": "main_subject",
+  "source": "no_one",
+  "act": "reports_an_event",
+  "fact": "result",
+  "firmness": "official_or_done",
+  "reports_his_result": "yes",
+  "reports_his_next_fight": "no",
+  "reports_his_health": "no",
+  "he_speaks": "no",
+  "unsure": [],
+  "note": "A fight report: 'одноголосним рішення суддів перемога дісталася Донченку: 30:27, 30:27, 29:28', with a round-by-round account and nobody quoted; his three earlier UFC wins are background."
+ },
+ {
+  "id": "w0607",
+  "main_claim": "Jorge Masvidal says Yaroslav Amosov is a bad stylistic matchup for the whole welterweight top 10 and a 'nightmare' for Islam Makhachev.",
+  "centrality": "main_subject",
+  "source": "other_fighter_side",
+  "act": "assesses_him",
+  "fact": "no_fact",
+  "firmness": "none",
+  "reports_his_result": "no",
+  "reports_his_next_fight": "no",
+  "reports_his_health": "no",
+  "he_speaks": "no",
+  "unsure": [
+   "centrality"
+  ],
+  "note": "Masvidal, his ATT teammate: 'He's a bad fight for everybody... Nightmare for Makhachev... Bigger, longer, and probably stronger' is an assessment of his level; the piece is built on Amosov, though Makhachev shares the headline so one_of_several is arguable. 'No timeline exists for... Amosov earning a title shot' - no fight exists, no fact."
+ },
+ {
+  "id": "w0608",
+  "main_claim": "Topuria's manager Malki Kawa answers Ali Abdelaziz's claim that Usman Nurmagomedov would finish Topuria, saying Topuria would crush Gaethje in a rematch and remains the world number one.",
+  "centrality": "main_subject",
+  "source": "his_manager",
+  "act": "answers_for_him",
+  "fact": "no_fact",
+  "firmness": "none",
+  "reports_his_result": "no",
+  "reports_his_next_fight": "no",
+  "reports_his_health": "no",
+  "he_speaks": "no",
+  "unsure": [
+   "act",
+   "fact"
+  ],
+  "note": "Abdelaziz: 'creo que Usman hará que Ilia se rinda'; Kawa's reply: 'Que se calle. Ilia Topuria aniquilaría al 100% de tu plantilla' and 'Si volviéramos a pelear contra Gaethje, le daría una paliza' - a reply on his behalf that also rates him (assesses_him possible). The recovery passage ('su entorno ha ido dejando pequeñas señales', a photo without sunglasses) is the writer's inference, not a named statement, so no_fact, though an editor could read it as health; 'todavía no hay nada cerrado' on Nurmagomedov means no next-fight news."
+ },
+ {
+  "id": "w0609",
+  "main_claim": "Arman Tsarukyan mockingly says Michael Chandler should be Topuria's next opponent because he 'really needs an easy fight'.",
+  "centrality": "main_subject",
+  "source": "other_fighter_side",
+  "act": "calls_him_out",
+  "fact": "no_fact",
+  "firmness": "none",
+  "reports_his_result": "no",
+  "reports_his_next_fight": "no",
+  "reports_his_health": "no",
+  "he_speaks": "no",
+  "unsure": [
+   "fact"
+  ],
+  "note": "'Ahalkalakets lui conseille ironiquement d'affronter Michael Chandler... Une façon pour Tsarukyan de provoquer une nouvelle fois son rival' - the article frames the advice as a provocation, so calls_him_out, as the guide's #287. The line 'l'équipe d'Ilia Topuria a expliqué que l'Espagnol pourrait faire son retour avant la fin 2026' is a team return window recalled as background to the taunt, so no_fact, though an editor could take it as status_update."
+ },
+ {
+  "id": "w0610",
+  "main_claim": "Justin Gaethje says Topuria was easy to predict because his feet never change rhythm and he moves only forwards or backwards, and that overconfidence cost him.",
+  "centrality": "main_subject",
+  "source": "opponent_side",
+  "act": "assesses_him",
+  "fact": "no_fact",
+  "firmness": "none",
+  "reports_his_result": "no",
+  "reports_his_next_fight": "no",
+  "reports_his_health": "no",
+  "he_speaks": "no",
+  "unsure": [
+   "centrality",
+   "fact",
+   "reports_his_next_fight"
+  ],
+  "note": "Gaethje, who beat him at UFC White House: 'His feet never change rhythms... He's very rarely moving lateral' and 'He forgot who he was' - an assessment of his performance, so opponent_side/assesses_him; it is Gaethje's own interview about the fight they fought, so one_of_several is arguable. The closing line that Jon Anik 'has heard internal talk of a rematch for Gaethje's first title defense' is a rumour recalled in a closing line, so no fact and next fight no, though an editor could count it as next_fight at rumour."
+ },
+ {
+  "id": "w0611",
+  "main_claim": "A preview of Donchenko's main-card fight against Punahele Soriano at UFC Fight Night 287 in Paris, rating him the favourite (1.37) but warning of Soriano's punching power.",
+  "centrality": "one_of_several",
+  "source": "media",
+  "act": "predicts_his_fight",
+  "fact": "no_fact",
+  "firmness": "none",
+  "reports_his_result": "no",
+  "reports_his_next_fight": "no",
+  "reports_his_health": "no",
+  "he_speaks": "no",
+  "unsure": [
+   "centrality",
+   "fact",
+   "reports_his_next_fight",
+   "act"
+  ],
+  "note": "The writer's own preview: 'Данііл Донченко – фаворит зустрічі... У такому емоційному стані українець розбере американця', with long sections on Soriano's streak and style, so a preview covering both fighters (one_of_several), though Donchenko is the hook and main_subject is arguable; the prediction also assesses him (assesses_him possible). The 5 September booking is restated as the premise of the preview, which the guide treats as background, so no_fact and next fight no, though an editor could read the card placement as next_fight/official."
+ },
+ {
+  "id": "w0612",
+  "main_claim": "Josh Hokit rants on X that Alex Pereira does not deserve an interim-title rematch with Ciryl Gane and that he himself should get the shot.",
+  "centrality": "only_mentioned",
+  "source": "other_fighter_side",
+  "act": "steers_him",
+  "fact": "no_fact",
+  "firmness": "none",
+  "reports_his_result": "no",
+  "reports_his_next_fight": "no",
+  "reports_his_health": "no",
+  "he_speaks": "no",
+  "unsure": [
+   "act"
+  ],
+  "note": "Topuria appears in one aside of a rant about Pereira: 'neither Ilia Topuria nor Alex Pereira deserve a fucking title shot in their next fight... Make them earn it and fight their way back like everyone else' - sincere advice on what he should do next (steers_him), though the tone could make it calls_him_out or a rating of his place (assesses_him). The June loss to Gaethje is background; no fact about him."
+ },
+ {
+  "id": "w0613",
+  "main_claim": "At the post-fight press conference in Paris Donchenko says he had the fight under control, chose not to stand up in round three because he knew he was winning on points, thanks the Ukrainian fans and repeats that he wants Daniel Rodriguez next.",
+  "centrality": "main_subject",
+  "source": "himself",
+  "act": "speaks_of_himself",
+  "fact": "no_fact",
+  "firmness": "none",
+  "reports_his_result": "no",
+  "reports_his_next_fight": "no",
+  "reports_his_health": "no",
+  "he_speaks": "yes",
+  "unsure": [],
+  "note": "His own quoted answers: 'все було під контролем. Я просто не хотів вставати у третьому раунді... я розумів, що перемагаю по очках' and 'хотів би битися із Даніелем Родрігесом' - an interview after the fight, so result is no, and a wished-for opponent is no_fact."
+ },
+ {
+  "id": "w0614",
+  "main_claim": "At the post-fight press conference in Paris Donchenko says he had the fight under control, chose not to stand up in round three because he knew he was winning on points, thanks the Ukrainian fans and repeats that he wants Daniel Rodriguez next.",
+  "centrality": "main_subject",
+  "source": "himself",
+  "act": "speaks_of_himself",
+  "fact": "no_fact",
+  "firmness": "none",
+  "reports_his_result": "no",
+  "reports_his_next_fight": "no",
+  "reports_his_health": "no",
+  "he_speaks": "yes",
+  "unsure": [],
+  "note": "Same text as the previous item (Sport.ua copy): his own quoted answers 'все було під контролем... я розумів, що перемагаю по очках' and 'хотів би битися із Даніелем Родрігесом' - an interview after the fight, so result is no, and a wished-for opponent is no_fact."
+ },
+ {
+  "id": "w0615",
+  "main_claim": "Topuria's favourite restaurant in Spain is Nou Collonet on the island of Tabarca near Alicante, the city that took him in at 15, though a food creator who visited was unimpressed.",
+  "centrality": "main_subject",
+  "source": "media",
+  "act": "gives_news_of_him",
+  "fact": "personal_life",
+  "firmness": "reported",
+  "reports_his_result": "no",
+  "reports_his_next_fight": "no",
+  "reports_his_health": "no",
+  "he_speaks": "no",
+  "unsure": [
+   "act",
+   "fact",
+   "firmness"
+  ],
+  "note": "The outlet's writer: 'su restaurante preferido en España... es el restaurante Nou Collonet... en la isla de Tabarca' and that Alicante 'lo acogió... cuando tenía 15 años' - his life outside the cage stated by the writer, so personal_life at reported with the writer giving the detail (gives_news_of_him); an editor could call a lifestyle feature no_fact/none, since the fact is a standing preference rather than an event. Only Pablo Cabezali is quoted, not Topuria; the 2024 title win is background."
+ }
+]

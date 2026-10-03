@@ -1,0 +1,262 @@
+[
+ {
+  "id": "t1901",
+  "main_claim": "Topuria breaks his silence after the Gaethje loss with a video message to his son Hugo saying losing is not what matters and the defeat made them both stronger.",
+  "centrality": "main_subject",
+  "source": "himself",
+  "act": "speaks_of_himself",
+  "fact": "personal_life",
+  "firmness": "official_or_done",
+  "reports_his_result": "no",
+  "reports_his_next_fight": "no",
+  "reports_his_health": "no",
+  "he_speaks": "yes",
+  "unsure": [
+   "fact"
+  ],
+  "note": "The article is built on his quoted video to Hugo ('Hugo, I've been thinking about you...'), which the guide classes as personal_life; an editor could call it a reflection with no fact. The facial injuries ('reportedly did not need surgery') and the possible rematch are the writer's closing recap, so health and next fight are no."
+ },
+ {
+  "id": "t1902",
+  "main_claim": "Islam Makhachev says Topuria is a good fighter who still has time and may become champion again if he focuses, and hopes he returns.",
+  "centrality": "main_subject",
+  "source": "other_fighter_side",
+  "act": "assesses_him",
+  "fact": "no_fact",
+  "firmness": "none",
+  "reports_his_result": "no",
+  "reports_his_next_fight": "no",
+  "reports_his_health": "no",
+  "he_speaks": "no",
+  "unsure": [
+   "centrality",
+   "act"
+  ],
+  "note": "Makhachev's words ('Ilia es un buen peleador... tiene buenos golpes, buena lucha. Si se concentra, tal vez vuelva a ser campeon') are an assessment of his level, though mixed with a wish and a guess, so act could be none_of_these; the closing paragraphs on Makhachev's own fight with Garry could make him one_of_several. Makhachev has never fought him and no fight is booked, so other_fighter_side."
+ },
+ {
+  "id": "t1903",
+  "main_claim": "Tom Aspinall announces he is vacating the UFC heavyweight title because of his prolonged recovery from an eye injury.",
+  "centrality": "not_in_content",
+  "source": "other_fighter_side",
+  "act": "none_of_these",
+  "fact": "no_fact",
+  "firmness": "none",
+  "reports_his_result": "no",
+  "reports_his_next_fight": "no",
+  "reports_his_health": "no",
+  "he_speaks": "no",
+  "unsure": [],
+  "note": "Donchenko does not appear anywhere in the text; the only other fighter line ('не вважаю Амосова небезпечним') is a read-also link about Amosov. Source answers for the main content, Aspinall speaking; act is none_of_these because nobody does anything regarding Donchenko."
+ },
+ {
+  "id": "t1904",
+  "main_claim": "Daniil Donchenko will fight Punahele Soriano at welterweight on the main card of UFC Fight Night 287 in Paris on 5 September.",
+  "centrality": "main_subject",
+  "source": "no_one",
+  "act": "reports_an_event",
+  "fact": "next_fight",
+  "firmness": "official_or_done",
+  "reports_his_result": "no",
+  "reports_his_next_fight": "yes",
+  "reports_his_health": "no",
+  "he_speaks": "no",
+  "unsure": [
+   "centrality",
+   "fact",
+   "firmness"
+  ],
+  "note": "A booking announcement with nobody quoted: 'Данило Донченко... проведе бій проти Пунахеле Соріано... 5 вересня', venue, start time and main-card slot; the card-order and start-time lines could make it fight_week_event, the fight is on the card so I took it as done rather than merely reported via Sport.ua, and the line that the fight matters 'для обох спортсменів' could make him one_of_several."
+ },
+ {
+  "id": "t1905",
+  "main_claim": "Topuria says his first loss did not extinguish his fire but made him more motivated to train and return, while admitting he does not know what his next fight will look like.",
+  "centrality": "main_subject",
+  "source": "himself",
+  "act": "speaks_of_himself",
+  "fact": "no_fact",
+  "firmness": "none",
+  "reports_his_result": "no",
+  "reports_his_next_fight": "no",
+  "reports_his_health": "no",
+  "he_speaks": "yes",
+  "unsure": [
+   "fact"
+  ],
+  "note": "His quotes ('defeat did not extinguish the fire', 'I do not know what my next fight will look like') are a reflection with no fact; the lead that he 'recently came back on social media' could make it status_update. 'Many predicting he will face Paddy Pimblett in December' is opinion, so next fight is no."
+ },
+ {
+  "id": "t1906",
+  "main_claim": "RAF Moscow, headlined by Khamzat Chimaev's return against Tyron Woodley, has no confirmed US stream after Fox Nation pulled out amid sanctions concerns.",
+  "centrality": "not_in_content",
+  "source": "media",
+  "act": "none_of_these",
+  "fact": "no_fact",
+  "firmness": "none",
+  "reports_his_result": "no",
+  "reports_his_next_fight": "no",
+  "reports_his_health": "no",
+  "he_speaks": "no",
+  "unsure": [],
+  "note": "Topuria appears only in a 'LATEST NEWS:' link line about not recognising himself in the mirror, which is page furniture. Source answers for the main content, the outlet's writer citing an ESPN report; act is none_of_these because nobody does anything regarding him."
+ },
+ {
+  "id": "t1907",
+  "main_claim": "Justin Gaethje says his hands are still hurt and he will not defend the lightweight title for the rest of 2026, leaving the division's contenders waiting.",
+  "centrality": "only_mentioned",
+  "source": "opponent_side",
+  "act": "none_of_these",
+  "fact": "no_fact",
+  "firmness": "none",
+  "reports_his_result": "no",
+  "reports_his_next_fight": "no",
+  "reports_his_health": "no",
+  "he_speaks": "no",
+  "unsure": [
+   "centrality"
+  ],
+  "note": "Topuria is the June opponent retold as background plus one line, 'Gaethje has said he won't rematch Topuria', which is a speaker's stance on his own next fight and so no act; the article's tie to their June fight could make him one_of_several, but it adds nothing new about him. Gaethje has fought him, so opponent_side."
+ },
+ {
+  "id": "t1908",
+  "main_claim": "Daniil Donchenko beat Punahele Soriano by unanimous decision (30-27, 30-27, 29-28) at UFC Fight Night 287 in Paris, dropping him in round one and going 4-0 in the UFC.",
+  "centrality": "main_subject",
+  "source": "no_one",
+  "act": "reports_an_event",
+  "fact": "result",
+  "firmness": "official_or_done",
+  "reports_his_result": "yes",
+  "reports_his_next_fight": "no",
+  "reports_his_health": "no",
+  "he_speaks": "no",
+  "unsure": [],
+  "note": "A round-by-round fight report with the scorecards ('завершився перемогою українця одностайним рішенням суддів: 30-27, 30-27, 29-28') and his new record 4-0 / 16-2; nobody speaks and the quoted tweet is the UFC's, not his."
+ },
+ {
+  "id": "t1909",
+  "main_claim": "Justin Gaethje says both his hands are still too hurt to punch two months after beating Topuria, so he will enjoy being champion for the rest of the year and then decide on his future.",
+  "centrality": "only_mentioned",
+  "source": "opponent_side",
+  "act": "none_of_these",
+  "fact": "no_fact",
+  "firmness": "none",
+  "reports_his_result": "no",
+  "reports_his_next_fight": "no",
+  "reports_his_health": "no",
+  "he_speaks": "no",
+  "unsure": [
+   "centrality"
+  ],
+  "note": "Topuria is the opponent named in the headline and in Gaethje's guess ('he's probably not gonna fight till next year too, seeing as he's probably recovering from some things... I don't think that's my next fight'), which is a guess and a stance on Gaethje's own next fight, so no act and no fact; the long discussion of their fight could make him one_of_several but nothing new about him is added. Gaethje fought him, so opponent_side."
+ },
+ {
+  "id": "t1910",
+  "main_claim": "Topuria reappears on social media after the June loss with a letter to his five-year-old son Hugo saying that after visiting that hell he is stronger than before and character is the one victory nobody can take.",
+  "centrality": "main_subject",
+  "source": "himself",
+  "act": "speaks_of_himself",
+  "fact": "personal_life",
+  "firmness": "official_or_done",
+  "reports_his_result": "no",
+  "reports_his_next_fight": "no",
+  "reports_his_health": "no",
+  "he_speaks": "yes",
+  "unsure": [
+   "fact"
+  ],
+  "note": "The whole article is his quoted letter to Hugo ('Hugo... Llevo unos dias pensando en ti'), a message to his son and so personal_life, though an editor could read it as a reflection with no fact or as his return to public life (status_update). 'Ha dedicado el verano a recuperarse' is the writer's framing, so health is no."
+ },
+ {
+  "id": "t1911",
+  "main_claim": "Topuria says he no longer bases his happiness on goals and just enjoys the present, while Dana White says Topuria is ready to fight and both a Gaethje rematch and a Pimblett fight sound good to him.",
+  "centrality": "main_subject",
+  "source": "himself",
+  "act": "speaks_of_himself",
+  "fact": "status_update",
+  "firmness": "official_or_done",
+  "reports_his_result": "no",
+  "reports_his_next_fight": "no",
+  "reports_his_health": "no",
+  "he_speaks": "yes",
+  "unsure": [
+   "source",
+   "act",
+   "fact",
+   "firmness",
+   "reports_his_next_fight"
+  ],
+  "note": "The headline claim is his own quote ('I don't base my happiness on any goals anymore'), which carries no fact, but the one hard fact is White's 'Topuria is ready to fight, we're ready for him', a promotion statement of where he stands, so fact status_update at official firmness; an editor could instead take source promotion and act gives_news_of_him, or fact no_fact from the headline alone. Gaethje and Pimblett are named only as options and the 'rumors of... Pimblett in December, but nothing has been confirmed' is a passing line, so next fight is no, though the December date gives the rumour some substance."
+ },
+ {
+  "id": "t1912",
+  "main_claim": "Ali Abdelaziz says that if Usman Nurmagomedov signs with the UFC he wants Topuria as his first fight and believes Nurmagomedov would make him quit, with Tsarukyan the only competitive opponent.",
+  "centrality": "only_mentioned",
+  "source": "other_fighter_side",
+  "act": "calls_him_out",
+  "fact": "no_fact",
+  "firmness": "none",
+  "reports_his_result": "no",
+  "reports_his_next_fight": "no",
+  "reports_his_health": "no",
+  "he_speaks": "no",
+  "unsure": [
+   "act"
+  ],
+  "note": "Nurmagomedov's own free-agency story naming Topuria as the wanted opponent ('I want Ilia Topuria, first fight... I think he'll make Ilia quit') is a callout and trash talk from another fighter's manager, so only_mentioned, other_fighter_side and calls_him_out; the 'make Ilia quit' line could be read as predicts_his_fight or assesses_him. A wish is no_fact."
+ },
+ {
+  "id": "t1913",
+  "main_claim": "UFC commentator Jon Anik says he thinks there are internal conversations about a Gaethje vs Topuria rematch and predicts that is what will happen, while surveying the rest of the lightweight picture.",
+  "centrality": "one_of_several",
+  "source": "media",
+  "act": "gives_news_of_him",
+  "fact": "next_fight",
+  "firmness": "rumour",
+  "reports_his_result": "no",
+  "reports_his_next_fight": "yes",
+  "reports_his_health": "no",
+  "he_speaks": "no",
+  "unsure": [
+   "centrality",
+   "act",
+   "fact",
+   "firmness",
+   "reports_his_next_fight"
+  ],
+  "note": "Anik's 'I think there are internal conversations to potentially try to do Gaethje vs Topuria 2' is a named commentator reporting talks, so next_fight at rumour, but he also calls it 'my non-informed speculation' and a prediction of what the matchmakers will do, which the guide treats as no act and no_fact. He shares the article with Gaethje's future and the division, so one_of_several rather than main_subject; Anik is described only as a commentator, so media."
+ },
+ {
+  "id": "t1914",
+  "main_claim": "Myktybek Orolbai, whom fans had tipped as a threat to Islam Makhachev, was choked unconscious by 39-year-old Jeremiah Wells at UFC 330 after leading on all scorecards.",
+  "centrality": "only_mentioned",
+  "source": "media",
+  "act": "none_of_these",
+  "fact": "no_fact",
+  "firmness": "none",
+  "reports_his_result": "no",
+  "reports_his_next_fight": "no",
+  "reports_his_health": "no",
+  "he_speaks": "no",
+  "unsure": [
+   "source"
+  ],
+  "note": "Topuria appears once, inside a quoted fan tweet ('the toughest fight besides (Ilia) Topuria'), in Orolbai's story. Source answers for the main content, the outlet's writer recounting the fight and the fan reaction, so media, though fans could be chosen since the quoted tweets carry the piece; act is none_of_these because nobody does anything regarding him."
+ },
+ {
+  "id": "t1915",
+  "main_claim": "Topuria reappears publicly for the first time since the Gaethje loss with a video message to his son Hugo saying that after visiting that hell he is stronger than before, which the writer presents as announcing his return.",
+  "centrality": "main_subject",
+  "source": "himself",
+  "act": "speaks_of_himself",
+  "fact": "personal_life",
+  "firmness": "official_or_done",
+  "reports_his_result": "no",
+  "reports_his_next_fight": "no",
+  "reports_his_health": "no",
+  "he_speaks": "yes",
+  "unsure": [
+   "fact"
+  ],
+  "note": "The headline and lead say he 'ha anunciado... que esta preparado para el regreso a los entrenamientos', but every quoted line is the message to Hugo, which the guide classes as personal_life; an editor could follow the writer's framing and pick status_update. The double orbital fracture is the writer's recap and the December return is 'rumores' with no date confirmed, so health and next fight are no."
+ }
+]

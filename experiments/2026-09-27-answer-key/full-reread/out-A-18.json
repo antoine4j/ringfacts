@@ -1,0 +1,250 @@
+[
+ {
+  "id": "t1801",
+  "main_claim": "Namo Fazil says he was attacked by a group of 15 Chechens at the fighter hotel the day before his Contender Series loss.",
+  "centrality": "not_in_content",
+  "source": "other_fighter_side",
+  "act": "none_of_these",
+  "fact": "no_fact",
+  "firmness": "none",
+  "reports_his_result": "no",
+  "reports_his_next_fight": "no",
+  "reports_his_health": "no",
+  "he_speaks": "no",
+  "unsure": [
+   "centrality"
+  ],
+  "note": "Topuria appears only in the TOP STORIES link list ('Arman Tsarukyan picks surprising name for Ilia Topuria's next opponent'), a roundup of other headlines, not the article's own text; an editor could count that newsletter list as a mention. Main content is Fazil, a fighter, speaking about himself, so source is other_fighter_side and nobody does anything regarding Topuria."
+ },
+ {
+  "id": "t1802",
+  "main_claim": "Topuria reappears with a message to Georgian fans promising he will return stronger and that his greatest UFC victories are still to come.",
+  "centrality": "main_subject",
+  "source": "himself",
+  "act": "speaks_of_himself",
+  "fact": "no_fact",
+  "firmness": "none",
+  "reports_his_result": "no",
+  "reports_his_next_fight": "no",
+  "reports_his_health": "no",
+  "he_speaks": "yes",
+  "unsure": [
+   "fact"
+  ],
+  "note": "His quoted TBC message ('Les prometo a todos que volveré aún más fuerte') is a promise with no date or fight, a reflection, so no_fact; an editor could read his public reappearance as status_update. The orbital, nose and foot fractures are the writer's recap of June, and the Gaethje/Pimblett lines are rumours in a closing paragraph, so health and next fight are no."
+ },
+ {
+  "id": "t1803",
+  "main_claim": "Donchenko beat Punahele Soriano by unanimous decision (30-27, 30-27, 29-28) at UFC Fight Night 287 in Paris for a fourth straight win.",
+  "centrality": "main_subject",
+  "source": "no_one",
+  "act": "reports_an_event",
+  "fact": "result",
+  "firmness": "official_or_done",
+  "reports_his_result": "yes",
+  "reports_his_next_fight": "no",
+  "reports_his_health": "no",
+  "he_speaks": "no",
+  "unsure": [
+   "centrality"
+  ],
+  "note": "A round-by-round account of his fight ending in the judges' scores; the headline and framing are about his win, though a fight report covers both men so one_of_several is arguable. His wish to fight Daniel Rodriguez is only described ('заявив про бажання'), a callout, so next fight is no and he_speaks is no."
+ },
+ {
+  "id": "t1804",
+  "main_claim": "Five reasons Ian Garry could upset Islam Makhachev for the welterweight title at UFC 330.",
+  "centrality": "only_mentioned",
+  "source": "media",
+  "act": "none_of_these",
+  "fact": "no_fact",
+  "firmness": "none",
+  "reports_his_result": "no",
+  "reports_his_next_fight": "no",
+  "reports_his_health": "no",
+  "he_speaks": "no",
+  "unsure": [],
+  "note": "Amosov appears once, in the subtitle 'у дивізіоні Ярослава Амосова може з'явитися новий чемпіон'; the whole piece is the outlet's own analysis of Makhachev vs Garry, so source is media and nobody does anything regarding him."
+ },
+ {
+  "id": "t1805",
+  "main_claim": "Donchenko beat Punahele Soriano by unanimous decision (30-27, 30-27, 29-28) at UFC Fight Night 287 in Paris for a fourth straight win.",
+  "centrality": "main_subject",
+  "source": "no_one",
+  "act": "reports_an_event",
+  "fact": "result",
+  "firmness": "official_or_done",
+  "reports_his_result": "yes",
+  "reports_his_next_fight": "no",
+  "reports_his_health": "no",
+  "he_speaks": "no",
+  "unsure": [
+   "centrality"
+  ],
+  "note": "Same fight report as the Sport.ua page without furniture: round-by-round account ending in the scores, framed as his win, though it covers both men so one_of_several is arguable. His desire to fight Daniel Rodriguez is described, not quoted, and is a wish, so next fight and he_speaks are no."
+ },
+ {
+  "id": "t1806",
+  "main_claim": "Debutants Hecher Sosa and Fabià Sintes have salvaged a bad 2026 for Spanish fighters in the UFC.",
+  "centrality": "only_mentioned",
+  "source": "media",
+  "act": "none_of_these",
+  "fact": "no_fact",
+  "firmness": "none",
+  "reports_his_result": "no",
+  "reports_his_next_fight": "no",
+  "reports_his_health": "no",
+  "he_speaks": "no",
+  "unsure": [
+   "fact"
+  ],
+  "note": "A year-in-review built around two debutants; Topuria gets a paragraph recalling the June loss to Gaethje and his fractures ('lo que le mantendrá alejado... muy probablemente hasta 2027', the writer's inference) and one line that he 'ya ha emitido un par de mensajes', which an editor could read as status_update. Nothing new about him beyond that recap, so no_fact and nobody acts regarding him; source is the outlet's own writer."
+ },
+ {
+  "id": "t1807",
+  "main_claim": "Donchenko dominated Punahele Soriano and won by unanimous decision (30-27, 30-27, 29-28) at UFC Fight Night 287 in Paris.",
+  "centrality": "main_subject",
+  "source": "no_one",
+  "act": "reports_an_event",
+  "fact": "result",
+  "firmness": "official_or_done",
+  "reports_his_result": "yes",
+  "reports_his_next_fight": "no",
+  "reports_his_health": "no",
+  "he_speaks": "no",
+  "unsure": [],
+  "note": "A fight report of his bout ending 'Донченко впевнено забрав поєдинок' with the scorecards; nobody speaks and nothing else about him is reported. The rest of the saved text is site navigation and other headlines."
+ },
+ {
+  "id": "t1808",
+  "main_claim": "Live results and play-by-play for the whole UFC Paris card, headlined by Parnasse's first-round KO of Hooker.",
+  "centrality": "only_mentioned",
+  "source": "no_one",
+  "act": "reports_an_event",
+  "fact": "result",
+  "firmness": "official_or_done",
+  "reports_his_result": "yes",
+  "reports_his_next_fight": "no",
+  "reports_his_health": "no",
+  "he_speaks": "no",
+  "unsure": [
+   "centrality"
+  ],
+  "note": "His bout is one of fourteen on a results page ('Daniil Donchenko def. Punahele Soriano by unanimous decision (30-27, 30-27, 29-28)') with a three-round play-by-play, which the guide files as a results page, though the full round account could be read as one_of_several. His bout on a results page is fact result."
+ },
+ {
+  "id": "t1809",
+  "main_claim": "Jorge Masvidal says Amosov is a bad stylistic matchup for the whole welterweight top 10 and a 'nightmare' for Islam Makhachev.",
+  "centrality": "main_subject",
+  "source": "other_fighter_side",
+  "act": "assesses_him",
+  "fact": "no_fact",
+  "firmness": "none",
+  "reports_his_result": "no",
+  "reports_his_next_fight": "no",
+  "reports_his_health": "no",
+  "he_speaks": "no",
+  "unsure": [],
+  "note": "Masvidal, a fighter and his ATT teammate, rates him ('Bigger, longer, and I'm going to say probably stronger'); opinion only. His wins over Magny and Alvarez are background and 'no timeline exists' for a title shot is the writer's note, so no fact."
+ },
+ {
+  "id": "t1810",
+  "main_claim": "MMA Junkie staff and readers pick the UFC Fight Night 287 card headlined by Parnasse vs Hooker.",
+  "centrality": "only_mentioned",
+  "source": "fans",
+  "act": "predicts_his_fight",
+  "fact": "no_fact",
+  "firmness": "none",
+  "reports_his_result": "no",
+  "reports_his_next_fight": "no",
+  "reports_his_health": "no",
+  "he_speaks": "no",
+  "unsure": [
+   "source",
+   "act"
+  ],
+  "note": "Donchenko appears only in the readers' tally ('Donchenko (71%)'), a pick for his fight by readers, so source fans and act predicts_his_fight; since the article's main content is the staff picks and the saved text carries no staff pick on him, an editor could answer media / none_of_these instead. A pick is no fact."
+ },
+ {
+  "id": "t1811",
+  "main_claim": "Anthony Hernández prepared his UFC return against Gregory Rodrigues by training all summer with Sean Strickland in Las Vegas.",
+  "centrality": "not_in_content",
+  "source": "other_fighter_side",
+  "act": "none_of_these",
+  "fact": "no_fact",
+  "firmness": "none",
+  "reports_his_result": "no",
+  "reports_his_next_fight": "no",
+  "reports_his_health": "no",
+  "he_speaks": "no",
+  "unsure": [],
+  "note": "Topuria is not named anywhere in the saved text; the article is Hernández, a fighter, talking about his own camp, so source other_fighter_side and nobody does anything regarding Topuria."
+ },
+ {
+  "id": "t1812",
+  "main_claim": "After beating Soriano at UFC Paris, Donchenko calls for a fight with Daniel Rodriguez, preferably at the end of the year as a five-rounder.",
+  "centrality": "main_subject",
+  "source": "himself",
+  "act": "speaks_of_himself",
+  "fact": "no_fact",
+  "firmness": "none",
+  "reports_his_result": "no",
+  "reports_his_next_fight": "no",
+  "reports_his_health": "no",
+  "he_speaks": "yes",
+  "unsure": [
+   "fact"
+  ],
+  "note": "His quoted callout ('Please, let me fight just with him', 'it would be cool end of the year') is a wish, so no_fact and next fight no; an editor could read the end-of-year preference as status_update. The win over Soriano is retold before the interview, a post-fight callout, so result is no."
+ },
+ {
+  "id": "t1813",
+  "main_claim": "Islam Makhachev dismisses Amosov as not dangerous and names Ian Machado Garry as the future welterweight champion.",
+  "centrality": "one_of_several",
+  "source": "other_fighter_side",
+  "act": "assesses_him",
+  "fact": "no_fact",
+  "firmness": "none",
+  "reports_his_result": "no",
+  "reports_his_next_fight": "no",
+  "reports_his_health": "no",
+  "he_speaks": "no",
+  "unsure": [
+   "centrality"
+  ],
+  "note": "Makhachev ('I don't think he is a dangerous opponent... someone stopped his wrestling') rates Amosov, who shares the article with Garry and Garry's coach; the first half is about Amosov so main_subject is arguable. Makhachev is not booked against him, so other_fighter_side; the Jackson loss is recalled as background."
+ },
+ {
+  "id": "t1814",
+  "main_claim": "Donchenko and Soriano both weighed in at 77.11 kg before their UFC Fight Night 287 bout in Paris on 5 September.",
+  "centrality": "main_subject",
+  "source": "no_one",
+  "act": "reports_an_event",
+  "fact": "fight_week_event",
+  "firmness": "official_or_done",
+  "reports_his_result": "no",
+  "reports_his_next_fight": "no",
+  "reports_his_health": "no",
+  "he_speaks": "no",
+  "unsure": [
+   "centrality"
+  ],
+  "note": "A weigh-in report ('успішно пройшли офіційне зважування... 77,11 кг') plus start times, written around the Ukrainian and his year; it covers both men so one_of_several is arguable. The booking is the premise of the weigh-in, not news, and his June win and wish to fight in Paris are recap, so next fight is no and he_speaks is no."
+ },
+ {
+  "id": "t1815",
+  "main_claim": "Donchenko says he will give 50% of his Performance of the Night bonus to a church in his home town Korosten, and that he hurt both legs in the Berggren fight and has only now recovered.",
+  "centrality": "main_subject",
+  "source": "himself",
+  "act": "speaks_of_himself",
+  "fact": "personal_life",
+  "firmness": "official_or_done",
+  "reports_his_result": "no",
+  "reports_his_next_fight": "no",
+  "reports_his_health": "yes",
+  "he_speaks": "yes",
+  "unsure": [
+   "fact"
+  ],
+  "note": "The headline and lead are his donation ('50% бонусу я пожертвую церкві'), money and faith, so personal_life; the lead also states he injured both legs and 'тільки зараз відновилося', a second fact in his own words, so health is yes and an editor could make health the main fact. The Berggren win is recalled and the 5 September Soriano bout is the writer's closing recap, so result and next fight are no."
+ }
+]

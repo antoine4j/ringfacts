@@ -1,0 +1,262 @@
+[
+ {
+  "id": "w0901",
+  "main_claim": "Sport.ua's writer weighs five possible next opponents for Donchenko after his Paris win and judges Rodriguez the most likely.",
+  "centrality": "main_subject",
+  "source": "media",
+  "act": "steers_him",
+  "fact": "no_fact",
+  "firmness": "none",
+  "reports_his_result": "no",
+  "reports_his_next_fight": "no",
+  "reports_his_health": "no",
+  "he_speaks": "no",
+  "unsure": [
+   "act",
+   "fact",
+   "he_speaks"
+  ],
+  "note": "The writer's own analysis of who Donchenko should fight next ('на місці менеджерів Донченка я від нього не відмовлявся б') is sincere advice, so steers_him, though it reads partly as assesses_him; his win and his Rodriguez callout are recapped as background, and the options are the writer's picks, so no_fact, though an editor could read 'готовий повернутися в клітку в будь-які розумні терміни' as a status_update. His only words are the two-word 'легкими грошима' recalled from an earlier occasion, so he_speaks is no."
+ },
+ {
+  "id": "w0902",
+  "main_claim": "Dana White hinted Topuria, who has confirmed a quick return, might face Paddy Pimblett next, and fans object to a non-title headliner.",
+  "centrality": "main_subject",
+  "source": "promotion",
+  "act": "gives_news_of_him",
+  "fact": "status_update",
+  "firmness": "official_or_done",
+  "reports_his_result": "no",
+  "reports_his_next_fight": "no",
+  "reports_his_health": "no",
+  "he_speaks": "no",
+  "unsure": [
+   "source",
+   "act",
+   "fact",
+   "firmness",
+   "reports_his_next_fight"
+  ],
+  "note": "The new information is White's hint that 'El Matador might face Paddy Pimblett next' plus 'Topuria has confirmed his return to the Octagon very soon', with 'no set date ... announced': an opponent named as an option by the promotion, so status_update at official firmness, though a hint could be read as next_fight at rumour and the next-fight question as yes. Most of the text is fan tweets and Alvarez's no-rematch view, so source fans and act none_of_these are defensible."
+ },
+ {
+  "id": "w0903",
+  "main_claim": "In an essay for Marca, Topuria tells of the promise he made himself as a child to change his family's life, the years apart from his parents and the move to Spain.",
+  "centrality": "main_subject",
+  "source": "himself",
+  "act": "speaks_of_himself",
+  "fact": "personal_life",
+  "firmness": "official_or_done",
+  "reports_his_result": "no",
+  "reports_his_next_fight": "no",
+  "reports_his_health": "no",
+  "he_speaks": "yes",
+  "unsure": [
+   "fact"
+  ],
+  "note": "Long quoted passages from his own essay about his parents, the family reunification after 'casi seis años lejos de mis padres' and arriving in Spain make it personal_life from himself; an editor could treat a childhood reflection with no current event as no_fact."
+ },
+ {
+  "id": "w0904",
+  "main_claim": "Makhachev says Topuria is young and can be champion again if he focuses, while trainer Jesús Gallo reports his recovery is going unusually fast and a 2026 return is ruled out.",
+  "centrality": "main_subject",
+  "source": "other_fighter_side",
+  "act": "assesses_him",
+  "fact": "health",
+  "firmness": "reported",
+  "reports_his_result": "no",
+  "reports_his_next_fight": "no",
+  "reports_his_health": "yes",
+  "he_speaks": "no",
+  "unsure": [
+   "source",
+   "act",
+   "fact"
+  ],
+  "note": "Headline and lead are Makhachev's judgment ('Si se centra, puede ser campeón otra vez', 'no tiene la cabeza al 100%'), from a rival not booked against him, so other_fighter_side and assesses_him (steers_him is arguable); the one hard fact is Gallo's own statement that he 'tiene un poder de recuperación increíble' and will not return in 2026, so fact health at reported, though an editor could make his_team the source or call the article opinion-only (no_fact)."
+ },
+ {
+  "id": "w0905",
+  "main_claim": "Umar Nurmagomedov says his brother Usman can compete with anyone in the UFC's lightweight elite, naming Gaethje, Topuria, Tsarukyan and Ruffy.",
+  "centrality": "only_mentioned",
+  "source": "other_fighter_side",
+  "act": "none_of_these",
+  "fact": "no_fact",
+  "firmness": "none",
+  "reports_his_result": "no",
+  "reports_his_next_fight": "no",
+  "reports_his_health": "no",
+  "he_speaks": "no",
+  "unsure": [],
+  "note": "Topuria is one name in Umar's list ('Gaethje, Ilia (Topuria), Arman, (Mauricio) Ruffy, anybody') in a story about Usman's free agency; nobody does anything regarding him, so act none_of_these."
+ },
+ {
+  "id": "w0906",
+  "main_claim": "Donchenko beat Soriano by unanimous decision (30-27, 30-27, 29-28) at UFC Paris for his fourth straight win.",
+  "centrality": "main_subject",
+  "source": "no_one",
+  "act": "reports_an_event",
+  "fact": "result",
+  "firmness": "official_or_done",
+  "reports_his_result": "yes",
+  "reports_his_next_fight": "no",
+  "reports_his_health": "no",
+  "he_speaks": "no",
+  "unsure": [],
+  "note": "A round-by-round account of the fight ending 'одностайним рішенням суддів на користь українця'; the closing boxing line is unrelated furniture."
+ },
+ {
+  "id": "w0907",
+  "main_claim": "MMA Junkie analyst Dan Tom picks Soriano to upset Donchenko by second-round knockout at UFC Fight Night 287.",
+  "centrality": "one_of_several",
+  "source": "media",
+  "act": "predicts_his_fight",
+  "fact": "no_fact",
+  "firmness": "none",
+  "reports_his_result": "no",
+  "reports_his_next_fight": "no",
+  "reports_his_health": "no",
+  "he_speaks": "no",
+  "unsure": [
+   "fact"
+  ],
+  "note": "A preview covering both men whose news is the pick ('I'll officially pick Soriano to score the upset'); the booking and the 4:10 p.m. ET walkout time are the premise of the pick, so no_fact, though the walkout time could be read as fight_week_event."
+ },
+ {
+  "id": "w0908",
+  "main_claim": "After beating Soriano, Donchenko says he wants Daniel Rodriguez next, ideally at year's end or as a five-rounder at the APEX, and explains the third-round takedown.",
+  "centrality": "main_subject",
+  "source": "himself",
+  "act": "speaks_of_himself",
+  "fact": "no_fact",
+  "firmness": "none",
+  "reports_his_result": "no",
+  "reports_his_next_fight": "no",
+  "reports_his_health": "no",
+  "he_speaks": "yes",
+  "unsure": [
+   "fact"
+  ],
+  "note": "A backstage interview built on his wish ('Please, let me fight just with him') and his account of the takedown; the win is retold as background to the interview, so result no, and the callout is a wish, so no_fact, though his readiness for 'any date in the APEX' could be read as status_update."
+ },
+ {
+  "id": "w0909",
+  "main_claim": "Song Yadong says he holds no grudge over Usman Nurmagomedov's apparent elbow motion after his knockout of Umar at UFC Shanghai.",
+  "centrality": "not_in_content",
+  "source": "other_fighter_side",
+  "act": "none_of_these",
+  "fact": "no_fact",
+  "firmness": "none",
+  "reports_his_result": "no",
+  "reports_his_next_fight": "no",
+  "reports_his_health": "no",
+  "he_speaks": "no",
+  "unsure": [],
+  "note": "Topuria appears only in an embedded 'LATEST NEWS' link ('Arman Tsarukyan: Why the UFC won't make Ilia Topuria vs. Paddy Pimblett next'), which is page furniture; the article is Song Yadong speaking about the Nurmagomedovs, so act none_of_these."
+ },
+ {
+  "id": "w0910",
+  "main_claim": "Donchenko explains he wants 15th-ranked Daniel Rodriguez next because he is the most convenient top-15 opponent and a top-5 or top-10 fight is unrealistic now.",
+  "centrality": "main_subject",
+  "source": "himself",
+  "act": "speaks_of_himself",
+  "fact": "no_fact",
+  "firmness": "none",
+  "reports_his_result": "no",
+  "reports_his_next_fight": "no",
+  "reports_his_health": "no",
+  "he_speaks": "yes",
+  "unsure": [
+   "fact"
+  ],
+  "note": "He is quoted at length ('Я обрав Родрігеса, тому що він 15-й номер рейтингу') explaining a wished-for opponent with no talks reported, so no_fact; an editor could read 'обрав' as him naming his option (status_update). His 2026 results are a background recap."
+ },
+ {
+  "id": "w0911",
+  "main_claim": "Gaethje's manager Ali Abdelaziz says Gaethje is not retiring, will fight in 2027 and only wants a massive fight such as Holloway or the Oliveira-Tsarukyan winner.",
+  "centrality": "only_mentioned",
+  "source": "opponent_side",
+  "act": "none_of_these",
+  "fact": "no_fact",
+  "firmness": "none",
+  "reports_his_result": "no",
+  "reports_his_next_fight": "no",
+  "reports_his_health": "no",
+  "he_speaks": "no",
+  "unsure": [
+   "centrality"
+  ],
+  "note": "Topuria figures only as the man Gaethje beat ('beating Ilia Topuria via fourth-round corner TKO') in Gaethje's own story; nothing new is said about him, so act none_of_these, though the shared fight could tempt one_of_several. Abdelaziz manages the fighter who beat him, so opponent_side."
+ },
+ {
+  "id": "w0912",
+  "main_claim": "Tsarukyan says Topuria's return fight should be an easy one against Michael Chandler before he fights for the title again.",
+  "centrality": "main_subject",
+  "source": "other_fighter_side",
+  "act": "steers_him",
+  "fact": "no_fact",
+  "firmness": "none",
+  "reports_his_result": "no",
+  "reports_his_next_fight": "no",
+  "reports_his_health": "no",
+  "he_speaks": "no",
+  "unsure": [
+   "centrality",
+   "act"
+  ],
+  "note": "The article presents 'he needs someone easy, an easy fight' as 'a logical tune-up', so steers_him, but the two 'have been at odds for years' and the same words could be a taunt (calls_him_out) or a guess ('probably next for him', none_of_these). The second half is Tsarukyan's own Ruffy fight and title plans, so one_of_several is arguable; 'he's still recovering' is Tsarukyan's remark and the injuries a recap, so health no."
+ },
+ {
+  "id": "w0913",
+  "main_claim": "Topuria's manager Malki Kawa answers Abdelaziz's prediction that Usman would finish Topuria by saying Topuria would annihilate his whole roster and would beat Gaethje in a rematch.",
+  "centrality": "main_subject",
+  "source": "his_manager",
+  "act": "answers_for_him",
+  "fact": "no_fact",
+  "firmness": "none",
+  "reports_his_result": "no",
+  "reports_his_next_fight": "no",
+  "reports_his_health": "no",
+  "he_speaks": "no",
+  "unsure": [
+   "centrality"
+  ],
+  "note": "Kawa's reply ('Cállate la boca. Ilia Topuria aniquilará al 100% de tu roster') to Abdelaziz's 'Usman hará que Ilia se rinda' is a reply on his behalf; the Usman fight is 'solo una posibilidad, sin fecha ni acuerdo' and the recovery line is the writer's recap, so no_fact. Usman's free agency gets its own section, so one_of_several is arguable."
+ },
+ {
+  "id": "w0914",
+  "main_claim": "Hawaii's Punahele Soriano, back from leg tears and a car accident, takes his four-fight win streak to France to face Donchenko on Saturday.",
+  "centrality": "one_of_several",
+  "source": "opponent_side",
+  "act": "none_of_these",
+  "fact": "no_fact",
+  "firmness": "none",
+  "reports_his_result": "no",
+  "reports_his_next_fight": "no",
+  "reports_his_health": "no",
+  "he_speaks": "no",
+  "unsure": [
+   "centrality",
+   "fact",
+   "reports_his_next_fight"
+  ],
+  "note": "Soriano's own preview tied to a booked fight with Donchenko ('faces Daniil Donchenko in a middleweight bout in France'), so one_of_several per the booked-fight rule, though Donchenko gets only his record and only_mentioned is arguable. Soriano says nothing about him, so act none_of_these; the booking is the premise of the preview rather than its news, so no_fact and next fight no, though an editor could count the stated bout and time as next_fight."
+ },
+ {
+  "id": "w0915",
+  "main_claim": "Belal Muhammad says Topuria does not deserve an immediate Gaethje rematch and should fight Paddy Pimblett for his comeback.",
+  "centrality": "main_subject",
+  "source": "other_fighter_side",
+  "act": "steers_him",
+  "fact": "no_fact",
+  "firmness": "none",
+  "reports_his_result": "no",
+  "reports_his_next_fight": "no",
+  "reports_his_health": "no",
+  "he_speaks": "no",
+  "unsure": [
+   "fact"
+  ],
+  "note": "Muhammad, a former welterweight champion not linked to a fight with him, sincerely advises 'the Paddy Pimblett fight makes the most sense'; his 'Two broken orbitals, I don't even know what else he has' is a guess and the eye damage a recap, so health no. White's recalled line that Topuria 'is ready to return' with both options open could be read as a status_update beside the opinion."
+ }
+]

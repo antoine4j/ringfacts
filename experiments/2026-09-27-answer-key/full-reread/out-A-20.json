@@ -1,0 +1,254 @@
+[
+ {
+  "id": "t2001",
+  "main_claim": "Brendan Schaub says the UFC will make Ian Machado Garry's road back to a title shot hard and that booking him against Yaroslav Amosov would prove the promotion has given up on him.",
+  "centrality": "only_mentioned",
+  "source": "other_fighter_side",
+  "act": "assesses_him",
+  "fact": "no_fact",
+  "firmness": "none",
+  "reports_his_result": "no",
+  "reports_his_next_fight": "no",
+  "reports_his_health": "no",
+  "he_speaks": "no",
+  "unsure": [
+   "centrality",
+   "act"
+  ],
+  "note": "The article is Garry's story; Amosov enters only in the last paragraph as one of three names Schaub lists ('Michael Morales, Carlos Prates, and a rising contender'), with one line calling him 'a dominant grappler ... a nightmare matchup' — an opinion, so no fact. Centrality could be one_of_several since that line is an assessment of him; act could be none_of_these because the rest is Schaub's forecast of what the matchmakers will do. Schaub is a 'former heavyweight fighter', so other_fighter_side."
+ },
+ {
+  "id": "t2002",
+  "main_claim": "Joe Rogan calls Paddy Pimblett the most fun fighter in the UFC after his walkout and 52-second win at UFC 329.",
+  "centrality": "only_mentioned",
+  "source": "media",
+  "act": "none_of_these",
+  "fact": "no_fact",
+  "firmness": "none",
+  "reports_his_result": "no",
+  "reports_his_next_fight": "no",
+  "reports_his_health": "no",
+  "he_speaks": "no",
+  "unsure": [],
+  "note": "Topuria appears in a 'LATEST NEWS' link (page furniture) and in the closing paragraph only as background: 'Gaethje has shut down rematches against Pimblett and Ilia Topuria' and 'many are hoping' to see him fight Pimblett — a recap and a wish, so no fact. Act is none_of_these because nobody in the article does anything regarding him; source is Rogan, a commentator/podcaster, for the main content."
+ },
+ {
+  "id": "t2003",
+  "main_claim": "Jorge Masvidal says Yaroslav Amosov is a nightmare matchup for Islam Makhachev and could beat the champion.",
+  "centrality": "main_subject",
+  "source": "other_fighter_side",
+  "act": "assesses_him",
+  "fact": "no_fact",
+  "firmness": "none",
+  "reports_his_result": "no",
+  "reports_his_next_fight": "no",
+  "reports_his_health": "no",
+  "he_speaks": "no",
+  "unsure": [],
+  "note": "'Амосов — це кошмар для Махачева. Він більший, вищий і, ймовірно, сильніший' — an ex-UFC fighter rating his size, wrestling and chances against a champion he is not booked to fight; opinion only, no fact. The Strickland line and the betting text are page furniture."
+ },
+ {
+  "id": "t2004",
+  "main_claim": "Topuria's boxing coach Javi Climent says Topuria is at the best moment of his career and has a rare natural gift for copying any technique he sees.",
+  "centrality": "main_subject",
+  "source": "his_team",
+  "act": "assesses_him",
+  "fact": "no_fact",
+  "firmness": "none",
+  "reports_his_result": "no",
+  "reports_his_next_fight": "no",
+  "reports_his_health": "no",
+  "he_speaks": "no",
+  "unsure": [],
+  "note": "Climent is named as 'su entrenador de boxeo', so his_team; 'Topuria está ahora mismo en el mejor momento de su carrera' and 'A Messi no le enseñas a jugar al fútbol y a Ilia Topuria no le enseñas a boxear' are assessments of his level, with no event or booking. Only Climent is quoted."
+ },
+ {
+  "id": "t2005",
+  "main_claim": "Paddy Pimblett says nobody from the UFC has approached him about a rumoured December fight with Ilia Topuria, though he would love to take it.",
+  "centrality": "one_of_several",
+  "source": "other_fighter_side",
+  "act": "gives_news_of_him",
+  "fact": "next_fight",
+  "firmness": "rumour",
+  "reports_his_result": "no",
+  "reports_his_next_fight": "yes",
+  "reports_his_health": "no",
+  "he_speaks": "no",
+  "unsure": [
+   "centrality",
+   "act"
+  ],
+  "note": "A named third party ('Tim Welch, who coaches Sean O'Malley, claimed he heard rumors that Pimblett and Topuria could meet before the end of the year') gives the rumour substance and Pimblett denies it ('No one spoke to me about it'), so next_fight at rumour even though denied. Centrality could be only_mentioned since Pimblett is only rumoured against him and the rest is a rivalry recap; act could be calls_him_out for 'I'd love to smash his head in'. Pimblett is not booked or fought against Topuria, so other_fighter_side."
+ },
+ {
+  "id": "t2006",
+  "main_claim": "With Gaethje refusing a rematch, Paddy Pimblett says he would love to destroy Topuria next but nobody has spoken to him about a fight, so the writer weighs Topuria's two options.",
+  "centrality": "main_subject",
+  "source": "other_fighter_side",
+  "act": "calls_him_out",
+  "fact": "no_fact",
+  "firmness": "none",
+  "reports_his_result": "no",
+  "reports_his_next_fight": "no",
+  "reports_his_health": "no",
+  "he_speaks": "no",
+  "unsure": [
+   "centrality",
+   "source",
+   "fact",
+   "firmness",
+   "reports_his_next_fight"
+  ],
+  "note": "The piece is the writer's analysis of Topuria's return options built around Pimblett's quote 'Me encantaría destrozarle la cabeza, muchacho ... Nadie me ha hablado de eso' — trash talk plus a denial of talks, with the only 'rumour' being unnamed 'corrillos' with no who, when or where, so I read it as a wish piece; a careful editor could call the denial next_fight at rumour, pick media as source for the writer's analysis, or one_of_several since Pimblett shares the stage. The January attempt and 'las lesiones sufridas por Topuria' are the writer's recap, so health is no."
+ },
+ {
+  "id": "t2007",
+  "main_claim": "Justin Gaethje says Arman Tsarukyan deserves a title shot but understands the UFC's hesitancy because Tsarukyan pulled out of the Makhachev fight the night before.",
+  "centrality": "only_mentioned",
+  "source": "opponent_side",
+  "act": "none_of_these",
+  "fact": "no_fact",
+  "firmness": "none",
+  "reports_his_result": "no",
+  "reports_his_next_fight": "no",
+  "reports_his_health": "no",
+  "he_speaks": "no",
+  "unsure": [],
+  "note": "Topuria is only background in the lead ('finished Ilia Topuria by TKO earlier this year') and in the writer's aside 'a rematch with Topuria is also possible'; the other Topuria headlines are page furniture. Gaethje, who fought him, speaks only about Tsarukyan, so nobody does anything regarding Topuria and act is none_of_these."
+ },
+ {
+  "id": "t2008",
+  "main_claim": "After beating Puna Soriano, Daniil Donchenko says he wants Daniel Rodriguez next, ideally at the year's last event or as a five-round APEX fight.",
+  "centrality": "main_subject",
+  "source": "himself",
+  "act": "speaks_of_himself",
+  "fact": "no_fact",
+  "firmness": "none",
+  "reports_his_result": "no",
+  "reports_his_next_fight": "no",
+  "reports_his_health": "no",
+  "he_speaks": "yes",
+  "unsure": [
+   "fact"
+  ],
+  "note": "'Please, let me fight just with him ... it would be cool end of the year' is his own callout and wish, so no fact; the Soriano win is retold as the premise of a post-fight interview, so result is no. A careful editor could read his end-of-year/APEX availability as status_update."
+ },
+ {
+  "id": "t2009",
+  "main_claim": "Dana White says Topuria is ready to return and the UFC is torn between a Gaethje rematch and a Pimblett fight for his comeback.",
+  "centrality": "main_subject",
+  "source": "promotion",
+  "act": "gives_news_of_him",
+  "fact": "status_update",
+  "firmness": "official_or_done",
+  "reports_his_result": "no",
+  "reports_his_next_fight": "no",
+  "reports_his_health": "no",
+  "he_speaks": "no",
+  "unsure": [],
+  "note": "'Dana White ... ha dicho que el peleador hispanogeorgiano está listo para volver' with Gaethje and Pimblett named only as options ('¿Va a pelear contra Gaethje o contra Pimblett?'), so status_update and next fight no; 'se tomó un tiempo para sanar las heridas' and the early-2027 return are the writer's lines, so health is no. 'En redes ya lo ha hecho' describes but does not quote him."
+ },
+ {
+  "id": "t2010",
+  "main_claim": "Arman Tsarukyan says Topuria vs. Pimblett makes sense but doubts the UFC will book it, expecting the promotion to give each man an easier fight.",
+  "centrality": "one_of_several",
+  "source": "other_fighter_side",
+  "act": "none_of_these",
+  "fact": "no_fact",
+  "firmness": "none",
+  "reports_his_result": "no",
+  "reports_his_next_fight": "no",
+  "reports_his_health": "no",
+  "he_speaks": "no",
+  "unsure": [
+   "centrality",
+   "act"
+  ],
+  "note": "'I don't think they are gonna do this fight ... they are gonna give Ilia someone easy' is a forecast of what the matchmakers will do, which the guide treats as no act, hence none_of_these; a careful editor could call the writer's 'please, just book Ilia Topuria vs. Paddy Pimblett now' steers_him. Attention is split between Topuria and Pimblett, though main_subject is arguable."
+ },
+ {
+  "id": "t2011",
+  "main_claim": "MMA Fighting's writers debate what Islam Makhachev's decision win over Ian Machado Garry at UFC 330 means for his legacy and for Garry and Mackenzie Dern.",
+  "centrality": "not_in_content",
+  "source": "media",
+  "act": "none_of_these",
+  "fact": "no_fact",
+  "firmness": "none",
+  "reports_his_result": "no",
+  "reports_his_next_fight": "no",
+  "reports_his_health": "no",
+  "he_speaks": "no",
+  "unsure": [],
+  "note": "The saved text (cut off at 10,000 characters mid-sentence) never names Amosov anywhere; it is a roundtable of MMA Fighting staff about Makhachev, Garry and Dern, so act is none_of_these and source is the writers."
+ },
+ {
+  "id": "t2012",
+  "main_claim": "Dana White says Topuria is ready to fight and the UFC is ready for him, with nothing scheduled yet and either Gaethje or Pimblett acceptable as his next opponent.",
+  "centrality": "main_subject",
+  "source": "promotion",
+  "act": "gives_news_of_him",
+  "fact": "status_update",
+  "firmness": "official_or_done",
+  "reports_his_result": "no",
+  "reports_his_next_fight": "no",
+  "reports_his_health": "no",
+  "he_speaks": "no",
+  "unsure": [
+   "reports_his_health"
+  ],
+  "note": "'We don't have him on the schedule right now, but listen, Topuria's ready to fight. We're ready for him' with Gaethje/Pimblett only as options ('we don't have anything set'), so status_update and next fight no. 'Recovery has gone well for the 29-year-old' is the writer's unattributed line, so health is no, though an editor could count it; the post to his son is described, not quoted."
+ },
+ {
+  "id": "t2013",
+  "main_claim": "After Donchenko's fourth straight UFC win, the writer weighs five possible next opponents for him and finds Daniel Rodriguez the most likely.",
+  "centrality": "main_subject",
+  "source": "media",
+  "act": "steers_him",
+  "fact": "no_fact",
+  "firmness": "none",
+  "reports_his_result": "no",
+  "reports_his_next_fight": "no",
+  "reports_his_health": "no",
+  "he_speaks": "no",
+  "unsure": [
+   "he_speaks"
+  ],
+  "note": "'Вибираємо йому суперника на наступний поєдинок' — the outlet's writer sincerely proposes Rodriguez, Holland, Magny, Medic and Miller as options, none of them in talks, so no fact; the Soriano win and his Rodriguez callout are recap. His only words are two recalled from the post-fight ('легкими грошима'), which I read as background rather than him speaking."
+ },
+ {
+  "id": "t2014",
+  "main_claim": "MMA Junkie analyst Dan Tom picks Punahele Soriano to upset Daniil Donchenko by second-round knockout at UFC Fight Night 287.",
+  "centrality": "one_of_several",
+  "source": "media",
+  "act": "predicts_his_fight",
+  "fact": "no_fact",
+  "firmness": "none",
+  "reports_his_result": "no",
+  "reports_his_next_fight": "no",
+  "reports_his_health": "no",
+  "he_speaks": "no",
+  "unsure": [
+   "fact",
+   "firmness"
+  ],
+  "note": "'I'll officially pick Soriano to score the upset with a knockout in Round 2' is a pundit's pick, and the booking is its premise, so no fact and next fight no; a careful editor could take 'expected to walk to the cage at approximately 4:10 p.m. ET' as a fight_week_event at official_or_done."
+ },
+ {
+  "id": "t2015",
+  "main_claim": "Arman Tsarukyan says Topuria should take an easy fight against Michael Chandler next before working back toward a title shot.",
+  "centrality": "main_subject",
+  "source": "other_fighter_side",
+  "act": "steers_him",
+  "fact": "no_fact",
+  "firmness": "none",
+  "reports_his_result": "no",
+  "reports_his_next_fight": "no",
+  "reports_his_health": "no",
+  "he_speaks": "no",
+  "unsure": [
+   "centrality",
+   "act"
+  ],
+  "note": "'probably next for him a fight with Michael Chandler ... he needs someone easy, an easy fight' is presented by this article as sincere advice ('mapped out what he sees as the next steps'), so steers_him, but the same words could be read as mockery (calls_him_out) or as a guess ('probably', none_of_these). 'He's still recovering' is a passing remark by a rival, not a stated update, so health is no; the second half is about Tsarukyan himself, so one_of_several is arguable."
+ }
+]

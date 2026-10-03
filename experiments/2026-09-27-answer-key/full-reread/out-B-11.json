@@ -1,0 +1,267 @@
+[
+ {
+  "id": "w1101",
+  "main_claim": "Donchenko says Ukrainian fighters are ready to fight Russians but the UFC avoids such bouts to dodge online hate, citing the cancelled Poteria vs Magomedov fight.",
+  "centrality": "main_subject",
+  "source": "himself",
+  "act": "speaks_of_himself",
+  "fact": "no_fact",
+  "firmness": "none",
+  "reports_his_result": "no",
+  "reports_his_next_fight": "no",
+  "reports_his_health": "no",
+  "he_speaks": "yes",
+  "unsure": [
+   "fact",
+   "reports_his_next_fight"
+  ],
+  "note": "His quote 'мені здається, що ми готові битися завжди' is a stance on the UFC's matchmaking, not news of where he stands, so no_fact; the 5 September Soriano bout and the June Berggren win are writer-added background lines, so next fight could be read as yes by an editor who treats that booking as a second fact."
+ },
+ {
+  "id": "w1102",
+  "main_claim": "Topuria's essay reflects on his first defeat, to Gaethje, and lists the injuries he left the fight with: both eye orbits fractured, broken septum and foot.",
+  "centrality": "main_subject",
+  "source": "himself",
+  "act": "speaks_of_himself",
+  "fact": "health",
+  "firmness": "official_or_done",
+  "reports_his_result": "no",
+  "reports_his_next_fight": "no",
+  "reports_his_health": "yes",
+  "he_speaks": "yes",
+  "unsure": [],
+  "note": "His own words 'las dos órbitas de los ojos fracturadas, el tabique y el pie rotos' state his condition inside the essay the article is built on, so fact is health as in the guide's #723 ruling; the loss is retold in a reflection after the fight, not as a fight report, so result is no."
+ },
+ {
+  "id": "w1103",
+  "main_claim": "Gaethje says Topuria was easy to predict because his footwork never changes rhythm, and explains the game plan that beat him at UFC Freedom 250.",
+  "centrality": "main_subject",
+  "source": "opponent_side",
+  "act": "assesses_him",
+  "fact": "no_fact",
+  "firmness": "none",
+  "reports_his_result": "no",
+  "reports_his_next_fight": "no",
+  "reports_his_health": "no",
+  "he_speaks": "no",
+  "unsure": [
+   "fact"
+  ],
+  "note": "Gaethje's 'Es muy fácil de predecir' is an assessment of Topuria's style with no new fact; the closing line 'Con la confirmación de Dana White sobre el regreso de Ilia Topuria' recalls a return confirmation in one sentence, which an editor could treat as status_update."
+ },
+ {
+  "id": "w1104",
+  "main_claim": "Eddie Alvarez says an immediate Gaethje rematch would be a mistake and that Topuria must rebuild confidence against a lesser opponent first.",
+  "centrality": "main_subject",
+  "source": "other_fighter_side",
+  "act": "steers_him",
+  "fact": "no_fact",
+  "firmness": "none",
+  "reports_his_result": "no",
+  "reports_his_next_fight": "no",
+  "reports_his_health": "no",
+  "he_speaks": "no",
+  "unsure": [
+   "act",
+   "fact",
+   "reports_his_next_fight"
+  ],
+  "note": "Alvarez's 'needs to rebuild confidence against a lesser opponent before challenging Gaethje again' is sincere advice (steers_him), though 'His brain is still going to suffer a form of PTSD' is also an assessment; 'recent reports suggest the UFC is considering running the fight back' names no who, date or event, so the rematch stays a premise and the fact is no_fact, but an editor could call it next_fight at rumour."
+ },
+ {
+  "id": "w1105",
+  "main_claim": "Pimblett says he would love to fight Topuria but no one has spoken to him about it, lists other possible opponents and hopes to return in December.",
+  "centrality": "only_mentioned",
+  "source": "other_fighter_side",
+  "act": "calls_him_out",
+  "fact": "no_fact",
+  "firmness": "none",
+  "reports_his_result": "no",
+  "reports_his_next_fight": "no",
+  "reports_his_health": "no",
+  "he_speaks": "no",
+  "unsure": [
+   "centrality",
+   "fact"
+  ],
+  "note": "This is Pimblett's own news naming Topuria as the opponent he wants ('I'd love to smash his head in, lad... Nothing yet. No one's spoke to me about it'), with only a recap of the Gaethje loss about Topuria, so only_mentioned per the callout rule, though the framing around a Topuria fight could read as one_of_several; 'growing chatter that the UFC is thinking about' an immediate Gaethje rematch gives no who or when, so no_fact rather than next_fight."
+ },
+ {
+  "id": "w1106",
+  "main_claim": "Usman Nurmagomedov mocks the UFC lightweight top 10, including Topuria for quitting on his stool against Gaethje, while praising Quillan Salkilld.",
+  "centrality": "only_mentioned",
+  "source": "other_fighter_side",
+  "act": "calls_him_out",
+  "fact": "no_fact",
+  "firmness": "none",
+  "reports_his_result": "no",
+  "reports_his_next_fight": "no",
+  "reports_his_health": "no",
+  "he_speaks": "no",
+  "unsure": [
+   "centrality",
+   "act"
+  ],
+  "note": "Topuria is one name in a list of five fighters roasted, and his paragraph only retells the Gaethje loss ('Lost early, sat down on a chair'), so only_mentioned, though the dedicated paragraph could be read as one_of_several; the article frames the remark as a 'dig' and a 'roast', so calls_him_out rather than assesses_him."
+ },
+ {
+  "id": "w1107",
+  "main_claim": "Pimblett says he would love to fight Topuria but nothing has been discussed with him, and he hopes to fight again in December against any top name.",
+  "centrality": "only_mentioned",
+  "source": "other_fighter_side",
+  "act": "calls_him_out",
+  "fact": "no_fact",
+  "firmness": "none",
+  "reports_his_result": "no",
+  "reports_his_next_fight": "no",
+  "reports_his_health": "no",
+  "he_speaks": "no",
+  "unsure": [
+   "centrality",
+   "fact",
+   "reports_his_next_fight"
+  ],
+  "note": "Pimblett's own stance ('I'd love to smash his head in... Nothing yet. No one's spoke to me about it') is a callout, and what the article says about Topuria (the loss, the orbital fractures, the essay) is all recap, so only_mentioned despite his share of the text; 'rumors swirling that Topuria could make his UFC return against Pimblett' names no source, date or event, so no_fact, but an editor could read it as next_fight at rumour and the long Topuria section as one_of_several."
+ },
+ {
+  "id": "w1108",
+  "main_claim": "Topuria's physical trainer Doctor Aldo explains on social media what the Brock string eye-training exercise is.",
+  "centrality": "only_mentioned",
+  "source": "his_team",
+  "act": "none_of_these",
+  "fact": "no_fact",
+  "firmness": "none",
+  "reports_his_result": "no",
+  "reports_his_next_fight": "no",
+  "reports_his_health": "no",
+  "he_speaks": "no",
+  "unsure": [
+   "source"
+  ],
+  "note": "Topuria appears only as the trainer's affiliation ('El preparador físico de Ilia Topuria, Doctor Aldo'); the trainer explains a generic exercise and does nothing regarding Topuria, so act is none_of_these (an act about an exercise, not a fighter); source is his_team because the guide says to answer for the main content when there is nothing new about him, though none_of_these is arguable since the content is not about him."
+ },
+ {
+  "id": "w1109",
+  "main_claim": "The León international sport forum announces Carolina Marín, Carlos Moyá and Topuria's performance director Aldo Martínez as its first speakers.",
+  "centrality": "only_mentioned",
+  "source": "no_one",
+  "act": "none_of_these",
+  "fact": "no_fact",
+  "firmness": "none",
+  "reports_his_result": "no",
+  "reports_his_next_fight": "no",
+  "reports_his_health": "no",
+  "he_speaks": "no",
+  "unsure": [
+   "source",
+   "act"
+  ],
+  "note": "Topuria is named only to identify Martínez ('director de rendimiento deportivo de Ilia Topuria'); the main content is a speaker announcement with nobody quoted, so source no_one, and nobody does anything regarding Topuria, so act none_of_these (the forum event concerns Martínez, not him); an editor might pick none_of_these for source (event organisers) or reports_an_event for act."
+ },
+ {
+  "id": "w1110",
+  "main_claim": "Spanish reporter Alvaro Colmenero says Topuria will return to the public eye within days, in September, after healing in July and vacationing in August.",
+  "centrality": "main_subject",
+  "source": "media",
+  "act": "gives_news_of_him",
+  "fact": "status_update",
+  "firmness": "reported",
+  "reports_his_result": "no",
+  "reports_his_next_fight": "no",
+  "reports_his_health": "no",
+  "he_speaks": "no",
+  "unsure": [
+   "fact",
+   "reports_his_health"
+  ],
+  "note": "Colmenero's 'Ilia is going to return to the public eye directly in the month of September' is a named report of his return to public life, so status_update at reported; his aside 'July was clearly about healing his injuries and undergoing treatments' could be read as a health update by an editor, but the broken orbital bone is a recap and the writer's 'recovered enough' is inference, so health is no; the Gaethje rematch being shut down and the Pimblett pitch are options, so next fight is no."
+ },
+ {
+  "id": "w1111",
+  "main_claim": "Matt Brown says the UFC risks ruining Topuria's life with an immediate Gaethje rematch and should give him a proper return fight against someone like Moicano.",
+  "centrality": "main_subject",
+  "source": "other_fighter_side",
+  "act": "steers_him",
+  "fact": "no_fact",
+  "firmness": "none",
+  "reports_his_result": "no",
+  "reports_his_next_fight": "no",
+  "reports_his_health": "no",
+  "he_speaks": "no",
+  "unsure": [
+   "fact",
+   "reports_his_next_fight",
+   "firmness"
+  ],
+  "note": "Brown's 'you need to put him in there with someone (else)... Moicano, he needs a proper return fight' is sincere advice from a former fighter, so steers_him; the rematch talk is the premise the writer sets up ('UFC commentator Jon Anik claimed that internal conversations are ongoing'), not the article's claim, so no_fact, though because Anik is named an editor could call it next_fight at rumour; the broken orbital bones are recapped background, so health is no."
+ },
+ {
+  "id": "w1112",
+  "main_claim": "Manager Vladyslav Soroka explains how Ukrainian fighters are guided from BFL through European leagues toward the UFC, naming Yakymenko, Hrytsenko and Hyria as the next likely signings.",
+  "centrality": "only_mentioned",
+  "source": "other_fighter_side",
+  "act": "none_of_these",
+  "fact": "no_fact",
+  "firmness": "none",
+  "reports_his_result": "no",
+  "reports_his_next_fight": "no",
+  "reports_his_health": "no",
+  "he_speaks": "no",
+  "unsure": [
+   "source"
+  ],
+  "note": "Amosov appears once, in the intro's own text ('Наразі у рейтингу UFC перебуває Ярослав Амосов'), and nobody says or does anything regarding him, so act is none_of_these; the speaker is the manager of other fighters (the KSW champion, BFL fighters, Donchenko), so other_fighter_side for the main content, though none_of_these is arguable for a manager discussing the scene rather than any fighter."
+ },
+ {
+  "id": "w1113",
+  "main_claim": "Jorge Masvidal says Amosov is a bad stylistic matchup for the whole UFC welterweight top 10 and would be a nightmare even for Islam Makhachev.",
+  "centrality": "main_subject",
+  "source": "other_fighter_side",
+  "act": "assesses_him",
+  "fact": "no_fact",
+  "firmness": "none",
+  "reports_his_result": "no",
+  "reports_his_next_fight": "no",
+  "reports_his_health": "no",
+  "he_speaks": "no",
+  "unsure": [
+   "centrality"
+  ],
+  "note": "Masvidal's 'He's a bad fight for everybody... Nightmare for Makhachev. Bigger, longer, and probably stronger' rates Amosov's level with no fight set ('No timeline exists for that jump or for Amosov earning a title shot'), so assesses_him and no_fact; Makhachev shares the headline, so an editor could pick one_of_several, but the content is about Amosov."
+ },
+ {
+  "id": "w1114",
+  "main_claim": "Gaethje says he will not fight again in 2026 because of a knee bone bruise and hand injuries, and blames Topuria's loss on emotional mistakes in his preparation.",
+  "centrality": "one_of_several",
+  "source": "opponent_side",
+  "act": "assesses_him",
+  "fact": "no_fact",
+  "firmness": "none",
+  "reports_his_result": "no",
+  "reports_his_next_fight": "no",
+  "reports_his_health": "no",
+  "he_speaks": "no",
+  "unsure": [
+   "act",
+   "fact"
+  ],
+  "note": "Gaethje's own news shares the article with his verdict on their fight ('those emotional mistakes in preparation... it's his fault'), which is an assessment of Topuria, though the headline's 'Blasts' could make it calls_him_out; the closing line 'Topuria has recently confirmed that he is ready to return' is a one-sentence aside, so no_fact rather than status_update."
+ },
+ {
+  "id": "w1115",
+  "main_claim": "Dana White says Topuria is ready to fight and that either a Gaethje rematch or a Pimblett fight makes sense for his return, with nothing set yet.",
+  "centrality": "main_subject",
+  "source": "promotion",
+  "act": "gives_news_of_him",
+  "fact": "status_update",
+  "firmness": "official_or_done",
+  "reports_his_result": "no",
+  "reports_his_next_fight": "no",
+  "reports_his_health": "no",
+  "he_speaks": "no",
+  "unsure": [
+   "reports_his_next_fight"
+  ],
+  "note": "White's 'Topuria's ready to fight. We're ready for him... We don't have anything set' is the promotion stating his readiness with Gaethje and Pimblett named only as options, so status_update at official_or_done and next fight no; an editor could count 'the news leaked that the UFC was considering giving the former champ an immediate rematch' as a rumour and answer next fight yes."
+ }
+]

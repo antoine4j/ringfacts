@@ -1,0 +1,261 @@
+[
+ {
+  "id": "w2001",
+  "main_claim": "Donchenko recalls that on the second day of the full-scale invasion he and his brother went to sign up for territorial defence, were sent home for lack of places, and then organised fundraisers for the army before he left for Thailand.",
+  "centrality": "main_subject",
+  "source": "himself",
+  "act": "speaks_of_himself",
+  "fact": "personal_life",
+  "firmness": "official_or_done",
+  "reports_his_result": "no",
+  "reports_his_next_fight": "no",
+  "reports_his_health": "no",
+  "he_speaks": "yes",
+  "unsure": [
+   "reports_his_next_fight"
+  ],
+  "note": "Interview answers about the war, his brother Oleg and his mother, the Instagram fundraiser and the move to Thailand are his own words about his life outside the cage. The closing recap ('У червні... переміг', '5 вересня Донченко проведе поєдинок у Парижі проти... Соріано') is the writer's background around the main claim, so next fight is no, though an editor could count the stated Paris booking as a second fact."
+ },
+ {
+  "id": "w2002",
+  "main_claim": "Jorge Masvidal, who trained with Amosov at American Top Team, says Amosov is a bad fight for everybody at lightweight and a nightmare matchup for Islam Makhachev.",
+  "centrality": "main_subject",
+  "source": "other_fighter_side",
+  "act": "assesses_him",
+  "fact": "no_fact",
+  "firmness": "none",
+  "reports_his_result": "no",
+  "reports_his_next_fight": "no",
+  "reports_his_health": "no",
+  "he_speaks": "no",
+  "unsure": [
+   "act"
+  ],
+  "note": "'He's a bad fight for everybody... Yaroslav is that good' and 'Nightmare for Makhachev... bigger, longer, probably stronger' rate his level, from a teammate the article itself says trained with him; no fight with Makhachev exists, so the 'will be able to outshine him probably' line is a hypothetical rather than predicts_his_fight, and an editor could read the whole as a guess (none_of_these). His submissions of Magny and Alvarez are recap."
+ },
+ {
+  "id": "w2003",
+  "main_claim": "Dan Hooker, ahead of his UFC Paris fight with Salahdine Parnasse, says no top lightweight, Topuria included, would risk fighting Usman Nurmagomedov if he joins the UFC, which is why Hooker gets paid to welcome newcomers.",
+  "centrality": "only_mentioned",
+  "source": "other_fighter_side",
+  "act": "none_of_these",
+  "fact": "no_fact",
+  "firmness": "none",
+  "reports_his_result": "no",
+  "reports_his_next_fight": "no",
+  "reports_his_health": "no",
+  "he_speaks": "no",
+  "unsure": [
+   "act"
+  ],
+  "note": "Topuria appears in one quoted line ('¿Creen que Ilia va a correr el riesgo de pelear contra un tipo no rankeado...?') inside Hooker's talk about himself, Parnasse and Nurmagomedov; nothing new about Topuria. The line is a guess at what Topuria would do, so no act (none_of_these); because the writer frames it as 'un recado para Ilia Topuria', an editor could read it as a dig and pick calls_him_out."
+ },
+ {
+  "id": "w2004",
+  "main_claim": "Arman Tsarukyan, who faces Mauricio Ruffy at UFC 331 on 20 September, says he wants to become champion and break Makhachev's record of four lightweight title defences.",
+  "centrality": "only_mentioned",
+  "source": "other_fighter_side",
+  "act": "none_of_these",
+  "fact": "no_fact",
+  "firmness": "none",
+  "reports_his_result": "no",
+  "reports_his_next_fight": "no",
+  "reports_his_health": "no",
+  "he_speaks": "no",
+  "unsure": [
+   "centrality"
+  ],
+  "note": "Topuria is named only in the headline ('convencido de que superará a Ilia Topuria'); the body never mentions him and Tsarukyan talks about his own title plans ('Quiero batir el récord'), so nobody does anything regarding him (none_of_these). An editor could call a headline-only appearance not_in_content."
+ },
+ {
+  "id": "w2005",
+  "main_claim": "Topuria's strength coach Jesús Gallo says his recovery from the orbital and nasal fractures has gone very well thanks to his genetics and the Spanish doctors, that he could physically be ready by December but the smart choice is to return in spring 2027.",
+  "centrality": "main_subject",
+  "source": "his_team",
+  "act": "gives_news_of_him",
+  "fact": "health",
+  "firmness": "reported",
+  "reports_his_result": "no",
+  "reports_his_next_fight": "no",
+  "reports_his_health": "yes",
+  "he_speaks": "no",
+  "unsure": [
+   "act"
+  ],
+  "note": "'Su preparador físico, Jesús Gallo' says 'tiene un poder de recuperación increíble', that the recovery 'haya ido tan bien' and 'no poder respirar fue algo muy traumático': a named team member on how the recovery is going, so health even though the headline is about the return date; 'listo para diciembre' / 'primavera de 2027' is a window, not a fight. His 'una mejor versión' and 'amenaza en todas las áreas' lines could lead an editor to assesses_him."
+ },
+ {
+  "id": "w2006",
+  "main_claim": "UFC.com's video page says Donchenko talked with UFC.com after his decision win over Punahele Soriano at UFC Fight Night in Paris on 5 September 2026.",
+  "centrality": "main_subject",
+  "source": "no_one",
+  "act": "reports_an_event",
+  "fact": "result",
+  "firmness": "official_or_done",
+  "reports_his_result": "yes",
+  "reports_his_next_fight": "no",
+  "reports_his_health": "no",
+  "he_speaks": "no",
+  "unsure": [
+   "source",
+   "fact",
+   "reports_his_result"
+  ],
+  "note": "The only article text is the caption 'Talks With UFC.com After His Decision Win Over Punahele Soriano'; the rest is Fight Pass promos and an 'Up next' list. Nobody's words are saved, so the result is an event reported with no one speaking (an editor could pick promotion, since UFC.com is the promotion's own record). Because the page is a post-fight interview and the win is only the caption's premise, an editor could also rule no_fact and result no."
+ },
+ {
+  "id": "w2007",
+  "main_claim": "Merab Dvalishvili says Topuria is doing well, staying positive and enjoying life after the Gaethje loss, and will come back to take the belt.",
+  "centrality": "main_subject",
+  "source": "other_fighter_side",
+  "act": "gives_news_of_him",
+  "fact": "health",
+  "firmness": "reported",
+  "reports_his_result": "no",
+  "reports_his_next_fight": "no",
+  "reports_his_health": "yes",
+  "he_speaks": "no",
+  "unsure": [
+   "act",
+   "fact",
+   "firmness",
+   "reports_his_health"
+  ],
+  "note": "'Il va bien et reste très positif et profite de la vie', from a named friend 'qui connaît bien Topuria et son environnement', is an update on how he is, so health at reported; 'quand il va revenir, il va battre tout le monde' is a prediction. Dvalishvili is neither his team, the promotion nor a named report, so an editor could treat the line as a friend's impression: no_fact, firmness none, health no, act assesses_him. The closing 'spéculations sur son prochain adversaire' is a closing line, next fight no."
+ },
+ {
+  "id": "w2008",
+  "main_claim": "mma.es points readers to the UFC's updated official rankings page of 11 August and says it refreshes the tables after official changes.",
+  "centrality": "not_in_content",
+  "source": "promotion",
+  "act": "none_of_these",
+  "fact": "no_fact",
+  "firmness": "none",
+  "reports_his_result": "no",
+  "reports_his_next_fight": "no",
+  "reports_his_health": "no",
+  "he_speaks": "no",
+  "unsure": [
+   "source"
+  ],
+  "note": "Topuria appears nowhere in the saved text or headline ('Quillan Salkilld sigue subiendo'), so he is not in content and nobody does anything regarding him (none_of_these). With nothing about him, source is answered for the main content, the UFC's 'clasificación oficial' (promotion), though an editor could say media (the outlet's own blurb) or no_one."
+ },
+ {
+  "id": "w2009",
+  "main_claim": "In a video posted on social media, Topuria addresses his son Hugo about the Gaethje loss, telling him that losing is not what matters and that character is the one victory nobody can take away.",
+  "centrality": "main_subject",
+  "source": "himself",
+  "act": "speaks_of_himself",
+  "fact": "personal_life",
+  "firmness": "official_or_done",
+  "reports_his_result": "no",
+  "reports_his_next_fight": "no",
+  "reports_his_health": "no",
+  "he_speaks": "yes",
+  "unsure": [
+   "fact"
+  ],
+  "note": "The quoted video ('Hugo, I've been thinking about you these past two days...', 'you won't always win in life') is a message to his son, which the guide files as personal_life, though an editor could call it a reflection with no fact. The loss, the 'significant facial injuries... reportedly did not need surgery' and the possible Gaethje rematch are the writer's recap and closing speculation, so result, health and next fight are no."
+ },
+ {
+  "id": "w2010",
+  "main_claim": "Justin Gaethje says that more than two months after beating Topuria at the White House both his hands are still too sore to punch, that he will enjoy being champion for the rest of the year before deciding on retirement, and that he does not feel a Topuria rematch is his next fight.",
+  "centrality": "one_of_several",
+  "source": "opponent_side",
+  "act": "none_of_these",
+  "fact": "no_fact",
+  "firmness": "none",
+  "reports_his_result": "no",
+  "reports_his_next_fight": "no",
+  "reports_his_health": "no",
+  "he_speaks": "no",
+  "unsure": [
+   "centrality",
+   "reports_his_next_fight"
+  ],
+  "note": "Gaethje's own health and retirement talk is tied throughout to the fight he already had with Topuria, so one_of_several, though Topuria gets little new and an editor could say only_mentioned. On Topuria, Gaethje only states his own stance ('I don't think that's my next fight') and a guess ('he's probably recovering from some things'), which are no act (none_of_these) and no fact; an editor could read the rematch exchange as a denial and answer next fight yes."
+ },
+ {
+  "id": "w2011",
+  "main_claim": "PFL champion Usman Nurmagomedov, reported to have turned down a $2 million-per-fight PFL offer ahead of a possible UFC move, mocks the UFC's top lightweights, saying Topuria 'praised himself endlessly, lost' and 'quit on the stool'.",
+  "centrality": "only_mentioned",
+  "source": "other_fighter_side",
+  "act": "calls_him_out",
+  "fact": "no_fact",
+  "firmness": "none",
+  "reports_his_result": "no",
+  "reports_his_next_fight": "no",
+  "reports_his_health": "no",
+  "he_speaks": "no",
+  "unsure": [
+   "act"
+  ],
+  "note": "The article is Nurmagomedov's own news (rejected deal, UFC talks); Topuria is one of several names in his trash talk ('Quit on the stool. Said I don't wanna continue') and his manager's claim that Usman 'would destroy Ilia Topuria', with nothing new about Topuria. No fight between them is booked, so Nurmagomedov is other_fighter_side; the jab is a taunt (calls_him_out), though an editor could say none_of_these since the speaker is mainly talking about himself."
+ },
+ {
+  "id": "w2012",
+  "main_claim": "Justin Gaethje says he hopes Arman Tsarukyan gets hit hard by Mauricio Ruffy at UFC 331 rather than winning on the ground, and that he is not a fan of grappling-heavy styles like Makhachev's.",
+  "centrality": "not_in_content",
+  "source": "opponent_side",
+  "act": "none_of_these",
+  "fact": "no_fact",
+  "firmness": "none",
+  "reports_his_result": "no",
+  "reports_his_next_fight": "no",
+  "reports_his_health": "no",
+  "he_speaks": "no",
+  "unsure": [],
+  "note": "Topuria appears only in an inserted 'LATEST NEWS:' link ('ruining Ilia Topuria's life' by making Justin Gaethje rematch), which is page furniture; the body is Gaethje on Tsarukyan vs Ruffy and Makhachev. Nobody does anything regarding him (none_of_these); source answers for the main content, Gaethje, who fought him."
+ },
+ {
+  "id": "w2013",
+  "main_claim": "Dana White confirmed on 10 September that Topuria is ready to return to the octagon, with a Gaethje rematch and a Paddy Pimblett fight named as possibilities but no date or opponent announced.",
+  "centrality": "main_subject",
+  "source": "promotion",
+  "act": "gives_news_of_him",
+  "fact": "status_update",
+  "firmness": "official_or_done",
+  "reports_his_result": "no",
+  "reports_his_next_fight": "no",
+  "reports_his_health": "no",
+  "he_speaks": "no",
+  "unsure": [
+   "reports_his_next_fight"
+  ],
+  "note": "'Dana White ha confirmado... que el hispanogeorgiano está preparado para regresar' is the promotion stating he is ready, while 'la UFC no ha anunciado oficialmente un evento, una fecha y un rival' and Gaethje/Pimblett are 'dos posibilidades', so status_update and next fight no; an editor could read the UFC boss naming two opponents as the promotion's plans (next fight yes). The TKO loss and his September reappearance are recap, and his words are described ('explicó que la derrota había cambiado su perspectiva'), not quoted."
+ },
+ {
+  "id": "w2014",
+  "main_claim": "Content creator 'MMARC' discusses his new book on UFC history, his path from TikTok to YouTube, and says Topuria's rise is what made a Spanish-speaking UFC audience and his own career possible.",
+  "centrality": "only_mentioned",
+  "source": "media",
+  "act": "none_of_these",
+  "fact": "no_fact",
+  "firmness": "none",
+  "reports_his_result": "no",
+  "reports_his_next_fight": "no",
+  "reports_his_health": "no",
+  "he_speaks": "no",
+  "unsure": [
+   "act"
+  ],
+  "note": "The interview is about Marc's book and career; Topuria figures as context ('un prospecto hispano-georgiano que tenía muy buena pinta', 'sin Ilia... seguiría en la tienda') with nothing new about him. Marc, a YouTube commentator now covering UFC as accredited press, is media; what he says about Topuria is what Topuria did for him and for the sport, which is no act (none_of_these), though the headline's 'como vivir una final de Champions por diez' could be read as assesses_him."
+ },
+ {
+  "id": "w2015",
+  "main_claim": "After his unanimous decision win over Punahele Soriano at UFC Paris, Donchenko says he wants Daniel Rodriguez next, ideally on the year's last event or as a five-round APEX main event, and explains why he let Soriano take him down in the third round.",
+  "centrality": "main_subject",
+  "source": "himself",
+  "act": "speaks_of_himself",
+  "fact": "no_fact",
+  "firmness": "none",
+  "reports_his_result": "no",
+  "reports_his_next_fight": "no",
+  "reports_his_health": "no",
+  "he_speaks": "yes",
+  "unsure": [
+   "reports_his_result"
+  ],
+  "note": "'Please, let me fight just with him' is a callout, a wish, so no_fact and next fight no; his quotes about the takedown and 'living the American dream' are him on himself. The win and the scorecards (Eric Colon giving Round 3 to Soriano) are retold around a post-fight interview, so result is no, though the paragraph on the judges' cards is detailed enough that an editor could count it as a fight account."
+ }
+]
