@@ -647,6 +647,37 @@ Below the line, deliberately: nothing at the moment — the GCS backup shipped
     config seam, and say so plainly. That is a defensible portfolio story and
     costs nothing to tell honestly — it is the reframing, not the code, that
     would need to change.
+- [ ] **One article, several watched fighters: a design input for the pipeline
+  redesign (Anton, 2026-10-03).** Not a decision for now; to be weighed when the
+  new extractor and pipeline are designed from the diagram
+  (docs/design/system.excalidraw). *"Ultimately, we should allow the same
+  article be for multiple fighters ... when we will be redesigning the new
+  pipeline according to the diagram this should go as a consideration into
+  the design process."*
+  - **How it surfaced.** Golden article #975 is a long Donchenko interview
+    after his Paris win. It is in the set only as an **Amosov** card, where
+    Amosov is "only mentioned" (Donchenko thanks him as a training partner).
+    The card is right for Amosov; there is no Donchenko card for the same
+    article at all, though he is its main subject and speaks throughout.
+  - **Why the pipeline does this.** Each run walks the watchlist one fighter
+    at a time, and the first gate drops any address already stored
+    (`collectCandidates` in hunter.js, `knownUrls` in lib/db.js; the check is
+    by address alone, not by address and fighter). An item row carries one
+    `subject`. So an article belongs to whichever fighter's feed brought it
+    first, and is invisible to the others.
+  - **How big, measured on the 300 golden articles:** 16 name a second
+    watched fighter (10 of them Donchenko cards that name Amosov). On 4 the
+    other fighter is named more often than the card's own: #975 and #1200
+    (Amosov cards, mainly about Donchenko), #65, #1161. Small today, with
+    three fighters, two of them Ukrainian welterweights who train together;
+    it grows with the watchlist.
+  - **What a design has to answer:** is the unit an article, or an
+    (article, fighter) pair; where the nine labels attach (they are already
+    per fighter: "how central is he", "does he speak"); whether one fetch and
+    one extraction can feed several fighters' classifications; how dedup,
+    claims and posting behave when one article is main-subject news for one
+    fighter and a passing mention for another; and how the golden set would
+    represent the pair (a second card for the same article).
 - [ ] LLM model final choice (dummy uses Haiku 4.5)
 - [ ] Source list per fighter (Donchenko/Amosov coverage may be sparse) — largely answered by 2e: Google News + six direct outlet feeds incl. Sport.ua (uk) which covers both quiet fighters. Still open: more Ukrainian outlets if gaps show.
 - [ ] Cron frequency — hourly chosen and running (2b); revisit only if limits or noise say otherwise
