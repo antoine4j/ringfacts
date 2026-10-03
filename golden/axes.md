@@ -55,7 +55,7 @@ several signals together.
 | **himself** | he speaks or posts | |
 | **his team** | people who work on his fighting: coaches, trainers, physio, doctor | |
 | **his manager** | his manager or agent | *proposed:* split from his team, because your 22 Sept ruling treats managers differently |
-| **opponent side** | a fighter booked against him or publicly linked to a fight with him, or that fighter's coach or manager | *proposed:* a champion who is also his last or next opponent is **opponent side** (Gaethje); the relationship to him beats the title |
+| **opponent side** | a fighter the article says is booked against him or has fought him, or that fighter's coach or manager; a callout, wish, rivalry or rumour does not count (Anton, 2026-10-02: "it should be very clear from the article that this is a booked fight") | a champion who is also his last or next opponent is **opponent side** (Gaethje); the relationship to him beats the title |
 | **promotion** | the UFC and its officials (Dana White, matchmakers), commissions, official records | |
 | **other fighter's side** | any other fighter not linked to a fight with him, or that fighter's coach, manager or team; champions of other divisions, friends and teammates included | Makhachev is **other fighter's side** unless linked to a fight with him; Merab is too. Was "other fighter" until 2026-09-28: another fighter's manager (Abdelaziz on Usman, #10) or coach (O'Malley's, #850) had no value |
 | **media** | journalists, pundits, podcasters, analysts, the outlet's own writer | *proposed:* a journalist's leak ("the UFC is discussing a rematch") is **media**, with firmness **rumoured** |

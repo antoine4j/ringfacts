@@ -895,3 +895,20 @@ up to three for "one of several"), Anton: *"A, write it into the guide"*.
 A part that only retells known things is "only mentioned" however long;
 "one of several" needs something new about him while he shares the stage.
 #856 is "only mentioned".
+
+## design: "opponent side" means booked or fought, nothing looser (2026-10-02)
+
+The guide said "booked against him or publicly linked to a fight with him",
+and the readers read Pimblett's rumoured and denied December fight (#820)
+as a link. Offered the camp brief's three rules (booked or fought; reported
+as news, which adds talks and rumours; publicly linked, which adds
+callouts), Anton: *"I want to go with rule one, booked or fought. It should
+be very clear from the article that this is a booked fight, like he is
+fighting someone in December. If it's rumored, somebody said something,
+somebody disproved it, that shouldn't count as an opponent."* On #820 he
+kept fact next fight and how firm rumour (*"the talk might be about
+potential next fight, still"*) and changed source to other fighter's side.
+Source and fact are separate axes: a rumour is news about his next fight
+without making the rumoured man his opponent. The next-fight question is
+reworded to say "the state of his next fight" so a rumour or a denial reads
+as yes.

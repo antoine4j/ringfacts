@@ -9,8 +9,10 @@ the classifier, its questions or its composing script; his words go to
 verdicts.md. A rejected rule is deleted here with one line in verdicts.md.
 
 Decided so far (not in this list): "other fighter's side" (2026-09-28),
-centrality judged by what is new, not by length (rule A, 2026-09-28), and
-"where" stays unlabelled, taken from the extractor (2026-10-01).
+centrality judged by what is new, not by length (rule A, 2026-09-28),
+"where" stays unlabelled, taken from the extractor (2026-10-01), and
+"opponent side" means booked or fought, never a callout or rumour (was
+rule 6 here; 2026-10-02).
 
 ## Parked by Anton, to review later
 
@@ -91,11 +93,6 @@ Gaethje's "probably not until next year" (#462, #503), an outlet's
 "expected back in early 2027": news of his next fight (a timeline, rumour or
 reported) or opinion ("no")?
 
-### 6. When a callout makes another fighter his opponent
-*Labelling. Boundary #3, 5.*
-Pimblett's repeated callouts (#283, #423): the guide says a callout alone is
-not "opponent side", yet the readers split.
-
 ### 7. Main subject or one of several
 *Labelling. Boundary #4, 4.*
 Two-fighter articles where he is arguably the lead (#269, #625, #687).
@@ -125,7 +122,7 @@ would change:
 | next fight (rule 3, 5) | "own news": yes only when a change to his next fight is the article's subject or its own new reporting; a booking that is the premise of a preview, weigh-in or pick, a recalled rumour and a hedged guess are no and no fact | 16 of 30, plus 9 unanimous "yes" on Paris previews |
 | health (rule 3) | someone named (he, his team, the UFC, a named outlet) states his condition; the writer's recap is background | 2 of 6 |
 | result (rule 3) | yes only when the headline or the first sentence's main clause states he won or lost | 2 of 5 |
-| camp (rule 6) | opponent side when the article reports a fight between them as news (booked, fought, in talks); a callout or wish is another fighter's side | 3 of 7 |
+| camp (decided 2026-10-02: Anton took the stricter "booked or fought") | — | 3 of 7, plus every Pimblett article labelled opponent side |
 | centrality (rule 7) | "whose news": the headline and opening decide; a body-less page is judged on its headline | 0 of 10 |
 | act (rule 9) | a plain statement about him; guesses, forecasts and a speaker's own rematch stance are none of these | 1 of 8 |
 | firmness (rule 8) | past tense or a named card and date is official or done; otherwise the speaker decides: promotion or he himself official, a named outlet or other person reported, unnamed sources or an open choice rumour | 1 of 4 |

@@ -43,7 +43,7 @@ carries nothing new about him, answer for its main content.
 | `himself` | he speaks or posts |
 | `his_team` | people who work on his fighting: coaches, trainers, physio, doctor |
 | `his_manager` | his manager or agent |
-| `opponent_side` | a fighter booked against him or publicly linked to a fight with him, or that fighter's coach or manager. A champion who is also his last or next opponent is opponent side (e.g. Gaethje for Topuria): the relationship to him beats the title |
+| `opponent_side` | a fighter the article itself says is booked against him (a date, an event, "will face") or has already fought him, or that fighter's coach or manager. A champion who is also his last or next opponent is opponent side (e.g. Gaethje for Topuria): the relationship to him beats the title. **Booked or fought only** (Anton, 2026-10-02): a callout, a wish from either man, a rivalry, a rumour or "the UFC has not confirmed" does not make him an opponent; he is `other_fighter_side` until an article reports the fight as booked |
 | `promotion` | the UFC and its officials (Dana White, matchmakers), commissions, official records |
 | `other_fighter_side` | any other fighter not linked to a fight with him, or that fighter's coach, manager or team: champions of other divisions, friends and teammates included (Anton, 2026-09-28: another fighter's manager had no value) |
 | `media` | journalists, pundits, podcasters, analysts, commentators, the outlet's own writer. A journalist's leak is media |
@@ -106,9 +106,10 @@ the article.
 - **reports_his_result** — does the article report, as its news, the outcome
   of a fight of his? `no` when his past fight is only recalled as background
   to other news.
-- **reports_his_next_fight** — does it report news of his next fight: an
-  opponent or date set, offered, negotiated or cancelled, or when he will
-  be ready? `no` for only wishes and opinions (callouts, pundit picks), for
+- **reports_his_next_fight** — does it carry news about the state of his
+  next fight: an opponent or date set, offered, in talks, rumoured or
+  denied, cancelled, or when he will be ready? (A rumour is a fact at low
+  firmness, not an opinion.) `no` for only wishes and opinions (callouts, pundit picks), for
   recovery with no word on when he can fight, and for another fighter's next
   fight that does not involve him.
 - **reports_his_health** — does it report, as its news, an injury, illness,
