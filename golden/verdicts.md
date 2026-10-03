@@ -924,3 +924,21 @@ they would both have to accept for UFC to announce, so it doesn't
 count."* On Gaethje: *"too hard to demand the model know whether it's a
 future or a past opponent; Gaethje stays."* Written as corrections in the
 page's database with the rule as the note, not into readers-v1.json.
+
+## design: rule 3, count only what is new, adopted for every fact and news question (2026-10-02)
+
+On #1002 (Pantoja's message to Topuria; the saved text recaps his injuries
+and ends on a UFC-sourced rematch rumour; the readers' majority had fact
+next fight, how firm rumour, reports his next fight yes), Anton: *"The
+problem is that we're applying these fields to different claims in the
+article. The article is about Pantoja sending a message to Topuria. For
+that message the fact should be no fact, how firm none, reports his next
+fight no. If there's a possible fight announcement from Jon Anik, I'm sure
+there are articles that directly talk about that, and they should be
+assessed. In this article we should not be paying attention to all this
+background stuff. We should be focusing on assessing the one main claim of
+the article."* Then: *"adopt rule 3."* Backlog rule 3 (and 5, a guess at
+his timing, which it covers) is written into the guide under question 4,
+with #856, #462 and #1002 as the worked examples. The classifier keeps
+answering each question on its own; the contradiction stays a doubt flag
+there, as decided on 2026-10-02 (the blade question).

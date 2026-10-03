@@ -75,6 +75,21 @@ A fact is something that happened or is set to happen, not an opinion.
 Choose by the article's **main news about him**. A past fight or injury
 only recalled as background is not the article's fact.
 
+**Rule 3: count only what is new (Anton, 2026-10-02).** All nine answers
+describe the article's one main claim. Something mentioned on the way (a
+recap of his injuries, his last result, a booking restated as the premise
+of a preview, pick, weigh-in or card list, a rumour recalled in a closing
+line, anyone's guess at his timing) is background: it does not set the
+fact, and it does not turn a yes/no question to `yes`. Decide from the
+article alone: dates, tense, "after his June loss", "cabe recordar",
+where the line sits. When the fact is `no_fact`, firmness is `none` and
+the three news questions (result, next fight, health) are `no`. When
+there is a fact, several news questions can still be `yes` (a fight
+report that also names his next opponent). Worked examples: #856
+(fractures recapped in a year-in-review: health no), #462 (Gaethje
+guesses he won't fight until next year: no fact), #1002 (Pantoja's
+message; the rematch rumour is a closing line: no fact, next fight no).
+
 | value | means |
 |---|---|
 | `next_fight` | news of his next fight: an opponent, a date, an offer, talks, a cancellation, or when he will be ready to fight again. Not a wish or an opinion about who he should fight (a callout, a pundit's pick): that is `no_fact` |
@@ -101,7 +116,8 @@ Of the main fact whatever its kind; `none` when question 4 is `no_fact`.
 ## 6–9. Four yes/no questions (answer `yes` or `no`)
 
 Each is about the watched fighter only, never about another fighter in
-the article.
+the article. Each asks "is this the article's news", not "is this in the
+text": see rule 3 under question 4. `no_fact` means `no` on the first three.
 
 - **reports_his_result** — does the article report, as its news, the outcome
   of a fight of his? `no` when his past fight is only recalled as background

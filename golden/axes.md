@@ -86,7 +86,7 @@ into Q5, which may be fine since we can see a correlation then"*).
 
 | value | means |
 |---|---|
-| **next fight** | news of his next fight: an opponent, a date, an offer, talks, a cancellation, or when he will be ready. Booking and return were two values until v4; every v3 "return" was one fighter's comeback storyline, so they merged (2026-09-27) |
+| **next fight** | news of his next fight: an opponent, a date, an offer, talks, a cancellation, or when he will be ready. Only as the article's own news (rule 3, 2026-10-02): a booking restated as the premise of a preview or a rumour recalled beside an opinion is background, so no fact. Booking and return were two values until v4; every v3 "return" was one fighter's comeback storyline, so they merged (2026-09-27) |
 | **result** | the outcome of a fight of his |
 | **fight-week event** | the routine of a fight of his, and nothing more: weigh-in, face-off, open workout, card order, start times. An interview, press conference or media day is a place where things are said, not a fact: what is said there takes its own value, or none (Anton, 2026-09-27) |
 | **health** | injury, medical, recovery |
