@@ -116,9 +116,27 @@ def overnight():
     return boundaries, briefs, recheck, triage
 
 
+def reread():
+    """The blind re-read of 2026-10-02 under the status-update wording (status-pilot/): fact, firmness, next fight.
+
+    Later rounds replace earlier ones, because round two used the final wording.
+    @returns: article id → reader letter → the reader's row (three answers and a note)
+    """
+    out = {}
+    for folder, maps in (("round1", {"A": "id-map.json", "B": "id-map.json"}), ("round2", {"A": "id-map.json", "B": "id-map.json"}),
+                         ("full", {"A": "id-map.json", "B": "id-map-B.json"})):
+        for letter, map_name in maps.items():
+            ids = json.load(open(os.path.join(HERE, "status-pilot", folder, map_name)))
+            for path in sorted(glob.glob(os.path.join(HERE, "status-pilot", folder, f"{letter}-*.json"))):
+                for row in json.load(open(path)):
+                    out.setdefault(ids[row["id"]], {})[letter] = row
+    return out
+
+
 def main():
     """Write correction.html from the key, the guide, v6 and the overnight outputs."""
     boundaries, briefs, recheck, triage = overnight()
+    rereaders = reread()
     key = json.load(open(os.path.join(GOLDEN, "answers/readers-v1.json")))["articles"]
     sides = json.load(open(os.path.join(GOLDEN, "split.json")))["articles"]
     articles = {str(a["id"]): a for a in json.load(open(os.path.join(GOLDEN, "articles.json")))}
@@ -133,6 +151,8 @@ def main():
                           "classifier": classifier_value(q, v6[article_id][q])}
             if (article_id, q) in triage: answers[q]["hint"] = triage[(article_id, q)]
         if article_id in recheck: answers["centrality"]["recheck"] = recheck[article_id]
+        for q in ("fact", "firmness", "reports_his_next_fight"):
+            answers[q]["reread"] = {letter: {"value": row[q], "note": row.get("note")} for letter, row in rereaders.get(article_id, {}).items()}
         # the boundary this article's disagreement falls on, and what the brief's recommended rule says about it
         boundary = boundary_of(entry["answers"])
         brief = briefs.get(boundary) if boundary else None

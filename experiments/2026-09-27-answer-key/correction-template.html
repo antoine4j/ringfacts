@@ -224,6 +224,13 @@ function hints(k, fix){
     const notes = Object.entries(k.recheck).map(([letter, r]) => r.note ? `${letter}: ${esc(r.note)}` : "").filter(Boolean).join(" · ");
     out.push(`<div class="hint ${same ? "agree" : "change"}">re-read under rule A — ${reads}${same ? "" : " — <b>rule A may change this</b>"}<br>${notes}</div>`);
   }
+  // the re-read under the status-update wording speaks up only where a reader differs from the answer shown
+  if (k.reread && Object.values(k.reread).some(r => r.value !== now)){
+    const reads = Object.entries(k.reread).map(([letter, r]) => `${letter}: <b>${esc(human(r.value))}</b>`).join(", ");
+    const one = Object.keys(k.reread).length === 1 ? " (one reader only)" : "";
+    const notes = Object.entries(k.reread).filter(([, r]) => r.value !== now && r.note).map(([letter, r]) => `${letter}: ${esc(r.note)}`).join(" · ");
+    out.push(`<div class="hint change">re-read on 2 Oct under the new guide — ${reads}${one}<br>${notes}</div>`);
+  }
   if (k.rule !== undefined && k.rule !== null){
     out.push(`<div class="hint ${k.rule === now ? "agree" : "change"}">the brief's recommended rule gives: <b>${esc(human(k.rule))}</b>${k.rule === now ? (fix ? " — applied" : "") : " — would change this"}</div>`);
   }
