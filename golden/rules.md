@@ -251,6 +251,18 @@ than official. Otherwise what he or the promotion states is "official or
 done".
 *Decided 2026-10-02.*
 
+## Does he speak
+
+### He speaks only when his words are there
+"He speaks" is yes when his own words are in the saved text: a quote, an
+interview answer, a post reproduced. It is no when the article only says
+that he posted or said something without quoting it (#44, a video page;
+#823, "he reported this on his Instagram"), and no when the only words of
+his are a few recalled from an earlier occasion as background (#823, two
+words from after his previous fight). The label should mean there is a
+statement of his to read.
+*Decided 2026-10-03.*
+
 ## Parked and watched
 
 Not rules. See [rule-backlog.md](rule-backlog.md): a vague mention with no

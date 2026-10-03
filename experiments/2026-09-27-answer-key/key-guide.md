@@ -86,7 +86,7 @@ him, nobody in it is giving news of him (#1045).
 A fact is something that happened or is set to happen, not an opinion.
 Choose by the article's **main news about him**. A past fight or injury only recalled as background is not the article's fact. Pick the specific value first: result, `next_fight`, `fight_week_event`, health, `career_move` or `personal_life`. If it is not one of those six, ask whether it is news of where he stands as a fighter (ready, available, training, back in public): that is `status_update`. Use `none_of_these` only for a new fact that is neither one of the six nor about where he stands as a fighter. Use `no_fact` when there is no new fact at all.
 
-**Rule 3: count only what is new (Anton, 2026-10-02).** All nine answers
+**Only what is new (Anton, 2026-10-02).** All nine answers
 describe the article's one main claim. Something mentioned on the way (a
 recap of his injuries, his last result, a booking restated as the premise
 of a preview, pick, weigh-in or card list, a rumour recalled in a closing
@@ -145,8 +145,8 @@ a second fact stated beside it** (Anton, 2026-10-02). When `fact` is
 `result`, `next_fight` or `health`, its question is always `yes`. A
 question can also be `yes` while `fact` is a different kind, when the same
 statement carries both (a fight report that also names his next opponent: fact `result`, next fight `yes`). When `fact` is `no_fact`, all
-three are `no`. They never mean "is it mentioned": see rule 3 under
-question 4.
+three are `no`. They never mean "is it mentioned": see "only what is new"
+under question 4.
 
 - **reports_his_result** — does the article report, as its news, the outcome
   of a fight of his? `no` when his past fight is only recalled as background
@@ -163,7 +163,9 @@ question 4.
   ready.
 - **he_speaks** — do his own words appear in the saved text (a quote, an
   interview answer, a post of his)? `no` when only others speak, including
-  about him.
+  about him. Also `no` when a post or statement of his is only described and
+  not quoted (#44), or when the only words of his are a few recalled from an
+  earlier occasion as background (#823).
 
 An article can say `yes` to several of these (a fight report that also
 names his next opponent).

@@ -1244,3 +1244,34 @@ tone, hedges still count). Five of the eight ended as none of these (#457,
 #484, #492, #975, #1045); #287 calls him out, #516 steers him, #883 gives
 news of him. *"Yes, add it to the guide and rules file."* The readers had
 split on six of the eight for want of this rule.
+
+## Step 1 finished: the last cards (2026-10-03)
+
+All 75 cards of step 1 ("readers differed") are checked. The last rulings:
+
+- **#1089 stays no fact**, against both re-readers' status update. Anton:
+  *"I will keep no fact, coz I'm not sure what is even the update on status
+  that we are getting... White says he is considering these fights
+  basically."* The article itself calls White's Gaethje-or-Pimblett line
+  last week's talk, the frame of a Gaethje retirement piece.
+- **#1089 and #856: act set to none of these.** Both carried "gives news of
+  him" beside "no fact", which the rule from #1045 forbids. Anton first
+  agreed with "gives news" on #1089, then with none of these when the
+  collision was shown. Three more cards carry the same pair and are not
+  checked yet: #327, #762, #1066.
+- **#647 left as the readers' majority has it (no fact).** The saved text
+  is one line plus the site's comment policy. Anton: *"Let's not spend too
+  much time on this since this is a junk article with no body."* The
+  personal-life reading (the same letter to his son as #620, #627, #651)
+  was not taken up.
+- **#654 keeps source "fans".** The only thing said of Donchenko is the
+  site's readers' vote ("Readers 148-65: ... Donchenko (71%)"); the staff
+  picks were not saved.
+- **#823: he speaks is no.** Anton: *"There is barely a quote, only
+  paraphrasing what he talked about."* The Instagram post is only
+  mentioned, and the two quoted words are recalled from after his previous
+  fight. New rule: "He speaks only when his words are there".
+
+The copy check after step 1 is clean: 33 near-identical pairs, 30 with
+identical labels, and the 3 that differ are different UFC.com video pages
+(#521, #740, #746).

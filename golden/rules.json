@@ -309,6 +309,18 @@
    ],
    "articles": [],
    "classifier": "drafted for v7"
+  },
+  {
+   "id": "he-speaks-needs-his-words",
+   "name": "He speaks only when his words are there",
+   "guide_must_say": [
+    "Also no when a post or statement of his is only described and not quoted (#44), or when the only words of his are a few recalled from an earlier occasion as background (#823)."
+   ],
+   "articles": [
+    "823",
+    "44"
+   ],
+   "classifier": "missing"
   }
  ]
 }
