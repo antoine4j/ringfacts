@@ -88,6 +88,15 @@ Where the real content is a video (or otherwise not saved) and our text is
 only a caption, flag the article after Anton confirms it on the live page,
 as with #655; label what the page is, and leave the classifier unscored on
 answers only the video holds.
+The reverse also happens (#492, 2026-10-03): a Yahoo video page shows one
+paragraph in the browser, but the saved text holds the video's transcript
+and the titles of ten sidebar videos, so readers and the classifier judged
+words Anton could not see on the page. And #44 is a video page where
+almost nothing was saved (685 characters). Signals measured on the 300: a
+`/video/` address or a video marker in the title flags 19 articles and
+catches three of six known cases; the page's own type label and embedded
+player, which the extractor sees but does not record, would be the
+reliable signal.
 
 ### 7. Main subject or one of several
 *Labelling. Boundary #4, 4.*
