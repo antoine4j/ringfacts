@@ -1,0 +1,258 @@
+[
+ {
+  "id": "t0401",
+  "main_claim": "Topuria says the biggest lesson from his divorce was to listen to his mother, and describes how hard the public split was for him and his children.",
+  "centrality": "main_subject",
+  "source": "himself",
+  "act": "speaks_of_himself",
+  "fact": "personal_life",
+  "firmness": "official_or_done",
+  "reports_his_result": "no",
+  "reports_his_next_fight": "no",
+  "reports_his_health": "no",
+  "he_speaks": "yes",
+  "unsure": [
+   "fact"
+  ],
+  "note": "'The greatest thing I've learned is to listen to my mother' and the account of his divorce are his own words about his life outside the cage, so personal_life (the guide lists 'a life lesson'); an editor could call a pure reflection no_fact. The Gaethje loss and 'recovering from facial injuries' are the writer's closing recap, so result and health are no."
+ },
+ {
+  "id": "t0402",
+  "main_claim": "Punahele Soriano, who meets Donchenko on Saturday's main card in Paris, says he is happiest flying under the radar and calls Donchenko a scary, young opponent.",
+  "centrality": "one_of_several",
+  "source": "opponent_side",
+  "act": "assesses_him",
+  "fact": "no_fact",
+  "firmness": "none",
+  "reports_his_result": "no",
+  "reports_his_next_fight": "no",
+  "reports_his_health": "no",
+  "he_speaks": "no",
+  "unsure": [
+   "centrality"
+  ],
+  "note": "Soriano's feature is tied by the text to the booked fight ('Saturday's meeting with Donchenko at Accor Arena') and he rates him ('100 percent, man; scary dude, wild dude... he's young and has that young man's fire'), so one_of_several and assesses_him; his part is thin enough that only_mentioned is arguable. The booking is the premise of a fight-week feature, so no fact."
+ },
+ {
+  "id": "t0403",
+  "main_claim": "Topuria tells Joe Rogan he was never a Demetrious Johnson fan because he thought his nickname was 'Mickey Mouse', and Johnson jokes back.",
+  "centrality": "one_of_several",
+  "source": "himself",
+  "act": "none_of_these",
+  "fact": "no_fact",
+  "firmness": "none",
+  "reports_his_result": "no",
+  "reports_his_next_fight": "no",
+  "reports_his_health": "no",
+  "he_speaks": "yes",
+  "unsure": [
+   "centrality",
+   "act",
+   "source"
+  ],
+  "note": "The guide's #373 case: his slip about another fighter's nickname, with that fighter answering ('All Gucci boiiss', joking about a training clinch), is one_of_several. He speaks about Johnson, not about himself, so no listed act fits (a 'speaks of another fighter' value would); an editor could instead take Johnson's jab as other_fighter_side / calls_him_out, or stretch to speaks_of_himself."
+ },
+ {
+  "id": "t0404",
+  "main_claim": "Merab Dvalishvili says Topuria is enjoying life, is doing well and is physically fine, and will take the belt back when he returns.",
+  "centrality": "main_subject",
+  "source": "other_fighter_side",
+  "act": "gives_news_of_him",
+  "fact": "status_update",
+  "firmness": "reported",
+  "reports_his_result": "no",
+  "reports_his_next_fight": "no",
+  "reports_his_health": "no",
+  "he_speaks": "no",
+  "unsure": [
+   "fact",
+   "act",
+   "firmness",
+   "reports_his_health"
+  ],
+  "note": "Dvalishvili, a friend and ex-bantamweight champion, states 'le va muy bien, y se encuentra bien (físicamente)... está disfrutando de la vida', which I read as a named person stating where he stands (status_update, reported); an editor could call a friend's impression no_fact/assesses_him, or take 'se encuentra bien físicamente' as health. The fractures, suspension and 'informaciones' about a year-end return are the writer's recap and speculation, so health and next fight are no."
+ },
+ {
+  "id": "t0405",
+  "main_claim": "ClutchPoints previews Donchenko vs Soriano at UFC Paris and picks Donchenko by unanimous decision.",
+  "centrality": "one_of_several",
+  "source": "media",
+  "act": "predicts_his_fight",
+  "fact": "no_fact",
+  "firmness": "none",
+  "reports_his_result": "no",
+  "reports_his_next_fight": "no",
+  "reports_his_health": "no",
+  "he_speaks": "no",
+  "unsure": [],
+  "note": "A betting preview covering both fighters, ending 'The pick is Donchenko by competitive unanimous decision'; the booking is the premise of the pick, so no fact."
+ },
+ {
+  "id": "t0406",
+  "main_claim": "The León sports forum announces Carolina Marín, Carlos Moyá and Aldo Martínez, Topuria's performance director, as its first speakers.",
+  "centrality": "only_mentioned",
+  "source": "no_one",
+  "act": "none_of_these",
+  "fact": "no_fact",
+  "firmness": "none",
+  "reports_his_result": "no",
+  "reports_his_next_fight": "no",
+  "reports_his_health": "no",
+  "he_speaks": "no",
+  "unsure": [
+   "source"
+  ],
+  "note": "Topuria appears only as the fighter Martínez works for ('director de rendimiento deportivo de Ilia Topuria'); nothing is said or done regarding him, so act is none_of_these. The main content is an event announcement with nobody quoted, hence no_one; an editor might prefer none_of_these for the forum's organisers."
+ },
+ {
+  "id": "t0407",
+  "main_claim": "Sport.ua previews Donchenko's main-card bout with Soriano in Paris as the hardest fight of his UFC run and leans to a Donchenko win.",
+  "centrality": "one_of_several",
+  "source": "media",
+  "act": "predicts_his_fight",
+  "fact": "no_fact",
+  "firmness": "none",
+  "reports_his_result": "no",
+  "reports_his_next_fight": "no",
+  "reports_his_health": "no",
+  "he_speaks": "no",
+  "unsure": [
+   "centrality"
+  ],
+  "note": "A preview of a fight of his covering both men at length, with the writer's pick ('я все ж таки схиляюся до перемоги Донченка'); the headline frames it around Donchenko, so main_subject is arguable. The booking and first main-card slot are the premise of the preview, not news."
+ },
+ {
+  "id": "t0408",
+  "main_claim": "Merab Dvalishvili says Topuria is fine, positive and enjoying life, resting to come back stronger and beat everyone.",
+  "centrality": "main_subject",
+  "source": "other_fighter_side",
+  "act": "gives_news_of_him",
+  "fact": "status_update",
+  "firmness": "reported",
+  "reports_his_result": "no",
+  "reports_his_next_fight": "no",
+  "reports_his_health": "no",
+  "he_speaks": "no",
+  "unsure": [
+   "fact",
+   "act",
+   "reports_his_health"
+  ],
+  "note": "Dvalishvili's 'Topuria está bien... está disfrutando de la vida, y cuando vuelva les ganará a todos' is a friend stating where he stands; an editor could read it as no_fact/assesses_him. The writer's unsourced lines on fractures being closed and a 2027 return are recap and inference, so health is no (arguable), and the list of possible opponents is options only, so next fight is no."
+ },
+ {
+  "id": "t0409",
+  "main_claim": "After beating Soriano by unanimous decision in Paris, Donchenko took the microphone to tell the UFC whom he wants to fight next.",
+  "centrality": "main_subject",
+  "source": "himself",
+  "act": "speaks_of_himself",
+  "fact": "no_fact",
+  "firmness": "none",
+  "reports_his_result": "no",
+  "reports_his_next_fight": "no",
+  "reports_his_health": "no",
+  "he_speaks": "no",
+  "unsure": [],
+  "note": "'Донченко буквально вихопив мікрофон та прямо заявив... кого прагне побачити' is a post-fight callout, a wish, so no_fact; the result is restated ('Нагадаємо, бій... завершився перемогою') as the lead-in to the callout, which the guide says is result no. His words are described, not quoted, so he_speaks is no."
+ },
+ {
+  "id": "t0410",
+  "main_claim": "Neil Magny predicts Ian Machado Garry can upset Islam Makhachev at UFC 330 and says the odds will shift after round one.",
+  "centrality": "only_mentioned",
+  "source": "opponent_side",
+  "act": "none_of_these",
+  "fact": "no_fact",
+  "firmness": "none",
+  "reports_his_result": "no",
+  "reports_his_next_fight": "no",
+  "reports_his_health": "no",
+  "he_speaks": "no",
+  "unsure": [
+   "source"
+  ],
+  "note": "Amosov appears once, in the line that Magny 'has only lost to... Michael Morales, Carlos Prates, and Yaroslav Amosov'; nobody does anything regarding him, so act is none_of_these. The speaker is Magny, whom the text says has fought Amosov, so opponent_side by the guide's definition, though other_fighter_side is reasonable since the article is not about their fight."
+ },
+ {
+  "id": "t0411",
+  "main_claim": "Donchenko will fight Punahele Soriano at UFC Fight Night in Paris on September 5.",
+  "centrality": "main_subject",
+  "source": "no_one",
+  "act": "reports_an_event",
+  "fact": "next_fight",
+  "firmness": "official_or_done",
+  "reports_his_result": "no",
+  "reports_his_next_fight": "yes",
+  "reports_his_health": "no",
+  "he_speaks": "no",
+  "unsure": [
+   "firmness",
+   "source"
+  ],
+  "note": "A booking report: 'Данило Донченко проведе четвертий бій... 5 вересня на турнірі UFC Fight Night... у Парижі. Суперником українця стане... Соріано', stated as fact with his Instagram post embedded but not quoted. No speaker is named, so no_one; an editor might credit the post to himself and, since the outlet rather than the promotion states it, could mark firmness reported."
+ },
+ {
+  "id": "t0412",
+  "main_claim": "In a long interview after his Paris win, Donchenko reviews the fight and reveals he had a hand infection and hospital procedure a month before it, and says he asked the UFC for Daniel Rodriguez.",
+  "centrality": "main_subject",
+  "source": "himself",
+  "act": "speaks_of_himself",
+  "fact": "health",
+  "firmness": "official_or_done",
+  "reports_his_result": "no",
+  "reports_his_next_fight": "no",
+  "reports_his_health": "yes",
+  "he_speaks": "yes",
+  "unsure": [
+   "fact",
+   "reports_his_health"
+  ],
+  "note": "'У мене була інфекція 4 серпня... Був у госпіталі, мені різали руку... пив антибіотики, повноцінно тренуватися не міг' is the one hard fact he states in a reflective interview, so health, as in the guide's #723; an editor could call the interview no_fact since the infection is a past episode told in passing. The win is discussed, not reported as a fight account, and 'Дайте мені Даніеля Родрігеса' is a wish, so result and next fight are no."
+ },
+ {
+  "id": "t0413",
+  "main_claim": "Usman Nurmagomedov denies he tried to elbow Song Yadong after his brother Umar was knocked out at UFC Shanghai.",
+  "centrality": "not_in_content",
+  "source": "other_fighter_side",
+  "act": "none_of_these",
+  "fact": "no_fact",
+  "firmness": "none",
+  "reports_his_result": "no",
+  "reports_his_next_fight": "no",
+  "reports_his_health": "no",
+  "he_speaks": "no",
+  "unsure": [],
+  "note": "Topuria appears only in a 'LATEST NEWS' link about Gaethje's hands; the article's own text is Usman Nurmagomedov's Instagram statement, so source is answered for that and no act regarding Topuria exists."
+ },
+ {
+  "id": "t0414",
+  "main_claim": "Manager Alex Davis says Myllena Messias's bout flagged as fake by Tapology was an exhibition after her opponent withdrew and should come off her record.",
+  "centrality": "not_in_content",
+  "source": "other_fighter_side",
+  "act": "none_of_these",
+  "fact": "no_fact",
+  "firmness": "none",
+  "reports_his_result": "no",
+  "reports_his_next_fight": "no",
+  "reports_his_health": "no",
+  "he_speaks": "no",
+  "unsure": [],
+  "note": "Topuria appears only in a 'LATEST NEWS' link about a Gaethje rematch; the article's content is another fighter's manager speaking, which the guide files under other_fighter_side, and nobody does anything regarding Topuria."
+ },
+ {
+  "id": "t0415",
+  "main_claim": "Sport.ua previews Donchenko's main-card bout with Soriano in Paris as the hardest fight of his UFC run and leans to a Donchenko win.",
+  "centrality": "one_of_several",
+  "source": "media",
+  "act": "predicts_his_fight",
+  "fact": "no_fact",
+  "firmness": "none",
+  "reports_his_result": "no",
+  "reports_his_next_fight": "no",
+  "reports_his_health": "no",
+  "he_speaks": "no",
+  "unsure": [
+   "centrality"
+  ],
+  "note": "Same text as t0407: a two-fighter preview ending in the writer's pick ('схиляюся до перемоги Донченка'); the Donchenko-centred headline makes main_subject arguable. The booking and first main-card slot are the preview's premise, not news."
+ }
+]
