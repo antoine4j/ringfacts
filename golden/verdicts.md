@@ -1217,3 +1217,17 @@ opponent, then kept the readers' majority: *"I agree with your
 interpretation. Call out is not just a literal call out."* The guide's
 lines for both values now say so. Reading the words as written would have
 made #492 "steers him" as well.
+
+## #484 and #462: one text, one act; six write-ups of one Gaethje interview (2026-10-03)
+
+#484 (MMA Fighting) and #462 (the Yahoo copy, word for word) carried
+different acts from the readers: steers him and gives news of him. Anton on
+#484: *"the only material thing is Gaethje's guess that Topuria maybe won't
+fight until next year ... it's Gaethje's opinion, and it's a little bit of
+steering, but I wouldn't be mad at none of these."* Both set to none of
+these: the article is Gaethje's own news, the guess is not news of him
+(#462's own ruling on fact), and the hedged "not my next fight, in my gut"
+is about Gaethje's fight (as on #492, the video of the same interview).
+The six write-ups now read: #462, #484, #492, #476 none of these; #503
+steers him, because its headline is the rematch itself; #467 steers him,
+unchecked, to look at in a later step.
