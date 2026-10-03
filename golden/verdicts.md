@@ -1111,12 +1111,16 @@ moves (status-pilot/result.json). Anton went through them on the page:
   Anik's rematch claim is a passing line, as in #1002, #879, #901, and the
   article is Pimblett's wish and the writer's analysis. Four blind readings
   and the overnight brief's rule had all said no fact.
-- **#851 stays result.** Donchenko calls out Rodriguez two days after his
-  Paris win; the readers said no fact (the callout is the news). Anton:
-  *"it also gets on the back of his win result, which is why I believe fact
-  is a result. So it's fine as it is."* He also noted the list has no fact
-  value for the watched fighter calling someone out; it is carried by act
-  (speaks of himself: what he wants next), not by fact.
+- **#851 changes to no fact.** Donchenko calls out Rodriguez two days
+  after his Paris win. Anton first kept result (*"it also gets on the back
+  of his win result"*), then reconsidered: *"I may agree if it's a no fact,
+  because the main thing here is a call out of Donchenko for Rodriguez and
+  not the win ... I would guess that there were articles before that only
+  spoke about win."* There were: 29 on 5 and 6 September; this one ran on
+  the 7th with the callout as headline and lead and the win as a recap
+  paragraph. Rule 3 as written, and what both re-readers said. He also
+  noted the list has no fact value for the watched fighter calling someone
+  out; it is carried by act (speaks of himself: what he wants next).
 - **#1089, #620, #342 stay as they were** (no fact; personal life;
   personal life), against the readers' status update, status update and no
   fact. #1089: White's line about Topuria is the frame of a Gaethje piece.
