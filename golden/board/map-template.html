@@ -127,6 +127,12 @@ details.defs dt{font-weight:600;color:var(--ink)}details.defs dd{margin:0}
 @media (max-width:520px){details.defs dl{grid-template-columns:1fr}}
 .hint{font-size:13px;color:var(--dim)}
 .g-right{color:var(--ok)}.g-near{color:var(--warn);font-weight:600}.g-wrong{color:var(--red);font-weight:600}
+[hidden]{display:none!important}
+.focus{outline:2px solid var(--red);outline-offset:1px;border-radius:3px;padding:0 2px}
+details.more{margin:0 0 12px 14px}details.more>summary{cursor:pointer;font-size:13px;color:var(--accent);list-style:none}
+details.more>summary::-webkit-details-marker{display:none}
+.cell.off{cursor:default;opacity:.6;background:transparent;display:flex;align-items:center;justify-content:center;color:var(--dim);font-variant-numeric:tabular-nums}
+.grid th.gap,.grid td.gap{min-width:10px;padding:0}
 .side{font-family:var(--mono);font-size:11px;letter-spacing:.04em;text-transform:uppercase;color:var(--dim)}
 </style>
 
@@ -134,17 +140,21 @@ details.defs dt{font-weight:600;color:var(--ink)}details.defs dd{margin:0}
   <section class="top">
     <div><h1>Claim Map</h1><div class="stamp" id="stamp"></div></div>
     <div class="seg" role="group" aria-label="Classifier version" id="versions"></div>
+    <div class="seg" role="group" aria-label="View" id="views" hidden>
+      <button data-view="dist" aria-pressed="true">Distribution</button>
+      <button data-view="errors" aria-pressed="false">Errors</button>
+    </div>
     <div class="seg" role="group" aria-label="Colour theme" id="theme">
       <button data-t="system" aria-pressed="true">System</button>
       <button data-t="light" aria-pressed="false">Light</button>
       <button data-t="dark" aria-pressed="false">Dark</button>
     </div>
   </section>
-  <p class="lede">Every golden claim, described by one classifier version's answers. Put any two dimensions on the axes, narrow with the filters, and click a cell to spot-check its claims, doubtful first. A claim takes the value most of its articles give. Your labels are frozen in golden/labels.json; <b>v7</b>, the version tuned against them, shows your key beside each answer on the training set, graded as the scoring does: ✓ right, orange one step off on a scale, red wrong. Validation articles show no key, so that nobody tunes on them; the test claims are left out of v7 until their one scoring run. The older versions predate the key and show answers only.</p>
+  <p class="lede">Every golden claim, described by one classifier version's answers. Put any two dimensions on the axes, narrow with the filters, and click a cell to spot-check its claims, doubtful first. A claim takes the value most of its articles give. Your labels are frozen in golden/labels.json; <b>v7</b>, the version tuned against them, shows your key beside each answer on the training set, graded as the scoring does: ✓ right, orange one step off on a scale, red wrong. Its <b>Errors</b> view puts the nine questions against how many answers each article gets wrong; click a cell to open those articles, with the answer in question outlined. Validation articles show no key, so that nobody tunes on them; the test claims are left out of v7 until their one scoring run. The older versions predate the key and show answers only.</p>
 
   <section class="gates" id="gates" aria-label="About him?"></section>
 
-  <section class="controls">
+  <section class="controls" id="distcontrols">
     <label>Across <select id="xsel"></select></label>
     <label>Down <select id="ysel"></select></label>
     <div class="seg" role="group" aria-label="Count" id="units">
@@ -171,7 +181,9 @@ details.defs dt{font-weight:600;color:var(--ink)}details.defs dd{margin:0}
 <script>
 const ALL = /*DATA*/null;
 let DATA, DIMS, LABEL, DEF;
-const state = {x:"", y:"", unit:"claims", doubtOnly:false, showEmpty:false, gateFlag:false, filters:{}, cell:null};
+const state = {x:"", y:"", unit:"claims", doubtOnly:false, showEmpty:false, gateFlag:false, filters:{}, cell:null, view:"dist", ecell:null};
+const NOT_QUESTIONS = ["extract_kind", "fighter", "split", "vs_key"];
+const BUCKET_NAMES = {"0":"all nine right", "1":"1 wrong", "2":"2 wrong", "3+":"3 or more wrong", "wrong":"1 or more wrong"};
 const esc = s => String(s ?? "").replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
 const human = k => String(k).replace(/_/g, " ");
 
@@ -326,23 +338,39 @@ function sideNote(r){
 }
 
 /** One article inside an opened claim: its extract and every answer. @param {object} r @returns {string} html */
-function article(r){
-  const N = DATA.passes, val = (dim) => { const g = r.agree[dim]; return `<span>${esc(LABEL[dim])}: <b class="${g?(g===N?"agree3":"agree"+g):""}" ${g&&N>1?`title="${g} of ${N} readers"`:""}>${esc(human(r.v[dim]))}</b>${g && g<N ? ` (${g}/${N})` : ""}${keyMark(r, dim)}</span>`; };
+function article(r, focus){
+  const N = DATA.passes, val = (dim) => { const g = r.agree[dim]; return `<span${dim===focus?' class="focus"':""}>${esc(LABEL[dim])}: <b class="${g?(g===N?"agree3":"agree"+g):""}" ${g&&N>1?`title="${g} of ${N} readers"`:""}>${esc(human(r.v[dim]))}</b>${g && g<N ? ` (${g}/${N})` : ""}${keyMark(r, dim)}</span>`; };
   return `<li class="art"><div class="t"><span class="key">#${r.id} · ${r.date} · ${esc(r.source)}</span>${sideNote(r)}<br><a href="${esc(r.url)}" target="_blank" rel="noopener">${esc(r.title)}</a></div>
     <div class="prog ext"><div class="ph">Extractor</div><div class="x">${esc(r.extract || "(no extract)")}</div>
       <div class="a"><span>kind: <b>${esc(human(r.v.extract_kind))}</b></span><span>actor: <b>${esc(r.actor||"—")}</b></span>${r.occasion?`<span>where: <b>${esc(r.occasion)}</b></span>`:""}</div></div>
     <details class="prog cls"><summary><div class="ph">Classifier <span class="hint">· ${DATA.passes > 1 ? "majority of three readers; (2/3) when one differed" : "one pass"} · click for every answer's percentages</span></div>
-      <div class="a">${DIMS.filter(d => !["fighter","extract_kind","split","vs_key"].includes(d.key)).map(d => val(d.key)).join("")}</div></summary>
+      <div class="a">${DIMS.filter(d => !NOT_QUESTIONS.includes(d.key)).map(d => val(d.key)).join("")}</div></summary>
       <div class="detail">${classifierDetail(r)}</div></details>
     ${DATA.flags.some(f => r.flags[f]) ? `<div class="a">${DATA.flags.filter(f => r.flags[f]).map(f => `<span class="chip warn">${esc(DATA.flag_labels[f])}</span>`).join("")}</div>` : ""}</li>`;
 }
 
-/** One claim in the list, closed; it opens into its articles. @param {object} c @returns {string} html */
-function claimItem(c){
+/** The claim's articles: those in the clicked cell first, the others behind one click.
+ * @param {object} c a claim @param {object[]|null} inCell its rows in the cell, or null for all @param {string} [focus] a question to highlight @returns {string} html */
+function claimArticles(c, inCell, focus){
+  if (!inCell || !inCell.length || inCell.length === c.n) return `<ul class="arts">${c.rows.map(r => article(r, focus)).join("")}</ul>`;
+  const rest = c.rows.filter(r => !inCell.includes(r));
+  return `<ul class="arts">${inCell.map(r => article(r, focus)).join("")}</ul>
+    <details class="more"><summary>Show the other ${rest.length} article${rest.length>1?"s":""} of this claim</summary><ul class="arts">${rest.map(r => article(r, focus)).join("")}</ul></details>`;
+}
+
+/** The chip that says how much of a claim the clicked cell holds. @param {object} c @param {object[]|null} inCell @returns {string} html */
+function splitChip(c, inCell){
+  if (!inCell || inCell.length === c.n) return "";
+  if (!inCell.length) return `<span class="chip warn">here by its majority answers; no single article has both</span>`;
+  return `<span class="chip warn">${inCell.length} of ${c.n} articles in this cell</span>`;
+}
+
+/** One claim in the list, closed; it opens into its articles. @param {object} c @param {object[]|null} [inCell] @param {string} [focus] @returns {string} html */
+function claimItem(c, inCell = null, focus){
   return `<li><details><summary><span class="key">${c.key}</span><span class="lbl">${esc(c.label)} <small>extractor's extract of #${c.first}, the first article</small></span>
-      <span class="chips"><span class="chip fighter">${esc(c.v.fighter)}</span><span class="chip">${c.n} article${c.n>1?"s":""}</span><span class="chip">classifier · ${esc(LABEL[DATA.tiles.dim]).toLowerCase()}: ${esc(human(c.v[DATA.tiles.dim]))} · ${esc(LABEL[state.x]).toLowerCase()}: ${esc(human(c.v[state.x]))} · ${esc(LABEL[state.y]).toLowerCase()}: ${esc(human(c.v[state.y]))}</span>
-      ${DATA.flags.filter(f => c.flags[f]).map(f => `<span class="chip warn">${esc(DATA.flag_labels[f])}</span>`).join("")}${articlesSplit(c)?`<span class="chip warn">articles in different cells</span>`:""}</span></summary>
-      <ul class="arts">${c.rows.map(article).join("")}</ul></details></li>`;
+      <span class="chips"><span class="chip fighter">${esc(c.v.fighter)}</span><span class="chip">${c.n} article${c.n>1?"s":""}</span><span class="chip">classifier · ${[...new Set([DATA.tiles.dim, state.x, state.y])].map(d => `${esc(LABEL[d]).toLowerCase()}: ${esc(human(c.v[d]))}`).join(" · ")}</span>
+      ${splitChip(c, inCell)}${DATA.flags.filter(f => c.flags[f]).map(f => `<span class="chip warn">${esc(DATA.flag_labels[f])}</span>`).join("")}${!inCell && articlesSplit(c)?`<span class="chip warn">articles in different cells</span>`:""}</span></summary>
+      ${claimArticles(c, inCell, focus)}</details></li>`;
 }
 
 /** The claims of the selected cell, or of the whole filtered slice when no cell is selected; doubtful first. */
@@ -361,13 +389,82 @@ function drawPanel(){
     head = `<h2>All claims in this slice · ${list.length} claim${list.length===1?"":"s"}, ${articles} articles</h2>
       <div class="hint">Every claim the filters above let through, doubtful first. Click a cell in the grid to narrow to it.</div>`;
   }
-  panel.innerHTML = head + (list.length ? `<ul class="claims">${list.map(claimItem).join("")}</ul>` : `<div class="hint">No claims with the current filters.</div>`);
+  const rowsIn = c => state.cell ? c.rows.filter(r => r.v[state.x]===state.cell[0] && r.v[state.y]===state.cell[1]) : null;
+  panel.innerHTML = head + (list.length ? `<ul class="claims">${list.map(c => claimItem(c, rowsIn(c))).join("")}</ul>` : `<div class="hint">No claims with the current filters.</div>`);
   const all = document.getElementById("showall");
   if (all) all.onclick = () => { state.cell = null; drawGrid(); drawPanel(); };
 }
 
+/** The training articles of the claims the filters let through, each with its grades. @returns {object[]} rows */
+const gradedRows = () => visible().flatMap(c => c.rows.filter(r => r.grade));
+
+/** Whether an article belongs in an error-view cell. @param {object} r @param {object} cell {dim, b} @returns {boolean} */
+function inErrCell(r, cell){
+  const inBucket = cell.b === "wrong" ? r.bucket !== "0" : r.bucket === cell.b;
+  return inBucket && (!cell.dim || r.grade[cell.dim] !== "right");
+}
+
+/** The error view's tiles: training articles by how many answers are wrong, validation in grey. */
+function drawErrTiles(){
+  const rows = gradedRows(), on = state.ecell && !state.ecell.dim ? state.ecell.b : null;
+  document.getElementById("gates").innerHTML = ["0","1","2","3+"].map(b =>
+    `<button class="gatebtn${b!=="0"?" warn":""}" data-b="${b}" aria-pressed="${on===b}"><span class="n">${rows.filter(r => r.bucket===b).length}</span><span class="l">${BUCKET_NAMES[b]}</span><span class="s">training articles · validation ${DATA.checked.articles[b]||0}</span></button>`).join("");
+  document.querySelectorAll("#gates [data-b]").forEach(btn => btn.onclick = () => {
+    state.ecell = on===btn.dataset.b ? null : {dim:null, b:btn.dataset.b}; drawAll(); });
+}
+
+/** The error grid: one row per question; training cells count articles and open them, validation cells are counts only. */
+function drawErrGrid(){
+  const rows = gradedRows(), Q = DIMS.filter(d => !NOT_QUESTIONS.includes(d.key)), B = ["1","2","3+","wrong"];
+  const counts = (dim, b) => rows.filter(r => inErrCell(r, {dim, b})).length;
+  const val = (dim, b) => b === "wrong" ? ["1","2","3+"].reduce((s,x) => s + ((DATA.checked.wrong[x]||{})[dim]||0), 0) : ((DATA.checked.wrong[b]||{})[dim]||0);
+  const max = Math.max(1, ...Q.flatMap(d => ["1","2","3+"].map(b => counts(d.key, b))));
+  const sel = (dim, b) => state.ecell && state.ecell.dim===dim && state.ecell.b===b;
+  const td = (dim, b) => { const n = counts(dim, b);
+    if (!n) return `<td><div class="cell empty" aria-hidden="true">·</div></td>`;
+    const a = (0.10 + 0.80*Math.sqrt(Math.min(n, max)/max)).toFixed(2);
+    return `<td><button class="cell${a>0.55?" hot":""}${sel(dim,b)?" sel":""}" style="--a:${a}" data-dim="${dim}" data-b="${b}"><span class="n">${n}</span><span class="m">article${n>1?"s":""}</span></button></td>`; };
+  const vtd = (dim, b) => { const n = val(dim, b); return `<td><div class="cell off" title="validation: counted, not shown">${n||"·"}</div></td>`; };
+  const head = B.map(b => `<th>${esc(b==="wrong" ? "any" : BUCKET_NAMES[b])}</th>`).join("");
+  let h = `<thead><tr><th class="axis row">Question ↓ · articles with…</th><th colspan="4">Training · click to open</th><th class="gap"></th><th colspan="4">Validation · counts only</th></tr>
+    <tr><th class="row"></th>${head}<th class="gap"></th>${head}</tr></thead><tbody>`;
+  for (const d of Q) h += `<tr><th class="row">${esc(d.label)}</th>${B.map(b => td(d.key, b)).join("")}<td class="gap"></td>${B.map(b => vtd(d.key, b)).join("")}</tr>`;
+  const arts = b => rows.filter(r => inErrCell(r, {dim:null, b})).length;
+  h += `<tr><th class="row tot">articles</th>${B.map(b => `<td class="tot">${arts(b)}</td>`).join("")}<td class="gap"></td>${B.map(b => `<td class="tot">${b==="wrong" ? ["1","2","3+"].reduce((s,x)=>s+(DATA.checked.articles[x]||0),0) : (DATA.checked.articles[b]||0)}</td>`).join("")}</tr></tbody>`;
+  const wrongAnswers = rows.reduce((s,r) => s + Object.values(r.grade).filter(g => g!=="right").length, 0);
+  document.getElementById("stats").innerHTML = `<span><b>${rows.length}</b> training articles in this slice</span><span><b>${wrongAnswers}</b> of ${rows.length*Q.length} answers differ from your key (${rows.length ? Math.round(100 - 100*wrongAnswers/(rows.length*Q.length)) : 0}% right)</span><span>a cell counts articles whose answer to that question differs from the key; on how central and how firm that includes one step off</span>`;
+  const grid = document.getElementById("grid"); grid.innerHTML = h;
+  grid.querySelectorAll("button.cell").forEach(btn => btn.onclick = () => {
+    state.ecell = sel(btn.dataset.dim, btn.dataset.b) ? null : {dim:btn.dataset.dim, b:btn.dataset.b};
+    drawAll(); if (state.ecell) document.getElementById("panel").scrollIntoView({behavior:"smooth", block:"start"}); });
+}
+
+/** The claims holding the articles of the selected error cell; each opens on those articles, the answer in question outlined. */
+function drawErrPanel(){
+  const panel = document.getElementById("panel"), cell = state.ecell || {dim:null, b:"wrong"};
+  const items = visible().map(c => ({c, inCell: c.rows.filter(r => r.grade && inErrCell(r, cell))})).filter(x => x.inCell.length)
+    .sort((p,q) => q.inCell.length - p.inCell.length || q.c.n - p.c.n);
+  const n = items.reduce((s,x) => s + x.inCell.length, 0);
+  const what = (cell.dim ? `${esc(LABEL[cell.dim])} differs from your key` : "Every training article") + ` · among articles with ${esc(BUCKET_NAMES[cell.b])}`;
+  panel.innerHTML = `<h2>${what} · ${n} article${n===1?"":"s"} in ${items.length} claim${items.length===1?"":"s"}</h2>
+    <div class="hint">${state.ecell ? "Each claim opens on the articles in this cell; the answer in question is outlined. Click the cell again to clear." : "Every training article with a wrong answer. Click a cell or a tile to narrow."}</div>` +
+    (items.length ? `<ul class="claims">${items.map(x => claimItem(x.c, x.inCell, cell.dim)).join("")}</ul>` : `<div class="hint">No articles here.</div>`);
+}
+
 /** Redraw everything that depends on the filters. */
-function drawAll(){ drawGates(); drawSlice(); drawFacets(); drawGrid(); drawPanel(); }
+function drawAll(){
+  const errors = state.view === "errors";
+  document.getElementById("distcontrols").hidden = errors;
+  if (errors){ drawErrTiles(); drawSlice(); drawFacets(); drawErrGrid(); drawErrPanel(); return; }
+  drawGates(); drawSlice(); drawFacets(); drawGrid(); drawPanel();
+}
+
+/** Switch between the distribution and the errors of a graded version. @param {string} view "dist" or "errors" */
+function setView(view){
+  state.view = view; state.cell = null; state.ecell = null;
+  document.querySelectorAll("#views button").forEach(b => b.setAttribute("aria-pressed", String(b.dataset.view === view)));
+  drawAll();
+}
 
 /** Switch the page to one classifier version: its dimensions, values, claims and default axes. @param {string} key */
 function loadVersion(key){
@@ -382,12 +479,15 @@ function loadVersion(key){
   document.getElementById("stamp").textContent = `answers: ${DATA.stamp}  ·  grouping: golden ${ALL.ruler}` +
     (DATA.left_out ? `  ·  ${DATA.claims.length} of ${DATA.claims.length + DATA.left_out} claims (test claims not sent)` : "");
   document.querySelectorAll("#versions button").forEach(b => b.setAttribute("aria-pressed", String(b.dataset.v === key)));
-  drawAll();
+  document.getElementById("views").hidden = !DATA.graded;
+  if (!DATA.graded) state.view = "dist";
+  setView(state.view);
 }
 
 // Controls
 document.getElementById("versions").innerHTML = ALL.versions.map(v => `<button data-v="${v.key}" aria-pressed="false">${v.key}</button>`).join("");
 document.querySelectorAll("#versions button").forEach(b => b.onclick = () => loadVersion(b.dataset.v));
+document.querySelectorAll("#views button").forEach(b => b.onclick = () => setView(b.dataset.view));
 document.getElementById("xsel").onchange = e => { state.x = e.target.value; state.cell = null; drawAll(); };
 document.getElementById("ysel").onchange = e => { state.y = e.target.value; state.cell = null; drawAll(); };
 document.querySelectorAll("#units button").forEach(b => b.onclick = () => { state.unit = b.dataset.u; document.querySelectorAll("#units button").forEach(x => x.setAttribute("aria-pressed", String(x===b))); drawGrid(); });

@@ -60,8 +60,9 @@ CENTRALITY_TILES = [["main_subject", "Main subject", "he is what the article is 
                     ["not_in_content", "Not in the content", "only in links or furniture"]]
 
 # v7: the frozen key, the sides of the split, and the scales on which one step off counts as near
-NINE_DIMS = [("centrality", "How central", "centrality"), ("source", "Source", "source"), ("act", "Act", "act"),
-             ("fact", "Fact asserted", "fact"), ("firmness", "How firm", "firmness"),
+# v7's question names (experiments/2026-10-03-classifier-v7/README.md, "The names of the questions")
+NINE_DIMS = [("centrality", "How central", "centrality"), ("source", "Whose words", "source"), ("act", "What the source does", "act"),
+             ("fact", "What new fact", "fact"), ("firmness", "How firm", "firmness"),
              ("result", "Reports his result", "reports_his_result"), ("next_fight", "Reports his next fight", "reports_his_next_fight"),
              ("health", "Reports his health", "reports_his_health"), ("he_speaks", "He speaks", "he_speaks")]
 ORDERED = {"centrality": ["not_in_content", "only_mentioned", "one_of_several", "main_subject"],
@@ -70,6 +71,7 @@ SIDE_NAMES = {"tune": "training", "check": "validation"}
 GRADED_DIMS = [("split", "Set"), ("vs_key", "Against the key")]
 SPLIT_VALUES = [["training", "the 155 articles the wording was tuned on; the key is shown"],
                 ["validation", "40 articles scored after each version and never read; no key shown"]]
+BUCKETS = ["0", "1", "2", "3+"]
 VS_KEY_VALUES = [["all_nine_right", "training: every one of the nine answers matches the key (or a coin flip's other value)"],
                  ["one_wrong", "training: one of the nine answers differs from the key"],
                  ["two_or_more_wrong", "training: two or more answers differ from the key"],
@@ -80,8 +82,14 @@ VERSIONS = [
      "stamp": "classifier v7.7 · one pass, the ties of the rules applied, training and validation sets only (test set not sent)",
      "dims": NINE_DIMS,
      "axes": ("fact", "centrality"), "tiles": ("centrality", CENTRALITY_TILES),
-     "disagree": ["Centrality and extractor disagree", 'for the claim as a whole, one says "only mentioned or less" / "about someone else", the other does not'],
-     "flag_labels": {"gate_disagrees": 'centrality ("only mentioned" or less) and extractor ("about someone else") disagree'}},
+     "disagree": ["How central and extractor disagree", 'for the claim as a whole, one says "only mentioned or less" / "about someone else", the other does not'],
+     # the doubts in v7's question names
+     "flag_labels": {"gate_disagrees": 'how central ("only mentioned" or less) and extractor ("about someone else") disagree',
+                     "who_disagrees": 'extractor and "whose words" disagree on "himself"',
+                     "contradiction": '"whose words" and "what the source does" contradict each other',
+                     "fact_disagrees": '"what new fact" and its news question disagree',
+                     "speaks_disagrees": '"whose words" is himself but "he speaks" says no',
+                     "unsure": 'an unsure answer: whose words, what the source does or what new fact under 40% confidence'}},
     {"key": "v6", "file": "answers/classifier-v6.json",
      "stamp": "classifier v6 · pass 1 only, one reader (v5 tuned on a 59-article answer key; how firm composed with fact)",
      "dims": [("centrality", "How central", "centrality"), ("source", "Source", "source"), ("act", "Act", "act"),
@@ -250,6 +258,15 @@ def grade(dim, got, key, accepted):
     return "near" if near else "wrong"
 
 
+def bucket(wrong):
+    """The column of the error view an article falls in.
+
+    @param wrong: how many of its answers differ from the key
+    @returns: "0", "1", "2" or "3+"
+    """
+    return BUCKETS[min(wrong, 3)]
+
+
 def add_key(version, row, side, labels, flips):
     """Put the split side, and on training articles the key and its grades, on one article row.
 
@@ -258,22 +275,23 @@ def add_key(version, row, side, labels, flips):
     @param side: "tune" or "check"
     @param labels: id → the article's frozen key
     @param flips: (id, question) → accepted values
+    @returns: the dimensions whose answer differs from the key (for counting; on validation they stay off the row)
     """
+    # each answer against the key; the claim map's dimension names map to the key's question names
+    key = labels[row["id"]]["answers"]
+    grades = {dim: grade(question, row["v"][dim], key[question], flips.get((row["id"], question), {key[question]}))
+              for dim, _, question in version["dims"]}
+    wrong = [dim for dim, g in grades.items() if g != "right"]
     row["v"]["split"] = SIDE_NAMES[side]
     row["flags"]["key_differs"] = False
     if side != "tune":
         row["v"]["vs_key"] = "not_shown"
-        return
-
-    # each answer against the key; the claim map's dimension names map to the key's question names
-    key = labels[row["id"]]["answers"]
-    row["key"], row["grade"] = {}, {}
-    for dim, _, question in version["dims"]:
-        accepted = flips.get((row["id"], question), {key[question]})
-        row["key"][dim], row["grade"][dim] = key[question], grade(question, row["v"][dim], key[question], accepted)
-    wrong = sum(g != "right" for g in row["grade"].values())
-    row["v"]["vs_key"] = "all_nine_right" if wrong == 0 else "one_wrong" if wrong == 1 else "two_or_more_wrong"
-    row["flags"]["key_differs"] = wrong > 0
+        return wrong
+    row["key"], row["grade"] = {dim: key[q] for dim, _, q in version["dims"]}, grades
+    row["v"]["vs_key"] = ["all_nine_right", "one_wrong", "two_or_more_wrong", "two_or_more_wrong"][min(len(wrong), 3)]
+    row["bucket"] = bucket(len(wrong))
+    row["flags"]["key_differs"] = bool(wrong)
+    return wrong
 
 
 def majority(rows, program):
@@ -322,6 +340,8 @@ def version_data(version, articles, extractor_file, claims, key):
     extractor = extractor_file["articles"]
     dims = [(k, label) for k, label, _ in version["dims"]] + COMMON_DIMS + (GRADED_DIMS if version.get("graded") else [])
     placed, left_out = [], 0
+    # validation errors leave the builder only as totals: articles per column, and wrong answers per question and column
+    checked = {"articles": collections.Counter(), "wrong": {b: collections.Counter() for b in BUCKETS}}
     for claim in claims:
         # a claim without answers is on the test side, which this version has not been sent
         if not all(a in answers for a in claim["articles"]):
@@ -330,7 +350,11 @@ def version_data(version, articles, extractor_file, claims, key):
         rows = sorted((article_row(version, articles[a], answers[a], extractor[a]) for a in claim["articles"]),
                       key=lambda r: (r["date"], int(r["id"])))
         if version.get("graded"):
-            for row in rows: add_key(version, row, key["split"][row["id"]], key["labels"], key["flips"])
+            for row in rows:
+                wrong = add_key(version, row, key["split"][row["id"]], key["labels"], key["flips"])
+                if key["split"][row["id"]] == "check":
+                    checked["articles"][bucket(len(wrong))] += 1
+                    checked["wrong"][bucket(len(wrong))].update(wrong)
         placed.append(claim_row(claim, rows, [k for k, _ in dims]))
     # each dimension's values in the classifier's own order, with its own definitions
     values = {}
@@ -356,6 +380,7 @@ def version_data(version, articles, extractor_file, claims, key):
             "questions": {q: d.get("instructions", "") for q, d in questions.items()},
             "dims": [{"key": k, "label": l} for k, l in dims], "values": values, "claims": placed, "left_out": left_out,
             "graded": bool(version.get("graded")),
+            "checked": {"articles": dict(checked["articles"]), "wrong": {b: dict(c) for b, c in checked["wrong"].items()}} if version.get("graded") else None,
             "axes": version["axes"], "flags": [f for f in FLAG_LABELS if any(c["flags"].get(f) for c in placed)]}
 
 
