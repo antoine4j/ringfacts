@@ -82,3 +82,18 @@ standing version.
 answer overrule a "no fact" (training 84, validation 16: also overfits);
 making the three news questions follow the fact answer (training +11,
 validation +0, health 37 to 39 on validation).
+
+**r3** is r1 with one change: the "no when" text of the health question.
+Its third case was a fragment ("only when he will be ready to fight, ...")
+that can be read as a condition, and its second covered only a writer's
+*guess*, not a writer's flat summary ("recovery has gone well"). Both were
+rewritten as full statements. The classifier's own health answer, before
+any tie: wrong yes on the training set 17 to 9 (in three claims: 9 to 5, 6
+to 3, 2 to 1), on the validation set 4 to 3, and no true yes lost on
+either. Articles with all nine right: **86 / 17**.
+
+**The noise floor, measured by the same two runs:** the other eight
+questions were sent unchanged, and 19 of 1,240 of their answers on the
+training set (1.5%) and 6 of 320 on the validation set (1.9%) still came
+back different. So one article up or down on the validation set (18 to 17
+here) is noise, not a finding.
