@@ -57,7 +57,7 @@
     "what": "A fighter the article says is booked to fight him (a date, an event, 'will face') or has already fought him, or that fighter's coach or manager.",
     "not_for": "A fighter who calls him out, wants to fight him, is his rival, or is only rumoured to fight him (that is other fighter side).",
     "examples": [
-     "the champion who beat him in June, talking about him",
+     "the fighter who beat him in his last bout, talking about him",
      "his next opponent's coach at the pre-fight press conference"
     ]
    },
@@ -69,15 +69,15 @@
     "what": "Any other fighter with no booked or past fight against him, active or retired, or that fighter's coach, manager or team. Champions of other divisions, friends, teammates and former fighters working as pundits or commentators are included.",
     "examples": [
      "a fighter calling him out",
-     "a retired champion giving his view of him on a podcast",
-     "another fighter's manager asking for a fight with him"
+     "a former title holder commenting on him from the broadcast desk",
+     "a contender's coach saying his fighter is ready for him"
     ]
    },
    "media": {
     "what": "A journalist, pundit, podcaster, analyst or commentator who never fought, in their own voice, or the outlet's own writer. A leak or report with no named person behind it is media.",
     "not_for": "A former fighter speaking on a podcast or at the commentary desk (that is other fighter side).",
     "examples": [
-     "a podcaster saying the promotion is discussing his rematch",
+     "a reporter saying, without naming a source, that a title fight for him is being planned",
      "a columnist's view of his chances"
     ]
    },
@@ -125,8 +125,8 @@
     "what": "Someone other than him asks to fight him, challenges him, or taunts or mocks him. Advice the article presents as ironic or as a provocation is a taunt.",
     "examples": [
      "a contender says he wants him next",
-     "a rival says he needs an easy fight",
-     "a fighter answers him with an insult"
+     "a rival posts a video mocking his last loss",
+     "a contender calls him a coward for turning down a fight"
     ]
    },
    "answers_for_him": {
@@ -144,8 +144,8 @@
     "what": "Nobody says plainly what he should do, judges him, challenges him or states a fact about him. He is only named in a list, a card, a comparison or as background; or someone only guesses about him; or a speaker talks about the speaker's own plans; or a speaker says what the watched fighter did for the speaker.",
     "examples": [
      "his name in a ranking",
-     "a rival says a fight with him is not his own next fight",
-     "a fighter says the watched fighter invited him to his gym"
+     "a fighter talks about his own camp and names him once among past opponents",
+     "a fighter thanks him for sparring with him years ago"
     ]
    },
    "none_of_these": {
@@ -162,8 +162,8 @@
     "not_for": "His readiness or availability, or possible opponents the promotion is choosing between (that is status update). His injury or recovery (that is health). A wish or an opinion about who he should fight, such as a callout or a pundit's pick (that is no fact). A fight already booked that a preview, a prediction or an interview starts from (that is no fact). A fight already booked and covered in its fight week, such as the card order, start times or how to watch (that is fight week event).",
     "examples": [
      "The promotion announces his bout for March.",
-     "He says he has been told his opponent, place and date, but nothing is signed.",
-     "A fighter denies a reported December fight with him."
+     "He says a bout has been agreed by word of mouth and is waiting for contracts.",
+     "A named reporter says his rematch is being negotiated for the spring."
     ]
    },
    "result": {
@@ -187,7 +187,7 @@
     "not_for": "Only when he will be ready to fight again, with no injury or recovery described (that is status update). An old injury only recalled as background (that is no fact).",
     "examples": [
      "He had knee surgery and is in rehab.",
-     "His coach says the fractures have healed and he is back to sparring in two weeks."
+     "His manager says his shoulder is still healing and he has not started sparring."
     ]
    },
    "career_move": {
@@ -200,8 +200,8 @@
     "what": "News of where he stands as a fighter, with no specific fight: stated as fact by him, his team, the promotion or a named report. He is ready to fight; he will be ready by a date; he has no fight booked; the promotion names possible opponents it is choosing between; he starts training camp; his return to public life after time away.",
     "not_for": "A specific fight set, offered, in talks, rumoured or cancelled (that is next fight). How his injury or recovery is going (that is health). The weigh-in, face-off, open workout or card order of a fight (that is fight week event). His family, home or money (that is personal life). A guess or an opinion about when or whom he should fight (that is no fact).",
     "examples": [
-     "The promotion's president says he is ready to fight and has no fight scheduled.",
-     "His coach says he will be ready to fight by December.",
+     "His manager says he is healthy and waiting for an offer.",
+     "He says he will be ready to return in the autumn.",
      "He starts training camp."
     ]
    },
@@ -210,7 +210,7 @@
     "examples": [
      "A contender says he wants to fight him next.",
      "A pundit picks him to win his booked fight.",
-     "A rival guesses he will not fight until next year.",
+     "A pundit guesses he will move up a weight class one day.",
      "Another fighter's news that recalls his last fight."
     ]
    },
@@ -227,13 +227,13 @@
     "summary": "A wish or a demand: someone wants it or says it should happen.",
     "signals": [
      "a fighter asking for the fight",
-     "his camp demanding a rematch"
+     "his team saying he deserves a title shot"
     ]
    },
    {
     "summary": "A rumour: unnamed sources, a leak, 'talks', 'discussions', 'plans'.",
     "signals": [
-     "a podcaster says the promotion is discussing it",
+     "a reporter says, without a source, that it is being planned",
      "'sources say'"
     ]
    },
@@ -241,7 +241,7 @@
     "summary": "Reported: a named outlet, journalist, coach or other named person states it as fact.",
     "signals": [
      "'ESPN reports that...'",
-     "his coach says he will be ready by December",
+     "his manager says the bout is agreed",
      "he says he has a fight lined up that is still unsigned"
     ]
    },
@@ -251,7 +251,7 @@
      "the promotion announces the bout",
      "he posts that he signed",
      "a fight result",
-     "the promotion's president says he is ready to fight"
+     "the promotion or he himself states his status: available to fight, out injured, or moving weight class"
     ]
    }
   ]

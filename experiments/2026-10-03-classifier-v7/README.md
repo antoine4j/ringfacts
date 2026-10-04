@@ -248,3 +248,47 @@ standing order is kept. The pattern behind the first run's gains is worth
 knowing: preview articles stop being read as "fight week event" when that
 option is not near the top, which fits the vendor's warning, but the effect
 is about the size of the noise.
+
+### E4. Examples that paraphrase golden articles (adopted)
+
+*Hypothesis (a bias check).* Some examples in the questions paraphrase
+golden articles. Tracing each one found that several come from articles
+the labelling rules cite, and some of those are on the **test** side: "a
+fighter answers him with an insult" (#889), "a rival says a fight with him
+is not his own next fight" (#492), "a fighter says the watched fighter
+invited him to his gym" (#975), "his coach says the fractures have healed"
+(#152, #412), "a rival guesses he will not fight until next year" (#462),
+"his camp demanding a rematch" (#129). Others paraphrase training claims:
+the promotion's president saying he is ready to fight (claim-113, ten
+articles), the denied December fight (#820), the podcaster on internal
+talks (claim-097), the rival's "easy fight" (#287). A prompt that
+paraphrases a test article makes the test score look better than the
+classifier is. All 18 were replaced with invented cases from other
+situations. Decision rule, set before the run: adopt if no question loses
+more than noise (2 training articles, 1 validation article) in two runs,
+since removing leakage protects the one number that matters.
+
+*Result, two runs each* (question right on training / validation, control
+first):
+
+| question | control | invented, run 1 | invented, run 2 |
+|---|---|---|---|
+| whose words | 143 / 35 | 143 / 36 | 144 / 36 |
+| what the source does | 128 / 30, 29 | 130 / 30 | 129 / 29 |
+| what new fact | 131 / 33, 130 / 33 | 130 / 32 | 130 / 34 |
+| how firm, examples only | 133 / 32 | 124 / 32 (−9, all in claim-113) | — |
+| how firm, rule stated as a status signal | 132 / 33, 132 / 32 | 132 / 32 | 133 / 32 |
+
+*Decision: adopted.* The three choice questions lost nothing. On how firm,
+the leaked example was carrying a whole claim: without it, nine of the ten
+copies of the Dana White statement fell from "official or done" to
+"reported". The fix is not the example but the rule it stood for, stated
+plainly as a signal of the top level: "the promotion or he himself states
+his status: available to fight, out injured, or moving weight class". With
+that, nothing is lost.
+
+*Learned.* An example lifted from a training article can carry a whole
+claim, and the training score then measures memory of the prompt, not
+reading. The rules file cites test-set articles as examples, which is fine
+for the rules (they are the labelling guide) but means every prompt built
+from the rules has to be checked for paraphrases of them.

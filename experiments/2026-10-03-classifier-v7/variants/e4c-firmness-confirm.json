@@ -1,0 +1,43 @@
+{
+ "question": "firmness",
+ "hypothesis": "Second run of the firmness wording with invented examples and the status signal.",
+ "variants": {
+  "invented_status": {
+   "type": "score",
+   "instructions": "How established is the main fact this article asserts about the fighter named in `watched_fighter`? If it asserts no fact, judge the firmest claim it makes about him.",
+   "criteria": [
+    {
+     "summary": "A wish or a demand: someone wants it or says it should happen.",
+     "signals": [
+      "a fighter asking for the fight",
+      "his team saying he deserves a title shot"
+     ]
+    },
+    {
+     "summary": "A rumour: unnamed sources, a leak, 'talks', 'discussions', 'plans'.",
+     "signals": [
+      "a reporter says, without a source, that it is being planned",
+      "'sources say'"
+     ]
+    },
+    {
+     "summary": "Reported: a named outlet, journalist, coach or other named person states it as fact.",
+     "signals": [
+      "'ESPN reports that...'",
+      "his manager says the bout is agreed",
+      "he says he has a fight lined up that is still unsigned"
+     ]
+    },
+    {
+     "summary": "Official or done: the promotion or he himself states it, or it has happened.",
+     "signals": [
+      "the promotion announces the bout",
+      "he posts that he signed",
+      "a fight result",
+      "the promotion or he himself states his status: available to fight, out injured, or moving weight class"
+     ]
+    }
+   ]
+  }
+ }
+}
