@@ -1,0 +1,204 @@
+{
+ "question": "fact",
+ "hypothesis": "Confirmation of e3: the fact options reversed, and shuffled with the last-resort options kept last, sent again.",
+ "variants": {
+  "copy": {
+   "type": "choice",
+   "instructions": "What new fact about the fighter named in `watched_fighter` is the main news of this article, if any? A fact is something that happened or is set to happen, stated as fact, not an opinion, a wish or a guess. Something only recalled on the way is background, not the fact: his last result, his old injuries, a fight already booked that a preview or a pick starts from, a rumour recalled in a closing line. An interview, a press conference or a post is a place where things are said: choose the fact that is said there, or no fact if it is only talk. If the article's news is about another fighter, or is only opinion, answer no fact.",
+   "criteria": {
+    "next_fight": {
+     "what": "News that a specific fight of his exists or has changed: a fight set, announced, offered, in talks, moved or cancelled, or a rumour of one that says who said it or gives a date or event. His own statement that he has a fight counts.",
+     "not_for": "His readiness or availability, or possible opponents the promotion is choosing between (that is status update). His injury or recovery (that is health). A wish or an opinion about who he should fight, such as a callout or a pundit's pick (that is no fact). A fight already booked that a preview, a prediction or an interview starts from (that is no fact). A fight already booked and covered in its fight week, such as the card order, start times or how to watch (that is fight week event).",
+     "examples": [
+      "The promotion announces his bout for March.",
+      "He says he has been told his opponent, place and date, but nothing is signed.",
+      "A fighter denies a reported December fight with him."
+     ]
+    },
+    "result": {
+     "what": "The outcome of a fight of his, as the article's news: a fight report or recap of his bout, or his bout on a results page.",
+     "not_for": "A statement, interview or callout after his fight, even when it restates the outcome (that is the fact of what is said, or no fact). His past fight recalled as background to other news. Another fighter's result.",
+     "examples": [
+      "He won by decision on Saturday.",
+      "The card's results list his submission win."
+     ]
+    },
+    "fight_week_event": {
+     "what": "The routine of a fight of his, and nothing more: a weigh-in, a face-off, an open workout, the card order, start times, how to watch.",
+     "not_for": "Talks, offers or a new opponent for a fight not yet set (that is next fight). Training camp or sparring before fight week (that is status update). An interview or press conference (that is the fact of what is said, or no fact).",
+     "examples": [
+      "Start time and how to watch his fight tonight.",
+      "He made weight at the ceremonial weigh-in."
+     ]
+    },
+    "health": {
+     "what": "An injury, a medical issue, surgery or recovery of his, stated by him, his team, the promotion or a named report, including how the recovery is going, even when the same statement also says when he will be back.",
+     "not_for": "Only when he will be ready to fight again, with no injury or recovery described (that is status update). An old injury only recalled as background (that is no fact).",
+     "examples": [
+      "He had knee surgery and is in rehab.",
+      "His coach says the fractures have healed and he is back to sparring in two weeks."
+     ]
+    },
+    "career_move": {
+     "what": "Retirement, a contract, a move of weight class or team, a title vacated, stripped or awarded."
+    },
+    "personal_life": {
+     "what": "His life outside the cage: family, childhood, home, hobbies, money. A post or letter of his about his family is personal life."
+    },
+    "status_update": {
+     "what": "News of where he stands as a fighter, with no specific fight: stated as fact by him, his team, the promotion or a named report. He is ready to fight; he will be ready by a date; he has no fight booked; the promotion names possible opponents it is choosing between; he starts training camp; his return to public life after time away.",
+     "not_for": "A specific fight set, offered, in talks, rumoured or cancelled (that is next fight). How his injury or recovery is going (that is health). The weigh-in, face-off, open workout or card order of a fight (that is fight week event). His family, home or money (that is personal life). A guess or an opinion about when or whom he should fight (that is no fact).",
+     "examples": [
+      "The promotion's president says he is ready to fight and has no fight scheduled.",
+      "His coach says he will be ready to fight by December.",
+      "He starts training camp."
+     ]
+    },
+    "no_fact": {
+     "what": "No new fact about him: only opinion, talk or background. Wishes, demands, callouts, picks and guesses at his timing are not facts, whoever makes them.",
+     "examples": [
+      "A contender says he wants to fight him next.",
+      "A pundit picks him to win his booked fight.",
+      "A rival guesses he will not fight until next year.",
+      "Another fighter's news that recalls his last fight."
+     ]
+    },
+    "none_of_these": {
+     "what": "A new fact about him that none of the options above describes, status update included; a different answer is needed."
+    }
+   }
+  },
+  "reversed_all": {
+   "type": "choice",
+   "instructions": "What new fact about the fighter named in `watched_fighter` is the main news of this article, if any? A fact is something that happened or is set to happen, stated as fact, not an opinion, a wish or a guess. Something only recalled on the way is background, not the fact: his last result, his old injuries, a fight already booked that a preview or a pick starts from, a rumour recalled in a closing line. An interview, a press conference or a post is a place where things are said: choose the fact that is said there, or no fact if it is only talk. If the article's news is about another fighter, or is only opinion, answer no fact.",
+   "criteria": {
+    "none_of_these": {
+     "what": "A new fact about him that none of the options above describes, status update included; a different answer is needed."
+    },
+    "no_fact": {
+     "what": "No new fact about him: only opinion, talk or background. Wishes, demands, callouts, picks and guesses at his timing are not facts, whoever makes them.",
+     "examples": [
+      "A contender says he wants to fight him next.",
+      "A pundit picks him to win his booked fight.",
+      "A rival guesses he will not fight until next year.",
+      "Another fighter's news that recalls his last fight."
+     ]
+    },
+    "status_update": {
+     "what": "News of where he stands as a fighter, with no specific fight: stated as fact by him, his team, the promotion or a named report. He is ready to fight; he will be ready by a date; he has no fight booked; the promotion names possible opponents it is choosing between; he starts training camp; his return to public life after time away.",
+     "not_for": "A specific fight set, offered, in talks, rumoured or cancelled (that is next fight). How his injury or recovery is going (that is health). The weigh-in, face-off, open workout or card order of a fight (that is fight week event). His family, home or money (that is personal life). A guess or an opinion about when or whom he should fight (that is no fact).",
+     "examples": [
+      "The promotion's president says he is ready to fight and has no fight scheduled.",
+      "His coach says he will be ready to fight by December.",
+      "He starts training camp."
+     ]
+    },
+    "personal_life": {
+     "what": "His life outside the cage: family, childhood, home, hobbies, money. A post or letter of his about his family is personal life."
+    },
+    "career_move": {
+     "what": "Retirement, a contract, a move of weight class or team, a title vacated, stripped or awarded."
+    },
+    "health": {
+     "what": "An injury, a medical issue, surgery or recovery of his, stated by him, his team, the promotion or a named report, including how the recovery is going, even when the same statement also says when he will be back.",
+     "not_for": "Only when he will be ready to fight again, with no injury or recovery described (that is status update). An old injury only recalled as background (that is no fact).",
+     "examples": [
+      "He had knee surgery and is in rehab.",
+      "His coach says the fractures have healed and he is back to sparring in two weeks."
+     ]
+    },
+    "fight_week_event": {
+     "what": "The routine of a fight of his, and nothing more: a weigh-in, a face-off, an open workout, the card order, start times, how to watch.",
+     "not_for": "Talks, offers or a new opponent for a fight not yet set (that is next fight). Training camp or sparring before fight week (that is status update). An interview or press conference (that is the fact of what is said, or no fact).",
+     "examples": [
+      "Start time and how to watch his fight tonight.",
+      "He made weight at the ceremonial weigh-in."
+     ]
+    },
+    "result": {
+     "what": "The outcome of a fight of his, as the article's news: a fight report or recap of his bout, or his bout on a results page.",
+     "not_for": "A statement, interview or callout after his fight, even when it restates the outcome (that is the fact of what is said, or no fact). His past fight recalled as background to other news. Another fighter's result.",
+     "examples": [
+      "He won by decision on Saturday.",
+      "The card's results list his submission win."
+     ]
+    },
+    "next_fight": {
+     "what": "News that a specific fight of his exists or has changed: a fight set, announced, offered, in talks, moved or cancelled, or a rumour of one that says who said it or gives a date or event. His own statement that he has a fight counts.",
+     "not_for": "His readiness or availability, or possible opponents the promotion is choosing between (that is status update). His injury or recovery (that is health). A wish or an opinion about who he should fight, such as a callout or a pundit's pick (that is no fact). A fight already booked that a preview, a prediction or an interview starts from (that is no fact). A fight already booked and covered in its fight week, such as the card order, start times or how to watch (that is fight week event).",
+     "examples": [
+      "The promotion announces his bout for March.",
+      "He says he has been told his opponent, place and date, but nothing is signed.",
+      "A fighter denies a reported December fight with him."
+     ]
+    }
+   }
+  },
+  "shuffled_keep_last": {
+   "type": "choice",
+   "instructions": "What new fact about the fighter named in `watched_fighter` is the main news of this article, if any? A fact is something that happened or is set to happen, stated as fact, not an opinion, a wish or a guess. Something only recalled on the way is background, not the fact: his last result, his old injuries, a fight already booked that a preview or a pick starts from, a rumour recalled in a closing line. An interview, a press conference or a post is a place where things are said: choose the fact that is said there, or no fact if it is only talk. If the article's news is about another fighter, or is only opinion, answer no fact.",
+   "criteria": {
+    "career_move": {
+     "what": "Retirement, a contract, a move of weight class or team, a title vacated, stripped or awarded."
+    },
+    "personal_life": {
+     "what": "His life outside the cage: family, childhood, home, hobbies, money. A post or letter of his about his family is personal life."
+    },
+    "status_update": {
+     "what": "News of where he stands as a fighter, with no specific fight: stated as fact by him, his team, the promotion or a named report. He is ready to fight; he will be ready by a date; he has no fight booked; the promotion names possible opponents it is choosing between; he starts training camp; his return to public life after time away.",
+     "not_for": "A specific fight set, offered, in talks, rumoured or cancelled (that is next fight). How his injury or recovery is going (that is health). The weigh-in, face-off, open workout or card order of a fight (that is fight week event). His family, home or money (that is personal life). A guess or an opinion about when or whom he should fight (that is no fact).",
+     "examples": [
+      "The promotion's president says he is ready to fight and has no fight scheduled.",
+      "His coach says he will be ready to fight by December.",
+      "He starts training camp."
+     ]
+    },
+    "health": {
+     "what": "An injury, a medical issue, surgery or recovery of his, stated by him, his team, the promotion or a named report, including how the recovery is going, even when the same statement also says when he will be back.",
+     "not_for": "Only when he will be ready to fight again, with no injury or recovery described (that is status update). An old injury only recalled as background (that is no fact).",
+     "examples": [
+      "He had knee surgery and is in rehab.",
+      "His coach says the fractures have healed and he is back to sparring in two weeks."
+     ]
+    },
+    "fight_week_event": {
+     "what": "The routine of a fight of his, and nothing more: a weigh-in, a face-off, an open workout, the card order, start times, how to watch.",
+     "not_for": "Talks, offers or a new opponent for a fight not yet set (that is next fight). Training camp or sparring before fight week (that is status update). An interview or press conference (that is the fact of what is said, or no fact).",
+     "examples": [
+      "Start time and how to watch his fight tonight.",
+      "He made weight at the ceremonial weigh-in."
+     ]
+    },
+    "next_fight": {
+     "what": "News that a specific fight of his exists or has changed: a fight set, announced, offered, in talks, moved or cancelled, or a rumour of one that says who said it or gives a date or event. His own statement that he has a fight counts.",
+     "not_for": "His readiness or availability, or possible opponents the promotion is choosing between (that is status update). His injury or recovery (that is health). A wish or an opinion about who he should fight, such as a callout or a pundit's pick (that is no fact). A fight already booked that a preview, a prediction or an interview starts from (that is no fact). A fight already booked and covered in its fight week, such as the card order, start times or how to watch (that is fight week event).",
+     "examples": [
+      "The promotion announces his bout for March.",
+      "He says he has been told his opponent, place and date, but nothing is signed.",
+      "A fighter denies a reported December fight with him."
+     ]
+    },
+    "result": {
+     "what": "The outcome of a fight of his, as the article's news: a fight report or recap of his bout, or his bout on a results page.",
+     "not_for": "A statement, interview or callout after his fight, even when it restates the outcome (that is the fact of what is said, or no fact). His past fight recalled as background to other news. Another fighter's result.",
+     "examples": [
+      "He won by decision on Saturday.",
+      "The card's results list his submission win."
+     ]
+    },
+    "no_fact": {
+     "what": "No new fact about him: only opinion, talk or background. Wishes, demands, callouts, picks and guesses at his timing are not facts, whoever makes them.",
+     "examples": [
+      "A contender says he wants to fight him next.",
+      "A pundit picks him to win his booked fight.",
+      "A rival guesses he will not fight until next year.",
+      "Another fighter's news that recalls his last fight."
+     ]
+    },
+    "none_of_these": {
+     "what": "A new fact about him that none of the options above describes, status update included; a different answer is needed."
+    }
+   }
+  }
+ }
+}

@@ -213,3 +213,38 @@ designed on the claims where another fighter talks about him (claim-014,
 and 2 to 3 validation articles in 2 to 3 claims, which no design looked at.
 `shares` did nothing alone, so it was not taken. Claim-033 (Tsarukyan
 naming his next opponent) did not move.
+
+**Round 4** = round 3 plus E2. A full round on both sets ($0.052):
+articles with all nine right **90 of 155** on training and **19 of 40** on
+validation (round 3: 87 and 17). From here on variants are scored inside
+round 4's answers.
+
+### E3. Option order (rejected; the avenue is closed)
+
+*Hypothesis.* The vendor says jev-1.13 leans to the first option. If so,
+reversing or shuffling the options of "whose words", "what the source does"
+and "what new fact" moves more answers than an identical copy does, and
+either one order is better or averaging the probabilities over several
+orders fixes answers that sit near a line. Variants per question: a copy,
+all options reversed, reversed with the last-resort options kept last, and
+shuffled (fixed seed) with the last-resort options kept last.
+
+*Smoke test* (8 articles): confidence moved with order, the chosen option
+rarely did.
+
+*Full run.* Answers that changed against the control, training set (copy /
+reversed / reversed keeping the last / shuffled): whose words 3 / 7 / 7 / 6,
+what the source does 3 / 11 / 8 / 8, what new fact 2 / 8 / 11 / 7. So order
+does matter, about three times the noise of a copy. But it does not
+help: averaging over the four orders scored 141, 124 and 132 against the
+control's 144, 127 and 130. Whose words lost 3 to 4 articles under every
+other order. One order of the fact options (shuffled, last-resort options
+kept last) gained 4 articles in 3 claims and lost none; the second run gave
++2 and −0 on training and −1 on validation, and reversed gave +1 then
+validation +2/−1.
+
+*Decision: rejected.* Neither order passed the rule in both runs. The
+standing order is kept. The pattern behind the first run's gains is worth
+knowing: preview articles stop being read as "fight week event" when that
+option is not near the top, which fits the vendor's warning, but the effect
+is about the size of the noise.
