@@ -184,7 +184,7 @@ code{font-family:var(--mono);font-size:.9em}
     </ul>
   </section>
 
-  <footer>Updated 2026-09-27: labels are facts on the map's axes; tiers come from settings. Source: <code>golden/plan.html</code> in the repo; the rulings behind every "done" are in <code>golden/verdicts.md</code>.</footer>
+  <footer>Updated 2026-10-03: labels are nine answers per article, checked card by card against 27 named rules (golden/rules.md); tiers come from settings. Source: <code>golden/plan.html</code> in the repo; the rulings behind every "done" are in <code>golden/verdicts.md</code>.</footer>
 </div>
 
 <script>
@@ -195,19 +195,21 @@ const PATH = [
   {t:"Singleton pass and body checks", s:"7 pairs, 14 checks, v4 (27 Sept)", st:"done"},
   {t:"Claim map", s:"every claim on re-sliceable axes (27 Sept)", st:"done"},
   {t:"Axes defined and run", s:"classifier v3 on the approved axes (27 Sept)", st:"done"},
-  {t:"Label by spot-checking the map", s:"gate first, then source × act, fact, how firm, bout", st:"now"},
-  {t:"Freeze and split", s:"labels.json, split.json: 2/3 tune, 1/3 test", st:""},
+  {t:"Answer key on nine questions", s:"three readers on all 300; classifier v4 → v6; split drawn 1 Oct (155 / 40 / 105)", st:"done"},
+  {t:"Check the answer key", s:"step 1 done (75 cards, 27 rules); full blind re-read done (3 Oct); now the 56 articles that differ, then a spot check", st:"now"},
+  {t:"Freeze the labels", s:"one final labels file with a date", st:""},
   {t:"Score each station, axis by axis", s:"on the test third; recorded in decisions.md", st:""},
   {t:"Settings, then a tier check", s:"cell → tier per fighter; tier a sample", st:""},
 ];
 
 const NOW = {
-  title:"Next: check the v3 map, starting with the gate",
+  title:"Next: finish the answer key, then freeze it (agreed 3 Oct)",
   items:[
-    ["4.9","Check the gate on the v3 map: 66 claims 'not about him', 37 where classifier and extractor disagree (35 the classifier calls not about him, 2 about him). v3 is stricter than v2; which is right is yours to say."],
-    ["4.10","Spot-check source × act, doubtful claims first. Your corrections are the labels."],
-    ["4.14","Decide how 'how firm' is asked before the next run: it is the weakest axis."],
-    ["4.11","Mark how firm each booking is, once 4.14 is settled. Goal G4 depends on it."],
+    ["4.16","The 21 unchecked cards where both new readers disagree with the key: confirm by group (19 proposed in seven groups, 2 held for the next item)."],
+    ["4.16","The 10 checked cards where both new readers disagree with a ruling: keep, change, or mark as a coin flip."],
+    ["4.16","The 26 articles where the two readers differ: one independent third reading each; two of three decide, a three-way split is a coin flip."],
+    ["4.16","Spot-check about 20 random cards from the 244 that are settled: a guard against a blind spot all readers share."],
+    ["4.16","Freeze: one final labels file with a date. No further full re-read; a new rule only when a rule is missing."],
   ]
 };
 
@@ -300,18 +302,18 @@ const STATIONS = [
       "Labels against fuzzy axes cannot be scored: two careful people would put the same claim in different cells.",
       "The classifier's questions get rewritten to match, so its answers can be scored axis by axis.",
       "The axes are the vocabulary of the whole product: settings, the digest and the map all speak it."),
-    T("4.9","label","Check the gate: confirm or correct 'not about him' and the disagreements",
-      "On the map, version v3: the 'Not about him' tile (66 claims) and the 'Classifier and extractor disagree' tile (37). v3 is stricter than v2: 18 claims moved from yes or partly to not. The 'no text' articles show here too, which also covers the unusable-text question (3.3).",
+    T("4.9","later","Check the gate: confirm or correct 'not about him' and the disagreements",
+      "PARKED 3 Oct: this was the claim-map way of labelling; since 28 Sept the labels are nine answers per article (tasks 4.15 and 4.16), which cover the same ground. Kept for the record. On the map, version v3: the 'Not about him' tile (66 claims) and the 'Classifier and extractor disagree' tile (37). v3 is stricter than v2: 18 claims moved from yes or partly to not. The 'no text' articles show here too, which also covers the unusable-text question (3.3).",
       "The gate label per claim: about him, partly, or not.",
       "The first filter everything else depends on.",
       "A wrong 'no' swallows real news (G1); a wrong 'yes' lets junk through (G2).", "P1"),
-    T("4.10","label","Spot-check who × what on the map and correct the cell of each claim",
-      "Cell by cell, doubtful claims first (readers split, articles in different cells, classifier and extractor disagree). Replaces the old type and speaker labels: the 28 types collapse into cells.",
+    T("4.10","later","Spot-check who × what on the map and correct the cell of each claim",
+      "PARKED 3 Oct: this was the claim-map way of labelling; since 28 Sept the labels are nine answers per article (tasks 4.15 and 4.16), which cover the same ground. Kept for the record. Cell by cell, doubtful claims first (readers split, articles in different cells, classifier and extractor disagree). Replaces the old type and speaker labels: the 28 types collapse into cells.",
       "The who and what labels per claim.",
       "The answer key for the classifier's two main questions.",
       "Can we tell these words apart reliably? This is where we find out."),
-    T("4.11","label","Mark how firm each career fact is: official, reported or rumoured",
-      "Mostly bookings. The classifier already answers it inside its kind question; this confirms it.",
+    T("4.11","later","Mark how firm each career fact is: official, reported or rumoured",
+      "PARKED 3 Oct: this was the claim-map way of labelling; since 28 Sept the labels are nine answers per article (tasks 4.15 and 4.16), which cover the same ground. Kept for the record. Mostly bookings. The classifier already answers it inside its kind question; this confirms it.",
       "Nothing tested it before.",
       "The answer key for the firmness value.",
       "Goal G4: 'confirmed' only when an official source said it."),
