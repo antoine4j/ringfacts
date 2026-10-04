@@ -124,7 +124,7 @@ input.note{font:inherit;font-size:13px;border:1px solid var(--line);background:v
       <div><span class="why">classifier differs</span> the readers agree, but the classifier said something else (shown beside it). One of them is wrong: check the readers' answer.</div>
       <div>An answer can carry both of the last two. Faded answers are unanimous: readers and classifier agree.</div>
       <div><span class="chip done">checked by summary</span> you confirmed this card from a grouped summary in chat, without opening it. Marking it yourself on the card turns it into a plain <span class="chip done">checked</span>.</div>
-      <div><span class="hint"><b>hints</b></span> grey lines under an answer from the overnight re-reads: a third reader's pick where the classifier differs, two fresh reads of "how central" under "new, not long", what a boundary's recommended rule would say, and, since 3 Oct, the answers of two blind readers who re-read all 300 under today's guide (a warning where one of them differs from the answer on the card, and a confirmation where the answer is a correction or the first readers had split). Hints, not labels: they are there to speed up your call.</div>
+      <div><span class="hint"><b>hints</b></span> grey lines under an answer from the overnight re-reads: a third reader's pick where the classifier differs, two fresh reads of "how central" under "new, not long", what a boundary's recommended rule would say, and, since 3 Oct, the answers of two blind readers who re-read all 300 under today's guide (a warning where one of them differs from the answer on the card, and a confirmation on every answer the card flags: a correction, a split among the first readers, or the classifier differing). Hints, not labels: they are there to speed up your call.</div>
     </div>
     <details class="about"><summary>Who the readers are</summary>
       <p>Every reader is a Fable agent that saw the labelling guide and the article text, never the answers. A card or a note names them like this:</p>
@@ -254,8 +254,8 @@ function hints(k, fix){
     const notes = Object.entries(k.reread).filter(([, r]) => r.value !== now && r.note).map(([letter, r]) => `${letter}: ${esc(r.note)}`).join(" · ");
     out.push(`<div class="hint change">full re-read (3 Oct), readers ${Object.keys(k.reread).join(", ")} — ${reads}${one}<br>${notes}</div>`);
   }
-  // where the answer shown is a correction, or the original readers had split, say so when both new readers confirm it
-  else if (k.reread && Object.keys(k.reread).length && (fix || k.status !== "agreed")){
+  // wherever the card flags an answer (a correction, a split among the first readers, the classifier differing), say so when the new readers confirm it
+  else if (k.reread && Object.keys(k.reread).length && (fix || k.status !== "agreed" || k.classifier !== k.value)){
     out.push(`<div class="hint agree">full re-read (3 Oct), readers ${Object.keys(k.reread).join(", ")} — all give this answer: <b>${esc(human(now))}</b></div>`);
   }
   if (k.rule !== undefined && k.rule !== null){
