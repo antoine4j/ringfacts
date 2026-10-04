@@ -181,7 +181,7 @@ code{font-family:var(--mono);font-size:.9em}
     <ul>
       <li><b>One fight week.</b> Every result article is Donchenko vs Soriano. A second week needs a fresh pull, which is your call, later.</li>
       <li><b>Text only.</b> The 300 were drawn from articles with a body, so the headline-only path is not tested.</li>
-      <li><b>Already used for tuning.</b> The classifier went through 18 passes on these articles. That is why the tune/test split exists: a score only counts on the test third.</li>
+      <li><b>Already used for tuning.</b> The classifier went through 18 passes on these articles before the split, and v7 was tuned on the training third. The validation third (40 articles) was scored after every change, so it is lightly worn too. That is why the test third exists: a score only counts there, and only once.</li>
       <li><b>One model read everything.</b> The original readers, the re-readers and the cloud readers are all Fable. They can share a blind spot; your own checks (77 cards so far, and the spot check, 4.23) are the only guard.</li>
       <li><b>Topuria was thinned</b> (182 of his articles kept), so his time gaps read longer than they are.</li>
     </ul>
@@ -201,17 +201,17 @@ const PATH = [
   {t:"Answer key on nine questions", s:"three readers on all 300; classifier v4 → v6; split drawn 1 Oct (155 / 40 / 105)", st:"done"},
   {t:"Check the answer key", s:"75 cards by rule, 27 rules named, whole set re-read blind, a third reading on 26, a spot check of 20: all done 3 Oct", st:"done"},
   {t:"Labels frozen", s:"golden/labels.json, 3 Oct: 300 articles, nine answers each, guarded by a test", st:"done"},
-  {t:"Classifier v7, then score each station", s:"v7 tuned 3–4 Oct (4.25): 94 of 155 training, 19–20 of 40 validation; next, your five calls, then the test side once (4.7)", st:"now"},
+  {t:"Classifier v7, then score each station", s:"v7 tuned 3–4 Oct (4.25): all nine right on 61% of training, 48–50% of validation; next, your calls (4.26, 4.27), then the test score once (4.7)", st:"now"},
   {t:"Settings, then a tier check", s:"cell → tier per fighter; tier a sample", st:""},
 ];
 
 const NOW = {
-  title:"Classifier v7 is tuned (night of 3–4 Oct). Next: your calls, then the test side.",
+  title:"Classifier v7 is tuned (3–4 Oct). Next: two calls of yours, then the test score.",
   items:[
-    ["4.25","DONE: all nine answers right on 94 of 155 training articles and 19–20 of 40 validation articles (v6: 63 and 16). The morning report is at the top of experiments/2026-10-03-classifier-v7/README.md."],
-    ["You","Five calls listed there under 'For Anton': two fixes that only work on their own claims, whether the news flags stay independent, text cleaning, three labels to look at, and the go for the test side."],
-    ["4.7","On your word: score v7 once on the 105 test articles, question by question, with near misses counted separately (about 3 cents)."],
-    ["4.17","After that: other sets of questions against the same labels (one yes/no per kind of fact was tried overnight: it gains on training only)."],
+    ["4.26","YOUR CALL: two wording fixes that work only on the claims they were built on. My recommendation: adopt the 'booked fight' one only."],
+    ["4.27","YOUR CALL: keep the three news flags tied to the fact answer, as now, or let a confident flag stand. My recommendation: keep the ties, log disagreements."],
+    ["4.7","YOUR GO: score v7 once on the 105 test articles (about 3 cents)."],
+    ["4.28","Not blocking: three training labels where the classifier's reading has a case (#746, #655, #510)."],
   ]
 };
 
@@ -262,7 +262,7 @@ const STATIONS = [
       "Better text lifts every station after it."),
    ]},
   {n:4, name:"Classifier", role:"Answers nine questions per article: how central he is, whose words, what the source does, what new fact, how firm, and four yes/no (result, next fight, health, he speaks).",
-   verdict:"The answer key is frozen (golden/labels.json, 3 Oct): 300 articles, nine answers each, 27 named rules, eight recorded coin flips. The classifier's own questions still predate the rules; v7 is next, on your go.",
+   verdict:"v7 is tuned (3–4 Oct): all nine answers right on 61% of training articles (94 of 155) and 48–50% of validation articles (19–20 of 40), against 41% and 40% for v6. Every single answer right: 92% and 91%. The validation set is small: its 95% interval runs from about 33% to 63%. Three calls of yours come before the test set is scored once.",
    items:[
     T("4.1","done","Store the classifier's answers for all 300 articles",
       "Six questions, three readers each, frozen in golden/answers and shown on the board.",
@@ -334,8 +334,33 @@ const STATIONS = [
       "No new labels.",
       "The classifier cannot match answers made under rules it was never told.",
       "This is the step that turns the answer key into a better classifier."),
+    T("4.26","decide","YOUR CALL: two fixes that work only on the claims they were built on",
+      "From the night's experiment E5. (1) 'A prediction is about a booked fight': a rival camp's boast ('Usman would make him quit', claim-003, three articles) moves from 'predicts his fight' to 'calls him out'. (2) 'A report of what is planned for him is news, not steering': fixes Dana White's 'top two potential opponents' and the reported rematch talks. Both held in two runs and lost nothing, and every training article the key calls a prediction is about a booked fight. But neither moved the validation set, so nothing outside their own claims shows them working. Options: adopt both; adopt neither until a new labelled slice can judge them; adopt only 'booked'. My recommendation: only 'booked', which restates how the key already uses the label.",
+      "No label changes.",
+      "Settles the last two known wording fixes before the questions are frozen for the test score.",
+      "Once the test set is scored, no further change can be judged on it."),
+    T("4.27","decide","YOUR CALL: do the three news flags stay tied to the fact answer?",
+      "Today the code applies the rule ties: 'no fact' makes all three flags no, and a result, next-fight or health fact makes its own flag yes. As the model gives them, 'reports his next fight' is right on 150 training and 35 validation articles; after the ties, 146 and 39. Training prefers the raw flags, validation the ties. Where a flag and the fact answer disagree (23 training articles), the flag is right in 11, the fact in 10, both wrong in 2. Options: keep the ties and log every disagreement for review (now); let a confident flag stand against 'no fact'; drop the flags and derive them from the fact. My recommendation: keep the ties and log the disagreements, a cheap list of articles worth a second look.",
+      "No label changes.",
+      "Decides how the classifier's nine answers are composed before they are scored.",
+      "The decider reads the flags; if they can contradict the fact, it needs a rule for that."),
+    T("4.7","decide","YOUR GO: score the classifier once on the test third, axis by axis",
+      "v7 is ready (4.25); decide 4.26 and 4.27 first, because the questions are frozen for this. Then one run on the 105 test articles (python3 run.py --side test --yes --final, about 3 cents), never repeated. Reported as: all nine right (exact match ratio), each question's accuracy, every single answer right (Hamming score), each with a 95% interval; precision and recall for the answers that decide posting (result, next fight, health); near misses and pole-to-pole flips counted separately, and either answer counting on a recorded coin flip. Written into decisions.md beside the design. We do not aim at identical answers on every run; we aim at no drastic ones.",
+      "Uses the test labels exactly once, so the number is honest.",
+      "Tells us whether the classifier is good enough or needs work.",
+      "A recorded number instead of an impression."),
+    T("4.28","label","Look at three labels where the classifier's reading looks defensible",
+      "All three are training articles, so this does not block the test score. #746 (claim-095), 'Daniil Donchenko Octagon Interview', keyed result: by the rule 'result only for an account of the fight itself' a post-fight interview is not a result, unless the saved page also carries the fight report. #655 (claim-066), keyed absent: the headline names him, the body does not; absent or only mentioned? #510 (claim-058), a preview with 'start time, full card and how to watch', keyed no fact: now answered right, but it sits between the preview rule and the fight-week rule. A change goes through errata with a new checksum, never by editing labels.json.",
+      "Keeps the key honest where the classifier's reading has a case.",
+      "Removes training misses that may not be misses.",
+      "Small, but the same check applies to every later station."),
+    T("4.29","later","A new labelled slice to judge the fixes that need it",
+      "The validation set has no next-fight or status-update article, so changes on those (the rumour fixes rejected overnight, 'plans' in 4.26) cannot be judged out of sample. A small new slice of articles with rumoured fights and health updates, labelled by the readers, with your time limited to one spot check. Parked until after 4.7.",
+      "Adds labels where the current split is blind.",
+      "Lets the next classifier version be judged on the cases it is weakest on.",
+      "Rumoured fights and health news are what the group most wants to hear first."),
     T("4.17","later","Try different sets of questions against the same labels",
-      "After the labels are frozen: autonomous rounds that change which questions the classifier is asked (drop the three news flags and derive them from fact plus a 'second fact' question; merge or split questions; ask fewer) and map each variant's answers onto the nine labels in code, as how firm already is. Tuned on the tune side, compared on the check side, about a cent per variant. No relabelling unless the values themselves change.",
+      "Partly tried 3–4 Oct: the fact question as one yes/no per kind gained 12 training articles and none on validation (E6). After the test score: autonomous rounds that change which questions the classifier is asked (drop the three news flags and derive them from fact plus a 'second fact' question; merge or split questions; ask fewer) and map each variant's answers onto the nine labels in code, as how firm already is. Tuned on the tune side, compared on the check side, about a cent per variant. No relabelling unless the values themselves change.",
       "Reuses the labels as they are: they describe the article, not the questions.",
       "Finds the cheapest set of questions that reaches the same answers; the news flags are now 99% determined by fact (4 second-fact articles in 300).",
       "Fewer questions per article is lower cost and fewer places to be wrong."),
@@ -364,11 +389,6 @@ const STATIONS = [
       "Top-down review: you correct placements instead of reading 300 articles one by one.",
       "Shows where the classifier's answers land and which options are never used.",
       "The same view may become what readers see behind 'read more'."),
-    T("4.7","score","Score the classifier once on the test third, axis by axis",
-      "After the freeze and v7 (4.25). One number per question, nine in all, written into decisions.md beside the design. Scored with tolerance (your point of 3 Oct): a near miss between neighbouring values and a flip from one pole to the other are counted separately, and on a recorded coin flip either answer counts. We do not aim at identical answers on every run; we aim at no drastic ones.",
-      "Uses the labels exactly once, so the number is honest.",
-      "Tells us whether it is good enough or needs work.",
-      "A recorded number instead of an impression."),
    ]},
   {n:5, name:"Claim extractor", role:"Writes one sentence per article: what happened, and where.",
    verdict:"Extracts are in. Only the bout needs your confirmation; bad extracts get flagged as you meet them.",
@@ -490,6 +510,7 @@ const GAPS = [
   ["One article, several watched fighters", "An article is stored under the fighter whose feed found it first, so a Donchenko interview can exist only as an Amosov card (#975). 16 of the 300 name a second watched fighter; on 4 the other one is named more. Recorded in TODO.md as an input to the pipeline redesign (3 Oct)."],
   ["The man he called out answers back", "No value of 'what the source does' fits a reply to his own callout (#889). Parked in golden/rule-backlog.md, item 14."],
   ["A long interview where the hard fact is one paragraph", "#1172: a health fact inside a long reflection. Readers split on it again in the full re-read. Parked, rule-backlog item 13."],
+  ["Inline headlines inside the saved text", "Some saved texts carry other stories' headlines ('LATEST NEWS: ...') inside the article. On 4 training and 2 validation articles the key says he is absent and the classifier, fairly, says only mentioned. Cleaning the whole text made no difference overall (3–4 Oct, E7); dropping these blocks belongs to the body extractor (station 3)."],
   ["Headline-only articles", "About 19% of the raw feed in the other project had no text. The set cannot test them. A later slice, like the second fight week."],
   ["Depth and size of news", "The grid says what kind of claim it is, not how big. Two assessments by the same person can be a full breakdown or one line. The tier sample (7.2) will show whether depth needs its own axis."],
   ["A fighter profile for the classifier", "Division, last fight, manager, coach: it would let the classifier tell his camp from others when the article does not say. Held off (27 Sept) until there is a way to keep it updated on its own."],
