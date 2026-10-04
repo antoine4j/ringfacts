@@ -20,7 +20,7 @@
     ]
    },
    {
-    "summary": "The article is about him and other fighters in roughly equal parts, and it says something new about him.",
+    "summary": "He shares the article with other fighters, and the article says something new about him.",
     "signals": [
      "a preview or feature on a fight of his covering both fighters",
      "attention shared between him and one or two others, with something new about him",
@@ -33,7 +33,7 @@
     "signals": [
      "a report on his fight, his injury, his booking or his life",
      "an interview with him about himself or his career",
-     "another fighter, a coach, an official or a pundit gives a view of him or news of him, and he is the article's topic"
+     "a coach, an official or a pundit talking about him as the article's topic"
     ]
    }
   ]
@@ -119,15 +119,14 @@
    },
    "predicts_his_fight": {
     "what": "Someone other than him gives a pick or forecast for a specific fight of his: who wins, how, in which round.",
-    "not_for": "His own forecast. A guess at when he will fight or whom the matchmakers will give him (that is nothing regarding him). A rival's side boasting that its fighter would beat him, with no fight booked (that is calls him out)."
+    "not_for": "His own forecast. A guess at when he will fight or whom the matchmakers will give him (that is nothing regarding him)."
    },
    "calls_him_out": {
     "what": "Someone other than him asks to fight him, challenges him, or taunts or mocks him. Advice the article presents as ironic or as a provocation is a taunt.",
     "examples": [
      "a contender says he wants him next",
      "a rival says he needs an easy fight",
-     "a fighter answers him with an insult",
-     "a rival's manager says his fighter would make him quit"
+     "a fighter answers him with an insult"
     ]
    },
    "answers_for_him": {
@@ -135,10 +134,10 @@
    },
    "steers_him": {
     "what": "Someone other than him says sincerely what he should do next: whom he should fight, whether a rematch should happen, which weight class. Demands made on his behalf are included.",
-    "not_for": "What he himself says he wants next. Mock advice meant as a provocation (that is calls him out). A report of what the promotion is discussing or considering for him (that is gives news of him)."
+    "not_for": "What he himself says he wants next. Mock advice meant as a provocation (that is calls him out)."
    },
    "gives_news_of_him": {
-    "what": "Someone other than him states a fact about him: his condition, recovery, training, whereabouts or plans, or that the promotion is discussing or considering a fight of his.",
+    "what": "Someone other than him states a fact about him: his condition, recovery, training, whereabouts or plans.",
     "not_for": "A judgement of how good he is (that is assesses him). A guess about him, such as 'probably', 'I think' or 'I expect' (that is nothing regarding him)."
    },
    "nothing_regarding_him": {
@@ -156,16 +155,15 @@
  },
  "fact": {
   "type": "choice",
-  "instructions": "What new fact about the fighter named in `watched_fighter` is the main news of this article, if any? A fact is something that happened or is set to happen, stated as fact, not an opinion, a wish or a guess. A reported rumour or reported talks about a specific fight of his is a fact too: it is next fight. Something only recalled on the way is background, not the fact: his last result, his old injuries, a fight already booked that a preview or a pick starts from, a rumour recalled in a closing line. An interview, a press conference or a post is a place where things are said: choose the fact that is said there, or no fact if it is only talk. If the article's news is about another fighter, or is only opinion, answer no fact.",
+  "instructions": "What new fact about the fighter named in `watched_fighter` is the main news of this article, if any? A fact is something that happened or is set to happen, stated as fact, not an opinion, a wish or a guess. Something only recalled on the way is background, not the fact: his last result, his old injuries, a fight already booked that a preview or a pick starts from, a rumour recalled in a closing line. An interview, a press conference or a post is a place where things are said: choose the fact that is said there, or no fact if it is only talk. If the article's news is about another fighter, or is only opinion, answer no fact.",
   "criteria": {
    "next_fight": {
     "what": "News that a specific fight of his exists or has changed: a fight set, announced, offered, in talks, moved or cancelled, or a rumour of one that says who said it or gives a date or event. His own statement that he has a fight counts.",
-    "not_for": "His readiness or availability, or possible opponents the promotion is choosing between (that is status update). His injury or recovery (that is health). A wish or an opinion about who he should fight, such as a callout or a pundit's pick (that is no fact). A fight already booked that a preview, a prediction, a feature or an interview before the fight starts from (that is no fact). A fight already booked and covered in its fight week, such as the card order, start times or how to watch (that is fight week event).",
+    "not_for": "His readiness or availability, or possible opponents the promotion is choosing between (that is status update). His injury or recovery (that is health). A wish or an opinion about who he should fight, such as a callout or a pundit's pick (that is no fact). A fight already booked that a preview, a prediction or an interview starts from (that is no fact). A fight already booked and covered in its fight week, such as the card order, start times or how to watch (that is fight week event).",
     "examples": [
      "The promotion announces his bout for March.",
      "He says he has been told his opponent, place and date, but nothing is signed.",
-     "A fighter denies a reported December fight with him.",
-     "A commentator says the promotion is discussing his rematch internally."
+     "A fighter denies a reported December fight with him."
     ]
    },
    "result": {
@@ -178,7 +176,7 @@
    },
    "fight_week_event": {
     "what": "The routine of a fight of his, and nothing more: a weigh-in, a face-off, an open workout, the card order, start times, how to watch.",
-    "not_for": "Talks, offers or a new opponent for a fight not yet set (that is next fight). Training camp or sparring before fight week (that is status update). An interview or press conference (that is the fact of what is said, or no fact). A preview, a prediction or a pick for his fight (that is no fact).",
+    "not_for": "Talks, offers or a new opponent for a fight not yet set (that is next fight). Training camp or sparring before fight week (that is status update). An interview or press conference (that is the fact of what is said, or no fact).",
     "examples": [
      "Start time and how to watch his fight tonight.",
      "He made weight at the ceremonial weigh-in."
@@ -189,8 +187,7 @@
     "not_for": "Only when he will be ready to fight again, with no injury or recovery described (that is status update). An old injury only recalled as background (that is no fact).",
     "examples": [
      "He had knee surgery and is in rehab.",
-     "His coach says the fractures have healed and he is back to sparring in two weeks.",
-     "A friend who spoke to him says he is fine and recovering well."
+     "His coach says the fractures have healed and he is back to sparring in two weeks."
     ]
    },
    "career_move": {
@@ -201,7 +198,7 @@
    },
    "status_update": {
     "what": "News of where he stands as a fighter, with no specific fight: stated as fact by him, his team, the promotion or a named report. He is ready to fight; he will be ready by a date; he has no fight booked; the promotion names possible opponents it is choosing between; he starts training camp; his return to public life after time away.",
-    "not_for": "A specific fight set, offered, in talks, rumoured or cancelled (that is next fight). How his injury or recovery is going (that is health). The weigh-in, face-off, open workout or card order of a fight (that is fight week event). His family, home or money (that is personal life). A guess or an opinion about when or whom he should fight (that is no fact). A post or letter of his to his family, even when a headline calls it his return (that is personal life). Another fighter naming who he should fight next (that is no fact).",
+    "not_for": "A specific fight set, offered, in talks, rumoured or cancelled (that is next fight). How his injury or recovery is going (that is health). The weigh-in, face-off, open workout or card order of a fight (that is fight week event). His family, home or money (that is personal life). A guess or an opinion about when or whom he should fight (that is no fact).",
     "examples": [
      "The promotion's president says he is ready to fight and has no fight scheduled.",
      "His coach says he will be ready to fight by December.",

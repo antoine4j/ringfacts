@@ -1,4 +1,4 @@
-<title>Status Update Wording</title>
+<title>Classifier And Reader Prompts</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
 <style>
 /* layout: one reading column; each answer is a row with "now" on the left and "proposed" on the right, stacked on a phone */
@@ -93,8 +93,9 @@ td.mv{font-weight:600}
     <h1>The questions, as the readers and the classifier see them</h1>
     <p>All nine questions with every answer option. Open a question to see its text and its options. Everything is shown twice, because there are two prompts.</p>
     <p><b>The readers' prompt</b> (the labelling guide) is adopted and in force. Its column shows the text before 2 October on the left and the text in force now on the right, so every change since then is marked: status update, the narrower next fight, "result only for an account of the fight itself", and "talking about someone else".</p>
-    <p><b>The classifier's prompt</b> has not changed and has not been run. Its column shows version 6 on the left and the wording drafted for version 7 on the right. Only the changes listed above are drafted; the earlier rules still missing from it are listed further down.</p>
-    <p class="muted">Updated 3 October 2026. The plain names of the rules are in golden/rules.md.</p>
+    <p><b>The classifier's prompt</b> is version 7, round 1: the version in use. Its column shows version 6 on the left and version 7 on the right, with every change marked. Round 2 was tried and set aside because it overfitted; it is not shown here.</p>
+    <p>The classifier answers each question on its own and cannot see its other answers. A few answers are therefore set by code afterwards; that list is below the questions.</p>
+    <p class="muted">Updated 3 October 2026, after round 1. The plain names of the rules are in golden/rules.md.</p>
   </div>
 
   <div class="test">
@@ -130,44 +131,39 @@ td.mv{font-weight:600}
 
 
   <div class="sec">
-    <h2>Rules in the readers' prompt that are not drafted for the classifier yet</h2>
-    <p>These were decided before this page existed. The readers have them; the classifier's version 6 does not, and no wording is drafted. You can see each gap by opening the question and comparing the two "no change" texts.</p>
+    <h2>What the code sets after the classifier answers</h2>
+    <p>These ties come from your rules. The classifier is not asked to keep them; the code applies them to its answers.</p>
     <div class="tw"><table>
-      <thead><tr><th>Rule</th><th>Question</th><th>What the classifier still says</th></tr></thead>
+      <thead><tr><th>When</th><th>The code sets</th><th>Rule it comes from</th></tr></thead>
       <tbody>
-        <tr><td>Booked or fought</td><td>Whose words</td><td>Opponent side includes a fighter "publicly linked to a fight with him".</td></tr>
-        <tr><td>Another fighter's camp is "other fighter's side"</td><td>Whose words</td><td>The value is "other fighter" and does not mention his coach or manager.</td></tr>
-        <tr><td>A fighter is a fighter, active or retired</td><td>Whose words</td><td>Media includes any "pundit, podcaster or analyst", with no exception for former fighters.</td></tr>
-        <tr><td>Only what is new</td><td>What new fact, and the three news questions</td><td>Says only "even when his past fights are mentioned". Nothing on recaps, restated bookings or recalled rumours.</td></tr>
-        <tr><td>New, not long</td><td>How central</td><td>"One of several" asks for "real content of his own, more than a line or two", which is a length test.</td></tr>
-        <tr><td>A rumour needs a who, a when or a where</td><td>What new fact</td><td>Drafted above inside next fight. Not yet in "how firm".</td></tr>
+        <tr><td>How central is "not in the content"</td><td>Fact: no fact. He speaks: no.</td><td>Only the saved text counts</td></tr>
+        <tr><td>Fact is "no fact"</td><td>How firm: none. Result, next fight and health: no. If the act was "gives news of him", the next most likely act is taken.</td><td>No fact means nothing else either; an act needs a plain statement</td></tr>
+        <tr><td>Fact is result, next fight or health</td><td>That fact's own yes/no question: yes.</td><td>The three news questions</td></tr>
+        <tr><td>Fact is result</td><td>Whose words: no one. What the source does: reports an event. How firm: official or done.</td><td>Result only for an account of the fight itself. Added after round 1: true for 28 of 28 result articles in the training set.</td></tr>
+        <tr><td>Act is "nothing regarding him"</td><td>Reported as "none of these".</td><td>The key has no such value</td></tr>
+        <tr><td>A yes/no answer</td><td>Yes when the classifier gives it 50% or more.</td><td></td></tr>
+        <tr><td>A scale answer (how central, how firm)</td><td>The nearest level.</td><td></td></tr>
       </tbody>
     </table></div>
+    <p><b>Open, yours to decide:</b> whether the other two news questions are forced to "no" when the fact is a different kind (option A). Not applied yet.</p>
   </div>
 
   <div class="sec">
-    <h2>Checked against the classifier vendor's writing rules</h2>
-    <p>I re-read TypeSafe's pages on 2 October (questions, choice, score, yes/no, and the known weak spots of the model) and changed the classifier column where the first draft broke them. The readers' column is free of these limits, because the readers are full models that read the whole guide.</p>
-    <div class="tw"><table>
-      <thead><tr><th>What the vendor says</th><th>What it means for this draft</th></tr></thead>
-      <tbody>
-        <tr><td>"Write descriptions that separate the options from each other." Indirect instructions are answered less reliably.</td><td>"Pick the specific kind first, status update only if the others do not fit" is an indirect, two-step instruction, so I removed it from the classifier. The fence is carried by the "not for" lines of status update itself, which is the vendor's own method. The readers keep the order. Note: the answer still comes back as shares across all options that add up to 100%.</td></tr>
-        <tr><td>Negations, "only" and implied conditions are read at face value. Write directly.</td><td>Status update was defined as "when no specific fight exists". It is now defined by what it is: readiness, availability, training. "Even unsigned and unnamed" moved out of the definitions and into an example.</td></tr>
-        <tr><td>One condition per yes/no question.</td><td>The next-fight question is now one plain question. The list of cases sits in the yes and no definitions.</td></tr>
-        <tr><td>A scale measures one thing. Each level is judged without seeing its neighbours.</td><td>"How firm" already mixes who says it with how settled it is. An exception clause ("he says it, but unsigned") would make that worse, so the level summaries stay simple and the unsigned fight is added as a signal. <b>This is the weakest part of the draft.</b> If it misfires, the vendor's own pattern is a separate yes/no question ("is the fight signed or announced?") combined in code.</td></tr>
-        <tr><td>The model leans toward the option listed first.</td><td>Status update goes late in the list, after personal life and before no fact. When we do run, one extra pass with the options reordered would show how much the order matters. That is a paid repeat (about a cent), so it needs your yes.</td></tr>
-        <tr><td>The question and its options must not ask for different things.</td><td>The fact question said a fact is "something that happened or is set to happen". "He is ready" is neither, so I added one sentence saying a statement of his readiness, availability or training is a fact too.</td></tr>
-        <tr><td>Use "not for" and examples where neighbours overlap. Keep an "other" option.</td><td>Already the shape of v6. Status update gets both. None of these stays.</td></tr>
-      </tbody>
-    </table></div>
+    <h2>Three helper questions sent in the same call</h2>
+    <p>They are not part of the nine answers and are not scored. They are stored so that ways of combining answers can be tried later without a new run.</p>
+    <div id="helpers" class="sec"></div>
   </div>
 
   <div class="sec">
-    <h2>Where example articles would land</h2>
-    <p>From the one-reader what-if on 32 articles (read-only, already done). Under this draft 12 of the 32 change their fact. Two readers have not confirmed any of it.</p>
+    <h2>How version 7 scores so far</h2>
+    <p>Articles with all nine answers right. The training set (155 articles) is read while changing wording; the validation set (40) is scored and never read; the test set (105) has not been sent.</p>
     <div class="tw"><table>
-      <thead><tr><th>Article</th><th>Today</th><th>With this wording</th><th>Why</th></tr></thead>
-      <tbody id="rows"></tbody>
+      <thead><tr><th>Version</th><th>Training set</th><th>Validation set</th><th>Note</th></tr></thead>
+      <tbody>
+        <tr><td>Version 6</td><td>63 of 155</td><td>16 of 40</td><td>Scored the same way, with the same ties.</td></tr>
+        <tr><td>Version 7, round 1</td><td class="mv">80 of 155</td><td class="mv">18 of 40</td><td>The version on this page.</td></tr>
+        <tr><td>Version 7, round 2</td><td>92 of 155</td><td>15 of 40</td><td>Overfitted: up on training, down on validation. Set aside.</td></tr>
+      </tbody>
     </table></div>
   </div>
 
@@ -190,19 +186,6 @@ td.mv{font-weight:600}
 
 <script>
 const DATA = /*DATA*/;
-const ROWS = [
- ["#998","https://www.20minutos.es/deportes/dana-white-confirma-que-ilia-topuria-esta-vuelta-esta-listo-para-pelear_7035056_0.html","Dana White: ready to fight, not on the schedule","next fight, official, next-fight yes","status update, official, next-fight no",true,"No fight exists or changes. Nine wire copies move the same way."],
- ["#991","https://sports.yahoo.com/articles/dana-white-reveals-top-2-061815853.html","White names Gaethje or Pimblett as options","next fight, official","status update, official",true,"Opponents only as options, no talks. Same for #1076."],
- ["#572","https://bloodyelbow.com/2026/09/03/new-ilia-topuria-update-as-former-ufc-champions-plan-to-return-to-the-public-eye-revealed/","A reporter says he returns to public view in September","none of these","status update, reported",true,"Back in public after time away. Same for #592."],
- ["#152","https://www.libertaddigital.com/deportes/mas-deporte/2026-08-12/el-preparador-de-topuria-habla-de-la-fecha-de-regreso-del-luchador-es-lo-mas-inteligente-7448157/","His coach on the recovery and the return date","next fight, health yes","health, next-fight no",true,"Open question 2. Under option B it would be status update. Same for #402."],
- ["#412","https://www.libertaddigital.com/deportes/mas-deporte/2026-08-27/el-milagro-de-topuria-tras-caer-ante-gaethje-podria-estar-listo-en-diciembre-7452164/","Coach: recovery going very well, could be ready in December","health, next-fight yes","health, next-fight no",true,"Fact stays. The return date is no longer recorded."],
- ["#16","https://sport24.ua/uk/box/news/160955-neperemozhniy-ukrayinets-otrimav-novogo-supernika-v-ufc-vidoma-data-boyu","Donchenko booked against Soriano, 5 September","next fight, official","same",false,"A specific fight is set."],
- ["#820","https://boxingnews.com/news/pimblett-topuria-december-fight-rumor/","Pimblett denies the December rumour","next fight, rumour","same",false,"A rumour with a date, even though denied."],
- ["#843","https://sports.yahoo.com/articles/paddy-pimblett-shares-potential-timeline-121700388.html","Pimblett's own hit list","no fact","same",false,"The speaker's own wish."],
- ["#462","https://sports.yahoo.com/articles/justin-gaethje-still-recovering-ufc-160000249.html","Gaethje guesses Topuria will not fight until next year","no fact","same",false,"A guess at his timing, not a stated fact. This is the case that tests the status update / no fact line."],
- ["#228","https://www.mundodeportivo.com/ufc/20260817/1004216824/islam-makhachev-acepto-pelear-ilia-topuria-ufc-freedom-250-me-llamaron-ofrecieron-buen-dinero-dije.html","Makhachev reveals a past offer that fell through","none of these","same",false,"A fact, but not about where he stands now."],
- ["Amosov","https://sport.nv.ua/ukr/mma/yaroslav-amosov-ogolosiv-pro-novogo-supernika-ufc-pidgotovka-do-boyu-50645741.html","Outside the 300. \"I know who, where and when\", nothing signed, easing into camp","not labelled","next fight, reported, next-fight yes",true,"His own word that a fight exists. The camp part is not recorded, because the fight is the main news."]
-];
 const esc = s => s.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");
 const code = s => s.replace(/\b[a-z]+(?:_[a-z]+)+\b/g, "<code>$&</code>");
 
@@ -233,7 +216,7 @@ function aud(name, key, a){
   if (!changed(a.fields)) return `<div class="aud" data-a="${key}">${who}<div class="col full"><div class="h">No change</div>${a.fields.map(f => fld(f.k, code(esc(f.cur)))).join("")}</div></div>`;
   const cur = a.fields.map(f => fld(f.k, f.cur ? diff(f.cur, f.prop)[0] : '<span class="none">does not exist today</span>')).join("");
   const prop = a.fields.map(f => fld(f.k, f.prop ? diff(f.cur, f.prop)[1] : '<span class="none">removed</span>')).join("");
-  return `<div class="aud" data-a="${key}">${who}<div class="col"><div class="h">${key==="reader" ? "Before 2 October" : "Now (version 6)"}</div>${cur}</div><div class="col"><div class="h">${key==="reader" ? "In force now" : "Drafted for version 7"}</div>${prop}</div></div>`;
+  return `<div class="aud" data-a="${key}">${who}<div class="col"><div class="h">${key==="reader" ? "Before 2 October" : "Version 6"}</div>${cur}</div><div class="col"><div class="h">${key==="reader" ? "In force now" : "Version 7, in use"}</div>${prop}</div></div>`;
 }
 const TAGS = {new:"new", chg:"changed", same:"no change"};
 function card(title, o, extra){
@@ -241,7 +224,7 @@ function card(title, o, extra){
     <header><span class="id">${esc(title)}</span><span class="tag ${o.tag}">${TAGS[o.tag]}</span></header>
     ${o.why ? `<p class="plain">${esc(o.why)}</p>` : ""}
     ${aud("What the readers see (labelling guide, adopted)","reader",o.reader)}
-    ${o.cls ? aud("What the classifier sees (JEV question, not yet run)","cls",o.cls) : ""}
+    ${o.cls ? aud("What the classifier sees (JEV question, version 7 round 1)","cls",o.cls) : ""}
   </section>`;
 }
 document.getElementById("blocks").innerHTML = DATA.questions.map((q, i) => {
@@ -259,9 +242,8 @@ document.getElementById("blocks").innerHTML = DATA.questions.map((q, i) => {
 }).join("");
 document.getElementById("notes").innerHTML = DATA.notes.map(o => card(o.title, o)).join("");
 
-document.getElementById("rows").innerHTML = ROWS.map(r => `<tr>
-  <td><a href="${r[1]}" target="_blank" rel="noopener">${r[0]}</a><br><span class="muted">${esc(r[2])}</span></td>
-  <td>${esc(r[3])}</td><td class="${r[5] ? "mv" : ""}">${esc(r[4])}</td><td>${esc(r[6])}</td></tr>`).join("");
+document.getElementById("helpers").innerHTML = DATA.helpers.map(h => `<section class="blk"><header><span class="id">${esc(h.id)}</span></header>
+  <div class="aud"><div class="col full">${fld("instructions", esc(h.instructions))}${h.yes ? fld("yes when", esc(h.yes)) : ""}${h.no ? fld("no when", esc(h.no)) : ""}</div></div></section>`).join("");
 
 let audF = "both";
 function apply(){
