@@ -1,0 +1,41 @@
+{
+ "hypothesis": "Second run of the lean act and firmness questions, the two that came out equal in e8.",
+ "parts": [
+  {
+   "question": "act",
+   "variants": {
+    "lean": {
+     "type": "choice",
+     "instructions": "What does the source do regarding the fighter named in `watched_fighter`? Pick the one the article's main news is built on. Count only a plain statement about him.",
+     "criteria": {
+      "reports_an_event": "Nobody's words are the news: something happened. He fought, weighed in, faced off, was booked, a fight of his was announced or cancelled.",
+      "speaks_of_himself": "The watched fighter himself talks about his own situation, plans, past, condition, fight or life.",
+      "assesses_him": "Someone other than him judges him: his level, chances, performance, condition, style, place in the division.",
+      "predicts_his_fight": "Someone other than him gives a pick or forecast for a specific fight of his: who wins, how, in which round.",
+      "calls_him_out": "Someone other than him asks to fight him, challenges him, or taunts or mocks him. Advice the article presents as ironic or as a provocation is a taunt.",
+      "answers_for_him": "A reply to an attack, a callout or a claim aimed at him, made on his behalf by someone else, or by him.",
+      "steers_him": "Someone other than him says sincerely what he should do next: whom he should fight, whether a rematch should happen, which weight class. Demands made on his behalf are included.",
+      "gives_news_of_him": "Someone other than him states a fact about him: his condition, recovery, training, whereabouts or plans.",
+      "nothing_regarding_him": "Nobody says plainly what he should do, judges him, challenges him or states a fact about him. He is only named in a list, a card, a comparison or as background; or someone only guesses about him; or a speaker talks about the speaker's own plans; or a speaker says what the watched fighter did for the speaker.",
+      "none_of_these": "None of the options above describes this article; a different answer is needed."
+     }
+    }
+   }
+  },
+  {
+   "question": "firmness",
+   "variants": {
+    "lean": {
+     "type": "score",
+     "instructions": "How established is the main fact this article asserts about the fighter named in `watched_fighter`? If it asserts no fact, judge the firmest claim it makes about him.",
+     "criteria": [
+      "A wish or a demand: someone wants it or says it should happen.",
+      "A rumour: unnamed sources, a leak, 'talks', 'discussions', 'plans'.",
+      "Reported: a named outlet, journalist, coach or other named person states it as fact.",
+      "Official or done: the promotion or he himself states it, or it has happened."
+     ]
+    }
+   }
+  }
+ ]
+}

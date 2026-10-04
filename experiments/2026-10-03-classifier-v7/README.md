@@ -414,3 +414,43 @@ numbers.* The gains and losses per question are the size of the noise and
 point both ways. Cutting the text short costs whole articles: the news of
 a long interview is often deep in it. As agreed, cleaning was tried as an
 experiment and is reported, not adopted.
+
+### E8. Adding, never cutting (two questions made shorter)
+
+*Hypothesis (a bias check).* Every round so far made the questions longer
+(the nine scored questions are now 16,800 characters). A lean version of
+each keeps only each option's definition (no "not for" lists, no
+examples), each level's summary (no signals), or for a yes/no question the
+question alone (no true/false text, which the vendor says to try both
+ways). Rule set before the run: adopt a lean question only if two runs show
+it no worse than noise (2 training, 1 validation); shorter and equal is
+better. The lean set is 8,100 characters.
+
+*Result, first run* (question right, training / validation, control first):
+
+| question | standing | lean |
+|---|---|---|
+| how central | 139 / 32 | 122 / 32 (−19 in 11 claims) |
+| whose words | 144 / 36 | 138 / 30 |
+| what the source does | 129 / 31 | 129 / 32 |
+| what new fact | 129 / 33 | 122 / 31 |
+| how firm | 131 / 32 | 130 / 34 |
+| reports his result | 154 / 40 | 150 / 38 |
+| reports his next fight | 144 / 38 | 134 / 37 |
+| reports his health | 144 / 38 | 138 / 38 |
+| he speaks | 153 / 40 | 152 / 40 |
+
+The second run of the two that held gave the same counts: what the source
+does 129 / 32 against 129 / 30, how firm 130 / 34 against 131 / 32.
+
+*Decision: "what the source does" and "how firm" adopted in their lean
+form; the other seven keep their text.* The bias check mostly came out in
+the wording's favour: the signals of "how central", the "not for" lines of
+"whose words" (which lose 6 articles on the validation set too) and the
+true/false text of the yes/no questions all earn their place. But the
+"not for" lines and examples of "what the source does", and the signals of
+"how firm", carried nothing measurable; without them the two questions are
+half as long and score the same on training and one or two better on
+validation. That includes the status signal E4 added to "how firm": the
+level's own summary ("the promotion or he himself states it") is enough
+once no example points elsewhere.

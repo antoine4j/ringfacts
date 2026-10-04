@@ -101,56 +101,16 @@
   "type": "choice",
   "instructions": "What does the source do regarding the fighter named in `watched_fighter`? Pick the one the article's main news is built on. Count only a plain statement about him.",
   "criteria": {
-   "reports_an_event": {
-    "what": "Nobody's words are the news: something happened. He fought, weighed in, faced off, was booked, a fight of his was announced or cancelled."
-   },
-   "speaks_of_himself": {
-    "what": "The watched fighter himself talks about his own situation, plans, past, condition, fight or life.",
-    "not_for": "A reply by him to an attack aimed at him (that is answers for him). Another fighter talking about that fighter's own plans or injuries (that is nothing regarding him).",
-    "examples": [
-     "how he rates himself",
-     "his own forecast for his fight",
-     "what he wants next"
-    ]
-   },
-   "assesses_him": {
-    "what": "Someone other than him judges him: his level, chances, performance, condition, style, place in the division.",
-    "not_for": "Him judging himself."
-   },
-   "predicts_his_fight": {
-    "what": "Someone other than him gives a pick or forecast for a specific fight of his: who wins, how, in which round.",
-    "not_for": "His own forecast. A guess at when he will fight or whom the matchmakers will give him (that is nothing regarding him)."
-   },
-   "calls_him_out": {
-    "what": "Someone other than him asks to fight him, challenges him, or taunts or mocks him. Advice the article presents as ironic or as a provocation is a taunt.",
-    "examples": [
-     "a contender says he wants him next",
-     "a rival posts a video mocking his last loss",
-     "a contender calls him a coward for turning down a fight"
-    ]
-   },
-   "answers_for_him": {
-    "what": "A reply to an attack, a callout or a claim aimed at him, made on his behalf by someone else, or by him."
-   },
-   "steers_him": {
-    "what": "Someone other than him says sincerely what he should do next: whom he should fight, whether a rematch should happen, which weight class. Demands made on his behalf are included.",
-    "not_for": "What he himself says he wants next. Mock advice meant as a provocation (that is calls him out)."
-   },
-   "gives_news_of_him": {
-    "what": "Someone other than him states a fact about him: his condition, recovery, training, whereabouts or plans.",
-    "not_for": "A judgement of how good he is (that is assesses him). A guess about him, such as 'probably', 'I think' or 'I expect' (that is nothing regarding him)."
-   },
-   "nothing_regarding_him": {
-    "what": "Nobody says plainly what he should do, judges him, challenges him or states a fact about him. He is only named in a list, a card, a comparison or as background; or someone only guesses about him; or a speaker talks about the speaker's own plans; or a speaker says what the watched fighter did for the speaker.",
-    "examples": [
-     "his name in a ranking",
-     "a fighter talks about his own camp and names him once among past opponents",
-     "a fighter thanks him for sparring with him years ago"
-    ]
-   },
-   "none_of_these": {
-    "what": "None of the options above describes this article; a different answer is needed."
-   }
+   "reports_an_event": "Nobody's words are the news: something happened. He fought, weighed in, faced off, was booked, a fight of his was announced or cancelled.",
+   "speaks_of_himself": "The watched fighter himself talks about his own situation, plans, past, condition, fight or life.",
+   "assesses_him": "Someone other than him judges him: his level, chances, performance, condition, style, place in the division.",
+   "predicts_his_fight": "Someone other than him gives a pick or forecast for a specific fight of his: who wins, how, in which round.",
+   "calls_him_out": "Someone other than him asks to fight him, challenges him, or taunts or mocks him. Advice the article presents as ironic or as a provocation is a taunt.",
+   "answers_for_him": "A reply to an attack, a callout or a claim aimed at him, made on his behalf by someone else, or by him.",
+   "steers_him": "Someone other than him says sincerely what he should do next: whom he should fight, whether a rematch should happen, which weight class. Demands made on his behalf are included.",
+   "gives_news_of_him": "Someone other than him states a fact about him: his condition, recovery, training, whereabouts or plans.",
+   "nothing_regarding_him": "Nobody says plainly what he should do, judges him, challenges him or states a fact about him. He is only named in a list, a card, a comparison or as background; or someone only guesses about him; or a speaker talks about the speaker's own plans; or a speaker says what the watched fighter did for the speaker.",
+   "none_of_these": "None of the options above describes this article; a different answer is needed."
   }
  },
  "fact": {
@@ -223,37 +183,10 @@
   "type": "score",
   "instructions": "How established is the main fact this article asserts about the fighter named in `watched_fighter`? If it asserts no fact, judge the firmest claim it makes about him.",
   "criteria": [
-   {
-    "summary": "A wish or a demand: someone wants it or says it should happen.",
-    "signals": [
-     "a fighter asking for the fight",
-     "his team saying he deserves a title shot"
-    ]
-   },
-   {
-    "summary": "A rumour: unnamed sources, a leak, 'talks', 'discussions', 'plans'.",
-    "signals": [
-     "a reporter says, without a source, that it is being planned",
-     "'sources say'"
-    ]
-   },
-   {
-    "summary": "Reported: a named outlet, journalist, coach or other named person states it as fact.",
-    "signals": [
-     "'ESPN reports that...'",
-     "his manager says the bout is agreed",
-     "he says he has a fight lined up that is still unsigned"
-    ]
-   },
-   {
-    "summary": "Official or done: the promotion or he himself states it, or it has happened.",
-    "signals": [
-     "the promotion announces the bout",
-     "he posts that he signed",
-     "a fight result",
-     "the promotion or he himself states his status: available to fight, out injured, or moving weight class"
-    ]
-   }
+   "A wish or a demand: someone wants it or says it should happen.",
+   "A rumour: unnamed sources, a leak, 'talks', 'discussions', 'plans'.",
+   "Reported: a named outlet, journalist, coach or other named person states it as fact.",
+   "Official or done: the promotion or he himself states it, or it has happened."
   ]
  },
  "reports_his_result": {
