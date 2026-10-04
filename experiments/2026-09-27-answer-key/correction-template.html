@@ -124,7 +124,7 @@ input.note{font:inherit;font-size:13px;border:1px solid var(--line);background:v
       <div><span class="why">classifier differs</span> the readers agree, but the classifier said something else (shown beside it). One of them is wrong: check the readers' answer.</div>
       <div>An answer can carry both of the last two. Faded answers are unanimous: readers and classifier agree.</div>
       <div><span class="chip done">checked by summary</span> you confirmed this card from a grouped summary in chat, without opening it. Marking it yourself on the card turns it into a plain <span class="chip done">checked</span>.</div>
-      <div><span class="hint"><b>hints</b></span> grey lines under an answer from the overnight re-reads: a third reader's pick where the classifier differs, two fresh reads of "how central" under "new, not long", what a boundary's recommended rule would say, and, since 3 Oct, the answers of two blind readers who re-read all 300 under today's guide (shown only where one of them differs from the answer on the card). Hints, not labels: they are there to speed up your call.</div>
+      <div><span class="hint"><b>hints</b></span> grey lines under an answer from the overnight re-reads: a third reader's pick where the classifier differs, two fresh reads of "how central" under "new, not long", what a boundary's recommended rule would say, and, since 3 Oct, the answers of two blind readers who re-read all 300 under today's guide (a warning where one of them differs from the answer on the card, and a confirmation where the answer is a correction or the first readers had split). Hints, not labels: they are there to speed up your call.</div>
     </div>
     <details class="about"><summary>How this page works, and where to start</summary>
       <p><b>Every article is on one side of the split</b> (the chip on each card). <b>Tune</b> (155): the classifier questions are changed while looking at these. <b>Check</b> (40): used to test a change, never looked at while changing. <b>Test</b> (105): scored once, at the end. Correct any of them the same way: they are all the golden set; the side only decides what the classifier may be tuned on.</p>
@@ -235,12 +235,16 @@ function hints(k, fix){
   if (k.flip){
     out.push(`<div class="hint agree"><b>coin flip, accepted</b> — any of: ${k.flip.accepted.map(v => esc(human(v))).join(", ")}. ${esc(k.flip.why)}</div>`);
   }
-  // the full re-read of 3 Oct speaks up only where a reader differs from the answer shown
+  // the full re-read of 3 Oct: a warning where a reader differs from the answer shown
   if (k.reread && Object.values(k.reread).some(r => r.value !== now)){
     const reads = Object.entries(k.reread).map(([letter, r]) => `${letter}: <b>${esc(human(r.value))}</b>`).join(", ");
     const one = Object.keys(k.reread).length === 1 ? " (one reader only)" : "";
     const notes = Object.entries(k.reread).filter(([, r]) => r.value !== now && r.note).map(([letter, r]) => `${letter}: ${esc(r.note)}`).join(" · ");
     out.push(`<div class="hint change">re-read on 3 Oct, two blind readers, today's guide — ${reads}${one}<br>${notes}</div>`);
+  }
+  // where the answer shown is a correction, or the original readers had split, say so when both new readers confirm it
+  else if (k.reread && Object.keys(k.reread).length && (fix || k.status !== "agreed")){
+    out.push(`<div class="hint agree">re-read on 3 Oct, two blind readers, today's guide — both give this answer: <b>${esc(human(now))}</b></div>`);
   }
   if (k.rule !== undefined && k.rule !== null){
     out.push(`<div class="hint ${k.rule === now ? "agree" : "change"}">the brief's recommended rule gives: <b>${esc(human(k.rule))}</b>${k.rule === now ? (fix ? " — applied" : "") : " — would change this"}</div>`);
