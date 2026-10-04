@@ -69,6 +69,9 @@ def compose(raw, ties=True):
 
     # a result, next fight or health fact answers its own yes/no question
     if out["fact"] in FLAG_OF_FACT: out[FLAG_OF_FACT[out["fact"]]] = "yes"
+
+    # a result is an account of the fight: an event, with nobody as its source, and done
+    if out["fact"] == "result": out["source"], out["act"], out["firmness"] = "no_one", "reports_an_event", "official_or_done"
     return out
 
 
@@ -142,6 +145,7 @@ def selfcheck():
     assert out["centrality"] == "main_subject" and out["source"] == "other_fighter_side" and out["he_speaks"] == "yes"
     assert out["firmness"] == "none" and out["reports_his_next_fight"] == "no" and out["act"] == "assesses_him"
     assert compose(raw, ties=False)["reports_his_next_fight"] == "yes" and compose(raw, ties=False)["firmness"] == "reported"
+    raw["fact"] = choice("result"); assert compose(raw)["source"] == "no_one" and compose(raw)["act"] == "reports_an_event"
     raw["fact"] = choice("health"); assert compose(raw)["reports_his_health"] == "yes" and compose(raw)["act"] == "gives_news_of_him"
     assert grade("centrality", "one_of_several", "main_subject", {"main_subject"}) == "near"
     assert grade("centrality", "only_mentioned", "main_subject", {"main_subject"}) == "far"
