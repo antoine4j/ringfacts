@@ -1,8 +1,148 @@
 # Classifier v7 — the 27 labelling rules brought into the questions
 
-**Status:** two rounds run on the tune and check sides, 2026-10-03,
-`jev-1.13.0`, 0 errors, $0.11 in all. Round 2 overfitted (below). Tuning
-continues; the test side has not been sent.
+**Status:** standing version is round 6, after an unattended night of ten
+experiments (2026-10-03 to 04, `jev-1.13.0`). The test set has not been
+sent, scored or read. Nothing is pushed.
+
+## Morning report
+
+**Where it stands.** Articles with all nine answers right, training set /
+validation set:
+
+| | v6 | round 3 (yesterday) | round 6 (now) | round 6, sent again |
+|---|---|---|---|---|
+| how central | 136 / 34 | 133 / 31 | 139 / 32 | 138 / 32 |
+| whose words | 130 / 32 | 142 / 35 | 145 / 36 | 144 / 36 |
+| what the source does | 130 / 34 | 128 / 30 | 129 / 32 | 129 / 31 |
+| what new fact | 105 / 31 | 130 / 33 | 134 / 34 | 133 / 33 |
+| how firm | 113 / 30 | 133 / 32 | 136 / 35 | 134 / 34 |
+| reports his result | 146 / 38 | 154 / 40 | 154 / 40 | 154 / 40 |
+| reports his next fight | 109 / 30 | 144 / 38 | 146 / 39 | 145 / 39 |
+| reports his health | 134 / 37 | 144 / 38 | 144 / 38 | 145 / 38 |
+| he speaks | 152 / 39 | 153 / 40 | 154 / 40 | 153 / 40 |
+| **all nine right** | **63 / 16** | **87 / 17** | **94 / 20** | **94 / 19** |
+
+**Round 6 gets all nine answers right on 94 of 155 training articles and
+19 to 20 of 40 validation articles**, up from 87 and 17. The gain is
+modest and it is real: it held when the same questions were sent twice.
+The validation set is small, so its 2 to 3 articles of gain are an
+indication, not proof; the test set will say.
+
+**What was accepted, and why** (each passed the rule in STRATEGY.md in two
+runs):
+
+1. **E2, "how central":** the main-subject level now names "another
+   fighter" among those who may talk about him as the article's topic. The
+   old list left fighters out, so Makhachev or Gaethje talking about him
+   read one level down. +6 training, +2 to 3 validation.
+2. **E4, examples:** 18 examples that paraphrased golden articles were
+   replaced with invented ones. Several paraphrased **test-set** articles
+   (the rules cite them), which would have flattered the final score. No
+   loss, once "how firm" stated its rule instead of leaning on the Dana
+   White example.
+3. **E8, shorter questions:** "what the source does" and "how firm" are
+   now half as long (definitions only). Same on training, 1 to 2 better
+   on validation. The other seven questions need their extra text.
+4. **E10, previews:** the fact question had drifted from the rule: it
+   listed "how to watch" under "fight week event". Aligned with the rule,
+   and a preview or pick is now named as no fact. +5 training, +1
+   validation.
+
+**What was tried and rejected:** a sharper definition of a fact that
+includes reported rumours (E1: works on the rumoured-fight claims only,
+and they also need a second fix); option order (E3: moves answers but no
+order is better); two fixes to "what the source does" that work only on the
+claims they were built on (E5, held for you); the fact question as one
+yes/no per kind (E6: +12 on training, nothing on validation); cleaning or
+cutting the article text (E7: no difference, and cutting hurts); a fact
+question written from scratch (E9: worse on validation); a wording for
+"absent" against "only mentioned" (E11: moved nothing); and, on stored
+answers at no cost, cut-offs and rounding for the two scales, repeats with
+a vote, and a breakdown by language (no effect anywhere).
+
+**What was learned about the model:**
+
+- **Read literally, as the vendor says.** Both accepted wording fixes
+  (E2, E10) were places where the question's text said something narrower
+  or different from what was meant. A list of examples is read as the
+  whole list.
+- **An example can carry a whole claim.** Without the paraphrase of
+  claim-113, nine of its ten articles changed answer. Training scores can
+  measure memory of the prompt.
+- **Asked one at a time, kinds of fact are read generously**: they catch
+  news given as talk, and also over-call it. Every change that made the
+  fact question more willing to see news (rounds 2, E1, E6, E9) gained on
+  training and lost on validation.
+- **The noise is larger for unsettled wording.** The standing questions
+  change 1.5 to 2% of answers between identical calls; a wording that puts
+  many articles near the line changed 7 of 155. Every decision used two
+  runs.
+- **Option order matters about three times as much as noise, but no order
+  was better.** Averaging over orders did not help either.
+
+**Money:** $1.30 measured from stored token counts tonight (30.8 million
+input tokens), plus about $0.05 of smoke tests that were not stored (an
+estimate). With the $0.18 before, about $1.53 in all for v7. The $2.50 line
+was not reached; the session stopped because the remaining misses are one
+or two articles per claim, and fixing those is fitting single occasions.
+
+## For Anton
+
+Each item: what it is, the case for and against, options, and my
+recommendation. None of these were decided overnight.
+
+**1. Two fixes that work but only on the claims they were built on (E5).**
+"A prediction is about a booked fight" moves a rival camp's boast ("Usman
+would make him quit", claim-003) from "predicts his fight" to "calls him
+out". "A report of what is planned for him is news, not steering" fixes
+Dana White's "top two potential opponents" and the rumoured rematch.
+*For:* both agree with the rules and with the key's own usage (every
+training prediction is about a booked fight); both lost nothing in two
+runs. *Against:* the validation set did not move, so nothing outside the
+design shows them working. *Options:* (a) adopt both now; (b) keep them
+out and test them on a new labelled slice; (c) adopt only "booked", which
+restates the key's usage. *Recommendation: (c)*, and judge "plans" with
+the next slice.
+
+**2. Whether the three news flags stay independent.** As the model gives
+them, "reports his next fight" is right on 150 training articles and 35
+validation; after the code ties (no fact makes every flag no), 146 and 39.
+Training prefers the raw flags, validation prefers the ties. Of 23
+training disagreements between a flag and the fact answer, the flag is
+right in 11 (4 claims), the fact in 10 (6 claims), both wrong in 2.
+*Options:* (a) keep the ties for the labels and log every disagreement for
+review, as now; (b) let a confident flag stand against "no fact"; (c) drop
+the flags. *Recommendation: (a)*: the ties win on the validation set, and
+the disagreements are a cheap list of articles worth a second look.
+
+**3. Text cleaning (E7).** Cleaning the saved text made no difference;
+cutting it short hurt. One thing the wording cannot fix: on 4 training and
+2 validation articles the key says he is absent from the article, while
+his name sits in an inline "LATEST NEWS:" headline or a digest of other
+headlines inside the saved text. *Options:* (a) nothing now; (b) have the
+body extractor drop inline headline blocks; (c) treat those labels as
+"only mentioned". *Recommendation: (a)* for now, and note it for the
+body-extraction station.
+
+**4. Labels where the classifier's reading looks defensible.** Not
+changed, for you to look at if you wish:
+- **#746** (claim-095), "Daniil Donchenko Octagon Interview", key fact
+  "result". By the rule "result only for an account of the fight itself",
+  a post-fight interview is not a result, unless the saved page also
+  carries the fight report. The yes/no kind questions said no; the choice
+  said result at 0.55.
+- **#655** (claim-066), key "absent", but the headline names him; the body
+  does not. Is a headline-only mention "absent" or "only mentioned"?
+- **#510** (claim-058), a preview giving "start time, full card and how to
+  watch", key no fact. Now right, but it sits on the line between the
+  preview rule and the fight-week rule.
+
+**5. The test set.** The questions are ready to be scored once on the 105
+test articles (`python3 run.py --side test --yes --final`, about $0.03),
+on your word. Before that, note that E4 removed the paraphrases of test
+articles from the prompt; the rules file still cites test articles as
+examples, which is fine for the labels but worth remembering whenever a
+prompt is built from the rules.
 
 v6 (../2026-09-27-axes-v6) predates the labelling rules the golden key was
 decided under ([golden/rules.md](../../golden/rules.md)). v7 rewrites the
@@ -33,6 +173,12 @@ nine questions to carry them, and is scored against the frozen key
 | `classifier-v7/questions-<round>.json` | the questions as sent in a round |
 | `run.py` | sends a few articles (`--ids`) or one side (`--side`) |
 | `score.py` | scores a round, or v6, against the key; `--selfcheck` checks its rules |
+| `variants.py` | several wordings of one or more questions side by side in one call, with the standing wording as control, scored inside a base round |
+| `variants/<experiment>.json` | the wordings each overnight experiment sent, with its hypothesis |
+| `decompose.py` | the fact question as one yes/no per kind, combined in code under several rules (E6) |
+| `states.py` | the standing questions sent with a cleaned or shortened article text (E7) |
+| `health_variants.py` | the first side-by-side test, three health wordings (round 3) |
+| `disagreements-r3.md` | where a yes/no flag and the fact answer disagreed in round 3 |
 
 Three helper yes/no questions (`h_new_fact`, `h_others_story`, `h_callout`)
 ride along in the same call. They are not scored; they are there so that
@@ -513,3 +659,22 @@ nine right rises by 4 and 5 on training and 0 and 1 on validation.
 Leave-claims-out: it was designed on the preview misses of claim-058, -066
 and -073.0; beyond them it gained #977 (claim-112) in the first run, #636
 (claim-080) in the second, and one validation article in both.
+
+### E11 and the last checks (no change)
+
+*E11.* On 4 training and 2 validation articles the key says he is absent
+from the article's own text and the model says "only mentioned". Each
+level is judged alone, and the "only mentioned" level did not say "in the
+article's own text". Adding it, and saying what "absent" means, moved
+nothing in the smoke test (12 articles), so no full run. Reading the
+articles showed why: his name sits in inline "LATEST NEWS:" headlines or a
+digest of other headlines inside the saved text, which the model fairly
+reads as text. That is for body extraction (For Anton, item 3).
+
+*On stored answers, no cost:* scoring the scales by their most likely
+level instead of the rounded average gained 2 to 3 "how central" answers
+on training and lost 1 to 2 on validation in each of rounds 3 to 6:
+rejected. A tie "only mentioned means no fact" (31 of 33 training key
+articles agree) changed nothing: the answers already obey it.
+
+**Round 6** = round 5 plus E8 and E10. Sent twice: 94 / 20 and 94 / 19.
