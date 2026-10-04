@@ -126,19 +126,17 @@ def overnight():
 
 
 def reread():
-    """The blind re-read of 2026-10-02 under the status-update wording (status-pilot/): fact, firmness, next fight.
+    """The full blind re-read of 2026-10-03 under the guide with all 27 rules (full-reread/): all nine questions.
 
-    Later rounds replace earlier ones, because round two used the final wording.
-    @returns: article id → reader letter → the reader's row (three answers and a note)
+    It replaces the 2 October re-read of three questions (status-pilot/), which used an earlier guide.
+    @returns: article id → reader letter → the reader's row (nine answers and a note)
     """
     out = {}
-    for folder, maps in (("round1", {"A": "id-map.json", "B": "id-map.json"}), ("round2", {"A": "id-map.json", "B": "id-map.json"}),
-                         ("full", {"A": "id-map.json", "B": "id-map-B.json"})):
-        for letter, map_name in maps.items():
-            ids = json.load(open(os.path.join(HERE, "status-pilot", folder, map_name)))
-            for path in sorted(glob.glob(os.path.join(HERE, "status-pilot", folder, f"{letter}-*.json"))):
-                for row in json.load(open(path)):
-                    out.setdefault(ids[row["id"]], {})[letter] = row
+    ids = json.load(open(os.path.join(HERE, "full-reread", "id-map.json")))
+    for letter in ("A", "B"):
+        for path in sorted(glob.glob(os.path.join(HERE, "full-reread", f"out-{letter}-*.json"))):
+            for row in json.load(open(path)):
+                out.setdefault(ids[row["id"]], {})[letter] = row
     return out
 
 
@@ -160,7 +158,7 @@ def main():
                           "classifier": classifier_value(q, v6[article_id][q])}
             if (article_id, q) in triage: answers[q]["hint"] = triage[(article_id, q)]
         if article_id in recheck: answers["centrality"]["recheck"] = recheck[article_id]
-        for q in ("fact", "firmness", "reports_his_next_fight"):
+        for q in QUESTIONS:
             answers[q]["reread"] = {letter: {"value": row[q], "note": plain_names(row.get("note") or "")} for letter, row in rereaders.get(article_id, {}).items()}
         # the boundary this article's disagreement falls on, and what the brief's recommended rule says about it
         boundary = boundary_of(entry["answers"])
