@@ -1339,3 +1339,12 @@ with a note each; the cards are not marked checked.
 
 Held for the next step with the checked cards: #745 (a booking notice,
 the twin of #605) and #1101.
+
+**A second kind of check mark (2026-10-03).** Anton, on the 19 cards
+above: *"Mark them checked, I did not open but your summary was clear ...
+Maybe we should mark them as checked by summary? A different kind of
+check?"* The card record now carries `how: "summary"` beside
+`reviewed: true` when he confirmed a card from a grouped summary without
+opening it. The page shows "checked by summary" and counts them
+separately; marking the card himself turns it into a plain check. Checked
+after this: 96 cards, 19 of them by summary.

@@ -123,6 +123,7 @@ input.note{font:inherit;font-size:13px;border:1px solid var(--line);background:v
       <div><span class="why">readers differed</span> two of three readers agreed and their answer is shown. Check it is right.</div>
       <div><span class="why">classifier differs</span> the readers agree, but the classifier said something else (shown beside it). One of them is wrong: check the readers' answer.</div>
       <div>An answer can carry both of the last two. Faded answers are unanimous: readers and classifier agree.</div>
+      <div><span class="chip done">checked by summary</span> you confirmed this card from a grouped summary in chat, without opening it. Marking it yourself on the card turns it into a plain <span class="chip done">checked</span>.</div>
       <div><span class="hint"><b>hints</b></span> grey lines under an answer from the overnight re-reads: a third reader's pick where the classifier differs, two fresh reads of "how central" under "new, not long", what a boundary's recommended rule would say, and, since 3 Oct, the answers of two blind readers who re-read all 300 under today's guide (shown only where one of them differs from the answer on the card). Hints, not labels: they are there to speed up your call.</div>
     </div>
     <details class="about"><summary>How this page works, and where to start</summary>
@@ -252,7 +253,7 @@ function card(a){
   const chips = [a.split ? `<span class="chip split">${a.split} split</span>` : "", a.settled - a.split ? `<span class="chip">${a.settled - a.split} settled by tie-breaker</span>` : "",
     a.differs ? `<span class="chip">classifier differs on ${a.differs}</span>` : "", `<span class="chip${a.side === "test" ? " held" : ""}" title="${a.side === "tune" ? "the classifier questions may be tuned on this article" : a.side === "check" ? "used to test a change, never looked at while changing questions" : "scored once, at the end"}">${a.side}</span>`,
     a.body_ruling ? `<span class="chip split" title="${esc(a.body_ruling)}">saved text unusable or cut</span>` : "",
-    nfix ? `<span class="chip fix">${nfix} corrected</span>` : "", r.reviewed ? `<span class="chip done">checked</span>` : ""].join("");
+    nfix ? `<span class="chip fix">${nfix} corrected</span>` : "", r.reviewed ? `<span class="chip done">${r.how === "summary" ? "checked by summary" : "checked"}</span>` : ""].join("");
   const body = markName(a.text, a.fighter);
   const notes = ["A", "B", "C"].filter(k => a.notes[k]).map(k => `<div><b>${k}</b> ${esc(a.notes[k])}</div>`).join("");
   return `<article class="card${r.reviewed ? " done" : ""}" id="a-${a.id}">
@@ -264,7 +265,7 @@ function card(a){
       return todo.length ? `<div class="todo">Check ${todo.length === 1 ? "this answer" : `these ${todo.length} answers`}: ${todo.map(q => esc(DATA.labels[q])).join(", ")}. The others are unanimous; a glance is enough.</div>` : `<div class="saved">Nothing flagged: the readers and the classifier all agree.</div>`; })()}
     ${a.brief_line ? `<div class="brief">brief: ${esc(a.brief_line)}</div>` : ""}
     <div class="qs">${DATA.questions.map(q => questionRow(a, q)).join("")}</div>
-    <div class="foot"><button class="btn" data-review="${a.id}">${r.reviewed ? "Checked ✓ (click to undo)" : "Mark article checked"}</button><span class="saved" id="saved-${a.id}"></span></div>
+    <div class="foot"><button class="btn" data-review="${a.id}">${r.reviewed ? (r.how === "summary" ? "Checked by summary ✓ (click to undo, then mark it yourself once you have read it)" : "Checked ✓ (click to undo)") : "Mark article checked"}</button><span class="saved" id="saved-${a.id}"></span></div>
   </article>`;
 }
 
@@ -312,8 +313,9 @@ function draw(){
   const html = state.filter === "1" ? grouped(list) : list.map(card).join("");
   document.getElementById("list").innerHTML = list.length ? html : `<p class="lede">Nothing here under this filter.</p>`;
   const checked = DATA.articles.filter(a => rec(a.id).reviewed).length;
+  const bySummary = DATA.articles.filter(a => rec(a.id).reviewed && rec(a.id).how === "summary").length;
   const fixes = DATA.articles.reduce((s, a) => s + Object.keys(rec(a.id).fixes).length, 0);
-  document.getElementById("count").innerHTML = `showing <b>${list.length}</b> · checked <b>${checked}</b> of 300 · corrections <b>${fixes}</b>`;
+  document.getElementById("count").innerHTML = `showing <b>${list.length}</b> · checked <b>${checked}</b> of 300${bySummary ? ` (${bySummary} by summary)` : ""} · corrections <b>${fixes}</b>`;
 }
 
 /** Save one article's record: to the page's database when available. @param {string} id */
@@ -321,7 +323,7 @@ async function save(id){
   const r = rec(id), el = document.getElementById("saved-" + id);
   if (!state.db){ if (el) el.textContent = "not saved in this view — use Copy my corrections"; return; }
   try {
-    await state.db.doc("corrections/" + id).set({reviewed: r.reviewed, fixes: r.fixes, updatedAt: new Date().toISOString()});
+    await state.db.doc("corrections/" + id).set({reviewed: r.reviewed, fixes: r.fixes, ...(r.how ? {how: r.how} : {}), updatedAt: new Date().toISOString()});
     if (el) el.textContent = "saved";
   } catch (e) { if (el) el.textContent = "could not save: " + (e && e.message || e.code || "error"); }
 }
@@ -370,7 +372,7 @@ document.getElementById("list").addEventListener("click", e => {
     return;
   }
   const b = e.target.closest("[data-review]"); if (!b) return;
-  const id = b.dataset.review; state.corrections[id] = {...rec(id), reviewed: !rec(id).reviewed};
+  const id = b.dataset.review; state.corrections[id] = {...rec(id), reviewed: !rec(id).reviewed, how: null};
   const scroll = window.scrollY; draw(); window.scrollTo(0, scroll); save(id);
 });
 
@@ -399,7 +401,7 @@ draw();
   if (!db){ const n = document.getElementById("banner"); n.hidden = false; n.textContent = "Corrections can't be saved in this view. They stay on this page until you reload; use “Copy my corrections as text” and paste them into the chat."; return; }
   state.db = db;
   db.collection("corrections").onSnapshot(snap => {
-    for (const d of snap.docs){ const v = d.data() || {}; state.corrections[d.id] = {reviewed: !!v.reviewed, fixes: v.fixes || {}}; }
+    for (const d of snap.docs){ const v = d.data() || {}; state.corrections[d.id] = {reviewed: !!v.reviewed, fixes: v.fixes || {}, how: v.how || null}; }
     const scroll = window.scrollY; draw(); window.scrollTo(0, scroll);
   });
 })();
