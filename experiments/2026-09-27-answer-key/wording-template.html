@@ -93,9 +93,9 @@ td.mv{font-weight:600}
     <h1>The questions, as the readers and the classifier see them</h1>
     <p>All nine questions with every answer option. Open a question to see its text and its options. Everything is shown twice, because there are two prompts.</p>
     <p><b>The readers' prompt</b> (the labelling guide) is adopted and in force. Its column shows the text before 2 October on the left and the text in force now on the right, so every change since then is marked: status update, the narrower next fight, "result only for an account of the fight itself", and "talking about someone else".</p>
-    <p><b>The classifier's prompt</b> is version 7, round 1: the version in use. Its column shows version 6 on the left and version 7 on the right, with every change marked. Round 2 was tried and set aside because it overfitted; it is not shown here.</p>
+    <p><b>The classifier's prompt</b> is version 7.6, the version in use since 4 October. Its column shows version 6 on the left and version 7.6 on the right, with every change marked. The steps from 7.1 to 7.6, and how each scored, are in the table at the bottom of the page.</p>
     <p>The classifier answers each question on its own and cannot see its other answers. A few answers are therefore set by code afterwards; that list is below the questions.</p>
-    <p class="muted">Updated 3 October 2026, after round 1. The plain names of the rules are in golden/rules.md.</p>
+    <p class="muted">Updated 4 October 2026, after version 7.6. The plain names of the rules are in golden/rules.md; each step's evidence is in experiments/2026-10-03-classifier-v7/README.md.</p>
   </div>
 
   <div class="test">
@@ -139,7 +139,7 @@ td.mv{font-weight:600}
         <tr><td>How central is "not in the content"</td><td>Fact: no fact. He speaks: no.</td><td>Only the saved text counts</td></tr>
         <tr><td>Fact is "no fact"</td><td>How firm: none. Result, next fight and health: no. If the act was "gives news of him", the next most likely act is taken.</td><td>No fact means nothing else either; an act needs a plain statement</td></tr>
         <tr><td>Fact is result, next fight or health</td><td>That fact's own yes/no question: yes.</td><td>The three news questions</td></tr>
-        <tr><td>Fact is result</td><td>Whose words: no one. What the source does: reports an event. How firm: official or done.</td><td>Result only for an account of the fight itself. Added after round 1: true for 28 of 28 result articles in the training set.</td></tr>
+        <tr><td>Fact is result</td><td>Whose words: no one. What the source does: reports an event. How firm: official or done.</td><td>Result only for an account of the fight itself. Added after version 7.1: true for 28 of 28 result articles in the training set.</td></tr>
         <tr><td>Act is "nothing regarding him"</td><td>Reported as "none of these".</td><td>The key has no such value</td></tr>
         <tr><td>A yes/no answer</td><td>Yes when the classifier gives it 50% or more.</td><td></td></tr>
         <tr><td>A scale answer (how central, how firm)</td><td>The nearest level.</td><td></td></tr>
@@ -156,13 +156,17 @@ td.mv{font-weight:600}
 
   <div class="sec">
     <h2>How version 7 scores so far</h2>
-    <p>Articles with all nine answers right. The training set (155 articles) is read while changing wording; the validation set (40) is scored and never read; the test set (105) has not been sent.</p>
+    <p>Articles with all nine answers right. The training set (155 articles) is read while changing wording; the validation set (40) is scored and never read; the test set (105) has not been sent. With 40 articles, the validation figure is rough: 19 of 40 could plausibly be anything from 33% to 63%.</p>
     <div class="tw"><table>
-      <thead><tr><th>Version</th><th>Training set</th><th>Validation set</th><th>Note</th></tr></thead>
+      <thead><tr><th>Version</th><th>Training set</th><th>Validation set</th><th>What it added</th></tr></thead>
       <tbody>
-        <tr><td>Version 6</td><td>63 of 155</td><td>16 of 40</td><td>Scored the same way, with the same ties.</td></tr>
-        <tr><td>Version 7, round 1</td><td class="mv">80 of 155</td><td class="mv">18 of 40</td><td>The version on this page.</td></tr>
-        <tr><td>Version 7, round 2</td><td>92 of 155</td><td>15 of 40</td><td>Overfitted: up on training, down on validation. Set aside.</td></tr>
+        <tr><td>Version 6</td><td>63 of 155 (41%)</td><td>16 of 40 (40%)</td><td>Scored the same way, with the same ties.</td></tr>
+        <tr><td>7.1</td><td>80 of 155 (52%)</td><td>18 of 40 (45%)</td><td>Version 6 with the 27 labelling rules written in.</td></tr>
+        <tr><td>7.2</td><td>92 of 155 (59%)</td><td>15 of 40 (38%)</td><td>Fixes read off 7.1's misses. Overfitted: up on training, down on validation. Set aside.</td></tr>
+        <tr><td>7.3</td><td>87 of 155 (56%)</td><td>17 of 40 (43%)</td><td>7.1 with the health question's "no when" text rewritten as full statements.</td></tr>
+        <tr><td>7.4</td><td>90 of 155 (58%)</td><td>19 of 40 (48%)</td><td>Another fighter talking about him counts for the main subject.</td></tr>
+        <tr><td>7.5</td><td>91 of 155 (59%)</td><td>18 of 40 (45%)</td><td>Examples that paraphrased golden articles replaced with invented ones.</td></tr>
+        <tr><td>7.6</td><td class="mv">94 of 155 (61%)</td><td class="mv">19–20 of 40 (48–50%)</td><td>"What the source does" and "how firm" cut to their definitions; a preview is not a fight-week event. Sent twice. The version on this page.</td></tr>
       </tbody>
     </table></div>
   </div>
@@ -216,7 +220,7 @@ function aud(name, key, a){
   if (!changed(a.fields)) return `<div class="aud" data-a="${key}">${who}<div class="col full"><div class="h">No change</div>${a.fields.map(f => fld(f.k, code(esc(f.cur)))).join("")}</div></div>`;
   const cur = a.fields.map(f => fld(f.k, f.cur ? diff(f.cur, f.prop)[0] : '<span class="none">does not exist today</span>')).join("");
   const prop = a.fields.map(f => fld(f.k, f.prop ? diff(f.cur, f.prop)[1] : '<span class="none">removed</span>')).join("");
-  return `<div class="aud" data-a="${key}">${who}<div class="col"><div class="h">${key==="reader" ? "Before 2 October" : "Version 6"}</div>${cur}</div><div class="col"><div class="h">${key==="reader" ? "In force now" : "Version 7, in use"}</div>${prop}</div></div>`;
+  return `<div class="aud" data-a="${key}">${who}<div class="col"><div class="h">${key==="reader" ? "Before 2 October" : "Version 6"}</div>${cur}</div><div class="col"><div class="h">${key==="reader" ? "In force now" : "Version 7.6, in use"}</div>${prop}</div></div>`;
 }
 const TAGS = {new:"new", chg:"changed", same:"no change"};
 function card(title, o, extra){
@@ -224,7 +228,7 @@ function card(title, o, extra){
     <header><span class="id">${esc(title)}</span><span class="tag ${o.tag}">${TAGS[o.tag]}</span></header>
     ${o.why ? `<p class="plain">${esc(o.why)}</p>` : ""}
     ${aud("What the readers see (labelling guide, adopted)","reader",o.reader)}
-    ${o.cls ? aud("What the classifier sees (JEV question, version 7 round 1)","cls",o.cls) : ""}
+    ${o.cls ? aud("What the classifier sees (JEV question, version 7.6)","cls",o.cls) : ""}
   </section>`;
 }
 document.getElementById("blocks").innerHTML = DATA.questions.map((q, i) => {
