@@ -71,6 +71,16 @@
     "no_one"
    ],
    "why": "He appears once, inside a fan's tweet quoted as a comparison. Three readings, three answers."
+  },
+  {
+   "id": "361",
+   "question": "reports_his_health",
+   "key": "yes",
+   "accepted": [
+    "yes",
+    "no"
+   ],
+   "why": "Follows the fact on the same card: with health it is yes, with personal life it is no. Readings: no, yes, no."
   }
  ]
 }

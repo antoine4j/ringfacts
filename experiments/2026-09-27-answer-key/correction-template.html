@@ -124,7 +124,7 @@ input.note{font:inherit;font-size:13px;border:1px solid var(--line);background:v
       <div><span class="why">classifier differs</span> the readers agree, but the classifier said something else (shown beside it). One of them is wrong: check the readers' answer.</div>
       <div>An answer can carry both of the last two. Faded answers are unanimous: readers and classifier agree.</div>
       <div><span class="chip done">checked by summary</span> you confirmed this card from a grouped summary in chat, without opening it. Marking it yourself on the card turns it into a plain <span class="chip done">checked</span>.</div>
-      <div><span class="hint"><b>hints</b></span> grey lines under an answer from the overnight re-reads: a third reader's pick where the classifier differs, two fresh reads of "how central" under "new, not long", what a boundary's recommended rule would say, and, since 3 Oct, the answers of two blind readers who re-read all 300 under today's guide (a warning where one of them differs from the answer on the card, and a confirmation on every answer the card flags: a correction, a split among the first readers, or the classifier differing). Hints, not labels: they are there to speed up your call.</div>
+      <div><span class="hint"><b>hints</b></span> grey lines under an answer from the overnight re-reads: a third reader's pick where the classifier differs, two fresh reads of "how central" under "new, not long", what a boundary's recommended rule would say, and, since 3 Oct, the answers of two blind readers who re-read all 300 under today's guide (a warning where one of them differs from the answer on the card, and a confirmation on every answer the card flags: a correction, a split among the first readers, or the classifier differing). An older hint that disagrees with an answer is left out once every reader of the full re-read gives that answer: it was made under an earlier guide. Hints, not labels: they are there to speed up your call.</div>
     </div>
     <details class="about"><summary>Who the readers are</summary>
       <p>Every reader is a Fable agent that saw the labelling guide and the article text, never the answers. A card or a note names them like this:</p>
@@ -234,11 +234,14 @@ function questionRow(a, q){
  * @param {object} k one answer @param {object|undefined} fix the saved correction, if any @returns {string} html, empty when there are none */
 function hints(k, fix){
   const out = [], now = fix ? fix.value : k.value;
-  if (k.hint){
+  // once every reader of the full re-read gives the answer shown, an older hint that disagrees is out of date:
+  // it was made under an earlier guide, so it is left out rather than shown as a reason to change
+  const confirmed = !!k.reread && Object.keys(k.reread).length > 0 && Object.values(k.reread).every(r => r.value === now);
+  if (k.hint && !(confirmed && k.hint.value !== now)){
     const side = k.hint.value === null ? "neither answer fits" : k.hint.value === k.value ? "sides with the readers" : k.hint.value === k.classifier ? "sides with the classifier" : `picks ${human(k.hint.value)}`;
     out.push(`<div class="hint ${k.hint.value === now ? "agree" : "change"}">overnight reader (2 Oct), blind: <b>${esc(side)}</b> (${esc(k.hint.confidence || "")}) — ${esc(k.hint.reason || "")}</div>`);
   }
-  if (k.recheck){
+  if (k.recheck && !(confirmed && !Object.values(k.recheck).every(r => r.centrality === now))){
     const reads = Object.entries(k.recheck).map(([letter, r]) => `${letter}: <b>${esc(human(r.centrality))}</b> (${esc(r.confidence || "")})`).join(", ");
     const same = Object.values(k.recheck).every(r => r.centrality === now);
     const notes = Object.entries(k.recheck).map(([letter, r]) => r.note ? `${letter}: ${esc(r.note)}` : "").filter(Boolean).join(" · ");
@@ -258,7 +261,7 @@ function hints(k, fix){
   else if (k.reread && Object.keys(k.reread).length && (fix || k.status !== "agreed" || k.classifier !== k.value)){
     out.push(`<div class="hint agree">full re-read (3 Oct), readers ${Object.keys(k.reread).join(", ")} — all give this answer: <b>${esc(human(now))}</b></div>`);
   }
-  if (k.rule !== undefined && k.rule !== null){
+  if (k.rule !== undefined && k.rule !== null && !(confirmed && k.rule !== now)){
     out.push(`<div class="hint ${k.rule === now ? "agree" : "change"}">the brief's recommended rule gives: <b>${esc(human(k.rule))}</b>${k.rule === now ? (fix ? " — applied" : "") : " — would change this"}</div>`);
   }
   return out.join("");
