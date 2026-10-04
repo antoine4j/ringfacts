@@ -1,6 +1,6 @@
 # Classifier v7 — the 27 labelling rules brought into the questions
 
-**Status:** standing version is round 6, after an unattended night of ten
+**Status:** standing version is v7.6, after an unattended night of ten
 experiments (2026-10-03 to 04, `jev-1.13.0`). The test set has not been
 sent, scored or read. Nothing is pushed.
 
@@ -9,7 +9,7 @@ sent, scored or read. Nothing is pushed.
 **Where it stands.** Articles with all nine answers right, training set /
 validation set:
 
-| | v6 | round 3 (yesterday) | round 6 (now) | round 6, sent again |
+| | v6 | v7.3 (yesterday) | v7.6 (now) | v7.6, sent again |
 |---|---|---|---|---|
 | how central | 136 / 34 | 133 / 31 | 139 / 32 | 138 / 32 |
 | whose words | 130 / 32 | 142 / 35 | 145 / 36 | 144 / 36 |
@@ -22,7 +22,7 @@ validation set:
 | he speaks | 152 / 39 | 153 / 40 | 154 / 40 | 153 / 40 |
 | **all nine right** | **63 / 16** | **87 / 17** | **94 / 20** | **94 / 19** |
 
-**Round 6 gets all nine answers right on 94 of 155 training articles and
+**v7.6 gets all nine answers right on 94 of 155 training articles and
 19 to 20 of 40 validation articles**, up from 87 and 17. The gain is
 modest and it is real: it held when the same questions were sent twice.
 The validation set is small, so its 2 to 3 articles of gain are an
@@ -71,7 +71,7 @@ a vote, and a breakdown by language (no effect anywhere).
   measure memory of the prompt.
 - **Asked one at a time, kinds of fact are read generously**: they catch
   news given as talk, and also over-call it. Every change that made the
-  fact question more willing to see news (rounds 2, E1, E6, E9) gained on
+  fact question more willing to see news (v7.2, E1, E6, E9) gained on
   training and lost on validation.
 - **The noise is larger for unsettled wording.** The standing questions
   change 1.5 to 2% of answers between identical calls; a wording that puts
@@ -177,18 +177,36 @@ nine questions to carry them, and is scored against the frozen key
 | `variants/<experiment>.json` | the wordings each overnight experiment sent, with its hypothesis |
 | `decompose.py` | the fact question as one yes/no per kind, combined in code under several rules (E6) |
 | `states.py` | the standing questions sent with a cleaned or shortened article text (E7) |
-| `health_variants.py` | the first side-by-side test, three health wordings (round 3) |
-| `disagreements-r3.md` | where a yes/no flag and the fact answer disagreed in round 3 |
+| `health_variants.py` | the first side-by-side test, three health wordings (v7.3) |
+| `disagreements-r3.md` | where a yes/no flag and the fact answer disagreed in v7.3 |
 
 Three helper yes/no questions (`h_new_fact`, `h_others_story`, `h_callout`)
 ride along in the same call. They are not scored; they are there so that
 combining answers in code can be tried on stored answers without a new run.
 
-## Rounds
+## The versions of v7, one by one
+
+**How they are named.** v6 and v7 are question designs. v7.1, v7.2 and so
+on are successive versions of v7, each sent in full to every training and
+validation article and scored. Each adds one step to the version before.
+The code and files call a full run a "round", so v7.N is stored as round
+N: `classifier-v7/questions-rN.json`, `raw/<id>-rN.json`, and
+`ROUND=rN python3 run.py ...`. The experiments E1 to E11 are not versions:
+each sent only the question under test, in several wordings beside the
+standing one, and a new version was run when one was accepted.
+
+| Version | What it adds |
+|---|---|
+| v7.1 | v6 with the 27 labelling rules written in |
+| v7.2 | fixes from reading v7.1's misses; overfitted, kept only as a record |
+| v7.3 | v7.1 plus the health question's "no when" text rewritten |
+| v7.4 | v7.3 plus E2 (another fighter talking about him counts for the main subject) |
+| v7.5 | v7.4 plus E4 (invented examples) |
+| v7.6 | v7.5 plus E8 (shorter "what the source does" and "how firm") and E10 (previews); standing |
 
 Right answers, tune / check. "All nine" is articles with every answer right.
 
-| | v6 (same scoring) | r1 |
+| | v6 (same scoring) | v7.1 |
 |---|---|---|
 | how central | 88% / 85% | 85% / 80% |
 | whose words | 81% / 82% | 88% / 85% |
@@ -201,18 +219,18 @@ Right answers, tune / check. "All nine" is articles with every answer right.
 | he speaks | 98% / 98% | 99% / 100% |
 | **all nine** | **58 / 15** | **72 / 17** |
 
-**r1** is v6 with the rules written in: "status update" added, next fight
+**v7.1** is v6 with the rules written in: "status update" added, next fight
 narrowed to a specific fight, result only for an account of the fight,
 "other fighter's side" with camps and former fighters, booked-or-fought for
 the opponent's side, callouts in "how central", and "nothing regarding him"
 as a described option in place of a bare "none of these".
 
-**A tie added after r1, in code:** when the fact is a result, the source is
+**A tie added after v7.1, in code:** when the fact is a result, the source is
 "no one", the act "reports an event" and the firmness "official or done"
-(28 of 28 result articles in the training key). With it r1 scores **80 / 18**
-articles with all nine right. The table above is r1 before that tie.
+(28 of 28 result articles in the training key). With it v7.1 scores **80 / 18**
+articles with all nine right. The table above is v7.1 before that tie.
 
-**r2** changed wording only, from reading r1's training-set misses: a
+**v7.2** changed wording only, from reading v7.1's training-set misses: a
 reported rumour or talks named as next-fight news in the fact question, a
 preview or pick ruled out of "fight week event", a letter to his family
 ruled out of "status update", the main-subject level widened to "another
@@ -221,15 +239,15 @@ Training rose by 12 articles and validation fell by 3; on validation the
 fact fell from 33 to 30 right and the next-fight question from 38 to 33,
 all of it "no fact" articles now called next fight. That is overfitting:
 the rumour sentence fixed seven training articles from one story and made
-the question too eager elsewhere. r2 is kept as a record, not as the
+the question too eager elsewhere. v7.2 is kept as a record, not as the
 standing version.
 
-**Tried on stored r1 answers, no new run:** letting a confident yes/no
+**Tried on stored v7.1 answers, no new run:** letting a confident yes/no
 answer overrule a "no fact" (training 84, validation 16: also overfits);
 making the three news questions follow the fact answer (training +11,
 validation +0, health 37 to 39 on validation).
 
-**r3** is r1 with one change: the "no when" text of the health question.
+**v7.3** is v7.1 with one change: the "no when" text of the health question.
 Its third case was a fragment ("only when he will be ready to fight, ...")
 that can be read as a condition, and its second covered only a writer's
 *guess*, not a writer's flat summary ("recovery has gone well"). Both were
@@ -280,7 +298,7 @@ the question under test right; "all nine" is articles with every answer
 right. Counts are articles, with the number of claims they fall in.
 
 **A tool note first.** `variants.py` puts each variant's answer into the
-round 3 answers and applies the ties, so a variant is judged by what it
+v7.3 answers and applies the ties, so a variant is judged by what it
 does to whole articles. Identical wordings sent in the same call do differ
 a little (the `control_copy` variant), so duplicates in one call measure
 noise without a second round.
@@ -295,7 +313,7 @@ outside; and the definition "a fact is ... stated as fact" excludes the
 rumours that next fight includes (the vendor's "contradictory instructions
 and criteria"). Variants: `talk`, `named`, `rumour`, and two combinations.
 Failure: validation "no fact" articles turning into next fight, as in
-round 2.
+v7.2.
 
 *Smoke test* (19 training articles: 10 targets, 9 right today and at
 risk): `talk` moved nothing; `rumour` fixed 5 of the 6 next-fight targets
@@ -318,7 +336,7 @@ it was designed on (claim-097, claim-099), which the leave-claims-out rule
 does not accept. The articles of claim-097 also miss on "what the source
 does", so fixing the fact alone does not make them right. Combining all
 three cost the validation set 3 to 5 articles: the same direction as
-round 2.
+v7.2.
 
 *Learned.* The same rumour wording, sent twice, answered differently on 7
 of 155 training articles; the standing wording on 2. A wording that puts
@@ -337,7 +355,7 @@ set, 15 articles in 8 claims have "how central" as their only wrong
 answer, 14 of the misses one level too low. Variants: `anyone` (adds
 "another fighter" to that list), `shares` (rewords the one-of-several
 level so it means other fighters' news, not another fighter speaking),
-both, and round 2's wording. Failure: callout articles (only mentioned by
+both, and v7.2's wording. Failure: callout articles (only mentioned by
 rule) or previews (one of several) moving up.
 
 *Smoke test* (21 articles): `anyone` fixed 5 of 11 targets; callouts and
@@ -360,10 +378,10 @@ and 2 to 3 validation articles in 2 to 3 claims, which no design looked at.
 `shares` did nothing alone, so it was not taken. Claim-033 (Tsarukyan
 naming his next opponent) did not move.
 
-**Round 4** = round 3 plus E2. A full round on both sets ($0.052):
+**v7.4** = v7.3 plus E2. A full round on both sets ($0.052):
 articles with all nine right **90 of 155** on training and **19 of 40** on
-validation (round 3: 87 and 17). From here on variants are scored inside
-round 4's answers.
+validation (v7.3: 87 and 17). From here on variants are scored inside
+v7.4's answers.
 
 ### E3. Option order (rejected; the avenue is closed)
 
@@ -491,7 +509,7 @@ kinds (`flags_and_kinds`); the standing choice, but a confident kind
 overrides its "no fact" (`control_rescued`); the standing choice, but "no
 fact" when no kind is a clear yes (`control_vetoed`). The line is 0.5
 throughout, not fitted. Failure: "no fact" articles getting a kind on the
-validation set, as in round 2.
+validation set, as in v7.2.
 
 *Smoke test* (18 articles): the kind questions answered the rumoured
 fights, the friend's health update and the letter correctly where the
@@ -514,7 +532,7 @@ better overall.
 
 *Decision: rejected.* The pure decomposition gains 12 articles on the
 training set in both runs and nothing on the validation set, where it
-calls "no fact" articles health (3) or next fight (2): the round 2 pattern
+calls "no fact" articles health (3) or next fight (2): the v7.2 pattern
 again, in a new shape. The veto is the safe direction (it can only say "no
 fact") and gains on both sets, but in both runs it loses the same five
 real facts: two weigh-in pages, a results page, a post-fight interview the
@@ -528,9 +546,9 @@ subject. The disagreement between the choice and the kind questions marks
 the hard articles well, which is useful for review even where it does not
 make a better label.
 
-**Round 5** = round 4 plus E4 (examples invented), run in full ($0.052):
+**v7.5** = v7.4 plus E4 (examples invented), run in full ($0.052):
 **91 of 155** on training, **18 of 40** on validation. Later experiments
-are scored beside round 5.
+are scored beside v7.5.
 
 ### E7. What the classifier is shown (cleaning reported, not adopted)
 
@@ -550,7 +568,7 @@ state is a full round. Failure: any question worse beyond noise.
 
 | state | all nine | notes |
 |---|---|---|
-| round 5, as saved | 91 / 18 | |
+| v7.5, as saved | 91 / 18 | |
 | cleaned | 92 / 17 | fact 128 → 131 and firmness 131 → 134 on training, how central 138 → 133; validation fact 33 → 32 |
 | short (4,000 characters) | 83 / 17 | worse on training by 8 |
 
@@ -673,8 +691,8 @@ reads as text. That is for body extraction (For Anton, item 3).
 
 *On stored answers, no cost:* scoring the scales by their most likely
 level instead of the rounded average gained 2 to 3 "how central" answers
-on training and lost 1 to 2 on validation in each of rounds 3 to 6:
+on training and lost 1 to 2 on validation in each of v7.3 to v7.6:
 rejected. A tie "only mentioned means no fact" (31 of 33 training key
 articles agree) changed nothing: the answers already obey it.
 
-**Round 6** = round 5 plus E8 and E10. Sent twice: 94 / 20 and 94 / 19.
+**v7.6** = v7.5 plus E8 and E10. Sent twice: 94 / 20 and 94 / 19.

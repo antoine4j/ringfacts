@@ -1,4 +1,4 @@
-# Where a yes/no flag and the fact answer disagree (round 3, training set)
+# Where a yes/no flag and the fact answer disagree (v7.3, training set)
 
 A flag says yes while the fact answer is a different kind, or the fact answer is that kind while its flag says no. Listed for review: each one is either a miss by one of the two questions or an article with two kinds of news. Validation-set disagreements are counted, not listed: {'flag yes, fact differs': 5}.
 

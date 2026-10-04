@@ -361,7 +361,7 @@ Rules for adding to it:
 
 ### Making the fact question more willing to see news gains on training and loses out of sample
 `corpus` · `measured` · *FB 2026-10-03*
-- **Evidence:** four times in v7: a rumour sentence (round 2: training +12,
+- **Evidence:** four times in v7: a rumour sentence (v7.2: training +12,
   validation −3), a definition of a fact that includes reported plans (E1:
   combined with two other changes, validation −3 to −5), one yes/no
   question per kind of fact (E6: training +12, validation 0, calling
