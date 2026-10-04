@@ -135,16 +135,16 @@
     ]
    },
    "fight_week_event": {
-    "what": "The routine of a fight of his, and nothing more: a weigh-in, a face-off, an open workout, the card order, start times, how to watch.",
-    "not_for": "Talks, offers or a new opponent for a fight not yet set (that is next fight). Training camp or sparring before fight week (that is status update). An interview or press conference (that is the fact of what is said, or no fact).",
+    "what": "The routine of a fight of his, and nothing more: a weigh-in, a face-off, an open workout, the card order, start times.",
+    "not_for": "Talks, offers or a new opponent for a fight not yet set (that is next fight). Training camp or sparring before fight week (that is status update). An interview or press conference (that is the fact of what is said, or no fact). A preview or a pick for his fight, even one that gives the start time or the card (that is no fact).",
     "examples": [
-     "Start time and how to watch his fight tonight.",
+     "The card order for Saturday puts his bout third.",
      "He made weight at the ceremonial weigh-in."
     ]
    },
    "health": {
     "what": "An injury, a medical issue, surgery or recovery of his, stated by him, his team, the promotion or a named report, including how the recovery is going, even when the same statement also says when he will be back.",
-    "not_for": "Only when he will be ready to fight again, with no injury or recovery described (that is status update). An old injury only recalled as background (that is no fact).",
+    "not_for": "News of when he will be ready to fight again that describes no injury or recovery (that is status update). An old injury only recalled as background (that is no fact).",
     "examples": [
      "He had knee surgery and is in rehab.",
      "His manager says his shoulder is still healing and he has not started sparring."

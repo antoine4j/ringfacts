@@ -454,3 +454,62 @@ half as long and score the same on training and one or two better on
 validation. That includes the status signal E4 added to "how firm": the
 level's own summary ("the promotion or he himself states it") is enough
 once no example points elsewhere.
+
+### E9. Bias checks on the fact question: a fragment, and anchoring on v6 (rejected)
+
+*Hypotheses.* (1) The scan for negations and "only" found the health
+option of the fact question still opening with the fragment "Only when he
+will be ready to fight again, ...", the same kind of fragment Anton caught
+in the health yes/no question; rewritten as a full sentence. (2) Every
+version so far keeps v6's structure. A fact question written from
+golden/rules.md alone, with the instructions as named fields (the vendor's
+structured form) and one plain definition per option, tests whether that
+structure is a habit or knowledge.
+
+*Smoke test.* The from-scratch version fixed the friend's health update,
+the letter and both rumoured fights, but called every preview "next fight"
+with confidence above 0.85. A second version added the rule that a booked
+fight a preview starts from is no fact; it still called some previews next
+fight.
+
+*Full run* (fact right, training / validation; control 128 / 33):
+fragment rewrite 128 / 33; from scratch 120 / 28; from scratch, second
+version 130 / 28 (+13 in 6 claims, −11 in 6; validation −7 +2).
+
+*Decision: rejected.* The fragment rewrite changes nothing measurable on
+its own. The from-scratch question loses 5 validation articles even where
+it gains on training. *Learned:* the "not for" lines that v6 and the
+rounds since accumulated are not habit; they carry what earlier tuning
+found (E8 showed the same from the other side). Anchoring on that
+structure is justified.
+
+### E10. Previews are not fight week events (accepted)
+
+*Hypothesis.* Five training articles in three claims are previews or
+picks that the fact question calls "fight week event". The question's
+definition of that option lists "how to watch" and its example is "Start
+time and how to watch his fight tonight", but the rule (golden/rules.md,
+"An interview is a place, not a fact") lists only the routine: weigh-in,
+face-off, open workout, card order, start times. The question had drifted
+from the rule. Change: drop "how to watch", replace the example with an
+invented card-order one, and add to "not for": "A preview or a pick for
+his fight, even one that gives the start time or the card (that is no
+fact)." Variants with and without E9's fragment rewrite. Failure: real
+weigh-in or card articles lost.
+
+*Smoke test* (11 articles): all five previews fixed, every weigh-in and
+results article kept.
+
+*Two runs* (fact right, training / validation; control 129 / 32 both
+times):
+
+| variant | run 1 | run 2 |
+|---|---|---|
+| preview | 132 / 33 (+5 in 4 claims, −2) | 134 / 33 (+5 in 3, −0) |
+| preview + fragment rewrite | 134 / 33 (+5 in 4 claims, −0; validation +1) | 134 / 33 (+6 in 4, −1; validation +1) |
+
+*Decision: accepted* (preview + fragment rewrite). Both runs agree; all
+nine right rises by 4 and 5 on training and 0 and 1 on validation.
+Leave-claims-out: it was designed on the preview misses of claim-058, -066
+and -073.0; beyond them it gained #977 (claim-112) in the first run, #636
+(claim-080) in the second, and one validation article in both.
