@@ -206,10 +206,9 @@ const PATH = [
 ];
 
 const NOW = {
-  title:"You are here: 244 of 300 articles settled. Five steps to a frozen answer key.",
+  title:"You are here: 244 of 300 articles settled, 19 more confirmed. Four steps to a frozen answer key.",
   items:[
-    ["4.20","WAITING FOR YOU: confirm the 21 unchecked cards where both new readers disagree with the key. 19 are proposed in seven groups; say yes to all or name exceptions."],
-    ["4.21","Rule on the 10 checked cards where both new readers disagree with you: keep, change, or coin flip."],
+    ["4.21","WAITING FOR YOU: rule on the 10 checked cards where both new readers disagree with you, plus the two held cards (#745, #1101): keep, change, or coin flip."],
     ["4.22","A third, independent reading on the 26 articles where the two readers differ (about 40 dollars of credit, on your go)."],
     ["4.23","Spot-check about 20 random cards from the settled 244."],
     ["4.24","Freeze: one final labels file with a date. Then the classifier comes back (4.25)."],
@@ -305,12 +304,12 @@ const STATIONS = [
       "Each rule had been tested only on the articles it was written for; nobody had re-read the set as a whole since the rules were made.",
       "Finds labels that predate a rule, and sentences that move an article nobody had in mind.",
       "244 settled articles are review you do not have to do."),
-    T("4.20","decide","Confirm the 21 unchecked cards where both new readers disagree with the key",
-      "Proposed 3 Oct in seven groups, 19 cards: what the source does becomes 'none of these' (6: #467, #533, #540, #861, #238, #510); 'he speaks' becomes no (#933, #934); a taunt is a callout (#408); a callout is the other fighter's story (#78); how central moves one step (#762, #833, #1146, #1160, #688); whose words (#187, #247, #655); health follows who states it (#327). Two are held for 4.21: #745 (a booking notice, the twin of #605) and #1101 (the #1089 question again). Each card shows the two readers' answers as a hint. You confirm by group; I write the corrections.",
+    T("4.20","done","Confirm the 21 unchecked cards where both new readers disagree with the key",
+      "Done 3 Oct: you agreed to all seven groups and the 19 corrections are on the cards. The groups: what the source does becomes 'none of these' (6: #467, #533, #540, #861, #238, #510); 'he speaks' becomes no (#933, #934); a taunt is a callout (#408); a callout is the other fighter's story (#78); how central moves one step (#762, #833, #1146, #1160, #688); whose words (#187, #247, #655); health follows who states it (#327). Two are held for 4.21: #745 (a booking notice, the twin of #605) and #1101 (the #1089 question again). Each card shows the two readers' answers as a hint. You confirm by group; I write the corrections.",
       "Mostly your own rules reaching cards they had not been applied to.",
       "Removes stale answers before anything is scored on them.",
       "Wrong labels here would be counted as classifier errors later.", "P1"),
-    T("4.21","label","Rule on the 10 checked cards where both new readers disagree with you",
+    T("4.21","decide","Rule on the 10 checked cards where both new readers disagree with you",
       "#1089 (status update, six readers of six, you ruled no fact twice); #283 and #423 (Pimblett callouts checked before the callout rule: 'one of several' against the readers' 'only mentioned'); #913 (both readers now say main subject, your first ruling); #605 with #745 (a short booking notice: no fact, or next fight?); #1101; and single cards #342, #503, #588, #625, #820. For each: keep your ruling, change it, or mark it a coin flip. Your ruling stands unless you change it.",
       "Shows where the guide and your rulings have drifted apart.",
       "A ruling the guide does not carry cannot be learned by any classifier prompt.",

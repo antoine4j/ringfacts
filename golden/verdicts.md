@@ -1310,3 +1310,32 @@ five Pimblett callouts. The sentence was added.
 - **Rerun of the callout rule**, with the added sentence and the callouts
   spread across batches: both readers, 95 of 95 answers as the key has
   them. The rule is now carried by the wording.
+
+## After the full re-read: 19 unchecked cards confirmed by group (2026-10-03)
+
+Two blind readers re-read all 300 articles on all nine questions under the
+guide with the 27 rules (experiments/2026-09-27-answer-key/full-reread).
+On 244 articles both gave the key's answer on all nine. On 21 cards Anton
+had not checked, both gave the same answer, different from the key. 19 of
+them were put to him in seven groups, each tied to a rule already in
+force. Anton: *"Agree on all A, B, C, D, E, F, G."* Written as corrections
+with a note each; the cards are not marked checked.
+
+- **What the source does becomes none of these** (an act needs a plain
+  statement about him): #467, #533, #540, #861, #238; #510 also to source
+  media and no fact (he is one line in a card list).
+- **He speaks becomes no**: #933, #934 (two words recalled from the
+  post-fight interview).
+- **A taunt is a callout**: #408, assesses him to calls him out.
+- **A callout is the other fighter's story**: #78, main subject to only
+  mentioned.
+- **How central, one step**: #762 (also act: gives news of him to assesses
+  him), #833, #1146 main subject to one of several; #1160 only mentioned to
+  one of several; #688 one of several to main subject.
+- **Whose words**: #187 opponent side (booked or fought), #247 other
+  fighter's side (a fighter is a fighter), #655 media (the saved text is
+  page styling only).
+- **Health follows who states it**: #327 to health, reported.
+
+Held for the next step with the checked cards: #745 (a booking notice,
+the twin of #605) and #1101.
