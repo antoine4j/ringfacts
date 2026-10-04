@@ -8,27 +8,34 @@ test set has not been sent, scored or read. Nothing is pushed.
 
 ## Morning report
 
-**Where it stands.** Articles with all nine answers right, training set /
-validation set:
+Written after the night (v7.6) and updated on 2026-10-04 for v7.7, which
+adds one accepted change from the day after (item 5 below).
 
-| | v6 | v7.3 (yesterday) | v7.6 (now) | v7.6, sent again |
-|---|---|---|---|---|
-| how central | 136 / 34 | 133 / 31 | 139 / 32 | 138 / 32 |
-| whose words | 130 / 32 | 142 / 35 | 145 / 36 | 144 / 36 |
-| what the source does | 130 / 34 | 128 / 30 | 129 / 32 | 129 / 31 |
-| what new fact | 105 / 31 | 130 / 33 | 134 / 34 | 133 / 33 |
-| how firm | 113 / 30 | 133 / 32 | 136 / 35 | 134 / 34 |
-| reports his result | 146 / 38 | 154 / 40 | 154 / 40 | 154 / 40 |
-| reports his next fight | 109 / 30 | 144 / 38 | 146 / 39 | 145 / 39 |
-| reports his health | 134 / 37 | 144 / 38 | 144 / 38 | 145 / 38 |
-| he speaks | 152 / 39 | 153 / 40 | 154 / 40 | 153 / 40 |
-| **all nine right** | **63 / 16** | **87 / 17** | **94 / 20** | **94 / 19** |
+**Where it stands.** Right answers per question, and articles with all
+nine answers right, training set / validation set:
 
-**v7.6 gets all nine answers right on 94 of 155 training articles and
-19 to 20 of 40 validation articles**, up from 87 and 17. The gain is
-modest and it is real: it held when the same questions were sent twice.
-The validation set is small, so its 2 to 3 articles of gain are an
-indication, not proof; the test set will say.
+| | v6 | v7.3 (before the night) | v7.6 (after the night) | v7.6, sent again | v7.7 (now) |
+|---|---|---|---|---|---|
+| how central | 136 / 34 | 133 / 31 | 139 / 32 | 138 / 32 | 139 / 32 |
+| whose words | 130 / 32 | 142 / 35 | 145 / 36 | 144 / 36 | 145 / 36 |
+| what the source does | 130 / 34 | 128 / 30 | 129 / 32 | 129 / 31 | 129 / 32 |
+| what new fact | 105 / 31 | 130 / 33 | 134 / 34 | 133 / 33 | 135 / 33 |
+| how firm | 113 / 30 | 133 / 32 | 136 / 35 | 134 / 34 | 136 / 34 |
+| reports his result | 146 / 38 | 154 / 40 | 154 / 40 | 154 / 40 | 154 / 40 |
+| reports his next fight | 109 / 30 | 144 / 38 | 146 / 39 | 145 / 39 | 146 / 39 |
+| reports his health | 134 / 37 | 144 / 38 | 144 / 38 | 145 / 38 | 145 / 38 |
+| he speaks | 152 / 39 | 153 / 40 | 154 / 40 | 153 / 40 | 155 / 40 |
+| **all nine right** | **63 / 16** | **87 / 17** | **94 / 20** | **94 / 19** | **96 / 20** |
+
+**v7.7 gets all nine answers right on 96 of 155 training articles (62%)
+and 20 of 40 validation articles (50%)**, up from 87 and 17 before the
+night and 63 and 16 for v6. Every single answer right: 92% of training
+answers and 90% of validation answers. The gain is modest and it is real:
+v7.6 held when sent twice, and v7.7's one change held in two side-by-side
+runs. The step from v7.6 to v7.7 (2 training articles in the full run) is
+within run-to-run noise; the side-by-side runs are the better measure of
+it. The validation set is small: 20 of 40 has a 95% interval of about 35%
+to 65%. The test set will say.
 
 **What was accepted, and why** (each passed the rule in STRATEGY.md in two
 runs):
@@ -49,6 +56,14 @@ runs):
    listed "how to watch" under "fight week event". Aligned with the rule,
    and a preview or pick is now named as no fact. +5 training, +1
    validation.
+5. **E13, "how central", the day after (v7.7):** the sentence "an article
+   built on another fighter's wish to fight him is that other fighter's
+   story" also caught articles where another fighter talks about his
+   future (Makhachev on his comeback). Narrowed to "a callout alone, where
+   another fighter names him as the opponent he wants". +4 and +5
+   training, validation within 1, the callouts the rule cites kept. E12
+   showed the opening "judge by what is new about him" is what holds
+   those callouts, so it stays.
 
 **What was tried and rejected:** a sharper definition of a fact that
 includes reported rumours (E1: works on the rumoured-fight claims only,
@@ -67,7 +82,7 @@ a vote, and a breakdown by language (no effect anywhere).
 - **Read literally, as the vendor says.** Both accepted wording fixes
   (E2, E10) were places where the question's text said something narrower
   or different from what was meant. A list of examples is read as the
-  whole list.
+  whole list, and a rule sentence as widely as its words allow (E13).
 - **An example can carry a whole claim.** Without the paraphrase of
   claim-113, nine of its ten articles changed answer. Training scores can
   measure memory of the prompt.
@@ -87,6 +102,8 @@ input tokens), plus about $0.05 of smoke tests that were not stored (an
 estimate). With the $0.18 before, about $1.53 in all for v7. The $2.50 line
 was not reached; the session stopped because the remaining misses are one
 or two articles per claim, and fixing those is fitting single occasions.
+The day after, E12, E13 and the v7.7 run cost $0.15 more, measured from
+token counts: about $1.68 in all for v7.
 
 ## For Anton
 
@@ -106,8 +123,8 @@ out and test them on a new labelled slice; (c) adopt only "booked", which
 restates the key's usage. *Recommendation: (c)*, and judge "plans" with
 the next slice.
 
-**2. Whether the three news flags stay independent.** As the model gives
-them, "reports his next fight" is right on 150 training articles and 35
+**2. Whether the three news flags stay independent.** In v7.6, as the
+model gives them, "reports his next fight" is right on 150 training articles and 35
 validation; after the code ties (no fact makes every flag no), 146 and 39.
 Training prefers the raw flags, validation prefers the ties. Of 23
 training disagreements between a flag and the fact answer, the flag is
@@ -139,7 +156,7 @@ changed, for you to look at if you wish:
   watch", key no fact. Now right, but it sits on the line between the
   preview rule and the fight-week rule.
 
-**5. The test set.** The questions are ready to be scored once on the 105
+**5. The test set.** v7.7 is ready to be scored once on the 105
 test articles (`python3 run.py --side test --yes --final`, about $0.03),
 on your word. Before that, note that E4 removed the paraphrases of test
 articles from the prompt; the rules file still cites test articles as
@@ -176,7 +193,7 @@ nine questions to carry them, and is scored against the frozen key
 | `run.py` | sends a few articles (`--ids`) or one side (`--side`) |
 | `score.py` | scores a round, or v6, against the key; `--selfcheck` checks its rules |
 | `variants.py` | several wordings of one or more questions side by side in one call, with the standing wording as control, scored inside a base round |
-| `variants/<experiment>.json` | the wordings each overnight experiment sent, with its hypothesis |
+| `variants/<experiment>.json` | the wordings each experiment sent, with its hypothesis |
 | `decompose.py` | the fact question as one yes/no per kind, combined in code under several rules (E6) |
 | `states.py` | the standing questions sent with a cleaned or shortened article text (E7) |
 | `health_variants.py` | the first side-by-side test, three health wordings (v7.3) |
