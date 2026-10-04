@@ -69,6 +69,11 @@ Rules for adding to it:
   on 86.8% of articles but shared only 33 of ~50 sent items. A borderline story
   has roughly a coin's chance of being told. RF called it *the largest error
   source in the project.*
+- **Evidence (FB, 2026-10-03):** JEV noise belongs to the wording, not the
+  call. Two identical calls of the standing fact question differed on 2 of
+  155 training articles; a reworded version that left many articles near
+  the line differed on 7. A variant that gained 9 on one run gained 3 on
+  the next. `experiments/2026-10-03-classifier-v7/README.md`, E1.
 - **Does not say:** that the noise is uniform — see §2. **Would overturn:** a
   replicate that moves nothing; then the model has changed.
 
@@ -205,6 +210,14 @@ Rules for adding to it:
   with unrelated content, as weak spots; the score page says each level is
   judged without seeing its number or its neighbours, and that a scale
   should measure one thing.
+- **Re-read in full 2026-10-03** (state, structure, confidence, patterns,
+  cookbooks): several questions in one call give the same answers as one
+  call each (its parallel-questions cookbook, 5 repeats), so wordings side
+  by side in one call are a fair comparison and cost a fraction of a
+  round; identical calls mostly return identical answers, and the few that
+  differ sit near a line (self-consistency cookbooks); instructions may be
+  an object with the question in one field and guidance in others; a deep
+  taxonomy is walked one level at a time with sub-options shown.
 - **Does not say:** whether identical calls are cached (its own
   self-consistency recipe adds a throwaway `uid` field to each repeat).
 
@@ -257,6 +270,11 @@ Rules for adding to it:
 - **Evidence:** reversing every list flipped 126 of 1,500 (3x the floor). But
   options moved earlier gained −0.6 answers on average, those moved later +0.9
   — no first-position bias. Flips sit where confidence is low (median 0.39).
+- **Replicated, v7, 2026-10-03:** reversing or shuffling the options of
+  three questions changed 6 to 11 of 155 answers each, against 2 to 3 for an
+  identical copy. No order scored better in two runs, and averaging the
+  probabilities over four orders scored lower than the standing order on
+  two questions of three. Order is noise to control for, not a lever.
 
 ### Composing the bucket in code absorbs most of the jitter
 `general` · `measured` · *FB 2026-09-17*
@@ -326,6 +344,62 @@ Rules for adding to it:
   someone else" — recovered all 18. The same defect as `background`, found
   three times across two projects.
 
+### An example lifted from a labelled article can carry its whole claim
+`general` · `measured` · *FB 2026-10-03*
+- **Evidence:** v7's "how firm" question had the signal "the promotion's
+  president says he is ready to fight", a paraphrase of claim-113 (ten
+  copies of one Dana White statement). Replaced by an invented example,
+  nine of the ten fell from "official or done" to "reported"; stating the
+  rule the example stood for ("the promotion or he himself states his
+  status") brought them back with no loss elsewhere. Tracing all examples
+  found 18 paraphrases of golden articles, several of them **test-set**
+  articles cited in the labelling rules.
+  `experiments/2026-10-03-classifier-v7/README.md`, E4.
+- **Does not say:** that examples are bad: invented ones scored the same.
+  It says a training score can measure memory of the prompt, and a test
+  score can too if the prompt paraphrases test articles.
+
+### Making the fact question more willing to see news gains on training and loses out of sample
+`corpus` · `measured` · *FB 2026-10-03*
+- **Evidence:** four times in v7: a rumour sentence (round 2: training +12,
+  validation −3), a definition of a fact that includes reported plans (E1:
+  combined with two other changes, validation −3 to −5), one yes/no
+  question per kind of fact (E6: training +12, validation 0, calling
+  "no fact" articles health or next fight), and a fact question written
+  from the rules alone (E9: validation −5). The fixes that held were
+  narrower: aligning an option with its rule (previews are not fight-week
+  events, E10: +5 / +1 in two runs).
+- **Does not say:** that the rumoured-fight labels are unreachable; the
+  rumour fix works on those articles. It says the validation set's "no
+  fact" articles pay for it, and that set has no next-fight article to
+  show the benefit.
+- **Would overturn:** a new labelled slice with rumoured fights where the
+  broader wording gains on both sides.
+
+### Most of the "not for" text earns its place; some of it carries nothing
+`harness` · `measured` · *FB 2026-10-03*
+- **Evidence:** lean versions of the nine v7 questions (definitions only;
+  8,100 characters against 16,800): "how central" without its level
+  signals lost 17 training articles, "whose words" without its "not for"
+  lines lost 6 on training and 6 on validation, "what new fact" 7, the
+  yes/no questions without true/false text 1 to 10. "What the source does"
+  and "how firm" scored the same on training and 1 to 2 better on
+  validation in two runs, and are now lean. A question rewritten from
+  scratch from the rules lost 5 validation articles (E9).
+- **Does not say:** which lines matter; it was tested question by question,
+  not line by line.
+
+### A list of who may do something is read as the whole list
+`harness` · `measured` · *FB 2026-10-03*
+- **Evidence:** v7's main-subject level of "how central" named "a coach, an
+  official or a pundit talking about him"; articles where another fighter
+  talks about him read one level down (14 training misses). Adding
+  "another fighter" to the list: +8 and +7 training, +2 and +3 validation,
+  in two runs (E2). The vendor's "literal reading" weakness, in its
+  plainest form.
+- **Does not say:** that every list needs to be complete; it says a list
+  inside a definition is read as a boundary.
+
 ---
 
 ## 3. The articles
@@ -368,6 +442,13 @@ Rules for adding to it:
   not only noise into their text. #948, a Gaethje-on-Tsarukyan piece, is in
   the Topuria sample because a "LATEST NEWS" cross-link in its feed body
   names Topuria; the article itself says nothing about him.
+- **Tested on JEV, 2026-10-03:** sending only the article's own text
+  (menus before the repeated headline and lists of timestamped headlines
+  removed) made no measurable difference to v7's nine answers: all nine
+  right on 92 of 155 against 91, and 17 of 40 against 18. Cutting the text
+  at 4,000 characters cost 8 training articles. Inline "LATEST NEWS:"
+  headlines still make the model call him "only mentioned" where the key
+  says absent (4 training, 2 validation). `states.py`, E7.
 - **Does not say:** that a window works for embeddings — RF used no
   embeddings.
 
