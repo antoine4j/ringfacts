@@ -97,3 +97,86 @@ questions were sent unchanged, and 19 of 1,240 of their answers on the
 training set (1.5%) and 6 of 320 on the validation set (1.9%) still came
 back different. So one article up or down on the validation set (18 to 17
 here) is noise, not a finding.
+
+## What the reading added (2026-10-03, before the overnight runs)
+
+Read in full: the vendor's pages on state, structure ("Advanced"),
+confidence, the three patterns (fan-out, composite scoring, confidence
+routing), the cookbooks on self-consistency (nouls and choices), parallel
+questions, hierarchical classification, classification using confidence and
+autoresearch, and the jev-1.13 jaggedness page again. Searched the web for
+practice with this model and for closed-set classification with language
+models in general. Each idea, where it came from, and what became of it:
+
+| Idea | Source | Became |
+|---|---|---|
+| Several questions in one call give the same answers as one call each: each is judged alone. | vendor, parallel questions cookbook (5 repeats, no batching effect) | Confirms that variants side by side in one call are a fair comparison. Used for every experiment below. |
+| Identical calls mostly return identical answers; where they differ, the noise belongs to the question, not the call. A few borderline answers flip across a 0.5 line. | vendor, self-consistency cookbooks (15 repeats; noul spread 0.01, 2 of 8 choices flipped) | Lowers the expected value of avenue 5 (repeats and a vote): voting can only fix the few answers that sit on a line. Tried once, cheaply. |
+| A choice's own confidence separates easy answers from hard ones; when unsure, report the level above. | vendor, classification using confidence | Not a label fix (the key needs one value), but a way to find the articles the wording is unclear on. Used to pick smoke-test articles. |
+| Walk a taxonomy one level at a time, showing each option's sub-options. | vendor, Advanced and hierarchical classification | Became an experiment for the fact question: first "is there a new fact", then which kind. |
+| Ask one condition per yes/no question; combine in code. "Where interpretation is unavoidable, split it into two literal questions." | vendor, noul page and jaggedness #1 | Avenue 2 (decomposition), with the fact question asked as one yes/no per kind. |
+| Order of options moves answers; the model leans to the first. In general research, the cure is to average over orders, or to ask about each option separately. | vendor jaggedness #8; arXiv 2406.03009, 2603.21016 | Avenue 4 (option order), and a second reason for one yes/no per kind: a yes/no has no order. |
+| Large state with unrelated detail costs accuracy. | vendor jaggedness #5, state page | Avenue 3 (what the classifier is shown). |
+| Instructions as an object: the question in one field, a `focus` line in another. | vendor, Advanced | Part of avenue 8. |
+| Refining label definitions from misclassified examples works, but the gains measured on the same examples overstate the real gain. | arXiv 2604.27335 (iterative definition refinement); general | The reason every change here is judged on the validation set and by leave-claims-out. |
+| One example per class helps; more examples help less and less. Asking the model to explain itself does not help. | Nyckel benchmark blog | Supports keeping one or two invented examples per option, not long lists. |
+| "Agents aren't great at writing questions, so expect to edit collaboratively." | vendor, agent skill page | A warning about this session's own wording: logged as a bias to check. |
+
+Nothing read changed the limits in STRATEGY.md.
+
+## Overnight log (2026-10-03 to 04)
+
+Each experiment: the hypothesis written before the run, a smoke test on
+selected training articles, the variants side by side with the standing
+wording as control, then the decision by the rule in STRATEGY.md. Variant
+files are in `variants/`; `variants.py` sends and scores them. "Question" is
+the question under test right; "all nine" is articles with every answer
+right. Counts are articles, with the number of claims they fall in.
+
+**A tool note first.** `variants.py` puts each variant's answer into the
+round 3 answers and applies the ties, so a variant is judged by what it
+does to whole articles. Identical wordings sent in the same call do differ
+a little (the `control_copy` variant), so duplicates in one call measure
+noise without a second round.
+
+### E1. The fact question, read literally (rejected)
+
+*Hypothesis.* Three places where a literal reader would go wrong: "no fact
+if it is only talk" collides with "in talks" (negotiations); health and
+status update list who may state them (him, his team, the promotion, a
+named report) as if no one else could, so a friend's health update falls
+outside; and the definition "a fact is ... stated as fact" excludes the
+rumours that next fight includes (the vendor's "contradictory instructions
+and criteria"). Variants: `talk`, `named`, `rumour`, and two combinations.
+Failure: validation "no fact" articles turning into next fight, as in
+round 2.
+
+*Smoke test* (19 training articles: 10 targets, 9 right today and at
+risk): `talk` moved nothing; `rumour` fixed 5 of the 6 next-fight targets
+and broke none of the at-risk articles.
+
+*Two full runs* (fact right on training / validation, control 130 / 33-35):
+
+| variant | run 1 | run 2 |
+|---|---|---|
+| talk | 133 / 33 (+3 in 3 claims) | 129 / 35 (+1, −2) |
+| rumour | 138 / 34 (+9 in 5 claims, −1) | 133 / 34 (+7 in 3 claims, −4 in 4) |
+| rumour, reworded | — | 131 / 34 |
+| talk + named + rumour | 135 / 30 | — |
+
+*Decision: rejected.* `talk` did not repeat. `rumour` does fix the
+rumoured-fight articles on the fact answer in both runs, but its gains on
+whole articles did not repeat (+4/−1, then +1/−3), the reworded version
+lost most of the gain, and nearly all of the gain sits in the two claims
+it was designed on (claim-097, claim-099), which the leave-claims-out rule
+does not accept. The articles of claim-097 also miss on "what the source
+does", so fixing the fact alone does not make them right. Combining all
+three cost the validation set 3 to 5 articles: the same direction as
+round 2.
+
+*Learned.* The same rumour wording, sent twice, answered differently on 7
+of 155 training articles; the standing wording on 2. A wording that puts
+many articles near the line is noisier. From here on, every acceptance
+needs two runs that agree. Averaging three runs of the standing fact
+answer changed nothing (130 right each way), so repeats and a vote do not
+help the standing wording: avenue 5 dropped after this test.
