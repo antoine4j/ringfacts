@@ -735,3 +735,37 @@ the cases a written rule cites, so it is not accepted. The opening wording
 is Anton's call (it is neutral either way); the lever is the callout
 sentence, which a narrower wording might keep for claim-099 without
 catching claim-014 and -033.
+
+### E13. How central: a narrower callout sentence (passes; awaiting Anton)
+
+*Hypothesis.* E12 showed the sentence "An article built on another
+fighter's wish to fight him is that other fighter's story" is read as
+covering any article where another fighter talks about his future. A
+narrower one: "A callout alone, where another fighter names him as the
+opponent he wants, is that fighter's story." Variants, levels unchanged:
+*narrow* (v7.6 opening) and *how_much_narrow* (v6's opening). Failure:
+claim-099 lost again, or claims 014 and 033 still wrong.
+
+*Two runs* (how central right, training / validation; control 137 / 32
+both times):
+
+| variant | run 1 | run 2 |
+|---|---|---|
+| narrow | 140 / 32 (+4 in 3 claims, −1) | 141 / 31 (+5 in 4, −1; validation −1) |
+| how_much_narrow | 140 / 33 (+7 in 6 claims, −4 in 2) | 139 / 33 (+6 in 5, −4 in 2) |
+
+*What it shows.* narrow gains the same articles both times: #170 and
+#174 (claim-014, Makhachev on Topuria's comeback), #803 (claim-097) and
+#977 (claim-112); it loses only #892 (claim-099), which every variant in
+E12 lost too. The Tsarukyan articles of claim-033 stay wrong. All nine
+right rises by 3 and 4 on training, 0 and 0 on validation. With the narrow
+sentence the opening is no longer neutral: v6's opening loses three of the
+claim-099 callouts the rule cites (#871, #892, #921) and #78. "What is new
+about him" is what holds the callout rule once the sentence stops doing
+it alone.
+
+*Decision: narrow passes the acceptance rule* (training +4 and +5 in at
+least 3 claims, validation within 1, two agreeing runs; leave-claims-out:
+designed on claims 014, 033 and 099, it gains #803 and #977 outside them
+in both runs). how_much_narrow is rejected. Adoption as v7.7 waits for
+Anton.
