@@ -156,8 +156,9 @@ changed, for you to look at if you wish:
   watch", key no fact. Now right, but it sits on the line between the
   preview rule and the fight-week rule.
 
-**5. The test set.** v7.7 is ready to be scored once on the 105
-test articles (`python3 run.py --side test --yes --final`, about $0.03),
+**5. The test set.** Pass marks adopted 2026-10-04 (docs/decisions.md#classifier-pass-marks): every career-event story recognised, zero rumours called official, false alarms at most 5%. v7.7 passes the second and fails the other two on training and validation, so the test score is expected to fail as well. v7.7 is ready to be scored once on the 105
+test articles (`ROUND=r7 python3 run.py --side test --yes --final`, then
+`python3 score.py --round r7 --final`; about $0.03),
 on your word. Before that, note that E4 removed the paraphrases of test
 articles from the prompt; the rules file still cites test articles as
 examples, which is fine for the labels but worth remembering whenever a

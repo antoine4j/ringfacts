@@ -817,3 +817,50 @@ embedding returns the most recent stories of the window instead, newest first,
 similarity null — the decider reads the facts and can still join one. The
 threshold fallback cannot cover this, because it needs the same vector that is
 missing.
+
+## classifier-pass-marks — The classifier passes on the goals' terms, not on "all nine right"
+*2026-10-04*
+
+The classifier station is judged by three pass marks, each read off one of
+the project goals (docs/goals.md), on the golden key. They are a starting
+line, adopted to be tightened or relaxed after the test-set score and live
+performance, not a finding. `score.py` prints all three at the end of every
+report (experiments/2026-10-03-classifier-v7).
+
+1. **G1, nothing real is missed.** Every story whose key has a career event
+   (the fact is a result, next fight, health or status update, at any
+   firmness) has at least one article the classifier recognises as a
+   career event of any of the four kinds. A story needs only one article
+   to post, so this is counted by story, not article. Any missed story is
+   read before anything else is decided.
+2. **G4, confirmed means official.** Zero articles whose key firmness is a
+   wish, a rumour or a report are called "official or done".
+3. **G2, nothing junk gets through.** Of the articles with no career event
+   in the key, at most 5% are called one. A false career event is a loud
+   post for nothing; 5% is a first guess, not derived from anything.
+
+"All nine right" (the exact match ratio) and per-question accuracy are
+still reported, with no pass mark: most of the nine answers describe an
+article without deciding whether it posts, and one wrong descriptive answer
+fails the whole article.
+
+**Where v7.7 stands** (training / validation): G1 9 of 10 stories and 1 of
+2 (the training miss is claim-127, a single article with an official
+health fact); G4 0 and 0; G2 9 of 101 (9%) and 5 of 38 (13%). It passes
+G4 and fails G1 and G2 on both sets. v6, for comparison: G1 10 of 10 and
+1 of 2, G4 0 and 0, G2 27% and 24%. v7 traded a few recognised events for
+far fewer false alarms. The validation set has only 2 career-event
+stories, so it can barely judge G1.
+
+**Considered and rejected:** a pass mark on all nine right (it measures
+description, not posting); a mark per question (nine lines to tune
+against, most of them irrelevant to the goals); counting G1 by article
+(an event posts once, from any of its articles).
+
+**A slip while building this.** The first version of the report covered the
+test side for any stored answers, and v6's answers exist for all 300
+articles, so its three pass-mark lines for the test side were printed once
+on 2026-10-04 (no per-question scores, no articles, and no v7 answers, since
+v7 has never been sent the test set). What that reveals is the test set's
+make-up: how many career-event stories and quiet articles it holds. The
+report now covers the test side only with `--final`.

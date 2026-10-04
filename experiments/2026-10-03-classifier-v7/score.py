@@ -4,6 +4,7 @@
     python3 score.py --round r1 --errors fact   # the tune-side misses on one question, to read
     python3 score.py --v6                       # the v6 answers through the same scoring
     python3 score.py --selfcheck                # the scoring rules, checked on made-up answers
+    python3 score.py --round r8 --final         # adds the test side, for its one scoring (never before)
 
 The classifier answers each question alone, so the ties between answers that
 the labelling rules require (golden/rules.md, "No fact means nothing else
@@ -11,6 +12,7 @@ either") are applied here, in compose(). An answer is right when it equals
 the key or a value accepted by golden/coin-flips.json; near when it is one
 step away on an ordered scale (how central, how firm); far otherwise. Errors
 are only ever listed for the tune side: check is scored, never read.
+Each report ends with the three pass marks (docs/decisions.md#classifier-pass-marks).
 """
 import json, os, sys, collections
 
@@ -22,6 +24,10 @@ LEVELS = {"centrality": ["not_in_content", "only_mentioned", "one_of_several", "
           "firmness": ["wish", "rumour", "reported", "official_or_done"]}
 ORDER = {"centrality": LEVELS["centrality"], "firmness": ["none"] + LEVELS["firmness"]}
 FLAG_OF_FACT = {"result": "reports_his_result", "next_fight": "reports_his_next_fight", "health": "reports_his_health"}
+# the pass marks adopted 2026-10-04 (docs/decisions.md#classifier-pass-marks)
+CAREER_FACTS = {"result", "next_fight", "health", "status_update"}
+WEAKER_THAN_OFFICIAL = {"wish", "rumour", "reported"}
+MAX_FALSE_ALARMS = 0.05
 RENAMED = {"nothing_regarding_him": "none_of_these", "only_mentions_him": "none_of_these", "other_fighter": "other_fighter_side"}
 
 
@@ -103,9 +109,17 @@ def load(raw_path):
     return labels, side_of, flips, raw
 
 
+def sides():
+    """The sides a report covers: the test side only when --final is given, for its one scoring.
+
+    @returns: a tuple of side names
+    """
+    return ("tune", "check", "test") if "--final" in sys.argv else ("tune", "check")
+
+
 def report(labels, side_of, flips, raw, ties):
     """Print the scores of the tune and check sides, question by question."""
-    for side in ("tune", "check"):
+    for side in sides():
         ids = [i for i in raw if side_of[i] == side]
         if not ids: continue
         print(f"\n{side}: {len(ids)} articles" + ("" if ties else " (answers as given, no ties)"))
@@ -120,6 +134,42 @@ def report(labels, side_of, flips, raw, ties):
             top = ", ".join(f"{pair} {n}" for pair, n in misses.most_common(3))
             print(f"  {question:24} right {counts['right']:3} ({counts['right'] / len(ids):4.0%})  near {counts['near']:2}  far {counts['far']:3}   {top}")
         print(f"  all nine right: {sum(n == 9 for n in perfect.values())} of {len(ids)}")
+
+
+def targets(labels, side_of, raw):
+    """Print each side's result against the three pass marks, and pass or fail.
+
+    @param labels: id → the article's key
+    @param side_of: id → "tune", "check" or "test"
+    @param raw: id → the API's answers for that article
+    """
+    claim_of = {a: c["key"] for c in json.load(open(f"{GOLDEN}/claims.json"))["claims"] for a in c["articles"]}
+    for side in sides():
+        ids = [i for i in raw if side_of[i] == side]
+        if not ids: continue
+        key = {i: labels[i]["answers"] for i in ids}
+        got = {i: compose(raw[i]) for i in ids}
+
+        # 1. every story whose key has a career event has at least one article recognised as one (any of the four kinds)
+        stories = collections.defaultdict(list)
+        for i in ids:
+            if key[i]["fact"] in CAREER_FACTS: stories[claim_of[i]].append(got[i]["fact"] in CAREER_FACTS)
+        missed = sorted(story for story, found in stories.items() if not any(found))
+
+        # 2. no rumour, wish or report called official or done
+        called_official = sum(key[i]["firmness"] in WEAKER_THAN_OFFICIAL and got[i]["firmness"] == "official_or_done" for i in ids)
+
+        # 3. few articles without a career event called one
+        quiet = [i for i in ids if key[i]["fact"] not in CAREER_FACTS]
+        alarms = sum(got[i]["fact"] in CAREER_FACTS for i in quiet)
+        share = alarms / max(1, len(quiet))
+        verdict = lambda ok: "pass" if ok else "FAIL"
+        print(f"\n{side} against the pass marks:")
+        print(f"  career-event stories with an article recognised  {len(stories) - len(missed)} of {len(stories)}"
+              f"   {verdict(not missed)}" + (f"   missed: {', '.join(missed)}" if missed and side == "tune" else ""))
+        print(f"  rumours, wishes or reports called official       {called_official}   {verdict(called_official == 0)}")
+        print(f"  false alarms among articles with no career event {alarms} of {len(quiet)} ({share:.0%}, mark {MAX_FALSE_ALARMS:.0%})"
+              f"   {verdict(share <= MAX_FALSE_ALARMS)}")
 
 
 def errors(labels, side_of, flips, raw, question):
@@ -164,6 +214,7 @@ def main():
     labels, side_of, flips, raw = load(path)
     if "--errors" in sys.argv: return errors(labels, side_of, flips, raw, sys.argv[sys.argv.index("--errors") + 1])
     report(labels, side_of, flips, raw, ties="--no-ties" not in sys.argv)
+    targets(labels, side_of, raw)
 
 
 if __name__ == "__main__": main()
