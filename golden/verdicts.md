@@ -1383,3 +1383,29 @@ Ten checked cards and the two held ones, put to Anton in four groups.
 
 The accepted coin flips are listed in golden/coin-flips.json: on those
 answers either value counts as right when anything is scored.
+
+## The third reading: seven changes and three more coin flips (2026-10-03)
+
+Each of the 26 articles where the two full readers differed was read a
+third time by a fresh agent that saw only that article. Of 46 disputed
+answers, two of three readings gave the key's answer on 32. Anton: *"yes
+to L and M"*.
+
+- **L, two of three readings against the key.** #1066: no fact becomes
+  next fight at rumour (Dana White's hint at Pimblett), with status update
+  accepted. #737: only mentioned becomes one of several (a live blog with
+  three rounds of his bout). #740: source no one, act reports an event (a
+  video caption with none of his words), replacing his own earlier
+  "himself, speaks of himself" and matching #746. #606: he speaks no. #97:
+  one of several. #948: other fighter's side. #134: promotion.
+- **M, three readings and three answers.** #361 keeps health, personal
+  life accepted; #224 keeps media.
+
+With this, every one of the 300 articles is either settled or recorded as
+a coin flip (seven answers, golden/coin-flips.json). Checked by Anton: 104
+cards, 27 of them by summary.
+
+The spot check is drawn: 20 cards at random (seed 20261003) from the 186
+articles on which both full readers gave the key's answer on all nine
+questions and which no person had checked
+(experiments/2026-09-27-answer-key/spot-check.json).

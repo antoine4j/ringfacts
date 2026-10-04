@@ -206,10 +206,9 @@ const PATH = [
 ];
 
 const NOW = {
-  title:"You are here: 274 of 300 articles settled (244 by the readers, 30 by your rulings since). Three steps to a frozen answer key.",
+  title:"You are here: all 300 articles are settled or recorded as coin flips. Two steps to a frozen answer key.",
   items:[
-    ["4.22","WAITING FOR YOUR GO: a third, independent reading on the 26 articles where the two readers differ, one fresh agent per article (about 40 dollars of credit, in a cloud session)."],
-    ["4.23","Spot-check about 20 random cards from the settled 244."],
+    ["4.23","WAITING FOR YOU: the spot check. 20 random cards that no person has looked at, on the Answer Key Check page under 'Spot check'. Read each and mark it checked, or correct it."],
     ["4.24","Freeze: one final labels file with a date. Then the classifier comes back (4.25)."],
   ]
 };
@@ -313,13 +312,13 @@ const STATIONS = [
       "Shows where the guide and your rulings have drifted apart.",
       "A ruling the guide does not carry cannot be learned by any classifier prompt.",
       "Keeps the key consistent: one rule, one answer."),
-    T("4.22","decide","Take a third reading on the 26 articles where the two readers differ",
-      "One fresh agent per article, so the reading is fully independent (about 40 dollars of the credit; needs your go). Two of three decide, unless you object. Where all three differ, the article is a coin flip. Known names in the list: #879 and #1066 (borderline rumours), #647 (a one-line stub), #740 and #746 (UFC.com video pages).",
+    T("4.22","done","Take a third reading on the 26 articles where the two readers differ",
+      "Done 3 Oct (24 dollars of credit; 147 left). One fresh agent per article. Of 46 disputed answers, two of three readings gave the key's answer on 32. Changed on your yes: #1066 to next fight at rumour, #737 and #97 to one of several, #740 to nobody speaks and reports an event (like its twin #746), #606 he speaks no, #948 and #134 whose words. Coin flips: #361, #224, and #1066 with status update. Every article is now settled or a recorded coin flip (seven answers in golden/coin-flips.json).",
       "A split between careful readers is either an unclear rule or a truly borderline article; a third reading tells which.",
       "Coin flips are recorded with both acceptable answers, so a classifier is not punished for either.",
       "This is what stops the adjusting: a persistent split is a result, not a problem to solve."),
-    T("4.23","label","Spot-check about 20 random cards from the 244 that are settled",
-      "You look at 20 picked at random. If one or none is wrong, freeze. If several are, we talk before doing anything else.",
+    T("4.23","decide","Spot-check 20 random cards from the settled ones no person has looked at",
+      "Drawn 3 Oct at random from the 186 articles where both full readers gave the key's answer on all nine questions and which no person had checked: #2, #6, #14, #51, #144, #170, #200, #490, #508, #563, #603, #632, #744, #767, #774, #780, #875, #917, #958, #1031. On the Answer Key Check page, press 'Spot check'. If one or none is wrong, freeze. If several are, we talk before doing anything else.",
       "All readers are the same model, so they can share a blind spot; only you can catch that.",
       "The one check on the cards nobody disputes.",
       "The key is yours only if you have looked where the machines agree, too."),

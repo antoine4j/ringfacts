@@ -144,6 +144,7 @@ def main():
     """Write correction.html from the key, the guide, v6 and the overnight outputs."""
     boundaries, briefs, recheck, triage = overnight()
     rereaders = reread()
+    flips = json.load(open(os.path.join(GOLDEN, "coin-flips.json")))["flips"]
     key = json.load(open(os.path.join(GOLDEN, "answers/readers-v1.json")))["articles"]
     sides = json.load(open(os.path.join(GOLDEN, "split.json")))["articles"]
     articles = {str(a["id"]): a for a in json.load(open(os.path.join(GOLDEN, "articles.json")))}
@@ -158,6 +159,8 @@ def main():
                           "classifier": classifier_value(q, v6[article_id][q])}
             if (article_id, q) in triage: answers[q]["hint"] = triage[(article_id, q)]
         if article_id in recheck: answers["centrality"]["recheck"] = recheck[article_id]
+        for flip in flips:
+            if flip["id"] == article_id: answers[flip["question"]]["flip"] = {"accepted": flip["accepted"], "why": flip["why"]}
         for q in QUESTIONS:
             answers[q]["reread"] = {letter: {"value": row[q], "note": plain_names(row.get("note") or "")} for letter, row in rereaders.get(article_id, {}).items()}
         # the boundary this article's disagreement falls on, and what the brief's recommended rule says about it
@@ -187,6 +190,9 @@ def main():
     agreeing = sorted(r["id"] for r in rows if r["step"] == 3)
     sample = set(random.Random(SAMPLE_SEED).sample(agreeing, min(SAMPLE, len(agreeing))))
     for r in rows: r["sample"] = r["id"] in sample
+    # the 20 cards of the spot check before the freeze (spot-check.json)
+    spot = set(json.load(open(os.path.join(HERE, "spot-check.json")))["articles"])
+    for r in rows: r["spot"] = r["id"] in spot
     groups = {key: {"title": g["title"], "question": g["question"], "brief": briefs.get(key)} for key, g in boundaries["groups"].items()}
     data = {"questions": QUESTIONS, "labels": LABELS, "defs": definitions(), "texts": question_texts(), "stems": NAME_STEMS,
             "boundaries": {"order": boundaries["order"], "groups": groups}, "articles": rows}

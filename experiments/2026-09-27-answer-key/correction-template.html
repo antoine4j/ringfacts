@@ -143,6 +143,7 @@ input.note{font:inherit;font-size:13px;border:1px solid var(--line);background:v
     <div class="bar">
       <div class="seg" role="group" aria-label="Show" id="filter">
         <button data-f="1" aria-pressed="true">1 · Readers differed, by boundary</button>
+        <button data-f="spot" aria-pressed="false">Spot check · 20 random settled cards</button>
         <button data-f="2" aria-pressed="false">2 · Classifier differs</button>
         <button data-f="3" aria-pressed="false">3 · All agree: sample</button>
         <button data-f="open" aria-pressed="false">Not checked yet</button>
@@ -171,6 +172,7 @@ const rec = id => state.corrections[id] || {reviewed: false, fixes: {}};
 function shown(a){
   if (state.filter === "3") return a.step === 3 && a.sample;
   if (/^[1-2]$/.test(state.filter)) return a.step === Number(state.filter);
+  if (state.filter === "spot") return a.spot;
   if (state.filter === "open") return !rec(a.id).reviewed;
   return true;
 }
@@ -229,6 +231,9 @@ function hints(k, fix){
     const same = Object.values(k.recheck).every(r => r.centrality === now);
     const notes = Object.entries(k.recheck).map(([letter, r]) => r.note ? `${letter}: ${esc(r.note)}` : "").filter(Boolean).join(" · ");
     out.push(`<div class="hint ${same ? "agree" : "change"}">re-read under the rule 'new, not long' — ${reads}${same ? "" : " — <b>it may change this</b>"}<br>${notes}</div>`);
+  }
+  if (k.flip){
+    out.push(`<div class="hint agree"><b>coin flip, accepted</b> — any of: ${k.flip.accepted.map(v => esc(human(v))).join(", ")}. ${esc(k.flip.why)}</div>`);
   }
   // the full re-read of 3 Oct speaks up only where a reader differs from the answer shown
   if (k.reread && Object.values(k.reread).some(r => r.value !== now)){

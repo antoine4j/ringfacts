@@ -1,0 +1,26 @@
+{
+ "about": "20 cards drawn at random (seed 20261003) from the articles on which both readers of the full re-read gave the key's answer on all nine questions and which no person had checked. Anton reads these as the guard against a blind spot all readers share. If one or none is wrong, the labels are frozen.",
+ "pool": 186,
+ "articles": [
+  "2",
+  "6",
+  "14",
+  "51",
+  "144",
+  "170",
+  "200",
+  "490",
+  "508",
+  "563",
+  "603",
+  "632",
+  "744",
+  "767",
+  "774",
+  "780",
+  "875",
+  "917",
+  "958",
+  "1031"
+ ]
+}

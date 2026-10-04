@@ -1,0 +1,1832 @@
+{
+ "about": "A copy of Anton's corrections to the answer key, taken from the database of the Answer Key Check page (claude.ai/artifact/RKAaSMy3eQsse3unLHLDte, collection 'corrections'). The page's database is where he works; this file is the copy that lives with the repository, so the corrections do not exist in one place only. Each card: the corrected answers (value and why), whether he checked it, and how ('summary' = confirmed from a grouped summary without opening the card). The effective answer key is golden/answers/readers-v1.json with these laid over it. Not yet the frozen labels: that file is written after the spot check.",
+ "taken": "2026-10-03",
+ "cards_with_a_record": 152,
+ "corrected_answers": 264,
+ "checked": 104,
+ "checked_by_summary": 27,
+ "cards": {
+  "10": {
+   "fixes": {},
+   "reviewed": false
+  },
+  "34": {
+   "fixes": {
+    "source": {
+     "note": "rule: opponent side means booked or fought (Anton, 2026-10-02); Abdelaziz speaks for Usman Nurmagomedov, never booked",
+     "value": "other_fighter_side"
+    }
+   },
+   "reviewed": true
+  },
+  "44": {
+   "fixes": {
+    "reports_his_result": {
+     "note": "only what is new (Anton, 2026-10-02); main claim: Topuria's first statement after the loss: he says he lost vision in both eyes during the fight, praises Gaethje, plans to heal and seek a rematch.; Headline 'releases first statement since UFC White House defeat'; the loss is the premise ('praised Justin Gaethje after losing the lightweight crown... on Sunday'), the news is the statement and the vision loss he 'detailed on Instagram'.",
+     "value": "no"
+    }
+   },
+   "reviewed": true
+  },
+  "78": {
+   "fixes": {
+    "centrality": {
+     "note": "A callout is the other fighter's story: another camp names him as the opponent it wants and adds nothing new about him. Both blind readers of the full re-read, 3 Oct (was: main_subject); group confirmed by Anton, 2026-10-03. Reader: Another camp's manager ('La pelea que quiero ... es Ilia Topuria', 'Usman hará que Ilia se rinda. Lo golpeará ... y lo noqueará') names him as the wanted opponent and taunts him, with the Makhachev negotiation recapped as known history, so a callout at no_fact",
+     "value": "only_mentioned"
+    },
+    "source": {
+     "note": "rule: opponent side means booked or fought (Anton, 2026-10-02); Abdelaziz speaks for Makhachev, never booked",
+     "value": "other_fighter_side"
+    }
+   },
+   "reviewed": true,
+   "how": "summary"
+  },
+  "97": {
+   "fixes": {
+    "centrality": {
+     "note": "A war of words shared between Topuria's camp and Usman Nurmagomedov's. Two of three readings of 3 Oct; Anton, 2026-10-03 (group L).",
+     "value": "one_of_several"
+    }
+   },
+   "reviewed": true,
+   "how": "summary"
+  },
+  "129": {
+   "fixes": {
+    "fact": {
+     "note": "a wish is no fact, whoever makes it (Anton, 2026-10-02): his manager asks for the rematch; nothing about a fight exists or changes. Source (his manager) and act (steers him) carry it. Both blind readers agreed",
+     "value": "no_fact"
+    },
+    "firmness": {
+     "note": "no fact, so none (no fact means nothing else either)",
+     "value": "none"
+    },
+    "reports_his_health": {
+     "note": "health is yes when someone the article names states his condition; the writer's recap is background (Anton, 2026-10-02); the writer: \"según las últimas imágenes publicadas de Topuria, se ha recuperado a pasos agigantados\"",
+     "value": "no"
+    },
+    "reports_his_next_fight": {
+     "note": "no fact, so the three news questions are no (no fact means nothing else either)",
+     "value": "no"
+    }
+   },
+   "reviewed": false
+  },
+  "134": {
+   "fixes": {
+    "source": {
+     "note": "A rankings page mirroring the UFC's official rankings; the saved text never names him. Two of three readings of 3 Oct; Anton, 2026-10-03 (group L).",
+     "value": "promotion"
+    }
+   },
+   "reviewed": true,
+   "how": "summary"
+  },
+  "148": {
+   "fixes": {
+    "fact": {
+     "note": "Health follows who states it (Anton, 2026-10-03): a named trainer, Jesús Gallo, \"ha revelado\" that his recovery is ahead of schedule, under its own subheading. A second fact stated beside the main claim (Makhachev's opinion) counts. All three original readers and both blind re-readers of 3 Oct said health; the earlier correction to no fact applied \"only what is new\" too hard.",
+     "value": "health"
+    },
+    "firmness": {
+     "note": "Stated by his own trainer, not by him or the promotion: reported, as the three original readers had it.",
+     "value": "reported"
+    },
+    "reports_his_health": {
+     "note": "A named trainer states how his recovery is going (Anton, 2026-10-03).",
+     "value": "yes"
+    },
+    "reports_his_next_fight": {
+     "note": "only what is new (Anton, 2026-10-02); main claim: Makhachev's opinion on Topuria after the loss: 'Si se centra, puede ser campeon otra vez'.",
+     "value": "no"
+    }
+   },
+   "reviewed": true
+  },
+  "152": {
+   "fixes": {
+    "fact": {
+     "note": "health wins over a return date in the same statement (Anton, 2026-10-02): his coach says how the recovery is going. Three write-ups of one interview (#152, #402, #412) get the same label. Both blind readers agreed",
+     "value": "health"
+    },
+    "reports_his_next_fight": {
+     "note": "only a return window, no specific fight",
+     "value": "no"
+    }
+   },
+   "reviewed": false
+  },
+  "166": {
+   "fixes": {
+    "source": {
+     "note": "rule: opponent side means booked or fought (Anton, 2026-10-02); Méndez speaks for Makhachev, never booked",
+     "value": "other_fighter_side"
+    }
+   },
+   "reviewed": false
+  },
+  "187": {
+   "fixes": {
+    "source": {
+     "note": "Whose words: booked or fought; a fighter is a fighter, active or retired; the source of the main content. Both blind readers of the full re-read, 3 Oct (was: other_fighter_side); group confirmed by Anton, 2026-10-03. Reader: Amosov appears once, in the line that Magny 'has only lost to... Michael Morales, Carlos Prates, and Yaroslav Amosov'; nobody does anything regarding him, so act is none_of_these. The speaker is Magny, whom the text says has fought Amosov, so opponent_side by ",
+     "value": "opponent_side"
+    }
+   },
+   "reviewed": true,
+   "how": "summary"
+  },
+  "203": {
+   "fixes": {
+    "reports_his_next_fight": {
+     "note": "only what is new (Anton, 2026-10-02); main claim: Donchenko says he will give 50% of his Performance of the Night bonus to a church in his home town Korosten.; '5 вересня Донченко проведе поєдинок у Парижі проти американця Пунахеле Соріано' is a closing boilerplate line restating a known booking, not the article's news. Health stays yes: he reveals for the first time that he 'травмував обидві ноги... декілька днів ходити не міг'.",
+     "value": "no"
+    }
+   },
+   "reviewed": false
+  },
+  "208": {
+   "fixes": {
+    "reports_his_next_fight": {
+     "note": "only what is new (Anton, 2026-10-02); main claim: Donchenko recounts what he told his grandmother, who opposes his MMA career, after his win.; '5 вересня Донченко проведе поєдинок у Парижі проти американця Пунахеле Соріано' sits in the closing boilerplate after the quotes; a booking restated, not news.",
+     "value": "no"
+    }
+   },
+   "reviewed": false
+  },
+  "224": {
+   "fixes": {},
+   "reviewed": true,
+   "how": "summary"
+  },
+  "228": {
+   "fixes": {
+    "source": {
+     "note": "rule: opponent side means booked or fought (Anton, 2026-10-02); Makhachev's verbal acceptance was never announced, so a rumour",
+     "value": "other_fighter_side"
+    }
+   },
+   "reviewed": true
+  },
+  "238": {
+   "fixes": {
+    "act": {
+     "note": "An act needs a plain statement about him: a guess, a name in a list or what he did for the speaker is not an act. Both blind readers of the full re-read, 3 Oct (was: assesses_him); group confirmed by Anton, 2026-10-03. Reader: The interview is about Marc and his book; Topuria is discussed as a cultural figure ('lo que significa Ilia Topuria para este deporte en España', 'sin Ilia... seguiría en la tienda'), which is an appraisal of his importance to the sport rather than of his leve",
+     "value": "none_of_these"
+    }
+   },
+   "reviewed": true,
+   "how": "summary"
+  },
+  "247": {
+   "fixes": {
+    "source": {
+     "note": "Whose words: booked or fought; a fighter is a fighter, active or retired; the source of the main content. Both blind readers of the full re-read, 3 Oct (was: media); group confirmed by Anton, 2026-10-03. Reader: The article is Garry's story; Amosov enters only in the last paragraph as one of three names Schaub lists ('Michael Morales, Carlos Prates, and a rising contender'), with one line calling him 'a dominant grappler ... a nightmare matchup' — an opinion, so no fa",
+     "value": "other_fighter_side"
+    }
+   },
+   "reviewed": true,
+   "how": "summary"
+  },
+  "269": {
+   "fixes": {},
+   "reviewed": true
+  },
+  "273": {
+   "fixes": {},
+   "reviewed": true
+  },
+  "283": {
+   "fixes": {
+    "centrality": {
+     "note": "A callout is the other fighter's story: Pimblett names him as the opponent he wants and the article adds nothing new about him. Both blind readers of the full re-read, 3 Oct; Anton, 2026-10-03 (group H). Checked earlier, before the callout rule.",
+     "value": "only_mentioned"
+    },
+    "source": {
+     "note": "rule: opponent side means booked or fought (Anton, 2026-10-02); Pimblett callout, no fight booked",
+     "value": "other_fighter_side"
+    }
+   },
+   "reviewed": true
+  },
+  "287": {
+   "fixes": {},
+   "reviewed": true
+  },
+  "300": {
+   "fixes": {
+    "reports_his_next_fight": {
+     "note": "only what is new (Anton, 2026-10-02); main claim: Donchenko says he earned $20-50k for the TUF final and asked Dana White to sign his friend Dmytro instead of paying him.; 'Зазначимо, що 5 вересня Даниїл Донченко проведе бій проти американця Пунахеле Соріано' is a closing note restating the booking; the article's news is the fee and the request to White.",
+     "value": "no"
+    }
+   },
+   "reviewed": false
+  },
+  "301": {
+   "fixes": {
+    "reports_his_next_fight": {
+     "note": "only what is new (Anton, 2026-10-02); main claim: Donchenko's opinion that UFC avoids Ukrainian-vs-Russian bouts to avoid hate, and that he is ready to fight Russians.; Fact is no_fact (talk only), so next fight is no; '5 вересня Донченко проведе поєдинок у Парижі' is closing boilerplate.",
+     "value": "no"
+    }
+   },
+   "reviewed": false
+  },
+  "305": {
+   "fixes": {
+    "reports_his_next_fight": {
+     "note": "only what is new (Anton, 2026-10-02); main claim: Topuria's bond with his Alicante neighbourhood and the Climent Club gym where he grew up as a fighter, in his own words.; The opening 'Su preparador fisico senala que fisicamente podria estar listo a finales de ano... apunta a principios del proximo ano' recalls the trainer's earlier statement as premise; the article's news is Alicante ('Todo lo que tengo en mi vida... esta aqui').",
+     "value": "no"
+    }
+   },
+   "reviewed": false
+  },
+  "311": {
+   "fixes": {
+    "source": {
+     "note": "rule: opponent side means booked or fought (Anton, 2026-10-02); no fight booked",
+     "value": "other_fighter_side"
+    }
+   },
+   "reviewed": false
+  },
+  "321": {
+   "fixes": {
+    "reports_his_next_fight": {
+     "note": "only what is new (Anton, 2026-10-02); main claim: Donchenko tells how his career began: judo at 11, dropped out of KPI after a year, moved to Thailand to train.; '5 вересня Донченко проведе поєдинок у Парижі проти американця Пунахеле Соріано' is closing boilerplate after the interview.",
+     "value": "no"
+    }
+   },
+   "reviewed": false
+  },
+  "322": {
+   "fixes": {
+    "reports_his_next_fight": {
+     "note": "only what is new (Anton, 2026-10-02); main claim: Donchenko recalls his early paid fights: a Kyiv restaurant club paying 1,000 UAH to appear and 1,500 for a win, then Kazakhstan purses.; '5 вересня Донченко проведе поєдинок у Парижі проти американця Пунахеле Соріано' is closing boilerplate after the interview.",
+     "value": "no"
+    }
+   },
+   "reviewed": false
+  },
+  "327": {
+   "fixes": {
+    "fact": {
+     "note": "Health follows who states it: a named person says how he is (the same Dvalishvili statement as #361). Both blind readers of the full re-read, 3 Oct (was: no_fact); group confirmed by Anton, 2026-10-03. Reader: 'Il va bien et reste très positif et profite de la vie' is a named fighter stating how Topuria is, which the guide treats as health however brief; an editor could call it too thin and go no_fact (the rest is a prediction that he will beat everyone, which would",
+     "value": "health"
+    },
+    "firmness": {
+     "note": "Health follows who states it: a named person says how he is (the same Dvalishvili statement as #361). Both blind readers of the full re-read, 3 Oct (was: none); group confirmed by Anton, 2026-10-03. Reader: 'Il va bien et reste très positif et profite de la vie' is a named fighter stating how Topuria is, which the guide treats as health however brief; an editor could call it too thin and go no_fact (the rest is a prediction that he will beat everyone, which would",
+     "value": "reported"
+    },
+    "reports_his_health": {
+     "note": "Health follows who states it: a named person says how he is (the same Dvalishvili statement as #361). Both blind readers of the full re-read, 3 Oct (was: no); group confirmed by Anton, 2026-10-03. Reader: 'Il va bien et reste très positif et profite de la vie' is a named fighter stating how Topuria is, which the guide treats as health however brief; an editor could call it too thin and go no_fact (the rest is a prediction that he will beat everyone, which would",
+     "value": "yes"
+    }
+   },
+   "reviewed": true,
+   "how": "summary"
+  },
+  "342": {
+   "fixes": {
+    "act": {
+     "note": "Gives news of him never goes with no fact; the paragraph only retells his service. Both blind readers of the full re-read, 3 Oct; Anton, 2026-10-03 (group H).",
+     "value": "none_of_these"
+    },
+    "centrality": {
+     "note": "new, not long: judge what is new about him (Anton, 2026-09-28); both \"new, not long\" re-readers 2026-10-02: Amosov's section in a war-service roundup retells his service and debut, nothing new",
+     "value": "only_mentioned"
+    },
+    "fact": {
+     "note": "Only what is new: a roundup of athletes who joined the army; Amosov's paragraph retells what is known. Both blind readers of the full re-read, 3 Oct; Anton, 2026-10-03 (group H), reversing his 'personal life' of 2 Oct.",
+     "value": "no_fact"
+    },
+    "firmness": {
+     "note": "No fact means nothing else either.",
+     "value": "none"
+    },
+    "he_speaks": {
+     "note": "He speaks only when his words are there: the one quote is recalled from an older post of his. Both blind readers of the full re-read, 3 Oct; Anton, 2026-10-03 (group H).",
+     "value": "no"
+    }
+   },
+   "reviewed": true
+  },
+  "361": {
+   "fixes": {
+    "reports_his_next_fight": {
+     "note": "only what is new (Anton, 2026-10-02); main claim: Merab Dvalishvili says Topuria is enjoying life and is well physically.; 'todo apunta a que Topuria no podra volver a subirse al octagono hasta 2027, si bien hay informaciones que apuntan a una posible recuperacion expres... de momento puras especulaciones' is the writer's guess at his timing, in the closing line.",
+     "value": "no"
+    }
+   },
+   "reviewed": true
+  },
+  "368": {
+   "fixes": {
+    "reports_his_next_fight": {
+     "note": "only what is new (Anton, 2026-10-02); main claim: Merab Dvalishvili updates Topuria's state: he is fine, positive, will beat everyone when he returns.; 'la UFC le espera para 2027, si bien la fecha de su reaparicion esta calculada hacia mitad de ano' is an unattributed estimate of his timing; the candidate-opponent list ('Arman Tsarukyan, Paddy Pimblett o Usman Nurmagomedov') is speculation; 'El proximo combate de Topuria ya toma forma' is a read-also teaser.",
+     "value": "no"
+    }
+   },
+   "reviewed": false
+  },
+  "373": {
+   "fixes": {
+    "centrality": {
+     "note": "Anton, 2026-10-03: the story is his own slip (Mighty Mouse / Mickey Mouse) and Johnson's reply aimed at him, so there is something new about him; the article is shared between the two fighters. The 'talking about another fighter' line is for pieces where nothing comes back to him (#1260)",
+     "value": "one_of_several"
+    }
+   },
+   "reviewed": true
+  },
+  "402": {
+   "fixes": {
+    "fact": {
+     "note": "health wins over a return date in the same statement (Anton, 2026-10-02): his coach says how the recovery is going. Three write-ups of one interview (#152, #402, #412) get the same label. Both blind readers agreed",
+     "value": "health"
+    },
+    "reports_his_next_fight": {
+     "note": "only a return window, no specific fight",
+     "value": "no"
+    }
+   },
+   "reviewed": false
+  },
+  "408": {
+   "fixes": {
+    "act": {
+     "note": "A callout is not only a literal callout: a taunt or a roast aimed at him belongs here. Both blind readers of the full re-read, 3 Oct (was: assesses_him); group confirmed by Anton, 2026-10-03. Reader: Topuria is one of five fighters roasted; his paragraph ('took a dig at Ilia Topuria... quit on his stool', 'Topuria, who was praising himself. Lost early, sat down on a chair') only retells his loss, so only_mentioned, though his place in the headline could ar",
+     "value": "calls_him_out"
+    }
+   },
+   "reviewed": true,
+   "how": "summary"
+  },
+  "412": {
+   "fixes": {
+    "reports_his_next_fight": {
+     "note": "only a return window, no specific fight",
+     "value": "no"
+    }
+   },
+   "reviewed": false
+  },
+  "423": {
+   "fixes": {
+    "centrality": {
+     "note": "A callout is the other fighter's story: Pimblett's wish plus a recap of the lost belt and the recovery. Both blind readers of the full re-read, 3 Oct; Anton, 2026-10-03 (group H). Checked earlier, before the callout rule.",
+     "value": "only_mentioned"
+    },
+    "source": {
+     "note": "rule: opponent side means booked or fought (Anton, 2026-10-02); Pimblett callout, no fight booked",
+     "value": "other_fighter_side"
+    }
+   },
+   "reviewed": true
+  },
+  "442": {
+   "fixes": {
+    "source": {
+     "note": "rule: opponent side means booked or fought (Anton, 2026-10-02); no fight booked",
+     "value": "other_fighter_side"
+    }
+   },
+   "reviewed": false
+  },
+  "457": {
+   "fixes": {},
+   "reviewed": true
+  },
+  "462": {
+   "fixes": {
+    "act": {
+     "note": "Anton, 2026-10-03: made the same as #484, which is this article word for word (the readers had 'gives news of him' here and 'steers him' there). Gaethje's guess at Topuria's timing is not news of him and his hedged 'not my next fight' is not steering; the article is Gaethje's own news",
+     "value": "none_of_these"
+    },
+    "fact": {
+     "note": "recap of what happened to Topuria, nothing definitive beyond speculations by Gaethje that Topuria will not fight till next year. Could be next fight too but that is not the main thing asserted here.",
+     "value": "no_fact"
+    },
+    "firmness": {
+     "note": "No fact drives none",
+     "value": "none"
+    },
+    "reports_his_health": {
+     "note": "No fact drives no",
+     "value": "no"
+    },
+    "reports_his_next_fight": {
+     "note": "No fact drives no",
+     "value": "no"
+    }
+   },
+   "reviewed": true
+  },
+  "467": {
+   "fixes": {
+    "act": {
+     "note": "An act needs a plain statement about him: a guess, a name in a list or what he did for the speaker is not an act. Both blind readers of the full re-read, 3 Oct (was: steers_him); group confirmed by Anton, 2026-10-03. Reader: Gaethje, who fought him, speaks about himself: his guess 'he's probably not gonna fight until next year too' and his stance 'I don't think that's my next fight' are no act about Topuria and no fact (the guide's #462/#492 cases), so none_of_these; the writer's ",
+     "value": "none_of_these"
+    }
+   },
+   "reviewed": true,
+   "how": "summary"
+  },
+  "484": {
+   "fixes": {
+    "act": {
+     "note": "Anton, 2026-10-03: the article is Gaethje's own news (his hands, no fight in 2026). Regarding Topuria there is only a guess at his timing, which is not news of him, and a hedged 'not my next fight, in my gut', which is about Gaethje's own next fight. Nobody does anything firm regarding him. Same interview as #492; same text as #462",
+     "value": "none_of_these"
+    },
+    "fact": {
+     "note": "only what is new (Anton, 2026-10-02); main claim: Gaethje guesses Topuria probably won't fight until next year either and doesn't think Topuria is his next fight.; 'I guess if I'm not fighting until next year, [Topuria is] probably not going to fight until next year, too... I don't think that's my next fight, in my gut' is Gaethje's guess at his timing, the same shape as worked example #462.",
+     "value": "no_fact"
+    },
+    "firmness": {
+     "note": "only what is new (Anton, 2026-10-02); main claim: Gaethje guesses Topuria probably won't fight until next year either and doesn't think Topuria is his next fight.",
+     "value": "none"
+    },
+    "reports_his_next_fight": {
+     "note": "only what is new (Anton, 2026-10-02); main claim: Gaethje guesses Topuria probably won't fight until next year either and doesn't think Topuria is his next fight.",
+     "value": "no"
+    }
+   },
+   "reviewed": true
+  },
+  "490": {
+   "fixes": {
+    "fact": {
+     "note": "only what is new (Anton, 2026-10-02); main claim: Fight-week interview: Donchenko, ahead of Saturday's Paris bout with Soriano, talks about his growth, his French, and his aim to finish Soriano.; 'as he readies to make his return to action this weekend in Paris, where he faces off with Punahele Soriano' is the booking restated as the premise of a preview; the body is his talk ('I have everything to win this fight, to finish this guy').",
+     "value": "no_fact"
+    },
+    "firmness": {
+     "note": "only what is new (Anton, 2026-10-02); main claim: Fight-week interview: Donchenko, ahead of Saturday's Paris bout with Soriano, talks about his growth, his French, and his aim to finish Soriano.",
+     "value": "none"
+    },
+    "reports_his_next_fight": {
+     "note": "only what is new (Anton, 2026-10-02); main claim: Fight-week interview: Donchenko, ahead of Saturday's Paris bout with Soriano, talks about his growth, his French, and his aim to finish Soriano.",
+     "value": "no"
+    }
+   },
+   "reviewed": false
+  },
+  "491": {
+   "fixes": {
+    "fact": {
+     "note": "only what is new (Anton, 2026-10-02); main claim: Fight-week interview: Donchenko, ahead of Saturday's Paris bout with Soriano, talks about his growth, his French, and his aim to finish Soriano.; Same text as #490: 'as he readies to make his return to action this weekend in Paris, where he faces off with Punahele Soriano' is the booking restated as the premise of a preview.",
+     "value": "no_fact"
+    },
+    "firmness": {
+     "note": "only what is new (Anton, 2026-10-02); main claim: Fight-week interview: Donchenko, ahead of Saturday's Paris bout with Soriano, talks about his growth, his French, and his aim to finish Soriano.",
+     "value": "none"
+    },
+    "reports_his_next_fight": {
+     "note": "only what is new (Anton, 2026-10-02); main claim: Fight-week interview: Donchenko, ahead of Saturday's Paris bout with Soriano, talks about his growth, his French, and his aim to finish Soriano.",
+     "value": "no"
+    }
+   },
+   "reviewed": true
+  },
+  "492": {
+   "fixes": {
+    "act": {
+     "note": "Anton, 2026-10-03: Gaethje speaks about his own sore hands and plans; regarding Topuria there is only a hedged 'not my next fight, I don't think' and a guess at his timing, which is no news of him (as on #462, #484). Nobody does anything regarding him. 'Speaks of himself' is only for the watched fighter",
+     "value": "none_of_these"
+    }
+   },
+   "reviewed": true
+  },
+  "494": {
+   "fixes": {
+    "fact": {
+     "note": "only what is new (Anton, 2026-10-02); main claim: Fight-week feature: Donchenko, who asked for Paris, previews his Saturday bout with Soriano and talks about his French and his last win.; \"as he readies to make his return to action this weekend in Paris, where he faces off with Punahele Soriano\" — the booking is the premise of an interview feature; the rest is his talk about rankings, sponsors and the game plan",
+     "value": "no_fact"
+    },
+    "firmness": {
+     "note": "only what is new (Anton, 2026-10-02); main claim: Fight-week feature: Donchenko, who asked for Paris, previews his Saturday bout with Soriano and talks about his French and his last win.",
+     "value": "none"
+    },
+    "reports_his_next_fight": {
+     "note": "only what is new (Anton, 2026-10-02); main claim: Fight-week feature: Donchenko, who asked for Paris, previews his Saturday bout with Soriano and talks about his French and his last win.",
+     "value": "no"
+    }
+   },
+   "reviewed": false
+  },
+  "500": {
+   "fixes": {
+    "reports_his_next_fight": {
+     "note": "only what is new (Anton, 2026-10-02); main claim: Nathaniel Wood gets a new opponent at UFC Paris; Donchenko appears only as a line in the full card list.; \"Daniil Donchenko vs. Punahele Soriano\" appears only in \"Check out the full UFC Paris card below\" — a card list, background",
+     "value": "no"
+    }
+   },
+   "reviewed": true
+  },
+  "503": {
+   "fixes": {
+    "act": {
+     "note": "An act needs a plain statement about him: Gaethje's stance on his own next fight and a guess at Topuria's timing. Both blind readers of the full re-read, 3 Oct; Anton, 2026-10-03 (group H). All six write-ups of this interview now say none of these.",
+     "value": "none_of_these"
+    },
+    "fact": {
+     "note": "only what is new (Anton, 2026-10-02); main claim: Gaethje says the UFC has the last word on a possible Topuria rematch, which he does not think should be next; both will sit out until 2027.; \"la UFC es la que tiene la última palabra ... no siento que esa deba ser mi siguiente pelea\"; \"él tampoco querrá pelear hasta el año que viene\" is Gaethje's guess at his timing; the fractures are a recap (\"se está recuperando de las fracturas\")",
+     "value": "no_fact"
+    },
+    "firmness": {
+     "note": "only what is new (Anton, 2026-10-02); main claim: Gaethje says the UFC has the last word on a possible Topuria rematch, which he does not think should be next; both will sit out until 2027.",
+     "value": "none"
+    },
+    "reports_his_next_fight": {
+     "note": "only what is new (Anton, 2026-10-02); main claim: Gaethje says the UFC has the last word on a possible Topuria rematch, which he does not think should be next; both will sit out until 2027.",
+     "value": "no"
+    }
+   },
+   "reviewed": true
+  },
+  "510": {
+   "fixes": {
+    "act": {
+     "note": "An act needs a plain statement about him: a guess, a name in a list or what he did for the speaker is not an act. Both blind readers of the full re-read, 3 Oct (was: reports_an_event); group confirmed by Anton, 2026-10-03. Reader: Donchenko appears once, as 'Welterweight: Daniil Donchenko vs Punahele Soriano' in the card list; a booking restated in a card list is background, so no_fact and next fight no. With nothing new about him, source answers for the main content, the outlet's own p",
+     "value": "none_of_these"
+    },
+    "fact": {
+     "note": "An act needs a plain statement about him: a guess, a name in a list or what he did for the speaker is not an act. Both blind readers of the full re-read, 3 Oct (was: fight_week_event); group confirmed by Anton, 2026-10-03. Reader: Donchenko appears once, as 'Welterweight: Daniil Donchenko vs Punahele Soriano' in the card list; a booking restated in a card list is background, so no_fact and next fight no. With nothing new about him, source answers for the main content, the outlet's own p",
+     "value": "no_fact"
+    },
+    "firmness": {
+     "note": "An act needs a plain statement about him: a guess, a name in a list or what he did for the speaker is not an act. Both blind readers of the full re-read, 3 Oct (was: official_or_done); group confirmed by Anton, 2026-10-03. Reader: Donchenko appears once, as 'Welterweight: Daniil Donchenko vs Punahele Soriano' in the card list; a booking restated in a card list is background, so no_fact and next fight no. With nothing new about him, source answers for the main content, the outlet's own p",
+     "value": "none"
+    },
+    "reports_his_next_fight": {
+     "note": "only what is new (Anton, 2026-10-02); main claim: Event preview of UFC Paris (start times, how to watch, full card); Donchenko is one line in the main-card list.; \"Welterweight: Daniil Donchenko vs Punahele Soriano\" in the card list; the article is about the whole event, his booking is restated as a card entry",
+     "value": "no"
+    },
+    "source": {
+     "note": "An act needs a plain statement about him: a guess, a name in a list or what he did for the speaker is not an act. Both blind readers of the full re-read, 3 Oct (was: no_one); group confirmed by Anton, 2026-10-03. Reader: Donchenko appears once, as 'Welterweight: Daniil Donchenko vs Punahele Soriano' in the card list; a booking restated in a card list is background, so no_fact and next fight no. With nothing new about him, source answers for the main content, the outlet's own p",
+     "value": "media"
+    }
+   },
+   "reviewed": true,
+   "how": "summary"
+  },
+  "516": {
+   "fixes": {
+    "act": {
+     "note": "An act needs a plain statement about him: Tsarukyan's \"I don't think they are gonna do this fight, they are gonna give Ilia someone easy\" is a forecast of what the matchmakers will do, which is not an act. Both blind re-readers of 3 Oct; Anton, 2026-10-03: \"okay with none of these\".",
+     "value": "none_of_these"
+    }
+   },
+   "reviewed": true
+  },
+  "521": {
+   "fixes": {
+    "fact": {
+     "note": "only what is new (Anton, 2026-10-02); main claim: UFC.com video page: Donchenko speaks about his upcoming fight at UFC Paris (video furniture only).; \"Donchenko speaks to UFC.com about his upcoming fight\" — an interview premise with no saved content beyond page furniture",
+     "value": "no_fact"
+    },
+    "firmness": {
+     "note": "only what is new (Anton, 2026-10-02); main claim: UFC.com video page: Donchenko speaks about his upcoming fight at UFC Paris (video furniture only).",
+     "value": "none"
+    },
+    "reports_his_next_fight": {
+     "note": "only what is new (Anton, 2026-10-02); main claim: UFC.com video page: Donchenko speaks about his upcoming fight at UFC Paris (video furniture only).",
+     "value": "no"
+    }
+   },
+   "reviewed": false
+  },
+  "525": {
+   "fixes": {},
+   "reviewed": true
+  },
+  "529": {
+   "fixes": {
+    "fact": {
+     "note": "only what is new (Anton, 2026-10-02); main claim: Soriano profile ahead of UFC Paris; he calls Donchenko a 'scary dude' and the Saturday bout is the premise.; \"Saturday's meeting with Donchenko at Accor Arena is positioned in the middle of the main card\" — booking restated as the premise of a Soriano profile; about Donchenko only Soriano's opinion (\"scary dude, wild dude\")",
+     "value": "no_fact"
+    },
+    "firmness": {
+     "note": "only what is new (Anton, 2026-10-02); main claim: Soriano profile ahead of UFC Paris; he calls Donchenko a 'scary dude' and the Saturday bout is the premise.",
+     "value": "none"
+    },
+    "reports_his_next_fight": {
+     "note": "only what is new (Anton, 2026-10-02); main claim: Soriano profile ahead of UFC Paris; he calls Donchenko a 'scary dude' and the Saturday bout is the premise.",
+     "value": "no"
+    }
+   },
+   "reviewed": false
+  },
+  "532": {
+   "fixes": {
+    "fact": {
+     "note": "only what is new (Anton, 2026-10-02); main claim: Duplicate of 529: Soriano profile ahead of UFC Paris; Saturday's bout with Donchenko is the premise.; \"Saturday's meeting with Donchenko at Accor Arena is positioned in the middle of the main card\" — booking as premise; Soriano's opinion of him only",
+     "value": "no_fact"
+    },
+    "firmness": {
+     "note": "only what is new (Anton, 2026-10-02); main claim: Duplicate of 529: Soriano profile ahead of UFC Paris; Saturday's bout with Donchenko is the premise.",
+     "value": "none"
+    },
+    "reports_his_next_fight": {
+     "note": "only what is new (Anton, 2026-10-02); main claim: Duplicate of 529: Soriano profile ahead of UFC Paris; Saturday's bout with Donchenko is the premise.",
+     "value": "no"
+    }
+   },
+   "reviewed": false
+  },
+  "533": {
+   "fixes": {
+    "act": {
+     "note": "An act needs a plain statement about him: a guess, a name in a list or what he did for the speaker is not an act. Both blind readers of the full re-read, 3 Oct (was: assesses_him); group confirmed by Anton, 2026-10-03. Reader: Hooker: '¿Creen que Ilia va a correr el riesgo de pelear contra un tipo no rankeado que ni siquiera es de la UFC? Nadie más quiere correr el riesgo' — a guess about what Topuria will do inside Hooker's own story about his Parnasse payday, so none_of_these as a",
+     "value": "none_of_these"
+    }
+   },
+   "reviewed": true,
+   "how": "summary"
+  },
+  "540": {
+   "fixes": {
+    "act": {
+     "note": "An act needs a plain statement about him: a guess, a name in a list or what he did for the speaker is not an act. Both blind readers of the full re-read, 3 Oct (was: assesses_him); group confirmed by Anton, 2026-10-03. Reader: Topuria is one line in Hooker's quote ('¿Creen que Ilia va a correr el riesgo de pelear contra un tipo no rankeado...?'), a guess about what he will do, which is no act (none_of_these) and no fact; the article is about Hooker vs Parnasse. Act is unsure because",
+     "value": "none_of_these"
+    }
+   },
+   "reviewed": true,
+   "how": "summary"
+  },
+  "572": {
+   "fixes": {
+    "fact": {
+     "note": "status update (Anton, 2026-10-02): a named reporter says he returns to public life in September; that is news of where he stands as a fighter. Both blind readers agreed",
+     "value": "status_update"
+    },
+    "reports_his_health": {
+     "note": "only what is new (Anton, 2026-10-02); main claim: A Spanish reporter says Topuria will return to the public eye in September.; \"Ilia is going to return to the public eye directly in the month of September\" is the news; \"A medical update on Topuria after the fight confirmed that he had suffered a broken orbital bone\" and \"July was clearly about healing his injuries\" are recap, not a health update; none_of_these = a public reappearance",
+     "value": "no"
+    }
+   },
+   "reviewed": false
+  },
+  "588": {
+   "fixes": {
+    "centrality": {
+     "note": "COIN FLIP with one of several (Anton, 2026-10-03: \"agree flip\"). A Soriano feature that names Donchenko as his booked opponent and gives his record: 'new, not long' says only mentioned, 'tied to a booked fight' says one of several.",
+     "value": "only_mentioned"
+    },
+    "fact": {
+     "note": "only what is new (Anton, 2026-10-02); main claim: Soriano takes his win streak to France to face Donchenko Saturday; he talks about his setbacks and family.; \"returns to the UFC on Saturday when he faces Daniil Donchenko\" — booking as premise of a Soriano preview; Donchenko gets only a record line",
+     "value": "no_fact"
+    },
+    "firmness": {
+     "note": "only what is new (Anton, 2026-10-02); main claim: Soriano takes his win streak to France to face Donchenko Saturday; he talks about his setbacks and family.",
+     "value": "none"
+    },
+    "reports_his_next_fight": {
+     "note": "only what is new (Anton, 2026-10-02); main claim: Soriano takes his win streak to France to face Donchenko Saturday; he talks about his setbacks and family.",
+     "value": "no"
+    }
+   },
+   "reviewed": true
+  },
+  "592": {
+   "fixes": {
+    "fact": {
+     "note": "status update (Anton, 2026-10-02): a named reporter says he returns to public life in September; that is news of where he stands as a fighter. Both blind readers agreed",
+     "value": "status_update"
+    }
+   },
+   "reviewed": false
+  },
+  "594": {
+   "fixes": {
+    "fact": {
+     "note": "only what is new (Anton, 2026-10-02); main claim: Betting prediction and pick for Donchenko vs Soriano at UFC Paris.; \"Check out our UFC Paris odds series for our Donchenko-Soriano prediction and pick\" — a pick; the booking is its premise",
+     "value": "no_fact"
+    },
+    "firmness": {
+     "note": "only what is new (Anton, 2026-10-02); main claim: Betting prediction and pick for Donchenko vs Soriano at UFC Paris.",
+     "value": "none"
+    },
+    "reports_his_next_fight": {
+     "note": "only what is new (Anton, 2026-10-02); main claim: Betting prediction and pick for Donchenko vs Soriano at UFC Paris.",
+     "value": "no"
+    }
+   },
+   "reviewed": false
+  },
+  "599": {
+   "fixes": {
+    "fact": {
+     "note": "only what is new (Anton, 2026-10-02); main claim: Preview: why the Soriano fight in Paris is the hardest and most important of Donchenko's UFC run, with a prediction.; \"5 вересня в Парижі пройде турнір ... У його карді відбудеться бій ... Розповідаємо, чому бій із гавайцем такий важливий\" — a preview with analysis; the booking (and his first main-card slot) is its premise",
+     "value": "no_fact"
+    },
+    "firmness": {
+     "note": "only what is new (Anton, 2026-10-02); main claim: Preview: why the Soriano fight in Paris is the hardest and most important of Donchenko's UFC run, with a prediction.",
+     "value": "none"
+    },
+    "reports_his_next_fight": {
+     "note": "only what is new (Anton, 2026-10-02); main claim: Preview: why the Soriano fight in Paris is the hardest and most important of Donchenko's UFC run, with a prediction.",
+     "value": "no"
+    }
+   },
+   "reviewed": false
+  },
+  "603": {
+   "fixes": {
+    "fact": {
+     "note": "only what is new (Anton, 2026-10-02); main claim: Betting tip for Donchenko vs Soriano on September 5; the tipster picks Soriano.; \"what kind of bet to choose before this confrontation\"; \"Our prediction is that Soriano will win in 2.90\" — a pick, booking as premise",
+     "value": "no_fact"
+    },
+    "firmness": {
+     "note": "only what is new (Anton, 2026-10-02); main claim: Betting tip for Donchenko vs Soriano on September 5; the tipster picks Soriano.",
+     "value": "none"
+    },
+    "reports_his_next_fight": {
+     "note": "only what is new (Anton, 2026-10-02); main claim: Betting tip for Donchenko vs Soriano on September 5; the tipster picks Soriano.",
+     "value": "no"
+    }
+   },
+   "reviewed": false
+  },
+  "605": {
+   "fixes": {
+    "fact": {
+     "note": "The article's whole content is the booking, so the booking is its main claim, not background. That it is old news to us is for the grouping station to catch. Both blind readers of the full re-read, 3 Oct; Anton, 2026-10-03 (group I), reversing his 'no fact' of 2 Oct.",
+     "value": "next_fight"
+    },
+    "firmness": {
+     "note": "The fight is on the announced card (group I, Anton 2026-10-03).",
+     "value": "official_or_done"
+    },
+    "reports_his_next_fight": {
+     "note": "Follows the fact (group I, Anton 2026-10-03).",
+     "value": "yes"
+    }
+   },
+   "reviewed": true
+  },
+  "606": {
+   "fixes": {
+    "he_speaks": {
+     "note": "He speaks only when his words are there: only the judoka Gomis is quoted. Two of three readings of 3 Oct; Anton, 2026-10-03 (group L).",
+     "value": "no"
+    }
+   },
+   "reviewed": true,
+   "how": "summary"
+  },
+  "608": {
+   "fixes": {
+    "reports_his_next_fight": {
+     "note": "only what is new (Anton, 2026-10-02); main claim: Preview and prediction for Donchenko vs Soriano at UFC Fight Night Paris.; \"Daniil Donchenko vs Punahele Soriano Preview & Prediction\"; \"he should still get this done\" — a pick, booking as premise",
+     "value": "no"
+    }
+   },
+   "reviewed": true
+  },
+  "609": {
+   "fixes": {
+    "fact": {
+     "note": "only what is new (Anton, 2026-10-02); main claim: Soriano says being underestimated fuels him ahead of his UFC Paris fight with Donchenko.; \"Soriano meets Daniil Donchenko on September 5 at Accor Arena in Paris\" — booking as premise of Soriano's quotes; about Donchenko only \"scary dude, wild dude\"",
+     "value": "no_fact"
+    },
+    "firmness": {
+     "note": "only what is new (Anton, 2026-10-02); main claim: Soriano says being underestimated fuels him ahead of his UFC Paris fight with Donchenko.",
+     "value": "none"
+    },
+    "reports_his_next_fight": {
+     "note": "only what is new (Anton, 2026-10-02); main claim: Soriano says being underestimated fuels him ahead of his UFC Paris fight with Donchenko.",
+     "value": "no"
+    }
+   },
+   "reviewed": true
+  },
+  "614": {
+   "fixes": {},
+   "reviewed": true
+  },
+  "616": {
+   "fixes": {
+    "reports_his_next_fight": {
+     "note": "only what is new (Anton, 2026-10-02); main claim: Event announcement for UFC Fight Night 287: Donchenko fights Soriano on the main card Saturday, with card, times and analysis.; \"Донченко отримав місце в основному карді, як і просив ще кілька місяців тому\"; \"Вихід Донченка в октагон ... приблизно о 22:00\" — card list and start times of a preview; the booking is restated as its premise",
+     "value": "no"
+    }
+   },
+   "reviewed": true
+  },
+  "619": {
+   "fixes": {},
+   "reviewed": true
+  },
+  "620": {
+   "fixes": {
+    "reports_his_health": {
+     "note": "only what is new (Anton, 2026-10-02); main claim: Topuria reappears with a video letter to his son, saying the loss made him stronger and he is ready to return to training.; \"en la que sufrió una doble fractura orbital\" is a recap clause; the video is a life lesson to his son (\"el carácter es la única victoria que nadie puede quitarte\"), not a health update; \"no ha anunciado una fecha concreta ... a pesar de los rumores\" keeps next fight no",
+     "value": "no"
+    }
+   },
+   "reviewed": true
+  },
+  "623": {
+   "fixes": {
+    "fact": {
+     "note": "only what is new (Anton, 2026-10-02); main claim: UFC Paris preview and predictions for the whole card; Donchenko vs Soriano gets a paragraph of analysis.; \"Daniil Donchenko is looking to keep his momentum rolling\" ... \"he'll likely find himself fighting from behind\" — preview and pick; booking as premise",
+     "value": "no_fact"
+    },
+    "firmness": {
+     "note": "only what is new (Anton, 2026-10-02); main claim: UFC Paris preview and predictions for the whole card; Donchenko vs Soriano gets a paragraph of analysis.",
+     "value": "none"
+    },
+    "reports_his_next_fight": {
+     "note": "only what is new (Anton, 2026-10-02); main claim: UFC Paris preview and predictions for the whole card; Donchenko vs Soriano gets a paragraph of analysis.",
+     "value": "no"
+    }
+   },
+   "reviewed": false
+  },
+  "625": {
+   "fixes": {
+    "centrality": {
+     "note": "COIN FLIP with one of several. Anton, 2026-10-03: \"it's written a bit more about Donchenko, so agree on a flip, but if latest readings are main, can be main.\" Both readers of the full re-read said main subject: a weigh-in report on both men, written around the Ukrainian.",
+     "value": "main_subject"
+    },
+    "reports_his_next_fight": {
+     "note": "only what is new (Anton, 2026-10-02); main claim: Weigh-in: Donchenko and Soriano both made weight at 77.11 kg before their September 5 bout.; \"успішно пройшли офіційне зважування ... 77,11 кг\" is the news; \"Поєдинок відбудеться 5 вересня в Парижі\" is the booking restated as the premise of a weigh-in report",
+     "value": "no"
+    }
+   },
+   "reviewed": true
+  },
+  "627": {
+   "fixes": {
+    "reports_his_health": {
+     "note": "only what is new (Anton, 2026-10-02); main claim: Topuria breaks his silence with a video letter to his son about what the Gaethje loss taught him.; \"MMA Fighting reports that Topuria suffered extensive facial injuries in the bout but did not require surgery\" is a recap of June, not the article's news; the news is the video (\"Character doesn't show up when everything's going your way\"); \"No timetable has been set\" and the rematch line are closing background",
+     "value": "no"
+    }
+   },
+   "reviewed": true
+  },
+  "641": {
+   "fixes": {
+    "fact": {
+     "note": "only what is new (Anton, 2026-10-02); main claim: DraftKings best bets for UFC Paris; the writer backs Donchenko to finish Soriano.; \"I'm backing him to win by KO/TKO/DQ or submission at +100\" — a pick; booking as premise",
+     "value": "no_fact"
+    },
+    "firmness": {
+     "note": "only what is new (Anton, 2026-10-02); main claim: DraftKings best bets for UFC Paris; the writer backs Donchenko to finish Soriano.",
+     "value": "none"
+    },
+    "reports_his_next_fight": {
+     "note": "only what is new (Anton, 2026-10-02); main claim: DraftKings best bets for UFC Paris; the writer backs Donchenko to finish Soriano.",
+     "value": "no"
+    }
+   },
+   "reviewed": true
+  },
+  "647": {
+   "fixes": {},
+   "reviewed": true
+  },
+  "653": {
+   "fixes": {},
+   "reviewed": true
+  },
+  "654": {
+   "fixes": {},
+   "reviewed": true
+  },
+  "655": {
+   "fixes": {
+    "source": {
+     "note": "Whose words: booked or fought; a fighter is a fighter, active or retired; the source of the main content. Both blind readers of the full re-read, 3 Oct (was: none_of_these); group confirmed by Anton, 2026-10-03. Reader: The 10,000 characters of saved text are CSS ('select:focus{outline:0;border:1px solid #8a8a8a...') and never name Donchenko or Soriano, so he is not in the content and nobody does anything regarding him (none_of_these); source media is the outlet's own writer ",
+     "value": "media"
+    }
+   },
+   "reviewed": true,
+   "how": "summary"
+  },
+  "672": {
+   "fixes": {
+    "reports_his_next_fight": {
+     "note": "only what is new (Anton, 2026-10-02); main claim: Donchenko says a finish of Soriano at UFC Paris should put him in the top 15, and sizes up his opponent.; \"Donchenko prepares to take on Punahele Soriano at UFC Paris on Saturday\" is the premise; \"If not, definitely we will have someone from top 15 next\" is his guess, not news of his next fight",
+     "value": "no"
+    }
+   },
+   "reviewed": true
+  },
+  "673": {
+   "fixes": {
+    "reports_his_next_fight": {
+     "note": "only what is new (Anton, 2026-10-02); main claim: MMA Junkie prediction and pick for Donchenko vs Soriano; the analyst picks Soriano by KO.; \"I'll officially pick Soriano to score the upset with a knockout in Round 2\" — a pick; \"meet on the UFC Fight Night 287 main card Saturday\" is the booking as premise",
+     "value": "no"
+    }
+   },
+   "reviewed": true
+  },
+  "681": {
+   "fixes": {
+    "reports_his_next_fight": {
+     "note": "only what is new (Anton, 2026-10-02); main claim: Dan Tom (MMA Junkie) picks Soriano to upset Donchenko by KO in round 2 at UFC Fight Night 287.; \"Check out this quick breakdown of the matchup\" ... \"I'll officially pick Soriano to score the upset with a knockout in Round 2\" — the booking is the premise of a pick, not news.",
+     "value": "no"
+    }
+   },
+   "reviewed": true
+  },
+  "686": {
+   "fixes": {
+    "reports_his_next_fight": {
+     "note": "only what is new (Anton, 2026-10-02); main claim: Donchenko and Soriano held their staredown ahead of their Sept 5 bout at UFC Fight Night 287 in Paris.; \"провели битву поглядів. Очний поєдинок пройде 5 вересня\" — the bout is restated as the premise of a face-off report; June win over Berggren is a recap.",
+     "value": "no"
+    }
+   },
+   "reviewed": true
+  },
+  "687": {
+   "fixes": {
+    "reports_his_next_fight": {
+     "note": "only what is new (Anton, 2026-10-02); main claim: Fight-day guide: Donchenko faces Soriano on the Paris main card tonight, walkout around 23:00 Kyiv, on Setanta/Fight Pass.; \"Донченко та Соріано вийдуть в октагон орієнтовно о 23:00\" ... \"Дивитися онлайн LIVE\" — start times and card placement; the booking is the premise, not the news.",
+     "value": "no"
+    }
+   },
+   "reviewed": true
+  },
+  "688": {
+   "fixes": {
+    "centrality": {
+     "note": "How central, by what the article is about: new, not long, and whether he shares the stage. Both blind readers of the full re-read, 3 Oct (was: one_of_several); group confirmed by Anton, 2026-10-03. Reader: 'Попередні бої стартують о 19:00, основний кард заплановано на 22:00. Донченко та Соріано вийдуть в октагон орієнтовно о 23:00' is card order and start times, nobody speaking; the booking is restated as the premise of the watch guide, so next fight is no. Unsu",
+     "value": "main_subject"
+    },
+    "reports_his_next_fight": {
+     "note": "only what is new (Anton, 2026-10-02); main claim: Fight-day guide (same text as 687): Donchenko faces Soriano on the Paris main card tonight, walkout around 23:00 Kyiv.; \"Донченко та Соріано вийдуть в октагон орієнтовно о 23:00\" ... \"Дивитися онлайн LIVE\" — start times and card placement; the booking is the premise, not the news.",
+     "value": "no"
+    }
+   },
+   "reviewed": true,
+   "how": "summary"
+  },
+  "690": {
+   "fixes": {
+    "fact": {
+     "note": "only what is new (Anton, 2026-10-02); main claim: Sport.ua previews Donchenko vs Soriano tonight: Soriano is dangerous, Donchenko is favourite and should counter rather than brawl.; \"Соріано може здивувати, хоча й не є фаворитом\" ... \"Що слід робити Донченку\" — analysis and odds; \"5 вересня ... відбудеться турнір\" is the booking restated as the premise of a preview.",
+     "value": "no_fact"
+    },
+    "firmness": {
+     "note": "only what is new (Anton, 2026-10-02); main claim: Sport.ua previews Donchenko vs Soriano tonight: Soriano is dangerous, Donchenko is favourite and should counter rather than brawl.",
+     "value": "none"
+    },
+    "reports_his_next_fight": {
+     "note": "only what is new (Anton, 2026-10-02); main claim: Sport.ua previews Donchenko vs Soriano tonight: Soriano is dangerous, Donchenko is favourite and should counter rather than brawl.",
+     "value": "no"
+    }
+   },
+   "reviewed": false
+  },
+  "692": {
+   "fixes": {
+    "fact": {
+     "note": "only what is new (Anton, 2026-10-02); main claim: MMA Fighting card predictions: the writer picks Soriano to hand Donchenko his first KO loss at UFC Paris.; \"The Ultimate Fighter 33 winner Daniil Donchenko fights the streaking Punahele Soriano\" ... \"Pick: Soriano\" — a booking restated as the premise of a pick.",
+     "value": "no_fact"
+    },
+    "firmness": {
+     "note": "only what is new (Anton, 2026-10-02); main claim: MMA Fighting card predictions: the writer picks Soriano to hand Donchenko his first KO loss at UFC Paris.",
+     "value": "none"
+    },
+    "reports_his_next_fight": {
+     "note": "only what is new (Anton, 2026-10-02); main claim: MMA Fighting card predictions: the writer picks Soriano to hand Donchenko his first KO loss at UFC Paris.",
+     "value": "no"
+    }
+   },
+   "reviewed": true
+  },
+  "693": {
+   "fixes": {
+    "fact": {
+     "note": "kept as the readers had it (Anton, 2026-10-02): a fact stated inside the main claim belongs to it; he states it himself in his essay: \"las dos órbitas de los ojos fracturadas, el tabique y el pie rotos\"",
+     "value": "health"
+    }
+   },
+   "reviewed": false
+  },
+  "698": {
+   "fixes": {
+    "fact": {
+     "note": "only what is new (Anton, 2026-10-02); main claim: MMA Fighting card predictions (same text as 692): the writer picks Soriano to KO Donchenko at UFC Paris.; \"Daniil Donchenko fights the streaking Punahele Soriano\" ... \"Pick: Soriano\" — a booking restated as the premise of a pick.",
+     "value": "no_fact"
+    },
+    "firmness": {
+     "note": "only what is new (Anton, 2026-10-02); main claim: MMA Fighting card predictions (same text as 692): the writer picks Soriano to KO Donchenko at UFC Paris.",
+     "value": "none"
+    },
+    "reports_his_next_fight": {
+     "note": "only what is new (Anton, 2026-10-02); main claim: MMA Fighting card predictions (same text as 692): the writer picks Soriano to KO Donchenko at UFC Paris.",
+     "value": "no"
+    }
+   },
+   "reviewed": false
+  },
+  "709": {
+   "fixes": {
+    "reports_his_next_fight": {
+     "note": "only what is new (Anton, 2026-10-02); main claim: DraftKings pick: the writer takes Donchenko to finish Soriano at +100 at today's UFC Fight Night in Paris.; \"Check out my best bet below\" ... \"I'm taking him to win this contest at +100 by KO/TKO/DQ or submission\" — the bout is the premise of a betting pick.",
+     "value": "no"
+    }
+   },
+   "reviewed": true
+  },
+  "723": {
+   "fixes": {
+    "fact": {
+     "note": "kept as the readers had it (Anton, 2026-10-02): a fact stated inside the main claim belongs to it; he states it himself in his essay: \"both orbital bones fractured, my septum broken, and my foot broken\". Act carries the message (his reflection), fact the one hard fact in it",
+     "value": "health"
+    },
+    "reports_his_health": {
+     "note": "follows health",
+     "value": "yes"
+    }
+   },
+   "reviewed": true
+  },
+  "737": {
+   "fixes": {
+    "centrality": {
+     "note": "New, not long: a live blog of the whole card that gives his bout three rounds of play-by-play, a new account of his fight. Two of three readings of 3 Oct; Anton, 2026-10-03 (group L).",
+     "value": "one_of_several"
+    }
+   },
+   "reviewed": true
+  },
+  "740": {
+   "fixes": {
+    "act": {
+     "note": "The caption reports that he talked after his decision win; no words of his. Two of three readings of 3 Oct; Anton, 2026-10-03 (group L), replacing his earlier 'speaks of himself'.",
+     "value": "reports_an_event"
+    },
+    "source": {
+     "note": "Only the saved text counts: the saved text is a video caption, none of his words are in it, so nobody speaks. Two of three readings of 3 Oct; Anton, 2026-10-03 (group L), replacing his earlier 'himself'. Now the same as its twin #746.",
+     "value": "no_one"
+    }
+   },
+   "reviewed": true
+  },
+  "743": {
+   "fixes": {},
+   "reviewed": true
+  },
+  "745": {
+   "fixes": {
+    "fact": {
+     "note": "The twin of #605: a short notice whose whole content is the booking. Both blind readers of the full re-read, 3 Oct; Anton, 2026-10-03 (group I). Published on fight day with a start time, so fight week event was arguable.",
+     "value": "next_fight"
+    },
+    "reports_his_next_fight": {
+     "note": "Follows the fact (group I, Anton 2026-10-03).",
+     "value": "yes"
+    }
+   },
+   "reviewed": true,
+   "how": "summary"
+  },
+  "755": {
+   "fixes": {
+    "fact": {
+     "note": "kept as the readers had it (Anton, 2026-10-02): a fact stated inside the main claim belongs to it; the article says \"He also revealed that he suffered fractures to both orbital bones, a broken septum, and a broken foot\"",
+     "value": "health"
+    }
+   },
+   "reviewed": false
+  },
+  "762": {
+   "fixes": {
+    "act": {
+     "note": "How central, by what the article is about: new, not long, and whether he shares the stage. Both blind readers of the full re-read, 3 Oct (was: gives_news_of_him); group confirmed by Anton, 2026-10-03. Reader: A Q&A with the physio where about half the answers concern Topuria ('tolera muy bien todo tipo de tratamientos', 'tiene una curiosidad increíble', 'se recupera con descanso, como todos') and the rest FISIOEXPO and physiotherapy in general; nothing specific abo",
+     "value": "assesses_him"
+    },
+    "centrality": {
+     "note": "How central, by what the article is about: new, not long, and whether he shares the stage. Both blind readers of the full re-read, 3 Oct (was: main_subject); group confirmed by Anton, 2026-10-03. Reader: A Q&A with the physio where about half the answers concern Topuria ('tolera muy bien todo tipo de tratamientos', 'tiene una curiosidad increíble', 'se recupera con descanso, como todos') and the rest FISIOEXPO and physiotherapy in general; nothing specific abo",
+     "value": "one_of_several"
+    }
+   },
+   "reviewed": true,
+   "how": "summary"
+  },
+  "774": {
+   "fixes": {
+    "fact": {
+     "note": "only what is new (Anton, 2026-10-02); main claim: Donchenko's post-fight press-conference remarks in Paris: the fight was under control, he followed his game plan, thanks to Ukrainian fans, and he wants Daniel Rodriguez next.; Headline 'Подяка українцям і інші заяви'; lede 'вразив не тільки в октагоні, а і у медіа-румі'; the win is referenced only as premise ('потім він вражав в октагоні', 'Я розумів, що переміг у двох попередніх раундах'); the only forward item is a wish: 'хотів би битися із Даніелем Родрігесом'. A press conference is a place where things are said; what is said here is analysis and a wish, so no_fact.",
+     "value": "no_fact"
+    },
+    "firmness": {
+     "note": "only what is new (Anton, 2026-10-02); main claim: Donchenko's post-fight press-conference remarks in Paris: the fight was under control, he followed his game plan, thanks to Ukrainian fans, and he wants Daniel Rodriguez next.",
+     "value": "none"
+    },
+    "reports_his_result": {
+     "note": "only what is new (Anton, 2026-10-02); main claim: Donchenko's post-fight press-conference remarks in Paris: the fight was under control, he followed his game plan, thanks to Ukrainian fans, and he wants Daniel Rodriguez next.",
+     "value": "no"
+    }
+   },
+   "reviewed": false
+  },
+  "778": {
+   "fixes": {},
+   "reviewed": true
+  },
+  "779": {
+   "fixes": {},
+   "reviewed": true
+  },
+  "789": {
+   "fixes": {
+    "fact": {
+     "note": "only what is new (Anton, 2026-10-02); main claim: Donchenko calls out Daniel Rodriguez as the opponent he wants next, elaborating backstage after his Paris win.; Headline 'has specific UFC veteran in mind for next fight'; lede 'name-dropped who he wants next'; 'Please, let me fight just with him' is a wish, 'it would be cool end of the year' is his own guess at timing. The result ('three-round unanimous decision win over Puna Soriano on Saturday') sits in paragraph three as the premise of the callout, published the day after, not as the article's news.",
+     "value": "no_fact"
+    },
+    "firmness": {
+     "note": "only what is new (Anton, 2026-10-02); main claim: Donchenko calls out Daniel Rodriguez as the opponent he wants next, elaborating backstage after his Paris win.",
+     "value": "none"
+    },
+    "reports_his_result": {
+     "note": "only what is new (Anton, 2026-10-02); main claim: Donchenko calls out Daniel Rodriguez as the opponent he wants next, elaborating backstage after his Paris win.",
+     "value": "no"
+    }
+   },
+   "reviewed": false
+  },
+  "794": {
+   "fixes": {
+    "fact": {
+     "note": "only what is new (Anton, 2026-10-02); main claim: Donchenko calls out Daniel Rodriguez as the opponent he wants next, elaborating backstage after his Paris win.; Headline 'has specific UFC veteran in mind for next fight'; lede 'name-dropped who he wants next'; 'Please, let me fight just with him' is a wish, 'it would be cool end of the year' is his own guess at timing. The result ('three-round unanimous decision win over Puna Soriano on Saturday') sits in paragraph three as the premise of the callout, published the day after, not as the article's news.",
+     "value": "no_fact"
+    },
+    "firmness": {
+     "note": "only what is new (Anton, 2026-10-02); main claim: Donchenko calls out Daniel Rodriguez as the opponent he wants next, elaborating backstage after his Paris win.",
+     "value": "none"
+    },
+    "reports_his_result": {
+     "note": "only what is new (Anton, 2026-10-02); main claim: Donchenko calls out Daniel Rodriguez as the opponent he wants next, elaborating backstage after his Paris win.",
+     "value": "no"
+    }
+   },
+   "reviewed": false
+  },
+  "797": {
+   "fixes": {
+    "fact": {
+     "note": "only what is new (Anton, 2026-10-02); main claim: Donchenko calls out Daniel Rodriguez as the opponent he wants next, elaborating backstage after his Paris win.; Headline 'has specific UFC veteran in mind for next fight'; lede 'name-dropped who he wants next'; 'Please, let me fight just with him' is a wish, 'it would be cool end of the year' is his own guess at timing. The result ('three-round unanimous decision win over Puna Soriano on Saturday') sits in paragraph three as the premise of the callout, published the day after, not as the article's news.",
+     "value": "no_fact"
+    },
+    "firmness": {
+     "note": "only what is new (Anton, 2026-10-02); main claim: Donchenko calls out Daniel Rodriguez as the opponent he wants next, elaborating backstage after his Paris win.",
+     "value": "none"
+    },
+    "reports_his_result": {
+     "note": "only what is new (Anton, 2026-10-02); main claim: Donchenko calls out Daniel Rodriguez as the opponent he wants next, elaborating backstage after his Paris win.",
+     "value": "no"
+    }
+   },
+   "reviewed": true
+  },
+  "803": {
+   "fixes": {
+    "reports_his_health": {
+     "note": "only what is new (Anton, 2026-10-02); main claim: Jon Anik says the UFC may be internally discussing a Gaethje vs Topuria 2 title rematch as Topuria's return.; Health flips to no: 'Topuria's facial injuries are also said to have healed well, fueling talks that his comeback could be on the cards, potentially in early 2027' is the article's closing sentence, hearsay ('are also said to'), recalled on the way; the June TKO loss is recap ('back in June'). The article's news is the rematch talk.",
+     "value": "no"
+    }
+   },
+   "reviewed": false
+  },
+  "813": {
+   "fixes": {
+    "fact": {
+     "note": "only what is new (Anton, 2026-10-02); main claim: Donchenko calls out Daniel Rodriguez as the opponent he wants next, elaborating backstage after his Paris win.; Headline 'has specific UFC veteran in mind for next fight'; lede 'name-dropped who he wants next'; 'Please, let me fight just with him' is a wish, 'it would be cool end of the year' is his own guess at timing. The result ('three-round unanimous decision win over Puna Soriano on Saturday') sits in paragraph three as the premise of the callout, published the day after, not as the article's news.",
+     "value": "no_fact"
+    },
+    "firmness": {
+     "note": "only what is new (Anton, 2026-10-02); main claim: Donchenko calls out Daniel Rodriguez as the opponent he wants next, elaborating backstage after his Paris win.",
+     "value": "none"
+    },
+    "reports_his_result": {
+     "note": "only what is new (Anton, 2026-10-02); main claim: Donchenko calls out Daniel Rodriguez as the opponent he wants next, elaborating backstage after his Paris win.",
+     "value": "no"
+    }
+   },
+   "reviewed": false
+  },
+  "820": {
+   "fixes": {
+    "centrality": {
+     "note": "New, not long: the article carries a new fact about him (a named rumour of a December fight, denied by Pimblett), so he is more than only mentioned. Both blind readers of the full re-read, 3 Oct; Anton, 2026-10-03 (group J).",
+     "value": "one_of_several"
+    },
+    "source": {
+     "note": "Pimblett is not scheduled with Topuria",
+     "value": "other_fighter_side"
+    }
+   },
+   "reviewed": true
+  },
+  "823": {
+   "fixes": {
+    "he_speaks": {
+     "note": "There is barely a quote, only paraphrasing what he talked about.",
+     "value": "no"
+    }
+   },
+   "reviewed": true
+  },
+  "833": {
+   "fixes": {
+    "centrality": {
+     "note": "How central, by what the article is about: new, not long, and whether he shares the stage. Both blind readers of the full re-read, 3 Oct (was: main_subject); group confirmed by Anton, 2026-10-03. Reader: Anik's 'I think there are internal conversations to potentially try to do Gaethje vs Topuria 2' is a named commentator reporting talks, so next_fight at rumour, but he also calls it 'my non-informed speculation' and a prediction of what the matchmakers will do",
+     "value": "one_of_several"
+    }
+   },
+   "reviewed": true,
+   "how": "summary"
+  },
+  "838": {
+   "fixes": {
+    "source": {
+     "note": "rule: opponent side means booked or fought (Anton, 2026-10-02); Pimblett on a rumoured fight, not booked",
+     "value": "other_fighter_side"
+    }
+   },
+   "reviewed": false
+  },
+  "843": {
+   "fixes": {
+    "reports_his_next_fight": {
+     "note": "only what is new (Anton, 2026-10-02); main claim: Pimblett would welcome a Topuria fight but has had no talks; the article's news is Pimblett's own December timeline and hit list.; 'I'd love to smash his head in' is a wish; 'Nothing yet. No one's spoke to me about it' is the absence of talks, not a booking rumoured or denied; the Gaethje rematch 'chatter' is one passing line. Fact is already no_fact, so under \"only what is new\" next_fight must be no.",
+     "value": "no"
+    },
+    "source": {
+     "note": "rule: opponent side means booked or fought (Anton, 2026-10-02); Pimblett callout, no fight booked",
+     "value": "other_fighter_side"
+    }
+   },
+   "reviewed": true
+  },
+  "851": {
+   "fixes": {
+    "fact": {
+     "note": "Anton, 2026-10-02 (replaces 'result stays' of the same evening): published 7 Sept, two days after the fight, when 29 articles had already reported the win. The headline and lead are his callout of Rodriguez (\"already has his next opponent in mind\"); the win is a recap paragraph. A callout is a wish, so no fact (only what is new). Both blind re-readers said no fact. Source himself and act speaks of himself carry it",
+     "value": "no_fact"
+    },
+    "firmness": {
+     "note": "no fact, so none (no fact means nothing else either)",
+     "value": "none"
+    },
+    "reports_his_result": {
+     "note": "no fact, so the three news questions are no (no fact means nothing else either); the win is recalled, not reported as the news",
+     "value": "no"
+    }
+   },
+   "reviewed": true
+  },
+  "852": {
+   "fixes": {
+    "fact": {
+     "note": "only what is new (Anton, 2026-10-02); main claim: Donchenko gives his assessment of the Soriano win and says he hopes the UFC gives him a good next fight.; The article opens with 'оцінив перемогу' (assessed the win) and carries only his quotes; the result itself is recapped with 'Нагадаємо, перемога над Соріано стала...' (let us recall), the rule-3 marker for background. His next fight is a hope: 'Сподіваюся, що мені дадуть гарний бій'.",
+     "value": "no_fact"
+    },
+    "firmness": {
+     "note": "only what is new (Anton, 2026-10-02); main claim: Donchenko gives his assessment of the Soriano win and says he hopes the UFC gives him a good next fight.",
+     "value": "none"
+    },
+    "reports_his_result": {
+     "note": "only what is new (Anton, 2026-10-02); main claim: Donchenko gives his assessment of the Soriano win and says he hopes the UFC gives him a good next fight.",
+     "value": "no"
+    }
+   },
+   "reviewed": false
+  },
+  "856": {
+   "fixes": {
+    "act": {
+     "note": "An act needs a plain statement about him: \"gives news of him\" never goes with \"no fact\" (Anton, 2026-10-03). His fractures are a recap in a year-in-review; nobody here gives news of him.",
+     "value": "none_of_these"
+    }
+   },
+   "reviewed": true
+  },
+  "861": {
+   "fixes": {
+    "act": {
+     "note": "An act needs a plain statement about him: a guess, a name in a list or what he did for the speaker is not an act. Both blind readers of the full re-read, 3 Oct (was: steers_him); group confirmed by Anton, 2026-10-03. Reader: Donchenko is a name in a list: 'future matchups are discussed for... fellow main card winners Daniil Donchenko, Kurtis Campbell, Losene Keita'; the text carries no statement about who he should fight, so none_of_these rather than steers_him, which an editor co",
+     "value": "none_of_these"
+    }
+   },
+   "reviewed": true,
+   "how": "summary"
+  },
+  "862": {
+   "fixes": {},
+   "reviewed": true
+  },
+  "871": {
+   "fixes": {
+    "centrality": {
+     "note": "new, not long: judge what is new about him (Anton, 2026-09-28); both \"new, not long\" re-readers 2026-10-02: Pimblett's stance on a rumoured fight; nothing new about Topuria beyond his already-published essay",
+     "value": "only_mentioned"
+    },
+    "fact": {
+     "note": "Anton, 2026-10-02: only the headline says 'rumored'; the text reports no third-party rumour, just Pimblett's wish, so a wish, as #843",
+     "value": "no_fact"
+    },
+    "firmness": {
+     "note": "no fact drives none",
+     "value": "none"
+    },
+    "reports_his_next_fight": {
+     "note": "no fact drives no",
+     "value": "no"
+    },
+    "source": {
+     "note": "rule: opponent side means booked or fought (Anton, 2026-10-02); Pimblett callout, no fight booked",
+     "value": "other_fighter_side"
+    }
+   },
+   "reviewed": true
+  },
+  "879": {
+   "fixes": {
+    "fact": {
+     "note": "only what is new (Anton, 2026-10-02); main claim: Matt Brown believes an immediate Gaethje rematch could permanently damage Topuria and he should take a tune-up fight first.; 'Matt Brown believes an immediate rematch ... could permanently damage' is the article; the Anik line ('recently said the promotion is exploring a second fight') is the premise he reacts to, and the article itself closes 'The rematch discussion remains speculative'. Injuries are 'reportedly suffered' background.",
+     "value": "no_fact"
+    },
+    "firmness": {
+     "note": "only what is new (Anton, 2026-10-02); main claim: Matt Brown believes an immediate Gaethje rematch could permanently damage Topuria and he should take a tune-up fight first.",
+     "value": "none"
+    },
+    "reports_his_next_fight": {
+     "note": "only what is new (Anton, 2026-10-02); main claim: Matt Brown believes an immediate Gaethje rematch could permanently damage Topuria and he should take a tune-up fight first.",
+     "value": "no"
+    },
+    "source": {
+     "note": "rule: a fighter is a fighter, active or retired (Anton, 2026-10-02); Matt Brown, retired, on a podcast, as #901",
+     "value": "other_fighter_side"
+    }
+   },
+   "reviewed": false
+  },
+  "883": {
+   "fixes": {},
+   "reviewed": true
+  },
+  "887": {
+   "fixes": {
+    "reports_his_next_fight": {
+     "note": "only what is new (Anton, 2026-10-02); main claim: Josh Hokit says Topuria (and Pereira) do not deserve a title shot in their next fight.; 'neither Ilia Topuria nor Alex Pereira deserve a ... title shot in their next fight' is opinion; the Anik 'internal conversations' quote sits in the closing paragraph (the #1002 pattern). Fact is already no_fact, so next_fight must be no.",
+     "value": "no"
+    }
+   },
+   "reviewed": true
+  },
+  "889": {
+   "fixes": {
+    "source": {
+     "note": "rule: opponent side means booked or fought (Anton, 2026-10-02); Rodriguez callout, 'UFC has not confirmed'",
+     "value": "other_fighter_side"
+    }
+   },
+   "reviewed": true
+  },
+  "892": {
+   "fixes": {
+    "centrality": {
+     "note": "new, not long: judge what is new about him (Anton, 2026-09-28); both \"new, not long\" re-readers 2026-10-02: Pimblett asks for a fight; a callout adds nothing new about Topuria (as #843, Anton 2026-10-02)",
+     "value": "only_mentioned"
+    },
+    "source": {
+     "note": "rule: opponent side means booked or fought (Anton, 2026-10-02); Pimblett callout, no fight booked",
+     "value": "other_fighter_side"
+    }
+   },
+   "reviewed": true
+  },
+  "896": {
+   "fixes": {},
+   "reviewed": true
+  },
+  "901": {
+   "fixes": {
+    "fact": {
+     "note": "only what is new (Anton, 2026-10-02); main claim: Matt Brown says the UFC risks ruining Topuria's life by making an immediate Gaethje rematch; he should fight someone like Moicano first.; 'Matt Brown thinks the UFC could be risking Ilia Topuria's career' is the article; 'rumors have surfaced that the Spaniard could be set for an immediate rematch' is the premise, and the Pimblett link in the last paragraph is a wish ('a fight Pimblett still wants'). Broken orbitals are background.",
+     "value": "no_fact"
+    },
+    "firmness": {
+     "note": "only what is new (Anton, 2026-10-02); main claim: Matt Brown says the UFC risks ruining Topuria's life by making an immediate Gaethje rematch; he should fight someone like Moicano first.",
+     "value": "none"
+    },
+    "reports_his_next_fight": {
+     "note": "only what is new (Anton, 2026-10-02); main claim: Matt Brown says the UFC risks ruining Topuria's life by making an immediate Gaethje rematch; he should fight someone like Moicano first.",
+     "value": "no"
+    }
+   },
+   "reviewed": true
+  },
+  "905": {
+   "fixes": {
+    "reports_his_next_fight": {
+     "note": "only what is new (Anton, 2026-10-02); main claim: Matt Brown believes Topuria should take a tune-up bout before any Gaethje rematch.; 'Brown believes Ilia Topuria should take a tuneup bout' is the article; 'Jon Anik recently indicated the UFC is weighing a potential ... sequel' is the premise he reacts to. Fact is already no_fact, so under \"only what is new\" next_fight must be no.",
+     "value": "no"
+    },
+    "source": {
+     "note": "rule: a fighter is a fighter, active or retired (Anton, 2026-10-02); Matt Brown, retired, on a podcast, as #901",
+     "value": "other_fighter_side"
+    }
+   },
+   "reviewed": true
+  },
+  "913": {
+   "fixes": {
+    "centrality": {
+     "note": "COIN FLIP with main subject (Anton, 2026-10-03: \"agree with a flip\"). Four readings of 3 Oct said one of several, the two of the full re-read said main subject: built on Pimblett's quote, half of it weighing Topuria's options.",
+     "value": "one_of_several"
+    },
+    "fact": {
+     "note": "Anton, 2026-10-02 (evening, replaces the morning ruling of next fight): the article is Pimblett's own wish and the writer's analysis of two options; he denies any talks. Anik's rematch claim is a passing line, as in #1002, #879 and #901. Four blind readings under the new wording all said no fact, and so did the brief's rule",
+     "value": "no_fact"
+    },
+    "firmness": {
+     "note": "no fact, so none (no fact means nothing else either)",
+     "value": "none"
+    },
+    "reports_his_next_fight": {
+     "note": "no fact, so the three news questions are no (no fact means nothing else either); no specific fight exists or changes",
+     "value": "no"
+    },
+    "source": {
+     "note": "rule: opponent side means booked or fought (Anton, 2026-10-02); Pimblett callout, no fight booked",
+     "value": "other_fighter_side"
+    }
+   },
+   "reviewed": true
+  },
+  "917": {
+   "fixes": {
+    "fact": {
+     "note": "only what is new (Anton, 2026-10-02); main claim: Joe Rogan warns Topuria not to rush his return after the damage he took against Gaethje, citing Volkanovski.; 'Joe Rogan believes a rushed return ... could end badly' is the article; the injuries ('two broken orbital bones, a shattered septum, and a broken foot') are recapped from his essay as the premise for Rogan's opinion (#856 pattern), and 'he probably needs like six months before he's even sparring again' is Rogan's guess at timing (#462 pattern).",
+     "value": "no_fact"
+    },
+    "firmness": {
+     "note": "only what is new (Anton, 2026-10-02); main claim: Joe Rogan warns Topuria not to rush his return after the damage he took against Gaethje, citing Volkanovski.",
+     "value": "none"
+    },
+    "reports_his_health": {
+     "note": "only what is new (Anton, 2026-10-02); main claim: Joe Rogan warns Topuria not to rush his return after the damage he took against Gaethje, citing Volkanovski.",
+     "value": "no"
+    }
+   },
+   "reviewed": false
+  },
+  "921": {
+   "fixes": {
+    "centrality": {
+     "note": "new, not long: judge what is new about him (Anton, 2026-09-28); both \"new, not long\" re-readers 2026-10-02: Pimblett's callout; nothing new about Topuria (as #843, Anton 2026-10-02)",
+     "value": "only_mentioned"
+    },
+    "reports_his_next_fight": {
+     "note": "only what is new (Anton, 2026-10-02); main claim: Pimblett says he would be willing to fight Topuria next but nobody has spoken to him about it.; 'would be more than willing to fight Ilia Topuria next' and 'I'd love to smash his head in' are a wish; 'Nothing yet. No one's spoke to me about it' is the absence of talks; the Anik 'internal talks' line is the closing sentence (#1002 pattern). Fact is already no_fact, so next_fight must be no.",
+     "value": "no"
+    },
+    "source": {
+     "note": "rule: opponent side means booked or fought (Anton, 2026-10-02); Pimblett callout, no fight booked",
+     "value": "other_fighter_side"
+    }
+   },
+   "reviewed": true
+  },
+  "926": {
+   "fixes": {
+    "reports_his_next_fight": {
+     "note": "only what is new (Anton, 2026-10-02); main claim: Joe Rogan's opinion that Topuria should not rush his return after the Gaethje loss.; Main claim is 'Rogan has urged ... not to repeat the same mistake' (opinion). The June loss and injuries are recap ('after the Spaniard suffered two fractured orbital bones'); the rematch talk is recalled from an earlier report ('Commentator Jon Anik recently revealed ... internal discussions', which Anik himself calls 'non-informed speculation'): background, so next fight is no.",
+     "value": "no"
+    }
+   },
+   "reviewed": true
+  },
+  "933": {
+   "fixes": {
+    "he_speaks": {
+     "note": "He speaks only when his words are there: the only words of his are a few recalled from an earlier occasion. Both blind readers of the full re-read, 3 Oct (was: yes); group confirmed by Anton, 2026-10-03. Reader: The piece is the writer's own forecast of what the matchmakers might do ('Спробуймо розібратися, хто може стати наступним суперником'), which the guide says is no act, hence none_of_these; a reader could call his 'на місці менеджерів Донченка я від нього не ві",
+     "value": "no"
+    }
+   },
+   "reviewed": true,
+   "how": "summary"
+  },
+  "934": {
+   "fixes": {
+    "he_speaks": {
+     "note": "He speaks only when his words are there: the only words of his are a few recalled from an earlier occasion. Both blind readers of the full re-read, 3 Oct (was: yes); group confirmed by Anton, 2026-10-03. Reader: 'Вибираємо йому суперника на наступний поєдинок' — the outlet's writer sincerely proposes Rodriguez, Holland, Magny, Medic and Miller as options, none of them in talks, so no fact; the Soriano win and his Rodriguez callout are recap. His only words are two rec",
+     "value": "no"
+    }
+   },
+   "reviewed": true,
+   "how": "summary"
+  },
+  "948": {
+   "fixes": {
+    "source": {
+     "note": "Booked or fought, read from the article itself: Topuria appears only in a 'latest news' link and the text never says the two fought. Two of three readings of 3 Oct; Anton, 2026-10-03 (group L). He is not in the content.",
+     "value": "other_fighter_side"
+    }
+   },
+   "reviewed": true,
+   "how": "summary"
+  },
+  "953": {
+   "fixes": {},
+   "reviewed": true
+  },
+  "958": {
+   "fixes": {
+    "fact": {
+     "note": "status update (Anton, 2026-10-02): the promotion says he is ready and nothing is booked; opponents are named only as options. No specific fight exists or changes. Both blind readers agreed",
+     "value": "status_update"
+    },
+    "reports_his_next_fight": {
+     "note": "no specific fight exists or changes: ready, nothing booked, options only",
+     "value": "no"
+    }
+   },
+   "reviewed": false
+  },
+  "972": {
+   "fixes": {
+    "fact": {
+     "note": "status update (Anton, 2026-10-02): the promotion says he is ready and nothing is booked; opponents are named only as options. No specific fight exists or changes. Both blind readers agreed",
+     "value": "status_update"
+    },
+    "reports_his_next_fight": {
+     "note": "no specific fight exists or changes: ready, nothing booked, options only",
+     "value": "no"
+    }
+   },
+   "reviewed": false
+  },
+  "975": {
+   "fixes": {},
+   "reviewed": true
+  },
+  "983": {
+   "fixes": {},
+   "reviewed": true
+  },
+  "991": {
+   "fixes": {
+    "fact": {
+     "note": "status update (Anton, 2026-10-02): the promotion says he is ready and nothing is booked; opponents are named only as options. No specific fight exists or changes. Both blind readers agreed",
+     "value": "status_update"
+    },
+    "reports_his_next_fight": {
+     "note": "no specific fight exists or changes: ready, nothing booked, options only",
+     "value": "no"
+    }
+   },
+   "reviewed": false
+  },
+  "998": {
+   "fixes": {
+    "fact": {
+     "note": "status update (Anton, 2026-10-02): the promotion says he is ready and nothing is booked; opponents are named only as options. No specific fight exists or changes. Both blind readers agreed",
+     "value": "status_update"
+    },
+    "reports_his_health": {
+     "note": "only what is new (Anton, 2026-10-02); main claim: Dana White confirms Topuria is ready to fight again ('Topuria está listo para pelea. Nosotros estamos listos para él').; Health: 'parece que el Matador está recuperado' and 'Con Topuria ya recuperado' are the article's gloss on White's 'listo para pelear'; the fracture is recapped ('terminó con una doble fractura orbital'). The news is when he can fight, not a health update: health no.",
+     "value": "no"
+    },
+    "reports_his_next_fight": {
+     "note": "no specific fight exists or changes: ready, nothing booked, options only",
+     "value": "no"
+    }
+   },
+   "reviewed": true
+  },
+  "1002": {
+   "fixes": {
+    "fact": {
+     "note": "Anton, 2026-10-02: the article is Pantoja's message; the rematch rumour and the injuries are background (only what is new)",
+     "value": "no_fact"
+    },
+    "firmness": {
+     "note": "no fact drives none",
+     "value": "none"
+    },
+    "reports_his_next_fight": {
+     "note": "no fact drives no; the rumour is a closing line, not the article's news",
+     "value": "no"
+    }
+   },
+   "reviewed": true
+  },
+  "1008": {
+   "fixes": {
+    "fact": {
+     "note": "status update (Anton, 2026-10-02): the promotion says he is ready and nothing is booked; opponents are named only as options. No specific fight exists or changes. Both blind readers agreed",
+     "value": "status_update"
+    },
+    "reports_his_next_fight": {
+     "note": "no specific fight exists or changes: ready, nothing booked, options only",
+     "value": "no"
+    }
+   },
+   "reviewed": false
+  },
+  "1016": {
+   "fixes": {
+    "reports_his_next_fight": {
+     "note": "only what is new (Anton, 2026-10-02); main claim: Eddie Alvarez's opinion that an immediate Gaethje rematch would be a mistake.; Main claim is 'Alvarez believes an immediate rematch ... would be a mistake' (opinion). The rematch is the premise ('recent reports suggest the UFC is considering running the fight back') and 'the timing of any rematch remains unclear': background, next fight no.",
+     "value": "no"
+    }
+   },
+   "reviewed": true
+  },
+  "1020": {
+   "fixes": {
+    "fact": {
+     "note": "status update (Anton, 2026-10-02): the promotion says he is ready and nothing is booked; opponents are named only as options. No specific fight exists or changes. Both blind readers agreed",
+     "value": "status_update"
+    },
+    "reports_his_health": {
+     "note": "only what is new (Anton, 2026-10-02); main claim: Dana White confirms Topuria is ready to fight, with a Gaethje rematch or Pimblett on the table.; Health: the injuries appear only in the closing paragraph as the reason a 2026 return looks rushed ('está completando las recuperaciones de sus fracturas orbitales ... Volver a finales de este año ... suena muy precipitado'), which is the writer's timing guess plus recap, not a health update: health no.",
+     "value": "no"
+    },
+    "reports_his_next_fight": {
+     "note": "no specific fight exists or changes: ready, nothing booked, options only",
+     "value": "no"
+    }
+   },
+   "reviewed": true
+  },
+  "1031": {
+   "fixes": {
+    "fact": {
+     "note": "status update (Anton, 2026-10-02): the promotion says he is ready and nothing is booked; opponents are named only as options. No specific fight exists or changes. Both blind readers agreed",
+     "value": "status_update"
+    },
+    "reports_his_next_fight": {
+     "note": "no specific fight exists or changes: ready, nothing booked, options only",
+     "value": "no"
+    }
+   },
+   "reviewed": false
+  },
+  "1036": {
+   "fixes": {
+    "fact": {
+     "note": "status update (Anton, 2026-10-02): the promotion says he is ready and nothing is booked; opponents are named only as options. No specific fight exists or changes. Both blind readers agreed",
+     "value": "status_update"
+    },
+    "reports_his_next_fight": {
+     "note": "no specific fight exists or changes: ready, nothing booked, options only",
+     "value": "no"
+    }
+   },
+   "reviewed": false
+  },
+  "1045": {
+   "fixes": {
+    "act": {
+     "note": "Anton, 2026-10-03: a video page; the saved text is only the episode blurb. It says the hosts 'react to' him being ready to fight and does not say what they do regarding him. With no fact on the card, nobody is giving news of him (only the saved text counts)",
+     "value": "none_of_these"
+    },
+    "fact": {
+     "note": "only what is new (Anton, 2026-10-02); main claim: A podcast episode page: the hosts react to Topuria being 'ready to fight'.; The page's own content is 'The Boys in the Back react to Ilia Topuria being \"ready to fight\"' plus previews and picks; the readiness news is the premise of a reaction show, in quotation marks, with no source or detail of its own: no_fact, next fight no.",
+     "value": "no_fact"
+    },
+    "firmness": {
+     "note": "only what is new (Anton, 2026-10-02); main claim: A podcast episode page: the hosts react to Topuria being 'ready to fight'.",
+     "value": "none"
+    },
+    "reports_his_next_fight": {
+     "note": "only what is new (Anton, 2026-10-02); main claim: A podcast episode page: the hosts react to Topuria being 'ready to fight'.",
+     "value": "no"
+    }
+   },
+   "reviewed": true
+  },
+  "1058": {
+   "fixes": {
+    "fact": {
+     "note": "status update (Anton, 2026-10-02): the promotion says he is ready and nothing is booked; opponents are named only as options. No specific fight exists or changes. Both blind readers agreed",
+     "value": "status_update"
+    },
+    "reports_his_health": {
+     "note": "only what is new (Anton, 2026-10-02); main claim: Dana White confirms Topuria is ready to fight and weighs Gaethje or Pimblett as his return fight.; Health: 'ya cuenta con el alta' and 'ya se recuperó de las fracturas orbitales' (the latter from an embedded tweet) are the article's reading of White's 'está listo para pelear'; the news is that he can fight again, and the early-2027 line is the writer's guess at timing. Under \"only what is new\" the health question stays on the main claim: health no.",
+     "value": "no"
+    },
+    "reports_his_next_fight": {
+     "note": "no specific fight exists or changes: ready, nothing booked, options only",
+     "value": "no"
+    }
+   },
+   "reviewed": false
+  },
+  "1066": {
+   "fixes": {
+    "fact": {
+     "note": "COIN FLIP with status update. Dana White hints he may face Pimblett next: a next-fight rumour with a who. Three readings of 3 Oct: next fight at rumour (two), status update (one); none says no fact. Anton, 2026-10-03 (group L).",
+     "value": "next_fight"
+    },
+    "firmness": {
+     "note": "A hint, not an announcement: 'no set date for Topuria's return has been announced' (group L, Anton 2026-10-03).",
+     "value": "rumour"
+    },
+    "reports_his_next_fight": {
+     "note": "Follows the fact (group L, Anton 2026-10-03).",
+     "value": "yes"
+    }
+   },
+   "reviewed": true,
+   "how": "summary"
+  },
+  "1076": {
+   "fixes": {
+    "fact": {
+     "note": "status update (Anton, 2026-10-02): the promotion says he is ready and nothing is booked; opponents are named only as options. No specific fight exists or changes. Both blind readers agreed",
+     "value": "status_update"
+    },
+    "reports_his_next_fight": {
+     "note": "no specific fight exists or changes: ready, nothing booked, options only",
+     "value": "no"
+    }
+   },
+   "reviewed": false
+  },
+  "1089": {
+   "fixes": {
+    "act": {
+     "note": "With a fact on the card, the promotion stating where he stands is giving news of him; both readers of the full re-read.",
+     "value": "gives_news_of_him"
+    },
+    "fact": {
+     "note": "Anton, 2026-10-03: \"I'm open to status update if readers never say no fact. Seems like Topuria is ready to fight in the article makes it read as status.\" Checked: eight readings since the status-update value exists (2 Oct pilot, two re-reads of 3 Oct, the full re-read), all eight status update; none said no fact. White names his opponents only as options.",
+     "value": "status_update"
+    },
+    "firmness": {
+     "note": "Stated by the promotion (Dana White).",
+     "value": "official_or_done"
+    },
+    "reports_his_next_fight": {
+     "note": "only what is new (Anton, 2026-10-02); main claim: Dana White says Gaethje has money left to make and should not retire; Topuria's readiness is the frame.",
+     "value": "no"
+    }
+   },
+   "reviewed": true
+  },
+  "1097": {
+   "fixes": {
+    "reports_his_next_fight": {
+     "note": "only what is new (Anton, 2026-10-02); main claim: Belal Muhammad's opinion that Topuria should fight Pimblett rather than get an immediate Gaethje rematch.; Main claim is 'Muhammad does not think Ilia Topuria should get an immediate rematch' (opinion). White's 'ready to return' and Gaethje's 2027 plan are recalled as context ('He recently said Topuria is ready to return'; 'Reuters reported earlier this month'): background, next fight no.",
+     "value": "no"
+    }
+   },
+   "reviewed": true
+  },
+  "1101": {
+   "fixes": {
+    "fact": {
+     "note": "COIN FLIP with no fact. Anton, 2026-10-03: \"if readers never take no fact, we can set status update.\" Checked: of four readings since the value exists, three say status update and one (2 Oct pilot, reader B) says no fact; none says personal life. His own quote is a reflection; the one hard fact is White's 'Topuria is ready to fight, we're ready for him'.",
+     "value": "status_update"
+    },
+    "reports_his_next_fight": {
+     "note": "only what is new (Anton, 2026-10-02); main claim: Topuria says, in a 1Win interview, that he no longer ties his happiness to achieving goals and lives in the present.",
+     "value": "no"
+    }
+   },
+   "reviewed": true,
+   "how": "summary"
+  },
+  "1146": {
+   "fixes": {
+    "centrality": {
+     "note": "How central, by what the article is about: new, not long, and whether he shares the stage. Both blind readers of the full re-read, 3 Oct (was: main_subject); group confirmed by Anton, 2026-10-03. Reader: Makhachev ('I don't think he is a dangerous opponent... someone stopped his wrestling') rates Amosov, who shares the article with Garry and Garry's coach; the first half is about Amosov so main_subject is arguable. Makhachev is not booked against him, so other",
+     "value": "one_of_several"
+    }
+   },
+   "reviewed": true,
+   "how": "summary"
+  },
+  "1160": {
+   "fixes": {
+    "centrality": {
+     "note": "How central, by what the article is about: new, not long, and whether he shares the stage. Both blind readers of the full re-read, 3 Oct (was: only_mentioned); group confirmed by Anton, 2026-10-03. Reader: 'I don't think [Amosov] is a dangerous opponent ... I don't consider him a dangerous fighter at all' is a new assessment of him by Makhachev, who is not booked against him, hence other_fighter_side and no_fact. Centrality unsure: he is one of several contender",
+     "value": "one_of_several"
+    }
+   },
+   "reviewed": true,
+   "how": "summary"
+  },
+  "1172": {
+   "fixes": {
+    "fact": {
+     "note": "kept as the readers had it (2026-10-02 health re-read, medium confidence, for Anton to read): he states it himself in the interview: \"I had an infection on 4 August... I was in hospital, they cut my arm\". The saved text is cut at 10,000 characters",
+     "value": "health"
+    },
+    "reports_his_result": {
+     "note": "only what is new (Anton, 2026-10-02); main claim: Donchenko, in a long interview ten days after beating Soriano in Paris, talks about a possible Usman fight, Ukrainians in the UFC and how the fight went.",
+     "value": "no"
+    }
+   },
+   "reviewed": true
+  }
+ }
+}
