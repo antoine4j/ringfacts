@@ -180,3 +180,36 @@ many articles near the line is noisier. From here on, every acceptance
 needs two runs that agree. Averaging three runs of the standing fact
 answer changed nothing (130 right each way), so repeats and a vote do not
 help the standing wording: avenue 5 dropped after this test.
+
+### E2. How central: another fighter talking about him (accepted)
+
+*Hypothesis.* The main-subject level lists who may talk about him as the
+article's topic ("a coach, an official or a pundit") and leaves out other
+fighters, so when Makhachev or Gaethje talks about him the literal reading
+lands one level down. That is the largest single blocker: on the training
+set, 15 articles in 8 claims have "how central" as their only wrong
+answer, 14 of the misses one level too low. Variants: `anyone` (adds
+"another fighter" to that list), `shares` (rewords the one-of-several
+level so it means other fighters' news, not another fighter speaking),
+both, and round 2's wording. Failure: callout articles (only mentioned by
+rule) or previews (one of several) moving up.
+
+*Smoke test* (21 articles): `anyone` fixed 5 of 11 targets; callouts and
+previews unchanged.
+
+*Two full runs* (how central right on training / validation):
+
+| variant | run 1 | run 2 |
+|---|---|---|
+| control | 132 / 30 | 132 / 29 |
+| anyone | 140 / 32 (+8 in 3 claims, −0; validation +2 in 2) | 138 / 32 (+7 in 3, −1; validation +3 in 3) |
+| shares | 132 / 31 | — |
+| both | 139 / 32 | 138 / 32 |
+
+*Decision: accepted* (`anyone`). Both runs agree. All nine right rises by 6
+then 5 on training and 2 then 3 on validation. Leave-claims-out: it was
+designed on the claims where another fighter talks about him (claim-014,
+-033, -112, -008); outside them it gained #803 (claim-097, a commentator)
+and 2 to 3 validation articles in 2 to 3 claims, which no design looked at.
+`shares` did nothing alone, so it was not taken. Claim-033 (Tsarukyan
+naming his next opponent) did not move.
