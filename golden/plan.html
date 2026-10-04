@@ -142,6 +142,8 @@ code{font-family:var(--mono);font-size:.9em}
 
   <section class="now-box" id="nowbox"></section>
 
+  <p class="lede"><b>Where the work happens now:</b> the Answer Key Check page, <a href="https://claude.ai/artifact/RKAaSMy3eQsse3unLHLDte">claude.ai/artifact/RKAaSMy3eQsse3unLHLDte</a> (every card, your corrections, the readers' hints). The rules in force: <code>golden/rules.md</code>. Your words per ruling: <code>golden/verdicts.md</code>. Readers' prompt beside the classifier's: <a href="https://claude.ai/artifact/JxUPbyomf27dFXeFYBKf3t">the wording page</a>.</p>
+
   <p class="lede"><b>Claim map:</b> every claim on a who × what grid, built from the machine's answers, for spot-checking top-down. Local: <code>python3 golden/board/map.py</code>, then <code>golden/board/map.html</code>.</p>
 
   <section style="display:grid;gap:12px">
@@ -180,6 +182,7 @@ code{font-family:var(--mono);font-size:.9em}
       <li><b>One fight week.</b> Every result article is Donchenko vs Soriano. A second week needs a fresh pull, which is your call, later.</li>
       <li><b>Text only.</b> The 300 were drawn from articles with a body, so the headline-only path is not tested.</li>
       <li><b>Already used for tuning.</b> The classifier went through 18 passes on these articles. That is why the tune/test split exists: a score only counts on the test third.</li>
+      <li><b>One model read everything.</b> The original readers, the re-readers and the cloud readers are all Fable. They can share a blind spot; your own checks (77 cards so far, and the spot check, 4.23) are the only guard.</li>
       <li><b>Topuria was thinned</b> (182 of his articles kept), so his time gaps read longer than they are.</li>
     </ul>
   </section>
@@ -196,20 +199,20 @@ const PATH = [
   {t:"Claim map", s:"every claim on re-sliceable axes (27 Sept)", st:"done"},
   {t:"Axes defined and run", s:"classifier v3 on the approved axes (27 Sept)", st:"done"},
   {t:"Answer key on nine questions", s:"three readers on all 300; classifier v4 → v6; split drawn 1 Oct (155 / 40 / 105)", st:"done"},
-  {t:"Check the answer key", s:"step 1 done (75 cards, 27 rules); full blind re-read done (3 Oct); now the 56 articles that differ, then a spot check", st:"now"},
-  {t:"Freeze the labels", s:"one final labels file with a date", st:""},
-  {t:"Score each station, axis by axis", s:"on the test third; recorded in decisions.md", st:""},
+  {t:"Check the answer key", s:"75 cards checked, 27 rules named, whole set re-read: 244 of 300 settled (3 Oct). Now: the 56 that differ (4.20 to 4.22), then a spot check (4.23)", st:"now"},
+  {t:"Freeze the labels", s:"one final labels file with a date (4.24)", st:""},
+  {t:"Classifier v7, then score each station", s:"rules into the questions (4.25); scored once on the test side, with tolerance; recorded in decisions.md", st:""},
   {t:"Settings, then a tier check", s:"cell → tier per fighter; tier a sample", st:""},
 ];
 
 const NOW = {
-  title:"Next: finish the answer key, then freeze it (agreed 3 Oct)",
+  title:"You are here: 244 of 300 articles settled. Five steps to a frozen answer key.",
   items:[
-    ["4.16","The 21 unchecked cards where both new readers disagree with the key: confirm by group (19 proposed in seven groups, 2 held for the next item)."],
-    ["4.16","The 10 checked cards where both new readers disagree with a ruling: keep, change, or mark as a coin flip."],
-    ["4.16","The 26 articles where the two readers differ: one independent third reading each; two of three decide, a three-way split is a coin flip."],
-    ["4.16","Spot-check about 20 random cards from the 244 that are settled: a guard against a blind spot all readers share."],
-    ["4.16","Freeze: one final labels file with a date. No further full re-read; a new rule only when a rule is missing."],
+    ["4.20","WAITING FOR YOU: confirm the 21 unchecked cards where both new readers disagree with the key. 19 are proposed in seven groups; say yes to all or name exceptions."],
+    ["4.21","Rule on the 10 checked cards where both new readers disagree with you: keep, change, or coin flip."],
+    ["4.22","A third, independent reading on the 26 articles where the two readers differ (about 40 dollars of credit, on your go)."],
+    ["4.23","Spot-check about 20 random cards from the settled 244."],
+    ["4.24","Freeze: one final labels file with a date. Then the classifier comes back (4.25)."],
   ]
 };
 
@@ -249,7 +252,7 @@ const STATIONS = [
       "This is the to-do list for the tune-up (3.4).",
       "Shows the limits of fetching a page once without a browser."),
     T("3.3","later","Mark every article whose saved text is unusable, across all 300",
-      "Expected 10 to 15. Two confirmed so far (#134, #655); the board pre-flags suspects.",
+      "Expected 10 to 15. Confirmed so far: #134 (intro only), #655 (styling code only), #647 (one line plus the site's comment policy), #44 (a video page with almost nothing saved), #1045 (a video page, only the blurb). Measured 3 Oct: 23 saved texts hit the 10,000-character cap, and some start with site menus (#1172 opens with 1,900 characters of menu). Video pages come in three kinds: almost nothing saved, the whole transcript (#492), only the blurb (golden/rule-backlog.md, item 4).",
       "Lets a score separate 'the station was wrong' from 'the input was garbage'. Worth asking whether this must happen before step 7, or the classifier gets scored on garbage.",
       "Test cases for a quality check. A length check alone lets styling code through.",
       "Design card 7: an article with no usable text needs a check and a defined fate."),
@@ -259,8 +262,8 @@ const STATIONS = [
       "The only way to know if a fix helped.",
       "Better text lifts every station after it."),
    ]},
-  {n:4, name:"Classifier", role:"Places each article on the axes: about him or not, who, what regarding him, what fact.",
-   verdict:"Answers are in and on the map. Define the axes, then correct the map: those corrections are the labels.",
+  {n:4, name:"Classifier", role:"Answers nine questions per article: how central he is, whose words, what the source does, what new fact, how firm, and four yes/no (result, next fight, health, he speaks).",
+   verdict:"The answer key is built, checked where the readers differed, and re-read whole under the final guide: 244 of 300 articles are settled. Left: 56 articles, a spot check, the freeze. The classifier's own questions wait for v7.",
    items:[
     T("4.1","done","Store the classifier's answers for all 300 articles",
       "Six questions, three readers each, frozen in golden/answers and shown on the board.",
@@ -287,11 +290,51 @@ const STATIONS = [
       "Turns 'does this look plausible?' into a number per question.",
       "Picked v6, now on the map.",
       "The same loop tunes any later version."),
-    T("4.16","label","Check the answer key: mark what the Fable readers got wrong",
-      "On the correction page (claude.ai/artifact/RKAaSMy3eQsse3unLHLDte), which now carries all 300 articles, labelled the same way (95% reader agreement; golden/answers/readers-v1.json). Step 1 shows the 75 articles where the readers differed, step 2 the 133 where only the classifier differs, step 3 a sample of the 92 where all agree. Each card shows its side of the split drawn 2026-10-01 (tune 155, check 40, test 105). Also rule on the guide's own calls: how firm when there is no fact, a coach's 'he'll be ready' as reported, act when he is only mentioned. 2 Oct: step 1 is grouped by boundary (8 groups), each with an overnight brief of candidate rules; two blind re-reads under rule A move 9 articles off 'one of several'; a third reader backs the readers on 277 of the 321 answers the classifier disputes. Decide the rules, not the articles. 3 Oct: STEP 1 IS DONE, all 75 cards checked; the rules in force have plain names in golden/rules.md (27), each guarded by a test that fails if its sentence leaves the guide (golden/rules.json); a new fact value, status update, was tested by blind readers on all 300 and adopted. After step 1: the copy check (experiments/2026-09-27-answer-key/copies.py) is clean (33 near-identical pairs, 30 with identical labels, the other 3 are different UFC.com videos); a blind re-read of 35 articles for the rules decided on 3 Oct had both readers on the key's answer for 161 of 175 answers, showed the callout rule half written, and moved three answers (#913, #516, #148); with the missing sentence added, a rerun on the callout articles gave 95 of 95 (experiments/2026-09-27-answer-key/reread-1003). FULL RE-READ, 3 Oct: two blind readers on all 300, all nine questions, today's guide (experiments/2026-09-27-answer-key/full-reread; about 79 dollars of cloud credit): on 244 of the 300 articles both give the key's answer on all nine. THE FINISH LINE (agreed 3 Oct; it replaces steps 2 and 3, because the classifier's v6 predates the rules and the fresh readers have now covered those cards): (1) the 21 unchecked cards where both readers disagree with the key, confirmed by group; (2) the 10 checked cards where both readers disagree with a ruling: keep, change, or mark as a coin flip; (3) the 26 articles where the two readers differ: one independent third reading each, then two of three decide, and a three-way split is a coin flip; (4) a spot check of about 20 random cards from the settled 244, as a guard against a blind spot all readers share; (5) FREEZE: one final labels file with a date. STOPPING RULES: this was the last full re-read; an article where readers still split under the rules is recorded as a coin flip with both acceptable answers, not argued further; a new rule only when a rule is missing, never to settle one article, and tested on its own examples only.",
-      "Makes the key yours, so every score above means right, not agrees with Fable.",
-      "All v4–v6 scores are rescored on it.",
-      "The same corrections, on all 300, become the golden labels.", "P1"),
+    T("4.16","done","Check the answer key, part 1: the 75 cards where the readers differed",
+      "Done 3 Oct, on the Answer Key Check page (claude.ai/artifact/RKAaSMy3eQsse3unLHLDte). The key is the three readers' answers on all 300 articles (golden/answers/readers-v1.json, never edited) with your corrections laid over them in the page's own database: 131 cards carry a correction or a check mark, 77 are marked checked. The 75 cards were grouped by the boundary the readers split on (next fight 30, health 6, result 5, opponent or other side 7, how central 10, what the source does 8, reported or official 4, other 5) and decided rule by rule, not card by card. Your words for each ruling are in golden/verdicts.md.",
+      "Makes the key yours, so a score means right, not agrees with Fable.",
+      "Every later classifier version is scored against these answers.",
+      "The same corrections, on all 300, become the golden labels."),
+    T("4.18","done","Give every labelling rule a plain name, and guard it",
+      "Done 3 Oct. 27 rules in golden/rules.md, each with a plain name ('only what is new', 'booked or fought', 'a callout is the other fighter's story', 'an act needs a plain statement about him'...) and a full description. golden/rules.json lists the exact sentences the labelling guide must contain for each rule, and a test that runs before every commit fails if one is gone. A new fact value, status update, was tested by blind readers on all 300 and adopted on 2 Oct. Rules still undecided are in golden/rule-backlog.md.",
+      "A label is only as good as the rule behind it; a rule nobody can name gets applied unevenly.",
+      "The classifier's questions will be rewritten from these rules (4.25).",
+      "A rule cannot drop out of the prompt by accident when someone edits it later."),
+    T("4.19","done","Re-read the whole set blind under the final guide",
+      "Done 3 Oct. First each new rule on its own examples (35 articles: 161 of 175 answers as the key has them; it showed the callout rule was half written, and a rerun after the fix gave 95 of 95). Then the whole set: two blind readers, all 300 articles, all nine questions, in a cloud session (experiments/2026-09-27-answer-key/full-reread; 79 dollars of promotional credit, 171 left). Of 2,700 answers the readers agree with each other on 2,658 and both match the key on 2,613. On 244 of the 300 articles both give the key's answer on all nine questions. The copy check is clean (33 near-identical pairs, 30 with identical labels, 3 are different UFC.com videos).",
+      "Each rule had been tested only on the articles it was written for; nobody had re-read the set as a whole since the rules were made.",
+      "Finds labels that predate a rule, and sentences that move an article nobody had in mind.",
+      "244 settled articles are review you do not have to do."),
+    T("4.20","decide","Confirm the 21 unchecked cards where both new readers disagree with the key",
+      "Proposed 3 Oct in seven groups, 19 cards: what the source does becomes 'none of these' (6: #467, #533, #540, #861, #238, #510); 'he speaks' becomes no (#933, #934); a taunt is a callout (#408); a callout is the other fighter's story (#78); how central moves one step (#762, #833, #1146, #1160, #688); whose words (#187, #247, #655); health follows who states it (#327). Two are held for 4.21: #745 (a booking notice, the twin of #605) and #1101 (the #1089 question again). Each card shows the two readers' answers as a hint. You confirm by group; I write the corrections.",
+      "Mostly your own rules reaching cards they had not been applied to.",
+      "Removes stale answers before anything is scored on them.",
+      "Wrong labels here would be counted as classifier errors later.", "P1"),
+    T("4.21","label","Rule on the 10 checked cards where both new readers disagree with you",
+      "#1089 (status update, six readers of six, you ruled no fact twice); #283 and #423 (Pimblett callouts checked before the callout rule: 'one of several' against the readers' 'only mentioned'); #913 (both readers now say main subject, your first ruling); #605 with #745 (a short booking notice: no fact, or next fight?); #1101; and single cards #342, #503, #588, #625, #820. For each: keep your ruling, change it, or mark it a coin flip. Your ruling stands unless you change it.",
+      "Shows where the guide and your rulings have drifted apart.",
+      "A ruling the guide does not carry cannot be learned by any classifier prompt.",
+      "Keeps the key consistent: one rule, one answer."),
+    T("4.22","label","Take a third reading on the 26 articles where the two readers differ",
+      "One fresh agent per article, so the reading is fully independent (about 40 dollars of the credit; needs your go). Two of three decide, unless you object. Where all three differ, the article is a coin flip. Known names in the list: #879 and #1066 (borderline rumours), #647 (a one-line stub), #740 and #746 (UFC.com video pages).",
+      "A split between careful readers is either an unclear rule or a truly borderline article; a third reading tells which.",
+      "Coin flips are recorded with both acceptable answers, so a classifier is not punished for either.",
+      "This is what stops the adjusting: a persistent split is a result, not a problem to solve."),
+    T("4.23","label","Spot-check about 20 random cards from the 244 that are settled",
+      "You look at 20 picked at random. If one or none is wrong, freeze. If several are, we talk before doing anything else.",
+      "All readers are the same model, so they can share a blind spot; only you can catch that.",
+      "The one check on the cards nobody disputes.",
+      "The key is yours only if you have looked where the machines agree, too."),
+    T("4.24","label","Freeze the labels: one final file with a date",
+      "All 300 articles, nine answers each, your corrections folded in, plus the list of accepted coin flips. After this, a correction is still possible but is logged as a change to a frozen key. Stopping rules agreed 3 Oct: no further full re-read; a new rule only when a rule is missing, never to settle one article, and tested on its own examples only.",
+      "A key that keeps moving cannot be scored against.",
+      "Everything after this (4.25, 4.17, 4.7) needs a fixed target.",
+      "Ends the labelling work."),
+    T("4.25","later","Classifier v7: bring the 27 rules into the classifier's questions",
+      "Parked by your choice until the labels are frozen. The classifier's v6 questions predate almost every rule. The v7 wording is drafted for the questions the status-update change touched (experiments/2026-09-27-answer-key/wording-proposal.json) and shown beside v6 on the wording page (claude.ai/artifact/JxUPbyomf27dFXeFYBKf3t), which also lists the rules not drafted yet. The wording must follow the vendor's writing rules (docs.typesafe.ai; notes in docs/lessons.md). One paid pass on the tune side, on your go; 0.10 of the 1 dollar budget is spent.",
+      "No new labels.",
+      "The classifier cannot match answers made under rules it was never told.",
+      "This is the step that turns the answer key into a better classifier."),
     T("4.17","later","Try different sets of questions against the same labels",
       "After the labels are frozen: autonomous rounds that change which questions the classifier is asked (drop the three news flags and derive them from fact plus a 'second fact' question; merge or split questions; ask fewer) and map each variant's answers onto the nine labels in code, as how firm already is. Tuned on the tune side, compared on the check side, about a cent per variant. No relabelling unless the values themselves change.",
       "Reuses the labels as they are: they describe the article, not the questions.",
@@ -323,7 +366,7 @@ const STATIONS = [
       "Shows where the classifier's answers land and which options are never used.",
       "The same view may become what readers see behind 'read more'."),
     T("4.7","score","Score the classifier once on the test third, axis by axis",
-      "After the freeze. One number per axis (gate, who, what, fact, how firm), written into decisions.md beside the design.",
+      "After the freeze and v7 (4.25). One number per question, nine in all, written into decisions.md beside the design. Scored with tolerance (your point of 3 Oct): a near miss between neighbouring values and a flip from one pole to the other are counted separately, and on a recorded coin flip either answer counts. We do not aim at identical answers on every run; we aim at no drastic ones.",
       "Uses the labels exactly once, so the number is honest.",
       "Tells us whether it is good enough or needs work.",
       "A recorded number instead of an impression."),
@@ -375,12 +418,12 @@ const STATIONS = [
       "Confirms v4 did not change any conclusion.",
       "Shows which text to compare articles on.",
       "Production compares headline plus lead today; the extract version separates claims better."),
-    T("6.4","decide","Decide how far back joining should look",
+    T("6.4","label","Decide how far back joining should look",
       "37 same-claim pairs are more than 3 days apart, in 10 claims.",
       "Decides whether those 37 pairs count as misses when scoring.",
       "Sets the size of the search window.",
       "Too short and a repeat posts again (G3). Too long and more wrong joins and more cost.", "P2"),
-    T("6.5","decide","Decide whether fight-week routine is a claim of its own",
+    T("6.5","label","Decide whether fight-week routine is a claim of its own",
       "Weigh-ins, face-offs, open workouts.",
       "Changes how many fight-week articles are grouped, so the labels must follow one rule.",
       "Tells grouping what to join.",
@@ -410,7 +453,7 @@ const STATIONS = [
       "Shows the classifier answers carry enough to decide tiers.",
       "Input to the decider's design."),
     T("7.4","later","Build the settings table: which cells reach tier 1, 2 or 3, per fighter",
-      "Your rulings so far become the defaults: for Donchenko and Amosov you hear everyone; for Topuria only people with standing. Changeable, later by users too.",
+      "Your rulings so far become the defaults: for Donchenko and Amosov you hear everyone; for Topuria only people with standing. Changeable, later by users too. Design intent of 3 Oct: what fact and how firm route an article together (an official fight at once, a rumour to a digest); neither is used alone to cut an article away, and no single label should be able to drop an article by itself.",
       "No labels; it sits on top of them.",
       "Makes the decider a lookup instead of a judgement.",
       "The decoupling: facts are classified once, what each reader wants is a setting."),
@@ -445,6 +488,9 @@ const STATIONS = [
 ];
 
 const GAPS = [
+  ["One article, several watched fighters", "An article is stored under the fighter whose feed found it first, so a Donchenko interview can exist only as an Amosov card (#975). 16 of the 300 name a second watched fighter; on 4 the other one is named more. Recorded in TODO.md as an input to the pipeline redesign (3 Oct)."],
+  ["The man he called out answers back", "No value of 'what the source does' fits a reply to his own callout (#889). Parked in golden/rule-backlog.md, item 14."],
+  ["A long interview where the hard fact is one paragraph", "#1172: a health fact inside a long reflection. Readers split on it again in the full re-read. Parked, rule-backlog item 13."],
   ["Headline-only articles", "About 19% of the raw feed in the other project had no text. The set cannot test them. A later slice, like the second fight week."],
   ["Depth and size of news", "The grid says what kind of claim it is, not how big. Two assessments by the same person can be a full breakdown or one line. The tier sample (7.2) will show whether depth needs its own axis."],
   ["A fighter profile for the classifier", "Division, last fight, manager, coach: it would let the classifier tell his camp from others when the article does not say. Held off (27 Sept) until there is a way to keep it updated on its own."],
