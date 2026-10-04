@@ -381,3 +381,36 @@ under "no fact", and they over-call kinds on articles that only mention a
 subject. The disagreement between the choice and the kind questions marks
 the hard articles well, which is useful for review even where it does not
 make a better label.
+
+**Round 5** = round 4 plus E4 (examples invented), run in full ($0.052):
+**91 of 155** on training, **18 of 40** on validation. Later experiments
+are scored beside round 5.
+
+### E7. What the classifier is shown (cleaning reported, not adopted)
+
+*Hypothesis.* The vendor lists a large state full of unrelated detail as a
+weak spot, and some saved texts open with a site's menus (#619, #958) or end
+with lists of other headlines. Showing only the article's own text should
+help; cutting long texts short might help or hurt. `states.py` builds two
+states, in the runner only (golden/articles.json is untouched):
+`cleaned` starts at the headline's repeat above the article (or the first
+stretch of running sentences), ends before lists of other headlines and at
+the last stretch of running sentences; `short` is the cleaned text cut at
+4,000 characters. The cleaner keeps 99% of the median article and cuts 23
+of 195 articles by more than 30%. All nine questions are sent, so each
+state is a full round. Failure: any question worse beyond noise.
+
+*Result* (articles with all nine right, training / validation):
+
+| state | all nine | notes |
+|---|---|---|
+| round 5, as saved | 91 / 18 | |
+| cleaned | 92 / 17 | fact 128 → 131 and firmness 131 → 134 on training, how central 138 → 133; validation fact 33 → 32 |
+| short (4,000 characters) | 83 / 17 | worse on training by 8 |
+
+*Decision: cleaning makes no measurable difference, so nothing is adopted
+and there is nothing to hand to the body-extraction station on these
+numbers.* The gains and losses per question are the size of the noise and
+point both ways. Cutting the text short costs whole articles: the news of
+a long interview is often deep in it. As agreed, cleaning was tried as an
+experiment and is reported, not adopted.
