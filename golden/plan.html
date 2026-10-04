@@ -187,7 +187,7 @@ code{font-family:var(--mono);font-size:.9em}
     </ul>
   </section>
 
-  <footer>Updated 2026-10-03: labels are nine answers per article, checked card by card against 27 named rules (golden/rules.md); tiers come from settings. Source: <code>golden/plan.html</code> in the repo; the rulings behind every "done" are in <code>golden/verdicts.md</code>.</footer>
+  <footer>Updated 2026-10-04: classifier v7 tuned overnight (4.25 done); labels are nine answers per article, checked card by card against 27 named rules (golden/rules.md); tiers come from settings. Source: <code>golden/plan.html</code> in the repo; the rulings behind every "done" are in <code>golden/verdicts.md</code>.</footer>
 </div>
 
 <script>
@@ -201,17 +201,17 @@ const PATH = [
   {t:"Answer key on nine questions", s:"three readers on all 300; classifier v4 → v6; split drawn 1 Oct (155 / 40 / 105)", st:"done"},
   {t:"Check the answer key", s:"75 cards by rule, 27 rules named, whole set re-read blind, a third reading on 26, a spot check of 20: all done 3 Oct", st:"done"},
   {t:"Labels frozen", s:"golden/labels.json, 3 Oct: 300 articles, nine answers each, guarded by a test", st:"done"},
-  {t:"Classifier v7, then score each station", s:"rules into the questions (4.25), on your go; scored once on the test side, with tolerance; recorded in decisions.md", st:"now"},
+  {t:"Classifier v7, then score each station", s:"v7 tuned 3–4 Oct (4.25): 94 of 155 training, 19–20 of 40 validation; next, your five calls, then the test side once (4.7)", st:"now"},
   {t:"Settings, then a tier check", s:"cell → tier per fighter; tier a sample", st:""},
 ];
 
 const NOW = {
-  title:"The answer key is frozen (3 Oct). Next: the classifier comes back.",
+  title:"Classifier v7 is tuned (night of 3–4 Oct). Next: your calls, then the test side.",
   items:[
-    ["4.25","YOUR CALL: classifier v7. Bring the 27 rules into the classifier's questions, following the vendor's writing rules; one paid pass on the tune side. Parked by your choice until the freeze, which is now done."],
-    ["4.17","After v7: try different sets of questions against the same labels."],
-    ["4.7","Then score the classifier once on the test side, question by question, with near misses and pole-to-pole flips counted separately."],
-    ["6.4","Still open, not started: how far back joining should look, and whether fight-week routine is a claim of its own (6.5)."],
+    ["4.25","DONE: all nine answers right on 94 of 155 training articles and 19–20 of 40 validation articles (v6: 63 and 16). The morning report is at the top of experiments/2026-10-03-classifier-v7/README.md."],
+    ["You","Five calls listed there under 'For Anton': two fixes that only work on their own claims, whether the news flags stay independent, text cleaning, three labels to look at, and the go for the test side."],
+    ["4.7","On your word: score v7 once on the 105 test articles, question by question, with near misses counted separately (about 3 cents)."],
+    ["4.17","After that: other sets of questions against the same labels (one yes/no per kind of fact was tried overnight: it gains on training only)."],
   ]
 };
 
@@ -329,8 +329,8 @@ const STATIONS = [
       "A key that keeps moving cannot be scored against.",
       "Everything after this (4.25, 4.17, 4.7) needs a fixed target.",
       "Ends the labelling work."),
-    T("4.25","decide","Classifier v7: bring the 27 rules into the classifier's questions",
-      "Was parked by your choice until the labels were frozen; they are, so this is next when you say go. The classifier's v6 questions predate almost every rule. The v7 wording is drafted for the questions the status-update change touched (experiments/2026-09-27-answer-key/wording-proposal.json) and shown beside v6 on the wording page (claude.ai/artifact/JxUPbyomf27dFXeFYBKf3t), which also lists the rules not drafted yet. The wording must follow the vendor's writing rules (docs.typesafe.ai; notes in docs/lessons.md). One paid pass on the tune side, on your go; 0.10 of the 1 dollar budget is spent.",
+    T("4.25","done","Classifier v7: bring the 27 rules into the classifier's questions",
+      "DONE 3–4 Oct (experiments/2026-10-03-classifier-v7, README opens with the morning report). Round 1 wrote the rules in; round 3 fixed the health question; an unattended night ran ten experiments, each judged in two runs by a rule fixed in advance (STRATEGY.md). Accepted: another fighter talking about him makes him the main subject; examples that paraphrased golden articles (some of them test articles) replaced with invented ones; two questions cut to half their length; previews are not fight-week events. All nine answers right: 94 of 155 on the training set, 19–20 of 40 on validation (v6: 63 and 16). About 1.53 dollars spent on v7. Five questions for you are listed in the README under 'For Anton'.",
       "No new labels.",
       "The classifier cannot match answers made under rules it was never told.",
       "This is the step that turns the answer key into a better classifier."),

@@ -37,11 +37,11 @@ READER_ABSENT = {"nothing_regarding_him": "Not a value in the guide. Readers ans
 # a v7 option and the v6 option it replaced
 WAS_NAMED = {"other_fighter_side": "other_fighter", "nothing_regarding_him": "only_mentions_him"}
 WHY = {
-    "centrality": "v7 judges by what is new about him, not by length (\"new, not long\"), and adds the callout rule and \"talking about someone else\".",
+    "centrality": "v7 judges by what is new about him, not by length (\"new, not long\"), and adds the callout rule and \"talking about someone else\". Since 4 Oct another fighter talking about him counts for the main subject.",
     "source": "v7 has \"booked or fought\" for the opponent's side, another fighter's camp and former fighters under \"other fighter's side\", and media only for people who never fought.",
-    "act": "v7 asks for a plain statement about him. Guesses, a speaker's own plans and bare mentions go to one described option, which the code reports as none_of_these.",
-    "fact": "v7 adds status update, narrows next fight to a specific fight, keeps result for an account of the fight itself, and names background (\"only what is new\").",
-    "firmness": "v7 widens \"reported\" to any named person and adds his own unsigned fight to it. \"None\" is still set in code.",
+    "act": "v7 asks for a plain statement about him. Guesses, a speaker's own plans and bare mentions go to one described option, which the code reports as none_of_these. Since 4 Oct each option is its definition alone: the \"not for\" lines and examples measured as carrying nothing.",
+    "fact": "v7 adds status update, narrows next fight to a specific fight, keeps result for an account of the fight itself, and names background (\"only what is new\"). Since 4 Oct a preview or pick is not a fight week event, and every example is invented.",
+    "firmness": "v7 widens \"reported\" to any named person. Since 4 Oct each level is its summary alone (the signals measured as carrying nothing). \"None\" is still set in code.",
     "reports_his_result": "v7: yes only for an account of the fight itself.",
     "reports_his_next_fight": "v7: a specific fight exists or changes; a fight already booked that a preview starts from is no.",
     "reports_his_health": "v7: a named person or outlet must state his condition (\"health follows who states it\").",
