@@ -44,7 +44,15 @@ button:focus-visible,select:focus-visible,summary:focus-visible{outline:2px soli
 .controls{display:flex;flex-wrap:wrap;gap:10px 16px;align-items:center}
 .controls label{font-size:13px;color:var(--dim);display:inline-flex;gap:6px;align-items:center}
 .controls select{font:500 13px var(--body);color:var(--ink);background:var(--panel);border:1px solid var(--line);border-radius:6px;padding:5px 8px}
-.slice{display:flex;flex-wrap:wrap;gap:8px;align-items:center;font-size:14px;background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:8px 12px}
+.slice{display:flex;flex-wrap:wrap;gap:8px;align-items:center;font-size:14px;background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:8px 12px;position:sticky;top:0;z-index:5}
+.slice .ver{font-family:var(--mono);font-size:12px;color:var(--dim)}
+.slice .seg button{padding:4px 10px}
+.pill{font:500 12.5px var(--body);border:1px solid var(--line);background:var(--ground);color:var(--ink);border-radius:999px;padding:2px 6px 2px 10px;cursor:pointer;display:inline-flex;gap:6px;align-items:center}
+.pill .x{color:var(--dim);font-size:14px;line-height:1}
+.pill:hover .x{color:var(--red)}
+.pill.cellpill{border-color:var(--red)}
+.slice .count{color:var(--dim);font-variant-numeric:tabular-nums}
+.slice .up{font:500 13px var(--body);border:1px solid var(--line);background:var(--ground);color:var(--ink);border-radius:999px;padding:4px 12px;cursor:pointer}
 .slice b{font-weight:600}
 .slice .clear,.panel .clear{margin-left:auto;font:500 13px var(--body);border:1px solid var(--line);background:var(--ground);color:var(--ink);border-radius:999px;padding:4px 12px;cursor:pointer}
 
@@ -151,10 +159,6 @@ details.more>summary::-webkit-details-marker{display:none}
   <section class="gates" id="gates" aria-label="About him?"></section>
 
   <section class="controls">
-    <div class="seg" role="group" aria-label="View" id="views" hidden>
-      <button data-view="dist" aria-pressed="true">Distribution</button>
-      <button data-view="errors" aria-pressed="false">Errors</button>
-    </div>
     <div class="controls" id="distcontrols">
     <label>Across <select id="xsel"></select></label>
     <label>Down <select id="ysel"></select></label>
@@ -167,7 +171,14 @@ details.more>summary::-webkit-details-marker{display:none}
     </div>
   </section>
 
-  <div class="slice" id="slice"></div>
+  <div class="slice" id="slicebar" aria-label="What the list below shows">
+    <div class="seg" role="group" aria-label="View" id="views" hidden>
+      <button data-view="dist" aria-pressed="true">Distribution</button>
+      <button data-view="errors" aria-pressed="false">Errors</button>
+    </div>
+    <span class="ver" id="slicever"></span>
+    <span id="slice" style="display:contents"></span>
+  </div>
 
   <details class="filters" id="filters" open><summary>Filters · click any value to narrow; counts are claims</summary><div id="facets"></div></details>
 
@@ -247,14 +258,36 @@ function drawFacets(){
 
 /** The sentence above the grid that says which slice is on screen. */
 function drawSlice(){
-  const parts = Object.entries(state.filters).filter(([,s]) => s.size).map(([d,s]) => `<b>${esc(LABEL[d])}</b>: ${[...s].map(human).map(esc).join(" or ")}`);
-  if (state.gateFlag) parts.push(`<b>${esc(DATA.tiles.disagree[0].toLowerCase())}</b>`);
-  if (state.doubtOnly) parts.push(`<b>only doubtful claims</b>`);
-  const claims = visible();
-  document.getElementById("slice").innerHTML = `<span>Showing ${parts.length ? parts.join(" · ") : "<b>all claims</b>"} — ${claims.length} claims, ${claims.reduce((s,c)=>s+c.n,0)} articles</span>` +
-    (parts.length ? `<button class="clear" id="clear">Clear all</button>` : "");
+  const pill = (attrs, text, cls = "") => `<button class="pill ${cls}" ${attrs} title="remove">${text}<span class="x" aria-hidden="true">×</span></button>`;
+  const pills = Object.entries(state.filters).flatMap(([d,s]) => [...s].map(v => pill(`data-d="${d}" data-v="${esc(v)}"`, `${esc(LABEL[d])}: <b>${esc(human(v))}</b>`)));
+  if (state.gateFlag) pills.push(pill(`data-k="gateFlag"`, `<b>${esc(DATA.tiles.disagree[0].toLowerCase())}</b>`));
+  if (state.doubtOnly) pills.push(pill(`data-k="doubtOnly"`, `<b>only doubtful claims</b>`));
+
+  // the selected cell, and how much the list below holds
+  let count;
+  if (state.view === "errors"){
+    const cell = state.ecell || {dim:null, b:"wrong"}, rows = gradedRows().filter(r => inErrCell(r, cell));
+    if (state.ecell) pills.push(pill(`data-k="ecell"`, `cell: <b>${cell.dim ? esc(LABEL[cell.dim]) + " wrong" : "any question"}</b> · ${esc(BUCKET_NAMES[cell.b])}`, "cellpill"));
+    count = `${new Set(rows.map(r => r.id)).size} training articles in ${visible().filter(c => c.rows.some(r => rows.includes(r))).length} claims`;
+  } else {
+    const claims = visible().filter(c => !state.cell || (c.v[state.x]===state.cell[0] && c.v[state.y]===state.cell[1]));
+    if (state.cell) pills.push(pill(`data-k="cell"`, `cell: ${esc(LABEL[state.x])} <b>${esc(human(state.cell[0]))}</b> · ${esc(LABEL[state.y])} <b>${esc(human(state.cell[1]))}</b>`, "cellpill"));
+    count = `${claims.length} claims, ${claims.reduce((s,c)=>s+c.n,0)} articles`;
+  }
+  document.getElementById("slicever").textContent = `${DATA.key} ·`;
+  document.getElementById("slice").innerHTML = (pills.length ? pills.join("") : `<span><b>all claims</b></span>`) +
+    `<span class="count">— ${count}</span>` + (pills.length ? `<button class="clear" id="clear">Clear all</button>` : `<span style="margin-left:auto"></span>`) +
+    `<button class="up" id="togrid" title="back to the grid">↑ grid</button>`;
+
+  // each chip removes what it names
+  const drop = {gateFlag: () => { state.gateFlag = false; }, cell: () => { state.cell = null; }, ecell: () => { state.ecell = null; },
+                doubtOnly: () => { state.doubtOnly = false; document.getElementById("doubtonly").checked = false; }};
+  document.querySelectorAll("#slice .pill").forEach(b => b.onclick = () => {
+    if (b.dataset.d) { toggle(b.dataset.d, b.dataset.v); return; }
+    drop[b.dataset.k](); drawAll(); });
   const clear = document.getElementById("clear");
-  if (clear) clear.onclick = () => { state.filters = {}; state.gateFlag = false; state.doubtOnly = false; document.getElementById("doubtonly").checked = false; state.cell = null; drawAll(); };
+  if (clear) clear.onclick = () => { state.filters = {}; state.gateFlag = false; state.doubtOnly = false; document.getElementById("doubtonly").checked = false; state.cell = null; state.ecell = null; drawAll(); };
+  document.getElementById("togrid").onclick = () => document.querySelector(".gridbox").scrollIntoView({behavior:"smooth", block:"start"});
 }
 
 /** The grid for the chosen two dimensions, with totals and the top numbers. */
@@ -289,7 +322,7 @@ function drawGrid(){
   grid.querySelectorAll("button.cell").forEach(btn => btn.onclick = () => {
     const same = state.cell && state.cell[0]===btn.dataset.a && state.cell[1]===btn.dataset.b;
     state.cell = same ? null : [btn.dataset.a, btn.dataset.b];
-    drawGrid(); drawPanel();
+    drawSlice(); drawGrid(); drawPanel();
     if (!same) document.getElementById("panel").scrollIntoView({behavior:"smooth", block:"start"});
   });
 }
@@ -394,7 +427,7 @@ function drawPanel(){
   const rowsIn = c => state.cell ? c.rows.filter(r => r.v[state.x]===state.cell[0] && r.v[state.y]===state.cell[1]) : null;
   panel.innerHTML = head + (list.length ? `<ul class="claims">${list.map(c => claimItem(c, rowsIn(c))).join("")}</ul>` : `<div class="hint">No claims with the current filters.</div>`);
   const all = document.getElementById("showall");
-  if (all) all.onclick = () => { state.cell = null; drawGrid(); drawPanel(); };
+  if (all) all.onclick = () => { state.cell = null; drawSlice(); drawGrid(); drawPanel(); };
 }
 
 /** The training articles of the claims the filters let through, each with its grades. @returns {object[]} rows */
