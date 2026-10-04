@@ -197,6 +197,7 @@ nine questions to carry them, and is scored against the frozen key
 | `decompose.py` | the fact question as one yes/no per kind, combined in code under several rules (E6) |
 | `states.py` | the standing questions sent with a cleaned or shortened article text (E7) |
 | `health_variants.py` | the first side-by-side test, three health wordings (v7.3) |
+| `consolidate.py` | writes the standing version's scored answers to `golden/answers/classifier-v7.json` for the claim map |
 | `disagreements-r3.md` | where a yes/no flag and the fact answer disagreed in v7.3 |
 
 Three helper yes/no questions (`h_new_fact`, `h_others_story`, `h_callout`)

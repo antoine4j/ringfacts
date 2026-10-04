@@ -126,6 +126,8 @@ details.defs dl{display:grid;grid-template-columns:minmax(9em,auto) 1fr;gap:4px 
 details.defs dt{font-weight:600;color:var(--ink)}details.defs dd{margin:0}
 @media (max-width:520px){details.defs dl{grid-template-columns:1fr}}
 .hint{font-size:13px;color:var(--dim)}
+.g-right{color:var(--ok)}.g-near{color:var(--warn);font-weight:600}.g-wrong{color:var(--red);font-weight:600}
+.side{font-family:var(--mono);font-size:11px;letter-spacing:.04em;text-transform:uppercase;color:var(--dim)}
 </style>
 
 <div class="wrap">
@@ -138,7 +140,7 @@ details.defs dt{font-weight:600;color:var(--ink)}details.defs dd{margin:0}
       <button data-t="dark" aria-pressed="false">Dark</button>
     </div>
   </section>
-  <p class="lede">Every golden claim, described by the machine's answers. Start at the gate: is it about him at all? Then put any two dimensions on the axes, narrow with the filters, and click a cell to spot-check its claims, doubtful first. A claim takes the value most of its articles give. Nothing here is your label yet.</p>
+  <p class="lede">Every golden claim, described by one classifier version's answers. Put any two dimensions on the axes, narrow with the filters, and click a cell to spot-check its claims, doubtful first. A claim takes the value most of its articles give. Your labels are frozen in golden/labels.json; <b>v7</b>, the version tuned against them, shows your key beside each answer on the training set, graded as the scoring does: ✓ right, orange one step off on a scale, red wrong. Validation articles show no key, so that nobody tunes on them; the test claims are left out of v7 until their one scoring run. The older versions predate the key and show answers only.</p>
 
   <section class="gates" id="gates" aria-label="About him?"></section>
 
@@ -159,7 +161,7 @@ details.defs dt{font-weight:600;color:var(--ink)}details.defs dd{margin:0}
 
   <div class="stats" id="stats"></div>
   <div class="gridbox"><table class="grid" id="grid"></table></div>
-  <div class="hint">Orange line in a cell: how many of its claims carry a doubt. A doubt is one of: the three readers split (the classifier asked three times, options in three orders, not all giving the same answer); the claim's articles land in different cells of this view; classifier and extractor disagree on "not about him" or on whether he himself is speaking; in v3 also: the classifier says no option fits well, or its source and act contradict each other; in v5 and v6 (one pass, so no reader split): source and act contradict, the fact answer and its yes/no question disagree, source is "himself" but "he speaks" says no, or source, act or fact is under 40% confidence. Hatched cells are impossible by definition.</div>
+  <div class="hint">Orange line in a cell: how many of its claims carry a doubt. A doubt is one of: the three readers split (the classifier asked three times, options in three orders, not all giving the same answer); the claim's articles land in different cells of this view; classifier and extractor disagree on "not about him" or on whether he himself is speaking; in v3 also: the classifier says no option fits well, or its source and act contradict each other; in v5 and v6 (one pass, so no reader split): source and act contradict, the fact answer and its yes/no question disagree, source is "himself" but "he speaks" says no, or source, act or fact is under 40% confidence; in v7 also: on the training set, an answer differs from your key. Hatched cells are impossible by definition.</div>
 
   <section class="panel" id="panel"></section>
 
@@ -306,14 +308,31 @@ function answerNote(d){
   return agree + `confidence ${Math.round(d.conf*100)}%`;
 }
 
+/** The key beside one answer of a training article: a tick when it matches, the key's value when not.
+ * @param {object} r an article row @param {string} dim a dimension @returns {string} html */
+function keyMark(r, dim){
+  const g = r.grade && r.grade[dim];
+  if (!g) return "";
+  if (g === "right") return ` <span class="g-right" title="matches your key">✓</span>`;
+  return ` <span class="g-${g}" title="${g==="near" ? "one step off on the scale" : "differs from your key"}">key: ${esc(human(r.key[dim]))}</span>`;
+}
+
+/** Which set an article is in, and on training how many answers differ from the key. @param {object} r @returns {string} html */
+function sideNote(r){
+  if (!r.v.split) return "";
+  if (r.v.split !== "training") return ` <span class="side">· validation · key not shown</span>`;
+  const wrong = Object.values(r.grade).filter(g => g !== "right").length;
+  return ` <span class="side">· training · ${wrong ? `${wrong} answer${wrong>1?"s differ":" differs"} from your key` : "all nine right"}</span>`;
+}
+
 /** One article inside an opened claim: its extract and every answer. @param {object} r @returns {string} html */
 function article(r){
-  const N = DATA.passes, val = (dim) => { const g = r.agree[dim]; return `<span>${esc(LABEL[dim])}: <b class="${g?(g===N?"agree3":"agree"+g):""}" ${g&&N>1?`title="${g} of ${N} readers"`:""}>${esc(human(r.v[dim]))}</b>${g && g<N ? ` (${g}/${N})` : ""}</span>`; };
-  return `<li class="art"><div class="t"><span class="key">#${r.id} · ${r.date} · ${esc(r.source)}</span><br><a href="${esc(r.url)}" target="_blank" rel="noopener">${esc(r.title)}</a></div>
+  const N = DATA.passes, val = (dim) => { const g = r.agree[dim]; return `<span>${esc(LABEL[dim])}: <b class="${g?(g===N?"agree3":"agree"+g):""}" ${g&&N>1?`title="${g} of ${N} readers"`:""}>${esc(human(r.v[dim]))}</b>${g && g<N ? ` (${g}/${N})` : ""}${keyMark(r, dim)}</span>`; };
+  return `<li class="art"><div class="t"><span class="key">#${r.id} · ${r.date} · ${esc(r.source)}</span>${sideNote(r)}<br><a href="${esc(r.url)}" target="_blank" rel="noopener">${esc(r.title)}</a></div>
     <div class="prog ext"><div class="ph">Extractor</div><div class="x">${esc(r.extract || "(no extract)")}</div>
       <div class="a"><span>kind: <b>${esc(human(r.v.extract_kind))}</b></span><span>actor: <b>${esc(r.actor||"—")}</b></span>${r.occasion?`<span>where: <b>${esc(r.occasion)}</b></span>`:""}</div></div>
     <details class="prog cls"><summary><div class="ph">Classifier <span class="hint">· ${DATA.passes > 1 ? "majority of three readers; (2/3) when one differed" : "one pass"} · click for every answer's percentages</span></div>
-      <div class="a">${DIMS.filter(d => !["fighter","extract_kind"].includes(d.key)).map(d => val(d.key)).join("")}</div></summary>
+      <div class="a">${DIMS.filter(d => !["fighter","extract_kind","split","vs_key"].includes(d.key)).map(d => val(d.key)).join("")}</div></summary>
       <div class="detail">${classifierDetail(r)}</div></details>
     ${DATA.flags.some(f => r.flags[f]) ? `<div class="a">${DATA.flags.filter(f => r.flags[f]).map(f => `<span class="chip warn">${esc(DATA.flag_labels[f])}</span>`).join("")}</div>` : ""}</li>`;
 }
@@ -360,7 +379,8 @@ function loadVersion(key){
   document.getElementById("xsel").value = state.x; document.getElementById("ysel").value = state.y;
   document.getElementById("defs").innerHTML = DIMS.filter(d => d.key !== "fighter").map(d =>
     `<h2>${esc(d.label)}</h2><dl>${DATA.values[d.key].map(o => `<dt>${esc(human(o.key))}</dt><dd>${esc(o.def)}</dd>`).join("")}</dl>`).join("");
-  document.getElementById("stamp").textContent = `answers: ${DATA.stamp}  ·  grouping: golden ${ALL.ruler}`;
+  document.getElementById("stamp").textContent = `answers: ${DATA.stamp}  ·  grouping: golden ${ALL.ruler}` +
+    (DATA.left_out ? `  ·  ${DATA.claims.length} of ${DATA.claims.length + DATA.left_out} claims (test claims not sent)` : "");
   document.querySelectorAll("#versions button").forEach(b => b.setAttribute("aria-pressed", String(b.dataset.v === key)));
   drawAll();
 }
