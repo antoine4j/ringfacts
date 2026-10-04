@@ -1,0 +1,872 @@
+[
+ {
+  "id": "25",
+  "question": "act",
+  "key": "gives_news_of_him",
+  "A": "none_of_these",
+  "B": "gives_news_of_him",
+  "kind": "split",
+  "A_note": "A lifestyle feature hung on him ('su restaurante preferido en España ... Nou Collonet'), with no one quoted as the origin of the claim, so the outlet is the source and nobody does an act regarding him (act none_of_these: a profile piece). His favourite place is life outside the cage, so personal_life at reported firmness, but an editor could say a standing preference is not a new fact (no_fact/none) and that the restaurant, not he, is the subject (only_mentioned).",
+  "B_note": "The outlet's writer: 'su restaurante preferido en España... es el restaurante Nou Collonet... en la isla de Tabarca' and that Alicante 'lo acogió... cuando tenía 15 años' - his life outside the cage stated by the writer, so personal_life at reported with the writer giving the detail (gives_news_of_him); an editor could call a lifestyle feature no_fact/none, since the fact is a standing preference rather than an event. Only Pablo Cabezali is quoted, not Topuria; the 2024 title win is background."
+ },
+ {
+  "id": "78",
+  "question": "centrality",
+  "key": "main_subject",
+  "A": "only_mentioned",
+  "B": "only_mentioned",
+  "kind": "both_against_unchecked",
+  "A_note": "Another camp's manager ('La pelea que quiero ... es Ilia Topuria', 'Usman hará que Ilia se rinda. Lo golpeará ... y lo noqueará') names him as the wanted opponent and taunts him, with the Makhachev negotiation recapped as known history, so a callout at no_fact. The headline centres on him, so an editor could say one_of_several, but the callout rule says it is Usman's story.",
+  "B_note": "'La pelea que quiero... es Ilia Topuria para su primera pelea... Usman hará que Ilia se rinda. Lo golpeará, lo pateará y lo noqueará' is a callout naming him as a wanted opponent, and the rest (the Makhachev negotiations, the Gaethje loss) is recap, so only_mentioned per the callout rule, though the article is built around Topuria so one_of_several is arguable. Abdelaziz speaks for Usman, who is not booked against him, hence other_fighter_side; the taunt reads as calls_him_out, though it is also phrased as a prediction. No fight exists, so no_fact."
+ },
+ {
+  "id": "97",
+  "question": "centrality",
+  "key": "main_subject",
+  "A": "one_of_several",
+  "B": "main_subject",
+  "kind": "split",
+  "A_note": "The piece is split between Usman's possible UFC move (Abdelaziz: 'I want his first fight in the UFC to be against Ilia Topuria... Usman would make Ilia tap out') and the reply of 'his manager Malki Kawa' ('Shut your mouth. Ilia Topuria would 100% annihilate your roster'), so I take the Topuria-side news as Kawa answering for him; an editor could instead pick source other_fighter_side with act calls_him_out, or call Topuria main_subject. Everything said is trash talk or a wish ('When the rematch comes, you'll see'), and the options listed are not talks, so no_fact.",
+  "B_note": "The article is built on two managers' statements about Topuria ('Usman would make Ilia tap out' vs Kawa's 'Shut your mouth. Ilia Topuria would 100% annihilate your roster'), so he is what it is about; an editor could call it one_of_several since Usman shares the stage and Abdelaziz (other_fighter_side, Usman is not booked against him) could be read as the source. Rematch and Pimblett are listed only as possibilities, so no fact; Kawa speaks, Topuria does not."
+ },
+ {
+  "id": "134",
+  "question": "source",
+  "key": "media",
+  "A": "media",
+  "B": "promotion",
+  "kind": "split",
+  "A_note": "The text ('Los rankings UFC reúnen en un solo lugar la clasificación oficial... Pinchando aquí puedes acceder a la web oficial') never names Topuria; the main content is the outlet's own pointer, so source media and act none_of_these because nobody does anything regarding him.",
+  "B_note": "Topuria appears nowhere in the saved text or headline ('Quillan Salkilld sigue subiendo'), so he is not in content and nobody does anything regarding him (none_of_these). With nothing about him, source is answered for the main content, the UFC's 'clasificación oficial' (promotion), though an editor could say media (the outlet's own blurb) or no_one."
+ },
+ {
+  "id": "187",
+  "question": "source",
+  "key": "other_fighter_side",
+  "A": "opponent_side",
+  "B": "opponent_side",
+  "kind": "both_against_unchecked",
+  "A_note": "Amosov appears once, in the line that Magny 'has only lost to... Michael Morales, Carlos Prates, and Yaroslav Amosov'; nobody does anything regarding him, so act is none_of_these. The speaker is Magny, whom the text says has fought Amosov, so opponent_side by the guide's definition, though other_fighter_side is reasonable since the article is not about their fight.",
+  "B_note": "Amosov is one name in the list of fighters Magny has lost to ('Michael Morales, Carlos Prates, and Yaroslav Amosov'); the main content is Magny speaking, and the article says Magny fought him, so source is opponent_side; nobody does anything regarding Amosov (act none_of_these)."
+ },
+ {
+  "id": "224",
+  "question": "source",
+  "key": "media",
+  "A": "media",
+  "B": "fans",
+  "kind": "split",
+  "A_note": "Topuria appears once, inside a quoted fan tweet ('the toughest fight besides (Ilia) Topuria'), in Orolbai's story. Source answers for the main content, the outlet's writer recounting the fight and the fan reaction, so media, though fans could be chosen since the quoted tweets carry the piece; act is none_of_these because nobody does anything regarding him.",
+  "B_note": "Topuria appears once, inside a quoted fan tweet ('I unironically think he can give Islam the toughest fight besides (Ilia) Topuria'), a name in a comparison. Source answers for the main content, which is built on fan tweets about Orolbai (media, the outlet's own account of the loss, is the alternative); nobody does anything regarding Topuria, so act none_of_these."
+ },
+ {
+  "id": "238",
+  "question": "act",
+  "key": "assesses_him",
+  "A": "none_of_these",
+  "B": "none_of_these",
+  "kind": "both_against_unchecked",
+  "A_note": "The interview is about Marc and his book; Topuria is discussed as a cultural figure ('lo que significa Ilia Topuria para este deporte en España', 'sin Ilia... seguiría en la tienda'), which is an appraisal of his importance to the sport rather than of his level or chances, so none_of_these (assesses_him would be the nearest fit). A YouTuber/author is media.",
+  "B_note": "The interview is about Marc's book and career; Topuria figures as context ('un prospecto hispano-georgiano que tenía muy buena pinta', 'sin Ilia... seguiría en la tienda') with nothing new about him. Marc, a YouTube commentator now covering UFC as accredited press, is media; what he says about Topuria is what Topuria did for him and for the sport, which is no act (none_of_these), though the headline's 'como vivir una final de Champions por diez' could be read as assesses_him."
+ },
+ {
+  "id": "247",
+  "question": "source",
+  "key": "media",
+  "A": "other_fighter_side",
+  "B": "other_fighter_side",
+  "kind": "both_against_unchecked",
+  "A_note": "The article is Garry's story; Amosov enters only in the last paragraph as one of three names Schaub lists ('Michael Morales, Carlos Prates, and a rising contender'), with one line calling him 'a dominant grappler ... a nightmare matchup' — an opinion, so no fact. Centrality could be one_of_several since that line is an assessment of him; act could be none_of_these because the rest is Schaub's forecast of what the matchmakers will do. Schaub is a 'former heavyweight fighter', so other_fighter_side.",
+  "B_note": "Amosov appears only in the closing lines of a Garry story as 'a dominant grappler whom a lot of fans still aren't aware of', 'a nightmare matchup' Schaub believes the UFC might book; Schaub is a former heavyweight fighter, so other_fighter_side. Centrality could be one_of_several given the two sentences assessing him, and the act could be none_of_these since the Amosov line is mainly a forecast of what the matchmakers will do."
+ },
+ {
+  "id": "279",
+  "question": "act",
+  "key": "steers_him",
+  "A": "steers_him",
+  "B": "assesses_him",
+  "kind": "split",
+  "A_note": "Mendez: 'he has to get another fight under his wings and it has to be in spectacular fashion... he probably has to get one more' is a sincere demand on what he should do, with 'I don't think his body is going to translate' an assessment, hence act unsure between steers_him and assesses_him. Source is unsure because the text calls him only 'the AKA coach' and never says whose coach he is; a coach of another fighter is other_fighter_side, a pundit would be media. 'Expected to return no sooner than spring 2027' is the writer's unsourced line, so no fact.",
+  "B_note": "Mendez, Makhachev's coach, is other_fighter_side; 'he has to get another fight under his wings... even one win isn't going to be enough' and 'I don't think his body is going to translate... at the welterweight division' assess his standing, though the first part could be read as steers_him. 'Topuria is recovering and is expected to return no sooner than spring 2027' is the writer's recap, so health and fact stay no."
+ },
+ {
+  "id": "283",
+  "question": "centrality",
+  "key": "one_of_several",
+  "A": "only_mentioned",
+  "B": "only_mentioned",
+  "kind": "both_against_checked",
+  "A_note": "Pimblett's own trash talk ('I'd love to fight him and give him shit', 'a little helmet') aimed at a man he is not booked against is a callout, and the article adds nothing new about Topuria beyond that and the recap that he 'has yet to book his return fight'. An editor could call the extended abuse one_of_several, but the callout rule puts it at only_mentioned.",
+  "B_note": "Pimblett's own podcast talk naming Topuria as a wanted opponent ('I'd love to fight him and give him shit', 'he's a little helmet') is a callout with trash talk; no fight between them is booked, so he is other fighter side and the article adds nothing new about Topuria beyond the writer's 'has yet to book his return fight', which makes it only_mentioned under the callout rule, though the headline splits attention between him and Tsarukyan and an editor could say one_of_several."
+ },
+ {
+  "id": "297",
+  "question": "source",
+  "key": "none_of_these",
+  "A": "none_of_these",
+  "B": "promotion",
+  "kind": "split",
+  "A_note": "Topuria appears once in the lead ('del auge de WOW FC con Ilia Topuria y Cristiano Ronaldo') and nowhere else. Source none_of_these: the speaker is the co-founder of a rival promotion (OKTAGON), not the UFC, so 'promotion' as defined does not fit; act none_of_these because nobody does anything regarding him.",
+  "B_note": "Topuria appears once, in the intro's 'del auge de WOW FC con Ilia Topuria y Cristiano Ronaldo'; nothing is said about him, so act is none_of_these (nobody does anything regarding him). Source is answered for the main content, an interview with a rival promotion's co-founder: 'promotion' is defined as the UFC, so none_of_these (a non-UFC promoter) is a reasonable alternative."
+ },
+ {
+  "id": "327",
+  "question": "fact",
+  "key": "no_fact",
+  "A": "health",
+  "B": "health",
+  "kind": "both_against_unchecked",
+  "A_note": "'Il va bien et reste très positif et profite de la vie' is a named fighter stating how Topuria is, which the guide treats as health however brief; an editor could call it too thin and go no_fact (the rest is a prediction that he will beat everyone, which would make the act none_of_these). Dvalishvili is not linked to a fight with him, so other_fighter_side.",
+  "B_note": "'Il va bien et reste très positif et profite de la vie', from a named friend 'qui connaît bien Topuria et son environnement', is an update on how he is, so health at reported; 'quand il va revenir, il va battre tout le monde' is a prediction. Dvalishvili is neither his team, the promotion nor a named report, so an editor could treat the line as a friend's impression: no_fact, firmness none, health no, act assesses_him. The closing 'spéculations sur son prochain adversaire' is a closing line, next fight no."
+ },
+ {
+  "id": "327",
+  "question": "firmness",
+  "key": "none",
+  "A": "reported",
+  "B": "reported",
+  "kind": "both_against_unchecked",
+  "A_note": "'Il va bien et reste très positif et profite de la vie' is a named fighter stating how Topuria is, which the guide treats as health however brief; an editor could call it too thin and go no_fact (the rest is a prediction that he will beat everyone, which would make the act none_of_these). Dvalishvili is not linked to a fight with him, so other_fighter_side.",
+  "B_note": "'Il va bien et reste très positif et profite de la vie', from a named friend 'qui connaît bien Topuria et son environnement', is an update on how he is, so health at reported; 'quand il va revenir, il va battre tout le monde' is a prediction. Dvalishvili is neither his team, the promotion nor a named report, so an editor could treat the line as a friend's impression: no_fact, firmness none, health no, act assesses_him. The closing 'spéculations sur son prochain adversaire' is a closing line, next fight no."
+ },
+ {
+  "id": "327",
+  "question": "reports_his_health",
+  "key": "no",
+  "A": "yes",
+  "B": "yes",
+  "kind": "both_against_unchecked",
+  "A_note": "'Il va bien et reste très positif et profite de la vie' is a named fighter stating how Topuria is, which the guide treats as health however brief; an editor could call it too thin and go no_fact (the rest is a prediction that he will beat everyone, which would make the act none_of_these). Dvalishvili is not linked to a fight with him, so other_fighter_side.",
+  "B_note": "'Il va bien et reste très positif et profite de la vie', from a named friend 'qui connaît bien Topuria et son environnement', is an update on how he is, so health at reported; 'quand il va revenir, il va battre tout le monde' is a prediction. Dvalishvili is neither his team, the promotion nor a named report, so an editor could treat the line as a friend's impression: no_fact, firmness none, health no, act assesses_him. The closing 'spéculations sur son prochain adversaire' is a closing line, next fight no."
+ },
+ {
+  "id": "342",
+  "question": "act",
+  "key": "gives_news_of_him",
+  "A": "none_of_these",
+  "B": "none_of_these",
+  "kind": "both_against_checked",
+  "A_note": "A roundup of five athletes; Amosov's paragraph only retells known background (territorial defence, the Irpin fights, lost comrades, his December 2025 UFC debut), so only_mentioned, source is the outlet's own compilation, and nobody does anything regarding him (act none_of_these). The one sentence of his ('Коли мені важко, я згадую ті дні в Ірпені...') is recalled from an earlier post ('писав Амосов'), so he_speaks no, though an editor could count a direct quote as yes.",
+  "B_note": "Amosov's paragraph (Irpin, lost comrades, UFC debut in December 2025) retells what is known, like the others in the list, so only_mentioned and nobody acts regarding him (none_of_these). The one quote ('Коли мені важко, я згадую ті дні в Ірпені' - писав Амосов) is recalled from an earlier post as background, so he_speaks is no."
+ },
+ {
+  "id": "342",
+  "question": "fact",
+  "key": "personal_life",
+  "A": "no_fact",
+  "B": "no_fact",
+  "kind": "both_against_checked",
+  "A_note": "A roundup of five athletes; Amosov's paragraph only retells known background (territorial defence, the Irpin fights, lost comrades, his December 2025 UFC debut), so only_mentioned, source is the outlet's own compilation, and nobody does anything regarding him (act none_of_these). The one sentence of his ('Коли мені важко, я згадую ті дні в Ірпені...') is recalled from an earlier post ('писав Амосов'), so he_speaks no, though an editor could count a direct quote as yes.",
+  "B_note": "Amosov's paragraph (Irpin, lost comrades, UFC debut in December 2025) retells what is known, like the others in the list, so only_mentioned and nobody acts regarding him (none_of_these). The one quote ('Коли мені важко, я згадую ті дні в Ірпені' - писав Амосов) is recalled from an earlier post as background, so he_speaks is no."
+ },
+ {
+  "id": "342",
+  "question": "firmness",
+  "key": "official_or_done",
+  "A": "none",
+  "B": "none",
+  "kind": "both_against_checked",
+  "A_note": "A roundup of five athletes; Amosov's paragraph only retells known background (territorial defence, the Irpin fights, lost comrades, his December 2025 UFC debut), so only_mentioned, source is the outlet's own compilation, and nobody does anything regarding him (act none_of_these). The one sentence of his ('Коли мені важко, я згадую ті дні в Ірпені...') is recalled from an earlier post ('писав Амосов'), so he_speaks no, though an editor could count a direct quote as yes.",
+  "B_note": "Amosov's paragraph (Irpin, lost comrades, UFC debut in December 2025) retells what is known, like the others in the list, so only_mentioned and nobody acts regarding him (none_of_these). The one quote ('Коли мені важко, я згадую ті дні в Ірпені' - писав Амосов) is recalled from an earlier post as background, so he_speaks is no."
+ },
+ {
+  "id": "342",
+  "question": "he_speaks",
+  "key": "yes",
+  "A": "no",
+  "B": "no",
+  "kind": "both_against_checked",
+  "A_note": "A roundup of five athletes; Amosov's paragraph only retells known background (territorial defence, the Irpin fights, lost comrades, his December 2025 UFC debut), so only_mentioned, source is the outlet's own compilation, and nobody does anything regarding him (act none_of_these). The one sentence of his ('Коли мені важко, я згадую ті дні в Ірпені...') is recalled from an earlier post ('писав Амосов'), so he_speaks no, though an editor could count a direct quote as yes.",
+  "B_note": "Amosov's paragraph (Irpin, lost comrades, UFC debut in December 2025) retells what is known, like the others in the list, so only_mentioned and nobody acts regarding him (none_of_these). The one quote ('Коли мені важко, я згадую ті дні в Ірпені' - писав Амосов) is recalled from an earlier post as background, so he_speaks is no."
+ },
+ {
+  "id": "361",
+  "question": "fact",
+  "key": "health",
+  "A": "status_update",
+  "B": "personal_life",
+  "kind": "split",
+  "A_note": "Dvalishvili, a friend and ex-bantamweight champion, states 'le va muy bien, y se encuentra bien (físicamente)... está disfrutando de la vida', which I read as a named person stating where he stands (status_update, reported); an editor could call a friend's impression no_fact/assesses_him, or take 'se encuentra bien físicamente' as health. The fractures, suspension and 'informaciones' about a year-end return are the writer's recap and speculation, so health and next fight are no.",
+  "B_note": "Merab, a friend and fellow fighter, says 'se lo está pasando en grande. Está disfrutando de la vida... y se encuentra bien', and the article lists his cinema outing with his son and parties, so personal_life reported by a third party; 'se encuentra bien' is a named person's statement of how he is beside it, so health yes. Fact could be health or status_update, and health could be no because the '(físicamente)' is the writer's gloss and the fractures and suspension are recapped as background."
+ },
+ {
+  "id": "361",
+  "question": "reports_his_health",
+  "key": "yes",
+  "A": "no",
+  "B": "yes",
+  "kind": "split",
+  "A_note": "Dvalishvili, a friend and ex-bantamweight champion, states 'le va muy bien, y se encuentra bien (físicamente)... está disfrutando de la vida', which I read as a named person stating where he stands (status_update, reported); an editor could call a friend's impression no_fact/assesses_him, or take 'se encuentra bien físicamente' as health. The fractures, suspension and 'informaciones' about a year-end return are the writer's recap and speculation, so health and next fight are no.",
+  "B_note": "Merab, a friend and fellow fighter, says 'se lo está pasando en grande. Está disfrutando de la vida... y se encuentra bien', and the article lists his cinema outing with his son and parties, so personal_life reported by a third party; 'se encuentra bien' is a named person's statement of how he is beside it, so health yes. Fact could be health or status_update, and health could be no because the '(físicamente)' is the writer's gloss and the fractures and suspension are recapped as background."
+ },
+ {
+  "id": "368",
+  "question": "fact",
+  "key": "health",
+  "A": "status_update",
+  "B": "health",
+  "kind": "split",
+  "A_note": "Dvalishvili's 'Topuria está bien... está disfrutando de la vida, y cuando vuelva les ganará a todos' is a friend stating where he stands; an editor could read it as no_fact/assesses_him. The writer's unsourced lines on fractures being closed and a 2027 return are recap and inference, so health is no (arguable), and the list of possible opponents is options only, so next fight is no.",
+  "B_note": "Friend Dvalishvili, 'para actualizar su estado físico y mental', says 'Topuria está bien... Es muy fuerte, tanto física como mentalmente' — a named person saying how he is, so health; the closed fractures and 2027 return are the writer's recap, and Tsarukyan/Pimblett/Makhachev are options only, so next fight is no. An editor could call Merab's words status_update (enjoying life away from the cage) rather than a recovery update."
+ },
+ {
+  "id": "368",
+  "question": "reports_his_health",
+  "key": "yes",
+  "A": "no",
+  "B": "yes",
+  "kind": "split",
+  "A_note": "Dvalishvili's 'Topuria está bien... está disfrutando de la vida, y cuando vuelva les ganará a todos' is a friend stating where he stands; an editor could read it as no_fact/assesses_him. The writer's unsourced lines on fractures being closed and a 2027 return are recap and inference, so health is no (arguable), and the list of possible opponents is options only, so next fight is no.",
+  "B_note": "Friend Dvalishvili, 'para actualizar su estado físico y mental', says 'Topuria está bien... Es muy fuerte, tanto física como mentalmente' — a named person saying how he is, so health; the closed fractures and 2027 return are the writer's recap, and Tsarukyan/Pimblett/Makhachev are options only, so next fight is no. An editor could call Merab's words status_update (enjoying life away from the cage) rather than a recovery update."
+ },
+ {
+  "id": "373",
+  "question": "act",
+  "key": "speaks_of_himself",
+  "A": "none_of_these",
+  "B": "speaks_of_himself",
+  "kind": "split",
+  "A_note": "The guide's #373 case: his slip about another fighter's nickname, with that fighter answering ('All Gucci boiiss', joking about a training clinch), is one_of_several. He speaks about Johnson, not about himself, so no listed act fits (a 'speaks of another fighter' value would); an editor could instead take Johnson's jab as other_fighter_side / calls_him_out, or stretch to speaks_of_himself.",
+  "B_note": "His slip about another fighter's nickname ('why the f--k are you calling yourself the Mickey Mouse?') with that fighter answering ('All Gucci boiiss') is the guide's one_of_several case; he is the source and talks about his own fandom, so speaks_of_himself, though an editor could say he speaks of another fighter and pick none_of_these. Nothing factual about him."
+ },
+ {
+  "id": "385",
+  "question": "centrality",
+  "key": "main_subject",
+  "A": "main_subject",
+  "B": "one_of_several",
+  "kind": "split",
+  "A_note": "His quoted reply ('You're gonna see soon ... Be careful what you wish for') is his own answer to a callout; Pimblett gets a full section so one_of_several is possible, and 'you're gonna see soon' could be read as a hint of a fight, but 'UFC does not have any confirmed plans' keeps it no_fact. The broken nose and orbital fractures are the writer's recap ('Topuria received some severe injuries'), not a named update, so health no, though an editor could count 'en route to recovery'.",
+  "B_note": "Topuria's quoted reply to Pimblett's challenge is his own answer to an attack; the article then gives Pimblett's podcast quotes equal space, so he shares the stage with one other (could be main_subject given the headline). 'UFC does not have any confirmed plans' and the recap of his broken nose and orbital fractures keep next fight and health at no."
+ },
+ {
+  "id": "402",
+  "question": "source",
+  "key": "his_team",
+  "A": "other_fighter_side",
+  "B": "his_team",
+  "kind": "split",
+  "A_note": "The recent update is Dvalishvili's 'Topuria está bien y tiene una actitud muy positiva... muy fuerte, tanto física como mentalmente', a named person saying how he is, with Gallo's 'la progresión de Topuria es positiva' recalled from weeks earlier; the headline's return window makes status_update (source his_team, health no) equally defensible. Tsarukyan, Pimblett and Nurmagomedov are named only as options, so next fight is no; his Instagram post is described, not quoted.",
+  "B_note": "Gallo, his preparador físico, states how the recovery is going ('la progresión de Topuria es positiva... A nivel físico... estaría listo'), which the guide makes health even though the headline is the return window; an editor could pick status_update since the headline is 'fecha de regreso: a final de año o principios de 2027'. The only direct quote is friend Dvalishvili's ('Topuria está bien... cuando vuelva les ganará a todos'), so other_fighter_side is a defensible source; Tsarukyan, Pimblett and Nurmagomedov are named only as options, so next fight is no."
+ },
+ {
+  "id": "408",
+  "question": "act",
+  "key": "assesses_him",
+  "A": "calls_him_out",
+  "B": "calls_him_out",
+  "kind": "both_against_unchecked",
+  "A_note": "Topuria is one of five fighters roasted; his paragraph ('took a dig at Ilia Topuria... quit on his stool', 'Topuria, who was praising himself. Lost early, sat down on a chair') only retells his loss, so only_mentioned, though his place in the headline could argue one_of_several. The article frames the line as a dig, so calls_him_out, with assesses_him possible; PFL champion Nurmagomedov is not booked against him.",
+  "B_note": "Topuria is one name in a list of five fighters roasted, and his paragraph only retells the Gaethje loss ('Lost early, sat down on a chair'), so only_mentioned, though the dedicated paragraph could be read as one_of_several; the article frames the remark as a 'dig' and a 'roast', so calls_him_out rather than assesses_him."
+ },
+ {
+  "id": "423",
+  "question": "centrality",
+  "key": "one_of_several",
+  "A": "only_mentioned",
+  "B": "only_mentioned",
+  "kind": "both_against_checked",
+  "A_note": "A callout is Pimblett's story; what the article adds about Topuria ('perdió el cinturón... en junio y actualmente se encuentra en una etapa de recuperación') is recap, so only_mentioned. Pimblett is not booked against him, so other_fighter_side; 'Es un completo idiota... me encantaría pelear contra él y darle caña' is calls_him_out, a wish with no fact.",
+  "B_note": "Pimblett's callout ('es un completo idiota, asi que me encantaria pelear contra el') with Topuria's lost belt and recovery retold by the writer ('actualmente se encuentra en una etapa de recuperacion') - another fighter's wish with only a recap of him, so only_mentioned per the callout rule, though the rivalry framing gives him much space; no fight is booked, so Pimblett is other_fighter_side and the wish is no_fact."
+ },
+ {
+  "id": "431",
+  "question": "act",
+  "key": "assesses_him",
+  "A": "calls_him_out",
+  "B": "assesses_him",
+  "kind": "split",
+  "A_note": "Topuria gets one line in a list of rankings gripes ('17-0 Topuria, who had been praising himself as the greatest, he lost, quit on the stool'), a retelling of his loss with nothing new, so only_mentioned and no_fact. The jab is a taunt aimed at him, hence calls_him_out, but it is framed as evidence in an argument about rankings, so assesses_him or none_of_these are reasonable; Nurmagomedov is not booked against him.",
+  "B_note": "Topuria is one name in Nurmagomedov's list ('17-0 Topuria, who had been praising himself as the greatest, he lost, quit on the stool'), his loss retold in another fighter's argument about the sport; the dig at his performance is a thin assesses_him, and none_of_these or calls_him_out are reasonable."
+ },
+ {
+  "id": "467",
+  "question": "act",
+  "key": "steers_him",
+  "A": "none_of_these",
+  "B": "none_of_these",
+  "kind": "both_against_unchecked",
+  "A_note": "Gaethje, who fought him, speaks about himself: his guess 'he's probably not gonna fight until next year too' and his stance 'I don't think that's my next fight' are no act about Topuria and no fact (the guide's #462/#492 cases), so none_of_these; the writer's paraphrase that Topuria 'has work to do before another title shot' could be read as assesses_him. Topuria's broken nose and orbitals and his team's rematch wish are recap, so health and next fight are no.",
+  "B_note": "Gaethje's own news, tied to the fight the two already fought and the rematch he declines; about Topuria he only guesses ('he's probably not gonna fight until next year') and states his own stance ('I don't think that's my next fight'), which the guide treats as no act, so none_of_these (an editor could read 'made him quit 2 times, has work to do' as assesses_him). Topuria's broken nose and orbital bones are recapped as background, so health no; centrality unsure because nothing new about him is stated."
+ },
+ {
+  "id": "492",
+  "question": "centrality",
+  "key": "one_of_several",
+  "A": "only_mentioned",
+  "B": "one_of_several",
+  "kind": "split",
+  "A_note": "Topuria is the opponent named in the headline and in Gaethje's guess ('he's probably not gonna fight till next year too, seeing as he's probably recovering from some things... I don't think that's my next fight'), which is a guess and a stance on Gaethje's own next fight, so no act and no fact; the long discussion of their fight could make him one_of_several but nothing new about him is added. Gaethje fought him, so opponent_side.",
+  "B_note": "Gaethje's own health and retirement talk is tied throughout to the fight he already had with Topuria, so one_of_several, though Topuria gets little new and an editor could say only_mentioned. On Topuria, Gaethje only states his own stance ('I don't think that's my next fight') and a guess ('he's probably recovering from some things'), which are no act (none_of_these) and no fact; an editor could read the rematch exchange as a denial and answer next fight yes."
+ },
+ {
+  "id": "503",
+  "question": "act",
+  "key": "steers_him",
+  "A": "none_of_these",
+  "B": "none_of_these",
+  "kind": "both_against_checked",
+  "A_note": "Gaethje, who beat him in June, speaks about his own next fight ('no siento que esa deba ser mi siguiente pelea') and guesses Topuria will not fight until next year 'para recuperarse de algunas lesiones', neither a plain statement about him, hence none_of_these; the paraphrase that Topuria 'no hizo méritos suficientes' could support assesses_him. The rematch is only a possibility with no talks, and the fractures are the writer's recap, so no_fact and health no.",
+  "B_note": "Gaethje (who beat him in June, so opponent side) says 'no siento que esa deba ser mi siguiente pelea' and guesses Topuria 'tampoco querra pelear hasta el ano que viene' - a stance on his own next fight and a guess, so act is none_of_these (what would fit: assesses_him, via the writer's line that Topuria 'no hizo meritos suficientes' for an immediate rematch). The fractures are the writer's recap ('se esta recuperando de las fracturas') and the Instagram statement is described, not quoted, so health and he_speaks are no."
+ },
+ {
+  "id": "510",
+  "question": "source",
+  "key": "no_one",
+  "A": "media",
+  "B": "media",
+  "kind": "both_against_unchecked",
+  "A_note": "Donchenko appears once, as 'Welterweight: Daniil Donchenko vs Punahele Soriano' in the card list; a booking restated in a card list is background, so no_fact and next fight no. With nothing new about him, source answers for the main content, the outlet's own preview (media), though no_one or promotion fit a card listing too; act is none_of_these because nobody does anything regarding him.",
+  "B_note": "Donchenko appears only as a line in the card list, 'Welterweight: Daniil Donchenko vs Punahele Soriano'; the booking is the premise of the card list, so next fight is no. Source is the outlet's writer for the main content; act is none_of_these because nobody does anything regarding him."
+ },
+ {
+  "id": "510",
+  "question": "act",
+  "key": "reports_an_event",
+  "A": "none_of_these",
+  "B": "none_of_these",
+  "kind": "both_against_unchecked",
+  "A_note": "Donchenko appears once, as 'Welterweight: Daniil Donchenko vs Punahele Soriano' in the card list; a booking restated in a card list is background, so no_fact and next fight no. With nothing new about him, source answers for the main content, the outlet's own preview (media), though no_one or promotion fit a card listing too; act is none_of_these because nobody does anything regarding him.",
+  "B_note": "Donchenko appears only as a line in the card list, 'Welterweight: Daniil Donchenko vs Punahele Soriano'; the booking is the premise of the card list, so next fight is no. Source is the outlet's writer for the main content; act is none_of_these because nobody does anything regarding him."
+ },
+ {
+  "id": "510",
+  "question": "fact",
+  "key": "fight_week_event",
+  "A": "no_fact",
+  "B": "no_fact",
+  "kind": "both_against_unchecked",
+  "A_note": "Donchenko appears once, as 'Welterweight: Daniil Donchenko vs Punahele Soriano' in the card list; a booking restated in a card list is background, so no_fact and next fight no. With nothing new about him, source answers for the main content, the outlet's own preview (media), though no_one or promotion fit a card listing too; act is none_of_these because nobody does anything regarding him.",
+  "B_note": "Donchenko appears only as a line in the card list, 'Welterweight: Daniil Donchenko vs Punahele Soriano'; the booking is the premise of the card list, so next fight is no. Source is the outlet's writer for the main content; act is none_of_these because nobody does anything regarding him."
+ },
+ {
+  "id": "510",
+  "question": "firmness",
+  "key": "official_or_done",
+  "A": "none",
+  "B": "none",
+  "kind": "both_against_unchecked",
+  "A_note": "Donchenko appears once, as 'Welterweight: Daniil Donchenko vs Punahele Soriano' in the card list; a booking restated in a card list is background, so no_fact and next fight no. With nothing new about him, source answers for the main content, the outlet's own preview (media), though no_one or promotion fit a card listing too; act is none_of_these because nobody does anything regarding him.",
+  "B_note": "Donchenko appears only as a line in the card list, 'Welterweight: Daniil Donchenko vs Punahele Soriano'; the booking is the premise of the card list, so next fight is no. Source is the outlet's writer for the main content; act is none_of_these because nobody does anything regarding him."
+ },
+ {
+  "id": "533",
+  "question": "act",
+  "key": "assesses_him",
+  "A": "none_of_these",
+  "B": "none_of_these",
+  "kind": "both_against_unchecked",
+  "A_note": "Hooker: '¿Creen que Ilia va a correr el riesgo de pelear contra un tipo no rankeado que ni siquiera es de la UFC? Nadie más quiere correr el riesgo' — a guess about what Topuria will do inside Hooker's own story about his Parnasse payday, so none_of_these as act (a reader could call it assesses_him), and only_mentioned since nothing new about Topuria is added, though the headline centres him. Hooker is not booked against him, so other_fighter_side.",
+  "B_note": "Topuria appears in one quoted line ('¿Creen que Ilia va a correr el riesgo de pelear contra un tipo no rankeado...?') inside Hooker's talk about himself, Parnasse and Nurmagomedov; nothing new about Topuria. The line is a guess at what Topuria would do, so no act (none_of_these); because the writer frames it as 'un recado para Ilia Topuria', an editor could read it as a dig and pick calls_him_out."
+ },
+ {
+  "id": "540",
+  "question": "act",
+  "key": "assesses_him",
+  "A": "none_of_these",
+  "B": "none_of_these",
+  "kind": "both_against_unchecked",
+  "A_note": "Topuria is one line in Hooker's quote ('¿Creen que Ilia va a correr el riesgo de pelear contra un tipo no rankeado...?'), a guess about what he will do, which is no act (none_of_these) and no fact; the article is about Hooker vs Parnasse. Act is unsure because the guess could be read as assessing his willingness, and centrality because the headline carries his name although the body gives him only that sentence.",
+  "B_note": "Topuria appears in one line of Hooker's quote ('¿Creen que Ilia va a correr el riesgo de pelear contra un tipo no rankeado?') in a piece about Hooker vs Parnasse, so only_mentioned despite the headline; Hooker's line is a guess about what Topuria would do, so act is none_of_these (an editor could read it as assesses_him, implying he avoids risk, or as a jab). Hooker is not linked to a fight with Topuria, so other fighter side."
+ },
+ {
+  "id": "588",
+  "question": "centrality",
+  "key": "only_mentioned",
+  "A": "one_of_several",
+  "B": "one_of_several",
+  "kind": "both_against_checked",
+  "A_note": "Soriano's feature ties itself to the booked bout ('faces Daniil Donchenko in a middleweight bout in France... 9 a.m. Hawaii time'), so one_of_several, though Donchenko gets only his record and streak, so only_mentioned is arguable. Soriano speaks only about himself ('I feel really good... I'm just ready to get back in there'), which the guide makes none_of_these; the bout is the premise of a preview so no_fact, but an editor could read the scheduling line as next_fight.",
+  "B_note": "Soriano's own preview tied to a booked fight with Donchenko ('faces Daniil Donchenko in a middleweight bout in France'), so one_of_several per the booked-fight rule, though Donchenko gets only his record and only_mentioned is arguable. Soriano says nothing about him, so act none_of_these; the booking is the premise of the preview rather than its news, so no_fact and next fight no, though an editor could count the stated bout and time as next_fight."
+ },
+ {
+  "id": "605",
+  "question": "fact",
+  "key": "no_fact",
+  "A": "next_fight",
+  "B": "next_fight",
+  "kind": "both_against_checked",
+  "A_note": "The whole piece is the booking ('5 вересня в Парижі... зустрінуться Данило Донченко та Пунахієль Соріано', 'в категорії ваги напівсередня') with nobody speaking, so a set fight of his; it is relayed 'Як повідомляє Sport.ua', so an editor could call it reported rather than official_or_done, and with the headline on him alone main_subject is arguable though both men get a line.",
+  "B_note": "A booking announcement with nobody quoted ('5 вересня в Парижі відбудеться турнір UFC Fight Night 287, де в поєдинку зустрінуться Данило Донченко та Пунахієль Соріано') with a line on each fighter's aims, so one_of_several, though a Ukrainian outlet's piece on his bout could be read as main_subject. The fight is on the announced card, so official_or_done; since the outlet relays Sport.ua, an editor could choose reported."
+ },
+ {
+  "id": "605",
+  "question": "firmness",
+  "key": "none",
+  "A": "official_or_done",
+  "B": "official_or_done",
+  "kind": "both_against_checked",
+  "A_note": "The whole piece is the booking ('5 вересня в Парижі... зустрінуться Данило Донченко та Пунахієль Соріано', 'в категорії ваги напівсередня') with nobody speaking, so a set fight of his; it is relayed 'Як повідомляє Sport.ua', so an editor could call it reported rather than official_or_done, and with the headline on him alone main_subject is arguable though both men get a line.",
+  "B_note": "A booking announcement with nobody quoted ('5 вересня в Парижі відбудеться турнір UFC Fight Night 287, де в поєдинку зустрінуться Данило Донченко та Пунахієль Соріано') with a line on each fighter's aims, so one_of_several, though a Ukrainian outlet's piece on his bout could be read as main_subject. The fight is on the announced card, so official_or_done; since the outlet relays Sport.ua, an editor could choose reported."
+ },
+ {
+  "id": "605",
+  "question": "reports_his_next_fight",
+  "key": "no",
+  "A": "yes",
+  "B": "yes",
+  "kind": "both_against_checked",
+  "A_note": "The whole piece is the booking ('5 вересня в Парижі... зустрінуться Данило Донченко та Пунахієль Соріано', 'в категорії ваги напівсередня') with nobody speaking, so a set fight of his; it is relayed 'Як повідомляє Sport.ua', so an editor could call it reported rather than official_or_done, and with the headline on him alone main_subject is arguable though both men get a line.",
+  "B_note": "A booking announcement with nobody quoted ('5 вересня в Парижі відбудеться турнір UFC Fight Night 287, де в поєдинку зустрінуться Данило Донченко та Пунахієль Соріано') with a line on each fighter's aims, so one_of_several, though a Ukrainian outlet's piece on his bout could be read as main_subject. The fight is on the announced card, so official_or_done; since the outlet relays Sport.ua, an editor could choose reported."
+ },
+ {
+  "id": "606",
+  "question": "he_speaks",
+  "key": "yes",
+  "A": "no",
+  "B": "yes",
+  "kind": "split",
+  "A_note": "Gomis ('he entrenado con Ilia en el Climent y tiene un nivel superior al resto', 'es un 1%') is a combat athlete and gym-mate, so other_fighter_side as a teammate, though his_team or none_of_these (a judoka, not an MMA fighter) is arguable. Topuria's 'Sanaré. Descansaré... Tendremos nuestra revancha' is his earlier social post recalled as background, so he_speaks no, but two full sentences are quoted; the orbital fractures and CSAC suspension are recap.",
+  "B_note": "Gomis assesses his level ('tiene un nivel superior al resto', 'es un 1%'); he is a training partner at Climent, which fits a teammate under other_fighter_side, though an editor could call him his_team. The fractures, the CSAC 180-day suspension and his post ('Sanaré. Descansaré. Y volveré...') are recapped from the months-old aftermath, so health no; his post is quoted at length, so he_speaks yes, unsure because it is recalled background."
+ },
+ {
+  "id": "616",
+  "question": "centrality",
+  "key": "one_of_several",
+  "A": "one_of_several",
+  "B": "main_subject",
+  "kind": "split",
+  "A_note": "An event preview the day before the card: his main-card slot ('отримав місце в основному карді') and walkout time ('приблизно о 22:00') are card order and start times, so fight_week_event, though the booking itself is only the premise of the preview (next fight no) and an editor could call the preview analysis no_fact. He shares the text with the Hooker–Parnasse main event and the full card, so one_of_several rather than main_subject; nobody speaks, but the embedded UFC tweet could make the source promotion.",
+  "B_note": "An event announcement built around him ('для українських фанатів головною подією вечора стане виступ Данила Донченка'), with his main-card slot, the full card order and 'Вихід Донченка в октагон... приблизно о 22:00' - card order and start times are fight_week_event, though the Hooker-Parnasse section is nearly as long, so one_of_several is arguable, and an editor could call the booking itself the fact (next_fight) or treat it as the premise of a preview (no_fact). His earlier request for a main-card slot is described, not quoted, so he does not speak."
+ },
+ {
+  "id": "625",
+  "question": "centrality",
+  "key": "one_of_several",
+  "A": "main_subject",
+  "B": "main_subject",
+  "kind": "both_against_checked",
+  "A_note": "A weigh-in report ('успішно пройшли офіційне зважування... 77,11 кг') plus start times, written around the Ukrainian and his year; it covers both men so one_of_several is arguable. The booking is the premise of the weigh-in, not news, and his June win and wish to fight in Paris are recap, so next fight is no and he_speaks is no.",
+  "B_note": "'Данило Донченко (14-2) та американець Пунахеле Соріано (13-4) успішно пройшли офіційне зважування ... 77,11 кг', then card times; the booking is restated as the weigh-in's premise and the June win over Berggren is background, so next fight and result are no. Soriano gets only his record and weight while the piece is written around the Ukrainian ('Для Донченка це вже третій виступ'), so main_subject, though a weigh-in of both men could be read as one_of_several. His wish to fight in Paris is described, not quoted."
+ },
+ {
+  "id": "647",
+  "question": "fact",
+  "key": "no_fact",
+  "A": "personal_life",
+  "B": "no_fact",
+  "kind": "split",
+  "A_note": "The saved text is one line, 'Topuria addressed his loss to Gaethje for the first time in a letter penned to Topuria's son', and the rest is comment-policy furniture; the guide puts a message to his son under personal_life, but with the letter's content absent an editor could pick no_fact (firmness none) or status_update for 'breaks silence'. His letter is described, not quoted, so he_speaks is no.",
+  "B_note": "The saved text is one sentence ('Topuria addressed his loss to Gaethje for the first time in a letter penned to Topuria's son') plus comment-policy boilerplate; the letter is described, not quoted, and nothing it says is given, so no fact, though an editor could pick personal_life for a letter to his son. The headline's 'after going through that hell' is a five-word fragment, so he_speaks no, with doubt."
+ },
+ {
+  "id": "647",
+  "question": "firmness",
+  "key": "none",
+  "A": "official_or_done",
+  "B": "none",
+  "kind": "split",
+  "A_note": "The saved text is one line, 'Topuria addressed his loss to Gaethje for the first time in a letter penned to Topuria's son', and the rest is comment-policy furniture; the guide puts a message to his son under personal_life, but with the letter's content absent an editor could pick no_fact (firmness none) or status_update for 'breaks silence'. His letter is described, not quoted, so he_speaks is no.",
+  "B_note": "The saved text is one sentence ('Topuria addressed his loss to Gaethje for the first time in a letter penned to Topuria's son') plus comment-policy boilerplate; the letter is described, not quoted, and nothing it says is given, so no fact, though an editor could pick personal_life for a letter to his son. The headline's 'after going through that hell' is a five-word fragment, so he_speaks no, with doubt."
+ },
+ {
+  "id": "655",
+  "question": "source",
+  "key": "none_of_these",
+  "A": "media",
+  "B": "media",
+  "kind": "both_against_unchecked",
+  "A_note": "The 10,000 characters of saved text are CSS ('select:focus{outline:0;border:1px solid #8a8a8a...') and never name Donchenko or Soriano, so he is not in the content and nobody does anything regarding him (none_of_these); source media is the outlet's own writer as main content. A reader judging from the headline alone could label it one_of_several / media / predicts_his_fight.",
+  "B_note": "The 10,000 saved characters are CSS ('.accordion-title{position:relative...') with no article prose; Donchenko appears only in the headline, so not_in_content, though an editor labelling from the headline alone could call it a betting preview of his fight (one_of_several, media, predicts_his_fight). Source is media from the headline's 'Predictions & Odds' framing; act is none_of_these because no text does anything regarding him."
+ },
+ {
+  "id": "687",
+  "question": "centrality",
+  "key": "one_of_several",
+  "A": "one_of_several",
+  "B": "main_subject",
+  "kind": "split",
+  "A_note": "A watch-online page for his bout covering both fighters, card order and start times ('основний кард заплановано на 22:00. Донченко та Соріано вийдуть в октагон орієнтовно о 23:00'), so fight_week_event with nobody speaking; the booking is the premise of the page, so next fight is no, though an editor could count a same-day bout announcement as next_fight. The stray line 'Українець завоював четверту звитягу поспіль' sits among the related-links furniture after the error notice, so I do not count it as a result, with some doubt.",
+  "B_note": "A watch-online page built around him ('Український боєць проведе четвертий бій') giving card order and start times ('основний кард заплановано на 22:00. Донченко та Соріано вийдуть в октагон орієнтовно о 23:00'); Soriano and the Hooker-Parnasse main event get a line each, so main_subject, though one_of_several is defensible. The booking is the premise of the card list, so next fight is no, though an editor could count it. The 'четверту звитягу' line sits after the error-report prompt among related links and is page furniture."
+ },
+ {
+  "id": "688",
+  "question": "centrality",
+  "key": "one_of_several",
+  "A": "main_subject",
+  "B": "main_subject",
+  "kind": "both_against_unchecked",
+  "A_note": "'Попередні бої стартують о 19:00, основний кард заплановано на 22:00. Донченко та Соріано вийдуть в октагон орієнтовно о 23:00' is card order and start times, nobody speaking; the booking is restated as the premise of the watch guide, so next fight is no. Unsure: Soriano gets a line of record (one_of_several arguable) and an editor could call the restated booking next_fight instead of fight_week_event. The 'Українець завоював четверту звитягу' line and the rest are page furniture.",
+  "B_note": "The article's own text is the card order, start times ('Донченко та Соріано вийдуть в октагон орієнтовно о 23:00') and broadcaster for his bout; the surrounding menus, betting lists and the 'четверту звитягу поспіль' link are page furniture, so result no. Unsure centrality because Soriano's record and the Hooker-Parnasse main event share the piece, which could make it one_of_several."
+ },
+ {
+  "id": "690",
+  "question": "centrality",
+  "key": "one_of_several",
+  "A": "main_subject",
+  "B": "one_of_several",
+  "kind": "split",
+  "A_note": "The writer's own preview: 'Данііл Донченко – фаворит зустрічі', odds 1.37 vs 2.87, advice 'не лізти до тотального обміну ударами' and a closing forecast 'українець розбере американця'; the booking is only the premise, so no fact. Centrality could be one_of_several since the piece spends several paragraphs on Soriano's record and style, and act could be predicts_his_fight for the odds and the closing forecast.",
+  "B_note": "The writer's own preview: 'Данііл Донченко – фаворит зустрічі... У такому емоційному стані українець розбере американця', with long sections on Soriano's streak and style, so a preview covering both fighters (one_of_several), though Donchenko is the hook and main_subject is arguable; the prediction also assesses him (assesses_him possible). The 5 September booking is restated as the premise of the preview, which the guide treats as background, so no_fact and next fight no, though an editor could read the card placement as next_fight/official."
+ },
+ {
+  "id": "690",
+  "question": "act",
+  "key": "predicts_his_fight",
+  "A": "assesses_him",
+  "B": "predicts_his_fight",
+  "kind": "split",
+  "A_note": "The writer's own preview: 'Данііл Донченко – фаворит зустрічі', odds 1.37 vs 2.87, advice 'не лізти до тотального обміну ударами' and a closing forecast 'українець розбере американця'; the booking is only the premise, so no fact. Centrality could be one_of_several since the piece spends several paragraphs on Soriano's record and style, and act could be predicts_his_fight for the odds and the closing forecast.",
+  "B_note": "The writer's own preview: 'Данііл Донченко – фаворит зустрічі... У такому емоційному стані українець розбере американця', with long sections on Soriano's streak and style, so a preview covering both fighters (one_of_several), though Donchenko is the hook and main_subject is arguable; the prediction also assesses him (assesses_him possible). The 5 September booking is restated as the premise of the preview, which the guide treats as background, so no_fact and next fight no, though an editor could read the card placement as next_fight/official."
+ },
+ {
+  "id": "737",
+  "question": "centrality",
+  "key": "only_mentioned",
+  "A": "only_mentioned",
+  "B": "one_of_several",
+  "kind": "split",
+  "A_note": "His bout is one of fourteen on a results page ('Daniil Donchenko def. Punahele Soriano by unanimous decision (30-27, 30-27, 29-28)') with a three-round play-by-play, which the guide files as a results page, though the full round account could be read as one_of_several. His bout on a results page is fact result.",
+  "B_note": "A live-results page covering the whole card; his bout gets a full round-by-round account ('Donchenko lands a combo of short punches that drops Soriano!') and the official decision, so the fact is result. Centrality is unsure because the guide puts a results page under only_mentioned, though here he gets real content rather than a line."
+ },
+ {
+  "id": "740",
+  "question": "source",
+  "key": "himself",
+  "A": "himself",
+  "B": "no_one",
+  "kind": "split",
+  "A_note": "The saved text is only a video caption ('Talks With UFC.com After His Decision Win Over Punahele Soriano') plus Fight Pass promos and an 'Up next' list; none of his words survive, so he_speaks is no and the act is inferred from the caption. A post-fight interview takes the value of what is said, which is absent, so no_fact; an editor could instead read the restated win as fact result at official_or_done, or treat the caption as no_one/reports_an_event.",
+  "B_note": "The only article text is the caption 'Talks With UFC.com After His Decision Win Over Punahele Soriano'; the rest is Fight Pass promos and an 'Up next' list. Nobody's words are saved, so the result is an event reported with no one speaking (an editor could pick promotion, since UFC.com is the promotion's own record). Because the page is a post-fight interview and the win is only the caption's premise, an editor could also rule no_fact and result no."
+ },
+ {
+  "id": "740",
+  "question": "act",
+  "key": "speaks_of_himself",
+  "A": "speaks_of_himself",
+  "B": "reports_an_event",
+  "kind": "split",
+  "A_note": "The saved text is only a video caption ('Talks With UFC.com After His Decision Win Over Punahele Soriano') plus Fight Pass promos and an 'Up next' list; none of his words survive, so he_speaks is no and the act is inferred from the caption. A post-fight interview takes the value of what is said, which is absent, so no_fact; an editor could instead read the restated win as fact result at official_or_done, or treat the caption as no_one/reports_an_event.",
+  "B_note": "The only article text is the caption 'Talks With UFC.com After His Decision Win Over Punahele Soriano'; the rest is Fight Pass promos and an 'Up next' list. Nobody's words are saved, so the result is an event reported with no one speaking (an editor could pick promotion, since UFC.com is the promotion's own record). Because the page is a post-fight interview and the win is only the caption's premise, an editor could also rule no_fact and result no."
+ },
+ {
+  "id": "740",
+  "question": "fact",
+  "key": "result",
+  "A": "no_fact",
+  "B": "result",
+  "kind": "split",
+  "A_note": "The saved text is only a video caption ('Talks With UFC.com After His Decision Win Over Punahele Soriano') plus Fight Pass promos and an 'Up next' list; none of his words survive, so he_speaks is no and the act is inferred from the caption. A post-fight interview takes the value of what is said, which is absent, so no_fact; an editor could instead read the restated win as fact result at official_or_done, or treat the caption as no_one/reports_an_event.",
+  "B_note": "The only article text is the caption 'Talks With UFC.com After His Decision Win Over Punahele Soriano'; the rest is Fight Pass promos and an 'Up next' list. Nobody's words are saved, so the result is an event reported with no one speaking (an editor could pick promotion, since UFC.com is the promotion's own record). Because the page is a post-fight interview and the win is only the caption's premise, an editor could also rule no_fact and result no."
+ },
+ {
+  "id": "740",
+  "question": "firmness",
+  "key": "official_or_done",
+  "A": "none",
+  "B": "official_or_done",
+  "kind": "split",
+  "A_note": "The saved text is only a video caption ('Talks With UFC.com After His Decision Win Over Punahele Soriano') plus Fight Pass promos and an 'Up next' list; none of his words survive, so he_speaks is no and the act is inferred from the caption. A post-fight interview takes the value of what is said, which is absent, so no_fact; an editor could instead read the restated win as fact result at official_or_done, or treat the caption as no_one/reports_an_event.",
+  "B_note": "The only article text is the caption 'Talks With UFC.com After His Decision Win Over Punahele Soriano'; the rest is Fight Pass promos and an 'Up next' list. Nobody's words are saved, so the result is an event reported with no one speaking (an editor could pick promotion, since UFC.com is the promotion's own record). Because the page is a post-fight interview and the win is only the caption's premise, an editor could also rule no_fact and result no."
+ },
+ {
+  "id": "740",
+  "question": "reports_his_result",
+  "key": "yes",
+  "A": "no",
+  "B": "yes",
+  "kind": "split",
+  "A_note": "The saved text is only a video caption ('Talks With UFC.com After His Decision Win Over Punahele Soriano') plus Fight Pass promos and an 'Up next' list; none of his words survive, so he_speaks is no and the act is inferred from the caption. A post-fight interview takes the value of what is said, which is absent, so no_fact; an editor could instead read the restated win as fact result at official_or_done, or treat the caption as no_one/reports_an_event.",
+  "B_note": "The only article text is the caption 'Talks With UFC.com After His Decision Win Over Punahele Soriano'; the rest is Fight Pass promos and an 'Up next' list. Nobody's words are saved, so the result is an event reported with no one speaking (an editor could pick promotion, since UFC.com is the promotion's own record). Because the page is a post-fight interview and the win is only the caption's premise, an editor could also rule no_fact and result no."
+ },
+ {
+  "id": "745",
+  "question": "fact",
+  "key": "fight_week_event",
+  "A": "next_fight",
+  "B": "next_fight",
+  "kind": "both_against_unchecked",
+  "A_note": "A booking announcement with nobody quoted: 'Данило Донченко... проведе бій проти Пунахеле Соріано... 5 вересня', venue, start time and main-card slot; the card-order and start-time lines could make it fight_week_event, the fight is on the card so I took it as done rather than merely reported via Sport.ua, and the line that the fight matters 'для обох спортсменів' could make him one_of_several.",
+  "B_note": "'Данило Донченко з України проведе бiй проти Пунахеле Сорiано... 5 вересня' - a fight of his announced as set, with venue, weight class, start time and main-card placement, nobody speaking; published on fight day with card order and start time, so fight_week_event is arguable, and both fighters get equal billing so one_of_several is possible."
+ },
+ {
+  "id": "745",
+  "question": "reports_his_next_fight",
+  "key": "no",
+  "A": "yes",
+  "B": "yes",
+  "kind": "both_against_unchecked",
+  "A_note": "A booking announcement with nobody quoted: 'Данило Донченко... проведе бій проти Пунахеле Соріано... 5 вересня', venue, start time and main-card slot; the card-order and start-time lines could make it fight_week_event, the fight is on the card so I took it as done rather than merely reported via Sport.ua, and the line that the fight matters 'для обох спортсменів' could make him one_of_several.",
+  "B_note": "'Данило Донченко з України проведе бiй проти Пунахеле Сорiано... 5 вересня' - a fight of his announced as set, with venue, weight class, start time and main-card placement, nobody speaking; published on fight day with card order and start time, so fight_week_event is arguable, and both fighters get equal billing so one_of_several is possible."
+ },
+ {
+  "id": "746",
+  "question": "source",
+  "key": "no_one",
+  "A": "no_one",
+  "B": "himself",
+  "kind": "split",
+  "A_note": "The saved text is only the caption 'Talks With Michael Bisping After His Unanimous Decision Win Over Punahele Soriano' plus player boilerplate; the one hard fact in it is his UD win, stated by nobody, so no_one/reports_an_event/result (promotion is arguable since this is UFC.com's own caption). Because the page is framed as a post-fight interview with no words of his saved, an editor could call the win a premise and pick no_fact with result no; he_speaks is no as nothing he said is in the text.",
+  "B_note": "The saved text is only the video caption ('Talks With Michael Bisping After His Unanimous Decision Win Over Punahele Soriano') plus player furniture; none of his words appear, so he_speaks no. An interview after a fight takes the value of what is said and nothing is said, so no_fact and result no, though an editor could treat the caption as a result line; source and act are inferred from an interview whose content is absent."
+ },
+ {
+  "id": "746",
+  "question": "act",
+  "key": "reports_an_event",
+  "A": "reports_an_event",
+  "B": "speaks_of_himself",
+  "kind": "split",
+  "A_note": "The saved text is only the caption 'Talks With Michael Bisping After His Unanimous Decision Win Over Punahele Soriano' plus player boilerplate; the one hard fact in it is his UD win, stated by nobody, so no_one/reports_an_event/result (promotion is arguable since this is UFC.com's own caption). Because the page is framed as a post-fight interview with no words of his saved, an editor could call the win a premise and pick no_fact with result no; he_speaks is no as nothing he said is in the text.",
+  "B_note": "The saved text is only the video caption ('Talks With Michael Bisping After His Unanimous Decision Win Over Punahele Soriano') plus player furniture; none of his words appear, so he_speaks no. An interview after a fight takes the value of what is said and nothing is said, so no_fact and result no, though an editor could treat the caption as a result line; source and act are inferred from an interview whose content is absent."
+ },
+ {
+  "id": "746",
+  "question": "fact",
+  "key": "result",
+  "A": "result",
+  "B": "no_fact",
+  "kind": "split",
+  "A_note": "The saved text is only the caption 'Talks With Michael Bisping After His Unanimous Decision Win Over Punahele Soriano' plus player boilerplate; the one hard fact in it is his UD win, stated by nobody, so no_one/reports_an_event/result (promotion is arguable since this is UFC.com's own caption). Because the page is framed as a post-fight interview with no words of his saved, an editor could call the win a premise and pick no_fact with result no; he_speaks is no as nothing he said is in the text.",
+  "B_note": "The saved text is only the video caption ('Talks With Michael Bisping After His Unanimous Decision Win Over Punahele Soriano') plus player furniture; none of his words appear, so he_speaks no. An interview after a fight takes the value of what is said and nothing is said, so no_fact and result no, though an editor could treat the caption as a result line; source and act are inferred from an interview whose content is absent."
+ },
+ {
+  "id": "746",
+  "question": "firmness",
+  "key": "official_or_done",
+  "A": "official_or_done",
+  "B": "none",
+  "kind": "split",
+  "A_note": "The saved text is only the caption 'Talks With Michael Bisping After His Unanimous Decision Win Over Punahele Soriano' plus player boilerplate; the one hard fact in it is his UD win, stated by nobody, so no_one/reports_an_event/result (promotion is arguable since this is UFC.com's own caption). Because the page is framed as a post-fight interview with no words of his saved, an editor could call the win a premise and pick no_fact with result no; he_speaks is no as nothing he said is in the text.",
+  "B_note": "The saved text is only the video caption ('Talks With Michael Bisping After His Unanimous Decision Win Over Punahele Soriano') plus player furniture; none of his words appear, so he_speaks no. An interview after a fight takes the value of what is said and nothing is said, so no_fact and result no, though an editor could treat the caption as a result line; source and act are inferred from an interview whose content is absent."
+ },
+ {
+  "id": "746",
+  "question": "reports_his_result",
+  "key": "yes",
+  "A": "yes",
+  "B": "no",
+  "kind": "split",
+  "A_note": "The saved text is only the caption 'Talks With Michael Bisping After His Unanimous Decision Win Over Punahele Soriano' plus player boilerplate; the one hard fact in it is his UD win, stated by nobody, so no_one/reports_an_event/result (promotion is arguable since this is UFC.com's own caption). Because the page is framed as a post-fight interview with no words of his saved, an editor could call the win a premise and pick no_fact with result no; he_speaks is no as nothing he said is in the text.",
+  "B_note": "The saved text is only the video caption ('Talks With Michael Bisping After His Unanimous Decision Win Over Punahele Soriano') plus player furniture; none of his words appear, so he_speaks no. An interview after a fight takes the value of what is said and nothing is said, so no_fact and result no, though an editor could treat the caption as a result line; source and act are inferred from an interview whose content is absent."
+ },
+ {
+  "id": "762",
+  "question": "centrality",
+  "key": "main_subject",
+  "A": "one_of_several",
+  "B": "one_of_several",
+  "kind": "both_against_unchecked",
+  "A_note": "A Q&A with the physio where about half the answers concern Topuria ('tolera muy bien todo tipo de tratamientos', 'tiene una curiosidad increíble', 'se recupera con descanso, como todos') and the rest FISIOEXPO and physiotherapy in general; nothing specific about a current injury or recovery, so no fact and health is no. Centrality is unsure between one_of_several (stage shared with the physio and the expo) and main_subject/only_mentioned; act is unsure because his description of how Topuria handles treatment is a loose fit for assesses_him and could be read as no act.",
+  "B_note": "The physio says Topuria 'tolera muy bien todo tipo de tratamientos' and 'presta mucha atención a su salud', a general view of him; the rest is about physiotherapy and FISIOEXPO, so he shares the piece, but an editor could call him main_subject (every question names him) or only_mentioned (nothing new happens to him). Act is unsure between assesses_him and none_of_these since the remarks are generic; 'se recupera con descanso, como todos' states no current injury or recovery, so no_fact and health no."
+ },
+ {
+  "id": "762",
+  "question": "act",
+  "key": "gives_news_of_him",
+  "A": "assesses_him",
+  "B": "assesses_him",
+  "kind": "both_against_unchecked",
+  "A_note": "A Q&A with the physio where about half the answers concern Topuria ('tolera muy bien todo tipo de tratamientos', 'tiene una curiosidad increíble', 'se recupera con descanso, como todos') and the rest FISIOEXPO and physiotherapy in general; nothing specific about a current injury or recovery, so no fact and health is no. Centrality is unsure between one_of_several (stage shared with the physio and the expo) and main_subject/only_mentioned; act is unsure because his description of how Topuria handles treatment is a loose fit for assesses_him and could be read as no act.",
+  "B_note": "The physio says Topuria 'tolera muy bien todo tipo de tratamientos' and 'presta mucha atención a su salud', a general view of him; the rest is about physiotherapy and FISIOEXPO, so he shares the piece, but an editor could call him main_subject (every question names him) or only_mentioned (nothing new happens to him). Act is unsure between assesses_him and none_of_these since the remarks are generic; 'se recupera con descanso, como todos' states no current injury or recovery, so no_fact and health no."
+ },
+ {
+  "id": "820",
+  "question": "centrality",
+  "key": "only_mentioned",
+  "A": "one_of_several",
+  "B": "one_of_several",
+  "kind": "both_against_checked",
+  "A_note": "A named third party ('Tim Welch, who coaches Sean O'Malley, claimed he heard rumors that Pimblett and Topuria could meet before the end of the year') gives the rumour substance and Pimblett denies it ('No one spoke to me about it'), so next_fight at rumour even though denied. Centrality could be only_mentioned since Pimblett is only rumoured against him and the rest is a rivalry recap; act could be calls_him_out for 'I'd love to smash his head in'. Pimblett is not booked or fought against Topuria, so other_fighter_side.",
+  "B_note": "Tim Welch 'claimed he heard rumors that Pimblett and Topuria could meet before the end of the year' and Pimblett says 'No one spoke to me about it' — a named rumour with a month, denied by its subject, so next_fight at rumour; Pimblett is not booked, so other_fighter_side. Topuria could be only_mentioned since it is Pimblett's story, and 'I'd love to smash his head in' could make the act calls_him_out."
+ },
+ {
+  "id": "833",
+  "question": "centrality",
+  "key": "main_subject",
+  "A": "one_of_several",
+  "B": "one_of_several",
+  "kind": "both_against_unchecked",
+  "A_note": "Anik's 'I think there are internal conversations to potentially try to do Gaethje vs Topuria 2' is a named commentator reporting talks, so next_fight at rumour, but he also calls it 'my non-informed speculation' and a prediction of what the matchmakers will do, which the guide treats as no act and no_fact. He shares the article with Gaethje's future and the division, so one_of_several rather than main_subject; Anik is described only as a commentator, so media.",
+  "B_note": "Anik, a commentator who never fought, says 'I think there are internal conversations to potentially try to do Gaethje vs Topuria 2': a named speaker relaying talks, so a rumour of his next fight; an editor could take his 'I think' and 'non-informed speculation' as a guess (act none_of_these, no_fact). Attention is shared between Topuria, Gaethje's future and the lightweight picture, so one_of_several rather than main_subject."
+ },
+ {
+  "id": "861",
+  "question": "act",
+  "key": "steers_him",
+  "A": "none_of_these",
+  "B": "none_of_these",
+  "kind": "both_against_unchecked",
+  "A_note": "Donchenko is a name in a list: 'future matchups are discussed for... fellow main card winners Daniil Donchenko, Kurtis Campbell, Losene Keita'; the text carries no statement about who he should fight, so none_of_these rather than steers_him, which an editor could pick since the podcast's subject is his next matchup. His win is background, so result is no.",
+  "B_note": "Donchenko appears once, in a list: 'along with fellow main card winners Daniil Donchenko, Kurtis Campbell, Losene Keita, and more'. The saved text says only that future matchups 'are discussed' for him with no statement about him, so none_of_these (steers_him would need an actual suggestion in the text); his win is background, not reported as news."
+ },
+ {
+  "id": "879",
+  "question": "fact",
+  "key": "no_fact",
+  "A": "no_fact",
+  "B": "next_fight",
+  "kind": "split",
+  "A_note": "The main claim is Brown's sincere advice ('needs a confidence-building fight... before facing Gaethje'), steers_him, though 'not sure Ilia comes back the same' is also assesses_him; Jon Anik's line that the UFC 'is exploring a second fight... for 2027' is a sourced rumour with a date used as the premise, which an editor could score as next_fight at rumour instead of background. Brown is a former UFC welterweight, so other_fighter_side, not media; the orbital/nose/foot injuries are recapped.",
+  "B_note": "Brown, a former fighter, sincerely says Topuria 'needs a confidence-building fight against someone like Renato Moicano' (steers_him, with assesses_him close); the lead's 'Jon Anik recently said the promotion is exploring a second fight between the pair for 2027' gives a rumour with a who and a when, so next_fight at rumour, though an editor could treat it as the premise of an opinion piece and answer no_fact/none/no. Injuries are 'reportedly' recapped (health no), his mirror comments are described not quoted (he_speaks no), and Gaethje shares the piece (centrality could be one_of_several)."
+ },
+ {
+  "id": "879",
+  "question": "firmness",
+  "key": "none",
+  "A": "none",
+  "B": "rumour",
+  "kind": "split",
+  "A_note": "The main claim is Brown's sincere advice ('needs a confidence-building fight... before facing Gaethje'), steers_him, though 'not sure Ilia comes back the same' is also assesses_him; Jon Anik's line that the UFC 'is exploring a second fight... for 2027' is a sourced rumour with a date used as the premise, which an editor could score as next_fight at rumour instead of background. Brown is a former UFC welterweight, so other_fighter_side, not media; the orbital/nose/foot injuries are recapped.",
+  "B_note": "Brown, a former fighter, sincerely says Topuria 'needs a confidence-building fight against someone like Renato Moicano' (steers_him, with assesses_him close); the lead's 'Jon Anik recently said the promotion is exploring a second fight between the pair for 2027' gives a rumour with a who and a when, so next_fight at rumour, though an editor could treat it as the premise of an opinion piece and answer no_fact/none/no. Injuries are 'reportedly' recapped (health no), his mirror comments are described not quoted (he_speaks no), and Gaethje shares the piece (centrality could be one_of_several)."
+ },
+ {
+  "id": "879",
+  "question": "reports_his_next_fight",
+  "key": "no",
+  "A": "no",
+  "B": "yes",
+  "kind": "split",
+  "A_note": "The main claim is Brown's sincere advice ('needs a confidence-building fight... before facing Gaethje'), steers_him, though 'not sure Ilia comes back the same' is also assesses_him; Jon Anik's line that the UFC 'is exploring a second fight... for 2027' is a sourced rumour with a date used as the premise, which an editor could score as next_fight at rumour instead of background. Brown is a former UFC welterweight, so other_fighter_side, not media; the orbital/nose/foot injuries are recapped.",
+  "B_note": "Brown, a former fighter, sincerely says Topuria 'needs a confidence-building fight against someone like Renato Moicano' (steers_him, with assesses_him close); the lead's 'Jon Anik recently said the promotion is exploring a second fight between the pair for 2027' gives a rumour with a who and a when, so next_fight at rumour, though an editor could treat it as the premise of an opinion piece and answer no_fact/none/no. Injuries are 'reportedly' recapped (health no), his mirror comments are described not quoted (he_speaks no), and Gaethje shares the piece (centrality could be one_of_several)."
+ },
+ {
+  "id": "913",
+  "question": "centrality",
+  "key": "one_of_several",
+  "A": "main_subject",
+  "B": "main_subject",
+  "kind": "both_against_checked",
+  "A_note": "The piece is the writer's analysis of Topuria's return options built around Pimblett's quote 'Me encantaría destrozarle la cabeza, muchacho ... Nadie me ha hablado de eso' — trash talk plus a denial of talks, with the only 'rumour' being unnamed 'corrillos' with no who, when or where, so I read it as a wish piece; a careful editor could call the denial next_fight at rumour, pick media as source for the writer's analysis, or one_of_several since Pimblett shares the stage. The January attempt and 'las lesiones sufridas por Topuria' are the writer's recap, so health is no.",
+  "B_note": "Built around Topuria's future ('solo parece haber esas dos opciones') with Pimblett's quote 'Me encantaría destrozarle la cabeza... Nadie me ha hablado de eso'; the 'corrillos' talk has no who, when or where, so like a wish piece it is no_fact, and the January attempt to book Pimblett is recalled as known background. An editor could pick one_of_several (both stars' futures), next_fight at rumour for the denied talk, or steers_him for the writer's analysis."
+ },
+ {
+  "id": "933",
+  "question": "act",
+  "key": "steers_him",
+  "A": "none_of_these",
+  "B": "steers_him",
+  "kind": "split",
+  "A_note": "The piece is the writer's own forecast of what the matchmakers might do ('Спробуймо розібратися, хто може стати наступним суперником'), which the guide says is no act, hence none_of_these; a reader could call his 'на місці менеджерів Донченка я від нього не відмовлявся б' steers_him. The five names are the writer's speculation, not options stated by him, his team or the UFC, so no_fact rather than status_update; the only words of his ('легкими грошима', ready to return) are recalled from the post-fight callout as background, so he_speaks is no.",
+  "B_note": "The writer's own analysis of who Donchenko should fight next ('на місці менеджерів Донченка я від нього не відмовлявся б') is sincere advice, so steers_him, though it reads partly as assesses_him; his win and his Rodriguez callout are recapped as background, and the options are the writer's picks, so no_fact, though an editor could read 'готовий повернутися в клітку в будь-які розумні терміни' as a status_update. His only words are the two-word 'легкими грошима' recalled from an earlier occasion, so he_speaks is no."
+ },
+ {
+  "id": "933",
+  "question": "he_speaks",
+  "key": "yes",
+  "A": "no",
+  "B": "no",
+  "kind": "both_against_unchecked",
+  "A_note": "The piece is the writer's own forecast of what the matchmakers might do ('Спробуймо розібратися, хто може стати наступним суперником'), which the guide says is no act, hence none_of_these; a reader could call his 'на місці менеджерів Донченка я від нього не відмовлявся б' steers_him. The five names are the writer's speculation, not options stated by him, his team or the UFC, so no_fact rather than status_update; the only words of his ('легкими грошима', ready to return) are recalled from the post-fight callout as background, so he_speaks is no.",
+  "B_note": "The writer's own analysis of who Donchenko should fight next ('на місці менеджерів Донченка я від нього не відмовлявся б') is sincere advice, so steers_him, though it reads partly as assesses_him; his win and his Rodriguez callout are recapped as background, and the options are the writer's picks, so no_fact, though an editor could read 'готовий повернутися в клітку в будь-які розумні терміни' as a status_update. His only words are the two-word 'легкими грошима' recalled from an earlier occasion, so he_speaks is no."
+ },
+ {
+  "id": "934",
+  "question": "he_speaks",
+  "key": "yes",
+  "A": "no",
+  "B": "no",
+  "kind": "both_against_unchecked",
+  "A_note": "'Вибираємо йому суперника на наступний поєдинок' — the outlet's writer sincerely proposes Rodriguez, Holland, Magny, Medic and Miller as options, none of them in talks, so no fact; the Soriano win and his Rodriguez callout are recap. His only words are two recalled from the post-fight ('легкими грошима'), which I read as background rather than him speaking.",
+  "B_note": "The writer sincerely picks who Donchenko should fight (Rodriguez, Holland, Magny, Medic, Miller), which is a pundit's pick and so no_fact; an editor could call his restated readiness ('готовий повернутися в клітку в будь-які розумні терміни') a status_update. His post-fight callout is retold indirectly with two quoted words ('легкими грошима') from an earlier occasion, so he_speaks is no; the Soriano win is background."
+ },
+ {
+  "id": "948",
+  "question": "source",
+  "key": "opponent_side",
+  "A": "other_fighter_side",
+  "B": "opponent_side",
+  "kind": "split",
+  "A_note": "Topuria appears only in a 'LATEST NEWS' link about a Gaethje rematch, which is page furniture, so not_in_content and act none_of_these (nobody does anything regarding him). Source is answered for the main content, Gaethje talking about Tsarukyan vs Ruffy; the body never says Gaethje fought Topuria, only the furniture link implies it, so other_fighter_side rather than opponent_side, flagged.",
+  "B_note": "Topuria appears only in an inserted 'LATEST NEWS:' link ('ruining Ilia Topuria's life' by making Justin Gaethje rematch), which is page furniture; the body is Gaethje on Tsarukyan vs Ruffy and Makhachev. Nobody does anything regarding him (none_of_these); source answers for the main content, Gaethje, who fought him."
+ },
+ {
+  "id": "983",
+  "question": "centrality",
+  "key": "one_of_several",
+  "A": "one_of_several",
+  "B": "main_subject",
+  "kind": "split",
+  "A_note": "Gaethje, who fought him, analyses his footwork ('He never changes the rhythm of his feet'), an assessment with no new fact about Topuria; the second half is Gaethje's own knee bruise and no fight this year, and the 'rematch will not happen this year' line is the writer's inference about Gaethje's side. He shares the stage, but an editor could call him main_subject since the headline and first half are about his flaw.",
+  "B_note": "'He never changes the rhythm of his feet... Our game plan was to disrupt his footwork' is Gaethje, who fought him, assessing Topuria's game, the headline topic; the second half is Gaethje's own injuries and layoff, so one_of_several is defensible. The June injuries are recap and 'the potential rematch will not be happening this year' is the writer's inference, so no_fact."
+ },
+ {
+  "id": "1066",
+  "question": "fact",
+  "key": "no_fact",
+  "A": "next_fight",
+  "B": "status_update",
+  "kind": "split",
+  "A_note": "'Dana White shed some light recently. He hinted that the El Matador might face Paddy Pimblett next' is the promotion signalling a specific fight, read as next_fight at rumour since 'no set date for Topuria's return has been announced'. Unsure because a hint with no date could instead be an opponent named as an option (status_update, or no_fact), which would also change act, and because the headline's news is the fans' reaction (source fans); 'confirmed his return very soon' is the writer's unquoted line and the Gaethje injuries are background.",
+  "B_note": "The new information is White's hint that 'El Matador might face Paddy Pimblett next' plus 'Topuria has confirmed his return to the Octagon very soon', with 'no set date ... announced': an opponent named as an option by the promotion, so status_update at official firmness, though a hint could be read as next_fight at rumour and the next-fight question as yes. Most of the text is fan tweets and Alvarez's no-rematch view, so source fans and act none_of_these are defensible."
+ },
+ {
+  "id": "1066",
+  "question": "firmness",
+  "key": "none",
+  "A": "rumour",
+  "B": "official_or_done",
+  "kind": "split",
+  "A_note": "'Dana White shed some light recently. He hinted that the El Matador might face Paddy Pimblett next' is the promotion signalling a specific fight, read as next_fight at rumour since 'no set date for Topuria's return has been announced'. Unsure because a hint with no date could instead be an opponent named as an option (status_update, or no_fact), which would also change act, and because the headline's news is the fans' reaction (source fans); 'confirmed his return very soon' is the writer's unquoted line and the Gaethje injuries are background.",
+  "B_note": "The new information is White's hint that 'El Matador might face Paddy Pimblett next' plus 'Topuria has confirmed his return to the Octagon very soon', with 'no set date ... announced': an opponent named as an option by the promotion, so status_update at official firmness, though a hint could be read as next_fight at rumour and the next-fight question as yes. Most of the text is fan tweets and Alvarez's no-rematch view, so source fans and act none_of_these are defensible."
+ },
+ {
+  "id": "1066",
+  "question": "reports_his_next_fight",
+  "key": "no",
+  "A": "yes",
+  "B": "no",
+  "kind": "split",
+  "A_note": "'Dana White shed some light recently. He hinted that the El Matador might face Paddy Pimblett next' is the promotion signalling a specific fight, read as next_fight at rumour since 'no set date for Topuria's return has been announced'. Unsure because a hint with no date could instead be an opponent named as an option (status_update, or no_fact), which would also change act, and because the headline's news is the fans' reaction (source fans); 'confirmed his return very soon' is the writer's unquoted line and the Gaethje injuries are background.",
+  "B_note": "The new information is White's hint that 'El Matador might face Paddy Pimblett next' plus 'Topuria has confirmed his return to the Octagon very soon', with 'no set date ... announced': an opponent named as an option by the promotion, so status_update at official firmness, though a hint could be read as next_fight at rumour and the next-fight question as yes. Most of the text is fan tweets and Alvarez's no-rematch view, so source fans and act none_of_these are defensible."
+ },
+ {
+  "id": "1089",
+  "question": "act",
+  "key": "none_of_these",
+  "A": "gives_news_of_him",
+  "B": "gives_news_of_him",
+  "kind": "both_against_checked",
+  "A_note": "Gaethje's retirement/money is the story, with Topuria sharing it as the man he beat and the rematch question ('Topuria is ready to fight, but is Justin Gaethje?'). White's 'The big talk is who [Topuria's] going to fight. Is he going to fight Gaethje, or ... Paddy Pimblett?' names opponents only as options, which I took as the promotion stating his status; an editor could read it as musing and answer no_fact/none with act none_of_these, and could call his share only_mentioned.",
+  "B_note": "The piece is Gaethje's story (retirement, money), but White's quote 'Is he going to fight Gaethje, or is he going to fight Paddy Pimblett?' names Topuria's options from the promotion, which the guide puts at status_update, not next_fight; an editor could read White's line as musing (no_fact, act none_of_these) and Topuria as only_mentioned since the loss is recapped and 'ready to fight' is the writer's line."
+ },
+ {
+  "id": "1089",
+  "question": "fact",
+  "key": "no_fact",
+  "A": "status_update",
+  "B": "status_update",
+  "kind": "both_against_checked",
+  "A_note": "Gaethje's retirement/money is the story, with Topuria sharing it as the man he beat and the rematch question ('Topuria is ready to fight, but is Justin Gaethje?'). White's 'The big talk is who [Topuria's] going to fight. Is he going to fight Gaethje, or ... Paddy Pimblett?' names opponents only as options, which I took as the promotion stating his status; an editor could read it as musing and answer no_fact/none with act none_of_these, and could call his share only_mentioned.",
+  "B_note": "The piece is Gaethje's story (retirement, money), but White's quote 'Is he going to fight Gaethje, or is he going to fight Paddy Pimblett?' names Topuria's options from the promotion, which the guide puts at status_update, not next_fight; an editor could read White's line as musing (no_fact, act none_of_these) and Topuria as only_mentioned since the loss is recapped and 'ready to fight' is the writer's line."
+ },
+ {
+  "id": "1089",
+  "question": "firmness",
+  "key": "none",
+  "A": "official_or_done",
+  "B": "official_or_done",
+  "kind": "both_against_checked",
+  "A_note": "Gaethje's retirement/money is the story, with Topuria sharing it as the man he beat and the rematch question ('Topuria is ready to fight, but is Justin Gaethje?'). White's 'The big talk is who [Topuria's] going to fight. Is he going to fight Gaethje, or ... Paddy Pimblett?' names opponents only as options, which I took as the promotion stating his status; an editor could read it as musing and answer no_fact/none with act none_of_these, and could call his share only_mentioned.",
+  "B_note": "The piece is Gaethje's story (retirement, money), but White's quote 'Is he going to fight Gaethje, or is he going to fight Paddy Pimblett?' names Topuria's options from the promotion, which the guide puts at status_update, not next_fight; an editor could read White's line as musing (no_fact, act none_of_these) and Topuria as only_mentioned since the loss is recapped and 'ready to fight' is the writer's line."
+ },
+ {
+  "id": "1101",
+  "question": "fact",
+  "key": "personal_life",
+  "A": "status_update",
+  "B": "status_update",
+  "kind": "both_against_unchecked",
+  "A_note": "The headline claim is his own quote ('I don't base my happiness on any goals anymore'), which carries no fact, but the one hard fact is White's 'Topuria is ready to fight, we're ready for him', a promotion statement of where he stands, so fact status_update at official firmness; an editor could instead take source promotion and act gives_news_of_him, or fact no_fact from the headline alone. Gaethje and Pimblett are named only as options and the 'rumors of... Pimblett in December, but nothing has been confirmed' is a passing line, so next fight is no, though the December date gives the rumour some substance.",
+  "B_note": "His own quote is a reflection with no fact ('I don't base my happiness on any goals anymore'); the one hard fact is White's 'Topuria is ready to fight, we're ready for him', a promotion statement of where he stands, hence status_update / official_or_done, though an editor could rule the piece no_fact and source promotion for that section. 'Rumors of the 29-year-old facing Paddy Pimblett in December, but nothing has been confirmed' is a passing line with no who, so next fight no, unsure."
+ },
+ {
+  "id": "1146",
+  "question": "centrality",
+  "key": "main_subject",
+  "A": "one_of_several",
+  "B": "one_of_several",
+  "kind": "both_against_unchecked",
+  "A_note": "Makhachev ('I don't think he is a dangerous opponent... someone stopped his wrestling') rates Amosov, who shares the article with Garry and Garry's coach; the first half is about Amosov so main_subject is arguable. Makhachev is not booked against him, so other_fighter_side; the Jackson loss is recalled as background.",
+  "B_note": "'I don't think he is a dangerous opponent,' Makhachev told Ushatayka, then names Garry as 'more dangerous and serious', and the second half is about Garry and his coach, so Amosov shares the stage; unsure because the lead and headline are built on the Amosov dismissal, which could make him main_subject. Makhachev is champion but no fight with Amosov is booked, so other_fighter_side; the Jackson loss is background."
+ },
+ {
+  "id": "1160",
+  "question": "centrality",
+  "key": "only_mentioned",
+  "A": "one_of_several",
+  "B": "one_of_several",
+  "kind": "both_against_unchecked",
+  "A_note": "'I don't think [Amosov] is a dangerous opponent ... I don't consider him a dangerous fighter at all' is a new assessment of him by Makhachev, who is not booked against him, hence other_fighter_side and no_fact. Centrality unsure: he is one of several contenders Makhachev ranks, but the quoted dismissal is new content about him rather than a recap, so one_of_several over only_mentioned.",
+  "B_note": "Makhachev's 'I don't think [Amosov] is a dangerous opponent... I saw the fight where someone shut down his wrestling' is a new assessment of him, shared with Prates, Morales, Rakhmonov and Garry, so one_of_several; he is one of five names in a roundup item, so only_mentioned is defensible. Makhachev is not booked against him, so other_fighter_side."
+ }
+]
