@@ -1409,3 +1409,16 @@ The spot check is drawn: 20 cards at random (seed 20261003) from the 186
 articles on which both full readers gave the key's answer on all nine
 questions and which no person had checked
 (experiments/2026-09-27-answer-key/spot-check.json).
+
+## The spot check, and the freeze (2026-10-03)
+
+Anton read the 20 spot-check cards (drawn at random from the 186 settled
+articles no person had checked) and marked all 20 checked without
+changing an answer. The agreed bar was one wrong or none.
+
+The labels are frozen in golden/labels.json: 300 articles, nine answers
+each, 240 of them corrections to the first readers' answers. 97 cards
+were read by Anton, 27 confirmed by him from a summary, and 176 stand on
+the two blind readers of the full re-read. Eight answers are recorded
+coin flips. A test guards the file's checksum and the ties between
+answers; it was checked by breaking one answer on purpose.

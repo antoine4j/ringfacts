@@ -75,10 +75,21 @@ Per **article**, only where it applies:
 | `same_page_as` | id of the article this is an exact copy of (the AMP edition case) | URL dedup |
 | `primary_source` | the article, or an outside link, the digest should point to | Digest writer's "link the essay, not the write-up" |
 
-Anton's words stay in `golden/verdicts.md`. A derived `golden/labels.json`
-holds one row per story with the fields above, written from his rulings,
-never by hand. The report collects the fields as he rules so nothing is
-typed twice.
+Anton's words stay in `golden/verdicts.md`.
+
+**What was frozen (2026-10-03).** The labels took a different shape from
+the per-story fields planned above. Since 28 September each **article**
+carries nine answers (how central he is, whose words, what the source
+does, what new fact, how firm, and four yes/no questions), decided under
+27 named rules ([golden/rules.md](../golden/rules.md)). `golden/labels.json`
+holds them for all 300 articles: the first readers' answers with Anton's
+corrections folded in, and for each article how it was checked (read by
+him: 97; confirmed by him from a summary: 27; left to two blind readers of
+a full re-read: 176). Eight answers where two values are accepted are in
+`golden/coin-flips.json`. A test recomputes a checksum of the answers, so
+the file cannot change silently. The per-story fields above (`bout`,
+`tier`, the kind and speaker of a claim) are not in it; grouping is still
+scored against the claims as ruled.
 
 ## The split
 
@@ -114,9 +125,11 @@ across otherwise.
    other 74 singletons stand as built and are checked in passing while labelling.
 2. Pre-flag body suspects and exact copies so Anton only confirms: done,
    14 settled on the live pages (2026-09-27).
-3. Add `kind`, `speaker`, `bout`, `tier` to each ruled story; derive
-   `labels.json`.
-4. Freeze. Draw the split. Record `split.json`.
+3. Label every article on nine questions and check the answers: done
+   2026-10-03 (`golden/labels.json`; the steps are in the plan page's task
+   4.16 to 4.24).
+4. Freeze. Draw the split. Record `split.json`: the split was drawn
+   2026-10-01, the labels frozen 2026-10-03.
 5. Score each station once on the test third; write the number into
    [decisions.md](decisions.md) beside the design.
 

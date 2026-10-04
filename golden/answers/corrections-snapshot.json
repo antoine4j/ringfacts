@@ -1,14 +1,26 @@
 {
- "about": "A copy of Anton's corrections to the answer key, taken from the database of the Answer Key Check page (claude.ai/artifact/RKAaSMy3eQsse3unLHLDte, collection 'corrections'). The page's database is where he works; this file is the copy that lives with the repository, so the corrections do not exist in one place only. Each card: the corrected answers (value and why), whether he checked it, and how ('summary' = confirmed from a grouped summary without opening the card). The effective answer key is golden/answers/readers-v1.json with these laid over it. Not yet the frozen labels: that file is written after the spot check.",
- "taken": "2026-10-03",
- "cards_with_a_record": 152,
+ "about": "A copy of Anton's corrections to the answer key, taken from the database of the Answer Key Check page (claude.ai/artifact/RKAaSMy3eQsse3unLHLDte, collection 'corrections') at the moment the labels were frozen. It keeps what golden/labels.json does not: the why of each corrected answer. Each card: the corrected answers (value and why), whether he checked it, and how ('summary' = confirmed from a grouped summary without opening the card).",
+ "taken": "2026-10-03, at the freeze",
+ "cards_with_a_record": 166,
  "corrected_answers": 264,
- "checked": 104,
+ "checked": 124,
  "checked_by_summary": 27,
  "cards": {
+  "2": {
+   "fixes": {},
+   "reviewed": true
+  },
+  "6": {
+   "fixes": {},
+   "reviewed": true
+  },
   "10": {
    "fixes": {},
    "reviewed": false
+  },
+  "14": {
+   "fixes": {},
+   "reviewed": true
   },
   "34": {
    "fixes": {
@@ -26,6 +38,10 @@
      "value": "no"
     }
    },
+   "reviewed": true
+  },
+  "51": {
+   "fixes": {},
    "reviewed": true
   },
   "78": {
@@ -55,7 +71,7 @@
   "129": {
    "fixes": {
     "fact": {
-     "note": "a wish is no fact, whoever makes it (Anton, 2026-10-02): his manager asks for the rematch; nothing about a fight exists or changes. Source (his manager) and act (steers him) carry it. Both blind readers agreed",
+     "note": "a wish is no fact, whoever makes it (Anton, 2026-10-02): his manager asks for the rematch; nothing about a fight exists or changes. Source (his manager) and act (steers him) carry it. Both readers of the status-update pilot (2 Oct) agreed",
      "value": "no_fact"
     },
     "firmness": {
@@ -83,10 +99,14 @@
    "reviewed": true,
    "how": "summary"
   },
+  "144": {
+   "fixes": {},
+   "reviewed": true
+  },
   "148": {
    "fixes": {
     "fact": {
-     "note": "Health follows who states it (Anton, 2026-10-03): a named trainer, Jesús Gallo, \"ha revelado\" that his recovery is ahead of schedule, under its own subheading. A second fact stated beside the main claim (Makhachev's opinion) counts. All three original readers and both blind re-readers of 3 Oct said health; the earlier correction to no fact applied \"only what is new\" too hard.",
+     "note": "Health follows who states it (Anton, 2026-10-03): a named trainer, Jesús Gallo, \"ha revelado\" that his recovery is ahead of schedule, under its own subheading. A second fact stated beside the main claim (Makhachev's opinion) counts. All three original readers and both readers of the rule re-read (3 Oct, 35 articles) said health; the earlier correction to no fact applied \"only what is new\" too hard.",
      "value": "health"
     },
     "firmness": {
@@ -107,7 +127,7 @@
   "152": {
    "fixes": {
     "fact": {
-     "note": "health wins over a return date in the same statement (Anton, 2026-10-02): his coach says how the recovery is going. Three write-ups of one interview (#152, #402, #412) get the same label. Both blind readers agreed",
+     "note": "health wins over a return date in the same statement (Anton, 2026-10-02): his coach says how the recovery is going. Three write-ups of one interview (#152, #402, #412) get the same label. Both readers of the status-update pilot (2 Oct) agreed",
      "value": "health"
     },
     "reports_his_next_fight": {
@@ -126,6 +146,10 @@
    },
    "reviewed": false
   },
+  "170": {
+   "fixes": {},
+   "reviewed": true
+  },
   "187": {
    "fixes": {
     "source": {
@@ -135,6 +159,10 @@
    },
    "reviewed": true,
    "how": "summary"
+  },
+  "200": {
+   "fixes": {},
+   "reviewed": true
   },
   "203": {
    "fixes": {
@@ -340,7 +368,7 @@
   "402": {
    "fixes": {
     "fact": {
-     "note": "health wins over a return date in the same statement (Anton, 2026-10-02): his coach says how the recovery is going. Three write-ups of one interview (#152, #402, #412) get the same label. Both blind readers agreed",
+     "note": "health wins over a return date in the same statement (Anton, 2026-10-02): his coach says how the recovery is going. Three write-ups of one interview (#152, #402, #412) get the same label. Both readers of the status-update pilot (2 Oct) agreed",
      "value": "health"
     },
     "reports_his_next_fight": {
@@ -466,7 +494,7 @@
      "value": "no"
     }
    },
-   "reviewed": false
+   "reviewed": true
   },
   "491": {
    "fixes": {
@@ -541,6 +569,10 @@
    },
    "reviewed": true
   },
+  "508": {
+   "fixes": {},
+   "reviewed": true
+  },
   "510": {
    "fixes": {
     "act": {
@@ -570,7 +602,7 @@
   "516": {
    "fixes": {
     "act": {
-     "note": "An act needs a plain statement about him: Tsarukyan's \"I don't think they are gonna do this fight, they are gonna give Ilia someone easy\" is a forecast of what the matchmakers will do, which is not an act. Both blind re-readers of 3 Oct; Anton, 2026-10-03: \"okay with none of these\".",
+     "note": "An act needs a plain statement about him: Tsarukyan's \"I don't think they are gonna do this fight, they are gonna give Ilia someone easy\" is a forecast of what the matchmakers will do, which is not an act. Both readers of the rule re-read (3 Oct, 35 articles); Anton, 2026-10-03: \"okay with none of these\".",
      "value": "none_of_these"
     }
    },
@@ -651,10 +683,14 @@
    "reviewed": true,
    "how": "summary"
   },
+  "563": {
+   "fixes": {},
+   "reviewed": true
+  },
   "572": {
    "fixes": {
     "fact": {
-     "note": "status update (Anton, 2026-10-02): a named reporter says he returns to public life in September; that is news of where he stands as a fighter. Both blind readers agreed",
+     "note": "status update (Anton, 2026-10-02): a named reporter says he returns to public life in September; that is news of where he stands as a fighter. Both readers of the status-update pilot (2 Oct) agreed",
      "value": "status_update"
     },
     "reports_his_health": {
@@ -688,7 +724,7 @@
   "592": {
    "fixes": {
     "fact": {
-     "note": "status update (Anton, 2026-10-02): a named reporter says he returns to public life in September; that is news of where he stands as a fighter. Both blind readers agreed",
+     "note": "status update (Anton, 2026-10-02): a named reporter says he returns to public life in September; that is news of where he stands as a fighter. Both readers of the status-update pilot (2 Oct) agreed",
      "value": "status_update"
     }
    },
@@ -743,7 +779,7 @@
      "value": "no"
     }
    },
-   "reviewed": false
+   "reviewed": true
   },
   "605": {
    "fixes": {
@@ -861,6 +897,10 @@
      "value": "no"
     }
    },
+   "reviewed": true
+  },
+  "632": {
+   "fixes": {},
    "reviewed": true
   },
   "641": {
@@ -1069,6 +1109,10 @@
    "fixes": {},
    "reviewed": true
   },
+  "744": {
+   "fixes": {},
+   "reviewed": true
+  },
   "745": {
    "fixes": {
     "fact": {
@@ -1106,6 +1150,10 @@
    "reviewed": true,
    "how": "summary"
   },
+  "767": {
+   "fixes": {},
+   "reviewed": true
+  },
   "774": {
    "fixes": {
     "fact": {
@@ -1121,13 +1169,17 @@
      "value": "no"
     }
    },
-   "reviewed": false
+   "reviewed": true
   },
   "778": {
    "fixes": {},
    "reviewed": true
   },
   "779": {
+   "fixes": {},
+   "reviewed": true
+  },
+  "780": {
    "fixes": {},
    "reviewed": true
   },
@@ -1265,7 +1317,7 @@
   "851": {
    "fixes": {
     "fact": {
-     "note": "Anton, 2026-10-02 (replaces 'result stays' of the same evening): published 7 Sept, two days after the fight, when 29 articles had already reported the win. The headline and lead are his callout of Rodriguez (\"already has his next opponent in mind\"); the win is a recap paragraph. A callout is a wish, so no fact (only what is new). Both blind re-readers said no fact. Source himself and act speaks of himself carry it",
+     "note": "Anton, 2026-10-02 (replaces 'result stays' of the same evening): published 7 Sept, two days after the fight, when 29 articles had already reported the win. The headline and lead are his callout of Rodriguez (\"already has his next opponent in mind\"); the win is a recap paragraph. A callout is a wish, so no fact (only what is new). Both readers of the status-update pilot (2 Oct) said no fact. Source himself and act speaks of himself carry it",
      "value": "no_fact"
     },
     "firmness": {
@@ -1342,6 +1394,10 @@
      "value": "other_fighter_side"
     }
    },
+   "reviewed": true
+  },
+  "875": {
+   "fixes": {},
    "reviewed": true
   },
   "879": {
@@ -1474,7 +1530,7 @@
      "value": "no"
     }
    },
-   "reviewed": false
+   "reviewed": true
   },
   "921": {
    "fixes": {
@@ -1539,7 +1595,7 @@
   "958": {
    "fixes": {
     "fact": {
-     "note": "status update (Anton, 2026-10-02): the promotion says he is ready and nothing is booked; opponents are named only as options. No specific fight exists or changes. Both blind readers agreed",
+     "note": "status update (Anton, 2026-10-02): the promotion says he is ready and nothing is booked; opponents are named only as options. No specific fight exists or changes. Both readers of the status-update pilot (2 Oct) agreed",
      "value": "status_update"
     },
     "reports_his_next_fight": {
@@ -1547,12 +1603,12 @@
      "value": "no"
     }
    },
-   "reviewed": false
+   "reviewed": true
   },
   "972": {
    "fixes": {
     "fact": {
-     "note": "status update (Anton, 2026-10-02): the promotion says he is ready and nothing is booked; opponents are named only as options. No specific fight exists or changes. Both blind readers agreed",
+     "note": "status update (Anton, 2026-10-02): the promotion says he is ready and nothing is booked; opponents are named only as options. No specific fight exists or changes. Both readers of the status-update pilot (2 Oct) agreed",
      "value": "status_update"
     },
     "reports_his_next_fight": {
@@ -1573,7 +1629,7 @@
   "991": {
    "fixes": {
     "fact": {
-     "note": "status update (Anton, 2026-10-02): the promotion says he is ready and nothing is booked; opponents are named only as options. No specific fight exists or changes. Both blind readers agreed",
+     "note": "status update (Anton, 2026-10-02): the promotion says he is ready and nothing is booked; opponents are named only as options. No specific fight exists or changes. Both readers of the status-update pilot (2 Oct) agreed",
      "value": "status_update"
     },
     "reports_his_next_fight": {
@@ -1586,7 +1642,7 @@
   "998": {
    "fixes": {
     "fact": {
-     "note": "status update (Anton, 2026-10-02): the promotion says he is ready and nothing is booked; opponents are named only as options. No specific fight exists or changes. Both blind readers agreed",
+     "note": "status update (Anton, 2026-10-02): the promotion says he is ready and nothing is booked; opponents are named only as options. No specific fight exists or changes. Both readers of the status-update pilot (2 Oct) agreed",
      "value": "status_update"
     },
     "reports_his_health": {
@@ -1620,7 +1676,7 @@
   "1008": {
    "fixes": {
     "fact": {
-     "note": "status update (Anton, 2026-10-02): the promotion says he is ready and nothing is booked; opponents are named only as options. No specific fight exists or changes. Both blind readers agreed",
+     "note": "status update (Anton, 2026-10-02): the promotion says he is ready and nothing is booked; opponents are named only as options. No specific fight exists or changes. Both readers of the status-update pilot (2 Oct) agreed",
      "value": "status_update"
     },
     "reports_his_next_fight": {
@@ -1642,7 +1698,7 @@
   "1020": {
    "fixes": {
     "fact": {
-     "note": "status update (Anton, 2026-10-02): the promotion says he is ready and nothing is booked; opponents are named only as options. No specific fight exists or changes. Both blind readers agreed",
+     "note": "status update (Anton, 2026-10-02): the promotion says he is ready and nothing is booked; opponents are named only as options. No specific fight exists or changes. Both readers of the status-update pilot (2 Oct) agreed",
      "value": "status_update"
     },
     "reports_his_health": {
@@ -1659,7 +1715,7 @@
   "1031": {
    "fixes": {
     "fact": {
-     "note": "status update (Anton, 2026-10-02): the promotion says he is ready and nothing is booked; opponents are named only as options. No specific fight exists or changes. Both blind readers agreed",
+     "note": "status update (Anton, 2026-10-02): the promotion says he is ready and nothing is booked; opponents are named only as options. No specific fight exists or changes. Both readers of the status-update pilot (2 Oct) agreed",
      "value": "status_update"
     },
     "reports_his_next_fight": {
@@ -1667,12 +1723,12 @@
      "value": "no"
     }
    },
-   "reviewed": false
+   "reviewed": true
   },
   "1036": {
    "fixes": {
     "fact": {
-     "note": "status update (Anton, 2026-10-02): the promotion says he is ready and nothing is booked; opponents are named only as options. No specific fight exists or changes. Both blind readers agreed",
+     "note": "status update (Anton, 2026-10-02): the promotion says he is ready and nothing is booked; opponents are named only as options. No specific fight exists or changes. Both readers of the status-update pilot (2 Oct) agreed",
      "value": "status_update"
     },
     "reports_his_next_fight": {
@@ -1706,7 +1762,7 @@
   "1058": {
    "fixes": {
     "fact": {
-     "note": "status update (Anton, 2026-10-02): the promotion says he is ready and nothing is booked; opponents are named only as options. No specific fight exists or changes. Both blind readers agreed",
+     "note": "status update (Anton, 2026-10-02): the promotion says he is ready and nothing is booked; opponents are named only as options. No specific fight exists or changes. Both readers of the status-update pilot (2 Oct) agreed",
      "value": "status_update"
     },
     "reports_his_health": {
@@ -1741,7 +1797,7 @@
   "1076": {
    "fixes": {
     "fact": {
-     "note": "status update (Anton, 2026-10-02): the promotion says he is ready and nothing is booked; opponents are named only as options. No specific fight exists or changes. Both blind readers agreed",
+     "note": "status update (Anton, 2026-10-02): the promotion says he is ready and nothing is booked; opponents are named only as options. No specific fight exists or changes. Both readers of the status-update pilot (2 Oct) agreed",
      "value": "status_update"
     },
     "reports_his_next_fight": {

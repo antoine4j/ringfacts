@@ -1,0 +1,4900 @@
+{
+ "about": "The frozen answer key of the golden set: nine answers for each of the 300 articles. Built from the first readers' answers (answers/readers-v1.json) with Anton's corrections folded in. Every station is scored against this file. It does not change silently: the test golden/labels.test.js recomputes the checksum of the answers, so a change has to update the checksum and add a line to 'errata' saying what changed and why.",
+ "frozen": "2026-10-03",
+ "guide": "experiments/2026-09-27-answer-key/key-guide.md",
+ "guide_commit": "f6eab1c",
+ "rules": "golden/rules.md: the 27 rules the answers follow; Anton's words per ruling are in golden/verdicts.md",
+ "coin_flips": "golden/coin-flips.json: answers where two values are accepted; this file carries one of them, either counts as right when scoring",
+ "split": "golden/split.json: which articles a classifier may be tuned on, and which are held back",
+ "check": {
+  "read": "Anton opened the card and marked it checked",
+  "summary": "Anton confirmed the card from a grouped summary without opening it",
+  "readers": "no person looked at it: the answers stand because two blind readers of the full re-read of 3 October gave them (and a third reader where those two differed)"
+ },
+ "how_checked": {
+  "readers": 176,
+  "read": 97,
+  "summary": 27
+ },
+ "corrected_answers": 240,
+ "errata": [],
+ "sha256_of_answers": "dcd1d6a57af780a055b893c656ba99f12043ecb0e97d81a352cea0f360be443b",
+ "articles": {
+  "1": {
+   "answers": {
+    "centrality": "main_subject",
+    "source": "other_fighter_side",
+    "act": "assesses_him",
+    "fact": "no_fact",
+    "firmness": "none",
+    "reports_his_result": "no",
+    "reports_his_next_fight": "no",
+    "reports_his_health": "no",
+    "he_speaks": "no"
+   },
+   "check": "readers",
+   "corrected": []
+  },
+  "2": {
+   "answers": {
+    "centrality": "main_subject",
+    "source": "other_fighter_side",
+    "act": "assesses_him",
+    "fact": "no_fact",
+    "firmness": "none",
+    "reports_his_result": "no",
+    "reports_his_next_fight": "no",
+    "reports_his_health": "no",
+    "he_speaks": "no"
+   },
+   "check": "read",
+   "corrected": []
+  },
+  "3": {
+   "answers": {
+    "centrality": "only_mentioned",
+    "source": "no_one",
+    "act": "none_of_these",
+    "fact": "no_fact",
+    "firmness": "none",
+    "reports_his_result": "no",
+    "reports_his_next_fight": "no",
+    "reports_his_health": "no",
+    "he_speaks": "no"
+   },
+   "check": "readers",
+   "corrected": []
+  },
+  "4": {
+   "answers": {
+    "centrality": "main_subject",
+    "source": "other_fighter_side",
+    "act": "assesses_him",
+    "fact": "no_fact",
+    "firmness": "none",
+    "reports_his_result": "no",
+    "reports_his_next_fight": "no",
+    "reports_his_health": "no",
+    "he_speaks": "no"
+   },
+   "check": "readers",
+   "corrected": []
+  },
+  "6": {
+   "answers": {
+    "centrality": "only_mentioned",
+    "source": "opponent_side",
+    "act": "none_of_these",
+    "fact": "no_fact",
+    "firmness": "none",
+    "reports_his_result": "no",
+    "reports_his_next_fight": "no",
+    "reports_his_health": "no",
+    "he_speaks": "no"
+   },
+   "check": "read",
+   "corrected": []
+  },
+  "10": {
+   "answers": {
+    "centrality": "only_mentioned",
+    "source": "other_fighter_side",
+    "act": "calls_him_out",
+    "fact": "no_fact",
+    "firmness": "none",
+    "reports_his_result": "no",
+    "reports_his_next_fight": "no",
+    "reports_his_health": "no",
+    "he_speaks": "no"
+   },
+   "check": "readers",
+   "corrected": []
+  },
+  "13": {
+   "answers": {
+    "centrality": "main_subject",
+    "source": "other_fighter_side",
+    "act": "assesses_him",
+    "fact": "no_fact",
+    "firmness": "none",
+    "reports_his_result": "no",
+    "reports_his_next_fight": "no",
+    "reports_his_health": "no",
+    "he_speaks": "no"
+   },
+   "check": "readers",
+   "corrected": []
+  },
+  "14": {
+   "answers": {
+    "centrality": "main_subject",
+    "source": "other_fighter_side",
+    "act": "assesses_him",
+    "fact": "no_fact",
+    "firmness": "none",
+    "reports_his_result": "no",
+    "reports_his_next_fight": "no",
+    "reports_his_health": "no",
+    "he_speaks": "no"
+   },
+   "check": "read",
+   "corrected": []
+  },
+  "16": {
+   "answers": {
+    "centrality": "main_subject",
+    "source": "no_one",
+    "act": "reports_an_event",
+    "fact": "next_fight",
+    "firmness": "official_or_done",
+    "reports_his_result": "no",
+    "reports_his_next_fight": "yes",
+    "reports_his_health": "no",
+    "he_speaks": "no"
+   },
+   "check": "readers",
+   "corrected": []
+  },
+  "17": {
+   "answers": {
+    "centrality": "main_subject",
+    "source": "no_one",
+    "act": "reports_an_event",
+    "fact": "next_fight",
+    "firmness": "official_or_done",
+    "reports_his_result": "no",
+    "reports_his_next_fight": "yes",
+    "reports_his_health": "no",
+    "he_speaks": "no"
+   },
+   "check": "readers",
+   "corrected": []
+  },
+  "18": {
+   "answers": {
+    "centrality": "main_subject",
+    "source": "no_one",
+    "act": "reports_an_event",
+    "fact": "next_fight",
+    "firmness": "official_or_done",
+    "reports_his_result": "no",
+    "reports_his_next_fight": "yes",
+    "reports_his_health": "no",
+    "he_speaks": "no"
+   },
+   "check": "readers",
+   "corrected": []
+  },
+  "25": {
+   "answers": {
+    "centrality": "main_subject",
+    "source": "media",
+    "act": "gives_news_of_him",
+    "fact": "personal_life",
+    "firmness": "reported",
+    "reports_his_result": "no",
+    "reports_his_next_fight": "no",
+    "reports_his_health": "no",
+    "he_speaks": "no"
+   },
+   "check": "readers",
+   "corrected": []
+  },
+  "33": {
+   "answers": {
+    "centrality": "main_subject",
+    "source": "other_fighter_side",
+    "act": "assesses_him",
+    "fact": "no_fact",
+    "firmness": "none",
+    "reports_his_result": "no",
+    "reports_his_next_fight": "no",
+    "reports_his_health": "no",
+    "he_speaks": "no"
+   },
+   "check": "readers",
+   "corrected": []
+  },
+  "34": {
+   "answers": {
+    "centrality": "only_mentioned",
+    "source": "other_fighter_side",
+    "act": "calls_him_out",
+    "fact": "no_fact",
+    "firmness": "none",
+    "reports_his_result": "no",
+    "reports_his_next_fight": "no",
+    "reports_his_health": "no",
+    "he_speaks": "no"
+   },
+   "check": "read",
+   "corrected": [
+    "source"
+   ]
+  },
+  "38": {
+   "answers": {
+    "centrality": "not_in_content",
+    "source": "other_fighter_side",
+    "act": "none_of_these",
+    "fact": "no_fact",
+    "firmness": "none",
+    "reports_his_result": "no",
+    "reports_his_next_fight": "no",
+    "reports_his_health": "no",
+    "he_speaks": "no"
+   },
+   "check": "readers",
+   "corrected": []
+  },
+  "44": {
+   "answers": {
+    "centrality": "main_subject",
+    "source": "himself",
+    "act": "speaks_of_himself",
+    "fact": "health",
+    "firmness": "official_or_done",
+    "reports_his_result": "no",
+    "reports_his_next_fight": "no",
+    "reports_his_health": "yes",
+    "he_speaks": "no"
+   },
+   "check": "read",
+   "corrected": [
+    "reports_his_result"
+   ]
+  },
+  "51": {
+   "answers": {
+    "centrality": "main_subject",
+    "source": "his_manager",
+    "act": "answers_for_him",
+    "fact": "no_fact",
+    "firmness": "none",
+    "reports_his_result": "no",
+    "reports_his_next_fight": "no",
+    "reports_his_health": "no",
+    "he_speaks": "no"
+   },
+   "check": "read",
+   "corrected": []
+  },
+  "55": {
+   "answers": {
+    "centrality": "main_subject",
+    "source": "his_manager",
+    "act": "answers_for_him",
+    "fact": "no_fact",
+    "firmness": "none",
+    "reports_his_result": "no",
+    "reports_his_next_fight": "no",
+    "reports_his_health": "no",
+    "he_speaks": "no"
+   },
+   "check": "readers",
+   "corrected": []
+  },
+  "60": {
+   "answers": {
+    "centrality": "not_in_content",
+    "source": "other_fighter_side",
+    "act": "none_of_these",
+    "fact": "no_fact",
+    "firmness": "none",
+    "reports_his_result": "no",
+    "reports_his_next_fight": "no",
+    "reports_his_health": "no",
+    "he_speaks": "no"
+   },
+   "check": "readers",
+   "corrected": []
+  },
+  "65": {
+   "answers": {
+    "centrality": "only_mentioned",
+    "source": "media",
+    "act": "none_of_these",
+    "fact": "no_fact",
+    "firmness": "none",
+    "reports_his_result": "no",
+    "reports_his_next_fight": "no",
+    "reports_his_health": "no",
+    "he_speaks": "no"
+   },
+   "check": "readers",
+   "corrected": []
+  },
+  "71": {
+   "answers": {
+    "centrality": "main_subject",
+    "source": "his_manager",
+    "act": "answers_for_him",
+    "fact": "no_fact",
+    "firmness": "none",
+    "reports_his_result": "no",
+    "reports_his_next_fight": "no",
+    "reports_his_health": "no",
+    "he_speaks": "no"
+   },
+   "check": "readers",
+   "corrected": []
+  },
+  "78": {
+   "answers": {
+    "centrality": "only_mentioned",
+    "source": "other_fighter_side",
+    "act": "calls_him_out",
+    "fact": "no_fact",
+    "firmness": "none",
+    "reports_his_result": "no",
+    "reports_his_next_fight": "no",
+    "reports_his_health": "no",
+    "he_speaks": "no"
+   },
+   "check": "summary",
+   "corrected": [
+    "centrality",
+    "source"
+   ]
+  },
+  "84": {
+   "answers": {
+    "centrality": "main_subject",
+    "source": "his_manager",
+    "act": "answers_for_him",
+    "fact": "no_fact",
+    "firmness": "none",
+    "reports_his_result": "no",
+    "reports_his_next_fight": "no",
+    "reports_his_health": "no",
+    "he_speaks": "no"
+   },
+   "check": "readers",
+   "corrected": []
+  },
+  "90": {
+   "answers": {
+    "centrality": "main_subject",
+    "source": "his_manager",
+    "act": "answers_for_him",
+    "fact": "no_fact",
+    "firmness": "none",
+    "reports_his_result": "no",
+    "reports_his_next_fight": "no",
+    "reports_his_health": "no",
+    "he_speaks": "no"
+   },
+   "check": "readers",
+   "corrected": []
+  },
+  "96": {
+   "answers": {
+    "centrality": "main_subject",
+    "source": "other_fighter_side",
+    "act": "assesses_him",
+    "fact": "no_fact",
+    "firmness": "none",
+    "reports_his_result": "no",
+    "reports_his_next_fight": "no",
+    "reports_his_health": "no",
+    "he_speaks": "no"
+   },
+   "check": "readers",
+   "corrected": []
+  },
+  "97": {
+   "answers": {
+    "centrality": "one_of_several",
+    "source": "his_manager",
+    "act": "answers_for_him",
+    "fact": "no_fact",
+    "firmness": "none",
+    "reports_his_result": "no",
+    "reports_his_next_fight": "no",
+    "reports_his_health": "no",
+    "he_speaks": "no"
+   },
+   "check": "summary",
+   "corrected": [
+    "centrality"
+   ]
+  },
+  "102": {
+   "answers": {
+    "centrality": "main_subject",
+    "source": "his_manager",
+    "act": "answers_for_him",
+    "fact": "no_fact",
+    "firmness": "none",
+    "reports_his_result": "no",
+    "reports_his_next_fight": "no",
+    "reports_his_health": "no",
+    "he_speaks": "no"
+   },
+   "check": "readers",
+   "corrected": []
+  },
+  "115": {
+   "answers": {
+    "centrality": "only_mentioned",
+    "source": "no_one",
+    "act": "none_of_these",
+    "fact": "no_fact",
+    "firmness": "none",
+    "reports_his_result": "no",
+    "reports_his_next_fight": "no",
+    "reports_his_health": "no",
+    "he_speaks": "no"
+   },
+   "check": "readers",
+   "corrected": []
+  },
+  "119": {
+   "answers": {
+    "centrality": "main_subject",
+    "source": "his_manager",
+    "act": "answers_for_him",
+    "fact": "no_fact",
+    "firmness": "none",
+    "reports_his_result": "no",
+    "reports_his_next_fight": "no",
+    "reports_his_health": "no",
+    "he_speaks": "no"
+   },
+   "check": "readers",
+   "corrected": []
+  },
+  "125": {
+   "answers": {
+    "centrality": "only_mentioned",
+    "source": "no_one",
+    "act": "none_of_these",
+    "fact": "no_fact",
+    "firmness": "none",
+    "reports_his_result": "no",
+    "reports_his_next_fight": "no",
+    "reports_his_health": "no",
+    "he_speaks": "no"
+   },
+   "check": "readers",
+   "corrected": []
+  },
+  "129": {
+   "answers": {
+    "centrality": "main_subject",
+    "source": "his_manager",
+    "act": "steers_him",
+    "fact": "no_fact",
+    "firmness": "none",
+    "reports_his_result": "no",
+    "reports_his_next_fight": "no",
+    "reports_his_health": "no",
+    "he_speaks": "no"
+   },
+   "check": "readers",
+   "corrected": [
+    "fact",
+    "firmness",
+    "reports_his_next_fight",
+    "reports_his_health"
+   ]
+  },
+  "134": {
+   "answers": {
+    "centrality": "not_in_content",
+    "source": "promotion",
+    "act": "none_of_these",
+    "fact": "no_fact",
+    "firmness": "none",
+    "reports_his_result": "no",
+    "reports_his_next_fight": "no",
+    "reports_his_health": "no",
+    "he_speaks": "no"
+   },
+   "check": "summary",
+   "corrected": [
+    "source"
+   ]
+  },
+  "138": {
+   "answers": {
+    "centrality": "main_subject",
+    "source": "other_fighter_side",
+    "act": "assesses_him",
+    "fact": "no_fact",
+    "firmness": "none",
+    "reports_his_result": "no",
+    "reports_his_next_fight": "no",
+    "reports_his_health": "no",
+    "he_speaks": "no"
+   },
+   "check": "readers",
+   "corrected": []
+  },
+  "144": {
+   "answers": {
+    "centrality": "main_subject",
+    "source": "other_fighter_side",
+    "act": "assesses_him",
+    "fact": "no_fact",
+    "firmness": "none",
+    "reports_his_result": "no",
+    "reports_his_next_fight": "no",
+    "reports_his_health": "no",
+    "he_speaks": "no"
+   },
+   "check": "read",
+   "corrected": []
+  },
+  "148": {
+   "answers": {
+    "centrality": "main_subject",
+    "source": "other_fighter_side",
+    "act": "assesses_him",
+    "fact": "health",
+    "firmness": "reported",
+    "reports_his_result": "no",
+    "reports_his_next_fight": "no",
+    "reports_his_health": "yes",
+    "he_speaks": "no"
+   },
+   "check": "read",
+   "corrected": [
+    "reports_his_next_fight"
+   ]
+  },
+  "152": {
+   "answers": {
+    "centrality": "main_subject",
+    "source": "his_team",
+    "act": "gives_news_of_him",
+    "fact": "health",
+    "firmness": "reported",
+    "reports_his_result": "no",
+    "reports_his_next_fight": "no",
+    "reports_his_health": "yes",
+    "he_speaks": "no"
+   },
+   "check": "readers",
+   "corrected": [
+    "fact",
+    "reports_his_next_fight"
+   ]
+  },
+  "158": {
+   "answers": {
+    "centrality": "not_in_content",
+    "source": "media",
+    "act": "none_of_these",
+    "fact": "no_fact",
+    "firmness": "none",
+    "reports_his_result": "no",
+    "reports_his_next_fight": "no",
+    "reports_his_health": "no",
+    "he_speaks": "no"
+   },
+   "check": "readers",
+   "corrected": []
+  },
+  "166": {
+   "answers": {
+    "centrality": "one_of_several",
+    "source": "other_fighter_side",
+    "act": "assesses_him",
+    "fact": "no_fact",
+    "firmness": "none",
+    "reports_his_result": "no",
+    "reports_his_next_fight": "no",
+    "reports_his_health": "no",
+    "he_speaks": "no"
+   },
+   "check": "readers",
+   "corrected": [
+    "source"
+   ]
+  },
+  "170": {
+   "answers": {
+    "centrality": "main_subject",
+    "source": "other_fighter_side",
+    "act": "assesses_him",
+    "fact": "no_fact",
+    "firmness": "none",
+    "reports_his_result": "no",
+    "reports_his_next_fight": "no",
+    "reports_his_health": "no",
+    "he_speaks": "no"
+   },
+   "check": "read",
+   "corrected": []
+  },
+  "174": {
+   "answers": {
+    "centrality": "main_subject",
+    "source": "other_fighter_side",
+    "act": "assesses_him",
+    "fact": "no_fact",
+    "firmness": "none",
+    "reports_his_result": "no",
+    "reports_his_next_fight": "no",
+    "reports_his_health": "no",
+    "he_speaks": "no"
+   },
+   "check": "readers",
+   "corrected": []
+  },
+  "181": {
+   "answers": {
+    "centrality": "not_in_content",
+    "source": "other_fighter_side",
+    "act": "none_of_these",
+    "fact": "no_fact",
+    "firmness": "none",
+    "reports_his_result": "no",
+    "reports_his_next_fight": "no",
+    "reports_his_health": "no",
+    "he_speaks": "no"
+   },
+   "check": "readers",
+   "corrected": []
+  },
+  "186": {
+   "answers": {
+    "centrality": "only_mentioned",
+    "source": "media",
+    "act": "none_of_these",
+    "fact": "no_fact",
+    "firmness": "none",
+    "reports_his_result": "no",
+    "reports_his_next_fight": "no",
+    "reports_his_health": "no",
+    "he_speaks": "no"
+   },
+   "check": "readers",
+   "corrected": []
+  },
+  "187": {
+   "answers": {
+    "centrality": "only_mentioned",
+    "source": "opponent_side",
+    "act": "none_of_these",
+    "fact": "no_fact",
+    "firmness": "none",
+    "reports_his_result": "no",
+    "reports_his_next_fight": "no",
+    "reports_his_health": "no",
+    "he_speaks": "no"
+   },
+   "check": "summary",
+   "corrected": [
+    "source"
+   ]
+  },
+  "193": {
+   "answers": {
+    "centrality": "main_subject",
+    "source": "his_manager",
+    "act": "answers_for_him",
+    "fact": "no_fact",
+    "firmness": "none",
+    "reports_his_result": "no",
+    "reports_his_next_fight": "no",
+    "reports_his_health": "no",
+    "he_speaks": "no"
+   },
+   "check": "readers",
+   "corrected": []
+  },
+  "200": {
+   "answers": {
+    "centrality": "only_mentioned",
+    "source": "other_fighter_side",
+    "act": "none_of_these",
+    "fact": "no_fact",
+    "firmness": "none",
+    "reports_his_result": "no",
+    "reports_his_next_fight": "no",
+    "reports_his_health": "no",
+    "he_speaks": "no"
+   },
+   "check": "read",
+   "corrected": []
+  },
+  "203": {
+   "answers": {
+    "centrality": "main_subject",
+    "source": "himself",
+    "act": "speaks_of_himself",
+    "fact": "personal_life",
+    "firmness": "official_or_done",
+    "reports_his_result": "no",
+    "reports_his_next_fight": "no",
+    "reports_his_health": "yes",
+    "he_speaks": "yes"
+   },
+   "check": "readers",
+   "corrected": [
+    "reports_his_next_fight"
+   ]
+  },
+  "204": {
+   "answers": {
+    "centrality": "only_mentioned",
+    "source": "media",
+    "act": "none_of_these",
+    "fact": "no_fact",
+    "firmness": "none",
+    "reports_his_result": "no",
+    "reports_his_next_fight": "no",
+    "reports_his_health": "no",
+    "he_speaks": "no"
+   },
+   "check": "readers",
+   "corrected": []
+  },
+  "207": {
+   "answers": {
+    "centrality": "only_mentioned",
+    "source": "fans",
+    "act": "none_of_these",
+    "fact": "no_fact",
+    "firmness": "none",
+    "reports_his_result": "no",
+    "reports_his_next_fight": "no",
+    "reports_his_health": "no",
+    "he_speaks": "no"
+   },
+   "check": "readers",
+   "corrected": []
+  },
+  "208": {
+   "answers": {
+    "centrality": "main_subject",
+    "source": "himself",
+    "act": "speaks_of_himself",
+    "fact": "personal_life",
+    "firmness": "official_or_done",
+    "reports_his_result": "no",
+    "reports_his_next_fight": "no",
+    "reports_his_health": "no",
+    "he_speaks": "yes"
+   },
+   "check": "readers",
+   "corrected": [
+    "reports_his_next_fight"
+   ]
+  },
+  "214": {
+   "answers": {
+    "centrality": "only_mentioned",
+    "source": "promotion",
+    "act": "none_of_these",
+    "fact": "no_fact",
+    "firmness": "none",
+    "reports_his_result": "no",
+    "reports_his_next_fight": "no",
+    "reports_his_health": "no",
+    "he_speaks": "no"
+   },
+   "check": "readers",
+   "corrected": []
+  },
+  "224": {
+   "answers": {
+    "centrality": "only_mentioned",
+    "source": "media",
+    "act": "none_of_these",
+    "fact": "no_fact",
+    "firmness": "none",
+    "reports_his_result": "no",
+    "reports_his_next_fight": "no",
+    "reports_his_health": "no",
+    "he_speaks": "no"
+   },
+   "check": "summary",
+   "corrected": []
+  },
+  "228": {
+   "answers": {
+    "centrality": "one_of_several",
+    "source": "other_fighter_side",
+    "act": "gives_news_of_him",
+    "fact": "none_of_these",
+    "firmness": "reported",
+    "reports_his_result": "no",
+    "reports_his_next_fight": "no",
+    "reports_his_health": "no",
+    "he_speaks": "no"
+   },
+   "check": "read",
+   "corrected": [
+    "source"
+   ]
+  },
+  "230": {
+   "answers": {
+    "centrality": "not_in_content",
+    "source": "media",
+    "act": "none_of_these",
+    "fact": "no_fact",
+    "firmness": "none",
+    "reports_his_result": "no",
+    "reports_his_next_fight": "no",
+    "reports_his_health": "no",
+    "he_speaks": "no"
+   },
+   "check": "readers",
+   "corrected": []
+  },
+  "233": {
+   "answers": {
+    "centrality": "only_mentioned",
+    "source": "media",
+    "act": "assesses_him",
+    "fact": "no_fact",
+    "firmness": "none",
+    "reports_his_result": "no",
+    "reports_his_next_fight": "no",
+    "reports_his_health": "no",
+    "he_speaks": "no"
+   },
+   "check": "readers",
+   "corrected": []
+  },
+  "238": {
+   "answers": {
+    "centrality": "only_mentioned",
+    "source": "media",
+    "act": "none_of_these",
+    "fact": "no_fact",
+    "firmness": "none",
+    "reports_his_result": "no",
+    "reports_his_next_fight": "no",
+    "reports_his_health": "no",
+    "he_speaks": "no"
+   },
+   "check": "summary",
+   "corrected": [
+    "act"
+   ]
+  },
+  "244": {
+   "answers": {
+    "centrality": "main_subject",
+    "source": "other_fighter_side",
+    "act": "assesses_him",
+    "fact": "no_fact",
+    "firmness": "none",
+    "reports_his_result": "no",
+    "reports_his_next_fight": "no",
+    "reports_his_health": "no",
+    "he_speaks": "no"
+   },
+   "check": "readers",
+   "corrected": []
+  },
+  "247": {
+   "answers": {
+    "centrality": "only_mentioned",
+    "source": "other_fighter_side",
+    "act": "assesses_him",
+    "fact": "no_fact",
+    "firmness": "none",
+    "reports_his_result": "no",
+    "reports_his_next_fight": "no",
+    "reports_his_health": "no",
+    "he_speaks": "no"
+   },
+   "check": "summary",
+   "corrected": [
+    "source"
+   ]
+  },
+  "249": {
+   "answers": {
+    "centrality": "one_of_several",
+    "source": "other_fighter_side",
+    "act": "assesses_him",
+    "fact": "no_fact",
+    "firmness": "none",
+    "reports_his_result": "no",
+    "reports_his_next_fight": "no",
+    "reports_his_health": "no",
+    "he_speaks": "no"
+   },
+   "check": "readers",
+   "corrected": []
+  },
+  "256": {
+   "answers": {
+    "centrality": "main_subject",
+    "source": "other_fighter_side",
+    "act": "steers_him",
+    "fact": "no_fact",
+    "firmness": "none",
+    "reports_his_result": "no",
+    "reports_his_next_fight": "no",
+    "reports_his_health": "no",
+    "he_speaks": "no"
+   },
+   "check": "readers",
+   "corrected": []
+  },
+  "261": {
+   "answers": {
+    "centrality": "not_in_content",
+    "source": "other_fighter_side",
+    "act": "none_of_these",
+    "fact": "no_fact",
+    "firmness": "none",
+    "reports_his_result": "no",
+    "reports_his_next_fight": "no",
+    "reports_his_health": "no",
+    "he_speaks": "no"
+   },
+   "check": "readers",
+   "corrected": []
+  },
+  "269": {
+   "answers": {
+    "centrality": "main_subject",
+    "source": "other_fighter_side",
+    "act": "steers_him",
+    "fact": "no_fact",
+    "firmness": "none",
+    "reports_his_result": "no",
+    "reports_his_next_fight": "no",
+    "reports_his_health": "no",
+    "he_speaks": "no"
+   },
+   "check": "read",
+   "corrected": []
+  },
+  "273": {
+   "answers": {
+    "centrality": "only_mentioned",
+    "source": "other_fighter_side",
+    "act": "calls_him_out",
+    "fact": "no_fact",
+    "firmness": "none",
+    "reports_his_result": "no",
+    "reports_his_next_fight": "no",
+    "reports_his_health": "no",
+    "he_speaks": "no"
+   },
+   "check": "read",
+   "corrected": []
+  },
+  "279": {
+   "answers": {
+    "centrality": "main_subject",
+    "source": "other_fighter_side",
+    "act": "steers_him",
+    "fact": "no_fact",
+    "firmness": "none",
+    "reports_his_result": "no",
+    "reports_his_next_fight": "no",
+    "reports_his_health": "no",
+    "he_speaks": "no"
+   },
+   "check": "readers",
+   "corrected": []
+  },
+  "283": {
+   "answers": {
+    "centrality": "only_mentioned",
+    "source": "other_fighter_side",
+    "act": "calls_him_out",
+    "fact": "no_fact",
+    "firmness": "none",
+    "reports_his_result": "no",
+    "reports_his_next_fight": "no",
+    "reports_his_health": "no",
+    "he_speaks": "no"
+   },
+   "check": "read",
+   "corrected": [
+    "centrality",
+    "source"
+   ]
+  },
+  "287": {
+   "answers": {
+    "centrality": "main_subject",
+    "source": "other_fighter_side",
+    "act": "calls_him_out",
+    "fact": "no_fact",
+    "firmness": "none",
+    "reports_his_result": "no",
+    "reports_his_next_fight": "no",
+    "reports_his_health": "no",
+    "he_speaks": "no"
+   },
+   "check": "read",
+   "corrected": []
+  },
+  "291": {
+   "answers": {
+    "centrality": "main_subject",
+    "source": "himself",
+    "act": "speaks_of_himself",
+    "fact": "personal_life",
+    "firmness": "official_or_done",
+    "reports_his_result": "no",
+    "reports_his_next_fight": "no",
+    "reports_his_health": "no",
+    "he_speaks": "yes"
+   },
+   "check": "readers",
+   "corrected": []
+  },
+  "297": {
+   "answers": {
+    "centrality": "only_mentioned",
+    "source": "none_of_these",
+    "act": "none_of_these",
+    "fact": "no_fact",
+    "firmness": "none",
+    "reports_his_result": "no",
+    "reports_his_next_fight": "no",
+    "reports_his_health": "no",
+    "he_speaks": "no"
+   },
+   "check": "readers",
+   "corrected": []
+  },
+  "298": {
+   "answers": {
+    "centrality": "main_subject",
+    "source": "himself",
+    "act": "speaks_of_himself",
+    "fact": "no_fact",
+    "firmness": "none",
+    "reports_his_result": "no",
+    "reports_his_next_fight": "no",
+    "reports_his_health": "no",
+    "he_speaks": "yes"
+   },
+   "check": "readers",
+   "corrected": []
+  },
+  "300": {
+   "answers": {
+    "centrality": "main_subject",
+    "source": "himself",
+    "act": "speaks_of_himself",
+    "fact": "personal_life",
+    "firmness": "official_or_done",
+    "reports_his_result": "no",
+    "reports_his_next_fight": "no",
+    "reports_his_health": "no",
+    "he_speaks": "yes"
+   },
+   "check": "readers",
+   "corrected": [
+    "reports_his_next_fight"
+   ]
+  },
+  "301": {
+   "answers": {
+    "centrality": "main_subject",
+    "source": "himself",
+    "act": "speaks_of_himself",
+    "fact": "no_fact",
+    "firmness": "none",
+    "reports_his_result": "no",
+    "reports_his_next_fight": "no",
+    "reports_his_health": "no",
+    "he_speaks": "yes"
+   },
+   "check": "readers",
+   "corrected": [
+    "reports_his_next_fight"
+   ]
+  },
+  "305": {
+   "answers": {
+    "centrality": "main_subject",
+    "source": "himself",
+    "act": "speaks_of_himself",
+    "fact": "personal_life",
+    "firmness": "official_or_done",
+    "reports_his_result": "no",
+    "reports_his_next_fight": "no",
+    "reports_his_health": "no",
+    "he_speaks": "yes"
+   },
+   "check": "readers",
+   "corrected": [
+    "reports_his_next_fight"
+   ]
+  },
+  "311": {
+   "answers": {
+    "centrality": "main_subject",
+    "source": "other_fighter_side",
+    "act": "assesses_him",
+    "fact": "no_fact",
+    "firmness": "none",
+    "reports_his_result": "no",
+    "reports_his_next_fight": "no",
+    "reports_his_health": "no",
+    "he_speaks": "no"
+   },
+   "check": "readers",
+   "corrected": [
+    "source"
+   ]
+  },
+  "316": {
+   "answers": {
+    "centrality": "not_in_content",
+    "source": "other_fighter_side",
+    "act": "none_of_these",
+    "fact": "no_fact",
+    "firmness": "none",
+    "reports_his_result": "no",
+    "reports_his_next_fight": "no",
+    "reports_his_health": "no",
+    "he_speaks": "no"
+   },
+   "check": "readers",
+   "corrected": []
+  },
+  "320": {
+   "answers": {
+    "centrality": "main_subject",
+    "source": "himself",
+    "act": "speaks_of_himself",
+    "fact": "personal_life",
+    "firmness": "official_or_done",
+    "reports_his_result": "no",
+    "reports_his_next_fight": "no",
+    "reports_his_health": "no",
+    "he_speaks": "yes"
+   },
+   "check": "readers",
+   "corrected": []
+  },
+  "321": {
+   "answers": {
+    "centrality": "main_subject",
+    "source": "himself",
+    "act": "speaks_of_himself",
+    "fact": "personal_life",
+    "firmness": "official_or_done",
+    "reports_his_result": "no",
+    "reports_his_next_fight": "no",
+    "reports_his_health": "no",
+    "he_speaks": "yes"
+   },
+   "check": "readers",
+   "corrected": [
+    "reports_his_next_fight"
+   ]
+  },
+  "322": {
+   "answers": {
+    "centrality": "main_subject",
+    "source": "himself",
+    "act": "speaks_of_himself",
+    "fact": "personal_life",
+    "firmness": "official_or_done",
+    "reports_his_result": "no",
+    "reports_his_next_fight": "no",
+    "reports_his_health": "no",
+    "he_speaks": "yes"
+   },
+   "check": "readers",
+   "corrected": [
+    "reports_his_next_fight"
+   ]
+  },
+  "323": {
+   "answers": {
+    "centrality": "only_mentioned",
+    "source": "his_team",
+    "act": "none_of_these",
+    "fact": "no_fact",
+    "firmness": "none",
+    "reports_his_result": "no",
+    "reports_his_next_fight": "no",
+    "reports_his_health": "no",
+    "he_speaks": "no"
+   },
+   "check": "readers",
+   "corrected": []
+  },
+  "327": {
+   "answers": {
+    "centrality": "main_subject",
+    "source": "other_fighter_side",
+    "act": "gives_news_of_him",
+    "fact": "health",
+    "firmness": "reported",
+    "reports_his_result": "no",
+    "reports_his_next_fight": "no",
+    "reports_his_health": "yes",
+    "he_speaks": "no"
+   },
+   "check": "summary",
+   "corrected": [
+    "fact",
+    "firmness",
+    "reports_his_health"
+   ]
+  },
+  "335": {
+   "answers": {
+    "centrality": "not_in_content",
+    "source": "other_fighter_side",
+    "act": "none_of_these",
+    "fact": "no_fact",
+    "firmness": "none",
+    "reports_his_result": "no",
+    "reports_his_next_fight": "no",
+    "reports_his_health": "no",
+    "he_speaks": "no"
+   },
+   "check": "readers",
+   "corrected": []
+  },
+  "339": {
+   "answers": {
+    "centrality": "one_of_several",
+    "source": "other_fighter_side",
+    "act": "assesses_him",
+    "fact": "no_fact",
+    "firmness": "none",
+    "reports_his_result": "no",
+    "reports_his_next_fight": "no",
+    "reports_his_health": "no",
+    "he_speaks": "no"
+   },
+   "check": "readers",
+   "corrected": []
+  },
+  "342": {
+   "answers": {
+    "centrality": "only_mentioned",
+    "source": "media",
+    "act": "none_of_these",
+    "fact": "no_fact",
+    "firmness": "none",
+    "reports_his_result": "no",
+    "reports_his_next_fight": "no",
+    "reports_his_health": "no",
+    "he_speaks": "no"
+   },
+   "check": "read",
+   "corrected": [
+    "centrality",
+    "act",
+    "fact",
+    "firmness",
+    "he_speaks"
+   ]
+  },
+  "349": {
+   "answers": {
+    "centrality": "main_subject",
+    "source": "other_fighter_side",
+    "act": "gives_news_of_him",
+    "fact": "health",
+    "firmness": "reported",
+    "reports_his_result": "no",
+    "reports_his_next_fight": "no",
+    "reports_his_health": "yes",
+    "he_speaks": "no"
+   },
+   "check": "readers",
+   "corrected": []
+  },
+  "353": {
+   "answers": {
+    "centrality": "only_mentioned",
+    "source": "opponent_side",
+    "act": "none_of_these",
+    "fact": "no_fact",
+    "firmness": "none",
+    "reports_his_result": "no",
+    "reports_his_next_fight": "no",
+    "reports_his_health": "no",
+    "he_speaks": "no"
+   },
+   "check": "readers",
+   "corrected": []
+  },
+  "361": {
+   "answers": {
+    "centrality": "main_subject",
+    "source": "other_fighter_side",
+    "act": "gives_news_of_him",
+    "fact": "health",
+    "firmness": "reported",
+    "reports_his_result": "no",
+    "reports_his_next_fight": "no",
+    "reports_his_health": "yes",
+    "he_speaks": "no"
+   },
+   "check": "read",
+   "corrected": [
+    "reports_his_next_fight"
+   ]
+  },
+  "368": {
+   "answers": {
+    "centrality": "main_subject",
+    "source": "other_fighter_side",
+    "act": "gives_news_of_him",
+    "fact": "health",
+    "firmness": "reported",
+    "reports_his_result": "no",
+    "reports_his_next_fight": "no",
+    "reports_his_health": "yes",
+    "he_speaks": "no"
+   },
+   "check": "readers",
+   "corrected": [
+    "reports_his_next_fight"
+   ]
+  },
+  "373": {
+   "answers": {
+    "centrality": "one_of_several",
+    "source": "himself",
+    "act": "speaks_of_himself",
+    "fact": "no_fact",
+    "firmness": "none",
+    "reports_his_result": "no",
+    "reports_his_next_fight": "no",
+    "reports_his_health": "no",
+    "he_speaks": "yes"
+   },
+   "check": "read",
+   "corrected": [
+    "centrality"
+   ]
+  },
+  "380": {
+   "answers": {
+    "centrality": "main_subject",
+    "source": "himself",
+    "act": "speaks_of_himself",
+    "fact": "personal_life",
+    "firmness": "official_or_done",
+    "reports_his_result": "no",
+    "reports_his_next_fight": "no",
+    "reports_his_health": "no",
+    "he_speaks": "yes"
+   },
+   "check": "readers",
+   "corrected": []
+  },
+  "385": {
+   "answers": {
+    "centrality": "main_subject",
+    "source": "himself",
+    "act": "answers_for_him",
+    "fact": "no_fact",
+    "firmness": "none",
+    "reports_his_result": "no",
+    "reports_his_next_fight": "no",
+    "reports_his_health": "no",
+    "he_speaks": "yes"
+   },
+   "check": "readers",
+   "corrected": []
+  },
+  "397": {
+   "answers": {
+    "centrality": "main_subject",
+    "source": "other_fighter_side",
+    "act": "gives_news_of_him",
+    "fact": "health",
+    "firmness": "reported",
+    "reports_his_result": "no",
+    "reports_his_next_fight": "no",
+    "reports_his_health": "yes",
+    "he_speaks": "yes"
+   },
+   "check": "readers",
+   "corrected": []
+  },
+  "402": {
+   "answers": {
+    "centrality": "main_subject",
+    "source": "his_team",
+    "act": "gives_news_of_him",
+    "fact": "health",
+    "firmness": "reported",
+    "reports_his_result": "no",
+    "reports_his_next_fight": "no",
+    "reports_his_health": "yes",
+    "he_speaks": "no"
+   },
+   "check": "readers",
+   "corrected": [
+    "fact",
+    "reports_his_next_fight"
+   ]
+  },
+  "408": {
+   "answers": {
+    "centrality": "only_mentioned",
+    "source": "other_fighter_side",
+    "act": "calls_him_out",
+    "fact": "no_fact",
+    "firmness": "none",
+    "reports_his_result": "no",
+    "reports_his_next_fight": "no",
+    "reports_his_health": "no",
+    "he_speaks": "no"
+   },
+   "check": "summary",
+   "corrected": [
+    "act"
+   ]
+  },
+  "412": {
+   "answers": {
+    "centrality": "main_subject",
+    "source": "his_team",
+    "act": "gives_news_of_him",
+    "fact": "health",
+    "firmness": "reported",
+    "reports_his_result": "no",
+    "reports_his_next_fight": "no",
+    "reports_his_health": "yes",
+    "he_speaks": "no"
+   },
+   "check": "readers",
+   "corrected": [
+    "reports_his_next_fight"
+   ]
+  },
+  "416": {
+   "answers": {
+    "centrality": "only_mentioned",
+    "source": "other_fighter_side",
+    "act": "none_of_these",
+    "fact": "no_fact",
+    "firmness": "none",
+    "reports_his_result": "no",
+    "reports_his_next_fight": "no",
+    "reports_his_health": "no",
+    "he_speaks": "no"
+   },
+   "check": "readers",
+   "corrected": []
+  },
+  "423": {
+   "answers": {
+    "centrality": "only_mentioned",
+    "source": "other_fighter_side",
+    "act": "calls_him_out",
+    "fact": "no_fact",
+    "firmness": "none",
+    "reports_his_result": "no",
+    "reports_his_next_fight": "no",
+    "reports_his_health": "no",
+    "he_speaks": "no"
+   },
+   "check": "read",
+   "corrected": [
+    "centrality",
+    "source"
+   ]
+  },
+  "427": {
+   "answers": {
+    "centrality": "main_subject",
+    "source": "himself",
+    "act": "speaks_of_himself",
+    "fact": "personal_life",
+    "firmness": "official_or_done",
+    "reports_his_result": "no",
+    "reports_his_next_fight": "no",
+    "reports_his_health": "no",
+    "he_speaks": "yes"
+   },
+   "check": "readers",
+   "corrected": []
+  },
+  "431": {
+   "answers": {
+    "centrality": "only_mentioned",
+    "source": "other_fighter_side",
+    "act": "assesses_him",
+    "fact": "no_fact",
+    "firmness": "none",
+    "reports_his_result": "no",
+    "reports_his_next_fight": "no",
+    "reports_his_health": "no",
+    "he_speaks": "no"
+   },
+   "check": "readers",
+   "corrected": []
+  },
+  "435": {
+   "answers": {
+    "centrality": "only_mentioned",
+    "source": "other_fighter_side",
+    "act": "calls_him_out",
+    "fact": "no_fact",
+    "firmness": "none",
+    "reports_his_result": "no",
+    "reports_his_next_fight": "no",
+    "reports_his_health": "no",
+    "he_speaks": "no"
+   },
+   "check": "readers",
+   "corrected": []
+  },
+  "442": {
+   "answers": {
+    "centrality": "main_subject",
+    "source": "other_fighter_side",
+    "act": "assesses_him",
+    "fact": "no_fact",
+    "firmness": "none",
+    "reports_his_result": "no",
+    "reports_his_next_fight": "no",
+    "reports_his_health": "no",
+    "he_speaks": "no"
+   },
+   "check": "readers",
+   "corrected": [
+    "source"
+   ]
+  },
+  "447": {
+   "answers": {
+    "centrality": "only_mentioned",
+    "source": "media",
+    "act": "none_of_these",
+    "fact": "no_fact",
+    "firmness": "none",
+    "reports_his_result": "no",
+    "reports_his_next_fight": "no",
+    "reports_his_health": "no",
+    "he_speaks": "no"
+   },
+   "check": "readers",
+   "corrected": []
+  },
+  "453": {
+   "answers": {
+    "centrality": "not_in_content",
+    "source": "other_fighter_side",
+    "act": "none_of_these",
+    "fact": "no_fact",
+    "firmness": "none",
+    "reports_his_result": "no",
+    "reports_his_next_fight": "no",
+    "reports_his_health": "no",
+    "he_speaks": "no"
+   },
+   "check": "readers",
+   "corrected": []
+  },
+  "457": {
+   "answers": {
+    "centrality": "only_mentioned",
+    "source": "other_fighter_side",
+    "act": "none_of_these",
+    "fact": "no_fact",
+    "firmness": "none",
+    "reports_his_result": "no",
+    "reports_his_next_fight": "no",
+    "reports_his_health": "no",
+    "he_speaks": "no"
+   },
+   "check": "read",
+   "corrected": []
+  },
+  "462": {
+   "answers": {
+    "centrality": "one_of_several",
+    "source": "opponent_side",
+    "act": "none_of_these",
+    "fact": "no_fact",
+    "firmness": "none",
+    "reports_his_result": "no",
+    "reports_his_next_fight": "no",
+    "reports_his_health": "no",
+    "he_speaks": "no"
+   },
+   "check": "read",
+   "corrected": [
+    "act",
+    "fact",
+    "firmness"
+   ]
+  },
+  "467": {
+   "answers": {
+    "centrality": "one_of_several",
+    "source": "opponent_side",
+    "act": "none_of_these",
+    "fact": "no_fact",
+    "firmness": "none",
+    "reports_his_result": "no",
+    "reports_his_next_fight": "no",
+    "reports_his_health": "no",
+    "he_speaks": "no"
+   },
+   "check": "summary",
+   "corrected": [
+    "act"
+   ]
+  },
+  "476": {
+   "answers": {
+    "centrality": "only_mentioned",
+    "source": "opponent_side",
+    "act": "none_of_these",
+    "fact": "no_fact",
+    "firmness": "none",
+    "reports_his_result": "no",
+    "reports_his_next_fight": "no",
+    "reports_his_health": "no",
+    "he_speaks": "no"
+   },
+   "check": "readers",
+   "corrected": []
+  },
+  "484": {
+   "answers": {
+    "centrality": "one_of_several",
+    "source": "opponent_side",
+    "act": "none_of_these",
+    "fact": "no_fact",
+    "firmness": "none",
+    "reports_his_result": "no",
+    "reports_his_next_fight": "no",
+    "reports_his_health": "no",
+    "he_speaks": "no"
+   },
+   "check": "read",
+   "corrected": [
+    "act",
+    "fact",
+    "firmness",
+    "reports_his_next_fight"
+   ]
+  },
+  "490": {
+   "answers": {
+    "centrality": "main_subject",
+    "source": "himself",
+    "act": "speaks_of_himself",
+    "fact": "no_fact",
+    "firmness": "none",
+    "reports_his_result": "no",
+    "reports_his_next_fight": "no",
+    "reports_his_health": "no",
+    "he_speaks": "yes"
+   },
+   "check": "read",
+   "corrected": [
+    "fact",
+    "firmness",
+    "reports_his_next_fight"
+   ]
+  },
+  "491": {
+   "answers": {
+    "centrality": "main_subject",
+    "source": "himself",
+    "act": "speaks_of_himself",
+    "fact": "no_fact",
+    "firmness": "none",
+    "reports_his_result": "no",
+    "reports_his_next_fight": "no",
+    "reports_his_health": "no",
+    "he_speaks": "yes"
+   },
+   "check": "read",
+   "corrected": [
+    "fact",
+    "firmness",
+    "reports_his_next_fight"
+   ]
+  },
+  "492": {
+   "answers": {
+    "centrality": "one_of_several",
+    "source": "opponent_side",
+    "act": "none_of_these",
+    "fact": "no_fact",
+    "firmness": "none",
+    "reports_his_result": "no",
+    "reports_his_next_fight": "no",
+    "reports_his_health": "no",
+    "he_speaks": "no"
+   },
+   "check": "read",
+   "corrected": [
+    "act"
+   ]
+  },
+  "494": {
+   "answers": {
+    "centrality": "main_subject",
+    "source": "himself",
+    "act": "speaks_of_himself",
+    "fact": "no_fact",
+    "firmness": "none",
+    "reports_his_result": "no",
+    "reports_his_next_fight": "no",
+    "reports_his_health": "no",
+    "he_speaks": "yes"
+   },
+   "check": "readers",
+   "corrected": [
+    "fact",
+    "firmness",
+    "reports_his_next_fight"
+   ]
+  },
+  "497": {
+   "answers": {
+    "centrality": "main_subject",
+    "source": "himself",
+    "act": "speaks_of_himself",
+    "fact": "personal_life",
+    "firmness": "official_or_done",
+    "reports_his_result": "no",
+    "reports_his_next_fight": "no",
+    "reports_his_health": "no",
+    "he_speaks": "yes"
+   },
+   "check": "readers",
+   "corrected": []
+  },
+  "500": {
+   "answers": {
+    "centrality": "only_mentioned",
+    "source": "media",
+    "act": "none_of_these",
+    "fact": "no_fact",
+    "firmness": "none",
+    "reports_his_result": "no",
+    "reports_his_next_fight": "no",
+    "reports_his_health": "no",
+    "he_speaks": "no"
+   },
+   "check": "read",
+   "corrected": [
+    "reports_his_next_fight"
+   ]
+  },
+  "503": {
+   "answers": {
+    "centrality": "one_of_several",
+    "source": "opponent_side",
+    "act": "none_of_these",
+    "fact": "no_fact",
+    "firmness": "none",
+    "reports_his_result": "no",
+    "reports_his_next_fight": "no",
+    "reports_his_health": "no",
+    "he_speaks": "no"
+   },
+   "check": "read",
+   "corrected": [
+    "act",
+    "fact",
+    "firmness",
+    "reports_his_next_fight"
+   ]
+  },
+  "508": {
+   "answers": {
+    "centrality": "only_mentioned",
+    "source": "media",
+    "act": "assesses_him",
+    "fact": "no_fact",
+    "firmness": "none",
+    "reports_his_result": "no",
+    "reports_his_next_fight": "no",
+    "reports_his_health": "no",
+    "he_speaks": "no"
+   },
+   "check": "read",
+   "corrected": []
+  },
+  "510": {
+   "answers": {
+    "centrality": "only_mentioned",
+    "source": "media",
+    "act": "none_of_these",
+    "fact": "no_fact",
+    "firmness": "none",
+    "reports_his_result": "no",
+    "reports_his_next_fight": "no",
+    "reports_his_health": "no",
+    "he_speaks": "no"
+   },
+   "check": "summary",
+   "corrected": [
+    "source",
+    "act",
+    "fact",
+    "firmness",
+    "reports_his_next_fight"
+   ]
+  },
+  "516": {
+   "answers": {
+    "centrality": "one_of_several",
+    "source": "other_fighter_side",
+    "act": "none_of_these",
+    "fact": "no_fact",
+    "firmness": "none",
+    "reports_his_result": "no",
+    "reports_his_next_fight": "no",
+    "reports_his_health": "no",
+    "he_speaks": "no"
+   },
+   "check": "read",
+   "corrected": [
+    "act"
+   ]
+  },
+  "520": {
+   "answers": {
+    "centrality": "not_in_content",
+    "source": "other_fighter_side",
+    "act": "none_of_these",
+    "fact": "no_fact",
+    "firmness": "none",
+    "reports_his_result": "no",
+    "reports_his_next_fight": "no",
+    "reports_his_health": "no",
+    "he_speaks": "no"
+   },
+   "check": "readers",
+   "corrected": []
+  },
+  "521": {
+   "answers": {
+    "centrality": "main_subject",
+    "source": "himself",
+    "act": "speaks_of_himself",
+    "fact": "no_fact",
+    "firmness": "none",
+    "reports_his_result": "no",
+    "reports_his_next_fight": "no",
+    "reports_his_health": "no",
+    "he_speaks": "yes"
+   },
+   "check": "readers",
+   "corrected": [
+    "fact",
+    "firmness",
+    "reports_his_next_fight"
+   ]
+  },
+  "525": {
+   "answers": {
+    "centrality": "only_mentioned",
+    "source": "other_fighter_side",
+    "act": "assesses_him",
+    "fact": "no_fact",
+    "firmness": "none",
+    "reports_his_result": "no",
+    "reports_his_next_fight": "no",
+    "reports_his_health": "no",
+    "he_speaks": "no"
+   },
+   "check": "read",
+   "corrected": []
+  },
+  "529": {
+   "answers": {
+    "centrality": "one_of_several",
+    "source": "opponent_side",
+    "act": "assesses_him",
+    "fact": "no_fact",
+    "firmness": "none",
+    "reports_his_result": "no",
+    "reports_his_next_fight": "no",
+    "reports_his_health": "no",
+    "he_speaks": "no"
+   },
+   "check": "readers",
+   "corrected": [
+    "fact",
+    "firmness",
+    "reports_his_next_fight"
+   ]
+  },
+  "532": {
+   "answers": {
+    "centrality": "one_of_several",
+    "source": "opponent_side",
+    "act": "assesses_him",
+    "fact": "no_fact",
+    "firmness": "none",
+    "reports_his_result": "no",
+    "reports_his_next_fight": "no",
+    "reports_his_health": "no",
+    "he_speaks": "no"
+   },
+   "check": "readers",
+   "corrected": [
+    "fact",
+    "firmness",
+    "reports_his_next_fight"
+   ]
+  },
+  "533": {
+   "answers": {
+    "centrality": "only_mentioned",
+    "source": "other_fighter_side",
+    "act": "none_of_these",
+    "fact": "no_fact",
+    "firmness": "none",
+    "reports_his_result": "no",
+    "reports_his_next_fight": "no",
+    "reports_his_health": "no",
+    "he_speaks": "no"
+   },
+   "check": "summary",
+   "corrected": [
+    "act"
+   ]
+  },
+  "540": {
+   "answers": {
+    "centrality": "only_mentioned",
+    "source": "other_fighter_side",
+    "act": "none_of_these",
+    "fact": "no_fact",
+    "firmness": "none",
+    "reports_his_result": "no",
+    "reports_his_next_fight": "no",
+    "reports_his_health": "no",
+    "he_speaks": "no"
+   },
+   "check": "summary",
+   "corrected": [
+    "act"
+   ]
+  },
+  "547": {
+   "answers": {
+    "centrality": "main_subject",
+    "source": "his_team",
+    "act": "assesses_him",
+    "fact": "no_fact",
+    "firmness": "none",
+    "reports_his_result": "no",
+    "reports_his_next_fight": "no",
+    "reports_his_health": "no",
+    "he_speaks": "no"
+   },
+   "check": "readers",
+   "corrected": []
+  },
+  "551": {
+   "answers": {
+    "centrality": "only_mentioned",
+    "source": "opponent_side",
+    "act": "none_of_these",
+    "fact": "no_fact",
+    "firmness": "none",
+    "reports_his_result": "no",
+    "reports_his_next_fight": "no",
+    "reports_his_health": "no",
+    "he_speaks": "no"
+   },
+   "check": "readers",
+   "corrected": []
+  },
+  "555": {
+   "answers": {
+    "centrality": "one_of_several",
+    "source": "media",
+    "act": "predicts_his_fight",
+    "fact": "no_fact",
+    "firmness": "none",
+    "reports_his_result": "no",
+    "reports_his_next_fight": "no",
+    "reports_his_health": "no",
+    "he_speaks": "no"
+   },
+   "check": "readers",
+   "corrected": []
+  },
+  "556": {
+   "answers": {
+    "centrality": "only_mentioned",
+    "source": "opponent_side",
+    "act": "none_of_these",
+    "fact": "no_fact",
+    "firmness": "none",
+    "reports_his_result": "no",
+    "reports_his_next_fight": "no",
+    "reports_his_health": "no",
+    "he_speaks": "no"
+   },
+   "check": "readers",
+   "corrected": []
+  },
+  "560": {
+   "answers": {
+    "centrality": "only_mentioned",
+    "source": "opponent_side",
+    "act": "none_of_these",
+    "fact": "no_fact",
+    "firmness": "none",
+    "reports_his_result": "no",
+    "reports_his_next_fight": "no",
+    "reports_his_health": "no",
+    "he_speaks": "no"
+   },
+   "check": "readers",
+   "corrected": []
+  },
+  "563": {
+   "answers": {
+    "centrality": "one_of_several",
+    "source": "media",
+    "act": "predicts_his_fight",
+    "fact": "no_fact",
+    "firmness": "none",
+    "reports_his_result": "no",
+    "reports_his_next_fight": "no",
+    "reports_his_health": "no",
+    "he_speaks": "no"
+   },
+   "check": "read",
+   "corrected": []
+  },
+  "565": {
+   "answers": {
+    "centrality": "only_mentioned",
+    "source": "opponent_side",
+    "act": "none_of_these",
+    "fact": "no_fact",
+    "firmness": "none",
+    "reports_his_result": "no",
+    "reports_his_next_fight": "no",
+    "reports_his_health": "no",
+    "he_speaks": "no"
+   },
+   "check": "readers",
+   "corrected": []
+  },
+  "572": {
+   "answers": {
+    "centrality": "main_subject",
+    "source": "media",
+    "act": "gives_news_of_him",
+    "fact": "status_update",
+    "firmness": "reported",
+    "reports_his_result": "no",
+    "reports_his_next_fight": "no",
+    "reports_his_health": "no",
+    "he_speaks": "no"
+   },
+   "check": "readers",
+   "corrected": [
+    "fact",
+    "reports_his_health"
+   ]
+  },
+  "576": {
+   "answers": {
+    "centrality": "only_mentioned",
+    "source": "opponent_side",
+    "act": "none_of_these",
+    "fact": "no_fact",
+    "firmness": "none",
+    "reports_his_result": "no",
+    "reports_his_next_fight": "no",
+    "reports_his_health": "no",
+    "he_speaks": "no"
+   },
+   "check": "readers",
+   "corrected": []
+  },
+  "580": {
+   "answers": {
+    "centrality": "not_in_content",
+    "source": "other_fighter_side",
+    "act": "none_of_these",
+    "fact": "no_fact",
+    "firmness": "none",
+    "reports_his_result": "no",
+    "reports_his_next_fight": "no",
+    "reports_his_health": "no",
+    "he_speaks": "no"
+   },
+   "check": "readers",
+   "corrected": []
+  },
+  "585": {
+   "answers": {
+    "centrality": "only_mentioned",
+    "source": "opponent_side",
+    "act": "none_of_these",
+    "fact": "no_fact",
+    "firmness": "none",
+    "reports_his_result": "no",
+    "reports_his_next_fight": "no",
+    "reports_his_health": "no",
+    "he_speaks": "no"
+   },
+   "check": "readers",
+   "corrected": []
+  },
+  "588": {
+   "answers": {
+    "centrality": "only_mentioned",
+    "source": "opponent_side",
+    "act": "none_of_these",
+    "fact": "no_fact",
+    "firmness": "none",
+    "reports_his_result": "no",
+    "reports_his_next_fight": "no",
+    "reports_his_health": "no",
+    "he_speaks": "no"
+   },
+   "check": "read",
+   "corrected": [
+    "centrality",
+    "fact",
+    "firmness",
+    "reports_his_next_fight"
+   ]
+  },
+  "592": {
+   "answers": {
+    "centrality": "main_subject",
+    "source": "media",
+    "act": "gives_news_of_him",
+    "fact": "status_update",
+    "firmness": "reported",
+    "reports_his_result": "no",
+    "reports_his_next_fight": "no",
+    "reports_his_health": "no",
+    "he_speaks": "no"
+   },
+   "check": "readers",
+   "corrected": [
+    "fact"
+   ]
+  },
+  "594": {
+   "answers": {
+    "centrality": "one_of_several",
+    "source": "media",
+    "act": "predicts_his_fight",
+    "fact": "no_fact",
+    "firmness": "none",
+    "reports_his_result": "no",
+    "reports_his_next_fight": "no",
+    "reports_his_health": "no",
+    "he_speaks": "no"
+   },
+   "check": "readers",
+   "corrected": [
+    "fact",
+    "firmness",
+    "reports_his_next_fight"
+   ]
+  },
+  "599": {
+   "answers": {
+    "centrality": "one_of_several",
+    "source": "media",
+    "act": "predicts_his_fight",
+    "fact": "no_fact",
+    "firmness": "none",
+    "reports_his_result": "no",
+    "reports_his_next_fight": "no",
+    "reports_his_health": "no",
+    "he_speaks": "no"
+   },
+   "check": "readers",
+   "corrected": [
+    "fact",
+    "firmness",
+    "reports_his_next_fight"
+   ]
+  },
+  "601": {
+   "answers": {
+    "centrality": "main_subject",
+    "source": "no_one",
+    "act": "reports_an_event",
+    "fact": "fight_week_event",
+    "firmness": "official_or_done",
+    "reports_his_result": "no",
+    "reports_his_next_fight": "no",
+    "reports_his_health": "no",
+    "he_speaks": "no"
+   },
+   "check": "readers",
+   "corrected": []
+  },
+  "603": {
+   "answers": {
+    "centrality": "one_of_several",
+    "source": "media",
+    "act": "predicts_his_fight",
+    "fact": "no_fact",
+    "firmness": "none",
+    "reports_his_result": "no",
+    "reports_his_next_fight": "no",
+    "reports_his_health": "no",
+    "he_speaks": "no"
+   },
+   "check": "read",
+   "corrected": [
+    "fact",
+    "firmness",
+    "reports_his_next_fight"
+   ]
+  },
+  "605": {
+   "answers": {
+    "centrality": "one_of_several",
+    "source": "no_one",
+    "act": "reports_an_event",
+    "fact": "next_fight",
+    "firmness": "official_or_done",
+    "reports_his_result": "no",
+    "reports_his_next_fight": "yes",
+    "reports_his_health": "no",
+    "he_speaks": "no"
+   },
+   "check": "read",
+   "corrected": []
+  },
+  "606": {
+   "answers": {
+    "centrality": "main_subject",
+    "source": "other_fighter_side",
+    "act": "assesses_him",
+    "fact": "no_fact",
+    "firmness": "none",
+    "reports_his_result": "no",
+    "reports_his_next_fight": "no",
+    "reports_his_health": "no",
+    "he_speaks": "no"
+   },
+   "check": "summary",
+   "corrected": [
+    "he_speaks"
+   ]
+  },
+  "608": {
+   "answers": {
+    "centrality": "one_of_several",
+    "source": "media",
+    "act": "predicts_his_fight",
+    "fact": "no_fact",
+    "firmness": "none",
+    "reports_his_result": "no",
+    "reports_his_next_fight": "no",
+    "reports_his_health": "no",
+    "he_speaks": "no"
+   },
+   "check": "read",
+   "corrected": [
+    "reports_his_next_fight"
+   ]
+  },
+  "609": {
+   "answers": {
+    "centrality": "one_of_several",
+    "source": "opponent_side",
+    "act": "assesses_him",
+    "fact": "no_fact",
+    "firmness": "none",
+    "reports_his_result": "no",
+    "reports_his_next_fight": "no",
+    "reports_his_health": "no",
+    "he_speaks": "no"
+   },
+   "check": "read",
+   "corrected": [
+    "fact",
+    "firmness",
+    "reports_his_next_fight"
+   ]
+  },
+  "613": {
+   "answers": {
+    "centrality": "only_mentioned",
+    "source": "no_one",
+    "act": "reports_an_event",
+    "fact": "fight_week_event",
+    "firmness": "official_or_done",
+    "reports_his_result": "no",
+    "reports_his_next_fight": "no",
+    "reports_his_health": "no",
+    "he_speaks": "no"
+   },
+   "check": "readers",
+   "corrected": []
+  },
+  "614": {
+   "answers": {
+    "centrality": "main_subject",
+    "source": "himself",
+    "act": "speaks_of_himself",
+    "fact": "fight_week_event",
+    "firmness": "official_or_done",
+    "reports_his_result": "no",
+    "reports_his_next_fight": "no",
+    "reports_his_health": "no",
+    "he_speaks": "yes"
+   },
+   "check": "read",
+   "corrected": []
+  },
+  "616": {
+   "answers": {
+    "centrality": "one_of_several",
+    "source": "no_one",
+    "act": "reports_an_event",
+    "fact": "fight_week_event",
+    "firmness": "official_or_done",
+    "reports_his_result": "no",
+    "reports_his_next_fight": "no",
+    "reports_his_health": "no",
+    "he_speaks": "no"
+   },
+   "check": "read",
+   "corrected": [
+    "reports_his_next_fight"
+   ]
+  },
+  "619": {
+   "answers": {
+    "centrality": "one_of_several",
+    "source": "media",
+    "act": "predicts_his_fight",
+    "fact": "no_fact",
+    "firmness": "none",
+    "reports_his_result": "no",
+    "reports_his_next_fight": "no",
+    "reports_his_health": "no",
+    "he_speaks": "no"
+   },
+   "check": "read",
+   "corrected": []
+  },
+  "620": {
+   "answers": {
+    "centrality": "main_subject",
+    "source": "himself",
+    "act": "speaks_of_himself",
+    "fact": "personal_life",
+    "firmness": "official_or_done",
+    "reports_his_result": "no",
+    "reports_his_next_fight": "no",
+    "reports_his_health": "no",
+    "he_speaks": "yes"
+   },
+   "check": "read",
+   "corrected": [
+    "reports_his_health"
+   ]
+  },
+  "623": {
+   "answers": {
+    "centrality": "one_of_several",
+    "source": "media",
+    "act": "predicts_his_fight",
+    "fact": "no_fact",
+    "firmness": "none",
+    "reports_his_result": "no",
+    "reports_his_next_fight": "no",
+    "reports_his_health": "no",
+    "he_speaks": "no"
+   },
+   "check": "readers",
+   "corrected": [
+    "fact",
+    "firmness",
+    "reports_his_next_fight"
+   ]
+  },
+  "625": {
+   "answers": {
+    "centrality": "main_subject",
+    "source": "no_one",
+    "act": "reports_an_event",
+    "fact": "fight_week_event",
+    "firmness": "official_or_done",
+    "reports_his_result": "no",
+    "reports_his_next_fight": "no",
+    "reports_his_health": "no",
+    "he_speaks": "no"
+   },
+   "check": "read",
+   "corrected": [
+    "centrality",
+    "reports_his_next_fight"
+   ]
+  },
+  "627": {
+   "answers": {
+    "centrality": "main_subject",
+    "source": "himself",
+    "act": "speaks_of_himself",
+    "fact": "personal_life",
+    "firmness": "official_or_done",
+    "reports_his_result": "no",
+    "reports_his_next_fight": "no",
+    "reports_his_health": "no",
+    "he_speaks": "yes"
+   },
+   "check": "read",
+   "corrected": [
+    "reports_his_health"
+   ]
+  },
+  "632": {
+   "answers": {
+    "centrality": "main_subject",
+    "source": "himself",
+    "act": "speaks_of_himself",
+    "fact": "personal_life",
+    "firmness": "official_or_done",
+    "reports_his_result": "no",
+    "reports_his_next_fight": "no",
+    "reports_his_health": "no",
+    "he_speaks": "yes"
+   },
+   "check": "read",
+   "corrected": []
+  },
+  "636": {
+   "answers": {
+    "centrality": "main_subject",
+    "source": "himself",
+    "act": "speaks_of_himself",
+    "fact": "personal_life",
+    "firmness": "official_or_done",
+    "reports_his_result": "no",
+    "reports_his_next_fight": "no",
+    "reports_his_health": "no",
+    "he_speaks": "yes"
+   },
+   "check": "readers",
+   "corrected": []
+  },
+  "641": {
+   "answers": {
+    "centrality": "one_of_several",
+    "source": "media",
+    "act": "predicts_his_fight",
+    "fact": "no_fact",
+    "firmness": "none",
+    "reports_his_result": "no",
+    "reports_his_next_fight": "no",
+    "reports_his_health": "no",
+    "he_speaks": "no"
+   },
+   "check": "read",
+   "corrected": [
+    "fact",
+    "firmness",
+    "reports_his_next_fight"
+   ]
+  },
+  "643": {
+   "answers": {
+    "centrality": "not_in_content",
+    "source": "other_fighter_side",
+    "act": "none_of_these",
+    "fact": "no_fact",
+    "firmness": "none",
+    "reports_his_result": "no",
+    "reports_his_next_fight": "no",
+    "reports_his_health": "no",
+    "he_speaks": "no"
+   },
+   "check": "readers",
+   "corrected": []
+  },
+  "647": {
+   "answers": {
+    "centrality": "main_subject",
+    "source": "himself",
+    "act": "speaks_of_himself",
+    "fact": "no_fact",
+    "firmness": "none",
+    "reports_his_result": "no",
+    "reports_his_next_fight": "no",
+    "reports_his_health": "no",
+    "he_speaks": "no"
+   },
+   "check": "read",
+   "corrected": []
+  },
+  "651": {
+   "answers": {
+    "centrality": "main_subject",
+    "source": "himself",
+    "act": "speaks_of_himself",
+    "fact": "personal_life",
+    "firmness": "official_or_done",
+    "reports_his_result": "no",
+    "reports_his_next_fight": "no",
+    "reports_his_health": "no",
+    "he_speaks": "yes"
+   },
+   "check": "readers",
+   "corrected": []
+  },
+  "653": {
+   "answers": {
+    "centrality": "one_of_several",
+    "source": "no_one",
+    "act": "reports_an_event",
+    "fact": "fight_week_event",
+    "firmness": "official_or_done",
+    "reports_his_result": "no",
+    "reports_his_next_fight": "no",
+    "reports_his_health": "no",
+    "he_speaks": "no"
+   },
+   "check": "read",
+   "corrected": []
+  },
+  "654": {
+   "answers": {
+    "centrality": "only_mentioned",
+    "source": "fans",
+    "act": "predicts_his_fight",
+    "fact": "no_fact",
+    "firmness": "none",
+    "reports_his_result": "no",
+    "reports_his_next_fight": "no",
+    "reports_his_health": "no",
+    "he_speaks": "no"
+   },
+   "check": "read",
+   "corrected": []
+  },
+  "655": {
+   "answers": {
+    "centrality": "not_in_content",
+    "source": "media",
+    "act": "none_of_these",
+    "fact": "no_fact",
+    "firmness": "none",
+    "reports_his_result": "no",
+    "reports_his_next_fight": "no",
+    "reports_his_health": "no",
+    "he_speaks": "no"
+   },
+   "check": "summary",
+   "corrected": [
+    "source"
+   ]
+  },
+  "659": {
+   "answers": {
+    "centrality": "main_subject",
+    "source": "himself",
+    "act": "speaks_of_himself",
+    "fact": "personal_life",
+    "firmness": "official_or_done",
+    "reports_his_result": "no",
+    "reports_his_next_fight": "no",
+    "reports_his_health": "no",
+    "he_speaks": "yes"
+   },
+   "check": "readers",
+   "corrected": []
+  },
+  "666": {
+   "answers": {
+    "centrality": "main_subject",
+    "source": "himself",
+    "act": "speaks_of_himself",
+    "fact": "personal_life",
+    "firmness": "official_or_done",
+    "reports_his_result": "no",
+    "reports_his_next_fight": "no",
+    "reports_his_health": "no",
+    "he_speaks": "yes"
+   },
+   "check": "readers",
+   "corrected": []
+  },
+  "672": {
+   "answers": {
+    "centrality": "main_subject",
+    "source": "himself",
+    "act": "speaks_of_himself",
+    "fact": "no_fact",
+    "firmness": "none",
+    "reports_his_result": "no",
+    "reports_his_next_fight": "no",
+    "reports_his_health": "no",
+    "he_speaks": "yes"
+   },
+   "check": "read",
+   "corrected": [
+    "reports_his_next_fight"
+   ]
+  },
+  "673": {
+   "answers": {
+    "centrality": "one_of_several",
+    "source": "media",
+    "act": "predicts_his_fight",
+    "fact": "no_fact",
+    "firmness": "none",
+    "reports_his_result": "no",
+    "reports_his_next_fight": "no",
+    "reports_his_health": "no",
+    "he_speaks": "no"
+   },
+   "check": "read",
+   "corrected": [
+    "reports_his_next_fight"
+   ]
+  },
+  "675": {
+   "answers": {
+    "centrality": "main_subject",
+    "source": "himself",
+    "act": "speaks_of_himself",
+    "fact": "personal_life",
+    "firmness": "official_or_done",
+    "reports_his_result": "no",
+    "reports_his_next_fight": "no",
+    "reports_his_health": "no",
+    "he_speaks": "yes"
+   },
+   "check": "readers",
+   "corrected": []
+  },
+  "681": {
+   "answers": {
+    "centrality": "one_of_several",
+    "source": "media",
+    "act": "predicts_his_fight",
+    "fact": "no_fact",
+    "firmness": "none",
+    "reports_his_result": "no",
+    "reports_his_next_fight": "no",
+    "reports_his_health": "no",
+    "he_speaks": "no"
+   },
+   "check": "read",
+   "corrected": [
+    "reports_his_next_fight"
+   ]
+  },
+  "682": {
+   "answers": {
+    "centrality": "main_subject",
+    "source": "himself",
+    "act": "speaks_of_himself",
+    "fact": "personal_life",
+    "firmness": "official_or_done",
+    "reports_his_result": "no",
+    "reports_his_next_fight": "no",
+    "reports_his_health": "no",
+    "he_speaks": "yes"
+   },
+   "check": "readers",
+   "corrected": []
+  },
+  "683": {
+   "answers": {
+    "centrality": "only_mentioned",
+    "source": "no_one",
+    "act": "reports_an_event",
+    "fact": "result",
+    "firmness": "official_or_done",
+    "reports_his_result": "yes",
+    "reports_his_next_fight": "no",
+    "reports_his_health": "no",
+    "he_speaks": "no"
+   },
+   "check": "readers",
+   "corrected": []
+  },
+  "686": {
+   "answers": {
+    "centrality": "main_subject",
+    "source": "no_one",
+    "act": "reports_an_event",
+    "fact": "fight_week_event",
+    "firmness": "official_or_done",
+    "reports_his_result": "no",
+    "reports_his_next_fight": "no",
+    "reports_his_health": "no",
+    "he_speaks": "no"
+   },
+   "check": "read",
+   "corrected": [
+    "reports_his_next_fight"
+   ]
+  },
+  "687": {
+   "answers": {
+    "centrality": "one_of_several",
+    "source": "no_one",
+    "act": "reports_an_event",
+    "fact": "fight_week_event",
+    "firmness": "official_or_done",
+    "reports_his_result": "no",
+    "reports_his_next_fight": "no",
+    "reports_his_health": "no",
+    "he_speaks": "no"
+   },
+   "check": "read",
+   "corrected": [
+    "reports_his_next_fight"
+   ]
+  },
+  "688": {
+   "answers": {
+    "centrality": "main_subject",
+    "source": "no_one",
+    "act": "reports_an_event",
+    "fact": "fight_week_event",
+    "firmness": "official_or_done",
+    "reports_his_result": "no",
+    "reports_his_next_fight": "no",
+    "reports_his_health": "no",
+    "he_speaks": "no"
+   },
+   "check": "summary",
+   "corrected": [
+    "centrality",
+    "reports_his_next_fight"
+   ]
+  },
+  "690": {
+   "answers": {
+    "centrality": "one_of_several",
+    "source": "media",
+    "act": "predicts_his_fight",
+    "fact": "no_fact",
+    "firmness": "none",
+    "reports_his_result": "no",
+    "reports_his_next_fight": "no",
+    "reports_his_health": "no",
+    "he_speaks": "no"
+   },
+   "check": "readers",
+   "corrected": [
+    "fact",
+    "firmness",
+    "reports_his_next_fight"
+   ]
+  },
+  "692": {
+   "answers": {
+    "centrality": "one_of_several",
+    "source": "media",
+    "act": "predicts_his_fight",
+    "fact": "no_fact",
+    "firmness": "none",
+    "reports_his_result": "no",
+    "reports_his_next_fight": "no",
+    "reports_his_health": "no",
+    "he_speaks": "no"
+   },
+   "check": "read",
+   "corrected": [
+    "fact",
+    "firmness",
+    "reports_his_next_fight"
+   ]
+  },
+  "693": {
+   "answers": {
+    "centrality": "main_subject",
+    "source": "himself",
+    "act": "speaks_of_himself",
+    "fact": "health",
+    "firmness": "official_or_done",
+    "reports_his_result": "no",
+    "reports_his_next_fight": "no",
+    "reports_his_health": "yes",
+    "he_speaks": "yes"
+   },
+   "check": "readers",
+   "corrected": []
+  },
+  "697": {
+   "answers": {
+    "centrality": "main_subject",
+    "source": "himself",
+    "act": "speaks_of_himself",
+    "fact": "personal_life",
+    "firmness": "official_or_done",
+    "reports_his_result": "no",
+    "reports_his_next_fight": "no",
+    "reports_his_health": "no",
+    "he_speaks": "yes"
+   },
+   "check": "readers",
+   "corrected": []
+  },
+  "698": {
+   "answers": {
+    "centrality": "one_of_several",
+    "source": "media",
+    "act": "predicts_his_fight",
+    "fact": "no_fact",
+    "firmness": "none",
+    "reports_his_result": "no",
+    "reports_his_next_fight": "no",
+    "reports_his_health": "no",
+    "he_speaks": "no"
+   },
+   "check": "readers",
+   "corrected": [
+    "fact",
+    "firmness",
+    "reports_his_next_fight"
+   ]
+  },
+  "702": {
+   "answers": {
+    "centrality": "main_subject",
+    "source": "himself",
+    "act": "speaks_of_himself",
+    "fact": "no_fact",
+    "firmness": "none",
+    "reports_his_result": "no",
+    "reports_his_next_fight": "no",
+    "reports_his_health": "no",
+    "he_speaks": "yes"
+   },
+   "check": "readers",
+   "corrected": []
+  },
+  "709": {
+   "answers": {
+    "centrality": "one_of_several",
+    "source": "media",
+    "act": "predicts_his_fight",
+    "fact": "no_fact",
+    "firmness": "none",
+    "reports_his_result": "no",
+    "reports_his_next_fight": "no",
+    "reports_his_health": "no",
+    "he_speaks": "no"
+   },
+   "check": "read",
+   "corrected": [
+    "reports_his_next_fight"
+   ]
+  },
+  "710": {
+   "answers": {
+    "centrality": "not_in_content",
+    "source": "media",
+    "act": "none_of_these",
+    "fact": "no_fact",
+    "firmness": "none",
+    "reports_his_result": "no",
+    "reports_his_next_fight": "no",
+    "reports_his_health": "no",
+    "he_speaks": "no"
+   },
+   "check": "readers",
+   "corrected": []
+  },
+  "714": {
+   "answers": {
+    "centrality": "one_of_several",
+    "source": "no_one",
+    "act": "reports_an_event",
+    "fact": "result",
+    "firmness": "official_or_done",
+    "reports_his_result": "yes",
+    "reports_his_next_fight": "no",
+    "reports_his_health": "no",
+    "he_speaks": "no"
+   },
+   "check": "readers",
+   "corrected": []
+  },
+  "717": {
+   "answers": {
+    "centrality": "main_subject",
+    "source": "himself",
+    "act": "speaks_of_himself",
+    "fact": "personal_life",
+    "firmness": "official_or_done",
+    "reports_his_result": "no",
+    "reports_his_next_fight": "no",
+    "reports_his_health": "no",
+    "he_speaks": "yes"
+   },
+   "check": "readers",
+   "corrected": []
+  },
+  "723": {
+   "answers": {
+    "centrality": "main_subject",
+    "source": "himself",
+    "act": "speaks_of_himself",
+    "fact": "health",
+    "firmness": "official_or_done",
+    "reports_his_result": "no",
+    "reports_his_next_fight": "no",
+    "reports_his_health": "yes",
+    "he_speaks": "yes"
+   },
+   "check": "read",
+   "corrected": []
+  },
+  "728": {
+   "answers": {
+    "centrality": "main_subject",
+    "source": "himself",
+    "act": "speaks_of_himself",
+    "fact": "no_fact",
+    "firmness": "none",
+    "reports_his_result": "no",
+    "reports_his_next_fight": "no",
+    "reports_his_health": "no",
+    "he_speaks": "yes"
+   },
+   "check": "readers",
+   "corrected": []
+  },
+  "731": {
+   "answers": {
+    "centrality": "main_subject",
+    "source": "no_one",
+    "act": "reports_an_event",
+    "fact": "result",
+    "firmness": "official_or_done",
+    "reports_his_result": "yes",
+    "reports_his_next_fight": "no",
+    "reports_his_health": "no",
+    "he_speaks": "no"
+   },
+   "check": "readers",
+   "corrected": []
+  },
+  "732": {
+   "answers": {
+    "centrality": "main_subject",
+    "source": "no_one",
+    "act": "reports_an_event",
+    "fact": "result",
+    "firmness": "official_or_done",
+    "reports_his_result": "yes",
+    "reports_his_next_fight": "no",
+    "reports_his_health": "no",
+    "he_speaks": "no"
+   },
+   "check": "readers",
+   "corrected": []
+  },
+  "733": {
+   "answers": {
+    "centrality": "main_subject",
+    "source": "no_one",
+    "act": "reports_an_event",
+    "fact": "result",
+    "firmness": "official_or_done",
+    "reports_his_result": "yes",
+    "reports_his_next_fight": "no",
+    "reports_his_health": "no",
+    "he_speaks": "no"
+   },
+   "check": "readers",
+   "corrected": []
+  },
+  "735": {
+   "answers": {
+    "centrality": "main_subject",
+    "source": "no_one",
+    "act": "reports_an_event",
+    "fact": "result",
+    "firmness": "official_or_done",
+    "reports_his_result": "yes",
+    "reports_his_next_fight": "no",
+    "reports_his_health": "no",
+    "he_speaks": "no"
+   },
+   "check": "readers",
+   "corrected": []
+  },
+  "736": {
+   "answers": {
+    "centrality": "main_subject",
+    "source": "no_one",
+    "act": "reports_an_event",
+    "fact": "result",
+    "firmness": "official_or_done",
+    "reports_his_result": "yes",
+    "reports_his_next_fight": "no",
+    "reports_his_health": "no",
+    "he_speaks": "no"
+   },
+   "check": "readers",
+   "corrected": []
+  },
+  "737": {
+   "answers": {
+    "centrality": "one_of_several",
+    "source": "no_one",
+    "act": "reports_an_event",
+    "fact": "result",
+    "firmness": "official_or_done",
+    "reports_his_result": "yes",
+    "reports_his_next_fight": "no",
+    "reports_his_health": "no",
+    "he_speaks": "no"
+   },
+   "check": "read",
+   "corrected": [
+    "centrality"
+   ]
+  },
+  "740": {
+   "answers": {
+    "centrality": "main_subject",
+    "source": "no_one",
+    "act": "reports_an_event",
+    "fact": "result",
+    "firmness": "official_or_done",
+    "reports_his_result": "yes",
+    "reports_his_next_fight": "no",
+    "reports_his_health": "no",
+    "he_speaks": "no"
+   },
+   "check": "read",
+   "corrected": [
+    "source"
+   ]
+  },
+  "743": {
+   "answers": {
+    "centrality": "main_subject",
+    "source": "no_one",
+    "act": "reports_an_event",
+    "fact": "fight_week_event",
+    "firmness": "official_or_done",
+    "reports_his_result": "no",
+    "reports_his_next_fight": "no",
+    "reports_his_health": "no",
+    "he_speaks": "no"
+   },
+   "check": "read",
+   "corrected": []
+  },
+  "744": {
+   "answers": {
+    "centrality": "main_subject",
+    "source": "himself",
+    "act": "speaks_of_himself",
+    "fact": "no_fact",
+    "firmness": "none",
+    "reports_his_result": "no",
+    "reports_his_next_fight": "no",
+    "reports_his_health": "no",
+    "he_speaks": "yes"
+   },
+   "check": "read",
+   "corrected": []
+  },
+  "745": {
+   "answers": {
+    "centrality": "main_subject",
+    "source": "no_one",
+    "act": "reports_an_event",
+    "fact": "next_fight",
+    "firmness": "official_or_done",
+    "reports_his_result": "no",
+    "reports_his_next_fight": "yes",
+    "reports_his_health": "no",
+    "he_speaks": "no"
+   },
+   "check": "summary",
+   "corrected": []
+  },
+  "746": {
+   "answers": {
+    "centrality": "main_subject",
+    "source": "no_one",
+    "act": "reports_an_event",
+    "fact": "result",
+    "firmness": "official_or_done",
+    "reports_his_result": "yes",
+    "reports_his_next_fight": "no",
+    "reports_his_health": "no",
+    "he_speaks": "no"
+   },
+   "check": "readers",
+   "corrected": []
+  },
+  "747": {
+   "answers": {
+    "centrality": "main_subject",
+    "source": "no_one",
+    "act": "reports_an_event",
+    "fact": "result",
+    "firmness": "official_or_done",
+    "reports_his_result": "yes",
+    "reports_his_next_fight": "no",
+    "reports_his_health": "no",
+    "he_speaks": "no"
+   },
+   "check": "readers",
+   "corrected": []
+  },
+  "755": {
+   "answers": {
+    "centrality": "main_subject",
+    "source": "himself",
+    "act": "speaks_of_himself",
+    "fact": "health",
+    "firmness": "official_or_done",
+    "reports_his_result": "no",
+    "reports_his_next_fight": "no",
+    "reports_his_health": "yes",
+    "he_speaks": "yes"
+   },
+   "check": "readers",
+   "corrected": []
+  },
+  "758": {
+   "answers": {
+    "centrality": "main_subject",
+    "source": "no_one",
+    "act": "reports_an_event",
+    "fact": "result",
+    "firmness": "official_or_done",
+    "reports_his_result": "yes",
+    "reports_his_next_fight": "no",
+    "reports_his_health": "no",
+    "he_speaks": "no"
+   },
+   "check": "readers",
+   "corrected": []
+  },
+  "759": {
+   "answers": {
+    "centrality": "main_subject",
+    "source": "no_one",
+    "act": "reports_an_event",
+    "fact": "result",
+    "firmness": "official_or_done",
+    "reports_his_result": "yes",
+    "reports_his_next_fight": "no",
+    "reports_his_health": "no",
+    "he_speaks": "no"
+   },
+   "check": "readers",
+   "corrected": []
+  },
+  "762": {
+   "answers": {
+    "centrality": "one_of_several",
+    "source": "his_team",
+    "act": "assesses_him",
+    "fact": "no_fact",
+    "firmness": "none",
+    "reports_his_result": "no",
+    "reports_his_next_fight": "no",
+    "reports_his_health": "no",
+    "he_speaks": "no"
+   },
+   "check": "summary",
+   "corrected": [
+    "centrality",
+    "act"
+   ]
+  },
+  "765": {
+   "answers": {
+    "centrality": "main_subject",
+    "source": "no_one",
+    "act": "reports_an_event",
+    "fact": "result",
+    "firmness": "official_or_done",
+    "reports_his_result": "yes",
+    "reports_his_next_fight": "no",
+    "reports_his_health": "no",
+    "he_speaks": "no"
+   },
+   "check": "readers",
+   "corrected": []
+  },
+  "767": {
+   "answers": {
+    "centrality": "main_subject",
+    "source": "no_one",
+    "act": "reports_an_event",
+    "fact": "result",
+    "firmness": "official_or_done",
+    "reports_his_result": "yes",
+    "reports_his_next_fight": "no",
+    "reports_his_health": "no",
+    "he_speaks": "no"
+   },
+   "check": "read",
+   "corrected": []
+  },
+  "768": {
+   "answers": {
+    "centrality": "main_subject",
+    "source": "no_one",
+    "act": "reports_an_event",
+    "fact": "result",
+    "firmness": "official_or_done",
+    "reports_his_result": "yes",
+    "reports_his_next_fight": "no",
+    "reports_his_health": "no",
+    "he_speaks": "no"
+   },
+   "check": "readers",
+   "corrected": []
+  },
+  "771": {
+   "answers": {
+    "centrality": "main_subject",
+    "source": "himself",
+    "act": "speaks_of_himself",
+    "fact": "personal_life",
+    "firmness": "official_or_done",
+    "reports_his_result": "no",
+    "reports_his_next_fight": "no",
+    "reports_his_health": "no",
+    "he_speaks": "yes"
+   },
+   "check": "readers",
+   "corrected": []
+  },
+  "772": {
+   "answers": {
+    "centrality": "main_subject",
+    "source": "no_one",
+    "act": "reports_an_event",
+    "fact": "result",
+    "firmness": "official_or_done",
+    "reports_his_result": "yes",
+    "reports_his_next_fight": "no",
+    "reports_his_health": "no",
+    "he_speaks": "no"
+   },
+   "check": "readers",
+   "corrected": []
+  },
+  "773": {
+   "answers": {
+    "centrality": "main_subject",
+    "source": "no_one",
+    "act": "reports_an_event",
+    "fact": "result",
+    "firmness": "official_or_done",
+    "reports_his_result": "yes",
+    "reports_his_next_fight": "no",
+    "reports_his_health": "no",
+    "he_speaks": "no"
+   },
+   "check": "readers",
+   "corrected": []
+  },
+  "774": {
+   "answers": {
+    "centrality": "main_subject",
+    "source": "himself",
+    "act": "speaks_of_himself",
+    "fact": "no_fact",
+    "firmness": "none",
+    "reports_his_result": "no",
+    "reports_his_next_fight": "no",
+    "reports_his_health": "no",
+    "he_speaks": "yes"
+   },
+   "check": "read",
+   "corrected": [
+    "fact",
+    "firmness",
+    "reports_his_result"
+   ]
+  },
+  "776": {
+   "answers": {
+    "centrality": "main_subject",
+    "source": "no_one",
+    "act": "reports_an_event",
+    "fact": "result",
+    "firmness": "official_or_done",
+    "reports_his_result": "yes",
+    "reports_his_next_fight": "no",
+    "reports_his_health": "no",
+    "he_speaks": "no"
+   },
+   "check": "readers",
+   "corrected": []
+  },
+  "778": {
+   "answers": {
+    "centrality": "main_subject",
+    "source": "himself",
+    "act": "speaks_of_himself",
+    "fact": "no_fact",
+    "firmness": "none",
+    "reports_his_result": "no",
+    "reports_his_next_fight": "no",
+    "reports_his_health": "no",
+    "he_speaks": "no"
+   },
+   "check": "read",
+   "corrected": []
+  },
+  "779": {
+   "answers": {
+    "centrality": "main_subject",
+    "source": "no_one",
+    "act": "reports_an_event",
+    "fact": "result",
+    "firmness": "official_or_done",
+    "reports_his_result": "yes",
+    "reports_his_next_fight": "no",
+    "reports_his_health": "no",
+    "he_speaks": "no"
+   },
+   "check": "read",
+   "corrected": []
+  },
+  "780": {
+   "answers": {
+    "centrality": "main_subject",
+    "source": "no_one",
+    "act": "reports_an_event",
+    "fact": "result",
+    "firmness": "official_or_done",
+    "reports_his_result": "yes",
+    "reports_his_next_fight": "no",
+    "reports_his_health": "no",
+    "he_speaks": "no"
+   },
+   "check": "read",
+   "corrected": []
+  },
+  "782": {
+   "answers": {
+    "centrality": "main_subject",
+    "source": "no_one",
+    "act": "reports_an_event",
+    "fact": "result",
+    "firmness": "official_or_done",
+    "reports_his_result": "yes",
+    "reports_his_next_fight": "no",
+    "reports_his_health": "no",
+    "he_speaks": "no"
+   },
+   "check": "readers",
+   "corrected": []
+  },
+  "783": {
+   "answers": {
+    "centrality": "main_subject",
+    "source": "no_one",
+    "act": "reports_an_event",
+    "fact": "result",
+    "firmness": "official_or_done",
+    "reports_his_result": "yes",
+    "reports_his_next_fight": "no",
+    "reports_his_health": "no",
+    "he_speaks": "no"
+   },
+   "check": "readers",
+   "corrected": []
+  },
+  "785": {
+   "answers": {
+    "centrality": "main_subject",
+    "source": "no_one",
+    "act": "reports_an_event",
+    "fact": "result",
+    "firmness": "official_or_done",
+    "reports_his_result": "yes",
+    "reports_his_next_fight": "no",
+    "reports_his_health": "no",
+    "he_speaks": "no"
+   },
+   "check": "readers",
+   "corrected": []
+  },
+  "786": {
+   "answers": {
+    "centrality": "main_subject",
+    "source": "no_one",
+    "act": "reports_an_event",
+    "fact": "result",
+    "firmness": "official_or_done",
+    "reports_his_result": "yes",
+    "reports_his_next_fight": "no",
+    "reports_his_health": "no",
+    "he_speaks": "no"
+   },
+   "check": "readers",
+   "corrected": []
+  },
+  "788": {
+   "answers": {
+    "centrality": "main_subject",
+    "source": "himself",
+    "act": "speaks_of_himself",
+    "fact": "no_fact",
+    "firmness": "none",
+    "reports_his_result": "no",
+    "reports_his_next_fight": "no",
+    "reports_his_health": "no",
+    "he_speaks": "yes"
+   },
+   "check": "readers",
+   "corrected": []
+  },
+  "789": {
+   "answers": {
+    "centrality": "main_subject",
+    "source": "himself",
+    "act": "speaks_of_himself",
+    "fact": "no_fact",
+    "firmness": "none",
+    "reports_his_result": "no",
+    "reports_his_next_fight": "no",
+    "reports_his_health": "no",
+    "he_speaks": "yes"
+   },
+   "check": "readers",
+   "corrected": [
+    "fact",
+    "firmness",
+    "reports_his_result"
+   ]
+  },
+  "790": {
+   "answers": {
+    "centrality": "main_subject",
+    "source": "no_one",
+    "act": "reports_an_event",
+    "fact": "result",
+    "firmness": "official_or_done",
+    "reports_his_result": "yes",
+    "reports_his_next_fight": "no",
+    "reports_his_health": "no",
+    "he_speaks": "no"
+   },
+   "check": "readers",
+   "corrected": []
+  },
+  "794": {
+   "answers": {
+    "centrality": "main_subject",
+    "source": "himself",
+    "act": "speaks_of_himself",
+    "fact": "no_fact",
+    "firmness": "none",
+    "reports_his_result": "no",
+    "reports_his_next_fight": "no",
+    "reports_his_health": "no",
+    "he_speaks": "yes"
+   },
+   "check": "readers",
+   "corrected": [
+    "fact",
+    "firmness",
+    "reports_his_result"
+   ]
+  },
+  "797": {
+   "answers": {
+    "centrality": "main_subject",
+    "source": "himself",
+    "act": "speaks_of_himself",
+    "fact": "no_fact",
+    "firmness": "none",
+    "reports_his_result": "no",
+    "reports_his_next_fight": "no",
+    "reports_his_health": "no",
+    "he_speaks": "yes"
+   },
+   "check": "read",
+   "corrected": [
+    "fact",
+    "firmness",
+    "reports_his_result"
+   ]
+  },
+  "798": {
+   "answers": {
+    "centrality": "one_of_several",
+    "source": "media",
+    "act": "gives_news_of_him",
+    "fact": "next_fight",
+    "firmness": "rumour",
+    "reports_his_result": "no",
+    "reports_his_next_fight": "yes",
+    "reports_his_health": "no",
+    "he_speaks": "no"
+   },
+   "check": "readers",
+   "corrected": []
+  },
+  "803": {
+   "answers": {
+    "centrality": "main_subject",
+    "source": "media",
+    "act": "gives_news_of_him",
+    "fact": "next_fight",
+    "firmness": "rumour",
+    "reports_his_result": "no",
+    "reports_his_next_fight": "yes",
+    "reports_his_health": "no",
+    "he_speaks": "no"
+   },
+   "check": "readers",
+   "corrected": [
+    "reports_his_health"
+   ]
+  },
+  "807": {
+   "answers": {
+    "centrality": "one_of_several",
+    "source": "media",
+    "act": "gives_news_of_him",
+    "fact": "next_fight",
+    "firmness": "rumour",
+    "reports_his_result": "no",
+    "reports_his_next_fight": "yes",
+    "reports_his_health": "no",
+    "he_speaks": "no"
+   },
+   "check": "readers",
+   "corrected": []
+  },
+  "811": {
+   "answers": {
+    "centrality": "not_in_content",
+    "source": "other_fighter_side",
+    "act": "none_of_these",
+    "fact": "no_fact",
+    "firmness": "none",
+    "reports_his_result": "no",
+    "reports_his_next_fight": "no",
+    "reports_his_health": "no",
+    "he_speaks": "no"
+   },
+   "check": "readers",
+   "corrected": []
+  },
+  "813": {
+   "answers": {
+    "centrality": "main_subject",
+    "source": "himself",
+    "act": "speaks_of_himself",
+    "fact": "no_fact",
+    "firmness": "none",
+    "reports_his_result": "no",
+    "reports_his_next_fight": "no",
+    "reports_his_health": "no",
+    "he_speaks": "yes"
+   },
+   "check": "readers",
+   "corrected": [
+    "fact",
+    "firmness",
+    "reports_his_result"
+   ]
+  },
+  "817": {
+   "answers": {
+    "centrality": "main_subject",
+    "source": "no_one",
+    "act": "reports_an_event",
+    "fact": "result",
+    "firmness": "official_or_done",
+    "reports_his_result": "yes",
+    "reports_his_next_fight": "no",
+    "reports_his_health": "no",
+    "he_speaks": "yes"
+   },
+   "check": "readers",
+   "corrected": []
+  },
+  "820": {
+   "answers": {
+    "centrality": "one_of_several",
+    "source": "other_fighter_side",
+    "act": "gives_news_of_him",
+    "fact": "next_fight",
+    "firmness": "rumour",
+    "reports_his_result": "no",
+    "reports_his_next_fight": "yes",
+    "reports_his_health": "no",
+    "he_speaks": "no"
+   },
+   "check": "read",
+   "corrected": [
+    "source"
+   ]
+  },
+  "823": {
+   "answers": {
+    "centrality": "main_subject",
+    "source": "no_one",
+    "act": "reports_an_event",
+    "fact": "result",
+    "firmness": "official_or_done",
+    "reports_his_result": "yes",
+    "reports_his_next_fight": "no",
+    "reports_his_health": "no",
+    "he_speaks": "no"
+   },
+   "check": "read",
+   "corrected": [
+    "he_speaks"
+   ]
+  },
+  "826": {
+   "answers": {
+    "centrality": "main_subject",
+    "source": "no_one",
+    "act": "reports_an_event",
+    "fact": "result",
+    "firmness": "official_or_done",
+    "reports_his_result": "yes",
+    "reports_his_next_fight": "no",
+    "reports_his_health": "no",
+    "he_speaks": "no"
+   },
+   "check": "readers",
+   "corrected": []
+  },
+  "828": {
+   "answers": {
+    "centrality": "one_of_several",
+    "source": "media",
+    "act": "gives_news_of_him",
+    "fact": "next_fight",
+    "firmness": "rumour",
+    "reports_his_result": "no",
+    "reports_his_next_fight": "yes",
+    "reports_his_health": "no",
+    "he_speaks": "no"
+   },
+   "check": "readers",
+   "corrected": []
+  },
+  "829": {
+   "answers": {
+    "centrality": "main_subject",
+    "source": "no_one",
+    "act": "reports_an_event",
+    "fact": "result",
+    "firmness": "official_or_done",
+    "reports_his_result": "yes",
+    "reports_his_next_fight": "no",
+    "reports_his_health": "no",
+    "he_speaks": "no"
+   },
+   "check": "readers",
+   "corrected": []
+  },
+  "833": {
+   "answers": {
+    "centrality": "one_of_several",
+    "source": "media",
+    "act": "gives_news_of_him",
+    "fact": "next_fight",
+    "firmness": "rumour",
+    "reports_his_result": "no",
+    "reports_his_next_fight": "yes",
+    "reports_his_health": "no",
+    "he_speaks": "no"
+   },
+   "check": "summary",
+   "corrected": [
+    "centrality"
+   ]
+  },
+  "838": {
+   "answers": {
+    "centrality": "one_of_several",
+    "source": "other_fighter_side",
+    "act": "calls_him_out",
+    "fact": "next_fight",
+    "firmness": "rumour",
+    "reports_his_result": "no",
+    "reports_his_next_fight": "yes",
+    "reports_his_health": "no",
+    "he_speaks": "no"
+   },
+   "check": "readers",
+   "corrected": [
+    "source"
+   ]
+  },
+  "843": {
+   "answers": {
+    "centrality": "only_mentioned",
+    "source": "other_fighter_side",
+    "act": "calls_him_out",
+    "fact": "no_fact",
+    "firmness": "none",
+    "reports_his_result": "no",
+    "reports_his_next_fight": "no",
+    "reports_his_health": "no",
+    "he_speaks": "no"
+   },
+   "check": "read",
+   "corrected": [
+    "source",
+    "reports_his_next_fight"
+   ]
+  },
+  "850": {
+   "answers": {
+    "centrality": "main_subject",
+    "source": "other_fighter_side",
+    "act": "gives_news_of_him",
+    "fact": "next_fight",
+    "firmness": "rumour",
+    "reports_his_result": "no",
+    "reports_his_next_fight": "yes",
+    "reports_his_health": "no",
+    "he_speaks": "no"
+   },
+   "check": "readers",
+   "corrected": []
+  },
+  "851": {
+   "answers": {
+    "centrality": "main_subject",
+    "source": "himself",
+    "act": "speaks_of_himself",
+    "fact": "no_fact",
+    "firmness": "none",
+    "reports_his_result": "no",
+    "reports_his_next_fight": "no",
+    "reports_his_health": "no",
+    "he_speaks": "yes"
+   },
+   "check": "read",
+   "corrected": [
+    "fact",
+    "firmness",
+    "reports_his_result"
+   ]
+  },
+  "852": {
+   "answers": {
+    "centrality": "main_subject",
+    "source": "himself",
+    "act": "speaks_of_himself",
+    "fact": "no_fact",
+    "firmness": "none",
+    "reports_his_result": "no",
+    "reports_his_next_fight": "no",
+    "reports_his_health": "no",
+    "he_speaks": "yes"
+   },
+   "check": "readers",
+   "corrected": [
+    "fact",
+    "firmness",
+    "reports_his_result"
+   ]
+  },
+  "856": {
+   "answers": {
+    "centrality": "only_mentioned",
+    "source": "media",
+    "act": "none_of_these",
+    "fact": "no_fact",
+    "firmness": "none",
+    "reports_his_result": "no",
+    "reports_his_next_fight": "no",
+    "reports_his_health": "no",
+    "he_speaks": "no"
+   },
+   "check": "read",
+   "corrected": [
+    "act"
+   ]
+  },
+  "861": {
+   "answers": {
+    "centrality": "only_mentioned",
+    "source": "media",
+    "act": "none_of_these",
+    "fact": "no_fact",
+    "firmness": "none",
+    "reports_his_result": "no",
+    "reports_his_next_fight": "no",
+    "reports_his_health": "no",
+    "he_speaks": "no"
+   },
+   "check": "summary",
+   "corrected": [
+    "act"
+   ]
+  },
+  "862": {
+   "answers": {
+    "centrality": "one_of_several",
+    "source": "media",
+    "act": "gives_news_of_him",
+    "fact": "next_fight",
+    "firmness": "rumour",
+    "reports_his_result": "no",
+    "reports_his_next_fight": "yes",
+    "reports_his_health": "no",
+    "he_speaks": "no"
+   },
+   "check": "read",
+   "corrected": []
+  },
+  "866": {
+   "answers": {
+    "centrality": "main_subject",
+    "source": "media",
+    "act": "steers_him",
+    "fact": "no_fact",
+    "firmness": "none",
+    "reports_his_result": "no",
+    "reports_his_next_fight": "no",
+    "reports_his_health": "no",
+    "he_speaks": "yes"
+   },
+   "check": "readers",
+   "corrected": []
+  },
+  "871": {
+   "answers": {
+    "centrality": "only_mentioned",
+    "source": "other_fighter_side",
+    "act": "calls_him_out",
+    "fact": "no_fact",
+    "firmness": "none",
+    "reports_his_result": "no",
+    "reports_his_next_fight": "no",
+    "reports_his_health": "no",
+    "he_speaks": "no"
+   },
+   "check": "read",
+   "corrected": [
+    "centrality",
+    "source",
+    "fact",
+    "firmness",
+    "reports_his_next_fight"
+   ]
+  },
+  "875": {
+   "answers": {
+    "centrality": "main_subject",
+    "source": "himself",
+    "act": "speaks_of_himself",
+    "fact": "personal_life",
+    "firmness": "official_or_done",
+    "reports_his_result": "no",
+    "reports_his_next_fight": "no",
+    "reports_his_health": "no",
+    "he_speaks": "yes"
+   },
+   "check": "read",
+   "corrected": []
+  },
+  "879": {
+   "answers": {
+    "centrality": "main_subject",
+    "source": "other_fighter_side",
+    "act": "steers_him",
+    "fact": "no_fact",
+    "firmness": "none",
+    "reports_his_result": "no",
+    "reports_his_next_fight": "no",
+    "reports_his_health": "no",
+    "he_speaks": "no"
+   },
+   "check": "readers",
+   "corrected": [
+    "source",
+    "fact",
+    "firmness",
+    "reports_his_next_fight"
+   ]
+  },
+  "883": {
+   "answers": {
+    "centrality": "main_subject",
+    "source": "media",
+    "act": "gives_news_of_him",
+    "fact": "next_fight",
+    "firmness": "rumour",
+    "reports_his_result": "no",
+    "reports_his_next_fight": "yes",
+    "reports_his_health": "no",
+    "he_speaks": "yes"
+   },
+   "check": "read",
+   "corrected": []
+  },
+  "887": {
+   "answers": {
+    "centrality": "one_of_several",
+    "source": "other_fighter_side",
+    "act": "steers_him",
+    "fact": "no_fact",
+    "firmness": "none",
+    "reports_his_result": "no",
+    "reports_his_next_fight": "no",
+    "reports_his_health": "no",
+    "he_speaks": "no"
+   },
+   "check": "read",
+   "corrected": [
+    "reports_his_next_fight"
+   ]
+  },
+  "889": {
+   "answers": {
+    "centrality": "one_of_several",
+    "source": "other_fighter_side",
+    "act": "calls_him_out",
+    "fact": "no_fact",
+    "firmness": "none",
+    "reports_his_result": "no",
+    "reports_his_next_fight": "no",
+    "reports_his_health": "no",
+    "he_speaks": "no"
+   },
+   "check": "read",
+   "corrected": [
+    "source"
+   ]
+  },
+  "892": {
+   "answers": {
+    "centrality": "only_mentioned",
+    "source": "other_fighter_side",
+    "act": "calls_him_out",
+    "fact": "no_fact",
+    "firmness": "none",
+    "reports_his_result": "no",
+    "reports_his_next_fight": "no",
+    "reports_his_health": "no",
+    "he_speaks": "no"
+   },
+   "check": "read",
+   "corrected": [
+    "centrality",
+    "source"
+   ]
+  },
+  "896": {
+   "answers": {
+    "centrality": "main_subject",
+    "source": "other_fighter_side",
+    "act": "predicts_his_fight",
+    "fact": "next_fight",
+    "firmness": "rumour",
+    "reports_his_result": "no",
+    "reports_his_next_fight": "yes",
+    "reports_his_health": "no",
+    "he_speaks": "no"
+   },
+   "check": "read",
+   "corrected": []
+  },
+  "901": {
+   "answers": {
+    "centrality": "main_subject",
+    "source": "other_fighter_side",
+    "act": "steers_him",
+    "fact": "no_fact",
+    "firmness": "none",
+    "reports_his_result": "no",
+    "reports_his_next_fight": "no",
+    "reports_his_health": "no",
+    "he_speaks": "no"
+   },
+   "check": "read",
+   "corrected": [
+    "fact",
+    "firmness",
+    "reports_his_next_fight"
+   ]
+  },
+  "905": {
+   "answers": {
+    "centrality": "main_subject",
+    "source": "other_fighter_side",
+    "act": "steers_him",
+    "fact": "no_fact",
+    "firmness": "none",
+    "reports_his_result": "no",
+    "reports_his_next_fight": "no",
+    "reports_his_health": "no",
+    "he_speaks": "no"
+   },
+   "check": "read",
+   "corrected": [
+    "source",
+    "reports_his_next_fight"
+   ]
+  },
+  "909": {
+   "answers": {
+    "centrality": "only_mentioned",
+    "source": "other_fighter_side",
+    "act": "steers_him",
+    "fact": "no_fact",
+    "firmness": "none",
+    "reports_his_result": "no",
+    "reports_his_next_fight": "no",
+    "reports_his_health": "no",
+    "he_speaks": "no"
+   },
+   "check": "readers",
+   "corrected": []
+  },
+  "913": {
+   "answers": {
+    "centrality": "one_of_several",
+    "source": "other_fighter_side",
+    "act": "calls_him_out",
+    "fact": "no_fact",
+    "firmness": "none",
+    "reports_his_result": "no",
+    "reports_his_next_fight": "no",
+    "reports_his_health": "no",
+    "he_speaks": "no"
+   },
+   "check": "read",
+   "corrected": [
+    "centrality",
+    "source",
+    "reports_his_next_fight"
+   ]
+  },
+  "917": {
+   "answers": {
+    "centrality": "main_subject",
+    "source": "media",
+    "act": "steers_him",
+    "fact": "no_fact",
+    "firmness": "none",
+    "reports_his_result": "no",
+    "reports_his_next_fight": "no",
+    "reports_his_health": "no",
+    "he_speaks": "no"
+   },
+   "check": "read",
+   "corrected": [
+    "fact",
+    "firmness",
+    "reports_his_health"
+   ]
+  },
+  "921": {
+   "answers": {
+    "centrality": "only_mentioned",
+    "source": "other_fighter_side",
+    "act": "calls_him_out",
+    "fact": "no_fact",
+    "firmness": "none",
+    "reports_his_result": "no",
+    "reports_his_next_fight": "no",
+    "reports_his_health": "no",
+    "he_speaks": "no"
+   },
+   "check": "read",
+   "corrected": [
+    "centrality",
+    "source",
+    "reports_his_next_fight"
+   ]
+  },
+  "926": {
+   "answers": {
+    "centrality": "main_subject",
+    "source": "media",
+    "act": "steers_him",
+    "fact": "no_fact",
+    "firmness": "none",
+    "reports_his_result": "no",
+    "reports_his_next_fight": "no",
+    "reports_his_health": "no",
+    "he_speaks": "no"
+   },
+   "check": "read",
+   "corrected": [
+    "reports_his_next_fight"
+   ]
+  },
+  "930": {
+   "answers": {
+    "centrality": "main_subject",
+    "source": "himself",
+    "act": "speaks_of_himself",
+    "fact": "no_fact",
+    "firmness": "none",
+    "reports_his_result": "no",
+    "reports_his_next_fight": "no",
+    "reports_his_health": "no",
+    "he_speaks": "yes"
+   },
+   "check": "readers",
+   "corrected": []
+  },
+  "933": {
+   "answers": {
+    "centrality": "main_subject",
+    "source": "media",
+    "act": "steers_him",
+    "fact": "no_fact",
+    "firmness": "none",
+    "reports_his_result": "no",
+    "reports_his_next_fight": "no",
+    "reports_his_health": "no",
+    "he_speaks": "no"
+   },
+   "check": "summary",
+   "corrected": [
+    "he_speaks"
+   ]
+  },
+  "934": {
+   "answers": {
+    "centrality": "main_subject",
+    "source": "media",
+    "act": "steers_him",
+    "fact": "no_fact",
+    "firmness": "none",
+    "reports_his_result": "no",
+    "reports_his_next_fight": "no",
+    "reports_his_health": "no",
+    "he_speaks": "no"
+   },
+   "check": "summary",
+   "corrected": [
+    "he_speaks"
+   ]
+  },
+  "937": {
+   "answers": {
+    "centrality": "only_mentioned",
+    "source": "other_fighter_side",
+    "act": "none_of_these",
+    "fact": "no_fact",
+    "firmness": "none",
+    "reports_his_result": "no",
+    "reports_his_next_fight": "no",
+    "reports_his_health": "no",
+    "he_speaks": "no"
+   },
+   "check": "readers",
+   "corrected": []
+  },
+  "944": {
+   "answers": {
+    "centrality": "main_subject",
+    "source": "opponent_side",
+    "act": "assesses_him",
+    "fact": "no_fact",
+    "firmness": "none",
+    "reports_his_result": "no",
+    "reports_his_next_fight": "no",
+    "reports_his_health": "no",
+    "he_speaks": "no"
+   },
+   "check": "readers",
+   "corrected": []
+  },
+  "948": {
+   "answers": {
+    "centrality": "not_in_content",
+    "source": "other_fighter_side",
+    "act": "none_of_these",
+    "fact": "no_fact",
+    "firmness": "none",
+    "reports_his_result": "no",
+    "reports_his_next_fight": "no",
+    "reports_his_health": "no",
+    "he_speaks": "no"
+   },
+   "check": "summary",
+   "corrected": [
+    "source"
+   ]
+  },
+  "953": {
+   "answers": {
+    "centrality": "only_mentioned",
+    "source": "other_fighter_side",
+    "act": "calls_him_out",
+    "fact": "no_fact",
+    "firmness": "none",
+    "reports_his_result": "no",
+    "reports_his_next_fight": "no",
+    "reports_his_health": "no",
+    "he_speaks": "no"
+   },
+   "check": "read",
+   "corrected": []
+  },
+  "958": {
+   "answers": {
+    "centrality": "main_subject",
+    "source": "promotion",
+    "act": "gives_news_of_him",
+    "fact": "status_update",
+    "firmness": "official_or_done",
+    "reports_his_result": "no",
+    "reports_his_next_fight": "no",
+    "reports_his_health": "no",
+    "he_speaks": "no"
+   },
+   "check": "read",
+   "corrected": [
+    "fact",
+    "reports_his_next_fight"
+   ]
+  },
+  "963": {
+   "answers": {
+    "centrality": "main_subject",
+    "source": "opponent_side",
+    "act": "assesses_him",
+    "fact": "no_fact",
+    "firmness": "none",
+    "reports_his_result": "no",
+    "reports_his_next_fight": "no",
+    "reports_his_health": "no",
+    "he_speaks": "no"
+   },
+   "check": "readers",
+   "corrected": []
+  },
+  "968": {
+   "answers": {
+    "centrality": "main_subject",
+    "source": "himself",
+    "act": "speaks_of_himself",
+    "fact": "no_fact",
+    "firmness": "none",
+    "reports_his_result": "no",
+    "reports_his_next_fight": "no",
+    "reports_his_health": "no",
+    "he_speaks": "yes"
+   },
+   "check": "readers",
+   "corrected": []
+  },
+  "972": {
+   "answers": {
+    "centrality": "main_subject",
+    "source": "promotion",
+    "act": "gives_news_of_him",
+    "fact": "status_update",
+    "firmness": "official_or_done",
+    "reports_his_result": "no",
+    "reports_his_next_fight": "no",
+    "reports_his_health": "no",
+    "he_speaks": "no"
+   },
+   "check": "readers",
+   "corrected": [
+    "fact",
+    "reports_his_next_fight"
+   ]
+  },
+  "975": {
+   "answers": {
+    "centrality": "only_mentioned",
+    "source": "other_fighter_side",
+    "act": "none_of_these",
+    "fact": "no_fact",
+    "firmness": "none",
+    "reports_his_result": "no",
+    "reports_his_next_fight": "no",
+    "reports_his_health": "no",
+    "he_speaks": "no"
+   },
+   "check": "read",
+   "corrected": []
+  },
+  "977": {
+   "answers": {
+    "centrality": "one_of_several",
+    "source": "opponent_side",
+    "act": "assesses_him",
+    "fact": "no_fact",
+    "firmness": "none",
+    "reports_his_result": "no",
+    "reports_his_next_fight": "no",
+    "reports_his_health": "no",
+    "he_speaks": "no"
+   },
+   "check": "readers",
+   "corrected": []
+  },
+  "983": {
+   "answers": {
+    "centrality": "one_of_several",
+    "source": "opponent_side",
+    "act": "assesses_him",
+    "fact": "no_fact",
+    "firmness": "none",
+    "reports_his_result": "no",
+    "reports_his_next_fight": "no",
+    "reports_his_health": "no",
+    "he_speaks": "no"
+   },
+   "check": "read",
+   "corrected": []
+  },
+  "991": {
+   "answers": {
+    "centrality": "main_subject",
+    "source": "promotion",
+    "act": "gives_news_of_him",
+    "fact": "status_update",
+    "firmness": "official_or_done",
+    "reports_his_result": "no",
+    "reports_his_next_fight": "no",
+    "reports_his_health": "no",
+    "he_speaks": "no"
+   },
+   "check": "readers",
+   "corrected": [
+    "fact",
+    "reports_his_next_fight"
+   ]
+  },
+  "998": {
+   "answers": {
+    "centrality": "main_subject",
+    "source": "promotion",
+    "act": "gives_news_of_him",
+    "fact": "status_update",
+    "firmness": "official_or_done",
+    "reports_his_result": "no",
+    "reports_his_next_fight": "no",
+    "reports_his_health": "no",
+    "he_speaks": "no"
+   },
+   "check": "read",
+   "corrected": [
+    "fact",
+    "reports_his_next_fight",
+    "reports_his_health"
+   ]
+  },
+  "1002": {
+   "answers": {
+    "centrality": "main_subject",
+    "source": "other_fighter_side",
+    "act": "none_of_these",
+    "fact": "no_fact",
+    "firmness": "none",
+    "reports_his_result": "no",
+    "reports_his_next_fight": "no",
+    "reports_his_health": "no",
+    "he_speaks": "no"
+   },
+   "check": "read",
+   "corrected": [
+    "fact",
+    "firmness",
+    "reports_his_next_fight"
+   ]
+  },
+  "1008": {
+   "answers": {
+    "centrality": "main_subject",
+    "source": "promotion",
+    "act": "gives_news_of_him",
+    "fact": "status_update",
+    "firmness": "official_or_done",
+    "reports_his_result": "no",
+    "reports_his_next_fight": "no",
+    "reports_his_health": "no",
+    "he_speaks": "no"
+   },
+   "check": "readers",
+   "corrected": [
+    "fact",
+    "reports_his_next_fight"
+   ]
+  },
+  "1016": {
+   "answers": {
+    "centrality": "main_subject",
+    "source": "other_fighter_side",
+    "act": "steers_him",
+    "fact": "no_fact",
+    "firmness": "none",
+    "reports_his_result": "no",
+    "reports_his_next_fight": "no",
+    "reports_his_health": "no",
+    "he_speaks": "no"
+   },
+   "check": "read",
+   "corrected": [
+    "reports_his_next_fight"
+   ]
+  },
+  "1020": {
+   "answers": {
+    "centrality": "main_subject",
+    "source": "promotion",
+    "act": "gives_news_of_him",
+    "fact": "status_update",
+    "firmness": "official_or_done",
+    "reports_his_result": "no",
+    "reports_his_next_fight": "no",
+    "reports_his_health": "no",
+    "he_speaks": "no"
+   },
+   "check": "read",
+   "corrected": [
+    "fact",
+    "reports_his_next_fight",
+    "reports_his_health"
+   ]
+  },
+  "1027": {
+   "answers": {
+    "centrality": "main_subject",
+    "source": "other_fighter_side",
+    "act": "steers_him",
+    "fact": "no_fact",
+    "firmness": "none",
+    "reports_his_result": "no",
+    "reports_his_next_fight": "no",
+    "reports_his_health": "no",
+    "he_speaks": "no"
+   },
+   "check": "readers",
+   "corrected": []
+  },
+  "1031": {
+   "answers": {
+    "centrality": "main_subject",
+    "source": "promotion",
+    "act": "gives_news_of_him",
+    "fact": "status_update",
+    "firmness": "official_or_done",
+    "reports_his_result": "no",
+    "reports_his_next_fight": "no",
+    "reports_his_health": "no",
+    "he_speaks": "no"
+   },
+   "check": "read",
+   "corrected": [
+    "fact",
+    "reports_his_next_fight"
+   ]
+  },
+  "1036": {
+   "answers": {
+    "centrality": "main_subject",
+    "source": "promotion",
+    "act": "gives_news_of_him",
+    "fact": "status_update",
+    "firmness": "official_or_done",
+    "reports_his_result": "no",
+    "reports_his_next_fight": "no",
+    "reports_his_health": "no",
+    "he_speaks": "yes"
+   },
+   "check": "readers",
+   "corrected": [
+    "fact",
+    "reports_his_next_fight"
+   ]
+  },
+  "1040": {
+   "answers": {
+    "centrality": "main_subject",
+    "source": "opponent_side",
+    "act": "assesses_him",
+    "fact": "no_fact",
+    "firmness": "none",
+    "reports_his_result": "no",
+    "reports_his_next_fight": "no",
+    "reports_his_health": "no",
+    "he_speaks": "no"
+   },
+   "check": "readers",
+   "corrected": []
+  },
+  "1045": {
+   "answers": {
+    "centrality": "only_mentioned",
+    "source": "media",
+    "act": "none_of_these",
+    "fact": "no_fact",
+    "firmness": "none",
+    "reports_his_result": "no",
+    "reports_his_next_fight": "no",
+    "reports_his_health": "no",
+    "he_speaks": "no"
+   },
+   "check": "read",
+   "corrected": [
+    "act",
+    "fact",
+    "firmness",
+    "reports_his_next_fight"
+   ]
+  },
+  "1050": {
+   "answers": {
+    "centrality": "only_mentioned",
+    "source": "opponent_side",
+    "act": "none_of_these",
+    "fact": "no_fact",
+    "firmness": "none",
+    "reports_his_result": "no",
+    "reports_his_next_fight": "no",
+    "reports_his_health": "no",
+    "he_speaks": "no"
+   },
+   "check": "readers",
+   "corrected": []
+  },
+  "1058": {
+   "answers": {
+    "centrality": "main_subject",
+    "source": "promotion",
+    "act": "gives_news_of_him",
+    "fact": "status_update",
+    "firmness": "official_or_done",
+    "reports_his_result": "no",
+    "reports_his_next_fight": "no",
+    "reports_his_health": "no",
+    "he_speaks": "no"
+   },
+   "check": "readers",
+   "corrected": [
+    "fact",
+    "reports_his_next_fight",
+    "reports_his_health"
+   ]
+  },
+  "1066": {
+   "answers": {
+    "centrality": "main_subject",
+    "source": "promotion",
+    "act": "gives_news_of_him",
+    "fact": "next_fight",
+    "firmness": "rumour",
+    "reports_his_result": "no",
+    "reports_his_next_fight": "yes",
+    "reports_his_health": "no",
+    "he_speaks": "no"
+   },
+   "check": "summary",
+   "corrected": []
+  },
+  "1072": {
+   "answers": {
+    "centrality": "main_subject",
+    "source": "opponent_side",
+    "act": "assesses_him",
+    "fact": "no_fact",
+    "firmness": "none",
+    "reports_his_result": "no",
+    "reports_his_next_fight": "no",
+    "reports_his_health": "no",
+    "he_speaks": "no"
+   },
+   "check": "readers",
+   "corrected": []
+  },
+  "1076": {
+   "answers": {
+    "centrality": "main_subject",
+    "source": "promotion",
+    "act": "gives_news_of_him",
+    "fact": "status_update",
+    "firmness": "official_or_done",
+    "reports_his_result": "no",
+    "reports_his_next_fight": "no",
+    "reports_his_health": "no",
+    "he_speaks": "no"
+   },
+   "check": "readers",
+   "corrected": [
+    "fact",
+    "reports_his_next_fight"
+   ]
+  },
+  "1080": {
+   "answers": {
+    "centrality": "not_in_content",
+    "source": "other_fighter_side",
+    "act": "none_of_these",
+    "fact": "no_fact",
+    "firmness": "none",
+    "reports_his_result": "no",
+    "reports_his_next_fight": "no",
+    "reports_his_health": "no",
+    "he_speaks": "no"
+   },
+   "check": "readers",
+   "corrected": []
+  },
+  "1085": {
+   "answers": {
+    "centrality": "not_in_content",
+    "source": "other_fighter_side",
+    "act": "none_of_these",
+    "fact": "no_fact",
+    "firmness": "none",
+    "reports_his_result": "no",
+    "reports_his_next_fight": "no",
+    "reports_his_health": "no",
+    "he_speaks": "no"
+   },
+   "check": "readers",
+   "corrected": []
+  },
+  "1089": {
+   "answers": {
+    "centrality": "one_of_several",
+    "source": "promotion",
+    "act": "gives_news_of_him",
+    "fact": "status_update",
+    "firmness": "official_or_done",
+    "reports_his_result": "no",
+    "reports_his_next_fight": "no",
+    "reports_his_health": "no",
+    "he_speaks": "no"
+   },
+   "check": "read",
+   "corrected": [
+    "fact",
+    "reports_his_next_fight"
+   ]
+  },
+  "1093": {
+   "answers": {
+    "centrality": "only_mentioned",
+    "source": "opponent_side",
+    "act": "none_of_these",
+    "fact": "no_fact",
+    "firmness": "none",
+    "reports_his_result": "no",
+    "reports_his_next_fight": "no",
+    "reports_his_health": "no",
+    "he_speaks": "no"
+   },
+   "check": "readers",
+   "corrected": []
+  },
+  "1097": {
+   "answers": {
+    "centrality": "main_subject",
+    "source": "other_fighter_side",
+    "act": "steers_him",
+    "fact": "no_fact",
+    "firmness": "none",
+    "reports_his_result": "no",
+    "reports_his_next_fight": "no",
+    "reports_his_health": "no",
+    "he_speaks": "no"
+   },
+   "check": "read",
+   "corrected": [
+    "reports_his_next_fight"
+   ]
+  },
+  "1101": {
+   "answers": {
+    "centrality": "main_subject",
+    "source": "himself",
+    "act": "speaks_of_himself",
+    "fact": "status_update",
+    "firmness": "official_or_done",
+    "reports_his_result": "no",
+    "reports_his_next_fight": "no",
+    "reports_his_health": "no",
+    "he_speaks": "yes"
+   },
+   "check": "summary",
+   "corrected": [
+    "fact",
+    "reports_his_next_fight"
+   ]
+  },
+  "1125": {
+   "answers": {
+    "centrality": "main_subject",
+    "source": "himself",
+    "act": "speaks_of_himself",
+    "fact": "no_fact",
+    "firmness": "none",
+    "reports_his_result": "no",
+    "reports_his_next_fight": "no",
+    "reports_his_health": "no",
+    "he_speaks": "yes"
+   },
+   "check": "readers",
+   "corrected": []
+  },
+  "1129": {
+   "answers": {
+    "centrality": "main_subject",
+    "source": "himself",
+    "act": "speaks_of_himself",
+    "fact": "no_fact",
+    "firmness": "none",
+    "reports_his_result": "no",
+    "reports_his_next_fight": "no",
+    "reports_his_health": "no",
+    "he_speaks": "yes"
+   },
+   "check": "readers",
+   "corrected": []
+  },
+  "1146": {
+   "answers": {
+    "centrality": "one_of_several",
+    "source": "other_fighter_side",
+    "act": "assesses_him",
+    "fact": "no_fact",
+    "firmness": "none",
+    "reports_his_result": "no",
+    "reports_his_next_fight": "no",
+    "reports_his_health": "no",
+    "he_speaks": "no"
+   },
+   "check": "summary",
+   "corrected": [
+    "centrality"
+   ]
+  },
+  "1150": {
+   "answers": {
+    "centrality": "main_subject",
+    "source": "other_fighter_side",
+    "act": "assesses_him",
+    "fact": "no_fact",
+    "firmness": "none",
+    "reports_his_result": "no",
+    "reports_his_next_fight": "no",
+    "reports_his_health": "no",
+    "he_speaks": "no"
+   },
+   "check": "readers",
+   "corrected": []
+  },
+  "1160": {
+   "answers": {
+    "centrality": "one_of_several",
+    "source": "other_fighter_side",
+    "act": "assesses_him",
+    "fact": "no_fact",
+    "firmness": "none",
+    "reports_his_result": "no",
+    "reports_his_next_fight": "no",
+    "reports_his_health": "no",
+    "he_speaks": "no"
+   },
+   "check": "summary",
+   "corrected": [
+    "centrality"
+   ]
+  },
+  "1161": {
+   "answers": {
+    "centrality": "not_in_content",
+    "source": "other_fighter_side",
+    "act": "none_of_these",
+    "fact": "no_fact",
+    "firmness": "none",
+    "reports_his_result": "no",
+    "reports_his_next_fight": "no",
+    "reports_his_health": "no",
+    "he_speaks": "no"
+   },
+   "check": "readers",
+   "corrected": []
+  },
+  "1172": {
+   "answers": {
+    "centrality": "main_subject",
+    "source": "himself",
+    "act": "speaks_of_himself",
+    "fact": "health",
+    "firmness": "official_or_done",
+    "reports_his_result": "no",
+    "reports_his_next_fight": "no",
+    "reports_his_health": "yes",
+    "he_speaks": "yes"
+   },
+   "check": "read",
+   "corrected": [
+    "reports_his_result"
+   ]
+  },
+  "1200": {
+   "answers": {
+    "centrality": "only_mentioned",
+    "source": "other_fighter_side",
+    "act": "none_of_these",
+    "fact": "no_fact",
+    "firmness": "none",
+    "reports_his_result": "no",
+    "reports_his_next_fight": "no",
+    "reports_his_health": "no",
+    "he_speaks": "no"
+   },
+   "check": "readers",
+   "corrected": []
+  },
+  "1260": {
+   "answers": {
+    "centrality": "only_mentioned",
+    "source": "himself",
+    "act": "none_of_these",
+    "fact": "no_fact",
+    "firmness": "none",
+    "reports_his_result": "no",
+    "reports_his_next_fight": "no",
+    "reports_his_health": "no",
+    "he_speaks": "yes"
+   },
+   "check": "readers",
+   "corrected": []
+  }
+ },
+ "questions": [
+  "centrality",
+  "source",
+  "act",
+  "fact",
+  "firmness",
+  "reports_his_result",
+  "reports_his_next_fight",
+  "reports_his_health",
+  "he_speaks"
+ ]
+}

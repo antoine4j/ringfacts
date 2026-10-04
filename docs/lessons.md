@@ -609,3 +609,39 @@ itself has reintroduced the error in §1's second entry. Only Anton answers them
   reading. The single largest correction in that project.
 - *RF J5 → D1 (RF):* "Only the first sighting of a story is sent." Superseded
   by the development override after a fight result was never sent.
+
+## Checking an answer key with blind re-reads (2026-10-03)
+
+**What was done.** After 27 labelling rules had been decided card by card,
+the 300 golden articles were re-read blind by two Fable readers under the
+final guide, then the 26 articles where they differed by a third reader
+that saw one article at a time, then 20 settled cards were read by Anton.
+Records: `experiments/2026-09-27-answer-key/reread-1003` and `full-reread`.
+
+- **A rule tested only on its own examples is not tested.** Each rule had
+  passed on the articles it was written for. The full re-read still found
+  21 unchecked cards whose answers predated a rule, and 10 checked cards
+  where a later rule reached an earlier check. Confidence: high (measured).
+- **Agreement inside one batch overstates the evidence.** Five similar
+  callout articles sat in one batch; each reader answered all five the same
+  way, in opposite directions. That was one reading against one reading,
+  not five against five. Spreading look-alikes across batches and giving
+  each reader a different grouping fixed it (95 of 95 on the rerun).
+  Confidence: medium; one case.
+- **A subagent has a fixed cost that dwarfs the articles.** Measured here:
+  about 78,000 tokens per agent before any article, about 2,000 per
+  article. 18 articles cost 112,000 tokens, 6 cost 90,000. In a cloud
+  session a 15-article agent cost about 2 dollars and a one-article agent
+  about 0.9. So independence (one article per agent) is bought per agent
+  and is worth it only for the uncertain articles. Caveat: one model, one
+  week, one guide length.
+- **Readers split on about 1 article in 12 even under settled rules.** Of
+  300 articles, A and B differed somewhere on 26. A third reading sided
+  with the key on 32 of the 46 disputed answers. What is left is recorded
+  as coin flips (8 answers), not argued further. Any score against the key
+  should count either accepted value as right.
+- **A silent agreement is invisible.** The review page first showed the
+  new readers only where they disagreed with a card, so a corrected answer
+  that both had confirmed looked unverified, and 75 hints from earlier
+  passes still argued with answers the re-read had settled. Showing
+  confirmations and retiring out-of-date hints made the cards readable.
