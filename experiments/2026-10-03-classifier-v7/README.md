@@ -696,3 +696,42 @@ rejected. A tie "only mentioned means no fact" (31 of 33 training key
 articles agree) changed nothing: the answers already obey it.
 
 **v7.6** = v7.5 plus E8 and E10. Sent twice: 94 / 20 and 94 / 19.
+
+## After the night (2026-10-04)
+
+### E12. How central: "how much of the article", not "what is new" (no change)
+
+*Hypothesis.* v7.1 replaced v6's opening, "judge by how much of the
+article is about him", with "judge by what the article says that is new
+about him". That widens the rule "new, not long" (golden/rules.md), which
+decides only the boundary between "only mentioned" and "shares the
+article", to the whole scale, and leans on the fact question's idea of
+news. The v7.6 levels already carry the rule in their signals. Variants,
+levels unchanged: *how_much* (v6's opening, no callout sentence) and
+*how_much_callout* (the same with "An article built on another fighter's
+wish to fight him is that other fighter's story" kept). Failure: the
+callout cases of the rules lost.
+
+*Two runs* (how central right, training / validation; control 138 / 32,
+then 139 / 33):
+
+| variant | run 1 | run 2 |
+|---|---|---|
+| how_much | 140 / 33 (+7 in 4 claims, −5 in 2) | 142 / 33 (+8 in 5, −5 in 2) |
+| how_much_callout | 139 / 33 (+3 in 3 claims, −2 in 2) | 139 / 33 (+3 in 3, −3 in 2) |
+
+*What it shows.* The two halves of the change act separately.
+"How much" against "what is new" (how_much_callout against control) moves
+nothing beyond noise in either run. The callout sentence is what moves:
+without it, five articles in claim-014 and claim-033 come right (#170,
+#174 Makhachev on Topuria's comeback; #256, #269, #287 Tsarukyan naming
+Topuria's next opponent), and four callouts in claim-099 that the rule is
+built on (#843, #871, #921, #892) go wrong, both runs. Read literally, the
+sentence takes any article where another fighter talks about his future
+as "another fighter's wish". #78 (claim-003) is lost in every variant.
+
+*Decision: no change yet.* how_much passes the counts, but its losses are
+the cases a written rule cites, so it is not accepted. The opening wording
+is Anton's call (it is neutral either way); the lever is the callout
+sentence, which a narrower wording might keep for claim-099 without
+catching claim-014 and -033.
