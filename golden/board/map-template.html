@@ -140,10 +140,6 @@ details.more>summary::-webkit-details-marker{display:none}
   <section class="top">
     <div><h1>Claim Map</h1><div class="stamp" id="stamp"></div></div>
     <div class="seg" role="group" aria-label="Classifier version" id="versions"></div>
-    <div class="seg" role="group" aria-label="View" id="views" hidden>
-      <button data-view="dist" aria-pressed="true">Distribution</button>
-      <button data-view="errors" aria-pressed="false">Errors</button>
-    </div>
     <div class="seg" role="group" aria-label="Colour theme" id="theme">
       <button data-t="system" aria-pressed="true">System</button>
       <button data-t="light" aria-pressed="false">Light</button>
@@ -154,7 +150,12 @@ details.more>summary::-webkit-details-marker{display:none}
 
   <section class="gates" id="gates" aria-label="About him?"></section>
 
-  <section class="controls" id="distcontrols">
+  <section class="controls">
+    <div class="seg" role="group" aria-label="View" id="views" hidden>
+      <button data-view="dist" aria-pressed="true">Distribution</button>
+      <button data-view="errors" aria-pressed="false">Errors</button>
+    </div>
+    <div class="controls" id="distcontrols">
     <label>Across <select id="xsel"></select></label>
     <label>Down <select id="ysel"></select></label>
     <div class="seg" role="group" aria-label="Count" id="units">
@@ -163,6 +164,7 @@ details.more>summary::-webkit-details-marker{display:none}
     </div>
     <label><input type="checkbox" id="doubtonly"> only claims with a doubt</label>
     <label><input type="checkbox" id="showempty"> show empty rows and columns</label>
+    </div>
   </section>
 
   <div class="slice" id="slice"></div>
