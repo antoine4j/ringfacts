@@ -120,12 +120,24 @@ input.note{font:inherit;font-size:13px;border:1px solid var(--line);background:v
     <p class="lede">All 300 golden articles, each with nine answers from two Fable readers. Mark only what is wrong: in the dropdown beside a wrong answer, pick the right value; a box for <b>why</b> appears next to it (optional). When an article is done, press <b>Mark article checked</b>. Everything saves as you go.</p>
     <div class="legend">
       <div><span class="why pick">no answer · pick one</span> the three readers gave three different answers, so there is no answer yet. Choose the right value.</div>
-      <div><span class="why">readers differed</span> two of three readers agreed and their answer is shown. Check it is right.</div>
+      <div><span class="why">first readers differed</span> two of the three first readers agreed and their answer is shown. Check it is right.</div>
       <div><span class="why">classifier differs</span> the readers agree, but the classifier said something else (shown beside it). One of them is wrong: check the readers' answer.</div>
       <div>An answer can carry both of the last two. Faded answers are unanimous: readers and classifier agree.</div>
       <div><span class="chip done">checked by summary</span> you confirmed this card from a grouped summary in chat, without opening it. Marking it yourself on the card turns it into a plain <span class="chip done">checked</span>.</div>
       <div><span class="hint"><b>hints</b></span> grey lines under an answer from the overnight re-reads: a third reader's pick where the classifier differs, two fresh reads of "how central" under "new, not long", what a boundary's recommended rule would say, and, since 3 Oct, the answers of two blind readers who re-read all 300 under today's guide (a warning where one of them differs from the answer on the card, and a confirmation where the answer is a correction or the first readers had split). Hints, not labels: they are there to speed up your call.</div>
     </div>
+    <details class="about"><summary>Who the readers are</summary>
+      <p>Every reader is a Fable agent that saw the labelling guide and the article text, never the answers. A card or a note names them like this:</p>
+      <ul>
+        <li><b>First readers</b> (27 Sept to 1 Oct): three readers, all 300 articles, all nine questions, under the guide as it was before almost every rule. Their majority answer is what a card shows before any correction. "First readers differed" means the three did not all agree.</li>
+        <li><b>Overnight reader</b> (2 Oct): one more reader, only on answers where the classifier disagreed with the first readers.</li>
+        <li><b>'New, not long' re-readers</b> (2 Oct): two readers, the question "how central" only, on the 59 articles that rule could move.</li>
+        <li><b>Status-update pilot readers</b> (2 Oct): two readers, three questions (what fact, how firm, next fight), testing the new value "status update". Notes that say "pilot" mean these.</li>
+        <li><b>Rule re-read</b> (3 Oct): two readers, 35 articles, five questions, testing the rules decided that day.</li>
+        <li><b>Full re-read, readers A and B</b> (3 Oct): two readers, all 300 articles, all nine questions, under the guide with all 27 rules. This is the reading that counts now. Each read 15 articles at a sitting.</li>
+        <li><b>Reader C</b> (3 Oct): a third reading of the 26 articles where A and B differed, each read alone by its own agent.</li>
+      </ul>
+    </details>
     <details class="about"><summary>How this page works, and where to start</summary>
       <p><b>Every article is on one side of the split</b> (the chip on each card). <b>Tune</b> (155): the classifier questions are changed while looking at these. <b>Check</b> (40): used to test a change, never looked at while changing. <b>Test</b> (105): scored once, at the end. Correct any of them the same way: they are all the golden set; the side only decides what the classifier may be tuned on.</p>
       <p><b>How an answer was reached:</b> two Fable readers labelled each article separately and blind. "Both readers" means they agreed. Where they differed, an Opus reader (a different Claude model) answered that question too: "2 of 3 readers" means Opus sided with one of the two. <b>"Readers split"</b> means all three gave different answers, so there is no answer until you choose one.</p>
@@ -205,7 +217,7 @@ function questionRow(a, q){
   const cls = k.value === null ? `<span class="cls">classifier v6 picked: <code>${esc(human(k.classifier))}</code></span>` :
     k.classifier !== k.value ? `<span class="cls">classifier v6: <code>${esc(human(k.classifier))}</code></span>` : "";
   const why = k.value === null ? `<span class="why pick">no answer · pick one</span>` :
-    (k.status !== "agreed" ? `<span class="why">readers differed</span>` : "") + (k.classifier !== k.value ? `<span class="why">classifier differs</span>` : "");
+    (k.status !== "agreed" ? `<span class="why">first readers differed</span>` : "") + (k.classifier !== k.value ? `<span class="why">classifier differs</span>` : "");
   const opts = DATA.defs[q].map(([v]) => `<option value="${esc(v)}" ${fix && fix.value === v ? "selected" : ""}>${esc(human(v))}</option>`).join("");
   return `<div class="q${fix ? " fixed" : look ? " look" : " calm"}"><div class="ql">${esc(DATA.labels[q])}<button class="info" type="button" data-help="${a.id}-${q}" aria-label="Show the full question" title="${esc(helpText(q))}">i</button></div><div class="qv">
     <span class="val${k.value === null ? " none" : ""}" title="${esc(DEF[q + ":" + k.value] || "")}">${esc(k.value === null ? "no answer" : human(k.value))}</span>
@@ -224,13 +236,13 @@ function hints(k, fix){
   const out = [], now = fix ? fix.value : k.value;
   if (k.hint){
     const side = k.hint.value === null ? "neither answer fits" : k.hint.value === k.value ? "sides with the readers" : k.hint.value === k.classifier ? "sides with the classifier" : `picks ${human(k.hint.value)}`;
-    out.push(`<div class="hint ${k.hint.value === now ? "agree" : "change"}">third reader, blind: <b>${esc(side)}</b> (${esc(k.hint.confidence || "")}) — ${esc(k.hint.reason || "")}</div>`);
+    out.push(`<div class="hint ${k.hint.value === now ? "agree" : "change"}">overnight reader (2 Oct), blind: <b>${esc(side)}</b> (${esc(k.hint.confidence || "")}) — ${esc(k.hint.reason || "")}</div>`);
   }
   if (k.recheck){
     const reads = Object.entries(k.recheck).map(([letter, r]) => `${letter}: <b>${esc(human(r.centrality))}</b> (${esc(r.confidence || "")})`).join(", ");
     const same = Object.values(k.recheck).every(r => r.centrality === now);
     const notes = Object.entries(k.recheck).map(([letter, r]) => r.note ? `${letter}: ${esc(r.note)}` : "").filter(Boolean).join(" · ");
-    out.push(`<div class="hint ${same ? "agree" : "change"}">re-read under the rule 'new, not long' — ${reads}${same ? "" : " — <b>it may change this</b>"}<br>${notes}</div>`);
+    out.push(`<div class="hint ${same ? "agree" : "change"}">'new, not long' re-readers (2 Oct) — ${reads}${same ? "" : " — <b>it may change this</b>"}<br>${notes}</div>`);
   }
   if (k.flip){
     out.push(`<div class="hint agree"><b>coin flip, accepted</b> — any of: ${k.flip.accepted.map(v => esc(human(v))).join(", ")}. ${esc(k.flip.why)}</div>`);
@@ -240,11 +252,11 @@ function hints(k, fix){
     const reads = Object.entries(k.reread).map(([letter, r]) => `${letter}: <b>${esc(human(r.value))}</b>`).join(", ");
     const one = Object.keys(k.reread).length === 1 ? " (one reader only)" : "";
     const notes = Object.entries(k.reread).filter(([, r]) => r.value !== now && r.note).map(([letter, r]) => `${letter}: ${esc(r.note)}`).join(" · ");
-    out.push(`<div class="hint change">re-read on 3 Oct, two blind readers, today's guide — ${reads}${one}<br>${notes}</div>`);
+    out.push(`<div class="hint change">full re-read (3 Oct), readers ${Object.keys(k.reread).join(", ")} — ${reads}${one}<br>${notes}</div>`);
   }
   // where the answer shown is a correction, or the original readers had split, say so when both new readers confirm it
   else if (k.reread && Object.keys(k.reread).length && (fix || k.status !== "agreed")){
-    out.push(`<div class="hint agree">re-read on 3 Oct, two blind readers, today's guide — both give this answer: <b>${esc(human(now))}</b></div>`);
+    out.push(`<div class="hint agree">full re-read (3 Oct), readers ${Object.keys(k.reread).join(", ")} — all give this answer: <b>${esc(human(now))}</b></div>`);
   }
   if (k.rule !== undefined && k.rule !== null){
     out.push(`<div class="hint ${k.rule === now ? "agree" : "change"}">the brief's recommended rule gives: <b>${esc(human(k.rule))}</b>${k.rule === now ? (fix ? " — applied" : "") : " — would change this"}</div>`);

@@ -137,6 +137,11 @@ def reread():
         for path in sorted(glob.glob(os.path.join(HERE, "full-reread", f"out-{letter}-*.json"))):
             for row in json.load(open(path)):
                 out.setdefault(ids[row["id"]], {})[letter] = row
+    # reader C: the third reading of the 26 articles where A and B differed, one article per agent
+    third = json.load(open(os.path.join(HERE, "full-reread", "third", "id-map.json")))
+    for path in sorted(glob.glob(os.path.join(HERE, "full-reread", "third", "out-*.json"))):
+        for row in json.load(open(path)):
+            out.setdefault(third[row["id"]], {})["C"] = row
     return out
 
 
