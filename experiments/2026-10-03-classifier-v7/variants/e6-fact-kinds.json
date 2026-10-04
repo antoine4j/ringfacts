@@ -1,0 +1,133 @@
+{
+ "question": "fact",
+ "hypothesis": "Decomposition (vendor advice): one yes/no per kind of fact, combined in code, judges one condition at a time and has no option order. Failure: more articles with no fact getting a kind, as in round 2.",
+ "variants": {
+  "k_next_fight": {
+   "type": "noul",
+   "instructions": {
+    "question": "Is the main news of this article that a specific fight of the fighter named in `watched_fighter` exists or has changed?",
+    "background": "Something only recalled on the way is background and does not count: his last result, his old injuries, a fight already booked that a preview or a pick starts from, a rumour recalled in a closing line."
+   },
+   "criteria": {
+    "true": {
+     "what": "News that a specific fight of his exists or has changed: a fight set, announced, offered, in talks, moved or cancelled, or a rumour of one that says who said it or gives a date or event. His own statement that he has a fight counts.",
+     "examples": [
+      "The promotion announces his bout for March.",
+      "He says a bout has been agreed by word of mouth and is waiting for contracts.",
+      "A named reporter says his rematch is being negotiated for the spring."
+     ]
+    },
+    "false": {
+     "what": "His readiness or availability, or possible opponents the promotion is choosing between. His injury or recovery. A wish or an opinion about who he should fight, such as a callout or a pundit's pick. A fight already booked that a preview, a prediction or an interview starts from. A fight already booked and covered in its fight week, such as the card order, start times or how to watch. Also no when the article's main news is of another kind or about another fighter, or it is only opinion, a wish or a guess."
+    }
+   }
+  },
+  "k_result": {
+   "type": "noul",
+   "instructions": {
+    "question": "Is the main news of this article the outcome of a fight of the fighter named in `watched_fighter`?",
+    "background": "Something only recalled on the way is background and does not count: his last result, his old injuries, a fight already booked that a preview or a pick starts from, a rumour recalled in a closing line."
+   },
+   "criteria": {
+    "true": {
+     "what": "The outcome of a fight of his, as the article's news: a fight report or recap of his bout, or his bout on a results page.",
+     "examples": [
+      "He won by decision on Saturday.",
+      "The card's results list his submission win."
+     ]
+    },
+    "false": {
+     "what": "A statement, interview or callout after his fight, even when it restates the outcome. His past fight recalled as background to other news. Another fighter's result. Also no when the article's main news is of another kind or about another fighter, or it is only opinion, a wish or a guess."
+    }
+   }
+  },
+  "k_fight_week_event": {
+   "type": "noul",
+   "instructions": {
+    "question": "Is the main news of this article the fight-week routine of a fight of the fighter named in `watched_fighter`?",
+    "background": "Something only recalled on the way is background and does not count: his last result, his old injuries, a fight already booked that a preview or a pick starts from, a rumour recalled in a closing line."
+   },
+   "criteria": {
+    "true": {
+     "what": "The routine of a fight of his, and nothing more: a weigh-in, a face-off, an open workout, the card order, start times, how to watch.",
+     "examples": [
+      "Start time and how to watch his fight tonight.",
+      "He made weight at the ceremonial weigh-in."
+     ]
+    },
+    "false": {
+     "what": "Talks, offers or a new opponent for a fight not yet set. Training camp or sparring before fight week. An interview or press conference. Also no when the article's main news is of another kind or about another fighter, or it is only opinion, a wish or a guess."
+    }
+   }
+  },
+  "k_health": {
+   "type": "noul",
+   "instructions": {
+    "question": "Is the main news of this article an injury, medical issue, surgery or recovery of the fighter named in `watched_fighter`?",
+    "background": "Something only recalled on the way is background and does not count: his last result, his old injuries, a fight already booked that a preview or a pick starts from, a rumour recalled in a closing line."
+   },
+   "criteria": {
+    "true": {
+     "what": "An injury, a medical issue, surgery or recovery of his, stated by him, his team, the promotion or a named report, including how the recovery is going, even when the same statement also says when he will be back.",
+     "examples": [
+      "He had knee surgery and is in rehab.",
+      "His manager says his shoulder is still healing and he has not started sparring."
+     ]
+    },
+    "false": {
+     "what": "News only of when he will be ready to fight again, with no injury or recovery described. An old injury only recalled as background. Also no when the article's main news is of another kind or about another fighter, or it is only opinion, a wish or a guess."
+    }
+   }
+  },
+  "k_career_move": {
+   "type": "noul",
+   "instructions": {
+    "question": "Is the main news of this article a career move of the fighter named in `watched_fighter`?",
+    "background": "Something only recalled on the way is background and does not count: his last result, his old injuries, a fight already booked that a preview or a pick starts from, a rumour recalled in a closing line."
+   },
+   "criteria": {
+    "true": {
+     "what": "Retirement, a contract, a move of weight class or team, a title vacated, stripped or awarded."
+    },
+    "false": {
+     "what": "No when the article's main news is of another kind or about another fighter, or it is only opinion, a wish or a guess."
+    }
+   }
+  },
+  "k_personal_life": {
+   "type": "noul",
+   "instructions": {
+    "question": "Is the main news of this article the life outside the cage of the fighter named in `watched_fighter`?",
+    "background": "Something only recalled on the way is background and does not count: his last result, his old injuries, a fight already booked that a preview or a pick starts from, a rumour recalled in a closing line."
+   },
+   "criteria": {
+    "true": {
+     "what": "His life outside the cage: family, childhood, home, hobbies, money. A post or letter of his about his family is personal life."
+    },
+    "false": {
+     "what": "No when the article's main news is of another kind or about another fighter, or it is only opinion, a wish or a guess."
+    }
+   }
+  },
+  "k_status_update": {
+   "type": "noul",
+   "instructions": {
+    "question": "Is the main news of this article where the fighter named in `watched_fighter` stands as a fighter, with no specific fight?",
+    "background": "Something only recalled on the way is background and does not count: his last result, his old injuries, a fight already booked that a preview or a pick starts from, a rumour recalled in a closing line."
+   },
+   "criteria": {
+    "true": {
+     "what": "News of where he stands as a fighter, with no specific fight: stated as fact by him, his team, the promotion or a named report. He is ready to fight; he will be ready by a date; he has no fight booked; the promotion names possible opponents it is choosing between; he starts training camp; his return to public life after time away.",
+     "examples": [
+      "His manager says he is healthy and waiting for an offer.",
+      "He says he will be ready to return in the autumn.",
+      "He starts training camp."
+     ]
+    },
+    "false": {
+     "what": "A specific fight set, offered, in talks, rumoured or cancelled. How his injury or recovery is going. The weigh-in, face-off, open workout or card order of a fight. His family, home or money. A guess or an opinion about when or whom he should fight. Also no when the article's main news is of another kind or about another fighter, or it is only opinion, a wish or a guess."
+    }
+   }
+  }
+ }
+}

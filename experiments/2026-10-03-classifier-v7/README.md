@@ -330,3 +330,54 @@ with `plans` the model answers "gives news of him", but the fact answer is
 still "no fact", and the tie "gives news never goes with no fact" then
 replaces it. The fact rumour fix (E1) and this act fix are both needed,
 and both were designed on that one claim.
+
+### E6. The fact question decomposed into one yes/no per kind (rejected)
+
+*Hypothesis.* The vendor's main advice: ask one condition per yes/no
+question and combine in code. Seven yes/no questions, one per kind of fact
+(next fight, result, fight week event, health, career move, personal life,
+status update), each built from that option's own text in the standing
+choice, so the test is about the shape, not new wording. A yes/no has no
+option order. Combined in `decompose.py` under five rules: the most likely
+kind or no fact below 0.5 (`kinds`); a separate "is there a new fact"
+question first (`kinds_gated`); the three news flags standing in for their
+kinds (`flags_and_kinds`); the standing choice, but a confident kind
+overrides its "no fact" (`control_rescued`); the standing choice, but "no
+fact" when no kind is a clear yes (`control_vetoed`). The line is 0.5
+throughout, not fitted. Failure: "no fact" articles getting a kind on the
+validation set, as in round 2.
+
+*Smoke test* (18 articles): the kind questions answered the rumoured
+fights, the friend's health update and the letter correctly where the
+choice had not, and left previews without a kind.
+
+*Two runs* (fact right, training / validation; control 129-130 / 32-33):
+
+| rule | run 1 | run 2 |
+|---|---|---|
+| kinds | 141 / 32 (+18 in 10 claims, −6; validation +4 −4) | 142 / 33 (+17 −5; validation +3 −3) |
+| flags and kinds | 140 / 31 | 141 / 32 |
+| kinds gated | 127 / 33 | 127 / 33 |
+| control rescued | 135 / 30 | 137 / 31 |
+| control vetoed | 132 / 34 (+8 in 6 claims, −5; validation +2 −0) | 132 / 35 (+7 in 6, −5; validation +2 −0) |
+
+A second version of the result and fight-week questions, whose opening
+line matched their own criteria (a results page that lists him counts),
+fixed results pages but drew previews into "fight week", and was no
+better overall.
+
+*Decision: rejected.* The pure decomposition gains 12 articles on the
+training set in both runs and nothing on the validation set, where it
+calls "no fact" articles health (3) or next fight (2): the round 2 pattern
+again, in a new shape. The veto is the safe direction (it can only say "no
+fact") and gains on both sets, but in both runs it loses the same five
+real facts: two weigh-in pages, a results page, a post-fight interview the
+key calls a result, and one health article. The rule says no true case may
+be lost.
+
+*Learned.* Asked one at a time, the kinds are read more literally and more
+generously: they catch news given as talk, which the single choice files
+under "no fact", and they over-call kinds on articles that only mention a
+subject. The disagreement between the choice and the kind questions marks
+the hard articles well, which is useful for review even where it does not
+make a better label.
