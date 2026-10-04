@@ -206,10 +206,9 @@ const PATH = [
 ];
 
 const NOW = {
-  title:"You are here: 244 of 300 articles settled, 19 more confirmed. Four steps to a frozen answer key.",
+  title:"You are here: 274 of 300 articles settled (244 by the readers, 30 by your rulings since). Three steps to a frozen answer key.",
   items:[
-    ["4.21","WAITING FOR YOU: rule on the 10 checked cards where both new readers disagree with you, plus the two held cards (#745, #1101): keep, change, or coin flip."],
-    ["4.22","A third, independent reading on the 26 articles where the two readers differ (about 40 dollars of credit, on your go)."],
+    ["4.22","WAITING FOR YOUR GO: a third, independent reading on the 26 articles where the two readers differ, one fresh agent per article (about 40 dollars of credit, in a cloud session)."],
     ["4.23","Spot-check about 20 random cards from the settled 244."],
     ["4.24","Freeze: one final labels file with a date. Then the classifier comes back (4.25)."],
   ]
@@ -309,12 +308,12 @@ const STATIONS = [
       "Mostly your own rules reaching cards they had not been applied to.",
       "Removes stale answers before anything is scored on them.",
       "Wrong labels here would be counted as classifier errors later.", "P1"),
-    T("4.21","decide","Rule on the 10 checked cards where both new readers disagree with you",
-      "#1089 (status update, six readers of six, you ruled no fact twice); #283 and #423 (Pimblett callouts checked before the callout rule: 'one of several' against the readers' 'only mentioned'); #913 (both readers now say main subject, your first ruling); #605 with #745 (a short booking notice: no fact, or next fight?); #1101; and single cards #342, #503, #588, #625, #820. For each: keep your ruling, change it, or mark it a coin flip. Your ruling stands unless you change it.",
+    T("4.21","done","Rule on the 10 checked cards where both new readers disagree with you",
+      "Done 3 Oct, with the two held cards (#745, #1101). Changed: #283 and #423 to only mentioned, #503 to none of these, #342 to no fact, #605 and #745 to next fight (the article's whole content is the booking), #820 to one of several, #1089 to status update (all eight readings since the value exists). Accepted as coin flips, listed in golden/coin-flips.json: #913, #588 and #625 on how central, #1101 on what fact.",
       "Shows where the guide and your rulings have drifted apart.",
       "A ruling the guide does not carry cannot be learned by any classifier prompt.",
       "Keeps the key consistent: one rule, one answer."),
-    T("4.22","label","Take a third reading on the 26 articles where the two readers differ",
+    T("4.22","decide","Take a third reading on the 26 articles where the two readers differ",
       "One fresh agent per article, so the reading is fully independent (about 40 dollars of the credit; needs your go). Two of three decide, unless you object. Where all three differ, the article is a coin flip. Known names in the list: #879 and #1066 (borderline rumours), #647 (a one-line stub), #740 and #746 (UFC.com video pages).",
       "A split between careful readers is either an unclear rule or a truly borderline article; a third reading tells which.",
       "Coin flips are recorded with both acceptable answers, so a classifier is not punished for either.",

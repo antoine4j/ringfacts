@@ -1348,3 +1348,38 @@ check?"* The card record now carries `how: "summary"` beside
 opening it. The page shows "checked by summary" and counts them
 separately; marking the card himself turns it into a plain check. Checked
 after this: 96 cards, 19 of them by summary.
+
+## After the full re-read: the cards where both readers disagreed with a ruling (2026-10-03)
+
+Ten checked cards and the two held ones, put to Anton in four groups.
+*"H, I, J"* agreed as proposed; on K he ruled card by card.
+
+- **H, a later rule reaches an earlier check.** #283 and #423 (Pimblett
+  callouts): one of several becomes only mentioned. #503: steers him
+  becomes none of these, so all six write-ups of the Gaethje interview
+  agree. #342 (a roundup of athletes in the army): none of these, no fact,
+  he speaks no; this reverses his "personal life" of 2 October.
+- **I, the article's whole content is the booking.** #605 and #745, two
+  short notices that he fights Soriano on 5 September: next fight,
+  official. This reverses his "no fact" on #605. The booking is background
+  when it is the premise of a preview or a pick; when nothing else is in
+  the article it is the main claim. That it is old news is for the
+  grouping station to catch.
+- **J.** #820: only mentioned becomes one of several; an article that
+  carries a new rumour about him says something new about him.
+- **K.** #1089 becomes status update. Anton: *"I'm open to status update
+  if readers never say no fact. Seems like Topuria is ready to fight in
+  the article makes it read as status."* Checked: eight readings since the
+  value exists, all eight status update. Act returns to gives news of him.
+  #1101: *"Same on 1101, if readers never take no fact, we can set status
+  update."* Checked: three of four readings say status update, one says no
+  fact, none says the key's personal life. Set to status update and
+  recorded as a coin flip with no fact, since his condition was missed by
+  one reading. #913: *"agree with a flip"* (one of several; main subject
+  accepted). #588: *"agree flip"* (only mentioned; one of several
+  accepted). #625: *"it's written a bit more about Donchenko, so agree on
+  a flip, but if latest readings are main, can be main, but genuinely can
+  be a flip"*: main subject, one of several accepted.
+
+The accepted coin flips are listed in golden/coin-flips.json: on those
+answers either value counts as right when anything is scored.

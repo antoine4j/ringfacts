@@ -1,0 +1,13 @@
+{
+ "about": "Answers where careful readers still split after the labelling rules were applied, and Anton accepted that the text supports two values. The key carries one of them; when anything is scored against the key, either accepted value counts as right on that question. An entry is a result, not an open question: it is not argued again unless a rule changes. Anton's words per entry are in golden/verdicts.md.",
+ "flips": [
+  {"id": "913", "question": "centrality", "key": "one_of_several", "accepted": ["one_of_several", "main_subject"],
+   "why": "Built on Pimblett's quote, half of it weighing Topuria's options. Four readings of 3 Oct said one of several, two said main subject."},
+  {"id": "588", "question": "centrality", "key": "only_mentioned", "accepted": ["only_mentioned", "one_of_several"],
+   "why": "A Soriano feature naming Donchenko as his booked opponent, with his record. 'New, not long' gives only mentioned; 'tied to a booked fight' gives one of several."},
+  {"id": "625", "question": "centrality", "key": "main_subject", "accepted": ["main_subject", "one_of_several"],
+   "why": "A weigh-in report on both men, written a bit more around Donchenko."},
+  {"id": "1101", "question": "fact", "key": "status_update", "accepted": ["status_update", "no_fact"],
+   "why": "His reflection on happiness carries no fact; Dana White's 'ready to fight' further down does. Three readings of four said status update, one no fact."}
+ ]
+}
