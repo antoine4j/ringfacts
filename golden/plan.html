@@ -201,7 +201,7 @@ const PATH = [
   {t:"Answer key on nine questions", s:"three readers on all 300; classifier v4 → v6; split drawn 1 Oct (155 / 40 / 105)", st:"done"},
   {t:"Check the answer key", s:"75 cards by rule, 27 rules named, whole set re-read blind, a third reading on 26, a spot check of 20: all done 3 Oct", st:"done"},
   {t:"Labels frozen", s:"golden/labels.json, 3 Oct: 300 articles, nine answers each, guarded by a test", st:"done"},
-  {t:"Classifier v7, then score each station", s:"v7 tuned 3–4 Oct (4.25): all nine right on 61% of training, 48–50% of validation; next, your calls (4.26, 4.27), then the test score once (4.7)", st:"now"},
+  {t:"Classifier v7, then score each station", s:"v7 tuned 3–4 Oct (4.25), now v7.7: all nine right on 62% of training, 50% of validation; next, your calls (4.26, 4.27), then the test score once (4.7)", st:"now"},
   {t:"Settings, then a tier check", s:"cell → tier per fighter; tier a sample", st:""},
 ];
 
@@ -262,7 +262,7 @@ const STATIONS = [
       "Better text lifts every station after it."),
    ]},
   {n:4, name:"Classifier", role:"Answers nine questions per article: how central he is, whose words, what the source does, what new fact, how firm, and four yes/no (result, next fight, health, he speaks).",
-   verdict:"v7 is tuned (3–4 Oct): all nine answers right on 61% of training articles (94 of 155) and 48–50% of validation articles (19–20 of 40), against 41% and 40% for v6. Every single answer right: 92% and 91%. The validation set is small: its 95% interval runs from about 33% to 63%. Three calls of yours come before the test set is scored once.",
+   verdict:"v7 is tuned (3–4 Oct; v7.7 since 4 Oct, a narrower callout sentence in \"how central\"): all nine answers right on 62% of training articles (96 of 155) and 50% of validation articles (20 of 40), against 41% and 40% for v6. Every single answer right: 92% and 90%. The validation set is small: its 95% interval runs from about 35% to 65%. Three calls of yours come before the test set is scored once.",
    items:[
     T("4.1","done","Store the classifier's answers for all 300 articles",
       "Six questions, three readers each, frozen in golden/answers and shown on the board.",

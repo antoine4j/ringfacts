@@ -397,6 +397,14 @@ Rules for adding to it:
   "another fighter" to the list: +8 and +7 training, +2 and +3 validation,
   in two runs (E2). The vendor's "literal reading" weakness, in its
   plainest form.
+- **The same in the other direction (FB 2026-10-04):** a rule sentence is
+  read as widely as its words allow. "An article built on another
+  fighter's wish to fight him is that other fighter's story" also caught
+  articles where another fighter talks about his future (claims 014, 033,
+  097, 112). Narrowed to "a callout alone, where another fighter names him
+  as the opponent he wants": +4 and +5 training, validation within 1, the
+  callouts kept (E12, E13). Without the sentence, the "what is new"
+  opening was what held the callouts.
 - **Does not say:** that every list needs to be complete; it says a list
   inside a definition is read as a boundary.
 

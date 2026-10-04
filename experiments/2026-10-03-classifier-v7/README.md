@@ -1,8 +1,10 @@
 # Classifier v7 — the 27 labelling rules brought into the questions
 
-**Status:** standing version is v7.6, after an unattended night of ten
-experiments (2026-10-03 to 04, `jev-1.13.0`). The test set has not been
-sent, scored or read. Nothing is pushed.
+**Status:** standing version is v7.7: v7.6, the result of an unattended
+night of ten experiments (2026-10-03 to 04, `jev-1.13.0`), plus a narrower
+callout sentence in "how central" (E13, 2026-10-04). v7.7 gets all nine
+answers right on 96 of 155 training and 20 of 40 validation articles. The
+test set has not been sent, scored or read. Nothing is pushed.
 
 ## Morning report
 
@@ -191,7 +193,7 @@ on are successive versions of v7, each sent in full to every training and
 validation article and scored. Each adds one step to the version before.
 The code and files call a full run a "round", so v7.N is stored as round
 N: `classifier-v7/questions-rN.json`, `raw/<id>-rN.json`, and
-`ROUND=rN python3 run.py ...`. The experiments E1 to E11 are not versions:
+`ROUND=rN python3 run.py ...`. The experiments E1 to E13 are not versions:
 each sent only the question under test, in several wordings beside the
 standing one, and a new version was run when one was accepted.
 
@@ -202,7 +204,8 @@ standing one, and a new version was run when one was accepted.
 | v7.3 | v7.1 plus the health question's "no when" text rewritten |
 | v7.4 | v7.3 plus E2 (another fighter talking about him counts for the main subject) |
 | v7.5 | v7.4 plus E4 (invented examples) |
-| v7.6 | v7.5 plus E8 (shorter "what the source does" and "how firm") and E10 (previews); standing |
+| v7.6 | v7.5 plus E8 (shorter "what the source does" and "how firm") and E10 (previews) |
+| v7.7 | v7.6 plus E13 (a narrower callout sentence in "how central"); standing |
 
 Right answers, tune / check. "All nine" is articles with every answer right.
 
@@ -736,7 +739,7 @@ is Anton's call (it is neutral either way); the lever is the callout
 sentence, which a narrower wording might keep for claim-099 without
 catching claim-014 and -033.
 
-### E13. How central: a narrower callout sentence (passes; awaiting Anton)
+### E13. How central: a narrower callout sentence (accepted)
 
 *Hypothesis.* E12 showed the sentence "An article built on another
 fighter's wish to fight him is that other fighter's story" is read as
@@ -767,5 +770,12 @@ it alone.
 *Decision: narrow passes the acceptance rule* (training +4 and +5 in at
 least 3 claims, validation within 1, two agreeing runs; leave-claims-out:
 designed on claims 014, 033 and 099, it gains #803 and #977 outside them
-in both runs). how_much_narrow is rejected. Adoption as v7.7 waits for
-Anton.
+in both runs). how_much_narrow is rejected. Adopted as v7.7.
+
+**v7.7** = v7.6 plus E13. All nine right 96 / 155 and 20 / 40 (v7.6:
+94 / 20, then 94 / 19). Against the v7.6 run, how central gained #170
+(claim-014) and #803 (claim-097) and lost #892 (claim-099) and #1161
+(claim-126, an absent-from-text article that changes between runs);
+validation unchanged. A full run on another day carries the run-to-run
+noise, so the side-by-side runs of E13 are the fairer measure of the
+change; the full run agrees with them and adds no surprise.
