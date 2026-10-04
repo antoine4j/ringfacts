@@ -1,0 +1,10 @@
+[
+ {"id": "q28001",
+  "main_claim": "Daniil Donchenko meets Punahele Soriano on the main card of UFC Fight Night 287 in Paris on 5 September, walking out at about 23:00 Kyiv time, with the card shown on UFC Fight Pass and Setanta Sports+.",
+  "centrality": "one_of_several", "source": "no_one", "act": "reports_an_event",
+  "fact": "fight_week_event", "firmness": "official_or_done",
+  "reports_his_result": "no", "reports_his_next_fight": "no",
+  "reports_his_health": "no", "he_speaks": "no",
+  "unsure": ["centrality", "fact", "reports_his_next_fight"],
+  "note": "A 'watch online LIVE' preview: the body gives both fighters' records, the main event, card start times (prelims 19:00, main card 22:00, 'Донченко та Соріано вийдуть в октагон орієнтовно о 23:00') and broadcasters; nobody speaks. Centrality could be main_subject since the lead calls it the Ukrainian's fourth UFC fight, but it is a preview covering both men; fact could be read as next_fight, but the booking is the premise and the new content is card order and start times, so fight_week_event and next fight 'no'; the line 'завоював четверту звитягу поспіль' is a related-headline link, not the article, so result is 'no'."}
+]

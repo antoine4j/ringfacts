@@ -1,0 +1,22 @@
+[
+ {
+  "id": "q43222",
+  "main_claim": "After his Paris win over Soriano, the Sport.ua writer weighs five possible next opponents for Donchenko (Rodriguez, whom he called out, Holland, Magny, Medic, Miller) and judges Rodriguez the most likely.",
+  "centrality": "main_subject",
+  "source": "media",
+  "act": "steers_him",
+  "fact": "no_fact",
+  "firmness": "none",
+  "reports_his_result": "no",
+  "reports_his_next_fight": "no",
+  "reports_his_health": "no",
+  "he_speaks": "no",
+  "unsure": [
+   "act",
+   "fact",
+   "firmness",
+   "he_speaks"
+  ],
+  "note": "The whole piece is the outlet's own writer listing candidate opponents and advising (\"на місці менеджерів Донченка я від нього не відмовлявся б\", \"чудовий варіант для Даніїла\"), so act steers_him; much of it is also a forecast of what the matchmakers will do (\"найімовірнішим здається варіант з Родрігесом\"), which the guide calls no act, hence act unsure. The Soriano win and his post-fight callout of Rodriguez are the lead's background, the five opponents are the writer's options rather than talks, so fact no_fact / firmness none; a reader could call it status_update (he is \"готовий повернутися в клітку в будь-які розумні терміни\", opponents named as options) at firmness reported. His only words are the recalled two-word phrase «легкими грошима» from the post-fight occasion, so he_speaks no but unsure."
+ }
+]

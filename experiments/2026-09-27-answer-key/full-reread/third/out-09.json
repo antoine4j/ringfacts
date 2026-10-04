@@ -1,0 +1,10 @@
+[
+ {"id": "q99109",
+  "main_claim": "Justin Gaethje says he hopes Arman Tsarukyan gets hit hard by Mauricio Ruffy at UFC 331 rather than win by taking him down.",
+  "centrality": "not_in_content", "source": "other_fighter_side", "act": "none_of_these", "fact": "no_fact",
+  "firmness": "none", "reports_his_result": "no",
+  "reports_his_next_fight": "no", "reports_his_health": "no",
+  "he_speaks": "no",
+  "unsure": ["centrality", "source"],
+  "note": "Topuria's name appears only in an inlined 'LATEST NEWS: UFC legend claims promotion risk ruining Ilia Topuria's life by making Justin Gaethje rematch' link; the article's own text is Gaethje on The MightyCast about Tsarukyan vs Ruffy and Makhachev, so nobody does anything regarding Topuria (act none_of_these) and there is no fact. Centrality could be read as only_mentioned if that link line is taken as body text; source is Gaethje, a fighter the article itself never ties to a booked or fought bout with Topuria (the rematch hint sits only in the furniture link), so other_fighter_side, though the guide's Gaethje-for-Topuria example could make it opponent_side."}
+]

@@ -1,0 +1,10 @@
+[
+ {"id": "q51013",
+  "main_claim": "Daniil Donchenko gave an octagon interview to Michael Bisping after beating Punahele Soriano by unanimous decision at UFC Paris on September 5, 2026.",
+  "centrality": "main_subject", "source": "no_one", "act": "reports_an_event", "fact": "result",
+  "firmness": "official_or_done", "reports_his_result": "yes",
+  "reports_his_next_fight": "no", "reports_his_health": "no",
+  "he_speaks": "no",
+  "unsure": ["source", "act", "fact", "firmness", "reports_his_result"],
+  "note": "The saved text is only the UFC.com video caption, 'Welterweight Daniil Donchenko Talks With Michael Bisping After His Unanimous Decision Win Over Punahele Soriano', repeated twice around Fight Pass promo and an 'Up next' list; none of his words appear, so he_speaks is no. The win is the one hard fact stated inside that caption, so I took fact result (official_or_done, UFC's own page, source no_one since nobody is quoted), but the page is a post-fight interview, not an account of the fight, so an editor could reasonably take no_fact / firmness none / result no, and source himself with act speaks_of_himself for an interview page."}
+]

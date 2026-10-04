@@ -1,0 +1,15 @@
+[
+ {"id": "q13007",
+  "main_claim": "Daniil Donchenko beat Punahele Soriano by unanimous decision (30-27, 30-27, 29-28) on the UFC Paris main card.",
+  "centrality": "one_of_several",
+  "source": "no_one",
+  "act": "reports_an_event",
+  "fact": "result",
+  "firmness": "official_or_done",
+  "reports_his_result": "yes",
+  "reports_his_next_fight": "no",
+  "reports_his_health": "no",
+  "he_speaks": "no",
+  "unsure": ["centrality"],
+  "note": "A card-wide live blog: the quick-results list has 'Daniil Donchenko def. Punahele Soriano by unanimous decision' and the play-by-play gives his bout three rounds of its own ('Donchenko lands a combo of short punches that drops Soriano!'), so his part is a new account of his fight, not a recap, hence one_of_several; but he is one of fourteen bouts treated alike and the guide lists 'results page' under only_mentioned, so a careful editor could pick that. Nobody speaks, nothing about his health or a next fight."}
+]

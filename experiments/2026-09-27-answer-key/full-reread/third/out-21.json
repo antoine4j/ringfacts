@@ -1,0 +1,10 @@
+[
+ {"id": "q93121",
+  "main_claim": "Donchenko fights Punahele Soriano on the main card of UFC Fight Night 287 in Paris on 5 September, with the card order and start times laid out the day before.",
+  "centrality": "one_of_several", "source": "no_one", "act": "reports_an_event", "fact": "fight_week_event",
+  "firmness": "official_or_done", "reports_his_result": "no",
+  "reports_his_next_fight": "no", "reports_his_health": "no",
+  "he_speaks": "no",
+  "unsure": ["centrality", "source", "act", "fact", "reports_his_next_fight"],
+  "note": "An event preview published 2026-09-04 for the 5 September card: the headline and a dedicated section cover Donchenko vs Soriano (record 14-2, main-card spot 'as he asked for months ago', his tactical task, walkout about 22:00 Kyiv), but the Hooker-Parnasse main event gets equal space plus the full card, so one_of_several rather than main_subject. Nobody speaks except embedded UFC tweets, so no_one/reports_an_event (promotion or media/assesses_him are defensible given the writer's analysis of his chances); the booking is restated as the premise of the preview, so the new content is card order and start times (fight_week_event, official), and reports_his_next_fight is no, though an editor could read the headline 'Donchenko will fight Soriano on the main card' as next_fight news."}
+]

@@ -1,0 +1,10 @@
+[
+ {"id": "q52904",
+  "main_claim": "Welterweight prospect Myktybek Orolbai, whom some fans had tipped as a threat to champion Islam Makhachev, was choked unconscious by 39-year-old Jeremiah Wells in round three at UFC 330.",
+  "centrality": "only_mentioned", "source": "no_one", "act": "none_of_these", "fact": "no_fact",
+  "firmness": "none", "reports_his_result": "no",
+  "reports_his_next_fight": "no", "reports_his_health": "no",
+  "he_speaks": "no",
+  "unsure": ["centrality", "source"],
+  "note": "Topuria appears once, inside a quoted fan tweet ('he can give Islam the toughest fight besides (Ilia) Topuria') used as a comparison; the article is Orolbai's loss to Wells. Centrality is unsure because the only mention is an embedded tweet, which an editor might treat as not the article's own text (not_in_content); source is answered for the main content, a fight result reported with nobody from the fight speaking (no_one), though the fan quotes could make it fans; act is none_of_these because nobody does anything regarding him."}
+]

@@ -1,0 +1,10 @@
+[
+ {"id": "q69918",
+  "main_claim": "His friend Merab Dvalishvili says Topuria is fine, physically and mentally strong, resting after his June fractures and will beat everyone when he returns.",
+  "centrality": "main_subject", "source": "other_fighter_side", "act": "gives_news_of_him",
+  "fact": "health", "firmness": "reported",
+  "reports_his_result": "no", "reports_his_next_fight": "no", "reports_his_health": "yes",
+  "he_speaks": "no",
+  "unsure": ["fact", "act", "reports_his_health"],
+  "note": "The new content is Dvalishvili, named as 'su amigo', telling Helen Yee 'Topuria está bien y tiene una actitud muy positiva... es muy fuerte, tanto física como mentalmente' while he rests for the fractures to heal: a named person saying how he is, so health at firmness reported; an editor could read it as status_update (resting, enjoying life, back on social media) or as mere opinion (no_fact, 'les ganará a todos'), which would make the act assesses_him and health no. The June loss, the doctors' two-to-three months of rest and the writer's own line that the fractures are closed are background or unsourced; the 2027 return window and the list of Tsarukyan, Pimblett, Nurmagomedov and Makhachev are timing and options only, so next fight is no; the 'próximo combate ya toma forma' line is an inserted headline, not article content; Topuria is not quoted."}
+]

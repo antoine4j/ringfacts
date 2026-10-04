@@ -1,0 +1,10 @@
+[
+ {"id": "q51802",
+  "main_claim": "Former UFC fighter Matt Brown says an immediate Gaethje rematch could ruin Topuria and that he should first take a confidence-building fight against someone like Renato Moicano.",
+  "centrality": "main_subject", "source": "other_fighter_side", "act": "steers_him", "fact": "no_fact",
+  "firmness": "none", "reports_his_result": "no",
+  "reports_his_next_fight": "no", "reports_his_health": "no",
+  "he_speaks": "no",
+  "unsure": ["centrality", "act", "fact", "firmness", "reports_his_next_fight"],
+  "note": "Brown (a former UFC welterweight, so a fighter not booked against him) sincerely advises 'a confidence-building fight against someone like Renato Moicano before facing Gaethje' and warns 'you might ruin Ilia Topuria's life' - steers_him, though assesses_him is arguable since much of it is about his condition; the whole piece is about Topuria's wellbeing and path (main_subject), but the Gaethje-Topuria rematch framing and Gaethje's own stance could make it one_of_several. The premise 'Jon Anik recently said the promotion is exploring a second fight between the pair for 2027, per MMA Fighting' is an older report restated as the setup for Brown's opinion, so I read fact as no_fact, firmness none and next fight no, but an editor could take that line as a next_fight rumour (firmness rumour, next fight yes); the June loss and the 'reportedly suffered two broken orbitals' recap are background, and his mirror comments are described, not quoted."}
+]

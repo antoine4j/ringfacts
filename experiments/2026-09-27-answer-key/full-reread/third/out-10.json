@@ -1,0 +1,17 @@
+[
+  {
+    "id": "q55110",
+    "main_claim": "OKTAGON co-founder Pavol Neruda says the promotion, marking its tenth anniversary with a 60,000-seat stadium event in Frankfurt, wants to return to Spanish television and bring events to Spain within about five years.",
+    "centrality": "only_mentioned",
+    "source": "none_of_these",
+    "act": "none_of_these",
+    "fact": "no_fact",
+    "firmness": "none",
+    "reports_his_result": "no",
+    "reports_his_next_fight": "no",
+    "reports_his_health": "no",
+    "he_speaks": "no",
+    "unsure": ["source"],
+    "note": "Topuria appears once, in the intro's list of interview topics ('del auge de WOW FC con Ilia Topuria y Cristiano Ronaldo'), and nothing in the saved text comes back to him, so only_mentioned, no act, no fact. The speaker is the co-founder of OKTAGON, a rival promotion, which the guide's promotion value (UFC and its officials) does not cover, so source is none_of_these (an executive of another promotion would fit); promotion is the reasonable alternative."
+  }
+]

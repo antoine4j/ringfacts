@@ -1,0 +1,10 @@
+[
+ {"id": "q71112",
+  "main_claim": "Merab Dvalishvili, Topuria's close friend and fellow fighter, says on Ariel Helwani's podcast that Topuria is enjoying life, is doing well and will take the belt back when he returns.",
+  "centrality": "main_subject", "source": "other_fighter_side", "act": "assesses_him", "fact": "no_fact",
+  "firmness": "none", "reports_his_result": "no",
+  "reports_his_next_fight": "no", "reports_his_health": "no",
+  "he_speaks": "no",
+  "unsure": ["act", "fact", "firmness", "reports_his_health"],
+  "note": "The article is built on Dvalishvili ('uno de sus mejores amigos', 'excampeón del peso gallo', so a friend-fighter, not team) saying 'se lo está pasando en grande', 'le va muy bien, y se encuentra bien (físicamente)' and 'cuando vuelva, nadie podrá pararle', which reads as a friend's appraisal of his mood, condition and level rather than a statement of fact by him, his team, the promotion or a named report; the June loss, the orbital and nose fractures, the six-month suspension and the 'puras especulaciones' about a year-end return are the writer's recap. A careful editor could instead take 'se encuentra bien (físicamente)' as a named person stating his condition, giving act gives_news_of_him, fact health, firmness reported and health yes; Topuria himself is not quoted ('reconocer el revés' is only described)."}
+]

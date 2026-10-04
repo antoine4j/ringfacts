@@ -1,0 +1,17 @@
+[
+ {
+  "id": "q47119",
+  "main_claim": "Spanish judo champion Joaquín Gomis, who has trained with Topuria at Climent, says Topuria's grappling level is superior to anyone he knows and that the Gaethje loss was a one-in-a-hundred event.",
+  "centrality": "main_subject",
+  "source": "other_fighter_side",
+  "act": "assesses_him",
+  "fact": "no_fact",
+  "firmness": "none",
+  "reports_his_result": "no",
+  "reports_his_next_fight": "no",
+  "reports_his_health": "no",
+  "he_speaks": "no",
+  "unsure": ["source", "fact", "he_speaks"],
+  "note": "The article is built on Gomis's podcast assessment ('tiene un nivel superior al resto', 'a ese nivel no conozco a nadie', 'es un 1%'); Gomis is a judoka who 'he entrenado con Ilia en el Climent', so a combat-sport training partner rather than a coach, hence other_fighter_side (teammates included) over his_team. The loss to Gaethje, the orbital fractures, the 180-day CSAC suspension and Topuria's own post ('Sin excusas... Tendremos nuestra revancha') are all recapped in the opening paragraph as months-old background ('Han pasado unos meses'), so fact is no_fact, result/health/next fight are no, and he_speaks is no because his words are recalled from an earlier post as background, though their length could lead an editor to yes."
+ }
+]

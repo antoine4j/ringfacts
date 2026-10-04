@@ -1,0 +1,10 @@
+[
+ {"id": "q97925",
+  "main_claim": "Justin Gaethje, who beat Topuria at UFC Freedom 250, says the game plan was to disrupt Topuria's footwork because he never moves laterally or changes the rhythm of his feet.",
+  "centrality": "one_of_several", "source": "opponent_side", "act": "assesses_him", "fact": "no_fact",
+  "firmness": "none", "reports_his_result": "no",
+  "reports_his_next_fight": "no", "reports_his_health": "no",
+  "he_speaks": "no",
+  "unsure": ["centrality", "fact", "reports_his_next_fight"],
+  "note": "Gaethje ('He never changes the rhythm of his feet... you very rarely see him moving laterally', 'not fully prepared') assesses the opponent he already fought; the second half is Gaethje's own knee bruise and 'I will not be fighting again this year', so Topuria shares the stage (centrality could be read as main_subject from the headline). The June loss and 'serious injuries' are the writer's recap, and 'talks about a potential rematch... will not be happening this year' is the writer's closing-line inference with no who, when or where, so no_fact and next fight no, though an editor could read it as a rematch postponed."}
+]

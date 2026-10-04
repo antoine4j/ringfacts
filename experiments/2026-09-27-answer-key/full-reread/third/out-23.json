@@ -1,0 +1,10 @@
+[
+  {"id": "q23723",
+   "main_claim": "Daniil Donchenko spoke with UFC.com after his decision win over Punahele Soriano at UFC Fight Night Paris on September 5, 2026.",
+   "centrality": "main_subject", "source": "no_one", "act": "reports_an_event", "fact": "result",
+   "firmness": "official_or_done", "reports_his_result": "yes",
+   "reports_his_next_fight": "no", "reports_his_health": "no",
+   "he_speaks": "no",
+   "unsure": ["source", "fact", "firmness", "reports_his_result"],
+   "note": "The saved text is a video caption, 'Welterweight Daniil Donchenko Talks With UFC.com After His Decision Win Over Punahele Soriano', repeated twice around Fight Pass promos and an 'Up next' list of other interviews; none of his words appear, so he_speaks is no and nobody speaks (source no_one, though UFC.com is the promotion's own site and the piece is his interview, so promotion or himself are arguable). The only hard fact in the text is the win, so fact result / official_or_done / result yes; an editor applying the post-fight-interview rule (a win restated before an interview is background) could instead rule no_fact / none / result no, since this is an interview page whose interview content is missing."}
+]

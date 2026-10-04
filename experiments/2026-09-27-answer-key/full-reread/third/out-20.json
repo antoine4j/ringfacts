@@ -1,0 +1,10 @@
+[
+ {"id": "q86920",
+  "main_claim": "Topuria's manager Malki Kawa fires back at Usman Nurmagomedov's manager Ali Abdelaziz, who said Usman would make Topuria tap out, insisting Topuria would annihilate his roster and beat Gaethje in a rematch.",
+  "centrality": "one_of_several", "source": "his_manager", "act": "answers_for_him", "fact": "no_fact",
+  "firmness": "none", "reports_his_result": "no",
+  "reports_his_next_fight": "no", "reports_his_health": "no",
+  "he_speaks": "no",
+  "unsure": ["centrality", "source", "act", "fact"],
+  "note": "The piece is a war of words shared between Topuria and Usman Nurmagomedov (lead on Usman's PFL defence and contract, Abdelaziz's 'Usman would make Ilia tap out', then Kawa's 'Shut your mouth... Topuria is still the best fighter in the world', then the writer weighing Topuria's options), so one_of_several, though an editor could call him main_subject since both statements are about him; I took Kawa's reply as the main claim (his_manager / answers_for_him), but the headline quote is Abdelaziz's challenge, which would make it other_fighter_side / calls_him_out (no fight with Usman is booked). The Gaethje rematch, Pimblett and Usman are only the writer's list of 'fronts open' with 'future remains quite uncertain' and nobody named states anything, so no_fact rather than status_update; the June loss to Gaethje is background and Topuria himself never speaks."}
+]

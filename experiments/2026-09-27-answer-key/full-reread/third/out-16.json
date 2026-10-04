@@ -1,0 +1,10 @@
+[
+  {"id": "q15616",
+   "main_claim": "In a preview of his UFC Fight Night 287 bout in Paris, the writer rates Donchenko the clear favourite (1.37) over dangerous puncher Punahele Soriano and predicts he wins if he stays disciplined and avoids a brawl.",
+   "centrality": "one_of_several", "source": "media", "act": "predicts_his_fight", "fact": "no_fact",
+   "firmness": "none", "reports_his_result": "no",
+   "reports_his_next_fight": "no", "reports_his_health": "no",
+   "he_speaks": "no",
+   "unsure": ["centrality", "act"],
+   "note": "A Sport.ua preview covering both fighters: Donchenko's TUF win, Morono/Berggren results and 7-fight streak are recapped as background, Soriano's four-win run and power get their own paragraphs, odds are quoted (1.37 vs 2.87) and the piece closes 'у такому емоційному стані українець розбере американця'. Centrality is unsure because the headline and the tactical advice are built around him (main_subject arguable) while the guide files a two-fighter preview under one_of_several; act is unsure because the writer's assessment of his level and tools (assesses_him) and his 'what Donchenko should do' tactics (steers_him) take as much space as the pick. The booking is the premise of the preview, not news, so fact is no_fact and next fight no; nobody quotes him."}
+]

@@ -1,0 +1,10 @@
+[
+ {"id": "q19208",
+  "main_claim": "PFL champion Usman Nurmagomedov rejects the idea that only UFC fighters are high level, picking apart the UFC lightweight top 10 and its results.",
+  "centrality": "only_mentioned", "source": "other_fighter_side", "act": "assesses_him",
+  "fact": "no_fact", "firmness": "none",
+  "reports_his_result": "no", "reports_his_next_fight": "no", "reports_his_health": "no",
+  "he_speaks": "no",
+  "unsure": ["centrality", "act"],
+  "note": "Topuria gets one line inside Nurmagomedov's list of UFC lightweights ('17-0 Topuria, who had been praising himself as the greatest, he lost, quit on the stool') plus the writer's recap that Gaethje upset him at UFC Freedom 250; nothing new about him, so only_mentioned and no_fact, though the jab is real attention and an editor could read it as one_of_several. The remark is a disparaging judgment of his performance, so assesses_him, but it could be read as mockery (calls_him_out) or as no act at all since the piece is about UFC rankings; 'saying he wasn't going to continue' is paraphrase, not a quote, so he_speaks is no."}
+]

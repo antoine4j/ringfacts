@@ -1,0 +1,21 @@
+[
+ {
+  "id": "q92206",
+  "main_claim": "Topuria's physical trainer Jesús Gallo and his friend Merab Dvalishvili say he is recovering well from his June loss to Gaethje and could be physically ready by the end of 2026, though his team would rather he return in early 2027.",
+  "centrality": "main_subject",
+  "source": "his_team",
+  "act": "gives_news_of_him",
+  "fact": "health",
+  "firmness": "reported",
+  "reports_his_result": "no",
+  "reports_his_next_fight": "no",
+  "reports_his_health": "yes",
+  "he_speaks": "no",
+  "unsure": [
+   "source",
+   "fact",
+   "reports_his_health"
+  ],
+  "note": "The headline's return window comes from his physical trainer Gallo ('la progresión de Topuria es positiva... podría alcanzar el nivel físico requerido antes de que acabe 2026'; 'A nivel físico... estaría listo. Aun así, no creo que lo hagamos'), a named team member saying how the recovery is going, so fact health/reported and health yes; an editor could instead read it as a bare return window (status_update, health no) since the fractures are only the writer's recap, and could take Dvalishvili (other_fighter_side, 'Topuria está bien... es muy fuerte física y mentalmente'), presented as the fresher update, as the main source. The June loss is background (result no), Tsarukyan/Pimblett/Nurmagomedov are only 'nombres que suenan' with Gaethje uninterested in a rematch (next fight no), and his Instagram post is described, not quoted (he_speaks no)."
+ }
+]

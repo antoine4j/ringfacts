@@ -1,0 +1,10 @@
+[
+ {"id": "q33903",
+  "main_claim": "Javier Mendez says Topuria must win more than one fight, in spectacular fashion, before a superfight with Makhachev, and doubts his body would translate to welterweight.",
+  "centrality": "main_subject", "source": "other_fighter_side", "act": "steers_him",
+  "fact": "no_fact", "firmness": "none",
+  "reports_his_result": "no", "reports_his_next_fight": "no",
+  "reports_his_health": "no", "he_speaks": "no",
+  "unsure": ["source", "act"],
+  "note": "Mendez ('the AKA coach') says 'he has to get another fight under his wings and it has to be in spectacular fashion... he's going to have to do more than one' (steers_him), then 'I don't think his body is going to translate... at the welterweight division' (assesses_him could be the main act); the article names him only as an AKA coach, never as Makhachev's coach, and no Makhachev fight is booked, so other_fighter_side rather than opponent_side, though a reader might call an unaffiliated coach media. 'Topuria is recovering and is expected to return no sooner than spring 2027' and Gaethje's rematch refusal are the writer's background, so no fact, health no, next fight no; Topuria is not quoted."}
+]

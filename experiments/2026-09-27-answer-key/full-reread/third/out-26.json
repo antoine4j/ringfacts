@@ -1,0 +1,10 @@
+[
+ {"id": "q90526",
+  "main_claim": "Ilia Topuria answers Paddy Pimblett's post-fight trash talk, warning him 'be careful what you wish for' while the UFC has no confirmed plans for a bout between them.",
+  "centrality": "main_subject", "source": "himself", "act": "answers_for_him",
+  "fact": "no_fact", "firmness": "none",
+  "reports_his_result": "no", "reports_his_next_fight": "no",
+  "reports_his_health": "no", "he_speaks": "yes",
+  "unsure": ["centrality", "fact"],
+  "note": "Headline and lead are his reply ('You're gonna see soon... Be careful what you wish for') to Pimblett's callout, so he is the subject and the act is his own answer to an attack; but Pimblett's win and podcast quotes fill roughly half the body, so one_of_several is arguable. The broken nose and orbital fractures and 'en route to recovery' with 'no confirmed return date' are the writer's own recap with no named source, so fact is no_fact (status_update arguable) and health is no; the possible fight is a wish only, 'UFC does not have any confirmed plans', so next fight is no."}
+]

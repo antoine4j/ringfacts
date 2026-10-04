@@ -1,0 +1,10 @@
+[
+ {"id": "q59914",
+  "main_claim": "Topuria has addressed his loss to Gaethje for the first time, in a letter written to his son.",
+  "centrality": "main_subject", "source": "himself", "act": "speaks_of_himself",
+  "fact": "no_fact", "firmness": "none",
+  "reports_his_result": "no", "reports_his_next_fight": "no", "reports_his_health": "no",
+  "he_speaks": "yes",
+  "unsure": ["fact", "firmness", "he_speaks"],
+  "note": "The whole saved body is one line, 'Topuria addressed his loss to Gaethje for the first time in a letter penned to Topuria's son', followed by comment-section furniture; the letter's content is not given beyond the headline fragment 'after going through that hell', so it reads as a reflection with no fact (fact no_fact, firmness none), though an editor could call it status_update (he breaks silence) or personal_life (a letter to his son). The loss is background to the letter, so result is no; he_speaks is yes only on the headline's quoted fragment, the body merely describes the letter, so no is defensible."}
+]

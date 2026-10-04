@@ -1,0 +1,17 @@
+[
+ {
+  "id": "q26924",
+  "main_claim": "On Joe Rogan's podcast Topuria said he was never a fan of Demetrious Johnson because he mistook the nickname 'Mighty Mouse' for 'Mickey Mouse', and Johnson joked back.",
+  "centrality": "one_of_several",
+  "source": "himself",
+  "act": "speaks_of_himself",
+  "fact": "no_fact",
+  "firmness": "none",
+  "reports_his_result": "no",
+  "reports_his_next_fight": "no",
+  "reports_his_health": "no",
+  "he_speaks": "yes",
+  "unsure": ["act", "source"],
+  "note": "He is quoted at length ('I never was a big fan of him... why are you calling yourself the Mickey Mouse?') about another fighter, and the article comes back to him with Johnson's reply ('All Gucci boiiss', joking about a training clinch), so he shares the stage rather than being only mentioned. His words are about his own fandom and his own slip, so I read it as speaks_of_himself, but an editor could call his talk about Johnson none_of_these, or take Johnson's joking clinch reply as other_fighter_side calls_him_out; no fact about him is asserted, so fact is no_fact and the three news questions are no."
+ }
+]

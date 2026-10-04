@@ -1,0 +1,15 @@
+[
+ {"id": "q28715",
+  "main_claim": "Dana White hinted that Ilia Topuria's next fight may be against Paddy Pimblett, and fans online reacted unhappily to the idea of a non-title headliner.",
+  "centrality": "main_subject",
+  "source": "promotion",
+  "act": "gives_news_of_him",
+  "fact": "next_fight",
+  "firmness": "rumour",
+  "reports_his_result": "no",
+  "reports_his_next_fight": "yes",
+  "reports_his_health": "no",
+  "he_speaks": "no",
+  "unsure": ["source", "act", "fact", "firmness"],
+  "note": "The news is 'Dana White ... hinted that the El Matador might face Paddy Pimblett next', so the source is the promotion, the act a factual update on his plans, and the fact a next-fight rumour with substance (who said it) though 'no set date for Topuria's return has been announced'; the fan tweets dominate the text (source could be fans), a hint could be read as a forecast rather than a plain statement (act none_of_these), Pimblett could be read as an option only (fact status_update), and the promotion's own hint could be read as reported rather than rumour. His 'confirmed return' is only described, not quoted, so he_speaks is no; the Gaethje injuries and loss are background."}
+]

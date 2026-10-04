@@ -1,0 +1,17 @@
+[
+  {
+    "id": "q29305",
+    "main_claim": "Justin Gaethje says that more than two months after beating Ilia Topuria at the White House both his hands are still too sore to punch, and he will enjoy being champion for the rest of the year before deciding on his future.",
+    "centrality": "one_of_several",
+    "source": "opponent_side",
+    "act": "none_of_these",
+    "fact": "no_fact",
+    "firmness": "none",
+    "reports_his_result": "no",
+    "reports_his_next_fight": "no",
+    "reports_his_health": "no",
+    "he_speaks": "no",
+    "unsure": ["centrality", "act"],
+    "note": "A Gaethje interview about his sore hands, retirement thoughts, his equipment business and backflips; Topuria appears as the man he beat ('brutal title-winning fight against Ilia Topuria', background) and in one exchange on the rematch, where Gaethje says 'I don't think that's my next fight' and guesses Topuria is 'probably recovering from some things' and 'probably not gonna fight till next year'. Centrality: the article ties Gaethje's news to the fight the two already fought and discusses the rematch, so one_of_several, but what is said about Topuria is only a stance and a guess, so only_mentioned is defensible. Act is none_of_these because a speaker's stance on his own next fight and a guess about Topuria's timing and recovery are not a plain statement about him (nearest would be assesses_him or steers_him); the guess sets no fact, so no_fact, firmness none, health and next fight no; the win is retold in an interview, not a fight report, so result no; Topuria is not quoted."
+  }
+]

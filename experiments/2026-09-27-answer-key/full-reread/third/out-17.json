@@ -1,0 +1,17 @@
+[
+ {
+  "id": "q43917",
+  "main_claim": "mma.es has updated its UFC rankings tables after the official 11 August changes, with Quillan Salkilld continuing to climb.",
+  "centrality": "not_in_content",
+  "source": "promotion",
+  "act": "none_of_these",
+  "fact": "no_fact",
+  "firmness": "none",
+  "reports_his_result": "no",
+  "reports_his_next_fight": "no",
+  "reports_his_health": "no",
+  "he_speaks": "no",
+  "unsure": ["source"],
+  "note": "Topuria is not named anywhere in the saved text or headline; the body is boilerplate about the outlet's rankings tables mirroring the official UFC rankings ('la clasificación oficial', 'cambios oficiales'), so source is answered for the main content as the promotion's official records, though the words are the outlet's own writer (media). Act is none_of_these because nobody does anything regarding him; no fact about him, so firmness none and all news questions no."
+ }
+]

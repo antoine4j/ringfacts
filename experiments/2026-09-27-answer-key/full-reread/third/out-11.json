@@ -1,0 +1,17 @@
+[
+ {
+  "id": "q62811",
+  "main_claim": "Topuria's favourite restaurant in Spain is Nou Collonet on the island of Tabarca, near Alicante, the city that took him in at 15.",
+  "centrality": "main_subject",
+  "source": "media",
+  "act": "gives_news_of_him",
+  "fact": "personal_life",
+  "firmness": "reported",
+  "reports_his_result": "no",
+  "reports_his_next_fight": "no",
+  "reports_his_health": "no",
+  "he_speaks": "no",
+  "unsure": ["fact", "firmness", "act"],
+  "note": "The whole piece is built around him ('su restaurante preferido en España ... Nou Collonet ... en la isla de Tabarca'), stated by ABC's own writer with no source and no quote from him; the only quoted voice is food creator Pablo Cabezali reviewing the restaurant, not him. A favourite restaurant is life outside the cage, so personal_life at firmness reported, but an editor could call a sourceless lifestyle detail no_fact (then act none_of_these, firmness none); the 2024 Volkanovski KO is background, so result is no."
+ }
+]
