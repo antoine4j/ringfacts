@@ -52,7 +52,7 @@ runs):
 3. **E8, shorter questions:** "what the source does" and "how firm" are
    now half as long (definitions only). Same on training, 1 to 2 better
    on validation. The other seven questions need their extra text.
-4. **E10, previews:** the fact question had drifted from the rule: it
+4. **E10, previews:** the "what new fact" question had drifted from the rule: it
    listed "how to watch" under "fight week event". Aligned with the rule,
    and a preview or pick is now named as no fact. +5 training, +1
    validation.
@@ -69,7 +69,7 @@ runs):
 includes reported rumours (E1: works on the rumoured-fight claims only,
 and they also need a second fix); option order (E3: moves answers but no
 order is better); two fixes to "what the source does" that work only on the
-claims they were built on (E5, held for you); the fact question as one
+claims they were built on (E5, held for you); the "what new fact" question as one
 yes/no per kind (E6: +12 on training, nothing on validation); cleaning or
 cutting the article text (E7: no difference, and cutting hurts); a fact
 question written from scratch (E9: worse on validation); a wording for
@@ -123,15 +123,15 @@ out and test them on a new labelled slice; (c) adopt only "booked", which
 restates the key's usage. *Recommendation: (c)*, and judge "plans" with
 the next slice.
 
-**2. Whether the three news flags stay independent.** In v7.6, as the
+**2. Whether the three news questions stay independent.** In v7.6, as the
 model gives them, "reports his next fight" is right on 150 training articles and 35
-validation; after the code ties (no fact makes every flag no), 146 and 39.
-Training prefers the raw flags, validation prefers the ties. Of 23
-training disagreements between a flag and the fact answer, the flag is
-right in 11 (4 claims), the fact in 10 (6 claims), both wrong in 2.
+validation; after the code ties (no fact makes every news question no), 146 and 39.
+Training prefers the raw answers, validation prefers the ties. Of 23
+training disagreements between a news question and the "what new fact" answer, the news question is
+right in 11 (4 claims), "what new fact" in 10 (6 claims), both wrong in 2.
 *Options:* (a) keep the ties for the labels and log every disagreement for
-review, as now; (b) let a confident flag stand against "no fact"; (c) drop
-the flags. *Recommendation: (a)*: the ties win on the validation set, and
+review, as now; (b) let a confident news question stand against "no fact"; (c) drop
+the three news questions. *Recommendation: (a)*: the ties win on the validation set, and
 the disagreements are a cheap list of articles worth a second look.
 
 **3. Text cleaning (E7).** Cleaning the saved text made no difference;
@@ -156,7 +156,7 @@ changed, for you to look at if you wish:
   watch", key no fact. Now right, but it sits on the line between the
   preview rule and the fight-week rule.
 
-**5. The test set.** Pass marks adopted 2026-10-04 (docs/decisions.md#classifier-pass-marks): every career-event story recognised, zero rumours called official, false alarms at most 5%. v7.7 passes the second and fails the other two on training and validation, so the test score is expected to fail as well. v7.7 is ready to be scored once on the 105
+**5. The test set.** Pass marks adopted 2026-10-04 (docs/decisions.md#classifier-pass-marks): every career-event story (result, next fight or health) recognised, zero rumours called official, false alarms at most 5%. v7.7: no rumour called official on either set; false alarms 4.5% on training and 5.3% on validation; every training career-event story recognised except claim-127, a past infection that is under review with health, and 1 of 2 on validation. v7.7 is ready to be scored once on the 105
 test articles (`ROUND=r7 python3 run.py --side test --yes --final`, then
 `python3 score.py --round r7 --final`; about $0.03),
 on your word. Before that, note that E4 removed the paraphrases of test
@@ -168,6 +168,28 @@ v6 (../2026-09-27-axes-v6) predates the labelling rules the golden key was
 decided under ([golden/rules.md](../../golden/rules.md)). v7 rewrites the
 nine questions to carry them, and is scored against the frozen key
 ([golden/labels.json](../../golden/labels.json)).
+
+## The names of the questions
+
+Each of the nine questions has one short name, used everywhere for v7: in
+this README, on the pages (wording page, claim map, plan) and in reports.
+The code keeps its own keys. A later version may rename a question when its
+meaning changes, and says so.
+
+| Name in v7 | Code key | The question |
+|---|---|---|
+| how central | `centrality` | How central is he to the article? |
+| whose words | `source` | Whose words or act is the new information? |
+| what the source does | `act` | What does the source do regarding him? |
+| what new fact | `fact` | What new fact about him does the article carry? |
+| how firm | `firmness` | How firm is that fact? |
+| reports his result | `reports_his_result` | Does it report his result? |
+| reports his next fight | `reports_his_next_fight` | Does it report his next fight? |
+| reports his health | `reports_his_health` | Does it report his health? |
+| he speaks | `he_speaks` | Does he speak? |
+
+The last four are yes/no; "reports his result", "reports his next fight"
+and "reports his health" together are **the three news questions**.
 
 ## How it is measured
 
@@ -181,7 +203,7 @@ nine questions to carry them, and is scored against the frozen key
   [golden/coin-flips.json](../../golden/coin-flips.json); **near** when one
   step away on an ordered scale (how central, how firm); **far** otherwise.
 - The classifier answers each question alone, so the ties the rules require
-  (no fact means firmness none and no news question yes; a result, next
+  (no fact means "how firm" is none and no news question is yes; a result, next
   fight or health fact answers its own yes/no question) are applied in code,
   in `score.py`'s `compose()`.
 
@@ -195,11 +217,11 @@ nine questions to carry them, and is scored against the frozen key
 | `score.py` | scores a round, or v6, against the key; `--selfcheck` checks its rules |
 | `variants.py` | several wordings of one or more questions side by side in one call, with the standing wording as control, scored inside a base round |
 | `variants/<experiment>.json` | the wordings each experiment sent, with its hypothesis |
-| `decompose.py` | the fact question as one yes/no per kind, combined in code under several rules (E6) |
+| `decompose.py` | the "what new fact" question as one yes/no per kind, combined in code under several rules (E6) |
 | `states.py` | the standing questions sent with a cleaned or shortened article text (E7) |
 | `health_variants.py` | the first side-by-side test, three health wordings (v7.3) |
 | `consolidate.py` | writes the standing version's scored answers to `golden/answers/classifier-v7.json` for the claim map |
-| `disagreements-r3.md` | where a yes/no flag and the fact answer disagreed in v7.3 |
+| `disagreements-r3.md` | where a news question and the "what new fact" answer disagreed in v7.3 |
 
 Three helper yes/no questions (`h_new_fact`, `h_others_story`, `h_callout`)
 ride along in the same call. They are not scored; they are there so that
@@ -220,7 +242,7 @@ standing one, and a new version was run when one was accepted.
 |---|---|
 | v7.1 | v6 with the 27 labelling rules written in |
 | v7.2 | fixes from reading v7.1's misses; overfitted, kept only as a record |
-| v7.3 | v7.1 plus the health question's "no when" text rewritten |
+| v7.3 | v7.1 plus the "reports his health" question's "no when" text rewritten |
 | v7.4 | v7.3 plus E2 (another fighter talking about him counts for the main subject) |
 | v7.5 | v7.4 plus E4 (invented examples) |
 | v7.6 | v7.5 plus E8 (shorter "what the source does" and "how firm") and E10 (previews) |
@@ -247,18 +269,19 @@ narrowed to a specific fight, result only for an account of the fight,
 the opponent's side, callouts in "how central", and "nothing regarding him"
 as a described option in place of a bare "none of these".
 
-**A tie added after v7.1, in code:** when the fact is a result, the source is
-"no one", the act "reports an event" and the firmness "official or done"
+**A tie added after v7.1, in code:** when "what new fact" is a result, "whose
+words" is "no one", "what the source does" is "reports an event" and "how
+firm" is "official or done"
 (28 of 28 result articles in the training key). With it v7.1 scores **80 / 18**
 articles with all nine right. The table above is v7.1 before that tie.
 
 **v7.2** changed wording only, from reading v7.1's training-set misses: a
-reported rumour or talks named as next-fight news in the fact question, a
+reported rumour or talks named as next-fight news in the "what new fact" question, a
 preview or pick ruled out of "fight week event", a letter to his family
 ruled out of "status update", the main-subject level widened to "another
-fighter gives a view of him", and three act boundaries. Result: **92 / 15**.
+fighter gives a view of him", and three boundaries in "what the source does". Result: **92 / 15**.
 Training rose by 12 articles and validation fell by 3; on validation the
-fact fell from 33 to 30 right and the next-fight question from 38 to 33,
+"what new fact" fell from 33 to 30 right and the "reports his next fight" question from 38 to 33,
 all of it "no fact" articles now called next fight. That is overfitting:
 the rumour sentence fixed seven training articles from one story and made
 the question too eager elsewhere. v7.2 is kept as a record, not as the
@@ -266,10 +289,10 @@ standing version.
 
 **Tried on stored v7.1 answers, no new run:** letting a confident yes/no
 answer overrule a "no fact" (training 84, validation 16: also overfits);
-making the three news questions follow the fact answer (training +11,
+making the three news questions follow the "what new fact" answer (training +11,
 validation +0, health 37 to 39 on validation).
 
-**v7.3** is v7.1 with one change: the "no when" text of the health question.
+**v7.3** is v7.1 with one change: the "no when" text of the "reports his health" question.
 Its third case was a fragment ("only when he will be ready to fight, ...")
 that can be read as a condition, and its second covered only a writer's
 *guess*, not a writer's flat summary ("recovery has gone well"). Both were
@@ -299,8 +322,8 @@ models in general. Each idea, where it came from, and what became of it:
 | Several questions in one call give the same answers as one call each: each is judged alone. | vendor, parallel questions cookbook (5 repeats, no batching effect) | Confirms that variants side by side in one call are a fair comparison. Used for every experiment below. |
 | Identical calls mostly return identical answers; where they differ, the noise belongs to the question, not the call. A few borderline answers flip across a 0.5 line. | vendor, self-consistency cookbooks (15 repeats; noul spread 0.01, 2 of 8 choices flipped) | Lowers the expected value of avenue 5 (repeats and a vote): voting can only fix the few answers that sit on a line. Tried once, cheaply. |
 | A choice's own confidence separates easy answers from hard ones; when unsure, report the level above. | vendor, classification using confidence | Not a label fix (the key needs one value), but a way to find the articles the wording is unclear on. Used to pick smoke-test articles. |
-| Walk a taxonomy one level at a time, showing each option's sub-options. | vendor, Advanced and hierarchical classification | Became an experiment for the fact question: first "is there a new fact", then which kind. |
-| Ask one condition per yes/no question; combine in code. "Where interpretation is unavoidable, split it into two literal questions." | vendor, noul page and jaggedness #1 | Avenue 2 (decomposition), with the fact question asked as one yes/no per kind. |
+| Walk a taxonomy one level at a time, showing each option's sub-options. | vendor, Advanced and hierarchical classification | Became an experiment for the "what new fact" question: first "is there a new fact", then which kind. |
+| Ask one condition per yes/no question; combine in code. "Where interpretation is unavoidable, split it into two literal questions." | vendor, noul page and jaggedness #1 | Avenue 2 (decomposition), with the "what new fact" question asked as one yes/no per kind. |
 | Order of options moves answers; the model leans to the first. In general research, the cure is to average over orders, or to ask about each option separately. | vendor jaggedness #8; arXiv 2406.03009, 2603.21016 | Avenue 4 (option order), and a second reason for one yes/no per kind: a yes/no has no order. |
 | Large state with unrelated detail costs accuracy. | vendor jaggedness #5, state page | Avenue 3 (what the classifier is shown). |
 | Instructions as an object: the question in one field, a `focus` line in another. | vendor, Advanced | Part of avenue 8. |
@@ -325,7 +348,7 @@ does to whole articles. Identical wordings sent in the same call do differ
 a little (the `control_copy` variant), so duplicates in one call measure
 noise without a second round.
 
-### E1. The fact question, read literally (rejected)
+### E1. "What new fact", read literally (rejected)
 
 *Hypothesis.* Three places where a literal reader would go wrong: "no fact
 if it is only talk" collides with "in talks" (negotiations); health and
@@ -351,7 +374,7 @@ and broke none of the at-risk articles.
 | talk + named + rumour | 135 / 30 | — |
 
 *Decision: rejected.* `talk` did not repeat. `rumour` does fix the
-rumoured-fight articles on the fact answer in both runs, but its gains on
+rumoured-fight articles on the "what new fact" answer in both runs, but its gains on
 whole articles did not repeat (+4/−1, then +1/−3), the reworded version
 lost most of the gain, and nearly all of the gain sits in the two claims
 it was designed on (claim-097, claim-099), which the leave-claims-out rule
@@ -512,12 +535,12 @@ candidates. One supporting fact: every training article the key labels
 the key's own usage. `event_his` made things worse and is dropped.
 
 *Learned.* The claim-097 articles cannot be fixed one question at a time:
-with `plans` the model answers "gives news of him", but the fact answer is
+with `plans` the model answers "gives news of him", but the "what new fact" answer is
 still "no fact", and the tie "gives news never goes with no fact" then
 replaces it. The fact rumour fix (E1) and this act fix are both needed,
 and both were designed on that one claim.
 
-### E6. The fact question decomposed into one yes/no per kind (rejected)
+### E6. "What new fact" decomposed into one yes/no per kind (rejected)
 
 *Hypothesis.* The vendor's main advice: ask one condition per yes/no
 question and combine in code. Seven yes/no questions, one per kind of fact
@@ -526,7 +549,7 @@ status update), each built from that option's own text in the standing
 choice, so the test is about the shape, not new wording. A yes/no has no
 option order. Combined in `decompose.py` under five rules: the most likely
 kind or no fact below 0.5 (`kinds`); a separate "is there a new fact"
-question first (`kinds_gated`); the three news flags standing in for their
+question first (`kinds_gated`); the three news questions standing in for their
 kinds (`flags_and_kinds`); the standing choice, but a confident kind
 overrides its "no fact" (`control_rescued`); the standing choice, but "no
 fact" when no kind is a clear yes (`control_vetoed`). The line is 0.5
@@ -591,7 +614,7 @@ state is a full round. Failure: any question worse beyond noise.
 | state | all nine | notes |
 |---|---|---|
 | v7.5, as saved | 91 / 18 | |
-| cleaned | 92 / 17 | fact 128 → 131 and firmness 131 → 134 on training, how central 138 → 133; validation fact 33 → 32 |
+| cleaned | 92 / 17 | "what new fact" 128 → 131 and "how firm" 131 → 134 on training, "how central" 138 → 133; validation "what new fact" 33 → 32 |
 | short (4,000 characters) | 83 / 17 | worse on training by 8 |
 
 *Decision: cleaning makes no measurable difference, so nothing is adopted
@@ -641,10 +664,10 @@ validation. That includes the status signal E4 added to "how firm": the
 level's own summary ("the promotion or he himself states it") is enough
 once no example points elsewhere.
 
-### E9. Bias checks on the fact question: a fragment, and anchoring on v6 (rejected)
+### E9. Bias checks on "what new fact": a fragment, and anchoring on v6 (rejected)
 
 *Hypotheses.* (1) The scan for negations and "only" found the health
-option of the fact question still opening with the fragment "Only when he
+option of the "what new fact" question still opening with the fragment "Only when he
 will be ready to fight again, ...", the same kind of fragment Anton caught
 in the health yes/no question; rewritten as a full sentence. (2) Every
 version so far keeps v6's structure. A fact question written from
@@ -672,7 +695,7 @@ structure is justified.
 ### E10. Previews are not fight week events (accepted)
 
 *Hypothesis.* Five training articles in three claims are previews or
-picks that the fact question calls "fight week event". The question's
+picks that the "what new fact" question calls "fight week event". The question's
 definition of that option lists "how to watch" and its example is "Start
 time and how to watch his fight tonight", but the rule (golden/rules.md,
 "An interview is a place, not a fact") lists only the routine: weigh-in,
@@ -727,7 +750,7 @@ articles agree) changed nothing: the answers already obey it.
 article is about him", with "judge by what the article says that is new
 about him". That widens the rule "new, not long" (golden/rules.md), which
 decides only the boundary between "only mentioned" and "shares the
-article", to the whole scale, and leans on the fact question's idea of
+article", to the whole scale, and leans on the "what new fact" question's idea of
 news. The v7.6 levels already carry the rule in their signals. Variants,
 levels unchanged: *how_much* (v6's opening, no callout sentence) and
 *how_much_callout* (the same with "An article built on another fighter's

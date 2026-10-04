@@ -359,7 +359,7 @@ Rules for adding to it:
   It says a training score can measure memory of the prompt, and a test
   score can too if the prompt paraphrases test articles.
 
-### Making the fact question more willing to see news gains on training and loses out of sample
+### Making "what new fact" more willing to see news gains on training and loses out of sample
 `corpus` · `measured` · *FB 2026-10-03*
 - **Evidence:** four times in v7: a rumour sentence (v7.2: training +12,
   validation −3), a definition of a fact that includes reported plans (E1:

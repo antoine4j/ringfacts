@@ -20,12 +20,16 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 GOLDEN = f"{HERE}/../../golden"
 QUESTIONS = ["centrality", "source", "act", "fact", "firmness", "reports_his_result",
              "reports_his_next_fight", "reports_his_health", "he_speaks"]
+# each question's one name for v7, used on every page and in every report (README, "The names of the questions")
+NAMES = {"centrality": "how central", "source": "whose words", "act": "what the source does", "fact": "what new fact",
+         "firmness": "how firm", "reports_his_result": "reports his result", "reports_his_next_fight": "reports his next fight",
+         "reports_his_health": "reports his health", "he_speaks": "he speaks"}
 LEVELS = {"centrality": ["not_in_content", "only_mentioned", "one_of_several", "main_subject"],
           "firmness": ["wish", "rumour", "reported", "official_or_done"]}
 ORDER = {"centrality": LEVELS["centrality"], "firmness": ["none"] + LEVELS["firmness"]}
 FLAG_OF_FACT = {"result": "reports_his_result", "next_fight": "reports_his_next_fight", "health": "reports_his_health"}
 # the pass marks adopted 2026-10-04 (docs/decisions.md#classifier-pass-marks)
-CAREER_FACTS = {"result", "next_fight", "health", "status_update"}
+CAREER_FACTS = {"result", "next_fight", "health"}
 WEAKER_THAN_OFFICIAL = {"wish", "rumour", "reported"}
 MAX_FALSE_ALARMS = 0.05
 RENAMED = {"nothing_regarding_him": "none_of_these", "only_mentions_him": "none_of_these", "other_fighter": "other_fighter_side"}
@@ -131,8 +135,9 @@ def report(labels, side_of, flips, raw, ties):
                 result = grade(question, got, key, flips.get((i, question), {key}))
                 counts[result] += 1; perfect[i] += result == "right"
                 if result == "far": misses[f"{key}>{got}"] += 1
-            top = ", ".join(f"{pair} {n}" for pair, n in misses.most_common(3))
-            print(f"  {question:24} right {counts['right']:3} ({counts['right'] / len(ids):4.0%})  near {counts['near']:2}  far {counts['far']:3}   {top}")
+            # which values were confused is shown for the tune side only: check is counted, never read
+            top = ", ".join(f"{pair} {n}" for pair, n in misses.most_common(3)) if side == "tune" else ""
+            print(f"  {NAMES[question]:24} right {counts['right']:3} ({counts['right'] / len(ids):4.0%})  near {counts['near']:2}  far {counts['far']:3}   {top}")
         print(f"  all nine right: {sum(n == 9 for n in perfect.values())} of {len(ids)}")
 
 
@@ -150,7 +155,7 @@ def targets(labels, side_of, raw):
         key = {i: labels[i]["answers"] for i in ids}
         got = {i: compose(raw[i]) for i in ids}
 
-        # 1. every story whose key has a career event has at least one article recognised as one (any of the four kinds)
+        # 1. every story whose key has a career event has at least one article recognised as one (any of the three kinds)
         stories = collections.defaultdict(list)
         for i in ids:
             if key[i]["fact"] in CAREER_FACTS: stories[claim_of[i]].append(got[i]["fact"] in CAREER_FACTS)
@@ -168,7 +173,7 @@ def targets(labels, side_of, raw):
         print(f"  career-event stories with an article recognised  {len(stories) - len(missed)} of {len(stories)}"
               f"   {verdict(not missed)}" + (f"   missed: {', '.join(missed)}" if missed and side == "tune" else ""))
         print(f"  rumours, wishes or reports called official       {called_official}   {verdict(called_official == 0)}")
-        print(f"  false alarms among articles with no career event {alarms} of {len(quiet)} ({share:.0%}, mark {MAX_FALSE_ALARMS:.0%})"
+        print(f"  false alarms among articles with no career event {alarms} of {len(quiet)} ({share:.1%}, mark {MAX_FALSE_ALARMS:.0%})"
               f"   {verdict(share <= MAX_FALSE_ALARMS)}")
 
 

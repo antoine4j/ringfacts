@@ -828,9 +828,9 @@ performance, not a finding. `score.py` prints all three at the end of every
 report (experiments/2026-10-03-classifier-v7).
 
 1. **G1, nothing real is missed.** Every story whose key has a career event
-   (the fact is a result, next fight, health or status update, at any
-   firmness) has at least one article the classifier recognises as a
-   career event of any of the four kinds. A story needs only one article
+   ("what new fact" is a result, next fight or health, at any firmness) has
+   at least one article the classifier recognises as a career event of any
+   of the three kinds. A story needs only one article
    to post, so this is counted by story, not article. Any missed story is
    read before anything else is decided.
 2. **G4, confirmed means official.** Zero articles whose key firmness is a
@@ -844,13 +844,29 @@ still reported, with no pass mark: most of the nine answers describe an
 article without deciding whether it posts, and one wrong descriptive answer
 fails the whole article.
 
-**Where v7.7 stands** (training / validation): G1 9 of 10 stories and 1 of
-2 (the training miss is claim-127, a single article with an official
-health fact); G4 0 and 0; G2 9 of 101 (9%) and 5 of 38 (13%). It passes
-G4 and fails G1 and G2 on both sets. v6, for comparison: G1 10 of 10 and
-1 of 2, G4 0 and 0, G2 27% and 24%. v7 traded a few recognised events for
-far fewer false alarms. The validation set has only 2 career-event
-stories, so it can barely judge G1.
+**Which facts count as a career event** (decided the same day, on the
+first numbers): result, next fight and health. Status update (ready to
+fight, a return window, nothing booked) is digest news, not a career
+event; with it counted, half the false alarms were status updates. A
+stricter line, next fight and health only when reported or official, was
+measured and kept in reserve.
+
+**Health is under review.** Kind alone does not make health news a career
+event: claim-127 (#1172) is Donchenko recalling an infection a month before
+a fight he then fought, which the key rightly calls a health fact and which
+is digest news. A health scale (from no health news, through past or
+settled, to out of a fight or a career at risk) is the avenue to explore;
+until then health counts at any firmness, and a G1 miss on a health story
+is read before it is called a failure.
+
+**Where v7.7 stands** (training / validation): G1 8 of 9 stories and 1 of
+2 (the training miss is claim-127); G4 0 and 0; G2 5 of 111 (4.5%) and 2
+of 38 (5.3%). It passes G4, passes G2 on training and misses it on
+validation by a fraction of one article, and fails G1 on both sets, on
+training only through claim-127. With status update still counted, the
+first numbers were G1 9 of 10, G2 9% and 13%; v6 then found every
+training story with 27% false alarms. The validation set has only 2
+career-event stories, so it can barely judge G1.
 
 **Considered and rejected:** a pass mark on all nine right (it measures
 description, not posting); a mark per question (nine lines to tune

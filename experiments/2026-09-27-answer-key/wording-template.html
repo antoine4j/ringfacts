@@ -169,7 +169,7 @@ td.mv{font-weight:600}
         <tr><td>Version 6</td><td>63 of 155 (41%)</td><td>16 of 40 (40%)</td><td>Scored the same way, with the same ties.</td></tr>
         <tr><td>7.1</td><td>80 of 155 (52%)</td><td>18 of 40 (45%)</td><td>Version 6 with the 27 labelling rules written in.</td></tr>
         <tr><td>7.2</td><td>92 of 155 (59%)</td><td>15 of 40 (38%)</td><td>Fixes read off 7.1's misses. Overfitted: up on training, down on validation. Set aside.</td></tr>
-        <tr><td>7.3</td><td>87 of 155 (56%)</td><td>17 of 40 (43%)</td><td>7.1 with the health question's "no when" text rewritten as full statements.</td></tr>
+        <tr><td>7.3</td><td>87 of 155 (56%)</td><td>17 of 40 (43%)</td><td>7.1 with the "no when" text of "reports his health" rewritten as full statements.</td></tr>
         <tr><td>7.4</td><td>90 of 155 (58%)</td><td>19 of 40 (48%)</td><td>Another fighter talking about him counts for the main subject.</td></tr>
         <tr><td>7.5</td><td>91 of 155 (59%)</td><td>18 of 40 (45%)</td><td>Examples that paraphrased golden articles replaced with invented ones.</td></tr>
         <tr><td>7.6</td><td class="mv">94 of 155 (61%)</td><td class="mv">19–20 of 40 (48–50%)</td><td>"What the source does" and "how firm" cut to their definitions; a preview is not a fight-week event. Sent twice.</td></tr>
@@ -242,7 +242,7 @@ document.getElementById("blocks").innerHTML = DATA.questions.map((q, i) => {
   const n = q.options.filter(o => o.tag !== "same").length;
   const cnt = q.options.length ? `${q.options.length} answer options` + (n ? `, ${n} changed or new` : "") : "yes or no";
   return `<details class="qs" data-tag="${q.tag}">
-    <summary><span class="n">Question ${i+1}</span><span class="t">${esc(q.label)}</span><span class="id">${q.id} · ${q.kind}</span>
+    <summary><span class="n">Question ${i+1}</span><span class="t">${esc(q.label)}</span><span class="id" title="code key: ${q.id}">${q.name} · ${q.kind}</span>
       <span class="tag ${q.tag}">${TAGS[q.tag]}</span><span class="cnt">${cnt}</span></summary>
     <div class="qbody">
       ${q.why ? `<p>${esc(q.why)}</p>` : ""}

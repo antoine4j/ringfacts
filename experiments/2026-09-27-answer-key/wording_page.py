@@ -31,6 +31,10 @@ LABELS = {
     "reports_his_health": "Does it report his health?",
     "he_speaks": "Does he speak?",
 }
+# each question's one name for v7 (experiments/2026-10-03-classifier-v7/README.md, "The names of the questions")
+NAMES = {"centrality": "how central", "source": "whose words", "act": "what the source does", "fact": "what new fact",
+         "firmness": "how firm", "reports_his_result": "reports his result", "reports_his_next_fight": "reports his next fight",
+         "reports_his_health": "reports his health", "he_speaks": "he speaks"}
 KINDS = {"choice": "pick one", "score": "scale", "noul": "yes / no"}
 # the guide and the classifier name two values differently, and each has a value the other lacks
 READER_ABSENT = {"nothing_regarding_him": "Not a value in the guide. Readers answer none_of_these for this case; the code turns this answer into none_of_these."}
@@ -47,7 +51,7 @@ WHY = {
     "reports_his_health": "v7: a named person or outlet must state his condition (\"health follows who states it\").",
     "he_speaks": "v7: his words must be in the saved text; a post only described, or a few words recalled from earlier, is no.",
 }
-CLS_ABSENT = {"none": "Not asked. The code sets none when the fact answer is no fact."}
+CLS_ABSENT = {"none": "Not asked. The code sets none when the \"what new fact\" answer is no fact."}
 SCALE_VALUES = {
     "centrality": ["not_in_content", "only_mentioned", "one_of_several", "main_subject"],
     "firmness": ["wish", "rumour", "reported", "official_or_done"],
@@ -141,7 +145,7 @@ def build_question(qid, before_q, guide_q, cls_q, now_q):
             old, new = dict(zip(SCALE_VALUES[qid], old)), dict(zip(SCALE_VALUES[qid], new))
         # values only the guide has go first (firmness none)
         order = [v for v in guide_q["values"] if v not in new] + list(new)
-    question = {"id": qid, "label": LABELS[qid], "kind": KINDS[now_q["type"]], "why": WHY[qid],
+    question = {"id": qid, "name": NAMES[qid], "label": LABELS[qid], "kind": KINDS[now_q["type"]], "why": WHY[qid],
                 "q": {"reader": reader_q, "cls": cls_side, "why": ""}, "options": []}
     question["q"]["tag"] = tag(reader_q, cls_side)
     for name in order:
