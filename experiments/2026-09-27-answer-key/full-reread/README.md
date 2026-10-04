@@ -23,3 +23,13 @@ give the key's answer on all nine questions.** The other 56 articles:
 | the two readers differ | 42 | 26 |
 
 Nothing in the key was changed by this run.
+
+## The third reading (2026-10-03)
+
+`third/`: the 26 articles where readers A and B differed, each read once
+more by a fresh agent that saw only that one article (`third/RUN.md`;
+about 24 dollars of credit). `third/result.json` has one row per answer
+where the three readings and the key are not all the same: 46 answers on
+the 26 articles. On 32 of them two of the three readings give the key's
+answer; on 12 two of three agree on another answer; on 2 all three
+differ.
