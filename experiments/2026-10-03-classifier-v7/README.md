@@ -292,3 +292,41 @@ claim, and the training score then measures memory of the prompt, not
 reading. The rules file cites test-set articles as examples, which is fine
 for the rules (they are the labelling guide) but means every prompt built
 from the rules has to be checked for paraphrases of them.
+
+### E5. What the source does, read literally (rejected by leave-claims-out; held for Anton)
+
+*Hypothesis.* Three literal readings: "a pick or forecast for a specific
+fight of his" lets a boast about a fight nobody has booked ("Usman would
+make him quit") read as a prediction; "whether a rematch should happen" in
+"steers him" pulls a report of talks about a rematch into steering; and
+"reports an event" never says the event must be his. Variants: `booked`
+(a forecast for a fight of his that is booked), `booked_notfor` (also names
+the boast as a callout), `plans` (a report of what is planned or discussed
+for him is giving news, not steering), `event_his`, and all together.
+
+*Two runs* ("what the source does" right, training / validation; control
+129 / 29, then 128 / 30):
+
+| variant | run 1 | run 2 |
+|---|---|---|
+| booked | 131 / 30 (+3 in 1 claim, −1) | 132 / 30 (+5 in 3 claims, −1) |
+| plans | 131 / 29 (+3 in 3 claims, −1) | 131 / 29 (+3 in 3 claims, −0) |
+| booked + plans | — | 133 / 29 (+6 in 4 claims, −1) |
+| event_his | 126 / 29 (−3) | — |
+
+*Decision: rejected by the leave-claims-out rule.* Both fixes do what they
+were built to do, in both runs, and lose nothing beyond noise: `booked`
+fixes the three articles of claim-003 (a rival's manager boasting) and once
+claim-008; `plans` fixes claim-113's "top two potential opponents" and
+claim-097's "strongly considered". But those are the claims they were
+designed on, and the validation set did not move (0 or ±1), so nothing
+outside the design shows them working. They go to the "For Anton" list as
+candidates. One supporting fact: every training article the key labels
+"predicts his fight" is a pick for a booked fight, so `booked` agrees with
+the key's own usage. `event_his` made things worse and is dropped.
+
+*Learned.* The claim-097 articles cannot be fixed one question at a time:
+with `plans` the model answers "gives news of him", but the fact answer is
+still "no fact", and the tie "gives news never goes with no fact" then
+replaces it. The fact rumour fix (E1) and this act fix are both needed,
+and both were designed on that one claim.

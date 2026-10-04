@@ -1,0 +1,174 @@
+{
+ "question": "act",
+ "hypothesis": "Second run of e5's booked and plans, and the two together without the event change.",
+ "variants": {
+  "booked": {
+   "type": "choice",
+   "instructions": "What does the source do regarding the fighter named in `watched_fighter`? Pick the one the article's main news is built on. Count only a plain statement about him.",
+   "criteria": {
+    "reports_an_event": {
+     "what": "Nobody's words are the news: something happened. He fought, weighed in, faced off, was booked, a fight of his was announced or cancelled."
+    },
+    "speaks_of_himself": {
+     "what": "The watched fighter himself talks about his own situation, plans, past, condition, fight or life.",
+     "not_for": "A reply by him to an attack aimed at him (that is answers for him). Another fighter talking about that fighter's own plans or injuries (that is nothing regarding him).",
+     "examples": [
+      "how he rates himself",
+      "his own forecast for his fight",
+      "what he wants next"
+     ]
+    },
+    "assesses_him": {
+     "what": "Someone other than him judges him: his level, chances, performance, condition, style, place in the division.",
+     "not_for": "Him judging himself."
+    },
+    "predicts_his_fight": {
+     "what": "Someone other than him gives a pick or forecast for a fight of his that is booked: who wins, how, in which round.",
+     "not_for": "His own forecast. A guess at when he will fight or whom the matchmakers will give him (that is nothing regarding him)."
+    },
+    "calls_him_out": {
+     "what": "Someone other than him asks to fight him, challenges him, or taunts or mocks him. Advice the article presents as ironic or as a provocation is a taunt.",
+     "examples": [
+      "a contender says he wants him next",
+      "a rival posts a video mocking his last loss",
+      "a contender calls him a coward for turning down a fight"
+     ]
+    },
+    "answers_for_him": {
+     "what": "A reply to an attack, a callout or a claim aimed at him, made on his behalf by someone else, or by him."
+    },
+    "steers_him": {
+     "what": "Someone other than him says sincerely what he should do next: whom he should fight, whether a rematch should happen, which weight class. Demands made on his behalf are included.",
+     "not_for": "What he himself says he wants next. Mock advice meant as a provocation (that is calls him out)."
+    },
+    "gives_news_of_him": {
+     "what": "Someone other than him states a fact about him: his condition, recovery, training, whereabouts or plans.",
+     "not_for": "A judgement of how good he is (that is assesses him). A guess about him, such as 'probably', 'I think' or 'I expect' (that is nothing regarding him)."
+    },
+    "nothing_regarding_him": {
+     "what": "Nobody says plainly what he should do, judges him, challenges him or states a fact about him. He is only named in a list, a card, a comparison or as background; or someone only guesses about him; or a speaker talks about the speaker's own plans; or a speaker says what the watched fighter did for the speaker.",
+     "examples": [
+      "his name in a ranking",
+      "a fighter talks about his own camp and names him once among past opponents",
+      "a fighter thanks him for sparring with him years ago"
+     ]
+    },
+    "none_of_these": {
+     "what": "None of the options above describes this article; a different answer is needed."
+    }
+   }
+  },
+  "plans": {
+   "type": "choice",
+   "instructions": "What does the source do regarding the fighter named in `watched_fighter`? Pick the one the article's main news is built on. Count only a plain statement about him.",
+   "criteria": {
+    "reports_an_event": {
+     "what": "Nobody's words are the news: something happened. He fought, weighed in, faced off, was booked, a fight of his was announced or cancelled."
+    },
+    "speaks_of_himself": {
+     "what": "The watched fighter himself talks about his own situation, plans, past, condition, fight or life.",
+     "not_for": "A reply by him to an attack aimed at him (that is answers for him). Another fighter talking about that fighter's own plans or injuries (that is nothing regarding him).",
+     "examples": [
+      "how he rates himself",
+      "his own forecast for his fight",
+      "what he wants next"
+     ]
+    },
+    "assesses_him": {
+     "what": "Someone other than him judges him: his level, chances, performance, condition, style, place in the division.",
+     "not_for": "Him judging himself."
+    },
+    "predicts_his_fight": {
+     "what": "Someone other than him gives a pick or forecast for a specific fight of his: who wins, how, in which round.",
+     "not_for": "His own forecast. A guess at when he will fight or whom the matchmakers will give him (that is nothing regarding him)."
+    },
+    "calls_him_out": {
+     "what": "Someone other than him asks to fight him, challenges him, or taunts or mocks him. Advice the article presents as ironic or as a provocation is a taunt.",
+     "examples": [
+      "a contender says he wants him next",
+      "a rival posts a video mocking his last loss",
+      "a contender calls him a coward for turning down a fight"
+     ]
+    },
+    "answers_for_him": {
+     "what": "A reply to an attack, a callout or a claim aimed at him, made on his behalf by someone else, or by him."
+    },
+    "steers_him": {
+     "what": "Someone other than him says sincerely what he should do next: whom he should fight, whether a rematch should happen, which weight class. Demands made on his behalf are included.",
+     "not_for": "What he himself says he wants next. Mock advice meant as a provocation (that is calls him out). A report of what someone plans, discusses or considers for him (that is gives news of him)."
+    },
+    "gives_news_of_him": {
+     "what": "Someone other than him states a fact about him: his condition, recovery, training, whereabouts or plans, including what is planned or discussed for him.",
+     "not_for": "A judgement of how good he is (that is assesses him). A guess about him, such as 'probably', 'I think' or 'I expect' (that is nothing regarding him)."
+    },
+    "nothing_regarding_him": {
+     "what": "Nobody says plainly what he should do, judges him, challenges him or states a fact about him. He is only named in a list, a card, a comparison or as background; or someone only guesses about him; or a speaker talks about the speaker's own plans; or a speaker says what the watched fighter did for the speaker.",
+     "examples": [
+      "his name in a ranking",
+      "a fighter talks about his own camp and names him once among past opponents",
+      "a fighter thanks him for sparring with him years ago"
+     ]
+    },
+    "none_of_these": {
+     "what": "None of the options above describes this article; a different answer is needed."
+    }
+   }
+  },
+  "booked_plans": {
+   "type": "choice",
+   "instructions": "What does the source do regarding the fighter named in `watched_fighter`? Pick the one the article's main news is built on. Count only a plain statement about him.",
+   "criteria": {
+    "reports_an_event": {
+     "what": "Nobody's words are the news: something happened. He fought, weighed in, faced off, was booked, a fight of his was announced or cancelled."
+    },
+    "speaks_of_himself": {
+     "what": "The watched fighter himself talks about his own situation, plans, past, condition, fight or life.",
+     "not_for": "A reply by him to an attack aimed at him (that is answers for him). Another fighter talking about that fighter's own plans or injuries (that is nothing regarding him).",
+     "examples": [
+      "how he rates himself",
+      "his own forecast for his fight",
+      "what he wants next"
+     ]
+    },
+    "assesses_him": {
+     "what": "Someone other than him judges him: his level, chances, performance, condition, style, place in the division.",
+     "not_for": "Him judging himself."
+    },
+    "predicts_his_fight": {
+     "what": "Someone other than him gives a pick or forecast for a fight of his that is booked: who wins, how, in which round.",
+     "not_for": "His own forecast. A guess at when he will fight or whom the matchmakers will give him (that is nothing regarding him)."
+    },
+    "calls_him_out": {
+     "what": "Someone other than him asks to fight him, challenges him, or taunts or mocks him. Advice the article presents as ironic or as a provocation is a taunt.",
+     "examples": [
+      "a contender says he wants him next",
+      "a rival posts a video mocking his last loss",
+      "a contender calls him a coward for turning down a fight"
+     ]
+    },
+    "answers_for_him": {
+     "what": "A reply to an attack, a callout or a claim aimed at him, made on his behalf by someone else, or by him."
+    },
+    "steers_him": {
+     "what": "Someone other than him says sincerely what he should do next: whom he should fight, whether a rematch should happen, which weight class. Demands made on his behalf are included.",
+     "not_for": "What he himself says he wants next. Mock advice meant as a provocation (that is calls him out). A report of what someone plans, discusses or considers for him (that is gives news of him)."
+    },
+    "gives_news_of_him": {
+     "what": "Someone other than him states a fact about him: his condition, recovery, training, whereabouts or plans, including what is planned or discussed for him.",
+     "not_for": "A judgement of how good he is (that is assesses him). A guess about him, such as 'probably', 'I think' or 'I expect' (that is nothing regarding him)."
+    },
+    "nothing_regarding_him": {
+     "what": "Nobody says plainly what he should do, judges him, challenges him or states a fact about him. He is only named in a list, a card, a comparison or as background; or someone only guesses about him; or a speaker talks about the speaker's own plans; or a speaker says what the watched fighter did for the speaker.",
+     "examples": [
+      "his name in a ranking",
+      "a fighter talks about his own camp and names him once among past opponents",
+      "a fighter thanks him for sparring with him years ago"
+     ]
+    },
+    "none_of_these": {
+     "what": "None of the options above describes this article; a different answer is needed."
+    }
+   }
+  }
+ }
+}
