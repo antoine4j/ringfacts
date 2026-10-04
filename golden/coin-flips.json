@@ -81,6 +81,16 @@
     "no"
    ],
    "why": "Follows the fact on the same card: with health it is yes, with personal life it is no. Readings: no, yes, no."
+  },
+  {
+   "id": "1058",
+   "question": "reports_his_health",
+   "key": "no",
+   "accepted": [
+    "no",
+    "yes"
+   ],
+   "why": "Added after the freeze, 2026-10-03, while tuning the classifier. Dana White's quoted words say only that he is ready to fight, but a social post embedded in the saved text says the UFC's CEO announced he has recovered from the orbital fractures: a named person credited with stating his condition. The key keeps no, like the nine other write-ups of the claim."
   }
  ]
 }

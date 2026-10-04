@@ -1422,3 +1422,20 @@ were read by Anton, 27 confirmed by him from a summary, and 176 stand on
 the two blind readers of the full re-read. Eight answers are recorded
 coin flips. A test guards the file's checksum and the ties between
 answers; it was checked by breaking one answer on purpose.
+
+## One coin flip added while tuning the classifier (2026-10-03)
+
+**#1058, "reports his health".** The classifier answered yes with high
+confidence where the key says no, and stayed there after the question was
+reworded. Read in full: Dana White's quoted words say only that he is ready
+to fight, but a social post embedded in the saved text says the UFC's CEO
+announced that he has recovered from the orbital fractures. That is a named
+person credited with stating his condition, which "health follows who
+states it" counts; against it, White's own words do not mention health and
+the nine other write-ups of the claim are labelled no.
+
+Anton: "I agree with coin flip on 1058."
+
+The key keeps no; yes is accepted when scoring. The frozen labels are
+unchanged. The sibling #998, read at the same time, is a plain no: every
+health sentence in it is the writer's own.

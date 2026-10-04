@@ -85,8 +85,9 @@ does, what new fact, how firm, and four yes/no questions), decided under
 holds them for all 300 articles: the first readers' answers with Anton's
 corrections folded in, and for each article how it was checked (read by
 him: 97; confirmed by him from a summary: 27; left to two blind readers of
-a full re-read: 176). Eight answers where two values are accepted are in
-`golden/coin-flips.json`. A test recomputes a checksum of the answers, so
+a full re-read: 176). Nine answers where two values are accepted are in
+`golden/coin-flips.json` (eight at the freeze, one added the same day while
+tuning the classifier). A test recomputes a checksum of the answers, so
 the file cannot change silently. The per-story fields above (`bout`,
 `tier`, the kind and speaker of a claim) are not in it; grouping is still
 scored against the claims as ruled.
