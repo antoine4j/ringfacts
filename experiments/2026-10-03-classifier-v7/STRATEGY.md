@@ -207,3 +207,11 @@ exhausted. Then:
 4. The plan page (golden/plan.html) is updated at the top (path, next box,
    footer date) and task 4.25, and republished.
 5. Everything is committed locally. Nothing is pushed.
+
+## Confirmed by the owner before the session (2026-10-03)
+
+- Cleaning the text before classifying is tried as an experiment and
+  reported, not adopted.
+- The plan page and the wording page may be republished at the end.
+- Scripts, commits, classifier calls and web fetches may run without asking.
+- The budget is $3.00 for the night, on top of the $0.18 already spent.
