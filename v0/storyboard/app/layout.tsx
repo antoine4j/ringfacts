@@ -5,7 +5,7 @@ import { Nav } from "../components/Nav.tsx";
 import { THEME_SCRIPT, ThemeSwitch } from "../components/ThemeSwitch.tsx";
 import "./globals.css";
 
-export const metadata = { title: "v0 storyboard", description: "RingFacts v0, read live from its database." };
+export const metadata = { title: "RingFacts storyboard", description: "RingFacts v0, read live from its database." };
 
 // Every page reads the database when it is opened; nothing is built ahead of time.
 export const dynamic = "force-dynamic";
