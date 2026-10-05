@@ -142,7 +142,7 @@ Two themes, one tag each:
   reasoning for leaving Haiku in v0's design.
 
 ## 8. A design doc in hours, a build overnight: building v0 with an autonomous agent
-*Added 2026-10-05 · status: idea · building with AI tools*
+*Added 2026-10-05 · status: briefed ([brief](blog-briefs/8-design-then-overnight-build.md)) · building with AI tools*
 
 - **The problem.** Where the human's time goes when an agent writes the code:
   most of it into the design, very little into the build.
