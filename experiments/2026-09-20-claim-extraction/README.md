@@ -332,3 +332,26 @@ the 195 training and validation articles computed in the same run
 as a finding before the archive run, not a block (no pass mark was ever
 set for the extractor). Which test articles miss is not listed, as for
 the classifier: the test set stays closed.
+
+**The result** (2026-10-05, `python3 test_score.py --final`, run once; the
+script first reproduced the training and validation shortlist figures
+above exactly, so it measures what D22 measured):
+
+| | training and validation (195) | test (105) |
+|---|---|---|
+| 1. shortlist: right claim first / top 3 / top 5 | 93.8% / 97.7% / 98.5% of 130 joins | 92.9% / 97.6% / **97.6%** of 42 joins |
+| 2. AUC, arm 4 against headline and lead | 0.939 against 0.899 | **0.942 against 0.950** |
+| 3. NO CLAIM on career-event articles | 0 of 46 | 0 of 15 |
+| 4. second run wrote a different sentence | 88 of 195 (45%) | 48 of 105 (46%) |
+
+**By the reading written in advance, pass 4 does not hold:** the shortlist
+passes (97.6%, one join of 42 missed), but on the test articles the
+claim sentence in front of the headline and lead no longer separates
+claims better than headline and lead alone. The gap, 0.008, is smaller
+than the standard error of either AUC on 95 same-claim pairs (about 0.017
+by Hanley and McNeil; rough, since pairs share articles), so it says "no
+gain confirmed on unseen articles", not "worse". What v0 relies on, the
+right claim reaching JEV's shortlist, held. Recorded as a finding; it does
+not block the archive run. The sentence's wording is unstable (nearly
+half change on an identical rerun), which matters for the tier-1 message
+more than for grouping.
