@@ -3,7 +3,7 @@
   "private": true,
   "type": "module",
   "description": "v0: the whiteboard design running end to end beside production. Spec: docs/superpowers/specs/2026-10-04-v0-design.md",
-  "workspaces": ["pipeline"],
+  "workspaces": ["pipeline", "storyboard"],
   "scripts": {
     "test": "npm test --workspaces --if-present"
   }

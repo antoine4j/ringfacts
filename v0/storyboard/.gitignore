@@ -1,0 +1,5 @@
+# Next's build output and the type file it writes on every build.
+.next/
+next-env.d.ts
+*.tsbuildinfo
+.vercel
