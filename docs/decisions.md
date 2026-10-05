@@ -954,3 +954,22 @@ stopping new copies (the bodies would stay readable in old commits);
 making the repository private (it is linked publicly, and its `docs/`
 pages are served from it); a `.gitignore` alone (folder patterns written in
 advance are how the text got in; the guard checks the content itself).
+
+## v0-usable-body — v0 classifies an article only when its body has 400 characters or more
+*2026-10-05*
+
+v0 never classifies an article without a usable body (D2 in the v0 spec,
+docs/superpowers/specs/2026-10-04-v0-design.md): the classifier was tuned
+on bodies, and a headline-only answer would be a guess. "Usable" needed a
+line. Measured on production's items table the same day (1,908 articles,
+1,470 with a body): the `og-description` rung, which keeps a page's
+summary tag when nothing better is found, gave 66 bodies averaging 136
+characters (p50 143), while the five real-text rungs give medians of
+2,071 to 3,804. The shortest of the 300 golden-set bodies, the set the
+classifier was tuned and scored on, is 428 characters. 400 keeps every
+body the classifier has seen and drops the summaries. Below the line the
+reading is stored at stage `no_body`, counted, and never classified.
+
+**Considered and rejected:** excluding `og-description` by name (a body
+from a real rung can also be a stub, and a long summary would pass);
+any body at all (summaries would be classified as if they were articles).

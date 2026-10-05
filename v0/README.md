@@ -48,6 +48,27 @@ rolled back):
 node --env-file=../.env.v0 pipeline/store/check-roles.ts
 ```
 
+## A run
+
+`pipeline/run.ts` runs the Mastra workflow once: import production's new
+articles, then Classifier (4), Claim extractor (5), Semantic dedup (6) and
+Decider (7) over every reading waiting at each stage, then post tier 1.
+A reading that fails stays at its stage with its error and is tried
+again next run; after 24 failures in a row it is `stuck`. Each run writes
+one row to `runs` with its counts.
+
+```bash
+cd pipeline
+node --env-file=../../.env.v0 run.ts --dev --import-limit 5   # development: the v0-dev Neon branch, posts printed
+node --env-file=../../.env.v0 run.ts --dev --no-import        # carry on with what is waiting
+node --env-file=../../.env.v0 run.ts --kind hourly            # what the Cloud Run job runs; posts if TELEGRAM_CHAT_ID is set
+```
+
+`--dev` writes to the `v0-dev` branch (a copy of the database for
+development); live tables refuse deletes, so test runs never go there.
+Only `--kind hourly` without `--dev` and without `DRY_RUN` sends to
+Telegram.
+
 ## Tests
 
 ```bash
