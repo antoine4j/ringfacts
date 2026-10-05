@@ -973,3 +973,41 @@ reading is stored at stage `no_body`, counted, and never classified.
 **Considered and rejected:** excluding `og-description` by name (a body
 from a real rung can also be a stub, and a long summary would pass);
 any body at all (summaries would be classified as if they were articles).
+
+## one-config-secret — Production reads its six values from one secret
+*2026-10-05*
+
+Secret Manager's free tier is six active secret versions a month, and
+production's six secrets (bot token, chat ids, webhook secret, database
+address, Anthropic and Gemini keys) filled it, so v0 could not add its own
+without a bill. The project pays for nothing on Google Cloud (D29 in
+docs/superpowers/specs/2026-10-04-v0-design.md).
+
+The six values now sit in one secret, `ringfacts-config`, as one JSON
+object. Every deploy in setup.sh mounts it as `RINGFACTS_CONFIG`, and
+lib/config.js, imported first by hunter.js and server.js, checks all six
+are present and copies each into the variable the code already reads. A
+missing value stops the start rather than letting a run limp on, as
+lib/chat-ids.js already does for the chat ids. Locally there is no
+`RINGFACTS_CONFIG` and nothing changes, so `.env` files and the bench work
+as before. A value already set in the environment is never overwritten.
+
+The merged secret was built from the six without printing a value (`jq
+--rawfile` reads each from Secret Manager, so no value is on a command
+line either), and each field was checked byte for byte against its old
+secret by hash: all six identical. A `DRY_RUN=1` hunter run with an
+otherwise empty environment read the database, fetched feeds and bodies,
+embedded, and asked the matcher, all from the one secret.
+
+Reads fall from about 3,600 a month (each job start read each of its
+secrets) to one per start. The six old secrets stay until the new one has
+carried production for at least a day; only then are their versions
+destroyed, on Anton's word, since that cannot be undone. Until then the
+project holds seven or eight active versions, about $0.002 a day each
+over the free six.
+
+**Considered and rejected:** keeping six and paying for v0's (the rule
+is nothing paid); disabling old versions instead of destroying them
+(Google counts a disabled version as active); one secret per service
+(the job, the server and the mentions job read overlapping values, so it
+would duplicate them).

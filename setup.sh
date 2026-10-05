@@ -111,6 +111,32 @@ for s in telegram-bot-token anthropic-api-key telegram-webhook-secret gemini-api
     --role="roles/secretmanager.secretAccessor"
 done
 
+# --- One configuration secret (docs/decisions.md#one-config-secret) ---------
+# Secret Manager's free tier is six active versions, and the six secrets above
+# filled it. ringfacts-config holds all six values as one JSON object, which
+# every deploy below mounts as RINGFACTS_CONFIG; lib/config.js unpacks it at
+# start. Built once, from the six, without printing a value: --rawfile reads
+# each straight from Secret Manager, so no value is on a command line either.
+# The six old secrets stay until the new one has carried production for a day
+# and Anton says to destroy their versions (that cannot be undone).
+# To change one value later, add a version of ringfacts-config with the new
+# JSON; the old six are no longer read by anything.
+if ! gcloud secrets describe ringfacts-config >/dev/null 2>&1; then
+  jq -n -c \
+    --rawfile token <(gcloud secrets versions access latest --secret=telegram-bot-token) \
+    --rawfile chats <(gcloud secrets versions access latest --secret=telegram-chat-ids) \
+    --rawfile webhook <(gcloud secrets versions access latest --secret=telegram-webhook-secret) \
+    --rawfile database <(gcloud secrets versions access latest --secret=neon-db-url) \
+    --rawfile anthropic <(gcloud secrets versions access latest --secret=anthropic-api-key) \
+    --rawfile gemini <(gcloud secrets versions access latest --secret=gemini-api-key) \
+    '{TELEGRAM_BOT_TOKEN: $token, TELEGRAM_CHAT_IDS: ($chats | fromjson), TELEGRAM_WEBHOOK_SECRET: $webhook,
+      DATABASE_URL: $database, ANTHROPIC_API_KEY: $anthropic, GEMINI_API_KEY: $gemini}' | tr -d '\n' | \
+    gcloud secrets create ringfacts-config --data-file=-
+fi
+gcloud secrets add-iam-policy-binding ringfacts-config \
+  --member="serviceAccount:$RUNTIME_SA" \
+  --role="roles/secretmanager.secretAccessor" >/dev/null
+
 # --- Build + deploy from source ---------------------------------------------
 # Cloud Build builds the Dockerfile in the cloud, pushes to Artifact Registry,
 # Cloud Run serves it. max-instances=1 is the hard cost ceiling (spec §16.4).
@@ -126,7 +152,7 @@ gcloud run deploy "$SERVICE" \
   --clear-env-vars \
   --max-instances=1 \
   --memory=512Mi \
-  --set-secrets=TELEGRAM_BOT_TOKEN=telegram-bot-token:latest,ANTHROPIC_API_KEY=anthropic-api-key:latest,TELEGRAM_WEBHOOK_SECRET=telegram-webhook-secret:latest,TELEGRAM_CHAT_IDS=telegram-chat-ids:latest \
+  --set-secrets=RINGFACTS_CONFIG=ringfacts-config:latest \
   --quiet
 
 SERVICE_URL=$(gcloud run services describe "$SERVICE" --region="$REGION" --format="value(status.url)")
@@ -208,7 +234,7 @@ gcloud run jobs deploy "$JOB" \
   --source . \
   --command node --args hunter.js \
   --clear-env-vars \
-  --set-secrets=TELEGRAM_BOT_TOKEN=telegram-bot-token:latest,DATABASE_URL=neon-db-url:latest,GEMINI_API_KEY=gemini-api-key:latest,ANTHROPIC_API_KEY=anthropic-api-key:latest,TELEGRAM_CHAT_IDS=telegram-chat-ids:latest \
+  --set-secrets=RINGFACTS_CONFIG=ringfacts-config:latest \
   --max-retries=0 \
   --task-timeout=900 \
   --memory=512Mi \
@@ -264,7 +290,7 @@ gcloud run jobs deploy fighterbot-mentions \
   --source . \
   --command node --args hunter.js,--mentions \
   --clear-env-vars \
-  --set-secrets=TELEGRAM_BOT_TOKEN=telegram-bot-token:latest,DATABASE_URL=neon-db-url:latest,TELEGRAM_CHAT_IDS=telegram-chat-ids:latest \
+  --set-secrets=RINGFACTS_CONFIG=ringfacts-config:latest \
   --max-retries=0 \
   --task-timeout=300 \
   --memory=512Mi \

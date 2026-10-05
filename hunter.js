@@ -12,6 +12,7 @@
 //
 // DRY_RUN=1 prints instead of posting and skips DB writes (reads still work).
 
+import "./lib/config.js"; // first: fills the environment from the one config secret (docs/decisions.md#one-config-secret)
 import { sendTelegramMessage, escapeHtml } from "./lib/telegram.js";
 import { openDb } from "./lib/db.js";
 // The namespace IS the test seam: `deps.store` swaps every database call at

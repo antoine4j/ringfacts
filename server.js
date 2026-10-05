@@ -1,6 +1,7 @@
 // RingFacts — dummy responder for end-to-end infrastructure test.
 // One job: Telegram webhook in -> Claude reply out. No tools, no memory, no Mastra yet.
 
+import "./lib/config.js"; // first: fills the environment from the one config secret (docs/decisions.md#one-config-secret)
 import http from "node:http";
 import Anthropic from "@anthropic-ai/sdk";
 import { sendTelegramMessage } from "./lib/telegram.js";
