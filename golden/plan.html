@@ -68,6 +68,17 @@ h2{font-size:24px;text-transform:uppercase;letter-spacing:.06em;color:var(--dim)
 .now-box ol{margin:0;padding-left:22px;display:grid;gap:4px}
 .now-box{border-color:var(--accent)}
 .now-box h3{color:var(--accent)}
+.now-box summary{display:grid;grid-template-columns:auto 1fr;gap:12px;align-items:start;cursor:pointer;list-style:none}
+.now-box summary::-webkit-details-marker{display:none}
+.now-box summary:focus-visible{outline:2px solid var(--accent);outline-offset:4px;border-radius:6px}
+.now-box .fold{width:22px;height:22px;margin-top:2px;border-radius:50%;background:var(--accentbg);position:relative}
+.now-box .fold::before{content:"";position:absolute;left:8px;top:6px;width:6px;height:6px;border-right:2px solid var(--accent);border-bottom:2px solid var(--accent);transform:rotate(-45deg)}
+.now-box[open] .fold::before{transform:rotate(45deg);left:7px;top:5px}
+.now-box .sum{display:grid;gap:4px}
+.now-box .sub{font-size:14px;color:var(--dim)}
+.now-box .v0body{display:grid;gap:8px;margin-top:10px;padding-left:34px}
+@media (max-width:420px){.now-box .v0body{padding-left:0}}
+@media (prefers-reduced-motion:no-preference){.now-box .fold::before{transition:transform .15s}}
 .now-box h4{margin:4px 0 0;font:600 12px var(--body);letter-spacing:.06em;text-transform:uppercase;color:var(--dim)}
 .now-box p{margin:0;max-width:80ch}
 .now-box .later{color:var(--dim);font-size:14px}
@@ -151,7 +162,7 @@ code{font-family:var(--mono);font-size:.9em}
     <ol class="path" id="path"></ol>
   </section>
 
-  <section class="now-box" id="nowbox"></section>
+  <details class="now-box" id="nowbox" open></details>
 
   <p class="lede"><b>Where the work happens now:</b> the Answer Key Check page, <a href="https://claude.ai/artifact/RKAaSMy3eQsse3unLHLDte">claude.ai/artifact/RKAaSMy3eQsse3unLHLDte</a> (every card, your corrections, the readers' hints). The rules in force: <code>golden/rules.md</code>. Your words per ruling: <code>golden/verdicts.md</code>. Readers' prompt beside the classifier's: <a href="https://claude.ai/artifact/JxUPbyomf27dFXeFYBKf3t">the wording page</a>.</p>
 
@@ -162,7 +173,7 @@ code{font-family:var(--mono);font-size:.9em}
     <div class="legend">
       <span><b class="pill v0">v0 · 3</b> in v0, with its place in the v0 order</span>
       <span><b class="pill done">✓ done</b> finished</span>
-      <span><b class="pill next">▶ next</b> the step we are on now</span>
+      <span><b class="pill next">▶ next</b> the first v0 task not done yet</span>
       <span><b class="pill todo">○ to do</b> in scope, not started</span>
       <span><b class="pill parked">‖ parked</b> left for later, on purpose</span>
     </div>
@@ -200,7 +211,7 @@ code{font-family:var(--mono);font-size:.9em}
     </ul>
   </section>
 
-  <footer>Updated 2026-10-04: v0 scoped, 16 tasks, decisions D1–D4; classifier v7 tuned overnight (4.25 done); labels are nine answers per article, checked card by card against 27 named rules (golden/rules.md); tiers come from settings. Source: <code>golden/plan.html</code> in the repo; the rulings behind every "done" are in <code>golden/verdicts.md</code>.</footer>
+  <footer>Updated 2026-10-04: v0 scoped, 17 tasks, decisions D1–D4; classifier v7 tuned overnight (4.25 done); labels are nine answers per article, checked card by card against 27 named rules (golden/rules.md); tiers come from settings. Source: <code>golden/plan.html</code> in the repo; the rulings behind every "done" are in <code>golden/verdicts.md</code>.</footer>
 </div>
 
 <script>
@@ -215,7 +226,7 @@ const PATH = [
   {t:"Check the answer key", s:"75 cards by rule, 27 rules named, whole set re-read blind, a third reading on 26, a spot check of 20: all done 3 Oct", st:"done"},
   {t:"Labels frozen", s:"golden/labels.json, 3 Oct: 300 articles, nine answers each, guarded by a test", st:"done"},
   {t:"Classifier v7.7", s:"tuned 3–4 Oct: all nine right on 62% of training, 50% of validation; frozen for v0 on 4 Oct", st:"done"},
-  {t:"v0: the new design end to end", s:"16 tasks across the stations, in order; decisions D1–D4 taken 4 Oct", st:"now"},
+  {t:"v0: the new design end to end", s:"17 tasks across the stations, in order; decisions D1–D4 taken 4 Oct", st:"now"},
   {t:"Iterate station by station", s:"from v0's baseline, compared by the golden replay and the side-by-side", st:""},
 ];
 
@@ -236,7 +247,7 @@ const V0BOX = {
 // p overrides the priority a status would give (P1 means "next", whatever the kind of work).
 const T = (id, st, task, what, set, station, system, p) => ({id, st, task, what, why:{set, station, system}, p});
 // A v0 task: its place in the v0 order, and why v0 needs it in place of the golden-set reason.
-const V = (id, order, task, what, need, station, system) => ({id, st:"v0", v0:order, task, what, why:{need, station, system}});
+const V = (id, order, task, what, need, station, system, done) => ({id, st:done ? "done" : "v0", v0:order, task, what, why:{need, station, system}});
 
 const STATIONS = [
   {n:0, name:"Frame", role:"What holds the stations together: the store, the hourly runner, the deploy.",
@@ -252,7 +263,7 @@ const STATIONS = [
       "Without it there is no pipeline, only parts.",
       "Replaces today's 'fail open'. In this design the claim row is the product, so an article that skipped a station would stay wrong for good.",
       "A retry costs at most an hour's delay; skipping costs a decision made on half the facts."),
-    V("0.3",14,"Dry run, then deploy as a second hourly job",
+    V("0.3",15,"Dry run, then deploy as a second hourly job",
       "A dry run first, then the setup.sh pattern with the region stated, keys by reference in Secret Manager. JEV and OpenRouter are new to the live pipeline, so your yes comes first.",
       "Turns v0 from a script into something that runs every hour.",
       "Production's job is not touched.",
@@ -403,11 +414,11 @@ const STATIONS = [
       "No label changes.",
       "Decides how the classifier's nine answers are composed before they are scored.",
       "The decider reads the flags; if they can contradict the fact, it needs a rule for that."),
-    T("4.7","later","YOUR GO: score the classifier once on the test third, axis by axis",
-      "v7 is ready (4.25); decide 4.26 and 4.27 first, because the questions are frozen for this. Then one run on the 105 test articles (ROUND=r7 python3 run.py --side test --yes --final, then score.py --round r7 --final; about 3 cents), never repeated. PASS MARKS, adopted 4 Oct as a starting line (decisions.md#classifier-pass-marks): every career-event story (result, next fight or health) has an article recognised (G1); zero rumours called official (G4); false alarms at most 5% of articles with no career event (G2). v7.7 today: G4 passes; G1 8 of 9 stories on training (claim-127, a past infection, is under review with health), 1 of 2 on validation; G2 4.5% and 5.3%. Also reported, with no pass mark: all nine right (exact match ratio), each question's accuracy, every single answer right (Hamming score), each with a 95% interval; precision and recall for the answers that decide posting (result, next fight, health); near misses and pole-to-pole flips counted separately, and either answer counting on a recorded coin flip. Written into decisions.md beside the design. We do not aim at identical answers on every run; we aim at no drastic ones.",
-      "Uses the test labels exactly once, so the number is honest.",
-      "Tells us whether the classifier is good enough or needs work.",
-      "A recorded number instead of an impression."),
+    V("4.7",7,"YOUR GO: score classifier v7.7 once on the test set (105 articles)",
+      "One run on the 105 test articles, never sent before (about 3 cents): the pass marks (G1, G2, G4), all nine right and each question's accuracy, each with its 95% interval, written into decisions.md beside v7.7. Needs your go, because the test set is used once.",
+      "v0 stands on v7.7, and training and validation were both looked at while tuning. Only the test set says how v7.7 does on articles nobody tuned against, so when v0 gets something wrong we know whether to suspect the classifier or the design.",
+      "Seals v7.7 as the classifier's baseline; v8 is compared with it later.",
+      "About 3 cents and ten minutes. The test articles of every other station stay unread."),
     T("4.28","later","Look at three labels where the classifier's reading looks defensible",
       "All three are training articles, so this does not block the test score. #746 (claim-095), 'Daniil Donchenko Octagon Interview', keyed result: by the rule 'result only for an account of the fight itself' a post-fight interview is not a result, unless the saved page also carries the fight report. #655 (claim-066), keyed absent: the headline names him, the body does not; absent or only mentioned? #510 (claim-058), a preview with 'start time, full card and how to watch', keyed no fact: now answered right, but it sits between the preview rule and the fight-week rule. A change goes through errata with a new checksum, never by editing labels.json.",
       "Keeps the key honest where the classifier's reading has a case.",
@@ -452,7 +463,7 @@ const STATIONS = [
   {n:5, name:"Claim extractor", role:"Writes one sentence per article: what happened, and where.",
    verdict:"Extracts are in. Only the bout needs your confirmation; bad extracts get flagged as you meet them.",
    items:[
-    V("5.6",7,"Move the extractor into the pipeline: one extract per article",
+    V("5.6",8,"Move the extractor into the pipeline: one extract per article",
       "The pass-4 prompt from the claim-extraction experiment, on Qwen3.8 Flash via OpenRouter, reading the whole article: kind first, then one sentence stating one fact, occasion, actor, opponent, event, date. Stored per article and never merged (review card 8).",
       "Semantic dedup compares extracts, and the tier-1 message is this sentence.",
       "The same prompt that wrote the 300 golden extracts, so its output is already known.",
@@ -486,12 +497,12 @@ const STATIONS = [
   {n:6, name:"Semantic dedup: grouping into claims", role:"Joins an article to a claim we have, or starts a new one. Grouping articles into claims is this station's job.",
    verdict:"The grouping is ruled and trusted. Similarity alone cannot decide joins; the three-step test comes next.",
    items:[
-    V("6.10",8,"Shortlist the claims an article could belong to",
+    V("6.10",9,"Shortlist the claims an article could belong to",
       "Embed claim + occasion + headline + lead, the best text in 6.3. Candidates: this fighter's claims with an article in the last 7 days, ranked by their closest article; the top 5.",
       "JEV can only choose among a few options; this picks them.",
       "7 days keeps about 92% of the ruled stories whole (review card 2); 6.4 stays open for after v0.",
       "If the right claim is not on the shortlist, the article opens a new claim: a repeat (G3)."),
-    V("6.11",9,"Ask JEV which claim the article belongs to, or none",
+    V("6.11",10,"Ask JEV which claim the article belongs to, or none",
       "Decided 4 Oct (D3), as drawn: one choice question per article, with the shortlisted claims' extracts as options plus 'none of these'. None opens a new claim, labelled with this article's extract.",
       "This is the join-or-new decision; without it every article is a new claim.",
       "Untested: JEV has only answered fixed questions about one article (review card 1). If it cannot do this, that is v0's first finding, and a Haiku chooser is the swap.",
@@ -545,7 +556,7 @@ const STATIONS = [
   {n:7, name:"Decider and settings", role:"Looks up the claim's cell in per-fighter settings to give tier 1, 2 or 3; only a new claim can be tier 1. The settings table is not in the diagram yet.",
    verdict:"Tiers moved to the other side of the split: they come from settings, not from labels. A small tier sample checks the bridge.",
    items:[
-    V("7.5",10,"Settings v0: the classifier's answers decide the tier",
+    V("7.5",11,"Settings v0: the classifier's answers decide the tier",
       "Decided 4 Oct (D1). Tier 1: a result, or a next fight that is reported or official. Tier 2: health, rumours, status updates, remarks, analysis. Tier 3: not about him. One table per fighter, all three alike for now. An article posts when it is the first tier-1 article of its claim, so an official announcement that joins an earlier rumour still posts (review card 4a).",
       "The one thing the design adds that nothing does today: a lookup instead of a judgement.",
       "Rows you tune by hand from what the chat shows.",
@@ -588,7 +599,7 @@ const STATIONS = [
   {n:9, name:"Telegram and storyboard", role:"Where people read it.", outside:true,
    verdict:"Not tested by this set. Who writes the tier-1 message is a design question, not a data one. In v0 it is the extract's sentence plus the link.",
    items:[
-    V("9.1",11,"Post tier 1 to a new test chat; keep tier 2 in a list",
+    V("9.1",12,"Post tier 1 to a new test chat; keep tier 2 in a list",
       "Decided 4 Oct (D4): a chat of its own, so the production test group carries on beside it. The message is the extract's sentence and the link. Tier 2 is stored and listed, not sent, because the digest writer is not in v0. Your part: create the chat and add the bot.",
       "Where you see v0 working.",
       "Two chats side by side are the first comparison.",
@@ -597,22 +608,22 @@ const STATIONS = [
   {n:10, name:"Measurement", role:"How we know whether v0 is better than today, without labelling everything.", 
    verdict:"Built into v0, with little of your time: the golden replay and the daily counts take none, the side-by-side a few minutes a week, the reactions a second per post.",
    items:[
-    V("10.1",12,"Replay the golden articles through v0 before it goes live",
+    V("10.1",13,"Replay the golden articles through v0 before it goes live",
       "The whole pipeline on the training and validation articles in date order, offline. Scored automatically against labels you already made: the classifier's pass marks, grouping against your 128 ruled claims, and which career-event claims got a tier-1 post. The test articles stay unsent.",
       "Shows v0 runs end to end before it touches a live feed.",
       "The same replay runs again after every change, so one version can be compared with the next without new labelling.",
       "Your time: none."),
-    V("10.2",13,"Count every station's work, every day",
-      "Per day and per fighter: links in, repeats dropped, no-body articles, classified, extracted, new claims, joins, tier 1, 2 and 3, posts, articles waiting, failures, cost.",
+    V("10.2",14,"Count every station's work, every day",
+      "Per day and per fighter: links in, repeats dropped, no-body articles, classified, extracted, new claims, joins, tier 1, 2 and 3, posts, articles waiting, failures, cost. Seen as one short message in the v0 chat each morning.",
       "Shows where articles go and where they get stuck.",
       "The no-body count is the test of your reverberation bet.",
       "Your time: none; read it when curious."),
-    V("10.3",15,"List where v0 and production disagree",
-      "Weekly: the articles one pipeline posted at once and the other did not. You judge only those: which one was right.",
+    V("10.3",16,"List where v0 and production disagree",
+      "Weekly: the articles one pipeline posted at once and the other did not. Seen on a review page like Health Levels, one card per disagreement with both decisions, the headline and the link; you click which one was right, and the clicks are saved for the next comparison.",
       "A comparison without labelling everything; where both agree, nobody needs to look.",
       "Your time: a few minutes a week, my estimate; it depends on how often they differ.",
       "Answers 'is v0 better than today?' directly."),
-    V("10.4",16,"A thumbs up or down on each v0 post",
+    V("10.4",17,"A thumbs up or down on each v0 post",
       "React with a thumbs up or down in the chat while reading; the runner collects the reactions every hour. Needs the bot to see reactions in that chat, checked when it is built.",
       "Turns reading the chat into a running count of how many tier-1 posts were worth it (G2).",
       "Your time: a second per post you would read anyway.",
@@ -642,7 +653,10 @@ const RANK = {v0:0, decide:1, label:2, score:3, later:4, done:5};
 const PRIO = {decide:"P1", label:"P2", score:"P3"};
 const prio = i => i.st==="done" || i.st==="later" || i.st==="v0" ? "" : (i.p || PRIO[i.st]);
 const rank = i => prio(i) ? Number(prio(i)[1]) : RANK[i.st];
-const status = i => i.st==="v0" ? ["v0", "v0 · " + i.v0] : prio(i)==="P1" ? STATUS.decide : i.st==="decide" ? STATUS.label : STATUS[i.st];
+// The next task is the first v0 task not yet done.
+const nextV0 = Math.min(...STATIONS.flatMap(s => s.items).filter(i => i.st==="v0").map(i => i.v0));
+const isNext = i => i.st==="v0" && i.v0===nextV0;
+const status = i => isNext(i) ? ["next", "▶ next · v0 " + i.v0] : i.st==="v0" ? ["v0", "v0 · " + i.v0] : i.st==="done" && i.v0 ? ["done", "✓ v0 · " + i.v0] : prio(i)==="P1" ? STATUS.decide : i.st==="decide" ? STATUS.label : STATUS[i.st];
 // Inside a station: v0 tasks first, in v0 order; then P1, P2, P3, parked, done.
 const byRank = (a,b) => rank(a)-rank(b) || (a.v0||0)-(b.v0||0);
 
@@ -652,7 +666,7 @@ const nDone = all.filter(i => i.st==="done").length;
 document.getElementById("stats").innerHTML =
   `<span><b>300</b> articles</span><span><b>128</b> claims</span><span><b>47</b> with more than one article</span>` +
   `<span><b>${nDone}</b> of <b>${all.length}</b> tasks done</span>` +
-  `<span><b>${all.filter(i=>i.st==="v0").length}</b> tasks in v0</span>`;
+  `<span><b>${all.filter(i=>i.v0).length}</b> tasks in v0, <b>${all.filter(i=>i.v0 && i.st==="done").length}</b> done</span>`;
 
 // The path
 document.getElementById("path").innerHTML = PATH.map((p,i) =>
@@ -661,13 +675,19 @@ document.getElementById("path").innerHTML = PATH.map((p,i) =>
 // Now box
 // The v0 box: the goal, the decisions, then every v0 task in order, with its station
 const v0Tasks = STATIONS.flatMap(st => st.items.filter(i => i.st==="v0").map(i => ({...i, station:st}))).sort((a,b) => a.v0-b.v0);
-document.getElementById("nowbox").innerHTML = `<h3>${esc(V0BOX.goal)}</h3><p>${esc(V0BOX.proves)}</p>
+const nextTask = v0Tasks.find(i => i.v0===nextV0);
+document.getElementById("nowbox").innerHTML = `<summary><span class="fold" aria-hidden="true"></span><span class="sum"><h3>${esc(V0BOX.goal)}</h3><span class="sub">${v0Tasks.filter(i=>i.st==="done").length} of ${v0Tasks.length} done${nextTask ? ` · next: <span class="id">${nextTask.id}</span> ${esc(nextTask.task)}` : ""}</span></span></summary>
+  <div class="v0body"><p>${esc(V0BOX.proves)}</p>
   <h4>Decided 4 Oct</h4><ul class="decisions">${V0BOX.decisions.map(([id,t]) => `<li><b>${id}</b> ${esc(t)}</li>`).join("")}</ul>
   <h4>The order</h4><ol class="v0order">${v0Tasks.map(i => `<li><span class="id">${i.id}</span> ${esc(i.task)} <span class="where">${i.station.n} · ${esc(i.station.name)}</span></li>`).join("")}</ol>
-  <p>${esc(V0BOX.measure)}</p><p class="later">${esc(V0BOX.later)}</p>`;
+  <p>${esc(V0BOX.measure)}</p><p class="later">${esc(V0BOX.later)}</p></div>`;
+// Open or folded is remembered per viewer, if storage allows
+const box = document.getElementById("nowbox");
+try { if (localStorage.getItem("golden-plan-v0-open")==="no") box.open = false; } catch(e) {}
+box.addEventListener("toggle", () => { try { localStorage.setItem("golden-plan-v0-open", box.open ? "yes" : "no"); } catch(e) {} });
 
 // Stations, each task expandable with its three reasons
-const task = i => `<li class="${i.st==="done"?"is-done":""}${i.st==="v0"?" is-v0":""}" data-st="${prio(i)==="P1"?"decide":i.st}"><details><summary><span class="id">${i.id}</span><span class="pill ${status(i)[0]}">${status(i)[1]}</span><span class="txt">${prio(i)?`<b class="prio p${rank(i)}">${prio(i)}</b> `:""}${esc(i.task)}${KIND[i.st]?` <span class="kind">${KIND[i.st]}</span>`:""}</span></summary>
+const task = i => `<li class="${i.st==="done"?"is-done":""}${i.st==="v0"?" is-v0":""}" data-st="${prio(i)==="P1" || isNext(i) ?"decide":i.st}"${i.v0?' data-v0="1"':""}><details><summary><span class="id">${i.id}</span><span class="pill ${status(i)[0]}">${status(i)[1]}</span><span class="txt">${prio(i)?`<b class="prio p${rank(i)}">${prio(i)}</b> `:""}${esc(i.task)}${KIND[i.st]?` <span class="kind">${KIND[i.st]}</span>`:""}</span></summary>
   <div class="why">${i.what?`<p class="what">${esc(i.what)}</p>`:""}
   <dl>${i.st==="v0" ? `<dt>Why v0 needs it</dt><dd>${esc(i.why.need)}</dd>` : `<dt>For the golden set</dt><dd>${esc(i.why.set)}</dd>`}<dt>For this station</dt><dd>${esc(i.why.station)}</dd><dt>For the system</dt><dd>${esc(i.why.system)}</dd></dl></div></details></li>`;
 document.getElementById("pipe").innerHTML = [...STATIONS].sort((a,b) => a.n-b.n).map(s => {
@@ -699,7 +719,7 @@ function apply(f){
   buttons.forEach(b => b.setAttribute("aria-pressed", String(b.dataset.f===f)));
   document.querySelectorAll("ul.items li").forEach(li => {
     const st = li.dataset.st;
-    li.hidden = !(f==="all" || (f==="v0" && st==="v0") || (f==="done" && st==="done") || (f==="decide" && st==="decide") || (f==="later" && st==="later") || (f==="open" && st!=="done" && st!=="later"));
+    li.hidden = !(f==="all" || (f==="v0" && li.dataset.v0) || (f==="done" && st==="done") || (f==="decide" && st==="decide") || (f==="later" && st==="later") || (f==="open" && st!=="done" && st!=="later"));
   });
   document.querySelectorAll(".st").forEach(card => {
     const lis = [...card.querySelectorAll("ul.items li")];
