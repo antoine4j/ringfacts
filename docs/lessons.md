@@ -450,6 +450,20 @@ Rules for adding to it:
   itself predicts Donchenko wins. Anton found it by opening the page
   (2026-09-23). Three of 300 bodies read as CSS by brace density; #655 is
   the clear case. A scraping defect wearing a classifier costume.
+- **Evidence (v0, 2026-10-05):** the share is not even across fighters, and
+  it is worst where the feed is thinnest. Over production's whole archive
+  (30 Jul – 5 Oct) as v0 read it, readings with under 400 characters of
+  body: **Amosov 110 of 152 (72%), Donchenko 75 of 180 (42%), Topuria 339
+  of 1,612 (21%)**. Of the 554, 270 were refused outright (HTTP 403), 93
+  failed to decode Google's link, 66 yielded only a ~140-character
+  og:description. Some outlets have never yielded a body: Tribuna.com 0 of
+  31, Ukr.net 0 of 27 (an aggregator: summary only), Eurosport 0 of 38,
+  Sherdog 2 of 48. In v0's first live week Amosov's digest had 2 items and
+  Donchenko's 1 because 23 of 28 and 8 of 9 of their articles could not be
+  read, not because claims were dropped.
+- **Does not say:** that the unread articles mattered; many are repeats in
+  other outlets. **Would overturn it:** the same counts after the fetcher
+  changes, or a sample of the unread showing they carry nothing new.
 
 ### Boilerplate contaminates the text; a focused excerpt around the subject beats a prefix
 `domain` · `measured` · **found independently by both, RF tested it** · *RF-L09; FB 2026-09-20*
