@@ -1,5 +1,6 @@
 // Claims: every piece of news v0 grouped its readings into, newest activity
-// first. Each claim opens to its readings in date order.
+// first (or newest claim, or most outlets). Each claim says whether it was
+// posted, went out in a digest, or neither, and opens to its readings.
 
 import Link from "next/link";
 import { ClaimReadings } from "../components/ClaimReadings.tsx";
@@ -7,8 +8,8 @@ import { Empty } from "../components/bits.tsx";
 import { FeedbackForm } from "../components/FeedbackForm.tsx";
 import { FilterBar } from "../components/FilterBar.tsx";
 import { query } from "../lib/db.ts";
-import { claimFilter, whereSql, type Params } from "../lib/filters.ts";
-import { pacificTime } from "../lib/format.ts";
+import { claimFilter, claimOrder, whereSql, type Params } from "../lib/filters.ts";
+import { shortTime } from "../lib/format.ts";
 import { claimMembers, fighterNames, outletNames, type ClaimRow, type MemberRow } from "../lib/queries.ts";
 import { schemaFrom, schemaSuffix, type Schema } from "../lib/schema.ts";
 
@@ -29,16 +30,27 @@ export default async function ClaimsPage({ searchParams }: { searchParams: Promi
   const filter = claimFilter(params);
   const claims = await query<ClaimRow>(
     schema,
-    `SELECT cn.* FROM claim_now cn ${whereSql(filter)} ORDER BY cn.last_published DESC NULLS LAST, cn.id DESC LIMIT ${LIMIT}`,
+    `SELECT cn.* FROM claim_now cn ${whereSql(filter)} ORDER BY ${claimOrder(params)} LIMIT ${LIMIT}`,
     filter.values,
   );
   const members = await claimMembers(schema, claims.map((claim) => claim.id));
+
+  // The latest posted digest that used each claim.
+  const digested = await query<InDigest>(
+    schema,
+    `SELECT DISTINCT ON (dc.claim_id) dc.claim_id, d.id AS digest_id, d.period_end
+     FROM digest_claims dc JOIN digests d ON d.id = dc.digest_id
+     WHERE dc.used AND d.posted_at IS NOT NULL AND dc.claim_id = ANY($1::bigint[])
+     ORDER BY dc.claim_id, d.period_end DESC`,
+    [claims.map((claim) => claim.id)],
+  );
+  const digestOf = new Map(digested.map((row) => [row.claim_id, row]));
   const [fighters, outlets] = await Promise.all([fighterNames(schema), outletNames(schema)]);
 
   return (
     <>
       <h1>Claims</h1>
-      <FilterBar path="/" params={params} schema={schema} fighters={fighters} outlets={outlets} />
+      <FilterBar path="/" params={params} schema={schema} fighters={fighters} outlets={outlets} claimOptions />
       <p className="muted small">
         {claims.length} claim{claims.length === 1 ? "" : "s"}
         {claims.length === LIMIT ? ` (the first ${LIMIT})` : ""}. Dates, outlet and tier match a claim when any of its readings matches. A pick under 50% is
@@ -46,21 +58,25 @@ export default async function ClaimsPage({ searchParams }: { searchParams: Promi
       </p>
       {claims.length === 0 && <Empty>No claims match.</Empty>}
       {claims.map((claim) => (
-        <ClaimCard key={claim.id} claim={claim} rows={members.get(claim.id) ?? []} schema={schema} />
+        <ClaimCard key={claim.id} claim={claim} rows={members.get(claim.id) ?? []} digest={digestOf.get(claim.id) ?? null} schema={schema} />
       ))}
     </>
   );
 }
+
+/** The latest posted digest that used a claim. */
+type InDigest = { claim_id: string; digest_id: string; period_end: Date };
 
 /**
  * One claim, folded: its labels and numbers on top, its readings inside.
  *
  * @param props.claim  The claim.
  * @param props.rows  Its readings, oldest first.
+ * @param props.digest  The latest posted digest that used it, or null.
  * @param props.schema  Kept on links.
  * @returns The card.
  */
-function ClaimCard({ claim, rows, schema }: { claim: ClaimRow; rows: MemberRow[]; schema: Schema }) {
+function ClaimCard({ claim, rows, digest, schema }: { claim: ClaimRow; rows: MemberRow[]; digest: InDigest | null; schema: Schema }) {
   // A join is doubtful when the pick that made it was under 50% sure.
   const doubtful = rows.filter((row) => typeof row.pick?.confidence === "number" && row.pick.confidence < 0.5).length;
   const labelChanged = claim.current_label !== claim.label;
@@ -76,9 +92,10 @@ function ClaimCard({ claim, rows, schema }: { claim: ClaimRow; rows: MemberRow[]
             {claim.readings} readings · {claim.outlets} outlets
           </span>
           <span>
-            {pacificTime(claim.first_published)} → {pacificTime(claim.last_published)}
+            first {shortTime(claim.first_published)}
+            {claim.last_published && String(claim.last_published) !== String(claim.first_published) ? ` · latest ${shortTime(claim.last_published)}` : ""}
           </span>
-          {claim.posted_reading_id ? <span className="tag good">posted (#{claim.posted_reading_id})</span> : <span>not posted</span>}
+          <ClaimStatus claim={claim} digest={digest} schema={schema} />
           {doubtful > 0 && <span className="tag warn">{doubtful} doubtful join{doubtful === 1 ? "" : "s"} ⚠</span>}
           <Link href={`/claims/${claim.id}${schemaSuffix(schema)}`}>claim #{claim.id} →</Link>
         </div>
@@ -87,4 +104,24 @@ function ClaimCard({ claim, rows, schema }: { claim: ClaimRow; rows: MemberRow[]
       <FeedbackForm target="claim" id={claim.id} schema={schema} fields={["grouping", "label", "current_label", "claim"]} label="feedback on this claim" />
     </details>
   );
+}
+
+/**
+ * Where a claim went: its own post, a digest, or neither.
+ *
+ * @param props.claim  The claim.
+ * @param props.digest  The latest posted digest that used it, or null.
+ * @param props.schema  Kept on the link.
+ * @returns A tag.
+ */
+function ClaimStatus({ claim, digest, schema }: { claim: ClaimRow; digest: InDigest | null; schema: Schema }) {
+  if (claim.posted_reading_id) return <span className="tag good">posted</span>;
+  if (digest) {
+    return (
+      <Link className="tag" href={`/digests?fighter=${encodeURIComponent(claim.fighter)}${schema === "replay" ? "&schema=replay" : ""}#digest-${digest.digest_id}`}>
+        in digest · week to {shortTime(digest.period_end).split(" ").slice(0, 2).join(" ")}
+      </Link>
+    );
+  }
+  return <span className="muted">not sent</span>;
 }

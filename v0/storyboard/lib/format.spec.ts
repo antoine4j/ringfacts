@@ -1,6 +1,6 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
-import { dollars, failures, pacificDay, pacificTime, percent } from "./format.ts";
+import { dollars, failures, pacificDay, pacificTime, percent, shortTime } from "./format.ts";
 
 test("times are shown in Pacific time", () => {
   assert.equal(pacificTime("2026-10-05T05:05:07Z"), "2026-10-04 22:05");
@@ -24,4 +24,9 @@ test("failures collect flat and nested counts, non-zero only", () => {
 test("a confidence shows as a whole percentage", () => {
   assert.equal(percent(0.876), "88%");
   assert.equal(percent(null), "");
+});
+
+test("a short time is day, month and time in Pacific", () => {
+  assert.equal(shortTime("2026-09-30T01:00:00Z"), "29 Sep 18:00");
+  assert.equal(shortTime(null), "");
 });

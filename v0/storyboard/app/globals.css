@@ -196,3 +196,29 @@ pre.json { background: var(--panel); padding: 8px; border-radius: 4px; overflow-
 .column-digest.picked { border: 2px solid var(--accent); }
 .column-digest h2 { margin: 0 0 4px; }
 .digest-text { margin-top: 6px; }
+
+/* A claim's readings: a table on a wide screen, the headline and sentence widest;
+   stacked blocks on a phone, so nothing runs past the card's edge. */
+.readings { margin: 6px 0 4px; font-size: 13px; }
+.reading { display: grid; grid-template-columns: 82px 104px minmax(0, 1.2fr) minmax(0, 1.5fr) 150px; gap: 4px 10px; padding: 6px 0; border-top: 1px solid var(--line); align-items: start; }
+.reading.head { font-size: 11px; font-weight: 600; color: var(--muted); border-top: 0; padding-top: 0; }
+.reading .when { font-variant-numeric: tabular-nums; color: var(--muted); font-size: 12px; }
+.reading .sentence { color: var(--muted); }
+.reading .tags { display: flex; flex-wrap: wrap; gap: 3px 6px; align-items: center; }
+@media (max-width: 700px) {
+  .reading.head { display: none; }
+  .reading { grid-template-columns: auto 1fr; grid-template-areas: "when outlet" "tags tags" "headline headline" "sentence sentence"; gap: 3px 8px; }
+  .reading .when { grid-area: when; }
+  .reading .when br { display: none; }
+  .reading .outlet { grid-area: outlet; font-weight: 600; }
+  .reading .tags { grid-area: tags; }
+  .reading .headline { grid-area: headline; }
+  .reading .sentence { grid-area: sentence; }
+}
+
+/* On a phone the filter bar is one row that swipes sideways, and the answers panel opens below it. */
+@media (max-width: 700px) {
+  .filters { flex-wrap: nowrap; overflow-x: auto; scrollbar-width: none; }
+  .filters > * { flex: none; }
+  .filters .more-panel { position: fixed; top: calc(var(--top-h) + var(--filters-h, 40px)); left: 8px; right: 8px; max-height: 60vh; overflow-y: auto; }
+}

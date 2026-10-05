@@ -1,4 +1,7 @@
 // The readings of one claim, in date order, as the claims pages show them.
+// On a wide screen a table, the headline and the extract sentence side by side
+// and widest; on a phone each reading stacks: date, outlet and tags, then the
+// headline, then the sentence (globals.css, .readings).
 
 import Link from "next/link";
 import { pacificTime } from "../lib/format.ts";
@@ -7,33 +10,33 @@ import { schemaSuffix, type Schema } from "../lib/schema.ts";
 import { PickTag, TierTag, PostedTag } from "./bits.tsx";
 
 /**
- * A table of a claim's readings: headline, outlet, date, tier, cell, pick and extract sentence.
+ * A claim's readings: published, outlet, headline, extract sentence, tier, cell and pick.
  *
  * @param props.rows  The readings, oldest first.
  * @param props.schema  Kept on the links to each reading.
  * @param props.postedReadingId  The reading that was posted for the claim, if any.
- * @returns The table.
+ * @returns The list.
  */
 export function ClaimReadings({ rows, schema, postedReadingId }: { rows: MemberRow[]; schema: Schema; postedReadingId: string | null }) {
   return (
-    <table>
-      <thead>
-        <tr>
-          <th>published</th>
-          <th>outlet</th>
-          <th>headline</th>
-          <th>tier</th>
-          <th>cell</th>
-          <th>pick</th>
-          <th>extract sentence</th>
-        </tr>
-      </thead>
-      <tbody>
-        {rows.map((row) => (
-          <tr key={row.reading_id}>
-            <td className="nowrap">{pacificTime(row.published_at)}</td>
-            <td>{row.outlet}</td>
-            <td>
+    <div className="readings">
+      <div className="reading head" aria-hidden="true">
+        <span className="when">published</span>
+        <span className="outlet">outlet</span>
+        <span className="headline">headline</span>
+        <span className="sentence">extract sentence</span>
+        <span className="tags">tier · cell · pick</span>
+      </div>
+      {rows.map((row) => {
+        const [day, time] = pacificTime(row.published_at).split(" ");
+        return (
+          <div className="reading" key={row.reading_id}>
+            <span className="when">
+              {day} <br />
+              {time}
+            </span>
+            <span className="outlet">{row.outlet}</span>
+            <span className="headline">
               <a href={row.url} target="_blank" rel="noreferrer">
                 {row.headline}
               </a>{" "}
@@ -41,18 +44,16 @@ export function ClaimReadings({ rows, schema, postedReadingId }: { rows: MemberR
                 #{row.reading_id}
               </Link>
               {row.reading_id === postedReadingId && <PostedTag reaction={row.reaction} />}
-            </td>
-            <td>
+            </span>
+            <span className="sentence">{row.sentence}</span>
+            <span className="tags">
               <TierTag tier={row.tier} />
-            </td>
-            <td className="small">{row.cell}</td>
-            <td>
+              {row.cell && <span className="small muted">{row.cell}</span>}
               <PickTag pick={row.pick} />
-            </td>
-            <td className="small">{row.sentence}</td>
-          </tr>
-        ))}
-      </tbody>
-    </table>
+            </span>
+          </div>
+        );
+      })}
+    </div>
   );
 }

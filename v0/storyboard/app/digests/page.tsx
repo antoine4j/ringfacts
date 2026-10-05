@@ -98,7 +98,7 @@ function DigestCard({ digest, given, feedback, schema }: { digest: DigestRow; gi
   const used = given.filter((claim) => claim.used);
   const leftOut = given.filter((claim) => !claim.used);
   return (
-    <section className="claim">
+    <section className="claim" id={`digest-${digest.id}`}>
       <h2>
         #{digest.id} {digest.fighter}{" "}
         <span className="muted small">

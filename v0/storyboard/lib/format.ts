@@ -28,6 +28,20 @@ export function pacificTime(moment: Date | string | null | undefined): string {
   return timeFormat.format(new Date(moment));
 }
 
+const MONTHS = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+
+/**
+ * A moment as a short Pacific day and time, for tight spaces.
+ *
+ * @param moment  A Date, an ISO string, or nothing.
+ * @returns For example "29 Sep 18:00"; "" when there is no moment.
+ */
+export function shortTime(moment: Date | string | null | undefined): string {
+  const full = pacificTime(moment);
+  if (!full) return "";
+  return `${Number(full.slice(8, 10))} ${MONTHS[Number(full.slice(5, 7)) - 1]} ${full.slice(11, 16)}`;
+}
+
 /**
  * A moment as its Pacific calendar day.
  *

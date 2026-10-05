@@ -1,6 +1,6 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
-import { answerFilters, claimFilter, linkWith, readingFilter, whereSql } from "./filters.ts";
+import { answerFilters, claimFilter, claimOrder, linkWith, readingFilter, whereSql } from "./filters.ts";
 
 test("no filters give no WHERE clause", () => {
   assert.equal(whereSql(readingFilter({})), "");
@@ -53,4 +53,16 @@ test("a date range becomes two bounds on the Pacific day", () => {
 
 test("the date keys are never read as classifier answers", () => {
   assert.deepEqual(answerFilters({ when: "last_week", from: "2026-09-01", to: "2026-09-02" }), []);
+});
+
+test("in a digest means a posted digest used the claim; it is a claim filter, not a reading one", () => {
+  const filter = claimFilter({ digest: "no", tier: "2" });
+  assert.match(whereSql(filter), /^WHERE NOT EXISTS \(SELECT 1 FROM digest_claims dc JOIN digests d .* d\.posted_at IS NOT NULL\) AND EXISTS \(SELECT 1 FROM groupings/);
+  assert.deepEqual(filter.values, [2]);
+});
+
+test("the claims sort is one of three fixed orders", () => {
+  assert.match(claimOrder({}), /^cn\.last_published DESC/);
+  assert.match(claimOrder({ sort: "outlets" }), /^cn\.outlets DESC/);
+  assert.match(claimOrder({ sort: "1; DROP TABLE claims" }), /^cn\.last_published DESC/);
 });

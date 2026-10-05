@@ -6,7 +6,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import { describeRange, PERIODS } from "../lib/dates.ts";
-import { dateFilter, param, STAGES, type Params } from "../lib/filters.ts";
+import { CLAIM_SORTS, dateFilter, param, STAGES, type Params } from "../lib/filters.ts";
 import type { Schema } from "../lib/schema.ts";
 
 /** What the bar offers; stage and answers only where the page supports them. */
@@ -18,6 +18,7 @@ type Props = {
   outlets: string[];
   stages?: boolean;
   answers?: Record<string, string[]>;
+  claimOptions?: boolean;
 };
 
 /**
@@ -50,9 +51,10 @@ function dropEmpty(event: { currentTarget: HTMLFormElement }): void {
  * @param props.outlets  Outlet suggestions.
  * @param props.stages  Whether to offer the stage filter.
  * @param props.answers  Classifier answer name → values seen, when the page filters on answers.
+ * @param props.claimOptions  The claims page: offer "in a digest" and the sort.
  * @returns The form.
  */
-export function FilterBar({ path, params, schema, fighters, outlets, stages = false, answers }: Props) {
+export function FilterBar({ path, params, schema, fighters, outlets, stages = false, answers, claimOptions = false }: Props) {
   // The bar's height, so table headers stick just below it (globals.css, --filters-h).
   const form = useRef<HTMLFormElement>(null);
   useEffect(() => {
@@ -71,7 +73,7 @@ export function FilterBar({ path, params, schema, fighters, outlets, stages = fa
 
   // Which filters are set, for the highlight and the clear link.
   const chosenAnswers = Object.keys(answers ?? {}).filter((name) => param(params, name));
-  const isFiltered = ["fighter", "when", "day", "outlet", "tier", "posted", "stage", "history"].some((key) => param(params, key)) || chosenAnswers.length > 0;
+  const isFiltered = ["fighter", "when", "day", "outlet", "tier", "posted", "digest", "stage", "history", "sort"].some((key) => param(params, key)) || chosenAnswers.length > 0;
 
   return (
     <form ref={form} className="filters" method="get" action={path} onSubmit={dropEmpty}>
@@ -95,6 +97,19 @@ export function FilterBar({ path, params, schema, fighters, outlets, stages = fa
       </datalist>
       <Choice name="tier" placeholder="any tier" value={param(params, "tier")} options={["1", "2", "3", "none"]} prefix="tier " />
       <Choice name="posted" placeholder="posted or not" value={param(params, "posted")} options={["yes", "no"]} prefix="posted: " />
+      {claimOptions && <Choice name="digest" placeholder="in a digest or not" value={param(params, "digest")} options={["yes", "no"]} prefix="in a digest: " />}
+      {claimOptions && (
+        <select name="sort" defaultValue={param(params, "sort")} onChange={apply} className={param(params, "sort") ? "set" : ""} aria-label="sort">
+          <option value="">newest activity</option>
+          {Object.entries(CLAIM_SORTS)
+            .filter(([key]) => key !== "activity")
+            .map(([key, sort]) => (
+              <option key={key} value={key}>
+                {sort.label}
+              </option>
+            ))}
+        </select>
+      )}
       {stages && <Choice name="stage" placeholder="any stage" value={param(params, "stage")} options={["waiting", ...STAGES]} prefix="stage: " />}
       {stages && <Choice name="history" placeholder="live and archive" value={param(params, "history")} options={["yes", "no"]} prefix="archive: " />}
       {answers && (

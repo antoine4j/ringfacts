@@ -17,7 +17,7 @@ export const WAITING_STAGES = ["classify", "extract", "group", "decide"];
 export const STAGES = ["no_body", ...WAITING_STAGES, "done", "stuck"];
 
 /** Address keys that are filters of their own, so they are never read as a classifier answer. */
-const RESERVED_KEYS = new Set(["fighter", "day", "when", "from", "to", "outlet", "tier", "posted", "stage", "history", "claim", "schema", "limit", "open"]);
+const RESERVED_KEYS = new Set(["fighter", "day", "when", "from", "to", "digest", "sort", "outlet", "tier", "posted", "stage", "history", "claim", "schema", "limit", "open"]);
 
 /** What a classifier answer's name may look like in the address. */
 const ANSWER_NAME = /^[a-z][a-z_]{0,39}$/;
@@ -200,10 +200,16 @@ export function claimFilter(params: Params): SqlFilter {
   if (posted === "yes") addCondition(filter, "cn.posted_reading_id IS NOT NULL");
   if (posted === "no") addCondition(filter, "cn.posted_reading_id IS NULL");
 
+  // In a digest means a digest that reached the chat used the claim.
+  const inDigest = "EXISTS (SELECT 1 FROM digest_claims dc JOIN digests d ON d.id = dc.digest_id WHERE dc.claim_id = cn.id AND dc.used AND d.posted_at IS NOT NULL)";
+  const digest = param(params, "digest");
+  if (digest === "yes") addCondition(filter, inDigest);
+  if (digest === "no") addCondition(filter, `NOT ${inDigest}`);
+
   // Day, outlet, tier and answers: the claim has a reading that matches them all.
   // The member conditions share the values list, so their placeholders keep counting.
   const members: SqlFilter = { conditions: [], values: filter.values };
-  const memberParams: Params = { ...params, fighter: undefined, posted: undefined, stage: undefined };
+  const memberParams: Params = { ...params, fighter: undefined, posted: undefined, digest: undefined, stage: undefined };
   addReadingConditions(members, memberParams, "m");
   if (members.conditions.length > 0) {
     const memberWhere = members.conditions.join(" AND ");
@@ -232,4 +238,21 @@ export function linkWith(path: string, params: Params, changes: Record<string, s
   }
   const query = search.toString();
   return query ? `${path}?${query}` : path;
+}
+
+/** The claims page's orders: address value → words and SQL, the SQL fixed here. */
+export const CLAIM_SORTS: Record<string, { label: string; sql: string }> = {
+  activity: { label: "newest activity", sql: "cn.last_published DESC NULLS LAST, cn.id DESC" },
+  new: { label: "newest claim", sql: "cn.first_published DESC NULLS LAST, cn.id DESC" },
+  outlets: { label: "most outlets", sql: "cn.outlets DESC, cn.last_published DESC NULLS LAST, cn.id DESC" },
+};
+
+/**
+ * The ORDER BY for the claims page.
+ *
+ * @param params  The query string; ?sort=new or ?sort=outlets, newest activity otherwise.
+ * @returns The SQL after ORDER BY.
+ */
+export function claimOrder(params: Params): string {
+  return (CLAIM_SORTS[param(params, "sort")] ?? CLAIM_SORTS.activity).sql;
 }
