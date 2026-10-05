@@ -7,6 +7,7 @@
   --muted: #69707a;
   --line: #dde1e6;
   --accent: #2357c6;
+  --accent-bg: #e6edfb;
   --post: #1d7a3e;
   --digest: #8a5a00;
   --drop: #8a8f98;
@@ -18,14 +19,16 @@
   color-scheme: light;
 }
 
+/* Dark when the system is dark and no light theme was chosen, or when dark was chosen (ThemeSwitch). */
 @media (prefers-color-scheme: dark) {
-  :root {
+  :root:not([data-theme="light"]) {
     --bg: #15171a;
     --panel: #1e2125;
     --text: #e3e6ea;
     --muted: #9198a1;
     --line: #2f343a;
     --accent: #7aa7ff;
+    --accent-bg: #1f2c47;
     --post: #5fcf86;
     --digest: #e0ad4f;
     --drop: #8d939b;
@@ -37,6 +40,27 @@
     color-scheme: dark;
   }
 }
+:root[data-theme="dark"] {
+  --bg: #15171a;
+  --panel: #1e2125;
+  --text: #e3e6ea;
+  --muted: #9198a1;
+  --line: #2f343a;
+  --accent: #7aa7ff;
+  --accent-bg: #1f2c47;
+  --post: #5fcf86;
+  --digest: #e0ad4f;
+  --drop: #8d939b;
+  --warn-bg: #3a3017;
+  --warn-text: #f2cf86;
+  --bad-bg: #3f1d1d;
+  --bad-text: #ff9b9b;
+  --good-bg: #183323;
+  color-scheme: dark;
+}
+
+/* The heights of the pinned bars: the header is fixed, the filter bar measures itself. */
+:root { --top-h: 40px; }
 
 * { box-sizing: border-box; }
 
@@ -57,12 +81,13 @@ h2 { font-size: 16px; margin: 20px 0 6px; }
 h3 { font-size: 14px; margin: 14px 0 4px; }
 
 .top {
-  display: flex; flex-wrap: wrap; align-items: center; gap: 12px;
-  padding: 8px 16px; border-bottom: 1px solid var(--line); background: var(--panel);
+  position: sticky; top: 0; z-index: 30; height: var(--top-h);
+  display: flex; flex-wrap: nowrap; align-items: center; gap: 10px;
+  padding: 0 16px; border-bottom: 1px solid var(--line); background: var(--panel);
 }
-.brand { margin-right: 8px; }
-.nav { display: flex; flex-wrap: wrap; gap: 4px; flex: 1; }
-.nav a { padding: 3px 9px; border-radius: 4px; color: var(--text); }
+.brand { margin-right: 4px; }
+.nav { display: flex; flex-wrap: nowrap; gap: 2px; flex: 1; min-width: 0; white-space: nowrap; overflow-x: auto; scrollbar-width: none; }
+.nav a { padding: 2px 8px; border-radius: 4px; color: var(--text); }
 .nav a.current { background: var(--accent); color: var(--bg); }
 .nav a.schema { margin-left: auto; color: var(--muted); font-size: 12px; }
 .nav a.schema.replay { background: var(--warn-bg); color: var(--warn-text); }
@@ -74,12 +99,37 @@ h3 { font-size: 14px; margin: 14px 0 4px; }
 
 table { border-collapse: collapse; width: 100%; margin: 4px 0 12px; }
 th, td { border-bottom: 1px solid var(--line); padding: 4px 6px; text-align: left; vertical-align: top; }
-th { font-weight: 600; font-size: 12px; color: var(--muted); background: var(--panel); position: sticky; top: 0; }
+th { font-weight: 600; font-size: 12px; color: var(--muted); background: var(--panel); position: sticky; top: calc(var(--top-h) + var(--filters-h, 0px)); z-index: 5; }
 td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; }
 tr.dim td { color: var(--muted); }
 
-.filters { display: flex; flex-wrap: wrap; gap: 8px; align-items: end; padding: 8px; background: var(--panel); border-radius: 6px; margin-bottom: 10px; }
-.filters label { display: flex; flex-direction: column; font-size: 11px; color: var(--muted); gap: 2px; }
+/* The filter bar: one slim row pinned under the header; a set filter is tinted. */
+.filters {
+  position: sticky; top: var(--top-h); z-index: 20;
+  display: flex; flex-wrap: wrap; gap: 6px; align-items: center;
+  margin: -12px -16px 10px; padding: 6px 16px; background: var(--bg);
+  border-bottom: 1px solid var(--line);
+}
+.filters select, .filters input { padding: 2px 6px; height: 26px; }
+.filters .set { border-color: var(--accent); background: var(--accent-bg); color: var(--accent); font-weight: 600; }
+.filters .dates { display: inline-flex; align-items: center; gap: 4px; }
+.filters input[type="date"] { width: 122px; font-size: 12px; }
+.filters .range { font-size: 12px; color: var(--accent); white-space: nowrap; }
+.filters .clear { font-size: 12px; margin-left: 4px; }
+.filters .more { position: relative; }
+.filters .more > summary { list-style: none; height: 26px; display: flex; align-items: center; padding: 0 8px; border: 1px solid var(--line); border-radius: 4px; background: var(--bg); font-size: 13px; }
+.filters .more > summary::-webkit-details-marker { display: none; }
+.filters .more.set > summary { border-color: var(--accent); background: var(--accent-bg); color: var(--accent); font-weight: 600; }
+.filters .more-panel {
+  position: absolute; top: 30px; left: 0; z-index: 40; display: grid; grid-template-columns: max-content auto; gap: 4px 10px; align-items: center;
+  padding: 10px; background: var(--bg); border: 1px solid var(--line); border-radius: 6px; box-shadow: 0 6px 24px rgb(0 0 0 / 0.18);
+}
+.filters .more-panel label { display: contents; font-size: 12px; color: var(--muted); }
+
+/* The theme switch: three small segments at the header's right end. */
+.theme { display: inline-flex; border: 1px solid var(--line); border-radius: 999px; overflow: hidden; flex: none; }
+.theme button { border: 0; border-radius: 0; background: transparent; color: var(--muted); font-size: 12px; padding: 2px 9px; }
+.theme button[aria-pressed="true"] { background: var(--text); color: var(--bg); }
 input, select, textarea, button {
   font: inherit; font-size: 13px; color: var(--text); background: var(--bg);
   border: 1px solid var(--line); border-radius: 4px; padding: 3px 6px;

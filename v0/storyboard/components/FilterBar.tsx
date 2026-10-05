@@ -1,8 +1,12 @@
-// The filter row at the top of a list page. It is a plain form that writes
-// its choices into the address (?fighter=…&tier=1), so every view can be
-// bookmarked or pasted.
+"use client";
+// The filter row at the top of a list page, pinned under the navigation while
+// the list scrolls. It is a plain form that writes its choices into the
+// address (?fighter=…&when=last_week), so every view can be bookmarked or
+// pasted; any change applies at once. A filter that is set is highlighted.
 
-import { param, STAGES, type Params } from "../lib/filters.ts";
+import { useEffect, useRef, useState } from "react";
+import { describeRange, PERIODS } from "../lib/dates.ts";
+import { dateFilter, param, STAGES, type Params } from "../lib/filters.ts";
 import type { Schema } from "../lib/schema.ts";
 
 /** What the bar offers; stage and answers only where the page supports them. */
@@ -17,6 +21,26 @@ type Props = {
 };
 
 /**
+ * Sends the form the control belongs to, so a choice applies at once.
+ *
+ * @param event  The change.
+ */
+function apply(event: { currentTarget: { form: HTMLFormElement | null } }): void {
+  event.currentTarget.form?.requestSubmit();
+}
+
+/**
+ * Leaves empty filters out of the address, so it shows only what is chosen.
+ *
+ * @param event  The form being sent.
+ */
+function dropEmpty(event: { currentTarget: HTMLFormElement }): void {
+  for (const element of Array.from(event.currentTarget.elements) as HTMLInputElement[]) {
+    if (element.name && element.value === "") element.disabled = true;
+  }
+}
+
+/**
  * The filter form.
  *
  * @param props.path  The page the form reloads.
@@ -29,60 +53,141 @@ type Props = {
  * @returns The form.
  */
 export function FilterBar({ path, params, schema, fighters, outlets, stages = false, answers }: Props) {
+  // The bar's height, so table headers stick just below it (globals.css, --filters-h).
+  const form = useRef<HTMLFormElement>(null);
+  useEffect(() => {
+    const element = form.current;
+    if (!element) return;
+    const root = document.documentElement.style;
+    const measure = () => root.setProperty("--filters-h", `${element.offsetHeight}px`);
+    measure();
+    const observer = new ResizeObserver(measure);
+    observer.observe(element);
+    return () => {
+      observer.disconnect();
+      root.removeProperty("--filters-h");
+    };
+  }, []);
+
+  // Which filters are set, for the highlight and the clear link.
+  const chosenAnswers = Object.keys(answers ?? {}).filter((name) => param(params, name));
+  const isFiltered = ["fighter", "when", "day", "outlet", "tier", "posted", "stage", "history"].some((key) => param(params, key)) || chosenAnswers.length > 0;
+
   return (
-    <form className="filters" method="get" action={path}>
+    <form ref={form} className="filters" method="get" action={path} onSubmit={dropEmpty}>
       {schema === "replay" && <input type="hidden" name="schema" value="replay" />}
-      <Choice name="fighter" label="fighter" value={param(params, "fighter")} options={fighters} />
-      <label>
-        day
-        <input type="date" name="day" defaultValue={param(params, "day")} />
-      </label>
-      <label>
-        outlet
-        <input name="outlet" list="outlet-names" defaultValue={param(params, "outlet")} size={16} />
-        <datalist id="outlet-names">
-          {outlets.map((outlet) => (
-            <option key={outlet} value={outlet} />
-          ))}
-        </datalist>
-      </label>
-      <Choice name="tier" label="tier" value={param(params, "tier")} options={["1", "2", "3", "none"]} />
-      <Choice name="posted" label="posted" value={param(params, "posted")} options={["yes", "no"]} />
-      {stages && <Choice name="stage" label="stage" value={param(params, "stage")} options={["waiting", ...STAGES]} />}
-      {stages && <Choice name="history" label="archive" value={param(params, "history")} options={["yes", "no"]} />}
-      {answers &&
-        Object.entries(answers).map(([name, values]) => (
-          <Choice key={name} name={name} label={name} value={param(params, name)} options={values} />
+      <Choice name="fighter" placeholder="all fighters" value={param(params, "fighter")} options={fighters} />
+      <DateChoice params={params} />
+      <input
+        name="outlet"
+        list="outlet-names"
+        placeholder="any outlet"
+        defaultValue={param(params, "outlet")}
+        size={12}
+        className={param(params, "outlet") ? "set" : ""}
+        onChange={(event) => (event.currentTarget.value === "" || outlets.includes(event.currentTarget.value)) && apply(event)}
+        aria-label="outlet"
+      />
+      <datalist id="outlet-names">
+        {outlets.map((outlet) => (
+          <option key={outlet} value={outlet} />
         ))}
-      <button type="submit" className="primary">
-        filter
-      </button>
-      <a href={schema === "replay" ? `${path}?schema=replay` : path}>clear</a>
+      </datalist>
+      <Choice name="tier" placeholder="any tier" value={param(params, "tier")} options={["1", "2", "3", "none"]} prefix="tier " />
+      <Choice name="posted" placeholder="posted or not" value={param(params, "posted")} options={["yes", "no"]} prefix="posted: " />
+      {stages && <Choice name="stage" placeholder="any stage" value={param(params, "stage")} options={["waiting", ...STAGES]} prefix="stage: " />}
+      {stages && <Choice name="history" placeholder="live and archive" value={param(params, "history")} options={["yes", "no"]} prefix="archive: " />}
+      {answers && (
+        <details className={`more${chosenAnswers.length ? " set" : ""}`}>
+          <summary>answers{chosenAnswers.length ? ` (${chosenAnswers.length})` : ""} ▾</summary>
+          <div className="more-panel">
+            {Object.entries(answers).map(([name, values]) => (
+              <label key={name}>
+                <span>{name}</span>
+                <Choice name={name} placeholder="any" value={param(params, name)} options={values} />
+              </label>
+            ))}
+          </div>
+        </details>
+      )}
+      <noscript>
+        <button type="submit">filter</button>
+      </noscript>
+      {isFiltered && (
+        <a className="clear" href={schema === "replay" ? `${path}?schema=replay` : path}>
+          clear
+        </a>
+      )}
     </form>
   );
 }
 
 /**
- * One drop-down filter with an "any" choice.
+ * The date filter: a named period, or a custom range shown as two date boxes.
  *
- * @param props.name  The address key.
- * @param props.label  What the drop-down is called.
- * @param props.value  The current choice.
- * @param props.options  The choices.
- * @returns The labelled drop-down.
+ * @param props.params  The current filters.
+ * @returns The drop-down, the range's days, and the boxes when custom.
  */
-function Choice({ name, label, value, options }: { name: string; label: string; value: string; options: string[] }) {
+function DateChoice({ params }: { params: Params }) {
+  // The older ?day= link opens as a one-day custom range.
+  const day = param(params, "day");
+  const initial = param(params, "when") || (day ? "custom" : "");
+  const [when, setWhen] = useState(initial);
+  const range = dateFilter(params);
+  const isCustom = when === "custom";
+
   return (
-    <label>
-      {label}
-      <select name={name} defaultValue={value}>
-        <option value="">any</option>
-        {options.map((option) => (
-          <option key={option} value={option}>
-            {option}
+    <span className="dates">
+      <select
+        name="when"
+        value={when}
+        className={range ? "set" : ""}
+        aria-label="dates"
+        onChange={(event) => {
+          setWhen(event.currentTarget.value);
+          if (event.currentTarget.value !== "custom") apply(event);
+        }}
+      >
+        <option value="">any time</option>
+        {PERIODS.map(([key, label]) => (
+          <option key={key} value={key}>
+            {label}
           </option>
         ))}
+        <option value="custom">custom range…</option>
       </select>
-    </label>
+      {isCustom && (
+        <>
+          <input type="date" name="from" defaultValue={param(params, "from") || day} onChange={apply} aria-label="from" className="set" />
+          <span className="muted">–</span>
+          <input type="date" name="to" defaultValue={param(params, "to") || day} onChange={apply} aria-label="to" className="set" />
+        </>
+      )}
+      {range && !isCustom && <span className="range">{describeRange(range)}</span>}
+    </span>
+  );
+}
+
+/**
+ * One drop-down filter whose empty choice names what it filters.
+ *
+ * @param props.name  The address key.
+ * @param props.placeholder  The empty choice's words, such as "all fighters".
+ * @param props.value  The current choice.
+ * @param props.options  The choices.
+ * @param props.prefix  Words shown before each choice, so a set filter reads on its own.
+ * @returns The drop-down.
+ */
+function Choice({ name, placeholder, value, options, prefix = "" }: { name: string; placeholder: string; value: string; options: string[]; prefix?: string }) {
+  return (
+    <select name={name} defaultValue={value} onChange={apply} className={value ? "set" : ""} aria-label={name}>
+      <option value="">{placeholder}</option>
+      {options.map((option) => (
+        <option key={option} value={option}>
+          {prefix}
+          {option}
+        </option>
+      ))}
+    </select>
   );
 }

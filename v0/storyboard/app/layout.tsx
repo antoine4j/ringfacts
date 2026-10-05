@@ -2,6 +2,7 @@
 
 import { Suspense, type ReactNode } from "react";
 import { Nav } from "../components/Nav.tsx";
+import { THEME_SCRIPT, ThemeSwitch } from "../components/ThemeSwitch.tsx";
 import "./globals.css";
 
 export const metadata = { title: "v0 storyboard", description: "RingFacts v0, read live from its database." };
@@ -17,14 +18,17 @@ export const dynamic = "force-dynamic";
  */
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: THEME_SCRIPT }} />
+      </head>
       <body>
         <header className="top">
-          <strong className="brand">v0 storyboard</strong>
+          <strong className="brand" title="All times in Pacific">v0</strong>
           <Suspense fallback={null}>
             <Nav />
           </Suspense>
-          <span className="muted small">times in Pacific</span>
+          <ThemeSwitch />
         </header>
         <main>{children}</main>
       </body>

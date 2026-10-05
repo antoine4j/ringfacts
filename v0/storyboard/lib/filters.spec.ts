@@ -41,3 +41,16 @@ test("a claim matches reading filters through any of its readings, numbering aft
 test("a link keeps the other filters and drops an emptied one", () => {
   assert.equal(linkWith("/readings", { fighter: "A B", tier: "1" }, { tier: "", stage: "stuck" }), "/readings?fighter=A+B&stage=stuck");
 });
+
+test("a date range becomes two bounds on the Pacific day", () => {
+  const filter = readingFilter({ when: "custom", from: "2026-09-28", to: "2026-10-04" });
+  assert.equal(
+    whereSql(filter),
+    "WHERE (rn.published_at AT TIME ZONE 'America/Los_Angeles')::date >= $1::date AND (rn.published_at AT TIME ZONE 'America/Los_Angeles')::date <= $2::date",
+  );
+  assert.deepEqual(filter.values, ["2026-09-28", "2026-10-04"]);
+});
+
+test("the date keys are never read as classifier answers", () => {
+  assert.deepEqual(answerFilters({ when: "last_week", from: "2026-09-01", to: "2026-09-02" }), []);
+});

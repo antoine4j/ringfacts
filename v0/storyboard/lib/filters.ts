@@ -2,6 +2,8 @@
 // WHERE clause. Every value travels as a query parameter ($1, $2 …), never
 // pasted into the SQL; the only words that reach the SQL itself are fixed here.
 
+import { dayRange } from "./dates.ts";
+
 /** A page's query string, as Next hands it over. */
 export type Params = Record<string, string | string[] | undefined>;
 
@@ -15,13 +17,10 @@ export const WAITING_STAGES = ["classify", "extract", "group", "decide"];
 export const STAGES = ["no_body", ...WAITING_STAGES, "done", "stuck"];
 
 /** Address keys that are filters of their own, so they are never read as a classifier answer. */
-const RESERVED_KEYS = new Set(["fighter", "day", "outlet", "tier", "posted", "stage", "history", "claim", "schema", "limit", "open"]);
+const RESERVED_KEYS = new Set(["fighter", "day", "when", "from", "to", "outlet", "tier", "posted", "stage", "history", "claim", "schema", "limit", "open"]);
 
 /** What a classifier answer's name may look like in the address. */
 const ANSWER_NAME = /^[a-z][a-z_]{0,39}$/;
-
-/** A day as the date picker writes it. */
-const DAY = /^\d{4}-\d{2}-\d{2}$/;
 
 /**
  * One value from the query string; the first one when a key is repeated.
@@ -90,7 +89,7 @@ export function answerFilters(params: Params): [string, string][] {
 }
 
 /**
- * Adds the filters that describe one reading: fighter, day, outlet, tier,
+ * Adds the filters that describe one reading: fighter, dates, outlet, tier,
  * posted, stage, history and classifier answers.
  *
  * @param filter  The clause being built.
@@ -108,7 +107,18 @@ export function addReadingConditions(filter: SqlFilter, params: Params, alias: s
 }
 
 /**
- * Adds the fighter, day and outlet filters.
+ * The days the address asks for, as lib/dates.ts reads them.
+ *
+ * @param params  The query string.
+ * @param now  The current moment.
+ * @returns The first and last day, or null for no date filter.
+ */
+export function dateFilter(params: Params, now = new Date()) {
+  return dayRange(param(params, "when"), param(params, "from"), param(params, "to"), param(params, "day"), now);
+}
+
+/**
+ * Adds the fighter, date and outlet filters.
  *
  * @param filter  The clause being built.
  * @param params  The query string.
@@ -121,9 +131,11 @@ function addSimpleReadingConditions(filter: SqlFilter, params: Params, alias: st
   const outlet = param(params, "outlet");
   if (outlet) addCondition(filter, `${alias}.outlet = ?`, outlet);
 
-  // A day is a calendar day in Pacific time, where Anton reads.
-  const day = param(params, "day");
-  if (DAY.test(day)) addCondition(filter, `(${alias}.published_at AT TIME ZONE 'America/Los_Angeles')::date = ?::date`, day);
+  // Days are calendar days in Pacific time, where Anton reads; either end may be open.
+  const range = dateFilter(params);
+  const pacificDay = `(${alias}.published_at AT TIME ZONE 'America/Los_Angeles')::date`;
+  if (range?.from) addCondition(filter, `${pacificDay} >= ?::date`, range.from);
+  if (range?.to) addCondition(filter, `${pacificDay} <= ?::date`, range.to);
 }
 
 /**

@@ -37,8 +37,12 @@ export function Nav() {
           {page.name}
         </Link>
       ))}
-      <Link href={inReplay ? pathname : `${pathname}?schema=replay`} className={inReplay ? "schema replay" : "schema"}>
-        {inReplay ? "reading: golden replay (switch to live)" : "reading: live (switch to replay)"}
+      <Link
+        href={inReplay ? pathname : `${pathname}?schema=replay`}
+        className={inReplay ? "schema replay" : "schema"}
+        title={inReplay ? "Showing the golden replay; click for live data" : "Showing live data; click for the golden replay"}
+      >
+        {inReplay ? "replay ⇄ live" : "live ⇄ replay"}
       </Link>
     </nav>
   );

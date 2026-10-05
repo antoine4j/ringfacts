@@ -8,13 +8,22 @@ Next.js; each page is built on the server straight from the database with
 `pg` (no API layer, no ORM). Filters live in the address, so any view can be
 bookmarked or pasted to Claude. Times are Pacific.
 
+The header and the filter row stay pinned at the top while a list scrolls;
+a filter that is set is tinted, and any change applies at once. Dates are
+a named period (today, yesterday, this or last week, the last 7 days, this
+or last month, the last 30 days: `?when=last_week`) or a custom range
+(`?when=custom&from=2026-09-28&to=2026-10-04`, either end may be left
+out), in Pacific days with weeks starting on Monday (`lib/dates.ts`). The
+switch at the header's right end picks auto, light or dark; the choice is
+remembered in the browser.
+
 ## Pages
 
 | Page | Shows |
 |---|---|
-| `/` Claims | Every claim, newest activity first: current label (and first label when it differs), fighter, readings, outlets, first and last date, posted or not. Each opens to its readings in date order, with tier, cell, JEV's pick confidence and extract sentence; a pick under 50% is flagged ⚠. Filters: fighter, day, outlet, tier, posted, and any classifier answer. |
+| `/` Claims | Every claim, newest activity first: current label (and first label when it differs), fighter, readings, outlets, first and last date, posted or not. Each opens to its readings in date order, with tier, cell, JEV's pick confidence and extract sentence; a pick under 50% is flagged ⚠. Filters: fighter, dates, outlet, tier, posted, and any classifier answer. |
 | `/claims/[id]` | One claim, both labels, its readings, feedback on it. |
-| `/readings` | Every reading, newest first, v0's tier beside production's outcome. Filters: fighter, day, outlet, tier, posted, stage (`waiting` = classify, extract, group or decide), archive, and any classifier answer, e.g. `/readings?fact=next_fight&firmness=rumour`. |
+| `/readings` | Every reading, newest first, v0's tier beside production's outcome. Filters: fighter, dates, outlet, tier, posted, stage (`waiting` = classify, extract, group or decide), archive, and any classifier answer, e.g. `/readings?fact=next_fight&firmness=rumour`. |
 | `/readings/[id]` | One reading: the article, then every row of every station (Classifier, Claim extractor, Semantic dedup with its shortlist and pick, Decider), newest first, each with a feedback form; production's outcome; feedback given. |
 | `/settings` | The tier map: Post, Digest, Drop. Each "what new fact · how firm" is a card with its count of readings and three headlines; drag it (or use its buttons) to make a draft. Before saving, the page says how many readings would move, by running the Decider's own code (`../pipeline/settings/tiers.ts`) on them. Below: each fighter's digest schedule, and the version history. Saving adds a settings row. |
 | `/digests` | Each digest: its text, the items the writer listed, the claims it used and left out, feedback. |

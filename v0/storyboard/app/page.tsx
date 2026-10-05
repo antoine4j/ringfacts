@@ -41,7 +41,7 @@ export default async function ClaimsPage({ searchParams }: { searchParams: Promi
       <FilterBar path="/" params={params} schema={schema} fighters={fighters} outlets={outlets} />
       <p className="muted small">
         {claims.length} claim{claims.length === 1 ? "" : "s"}
-        {claims.length === LIMIT ? ` (the first ${LIMIT})` : ""}. Day, outlet and tier match a claim when any of its readings matches. A pick under 50% is
+        {claims.length === LIMIT ? ` (the first ${LIMIT})` : ""}. Dates, outlet and tier match a claim when any of its readings matches. A pick under 50% is
         flagged ⚠.
       </p>
       {claims.length === 0 && <Empty>No claims match.</Empty>}
