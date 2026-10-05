@@ -7,6 +7,13 @@ as the chat report: data / changes / proposals / next attention.
 
 ---
 
+## 2026-10-05 afternoon — storyboard restyled; grouping reviews built (D35) (Anton present, then away; Opus 5.5)
+
+📊 **Data**: reviews tested end to end on a throwaway Neon branch (deleted; live tables hold no test marks); a save on a cold dev server took 4–8 s, so ✓/✕ now show at once. GitHub Pages builds failed or were cancelled 12:11–13:20 Pacific during GitHub's runner incident; nothing in the repo.
+🔧 **Changes**: storyboard in the Golden Set Map's look (Barlow Condensed, Plex at weight 450, panels, pill controls), sun-based auto theme, RF tab icon; decisions show the classifier's answers in words, linked to their settings card; grouping pill explains its percentage and runner-up; tier badge "2 │ digest". D35 designed with Anton and built: `review_readings` and `review_same_claims` (migrated live), ✓/✕ per reading with "belongs in #…" / "its own claim" and an optional note, "same claim as…", "mark the rest as belonging", review status and filter. Branch history untangled after two sessions collided on one commit (backup branch `backup/before-untangle-2026-10-05` kept).
+💡 **For Anton**: start reviewing (filter "reviewed, has new" is the working list); say when the backup branch can go; the feedback form stays as is until it is reshaped into plain notes.
+👀 **Next attention**: two sessions in one checkout amend each other's commits; use a worktree per session.
+
 ## 2026-10-05 day — v0 at 21 of 22; storyboard usable on a phone; old secrets deleted (Anton present on and off; Opus 5.5)
 
 📊 **Data**: Backlog of 866 readings grouped on the laptop (OpenRouter embeddings, same model): 217 new claims, 649 joins, ~$0.13. Digest comparison: 90 past-week digests, 3 models, **$3.13** (Kimi $2.41; per digest DeepSeek $0.008, GLM-5 $0.016, Kimi $0.08). Three live digests posted ($0.013); Anton reacted 👍 👍 👎, read back by the 12:47 run. Missing bodies over the archive: Amosov 72%, Donchenko 42%, Topuria 21%; body-fetch spike: 251 of 452 readable for free (retry after a link-decode retry, Jina Reader keyless), Ukrainian outlets still not ($0). Golden replay grouping, training: pair precision 0.62, recall 0.83.
