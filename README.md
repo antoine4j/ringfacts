@@ -238,10 +238,14 @@ keys, and database connection string are stored in GCP Secret Manager and
 fetched at the moment they're needed:
 
 ```bash
-DATABASE_URL=$(gcloud secrets versions access latest --secret=neon-db-url) node hunter.js
+DATABASE_URL=$(gcloud secrets versions access latest --secret=ringfacts-config | jq -r .DATABASE_URL) node hunter.js
 ```
 
 Values are piped straight into the command and never written to disk or echoed.
+All of production's values sit in that one secret, `ringfacts-config`, which
+Cloud Run hands to the code whole and [lib/config.js](lib/config.js) unpacks at
+start: Secret Manager's free tier holds six secret versions, and one per value
+had filled it ([why](docs/decisions.md#one-config-secret)).
 The `.env` file holds only non-secret identifiers (chat IDs), and is gitignored.
 
 ## License
