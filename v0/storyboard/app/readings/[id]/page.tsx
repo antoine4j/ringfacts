@@ -4,7 +4,7 @@
 
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { TierTag } from "../../../components/bits.tsx";
+import { Decision } from "../../../components/Decision.tsx";
 import { FeedbackForm } from "../../../components/FeedbackForm.tsx";
 import { FeedbackList } from "../../../components/FeedbackList.tsx";
 import { query } from "../../../lib/db.ts";
@@ -69,7 +69,9 @@ export default async function ReadingPage({ params, searchParams }: { params: Pr
     query<AnswerRow>(schema, "SELECT id, version, answers, raw, created_at FROM classifications WHERE reading_id = $1 ORDER BY id DESC", [id]),
     query<AnswerRow>(schema, "SELECT id, version, answers, raw, created_at FROM extracts WHERE reading_id = $1 ORDER BY id DESC", [id]),
     query<GroupingRow>(schema, "SELECT id, extract_id, version, shortlist, pick, claim_id, created_at FROM groupings WHERE reading_id = $1 ORDER BY id DESC", [id]),
-    query<DecisionRow>(schema, "SELECT id, classification_id, settings_version, tier, cell, created_at FROM decisions WHERE reading_id = $1 ORDER BY id DESC", [id]),
+    query<DecisionRow>(schema, `SELECT d.id, d.classification_id, d.settings_version, d.tier, d.cell, d.created_at, c.answers ->> 'centrality' AS centrality
+       FROM decisions d JOIN classifications c ON c.id = d.classification_id
+       WHERE d.reading_id = $1 ORDER BY d.id DESC`, [id]),
     feedbackOn(schema, "reading", id),
     query<{ id: string; fighter: string }>(schema, "SELECT id, fighter FROM readings WHERE article_id = $1 AND id <> $2 ORDER BY id", [reading.article_id, id]),
   ]);
@@ -183,8 +185,7 @@ function DecisionTable({ rows, readingId, schema }: { rows: DecisionRow[]; readi
         <thead>
           <tr>
             <th>decided</th>
-            <th>tier</th>
-            <th>cell</th>
+            <th>decision</th>
             <th>settings</th>
             <th>from classification</th>
           </tr>
@@ -194,9 +195,8 @@ function DecisionTable({ rows, readingId, schema }: { rows: DecisionRow[]; readi
             <tr key={row.id} className={index > 0 ? "dim" : ""}>
               <td className="nowrap">{pacificTime(row.created_at)}</td>
               <td>
-                <TierTag tier={row.tier} />
+                <Decision tier={row.tier} cell={row.cell} centrality={row.centrality} schema={schema} />
               </td>
-              <td>{row.cell}</td>
               <td>v{row.settings_version}</td>
               <td>#{row.classification_id}</td>
             </tr>

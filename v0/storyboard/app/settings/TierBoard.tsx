@@ -5,6 +5,7 @@
 
 import { useActionState, useState, type DragEvent, type ReactNode } from "react";
 import type { DigestSchedule, Tier } from "../../../pipeline/settings/tiers.ts";
+import { answersBehind, cellAnchor, describeAnswer, GATE_CELL } from "../../lib/answers.ts";
 import type { SettingsRow } from "../../lib/queries.ts";
 import { allCombinations, movesBetween, TIER_NAMES, withCells, type AnswerGroup, type Combination } from "../../lib/tier-draft.ts";
 import { saveSettings, type ActionResult } from "../actions.ts";
@@ -162,9 +163,16 @@ function Card({ combination, counts, tier, was, onMove }: { combination: Combina
   const others = TIERS.filter((other) => other !== tier);
 
   return (
-    <div className={`card ${readings === 0 ? "empty" : ""} ${changed ? "changed" : ""}`} draggable onDragStart={(event) => event.dataTransfer.setData("text/plain", combination.cell)}>
+    <div id={cellAnchor(combination.cell)} className={`card ${readings === 0 ? "empty" : ""} ${changed ? "changed" : ""}`} draggable onDragStart={(event) => event.dataTransfer.setData("text/plain", combination.cell)}>
       <div className="name">
-        <span>{combination.cell}</span>
+        <span>
+          {answersBehind(combination.cell, null).map((answer, index) => (
+            <span key={answer.question} title={answer.definition}>
+              {index > 0 && " · "}
+              {answer.words}
+            </span>
+          ))}
+        </span>
         <span className="tag">{readings}</span>
       </div>
       {changed && <div className="small">was {TIER_NAMES[was]}</div>}
@@ -195,13 +203,20 @@ function Card({ combination, counts, tier, was, onMove }: { combination: Combina
  */
 function GateCard({ gate, counts }: { gate: SettingsRow["tiers"]["gate"]; counts?: CardCounts }) {
   return (
-    <div className="card fixed">
+    <div id={cellAnchor(GATE_CELL)} className="card fixed">
       <div className="name">
-        <span>not about him</span>
+        <span>
+          {gate.notAboutHim.map((value, index) => (
+            <span key={value} title={describeAnswer(gate.question, value).definition}>
+              {index > 0 && " or "}
+              {describeAnswer(gate.question, value).words}
+            </span>
+          ))}
+        </span>
         <span className="tag">{counts?.readings ?? 0}</span>
       </div>
       <div className="small muted">
-        Fixed: {gate.question} is {gate.notAboutHim.join(" or ")}. Checked before the map, whatever the article reports.
+        How central he is, checked before every other card: either answer drops the article, whatever it reports. Fixed.
       </div>
       {counts && (
         <ul>

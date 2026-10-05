@@ -23,7 +23,7 @@ export type GroupingRow = {
 };
 
 /** A row of decisions. */
-export type DecisionRow = { id: string; classification_id: string; settings_version: number; tier: number; cell: string; created_at: Date };
+export type DecisionRow = { id: string; classification_id: string; settings_version: number; tier: number; cell: string; centrality: string | null; created_at: Date };
 
 /**
  * Every row of one answering station, each as a table of answer → value.

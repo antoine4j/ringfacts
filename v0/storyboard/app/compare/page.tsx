@@ -4,14 +4,15 @@
 
 import Link from "next/link";
 import { CompareVerdict } from "../../components/CompareVerdict.tsx";
-import { Empty, TierTag } from "../../components/bits.tsx";
+import { Empty } from "../../components/bits.tsx";
+import { Decision } from "../../components/Decision.tsx";
 import { query } from "../../lib/db.ts";
 import type { Params } from "../../lib/filters.ts";
 import { pacificTime } from "../../lib/format.ts";
 import { schemaFrom, schemaSuffix, type Schema } from "../../lib/schema.ts";
 
 /** A reading where the two systems disagree. */
-type Disagreement = { reading_id: string; fighter: string; headline: string; url: string; outlet: string; published_at: Date; production_outcome: string | null; tier: number | null; cell: string | null; stage: string; verdict: string | null };
+type Disagreement = { reading_id: string; fighter: string; headline: string; url: string; outlet: string; published_at: Date; production_outcome: string | null; tier: number | null; cell: string | null; centrality: string | null; stage: string; verdict: string | null };
 
 /**
  * The comparison page.
@@ -26,7 +27,7 @@ export default async function ComparePage({ searchParams }: { searchParams: Prom
   const [disagreements, crossTable] = await Promise.all([
     query<Disagreement>(
       schema,
-      `SELECT reading_id, fighter, headline, url, outlet, published_at, production_outcome, tier, cell, stage,
+      `SELECT reading_id, fighter, headline, url, outlet, published_at, production_outcome, tier, cell, classification ->> 'centrality' AS centrality, stage,
               (SELECT f.should_be FROM feedback f WHERE f.reading_id = reading_now.reading_id AND f.field = 'compare' ORDER BY f.id DESC LIMIT 1) AS verdict
        FROM reading_now
        WHERE (production_outcome = 'posted' AND tier IS DISTINCT FROM 1) OR (tier = 1 AND production_outcome IS DISTINCT FROM 'posted')
@@ -120,8 +121,7 @@ function DisagreementTable({ rows, schema }: { rows: Disagreement[]; schema: Sch
           <th>outlet</th>
           <th>headline</th>
           <th>production</th>
-          <th>v0 tier</th>
-          <th>cell</th>
+          <th>v0 decision</th>
           <th>stage</th>
           <th>which was right?</th>
         </tr>
@@ -140,9 +140,8 @@ function DisagreementTable({ rows, schema }: { rows: Disagreement[]; schema: Sch
             </td>
             <td>{row.production_outcome}</td>
             <td>
-              <TierTag tier={row.tier} />
+              <Decision tier={row.tier} cell={row.cell} centrality={row.centrality} schema={schema} />
             </td>
-            <td className="small">{row.cell}</td>
             <td>{row.stage}</td>
             <td>
               <CompareVerdict readingId={row.reading_id} schema={schema} current={row.verdict} />

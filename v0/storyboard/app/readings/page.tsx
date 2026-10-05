@@ -3,7 +3,8 @@
 // example ?fact=next_fight&firmness=rumour.
 
 import Link from "next/link";
-import { Empty, PickTag, PostedTag, TierTag } from "../../components/bits.tsx";
+import { Empty, PickTag, PostedTag } from "../../components/bits.tsx";
+import { Decision } from "../../components/Decision.tsx";
 import { FilterBar } from "../../components/FilterBar.tsx";
 import { query } from "../../lib/db.ts";
 import { readingFilter, whereSql, type Params } from "../../lib/filters.ts";
@@ -31,6 +32,7 @@ type ReadingRow = {
   backfill: boolean;
   tier: number | null;
   cell: string | null;
+  centrality: string | null;
   claim_id: string | null;
   pick: { claim?: number | null; confidence?: number } | null;
 };
@@ -51,7 +53,7 @@ export default async function ReadingsPage({ searchParams }: { searchParams: Pro
   const rows = await query<ReadingRow>(
     schema,
     `SELECT rn.reading_id, rn.fighter, rn.stage, rn.attempts, rn.last_error, rn.posted_at, ${latestReaction("rn.message_id")} AS reaction, rn.url, rn.outlet, rn.headline,
-            rn.published_at, rn.production_outcome, rn.backfill, rn.tier, rn.cell, rn.claim_id, rn.pick
+            rn.published_at, rn.production_outcome, rn.backfill, rn.tier, rn.cell, rn.classification ->> 'centrality' AS centrality, rn.claim_id, rn.pick
      FROM reading_now rn ${where}
      ORDER BY rn.published_at DESC, rn.reading_id DESC
      LIMIT ${LIMIT}`,
@@ -111,8 +113,7 @@ function ReadingsTable({ rows, schema }: { rows: ReadingRow[]; schema: Schema })
           <th>outlet</th>
           <th>headline</th>
           <th>stage</th>
-          <th>v0 tier</th>
-          <th>cell</th>
+          <th>v0 decision</th>
           <th>production</th>
           <th>claim</th>
         </tr>
@@ -136,9 +137,8 @@ function ReadingsTable({ rows, schema }: { rows: ReadingRow[]; schema: Schema })
               {row.attempts > 0 && <span className={`tag ${row.stage === "stuck" ? "bad" : "warn"}`}>{row.attempts} failed</span>}
             </td>
             <td>
-              <TierTag tier={row.tier} />
+              <Decision tier={row.tier} cell={row.cell} centrality={row.centrality} schema={schema} />
             </td>
-            <td className="small">{row.cell}</td>
             <td className="small">{row.production_outcome}</td>
             <td className="nowrap">
               {row.claim_id && <Link href={`/claims/${row.claim_id}${schemaSuffix(schema)}`}>#{row.claim_id}</Link>} {row.claim_id && <PickTag pick={row.pick} />}

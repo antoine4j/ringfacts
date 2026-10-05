@@ -102,6 +102,7 @@ export type MemberRow = {
   published_at: Date;
   tier: number | null;
   cell: string | null;
+  centrality: string | null;
   sentence: string | null;
   posted_at: Date | null;
   reaction: string | null;
@@ -124,7 +125,7 @@ export async function claimMembers(schema: Schema, claimIds: string[]): Promise<
     `SELECT * FROM (
        SELECT DISTINCT ON (g.claim_id, g.reading_id)
          g.claim_id, g.reading_id, g.pick, rn.headline, rn.url, rn.outlet, rn.published_at,
-         rn.tier, rn.cell, rn.extract ->> 'claim' AS sentence, rn.posted_at, ${latestReaction("rn.message_id")} AS reaction
+         rn.tier, rn.cell, rn.classification ->> 'centrality' AS centrality, rn.extract ->> 'claim' AS sentence, rn.posted_at, ${latestReaction("rn.message_id")} AS reaction
        FROM groupings g
        JOIN reading_now rn ON rn.reading_id = g.reading_id
        WHERE g.claim_id = ANY($1::bigint[])
