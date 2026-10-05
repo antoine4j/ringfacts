@@ -47,7 +47,7 @@ export function splitMessage(text: string): string[] {
  * @returns The digest's id.
  */
 export async function writeAndPostDigest(context: RunContext, fighter: string, period: { start: Date; end: Date }, model = DEFAULT_DIGEST_MODEL): Promise<number> {
-  const gathered = await digestContext(context.pool, fighter, period.start, period.end, context.backfill);
+  const gathered = await digestContext(context.pool, fighter, period.start, period.end, context.backfill, model);
   const written = await writeDigest(gathered, model, period.end);
   count(context, "openrouter_cost_microdollars", Math.round((written.raw.usage.cost ?? 0) * 1e6));
   const digestId = await recordDigest(context.pool, {

@@ -4,6 +4,7 @@
 // Design: docs/superpowers/specs/2026-10-04-v0-design.md, section 3 and section 6.
 
 import type { Extract } from "../extractor/extractor.ts";
+import { postJson } from "../http.ts";
 
 export const GROUPING_VERSION = "g1";
 const EMBEDDING_MODEL = "gemini-embedding-001";
@@ -37,7 +38,7 @@ export function groupingText(extract: Extract, headline: string, body: string): 
 }
 
 /**
- * Embeds one text with Gemini's free tier, retrying when told to slow down.
+ * Embeds one text with Gemini's free tier; a busy server is tried again.
  *
  * @param text  The text.
  * @param apiKey  v0's Gemini key.
@@ -47,19 +48,8 @@ export async function embed(text: string, apiKey: string): Promise<number[]> {
   const url = `https://generativelanguage.googleapis.com/v1beta/models/${EMBEDDING_MODEL}:embedContent`;
   const request = { model: `models/${EMBEDDING_MODEL}`, content: { parts: [{ text }] }, outputDimensionality: EMBEDDING_DIMENSIONS };
 
-  // Up to four tries, waiting longer each time the free tier says "too many".
-  for (let attempt = 0; ; attempt += 1) {
-    const response = await fetch(url, {
-      method: "POST",
-      headers: { "Content-Type": "application/json", "x-goog-api-key": apiKey },
-      body: JSON.stringify(request),
-      signal: AbortSignal.timeout(60_000),
-    });
-    if (response.ok) return (await response.json()).embedding.values;
-    const isBusy = response.status === 429 || response.status >= 500;
-    if (!isBusy || attempt === 3) throw new Error(`Gemini embedding ${response.status}: ${(await response.text()).slice(0, 200)}`);
-    await new Promise((resolve) => setTimeout(resolve, 2000 * 2 ** attempt));
-  }
+  const reply = await postJson(url, { "x-goog-api-key": apiKey }, request, 60_000, "Gemini embedding");
+  return reply.embedding.values;
 }
 
 /**
@@ -109,14 +99,7 @@ export async function pickClaim(
     this_article_in_one_sentence: article.extract.claim,
     article_text: article.body,
   };
-  const response = await fetch(JEV_URL, {
-    method: "POST",
-    headers: { Authorization: `Bearer ${apiKey}`, "Content-Type": "application/json" },
-    body: JSON.stringify({ state, model: JEV_MODEL, questions: pickQuestion(candidates) }),
-    signal: AbortSignal.timeout(180_000),
-  });
-  if (!response.ok) throw new Error(`JEV pick ${response.status}: ${(await response.text()).slice(0, 300)}`);
-  const raw = await response.json();
+  const raw = await postJson(JEV_URL, { Authorization: `Bearer ${apiKey}` }, { state, model: JEV_MODEL, questions: pickQuestion(candidates) }, 180_000, "JEV pick");
   const answer = raw.answers.story;
   const claim = answer.choice === NONE_OF_THESE ? null : Number(String(answer.choice).replace("claim_", ""));
   const isKnownClaim = claim === null || candidates.some((candidate) => candidate.claimId === claim);

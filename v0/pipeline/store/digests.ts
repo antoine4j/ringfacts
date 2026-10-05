@@ -95,21 +95,25 @@ async function claimsBetween(pool: pg.Pool, fighter: string, from: Date, to: Dat
  * @param periodStart  The period's start.
  * @param periodEnd  The period's end.
  * @param backfill  True for an archive digest: earlier archive digests are its "previous".
+ * @param model  For an archive digest, only this model's earlier digests are its "previous", so models compared side by side never read each other.
  * @returns The context.
  */
-export async function digestContext(pool: pg.Pool, fighter: string, periodStart: Date, periodEnd: Date, backfill: boolean): Promise<DigestContext> {
+export async function digestContext(pool: pg.Pool, fighter: string, periodStart: Date, periodEnd: Date, backfill: boolean, model: string): Promise<DigestContext> {
   const active = await claimsBetween(pool, fighter, periodStart, periodEnd, true);
   const activeIds = new Set(active.map((claim) => claim.id));
   const backgroundFrom = new Date(periodStart.getTime() - BACKGROUND_DAYS * 86_400_000);
   const background = (await claimsBetween(pool, fighter, backgroundFrom, periodStart, false)).filter((claim) => !activeIds.has(claim.id));
 
   // Previous digests: those of the last 30 days, and at least the last 3.
+  const sameModel = backfill ? model : null;
   const previous = await pool.query(
-    `SELECT period_start, period_end, text FROM digests
-     WHERE fighter = $1 AND backfill = $2 AND period_end <= $3
-     ORDER BY period_end DESC
-     LIMIT greatest($4, (SELECT count(*) FROM digests WHERE fighter = $1 AND backfill = $2 AND period_end <= $3 AND period_end > $3::timestamptz - make_interval(days => $5)))`,
-    [fighter, backfill, periodStart, MIN_PREVIOUS_DIGESTS, PREVIOUS_DIGEST_DAYS],
+    `WITH earlier AS (
+       SELECT period_start, period_end, text FROM digests
+       WHERE fighter = $1 AND backfill = $2 AND period_end <= $3 AND ($6::text IS NULL OR model = $6)
+     )
+     SELECT * FROM earlier ORDER BY period_end DESC
+     LIMIT greatest($4, (SELECT count(*) FROM earlier WHERE period_end > $3::timestamptz - make_interval(days => $5)))`,
+    [fighter, backfill, periodStart, MIN_PREVIOUS_DIGESTS, PREVIOUS_DIGEST_DAYS, sameModel],
   );
   const previousDigests = previous.rows.reverse().map((row) => ({
     start: row.period_start.toISOString().slice(0, 10),

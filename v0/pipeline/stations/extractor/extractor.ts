@@ -6,6 +6,7 @@
 
 import { readFileSync } from "node:fs";
 import { z } from "zod";
+import { postJson } from "../http.ts";
 
 export const EXTRACTOR_VERSION = "p4";
 const OPENROUTER_URL = "https://openrouter.ai/api/v1/chat/completions";
@@ -76,14 +77,7 @@ export async function extract(input: ExtractorInput, apiKey: string): Promise<{ 
       { role: "user", content: userMessage(input) },
     ],
   };
-  const response = await fetch(OPENROUTER_URL, {
-    method: "POST",
-    headers: { Authorization: `Bearer ${apiKey}`, "Content-Type": "application/json", "X-Title": "ringfacts-v0" },
-    body: JSON.stringify(request),
-    signal: AbortSignal.timeout(120_000),
-  });
-  if (!response.ok) throw new Error(`OpenRouter ${response.status}: ${(await response.text()).slice(0, 300)}`);
-  const raw = await response.json();
+  const raw = await postJson(OPENROUTER_URL, { Authorization: `Bearer ${apiKey}`, "X-Title": "ringfacts-v0" }, request, 120_000, "OpenRouter");
   const content = raw.choices?.[0]?.message?.content;
   if (typeof content !== "string") throw new Error("OpenRouter reply had no message");
   return { answers: ExtractP4.parse(JSON.parse(content)), raw };

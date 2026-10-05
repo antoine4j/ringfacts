@@ -11,6 +11,7 @@ import { readingsAt, recordFailure, type Reading } from "../store/readings.ts";
 import { classifyReading, extractReading, groupReading, decideReading } from "./stations.ts";
 import { postNewClaims } from "./post.ts";
 import { digestsDue } from "./digests.ts";
+import { dailyCountsDue } from "../measure/daily-counts.ts";
 import { count, type RunContext } from "./context.ts";
 
 const READING = z.object({ id: z.number() }).passthrough();
@@ -118,6 +119,15 @@ export function buildWorkflow(context: RunContext) {
       return {};
     },
   });
+  const countsStep = createStep({
+    id: "daily-counts",
+    inputSchema: z.any(),
+    outputSchema: z.any(),
+    execute: async () => {
+      if (!context.backfill) await dailyCountsDue(context, new Date());
+      return {};
+    },
+  });
   return createWorkflow({ id: "v0-hourly", inputSchema: z.any(), outputSchema: z.any() })
     .then(importStep(context))
     .then(loadStep(context, "classify"))
@@ -130,6 +140,7 @@ export function buildWorkflow(context: RunContext) {
     .foreach(stationStep(context, "decide", (reading) => decideReading(context, reading)), { concurrency: 5 })
     .then(postStep)
     .then(digestStep)
+    .then(countsStep)
     .commit();
 }
 

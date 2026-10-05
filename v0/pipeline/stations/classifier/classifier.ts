@@ -6,6 +6,7 @@
 
 import { readFileSync } from "node:fs";
 import { z } from "zod";
+import { postJson } from "../http.ts";
 
 export const CLASSIFIER_VERSION = "v7.7";
 const JEV_URL = "https://api.typesafe.ai/v1/systemone";
@@ -132,13 +133,6 @@ export async function classify(input: ClassifierInput, apiKey: string): Promise<
     published: input.publishedAt.toISOString().slice(0, 10),
     article_text: input.body,
   };
-  const response = await fetch(JEV_URL, {
-    method: "POST",
-    headers: { Authorization: `Bearer ${apiKey}`, "Content-Type": "application/json" },
-    body: JSON.stringify({ state, model: JEV_MODEL, questions: QUESTIONS }),
-    signal: AbortSignal.timeout(180_000),
-  });
-  if (!response.ok) throw new Error(`JEV ${response.status}: ${(await response.text()).slice(0, 300)}`);
-  const raw = await response.json();
+  const raw = await postJson(JEV_URL, { Authorization: `Bearer ${apiKey}` }, { state, model: JEV_MODEL, questions: QUESTIONS }, 180_000, "JEV");
   return { answers: composeAnswers(raw.answers), raw };
 }
