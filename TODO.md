@@ -620,6 +620,57 @@ Below the line, deliberately: nothing at the moment — the GCS backup shipped
      the golden set's `body_unusable` pre-flags, and the headline-only path,
      which the golden set cannot test (drawn from articles with a body).
 
+9. **A profile per fighter, built from pinned claims** (G1, G3, G4) — *Anton,
+   2026-10-04.* **No design yet. Nothing built. Starts after the health scale
+   (classifier v8) lands.**
+
+   The problem it answers: every station reads one article with no memory, so
+   none of them can know whether a fact is new; it can only guess from wording.
+   The golden set shows the cost. In claim-015.0, four articles repeat one
+   Merab quote ("he's fine, he'll be back") about an injury already known, and
+   #1172 recalls an infection a month before a fight Donchenko then fought.
+   Whether each is news depends on what was already known, not on the text.
+
+   The idea: keep a profile per fighter (last fight and its result and
+   injuries, health and expected return, next fight with its firmness, belt and
+   ranking), and ask of each article **"which fields does this change, from
+   what to what?"** A change to a field that matters is a career event (G1);
+   no change at all is a repeat (G3); a field moving from rumoured to booked is
+   a change too, and a rumour never overwrites an official value (G4). The
+   answer is a visible change, such as "health: recovering → return early
+   2027", which explains itself.
+
+   **No separate log: the profile is the claims that carry weight, pinned to
+   it.** The claims layer already groups articles into stories, keeps their
+   sources (`claim_sources`) and moves a claim from `rumor` to `confirmed`. So
+   a pinned claim's canonical text and facts play the role of a log entry, and
+   the profile's current value for a field is its latest pinned claim. Pinned
+   kinds to start: results and next fights; health at level 3 and up once the
+   scale exists. The profile can always be rebuilt by re-reading the pinned
+   claims, which is the guard against a model-written profile drifting.
+
+   What the claims layer would need first, both already noted under
+   5-phase-2: a supersede flow (a new booking replaces the old next fight; a
+   result closes it), and event dates in `claims.facts` (today the `event` key
+   holds a name, not a date).
+
+   Risks: a claim is only as fine-grained as the grouping that made it. In
+   the golden set all five claim-015.0 articles are one claim, the return-date
+   article (#402) included, so a profile pinned at claim level would hide the
+   one change inside a "he's fine" story; the change question has to run per
+   article against the pinned claims, and a field change should be able to
+   split a new claim off. A wrong pinned claim compounds (a rumoured date saved as official
+   makes the later true report look like a repeat), so each field keeps its
+   source and firmness; the first articles meet an empty profile and all look
+   new, so it is seeded by replaying past claims in date order; and the golden
+   set scores one article at a time, so testing a profile means replaying
+   articles in date order (they have dates and claims, so this is possible).
+
+   **First step, cheap:** replay #148 and the five claim-015.0 articles in date
+   order through a profile updater and compare "changed a field" with Anton's
+   health levels (level 3 vs level 2) from the v8 labelling. Six articles in
+   one claim: enough to see whether the idea works, not to prove it.
+
 ## Deploy automation
 - [ ] GitHub remote + Actions workflow: push to main → deploy to Cloud Run (spec §16.1). Retires manual `gcloud run deploy`.
 - [ ] **Sandboxed autonomy (parked 2026-08-08, Anton sitting on it):** move the self-improvement routine into an ephemeral sandbox (GitHub Actions cron preferred) with scoped credentials so even a fully poisoned run is harmless. Full spec: docs/sandboxed-autonomy.md. Until then: local scheduled task + manual approvals.
