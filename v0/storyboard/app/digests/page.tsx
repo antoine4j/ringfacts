@@ -32,7 +32,8 @@ export default async function DigestsPage({ searchParams }: { searchParams: Prom
   // The digests, newest period first, then the claims and feedback of all of them at once.
   const digests = await query<DigestRow>(
     schema,
-    `SELECT id, fighter, period_start, period_end, model, prompt_version, text, items, posted_at, ${latestReaction("message_id")} AS reaction, backfill, created_at FROM digests WHERE ($1 = '' OR fighter = $1) ORDER BY period_end DESC, id DESC LIMIT 100`,
+    `SELECT d.id, d.fighter, d.period_start, d.period_end, d.model, d.prompt_version, d.text, d.items, d.posted_at, ${latestReaction("d.message_id")} AS reaction, d.backfill, d.created_at
+     FROM digests d WHERE ($1 = '' OR d.fighter = $1) ORDER BY d.period_end DESC, d.id DESC LIMIT 100`,
     [fighter],
   );
   const ids = digests.map((digest) => digest.id);

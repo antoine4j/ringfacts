@@ -66,3 +66,9 @@ test("the claims sort is one of three fixed orders", () => {
   assert.match(claimOrder({ sort: "outlets" }), /^cn\.outlets DESC/);
   assert.match(claimOrder({ sort: "1; DROP TABLE claims" }), /^cn\.last_published DESC/);
 });
+
+test("a reaction lookup refuses an unqualified column, which would match every reaction", async () => {
+  const { latestReaction } = await import("./queries.ts");
+  assert.throws(() => latestReaction("message_id"), /qualified/);
+  assert.match(latestReaction("d.message_id"), /re\.message_id = d\.message_id/);
+});

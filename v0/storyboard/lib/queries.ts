@@ -8,10 +8,11 @@ import type { Schema } from "./schema.ts";
  * The latest 👍 or 👎 on a v0 message, as a SQL expression (task 10.4). A
  * reaction removed later reads as null, since its newest row has no emoji.
  *
- * @param messageId  The column holding the message's id; a fixed name, never user input.
+ * @param messageId  The column holding the message's id, with its table alias (a bare "message_id" would name the reaction's own); a fixed name, never user input.
  * @returns The expression.
  */
 export function latestReaction(messageId: string): string {
+  if (!messageId.includes(".")) throw new Error(`latestReaction needs a qualified column, got "${messageId}"`);
   return `(SELECT re.emoji FROM reactions re WHERE re.message_id = ${messageId} ORDER BY re.update_id DESC LIMIT 1)`;
 }
 
