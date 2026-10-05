@@ -144,6 +144,18 @@ same story, different outlet or language included.
 **Measured** in the G2 grading pass (a "repeat" flag), plus an automated dedup
 audit Claude can run without Anton (`scripts/replay-dedup.js`).
 
+**When G1 and G3 pull apart, G1 wins** (Anton, 2026-10-05). Grouping articles
+into stories fails two ways: an over-merge folds a different story into an
+existing one, and the news is swallowed; an over-split gives one story two
+claims, and it posts twice. Models are not deterministic and the news is
+varied, so some of both will always happen. A repeat costs the reader a
+second look; a swallowed booking costs the thing the bot exists for: "I would
+rather see two news that Amosov booked for next fight than totally miss that
+news." So grouping is tuned to over-split rather than over-merge, and the
+splits are absorbed downstream where possible (the digest can merge stories
+that are one), while G3 stays the target for everything that does not trade
+against G1.
+
 ## G4. Confirmed means official
 
 A fight is labeled **confirmed** only when an official source says so: the
