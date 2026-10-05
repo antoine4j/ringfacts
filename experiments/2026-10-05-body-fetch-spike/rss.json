@@ -1,0 +1,572 @@
+[
+ {
+  "host": "ukr.net",
+  "feed": null,
+  "announced": false,
+  "home_readable": true
+ },
+ {
+  "host": "ua.korrespondent.net",
+  "feed": null,
+  "announced": false,
+  "home_readable": true
+ },
+ {
+  "host": "diariodeleon.es",
+  "feed": "https://www.diariodeleon.es/rss/home.xml",
+  "announced": true,
+  "items": 138,
+  "median_text": 347,
+  "items_over_400": 52
+ },
+ {
+  "host": "sherdog.com",
+  "feed": null,
+  "announced": false,
+  "home_readable": true
+ },
+ {
+  "host": "eurosport.es",
+  "feed": null,
+  "announced": false,
+  "home_readable": true
+ },
+ {
+  "host": "bloodyelbow.com",
+  "feed": "https://bloodyelbow.com/feed/",
+  "announced": false,
+  "items": 20,
+  "median_text": 2426,
+  "items_over_400": 20
+ },
+ {
+  "host": "athlonsports.com",
+  "feed": "https://athlonsports.com/rss",
+  "announced": false,
+  "items": 50,
+  "median_text": 2860,
+  "items_over_400": 50
+ },
+ {
+  "host": "boxingnews.com",
+  "feed": "https://boxingnews.com/feed",
+  "announced": true,
+  "items": 50,
+  "median_text": 1415,
+  "items_over_400": 50
+ },
+ {
+  "host": "youtu.be",
+  "feed": null,
+  "announced": false,
+  "home_readable": true
+ },
+ {
+  "host": "247sports.com",
+  "feed": null,
+  "announced": false,
+  "home_readable": true
+ },
+ {
+  "host": "dazn.com",
+  "feed": null,
+  "announced": false,
+  "home_readable": true
+ },
+ {
+  "host": "ua.tribuna.com",
+  "feed": null,
+  "announced": false,
+  "home_readable": false
+ },
+ {
+  "host": "verdictmma.com",
+  "feed": "https://verdictmma.com/rss",
+  "announced": false,
+  "items": 20,
+  "median_text": 52,
+  "items_over_400": 0
+ },
+ {
+  "host": "sport.nv.ua",
+  "feed": null,
+  "announced": false,
+  "home_readable": false
+ },
+ {
+  "host": "sport.es",
+  "feed": null,
+  "announced": false,
+  "home_readable": false
+ },
+ {
+  "host": "clarin.com",
+  "feed": "https://clarin.com/rss",
+  "announced": false,
+  "items": 10,
+  "median_text": 276,
+  "items_over_400": 0
+ },
+ {
+  "host": "vechirniy.kyiv.ua",
+  "feed": null,
+  "announced": false,
+  "home_readable": false
+ },
+ {
+  "host": "sports.yahoo.com",
+  "feed": "https://sports.yahoo.com/rss/",
+  "announced": true,
+  "items": 50,
+  "median_text": 2104,
+  "items_over_400": 50
+ },
+ {
+  "host": "betus.com.pa",
+  "feed": null,
+  "announced": false,
+  "home_readable": false
+ },
+ {
+  "host": "lufkindailynews.com",
+  "feed": null,
+  "announced": false,
+  "home_readable": false
+ },
+ {
+  "host": "tonyspicks.com",
+  "feed": null,
+  "announced": false,
+  "home_readable": false
+ },
+ {
+  "host": "ats.io",
+  "feed": "https://ats.io/rss.xml",
+  "announced": false,
+  "items": 50,
+  "median_text": 3510,
+  "items_over_400": 50
+ },
+ {
+  "host": "espn.com.ar",
+  "feed": null,
+  "announced": false,
+  "home_readable": false
+ },
+ {
+  "host": "mmaweekly.com",
+  "feed": "https://mmaweekly.com/feed",
+  "announced": false,
+  "items": 50,
+  "median_text": 1944,
+  "items_over_400": 49
+ },
+ {
+  "host": "lindyssports.com",
+  "feed": null,
+  "announced": false,
+  "home_readable": false
+ },
+ {
+  "host": "espn.com.pe",
+  "feed": null,
+  "announced": false,
+  "home_readable": false
+ },
+ {
+  "host": "as.com",
+  "feed": null,
+  "announced": false,
+  "home_readable": false
+ },
+ {
+  "host": "oddschecker.com",
+  "feed": null,
+  "announced": false,
+  "home_readable": false
+ },
+ {
+  "host": "robinhood.com",
+  "feed": null,
+  "announced": false,
+  "home_readable": true
+ },
+ {
+  "host": "mmajunkie.usatoday.com",
+  "feed": null,
+  "announced": false,
+  "home_readable": true
+ },
+ {
+  "host": "sportanalytic.com",
+  "feed": "https://sportanalytic.com/rss.xml",
+  "announced": true,
+  "items": 3,
+  "median_text": 370,
+  "items_over_400": 1
+ },
+ {
+  "host": "mmanews.com",
+  "feed": "https://mmanews.com/rss.xml",
+  "announced": false,
+  "items": 50,
+  "median_text": 123,
+  "items_over_400": 0
+ },
+ {
+  "host": "mirror.co.uk",
+  "feed": "https://www.mirror.co.uk/rss.xml",
+  "announced": true,
+  "items": 25,
+  "median_text": 160,
+  "items_over_400": 0
+ },
+ {
+  "host": "sport.ua",
+  "feed": null,
+  "announced": false,
+  "home_readable": false
+ },
+ {
+  "host": "champion.com.ua",
+  "feed": "https://champion.com.ua/rss",
+  "announced": false,
+  "items": 14,
+  "median_text": 1097,
+  "items_over_400": 14
+ },
+ {
+  "host": "eldesmarque.com",
+  "feed": "https://www.eldesmarque.com/rss.xml",
+  "announced": true,
+  "items": 30,
+  "median_text": 178,
+  "items_over_400": 0
+ },
+ {
+  "host": "marca.com",
+  "feed": "https://www.marca.com/rss/googlenews/portada.xml",
+  "announced": true,
+  "items": 67,
+  "median_text": 315,
+  "items_over_400": 20
+ },
+ {
+  "host": "sports.ndtv.com",
+  "feed": "https://feeds.feedburner.com/ndtvsports-latest",
+  "announced": true,
+  "items": 20,
+  "median_text": 188,
+  "items_over_400": 0
+ },
+ {
+  "host": "mmafighting.com",
+  "feed": "https://mmafighting.com/rss/index.xml",
+  "announced": true,
+  "items": 10,
+  "median_text": 2862,
+  "items_over_400": 10
+ },
+ {
+  "host": "elnuevoherald.com",
+  "feed": "https://feeds.mcclatchy.com/elnuevoherald/stories",
+  "announced": true,
+  "items": 41,
+  "median_text": 112,
+  "items_over_400": 0
+ },
+ {
+  "host": "mmacrossfire.com",
+  "feed": "https://www.mmacrossfire.com/feed/",
+  "announced": true,
+  "items": 6,
+  "median_text": 425,
+  "items_over_400": 5
+ },
+ {
+  "host": "idahostatesman.com",
+  "feed": "https://feeds.mcclatchy.com/idahostatesman/stories",
+  "announced": true,
+  "items": 22,
+  "median_text": 126,
+  "items_over_400": 0
+ },
+ {
+  "host": "mmamania.com",
+  "feed": "https://mmamania.com/rss/index.xml",
+  "announced": true,
+  "items": 10,
+  "median_text": 1514,
+  "items_over_400": 9
+ },
+ {
+  "host": "sportsgrid.com",
+  "feed": null,
+  "announced": false,
+  "home_readable": true
+ },
+ {
+  "host": "mmasucka.com",
+  "feed": null,
+  "announced": false,
+  "home_readable": true
+ },
+ {
+  "host": "my.ua",
+  "feed": null,
+  "announced": false,
+  "home_readable": true
+ },
+ {
+  "host": "heavy.com",
+  "feed": "https://heavy.com/feed/",
+  "announced": true,
+  "items": 30,
+  "median_text": 3366,
+  "items_over_400": 30
+ },
+ {
+  "host": "bnd.com",
+  "feed": "https://feeds.mcclatchy.com/bnd/stories",
+  "announced": true,
+  "items": 19,
+  "median_text": 120,
+  "items_over_400": 0
+ },
+ {
+  "host": "20minutos.es",
+  "feed": "https://www.20minutos.es/rss/",
+  "announced": true,
+  "items": 200,
+  "median_text": 2630,
+  "items_over_400": 195
+ },
+ {
+  "host": "centredaily.com",
+  "feed": "https://feeds.mcclatchy.com/centredaily/stories",
+  "announced": true,
+  "items": 20,
+  "median_text": 121,
+  "items_over_400": 0
+ },
+ {
+  "host": "suaragarut.id",
+  "feed": null,
+  "announced": false,
+  "home_readable": false
+ },
+ {
+  "host": "xsport.ua",
+  "feed": "https://xsport.ua/rss",
+  "announced": false,
+  "items": 42,
+  "median_text": 135,
+  "items_over_400": 0
+ },
+ {
+  "host": "abc.es",
+  "feed": "https://www.abc.es/rss/2.0/portada/",
+  "announced": true,
+  "items": 25,
+  "median_text": 3366,
+  "items_over_400": 19
+ },
+ {
+  "host": "blogs.diariovasco.com",
+  "feed": "https://blogs.diariovasco.com/rss",
+  "announced": false,
+  "items": 0,
+  "median_text": 0,
+  "items_over_400": 0
+ },
+ {
+  "host": "bjpenn.com",
+  "feed": "https://www.bjpenn.com/feed/",
+  "announced": true,
+  "items": 25,
+  "median_text": 12,
+  "items_over_400": 0
+ },
+ {
+  "host": "bradenton.com",
+  "feed": "https://feeds.mcclatchy.com/bradenton/stories",
+  "announced": true,
+  "items": 28,
+  "median_text": 121,
+  "items_over_400": 0
+ },
+ {
+  "host": "tri-cityherald.com",
+  "feed": "https://feeds.mcclatchy.com/tri-cityherald/stories",
+  "announced": true,
+  "items": 27,
+  "median_text": 116,
+  "items_over_400": 0
+ },
+ {
+  "host": "sanluisobispo.com",
+  "feed": "https://feeds.mcclatchy.com/sanluisobispo/stories",
+  "announced": true,
+  "items": 42,
+  "median_text": 120,
+  "items_over_400": 0
+ },
+ {
+  "host": "lavanguardia.com",
+  "feed": "https://www.lavanguardia.com/rss/home.xml",
+  "announced": true,
+  "items": 159,
+  "median_text": 633,
+  "items_over_400": 146
+ },
+ {
+  "host": "elespanol.com",
+  "feed": "https://elespanol.com/rss/",
+  "announced": true,
+  "items": 30,
+  "median_text": 280,
+  "items_over_400": 0
+ },
+ {
+  "host": "diariodeibiza.es",
+  "feed": null,
+  "announced": false,
+  "home_readable": false
+ },
+ {
+  "host": "mundodeportivo.com",
+  "feed": "https://www.mundodeportivo.com/feed/rss/home/",
+  "announced": true,
+  "items": 140,
+  "median_text": 564,
+  "items_over_400": 124
+ },
+ {
+  "host": "nyfights.com",
+  "feed": "https://nyfights.com/feed/",
+  "announced": true,
+  "items": 10,
+  "median_text": 3784,
+  "items_over_400": 10
+ },
+ {
+  "host": "geosuper.tv",
+  "feed": null,
+  "announced": false,
+  "home_readable": true
+ },
+ {
+  "host": "infobae.com",
+  "feed": "https://www.infobae.com/arc/outboundfeeds/rss/category/estados-unidos/",
+  "announced": true,
+  "items": 100,
+  "median_text": 4747,
+  "items_over_400": 100
+ },
+ {
+  "host": "sportscapemagazine.com",
+  "feed": null,
+  "announced": false,
+  "home_readable": true
+ },
+ {
+  "host": "sportsnet.ca",
+  "feed": "https://sportsnet.ca/rss",
+  "announced": false,
+  "items": 56,
+  "median_text": 131,
+  "items_over_400": 0
+ },
+ {
+  "host": "forbes.com",
+  "feed": null,
+  "announced": false,
+  "home_readable": true
+ },
+ {
+  "host": "eldebate.com",
+  "feed": "https://www.eldebate.com/rss/home.xml",
+  "announced": true,
+  "items": 133,
+  "median_text": 376,
+  "items_over_400": 58
+ },
+ {
+  "host": "si.com",
+  "feed": "https://www.si.com/feed",
+  "announced": true,
+  "items": 83,
+  "median_text": 115,
+  "items_over_400": 0
+ },
+ {
+  "host": "sportsnaut.com",
+  "feed": "https://sportsnaut.com/feed",
+  "announced": true,
+  "items": 25,
+  "median_text": 4053,
+  "items_over_400": 25
+ },
+ {
+  "host": "24tv.ua",
+  "feed": "https://24tv.ua/rss/all.xml",
+  "announced": true,
+  "items": 50,
+  "median_text": 458,
+  "items_over_400": 39
+ },
+ {
+  "host": "elconfidencial.com",
+  "feed": null,
+  "announced": false,
+  "home_readable": true
+ },
+ {
+  "host": "the-sun.com",
+  "feed": null,
+  "announced": false,
+  "home_readable": true
+ },
+ {
+  "host": "volynnews.com",
+  "feed": null,
+  "announced": false,
+  "home_readable": true
+ },
+ {
+  "host": "sport-express.ua",
+  "feed": "https://sport-express.ua/rss.xml",
+  "announced": true,
+  "items": 40,
+  "median_text": 137,
+  "items_over_400": 0
+ },
+ {
+  "host": "talksport.com",
+  "feed": null,
+  "announced": false,
+  "home_readable": true
+ },
+ {
+  "host": "extra.ec",
+  "feed": "https://www.extra.ec/rss/home.xml",
+  "announced": true,
+  "items": 63,
+  "median_text": 3464,
+  "items_over_400": 63
+ },
+ {
+  "host": "espn.com",
+  "feed": null,
+  "announced": false,
+  "home_readable": false
+ },
+ {
+  "host": "lowkickmma.com",
+  "feed": "https://www.lowkickmma.com/feed/",
+  "announced": true,
+  "items": 10,
+  "median_text": 3009,
+  "items_over_400": 10
+ }
+]

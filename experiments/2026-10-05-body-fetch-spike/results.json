@@ -1,0 +1,10044 @@
+[
+ {
+  "id": 2,
+  "outlet": "ukr.net",
+  "cause": "og-description",
+  "published": "2026-07-30",
+  "fighters": [
+   "Daniil Donchenko"
+  ],
+  "host": "ukr.net",
+  "retry": {
+   "length": 149,
+   "named": true,
+   "usable": false,
+   "via": "og-description"
+  },
+  "jina": {
+   "length": 0,
+   "named": false,
+   "usable": false,
+   "status": "iframe: jina-401"
+  }
+ },
+ {
+  "id": 3,
+  "outlet": "ua.korrespondent.net",
+  "cause": "og-description",
+  "published": "2026-07-30",
+  "fighters": [
+   "Daniil Donchenko"
+  ],
+  "host": "ua.korrespondent.net",
+  "retry": {
+   "length": 95,
+   "named": false,
+   "usable": false,
+   "via": "og-description"
+  },
+  "jina": {
+   "length": 7756,
+   "named": true,
+   "usable": true,
+   "status": "ok"
+  }
+ },
+ {
+  "id": 9,
+  "outlet": "Diario de León",
+  "cause": "json-ld",
+  "published": "2026-08-06",
+  "fighters": [
+   "Ilia Topuria"
+  ],
+  "host": "diariodeleon.es",
+  "retry": {
+   "length": 345,
+   "named": true,
+   "usable": false,
+   "via": "json-ld"
+  },
+  "jina": {
+   "length": 1741,
+   "named": true,
+   "usable": true,
+   "status": "ok"
+  }
+ },
+ {
+  "id": 21,
+  "outlet": "Sherdog",
+  "cause": "og-description",
+  "published": "2026-08-07",
+  "fighters": [
+   "Ilia Topuria"
+  ],
+  "host": "sherdog.com",
+  "retry": {
+   "length": 75,
+   "named": false,
+   "usable": false,
+   "via": "og-description"
+  },
+  "jina": {
+   "length": 0,
+   "named": false,
+   "usable": false,
+   "status": "jina-403"
+  }
+ },
+ {
+  "id": 22,
+  "outlet": "Sherdog",
+  "cause": "og-description",
+  "published": "2026-08-07",
+  "fighters": [
+   "Ilia Topuria"
+  ],
+  "host": "sherdog.com",
+  "retry": {
+   "length": 75,
+   "named": false,
+   "usable": false,
+   "via": "og-description"
+  },
+  "jina": {
+   "length": 0,
+   "named": false,
+   "usable": false,
+   "status": "jina-403"
+  }
+ },
+ {
+  "id": 23,
+  "outlet": "Sherdog",
+  "cause": "og-description",
+  "published": "2026-08-07",
+  "fighters": [
+   "Ilia Topuria"
+  ],
+  "host": "sherdog.com",
+  "retry": {
+   "length": 75,
+   "named": false,
+   "usable": false,
+   "via": "og-description"
+  },
+  "jina": {
+   "length": 0,
+   "named": false,
+   "usable": false,
+   "status": "jina-403"
+  }
+ },
+ {
+  "id": 28,
+  "outlet": "Sherdog",
+  "cause": "og-description",
+  "published": "2026-08-07",
+  "fighters": [
+   "Yaroslav Amosov"
+  ],
+  "host": "sherdog.com",
+  "retry": {
+   "length": 141,
+   "named": true,
+   "usable": false,
+   "via": "og-description"
+  },
+  "jina": {
+   "length": 0,
+   "named": false,
+   "usable": false,
+   "status": "jina-403"
+  }
+ },
+ {
+  "id": 33,
+  "outlet": "Eurosport",
+  "cause": "no-extract",
+  "published": "2026-08-07",
+  "fighters": [
+   "Ilia Topuria"
+  ],
+  "host": "eurosport.es",
+  "retry": {
+   "length": 0,
+   "named": false,
+   "usable": false,
+   "via": "no-extract"
+  },
+  "jina": {
+   "length": 39,
+   "named": false,
+   "usable": false,
+   "status": "ok"
+  }
+ },
+ {
+  "id": 35,
+  "outlet": "Bloody Elbow",
+  "cause": "http-403",
+  "published": "2026-08-07",
+  "fighters": [
+   "Yaroslav Amosov"
+  ],
+  "host": "bloodyelbow.com",
+  "retry": {
+   "length": 0,
+   "named": false,
+   "usable": false,
+   "via": "http-403"
+  },
+  "jina": {
+   "length": 6310,
+   "named": true,
+   "usable": true,
+   "status": "ok"
+  }
+ },
+ {
+  "id": 42,
+  "outlet": "Athlon Sports",
+  "cause": "http-403",
+  "published": "2026-08-08",
+  "fighters": [
+   "Ilia Topuria"
+  ],
+  "host": "athlonsports.com",
+  "retry": {
+   "length": 0,
+   "named": false,
+   "usable": false,
+   "via": "http-403"
+  },
+  "jina": {
+   "length": 0,
+   "named": false,
+   "usable": false,
+   "status": "iframe: jina-401"
+  }
+ },
+ {
+  "id": 46,
+  "outlet": "Bloody Elbow",
+  "cause": "http-403",
+  "published": "2026-08-08",
+  "fighters": [
+   "Ilia Topuria"
+  ],
+  "host": "bloodyelbow.com",
+  "retry": {
+   "length": 0,
+   "named": false,
+   "usable": false,
+   "via": "http-403"
+  },
+  "jina": {
+   "length": 6094,
+   "named": true,
+   "usable": true,
+   "status": "ok"
+  }
+ },
+ {
+  "id": 47,
+  "outlet": "Bloody Elbow",
+  "cause": "http-403",
+  "published": "2026-08-08",
+  "fighters": [
+   "Ilia Topuria"
+  ],
+  "host": "bloodyelbow.com",
+  "retry": {
+   "length": 0,
+   "named": false,
+   "usable": false,
+   "via": "http-403"
+  },
+  "jina": {
+   "length": 6094,
+   "named": true,
+   "usable": true,
+   "status": "ok"
+  }
+ },
+ {
+  "id": 48,
+  "outlet": "Eurosport",
+  "cause": "no-extract",
+  "published": "2026-08-08",
+  "fighters": [
+   "Ilia Topuria"
+  ],
+  "host": "eurosport.es",
+  "retry": {
+   "length": 0,
+   "named": false,
+   "usable": false,
+   "via": "no-extract"
+  },
+  "jina": {
+   "length": 39,
+   "named": false,
+   "usable": false,
+   "status": "ok"
+  }
+ },
+ {
+  "id": 52,
+  "outlet": "Bloody Elbow",
+  "cause": "http-403",
+  "published": "2026-08-08",
+  "fighters": [
+   "Ilia Topuria"
+  ],
+  "host": "bloodyelbow.com",
+  "retry": {
+   "length": 0,
+   "named": false,
+   "usable": false,
+   "via": "http-403"
+  },
+  "jina": {
+   "length": 6192,
+   "named": true,
+   "usable": true,
+   "status": "ok"
+  }
+ },
+ {
+  "id": 53,
+  "outlet": "Bloody Elbow",
+  "cause": "http-403",
+  "published": "2026-08-08",
+  "fighters": [
+   "Ilia Topuria"
+  ],
+  "host": "bloodyelbow.com",
+  "retry": {
+   "length": 0,
+   "named": false,
+   "usable": false,
+   "via": "http-403"
+  },
+  "jina": {
+   "length": 2568,
+   "named": true,
+   "usable": true,
+   "status": "ok"
+  }
+ },
+ {
+  "id": 63,
+  "outlet": "Eurosport",
+  "cause": "no-extract",
+  "published": "2026-08-09",
+  "fighters": [
+   "Ilia Topuria"
+  ],
+  "host": "eurosport.es",
+  "retry": {
+   "length": 0,
+   "named": false,
+   "usable": false,
+   "via": "no-extract"
+  },
+  "jina": {
+   "length": 39,
+   "named": false,
+   "usable": false,
+   "status": "ok"
+  }
+ },
+ {
+  "id": 68,
+  "outlet": "Bloody Elbow",
+  "cause": "http-403",
+  "published": "2026-08-09",
+  "fighters": [
+   "Ilia Topuria"
+  ],
+  "host": "bloodyelbow.com",
+  "retry": {
+   "length": 0,
+   "named": false,
+   "usable": false,
+   "via": "http-403"
+  },
+  "jina": {
+   "length": 6272,
+   "named": true,
+   "usable": true,
+   "status": "ok"
+  }
+ },
+ {
+  "id": 74,
+  "outlet": "Bloody Elbow",
+  "cause": "http-403",
+  "published": "2026-08-09",
+  "fighters": [
+   "Ilia Topuria"
+  ],
+  "host": "bloodyelbow.com",
+  "retry": {
+   "length": 0,
+   "named": false,
+   "usable": false,
+   "via": "http-403"
+  },
+  "jina": {
+   "length": 5512,
+   "named": true,
+   "usable": true,
+   "status": "ok"
+  }
+ },
+ {
+  "id": 75,
+  "outlet": "Bloody Elbow",
+  "cause": "http-403",
+  "published": "2026-08-09",
+  "fighters": [
+   "Ilia Topuria"
+  ],
+  "host": "bloodyelbow.com",
+  "retry": {
+   "length": 0,
+   "named": false,
+   "usable": false,
+   "via": "http-403"
+  },
+  "jina": {
+   "length": 5512,
+   "named": true,
+   "usable": true,
+   "status": "ok"
+  }
+ },
+ {
+  "id": 78,
+  "outlet": "boxingnews.com",
+  "cause": "http-404",
+  "published": "2026-08-10",
+  "fighters": [
+   "Ilia Topuria"
+  ],
+  "host": "boxingnews.com",
+  "retry": {
+   "length": 0,
+   "named": false,
+   "usable": false,
+   "via": "http-404"
+  },
+  "jina": {
+   "length": 751,
+   "named": false,
+   "usable": false,
+   "status": "warning: Target URL returned error 404: Not Found"
+  }
+ },
+ {
+  "id": 80,
+  "outlet": "Eurosport",
+  "cause": "no-extract",
+  "published": "2026-08-10",
+  "fighters": [
+   "Ilia Topuria"
+  ],
+  "host": "eurosport.es",
+  "retry": {
+   "length": 0,
+   "named": false,
+   "usable": false,
+   "via": "no-extract"
+  },
+  "jina": {
+   "length": 39,
+   "named": false,
+   "usable": false,
+   "status": "ok"
+  }
+ },
+ {
+  "id": 86,
+  "outlet": "Eurosport",
+  "cause": "no-extract",
+  "published": "2026-08-10",
+  "fighters": [
+   "Ilia Topuria"
+  ],
+  "host": "eurosport.es",
+  "retry": {
+   "length": 0,
+   "named": false,
+   "usable": false,
+   "via": "no-extract"
+  },
+  "jina": {
+   "length": 39,
+   "named": false,
+   "usable": false,
+   "status": "ok"
+  }
+ },
+ {
+  "id": 91,
+  "outlet": "Bloody Elbow",
+  "cause": "http-403",
+  "published": "2026-08-10",
+  "fighters": [
+   "Ilia Topuria"
+  ],
+  "host": "bloodyelbow.com",
+  "retry": {
+   "length": 0,
+   "named": false,
+   "usable": false,
+   "via": "http-403"
+  },
+  "jina": {
+   "length": 2698,
+   "named": true,
+   "usable": true,
+   "status": "ok"
+  }
+ },
+ {
+  "id": 92,
+  "outlet": "Bloody Elbow",
+  "cause": "http-403",
+  "published": "2026-08-10",
+  "fighters": [
+   "Ilia Topuria"
+  ],
+  "host": "bloodyelbow.com",
+  "retry": {
+   "length": 0,
+   "named": false,
+   "usable": false,
+   "via": "http-403"
+  },
+  "jina": {
+   "length": 2410,
+   "named": true,
+   "usable": true,
+   "status": "ok"
+  }
+ },
+ {
+  "id": 102,
+  "outlet": "YouTube",
+  "cause": "og-description",
+  "published": "2026-08-10",
+  "fighters": [
+   "Ilia Topuria"
+  ],
+  "host": "youtu.be",
+  "retry": {
+   "length": 160,
+   "named": false,
+   "usable": false,
+   "via": "og-description"
+  },
+  "jina": {
+   "length": 9515,
+   "named": true,
+   "usable": true,
+   "status": "ok"
+  }
+ },
+ {
+  "id": 103,
+  "outlet": "247Sports",
+  "cause": "http-406",
+  "published": "2026-08-10",
+  "fighters": [
+   "Yaroslav Amosov"
+  ],
+  "host": "247sports.com",
+  "retry": {
+   "length": 0,
+   "named": false,
+   "usable": false,
+   "via": "http-406"
+  },
+  "jina": {
+   "length": 146,
+   "named": true,
+   "usable": false,
+   "status": "ok"
+  }
+ },
+ {
+  "id": 105,
+  "outlet": "DAZN",
+  "cause": "no-extract",
+  "published": "2026-08-11",
+  "fighters": [
+   "Ilia Topuria"
+  ],
+  "host": "dazn.com",
+  "retry": {
+   "length": 0,
+   "named": false,
+   "usable": false,
+   "via": "no-extract"
+  },
+  "jina": {
+   "length": 159,
+   "named": false,
+   "usable": false,
+   "status": "warning: Target URL returned error 403: Forbidden"
+  }
+ },
+ {
+  "id": 108,
+  "outlet": "Sherdog",
+  "cause": "article-tag",
+  "published": "2026-08-11",
+  "fighters": [
+   "Ilia Topuria"
+  ],
+  "host": "sherdog.com",
+  "retry": {
+   "length": 304,
+   "named": true,
+   "usable": false,
+   "via": "article-tag"
+  },
+  "jina": {
+   "length": 0,
+   "named": false,
+   "usable": false,
+   "status": "jina-403"
+  }
+ },
+ {
+  "id": 109,
+  "outlet": "Sherdog",
+  "cause": "article-tag",
+  "published": "2026-08-11",
+  "fighters": [
+   "Ilia Topuria"
+  ],
+  "host": "sherdog.com",
+  "retry": {
+   "length": 304,
+   "named": true,
+   "usable": false,
+   "via": "article-tag"
+  },
+  "jina": {
+   "length": 0,
+   "named": false,
+   "usable": false,
+   "status": "jina-403"
+  }
+ },
+ {
+  "id": 111,
+  "outlet": "Sherdog",
+  "cause": "og-description",
+  "published": "2026-08-11",
+  "fighters": [
+   "Ilia Topuria"
+  ],
+  "host": "sherdog.com",
+  "retry": {
+   "length": 122,
+   "named": true,
+   "usable": false,
+   "via": "og-description"
+  },
+  "jina": {
+   "length": 0,
+   "named": false,
+   "usable": false,
+   "status": "jina-403"
+  }
+ },
+ {
+  "id": 112,
+  "outlet": "Sherdog",
+  "cause": "og-description",
+  "published": "2026-08-11",
+  "fighters": [
+   "Ilia Topuria"
+  ],
+  "host": "sherdog.com",
+  "retry": {
+   "length": 122,
+   "named": true,
+   "usable": false,
+   "via": "og-description"
+  },
+  "jina": {
+   "length": 0,
+   "named": false,
+   "usable": false,
+   "status": "jina-403"
+  }
+ },
+ {
+  "id": 120,
+  "outlet": "Eurosport",
+  "cause": "no-extract",
+  "published": "2026-08-11",
+  "fighters": [
+   "Ilia Topuria"
+  ],
+  "host": "eurosport.es",
+  "retry": {
+   "length": 0,
+   "named": false,
+   "usable": false,
+   "via": "no-extract"
+  },
+  "jina": {
+   "length": 39,
+   "named": false,
+   "usable": false,
+   "status": "ok"
+  }
+ },
+ {
+  "id": 125,
+  "outlet": "Eurosport",
+  "cause": "no-extract",
+  "published": "2026-08-11",
+  "fighters": [
+   "Ilia Topuria"
+  ],
+  "host": "eurosport.es",
+  "retry": {
+   "length": 0,
+   "named": false,
+   "usable": false,
+   "via": "no-extract"
+  },
+  "jina": {
+   "length": 39,
+   "named": false,
+   "usable": false,
+   "status": "ok"
+  }
+ },
+ {
+  "id": 178,
+  "outlet": "Bloody Elbow",
+  "cause": "http-403",
+  "published": "2026-08-13",
+  "fighters": [
+   "Ilia Topuria"
+  ],
+  "host": "bloodyelbow.com",
+  "retry": {
+   "length": 0,
+   "named": false,
+   "usable": false,
+   "via": "http-403"
+  },
+  "jina": {
+   "length": 6193,
+   "named": true,
+   "usable": true,
+   "status": "ok"
+  }
+ },
+ {
+  "id": 179,
+  "outlet": "Bloody Elbow",
+  "cause": "http-403",
+  "published": "2026-08-13",
+  "fighters": [
+   "Ilia Topuria"
+  ],
+  "host": "bloodyelbow.com",
+  "retry": {
+   "length": 0,
+   "named": false,
+   "usable": false,
+   "via": "http-403"
+  },
+  "jina": {
+   "length": 6193,
+   "named": true,
+   "usable": true,
+   "status": "ok"
+  }
+ },
+ {
+  "id": 192,
+  "outlet": "Tribuna UA",
+  "cause": "http-403",
+  "published": "2026-08-14",
+  "fighters": [
+   "Yaroslav Amosov"
+  ],
+  "host": "ua.tribuna.com",
+  "retry": {
+   "length": 0,
+   "named": false,
+   "usable": false,
+   "via": "http-403"
+  },
+  "jina": {
+   "length": 0,
+   "named": false,
+   "usable": false,
+   "status": "iframe: jina-401"
+  }
+ },
+ {
+  "id": 193,
+  "outlet": "ua.tribuna.com",
+  "cause": "http-403",
+  "published": "2026-08-14",
+  "fighters": [
+   "Yaroslav Amosov"
+  ],
+  "host": "ua.tribuna.com",
+  "retry": {
+   "length": 0,
+   "named": false,
+   "usable": false,
+   "via": "http-403"
+  },
+  "jina": {
+   "length": 0,
+   "named": false,
+   "usable": false,
+   "status": "iframe: jina-401"
+  }
+ },
+ {
+  "id": 202,
+  "outlet": "Verdict MMA",
+  "cause": "paragraphs",
+  "published": "2026-08-15",
+  "fighters": [
+   "Yaroslav Amosov"
+  ],
+  "host": "verdictmma.com",
+  "retry": {
+   "length": 257,
+   "named": false,
+   "usable": false,
+   "via": "paragraphs"
+  },
+  "jina": {
+   "length": 1325,
+   "named": true,
+   "usable": true,
+   "status": "ok"
+  }
+ },
+ {
+  "id": 205,
+  "outlet": "Sport.nv.ua.",
+  "cause": "http-403",
+  "published": "2026-08-15",
+  "fighters": [
+   "Daniil Donchenko"
+  ],
+  "host": "sport.nv.ua",
+  "retry": {
+   "length": 0,
+   "named": false,
+   "usable": false,
+   "via": "http-403"
+  },
+  "jina": {
+   "length": 3102,
+   "named": true,
+   "usable": true,
+   "status": "ok"
+  }
+ },
+ {
+  "id": 220,
+  "outlet": "SPORT",
+  "cause": "json-ld",
+  "published": "2026-08-16",
+  "fighters": [
+   "Ilia Topuria"
+  ],
+  "host": "sport.es",
+  "retry": {
+   "length": 328,
+   "named": true,
+   "usable": false,
+   "via": "json-ld"
+  },
+  "jina": {
+   "length": 8315,
+   "named": true,
+   "usable": true,
+   "status": "ok"
+  }
+ },
+ {
+  "id": 233,
+  "outlet": "Eurosport",
+  "cause": "no-extract",
+  "published": "2026-08-17",
+  "fighters": [
+   "Ilia Topuria"
+  ],
+  "host": "eurosport.es",
+  "retry": {
+   "length": 0,
+   "named": false,
+   "usable": false,
+   "via": "no-extract"
+  },
+  "jina": {
+   "length": 39,
+   "named": false,
+   "usable": false,
+   "status": "ok"
+  }
+ },
+ {
+  "id": 237,
+  "outlet": "SPORT",
+  "cause": "json-ld",
+  "published": "2026-08-18",
+  "fighters": [
+   "Ilia Topuria"
+  ],
+  "host": "sport.es",
+  "retry": {
+   "length": 327,
+   "named": true,
+   "usable": false,
+   "via": "json-ld"
+  },
+  "jina": {
+   "length": 8428,
+   "named": true,
+   "usable": true,
+   "status": "ok"
+  }
+ },
+ {
+  "id": 238,
+  "outlet": "SPORT",
+  "cause": "article-tag",
+  "published": "2026-08-18",
+  "fighters": [
+   "Ilia Topuria"
+  ],
+  "host": "sport.es",
+  "retry": {
+   "length": 339,
+   "named": true,
+   "usable": false,
+   "via": "article-tag"
+  },
+  "jina": {
+   "length": 8393,
+   "named": true,
+   "usable": true,
+   "status": "ok"
+  }
+ },
+ {
+  "id": 252,
+  "outlet": "Tribuna.com",
+  "cause": "http-403",
+  "published": "2026-08-19",
+  "fighters": [
+   "Yaroslav Amosov"
+  ],
+  "host": "ua.tribuna.com",
+  "retry": {
+   "length": 0,
+   "named": false,
+   "usable": false,
+   "via": "http-403"
+  },
+  "jina": {
+   "length": 0,
+   "named": false,
+   "usable": false,
+   "status": "iframe: jina-401"
+  }
+ },
+ {
+  "id": 253,
+  "outlet": "Tribuna.com",
+  "cause": "http-403",
+  "published": "2026-08-19",
+  "fighters": [
+   "Yaroslav Amosov"
+  ],
+  "host": "ua.tribuna.com",
+  "retry": {
+   "length": 0,
+   "named": false,
+   "usable": false,
+   "via": "http-403"
+  },
+  "jina": {
+   "length": 0,
+   "named": false,
+   "usable": false,
+   "status": "iframe: jina-401"
+  }
+ },
+ {
+  "id": 256,
+  "outlet": "Bloody Elbow",
+  "cause": "http-403",
+  "published": "2026-08-20",
+  "fighters": [
+   "Ilia Topuria"
+  ],
+  "host": "bloodyelbow.com",
+  "retry": {
+   "length": 0,
+   "named": false,
+   "usable": false,
+   "via": "http-403"
+  },
+  "jina": {
+   "length": 3664,
+   "named": true,
+   "usable": true,
+   "status": "ok"
+  }
+ },
+ {
+  "id": 262,
+  "outlet": "Clarin.com",
+  "cause": "article-tag",
+  "published": "2026-08-20",
+  "fighters": [
+   "Ilia Topuria"
+  ],
+  "host": "clarin.com",
+  "retry": {
+   "length": 255,
+   "named": false,
+   "usable": false,
+   "via": "article-tag"
+  },
+  "jina": {
+   "length": 8526,
+   "named": true,
+   "usable": true,
+   "status": "ok"
+  }
+ },
+ {
+  "id": 264,
+  "outlet": "Bloody Elbow",
+  "cause": "http-403",
+  "published": "2026-08-20",
+  "fighters": [
+   "Ilia Topuria"
+  ],
+  "host": "bloodyelbow.com",
+  "retry": {
+   "length": 0,
+   "named": false,
+   "usable": false,
+   "via": "http-403"
+  },
+  "jina": {
+   "length": 2865,
+   "named": true,
+   "usable": true,
+   "status": "ok"
+  }
+ },
+ {
+  "id": 265,
+  "outlet": "Bloody Elbow",
+  "cause": "http-403",
+  "published": "2026-08-20",
+  "fighters": [
+   "Ilia Topuria"
+  ],
+  "host": "bloodyelbow.com",
+  "retry": {
+   "length": 0,
+   "named": false,
+   "usable": false,
+   "via": "http-403"
+  },
+  "jina": {
+   "length": 2865,
+   "named": true,
+   "usable": true,
+   "status": "ok"
+  }
+ },
+ {
+  "id": 270,
+  "outlet": "Clarin.com",
+  "cause": "article-tag",
+  "published": "2026-08-20",
+  "fighters": [
+   "Ilia Topuria"
+  ],
+  "host": "clarin.com",
+  "retry": {
+   "length": 200,
+   "named": true,
+   "usable": false,
+   "via": "article-tag"
+  },
+  "jina": {
+   "length": 8478,
+   "named": true,
+   "usable": true,
+   "status": "ok"
+  }
+ },
+ {
+  "id": 279,
+  "outlet": "Bloody Elbow",
+  "cause": "http-403",
+  "published": "2026-08-20",
+  "fighters": [
+   "Ilia Topuria"
+  ],
+  "host": "bloodyelbow.com",
+  "retry": {
+   "length": 0,
+   "named": false,
+   "usable": false,
+   "via": "http-403"
+  },
+  "jina": {
+   "length": 6487,
+   "named": true,
+   "usable": true,
+   "status": "ok"
+  }
+ },
+ {
+  "id": 280,
+  "outlet": "Bloody Elbow",
+  "cause": "http-403",
+  "published": "2026-08-20",
+  "fighters": [
+   "Ilia Topuria"
+  ],
+  "host": "bloodyelbow.com",
+  "retry": {
+   "length": 0,
+   "named": false,
+   "usable": false,
+   "via": "http-403"
+  },
+  "jina": {
+   "length": 3136,
+   "named": true,
+   "usable": true,
+   "status": "ok"
+  }
+ },
+ {
+  "id": 281,
+  "outlet": "Вечірній Київ",
+  "cause": "http-403",
+  "published": "2026-08-20",
+  "fighters": [
+   "Yaroslav Amosov"
+  ],
+  "host": "vechirniy.kyiv.ua",
+  "retry": {
+   "length": 0,
+   "named": false,
+   "usable": false,
+   "via": "http-403"
+  },
+  "jina": {
+   "length": 0,
+   "named": false,
+   "usable": false,
+   "status": "iframe: jina-401"
+  }
+ },
+ {
+  "id": 291,
+  "outlet": "Sherdog",
+  "cause": "og-description",
+  "published": "2026-08-21",
+  "fighters": [
+   "Ilia Topuria"
+  ],
+  "host": "sherdog.com",
+  "retry": {
+   "length": 102,
+   "named": false,
+   "usable": false,
+   "via": "og-description"
+  },
+  "jina": {
+   "length": 0,
+   "named": false,
+   "usable": false,
+   "status": "jina-403"
+  }
+ },
+ {
+  "id": 293,
+  "outlet": "Sherdog",
+  "cause": "og-description",
+  "published": "2026-08-21",
+  "fighters": [
+   "Ilia Topuria"
+  ],
+  "host": "sherdog.com",
+  "retry": {
+   "length": 102,
+   "named": false,
+   "usable": false,
+   "via": "og-description"
+  },
+  "jina": {
+   "length": 0,
+   "named": false,
+   "usable": false,
+   "status": "jina-403"
+  }
+ },
+ {
+  "id": 299,
+  "outlet": "Sport.nv.ua.",
+  "cause": "http-403",
+  "published": "2026-08-21",
+  "fighters": [
+   "Daniil Donchenko"
+  ],
+  "host": "sport.nv.ua",
+  "retry": {
+   "length": 0,
+   "named": false,
+   "usable": false,
+   "via": "http-403"
+  },
+  "jina": {
+   "length": 2837,
+   "named": true,
+   "usable": true,
+   "status": "ok"
+  }
+ },
+ {
+  "id": 302,
+  "outlet": "Sport.nv.ua.",
+  "cause": "http-403",
+  "published": "2026-08-21",
+  "fighters": [
+   "Daniil Donchenko"
+  ],
+  "host": "sport.nv.ua",
+  "retry": {
+   "length": 0,
+   "named": false,
+   "usable": false,
+   "via": "http-403"
+  },
+  "jina": {
+   "length": 8558,
+   "named": true,
+   "usable": true,
+   "status": "ok"
+  }
+ },
+ {
+  "id": 303,
+  "outlet": "Sport.nv.ua.",
+  "cause": "http-403",
+  "published": "2026-08-21",
+  "fighters": [
+   "Daniil Donchenko"
+  ],
+  "host": "sport.nv.ua",
+  "retry": {
+   "length": 0,
+   "named": false,
+   "usable": false,
+   "via": "http-403"
+  },
+  "jina": {
+   "length": 1875,
+   "named": true,
+   "usable": true,
+   "status": "ok"
+  }
+ },
+ {
+  "id": 326,
+  "outlet": "Yahoo Sports",
+  "cause": "og-description",
+  "published": "2026-08-22",
+  "fighters": [
+   "Yaroslav Amosov"
+  ],
+  "host": "sports.yahoo.com",
+  "retry": {
+   "length": 153,
+   "named": true,
+   "usable": false,
+   "via": "og-description"
+  },
+  "jina": {
+   "length": 0,
+   "named": false,
+   "usable": false,
+   "status": "iframe: jina-401"
+  }
+ },
+ {
+  "id": 329,
+  "outlet": "Bloody Elbow",
+  "cause": "http-403",
+  "published": "2026-08-22",
+  "fighters": [
+   "Ilia Topuria"
+  ],
+  "host": "bloodyelbow.com",
+  "retry": {
+   "length": 0,
+   "named": false,
+   "usable": false,
+   "via": "http-403"
+  },
+  "jina": {
+   "length": 6598,
+   "named": true,
+   "usable": true,
+   "status": "ok"
+  }
+ },
+ {
+  "id": 330,
+  "outlet": "Bloody Elbow",
+  "cause": "http-403",
+  "published": "2026-08-22",
+  "fighters": [
+   "Ilia Topuria"
+  ],
+  "host": "bloodyelbow.com",
+  "retry": {
+   "length": 0,
+   "named": false,
+   "usable": false,
+   "via": "http-403"
+  },
+  "jina": {
+   "length": 6598,
+   "named": true,
+   "usable": true,
+   "status": "ok"
+  }
+ },
+ {
+  "id": 342,
+  "outlet": "SPORT",
+  "cause": "json-ld",
+  "published": "2026-08-24",
+  "fighters": [
+   "Ilia Topuria"
+  ],
+  "host": "sport.es",
+  "retry": {
+   "length": 385,
+   "named": true,
+   "usable": false,
+   "via": "json-ld"
+  },
+  "jina": {
+   "length": 8485,
+   "named": true,
+   "usable": true,
+   "status": "ok"
+  }
+ },
+ {
+  "id": 344,
+  "outlet": "Eurosport",
+  "cause": "no-extract",
+  "published": "2026-08-24",
+  "fighters": [
+   "Ilia Topuria"
+  ],
+  "host": "eurosport.es",
+  "retry": {
+   "length": 0,
+   "named": false,
+   "usable": false,
+   "via": "no-extract"
+  },
+  "jina": {
+   "length": 39,
+   "named": false,
+   "usable": false,
+   "status": "ok"
+  }
+ },
+ {
+  "id": 364,
+  "outlet": "Sport.nv.ua.",
+  "cause": "http-403",
+  "published": "2026-08-25",
+  "fighters": [
+   "Daniil Donchenko"
+  ],
+  "host": "sport.nv.ua",
+  "retry": {
+   "length": 0,
+   "named": false,
+   "usable": false,
+   "via": "http-403"
+  },
+  "jina": {
+   "length": 9671,
+   "named": true,
+   "usable": true,
+   "status": "ok"
+  }
+ },
+ {
+  "id": 367,
+  "outlet": "Sport.nv.ua.",
+  "cause": "http-403",
+  "published": "2026-08-25",
+  "fighters": [
+   "Daniil Donchenko"
+  ],
+  "host": "sport.nv.ua",
+  "retry": {
+   "length": 0,
+   "named": false,
+   "usable": false,
+   "via": "http-403"
+  },
+  "jina": {
+   "length": 8578,
+   "named": true,
+   "usable": true,
+   "status": "ok"
+  }
+ },
+ {
+  "id": 368,
+  "outlet": "Sport.nv.ua.",
+  "cause": "http-403",
+  "published": "2026-08-25",
+  "fighters": [
+   "Daniil Donchenko"
+  ],
+  "host": "sport.nv.ua",
+  "retry": {
+   "length": 0,
+   "named": false,
+   "usable": false,
+   "via": "http-403"
+  },
+  "jina": {
+   "length": 1937,
+   "named": true,
+   "usable": true,
+   "status": "ok"
+  }
+ },
+ {
+  "id": 404,
+  "outlet": "Вечірній Київ",
+  "cause": "http-403",
+  "published": "2026-08-27",
+  "fighters": [
+   "Yaroslav Amosov"
+  ],
+  "host": "vechirniy.kyiv.ua",
+  "retry": {
+   "length": 0,
+   "named": false,
+   "usable": false,
+   "via": "http-403"
+  },
+  "jina": {
+   "length": 0,
+   "named": false,
+   "usable": false,
+   "status": "iframe: jina-401"
+  }
+ },
+ {
+  "id": 419,
+  "outlet": "Eurosport",
+  "cause": "no-extract",
+  "published": "2026-08-28",
+  "fighters": [
+   "Ilia Topuria"
+  ],
+  "host": "eurosport.es",
+  "retry": {
+   "length": 0,
+   "named": false,
+   "usable": false,
+   "via": "no-extract"
+  },
+  "jina": {
+   "length": 39,
+   "named": false,
+   "usable": false,
+   "status": "ok"
+  }
+ },
+ {
+  "id": 443,
+  "outlet": "Eurosport",
+  "cause": "no-extract",
+  "published": "2026-08-29",
+  "fighters": [
+   "Ilia Topuria"
+  ],
+  "host": "eurosport.es",
+  "retry": {
+   "length": 0,
+   "named": false,
+   "usable": false,
+   "via": "no-extract"
+  },
+  "jina": {
+   "length": 39,
+   "named": false,
+   "usable": false,
+   "status": "ok"
+  }
+ },
+ {
+  "id": 446,
+  "outlet": "Bloody Elbow",
+  "cause": "http-403",
+  "published": "2026-08-29",
+  "fighters": [
+   "Ilia Topuria"
+  ],
+  "host": "bloodyelbow.com",
+  "retry": {
+   "length": 0,
+   "named": false,
+   "usable": false,
+   "via": "http-403"
+  },
+  "jina": {
+   "length": 6652,
+   "named": true,
+   "usable": true,
+   "status": "ok"
+  }
+ },
+ {
+  "id": 447,
+  "outlet": "Bloody Elbow",
+  "cause": "http-403",
+  "published": "2026-08-29",
+  "fighters": [
+   "Ilia Topuria"
+  ],
+  "host": "bloodyelbow.com",
+  "retry": {
+   "length": 0,
+   "named": false,
+   "usable": false,
+   "via": "http-403"
+  },
+  "jina": {
+   "length": 6652,
+   "named": true,
+   "usable": true,
+   "status": "ok"
+  }
+ },
+ {
+  "id": 452,
+  "outlet": "Bloody Elbow",
+  "cause": "http-403",
+  "published": "2026-08-30",
+  "fighters": [
+   "Ilia Topuria"
+  ],
+  "host": "bloodyelbow.com",
+  "retry": {
+   "length": 0,
+   "named": false,
+   "usable": false,
+   "via": "http-403"
+  },
+  "jina": {
+   "length": 7165,
+   "named": true,
+   "usable": true,
+   "status": "ok"
+  }
+ },
+ {
+  "id": 466,
+  "outlet": "Tribuna.com",
+  "cause": "http-403",
+  "published": "2026-08-30",
+  "fighters": [
+   "Daniil Donchenko"
+  ],
+  "host": "ua.tribuna.com",
+  "retry": {
+   "length": 0,
+   "named": false,
+   "usable": false,
+   "via": "http-403"
+  },
+  "jina": {
+   "length": 0,
+   "named": false,
+   "usable": false,
+   "status": "iframe: jina-401"
+  }
+ },
+ {
+  "id": 467,
+  "outlet": "Sherdog",
+  "cause": "og-description",
+  "published": "2026-08-30",
+  "fighters": [
+   "Ilia Topuria"
+  ],
+  "host": "sherdog.com",
+  "retry": {
+   "length": 177,
+   "named": false,
+   "usable": false,
+   "via": "og-description"
+  },
+  "jina": {
+   "length": 0,
+   "named": false,
+   "usable": false,
+   "status": "jina-403"
+  }
+ },
+ {
+  "id": 468,
+  "outlet": "Sherdog",
+  "cause": "og-description",
+  "published": "2026-08-30",
+  "fighters": [
+   "Ilia Topuria"
+  ],
+  "host": "sherdog.com",
+  "retry": {
+   "length": 177,
+   "named": false,
+   "usable": false,
+   "via": "og-description"
+  },
+  "jina": {
+   "length": 0,
+   "named": false,
+   "usable": false,
+   "status": "jina-403"
+  }
+ },
+ {
+  "id": 473,
+  "outlet": "Sherdog",
+  "cause": "og-description",
+  "published": "2026-08-31",
+  "fighters": [
+   "Ilia Topuria"
+  ],
+  "host": "sherdog.com",
+  "retry": {
+   "length": 113,
+   "named": false,
+   "usable": false,
+   "via": "og-description"
+  },
+  "jina": {
+   "length": 0,
+   "named": false,
+   "usable": false,
+   "status": "jina-403"
+  }
+ },
+ {
+  "id": 474,
+  "outlet": "Sherdog",
+  "cause": "og-description",
+  "published": "2026-08-31",
+  "fighters": [
+   "Ilia Topuria"
+  ],
+  "host": "sherdog.com",
+  "retry": {
+   "length": 113,
+   "named": false,
+   "usable": false,
+   "via": "og-description"
+  },
+  "jina": {
+   "length": 0,
+   "named": false,
+   "usable": false,
+   "status": "jina-403"
+  }
+ },
+ {
+  "id": 476,
+  "outlet": "Athlon Sports",
+  "cause": "http-403",
+  "published": "2026-08-31",
+  "fighters": [
+   "Ilia Topuria"
+  ],
+  "host": "athlonsports.com",
+  "retry": {
+   "length": 0,
+   "named": false,
+   "usable": false,
+   "via": "http-403"
+  },
+  "jina": {
+   "length": 0,
+   "named": false,
+   "usable": false,
+   "status": "iframe: jina-401"
+  }
+ },
+ {
+  "id": 478,
+  "outlet": "Tribuna.com",
+  "cause": "http-403",
+  "published": "2026-08-31",
+  "fighters": [
+   "Daniil Donchenko"
+  ],
+  "host": "ua.tribuna.com",
+  "retry": {
+   "length": 0,
+   "named": false,
+   "usable": false,
+   "via": "http-403"
+  },
+  "jina": {
+   "length": 0,
+   "named": false,
+   "usable": false,
+   "status": "iframe: jina-401"
+  }
+ },
+ {
+  "id": 481,
+  "outlet": "Sherdog",
+  "cause": "og-description",
+  "published": "2026-08-31",
+  "fighters": [
+   "Ilia Topuria"
+  ],
+  "host": "sherdog.com",
+  "retry": {
+   "length": 145,
+   "named": false,
+   "usable": false,
+   "via": "og-description"
+  },
+  "jina": {
+   "length": 0,
+   "named": false,
+   "usable": false,
+   "status": "jina-403"
+  }
+ },
+ {
+  "id": 482,
+  "outlet": "Eurosport",
+  "cause": "no-extract",
+  "published": "2026-08-31",
+  "fighters": [
+   "Ilia Topuria"
+  ],
+  "host": "eurosport.es",
+  "retry": {
+   "length": 0,
+   "named": false,
+   "usable": false,
+   "via": "no-extract"
+  },
+  "jina": {
+   "length": 39,
+   "named": false,
+   "usable": false,
+   "status": "ok"
+  }
+ },
+ {
+  "id": 491,
+  "outlet": "ua.tribuna.com",
+  "cause": "http-403",
+  "published": "2026-08-31",
+  "fighters": [
+   "Daniil Donchenko"
+  ],
+  "host": "ua.tribuna.com",
+  "retry": {
+   "length": 0,
+   "named": false,
+   "usable": false,
+   "via": "http-403"
+  },
+  "jina": {
+   "length": 0,
+   "named": false,
+   "usable": false,
+   "status": "iframe: jina-401"
+  }
+ },
+ {
+  "id": 506,
+  "outlet": "Bloody Elbow",
+  "cause": "http-403",
+  "published": "2026-09-01",
+  "fighters": [
+   "Ilia Topuria"
+  ],
+  "host": "bloodyelbow.com",
+  "retry": {
+   "length": 0,
+   "named": false,
+   "usable": false,
+   "via": "http-403"
+  },
+  "jina": {
+   "length": 5499,
+   "named": true,
+   "usable": true,
+   "status": "ok"
+  }
+ },
+ {
+  "id": 509,
+  "outlet": "DAZN",
+  "cause": "no-extract",
+  "published": "2026-09-01",
+  "fighters": [
+   "Ilia Topuria"
+  ],
+  "host": "dazn.com",
+  "retry": {
+   "length": 0,
+   "named": false,
+   "usable": false,
+   "via": "no-extract"
+  },
+  "jina": {
+   "length": 159,
+   "named": false,
+   "usable": false,
+   "status": "warning: Target URL returned error 403: Forbidden"
+  }
+ },
+ {
+  "id": 519,
+  "outlet": "ua.tribuna.com",
+  "cause": "http-403",
+  "published": "2026-09-01",
+  "fighters": [
+   "Daniil Donchenko"
+  ],
+  "host": "ua.tribuna.com",
+  "retry": {
+   "length": 0,
+   "named": false,
+   "usable": false,
+   "via": "http-403"
+  },
+  "jina": {
+   "length": 0,
+   "named": false,
+   "usable": false,
+   "status": "iframe: jina-401"
+  }
+ },
+ {
+  "id": 525,
+  "outlet": "Eurosport",
+  "cause": "no-extract",
+  "published": "2026-09-01",
+  "fighters": [
+   "Ilia Topuria"
+  ],
+  "host": "eurosport.es",
+  "retry": {
+   "length": 0,
+   "named": false,
+   "usable": false,
+   "via": "no-extract"
+  },
+  "jina": {
+   "length": 39,
+   "named": false,
+   "usable": false,
+   "status": "ok"
+  }
+ },
+ {
+  "id": 533,
+  "outlet": "betus.com.pa",
+  "cause": "http-403",
+  "published": "2026-09-01",
+  "fighters": [
+   "Ilia Topuria"
+  ],
+  "host": "betus.com.pa",
+  "retry": {
+   "length": 0,
+   "named": false,
+   "usable": false,
+   "via": "http-403"
+  },
+  "jina": {
+   "length": 28485,
+   "named": true,
+   "usable": true,
+   "status": "ok"
+  }
+ },
+ {
+  "id": 534,
+  "outlet": "youtu.be",
+  "cause": "og-description",
+  "published": "2026-09-01",
+  "fighters": [
+   "Ilia Topuria"
+  ],
+  "host": "youtu.be",
+  "retry": {
+   "length": 160,
+   "named": true,
+   "usable": false,
+   "via": "og-description"
+  },
+  "jina": {
+   "length": 4662,
+   "named": true,
+   "usable": true,
+   "status": "ok"
+  }
+ },
+ {
+  "id": 536,
+  "outlet": "Sherdog",
+  "cause": "og-description",
+  "published": "2026-09-02",
+  "fighters": [
+   "Ilia Topuria"
+  ],
+  "host": "sherdog.com",
+  "retry": {
+   "length": 92,
+   "named": false,
+   "usable": false,
+   "via": "og-description"
+  },
+  "jina": {
+   "length": 0,
+   "named": false,
+   "usable": false,
+   "status": "jina-403"
+  }
+ },
+ {
+  "id": 539,
+  "outlet": "Sherdog",
+  "cause": "og-description",
+  "published": "2026-09-02",
+  "fighters": [
+   "Ilia Topuria"
+  ],
+  "host": "sherdog.com",
+  "retry": {
+   "length": 92,
+   "named": false,
+   "usable": false,
+   "via": "og-description"
+  },
+  "jina": {
+   "length": 0,
+   "named": false,
+   "usable": false,
+   "status": "jina-403"
+  }
+ },
+ {
+  "id": 542,
+  "outlet": "Eurosport",
+  "cause": "no-extract",
+  "published": "2026-09-02",
+  "fighters": [
+   "Ilia Topuria"
+  ],
+  "host": "eurosport.es",
+  "retry": {
+   "length": 0,
+   "named": false,
+   "usable": false,
+   "via": "no-extract"
+  },
+  "jina": {
+   "length": 39,
+   "named": false,
+   "usable": false,
+   "status": "ok"
+  }
+ },
+ {
+  "id": 558,
+  "outlet": "The Lufkin Daily News",
+  "cause": "article-tag",
+  "published": "2026-09-03",
+  "fighters": [
+   "Ilia Topuria"
+  ],
+  "host": "lufkindailynews.com",
+  "retry": {
+   "length": 0,
+   "named": false,
+   "usable": false,
+   "via": "http-429"
+  },
+  "jina": {
+   "length": 9298,
+   "named": true,
+   "usable": true,
+   "status": "ok"
+  }
+ },
+ {
+  "id": 562,
+  "outlet": "Athlon Sports",
+  "cause": "http-403",
+  "published": "2026-09-03",
+  "fighters": [
+   "Ilia Topuria"
+  ],
+  "host": "athlonsports.com",
+  "retry": {
+   "length": 0,
+   "named": false,
+   "usable": false,
+   "via": "http-403"
+  },
+  "jina": {
+   "length": 0,
+   "named": false,
+   "usable": false,
+   "status": "iframe: jina-401"
+  }
+ },
+ {
+  "id": 569,
+  "outlet": "Sherdog",
+  "cause": "og-description",
+  "published": "2026-09-03",
+  "fighters": [
+   "Ilia Topuria"
+  ],
+  "host": "sherdog.com",
+  "retry": {
+   "length": 100,
+   "named": false,
+   "usable": false,
+   "via": "og-description"
+  },
+  "jina": {
+   "length": 0,
+   "named": false,
+   "usable": false,
+   "status": "jina-403"
+  }
+ },
+ {
+  "id": 571,
+  "outlet": "tonyspicks.com",
+  "cause": "http-403",
+  "published": "2026-09-03",
+  "fighters": [
+   "Daniil Donchenko"
+  ],
+  "host": "tonyspicks.com",
+  "retry": {
+   "length": 0,
+   "named": false,
+   "usable": false,
+   "via": "http-403"
+  },
+  "jina": {
+   "length": 0,
+   "named": false,
+   "usable": false,
+   "status": "iframe: jina-401"
+  }
+ },
+ {
+  "id": 573,
+  "outlet": "Bloody Elbow",
+  "cause": "http-403",
+  "published": "2026-09-03",
+  "fighters": [
+   "Ilia Topuria"
+  ],
+  "host": "bloodyelbow.com",
+  "retry": {
+   "length": 0,
+   "named": false,
+   "usable": false,
+   "via": "http-403"
+  },
+  "jina": {
+   "length": 6146,
+   "named": true,
+   "usable": true,
+   "status": "ok"
+  }
+ },
+ {
+  "id": 588,
+  "outlet": "ATS.io",
+  "cause": "http-403",
+  "published": "2026-09-03",
+  "fighters": [
+   "Daniil Donchenko"
+  ],
+  "host": "ats.io",
+  "retry": {
+   "length": 0,
+   "named": false,
+   "usable": false,
+   "via": "http-403"
+  },
+  "jina": {
+   "length": 8270,
+   "named": true,
+   "usable": true,
+   "status": "ok"
+  }
+ },
+ {
+  "id": 599,
+  "outlet": "Ukr.net",
+  "cause": "og-description",
+  "published": "2026-09-04",
+  "fighters": [
+   "Daniil Donchenko"
+  ],
+  "host": "ukr.net",
+  "retry": {
+   "length": 146,
+   "named": true,
+   "usable": false,
+   "via": "og-description"
+  },
+  "jina": {
+   "length": 0,
+   "named": false,
+   "usable": false,
+   "status": "iframe: jina-401"
+  }
+ },
+ {
+  "id": 604,
+  "outlet": "Tribuna.com",
+  "cause": "http-403",
+  "published": "2026-09-04",
+  "fighters": [
+   "Daniil Donchenko"
+  ],
+  "host": "ua.tribuna.com",
+  "retry": {
+   "length": 0,
+   "named": false,
+   "usable": false,
+   "via": "http-403"
+  },
+  "jina": {
+   "length": 0,
+   "named": false,
+   "usable": false,
+   "status": "iframe: jina-401"
+  }
+ },
+ {
+  "id": 605,
+  "outlet": "Tribuna.com",
+  "cause": "http-403",
+  "published": "2026-09-04",
+  "fighters": [
+   "Daniil Donchenko"
+  ],
+  "host": "ua.tribuna.com",
+  "retry": {
+   "length": 0,
+   "named": false,
+   "usable": false,
+   "via": "http-403"
+  },
+  "jina": {
+   "length": 0,
+   "named": false,
+   "usable": false,
+   "status": "iframe: jina-401"
+  }
+ },
+ {
+  "id": 607,
+  "outlet": "Tribuna.com",
+  "cause": "http-403",
+  "published": "2026-09-04",
+  "fighters": [
+   "Daniil Donchenko"
+  ],
+  "host": "ua.tribuna.com",
+  "retry": {
+   "length": 0,
+   "named": false,
+   "usable": false,
+   "via": "http-403"
+  },
+  "jina": {
+   "length": 0,
+   "named": false,
+   "usable": false,
+   "status": "iframe: jina-401"
+  }
+ },
+ {
+  "id": 608,
+  "outlet": "Tribuna.com",
+  "cause": "http-403",
+  "published": "2026-09-04",
+  "fighters": [
+   "Daniil Donchenko"
+  ],
+  "host": "ua.tribuna.com",
+  "retry": {
+   "length": 0,
+   "named": false,
+   "usable": false,
+   "via": "http-403"
+  },
+  "jina": {
+   "length": 0,
+   "named": false,
+   "usable": false,
+   "status": "iframe: jina-401"
+  }
+ },
+ {
+  "id": 610,
+  "outlet": "Tribuna.com",
+  "cause": "http-403",
+  "published": "2026-09-04",
+  "fighters": [
+   "Daniil Donchenko"
+  ],
+  "host": "ua.tribuna.com",
+  "retry": {
+   "length": 0,
+   "named": false,
+   "usable": false,
+   "via": "http-403"
+  },
+  "jina": {
+   "length": 0,
+   "named": false,
+   "usable": false,
+   "status": "iframe: jina-401"
+  }
+ },
+ {
+  "id": 611,
+  "outlet": "Tribuna.com",
+  "cause": "http-403",
+  "published": "2026-09-04",
+  "fighters": [
+   "Daniil Donchenko"
+  ],
+  "host": "ua.tribuna.com",
+  "retry": {
+   "length": 0,
+   "named": false,
+   "usable": false,
+   "via": "http-403"
+  },
+  "jina": {
+   "length": 0,
+   "named": false,
+   "usable": false,
+   "status": "iframe: jina-401"
+  }
+ },
+ {
+  "id": 615,
+  "outlet": "bloodyelbow.com",
+  "cause": "http-403",
+  "published": "2026-09-04",
+  "fighters": [
+   "Ilia Topuria"
+  ],
+  "host": "bloodyelbow.com",
+  "retry": {
+   "length": 0,
+   "named": false,
+   "usable": false,
+   "via": "http-403"
+  },
+  "jina": {
+   "length": 2174,
+   "named": true,
+   "usable": true,
+   "status": "ok"
+  }
+ },
+ {
+  "id": 617,
+  "outlet": "Bloody Elbow",
+  "cause": "http-403",
+  "published": "2026-09-04",
+  "fighters": [
+   "Ilia Topuria"
+  ],
+  "host": "bloodyelbow.com",
+  "retry": {
+   "length": 0,
+   "named": false,
+   "usable": false,
+   "via": "http-403"
+  },
+  "jina": {
+   "length": 2174,
+   "named": true,
+   "usable": true,
+   "status": "ok"
+  }
+ },
+ {
+  "id": 620,
+  "outlet": "boxingnews.com",
+  "cause": "paragraphs",
+  "published": "2026-09-04",
+  "fighters": [
+   "Daniil Donchenko"
+  ],
+  "host": "boxingnews.com",
+  "retry": {
+   "length": 283,
+   "named": false,
+   "usable": false,
+   "via": "paragraphs"
+  },
+  "jina": {
+   "length": 1374,
+   "named": true,
+   "usable": true,
+   "status": "ok"
+  }
+ },
+ {
+  "id": 627,
+  "outlet": "Eurosport",
+  "cause": "no-extract",
+  "published": "2026-09-04",
+  "fighters": [
+   "Ilia Topuria"
+  ],
+  "host": "eurosport.es",
+  "retry": {
+   "length": 0,
+   "named": false,
+   "usable": false,
+   "via": "no-extract"
+  },
+  "jina": {
+   "length": 39,
+   "named": false,
+   "usable": false,
+   "status": "ok"
+  }
+ },
+ {
+  "id": 629,
+  "outlet": "Bloody Elbow",
+  "cause": "http-403",
+  "published": "2026-09-04",
+  "fighters": [
+   "Ilia Topuria"
+  ],
+  "host": "bloodyelbow.com",
+  "retry": {
+   "length": 0,
+   "named": false,
+   "usable": false,
+   "via": "http-403"
+  },
+  "jina": {
+   "length": 3214,
+   "named": true,
+   "usable": true,
+   "status": "ok"
+  }
+ },
+ {
+  "id": 630,
+  "outlet": "Bloody Elbow",
+  "cause": "http-403",
+  "published": "2026-09-04",
+  "fighters": [
+   "Ilia Topuria"
+  ],
+  "host": "bloodyelbow.com",
+  "retry": {
+   "length": 0,
+   "named": false,
+   "usable": false,
+   "via": "http-403"
+  },
+  "jina": {
+   "length": 2926,
+   "named": true,
+   "usable": true,
+   "status": "ok"
+  }
+ },
+ {
+  "id": 638,
+  "outlet": "Eurosport",
+  "cause": "no-extract",
+  "published": "2026-09-04",
+  "fighters": [
+   "Ilia Topuria"
+  ],
+  "host": "eurosport.es",
+  "retry": {
+   "length": 0,
+   "named": false,
+   "usable": false,
+   "via": "no-extract"
+  },
+  "jina": {
+   "length": 39,
+   "named": false,
+   "usable": false,
+   "status": "ok"
+  }
+ },
+ {
+  "id": 639,
+  "outlet": "Tribuna.com",
+  "cause": "http-403",
+  "published": "2026-09-04",
+  "fighters": [
+   "Daniil Donchenko"
+  ],
+  "host": "ua.tribuna.com",
+  "retry": {
+   "length": 0,
+   "named": false,
+   "usable": false,
+   "via": "http-403"
+  },
+  "jina": {
+   "length": 0,
+   "named": false,
+   "usable": false,
+   "status": "iframe: jina-401"
+  }
+ },
+ {
+  "id": 651,
+  "outlet": "ESPN Argentina",
+  "cause": "no-extract",
+  "published": "2026-09-04",
+  "fighters": [
+   "Ilia Topuria"
+  ],
+  "host": "espn.com.ar",
+  "retry": {
+   "length": 0,
+   "named": false,
+   "usable": false,
+   "via": "no-extract"
+  },
+  "jina": {
+   "length": 18052,
+   "named": true,
+   "usable": true,
+   "status": "ok"
+  }
+ },
+ {
+  "id": 655,
+  "outlet": "MMAWeekly.com",
+  "cause": "http-403",
+  "published": "2026-09-04",
+  "fighters": [
+   "Ilia Topuria"
+  ],
+  "host": "mmaweekly.com",
+  "retry": {
+   "length": 0,
+   "named": false,
+   "usable": false,
+   "via": "http-403"
+  },
+  "jina": {
+   "length": 0,
+   "named": false,
+   "usable": false,
+   "status": "iframe: jina-401"
+  }
+ },
+ {
+  "id": 669,
+  "outlet": "Eurosport",
+  "cause": "no-extract",
+  "published": "2026-09-04",
+  "fighters": [
+   "Ilia Topuria"
+  ],
+  "host": "eurosport.es",
+  "retry": {
+   "length": 0,
+   "named": false,
+   "usable": false,
+   "via": "no-extract"
+  },
+  "jina": {
+   "length": 39,
+   "named": false,
+   "usable": false,
+   "status": "ok"
+  }
+ },
+ {
+  "id": 670,
+  "outlet": "lindyssports.com",
+  "cause": "http-403",
+  "published": "2026-09-04",
+  "fighters": [
+   "Daniil Donchenko"
+  ],
+  "host": "lindyssports.com",
+  "retry": {
+   "length": 0,
+   "named": false,
+   "usable": false,
+   "via": "http-403"
+  },
+  "jina": {
+   "length": 0,
+   "named": false,
+   "usable": false,
+   "status": "iframe: jina-401"
+  }
+ },
+ {
+  "id": 676,
+  "outlet": "Athlon Sports",
+  "cause": "http-403",
+  "published": "2026-09-05",
+  "fighters": [
+   "Ilia Topuria"
+  ],
+  "host": "athlonsports.com",
+  "retry": {
+   "length": 0,
+   "named": false,
+   "usable": false,
+   "via": "http-403"
+  },
+  "jina": {
+   "length": 0,
+   "named": false,
+   "usable": false,
+   "status": "iframe: jina-401"
+  }
+ },
+ {
+  "id": 685,
+  "outlet": "espn.com.pe",
+  "cause": "no-extract",
+  "published": "2026-09-05",
+  "fighters": [
+   "Ilia Topuria"
+  ],
+  "host": "espn.com.pe",
+  "retry": {
+   "length": 0,
+   "named": false,
+   "usable": false,
+   "via": "no-extract"
+  },
+  "jina": {
+   "length": 17422,
+   "named": true,
+   "usable": true,
+   "status": "ok"
+  }
+ },
+ {
+  "id": 696,
+  "outlet": "Ukr.net",
+  "cause": "og-description",
+  "published": "2026-09-05",
+  "fighters": [
+   "Daniil Donchenko"
+  ],
+  "host": "ukr.net",
+  "retry": {
+   "length": 145,
+   "named": true,
+   "usable": false,
+   "via": "og-description"
+  },
+  "jina": {
+   "length": 3435,
+   "named": true,
+   "usable": true,
+   "status": "ok"
+  }
+ },
+ {
+  "id": 708,
+  "outlet": "Tribuna UA",
+  "cause": "http-403",
+  "published": "2026-09-05",
+  "fighters": [
+   "Daniil Donchenko"
+  ],
+  "host": "ua.tribuna.com",
+  "retry": {
+   "length": 0,
+   "named": false,
+   "usable": false,
+   "via": "http-403"
+  },
+  "jina": {
+   "length": 0,
+   "named": false,
+   "usable": false,
+   "status": "iframe: jina-401"
+  }
+ },
+ {
+  "id": 709,
+  "outlet": "Tribuna UA",
+  "cause": "http-403",
+  "published": "2026-09-05",
+  "fighters": [
+   "Daniil Donchenko"
+  ],
+  "host": "ua.tribuna.com",
+  "retry": {
+   "length": 0,
+   "named": false,
+   "usable": false,
+   "via": "http-403"
+  },
+  "jina": {
+   "length": 0,
+   "named": false,
+   "usable": false,
+   "status": "iframe: jina-401"
+  }
+ },
+ {
+  "id": 712,
+  "outlet": "Bloody Elbow",
+  "cause": "http-403",
+  "published": "2026-09-05",
+  "fighters": [
+   "Ilia Topuria"
+  ],
+  "host": "bloodyelbow.com",
+  "retry": {
+   "length": 0,
+   "named": false,
+   "usable": false,
+   "via": "http-403"
+  },
+  "jina": {
+   "length": 6480,
+   "named": true,
+   "usable": true,
+   "status": "ok"
+  }
+ },
+ {
+  "id": 713,
+  "outlet": "Bloody Elbow",
+  "cause": "http-403",
+  "published": "2026-09-05",
+  "fighters": [
+   "Ilia Topuria"
+  ],
+  "host": "bloodyelbow.com",
+  "retry": {
+   "length": 0,
+   "named": false,
+   "usable": false,
+   "via": "http-403"
+  },
+  "jina": {
+   "length": 6480,
+   "named": true,
+   "usable": true,
+   "status": "ok"
+  }
+ },
+ {
+  "id": 715,
+  "outlet": "Eurosport",
+  "cause": "no-extract",
+  "published": "2026-09-05",
+  "fighters": [
+   "Ilia Topuria"
+  ],
+  "host": "eurosport.es",
+  "retry": {
+   "length": 0,
+   "named": false,
+   "usable": false,
+   "via": "no-extract"
+  },
+  "jina": {
+   "length": 39,
+   "named": false,
+   "usable": false,
+   "status": "ok"
+  }
+ },
+ {
+  "id": 721,
+  "outlet": "Diario AS",
+  "cause": "http-403",
+  "published": "2026-09-05",
+  "fighters": [
+   "Ilia Topuria"
+  ],
+  "host": "as.com",
+  "retry": {
+   "length": 6816,
+   "named": true,
+   "usable": true,
+   "via": "json-ld"
+  },
+  "jina": {
+   "length": 12461,
+   "named": true,
+   "usable": true,
+   "status": "ok"
+  }
+ },
+ {
+  "id": 729,
+  "outlet": "Oddschecker",
+  "cause": "http-403",
+  "published": "2026-09-05",
+  "fighters": [
+   "Daniil Donchenko"
+  ],
+  "host": "oddschecker.com",
+  "retry": {
+   "length": 0,
+   "named": false,
+   "usable": false,
+   "via": "http-403"
+  },
+  "jina": {
+   "length": 16588,
+   "named": true,
+   "usable": true,
+   "status": "ok"
+  }
+ },
+ {
+  "id": 738,
+  "outlet": "Robinhood",
+  "cause": "og-description",
+  "published": "2026-09-05",
+  "fighters": [
+   "Daniil Donchenko"
+  ],
+  "host": "robinhood.com",
+  "retry": {
+   "length": 183,
+   "named": true,
+   "usable": false,
+   "via": "og-description"
+  },
+  "jina": {
+   "length": 2575,
+   "named": true,
+   "usable": true,
+   "status": "ok"
+  }
+ },
+ {
+  "id": 739,
+  "outlet": "Tribuna.com",
+  "cause": "http-403",
+  "published": "2026-09-05",
+  "fighters": [
+   "Daniil Donchenko"
+  ],
+  "host": "ua.tribuna.com",
+  "retry": {
+   "length": 0,
+   "named": false,
+   "usable": false,
+   "via": "http-403"
+  },
+  "jina": {
+   "length": 0,
+   "named": false,
+   "usable": false,
+   "status": "iframe: jina-401"
+  }
+ },
+ {
+  "id": 742,
+  "outlet": "Ukr.net",
+  "cause": "og-description",
+  "published": "2026-09-05",
+  "fighters": [
+   "Daniil Donchenko"
+  ],
+  "host": "ukr.net",
+  "retry": {
+   "length": 145,
+   "named": true,
+   "usable": false,
+   "via": "og-description"
+  },
+  "jina": {
+   "length": 0,
+   "named": false,
+   "usable": false,
+   "status": "iframe: jina-401"
+  }
+ },
+ {
+  "id": 746,
+  "outlet": "Ukr.net",
+  "cause": "og-description",
+  "published": "2026-09-05",
+  "fighters": [
+   "Daniil Donchenko"
+  ],
+  "host": "ukr.net",
+  "retry": {
+   "length": 144,
+   "named": false,
+   "usable": false,
+   "via": "og-description"
+  },
+  "jina": {
+   "length": 0,
+   "named": false,
+   "usable": false,
+   "status": "iframe: jina-401"
+  }
+ },
+ {
+  "id": 747,
+  "outlet": "Ukr.net",
+  "cause": "og-description",
+  "published": "2026-09-05",
+  "fighters": [
+   "Daniil Donchenko"
+  ],
+  "host": "ukr.net",
+  "retry": {
+   "length": 147,
+   "named": false,
+   "usable": false,
+   "via": "og-description"
+  },
+  "jina": {
+   "length": 0,
+   "named": false,
+   "usable": false,
+   "status": "iframe: jina-401"
+  }
+ },
+ {
+  "id": 748,
+  "outlet": "Ukr.net",
+  "cause": "og-description",
+  "published": "2026-09-05",
+  "fighters": [
+   "Daniil Donchenko"
+  ],
+  "host": "ukr.net",
+  "retry": {
+   "length": 142,
+   "named": false,
+   "usable": false,
+   "via": "og-description"
+  },
+  "jina": {
+   "length": 0,
+   "named": false,
+   "usable": false,
+   "status": "iframe: jina-401"
+  }
+ },
+ {
+  "id": 749,
+  "outlet": "Ukr.net",
+  "cause": "og-description",
+  "published": "2026-09-05",
+  "fighters": [
+   "Daniil Donchenko"
+  ],
+  "host": "ukr.net",
+  "retry": {
+   "length": 142,
+   "named": false,
+   "usable": false,
+   "via": "og-description"
+  },
+  "jina": {
+   "length": 0,
+   "named": false,
+   "usable": false,
+   "status": "iframe: jina-401"
+  }
+ },
+ {
+  "id": 750,
+  "outlet": "Ukr.net",
+  "cause": "og-description",
+  "published": "2026-09-05",
+  "fighters": [
+   "Daniil Donchenko"
+  ],
+  "host": "ukr.net",
+  "retry": {
+   "length": 146,
+   "named": false,
+   "usable": false,
+   "via": "og-description"
+  },
+  "jina": {
+   "length": 0,
+   "named": false,
+   "usable": false,
+   "status": "iframe: jina-401"
+  }
+ },
+ {
+  "id": 757,
+  "outlet": "Ukr.net",
+  "cause": "og-description",
+  "published": "2026-09-05",
+  "fighters": [
+   "Daniil Donchenko"
+  ],
+  "host": "ukr.net",
+  "retry": {
+   "length": 161,
+   "named": false,
+   "usable": false,
+   "via": "og-description"
+  },
+  "jina": {
+   "length": 0,
+   "named": false,
+   "usable": false,
+   "status": "iframe: jina-401"
+  }
+ },
+ {
+  "id": 758,
+  "outlet": "MMA Junkie",
+  "cause": "no-extract",
+  "published": "2026-09-05",
+  "fighters": [
+   "Daniil Donchenko"
+  ],
+  "host": "mmajunkie.usatoday.com",
+  "retry": {
+   "length": 0,
+   "named": false,
+   "usable": false,
+   "via": "no-extract"
+  },
+  "jina": {
+   "length": 2612,
+   "named": true,
+   "usable": true,
+   "status": "ok"
+  }
+ },
+ {
+  "id": 760,
+  "outlet": "Sportanalytic.com",
+  "cause": "no-extract",
+  "published": "2026-09-05",
+  "fighters": [
+   "Daniil Donchenko"
+  ],
+  "host": "sportanalytic.com",
+  "retry": {
+   "length": 0,
+   "named": false,
+   "usable": false,
+   "via": "no-extract"
+  },
+  "jina": {
+   "length": 7414,
+   "named": true,
+   "usable": true,
+   "status": "ok"
+  }
+ },
+ {
+  "id": 771,
+  "outlet": "Tribuna.com",
+  "cause": "http-403",
+  "published": "2026-09-06",
+  "fighters": [
+   "Daniil Donchenko"
+  ],
+  "host": "ua.tribuna.com",
+  "retry": {
+   "length": 0,
+   "named": false,
+   "usable": false,
+   "via": "http-403"
+  },
+  "jina": {
+   "length": 0,
+   "named": false,
+   "usable": false,
+   "status": "iframe: jina-401"
+  }
+ },
+ {
+  "id": 772,
+  "outlet": "Tribuna.com",
+  "cause": "http-403",
+  "published": "2026-09-06",
+  "fighters": [
+   "Daniil Donchenko"
+  ],
+  "host": "ua.tribuna.com",
+  "retry": {
+   "length": 0,
+   "named": false,
+   "usable": false,
+   "via": "http-403"
+  },
+  "jina": {
+   "length": 0,
+   "named": false,
+   "usable": false,
+   "status": "iframe: jina-401"
+  }
+ },
+ {
+  "id": 785,
+  "outlet": "Eurosport",
+  "cause": "no-extract",
+  "published": "2026-09-06",
+  "fighters": [
+   "Ilia Topuria"
+  ],
+  "host": "eurosport.es",
+  "retry": {
+   "length": 0,
+   "named": false,
+   "usable": false,
+   "via": "no-extract"
+  },
+  "jina": {
+   "length": 39,
+   "named": false,
+   "usable": false,
+   "status": "ok"
+  }
+ },
+ {
+  "id": 791,
+  "outlet": "Ukr.net",
+  "cause": "og-description",
+  "published": "2026-09-06",
+  "fighters": [
+   "Daniil Donchenko"
+  ],
+  "host": "ukr.net",
+  "retry": {
+   "length": 142,
+   "named": true,
+   "usable": false,
+   "via": "og-description"
+  },
+  "jina": {
+   "length": 0,
+   "named": false,
+   "usable": false,
+   "status": "iframe: jina-401"
+  }
+ },
+ {
+  "id": 792,
+  "outlet": "Bloody Elbow",
+  "cause": "http-403",
+  "published": "2026-09-06",
+  "fighters": [
+   "Ilia Topuria"
+  ],
+  "host": "bloodyelbow.com",
+  "retry": {
+   "length": 0,
+   "named": false,
+   "usable": false,
+   "via": "http-403"
+  },
+  "jina": {
+   "length": 3089,
+   "named": true,
+   "usable": true,
+   "status": "ok"
+  }
+ },
+ {
+  "id": 793,
+  "outlet": "Bloody Elbow",
+  "cause": "http-403",
+  "published": "2026-09-06",
+  "fighters": [
+   "Ilia Topuria"
+  ],
+  "host": "bloodyelbow.com",
+  "retry": {
+   "length": 0,
+   "named": false,
+   "usable": false,
+   "via": "http-403"
+  },
+  "jina": {
+   "length": 2541,
+   "named": true,
+   "usable": true,
+   "status": "ok"
+  }
+ },
+ {
+  "id": 801,
+  "outlet": "MMAWeekly.com",
+  "cause": "http-403",
+  "published": "2026-09-06",
+  "fighters": [
+   "Ilia Topuria"
+  ],
+  "host": "mmaweekly.com",
+  "retry": {
+   "length": 0,
+   "named": false,
+   "usable": false,
+   "via": "http-403"
+  },
+  "jina": {
+   "length": 0,
+   "named": false,
+   "usable": false,
+   "status": "iframe: jina-401"
+  }
+ },
+ {
+  "id": 814,
+  "outlet": "Ukr.net",
+  "cause": "og-description",
+  "published": "2026-09-06",
+  "fighters": [
+   "Daniil Donchenko"
+  ],
+  "host": "ukr.net",
+  "retry": {
+   "length": 146,
+   "named": true,
+   "usable": false,
+   "via": "og-description"
+  },
+  "jina": {
+   "length": 5915,
+   "named": true,
+   "usable": true,
+   "status": "ok"
+  }
+ },
+ {
+  "id": 816,
+  "outlet": "MMANews.com",
+  "cause": "http-403",
+  "published": "2026-09-07",
+  "fighters": [
+   "Ilia Topuria"
+  ],
+  "host": "mmanews.com",
+  "retry": {
+   "length": 0,
+   "named": false,
+   "usable": false,
+   "via": "http-403"
+  },
+  "jina": {
+   "length": 3477,
+   "named": true,
+   "usable": true,
+   "status": "ok"
+  }
+ },
+ {
+  "id": 817,
+  "outlet": "MMAWeekly.com",
+  "cause": "http-403",
+  "published": "2026-09-07",
+  "fighters": [
+   "Ilia Topuria"
+  ],
+  "host": "mmaweekly.com",
+  "retry": {
+   "length": 0,
+   "named": false,
+   "usable": false,
+   "via": "http-403"
+  },
+  "jina": {
+   "length": 0,
+   "named": false,
+   "usable": false,
+   "status": "iframe: jina-401"
+  }
+ },
+ {
+  "id": 819,
+  "outlet": "Sherdog",
+  "cause": "og-description",
+  "published": "2026-09-07",
+  "fighters": [
+   "Ilia Topuria"
+  ],
+  "host": "sherdog.com",
+  "retry": {
+   "length": 118,
+   "named": true,
+   "usable": false,
+   "via": "og-description"
+  },
+  "jina": {
+   "length": 0,
+   "named": false,
+   "usable": false,
+   "status": "jina-403"
+  }
+ },
+ {
+  "id": 820,
+  "outlet": "Athlon Sports",
+  "cause": "http-403",
+  "published": "2026-09-07",
+  "fighters": [
+   "Ilia Topuria"
+  ],
+  "host": "athlonsports.com",
+  "retry": {
+   "length": 0,
+   "named": false,
+   "usable": false,
+   "via": "http-403"
+  },
+  "jina": {
+   "length": 0,
+   "named": false,
+   "usable": false,
+   "status": "iframe: jina-401"
+  }
+ },
+ {
+  "id": 823,
+  "outlet": "Sherdog",
+  "cause": "og-description",
+  "published": "2026-09-07",
+  "fighters": [
+   "Ilia Topuria"
+  ],
+  "host": "sherdog.com",
+  "retry": {
+   "length": 118,
+   "named": true,
+   "usable": false,
+   "via": "og-description"
+  },
+  "jina": {
+   "length": 0,
+   "named": false,
+   "usable": false,
+   "status": "jina-403"
+  }
+ },
+ {
+  "id": 824,
+  "outlet": "Sherdog",
+  "cause": "og-description",
+  "published": "2026-09-07",
+  "fighters": [
+   "Ilia Topuria"
+  ],
+  "host": "sherdog.com",
+  "retry": {
+   "length": 118,
+   "named": true,
+   "usable": false,
+   "via": "og-description"
+  },
+  "jina": {
+   "length": 0,
+   "named": false,
+   "usable": false,
+   "status": "jina-403"
+  }
+ },
+ {
+  "id": 842,
+  "outlet": "Bloody Elbow",
+  "cause": "http-403",
+  "published": "2026-09-07",
+  "fighters": [
+   "Ilia Topuria"
+  ],
+  "host": "bloodyelbow.com",
+  "retry": {
+   "length": 0,
+   "named": false,
+   "usable": false,
+   "via": "http-403"
+  },
+  "jina": {
+   "length": 5576,
+   "named": true,
+   "usable": true,
+   "status": "ok"
+  }
+ },
+ {
+  "id": 844,
+  "outlet": "The Mirror",
+  "cause": "no-extract",
+  "published": "2026-09-07",
+  "fighters": [
+   "Ilia Topuria"
+  ],
+  "host": "mirror.co.uk",
+  "retry": {
+   "length": 0,
+   "named": false,
+   "usable": false,
+   "via": "no-extract"
+  },
+  "jina": {
+   "length": 12073,
+   "named": true,
+   "usable": true,
+   "status": "ok"
+  }
+ },
+ {
+  "id": 854,
+  "outlet": "Tribuna.com",
+  "cause": "http-403",
+  "published": "2026-09-07",
+  "fighters": [
+   "Daniil Donchenko"
+  ],
+  "host": "ua.tribuna.com",
+  "retry": {
+   "length": 0,
+   "named": false,
+   "usable": false,
+   "via": "http-403"
+  },
+  "jina": {
+   "length": 0,
+   "named": false,
+   "usable": false,
+   "status": "iframe: jina-401"
+  }
+ },
+ {
+  "id": 871,
+  "outlet": "Sherdog",
+  "cause": "article-tag",
+  "published": "2026-09-08",
+  "fighters": [
+   "Daniil Donchenko"
+  ],
+  "host": "sherdog.com",
+  "retry": {
+   "length": 254,
+   "named": true,
+   "usable": false,
+   "via": "article-tag"
+  },
+  "jina": {
+   "length": 0,
+   "named": false,
+   "usable": false,
+   "status": "jina-403"
+  }
+ },
+ {
+  "id": 877,
+  "outlet": "Sport.ua",
+  "cause": "timeout",
+  "published": "2026-09-08",
+  "fighters": [
+   "Daniil Donchenko"
+  ],
+  "host": "sport.ua",
+  "retry": {
+   "length": 0,
+   "named": false,
+   "usable": false,
+   "via": "http-403"
+  },
+  "jina": {
+   "length": 0,
+   "named": false,
+   "usable": false,
+   "status": "iframe: jina-401"
+  }
+ },
+ {
+  "id": 900,
+  "outlet": "Bloody Elbow",
+  "cause": "http-403",
+  "published": "2026-09-08",
+  "fighters": [
+   "Ilia Topuria"
+  ],
+  "host": "bloodyelbow.com",
+  "retry": {
+   "length": 0,
+   "named": false,
+   "usable": false,
+   "via": "http-403"
+  },
+  "jina": {
+   "length": 6090,
+   "named": true,
+   "usable": true,
+   "status": "ok"
+  }
+ },
+ {
+  "id": 932,
+  "outlet": "Sport.ua",
+  "cause": "none",
+  "published": "2026-09-09",
+  "fighters": [
+   "Daniil Donchenko"
+  ],
+  "host": "sport.ua",
+  "retry": {
+   "length": 0,
+   "named": false,
+   "usable": false,
+   "via": "http-403"
+  },
+  "jina": {
+   "length": 0,
+   "named": false,
+   "usable": false,
+   "status": "iframe: jina-401"
+  }
+ },
+ {
+  "id": 934,
+  "outlet": "Eurosport",
+  "cause": "http-403",
+  "published": "2026-09-09",
+  "fighters": [
+   "Ilia Topuria"
+  ],
+  "host": "eurosport.es",
+  "retry": {
+   "length": 0,
+   "named": false,
+   "usable": false,
+   "via": "no-extract"
+  },
+  "jina": {
+   "length": 39,
+   "named": false,
+   "usable": false,
+   "status": "ok"
+  }
+ },
+ {
+  "id": 937,
+  "outlet": "Tribuna.com",
+  "cause": "http-403",
+  "published": "2026-09-09",
+  "fighters": [
+   "Daniil Donchenko"
+  ],
+  "host": "ua.tribuna.com",
+  "retry": {
+   "length": 0,
+   "named": false,
+   "usable": false,
+   "via": "http-403"
+  },
+  "jina": {
+   "length": 0,
+   "named": false,
+   "usable": false,
+   "status": "iframe: jina-401"
+  }
+ },
+ {
+  "id": 940,
+  "outlet": "Champion.com.ua",
+  "cause": "http-403",
+  "published": "2026-09-09",
+  "fighters": [
+   "Daniil Donchenko"
+  ],
+  "host": "champion.com.ua",
+  "retry": {
+   "length": 1607,
+   "named": true,
+   "usable": true,
+   "via": "article-tag"
+  },
+  "jina": {
+   "length": 0,
+   "named": false,
+   "usable": false,
+   "status": "iframe: jina-401"
+  }
+ },
+ {
+  "id": 951,
+  "outlet": "MMAWeekly.com",
+  "cause": "http-403",
+  "published": "2026-09-09",
+  "fighters": [
+   "Ilia Topuria"
+  ],
+  "host": "mmaweekly.com",
+  "retry": {
+   "length": 0,
+   "named": false,
+   "usable": false,
+   "via": "http-403"
+  },
+  "jina": {
+   "length": 0,
+   "named": false,
+   "usable": false,
+   "status": "iframe: jina-401"
+  }
+ },
+ {
+  "id": 958,
+  "outlet": "MMAWeekly.com",
+  "cause": "http-403",
+  "published": "2026-09-09",
+  "fighters": [
+   "Ilia Topuria"
+  ],
+  "host": "mmaweekly.com",
+  "retry": {
+   "length": 0,
+   "named": false,
+   "usable": false,
+   "via": "http-403"
+  },
+  "jina": {
+   "length": 0,
+   "named": false,
+   "usable": false,
+   "status": "iframe: jina-401"
+  }
+ },
+ {
+  "id": 960,
+  "outlet": "Bloody Elbow",
+  "cause": "http-403",
+  "published": "2026-09-09",
+  "fighters": [
+   "Ilia Topuria"
+  ],
+  "host": "bloodyelbow.com",
+  "retry": {
+   "length": 0,
+   "named": false,
+   "usable": false,
+   "via": "http-403"
+  },
+  "jina": {
+   "length": 4021,
+   "named": true,
+   "usable": true,
+   "status": "ok"
+  }
+ },
+ {
+  "id": 972,
+  "outlet": "Bloody Elbow",
+  "cause": "none",
+  "published": "2026-09-10",
+  "fighters": [
+   "Ilia Topuria"
+  ],
+  "host": "bloodyelbow.com",
+  "retry": {
+   "length": 0,
+   "named": false,
+   "usable": false,
+   "via": "http-403"
+  },
+  "jina": {
+   "length": 3672,
+   "named": true,
+   "usable": true,
+   "status": "ok"
+  }
+ },
+ {
+  "id": 985,
+  "outlet": "Sherdog",
+  "cause": "og-description",
+  "published": "2026-09-10",
+  "fighters": [
+   "Ilia Topuria"
+  ],
+  "host": "sherdog.com",
+  "retry": {
+   "length": 109,
+   "named": false,
+   "usable": false,
+   "via": "og-description"
+  },
+  "jina": {
+   "length": 0,
+   "named": false,
+   "usable": false,
+   "status": "jina-403"
+  }
+ },
+ {
+  "id": 986,
+  "outlet": "Sherdog",
+  "cause": "none",
+  "published": "2026-09-10",
+  "fighters": [
+   "Ilia Topuria"
+  ],
+  "host": "sherdog.com",
+  "retry": {
+   "length": 109,
+   "named": false,
+   "usable": false,
+   "via": "og-description"
+  },
+  "jina": {
+   "length": 0,
+   "named": false,
+   "usable": false,
+   "status": "jina-403"
+  }
+ },
+ {
+  "id": 991,
+  "outlet": "Eurosport",
+  "cause": "http-403",
+  "published": "2026-09-10",
+  "fighters": [
+   "Ilia Topuria"
+  ],
+  "host": "eurosport.es",
+  "retry": {
+   "length": 0,
+   "named": false,
+   "usable": false,
+   "via": "no-extract"
+  },
+  "jina": {
+   "length": 39,
+   "named": false,
+   "usable": false,
+   "status": "ok"
+  }
+ },
+ {
+  "id": 992,
+  "outlet": "DAZN",
+  "cause": "http-403",
+  "published": "2026-09-10",
+  "fighters": [
+   "Ilia Topuria"
+  ],
+  "host": "dazn.com",
+  "retry": {
+   "length": 0,
+   "named": false,
+   "usable": false,
+   "via": "no-extract"
+  },
+  "jina": {
+   "length": 159,
+   "named": false,
+   "usable": false,
+   "status": "warning: Target URL returned error 403: Forbidden"
+  }
+ },
+ {
+  "id": 994,
+  "outlet": "Sherdog",
+  "cause": "og-description",
+  "published": "2026-09-10",
+  "fighters": [
+   "Ilia Topuria"
+  ],
+  "host": "sherdog.com",
+  "retry": {
+   "length": 61,
+   "named": true,
+   "usable": false,
+   "via": "og-description"
+  },
+  "jina": {
+   "length": 0,
+   "named": false,
+   "usable": false,
+   "status": "jina-403"
+  }
+ },
+ {
+  "id": 997,
+  "outlet": "Sherdog",
+  "cause": "og-description",
+  "published": "2026-09-10",
+  "fighters": [
+   "Ilia Topuria"
+  ],
+  "host": "sherdog.com",
+  "retry": {
+   "length": 61,
+   "named": true,
+   "usable": false,
+   "via": "og-description"
+  },
+  "jina": {
+   "length": 0,
+   "named": false,
+   "usable": false,
+   "status": "jina-403"
+  }
+ },
+ {
+  "id": 998,
+  "outlet": "Sherdog",
+  "cause": "none",
+  "published": "2026-09-10",
+  "fighters": [
+   "Ilia Topuria"
+  ],
+  "host": "sherdog.com",
+  "retry": {
+   "length": 61,
+   "named": true,
+   "usable": false,
+   "via": "og-description"
+  },
+  "jina": {
+   "length": 0,
+   "named": false,
+   "usable": false,
+   "status": "jina-403"
+  }
+ },
+ {
+  "id": 1000,
+  "outlet": "Sport.ua",
+  "cause": "timeout",
+  "published": "2026-09-10",
+  "fighters": [
+   "Daniil Donchenko"
+  ],
+  "host": "sport.ua",
+  "retry": {
+   "length": 0,
+   "named": false,
+   "usable": false,
+   "via": "http-403"
+  },
+  "jina": {
+   "length": 0,
+   "named": false,
+   "usable": false,
+   "status": "iframe: jina-401"
+  }
+ },
+ {
+  "id": 1001,
+  "outlet": "Sport.ua",
+  "cause": "none",
+  "published": "2026-09-10",
+  "fighters": [
+   "Daniil Donchenko"
+  ],
+  "host": "sport.ua",
+  "retry": {
+   "length": 0,
+   "named": false,
+   "usable": false,
+   "via": "http-403"
+  },
+  "jina": {
+   "length": 0,
+   "named": false,
+   "usable": false,
+   "status": "iframe: jina-401"
+  }
+ },
+ {
+  "id": 1002,
+  "outlet": "Ukr.net",
+  "cause": "og-description",
+  "published": "2026-09-10",
+  "fighters": [
+   "Daniil Donchenko"
+  ],
+  "host": "ukr.net",
+  "retry": {
+   "length": 149,
+   "named": false,
+   "usable": false,
+   "via": "og-description"
+  },
+  "jina": {
+   "length": 0,
+   "named": false,
+   "usable": false,
+   "status": "iframe: jina-401"
+  }
+ },
+ {
+  "id": 1003,
+  "outlet": "Ukr.net",
+  "cause": "og-description",
+  "published": "2026-09-10",
+  "fighters": [
+   "Daniil Donchenko"
+  ],
+  "host": "ukr.net",
+  "retry": {
+   "length": 203,
+   "named": false,
+   "usable": false,
+   "via": "og-description"
+  },
+  "jina": {
+   "length": 0,
+   "named": false,
+   "usable": false,
+   "status": "iframe: jina-401"
+  }
+ },
+ {
+  "id": 1007,
+  "outlet": "Champion.com.ua",
+  "cause": "http-403",
+  "published": "2026-09-10",
+  "fighters": [
+   "Daniil Donchenko"
+  ],
+  "host": "champion.com.ua",
+  "retry": {
+   "length": 1087,
+   "named": true,
+   "usable": true,
+   "via": "article-tag"
+  },
+  "jina": {
+   "length": 0,
+   "named": false,
+   "usable": false,
+   "status": "iframe: jina-401"
+  }
+ },
+ {
+  "id": 1008,
+  "outlet": "DAZN",
+  "cause": "http-403",
+  "published": "2026-09-10",
+  "fighters": [
+   "Ilia Topuria"
+  ],
+  "host": "dazn.com",
+  "retry": {
+   "length": 0,
+   "named": false,
+   "usable": false,
+   "via": "no-extract"
+  },
+  "jina": {
+   "length": 159,
+   "named": false,
+   "usable": false,
+   "status": "warning: Target URL returned error 403: Forbidden"
+  }
+ },
+ {
+  "id": 1009,
+  "outlet": "dazn.com",
+  "cause": "http-403",
+  "published": "2026-09-10",
+  "fighters": [
+   "Ilia Topuria"
+  ],
+  "host": "dazn.com",
+  "retry": {
+   "length": 0,
+   "named": false,
+   "usable": false,
+   "via": "no-extract"
+  },
+  "jina": {
+   "length": 159,
+   "named": false,
+   "usable": false,
+   "status": "warning: Target URL returned error 403: Forbidden"
+  }
+ },
+ {
+  "id": 1013,
+  "outlet": "El Desmarque",
+  "cause": "http-403",
+  "published": "2026-09-10",
+  "fighters": [
+   "Ilia Topuria"
+  ],
+  "host": "eldesmarque.com",
+  "retry": {
+   "length": 1852,
+   "named": true,
+   "usable": true,
+   "via": "json-ld"
+  },
+  "jina": {
+   "length": 2349,
+   "named": true,
+   "usable": true,
+   "status": "ok"
+  }
+ },
+ {
+  "id": 1015,
+  "outlet": "Tribuna.com",
+  "cause": "http-403",
+  "published": "2026-09-10",
+  "fighters": [
+   "Daniil Donchenko"
+  ],
+  "host": "ua.tribuna.com",
+  "retry": {
+   "length": 0,
+   "named": false,
+   "usable": false,
+   "via": "http-403"
+  },
+  "jina": {
+   "length": 0,
+   "named": false,
+   "usable": false,
+   "status": "iframe: jina-401"
+  }
+ },
+ {
+  "id": 1016,
+  "outlet": "Tribuna.com",
+  "cause": "http-403",
+  "published": "2026-09-10",
+  "fighters": [
+   "Daniil Donchenko"
+  ],
+  "host": "ua.tribuna.com",
+  "retry": {
+   "length": 0,
+   "named": false,
+   "usable": false,
+   "via": "http-403"
+  },
+  "jina": {
+   "length": 0,
+   "named": false,
+   "usable": false,
+   "status": "iframe: jina-401"
+  }
+ },
+ {
+  "id": 1028,
+  "outlet": "Champion.com.ua",
+  "cause": "http-403",
+  "published": "2026-09-10",
+  "fighters": [
+   "Daniil Donchenko"
+  ],
+  "host": "champion.com.ua",
+  "retry": {
+   "length": 4157,
+   "named": true,
+   "usable": true,
+   "via": "article-tag"
+  },
+  "jina": {
+   "length": 0,
+   "named": false,
+   "usable": false,
+   "status": "iframe: jina-401"
+  }
+ },
+ {
+  "id": 1030,
+  "outlet": "Tribuna.com",
+  "cause": "http-403",
+  "published": "2026-09-10",
+  "fighters": [
+   "Daniil Donchenko"
+  ],
+  "host": "ua.tribuna.com",
+  "retry": {
+   "length": 0,
+   "named": false,
+   "usable": false,
+   "via": "http-403"
+  },
+  "jina": {
+   "length": 0,
+   "named": false,
+   "usable": false,
+   "status": "iframe: jina-401"
+  }
+ },
+ {
+  "id": 1031,
+  "outlet": "Tribuna UA",
+  "cause": "http-403",
+  "published": "2026-09-10",
+  "fighters": [
+   "Daniil Donchenko"
+  ],
+  "host": "ua.tribuna.com",
+  "retry": {
+   "length": 0,
+   "named": false,
+   "usable": false,
+   "via": "http-403"
+  },
+  "jina": {
+   "length": 0,
+   "named": false,
+   "usable": false,
+   "status": "iframe: jina-401"
+  }
+ },
+ {
+  "id": 1033,
+  "outlet": "Champion.com.ua",
+  "cause": "http-403",
+  "published": "2026-09-10",
+  "fighters": [
+   "Daniil Donchenko"
+  ],
+  "host": "champion.com.ua",
+  "retry": {
+   "length": 1180,
+   "named": true,
+   "usable": true,
+   "via": "article-tag"
+  },
+  "jina": {
+   "length": 0,
+   "named": false,
+   "usable": false,
+   "status": "iframe: jina-401"
+  }
+ },
+ {
+  "id": 1042,
+  "outlet": "bloodyelbow.com",
+  "cause": "http-403",
+  "published": "2026-09-10",
+  "fighters": [
+   "Ilia Topuria"
+  ],
+  "host": "bloodyelbow.com",
+  "retry": {
+   "length": 0,
+   "named": false,
+   "usable": false,
+   "via": "http-403"
+  },
+  "jina": {
+   "length": 6727,
+   "named": true,
+   "usable": true,
+   "status": "ok"
+  }
+ },
+ {
+  "id": 1049,
+  "outlet": "DAZN",
+  "cause": "http-403",
+  "published": "2026-09-10",
+  "fighters": [
+   "Ilia Topuria"
+  ],
+  "host": "dazn.com",
+  "retry": {
+   "length": 3355,
+   "named": true,
+   "usable": true,
+   "via": "json-ld"
+  },
+  "jina": {
+   "length": 159,
+   "named": false,
+   "usable": false,
+   "status": "warning: Target URL returned error 403: Forbidden"
+  }
+ },
+ {
+  "id": 1051,
+  "outlet": "Bloody Elbow",
+  "cause": "http-403",
+  "published": "2026-09-10",
+  "fighters": [
+   "Ilia Topuria"
+  ],
+  "host": "bloodyelbow.com",
+  "retry": {
+   "length": 0,
+   "named": false,
+   "usable": false,
+   "via": "http-403"
+  },
+  "jina": {
+   "length": 6467,
+   "named": true,
+   "usable": true,
+   "status": "ok"
+  }
+ },
+ {
+  "id": 1058,
+  "outlet": "Bloody Elbow",
+  "cause": "http-403",
+  "published": "2026-09-10",
+  "fighters": [
+   "Ilia Topuria"
+  ],
+  "host": "bloodyelbow.com",
+  "retry": {
+   "length": 0,
+   "named": false,
+   "usable": false,
+   "via": "http-403"
+  },
+  "jina": {
+   "length": 4323,
+   "named": true,
+   "usable": true,
+   "status": "ok"
+  }
+ },
+ {
+  "id": 1060,
+  "outlet": "Athlon Sports",
+  "cause": "http-403",
+  "published": "2026-09-11",
+  "fighters": [
+   "Ilia Topuria"
+  ],
+  "host": "athlonsports.com",
+  "retry": {
+   "length": 0,
+   "named": false,
+   "usable": false,
+   "via": "http-403"
+  },
+  "jina": {
+   "length": 0,
+   "named": false,
+   "usable": false,
+   "status": "iframe: jina-401"
+  }
+ },
+ {
+  "id": 1064,
+  "outlet": "Sherdog",
+  "cause": "og-description",
+  "published": "2026-09-11",
+  "fighters": [
+   "Ilia Topuria"
+  ],
+  "host": "sherdog.com",
+  "retry": {
+   "length": 174,
+   "named": true,
+   "usable": false,
+   "via": "og-description"
+  },
+  "jina": {
+   "length": 0,
+   "named": false,
+   "usable": false,
+   "status": "jina-403"
+  }
+ },
+ {
+  "id": 1065,
+  "outlet": "Sherdog",
+  "cause": "og-description",
+  "published": "2026-09-11",
+  "fighters": [
+   "Ilia Topuria"
+  ],
+  "host": "sherdog.com",
+  "retry": {
+   "length": 174,
+   "named": true,
+   "usable": false,
+   "via": "og-description"
+  },
+  "jina": {
+   "length": 0,
+   "named": false,
+   "usable": false,
+   "status": "jina-403"
+  }
+ },
+ {
+  "id": 1069,
+  "outlet": "Sherdog",
+  "cause": "og-description",
+  "published": "2026-09-11",
+  "fighters": [
+   "Ilia Topuria"
+  ],
+  "host": "sherdog.com",
+  "retry": {
+   "length": 98,
+   "named": true,
+   "usable": false,
+   "via": "og-description"
+  },
+  "jina": {
+   "length": 0,
+   "named": false,
+   "usable": false,
+   "status": "jina-403"
+  }
+ },
+ {
+  "id": 1072,
+  "outlet": "Sherdog",
+  "cause": "none",
+  "published": "2026-09-11",
+  "fighters": [
+   "Ilia Topuria"
+  ],
+  "host": "sherdog.com",
+  "retry": {
+   "length": 98,
+   "named": true,
+   "usable": false,
+   "via": "og-description"
+  },
+  "jina": {
+   "length": 0,
+   "named": false,
+   "usable": false,
+   "status": "jina-403"
+  }
+ },
+ {
+  "id": 1077,
+  "outlet": "Sherdog",
+  "cause": "none",
+  "published": "2026-09-11",
+  "fighters": [
+   "Ilia Topuria"
+  ],
+  "host": "sherdog.com",
+  "retry": {
+   "length": 174,
+   "named": true,
+   "usable": false,
+   "via": "og-description"
+  },
+  "jina": {
+   "length": 0,
+   "named": false,
+   "usable": false,
+   "status": "jina-403"
+  }
+ },
+ {
+  "id": 1078,
+  "outlet": "Ukr.net",
+  "cause": "og-description",
+  "published": "2026-09-11",
+  "fighters": [
+   "Daniil Donchenko"
+  ],
+  "host": "ukr.net",
+  "retry": {
+   "length": 144,
+   "named": true,
+   "usable": false,
+   "via": "og-description"
+  },
+  "jina": {
+   "length": 0,
+   "named": false,
+   "usable": false,
+   "status": "iframe: jina-401"
+  }
+ },
+ {
+  "id": 1080,
+  "outlet": "MARCA",
+  "cause": "none",
+  "published": "2026-09-11",
+  "fighters": [
+   "Ilia Topuria"
+  ],
+  "host": "marca.com",
+  "retry": {
+   "length": 2744,
+   "named": true,
+   "usable": true,
+   "via": "json-ld"
+  },
+  "jina": {
+   "length": 12295,
+   "named": true,
+   "usable": true,
+   "status": "ok"
+  }
+ },
+ {
+  "id": 1104,
+  "outlet": "sports.yahoo.com",
+  "cause": "decode-failed",
+  "published": "2026-09-11",
+  "fighters": [
+   "Ilia Topuria"
+  ],
+  "decode": "ok",
+  "host": "sports.yahoo.com",
+  "retry": {
+   "length": 4444,
+   "named": true,
+   "usable": true,
+   "via": "article-tag"
+  },
+  "jina": {
+   "length": 8618,
+   "named": true,
+   "usable": true,
+   "status": "ok"
+  }
+ },
+ {
+  "id": 1105,
+  "outlet": "Bloody Elbow",
+  "cause": "http-403",
+  "published": "2026-09-11",
+  "fighters": [
+   "Ilia Topuria"
+  ],
+  "host": "bloodyelbow.com",
+  "retry": {
+   "length": 0,
+   "named": false,
+   "usable": false,
+   "via": "http-403"
+  },
+  "jina": {
+   "length": 3247,
+   "named": true,
+   "usable": true,
+   "status": "ok"
+  }
+ },
+ {
+  "id": 1113,
+  "outlet": "Bloody Elbow",
+  "cause": "http-403",
+  "published": "2026-09-12",
+  "fighters": [
+   "Ilia Topuria"
+  ],
+  "host": "bloodyelbow.com",
+  "retry": {
+   "length": 0,
+   "named": false,
+   "usable": false,
+   "via": "http-403"
+  },
+  "jina": {
+   "length": 2688,
+   "named": true,
+   "usable": true,
+   "status": "ok"
+  }
+ },
+ {
+  "id": 1136,
+  "outlet": "Eurosport",
+  "cause": "http-403",
+  "published": "2026-09-12",
+  "fighters": [
+   "Ilia Topuria"
+  ],
+  "host": "eurosport.es",
+  "retry": {
+   "length": 0,
+   "named": false,
+   "usable": false,
+   "via": "no-extract"
+  },
+  "jina": {
+   "length": 39,
+   "named": false,
+   "usable": false,
+   "status": "ok"
+  }
+ },
+ {
+  "id": 1140,
+  "outlet": "Ukr.net",
+  "cause": "og-description",
+  "published": "2026-09-13",
+  "fighters": [
+   "Daniil Donchenko"
+  ],
+  "host": "ukr.net",
+  "retry": {
+   "length": 148,
+   "named": true,
+   "usable": false,
+   "via": "og-description"
+  },
+  "jina": {
+   "length": 2756,
+   "named": true,
+   "usable": true,
+   "status": "ok"
+  }
+ },
+ {
+  "id": 1142,
+  "outlet": "Tribuna UA",
+  "cause": "http-403",
+  "published": "2026-09-13",
+  "fighters": [
+   "Yaroslav Amosov"
+  ],
+  "host": "ua.tribuna.com",
+  "retry": {
+   "length": 0,
+   "named": false,
+   "usable": false,
+   "via": "http-403"
+  },
+  "jina": {
+   "length": 0,
+   "named": false,
+   "usable": false,
+   "status": "iframe: jina-401"
+  }
+ },
+ {
+  "id": 1144,
+  "outlet": "MMAWeekly.com",
+  "cause": "http-403",
+  "published": "2026-09-13",
+  "fighters": [
+   "Ilia Topuria"
+  ],
+  "host": "mmaweekly.com",
+  "retry": {
+   "length": 0,
+   "named": false,
+   "usable": false,
+   "via": "http-403"
+  },
+  "jina": {
+   "length": 0,
+   "named": false,
+   "usable": false,
+   "status": "iframe: jina-401"
+  }
+ },
+ {
+  "id": 1151,
+  "outlet": "Bloody Elbow",
+  "cause": "none",
+  "published": "2026-09-14",
+  "fighters": [
+   "Yaroslav Amosov"
+  ],
+  "host": "bloodyelbow.com",
+  "retry": {
+   "length": 0,
+   "named": false,
+   "usable": false,
+   "via": "http-403"
+  },
+  "jina": {
+   "length": 7850,
+   "named": true,
+   "usable": true,
+   "status": "ok"
+  }
+ },
+ {
+  "id": 1154,
+  "outlet": "Ukr.net",
+  "cause": "og-description",
+  "published": "2026-09-14",
+  "fighters": [
+   "Yaroslav Amosov"
+  ],
+  "host": "ukr.net",
+  "retry": {
+   "length": 146,
+   "named": false,
+   "usable": false,
+   "via": "og-description"
+  },
+  "jina": {
+   "length": 3850,
+   "named": true,
+   "usable": true,
+   "status": "ok"
+  }
+ },
+ {
+  "id": 1168,
+  "outlet": "DAZN",
+  "cause": "http-403",
+  "published": "2026-09-15",
+  "fighters": [
+   "Ilia Topuria"
+  ],
+  "host": "dazn.com",
+  "retry": {
+   "length": 0,
+   "named": false,
+   "usable": false,
+   "via": "no-extract"
+  },
+  "jina": {
+   "length": 159,
+   "named": false,
+   "usable": false,
+   "status": "warning: Target URL returned error 403: Forbidden"
+  }
+ },
+ {
+  "id": 1169,
+  "outlet": "DAZN",
+  "cause": "http-403",
+  "published": "2026-09-15",
+  "fighters": [
+   "Ilia Topuria"
+  ],
+  "host": "dazn.com",
+  "retry": {
+   "length": 4702,
+   "named": true,
+   "usable": true,
+   "via": "json-ld"
+  },
+  "jina": {
+   "length": 159,
+   "named": false,
+   "usable": false,
+   "status": "warning: Target URL returned error 403: Forbidden"
+  }
+ },
+ {
+  "id": 1174,
+  "outlet": "NDTV Sports",
+  "cause": "http-403",
+  "published": "2026-09-15",
+  "fighters": [
+   "Ilia Topuria"
+  ],
+  "host": "sports.ndtv.com",
+  "retry": {
+   "length": 2501,
+   "named": true,
+   "usable": true,
+   "via": "json-ld"
+  },
+  "jina": {
+   "length": 6166,
+   "named": true,
+   "usable": true,
+   "status": "ok"
+  }
+ },
+ {
+  "id": 1179,
+  "outlet": "Bloody Elbow",
+  "cause": "http-403",
+  "published": "2026-09-15",
+  "fighters": [
+   "Ilia Topuria"
+  ],
+  "host": "bloodyelbow.com",
+  "retry": {
+   "length": 0,
+   "named": false,
+   "usable": false,
+   "via": "http-403"
+  },
+  "jina": {
+   "length": 3659,
+   "named": true,
+   "usable": true,
+   "status": "ok"
+  }
+ },
+ {
+  "id": 1186,
+  "outlet": "MMA Fighting",
+  "cause": "none",
+  "published": "2026-09-15",
+  "fighters": [
+   "Ilia Topuria"
+  ],
+  "host": "mmafighting.com",
+  "retry": {
+   "length": 2545,
+   "named": true,
+   "usable": true,
+   "via": "json-ld"
+  },
+  "jina": {
+   "length": 14627,
+   "named": true,
+   "usable": true,
+   "status": "ok"
+  }
+ },
+ {
+  "id": 1187,
+  "outlet": "Tribuna.com",
+  "cause": "http-403",
+  "published": "2026-09-15",
+  "fighters": [
+   "Daniil Donchenko"
+  ],
+  "host": "ua.tribuna.com",
+  "retry": {
+   "length": 0,
+   "named": false,
+   "usable": false,
+   "via": "http-403"
+  },
+  "jina": {
+   "length": 0,
+   "named": false,
+   "usable": false,
+   "status": "iframe: jina-401"
+  }
+ },
+ {
+  "id": 1188,
+  "outlet": "Tribuna.com",
+  "cause": "http-403",
+  "published": "2026-09-15",
+  "fighters": [
+   "Daniil Donchenko"
+  ],
+  "host": "ua.tribuna.com",
+  "retry": {
+   "length": 0,
+   "named": false,
+   "usable": false,
+   "via": "http-403"
+  },
+  "jina": {
+   "length": 0,
+   "named": false,
+   "usable": false,
+   "status": "iframe: jina-401"
+  }
+ },
+ {
+  "id": 1190,
+  "outlet": "Diario AS",
+  "cause": "http-403",
+  "published": "2026-09-15",
+  "fighters": [
+   "Ilia Topuria"
+  ],
+  "host": "as.com",
+  "retry": {
+   "length": 1883,
+   "named": true,
+   "usable": true,
+   "via": "json-ld"
+  },
+  "jina": {
+   "length": 7103,
+   "named": true,
+   "usable": true,
+   "status": "ok"
+  }
+ },
+ {
+  "id": 1192,
+  "outlet": "Eurosport",
+  "cause": "http-403",
+  "published": "2026-09-15",
+  "fighters": [
+   "Ilia Topuria"
+  ],
+  "host": "eurosport.es",
+  "retry": {
+   "length": 0,
+   "named": false,
+   "usable": false,
+   "via": "no-extract"
+  },
+  "jina": {
+   "length": 39,
+   "named": false,
+   "usable": false,
+   "status": "ok"
+  }
+ },
+ {
+  "id": 1193,
+  "outlet": "Diario AS",
+  "cause": "http-403",
+  "published": "2026-09-15",
+  "fighters": [
+   "Ilia Topuria"
+  ],
+  "host": "as.com",
+  "retry": {
+   "length": 3829,
+   "named": true,
+   "usable": true,
+   "via": "json-ld"
+  },
+  "jina": {
+   "length": 8766,
+   "named": true,
+   "usable": true,
+   "status": "ok"
+  }
+ },
+ {
+  "id": 1195,
+  "outlet": "Eurosport",
+  "cause": "http-403",
+  "published": "2026-09-15",
+  "fighters": [
+   "Ilia Topuria"
+  ],
+  "host": "eurosport.es",
+  "retry": {
+   "length": 0,
+   "named": false,
+   "usable": false,
+   "via": "no-extract"
+  },
+  "jina": {
+   "length": 39,
+   "named": false,
+   "usable": false,
+   "status": "ok"
+  }
+ },
+ {
+  "id": 1221,
+  "outlet": "Eurosport",
+  "cause": "http-403",
+  "published": "2026-09-16",
+  "fighters": [
+   "Ilia Topuria"
+  ],
+  "host": "eurosport.es",
+  "retry": {
+   "length": 0,
+   "named": false,
+   "usable": false,
+   "via": "no-extract"
+  },
+  "jina": {
+   "length": 39,
+   "named": false,
+   "usable": false,
+   "status": "ok"
+  }
+ },
+ {
+  "id": 1222,
+  "outlet": "Bloody Elbow",
+  "cause": "http-403",
+  "published": "2026-09-16",
+  "fighters": [
+   "Ilia Topuria"
+  ],
+  "host": "bloodyelbow.com",
+  "retry": {
+   "length": 0,
+   "named": false,
+   "usable": false,
+   "via": "http-403"
+  },
+  "jina": {
+   "length": 2146,
+   "named": true,
+   "usable": true,
+   "status": "ok"
+  }
+ },
+ {
+  "id": 1235,
+  "outlet": "Bloody Elbow",
+  "cause": "http-403",
+  "published": "2026-09-16",
+  "fighters": [
+   "Ilia Topuria"
+  ],
+  "host": "bloodyelbow.com",
+  "retry": {
+   "length": 0,
+   "named": false,
+   "usable": false,
+   "via": "http-403"
+  },
+  "jina": {
+   "length": 2507,
+   "named": true,
+   "usable": true,
+   "status": "ok"
+  }
+ },
+ {
+  "id": 1240,
+  "outlet": "eurosport.es",
+  "cause": "http-403",
+  "published": "2026-09-16",
+  "fighters": [
+   "Ilia Topuria"
+  ],
+  "host": "eurosport.es",
+  "retry": {
+   "length": 0,
+   "named": false,
+   "usable": false,
+   "via": "no-extract"
+  },
+  "jina": {
+   "length": 39,
+   "named": false,
+   "usable": false,
+   "status": "ok"
+  }
+ },
+ {
+  "id": 1249,
+  "outlet": "El Nuevo Herald",
+  "cause": "timeout",
+  "published": "2026-09-16",
+  "fighters": [
+   "Ilia Topuria"
+  ],
+  "host": "elnuevoherald.com",
+  "retry": {
+   "length": 3075,
+   "named": true,
+   "usable": true,
+   "via": "article-tag"
+  },
+  "jina": {
+   "length": 3520,
+   "named": true,
+   "usable": true,
+   "status": "ok"
+  }
+ },
+ {
+  "id": 1254,
+  "outlet": "bloodyelbow.com",
+  "cause": "http-403",
+  "published": "2026-09-16",
+  "fighters": [
+   "Ilia Topuria"
+  ],
+  "host": "bloodyelbow.com",
+  "retry": {
+   "length": 0,
+   "named": false,
+   "usable": false,
+   "via": "http-403"
+  },
+  "jina": {
+   "length": 2851,
+   "named": true,
+   "usable": true,
+   "status": "ok"
+  }
+ },
+ {
+  "id": 1259,
+  "outlet": "MMAWeekly.com",
+  "cause": "http-403",
+  "published": "2026-09-16",
+  "fighters": [
+   "Ilia Topuria"
+  ],
+  "host": "mmaweekly.com",
+  "retry": {
+   "length": 0,
+   "named": false,
+   "usable": false,
+   "via": "http-403"
+  },
+  "jina": {
+   "length": 0,
+   "named": false,
+   "usable": false,
+   "status": "iframe: jina-401"
+  }
+ },
+ {
+  "id": 1264,
+  "outlet": "MMAWeekly.com",
+  "cause": "http-403",
+  "published": "2026-09-17",
+  "fighters": [
+   "Ilia Topuria"
+  ],
+  "host": "mmaweekly.com",
+  "retry": {
+   "length": 0,
+   "named": false,
+   "usable": false,
+   "via": "http-403"
+  },
+  "jina": {
+   "length": 0,
+   "named": false,
+   "usable": false,
+   "status": "iframe: jina-401"
+  }
+ },
+ {
+  "id": 1265,
+  "outlet": "MMA Crossfire",
+  "cause": "no-extract",
+  "published": "2026-09-17",
+  "fighters": [
+   "Ilia Topuria"
+  ],
+  "host": "mmacrossfire.com",
+  "retry": {
+   "length": 2168,
+   "named": true,
+   "usable": true,
+   "via": "article-tag"
+  },
+  "jina": {
+   "length": 5698,
+   "named": true,
+   "usable": true,
+   "status": "ok"
+  }
+ },
+ {
+  "id": 1269,
+  "outlet": "Athlon Sports",
+  "cause": "http-403",
+  "published": "2026-09-17",
+  "fighters": [
+   "Ilia Topuria"
+  ],
+  "host": "athlonsports.com",
+  "retry": {
+   "length": 0,
+   "named": false,
+   "usable": false,
+   "via": "http-403"
+  },
+  "jina": {
+   "length": 0,
+   "named": false,
+   "usable": false,
+   "status": "iframe: jina-401"
+  }
+ },
+ {
+  "id": 1271,
+  "outlet": "Sherdog",
+  "cause": "article-tag",
+  "published": "2026-09-17",
+  "fighters": [
+   "Ilia Topuria"
+  ],
+  "host": "sherdog.com",
+  "retry": {
+   "length": 277,
+   "named": false,
+   "usable": false,
+   "via": "article-tag"
+  },
+  "jina": {
+   "length": 0,
+   "named": false,
+   "usable": false,
+   "status": "jina-403"
+  }
+ },
+ {
+  "id": 1272,
+  "outlet": "Sherdog",
+  "cause": "article-tag",
+  "published": "2026-09-17",
+  "fighters": [
+   "Ilia Topuria"
+  ],
+  "host": "sherdog.com",
+  "retry": {
+   "length": 305,
+   "named": true,
+   "usable": false,
+   "via": "article-tag"
+  },
+  "jina": {
+   "length": 0,
+   "named": false,
+   "usable": false,
+   "status": "jina-403"
+  }
+ },
+ {
+  "id": 1277,
+  "outlet": "Sherdog",
+  "cause": "none",
+  "published": "2026-09-17",
+  "fighters": [
+   "Ilia Topuria"
+  ],
+  "host": "sherdog.com",
+  "retry": {
+   "length": 305,
+   "named": true,
+   "usable": false,
+   "via": "article-tag"
+  },
+  "jina": {
+   "length": 0,
+   "named": false,
+   "usable": false,
+   "status": "jina-403"
+  }
+ },
+ {
+  "id": 1290,
+  "outlet": "NDTV Sports",
+  "cause": "http-403",
+  "published": "2026-09-17",
+  "fighters": [
+   "Ilia Topuria"
+  ],
+  "host": "sports.ndtv.com",
+  "retry": {
+   "length": 2825,
+   "named": true,
+   "usable": true,
+   "via": "json-ld"
+  },
+  "jina": {
+   "length": 2150,
+   "named": true,
+   "usable": true,
+   "status": "ok"
+  }
+ },
+ {
+  "id": 1291,
+  "outlet": "Eurosport",
+  "cause": "http-403",
+  "published": "2026-09-17",
+  "fighters": [
+   "Ilia Topuria"
+  ],
+  "host": "eurosport.es",
+  "retry": {
+   "length": 0,
+   "named": false,
+   "usable": false,
+   "via": "no-extract"
+  },
+  "jina": {
+   "length": 39,
+   "named": false,
+   "usable": false,
+   "status": "ok"
+  }
+ },
+ {
+  "id": 1297,
+  "outlet": "DAZN",
+  "cause": "http-403",
+  "published": "2026-09-17",
+  "fighters": [
+   "Ilia Topuria"
+  ],
+  "host": "dazn.com",
+  "retry": {
+   "length": 3131,
+   "named": true,
+   "usable": true,
+   "via": "json-ld"
+  },
+  "jina": {
+   "length": 159,
+   "named": false,
+   "usable": false,
+   "status": "warning: Target URL returned error 403: Forbidden"
+  }
+ },
+ {
+  "id": 1300,
+  "outlet": "MMA Fighting",
+  "cause": "none",
+  "published": "2026-09-17",
+  "fighters": [
+   "Ilia Topuria"
+  ],
+  "host": "mmafighting.com",
+  "retry": {
+   "length": 1706,
+   "named": true,
+   "usable": true,
+   "via": "json-ld"
+  },
+  "jina": {
+   "length": 15158,
+   "named": true,
+   "usable": true,
+   "status": "ok"
+  }
+ },
+ {
+  "id": 1307,
+  "outlet": "Eurosport",
+  "cause": "http-403",
+  "published": "2026-09-17",
+  "fighters": [
+   "Ilia Topuria"
+  ],
+  "host": "eurosport.es",
+  "retry": {
+   "length": 0,
+   "named": false,
+   "usable": false,
+   "via": "no-extract"
+  },
+  "jina": {
+   "length": 39,
+   "named": false,
+   "usable": false,
+   "status": "ok"
+  }
+ },
+ {
+  "id": 1310,
+  "outlet": "MMA Fighting",
+  "cause": "none",
+  "published": "2026-09-17",
+  "fighters": [
+   "Ilia Topuria"
+  ],
+  "host": "mmafighting.com",
+  "retry": {
+   "length": 1344,
+   "named": true,
+   "usable": true,
+   "via": "json-ld"
+  },
+  "jina": {
+   "length": 13386,
+   "named": true,
+   "usable": true,
+   "status": "ok"
+  }
+ },
+ {
+  "id": 1311,
+  "outlet": "MMAWeekly.com",
+  "cause": "http-403",
+  "published": "2026-09-17",
+  "fighters": [
+   "Ilia Topuria"
+  ],
+  "host": "mmaweekly.com",
+  "retry": {
+   "length": 0,
+   "named": false,
+   "usable": false,
+   "via": "http-403"
+  },
+  "jina": {
+   "length": 0,
+   "named": false,
+   "usable": false,
+   "status": "iframe: jina-401"
+  }
+ },
+ {
+  "id": 1322,
+  "outlet": "lindyssports.com",
+  "cause": "http-403",
+  "published": "2026-09-17",
+  "fighters": [
+   "Ilia Topuria"
+  ],
+  "host": "lindyssports.com",
+  "retry": {
+   "length": 0,
+   "named": false,
+   "usable": false,
+   "via": "http-403"
+  },
+  "jina": {
+   "length": 0,
+   "named": false,
+   "usable": false,
+   "status": "iframe: jina-401"
+  }
+ },
+ {
+  "id": 1327,
+  "outlet": "Eurosport",
+  "cause": "http-403",
+  "published": "2026-09-17",
+  "fighters": [
+   "Ilia Topuria"
+  ],
+  "host": "eurosport.es",
+  "retry": {
+   "length": 0,
+   "named": false,
+   "usable": false,
+   "via": "no-extract"
+  },
+  "jina": {
+   "length": 39,
+   "named": false,
+   "usable": false,
+   "status": "ok"
+  }
+ },
+ {
+  "id": 1330,
+  "outlet": "Idaho Statesman",
+  "cause": "timeout",
+  "published": "2026-09-17",
+  "fighters": [
+   "Ilia Topuria"
+  ],
+  "host": "idahostatesman.com",
+  "retry": {
+   "length": 0,
+   "named": false,
+   "usable": false,
+   "via": "http-404"
+  },
+  "jina": {
+   "length": 2480,
+   "named": false,
+   "usable": false,
+   "status": "ok"
+  }
+ },
+ {
+  "id": 1338,
+  "outlet": "DAZN",
+  "cause": "http-403",
+  "published": "2026-09-18",
+  "fighters": [
+   "Ilia Topuria"
+  ],
+  "host": "dazn.com",
+  "retry": {
+   "length": 4921,
+   "named": true,
+   "usable": true,
+   "via": "json-ld"
+  },
+  "jina": {
+   "length": 159,
+   "named": false,
+   "usable": false,
+   "status": "warning: Target URL returned error 403: Forbidden"
+  }
+ },
+ {
+  "id": 1339,
+  "outlet": "DAZN",
+  "cause": "http-403",
+  "published": "2026-09-18",
+  "fighters": [
+   "Ilia Topuria"
+  ],
+  "host": "dazn.com",
+  "retry": {
+   "length": 0,
+   "named": false,
+   "usable": false,
+   "via": "no-extract"
+  },
+  "jina": {
+   "length": 159,
+   "named": false,
+   "usable": false,
+   "status": "warning: Target URL returned error 403: Forbidden"
+  }
+ },
+ {
+  "id": 1341,
+  "outlet": "Bloody Elbow",
+  "cause": "http-403",
+  "published": "2026-09-18",
+  "fighters": [
+   "Ilia Topuria"
+  ],
+  "host": "bloodyelbow.com",
+  "retry": {
+   "length": 0,
+   "named": false,
+   "usable": false,
+   "via": "http-403"
+  },
+  "jina": {
+   "length": 6024,
+   "named": true,
+   "usable": true,
+   "status": "ok"
+  }
+ },
+ {
+  "id": 1346,
+  "outlet": "NDTV Sports",
+  "cause": "http-403",
+  "published": "2026-09-18",
+  "fighters": [
+   "Ilia Topuria"
+  ],
+  "host": "sports.ndtv.com",
+  "retry": {
+   "length": 2707,
+   "named": true,
+   "usable": true,
+   "via": "json-ld"
+  },
+  "jina": {
+   "length": 2362,
+   "named": true,
+   "usable": true,
+   "status": "ok"
+  }
+ },
+ {
+  "id": 1353,
+  "outlet": "MMA Mania",
+  "cause": "decode-failed",
+  "published": "2026-09-18",
+  "fighters": [
+   "Ilia Topuria"
+  ],
+  "decode": "ok",
+  "host": "mmamania.com",
+  "retry": {
+   "length": 2835,
+   "named": true,
+   "usable": true,
+   "via": "json-ld"
+  },
+  "jina": {
+   "length": 15104,
+   "named": true,
+   "usable": true,
+   "status": "ok"
+  }
+ },
+ {
+  "id": 1357,
+  "outlet": "The Mirror",
+  "cause": "decode-failed",
+  "published": "2026-09-18",
+  "fighters": [
+   "Ilia Topuria"
+  ],
+  "decode": "ok",
+  "host": "mirror.co.uk",
+  "retry": {
+   "length": 0,
+   "named": false,
+   "usable": false,
+   "via": "no-extract"
+  },
+  "jina": {
+   "length": 10591,
+   "named": true,
+   "usable": true,
+   "status": "ok"
+  }
+ },
+ {
+  "id": 1358,
+  "outlet": "MMA Junkie",
+  "cause": "decode-failed",
+  "published": "2026-09-18",
+  "fighters": [
+   "Ilia Topuria"
+  ],
+  "decode": "ok",
+  "host": "mmajunkie.usatoday.com",
+  "retry": {
+   "length": 1090,
+   "named": true,
+   "usable": true,
+   "via": "article-tag"
+  },
+  "jina": {
+   "length": 6692,
+   "named": true,
+   "usable": true,
+   "status": "ok"
+  }
+ },
+ {
+  "id": 1359,
+  "outlet": "MMAWeekly.com",
+  "cause": "decode-failed",
+  "published": "2026-09-18",
+  "fighters": [
+   "Ilia Topuria"
+  ],
+  "decode": "ok",
+  "host": "mmaweekly.com",
+  "retry": {
+   "length": 0,
+   "named": false,
+   "usable": false,
+   "via": "http-403"
+  },
+  "jina": {
+   "length": 0,
+   "named": false,
+   "usable": false,
+   "status": "iframe: jina-401"
+  }
+ },
+ {
+  "id": 1360,
+  "outlet": "Yahoo Sports",
+  "cause": "decode-failed",
+  "published": "2026-09-18",
+  "fighters": [
+   "Ilia Topuria"
+  ],
+  "decode": "ok",
+  "host": "sports.yahoo.com",
+  "retry": {
+   "length": 3234,
+   "named": true,
+   "usable": true,
+   "via": "paragraphs"
+  },
+  "jina": {
+   "length": 4542,
+   "named": true,
+   "usable": true,
+   "status": "ok"
+  }
+ },
+ {
+  "id": 1361,
+  "outlet": "MARCA",
+  "cause": "decode-failed",
+  "published": "2026-09-18",
+  "fighters": [
+   "Ilia Topuria"
+  ],
+  "decode": "ok",
+  "host": "marca.com",
+  "retry": {
+   "length": 2597,
+   "named": true,
+   "usable": true,
+   "via": "json-ld"
+  },
+  "jina": {
+   "length": 11052,
+   "named": true,
+   "usable": true,
+   "status": "ok"
+  }
+ },
+ {
+  "id": 1363,
+  "outlet": "SportsGrid",
+  "cause": "decode-failed",
+  "published": "2026-09-18",
+  "fighters": [
+   "Ilia Topuria"
+  ],
+  "decode": "ok",
+  "host": "sportsgrid.com",
+  "retry": {
+   "length": 1628,
+   "named": false,
+   "usable": false,
+   "via": "article-tag"
+  },
+  "jina": {
+   "length": 7338,
+   "named": true,
+   "usable": true,
+   "status": "ok"
+  }
+ },
+ {
+  "id": 1364,
+  "outlet": "MMA Sucka",
+  "cause": "decode-failed",
+  "published": "2026-09-18",
+  "fighters": [
+   "Ilia Topuria"
+  ],
+  "decode": "ok",
+  "host": "mmasucka.com",
+  "retry": {
+   "length": 2015,
+   "named": true,
+   "usable": true,
+   "via": "json-ld"
+  },
+  "jina": {
+   "length": 2096,
+   "named": true,
+   "usable": true,
+   "status": "ok"
+  }
+ },
+ {
+  "id": 1366,
+  "outlet": "Eurosport",
+  "cause": "decode-failed",
+  "published": "2026-09-18",
+  "fighters": [
+   "Ilia Topuria"
+  ],
+  "decode": "ok",
+  "host": "eurosport.es",
+  "retry": {
+   "length": 0,
+   "named": false,
+   "usable": false,
+   "via": "no-extract"
+  },
+  "jina": {
+   "length": 39,
+   "named": false,
+   "usable": false,
+   "status": "ok"
+  }
+ },
+ {
+  "id": 1369,
+  "outlet": "my.ua",
+  "cause": "decode-failed",
+  "published": "2026-09-18",
+  "fighters": [
+   "Yaroslav Amosov"
+  ],
+  "decode": "ok",
+  "host": "my.ua",
+  "retry": {
+   "length": 1759,
+   "named": true,
+   "usable": true,
+   "via": "paragraphs"
+  },
+  "jina": {
+   "length": 5229,
+   "named": true,
+   "usable": true,
+   "status": "ok"
+  }
+ },
+ {
+  "id": 1371,
+  "outlet": "Yahoo Sports",
+  "cause": "decode-failed",
+  "published": "2026-09-18",
+  "fighters": [
+   "Ilia Topuria"
+  ],
+  "decode": "ok",
+  "host": "sports.yahoo.com",
+  "retry": {
+   "length": 3412,
+   "named": true,
+   "usable": true,
+   "via": "paragraphs"
+  },
+  "jina": {
+   "length": 5208,
+   "named": true,
+   "usable": true,
+   "status": "ok"
+  }
+ },
+ {
+  "id": 1375,
+  "outlet": "Eurosport",
+  "cause": "http-403",
+  "published": "2026-09-18",
+  "fighters": [
+   "Ilia Topuria"
+  ],
+  "host": "eurosport.es",
+  "retry": {
+   "length": 0,
+   "named": false,
+   "usable": false,
+   "via": "no-extract"
+  },
+  "jina": {
+   "length": 39,
+   "named": false,
+   "usable": false,
+   "status": "ok"
+  }
+ },
+ {
+  "id": 1376,
+  "outlet": "heavy.com",
+  "cause": "decode-failed",
+  "published": "2026-09-18",
+  "fighters": [
+   "Ilia Topuria"
+  ],
+  "decode": "ok",
+  "host": "heavy.com",
+  "retry": {
+   "length": 2055,
+   "named": true,
+   "usable": true,
+   "via": "json-ld"
+  },
+  "jina": {
+   "length": 9010,
+   "named": true,
+   "usable": true,
+   "status": "ok"
+  }
+ },
+ {
+  "id": 1377,
+  "outlet": "MMA Sucka",
+  "cause": "decode-failed",
+  "published": "2026-09-18",
+  "fighters": [
+   "Ilia Topuria"
+  ],
+  "decode": "ok",
+  "host": "mmasucka.com",
+  "retry": {
+   "length": 2158,
+   "named": true,
+   "usable": true,
+   "via": "json-ld"
+  },
+  "jina": {
+   "length": 2301,
+   "named": true,
+   "usable": true,
+   "status": "ok"
+  }
+ },
+ {
+  "id": 1379,
+  "outlet": "MMAWeekly.com",
+  "cause": "decode-failed",
+  "published": "2026-09-18",
+  "fighters": [
+   "Ilia Topuria"
+  ],
+  "decode": "ok",
+  "host": "mmaweekly.com",
+  "retry": {
+   "length": 0,
+   "named": false,
+   "usable": false,
+   "via": "http-403"
+  },
+  "jina": {
+   "length": 0,
+   "named": false,
+   "usable": false,
+   "status": "iframe: jina-401"
+  }
+ },
+ {
+  "id": 1380,
+  "outlet": "Belleville News-Democrat",
+  "cause": "timeout",
+  "published": "2026-09-18",
+  "fighters": [
+   "Ilia Topuria"
+  ],
+  "host": "bnd.com",
+  "retry": {
+   "length": 0,
+   "named": false,
+   "usable": false,
+   "via": "http-404"
+  },
+  "jina": {
+   "length": 2385,
+   "named": false,
+   "usable": false,
+   "status": "ok"
+  }
+ },
+ {
+  "id": 1382,
+  "outlet": "Bloody Elbow",
+  "cause": "http-403",
+  "published": "2026-09-19",
+  "fighters": [
+   "Ilia Topuria"
+  ],
+  "host": "bloodyelbow.com",
+  "retry": {
+   "length": 0,
+   "named": false,
+   "usable": false,
+   "via": "http-403"
+  },
+  "jina": {
+   "length": 3489,
+   "named": true,
+   "usable": true,
+   "status": "ok"
+  }
+ },
+ {
+  "id": 1385,
+  "outlet": "Yahoo Sports",
+  "cause": "decode-failed",
+  "published": "2026-09-19",
+  "fighters": [
+   "Ilia Topuria"
+  ],
+  "decode": "ok",
+  "host": "sports.yahoo.com",
+  "retry": {
+   "length": 3331,
+   "named": true,
+   "usable": true,
+   "via": "paragraphs"
+  },
+  "jina": {
+   "length": 4792,
+   "named": true,
+   "usable": true,
+   "status": "ok"
+  }
+ },
+ {
+  "id": 1386,
+  "outlet": "20Minutos",
+  "cause": "decode-failed",
+  "published": "2026-09-19",
+  "fighters": [
+   "Ilia Topuria"
+  ],
+  "decode": "ok",
+  "host": "20minutos.es",
+  "retry": {
+   "length": 2035,
+   "named": true,
+   "usable": true,
+   "via": "json-ld"
+  },
+  "jina": {
+   "length": 6321,
+   "named": true,
+   "usable": true,
+   "status": "ok"
+  }
+ },
+ {
+  "id": 1392,
+  "outlet": "MMAWeekly.com",
+  "cause": "http-403",
+  "published": "2026-09-19",
+  "fighters": [
+   "Ilia Topuria"
+  ],
+  "host": "mmaweekly.com",
+  "retry": {
+   "length": 0,
+   "named": false,
+   "usable": false,
+   "via": "http-403"
+  },
+  "jina": {
+   "length": 0,
+   "named": false,
+   "usable": false,
+   "status": "iframe: jina-401"
+  }
+ },
+ {
+  "id": 1393,
+  "outlet": "Centre Daily Times",
+  "cause": "timeout",
+  "published": "2026-09-19",
+  "fighters": [
+   "Ilia Topuria"
+  ],
+  "host": "centredaily.com",
+  "retry": {
+   "length": 0,
+   "named": false,
+   "usable": false,
+   "via": "http-404"
+  },
+  "jina": {
+   "length": 2491,
+   "named": false,
+   "usable": false,
+   "status": "ok"
+  }
+ },
+ {
+  "id": 1394,
+  "outlet": "Bloody Elbow",
+  "cause": "http-403",
+  "published": "2026-09-19",
+  "fighters": [
+   "Ilia Topuria"
+  ],
+  "host": "bloodyelbow.com",
+  "retry": {
+   "length": 0,
+   "named": false,
+   "usable": false,
+   "via": "http-403"
+  },
+  "jina": {
+   "length": 4215,
+   "named": true,
+   "usable": true,
+   "status": "ok"
+  }
+ },
+ {
+  "id": 1396,
+  "outlet": "NDTV Sports",
+  "cause": "http-403",
+  "published": "2026-09-19",
+  "fighters": [
+   "Ilia Topuria"
+  ],
+  "host": "sports.ndtv.com",
+  "retry": {
+   "length": 2572,
+   "named": true,
+   "usable": true,
+   "via": "json-ld"
+  },
+  "jina": {
+   "length": 2277,
+   "named": true,
+   "usable": true,
+   "status": "ok"
+  }
+ },
+ {
+  "id": 1398,
+  "outlet": "MARCA",
+  "cause": "none",
+  "published": "2026-09-19",
+  "fighters": [
+   "Ilia Topuria"
+  ],
+  "host": "marca.com",
+  "retry": {
+   "length": 2905,
+   "named": true,
+   "usable": true,
+   "via": "json-ld"
+  },
+  "jina": {
+   "length": 11020,
+   "named": true,
+   "usable": true,
+   "status": "ok"
+  }
+ },
+ {
+  "id": 1404,
+  "outlet": "mmafighting.com",
+  "cause": "none",
+  "published": "2026-09-19",
+  "fighters": [
+   "Ilia Topuria"
+  ],
+  "host": "mmafighting.com",
+  "retry": {
+   "length": 4664,
+   "named": true,
+   "usable": true,
+   "via": "json-ld"
+  },
+  "jina": {
+   "length": 10655,
+   "named": true,
+   "usable": true,
+   "status": "ok"
+  }
+ },
+ {
+  "id": 1406,
+  "outlet": "MMAWeekly.com",
+  "cause": "http-403",
+  "published": "2026-09-19",
+  "fighters": [
+   "Ilia Topuria"
+  ],
+  "host": "mmaweekly.com",
+  "retry": {
+   "length": 0,
+   "named": false,
+   "usable": false,
+   "via": "http-403"
+  },
+  "jina": {
+   "length": 0,
+   "named": false,
+   "usable": false,
+   "status": "iframe: jina-401"
+  }
+ },
+ {
+  "id": 1410,
+  "outlet": "bloodyelbow.com",
+  "cause": "none",
+  "published": "2026-09-19",
+  "fighters": [
+   "Ilia Topuria"
+  ],
+  "host": "bloodyelbow.com",
+  "retry": {
+   "length": 0,
+   "named": false,
+   "usable": false,
+   "via": "http-403"
+  },
+  "jina": {
+   "length": 7018,
+   "named": true,
+   "usable": true,
+   "status": "warning: Target URL returned error 405: Method Not Allowed"
+  }
+ },
+ {
+  "id": 1412,
+  "outlet": "247Sports",
+  "cause": "http-406",
+  "published": "2026-09-19",
+  "fighters": [
+   "Yaroslav Amosov"
+  ],
+  "host": "247sports.com",
+  "retry": {
+   "length": 0,
+   "named": false,
+   "usable": false,
+   "via": "http-406"
+  },
+  "jina": {
+   "length": 0,
+   "named": false,
+   "usable": false,
+   "status": "iframe: jina-401"
+  }
+ },
+ {
+  "id": 1415,
+  "outlet": "SuaraGarut.ID",
+  "cause": "http-520",
+  "published": "2026-09-20",
+  "fighters": [
+   "Ilia Topuria"
+  ],
+  "host": "suaragarut.id",
+  "retry": {
+   "length": 4101,
+   "named": true,
+   "usable": true,
+   "via": "json-ld"
+  },
+  "jina": {
+   "length": 525,
+   "named": false,
+   "usable": false,
+   "status": "warning: Target URL returned error 520: Unknown"
+  }
+ },
+ {
+  "id": 1418,
+  "outlet": "Eurosport",
+  "cause": "http-403",
+  "published": "2026-09-20",
+  "fighters": [
+   "Ilia Topuria"
+  ],
+  "host": "eurosport.es",
+  "retry": {
+   "length": 0,
+   "named": false,
+   "usable": false,
+   "via": "no-extract"
+  },
+  "jina": {
+   "length": 39,
+   "named": false,
+   "usable": false,
+   "status": "ok"
+  }
+ },
+ {
+  "id": 1421,
+  "outlet": "Eurosport",
+  "cause": "http-403",
+  "published": "2026-09-20",
+  "fighters": [
+   "Ilia Topuria"
+  ],
+  "host": "eurosport.es",
+  "retry": {
+   "length": 0,
+   "named": false,
+   "usable": false,
+   "via": "no-extract"
+  },
+  "jina": {
+   "length": 39,
+   "named": false,
+   "usable": false,
+   "status": "ok"
+  }
+ },
+ {
+  "id": 1427,
+  "outlet": "Eurosport",
+  "cause": "http-403",
+  "published": "2026-09-20",
+  "fighters": [
+   "Ilia Topuria"
+  ],
+  "host": "eurosport.es",
+  "retry": {
+   "length": 0,
+   "named": false,
+   "usable": false,
+   "via": "no-extract"
+  },
+  "jina": {
+   "length": 39,
+   "named": false,
+   "usable": false,
+   "status": "ok"
+  }
+ },
+ {
+  "id": 1429,
+  "outlet": "XSPORT.ua",
+  "cause": "error-TypeError",
+  "published": "2026-09-20",
+  "fighters": [
+   "Daniil Donchenko"
+  ],
+  "host": "xsport.ua",
+  "retry": {
+   "length": 1460,
+   "named": false,
+   "usable": false,
+   "via": "article-tag"
+  },
+  "jina": {
+   "length": 3439,
+   "named": true,
+   "usable": true,
+   "status": "ok"
+  }
+ },
+ {
+  "id": 1439,
+  "outlet": "Bloody Elbow",
+  "cause": "none",
+  "published": "2026-09-20",
+  "fighters": [
+   "Ilia Topuria"
+  ],
+  "host": "bloodyelbow.com",
+  "retry": {
+   "length": 0,
+   "named": false,
+   "usable": false,
+   "via": "http-403"
+  },
+  "jina": {
+   "length": 2850,
+   "named": true,
+   "usable": true,
+   "status": "ok"
+  }
+ },
+ {
+  "id": 1441,
+  "outlet": "ABC",
+  "cause": "none",
+  "published": "2026-09-20",
+  "fighters": [
+   "Ilia Topuria"
+  ],
+  "host": "abc.es",
+  "retry": {
+   "length": 3453,
+   "named": true,
+   "usable": true,
+   "via": "json-ld"
+  },
+  "jina": {
+   "length": 14154,
+   "named": true,
+   "usable": true,
+   "status": "ok"
+  }
+ },
+ {
+  "id": 1443,
+  "outlet": "lindyssports.com",
+  "cause": "http-403",
+  "published": "2026-09-21",
+  "fighters": [
+   "Ilia Topuria"
+  ],
+  "host": "lindyssports.com",
+  "retry": {
+   "length": 0,
+   "named": false,
+   "usable": false,
+   "via": "http-403"
+  },
+  "jina": {
+   "length": 0,
+   "named": false,
+   "usable": false,
+   "status": "iframe: jina-401"
+  }
+ },
+ {
+  "id": 1445,
+  "outlet": "Sherdog",
+  "cause": "og-description",
+  "published": "2026-09-21",
+  "fighters": [
+   "Ilia Topuria"
+  ],
+  "host": "sherdog.com",
+  "retry": {
+   "length": 43,
+   "named": false,
+   "usable": false,
+   "via": "og-description"
+  },
+  "jina": {
+   "length": 0,
+   "named": false,
+   "usable": false,
+   "status": "jina-403"
+  }
+ },
+ {
+  "id": 1446,
+  "outlet": "Sherdog",
+  "cause": "none",
+  "published": "2026-09-21",
+  "fighters": [
+   "Ilia Topuria"
+  ],
+  "host": "sherdog.com",
+  "retry": {
+   "length": 43,
+   "named": false,
+   "usable": false,
+   "via": "og-description"
+  },
+  "jina": {
+   "length": 0,
+   "named": false,
+   "usable": false,
+   "status": "jina-403"
+  }
+ },
+ {
+  "id": 1447,
+  "outlet": "Bloody Elbow",
+  "cause": "http-403",
+  "published": "2026-09-21",
+  "fighters": [
+   "Ilia Topuria"
+  ],
+  "host": "bloodyelbow.com",
+  "retry": {
+   "length": 0,
+   "named": false,
+   "usable": false,
+   "via": "http-403"
+  },
+  "jina": {
+   "length": 5804,
+   "named": true,
+   "usable": true,
+   "status": "ok"
+  }
+ },
+ {
+  "id": 1452,
+  "outlet": "20Minutos",
+  "cause": "decode-failed",
+  "published": "2026-09-21",
+  "fighters": [
+   "Ilia Topuria"
+  ],
+  "decode": "ok",
+  "host": "20minutos.es",
+  "retry": {
+   "length": 1797,
+   "named": true,
+   "usable": true,
+   "via": "json-ld"
+  },
+  "jina": {
+   "length": 8150,
+   "named": true,
+   "usable": true,
+   "status": "ok"
+  }
+ },
+ {
+  "id": 1455,
+  "outlet": "Sherdog",
+  "cause": "decode-failed",
+  "published": "2026-09-21",
+  "fighters": [
+   "Ilia Topuria"
+  ],
+  "decode": "ok",
+  "host": "sherdog.com",
+  "retry": {
+   "length": 43,
+   "named": false,
+   "usable": false,
+   "via": "og-description"
+  },
+  "jina": {
+   "length": 0,
+   "named": false,
+   "usable": false,
+   "status": "jina-403"
+  }
+ },
+ {
+  "id": 1457,
+  "outlet": "El Desmarque",
+  "cause": "http-403",
+  "published": "2026-09-21",
+  "fighters": [
+   "Ilia Topuria"
+  ],
+  "host": "eldesmarque.com",
+  "retry": {
+   "length": 2388,
+   "named": true,
+   "usable": true,
+   "via": "json-ld"
+  },
+  "jina": {
+   "length": 2895,
+   "named": true,
+   "usable": true,
+   "status": "ok"
+  }
+ },
+ {
+  "id": 1460,
+  "outlet": "El Diario Vasco",
+  "cause": "decode-failed",
+  "published": "2026-09-21",
+  "fighters": [
+   "Ilia Topuria"
+  ],
+  "decode": "ok",
+  "host": "blogs.diariovasco.com",
+  "retry": {
+   "length": 4177,
+   "named": true,
+   "usable": true,
+   "via": "paragraphs"
+  },
+  "jina": {
+   "length": 3883,
+   "named": true,
+   "usable": true,
+   "status": "ok"
+  }
+ },
+ {
+  "id": 1464,
+  "outlet": "MARCA",
+  "cause": "none",
+  "published": "2026-09-21",
+  "fighters": [
+   "Ilia Topuria"
+  ],
+  "host": "marca.com",
+  "retry": {
+   "length": 2441,
+   "named": true,
+   "usable": true,
+   "via": "json-ld"
+  },
+  "jina": {
+   "length": 10368,
+   "named": true,
+   "usable": true,
+   "status": "ok"
+  }
+ },
+ {
+  "id": 1467,
+  "outlet": "BJPenn.com",
+  "cause": "decode-failed",
+  "published": "2026-09-21",
+  "fighters": [
+   "Ilia Topuria"
+  ],
+  "decode": "ok",
+  "host": "bjpenn.com",
+  "retry": {
+   "length": 5377,
+   "named": true,
+   "usable": true,
+   "via": "article-tag"
+  },
+  "jina": {
+   "length": 9349,
+   "named": true,
+   "usable": true,
+   "status": "ok"
+  }
+ },
+ {
+  "id": 1473,
+  "outlet": "Bradenton Herald",
+  "cause": "decode-failed",
+  "published": "2026-09-21",
+  "fighters": [
+   "Ilia Topuria"
+  ],
+  "decode": "ok",
+  "host": "bradenton.com",
+  "retry": {
+   "length": 0,
+   "named": false,
+   "usable": false,
+   "via": "http-404"
+  },
+  "jina": {
+   "length": 0,
+   "named": false,
+   "usable": false,
+   "status": "jina-503"
+  }
+ },
+ {
+  "id": 1474,
+  "outlet": "Tri-City Herald",
+  "cause": "timeout",
+  "published": "2026-09-21",
+  "fighters": [
+   "Ilia Topuria"
+  ],
+  "host": "tri-cityherald.com",
+  "retry": {
+   "length": 0,
+   "named": false,
+   "usable": false,
+   "via": "http-404"
+  },
+  "jina": {
+   "length": 2441,
+   "named": false,
+   "usable": false,
+   "status": "ok"
+  }
+ },
+ {
+  "id": 1476,
+  "outlet": "boxingnews.com",
+  "cause": "decode-failed",
+  "published": "2026-09-21",
+  "fighters": [
+   "Ilia Topuria"
+  ],
+  "decode": "ok",
+  "host": "boxingnews.com",
+  "retry": {
+   "length": 1884,
+   "named": true,
+   "usable": true,
+   "via": "article-tag"
+  },
+  "jina": {
+   "length": 2032,
+   "named": true,
+   "usable": true,
+   "status": "ok"
+  }
+ },
+ {
+  "id": 1477,
+  "outlet": "San Luis Obispo Tribune",
+  "cause": "timeout",
+  "published": "2026-09-21",
+  "fighters": [
+   "Ilia Topuria"
+  ],
+  "host": "sanluisobispo.com",
+  "retry": {
+   "length": 0,
+   "named": false,
+   "usable": false,
+   "via": "http-404"
+  },
+  "jina": {
+   "length": 2413,
+   "named": false,
+   "usable": false,
+   "status": "ok"
+  }
+ },
+ {
+  "id": 1479,
+  "outlet": "MARCA",
+  "cause": "decode-failed",
+  "published": "2026-09-21",
+  "fighters": [
+   "Ilia Topuria"
+  ],
+  "decode": "ok",
+  "host": "marca.com",
+  "retry": {
+   "length": 1961,
+   "named": true,
+   "usable": true,
+   "via": "json-ld"
+  },
+  "jina": {
+   "length": 10908,
+   "named": true,
+   "usable": true,
+   "status": "ok"
+  }
+ },
+ {
+  "id": 1481,
+  "outlet": "MMA Sucka",
+  "cause": "decode-failed",
+  "published": "2026-09-21",
+  "fighters": [
+   "Ilia Topuria"
+  ],
+  "decode": "ok",
+  "host": "mmasucka.com",
+  "retry": {
+   "length": 3271,
+   "named": true,
+   "usable": true,
+   "via": "json-ld"
+  },
+  "jina": {
+   "length": 3387,
+   "named": true,
+   "usable": true,
+   "status": "ok"
+  }
+ },
+ {
+  "id": 1482,
+  "outlet": "La Vanguardia",
+  "cause": "decode-failed",
+  "published": "2026-09-21",
+  "fighters": [
+   "Ilia Topuria"
+  ],
+  "decode": "ok",
+  "host": "lavanguardia.com",
+  "retry": {
+   "length": 4057,
+   "named": true,
+   "usable": true,
+   "via": "json-ld"
+  },
+  "jina": {
+   "length": 4308,
+   "named": true,
+   "usable": true,
+   "status": "ok"
+  }
+ },
+ {
+  "id": 1485,
+  "outlet": "ABC",
+  "cause": "decode-failed",
+  "published": "2026-09-21",
+  "fighters": [
+   "Ilia Topuria"
+  ],
+  "decode": "ok",
+  "host": "abc.es",
+  "retry": {
+   "length": 3285,
+   "named": true,
+   "usable": true,
+   "via": "json-ld"
+  },
+  "jina": {
+   "length": 13828,
+   "named": true,
+   "usable": true,
+   "status": "ok"
+  }
+ },
+ {
+  "id": 1487,
+  "outlet": "20Minutos",
+  "cause": "decode-failed",
+  "published": "2026-09-22",
+  "fighters": [
+   "Ilia Topuria"
+  ],
+  "decode": "ok",
+  "host": "20minutos.es",
+  "retry": {
+   "length": 1885,
+   "named": true,
+   "usable": true,
+   "via": "json-ld"
+  },
+  "jina": {
+   "length": 7734,
+   "named": true,
+   "usable": true,
+   "status": "ok"
+  }
+ },
+ {
+  "id": 1488,
+  "outlet": "DAZN",
+  "cause": "decode-failed",
+  "published": "2026-09-22",
+  "fighters": [
+   "Ilia Topuria"
+  ],
+  "decode": "ok",
+  "host": "dazn.com",
+  "retry": {
+   "length": 5012,
+   "named": true,
+   "usable": true,
+   "via": "json-ld"
+  },
+  "jina": {
+   "length": 159,
+   "named": false,
+   "usable": false,
+   "status": "warning: Target URL returned error 403: Forbidden"
+  }
+ },
+ {
+  "id": 1489,
+  "outlet": "DAZN",
+  "cause": "http-403",
+  "published": "2026-09-22",
+  "fighters": [
+   "Ilia Topuria"
+  ],
+  "host": "dazn.com",
+  "retry": {
+   "length": 0,
+   "named": false,
+   "usable": false,
+   "via": "no-extract"
+  },
+  "jina": {
+   "length": 159,
+   "named": false,
+   "usable": false,
+   "status": "warning: Target URL returned error 403: Forbidden"
+  }
+ },
+ {
+  "id": 1490,
+  "outlet": "El Español",
+  "cause": "decode-failed",
+  "published": "2026-09-22",
+  "fighters": [
+   "Ilia Topuria"
+  ],
+  "decode": "ok",
+  "host": "elespanol.com",
+  "retry": {
+   "length": 10000,
+   "named": true,
+   "usable": true,
+   "via": "json-ld"
+  },
+  "jina": {
+   "length": 10259,
+   "named": true,
+   "usable": true,
+   "status": "ok"
+  }
+ },
+ {
+  "id": 1491,
+  "outlet": "Diario de Ibiza",
+  "cause": "decode-failed",
+  "published": "2026-09-22",
+  "fighters": [
+   "Ilia Topuria"
+  ],
+  "decode": "ok",
+  "host": "diariodeibiza.es",
+  "retry": {
+   "length": 2553,
+   "named": true,
+   "usable": true,
+   "via": "json-ld"
+  },
+  "jina": {
+   "length": 12855,
+   "named": true,
+   "usable": true,
+   "status": "ok"
+  }
+ },
+ {
+  "id": 1492,
+  "outlet": "Diario de Ibiza",
+  "cause": "decode-failed",
+  "published": "2026-09-22",
+  "fighters": [
+   "Ilia Topuria"
+  ],
+  "decode": "ok",
+  "host": "diariodeibiza.es",
+  "retry": {
+   "length": 2553,
+   "named": true,
+   "usable": true,
+   "via": "json-ld"
+  },
+  "jina": {
+   "length": 12855,
+   "named": true,
+   "usable": true,
+   "status": "ok"
+  }
+ },
+ {
+  "id": 1493,
+  "outlet": "mundodeportivo.com",
+  "cause": "decode-failed",
+  "published": "2026-09-22",
+  "fighters": [
+   "Ilia Topuria"
+  ],
+  "decode": "ok",
+  "host": "mundodeportivo.com",
+  "retry": {
+   "length": 1562,
+   "named": true,
+   "usable": true,
+   "via": "json-ld"
+  },
+  "jina": {
+   "length": 9860,
+   "named": true,
+   "usable": true,
+   "status": "ok"
+  }
+ },
+ {
+  "id": 1496,
+  "outlet": "ABC",
+  "cause": "decode-failed",
+  "published": "2026-09-22",
+  "fighters": [
+   "Ilia Topuria"
+  ],
+  "decode": "ok",
+  "host": "abc.es",
+  "retry": {
+   "length": 5738,
+   "named": true,
+   "usable": true,
+   "via": "json-ld"
+  },
+  "jina": {
+   "length": 5809,
+   "named": true,
+   "usable": true,
+   "status": "ok"
+  }
+ },
+ {
+  "id": 1497,
+  "outlet": "MMA Sucka",
+  "cause": "decode-failed",
+  "published": "2026-09-22",
+  "fighters": [
+   "Ilia Topuria"
+  ],
+  "decode": "ok",
+  "host": "mmasucka.com",
+  "retry": {
+   "length": 2025,
+   "named": true,
+   "usable": true,
+   "via": "json-ld"
+  },
+  "jina": {
+   "length": 2189,
+   "named": true,
+   "usable": true,
+   "status": "ok"
+  }
+ },
+ {
+  "id": 1500,
+  "outlet": "Eurosport",
+  "cause": "http-403",
+  "published": "2026-09-22",
+  "fighters": [
+   "Ilia Topuria"
+  ],
+  "host": "eurosport.es",
+  "retry": {
+   "length": 0,
+   "named": false,
+   "usable": false,
+   "via": "no-extract"
+  },
+  "jina": {
+   "length": 39,
+   "named": false,
+   "usable": false,
+   "status": "ok"
+  }
+ },
+ {
+  "id": 1508,
+  "outlet": "MARCA",
+  "cause": "decode-failed",
+  "published": "2026-09-22",
+  "fighters": [
+   "Ilia Topuria"
+  ],
+  "decode": "ok",
+  "host": "marca.com",
+  "retry": {
+   "length": 1354,
+   "named": true,
+   "usable": true,
+   "via": "json-ld"
+  },
+  "jina": {
+   "length": 10832,
+   "named": true,
+   "usable": true,
+   "status": "ok"
+  }
+ },
+ {
+  "id": 1509,
+  "outlet": "NY Fights",
+  "cause": "decode-failed",
+  "published": "2026-09-22",
+  "fighters": [
+   "Ilia Topuria"
+  ],
+  "decode": "ok",
+  "host": "nyfights.com",
+  "retry": {
+   "length": 4480,
+   "named": true,
+   "usable": true,
+   "via": "article-tag"
+  },
+  "jina": {
+   "length": 4390,
+   "named": true,
+   "usable": true,
+   "status": "ok"
+  }
+ },
+ {
+  "id": 1510,
+  "outlet": "MMA Junkie",
+  "cause": "decode-failed",
+  "published": "2026-09-22",
+  "fighters": [
+   "Ilia Topuria"
+  ],
+  "decode": "ok",
+  "host": "mmajunkie.usatoday.com",
+  "retry": {
+   "length": 1632,
+   "named": true,
+   "usable": true,
+   "via": "article-tag"
+  },
+  "jina": {
+   "length": 8208,
+   "named": true,
+   "usable": true,
+   "status": "ok"
+  }
+ },
+ {
+  "id": 1511,
+  "outlet": "MARCA",
+  "cause": "decode-failed",
+  "published": "2026-09-22",
+  "fighters": [
+   "Ilia Topuria"
+  ],
+  "decode": "ok",
+  "host": "marca.com",
+  "retry": {
+   "length": 2433,
+   "named": true,
+   "usable": true,
+   "via": "json-ld"
+  },
+  "jina": {
+   "length": 11016,
+   "named": true,
+   "usable": true,
+   "status": "ok"
+  }
+ },
+ {
+  "id": 1513,
+  "outlet": "MMA Sucka",
+  "cause": "decode-failed",
+  "published": "2026-09-22",
+  "fighters": [
+   "Ilia Topuria"
+  ],
+  "decode": "ok",
+  "host": "mmasucka.com",
+  "retry": {
+   "length": 3470,
+   "named": true,
+   "usable": true,
+   "via": "json-ld"
+  },
+  "jina": {
+   "length": 3630,
+   "named": true,
+   "usable": true,
+   "status": "ok"
+  }
+ },
+ {
+  "id": 1514,
+  "outlet": "Geo Super",
+  "cause": "decode-failed",
+  "published": "2026-09-22",
+  "fighters": [
+   "Ilia Topuria"
+  ],
+  "decode": "ok",
+  "host": "geosuper.tv",
+  "retry": {
+   "length": 2562,
+   "named": true,
+   "usable": true,
+   "via": "paragraphs"
+  },
+  "jina": {
+   "length": 2217,
+   "named": true,
+   "usable": true,
+   "status": "ok"
+  }
+ },
+ {
+  "id": 1515,
+  "outlet": "MMA Junkie",
+  "cause": "decode-failed",
+  "published": "2026-09-22",
+  "fighters": [
+   "Ilia Topuria"
+  ],
+  "decode": "ok",
+  "host": "mmajunkie.usatoday.com",
+  "retry": {
+   "length": 1978,
+   "named": true,
+   "usable": true,
+   "via": "article-tag"
+  },
+  "jina": {
+   "length": 2004,
+   "named": true,
+   "usable": true,
+   "status": "ok"
+  }
+ },
+ {
+  "id": 1516,
+  "outlet": "SPORT",
+  "cause": "decode-failed",
+  "published": "2026-09-22",
+  "fighters": [
+   "Ilia Topuria"
+  ],
+  "decode": "ok",
+  "host": "sport.es",
+  "retry": {
+   "length": 2281,
+   "named": true,
+   "usable": true,
+   "via": "json-ld"
+  },
+  "jina": {
+   "length": 12229,
+   "named": true,
+   "usable": true,
+   "status": "ok"
+  }
+ },
+ {
+  "id": 1517,
+  "outlet": "Infobae",
+  "cause": "decode-failed",
+  "published": "2026-09-22",
+  "fighters": [
+   "Ilia Topuria"
+  ],
+  "decode": "ok",
+  "host": "infobae.com",
+  "retry": {
+   "length": 3783,
+   "named": true,
+   "usable": true,
+   "via": "json-ld"
+  },
+  "jina": {
+   "length": 12565,
+   "named": true,
+   "usable": true,
+   "status": "ok"
+  }
+ },
+ {
+  "id": 1518,
+  "outlet": "Bloody Elbow",
+  "cause": "decode-failed",
+  "published": "2026-09-22",
+  "fighters": [
+   "Ilia Topuria"
+  ],
+  "decode": "ok",
+  "host": "bloodyelbow.com",
+  "retry": {
+   "length": 0,
+   "named": false,
+   "usable": false,
+   "via": "http-403"
+  },
+  "jina": {
+   "length": 6761,
+   "named": true,
+   "usable": true,
+   "status": "ok"
+  }
+ },
+ {
+  "id": 1520,
+  "outlet": "Yahoo Sports",
+  "cause": "decode-failed",
+  "published": "2026-09-22",
+  "fighters": [
+   "Ilia Topuria"
+  ],
+  "decode": "ok",
+  "host": "sports.yahoo.com",
+  "retry": {
+   "length": 4984,
+   "named": true,
+   "usable": true,
+   "via": "article-tag"
+  },
+  "jina": {
+   "length": 9394,
+   "named": true,
+   "usable": true,
+   "status": "ok"
+  }
+ },
+ {
+  "id": 1521,
+  "outlet": "MMA Sucka",
+  "cause": "decode-failed",
+  "published": "2026-09-22",
+  "fighters": [
+   "Ilia Topuria"
+  ],
+  "decode": "ok",
+  "host": "mmasucka.com",
+  "retry": {
+   "length": 2840,
+   "named": true,
+   "usable": true,
+   "via": "json-ld"
+  },
+  "jina": {
+   "length": 2966,
+   "named": true,
+   "usable": true,
+   "status": "ok"
+  }
+ },
+ {
+  "id": 1524,
+  "outlet": "Bloody Elbow",
+  "cause": "http-403",
+  "published": "2026-09-23",
+  "fighters": [
+   "Ilia Topuria"
+  ],
+  "host": "bloodyelbow.com",
+  "retry": {
+   "length": 0,
+   "named": false,
+   "usable": false,
+   "via": "http-403"
+  },
+  "jina": {
+   "length": 6806,
+   "named": true,
+   "usable": true,
+   "status": "ok"
+  }
+ },
+ {
+  "id": 1529,
+  "outlet": "Sherdog",
+  "cause": "og-description",
+  "published": "2026-09-23",
+  "fighters": [
+   "Ilia Topuria"
+  ],
+  "host": "sherdog.com",
+  "retry": {
+   "length": 114,
+   "named": true,
+   "usable": false,
+   "via": "og-description"
+  },
+  "jina": {
+   "length": 0,
+   "named": false,
+   "usable": false,
+   "status": "jina-403"
+  }
+ },
+ {
+  "id": 1531,
+  "outlet": "Sherdog",
+  "cause": "none",
+  "published": "2026-09-23",
+  "fighters": [
+   "Ilia Topuria"
+  ],
+  "host": "sherdog.com",
+  "retry": {
+   "length": 114,
+   "named": true,
+   "usable": false,
+   "via": "og-description"
+  },
+  "jina": {
+   "length": 0,
+   "named": false,
+   "usable": false,
+   "status": "jina-403"
+  }
+ },
+ {
+  "id": 1535,
+  "outlet": "MARCA",
+  "cause": "none",
+  "published": "2026-09-23",
+  "fighters": [
+   "Ilia Topuria"
+  ],
+  "host": "marca.com",
+  "retry": {
+   "length": 2113,
+   "named": true,
+   "usable": true,
+   "via": "json-ld"
+  },
+  "jina": {
+   "length": 13054,
+   "named": true,
+   "usable": true,
+   "status": "ok"
+  }
+ },
+ {
+  "id": 1537,
+  "outlet": "Sportscape Magazine",
+  "cause": "decode-failed",
+  "published": "2026-09-23",
+  "fighters": [
+   "Yaroslav Amosov"
+  ],
+  "decode": "ok",
+  "host": "sportscapemagazine.com",
+  "retry": {
+   "length": 2663,
+   "named": true,
+   "usable": true,
+   "via": "article-tag"
+  },
+  "jina": {
+   "length": 2874,
+   "named": true,
+   "usable": true,
+   "status": "ok"
+  }
+ },
+ {
+  "id": 1539,
+  "outlet": "Eurosport",
+  "cause": "http-403",
+  "published": "2026-09-23",
+  "fighters": [
+   "Ilia Topuria"
+  ],
+  "host": "eurosport.es",
+  "retry": {
+   "length": 0,
+   "named": false,
+   "usable": false,
+   "via": "no-extract"
+  },
+  "jina": {
+   "length": 39,
+   "named": false,
+   "usable": false,
+   "status": "ok"
+  }
+ },
+ {
+  "id": 1540,
+  "outlet": "sports.yahoo.com",
+  "cause": "decode-failed",
+  "published": "2026-09-23",
+  "fighters": [
+   "Ilia Topuria"
+  ],
+  "decode": "ok",
+  "host": "sports.yahoo.com",
+  "retry": {
+   "length": 3172,
+   "named": true,
+   "usable": true,
+   "via": "paragraphs"
+  },
+  "jina": {
+   "length": 4495,
+   "named": true,
+   "usable": true,
+   "status": "ok"
+  }
+ },
+ {
+  "id": 1542,
+  "outlet": "mmafighting.com",
+  "cause": "decode-failed",
+  "published": "2026-09-23",
+  "fighters": [
+   "Ilia Topuria"
+  ],
+  "decode": "ok",
+  "host": "mmafighting.com",
+  "retry": {
+   "length": 3725,
+   "named": true,
+   "usable": true,
+   "via": "json-ld"
+  },
+  "jina": {
+   "length": 17174,
+   "named": true,
+   "usable": true,
+   "status": "ok"
+  }
+ },
+ {
+  "id": 1543,
+  "outlet": "boxingnews.com",
+  "cause": "decode-failed",
+  "published": "2026-09-23",
+  "fighters": [
+   "Ilia Topuria"
+  ],
+  "decode": "ok",
+  "host": "boxingnews.com",
+  "retry": {
+   "length": 1972,
+   "named": true,
+   "usable": true,
+   "via": "article-tag"
+  },
+  "jina": {
+   "length": 5360,
+   "named": true,
+   "usable": true,
+   "status": "ok"
+  }
+ },
+ {
+  "id": 1544,
+  "outlet": "Infobae",
+  "cause": "decode-failed",
+  "published": "2026-09-23",
+  "fighters": [
+   "Ilia Topuria"
+  ],
+  "decode": "ok",
+  "host": "infobae.com",
+  "retry": {
+   "length": 4268,
+   "named": true,
+   "usable": true,
+   "via": "json-ld"
+  },
+  "jina": {
+   "length": 13045,
+   "named": true,
+   "usable": true,
+   "status": "ok"
+  }
+ },
+ {
+  "id": 1545,
+  "outlet": "mmasucka.com",
+  "cause": "decode-failed",
+  "published": "2026-09-23",
+  "fighters": [
+   "Ilia Topuria"
+  ],
+  "decode": "ok",
+  "host": "mmasucka.com",
+  "retry": {
+   "length": 2768,
+   "named": true,
+   "usable": true,
+   "via": "json-ld"
+  },
+  "jina": {
+   "length": 2873,
+   "named": true,
+   "usable": true,
+   "status": "ok"
+  }
+ },
+ {
+  "id": 1547,
+  "outlet": "Bloody Elbow",
+  "cause": "decode-failed",
+  "published": "2026-09-23",
+  "fighters": [
+   "Yaroslav Amosov"
+  ],
+  "decode": "ok",
+  "host": "bloodyelbow.com",
+  "retry": {
+   "length": 0,
+   "named": false,
+   "usable": false,
+   "via": "http-403"
+  },
+  "jina": {
+   "length": 4286,
+   "named": true,
+   "usable": true,
+   "status": "ok"
+  }
+ },
+ {
+  "id": 1548,
+  "outlet": "sports.yahoo.com",
+  "cause": "decode-failed",
+  "published": "2026-09-23",
+  "fighters": [
+   "Ilia Topuria"
+  ],
+  "decode": "ok",
+  "host": "sports.yahoo.com",
+  "retry": {
+   "length": 3287,
+   "named": true,
+   "usable": true,
+   "via": "paragraphs"
+  },
+  "jina": {
+   "length": 5486,
+   "named": true,
+   "usable": true,
+   "status": "ok"
+  }
+ },
+ {
+  "id": 1549,
+  "outlet": "eurosport.es",
+  "cause": "decode-failed",
+  "published": "2026-09-23",
+  "fighters": [
+   "Ilia Topuria"
+  ],
+  "decode": "ok",
+  "host": "eurosport.es",
+  "retry": {
+   "length": 0,
+   "named": false,
+   "usable": false,
+   "via": "no-extract"
+  },
+  "jina": {
+   "length": 39,
+   "named": false,
+   "usable": false,
+   "status": "ok"
+  }
+ },
+ {
+  "id": 1550,
+  "outlet": "mmajunkie.usatoday.com",
+  "cause": "decode-failed",
+  "published": "2026-09-23",
+  "fighters": [
+   "Ilia Topuria"
+  ],
+  "decode": "ok",
+  "host": "mmajunkie.usatoday.com",
+  "retry": {
+   "length": 2365,
+   "named": true,
+   "usable": true,
+   "via": "article-tag"
+  },
+  "jina": {
+   "length": 2393,
+   "named": true,
+   "usable": true,
+   "status": "ok"
+  }
+ },
+ {
+  "id": 1552,
+  "outlet": "ABC",
+  "cause": "decode-failed",
+  "published": "2026-09-23",
+  "fighters": [
+   "Ilia Topuria"
+  ],
+  "decode": "ok",
+  "host": "abc.es",
+  "retry": {
+   "length": 2708,
+   "named": true,
+   "usable": true,
+   "via": "json-ld"
+  },
+  "jina": {
+   "length": 13403,
+   "named": true,
+   "usable": true,
+   "status": "ok"
+  }
+ },
+ {
+  "id": 1553,
+  "outlet": "Sportsnet.ca",
+  "cause": "decode-failed",
+  "published": "2026-09-23",
+  "fighters": [
+   "Ilia Topuria"
+  ],
+  "decode": "ok",
+  "host": "sportsnet.ca",
+  "retry": {
+   "length": 1831,
+   "named": true,
+   "usable": true,
+   "via": "article-tag"
+  },
+  "jina": {
+   "length": 6393,
+   "named": true,
+   "usable": true,
+   "status": "ok"
+  }
+ },
+ {
+  "id": 1554,
+  "outlet": "MMA Sucka",
+  "cause": "decode-failed",
+  "published": "2026-09-23",
+  "fighters": [
+   "Ilia Topuria"
+  ],
+  "decode": "ok",
+  "host": "mmasucka.com",
+  "retry": {
+   "length": 2062,
+   "named": true,
+   "usable": true,
+   "via": "json-ld"
+  },
+  "jina": {
+   "length": 2107,
+   "named": true,
+   "usable": true,
+   "status": "ok"
+  }
+ },
+ {
+  "id": 1555,
+  "outlet": "MMA Sucka",
+  "cause": "decode-failed",
+  "published": "2026-09-24",
+  "fighters": [
+   "Ilia Topuria"
+  ],
+  "decode": "ok",
+  "host": "mmasucka.com",
+  "retry": {
+   "length": 2436,
+   "named": false,
+   "usable": false,
+   "via": "json-ld"
+  },
+  "jina": {
+   "length": 2515,
+   "named": false,
+   "usable": false,
+   "status": "ok"
+  }
+ },
+ {
+  "id": 1556,
+  "outlet": "mmasucka.com",
+  "cause": "decode-failed",
+  "published": "2026-09-24",
+  "fighters": [
+   "Ilia Topuria"
+  ],
+  "decode": "ok",
+  "host": "mmasucka.com",
+  "retry": {
+   "length": 2154,
+   "named": true,
+   "usable": true,
+   "via": "json-ld"
+  },
+  "jina": {
+   "length": 2171,
+   "named": true,
+   "usable": true,
+   "status": "ok"
+  }
+ },
+ {
+  "id": 1557,
+  "outlet": "Sherdog",
+  "cause": "og-description",
+  "published": "2026-09-24",
+  "fighters": [
+   "Ilia Topuria"
+  ],
+  "host": "sherdog.com",
+  "retry": {
+   "length": 61,
+   "named": false,
+   "usable": false,
+   "via": "og-description"
+  },
+  "jina": {
+   "length": 7449,
+   "named": true,
+   "usable": true,
+   "status": "ok"
+  }
+ },
+ {
+  "id": 1558,
+  "outlet": "boxingnews.com",
+  "cause": "decode-failed",
+  "published": "2026-09-24",
+  "fighters": [
+   "Ilia Topuria"
+  ],
+  "decode": "ok",
+  "host": "boxingnews.com",
+  "retry": {
+   "length": 1487,
+   "named": true,
+   "usable": true,
+   "via": "article-tag"
+  },
+  "jina": {
+   "length": 4810,
+   "named": true,
+   "usable": true,
+   "status": "ok"
+  }
+ },
+ {
+  "id": 1560,
+  "outlet": "MMA Mania",
+  "cause": "decode-failed",
+  "published": "2026-09-24",
+  "fighters": [
+   "Ilia Topuria"
+  ],
+  "decode": "ok",
+  "host": "mmamania.com",
+  "retry": {
+   "length": 3173,
+   "named": true,
+   "usable": true,
+   "via": "json-ld"
+  },
+  "jina": {
+   "length": 15740,
+   "named": true,
+   "usable": true,
+   "status": "ok"
+  }
+ },
+ {
+  "id": 1562,
+  "outlet": "DAZN",
+  "cause": "http-403",
+  "published": "2026-09-24",
+  "fighters": [
+   "Ilia Topuria"
+  ],
+  "host": "dazn.com",
+  "retry": {
+   "length": 0,
+   "named": false,
+   "usable": false,
+   "via": "no-extract"
+  },
+  "jina": {
+   "length": 159,
+   "named": false,
+   "usable": false,
+   "status": "warning: Target URL returned error 403: Forbidden"
+  }
+ },
+ {
+  "id": 1565,
+  "outlet": "Tribuna.com",
+  "cause": "decode-failed",
+  "published": "2026-09-24",
+  "fighters": [
+   "Yaroslav Amosov"
+  ],
+  "decode": "ok",
+  "host": "ua.tribuna.com",
+  "retry": {
+   "length": 0,
+   "named": false,
+   "usable": false,
+   "via": "http-403"
+  },
+  "jina": {
+   "length": 0,
+   "named": false,
+   "usable": false,
+   "status": "iframe: jina-401"
+  }
+ },
+ {
+  "id": 1567,
+  "outlet": "Bloody Elbow",
+  "cause": "none",
+  "published": "2026-09-24",
+  "fighters": [
+   "Ilia Topuria"
+  ],
+  "host": "bloodyelbow.com",
+  "retry": {
+   "length": 0,
+   "named": false,
+   "usable": false,
+   "via": "http-403"
+  },
+  "jina": {
+   "length": 6374,
+   "named": true,
+   "usable": true,
+   "status": "ok"
+  }
+ },
+ {
+  "id": 1569,
+  "outlet": "Yahoo Sports",
+  "cause": "decode-failed",
+  "published": "2026-09-24",
+  "fighters": [
+   "Ilia Topuria"
+  ],
+  "decode": "ok",
+  "host": "sports.yahoo.com",
+  "retry": {
+   "length": 3781,
+   "named": true,
+   "usable": true,
+   "via": "paragraphs"
+  },
+  "jina": {
+   "length": 6023,
+   "named": true,
+   "usable": true,
+   "status": "ok"
+  }
+ },
+ {
+  "id": 1570,
+  "outlet": "Forbes",
+  "cause": "decode-failed",
+  "published": "2026-09-24",
+  "fighters": [
+   "Ilia Topuria"
+  ],
+  "decode": "ok",
+  "host": "forbes.com",
+  "retry": {
+   "length": 0,
+   "named": false,
+   "usable": false,
+   "via": "http-403"
+  },
+  "jina": {
+   "length": 0,
+   "named": false,
+   "usable": false,
+   "status": "iframe: jina-401"
+  }
+ },
+ {
+  "id": 1571,
+  "outlet": "MMA Sucka",
+  "cause": "decode-failed",
+  "published": "2026-09-24",
+  "fighters": [
+   "Ilia Topuria"
+  ],
+  "decode": "ok",
+  "host": "mmasucka.com",
+  "retry": {
+   "length": 3199,
+   "named": true,
+   "usable": true,
+   "via": "json-ld"
+  },
+  "jina": {
+   "length": 2654,
+   "named": true,
+   "usable": true,
+   "status": "ok"
+  }
+ },
+ {
+  "id": 1572,
+  "outlet": "Mundo Deportivo",
+  "cause": "decode-failed",
+  "published": "2026-09-24",
+  "fighters": [
+   "Ilia Topuria"
+  ],
+  "decode": "ok",
+  "host": "mundodeportivo.com",
+  "retry": {
+   "length": 2286,
+   "named": true,
+   "usable": true,
+   "via": "json-ld"
+  },
+  "jina": {
+   "length": 9872,
+   "named": true,
+   "usable": true,
+   "status": "ok"
+  }
+ },
+ {
+  "id": 1573,
+  "outlet": "El Debate",
+  "cause": "decode-failed",
+  "published": "2026-09-24",
+  "fighters": [
+   "Ilia Topuria"
+  ],
+  "decode": "ok",
+  "host": "eldebate.com",
+  "retry": {
+   "length": 1666,
+   "named": true,
+   "usable": true,
+   "via": "json-ld"
+  },
+  "jina": {
+   "length": 5450,
+   "named": true,
+   "usable": true,
+   "status": "ok"
+  }
+ },
+ {
+  "id": 1574,
+  "outlet": "20Minutos",
+  "cause": "decode-failed",
+  "published": "2026-09-24",
+  "fighters": [
+   "Ilia Topuria"
+  ],
+  "decode": "ok",
+  "host": "20minutos.es",
+  "retry": {
+   "length": 1780,
+   "named": true,
+   "usable": true,
+   "via": "json-ld"
+  },
+  "jina": {
+   "length": 7928,
+   "named": true,
+   "usable": true,
+   "status": "ok"
+  }
+ },
+ {
+  "id": 1577,
+  "outlet": "Mundo Deportivo",
+  "cause": "decode-failed",
+  "published": "2026-09-24",
+  "fighters": [
+   "Ilia Topuria"
+  ],
+  "decode": "ok",
+  "host": "mundodeportivo.com",
+  "retry": {
+   "length": 2716,
+   "named": true,
+   "usable": true,
+   "via": "json-ld"
+  },
+  "jina": {
+   "length": 13475,
+   "named": true,
+   "usable": true,
+   "status": "ok"
+  }
+ },
+ {
+  "id": 1578,
+  "outlet": "heavy.com",
+  "cause": "decode-failed",
+  "published": "2026-09-24",
+  "fighters": [
+   "Ilia Topuria"
+  ],
+  "decode": "ok",
+  "host": "heavy.com",
+  "retry": {
+   "length": 2762,
+   "named": true,
+   "usable": true,
+   "via": "json-ld"
+  },
+  "jina": {
+   "length": 9893,
+   "named": true,
+   "usable": true,
+   "status": "ok"
+  }
+ },
+ {
+  "id": 1579,
+  "outlet": "sports.yahoo.com",
+  "cause": "decode-failed",
+  "published": "2026-09-24",
+  "fighters": [
+   "Ilia Topuria"
+  ],
+  "decode": "ok",
+  "host": "sports.yahoo.com",
+  "retry": {
+   "length": 3327,
+   "named": true,
+   "usable": true,
+   "via": "paragraphs"
+  },
+  "jina": {
+   "length": 4360,
+   "named": true,
+   "usable": true,
+   "status": "ok"
+  }
+ },
+ {
+  "id": 1580,
+  "outlet": "Sports Illustrated",
+  "cause": "decode-failed",
+  "published": "2026-09-24",
+  "fighters": [
+   "Ilia Topuria"
+  ],
+  "decode": "ok",
+  "host": "si.com",
+  "retry": {
+   "length": 4746,
+   "named": true,
+   "usable": true,
+   "via": "article-tag"
+  },
+  "jina": {
+   "length": 0,
+   "named": false,
+   "usable": false,
+   "status": "jina-403"
+  }
+ },
+ {
+  "id": 1581,
+  "outlet": "Diario AS",
+  "cause": "decode-failed",
+  "published": "2026-09-24",
+  "fighters": [
+   "Ilia Topuria"
+  ],
+  "decode": "ok",
+  "host": "as.com",
+  "retry": {
+   "length": 3051,
+   "named": true,
+   "usable": true,
+   "via": "json-ld"
+  },
+  "jina": {
+   "length": 8508,
+   "named": true,
+   "usable": true,
+   "status": "ok"
+  }
+ },
+ {
+  "id": 1582,
+  "outlet": "SPORT",
+  "cause": "decode-failed",
+  "published": "2026-09-24",
+  "fighters": [
+   "Ilia Topuria"
+  ],
+  "decode": "ok",
+  "host": "sport.es",
+  "retry": {
+   "length": 3389,
+   "named": true,
+   "usable": true,
+   "via": "json-ld"
+  },
+  "jina": {
+   "length": 13382,
+   "named": true,
+   "usable": true,
+   "status": "ok"
+  }
+ },
+ {
+  "id": 1584,
+  "outlet": "sports.yahoo.com",
+  "cause": "decode-failed",
+  "published": "2026-09-24",
+  "fighters": [
+   "Ilia Topuria"
+  ],
+  "decode": "ok",
+  "host": "sports.yahoo.com",
+  "retry": {
+   "length": 5348,
+   "named": true,
+   "usable": true,
+   "via": "paragraphs"
+  },
+  "jina": {
+   "length": 4187,
+   "named": true,
+   "usable": true,
+   "status": "ok"
+  }
+ },
+ {
+  "id": 1585,
+  "outlet": "MARCA",
+  "cause": "decode-failed",
+  "published": "2026-09-24",
+  "fighters": [
+   "Ilia Topuria"
+  ],
+  "decode": "ok",
+  "host": "marca.com",
+  "retry": {
+   "length": 2358,
+   "named": true,
+   "usable": true,
+   "via": "json-ld"
+  },
+  "jina": {
+   "length": 10663,
+   "named": true,
+   "usable": true,
+   "status": "ok"
+  }
+ },
+ {
+  "id": 1587,
+  "outlet": "Sportsnaut",
+  "cause": "decode-failed",
+  "published": "2026-09-24",
+  "fighters": [
+   "Ilia Topuria"
+  ],
+  "decode": "ok",
+  "host": "sportsnaut.com",
+  "retry": {
+   "length": 3300,
+   "named": true,
+   "usable": true,
+   "via": "article-tag"
+  },
+  "jina": {
+   "length": 0,
+   "named": false,
+   "usable": false,
+   "status": "iframe: jina-401"
+  }
+ },
+ {
+  "id": 1588,
+  "outlet": "infobae.com",
+  "cause": "decode-failed",
+  "published": "2026-09-24",
+  "fighters": [
+   "Ilia Topuria"
+  ],
+  "decode": "ok",
+  "host": "infobae.com",
+  "retry": {
+   "length": 2634,
+   "named": true,
+   "usable": true,
+   "via": "json-ld"
+  },
+  "jina": {
+   "length": 8513,
+   "named": true,
+   "usable": true,
+   "status": "ok"
+  }
+ },
+ {
+  "id": 1589,
+  "outlet": "sports.yahoo.com",
+  "cause": "decode-failed",
+  "published": "2026-09-24",
+  "fighters": [
+   "Ilia Topuria"
+  ],
+  "decode": "ok",
+  "host": "sports.yahoo.com",
+  "retry": {
+   "length": 4046,
+   "named": true,
+   "usable": true,
+   "via": "paragraphs"
+  },
+  "jina": {
+   "length": 5567,
+   "named": true,
+   "usable": true,
+   "status": "ok"
+  }
+ },
+ {
+  "id": 1590,
+  "outlet": "20Minutos",
+  "cause": "decode-failed",
+  "published": "2026-09-24",
+  "fighters": [
+   "Ilia Topuria"
+  ],
+  "decode": "ok",
+  "host": "20minutos.es",
+  "retry": {
+   "length": 2444,
+   "named": true,
+   "usable": true,
+   "via": "json-ld"
+  },
+  "jina": {
+   "length": 8594,
+   "named": true,
+   "usable": true,
+   "status": "ok"
+  }
+ },
+ {
+  "id": 1591,
+  "outlet": "MARCA",
+  "cause": "none",
+  "published": "2026-09-24",
+  "fighters": [
+   "Ilia Topuria"
+  ],
+  "host": "marca.com",
+  "retry": {
+   "length": 2824,
+   "named": true,
+   "usable": true,
+   "via": "json-ld"
+  },
+  "jina": {
+   "length": 14914,
+   "named": true,
+   "usable": true,
+   "status": "ok"
+  }
+ },
+ {
+  "id": 1594,
+  "outlet": "24 Канал",
+  "cause": "none",
+  "published": "2026-09-24",
+  "fighters": [
+   "Yaroslav Amosov"
+  ],
+  "host": "24tv.ua",
+  "retry": {
+   "length": 1632,
+   "named": true,
+   "usable": true,
+   "via": "json-ld"
+  },
+  "jina": {
+   "length": 5042,
+   "named": true,
+   "usable": true,
+   "status": "ok"
+  }
+ },
+ {
+  "id": 1604,
+  "outlet": "MMA Junkie",
+  "cause": "decode-failed",
+  "published": "2026-09-25",
+  "fighters": [
+   "Ilia Topuria"
+  ],
+  "decode": "ok",
+  "host": "mmajunkie.usatoday.com",
+  "retry": {
+   "length": 2037,
+   "named": true,
+   "usable": true,
+   "via": "article-tag"
+  },
+  "jina": {
+   "length": 2066,
+   "named": true,
+   "usable": true,
+   "status": "ok"
+  }
+ },
+ {
+  "id": 1605,
+  "outlet": "Yahoo Sports",
+  "cause": "decode-failed",
+  "published": "2026-09-25",
+  "fighters": [
+   "Ilia Topuria"
+  ],
+  "decode": "ok",
+  "host": "sports.yahoo.com",
+  "retry": {
+   "length": 4308,
+   "named": true,
+   "usable": true,
+   "via": "paragraphs"
+  },
+  "jina": {
+   "length": 5903,
+   "named": true,
+   "usable": true,
+   "status": "warning: Target URL returned error 500: Internal Server Error"
+  }
+ },
+ {
+  "id": 1606,
+  "outlet": "El Confidencial",
+  "cause": "decode-failed",
+  "published": "2026-09-25",
+  "fighters": [
+   "Ilia Topuria"
+  ],
+  "decode": "ok",
+  "host": "elconfidencial.com",
+  "retry": {
+   "length": 4293,
+   "named": true,
+   "usable": true,
+   "via": "article-tag"
+  },
+  "jina": {
+   "length": 28675,
+   "named": true,
+   "usable": true,
+   "status": "ok"
+  }
+ },
+ {
+  "id": 1612,
+  "outlet": "Bloody Elbow",
+  "cause": "http-403",
+  "published": "2026-09-25",
+  "fighters": [
+   "Ilia Topuria"
+  ],
+  "host": "bloodyelbow.com",
+  "retry": {
+   "length": 0,
+   "named": false,
+   "usable": false,
+   "via": "http-403"
+  },
+  "jina": {
+   "length": 6467,
+   "named": true,
+   "usable": true,
+   "status": "ok"
+  }
+ },
+ {
+  "id": 1614,
+  "outlet": "the-sun.com",
+  "cause": "no-extract",
+  "published": "2026-09-25",
+  "fighters": [
+   "Ilia Topuria"
+  ],
+  "host": "the-sun.com",
+  "retry": {
+   "length": 0,
+   "named": false,
+   "usable": false,
+   "via": "no-extract"
+  },
+  "jina": {
+   "length": 10063,
+   "named": true,
+   "usable": true,
+   "status": "ok"
+  }
+ },
+ {
+  "id": 1615,
+  "outlet": "Волинські Новини",
+  "cause": "decode-failed",
+  "published": "2026-09-25",
+  "fighters": [
+   "Daniil Donchenko"
+  ],
+  "decode": "ok",
+  "host": "volynnews.com",
+  "retry": {
+   "length": 396,
+   "named": false,
+   "usable": false,
+   "via": "paragraphs"
+  },
+  "jina": {
+   "length": 8476,
+   "named": true,
+   "usable": true,
+   "status": "ok"
+  }
+ },
+ {
+  "id": 1616,
+  "outlet": "SPORT",
+  "cause": "decode-failed",
+  "published": "2026-09-25",
+  "fighters": [
+   "Ilia Topuria"
+  ],
+  "decode": "ok",
+  "host": "sport.es",
+  "retry": {
+   "length": 2786,
+   "named": true,
+   "usable": true,
+   "via": "json-ld"
+  },
+  "jina": {
+   "length": 13430,
+   "named": true,
+   "usable": true,
+   "status": "ok"
+  }
+ },
+ {
+  "id": 1624,
+  "outlet": "Eurosport",
+  "cause": "http-403",
+  "published": "2026-09-26",
+  "fighters": [
+   "Ilia Topuria"
+  ],
+  "host": "eurosport.es",
+  "retry": {
+   "length": 0,
+   "named": false,
+   "usable": false,
+   "via": "no-extract"
+  },
+  "jina": {
+   "length": 39,
+   "named": false,
+   "usable": false,
+   "status": "ok"
+  }
+ },
+ {
+  "id": 1645,
+  "outlet": "Bloody Elbow",
+  "cause": "http-403",
+  "published": "2026-09-27",
+  "fighters": [
+   "Ilia Topuria"
+  ],
+  "host": "bloodyelbow.com",
+  "retry": {
+   "length": 0,
+   "named": false,
+   "usable": false,
+   "via": "http-403"
+  },
+  "jina": {
+   "length": 5794,
+   "named": true,
+   "usable": true,
+   "status": "ok"
+  }
+ },
+ {
+  "id": 1659,
+  "outlet": "Sherdog",
+  "cause": "og-description",
+  "published": "2026-09-28",
+  "fighters": [
+   "Ilia Topuria"
+  ],
+  "host": "sherdog.com",
+  "retry": {
+   "length": 97,
+   "named": true,
+   "usable": false,
+   "via": "og-description"
+  },
+  "jina": {
+   "length": 6921,
+   "named": true,
+   "usable": true,
+   "status": "ok"
+  }
+ },
+ {
+  "id": 1661,
+  "outlet": "Sherdog",
+  "cause": "none",
+  "published": "2026-09-28",
+  "fighters": [
+   "Ilia Topuria"
+  ],
+  "host": "sherdog.com",
+  "retry": {
+   "length": 97,
+   "named": true,
+   "usable": false,
+   "via": "og-description"
+  },
+  "jina": {
+   "length": 6477,
+   "named": true,
+   "usable": true,
+   "status": "ok"
+  }
+ },
+ {
+  "id": 1662,
+  "outlet": "Sherdog",
+  "cause": "none",
+  "published": "2026-09-28",
+  "fighters": [
+   "Ilia Topuria"
+  ],
+  "host": "sherdog.com",
+  "retry": {
+   "length": 97,
+   "named": true,
+   "usable": false,
+   "via": "og-description"
+  },
+  "jina": {
+   "length": 6921,
+   "named": true,
+   "usable": true,
+   "status": "ok"
+  }
+ },
+ {
+  "id": 1670,
+  "outlet": "sports.ndtv.com",
+  "cause": "http-403",
+  "published": "2026-09-28",
+  "fighters": [
+   "Ilia Topuria"
+  ],
+  "host": "sports.ndtv.com",
+  "retry": {
+   "length": 3216,
+   "named": true,
+   "usable": true,
+   "via": "json-ld"
+  },
+  "jina": {
+   "length": 2997,
+   "named": true,
+   "usable": true,
+   "status": "ok"
+  }
+ },
+ {
+  "id": 1675,
+  "outlet": "Sports Illustrated",
+  "cause": "decode-failed",
+  "published": "2026-09-28",
+  "fighters": [
+   "Ilia Topuria"
+  ],
+  "decode": "ok",
+  "host": "si.com",
+  "retry": {
+   "length": 4572,
+   "named": true,
+   "usable": true,
+   "via": "article-tag"
+  },
+  "jina": {
+   "length": 0,
+   "named": false,
+   "usable": false,
+   "status": "jina-403"
+  }
+ },
+ {
+  "id": 1678,
+  "outlet": "СПОРТ-ЕКСПРЕС",
+  "cause": "decode-failed",
+  "published": "2026-09-28",
+  "fighters": [
+   "Yaroslav Amosov"
+  ],
+  "decode": "ok",
+  "host": "sport-express.ua",
+  "retry": {
+   "length": 2263,
+   "named": true,
+   "usable": true,
+   "via": "json-ld"
+  },
+  "jina": {
+   "length": 2425,
+   "named": true,
+   "usable": true,
+   "status": "ok"
+  }
+ },
+ {
+  "id": 1679,
+  "outlet": "СПОРТ-ЕКСПРЕС",
+  "cause": "decode-failed",
+  "published": "2026-09-28",
+  "fighters": [
+   "Yaroslav Amosov"
+  ],
+  "decode": "ok",
+  "host": "sport-express.ua",
+  "retry": {
+   "length": 2735,
+   "named": true,
+   "usable": true,
+   "via": "json-ld"
+  },
+  "jina": {
+   "length": 2425,
+   "named": true,
+   "usable": true,
+   "status": "ok"
+  }
+ },
+ {
+  "id": 1680,
+  "outlet": "Eurosport",
+  "cause": "decode-failed",
+  "published": "2026-09-28",
+  "fighters": [
+   "Ilia Topuria"
+  ],
+  "decode": "ok",
+  "host": "eurosport.es",
+  "retry": {
+   "length": 0,
+   "named": false,
+   "usable": false,
+   "via": "no-extract"
+  },
+  "jina": {
+   "length": 39,
+   "named": false,
+   "usable": false,
+   "status": "ok"
+  }
+ },
+ {
+  "id": 1685,
+  "outlet": "Bloody Elbow",
+  "cause": "http-403",
+  "published": "2026-09-28",
+  "fighters": [
+   "Ilia Topuria"
+  ],
+  "host": "bloodyelbow.com",
+  "retry": {
+   "length": 0,
+   "named": false,
+   "usable": false,
+   "via": "http-403"
+  },
+  "jina": {
+   "length": 3722,
+   "named": true,
+   "usable": true,
+   "status": "ok"
+  }
+ },
+ {
+  "id": 1690,
+  "outlet": "DAZN",
+  "cause": "http-403",
+  "published": "2026-09-29",
+  "fighters": [
+   "Ilia Topuria"
+  ],
+  "host": "dazn.com",
+  "retry": {
+   "length": 4941,
+   "named": true,
+   "usable": true,
+   "via": "json-ld"
+  },
+  "jina": {
+   "length": 159,
+   "named": false,
+   "usable": false,
+   "status": "warning: Target URL returned error 403: Forbidden"
+  }
+ },
+ {
+  "id": 1691,
+  "outlet": "DAZN",
+  "cause": "http-403",
+  "published": "2026-09-29",
+  "fighters": [
+   "Ilia Topuria"
+  ],
+  "host": "dazn.com",
+  "retry": {
+   "length": 0,
+   "named": false,
+   "usable": false,
+   "via": "no-extract"
+  },
+  "jina": {
+   "length": 159,
+   "named": false,
+   "usable": false,
+   "status": "warning: Target URL returned error 403: Forbidden"
+  }
+ },
+ {
+  "id": 1696,
+  "outlet": "MARCA",
+  "cause": "none",
+  "published": "2026-09-29",
+  "fighters": [
+   "Ilia Topuria"
+  ],
+  "host": "marca.com",
+  "retry": {
+   "length": 2707,
+   "named": true,
+   "usable": true,
+   "via": "json-ld"
+  },
+  "jina": {
+   "length": 9581,
+   "named": true,
+   "usable": true,
+   "status": "ok"
+  }
+ },
+ {
+  "id": 1698,
+  "outlet": "DAZN",
+  "cause": "http-403",
+  "published": "2026-09-29",
+  "fighters": [
+   "Ilia Topuria"
+  ],
+  "host": "dazn.com",
+  "retry": {
+   "length": 0,
+   "named": false,
+   "usable": false,
+   "via": "no-extract"
+  },
+  "jina": {
+   "length": 159,
+   "named": false,
+   "usable": false,
+   "status": "warning: Target URL returned error 403: Forbidden"
+  }
+ },
+ {
+  "id": 1699,
+  "outlet": "dazn.com",
+  "cause": "http-403",
+  "published": "2026-09-29",
+  "fighters": [
+   "Ilia Topuria"
+  ],
+  "host": "dazn.com",
+  "retry": {
+   "length": 0,
+   "named": false,
+   "usable": false,
+   "via": "no-extract"
+  },
+  "jina": {
+   "length": 159,
+   "named": false,
+   "usable": false,
+   "status": "warning: Target URL returned error 403: Forbidden"
+  }
+ },
+ {
+  "id": 1700,
+  "outlet": "dazn.com",
+  "cause": "http-403",
+  "published": "2026-09-29",
+  "fighters": [
+   "Ilia Topuria"
+  ],
+  "host": "dazn.com",
+  "retry": {
+   "length": 0,
+   "named": false,
+   "usable": false,
+   "via": "no-extract"
+  },
+  "jina": {
+   "length": 159,
+   "named": false,
+   "usable": false,
+   "status": "warning: Target URL returned error 403: Forbidden"
+  }
+ },
+ {
+  "id": 1704,
+  "outlet": "talkSPORT",
+  "cause": "no-extract",
+  "published": "2026-09-29",
+  "fighters": [
+   "Ilia Topuria"
+  ],
+  "host": "talksport.com",
+  "retry": {
+   "length": 0,
+   "named": false,
+   "usable": false,
+   "via": "no-extract"
+  },
+  "jina": {
+   "length": 9359,
+   "named": true,
+   "usable": true,
+   "status": "ok"
+  }
+ },
+ {
+  "id": 1707,
+  "outlet": "Eurosport",
+  "cause": "http-403",
+  "published": "2026-09-29",
+  "fighters": [
+   "Ilia Topuria"
+  ],
+  "host": "eurosport.es",
+  "retry": {
+   "length": 0,
+   "named": false,
+   "usable": false,
+   "via": "no-extract"
+  },
+  "jina": {
+   "length": 39,
+   "named": false,
+   "usable": false,
+   "status": "ok"
+  }
+ },
+ {
+  "id": 1713,
+  "outlet": "DAZN",
+  "cause": "http-403",
+  "published": "2026-09-29",
+  "fighters": [
+   "Ilia Topuria"
+  ],
+  "host": "dazn.com",
+  "retry": {
+   "length": 4145,
+   "named": true,
+   "usable": true,
+   "via": "json-ld"
+  },
+  "jina": {
+   "length": 159,
+   "named": false,
+   "usable": false,
+   "status": "warning: Target URL returned error 403: Forbidden"
+  }
+ },
+ {
+  "id": 1715,
+  "outlet": "MMAWeekly.com",
+  "cause": "http-403",
+  "published": "2026-09-29",
+  "fighters": [
+   "Ilia Topuria"
+  ],
+  "host": "mmaweekly.com",
+  "retry": {
+   "length": 0,
+   "named": false,
+   "usable": false,
+   "via": "http-403"
+  },
+  "jina": {
+   "length": 0,
+   "named": false,
+   "usable": false,
+   "status": "iframe: jina-401"
+  }
+ },
+ {
+  "id": 1716,
+  "outlet": "Sport.nv.ua.",
+  "cause": "http-403",
+  "published": "2026-09-29",
+  "fighters": [
+   "Yaroslav Amosov"
+  ],
+  "host": "sport.nv.ua",
+  "retry": {
+   "length": 0,
+   "named": false,
+   "usable": false,
+   "via": "http-403"
+  },
+  "jina": {
+   "length": 8865,
+   "named": true,
+   "usable": true,
+   "status": "ok"
+  }
+ },
+ {
+  "id": 1717,
+  "outlet": "Sport.nv.ua.",
+  "cause": "http-403",
+  "published": "2026-09-29",
+  "fighters": [
+   "Yaroslav Amosov"
+  ],
+  "host": "sport.nv.ua",
+  "retry": {
+   "length": 0,
+   "named": false,
+   "usable": false,
+   "via": "http-403"
+  },
+  "jina": {
+   "length": 2134,
+   "named": true,
+   "usable": true,
+   "status": "ok"
+  }
+ },
+ {
+  "id": 1719,
+  "outlet": "ukr.net",
+  "cause": "og-description",
+  "published": "2026-09-29",
+  "fighters": [
+   "Yaroslav Amosov"
+  ],
+  "host": "ukr.net",
+  "retry": {
+   "length": 143,
+   "named": false,
+   "usable": false,
+   "via": "og-description"
+  },
+  "jina": {
+   "length": 4508,
+   "named": false,
+   "usable": false,
+   "status": "ok"
+  }
+ },
+ {
+  "id": 1720,
+  "outlet": "Ukr.net",
+  "cause": "og-description",
+  "published": "2026-09-29",
+  "fighters": [
+   "Yaroslav Amosov"
+  ],
+  "host": "ukr.net",
+  "retry": {
+   "length": 141,
+   "named": false,
+   "usable": false,
+   "via": "og-description"
+  },
+  "jina": {
+   "length": 0,
+   "named": false,
+   "usable": false,
+   "status": "iframe: jina-401"
+  }
+ },
+ {
+  "id": 1721,
+  "outlet": "ukr.net",
+  "cause": "og-description",
+  "published": "2026-09-29",
+  "fighters": [
+   "Yaroslav Amosov"
+  ],
+  "host": "ukr.net",
+  "retry": {
+   "length": 173,
+   "named": false,
+   "usable": false,
+   "via": "og-description"
+  },
+  "jina": {
+   "length": 0,
+   "named": false,
+   "usable": false,
+   "status": "iframe: jina-401"
+  }
+ },
+ {
+  "id": 1724,
+  "outlet": "Bloody Elbow",
+  "cause": "http-403",
+  "published": "2026-09-29",
+  "fighters": [
+   "Ilia Topuria"
+  ],
+  "host": "bloodyelbow.com",
+  "retry": {
+   "length": 0,
+   "named": false,
+   "usable": false,
+   "via": "http-403"
+  },
+  "jina": {
+   "length": 3668,
+   "named": true,
+   "usable": true,
+   "status": "ok"
+  }
+ },
+ {
+  "id": 1727,
+  "outlet": "Ukr.net",
+  "cause": "og-description",
+  "published": "2026-09-29",
+  "fighters": [
+   "Yaroslav Amosov"
+  ],
+  "host": "ukr.net",
+  "retry": {
+   "length": 145,
+   "named": false,
+   "usable": false,
+   "via": "og-description"
+  },
+  "jina": {
+   "length": 206,
+   "named": false,
+   "usable": false,
+   "status": "warning: Target URL returned error 403: Forbidden"
+  }
+ },
+ {
+  "id": 1734,
+  "outlet": "extra.ec",
+  "cause": "none",
+  "published": "2026-09-29",
+  "fighters": [
+   "Ilia Topuria"
+  ],
+  "host": "extra.ec",
+  "retry": {
+   "length": 3968,
+   "named": true,
+   "usable": true,
+   "via": "json-ld"
+  },
+  "jina": {
+   "length": 4531,
+   "named": true,
+   "usable": true,
+   "status": "ok"
+  }
+ },
+ {
+  "id": 1736,
+  "outlet": "Bloody Elbow",
+  "cause": "http-403",
+  "published": "2026-09-29",
+  "fighters": [
+   "Ilia Topuria"
+  ],
+  "host": "bloodyelbow.com",
+  "retry": {
+   "length": 0,
+   "named": false,
+   "usable": false,
+   "via": "http-403"
+  },
+  "jina": {
+   "length": 4379,
+   "named": true,
+   "usable": true,
+   "status": "ok"
+  }
+ },
+ {
+  "id": 1740,
+  "outlet": "Bloody Elbow",
+  "cause": "http-403",
+  "published": "2026-09-29",
+  "fighters": [
+   "Ilia Topuria"
+  ],
+  "host": "bloodyelbow.com",
+  "retry": {
+   "length": 0,
+   "named": false,
+   "usable": false,
+   "via": "http-403"
+  },
+  "jina": {
+   "length": 3476,
+   "named": true,
+   "usable": true,
+   "status": "ok"
+  }
+ },
+ {
+  "id": 1745,
+  "outlet": "ABC",
+  "cause": "none",
+  "published": "2026-09-29",
+  "fighters": [
+   "Ilia Topuria"
+  ],
+  "host": "abc.es",
+  "retry": {
+   "length": 2589,
+   "named": true,
+   "usable": true,
+   "via": "json-ld"
+  },
+  "jina": {
+   "length": 13474,
+   "named": true,
+   "usable": true,
+   "status": "ok"
+  }
+ },
+ {
+  "id": 1747,
+  "outlet": "Bloody Elbow",
+  "cause": "http-403",
+  "published": "2026-09-30",
+  "fighters": [
+   "Ilia Topuria"
+  ],
+  "host": "bloodyelbow.com",
+  "retry": {
+   "length": 0,
+   "named": false,
+   "usable": false,
+   "via": "http-403"
+  },
+  "jina": {
+   "length": 4162,
+   "named": true,
+   "usable": true,
+   "status": "ok"
+  }
+ },
+ {
+  "id": 1750,
+  "outlet": "DAZN",
+  "cause": "http-403",
+  "published": "2026-09-30",
+  "fighters": [
+   "Ilia Topuria"
+  ],
+  "host": "dazn.com",
+  "retry": {
+   "length": 0,
+   "named": false,
+   "usable": false,
+   "via": "no-extract"
+  },
+  "jina": {
+   "length": 159,
+   "named": false,
+   "usable": false,
+   "status": "warning: Target URL returned error 403: Forbidden"
+  }
+ },
+ {
+  "id": 1752,
+  "outlet": "Sherdog",
+  "cause": "og-description",
+  "published": "2026-09-30",
+  "fighters": [
+   "Ilia Topuria"
+  ],
+  "host": "sherdog.com",
+  "retry": {
+   "length": 32,
+   "named": true,
+   "usable": false,
+   "via": "og-description"
+  },
+  "jina": {
+   "length": 6318,
+   "named": true,
+   "usable": true,
+   "status": "ok"
+  }
+ },
+ {
+  "id": 1753,
+  "outlet": "Sherdog",
+  "cause": "og-description",
+  "published": "2026-09-30",
+  "fighters": [
+   "Ilia Topuria"
+  ],
+  "host": "sherdog.com",
+  "retry": {
+   "length": 32,
+   "named": true,
+   "usable": false,
+   "via": "og-description"
+  },
+  "jina": {
+   "length": 5974,
+   "named": true,
+   "usable": true,
+   "status": "ok"
+  }
+ },
+ {
+  "id": 1755,
+  "outlet": "sherdog.com",
+  "cause": "none",
+  "published": "2026-09-30",
+  "fighters": [
+   "Ilia Topuria"
+  ],
+  "host": "sherdog.com",
+  "retry": {
+   "length": 32,
+   "named": true,
+   "usable": false,
+   "via": "og-description"
+  },
+  "jina": {
+   "length": 6318,
+   "named": true,
+   "usable": true,
+   "status": "ok"
+  }
+ },
+ {
+  "id": 1756,
+  "outlet": "Champion.com.ua",
+  "cause": "http-403",
+  "published": "2026-09-30",
+  "fighters": [
+   "Yaroslav Amosov"
+  ],
+  "host": "champion.com.ua",
+  "retry": {
+   "length": 1127,
+   "named": true,
+   "usable": true,
+   "via": "article-tag"
+  },
+  "jina": {
+   "length": 0,
+   "named": false,
+   "usable": false,
+   "status": "iframe: jina-401"
+  }
+ },
+ {
+  "id": 1767,
+  "outlet": "Sport.ua",
+  "cause": "http-403",
+  "published": "2026-09-30",
+  "fighters": [
+   "Yaroslav Amosov"
+  ],
+  "host": "sport.ua",
+  "retry": {
+   "length": 0,
+   "named": false,
+   "usable": false,
+   "via": "http-403"
+  },
+  "jina": {
+   "length": 0,
+   "named": false,
+   "usable": false,
+   "status": "iframe: jina-401"
+  }
+ },
+ {
+  "id": 1768,
+  "outlet": "Sport.ua",
+  "cause": "http-403",
+  "published": "2026-09-30",
+  "fighters": [
+   "Yaroslav Amosov"
+  ],
+  "host": "sport.ua",
+  "retry": {
+   "length": 0,
+   "named": false,
+   "usable": false,
+   "via": "http-403"
+  },
+  "jina": {
+   "length": 0,
+   "named": false,
+   "usable": false,
+   "status": "iframe: jina-401"
+  }
+ },
+ {
+  "id": 1770,
+  "outlet": "Ukr.net",
+  "cause": "og-description",
+  "published": "2026-09-30",
+  "fighters": [
+   "Yaroslav Amosov"
+  ],
+  "host": "ukr.net",
+  "retry": {
+   "length": 148,
+   "named": true,
+   "usable": false,
+   "via": "og-description"
+  },
+  "jina": {
+   "length": 0,
+   "named": false,
+   "usable": false,
+   "status": "iframe: jina-401"
+  }
+ },
+ {
+  "id": 1771,
+  "outlet": "Ukr.net",
+  "cause": "og-description",
+  "published": "2026-09-30",
+  "fighters": [
+   "Yaroslav Amosov"
+  ],
+  "host": "ukr.net",
+  "retry": {
+   "length": 146,
+   "named": true,
+   "usable": false,
+   "via": "og-description"
+  },
+  "jina": {
+   "length": 0,
+   "named": false,
+   "usable": false,
+   "status": "iframe: jina-401"
+  }
+ },
+ {
+  "id": 1774,
+  "outlet": "Ukr.net",
+  "cause": "og-description",
+  "published": "2026-09-30",
+  "fighters": [
+   "Yaroslav Amosov"
+  ],
+  "host": "ukr.net",
+  "retry": {
+   "length": 144,
+   "named": false,
+   "usable": false,
+   "via": "og-description"
+  },
+  "jina": {
+   "length": 0,
+   "named": false,
+   "usable": false,
+   "status": "iframe: jina-401"
+  }
+ },
+ {
+  "id": 1775,
+  "outlet": "Ukr.net",
+  "cause": "og-description",
+  "published": "2026-09-30",
+  "fighters": [
+   "Yaroslav Amosov"
+  ],
+  "host": "ukr.net",
+  "retry": {
+   "length": 141,
+   "named": false,
+   "usable": false,
+   "via": "og-description"
+  },
+  "jina": {
+   "length": 10325,
+   "named": false,
+   "usable": false,
+   "status": "ok"
+  }
+ },
+ {
+  "id": 1776,
+  "outlet": "MARCA",
+  "cause": "none",
+  "published": "2026-09-30",
+  "fighters": [
+   "Ilia Topuria"
+  ],
+  "host": "marca.com",
+  "retry": {
+   "length": 2213,
+   "named": true,
+   "usable": true,
+   "via": "json-ld"
+  },
+  "jina": {
+   "length": 10913,
+   "named": true,
+   "usable": true,
+   "status": "ok"
+  }
+ },
+ {
+  "id": 1782,
+  "outlet": "Ukr.net",
+  "cause": "og-description",
+  "published": "2026-09-30",
+  "fighters": [
+   "Yaroslav Amosov"
+  ],
+  "host": "ukr.net",
+  "retry": {
+   "length": 148,
+   "named": true,
+   "usable": false,
+   "via": "og-description"
+  },
+  "jina": {
+   "length": 4229,
+   "named": true,
+   "usable": true,
+   "status": "ok"
+  }
+ },
+ {
+  "id": 1784,
+  "outlet": "Ukr.net",
+  "cause": "og-description",
+  "published": "2026-09-30",
+  "fighters": [
+   "Yaroslav Amosov"
+  ],
+  "host": "ukr.net",
+  "retry": {
+   "length": 148,
+   "named": true,
+   "usable": false,
+   "via": "og-description"
+  },
+  "jina": {
+   "length": 4229,
+   "named": true,
+   "usable": true,
+   "status": "ok"
+  }
+ },
+ {
+  "id": 1786,
+  "outlet": "NDTV Sports",
+  "cause": "http-403",
+  "published": "2026-09-30",
+  "fighters": [
+   "Ilia Topuria"
+  ],
+  "host": "sports.ndtv.com",
+  "retry": {
+   "length": 3699,
+   "named": true,
+   "usable": true,
+   "via": "json-ld"
+  },
+  "jina": {
+   "length": 2815,
+   "named": true,
+   "usable": true,
+   "status": "ok"
+  }
+ },
+ {
+  "id": 1792,
+  "outlet": "Ukr.net",
+  "cause": "og-description",
+  "published": "2026-09-30",
+  "fighters": [
+   "Yaroslav Amosov"
+  ],
+  "host": "ukr.net",
+  "retry": {
+   "length": 147,
+   "named": true,
+   "usable": false,
+   "via": "og-description"
+  },
+  "jina": {
+   "length": 3998,
+   "named": true,
+   "usable": true,
+   "status": "ok"
+  }
+ },
+ {
+  "id": 1793,
+  "outlet": "Bloody Elbow",
+  "cause": "http-403",
+  "published": "2026-09-30",
+  "fighters": [
+   "Ilia Topuria"
+  ],
+  "host": "bloodyelbow.com",
+  "retry": {
+   "length": 0,
+   "named": false,
+   "usable": false,
+   "via": "http-403"
+  },
+  "jina": {
+   "length": 7095,
+   "named": true,
+   "usable": true,
+   "status": "ok"
+  }
+ },
+ {
+  "id": 1803,
+  "outlet": "Tribuna.com",
+  "cause": "http-403",
+  "published": "2026-10-01",
+  "fighters": [
+   "Daniil Donchenko"
+  ],
+  "host": "ua.tribuna.com",
+  "retry": {
+   "length": 0,
+   "named": false,
+   "usable": false,
+   "via": "http-403"
+  },
+  "jina": {
+   "length": 0,
+   "named": false,
+   "usable": false,
+   "status": "iframe: jina-401"
+  }
+ },
+ {
+  "id": 1804,
+  "outlet": "Tribuna.com",
+  "cause": "http-403",
+  "published": "2026-10-01",
+  "fighters": [
+   "Daniil Donchenko"
+  ],
+  "host": "ua.tribuna.com",
+  "retry": {
+   "length": 0,
+   "named": false,
+   "usable": false,
+   "via": "http-403"
+  },
+  "jina": {
+   "length": 0,
+   "named": false,
+   "usable": false,
+   "status": "iframe: jina-401"
+  }
+ },
+ {
+  "id": 1811,
+  "outlet": "Tribuna.com",
+  "cause": "http-403",
+  "published": "2026-10-01",
+  "fighters": [
+   "Daniil Donchenko"
+  ],
+  "host": "ua.tribuna.com",
+  "retry": {
+   "length": 0,
+   "named": false,
+   "usable": false,
+   "via": "http-403"
+  },
+  "jina": {
+   "length": 0,
+   "named": false,
+   "usable": false,
+   "status": "iframe: jina-401"
+  }
+ },
+ {
+  "id": 1812,
+  "outlet": "MMANews.com",
+  "cause": "http-403",
+  "published": "2026-10-01",
+  "fighters": [
+   "Ilia Topuria"
+  ],
+  "host": "mmanews.com",
+  "retry": {
+   "length": 0,
+   "named": false,
+   "usable": false,
+   "via": "http-403"
+  },
+  "jina": {
+   "length": 0,
+   "named": false,
+   "usable": false,
+   "status": "jina-503"
+  }
+ },
+ {
+  "id": 1813,
+  "outlet": "MARCA",
+  "cause": "none",
+  "published": "2026-10-01",
+  "fighters": [
+   "Ilia Topuria"
+  ],
+  "host": "marca.com",
+  "retry": {
+   "length": 2028,
+   "named": true,
+   "usable": true,
+   "via": "json-ld"
+  },
+  "jina": {
+   "length": 11200,
+   "named": true,
+   "usable": true,
+   "status": "ok"
+  }
+ },
+ {
+  "id": 1814,
+  "outlet": "MARCA",
+  "cause": "none",
+  "published": "2026-10-01",
+  "fighters": [
+   "Ilia Topuria"
+  ],
+  "host": "marca.com",
+  "retry": {
+   "length": 2028,
+   "named": true,
+   "usable": true,
+   "via": "json-ld"
+  },
+  "jina": {
+   "length": 11200,
+   "named": true,
+   "usable": true,
+   "status": "ok"
+  }
+ },
+ {
+  "id": 1816,
+  "outlet": "NDTV Sports",
+  "cause": "http-403",
+  "published": "2026-10-01",
+  "fighters": [
+   "Ilia Topuria"
+  ],
+  "host": "sports.ndtv.com",
+  "retry": {
+   "length": 3863,
+   "named": true,
+   "usable": true,
+   "via": "json-ld"
+  },
+  "jina": {
+   "length": 3003,
+   "named": true,
+   "usable": true,
+   "status": "ok"
+  }
+ },
+ {
+  "id": 1818,
+  "outlet": "talkSPORT",
+  "cause": "no-extract",
+  "published": "2026-10-01",
+  "fighters": [
+   "Ilia Topuria"
+  ],
+  "host": "talksport.com",
+  "retry": {
+   "length": 0,
+   "named": false,
+   "usable": false,
+   "via": "no-extract"
+  },
+  "jina": {
+   "length": 9896,
+   "named": true,
+   "usable": true,
+   "status": "ok"
+  }
+ },
+ {
+  "id": 1819,
+  "outlet": "Tribuna.com",
+  "cause": "http-403",
+  "published": "2026-10-01",
+  "fighters": [
+   "Daniil Donchenko",
+   "Yaroslav Amosov"
+  ],
+  "host": "ua.tribuna.com",
+  "retry": {
+   "length": 0,
+   "named": false,
+   "usable": false,
+   "via": "http-403"
+  },
+  "jina": {
+   "length": 0,
+   "named": false,
+   "usable": false,
+   "status": "iframe: jina-401"
+  }
+ },
+ {
+  "id": 1820,
+  "outlet": "eurosport.es",
+  "cause": "http-403",
+  "published": "2026-10-01",
+  "fighters": [
+   "Ilia Topuria"
+  ],
+  "host": "eurosport.es",
+  "retry": {
+   "length": 0,
+   "named": false,
+   "usable": false,
+   "via": "no-extract"
+  },
+  "jina": {
+   "length": 39,
+   "named": false,
+   "usable": false,
+   "status": "ok"
+  }
+ },
+ {
+  "id": 1823,
+  "outlet": "MMAWeekly.com",
+  "cause": "http-403",
+  "published": "2026-10-01",
+  "fighters": [
+   "Ilia Topuria"
+  ],
+  "host": "mmaweekly.com",
+  "retry": {
+   "length": 0,
+   "named": false,
+   "usable": false,
+   "via": "http-403"
+  },
+  "jina": {
+   "length": 0,
+   "named": false,
+   "usable": false,
+   "status": "iframe: jina-401"
+  }
+ },
+ {
+  "id": 1826,
+  "outlet": "MMANews.com",
+  "cause": "http-403",
+  "published": "2026-10-01",
+  "fighters": [
+   "Ilia Topuria"
+  ],
+  "host": "mmanews.com",
+  "retry": {
+   "length": 0,
+   "named": false,
+   "usable": false,
+   "via": "http-403"
+  },
+  "jina": {
+   "length": 3586,
+   "named": true,
+   "usable": true,
+   "status": "ok"
+  }
+ },
+ {
+  "id": 1828,
+  "outlet": "Tribuna.com",
+  "cause": "http-403",
+  "published": "2026-10-01",
+  "fighters": [
+   "Daniil Donchenko",
+   "Yaroslav Amosov"
+  ],
+  "host": "ua.tribuna.com",
+  "retry": {
+   "length": 0,
+   "named": false,
+   "usable": false,
+   "via": "http-403"
+  },
+  "jina": {
+   "length": 0,
+   "named": false,
+   "usable": false,
+   "status": "iframe: jina-401"
+  }
+ },
+ {
+  "id": 1829,
+  "outlet": "Tribuna.com",
+  "cause": "http-403",
+  "published": "2026-10-01",
+  "fighters": [
+   "Daniil Donchenko",
+   "Yaroslav Amosov"
+  ],
+  "host": "ua.tribuna.com",
+  "retry": {
+   "length": 0,
+   "named": false,
+   "usable": false,
+   "via": "http-403"
+  },
+  "jina": {
+   "length": 0,
+   "named": false,
+   "usable": false,
+   "status": "iframe: jina-401"
+  }
+ },
+ {
+  "id": 1834,
+  "outlet": "Champion.com.ua",
+  "cause": "http-403",
+  "published": "2026-10-02",
+  "fighters": [
+   "Daniil Donchenko",
+   "Yaroslav Amosov"
+  ],
+  "host": "champion.com.ua",
+  "retry": {
+   "length": 961,
+   "named": true,
+   "usable": true,
+   "via": "article-tag"
+  },
+  "jina": {
+   "length": 0,
+   "named": false,
+   "usable": false,
+   "status": "iframe: jina-401"
+  }
+ },
+ {
+  "id": 1836,
+  "outlet": "Ukr.net",
+  "cause": "og-description",
+  "published": "2026-10-02",
+  "fighters": [
+   "Daniil Donchenko",
+   "Yaroslav Amosov"
+  ],
+  "host": "ukr.net",
+  "retry": {
+   "length": 144,
+   "named": true,
+   "usable": false,
+   "via": "og-description"
+  },
+  "jina": {
+   "length": 0,
+   "named": false,
+   "usable": false,
+   "status": "iframe: jina-401"
+  }
+ },
+ {
+  "id": 1837,
+  "outlet": "Bloody Elbow",
+  "cause": "http-403",
+  "published": "2026-10-02",
+  "fighters": [
+   "Ilia Topuria"
+  ],
+  "host": "bloodyelbow.com",
+  "retry": {
+   "length": 0,
+   "named": false,
+   "usable": false,
+   "via": "http-403"
+  },
+  "jina": {
+   "length": 6099,
+   "named": true,
+   "usable": true,
+   "status": "ok"
+  }
+ },
+ {
+  "id": 1847,
+  "outlet": "MMA Fighting",
+  "cause": "none",
+  "published": "2026-10-02",
+  "fighters": [
+   "Ilia Topuria"
+  ],
+  "host": "mmafighting.com",
+  "retry": {
+   "length": 6170,
+   "named": true,
+   "usable": true,
+   "via": "json-ld"
+  },
+  "jina": {
+   "length": 18825,
+   "named": true,
+   "usable": true,
+   "status": "ok"
+  }
+ },
+ {
+  "id": 1849,
+  "outlet": "ESPN",
+  "cause": "no-extract",
+  "published": "2026-10-02",
+  "fighters": [
+   "Ilia Topuria"
+  ],
+  "host": "espn.com",
+  "retry": {
+   "length": 0,
+   "named": false,
+   "usable": false,
+   "via": "no-extract"
+  },
+  "jina": {
+   "length": 20105,
+   "named": true,
+   "usable": true,
+   "status": "ok"
+  }
+ },
+ {
+  "id": 1860,
+  "outlet": "Bloody Elbow",
+  "cause": "http-403",
+  "published": "2026-10-02",
+  "fighters": [
+   "Ilia Topuria"
+  ],
+  "host": "bloodyelbow.com",
+  "retry": {
+   "length": 0,
+   "named": false,
+   "usable": false,
+   "via": "http-403"
+  },
+  "jina": {
+   "length": 3540,
+   "named": true,
+   "usable": true,
+   "status": "ok"
+  }
+ },
+ {
+  "id": 1865,
+  "outlet": "Bloody Elbow",
+  "cause": "none",
+  "published": "2026-10-03",
+  "fighters": [
+   "Ilia Topuria"
+  ],
+  "host": "bloodyelbow.com",
+  "retry": {
+   "length": 0,
+   "named": false,
+   "usable": false,
+   "via": "http-403"
+  },
+  "jina": {
+   "length": 3797,
+   "named": true,
+   "usable": true,
+   "status": "ok"
+  }
+ },
+ {
+  "id": 1868,
+  "outlet": "Bloody Elbow",
+  "cause": "http-403",
+  "published": "2026-10-03",
+  "fighters": [
+   "Ilia Topuria"
+  ],
+  "host": "bloodyelbow.com",
+  "retry": {
+   "length": 0,
+   "named": false,
+   "usable": false,
+   "via": "http-403"
+  },
+  "jina": {
+   "length": 2915,
+   "named": true,
+   "usable": true,
+   "status": "ok"
+  }
+ },
+ {
+  "id": 1880,
+  "outlet": "MMAWeekly.com",
+  "cause": "http-403",
+  "published": "2026-10-03",
+  "fighters": [
+   "Ilia Topuria"
+  ],
+  "host": "mmaweekly.com",
+  "retry": {
+   "length": 0,
+   "named": false,
+   "usable": false,
+   "via": "http-403"
+  },
+  "jina": {
+   "length": 0,
+   "named": false,
+   "usable": false,
+   "status": "iframe: jina-401"
+  }
+ },
+ {
+  "id": 1882,
+  "outlet": "LowKickMMA.com",
+  "cause": "decode-failed",
+  "published": "2026-10-03",
+  "fighters": [
+   "Ilia Topuria"
+  ],
+  "decode": "ok",
+  "host": "lowkickmma.com",
+  "retry": {
+   "length": 2440,
+   "named": true,
+   "usable": true,
+   "via": "article-tag"
+  },
+  "jina": {
+   "length": 3199,
+   "named": true,
+   "usable": true,
+   "status": "ok"
+  }
+ },
+ {
+  "id": 1885,
+  "outlet": "Bloody Elbow",
+  "cause": "http-403",
+  "published": "2026-10-04",
+  "fighters": [
+   "Ilia Topuria"
+  ],
+  "host": "bloodyelbow.com",
+  "retry": {
+   "length": 0,
+   "named": false,
+   "usable": false,
+   "via": "http-403"
+  },
+  "jina": {
+   "length": 5360,
+   "named": true,
+   "usable": true,
+   "status": "ok"
+  }
+ },
+ {
+  "id": 1906,
+  "outlet": "Sportsnaut",
+  "cause": "http-403",
+  "published": "2026-10-04",
+  "fighters": [
+   "Ilia Topuria"
+  ],
+  "host": "sportsnaut.com",
+  "retry": {
+   "length": 2658,
+   "named": true,
+   "usable": true,
+   "via": "article-tag"
+  },
+  "jina": {
+   "length": 0,
+   "named": false,
+   "usable": false,
+   "status": "iframe: jina-401"
+  }
+ },
+ {
+  "id": 1908,
+  "outlet": "as.com",
+  "cause": "http-403",
+  "published": "2026-10-05",
+  "fighters": [
+   "Ilia Topuria"
+  ],
+  "host": "as.com",
+  "retry": {
+   "length": 1552,
+   "named": true,
+   "usable": true,
+   "via": "json-ld"
+  },
+  "jina": {
+   "length": 6337,
+   "named": true,
+   "usable": true,
+   "status": "ok"
+  }
+ },
+ {
+  "id": 1909,
+  "outlet": "NDTV Sports",
+  "cause": "http-403",
+  "published": "2026-10-05",
+  "fighters": [
+   "Ilia Topuria"
+  ],
+  "host": "sports.ndtv.com",
+  "retry": {
+   "length": 3278,
+   "named": true,
+   "usable": true,
+   "via": "json-ld"
+  },
+  "jina": {
+   "length": 2778,
+   "named": true,
+   "usable": true,
+   "status": "ok"
+  }
+ },
+ {
+  "id": 1915,
+  "outlet": "Bloody Elbow",
+  "cause": "http-403",
+  "published": "2026-10-05",
+  "fighters": [
+   "Ilia Topuria"
+  ],
+  "host": "bloodyelbow.com",
+  "retry": {
+   "length": 0,
+   "named": false,
+   "usable": false,
+   "via": "http-403"
+  },
+  "jina": {
+   "length": 5731,
+   "named": true,
+   "usable": true,
+   "status": "ok"
+  }
+ }
+]
