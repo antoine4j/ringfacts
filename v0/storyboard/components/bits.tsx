@@ -14,16 +14,28 @@ export function PostedTag({ reaction }: { reaction: string | null | undefined })
   return <span className={`tag ${reaction === "👎" ? "bad" : "good"}`}>posted{reaction ? ` ${reaction}` : ""}</span>;
 }
 
+/** What each tier does with a reading, for the badge's tooltip. */
+const TIERS: Record<number, { name: string; does: string }> = {
+  1: { name: "post", does: "posted to the chat as it arrives, and also in the weekly digest" },
+  2: { name: "digest", does: "not posted on its own; it goes into the fighter's weekly digest" },
+  3: { name: "drop", does: "neither posted nor in the digest" },
+};
+
 /**
- * A reading's tier as a coloured badge.
+ * A reading's tier as a coloured badge: the tier's number, a thin divider, its name.
  *
  * @param props.tier  1, 2, 3, or nothing when not decided yet.
- * @returns "1 post", "2 digest", "3 drop", or "–".
+ * @returns "1 | post", "2 | digest", "3 | drop", or "–".
  */
 export function TierTag({ tier }: { tier: number | null | undefined }) {
   if (tier === null || tier === undefined) return <span className="muted">–</span>;
-  const names: Record<number, string> = { 1: "post", 2: "digest", 3: "drop" };
-  return <span className={`tag tier-${tier}`}>{`${tier} ${names[tier] ?? ""}`}</span>;
+  const known = TIERS[tier];
+  return (
+    <span className={`tag help tier-${tier}`} title={known ? `Tier ${tier} of 3, ${known.name}: ${known.does}.` : `Tier ${tier}`}>
+      <span className="tier-number">{tier}</span>
+      {known?.name ?? ""}
+    </span>
+  );
 }
 
 /**

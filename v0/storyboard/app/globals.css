@@ -141,6 +141,8 @@ button:disabled { opacity: 0.5; cursor: default; }
 
 .tag { display: inline-block; padding: 0 6px; border-radius: 9px; font-size: 12px; background: var(--panel); border: 1px solid var(--line); white-space: nowrap; }
 .tag.help { cursor: help; }
+/* The tier badge: its number, a thin divider in the tier's colour, its name. */
+.tier-number { font-weight: 700; padding-right: 5px; margin-right: 5px; border-right: 1px solid currentColor; }
 .tier-1 { color: var(--post); border-color: var(--post); }
 .tier-2 { color: var(--digest); border-color: var(--digest); }
 .tier-3 { color: var(--drop); border-color: var(--drop); }
