@@ -14,6 +14,7 @@ import { digestsDue } from "./digests.ts";
 import { dailyCountsDue } from "../measure/daily-counts.ts";
 import { storeReactions } from "./reactions.ts";
 import { count, type RunContext } from "./context.ts";
+import { DailyLimitError } from "../stations/http.ts";
 
 const READING = z.object({ id: z.number() }).passthrough();
 const OUTCOME = z.object({ id: z.number(), outcome: z.enum(["done", "failed", "stuck", "skipped"]) });
@@ -34,8 +35,8 @@ function stationStep(context: RunContext, stage: string, work: (reading: Reading
     execute: async ({ inputData }) => {
       const reading = inputData as unknown as Reading;
 
-      // Past the run's deadline, the reading waits for the next run.
-      if (Date.now() > context.deadline) {
+      // Past the run's deadline, or with a vendor's daily allowance spent, the reading waits for the next run.
+      if (Date.now() > context.deadline || context.paused?.has(stage)) {
         count(context, `${stage}_skipped`);
         return { id: reading.id, outcome: "skipped" as const };
       }
@@ -44,6 +45,13 @@ function stationStep(context: RunContext, stage: string, work: (reading: Reading
         count(context, `${stage}_done`);
         return { id: reading.id, outcome: "done" as const };
       } catch (error) {
+        // A spent daily allowance pauses the stage for this run; the reading waits without a failed attempt.
+        if (error instanceof DailyLimitError) {
+          context.paused = (context.paused ?? new Set()).add(stage);
+          count(context, `${stage}_daily_limit`);
+          console.error(`${stage} paused for this run: ${error.message}`);
+          return { id: reading.id, outcome: "skipped" as const };
+        }
         const message = error instanceof Error ? error.message : String(error);
         const isStuck = await recordFailure(context.pool, reading.id, stage, message);
         count(context, isStuck ? `${stage}_stuck` : `${stage}_failed`);

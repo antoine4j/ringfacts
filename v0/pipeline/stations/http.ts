@@ -2,6 +2,9 @@
 // or failing server ("429 too many requests", 5xx) is tried again after a
 // growing wait, as the experiments' scripts did; any other refusal is final.
 
+/** A vendor's free daily allowance is spent: retrying before it resets is pointless. */
+export class DailyLimitError extends Error {}
+
 const RETRIED_STATUSES = new Set([429, 500, 502, 503, 504]);
 const ATTEMPTS = 4;
 
@@ -26,7 +29,9 @@ export async function postJson(url: string, headers: Record<string, string>, bod
     if (response.ok) return response.json();
 
     // Wait 2, 4, 8 seconds between tries of a busy server; give up on anything else.
-    const text = (await response.text()).slice(0, 300);
+    const text = (await response.text()).slice(0, 2000);
+    const isDailyLimit = response.status === 429 && /PerDay/.test(text);
+    if (isDailyLimit) throw new DailyLimitError(`${label} has used its free daily allowance`);
     const isBusy = RETRIED_STATUSES.has(response.status);
     if (!isBusy || attempt === ATTEMPTS) throw new Error(`${label} ${response.status}: ${text}`);
     await new Promise((resolve) => setTimeout(resolve, 1000 * 2 ** attempt));
