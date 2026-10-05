@@ -884,6 +884,21 @@ first numbers were G1 9 of 10, G2 9% and 13%; v6 then found every
 training story with 27% false alarms. The validation set has only 2
 career-event stories, so it can barely judge G1.
 
+**The test score** (2026-10-05, v7.7 sent the 105 test articles once,
+`jev-1.13.0`, $0.026, 0 errors): **G1 7 of 9 stories (fails), G4 0
+(passes), G2 5 of 90 (5.6%, fails by under one article).** All nine right
+on 40 of 105 (38%, 95% interval 29% to 48%), against 62% on training
+(54% to 69%) and 50% on validation (35% to 65%). Every question scores
+lower than on training; the largest drops are whose words (94% to 81%),
+how central (90% to 78%, all 23 misses one step off) and how firm (88% to
+79%). The test interval sits wholly below the training one, so the night
+of experiments tuned v7 to the training articles more than the numbers
+there showed; the validation set, at 40 articles, was too small to warn.
+Which test articles and stories were missed was not read: the test set
+stays closed, and v7.7 is not to be sent it again. What changes next is
+judged on training and validation as before, and these test numbers are
+the line any later version is compared against once.
+
 **Considered and rejected:** a pass mark on all nine right (it measures
 description, not posting); a mark per question (nine lines to tune
 against, most of them irrelevant to the goals); counting G1 by article

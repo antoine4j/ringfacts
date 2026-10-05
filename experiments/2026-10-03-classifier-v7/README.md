@@ -3,8 +3,11 @@
 **Status:** standing version is v7.7: v7.6, the result of an unattended
 night of ten experiments (2026-10-03 to 04, `jev-1.13.0`), plus a narrower
 callout sentence in "how central" (E13, 2026-10-04). v7.7 gets all nine
-answers right on 96 of 155 training and 20 of 40 validation articles. The
-test set has not been sent, scored or read. Nothing is pushed.
+answers right on 96 of 155 training and 20 of 40 validation articles.
+**Scored once on the 105 test articles (2026-10-05): all nine right on 40
+(38%); pass marks G1 7 of 9 stories (fails), G4 0 (passes), G2 5 of 90,
+5.6% (fails by under one article).** Details in item 5 below and in
+docs/decisions.md#classifier-pass-marks.
 
 ## Morning report
 
@@ -156,10 +159,30 @@ changed, for you to look at if you wish:
   watch", key no fact. Now right, but it sits on the line between the
   preview rule and the fight-week rule.
 
-**5. The test set.** Pass marks adopted 2026-10-04 (docs/decisions.md#classifier-pass-marks): every career-event story (result, next fight or health) recognised, zero rumours called official, false alarms at most 5%. v7.7: no rumour called official on either set; false alarms 4.5% on training and 5.3% on validation; every training career-event story recognised except claim-127, a past infection that is under review with health, and 1 of 2 on validation. v7.7 is ready to be scored once on the 105
-test articles (`ROUND=r7 python3 run.py --side test --yes --final`, then
-`python3 score.py --round r7 --final`; about $0.03),
-on your word. Before that, note that E4 removed the paraphrases of test
+**5. The test set.** Pass marks adopted 2026-10-04 (docs/decisions.md#classifier-pass-marks): every career-event story (result, next fight or health) recognised, zero rumours called official, false alarms at most 5%. v7.7: no rumour called official on either set; false alarms 4.5% on training and 5.3% on validation; every training career-event story recognised except claim-127, a past infection that is under review with health, and 1 of 2 on validation. v7.7 was scored once on the 105
+test articles on 2026-10-05 (`ROUND=r7 python3 run.py --side test --yes --final`, then
+`python3 score.py --round r7 --final`; $0.026, 0 errors):
+
+| test side, 105 articles | right | of which one step off |
+|---|---|---|
+| how central | 82 (78%) | 23 near, 0 far |
+| whose words | 85 (81%) | |
+| what the source does | 84 (80%) | |
+| what new fact | 87 (83%) | |
+| how firm | 83 (79%) | 8 near, 14 far |
+| reports his result | 103 (98%) | |
+| reports his next fight | 98 (93%) | |
+| reports his health | 99 (94%) | |
+| he speaks | 100 (95%) | |
+| **all nine right** | **40 (38%, 95% interval 29% to 48%)** | |
+
+Pass marks on the test side: G1 7 of 9 career-event stories recognised
+(fails), G4 no rumour called official (passes), G2 5 of 90 quiet articles
+called a career event, 5.6% against a 5% mark (fails by under one
+article). The test interval lies wholly below training's (54% to 69%), so
+the night's experiments fitted the training articles more than their
+numbers showed. Which test articles were missed was not read, and v7.7
+is not sent the test set again. Note too that E4 removed the paraphrases of test
 articles from the prompt; the rules file still cites test articles as
 examples, which is fine for the labels but worth remembering whenever a
 prompt is built from the rules.
