@@ -193,7 +193,8 @@ Rules for adding to it:
   overlapping options are the first pitfall listed, because they lower
   confidence. Check every question edit against these pages, not notes.
 - **English is the primary language**; others are "handled but not
-  equally well". Most golden articles are Spanish, Ukrainian or Russian.
+  equally well". Of the 300 golden articles, 168 are English, 68 Spanish,
+  63 Ukrainian, 1 French, none Russian (counted 2026-10-04).
 - **Known weak spots of jev-1.13:** literal reading ("scoping words,
   negations, and implied conditions are read at face value"), multi-hop
   questions, contradictory criteria, and irrelevant context as distractor.
@@ -407,6 +408,23 @@ Rules for adding to it:
   opening was what held the callouts.
 - **Does not say:** that every list needs to be complete; it says a list
   inside a definition is read as a boundary.
+
+### Telling the classifier the setting changes nothing; non-English articles are not harder
+`harness` · `measured` · *FB 2026-10-04*
+- **Evidence:** v7.7 sent with an added field saying the articles are MMA
+  news and the fighter is in the UFC, and again with a line on who the
+  fighter is (nationality, UFC, weight class), beside v7.7 sent unchanged,
+  on 195 training and validation articles. Both moved fewer training
+  answers than the unchanged rerun did (11 and 5 against 9 of 1,395); all
+  nine right sat between the two unchanged runs (94 and 94 against 92 and
+  96 of 155). By language, within one fighter, Spanish trails English by
+  10 points for Topuria (about one standard error) and Ukrainian leads
+  English by 19 for Donchenko. `experiments/2026-10-04-classifier-framing/`.
+- **Does not say:** that context never helps JEV; the articles already name
+  the sport and the promotion in their first lines. A field that adds what
+  the text lacks, such as a fact the article assumes, is untested.
+- **Would overturn:** a framing field that moves more answers than an
+  unchanged rerun and holds on validation.
 
 ---
 
