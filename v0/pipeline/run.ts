@@ -68,6 +68,7 @@ function contextFromFlags(): { context: RunContext; kind: string } {
     deadline: Date.now() + deadlineSeconds * 1000,
     poster,
     readsReactions: sends,
+    sends,
     tally: {},
   };
   return { context, kind };

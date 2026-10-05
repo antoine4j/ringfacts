@@ -4,7 +4,7 @@
 // Design: docs/superpowers/specs/2026-10-04-v0-design.md, section 3 and section 6.
 
 import type { Extract } from "../extractor/extractor.ts";
-import { postJson } from "../http.ts";
+import { postJson, DailyLimitError } from "../http.ts";
 
 export const GROUPING_VERSION = "g1";
 const EMBEDDING_MODEL = "gemini-embedding-001";
@@ -38,18 +38,27 @@ export function groupingText(extract: Extract, headline: string, body: string): 
 }
 
 /**
- * Embeds one text with Gemini's free tier; a busy server is tried again.
+ * Embeds one text with Gemini's free tier. When the free daily allowance is
+ * spent, the same model through OpenRouter takes over, paid (identical
+ * vectors, cosine 1.00000 measured): docs/decisions.md#v0-embedding-fallback
  *
  * @param text  The text.
- * @param apiKey  v0's Gemini key.
- * @returns The 768-number vector.
+ * @param keys  v0's Gemini key, and its OpenRouter key for the fallback.
+ * @returns The 768-number vector, and which route made it.
  */
-export async function embed(text: string, apiKey: string): Promise<number[]> {
+export async function embed(text: string, keys: { gemini: string; openrouter?: string }): Promise<{ vector: number[]; via: "gemini" | "openrouter" }> {
   const url = `https://generativelanguage.googleapis.com/v1beta/models/${EMBEDDING_MODEL}:embedContent`;
   const request = { model: `models/${EMBEDDING_MODEL}`, content: { parts: [{ text }] }, outputDimensionality: EMBEDDING_DIMENSIONS };
-
-  const reply = await postJson(url, { "x-goog-api-key": apiKey }, request, 60_000, "Gemini embedding");
-  return reply.embedding.values;
+  try {
+    const reply = await postJson(url, { "x-goog-api-key": keys.gemini }, request, 60_000, "Gemini embedding");
+    return { vector: reply.embedding.values, via: "gemini" };
+  } catch (error) {
+    // Only a spent daily allowance moves to the paid route; any other error stays an error.
+    if (!(error instanceof DailyLimitError) || !keys.openrouter) throw error;
+    const paid = { model: `google/${EMBEDDING_MODEL}`, input: text, dimensions: EMBEDDING_DIMENSIONS };
+    const reply = await postJson("https://openrouter.ai/api/v1/embeddings", { Authorization: `Bearer ${keys.openrouter}` }, paid, 60_000, "OpenRouter embedding");
+    return { vector: reply.data[0].embedding, via: "openrouter" };
+  }
 }
 
 /**

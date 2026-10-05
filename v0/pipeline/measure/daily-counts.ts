@@ -2,7 +2,7 @@
 // (D10), covering the 24 hours before, per fighter, with the month's Cloud
 // Run seconds against v0's budget in the first line when it is at risk.
 
-import { fighterDays, runTotals, cpuSecondsThisMonth, hasDailyReport, type FighterDay } from "../store/counts.ts";
+import { fighterDays, runTotals, cpuSecondsThisMonth, dailyReport, type FighterDay } from "../store/counts.ts";
 import { wallClock, zonedInstant } from "../settings/schedule.ts";
 import { escapeHtml } from "../stations/telegram/telegram.ts";
 import { count, type RunContext } from "../workflow/context.ts";
@@ -73,7 +73,18 @@ export function dailyMessage(day: string, fighters: FighterDay[], totals: { runs
  */
 export async function dailyCountsDue(context: RunContext, now: Date): Promise<void> {
   const { at, day } = reportMoment(now);
-  if (now.getTime() < at.getTime() || (await hasDailyReport(context.pool, day))) return;
+  if (now.getTime() < at.getTime()) return;
+
+  // Written by a run that could not post (no chat yet): the first run that can, sends it.
+  const written = await dailyReport(context.pool, day);
+  if (written && written.posted) return;
+  if (written) {
+    if (!context.sends) return;
+    const messageId = await context.poster(written.text);
+    if (messageId !== null) await context.pool.query("UPDATE daily_reports SET posted_at = now(), message_id = $1 WHERE day = $2", [messageId, day]);
+    count(context, "daily_counts_sent_late");
+    return;
+  }
   const from = new Date(at.getTime() - 86_400_000);
   const soFar = await cpuSecondsThisMonth(context.pool, now);
   const text = dailyMessage(day, await fighterDays(context.pool, from, at), await runTotals(context.pool, from, at), { soFar, forecast: monthForecast(soFar, now) });

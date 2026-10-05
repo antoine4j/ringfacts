@@ -19,6 +19,8 @@ export type RunContext = {
   deadline: number;
   poster: Poster;
   readsReactions: boolean;
+  /** True when the poster really sends to Telegram, not just prints. */
+  sends: boolean;
   tally: Record<string, number>;
   /** Stages that wait for the rest of this run, because a vendor's daily allowance is spent. */
   paused?: Set<string>;

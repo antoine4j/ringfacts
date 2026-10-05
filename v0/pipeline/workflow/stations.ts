@@ -58,7 +58,9 @@ export async function groupReading(context: RunContext, reading: Reading): Promi
   const article = articleOf(reading);
 
   // Embed, shortlist the claims it could join, and ask JEV which one.
-  const embedding = await embed(groupingText(extractAnswers, article.headline, article.body), context.keys.gemini);
+  const embedded = await embed(groupingText(extractAnswers, article.headline, article.body), context.keys);
+  const embedding = embedded.vector;
+  count(context, `embedded_via_${embedded.via}`);
   const candidates = await shortlist(context.pool, reading.fighter, article.publishedAt, embedding, GROUPING_VERSION);
   const { pick, raw } = await pickClaim({ ...article, extract: extractAnswers }, candidates, context.keys.jev);
   if (raw) count(context, "jev_input_tokens", (raw as { usage?: { input_tokens?: number } }).usage?.input_tokens ?? 0);

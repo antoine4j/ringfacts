@@ -1011,3 +1011,29 @@ is nothing paid); disabling old versions instead of destroying them
 (Google counts a disabled version as active); one secret per service
 (the job, the server and the mentions job read overlapping values, so it
 would duplicate them).
+
+## v0-embedding-fallback — When Gemini's free daily allowance is spent, v0 embeds through OpenRouter
+*2026-10-05*
+
+Gemini's free tier allows 1,000 embedding requests a day per Google
+project (measured on v0's archive run: quota
+EmbedContentRequestsPerDayPerProjectPerModel-FreeTier, resets at midnight
+UTC). Live use is about 40 a day, but the archive's 865 remaining readings
+would have taken until the next afternoon at the hourly job's pace, and
+live readings queue behind them, oldest first.
+
+When Google answers with that daily refusal, the grouping station now asks
+OpenRouter for the same model, `google/gemini-embedding-001` at 768
+dimensions, and pays for it. Checked before adopting: three readings
+re-embedded through OpenRouter gave cosine 1.00000 against the vectors
+Gemini had stored for them, so claims grouped by either route are compared
+on the same scale. Measured price: about 505 tokens and $0.00008 a
+reading at $0.15 per million tokens, so the archive's rest costs about
+$0.07. Each run counts how many readings went by each route
+(`embedded_via_gemini`, `embedded_via_openrouter`). Anton allowed the
+spend on 2026-10-05, overriding the free-only default for embeddings.
+
+**Considered and rejected:** waiting for the allowance each day (live news
+would post a day late during the archive's catch-up); production's Gemini
+key (a separate project with its own allowance, which v0 must not eat
+into, D28).

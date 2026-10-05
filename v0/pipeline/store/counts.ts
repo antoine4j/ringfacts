@@ -89,13 +89,14 @@ export async function cpuSecondsThisMonth(pool: pg.Pool, now: Date): Promise<num
 }
 
 /**
- * Whether today's counts were already written, and records them when written.
+ * The day's counts message, if one was written, and whether it was sent.
  *
  * @param pool  The v0 pool.
  * @param day  The report's date, "YYYY-MM-DD" in Pacific time.
- * @returns True when a row for that day exists.
+ * @returns Its text and whether it was posted, or null when none was written.
  */
-export async function hasDailyReport(pool: pg.Pool, day: string): Promise<boolean> {
-  const result = await pool.query("SELECT 1 FROM daily_reports WHERE day = $1", [day]);
-  return (result.rowCount ?? 0) > 0;
+export async function dailyReport(pool: pg.Pool, day: string): Promise<{ text: string; posted: boolean } | null> {
+  const result = await pool.query("SELECT text, posted_at FROM daily_reports WHERE day = $1", [day]);
+  if (result.rowCount === 0) return null;
+  return { text: result.rows[0].text, posted: result.rows[0].posted_at !== null };
 }

@@ -35,7 +35,7 @@ async function main(): Promise<void> {
   // A history run: stored with backfill set, so it is never posted.
   const context: RunContext = {
     pool: openPool(url, flag("schema") ?? "public"), feed: null, keys: { jev: "", openrouter: "", gemini: "" }, subjects: [],
-    backfill: true, importDays: null, importLimit: null, deadline: Infinity, poster: async () => null, readsReactions: false, tally: {},
+    backfill: true, importDays: null, importLimit: null, deadline: Infinity, poster: async () => null, readsReactions: false, sends: false, tally: {},
   };
   const started = Date.now();
   const digestId = await writeAndPostDigest(context, fighter, { start: new Date(from), end: new Date(to) }, model);
