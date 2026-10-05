@@ -37,9 +37,7 @@ feeds. Not tried: a Jina key (an account), paid readers, a headless browser.
 
 Cost: $0. Run 5 October 2026, 12:00–13:20 Pacific, from the laptop.
 
-**The text, kept locally.** `keep-bodies.mjs` fetches the readable articles
-again, each by the way that read it, and keeps one JSON file per article in
-`bodies/` (id, production id, outlet, address, fighters, method, time, text).
-That folder is git-ignored: other outlets' text stays off this repository
-(docs/decisions.md#article-text-out-of-git). Nothing goes back into v0's or
-production's database.
+**The text is not kept.** `keep-bodies.mjs` can fetch the readable articles
+again, each by the way that read it, into a git-ignored `bodies/` folder (other
+outlets' text stays off this repository: docs/decisions.md#article-text-out-of-git).
+It was started on 5 October and stopped after one article: not needed for now.
