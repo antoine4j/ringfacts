@@ -19,7 +19,8 @@
   color-scheme: light;
 }
 
-/* Dark when the system is dark and no light theme was chosen, or when dark was chosen (ThemeSwitch). */
+/* The page sets data-theme itself (lib/theme.ts: by the sun, or the chosen theme), so the
+   system setting below applies only when scripts do not run. */
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
     --bg: #15171a;

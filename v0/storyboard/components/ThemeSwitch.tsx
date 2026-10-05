@@ -1,16 +1,26 @@
 "use client";
-// Auto, light or dark. Auto follows the system; a choice is remembered in this
-// browser and set on <html data-theme>, which globals.css reads. THEME_SCRIPT
-// runs before the page paints, so a dark choice never flashes light first.
+// Auto, light or dark. Auto is light from sunrise to sunset (lib/theme.ts); a
+// choice is remembered in this browser. The theme in force is set on
+// <html data-theme>, which globals.css reads. THEME_SCRIPT runs before the
+// page paints, so the page never flashes the wrong theme first.
 
 import { useEffect, useState } from "react";
+import { autoTheme, STORAGE_KEY } from "../lib/theme.ts";
 
-const STORAGE_KEY = "storyboard-theme";
 const CHOICES = ["auto", "light", "dark"] as const;
 type Theme = (typeof CHOICES)[number];
 
-/** Inlined in <head> by the layout: applies the remembered choice before the first paint. */
-export const THEME_SCRIPT = `try{var t=localStorage.getItem("${STORAGE_KEY}");if(t==="light"||t==="dark")document.documentElement.dataset.theme=t}catch(e){}`;
+/** How often an open page checks whether the sun has risen or set. */
+const SUN_CHECK_MS = 60_000;
+
+/**
+ * Sets the theme in force for a choice.
+ *
+ * @param theme  The choice.
+ */
+function showTheme(theme: Theme): void {
+  document.documentElement.dataset.theme = theme === "auto" ? autoTheme(new Date()) : theme;
+}
 
 /**
  * Applies a choice to the page and remembers it.
@@ -18,8 +28,7 @@ export const THEME_SCRIPT = `try{var t=localStorage.getItem("${STORAGE_KEY}");if
  * @param theme  The choice.
  */
 function applyTheme(theme: Theme): void {
-  if (theme === "auto") delete document.documentElement.dataset.theme;
-  else document.documentElement.dataset.theme = theme;
+  showTheme(theme);
   try {
     if (theme === "auto") localStorage.removeItem(STORAGE_KEY);
     else localStorage.setItem(STORAGE_KEY, theme);
@@ -36,11 +45,22 @@ function applyTheme(theme: Theme): void {
 export function ThemeSwitch() {
   const [theme, setTheme] = useState<Theme>("auto");
 
-  // After the first render, show what THEME_SCRIPT applied.
+  // After the first render, show the remembered choice.
   useEffect(() => {
-    const applied = document.documentElement.dataset.theme;
-    if (applied === "light" || applied === "dark") setTheme(applied);
+    try {
+      const stored = localStorage.getItem(STORAGE_KEY);
+      if (stored === "light" || stored === "dark") setTheme(stored);
+    } catch {
+      // No storage: auto.
+    }
   }, []);
+
+  // While on auto, follow sunrise and sunset on a page left open.
+  useEffect(() => {
+    if (theme !== "auto") return;
+    const timer = setInterval(() => showTheme("auto"), SUN_CHECK_MS);
+    return () => clearInterval(timer);
+  }, [theme]);
 
   return (
     <span className="theme" role="group" aria-label="Theme">
@@ -49,6 +69,7 @@ export function ThemeSwitch() {
           key={choice}
           type="button"
           aria-pressed={theme === choice}
+          title={choice === "auto" ? "Light from sunrise to sunset, dark after" : undefined}
           onClick={() => {
             setTheme(choice);
             applyTheme(choice);

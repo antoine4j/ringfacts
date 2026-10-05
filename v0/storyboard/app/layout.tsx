@@ -2,7 +2,8 @@
 
 import { Suspense, type ReactNode } from "react";
 import { Nav } from "../components/Nav.tsx";
-import { THEME_SCRIPT, ThemeSwitch } from "../components/ThemeSwitch.tsx";
+import { ThemeSwitch } from "../components/ThemeSwitch.tsx";
+import { THEME_SCRIPT } from "../lib/theme.ts";
 import "./globals.css";
 
 export const metadata = { title: "RingFacts storyboard", description: "RingFacts v0, read live from its database." };
