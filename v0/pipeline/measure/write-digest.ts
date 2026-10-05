@@ -1,12 +1,15 @@
-// Writes one digest by hand, for any fighter, period and model, and stores it
-// as history (never posted). Used to compare models on past weeks (D25) and
-// to try a prompt.
+// Writes one digest by hand, for any fighter, period and model. By default it
+// is stored as history and never posted: used to compare models on past weeks
+// (D25) and to try a prompt. With --post it is stored as a live digest and
+// sent to v0's own chat (TELEGRAM_CHAT_ID), for a week the hourly job missed.
 //
 //   node --env-file=../../../.env.v0 write-digest.ts --dev --fighter "Ilia Topuria" --from 2026-09-28 --to 2026-10-05 [--model deepseek/deepseek-v4-pro]
+//   node --env-file=../../../.env.v0 write-digest.ts --post --fighter "Ilia Topuria" --from 2026-09-28T14:00:00Z --to 2026-10-05T18:00:00Z
 
 import { openPool } from "../store/db.ts";
 import { writeAndPostDigest } from "../workflow/digests.ts";
 import { DEFAULT_DIGEST_MODEL } from "../stations/digest/digest.ts";
+import { makePoster } from "../stations/telegram/telegram.ts";
 import type { RunContext } from "../workflow/context.ts";
 
 /**
@@ -32,10 +35,13 @@ async function main(): Promise<void> {
   if (!url || !fighter || !from || !to) throw new Error("needs --fighter, --from, --to and a database address");
   const model = flag("model") ?? DEFAULT_DIGEST_MODEL;
 
-  // A history run: stored with backfill set, so it is never posted.
+  // History by default, stored with backfill set so it is never posted; with --post, a live digest sent to v0's chat.
+  const posts = process.argv.includes("--post");
+  if (posts && (isDev || !process.env.TELEGRAM_CHAT_ID)) throw new Error("--post needs the live database and TELEGRAM_CHAT_ID");
+  const { poster, sends } = posts ? makePoster(process.env.TELEGRAM_BOT_TOKEN, process.env.TELEGRAM_CHAT_ID, false) : { poster: async () => null, sends: false };
   const context: RunContext = {
     pool: openPool(url, flag("schema") ?? "public"), feed: null, keys: { jev: "", openrouter: "", gemini: "" }, subjects: [],
-    backfill: true, importDays: null, importLimit: null, deadline: Infinity, poster: async () => null, readsReactions: false, sends: false, tally: {},
+    backfill: !posts, importDays: null, importLimit: null, deadline: Infinity, poster, readsReactions: false, sends, tally: {},
   };
   const started = Date.now();
   const digestId = await writeAndPostDigest(context, fighter, { start: new Date(from), end: new Date(to) }, model);
