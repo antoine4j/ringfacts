@@ -1,0 +1,13 @@
+{
+  "name": "@ringfacts-v0/pipeline",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test": "node --test \"**/*.spec.ts\""
+  },
+  "dependencies": {
+    "@mastra/core": "1.74.0",
+    "pg": "^8.22.0",
+    "zod": "^3.25.76"
+  }
+}

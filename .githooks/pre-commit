@@ -33,3 +33,14 @@ if ! npm test --silent; then
   echo "deliberately and say why in the commit message."
   exit 1
 fi
+
+# v0 has its own packages (v0/package.json); its tests run wherever they are installed.
+if [ -d v0/node_modules ]; then
+  if ! npm test --silent --prefix v0 > /dev/null; then
+    echo ""
+    echo "pre-commit: v0 tests failed (npm test --prefix v0) — commit aborted."
+    exit 1
+  fi
+else
+  echo "pre-commit: v0 packages not installed, v0 tests skipped (npm install --prefix v0)."
+fi
