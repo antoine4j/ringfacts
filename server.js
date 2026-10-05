@@ -12,7 +12,7 @@ const PORT = process.env.PORT || 8080;
 const WEBHOOK_SECRET = process.env.TELEGRAM_WEBHOOK_SECRET;
 
 // Chat whitelist (spec §15): admin DM + test group. Derived from the same
-// telegram-chat-ids secret the hunter reads, rather than kept as its own
+// ringfacts-config value the hunter reads, rather than kept as its own
 // comma-separated copy — one fact, one place (lib/chat-ids.js). An unset
 // secret yields an empty Set, which drops every update; that is the correct
 // direction to fail for a whitelist, and it is logged per message below.

@@ -10,9 +10,9 @@
 //
 // Requires DRY_RUN=1 in the environment (huntSubject reads it at import
 // time) or every send/write below becomes real. Run from the laptop:
-//   DATABASE_URL=$(gcloud secrets versions access latest --secret=neon-db-url) \
-//   GEMINI_API_KEY=$(gcloud secrets versions access latest --secret=gemini-api-key) \
-//   ANTHROPIC_API_KEY=$(gcloud secrets versions access latest --secret=anthropic-api-key) \
+//   DATABASE_URL=$(gcloud secrets versions access latest --secret=ringfacts-config | jq -r .DATABASE_URL) \
+//   GEMINI_API_KEY=$(gcloud secrets versions access latest --secret=ringfacts-config | jq -r .GEMINI_API_KEY) \
+//   ANTHROPIC_API_KEY=$(gcloud secrets versions access latest --secret=ringfacts-config | jq -r .ANTHROPIC_API_KEY) \
 //   DRY_RUN=1 node scripts/verify-digest-tier.js
 
 if (process.env.DRY_RUN !== "1") {

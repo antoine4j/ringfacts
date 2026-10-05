@@ -19,7 +19,7 @@
 // re-fetch just to label history; body_fetched_at already marks them.
 //
 // Dry run by default (fetches, reports, writes nothing). Run from the laptop:
-//   DATABASE_URL=$(gcloud secrets versions access latest --secret=neon-db-url) \
+//   DATABASE_URL=$(gcloud secrets versions access latest --secret=ringfacts-config | jq -r .DATABASE_URL) \
 //     node scripts/backfill-bodies.js
 //   ... then again with COMMIT=1 to store.
 

@@ -3,7 +3,7 @@
 // moved past the highest restored id. Nothing is ever deleted.
 //
 //   gcloud storage cp gs://<bucket>/backups/2026-09-04T11.json.gz /tmp/backup.json.gz
-//   DATABASE_URL=$(gcloud secrets versions access latest --secret=neon-db-url) \
+//   DATABASE_URL=$(gcloud secrets versions access latest --secret=ringfacts-config | jq -r .DATABASE_URL) \
 //     node scripts/restore-backup.js /tmp/backup.json.gz
 //
 // Restoring into a scratch branch first is the safe rehearsal:

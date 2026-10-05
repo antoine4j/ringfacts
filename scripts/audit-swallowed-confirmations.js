@@ -7,7 +7,7 @@
 // item underneath it is a confirmation the group never got.
 //
 // Writes nothing. Run from the laptop:
-//   DATABASE_URL=$(gcloud secrets versions access latest --secret=neon-db-url) \
+//   DATABASE_URL=$(gcloud secrets versions access latest --secret=ringfacts-config | jq -r .DATABASE_URL) \
 //   node scripts/audit-swallowed-confirmations.js
 
 import { openDb } from "../lib/db.js";

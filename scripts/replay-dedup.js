@@ -17,7 +17,7 @@
 // official item).
 //
 // Zero writes. Run from the laptop:
-//   DATABASE_URL=$(gcloud secrets versions access latest --secret=neon-db-url) \
+//   DATABASE_URL=$(gcloud secrets versions access latest --secret=ringfacts-config | jq -r .DATABASE_URL) \
 //     node scripts/replay-dedup.js
 
 import { openDb } from "../lib/db.js";

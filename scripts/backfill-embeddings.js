@@ -1,8 +1,8 @@
 // Backfill: embed rows recorded while no embedding key existed (or when the
 // embedding API failed mid-run). Rerunnable any time; no-op when nothing is
 // missing. Run from the laptop:
-//   DATABASE_URL=$(gcloud secrets versions access latest --secret=neon-db-url) \
-//   GEMINI_API_KEY=$(gcloud secrets versions access latest --secret=gemini-api-key) \
+//   DATABASE_URL=$(gcloud secrets versions access latest --secret=ringfacts-config | jq -r .DATABASE_URL) \
+//   GEMINI_API_KEY=$(gcloud secrets versions access latest --secret=ringfacts-config | jq -r .GEMINI_API_KEY) \
 //   node scripts/backfill-embeddings.js
 
 import { openDb } from "../lib/db.js";

@@ -1,6 +1,6 @@
 // Rebuilds test/corpus/{tune,holdout}.json — the labelled evaluation corpus.
 //
-//   DATABASE_URL=$(gcloud secrets versions access latest --secret=neon-db-url) \
+//   DATABASE_URL=$(gcloud secrets versions access latest --secret=ringfacts-config | jq -r .DATABASE_URL) \
 //     node corpus/build.js
 //
 // The JSON files are the artifact and are committed; this script is the record of

@@ -3,7 +3,7 @@
 // label (user > claude > sonnet > haiku), so the gate can be replayed offline.
 // Read-only: one connection, SELECTs only, nothing written to the database.
 //
-//   DATABASE_URL=$(gcloud secrets versions access latest --secret=neon-db-url) \
+//   DATABASE_URL=$(gcloud secrets versions access latest --secret=ringfacts-config | jq -r .DATABASE_URL) \
 //     node labels/export-stories.js
 //
 // Output: tmp/labels/stories.json — [{ id, subject, title, source, posted,

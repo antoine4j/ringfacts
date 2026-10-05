@@ -1,6 +1,6 @@
 // Applies schema.sql to the database in DATABASE_URL. Safe to re-run: every
 // statement in schema.sql is IF NOT EXISTS, and the renames below are guarded.
-//   DATABASE_URL=$(gcloud secrets versions access latest --secret=neon-db-url) node migrate.js
+//   DATABASE_URL=$(gcloud secrets versions access latest --secret=ringfacts-config | jq -r .DATABASE_URL) node migrate.js
 
 import { readFile } from "node:fs/promises";
 import { openDb } from "./lib/db.js";

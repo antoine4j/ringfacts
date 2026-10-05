@@ -4,7 +4,7 @@
 // days, but this fills in every item so the record is complete.
 //
 // Dry run (default): prints counts and five sample stories, writes nothing.
-//   DATABASE_URL=$(gcloud secrets versions access latest --secret=neon-db-url) \
+//   DATABASE_URL=$(gcloud secrets versions access latest --secret=ringfacts-config | jq -r .DATABASE_URL) \
 //     node scripts/backfill-stories.js
 //
 // Writing: one transaction, insertStory per new story then setItemStory per

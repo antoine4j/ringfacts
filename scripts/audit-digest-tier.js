@@ -34,7 +34,7 @@
 // migrate.js first, or the SELECT below fails on an unknown column.)
 //
 // Run:
-//   DATABASE_URL=$(gcloud secrets versions access latest --secret=neon-db-url) \
+//   DATABASE_URL=$(gcloud secrets versions access latest --secret=ringfacts-config | jq -r .DATABASE_URL) \
 //     node scripts/audit-digest-tier.js
 import { openDb } from "../lib/db.js";
 import { loadSubjects, matchNamesOf } from "../lib/subjects.js";

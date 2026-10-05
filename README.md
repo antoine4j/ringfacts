@@ -181,7 +181,7 @@ PROJECT_ID=... NEON_PROJECT_ID=... ./setup.sh
 Any unset variable aborts the script rather than half-deploying.
 
 The first run additionally needs `TELEGRAM_CHAT_ID` and `ADMIN_CHAT_ID`, used
-once to seed the `telegram-chat-ids` secret. After that no deploy reads them
+once to seed the `ringfacts-config` secret. After that no deploy reads them
 again: both surfaces receive every value by *reference* to Secret Manager, and
 `setup.sh` refuses to finish if either one is left carrying a literal value.
 That is not tidiness — a deploy that carries a value can corrupt it, and on

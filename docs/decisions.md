@@ -1006,6 +1006,16 @@ destroyed, on Anton's word, since that cannot be undone. Until then the
 project holds seven or eight active versions, about $0.002 a day each
 over the free six.
 
+Done the same day, on Anton's word, after eight hours instead of a day:
+every hourly run since the switch at 03:20 had succeeded (production to
+10:17 Pacific, v0 every run), no Cloud Run service or job mounted any of
+the six, and nothing else (no build trigger, function or workflow) could
+read them. The six secrets were deleted with their versions, and v0's
+first `v0-config` version, made before the chat id was known, was
+destroyed. The project now holds two active versions: `ringfacts-config`
+and `v0-config`. setup.sh builds `ringfacts-config` directly on a first
+run, and every command that reads a value reads it from there.
+
 **Considered and rejected:** keeping six and paying for v0's (the rule
 is nothing paid); disabling old versions instead of destroying them
 (Google counts a disabled version as active); one secret per service

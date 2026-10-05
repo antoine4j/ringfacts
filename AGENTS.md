@@ -104,7 +104,7 @@ code is expected stable and the group's post history becomes a contract.
   variable list, so any deploy from a shell missing a value silently writes an
   empty one; `setup.sh` asserts no literal env vars survive.
 - **Never print secret values.** Use command substitution:
-  `DATABASE_URL=$(gcloud secrets versions access latest --secret=neon-db-url)`.
+  `DATABASE_URL=$(gcloud secrets versions access latest --secret=ringfacts-config | jq -r .DATABASE_URL)`.
 - **Never delete data.** The items table is the evidence record.
 - **Write commits for a stranger.** This history is public. The subject says
   what changed; the body says why it was worth changing, what was measured,

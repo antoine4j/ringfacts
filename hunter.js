@@ -42,7 +42,7 @@ const GROUP_LANGUAGES = new Set(["en", "uk"]);
 const DRY_RUN = process.env.DRY_RUN === "1";
 // Read at call time so the run's environment can flip it without a deploy.
 const newsGateOn = () => process.env.NEWS_GATE_OFF !== "1";
-// From the single telegram-chat-ids secret (lib/chat-ids.js explains why).
+// From the ringfacts-config secret (lib/chat-ids.js explains why).
 // `required: false` lets a dry or offline run import with no chat configured; a
 // present-but-malformed value still throws at startup. ADMIN_CHAT_ID takes the
 // failure self-reports; they never go to the group.

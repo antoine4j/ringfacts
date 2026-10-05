@@ -28,12 +28,12 @@ anything that writes or posts. Findings from both are recorded in `TODO.md`.
 
 ```bash
 # free, offline apart from one SELECT
-DATABASE_URL=$(gcloud secrets versions access latest --secret=neon-db-url) \
+DATABASE_URL=$(gcloud secrets versions access latest --secret=ringfacts-config | jq -r .DATABASE_URL) \
   node corpus/measure-tier.js
 
 # ~$0.30 for 48 items x 5 runs; set K to change
-DATABASE_URL=$(gcloud secrets versions access latest --secret=neon-db-url) \
-ANTHROPIC_API_KEY=$(gcloud secrets versions access latest --secret=anthropic-api-key) \
+DATABASE_URL=$(gcloud secrets versions access latest --secret=ringfacts-config | jq -r .DATABASE_URL) \
+ANTHROPIC_API_KEY=$(gcloud secrets versions access latest --secret=ringfacts-config | jq -r .ANTHROPIC_API_KEY) \
   K=5 node corpus/measure-matcher.js
 ```
 
