@@ -124,7 +124,7 @@ ul.items summary:focus-visible{outline:2px solid var(--accent);outline-offset:2p
 ul.items li[hidden]{display:none}
 .id{font-family:var(--mono);font-size:12.5px;color:var(--dim)}
 .pill{font-size:11px;font-weight:600;letter-spacing:.05em;text-transform:uppercase;padding:2px 6px;border-radius:4px;text-align:center;white-space:nowrap}
-.pill.done{background:var(--donebg);color:var(--done)}
+.pill.done{background:var(--done);color:var(--panel)}
 .pill.next{background:var(--decide);color:var(--panel)}
 .pill.todo{background:var(--panel);color:var(--ink);border:1px solid var(--line)}
 .pill.parked{background:var(--laterbg);color:var(--later)}
@@ -136,6 +136,10 @@ ul.items li[hidden]{display:none}
 .pill.score{background:var(--scorebg);color:var(--score)}
 .pill.later{background:var(--laterbg);color:var(--later)}
 li.is-done .txt{color:var(--dim)}
+li.is-done .txt::before{content:"✓ ";color:var(--done);font-weight:700}
+.tick{display:inline-grid;place-items:center;width:18px;height:18px;border-radius:50%;margin-right:6px;font-size:12px;font-weight:700;vertical-align:-3px;background:var(--done);color:var(--panel)}
+.tick.open{background:transparent;border:2px solid var(--line);width:14px;height:14px}
+.v0order li.done{color:var(--dim)}
 .legend{display:flex;flex-wrap:wrap;gap:8px 16px;font-size:13px;color:var(--dim);align-items:center}
 .legend span{display:inline-flex;gap:6px;align-items:center}
 .caveats{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:14px 16px}
@@ -226,7 +230,7 @@ const PATH = [
   {t:"Check the answer key", s:"75 cards by rule, 27 rules named, whole set re-read blind, a third reading on 26, a spot check of 20: all done 3 Oct", st:"done"},
   {t:"Labels frozen", s:"golden/labels.json, 3 Oct: 300 articles, nine answers each, guarded by a test", st:"done"},
   {t:"Classifier v7.7", s:"tuned 3–4 Oct: all nine right on 62% of training, 50% of validation; frozen for v0 on 4 Oct", st:"done"},
-  {t:"v0: the new design end to end", s:"22 tasks across the stations, in order; decisions D1–D4 taken 4 Oct, D5–D30 with the design spec on 5 Oct", st:"now"},
+  {t:"v0: the new design end to end", s:"22 tasks across the stations, in order; decisions D1–D4 taken 4 Oct, D5–D34 with the design spec and the build on 5 Oct", st:"now"},
   {t:"Iterate station by station", s:"from v0's baseline, compared by the golden replay and the side-by-side", st:""},
 ];
 
@@ -238,7 +242,7 @@ const V0BOX = {
     ["D2","An article with no usable text is marked seen and counted, never classified."],
     ["D3","JEV picks which claim an article belongs to, as drawn; Haiku is the swap if it cannot."],
     ["D4","v0 posts to a new chat of its own; the production test group carries on beside it."],
-    ["D5–D30","Settled 4–5 Oct with the design spec: the full decision log is in docs/superpowers/specs/2026-10-04-v0-design.md (articles read from production, one reading per article and fighter, answers versioned, settings editable, the digest writer in v0, nothing paid on Google Cloud)."],
+    ["D5–D34","Settled 4–5 Oct with the design spec (D31–D34 during the build): the full decision log is in docs/superpowers/specs/2026-10-04-v0-design.md (articles read from production, one reading per article and fighter, answers versioned, settings editable, the digest writer in v0, nothing paid on Google Cloud)."],
   ],
   measure:"Four ways to measure, chosen to cost little of your time: the golden replay (none, and it re-runs after every change), the daily counts (none), the weekly list of disagreements with production (a few minutes), a thumbs up or down per post (a second each).",
   later:"Not in v0: the storyboard as a site for readers (v0 has a diagnostic one, 9.2), the bout as an entity, address clean-up, body extractor tuning, the stale-leader and chaining fixes (6.9), classifier v8 (4.26, 4.27, health), the fighter profile.",
@@ -270,12 +274,12 @@ const STATIONS = [
       "Production's job is not touched.",
       "Rolling back is pausing the job.", true),
     V("0.4",19,"Merge production's six secrets into one, so v0 adds one and four free slots stay",
-      "Secret Manager's free tier is six active versions and production uses all six. A small module reads one JSON secret, falling back to the .env files locally; deploy, watch a live run, and only then, on your yes, destroy the six old ones (that cannot be undone).",
+      "Done 5 Oct. Production's six values now sit in one secret, ringfacts-config, read by lib/config.js; every hourly run since the switch succeeded, and on your yes the six old secrets were deleted the same day. The project holds two active versions (production's and v0's) of the free six.",
       "Nothing on Google Cloud is paid (D29).",
       "A change to production, checked like one: tests, dry run, the setup.sh deploy, one live run watched.",
-      "Reads drop from about 3,600 a month to about 1,500; four slots stay free for your other projects."),
+      "Reads drop from about 3,600 a month to about 1,500; four slots stay free for your other projects.", true),
     V("0.5",17,"Run production's archive through v0 on the laptop, never posted",
-      "About 1,300 articles, oldest first, after both freezes (4.7, 5.7). Gives the grouping claims to join from the first live run, fills the storyboard, and lets the digest writer write about eight past weeks per fighter, by two or three models side by side, so you pick its model.",
+      "About 1,300 articles, oldest first, after both freezes (4.7, 5.7). Gives the grouping claims to join from the first live run, fills the storyboard, and lets the digest writer write about eight past weeks per fighter, by two or three models side by side, so you pick its model. 5 Oct: imported, classified and extracted; grouping finished on the laptop once Gemini's free daily allowance ran out (the rest through OpenRouter, same model). Left: the past weeks' digests by three models.",
       "Without history, v0's first week would post old news again as new claims.",
       "Runs on the laptop, so it uses none of Cloud Run's free tier.",
       "About $1–2 of model calls (estimate); embeddings on the free Gemini tier."),
@@ -626,7 +630,7 @@ const STATIONS = [
    verdict:"Not tested by this set. Who writes the tier-1 message is a design question, not a data one. In v0 it is the extract's sentence plus the link, and the storyboard is a diagnostic tool for you.",
    items:[
     V("9.1",11,"Post tier 1 to a new test chat; tier 2 goes to the digest",
-      "Decided 4 Oct (D4): a chat of its own, with a bot of its own (@ringfacts_bot, made 5 Oct), so no v0 bug can post to production's group. The message is the posted article's own extract sentence and the link. Tier 2 goes to the digest (8.3). Your part: add the bot to the chat as an admin and send one message, so v0 can read the chat id.",
+      "Decided 4 Oct (D4): a chat of its own, with a bot of its own (@ringfacts_bot, made 5 Oct), so no v0 bug can post to production's group. The message is the posted article's own extract sentence and the link. Tier 2 goes to the digest (8.3). Built and running hourly since 5 Oct, posting to the chat Ringfacts v0 (a test message went through). Open until the first real tier-1 news posts: none had arrived by 5 Oct midday. Your part is done.",
       "Where you see v0 working.",
       "Two chats side by side are the first comparison.",
       "Nothing from the prototype posts to the production group."),
@@ -634,7 +638,7 @@ const STATIONS = [
       "A working tool, not a product: a small web app on your Vercel account, reading v0's database live, so no export step. Behind Vercel Authentication, so only you get in and no sign-in code is written (the database holds other outlets' article text, which stays private). Filters like the Claim Map's: fighter, day, outlet, tier, posted or not, no body, waiting, and the classifier's answers. Two views: claims, each with its articles in order; and articles, each opening to every station's answer (classification, extract, the shortlist JEV saw and its pick, the tier and why). The pipeline's answers are read-only; your marks (on an article or claim: which field, what it should be, a note) go to a table of their own, which I read when you ask. Its database role can only read the pipeline's tables and add marks. Built by me, plain and dense, no design pass.",
       "The chat shows only what posted. Judging whether articles were classified, extracted, grouped and sent right needs to see everything, including what was held and why.",
       "Every station's output is visible in one place, so a bad decision can be traced to the station that made it.",
-      "It views the golden replay (10.1) the same way as live runs, and it is the natural place to give feedback later. It grows into the reader-facing storyboard after v0."),
+      "It views the golden replay (10.1) the same way as live runs, and it is the natural place to give feedback later. It grows into the reader-facing storyboard after v0.", true),
    ]},
   {n:10, name:"Measurement", role:"How we know whether v0 is better than today, without labelling everything.", 
    verdict:"Built into v0, with little of your time: the golden replay and the daily counts take none, the side-by-side a few minutes a week, the reactions a second per post.",
@@ -650,12 +654,12 @@ const STATIONS = [
       "The no-body count is the test of your reverberation bet.",
       "Your time: none; read it when curious.", true),
     V("10.3",21,"List where v0 and production disagree",
-      "Weekly: the articles one pipeline posted at once and the other did not. Seen as a view in the storyboard (9.2), one card per disagreement with both decisions, the headline and the link; you mark which one was right.",
+      "Weekly: the articles one pipeline posted at once and the other did not. Seen as a view in the storyboard (9.2), one card per disagreement with both decisions, the headline and the link; you mark which one was right. A first cut is built: the storyboard's Compare page lists the disagreements and the full table. Left: marking which one was right.",
       "A comparison without labelling everything; where both agree, nobody needs to look.",
       "Your time: a few minutes a week, my estimate; it depends on how often they differ.",
       "Answers 'is v0 better than today?' directly."),
     V("10.4",22,"A thumbs up or down on each v0 post",
-      "Built last, as an experiment (D13). Two reactions only: thumbs up, right to post; thumbs down, should not have been posted. The runner asks Telegram for them each hour (Telegram keeps them 24 hours) and the storyboard shows them beside each reading. The bot must be an admin of the chat.",
+      "Built last, as an experiment (D13). Two reactions only: thumbs up, right to post; thumbs down, should not have been posted. The runner asks Telegram for them each hour (Telegram keeps them 24 hours) and the storyboard shows them beside each reading. The bot must be an admin of the chat. Built: the hourly run stores them. Left: showing them in the storyboard, and a first real post to react to.",
       "Turns reading the chat into a running count of how many tier-1 posts were worth it (G2).",
       "Your time: a second per post you would read anyway.",
       "How trustworthy the loud channel is, over time."),
@@ -710,7 +714,7 @@ const nextTask = v0Tasks.find(i => i.v0===nextV0);
 document.getElementById("nowbox").innerHTML = `<summary><span class="fold" aria-hidden="true"></span><span class="sum"><h3>${esc(V0BOX.goal)}</h3><span class="sub">${v0Tasks.filter(i=>i.st==="done").length} of ${v0Tasks.length} done${nextTask ? ` · next: <span class="id">${nextTask.id}</span> ${esc(nextTask.task)}` : ""}</span></span></summary>
   <div class="v0body"><p>${esc(V0BOX.proves)}</p>
   <h4>Decided 4 Oct</h4><ul class="decisions">${V0BOX.decisions.map(([id,t]) => `<li><b>${id}</b> ${esc(t)}</li>`).join("")}</ul>
-  <h4>The order</h4><ol class="v0order">${v0Tasks.map(i => `<li><span class="id">${i.st==="done"?"✓ ":""}${i.id}</span> ${esc(i.task)} <span class="where">${i.station.n} · ${esc(i.station.name)}</span></li>`).join("")}</ol>
+  <h4>The order</h4><ol class="v0order">${v0Tasks.map(i => `<li class="${i.st==="done"?"done":""}"><span class="tick${i.st==="done"?"":" open"}" aria-label="${i.st==="done"?"done":"open"}">${i.st==="done"?"✓":""}</span><span class="id">${i.id}</span> ${esc(i.task)} <span class="where">${i.station.n} · ${esc(i.station.name)}</span></li>`).join("")}</ol>
   <p>${esc(V0BOX.measure)}</p><p class="later">${esc(V0BOX.later)}</p></div>`;
 // Open or folded is remembered per viewer, if storage allows
 const box = document.getElementById("nowbox");
