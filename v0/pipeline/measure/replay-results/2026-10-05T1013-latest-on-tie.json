@@ -1,0 +1,102 @@
+{
+ "status": "success",
+ "seconds": 1,
+ "counts": {
+  "imported": 0,
+  "readings_made": 0,
+  "no_body": 0,
+  "posted": 0
+ },
+ "scores": {
+  "training": {
+   "classifier": {
+    "articles": 155,
+    "all_nine_right": 93,
+    "right_per_question": {
+     "centrality": 139,
+     "source": 143,
+     "act": 129,
+     "fact": 134,
+     "firmness": 135,
+     "reports_his_result": 154,
+     "reports_his_next_fight": 145,
+     "reports_his_health": 145,
+     "he_speaks": 154
+    },
+    "g1_career_stories_recognised": "7 of 9",
+    "g1_missed": [
+     "claim-099",
+     "claim-127"
+    ],
+    "g4_weaker_called_official": 0,
+    "g2_false_alarms": "5 of 111",
+    "g2_share": 0.045
+   },
+   "grouping": {
+    "v0_claims": 43,
+    "ruled_claims": 38,
+    "pair_precision": 0.638,
+    "pair_recall": 0.549,
+    "ruled_claims_split": 8,
+    "v0_claims_mixing_ruled": 6
+   },
+   "posting": {
+    "ruled_should_post": 4,
+    "ruled_posted": 2,
+    "v0_posts": 6,
+    "v0_posts_not_due": 2,
+    "ruled_posted_more_than_once": 2,
+    "named": {
+     "ruled_missed": [
+      "claim-073.0",
+      "claim-095"
+     ],
+     "v0_posts_not_due": [
+      "claim-055",
+      "claim-112"
+     ],
+     "ruled_posted_more_than_once": [
+      "claim-073.3 ×2",
+      "claim-073.4 ×2"
+     ]
+    }
+   }
+  },
+  "validation": {
+   "classifier": {
+    "articles": 40,
+    "all_nine_right": 21,
+    "right_per_question": {
+     "centrality": 32,
+     "source": 36,
+     "act": 33,
+     "fact": 34,
+     "firmness": 35,
+     "reports_his_result": 40,
+     "reports_his_next_fight": 39,
+     "reports_his_health": 38,
+     "he_speaks": 40
+    },
+    "g1_career_stories_recognised": "1 of 2",
+    "g4_weaker_called_official": 0,
+    "g2_false_alarms": "2 of 38",
+    "g2_share": 0.053
+   },
+   "grouping": {
+    "v0_claims": 28,
+    "ruled_claims": 27,
+    "pair_precision": 0.941,
+    "pair_recall": 0.8,
+    "ruled_claims_split": 2,
+    "v0_claims_mixing_ruled": 1
+   },
+   "posting": {
+    "ruled_should_post": 1,
+    "ruled_posted": 1,
+    "v0_posts": 1,
+    "v0_posts_not_due": 0,
+    "ruled_posted_more_than_once": 0
+   }
+  }
+ }
+}

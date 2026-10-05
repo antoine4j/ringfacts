@@ -1,0 +1,103 @@
+{
+ "status": "success",
+ "seconds": 1,
+ "counts": {
+  "imported": 0,
+  "readings_made": 0,
+  "no_body": 0,
+  "jev_input_tokens": 1493,
+  "joins": 1,
+  "group_done": 1,
+  "tier_1": 1,
+  "decide_done": 1,
+  "posted": 0
+ },
+ "scores": {
+  "training": {
+   "classifier": {
+    "articles": 155,
+    "all_nine_right": 95,
+    "right_per_question": {
+     "centrality": 140,
+     "source": 145,
+     "act": 129,
+     "fact": 135,
+     "firmness": 136,
+     "reports_his_result": 154,
+     "reports_his_next_fight": 146,
+     "reports_his_health": 144,
+     "he_speaks": 153
+    },
+    "g1_career_stories_recognised": "8 of 9",
+    "g1_missed": [
+     "claim-127"
+    ],
+    "g4_weaker_called_official": 0,
+    "g2_false_alarms": "5 of 111",
+    "g2_share": 0.045
+   },
+   "grouping": {
+    "v0_claims": 38,
+    "ruled_claims": 38,
+    "pair_precision": 0.621,
+    "pair_recall": 0.825,
+    "ruled_claims_split": 4,
+    "v0_claims_mixing_ruled": 3
+   },
+   "posting": {
+    "ruled_should_post": 4,
+    "ruled_posted": 2,
+    "v0_posts": 4,
+    "v0_posts_not_due": 2,
+    "ruled_posted_more_than_once": 0,
+    "named": {
+     "ruled_missed": [
+      "claim-073.4",
+      "claim-095"
+     ],
+     "v0_posts_not_due": [
+      "claim-055",
+      "claim-112"
+     ],
+     "ruled_posted_more_than_once": []
+    }
+   }
+  },
+  "validation": {
+   "classifier": {
+    "articles": 40,
+    "all_nine_right": 19,
+    "right_per_question": {
+     "centrality": 32,
+     "source": 36,
+     "act": 31,
+     "fact": 33,
+     "firmness": 34,
+     "reports_his_result": 40,
+     "reports_his_next_fight": 39,
+     "reports_his_health": 38,
+     "he_speaks": 40
+    },
+    "g1_career_stories_recognised": "1 of 2",
+    "g4_weaker_called_official": 0,
+    "g2_false_alarms": "2 of 38",
+    "g2_share": 0.053
+   },
+   "grouping": {
+    "v0_claims": 29,
+    "ruled_claims": 27,
+    "pair_precision": 0.933,
+    "pair_recall": 0.7,
+    "ruled_claims_split": 3,
+    "v0_claims_mixing_ruled": 1
+   },
+   "posting": {
+    "ruled_should_post": 1,
+    "ruled_posted": 1,
+    "v0_posts": 1,
+    "v0_posts_not_due": 0,
+    "ruled_posted_more_than_once": 0
+   }
+  }
+ }
+}

@@ -250,7 +250,7 @@ LEFT JOIN LATERAL (SELECT * FROM extracts WHERE reading_id = r.id ORDER BY id DE
 LEFT JOIN LATERAL (SELECT * FROM groupings WHERE reading_id = r.id ORDER BY id DESC LIMIT 1) g ON true
 LEFT JOIN LATERAL (SELECT * FROM decisions WHERE reading_id = r.id ORDER BY id DESC LIMIT 1) d ON true;
 
--- Each claim with its current label: the extract of its firmest reading, the latest on a tie (D27).
+-- Each claim with its current label: the extract of its firmest reading, the earliest on a tie (D27, D31).
 CREATE OR REPLACE VIEW claim_now AS
 SELECT
   cl.*,
@@ -266,7 +266,7 @@ LEFT JOIN LATERAL (
   JOIN articles a ON a.id = r.article_id
   LEFT JOIN LATERAL (SELECT answers FROM classifications WHERE reading_id = g.reading_id ORDER BY id DESC LIMIT 1) c ON true
   WHERE g.claim_id = cl.id AND e.answers->>'claim' IS NOT NULL AND e.answers->>'claim' <> 'NO CLAIM'
-  ORDER BY firmness_rank(c.answers) DESC, a.published_at DESC, g.reading_id DESC
+  ORDER BY firmness_rank(c.answers) DESC, a.published_at, g.reading_id
   LIMIT 1
 ) firmest ON true
 LEFT JOIN LATERAL (
