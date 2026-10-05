@@ -306,7 +306,6 @@ pre.json { background: var(--chip); padding: 10px 12px; border-radius: 8px; over
 .unlink { border: 0; background: none; padding: 0 3px; color: var(--muted); font-size: 13px; }
 .unlink:hover { color: var(--bad-text); }
 .link-button { border: 0; background: none; padding: 0; color: var(--accent); }
-.readings > .review { margin-top: 8px; }
 
 .picker {
   position: absolute; top: 28px; left: 0; z-index: 35; width: min(460px, calc(100vw - 32px));

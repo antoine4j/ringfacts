@@ -13,7 +13,7 @@ import type { ClaimReviewView } from "../lib/reviews.ts";
 import { schemaSuffix, type Schema } from "../lib/schema.ts";
 import { PickTag, PostedTag } from "./bits.tsx";
 import { Decision } from "./Decision.tsx";
-import { MarkRestBelonging, ReadingReview } from "./ReviewControls.tsx";
+import { ReadingReview } from "./ReviewControls.tsx";
 
 /**
  * A claim's readings: review, published, outlet, headline, extract sentence, grouping and decision.
@@ -77,7 +77,6 @@ export function ClaimReadings({ rows, schema, postedReadingId, claimId, review }
           </div>
         );
       })}
-      {review && <MarkRestBelonging claimId={claimId} unmarked={review.review.newCount} />}
     </div>
   );
 }

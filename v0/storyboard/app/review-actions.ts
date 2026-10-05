@@ -1,8 +1,8 @@
 "use server";
-// Anton's grouping reviews (D35): marking a reading in a claim, marking the
-// rest of a claim as belonging, linking claims that are one claim, and the
-// claims the picker suggests. Every write adds a row; nothing is changed.
-// Live data only: the golden replay's rulings are the golden set's.
+// Anton's grouping reviews (D35): marking a reading in a claim, linking
+// claims that are one claim, and the claims the picker suggests. Every write
+// adds a row; nothing is changed. Live data only: the golden replay's
+// rulings are the golden set's.
 // Design: docs/superpowers/specs/2026-10-04-v0-design.md, section 11, "Reviewing claims".
 
 import { revalidatePath } from "next/cache";
@@ -86,31 +86,6 @@ export async function markReading(input: { claimId: string; readingId: string; v
     );
     revalidatePath("/", "layout");
     return { ok: true, message: input.verdict === "cleared" ? "Cleared" : "Saved" };
-  } catch (error) {
-    return { ok: false, message: `Not saved: ${(error as Error).message}` };
-  }
-}
-
-/**
- * Marks every reading of a claim that has no mark in force as belonging.
- *
- * @param input  claimId.
- * @returns How many were marked.
- */
-export async function markRestBelonging(input: { claimId: string }): Promise<ActionResult> {
-  try {
-    const claimId = checkedId(input.claimId, "the claim");
-    const added = await query<{ reading_id: string }>(
-      "public",
-      `INSERT INTO review_readings (reading_id, claim_id, verdict)
-       SELECT member.reading_id, $1, 'belongs'
-       FROM (SELECT DISTINCT reading_id FROM groupings WHERE claim_id = $1) member
-       WHERE coalesce((SELECT rr.verdict FROM review_readings rr WHERE rr.claim_id = $1 AND rr.reading_id = member.reading_id ORDER BY rr.id DESC LIMIT 1), 'cleared') = 'cleared'
-       RETURNING reading_id`,
-      [claimId],
-    );
-    revalidatePath("/", "layout");
-    return { ok: true, message: `Marked ${added.length} as belonging` };
   } catch (error) {
     return { ok: false, message: `Not saved: ${(error as Error).message}` };
   }

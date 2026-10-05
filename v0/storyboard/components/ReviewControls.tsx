@@ -1,6 +1,6 @@
 "use client";
 // The review controls (D35): ✓ and ✕ on a reading in a claim, "same claim
-// as…" on a claim, "mark the rest as belonging", and the picker both open to
+// as…" on a claim, and the picker both open to
 // choose the other claim, with an optional note. Each control saves one row
 // (app/review-actions.ts) and reloads the page's data; nothing on the page is
 // regrouped by a mark.
@@ -8,7 +8,7 @@
 import { useRouter } from "next/navigation";
 import { useEffect, useState, useTransition } from "react";
 import type { ActionResult } from "../app/actions.ts";
-import { claimSuggestions, markReading, markRestBelonging, markSameClaim, type Suggestion } from "../app/review-actions.ts";
+import { claimSuggestions, markReading, markSameClaim, type Suggestion } from "../app/review-actions.ts";
 import type { ReadingVerdict } from "../lib/reviews.ts";
 
 /** A reading's mark in force, as the page knows it. */
@@ -218,26 +218,6 @@ export function SameClaimReview({ claimId, group }: { claimId: string; group: { 
           onSave={(choice, note) => choice.kind === "claim" && run(() => markSameClaim({ claimId, otherClaimId: choice.id, verdict: "same_claim", note }), () => setPicking(false))}
         />
       )}
-      {error && <span className="tag bad">{error}</span>}
-    </span>
-  );
-}
-
-/**
- * "Mark the rest as belonging": every reading of the claim not yet marked.
- *
- * @param props.claimId  The claim.
- * @param props.unmarked  How many readings have no mark.
- * @returns The button, or nothing when every reading is marked.
- */
-export function MarkRestBelonging({ claimId, unmarked }: { claimId: string; unmarked: number }) {
-  const { run, saving, error } = useSave();
-  if (unmarked === 0) return null;
-  return (
-    <span className="review">
-      <button type="button" className="small" disabled={saving} onClick={() => run(() => markRestBelonging({ claimId }))}>
-        {saving ? "saving…" : `✓ mark the ${unmarked === 1 ? "last one" : `rest (${unmarked})`} as belonging`}
-      </button>
       {error && <span className="tag bad">{error}</span>}
     </span>
   );
