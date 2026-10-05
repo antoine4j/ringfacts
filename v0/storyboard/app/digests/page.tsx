@@ -10,6 +10,7 @@ import { param, type Params } from "../../lib/filters.ts";
 import { pacificTime } from "../../lib/format.ts";
 import { fighterNames, latestReaction, type FeedbackRow } from "../../lib/queries.ts";
 import { schemaFrom, schemaSuffix, type Schema } from "../../lib/schema.ts";
+import { safeTelegramHtml } from "../../lib/telegram-html.ts";
 
 /** A row of the digests table. */
 type DigestRow = { id: string; fighter: string; period_start: Date; period_end: Date; model: string; prompt_version: string; text: string; items: unknown; posted_at: Date | null; reaction: string | null; backfill: boolean; created_at: Date };
@@ -49,7 +50,12 @@ export default async function DigestsPage({ searchParams }: { searchParams: Prom
 
   return (
     <>
-      <h1>Digests</h1>
+      <h1>
+        Digests{" "}
+        <Link className="small" href={`/digests/compare${schemaSuffix(schema)}`}>
+          compare the models side by side →
+        </Link>
+      </h1>
       <form className="filters" method="get">
         {schema === "replay" && <input type="hidden" name="schema" value="replay" />}
         <label>
@@ -101,7 +107,7 @@ function DigestCard({ digest, given, feedback, schema }: { digest: DigestRow; gi
           {digest.backfill ? " · archive" : ""}
         </span>
       </h2>
-      <div className="pre">{digest.text}</div>
+      <div className="pre digest-text" dangerouslySetInnerHTML={{ __html: safeTelegramHtml(digest.text) }} />
       <h3>Used ({used.length})</h3>
       <ClaimList claims={used} schema={schema} />
       <h3>Left out ({leftOut.length})</h3>
