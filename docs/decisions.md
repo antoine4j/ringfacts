@@ -859,6 +859,22 @@ settled, to out of a fight or a career at risk) is the avenue to explore;
 until then health counts at any firmness, and a G1 miss on a health story
 is read before it is called a failure.
 
+The scale was labelled and probed on 4 October, and **taken no further**:
+what reads the classifier's answers downstream (the per-fighter settings
+table, cell → tier) is not designed yet, so tuning a health question for it
+would be guesswork. Anton levelled the 8 training and validation articles
+the key calls health news (golden/health-levels.json): a level rates what
+the article's own news changes, judged from the article alone; whether it
+was the first to report it is left to the claims layer. The probe
+(`health_scale_probe.py`, the scale asked alone, $0.015) gave his exact
+level on 6 of the 7 training health articles (the miss, #368, was his own
+close call), where v7.7's "reports his health" found 4 of 7 and "what new
+fact = health" 2 of 7. But it raised 8 training alerts on articles he never
+levelled, all in claim-113: Dana White saying Topuria is ready to fight.
+The scale calls "cleared to fight" level 3; the career-event line above
+calls the same kind of news a status update for the digest. The two
+decisions disagree, and the settings table is where that gets settled.
+
 **Where v7.7 stands** (training / validation): G1 8 of 9 stories and 1 of
 2 (the training miss is claim-127); G4 0 and 0; G2 5 of 111 (4.5%) and 2
 of 38 (5.3%). It passes G4, passes G2 on training and misses it on

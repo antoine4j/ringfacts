@@ -1,0 +1,57 @@
+{
+ "about": "Anton's health levels for the articles where the frozen key (labels.json) says \"reports his health\" is yes, training and validation sides only. A level says what the article's own news changes for the fighter, from the article alone: never whether it was the first article to report it, which no single article can show. Every other training and validation article is taken as level 0 (assumed from the key's \"no\", not labelled). The test side is not labelled. Probe material, not a tuning key: classifier v8 is not started (docs/decisions.md#classifier-pass-marks, \"Health is under review\").",
+ "labelled": "2026-10-04",
+ "scale": {
+  "0": "No health news",
+  "1": "Looks back at a settled episode",
+  "2": "Update on a known condition, nothing changes (\"he's fine\", \"he'll be back\")",
+  "3": "Changes his timeline: new injury, withdrawal, surgery, time out, a return date, cleared to fight",
+  "4": "Career at risk: a year or more out, retirement talk"
+ },
+ "rules": [
+  "Rate what the article's news changes, not how bad the injury is.",
+  "The article's own news counts; a timeline mentioned in passing does not raise the level.",
+  "Whether the article was the first to report it does not count: that is for the claims layer or a fighter profile (TODO.md item 9).",
+  "A return date or 'cleared to fight' is level 3."
+ ],
+ "sides": [
+  "tune",
+  "check"
+ ],
+ "sha256_of_levels": "4e1b415d1315d5f95d204562b0a9dedba3b53d4cf69b45b85307f302f9828265",
+ "errata": [],
+ "articles": {
+  "148": {
+   "level": 3,
+   "note": "Impact-wise 3: the coach ruling out a 2026 return is a section of its own. (Labelled 2 first, as an echo; changed to 3 once the label was defined as impact only.)"
+  },
+  "327": {
+   "level": 2,
+   "note": "Welcome update, but ultimately no change."
+  },
+  "349": {
+   "level": 2,
+   "note": "Merab's update; the injuries are a known fact and the early-2027 line is in passing."
+  },
+  "361": {
+   "level": 2,
+   "note": ""
+  },
+  "368": {
+   "level": 3,
+   "note": "The headline is Merab, but a whole section asks when he is back: doctors' 2–3 months' rest, UFC expecting mid-2027."
+  },
+  "397": {
+   "level": 2,
+   "note": "Plain."
+  },
+  "402": {
+   "level": 3,
+   "note": "The headline is the return date."
+  },
+  "1172": {
+   "level": 1,
+   "note": "Settled: an infection a month before a fight he then fought."
+  }
+ }
+}
