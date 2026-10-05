@@ -12,7 +12,8 @@ ruling by Anton in `verdicts.md`.
 
 | file | what | rows |
 |---|---|---|
-| `articles.json` | the 300 articles: id, subject, title, source, url, published_at, body | 300 |
+| `articles-meta.json` | the 300 articles without their text: id, subject, title, source, url, resolved_url, published_at, body_via, body_chars, and production's outcome fields | 300 |
+| `articles.json` | the same 300 **with** their bodies. **Not in git** (other outlets' copyrighted text): kept on Anton's machine, backed up privately; `scripts/article-text-guard.js` refuses a commit that copies one | 300 |
 | `claims.json` | the ruler, v4: one claim = one occasion with its articles; keys `claim-NNN`, `.x` = children of a split; `fable` = Fable's stored confidence and doubts from its grouping passes; `from` = the keys a rebuilt claim came from; `same_page_as` = articles saved twice (copy → original). Built by `tools/ruler-v4.py` from `claims-v3.json` (kept) | 128 |
 | `axes.md` | the axes labels are given on: gate (about him yes / partly / no), source, act, fact asserted, and how firm; each value defined with its boundary cases. DRAFT until Anton approves | |
 | `verdicts.md` | Anton's rulings, verbatim, **append only**. One heading per claim: `## YYYY-MM-DD — story-NNN (#ids): <ruling>` (headings keep the `story-` spelling they were written with) | 65 headings |

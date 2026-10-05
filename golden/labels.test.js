@@ -19,7 +19,7 @@ const HERE = path.dirname(fileURLToPath(import.meta.url));
 const REPO = path.resolve(HERE, "..");
 
 const labels = JSON.parse(readFileSync(path.join(HERE, "labels.json"), "utf8"));
-const articleIds = JSON.parse(readFileSync(path.join(HERE, "articles.json"), "utf8")).map((article) => String(article.id));
+const articleIds = JSON.parse(readFileSync(path.join(HERE, "articles-meta.json"), "utf8")).map((article) => String(article.id));
 const coinFlips = JSON.parse(readFileSync(path.join(HERE, "coin-flips.json"), "utf8")).flips;
 const guide = readFileSync(path.join(REPO, labels.guide), "utf8");
 const entries = Object.entries(labels.articles);

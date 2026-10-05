@@ -31,7 +31,7 @@ const registry = JSON.parse(readFileSync(path.join(HERE, "rules.json"), "utf8"))
 const guide = plain(readFileSync(path.join(REPO, registry.guide), "utf8"));
 const rulesPage = readFileSync(path.join(HERE, "rules.md"), "utf8");
 const articleIds = new Set(
-  JSON.parse(readFileSync(path.join(HERE, "articles.json"), "utf8")).map((article) => String(article.id)),
+  JSON.parse(readFileSync(path.join(HERE, "articles-meta.json"), "utf8")).map((article) => String(article.id)),
 );
 
 describe("labelling rules stay in the readers' guide", () => {

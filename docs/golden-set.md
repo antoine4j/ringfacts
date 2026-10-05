@@ -14,7 +14,9 @@ The experiments keep their working copies; golden holds the frozen ones.
 - **300 articles**, 31 July – 17 September 2026, drawn from the archive of
   articles that had text. Topuria 182, Donchenko 99, Amosov 19. Frozen:
   `golden/articles.json` (copied once from the role-questions experiment;
-  `pull.mjs` never runs again).
+  `pull.mjs` never runs again). The bodies are other outlets' text, so that
+  file stays on Anton's machine; the repository holds
+  `golden/articles-meta.json`, the same articles without their text.
 - **128 claims** — Fable's grouping of those articles by occasion, three
   passes, then Anton's rulings applied: every multi-article claim (v3), then
   the singleton pass (v4, one join): `golden/claims.json`.

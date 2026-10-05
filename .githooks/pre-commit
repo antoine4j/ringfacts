@@ -17,6 +17,15 @@
 # --no-verify skips this. An autonomous run must not: a red suite is a finding
 # to report, not an obstacle to route around.
 
+# Other outlets' article text never enters this public repository. The guard
+# compares the staged files with the bodies kept on this machine, and passes
+# when there are none. History: docs/decisions.md#article-text-out-of-git
+if ! node scripts/article-text-guard.js --staged; then
+  echo ""
+  echo "pre-commit: article text staged — commit aborted."
+  exit 1
+fi
+
 if ! npm test --silent; then
   echo ""
   echo "pre-commit: tests failed — commit aborted."

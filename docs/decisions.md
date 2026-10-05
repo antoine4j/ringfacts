@@ -896,3 +896,46 @@ on 2026-10-04 (no per-question scores, no articles, and no v7 answers, since
 v7 has never been sent the test set). What that reveals is the test set's
 make-up: how many career-event stories and quiet articles it holds. The
 report now covers the test side only with `--final`.
+
+## article-text-out-of-git — Other outlets' article text stays off the public repository
+*2026-10-05*
+
+The evaluation data had put full article bodies, other outlets' copyrighted
+text, into this public repository: the 300 golden articles in full, 98
+articles' text in the corpus files on `main` since 4 September, and 164
+experiment files that hand bodies to a model (batches, re-read inputs). A
+scan of every file version in the history, against the 641 bodies kept
+locally, found 225 paths with any match; 166 hold a continuous passage of
+200 characters or more (134 of them over 2,000), and 59 quote a sentence
+under 200 characters inside a model's answer or a reason. A second scan,
+for long text under body-like keys in any JSON file, found nothing more
+from an article.
+
+**Decided.** Bodies live on the maintainer's machine, backed up privately,
+never in git. The repository keeps what is needed to understand and
+reproduce the work without redistributing it: ids, URLs, headlines,
+labels, and `golden/articles-meta.json` (the golden articles without their
+text). The 166 files are untracked and ignored; quotes under 200
+characters stay, as quotation inside analysis. `scripts/article-text-guard.js`
+runs in the pre-commit hook and refuses a staged file that holds a
+continuous passage of 200 characters or more of any locally kept body; on
+a machine without the bodies there is nothing to protect and it passes.
+Checked: on the whole tree it flags exactly the 166 files, and a mutation
+(the threshold raised out of reach) turns its tests red.
+
+**Why the line sits there.** US fair use, the EU and Spanish text-and-data
+mining exceptions, and Ukraine's research exception all draw it in the
+same place: copies kept for analysis can be defended, copies made
+available to the public cannot. The research-copying cases that won
+(Authors Guild v. Google, v. HathiTrust) kept the full texts out of public
+view; the ones that lost made them available, including a non-commercial
+forum posting full news articles for discussion (Los Angeles Times v. Free
+Republic). Research datasets in this position publish identifiers and a
+way to re-fetch, not the text. This is a reading of public sources, not
+legal advice.
+
+**Considered and rejected:** leaving the history as it is and only
+stopping new copies (the bodies would stay readable in old commits);
+making the repository private (it is linked publicly, and its `docs/`
+pages are served from it); a `.gitignore` alone (folder patterns written in
+advance are how the text got in; the guard checks the content itself).

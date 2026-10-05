@@ -48,3 +48,20 @@ golden/board/map.html
 # generated from key.json by correction_page.py; published as an artifact
 experiments/2026-09-27-answer-key/correction.html
 experiments/2026-09-27-answer-key/wording-draft.html
+
+# Article bodies: other outlets' copyrighted text. Kept on this machine only,
+# never in this public repository; the tracked side holds ids, URLs, headlines
+# and labels. scripts/article-text-guard.js refuses a commit that copies one.
+# History: docs/decisions.md#article-text-out-of-git
+golden/articles.json
+corpus/graded-2026-09.json
+corpus/holdout.json
+corpus/tune.json
+experiments/*/spotcheck-*.md
+experiments/2026-09-20-claim-extraction/batches/*.md
+!experiments/2026-09-20-claim-extraction/batches/merge-input.md
+experiments/2026-09-27-answer-key/batches/
+experiments/2026-09-27-answer-key/batches-rest/
+experiments/2026-09-27-answer-key/**/in-*.json
+experiments/2026-09-27-answer-key/**/in.json
+experiments/2026-09-27-answer-key/**/*-in.json

@@ -1,5 +1,10 @@
 # Evaluation corpus
 
+**The three JSON files (`tune.json`, `holdout.json`, `graded-2026-09.json`)
+hold article text, so they are kept on this machine and are not in git**
+(docs/decisions.md#article-text-out-of-git). `build.js` and `build-graded.js`
+regenerate them from the archive.
+
 48 labelled articles for tuning the matcher, the tier rule, and fact extraction
 without waiting for the news cycle. Announcements are rare — Donchenko's was the
 only one the bot has ever seen, and it arrived before most of the current
