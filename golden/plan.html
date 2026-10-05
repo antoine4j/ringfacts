@@ -211,7 +211,7 @@ code{font-family:var(--mono);font-size:.9em}
     </ul>
   </section>
 
-  <footer>Updated 2026-10-04: v0 scoped, 17 tasks, decisions D1–D4; classifier v7 tuned overnight (4.25 done); labels are nine answers per article, checked card by card against 27 named rules (golden/rules.md); tiers come from settings. Source: <code>golden/plan.html</code> in the repo; the rulings behind every "done" are in <code>golden/verdicts.md</code>.</footer>
+  <footer>Updated 2026-10-04: v0 scoped, 18 tasks, decisions D1–D4; classifier v7 tuned overnight (4.25 done); labels are nine answers per article, checked card by card against 27 named rules (golden/rules.md); tiers come from settings. Source: <code>golden/plan.html</code> in the repo; the rulings behind every "done" are in <code>golden/verdicts.md</code>.</footer>
 </div>
 
 <script>
@@ -226,7 +226,7 @@ const PATH = [
   {t:"Check the answer key", s:"75 cards by rule, 27 rules named, whole set re-read blind, a third reading on 26, a spot check of 20: all done 3 Oct", st:"done"},
   {t:"Labels frozen", s:"golden/labels.json, 3 Oct: 300 articles, nine answers each, guarded by a test", st:"done"},
   {t:"Classifier v7.7", s:"tuned 3–4 Oct: all nine right on 62% of training, 50% of validation; frozen for v0 on 4 Oct", st:"done"},
-  {t:"v0: the new design end to end", s:"17 tasks across the stations, in order; decisions D1–D4 taken 4 Oct", st:"now"},
+  {t:"v0: the new design end to end", s:"18 tasks across the stations, in order; decisions D1–D4 taken 4 Oct", st:"now"},
   {t:"Iterate station by station", s:"from v0's baseline, compared by the golden replay and the side-by-side", st:""},
 ];
 
@@ -240,7 +240,7 @@ const V0BOX = {
     ["D4","v0 posts to a new chat of its own; the production test group carries on beside it."],
   ],
   measure:"Four ways to measure, chosen to cost little of your time: the golden replay (none, and it re-runs after every change), the daily counts (none), the weekly list of disagreements with production (a few minutes), a thumbs up or down per post (a second each).",
-  later:"Not in v0: the digest writer and the storyboard, the bout as an entity, address clean-up, body extractor tuning, the stale-leader and chaining fixes (6.9), classifier v8 (4.26, 4.27, health), the fighter profile.",
+  later:"Not in v0: the digest writer, the storyboard as a site for readers (v0 has a diagnostic one, 9.2), the bout as an entity, address clean-up, body extractor tuning, the stale-leader and chaining fixes (6.9), classifier v8 (4.26, 4.27, health), the fighter profile.",
 };
 
 // Each task: id, status, the task as an action, what it involves, and why it matters at three levels.
@@ -263,7 +263,7 @@ const STATIONS = [
       "Without it there is no pipeline, only parts.",
       "Replaces today's 'fail open'. In this design the claim row is the product, so an article that skipped a station would stay wrong for good.",
       "A retry costs at most an hour's delay; skipping costs a decision made on half the facts."),
-    V("0.3",15,"Dry run, then deploy as a second hourly job",
+    V("0.3",16,"Dry run, then deploy as a second hourly job",
       "A dry run first, then the setup.sh pattern with the region stated, keys by reference in Secret Manager. JEV and OpenRouter are new to the live pipeline, so your yes comes first.",
       "Turns v0 from a script into something that runs every hour.",
       "Production's job is not touched.",
@@ -597,33 +597,38 @@ const STATIONS = [
       "Keeps the digest short."),
    ]},
   {n:9, name:"Telegram and storyboard", role:"Where people read it.", outside:true,
-   verdict:"Not tested by this set. Who writes the tier-1 message is a design question, not a data one. In v0 it is the extract's sentence plus the link.",
+   verdict:"Not tested by this set. Who writes the tier-1 message is a design question, not a data one. In v0 it is the extract's sentence plus the link, and the storyboard is a diagnostic tool for you.",
    items:[
     V("9.1",12,"Post tier 1 to a new test chat; keep tier 2 in a list",
       "Decided 4 Oct (D4): a chat of its own, so the production test group carries on beside it. The message is the extract's sentence and the link. Tier 2 is stored and listed, not sent, because the digest writer is not in v0. Your part: create the chat and add the bot.",
       "Where you see v0 working.",
       "Two chats side by side are the first comparison.",
       "Nothing from the prototype posts to the production group."),
+    V("9.2",13,"A diagnostic storyboard: slice and dice what v0 did, article by article and claim by claim",
+      "A working tool, not a product. Filters like the Claim Map's: fighter, day, outlet, tier, posted or not, no body, waiting, and the classifier's answers. Two views: claims, each with its articles in order; and articles, each opening to every station's answer (classification, extract, the shortlist JEV saw and its pick, the tier and why). Read-only on v0's database, served on your machine with one command; the same page can be published as a private snapshot for the phone. Built by me, plain and dense, no design pass.",
+      "The chat shows only what posted. Judging whether articles were classified, extracted, grouped and sent right needs to see everything, including what was held and why.",
+      "Every station's output is visible in one place, so a bad decision can be traced to the station that made it.",
+      "It views the golden replay (10.1) the same way as live runs, and it is the natural place to give feedback later. It grows into the reader-facing storyboard after v0."),
    ]},
   {n:10, name:"Measurement", role:"How we know whether v0 is better than today, without labelling everything.", 
    verdict:"Built into v0, with little of your time: the golden replay and the daily counts take none, the side-by-side a few minutes a week, the reactions a second per post.",
    items:[
-    V("10.1",13,"Replay the golden articles through v0 before it goes live",
+    V("10.1",14,"Replay the golden articles through v0 before it goes live",
       "The whole pipeline on the training and validation articles in date order, offline. Scored automatically against labels you already made: the classifier's pass marks, grouping against your 128 ruled claims, and which career-event claims got a tier-1 post. The test articles stay unsent.",
       "Shows v0 runs end to end before it touches a live feed.",
       "The same replay runs again after every change, so one version can be compared with the next without new labelling.",
       "Your time: none."),
-    V("10.2",14,"Count every station's work, every day",
+    V("10.2",15,"Count every station's work, every day",
       "Per day and per fighter: links in, repeats dropped, no-body articles, classified, extracted, new claims, joins, tier 1, 2 and 3, posts, articles waiting, failures, cost. Seen as one short message in the v0 chat each morning.",
       "Shows where articles go and where they get stuck.",
       "The no-body count is the test of your reverberation bet.",
       "Your time: none; read it when curious."),
-    V("10.3",16,"List where v0 and production disagree",
+    V("10.3",17,"List where v0 and production disagree",
       "Weekly: the articles one pipeline posted at once and the other did not. Seen on a review page like Health Levels, one card per disagreement with both decisions, the headline and the link; you click which one was right, and the clicks are saved for the next comparison.",
       "A comparison without labelling everything; where both agree, nobody needs to look.",
       "Your time: a few minutes a week, my estimate; it depends on how often they differ.",
       "Answers 'is v0 better than today?' directly."),
-    V("10.4",17,"A thumbs up or down on each v0 post",
+    V("10.4",18,"A thumbs up or down on each v0 post",
       "React with a thumbs up or down in the chat while reading; the runner collects the reactions every hour. Needs the bot to see reactions in that chat, checked when it is built.",
       "Turns reading the chat into a running count of how many tier-1 posts were worth it (G2).",
       "Your time: a second per post you would read anyway.",
