@@ -181,3 +181,8 @@ pre.json { background: var(--panel); padding: 8px; border-radius: 4px; overflow-
 @media (max-width: 800px) {
   .board { grid-template-columns: 1fr; }
 }
+
+/* "Which was right?" on the comparison page: three small toggles. */
+.verdict { display: inline-flex; gap: 2px; white-space: nowrap; }
+.verdict button { font-size: 11px; padding: 0 6px; }
+.verdict button[aria-pressed="true"] { background: var(--accent); color: var(--bg); border-color: var(--accent); }
