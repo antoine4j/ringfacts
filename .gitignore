@@ -65,3 +65,4 @@ experiments/2026-09-27-answer-key/batches-rest/
 experiments/2026-09-27-answer-key/**/in-*.json
 experiments/2026-09-27-answer-key/**/in.json
 experiments/2026-09-27-answer-key/**/*-in.json
+experiments/2026-10-05-body-fetch-spike/bodies/

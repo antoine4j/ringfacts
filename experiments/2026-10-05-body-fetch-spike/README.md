@@ -36,3 +36,10 @@ when production's own fetch fails; read MMAWeekly and Athlon from their
 feeds. Not tried: a Jina key (an account), paid readers, a headless browser.
 
 Cost: $0. Run 5 October 2026, 12:00–13:20 Pacific, from the laptop.
+
+**The text, kept locally.** `keep-bodies.mjs` fetches the readable articles
+again, each by the way that read it, and keeps one JSON file per article in
+`bodies/` (id, production id, outlet, address, fighters, method, time, text).
+That folder is git-ignored: other outlets' text stays off this repository
+(docs/decisions.md#article-text-out-of-git). Nothing goes back into v0's or
+production's database.
