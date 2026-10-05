@@ -1,6 +1,7 @@
 // Questions more than one page asks the database.
 
 import type { Settings } from "../../pipeline/settings/tiers.ts";
+import { reviewViews, type ClaimReviewView, type ReadingMark, type SameClaimMark } from "./reviews.ts";
 import { query } from "./db.ts";
 import type { Schema } from "./schema.ts";
 
@@ -142,4 +143,44 @@ export async function claimMembers(schema: Schema, claimIds: string[]): Promise<
     byClaim.set(row.claim_id, list);
   }
   return byClaim;
+}
+
+/**
+ * Anton's grouping reviews that touch some claims (D35): every mark on their
+ * readings; every mark on a reading elsewhere that ever named one of them as
+ * where it belongs (all of that reading's marks, so a later undo is seen);
+ * and every same-claim link (a group can reach these claims through others).
+ *
+ * @param schema  "public" or "replay".
+ * @param claimIds  The claims shown.
+ * @returns The rows; lib/reviews.ts works out what is in force.
+ */
+export async function reviewsFor(schema: Schema, claimIds: string[]): Promise<{ readingMarks: ReadingMark[]; sameMarks: SameClaimMark[] }> {
+  if (claimIds.length === 0) return { readingMarks: [], sameMarks: [] };
+  const [readingMarks, sameMarks] = await Promise.all([
+    query<ReadingMark>(
+      schema,
+      `SELECT id, reading_id, claim_id, verdict, belongs_in_claim_id, note FROM review_readings
+       WHERE claim_id = ANY($1::bigint[])
+          OR (claim_id, reading_id) IN (SELECT claim_id, reading_id FROM review_readings WHERE belongs_in_claim_id = ANY($1::bigint[]))`,
+      [claimIds],
+    ),
+    query<SameClaimMark>(schema, "SELECT id, claim_id, other_claim_id, verdict, note FROM review_same_claims"),
+  ]);
+  return { readingMarks, sameMarks };
+}
+
+/**
+ * The review view of each claim shown (D35). Empty on the golden replay,
+ * whose rulings are the golden set's.
+ *
+ * @param schema  "public" or "replay".
+ * @param members  Claim → its readings, from claimMembers.
+ * @returns Claim → its review view.
+ */
+export async function claimReviews(schema: Schema, members: Map<string, MemberRow[]>): Promise<Map<string, ClaimReviewView>> {
+  if (schema === "replay") return new Map();
+  const readingsOf = new Map([...members].map(([claimId, rows]) => [claimId, rows.map((row) => row.reading_id)]));
+  const { readingMarks, sameMarks } = await reviewsFor(schema, [...members.keys()]);
+  return reviewViews(readingsOf, readingMarks, sameMarks);
 }

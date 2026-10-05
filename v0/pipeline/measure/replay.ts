@@ -21,7 +21,7 @@ import { scoreReplay } from "./replay-score.ts";
 import type { RunContext } from "../workflow/context.ts";
 
 const GOLDEN = new URL("../../../golden/", import.meta.url);
-const REPLAY_TABLES = "articles, readings, classifications, extracts, claims, groupings, decisions, digests, digest_claims, feedback, runs, daily_reports, reactions";
+const REPLAY_TABLES = "articles, readings, classifications, extracts, claims, groupings, decisions, digests, digest_claims, feedback, review_readings, review_same_claims, runs, daily_reports, reactions";
 
 /**
  * The golden articles on the training and validation sides, as production rows.

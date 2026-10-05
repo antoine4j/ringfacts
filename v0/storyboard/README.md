@@ -21,8 +21,8 @@ remembered in the browser.
 
 | Page | Shows |
 |---|---|
-| `/` Claims | Every claim, newest activity first: current label (and first label when it differs), fighter, readings, outlets, first and last date, posted or not. Each opens to its readings in date order, with tier, cell, JEV's pick confidence and extract sentence; a pick under 50% is flagged ⚠. Filters: fighter, dates, outlet, tier, posted, and any classifier answer. |
-| `/claims/[id]` | One claim, both labels, its readings, feedback on it. |
+| `/` Claims | Every claim, newest activity first: current label (and first label when it differs), fighter, readings, outlets, first and last date, posted or not. Each opens to its readings in date order: your review mark (✓ belongs, ✕ doesn't), the extract sentence, grouping (joined or new claim, with JEV's confidence; under 50% is flagged ⚠) and the decision (tier and the classifier answers behind it). The card says whether the claim is reviewed, how many readings arrived since, and which claims you marked as the same claim. Filters: fighter, dates, outlet, tier, posted, in a digest, review status, and any classifier answer. |
+| `/claims/[id]` | One claim, both labels, its review, its readings with their review marks, feedback on it. |
 | `/readings` | Every reading, newest first, v0's tier beside production's outcome. Filters: fighter, dates, outlet, tier, posted, stage (`waiting` = classify, extract, group or decide), archive, and any classifier answer, e.g. `/readings?fact=next_fight&firmness=rumour`. |
 | `/readings/[id]` | One reading: the article, then every row of every station (Classifier, Claim extractor, Semantic dedup with its shortlist and pick, Decider), newest first, each with a feedback form; production's outcome; feedback given. |
 | `/settings` | The tier map: Post, Digest, Drop. Each "what new fact · how firm" is a card with its count of readings and three headlines; drag it (or use its buttons) to make a draft. Before saving, the page says how many readings would move, by running the Decider's own code (`../pipeline/settings/tiers.ts`) on them. Below: each fighter's digest schedule, and the version history. Saving adds a settings row. |
@@ -36,10 +36,12 @@ Every page also reads the golden replay's copy of the tables with
 
 ## Writes
 
-Only two, both adding a row, never changing one: a feedback note
-(`feedback`) and a new settings version (`settings`). The database role
-`v0_editor` can do nothing else. A settings save is refused if another
-version was saved after the page was opened.
+Each adds a row and never changes one: a feedback note (`feedback`), a new
+settings version (`settings`), and grouping reviews (`review_readings`,
+`review_same_claims`; live data only, see the v0 design, section 11,
+"Reviewing claims"). The database role `v0_editor` can do nothing else. A
+settings save is refused if another version was saved after the page was
+opened.
 
 ## Run it locally
 

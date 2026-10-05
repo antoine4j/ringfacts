@@ -3,12 +3,14 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ClaimReadings } from "../../../components/ClaimReadings.tsx";
+import { SameClaimReview } from "../../../components/ReviewControls.tsx";
+import { ReviewStatus } from "../../../components/ReviewStatus.tsx";
 import { FeedbackForm } from "../../../components/FeedbackForm.tsx";
 import { FeedbackList } from "../../../components/FeedbackList.tsx";
 import { query } from "../../../lib/db.ts";
 import type { Params } from "../../../lib/filters.ts";
 import { pacificTime } from "../../../lib/format.ts";
-import { claimMembers, feedbackOn, type ClaimRow } from "../../../lib/queries.ts";
+import { claimMembers, claimReviews, feedbackOn, type ClaimRow } from "../../../lib/queries.ts";
 import { schemaFrom, schemaSuffix } from "../../../lib/schema.ts";
 
 /** The answers a note on a claim can be about. */
@@ -31,6 +33,7 @@ export default async function ClaimPage({ params, searchParams }: { params: Prom
   const claim = claims[0];
   if (!claim) notFound();
   const members = await claimMembers(schema, [id]);
+  const review = (await claimReviews(schema, members)).get(id);
   const feedback = await feedbackOn(schema, "claim", id);
 
   return (
@@ -69,10 +72,19 @@ export default async function ClaimPage({ params, searchParams }: { params: Prom
         <dd>{claim.grouping_version}</dd>
         <dt>created</dt>
         <dd>{pacificTime(claim.created_at)}</dd>
+        {review && (
+          <>
+            <dt>review</dt>
+            <dd className="review-line">
+              <ReviewStatus view={review} showGroup={false} />
+              <SameClaimReview claimId={claim.id} group={review.group} />
+            </dd>
+          </>
+        )}
       </dl>
       <FeedbackForm target="claim" id={claim.id} schema={schema} fields={CLAIM_FIELDS} label="feedback on this claim" />
       <h2>Readings</h2>
-      <ClaimReadings rows={members.get(claim.id) ?? []} schema={schema} postedReadingId={claim.posted_reading_id} />
+      <ClaimReadings rows={members.get(claim.id) ?? []} schema={schema} postedReadingId={claim.posted_reading_id} claimId={claim.id} review={review} />
       <h2>Feedback</h2>
       <FeedbackList rows={feedback} />
     </>

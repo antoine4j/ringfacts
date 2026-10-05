@@ -30,5 +30,6 @@ GRANT UPDATE (finished_at, seconds, counts) ON public.runs, replay.runs TO v0_pi
 -- The replay starts from its own first settings, like the live schema.
 GRANT INSERT ON replay.settings TO v0_pipeline;
 
--- The storyboard, and Claude, add feedback and new settings.
-GRANT INSERT ON public.feedback, public.settings, replay.feedback TO v0_editor;
+-- The storyboard, and Claude, add feedback, new settings, and grouping reviews (live only:
+-- the golden replay's rulings are the golden set's).
+GRANT INSERT ON public.feedback, public.settings, replay.feedback, public.review_readings, public.review_same_claims TO v0_editor;

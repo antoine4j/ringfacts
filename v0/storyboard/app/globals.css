@@ -257,7 +257,7 @@ pre.json { background: var(--chip); padding: 10px 12px; border-radius: 8px; over
    grouping and the decision as separate columns; stacked blocks on a phone, so nothing
    runs past the card's edge: date, outlet and grouping, the headline, the sentence, the decision. */
 .readings { margin: 6px 0 4px; font-size: 14px; }
-.reading { display: grid; grid-template-columns: 86px 104px minmax(0, 1.2fr) minmax(0, 1.5fr) 96px 150px; gap: 4px 10px; padding: 6px 0; border-top: 1px solid var(--line); align-items: start; }
+.reading { display: grid; grid-template-columns: 52px 86px 104px minmax(0, 1.2fr) minmax(0, 1.5fr) 96px 150px; gap: 4px 10px; padding: 6px 0; border-top: 1px solid var(--line); align-items: start; }
 .reading.head { font-size: 12px; font-weight: 600; color: var(--muted); border-top: 0; padding-top: 0; }
 .reading.head .when { font-family: var(--body); }
 .reading.head [title] { cursor: help; }
@@ -268,7 +268,8 @@ pre.json { background: var(--chip); padding: 10px 12px; border-radius: 8px; over
 .decision .why:hover { color: var(--accent); }
 @media (max-width: 700px) {
   .reading.head { display: none; }
-  .reading { grid-template-columns: auto 1fr auto; grid-template-areas: "when outlet grouping" "headline headline headline" "sentence sentence sentence" "decision decision decision"; gap: 3px 8px; }
+  .reading { grid-template-columns: auto auto 1fr auto; grid-template-areas: "reviewed when outlet grouping" "headline headline headline headline" "sentence sentence sentence sentence" "decision decision decision decision"; gap: 3px 8px; }
+  .reading .reviewed { grid-area: reviewed; }
   .reading .when { grid-area: when; }
   .reading .when br { display: none; }
   .reading .outlet { grid-area: outlet; font-weight: 600; }
@@ -284,3 +285,40 @@ pre.json { background: var(--chip); padding: 10px 12px; border-radius: 8px; over
   .filters > * { flex: none; }
   .filters .more-panel { position: fixed; top: calc(var(--top-h) + var(--filters-h, 40px)); left: 8px; right: 8px; max-height: 60vh; overflow-y: auto; }
 }
+
+/* Reviews (D35): quiet marks beside the pipeline's grouping. ✓ and ✕ are small round
+   buttons that fill when set; a reading new since the review has a thin accent edge; one
+   marked ✕ is dimmed, with where it belongs; the picker floats over the list. */
+.review { position: relative; display: inline-flex; flex-wrap: wrap; align-items: center; gap: 4px; }
+.mark { width: 22px; height: 22px; padding: 0; border-radius: 999px; font-size: 12px; line-height: 1; color: var(--muted); background: var(--panel); }
+.mark.yes[aria-pressed="true"] { background: var(--post); border-color: var(--post); color: var(--on-accent); }
+.mark.no[aria-pressed="true"] { background: var(--warn-text); border-color: var(--warn-text); color: var(--on-accent); }
+.reading.is-new { box-shadow: inset 2px 0 0 var(--accent); padding-left: 8px; }
+.new-tag { margin-left: 6px; font-size: 12px; color: var(--accent); }
+.reading.is-off .headline > a:first-child, .reading.is-off .sentence { opacity: 0.55; }
+.mark-note { display: block; font-size: 12.5px; color: var(--warn-text); margin-top: 2px; }
+.mark-why { color: var(--muted); }
+.review-state { color: var(--muted); }
+.review-state.has-new { color: var(--accent); }
+.claim[open] > summary .review-group { display: none; }
+.review-bar { display: flex; flex-wrap: wrap; gap: 6px 12px; align-items: center; margin: 10px 0 2px; }
+.review-line { display: flex; flex-wrap: wrap; gap: 6px 12px; align-items: center; }
+.unlink { border: 0; background: none; padding: 0 3px; color: var(--muted); font-size: 13px; }
+.unlink:hover { color: var(--bad-text); }
+.link-button { border: 0; background: none; padding: 0; color: var(--accent); }
+.readings > .review { margin-top: 8px; }
+
+.picker {
+  position: absolute; top: 28px; left: 0; z-index: 35; width: min(460px, calc(100vw - 32px));
+  display: grid; gap: 8px; padding: 12px; background: var(--panel); color: var(--text);
+  border: 1px solid var(--line); border-radius: var(--radius); box-shadow: 0 10px 30px rgb(15 20 30 / 0.16);
+}
+.picker-title { font-weight: 600; }
+.picker-options { display: grid; gap: 4px; max-height: 280px; overflow-y: auto; }
+.picker-row { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; }
+.option { text-align: left; border-radius: 8px; padding: 5px 8px; font-weight: 450; display: block; width: 100%; }
+.option.short { width: auto; }
+.option[aria-pressed="true"] { border-color: var(--accent); background: var(--accent-bg); }
+.option-id { font-family: var(--mono); font-size: 12px; color: var(--muted); }
+.option-why { display: block; font-size: 12px; color: var(--muted); }
+.picker-note { width: 100%; font: inherit; font-size: 13px; }

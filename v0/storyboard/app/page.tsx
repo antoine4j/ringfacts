@@ -4,13 +4,16 @@
 
 import Link from "next/link";
 import { ClaimReadings } from "../components/ClaimReadings.tsx";
+import { SameClaimReview } from "../components/ReviewControls.tsx";
+import { ReviewStatus } from "../components/ReviewStatus.tsx";
 import { Empty } from "../components/bits.tsx";
 import { FeedbackForm } from "../components/FeedbackForm.tsx";
 import { FilterBar } from "../components/FilterBar.tsx";
 import { query } from "../lib/db.ts";
 import { claimFilter, claimOrder, whereSql, type Params } from "../lib/filters.ts";
 import { shortTime } from "../lib/format.ts";
-import { claimMembers, fighterNames, outletNames, type ClaimRow, type MemberRow } from "../lib/queries.ts";
+import { claimMembers, claimReviews, fighterNames, outletNames, type ClaimRow, type MemberRow } from "../lib/queries.ts";
+import type { ClaimReviewView } from "../lib/reviews.ts";
 import { schemaFrom, schemaSuffix, type Schema } from "../lib/schema.ts";
 
 /** The most claims one page shows. */
@@ -34,6 +37,7 @@ export default async function ClaimsPage({ searchParams }: { searchParams: Promi
     filter.values,
   );
   const members = await claimMembers(schema, claims.map((claim) => claim.id));
+  const reviews = await claimReviews(schema, members);
 
   // The latest posted digest that used each claim.
   const digested = await query<InDigest>(
@@ -58,7 +62,7 @@ export default async function ClaimsPage({ searchParams }: { searchParams: Promi
       </p>
       {claims.length === 0 && <Empty>No claims match.</Empty>}
       {claims.map((claim) => (
-        <ClaimCard key={claim.id} claim={claim} rows={members.get(claim.id) ?? []} digest={digestOf.get(claim.id) ?? null} schema={schema} />
+        <ClaimCard key={claim.id} claim={claim} rows={members.get(claim.id) ?? []} digest={digestOf.get(claim.id) ?? null} schema={schema} review={reviews.get(claim.id)} />
       ))}
     </>
   );
@@ -74,9 +78,10 @@ type InDigest = { claim_id: string; digest_id: string; period_end: Date };
  * @param props.rows  Its readings, oldest first.
  * @param props.digest  The latest posted digest that used it, or null.
  * @param props.schema  Kept on links.
+ * @param props.review  Its review (D35); absent on the golden replay.
  * @returns The card.
  */
-function ClaimCard({ claim, rows, digest, schema }: { claim: ClaimRow; rows: MemberRow[]; digest: InDigest | null; schema: Schema }) {
+function ClaimCard({ claim, rows, digest, schema, review }: { claim: ClaimRow; rows: MemberRow[]; digest: InDigest | null; schema: Schema; review?: ClaimReviewView }) {
   // A join is doubtful when the pick that made it was under 50% sure.
   const doubtful = rows.filter((row) => typeof row.pick?.confidence === "number" && row.pick.confidence < 0.5).length;
   const labelChanged = claim.current_label !== claim.label;
@@ -97,10 +102,16 @@ function ClaimCard({ claim, rows, digest, schema }: { claim: ClaimRow; rows: Mem
           </span>
           <ClaimStatus claim={claim} digest={digest} schema={schema} />
           {doubtful > 0 && <span className="tag warn">{doubtful} doubtful join{doubtful === 1 ? "" : "s"} ⚠</span>}
+          <ReviewStatus view={review} />
           <Link href={`/claims/${claim.id}${schemaSuffix(schema)}`}>claim #{claim.id} →</Link>
         </div>
       </summary>
-      <ClaimReadings rows={rows} schema={schema} postedReadingId={claim.posted_reading_id} />
+      {review && (
+        <div className="review-bar">
+          <SameClaimReview claimId={claim.id} group={review.group} />
+        </div>
+      )}
+      <ClaimReadings rows={rows} schema={schema} postedReadingId={claim.posted_reading_id} claimId={claim.id} review={review} />
       <FeedbackForm target="claim" id={claim.id} schema={schema} fields={["grouping", "label", "current_label", "claim"]} label="feedback on this claim" />
     </details>
   );

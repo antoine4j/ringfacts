@@ -157,6 +157,37 @@ CREATE TABLE IF NOT EXISTS feedback (
   CHECK (num_nonnulls(reading_id, claim_id, digest_id) = 1)
 );
 
+-- Anton's grouping marks (D35): a reading in a claim belongs, or does not
+-- (optionally naming the claim it belongs in), or is a claim of its own.
+-- The newest row for a reading and a claim is the one in force.
+CREATE TABLE IF NOT EXISTS review_readings (
+  id                   bigint GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+  reading_id           bigint NOT NULL REFERENCES readings(id),
+  claim_id             bigint NOT NULL REFERENCES claims(id),
+  verdict              text NOT NULL CHECK (verdict IN ('belongs', 'does_not_belong', 'own_claim', 'cleared')),
+  belongs_in_claim_id  bigint REFERENCES claims(id),
+  note                 text NOT NULL DEFAULT '',
+  author               text NOT NULL DEFAULT 'anton',
+  created_at           timestamptz NOT NULL DEFAULT now(),
+  CHECK (belongs_in_claim_id IS NULL OR (verdict = 'does_not_belong' AND belongs_in_claim_id <> claim_id))
+);
+CREATE INDEX IF NOT EXISTS review_readings_claim_idx ON review_readings (claim_id, reading_id, id);
+CREATE INDEX IF NOT EXISTS review_readings_belongs_in_idx ON review_readings (belongs_in_claim_id) WHERE belongs_in_claim_id IS NOT NULL;
+
+-- Anton's grouping marks (D35): two claims are one claim. A pair is stored
+-- smaller id first, so it has one form; the newest row for a pair is in force.
+CREATE TABLE IF NOT EXISTS review_same_claims (
+  id              bigint GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+  claim_id        bigint NOT NULL REFERENCES claims(id),
+  other_claim_id  bigint NOT NULL REFERENCES claims(id),
+  verdict         text NOT NULL CHECK (verdict IN ('same_claim', 'cleared')),
+  note            text NOT NULL DEFAULT '',
+  author          text NOT NULL DEFAULT 'anton',
+  created_at      timestamptz NOT NULL DEFAULT now(),
+  CHECK (claim_id < other_claim_id)
+);
+CREATE INDEX IF NOT EXISTS review_same_claims_pair_idx ON review_same_claims (claim_id, other_claim_id, id);
+
 -- One row per run of the job: its kind, how long it took, and its numbers.
 CREATE TABLE IF NOT EXISTS runs (
   id           bigint GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
@@ -197,7 +228,7 @@ DO $$
 DECLARE
   answer_table text;
 BEGIN
-  FOREACH answer_table IN ARRAY ARRAY['articles', 'classifications', 'extracts', 'groupings', 'decisions', 'settings', 'digest_claims', 'feedback', 'reactions']
+  FOREACH answer_table IN ARRAY ARRAY['articles', 'classifications', 'extracts', 'groupings', 'decisions', 'settings', 'digest_claims', 'feedback', 'reactions', 'review_readings', 'review_same_claims']
   LOOP
     EXECUTE format('DROP TRIGGER IF EXISTS %I_never_updated ON %I', answer_table, answer_table);
     EXECUTE format('CREATE TRIGGER %I_never_updated BEFORE UPDATE ON %I FOR EACH ROW EXECUTE FUNCTION refuse_update()', answer_table, answer_table);

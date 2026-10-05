@@ -73,7 +73,7 @@ export function FilterBar({ path, params, schema, fighters, outlets, stages = fa
 
   // Which filters are set, for the highlight and the clear link.
   const chosenAnswers = Object.keys(answers ?? {}).filter((name) => param(params, name));
-  const isFiltered = ["fighter", "when", "day", "outlet", "tier", "posted", "digest", "stage", "history", "sort"].some((key) => param(params, key)) || chosenAnswers.length > 0;
+  const isFiltered = ["fighter", "when", "day", "outlet", "tier", "posted", "digest", "review", "stage", "history", "sort"].some((key) => param(params, key)) || chosenAnswers.length > 0;
 
   return (
     <form ref={form} className="filters" method="get" action={path} onSubmit={dropEmpty}>
@@ -98,6 +98,9 @@ export function FilterBar({ path, params, schema, fighters, outlets, stages = fa
       <Choice name="tier" placeholder="any tier" value={param(params, "tier")} options={["1", "2", "3", "none"]} prefix="tier " />
       <Choice name="posted" placeholder="posted or not" value={param(params, "posted")} options={["yes", "no"]} prefix="posted: " />
       {claimOptions && <Choice name="digest" placeholder="in a digest or not" value={param(params, "digest")} options={["yes", "no"]} prefix="in a digest: " />}
+      {claimOptions && schema !== "replay" && (
+        <Choice name="review" placeholder="reviewed or not" value={param(params, "review")} options={["not_reviewed", "has_new", "reviewed"]} labels={REVIEW_LABELS} />
+      )}
       {claimOptions && (
         <select name="sort" defaultValue={param(params, "sort")} onChange={apply} className={param(params, "sort") ? "set" : ""} aria-label="sort">
           <option value="">newest activity</option>
@@ -183,6 +186,9 @@ function DateChoice({ params }: { params: Params }) {
   );
 }
 
+/** The review filter's words (D35). */
+const REVIEW_LABELS: Record<string, string> = { not_reviewed: "not reviewed", has_new: "reviewed, has new", reviewed: "reviewed" };
+
 /**
  * One drop-down filter whose empty choice names what it filters.
  *
@@ -191,16 +197,17 @@ function DateChoice({ params }: { params: Params }) {
  * @param props.value  The current choice.
  * @param props.options  The choices.
  * @param props.prefix  Words shown before each choice, so a set filter reads on its own.
+ * @param props.labels  Words for choices whose address value is not words, by value.
  * @returns The drop-down.
  */
-function Choice({ name, placeholder, value, options, prefix = "" }: { name: string; placeholder: string; value: string; options: string[]; prefix?: string }) {
+function Choice({ name, placeholder, value, options, prefix = "", labels = {} }: { name: string; placeholder: string; value: string; options: string[]; prefix?: string; labels?: Record<string, string> }) {
   return (
     <select name={name} defaultValue={value} onChange={apply} className={value ? "set" : ""} aria-label={name}>
       <option value="">{placeholder}</option>
       {options.map((option) => (
         <option key={option} value={option}>
           {prefix}
-          {option}
+          {labels[option] ?? option}
         </option>
       ))}
     </select>

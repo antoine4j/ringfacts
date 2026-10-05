@@ -17,7 +17,7 @@ export const WAITING_STAGES = ["classify", "extract", "group", "decide"];
 export const STAGES = ["no_body", ...WAITING_STAGES, "done", "stuck"];
 
 /** Address keys that are filters of their own, so they are never read as a classifier answer. */
-const RESERVED_KEYS = new Set(["fighter", "day", "when", "from", "to", "digest", "sort", "outlet", "tier", "posted", "stage", "history", "claim", "schema", "limit", "open"]);
+const RESERVED_KEYS = new Set(["fighter", "day", "when", "from", "to", "digest", "review", "sort", "outlet", "tier", "posted", "stage", "history", "claim", "schema", "limit", "open"]);
 
 /** What a classifier answer's name may look like in the address. */
 const ANSWER_NAME = /^[a-z][a-z_]{0,39}$/;
@@ -206,6 +206,10 @@ export function claimFilter(params: Params): SqlFilter {
   if (digest === "yes") addCondition(filter, inDigest);
   if (digest === "no") addCondition(filter, `NOT ${inDigest}`);
 
+  // Review status (D35): whether its readings carry a mark in force, all of them or some.
+  const review = REVIEW_FILTERS[param(params, "review")];
+  if (review) addCondition(filter, review);
+
   // Day, outlet, tier and answers: the claim has a reading that matches them all.
   // The member conditions share the values list, so their placeholders keep counting.
   const members: SqlFilter = { conditions: [], values: filter.values };
@@ -239,6 +243,18 @@ export function linkWith(path: string, params: Params, changes: Record<string, s
   const query = search.toString();
   return query ? `${path}?${query}` : path;
 }
+
+// A reading of the claim (g) carries a mark in force: its newest review in this claim is not "cleared".
+const READING_REVIEWED = "coalesce((SELECT rr.verdict FROM review_readings rr WHERE rr.claim_id = cn.id AND rr.reading_id = g.reading_id ORDER BY rr.id DESC LIMIT 1), 'cleared') <> 'cleared'";
+const ANY_REVIEWED = `EXISTS (SELECT 1 FROM groupings g WHERE g.claim_id = cn.id AND ${READING_REVIEWED})`;
+const ANY_UNREVIEWED = `EXISTS (SELECT 1 FROM groupings g WHERE g.claim_id = cn.id AND NOT ${READING_REVIEWED})`;
+
+/** The review filter's values: address value → condition, the SQL fixed here. */
+export const REVIEW_FILTERS: Record<string, string> = {
+  not_reviewed: `NOT ${ANY_REVIEWED}`,
+  has_new: `${ANY_REVIEWED} AND ${ANY_UNREVIEWED}`,
+  reviewed: `${ANY_REVIEWED} AND NOT ${ANY_UNREVIEWED}`,
+};
 
 /** The claims page's orders: address value → words and SQL, the SQL fixed here. */
 export const CLAIM_SORTS: Record<string, { label: string; sql: string }> = {
