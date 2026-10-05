@@ -172,3 +172,29 @@ Two themes, one tag each:
   (`refuse_update`), the storyboard.
 - **Needs.** A real example of the pain without it: a case from production
   where an overwritten or missing answer made a wrong post untraceable.
+
+## 10. Review where the system runs: labelling a little every day instead of one huge look back
+*Added 2026-10-05 · status: idea · building AI applications*
+
+- **The problem.** Labelled data for an AI pipeline is usually made in big
+  batches: export a sample, label it for days, score, repeat. It is slow,
+  it goes stale, and nobody does it twice. Continuous improvement needs the
+  review built into the tool where the system's output is already being
+  looked at, so labels accumulate a few at a time as part of normal use.
+- **Why people would care.** Teams shipping LLM features rarely have a
+  steady supply of human judgements after launch; the golden set ages while
+  the inputs drift.
+- **What happened here.** The 300-article golden set took a dedicated
+  labelling effort and its review time was the real cost (task history,
+  docs/golden-set.md). The v0 storyboard then added one-tap grouping
+  reviews beside the live claims (D35: ✓ / ✕ per reading, "same claim as"
+  between claims, an optional note), with a "reviewed, has new" filter so
+  a day's claims are checked in minutes. The first live review, 5 October,
+  found an over-split (one Instagram statement reported by three outlets,
+  split across two claims) and, in reading the articles, two concrete
+  fixes for grouping and labels. Evidence: the v0 design, section 11,
+  "Reviewing claims"; `review_readings`, `review_same_claims`.
+- **Needs.** A few weeks of reviews: how many marks, how long they took,
+  what share found errors, and whether they changed a decision. Plus the
+  guard: reviews follow what the reviewer opens, not a random sample, so
+  they find errors but do not measure the error rate without a random draw.
