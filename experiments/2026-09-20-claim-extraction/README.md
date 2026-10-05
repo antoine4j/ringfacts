@@ -292,3 +292,43 @@ ruler (v2); `clusters-v1-chained.json` is the one with the merge bug, kept.
 `batches/` inputs for the clustering agents · `clusters.json` the ruler ·
 `prompt.md` the extraction prompt (reviewed by Anton before any spend) ·
 `run.py` extraction · `score.py` the three arms · `ITERATIONS.md` append-only.
+
+## The test-set score of pass 4 (task 5.7), procedure written before it ran
+
+*Written 2026-10-05, before any test-side number was computed.* v0 freezes
+pass 4 as its Claim extractor (5); the archive run re-answers every
+article with it, so it is scored once on the test set first, as the
+classifier was (D30 in docs/superpowers/specs/2026-10-04-v0-design.md).
+
+**Nothing is sent.** Pass 4's extracts of all 300 golden articles, and
+their arm-4 embeddings, were made on 2026-09-20, before the golden set was
+split (golden/answers/extractor.json, emb-cache/4-p4/). The score reads
+them; it costs nothing. The ruler is Anton's ruled claims
+(golden/claims.json), not the Fable clusters this experiment started with.
+
+**What is scored**, on the 105 test articles, beside the same numbers on
+the 195 training and validation articles computed in the same run
+(`test_score.py`):
+
+1. **Shortlist recall**, v0's actual use (D22): each article that joins a
+   ruled claim with an earlier article, in date order; candidates are that
+   fighter's ruled claims with an article in the 14 days before it, on the
+   same side; ranked by their closest earlier article's cosine similarity
+   on the arm-4 text. Reported: right claim first, in the top 3, in the
+   top 5. Training and validation measured 93.8%, 97.7%, 98.5%.
+2. **Separation**, this experiment's original ruler on the ruled claims:
+   every pair of articles of one fighter within 3 days, same claim or
+   not; the AUC (the chance a same-claim pair scores above a
+   different-claim pair) for arm 4 against arm 2, headline and lead, what
+   production embeds.
+3. **"NO CLAIM" on career-event articles:** articles whose key fact is a
+   result, next fight or health, and whose extract is NO CLAIM, so a
+   tier-1 post would fall back to the headline.
+4. **The noise floor:** the share of articles whose second, unchanged run
+   wrote a different sentence.
+
+**Read in advance as:** pass 4 holds if the test side's top-5 recall is
+95% or more and arm 4's AUC is above arm 2's. Either failing is recorded
+as a finding before the archive run, not a block (no pass mark was ever
+set for the extractor). Which test articles miss is not listed, as for
+the classifier: the test set stays closed.
