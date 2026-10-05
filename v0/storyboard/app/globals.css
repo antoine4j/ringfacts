@@ -81,8 +81,7 @@ body {
   margin: 0;
   background: var(--bg);
   color: var(--text);
-  font: 14px/1.5 var(--body);
-  -webkit-font-smoothing: antialiased;
+  font: 450 15px/1.5 var(--body);
 }
 
 a { color: var(--accent); text-decoration: none; }
@@ -114,7 +113,7 @@ h3 { font-size: 14px; font-weight: 600; margin: 16px 0 6px; }
 @media (max-width: 560px) { .brand-name { display: none; } }
 
 .muted { color: var(--muted); }
-.small { font-size: 12px; }
+.small { font-size: 12.5px; }
 .nowrap { white-space: nowrap; }
 .pre { white-space: pre-wrap; }
 .num, td.num { font-family: var(--mono); font-variant-numeric: tabular-nums; }
@@ -122,7 +121,7 @@ th.num { font-variant-numeric: tabular-nums; }
 
 /* Tables: a white panel with hairline rows; the header row sticks under the filter bar. */
 table {
-  width: 100%; margin: 4px 0 14px; border-collapse: separate; border-spacing: 0;
+  width: 100%; margin: 4px 0 14px; border-collapse: separate; border-spacing: 0; font-size: 14px;
   background: var(--panel); border: 1px solid var(--line); border-radius: var(--radius);
 }
 th, td { border-bottom: 1px solid var(--line); padding: 7px 10px; text-align: left; vertical-align: top; }
@@ -257,7 +256,7 @@ pre.json { background: var(--chip); padding: 10px 12px; border-radius: 8px; over
 /* A claim's readings: a table on a wide screen, the headline and sentence widest, then
    grouping and the decision as separate columns; stacked blocks on a phone, so nothing
    runs past the card's edge: date, outlet and grouping, the headline, the sentence, the decision. */
-.readings { margin: 6px 0 4px; font-size: 13px; }
+.readings { margin: 6px 0 4px; font-size: 14px; }
 .reading { display: grid; grid-template-columns: 86px 104px minmax(0, 1.2fr) minmax(0, 1.5fr) 96px 150px; gap: 4px 10px; padding: 6px 0; border-top: 1px solid var(--line); align-items: start; }
 .reading.head { font-size: 12px; font-weight: 600; color: var(--muted); border-top: 0; padding-top: 0; }
 .reading.head .when { font-family: var(--body); }

@@ -11,8 +11,10 @@ export const metadata = { title: "RingFacts storyboard", description: "RingFacts
 
 // The type, as the Golden Set Map sets it: a condensed display face for titles,
 // a plain sans for text, a mono for times, ids and counts. Served with the site.
+// The sans is the variable font, so text can sit at 450: regular 400 reads thin
+// on a standard-density screen.
 const display = Barlow_Condensed({ subsets: ["latin"], weight: ["600", "700"], variable: "--font-display" });
-const body = IBM_Plex_Sans({ subsets: ["latin", "cyrillic"], weight: ["400", "500", "600"], variable: "--font-body" });
+const body = IBM_Plex_Sans({ subsets: ["latin", "cyrillic"], weight: "variable", variable: "--font-body" });
 const mono = IBM_Plex_Mono({ subsets: ["latin"], weight: ["400", "500"], variable: "--font-mono" });
 
 // Every page reads the database when it is opened; nothing is built ahead of time.
