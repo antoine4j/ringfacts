@@ -111,7 +111,12 @@ export async function ensureFighters(pool: pg.Pool, subjects: Subject[]): Promis
  */
 export async function importItems(pool: pg.Pool, items: ProductionItem[], subjects: Subject[], backfill: boolean): Promise<{ imported: number; readings: number; noBody: number }> {
   const counts = { imported: 0, readings: 0, noBody: 0 };
+
+  // One query for the articles v0 already has, so a run writes only what is new.
+  const known = await pool.query("SELECT production_item_id FROM articles WHERE production_item_id = ANY($1::bigint[])", [items.map((item) => item.id)]);
+  const knownIds = new Set(known.rows.map((row) => Number(row.production_item_id)));
   for (const item of items) {
+    if (knownIds.has(Number(item.id))) continue;
     const fighters = fightersOf(item, subjects);
     const stage = isUsableBody(item.body) ? "classify" : "no_body";
 
