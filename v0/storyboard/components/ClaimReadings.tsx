@@ -4,7 +4,7 @@ import Link from "next/link";
 import { pacificTime } from "../lib/format.ts";
 import type { MemberRow } from "../lib/queries.ts";
 import { schemaSuffix, type Schema } from "../lib/schema.ts";
-import { PickTag, TierTag } from "./bits.tsx";
+import { PickTag, TierTag, PostedTag } from "./bits.tsx";
 
 /**
  * A table of a claim's readings: headline, outlet, date, tier, cell, pick and extract sentence.
@@ -40,7 +40,7 @@ export function ClaimReadings({ rows, schema, postedReadingId }: { rows: MemberR
               <Link href={`/readings/${row.reading_id}${schemaSuffix(schema)}`} className="small">
                 #{row.reading_id}
               </Link>
-              {row.reading_id === postedReadingId && <span className="tag good">posted</span>}
+              {row.reading_id === postedReadingId && <PostedTag reaction={row.reaction} />}
             </td>
             <td>
               <TierTag tier={row.tier} />

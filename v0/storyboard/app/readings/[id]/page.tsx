@@ -10,7 +10,7 @@ import { FeedbackList } from "../../../components/FeedbackList.tsx";
 import { query } from "../../../lib/db.ts";
 import type { Params } from "../../../lib/filters.ts";
 import { pacificTime } from "../../../lib/format.ts";
-import { feedbackOn } from "../../../lib/queries.ts";
+import { feedbackOn, latestReaction } from "../../../lib/queries.ts";
 import { schemaFrom, schemaSuffix, type Schema } from "../../../lib/schema.ts";
 import { AnswerRows, GroupingRows, type AnswerRow, type DecisionRow, type GroupingRow } from "./stations.tsx";
 
@@ -26,6 +26,7 @@ type ReadingDetail = {
   last_error: string | null;
   posted_at: Date | null;
   message_id: string | null;
+  reaction: string | null;
   production_item_id: string;
   url: string;
   outlet: string;
@@ -55,7 +56,7 @@ export default async function ReadingPage({ params, searchParams }: { params: Pr
   // The reading with its article.
   const readings = await query<ReadingDetail>(
     schema,
-    `SELECT rn.*, a.body, r.created_at
+    `SELECT rn.*, a.body, r.created_at, ${latestReaction("rn.message_id")} AS reaction
      FROM reading_now rn JOIN readings r ON r.id = rn.reading_id JOIN articles a ON a.id = rn.article_id
      WHERE rn.reading_id = $1`,
     [id],
@@ -96,7 +97,7 @@ export default async function ReadingPage({ params, searchParams }: { params: Pr
         <DecisionTable rows={decisions} readingId={id} schema={schema} />
         <p>
           Production&apos;s outcome: <strong>{reading.production_outcome ?? "none recorded"}</strong>
-          {reading.posted_at ? ` · v0 posted it ${pacificTime(reading.posted_at)} (message ${reading.message_id})` : " · v0 has not posted it"}
+          {reading.posted_at ? ` · v0 posted it ${pacificTime(reading.posted_at)} (message ${reading.message_id})${reading.reaction ? `, you reacted ${reading.reaction}` : ""}` : " · v0 has not posted it"}
         </p>
       </section>
       <section className="section">

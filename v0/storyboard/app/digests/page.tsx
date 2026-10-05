@@ -8,11 +8,11 @@ import { FeedbackList } from "../../components/FeedbackList.tsx";
 import { query } from "../../lib/db.ts";
 import { param, type Params } from "../../lib/filters.ts";
 import { pacificTime } from "../../lib/format.ts";
-import { fighterNames, type FeedbackRow } from "../../lib/queries.ts";
+import { fighterNames, latestReaction, type FeedbackRow } from "../../lib/queries.ts";
 import { schemaFrom, schemaSuffix, type Schema } from "../../lib/schema.ts";
 
 /** A row of the digests table. */
-type DigestRow = { id: string; fighter: string; period_start: Date; period_end: Date; model: string; prompt_version: string; text: string; items: unknown; posted_at: Date | null; backfill: boolean; created_at: Date };
+type DigestRow = { id: string; fighter: string; period_start: Date; period_end: Date; model: string; prompt_version: string; text: string; items: unknown; posted_at: Date | null; reaction: string | null; backfill: boolean; created_at: Date };
 
 /** A claim the writer was given, with whether it used it. */
 type GivenClaim = { digest_id: string; claim_id: string; used: boolean; current_label: string; readings: string; outlets: string };
@@ -31,7 +31,7 @@ export default async function DigestsPage({ searchParams }: { searchParams: Prom
   // The digests, newest period first, then the claims and feedback of all of them at once.
   const digests = await query<DigestRow>(
     schema,
-    "SELECT id, fighter, period_start, period_end, model, prompt_version, text, items, posted_at, backfill, created_at FROM digests WHERE ($1 = '' OR fighter = $1) ORDER BY period_end DESC, id DESC LIMIT 100",
+    `SELECT id, fighter, period_start, period_end, model, prompt_version, text, items, posted_at, ${latestReaction("message_id")} AS reaction, backfill, created_at FROM digests WHERE ($1 = '' OR fighter = $1) ORDER BY period_end DESC, id DESC LIMIT 100`,
     [fighter],
   );
   const ids = digests.map((digest) => digest.id);
@@ -97,7 +97,7 @@ function DigestCard({ digest, given, feedback, schema }: { digest: DigestRow; gi
         #{digest.id} {digest.fighter}{" "}
         <span className="muted small">
           {pacificTime(digest.period_start)} → {pacificTime(digest.period_end)} · {digest.model} · prompt {digest.prompt_version} ·{" "}
-          {digest.posted_at ? `posted ${pacificTime(digest.posted_at)}` : "not posted"}
+          {digest.posted_at ? `posted ${pacificTime(digest.posted_at)}${digest.reaction ? ` · you reacted ${digest.reaction}` : ""}` : "not posted"}
           {digest.backfill ? " · archive" : ""}
         </span>
       </h2>

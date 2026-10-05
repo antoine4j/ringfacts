@@ -4,6 +4,16 @@ import type { ReactNode } from "react";
 import { percent } from "../lib/format.ts";
 
 /**
+ * "posted", with the reader's 👍 or 👎 when there is one.
+ *
+ * @param props.reaction  The latest reaction, or null.
+ * @returns The badge.
+ */
+export function PostedTag({ reaction }: { reaction: string | null | undefined }) {
+  return <span className={`tag ${reaction === "👎" ? "bad" : "good"}`}>posted{reaction ? ` ${reaction}` : ""}</span>;
+}
+
+/**
  * A reading's tier as a coloured badge.
  *
  * @param props.tier  1, 2, 3, or nothing when not decided yet.

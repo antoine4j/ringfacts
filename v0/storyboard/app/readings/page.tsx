@@ -3,12 +3,12 @@
 // example ?fact=next_fight&firmness=rumour.
 
 import Link from "next/link";
-import { Empty, PickTag, TierTag } from "../../components/bits.tsx";
+import { Empty, PickTag, PostedTag, TierTag } from "../../components/bits.tsx";
 import { FilterBar } from "../../components/FilterBar.tsx";
 import { query } from "../../lib/db.ts";
 import { readingFilter, whereSql, type Params } from "../../lib/filters.ts";
 import { pacificTime } from "../../lib/format.ts";
-import { fighterNames, outletNames } from "../../lib/queries.ts";
+import { fighterNames, latestReaction, outletNames } from "../../lib/queries.ts";
 import { schemaFrom, schemaSuffix, type Schema } from "../../lib/schema.ts";
 
 /** The most readings one page shows. */
@@ -22,6 +22,7 @@ type ReadingRow = {
   attempts: number;
   last_error: string | null;
   posted_at: Date | null;
+  reaction: string | null;
   url: string;
   outlet: string;
   headline: string;
@@ -49,7 +50,7 @@ export default async function ReadingsPage({ searchParams }: { searchParams: Pro
   const where = whereSql(filter);
   const rows = await query<ReadingRow>(
     schema,
-    `SELECT rn.reading_id, rn.fighter, rn.stage, rn.attempts, rn.last_error, rn.posted_at, rn.url, rn.outlet, rn.headline,
+    `SELECT rn.reading_id, rn.fighter, rn.stage, rn.attempts, rn.last_error, rn.posted_at, ${latestReaction("rn.message_id")} AS reaction, rn.url, rn.outlet, rn.headline,
             rn.published_at, rn.production_outcome, rn.backfill, rn.tier, rn.cell, rn.claim_id, rn.pick
      FROM reading_now rn ${where}
      ORDER BY rn.published_at DESC, rn.reading_id DESC
@@ -127,7 +128,7 @@ function ReadingsTable({ rows, schema }: { rows: ReadingRow[]; schema: Schema })
               <a className="small" href={row.url} target="_blank" rel="noreferrer">
                 article ↗
               </a>
-              {row.posted_at && <span className="tag good">posted</span>}
+              {row.posted_at && <PostedTag reaction={row.reaction} />}
               {row.backfill && <span className="tag">archive</span>}
             </td>
             <td className="nowrap" title={row.last_error ?? ""}>

@@ -4,6 +4,17 @@ import type { Settings } from "../../pipeline/settings/tiers.ts";
 import { query } from "./db.ts";
 import type { Schema } from "./schema.ts";
 
+/**
+ * The latest 👍 or 👎 on a v0 message, as a SQL expression (task 10.4). A
+ * reaction removed later reads as null, since its newest row has no emoji.
+ *
+ * @param messageId  The column holding the message's id; a fixed name, never user input.
+ * @returns The expression.
+ */
+export function latestReaction(messageId: string): string {
+  return `(SELECT re.emoji FROM reactions re WHERE re.message_id = ${messageId} ORDER BY re.update_id DESC LIMIT 1)`;
+}
+
 /** A row of the settings table, with its metadata. */
 export type SettingsRow = Settings & { author: string; note: string; created_at: Date };
 
@@ -92,6 +103,7 @@ export type MemberRow = {
   cell: string | null;
   sentence: string | null;
   posted_at: Date | null;
+  reaction: string | null;
 };
 
 /**
@@ -111,7 +123,7 @@ export async function claimMembers(schema: Schema, claimIds: string[]): Promise<
     `SELECT * FROM (
        SELECT DISTINCT ON (g.claim_id, g.reading_id)
          g.claim_id, g.reading_id, g.pick, rn.headline, rn.url, rn.outlet, rn.published_at,
-         rn.tier, rn.cell, rn.extract ->> 'claim' AS sentence, rn.posted_at
+         rn.tier, rn.cell, rn.extract ->> 'claim' AS sentence, rn.posted_at, ${latestReaction("rn.message_id")} AS reaction
        FROM groupings g
        JOIN reading_now rn ON rn.reading_id = g.reading_id
        WHERE g.claim_id = ANY($1::bigint[])
