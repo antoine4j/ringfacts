@@ -9,18 +9,55 @@ import { count, type RunContext } from "./context.ts";
 // older waited too long (no chat yet, an outage) and is old news by now.
 export const MAX_POST_AGE_HOURS = 48;
 
-/** A claim ready to post, with the reading that posts it. */
-type ToPost = { claim_id: number; reading_id: number; fighter: string; headline: string; outlet: string; url: string; extract: { claim?: string } | null };
+/** A claim ready to post, with the reading that posts it, its cell ("next_fight · reported") and how many outlets carry the claim. */
+type ToPost = {
+  claim_id: number;
+  reading_id: number;
+  fighter: string;
+  headline: string;
+  outlet: string;
+  url: string;
+  extract: { claim?: string } | null;
+  cell?: string | null;
+  outlets?: number | null;
+};
+
+// The kind of news, as the post's first words: every fact the settings could put at tier 1.
+const FACT_LABELS: Record<string, string> = {
+  result: "🏆 Result",
+  next_fight: "📅 Next fight",
+  fight_week_event: "🥊 Fight week",
+  health: "🩺 Health",
+  career_move: "🔁 Career move",
+  personal_life: "👤 Personal",
+  status_update: "📌 Update",
+};
+const FIRMNESS_WORDS: Record<string, string> = { official_or_done: "official", reported: "reported", rumour: "rumour", wish: "wish" };
 
 /**
- * The tier-1 message for one reading.
+ * The post's label: the kind of news, and how firm it is unless it is a result (a result is done).
+ *
+ * @param cell  The reading's cell, such as "next_fight · reported".
+ * @returns Such as "📅 Next fight · reported", or "📰 News" without a cell.
+ */
+export function newsLabel(cell: string | null | undefined): string {
+  const [fact, firmness] = (cell ?? "").split(" · ");
+  const kind = FACT_LABELS[fact] ?? "📰 News";
+  const firm = fact === "result" ? undefined : FIRMNESS_WORDS[firmness];
+  return firm ? `${kind} · ${firm}` : kind;
+}
+
+/**
+ * The tier-1 message for one reading (the look Anton chose on 5 Oct, variant B).
  *
  * @param row  The claim and its posting reading.
- * @returns Telegram HTML: the fighter, the extract sentence (the headline when there is none), the outlet as a link.
+ * @returns Telegram HTML: the label and the fighter, the extract sentence (the headline when there is none), the outlet as a link and the claim's outlet count when above one.
  */
 export function tierOneMessage(row: ToPost): string {
   const sentence = row.extract?.claim && row.extract.claim !== "NO CLAIM" ? row.extract.claim : row.headline;
-  return `<b>${escapeHtml(row.fighter)}</b>\n${escapeHtml(sentence)}\n<a href="${escapeHtml(row.url)}">${escapeHtml(row.outlet || "source")}</a>`;
+  const outlets = Number(row.outlets ?? 0) > 1 ? ` · ${Number(row.outlets)} outlets` : "";
+  const link = `<a href="${escapeHtml(row.url)}">${escapeHtml(row.outlet || "source")}</a>`;
+  return `${newsLabel(row.cell)} · <b>${escapeHtml(row.fighter)}</b>\n${escapeHtml(sentence)}\n${link}${outlets}`;
 }
 
 /**
@@ -32,12 +69,12 @@ export function tierOneMessage(row: ToPost): string {
 export async function postNewClaims(context: RunContext): Promise<{ posted: number }> {
   const due = await context.pool.query<ToPost>(
     `WITH first_tier_one AS (
-       SELECT DISTINCT ON (claim_id) claim_id, reading_id, fighter, headline, outlet, url, extract, backfill, published_at
+       SELECT DISTINCT ON (claim_id) claim_id, reading_id, fighter, headline, outlet, url, extract, cell, backfill, published_at
        FROM reading_now
        WHERE tier = 1 AND claim_id IS NOT NULL
        ORDER BY claim_id, published_at, reading_id
      )
-     SELECT f.* FROM first_tier_one f JOIN claims c ON c.id = f.claim_id
+     SELECT f.*, cn.outlets FROM first_tier_one f JOIN claims c ON c.id = f.claim_id JOIN claim_now cn ON cn.id = f.claim_id
      WHERE c.posted_reading_id IS NULL AND NOT f.backfill
        AND f.published_at > now() - make_interval(hours => $1)
      ORDER BY f.published_at`,

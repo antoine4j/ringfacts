@@ -1,6 +1,6 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
-import { tierOneMessage } from "./post.ts";
+import { newsLabel, tierOneMessage } from "./post.ts";
 import { groupingText } from "../stations/grouping/grouping.ts";
 import { newClaimLabel } from "../store/grouping.ts";
 
@@ -8,9 +8,23 @@ const ROW = { claim_id: 1, reading_id: 2, fighter: "Marko Testov", headline: "Te
 const EXTRACT = { kind: "new_event" as const, claim: "Marko Testov will fight Ivan Rivalov at UFC 400.", occasion: "UFC announcement", actor: null, opponent: "Ivan Rivalov", event: "UFC 400", date: null };
 const NO_CLAIM = { ...EXTRACT, kind: "restatement" as const, claim: "NO CLAIM", occasion: null };
 
-test("a tier-1 post is the reading's own extract sentence and its link, escaped", () => {
-  const message = tierOneMessage({ ...ROW, extract: EXTRACT });
-  assert.equal(message, '<b>Marko Testov</b>\nMarko Testov will fight Ivan Rivalov at UFC 400.\n<a href="https://example.com/?a=1&amp;b=2">Example &lt;News&gt;</a>');
+test("a tier-1 post is its label, the reading's own extract sentence and its link, escaped", () => {
+  const message = tierOneMessage({ ...ROW, extract: EXTRACT, cell: "next_fight · official_or_done", outlets: 3 });
+  assert.equal(
+    message,
+    '📅 Next fight · official · <b>Marko Testov</b>\nMarko Testov will fight Ivan Rivalov at UFC 400.\n<a href="https://example.com/?a=1&amp;b=2">Example &lt;News&gt;</a> · 3 outlets',
+  );
+});
+
+test("the label names the kind and how firm it is; a result needs no firmness", () => {
+  assert.equal(newsLabel("result · official_or_done"), "🏆 Result");
+  assert.equal(newsLabel("next_fight · reported"), "📅 Next fight · reported");
+  assert.equal(newsLabel("health · none"), "🩺 Health");
+  assert.equal(newsLabel(null), "📰 News");
+});
+
+test("one outlet is not counted", () => {
+  assert.doesNotMatch(tierOneMessage({ ...ROW, extract: EXTRACT, cell: "result · official_or_done", outlets: 1 }), /outlets/);
 });
 
 test("a post with no claim sentence falls back to the headline", () => {
