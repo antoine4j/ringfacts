@@ -6,8 +6,10 @@ happened here. A backlog, not drafts. This project only; newest at the bottom.
 
 Each entry: the problem in one line, why someone building with AI would care,
 what happened here (with pointers to the evidence in the repo), what a post
-still needs, and a status: `idea` → `drafting` → `posted` (with the link), or
-`tentative` while it is unclear the idea is worth a post.
+still needs, and a status: `idea` → `briefed` (an evidence-checked brief in
+`docs/blog-briefs/`, made with the `developing-post-briefs` skill) →
+`drafting` → `posted` (with the link), or `tentative` while it is unclear the
+idea is worth a post.
 
 Two themes, one tag each:
 
