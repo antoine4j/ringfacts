@@ -705,12 +705,12 @@ document.getElementById("path").innerHTML = PATH.map((p,i) =>
 
 // Now box
 // The v0 box: the goal, the decisions, then every v0 task in order, with its station
-const v0Tasks = STATIONS.flatMap(st => st.items.filter(i => i.st==="v0").map(i => ({...i, station:st}))).sort((a,b) => a.v0-b.v0);
+const v0Tasks = STATIONS.flatMap(st => st.items.filter(i => i.v0).map(i => ({...i, station:st}))).sort((a,b) => a.v0-b.v0);
 const nextTask = v0Tasks.find(i => i.v0===nextV0);
 document.getElementById("nowbox").innerHTML = `<summary><span class="fold" aria-hidden="true"></span><span class="sum"><h3>${esc(V0BOX.goal)}</h3><span class="sub">${v0Tasks.filter(i=>i.st==="done").length} of ${v0Tasks.length} done${nextTask ? ` · next: <span class="id">${nextTask.id}</span> ${esc(nextTask.task)}` : ""}</span></span></summary>
   <div class="v0body"><p>${esc(V0BOX.proves)}</p>
   <h4>Decided 4 Oct</h4><ul class="decisions">${V0BOX.decisions.map(([id,t]) => `<li><b>${id}</b> ${esc(t)}</li>`).join("")}</ul>
-  <h4>The order</h4><ol class="v0order">${v0Tasks.map(i => `<li><span class="id">${i.id}</span> ${esc(i.task)} <span class="where">${i.station.n} · ${esc(i.station.name)}</span></li>`).join("")}</ol>
+  <h4>The order</h4><ol class="v0order">${v0Tasks.map(i => `<li><span class="id">${i.st==="done"?"✓ ":""}${i.id}</span> ${esc(i.task)} <span class="where">${i.station.n} · ${esc(i.station.name)}</span></li>`).join("")}</ol>
   <p>${esc(V0BOX.measure)}</p><p class="later">${esc(V0BOX.later)}</p></div>`;
 // Open or folded is remembered per viewer, if storage allows
 const box = document.getElementById("nowbox");
@@ -720,7 +720,7 @@ box.addEventListener("toggle", () => { try { localStorage.setItem("golden-plan-v
 // Stations, each task expandable with its three reasons
 const task = i => `<li class="${i.st==="done"?"is-done":""}${i.st==="v0"?" is-v0":""}" data-st="${prio(i)==="P1" || isNext(i) ?"decide":i.st}"${i.v0?' data-v0="1"':""}><details><summary><span class="id">${i.id}</span><span class="pill ${status(i)[0]}">${status(i)[1]}</span><span class="txt">${prio(i)?`<b class="prio p${rank(i)}">${prio(i)}</b> `:""}${esc(i.task)}${KIND[i.st]?` <span class="kind">${KIND[i.st]}</span>`:""}</span></summary>
   <div class="why">${i.what?`<p class="what">${esc(i.what)}</p>`:""}
-  <dl>${i.st==="v0" ? `<dt>Why v0 needs it</dt><dd>${esc(i.why.need)}</dd>` : `<dt>For the golden set</dt><dd>${esc(i.why.set)}</dd>`}<dt>For this station</dt><dd>${esc(i.why.station)}</dd><dt>For the system</dt><dd>${esc(i.why.system)}</dd></dl></div></details></li>`;
+  <dl>${i.v0 ? `<dt>Why v0 needs it</dt><dd>${esc(i.why.need)}</dd>` : `<dt>For the golden set</dt><dd>${esc(i.why.set)}</dd>`}<dt>For this station</dt><dd>${esc(i.why.station)}</dd><dt>For the system</dt><dd>${esc(i.why.system)}</dd></dl></div></details></li>`;
 document.getElementById("pipe").innerHTML = [...STATIONS].sort((a,b) => a.n-b.n).map(s => {
   const d = s.items.filter(i => i.st==="done").length, n = s.items.length;
   const v0s = s.items.filter(i => i.st==="v0").map(i => i.v0);
