@@ -69,6 +69,42 @@ development); live tables refuse deletes, so test runs never go there.
 Only `--kind hourly` without `--dev` and without `DRY_RUN` sends to
 Telegram.
 
+## Measuring
+
+```bash
+cd pipeline/measure
+# The golden replay (10.1): training and validation articles through every station, scored; never the test set.
+V0_OWNER_URL="$(neonctl connection-string main --project-id calm-mouse-60802247 --database-name v0 --role-name neondb_owner)" \
+  node --env-file=../../../.env.v0 replay.ts
+node --env-file=../../../.env.v0 replay.ts --continue        # finish what a replay left waiting
+node --env-file=../../../.env.v0 write-digest.ts --fighter "Ilia Topuria" --from 2026-09-28 --to 2026-10-05
+node --env-file=../../../.env.v0 archive-digests.ts           # past weeks by three models, side by side (D25)
+```
+
+Each replay's scores are kept in `pipeline/measure/replay-results/`. The
+daily counts (10.2) are part of the hourly run.
+
+## The archive and the live job
+
+```bash
+cd pipeline
+node --env-file=../../.env.v0 run.ts --kind archive          # production's whole archive, as history, never posted (0.5)
+cd ../..
+PROJECT_ID=fighter-bot-504723 bash v0/setup-v0.sh             # v0-config secret, image, Cloud Run job ringfacts-v0
+PROJECT_ID=fighter-bot-504723 SCHEDULE=1 bash v0/setup-v0.sh  # ... plus the hourly trigger at :47
+gcloud run jobs execute ringfacts-v0 --region=us-west1 --wait # one run by hand
+```
+
+`setup-v0.sh` is separate from production's `setup.sh` on purpose: running
+`setup.sh` redeploys production.
+
+## The storyboard
+
+`storyboard/` is a Next.js app on Vercel (project `ringfacts-storyboard`,
+Root Directory `v0/storyboard`, Vercel Authentication on every
+deployment). It reads `DATABASE_URL`, the `v0_editor` address. See
+`storyboard/README.md`.
+
 ## Tests
 
 ```bash
