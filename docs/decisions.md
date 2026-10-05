@@ -1037,3 +1037,23 @@ spend on 2026-10-05, overriding the free-only default for embeddings.
 would post a day late during the archive's catch-up); production's Gemini
 key (a separate project with its own allowance, which v0 must not eat
 into, D28).
+
+## storyboard-builds-every-push — The storyboard builds on every push, with no skip rule
+*2026-10-05*
+
+The storyboard's `vercel.json` first carried an Ignored Build Step: skip the
+build unless `v0/storyboard/` or `v0/pipeline/settings/` changed since the
+last deployed commit. It saved about a minute of free build time per push,
+and it broke the one thing a redeploy is for. A Vercel environment variable
+reaches only builds made after it is set; the only deployment that had
+finished was built before `DATABASE_URL` existed, so every page failed with
+"DATABASE_URL is not set" (7 times on 5 October). The redeploy meant to
+pick the variable up changed no files, so the skip rule cancelled it, as it
+had cancelled every push since the first.
+
+The rule is gone: every push to the repository builds the storyboard, and a
+redeploy always builds.
+
+**Considered and rejected:** a smarter rule. Vercel tells the command which
+commit was deployed last, not whether a person asked for the build, so no
+comparison of files can tell a redeploy from a push that changed nothing.

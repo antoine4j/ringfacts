@@ -49,6 +49,6 @@ Open http://localhost:3000. `npm run build` checks the types and builds;
 | Setting | Value |
 |---|---|
 | Root Directory | `v0/storyboard` (with "include files outside the root directory" on, the default: the settings page imports `../pipeline/settings/`) |
-| Ignored Build Step | in `vercel.json`: builds only when `v0/storyboard/` or `v0/pipeline/settings/` changed since the last deployed commit (the parent commit when Vercel gives none); if git cannot compare, it builds |
+| Ignored Build Step | none: every push builds, and a redeploy always builds (a variable changed in Vercel reaches only builds made after it; see docs/decisions.md#storyboard-builds-every-push) |
 | Environment variable | `DATABASE_URL` = the `v0_editor` address (`V0_EDITOR_DATABASE_URL` in `.env.v0`) |
 | Deployment Protection | Vercel Authentication on all deployments: the database holds other outlets' article text |
