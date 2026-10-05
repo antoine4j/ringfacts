@@ -22,42 +22,46 @@ type ToPost = {
   outlets?: number | null;
 };
 
-// The kind of news, as the post's first words: every fact the settings could put at tier 1.
-const FACT_LABELS: Record<string, string> = {
-  result: "🏆 Result",
-  next_fight: "📅 Next fight",
-  fight_week_event: "🥊 Fight week",
-  health: "🩺 Health",
-  career_move: "🔁 Career move",
-  personal_life: "👤 Personal",
-  status_update: "📌 Update",
+// The kind of news: its emoji (the post's first character) and its words, for every fact the settings could put at tier 1.
+const FACT_LABELS: Record<string, { emoji: string; words: string }> = {
+  result: { emoji: "🏆", words: "Result" },
+  next_fight: { emoji: "📅", words: "Next fight" },
+  fight_week_event: { emoji: "🥊", words: "Fight week" },
+  health: { emoji: "🩺", words: "Health" },
+  career_move: { emoji: "🔁", words: "Career move" },
+  personal_life: { emoji: "👤", words: "Personal" },
+  status_update: { emoji: "📌", words: "Update" },
 };
+const NEWS = { emoji: "📰", words: "News" };
 const FIRMNESS_WORDS: Record<string, string> = { official_or_done: "official", reported: "reported", rumour: "rumour", wish: "wish" };
 
 /**
  * The post's label: the kind of news, and how firm it is unless it is a result (a result is done).
  *
  * @param cell  The reading's cell, such as "next_fight · reported".
- * @returns Such as "📅 Next fight · reported", or "📰 News" without a cell.
+ * @returns The emoji and the words, such as "📅" and "Next fight · reported"; "📰" and "News" without a cell.
  */
-export function newsLabel(cell: string | null | undefined): string {
+export function newsLabel(cell: string | null | undefined): { emoji: string; words: string } {
   const [fact, firmness] = (cell ?? "").split(" · ");
-  const kind = FACT_LABELS[fact] ?? "📰 News";
+  const kind = FACT_LABELS[fact] ?? NEWS;
   const firm = fact === "result" ? undefined : FIRMNESS_WORDS[firmness];
-  return firm ? `${kind} · ${firm}` : kind;
+  return { emoji: kind.emoji, words: firm ? `${kind.words} · ${firm}` : kind.words };
 }
 
 /**
- * The tier-1 message for one reading (the look Anton chose on 5 Oct, variant B).
+ * The tier-1 message for one reading (the look Anton chose on 5 Oct, variant G: the surname underlined, quieter than bold).
  *
  * @param row  The claim and its posting reading.
- * @returns Telegram HTML, one line each: the label, the fighter (so a long name never breaks after the label), the extract sentence (the headline when there is none), the outlet as a link and the claim's outlet count when above one.
+ * @returns Telegram HTML: the emoji, the fighter's surname underlined and the label on one line (the sentence names him in full, so only the surname leads); then the extract sentence (the headline when there is none); then the outlet as a link, and how many other outlets carry the claim when any do, such as "+ 5 more outlets".
  */
 export function tierOneMessage(row: ToPost): string {
+  const label = newsLabel(row.cell);
+  const surname = row.fighter.split(" ").pop() ?? row.fighter;
   const sentence = row.extract?.claim && row.extract.claim !== "NO CLAIM" ? row.extract.claim : row.headline;
-  const outlets = Number(row.outlets ?? 0) > 1 ? ` · ${Number(row.outlets)} outlets` : "";
+  const others = Number(row.outlets ?? 0) - 1;
+  const outlets = others > 0 ? ` + ${others} more ${others === 1 ? "outlet" : "outlets"}` : "";
   const link = `<a href="${escapeHtml(row.url)}">${escapeHtml(row.outlet || "source")}</a>`;
-  return `${newsLabel(row.cell)}\n<b>${escapeHtml(row.fighter)}</b>\n${escapeHtml(sentence)}\n${link}${outlets}`;
+  return `${label.emoji} <u>${escapeHtml(surname)}</u> · ${label.words}\n${escapeHtml(sentence)}\n${link}${outlets}`;
 }
 
 /**
