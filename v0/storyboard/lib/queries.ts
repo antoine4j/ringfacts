@@ -95,7 +95,7 @@ export type ClaimRow = {
 export type MemberRow = {
   claim_id: string;
   reading_id: string;
-  pick: { claim?: number | null; confidence?: number } | null;
+  pick: { claim?: number | null; confidence?: number; raw?: unknown } | null;
   headline: string;
   url: string;
   outlet: string;

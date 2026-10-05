@@ -2,6 +2,7 @@
 
 import type { ReactNode } from "react";
 import { percent } from "../lib/format.ts";
+import { DOUBTFUL_BELOW, pickExplanation, type GroupingPick } from "../lib/pick.ts";
 
 /**
  * "posted", with the reader's 👍 or 👎 when there is one.
@@ -26,18 +27,19 @@ export function TierTag({ tier }: { tier: number | null | undefined }) {
 }
 
 /**
- * Semantic dedup's pick confidence, flagged when the join is doubtful.
+ * Semantic dedup's pick and its confidence, flagged when doubtful; the tooltip
+ * says what the percentage is and what it nearly picked (lib/pick.ts).
  *
- * @param props.pick  The groupings.pick value: {claim, confidence}.
- * @returns The percentage; on a warning background below 50% when it joined a claim.
+ * @param props.pick  The groupings.pick value: {claim, confidence, raw}.
+ * @returns "joined 94%" or "new claim 69%"; on a warning background below 50%.
  */
-export function PickTag({ pick }: { pick: { claim?: number | null; confidence?: number } | null | undefined }) {
+export function PickTag({ pick }: { pick: GroupingPick | null | undefined }) {
   if (!pick) return <span className="muted">–</span>;
   const joined = pick.claim !== null && pick.claim !== undefined;
-  const isDoubtful = typeof pick.confidence === "number" && pick.confidence < 0.5;
+  const isDoubtful = typeof pick.confidence === "number" && pick.confidence < DOUBTFUL_BELOW;
   const what = joined ? "joined" : "new claim";
   return (
-    <span className={`tag ${isDoubtful ? "warn" : ""}`} title={isDoubtful ? "low confidence: check this grouping" : ""}>
+    <span className={`tag help ${isDoubtful ? "warn" : ""}`} title={pickExplanation(pick)}>
       {`${what} ${percent(pick.confidence)}${isDoubtful ? " ⚠" : ""}`}
     </span>
   );

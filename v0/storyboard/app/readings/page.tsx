@@ -34,7 +34,7 @@ type ReadingRow = {
   cell: string | null;
   centrality: string | null;
   claim_id: string | null;
-  pick: { claim?: number | null; confidence?: number } | null;
+  pick: { claim?: number | null; confidence?: number; raw?: unknown } | null;
 };
 
 /**

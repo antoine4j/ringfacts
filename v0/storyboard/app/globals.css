@@ -140,6 +140,7 @@ button.primary { background: var(--accent); color: var(--bg); border-color: var(
 button:disabled { opacity: 0.5; cursor: default; }
 
 .tag { display: inline-block; padding: 0 6px; border-radius: 9px; font-size: 12px; background: var(--panel); border: 1px solid var(--line); white-space: nowrap; }
+.tag.help { cursor: help; }
 .tier-1 { color: var(--post); border-color: var(--post); }
 .tier-2 { color: var(--digest); border-color: var(--digest); }
 .tier-3 { color: var(--drop); border-color: var(--drop); }
