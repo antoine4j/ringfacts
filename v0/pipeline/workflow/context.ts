@@ -18,6 +18,7 @@ export type RunContext = {
   importLimit: number | null;
   deadline: number;
   poster: Poster;
+  readsReactions: boolean;
   tally: Record<string, number>;
 };
 

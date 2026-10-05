@@ -5,6 +5,10 @@
 import { escapeHtml } from "../stations/telegram/telegram.ts";
 import { count, type RunContext } from "./context.ts";
 
+// News older than this is not posted: a claim whose first tier-1 article is
+// older waited too long (no chat yet, an outage) and is old news by now.
+export const MAX_POST_AGE_HOURS = 48;
+
 /** A claim ready to post, with the reading that posts it. */
 type ToPost = { claim_id: number; reading_id: number; fighter: string; headline: string; outlet: string; url: string; extract: { claim?: string } | null };
 
@@ -35,7 +39,9 @@ export async function postNewClaims(context: RunContext): Promise<{ posted: numb
      )
      SELECT f.* FROM first_tier_one f JOIN claims c ON c.id = f.claim_id
      WHERE c.posted_reading_id IS NULL AND NOT f.backfill
+       AND f.published_at > now() - make_interval(hours => $1)
      ORDER BY f.published_at`,
+    [MAX_POST_AGE_HOURS],
   );
 
   // Send each, then mark the claim posted; a failed send is retried next run.

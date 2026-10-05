@@ -9,6 +9,7 @@
 // --import-limit N (only the newest N production articles), --no-import,
 // --deadline-seconds S. DRY_RUN=1 prints instead of posting.
 
+import "./config.ts"; // first: fills the environment from v0-config on Cloud Run
 import { SUBJECTS } from "../../watchlist.js";
 import { openPool } from "./store/db.ts";
 import { IMPORT_WINDOW_DAYS } from "./store/import.ts";
@@ -55,7 +56,7 @@ function contextFromFlags(): { context: RunContext; kind: string } {
   const isDev = flag("dev") === true;
   const deadlineSeconds = Number(flag("deadline-seconds") ?? (kind === "hourly" ? HOURLY_DEADLINE_SECONDS : 1e9));
   const dryRun = Boolean(process.env.DRY_RUN) || isDev || kind !== "hourly";
-  const { poster } = makePoster(process.env.TELEGRAM_BOT_TOKEN, process.env.TELEGRAM_CHAT_ID, dryRun);
+  const { poster, sends } = makePoster(process.env.TELEGRAM_BOT_TOKEN, process.env.TELEGRAM_CHAT_ID, dryRun);
   const context: RunContext = {
     pool: openPool(required(isDev ? "V0_DEV_DATABASE_URL" : "V0_DATABASE_URL"), String(flag("schema") ?? "public")),
     feed: flag("no-import") ? null : openPool(required("V0_FEED_DATABASE_URL")),
@@ -66,6 +67,7 @@ function contextFromFlags(): { context: RunContext; kind: string } {
     importLimit: flag("import-limit") ? Number(flag("import-limit")) : null,
     deadline: Date.now() + deadlineSeconds * 1000,
     poster,
+    readsReactions: sends,
     tally: {},
   };
   return { context, kind };

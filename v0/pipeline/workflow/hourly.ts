@@ -12,6 +12,7 @@ import { classifyReading, extractReading, groupReading, decideReading } from "./
 import { postNewClaims } from "./post.ts";
 import { digestsDue } from "./digests.ts";
 import { dailyCountsDue } from "../measure/daily-counts.ts";
+import { storeReactions } from "./reactions.ts";
 import { count, type RunContext } from "./context.ts";
 
 const READING = z.object({ id: z.number() }).passthrough();
@@ -128,6 +129,16 @@ export function buildWorkflow(context: RunContext) {
       return {};
     },
   });
+  const reactionsStep = createStep({
+    id: "reactions",
+    inputSchema: z.any(),
+    outputSchema: z.any(),
+    execute: async () => {
+      // Only a run that may post reads reactions: it alone has the chat id.
+      if (context.readsReactions) await storeReactions(context, process.env.TELEGRAM_BOT_TOKEN, process.env.TELEGRAM_CHAT_ID);
+      return {};
+    },
+  });
   return createWorkflow({ id: "v0-hourly", inputSchema: z.any(), outputSchema: z.any() })
     .then(importStep(context))
     .then(loadStep(context, "classify"))
@@ -141,6 +152,7 @@ export function buildWorkflow(context: RunContext) {
     .then(postStep)
     .then(digestStep)
     .then(countsStep)
+    .then(reactionsStep)
     .commit();
 }
 

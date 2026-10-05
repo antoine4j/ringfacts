@@ -4,3 +4,5 @@ node_modules
 .git
 .DS_Store
 *.md
+# The v0 job's image (v0/pipeline/Dockerfile) needs the extractor's frozen prompt, a .md file.
+!v0/pipeline/stations/extractor/prompt-p4.md

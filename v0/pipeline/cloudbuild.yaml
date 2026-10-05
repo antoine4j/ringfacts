@@ -1,0 +1,8 @@
+# Builds the v0 job's image from the repository root with v0/pipeline/Dockerfile
+# and pushes it beside production's images. Run from the repository root:
+#   gcloud builds submit --config v0/pipeline/cloudbuild.yaml .
+steps:
+  - name: gcr.io/cloud-builders/docker
+    args: ["build", "-f", "v0/pipeline/Dockerfile", "-t", "us-west1-docker.pkg.dev/$PROJECT_ID/cloud-run-source-deploy/ringfacts-v0:latest", "."]
+images:
+  - us-west1-docker.pkg.dev/$PROJECT_ID/cloud-run-source-deploy/ringfacts-v0:latest

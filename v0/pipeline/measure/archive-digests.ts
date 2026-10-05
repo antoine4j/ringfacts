@@ -67,7 +67,7 @@ async function main(): Promise<void> {
   const pool = openPool(String(process.env[isDev ? "V0_DEV_DATABASE_URL" : "V0_DATABASE_URL"]));
   const context: RunContext = {
     pool, feed: null, keys: { jev: "", openrouter: "", gemini: "" }, subjects: [], backfill: true,
-    importDays: null, importLimit: null, deadline: Infinity, poster: async () => null, tally: {},
+    importDays: null, importLimit: null, deadline: Infinity, poster: async () => null, readsReactions: false, tally: {},
   };
 
   // The weeks run from the first archive article to each fighter's last scheduled moment.
