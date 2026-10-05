@@ -290,6 +290,14 @@ function drawSlice(){
   document.getElementById("togrid").onclick = () => document.querySelector(".gridbox").scrollIntoView({behavior:"smooth", block:"start"});
 }
 
+/** How much of the golden set this version's view covers, as the first figure of the stats line. @returns {string} */
+function coverage() {
+  const shown = DATA.claims.reduce((s,c) => s+c.n, 0);
+  if (!DATA.left_out) return `<span><b>${DATA.claims.length}</b> claims, <b>${shown}</b> articles: the whole golden set</span>`;
+  return `<span><b>${DATA.claims.length}</b> claims and <b>${shown}</b> articles shown, of the golden set's ${DATA.claims.length + DATA.left_out} and ${shown + DATA.left_out_articles}; ` +
+    `the test set's ${DATA.left_out} claims and ${DATA.left_out_articles} articles are left out (this version was not run on them)</span>`;
+}
+
 /** The grid for the chosen two dimensions, with totals and the top numbers. */
 function drawGrid(){
   const claims = visible(), weight = c => state.unit==="claims" ? 1 : c.n;
@@ -300,7 +308,7 @@ function drawGrid(){
   const ys = state.showEmpty ? Y : Y.filter(b => claims.some(c => c.v[state.y]===b));
   const max = Math.max(1, ...xs.flatMap(a => ys.map(b => sum(at(a,b)))));
   const never = [...X.filter(a => !DATA.claims.some(c => c.v[state.x]===a)), ...Y.filter(b => !DATA.claims.some(c => c.v[state.y]===b))];
-  document.getElementById("stats").innerHTML =
+  document.getElementById("stats").innerHTML = coverage() +
     `<span><b>${new Set(claims.map(c => c.v[state.x]+"|"+c.v[state.y])).size}</b> of ${X.length*Y.length} cells used</span>` +
     `<span><b>${claims.filter(doubts).length}</b> claims with a doubt</span>` +
     `<span>values no claim takes: ${never.length ? never.map(v => `<b>${esc(human(v))}</b>`).join(", ") : "none"}</span>`;
@@ -467,7 +475,7 @@ function drawErrGrid(){
   const arts = b => rows.filter(r => inErrCell(r, {dim:null, b})).length;
   h += `<tr><th class="row tot">articles</th>${B.map(b => `<td class="tot">${arts(b)}</td>`).join("")}<td class="gap"></td>${B.map(b => `<td class="tot">${b==="wrong" ? ["1","2","3+"].reduce((s,x)=>s+(DATA.checked.articles[x]||0),0) : (DATA.checked.articles[b]||0)}</td>`).join("")}</tr></tbody>`;
   const wrongAnswers = rows.reduce((s,r) => s + Object.values(r.grade).filter(g => g!=="right").length, 0);
-  document.getElementById("stats").innerHTML = `<span><b>${rows.length}</b> training articles in this slice</span><span><b>${wrongAnswers}</b> of ${rows.length*Q.length} answers differ from your key (${rows.length ? Math.round(100 - 100*wrongAnswers/(rows.length*Q.length)) : 0}% right)</span><span>a cell counts articles whose answer to that question differs from the key; on how central and how firm that includes one step off</span>`;
+  document.getElementById("stats").innerHTML = coverage() + `<span><b>${rows.length}</b> training articles in this slice</span><span><b>${wrongAnswers}</b> of ${rows.length*Q.length} answers differ from your key (${rows.length ? Math.round(100 - 100*wrongAnswers/(rows.length*Q.length)) : 0}% right)</span><span>a cell counts articles whose answer to that question differs from the key; on how central and how firm that includes one step off</span>`;
   const grid = document.getElementById("grid"); grid.innerHTML = h;
   grid.querySelectorAll("button.cell").forEach(btn => btn.onclick = () => {
     state.ecell = sel(btn.dataset.dim, btn.dataset.b) ? null : {dim:btn.dataset.dim, b:btn.dataset.b};

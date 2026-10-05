@@ -339,13 +339,14 @@ def version_data(version, articles, extractor_file, claims, key):
     answers, questions = answers_file["articles"], answers_file["questions"]
     extractor = extractor_file["articles"]
     dims = [(k, label) for k, label, _ in version["dims"]] + COMMON_DIMS + (GRADED_DIMS if version.get("graded") else [])
-    placed, left_out = [], 0
+    placed, left_out, left_out_articles = [], 0, 0
     # validation errors leave the builder only as totals: articles per column, and wrong answers per question and column
     checked = {"articles": collections.Counter(), "wrong": {b: collections.Counter() for b in BUCKETS}}
     for claim in claims:
         # a claim without answers is on the test side, which this version has not been sent
         if not all(a in answers for a in claim["articles"]):
             left_out += 1
+            left_out_articles += len(claim["articles"])
             continue
         rows = sorted((article_row(version, articles[a], answers[a], extractor[a]) for a in claim["articles"]),
                       key=lambda r: (r["date"], int(r["id"])))
@@ -378,7 +379,7 @@ def version_data(version, articles, extractor_file, claims, key):
             "flag_labels": {**FLAG_LABELS, **version.get("flag_labels", {})},
             "act_depends_on_source": "source" in [k for k, _, _ in version["dims"]] and version["key"] != "v2",
             "questions": {q: d.get("instructions", "") for q, d in questions.items()},
-            "dims": [{"key": k, "label": l} for k, l in dims], "values": values, "claims": placed, "left_out": left_out,
+            "dims": [{"key": k, "label": l} for k, l in dims], "values": values, "claims": placed, "left_out": left_out, "left_out_articles": left_out_articles,
             "graded": bool(version.get("graded")),
             "checked": {"articles": dict(checked["articles"]), "wrong": {b: dict(c) for b, c in checked["wrong"].items()}} if version.get("graded") else None,
             "axes": version["axes"], "flags": [f for f in FLAG_LABELS if any(c["flags"].get(f) for c in placed)]}
