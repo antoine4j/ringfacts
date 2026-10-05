@@ -51,13 +51,13 @@ export function newsLabel(cell: string | null | undefined): string {
  * The tier-1 message for one reading (the look Anton chose on 5 Oct, variant B).
  *
  * @param row  The claim and its posting reading.
- * @returns Telegram HTML: the label and the fighter, the extract sentence (the headline when there is none), the outlet as a link and the claim's outlet count when above one.
+ * @returns Telegram HTML, one line each: the label, the fighter (so a long name never breaks after the label), the extract sentence (the headline when there is none), the outlet as a link and the claim's outlet count when above one.
  */
 export function tierOneMessage(row: ToPost): string {
   const sentence = row.extract?.claim && row.extract.claim !== "NO CLAIM" ? row.extract.claim : row.headline;
   const outlets = Number(row.outlets ?? 0) > 1 ? ` · ${Number(row.outlets)} outlets` : "";
   const link = `<a href="${escapeHtml(row.url)}">${escapeHtml(row.outlet || "source")}</a>`;
-  return `${newsLabel(row.cell)} · <b>${escapeHtml(row.fighter)}</b>\n${escapeHtml(sentence)}\n${link}${outlets}`;
+  return `${newsLabel(row.cell)}\n<b>${escapeHtml(row.fighter)}</b>\n${escapeHtml(sentence)}\n${link}${outlets}`;
 }
 
 /**

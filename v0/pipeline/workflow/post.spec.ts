@@ -12,7 +12,7 @@ test("a tier-1 post is its label, the reading's own extract sentence and its lin
   const message = tierOneMessage({ ...ROW, extract: EXTRACT, cell: "next_fight · official_or_done", outlets: 3 });
   assert.equal(
     message,
-    '📅 Next fight · official · <b>Marko Testov</b>\nMarko Testov will fight Ivan Rivalov at UFC 400.\n<a href="https://example.com/?a=1&amp;b=2">Example &lt;News&gt;</a> · 3 outlets',
+    '📅 Next fight · official\n<b>Marko Testov</b>\nMarko Testov will fight Ivan Rivalov at UFC 400.\n<a href="https://example.com/?a=1&amp;b=2">Example &lt;News&gt;</a> · 3 outlets',
   );
 });
 
