@@ -129,14 +129,15 @@ Two themes, one tag each:
   (six secrets merged into one to fit the free six; Cloud Run's free CPU
   budgeted per job); embeddings on Gemini's free tier, with a same-model
   paid fallback measured at $0.00008 a reading; cheaper models where they
-  were good enough, and why production moved away from Haiku; the digest
+  were good enough, and why v0's design moved from Haiku (production's
+  matcher) to cheaper models; the digest
   model chosen blind on real output, at $0.008 to $0.08 a digest. Running
   cost kept apart from development and testing cost, which is higher.
   Evidence: `docs/decisions.md` (one-config-secret, v0-embedding-fallback),
   the v0 design spec's cost tables, the runs table's measured spend.
 - **Needs.** Measured monthly running cost for production and v0 (from the
   runs table and the billing pages), development spend to date, and the
-  decision record for moving off Haiku.
+  reasoning for leaving Haiku in v0's design.
 
 ## 8. A design doc in hours, a build overnight: building v0 with an autonomous agent
 *Added 2026-10-05 · status: idea · building with AI tools*
