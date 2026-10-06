@@ -277,9 +277,9 @@ pre.json { background: var(--chip); padding: 10px 12px; border-radius: 8px; over
   .reading .reviewed { grid-area: reviewed; }
   .reading .when { grid-area: when; }
   .reading .when br { display: none; }
-  .reading .when .reading-id { display: inline; margin-left: 4px; }
   .reading .outlet { grid-area: outlet; font-weight: 500; font-size: 13px; color: var(--muted); }
-  .reading .reviewed, .reading .when, .reading .outlet, .reading .grouping { align-self: center; }
+  /* The first line of each reads as one line: what wraps (the id, a long outlet) hangs below it. */
+  .reading .reviewed, .reading .when, .reading .outlet, .reading .grouping { align-self: baseline; }
   .reading .grouping { grid-area: grouping; }
   .reading .headline { grid-area: headline; }
   .reading .sentence { grid-area: sentence; }
