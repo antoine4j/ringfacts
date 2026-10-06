@@ -272,6 +272,8 @@ pre.json { background: var(--chip); padding: 10px 12px; border-radius: 8px; over
 .decision { display: inline-flex; flex-wrap: wrap; gap: 2px 6px; align-items: baseline; }
 .decision .why { color: var(--muted); font-size: 12px; text-decoration: underline dotted; text-underline-offset: 2px; }
 .decision .why:hover { color: var(--accent); }
+/* In a narrow column the answers always sit under the tier, short or long, so every row has one shape. */
+@media (min-width: 701px) { .decision .why { flex-basis: 100%; } }
 @media (max-width: 700px) {
   .reading.head { display: none; }
   .reading { grid-template-columns: auto auto 1fr auto; grid-template-areas: "reviewed when outlet grouping" "headline headline headline headline" "sentence sentence sentence sentence" "decision decision decision decision"; gap: 3px 8px; }
