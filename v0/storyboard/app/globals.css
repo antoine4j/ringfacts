@@ -324,7 +324,10 @@ pre.json { background: var(--chip); padding: 10px 12px; border-radius: 8px; over
   border: 1px solid var(--line); border-radius: var(--radius); box-shadow: 0 10px 30px rgb(15 20 30 / 0.16);
 }
 .picker-title { font-weight: 600; }
-.picker-options { display: grid; gap: 4px; max-height: 280px; overflow-y: auto; }
+/* The suggestions' box keeps one height loading, loaded or empty, so the choices below it never move. */
+.picker-suggestions { display: grid; gap: 4px; align-content: start; height: 200px; overflow-y: auto; }
+.option.placeholder { height: 56px; border-color: transparent; background: color-mix(in srgb, var(--line) 45%, var(--panel)); }
+.picker-options { display: grid; gap: 4px; }
 .picker-row { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; }
 .option { text-align: left; border-radius: 8px; padding: 5px 8px; font-weight: 450; display: block; width: 100%; }
 .option.short { width: auto; }

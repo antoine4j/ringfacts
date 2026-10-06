@@ -3,10 +3,12 @@
 // as…" on a claim, and the picker both open to
 // choose the other claim, with an optional note. Each control saves one row
 // (app/review-actions.ts) and reloads the page's data; nothing on the page is
-// regrouped by a mark.
+// regrouped by a mark. The picker's suggestions start loading when the pointer
+// reaches the button, and fill a box of fixed height, so nothing in the picker
+// moves when they arrive.
 
 import { useRouter } from "next/navigation";
-import { useEffect, useState, useTransition } from "react";
+import { useEffect, useRef, useState, useTransition } from "react";
 import type { ActionResult } from "../app/actions.ts";
 import { claimSuggestions, markReading, markSameClaim, type Suggestion } from "../app/review-actions.ts";
 import type { ReadingVerdict } from "../lib/reviews.ts";
@@ -39,6 +41,29 @@ function useSave(): { run: (save: () => Promise<ActionResult>, after?: () => voi
 }
 
 /**
+ * The picker's suggestions, fetched once and kept: started by preload (the
+ * pointer on the button, or the picker opening), read again by the picker.
+ *
+ * @param fetch  Asks the server for the suggestions.
+ * @returns preload() starts the fetch if it has not started and returns it; known() is the list if it has arrived; forget() drops it after a save, which can change the list.
+ */
+function usePreloaded(fetch: () => Promise<Suggestion[]>): { preload: () => Promise<Suggestion[]>; known: () => Suggestion[] | null; forget: () => void } {
+  const kept = useRef<{ promise: Promise<Suggestion[]>; found: Suggestion[] | null } | null>(null);
+  const preload = () => {
+    if (!kept.current) {
+      const entry: { promise: Promise<Suggestion[]>; found: Suggestion[] | null } = { promise: Promise.resolve([]), found: null };
+      entry.promise = fetch().then(
+        (found) => (entry.found = found),
+        () => (entry.found = []),
+      );
+      kept.current = entry;
+    }
+    return kept.current.promise;
+  };
+  return { preload, known: () => kept.current?.found ?? null, forget: () => (kept.current = null) };
+}
+
+/**
  * ✓ and ✕ on one reading in one claim. ✓ marks it belonging; ✕ opens the
  * picker to say where it belongs. Pressing a set mark clears it.
  *
@@ -50,6 +75,7 @@ function useSave(): { run: (save: () => Promise<ActionResult>, after?: () => voi
 export function ReadingReview({ claimId, readingId, current }: { claimId: string; readingId: string; current: CurrentMark }) {
   const { run, saving, error } = useSave();
   const [picking, setPicking] = useState(false);
+  const suggestions = usePreloaded(() => claimSuggestions({ claimId, readingId }));
 
   // The buttons show a new mark at once; the page's fresh data replaces it when it arrives.
   const [shown, setShown] = useState<{ from: CurrentMark; mark: CurrentMark } | null>(null);
@@ -58,7 +84,10 @@ export function ReadingReview({ claimId, readingId, current }: { claimId: string
   const off = Boolean(mark) && !belongs;
   const save = (verdict: ReadingVerdict, belongsIn: string | null = null, note = "") => {
     setShown({ from: current, mark: verdict === "cleared" ? null : { verdict, belongs_in_claim_id: belongsIn, note } });
-    run(() => markReading({ claimId, readingId, verdict, belongsIn, note }), () => setPicking(false));
+    run(() => markReading({ claimId, readingId, verdict, belongsIn, note }), () => {
+      setPicking(false);
+      suggestions.forget();
+    });
   };
 
   return (
@@ -66,13 +95,12 @@ export function ReadingReview({ claimId, readingId, current }: { claimId: string
       <button type="button" className="mark yes" aria-pressed={belongs} disabled={saving} title={belongs ? "Belongs in this claim: press to clear" : "Belongs in this claim"} onClick={() => save(belongs ? "cleared" : "belongs")}>
         ✓
       </button>
-      <button type="button" className="mark no" aria-pressed={off} disabled={saving} title={off ? "Does not belong: press to clear" : "Does not belong in this claim"} onClick={() => (off ? save("cleared") : setPicking(!picking))}>
+      <button type="button" className="mark no" aria-pressed={off} disabled={saving} title={off ? "Does not belong: press to clear" : "Does not belong in this claim"} onPointerEnter={() => off || suggestions.preload()} onFocus={() => off || suggestions.preload()} onClick={() => (off ? save("cleared") : setPicking(!picking))}>
         ✕
       </button>
       {picking && (
         <ClaimPicker
-          claimId={claimId}
-          readingId={readingId}
+          suggestions={suggestions}
           question="Where does it belong?"
           allowOwn
           saving={saving}
@@ -89,8 +117,7 @@ export function ReadingReview({ claimId, readingId, current }: { claimId: string
  * The picker: suggested claims, "its own claim" and "not sure" (for a
  * reading), a claim number, and an optional note.
  *
- * @param props.claimId  The claim the mark is made in.
- * @param props.readingId  The reading being placed, if any.
+ * @param props.suggestions  The suggested claims, perhaps already loaded.
  * @param props.question  The picker's title.
  * @param props.allowOwn  Offer "its own claim" and "not sure" (a reading); a claim link needs a claim.
  * @param props.saving  A save is running.
@@ -98,25 +125,24 @@ export function ReadingReview({ claimId, readingId, current }: { claimId: string
  * @param props.onSave  Save the choice and the note.
  * @returns The panel.
  */
-function ClaimPicker(props: { claimId: string; readingId?: string; question: string; allowOwn: boolean; saving: boolean; onCancel: () => void; onSave: (choice: Choice, note: string) => void }) {
-  const { claimId, readingId, question, allowOwn, saving, onCancel, onSave } = props;
-  const [suggestions, setSuggestions] = useState<Suggestion[] | null>(null);
+function ClaimPicker(props: { suggestions: ReturnType<typeof usePreloaded>; question: string; allowOwn: boolean; saving: boolean; onCancel: () => void; onSave: (choice: Choice, note: string) => void }) {
+  const { question, allowOwn, saving, onCancel, onSave } = props;
+  const [suggestions, setSuggestions] = useState<Suggestion[] | null>(props.suggestions.known);
   const [choice, setChoice] = useState<Choice | null>(allowOwn ? { kind: "unknown" } : null);
   const [typed, setTyped] = useState("");
   const [noting, setNoting] = useState(false);
   const [note, setNote] = useState("");
 
-  // The suggestions load when the picker opens.
+  // The suggestions arrive (if the pointer did not already fetch them) while the picker is open.
+  const { preload } = props.suggestions;
   useEffect(() => {
     let open = true;
-    claimSuggestions({ claimId, readingId }).then(
-      (found) => open && setSuggestions(found),
-      () => open && setSuggestions([]),
-    );
+    preload().then((found) => open && setSuggestions(found));
     return () => {
       open = false;
     };
-  }, [claimId, readingId]);
+    // Once per opening: preload is a new function each render but returns the same fetch.
+  }, []);
   const picked = (id: string) => choice?.kind === "claim" && choice.id === id && !typed;
 
   // A typed number is the choice as soon as it is a number.
@@ -129,7 +155,7 @@ function ClaimPicker(props: { claimId: string; readingId?: string; question: str
   return (
     <div className="picker" role="dialog" aria-label={question}>
       <div className="picker-title">{question}</div>
-      <div className="picker-options">
+      <div className="picker-suggestions" aria-busy={suggestions === null}>
         {suggestions?.map((suggestion) => (
           <button key={suggestion.id} type="button" className="option" aria-pressed={picked(suggestion.id)} onClick={() => {
               setTyped("");
@@ -139,8 +165,10 @@ function ClaimPicker(props: { claimId: string; readingId?: string; question: str
             <span className="option-why">{suggestion.why}</span>
           </button>
         ))}
-        {suggestions === null && <span className="muted small">Loading suggestions…</span>}
+        {suggestions === null && [0, 1, 2].map((row) => <span key={row} className="option placeholder" aria-hidden />)}
         {suggestions?.length === 0 && <span className="muted small">No suggestions; type a claim number below.</span>}
+      </div>
+      <div className="picker-options">
         {allowOwn && (
           <span className="picker-row">
             <button type="button" className="option short" aria-pressed={choice?.kind === "own"} onClick={() => setChoice({ kind: "own" })}>
@@ -186,6 +214,7 @@ function ClaimPicker(props: { claimId: string; readingId?: string; question: str
 export function SameClaimReview({ claimId, group }: { claimId: string; group: { id: string; direct: boolean }[] }) {
   const { run, saving, error } = useSave();
   const [picking, setPicking] = useState(false);
+  const suggestions = usePreloaded(() => claimSuggestions({ claimId }));
 
   return (
     <span className="review same-claim">
@@ -205,17 +234,20 @@ export function SameClaimReview({ claimId, group }: { claimId: string; group: { 
           ))}
         </span>
       )}
-      <button type="button" className="small" disabled={saving} onClick={() => setPicking(!picking)}>
+      <button type="button" className="small" disabled={saving} onPointerEnter={suggestions.preload} onFocus={suggestions.preload} onClick={() => setPicking(!picking)}>
         {saving ? "saving…" : "same claim as…"}
       </button>
       {picking && (
         <ClaimPicker
-          claimId={claimId}
+          suggestions={suggestions}
           question="Which claim is this the same claim as?"
           allowOwn={false}
           saving={saving}
           onCancel={() => setPicking(false)}
-          onSave={(choice, note) => choice.kind === "claim" && run(() => markSameClaim({ claimId, otherClaimId: choice.id, verdict: "same_claim", note }), () => setPicking(false))}
+          onSave={(choice, note) => choice.kind === "claim" && run(() => markSameClaim({ claimId, otherClaimId: choice.id, verdict: "same_claim", note }), () => {
+              setPicking(false);
+              suggestions.forget();
+            })}
         />
       )}
       {error && <span className="tag bad">{error}</span>}
