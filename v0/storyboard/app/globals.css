@@ -200,7 +200,12 @@ details > summary { cursor: pointer; }
 .claim[open] { border-color: color-mix(in srgb, var(--accent) 45%, var(--line)); }
 .claim > summary { list-style: none; }
 .claim > summary::-webkit-details-marker { display: none; }
-.claim .label { font-weight: 600; font-size: 15px; line-height: 1.4; }
+.claim .label-row { display: flex; align-items: baseline; gap: 12px; }
+.claim .label { font-weight: 600; font-size: 15px; line-height: 1.4; flex: 1; min-width: 0; }
+/* Ids sit in fixed places in a quiet mono, so text starts with words and the ids form a column. */
+.claim-id, .reading-id { font: 500 12px/1.4 var(--mono); color: var(--muted); white-space: nowrap; }
+.claim-id:hover, .reading-id:hover { color: var(--accent); }
+.reading .when .reading-id { display: block; }
 .claim .meta { font-size: 12px; color: var(--muted); display: flex; flex-wrap: wrap; align-items: center; gap: 4px 14px; margin-top: 4px; }
 .claim h2 { margin-top: 0; }
 
@@ -272,7 +277,9 @@ pre.json { background: var(--chip); padding: 10px 12px; border-radius: 8px; over
   .reading .reviewed { grid-area: reviewed; }
   .reading .when { grid-area: when; }
   .reading .when br { display: none; }
-  .reading .outlet { grid-area: outlet; font-weight: 600; }
+  .reading .when .reading-id { display: inline; margin-left: 4px; }
+  .reading .outlet { grid-area: outlet; font-weight: 500; font-size: 13px; color: var(--muted); }
+  .reading .reviewed, .reading .when, .reading .outlet, .reading .grouping { align-self: center; }
   .reading .grouping { grid-area: grouping; }
   .reading .headline { grid-area: headline; }
   .reading .sentence { grid-area: sentence; }
@@ -293,8 +300,6 @@ pre.json { background: var(--chip); padding: 10px 12px; border-radius: 8px; over
 .mark { width: 22px; height: 22px; padding: 0; border-radius: 999px; font-size: 12px; line-height: 1; color: var(--muted); background: var(--panel); }
 .mark.yes[aria-pressed="true"] { background: var(--post); border-color: var(--post); color: var(--on-accent); }
 .mark.no[aria-pressed="true"] { background: var(--warn-text); border-color: var(--warn-text); color: var(--on-accent); }
-.reading.is-new { box-shadow: inset 2px 0 0 var(--accent); padding-left: 8px; }
-.new-tag { margin-left: 6px; font-size: 12px; color: var(--accent); }
 .reading.is-off .headline > a:first-child, .reading.is-off .sentence { opacity: 0.55; }
 .mark-note { display: block; font-size: 12.5px; color: var(--warn-text); margin-top: 2px; }
 .mark-why { color: var(--muted); }

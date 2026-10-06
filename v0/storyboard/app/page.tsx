@@ -89,7 +89,12 @@ function ClaimCard({ claim, rows, digest, schema, review }: { claim: ClaimRow; r
   return (
     <details className="claim">
       <summary>
-        <div className="label">{claim.current_label}</div>
+        <div className="label-row">
+          <span className="label">{claim.current_label}</span>
+          <Link className="claim-id" href={`/claims/${claim.id}${schemaSuffix(schema)}`} title="Open this claim's page">
+            #{claim.id}
+          </Link>
+        </div>
         {labelChanged && <div className="small muted">first label: {claim.label}</div>}
         <div className="meta">
           <span>{claim.fighter}</span>
@@ -103,7 +108,6 @@ function ClaimCard({ claim, rows, digest, schema, review }: { claim: ClaimRow; r
           <ClaimStatus claim={claim} digest={digest} schema={schema} />
           {doubtful > 0 && <span className="tag warn">{doubtful} doubtful join{doubtful === 1 ? "" : "s"} ⚠</span>}
           <ReviewStatus view={review} />
-          <Link href={`/claims/${claim.id}${schemaSuffix(schema)}`}>claim #{claim.id} →</Link>
         </div>
       </summary>
       {review && (

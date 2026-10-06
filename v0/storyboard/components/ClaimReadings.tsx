@@ -46,26 +46,24 @@ export function ClaimReadings({ rows, schema, postedReadingId, claimId, review }
       {rows.map((row) => {
         const [day, time] = pacificTime(row.published_at).split(" ");
         const mark = review?.marks[row.reading_id] ?? null;
-        const isNew = review !== undefined && review.review.state !== "none" && !mark;
         const isOff = mark !== null && mark.verdict !== "belongs";
         return (
-          <div className={`reading${isNew ? " is-new" : ""}${isOff ? " is-off" : ""}`} key={row.reading_id}>
+          <div className={`reading${isOff ? " is-off" : ""}`} key={row.reading_id}>
             <span className="reviewed">{review ? <ReadingReview claimId={claimId} readingId={row.reading_id} current={mark} /> : <span className="muted">–</span>}</span>
             <span className="when">
               {day} <br />
-              {time}
+              {time}{" "}
+              <Link href={`/readings/${row.reading_id}${schemaSuffix(schema)}`} className="reading-id" title="This reading's page: every station's answer">
+                #{row.reading_id}
+              </Link>
             </span>
             <span className="outlet">{row.outlet}</span>
             <span className="headline">
               <a href={row.url} target="_blank" rel="noreferrer">
                 {row.headline}
-              </a>{" "}
-              <Link href={`/readings/${row.reading_id}${schemaSuffix(schema)}`} className="small">
-                #{row.reading_id}
-              </Link>
+              </a>
               {row.reading_id === postedReadingId && <PostedTag reaction={row.reaction} />}
               {isOff && mark && <MarkNote verdict={mark.verdict} belongsIn={mark.belongs_in_claim_id} note={mark.note} />}
-              {isNew && <span className="new-tag">new since review</span>}
             </span>
             <span className="sentence">{row.sentence}</span>
             <span className="grouping">
