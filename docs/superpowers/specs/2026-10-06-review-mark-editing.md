@@ -23,17 +23,14 @@ Two gaps showed up in the first days of live review.
 ## The rule
 
 **Tap a mark that is not set to set it; tap a mark that is set, or the line
-under the headline, to change it.** A mark with a note is cleared only from
-inside the editor, so a note is never lost to one tap. A ✓ with no note has
-nothing to lose, so tapping it clears it at once, as today.
+under the headline, to change it.** Nothing is lost until "clear" is pressed
+inside the editor.
 
 | Anton taps | What happens |
 |---|---|
-| ✓, not set | Saved as "belongs" at once; nothing opens. The usual one-tap review, unchanged. A quiet **add note** link appears beside it, and stays until Anton marks another reading or leaves the page. |
-| ✓, set, no note | Cleared at once: nothing is lost. |
+| ✓, not set | Saved as "belongs" at once; nothing opens. The usual one-tap review, unchanged. |
 | ✕, not set | The picker, as today: where it belongs, and an optional note. |
-| ✓, set, with a note | A small editor under the buttons: the note box with the note in force, **save**, **cancel**, and **clear mark and note** apart on the right in the warning colour. |
-| **add note**, after setting ✓ | The same editor, with an empty note box. |
+| ✓, set (green) | A small editor under the buttons: the note box (empty, or the note in force), **save**, **cancel**, and **clear mark** apart on the right in the warning colour. |
 | ✕, set | The picker, filled in with the choice in force (its own claim, a claim number, or not sure) and the note; **save**, **cancel**, **clear mark**. |
 | The line under the headline | The same editor as tapping the set mark. The claim number in "belongs in #419" stays a link to that claim; the rest of the line opens the editor. |
 | ✓ while ✕ is set | Switched to "belongs" at once. The ✕ note is not carried over: it explained why the reading did not belong. |
@@ -42,23 +39,17 @@ nothing to lose, so tapping it clears it at once, as today.
 
 ## Details
 
-- **Clearing a mark with a note takes two deliberate taps**: open the
-  editor, then **clear mark and note**, which names what would go. Every ✕
-  opens its picker when tapped, since a ✕ always holds a choice (where it
-  belongs) even without a note; its button reads **clear mark** or **clear
-  mark and note**.
-- **A note on an older bare ✓**: tap it (cleared, nothing lost), tap ✓
-  again, then **add note**. Three taps for a rare case, in exchange for
-  keeping the everyday ✓ free of dialogs. The **add note** link is not on a
-  timer: it goes when Anton moves on to another reading.
+- **Clearing takes two deliberate taps**: open the editor, then **clear
+  mark**. When the mark has a note the button reads **clear mark and note**,
+  so what would go is named.
 - **The editor is the confirmation.** An armed button (the first tap turns ✓
   into "clear?", a second within a few seconds clears) was considered and set
-  aside: the editor already asks for a second tap where something would be
-  lost, and a state that disarms itself on a timer is easy to miss on a
-  phone.
+  aside: the first tap on a set ✓ is needed to open the editor for a ✓ that
+  has no note yet, and a state that disarms itself on a timer is easy to miss
+  on a phone.
 - **Notes show under the headline on both marks**, in the muted line ✕ uses
   today: "belongs in #419 · *note*" for ✕, "· *note*" for ✓. A ✓ with no note
-  shows no line; its way in is **add note** right after setting it. On a wide screen the
+  shows no line, so the set ✓ is its way into the editor. On a wide screen the
   line takes a dotted underline on hover, as the decision's answers do. A
   ✓ reading is not dimmed; only ✕ readings are.
 - **No dot or icon on the buttons.** A dot on a mark with a note was
@@ -89,24 +80,21 @@ the history.
 
 ## What changes in the code
 
-- `components/ReviewControls.tsx`: a set mark with a note, or any set ✕,
-  opens the editor instead of clearing; a bare ✓ still clears in one tap;
-  **add note** after setting ✓; the ✓ editor; the ✕ picker accepts the mark in force as its
+- `components/ReviewControls.tsx`: a set mark opens the editor instead of
+  clearing; the ✓ editor; the ✕ picker accepts the mark in force as its
   starting choice and note, and gains **clear mark**.
 - `components/ClaimReadings.tsx`: the note line shows for ✓ notes too, and
   opens the editor.
 - The v0 design's use-case table (section 11, case 8, "Press it again") then
-  reads "tap it (with a note, or a ✕: then clear mark)".
+  reads "tap it, then clear mark".
 
 ## Tests
 
-- The pure parts get unit tests: which line a mark shows, what a tap on a
-  set mark does (clear at once, or open the editor), and the label of the
-  clear button with and without a note.
+- The pure parts get unit tests: which line a mark shows, and the label of
+  the clear button with and without a note.
 - The flows are checked in the browser on a throwaway Neon branch, never on
   live data: set ✓, add a note, edit it, clear it; set ✕ as its own claim,
-  move it to a claim, edit the note, clear it; switch ✓ to ✕ and back; tap
-  a bare ✓ and see it clear with no dialog. After
+  move it to a claim, edit the note, clear it; switch ✓ to ✕ and back. After
   each, the newest row in `review_readings` matches what the page shows.
 
 ## Left for later
