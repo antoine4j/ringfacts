@@ -25,13 +25,14 @@ const TIERS: Record<number, { name: string; does: string }> = {
  * A reading's tier as a coloured badge: the tier's number, a thin divider, its name.
  *
  * @param props.tier  1, 2, 3, or nothing when not decided yet.
+ * @param props.note  A sentence added to the tooltip, if any.
  * @returns "1 | post", "2 | digest", "3 | drop", or "–".
  */
-export function TierTag({ tier }: { tier: number | null | undefined }) {
+export function TierTag({ tier, note }: { tier: number | null | undefined; note?: string }) {
   if (tier === null || tier === undefined) return <span className="muted">–</span>;
   const known = TIERS[tier];
   return (
-    <span className={`tag help tier-${tier}`} title={known ? `Tier ${tier} of 3, ${known.name}: ${known.does}.` : `Tier ${tier}`}>
+    <span className={`tag help tier-${tier}`} title={`${known ? `Tier ${tier} of 3, ${known.name}: ${known.does}.` : `Tier ${tier}`}${note ? ` ${note}` : ""}`}>
       <span className="tier-number">{tier}</span>
       {known?.name ?? ""}
     </span>

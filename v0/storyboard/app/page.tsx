@@ -6,7 +6,7 @@ import Link from "next/link";
 import { ClaimReadings } from "../components/ClaimReadings.tsx";
 import { SameClaimReview } from "../components/ReviewControls.tsx";
 import { ReviewDot, ReviewStatus } from "../components/ReviewStatus.tsx";
-import { Empty } from "../components/bits.tsx";
+import { Empty, TierTag } from "../components/bits.tsx";
 import { FeedbackForm } from "../components/FeedbackForm.tsx";
 import { FilterBar } from "../components/FilterBar.tsx";
 import { query } from "../lib/db.ts";
@@ -84,6 +84,7 @@ type InDigest = { claim_id: string; digest_id: string; period_end: Date };
 function ClaimCard({ claim, rows, digest, schema, review }: { claim: ClaimRow; rows: MemberRow[]; digest: InDigest | null; schema: Schema; review?: ClaimReviewView }) {
   // A join is doubtful when the pick that made it was under 50% sure.
   const doubtful = rows.filter((row) => typeof row.pick?.confidence === "number" && row.pick.confidence < 0.5).length;
+  const tier = claimTier(rows);
   const labelChanged = claim.current_label !== claim.label;
 
   return (
@@ -106,7 +107,8 @@ function ClaimCard({ claim, rows, digest, schema, review }: { claim: ClaimRow; r
             first {shortTime(claim.first_published)}
             {claim.last_published && String(claim.last_published) !== String(claim.first_published) ? ` · latest ${shortTime(claim.last_published)}` : ""}
           </span>
-          <ClaimStatus claim={claim} digest={digest} schema={schema} />
+          {tier && <TierTag tier={tier.best} note={tier.note} />}
+          <ClaimStatus claim={claim} digest={digest} schema={schema} dropped={tier?.best === 3} />
           {doubtful > 0 && <span className="tag warn">{doubtful} doubtful join{doubtful === 1 ? "" : "s"} ⚠</span>}
           <ReviewStatus view={review} showDone={false} />
         </div>
@@ -123,14 +125,33 @@ function ClaimCard({ claim, rows, digest, schema, review }: { claim: ClaimRow; r
 }
 
 /**
+ * A claim's tier as the digest writer counts it: its best reading's tier, decided or not sent yet.
+ *
+ * @param rows  The claim's readings.
+ * @returns The best tier, and a tooltip sentence when its readings' tiers differ; null when none is decided.
+ */
+function claimTier(rows: MemberRow[]): { best: number; note?: string } | null {
+  const tiers = rows.map((row) => row.tier).filter((tier): tier is number => tier !== null && tier !== undefined);
+  if (tiers.length === 0) return null;
+  const best = Math.min(...tiers);
+
+  // Readings in more than one tier: say how many in each.
+  const names: Record<number, string> = { 1: "post", 2: "digest", 3: "drop" };
+  const counts = [1, 2, 3].map((tier) => ({ tier, count: tiers.filter((each) => each === tier).length })).filter((entry) => entry.count > 0);
+  if (counts.length === 1) return { best };
+  return { best, note: `The claim takes its best reading's tier; its readings: ${counts.map((entry) => `${entry.count} ${names[entry.tier]}`).join(", ")}.` };
+}
+
+/**
  * Where a claim went: its own post, a digest, or neither.
  *
  * @param props.claim  The claim.
  * @param props.digest  The latest posted digest that used it, or null.
  * @param props.schema  Kept on the link.
- * @returns A tag.
+ * @param props.dropped  Every reading is tier 3, so "not sent" would only repeat the tier.
+ * @returns A tag, or nothing for a dropped claim that went nowhere.
  */
-function ClaimStatus({ claim, digest, schema }: { claim: ClaimRow; digest: InDigest | null; schema: Schema }) {
+function ClaimStatus({ claim, digest, schema, dropped }: { claim: ClaimRow; digest: InDigest | null; schema: Schema; dropped: boolean }) {
   if (claim.posted_reading_id) return <span className="tag good">posted</span>;
   if (digest) {
     return (
@@ -139,5 +160,5 @@ function ClaimStatus({ claim, digest, schema }: { claim: ClaimRow; digest: InDig
       </Link>
     );
   }
-  return <span className="muted">not sent</span>;
+  return dropped ? null : <span className="muted">not sent</span>;
 }
