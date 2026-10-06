@@ -4,15 +4,27 @@
 /** Anton's time zone; every time on the storyboard is shown in it. */
 export const TIME_ZONE = "America/Los_Angeles";
 
-/** "2026-10-04 21:57" in Pacific time; Swedish locale writes dates in that order. */
-const timeFormat = new Intl.DateTimeFormat("sv-SE", {
+/** The parts of a Pacific moment, on a 12-hour clock. */
+const partsFormat = new Intl.DateTimeFormat("en-US", {
   timeZone: TIME_ZONE,
   year: "numeric",
   month: "2-digit",
   day: "2-digit",
-  hour: "2-digit",
+  hour: "numeric",
   minute: "2-digit",
+  hour12: true,
 });
+
+/**
+ * A moment's Pacific date and 12-hour time, as parts.
+ *
+ * @param moment  A Date or an ISO string.
+ * @returns Year, month and day as two digits, the clock as "9:57", and "AM" or "PM".
+ */
+function pacificParts(moment: Date | string): { year: string; month: string; day: string; clock: string; half: string } {
+  const parts = Object.fromEntries(partsFormat.formatToParts(new Date(moment)).map((part) => [part.type, part.value]));
+  return { year: parts.year, month: parts.month, day: parts.day, clock: `${parts.hour}:${parts.minute}`, half: parts.dayPeriod };
+}
 
 /** "2026-10-04" in Pacific time. */
 const dayFormat = new Intl.DateTimeFormat("sv-SE", { timeZone: TIME_ZONE, year: "numeric", month: "2-digit", day: "2-digit" });
@@ -21,11 +33,12 @@ const dayFormat = new Intl.DateTimeFormat("sv-SE", { timeZone: TIME_ZONE, year: 
  * A moment as Pacific date and time.
  *
  * @param moment  A Date, an ISO string, or nothing.
- * @returns For example "2026-10-04 21:57"; "" when there is no moment.
+ * @returns For example "2026-10-04 9:57 PM"; "" when there is no moment.
  */
 export function pacificTime(moment: Date | string | null | undefined): string {
   if (!moment) return "";
-  return timeFormat.format(new Date(moment));
+  const { year, month, day, clock, half } = pacificParts(moment);
+  return `${year}-${month}-${day} ${clock} ${half}`;
 }
 
 const MONTHS = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
@@ -34,12 +47,12 @@ const MONTHS = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "
  * A moment as a short Pacific day and time, for tight spaces.
  *
  * @param moment  A Date, an ISO string, or nothing.
- * @returns For example "29 Sep 18:00"; "" when there is no moment.
+ * @returns For example "29 Sep 6:00 PM"; "" when there is no moment.
  */
 export function shortTime(moment: Date | string | null | undefined): string {
-  const full = pacificTime(moment);
-  if (!full) return "";
-  return `${Number(full.slice(8, 10))} ${MONTHS[Number(full.slice(5, 7)) - 1]} ${full.slice(11, 16)}`;
+  if (!moment) return "";
+  const { month, day, clock, half } = pacificParts(moment);
+  return `${Number(day)} ${MONTHS[Number(month) - 1]} ${clock} ${half}`;
 }
 
 /**

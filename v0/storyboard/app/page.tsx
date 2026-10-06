@@ -100,7 +100,7 @@ function ClaimCard({ claim, rows, digest, schema, review }: { claim: ClaimRow; r
         <div className="meta">
           <span>{claim.fighter}</span>
           <span>
-            {claim.readings} readings · {claim.outlets} outlets
+            {claim.readings} reading{Number(claim.readings) === 1 ? "" : "s"} · {claim.outlets} outlet{Number(claim.outlets) === 1 ? "" : "s"}
           </span>
           <span>
             first {shortTime(claim.first_published)}

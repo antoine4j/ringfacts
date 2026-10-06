@@ -44,7 +44,7 @@ export function ClaimReadings({ rows, schema, postedReadingId, claimId, review }
         </span>
       </div>
       {rows.map((row) => {
-        const [day, time] = pacificTime(row.published_at).split(" ");
+        const [day, time] = splitDay(pacificTime(row.published_at));
         const mark = review?.marks[row.reading_id] ?? null;
         const isOff = mark !== null && mark.verdict !== "belongs";
         return (
@@ -77,6 +77,17 @@ export function ClaimReadings({ rows, schema, postedReadingId, claimId, review }
       })}
     </div>
   );
+}
+
+/**
+ * A Pacific time cut into its day and its clock, for two lines.
+ *
+ * @param time  "2026-10-05 1:24 PM".
+ * @returns ["2026-10-05", "1:24 PM"].
+ */
+function splitDay(time: string): [string, string] {
+  const space = time.indexOf(" ");
+  return [time.slice(0, space), time.slice(space + 1)];
 }
 
 /**

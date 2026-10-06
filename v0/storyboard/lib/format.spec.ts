@@ -3,7 +3,7 @@ import assert from "node:assert/strict";
 import { dollars, failures, pacificDay, pacificTime, percent, shortTime } from "./format.ts";
 
 test("times are shown in Pacific time", () => {
-  assert.equal(pacificTime("2026-10-05T05:05:07Z"), "2026-10-04 22:05");
+  assert.equal(pacificTime("2026-10-05T05:05:07Z"), "2026-10-04 10:05 PM");
   assert.equal(pacificDay("2026-10-05T05:05:07Z"), "2026-10-04");
   assert.equal(pacificTime(null), "");
 });
@@ -26,7 +26,13 @@ test("a confidence shows as a whole percentage", () => {
   assert.equal(percent(null), "");
 });
 
+test("times are on a 12-hour clock, with midnight and noon as 12", () => {
+  assert.equal(pacificTime("2026-10-05T07:00:00Z"), "2026-10-05 12:00 AM");
+  assert.equal(pacificTime("2026-10-05T19:00:00Z"), "2026-10-05 12:00 PM");
+  assert.equal(pacificTime("2026-10-05T16:09:00Z"), "2026-10-05 9:09 AM");
+});
+
 test("a short time is day, month and time in Pacific", () => {
-  assert.equal(shortTime("2026-09-30T01:00:00Z"), "29 Sep 18:00");
+  assert.equal(shortTime("2026-09-30T01:00:00Z"), "29 Sep 6:00 PM");
   assert.equal(shortTime(null), "");
 });
