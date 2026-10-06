@@ -6,12 +6,12 @@ import Link from "next/link";
 import { ClaimReadings } from "../components/ClaimReadings.tsx";
 import { SameClaimReview } from "../components/ReviewControls.tsx";
 import { ReviewDot, ReviewStatus } from "../components/ReviewStatus.tsx";
-import { Empty, TierTag } from "../components/bits.tsx";
+import { Empty, isDoubtfulPick, tierName, tierTitle } from "../components/bits.tsx";
 import { FeedbackForm } from "../components/FeedbackForm.tsx";
 import { FilterBar } from "../components/FilterBar.tsx";
 import { query } from "../lib/db.ts";
 import { claimFilter, claimOrder, whereSql, type Params } from "../lib/filters.ts";
-import { shortTime } from "../lib/format.ts";
+import { dayAndClock, shortTime } from "../lib/format.ts";
 import { claimMembers, claimReviews, fighterNames, outletNames, type ClaimRow, type MemberRow } from "../lib/queries.ts";
 import type { ClaimReviewView } from "../lib/reviews.ts";
 import { schemaFrom, schemaSuffix, type Schema } from "../lib/schema.ts";
@@ -57,8 +57,8 @@ export default async function ClaimsPage({ searchParams }: { searchParams: Promi
       <FilterBar path="/" params={params} schema={schema} fighters={fighters} outlets={outlets} claimOptions />
       <p className="muted small">
         {claims.length} claim{claims.length === 1 ? "" : "s"}
-        {claims.length === LIMIT ? ` (the first ${LIMIT})` : ""}. Dates, outlet and tier match a claim when any of its readings matches. A pick under 50% is
-        flagged ⚠.
+        {claims.length === LIMIT ? ` (the first ${LIMIT})` : ""}. Dates, outlet and tier match a claim when any of its readings matches. A grouping under 50%
+        sure shows as "doubtful join".
       </p>
       {claims.length === 0 && <Empty>No claims match.</Empty>}
       {claims.map((claim) => (
@@ -82,8 +82,9 @@ type InDigest = { claim_id: string; digest_id: string; period_end: Date };
  * @returns The card.
  */
 function ClaimCard({ claim, rows, digest, schema, review }: { claim: ClaimRow; rows: MemberRow[]; digest: InDigest | null; schema: Schema; review?: ClaimReviewView }) {
-  // A join is doubtful when the pick that made it was under 50% sure.
-  const doubtful = rows.filter((row) => typeof row.pick?.confidence === "number" && row.pick.confidence < 0.5).length;
+  // A join is doubtful when the pick that made it was under 50% sure; Anton's mark on the reading, either way, settles it.
+  const doubtful = rows.filter((row) => isDoubtfulPick(row.pick));
+  const unsettled = doubtful.filter((row) => !review?.marks[row.reading_id]).length;
   const tier = claimTier(rows);
   const labelChanged = claim.current_label !== claim.label;
 
@@ -98,19 +99,25 @@ function ClaimCard({ claim, rows, digest, schema, review }: { claim: ClaimRow; r
           <ReviewDot view={review} readings={rows.length} />
         </div>
         {labelChanged && <div className="small muted">first label: {claim.label}</div>}
+        {/* Facts on the left, each in a column of its own; the verdict on the right, under the number. */}
         <div className="meta">
-          <span>{claim.fighter}</span>
-          <span>
+          <span className="meta-fighter">{claim.fighter}</span>
+          <span className="meta-counts">
             {claim.readings} reading{Number(claim.readings) === 1 ? "" : "s"} · {claim.outlets} outlet{Number(claim.outlets) === 1 ? "" : "s"}
           </span>
-          <span>
-            first {shortTime(claim.first_published)}
-            {claim.last_published && String(claim.last_published) !== String(claim.first_published) ? ` · latest ${shortTime(claim.last_published)}` : ""}
+          <span className="meta-times">{firstAndLatest(claim.first_published, claim.last_published)}</span>
+          <span className="meta-flags">
+            {doubtful.length > 0 && (
+              <span
+                className={`tag help ${unsettled > 0 ? "note-doubt" : "note-settled"}`}
+                title={`The grouping was under 50% sure when it joined ${doubtful.length === 1 ? "this reading" : "these readings"} to this claim: ${doubtful.length - unsettled} reviewed, ${unsettled} not yet.`}
+              >
+                {doubtful.length} doubtful join{doubtful.length === 1 ? "" : "s"}
+              </span>
+            )}
+            <ReviewStatus view={review} showDone={false} />
           </span>
-          {tier && <TierTag tier={tier.best} note={tier.note} />}
-          <ClaimStatus claim={claim} digest={digest} schema={schema} dropped={tier?.best === 3} />
-          {doubtful > 0 && <span className="tag warn">{doubtful} doubtful join{doubtful === 1 ? "" : "s"} ⚠</span>}
-          <ReviewStatus view={review} showDone={false} />
+          <ClaimVerdict claim={claim} tier={tier} digest={digest} schema={schema} />
         </div>
       </summary>
       {review && (
@@ -143,22 +150,53 @@ function claimTier(rows: MemberRow[]): { best: number; note?: string } | null {
 }
 
 /**
- * Where a claim went: its own post, a digest, or neither.
+ * When a claim's readings were published: the first, and the latest when later; the latest's day only when it differs.
+ *
+ * @param first  The first reading's time.
+ * @param latest  The latest reading's time.
+ * @returns Such as "first 24 Sep 5:00 AM · latest 11:40 AM".
+ */
+function firstAndLatest(first: Date | string | null, latest: Date | string | null): string {
+  const text = `first ${shortTime(first)}`;
+  if (!latest || String(latest) === String(first)) return text;
+  const [firstDay] = dayAndClock(first);
+  const [latestDay, latestClock] = dayAndClock(latest);
+  return `${text} · latest ${latestDay === firstDay ? latestClock : `${latestDay} ${latestClock}`}`;
+}
+
+/**
+ * The claim's verdict as one pill in its tier's colour, like a reading's tier badge: the
+ * tier's name, a thin divider, then where it went; the pill ends at the card's right edge.
  *
  * @param props.claim  The claim.
+ * @param props.tier  Its tier, from claimTier, or null when no reading is decided.
  * @param props.digest  The latest posted digest that used it, or null.
- * @param props.schema  Kept on the link.
- * @param props.dropped  Every reading is tier 3, so "not sent" would only repeat the tier.
- * @returns A tag, or nothing for a dropped claim that went nowhere.
+ * @param props.schema  Kept on the digest link.
+ * @returns Such as "digest | not sent", "post | posted", "digest | sent · week to 5 Oct", or "drop".
  */
-function ClaimStatus({ claim, digest, schema, dropped }: { claim: ClaimRow; digest: InDigest | null; schema: Schema; dropped: boolean }) {
-  if (claim.posted_reading_id) return <span className="tag good">posted</span>;
-  if (digest) {
-    return (
-      <Link className="tag" href={`/digests?fighter=${encodeURIComponent(claim.fighter)}${schema === "replay" ? "&schema=replay" : ""}#digest-${digest.digest_id}`}>
-        in digest · week to {shortTime(digest.period_end).split(" ").slice(0, 2).join(" ")}
+function ClaimVerdict({ claim, tier, digest, schema }: { claim: ClaimRow; tier: { best: number; note?: string } | null; digest: InDigest | null; schema: Schema }) {
+  // Where it went: its own post, a posted digest, or nowhere yet (said only when it was meant to go somewhere).
+  let outcome = null;
+  if (claim.posted_reading_id) outcome = <span>posted</span>;
+  else if (digest) {
+    outcome = (
+      <Link href={`/digests?fighter=${encodeURIComponent(claim.fighter)}${schema === "replay" ? "&schema=replay" : ""}#digest-${digest.digest_id}`}>
+        sent · week to {dayAndClock(digest.period_end)[0]}
       </Link>
     );
+  } else if (tier && tier.best < 3) outcome = <span>not sent</span>;
+
+  if (!tier) {
+    return (
+      <span className="meta-verdict" title="No reading decided yet">
+        undecided
+      </span>
+    );
   }
-  return dropped ? null : <span className="muted">not sent</span>;
+  return (
+    <span className={`meta-verdict tag help tier-${tier.best}`} title={tierTitle(tier.best, tier.note)}>
+      <span className={`verdict-tier${outcome ? " divided" : ""}`}>{tierName(tier.best)}</span>
+      {outcome}
+    </span>
+  );
 }

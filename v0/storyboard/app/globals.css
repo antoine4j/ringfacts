@@ -189,7 +189,7 @@ button:disabled { opacity: 0.5; cursor: default; }
 .tag.help { cursor: help; }
 /* The tier badge: its number, a thin divider in the tier's colour, its name. */
 .tier-number { font-weight: 600; padding-right: 5px; margin-right: 5px; border-right: 1px solid color-mix(in srgb, currentColor 40%, transparent); }
-.tier-1, .tier-2, .tier-3 { padding: 0 7px; line-height: 18px; }
+.tier-1, .tier-2, .tier-3, .note-problem, .note-doubt, .note-settled, .note-mine { padding: 0 7px; line-height: 18px; }
 .tier-1 { color: var(--post); background: color-mix(in srgb, var(--post) 10%, transparent); }
 .tier-2 { color: var(--digest); background: color-mix(in srgb, var(--digest) 10%, transparent); }
 .tier-3 { color: var(--drop); background: color-mix(in srgb, var(--drop) 10%, transparent); }
@@ -212,6 +212,29 @@ details > summary { cursor: pointer; }
 .claim-id:hover, .reading-id:hover { color: var(--accent); }
 .reading .when .reading-id { display: block; }
 .claim .meta { font-size: 12px; color: var(--muted); display: flex; flex-wrap: wrap; align-items: center; gap: 4px 14px; margin-top: 4px; }
+.claim .meta-flags { display: contents; }
+/* Notes on a claim's grouping, in the tier pill's shape and tint: rose for a problem found
+   (an outline only for the pipeline's doubt, a suspicion, grey once checked), blue for Anton's own notes. */
+.note-problem { color: var(--bad-text); background: color-mix(in srgb, var(--bad-text) 10%, transparent); }
+.note-doubt { color: var(--bad-text); border-color: color-mix(in srgb, var(--bad-text) 45%, transparent); background: transparent; }
+.note-mine { color: var(--accent); background: color-mix(in srgb, var(--accent) 10%, transparent); }
+/* A doubt Anton has checked: kept as a record, filled grey. */
+.note-settled { color: var(--muted); background: color-mix(in srgb, var(--muted) 12%, transparent); }
+.note-mine a { color: inherit; }
+/* The verdict: one pill in the tier's colour, the tier's name | where the claim went. */
+.verdict-tier { font-weight: 600; }
+.verdict-tier.divided { padding-right: 5px; margin-right: 5px; border-right: 1px solid color-mix(in srgb, currentColor 40%, transparent); }
+.meta-verdict a { color: inherit; text-decoration: underline dotted; text-underline-offset: 2px; }
+.meta-verdict a:hover { color: var(--accent); }
+/* On a wide screen every fact has a column of its own, so a short name or a missing
+   "latest" never moves what follows; the flags sit right of the facts, the verdict last,
+   under the claim's number. A phone keeps the wrapping line above. */
+@media (min-width: 801px) {
+  .claim .meta { display: grid; grid-template-columns: 104px 140px 264px minmax(0, 1fr) auto; gap: 4px 14px; }
+  .claim .meta-verdict { justify-self: end; }
+  .claim .meta > * { white-space: nowrap; }
+  .claim .meta-flags { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 4px 10px; white-space: normal; }
+}
 .claim h2 { margin-top: 0; }
 
 .section { border-top: 1px solid var(--line); margin-top: 18px; padding-top: 6px; }
@@ -322,7 +345,6 @@ pre.json { background: var(--chip); padding: 10px 12px; border-radius: 8px; over
 .review-dot.has_new { border-color: var(--soft-post); background-image: conic-gradient(var(--soft-post) var(--done), transparent 0); }
 .review-dot.reviewed { border-color: var(--soft-post); background-color: var(--soft-post); color: var(--panel); font: 700 8px/9px var(--body); text-align: center; }
 .review-dot.reviewed::after { content: "✓"; }
-.review-state.has-new { color: var(--accent); }
 .claim[open] > summary .review-group { display: none; }
 .review-bar { display: flex; flex-wrap: wrap; gap: 6px 12px; align-items: center; margin: 10px 0 2px; }
 .review-line { display: flex; flex-wrap: wrap; gap: 6px 12px; align-items: center; }

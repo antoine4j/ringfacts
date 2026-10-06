@@ -22,6 +22,23 @@ const TIERS: Record<number, { name: string; does: string }> = {
 };
 
 /**
+ * What a tier means, for a tooltip.
+ *
+ * @param tier  1, 2 or 3.
+ * @param note  A sentence to add, if any.
+ * @returns Such as "Tier 2 of 3, digest: not posted on its own; it goes into the fighter's weekly digest."
+ */
+export function tierTitle(tier: number, note?: string): string {
+  const known = TIERS[tier];
+  return `${known ? `Tier ${tier} of 3, ${known.name}: ${known.does}.` : `Tier ${tier}`}${note ? ` ${note}` : ""}`;
+}
+
+/** A tier's one-word name: "post", "digest" or "drop". */
+export function tierName(tier: number): string {
+  return TIERS[tier]?.name ?? `tier ${tier}`;
+}
+
+/**
  * A reading's tier as a coloured badge: the tier's number, a thin divider, its name.
  *
  * @param props.tier  1, 2, 3, or nothing when not decided yet.
@@ -32,7 +49,7 @@ export function TierTag({ tier, note }: { tier: number | null | undefined; note?
   if (tier === null || tier === undefined) return <span className="muted">–</span>;
   const known = TIERS[tier];
   return (
-    <span className={`tag help tier-${tier}`} title={`${known ? `Tier ${tier} of 3, ${known.name}: ${known.does}.` : `Tier ${tier}`}${note ? ` ${note}` : ""}`}>
+    <span className={`tag help tier-${tier}`} title={tierTitle(tier, note)}>
       <span className="tier-number">{tier}</span>
       {known?.name ?? ""}
     </span>
@@ -40,20 +57,31 @@ export function TierTag({ tier, note }: { tier: number | null | undefined; note?
 }
 
 /**
+ * Whether the grouping was under 50% sure of this pick.
+ *
+ * @param pick  The groupings.pick value.
+ * @returns True below DOUBTFUL_BELOW.
+ */
+export function isDoubtfulPick(pick: GroupingPick | null | undefined): boolean {
+  return typeof pick?.confidence === "number" && pick.confidence < DOUBTFUL_BELOW;
+}
+
+/**
  * Semantic dedup's pick and its confidence, flagged when doubtful; the tooltip
  * says what the percentage is and what it nearly picked (lib/pick.ts).
  *
  * @param props.pick  The groupings.pick value: {claim, confidence, raw}.
- * @returns "joined 94%" or "new claim 69%"; on a warning background below 50%.
+ * @param props.reviewed  Anton has marked this reading, which settles any doubt about it.
+ * @returns "joined 94%" or "new claim 69%"; below 50%, outlined in rose until reviewed and filled grey after, like the claim card's "doubtful join".
  */
-export function PickTag({ pick }: { pick: GroupingPick | null | undefined }) {
+export function PickTag({ pick, reviewed = false }: { pick: GroupingPick | null | undefined; reviewed?: boolean }) {
   if (!pick) return <span className="muted">–</span>;
   const joined = pick.claim !== null && pick.claim !== undefined;
-  const isDoubtful = typeof pick.confidence === "number" && pick.confidence < DOUBTFUL_BELOW;
+  const doubt = isDoubtfulPick(pick) ? (reviewed ? "note-settled" : "note-doubt") : "";
   const what = joined ? "joined" : "new claim";
   return (
-    <span className={`tag help ${isDoubtful ? "warn" : ""}`} title={pickExplanation(pick)}>
-      {`${what} ${percent(pick.confidence)}${isDoubtful ? " ⚠" : ""}`}
+    <span className={`tag help ${doubt}`} title={`${pickExplanation(pick)}${doubt === "note-settled" ? " Reviewed by you." : ""}`}>
+      {`${what} ${percent(pick.confidence)}`}
     </span>
   );
 }

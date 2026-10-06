@@ -1,7 +1,8 @@
 // A claim's review on its folded card (D35): whether its readings are
 // reviewed, how many arrived since, how many do not belong, the claims Anton
 // said it is the same claim as, and readings marked as belonging here from
-// another claim. Quiet on purpose: muted words, one warning tint.
+// another claim. Quiet on purpose: soft pills in the same shape as the
+// tier's, rose for a problem found, blue for Anton's own notes.
 
 import type { CSSProperties } from "react";
 import type { ClaimReviewView } from "../lib/reviews.ts";
@@ -40,20 +41,16 @@ export function ReviewStatus({ view, showGroup = true, showDone = true }: { view
   return (
     <>
       {review.state === "reviewed" && showDone && <span className="review-state">✓ reviewed</span>}
-      {review.state === "has_new" && (
-        <span className="review-state has-new">
-          {showDone && "✓ reviewed · "}
-          {review.newCount} new
-        </span>
-      )}
-      {review.notBelonging > 0 && <span className="tag warn">{review.notBelonging === 1 ? "1 doesn't belong" : `${review.notBelonging} don't belong`}</span>}
+      {review.state === "has_new" && showDone && <span className="review-state">✓ reviewed</span>}
+      {review.state === "has_new" && <span className="tag note-mine">{review.newCount} new</span>}
+      {review.notBelonging > 0 && <span className="tag note-problem">{review.notBelonging === 1 ? "1 doesn't belong" : `${review.notBelonging} don't belong`}</span>}
       {showGroup && group.length > 0 && (
-        <span className="review-state review-group">
+        <span className="tag note-mine review-group">
           same claim as <ClaimLinks ids={group.map((other) => other.id)} />
         </span>
       )}
       {inbound.length > 0 && (
-        <span className="review-state">
+        <span className="tag note-mine">
           +{inbound.length} reading{inbound.length === 1 ? "" : "s"} marked here, from <ClaimLinks ids={fromClaims} />
         </span>
       )}

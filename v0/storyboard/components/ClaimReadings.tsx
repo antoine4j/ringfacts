@@ -66,7 +66,7 @@ export function ClaimReadings({ rows, schema, postedReadingId, claimId, review }
             </span>
             <span className="sentence">{row.sentence}</span>
             <span className="grouping">
-              <PickTag pick={row.pick} />
+              <PickTag pick={row.pick} reviewed={Boolean(review?.marks[row.reading_id])} />
             </span>
             <span className="decision-cell">
               <Decision tier={row.tier} cell={row.cell} centrality={row.centrality} schema={schema} />
