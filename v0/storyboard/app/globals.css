@@ -305,7 +305,7 @@ pre.json { background: var(--chip); padding: 10px 12px; border-radius: 8px; over
 .mark-note { display: block; font-size: 12.5px; color: var(--warn-text); margin-top: 2px; }
 .mark-why { color: var(--muted); }
 .review-state { color: var(--muted); }
-.review-dot { --soft-post: color-mix(in srgb, var(--post) 55%, var(--panel)); flex: none; box-sizing: border-box; width: 12px; height: 12px; margin-top: 4.5px; align-self: flex-start; border-radius: 50%; border: 1.5px solid var(--line); }
+.review-dot { --soft-post: color-mix(in srgb, var(--post) 55%, var(--panel)); flex: none; box-sizing: border-box; width: 12px; height: 12px; margin: 4.5px 0 0 -6px; align-self: flex-start; border-radius: 50%; border: 1.5px solid var(--line); }
 .review-dot.has_new { border-color: var(--soft-post); background-image: conic-gradient(var(--soft-post) var(--done), transparent 0); }
 .review-dot.reviewed { border-color: var(--soft-post); background-color: var(--soft-post); color: var(--panel); font: 700 8px/9px var(--body); text-align: center; }
 .review-dot.reviewed::after { content: "✓"; }

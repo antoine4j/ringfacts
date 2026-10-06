@@ -90,11 +90,11 @@ function ClaimCard({ claim, rows, digest, schema, review }: { claim: ClaimRow; r
     <details className={`claim${review?.review.state === "reviewed" ? " is-reviewed" : ""}`}>
       <summary>
         <div className="label-row">
-          <ReviewDot view={review} readings={rows.length} />
           <span className="label">{claim.current_label}</span>
           <Link className="claim-id" href={`/claims/${claim.id}${schemaSuffix(schema)}`} title="Open this claim's page">
             #{claim.id}
           </Link>
+          <ReviewDot view={review} readings={rows.length} />
         </div>
         {labelChanged && <div className="small muted">first label: {claim.label}</div>}
         <div className="meta">

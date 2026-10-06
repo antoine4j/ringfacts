@@ -7,10 +7,10 @@ import type { CSSProperties } from "react";
 import type { ClaimReviewView } from "../lib/reviews.ts";
 
 /**
- * The review circle at the start of a folded claim's title, in the same place
- * on every card so a glance down the list reads them: an empty ring when
- * nothing is reviewed, a pie filled by the share reviewed when some readings
- * are new, a full circle with a tick when all are reviewed.
+ * The review circle at the right end of a folded claim's title row, after its
+ * number, in the same place on every card so a glance down the list reads
+ * them: an empty ring when nothing is reviewed, a pie filled by the share
+ * reviewed when some readings are new, a full circle with a tick when all are reviewed.
  *
  * @param props.view  The claim's review; absent on the golden replay, which shows no circle.
  * @param props.readings  How many readings the claim has.
