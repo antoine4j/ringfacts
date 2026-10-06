@@ -185,11 +185,11 @@ button:disabled { opacity: 0.5; cursor: default; }
 .tag { display: inline-block; padding: 0 8px; border-radius: 999px; font-size: 12px; line-height: 20px; background: var(--chip); border: 1px solid transparent; white-space: nowrap; }
 .tag.help { cursor: help; }
 /* The tier badge: its number, a thin divider in the tier's colour, its name. */
-.tier-number { font-weight: 700; padding-right: 5px; margin-right: 5px; border-right: 1px solid currentColor; }
-.tier-1, .tier-2, .tier-3 { background: transparent; }
-.tier-1 { color: var(--post); border-color: var(--post); }
-.tier-2 { color: var(--digest); border-color: var(--digest); }
-.tier-3 { color: var(--drop); border-color: var(--drop); }
+.tier-number { font-weight: 600; padding-right: 5px; margin-right: 5px; border-right: 1px solid color-mix(in srgb, currentColor 40%, transparent); }
+.tier-1, .tier-2, .tier-3 { padding: 0 7px; line-height: 18px; }
+.tier-1 { color: var(--post); background: color-mix(in srgb, var(--post) 10%, transparent); }
+.tier-2 { color: var(--digest); background: color-mix(in srgb, var(--digest) 10%, transparent); }
+.tier-3 { color: var(--drop); background: color-mix(in srgb, var(--drop) 10%, transparent); }
 .warn { background: var(--warn-bg); color: var(--warn-text); border-color: transparent; }
 .bad { background: var(--bad-bg); color: var(--bad-text); border-color: transparent; }
 .good { background: var(--good-bg); border-color: transparent; }
@@ -278,6 +278,7 @@ pre.json { background: var(--chip); padding: 10px 12px; border-radius: 8px; over
   .reading .reviewed { grid-area: reviewed; }
   .reading .when { grid-area: when; }
   .reading .when br { display: none; }
+  .reading .when { white-space: nowrap; }
   .reading .outlet { grid-area: outlet; font-weight: 500; font-size: 13px; color: var(--muted); }
   /* The first line of each reads as one line: what wraps (the id, a long outlet) hangs below it. */
   .reading .reviewed, .reading .when, .reading .outlet, .reading .grouping { align-self: baseline; }

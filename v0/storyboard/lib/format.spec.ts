@@ -1,6 +1,6 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
-import { dollars, failures, pacificDay, pacificTime, percent, shortTime } from "./format.ts";
+import { dayAndClock, dollars, failures, pacificDay, pacificTime, percent, shortTime } from "./format.ts";
 
 test("times are shown in Pacific time", () => {
   assert.equal(pacificTime("2026-10-05T05:05:07Z"), "2026-10-04 10:05 PM");
@@ -35,4 +35,9 @@ test("times are on a 12-hour clock, with midnight and noon as 12", () => {
 test("a short time is day, month and time in Pacific", () => {
   assert.equal(shortTime("2026-09-30T01:00:00Z"), "29 Sep 6:00 PM");
   assert.equal(shortTime(null), "");
+});
+
+test("a reading's time splits into a short day and a clock, for two lines", () => {
+  assert.deepEqual(dayAndClock("2026-10-05T18:50:00Z"), ["5 Oct", "11:50 AM"]);
+  assert.deepEqual(dayAndClock(null), ["", ""]);
 });

@@ -7,7 +7,7 @@
 // the headline, the sentence, and the decision (globals.css, .readings).
 
 import Link from "next/link";
-import { pacificTime } from "../lib/format.ts";
+import { dayAndClock } from "../lib/format.ts";
 import type { MemberRow } from "../lib/queries.ts";
 import type { ClaimReviewView } from "../lib/reviews.ts";
 import { schemaSuffix, type Schema } from "../lib/schema.ts";
@@ -44,7 +44,7 @@ export function ClaimReadings({ rows, schema, postedReadingId, claimId, review }
         </span>
       </div>
       {rows.map((row) => {
-        const [day, time] = splitDay(pacificTime(row.published_at));
+        const [day, time] = dayAndClock(row.published_at);
         const mark = review?.marks[row.reading_id] ?? null;
         const isOff = mark !== null && mark.verdict !== "belongs";
         return (
@@ -77,17 +77,6 @@ export function ClaimReadings({ rows, schema, postedReadingId, claimId, review }
       })}
     </div>
   );
-}
-
-/**
- * A Pacific time cut into its day and its clock, for two lines.
- *
- * @param time  "2026-10-05 1:24 PM".
- * @returns ["2026-10-05", "1:24 PM"].
- */
-function splitDay(time: string): [string, string] {
-  const space = time.indexOf(" ");
-  return [time.slice(0, space), time.slice(space + 1)];
 }
 
 /**

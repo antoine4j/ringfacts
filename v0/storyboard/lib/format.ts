@@ -51,8 +51,19 @@ const MONTHS = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "
  */
 export function shortTime(moment: Date | string | null | undefined): string {
   if (!moment) return "";
+  return dayAndClock(moment).join(" ");
+}
+
+/**
+ * A moment as a short Pacific day and its clock, kept apart for two lines.
+ *
+ * @param moment  A Date, an ISO string, or nothing.
+ * @returns For example ["29 Sep", "6:00 PM"]; two empty strings when there is no moment.
+ */
+export function dayAndClock(moment: Date | string | null | undefined): [string, string] {
+  if (!moment) return ["", ""];
   const { month, day, clock, half } = pacificParts(moment);
-  return `${Number(day)} ${MONTHS[Number(month) - 1]} ${clock} ${half}`;
+  return [`${Number(day)} ${MONTHS[Number(month) - 1]}`, `${clock} ${half}`];
 }
 
 /**
