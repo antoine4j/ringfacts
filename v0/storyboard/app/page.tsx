@@ -5,7 +5,7 @@
 import Link from "next/link";
 import { ClaimReadings } from "../components/ClaimReadings.tsx";
 import { SameClaimReview } from "../components/ReviewControls.tsx";
-import { ReviewStatus } from "../components/ReviewStatus.tsx";
+import { ReviewDot, ReviewStatus } from "../components/ReviewStatus.tsx";
 import { Empty } from "../components/bits.tsx";
 import { FeedbackForm } from "../components/FeedbackForm.tsx";
 import { FilterBar } from "../components/FilterBar.tsx";
@@ -87,9 +87,10 @@ function ClaimCard({ claim, rows, digest, schema, review }: { claim: ClaimRow; r
   const labelChanged = claim.current_label !== claim.label;
 
   return (
-    <details className="claim">
+    <details className={`claim${review?.review.state === "reviewed" ? " is-reviewed" : ""}`}>
       <summary>
         <div className="label-row">
+          <ReviewDot view={review} readings={rows.length} />
           <span className="label">{claim.current_label}</span>
           <Link className="claim-id" href={`/claims/${claim.id}${schemaSuffix(schema)}`} title="Open this claim's page">
             #{claim.id}
@@ -107,7 +108,7 @@ function ClaimCard({ claim, rows, digest, schema, review }: { claim: ClaimRow; r
           </span>
           <ClaimStatus claim={claim} digest={digest} schema={schema} />
           {doubtful > 0 && <span className="tag warn">{doubtful} doubtful join{doubtful === 1 ? "" : "s"} ⚠</span>}
-          <ReviewStatus view={review} />
+          <ReviewStatus view={review} showDone={false} />
         </div>
       </summary>
       {review && (
