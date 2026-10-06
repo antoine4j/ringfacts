@@ -20,6 +20,7 @@
   --bad-bg: #fde7e7;
   --bad-text: #a11b1b;
   --good-bg: #e3f4e8;
+  --reviewed-bg: color-mix(in srgb, var(--good-bg) 75%, var(--panel));
   --display: var(--font-display), "Arial Narrow", system-ui, sans-serif;
   --body: var(--font-body), system-ui, -apple-system, "Segoe UI", sans-serif;
   --mono: var(--font-mono), ui-monospace, Menlo, monospace;
@@ -48,6 +49,7 @@
     --bad-bg: #3f1d1d;
     --bad-text: #ff9b9b;
     --good-bg: #183323;
+    --reviewed-bg: color-mix(in srgb, var(--good-bg) 40%, var(--panel));
     color-scheme: dark;
   }
 }
@@ -69,6 +71,7 @@
   --bad-bg: #3f1d1d;
   --bad-text: #ff9b9b;
   --good-bg: #183323;
+  --reviewed-bg: color-mix(in srgb, var(--good-bg) 40%, var(--panel));
   color-scheme: dark;
 }
 
@@ -198,7 +201,8 @@ button:disabled { opacity: 0.5; cursor: default; }
 details > summary { cursor: pointer; }
 .claim { background: var(--panel); border: 1px solid var(--line); border-radius: var(--radius); margin: 8px 0; padding: 10px 14px; }
 .claim[open] { border-color: color-mix(in srgb, var(--accent) 45%, var(--line)); }
-.claim.is-reviewed { background: color-mix(in srgb, var(--good-bg) 40%, var(--panel)); }
+/* A reviewed claim's card: a light green that still shows on a bright screen in daylight; dark keeps its softer mix. */
+.claim.is-reviewed { background: var(--reviewed-bg); }
 .claim > summary { list-style: none; }
 .claim > summary::-webkit-details-marker { display: none; }
 .claim .label-row { display: flex; align-items: baseline; gap: 12px; }
