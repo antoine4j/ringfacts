@@ -1,6 +1,7 @@
 // The readings of one claim, in date order, as the claims pages show them.
 // Three separate judgements sit on each reading: Anton's review (✓ belongs,
-// ✕ does not, D35), grouping (did it join this claim, and how sure was the
+// ✕ does not, D35; its note and where a ✕ reading belongs show under the
+// headline), grouping (did it join this claim, and how sure was the
 // pick) and the decision (its tier, and the classifier answers behind it).
 // On a wide screen a table, the headline and the extract sentence widest; on
 // a phone each reading stacks: review, date, outlet and the grouping, then
@@ -13,7 +14,7 @@ import type { ClaimReviewView } from "../lib/reviews.ts";
 import { schemaSuffix, type Schema } from "../lib/schema.ts";
 import { PickTag, PostedTag } from "./bits.tsx";
 import { Decision } from "./Decision.tsx";
-import { ReadingReview } from "./ReviewControls.tsx";
+import { MarkLine, ReadingReview, ReviewRow } from "./ReviewControls.tsx";
 
 /**
  * A claim's readings: review, published, outlet, headline, extract sentence, grouping and decision.
@@ -45,11 +46,9 @@ export function ClaimReadings({ rows, schema, postedReadingId, claimId, review }
       </div>
       {rows.map((row) => {
         const [day, time] = dayAndClock(row.published_at);
-        const mark = review?.marks[row.reading_id] ?? null;
-        const isOff = mark !== null && mark.verdict !== "belongs";
-        return (
-          <div className={`reading${isOff ? " is-off" : ""}`} key={row.reading_id}>
-            <span className="reviewed">{review ? <ReadingReview claimId={claimId} readingId={row.reading_id} current={mark} /> : <span className="muted">–</span>}</span>
+        const cells = (
+          <>
+            <span className="reviewed">{review ? <ReadingReview /> : <span className="muted">–</span>}</span>
             <span className="when">
               {day} <br />
               {time}{" "}
@@ -63,7 +62,7 @@ export function ClaimReadings({ rows, schema, postedReadingId, claimId, review }
                 {row.headline}
               </a>
               {row.reading_id === postedReadingId && <PostedTag reaction={row.reaction} />}
-              {isOff && mark && <MarkNote verdict={mark.verdict} belongsIn={mark.belongs_in_claim_id} note={mark.note} />}
+              {review && <MarkLine />}
             </span>
             <span className="sentence">{row.sentence}</span>
             <span className="grouping">
@@ -72,6 +71,17 @@ export function ClaimReadings({ rows, schema, postedReadingId, claimId, review }
             <span className="decision-cell">
               <Decision tier={row.tier} cell={row.cell} centrality={row.centrality} schema={schema} />
             </span>
+          </>
+        );
+
+        // A reviewed claim's row shares its mark between the ✓ ✕ cell and the line under the headline.
+        return review ? (
+          <ReviewRow key={row.reading_id} claimId={claimId} readingId={row.reading_id} current={review.marks[row.reading_id] ?? null}>
+            {cells}
+          </ReviewRow>
+        ) : (
+          <div className="reading" key={row.reading_id}>
+            {cells}
           </div>
         );
       })}
@@ -79,24 +89,3 @@ export function ClaimReadings({ rows, schema, postedReadingId, claimId, review }
   );
 }
 
-/**
- * Where a reading marked ✕ belongs, and the note, if any.
- *
- * @param props.verdict  does_not_belong or own_claim.
- * @param props.belongsIn  The claim it belongs in, when named.
- * @param props.note  Anton's note.
- * @returns A quiet line.
- */
-function MarkNote({ verdict, belongsIn, note }: { verdict: string; belongsIn: string | null; note: string }) {
-  const where = verdict === "own_claim" ? "its own claim" : belongsIn ? null : "doesn't belong";
-  return (
-    <span className="mark-note">
-      {where ?? (
-        <>
-          belongs in <a href={`/claims/${belongsIn}`}>#{belongsIn}</a>
-        </>
-      )}
-      {note && <span className="mark-why"> · {note}</span>}
-    </span>
-  );
-}

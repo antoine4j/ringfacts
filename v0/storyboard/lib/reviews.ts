@@ -147,10 +147,97 @@ export function directlyLinked(links: Set<string>, one: string, other: string): 
   return links.has(pairOrder(one, other).join(":"));
 }
 
+/** A reading's mark in force, as a page knows it; null when it has none. */
+export type CurrentMark = { verdict: ReadingVerdict; belongs_in_claim_id: string | null; note: string } | null;
+
+/** Where the ✕ picker says a reading belongs: another claim, a claim of its own, or no place named. */
+export type Choice = { kind: "claim"; id: string } | { kind: "own" } | { kind: "unknown" };
+
+/** What tapping ✓ or ✕ does: save "belongs" at once, open the picker for a new ✕, or open the editor of the mark in force. */
+export type TapAction = "set_belongs" | "pick" | "edit";
+
+/**
+ * What tapping a mark's button does: a mark that is not set is set (✓ at
+ * once, ✕ through the picker); a mark that is set opens its editor, so a
+ * tap never clears anything.
+ * Design: docs/superpowers/specs/2026-10-06-review-mark-editing.md.
+ *
+ * @param button  "yes" (✓) or "no" (✕).
+ * @param mark  The mark in force.
+ * @returns The action.
+ */
+export function tapAction(button: "yes" | "no", mark: CurrentMark): TapAction {
+  const belongs = mark?.verdict === "belongs";
+  const off = mark !== null && !belongs;
+  if (button === "yes") return belongs ? "edit" : "set_belongs";
+  return off ? "edit" : "pick";
+}
+
+/**
+ * The line under a reading's headline: where a ✕ reading belongs and its
+ * note, or a ✓ reading's note. A ✓ with no note has no line.
+ *
+ * @param mark  The mark in force.
+ * @returns The place (null for a ✓) and the note; null when there is no line.
+ */
+export function markLine(mark: CurrentMark): { where: Choice | null; note: string } | null {
+  if (!mark || mark.verdict === "cleared") return null;
+  if (mark.verdict === "belongs") return mark.note ? { where: null, note: mark.note } : null;
+  return { where: startingChoice(mark), note: mark.note };
+}
+
+/**
+ * The picker's choice for a mark in force, so editing a ✕ starts from it.
+ *
+ * @param mark  The mark in force.
+ * @returns Its own claim, the claim it was moved to, or "not sure where" for anything else.
+ */
+export function startingChoice(mark: CurrentMark): Choice {
+  if (mark?.verdict === "own_claim") return { kind: "own" };
+  if (mark?.verdict === "does_not_belong" && mark.belongs_in_claim_id) return { kind: "claim", id: mark.belongs_in_claim_id };
+  return { kind: "unknown" };
+}
+
+/**
+ * The verdict a picker choice saves.
+ *
+ * @param choice  The choice.
+ * @returns The verdict, and the claim it names (null unless another claim).
+ */
+export function choiceVerdict(choice: Choice): { verdict: ReadingVerdict; belongsIn: string | null } {
+  if (choice.kind === "own") return { verdict: "own_claim", belongsIn: null };
+  return { verdict: "does_not_belong", belongsIn: choice.kind === "claim" ? choice.id : null };
+}
+
+/**
+ * Whether saving would change the mark in force, so an editor saves nothing
+ * when nothing was changed.
+ *
+ * @param mark  The mark in force.
+ * @param verdict  The verdict about to be saved.
+ * @param belongsIn  The claim it names, if any.
+ * @param note  The note as typed.
+ * @returns True when the verdict, the claim or the note differ.
+ */
+export function markChanged(mark: CurrentMark, verdict: ReadingVerdict, belongsIn: string | null, note: string): boolean {
+  if (!mark) return true;
+  return mark.verdict !== verdict || (mark.belongs_in_claim_id ?? null) !== belongsIn || mark.note.trim() !== note.trim();
+}
+
+/**
+ * The editor's clear button, naming what would go.
+ *
+ * @param note  The note in force.
+ * @returns "clear mark", or "clear mark and note" when there is a note.
+ */
+export function clearLabel(note: string): string {
+  return note.trim() ? "clear mark and note" : "clear mark";
+}
+
 /** Everything a claim shows about its review. */
 export type ClaimReviewView = {
   review: ClaimReview;
-  marks: Record<string, { verdict: ReadingVerdict; belongs_in_claim_id: string | null; note: string }>;
+  marks: Record<string, NonNullable<CurrentMark>>;
   group: { id: string; direct: boolean }[];
   inbound: { readingId: string; fromClaimId: string }[];
 };

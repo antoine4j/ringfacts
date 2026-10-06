@@ -1,6 +1,6 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
-import { claimReview, directlyLinked, marksInForce, pairOrder, reviewViews, sameClaimGroups, type ReadingMark, type SameClaimMark } from "./reviews.ts";
+import { choiceVerdict, claimReview, clearLabel, directlyLinked, markChanged, markLine, marksInForce, pairOrder, reviewViews, sameClaimGroups, startingChoice, tapAction, type CurrentMark, type ReadingMark, type SameClaimMark } from "./reviews.ts";
 
 let nextId = 1;
 
@@ -81,4 +81,59 @@ test("a claim's view: its marks, its group, and readings moved in from another c
   const undone = reviewViews(readingsOf, [...readingMarks, mark("425", "31", "cleared")], []);
   assert.deepEqual(undone.get("401")?.inbound, []);
   assert.equal(undone.get("425")?.review.state, "has_new");
+});
+
+/** A mark in force, as the page knows it. */
+function inForce(verdict: ReadingMark["verdict"], note = "", belongsIn: string | null = null): CurrentMark {
+  return { verdict, belongs_in_claim_id: belongsIn, note };
+}
+
+test("a tap sets a mark that is not set, and opens the editor of one that is: it never clears", () => {
+  assert.equal(tapAction("yes", null), "set_belongs");
+  assert.equal(tapAction("no", null), "pick");
+  assert.equal(tapAction("yes", inForce("belongs")), "edit");
+  assert.equal(tapAction("yes", inForce("belongs", "O'Malley, not White")), "edit");
+  assert.equal(tapAction("no", inForce("own_claim")), "edit");
+  assert.equal(tapAction("no", inForce("does_not_belong", "", "419")), "edit");
+});
+
+test("switching marks: ✓ on a ✕ reading saves at once; ✕ on a ✓ reading opens the picker", () => {
+  assert.equal(tapAction("yes", inForce("does_not_belong", "a note", "419")), "set_belongs");
+  assert.equal(tapAction("no", inForce("belongs", "a note")), "pick");
+});
+
+test("the line under the headline: always for ✕, only with a note for ✓", () => {
+  assert.equal(markLine(null), null);
+  assert.equal(markLine(inForce("belongs")), null);
+  assert.deepEqual(markLine(inForce("belongs", "O'Malley reacts")), { where: null, note: "O'Malley reacts" });
+  assert.deepEqual(markLine(inForce("own_claim")), { where: { kind: "own" }, note: "" });
+  assert.deepEqual(markLine(inForce("does_not_belong", "same fight", "419")), { where: { kind: "claim", id: "419" }, note: "same fight" });
+  assert.deepEqual(markLine(inForce("does_not_belong")), { where: { kind: "unknown" }, note: "" });
+});
+
+test("editing a ✕ starts from its choice, and the choice saves back the same verdict", () => {
+  for (const mark of [inForce("own_claim"), inForce("does_not_belong", "", "419"), inForce("does_not_belong")]) {
+    const { verdict, belongsIn } = choiceVerdict(startingChoice(mark));
+    assert.equal(verdict, mark!.verdict);
+    assert.equal(belongsIn, mark!.belongs_in_claim_id);
+  }
+  assert.deepEqual(startingChoice(null), { kind: "unknown" });
+  assert.deepEqual(startingChoice(inForce("belongs")), { kind: "unknown" });
+});
+
+test("save changes something only when the verdict, the claim or the note differ", () => {
+  const moved = inForce("does_not_belong", "same fight", "419");
+  assert.equal(markChanged(moved, "does_not_belong", "419", "same fight"), false);
+  assert.equal(markChanged(moved, "does_not_belong", "419", " same fight "), false);
+  assert.equal(markChanged(moved, "does_not_belong", "420", "same fight"), true);
+  assert.equal(markChanged(moved, "own_claim", null, "same fight"), true);
+  assert.equal(markChanged(moved, "does_not_belong", "419", ""), true);
+  assert.equal(markChanged(inForce("belongs"), "belongs", null, "a note"), true);
+  assert.equal(markChanged(null, "belongs", null, ""), true);
+});
+
+test("the clear button names the note when there is one", () => {
+  assert.equal(clearLabel(""), "clear mark");
+  assert.equal(clearLabel("  "), "clear mark");
+  assert.equal(clearLabel("O'Malley reacts"), "clear mark and note");
 });

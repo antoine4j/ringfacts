@@ -297,7 +297,8 @@ pre.json { background: var(--chip); padding: 10px 12px; border-radius: 8px; over
 
 /* Reviews (D35): quiet marks beside the pipeline's grouping. ✓ and ✕ are small round
    buttons that fill when set; a reading new since the review has a thin accent edge; one
-   marked ✕ is dimmed, with where it belongs; the picker floats over the list. */
+   marked ✕ is dimmed, with where it belongs; a note on either mark shows under the
+   headline, and tapping that line opens the mark's editor; the panels float over the list. */
 .review { position: relative; display: inline-flex; flex-wrap: wrap; align-items: center; gap: 4px; }
 .mark { width: 22px; height: 22px; padding: 0; border-radius: 999px; font-size: 12px; line-height: 1; color: var(--muted); background: var(--panel); }
 .mark.yes[aria-pressed="true"] { background: var(--post); border-color: var(--post); color: var(--on-accent); }
@@ -305,6 +306,11 @@ pre.json { background: var(--chip); padding: 10px 12px; border-radius: 8px; over
 .reading.is-off .headline > a:first-child, .reading.is-off .sentence { opacity: 0.55; }
 .mark-note { display: block; font-size: 12.5px; color: var(--warn-text); margin-top: 2px; }
 .mark-why { color: var(--muted); }
+.mark-note:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+@media (hover: hover) {
+  .mark-note { cursor: pointer; }
+  .mark-note:hover { text-decoration: underline dotted; text-underline-offset: 2px; }
+}
 .review-state { color: var(--muted); }
 .review-dot { --soft-post: color-mix(in srgb, var(--post) 55%, var(--panel)); flex: none; box-sizing: border-box; width: 12px; height: 12px; margin: 4.5px 0 0 -6px; align-self: flex-start; border-radius: 50%; border: 1.5px solid var(--line); }
 .review-dot.has_new { border-color: var(--soft-post); background-image: conic-gradient(var(--soft-post) var(--done), transparent 0); }
@@ -335,3 +341,6 @@ pre.json { background: var(--chip); padding: 10px 12px; border-radius: 8px; over
 .option-id { font-family: var(--mono); font-size: 12px; color: var(--muted); }
 .option-why { display: block; font-size: 12px; color: var(--muted); }
 .picker-note { width: 100%; font: inherit; font-size: 13px; }
+.picker.note-editor { width: min(360px, calc(100vw - 32px)); }
+/* Clearing sits apart from save, on the right, in the warning colour. */
+.clear-mark { margin-left: auto; color: var(--warn-text); }

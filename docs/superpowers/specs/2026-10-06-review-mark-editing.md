@@ -1,6 +1,6 @@
 # Storyboard: notes on ✓, and editing a review mark in place
 
-**Status:** designed 6 Oct 2026, not built. A one-off tactical change to the
+**Status:** designed and built 6 Oct 2026. A one-off tactical change to the
 review controls of D35 ([v0 design](2026-10-04-v0-design.md), section 11,
 "Reviewing claims"); that section stays the reference for what a review is.
 
