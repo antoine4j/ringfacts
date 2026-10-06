@@ -292,7 +292,7 @@ pre.json { background: var(--chip); padding: 10px 12px; border-radius: 8px; over
 .readings { margin: 6px 0 4px; font-size: 14px; }
 .reading { display: grid; grid-template-columns: 52px 86px 104px minmax(0, 1.2fr) minmax(0, 1.5fr) 96px 150px; gap: 4px 10px; padding: 6px 0; border-top: 1px solid var(--line); align-items: start; }
 .reading.head { font-size: 12px; font-weight: 600; color: var(--muted); border-top: 0; padding-top: 0; }
-.reading.head .when { font-family: var(--body); }
+.reading.head .when { font: inherit; }
 .reading.head [title] { cursor: help; }
 .reading .when { font: 12px/1.4 var(--mono); color: var(--muted); }
 .reading .sentence { color: var(--muted); }
