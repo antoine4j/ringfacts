@@ -1,0 +1,247 @@
+<title>Health Levels</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;600;700&family=JetBrains+Mono:wght@400;600&display=swap">
+<style>
+/* Layout: one reading column; a legend, then one card per article with its level buttons beneath the deciding text. */
+:root {
+  --bg: #f5f6f4;
+  --card: #ffffff;
+  --ink: #1d2422;
+  --muted: #5c6763;
+  --line: #d9dedb;
+  --accent: #1f6f78;
+  --digest: #6b7a74;
+  --digest-bg: #e7ece9;
+  --alert: #b2452c;
+  --alert-bg: #f6e3dc;
+  --quote-bg: #f0f2ef;
+  --sans: "Public Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --mono: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, monospace;
+}
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
+  --bg: #141917; --card: #1c2220; --ink: #e3e8e5; --muted: #9aa6a1; --line: #2f3835;
+  --accent: #5fb3bc; --digest: #9aa8a2; --digest-bg: #27302d; --alert: #ec8a70; --alert-bg: #3a2620;
+  --quote-bg: #232a28; color-scheme: dark } }
+:root[data-theme="dark"] {
+  --bg: #141917; --card: #1c2220; --ink: #e3e8e5; --muted: #9aa6a1; --line: #2f3835;
+  --accent: #5fb3bc; --digest: #9aa8a2; --digest-bg: #27302d; --alert: #ec8a70; --alert-bg: #3a2620;
+  --quote-bg: #232a28; color-scheme: dark }
+
+body { background: var(--bg); color: var(--ink); font: 15px/1.55 var(--sans); }
+.wrap { max-width: 760px; margin: 0 auto; padding-inline: 16px; padding-block: 28px 64px; display: grid; gap: 22px; }
+h1 { font-size: 26px; margin: 0; letter-spacing: -0.01em; text-wrap: balance; }
+h2 { font-size: 13px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted); margin: 0 0 8px; }
+p { margin: 0; }
+.lead { display: grid; gap: 8px; max-width: 65ch; }
+.lead strong { color: var(--ink); }
+
+.legend { display: grid; gap: 6px; }
+.lv { display: grid; grid-template-columns: 34px 1fr auto; gap: 10px; align-items: baseline; padding: 6px 10px; border-radius: 6px; background: var(--card); border: 1px solid var(--line); }
+.lv .n { font: 600 14px var(--mono); }
+.lv .where { font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.06em; }
+.lv.d .where { color: var(--digest); }
+.lv.a .where { color: var(--alert); }
+.lv.a { background: var(--alert-bg); border-color: transparent; }
+
+.bar { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 2; background: var(--bg); border-bottom: 1px solid var(--line); padding-block: 10px; display: flex; flex-wrap: wrap; gap: 10px; align-items: center; justify-content: space-between; }
+.count { font-variant-numeric: tabular-nums; font-weight: 600; }
+.save { font-size: 13px; color: var(--muted); }
+button { font: inherit; cursor: pointer; }
+.copy { border: 1px solid var(--line); background: var(--card); color: var(--ink); border-radius: 6px; padding: 6px 12px; font-size: 13px; }
+button:focus-visible, textarea:focus-visible, a:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+.cards { display: grid; gap: 16px; }
+.card { background: var(--card); border: 1px solid var(--line); border-radius: 8px; padding: 16px; display: grid; gap: 12px; min-width: 0; }
+.card.done { border-color: var(--accent); }
+.meta { display: flex; flex-wrap: wrap; gap: 8px; align-items: baseline; font-size: 13px; color: var(--muted); }
+.id { font: 600 14px var(--mono); color: var(--ink); }
+.side { font-size: 11px; text-transform: uppercase; letter-spacing: 0.07em; padding: 1px 7px; border-radius: 99px; background: var(--digest-bg); color: var(--digest); }
+.side.check { background: var(--accent); color: var(--card); }
+.title { font-weight: 600; font-size: 16px; line-height: 1.35; }
+.title a { color: inherit; text-decoration-color: var(--line); text-underline-offset: 3px; }
+.quotes { display: grid; gap: 8px; }
+.q { background: var(--quote-bg); border-radius: 6px; padding: 8px 12px; display: grid; gap: 3px; }
+.q .orig { font-style: italic; }
+.q .en { font-size: 13px; color: var(--muted); }
+.q .tag { font-size: 11px; text-transform: uppercase; letter-spacing: 0.07em; color: var(--muted); }
+.mine { font-size: 14px; }
+.mine b { font-family: var(--mono); }
+.check-q { font-size: 14px; font-weight: 600; }
+.pick { display: flex; flex-wrap: wrap; gap: 6px; }
+.pick button { min-width: 44px; padding: 7px 12px; border-radius: 6px; border: 1px solid var(--line); background: var(--card); color: var(--ink); font: 600 14px var(--mono); }
+.pick button.on { background: var(--accent); border-color: var(--accent); color: var(--card); }
+.pick button.on.alert { background: var(--alert); border-color: var(--alert); }
+.pick button.unsure { font-family: var(--sans); font-weight: 400; }
+textarea { width: 100%; box-sizing: border-box; min-height: 40px; resize: vertical; font: 14px/1.4 var(--sans); padding: 6px 8px; border-radius: 6px; border: 1px solid var(--line); background: var(--bg); color: var(--ink); }
+.banner { padding: 10px 12px; border-radius: 6px; background: var(--alert-bg); font-size: 14px; }
+.out { font: 13px/1.5 var(--mono); white-space: pre-wrap; background: var(--card); border: 1px solid var(--line); border-radius: 6px; padding: 10px; }
+@media (prefers-reduced-motion: no-preference) { .pick button { transition: background .12s, border-color .12s; } }
+</style>
+
+<div class="wrap">
+  <header class="lead">
+    <h1>Health Levels</h1>
+    <p>Eight articles where the key says "reports his health". Give each one a level from 0 to 4.</p>
+    <p><strong>Rate what this article's news changes, not how bad the injury is.</strong> If the article only repeats a timeline that was reported earlier, that is background, and it doesn't raise the level. A return date or "cleared to fight" counts as level 3.</p>
+  </header>
+
+  <section>
+    <h2>The levels</h2>
+    <div class="legend">
+      <div class="lv"><span class="n">0</span><span>No health news</span><span class="where"></span></div>
+      <div class="lv d"><span class="n">1</span><span>Looks back at a settled episode</span><span class="where">digest</span></div>
+      <div class="lv d"><span class="n">2</span><span>Update on a known condition, nothing changes ("he's fine", "he'll be back")</span><span class="where">digest</span></div>
+      <div class="lv a"><span class="n">3</span><span>Changes his timeline: new injury, withdrawal, surgery, time out, a return date, cleared to fight</span><span class="where">alert</span></div>
+      <div class="lv a"><span class="n">4</span><span>Career at risk: a year or more out, retirement talk</span><span class="where">alert</span></div>
+    </div>
+  </section>
+
+  <div class="bar">
+    <span class="count" id="count">0 of 8 set</span>
+    <span class="save" id="save">Connecting…</span>
+    <button class="copy" id="copy" type="button">Copy my levels as text</button>
+  </div>
+  <div class="banner" id="banner" hidden></div>
+  <div class="out" id="out" hidden></div>
+
+  <section class="cards" id="cards"></section>
+</div>
+
+<script>
+const ITEMS = [
+  { id: "148", side: "tune", claim: "claim-014", source: "OkDiario", date: "12 Aug", url: "https://okdiario.com/deportes/islam-makhachev-aconseja-ilia-topuria-derrota-si-centra-puede-ser-campeon-otra-vez-19170160",
+    title: "Islam Makhachev aconseja a Ilia Topuria tras su derrota",
+    quotes: [
+      { tag: "headline news", orig: "«Si se centra, puede ser campeón otra vez»", en: "Makhachev: \"If he focuses, he can be champion again.\"" },
+      { tag: "later in the body", orig: "…está trabajando para mostrar su mejor versión el próximo año, por lo que se descarta el regreso en 2026.", en: "His fitness coach: he is working towards next year, so a return in 2026 is ruled out." } ],
+    mine: 3, why: "The coach ruling out 2026 is a timeline change, and this article reports it. But the headline is Makhachev's advice, so 2 is defensible." },
+  { id: "327", side: "tune", claim: "claim-015.0", source: "ActuMMA", date: "22 Aug", url: "https://www.actumma.com/merab-dvalishvili-donne-des-nouvelles-dilia-topuria-il-va-revenir/189685/",
+    title: "Merab Dvalishvili donne des nouvelles d’Ilia Topuria : « Il va revenir… »",
+    quotes: [ { tag: "headline news", orig: "« Il va bien et reste très positif et profite de la vie… Il va revenir »", en: "Merab: \"He's fine, very positive, enjoying life… he will come back.\"" } ],
+    mine: 2, why: "Reassurance about a known injury. No date and no change." },
+  { id: "349", side: "tune", claim: "claim-015.0", source: "Marca", date: "24 Aug", url: "https://www.marca.com/combates-ufc/2026/08/24/merab-actualiza-topuria-bien-actitud-positiva.html",
+    title: "Merab actualiza el estado de Topuria: \"Está bien y con una actitud muy positiva\"",
+    quotes: [
+      { tag: "headline news", orig: "\"Topuria está bien y tiene una actitud muy positiva.\"", en: "Merab: \"Topuria is fine and very positive.\"" },
+      { tag: "background", orig: "…sufrió una fractura en la nariz y en los dos orbitales… todo apunta a que será más bien para inicios de 2027", en: "Broken nose and both eye sockets; everything points to early 2027." } ],
+    mine: 2, why: "The news is Merab's update. The 2027 line repeats what was already being said." },
+  { id: "368", side: "tune", claim: "claim-015.0", source: "Estadio Deportivo", date: "25 Aug", url: "https://www.estadiodeportivo.com/ufc/topuria-esta-bien-viviendo-vida-cuando-vuelva-les-ganara-todos-20260825-545165.html",
+    title: "\"Topuria está bien, viviendo la vida y cuando vuelva les ganará a todos\"",
+    quotes: [
+      { tag: "headline news", orig: "\"Topuria está bien… cuando vuelva les ganará a todos\"", en: "Merab: \"Topuria is fine… when he's back he'll beat everyone.\"" },
+      { tag: "background", orig: "Los médicos le recomendaron reposo absoluto de dos a tres meses… la UFC le espera para 2027… hacia mitad de año", en: "Doctors ordered two to three months' full rest; UFC expects him around mid-2027." } ],
+    mine: 2, why: "The headline is Merab's update. The rest and mid-2027 details may be new here, and if they are, this is 3. That's the closest call on the page." },
+  { id: "397", side: "tune", claim: "claim-015.0", source: "heraldo.es", date: "26 Aug", url: "https://www.heraldo.es/noticias/deportes/2026/08/26/merab-dvalishvili-tajante-sobre-regreso-ilia-topuria-recuperara-que-es-suyo-2047260.html",
+    title: "Merab Dvalishvili, tajante sobre el regreso de Ilia Topuria: \"Recuperará lo que es suyo\"",
+    quotes: [ { tag: "headline news", orig: "\"Está bien. Es muy positivo… y recuperará lo que es suyo, su cinturón\"", en: "Merab: \"He's fine. Very positive… he'll take back what's his, his belt.\"" } ],
+    mine: 2, why: "Same Merab quote as #327, #349 and #368. No change." },
+  { id: "402", side: "tune", claim: "claim-015.0", source: "Infobae", date: "27 Aug", url: "https://www.infobae.com/espana/deportes/2026/08/27/ilia-topuria-ya-tiene-fecha-de-regreso-al-octogono-tras-el-combate-en-la-casa-blanca-a-final-de-ano-o-principios-de-2027/",
+    title: "Ilia Topuria ya tiene fecha de regreso al octógono… a final de año o principios de 2027",
+    quotes: [
+      { tag: "headline news", orig: "Ilia Topuria ya tiene fecha de regreso al octógono", en: "Topuria now has a return date." },
+      { tag: "in the body", orig: "…parece que será a principios de 2027 cuando se certifique su vuelta…", en: "It seems his return will be confirmed for early 2027." } ],
+    mine: 3, why: "The headline sells a return date, which counts as 3. The date itself is soft (\"it seems\") and is recycled from the coach's earlier remarks." },
+  { id: "1172", side: "tune", claim: "claim-127", source: "Sport.ua", date: "15 Sep", url: "https://sport.ua/uk/news/907149-u-stiytsi-ya-ne-girshiy-za-usmana-donchenko-pro-biy-z-kamaru-ta-ukraintsiv-v",
+    title: "«Я не гірший за Усмана». Донченко – про бій з Камару та українців в UFC",
+    quotes: [ { tag: "in the interview", orig: "Насправді у мене була інфекція 4 серпня… Був у госпіталі, мені різали руку. Це за місяць рівно до поєдинку.", en: "\"I had an infection on 4 August… I was in hospital, they cut my hand open. Exactly a month before the fight.\"" } ],
+    mine: 1, why: "He recalls an infection before a fight he then fought and won. It's settled." },
+  { id: "361", side: "check", claim: "", source: "Mundo Deportivo", date: "25 Aug",
+    title: "\"Ilia Topuria está disfrutando de la vida\"",
+    url: "https://www.mundodeportivo.com/ufc/20260825/1004219493/ilia-topuria-esta-disfrutando-vida-verano-fiesta-merab-dvalishvili.html",
+    quotes: [], mine: null,
+    why: "This article is in the validation set, which I don't read, so there's no excerpt and no suggestion from me. Please open the link." },
+];
+const LEVELS = ["0", "1", "2", "3", "4", "unsure"];
+const state = { levels: {}, db: null };
+
+/** Draw every card from ITEMS and the saved levels. */
+function draw() {
+  const cards = document.getElementById("cards");
+  cards.replaceChildren(...ITEMS.map(card));
+  const set = ITEMS.filter(item => state.levels[item.id]?.level != null).length;
+  document.getElementById("count").textContent = `${set} of ${ITEMS.length} set`;
+}
+
+/** One article's card: meta line, title, deciding text, my reading, level buttons and a note. */
+function card(item) {
+  const saved = state.levels[item.id] || {};
+  const el = document.createElement("article");
+  el.className = "card" + (saved.level != null ? " done" : "");
+  const meta = document.createElement("div"); meta.className = "meta";
+  meta.innerHTML = `<span class="id">#${item.id}</span><span class="side ${item.side}">${item.side === "check" ? "validation" : "training"}</span>`;
+  meta.append(document.createTextNode([item.claim, item.source, item.date].filter(Boolean).join(" · ")));
+  const title = document.createElement("div"); title.className = "title";
+  if (item.url) { const a = document.createElement("a"); a.href = item.url; a.target = "_blank"; a.rel = "noopener"; a.textContent = item.title; title.append(a); }
+  else title.textContent = item.title;
+  el.append(meta, title);
+  if (item.quotes.length) {
+    const quotes = document.createElement("div"); quotes.className = "quotes";
+    for (const q of item.quotes) {
+      const box = document.createElement("div"); box.className = "q";
+      box.innerHTML = `<span class="tag"></span><span class="orig"></span><span class="en"></span>`;
+      box.querySelector(".tag").textContent = q.tag; box.querySelector(".orig").textContent = q.orig; box.querySelector(".en").textContent = q.en;
+      quotes.append(box);
+    }
+    el.append(quotes);
+  }
+  const mine = document.createElement("p"); mine.className = "mine";
+  mine.innerHTML = item.mine != null ? `My reading: <b>${item.mine}</b>. ` : "";
+  mine.append(document.createTextNode(item.why));
+  const ask = document.createElement("p"); ask.className = "check-q";
+  ask.textContent = "What does this article's news change for him?";
+  const pick = document.createElement("div"); pick.className = "pick";
+  for (const level of LEVELS) {
+    const b = document.createElement("button"); b.type = "button"; b.id = `l-${item.id}-${level}`;
+    b.textContent = level; if (level === "unsure") b.classList.add("unsure");
+    if (saved.level === level) b.classList.add("on");
+    if (level === "3" || level === "4") b.classList.add("alert");
+    b.addEventListener("click", () => choose(item.id, saved.level === level ? null : level));
+    pick.append(b);
+  }
+  const note = document.createElement("textarea"); note.id = `note-${item.id}`; note.placeholder = "Note (optional)"; note.value = saved.note || "";
+  note.addEventListener("change", () => store(item.id, { ...(state.levels[item.id] || {}), note: note.value }));
+  el.append(mine, ask, pick, note);
+  return el;
+}
+
+/** Set or clear one article's level, then save it. */
+function choose(id, level) {
+  store(id, { ...(state.levels[id] || {}), level });
+  draw();
+}
+
+/** Keep one article's answer locally and write it to the shared store when there is one. */
+async function store(id, value) {
+  state.levels[id] = value;
+  if (!state.db) return;
+  const status = document.getElementById("save");
+  try { await state.db.collection("levels").doc(id).set({ level: value.level ?? null, note: value.note || "" }); status.textContent = "Saved"; }
+  catch (err) { status.textContent = "Not saved: " + (err?.code || "error") + ". Use the copy button."; }
+}
+
+/** The answers as plain lines, for pasting into the chat. */
+function asText() {
+  return ITEMS.map(item => { const v = state.levels[item.id] || {}; return `#${item.id}: ${v.level ?? "-"}${v.note ? " — " + v.note : ""}`; }).join("\n");
+}
+
+// copy button: clipboard first, then show the text to select by hand
+document.getElementById("copy").addEventListener("click", () => {
+  const text = asText(); const out = document.getElementById("out");
+  navigator.clipboard?.writeText(text).then(() => { document.getElementById("save").textContent = "Copied"; }, () => { out.hidden = false; out.textContent = text; });
+  if (!navigator.clipboard) { out.hidden = false; out.textContent = text; }
+});
+
+draw();
+
+// connect to the shared store; without it the page still works and the copy button is the way back
+(async () => {
+  const db = window.claude ? await window.claude.use("db").catch(() => null) : null;
+  const status = document.getElementById("save");
+  if (!db) { status.textContent = "Not connected"; const n = document.getElementById("banner"); n.hidden = false; n.textContent = "Levels can't be saved in this view. They stay until you reload. Use “Copy my levels as text” and paste them into the chat."; return; }
+  state.db = db; status.textContent = "Saves as you click";
+  db.collection("levels").onSnapshot(snap => {
+    for (const d of snap.docs) { const v = d.data() || {}; state.levels[d.id] = { level: v.level ?? null, note: v.note || "" }; }
+    const scroll = window.scrollY; draw(); window.scrollTo(0, scroll);
+  });
+})();
+</script>

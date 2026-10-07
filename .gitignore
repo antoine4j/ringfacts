@@ -30,6 +30,8 @@ experiments/*/data/
 experiments/*/spotcheck/
 experiments/*/results-p*.json
 experiments/*/REPORT.html
+# a hand-written page; on a case-insensitive file system the line above catches it too
+!experiments/2026-09-27-answer-key/report.html
 experiments/*/__pycache__/
 experiments/*/*.bak
 # questions.json is whatever the builder last wrote; the per-pass snapshots

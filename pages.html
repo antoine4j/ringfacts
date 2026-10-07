@@ -1,0 +1,280 @@
+<title>RingFacts Pages</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<style>
+/* Layout: one dense list of every page, grouped by status (needs a call, in use, finished, superseded);
+   each row is name + where it lives, what it is, and its source file. Filters narrow by where it lives.
+   Tokens and faces are the Launch Map's (v0/launch-map.html), so the pages read as one set. */
+:root{
+  --ground:#F3F4F6; --panel:#FFFFFF; --ink:#1A1E27; --dim:#5E6573; --line:#DCDFE5;
+  --accent:#2B55C9; --accentbg:#E7EDFB;
+  --done:#2E7D4F; --donebg:#E3F2E8;
+  --decide:#B25E00; --decidebg:#FCEFD9;
+  --label:#6A3FB5; --labelbg:#EFE8FA;
+  --later:#7A808C; --laterbg:#ECEEF1;
+  --red:#C8372D;
+  --display:"Barlow Condensed","Arial Narrow",system-ui,sans-serif;
+  --body:"IBM Plex Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,Menlo,monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  color-scheme:dark;
+  --ground:#12151B; --panel:#1B1F27; --ink:#E7E9EE; --dim:#9AA1AE; --line:#2C323D;
+  --accent:#7C9BF0; --accentbg:#1E2A47;
+  --done:#6CC48E; --donebg:#17301F;
+  --decide:#F0A54A; --decidebg:#3A2A12;
+  --label:#B596EC; --labelbg:#2B2140;
+  --later:#8C929E; --laterbg:#232833;
+  --red:#E4675E;
+}}
+:root[data-theme="dark"]{
+  color-scheme:dark;
+  --ground:#12151B; --panel:#1B1F27; --ink:#E7E9EE; --dim:#9AA1AE; --line:#2C323D;
+  --accent:#7C9BF0; --accentbg:#1E2A47;
+  --done:#6CC48E; --donebg:#17301F;
+  --decide:#F0A54A; --decidebg:#3A2A12;
+  --label:#B596EC; --labelbg:#2B2140;
+  --later:#8C929E; --laterbg:#232833;
+  --red:#E4675E;
+}
+body{background:var(--ground);color:var(--ink);font:15px/1.5 var(--body);padding-inline:16px;padding-block:20px 48px}
+.wrap{max-width:1180px;margin:0 auto;display:grid;gap:26px;min-width:0}
+.wrap > *{min-width:0}
+h1,h2{font-family:var(--display);font-weight:700;letter-spacing:.01em;text-wrap:balance;margin:0}
+h1{font-size:40px;line-height:1}
+h2{font-size:22px;text-transform:uppercase;letter-spacing:.06em;color:var(--dim);display:flex;gap:10px;align-items:baseline}
+h2 .n{font:500 13px var(--mono);letter-spacing:0;text-transform:none}
+h2.call{color:var(--decide)}
+.top{display:flex;flex-wrap:wrap;gap:12px;align-items:center;justify-content:space-between}
+.theme{display:inline-flex;border:1px solid var(--line);border-radius:999px;overflow:hidden;background:var(--panel)}
+.theme button{font:500 13px var(--body);border:0;background:transparent;color:var(--dim);padding:6px 12px;cursor:pointer}
+.theme button[aria-pressed="true"]{background:var(--ink);color:var(--ground)}
+.theme button:focus-visible{outline:2px solid var(--accent);outline-offset:-2px}
+.lede{color:var(--dim);max-width:78ch;margin:6px 0 0}
+.stats{display:flex;flex-wrap:wrap;gap:6px 20px;margin-top:10px;font-variant-numeric:tabular-nums;color:var(--dim);font-size:14px}
+.stats b{color:var(--ink);font-weight:600}
+section{display:grid;gap:8px}
+code{font-family:var(--mono);font-size:.88em}
+a{color:var(--accent)}
+a:focus-visible,button:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+
+/* where-filter */
+.filters{display:flex;flex-wrap:wrap;gap:6px;align-items:center;position:sticky;top:env(safe-area-inset-top, 0px);z-index:2;background:var(--ground);padding-block:8px;border-bottom:1px solid var(--line)}
+.filters span{font:600 11px var(--body);letter-spacing:.07em;text-transform:uppercase;color:var(--dim);margin-right:4px}
+.filters button{font:500 13px var(--body);border:1px solid var(--line);background:var(--panel);color:var(--ink);border-radius:999px;padding:3px 11px;cursor:pointer}
+.filters button[aria-pressed="true"]{background:var(--ink);color:var(--ground);border-color:var(--ink)}
+.filters button .c{font:500 11.5px var(--mono);opacity:.75;margin-left:4px}
+
+/* the rows */
+.rows{list-style:none;margin:0;padding:0;background:var(--panel);border:1px solid var(--line);border-radius:10px}
+.rows li{display:grid;grid-template-columns:minmax(0,15rem) minmax(0,1fr) minmax(0,17rem);gap:4px 18px;padding:10px 14px;border-top:1px solid var(--line);align-items:baseline}
+.rows li:first-child{border-top:0}
+.rows.call{border-color:var(--decide)}
+.rows.old li{color:var(--dim)}
+.name{display:grid;gap:3px;align-content:start}
+.name a,.name b{font-weight:600;line-height:1.3;color:var(--ink)}
+.name a{color:var(--accent);text-decoration-thickness:1px;text-underline-offset:3px}
+.tags{display:flex;flex-wrap:wrap;gap:4px}
+.tag{font:600 10.5px var(--body);letter-spacing:.05em;text-transform:uppercase;padding:1px 6px;border-radius:4px;white-space:nowrap;background:var(--laterbg);color:var(--later)}
+.tag.claude{background:var(--accentbg);color:var(--accent)}
+.tag.local{background:var(--labelbg);color:var(--label)}
+.tag.site{background:var(--donebg);color:var(--done)}
+.tag.input{background:var(--decidebg);color:var(--decide)}
+.what{font-size:14px;line-height:1.45;display:grid;gap:3px}
+.what .note{font-size:13px;color:var(--dim)}
+.what .note b{color:var(--ink);font-weight:600}
+.rows.old .what .note b{color:var(--dim)}
+.src{font:400 12px/1.5 var(--mono);color:var(--dim);overflow-wrap:anywhere;display:grid;gap:2px}
+.src .warn{color:var(--red);font-family:var(--body);font-size:12.5px}
+@media (max-width:820px){
+  .rows li{grid-template-columns:minmax(0,1fr)}
+}
+
+/* how it works */
+.how{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:10px}
+.how div{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:12px 14px;display:grid;gap:4px;align-content:start}
+.how h3{font:700 18px/1.1 var(--display);margin:0}
+.how p{margin:0;font-size:14px;color:var(--dim)}
+footer{font-size:13px;color:var(--dim);max-width:100ch}
+</style>
+
+<div class="wrap">
+  <section>
+    <div class="top"><h1>RingFacts Pages</h1>
+      <div class="theme" role="group" aria-label="Colour theme">
+        <button id="t-system" data-t="system" aria-pressed="true">System</button>
+        <button id="t-light" data-t="light" aria-pressed="false">Light</button>
+        <button id="t-dark" data-t="dark" aria-pressed="false">Dark</button>
+      </div></div>
+    <p class="lede">Every page made for RingFacts: the ones published on claude.ai, the ones that only open on this laptop, and the public site. Each row says what the page is for, whether it is still current, and which repo file it comes from. Updated 6 Oct 2026.</p>
+    <div class="stats" id="stats"></div>
+  </section>
+
+  <div class="filters" role="group" aria-label="Where the page lives" id="filters"></div>
+
+  <div id="groups" style="display:grid;gap:22px"></div>
+
+  <section>
+    <h2>How these pages work</h2>
+    <div class="how">
+      <div><h3>Published on claude.ai</h3><p>A private link that works on your phone and keeps the same address when a page is republished; claude.ai keeps the earlier versions. Most are read-only snapshots of repo files: filters and switches change only your view, and nothing is saved.</p></div>
+      <div><h3>Pages that saved your input</h3><p>Answer Key Check and Health Levels saved every click to their own small database on claude.ai, which only you can open and which survives a republish. I read it with a tool, not copy and paste, and the answers then go into the repo, which stays the record.</p></div>
+      <div><h3>On this laptop only</h3><p>Pages that hold other outlets' article text, or are rebuilt by a script and git-ignored. They open from the file, or through a small local server in Claude's browser pane (the names in <code>.claude/launch.json</code>).</p></div>
+      <div><h3>The public site</h3><p>Served from <code>docs/</code> on the main branch at antoine4j.github.io/ringfacts and live a minute after a push. Anyone can read them, so they describe what is built, never private context.</p></div>
+    </div>
+  </section>
+
+  <footer>Source: <code>pages.html</code> at the repo root, edited by hand; published at the same link the golden-set contents page had. When a page is published, or one goes out of date, change its row here and republish. Not listed: pages from other projects on the same claude.ai account.</footer>
+</div>
+
+<script>
+// One page: name, link (null when it opens from a file), where it lives, status, kind, what it is, a status note, source file(s), and an optional warning
+const P = (name, url, where, status, kind, what, note, src, warn) => ({name, url, where, status, kind, what, note, src, warn});
+const BODIES = "experiments/2026-10-05-body-fetch-spike/bodies/";
+const PAGES = [
+  P("Our extractor vs Readability", null, "local", "call", "review",
+    "Production's extracted text beside Mozilla Readability's for the same page, article by article: menus, captions, ads, and whether the article is complete.",
+    "<b>Open:</b> question 1 of the intake design, which text wins when both read a page (docs/design/intake.excalidraw). Not on the Launch Map yet; it belongs to the body-fetch theme (6).",
+    [BODIES + "review-1-extractor-vs-readability.html"], "Holds article text: stays on this laptop, git-ignored."),
+  P("Headline + summary vs full article", null, "local", "call", "review",
+    "What v0 would have without the article (the headline and the outlet's preview summary) beside the full text: could the stations get the news right from the left side alone?",
+    "<b>Open:</b> question 2 of the intake design, whether the stations read headline and summary when there is no text. Not on the Launch Map yet.",
+    [BODIES + "review-2-summary-vs-article.html"], "Holds article text: stays on this laptop, git-ignored."),
+
+  P("Launch Map", "https://claude.ai/artifact/KbwUC8WgQFQwVS84xLPXK6", "claude", "now", "plan",
+    "What is left before launch: the ranked themes, each station's tasks, and the backlog. Point at a task by its number.",
+    "<b>Start here.</b> Next up: theme 1, the repo and the README.",
+    ["v0/launch-map.html"]),
+  P("Golden Set and v0 Build", "https://claude.ai/artifact/L412VXv6JRP2kFKQogBo7v", "claude", "now", "record",
+    "The two finished chapters, station by station: the 47 completed tasks with why each mattered, and the v0 build order. A switch shows either chapter or both.",
+    "Closed 6 Oct; read-only from here.",
+    ["golden/plan.html"]),
+  P("Storyboard", null, "local", "now", "app",
+    "v0's database, live: claims, readings, every station's answer, the tier settings, digests and runs, with a feedback form on every row.",
+    "Run it in Claude's browser pane by the name <b>storyboard</b>, or <code>npx next dev -p 3011</code> in its folder. Your feedback goes to v0's database, not claude.ai.",
+    ["v0/storyboard/"]),
+  P("Body Fetch Explorer", "https://claude.ai/artifact/PX46hMXWgrEPuMbgjpJxVk", "claude", "now", "explore",
+    "How v0 got each article's text from 30 Jul to 5 Oct, by outlet and by week, and what the spike's free fallbacks would read. Lengths and outcomes only, no article text.",
+    "Background for the body-fetch theme (6). A snapshot: no script rebuilds it.",
+    ["experiments/2026-10-05-body-fetch-spike/explorer.html"]),
+  P("Claim Map", "https://claude.ai/artifact/RgK2xc5pCeyYixnBnHHnrB", "claude", "now", "explore",
+    "All 128 golden claims on a grid you re-slice: any two answers as the axes, filters on every value, a cell opens its claims. The v7 view shows each question's errors.",
+    "Rebuilt from the stored answers; republish after a new classifier run.",
+    ["golden/board/map.py", "→ golden/board/map.html (git-ignored)"]),
+  P("Architecture Overview", "https://antoine4j.github.io/ringfacts/architecture-overview.html", "site", "now", "public",
+    "What the bot is, what it remembers, and what happens in one hour of it running.",
+    "<b>Describes production.</b> Launch Map task 0.11 re-reads it against v0's code.",
+    ["docs/architecture-overview.html"]),
+  P("The Funnel", "https://antoine4j.github.io/ringfacts/funnel-walkthrough.html", "site", "now", "public",
+    "Raw headlines in, one message out: every gate an article passes, in the order the code runs them, with real items from the archive.",
+    "<b>Describes production.</b> Launch Map task 0.11.",
+    ["docs/funnel-walkthrough.html"]),
+  P("Test suite overview", "https://antoine4j.github.io/ringfacts/test-suite-overview.html", "site", "now", "public",
+    "What the tests cover and what they deliberately don't: three tiers, split by what each one needs to run.",
+    "<b>Dated 9 Aug</b>, when there were 95 checks; there are 548 now. Not among the four surfaces task 0.11 names; worth adding to it.",
+    ["docs/test-suite-overview.html"]),
+
+  P("Answer Key Check", "https://claude.ai/artifact/RKAaSMy3eQsse3unLHLDte", "claude", "done", "your input",
+    "All 300 golden articles with the blind readers' answers; you marked the wrong ones and said why.",
+    "Frozen 3 Oct. The record is <code>golden/labels.json</code>; your corrections and their whys were copied to <code>golden/answers/corrections-snapshot.json</code>.",
+    ["experiments/2026-09-27-answer-key/correction_page.py", "→ correction.html (git-ignored)"]),
+  P("Health Levels", "https://claude.ai/artifact/2DShsweHKDVvKTZQvmMVS8", "claude", "done", "your input",
+    "Eight health articles, a level from 0 to 4 for each: what the article's news changes for him.",
+    "4 Oct. The record is <code>golden/health-levels.json</code>; the page holds your first answers, and two were raised to 3 afterwards (#148, #368).",
+    ["golden/health-levels.html"]),
+  P("Classifier and Reader Prompts", "https://claude.ai/artifact/JxUPbyomf27dFXeFYBKf3t", "claude", "done", "reference",
+    "The classifier's questions beside the blind readers' prompt, word for word, as used for the labelling.",
+    "As of 4 Oct.",
+    ["experiments/2026-09-27-answer-key/wording_page.py", "→ wording-draft.html (git-ignored)"]),
+  P("Golden Review Board", null, "local", "done", "review",
+    "Every claim with its articles, every classifier and extractor answer as a chip, your ruling and Fable's doubts, suspected body problems.",
+    "Used to rule the claims in late September. Rebuild with <code>python3 golden/board/build.py</code>; the pane's name for it is <b>golden-board</b>.",
+    ["golden/board/build.py", "→ golden/board/board.html (git-ignored)"]),
+  P("Article Sorting Report", null, "local", "done", "report",
+    "The role-questions experiment: asking a model questions about an article instead of which bucket it belongs in, measured on the 300 articles.",
+    "Started 17 Sep. Findings are in the folder's README.",
+    ["experiments/2026-09-17-role-questions/report.py", "→ REPORT.html (git-ignored)"]),
+  P("Claim Extraction Report", null, "local", "done", "report",
+    "The claim-extraction experiment: does a one-sentence claim separate stories? Same 300 articles.",
+    "Started 20 Sep. Findings are in the folder's README.",
+    ["experiments/2026-09-20-claim-extraction/report.py", "→ REPORT.html (git-ignored)"]),
+  P("Answers to Tiers", null, "local", "done", "report",
+    "Which classifier and extractor answers place an article in a tier, and which isolate a claim.",
+    "25–26 Sep. The pane's name for it is <b>answers-to-buckets</b>.",
+    ["experiments/2026-09-25-answers-to-buckets/build-report.py", "→ REPORT.html (git-ignored)"]),
+  P("Types of News", null, "local", "done", "report",
+    "The golden claims sorted into types of news by one reader (Fable), not a ruling: the fight arc, voices about him, his own voice, not about him.",
+    "25–26 Sep.",
+    ["experiments/2026-09-25-answers-to-buckets/types.py", "→ TYPES.html (git-ignored)"]),
+
+  P("Classifier v6 Report", "https://claude.ai/artifact/1VGcmMZasAbN6DnBtQiH9Q", "claude", "old", "report",
+    "How the answer key was built, how far to trust it, what each question change did, v5 against v6.",
+    "<b>Replaced by v7.7</b>, which has no page: its report is <code>experiments/2026-10-03-classifier-v7/README.md</code>.",
+    ["experiments/2026-09-27-answer-key/report.html"],
+    "Not in git: the ignore rule for generated REPORT.html also matches this hand-written file, because the Mac ignores letter case."),
+  P("Classifier v6 Questions", "https://claude.ai/artifact/AEjGBns76dFZLie7a8PC8h", "claude", "old", "reference",
+    "The nine questions v6 asked about every article, with every option and level.",
+    "<b>Replaced by v7.7</b>, which has no questions page.",
+    ["experiments/2026-09-27-axes-v6/review.py"]),
+  P("Classifier v4 Questions", "https://claude.ai/artifact/JEyL2Cn4BSSZZFcDpx3stR", "claude", "old", "reference",
+    "The first set with scores and yes/no questions; its result and health questions read background as news.",
+    "", ["experiments/2026-09-27-axes-v4/review-template.html"]),
+  P("Classifier v3 Questions", "https://claude.ai/artifact/87btxVYBL44Pa9QxNJHjSj", "claude", "old", "reference",
+    "The set on the approved axes, with the paired \"does an option fit\" questions that v4 dropped.",
+    "", ["experiments/2026-09-27-axes-v3/review-template.html"]),
+];
+
+const GROUPS = [
+  {status:"call", title:"Needs your call"},
+  {status:"now", title:"In use"},
+  {status:"done", title:"Finished, kept for the record"},
+  {status:"old", title:"Superseded"},
+];
+const WHERE = {claude:"claude.ai", local:"this laptop", site:"public site"};
+const esc = s => String(s).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+
+/** One row: name and tags, what it is with its status note, then its source. */
+function row(p){
+  const name = p.url ? `<a href="${p.url}">${esc(p.name)}</a>` : `<b>${esc(p.name)}</b>`;
+  const tags = `<span class="tag ${p.where}">${WHERE[p.where]}</span>` + (p.kind==="your input" ? `<span class="tag input">saved your input</span>` : `<span class="tag">${esc(p.kind)}</span>`);
+  const note = p.note ? `<span class="note">${p.note}</span>` : "";
+  const src = p.src.map(s => `<span>${esc(s)}</span>`).join("") + (p.warn ? `<span class="warn">${esc(p.warn)}</span>` : "");
+  return `<li data-where="${p.where}"><div class="name">${name}<div class="tags">${tags}</div></div><div class="what"><span>${esc(p.what)}</span>${note}</div><div class="src">${src}</div></li>`;
+}
+
+/** Draw the groups for one place (or all), skipping groups left empty. */
+function draw(where){
+  const shown = PAGES.filter(p => !where || p.where===where);
+  document.getElementById("groups").innerHTML = GROUPS.map(g => {
+    const items = shown.filter(p => p.status===g.status);
+    if (!items.length) return "";
+    return `<section><h2 class="${g.status==="call" ? "call" : ""}">${g.title}<span class="n">${items.length}</span></h2><ul class="rows ${g.status}">${items.map(row).join("")}</ul></section>`;
+  }).join("");
+}
+
+// Stats and the where-filter
+const count = w => PAGES.filter(p => p.where===w).length;
+document.getElementById("stats").innerHTML =
+  `<span><b>${PAGES.length + 1}</b> pages, this one included</span><span><b>${count("claude") + 1}</b> on claude.ai</span><span><b>${PAGES.filter(p => p.kind==="your input").length}</b> saved your input there</span><span><b>${count("local")}</b> on this laptop</span><span><b>${count("site")}</b> on the public site</span><span><b>${PAGES.filter(p => p.status==="call").length}</b> need your call</span>`;
+const filters = document.getElementById("filters");
+filters.innerHTML = `<span>Where</span>` + [["", "All", PAGES.length], ...Object.entries(WHERE).map(([k, v]) => [k, v, count(k)])]
+  .map(([k, v, c]) => `<button type="button" id="f-${k || "all"}" data-w="${k}" aria-pressed="${k==="" ? "true" : "false"}">${esc(v)}<span class="c">${c}</span></button>`).join("");
+filters.addEventListener("click", e => {
+  const b = e.target.closest("button"); if (!b) return;
+  filters.querySelectorAll("button").forEach(x => x.setAttribute("aria-pressed", String(x===b)));
+  draw(b.dataset.w);
+});
+draw("");
+
+// Theme: system follows the device; light or dark overrides it. Remembered if storage allows.
+function setTheme(t){
+  if (t==="system") document.documentElement.removeAttribute("data-theme");
+  else document.documentElement.setAttribute("data-theme", t);
+  document.querySelectorAll(".theme button").forEach(b => b.setAttribute("aria-pressed", String(b.dataset.t===t)));
+  try { localStorage.setItem("ringfacts-pages-theme", t); } catch(e) {}
+}
+document.querySelectorAll(".theme button").forEach(b => b.addEventListener("click", () => setTheme(b.dataset.t)));
+let savedTheme = "system"; try { savedTheme = localStorage.getItem("ringfacts-pages-theme") || "system"; } catch(e) {}
+setTheme(savedTheme);
+</script>

@@ -1,0 +1,152 @@
+<title>Classifier v6 Report</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Serif:wght@600&display=swap">
+<style>
+:root{
+  --bg:#F3F5F3; --panel:#FFFFFF; --ink:#18201D; --dim:#5B6661; --line:#DCE2DE;
+  --accent:#2B6F68; --accentbg:#E3F0EE; --old:#B9C3BE; --warn:#A8620E; --warnbg:#FBF0E0; --ok:#2F7A45;
+  --sans:"IBM Plex Sans",system-ui,-apple-system,"Segoe UI",sans-serif; --serif:"IBM Plex Serif",Georgia,serif; --mono:"IBM Plex Mono",ui-monospace,Menlo,monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#121715; --panel:#1A211E; --ink:#E2E8E5; --dim:#9AA6A0; --line:#2C3531;
+  --accent:#63B5AA; --accentbg:#1D3330; --old:#4A5550; --warn:#E0A052; --warnbg:#3A2A14; --ok:#6CC38A; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#121715; --panel:#1A211E; --ink:#E2E8E5; --dim:#9AA6A0; --line:#2C3531;
+  --accent:#63B5AA; --accentbg:#1D3330; --old:#4A5550; --warn:#E0A052; --warnbg:#3A2A14; --ok:#6CC38A; color-scheme:dark}
+body{background:var(--bg);color:var(--ink);font:16px/1.6 var(--sans)}
+.wrap{max-width:860px;margin:0 auto;padding-inline:16px;padding-block:28px 64px;display:grid;gap:28px}
+h1{font-family:var(--serif);font-size:32px;line-height:1.15;margin:0;text-wrap:balance}
+h2{font-family:var(--serif);font-size:22px;line-height:1.25;margin:0 0 8px;text-wrap:balance}
+p{margin:0 0 10px;max-width:68ch}
+.eyebrow{font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--dim);font-weight:600}
+.lede{font-size:18px;color:var(--dim)}
+section{display:grid;gap:6px}
+.links{display:flex;flex-wrap:wrap;gap:8px}
+.links a{color:var(--accent);border:1px solid var(--line);background:var(--panel);border-radius:8px;padding:6px 12px;text-decoration:none;font-weight:500}
+.links a:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.callout{border-left:4px solid var(--warn);background:var(--warnbg);padding:10px 14px;border-radius:0 8px 8px 0}
+.callout p:last-child{margin:0}
+ul{margin:0;padding-left:1.2em;max-width:68ch}
+li{margin:3px 0}
+.tablebox{overflow-x:auto}
+table{border-collapse:collapse;width:100%;font-size:14.5px;font-variant-numeric:tabular-nums}
+th{text-align:left;font-weight:600;color:var(--dim);font-size:12.5px;padding:6px 8px;border-bottom:1px solid var(--line)}
+td{padding:7px 8px;border-bottom:1px solid var(--line);vertical-align:middle}
+td.n{text-align:right;white-space:nowrap}
+code,.mono{font-family:var(--mono);font-size:.9em}
+.bars{display:grid;gap:3px;min-width:180px}
+.bar{height:8px;border-radius:4px;background:var(--old)}
+.bar.new{background:var(--accent)}
+.legend{display:flex;gap:14px;font-size:13px;color:var(--dim)}
+.legend span::before{content:"";display:inline-block;width:12px;height:8px;border-radius:4px;margin-right:6px;vertical-align:middle;background:var(--old)}
+.legend span.new::before{background:var(--accent)}
+.flat{color:var(--dim)}
+.up{color:var(--ok);font-weight:600}
+.steps{counter-reset:s;list-style:none;padding:0;display:grid;gap:8px}
+.steps li{counter-increment:s;display:grid;grid-template-columns:2em 1fr;gap:4px}
+.steps li::before{content:counter(s);font-family:var(--mono);font-weight:600;color:var(--accent)}
+</style>
+
+<div class="wrap">
+  <header style="display:grid;gap:8px">
+    <div class="eyebrow">FighterBot · golden set · 27 September 2026</div>
+    <h1>Classifier v6: tuned against an answer key</h1>
+    <p class="lede">We stopped judging question versions by whether their counts looked plausible. Fable built a 59-article answer key, and every question change was scored against it for about a cent. The result is v6: act, fact and how firm are much better, and the gains hold on articles I never tuned on.</p>
+    <div class="links">
+      <a href="https://claude.ai/artifact/RKAaSMy3eQsse3unLHLDte">Check the labels (your part)</a>
+      <a href="https://claude.ai/artifact/RgK2xc5pCeyYixnBnHHnrB">Claim Map, now with v6</a>
+    </div>
+  </header>
+
+  <section>
+    <h2>The numbers</h2>
+    <p>Share of answers that match the key, on the 20 held-back articles. None of the changes were made while looking at these. The 39 tune articles are in brackets.</p>
+    <div class="legend"><span>v5</span><span class="new">v6</span></div>
+    <div class="tablebox"><table>
+      <thead><tr><th>Question</th><th class="n">v5</th><th class="n">v6</th><th></th><th class="n">tune (39)</th></tr></thead>
+      <tbody>
+        <tr><td>Act</td><td class="n">65%</td><td class="n up">80%</td><td><div class="bars"><div class="bar" style="width:65%"></div><div class="bar new" style="width:80%"></div></div></td><td class="n">56 → 72%</td></tr>
+        <tr><td>Fact</td><td class="n">55%</td><td class="n up">75%</td><td><div class="bars"><div class="bar" style="width:55%"></div><div class="bar new" style="width:75%"></div></div></td><td class="n">59 → 82%</td></tr>
+        <tr><td>How firm</td><td class="n">70%</td><td class="n up">85%</td><td><div class="bars"><div class="bar" style="width:70%"></div><div class="bar new" style="width:85%"></div></div></td><td class="n">59 → 79%</td></tr>
+        <tr><td>Centrality</td><td class="n">95%</td><td class="n flat">95%</td><td><div class="bars"><div class="bar" style="width:95%"></div><div class="bar new" style="width:95%"></div></div></td><td class="n">79 → 85%</td></tr>
+        <tr><td>Source</td><td class="n">74%</td><td class="n flat">74%</td><td><div class="bars"><div class="bar" style="width:74%"></div><div class="bar new" style="width:74%"></div></div></td><td class="n">79 → 84%</td></tr>
+        <tr><td>Four yes/no questions</td><td class="n">85–100%</td><td class="n flat">85–100%</td><td></td><td class="n">unchanged</td></tr>
+      </tbody>
+    </table></div>
+    <p>How firm is shown both times as combined with the fact answer: "none" wherever fact says no fact. v5 asked on its own scored 26% on tune. <b>Noise:</b> the same question moved 2 of 39 articles between identical runs, so any change of about 5 points or less is noise, not a finding.</p>
+  </section>
+
+  <section>
+    <h2>How far to trust the key</h2>
+    <div class="callout"><p><b>The key is Fable's reading, not yours.</b> Every percentage here means "agrees with the readers". Your corrections turn it into a real key, and then I rescore everything.</p></div>
+    <ul>
+      <li><b>Two Fable readers, blind, agreed on 511 of 531 answers (96%).</b> An Opus reader, also blind, settled 18 of the 20 differences. 2 are left for you: source on #10 and #740.</li>
+      <li><b>On 10 articles I had written my expected answers down before v5 ran,</b> and the key matches 23 of 25. Both differences (#833, #620) read as fair calls by the readers.</li>
+      <li><b>The guide is mine, so the readers inherit my calls.</b> The ones to check:
+        <ul>
+          <li>How firm is "none" when there is no fact.</li>
+          <li>A coach or manager saying something will happen is "reported".</li>
+          <li>Act is "none of these" when he is only mentioned.</li>
+        </ul>
+      </li>
+      <li><b>The 59 articles lean hard on purpose:</b> every option at least twice, plus the known traps. The percentages describe these articles, not all 300.</li>
+      <li><b>Their 58 claims must go to the tune side when the split is drawn.</b> The questions were tuned on them. This is recorded in <code>golden/README.md</code>.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>What changed, and why it worked</h2>
+    <div class="tablebox"><table>
+      <thead><tr><th>Question</th><th>Change</th><th>What it fixed</th></tr></thead>
+      <tbody>
+        <tr><td>Act</td><td>A new option, <code>only mentions him</code></td><td>With no option for "nobody does anything regarding him", the classifier invented an act. Where he is only mentioned it was right on 11 of 29 articles.</td></tr>
+        <tr><td>Fact</td><td>"Not for" boundaries on result, next fight and fight week; "news about another fighter is no fact"</td><td>"Result" used to take 16 articles, 12 of them wrong: his past fight as background, or someone else's result. Now it takes 8, 4 wrong.</td></tr>
+        <tr><td>How firm</td><td>Asked in four levels; "none" is set in code where fact says no fact</td><td>The classifier graded any claim, opinions included: "wish" 14 picks with 13 wrong, "rumour" 13 with 12 wrong. The fix was the combination, not the wording: JEV's docs advise combining answers in code.</td></tr>
+        <tr><td>Centrality</td><td>"One of several" needs real content of his own</td><td>Over-use of "one of several" dropped slightly (12 picks with 6 wrong → 10 with 4). Inside the noise.</td></tr>
+        <tr><td>Source</td><td>"Not for" on himself and promotion</td><td>Little. See below.</td></tr>
+      </tbody>
+    </table></div>
+    <p><b>What didn't help:</b></p>
+    <ul>
+      <li>Naming the fighter by the state field in the fact question, on its own.</li>
+      <li>Rewriting how firm around "is it settled?".</li>
+      <li>A stronger "himself" boundary on source, which changed no answer at all.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>All 300 are now labelled</h2>
+    <p>The same readers labelled the other 241 golden articles from the same guide. Every article now has a pre-filled answer for you to correct.</p>
+    <ul>
+      <li><b>Readers agreed on 95% of answers.</b> Across all 300: 2,563 agreed, 132 settled by the Opus tie-breaker, 5 left for you. Fact and how firm split most often.</li>
+      <li><b>The same page saved twice got the same answers, 54 of 54</b>, even though different readers in different batches labelled the two copies.</li>
+      <li><b>v6's gains hold on the 241 it was never tuned on.</b> Fact 61 → 74%, how firm 56 → 74%, act 80 → 87%, source 81 → 85%; centrality and the yes/no questions are unchanged. This is agreement with the readers, not the official test score, and no question was changed on these articles.</li>
+      <li>#134 and #655 (saved text unusable) and #230 (cut before his mention) are flagged: their answers describe what we saved, not the real article.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Where it is still weak</h2>
+    <ul>
+      <li><b>Source is stuck near 80%.</b> Most misses are articles where he is only mentioned. There, "whose words are the news about him" has no real answer, and the readers themselves used media, no one and none of these interchangeably. Where he is central, source gets 25 of 31 right in both versions. The rest are borderline: #732 is a fight report with his callout in the headline.</li>
+      <li><b>How firm still confuses "reported" and "official"</b> on a few relayed bookings and results.</li>
+      <li><b>v6 is one pass.</b> We don't know how steady it is yet. Passes 2–4 cost about 19 cents and are worth running only if the key survives your check.</li>
+    </ul>
+    <p>Separately from the key, the map's own consistency checks improved from v5 to v6: claims where source and act contradict fell from 22 to 13, and claims where fact and its yes/no twin disagree fell from 40 to 29.</p>
+  </section>
+
+  <section>
+    <h2>What I need from you</h2>
+    <ol class="steps">
+      <li><span><b>Check the key.</b> Start with "Start here": 16 articles where the readers split or needed a tie-breaker. Mark only what is wrong. It saves as you go.</span></li>
+      <li><span><b>Rule on my calls in the guide</b> (listed above), especially how firm for a coach's "he'll be ready in December".</span></li>
+      <li><span><b>Then the rest of the 300</b>, on the same page. "Readers differed" (78 articles) is the most useful place to go next.</span></li>
+    </ol>
+  </section>
+
+  <section>
+    <h2>Spend</h2>
+    <p>JEV: <b>$0.10 of the $1 budget</b>. $0.04 went on the loop (six runs on the key) and $0.06 on one v6 pass of all 300. Every call is booked in <code>ledger.json</code>. Fable and Opus readers: about 4.3 million tokens on the subscription (0.88 million for the key, 3.46 million for the other 241).</p>
+    <p class="mono" style="font-size:13px;color:var(--dim)">experiments/2026-09-27-answer-key · experiments/2026-09-27-axes-v6 · golden/answers/classifier-v6.json · docs/lessons.md</p>
+  </section>
+</div>

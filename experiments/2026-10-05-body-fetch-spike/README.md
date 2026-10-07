@@ -41,3 +41,12 @@ Cost: $0. Run 5 October 2026, 12:00–13:20 Pacific, from the laptop.
 again, each by the way that read it, into a git-ignored `bodies/` folder (other
 outlets' text stays off this repository: docs/decisions.md#article-text-out-of-git).
 It was started on 5 October and stopped after one article: not needed for now.
+
+**The explorer.** `explorer.html` is the "Body Fetch Explorer" page,
+published at https://claude.ai/artifact/PX46hMXWgrEPuMbgjpJxVk: every
+article published 30 July to 5 October with the way production read it, the
+length it got and, for the unreadable ones, what the spike found; filters by
+fighter, date, way and outlet, a week-by-week chart and a per-outlet table.
+A snapshot with its data embedded (about 730 KB; lengths, outcomes,
+headlines and links, no article text). No script builds it: the file is the
+published page, saved here so the page does not exist only on claude.ai.
