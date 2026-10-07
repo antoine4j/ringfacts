@@ -1,5 +1,5 @@
 <meta charset="utf-8">
-<title>Golden Set Map</title>
+<title>Golden Set and v0 Build</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@500&display=swap">
 <style>
@@ -62,6 +62,18 @@ h2{font-size:24px;text-transform:uppercase;letter-spacing:.06em;color:var(--dim)
 .path li.done .n{color:var(--done)}
 .path li.now{border:2px solid var(--decide);background:var(--decidebg)}
 .path li.now .n{color:var(--decide);font-weight:600}
+.path .links{font-family:var(--mono);font-size:11.5px;color:var(--done);line-height:1.35}
+.path li.empty .links{color:var(--dim)}
+.path li[role=button]{cursor:pointer}
+.path li[role=button]:hover{border-color:var(--done)}
+.path li[role=button]:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.path li[aria-pressed="true"]{background:var(--panel);border:2px solid var(--accent)}
+.hlnote{position:sticky;top:8px;z-index:2;margin:0;justify-self:start;background:var(--accent);color:var(--panel);border-radius:999px;padding:6px 8px 6px 14px;font-size:14px;display:flex;gap:10px;align-items:center}
+.hlnote[hidden]{display:none}
+.hlnote button{font:500 13px var(--body);border:0;border-radius:999px;background:var(--panel);color:var(--accent);padding:4px 10px;cursor:pointer}
+.highlighting ul.items li{opacity:.35}
+.highlighting ul.items li.hl{opacity:1}
+.highlighting ul.items li.hl summary{background:var(--accentbg);border-radius:6px;box-shadow:inset 3px 0 0 var(--accent);padding:6px 10px 6px 13px;margin:0 -10px 0 -13px}
 
 .now-box{background:var(--panel);border:2px solid var(--decide);border-radius:10px;padding:14px 16px;display:grid;gap:8px}
 .now-box h3{font-size:22px;color:var(--decide)}
@@ -87,12 +99,17 @@ h2{font-size:24px;text-transform:uppercase;letter-spacing:.06em;color:var(--dim)
 .v0order .where{font-size:12.5px;color:var(--dim);white-space:nowrap}
 .pill.v0{background:var(--accent);color:var(--panel);font-family:var(--mono);letter-spacing:0}
 ul.items li.is-v0 summary{background:var(--accentbg);border-radius:6px;padding:4px 6px;margin:0 -6px}
+.v0tag{font:600 12px var(--body);color:var(--accent);white-space:nowrap}
+ul.items .v0tag{display:block;margin-top:1px}
+.tickmark{color:var(--done)}
 .v0chip{justify-self:start;font:600 12px var(--mono);color:var(--accent);background:var(--accentbg);border-radius:4px;padding:2px 8px}
 
 .filters{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
 .filters button{font:500 13px var(--body);border:1px solid var(--line);background:var(--panel);color:var(--ink);border-radius:999px;padding:6px 12px;cursor:pointer}
 .filters button[aria-pressed="true"]{background:var(--ink);color:var(--ground);border-color:var(--ink)}
 .filters button:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.chapters{margin-top:12px}
+:root[data-chapter="golden"] .ch-v0, :root[data-chapter="v0"] .ch-golden, :root[data-chapter="golden"] .ch-both, :root[data-chapter="v0"] .ch-both{display:none}
 
 /* the pipeline: stations in order, a corner-red flow line down the left on narrow screens */
 .pipe{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:14px}
@@ -103,13 +120,14 @@ ul.items li.is-v0 summary{background:var(--accentbg);border-radius:6px;padding:4
 .st h3{font-size:24px;line-height:1.05}
 .st .role{font-size:13.5px;color:var(--dim);margin-top:2px}
 .st .verdict{font-size:13.5px;padding:8px 10px;border-radius:6px;background:var(--ground)}
+.st .vtag{font:600 10.5px var(--body);letter-spacing:.06em;text-transform:uppercase;color:var(--dim);margin-right:8px}
 .st.outside{opacity:.8}
 .bar{height:6px;border-radius:3px;background:var(--laterbg);overflow:hidden;display:flex}
 .bar i{display:block;height:100%;background:var(--done)}
 .count{font-family:var(--mono);font-size:12px;color:var(--dim);white-space:nowrap;font-variant-numeric:tabular-nums}
 ul.items{list-style:none;margin:0;padding:0;display:grid;gap:6px}
 ul.items li{font-size:14px;line-height:1.4}
-ul.items summary{display:grid;grid-template-columns:3.2em 6.4em 1fr 1em;gap:8px;align-items:baseline;cursor:pointer;list-style:none;padding:4px 0}
+ul.items summary{display:grid;grid-template-columns:3.2em 1fr 1em;gap:8px;align-items:baseline;cursor:pointer;list-style:none;padding:4px 0}
 ul.items summary::-webkit-details-marker{display:none}
 ul.items summary::after{content:"+";color:var(--dim);font-family:var(--mono);text-align:right}
 ul.items details[open] summary::after{content:"−"}
@@ -151,60 +169,56 @@ code{font-family:var(--mono);font-size:.9em}
 
 <div class="wrap">
   <section>
-    <div class="top"><h1>Golden Set Map</h1>
+    <div class="top"><h1>Golden Set and v0 Build</h1>
       <div class="theme" role="group" aria-label="Colour theme">
         <button id="t-system" data-t="system" aria-pressed="true">System</button>
         <button id="t-light" data-t="light" aria-pressed="false">Light</button>
         <button id="t-dark" data-t="dark" aria-pressed="false">Dark</button>
       </div></div>
-    <p class="lede">The new design station by station: what the golden set gave each station, what v0 needs from it, and what waits until after v0. Tap a task to see why it matters. Point at any task by its number, for example "6.4".</p>
+    <p class="lede">The record of two finished chapters, station by station: building the golden set, the 300 labelled articles every station is scored against (September to 3 Oct), and building v0, the new design running end to end (4 to 6 Oct). Closed 6 Oct. The 27 tasks still parked moved to the Launch Map's backlog. Tap a task to see why it mattered. Point at any task by its number, for example "6.4".</p>
     <div class="stats" id="stats"></div>
+    <div class="filters chapters" role="group" aria-label="Chapter">
+      <button data-c="both" aria-pressed="true">Both</button>
+      <button data-c="golden" aria-pressed="false">Golden set</button>
+      <button data-c="v0" aria-pressed="false">v0 build</button>
+    </div>
   </section>
 
-  <section>
-    <h2>The path</h2>
-    <ol class="path" id="path"></ol>
+  <section class="ch-golden">
+    <h2>The golden set path</h2>
+    <ol class="path" id="path-golden"></ol>
   </section>
 
-  <details class="now-box" id="nowbox" open></details>
+  <section class="ch-v0">
+    <h2>The v0 path</h2>
+    <ol class="path" id="path-v0"></ol>
+  </section>
 
-  <p class="lede"><b>Where the work happens now:</b> the Answer Key Check page, <a href="https://claude.ai/artifact/RKAaSMy3eQsse3unLHLDte">claude.ai/artifact/RKAaSMy3eQsse3unLHLDte</a> (every card, your corrections, the readers' hints). The rules in force: <code>golden/rules.md</code>. Your words per ruling: <code>golden/verdicts.md</code>. Readers' prompt beside the classifier's: <a href="https://claude.ai/artifact/JxUPbyomf27dFXeFYBKf3t">the wording page</a>.</p>
+  <p class="hlnote" id="hlnote" hidden><span></span> <button type="button">Clear</button></p>
 
-  <p class="lede"><b>Claim map:</b> every claim on a who × what grid, built from the machine's answers, for spot-checking top-down. Local: <code>python3 golden/board/map.py</code>, then <code>golden/board/map.html</code>.</p>
+  <details class="now-box ch-v0" id="nowbox" open></details>
+
+  <p class="lede ch-golden"><b>Where the labelling happened:</b> the Answer Key Check page, <a href="https://claude.ai/artifact/RKAaSMy3eQsse3unLHLDte">claude.ai/artifact/RKAaSMy3eQsse3unLHLDte</a> (every card, your corrections, the readers' hints). The rules in force: <code>golden/rules.md</code>. Your words per ruling: <code>golden/verdicts.md</code>. Readers' prompt beside the classifier's: <a href="https://claude.ai/artifact/JxUPbyomf27dFXeFYBKf3t">the wording page</a>.</p>
+
+  <p class="lede ch-golden"><b>Claim map:</b> every claim on a who × what grid, built from the machine's answers, for spot-checking top-down. Local: <code>python3 golden/board/map.py</code>, then <code>golden/board/map.html</code>.</p>
 
   <section style="display:grid;gap:12px">
     <h2>Station by station</h2>
     <div class="legend">
-      <span><b class="pill v0">v0 · 3</b> in v0, with its place in the v0 order</span>
-      <span><b class="pill done">✓ done</b> finished</span>
-      <span><b class="pill next">▶ next</b> the first v0 task not done yet</span>
-      <span><b class="pill todo">○ to do</b> in scope, not started</span>
-      <span><b class="pill parked">‖ parked</b> left for later, on purpose</span>
-    </div>
-    <div class="legend">
-      <span><b class="prio p1">P1</b> blocks the next step</span>
-      <span><b class="prio p2">P2</b> needed for an honest score</span>
-      <span><b class="prio p3">P3</b> runs once the rest is done</span>
-      <span>Inside each station: v0 first, then P1, P2, P3, then parked, then done.</span>
-    </div>
-    <div class="filters" role="group" aria-label="Show items">
-      <button id="f-all" data-f="all" aria-pressed="true">All</button>
-      <button id="f-v0" data-f="v0" aria-pressed="false">v0</button>
-      <button id="f-open" data-f="open" aria-pressed="false">Not done yet</button>
-      <button id="f-decide" data-f="decide" aria-pressed="false">Next</button>
-      <button id="f-done" data-f="done" aria-pressed="false">Done</button>
-      <button id="f-later" data-f="later" aria-pressed="false">Parked</button>
+      <span class="ch-golden"><span><b class="tickmark">✓</b> a golden set task</span></span>
+      <span class="ch-v0"><span><span class="v0tag">v0 · 3</span> under a task: a v0 task, with its place in the build order</span></span>
+      <span class="ch-both">Inside each station: golden set tasks first, then v0 tasks in build order.</span>
     </div>
     <div class="pipe" id="pipe"></div>
   </section>
 
-  <section class="caveats">
+  <section class="caveats ch-golden">
     <h2>Possibly missing</h2>
-    <p class="lede">Scope questions for you: things no task covers yet.</p>
+    <p class="lede">Scope questions raised while building the set that no task covered. Kept here to review; any that matter now go to the Launch Map.</p>
     <ul id="gaps"></ul>
   </section>
 
-  <section class="caveats">
+  <section class="caveats ch-golden">
     <h2>Limits of the whole set</h2>
     <ul>
       <li><b>One fight week.</b> Every result article is Donchenko vs Soriano. A second week needs a fresh pull, which is your call, later.</li>
@@ -215,27 +229,34 @@ code{font-family:var(--mono);font-size:.9em}
     </ul>
   </section>
 
-  <footer>Updated 2026-10-06: v0 complete, 22 of 22 (9.1 called done: the first real tier-1 post is a matter of time); the end state restated and the work after v0 ranked in TODO.md and docs/goals.md; two parked specs (the precision scoreboard, reviewing the classifier's answers) unparked; decisions D1–D34 (docs/superpowers/specs/2026-10-04-v0-design.md); v0 designed and approved earlier the same day; article text kept out of the repository; classifier v7 tuned overnight (4.25 done); labels are nine answers per article, checked card by card against 27 named rules (golden/rules.md); tiers come from settings. Source: <code>golden/plan.html</code> in the repo; the rulings behind every "done" are in <code>golden/verdicts.md</code>.</footer>
+  <footer>Closed 2026-10-06: the golden set frozen 3 Oct (golden/labels.json, 300 articles, nine answers each, checked against 27 named rules in golden/rules.md); v0 designed and approved 4 to 5 Oct (decisions D1–D35, docs/superpowers/specs/2026-10-04-v0-design.md), built and running hourly from 5 Oct, complete 6 Oct with 22 of 22 tasks. The 27 parked tasks are in <code>golden/parked-tasks.json</code> and the Launch Map's backlog. Source: <code>golden/plan.html</code> in the repo; the rulings behind every golden set "done" are in <code>golden/verdicts.md</code>.</footer>
 </div>
 
 <script>
 // One place to edit: the path, then each station's items.
-const PATH = [
-  {t:"Golden folder and review board", s:"300 articles frozen, board built", st:"done"},
-  {t:"Rule every multi-article claim", s:"47 claims, v3 (23–25 Sept)", st:"done"},
-  {t:"Singleton pass and body checks", s:"7 pairs, 14 checks, v4 (27 Sept)", st:"done"},
-  {t:"Claim map", s:"every claim on re-sliceable axes (27 Sept)", st:"done"},
-  {t:"Axes defined and run", s:"classifier v3 on the approved axes (27 Sept)", st:"done"},
-  {t:"Answer key on nine questions", s:"three readers on all 300; classifier v4 → v6; split drawn 1 Oct (155 / 40 / 105)", st:"done"},
-  {t:"Check the answer key", s:"75 cards by rule, 27 rules named, whole set re-read blind, a third reading on 26, a spot check of 20: all done 3 Oct", st:"done"},
-  {t:"Labels frozen", s:"golden/labels.json, 3 Oct: 300 articles, nine answers each, guarded by a test", st:"done"},
-  {t:"Classifier v7.7", s:"tuned 3–4 Oct: all nine right on 62% of training, 50% of validation; frozen for v0 on 4 Oct", st:"done"},
-  {t:"v0: the new design end to end", s:"22 tasks across the stations, in order; decisions D1–D4 taken 4 Oct, D5–D34 with the design spec and the build on 5 Oct; complete 6 Oct", st:"done"},
-  {t:"The showcase, then the friends", s:"ranked 6 Oct in TODO.md: README and repo, the precision scoreboard, review tooling, the digest station, v0 self-feeding then the switch, a public demo; grouping and classifier v8 by what the window shows", st:"now"},
+const PATH_GOLDEN = [
+  {t:"Golden folder and review board", s:"300 articles frozen, board built", st:"done", tasks:["5.1", "5.2"]},
+  {t:"Rule every multi-article claim", s:"47 claims, v3 (23–25 Sept)", st:"done", tasks:["6.1"]},
+  {t:"Singleton pass and body checks", s:"7 pairs, 14 checks, v4 (27 Sept)", st:"done", tasks:["6.2", "3.1", "2.1", "3.2", "6.3"]},
+  {t:"Claim map", s:"every claim on re-sliceable axes (27 Sept)", st:"done", tasks:["4.12"]},
+  {t:"Axes defined and run", s:"classifier v3 on the approved axes (27 Sept)", st:"done", tasks:["4.8", "4.13", "4.1", "4.2"]},
+  {t:"Answer key on nine questions", s:"three readers on all 300; classifier v4 → v6; split drawn 1 Oct (155 / 40 / 105)", st:"done", tasks:["4.15", "4.14", "7.1"]},
+  {t:"Check the answer key", s:"75 cards by rule, 27 rules named, whole set re-read blind, a third reading on 26, a spot check of 20: all done 3 Oct", st:"done", tasks:["4.16", "4.18", "4.19", "4.20", "4.21", "4.22", "4.23"]},
+  {t:"Labels frozen", s:"golden/labels.json, 3 Oct: 300 articles, nine answers each, guarded by a test", st:"done", tasks:["4.24"]},
+  {t:"Classifier v7.7", s:"tuned 3–4 Oct: all nine right on 62% of training, 50% of validation; frozen for v0 on 4 Oct", st:"done", tasks:["4.25"]},
+];
+const PATH_V0 = [
+  {t:"Scoped, classifier frozen", s:"the whiteboard design end to end, as tasks on this map; classifier v7.7 frozen for it (4 Oct evening)", st:"done", tasks:["4.30"]},
+  {t:"Design approved", s:"the v0 design spec after six review rounds, D1–D30, and 22 tasks in build order (5 Oct, early morning)", st:"done", tasks:[]},
+  {t:"Test sets spent once", s:"classifier v7.7 and the claim extractor each scored once on articles nobody tuned against (5 Oct)", st:"done", tasks:["4.7", "5.7"]},
+  {t:"Built overnight", s:"the store, the hourly runner, the import from production, stations 3 to 7, the digest writer, the storyboard, the golden replay: under two hours, unattended (5 Oct)", st:"done", tasks:["0.1", "0.2", "1.1", "2.3", "3.5", "5.6", "6.10", "6.11", "7.5", "8.3", "9.2", "10.1"]},
+  {t:"History loaded, then running hourly", s:"production's archive run through on the laptop, never posted; production's secrets merged into one; deployed as its own Cloud Run job at :47, beside production (5 Oct)", st:"done", tasks:["0.5", "0.4", "0.3"]},
+  {t:"Measured from the start", s:"daily counts, the compare page against production, a 👍 or 👎 on every post (5 Oct)", st:"done", tasks:["10.2", "10.3", "10.4"]},
+  {t:"Complete", s:"posting tier 1 to its own chat closes the build: 22 of 22; the first real tier-1 post is a matter of time, not work (6 Oct)", st:"done", tasks:["9.1"]},
 ];
 
 const V0BOX = {
-  goal:"v0, the design on the whiteboard running end to end: complete 6 Oct. What comes next is ranked in TODO.md.",
+  goal:"The v0 build, in the order it was built",
   proves:"It tests the design's central bet: describe each article (classifier, extractor), group by claim (semantic dedup), then decide from a table (settings), instead of one model call that decides everything at once. It holds if the v0 chat is one you would rather read than production's. It breaks if JEV cannot pick claims, or repeats and misses outnumber today's.",
   decisions:[
     ["D1","Tier 1: a result, or a next fight that is reported or official. Tier 2: health, rumours, status updates, remarks, analysis. Tier 3: not about him."],
@@ -256,7 +277,7 @@ const V = (id, order, task, what, need, station, system, done) => ({id, st:done 
 
 const STATIONS = [
   {n:0, name:"Frame", role:"What holds the stations together: the store, the hourly runner, the deploy.",
-   verdict:"New for v0. The design's stations run here as their own job, beside production.",
+   verdict:"Not part of the set. The frame was new with v0: the design's stations ran as their own job, beside production.",
    items:[
     V("0.1",1,"Set up the store for the design's entities: Article, Claim, Fighter",
       "A database of its own, `v0`, beside production's in the same Neon project. A page is one article; each fighter it names gets a reading of it, and every station's answer is a versioned row of that reading; a claim is labelled by its first extract and also shows a current label, its firmest article's extract (D27). Roles: the job writes, the storyboard and Claude read and add feedback and settings, nothing is ever deleted. Comes with the second half of the Mastra spike: a workflow writing to this database from a plain node process. Your yes before the database and roles are created.",
@@ -283,14 +304,9 @@ const STATIONS = [
       "Without history, v0's first week would post old news again as new claims.",
       "Runs on the laptop, so it uses none of Cloud Run's free tier.",
       "Measured: $3.13 of digest calls (Kimi $2.41 of it) and about $0.13 to group the backlog.", true),
-    T("0.6","later","Find out why production's runs average 152 seconds",
-      "Measured 5 Oct: 715 runs in 30 days, 108,426 seconds, while the recent median is 21 seconds; one run took 555.",
-      "Not a v0 task.",
-      "Production alone uses 45% of the free CPU; v0 brings it to about 81% (estimate).",
-      "Halving production's time would make the free tier comfortable."),
    ]},
   {n:1, name:"RSS reader", role:"Finds article links for each fighter.", outside:true,
-   verdict:"Not tested by this set. Whether we find every real event is measured separately, by the monthly recall check.",
+   verdict:"Not tested by the set. Whether we found every real event was left to the monthly recall check.",
    items:[
     V("1.1",3,"Read production's new articles instead of fetching any feed",
       "Production's feeds, URL check and body fetch already store every new article in its items table; v0 reads it through a role that can only read that table (your yes first), importing each run every article of the last 3 days it does not have yet (D15). Each fighter the text names gets a reading (D16).",
@@ -299,7 +315,7 @@ const STATIONS = [
       "Both pipelines read the same links, so their outputs can be compared.", true),
    ]},
   {n:2, name:"URL dedup", role:"Drops a link we have already seen.",
-   verdict:"Skipped for now, your call. The set already holds its test cases.",
+   verdict:"Skipped, by your choice. The set already held its test cases (2.1); the address clean-up test was parked (2.2).",
    items:[
     V("2.3",4,"Seen-before comes from production: an article is imported once",
       "Production already drops a link whose wrapper or decoded address it holds; v0 imports each production article once (unique on its id). Clean-up of addresses (2.2) comes after v0.",
@@ -311,14 +327,9 @@ const STATIONS = [
       "A copy is not a second outlet reporting the news. Marking it stops a copy from counting as an easy 'same claim' win when grouping is scored.",
       "These six are exactly the cases URL dedup should catch. They are its test set.",
       "A copy that slips through can be posted twice. That breaks goal G3, nothing repeats."),
-    T("2.2","later","Test address clean-up on those six pairs",
-      "Remove /amp/, a trailing slash, and the Google News wrapper, then check that each pair is caught.",
-      "Needs no new labels; 2.1 already provides them.",
-      "Measures whether cheap address rules catch copies before any text is fetched.",
-      "Every copy caught here saves a page fetch and a model call further down. Parked because you chose to skip this station for now."),
    ]},
   {n:3, name:"Body extractor", role:"Gets the article text from the page.",
-   verdict:"Last on purpose, your call. What we learned is recorded so nothing is lost.",
+   verdict:"Left until last, by your choice, and not reached before the set froze. What was learned was recorded so nothing was lost (3.3 and the rule backlog); the work moved to the Launch Map's body-fetch fallback.",
    items:[
     V("3.5",5,"Reuse today's body extractor; an article with no usable text is marked seen and counted, not classified",
       "Decided 4 Oct (D2). The text is the body production already extracted (lib/extract.js, as it is). No usable text: the reading is stored as no-body with its headline, outlet and fighter, and never classified.",
@@ -335,19 +346,9 @@ const STATIONS = [
       "Keeps these from being mistaken for station errors when scoring.",
       "This is the to-do list for the tune-up (3.4).",
       "Shows the limits of fetching a page once without a browser."),
-    T("3.3","later","Mark every article whose saved text is unusable, across all 300",
-      "Expected 10 to 15. Confirmed so far: #134 (intro only), #655 (styling code only), #647 (one line plus the site's comment policy), #44 (a video page with almost nothing saved), #1045 (a video page, only the blurb). Measured 3 Oct: 23 saved texts hit the 10,000-character cap, and some start with site menus (#1172 opens with 1,900 characters of menu). Video pages come in three kinds: almost nothing saved, the whole transcript (#492), only the blurb (golden/rule-backlog.md, item 4).",
-      "Lets a score separate 'the station was wrong' from 'the input was garbage'. Worth asking whether this must happen before step 7, or the classifier gets scored on garbage.",
-      "Test cases for a quality check. A length check alone lets styling code through.",
-      "Design card 7: an article with no usable text needs a check and a defined fate."),
-    T("3.4","later","Tune the body extractor, then score it on the set",
-      "TODO item 8. Last, by your decision.",
-      "Uses 3.2 and 3.3 as its answer key.",
-      "The only way to know if a fix helped.",
-      "Better text lifts every station after it."),
    ]},
   {n:4, name:"Classifier", role:"Answers nine questions per article: how central he is, whose words, what the source does, what new fact, how firm, and four yes/no (result, next fight, health, he speaks).",
-   verdict:"v7 is tuned (3–4 Oct; v7.7 since 4 Oct, a narrower callout sentence in \"how central\"): all nine answers right on 62% of training articles (96 of 155) and 50% of validation articles (20 of 40), against 41% and 40% for v6. Every single answer right: 92% and 90%. The validation set is small: its 95% interval runs from about 35% to 65%. Pass marks adopted 4 Oct, read off the goals, with result, next fight and health as career events: v7.7 passes G4 (no rumour called official), passes G2 on training (4.5% false alarms) and misses it on validation (5.3%), and fails G1 only on claim-127, a past infection now under review with the health question. Frozen as v7.7 for v0 on 4 Oct (4.30); your calls 4.26 and 4.27, and the one test score (4.7, optional, about 3 cents), come after v0.",
+   verdict:"v7 was tuned on 3–4 Oct (v7.7 from 4 Oct, a narrower callout sentence in \"how central\"): all nine answers right on 62% of training articles (96 of 155) and 50% of validation articles (20 of 40), against 41% and 40% for v6. Every single answer right: 92% and 90%. The validation set was small: its 95% interval ran from about 35% to 65%. Against the pass marks adopted 4 Oct, read off the goals with result, next fight and health as career events, v7.7 passed G4 (no rumour called official), passed G2 on training (4.5% false alarms) and missed it on validation (5.3%), and failed G1 only on claim-127, a past infection put under review with the health question. Frozen as v7.7 for v0 on 4 Oct (4.30). Your calls 4.26 and 4.27 were parked; the one test score (4.7) was taken during the v0 build.",
    items:[
     V("4.30",6,"Freeze classifier v7.7 and run it on every article with text",
       "The nine answers of v7.7, as tuned 3 and 4 Oct, with the ties of the rules applied: one JEV call per article. 4.26, 4.27 and the health scale wait until after v0.",
@@ -424,56 +425,16 @@ const STATIONS = [
       "No new labels.",
       "The classifier cannot match answers made under rules it was never told.",
       "This is the step that turns the answer key into a better classifier."),
-    T("4.26","later","YOUR CALL: two fixes that work only on the claims they were built on",
-      "From the night's experiment E5. (1) 'A prediction is about a booked fight': a rival camp's boast ('Usman would make him quit', claim-003, three articles) moves from 'predicts his fight' to 'calls him out'. (2) 'A report of what is planned for him is news, not steering': fixes Dana White's 'top two potential opponents' and the reported rematch talks. Both held in two runs and lost nothing, and every training article the key calls a prediction is about a booked fight. But neither moved the validation set, so nothing outside their own claims shows them working. Options: adopt both; adopt neither until a new labelled slice can judge them; adopt only 'booked'. My recommendation: only 'booked', which restates how the key already uses the label.",
-      "No label changes.",
-      "Settles the last two known wording fixes before the questions are frozen for the test score.",
-      "Once the test set is scored, no further change can be judged on it."),
-    T("4.27","later","YOUR CALL: do the three news questions stay tied to the 'what new fact' answer?",
-      "Today the code applies the rule ties: 'no fact' makes all three flags no, and a result, next-fight or health fact makes its own flag yes. As the model gives them, 'reports his next fight' is right on 150 training and 35 validation articles; after the ties, 146 and 39. Training prefers the raw flags, validation the ties. Where a flag and the 'what new fact' answer disagree (23 training articles), the flag is right in 11, the fact in 10, both wrong in 2. Options: keep the ties and log every disagreement for review (now); let a confident flag stand against 'no fact'; drop the flags and derive them from the fact. My recommendation: keep the ties and log the disagreements, a cheap list of articles worth a second look.",
-      "No label changes.",
-      "Decides how the classifier's nine answers are composed before they are scored.",
-      "The decider reads the flags; if they can contradict the fact, it needs a rule for that."),
     V("4.7",15,"Score classifier v7.7 once on the test set (105 articles); go given 5 Oct",
       "One run on the 105 test articles, never sent before (about 3 cents): the pass marks (G1, G2, G4), all nine right and each question's accuracy, each with its 95% interval, written into decisions.md beside v7.7. Your go was given on 5 Oct (D30): it runs in v0's line of work, before the archive run.",
       "v0 stands on v7.7, and training and validation were both looked at while tuning. Only the test set says how v7.7 does on articles nobody tuned against, so when v0 gets something wrong we know whether to suspect the classifier or the design.",
       "Seals v7.7 as the classifier's baseline; v8 is compared with it later.",
       "About 3 cents and ten minutes. The test articles of every other station stay unread.", true),
-    T("4.28","later","Look at three labels where the classifier's reading looks defensible",
-      "All three are training articles, so this does not block the test score. #746 (claim-095), 'Daniil Donchenko Octagon Interview', keyed result: by the rule 'result only for an account of the fight itself' a post-fight interview is not a result, unless the saved page also carries the fight report. #655 (claim-066), keyed absent: the headline names him, the body does not; absent or only mentioned? #510 (claim-058), a preview with 'start time, full card and how to watch', keyed no fact: now answered right, but it sits between the preview rule and the fight-week rule. A change goes through errata with a new checksum, never by editing labels.json.",
-      "Keeps the key honest where the classifier's reading has a case.",
-      "Removes training misses that may not be misses.",
-      "Small, but the same check applies to every later station."),
-    T("4.29","later","A new labelled slice to judge the fixes that need it",
-      "The validation set has no next-fight or status-update article, so changes on those (the rumour fixes rejected overnight, 'plans' in 4.26) cannot be judged out of sample. A small new slice of articles with rumoured fights and health updates, labelled by the readers, with your time limited to one spot check. Parked until after 4.7.",
-      "Adds labels where the current split is blind.",
-      "Lets the next classifier version be judged on the cases it is weakest on.",
-      "Rumoured fights and health news are what the group most wants to hear first."),
-    T("4.17","later","Try different sets of questions against the same labels",
-      "Partly tried 3–4 Oct: the 'what new fact' question as one yes/no per kind gained 12 training articles and none on validation (E6). After the test score: autonomous rounds that change which questions the classifier is asked (drop the three news questions and derive them from fact plus a 'second fact' question; merge or split questions; ask fewer) and map each variant's answers onto the nine labels in code, as how firm already is. Tuned on the tune side, compared on the check side, about a cent per variant. No relabelling unless the values themselves change.",
-      "Reuses the labels as they are: they describe the article, not the questions.",
-      "Finds the cheapest set of questions that reaches the same answers; the three news questions are now 99% determined by fact (4 second-fact articles in 300).",
-      "Fewer questions per article is lower cost and fewer places to be wrong."),
     T("4.8","done","Define the axes and their values, so every claim fits exactly one value on each",
       "I draft from the map, you approve. Known problems to settle: 'he fought' and 'fight week' sit on two axes at once; 'quote' as a kind only repeats that someone spoke; 'steering him elsewhere' is never used although such claims exist; Gaethje is both champion and his last opponent; Makhachev is a champion of another division. Also absorbs the old question of whether the opponent's own news is about him: where does it sit?",
       "Labels against fuzzy axes cannot be scored: two careful people would put the same claim in different cells.",
       "The classifier's questions get rewritten to match, so its answers can be scored axis by axis.",
       "The axes are the vocabulary of the whole product: settings, the digest and the map all speak it."),
-    T("4.9","later","Check the gate: confirm or correct 'not about him' and the disagreements",
-      "PARKED 3 Oct: this was the claim-map way of labelling; since 28 Sept the labels are nine answers per article (tasks 4.15 and 4.16), which cover the same ground. Kept for the record. On the map, version v3: the 'Not about him' tile (66 claims) and the 'Classifier and extractor disagree' tile (37). v3 is stricter than v2: 18 claims moved from yes or partly to not. The 'no text' articles show here too, which also covers the unusable-text question (3.3).",
-      "The gate label per claim: about him, partly, or not.",
-      "The first filter everything else depends on.",
-      "A wrong 'no' swallows real news (G1); a wrong 'yes' lets junk through (G2).", "P1"),
-    T("4.10","later","Spot-check who × what on the map and correct the cell of each claim",
-      "PARKED 3 Oct: this was the claim-map way of labelling; since 28 Sept the labels are nine answers per article (tasks 4.15 and 4.16), which cover the same ground. Kept for the record. Cell by cell, doubtful claims first (readers split, articles in different cells, classifier and extractor disagree). Replaces the old type and speaker labels: the 28 types collapse into cells.",
-      "The who and what labels per claim.",
-      "The answer key for the classifier's two main questions.",
-      "Can we tell these words apart reliably? This is where we find out."),
-    T("4.11","later","Mark how firm each career fact is: official, reported or rumoured",
-      "PARKED 3 Oct: this was the claim-map way of labelling; since 28 Sept the labels are nine answers per article (tasks 4.15 and 4.16), which cover the same ground. Kept for the record. Mostly bookings. The classifier already answers it inside its kind question; this confirms it.",
-      "Nothing tested it before.",
-      "The answer key for the 'how firm' value.",
-      "Goal G4: 'confirmed' only when an official source said it."),
     T("4.12","done","Build the claim map: every claim on axes you can re-slice",
       "Built 27 Sept from stored answers, no model calls: a gate (about him yes / partly / no), who, what, fact asserted, depth, role, the extractor's kind, fighter. Click a cell for its claims, doubtful first.",
       "Top-down review: you correct placements instead of reading 300 articles one by one.",
@@ -481,7 +442,7 @@ const STATIONS = [
       "The same view may become what readers see behind 'read more'."),
    ]},
   {n:5, name:"Claim extractor", role:"Writes one sentence per article: what happened, and where.",
-   verdict:"Extracts are in. Only the bout needs your confirmation; bad extracts get flagged as you meet them.",
+   verdict:"Extracts were in. Confirming the bout and flagging bad extracts were left as label passes, then parked (5.3, 5.4).",
    items:[
     V("5.6",7,"Move the extractor into the pipeline: one extract per article",
       "The pass-4 prompt from the claim-extraction experiment, on Qwen3.8 Flash via OpenRouter, reading the whole article: kind first, then one sentence stating one fact, occasion, actor, opponent, event, date. Stored per article and never merged (review card 8).",
@@ -503,24 +464,9 @@ const STATIONS = [
       "Made reviewing 300 articles fast enough to do by hand.",
       "Exposes a bad extract at a glance.",
       "The same view could later become how you give feedback on live posts."),
-    T("5.3","later","Confirm the bout for every claim",
-      "Pre-filled for 63 claims; you confirm or correct.",
-      "Ties each claim to a fight: needed for the predictions merge and the post-fight window.",
-      "The answer key for the extractor's bout field.",
-      "Guards grouping: a result must never join a booking for a different fight."),
-    T("5.4","later","Flag a bad extract when you meet one",
-      "No separate pass. Only while labelling.",
-      "Gives an 'extract right or wrong' label cheaply.",
-      "Real failure cases for the next prompt.",
-      "If the extract becomes the post text, a wrong one reaches the group."),
-    T("5.5","later","Change the next prompt: origin is where the person spoke, never the account that relayed it",
-      "Written down in the answers-to-tiers experiment. Seen again on claim-097: the extract says 'The UFC is having internal conversations' and drops that Jon Anik said it.",
-      "None now.",
-      "Fixes a known extraction error.",
-      "Keeps two outlets relaying one interview in the same claim."),
    ]},
   {n:6, name:"Semantic dedup: grouping into claims", role:"Joins an article to a claim we have, or starts a new one. Grouping articles into claims is this station's job.",
-   verdict:"The grouping is ruled and trusted. Similarity alone cannot decide joins; the three-step test comes next.",
+   verdict:"The grouping was ruled and trusted. Similarity alone could not decide joins; the three-step test planned next was parked (6.8).",
    items:[
     V("6.10",8,"Shortlist the claims an article could belong to",
       "Embed claim + occasion + headline + lead, the best text in 6.3. Candidates: this fighter's claims with an article in the last 14 days, ranked by their closest article; the top 5; no similarity cutoff (D22).",
@@ -547,44 +493,9 @@ const STATIONS = [
       "Confirms v4 did not change any conclusion.",
       "Shows which text to compare articles on.",
       "Production compares headline plus lead today; the extract version separates claims better."),
-    T("6.4","later","Decide how far back joining should look",
-      "37 same-claim pairs are more than 3 days apart, in 10 claims.",
-      "Decides whether those 37 pairs count as misses when scoring.",
-      "Sets the size of the search window.",
-      "Too short and a repeat posts again (G3). Too long and more wrong joins and more cost.", "P2"),
-    T("6.5","later","Decide whether fight-week routine is a claim of its own",
-      "Weigh-ins, face-offs, open workouts.",
-      "Changes how many fight-week articles are grouped, so the labels must follow one rule.",
-      "Tells grouping what to join.",
-      "Decides whether the group hears about each weigh-in and face-off.", "P2"),
-    T("6.6","later","Check the other 74 single-article claims while labelling",
-      "Not reviewed by you: they stand as Fable built them. 26 carry a doubt Fable wrote down, 11 were grouped below high confidence. Flag any that belong elsewhere.",
-      "An unnoticed wrong singleton is a hidden error in the answer key.",
-      "A missed join would be scored as correct.",
-      "Same as 6.1."),
-    T("6.8","later","Test grouping in three steps: shortlist by similarity, rule out with guards, an LLM decides the rest",
-      "Steps 1 and 2 use saved results and cost nothing. Step 3 runs only on the hard cases.",
-      "Uses the trusted grouping as the answer key.",
-      "Measures how often the right claim is on the shortlist, and how many wrong joins the guards remove.",
-      "Wrong joins swallow news; wrong starts post repeats."),
-    T("6.9","later","Design against the two classic failures of grouping one article at a time: stale leader and chaining",
-      "Stale leader: a story is described forever by its first article's one sentence (production writes it once and never updates it), so an off sentence misjudges every later article. Suspected cases from the September replay: a story fact that restates June's result for an August article, and a fact about Ilia under a headline about his brother. Chaining: a group grows through its most similar member and drifts; on 2026-08-08 a chain of 0.80, 0.87 and 0.97 walked an Ali Abdelaziz story onto an unrelated matchmaking claim. Production has both sides: the shortlist ranks a story by its closest member, the judge compares against its first sentence.",
-      "Neither failure shows when articles are scored one at a time; only the replay in date order (6.7) can catch them.",
-      "Whether a story's description should be rebuilt from its members as they join (the usual fix for a stale leader) while staying tied to its first fact (the guard against chaining).",
-      "A stale leader posts repeats (G3) or swallows news into the wrong story; a chain swallows news."),
-    T("6.12","later","After v0: lean grouping toward splitting, and absorb the splits downstream",
-      "Your rule (5 Oct, now in goals.md under G3): a story posted twice costs less than a story swallowed. v0's replay leans the wrong way on training: pair precision 0.62 (3 of v0's 38 claims mix two of your stories) against pair recall 0.83 (4 of your 38 split). Levers, each aimed at one side. Against merges: a join needs JEV to be sure (under some confidence, start a new claim instead; the ⚠ joins are the first candidates); a guard that refuses a join when the extracts name a different opponent, event or date; a second look at a claim whose newest article's extract disagrees with its label. Against the cost of splits: the digest writer merges claims that are one story (your idea; it already sees the week's claims together); before a tier-1 post, a check against the last days' posted claims for the same fact (same opponent and event), so a split repeats at most rarely in the loud channel. Two more, to test on the golden replay first, from your first live review (5 Oct, claims #424 and #426: one Instagram statement by Parnasse's camp, reported by three outlets, split across two claims): (1) show the judge each candidate claim by more than its label, for example its first and its latest sentence. #424's label had switched to its one rumour article ('reportedly scheduled', firmer than 'no new fact'), so the third report of the camp's denial was compared with the rumour alone and judged a new story (79% 'none of these', 12% #424), though two denials were already in the claim; (2) make the extract's 'occasion' name the fight or event ('Topuria vs Parnasse, UFC 336'), not where it was said ('Instagram story posted by Chaufourier'): it is part of the text the shortlist compares, so four articles on one fight got four different occasions.",
-      "Pair precision and pair recall on training and validation, and swallowed tier-1 stories counted on their own: the target is none.",
-      "Grouping (6) is where both failures start; 6.9 (stale leader, chaining) is the same family.",
-      "G1 before G3: nothing real is missed, and what repeats is caught by the digest or the post-time check."),
-    T("6.7","later","Replay all 300 in date order and score the test side once",
-      "Test-side articles still see tune-side claims as candidates.",
-      "Uses the answer key exactly once.",
-      "The honest grouping number.",
-      "Written into decisions.md beside the design."),
    ]},
   {n:7, name:"Decider and settings", role:"Looks up the claim's cell in per-fighter settings to give tier 1, 2 or 3; only a new claim can be tier 1. The settings table is not in the diagram yet.",
-   verdict:"Tiers moved to the other side of the split: they come from settings, not from labels. A small tier sample checks the bridge.",
+   verdict:"Tiers moved to the other side of the split: they came from settings, not from labels. The small tier sample that would check that bridge was parked (7.2).",
    items:[
     V("7.5",10,"Settings v0: the classifier's answers decide the tier",
       "Decided 4 Oct (D1). Tier 1: a result, or a next fight that is reported or official. Tier 2: health, rumours, status updates, remarks, analysis. Tier 3: not about him. One table per fighter, all three alike for now. An article posts when it is the first tier-1 article of its claim, so an official announcement that joins an earlier rumour still posts (review card 4a).",
@@ -596,43 +507,18 @@ const STATIONS = [
       "Not golden. The September grading is a weaker answer key.",
       "Shows the classifier answers carry enough to decide tiers.",
       "Input to the decider's design."),
-    T("7.4","later","Build the settings table: which cells reach tier 1, 2 or 3, per fighter",
-      "Your rulings so far become the defaults: for Donchenko and Amosov you hear everyone; for Topuria only people with standing. Changeable, later by users too. Design intent of 3 Oct: what fact and how firm route an article together (an official fight at once, a rumour to a digest); neither is used alone to cut an article away, and no single label should be able to drop an article by itself.",
-      "No labels; it sits on top of them.",
-      "Makes the decider a lookup instead of a judgement.",
-      "The decoupling: facts are classified once, what each reader wants is a setting."),
-    T("7.2","later","Give a tier to a sample of claims, blind, to check the bridge",
-      "After 7.4. If grid plus settings give your tier, the grid is enough; if not, it shows what the grid misses, such as depth or how big the news is.",
-      "A check, not a label for every claim.",
-      "Tests the decider end to end.",
-      "Goals G1 (nothing real missed) and G2 (no junk)."),
-    T("7.3","later","Score the decider on that sample",
-      "After the freeze and the sample.",
-      "Uses the sample once.",
-      "The honest decider number.",
-      "Written into decisions.md beside the design."),
    ]},
   {n:8, name:"Digest writer", role:"Writes the weekly summary.",
-   verdict:"In v0 (D18). One digest per fighter, written with a wide context; two labels would test it later.",
+   verdict:"Not labelled in the set. v0 built it (D18): one digest per fighter, written with a wide context. The two labels that would test it were parked (8.1, 8.2).",
    items:[
     V("8.3",13,"Write one digest per fighter, on a schedule you set",
       "Weekly, Monday 07:00 Pacific to start; the schedule is a setting and each digest covers from the last one to now (D24). It reads today's date, the fighter's previous digests from the last 30 days, every claim active in the period with all its extracts, outlets and links, quieter claims as background, and the tier-1 posts already sent; it returns its text and which claims each item used, stored per digest. A Mastra agent on a strong, cheap open model on OpenRouter with reasoning on; the model is picked from past weeks' digests side by side (D25).",
       "The digest is half of what v0 delivers; without it the design cannot be judged.",
       "Its test is whether it skipped the right stories, not only whether the prose is good (review card 9).",
       "Cents a week.", true),
-    T("8.1","later","Mark the main source for each article",
-      "Link the original essay or interview, not a write-up about it.",
-      "A new label, not needed until the digest writer exists.",
-      "Tests whether the digest links the right source.",
-      "The digest links where the news actually came from."),
-    T("8.2","later","Check the digest skips the right stories",
-      "Uses the settings (7.4) and the tier sample (7.2).",
-      "No new labels.",
-      "Tests what the digest leaves out.",
-      "Keeps the digest short."),
    ]},
   {n:9, name:"Telegram and storyboard", role:"Where people read it.", outside:true,
-   verdict:"Not tested by this set. Who writes the tier-1 message is a design question, not a data one. In v0 it is the extract's sentence plus the link, and the storyboard is a diagnostic tool for you.",
+   verdict:"Not tested by the set. Who writes the tier-1 message was a design question, not a data one. v0 settled it: the extract's sentence plus the link, with the storyboard as your diagnostic tool.",
    items:[
     V("9.1",11,"Post tier 1 to a new test chat; tier 2 goes to the digest",
       "Decided 4 Oct (D4): a chat of its own, with a bot of its own (@ringfacts_bot, made 5 Oct), so no v0 bug can post to production's group. The message is the posted article's own extract sentence and the link. Tier 2 goes to the digest (8.3). Built and running hourly since 5 Oct, posting to the chat Ringfacts v0 (a test message went through). Called done 6 Oct with v0 complete: the path is built and watched, and the first real tier-1 story is a matter of time, not work (none had arrived by 6 Oct: 36 live articles, none tier 1).",
@@ -646,7 +532,7 @@ const STATIONS = [
       "It views the golden replay (10.1) the same way as live runs, and it is the natural place to give feedback later. It grows into the reader-facing storyboard after v0.", true),
    ]},
   {n:10, name:"Measurement", role:"How we know whether v0 is better than today, without labelling everything.", 
-   verdict:"Built into v0, with little of your time: the golden replay and the daily counts take none, the side-by-side a few minutes a week, the reactions a second per post.",
+   verdict:"Not labelled in the set. v0 built it in, with little of your time: the golden replay and the daily counts took none, the side-by-side a few minutes a week, the reactions a second per post.",
    items:[
     V("10.1",14,"Replay the golden articles through v0 before it goes live",
       "The whole pipeline on the training and validation articles in date order, offline. Scored automatically against labels you already made: the classifier's pass marks, grouping against your 128 ruled claims, and which career-event claims got a tier-1 post. The test articles stay unsent.",
@@ -687,7 +573,7 @@ const GAPS = [
 const esc = s => s.replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
 
 // Status is what you scan for; kind says what sort of work it is.
-const STATUS = {v0:["v0","v0"], done:["done","✓ done"], decide:["next","▶ next"], label:["todo","○ to do"], score:["todo","○ to do"], later:["parked","‖ parked"]};
+const STATUS = {v0:["v0","v0"], done:["done","✓ set"], decide:["next","▶ next"], label:["todo","○ to do"], score:["todo","○ to do"], later:["parked","‖ parked"]};
 const KIND = {v0:"", decide:"your decision", label:"label pass", score:"scoring", later:"", done:""};
 // Order inside a station is "what blocks what": P1 blocks the next step, P2 is needed for an honest score,
 // P3 runs once the rest is done; then parked; done tasks stay visible at the bottom, in the order finished.
@@ -707,12 +593,14 @@ const all = STATIONS.flatMap(s => s.items);
 const nDone = all.filter(i => i.st==="done").length;
 document.getElementById("stats").innerHTML =
   `<span><b>300</b> articles</span><span><b>128</b> claims</span><span><b>47</b> with more than one article</span>` +
-  `<span><b>${nDone}</b> of <b>${all.length}</b> tasks done</span>` +
-  `<span><b>${all.filter(i=>i.v0).length}</b> tasks in v0, <b>${all.filter(i=>i.v0 && i.st==="done").length}</b> done</span>`;
+  `<span><b>${all.filter(i=>!i.v0).length}</b> golden set tasks</span>` +
+  `<span><b>${all.filter(i=>i.v0).length}</b> v0 tasks</span><span>all done</span>`;
 
-// The path
-document.getElementById("path").innerHTML = PATH.map((p,i) =>
-  `<li class="${p.st}"><span class="n">${p.st==="done"?"✓ ":p.st==="now"?"▶ now · ":""}step ${i+1}</span><span class="t">${esc(p.t)}</span><span class="s">${esc(p.s)}</span></li>`).join("");
+// The two paths
+const pathItems = (list, chapter) => list.map((p,i) =>
+  `<li class="${p.st}${p.tasks.length?"":" empty"}" ${p.tasks.length?`role="button" tabindex="0" aria-pressed="false" data-tasks="${p.tasks.join(" ")}" data-label="${esc(p.t)}"`:""}><span class="n">${p.st==="done"?"✓ ":""}step ${i+1}</span><span class="t">${esc(p.t)}</span><span class="s">${esc(p.s)}</span><span class="links">${p.tasks.length?`${p.tasks.length} task${p.tasks.length>1?"s":""}: ${p.tasks.join(", ")}`:"no task card"}</span></li>`).join("");
+document.getElementById("path-golden").innerHTML = pathItems(PATH_GOLDEN, "golden");
+document.getElementById("path-v0").innerHTML = pathItems(PATH_V0, "v0");
 
 // Now box
 // The v0 box: the goal, the decisions, then every v0 task in order, with its station
@@ -729,7 +617,7 @@ try { if (localStorage.getItem("golden-plan-v0-open")==="no") box.open = false; 
 box.addEventListener("toggle", () => { try { localStorage.setItem("golden-plan-v0-open", box.open ? "yes" : "no"); } catch(e) {} });
 
 // Stations, each task expandable with its three reasons
-const task = i => `<li class="${i.st==="done"?"is-done":""}${i.st==="v0"?" is-v0":""}" data-st="${prio(i)==="P1" || isNext(i) ?"decide":i.st}"${i.v0?' data-v0="1"':""}><details><summary><span class="id">${i.id}</span><span class="pill ${status(i)[0]}">${status(i)[1]}</span><span class="txt">${prio(i)?`<b class="prio p${rank(i)}">${prio(i)}</b> `:""}${esc(i.task)}${KIND[i.st]?` <span class="kind">${KIND[i.st]}</span>`:""}</span></summary>
+const task = i => `<li data-id="${i.id}" class="${i.st==="done"?"is-done":""}${i.st==="v0"?" is-v0":""}" data-st="${prio(i)==="P1" || isNext(i) ?"decide":i.st}"${i.v0?' data-v0="1"':""}><details><summary><span class="id">${i.id}</span><span class="txt">${prio(i)?`<b class="prio p${rank(i)}">${prio(i)}</b> `:""}${esc(i.task)}${KIND[i.st]?` <span class="kind">${KIND[i.st]}</span>`:""}${i.v0?`<span class="v0tag">v0 · ${i.v0}</span>`:""}</span></summary>
   <div class="why">${i.what?`<p class="what">${esc(i.what)}</p>`:""}
   <dl>${i.v0 ? `<dt>Why v0 needs it</dt><dd>${esc(i.why.need)}</dd>` : `<dt>For the golden set</dt><dd>${esc(i.why.set)}</dd>`}<dt>For this station</dt><dd>${esc(i.why.station)}</dd><dt>For the system</dt><dd>${esc(i.why.system)}</dd></dl></div></details></li>`;
 document.getElementById("pipe").innerHTML = [...STATIONS].sort((a,b) => a.n-b.n).map(s => {
@@ -738,7 +626,7 @@ document.getElementById("pipe").innerHTML = [...STATIONS].sort((a,b) => a.n-b.n)
   const v0chip = v0s.length ? `<span class="v0chip">v0 · ${v0s.length} task${v0s.length>1?"s":""}, from step ${Math.min(...v0s)}</span>` : "";
   const count = n ? `<span class="count">${d} of ${n} done</span>` : `<span class="count">not tested here</span>`;
   const bar = n ? `<div class="bar" aria-hidden="true"><i style="width:${Math.round(100*d/n)}%"></i></div>` : "";
-  return `<article class="st${s.outside?" outside":""}" data-n="${s.n}"><header><span class="num">${s.n}</span><div><h3>${esc(s.name)}</h3><div class="role">${esc(s.role)}</div></div>${count}</header>${bar}${v0chip}<div class="verdict">${esc(s.verdict)}</div>${n?`<ul class="items">${[...s.items].sort(byRank).map(task).join("")}</ul>`:""}</article>`;
+  return `<article class="st${s.outside?" outside":""}" data-n="${s.n}"><header><span class="num">${s.n}</span><div><h3>${esc(s.name)}</h3><div class="role">${esc(s.role)}</div></div>${count}</header>${bar}${v0chip}<div class="verdict ch-golden"><span class="vtag">Golden set</span>${esc(s.verdict)}</div>${n?`<ul class="items">${[...s.items].sort(byRank).map(task).join("")}</ul>`:""}</article>`;
 }).join("");
 
 // Possibly missing
@@ -755,21 +643,34 @@ document.querySelectorAll(".theme button").forEach(b => b.addEventListener("clic
 let savedTheme = "system"; try { savedTheme = localStorage.getItem("golden-plan-theme") || "system"; } catch(e) {}
 setTheme(savedTheme);
 
-// Filters: a per-viewer convenience, remembered if storage allows
-const buttons = [...document.querySelectorAll(".filters button")];
-function apply(f){
-  buttons.forEach(b => b.setAttribute("aria-pressed", String(b.dataset.f===f)));
-  document.querySelectorAll("ul.items li").forEach(li => {
-    const st = li.dataset.st;
-    li.hidden = !(f==="all" || (f==="v0" && li.dataset.v0) || (f==="done" && st==="done") || (f==="decide" && st==="decide") || (f==="later" && st==="later") || (f==="open" && st!=="done" && st!=="later"));
-  });
-  document.querySelectorAll(".st").forEach(card => {
-    const lis = [...card.querySelectorAll("ul.items li")];
-    card.hidden = f!=="all" && lis.every(li => li.hidden);
-  });
-  try { localStorage.setItem("golden-plan-filter", f); } catch(e) {}
+// A milestone highlights the tasks it sums up; clicking it again, or "clear", shows everything as before
+function highlight(milestone){
+  const on = milestone && milestone.getAttribute("aria-pressed")!=="true";
+  document.querySelectorAll(".path li[role=button]").forEach(li => li.setAttribute("aria-pressed", String(on && li===milestone)));
+  const ids = on ? milestone.dataset.tasks.split(" ") : [];
+  document.querySelectorAll("ul.items li").forEach(li => li.classList.toggle("hl", ids.includes(li.dataset.id)));
+  document.documentElement.classList.toggle("highlighting", on);
+  const note = document.getElementById("hlnote");
+  note.hidden = !on;
+  if (on) note.querySelector("span").textContent = `Showing the ${ids.length} task${ids.length>1?"s":""} of "${milestone.dataset.label}"`;
 }
-buttons.forEach(b => b.addEventListener("click", () => apply(b.dataset.f)));
-let saved = "all"; try { saved = localStorage.getItem("golden-plan-filter") || "all"; } catch(e) {}
-apply(saved);
+document.querySelectorAll(".path li[role=button]").forEach(li => {
+  li.addEventListener("click", () => highlight(li));
+  li.addEventListener("keydown", e => { if (e.key==="Enter" || e.key===" ") { e.preventDefault(); highlight(li); } });
+});
+document.querySelector("#hlnote button").addEventListener("click", () => highlight(null));
+
+// Chapter switch: both, the golden set or the v0 build; remembered per viewer if storage allows
+const chapterButtons = [...document.querySelectorAll(".chapters button")];
+function showChapter(c){
+  chapterButtons.forEach(b => b.setAttribute("aria-pressed", String(b.dataset.c===c)));
+  document.documentElement.dataset.chapter = c;
+  document.querySelectorAll("ul.items li").forEach(li => {
+    li.hidden = (c==="golden" && li.dataset.v0) || (c==="v0" && !li.dataset.v0);
+  });
+  try { localStorage.setItem("golden-history-chapter", c); } catch(e) {}
+}
+chapterButtons.forEach(b => b.addEventListener("click", () => showChapter(b.dataset.c)));
+let savedChapter = "both"; try { savedChapter = localStorage.getItem("golden-history-chapter") || "both"; } catch(e) {}
+showChapter(["both","golden","v0"].includes(savedChapter) ? savedChapter : "both");
 </script>

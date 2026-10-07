@@ -54,7 +54,7 @@ and the launch (L). The "Parked (v0)" list of earlier today is folded in here.
    imitates the channel. After the switch so it shows the real thing;
    article bodies stay private (headlines, extracts, claims, digests only).
    L: the seed of the reader-facing site. Domain to be found.
-8. **Grouping fixes** (Golden Set Map 6.12 and 6.9). G3 only: medium, the
+8. **Grouping fixes** (parked tasks 6.12 and 6.9, in golden/parked-tasks.json). G3 only: medium, the
    digest absorbs splits and the launch bar tolerates them. They move the
    over-split and over-merge rates the scoreboard shows; measured on the
    golden replay before any change.

@@ -4,7 +4,7 @@ The whiteboard design ([docs/design/system.excalidraw](../docs/design/system.exc
 running end to end as its own hourly job beside production, with its own
 database and its own Telegram chat. The design, and every decision behind it:
 [docs/superpowers/specs/2026-10-04-v0-design.md](../docs/superpowers/specs/2026-10-04-v0-design.md).
-The tasks, in build order: the "v0" filter of the Golden Set Map
+The tasks, in build order: the "v0 build" chapter of Golden Set and v0 Build
 ([golden/plan.html](../golden/plan.html)).
 
 ## Layout
