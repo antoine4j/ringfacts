@@ -11,13 +11,15 @@ thing it explains.
 **Format.** One entry per decision, newest at the bottom:
 
 ```
+<a id="<slug>"></a>
 ## <slug> — <short title>
 *<date>*
 
 <what was decided, what was measured, what was considered and rejected>
 ```
 
-Code references an entry by its slug:
+The `<a id>` line makes `#<slug>` land on the entry on GitHub, whose own
+heading anchor would include the title. Code references an entry by its slug:
 
 ```js
  * History: docs/decisions.md#dup-threshold
@@ -35,6 +37,7 @@ The slug is the contract. Renaming one breaks every pointer to it.
 
 ---
 
+<a id="dup-threshold"></a>
 ## dup-threshold — Semantic duplicates are held at 0.80 cosine
 *2026-08-06*
 
@@ -60,6 +63,7 @@ it started on. Observed live as a `0.802 → 0.869 → 0.974` chain. The existin
 **Resolved 2026-08-14** — see [posted-anchors](#posted-anchors--only-posted-articles-anchor-the-dup-gate):
 held articles are no longer neighbours, so the chain cannot form.
 
+<a id="tangential-line"></a>
 ## tangential-line — Demoted items share one line, with numbered repeats
 *2026-08-09*
 
@@ -83,6 +87,7 @@ without the fallback that link renders zero-width and invisible. And identical
 URLs collapse — the same article reached twice is one story, and must not be
 numbered as though it were two.
 
+<a id="claim-drift-gap"></a>
 ## claim-drift-gap — Held duplicates refuse a claim they have drifted from
 *2026-08-08*
 
@@ -115,6 +120,7 @@ hold — the article still never reaches the group. See the known limitation
 under [dup-threshold](#dup-threshold) — resolved 2026-08-14 by
 [posted-anchors](#posted-anchors--only-posted-articles-anchor-the-dup-gate).
 
+<a id="tier-keying"></a>
 ## tier-keying — The digest tier keys on "is a real claim", not on a claim id
 *2026-08-09*
 
@@ -130,6 +136,7 @@ line. That exemption is keyed on *isRealClaim*, not on the claim id — the id i
 null under a dry run and with no database, and the tier decision must come out
 identical either way.
 
+<a id="send-failure-walkback"></a>
 ## send-failure-walkback — posted=true is written before the send, so failures walk it back
 *2026-08-09, fenced 2026-08-10*
 
@@ -161,6 +168,7 @@ and its rows — already written `posted=true` before the run knew its own total
 shape — are corrected to `held_reason='tangential'` so the archive never claims
 a broadcast that did not happen.
 
+<a id="official-exemption"></a>
 ## official-exemption — Official sources skip the dup gate, then meet it again
 *2026-08-10*
 
@@ -179,6 +187,7 @@ answers UNSURE or NO_CLAIM there is no claim to act on, the reason to skip the
 gate is gone, and the gate is re-applied — otherwise a matcher outage (fail-open
 UNSURE, or a missing API key) turns every official echo into a duplicate post.
 
+<a id="resend-pass"></a>
 ## resend-pass — Lost sends ride the next digest, rebuilt and not re-judged
 *2026-08-10*
 
@@ -212,6 +221,7 @@ plainer beats lost. And the pass is self-limiting — resends respect the
 discovery window, so an outage that outlasts the news window stops trailing the
 digest instead of posting week-old headlines forever.
 
+<a id="deps-seam"></a>
 ## deps-seam — Every dependency arrives through `deps`; the store is faked as a namespace
 *2026-08 (recorded 2026-08-13)*
 
@@ -238,6 +248,7 @@ silently posted untranslated with all tests green, and a `DRY_RUN=1` run against
 live feeds found it. `test/pipeline.test.js` now checks the deps wiring at the
 source level.
 
+<a id="retry-delay"></a>
 ## retry-delay — One 75-second retry rides out Google's load shedding
 *2026-08 (recorded 2026-08-13)*
 
@@ -246,6 +257,7 @@ observed one to two runs a day. `fetchFeed` retries once after `RETRY_DELAY_MS`
 (default 75 seconds; 30 proved too short for Google's waves). Worst case —
 every alias failing twice — stays within the Cloud Run job timeout.
 
+<a id="flood-cap-order"></a>
 ## flood-cap-order — The cap applies to unseen items, after the known-URL check
 *2026-08 (recorded 2026-08-13)*
 
@@ -256,6 +268,7 @@ busy-day backlog drains at five per run across successive sweeps. For the same
 reason `fetchFreshItems` applies no cap at all: the cap belongs on the far side
 of Gate 1, in `huntSubject`.
 
+<a id="telegram-html-escaping"></a>
 ## telegram-html-escaping — Everything in a message is escaped, because Telegram rejects silently
 *2026-08 (recorded 2026-08-13)*
 
@@ -272,6 +285,7 @@ which is why `test/message.test.js` exists and why the
 [send-failure walkback](#send-failure-walkback) treats a null send result as a
 failure.
 
+<a id="translation-rules"></a>
 ## translation-rules — Translate at posting time, label it, never guess
 *2026-08 (recorded 2026-08-13)*
 
@@ -304,6 +318,7 @@ is genuinely unknown, so it posts as filed — guessing would be worse than
 plain, because a mislabelled "(translated from …)" claims a provenance that
 is not true.
 
+<a id="outlet-match-counters"></a>
 ## outlet-match-counters — The one silently-failing filter gets a counter
 *2026-08 (recorded 2026-08-13)*
 
@@ -316,6 +331,7 @@ tells runs *not* to act on. The per-outlet "N items, M matched, K discarded"
 log line is the evidence that separates the two: a sustained "0 matched" is a
 rotted stem, not a quiet day.
 
+<a id="posted-anchors"></a>
 ## posted-anchors — Only posted articles anchor the dup gate
 *2026-08-14*
 
@@ -349,6 +365,7 @@ embedded items / 8 days:
 Revertibility: `DUP_ANCHORS_ALL=1` restores held-as-anchor without a deploy;
 `DUP_ANCHOR_WINDOW_DAYS` overrides the window. Both read at query time.
 
+<a id="dry-run-confirmation-preview"></a>
 ## dry-run-confirmation-preview — A dry run previews confirmations by reading, not flipping
 *2026-08-14*
 
@@ -364,6 +381,7 @@ The mechanism keeps dry-run semantics exact: reads happen, writes never do.
 rumor-only guard, no UPDATE — and the dry run uses it to build the same
 preview a real run would send, while the rumor stays a rumor.
 
+<a id="gcs-backup"></a>
 ## gcs-backup — A daily copy of the evidence record, outside Neon
 *2026-09-04*
 
@@ -404,6 +422,7 @@ holds `roles/editor` on the project, so "create-only" is enforced by the
 retention policy alone (unlocked; locking is irreversible and Anton's call),
 not by IAM. Narrowing that account is separate work.
 
+<a id="untrusted-source"></a>
 ## untrusted-source — A domain earns a hold by its own record
 *2026-09-04*
 
@@ -453,6 +472,7 @@ have been muzzled by a ratio rule and are protected by the bodies condition.
 majority-junk record before it can silently lose one real article, and the
 held row remains findable by the check-in runs.
 
+<a id="tier-reorder"></a>
 ## tier-reorder — The matcher's "passing" outranks a name in the headline
 *2026-09-04*
 
@@ -480,6 +500,7 @@ should have seen as a headline is lost. The gap that remains (the corpus's
 seven wrong items) is `supporting` and `central` articles that are still not
 about him — the mention-kind field, not the ordering.
 
+<a id="mentions-digest"></a>
 ## mentions-digest — Two speeds of delivery
 *2026-09-04*
 
@@ -526,6 +547,7 @@ is a quiet link, not a headline the group reads; revisit if Anton wants it),
 and the usefulness gradient inside mentions (assessment > context > orbit) —
 the digest makes misranking cheap, so the examples pile up first.
 
+<a id="google-outage-degrades"></a>
 ## google-outage-degrades — A dead Google alias is a warning, not a failed hunt
 *2026-09-04*
 
@@ -550,6 +572,7 @@ Kept: the retry itself (a wave usually passes in 75 s), and the throw
 inside `fetchFeed` (a caller that wants the error still gets it; only the
 per-subject loop stops treating it as fatal).
 
+<a id="claim-discipline"></a>
 ## claim-discipline — Loud claims need a concrete event about the subject
 *2026-09-04*
 
@@ -629,6 +652,7 @@ and the first "baseline" (29/45) was void. Fixed with a spy test. The lesson
 is recorded in self-improvement §4 terms: a model never says the input is
 garbage; only reading the actual prompt text catches it.
 
+<a id="news-for-followers"></a>
 ## news-for-followers — The reader's own test, asked of the model
 *2026-09-04*
 
@@ -678,6 +702,7 @@ photo caption or highlights clip (#3, #106), the Gaethje-manager profiles
 time. That is judgment the prompt may not reach; the parked stronger-model
 note in TODO names the trigger.
 
+<a id="fight-stages"></a>
 ## fight-stages — A booking is not a result, and the model needs room to think
 *2026-09-04, evening of the first live hour on the claim-discipline code*
 
@@ -741,6 +766,7 @@ within an hour of the first article, then a confirmation reply once ufc.com
 or the UFC feed carries it. Every later result article must MATCH the new
 result claim, not the booking. The weigh-in on Friday is the first live test.
 
+<a id="stories-as-objects"></a>
 ## stories-as-objects — The unit of "already seen" is the story, decided by the model
 *2026-09-06 (built on branch `measure-story-matching`, not deployed)*
 
@@ -807,6 +833,7 @@ things before a deploy: the bucket regression (tune split, K=3, was 38/45
 with 0 false loud claims); a second look at #5 and #366; and his prompt
 review for content (docs/article-feedback.md rulings vs the rules block).
 
+<a id="embedding-outage-shortlist"></a>
 ## embedding-outage-shortlist — With no embedding, the decider is offered the newest stories
 *2026-09-06*
 
@@ -818,6 +845,7 @@ similarity null — the decider reads the facts and can still join one. The
 threshold fallback cannot cover this, because it needs the same vector that is
 missing.
 
+<a id="classifier-pass-marks"></a>
 ## classifier-pass-marks — The classifier passes on the goals' terms, not on "all nine right"
 *2026-10-04*
 
@@ -912,6 +940,7 @@ v7 has never been sent the test set). What that reveals is the test set's
 make-up: how many career-event stories and quiet articles it holds. The
 report now covers the test side only with `--final`.
 
+<a id="article-text-out-of-git"></a>
 ## article-text-out-of-git — Other outlets' article text stays off the public repository
 *2026-10-05*
 
@@ -963,6 +992,7 @@ making the repository private (it is linked publicly, and its `docs/`
 pages are served from it); a `.gitignore` alone (folder patterns written in
 advance are how the text got in; the guard checks the content itself).
 
+<a id="v0-usable-body"></a>
 ## v0-usable-body — v0 classifies an article only when its body has 400 characters or more
 *2026-10-05*
 
@@ -982,6 +1012,7 @@ reading is stored at stage `no_body`, counted, and never classified.
 from a real rung can also be a stub, and a long summary would pass);
 any body at all (summaries would be classified as if they were articles).
 
+<a id="one-config-secret"></a>
 ## one-config-secret — Production reads its six values from one secret
 *2026-10-05*
 
@@ -1030,6 +1061,7 @@ is nothing paid); disabling old versions instead of destroying them
 (the job, the server and the mentions job read overlapping values, so it
 would duplicate them).
 
+<a id="v0-embedding-fallback"></a>
 ## v0-embedding-fallback — When Gemini's free daily allowance is spent, v0 embeds through OpenRouter
 *2026-10-05*
 
@@ -1056,6 +1088,7 @@ would post a day late during the archive's catch-up); production's Gemini
 key (a separate project with its own allowance, which v0 must not eat
 into, D28).
 
+<a id="storyboard-builds-every-push"></a>
 ## storyboard-builds-every-push — The storyboard builds on every push, with no skip rule
 *2026-10-05*
 
