@@ -938,6 +938,14 @@ a machine without the bodies there is nothing to protect and it passes.
 Checked: on the whole tree it flags exactly the 166 files, and a mutation
 (the threshold raised out of reach) turns its tests red.
 
+**Rechecked 2026-10-06.** Every file version reachable from every ref in
+the repository (6,516 versions, 170 MB, across 9 refs: the branches on
+GitHub, two local branches never pushed, a stash and a local tag) was run
+through the guard's own matching against the 358 distinct bodies then kept
+in `golden/` and `research/`. No version holds a passage of 200 characters
+or more. The comparison is narrower than the first scan's 641 bodies:
+bodies that exist only in production's database were not part of it.
+
 **Why the line sits there.** US fair use, the EU and Spanish text-and-data
 mining exceptions, and Ukraine's research exception all draw it in the
 same place: copies kept for analysis can be defended, copies made
