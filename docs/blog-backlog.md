@@ -229,3 +229,28 @@ Two themes, one tag each:
   what share found errors, and whether they changed a decision. Plus the
   guard: reviews follow what the reviewer opens, not a random sample, so
   they find errors but do not measure the error rate without a random draw.
+
+## 11. A guard that passes when its inputs are missing cannot tell "absent" from "moved"
+*Added 2026-10-06 · status: idea · building with AI tools*
+
+- **The problem.** A safety check that must pass on a machine without its
+  inputs (a fresh clone, CI) treats a missing input as "nothing to
+  protect". When a refactor moves those inputs, the check does not fail: it
+  quietly protects less, and every test stays green.
+- **Why people would care.** Agents do large mechanical refactors well and
+  quickly, and verify them with the tests. A check that fails open by design
+  is exactly the code the tests cannot catch, so it needs its own proof
+  after any move.
+- **What happened here.** Moving the experiments under `research/`
+  (6 Oct) rewrote every path written with a slash and was checked file
+  for file: the same 6,046 tracked and 42,917 ignored files, 548 tests
+  green. The article-text guard built one path from bare folder names
+  (`path.join(REPO, "experiments")`), so after the move it stopped reading
+  the experiments' body files without a word. Found only by reading the
+  guard for another task. Evidence: commit "Article-text guard: read
+  experiment bodies from research/experiments",
+  `scripts/article-text-guard.js`.
+- **Needs.** The fix that generalises: the guard reporting how many bodies
+  it compared against (so a drop is visible), or a test that its sources
+  exist in a full checkout. And whether other fail-open checks in the repo
+  (the dry-run paths, the embedding fallback) have the same blind spot.
