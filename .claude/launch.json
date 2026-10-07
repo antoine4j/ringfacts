@@ -24,6 +24,15 @@
         "experiments/2026-09-25-answers-to-buckets"
       ],
       "port": 8792
+    },
+    {
+      "name": "storyboard",
+      "runtimeExecutable": "bash",
+      "runtimeArgs": [
+        "-c",
+        "cd v0/storyboard && DATABASE_URL=\"$(grep '^V0_EDITOR_DATABASE_URL=' ../../.env.v0 | cut -d= -f2-)\" exec npx next dev -p 3011"
+      ],
+      "port": 3011
     }
   ]
 }
