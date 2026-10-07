@@ -1,5 +1,27 @@
 # RingFacts — Next Steps
 
+## Parked (v0)
+
+Ideas and decisions waiting for a design session or for Anton. One line
+each; the spec, where there is one, holds the rest.
+
+- **Review the classifier's answers behind a tier** (G2): mark which answer
+  was wrong, so a wrong tier is traced to the model or to the settings map.
+  Two decisions open. [Spec](docs/superpowers/specs/2026-10-06-review-classifier-answers.md).
+- **A standing scoreboard of how precise the pipeline is** (G2, G3): the
+  golden replay beside the live review marks, with a random sample against
+  the skew. Eight questions open. [Spec](docs/superpowers/specs/2026-10-06-precision-scoreboard.md).
+- **The feedback form as plain notes**: what the note is about, chosen from
+  a list, and the text; the free-text "field" and "should be" go
+  ([v0 design](docs/superpowers/specs/2026-10-04-v0-design.md), section 11).
+- **Pick the digest model** on the storyboard's blind comparison page
+  (`/digests/compare`), and **decide a cap** on a digest's items (about 5
+  was suggested).
+- **A fallback when an article's text cannot be fetched** (G1): a decode
+  retry on the next run, a reader service (Jina) when the fetch fails, the
+  MMAWeekly and Athlon feeds; new articles only. Built in v0, which needs its own fetching once
+  production stops feeding it.
+
 ## Current priorities (re-sorted under docs/goals.md, 2026-09-04)
 
 Goals and success criteria live in [docs/goals.md](docs/goals.md). Each item
