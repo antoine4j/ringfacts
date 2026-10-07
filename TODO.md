@@ -1,28 +1,77 @@
 # RingFacts — Next Steps
 
-## Parked (v0)
+## After v0: the showcase, then the friends (ranked 2026-10-06)
 
-Ideas and decisions waiting for a design session or for Anton. One line
-each; the spec, where there is one, holds the rest.
+v0 is complete (22 of 22; task 9.1 closes itself on the first real tier-1
+story). The end state is restated in [docs/goals.md](docs/goals.md) ("The
+end state, restated"): a public showcase first, then a bot good enough
+for the real group, then a place to read, then chat. Ranked by how much
+each item moves that, in order. Importance is given for the showcase (S)
+and the launch (L). The "Parked (v0)" list of earlier today is folded in here.
 
-- **Review the classifier's answers behind a tier** (G2): mark which answer
-  was wrong, so a wrong tier is traced to the model or to the settings map.
-  Two decisions open. [Spec](docs/superpowers/specs/2026-10-06-review-classifier-answers.md).
-- **A standing scoreboard of how precise the pipeline is** (G2, G3): the
-  golden replay beside the live review marks, with a random sample against
-  the skew. Eight questions open. [Spec](docs/superpowers/specs/2026-10-06-precision-scoreboard.md).
-- **The feedback form as plain notes**: what the note is about, chosen from
-  a list, and the text; the free-text "field" and "should be" go
-  ([v0 design](docs/superpowers/specs/2026-10-04-v0-design.md), section 11).
-- **Pick the digest model** on the storyboard's blind comparison page
-  (`/digests/compare`), and **decide a cap** on a digest's items (about 5
-  was suggested).
-- **A fallback when an article's text cannot be fetched** (G1): a decode
-  retry on the next run, a reader service (Jina) when the fetch fails, the
-  MMAWeekly and Athlon feeds; new articles only. Built in v0, which needs its own fetching once
-  production stops feeding it.
+1. **Tidy the repo and rewrite the README.** S: critical, strangers read
+   the repo today. L: none. Experiments into a named folder, article
+   bodies out of history, a status banner naming v0, the README in the
+   order what / how / how measured / how to run.
+   Days, not weeks.
+2. **The precision scoreboard** ([spec](docs/superpowers/specs/2026-10-06-precision-scoreboard.md),
+   eight questions open; unparked). S: critical, it is the page that shows
+   how well the pipeline does; what matters is that each rate is on the page with a
+   date and a method, not that it is high. L: the dashboard for the launch
+   bar. Built on the compare page and the reactions that exist.
+3. **Review tooling** ([the classifier's answers behind a tier](docs/superpowers/specs/2026-10-06-review-classifier-answers.md),
+   two decisions open; [editing a review mark](docs/superpowers/specs/2026-10-06-review-mark-editing.md);
+   the feedback form as plain notes, [v0 design](docs/superpowers/specs/2026-10-04-v0-design.md)
+   section 11; all unparked). L: medium on its own, but Anton's review
+   time is the scarce resource and over-merges are visible now and scroll
+   into history; this makes the every-couple-of-days grooming fast while
+   the claims are fresh. S: the "production teaches the model" post (blog
+   backlog 10).
+4. **Tune the digest station.** L: critical, ~115 Topuria tier-2 readings a
+   week go through it and it is most of what friends will see. Pick the
+   model on the blind comparison page (`/digests/compare`), prompt rounds,
+   a ranking over claims on top of the classifier's tier, a cap (about 5
+   items was suggested). Anton's reactions are the score. B: medium, the
+   "small model classifies, big model writes" story with a cost table
+   (blog backlog 7).
+5. **Make v0 self-feeding, then retire production.** S and L: critical.
+   v0 still reads its articles from production's `items` table (v0 design,
+   "Timing"), so production cannot stop until v0 runs stations 1–3 itself:
+   the feeds, the seen-before check and the body fetch. Build those in v0
+   with the fallback below as part of them, watch a week of both feeding
+   the same articles, then retire production once the launch window reads
+   clean. The storyboard loses its compare page.
+6. **The body-fetch fallback** (G1), inside item 5. L: high. 72% of
+   Amosov's readings and 42% of Donchenko's have no text, so the classifier
+   never sees them and G1 is at risk for the two fighters the friends care
+   about most; the spike recovered 56% for free: a decode retry on the next
+   run, a reader service (Jina) when the fetch fails, the MMAWeekly and
+   Athlon feeds; new articles only. S: blog backlog 6, "count what never
+   reached the model", with the dirty-text measurement parked there.
+7. **A public read-only live demo.** S: high, something a visitor can
+   use: trace
+   any article to its claim, grouping and digest, and a web section that
+   imitates the channel. After the switch so it shows the real thing;
+   article bodies stay private (headlines, extracts, claims, digests only).
+   L: the seed of the reader-facing site. Domain to be found.
+8. **Grouping fixes** (Golden Set Map 6.12 and 6.9). G3 only: medium, the
+   digest absorbs splits and the launch bar tolerates them. They move the
+   over-split and over-merge rates the scoreboard shows; measured on the
+   golden replay before any change.
+9. **Classifier v8** (4.26, 4.27, health). Low until the window shows a
+   missed career event; then it jumps to the top.
+10. **The reader-facing site proper, then chat follow-up.** After launch;
+    the demo in 7 grows into the site.
+11. **Bout as an entity, address clean-up, the fighter profile.** Low.
 
-## Current priorities (re-sorted under docs/goals.md, 2026-09-04)
+Posts drawn from [docs/blog-backlog.md](docs/blog-backlog.md) are written
+outside this repo; items 2, 6 and 7 each feed one.
+
+## Superseded: priorities of 2026-09-04 (kept for the record)
+
+These ranked production's work. Production retires with item 5 above; what
+is still open below is either folded into the list above (3b, 3e → the v0
+stations) or goes with production.
 
 Goals and success criteria live in [docs/goals.md](docs/goals.md). Each item
 names the goal it moves.

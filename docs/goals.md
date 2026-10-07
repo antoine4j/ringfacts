@@ -14,6 +14,58 @@ targets below is ever met by posting more.
 
 ---
 
+## The end state, restated (Anton, 2026-10-06, after v0)
+
+G1–G4 below are the ideal the bot is measured against. They do not say what
+the project is *for* now, so this section does, in the order Anton gave.
+
+1. **A public showcase: a stranger can understand, trace and trust the
+   system.** The repo is public and read by people who never ran it, so it
+   is held to that reader: a README that explains what, how, how measured,
+   how to run; a read-only live demo a visitor can trace from article to
+   claim to digest; the measured numbers for each version, with a date and
+   a method; and the production-to-v0 switch written up as the decision it
+   was, what was measured, what was traded, how the rollout was de-risked.
+   What matters is that each number is on the page, not that it is high.
+2. **A bot good enough for the real group.** Anton adds his friends' group
+   when he is confident the bot will not annoy them: the right news, no junk,
+   close to G1–G4 but not perfect. The launch bar is below.
+3. **A place to read.** A "read more" from the digest into a reader-facing
+   interface, handy and maybe creative, unlike the admin-style storyboard.
+   The live demo in (1) is its seed.
+4. **Chat follow-up with the bot.** A dim vision for now; last.
+5. After all four: a continuously running, reliable aggregator for a group
+   of friends, a public example of building with AI, and a test bed for
+   incremental learning.
+
+**The switch and the launch are two things.** The *switch* is v0 replacing
+production as the only bot, still in the test chat; the showcase needs it,
+because the write-up of the switch has no ending without it. It is not free: v0 still
+reads its articles from production's table, so v0 must fetch feeds and
+bodies itself before production can stop (TODO.md item 5). The *launch* is adding the
+friends; the showcase does not need it. They share the measuring window: the
+weeks of Anton's reactions to v0 are both the launch bar and the
+showcase's numbers.
+
+**The launch bar** (option A, chosen 2026-10-06): a four-week window of v0
+posting to the test chat with Anton reacting to every tier-1 post and
+digest; launch when the last two weeks show **no career event missed**
+(checked on the storyboard against what Anton knows happened, not from the
+bot's own output), **no repeat he noticed in tier 1** (a split that lands
+inside a digest does not count; the digest absorbs it), and **at most 1 in
+10 posts or digests with a 👎**. An over-merge counts only when it
+swallowed a career event, which is then a miss under the first rule. The
+bar leans on the digest being good, since the digest is most of what the
+friends will see: Topuria alone sends about 115 tier-2 readings a week
+into it (measured 2026-10-06 over the last four weeks).
+
+**Anton's review time is the scarcest resource.** The "15 minutes a month"
+under G2 was true of production's ~100 posted items a month. v0 reads
+200–280 Topuria articles a week, so the review is grooming the storyboard
+every couple of days, ten or so articles at a sitting, not a monthly pass
+over a backlog. Tooling that makes that grooming fast ranks accordingly
+(TODO.md, 2026-10-06 list).
+
 ## G1. Nothing real is missed
 
 A **career event** is one of: a fight booked, a fight result, a withdrawal or

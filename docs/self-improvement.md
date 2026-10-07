@@ -369,8 +369,8 @@ the case this rule is for.
 Four things describe this project to people who will never read the code:
 `README.md`, the GitHub repo description and its topics, and the two pages
 published from `/docs` — the architecture overview and the funnel walkthrough.
-They are served straight off `main`, so a push updates them within the minute,
-and the repo is linked from a CV. That makes them load-bearing in a way
+They are served straight off `main`, so a push updates them within the minute.
+That makes them load-bearing in a way
 internal notes are not: a wrong sentence there is read by strangers as a
 statement about the author's judgement.
 

@@ -7,6 +7,13 @@ as the chat report: data / changes / proposals / next attention.
 
 ---
 
+## 2026-10-06 evening — v0 called complete; the end state restated; the work after v0 ranked (Anton present; Fable 5.1)
+
+📊 **Data**: v0 at 22 of 22 (9.1 called done: 36 live articles since go-live, none decided tier 1, so the first real post is a matter of time). Volume behind the review-time correction: Topuria 200–280 readings a week, ~115 tier-2 a week into the digest; Donchenko and Amosov under 30 each. Nothing deployed, nothing posted.
+🔧 **Changes**: docs/goals.md gains "The end state, restated": a public showcase first (README, a read-only live demo, measured numbers per version, the switch written up), then the real group, then a place to read, then chat; the launch bar (option A: four weeks of reactions, no career event missed, no tier-1 repeat, ≤ 1 in 10 👎). TODO.md: the ranked list after v0, the Parked section folded in; the 2026-09-04 list marked superseded. Found while writing it: v0 reads articles from production's table, so the switch needs v0 to run stations 1–3 itself first (item 5). Golden Set Map: v0 done, roadmap row for what follows. Blog backlog 6 widened from "scraping" to "measure what reaches the model" (missing, thin, dirty text) with the dirty-text measurement parked.
+💡 **For Anton**: the eight scoreboard questions and the two review-tooling decisions are now first in line; the demo's domain.
+👀 **Next attention**: the repo tidy, since strangers read the repo today; 9.1 still watched.
+
 ## 2026-10-05 afternoon — storyboard restyled; grouping reviews built (D35) (Anton present, then away; Opus 5.5)
 
 📊 **Data**: reviews tested end to end on a throwaway Neon branch (deleted; live tables hold no test marks); a save on a cold dev server took 4–8 s, so ✓/✕ now show at once. GitHub Pages builds failed or were cancelled 12:11–13:20 Pacific during GitHub's runner incident; nothing in the repo.

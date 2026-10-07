@@ -215,7 +215,7 @@ code{font-family:var(--mono);font-size:.9em}
     </ul>
   </section>
 
-  <footer>Updated 2026-10-05 night: v0 built and running hourly; 16 of 22 v0 tasks done, the rest waiting on the chat id, the storyboard's database address, the old secrets' destruction or the embedding allowance; decisions D1–D34 (docs/superpowers/specs/2026-10-04-v0-design.md); v0 designed and approved earlier the same day; article text kept out of the repository; classifier v7 tuned overnight (4.25 done); labels are nine answers per article, checked card by card against 27 named rules (golden/rules.md); tiers come from settings. Source: <code>golden/plan.html</code> in the repo; the rulings behind every "done" are in <code>golden/verdicts.md</code>.</footer>
+  <footer>Updated 2026-10-06: v0 complete, 22 of 22 (9.1 called done: the first real tier-1 post is a matter of time); the end state restated and the work after v0 ranked in TODO.md and docs/goals.md; two parked specs (the precision scoreboard, reviewing the classifier's answers) unparked; decisions D1–D34 (docs/superpowers/specs/2026-10-04-v0-design.md); v0 designed and approved earlier the same day; article text kept out of the repository; classifier v7 tuned overnight (4.25 done); labels are nine answers per article, checked card by card against 27 named rules (golden/rules.md); tiers come from settings. Source: <code>golden/plan.html</code> in the repo; the rulings behind every "done" are in <code>golden/verdicts.md</code>.</footer>
 </div>
 
 <script>
@@ -230,12 +230,12 @@ const PATH = [
   {t:"Check the answer key", s:"75 cards by rule, 27 rules named, whole set re-read blind, a third reading on 26, a spot check of 20: all done 3 Oct", st:"done"},
   {t:"Labels frozen", s:"golden/labels.json, 3 Oct: 300 articles, nine answers each, guarded by a test", st:"done"},
   {t:"Classifier v7.7", s:"tuned 3–4 Oct: all nine right on 62% of training, 50% of validation; frozen for v0 on 4 Oct", st:"done"},
-  {t:"v0: the new design end to end", s:"22 tasks across the stations, in order; decisions D1–D4 taken 4 Oct, D5–D34 with the design spec and the build on 5 Oct", st:"now"},
-  {t:"Iterate station by station", s:"from v0's baseline, compared by the golden replay and the side-by-side", st:""},
+  {t:"v0: the new design end to end", s:"22 tasks across the stations, in order; decisions D1–D4 taken 4 Oct, D5–D34 with the design spec and the build on 5 Oct; complete 6 Oct", st:"done"},
+  {t:"The showcase, then the friends", s:"ranked 6 Oct in TODO.md: README and repo, the precision scoreboard, review tooling, the digest station, v0 self-feeding then the switch, a public demo; grouping and classifier v8 by what the window shows", st:"now"},
 ];
 
 const V0BOX = {
-  goal:"Next goal: v0, the design on the whiteboard running end to end",
+  goal:"v0, the design on the whiteboard running end to end: complete 6 Oct. What comes next is ranked in TODO.md.",
   proves:"It tests the design's central bet: describe each article (classifier, extractor), group by claim (semantic dedup), then decide from a table (settings), instead of one model call that decides everything at once. It holds if the v0 chat is one you would rather read than production's. It breaks if JEV cannot pick claims, or repeats and misses outnumber today's.",
   decisions:[
     ["D1","Tier 1: a result, or a next fight that is reported or official. Tier 2: health, rumours, status updates, remarks, analysis. Tier 3: not about him."],
@@ -635,10 +635,10 @@ const STATIONS = [
    verdict:"Not tested by this set. Who writes the tier-1 message is a design question, not a data one. In v0 it is the extract's sentence plus the link, and the storyboard is a diagnostic tool for you.",
    items:[
     V("9.1",11,"Post tier 1 to a new test chat; tier 2 goes to the digest",
-      "Decided 4 Oct (D4): a chat of its own, with a bot of its own (@ringfacts_bot, made 5 Oct), so no v0 bug can post to production's group. The message is the posted article's own extract sentence and the link. Tier 2 goes to the digest (8.3). Built and running hourly since 5 Oct, posting to the chat Ringfacts v0 (a test message went through). Open until the first real tier-1 news posts: none had arrived by 5 Oct midday. Your part is done.",
+      "Decided 4 Oct (D4): a chat of its own, with a bot of its own (@ringfacts_bot, made 5 Oct), so no v0 bug can post to production's group. The message is the posted article's own extract sentence and the link. Tier 2 goes to the digest (8.3). Built and running hourly since 5 Oct, posting to the chat Ringfacts v0 (a test message went through). Called done 6 Oct with v0 complete: the path is built and watched, and the first real tier-1 story is a matter of time, not work (none had arrived by 6 Oct: 36 live articles, none tier 1).",
       "Where you see v0 working.",
       "Two chats side by side are the first comparison.",
-      "Nothing from the prototype posts to the production group."),
+      "Nothing from the prototype posts to the production group.", true),
     V("9.2",12,"A diagnostic storyboard on Vercel: slice and dice what v0 did, article by article and claim by claim, and mark what is wrong",
       "A working tool, not a product: a small web app on your Vercel account, reading v0's database live, so no export step. Behind Vercel Authentication, so only you get in and no sign-in code is written (the database holds other outlets' article text, which stays private). Filters like the Claim Map's: fighter, day, outlet, tier, posted or not, no body, waiting, and the classifier's answers. Two views: claims, each with its articles in order; and articles, each opening to every station's answer (classification, extract, the shortlist JEV saw and its pick, the tier and why). The pipeline's answers are read-only; your marks (on an article or claim: which field, what it should be, a note) go to a table of their own, which I read when you ask. Its database role can only read the pipeline's tables and add marks. Built by me, plain and dense, no design pass.",
       "The chat shows only what posted. Judging whether articles were classified, extracted, grouped and sent right needs to see everything, including what was held and why.",

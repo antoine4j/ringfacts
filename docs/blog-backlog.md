@@ -108,17 +108,48 @@ Two themes, one tag each:
 - **Needs.** Concrete before/after examples dug up from the classifier
   experiments, with the articles they moved.
 
-## 6. Scraping is the real bottleneck
-*Added 2026-10-05 · status: tentative (not AI-specific) · building AI applications*
+## 6. Measure what reaches the model: missing, blocked and dirty input
+*Added 2026-10-05 as "Scraping is the real bottleneck"; widened 2026-10-06 · status: idea · building AI applications*
 
-- **The problem.** The models were fine; the pipeline could not read the
-  articles. Outlets block fetchers, aggregators give summaries only.
-- **What happened here.** Over the whole archive v0 could not read 72% of
-  Amosov's articles and 42% of Donchenko's, so their digests were near
-  empty. Evidence: `docs/lessons.md` ("A fifth of the feed has no usable
-  body"), the body-fetch spike of 5 October.
-- **Why tentative.** It is a data-collection problem more than an AI one;
-  worth a post only if the spike finds a general fix.
+- **The problem.** A pipeline's quality ceiling is set by what reaches the
+  model, and that is rarely measured. Input fails three ways: the text is
+  **missing** (paywall, video, a page that refuses fetchers), it is **thin**
+  (an aggregator's one-line summary), or it is **dirty** (menus, link lists
+  and "related articles" furniture extracted as if they were the article).
+  All three fail silently when the pipeline fails open to "headline only"
+  or "classify whatever text we got", so the dashboards look healthy while
+  the model never saw the story.
+- **Why people would care.** Teams tune prompts and swap models while the
+  biggest loss sits before the first model call. Coverage is uneven across
+  segments, so the average hides it: here the fighters with the thinnest
+  feeds were the ones whose articles were least readable. Measuring
+  coverage per segment, and making "fails open" show up as a count, comes
+  before any model work. The same applies to tickets, emails and documents.
+- **What happened here.** Over production's whole archive v0 could not read
+  72% of Amosov's readings, 42% of Donchenko's and 21% of Topuria's (under
+  400 characters of body): 270 refused outright with HTTP 403, 93 failed on
+  Google's link decode, 66 yielded only a one-line description; Tribuna,
+  Ukr.net, Eurosport and Sherdog have almost never yielded a body. In v0's
+  first live week Amosov's digest had 2 items and Donchenko's 1 because 23
+  of 28 and 8 of 9 of their articles were unreadable, not because claims
+  were dropped. A week of classifier tuning could not have helped those two
+  fighters. The spike of 5 October recovered 56% of the unread for free (a
+  decode retry, a keyless reader proxy), the Ukrainian outlets still not.
+  Dirty text is the newer finding: Anton found at least one reading on the
+  storyboard misclassified because the fighter was named only in the page's
+  link furniture, not in the article; and one body in the golden set was
+  10,000 characters of stylesheet (`docs/lessons.md`, "A fifth of the feed
+  has no usable body"; `docs/lessons.md` RF-L08; the body-fetch spike).
+- **Needs.** The per-fighter counts after the fallback ships, to show the
+  fix moved them. For dirty text, a measurement nobody has yet: how much
+  cleaner extraction (article text only, no site furniture) changes the
+  outcomes. Parked, cheapest first step: refetch the furniture-misclassified
+  article cleanly, reclassify it, and show the answer change; that proves
+  the mechanism for one article. The effect on overall outcomes is an open
+  question, and a method for it (a sample of readings re-extracted cleanly
+  and re-run through the classifier, answers compared) would be the heart
+  of the post even if the number turns out small.
+- **Angle.** "Before you tune the model, count what never reached it."
 
 ## 7. Building on a dime: what an AI news pipeline actually costs
 *Added 2026-10-05 · status: idea · building AI applications*

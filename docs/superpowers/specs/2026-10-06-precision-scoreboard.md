@@ -88,5 +88,5 @@ would add the tier and classifier rows.
 7. **Error bars:** the Wilson interval on every share, or only beside the
    headline numbers?
 8. **The audience:** a page for Anton's own tuning, or one fit to show
-   strangers (README, CV link)? The second wants plainer words and the
+   strangers (README, the public pages)? The second wants plainer words and the
    caveats up front.

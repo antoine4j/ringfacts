@@ -76,7 +76,7 @@ code is expected stable and the group's post history becomes a contract.
   a test is worth anything. Reading the code and forming an impression is not
   evidence. See docs/self-improvement.md §4.
 - **A change to how the pipeline works is not finished until the public pages
-  say so.** This repo is public, it is linked from Anton's CV, and four
+  say so.** This repo is public, and four
   surfaces describe the architecture to strangers: [README.md](README.md), the
   GitHub repo description and topics, and the two published pages
   [docs/architecture-overview.html](docs/architecture-overview.html) and
@@ -118,6 +118,9 @@ code is expected stable and the group's post history becomes a contract.
   history should show decisions, not the keystrokes that arrived at them. That
   freedom ends at `git push`: once a public remote has a commit, fix forward
   with a new one, never rewrite.
+- **Keep personal context out.** This repo is public. Anton's own
+  motivations and plans beyond the project live in his private notes, not
+  here: the repo states what is built and the engineering reason for it.
 - **Notice post-worthy problems.** When work turns up a problem that is
   general to building AI applications or building with AI tools, and would
   interest people outside this project, add an entry to
