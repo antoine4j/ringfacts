@@ -345,11 +345,13 @@
     .tier dl { grid-template-columns: 1fr; gap: 0.2rem 0; }
     .tier dt { padding-top: 0.7rem; }
   }
+  .status { background: var(--code-bg); color: var(--ink); border-radius: 6px; padding: 10px 14px; margin: 0 0 18px; font-size: .95rem; line-height: 1.5; }
 </style>
 </head>
 <body>
 
 <header class="wrap">
+  <p class="status"><b>A snapshot of 9 August 2026, kept for its reasoning.</b> The suite has grown since: 548 tests on every commit across <code>test/</code>, <code>lib/</code>, <code>golden/</code>, <code>scripts/</code> and <code>research/labels/</code>, plus 109 in v0, and the commit hook also runs the article-text guard (counted 6 October 2026). The counts, the tier sizes and the 0.80 threshold below are from August; production's fallback threshold is 0.85 now, and the models are measured on the golden set rather than in a matcher eval. The current summary is in the <a href="https://github.com/antoine4j/ringfacts#how-to-run-it">README</a>.</p>
   <p class="eyebrow">RingFacts · 9 August 2026</p>
   <h1>What the tests cover, and what they deliberately don&rsquo;t</h1>
   <p class="standfirst">

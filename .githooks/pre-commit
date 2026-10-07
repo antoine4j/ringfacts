@@ -7,9 +7,11 @@
 # principle nothing enforces is a principle that erodes. This is the enforcement,
 # and it holds whoever is committing.
 #
-# Only tiers 1 and 2 run — they need no network, no API keys and no database,
-# so this stays honest in a check-in session that has no credentials mounted.
-# The SQL tier is opt-in (npm run test:sql against a Neon branch).
+# Three checks, none needing a network, an API key or a database, so this stays
+# honest in a check-in session that has no credentials mounted: the article-text
+# guard on the staged files, the root suite (npm test), and v0's suite when its
+# packages are installed. The SQL tier is opt-in (npm run test:sql against a
+# Neon branch).
 #
 # Installed by setup.sh, or by hand:
 #   git config core.hooksPath .githooks
