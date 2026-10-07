@@ -15,7 +15,11 @@ backlog: [v0/launch-map.html](v0/launch-map.html), the Launch Map.
    the repo today. L: none. Experiments into a named folder, article
    bodies out of history, a status banner naming v0, the README in the
    order what / how / how measured / how to run.
-   Days, not weeks.
+   Days, not weeks. **2026-10-06:** research folders under `research/`;
+   history rechecked, no article text; status line on the README and both
+   published pages; README rewritten. Left: the public pages re-read
+   against v0's code (Launch Map 0.11), the GitHub description, the
+   clean-up decisions (0.14) and the backlog sort (0.12).
 2. **The precision scoreboard** ([spec](docs/superpowers/specs/2026-10-06-precision-scoreboard.md),
    eight questions open; unparked). S: critical, it is the page that shows
    how well the pipeline does; what matters is that each rate is on the page with a
