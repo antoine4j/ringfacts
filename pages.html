@@ -135,11 +135,11 @@ const BODIES = "experiments/2026-10-05-body-fetch-spike/bodies/";
 const PAGES = [
   P("Our extractor vs Readability", null, "local", "call", "review",
     "Production's extracted text beside Mozilla Readability's for the same page, article by article: menus, captions, ads, and whether the article is complete.",
-    "<b>Open:</b> question 1 of the intake design, which text wins when both read a page (docs/design/intake.excalidraw). Not on the Launch Map yet; it belongs to the body-fetch theme (6).",
+    "<b>Open:</b> question 1 of the intake design, which text wins when both read a page (docs/design/intake.excalidraw). Launch Map task 3.9.",
     [BODIES + "review-1-extractor-vs-readability.html"], "Holds article text: stays on this laptop, git-ignored."),
   P("Headline + summary vs full article", null, "local", "call", "review",
     "What v0 would have without the article (the headline and the outlet's preview summary) beside the full text: could the stations get the news right from the left side alone?",
-    "<b>Open:</b> question 2 of the intake design, whether the stations read headline and summary when there is no text. Not on the Launch Map yet.",
+    "<b>Open:</b> question 2 of the intake design, whether the stations read headline and summary when there is no text. Launch Map task 3.10.",
     [BODIES + "review-2-summary-vs-article.html"], "Holds article text: stays on this laptop, git-ignored."),
 
   P("Launch Map", "https://claude.ai/artifact/KbwUC8WgQFQwVS84xLPXK6", "claude", "now", "plan",
@@ -172,7 +172,7 @@ const PAGES = [
     ["docs/funnel-walkthrough.html"]),
   P("Test suite overview", "https://antoine4j.github.io/ringfacts/test-suite-overview.html", "site", "now", "public",
     "What the tests cover and what they deliberately don't: three tiers, split by what each one needs to run.",
-    "<b>Dated 9 Aug</b>, when there were 95 checks; there are 548 now. Not among the four surfaces task 0.11 names; worth adding to it.",
+    "<b>Dated 9 Aug</b>, when there were 95 checks; there are 548 now. Launch Map task 0.11.",
     ["docs/test-suite-overview.html"]),
 
   P("Answer Key Check", "https://claude.ai/artifact/RKAaSMy3eQsse3unLHLDte", "claude", "done", "your input",
@@ -211,8 +211,7 @@ const PAGES = [
   P("Classifier v6 Report", "https://claude.ai/artifact/1VGcmMZasAbN6DnBtQiH9Q", "claude", "old", "report",
     "How the answer key was built, how far to trust it, what each question change did, v5 against v6.",
     "<b>Replaced by v7.7</b>, which has no page: its report is <code>experiments/2026-10-03-classifier-v7/README.md</code>.",
-    ["experiments/2026-09-27-answer-key/report.html"],
-    "Not in git: the ignore rule for generated REPORT.html also matches this hand-written file, because the Mac ignores letter case."),
+    ["experiments/2026-09-27-answer-key/report.html"]),
   P("Classifier v6 Questions", "https://claude.ai/artifact/AEjGBns76dFZLie7a8PC8h", "claude", "old", "reference",
     "The nine questions v6 asked about every article, with every option and level.",
     "<b>Replaced by v7.7</b>, which has no questions page.",
