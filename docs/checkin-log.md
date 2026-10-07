@@ -7,6 +7,13 @@ as the chat report: data / changes / proposals / next attention.
 
 ---
 
+## 2026-10-06 night — Launch Map theme 1: research/ move, history recheck, README and public pages (Anton away; Opus 5.5)
+
+📊 **Data**: the move kept the same 6,046 tracked and 42,917 ignored files, path for path; 548 root tests, v0 51 + 58. History recheck: 6,516 file versions across 9 refs, against 358 local bodies, no passage of 200+ characters (bodies only in production's database not compared: that read was refused by the session's permission filter). Public pages re-read claim by claim: 10 corrections on the architecture overview, 8 on the funnel walkthrough; the test-suite overview counted 95 checks.
+🔧 **Changes**: work moved from the `v0` branch to `main` (fast-forward; local `v0`, `classifier-experiment` and `refactor` removed, all merged). experiments, bench, corpus and labels under `research/`; `domain/` stays at the top level because production imports it. The article-text guard's experiment path fixed after the move broke it silently. Status line on the README and both published pages; README rewritten (what, how, how measured, how to run); docs/decisions.md entries get explicit anchors so `#slug` links land on GitHub. Launch Map 0.7–0.11 done, 0.14 a call. Nothing pushed, deployed or posted.
+💡 **For Anton**: the clean-up list (17 items, privately published), the remote branches `v0` and `classifier-experiment`, the GitHub description draft, then sort and push the night's commits.
+👀 **Next attention**: the live site shows the page fixes only after the push; 0.12 is next on theme 1.
+
 ## 2026-10-06 evening — v0 called complete; the end state restated; the work after v0 ranked (Anton present; Fable 5.1)
 
 📊 **Data**: v0 at 22 of 22 (9.1 called done: 36 live articles since go-live, none decided tier 1, so the first real post is a matter of time). Volume behind the review-time correction: Topuria 200–280 readings a week, ~115 tier-2 a week into the digest; Donchenko and Amosov under 30 each. Nothing deployed, nothing posted.

@@ -17,8 +17,8 @@ backlog: [v0/launch-map.html](v0/launch-map.html), the Launch Map.
    order what / how / how measured / how to run.
    Days, not weeks. **2026-10-06:** research folders under `research/`;
    history rechecked, no article text; status line on the README and both
-   published pages; README rewritten. Left: the public pages re-read
-   against v0's code (Launch Map 0.11), the GitHub description, the
+   published pages; README rewritten; the public pages re-read against the
+   code and corrected. Left: the GitHub description (drafted), the
    clean-up decisions (0.14) and the backlog sort (0.12).
 2. **The precision scoreboard** ([spec](docs/superpowers/specs/2026-10-06-precision-scoreboard.md),
    eight questions open; unparked). S: critical, it is the page that shows
