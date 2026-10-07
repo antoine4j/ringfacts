@@ -181,8 +181,9 @@
   <div class="callout">
     <b>Everything else is plain JavaScript.</b> The RSS parsing, the article-text extraction, the
     Google News link decoding, the duplicate rules and the message formatting are all hand-written
-    with no libraries. The only two dependencies in the project are the Postgres driver and the
-    Anthropic SDK.
+    with no libraries. The project has three dependencies: the Postgres driver, the Anthropic SDK,
+    and a small offline language detector (<span class="mono">eld</span>) that decides which
+    headlines to translate.
   </div>
 
   <h2 id="s3"><span class="num">3</span>What it remembers</h2>
@@ -229,7 +230,7 @@
     confirmed, denied, stale, superseded), and the Telegram message where it was announced, so a
     later confirmation can be posted as a reply to it.</li>
     <li><b><span class="mono">claim_sources</span></b> — which articles are evidence for which
-    claims, and in what role: the first to report it, an echo, a corroboration, an official source.</li>
+    claims, and in what role: the first to report it, an echo, or an official source.</li>
     <li><b><span class="mono">feedback</span></b> — human and machine judgements about individual
     articles: was this worth sending, and if not, what was wrong with it.</li>
   </ul>
@@ -252,10 +253,12 @@
 
   <h3>Find articles</h3>
   <p class="prose">Two independent sources, so an outage in one does not blind the bot. <b>Google
-  News</b> is searched once per name alias — the fighter's name in English, Ukrainian and Spanish, so
-  coverage in his own country is not missed. <b>Six publisher feeds</b> (UFC, MMA Fighting, Bloody
+  News</b> is searched once per name alias: English for everyone, plus Ukrainian for the two
+  Ukrainian fighters and Google's Spanish edition for Topuria, so coverage in his own country is not
+  missed. <b>Six publisher feeds</b> (UFC, MMA Fighting, Bloody
   Elbow, Sherdog, Sport.ua, Marca) are fetched once per run for everybody and then filtered by name.
-  Only articles published in the last 24 hours are considered, and at most five per fighter per run.</p>
+  Only articles published in the last 24 hours are considered, and at most five unseen articles per
+  fighter per run.</p>
 
   <h3>Drop what we have seen</h3>
   <p class="prose">Anything whose address is already in the database is dropped immediately, before
@@ -284,9 +287,10 @@
   contain a claim, is the claim big enough for its own alert. This is §7.</p>
 
   <h3>Send, and write everything down</h3>
-  <p class="prose">Messages go out, then the rows are written: the article, any new story, any new
-  claim, and the links between them. If Telegram refuses a message, the rows that message carried are
-  marked as never-delivered so a later run picks them up.</p>
+  <p class="prose">The rows are written first, article by article: the article, any new story, any new
+  claim, and the links between them. Then the messages are built from them and sent. If Telegram
+  refuses a message, the rows that message carried are marked as never-delivered so a later run picks
+  them up.</p>
 
   <h2 id="s6"><span class="num">6</span>The decider</h2>
   <div class="where"><b>In code</b>
@@ -312,7 +316,7 @@
     <li><b>The fact</b> — one plain English sentence saying what this article's news is, required
     whenever it opens a story.</li>
     <li><b>A claim, when there is one</b> — its type, any structured details (opponent, event, date),
-    and how well sourced it is: official, reported, or hedged.</li>
+    and how well sourced it is: official, reported, or rumoured.</li>
   </ul>
 
   <div class="callout">
@@ -343,8 +347,8 @@
 
   <h3>Is the site itself spam?</h3>
   <p class="prose">Some websites stuff fighter names into unrelated content to get indexed. A domain
-  is judged on its own record: at least five articles seen, more than half of them already judged not
-  about anyone, and <i>never once</i> a readable article body. All three must be true. A ratio alone
+  is judged on its own record: at least five articles seen, at least half of them already judged not
+  about the fighter, and <i>never once</i> a readable article body. All three must be true. A ratio alone
   would silence real outlets whose name-filtered feeds run 35–45% off-target; a blocked fetcher alone
   would silence real outlets that refuse cloud servers.</p>
 
@@ -375,8 +379,8 @@
     <span class="f">domain/mma.js</span> <span class="mono">officialSource</span>
   </div>
   <p class="prose">A claim is born <span class="tag rumor">rumor</span> unless the article announcing
-  it came from an official source, in which case it is born
-  <span class="tag confirmed">confirmed</span>. For MMA, official means exactly one thing:
+  it came from an official source, or the decider judged that the article reports the promotion's own
+  announcement; then it is born <span class="tag confirmed">confirmed</span>. For MMA, official means exactly one thing:
   <span class="mono">ufc.com</span>. Record-keeping sites like Sherdog and Tapology are treated as
   credible media, never as authority.</p>
 
@@ -421,8 +425,10 @@
   <p class="prose"><b>A confirmation</b> — a threaded reply to the message where the rumour first
   appeared.</p>
 
-  <p class="prose">Headlines in Spanish are translated into English before sending; English and
-  Ukrainian are left alone, because the group reads both. A failed translation posts the original
+  <p class="prose">Headlines in any language other than English or Ukrainian are translated into
+  English before sending (in practice mostly Spanish); those two are left alone, because the group
+  reads both. For articles from English or Ukrainian feeds the headline itself is checked, offline,
+  since Google's English edition carries Spanish articles too. A failed translation posts the original
   rather than nothing.</p>
 
   <h2 id="s10"><span class="num">10</span>When things break</h2>
@@ -448,8 +454,8 @@
     <li><b>Google starts refusing link decoding</b> → a circuit breaker stops paying the network cost
     for the rest of that run after one hard refusal or two consecutive failures.</li>
     <li><b>Telegram refuses a message</b> → every row that message carried is marked never-delivered,
-    and the next successful run carries them, rebuilt from the database and deliberately not judged
-    again.</li>
+    and the next successful run carries them if they are under 24 hours old, rebuilt from the
+    database and deliberately not judged again.</li>
     <li><b>One fighter's hunt throws</b> → the others still run. Only <i>every</i> fighter failing
     marks the run red.</li>
     <li><b>The database is configured but unreachable</b> → the run fails, deliberately and loudly.
@@ -458,8 +464,10 @@
 
   <p class="prose">Each publisher feed logs how many items it matched and how many it discarded. A
   name filter that has quietly rotted looks exactly like a quiet news week; these counts are what
-  separate the two. Once a day the whole database is copied to Google Cloud Storage, because the free
-  Postgres tier keeps six hours of history and nothing more.</p>
+  separate the two. Once a day the three core tables (<span class="mono">items</span>,
+  <span class="mono">claims</span>, <span class="mono">claim_sources</span>) are copied to Google
+  Cloud Storage, because the free Postgres tier keeps six hours of history and nothing more; stories
+  and feedback are not in the copy.</p>
 
   <h2 id="s11"><span class="num">11</span>Configuration</h2>
   <div class="where"><b>In code</b>

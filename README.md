@@ -74,8 +74,8 @@ it (TODO.md, item 5).
 
 The bot the group reads. Every hour, per fighter, it:
 
-1. **Fetches** Google News RSS (with the fighter's name in several languages)
-   and six direct publisher feeds, 24 hours back.
+1. **Fetches** Google News RSS once per name alias (English, plus Ukrainian or
+   Google's Spanish edition) and six direct publisher feeds, 24 hours back.
 2. **Drops** links already seen: the feed's link at once, and the real address
    behind a Google link after it is decoded in the next step.
 3. **Reads the article** through a zero-dependency extraction ladder (feed
