@@ -1,5 +1,5 @@
 {
- "source": "experiments/2026-09-17-role-questions/consensus-p16.json + buckets-final.json; per-reader probabilities from results-p16/17/18.json",
+ "source": "research/experiments/2026-09-17-role-questions/consensus-p16.json + buckets-final.json; per-reader probabilities from results-p16/17/18.json",
  "note": "Six questions, majority of three JEV readers over three option orders; bucket from buckets.py rules. `readers` = each reader's probability over every option.",
  "articles": {
   "1": {

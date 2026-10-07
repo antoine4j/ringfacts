@@ -65,7 +65,7 @@ verifyClaim({ claim, subject, search, trust }) →
 ```
 
 - `search` is a dependency: the Anthropic web search tool on **its own key**
-  (`ANTHROPIC_SEARCH_KEY`, test twin in `bench/.env.bench`), so console cost
+  (`ANTHROPIC_SEARCH_KEY`, test twin in `research/bench/.env.bench`), so console cost
   splits LLM from search. Never the matcher's key.
 - One search per claim, `max_uses: 1`. The query is built from the claim's
   canonical text and the subject's name.

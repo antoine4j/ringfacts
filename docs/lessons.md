@@ -63,8 +63,8 @@ Rules for adding to it:
   (2.8%). Three per-question "movements" already written up were inside that
   band and had to be retracted. Qwen3.8 Flash at temperature 0 through
   OpenRouter: 136 of 300 claims re-worded, ±8 dedup errors, ±0.003 AUC.
-  `experiments/2026-09-17-role-questions/ITERATIONS.md` pass 4;
-  `experiments/2026-09-20-claim-extraction/ITERATIONS.md` pass 5.
+  `research/experiments/2026-09-17-role-questions/ITERATIONS.md` pass 4;
+  `research/experiments/2026-09-20-claim-extraction/ITERATIONS.md` pass 5.
 - **Evidence (RF):** temperature 0, pinned seed, salted cache: two runs agreed
   on 86.8% of articles but shared only 33 of ~50 sent items. A borderline story
   has roughly a coin's chance of being told. RF called it *the largest error
@@ -73,7 +73,7 @@ Rules for adding to it:
   call. Two identical calls of the standing fact question differed on 2 of
   155 training articles; a reworded version that left many articles near
   the line differed on 7. A variant that gained 9 on one run gained 3 on
-  the next. `experiments/2026-10-03-classifier-v7/README.md`, E1.
+  the next. `research/experiments/2026-10-03-classifier-v7/README.md`, E1.
 - **Does not say:** that the noise is uniform — see §2. **Would overturn:** a
   replicate that moves nothing; then the model has changed.
 
@@ -317,7 +317,7 @@ Rules for adding to it:
   Anton graded 2 composed to bucket 1, accuracy on his 154 graded rows fell
   from 76% (six old questions) to 74%. Requiring in the *rule* that nobody is
   quoted, or the promotion speaks, or the act is fight-week coverage, took the
-  same answers to 84% (`experiments/2026-09-25-answers-to-buckets/REPORT.html`).
+  same answers to 84% (`research/experiments/2026-09-25-answers-to-buckets/REPORT.html`).
 - **Does not say:** that the merge is wrong; the firmness answers themselves
   were fine. It says the rule must ask who said it before it calls an event.
 
@@ -355,7 +355,7 @@ Rules for adding to it:
   status") brought them back with no loss elsewhere. Tracing all examples
   found 18 paraphrases of golden articles, several of them **test-set**
   articles cited in the labelling rules.
-  `experiments/2026-10-03-classifier-v7/README.md`, E4.
+  `research/experiments/2026-10-03-classifier-v7/README.md`, E4.
 - **Does not say:** that examples are bad: invented ones scored the same.
   It says a training score can measure memory of the prompt, and a test
   score can too if the prompt paraphrases test articles.
@@ -419,7 +419,7 @@ Rules for adding to it:
   nine right sat between the two unchanged runs (94 and 94 against 92 and
   96 of 155). By language, within one fighter, Spanish trails English by
   10 points for Topuria (about one standard error) and Ukrainian leads
-  English by 19 for Donchenko. `experiments/2026-10-04-classifier-framing/`.
+  English by 19 for Donchenko. `research/experiments/2026-10-04-classifier-framing/`.
 - **Does not say:** that context never helps JEV; the articles already name
   the sport and the promotion in their first lines. A field that adds what
   the text lacks, such as a fact the article assumes, is untested.
@@ -433,7 +433,7 @@ Rules for adding to it:
 ### The FB sample is stratified, not proportional
 `corpus` · `measured` · *FB 2026-09-17*
 - 300 of 1,021 with text, drawn to keep rare fighters. Frozen at
-  `experiments/2026-09-17-role-questions/data/articles.json`; never re-pull.
+  `research/experiments/2026-09-17-role-questions/data/articles.json`; never re-pull.
   Ratios measured on it do not transfer as ratios. RF's 956 is the whole feed:
   of its final 16 messages, 12 were one fighter, 4 another, **0 Amosov** in 34
   days (RF-L13). Coverage is as lumpy as the press.
@@ -560,7 +560,7 @@ Rules for adding to it:
 `harness` · `measured` · *FB 2026-09-21*
 - **Evidence:** on 136 story clusters, claim-alone AUC 0.925 vs headline+lead
   0.918 — but 0.896 vs 0.918 on hard stories. Short claims about one fighter
-  crowd together. `experiments/2026-09-20-claim-extraction/README.md`.
+  crowd together. `research/experiments/2026-09-20-claim-extraction/README.md`.
 
 ### The claim in front of production's text beats production's text
 `harness` · `measured` · *FB 2026-09-21*
@@ -623,7 +623,7 @@ Rules for adding to it:
   25%. Same kind + same actor: recall 84% but fires on 49% of different-claim
   pairs. Bout + occasion type: recall 61%, and it merges a fight week's
   columns, previews and predictions, which the ruler keeps apart
-  (`experiments/2026-09-25-answers-to-buckets/scores-B.json`).
+  (`research/experiments/2026-09-25-answers-to-buckets/scores-B.json`).
 - **A person's name is the stable key, a programme's name is not.** Inside the
   47 multi-article claims, speaker is one value in 39, the occasion's host or
   interviewer in 35 (where filled), the free-text occasion in 4 (one podcast
@@ -709,7 +709,7 @@ itself has reintroduced the error in §1's second entry. Only Anton answers them
   his own coach or the booked opponent's coach; FB's earlier ruling admitted
   "the champion or a top authority". **Settled 2026-09-22, by voice: the
   coach line holds** — "managers are mostly showmen". Recorded verbatim in
-  `experiments/2026-09-17-role-questions/verdicts.md`. Still open: whether it
+  `research/experiments/2026-09-17-role-questions/verdicts.md`. Still open: whether it
   narrows only third-party *analysis* or every speaker category.
 - **How much of the remaining variance is the model?** RF: a second salted run
   of its final config, not yet run. FB: the extraction replicate says ±8 errors
@@ -737,7 +737,7 @@ itself has reintroduced the error in §1's second entry. Only Anton answers them
 the 300 golden articles were re-read blind by two Fable readers under the
 final guide, then the 26 articles where they differed by a third reader
 that saw one article at a time, then 20 settled cards were read by Anton.
-Records: `experiments/2026-09-27-answer-key/reread-1003` and `full-reread`.
+Records: `research/experiments/2026-09-27-answer-key/reread-1003` and `full-reread`.
 
 - **A rule tested only on its own examples is not tested.** Each rule had
   passed on the articles it was written for. The full re-read still found

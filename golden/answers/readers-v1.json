@@ -1,6 +1,6 @@
 {
- "source": "experiments/2026-09-27-answer-key (key.json + labels-rest.json)",
- "guide": "experiments/2026-09-27-answer-key/key-guide.md",
+ "source": "research/experiments/2026-09-27-answer-key (key.json + labels-rest.json)",
+ "guide": "research/experiments/2026-09-27-answer-key/key-guide.md",
  "note": "Provisional labels: two Fable readers, blind, from the guide; an Opus reader on their differences. 'part' is tune or held_back for the 59 answer-key articles (questions were tuned on tune), not_key for the rest (never tuned on). Machine answers for Anton to correct, not his labels.",
  "articles": {
   "1": {

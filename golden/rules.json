@@ -1,6 +1,6 @@
 {
  "about": "Every labelling rule in force (golden/rules.md), with the sentences in the readers' guide that carry it. golden/rules.test.js fails when a sentence listed here is no longer in the guide, so a rule cannot be dropped from the prompt by accident. To change a rule's wording on purpose, change the guide and the sentence here in the same commit.",
- "guide": "experiments/2026-09-27-answer-key/key-guide.md",
+ "guide": "research/experiments/2026-09-27-answer-key/key-guide.md",
  "rules": [
   {
    "id": "label-the-article",

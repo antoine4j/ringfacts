@@ -248,8 +248,8 @@ const K = (id, themes, st, task, what, why) => ({id, themes, st, task, what, why
 
 const STATIONS = [
   {n:0, name:"Frame", role:"What holds the stations together: the store, the hourly runner, the deploy, and the repo a stranger reads.", items:[
-    K("0.7",["repo"],"todo","Sort the top level so the system comes first",
-      "The top level mixes the bot, v0 and the golden set with research leftovers: bench, corpus, labels, domain, tmp and a claims snapshot file. Research goes into named folders; the two systems and the docs stay on top. This reads TODO's \"experiments into a named folder\" broadly; settle the exact cut when the work starts.",
+    K("0.7",["repo"],"done","Sort the top level so the system comes first",
+      "Done 2026-10-06: experiments, bench, corpus and labels moved into research/ (research/README.md says what each holds). domain/ stayed at the root, because production's hunter.js, server.js and lib/ import it and its Dockerfile copies it. Production's other files stay on top until it retires. tmp/ and the claims snapshot file were never in git; task 0.14 sorts them.",
       "The top level is the first screen a visitor sees."),
     K("0.8",["repo"],"todo","Check the history for other outlets' article text",
       "TODO item 1 says article bodies come out of the history. Whether any were committed before the guard (scripts/article-text-guard.js) existed is not checked yet. If some were, removing them rewrites commits already on GitHub, which the working rules otherwise forbid, so that step needs your yes.",
@@ -300,7 +300,7 @@ const STATIONS = [
       "Jina's reader, when the page refuses or returns nothing usable. New articles only.",
       "One of the spike's three free fixes."),
     K("3.9",["body"],"call","Decide which text wins when two readers both read a page",
-      "Our extractor beside Mozilla Readability on the same pages: menus, captions, ads, and whether the article is complete. Question 1 of the intake design (docs/design/intake.excalidraw); the review page stays on the laptop because it holds the outlets' text (experiments/2026-10-05-body-fetch-spike/bodies/review-1-extractor-vs-readability.html).",
+      "Our extractor beside Mozilla Readability on the same pages: menus, captions, ads, and whether the article is complete. Question 1 of the intake design (docs/design/intake.excalidraw); the review page stays on the laptop because it holds the outlets' text (research/experiments/2026-10-05-body-fetch-spike/bodies/review-1-extractor-vs-readability.html).",
       "The stations read whatever text they are given; a page full of menus and other stories reads as other news."),
     K("3.10",["body"],"call","Decide whether the stations read headline and summary when there is no text",
       "The headline and the outlet's preview summary beside the full article: could the classifier and extractor get the news right from the headline side alone? Question 2 of the intake design; review page review-2-summary-vs-article.html, beside the first.",

@@ -1,7 +1,7 @@
 {
- "source": "experiments/2026-09-27-axes-v6/classifier-v6/results-p1.json",
+ "source": "research/experiments/2026-09-27-axes-v6/classifier-v6/results-p1.json",
  "passes": 1,
- "note": "The v6 question set: v5 tuned against a 59-article answer key (experiments/2026-09-27-answer-key): act gains only_mentions_him, fact gets boundaries, centrality and source clearer definitions, firmness four levels composed with fact. Machine answers, not labels.",
+ "note": "The v6 question set: v5 tuned against a 59-article answer key (research/experiments/2026-09-27-answer-key): act gains only_mentions_him, fact gets boundaries, centrality and source clearer definitions, firmness four levels composed with fact. Machine answers, not labels.",
  "questions": {
   "centrality": {
    "type": "score",

@@ -289,7 +289,7 @@ cannot; a change needs the tiers that apply to it.
    one. They cannot see wiring — the misspelled translator key passed all 27
    of them (self-improvement §4).
 2. **Corpus score with real articles — for anything that judges.** The
-   labelled corpus (`corpus/`, real archive items with Anton's verdict
+   labelled corpus (`research/corpus/`, real archive items with Anton's verdict
    attached) is the ground truth for the matcher, the tier rule, and any
    future judgment step such as a search verifier. The output is a score, not
    pass/fail — the model is not deterministic and "64% → 88%" is the useful

@@ -1,10 +1,10 @@
-// The pure logic behind corpus/build-graded.js: parsing grading-table rows,
+// The pure logic behind research/corpus/build-graded.js: parsing grading-table rows,
 // resolving Anton's final bucket, and splitting ids into prompt/tune/holdout.
-// No database, no filesystem — see corpus/graded.js.
+// No database, no filesystem — see research/corpus/graded.js.
 
 import { test, describe } from "node:test";
 import assert from "node:assert/strict";
-import { parseGradingRow, finalBucket, assignSplits } from "../corpus/graded.js";
+import { parseGradingRow, finalBucket, assignSplits } from "../research/corpus/graded.js";
 
 describe("parseGradingRow + finalBucket", () => {
   test("'as graded' defers to Claude's bucket", () => {

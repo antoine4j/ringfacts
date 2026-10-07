@@ -14,7 +14,7 @@ change; six pages saved twice are recorded as same_page_as.
 import json, pathlib
 
 ROOT = pathlib.Path(__file__).resolve().parents[2]
-EXT = ROOT / "experiments/2026-09-20-claim-extraction"
+EXT = ROOT / "research/experiments/2026-09-20-claim-extraction"
 MERGE_INTO, MERGE_FROM = "054", "067"
 SAME_PAGE_AS = {"33": "13", "125": "115", "491": "490", "540": "533", "698": "692", "1129": "1125"}
 NOTE = ("v4 = v3 with the singleton pass applied (verdicts.md, 2026-09-27): seven singleton pairs "

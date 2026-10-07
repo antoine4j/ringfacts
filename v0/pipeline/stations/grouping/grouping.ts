@@ -23,7 +23,7 @@ export type Pick = { claim: number | null; confidence: number };
 /**
  * The text a reading is embedded from: "<occasion>: <claim>", the headline, and
  * the body's first 1,500 characters; a "NO CLAIM" extract adds nothing (the
- * measured arm 4 of experiments/2026-09-20-claim-extraction/score.py).
+ * measured arm 4 of research/experiments/2026-09-20-claim-extraction/score.py).
  *
  * @param extract  The reading's extract.
  * @param headline  The article's headline.

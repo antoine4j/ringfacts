@@ -60,7 +60,7 @@ CENTRALITY_TILES = [["main_subject", "Main subject", "he is what the article is 
                     ["not_in_content", "Not in the content", "only in links or furniture"]]
 
 # v7: the frozen key, the sides of the split, and the scales on which one step off counts as near
-# v7's question names (experiments/2026-10-03-classifier-v7/README.md, "The names of the questions")
+# v7's question names (research/experiments/2026-10-03-classifier-v7/README.md, "The names of the questions")
 NINE_DIMS = [("centrality", "How central", "centrality"), ("source", "Whose words", "source"), ("act", "What the source does", "act"),
              ("fact", "What new fact", "fact"), ("firmness", "How firm", "firmness"),
              ("result", "Reports his result", "reports_his_result"), ("next_fight", "Reports his next fight", "reports_his_next_fight"),

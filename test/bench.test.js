@@ -1,14 +1,14 @@
-// The bench (bench/): run a battery of articles through one pipeline step on
+// The bench (research/bench/): run a battery of articles through one pipeline step on
 // the test keys and the bench database, from any fresh session. Everything
 // here runs on fakes; the steps take their dependencies as a context object,
 // which is the whole point — the same seam the hunter has, one level up.
 
 import { test, describe } from "node:test";
 import assert from "node:assert/strict";
-import { parseEnvFile, mapBenchEnv } from "../bench/env.js";
-import { toPipelineItem, resolveSubject, itemsFromFile } from "../bench/items.js";
-import { STEPS, runStep, aggregateRuns, bucketFor } from "../bench/steps.js";
-import { parseArgs } from "../bench/args.js";
+import { parseEnvFile, mapBenchEnv } from "../research/bench/env.js";
+import { toPipelineItem, resolveSubject, itemsFromFile } from "../research/bench/items.js";
+import { STEPS, runStep, aggregateRuns, bucketFor } from "../research/bench/steps.js";
+import { parseArgs } from "../research/bench/args.js";
 
 const SUBJECTS = [
   { name: "Daniil Donchenko", aliases: [], matchNames: ["Donchenko", "Донченк"] },
@@ -24,7 +24,7 @@ const corpusItem = (over = {}) => ({
   ...over,
 });
 
-describe("bench/env — the test keys, and nothing else", () => {
+describe("research/bench/env — the test keys, and nothing else", () => {
   test("parses KEY=VALUE lines, strips quotes, ignores comments and blanks", () => {
     const raw = parseEnvFile('# comment\nA=1\nB="two"\n\nC=\'three\'\nD=a=b\n');
     assert.deepEqual(raw, { A: "1", B: "two", C: "three", D: "a=b" });
@@ -56,7 +56,7 @@ describe("bench/env — the test keys, and nothing else", () => {
   });
 });
 
-describe("bench/items — corpus rows become pipeline items", () => {
+describe("research/bench/items — corpus rows become pipeline items", () => {
   test("a corpus item becomes the shape huntSubject reads, body as feed content", () => {
     const item = toPipelineItem(corpusItem());
     assert.equal(item.title, "Донченко проведе бій у Парижі - sport24.ua");
@@ -82,7 +82,7 @@ describe("bench/items — corpus rows become pipeline items", () => {
   });
 });
 
-describe("bench/steps — one named step, its dependencies handed in", () => {
+describe("research/bench/steps — one named step, its dependencies handed in", () => {
   const ctx = (over = {}) => ({
     subjects: SUBJECTS,
     db: {},
@@ -170,14 +170,14 @@ describe("bench/steps — one named step, its dependencies handed in", () => {
   });
 });
 
-describe("bench/args", () => {
+describe("research/bench/args", () => {
   test("parses --step, --from, --keys, --limit and --sink", () => {
-    const args = parseArgs(["--step", "tier", "--from", "corpus/tune.json", "--keys", "a1,a2", "--limit", "5", "--sink"]);
-    assert.deepEqual(args, { step: "tier", from: "corpus/tune.json", keys: ["a1", "a2"], split: null, limit: 5, repeat: 1, sink: true });
+    const args = parseArgs(["--step", "tier", "--from", "research/corpus/tune.json", "--keys", "a1,a2", "--limit", "5", "--sink"]);
+    assert.deepEqual(args, { step: "tier", from: "research/corpus/tune.json", keys: ["a1", "a2"], split: null, limit: 5, repeat: 1, sink: true });
   });
 
   test("defaults: corpus tune split, no keys, no limit, no sink", () => {
-    assert.deepEqual(parseArgs(["--step", "matcher"]), { step: "matcher", from: "corpus/tune.json", keys: null, split: null, limit: null, repeat: 1, sink: false });
+    assert.deepEqual(parseArgs(["--step", "matcher"]), { step: "matcher", from: "research/corpus/tune.json", keys: null, split: null, limit: null, repeat: 1, sink: false });
   });
 
   test("a missing or unknown step is an error naming the choices", () => {

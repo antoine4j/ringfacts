@@ -1,7 +1,7 @@
 // Classifier (4): one JEV call with the frozen v7.7 questions, then the four
 // tie rules the labelling rules require. No database.
 // The questions are the file scored on the golden set
-// (experiments/2026-10-03-classifier-v7/classifier-v7/questions-r7.json); the
+// (research/experiments/2026-10-03-classifier-v7/classifier-v7/questions-r7.json); the
 // ties are score.py's compose(), line for line.
 
 import { readFileSync } from "node:fs";

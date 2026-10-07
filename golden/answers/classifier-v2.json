@@ -1,5 +1,5 @@
 {
- "source": "experiments/2026-09-25-answers-to-buckets/classifier-v2/results-p4..6.json (five questions, three option orders, majority of three)",
+ "source": "research/experiments/2026-09-25-answers-to-buckets/classifier-v2/results-p4..6.json (five questions, three option orders, majority of three)",
  "note": "The v2 question set from the answers-to-buckets experiment. Shown on the board beside the original six; it decides nothing.",
  "questions": {
   "role": {

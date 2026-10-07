@@ -92,7 +92,7 @@ into Q5, which may be fine since we can see a correlation then"*).
 | **health** | injury, medical, recovery |
 | **career move** | retirement, contract, weight class, team change |
 | **personal life** | family, childhood, home, hobbies, a lesson from life |
-| **status update** | (2026-10-02) where he stands as a fighter when no specific fight exists or changes: ready, not before a date, a return window, nothing booked, opponents only as options, training camp, an announced return to public life. The specific values come first: a statement of how his recovery is going is health even if it also gives a return date; a post or letter takes the value of what it says. No yes/no question of its own. Tested by blind readers on all 300 (experiments/2026-09-27-answer-key/status-pilot/) |
+| **status update** | (2026-10-02) where he stands as a fighter when no specific fight exists or changes: ready, not before a date, a return window, nothing booked, opponents only as options, training camp, an announced return to public life. The specific values come first: a statement of how his recovery is going is health even if it also gives a return date; a post or letter takes the value of what it says. No yes/no question of its own. Tested by blind readers on all 300 (research/experiments/2026-09-27-answer-key/status-pilot/) |
 | **none** | opinion or talk only; no new fact |
 
 ## Modifier: how firm (only for next fight, career move; v4 asks it of any fact)

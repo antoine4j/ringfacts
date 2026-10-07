@@ -1,5 +1,5 @@
 {
- "source": "experiments/2026-09-27-axes-v3/classifier-v3/results-p1..3.json (ten questions, three option orders, majority of three); results-p4 repeats p1 for the noise floor",
+ "source": "research/experiments/2026-09-27-axes-v3/classifier-v3/results-p1..3.json (ten questions, three option orders, majority of three); results-p4 repeats p1 for the noise floor",
  "note": "The v3 question set: the five axes of golden/axes.md, each paired with a question on whether its options fit. Machine answers, not labels.",
  "questions": {
   "gate": {

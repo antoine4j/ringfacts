@@ -1,7 +1,7 @@
 # The golden set
 
 The one labelled data set every station is scored against. Decided by
-Anton on 2026-09-24: it supersedes [corpus/](../corpus/README.md) (48
+Anton on 2026-09-24: it supersedes [research/corpus/](../research/corpus/README.md) (48
 articles, `tune` + `holdout`) and
 [docs/article-feedback.md](article-feedback.md) as evaluation data. Those
 stay as history; nothing new is measured on them.

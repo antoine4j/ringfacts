@@ -1,5 +1,5 @@
 {
- "source": "experiments/2026-09-27-axes-v4/classifier-v4/results-p1..3.json (nine questions; choices in three option orders, majority of three; scores and yes/no averaged); results-p4 repeats p1 for the noise floor",
+ "source": "research/experiments/2026-09-27-axes-v4/classifier-v4/results-p1..3.json (nine questions; choices in three option orders, majority of three; scores and yes/no averaged); results-p4 repeats p1 for the noise floor",
  "note": "The v4 question set: centrality and firmness as scores, source / act / fact as choices, four yes/no questions on news about him. Machine answers, not labels.",
  "questions": {
   "centrality": {

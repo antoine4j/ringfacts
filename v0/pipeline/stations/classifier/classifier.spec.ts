@@ -4,7 +4,7 @@ import { readFileSync, existsSync } from "node:fs";
 import { composeAnswers, roundHalfToEven, QUESTIONS } from "./classifier.ts";
 
 const REPO = new URL("../../../../", import.meta.url);
-const EXPERIMENT = new URL("experiments/2026-10-03-classifier-v7/classifier-v7/", REPO);
+const EXPERIMENT = new URL("research/experiments/2026-10-03-classifier-v7/classifier-v7/", REPO);
 const FROZEN = JSON.parse(readFileSync(new URL("golden/answers/classifier-v7.json", REPO), "utf8"));
 
 test("the questions are the ones scored as v7.7, unchanged", () => {

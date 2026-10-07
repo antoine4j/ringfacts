@@ -6,7 +6,7 @@ import { PROMPT, promptSection, userMessage, ExtractP4 } from "./extractor.ts";
 const REPO = new URL("../../../../", import.meta.url);
 
 test("the prompt is pass 4, unchanged", () => {
-  const scored = readFileSync(new URL("experiments/2026-09-20-claim-extraction/prompt-p4.md", REPO), "utf8");
+  const scored = readFileSync(new URL("research/experiments/2026-09-20-claim-extraction/prompt-p4.md", REPO), "utf8");
   assert.equal(PROMPT, scored);
 });
 

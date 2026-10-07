@@ -268,7 +268,7 @@ safety net and should exist before any destructive migration runs.
 
 **API keys: production and test are separate.** The deployed job reads its
 keys from Secret Manager. Tests, the bench, replays, and any local experiment
-use the test keys in `bench/.env.bench`, so Anton can read the production
+use the test keys in `research/bench/.env.bench`, so Anton can read the production
 cost apart from the development cost in each provider's console. Never point
 a local run at the production keys.
 
@@ -341,9 +341,9 @@ and nothing constructs its own client at import time. The rules:
    `the deps seam is wired to itself` guards it. New modules follow it, and
    modules that still build a client at load time get converted when touched.
 2. **Every step can be run alone against a battery of articles.** The bench
-   (`bench/`, credentials present, runner not yet built) is the harness:
+   (`research/bench/`, credentials present, runner not yet built) is the harness:
    from any fresh session Anton can ask for a run of N articles — from
-   `corpus/`, from the archive, or pasted — through one named step (the
+   `research/corpus/`, from the archive, or pasted — through one named step (the
    matcher, the tier rule, the extractor, the dedup gate, the search
    verifier) with real or fake dependencies, and get a table back. It uses
    the test keys (§8) and the bench database, never production.

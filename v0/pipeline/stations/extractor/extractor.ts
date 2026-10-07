@@ -1,7 +1,7 @@
 // Claim extractor (5): the pass-4 prompt on Qwen3.8 Flash through OpenRouter,
 // whole body, temperature 0, reasoning off. No database.
 // The prompt is the file that wrote the 300 golden extracts
-// (experiments/2026-09-20-claim-extraction/prompt-p4.md); the call is that
+// (research/experiments/2026-09-20-claim-extraction/prompt-p4.md); the call is that
 // experiment's run.py, line for line.
 
 import { readFileSync } from "node:fs";

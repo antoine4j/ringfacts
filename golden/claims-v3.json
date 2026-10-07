@@ -1,7 +1,7 @@
 {
  "built": "2026-09-26",
  "version": 3,
- "source": "experiments/2026-09-20-claim-extraction/clusters.json (v3), keys renamed story-→claim-",
+ "source": "research/experiments/2026-09-20-claim-extraction/clusters.json (v3), keys renamed story-→claim-",
  "note": "v3 = v2 (Fable's three-pass grouping) with Anton's rulings applied after his story-by-story review of every multi-article story, 2026-09-23..25 (verdicts.md). 45 of 48 multi-article stories confirmed as built; two splits and one merge below. Singleton stories not yet reviewed. v2 kept as clusters-v2.json; v1 as clusters-v1-chained.json.",
  "method": "Fable subagents: window clustering (lead) -> description merge -> full-read of unresolved pairs and split candidates",
  "applied_rulings": [

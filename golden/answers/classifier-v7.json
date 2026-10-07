@@ -1,8 +1,8 @@
 {
- "source": "experiments/2026-10-03-classifier-v7/classifier-v7/raw/*-r7.json",
+ "source": "research/experiments/2026-10-03-classifier-v7/classifier-v7/raw/*-r7.json",
  "version": "v7.7",
  "passes": 1,
- "note": "Classifier v7.7: the 27 labelling rules written into the nine questions, tuned on the training set (experiments/2026-10-03-classifier-v7/README.md). Values are as scored, with the ties of the rules applied. Training and validation articles only; the test set has not been sent. Machine answers, not labels.",
+ "note": "Classifier v7.7: the 27 labelling rules written into the nine questions, tuned on the training set (research/experiments/2026-10-03-classifier-v7/README.md). Values are as scored, with the ties of the rules applied. Training and validation articles only; the test set has not been sent. Machine answers, not labels.",
  "questions": {
   "centrality": {
    "type": "score",

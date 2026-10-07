@@ -913,7 +913,7 @@ without making the rumoured man his opponent. The next-fight question is
 reworded to say "the state of his next fight" so a rumour or a denial reads
 as yes.
 Applied the same day to all 43 articles labelled opponent side (a blind
-re-read, experiments/2026-09-27-answer-key/overnight/opponent-out.json):
+re-read, research/experiments/2026-09-27-answer-key/overnight/opponent-out.json):
 16 flip to other fighter's side (#34, #78, #166, #228, #283, #311, #423,
 #442, #820, #838, #843, #871, #889, #892, #913, #921: Pimblett's wishes
 and rumours, Méndez and Abdelaziz speaking for Makhachev or Usman
@@ -944,7 +944,7 @@ answering each question on its own; the contradiction stays a doubt flag
 there, as decided on 2026-10-02 (the blade question).
 Applied the same day: six blind readers re-answered fact, how firm and
 the three news questions on the 134 articles the rule can touch
-(experiments/2026-09-27-answer-key/overnight/rule3/). 76 change: reports
+(research/experiments/2026-09-27-answer-key/overnight/rule3/). 76 change: reports
 his next fight yes → no on 57 (fight-week previews, picks and card lists
 where the booking is the premise; interviews with a boilerplate "fights
 Soriano on 5 Sept" closer; reaction pieces where the rematch rumour is
@@ -1096,7 +1096,7 @@ any run:
   labelling before any v7.
 
 Not yet adopted into key-guide.md: the wording is in
-experiments/2026-09-27-answer-key/wording-proposal.json and is being tested
+research/experiments/2026-09-27-answer-key/wording-proposal.json and is being tested
 by blind readers (status-pilot/).
 
 ## review: the five articles the status-update readers moved that nobody predicted (2026-10-02)
@@ -1279,7 +1279,7 @@ identical labels, and the 3 that differ are different UFC.com video pages
 ## The blind re-read after step 1, and what it changed (2026-10-03)
 
 Two blind readers on 35 articles under the guide as it stood after step 1
-(experiments/2026-09-27-answer-key/reread-1003). Both gave the key's
+(research/experiments/2026-09-27-answer-key/reread-1003). Both gave the key's
 answer on 161 of 175 answers. Five of the six rules decided on 3 October
 are carried by the wording. The sixth was half written: the guide said a
 callout article is "never main subject" and did not say a callout alone
@@ -1314,7 +1314,7 @@ five Pimblett callouts. The sentence was added.
 ## After the full re-read: 19 unchecked cards confirmed by group (2026-10-03)
 
 Two blind readers re-read all 300 articles on all nine questions under the
-guide with the 27 rules (experiments/2026-09-27-answer-key/full-reread).
+guide with the 27 rules (research/experiments/2026-09-27-answer-key/full-reread).
 On 244 articles both gave the key's answer on all nine. On 21 cards Anton
 had not checked, both gave the same answer, different from the key. 19 of
 them were put to him in seven groups, each tied to a rule already in
@@ -1408,7 +1408,7 @@ cards, 27 of them by summary.
 The spot check is drawn: 20 cards at random (seed 20261003) from the 186
 articles on which both full readers gave the key's answer on all nine
 questions and which no person had checked
-(experiments/2026-09-27-answer-key/spot-check.json).
+(research/experiments/2026-09-27-answer-key/spot-check.json).
 
 ## The spot check, and the freeze (2026-10-03)
 

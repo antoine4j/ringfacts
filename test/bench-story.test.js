@@ -1,11 +1,11 @@
-// The bench story gate's pure parts (bench/story.js): the shortlist, the
+// The bench story gate's pure parts (research/bench/story.js): the shortlist, the
 // cascade step, the scoring and the ship gate. No key, no network — importing
-// bench/story.js must not load the bench env or the matcher.
+// research/bench/story.js must not load the bench env or the matcher.
 
 import { test } from "node:test";
 import assert from "node:assert/strict";
 import { vectorAt } from "./fake-store.js";
-import { liveStories, rankStories, toShortlistRow, applyDecision, score, gate, withRetry } from "../bench/story.js";
+import { liveStories, rankStories, toShortlistRow, applyDecision, score, gate, withRetry } from "../research/bench/story.js";
 
 const DAY_MS = 24 * 3_600_000;
 const WEEK_MS = 7 * DAY_MS;

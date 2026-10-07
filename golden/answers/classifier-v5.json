@@ -1,5 +1,5 @@
 {
- "source": "experiments/2026-09-27-axes-v5/classifier-v5/results-p1.json",
+ "source": "research/experiments/2026-09-27-axes-v5/classifier-v5/results-p1.json",
  "passes": 1,
  "note": "The v5 question set: v4 with the four yes/no questions reworded (the fighter named by the state field; result and health as news, not background). Machine answers, not labels.",
  "questions": {

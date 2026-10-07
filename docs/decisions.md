@@ -470,7 +470,7 @@ three weeks.
 the precedent `TIER_MAX_MENTIONS` set. A null or failed role still leaves the
 headline escape and the count rule in charge, byte for byte.
 
-**Re-measured the same day** (`corpus/measure-tier.js`, the corpus having
+**Re-measured the same day** (`research/corpus/measure-tier.js`, the corpus having
 been relabelled since August): 33 scored items, **18/33 (55%) → 26/33
 (79%)**, eight items change, all eight in the right direction, zero
 regressions. Over the live archive (`measure-tier.js` section B) 15 posted
@@ -642,7 +642,7 @@ this fighter learn something new about him?*
 
 **Decision.** Ask exactly that, as a fourth field in the same tool call:
 `news_for_followers: yes | no`, with Anton's own borderline rulings (the
-`prompt` split of corpus/graded-2026-09.json) reworded as the examples, and
+`prompt` split of research/corpus/graded-2026-09.json) reworded as the examples, and
 the "other fighter's story" pattern spelled out. Code routes on it
 conservatively: a **loud claim is never folded** (an event is news whatever
 the model thinks of the article); a `no` on anything else folds the article
@@ -770,7 +770,7 @@ articles from the `feedback` labels and the archive's own nearest-item
 record; 43 carry their claim; 161 wrong-subject and untrusted holds stay
 story-less by design; no chains.
 
-**Measured, the real code (bench/story.js, one pass, body text, Haiku 4.5).**
+**Measured, the real code (research/bench/story.js, one pass, body text, Haiku 4.5).**
 Of 346 labelled repeats: 301 held (262 in the right story, 39 in a
 neighbouring one), 45 missed — every one a bucket-3 repeat, and 8 of those
 dropped as wrong subject, so **309 never posted**; the prototype's three
@@ -825,7 +825,7 @@ The classifier station is judged by three pass marks, each read off one of
 the project goals (docs/goals.md), on the golden key. They are a starting
 line, adopted to be tightened or relaxed after the test-set score and live
 performance, not a finding. `score.py` prints all three at the end of every
-report (experiments/2026-10-03-classifier-v7).
+report (research/experiments/2026-10-03-classifier-v7).
 
 1. **G1, nothing real is missed.** Every story whose key has a career event
    ("what new fact" is a result, next fight or health, at any firmness) has

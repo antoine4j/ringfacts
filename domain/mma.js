@@ -110,7 +110,7 @@ The fighter's own announcement (a return, a booking, a retirement) is never a re
     // The reader's own test (goals.md, "what useful means"): would a follower
     // of the subject learn something new about HIM from this article? The
     // examples are Anton's rulings from the first grading pass — the
-    // `prompt` split of corpus/graded-2026-09.json, reserved for this use.
+    // `prompt` split of research/corpus/graded-2026-09.json, reserved for this use.
     newsGuide:
       "\"yes\" when a follower learns something new about the subject himself: his fights, career, status, health, a notable person's assessment of him, a callout at him, his own substantial account of his life. \"no\" when the article is about ANOTHER fighter and the subject appears as that fighter's past opponent, a comparison, or a name inside that fighter's quotes — even if the subject is discussed at length, the news is about the other fighter. Also \"no\" when a peer names who the subject should fight, when the piece is lifestyle or training trivia, or when it retells an old fight (a photo caption, a highlights clip, a recap).",
     newsExamples: [

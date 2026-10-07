@@ -1,7 +1,7 @@
 {
  "about": "The frozen answer key of the golden set: nine answers for each of the 300 articles. Built from the first readers' answers (answers/readers-v1.json) with Anton's corrections folded in. Every station is scored against this file. It does not change silently: the test golden/labels.test.js recomputes the checksum of the answers, so a change has to update the checksum and add a line to 'errata' saying what changed and why.",
  "frozen": "2026-10-03",
- "guide": "experiments/2026-09-27-answer-key/key-guide.md",
+ "guide": "research/experiments/2026-09-27-answer-key/key-guide.md",
  "guide_commit": "f6eab1c",
  "rules": "golden/rules.md: the 27 rules the answers follow; Anton's words per ruling are in golden/verdicts.md",
  "coin_flips": "golden/coin-flips.json: answers where two values are accepted; this file carries one of them, either counts as right when scoring",

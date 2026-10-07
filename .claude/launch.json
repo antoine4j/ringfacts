@@ -21,7 +21,7 @@
         "http.server",
         "8792",
         "--directory",
-        "experiments/2026-09-25-answers-to-buckets"
+        "research/experiments/2026-09-25-answers-to-buckets"
       ],
       "port": 8792
     },

@@ -1,5 +1,5 @@
 {
- "source": "experiments/2026-09-25-answers-to-buckets/extractor-v2/results-p1.json: the most common `bout` value across a claim's articles. A pre-fill to check, not a ruling.",
+ "source": "research/experiments/2026-09-25-answers-to-buckets/extractor-v2/results-p1.json: the most common `bout` value across a claim's articles. A pre-fill to check, not a ruling.",
  "claims": {
   "claim-000": "Amosov vs Makhachev",
   "claim-001": null,

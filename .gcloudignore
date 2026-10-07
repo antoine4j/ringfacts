@@ -21,10 +21,10 @@ node_modules
 .neon
 claims-snapshot-*.json
 .claude
-# Tracked in git (reviewable), useless in the container: the labelled evaluation
-# corpus is tuning data for the sandbox bench, and six of its items are
-# fabricated fixtures. Nothing on the hunter's path reads it.
-corpus
+# Tracked in git (reviewable), useless in the container: research/ holds the
+# experiments, the bench, the labelled corpus (six of its items are fabricated
+# fixtures) and the labelling tools. Nothing on the hunter's path reads it.
+research
 # Same reasoning: the test suite, the laptop-run operational scripts, and the
 # docs are all reviewable in git and unread by anything in production.
 test

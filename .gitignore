@@ -16,55 +16,55 @@ claims-snapshot-*.json
 # git because none of them are part of how the bot works.
 tmp/
 
-# Bench run records: local artifacts, one JSON per run (bench/run.js)
-bench/runs/
+# Bench run records: local artifacts, one JSON per run (research/bench/run.js)
+research/bench/runs/
 
-# Experiment artifacts (experiments/<date>-<name>/). What is tracked is the
+# Experiment artifacts (research/experiments/<date>-<name>/). What is tracked is the
 # record and the machinery: the findings, the exact prompt each pass ran with,
 # and the scripts. What is not is everything derivable from those — and the
 # sampled article bodies, which are other people's copyrighted text and do not
 # belong in a public repository. A pull script plus a frozen sample id list is
 # the reproducible part; the corpus itself stays local.
-experiments/*/raw/
-experiments/*/data/
-experiments/*/spotcheck/
-experiments/*/results-p*.json
-experiments/*/REPORT.html
+research/experiments/*/raw/
+research/experiments/*/data/
+research/experiments/*/spotcheck/
+research/experiments/*/results-p*.json
+research/experiments/*/REPORT.html
 # a hand-written page; on a case-insensitive file system the line above catches it too
-!experiments/2026-09-27-answer-key/report.html
-experiments/*/__pycache__/
-experiments/*/*.bak
+!research/experiments/2026-09-27-answer-key/report.html
+research/experiments/*/__pycache__/
+research/experiments/*/*.bak
 # questions.json is whatever the builder last wrote; the per-pass snapshots
 # (questions-pN.json) are the record. probe.mjs was a one-question schema check
 # against a scratch database, the same class of throwaway as tmp/ above.
-experiments/*/questions.json
-experiments/*/probe.mjs
+research/experiments/*/questions.json
+research/experiments/*/probe.mjs
 
 # the review board is regenerated from golden/ by golden/board/build.py
 golden/board/board.html
-experiments/*/*/raw/
-experiments/*/TYPES.html
+research/experiments/*/*/raw/
+research/experiments/*/TYPES.html
 # the claim map is regenerated from golden/ by golden/board/map.py
 golden/board/map.html
 
 # generated from key.json by correction_page.py; published as an artifact
-experiments/2026-09-27-answer-key/correction.html
-experiments/2026-09-27-answer-key/wording-draft.html
+research/experiments/2026-09-27-answer-key/correction.html
+research/experiments/2026-09-27-answer-key/wording-draft.html
 
 # Article bodies: other outlets' copyrighted text. Kept on this machine only,
 # never in this public repository; the tracked side holds ids, URLs, headlines
 # and labels. scripts/article-text-guard.js refuses a commit that copies one.
 # History: docs/decisions.md#article-text-out-of-git
 golden/articles.json
-corpus/graded-2026-09.json
-corpus/holdout.json
-corpus/tune.json
-experiments/*/spotcheck-*.md
-experiments/2026-09-20-claim-extraction/batches/*.md
-!experiments/2026-09-20-claim-extraction/batches/merge-input.md
-experiments/2026-09-27-answer-key/batches/
-experiments/2026-09-27-answer-key/batches-rest/
-experiments/2026-09-27-answer-key/**/in-*.json
-experiments/2026-09-27-answer-key/**/in.json
-experiments/2026-09-27-answer-key/**/*-in.json
-experiments/2026-10-05-body-fetch-spike/bodies/
+research/corpus/graded-2026-09.json
+research/corpus/holdout.json
+research/corpus/tune.json
+research/experiments/*/spotcheck-*.md
+research/experiments/2026-09-20-claim-extraction/batches/*.md
+!research/experiments/2026-09-20-claim-extraction/batches/merge-input.md
+research/experiments/2026-09-27-answer-key/batches/
+research/experiments/2026-09-27-answer-key/batches-rest/
+research/experiments/2026-09-27-answer-key/**/in-*.json
+research/experiments/2026-09-27-answer-key/**/in.json
+research/experiments/2026-09-27-answer-key/**/*-in.json
+research/experiments/2026-10-05-body-fetch-spike/bodies/

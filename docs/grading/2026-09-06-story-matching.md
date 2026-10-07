@@ -6,7 +6,7 @@ posts. Companion to [2026-09-05-story-gate.md](2026-09-05-story-gate.md)
 Same archive: the 674 labelled articles (the `feedback` table, current label
 per article: user > claude > sonnet > haiku; 612 of the labels are Anton's),
 341 story members, 333 first arrivals. Scoring is the cascade replay
-(`labels/story-gate.js` → `simulate`): earlier articles sit where the rule
+(`research/labels/story-gate.js` → `simulate`): earlier articles sit where the rule
 itself put them, so a wrong join becomes an anchor for the next one.
 
 Columns: **held** = repeats not posted again (caught in the right story +
@@ -17,7 +17,7 @@ cost; **junk swallowed** = a new bucket-3 item held, harmless.
 ## B — bodies before the hold
 
 What it needed: bodies for the 315 articles that have none. Fetched
-read-only with the live decoder and extractor (`labels/fetch-bodies.js`):
+read-only with the live decoder and extractor (`research/labels/fetch-bodies.js`):
 
 | outcome | articles |
 |---|---|
@@ -32,8 +32,8 @@ holds; the sites that answer 403 to the hourly job answered 403 here too.
 All 674 articles were then re-embedded on headline + the first 1500
 characters of the body (450 with a body, 224 headline-only as today), TEST
 Gemini key, ~171k tokens, free tier (a few per-minute waits, no daily cap
-hit). `labels/embed-bodies.js`, replayed with
-`node labels/measure-story-gate.js --vectors tmp/labels/vectors-body.json`.
+hit). `research/labels/embed-bodies.js`, replayed with
+`node research/labels/measure-story-gate.js --vectors tmp/labels/vectors-body.json`.
 
 What the body does to the distances (median similarity):
 
@@ -70,7 +70,7 @@ second run below measures.
 
 ## D — stories as objects, Haiku decides
 
-`labels/measure-stories-llm.js`. Per subject, in arrival order: the stories
+`research/labels/measure-stories-llm.js`. Per subject, in arrival order: the stories
 D has built so far (root article, one-line fact, members, reacts-to) are
 ranked by embedding similarity to the arriving article; the top three of
 the last 7 days go to Haiku 4.5 with the headline, source, date and the
@@ -284,7 +284,7 @@ D's cost is steady at $1.74–1.85 per pass over 674 articles.
 TEST Anthropic key spent today: $3.28 (first two runs) + $1.85 + $1.84 +
 $1.75 + $1.75 = **$10.47**. Gemini: free tier.
 
-## The real code, one pass (evening, bench/story.js)
+## The real code, one pass (evening, research/bench/story.js)
 
 D was built into the pipeline the same evening (branch
 `measure-story-matching`; docs/decisions.md#stories-as-objects). The

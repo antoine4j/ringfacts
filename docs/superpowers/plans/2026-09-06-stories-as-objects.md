@@ -8,12 +8,12 @@
 
 **Tech Stack:** Node ESM, pg + pgvector, Anthropic SDK (Haiku 4.5, forced tool call), Gemini embeddings, `node --test`.
 
-**Spec:** [docs/story-matching-options.md](../../story-matching-options.md) (the menu and the measured tables), [docs/grading/2026-09-06-story-matching.md](../../grading/2026-09-06-story-matching.md) (what D did on the archive, the noise band, Anton's rulings), [labels/measure-stories-llm.js](../../../labels/measure-stories-llm.js) (the measured prompt and replay — the reference implementation).
+**Spec:** [docs/story-matching-options.md](../../story-matching-options.md) (the menu and the measured tables), [docs/grading/2026-09-06-story-matching.md](../../grading/2026-09-06-story-matching.md) (what D did on the archive, the noise band, Anton's rulings), [research/labels/measure-stories-llm.js](../../../research/labels/measure-stories-llm.js) (the measured prompt and replay — the reference implementation).
 
 ## Global Constraints
 
 - **Additive database changes only.** New table, new nullable columns. Nothing dropped, nothing rewritten. Backfill runs with `DRY_RUN=1` first and prints counts before anything is written.
-- **Keys.** Production database only via `DATABASE_URL=$(gcloud secrets versions access latest --secret=neon-db-url)`. Any Anthropic or Gemini call from a session uses the TEST keys from `bench/.env.bench` through `bench/env.js`. Never print a key.
+- **Keys.** Production database only via `DATABASE_URL=$(gcloud secrets versions access latest --secret=neon-db-url)`. Any Anthropic or Gemini call from a session uses the TEST keys from `research/bench/.env.bench` through `research/bench/env.js`. Never print a key.
 - **Spend.** The Anthropic cap is $20/month across all keys; $10.47 was spent on the TEST key on 2026-09-06; a third of the cap (~$6.70) stays for production. **Budget for this build: about $2.80 on the TEST key** — one full archive pass (~$1.85) plus one bucket regression (~$0.30). Every paid run prints its tokens; if a run fails on the usage-limit error, stop everything paid and tell Anton.
 - **Code style:** [docs/code-style.md](../../code-style.md) — JSDoc on every function, one-line comment per block, no history in code (pointer to `docs/decisions.md#stories-as-objects`), no short names, functions under ~50 lines.
 - **Deps seam.** Every external call goes through `buildDeps` in hunter.js; the test `the deps seam is wired to itself` must stay green. The fake store (`test/fake-store.js`) must answer every function `lib/db.js` exports (`the fake store answers everything lib/db.js exports`).
@@ -42,7 +42,7 @@ The unit of "have we seen this" becomes the **story**, not the nearest headline.
 | `hunter.js` | Stage order: candidates → bodies → embed(headline + body) → classify (shortlist + decision) → record (story rows). Threshold gate as fallback only. |
 | `test/pipeline.test.js` | Gate 2 tests move under "the fallback when the decider is unavailable"; new tests for join / new / reaction / url-dup inheriting a story. |
 | `scripts/backfill-stories.js` | Stories from the `feedback` labels (roots and members), then every unlabelled item; `DRY_RUN=1` prints counts. |
-| `bench/story.js` + `bench/README.md` | The archive replay through the real `matchItem`, scored against the labels, `--repeat K`; the ship gate. |
+| `research/bench/story.js` + `research/bench/README.md` | The archive replay through the real `matchItem`, scored against the labels, `--repeat K`; the ship gate. |
 | `docs/decisions.md`, `docs/architecture-overview.html`, `TODO.md`, `docs/story-matching-options.md`, `docs/checkin-log.md` | The record. |
 
 ---
@@ -201,7 +201,7 @@ In `test/fake-store.js`: add `stories: []` to `rows`, `nextStoryId`, and the fiv
 
 - [ ] **Step 4: SQL-tier tests** in `test/sql.test.js`: a `describe("stories", { skip })` with (a) a story round-trips through `insertStory` / `storyById`; (b) `storyShortlist` ranks by the closest member (two stories, three items at `vectorAt(0)`, `vectorAt(30)`, `vectorAt(80)`; query at `vectorAt(25)` → the story holding the 30° item first) and excludes a story whose only member is older than the window; (c) `setItemStory` is read back by `storyOfItem`. Also extend `every column insertItem writes exists` if it enumerates columns.
 
-- [ ] **Step 5: Run** `npm test` (the fake-store completeness test must pass); if `bench/.env.bench` names a reachable bench database, run `TEST_DATABASE_URL=<bench url> node --test test/sql.test.js` after `node migrate.js` against it (`DATABASE_URL` = the bench url). Report which tiers ran.
+- [ ] **Step 5: Run** `npm test` (the fake-store completeness test must pass); if `research/bench/.env.bench` names a reachable bench database, run `TEST_DATABASE_URL=<bench url> node --test test/sql.test.js` after `node migrate.js` against it (`DATABASE_URL` = the bench url). Report which tiers ran.
 
 - [ ] **Step 6: Commit** — `Stories table and store functions: stories, items.story_id, shortlist by closest member`.
 
@@ -308,7 +308,7 @@ properties: {
 required: ["reasoning", "decision", "subject_role", "news_for_followers"],
 ```
 
-`buildPrompt` returns `{ system, user }`. `system` = `STORY_RULES(subject, confusables, fightWeekShape)`: the rules of today's prompt (WRONG_SUBJECT, NO_CLAIM/peer rules reworded as "new with no claim", the claim type guide, loud types, subject_role, news_for_followers with the examples, `P.sameFactGuide`) plus the story rules from `labels/measure-stories-llm.js` (join only for the SAME news; different remarks on different occasions are different stories; a story about a fight and a reaction to it are different; reaction when someone else responds; new otherwise) plus, when `fightWeekShape`, `P.fightWeekShape` from `domain/mma.js`:
+`buildPrompt` returns `{ system, user }`. `system` = `STORY_RULES(subject, confusables, fightWeekShape)`: the rules of today's prompt (WRONG_SUBJECT, NO_CLAIM/peer rules reworded as "new with no claim", the claim type guide, loud types, subject_role, news_for_followers with the examples, `P.sameFactGuide`) plus the story rules from `research/labels/measure-stories-llm.js` (join only for the SAME news; different remarks on different occasions are different stories; a story about a fight and a reaction to it are different; reaction when someone else responds; new otherwise) plus, when `fightWeekShape`, `P.fightWeekShape` from `domain/mma.js`:
 
 ```
 Around a fight, each angle is its own story, and a piece joins only the story that reports the same angle:
@@ -431,8 +431,8 @@ test("the fact is the root's origin claim text when it has one, else the root's 
 ```
 
 - [ ] **Step 2: Implement.** The script:
-  - reads `items` (id, subject, title, posted, nearest_item, story_id, seen_at) and the current label per item (the `DISTINCT ON` query from `labels/export-stories.js`: `wanted_bucket, reason, dup_of, author`), and `claim_sources` rows with role `origin`/`official` joined to `claims.canonical_text`;
-  - `planStories`: for items without `story_id`, in id order — labelled dups group under `dup_of` (resolve chains as `labels/story-gate.js rootOf`); every other item is a root; unlabelled held items with `nearest_item` whose root's story is planned or exists join it; fact = origin claim text of the root, else its title; `decidedBy: "backfill"`;
+  - reads `items` (id, subject, title, posted, nearest_item, story_id, seen_at) and the current label per item (the `DISTINCT ON` query from `research/labels/export-stories.js`: `wanted_bucket, reason, dup_of, author`), and `claim_sources` rows with role `origin`/`official` joined to `claims.canonical_text`;
+  - `planStories`: for items without `story_id`, in id order — labelled dups group under `dup_of` (resolve chains as `research/labels/story-gate.js rootOf`); every other item is a root; unlabelled held items with `nearest_item` whose root's story is planned or exists join it; fact = origin claim text of the root, else its title; `decidedBy: "backfill"`;
   - with `DRY_RUN=1` (default when the env var is absent — the script refuses to write unless `DRY_RUN=0`): prints `stories to create`, `members to place`, `skipped`, five sample stories;
   - otherwise, in one transaction: `insertStory` per story, `setItemStory` per member (`"new"` for roots, `"join"` for members); prints the counts written.
 
@@ -445,18 +445,18 @@ test("the fact is the root's origin claim text when it has one, else the root's 
 ### Task 5: The bench gate — the archive through the real decider
 
 **Files:**
-- Create: `bench/story.js`
-- Modify: `bench/README.md`
-- Modify: `labels/measure-stories-llm.js` (header note: superseded by `bench/story.js`; kept for the measured caches)
+- Create: `research/bench/story.js`
+- Modify: `research/bench/README.md`
+- Modify: `research/labels/measure-stories-llm.js` (header note: superseded by `research/bench/story.js`; kept for the measured caches)
 
 **Interfaces:**
-- Consumes: `lib/matcher.js` `matchItem`/`usageTotals`; `labels/story-gate.js` `cosine`, `storiesByArrival`; `tmp/labels/stories.json`, `bodies.json`, `vectors-body.json`.
+- Consumes: `lib/matcher.js` `matchItem`/`usageTotals`; `research/labels/story-gate.js` `cosine`, `storiesByArrival`; `tmp/labels/stories.json`, `bodies.json`, `vectors-body.json`.
 
-- [ ] **Step 1: Implement** `bench/story.js` as `labels/measure-stories-llm.js` with these changes: `loadBenchEnv()` then import `../lib/matcher.js`; the in-memory shortlist built the same way `storyShortlist` ranks (live = a member within 7 days, similarity = max over members); each decision is `matchItem({ subject, item: { ...pipeline shape, body }, stories: candidates.map(toShortlistRow), subjectNames: [subject surname], fightWeekShape })`; stories keyed by the root item id, offered ids = `String(root)`; `--no-shape` switches the block off; `--repeat K` runs the whole cascade K times with caches `tmp/labels/bench-story-<tag>-r<k>.json`, prints one table row per run and the spread; `--limit N`; the tokens/cost line from `usageTotals()` including cache reads. Exit the run with a `## gate` line: `held ≥ 307 and useful swallowed ≤ 9 and none of #490/#594/#598 joined to #474` → `PASS`/`FAIL` with the reasons.
+- [ ] **Step 1: Implement** `research/bench/story.js` as `research/labels/measure-stories-llm.js` with these changes: `loadBenchEnv()` then import `../lib/matcher.js`; the in-memory shortlist built the same way `storyShortlist` ranks (live = a member within 7 days, similarity = max over members); each decision is `matchItem({ subject, item: { ...pipeline shape, body }, stories: candidates.map(toShortlistRow), subjectNames: [subject surname], fightWeekShape })`; stories keyed by the root item id, offered ids = `String(root)`; `--no-shape` switches the block off; `--repeat K` runs the whole cascade K times with caches `tmp/labels/bench-story-<tag>-r<k>.json`, prints one table row per run and the spread; `--limit N`; the tokens/cost line from `usageTotals()` including cache reads. Exit the run with a `## gate` line: `held ≥ 307 and useful swallowed ≤ 9 and none of #490/#594/#598 joined to #474` → `PASS`/`FAIL` with the reasons.
 
 - [ ] **Step 2: README** — a section "The story gate" with the command, what it scores, the noise band (±4 held, ±3 swallowed), the budget rule.
 
-- [ ] **Step 3: Run once** (`node bench/story.js --mode body`) — about $1.85. Record the table, the gate line, the cache-read tokens (state whether caching engaged at all: Haiku's minimum cacheable prefix is larger than our system block, so it may not).
+- [ ] **Step 3: Run once** (`node research/bench/story.js --mode body`) — about $1.85. Record the table, the gate line, the cache-read tokens (state whether caching engaged at all: Haiku's minimum cacheable prefix is larger than our system block, so it may not).
 
 - [ ] **Step 4: Commit** — `Bench: the story gate — the archive through the real decider, scored against the labels`.
 
@@ -464,7 +464,7 @@ test("the fact is the root's origin claim text when it has one, else the root's 
 
 ### Task 6: Bucket regression and the record
 
-- [ ] **Step 1:** `node bench/run.js --step bucket --from corpus/graded-2026-09.json --split tune --repeat 3` — the bucket step passes `stories: []` (update `bench/steps.js` `matcher`/`bucket` to call `matchItem` with `stories` instead of `candidates`; keep the `candidatesFor` hook name as `storiesFor`). Compare with the standing 38/45, false loud claims 0. About $0.30.
+- [ ] **Step 1:** `node research/bench/run.js --step bucket --from research/corpus/graded-2026-09.json --split tune --repeat 3` — the bucket step passes `stories: []` (update `research/bench/steps.js` `matcher`/`bucket` to call `matchItem` with `stories` instead of `candidates`; keep the `candidatesFor` hook name as `storiesFor`). Compare with the standing 38/45, false loud claims 0. About $0.30.
 - [ ] **Step 2: Docs.** `docs/decisions.md#stories-as-objects` (what was chosen between, the measured numbers, the compatibility shape, the fallback gate, what the bench said today); `docs/architecture-overview.html` §3 (stories in the data model), §4 (the new stage order), §5 (the reshaped call); `TODO.md` 3f (BUILT on the branch, gate result), 3h (done by construction); `docs/story-matching-options.md` "Anton's decision" line; `docs/checkin-log.md` entry at the top with data / changes / proposals / next attention and the tokens spent.
 - [ ] **Step 3:** `npm test`; commit — `Stories as objects: decision record, architecture, TODO, check-in`.
 

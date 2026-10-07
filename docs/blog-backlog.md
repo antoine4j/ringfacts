@@ -76,7 +76,7 @@ Two themes, one tag each:
 - **What happened here.** Identical runs compared before any delta was read;
   changes accepted only on two agreeing runs (the classifier v7 tuning).
   Evidence: `docs/lessons.md` ("Measure the noise floor before reading any
-  delta"), `experiments/2026-10-03-classifier-v7/`.
+  delta"), `research/experiments/2026-10-03-classifier-v7/`.
 
 ## 4. One honest number: spending a test set exactly once
 *Added 2026-10-05 · status: idea · building AI applications · pairs with 2*

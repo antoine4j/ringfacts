@@ -17,9 +17,9 @@ const REPO = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 // Local, git-ignored files that hold article bodies.
 const BODY_SOURCES = [
   "golden/articles.json",
-  "corpus/graded-2026-09.json",
-  "corpus/holdout.json",
-  "corpus/tune.json",
+  "research/corpus/graded-2026-09.json",
+  "research/corpus/holdout.json",
+  "research/corpus/tune.json",
 ];
 
 // Keys under which a body can sit in those files.
@@ -119,12 +119,12 @@ function collectBodies(value, out = []) {
  * @returns {string[]}
  */
 function localBodies() {
-  const experiments = path.join(REPO, "experiments");
+  const experiments = path.join(REPO, "research", "experiments");
   const dataFiles = [];
 
   // Each experiment's git-ignored data/ folder.
   for (const name of existsSync(experiments) ? readdirSync(experiments) : []) {
-    const dataDir = path.join("experiments", name, "data");
+    const dataDir = path.join("research", "experiments", name, "data");
     if (!existsSync(path.join(REPO, dataDir))) continue;
     for (const file of readdirSync(path.join(REPO, dataDir))) {
       if (file.endsWith(".json")) dataFiles.push(path.join(dataDir, file));

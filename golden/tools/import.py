@@ -7,8 +7,8 @@ changes (a new field carried over); the source experiments must not change.
 import json, re, datetime, pathlib
 
 ROOT = pathlib.Path(__file__).resolve().parents[2]
-CLS = ROOT / "experiments/2026-09-17-role-questions"
-EXT = ROOT / "experiments/2026-09-20-claim-extraction"
+CLS = ROOT / "research/experiments/2026-09-17-role-questions"
+EXT = ROOT / "research/experiments/2026-09-20-claim-extraction"
 OUT = ROOT / "golden"
 load = lambda p: json.load(open(p))
 def dump(name, obj):
@@ -40,7 +40,7 @@ for c in v3["clusters"]:
     claims.append(row)
 dump("claims.json", {
     "built": datetime.date.today().isoformat(), "version": 3,
-    "source": "experiments/2026-09-20-claim-extraction/clusters.json (v3), keys renamed story-→claim-",
+    "source": "research/experiments/2026-09-20-claim-extraction/clusters.json (v3), keys renamed story-→claim-",
     "note": v3["note"], "method": v3["method"], "applied_rulings": v3["applied_rulings"],
     "low_confidence_rulings": v3["low_confidence_rulings"],
     "unresolved_conflicts": v3["unresolved_conflicts"], "claims": claims})
@@ -59,14 +59,14 @@ def answers_for(aid):
         out[q]["readers"] = [readers[n][aid][q].get("probabilities", {}) for n in READERS if aid in readers[n]]
     return out
 dump("answers/classifier.json", {
-    "source": "experiments/2026-09-17-role-questions/consensus-p16.json + buckets-final.json; per-reader probabilities from results-p16/17/18.json",
+    "source": "research/experiments/2026-09-17-role-questions/consensus-p16.json + buckets-final.json; per-reader probabilities from results-p16/17/18.json",
     "note": "Six questions, majority of three JEV readers over three option orders; bucket from buckets.py rules. `readers` = each reader's probability over every option.",
     "articles": {aid: {"bucket": buckets[aid], "answers": answers_for(aid)} for aid in consensus}})
 
 # --- answers/questions.json: the six questions as asked, every option's text -
 qs = load(CLS / "questions-p16.json")
 dump("answers/questions.json", {
-    "source": "experiments/2026-09-17-role-questions/questions-p16.json",
+    "source": "research/experiments/2026-09-17-role-questions/questions-p16.json",
     "questions": {q: {"instructions": d.get("instructions", ""), "options": d.get("criteria", {})} for q, d in qs.items()}})
 
 # --- answers/extractor.json: the candidate prompt's output (pass 4) ---------
@@ -87,7 +87,7 @@ def row(r):
     a["second_run"] = {k: b.get(k) for k in ("kind", "claim", "occasion", "actor", "opponent", "event", "date")}
     return a
 dump("answers/extractor.json", {
-    "source": "experiments/2026-09-20-claim-extraction/claims-p4.json (prompt-p4.md, the candidate prompt); second_run from claims-p5.json, a byte-identical replicate",
+    "source": "research/experiments/2026-09-20-claim-extraction/claims-p4.json (prompt-p4.md, the candidate prompt); second_run from claims-p5.json, a byte-identical replicate",
     "note": "Field `claim` is the one-sentence extract; golden calls it the extract, since a golden claim is a group of articles. `second_run` is the same prompt run again unchanged: where it differs, the model was unsure.",
     "fields": fields, "kind_options": kind_options,
     "articles": {str(r["id"]): row(r) for r in p4}})

@@ -1,5 +1,5 @@
 {
- "source": "experiments/2026-09-17-role-questions/questions-p16.json",
+ "source": "research/experiments/2026-09-17-role-questions/questions-p16.json",
  "questions": {
   "role": {
    "instructions": "What is the watched fighter in this article? Judge by what the article DOES with him, not by whether his name appears.",

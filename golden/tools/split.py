@@ -4,7 +4,7 @@
 
 By claim, never by article, so the articles of one story fall on one side
 (docs/golden-set.md, "The split"). The 38 claims whose key article the
-classifier questions were tuned on (experiments/2026-09-27-answer-key,
+classifier questions were tuned on (research/experiments/2026-09-27-answer-key,
 part "tune") are forced to tune. The other 90 claims are drawn with a fixed
 seed, balanced by fighter and by the claim's fact (the Fable readers'
 majority, golden/answers/readers-v1.json): about 100 articles to test, the
@@ -16,7 +16,7 @@ import json, os, random, collections
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 GOLDEN = os.path.join(HERE, "..")
-KEY = os.path.join(GOLDEN, "../experiments/2026-09-27-answer-key/key-articles.json")
+KEY = os.path.join(GOLDEN, "../research/experiments/2026-09-27-answer-key/key-articles.json")
 SEED = 20261001
 TEST_ARTICLES = 100
 

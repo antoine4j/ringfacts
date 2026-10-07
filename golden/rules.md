@@ -3,7 +3,7 @@
 The rules Anton has decided for labelling the golden set, each under a
 plain name with its full description. This is the index: one place to see
 what is in force. The exact wording the readers get is in the labelling
-guide (experiments/2026-09-27-answer-key/key-guide.md); the day each rule
+guide (research/experiments/2026-09-27-answer-key/key-guide.md); the day each rule
 was decided, with Anton's words, is in [verdicts.md](verdicts.md); rules
 not yet decided are in [rule-backlog.md](rule-backlog.md).
 

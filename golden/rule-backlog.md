@@ -4,7 +4,7 @@ The working list for the next rounds of labelling and prompting: proposed
 rules for labelling and for the classifier that Anton has not decided yet,
 with the notes from the reviews that raised them. Nothing here is applied. When he rules on one, it moves out:
 an adopted rule goes into the labelling guide
-(experiments/2026-09-27-answer-key/key-guide.md), golden/axes.md and, for
+(research/experiments/2026-09-27-answer-key/key-guide.md), golden/axes.md and, for
 the classifier, its questions or its composing script; his words go to
 verdicts.md. A rejected rule is deleted here with one line in verdicts.md.
 
@@ -127,7 +127,7 @@ items.
 *Labelling: ADOPTED into the guide 2026-10-02, after Anton reviewed the
 wording side by side and a blind reader pilot on all 300 (21 articles
 where both readers give the same new answer, 16 of them intended;
-experiments/2026-09-27-answer-key/status-pilot/). Name: status update.
+research/experiments/2026-09-27-answer-key/status-pilot/). Name: status update.
 Health wins over a return date in the same statement; a wish is no fact
 whoever makes it. Classifier: not yet, by his choice; the classifier
 wording is drafted in wording-proposal.json for v7. What follows is the
@@ -196,7 +196,7 @@ once the wording is settled.
 ## Candidate rules from the overnight briefs (2026-10-02, not decided)
 
 Eight briefs, one per boundary of the readers' disagreements
-(experiments/2026-09-27-answer-key/overnight/briefs/out-<group>.json;
+(research/experiments/2026-09-27-answer-key/overnight/briefs/out-<group>.json;
 shown on the correction page above each group). Each offers 2–3 rules
 formed from tune/check articles only, with the answer every rule gives
 per article. The recommended ones, with the disputed majorities each
