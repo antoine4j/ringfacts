@@ -1,172 +1,169 @@
 # RingFacts
 
-> **Status, 6 October 2026.** Two bots run side by side. Production, which this
-> page describes, has posted hourly since August from the files at the top of
-> this repository. Its successor, [v0](v0/README.md), runs beside it with its own
-> database and its own test chat, and is the design going forward. Production
-> retires once v0 fetches its own articles.
+> **Status, 6 October 2026.** Two bots run side by side. Production has
+> posted hourly since August, from the files at the top of this repository.
+> Its successor, [v0](v0/README.md), runs beside it with its own database and
+> its own test chat, and is the design going forward. Production retires once
+> v0 fetches its own articles. This page describes both; the two published
+> walkthroughs describe production.
 
 I follow a few athletes, and keeping up meant opening an app built to keep me
 scrolling. I didn't want to go where the news is — I wanted the news to come to
 me. Only the parts that matter, gathered from all the coverage, in the chat I
 already have with my friends.
 
-That is what this is. It watches a small list of people, works out which
-stories are actually *about* them, tracks each claim from rumour to
-confirmation, and posts the result to a private Telegram group — dropping the
-near-duplicate re-posts, the wrong-subject stories, and the articles that only
-mention someone in passing.
+That is what this is. It watches a small list of people (three MMA fighters,
+the [watchlist](watchlist.js)), works out which articles are actually *about*
+them and what new fact each one reports, groups the articles that report the
+same thing, and posts the result to a Telegram group: the important news at
+once, the rest in a digest, and nothing for the near-duplicates, the
+wrong-subject stories and the passing mentions.
 
-It ships configured for combat sports (MMA), which is what it runs as in
-production: an hourly Cloud Run Job on GCP with Neon Postgres + pgvector for
-memory, both inside free tiers, plus two LLM providers doing different jobs —
-Claude Haiku 4.5 makes the judgment call (the story decider), Gemini does the
-mechanical ones (`gemini-embedding-001` for the embeddings,
-`gemini-flash-lite-latest` for headline translation). LLM spend is the one
-real cost.
+This is a learning project as much as a working bot, made by directing Claude
+Code and using it as a design partner. The commit history,
+[docs/decisions.md](docs/decisions.md) and [TODO.md](TODO.md) are kept
+deliberately verbose about *why* each decision was made, including the ones
+that were measured and then rejected. Where this file and the code disagree,
+the code is right.
 
-**On this document and the running system.** Deploys here are manual and
-deliberate, so `main` is routinely ahead of what is live. This file describes
-the code on `main`; where the two differ, the difference is a pending deploy
-rather than a description of behaviour you would observe in the group.
+## What it does
 
-Renamed from *FighterBot* on 2026-08-10 — the commit history and the deployed
-GCP resource names (`fighterbot`, `fighterbot-hunter`) still carry the old
-name; see the note in [setup.sh](setup.sh) for why the resources keep it.
+The group should hear about every real career event for the watched fighters
+(a result, a next fight, a health problem), hear nothing else, hear each one
+once, and see "confirmed" only when an official source said it. Those four
+goals, G1 to G4, are in [docs/goals.md](docs/goals.md) with how each is
+measured. Silence when there is no news is correct; none of the goals is met
+by posting more.
 
-This is a learning project as much as a working bot. The commit history and
-[TODO.md](TODO.md) are kept deliberately verbose about *why* decisions were
-made — including the ones that were measured and then rejected.
+The unit is a **claim**: one occasion, one piece of news, with every article
+that reports it. Nine outlets writing up the same press conference are nine
+articles and one claim. A fight recap and the booking it settles are two claims
+that share every name in them. Similarity alone cannot tell those apart, which
+is why a model is asked.
 
-This project is being created by directing Claude Code and using it as a
-design partner. It is in flux: where this file and the code disagree, the code
-is right.
+## How it works
 
-## The unit: a story
+### v0, the design going forward
 
-A **story** is one piece of news — one statement, one event, on one day — and
-every article reporting it points at the same row. It is the unit of "the group
-has already seen this", and it is what the hourly run is really deciding about:
-not *is this article a duplicate of that article*, but *is this article the
-story we are already telling*.
+v0 is a pipeline of numbered stations, one function each, drawn first on a
+whiteboard ([docs/design/system.excalidraw](docs/design/system.excalidraw)).
+Every decision behind it is in the
+[v0 design](docs/superpowers/specs/2026-10-04-v0-design.md).
 
-That matters because the two questions have different answers. Nine outlets
-writing up the same press conference are nine articles and one story. A fight
-recap and the booking it settles are two stories that share every name in them.
-Similarity cannot tell those apart; the decider is asked to.
+| # | Station | What it does | Model |
+|---|---|---|---|
+| 1–3 | RSS reader, URL dedup, body extractor | Find each fighter's articles, drop links already seen, fetch the article text | production's, reused for now |
+| 4 | Classifier | Answers nine questions about the article: how central the fighter is, whose words these are, what new fact it reports, how firm that fact is, and five more | JEV `jev-1.13.0`, a hosted model for fixed-choice questions |
+| 5 | Claim extractor | Writes the article's news as one sentence with its details | Qwen3.8 Flash, on OpenRouter |
+| 6 | Semantic dedup | Joins the article to an existing claim or starts a new one: embeds it, shortlists the fighter's recent claims, asks JEV to pick | `gemini-embedding-001`, then JEV |
+| 7 | Decider | Looks the nine answers up in the settings: tier 1 posts now, tier 2 waits for the digest, tier 3 is dropped | none |
+| 8 | Digest writer | One digest per fighter, weekly to start, from the period's claims | DeepSeek V4 Pro, on OpenRouter |
+| 9 | Telegram and storyboard | Posts tier 1 and the digests; a private web app shows every reading and takes review marks | none |
 
-## What a run does
+It runs as its own Cloud Run job, hourly at :47, with its own Postgres
+database (Neon, with pgvector) and its own test chat. Each reading moves
+through the stations one stage at a time and keeps every answer; the database
+refuses to overwrite or delete one. A reading that fails stays where it is
+and is tried again next hour.
 
-Every hour, the hunter:
+v0 still takes its articles from production's table. Fetching feeds and
+bodies itself is the next large piece of work, and production retires after
+it (TODO.md, item 5).
 
-1. **Fetches** Google News RSS per subject (with multi-language name aliases)
-   plus a set of direct publisher feeds, `HOURS_BACK=24` of freshness, first
-   sighting winning within a run.
-2. **Drops** anything already seen, by URL or by resolved URL after unwrapping
-   Google's redirect links.
-3. **Reads the article**, before deciding anything about it: decodes the
-   wrapped URL, catches the same address arriving under a second wrapper, and
-   extracts the body through a zero-dependency ladder (feed content → JSON-LD →
-   article tag → paragraphs → og:description), recording which rung produced
-   it. This runs ahead of the dedup decision rather than after it, which is the
-   order it was in before 2026-09-06 — the decider reads the article, so the
-   article has to exist first.
-4. **Embeds** the headline plus the first 1500 characters of the body, one
-   batch call. The nearest already-posted neighbour is recorded for every item,
-   posted or held, but it is audit data: on its own it now decides nothing.
-5. **Asks the decider** — one forced Haiku tool call — which of this subject's
-   recent stories this article is. It sees a shortlist of the 3 closest stories
-   from the last 7 days, ranked by embedding distance, and answers `join` (a
-   repeat of one of them, held), `new` (news no listed story has), `reaction`
-   (someone answering a listed story — its own news, linked to that one), or
-   `wrong_subject`. The same call reports how prominently the subject figures
-   in the article's own text (`central` / `supporting` / `passing`) and whether
-   a follower would learn anything from it.
-6. **Falls back to the threshold** only when the decider is unavailable or
-   answers UNSURE: pgvector cosine similarity at ≥ 0.85 holds the article as a
-   near-duplicate. This was the main gate until 2026-09-06 and is now the net
-   under a decider outage — a matcher error must not turn every echo into a
-   second post.
-7. **Posts**, threading follow-ups under the story they answer. A new story can
-   mint a claim, born `rumor` unless the source is official. Merely tangential
-   articles — the athlete named in passing in someone else's story — never ride
-   the hourly message. Demotion is decided by the decider's prominence verdict
-   first, then by a mention-count rule measured on the live archive.
+### Production, running today
 
-**The mentions digest is built but not scheduled.** Tangential articles are
-written to the archive with `held_reason = 'tangential'` and the
-`fighterbot-mentions` job exists to collect them, but no Cloud Scheduler entry
-fires it (Anton, 2026-09-04). In production today those articles are recorded
-and never shown — dropped, in effect, not queued. Turning them on is one
-scheduler entry; nobody has decided they are wanted.
+The bot the group reads. Every hour, per fighter, it:
 
-Nothing that fails takes the run down, and nothing is lost from the archive —
-but the fallbacks are more cautious than what they replace, so "fails open"
-would overstate it. If the decider errors or is unsure, the old similarity
-threshold stands in and can hold an article the decider might have posted. A
-decider outage costs coverage rather than spilling repeats, which is the right
-way round for a group of three people.
+1. **Fetches** Google News RSS (with the fighter's name in several languages)
+   and six direct publisher feeds, 24 hours back.
+2. **Drops** links already seen, under either of an article's two addresses
+   (the feed's link and the one it resolves to).
+3. **Reads the article** through a zero-dependency extraction ladder (feed
+   content, JSON-LD, article tag, paragraphs, og:description), recording
+   which rung produced the text. Failure leaves the item headline-only.
+4. **Embeds** the headline and the first 1,500 characters of the body
+   (`gemini-embedding-001`).
+5. **Asks a decider** (Claude Haiku 4.5, one forced tool call) which of the
+   fighter's three closest stories of the last 7 days this article is:
+   `join`, `new`, `reaction` or `wrong_subject`, plus how prominent the
+   fighter is in it.
+6. **Falls back to a similarity threshold** (cosine 0.85) only when the
+   decider errors or is unsure, so an outage holds articles rather than
+   posting repeats.
+7. **Posts** what is new, threading follow-ups under the story they answer.
+   Articles that only mention the fighter in passing are kept in the archive
+   and not posted.
 
-Everything else degrades openly. No embeddings drops to URL-only dedup and the
-story shortlist falls back to recency. Body extraction is a bonus; failure
-leaves the item headline-only. A failed Telegram send walks its rows back to
-unposted and a later run picks them up. The one fatal condition is a
-configured-but-unreachable database — posting without memory would re-spam the
-group every hour.
+The one fatal condition is a database that is configured but unreachable:
+posting without memory would re-send everything every hour. Two published
+pages walk through it with real articles:
+**[The Funnel](https://antoine4j.github.io/ringfacts/funnel-walkthrough.html)**
+([source](docs/funnel-walkthrough.html)) and the
+**[Architecture Overview](https://antoine4j.github.io/ringfacts/architecture-overview.html)**
+([source](docs/architecture-overview.html)).
 
-## Two kinds of configuration
+### Two kinds of configuration
 
-The pipeline above knows nothing about MMA. Two things do, and they are
-deliberately separate:
+The pipeline knows nothing about MMA. Two things do, kept apart on purpose.
+**The domain** ([`domain/`](domain/README.md)) is *what kind of thing* is
+tracked: which outlets to read, whose word counts as official, the claim
+vocabulary. [`domain/example-music.js`](domain/example-music.js) is a second
+one, written to prove the seam is real and labelled as never run.
+**The watchlist** ([`watchlist.js`](watchlist.js)) is *who* is tracked, with
+search aliases per language and the namesakes to watch out for;
+[`watchlist.example.js`](watchlist.example.js) documents the shape for anyone
+starting their own.
 
-**The domain** ([`domain/`](domain/README.md)) is *what kind of thing* is being
-tracked: which outlets to read, whose word counts as authoritative, the claim
-vocabulary, and the nouns spliced into the matcher prompt. `DOMAIN=mma` is the
-default. [`domain/example-music.js`](domain/example-music.js) is a second one,
-written to prove the seam is real — it is clearly labelled as never having been
-run, with unverified feeds and unmeasured thresholds.
+## How it is measured
 
-**The watchlist** ([`watchlist.js`](watchlist.js)) is *who* is tracked — the
-real one this bot runs on, three athletes, checked in. It carries the search
-aliases per language edition and the per-subject `confusables` hints that tell
-the matcher which namesakes and relatives to watch out for.
+Every station is scored against one labelled set, the **golden set**
+([docs/golden-set.md](docs/golden-set.md)): 300 articles from 31 July to
+17 September 2026, grouped into 128 claims, with Anton's rulings. It is split
+once, before any scoring, into a training set (155 articles), a validation
+set (40) and a test set (105). Prompts are tuned on the first two; the test
+set is scored once per version, so its score is not flattered by tuning.
 
-It was briefly gitignored, on the theory that the machinery was the interesting
-part and the list was private. That turned out to be a fiction: the walkthroughs
-below quote real headlines about these people, and a repo that hides the list
-while showing the coverage is only pretending. Everything is public and
-consistent instead. [`watchlist.example.js`](watchlist.example.js) documents the
-shape for anyone starting their own.
+The numbers so far, each with its date and how it was measured:
 
-## Design notes worth reading
+| What | Result | When and how |
+|---|---|---|
+| Classifier v7.7, all nine answers right | **40 of 105 test articles (38%**, 95% interval 29–48%); 96 of 155 training (62%), 20 of 40 validation (50%) | 2026-10-05, test set scored once; [research/experiments/2026-10-03-classifier-v7](research/experiments/2026-10-03-classifier-v7/README.md) |
+| Classifier v7.7, the goals' pass marks on the test set | G1: 7 of 9 career-event stories caught (**fails**); G4: 0 rumours called official (**passes**); G2: 5 of 90 articles with no career event called one, 5.6% against a 5% mark (**fails** by under one article) | 2026-10-05; the marks are in [docs/decisions.md](docs/decisions.md#classifier-pass-marks) |
+| Semantic dedup, right claim in the shortlist of 5 | **97.6%** of 42 joins on the test set; 98.5% of 130 on training and validation | 2026-10-05, run once; [research/experiments/2026-09-20-claim-extraction](research/experiments/2026-09-20-claim-extraction/README.md) |
+| Claim sentence as a grouping signal | No gain confirmed on the test set: separation 0.942 with the sentence against 0.950 with headline and lead alone (AUC), a gap smaller than the error | same run |
+| Articles v0 cannot read for lack of text | 72% of Amosov's, 42% of Donchenko's | 2026-10-05, over the archive; [research/experiments/2026-10-05-body-fetch-spike](research/experiments/2026-10-05-body-fetch-spike/README.md) |
+| v0 live | 36 articles read since going live, none tier 1 yet | 2026-10-06, [check-in log](docs/checkin-log.md) |
 
-The interesting parts aren't the plumbing, they're the judgment calls:
+The failing pass marks are reported as they are: the classifier was fitted
+to the training set, and 9 career-event stories make a small test. A precision
+scoreboard, planned next (TODO.md, item 2), will put live rates from Anton's
+reactions beside these; what [docs/lessons.md](docs/lessons.md) records is
+what the experiments taught.
 
-- **[The Funnel](https://antoine4j.github.io/ringfacts/funnel-walkthrough.html)**
-  ([source](docs/funnel-walkthrough.html)) — start here: real articles from the
-  live archive followed through every stage of the funnel, discovery to claim,
-  with the verdicts production actually recorded — including the ones that were
-  wrong.
-- **[Architecture Overview](https://antoine4j.github.io/ringfacts/architecture-overview.html)**
-  ([source](docs/architecture-overview.html)) — the system as actually built:
-  pipeline, claims layer, ops, autonomy.
-- **[lib/tier.js](lib/tier.js)** — thresholds measured against real archived
-  data rather than guessed, with the two rejected alternatives documented so
-  they don't get reintroduced.
-- **[docs/self-improvement.md](docs/self-improvement.md)** — how scheduled
-  check-in runs are allowed to decide things.
-- **[docs/sandboxed-autonomy.md](docs/sandboxed-autonomy.md)** — the parked
-  design for letting those runs go fully unattended: scope the credentials so
-  that even a fully prompt-injected run is harmless. Written down,
-  deliberately not built yet.
-- **[TODO.md](TODO.md)** — the build sequence as it actually unfolded,
-  measured decisions and rejected alternatives included, plus the open
-  question that challenges the project's own framing.
+## How to run it
 
-## Running it
+**Tests**, offline and without credentials:
 
-Requires Node 22+ (uses `--env-file-if-exists`), a GCP project, a Neon Postgres
-database, and a Telegram bot token.
+```bash
+npm test                            # production: 548 tests, about a second
+npm install --prefix v0 && npm test --prefix v0   # v0: 51 + 58 tests
+git config core.hooksPath .githooks # once per clone: run both before each commit
+```
+
+A third tier, `npm run test:sql`, checks production's real queries against a
+Neon *branch* (`TEST_DATABASE_URL`), never the main database: pgvector's
+arithmetic and the schema, which a fake cannot check. The
+[test-suite design](docs/superpowers/specs/2026-08-09-test-suite-design.md)
+says why the tiers are split by what they need.
+
+The hook also runs `scripts/article-text-guard.js`, which refuses a commit
+that would copy other outlets' article text into this repository
+([why](docs/decisions.md#article-text-out-of-git)). The models are
+deliberately not asserted in tests: they return different answers for the
+same input, so they are measured in experiments, as above.
+
+**Production** needs Node 22+, a GCP project, a Neon Postgres database and a
+Telegram bot token:
 
 ```bash
 npm ci
@@ -175,60 +172,36 @@ cp watchlist.example.js watchlist.js    # replaces the shipped watchlist with yo
 npm run dev
 ```
 
-Deployment lives entirely in [setup.sh](setup.sh) — a rerunnable record of every
-CLI call that provisions the stack (Cloud Run service + job, Secret Manager,
-Cloud Scheduler, IAM, the Telegram webhook). It requires a handful of
-environment variables identifying *your* project and chats:
+Deployment lives in [setup.sh](setup.sh), a rerunnable record of every call
+that provisions the stack (Cloud Run service and job, Secret Manager, Cloud
+Scheduler, IAM, the Telegram webhook). Any unset variable aborts it rather
+than half-deploying:
 
 ```bash
 PROJECT_ID=... NEON_PROJECT_ID=... ./setup.sh
 ```
 
-Any unset variable aborts the script rather than half-deploying.
+**v0** has its own setup, run and measurement commands in
+[v0/README.md](v0/README.md), and its own deploy script, `v0/setup-v0.sh`,
+separate on purpose: running `setup.sh` redeploys production.
 
-The first run additionally needs `TELEGRAM_CHAT_ID` and `ADMIN_CHAT_ID`, used
-once to seed the `ringfacts-config` secret. After that no deploy reads them
-again: both surfaces receive every value by *reference* to Secret Manager, and
-`setup.sh` refuses to finish if either one is left carrying a literal value.
-That is not tidiness — a deploy that carries a value can corrupt it, and on
-2026-08-09/10 two did, costing twenty hours of silent non-delivery.
+**The experiments and the bench** are in [research/](research/README.md).
+Article text stays on the maintainer's machine, so the experiments' scripts
+and results are here but their inputs are not.
 
-Note that [.gcloudignore](.gcloudignore) exists so gcloud does not derive its
-upload rules from `.gitignore`. It mattered acutely when the watchlist was
-gitignored — the deploy succeeded and the container died at startup — and it
-still guards every other ignored file that production needs.
+**Further reading.** [docs/self-improvement.md](docs/self-improvement.md),
+how scheduled check-in sessions are allowed to decide things;
+[docs/sandboxed-autonomy.md](docs/sandboxed-autonomy.md), the parked design
+for letting them run fully unattended with credentials scoped so that even a
+prompt-injected run is harmless; [lib/tier.js](lib/tier.js), thresholds
+measured on archived data with the rejected alternatives written down;
+[docs/blog-backlog.md](docs/blog-backlog.md), problems from this project
+that apply to building with AI generally.
 
-## Tests
-
-```bash
-npm test                            # offline, no credentials, ~0.4s
-git config core.hooksPath .githooks # once per clone: run them before each commit
-```
-
-Three tiers, split by what they need rather than by what they're called — see
-[the test-suite overview](https://antoine4j.github.io/ringfacts/test-suite-overview.html) for the tour and
-[the design note](docs/superpowers/specs/2026-08-09-test-suite-design.md) for why.
-
-| Tier | Needs | Covers |
-|---|---|---|
-| Unit + fixture | nothing | the pure functions: name filtering, verdict validation, the extraction ladder, the tier rule |
-| Pipeline | nothing | the wiring: the story decider and the threshold fallback under it, the digest tier, claim lifecycle, and every fail-open path |
-| SQL | `TEST_DATABASE_URL` | what a fake can't check: pgvector's arithmetic, dual-identity lookups, schema agreement |
-
-The first two run on every commit, which is the whole point — commits here come
-from scheduled check-in sessions as well as from a person at a keyboard, so the
-gate cannot depend on anyone remembering to run it. The SQL tier is opt-in and
-expects a Neon
-*branch*, never `main`:
-
-```bash
-TEST_DATABASE_URL=$(neonctl connection-string test --project-id <id>) npm run test:sql
-```
-
-The decider is deliberately **not** asserted anywhere: it is an LLM call
-that returns different verdicts for identical input. Stubbing it everywhere is
-what keeps the suite trustworthy; measuring it belongs in a separate eval scored
-as a pass rate, not a pass/fail test.
+Renamed from *FighterBot* on 2026-08-10; the deployed GCP resource names
+(`fighterbot`, `fighterbot-hunter`) still carry the old name (see
+[setup.sh](setup.sh)). Deploys are manual, so `main` can be ahead of what
+runs.
 
 ## Scope, and what this isn't
 
@@ -240,19 +213,19 @@ reading what the press has already printed about someone.
 ## On secrets
 
 No credentials live in this repository, and none ever have. The bot token, API
-keys, and database connection string are stored in GCP Secret Manager and
-fetched at the moment they're needed:
+keys and database connection string are in GCP Secret Manager and fetched at
+the moment they're needed:
 
 ```bash
 DATABASE_URL=$(gcloud secrets versions access latest --secret=ringfacts-config | jq -r .DATABASE_URL) node hunter.js
 ```
 
-Values are piped straight into the command and never written to disk or echoed.
-All of production's values sit in that one secret, `ringfacts-config`, which
-Cloud Run hands to the code whole and [lib/config.js](lib/config.js) unpacks at
-start: Secret Manager's free tier holds six secret versions, and one per value
-had filled it ([why](docs/decisions.md#one-config-secret)).
-The `.env` file holds only non-secret identifiers (chat IDs), and is gitignored.
+Values are piped straight into the command and never written to disk or
+echoed. Each bot keeps all of its values in one secret (`ringfacts-config`,
+`v0-config`), because Secret Manager's free tier holds six secret versions
+([why](docs/decisions.md#one-config-secret)). Deploys pass every value by
+reference, never as a literal: on 2026-08-09/10 two deploys that carried
+values corrupted them and cost twenty hours of silent non-delivery.
 
 ## License
 
