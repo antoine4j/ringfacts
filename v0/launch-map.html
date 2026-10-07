@@ -1,0 +1,472 @@
+<meta charset="utf-8">
+<title>Launch Map</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@500&display=swap">
+<style>
+/* Layout: the stations as side-by-side columns that scroll sideways (one at a time on a phone),
+   ranked themes above them that light up their tasks across columns, the backlog flat below.
+   Tokens and faces are the history page's (golden/plan.html), so the two read as one set. */
+:root{
+  --ground:#F3F4F6; --panel:#FFFFFF; --ink:#1A1E27; --dim:#5E6573; --line:#DCDFE5;
+  --accent:#2B55C9; --accentbg:#E7EDFB;
+  --done:#2E7D4F; --donebg:#E3F2E8;
+  --decide:#B25E00; --decidebg:#FCEFD9;
+  --label:#6A3FB5; --labelbg:#EFE8FA;
+  --later:#7A808C; --laterbg:#ECEEF1;
+  --red:#C8372D;
+  --display:"Barlow Condensed","Arial Narrow",system-ui,sans-serif;
+  --body:"IBM Plex Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,Menlo,monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  color-scheme:dark;
+  --ground:#12151B; --panel:#1B1F27; --ink:#E7E9EE; --dim:#9AA1AE; --line:#2C323D;
+  --accent:#7C9BF0; --accentbg:#1E2A47;
+  --done:#6CC48E; --donebg:#17301F;
+  --decide:#F0A54A; --decidebg:#3A2A12;
+  --label:#B596EC; --labelbg:#2B2140;
+  --later:#8C929E; --laterbg:#232833;
+  --red:#E4675E;
+}}
+:root[data-theme="dark"]{
+  color-scheme:dark;
+  --ground:#12151B; --panel:#1B1F27; --ink:#E7E9EE; --dim:#9AA1AE; --line:#2C323D;
+  --accent:#7C9BF0; --accentbg:#1E2A47;
+  --done:#6CC48E; --donebg:#17301F;
+  --decide:#F0A54A; --decidebg:#3A2A12;
+  --label:#B596EC; --labelbg:#2B2140;
+  --later:#8C929E; --laterbg:#232833;
+  --red:#E4675E;
+}
+body{background:var(--ground);color:var(--ink);font:15px/1.5 var(--body);padding-inline:16px;padding-block:20px 48px}
+.wrap{max-width:1440px;margin:0 auto;display:grid;gap:28px;min-width:0}
+.wrap > *{min-width:0}
+h1,h2,h3{font-family:var(--display);font-weight:700;letter-spacing:.01em;text-wrap:balance;margin:0}
+h1{font-size:40px;line-height:1}
+h2{font-size:24px;text-transform:uppercase;letter-spacing:.06em;color:var(--dim)}
+.top{display:flex;flex-wrap:wrap;gap:12px;align-items:center;justify-content:space-between}
+.theme{display:inline-flex;border:1px solid var(--line);border-radius:999px;overflow:hidden;background:var(--panel)}
+.theme button{font:500 13px var(--body);border:0;background:transparent;color:var(--dim);padding:6px 12px;cursor:pointer}
+.theme button[aria-pressed="true"]{background:var(--ink);color:var(--ground)}
+.theme button:focus-visible{outline:2px solid var(--accent);outline-offset:-2px}
+.lede{color:var(--dim);max-width:75ch;margin:6px 0 0}
+.stats{display:flex;flex-wrap:wrap;gap:8px 20px;margin-top:10px;font-variant-numeric:tabular-nums;color:var(--dim);font-size:14px}
+.stats b{color:var(--ink);font-weight:600}
+section{display:grid;gap:12px}
+code{font-family:var(--mono);font-size:.9em}
+a{color:var(--accent)}
+
+/* the two finish lines */
+.lines{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:12px}
+.line{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:14px 16px;display:grid;gap:6px;align-content:start}
+.line h3{font-size:22px}
+.line .tag{font:600 12px var(--mono);color:var(--dim)}
+.line p{margin:0;max-width:70ch}
+.line ul{margin:0;padding-left:20px;display:grid;gap:2px}
+.line.launch{border:2px solid var(--accent)}
+.line.launch h3{color:var(--accent)}
+
+/* themes: ranked, so numbered; a theme is a list of task ids */
+.themes{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:8px;list-style:none;margin:0;padding:0}
+.themes li{background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:10px 12px;display:grid;grid-template-columns:2em 1fr;gap:2px 8px;align-content:start;cursor:pointer}
+.themes li:hover{border-color:var(--accent)}
+.themes li:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.themes li[aria-pressed="true"]{border:2px solid var(--accent);padding:9px 11px;background:var(--accentbg)}
+.themes li.unranked{border-style:dashed}
+.themes .rk{grid-row:span 4;font-family:var(--display);font-size:30px;line-height:1;color:var(--red)}
+.themes li.unranked .rk{color:var(--dim)}
+.themes .t{font-weight:600;line-height:1.3}
+.themes .imp{font-size:12.5px;color:var(--dim)}
+.themes .imp b{font-weight:600;color:var(--ink)}
+.themes .cnt{font:500 12px var(--mono);color:var(--done);line-height:1.4}
+.themes .cnt .bl{color:var(--decide)}
+.themes .cnt .none{color:var(--dim)}
+.themes .note{grid-column:2;font-size:13px;color:var(--dim);line-height:1.35}
+.hlnote{position:sticky;top:calc(env(safe-area-inset-top, 0px) + 8px);z-index:3;margin:0;justify-self:start;background:var(--accent);color:var(--panel);border-radius:999px;padding:6px 8px 6px 14px;font-size:14px;display:flex;gap:10px;align-items:center}
+.hlnote button{font:500 13px var(--body);border:0;border-radius:999px;background:var(--panel);color:var(--accent);padding:4px 10px;cursor:pointer;white-space:nowrap}
+
+/* the station rail: jump to a column; during a highlight it shows where the tasks are */
+.rail{display:flex;flex-wrap:wrap;gap:6px}
+.rail button{font:500 12.5px var(--body);border:1px solid var(--line);background:var(--panel);color:var(--ink);border-radius:6px;padding:4px 9px;cursor:pointer;display:inline-flex;gap:6px;align-items:baseline}
+.rail button b{font:700 15px var(--display);color:var(--red)}
+.rail button .c{font:500 11.5px var(--mono);color:var(--dim)}
+.rail button:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.highlighting .rail button{opacity:.4}
+.highlighting .rail button.on{opacity:1;border-color:var(--accent);background:var(--accentbg)}
+
+/* the board */
+.board{display:flex;gap:12px;overflow-x:auto;scroll-snap-type:x proximity;padding:2px 2px 14px;overscroll-behavior-x:contain;scroll-padding-inline:2px}
+.col{flex:0 0 310px;scroll-snap-align:start;background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:12px 14px;display:grid;gap:10px;align-content:start}
+.col.quiet{flex-basis:220px;background:transparent;border-style:dashed}
+@media (max-width:640px){.board{scroll-snap-type:x mandatory}.col,.col.quiet{flex-basis:84vw}}
+.col header{display:grid;grid-template-columns:auto 1fr;gap:4px 10px;align-items:baseline}
+.col .num{font-family:var(--display);font-size:28px;line-height:1;color:var(--red)}
+.col h3{font-size:22px;line-height:1.05}
+.col .role{grid-column:1 / -1;font-size:13px;color:var(--dim);line-height:1.35}
+.col .count{grid-column:1 / -1;font:500 12px var(--mono);color:var(--dim);font-variant-numeric:tabular-nums}
+.col .empty{font-size:13.5px;color:var(--dim);margin:0}
+.highlighting .col.dim{opacity:.45}
+@media (prefers-reduced-motion:no-preference){.col,.rail button{transition:opacity .15s}}
+
+/* tasks, on the board and in the backlog */
+ul.items{list-style:none;margin:0;padding:0;display:grid;gap:6px}
+ul.items li{font-size:14px;line-height:1.4}
+ul.items summary{display:grid;grid-template-columns:3em minmax(0,1fr) 1em;gap:2px 8px;align-items:baseline;cursor:pointer;list-style:none;padding:4px 0}
+ul.items summary::-webkit-details-marker{display:none}
+ul.items summary::after{content:"+";color:var(--dim);font-family:var(--mono);text-align:right;grid-column:3;grid-row:1}
+ul.items details[open] summary::after{content:"−"}
+ul.items summary:focus-visible{outline:2px solid var(--accent);outline-offset:2px;border-radius:4px}
+ul.items .txt{grid-column:2}
+ul.items .meta{grid-column:2;min-width:0;display:flex;flex-wrap:wrap;gap:4px;align-items:center}
+.id{font-family:var(--mono);font-size:12.5px;color:var(--dim)}
+.pill{font-size:10.5px;font-weight:600;letter-spacing:.05em;text-transform:uppercase;padding:1px 6px;border-radius:4px;white-space:nowrap}
+.pill.done{background:var(--done);color:var(--panel)}
+.pill.call{background:var(--decide);color:var(--panel)}
+.pill.todo{background:var(--panel);color:var(--ink);border:1px solid var(--line)}
+.pill.waits{background:var(--laterbg);color:var(--later)}
+.chip{font-size:11.5px;color:var(--accent);background:var(--accentbg);border-radius:4px;padding:1px 6px;white-space:nowrap}
+.chip.st{color:var(--ink);background:var(--laterbg)}
+.chip.st b{font-family:var(--mono);font-weight:500;color:var(--red)}
+.chip.cand{color:var(--decide);background:var(--decidebg);font-weight:600;white-space:normal}
+.chip.retire{color:var(--later);background:var(--laterbg);font-style:italic}
+li.is-done .txt{color:var(--dim)}
+.why{margin:4px 0 8px;padding:10px 12px;background:var(--ground);border-radius:6px;display:grid;gap:8px}
+.why p{margin:0}
+.why dl{margin:0;display:grid;grid-template-columns:9em 1fr;gap:6px 10px}
+@media (max-width:480px){.why dl{grid-template-columns:1fr}.why dd{margin-bottom:4px}}
+.why dt{font-size:11.5px;font-weight:600;letter-spacing:.05em;text-transform:uppercase;color:var(--dim);padding-top:2px}
+.why dd{margin:0}
+.highlighting ul.items li{opacity:.35}
+.highlighting ul.items li.hl{opacity:1}
+.highlighting ul.items li.hl summary{background:var(--accentbg);border-radius:6px;padding:6px 10px;margin:0 -10px}
+
+/* the backlog: one flat list, two columns when there is room */
+.backlog{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:14px 16px;display:grid;gap:10px}
+.backlog ul.items{grid-template-columns:repeat(auto-fill,minmax(420px,1fr));gap:6px 28px}
+@media (max-width:480px){.backlog ul.items{grid-template-columns:1fr}}
+.backlog ul.items li[hidden]{display:none}
+.filters{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.filters button{font:500 13px var(--body);border:1px solid var(--line);background:var(--panel);color:var(--ink);border-radius:999px;padding:5px 12px;cursor:pointer}
+.filters button[aria-pressed="true"]{background:var(--ink);color:var(--ground);border-color:var(--ink)}
+.filters button:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.legend{display:flex;flex-wrap:wrap;gap:6px 16px;font-size:13px;color:var(--dim);align-items:center}
+.legend span{display:inline-flex;gap:6px;align-items:center}
+.tempnote{margin:12px 0 0;max-width:75ch;font-size:14px;background:var(--decidebg);color:var(--ink);border-radius:6px;padding:8px 12px;box-shadow:inset 3px 0 0 var(--decide)}
+.tempnote b{color:var(--decide)}
+footer{font-size:13px;color:var(--dim);max-width:100ch}
+</style>
+
+<div class="wrap">
+  <section>
+    <div class="top"><h1>Launch Map</h1>
+      <div class="theme" role="group" aria-label="Colour theme">
+        <button id="t-system" data-t="system" aria-pressed="true">System</button>
+        <button id="t-light" data-t="light" aria-pressed="false">Light</button>
+        <button id="t-dark" data-t="dark" aria-pressed="false">Dark</button>
+      </div></div>
+    <p class="lede">What comes after v0, station by station, from 6 Oct 2026. The themes are the ranked list in TODO.md ("After v0"); tap one to light up its tasks across the stations. A task sits on a station once it is in scope; everything else waits in the backlog below. Inside a station, tasks are listed by their theme's rank. Point at any task by its number, for example "8.6". The finished work is on the history page, <a href="https://claude.ai/artifact/L412VXv6JRP2kFKQogBo7v">Golden Set and v0 Build</a>.</p>
+    <div class="stats" id="stats"></div>
+    <p class="tempnote"><b>Not sorted yet (6 Oct):</b> the seven candidates in the backlog wait for a yes or no. Sorting them is the first task after the repo and README, task 0.12 on station 0.</p>
+  </section>
+
+  <section>
+    <h2>Two finish lines</h2>
+    <div class="lines">
+      <div class="line"><span class="tag">themes 5 and 6</span><h3>The switch</h3>
+        <p>v0 becomes the only bot, still in the test chat. It needs v0 to find, check and fetch its own articles first, because today it reads them from production's table. Then production stops.</p></div>
+      <div class="line launch"><span class="tag">the launch theme</span><h3>The launch</h3>
+        <p>The friends' group joins after a four-week window of v0 posting to the test chat, with a reaction to every tier-1 post and digest. It passes when the last two weeks show:</p>
+        <ul><li>no career event missed, checked against what actually happened;</li><li>no repeat noticed in tier 1 (a split inside a digest does not count);</li><li>at most 1 in 10 posts or digests with a 👎.</li></ul></div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Themes, in rank order</h2>
+    <ol class="themes" id="themes"></ol>
+  </section>
+
+  <p class="hlnote" id="hlnote" hidden><span></span> <button type="button">Clear</button></p>
+
+  <section>
+    <h2>Station by station</h2>
+    <div class="legend">
+      <span><b class="pill todo">○ to do</b> in scope</span>
+      <span><b class="pill call">▶ your call</b> waits on a decision</span>
+      <span><b class="pill waits">‖ waits</b> starts after another task</span>
+      <span><b class="pill done">✓ done</b></span>
+    </div>
+    <nav class="rail" id="rail" aria-label="Jump to a station"></nav>
+    <div class="board" id="board" tabindex="0" aria-label="Stations, scroll sideways"></div>
+  </section>
+
+  <section class="backlog">
+    <h2>Backlog</h2>
+    <p class="lede">The 27 tasks still parked when the history page closed, unchanged, from <code>golden/parked-tasks.json</code>. Seven are candidates for a theme and wait for a yes or no (task 0.12); a yes moves the task onto its station.</p>
+    <div class="filters" role="group" aria-label="Backlog filter">
+      <button data-f="all" aria-pressed="true">All</button>
+      <button data-f="cand" aria-pressed="false">Candidates only</button>
+    </div>
+    <ul class="items" id="backlog"></ul>
+  </section>
+
+  <footer>Started 2026-10-06, when v0 completed (22 of 22 tasks). Ranked by how much each theme moves the end state in docs/goals.md ("The end state, restated"): a public showcase first, then a bot good enough for the real group. Task numbers continue each station's numbering from the history page, so a number means one task on either page. Source: <code>v0/launch-map.html</code> in the repo; the backlog is a copy of <code>golden/parked-tasks.json</code>.</footer>
+</div>
+
+<script>
+// One place to edit: the themes, the stations' tasks, then the backlog's theme chips.
+const THEMES = [
+  {id:"repo", rank:1, name:"Repo, README and backlog", short:"README and backlog", s:"critical", l:"none",
+   note:"Strangers read the repo today. Days, not weeks. Ends by sorting the backlog's seven candidates."},
+  {id:"score", rank:2, name:"Precision scoreboard", short:"scoreboard", s:"critical", l:"the launch bar's dashboard",
+   note:"Each rate on the page with a date and a method; that it is there matters more than that it is high."},
+  {id:"review", rank:3, name:"Review tooling", short:"review", s:"a blog post", l:"medium",
+   note:"Review time is the scarce resource; this keeps the every-couple-of-days grooming fast while claims are fresh."},
+  {id:"digest", rank:4, name:"Digest tuning", short:"digest", s:"medium", l:"critical",
+   note:"About 115 Topuria tier-2 readings a week go through it; it is most of what the friends will see."},
+  {id:"feed", rank:5, name:"Self-feeding, then retire production", short:"self-feeding", s:"critical", l:"critical",
+   note:"v0 reads its articles from production's table, so production cannot stop until v0 runs stations 1 to 3 itself."},
+  {id:"body", rank:6, name:"Body-fetch fallback", short:"body fallback", s:"a blog post", l:"high",
+   note:"Built inside self-feeding. 72% of Amosov's readings and 42% of Donchenko's have no text, so the classifier never sees them (G1)."},
+  {id:"demo", rank:7, name:"Public live demo", short:"demo", s:"high", l:"the reader site's seed",
+   note:"After the switch, so it shows the real thing."},
+  {id:"group", rank:8, name:"Grouping fixes", short:"grouping", s:"moves the scoreboard's rates", l:"medium, G3 only",
+   note:"The digest absorbs splits and the launch bar tolerates them. Measured on the golden replay before any change."},
+  {id:"v8", rank:9, name:"Classifier v8", short:"classifier v8", s:"low", l:"low, until a miss",
+   note:"Jumps to the top if the launch window shows a missed career event."},
+  {id:"site", rank:10, name:"Reader site, then chat", short:"reader site", s:"high, later", l:"after launch",
+   note:"The demo grows into the site. Nothing on the stations yet."},
+  {id:"entity", rank:11, name:"Bout as an entity, address clean-up, fighter profile", short:"bout and address", s:"low", l:"low",
+   note:""},
+  {id:"launch", rank:null, name:"The launch", short:"launch", s:"", l:"the goal",
+   note:"Not ranked: it is where the others lead. The bar is under \"Two finish lines\"."},
+  {id:"label", rank:null, name:"Golden set labelling", short:"labelling", s:"", l:"none so far",
+   note:"Label passes left open when the set froze. Backlog only; none is needed for launch yet."},
+];
+
+// A task: id, theme ids, status (todo, call, waits, done), the task, what it is, why it matters
+const K = (id, themes, st, task, what, why) => ({id, themes, st, task, what, why});
+
+const STATIONS = [
+  {n:0, name:"Frame", role:"What holds the stations together: the store, the hourly runner, the deploy, and the repo a stranger reads.", items:[
+    K("0.7",["repo"],"todo","Sort the top level so the system comes first",
+      "The top level mixes the bot, v0 and the golden set with research leftovers: bench, corpus, labels, domain, tmp and a claims snapshot file. Research goes into named folders; the two systems and the docs stay on top. This reads TODO's \"experiments into a named folder\" broadly; settle the exact cut when the work starts.",
+      "The top level is the first screen a visitor sees."),
+    K("0.8",["repo"],"todo","Check the history for other outlets' article text",
+      "TODO item 1 says article bodies come out of the history. Whether any were committed before the guard (scripts/article-text-guard.js) existed is not checked yet. If some were, removing them rewrites commits already on GitHub, which the working rules otherwise forbid, so that step needs your yes.",
+      "The text is other outlets' copyright; the repo is public."),
+    K("0.9",["repo"],"todo","A status line naming v0 as the system going forward",
+      "One line at the top of the README and of the two published pages: v0 is the design going forward, production retires after the switch, and where each lives.",
+      "Until the switch both bots run, and a reader should know which one the pages describe."),
+    K("0.10",["repo"],"todo","Rewrite the README: what, how, how measured, how to run",
+      "In that order. The numbers come from the scoreboard, each with its date and method.",
+      "It is the page every visitor reads."),
+    K("0.11",["repo"],"todo","Re-read the four public surfaces against v0's code",
+      "The README, the GitHub description and topics, the architecture overview and the funnel walkthrough describe production's pipeline. Every claim is checked against the code, not memory.",
+      "Prose does not fail loudly: a sentence stays true-looking while the code moves under it (AGENTS.md)."),
+    K("0.12",["repo"],"call","Sort the seven backlog candidates: yes or no on each",
+      "The first task after the repo and README. A yes moves the task from the backlog onto its station; a no leaves it parked. The seven: 6.9 and 6.12 (grouping fixes), 4.26 and 4.27 (classifier v8, which may stay parked until a missed event), 2.2 (address clean-up), 3.3 and 3.4 (body fallback, if it takes in the dirty-text work).",
+      "Until they are sorted, the themes they would join show only part of their work."),
+    K("0.13",["feed"],"waits","Retire production",
+      "After v0 feeds itself and the launch window reads clean: stop production's hourly job, keep its database as the record (nothing is deleted), and remove the storyboard's compare page. Takes backlog task 0.6 with it.",
+      "Then there is one bot, and the switch has its ending."),
+  ]},
+  {n:1, name:"RSS reader", role:"Finds article links for each fighter.", items:[
+    K("1.2",["feed"],"todo","v0 reads the feeds itself",
+      "Google News per fighter, with the names in several languages, plus the direct publisher feeds filtered by name, as production does today (lib/feeds.js).",
+      "Today v0 takes its articles from production's items table."),
+    K("1.3",["body"],"todo","Add the MMAWeekly and Athlon feeds",
+      "One of the three free fixes the body-fetch spike found; together they recovered 56% of the readings that had no text.",
+      "A feed of its own reaches articles that Google News links fail to open."),
+  ]},
+  {n:2, name:"URL dedup", role:"Drops a link we have already seen.", items:[
+    K("2.4",["feed"],"todo","v0 runs its own seen-before check",
+      "Drop a link already seen under either of its addresses, the feed's link or the one it resolves to, as production does.",
+      "Once v0 feeds itself, without it every article would be read again each hour."),
+    K("2.5",["feed"],"todo","Catch one article published on several domains by its slug",
+      "The same piece appears on sister sites under different domains with the same last part of the address. Matching on that part catches the copy before any text is fetched.",
+      "Each copy caught here saves a fetch and a model call, and keeps a repeat out of the claim."),
+  ]},
+  {n:3, name:"Body extractor", role:"Gets the article text from the page.", items:[
+    K("3.6",["feed"],"todo","v0 fetches the article text itself",
+      "Decode Google's wrapped address and extract the body (lib/googlenews.js and lib/extract.js today), with the fallback below built in rather than added later.",
+      "The classifier reads the text; without this v0 has nothing of its own to read."),
+    K("3.7",["body"],"todo","Retry the Google News decode on the next run",
+      "A decode that failed is tried again an hour later instead of giving up. New articles only.",
+      "One of the spike's three free fixes."),
+    K("3.8",["body"],"todo","Fall back to a reader service when the fetch fails",
+      "Jina's reader, when the page refuses or returns nothing usable. New articles only.",
+      "One of the spike's three free fixes."),
+  ]},
+  {n:4, name:"Classifier", role:"Answers nine questions per article (JEV v7.7).", quiet:"Classifier v8 waits for a missed career event in the launch window.", items:[]},
+  {n:5, name:"Claim extractor", role:"Writes one sentence per article: what happened, and where.", quiet:"Nothing planned.", items:[]},
+  {n:6, name:"Semantic dedup", role:"Joins an article to a claim we have, or starts a new one.", quiet:"Grouping fixes: two candidates wait for your yes or no.", items:[]},
+  {n:7, name:"Decider and settings", role:"Gives tier 1, 2 or 3 from the claim's cell in per-fighter settings.", quiet:"Nothing planned.", items:[]},
+  {n:8, name:"Digest writer", role:"Writes the weekly summary.", items:[
+    K("8.4",["digest"],"todo","Pick the digest model on the blind comparison page",
+      "The storyboard's /digests/compare shows digests from different models with the names hidden; your pick decides.",
+      "The model sets most of the digest's quality and cost."),
+    K("8.5",["digest"],"todo","Prompt rounds, scored by your reactions",
+      "A round changes the prompt, runs a week's digest, and your 👍 and 👎 are the score.",
+      "Your reactions are the measure the launch bar uses too."),
+    K("8.6",["digest"],"todo","Rank the claims inside a digest",
+      "An order over claims on top of the classifier's tier, so the items that matter most lead.",
+      "Tier 2 is wide; without an order the digest reads as a pile."),
+    K("8.7",["digest"],"todo","Cap the digest at about five items",
+      "Five was suggested; the cap is tuned together with the ranking.",
+      "A short digest gets read."),
+  ]},
+  {n:9, name:"Telegram and storyboard", role:"Where people read it, and where the review happens.", items:[
+    K("9.3",["review"],"done","Notes on ✓, and editing a review mark in place",
+      "Built 6 Oct (docs/superpowers/specs/2026-10-06-review-mark-editing.md): a set mark opens its editor instead of clearing, and a ✓ can carry a note.",
+      "A stray tap no longer loses a note."),
+    K("9.4",["review"],"call","Two decisions: reviewing the classifier's answers behind a tier",
+      "Option A, a panel from the decision column (recommended), or option B; and a new review_answers table or the feedback table as it stands (docs/superpowers/specs/2026-10-06-review-classifier-answers.md). The case that showed the gap: #944, a column on possible next opponents, posted as tier 1.",
+      "A wrong tier comes from wrong answers or a wrong settings cell, and only the answers tell which."),
+    K("9.5",["review"],"waits","Build the answers review",
+      "Mark which of the answers behind a tier was wrong, from the claim card. After 9.4.",
+      "Every marked answer is a test case for the next classifier."),
+    K("9.6",["review"],"todo","Reshape the feedback form into plain notes",
+      "What the note is about, chosen from a list, and the text (v0 design, section 11). The form as it stands was found unusable.",
+      "Remarks that fit no review mark need somewhere to go."),
+    K("9.7",["demo"],"call","Find a domain for the demo",
+      "Your call; a free host's address is the fallback.",
+      "A demo needs an address to link."),
+    K("9.8",["demo"],"waits","A read-only demo: trace any article to its claim, grouping and digest",
+      "Headlines, extracts, claims and digests only; article text stays private. After the switch, so it shows v0.",
+      "Something a visitor can use, not only read about."),
+    K("9.9",["demo","site"],"waits","A web section that looks like the channel",
+      "The digests and tier-1 posts as the group sees them. The seed of the reader site.",
+      "Shows the product, where the trace shows the machinery."),
+    K("9.10",["launch"],"waits","Launch: add the friends' group",
+      "When the last two weeks of the window pass the bar. Test mode ends then, and the group's post history becomes a contract (AGENTS.md).",
+      "The bot's reason to exist."),
+  ]},
+  {n:10, name:"Measurement", role:"How we know how well it works.", items:[
+    K("10.5",["score"],"call","Answer the scoreboard's eight open questions",
+      "Where it lives, the random sample and its rate, over-splitting's denominator, which period, split by version or not, the replay stored or re-run, error bars where, and for whom (docs/superpowers/specs/2026-10-06-precision-scoreboard.md).",
+      "The page cannot be built well before they are settled."),
+    K("10.6",["score"],"waits","Build the scores page",
+      "The golden replay's numbers and the live review's side by side, each with its date, its method and its weakness: the replay is fair but old, the review is live but leans to the claims you open. After 10.5.",
+      "The page that answers \"how precise is it?\""),
+    K("10.7",["score","launch"],"waits","Put the launch bar on it",
+      "Over the last two weeks: career events missed, repeats you noticed in tier 1, and the share of posts and digests with a 👎.",
+      "Then the launch decision reads off one page."),
+    K("10.8",["feed"],"waits","A week of both bots fed the same articles",
+      "v0's own feeds and fetch beside production's: the same links found, the same text fetched. After 1.2, 2.4 and 3.6.",
+      "Production stops only once v0 is shown to see at least what it saw."),
+    K("10.9",["body"],"todo","Count what never reached the model, before and after",
+      "Per fighter, the share of readings with no text, measured before the fallback and after it. The dirty-text measurement waits in the blog backlog (idea 6).",
+      "Shows whether the fallback moved G1 for the two fighters the friends care about most."),
+  ]},
+];
+
+// The backlog: golden/parked-tasks.json, copied as is; theme chips are this page's own
+const PARKED = [{"id": "0.6","station": 0,"station_name": "Frame","task": "Find out why production's runs average 152 seconds","what": "Measured 5 Oct: 715 runs in 30 days, 108,426 seconds, while the recent median is 21 seconds; one run took 555.","why": {"set": "Not a v0 task.","station": "Production alone uses 45% of the free CPU; v0 brings it to about 81% (estimate).","system": "Halving production's time would make the free tier comfortable."},"label": "retires with production"},{"id": "2.2","station": 2,"station_name": "URL dedup","task": "Test address clean-up on those six pairs","what": "Remove /amp/, a trailing slash, and the Google News wrapper, then check that each pair is caught.","why": {"set": "Needs no new labels; 2.1 already provides them.","station": "Measures whether cheap address rules catch copies before any text is fetched.","system": "Every copy caught here saves a page fetch and a model call further down. Parked because you chose to skip this station for now."},"candidate_for": "address clean-up"},{"id": "3.3","station": 3,"station_name": "Body extractor","task": "Mark every article whose saved text is unusable, across all 300","what": "Expected 10 to 15. Confirmed so far: #134 (intro only), #655 (styling code only), #647 (one line plus the site's comment policy), #44 (a video page with almost nothing saved), #1045 (a video page, only the blurb). Measured 3 Oct: 23 saved texts hit the 10,000-character cap, and some start with site menus (#1172 opens with 1,900 characters of menu). Video pages come in three kinds: almost nothing saved, the whole transcript (#492), only the blurb (golden/rule-backlog.md, item 4).","why": {"set": "Lets a score separate 'the station was wrong' from 'the input was garbage'. Worth asking whether this must happen before step 7, or the classifier gets scored on garbage.","station": "Test cases for a quality check. A length check alone lets styling code through.","system": "Design card 7: an article with no usable text needs a check and a defined fate."},"candidate_for": "body-fetch fallback, if it takes in the dirty-text work"},{"id": "3.4","station": 3,"station_name": "Body extractor","task": "Tune the body extractor, then score it on the set","what": "TODO item 8. Last, by your decision.","why": {"set": "Uses 3.2 and 3.3 as its answer key.","station": "The only way to know if a fix helped.","system": "Better text lifts every station after it."},"candidate_for": "body-fetch fallback, if it takes in the dirty-text work"},{"id": "4.26","station": 4,"station_name": "Classifier","task": "YOUR CALL: two fixes that work only on the claims they were built on","what": "From the night's experiment E5. (1) 'A prediction is about a booked fight': a rival camp's boast ('Usman would make him quit', claim-003, three articles) moves from 'predicts his fight' to 'calls him out'. (2) 'A report of what is planned for him is news, not steering': fixes Dana White's 'top two potential opponents' and the reported rematch talks. Both held in two runs and lost nothing, and every training article the key calls a prediction is about a booked fight. But neither moved the validation set, so nothing outside their own claims shows them working. Options: adopt both; adopt neither until a new labelled slice can judge them; adopt only 'booked'. My recommendation: only 'booked', which restates how the key already uses the label.","why": {"set": "No label changes.","station": "Settles the last two known wording fixes before the questions are frozen for the test score.","system": "Once the test set is scored, no further change can be judged on it."},"candidate_for": "classifier v8 (only if the launch window shows a missed event)"},{"id": "4.27","station": 4,"station_name": "Classifier","task": "YOUR CALL: do the three news questions stay tied to the 'what new fact' answer?","what": "Today the code applies the rule ties: 'no fact' makes all three flags no, and a result, next-fight or health fact makes its own flag yes. As the model gives them, 'reports his next fight' is right on 150 training and 35 validation articles; after the ties, 146 and 39. Training prefers the raw flags, validation the ties. Where a flag and the 'what new fact' answer disagree (23 training articles), the flag is right in 11, the fact in 10, both wrong in 2. Options: keep the ties and log every disagreement for review (now); let a confident flag stand against 'no fact'; drop the flags and derive them from the fact. My recommendation: keep the ties and log the disagreements, a cheap list of articles worth a second look.","why": {"set": "No label changes.","station": "Decides how the classifier's nine answers are composed before they are scored.","system": "The decider reads the flags; if they can contradict the fact, it needs a rule for that."},"candidate_for": "classifier v8 (only if the launch window shows a missed event)"},{"id": "4.28","station": 4,"station_name": "Classifier","task": "Look at three labels where the classifier's reading looks defensible","what": "All three are training articles, so this does not block the test score. #746 (claim-095), 'Daniil Donchenko Octagon Interview', keyed result: by the rule 'result only for an account of the fight itself' a post-fight interview is not a result, unless the saved page also carries the fight report. #655 (claim-066), keyed absent: the headline names him, the body does not; absent or only mentioned? #510 (claim-058), a preview with 'start time, full card and how to watch', keyed no fact: now answered right, but it sits between the preview rule and the fight-week rule. A change goes through errata with a new checksum, never by editing labels.json.","why": {"set": "Keeps the key honest where the classifier's reading has a case.","station": "Removes training misses that may not be misses.","system": "Small, but the same check applies to every later station."}},{"id": "4.29","station": 4,"station_name": "Classifier","task": "A new labelled slice to judge the fixes that need it","what": "The validation set has no next-fight or status-update article, so changes on those (the rumour fixes rejected overnight, 'plans' in 4.26) cannot be judged out of sample. A small new slice of articles with rumoured fights and health updates, labelled by the readers, with your time limited to one spot check. Parked until after 4.7.","why": {"set": "Adds labels where the current split is blind.","station": "Lets the next classifier version be judged on the cases it is weakest on.","system": "Rumoured fights and health news are what the group most wants to hear first."}},{"id": "4.17","station": 4,"station_name": "Classifier","task": "Try different sets of questions against the same labels","what": "Partly tried 3–4 Oct: the 'what new fact' question as one yes/no per kind gained 12 training articles and none on validation (E6). After the test score: autonomous rounds that change which questions the classifier is asked (drop the three news questions and derive them from fact plus a 'second fact' question; merge or split questions; ask fewer) and map each variant's answers onto the nine labels in code, as how firm already is. Tuned on the tune side, compared on the check side, about a cent per variant. No relabelling unless the values themselves change.","why": {"set": "Reuses the labels as they are: they describe the article, not the questions.","station": "Finds the cheapest set of questions that reaches the same answers; the three news questions are now 99% determined by fact (4 second-fact articles in 300).","system": "Fewer questions per article is lower cost and fewer places to be wrong."}},{"id": "4.9","station": 4,"station_name": "Classifier","task": "Check the gate: confirm or correct 'not about him' and the disagreements","what": "PARKED 3 Oct: this was the claim-map way of labelling; since 28 Sept the labels are nine answers per article (tasks 4.15 and 4.16), which cover the same ground. Kept for the record. On the map, version v3: the 'Not about him' tile (66 claims) and the 'Classifier and extractor disagree' tile (37). v3 is stricter than v2: 18 claims moved from yes or partly to not. The 'no text' articles show here too, which also covers the unusable-text question (3.3).","why": {"set": "The gate label per claim: about him, partly, or not.","station": "The first filter everything else depends on.","system": "A wrong 'no' swallows real news (G1); a wrong 'yes' lets junk through (G2)."},"p": "P1"},{"id": "4.10","station": 4,"station_name": "Classifier","task": "Spot-check who × what on the map and correct the cell of each claim","what": "PARKED 3 Oct: this was the claim-map way of labelling; since 28 Sept the labels are nine answers per article (tasks 4.15 and 4.16), which cover the same ground. Kept for the record. Cell by cell, doubtful claims first (readers split, articles in different cells, classifier and extractor disagree). Replaces the old type and speaker labels: the 28 types collapse into cells.","why": {"set": "The who and what labels per claim.","station": "The answer key for the classifier's two main questions.","system": "Can we tell these words apart reliably? This is where we find out."}},{"id": "4.11","station": 4,"station_name": "Classifier","task": "Mark how firm each career fact is: official, reported or rumoured","what": "PARKED 3 Oct: this was the claim-map way of labelling; since 28 Sept the labels are nine answers per article (tasks 4.15 and 4.16), which cover the same ground. Kept for the record. Mostly bookings. The classifier already answers it inside its kind question; this confirms it.","why": {"set": "Nothing tested it before.","station": "The answer key for the 'how firm' value.","system": "Goal G4: 'confirmed' only when an official source said it."}},{"id": "5.3","station": 5,"station_name": "Claim extractor","task": "Confirm the bout for every claim","what": "Pre-filled for 63 claims; you confirm or correct.","why": {"set": "Ties each claim to a fight: needed for the predictions merge and the post-fight window.","station": "The answer key for the extractor's bout field.","system": "Guards grouping: a result must never join a booking for a different fight."}},{"id": "5.4","station": 5,"station_name": "Claim extractor","task": "Flag a bad extract when you meet one","what": "No separate pass. Only while labelling.","why": {"set": "Gives an 'extract right or wrong' label cheaply.","station": "Real failure cases for the next prompt.","system": "If the extract becomes the post text, a wrong one reaches the group."}},{"id": "5.5","station": 5,"station_name": "Claim extractor","task": "Change the next prompt: origin is where the person spoke, never the account that relayed it","what": "Written down in the answers-to-tiers experiment. Seen again on claim-097: the extract says 'The UFC is having internal conversations' and drops that Jon Anik said it.","why": {"set": "None now.","station": "Fixes a known extraction error.","system": "Keeps two outlets relaying one interview in the same claim."}},{"id": "6.4","station": 6,"station_name": "Semantic dedup: grouping into claims","task": "Decide how far back joining should look","what": "37 same-claim pairs are more than 3 days apart, in 10 claims.","why": {"set": "Decides whether those 37 pairs count as misses when scoring.","station": "Sets the size of the search window.","system": "Too short and a repeat posts again (G3). Too long and more wrong joins and more cost."},"p": "P2"},{"id": "6.5","station": 6,"station_name": "Semantic dedup: grouping into claims","task": "Decide whether fight-week routine is a claim of its own","what": "Weigh-ins, face-offs, open workouts.","why": {"set": "Changes how many fight-week articles are grouped, so the labels must follow one rule.","station": "Tells grouping what to join.","system": "Decides whether the group hears about each weigh-in and face-off."},"p": "P2"},{"id": "6.6","station": 6,"station_name": "Semantic dedup: grouping into claims","task": "Check the other 74 single-article claims while labelling","what": "Not reviewed by you: they stand as Fable built them. 26 carry a doubt Fable wrote down, 11 were grouped below high confidence. Flag any that belong elsewhere.","why": {"set": "An unnoticed wrong singleton is a hidden error in the answer key.","station": "A missed join would be scored as correct.","system": "Same as 6.1."}},{"id": "6.8","station": 6,"station_name": "Semantic dedup: grouping into claims","task": "Test grouping in three steps: shortlist by similarity, rule out with guards, an LLM decides the rest","what": "Steps 1 and 2 use saved results and cost nothing. Step 3 runs only on the hard cases.","why": {"set": "Uses the trusted grouping as the answer key.","station": "Measures how often the right claim is on the shortlist, and how many wrong joins the guards remove.","system": "Wrong joins swallow news; wrong starts post repeats."}},{"id": "6.9","station": 6,"station_name": "Semantic dedup: grouping into claims","task": "Design against the two classic failures of grouping one article at a time: stale leader and chaining","what": "Stale leader: a story is described forever by its first article's one sentence (production writes it once and never updates it), so an off sentence misjudges every later article. Suspected cases from the September replay: a story fact that restates June's result for an August article, and a fact about Ilia under a headline about his brother. Chaining: a group grows through its most similar member and drifts; on 2026-08-08 a chain of 0.80, 0.87 and 0.97 walked an Ali Abdelaziz story onto an unrelated matchmaking claim. Production has both sides: the shortlist ranks a story by its closest member, the judge compares against its first sentence.","why": {"set": "Neither failure shows when articles are scored one at a time; only the replay in date order (6.7) can catch them.","station": "Whether a story's description should be rebuilt from its members as they join (the usual fix for a stale leader) while staying tied to its first fact (the guard against chaining).","system": "A stale leader posts repeats (G3) or swallows news into the wrong story; a chain swallows news."},"candidate_for": "grouping fixes"},{"id": "6.12","station": 6,"station_name": "Semantic dedup: grouping into claims","task": "After v0: lean grouping toward splitting, and absorb the splits downstream","what": "Your rule (5 Oct, now in goals.md under G3): a story posted twice costs less than a story swallowed. v0's replay leans the wrong way on training: pair precision 0.62 (3 of v0's 38 claims mix two of your stories) against pair recall 0.83 (4 of your 38 split). Levers, each aimed at one side. Against merges: a join needs JEV to be sure (under some confidence, start a new claim instead; the ⚠ joins are the first candidates); a guard that refuses a join when the extracts name a different opponent, event or date; a second look at a claim whose newest article's extract disagrees with its label. Against the cost of splits: the digest writer merges claims that are one story (your idea; it already sees the week's claims together); before a tier-1 post, a check against the last days' posted claims for the same fact (same opponent and event), so a split repeats at most rarely in the loud channel. Two more, to test on the golden replay first, from your first live review (5 Oct, claims #424 and #426: one Instagram statement by Parnasse's camp, reported by three outlets, split across two claims): (1) show the judge each candidate claim by more than its label, for example its first and its latest sentence. #424's label had switched to its one rumour article ('reportedly scheduled', firmer than 'no new fact'), so the third report of the camp's denial was compared with the rumour alone and judged a new story (79% 'none of these', 12% #424), though two denials were already in the claim; (2) make the extract's 'occasion' name the fight or event ('Topuria vs Parnasse, UFC 336'), not where it was said ('Instagram story posted by Chaufourier'): it is part of the text the shortlist compares, so four articles on one fight got four different occasions.","why": {"set": "Pair precision and pair recall on training and validation, and swallowed tier-1 stories counted on their own: the target is none.","station": "Grouping (6) is where both failures start; 6.9 (stale leader, chaining) is the same family.","system": "G1 before G3: nothing real is missed, and what repeats is caught by the digest or the post-time check."},"candidate_for": "grouping fixes"},{"id": "6.7","station": 6,"station_name": "Semantic dedup: grouping into claims","task": "Replay all 300 in date order and score the test side once","what": "Test-side articles still see tune-side claims as candidates.","why": {"set": "Uses the answer key exactly once.","station": "The honest grouping number.","system": "Written into decisions.md beside the design."}},{"id": "7.4","station": 7,"station_name": "Decider and settings","task": "Build the settings table: which cells reach tier 1, 2 or 3, per fighter","what": "Your rulings so far become the defaults: for Donchenko and Amosov you hear everyone; for Topuria only people with standing. Changeable, later by users too. Design intent of 3 Oct: what fact and how firm route an article together (an official fight at once, a rumour to a digest); neither is used alone to cut an article away, and no single label should be able to drop an article by itself.","why": {"set": "No labels; it sits on top of them.","station": "Makes the decider a lookup instead of a judgement.","system": "The decoupling: facts are classified once, what each reader wants is a setting."}},{"id": "7.2","station": 7,"station_name": "Decider and settings","task": "Give a tier to a sample of claims, blind, to check the bridge","what": "After 7.4. If grid plus settings give your tier, the grid is enough; if not, it shows what the grid misses, such as depth or how big the news is.","why": {"set": "A check, not a label for every claim.","station": "Tests the decider end to end.","system": "Goals G1 (nothing real missed) and G2 (no junk)."}},{"id": "7.3","station": 7,"station_name": "Decider and settings","task": "Score the decider on that sample","what": "After the freeze and the sample.","why": {"set": "Uses the sample once.","station": "The honest decider number.","system": "Written into decisions.md beside the design."}},{"id": "8.1","station": 8,"station_name": "Digest writer","task": "Mark the main source for each article","what": "Link the original essay or interview, not a write-up about it.","why": {"set": "A new label, not needed until the digest writer exists.","station": "Tests whether the digest links the right source.","system": "The digest links where the news actually came from."}},{"id": "8.2","station": 8,"station_name": "Digest writer","task": "Check the digest skips the right stories","what": "Uses the settings (7.4) and the tier sample (7.2).","why": {"set": "No new labels.","station": "Tests what the digest leaves out.","system": "Keeps the digest short."}}];
+const BACKLOG_THEMES = {
+  "0.6":["feed"], "2.2":["entity"], "3.3":["body","label"], "3.4":["body"],
+  "4.26":["v8"], "4.27":["v8"], "4.28":["v8","label"], "4.29":["v8","label"], "4.17":["v8"],
+  "4.9":["label"], "4.10":["label"], "4.11":["label"],
+  "5.3":["label","entity"], "5.4":["label"],
+  "6.4":["group"], "6.5":["group"], "6.6":["group","label"], "6.8":["group"], "6.9":["group"], "6.12":["group"], "6.7":["group"],
+  "7.2":["label"], "8.1":["label"], "8.2":["digest"],
+};
+
+const esc = s => String(s).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const themeById = Object.fromEntries(THEMES.map(t => [t.id, t]));
+const STATUS = {todo:"○ to do", call:"▶ your call", waits:"‖ waits", done:"✓ done"};
+const onBoard = STATIONS.flatMap(s => s.items.map(i => ({...i, station:s.n})));
+const backlog = PARKED.map(p => ({...p, themes:BACKLOG_THEMES[p.id] || []}));
+
+// Top numbers
+document.getElementById("stats").innerHTML =
+  `<span><b>${onBoard.length}</b> tasks on the stations</span>` +
+  `<span><b>${onBoard.filter(i => i.st==="done").length}</b> done</span>` +
+  `<span><b>${onBoard.filter(i => i.st==="call").length}</b> your calls</span>` +
+  `<span><b>${backlog.length}</b> in the backlog</span>` +
+  `<span><b>${backlog.filter(p => p.candidate_for).length}</b> candidates for a yes or no</span>`;
+
+// Theme cards: what each is worth, then how far along, then where its tasks are
+const plural = (n, word) => `${n} ${word}${n===1 ? "" : "s"}`;
+document.getElementById("themes").innerHTML = THEMES.map(t => {
+  const mine = onBoard.filter(i => i.themes.includes(t.id));
+  const parked = backlog.filter(p => p.themes.includes(t.id));
+  const cands = parked.filter(p => p.candidate_for);
+  const stations = [...new Set(mine.map(i => i.station))];
+  const done = mine.filter(i => i.st==="done").length;
+  const where = mine.length ? `${done} of ${mine.length} done · station${stations.length>1?"s":""} ${stations.join(", ")}` : `<span class="none">nothing on the stations</span>`;
+  const extra = cands.length ? ` · <span class="bl">${plural(cands.length,"candidate")}</span>` : parked.length ? ` · <span class="none">${parked.length} in backlog</span>` : "";
+  const imp = [t.s && `Showcase <b>${esc(t.s)}</b>`, t.l && `Launch <b>${esc(t.l)}</b>`].filter(Boolean).join(" · ");
+  const ids = [...mine.map(i => i.id), ...parked.map(p => p.id)];
+  return `<li class="${t.rank ? "" : "unranked"}" role="button" tabindex="0" aria-pressed="false" data-theme="${t.id}" data-n="${ids.length}"><span class="rk">${t.rank ?? "·"}</span><span class="t">${esc(t.name)}</span><span class="imp">${imp}</span><span class="cnt">${where}${extra}</span>${t.note ? `<span class="note">${esc(t.note)}</span>` : ""}</li>`;
+}).join("");
+
+// One task line, the same on the board and in the backlog
+const themeChips = ids => ids.map(id => `<span class="chip">${esc(themeById[id].short)}</span>`).join("");
+const boardTask = i => `<li data-id="${i.id}" data-themes="${i.themes.join(" ")}" class="${i.st==="done" ? "is-done" : ""}"><details><summary><span class="id">${i.id}</span><span class="txt">${esc(i.task)}</span><span class="meta"><span class="pill ${i.st}">${STATUS[i.st]}</span>${themeChips(i.themes)}</span></summary>
+  <div class="why"><p>${esc(i.what)}</p><dl><dt>Why it matters</dt><dd>${esc(i.why)}</dd></dl></div></details></li>`;
+const parkedTask = p => `<li data-id="${p.id}" data-themes="${p.themes.join(" ")}"${p.candidate_for ? ' data-cand="1"' : ""}><details><summary><span class="id">${p.id}</span><span class="txt">${esc(p.task)}</span><span class="meta"><span class="chip st"><b>${p.station}</b> ${esc(p.station_name)}</span>${themeChips(p.themes)}${p.candidate_for ? `<span class="chip cand">candidate: ${esc(p.candidate_for)} · yes or no?</span>` : ""}${p.label ? `<span class="chip retire">${esc(p.label)}</span>` : ""}</span></summary>
+  <div class="why">${p.what ? `<p>${esc(p.what)}</p>` : ""}<dl><dt>For the golden set</dt><dd>${esc(p.why.set)}</dd><dt>For this station</dt><dd>${esc(p.why.station)}</dd><dt>For the system</dt><dd>${esc(p.why.system)}</dd></dl></div></details></li>`;
+
+// The rail and the board; a column lists its open tasks by their best theme's rank (unranked themes last), done tasks at the end
+const themeRank = i => Math.min(...i.themes.map(id => themeById[id].rank ?? Infinity));
+const byRank = (a, b) => (a.st==="done") - (b.st==="done") || themeRank(a) - themeRank(b);
+const parkedAt = n => backlog.filter(p => p.station===n).length;
+document.getElementById("rail").innerHTML = STATIONS.map(s =>
+  `<button type="button" data-n="${s.n}"><b>${s.n}</b>${esc(s.name)}<span class="c">${s.items.length}</span></button>`).join("");
+document.getElementById("board").innerHTML = STATIONS.map(s => {
+  const count = `${plural(s.items.length,"task")}${parkedAt(s.n) ? ` · ${parkedAt(s.n)} in backlog` : ""}`;
+  const body = s.items.length ? `<ul class="items">${[...s.items].sort(byRank).map(boardTask).join("")}</ul>` : `<p class="empty">${esc(s.quiet)}</p>`;
+  return `<article class="col${s.items.length ? "" : " quiet"}" id="st-${s.n}" data-n="${s.n}"><header><span class="num">${s.n}</span><h3>${esc(s.name)}</h3><div class="role">${esc(s.role)}</div><div class="count">${count}</div></header>${body}</article>`;
+}).join("");
+document.getElementById("backlog").innerHTML = [...backlog].sort((a,b) => a.station-b.station || parseFloat(a.id.split(".")[1])-parseFloat(b.id.split(".")[1])).map(parkedTask).join("");
+
+// A rail button scrolls its column into view
+const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+const showColumn = n => document.getElementById("st-" + n).scrollIntoView({inline:"start", block:"nearest", behavior:reduceMotion ? "auto" : "smooth"});
+document.querySelectorAll("#rail button").forEach(b => b.addEventListener("click", () => showColumn(b.dataset.n)));
+
+// A theme lights up its tasks on the board and in the backlog; clicking it again, or "clear", shows everything
+function highlight(card){
+  const on = card && card.getAttribute("aria-pressed")!=="true";
+  document.querySelectorAll("#themes li").forEach(li => li.setAttribute("aria-pressed", String(on && li===card)));
+  const id = on ? card.dataset.theme : null;
+  const tasks = [...document.querySelectorAll("ul.items li")];
+  tasks.forEach(li => li.classList.toggle("hl", !!id && li.dataset.themes.split(" ").includes(id)));
+  const lit = new Set(tasks.filter(li => li.classList.contains("hl") && li.closest(".col")).map(li => li.closest(".col").dataset.n));
+  document.querySelectorAll(".col").forEach(c => c.classList.toggle("dim", !lit.has(c.dataset.n)));
+  document.querySelectorAll("#rail button").forEach(b => b.classList.toggle("on", lit.has(b.dataset.n)));
+  document.documentElement.classList.toggle("highlighting", on);
+  const note = document.getElementById("hlnote");
+  note.hidden = !on;
+  if (!on) return;
+  // Say where the lit tasks are, then bring the first lit column into view
+  const nBoard = tasks.filter(li => li.classList.contains("hl") && li.closest(".col")).length;
+  const nParked = tasks.filter(li => li.classList.contains("hl") && li.closest("#backlog")).length;
+  const stations = [...lit].sort((a,b) => a-b);
+  const parts = [nBoard && `${plural(nBoard,"task")} on station${stations.length>1?"s":""} ${stations.join(", ")}`, nParked && `${nParked} in the backlog`].filter(Boolean);
+  note.querySelector("span").textContent = `${themeById[id].name}: ${parts.join(", ") || "no tasks yet"}`;
+  if (stations.length) showColumn(stations[0]);
+}
+document.querySelectorAll("#themes li").forEach(li => {
+  li.addEventListener("click", () => highlight(li));
+  li.addEventListener("keydown", e => { if (e.key==="Enter" || e.key===" ") { e.preventDefault(); highlight(li); } });
+});
+document.querySelector("#hlnote button").addEventListener("click", () => highlight(null));
+
+// Backlog filter: everything, or only the seven candidates
+document.querySelectorAll(".backlog .filters button").forEach(b => b.addEventListener("click", () => {
+  document.querySelectorAll(".backlog .filters button").forEach(x => x.setAttribute("aria-pressed", String(x===b)));
+  document.querySelectorAll("#backlog li").forEach(li => { li.hidden = b.dataset.f==="cand" && !li.dataset.cand; });
+}));
+
+// Theme: system follows the device; light or dark overrides it. Remembered if storage allows.
+function setTheme(t){
+  if (t==="system") document.documentElement.removeAttribute("data-theme");
+  else document.documentElement.setAttribute("data-theme", t);
+  document.querySelectorAll(".theme button").forEach(b => b.setAttribute("aria-pressed", String(b.dataset.t===t)));
+  try { localStorage.setItem("launch-map-theme", t); } catch(e) {}
+}
+document.querySelectorAll(".theme button").forEach(b => b.addEventListener("click", () => setTheme(b.dataset.t)));
+let savedTheme = "system"; try { savedTheme = localStorage.getItem("launch-map-theme") || "system"; } catch(e) {}
+setTheme(savedTheme);
+</script>

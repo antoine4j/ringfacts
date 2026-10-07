@@ -8,6 +8,8 @@ end state, restated"): a public showcase first, then a bot good enough
 for the real group, then a place to read, then chat. Ranked by how much
 each item moves that, in order. Importance is given for the showcase (S)
 and the launch (L). The "Parked (v0)" list of earlier today is folded in here.
+The same list laid across the stations, task by task, with the parked
+backlog: [v0/launch-map.html](v0/launch-map.html), the Launch Map.
 
 1. **Tidy the repo and rewrite the README.** S: critical, strangers read
    the repo today. L: none. Experiments into a named folder, article
