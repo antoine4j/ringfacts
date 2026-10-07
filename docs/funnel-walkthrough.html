@@ -181,13 +181,14 @@
   <p class="status"><b>Status, 6 October 2026.</b> This page describes production, the bot that has posted hourly since August. Its successor, <a href="https://github.com/antoine4j/ringfacts/tree/main/v0">v0</a>, runs beside it with its own database and its own test chat, and is the design going forward. Production retires once v0 fetches its own articles.</p>
   <div class="eyebrow">RingFacts · Pipeline Walkthrough</div>
   <h1>Raw headlines in. One message out.</h1>
-  <p class="sub">Every gate an article passes through, in the order the code runs them, with real
+  <p class="sub">Every gate an article passes through, roughly in the order the code runs them, with real
   items from the live archive. This page describes <code>main</code> as it is today — where it and
   the code disagree, the code is right.</p>
   <p class="companion">All of this happens inside one function, <code>huntSubject()</code> in
   <code>hunter.js</code>, which runs once per tracked fighter per hour. The gates are not separate
-  services or separate passes — they are consecutive <code>if</code> statements in one loop over at
-  most five articles. For the system around the funnel, see
+  services. Fetching, the address check, reading and embedding are done for the whole batch first;
+  then one loop over at most five unseen articles decides and records each one (§4–§8, §10); the
+  message is sent last (§9). For the system around the funnel, see
   <a href="architecture-overview.html">the architecture overview</a>.</p>
 
   <h2><span class="stage-no">The shape</span></h2>
@@ -203,6 +204,8 @@
     <b>37</b> the same page twice &nbsp;·&nbsp;
     <b>1</b> a spam domain
   </div>
+  <p class="note">Counted on 11 September 2026. The eight buckets add up to 1,113, one short of the
+  total, and the extraction rungs in §3 to 898 of 904; a recount would settle both.</p>
 
   <h2 id="s1"><span class="stage-no">§1</span>Where articles come from</h2>
   <div class="where"><b>In code</b>
@@ -231,9 +234,10 @@
     <span class="f">lib/db.js</span> <span class="mono">knownUrls</span>
   </div>
   <p class="rule">The cheapest question first, asked in one database round trip for the whole batch.</p>
-  <p>An address already in the database is dropped before anything expensive happens. Both addresses
-  count: the one the feed gave us, and the real one behind a Google wrapper, so the same article
-  arriving from both rails is caught once.</p>
+  <p>The feed's address is checked against both addresses stored for every earlier article, and a
+  known one is dropped before anything expensive happens. The real address behind a Google wrapper is
+  known only after decoding, in §3; it is checked then, one article at a time, and a match is recorded
+  as a held duplicate, so the same article arriving from both rails is caught once.</p>
 
   <h2 id="s3"><span class="stage-no">§3</span>Read the article</h2>
   <div class="where"><b>In code</b>
@@ -344,9 +348,9 @@
   <div class="callout">
     <b>The answer is never trusted as written.</b> Every field is checked against the values it is
     allowed to take. An off-menu claim type is coerced rather than stored. A story id the model was
-    never shown is discarded — unchecked, it throws a foreign-key error that kills the rest of that
-    fighter's hour. A claim that does not name the fighter is dropped. Every correction goes toward
-    caution.
+    never shown is discarded and the article opens its own story instead — unchecked, it throws a
+    foreign-key error that kills the rest of that fighter's hour. A claim that does not name the
+    fighter is dropped.
   </div>
 
   <h2 id="s6"><span class="stage-no">§6</span>When the decider cannot answer</h2>
@@ -357,16 +361,17 @@
   already posted, and the article is held.</p>
   <p>This is the fallback, not the gate. It fires when the model errors or answers that it cannot
   tell. <b>It is more cautious than the thing it replaces</b> — it can hold an article the decider
-  would have posted, and with no verdict there is also no claim, so the counting rule in §8 decides
-  prominence and can fold the article away entirely. A decider outage costs coverage quietly rather
+  would have posted, and with no verdict there is also no claim. An unsure answer still reports how
+  prominent the fighter is, so the §8 rules still apply; when the call fails outright, the counting
+  rule alone decides and can fold the article away entirely. A decider outage costs coverage quietly rather
   than spilling repeats into the group.</p>
   <p class="note">285 articles in the archive were held this way. Most of them predate the decider,
   when this rule was the gate rather than the net under it.</p>
 
   <h2 id="s7"><span class="stage-no">§7</span>Is the site itself spam?</h2>
   <div class="where"><b>In code</b><span class="f">lib/untrusted.js</span></div>
-  <p class="rule">Three conditions, all required: at least five articles seen from the domain, more
-  than half already judged not about anyone, and <strong>never once</strong> a readable body.</p>
+  <p class="rule">Three conditions, all required: at least five articles seen from the domain, at
+  least half of them already judged not about the fighter, and <strong>never once</strong> a readable body.</p>
   <p>Some sites stuff fighter names into unrelated content to get indexed. All three tests are needed
   because any one alone catches innocents: a bad ratio alone would silence real outlets whose
   name-filtered feeds run 35–45% off-target, and a blocked fetcher alone would silence real outlets
@@ -422,9 +427,10 @@
   <p><b>A ceremony</b> — a confirmed fight announcement, standalone.</p>
   <p><b>The digest</b> — one message per fighter per hour carrying everything else: rumours about big
   things as marked lines at the top, then bullets with headline, source link, and how long ago it was
-  published. Spanish headlines are translated; English and Ukrainian are left alone because the group
-  reads both. The language is read from the headline itself, offline, not from the feed that found
-  it — Google's English edition carries Spanish articles too.</p>
+  published. Headlines in any language other than English or Ukrainian are translated (in practice
+  mostly Spanish); those two are left alone because the group reads both. For articles from English or
+  Ukrainian feeds the headline itself is checked offline, because Google's English edition carries
+  Spanish articles too.</p>
   <p><b>A confirmation</b> — a reply threaded under the message where the rumour first appeared, so
   the update lands beneath the thing it updates instead of scrolling away from it.</p>
 
@@ -446,9 +452,10 @@
 
   <p>A posted article writes its row, opens a story, and — when it asserts a real fact about a
   fighter's career — mints a <b>claim</b>: one English sentence, with a type and a status. A claim is
-  born <span class="chip rumor">rumor</span> unless it came from an official source, which for MMA
-  means <code>ufc.com</code> and nothing else. Later articles saying the same thing are linked to it
-  as evidence, and if an official one arrives asserting it, the claim flips to
+  born <span class="chip confirmed">confirmed</span> when it comes from <code>ufc.com</code>, or when the
+  decider reads the article as the promotion's own announcement; otherwise it is born
+  <span class="chip rumor">rumor</span>. Later articles saying the same thing are linked to it as
+  evidence, and if a <code>ufc.com</code> article arrives asserting it, the claim flips to
   <span class="chip confirmed">confirmed</span> and the bot replies to its own original message.</p>
 
   <div class="cards">

@@ -76,8 +76,8 @@ The bot the group reads. Every hour, per fighter, it:
 
 1. **Fetches** Google News RSS (with the fighter's name in several languages)
    and six direct publisher feeds, 24 hours back.
-2. **Drops** links already seen, under either of an article's two addresses
-   (the feed's link and the one it resolves to).
+2. **Drops** links already seen: the feed's link at once, and the real address
+   behind a Google link after it is decoded in the next step.
 3. **Reads the article** through a zero-dependency extraction ladder (feed
    content, JSON-LD, article tag, paragraphs, og:description), recording
    which rung produced the text. Failure leaves the item headline-only.
