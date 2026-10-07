@@ -1,5 +1,11 @@
 # RingFacts
 
+> **Status, 6 October 2026.** Two bots run side by side. Production, which this
+> page describes, has posted hourly since August from the files at the top of
+> this repository. Its successor, [v0](v0/README.md), runs beside it with its own
+> database and its own test chat, and is the design going forward. Production
+> retires once v0 fetches its own articles.
+
 I follow a few athletes, and keeping up meant opening an app built to keep me
 scrolling. I didn't want to go where the news is — I wanted the news to come to
 me. Only the parts that matter, gathered from all the coverage, in the chat I
