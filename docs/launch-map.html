@@ -84,6 +84,8 @@ a{color:var(--accent)}
 .themes .cnt .none{color:var(--dim)}
 .themes .note{grid-column:2;font-size:13px;color:var(--dim);line-height:1.35}
 .hlnote{position:sticky;top:calc(env(safe-area-inset-top, 0px) + 8px);z-index:3;margin:0;justify-self:start;background:var(--accent);color:var(--panel);border-radius:999px;padding:6px 8px 6px 14px;font-size:14px;display:flex;gap:10px;align-items:center}
+/* hidden must win over each element's own display: claude.ai adds this rule to artifacts, a plain browser does not */
+[hidden]{display:none!important}
 .hlnote button{font:500 13px var(--body);border:0;border-radius:999px;background:var(--panel);color:var(--accent);padding:4px 10px;cursor:pointer;white-space:nowrap}
 
 /* the station rail: jump to a column; during a highlight it shows where the tasks are */
