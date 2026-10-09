@@ -1,30 +1,44 @@
 # RingFacts
 
+RingFacts is a news aggregation pipeline that watches a small list of people
+in the news and extracts and delivers new facts about them to the user. Today
+it is built for one domain, combat sports, and watches three MMA fighters (the
+[watchlist](watchlist.js)).
+
+It collects every article it can find about them, classifies each one (is it
+really about the person, and what kind of news it is), extracts its key fact,
+deduplicates the news so a story reported by nine outlets counts once, and
+grades its importance into three tiers: career news is posted at once, lesser
+updates and opinion go into a weekly digest, and noise is held back. Delivery
+today is a Telegram chat. A private web app, the storyboard, shows every step
+the pipeline took for each article, so its decisions can be reviewed.
+
+**Why it exists.** I follow a few athletes, and keeping up meant opening an app
+built to keep me scrolling. I didn't want to go where the news is — I wanted
+the news to come to me. Only the parts that matter, gathered from all the
+coverage, in the chat I already have with my friends.
+
+It is also how I am learning to build applications on language models, agents
+included: a digest-writing agent and a chat agent are on the roadmap. The
+sport is the fun part; the work underneath is not specific to it. Taking in a
+stream of documents, deciding which ones matter, extracting the facts,
+recognising when two sources report the same thing and routing each item by
+its importance is the same problem anywhere there is more incoming information
+than people to read it.
+
+**How it is made.** This is a learning project as much as a working
+pipeline, made by directing Claude Code and using it as a design partner. The
+commit history, [docs/decisions.md](docs/decisions.md) and [TODO.md](TODO.md)
+are kept deliberately verbose about *why* each decision was made, including
+the ones that were measured and then rejected. Where this file and the code
+disagree, the code is right.
+
 > **Status, 6 October 2026.** Two bots run side by side. Production has
 > posted hourly since August, from the files at the top of this repository.
 > Its successor, [v0](v0/README.md), runs beside it with its own database and
 > its own test chat, and is the design going forward. Production retires once
 > v0 fetches its own articles. This page describes both; the two published
 > walkthroughs describe production.
-
-I follow a few athletes, and keeping up meant opening an app built to keep me
-scrolling. I didn't want to go where the news is — I wanted the news to come to
-me. Only the parts that matter, gathered from all the coverage, in the chat I
-already have with my friends.
-
-That is what this is. It watches a small list of people (three MMA fighters,
-the [watchlist](watchlist.js)), works out which articles are actually *about*
-them and what new fact each one reports, groups the articles that report the
-same thing, and posts the result to a Telegram group: the important news at
-once, the rest in a digest, and nothing for the near-duplicates, the
-wrong-subject stories and the passing mentions.
-
-This is a learning project as much as a working bot, made by directing Claude
-Code and using it as a design partner. The commit history,
-[docs/decisions.md](docs/decisions.md) and [TODO.md](TODO.md) are kept
-deliberately verbose about *why* each decision was made, including the ones
-that were measured and then rejected. Where this file and the code disagree,
-the code is right.
 
 ## What it does
 
@@ -114,6 +128,21 @@ search aliases per language and the namesakes to watch out for;
 [`watchlist.example.js`](watchlist.example.js) documents the shape for anyone
 starting their own.
 
+## Technology
+
+- **Code:** v0 in TypeScript, production in JavaScript on Node 22,
+  experiments in Python.
+- **Runs on:** Google Cloud Run, its hourly jobs started by Cloud Scheduler;
+  every secret in Secret Manager.
+- **Memory:** Postgres on Neon, with pgvector for the embeddings.
+- **Models:** JEV for the classifier and the grouping choice, Qwen3.8 Flash and
+  DeepSeek V4 Pro through OpenRouter, Gemini embeddings; production's decider
+  is Claude Haiku 4.5.
+- **Delivery:** a Telegram bot posting to a group chat.
+- **Review:** the storyboard, a Next.js app on Vercel behind sign-in.
+- **Public pages:** GitHub Pages, from `docs/`.
+- **Built with:** Claude Code.
+
 ## How it is measured
 
 Every station is scored against one labelled set, the **golden set**
@@ -145,7 +174,7 @@ what the experiments taught.
 **Tests**, offline and without credentials:
 
 ```bash
-npm test                            # production: 548 tests, about a second
+npm test                            # production: 413 tests, about a second
 npm install --prefix v0 && npm test --prefix v0   # v0: 51 + 58 tests
 git config core.hooksPath .githooks # once per clone: run both before each commit
 ```
