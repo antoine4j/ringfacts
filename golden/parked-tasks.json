@@ -1,6 +1,17 @@
 {
   "about": "The 27 tasks left parked on the Golden Set Map when its golden set and v0 chapters closed (2026-10-06). They start in the Launch Map's backlog; a task moves onto a station only when Anton confirms it is in the Launch Map's scope.",
   "moved": "2026-10-06",
+  "moved_out": {
+    "6.9": "2026-10-09: onto the Launch Map, station 6 (task 0.12)",
+    "6.12": "2026-10-09: onto the Launch Map, station 6, after 6.9 (task 0.12)",
+    "2.2": "2026-10-09: onto the Launch Map, station 2 (task 0.12)",
+    "3.3": "2026-10-09: onto the Launch Map, station 3, before 3.9; Claude pre-marks suspects, Anton confirms (task 0.12)",
+    "3.4": "2026-10-09: onto the Launch Map, station 3, after 3.9 (task 0.12)"
+  },
+  "kept_parked": {
+    "4.26": "2026-10-09: no (task 0.12); neither fix is in v7.7, and nothing outside the claims they were built on can judge them until a new labelled slice (4.29). Parked until v8 opens.",
+    "4.27": "2026-10-09: no (task 0.12); v0 already applies the ties and stores the raw answers beside them, so the disagreements can be listed by a query at any time, and nothing downstream (the decider, the digest, the storyboard) reads the three flags. Parked until v8 opens, which may drop the flags (4.17)."
+  },
   "tasks": [
     {
       "id": "0.6",

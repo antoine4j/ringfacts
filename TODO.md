@@ -20,6 +20,9 @@ backlog: [v0/launch-map.html](v0/launch-map.html), the Launch Map.
    published pages; README rewritten; the public pages re-read against the
    code and corrected. Left: the GitHub description (drafted), the
    clean-up decisions (0.14) and the backlog sort (0.12).
+   **2026-10-09:** all three done: the GitHub description applied, 0.14
+   cleaned every copy, and 0.12 moved five candidates onto their stations
+   and kept 4.26 and 4.27 parked for v8. Left: 0.15, what leaves this repo.
 2. **The precision scoreboard** ([spec](docs/superpowers/specs/2026-10-06-precision-scoreboard.md),
    eight questions open; unparked). S: critical, it is the page that shows
    how well the pipeline does; what matters is that each rate is on the page with a
@@ -60,7 +63,7 @@ backlog: [v0/launch-map.html](v0/launch-map.html), the Launch Map.
    imitates the channel. After the switch so it shows the real thing;
    article bodies stay private (headlines, extracts, claims, digests only).
    L: the seed of the reader-facing site. Domain to be found.
-8. **Grouping fixes** (parked tasks 6.12 and 6.9, in golden/parked-tasks.json). G3 only: medium, the
+8. **Grouping fixes** (tasks 6.9 and 6.12, on the Launch Map's station 6 since 2026-10-09). G3 only: medium, the
    digest absorbs splits and the launch bar tolerates them. They move the
    over-split and over-merge rates the scoreboard shows; measured on the
    golden replay before any change.

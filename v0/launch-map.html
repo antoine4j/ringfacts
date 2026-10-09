@@ -166,7 +166,6 @@ footer{font-size:13px;color:var(--dim);max-width:100ch}
       </div></div>
     <p class="lede">What comes after v0, station by station, from 6 Oct 2026. The themes are the ranked list in TODO.md ("After v0"); tap one to light up its tasks across the stations. A task sits on a station once it is in scope; everything else waits in the backlog below. Inside a station, tasks are listed by their theme's rank. Point at any task by its number, for example "8.6". The finished work is on the history page, <a href="https://claude.ai/artifact/L412VXv6JRP2kFKQogBo7v">Golden Set and v0 Build</a>.</p>
     <div class="stats" id="stats"></div>
-    <p class="tempnote"><b>Not sorted yet (6 Oct):</b> the seven candidates in the backlog wait for a yes or no. Sorting them is the first task after the repo and README, task 0.12 on station 0.</p>
   </section>
 
   <section>
@@ -201,7 +200,7 @@ footer{font-size:13px;color:var(--dim);max-width:100ch}
 
   <section class="backlog">
     <h2>Backlog</h2>
-    <p class="lede">The 27 tasks still parked when the history page closed, unchanged, from <code>golden/parked-tasks.json</code>. Seven are candidates for a theme and wait for a yes or no (task 0.12); a yes moves the task onto its station.</p>
+    <p class="lede">The tasks still parked when the history page closed (27 on 6 Oct), unchanged, from <code>golden/parked-tasks.json</code>. Seven were candidates for a theme, each waiting for a yes or no (task 0.12); a yes moves the task onto its station and off this list.</p>
     <div class="filters" role="group" aria-label="Backlog filter">
       <button data-f="all" aria-pressed="true">All</button>
       <button data-f="cand" aria-pressed="false">Candidates only</button>
@@ -263,8 +262,8 @@ const STATIONS = [
     K("0.11",["repo"],"done","Re-read the public surfaces against v0's code",
       "Done 2026-10-06. Every claim was checked against the code. The architecture overview had ten wrong or imprecise claims and the funnel walkthrough eight (among them when a claim is born confirmed, the order of writing and sending, what the daily backup copies); all are fixed. Both stay production pages, with the status line: production runs until the switch, and v0 is described in the README, v0/README.md and its design. The test-suite overview became a dated snapshot pointing at the README. A new GitHub description is drafted, not applied; the live pages change with the next push.",
       "Prose does not fail loudly: a sentence stays true-looking while the code moves under it (AGENTS.md)."),
-    K("0.12",["repo"],"call","Sort the seven backlog candidates: yes or no on each",
-      "The first task after the repo and README. A yes moves the task from the backlog onto its station; a no leaves it parked. The seven: 6.9 and 6.12 (grouping fixes), 4.26 and 4.27 (classifier v8, which may stay parked until a missed event), 2.2 (address clean-up), 3.3 and 3.4 (body fallback, if it takes in the dirty-text work).",
+    K("0.12",["repo"],"done","Sort the seven backlog candidates: yes or no on each",
+      "Done 2026-10-09, five yes and two no. Onto their stations: 6.9 (stale leaders and chaining, first a review on the storyboard, where chaining has been seen) and 6.12 (lean toward splitting, waits on 6.9); 2.2 (clean up an article's address, tested on the golden set's six same-page pairs); 3.3 (mark the unusable saved texts, pre-marked by Claude and confirmed by hand) and 3.4 (tune the extractor, waits on 3.9). Kept parked until classifier v8 opens: 4.26 (neither wording fix is in v7.7, and nothing can judge them yet) and 4.27 (nothing in v0 reads the three news flags, and the raw answers are stored, so the disagreements can be listed any time). Each answer, with what was checked, is in golden/parked-tasks.json and the task's own card.",
       "Until they are sorted, the themes they would join show only part of their work."),
     K("0.13",["feed"],"waits","Retire production",
       "After v0 feeds itself and the launch window reads clean: stop production's hourly job, keep its database as the record (nothing is deleted), and remove the storyboard's compare page. Takes backlog task 0.6 with it. Production's measuring tools go in the same change: research/bench/ (it runs production's pipeline steps) and research/corpus/ (the 48-article and 103-article sets of August and early September, replaced by the golden set), with their two test files; research/README.md says how to find them in history. Then the top level holds one system: production's code leaves it (hunter.js, server.js, migrate.js, its schema, setup and Dockerfile, lib/, domain/, test/, the watchlist), with a README note naming the last commit that had it; v0 moves up (pipeline/ and storyboard/ at the root, v0/ gone), and its settings stay in one folder, pipeline/settings/, which takes the fighter list when v0 reads the feeds itself. Decided 2026-10-09: no separate config/ folder at the root.",
@@ -285,12 +284,15 @@ const STATIONS = [
       "A feed of its own reaches articles that Google News links fail to open."),
   ]},
   {n:2, name:"URL dedup", role:"Drops a link we have already seen.", items:[
-    K("2.4",["feed"],"todo","v0 runs its own seen-before check",
-      "Drop a link already seen under either of its addresses, the feed's link or the one it resolves to, as production does.",
+    K("2.4",["feed"],"todo","v0 skips articles it has already seen",
+      "Every hour the feeds list the same articles again, so v0 must recognise the ones it already has. The catch is that one article has two addresses. Google News does not give the real address; it gives its own link (news.google.com/rss/articles/CBMi…) that forwards to the real one (mmafighting.com/2026/10/8/topuria-…). The same article can also arrive straight from the outlet's own feed, under its real address only. So an article counts as seen when its address matches either the Google link or the real address of one already stored, as production does today (its url and resolved_url columns). Today v0 gets its articles from production, which does this check for it.",
       "Once v0 feeds itself, without it every article would be read again each hour."),
     K("2.5",["feed"],"todo","Catch one article published on several domains by its slug",
       "The same piece appears on sister sites under different domains with the same last part of the address. Matching on that part catches the copy before any text is fetched.",
       "Each copy caught here saves a fetch and a model call, and keeps a repeat out of the claim."),
+    K("2.2",["entity"],"todo","Clean up an article's address before checking whether it was seen",
+      "Moved from the backlog 2026-10-09 (task 0.12). The same page often arrives under slightly different real addresses: the phone version with /amp/ beside the full page, a trailing slash or not. Simple rules that clean the address (drop /amp/, drop the trailing slash) would let the seen-before check (2.4) recognise the copy before any text is fetched. The test cases already exist: the six pairs the golden set confirmed as the same page saved twice (task 2.1): #33/#13, #125/#115, #491/#490, #540/#533, #698/#692 and #1129/#1125. #491/#490 is the same page arriving through two feeds in one run, so the check must also compare articles within a run, not only against the database. Catching the same article on a different domain is 2.5.",
+      "Every copy caught here saves a page fetch and a model call, and keeps a repeat out of the claim."),
   ]},
   {n:3, name:"Body extractor", role:"Gets the article text from the page.", items:[
     K("3.6",["feed"],"todo","v0 fetches the article text itself",
@@ -302,16 +304,29 @@ const STATIONS = [
     K("3.8",["body"],"todo","Fall back to a reader service when the fetch fails",
       "Jina's reader, when the page refuses or returns nothing usable. New articles only.",
       "One of the spike's three free fixes."),
+    K("3.3",["body","label"],"todo","Mark the golden articles whose saved text is unusable",
+      "Moved from the backlog 2026-10-09 (task 0.12). Some saved texts are not the article: an intro only (#134), styling code only (#655), one line and the site's comment policy (#647), video pages with almost nothing saved (#44, #1045); 23 texts hit the 10,000-character cap, and some open with site menus (#1172 starts with 1,900 characters of menu). Expected 10 to 15 in the 300. Done the cheap way: Claude pre-marks the suspects automatically (cap hits, short texts, texts that open with menus or link lists, texts that name the fighter only in links) and Anton confirms that list, perhaps 20 to 30 articles, instead of reading all 300. v0's own bar (at least 400 characters naming a fighter, D32) already stops styling code and empty video pages, but not a menu that names him, which misclassified at least one reading on the storyboard. The marks are the answer key for 3.9 and for any check that calls a text unusable.",
+      "A score should tell 'the station was wrong' apart from 'its input was garbage'."),
     K("3.9",["body"],"call","Decide which text wins when two readers both read a page",
       "Our extractor beside Mozilla Readability on the same pages: menus, captions, ads, and whether the article is complete. Question 1 of the intake design (docs/design/intake.excalidraw); the review page stays on the laptop because it holds the outlets' text (research/experiments/2026-10-05-body-fetch-spike/bodies/review-1-extractor-vs-readability.html).",
       "The stations read whatever text they are given; a page full of menus and other stories reads as other news."),
+    K("3.4",["body"],"waits","Tune the extractor v0 uses, then score it on the golden set",
+      "Moved from the backlog 2026-10-09 (task 0.12); starts after 3.9, which decides whether v0 keeps our extractor or switches to Mozilla Readability, so the tuning goes to the one that wins, inside v0's own fetch (3.6). The known failures to fix (task 3.2): #655 saved styling code only; #134 the intro only; #230 cut at 10,000 characters; #937 a second, chained article never fetched; #852 lost its 'said on Instagram' line; #385 an embedded post we cannot see. Scored against 3.2's list and 3.3's marks.",
+      "Better text lifts every station after it, and only a score shows whether a fix helped."),
     K("3.10",["body"],"call","Decide whether the stations read headline and summary when there is no text",
       "The headline and the outlet's preview summary beside the full article: could the classifier and extractor get the news right from the headline side alone? Question 2 of the intake design; review page review-2-summary-vs-article.html, beside the first.",
       "If they can, the articles no way can read are judged on what the outlet shows instead of not at all."),
   ]},
   {n:4, name:"Classifier", role:"Answers nine questions per article (JEV v7.7).", quiet:"Classifier v8 waits for a missed career event in the launch window.", items:[]},
   {n:5, name:"Claim extractor", role:"Writes one sentence per article: what happened, and where.", quiet:"Nothing planned.", items:[]},
-  {n:6, name:"Semantic dedup", role:"Joins an article to a claim we have, or starts a new one.", quiet:"Grouping fixes: two candidates wait for your yes or no.", items:[]},
+  {n:6, name:"Semantic dedup", role:"Joins an article to a claim we have, or starts a new one.", items:[
+    K("6.9",["group"],"todo","Review grouping for stale leaders and chaining, then design against them",
+      "Moved from the backlog 2026-10-09 (task 0.12). The two classic failures of grouping one article at a time. Stale leader: a story is judged against a description that no longer fits it. Chaining: a story grows through its most similar member and drifts onto another story; in production on 2026-08-08 a chain of 0.80, 0.87 and 0.97 walked an Ali Abdelaziz story onto an unrelated matchmaking claim. Where v0 stands: a claim's label is recomputed from its firmest article as articles join (claim_now in v0/schema.sql), which answers the old stale-leader worry on paper but has not been reviewed; the shortlist still ranks a claim by its closest member, the set-up for chaining, limited by the 14-day window and by JEV making the pick. Chaining has already been seen on the storyboard. First step: review more claims on the storyboard for both failures, and check whether the 3 mixed claims of the training replay came from chains; then decide the design. Expected to grow once the review is done.",
+      "A stale leader posts repeats (G3) or swallows news into the wrong story; a chain swallows news (G1). Neither shows when articles are scored one at a time."),
+    K("6.12",["group"],"waits","Lean grouping toward splitting, and absorb the splits downstream",
+      "Moved from the backlog 2026-10-09 (task 0.12); starts after 6.9, whose review shows which failure actually happens and so which levers are worth building. The rule (5 Oct, docs/goals.md under G3): a story posted twice costs less than a story swallowed. Measured on the 5 Oct replay: training leans toward merging (pair precision 0.62, pair recall 0.83), validation, the fairer and smaller set, toward splitting (0.93, 0.70); the live review had 2 of 57 marked readings wrongly merged and 1 split. Levers against merging: join only when JEV is confident (it already returns a confidence with each pick); refuse a join when the extracts name a different opponent, event or date; a second look at a claim whose newest article disagrees with its label. Levers that absorb splits: the digest writer merges claims that are one story (it does not today); before a tier-1 post, a check against the last days' posts for the same fact (none today). From the review of claims #424 and #426 (one Instagram statement split across two claims): show the judge each claim's first and latest sentence, not its label alone; and make the extract's occasion name the fight or event, which conflicts with the extractor's deliberate rule that two remarks on different occasions are different news, so it is tested on the golden replay first.",
+      "G1 before G3: nothing real is swallowed, and what repeats is caught by the digest or the post-time check."),
+  ]},
   {n:7, name:"Decider and settings", role:"Gives tier 1, 2 or 3 from the claim's cell in per-fighter settings.", quiet:"Nothing planned.", items:[]},
   {n:8, name:"Digest writer", role:"Writes the weekly summary.", items:[
     K("8.4",["digest"],"todo","Pick the digest model on the blind comparison page",
@@ -387,7 +402,12 @@ const esc = s => String(s).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":
 const themeById = Object.fromEntries(THEMES.map(t => [t.id, t]));
 const STATUS = {todo:"○ to do", call:"▶ your call", waits:"‖ waits", done:"✓ done"};
 const onBoard = STATIONS.flatMap(s => s.items.map(i => ({...i, station:s.n})));
-const backlog = PARKED.map(p => ({...p, themes:BACKLOG_THEMES[p.id] || []}));
+// The backlog sort (task 0.12), as golden/parked-tasks.json records it: a yes moved the task onto a
+// station ("moved_out"); a no kept it parked and it stops being a candidate ("kept_parked")
+const MOVED = new Set(["6.9", "6.12", "2.2", "3.3", "3.4"]);
+const KEPT = {"4.26":"no, 9 Oct: parked until v8 opens", "4.27":"no, 9 Oct: parked until v8 opens"};
+const backlog = PARKED.filter(p => !MOVED.has(p.id)).map(p => ({...p, themes:BACKLOG_THEMES[p.id] || [],
+  ...(KEPT[p.id] ? {candidate_for:null, label:KEPT[p.id]} : {})}));
 
 // Top numbers
 document.getElementById("stats").innerHTML =
