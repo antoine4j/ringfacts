@@ -2,6 +2,18 @@
   "version": "0.0.1",
   "configurations": [
     {
+      "name": "public-site",
+      "runtimeExecutable": "python3",
+      "runtimeArgs": [
+        "-m",
+        "http.server",
+        "8793",
+        "--directory",
+        "docs"
+      ],
+      "port": 8793
+    },
+    {
       "name": "golden-board",
       "runtimeExecutable": "python3",
       "runtimeArgs": [
