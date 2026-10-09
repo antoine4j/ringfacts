@@ -21,7 +21,7 @@ bot — explaining *why* beats delivering silently.
 | [pages.html](pages.html) | Every page made for the project: published on claude.ai (private), local-only, or on the public site, each with its status and source file. Published at https://claude.ai/artifact/1Rygvkb1d3UdMJaJBU2RQk. **When a page is published or goes out of date, change its row and republish.** |
 | [TODO.md](TODO.md) | Build sequence, open questions, and the triggers that promote a watch item into work. |
 | [docs/architecture-overview.html](docs/architecture-overview.html) | Living architecture overview — the system as built (pipeline, claims layer, ops, autonomy). |
-| [research/README.md](research/README.md) | What measures the pipeline: experiments, the bench, the first corpus, the labelling tools. Production's files stay at the root until it retires. |
+| [research/README.md](research/README.md) | What measures the pipeline: experiments, the bench, the first corpus. Production's files stay at the root until it retires. |
 | [research/bench/README.md](research/bench/README.md) | The bench: run a battery of articles through one pipeline step on the TEST keys and the bench database, from any session. Never production keys, never the group. |
 | [research/corpus/README.md](research/corpus/README.md) | The labelled evaluation corpus — 48 articles, `tune` + `holdout`. Labels are what the system *should* answer, so it is deliberately red against today's code. |
 | [docs/article-feedback.md](docs/article-feedback.md) | Anton's verdicts on delivered articles, verbatim, with tuning signals. When he likes or dislikes an article, it goes here. Check rule changes against it. |
