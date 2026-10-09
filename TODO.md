@@ -776,7 +776,7 @@ Below the line, deliberately: nothing at the moment — the GCS backup shipped
     to prove the seam is real... never been run"), and it should stay that
     modest. Do not upgrade the language on the strength of the line count.
   - **Also fine as an answer:** decide the tool is an MMA tracker with a tidy
-    config seam, and say so plainly. That is a defensible portfolio story and
+    config seam, and say so plainly. That is a defensible way to describe it and
     costs nothing to tell honestly — it is the reframing, not the code, that
     would need to change.
 - [ ] **One article, several watched fighters: a design input for the pipeline
