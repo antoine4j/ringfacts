@@ -198,7 +198,7 @@ code{font-family:var(--mono);font-size:.9em}
 
   <details class="now-box ch-v0" id="nowbox" open></details>
 
-  <p class="lede ch-golden"><b>Where the labelling happened:</b> the Answer Key Check page, <a href="https://claude.ai/artifact/RKAaSMy3eQsse3unLHLDte">claude.ai/artifact/RKAaSMy3eQsse3unLHLDte</a> (every card, your corrections, the readers' hints). The rules in force: <code>golden/rules.md</code>. Your words per ruling: <code>golden/verdicts.md</code>. Readers' prompt beside the classifier's: <a href="https://claude.ai/artifact/JxUPbyomf27dFXeFYBKf3t">the wording page</a>.</p>
+  <p class="lede ch-golden"><b>Where the labelling happened:</b> the Answer Key Check page, a private page at <a href="https://claude.ai/artifact/RKAaSMy3eQsse3unLHLDte">claude.ai/artifact/RKAaSMy3eQsse3unLHLDte</a> (every card, your corrections, the readers' hints). The rules in force: <code>golden/rules.md</code>. Your words per ruling: <code>golden/verdicts.md</code>. Readers' prompt beside the classifier's: <a href="https://claude.ai/artifact/JxUPbyomf27dFXeFYBKf3t">the wording page</a> (private).</p>
 
   <p class="lede ch-golden"><b>Claim map:</b> every claim on a who × what grid, built from the machine's answers, for spot-checking top-down. Local: <code>python3 golden/board/map.py</code>, then <code>golden/board/map.html</code>.</p>
 
@@ -376,12 +376,12 @@ const STATIONS = [
       "Its answers were unusable as they stood.",
       "Goal G4 depends on it."),
     T("4.15","done","Build an answer key and tune the questions against it (v4 → v6)",
-      "27 Sept: 59 articles labelled blind by two Fable readers (96% agreement, Opus settled the rest); each question change scored for about a cent. v6 on held-back articles: act 65 → 80%, fact 55 → 75%, how firm 70 → 85%; source stuck near 74–84%. $0.10 of JEV. Report: claude.ai/artifact/1VGcmMZasAbN6DnBtQiH9Q",
+      "27 Sept: 59 articles labelled blind by two Fable readers (96% agreement, Opus settled the rest); each question change scored for about a cent. v6 on held-back articles: act 65 → 80%, fact 55 → 75%, how firm 70 → 85%; source stuck near 74–84%. $0.10 of JEV. Report: research/experiments/2026-09-27-answer-key/report.html, also a private page at claude.ai/artifact/1VGcmMZasAbN6DnBtQiH9Q",
       "Turns 'does this look plausible?' into a number per question.",
       "Picked v6, now on the map.",
       "The same loop tunes any later version."),
     T("4.16","done","Check the answer key, part 1: the 75 cards where the readers differed",
-      "Done 3 Oct, on the Answer Key Check page (claude.ai/artifact/RKAaSMy3eQsse3unLHLDte). The key is the three readers' answers on all 300 articles (golden/answers/readers-v1.json, never edited) with your corrections laid over them in the page's own database: 131 cards carry a correction or a check mark, 77 are marked checked. The 75 cards were grouped by the boundary the readers split on (next fight 30, health 6, result 5, opponent or other side 7, how central 10, what the source does 8, reported or official 4, other 5) and decided rule by rule, not card by card. Your words for each ruling are in golden/verdicts.md.",
+      "Done 3 Oct, on the Answer Key Check page (a private page, claude.ai/artifact/RKAaSMy3eQsse3unLHLDte). The key is the three readers' answers on all 300 articles (golden/answers/readers-v1.json, never edited) with your corrections laid over them in the page's own database: 131 cards carry a correction or a check mark, 77 are marked checked. The 75 cards were grouped by the boundary the readers split on (next fight 30, health 6, result 5, opponent or other side 7, how central 10, what the source does 8, reported or official 4, other 5) and decided rule by rule, not card by card. Your words for each ruling are in golden/verdicts.md.",
       "Makes the key yours, so a score means right, not agrees with Fable.",
       "Every later classifier version is scored against these answers.",
       "The same corrections, on all 300, become the golden labels."),

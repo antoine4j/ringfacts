@@ -1,5 +1,5 @@
 {
- "about": "A copy of Anton's corrections to the answer key, taken from the database of the Answer Key Check page (claude.ai/artifact/RKAaSMy3eQsse3unLHLDte, collection 'corrections') at the moment the labels were frozen. It keeps what golden/labels.json does not: the why of each corrected answer. Each card: the corrected answers (value and why), whether he checked it, and how ('summary' = confirmed from a grouped summary without opening the card).",
+ "about": "A copy of Anton's corrections to the answer key, taken from the database of the Answer Key Check page (a private page, claude.ai/artifact/RKAaSMy3eQsse3unLHLDte, collection 'corrections') at the moment the labels were frozen. It keeps what golden/labels.json does not: the why of each corrected answer. Each card: the corrected answers (value and why), whether he checked it, and how ('summary' = confirmed from a grouped summary without opening the card).",
  "taken": "2026-10-03, at the freeze",
  "cards_with_a_record": 166,
  "corrected_answers": 264,

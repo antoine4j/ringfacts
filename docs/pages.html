@@ -107,7 +107,7 @@ footer{font-size:13px;color:var(--dim);max-width:100ch}
         <button id="t-light" data-t="light" aria-pressed="false">Light</button>
         <button id="t-dark" data-t="dark" aria-pressed="false">Dark</button>
       </div></div>
-    <p class="lede">Every page made for RingFacts: the ones published on claude.ai, the ones that only open on this laptop, and the public site. Each row says what the page is for, whether it is still current, and which repo file it comes from. Updated 6 Oct 2026.</p>
+    <p class="lede">Every page made for RingFacts: the ones published on claude.ai, the ones that only open on this laptop, and the public site. Each row says what the page is for, whether it is still current, and which repo file it comes from. Open to anyone: the three public-site pages. The claude.ai links are private and need the owner's login; each row's source file opens from the repo instead. Updated 9 Oct 2026.</p>
     <div class="stats" id="stats"></div>
   </section>
 
@@ -118,7 +118,7 @@ footer{font-size:13px;color:var(--dim);max-width:100ch}
   <section>
     <h2>How these pages work</h2>
     <div class="how">
-      <div><h3>Published on claude.ai</h3><p>A private link that works on your phone and keeps the same address when a page is republished; claude.ai keeps the earlier versions. Most are read-only snapshots of repo files: filters and switches change only your view, and nothing is saved.</p></div>
+      <div><h3>Published on claude.ai</h3><p>A private link: only the owner can open it, and anyone else gets a login page. It works on your phone and keeps the same address when a page is republished; claude.ai keeps the earlier versions. Most are read-only snapshots of repo files: filters and switches change only your view, and nothing is saved.</p></div>
       <div><h3>Pages that saved your input</h3><p>Answer Key Check and Health Levels saved every click to their own small database on claude.ai, which only you can open and which survives a republish. I read it with a tool, not copy and paste, and the answers then go into the repo, which stays the record.</p></div>
       <div><h3>On this laptop only</h3><p>Pages that hold other outlets' article text, or are rebuilt by a script and git-ignored. They open from the file, or through a small local server in Claude's browser pane (the names in <code>.claude/launch.json</code>).</p></div>
       <div><h3>The public site</h3><p>Served from <code>docs/</code> on the main branch at antoine4j.github.io/ringfacts and live a minute after a push. Anyone can read them, so they describe what is built, never private context.</p></div>
@@ -234,7 +234,7 @@ const GROUPS = [
   {status:"done", title:"Finished, kept for the record"},
   {status:"old", title:"Superseded"},
 ];
-const WHERE = {claude:"claude.ai", local:"this laptop", site:"public site"};
+const WHERE = {claude:"claude.ai, private", local:"this laptop", site:"public site"};
 const esc = s => String(s).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
 
 /** One row: name and tags, what it is with its status note, then its source. */
