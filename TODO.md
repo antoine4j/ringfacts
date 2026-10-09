@@ -73,8 +73,8 @@ backlog: [v0/launch-map.html](v0/launch-map.html), the Launch Map.
     the demo in 7 grows into the site.
 11. **Bout as an entity, address clean-up, the fighter profile.** Low.
 
-Posts drawn from [docs/blog-backlog.md](docs/blog-backlog.md) are written
-outside this repo; items 2, 6 and 7 each feed one.
+Blog posts about the project are planned and written outside this repo;
+items 2, 6 and 7 each feed one.
 
 ## Superseded: priorities of 2026-09-04 (kept for the record)
 

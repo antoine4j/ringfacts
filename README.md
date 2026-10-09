@@ -232,9 +232,7 @@ how scheduled check-in sessions are allowed to decide things;
 [docs/sandboxed-autonomy.md](docs/sandboxed-autonomy.md), the parked design
 for letting them run fully unattended with credentials scoped so that even a
 prompt-injected run is harmless; [lib/tier.js](lib/tier.js), thresholds
-measured on archived data with the rejected alternatives written down;
-[docs/blog-backlog.md](docs/blog-backlog.md), problems from this project
-that apply to building with AI generally.
+measured on archived data with the rejected alternatives written down.
 
 Renamed from *FighterBot* on 2026-08-10; the deployed GCP resource names
 (`fighterbot`, `fighterbot-hunter`) still carry the old name (see

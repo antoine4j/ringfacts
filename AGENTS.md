@@ -127,12 +127,6 @@ code is expected stable and the group's post history becomes a contract.
 - **Keep personal context out.** This repo is public. Anton's own
   motivations and plans beyond the project live in his private notes, not
   here: the repo states what is built and the engineering reason for it.
-- **Notice post-worthy problems.** When work turns up a problem that is
-  general to building AI applications or building with AI tools, and would
-  interest people outside this project, add an entry to
-  [docs/blog-backlog.md](docs/blog-backlog.md) (problem, why it matters,
-  what happened here, evidence, what a post still needs) and say so in one
-  line. Ideas only; never draft posts unasked.
 - **Write code Anton can read** — [docs/code-style.md](docs/code-style.md) has
   the rules and a worked before/after. The load-bearing ones: a JSDoc block on
   every function (`@param`/`@returns` included — they drive editor hovers); a
