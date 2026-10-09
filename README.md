@@ -186,8 +186,18 @@ PROJECT_ID=... NEON_PROJECT_ID=... ./setup.sh
 separate on purpose: running `setup.sh` redeploys production.
 
 **The experiments and the bench** are in [research/](research/README.md).
-Article text stays on the maintainer's machine, so the experiments' scripts
-and results are here but their inputs are not.
+
+**What is public, and what is not.** The articles themselves are other
+outlets' copyrighted text, so they stay on the maintainer's machine and are
+never committed: `golden/articles.json`, the corpus files, and the batches of
+article text sent to models. Everything measured from them is here: the
+labels and rulings, each model's answers per article, the extracts, the
+scores, and the scripts and prompts that produced them. Each article is
+listed with its headline, outlet and URL (`golden/articles-meta.json`), so
+the set can be rebuilt from its sources. The models' raw per-call answers
+are kept out too, for their bulk rather than their content; the results
+built from them are here. A commit hook (`scripts/article-text-guard.js`)
+refuses any commit that copies article text.
 
 **Further reading.** [docs/self-improvement.md](docs/self-improvement.md),
 how scheduled check-in sessions are allowed to decide things;
