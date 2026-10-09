@@ -108,6 +108,10 @@ code is expected stable and the group's post history becomes a contract.
 - **Never print secret values.** Use command substitution:
   `DATABASE_URL=$(gcloud secrets versions access latest --secret=ringfacts-config | jq -r .DATABASE_URL)`.
 - **Never delete data.** The items table is the evidence record.
+- **`tmp/` is throwaway.** It holds one-off scripts and their output, and
+  may be emptied at any time. No code reads from it, and nothing in it is
+  the only copy: a script worth running twice moves to `scripts/`, and data
+  worth keeping goes where its folder's README says.
 - **Write commits for a stranger.** This history is public. The subject says
   what changed; the body says why it was worth changing, what was measured,
   and what was considered and rejected — the same standard the docs are held

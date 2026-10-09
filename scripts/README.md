@@ -6,6 +6,7 @@ secrets by command substitution, e.g.
 `DATABASE_URL=$(gcloud secrets versions access latest --secret=ringfacts-config | jq -r .DATABASE_URL)`.
 
 - **Audits** (read-only measurements): `audit-digest-tier.js`,
+  `audit-v0-coverage.js` (does v0 hold every production article and its text),
   `audit-swallowed-confirmations.js`.
 - **Backfills** (rerunnable, skip what's already done): `backfill-bodies.js`,
   `backfill-embeddings.js`.
