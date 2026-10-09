@@ -33,6 +33,9 @@ research/experiments/*/REPORT.html
 # a hand-written page; on a case-insensitive file system the line above catches it too
 !research/experiments/2026-09-27-answer-key/report.html
 research/experiments/*/__pycache__/
+# Embedding vectors cached so a score re-runs without calling the model again:
+# derivable from the experiment's texts like data/ above, and 5,250 files.
+research/experiments/*/emb-cache/
 research/experiments/*/*.bak
 # questions.json is whatever the builder last wrote; the per-pass snapshots
 # (questions-pN.json) are the record. probe.mjs was a one-question schema check

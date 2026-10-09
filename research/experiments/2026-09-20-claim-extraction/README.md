@@ -292,6 +292,9 @@ ruler (v2); `clusters-v1-chained.json` is the one with the merge bug, kept.
 `batches/` inputs for the clustering agents · `clusters.json` the ruler ·
 `prompt.md` the extraction prompt (reviewed by Anton before any spend) ·
 `run.py` extraction · `score.py` the three arms · `ITERATIONS.md` append-only.
+`emb-cache/` holds one embedding vector per article and text variant, so a
+score re-runs without calling the model; it is git-ignored since 2026-10-09
+(5,250 files, derivable), and `score.py` rebuilds what is missing.
 
 ## The test-set score of pass 4 (task 5.7), procedure written before it ran
 

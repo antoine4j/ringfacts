@@ -23,7 +23,9 @@ public roadmap at https://antoine4j.github.io/ringfacts/launch-map.html.
    clean-up decisions (0.14) and the backlog sort (0.12).
    **2026-10-09:** all three done: the GitHub description applied, 0.14
    cleaned every copy, and 0.12 moved five candidates onto their stations
-   and kept 4.26 and 4.27 parked for v8. Left: 0.15, what leaves this repo.
+   and kept 4.26 and 4.27 parked for v8. 0.15 (what leaves this repo, and
+   what the public site serves) done the same day. Left: 0.16, how the
+   public roadmap speaks to a stranger.
 2. **The precision scoreboard** ([spec](docs/superpowers/specs/2026-10-06-precision-scoreboard.md),
    eight questions open; unparked). S: critical, it is the page that shows
    how well the pipeline does; what matters is that each rate is on the page with a

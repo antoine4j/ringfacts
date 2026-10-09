@@ -22,7 +22,8 @@ has every file.
 Article text stays on this machine. Each experiment keeps its record and
 machinery in git: the findings, prompts, scripts, answers, extracts and
 scores. The sampled article bodies, the batches that carry them, the raw
-per-call answers and pages rebuilt from them are ignored by the rules in
+per-call answers, pages rebuilt from them and cached embedding vectors are
+ignored by the rules in
 [.gitignore](../.gitignore) ([why](../docs/decisions.md#article-text-out-of-git));
 the front-page README's "What is public, and what is not" says the same for
 the whole repository.
