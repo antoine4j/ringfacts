@@ -37,7 +37,9 @@ and the code disagree, the code is right.
 > Its successor, [v0](v0/README.md), runs beside it with its own database and
 > its own test chat, and is the design going forward. Production retires once
 > v0 fetches its own articles. This page describes both; the two published
-> walkthroughs describe production.
+> walkthroughs describe production. What is left before launch, task by task:
+> **[the Roadmap](https://antoine4j.github.io/ringfacts/launch-map.html)**
+> ([source](docs/launch-map.html)).
 
 ## What it does
 

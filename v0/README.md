@@ -6,7 +6,7 @@ database and its own Telegram chat. The design, and every decision behind it:
 [docs/superpowers/specs/2026-10-04-v0-design.md](../docs/superpowers/specs/2026-10-04-v0-design.md).
 The tasks, in build order: the "v0 build" chapter of Golden Set and v0 Build
 ([golden/plan.html](../golden/plan.html)). What comes after it, by station and
-theme: the Launch Map ([launch-map.html](launch-map.html)).
+theme: the Launch Map ([docs/launch-map.html](../docs/launch-map.html)).
 
 ## Layout
 
@@ -19,7 +19,6 @@ theme: the Launch Map ([launch-map.html](launch-map.html)).
 | `pipeline/stations/` | One file per station; no database |
 | `pipeline/workflow/` | The Mastra workflow the hourly job runs |
 | `pipeline/measure/` | Golden replay, daily counts, production comparison |
-| `launch-map.html` | The Launch Map: the work after v0, the ranked themes of TODO.md laid across the stations, and the parked backlog (a copy of `golden/parked-tasks.json`). Published as a private artifact at https://claude.ai/artifact/KbwUC8WgQFQwVS84xLPXK6 (republish after editing) |
 
 ## The store
 
