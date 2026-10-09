@@ -26,12 +26,11 @@ recognising when two sources report the same thing and routing each item by
 its importance is the same problem anywhere there is more incoming information
 than people to read it.
 
-**How it is made.** This is a learning project as much as a working
-pipeline, made by directing Claude Code and using it as a design partner. The
-commit history, [docs/decisions.md](docs/decisions.md) and [TODO.md](TODO.md)
-are kept deliberately verbose about *why* each decision was made, including
-the ones that were measured and then rejected. Where this file and the code
-disagree, the code is right.
+**How it is made.** It is built by directing Claude Code and using it as a
+design partner. The commit history, [docs/decisions.md](docs/decisions.md) and
+[TODO.md](TODO.md) are kept deliberately verbose about *why* each decision was
+made, including the ones that were measured and then rejected. Where this file
+and the code disagree, the code is right.
 
 > **Status, 6 October 2026.** Two bots run side by side. Production has
 > posted hourly since August, from the files at the top of this repository.
@@ -42,7 +41,7 @@ disagree, the code is right.
 
 ## What it does
 
-The group should hear about every real career event for the watched fighters
+The user should hear about every real career event for the watched fighters
 (a result, a next fight, a health problem), hear nothing else, hear each one
 once, and see "confirmed" only when an official source said it. Those four
 goals, G1 to G4, are in [docs/goals.md](docs/goals.md) with how each is
@@ -86,7 +85,7 @@ it (TODO.md, item 5).
 
 ### Production, running today
 
-The bot the group reads. Every hour, per fighter, it:
+The pipeline users get today. Every hour, per fighter, it:
 
 1. **Fetches** Google News RSS once per name alias (English, plus Ukrainian or
    Google's Spanish edition) and six direct publisher feeds, 24 hours back.
