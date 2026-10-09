@@ -1108,3 +1108,29 @@ redeploy always builds.
 **Considered and rejected:** a smarter rule. Vercel tells the command which
 commit was deployed last, not whether a person asked for the build, so no
 comparison of files can tell a redeploy from a push that changed nothing.
+
+<a id="what-the-public-site-serves"></a>
+## what-the-public-site-serves — The public site serves only the pages written for strangers
+*2026-10-09*
+
+GitHub Pages serves `docs/` on `main`, and its Jekyll build turns every
+Markdown file there into a web page. On 2026-10-09 that meant the check-in
+log, the grading files (one of them 620 KB), the article verdicts, the
+design specs and the page index were all live pages, while the site's
+front page was a 404 and the README linked only two pages. Nothing in them
+was secret, since the repository is public, but the site read as a folder
+listing rather than as something made for a reader.
+
+`docs/_config.yml` now excludes every Markdown file, the Excalidraw
+drawings, the `design/`, `grading/` and `superpowers/` folders and the page
+index. What is served: a front page (`docs/index.html`), the Architecture
+Overview, the Funnel, the test suite overview, and the Launch Map, which
+moved from `v0/` to `docs/` to become the public roadmap and is linked from
+the README. The excluded files stay in the repository and are read there.
+
+**Considered and rejected:** moving the internal documents out of `docs/`
+(dozens of links across the repository and the agent instructions point
+into it); a publishing step that copies chosen pages to a separate branch
+(a second moving part, for what a three-line exclude list does); copying the
+Launch Map into `docs/` instead of moving it (two copies drift, and `v0/`
+dissolves into the root when production retires).

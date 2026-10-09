@@ -1,0 +1,12 @@
+# GitHub Pages serves docs/ at antoine4j.github.io/ringfacts. Only the pages
+# written for strangers are served: the front page, the Architecture Overview,
+# the Funnel, the test suite overview and the Launch Map. Everything else here
+# is working documentation, readable in the repository but not published as a
+# web page. History: docs/decisions.md#what-the-public-site-serves
+exclude:
+  - "*.md"
+  - "*.excalidraw"
+  - design
+  - grading
+  - superpowers
+  - pages.html

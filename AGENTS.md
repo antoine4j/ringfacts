@@ -78,14 +78,15 @@ code is expected stable and the group's post history becomes a contract.
   a test is worth anything. Reading the code and forming an impression is not
   evidence. See docs/self-improvement.md §4.
 - **A change to how the pipeline works is not finished until the public pages
-  say so.** This repo is public, and four
+  say so.** This repo is public, and five
   surfaces describe the architecture to strangers: [README.md](README.md), the
-  GitHub repo description and topics, and the two published pages
+  GitHub repo description and topics, and the three published pages
+  [docs/index.html](docs/index.html) (the site's front page),
   [docs/architecture-overview.html](docs/architecture-overview.html) and
   [docs/funnel-walkthrough.html](docs/funnel-walkthrough.html), served from
   `/docs` on `main` and live within a minute of a push. Any change to the order
   of the gates, what decides what, a threshold, a model, or a message type
-  means re-reading all four in the same session. Prose does not fail loudly:
+  means re-reading all five in the same session. Prose does not fail loudly:
   the failure mode is a sentence that was true when written and stayed put
   while the code moved under it, and on 2026-09-11 three of those were found at
   once — a threshold quoted as 0.80 that had been 0.85 for weeks, a promise

@@ -121,7 +121,7 @@ footer{font-size:13px;color:var(--dim);max-width:100ch}
       <div><h3>Published on claude.ai</h3><p>A private link: only the owner can open it, and anyone else gets a login page. It works on your phone and keeps the same address when a page is republished; claude.ai keeps the earlier versions. Most are read-only snapshots of repo files: filters and switches change only your view, and nothing is saved.</p></div>
       <div><h3>Pages that saved your input</h3><p>Answer Key Check and Health Levels saved every click to their own small database on claude.ai, which only you can open and which survives a republish. I read it with a tool, not copy and paste, and the answers then go into the repo, which stays the record.</p></div>
       <div><h3>On this laptop only</h3><p>Pages that hold other outlets' article text, or are rebuilt by a script and git-ignored. They open from the file, or through a small local server in Claude's browser pane (the names in <code>.claude/launch.json</code>).</p></div>
-      <div><h3>The public site</h3><p>Served from <code>docs/</code> on the main branch at antoine4j.github.io/ringfacts and live a minute after a push. Anyone can read them, so they describe what is built, never private context.</p></div>
+      <div><h3>The public site</h3><p>Served from <code>docs/</code> on the main branch at antoine4j.github.io/ringfacts and live a minute after a push. Only the pages written for strangers are served (the front page, the two walkthroughs, the test suite overview and the Launch Map); <code>docs/_config.yml</code> leaves out everything else, which stays readable in the repo. Anyone can read them, so they describe what is built, never private context.</p></div>
     </div>
   </section>
 
@@ -166,13 +166,17 @@ const PAGES = [
     "All 128 golden claims on a grid you re-slice: any two answers as the axes, filters on every value, a cell opens its claims. The v7 view shows each question's errors.",
     "Rebuilt from the stored answers; republish after a new classifier run.",
     ["golden/board/map.py", "→ golden/board/map.html (git-ignored)"]),
+  P("Front page", "https://antoine4j.github.io/ringfacts/", "site", "now", "public",
+    "What RingFacts is in one paragraph, and cards for the Architecture Overview, the Funnel and the roadmap (the Launch Map).",
+    "New 9 Oct, with the rule that the site serves only the pages written for strangers (docs/_config.yml).",
+    ["docs/index.html"]),
   P("Architecture Overview", "https://antoine4j.github.io/ringfacts/architecture-overview.html", "site", "now", "public",
     "What the bot is, what it remembers, and what happens in one hour of it running.",
-    "<b>Describes production</b>, with a status line naming v0. Re-read against the code 6 Oct (ten fixes); the site shows them after the next push.",
+    "<b>Describes production</b>, with a status line naming v0. Re-read against the code 6 Oct (ten fixes).",
     ["docs/architecture-overview.html"]),
   P("The Funnel", "https://antoine4j.github.io/ringfacts/funnel-walkthrough.html", "site", "now", "public",
     "Raw headlines in, one message out: every gate an article passes, in the order the code runs them, with real items from the archive.",
-    "<b>Describes production</b>, with a status line naming v0. Re-read against the code 6 Oct (eight fixes); the site shows them after the next push.",
+    "<b>Describes production</b>, with a status line naming v0. Re-read against the code 6 Oct (eight fixes).",
     ["docs/funnel-walkthrough.html"]),
   P("Test suite overview", "https://antoine4j.github.io/ringfacts/test-suite-overview.html", "site", "old", "public",
     "What the tests cover and what they deliberately don't: three tiers, split by what each one needs to run.",

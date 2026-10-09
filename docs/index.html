@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>RingFacts</title>
+<meta name="description" content="A news pipeline that watches a few people in the news and delivers only the new facts about them.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<style>
+/* The front page of the public site. Tokens and faces are the Launch Map's (docs/launch-map.html),
+   so the served pages read as one set. */
+:root{
+  --ground:#F3F4F6; --panel:#FFFFFF; --ink:#1A1E27; --dim:#5E6573; --line:#DCDFE5;
+  --accent:#2B55C9; --red:#C8372D;
+  --display:"Barlow Condensed","Arial Narrow",system-ui,sans-serif;
+  --body:"IBM Plex Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  color-scheme:dark;
+  --ground:#12151B; --panel:#1B1F27; --ink:#E7E9EE; --dim:#9AA1AE; --line:#2C323D;
+  --accent:#7C9BF0; --red:#E4675E;
+}}
+:root[data-theme="dark"]{
+  color-scheme:dark;
+  --ground:#12151B; --panel:#1B1F27; --ink:#E7E9EE; --dim:#9AA1AE; --line:#2C323D;
+  --accent:#7C9BF0; --red:#E4675E;
+}
+body{margin:0;background:var(--ground);color:var(--ink);font:16px/1.55 var(--body);padding:32px 16px 56px}
+.wrap{max-width:860px;margin:0 auto;display:grid;gap:28px}
+h1,h2{font-family:var(--display);font-weight:700;letter-spacing:.01em;margin:0}
+h1{font-size:52px;line-height:1}
+h1 span{color:var(--red)}
+.lede{color:var(--dim);margin:10px 0 0;max-width:68ch}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px}
+.card{display:grid;gap:6px;align-content:start;background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:16px 18px;color:inherit;text-decoration:none}
+.card:hover{border-color:var(--accent)}
+.card:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.card .kind{font:600 11.5px var(--body);letter-spacing:.07em;text-transform:uppercase;color:var(--dim)}
+.card h2{font-size:26px;line-height:1.05;color:var(--accent)}
+.card p{margin:0;font-size:14.5px;color:var(--dim)}
+footer{font-size:14px;color:var(--dim)}
+a{color:var(--accent)}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <h1>Ring<span>Facts</span></h1>
+    <p class="lede">A news pipeline that watches a few people in the news and delivers only the new facts about them. It collects every article it can find, classifies each one, extracts its key fact, counts a story reported by nine outlets once, and grades its importance: career news is posted at once, lesser updates go into a weekly digest, and noise is held back. Today it watches three MMA fighters and posts to a Telegram chat.</p>
+  </header>
+
+  <nav class="cards" aria-label="Pages">
+    <a class="card" href="architecture-overview.html">
+      <span class="kind">How it works</span>
+      <h2>Architecture Overview</h2>
+      <p>What the bot is, what it remembers, and what happens in one hour of it running.</p>
+    </a>
+    <a class="card" href="funnel-walkthrough.html">
+      <span class="kind">How it decides</span>
+      <h2>The Funnel</h2>
+      <p>Real articles followed through every gate, from a feed to a post or a quiet hold.</p>
+    </a>
+    <a class="card" href="launch-map.html">
+      <span class="kind">What is next</span>
+      <h2>The Roadmap</h2>
+      <p>What is left before launch, station by station and task by task, with the parked backlog.</p>
+    </a>
+  </nav>
+
+  <footer>The code, the decisions behind it and how it is measured: <a href="https://github.com/antoine4j/ringfacts">github.com/antoine4j/ringfacts</a>. The two walkthroughs describe production, the bot running today; its successor, v0, is described in the repository.</footer>
+</div>
+</body>
+</html>
