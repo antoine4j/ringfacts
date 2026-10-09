@@ -79,8 +79,8 @@ Rules for adding to it:
 
 ### An agent grading its own system is not measuring anything; there is no ground truth
 `general` · `measured` · **found independently by both** · *FB 2026-09-17; RF-L02, L03*
-- **Evidence (FB):** ~23 articles project-wide carry Anton's own bucket
-  judgement; 1 of the 300 (#838). Fable readers gave second opinions on ~90;
+- **Evidence (FB):** ~23 articles project-wide carry the maintainer's own
+  bucket judgement; 1 of the 300 (#838). Fable readers gave second opinions on ~90;
   labelled as such in `fable-verdicts.json`. "Accuracy" here means agreement
   with a model's reading.
 - **Evidence (RF):** three times a correct decision was reported as a failure
@@ -102,7 +102,7 @@ Rules for adding to it:
   were real; what was wrong was *where the line sat*, and nothing in the data
   can tell you that.
 - **Evidence (FB):** the 22-article blind set is exhausted; every open question
-  in both experiment READMEs is one only Anton can answer.
+  in both experiment READMEs is one only the maintainer can answer.
 - **Does not say:** that labels help with checkable facts (see G4 below).
 
 ### Confidence measures the menu, not the article
@@ -119,7 +119,7 @@ Rules for adding to it:
   beside confidence caught it. Name one guard per experiment, up front.
 
 ### Change one thing, then look at every article that moved
-`general` · `measured` · *FB 2026-09-18, Anton's rule*
+`general` · `measured` · *FB 2026-09-18, the maintainer's rule*
 - **Evidence:** `whose_judgement` decides **0%** of buckets in the final rules,
   `sourcing` 12%, the other four 60–81%. `he_fought` was added, tested, and
   changed one bucket by accident. `evaluate.py` prints `<-- never` beside any
@@ -138,12 +138,12 @@ Rules for adding to it:
 - **Carry:** the log shows what was sent; it cannot show what should have been.
 
 ### Review extracts by convergence, and spot-check where convergence would lie
-`general` · `observed` · *FB 2026-09-22, Anton's method*
+`general` · `observed` · *FB 2026-09-22, the maintainer's method*
 - **Claim:** when each article is extracted in isolation, agreement between
   extracts of one story is evidence against invention, and a reviewer can
   judge extracts instead of reading articles.
-- **Evidence:** Anton reviewed the extraction report by extracts alone,
-  reading articles only to spot-check. His reasoning: each call sees one
+- **Evidence:** the extraction report was reviewed by extracts alone,
+  reading articles only to spot-check. The reasoning: each call sees one
   article and nothing else, so independent extracts that converge were not
   hallucinated. Story-125: three outlets, three claims agreeing on the fact;
   a check of the bodies confirmed the detail one claim kept was in all three.
@@ -230,7 +230,7 @@ Rules for adding to it:
   act 56 → 72%, fact 59 → 82%, and the gains held on 20 held-back articles
   (act 65 → 80%, fact 55 → 75%).
 - **Does not say:** that the key is right — it is the readers' reading of
-  a guide written by the session; Anton's corrections make it a key.
+  a guide written by the session; the maintainer's corrections make it a key.
 - **Noise:** the same question moved 2 of 39 articles between identical
   runs. A gain of one or two articles is not a finding.
 
@@ -314,7 +314,7 @@ Rules for adding to it:
 - **Evidence:** a v2 question set folded sourcing into kind (booking official /
   reported / rumoured). On 300 golden articles the model answered a booking
   option for interviews that merely mention the booked fight: ten articles
-  Anton graded 2 composed to bucket 1, accuracy on his 154 graded rows fell
+  graded 2 by hand composed to bucket 1, accuracy on the 154 hand-graded rows fell
   from 76% (six old questions) to 74%. Requiring in the *rule* that nobody is
   quoted, or the promotion speaks, or the act is fight-week coverage, took the
   same answers to 84% (`research/experiments/2026-09-25-answers-to-buckets/REPORT.html`).
@@ -324,7 +324,7 @@ Rules for adding to it:
 ### "Has a follower already heard this" is not a question one article can answer
 `general` · `measured` · *FB 2026-09-25*
 - **Evidence:** the old `novelty` question's "restates known facts" option fired
-  on nine of the 34 graded articles Anton called bucket 2: fresh quotes
+  on nine of the 34 graded articles ruled bucket 2: fresh quotes
   (Makhachev on Topuria three times, Pimblett) that read as old to a model
   with no memory. Its other half, "nothing about him / filler", was bucket 3 in
   23 of 24. A `depth` question that asks only how much *this* text says about
@@ -447,7 +447,7 @@ Rules for adding to it:
   *present and still empty*: #655, BetMGM's prediction page, was stored as
   10,000 characters of inline stylesheet — the "paragraphs" rung caught a
   `<p>` full of CSS. The extractor said NO CLAIM twice, correctly; the page
-  itself predicts Donchenko wins. Anton found it by opening the page
+  itself predicts Donchenko wins. It was found by opening the page
   (2026-09-23). Three of 300 bodies read as CSS by brace density; #655 is
   the clear case. A scraping defect wearing a classifier costume.
 - **Evidence (v0, 2026-10-05):** the share is not even across fighters, and
@@ -476,8 +476,8 @@ Rules for adding to it:
 - **Evidence (FB):** production embeds headline + first 1,500 chars
   (`hunter.js`) and the matcher sends 1,200 (`lib/matcher.js`); 92% of sample
   articles are longer, the model sees ~32% of the text, and on Sport.ua the
-  first 1,500 chars are largely navigation. Anton proposed a name-centred
-  window; FB has **not tested it** — RF's result says it is worth ~$0.06.
+  first 1,500 chars are largely navigation. A name-centred window was
+  proposed; FB has **not tested it** — RF's result says it is worth ~$0.06.
 - **Also (FB, 2026-09-22):** furniture puts articles *into* the pipeline,
   not only noise into their text. #948, a Gaethje-on-Tsarukyan piece, is in
   the Topuria sample because a "LATEST NEWS" cross-link in its feed body
@@ -586,10 +586,10 @@ Rules for adding to it:
   day, consensus pass 16): all 24 Soriano result articles answer `result`,
   all 3 booking articles `announcement`, the 5 weigh-in pieces `preview`;
   no crossover. One fight, 42 articles — the complete set for that fight,
-  since the sample holds every Donchenko article with text. Anton ruled it
+  since the sample holds every Donchenko article with text. It was ruled
   firm enough to build on: a single misread lands one article in the wrong
   pile; it does not silence a story.
-- **Does not say:** that a booking and a result are one story — Anton's
+- **Does not say:** that a booking and a result are one story — the
   ruling is that they are not (different occasions). It says similarity
   alone cannot enforce that; the classifier's `news_kind` can, on this
   case, and the extractor's `date` is a second check. **Would overturn:** a
@@ -600,10 +600,11 @@ Rules for adding to it:
 - **Evidence:** Jesús Gallo (Topuria's conditioning coach) spoke once on
   Jorge Ebro's YouTube channel. Libertad Digital wrote it up on 2026-08-12
   (#152) and again on 2026-08-27 (#412), same outlet, same interview; Infobae
-  the same day (#402) dates the interview "a few weeks ago". Anton ruled
+  the same day (#402) dates the interview "a few weeks ago". The ruling made
   the two Gallo pieces one story by occasion. Production's dedup and every
   pair set in these experiments look back **3 days**; that window cannot
-  put #152 and #412 in front of the same judge. Anton, ruling: *"fifteen
+  put #152 and #412 in front of the same judge. In the ruling's words:
+  *"fifteen
   days apart, which goes against the three-day window — something we need
   to take into account when architecting the solution."*
 - **Does not say:** how common this is — one case, found by hand, in 300
@@ -687,7 +688,7 @@ Rules for adding to it:
 ## 6. The questions both projects reached and neither could answer
 
 These are carried **unanswered**. An agent that resolves one by choosing for
-itself has reintroduced the error in §1's second entry. Only Anton answers them.
+itself has reintroduced the error in §1's second entry. Only the maintainer answers them.
 
 - **What is one piece of news?** RF-L05, L27, M6 and FB's "fact versus
   occasion" are the same question. RF: one subject gave one outlet several
@@ -736,7 +737,7 @@ itself has reintroduced the error in §1's second entry. Only Anton answers them
 **What was done.** After 27 labelling rules had been decided card by card,
 the 300 golden articles were re-read blind by two Fable readers under the
 final guide, then the 26 articles where they differed by a third reader
-that saw one article at a time, then 20 settled cards were read by Anton.
+that saw one article at a time, then 20 settled cards were read by the maintainer.
 Records: `research/experiments/2026-09-27-answer-key/reread-1003` and `full-reread`.
 
 - **A rule tested only on its own examples is not tested.** Each rule had

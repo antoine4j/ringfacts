@@ -356,8 +356,8 @@ embedded items / 8 days:
 - Under posted-only anchors, **13 holds flip to posts** (~1.6/day): mostly
   genuinely different stories the chain had wrongly blocked, plus the cost
   side — two same-story paraphrases sitting just under the threshold and one
-  junk item now relying on the matcher's wrong-subject net. Anton accepted
-  that trade explicitly.
+  junk item now relying on the matcher's wrong-subject net. That trade was
+  accepted explicitly.
 - **The window stays 7 days, measured**: every held echo with a posted
   lookalike arrived within 6.0 days of it, and the 7/14/21/28-day variants
   produced identical results. The chain was the only thing extending memory.
@@ -373,8 +373,8 @@ A confirmation is created when `confirmClaim` writes the rumor→confirmed flip,
 and a dry run writes nothing — so for its first week the dry run silently
 omitted confirmations from its preview, and the preview branch in the send
 path was dead code. Since dry runs are the pre-deploy rehearsal and
-confirmations are the rarest, least-rehearsed event in the system, Anton
-decided the rehearsal must show them.
+confirmations are the rarest, least-rehearsed event in the system, the
+rehearsal must show them.
 
 The mechanism keeps dry-run semantics exact: reads happen, writes never do.
 `claimIfRumor` (lib/db.js) is the read half of `confirmClaim` — same row, same
@@ -389,7 +389,7 @@ Neon's free tier keeps six hours of point-in-time restore and nothing else.
 Until today a mistaken migration, a bad script, or a poisoned autonomous
 session had a six-hour window to be noticed before the archive — every
 article, every verdict, every claim link since 2026-08-06 — was gone for good.
-The boundaries Anton set for autonomous work (self-improvement §8) make a
+The boundaries set for autonomous work (self-improvement §8) make a
 backup the precondition for any destructive migration, so it went in first.
 
 **Shape.** `lib/backup.js`, zero dependencies: `SELECT *` on the three tables,
@@ -419,7 +419,7 @@ deletes objects after 30 days; a 30-day retention policy stops anything —
 including the job's own token — from deleting or overwriting one earlier.
 Watch item: the hunter runs as the default compute service account, which
 holds `roles/editor` on the project, so "create-only" is enforced by the
-retention policy alone (unlocked; locking is irreversible and Anton's call),
+retention policy alone (unlocked; locking is irreversible and the maintainer's call),
 not by IAM. Narrowing that account is separate work.
 
 <a id="untrusted-source"></a>
@@ -438,12 +438,12 @@ zero had ever yielded a body, and five had reached the group.
 **Considered and rejected.** A blocklist for mshale.com (2026-08-09: papers
 over a matcher job; 2026-08-15: reopened when the pattern outgrew the namesake
 theory). "No body ⇒ hold" (9 of 13 posted-without-body items were legitimate,
-including Anton's liked Tribuna piece — Bloody Elbow, Diario AS and Eurosport
+including the liked Tribuna piece — Bloody Elbow, Diario AS and Eurosport
 block fetchers too). A wrong-subject ratio alone (Bloody Elbow runs 35%, MMA
 Fighting 45% — normal for surname-filtered feeds; a ratio rule sits one bad
 week from muzzling a real outlet).
 
-**Chosen (Anton, 2026-09-03): three conditions, all required.** Hold an item
+**Chosen (2026-09-03): three conditions, all required.** Hold an item
 when its domain has **≥5 prior archive items**, **≥50% of them held
 wrong-subject**, and **zero bodies ever extracted**. The bodies condition is
 what separates spam from blocked-but-real outlets; the history floor is what
@@ -479,7 +479,7 @@ held row remains findable by the check-in runs.
 `digestTierFor` (lib/tier.js) used to let a headline that named the subject
 keep its full line whatever the matcher said. That was the residual-#23
 decision of 2026-08-09: a name the reader can see, folded, reads as a bug.
-Anton reversed it on 2026-08-11 after three posts in one day (#110, #115,
+It was reversed on 2026-08-11 after three posts in one day (#110, #115,
 #116) were backdrop mentions saved only by their headline — for a subject
 whose press is name-rich, the escape was not an edge case but the main door.
 The measurement then (corpus 64% → 88%, zero regressions) sat unbuilt for
@@ -507,7 +507,7 @@ about him — the mention-kind field, not the ordering.
 Demoting a mention only helps if it lands somewhere. Until today a demoted
 item rode the hourly digest as one link in an "↘ Also mentioning" line — or,
 when the run had nothing else, was held with `held_reason: 'tangential'` and
-never retried. Anton's call on 2026-08-11: **real news posts on the hour;
+never retried. The call on 2026-08-11: **real news posts on the hour;
 folded mentions accumulate and ship once a day** in one message grouped by
 fighter, or not at all when there is nothing. Carrying them to the next real
 digest was rejected (for a recovering fighter that may be weeks away, and
@@ -525,25 +525,25 @@ watchlist order, newest first, one line per distinct headline with every
 outlet that carried it, Google's " - Outlet" suffix stripped), posts it, and
 marks the rows posted. A failed send leaves them queued for tomorrow.
 
-**Not yet scheduled.** goals.md says a new post format ships only after Anton
-has seen it. The Cloud Run job and its daily Cloud Scheduler trigger are in
+**Not yet scheduled.** goals.md says a new post format ships only after the
+maintainer has seen it. The Cloud Run job and its daily Cloud Scheduler trigger are in
 setup.sh; the preview from a dry run against the archive is in the 2026-09-04
 check-in entry. Until the trigger exists, queued mentions wait in the
 database and age out after seven days — the design's own answer to stale
 links, and nothing the group would have wanted loudly anyway.
 
 **Held back 2026-09-04, the same evening.** After the first grading pass
-Anton decided he does not want a slew of tangential articles in the chat at
-all — the mentions tier is the pipeline's approximation of bucket 3, and a
+the call was that a slew of tangential articles does not belong in the chat
+at all — the mentions tier is the pipeline's approximation of bucket 3, and a
 daily digest of it would deliver bucket 3 on purpose. The trigger is not
 created and will not be; the code path stays (it is the sweep a future
 aggregated page would use), and queued rows sit in the archive as held,
-auditable items. The only delivery shape Anton would consider is **one link to
+auditable items. The only delivery shape worth considering is **one link to
 a page** that aggregates them — needs a public host the backup bucket
 deliberately is not; parked in TODO until the main digest is near 90%.
 
 **Deliberately left out:** translation of foreign headlines (the mention
-is a quiet link, not a headline the group reads; revisit if Anton wants it),
+is a quiet link, not a headline the group reads; revisit if wanted),
 and the usefulness gradient inside mentions (assessment > context > orbit) —
 the digest makes misranking cheap, so the examples pile up first.
 
@@ -576,7 +576,7 @@ per-subject loop stops treating it as fatal).
 ## claim-discipline — Loud claims need a concrete event about the subject
 *2026-09-04*
 
-The first grading pass, scored through the bench against Anton's buckets,
+The first grading pass, scored through the bench against the graded buckets,
 showed the matcher minting alert-grade claims on non-events: "result" for
 the subject's June loss whenever an August article mentioned it (five
 items), "injury" for an opponent's broken hands and for another fighter's
@@ -588,7 +588,7 @@ live rumor claims in the archive (#449, #575).
 **Measured** on the graded month's tune split (45 items, K=5, test key;
 the older 48-item corpus as a regression set, K=3):
 
-| | pipeline bucket = Anton's | bucket 2 right | bucket 3 right | false loud claims | old corpus |
+| | pipeline bucket = graded | bucket 2 right | bucket 3 right | false loud claims | old corpus |
 |---|---|---|---|---|---|
 | production prompt | 22/45 | 8/13 | 13/31 | 13 | 11/25 |
 | v1: claim types defined, role guidance | 30/45 | 12/13 | 17/31 | 7 | 13/25 |
@@ -599,8 +599,8 @@ v2 and v3 are within noise of each other on the total; v3 is chosen because
 every one of its remaining misses is a bucket-3 article shown as a main
 item — the mention-kind problem, next in TODO — and none is a false claim.
 Stability rose from 36/45 to 40/45 items giving the same answer all five
-times. **Holdout, run once** (44 items, K=5, after Anton raised the shared
-cap): production prompt **25/44**, v3 **29/44**; false loud claims 6 → 3.
+times. **Holdout, run once** (44 items, K=5, after the shared cap was
+raised): production prompt **25/44**, v3 **29/44**; false loud claims 6 → 3.
 The three survivors are two `result` claims the model gave no date for
 (the gate acts only on evidence) and one `announcement` for a betting
 preview of a fight that really is booked. The gain generalises; it is not
@@ -644,7 +644,7 @@ it a quote, but a definition is not a guarantee. Gate added to
 or date becomes type `other` — still a real claim and a main item, never a
 ceremony, never a rumor line. Claim #51 was corrected in place
 (`announcement` → `other`, status untouched, the Telegram message left for
-Anton to decide on).
+the maintainer to decide on).
 
 **Found on the way.** The bench handed the matcher the subject *object*, so
 every prompt it had ever sent read "[object Object]" as the fighter's name,
@@ -661,11 +661,11 @@ graded month was a bucket-3 article the tier rule kept as a main item: the
 subject's old loss retold in another fighter's story, a rival's prediction
 list, lifestyle, training trivia. The matcher's existing answers were not
 wrong on their own terms — "supporting" for Topuria in a Gaethje profile is
-defensible — they just never asked Anton's question: *would a follower of
+defensible — they just never asked the question that matters: *would a follower of
 this fighter learn something new about him?*
 
 **Decision.** Ask exactly that, as a fourth field in the same tool call:
-`news_for_followers: yes | no`, with Anton's own borderline rulings (the
+`news_for_followers: yes | no`, with the maintainer's own borderline rulings (the
 `prompt` split of research/corpus/graded-2026-09.json) reworded as the examples, and
 the "other fighter's story" pattern spelled out. Code routes on it
 conservatively: a **loud claim is never folded** (an event is news whatever
@@ -689,7 +689,7 @@ article got a `no` in v4, and in v5 the two bucket-2 items that ended in
 bucket 3 (#445 tune, #266 holdout) were folded by the *role* rule as
 `passing`, as they already were before today — headline-only items about
 Gaethje and Pimblett. The one bucket-2 item the new gate itself folded
-(#47) is a repeat of #43, which Anton ruled bucket 3; its label is the
+(#47) is a repeat of #43, which was ruled bucket 3; its label is the
 inconsistent one. Limiting the fold to articles with a body was recomputed
 offline and changes nothing on tune and one item each way on holdout, so it
 was not added. Prompt grew from ~4,300 to ~5,200 characters (+17% input
@@ -717,7 +717,7 @@ Goal 1 would have failed on the one event the group is waiting for.
 
 The same evening the opposite failure showed up live: Topuria's video letter
 to his son became claims 51, 52 and 53 and two messages (200, 201), three
-angles on one fact ("201 and 200 are the same news" — Anton). One rule had
+angles on one fact (the ruling: "201 and 200 are the same news"). One rule had
 to name both edges: MATCH is about the fact, not the story — the same fact
 from another angle is a MATCH, but the stages of one fight (booking, weigh-in,
 result, bonus, callout) are different facts.
@@ -775,7 +775,7 @@ archive (docs/story-matching-options.md): tune the embedding threshold (A),
 fetch bodies before the hold (B), a similarity band referee (C), and stories
 as objects (D). A and B could not tell "same fact" from "same topic" — a
 connected story sits as close to a root as a repeat does. D placed two and a
-half times as many repeats in the right story as A. Anton's decision
+half times as many repeats in the right story as A. The decision of
 2026-09-06: build D with B inside it, on the branch, bench-gated.
 
 **What it is.** A `stories` table: root article, one-sentence fact, the
@@ -787,8 +787,8 @@ answers **join / new / reaction / wrong_subject** plus the bucket fields it
 always answered. A join is held (`held_reason = 'story'`) and linked to the
 story's claim like a MATCH used to be, so rumor → confirmed is untouched.
 The old threshold gate remains only as the fallback when the decider cannot
-answer (no key, a thrown call, an UNSURE), at 0.85 on all anchors — Anton's
-option A. Stories rather than `claims.reacts_to`: claims keep their lifecycle
+answer (no key, a thrown call, an UNSURE), at 0.85 on all anchors — option
+A. Stories rather than `claims.reacts_to`: claims keep their lifecycle
 semantics and a NO_CLAIM article can still anchor a story.
 
 **Backfilled** the same day, additively: 193 stories over 624 archived
@@ -804,7 +804,7 @@ unchanged runs sat at 308–315. Useful stories swallowed **5** (band 6–11):
 #21 → #5 and #243 → #135 are the same remarks by the labels' own later
 rulings, #100 → #77 is the "somewhat separate" opinion piece, #594 → #567 two
 outlets' odds-and-pick pieces, and #598 → #490 a fight preview folded into
-the UFC.com feature — the one fold Anton would not want. The fight-week
+the UFC.com feature — the one fold that should not happen. The fight-week
 block rescued #490 (its own story now). Shortlist recall 306/346. The gate
 line read FAIL on "held ≥ 307" because it did not count the 8 dropped
 repeats; the gate now counts "never posted".
@@ -826,9 +826,9 @@ rules block is smaller than Haiku's minimum cacheable prefix (cache reads
 the bucket regression on the graded month (about $0.50) was **not run** —
 the one-third reserve for production comes first. It is the next paid run.
 
-**Shipped 2026-09-06 night** on Anton's word (image `64fecc7a`), with pass 2 at 304 never posted / 7 swallowed — the bottom of the band — and the three watch items below open. Earlier text kept as written:
+**Shipped 2026-09-06 night** on the maintainer's word (image `64fecc7a`), with pass 2 at 304 never posted / 7 swallowed — the bottom of the band — and the three watch items below open. Earlier text kept as written:
 
-**Not shipped, as first written.** The branch waits for Anton to read this table. Three
+**Not shipped, as first written.** The branch waits for the maintainer to read this table. Three
 things before a deploy: the bucket regression (tune split, K=3, was 38/45
 with 0 false loud claims); a second look at #5 and #366; and his prompt
 review for content (docs/article-feedback.md rulings vs the rules block).
@@ -890,7 +890,7 @@ is read before it is called a failure.
 The scale was labelled and probed on 4 October, and **taken no further**:
 what reads the classifier's answers downstream (the per-fighter settings
 table, cell → tier) is not designed yet, so tuning a health question for it
-would be guesswork. Anton levelled the 8 training and validation articles
+would be guesswork. The maintainer levelled the 8 training and validation articles
 the key calls health news (golden/health-levels.json): a level rates what
 the article's own news changes, judged from the article alone; whether it
 was the first to report it is left to the claims layer. The probe
@@ -1041,11 +1041,11 @@ embedded, and asked the matcher, all from the one secret.
 Reads fall from about 3,600 a month (each job start read each of its
 secrets) to one per start. The six old secrets stay until the new one has
 carried production for at least a day; only then are their versions
-destroyed, on Anton's word, since that cannot be undone. Until then the
+destroyed, on the maintainer's word, since that cannot be undone. Until then the
 project holds seven or eight active versions, about $0.002 a day each
 over the free six.
 
-Done the same day, on Anton's word, after eight hours instead of a day:
+Done the same day, on the maintainer's word, after eight hours instead of a day:
 every hourly run since the switch at 03:20 had succeeded (production to
 10:17 Pacific, v0 every run), no Cloud Run service or job mounted any of
 the six, and nothing else (no build trigger, function or workflow) could
@@ -1080,8 +1080,8 @@ Gemini had stored for them, so claims grouped by either route are compared
 on the same scale. Measured price: about 505 tokens and $0.00008 a
 reading at $0.15 per million tokens, so the archive's rest costs about
 $0.07. Each run counts how many readings went by each route
-(`embedded_via_gemini`, `embedded_via_openrouter`). Anton allowed the
-spend on 2026-10-05, overriding the free-only default for embeddings.
+(`embedded_via_gemini`, `embedded_via_openrouter`). The spend was
+allowed on 2026-10-05, overriding the free-only default for embeddings.
 
 **Considered and rejected:** waiting for the allowance each day (live news
 would post a day late during the archive's catch-up); production's Gemini

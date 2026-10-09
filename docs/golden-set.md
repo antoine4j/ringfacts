@@ -1,7 +1,7 @@
 # The golden set
 
-The one labelled data set every station is scored against. Decided by
-Anton on 2026-09-24: it supersedes [research/corpus/](../research/corpus/README.md) (48
+The one labelled data set every station is scored against. Decided on
+2026-09-24: it supersedes [research/corpus/](../research/corpus/README.md) (48
 articles, `tune` + `holdout`) and
 [docs/article-feedback.md](article-feedback.md) as evaluation data. Those
 stay as history; nothing new is measured on them.
@@ -15,22 +15,22 @@ The experiments keep their working copies; golden holds the frozen ones.
   articles that had text. Topuria 182, Donchenko 99, Amosov 19. Frozen:
   `golden/articles.json` (copied once from the role-questions experiment;
   `pull.mjs` never runs again). The bodies are other outlets' text, so that
-  file stays on Anton's machine; the repository holds
+  file stays on the maintainer's machine; the repository holds
   `golden/articles-meta.json`, the same articles without their text.
 - **128 claims** — Fable's grouping of those articles by occasion, three
-  passes, then Anton's rulings applied: every multi-article claim (v3), then
+  passes, then the maintainer's rulings applied: every multi-article claim (v3), then
   the singleton pass (v4, one join): `golden/claims.json`.
   47 claims hold more than one article, 81 are singletons. A *claim* is
   one occasion with its articles; *story* is reserved for the larger
   thing that may span several claims, not yet labelled.
-- **Anton's rulings**, claim by claim, verbatim and append-only:
-  `golden/verdicts.md`. He reviews in the
+- **The maintainer's rulings**, claim by claim, verbatim and append-only:
+  `golden/verdicts.md`. The review happens in the
   extraction report (`report.py` → `REPORT.html`), judging by the
   extracted claims: when independent extracts converge, the article is
   what they say it is.
 
 Why this set: one review flow covers every station, and reading extracts
-is the fastest way Anton can verify 300 articles by hand.
+is the fastest way to verify 300 articles by hand.
 
 ## Caveats, stated once
 
@@ -53,7 +53,7 @@ is done regarding him, the fact asserted and how firm it is, and the bout.
 They are given by correcting the claim map (`golden/board/map.py`), whose
 axes are defined first so every claim fits one value on each. Tiers are
 not labelled per claim any more: they come from a per-fighter settings
-table (cell → tier), checked against Anton's tier on a sample of claims.
+table (cell → tier), checked against a hand-given tier on a sample of claims.
 The table below is the earlier plan, kept for its bout, extract and
 per-article fields; `kind`, `speaker` and `tier` are superseded. The record
 of the work, station by station: [golden/plan.html](../golden/plan.html);
@@ -78,14 +78,14 @@ Per **article**, only where it applies:
 | `same_page_as` | id of the article this is an exact copy of (the AMP edition case) | URL dedup |
 | `primary_source` | the article, or an outside link, the digest should point to | Digest writer's "link the essay, not the write-up" |
 
-Anton's words stay in `golden/verdicts.md`.
+The rulings' own words stay in `golden/verdicts.md`.
 
 **What was frozen (2026-10-03).** The labels took a different shape from
 the per-story fields planned above. Since 28 September each **article**
 carries nine answers (how central he is, whose words, what the source
 does, what new fact, how firm, and four yes/no questions), decided under
 27 named rules ([golden/rules.md](../golden/rules.md)). `golden/labels.json`
-holds them for all 300 articles: the first readers' answers with Anton's
+holds them for all 300 articles: the first readers' answers with the maintainer's
 corrections folded in, and for each article how it was checked (read by
 him: 97; confirmed by him from a summary: 27; left to two blind readers of
 a full re-read: 176). Nine answers where two values are accepted are in
@@ -127,7 +127,7 @@ across otherwise.
 1. Finish the rulings: all 47 multi-article claims ruled (2026-09-25); the
    seven singleton pairs Fable could not place ruled (2026-09-27, v4). The
    other 74 singletons stand as built and are checked in passing while labelling.
-2. Pre-flag body suspects and exact copies so Anton only confirms: done,
+2. Pre-flag body suspects and exact copies so the maintainer only confirms: done,
    14 settled on the live pages (2026-09-27).
 3. Label every article on nine questions and check the answers: done
    2026-10-03 (`golden/labels.json`; the steps are in the plan page's task
