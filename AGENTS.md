@@ -18,14 +18,14 @@ bot — explaining *why* beats delivering silently.
 | [docs/decisions.md](docs/decisions.md) | Why the code is the way it is — measurements, incidents, rejected alternatives. Code points here instead of carrying it. |
 | **[docs/lessons.md](docs/lessons.md)** | **What the experiments have taught us about the data and the models — findings with evidence, confidence and caveats, not rules. Read before designing or running an experiment; add to it when one ends.** |
 | **[docs/golden-set.md](docs/golden-set.md)** | **The one labelled set every station is scored against — 300 articles, 128 claims, Anton's rulings; its caveats and the tune/test split. The data is in [golden/](golden/README.md). Supersedes research/corpus/ and article-feedback.md for evaluation.** |
-| [pages.html](pages.html) | Every page made for the project: published on claude.ai (private), local-only, or on the public site, each with its status and source file. Published at https://claude.ai/artifact/1Rygvkb1d3UdMJaJBU2RQk. **When a page is published or goes out of date, change its row and republish.** |
+| [docs/pages.html](docs/pages.html) | Every page made for the project: published on claude.ai (private), local-only, or on the public site, each with its status and source file. Published at https://claude.ai/artifact/1Rygvkb1d3UdMJaJBU2RQk. **When a page is published or goes out of date, change its row and republish.** |
 | [TODO.md](TODO.md) | Build sequence, open questions, and the triggers that promote a watch item into work. |
 | [docs/architecture-overview.html](docs/architecture-overview.html) | Living architecture overview — the system as built (pipeline, claims layer, ops, autonomy). |
 | [research/README.md](research/README.md) | What measures the pipeline: experiments, the bench, the first corpus. Production's files stay at the root until it retires. |
 | [research/bench/README.md](research/bench/README.md) | The bench: run a battery of articles through one pipeline step on the TEST keys and the bench database, from any session. Never production keys, never the group. |
 | [research/corpus/README.md](research/corpus/README.md) | The labelled evaluation corpus — 48 articles, `tune` + `holdout`. Labels are what the system *should* answer, so it is deliberately red against today's code. |
 | [docs/article-feedback.md](docs/article-feedback.md) | Anton's verdicts on delivered articles, verbatim, with tuning signals. When he likes or dislikes an article, it goes here. Check rule changes against it. |
-| [ringfacts-spec.md](ringfacts-spec.md) | The original plan. Historical — its header lists where it diverges from what runs. Do not treat it as a description of the system. |
+| [docs/ringfacts-spec.md](docs/ringfacts-spec.md) | The original plan. Historical — its header lists where it diverges from what runs. Do not treat it as a description of the system. |
 
 ## How a run works
 

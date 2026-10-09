@@ -5,7 +5,7 @@
 > It is kept as a record of what was expected, not as a description of what
 > runs. Where it disagrees with the code, the code is right —
 > [the architecture overview](https://antoine4j.github.io/ringfacts/architecture-overview.html)
-> describes the system as built, and [TODO.md](TODO.md) records how it got there.
+> describes the system as built, and [TODO.md](../TODO.md) records how it got there.
 >
 > The plan survived contact unevenly. The largest divergences:
 >
@@ -24,6 +24,12 @@
 > hourly at :17, name aliases are per-language in the watchlist, and headlines
 > are translated to English at posting time rather than the bot picking a
 > language.
+>
+> **2026-10-09:** the table compares the plan with production as it stood in
+> August. v0, the design going forward ([v0/README.md](../v0/README.md)),
+> differs again: it does run on a framework (Mastra's workflows), and a
+> classifier, an extractor, a grouping step and per-fighter settings replace
+> the matcher and the tier rule.
 
 ## 1. Overview
 
@@ -256,7 +262,7 @@ Embeddings are used for two things:
 ## 15. Telegram Setup — Verified Findings (from live testing)
 
 - **Bot created:** `@${BOT_USERNAME}`. Token captured and stored securely. Test group created with bot added.
-- **Chat IDs captured (whitelist seeds):** admin DM = `${ADMIN_CHAT_ID}` (positive; in private chats chat.id == user id). Test group = `${TELEGRAM_CHAT_ID}` (negative, `"type":"group"`). Real values live in the `telegram-chat-ids` secret (one JSON line, `{"group":…,"admin":…}`) and in `.env` for local runs, never in the repo. The webhook whitelist is *derived* from those two rather than stored separately — see [lib/chat-ids.js](lib/chat-ids.js).
+- **Chat IDs captured (whitelist seeds):** admin DM = `${ADMIN_CHAT_ID}` (positive; in private chats chat.id == user id). Test group = `${TELEGRAM_CHAT_ID}` (negative, `"type":"group"`). Real values live in the `telegram-chat-ids` secret (one JSON line, `{"group":…,"admin":…}`) and in `.env` for local runs, never in the repo. The webhook whitelist is *derived* from those two rather than stored separately — see [lib/chat-ids.js](../lib/chat-ids.js).
 - **Privacy mode behavior — VERIFIED empirically:** in groups, plain @mentions do NOT reach the bot. Only slash commands (e.g. `/start@${BOT_USERNAME}`) and replies to the bot's own messages pass the filter. **Design consequence for the Responder:** conversational follow-ups from the group must be *replies* to the bot's posts (natural gesture anyway) or commands — not bare mentions. DMs are unfiltered: every message arrives.
 - **Group → supergroup upgrade caveat:** the test group is currently a basic "group" (plain negative ID, no -100 prefix). Telegram silently upgrades groups to supergroups when certain settings change — **and the chat ID changes** to a new -100-prefixed number. Mitigation: log rejected/unknown chat IDs so an upgrade doesn't look like a mystery outage; expect the real group may be a supergroup from birth.
 - **Update anatomy notes:** Telegram pre-parses messages — `entities` array labels commands/mentions/URLs (no regex needed). `update_id` is the ack counter. `language_code` of sender is included (useful for the bilingual group).
