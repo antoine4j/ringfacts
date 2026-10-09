@@ -1,6 +1,6 @@
 # RingFacts — Goals and success criteria
 
-Agreed with Anton 2026-09-04. This is what the project is *for*, stated so
+Agreed 2026-09-04. This is what the project is *for*, stated so
 that it can be measured. Every piece of work — autonomous or not — names which
 goal it moves and reports the metric before and after. `TODO.md` ranks work
 under these goals; `docs/self-improvement.md` says how autonomous runs decide.
@@ -14,10 +14,10 @@ targets below is ever met by posting more.
 
 ---
 
-## The end state, restated (Anton, 2026-10-06, after v0)
+## The end state, restated (2026-10-06, after v0)
 
 G1–G4 below are the ideal the bot is measured against. They do not say what
-the project is *for* now, so this section does, in the order Anton gave.
+the project is *for* now, so this section does, in order of priority.
 
 1. **A public showcase: a stranger can understand, trace and trust the
    system.** The repo is public and read by people who never ran it, so it
@@ -27,8 +27,8 @@ the project is *for* now, so this section does, in the order Anton gave.
    a method; and the production-to-v0 switch written up as the decision it
    was, what was measured, what was traded, how the rollout was de-risked.
    What matters is that each number is on the page, not that it is high.
-2. **A bot good enough for the real group.** Anton adds his friends' group
-   when he is confident the bot will not annoy them: the right news, no junk,
+2. **A bot good enough for the real group.** The friends' group is added
+   once the bot can be trusted not to annoy them: the right news, no junk,
    close to G1–G4 but not perfect. The launch bar is below.
 3. **A place to read.** A "read more" from the digest into a reader-facing
    interface, handy and maybe creative, unlike the admin-style storyboard.
@@ -44,14 +44,14 @@ because the write-up of the switch has no ending without it. It is not free: v0 
 reads its articles from production's table, so v0 must fetch feeds and
 bodies itself before production can stop (TODO.md item 5). The *launch* is adding the
 friends; the showcase does not need it. They share the measuring window: the
-weeks of Anton's reactions to v0 are both the launch bar and the
+weeks of reactions to v0 are both the launch bar and the
 showcase's numbers.
 
 **The launch bar** (option A, chosen 2026-10-06): a four-week window of v0
-posting to the test chat with Anton reacting to every tier-1 post and
+posting to the test chat with a reaction to every tier-1 post and
 digest; launch when the last two weeks show **no career event missed**
-(checked on the storyboard against what Anton knows happened, not from the
-bot's own output), **no repeat he noticed in tier 1** (a split that lands
+(checked on the storyboard against what is known to have happened, not
+from the bot's own output), **no repeat noticed in tier 1** (a split that lands
 inside a digest does not count; the digest absorbs it), and **at most 1 in
 10 posts or digests with a 👎**. An over-merge counts only when it
 swallowed a career event, which is then a miss under the first rule. The
@@ -59,7 +59,7 @@ bar leans on the digest being good, since the digest is most of what the
 friends will see: Topuria alone sends about 115 tier-2 readings a week
 into it (measured 2026-10-06 over the last four weeks).
 
-**Anton's review time is the scarcest resource.** The "15 minutes a month"
+**Review time is the scarcest resource.** The "15 minutes a month"
 under G2 was true of production's ~100 posted items a month. v0 reads
 200–280 Topuria articles a week, so the review is grooming the storyboard
 every couple of days, ten or so articles at a sitting, not a monthly pass
@@ -83,16 +83,15 @@ archive — did it arrive, did it post, how late. Recorded in
 ## G2. Nothing junk gets through
 
 **Success:** at least **90%** of posted main-tier items are graded useful by
-Anton, and **zero** posts that are spam, a namesake, or a stale event
+the maintainer, and **zero** posts that are spam, a namesake, or a stale event
 re-published as fresh.
 
 **Measured** monthly: Claude pre-grades every posted item — reads the body,
 assigns a bucket, writes a one-line reason with the link — and puts the list
-in front of Anton, who confirms or overrules (about 15 minutes; Anton,
-2026-09-04: "you can label them yourself, I will just confirm"). His verdicts
-go into `docs/article-feedback.md` verbatim.
+in front of the maintainer, who confirms or overrules (about 15 minutes).
+The verdicts go into `docs/article-feedback.md` verbatim.
 
-**Both directions, every time** (Anton, 2026-09-04). Every pipeline decision
+**Both directions, every time** (2026-09-04). Every pipeline decision
 is stored with its reason (`held_reason`, `digest_tier`, `subject_role`), so
 the pass grades what was **held** as well as what posted: a sample of the
 wrong-subject, tangential, untrusted-source and duplicate holds from the same
@@ -107,7 +106,7 @@ Every article about a watched fighter lands in exactly one bucket.
 1. **Career event** — the G1 list. Always posts, loud (🚨 ceremony).
 2. **Substance about the fighter** — no event, but new information or opinion
    *about him specifically*. Posts as a digest main item. Examples: a career
-   analysis (the Tribuna UA piece, item #191, Anton's 👍 of 2026-08-14); an
+   analysis (the Tribuna UA piece, item #191, a 👍 of 2026-08-14); an
    interview where he talks about his own situation; a rival's coach breaking
    down his game; a camp or recovery update; grounded speculation about his
    next opponent.
@@ -119,25 +118,25 @@ Every article about a watched fighter lands in exactly one bucket.
    (#23).
 
 **The test between 2 and 3 is whether the new information is about him.**
-Two rulings from Anton (2026-09-04) that fix the line:
+Two rulings (2026-09-04) fix the line:
 
 - He gives an interview but talks mostly about someone else (Topuria on
   Volkanovski's chances) → **bucket 3**. Spoken *by* him is not *about* him.
 - A famous fighter or pundit names him in one sentence as a future threat →
   **bucket 3**. Mentioned *near* him is not *about* him.
 
-The 2-versus-3 boundary is tuned from Anton's graded verdicts, not from
-Claude's judgment. Each borderline verdict becomes a worked example here.
+The 2-versus-3 boundary is tuned from the maintainer's graded verdicts, not
+from Claude's judgment. Each borderline verdict becomes a worked example here.
 
 **Worked examples from the first grading pass** (2026-09-04, items in
 `docs/grading/2026-09-04-posted-30d.md`):
 
 | item | what it was | bucket | the line it draws |
 |---|---|---|---|
-| #21 | Usman's camp asks for Topuria as a first fight | 2 | A callout — *I want to fight him* — is about him (Anton, evening ruling). |
+| #21 | Usman's camp asks for Topuria as a first fight | 2 | A callout — *I want to fight him* — is about him (evening ruling). |
 | #50 | Prates warns him off a welterweight move | 3 | Advice or a callout aimed at him is not information about him. |
 | #256 | Tsarukyan names his next opponent | 3 | A rival saying *he should fight someone else* is not about him. The champion or the champion's coach saying it would be 2, within limits. |
-| #43 | His manager fires back at the manager who called him out | 2 | A reaction to a callout at him is about him, like the callout itself (Anton, 2026-09-05, reversing the 09-04 ruling of 3). |
+| #43 | His manager fires back at the manager who called him out | 2 | A reaction to a callout at him is about him, like the callout itself (2026-09-05, reversing the 09-04 ruling of 3). |
 | #318, #340 | His trainers on vision drills and muscle | 3 | Training trivia; compare #547. |
 | #194, #226 | Makhachev on his loss and the face-off | 2 | The champion assessing him is substance about him. |
 | #279 | Mendez: he needs several wins before Makhachev | 2 | A top coach on his path. |
@@ -145,26 +144,26 @@ Claude's judgment. Each borderline verdict becomes a worked example here.
 | #291, #320 | His childhood; joining territorial defence in 2022 | 2 | His own substantial account of his life. (#380, one lesson from his divorce, stayed 3 — depth matters.) |
 | #547 | His boxing coach on what sets him apart | 2 | Breaking down his game. |
 
-Reading of the line (confirmed by Anton the same evening): **a callout at
+Reading of the line (confirmed the same evening): **a callout at
 him → 2, and his camp's reply to it → 2; others steering him elsewhere → 3,
 unless it is an authority such as the champion or his coach → 2 within
 limits; others assessing him → 2; him on himself → 2 when substantial.**
 
-**Lifestyle stories are bucket 2** (Anton, 2026-09-05, on #208 — Donchenko
+**Lifestyle stories are bucket 2** (ruling of 2026-09-05, on #208 — Donchenko
 calling the grandmother who opposed his career — and #366, his fishing and
 breakdance hobbies, reversing the 09-04 ruling of 3): a personal-life story
 about a watched fighter is not career news, but it is about him and the
-group wants it. "Technically not about the career, but I love such stories
-and want them in 2 for now." No separate lifestyle bucket for now.
+group wants it. In the ruling's words: "Technically not about the career,
+but I love such stories and want them in 2 for now." No separate lifestyle bucket for now.
 
-**One interview is one story** (Anton, 2026-09-05 on #121, the Makhachev
+**One interview is one story** (ruling of 2026-09-05 on #121, the Makhachev
 interview with 24 members; sharpened 2026-09-06 on #208/#203 and #300/#298,
 two Sport.nv.ua excerpts each from one Donchenko interview): the group gets
 the link to the interview once. A second article quoting another passage of
 the same interview is a repeat of that story, whatever bucket the passage
 would earn on its own — the lifestyle ruling above does not make an excerpt
-its own post. "Ideally, I'd like to see link to an interview, and I'm not
-sure I need all these quotes from the same interview."
+its own post. In the ruling's words: "Ideally, I'd like to see link to an
+interview, and I'm not sure I need all these quotes from the same interview."
 
 ### The reason codes — why an article got its bucket
 
@@ -194,14 +193,15 @@ new day is a new story; a translation is a dup.
 same story, different outlet or language included.
 
 **Measured** in the G2 grading pass (a "repeat" flag), plus an automated dedup
-audit Claude can run without Anton (`scripts/replay-dedup.js`).
+audit that needs no human (`scripts/replay-dedup.js`).
 
-**When G1 and G3 pull apart, G1 wins** (Anton, 2026-10-05). Grouping articles
+**When G1 and G3 pull apart, G1 wins** (2026-10-05). Grouping articles
 into stories fails two ways: an over-merge folds a different story into an
 existing one, and the news is swallowed; an over-split gives one story two
 claims, and it posts twice. Models are not deterministic and the news is
 varied, so some of both will always happen. A repeat costs the reader a
-second look; a swallowed booking costs the thing the bot exists for: "I would
+second look; a swallowed booking costs the thing the bot exists for. In the
+ruling's words: "I would
 rather see two news that Amosov booked for next fight than totally miss that
 news." So grouping is tuned to over-split rather than over-merge, and the
 splits are absorbed downstream where possible (the digest can merge stories
@@ -231,11 +231,12 @@ no `official` role.
   Free tiers everywhere else.
 - Silence is never a signal to loosen a threshold (self-improvement §5).
 - Nothing that changes *what kind of thing* the group sees — a new post
-  format, a new voice, a new cadence — ships without Anton seeing it first.
+  format, a new voice, a new cadence — ships without the maintainer seeing it
+  first.
 
 ## How autonomy uses this
 
-Anton is not watching in real time. The boundaries — what a session may
+The maintainer is not watching in real time. The boundaries — what a session may
 change in code, database, keys, Telegram, docs — are self-improvement.md §8.
 The contract:
 
@@ -245,5 +246,5 @@ The contract:
 - The ask-first list is unchanged: destroying schema or data, adding paid
   services or vendors, contradicting a documented decision, anything touching
   the group's trust, and the constraint above on what the group sees.
-- Anton's recurring time commitment is the monthly G2 grading pass. Everything
-  else Claude measures alone.
+- The maintainer's recurring time commitment is the monthly G2 grading pass.
+  Everything else Claude measures alone.
