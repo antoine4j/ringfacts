@@ -59,6 +59,11 @@ research/experiments/2026-09-27-answer-key/wording-draft.html
 # and labels. scripts/article-text-guard.js refuses a commit that copies one.
 # History: docs/decisions.md#article-text-out-of-git
 golden/articles.json
+# Saved golden replays: every table of the replay schema per run (the
+# extracts and the models' raw replies quote the articles). Kept like the
+# bodies above; the public record of a run is its score file in
+# v0/pipeline/measure/replay-results/.
+golden/replays/
 research/corpus/graded-2026-09.json
 research/corpus/holdout.json
 research/corpus/tune.json

@@ -192,10 +192,27 @@ run used, which it does not today. The scores page reads that directory
 at build time: the newest file is the headline row, and every older file
 is a history row with its date and versions, so the runs can be compared
 on one line without a database. The `replay` schema in the database
-keeps holding the last run's raw answers for the live/replay switch. A
+is the replay's working space and holds the last run only. A
 scheduled re-run and a re-run triggered by a version change were
 considered and rejected: the first repeats a number for money, the
-second is more machinery than the page. **The test set** (the 105
+second is more machinery than the page.
+
+*Added the same day.* **Every run's raw answers are kept as files**,
+because each run cost real model calls: before a replay empties the
+schema, every table of it is written to `golden/replays/<run>/`, one JSON
+array per table plus a manifest with the versions, the date and the score
+file it pairs with. The folder is git-ignored like the golden article
+text, since the extracts and the raw replies quote the articles, and is
+backed up the same way. The 5 Oct run (classifier v7.7, extractor p4,
+grouping g1) was saved by hand on 9 Oct, before the save is built into
+`replay.ts`. Nothing loads a saved run back into the database, and the
+storyboard reads none of this. **The live/replay switch in the
+storyboard's top bar is to be removed**: the storyboard is for the live
+pipeline, and the switch could only ever show one replay against nothing,
+which compares nothing. What replaces it is a separate page, outside the
+storyboard, that compares saved runs with each other in detail, grouping
+included, read from the saved files; which existing page it grows from is
+the next decision. **The test set** (the 105
 articles nothing was tuned on) is run once, after the extractor, digest
 and grouping themes and before the launch, and shown as a third column
 marked with its date and "run once"; until then the column reads "not
