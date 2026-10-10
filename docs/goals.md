@@ -42,7 +42,7 @@ the project is *for* now, so this section does, in order of priority.
 production as the only bot, still in the test chat; the showcase needs it,
 because the write-up of the switch has no ending without it. It is not free: v0 still
 reads its articles from production's table, so v0 must fetch feeds and
-bodies itself before production can stop (TODO.md item 5). The *launch* is adding the
+bodies itself before production can stop (TODO.md item 3). The *launch* is adding the
 friends; the showcase does not need it. They share the measuring window: the
 weeks of reactions to v0 are both the launch bar and the
 showcase's numbers.

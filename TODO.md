@@ -1,21 +1,27 @@
 # RingFacts — Next Steps
 
-## After v0: the showcase, then the friends (ranked 2026-10-06)
+## After v0: the showcase, then the friends (ranked 2026-10-06, reordered 2026-10-09)
 
 v0 is complete (22 of 22; task 9.1 closes itself on the first real tier-1
 story). The end state is restated in [docs/goals.md](docs/goals.md) ("The
 end state, restated"): a public showcase first, then a bot good enough
-for the real group, then a place to read, then chat. Ranked by how much
-each item moves that, in order. Importance is given for the showcase (S)
-and the launch (L). The "Parked (v0)" list of earlier today is folded in here.
-The same list laid across the stations, task by task, with the parked
+for the real group, then a place to read, then chat. Ranked on 2026-10-06
+by how much each item moves that; reordered on 2026-10-09 into the order
+the work is taken in, which differs where an item waits on another or on
+a measurement: the scoreboard can go up with the numbers that exist, and
+self-feeding's week of side-by-side running costs no review time, so both
+move ahead of work that matters as much but is not ready. An item that
+is done keeps its number, so the list shows progress. Importance is
+still given on each item, for the showcase (S) and the launch (L). The
+same list laid across the stations, task by task, with the parked
 backlog: [docs/launch-map.html](docs/launch-map.html), the Launch Map, also the
 public roadmap at https://antoine4j.github.io/ringfacts/launch-map.html.
 
 1. **Tidy the repo and rewrite the README.** S: critical, strangers read
-   the repo today. L: none. Experiments into a named folder, article
-   bodies out of history, a status banner naming v0, the README in the
-   order what / how / how measured / how to run.
+   the repo today; all done but 0.16, and kept first so the list shows
+   the progress. L: none. Experiments into a named
+   folder, article bodies out of history, a status banner naming v0, the
+   README in the order what / how / how measured / how to run.
    Days, not weeks. **2026-10-06:** research folders under `research/`;
    history rechecked, no article text; status line on the README and both
    published pages; README rewritten; the public pages re-read against the
@@ -28,10 +34,40 @@ public roadmap at https://antoine4j.github.io/ringfacts/launch-map.html.
    public roadmap speaks to a stranger.
 2. **The precision scoreboard** ([spec](docs/superpowers/specs/2026-10-06-precision-scoreboard.md),
    eight questions open; unparked). S: critical, it is the page that shows
-   how well the pipeline does; what matters is that each rate is on the page with a
+   how well the pipeline does, and the one that makes the showcase
+   credible; what matters is that each rate is on the page with a
    date and a method, not that it is high. L: the dashboard for the launch
-   bar. Built on the compare page and the reactions that exist.
-3. **Review tooling** ([the classifier's answers behind a tier](docs/superpowers/specs/2026-10-06-review-classifier-answers.md),
+   bar. Built on the compare page and the reactions that exist. Task 3.11
+   adds one line: whether cleaner article text changes the pipeline's
+   decisions, run on the golden set twice (the text as saved, and the same
+   articles with the site furniture removed).
+3. **Make v0 self-feeding, then retire production.** S and L: critical.
+   v0 still reads its articles from production's `items` table (v0 design,
+   "Timing"), so production cannot stop until v0 runs stations 1–3 itself:
+   the feeds, the seen-before check and the body fetch. Built with the
+   free text fixes inside it (G1): 72% of Amosov's readings and 42% of
+   Donchenko's have no text, so the classifier never sees them, and the
+   body-fetch spike recovered 56% for free: a decode retry on the next
+   run, a reader service (Jina) when the fetch fails, the MMAWeekly and
+   Athlon feeds; new articles only, with the share of readings without
+   text counted before and after. Then a week of both feeding the same
+   articles, then retire production once the launch window reads clean.
+   The storyboard loses its compare page. S: blog backlog 6, "count what
+   never reached the model".
+4. **The extractor station** (3.9, 3.3, 3.4, 3.10). L: high. Which text
+   wins when our extractor and Mozilla Readability both read a page, the
+   golden texts that are unusable marked, the winner tuned and scored, and
+   whether the stations read headline and summary when there is no text.
+   May swap places with item 5: if 3.11 shows clean text barely moves the
+   decisions, the digest comes first.
+5. **Tune the digest station.** L: critical, ~115 Topuria tier-2 readings a
+   week go through it and it is most of what friends will see. Pick the
+   model on the blind comparison page (`/digests/compare`; today's is
+   DeepSeek V4 Pro), a ranking over claims on top of the classifier's
+   tier, a cap (about 5 items was suggested), then prompt rounds. Anton's
+   reactions are the score. B: medium, the "small model classifies, big
+   model writes" story with a cost table (blog backlog 7).
+6. **Review tooling** ([the classifier's answers behind a tier](docs/superpowers/specs/2026-10-06-review-classifier-answers.md),
    two decisions open; [editing a review mark](docs/superpowers/specs/2026-10-06-review-mark-editing.md);
    the feedback form as plain notes, [v0 design](docs/superpowers/specs/2026-10-04-v0-design.md)
    section 11; all unparked). L: medium on its own, but Anton's review
@@ -39,49 +75,28 @@ public roadmap at https://antoine4j.github.io/ringfacts/launch-map.html.
    into history; this makes the every-couple-of-days grooming fast while
    the claims are fresh. S: the "production teaches the model" post (blog
    backlog 10).
-4. **Tune the digest station.** L: critical, ~115 Topuria tier-2 readings a
-   week go through it and it is most of what friends will see. Pick the
-   model on the blind comparison page (`/digests/compare`), prompt rounds,
-   a ranking over claims on top of the classifier's tier, a cap (about 5
-   items was suggested). Anton's reactions are the score. B: medium, the
-   "small model classifies, big model writes" story with a cost table
-   (blog backlog 7).
-5. **Make v0 self-feeding, then retire production.** S and L: critical.
-   v0 still reads its articles from production's `items` table (v0 design,
-   "Timing"), so production cannot stop until v0 runs stations 1–3 itself:
-   the feeds, the seen-before check and the body fetch. Build those in v0
-   with the fallback below as part of them, watch a week of both feeding
-   the same articles, then retire production once the launch window reads
-   clean. The storyboard loses its compare page.
-6. **The body-fetch fallback** (G1), inside item 5. L: high. 72% of
-   Amosov's readings and 42% of Donchenko's have no text, so the classifier
-   never sees them and G1 is at risk for the two fighters the friends care
-   about most; the spike recovered 56% for free: a decode retry on the next
-   run, a reader service (Jina) when the fetch fails, the MMAWeekly and
-   Athlon feeds; new articles only. S: blog backlog 6, "count what never
-   reached the model", with the dirty-text measurement parked there.
-7. **A public read-only live demo.** S: high, something a visitor can
+7. **Grouping fixes** (tasks 6.9 and 6.12, on the Launch Map's station 6 since 2026-10-09). G3 only: medium, the
+   digest absorbs splits and the launch bar tolerates them. They move the
+   over-split and over-merge rates the scoreboard shows; measured on the
+   golden replay before any change.
+8. **Bout as an entity, address clean-up, the fighter profile.** Low.
+9. **A public read-only live demo.** S: high, something a visitor can
    use: trace
    any article to its claim, grouping and digest, and a web section that
    imitates the channel. After the switch so it shows the real thing;
    article bodies stay private (headlines, extracts, claims, digests only).
    L: the seed of the reader-facing site. Domain to be found.
-8. **Grouping fixes** (tasks 6.9 and 6.12, on the Launch Map's station 6 since 2026-10-09). G3 only: medium, the
-   digest absorbs splits and the launch bar tolerates them. They move the
-   over-split and over-merge rates the scoreboard shows; measured on the
-   golden replay before any change.
-9. **Classifier v8** (4.26, 4.27, health). Low until the window shows a
-   missed career event; then it jumps to the top.
-10. **The reader-facing site proper, then chat follow-up.** After launch;
-    the demo in 7 grows into the site.
-11. **Bout as an entity, address clean-up, the fighter profile.** Low.
+10. **Classifier v8** (4.26, 4.27, health). Low until the window shows a
+    missed career event; then it jumps to the top.
+11. **The reader-facing site proper, then chat follow-up.** After launch;
+    the demo in 9 grows into the site.
 
 Blog posts about the project are planned and written outside this repo;
-items 2, 6 and 7 each feed one.
+items 2, 3 and 9 each feed one.
 
 ## Superseded: priorities of 2026-09-04 (kept for the record)
 
-These ranked production's work. Production retires with item 5 above; what
+These ranked production's work. Production retires with item 3 above; what
 is still open below is either folded into the list above (3b, 3e → the v0
 stations) or goes with production.
 

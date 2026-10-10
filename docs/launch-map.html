@@ -76,6 +76,8 @@ a{color:var(--accent)}
 .themes li.unranked{border-style:dashed}
 .themes .rk{grid-row:span 4;font-family:var(--display);font-size:30px;line-height:1;color:var(--red)}
 .themes li.unranked .rk{color:var(--dim)}
+.themes li.finished{background:var(--donebg);border-color:var(--done)}
+.themes li.finished .rk{color:var(--done)}
 .themes .t{font-weight:600;line-height:1.3}
 .themes .imp{font-size:12.5px;color:var(--dim)}
 .themes .imp b{font-weight:600;color:var(--ink)}
@@ -167,14 +169,14 @@ footer{font-size:13px;color:var(--dim);max-width:100ch}
         <button id="t-light" data-t="light" aria-pressed="false">Light</button>
         <button id="t-dark" data-t="dark" aria-pressed="false">Dark</button>
       </div></div>
-    <p class="lede">The roadmap of <a href="https://github.com/antoine4j/ringfacts">RingFacts</a>: what comes after v0, station by station, from 6 Oct 2026. A working page: "you" is the maintainer. The themes are the ranked list in TODO.md ("After v0"); tap one to light up its tasks across the stations. A task sits on a station once it is in scope; everything else waits in the backlog below. Inside a station, tasks are listed by their theme's rank. Point at any task by its number, for example "8.6". The finished work is on the history page, <a href="https://claude.ai/artifact/L412VXv6JRP2kFKQogBo7v">Golden Set and v0 Build</a> (a private page; its source is <code>golden/plan.html</code>).</p>
+    <p class="lede">The roadmap of <a href="https://github.com/antoine4j/ringfacts">RingFacts</a>: what comes after v0, station by station, from 6 Oct 2026. A working page: "you" is the maintainer. The themes are the list in TODO.md ("After v0"), numbered in the order the work is taken in (reordered 9 Oct); a theme that is done keeps its number, so the list shows progress, and what each matters for the showcase and the launch is on its card. Tap one to light up its tasks across the stations. A task sits on a station once it is in scope; everything else waits in the backlog below. Inside a station, tasks are listed in their theme's order. Point at any task by its number, for example "8.6". The finished work is on the history page, <a href="https://claude.ai/artifact/L412VXv6JRP2kFKQogBo7v">Golden Set and v0 Build</a> (a private page; its source is <code>golden/plan.html</code>).</p>
     <div class="stats" id="stats"></div>
   </section>
 
   <section>
     <h2>Two finish lines</h2>
     <div class="lines">
-      <div class="line"><span class="tag">themes 5 and 6</span><h3>The switch</h3>
+      <div class="line"><span class="tag">theme 3</span><h3>The switch</h3>
         <p>v0 becomes the only bot, still in the test chat. It needs v0 to find, check and fetch its own articles first, because today it reads them from production's table. Then production stops.</p></div>
       <div class="line launch"><span class="tag">the launch theme</span><h3>The launch</h3>
         <p>The friends' group joins after a four-week window of v0 posting to the test chat, with a reaction to every tier-1 post and digest. It passes when the last two weeks show:</p>
@@ -183,7 +185,7 @@ footer{font-size:13px;color:var(--dim);max-width:100ch}
   </section>
 
   <section>
-    <h2>Themes, in rank order</h2>
+    <h2>Themes, in the order the work is taken</h2>
     <ol class="themes" id="themes"></ol>
   </section>
 
@@ -211,36 +213,36 @@ footer{font-size:13px;color:var(--dim);max-width:100ch}
     <ul class="items" id="backlog"></ul>
   </section>
 
-  <footer>Started 2026-10-06, when v0 completed (22 of 22 tasks). Ranked by how much each theme moves the end state in docs/goals.md ("The end state, restated"): a public showcase first, then a bot good enough for the real group. Task numbers continue each station's numbering from the history page, so a number means one task on either page. Source: <code>docs/launch-map.html</code> in the repo, served on the public site; the backlog is a copy of <code>golden/parked-tasks.json</code>, plus the ideas parked since, which live only here.</footer>
+  <footer>Started 2026-10-06, when v0 completed (22 of 22 tasks). Ranked first by how much each theme moves the end state in docs/goals.md ("The end state, restated"): a public showcase first, then a bot good enough for the real group. Reordered 2026-10-09 into the order the work is taken in, which differs where a theme waits on another or on a measurement; the importance stays on each card. Task numbers continue each station's numbering from the history page, so a number means one task on either page. Source: <code>docs/launch-map.html</code> in the repo, served on the public site; the backlog is a copy of <code>golden/parked-tasks.json</code>, plus the ideas parked since, which live only here.</footer>
 </div>
 
 <script>
 // One place to edit: the themes, the stations' tasks, then the backlog's theme chips.
 const THEMES = [
   {id:"repo", rank:1, name:"Repo, README and backlog", short:"README and backlog", s:"critical", l:"none",
-   note:"Strangers read the repo today. Days, not weeks. Ends by sorting the backlog's seven candidates."},
+   note:"Strangers read the repo today. All of it is done but 0.16, the roadmap's wording; the theme turns done when that lands."},
   {id:"score", rank:2, name:"Precision scoreboard", short:"scoreboard", s:"critical", l:"the launch bar's dashboard",
-   note:"Each rate on the page with a date and a method; that it is there matters more than that it is high."},
-  {id:"review", rank:3, name:"Review tooling", short:"review", s:"a blog post", l:"medium",
+   note:"Next because it is the page that makes the showcase credible, and it can go up with the numbers that exist. Each rate on the page with a date and a method; that it is there matters more than that it is high."},
+  {id:"feed", rank:3, name:"Self-feeding, then retire production", short:"self-feeding", s:"critical", l:"critical",
+   note:"v0 reads its articles from production's table, so production cannot stop until v0 runs stations 1 to 3 itself. The free text fixes are built inside it: 72% of Amosov's readings and 42% of Donchenko's have no text, so the classifier never sees them (G1)."},
+  {id:"body", rank:4, name:"The extractor station", short:"extractor", s:"a blog post", l:"high",
+   note:"Which text wins, the unusable texts marked, the winner tuned and scored. May swap places with the digest on 3.11's count of how much clean text moves the decisions."},
+  {id:"digest", rank:5, name:"Digest tuning", short:"digest", s:"medium", l:"critical",
+   note:"About 115 Topuria tier-2 readings a week go through it; it is most of what the friends will see. The model stays DeepSeek V4 Pro unless the blind page changes the pick; a shorter digest comes from the ranking and the cap."},
+  {id:"review", rank:6, name:"Review tooling", short:"review", s:"a blog post", l:"medium",
    note:"Review time is the scarce resource; this keeps the every-couple-of-days grooming fast while claims are fresh."},
-  {id:"digest", rank:4, name:"Digest tuning", short:"digest", s:"medium", l:"critical",
-   note:"About 115 Topuria tier-2 readings a week go through it; it is most of what the friends will see."},
-  {id:"feed", rank:5, name:"Self-feeding, then retire production", short:"self-feeding", s:"critical", l:"critical",
-   note:"v0 reads its articles from production's table, so production cannot stop until v0 runs stations 1 to 3 itself."},
-  {id:"body", rank:6, name:"Body-fetch fallback", short:"body fallback", s:"a blog post", l:"high",
-   note:"Built inside self-feeding. 72% of Amosov's readings and 42% of Donchenko's have no text, so the classifier never sees them (G1)."},
-  {id:"demo", rank:7, name:"Public live demo", short:"demo", s:"high", l:"the reader site's seed",
-   note:"After the switch, so it shows the real thing."},
-  {id:"group", rank:8, name:"Grouping fixes", short:"grouping", s:"moves the scoreboard's rates", l:"medium, G3 only",
+  {id:"group", rank:7, name:"Grouping fixes", short:"grouping", s:"moves the scoreboard's rates", l:"medium, G3 only",
    note:"The digest absorbs splits and the launch bar tolerates them. Measured on the golden replay before any change."},
-  {id:"v8", rank:9, name:"Classifier v8", short:"classifier v8", s:"low", l:"low, until a miss",
-   note:"Jumps to the top if the launch window shows a missed career event."},
-  {id:"site", rank:10, name:"Reader site, then chat", short:"reader site", s:"high, later", l:"after launch",
-   note:"The demo grows into the site. Nothing on the stations yet."},
-  {id:"entity", rank:11, name:"Bout as an entity, address clean-up, fighter profile", short:"bout and address", s:"low", l:"low",
+  {id:"entity", rank:8, name:"Bout as an entity, address clean-up, fighter profile", short:"bout and address", s:"low", l:"low",
    note:""},
+  {id:"demo", rank:9, name:"Public live demo", short:"demo", s:"high", l:"the reader site's seed",
+   note:"After the switch, so it shows the real thing."},
+  {id:"v8", rank:10, name:"Classifier v8", short:"classifier v8", s:"low", l:"low, until a miss",
+   note:"Jumps to the top if the launch window shows a missed career event."},
+  {id:"site", rank:11, name:"Reader site, then chat", short:"reader site", s:"high, later", l:"after launch",
+   note:"The demo grows into the site. Nothing on the stations yet."},
   {id:"launch", rank:null, name:"The launch", short:"launch", s:"", l:"the goal",
-   note:"Not ranked: it is where the others lead. The bar is under \"Two finish lines\"."},
+   note:"Not in the order: it is where the others lead. The bar is under \"Two finish lines\"."},
   {id:"label", rank:null, name:"Golden set labelling", short:"labelling", s:"", l:"none so far",
    note:"Label passes left open when the set froze. Backlog only; none is needed for launch yet."},
 ];
@@ -260,7 +262,7 @@ const STATIONS = [
       "Done 2026-10-06: the README, the architecture overview and the funnel walkthrough each open with one dated line: which bot the page describes, that v0 is the design going forward and where it lives, and that production retires once v0 fetches its own articles.",
       "Until the switch both bots run, and a reader should know which one the pages describe."),
     K("0.10",["repo"],"done","Rewrite the README: what, how, how measured, how to run",
-      "Done 2026-10-06, in that order. v0's stations come first as the design going forward, production after it as the bot running today. The numbers are the ones already measured, each with its date and method, the failing pass marks included; the scoreboard (theme 2) will put live rates beside them.",
+      "Done 2026-10-06, in that order. v0's stations come first as the design going forward, production after it as the bot running today. The numbers are the ones already measured, each with its date and method, the failing pass marks included; the scoreboard will put live rates beside them.",
       "It is the page every visitor reads."),
     K("0.11",["repo"],"done","Re-read the public surfaces against v0's code",
       "Done 2026-10-06. Every claim was checked against the code. The architecture overview had ten wrong or imprecise claims and the funnel walkthrough eight (among them when a claim is born confirmed, the order of writing and sending, what the daily backup copies); all are fixed. Both stay production pages, with the status line: production runs until the switch, and v0 is described in the README, v0/README.md and its design. The test-suite overview became a dated snapshot pointing at the README. A new GitHub description is drafted, not applied; the live pages change with the next push.",
@@ -285,7 +287,7 @@ const STATIONS = [
     K("1.2",["feed"],"todo","v0 reads the feeds itself",
       "Google News per fighter, with the names in several languages, plus the direct publisher feeds filtered by name, as production does today (lib/feeds.js).",
       "Today v0 takes its articles from production's items table."),
-    K("1.3",["body"],"todo","Add the MMAWeekly and Athlon feeds",
+    K("1.3",["feed"],"todo","Add the MMAWeekly and Athlon feeds",
       "One of the three free fixes the body-fetch spike found; together they recovered 56% of the readings that had no text.",
       "A feed of its own reaches articles that Google News links fail to open."),
   ]},
@@ -304,17 +306,20 @@ const STATIONS = [
     K("3.6",["feed"],"todo","v0 fetches the article text itself",
       "Decode Google's wrapped address and extract the body (lib/googlenews.js and lib/extract.js today), with the fallback below built in rather than added later.",
       "The classifier reads the text; without this v0 has nothing of its own to read."),
-    K("3.7",["body"],"todo","Retry the Google News decode on the next run",
+    K("3.7",["feed"],"todo","Retry the Google News decode on the next run",
       "A decode that failed is tried again an hour later instead of giving up. New articles only.",
       "One of the spike's three free fixes."),
-    K("3.8",["body"],"todo","Fall back to a reader service when the fetch fails",
+    K("3.8",["feed"],"todo","Fall back to a reader service when the fetch fails",
       "Jina's reader, when the page refuses or returns nothing usable. New articles only.",
       "One of the spike's three free fixes."),
     K("3.3",["body","label"],"todo","Mark the golden articles whose saved text is unusable",
       "Moved from the backlog 2026-10-09 (task 0.12). Some saved texts are not the article: an intro only (#134), styling code only (#655), one line and the site's comment policy (#647), video pages with almost nothing saved (#44, #1045); 23 texts hit the 10,000-character cap, and some open with site menus (#1172 starts with 1,900 characters of menu). Expected 10 to 15 in the 300. Done the cheap way: Claude pre-marks the suspects automatically (cap hits, short texts, texts that open with menus or link lists, texts that name the fighter only in links) and Anton confirms that list, perhaps 20 to 30 articles, instead of reading all 300. v0's own bar (at least 400 characters naming a fighter, D32) already stops styling code and empty video pages, but not a menu that names him, which misclassified at least one reading on the storyboard. The marks are the answer key for 3.9 and for any check that calls a text unusable.",
       "A score should tell 'the station was wrong' apart from 'its input was garbage'."),
-    K("3.9",["body"],"call","Decide which text wins when two readers both read a page",
-      "Our extractor beside Mozilla Readability on the same pages: menus, captions, ads, and whether the article is complete. Question 1 of the intake design (docs/design/intake.excalidraw); the review page stays on the laptop because it holds the outlets' text (research/experiments/2026-10-05-body-fetch-spike/bodies/review-1-extractor-vs-readability.html).",
+    K("3.11",["score"],"todo","Measure whether clean text moves the pipeline's decisions",
+      "Added 2026-10-09. The question is not which extractor, but whether the furniture in a saved text (site menus, link lists, captions, other stories on the page) changes what the pipeline decides. Run the classifier and the claim extractor over the golden articles twice: once on the text as v0 saved it, once on the same articles with the furniture removed (Readability's text where it is clean, a hand-cleaned text where it is not; the suspects come from the automatic half of 3.3). Score both runs against the labels that exist, and count two things: how many of the nine answers change, and how many of those changes cross a tier line, a career fact lost or invented. The clean set is built by Claude; the maintainer's time is a spot check at most. One run, about a cent.",
+      "A scoreboard line (how much the text's quality moves the decisions), and it settles the extractor station's place: a small count keeps today's extractor and leaves 3.9 and 3.4 where they are; a large one makes them G1 work and moves them up beside self-feeding."),
+    K("3.9",["body"],"waits","Decide which text wins when two readers both read a page",
+      "Our extractor beside Mozilla Readability on the same pages: menus, captions, ads, and whether the article is complete. Question 1 of the intake design (docs/design/intake.excalidraw); the review page stays on the laptop because it holds the outlets' text (research/experiments/2026-10-05-body-fetch-spike/bodies/review-1-extractor-vs-readability.html). Since 2026-10-09 the decision rests on 3.11's count rather than on reading the two texts side by side: the review page is for the pages where the two runs disagree.",
       "The stations read whatever text they are given; a page full of menus and other stories reads as other news."),
     K("3.4",["body"],"waits","Tune the extractor v0 uses, then score it on the golden set",
       "Moved from the backlog 2026-10-09 (task 0.12); starts after 3.9, which decides whether v0 keeps our extractor or switches to Mozilla Readability, so the tuning goes to the one that wins, inside v0's own fetch (3.6). The known failures to fix (task 3.2): #655 saved styling code only; #134 the intro only; #230 cut at 10,000 characters; #937 a second, chained article never fetched; #852 lost its 'said on Instagram' line; #385 an embedded post we cannot see. Scored against 3.2's list and 3.3's marks.",
@@ -387,7 +392,7 @@ const STATIONS = [
     K("10.8",["feed"],"waits","A week of both bots fed the same articles",
       "v0's own feeds and fetch beside production's: the same links found, the same text fetched. After 1.2, 2.4 and 3.6.",
       "Production stops only once v0 is shown to see at least what it saw."),
-    K("10.9",["body"],"todo","Count what never reached the model, before and after",
+    K("10.9",["feed"],"todo","Count what never reached the model, before and after",
       "Per fighter, the share of readings with no text, measured before the fallback and after it. The dirty-text measurement waits in the blog backlog (idea 6).",
       "Shows whether the fallback moved G1 for the two fighters the friends care about most."),
   ]},
@@ -442,11 +447,13 @@ document.getElementById("themes").innerHTML = THEMES.map(t => {
   const cands = parked.filter(p => p.candidate_for);
   const stations = [...new Set(mine.map(i => i.station))];
   const done = mine.filter(i => i.st==="done").length;
-  const where = mine.length ? `${done} of ${mine.length} done · station${stations.length>1?"s":""} ${stations.join(", ")}` : `<span class="none">nothing on the stations</span>`;
+  // A theme whose tasks are all done keeps its number and turns green, so the list shows progress
+  const finished = mine.length > 0 && done === mine.length;
+  const where = mine.length ? `${finished ? "✓ " : ""}${done} of ${mine.length} done · station${stations.length>1?"s":""} ${stations.join(", ")}` : `<span class="none">nothing on the stations</span>`;
   const extra = cands.length ? ` · <span class="bl">${plural(cands.length,"candidate")}</span>` : parked.length ? ` · <span class="none">${parked.length} in backlog</span>` : "";
   const imp = [t.s && `Showcase <b>${esc(t.s)}</b>`, t.l && `Launch <b>${esc(t.l)}</b>`].filter(Boolean).join(" · ");
   const ids = [...mine.map(i => i.id), ...parked.map(p => p.id)];
-  return `<li class="${t.rank ? "" : "unranked"}" role="button" tabindex="0" aria-pressed="false" data-theme="${t.id}" data-n="${ids.length}"><span class="rk">${t.rank ?? "·"}</span><span class="t">${esc(t.name)}</span><span class="imp">${imp}</span><span class="cnt">${where}${extra}</span>${t.note ? `<span class="note">${esc(t.note)}</span>` : ""}</li>`;
+  return `<li class="${[t.rank ? "" : "unranked", finished ? "finished" : ""].join(" ").trim()}" role="button" tabindex="0" aria-pressed="false" data-theme="${t.id}" data-n="${ids.length}"><span class="rk">${t.rank ?? "·"}</span><span class="t">${esc(t.name)}</span><span class="imp">${imp}</span><span class="cnt">${where}${extra}</span>${t.note ? `<span class="note">${esc(t.note)}</span>` : ""}</li>`;
 }).join("");
 
 // One task line, the same on the board and in the backlog
@@ -456,7 +463,8 @@ const boardTask = i => `<li data-id="${i.id}" data-themes="${i.themes.join(" ")}
 const parkedTask = p => `<li data-id="${p.id}" data-themes="${p.themes.join(" ")}"${p.candidate_for ? ' data-cand="1"' : ""}><details><summary><span class="id">${p.id}</span><span class="txt">${esc(p.task)}</span><span class="meta"><span class="chip st"><b>${p.station}</b> ${esc(p.station_name)}</span>${themeChips(p.themes)}${p.candidate_for ? `<span class="chip cand">candidate: ${esc(p.candidate_for)} · yes or no?</span>` : ""}${p.label ? `<span class="chip retire">${esc(p.label)}</span>` : ""}</span></summary>
   <div class="why">${p.what ? `<p>${esc(p.what)}</p>` : ""}<dl><dt>For the golden set</dt><dd>${esc(p.why.set)}</dd><dt>For this station</dt><dd>${esc(p.why.station)}</dd><dt>For the system</dt><dd>${esc(p.why.system)}</dd></dl></div></details></li>`;
 
-// The rail and the board; a column lists its open tasks by their best theme's rank (unranked themes last), done tasks at the end
+// The rail and the board; a column lists its open tasks by their best theme's place in the order (unplaced themes
+// last), done tasks at the end
 const themeRank = i => Math.min(...i.themes.map(id => themeById[id].rank ?? Infinity));
 const byRank = (a, b) => (a.st==="done") - (b.st==="done") || themeRank(a) - themeRank(b);
 const parkedAt = n => backlog.filter(p => p.station===n).length;
