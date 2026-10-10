@@ -86,7 +86,7 @@ Answered one at a time from 9 Oct 2026; each answer is recorded under
    settings change; a number mixing versions describes none of them.
 5. **Versions** (settled 9 Oct, see D6): should each live number be split by classifier, grouping
    and settings version, the way the replay is?
-6. **The replay:** show the last stored result, or re-run on a schedule?
+6. **The replay** (settled 9 Oct, see D7): show the last stored result, or re-run on a schedule?
    And when, if ever, the one test-set run happens, and where it shows.
 7. **Error bars:** the Wilson interval on every share, or only beside the
    headline numbers?
@@ -179,3 +179,24 @@ before: these numbers mix the two"), and it is the reader's job to pick a
 period that sits inside one version. A row per version was considered and
 rejected for now: at about six claims a day the rows would be thin, and
 the date picker already gives a per-version number when one is wanted.
+
+**D7. The replay (9 Oct 2026): the stored result, re-run by hand on a
+station change, never on a timer.** A replay is the pipeline sitting the
+golden set's exam; its mark describes the versions it ran on and nothing
+else, so a change to the classifier, the grouping or the tier settings is
+not finished until the replay has been re-run and its result committed.
+If nothing changed, nothing is re-run. Each run's score is already a
+dated JSON file in `v0/pipeline/measure/replay-results/`; the scorer
+will also write into it the classifier, grouping and settings versions the
+run used, which it does not today. The scores page reads that directory
+at build time: the newest file is the headline row, and every older file
+is a history row with its date and versions, so the runs can be compared
+on one line without a database. The `replay` schema in the database
+keeps holding the last run's raw answers for the live/replay switch. A
+scheduled re-run and a re-run triggered by a version change were
+considered and rejected: the first repeats a number for money, the
+second is more machinery than the page. **The test set** (the 105
+articles nothing was tuned on) is run once, after the extractor, digest
+and grouping themes and before the launch, and shown as a third column
+marked with its date and "run once"; until then the column reads "not
+yet run".
