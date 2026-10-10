@@ -77,12 +77,12 @@ Answered one at a time from 9 Oct 2026; each answer is recorded under
 1. **Where** (settled 9 Oct, see D1): a "scores" page in the menu (room for both sources and their
    caveats; the sketch's recommendation), or a one-line strip on the
    claims list?
-2. **The random sample:** build it, and at what rate (1 in 10, 1 in 3)?
+2. **The random sample** (settled 9 Oct, see D4): build it, and at what rate (1 in 10, 1 in 3)?
    Or start with "everything reviewed" only?
-3. **Over-splitting, as a number:** the v0 design says "how many claims
+3. **Over-splitting, as a number** (settled 9 Oct, see D2): the v0 design says "how many claims
    linked into how many groups". Against what denominator: the reviewed
    claims, the sample, all claims of the period?
-4. **Which period:** all time, the last 7 days, or both? The pipeline's
+4. **Which period** (settled 9 Oct, see D5): all time, the last 7 days, or both? The pipeline's
    settings change; a number mixing versions describes none of them.
 5. **Versions:** should each live number be split by classifier, grouping
    and settings version, the way the replay is?
@@ -107,3 +107,65 @@ and the scores page is added beside them. Considered and rejected: the
 page alone (the number out of sight while reviewing) and the strip alone
 (no room for the caveats the v0 design requires next to every live
 number).
+
+**D2. The numbers (9 Oct 2026): six live numbers and one reference.**
+The scoreboard is kept small on purpose; it is a launch instrument, not a
+study. Three grooming numbers come from the review marks:
+
+| Number | Share of | Counts |
+|---|---|---|
+| Over-merge | readings in sealed claims | readings marked ✕ (does not belong) |
+| Over-split | sealed claims | claims linked "same claim as" another |
+| Wrong tier | sealed claims | claims marked as deserving another tier |
+
+Three launch-bar numbers, the bar of [goals.md](../../goals.md) read off the
+page: **career events missed**, from a hand-kept list of the events known
+to have happened in the period, each marked arrived, posted or missed, with
+the date of the last check (the maintainer expects to know of any event
+anyway; the list is the heuristic that makes the count checkable);
+**repeats noticed in tier 1**, the "same claim as" links where both claims
+went out as tier-1 posts (a half that only reached a digest does not
+count: the digest absorbs it); and **the 👎 share**, posts and digests
+whose latest reaction is 👎, from the `reactions` table, which needs no
+grading. Every share carries its count beside it. The reference is the
+golden replay's stored result (D6 says how), beside them, never mixed.
+Left for after the launch: the wrong-answer rate per classifier question
+(needs [the answer-review idea](2026-10-06-review-classifier-answers.md)),
+and 3.11's clean-text line, one row when that run happens.
+
+**D3. The marks (9 Oct 2026): three, one of them new.** A reading belongs
+in its claim or not (`review_readings`, exists); two claims are one
+(`review_same_claims`, exists); and, new, **a claim should have been
+Post, Digest or Drop**: one tap on the claim page, stored in a
+`review_tiers` table shaped like `review_readings` (claim, the tier it had,
+the tier it should have had, author, time; append-only, the newest row in
+force, `v0_editor` may insert). The mark is at the claim level, where the
+maintainer reviews, not per reading. The fuller version, correcting the
+classifier's answers so a wrong tier can be traced to a wrong answer or a
+wrong setting, stays parked; a bare "should have been" is enough for the
+rate.
+
+**D4. Grading (9 Oct 2026): whatever can be reviewed, claim by claim,
+no sample.** No rhythm, no quota. The maintainer reviews the claims they
+open and seals each one: a claim counts in any number only when every
+reading in it carries a mark (the claims list's "reviewed" state,
+`v0/storyboard/lib/filters.ts`); a sealed claim that gains an article
+drops out until it is sealed again, and the page counts those ("4 claims
+reopened by new articles"). The numbers are therefore over the claims
+the maintainer chose, and the page says so under each one, in words
+("over the 14 claims reviewed, chosen by hand, not drawn at random").
+The rule-drawn sample of the proposal above is kept in the back pocket
+for when a fair number is wanted and the load allows; nothing built now
+prevents it.
+
+**D5. The period (9 Oct 2026): one picker, all time by default.** The
+scores page has one date picker and both sections follow it; two pickers
+would put two periods in view at once, the mixing question 4 warned
+about. The default is all time. The storyboard's presets (last 7 days,
+last 30 days, this week, a custom range) narrow it, and the launch-bar
+card carries its own sentence, "judged over the last 14 days", with a
+preset for that. A claim is in the period by the claims list's existing
+rule: when at least one of its articles was published in it, and then it
+counts whole, the readings outside the period included (they are marked
+too, since sealing marks every reading). The strip on the claims list is
+all time, always.
