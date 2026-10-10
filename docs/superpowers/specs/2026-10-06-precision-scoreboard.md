@@ -91,7 +91,7 @@ Answered one at a time from 9 Oct 2026; each answer is recorded under
 7. **Error bars** (settled 9 Oct, see D9): the Wilson interval on every share, or only beside the
    headline numbers?
 8. **The audience** (settled 9 Oct, see D10): a page for Anton's own tuning, or one fit to show
-   strangers (README, the public pages)? The second wants plainer words and the
+   visitors (README, the public pages)? The second wants plainer words and the
    caveats up front.
 
 ## Decisions
@@ -242,7 +242,7 @@ instead of given an interval. Considered and rejected: an interval on
 every share, which at about six claims a day would put a wide bar on
 nearly every row and bury the few that matter.
 
-**D10. The audience (9 Oct 2026): strangers reading the public showcase
+**D10. The audience (9 Oct 2026): visitors reading the public showcase
 first.** The scores page is written for a reader who does not know the
 project: plain words, and each number's date, method and weakness up
 front. The maintainer's own tuning needs are met by what D9 already

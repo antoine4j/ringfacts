@@ -220,7 +220,7 @@ footer{font-size:13px;color:var(--dim);max-width:100ch}
 // One place to edit: the themes, the stations' tasks, then the backlog's theme chips.
 const THEMES = [
   {id:"repo", rank:1, name:"Repo, README and backlog", short:"README and backlog", s:"critical", l:"none",
-   note:"Strangers read the repo today. All of it is done, the roadmap's wording last (0.16, 9 Oct)."},
+   note:"Visitors read the repo today. All of it is done, the roadmap's wording last (0.16, 9 Oct)."},
   {id:"score", rank:2, name:"Precision scoreboard", short:"scoreboard", s:"critical", l:"the launch bar's dashboard",
    note:"Next because it is the page that makes the showcase credible, and it can go up with the numbers that exist. Each rate on the page with a date and a method; that it is there matters more than that it is high."},
   {id:"feed", rank:3, name:"Self-feeding, then retire production", short:"self-feeding", s:"critical", l:"critical",
@@ -251,7 +251,7 @@ const THEMES = [
 const K = (id, themes, st, task, what, why, link) => ({id, themes, st, task, what, why, link});
 
 const STATIONS = [
-  {n:0, name:"Frame", role:"What holds the stations together: the store, the hourly runner, the deploy, and the repo a stranger reads.", items:[
+  {n:0, name:"Frame", role:"What holds the stations together: the store, the hourly runner, the deploy, and the repo a visitor reads.", items:[
     K("0.7",["repo"],"done","Sort the top level so the system comes first",
       "Done 2026-10-06: experiments, bench, corpus and labels moved into research/ (research/README.md says what each holds). domain/ stayed at the root, because production's hunter.js, server.js and lib/ import it and its Dockerfile copies it. Production's other files stay on top until it retires. tmp/ and the claims snapshot file were never in git; task 0.14 sorts them.",
       "The top level is the first screen a visitor sees."),
@@ -277,11 +277,11 @@ const STATIONS = [
       "Done 2026-10-09, every item answered. Removed: GitHub's spent branches v0 and classifier-experiment (every commit already in main; GitHub now has one branch), five local branches, a stash and a tag, old copies of the history from the August and October clean-ups (seven in the projects folder, and a 10 Aug copy with its bundle found in the home folder), a stray grading backup, and the leftovers inside the checkout (tmp/, the 8 Aug claims snapshot, one build session's notes). The private repo ringfacts-experiment stays on GitHub as it is: docs/lessons.md cites its lessons. The September labelling tools left research/ (research/README.md says how to find them), and the p5 folders of the claim-extraction cache no longer carry a laptop path in their names. tmp/ is throwaway by rule now (AGENTS.md). research/bench/ and research/corpus/ stay until production retires (0.13). The list itself names private copies, so it stays off the public repo; it is a private page, linked below.",
       "Copies made over months drift apart, and nobody can tell which one is the record.", ["The clean-up review (private page)", "https://claude.ai/artifact/HGzUSuFyeA2n6zJZv8y6Aj"]),
     K("0.15",["repo"],"done","Decide what leaves this repo, and which docs are published",
-      "Done 2026-10-09, in five decisions. (1) The blog backlog and the post brief moved out of this repo; the AGENTS.md rule to add post ideas is dropped, and ideas are added on request. (2) Links to private claude.ai pages stay, each labelled as private, with the repo file beside it where there is one. (3) The public site serves only the pages written for strangers: a new front page, the Architecture Overview, the Funnel, the test suite overview and this Launch Map, moved to docs/ as the public roadmap and linked from the README; docs/_config.yml leaves every other file out, and those stay readable in the repo (docs/decisions.md#what-the-public-site-serves). How the roadmap speaks to a stranger is task 0.16. (4) Two lines that gave a personal reason were reworded (TODO.md, this card); the original spec keeps its two, as the historical record it is. (5) The claim-extraction experiment's embedding cache, 5,250 files of vectors that a script rebuilds, is no longer tracked.",
+      "Done 2026-10-09, in five decisions. (1) The blog backlog and the post brief moved out of this repo; the AGENTS.md rule to add post ideas is dropped, and ideas are added on request. (2) Links to private claude.ai pages stay, each labelled as private, with the repo file beside it where there is one. (3) The public site serves only the pages written for visitors: a new front page, the Architecture Overview, the Funnel, the test suite overview and this Launch Map, moved to docs/ as the public roadmap and linked from the README; docs/_config.yml leaves every other file out, and those stay readable in the repo (docs/decisions.md#what-the-public-site-serves). How the roadmap speaks to a visitor is task 0.16. (4) Two lines that gave a personal reason were reworded (TODO.md, this card); the original spec keeps its two, as the historical record it is. (5) The claim-extraction experiment's embedding cache, 5,250 files of vectors that a script rebuilds, is no longer tracked.",
       "The repo is public: what is in it should be there on purpose.", ["The clean-up review (private page)", "https://claude.ai/artifact/HGzUSuFyeA2n6zJZv8y6Aj"]),
-    K("0.16",["repo"],"done","Decide how the public roadmap speaks to a stranger",
+    K("0.16",["repo"],"done","Decide how the public roadmap speaks to a visitor",
       "Done 2026-10-09. The page had been written to the maintainer, with \"you\" and \"your call\" in 27 places, 16 of them in the parked backlog. The rule now: a task names the decision it waits on (\"▶ open call\", \"OPEN CALL:\"), and names a person only when the sentence is about their time or their ruling, and then it is \"the maintainer\". A role title such as editor or product manager was rejected: no such role exists in the project, so it would raise the same question. The backlog's source, golden/parked-tasks.json, was reworded the same way.",
-      "A stranger reading the roadmap should not wonder who \"you\" is."),
+      "A visitor reading the roadmap should not wonder who \"you\" is."),
   ]},
   {n:1, name:"RSS reader", role:"Finds article links for each fighter.", items:[
     K("1.2",["feed"],"todo","v0 reads the feeds itself",
@@ -381,7 +381,7 @@ const STATIONS = [
   ]},
   {n:10, name:"Measurement", role:"How we know how well it works.", items:[
     K("10.5",["score"],"done","Answer the scoreboard's eight open questions",
-      "Done 2026-10-09. The last two were settled by voice: error bars (Wilson 95% intervals) on the headline numbers only, with a sample count beside every slice and any slice under 30 articles greyed out; and the page is written for strangers reading the public showcase first, the maintainer's tuning served by those counts. The answers are D1 to D10 in docs/superpowers/specs/2026-10-06-precision-scoreboard.md.",
+      "Done 2026-10-09. The last two were settled by voice: error bars (Wilson 95% intervals) on the headline numbers only, with a sample count beside every slice and any slice under 30 articles greyed out; and the page is written for visitors reading the public showcase first, the maintainer's tuning served by those counts. The answers are D1 to D10 in docs/superpowers/specs/2026-10-06-precision-scoreboard.md.",
       "The page can now be built to a settled spec."),
     K("10.6",["score"],"waits","Build the scores page",
       "The golden replay's numbers and the live review's side by side, each with its date, its method and its weakness: the replay is fair but old, the review is live but leans to the claims opened for review. After 10.5.",

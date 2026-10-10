@@ -1110,7 +1110,7 @@ commit was deployed last, not whether a person asked for the build, so no
 comparison of files can tell a redeploy from a push that changed nothing.
 
 <a id="what-the-public-site-serves"></a>
-## what-the-public-site-serves — The public site serves only the pages written for strangers
+## what-the-public-site-serves — The public site serves only the pages written for visitors
 *2026-10-09*
 
 GitHub Pages serves `docs/` on `main`, and its Jekyll build turns every

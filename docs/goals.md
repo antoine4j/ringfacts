@@ -19,7 +19,7 @@ targets below is ever met by posting more.
 G1–G4 below are the ideal the bot is measured against. They do not say what
 the project is *for* now, so this section does, in order of priority.
 
-1. **A public showcase: a stranger can understand, trace and trust the
+1. **A public showcase: a visitor can understand, trace and trust the
    system.** The repo is public and read by people who never ran it, so it
    is held to that reader: a README that explains what, how, how measured,
    how to run; a read-only live demo a visitor can trace from article to

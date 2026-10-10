@@ -315,7 +315,7 @@ This is a public repository, and the history is part of what it shows. Rules:
    a working session. Fix-ups to something not yet pushed get folded into the
    commit they fix (`git commit --amend`, or an interactive squash), never
    pushed as "fix typo". Once pushed, history is not rewritten.
-2. **The subject line names the change for a stranger.** Plain English,
+2. **The subject line names the change for a visitor.** Plain English,
    under 72 characters, what changed and — when it fits — what it was for:
    *"Confirmation posts link the decoded article URL, not Google's wrapper"*.
    No prefixes, no ticket codes, no "WIP", no "update docs".

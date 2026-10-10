@@ -79,7 +79,7 @@ code is expected stable and the group's post history becomes a contract.
   evidence. See docs/self-improvement.md §4.
 - **A change to how the pipeline works is not finished until the public pages
   say so.** This repo is public, and five
-  surfaces describe the architecture to strangers: [README.md](README.md), the
+  surfaces describe the architecture to visitors: [README.md](README.md), the
   GitHub repo description and topics, and the three published pages
   [docs/index.html](docs/index.html) (the site's front page),
   [docs/architecture-overview.html](docs/architecture-overview.html) and
@@ -113,7 +113,7 @@ code is expected stable and the group's post history becomes a contract.
   may be emptied at any time. No code reads from it, and nothing in it is
   the only copy: a script worth running twice moves to `scripts/`, and data
   worth keeping goes where its folder's README says.
-- **Write commits for a stranger.** This history is public. The subject says
+- **Write commits for a visitor.** This history is public. The subject says
   what changed; the body says why it was worth changing, what was measured,
   and what was considered and rejected — the same standard the docs are held
   to. No private context ("as discussed", "per Anton's ask"), and no finding

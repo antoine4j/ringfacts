@@ -17,7 +17,7 @@ same list laid across the stations, task by task, with the parked
 backlog: [docs/launch-map.html](docs/launch-map.html), the Launch Map, also the
 public roadmap at https://antoine4j.github.io/ringfacts/launch-map.html.
 
-1. **Tidy the repo and rewrite the README.** S: critical, strangers read
+1. **Tidy the repo and rewrite the README.** S: critical, visitors read
    the repo today; done 2026-10-09, and kept first so the list shows
    the progress. L: none. Experiments into a named
    folder, article bodies out of history, a status banner naming v0, the

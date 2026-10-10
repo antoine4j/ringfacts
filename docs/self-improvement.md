@@ -371,7 +371,7 @@ Four things describe this project to people who will never read the code:
 published from `/docs` — the architecture overview and the funnel walkthrough.
 They are served straight off `main`, so a push updates them within the minute.
 That makes them load-bearing in a way
-internal notes are not: a wrong sentence there is read by strangers as a
+internal notes are not: a wrong sentence there is read by visitors as a
 statement about the author's judgement.
 
 A change to how the pipeline works is therefore not finished when the tests
