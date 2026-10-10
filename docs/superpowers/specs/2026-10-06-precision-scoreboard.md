@@ -71,7 +71,10 @@ would add the tier and classifier rows.
 
 ## Open questions
 
-1. **Where:** a "scores" page in the menu (room for both sources and their
+Answered one at a time from 9 Oct 2026; each answer is recorded under
+"Decisions" below and the question is marked settled.
+
+1. **Where** (settled 9 Oct, see D1): a "scores" page in the menu (room for both sources and their
    caveats; the sketch's recommendation), or a one-line strip on the
    claims list?
 2. **The random sample:** build it, and at what rate (1 in 10, 1 in 3)?
@@ -90,3 +93,17 @@ would add the tier and classifier rows.
 8. **The audience:** a page for Anton's own tuning, or one fit to show
    strangers (README, the public pages)? The second wants plainer words and the
    caveats up front.
+
+## Decisions
+
+**D1. Where (9 Oct 2026): both a page and a strip.** A new "scores" page
+in the storyboard's menu is the source of truth, with room for each
+number's date, method and weakness. The claims list gets a one-line strip
+with the headline numbers, so they are in view and seen to change while
+claims are being reviewed; it links to the page. Nothing in the
+storyboard is removed or replaced to make room: the `/replay` placeholder,
+the `/compare` page and the live/replay switch in the top bar all stay,
+and the scores page is added beside them. Considered and rejected: the
+page alone (the number out of sight while reviewing) and the strip alone
+(no room for the caveats the v0 design requires next to every live
+number).
