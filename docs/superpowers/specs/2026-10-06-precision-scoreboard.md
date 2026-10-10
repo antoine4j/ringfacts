@@ -218,18 +218,17 @@ and grouping themes and before the launch, and shown as a third column
 marked with its date and "run once"; until then the column reads "not
 yet run".
 
-**D8. Comparing saved replays (9 Oct 2026): a page grown from the golden
-review board.** The review board (`golden/board/build.py` →
-`board.html`, local, git-ignored because it prints the articles' text)
-already lays out every ruled claim with its articles, the classifier's
-and extractor's answers as chips, and the maintainer's ruling. The
-comparison page is that board with one more chip per article: the claim
-the chosen saved replay put it in. A ruled claim whose articles carry two
-chips was split; one chip under two ruled claims is a merge; the tier
-beside it shows a wrong tier. A picker at the top switches between the
-runs saved under `golden/replays/`. It reads files only, the board's
-inputs plus the saved runs, and is built and served the same way as the
-board, local only; the script is public, the page is not. It is built
-when a second saved run exists to compare, not before. The claim map and
-the answer-key pages were looked at and are about the classifier's
-answers, not grouping.
+**D8. Comparing saved replays in detail (9 Oct 2026): a page grown
+from the golden review board, outside the storyboard.** The review board
+(`golden/board/build.py` → `board.html`, local only because it prints the
+articles' text) already lays out every ruled claim with its articles,
+the models' answers as chips and the maintainer's ruling. The comparison
+page is that board with one more chip per article: the claim the chosen
+saved replay put it in, read from `golden/replays/<run>/`. A ruled claim
+whose articles carry two different chips was split by the pipeline; one
+chip under two ruled claims is a merge; the decision chip beside it shows
+the tier. A picker at the top switches between saved runs. Built from
+files only, git-ignored like the board (the extracts and raw replies
+quote the articles), and built when a second saved run exists to compare.
+The claim map, the Answer Key Check and the prompts pages were looked at
+and set aside: they are about the classifier's answers, not grouping.
