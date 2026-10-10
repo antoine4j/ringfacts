@@ -49,7 +49,7 @@
     --bad-bg: #3f1d1d;
     --bad-text: #ff9b9b;
     --good-bg: #183323;
-    --reviewed-bg: color-mix(in srgb, var(--good-bg) 40%, var(--panel));
+    --reviewed-bg: color-mix(in srgb, var(--post) 14%, var(--good-bg));
     color-scheme: dark;
   }
 }
@@ -71,7 +71,7 @@
   --bad-bg: #3f1d1d;
   --bad-text: #ff9b9b;
   --good-bg: #183323;
-  --reviewed-bg: color-mix(in srgb, var(--good-bg) 40%, var(--panel));
+  --reviewed-bg: color-mix(in srgb, var(--post) 14%, var(--good-bg));
   color-scheme: dark;
 }
 
@@ -201,7 +201,7 @@ button:disabled { opacity: 0.5; cursor: default; }
 details > summary { cursor: pointer; }
 .claim { background: var(--panel); border: 1px solid var(--line); border-radius: var(--radius); margin: 8px 0; padding: 10px 14px; }
 .claim[open] { border-color: color-mix(in srgb, var(--accent) 45%, var(--line)); }
-/* A reviewed claim's card: a light green that still shows on a bright screen in daylight; dark keeps its softer mix. */
+/* A reviewed claim's card: a light green that still shows on a bright screen in daylight, and in dark a green lifted toward the post colour so it stands apart from unreviewed cards at a glance. */
 .claim.is-reviewed { background: var(--reviewed-bg); }
 .claim > summary { list-style: none; }
 .claim > summary::-webkit-details-marker { display: none; }
