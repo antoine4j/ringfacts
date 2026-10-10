@@ -8,6 +8,8 @@ pointed at by number. Goal moved: the showcase (end state 1 in
 questions this design opened were settled on 2026-10-10; the decisions
 are at the end (§11) and are applied throughout.
 
+**Implementation plan (10 Oct 2026):** [2026-10-10-precision-scoreboard.md](../plans/2026-10-10-precision-scoreboard.md).
+
 ## 1. Route, serving and data loading
 
 - **Route:** `/scores` in the storyboard (`v0/storyboard/app/scores/page.tsx`),
