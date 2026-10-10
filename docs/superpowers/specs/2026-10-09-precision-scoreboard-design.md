@@ -4,8 +4,9 @@
 [the scoreboard spec](2026-10-06-precision-scoreboard.md), whose ten
 decisions (D1–D10) are settled and are not restated here; each is
 pointed at by number. Goal moved: the showcase (end state 1 in
-[goals.md](../../goals.md)), and the launch bar's dashboard. Three
-questions remain open; they are at the end.
+[goals.md](../../goals.md)), and the launch bar's dashboard. The three
+questions this design opened were settled on 2026-10-10; the decisions
+are at the end (§11) and are applied throughout.
 
 ## 1. Route, serving and data loading
 
@@ -63,7 +64,7 @@ launch bar's three, live, and the replay's three pass marks:
 
 | Number | Numerator | Denominator | Bar |
 |---|---|---|---|
-| Career events missed (G1) | events in the period with no claim found (§3) | events in the period on the list | 0 |
+| Career events not posted as tier 1 (G1) | events in the period whose status is not "posted" (§3): late plus missed | events in the period on the list | 0 |
 | Repeats in tier 1 (G3) | tier-1 posts beyond the first in a "same claim as" group; a group with 3 posted claims counts 2 | tier-1 posts in the period | 0 |
 | 👎 share (G2) | messages whose latest reaction is 👎 (`latestReaction` in `lib/queries.ts`) | messages in the period | at most 1 in 10 |
 | Replay: all nine answers right | `all_nine_right` | `articles` | (none) |
@@ -77,8 +78,9 @@ its denominator is under 30 (D9).
 |---|---|---|
 | Over-merge | readings in sealed claims whose mark in force is ✕ (`does_not_belong` or `own_claim`) | readings in sealed claims |
 | Over-split | sealed claims that sit in a "same claim as" group (`sameClaimGroups`) | sealed claims |
-| Wrong tier | sealed claims with a tier mark in force that differs from the claim's tier (§4) | sealed claims (see question 2) |
-| Events arrived but not posted | events whose claims exist but none posted | events in the period |
+| Wrong tier | sealed claims whose tier mark in force says the tier was wrong (§4), over-promotion included | sealed claims with a tier mark in force. An unmarked claim is "not yet judged" and is in neither number (decision Q2) |
+| Events late, via the digest | events with status "late" (§3) | events in the period |
+| Events never heard (blackout) | events with status "missed" (§3), split by cause | events in the period |
 | Messages without a reaction | messages with no reaction in force | messages in the period |
 | Reopened claims | as defined above | (a count only) |
 | Replay: G4 weaker called official | `g4_weaker_called_official` | (a count; bar 0) |
@@ -124,12 +126,25 @@ changed by commit. A commit is the record of each check.
 
 **The status is computed, never typed:**
 
-- **posted:** any listed claim has a `posted_reading_id`;
-- **arrived:** a listed claim exists but none posted;
-- **missed:** `claim_ids` is empty.
+- **posted (pass):** any listed claim has a `posted_reading_id`, which
+  is the tier-1 post;
+- **late, via the digest (fails G1 on timing):** no listed claim posted
+  as tier 1, but a listed claim is in a posted digest
+  (`digest_claims.used` on a digest with `posted_at`). The group heard
+  it, too slowly: G1 asks for ~6 hours and the weekly digest is far
+  slower. This is not a blackout;
+- **missed (blackout):** the group never heard it. Either `claim_ids` is
+  empty (v0 never had it), or a listed claim exists but reached neither a
+  post nor a digest. The card names the cause: a **tier-3 drop** (the
+  claim's tier is Drop: a classifier problem) or a **digest omission**
+  (the claim was Digest but the digest writer left it out, `used` false
+  or no digest row: a digest-writer problem). `claim_ids` empty is
+  reported as "never found".
 
-The maintainer types facts, and the database says what the bot did with
-them.
+The launch bar counts "late" and "missed" together as failures of G1, and
+the card shows the three outcomes separately: "2 posted · 1 late · 1
+missed (tier-3 drop)". The maintainer types facts, and the database says
+what the bot did with them.
 
 When `checked` is earlier than the period's last day, the card says
 "list last checked 8 Oct; later events not counted". A unit test
@@ -142,9 +157,11 @@ set, days valid, claim ids are numbers.
 `replay`:
 
 ```sql
--- The maintainer's tier mark (scoreboard D3): the tier a claim had when
--- marked, and the tier it should have had. The newest row for a claim is
--- in force; "cleared" undoes the one before it.
+-- The maintainer's tier mark (scoreboard D3, decision Q2): the tier a claim
+-- displayed when marked, and the tier it should have had. verdict equal to
+-- tier_had means "the tier was right". The newest row for a claim is in
+-- force; "cleared" undoes the one before it and returns the claim to
+-- "not yet judged".
 CREATE TABLE IF NOT EXISTS review_tiers (
   id          bigint GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
   claim_id    bigint NOT NULL REFERENCES claims(id),
@@ -165,14 +182,35 @@ CREATE INDEX IF NOT EXISTS review_tiers_claim_idx ON review_tiers (claim_id, id)
   the other two marks.
 - `replay.ts` adds `review_tiers` to `REPLAY_TABLES`, so the replay
   empties it like the rest.
+- **What a tier is.** Tier is stored per reading, by the Decider's lookup
+  table. A claim has no stored tier: it displays its best reading's tier
+  (Post over Digest over Drop, as in §2). A claim posts once, when it
+  first has a tier-1 reading, and never re-posts. There is no "approved"
+  state: a claim is "reviewed" once every reading has any mark. The
+  existing reading marks ("belongs", "does not belong", "own claim") say
+  whether a reading belongs, not whether the tier was right, so they say
+  nothing about this number. The tier mark is a separate, claim-level
+  control (decision Q2).
+- **Only an explicit mark counts.** A reviewed claim with no tier mark is
+  "not yet judged", never counted as right. The wrong-tier rate is
+  wrong marks over marked claims, and the card shows how many reviewed
+  claims are still unjudged.
+- **Over-promotion** (a genuine Digest claim that posted as tier 1) is
+  recorded by this same mark (verdict `digest` on a claim that displayed
+  Post) and folded into the single wrong-tier rate. It is not junk and
+  does not count against G2's zero-junk bar, which is for tier-3
+  material surfacing as tier 2 or higher (a verdict `drop` on a claim
+  that displayed Post or Digest). The card for G2 reads that subset
+  from the same table.
 - **The mark in force counts only while it is current.** If the claim's
   tier has changed since the mark (`tier_had` differs from the claim's
   tier today), the mark is stale, and the claim shows as unmarked for its
   tier, in the same way a new article reopens a sealed claim.
 - **On the claim page** (`app/claims/[id]/page.tsx`): a row "Tier: Digest
   · should be: Post Digest Drop", with the mark in force tinted. Tapping
-  another tier saves it at once. Tapping the claim's own tier while a
-  correction is in force saves `cleared`. This is a server action in
+  any tier saves it at once: the claim's own tier means "right"
+  (verdict equal to `tier_had`), another tier means "should have been".
+  A small "clear" link saves `cleared`, back to "not yet judged". This is a server action in
   `app/review-actions.ts`, live data only.
 
 **Order: the page ships first.** Until the table exists, the wrong-tier
@@ -228,10 +266,10 @@ Scores                                         [period: all time ▾]
 LIVE · THE LAUNCH BAR            judged over the last 14 days → [preset]
   Versions: classifier v7.7 · grouping g1 · settings 4
   ⚠ classifier v7.7 from 3 Oct, v7.6 before: these numbers mix the two   (only when true)
-  ┌ Career events missed ┐ ┌ Repeats in tier 1 ┐ ┌ 👎 share           ┐
+  ┌ Events not posted    ┐ ┌ Repeats in tier 1 ┐ ┌ 👎 share           ┐
   │ 0 of 4  (0–49%)  ✓   │ │ 0 of 6  (0–39%) ✓ │ │ 1 of 12 (1–35%) ✓  │
-  │ 3 posted · 1 arrived │ │ bar: 0            │ │ 3 without reaction │
-  │ list checked 8 Oct   │ │                   │ │ bar: at most 1/10  │
+  │ 4 posted · 0 late    │ │ bar: 0            │ │ 3 without reaction │
+  │ 0 missed · chk 8 Oct │ │                   │ │ bar: at most 1/10  │
   │ How · Weakness       │ │ How · Weakness    │ │ How · Weakness     │
   └──────────────────────┘ └───────────────────┘ └────────────────────┘
 
@@ -336,11 +374,11 @@ start with the run's timestamp, so sorting by name sorts by time.
 - **README, "How it is measured":** the closing paragraph stops calling
   the scoreboard "planned". The numbers table gains the three launch-bar
   rows and the three grooming rows, each with its count, its date, and
-  "over claims chosen by hand". Visitors cannot open the storyboard (see
-  question 1).
+  "over claims chosen by hand". Visitors cannot open the storyboard (decision Q1).
 - **Public view of the headline numbers:** defers to the future public
   reading surface (TODO item 11, the reader-facing site), which is separate
-  from the storyboard; until it exists, the README copy is the stopgap.
+  from the storyboard; until it exists, the README copy is the stopgap
+  (decision Q1).
 - **docs/architecture-overview.html:** the storyboard and review
   section names the scores page and the `review_tiers` mark. Section 13,
   "What is not measured", is re-read against §2.
@@ -392,30 +430,18 @@ Each step is one commit and is testable on its own:
   shows, the strip moves into the page's existing member query rather
   than getting a cache.
 
-**Open questions for the maintainer**
+**Decisions on the three open questions** (the maintainer, 2026-10-10)
 
-1. **How do visitors see the numbers before the public demo (TODO item
-   9)?** The storyboard is behind Vercel Authentication, and D10 writes
-   the page for visitors. Options:
-   - (a) the README table is copied from the page by hand at each station
-     change and at the launch decision;
-   - (b) a script renders the page's numbers into a static page on the
-     public site;
-   - (c) nothing public until the demo.
-
-   Recommended: **(a)**. It needs no new machinery, and the README is
-   where visitors already read the numbers.
-2. **What counts as "tier right"?** Options:
-   - (a) a sealed claim with no tier mark counts as tier right, so the
-     denominator is all sealed claims;
-   - (b) only claims with an explicit tier mark count.
-
-   Option (a) adds no taps but leans low, since a tier nobody looked at
-   counts as right. Option (b) is exact but adds a tap to every review.
-   Recommended: **(a)**, with the weakness stated on the card, because
-   review time is the scarce resource (goals.md).
-3. **Does an event that arrived but never posted as tier 1 fail the
-   launch bar?** D2 names three states, but the bar counts only
-   "missed". G1 says every career event *posts*. Recommended: **yes**.
-   The card would show both counts, and the bar would need both to be
-   zero.
+1. **Q1, public view of the numbers while the storyboard is private:
+   settled.** The public view of the headline numbers belongs on the
+   future public reading surface (TODO item 11), not a one-off public
+   page. Until it exists, the headline numbers are copied into the README
+   by hand at each version change (§9).
+2. **Q2, does a reviewed claim with no tier mark count as "tier right":
+   settled, no.** Only an explicit tier mark counts; an unmarked claim is
+   "not yet judged". Mechanics and the over-promotion rule are in §4; the
+   denominator is in §2.
+3. **Q3, does a real career event that arrived but never posted as tier 1
+   fail the launch bar: settled, yes.** It fails G1 on timing. The board
+   shows three outcomes, posted, late via the digest, and missed with its
+   cause (§3), and the launch bar needs the last two to be zero.
