@@ -5,6 +5,8 @@ below; needs a proper design session before anything is built. Builds on
 the measurement plan of the [v0 design](2026-10-04-v0-design.md)
 (section 13, and section 11, "What it measures").
 
+**Technical design (9 Oct 2026):** [2026-10-09-precision-scoreboard-design.md](2026-10-09-precision-scoreboard-design.md).
+
 ## The problem
 
 Anyone shown the project asks how precise it is. Today the answer lives in
