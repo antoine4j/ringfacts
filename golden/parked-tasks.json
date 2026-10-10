@@ -35,7 +35,7 @@
       "why": {
         "set": "Needs no new labels; 2.1 already provides them.",
         "station": "Measures whether cheap address rules catch copies before any text is fetched.",
-        "system": "Every copy caught here saves a page fetch and a model call further down. Parked because you chose to skip this station for now."
+        "system": "Every copy caught here saves a page fetch and a model call further down. Parked: the station is skipped for now."
       },
       "candidate_for": "address clean-up"
     },
@@ -57,7 +57,7 @@
       "station": 3,
       "station_name": "Body extractor",
       "task": "Tune the body extractor, then score it on the set",
-      "what": "TODO item 8. Last, by your decision.",
+      "what": "TODO item 8. Placed last.",
       "why": {
         "set": "Uses 3.2 and 3.3 as its answer key.",
         "station": "The only way to know if a fix helped.",
@@ -69,7 +69,7 @@
       "id": "4.26",
       "station": 4,
       "station_name": "Classifier",
-      "task": "YOUR CALL: two fixes that work only on the claims they were built on",
+      "task": "OPEN CALL: two fixes that work only on the claims they were built on",
       "what": "From the night's experiment E5. (1) 'A prediction is about a booked fight': a rival camp's boast ('Usman would make him quit', claim-003, three articles) moves from 'predicts his fight' to 'calls him out'. (2) 'A report of what is planned for him is news, not steering': fixes Dana White's 'top two potential opponents' and the reported rematch talks. Both held in two runs and lost nothing, and every training article the key calls a prediction is about a booked fight. But neither moved the validation set, so nothing outside their own claims shows them working. Options: adopt both; adopt neither until a new labelled slice can judge them; adopt only 'booked'. My recommendation: only 'booked', which restates how the key already uses the label.",
       "why": {
         "set": "No label changes.",
@@ -82,7 +82,7 @@
       "id": "4.27",
       "station": 4,
       "station_name": "Classifier",
-      "task": "YOUR CALL: do the three news questions stay tied to the 'what new fact' answer?",
+      "task": "OPEN CALL: do the three news questions stay tied to the 'what new fact' answer?",
       "what": "Today the code applies the rule ties: 'no fact' makes all three flags no, and a result, next-fight or health fact makes its own flag yes. As the model gives them, 'reports his next fight' is right on 150 training and 35 validation articles; after the ties, 146 and 39. Training prefers the raw flags, validation the ties. Where a flag and the 'what new fact' answer disagree (23 training articles), the flag is right in 11, the fact in 10, both wrong in 2. Options: keep the ties and log every disagreement for review (now); let a confident flag stand against 'no fact'; drop the flags and derive them from the fact. My recommendation: keep the ties and log the disagreements, a cheap list of articles worth a second look.",
       "why": {
         "set": "No label changes.",
@@ -108,7 +108,7 @@
       "station": 4,
       "station_name": "Classifier",
       "task": "A new labelled slice to judge the fixes that need it",
-      "what": "The validation set has no next-fight or status-update article, so changes on those (the rumour fixes rejected overnight, 'plans' in 4.26) cannot be judged out of sample. A small new slice of articles with rumoured fights and health updates, labelled by the readers, with your time limited to one spot check. Parked until after 4.7.",
+      "what": "The validation set has no next-fight or status-update article, so changes on those (the rumour fixes rejected overnight, 'plans' in 4.26) cannot be judged out of sample. A small new slice of articles with rumoured fights and health updates, labelled by the readers, with the maintainer's time limited to one spot check. Parked until after 4.7.",
       "why": {
         "set": "Adds labels where the current split is blind.",
         "station": "Lets the next classifier version be judged on the cases it is weakest on.",
@@ -169,7 +169,7 @@
       "station": 5,
       "station_name": "Claim extractor",
       "task": "Confirm the bout for every claim",
-      "what": "Pre-filled for 63 claims; you confirm or correct.",
+      "what": "Pre-filled for 63 claims; each is confirmed or corrected.",
       "why": {
         "set": "Ties each claim to a fight: needed for the predictions merge and the post-fight window.",
         "station": "The answer key for the extractor's bout field.",
@@ -180,7 +180,7 @@
       "id": "5.4",
       "station": 5,
       "station_name": "Claim extractor",
-      "task": "Flag a bad extract when you meet one",
+      "task": "Flag a bad extract on sight",
       "what": "No separate pass. Only while labelling.",
       "why": {
         "set": "Gives an 'extract right or wrong' label cheaply.",
@@ -231,7 +231,7 @@
       "station": 6,
       "station_name": "Semantic dedup: grouping into claims",
       "task": "Check the other 74 single-article claims while labelling",
-      "what": "Not reviewed by you: they stand as Fable built them. 26 carry a doubt Fable wrote down, 11 were grouped below high confidence. Flag any that belong elsewhere.",
+      "what": "Not reviewed by the maintainer: they stand as Fable built them. 26 carry a doubt Fable wrote down, 11 were grouped below high confidence. Flag any that belong elsewhere.",
       "why": {
         "set": "An unnoticed wrong singleton is a hidden error in the answer key.",
         "station": "A missed join would be scored as correct.",
@@ -268,7 +268,7 @@
       "station": 6,
       "station_name": "Semantic dedup: grouping into claims",
       "task": "After v0: lean grouping toward splitting, and absorb the splits downstream",
-      "what": "Your rule (5 Oct, now in goals.md under G3): a story posted twice costs less than a story swallowed. v0's replay leans the wrong way on training: pair precision 0.62 (3 of v0's 38 claims mix two of your stories) against pair recall 0.83 (4 of your 38 split). Levers, each aimed at one side. Against merges: a join needs JEV to be sure (under some confidence, start a new claim instead; the ⚠ joins are the first candidates); a guard that refuses a join when the extracts name a different opponent, event or date; a second look at a claim whose newest article's extract disagrees with its label. Against the cost of splits: the digest writer merges claims that are one story (your idea; it already sees the week's claims together); before a tier-1 post, a check against the last days' posted claims for the same fact (same opponent and event), so a split repeats at most rarely in the loud channel. Two more, to test on the golden replay first, from your first live review (5 Oct, claims #424 and #426: one Instagram statement by Parnasse's camp, reported by three outlets, split across two claims): (1) show the judge each candidate claim by more than its label, for example its first and its latest sentence. #424's label had switched to its one rumour article ('reportedly scheduled', firmer than 'no new fact'), so the third report of the camp's denial was compared with the rumour alone and judged a new story (79% 'none of these', 12% #424), though two denials were already in the claim; (2) make the extract's 'occasion' name the fight or event ('Topuria vs Parnasse, UFC 336'), not where it was said ('Instagram story posted by Chaufourier'): it is part of the text the shortlist compares, so four articles on one fight got four different occasions.",
+      "what": "The maintainer's rule (5 Oct, now in goals.md under G3): a story posted twice costs less than a story swallowed. v0's replay leans the wrong way on training: pair precision 0.62 (3 of v0's 38 claims mix two labelled stories) against pair recall 0.83 (4 of the 38 labelled stories split). Levers, each aimed at one side. Against merges: a join needs JEV to be sure (under some confidence, start a new claim instead; the ⚠ joins are the first candidates); a guard that refuses a join when the extracts name a different opponent, event or date; a second look at a claim whose newest article's extract disagrees with its label. Against the cost of splits: the digest writer merges claims that are one story (proposed in review; it already sees the week's claims together); before a tier-1 post, a check against the last days' posted claims for the same fact (same opponent and event), so a split repeats at most rarely in the loud channel. Two more, to test on the golden replay first, from the first live review (5 Oct, claims #424 and #426: one Instagram statement by Parnasse's camp, reported by three outlets, split across two claims): (1) show the judge each candidate claim by more than its label, for example its first and its latest sentence. #424's label had switched to its one rumour article ('reportedly scheduled', firmer than 'no new fact'), so the third report of the camp's denial was compared with the rumour alone and judged a new story (79% 'none of these', 12% #424), though two denials were already in the claim; (2) make the extract's 'occasion' name the fight or event ('Topuria vs Parnasse, UFC 336'), not where it was said ('Instagram story posted by Chaufourier'): it is part of the text the shortlist compares, so four articles on one fight got four different occasions.",
       "why": {
         "set": "Pair precision and pair recall on training and validation, and swallowed tier-1 stories counted on their own: the target is none.",
         "station": "Grouping (6) is where both failures start; 6.9 (stale leader, chaining) is the same family.",
@@ -293,7 +293,7 @@
       "station": 7,
       "station_name": "Decider and settings",
       "task": "Build the settings table: which cells reach tier 1, 2 or 3, per fighter",
-      "what": "Your rulings so far become the defaults: for Donchenko and Amosov you hear everyone; for Topuria only people with standing. Changeable, later by users too. Design intent of 3 Oct: what fact and how firm route an article together (an official fight at once, a rumour to a digest); neither is used alone to cut an article away, and no single label should be able to drop an article by itself.",
+      "what": "The maintainer's rulings so far become the defaults: for Donchenko and Amosov everyone is heard; for Topuria only people with standing. Changeable, later by users too. Design intent of 3 Oct: what fact and how firm route an article together (an official fight at once, a rumour to a digest); neither is used alone to cut an article away, and no single label should be able to drop an article by itself.",
       "why": {
         "set": "No labels; it sits on top of them.",
         "station": "Makes the decider a lookup instead of a judgement.",
@@ -305,7 +305,7 @@
       "station": 7,
       "station_name": "Decider and settings",
       "task": "Give a tier to a sample of claims, blind, to check the bridge",
-      "what": "After 7.4. If grid plus settings give your tier, the grid is enough; if not, it shows what the grid misses, such as depth or how big the news is.",
+      "what": "After 7.4. If grid plus settings give the labelled tier, the grid is enough; if not, it shows what the grid misses, such as depth or how big the news is.",
       "why": {
         "set": "A check, not a label for every claim.",
         "station": "Tests the decider end to end.",

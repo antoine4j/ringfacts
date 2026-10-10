@@ -18,7 +18,7 @@ backlog: [docs/launch-map.html](docs/launch-map.html), the Launch Map, also the
 public roadmap at https://antoine4j.github.io/ringfacts/launch-map.html.
 
 1. **Tidy the repo and rewrite the README.** S: critical, strangers read
-   the repo today; all done but 0.16, and kept first so the list shows
+   the repo today; done 2026-10-09, and kept first so the list shows
    the progress. L: none. Experiments into a named
    folder, article bodies out of history, a status banner naming v0, the
    README in the order what / how / how measured / how to run.
@@ -30,8 +30,9 @@ public roadmap at https://antoine4j.github.io/ringfacts/launch-map.html.
    **2026-10-09:** all three done: the GitHub description applied, 0.14
    cleaned every copy, and 0.12 moved five candidates onto their stations
    and kept 4.26 and 4.27 parked for v8. 0.15 (what leaves this repo, and
-   what the public site serves) done the same day. Left: 0.16, how the
-   public roadmap speaks to a stranger.
+   what the public site serves) done the same day. 0.16 closed it: the
+   roadmap names the decision a task waits on ("open call"), and names
+   a person, "the maintainer", only for their time or their ruling.
 2. **The precision scoreboard** ([spec](docs/superpowers/specs/2026-10-06-precision-scoreboard.md),
    eight questions open; unparked). S: critical, it is the page that shows
    how well the pipeline does, and the one that makes the showcase
