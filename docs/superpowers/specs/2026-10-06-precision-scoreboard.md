@@ -88,9 +88,9 @@ Answered one at a time from 9 Oct 2026; each answer is recorded under
    and settings version, the way the replay is?
 6. **The replay** (settled 9 Oct, see D7): show the last stored result, or re-run on a schedule?
    And when, if ever, the one test-set run happens, and where it shows.
-7. **Error bars:** the Wilson interval on every share, or only beside the
+7. **Error bars** (settled 9 Oct, see D9): the Wilson interval on every share, or only beside the
    headline numbers?
-8. **The audience:** a page for Anton's own tuning, or one fit to show
+8. **The audience** (settled 9 Oct, see D10): a page for Anton's own tuning, or one fit to show
    strangers (README, the public pages)? The second wants plainer words and the
    caveats up front.
 
@@ -232,3 +232,19 @@ files only, git-ignored like the board (the extracts and raw replies
 quote the articles), and built when a second saved run exists to compare.
 The claim map, the Answer Key Check and the prompts pages were looked at
 and set aside: they are about the classifier's answers, not grouping.
+
+**D9. Error bars (9 Oct 2026): on the headline numbers only; sample
+counts and a grey-out for the rest.** The Wilson 95% interval is drawn
+beside the headline numbers alone: overall accuracy, and the G1 and G2
+pass marks. Every other share shows its count beside it (D2 already
+requires this), and a slice of fewer than 30 articles is greyed out
+instead of given an interval. Considered and rejected: an interval on
+every share, which at about six claims a day would put a wide bar on
+nearly every row and bury the few that matter.
+
+**D10. The audience (9 Oct 2026): strangers reading the public showcase
+first.** The scores page is written for a reader who does not know the
+project: plain words, and each number's date, method and weakness up
+front. The maintainer's own tuning needs are met by what D9 already
+gives, the count beside every share and the grey-out under 30; no second,
+denser view is built.

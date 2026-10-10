@@ -34,7 +34,7 @@ public roadmap at https://antoine4j.github.io/ringfacts/launch-map.html.
    roadmap names the decision a task waits on ("open call"), and names
    a person, "the maintainer", only for their time or their ruling.
 2. **The precision scoreboard** ([spec](docs/superpowers/specs/2026-10-06-precision-scoreboard.md),
-   eight questions open; unparked). S: critical, it is the page that shows
+   all eight questions settled 9 Oct, D1–D10; unparked). S: critical, it is the page that shows
    how well the pipeline does, and the one that makes the showcase
    credible; what matters is that each rate is on the page with a
    date and a method, not that it is high. L: the dashboard for the launch
