@@ -84,7 +84,7 @@ Answered one at a time from 9 Oct 2026; each answer is recorded under
    claims, the sample, all claims of the period?
 4. **Which period** (settled 9 Oct, see D5): all time, the last 7 days, or both? The pipeline's
    settings change; a number mixing versions describes none of them.
-5. **Versions:** should each live number be split by classifier, grouping
+5. **Versions** (settled 9 Oct, see D6): should each live number be split by classifier, grouping
    and settings version, the way the replay is?
 6. **The replay:** show the last stored result, or re-run on a schedule?
    And when, if ever, the one test-set run happens, and where it shows.
@@ -128,7 +128,7 @@ went out as tier-1 posts (a half that only reached a digest does not
 count: the digest absorbs it); and **the 👎 share**, posts and digests
 whose latest reaction is 👎, from the `reactions` table, which needs no
 grading. Every share carries its count beside it. The reference is the
-golden replay's stored result (D6 says how), beside them, never mixed.
+golden replay's stored result (D7 says how), beside them, never mixed.
 Left for after the launch: the wrong-answer rate per classifier question
 (needs [the answer-review idea](2026-10-06-review-classifier-answers.md)),
 and 3.11's clean-text line, one row when that run happens.
@@ -169,3 +169,13 @@ rule: when at least one of its articles was published in it, and then it
 counts whole, the readings outside the period included (they are marked
 too, since sealing marks every reading). The strip on the claims list is
 all time, always.
+
+**D6. Versions (9 Oct 2026): no split; name the versions in force, and
+warn when they changed inside the period.** Each section names the
+classifier, grouping and settings versions in force at the end of the
+period. When any of them changed inside the period, a line under the
+numbers says so, with the dates ("classifier v7.7 from 3 Oct, v7.6
+before: these numbers mix the two"), and it is the reader's job to pick a
+period that sits inside one version. A row per version was considered and
+rejected for now: at about six claims a day the rows would be thin, and
+the date picker already gives a per-version number when one is wanted.
