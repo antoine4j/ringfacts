@@ -338,6 +338,9 @@ start with the run's timestamp, so sorting by name sorts by time.
   rows and the three grooming rows, each with its count, its date, and
   "over claims chosen by hand". Visitors cannot open the storyboard (see
   question 1).
+- **Public view of the headline numbers:** defers to the future public
+  reading surface (TODO item 11, the reader-facing site), which is separate
+  from the storyboard; until it exists, the README copy is the stopgap.
 - **docs/architecture-overview.html:** the storyboard and review
   section names the scores page and the `review_tiers` mark. Section 13,
   "What is not measured", is re-read against §2.

@@ -90,7 +90,10 @@ public roadmap at https://antoine4j.github.io/ringfacts/launch-map.html.
 10. **Classifier v8** (4.26, 4.27, health). Low until the window shows a
     missed career event; then it jumps to the top.
 11. **The reader-facing site proper, then chat follow-up.** After launch;
-    the demo in 9 grows into the site.
+    the demo in 9 grows into the site. It is separate from the storyboard,
+    which is an admin tool. It is also where visitors would see the
+    scoreboard's headline numbers; until then they are copied into the
+    README by hand (spec §9, question 1).
 
 Blog posts about the project are planned and written outside this repo;
 items 2, 3 and 9 each feed one.
