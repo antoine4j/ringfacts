@@ -372,3 +372,26 @@ pre.json { background: var(--chip); padding: 10px 12px; border-radius: 8px; over
 .picker.note-editor { width: min(360px, calc(100vw - 32px)); }
 /* Clearing sits apart from save, on the right, in the warning colour. */
 .clear-mark { margin-left: auto; color: var(--warn-text); }
+
+/* The scores page: headline numbers as cards, slices as rows, the replay as a table. */
+.lede { max-width: 72ch; margin: 0 0 10px; }
+h2.period { margin-top: 14px; }
+.score-strip { margin: -6px 0 10px; }
+.score-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 12px; align-items: start; }
+.score-card { background: var(--panel); border: 1px solid var(--line); border-radius: var(--radius); padding: 12px 14px; }
+.score-card h3 { margin: 0 0 4px; }
+.score-card p { margin: 2px 0; }
+.score-number { font-size: 22px; font-weight: 500; margin: 2px 0; }
+.score-unit { font: 450 13px var(--body); color: var(--muted); }
+.explain { color: var(--muted); border-top: 1px solid var(--line); margin-top: 8px; padding-top: 6px; }
+.explain p { margin: 2px 0; }
+.score-rows th[scope="row"] { position: static; width: 9em; font-size: 14px; color: var(--text); }
+.score-rows td.num { width: 13em; }
+.score-reference th, .score-rows th, .score-details th { position: static; }
+.score-reference th[scope="row"], .score-details th[scope="row"] { font-size: 13px; color: var(--text); }
+.table-scroll { overflow-x: auto; }
+.table-scroll table { min-width: 560px; }
+@media (max-width: 560px) {
+  .score-rows th[scope="row"], .score-rows td.num { display: block; width: auto; border-bottom: 0; }
+  .score-rows td { display: block; }
+}

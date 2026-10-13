@@ -8,6 +8,7 @@ import { usePathname, useSearchParams } from "next/navigation";
 /** Every page, in the order the nav shows them. */
 const PAGES = [
   { path: "/", name: "Claims" },
+  { path: "/scores", name: "Scores" },
   { path: "/readings", name: "Readings" },
   { path: "/settings", name: "Settings" },
   { path: "/digests", name: "Digests" },

@@ -1134,3 +1134,30 @@ into it); a publishing step that copies chosen pages to a separate branch
 (a second moving part, for what a three-line exclude list does); copying the
 Launch Map into `docs/` instead of moving it (two copies drift, and `v0/`
 dissolves into the root when production retires).
+
+<a id="scores-page"></a>
+## scores-page — The scores page reads the replay results from disk, named for the bundle
+*2026-10-12*
+
+The storyboard's scores page shows the golden replay's stored results, one
+JSON file per run in `v0/pipeline/measure/replay-results/`. Those files are
+outside the storyboard's folder, and on Vercel a page's server bundle holds
+only the files its build traced. So the page reads the folder with `fs` at
+request time, and `next.config.ts` names the files in
+`outputFileTracingIncludes` for `/scores`. The files are a snapshot of the
+commit that was built, so the reference section changes only when a push
+builds (scoreboard D7).
+
+**Measured** on a local `next build`: the page's trace file
+(`.next/server/app/scores/page.js.nft.json`) lists both result files. It
+lists them without the include too, because the tracer follows the
+`process.cwd()` path in `lib/replay-results.ts`. The include is kept so
+that the files ship even if that expression changes into one the tracer
+cannot follow. The local trace is evidence, not proof: the first Vercel
+preview confirms it.
+
+**Considered and rejected:** a `prebuild` script that collects the files
+into one generated JSON file imported by the page (a second moving part,
+held as the fallback if the preview shows the files missing); a database
+table of replay results (D7 keeps the runs as files, compared without a
+database).

@@ -13,6 +13,7 @@ test("the named periods, on a Monday", () => {
   assert.deepEqual(periodRange("this_week", MONDAY), { from: "2026-10-05", to: "2026-10-05" });
   assert.deepEqual(periodRange("last_week", MONDAY), { from: "2026-09-28", to: "2026-10-04" });
   assert.deepEqual(periodRange("last_7", MONDAY), { from: "2026-09-29", to: "2026-10-05" });
+  assert.deepEqual(periodRange("last_14", MONDAY), { from: "2026-09-22", to: "2026-10-05" });
   assert.deepEqual(periodRange("this_month", MONDAY), { from: "2026-10-01", to: "2026-10-05" });
   assert.deepEqual(periodRange("last_month", MONDAY), { from: "2026-09-01", to: "2026-09-30" });
   assert.deepEqual(periodRange("last_30", MONDAY), { from: "2026-09-06", to: "2026-10-05" });

@@ -3,9 +3,11 @@
 // posted, went out in a digest, or neither, and opens to its readings.
 
 import Link from "next/link";
+import { Suspense } from "react";
 import { ClaimReadings } from "../components/ClaimReadings.tsx";
 import { SameClaimReview } from "../components/ReviewControls.tsx";
 import { ReviewDot, ReviewStatus } from "../components/ReviewStatus.tsx";
+import { ScoreStrip } from "../components/ScoreStrip.tsx";
 import { Empty, isDoubtfulPick, tierName, tierTitle } from "../components/bits.tsx";
 import { FeedbackForm } from "../components/FeedbackForm.tsx";
 import { FilterBar } from "../components/FilterBar.tsx";
@@ -54,6 +56,11 @@ export default async function ClaimsPage({ searchParams }: { searchParams: Promi
   return (
     <>
       <h1>Claims</h1>
+      {schema === "public" && (
+        <Suspense fallback={<p className="score-strip small muted">Scores, all time: counting…</p>}>
+          <ScoreStrip />
+        </Suspense>
+      )}
       <FilterBar path="/" params={params} schema={schema} fighters={fighters} outlets={outlets} claimOptions />
       <p className="muted small">
         {claims.length} claim{claims.length === 1 ? "" : "s"}

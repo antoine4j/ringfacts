@@ -10,6 +10,7 @@ export const PERIODS: [key: string, label: string][] = [
   ["this_week", "this week"],
   ["last_week", "last week"],
   ["last_7", "last 7 days"],
+  ["last_14", "last 14 days"],
   ["this_month", "this month"],
   ["last_month", "last month"],
   ["last_30", "last 30 days"],
@@ -56,6 +57,7 @@ export function periodRange(period: string, now: Date): DayRange | null {
   if (period === "this_week") return { from: monday, to: today };
   if (period === "last_week") return { from: addDays(monday, -7), to: addDays(monday, -1) };
   if (period === "last_7") return { from: addDays(today, -6), to: today };
+  if (period === "last_14") return { from: addDays(today, -13), to: today };
   if (period === "this_month") return { from: firstOfMonth, to: today };
   if (period === "last_month") return { from: `${addDays(firstOfMonth, -1).slice(0, 8)}01`, to: addDays(firstOfMonth, -1) };
   if (period === "last_30") return { from: addDays(today, -29), to: today };

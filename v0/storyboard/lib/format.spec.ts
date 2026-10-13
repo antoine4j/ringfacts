@@ -1,6 +1,6 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
-import { dayAndClock, dollars, failures, pacificDay, pacificTime, percent, shortTime } from "./format.ts";
+import { countWithShare, dayAndClock, dollars, failures, intervalWords, pacificDay, pacificTime, percent, sharePercent, shortTime } from "./format.ts";
 
 test("times are shown in Pacific time", () => {
   assert.equal(pacificTime("2026-10-05T05:05:07Z"), "2026-10-04 10:05 PM");
@@ -35,6 +35,23 @@ test("times are on a 12-hour clock, with midnight and noon as 12", () => {
 test("a short time is day, month and time in Pacific", () => {
   assert.equal(shortTime("2026-09-30T01:00:00Z"), "29 Sep 6:00 PM");
   assert.equal(shortTime(null), "");
+});
+
+test("a share shows one decimal under 10% and whole numbers from there up", () => {
+  assert.equal(sharePercent(2 / 57), "3.5%");
+  assert.equal(sharePercent(0), "0%");
+  assert.equal(sharePercent(95 / 155), "61%");
+  assert.equal(sharePercent(1), "100%");
+});
+
+test("a count carries its share, except out of nothing", () => {
+  assert.equal(countWithShare(2, 57), "2 of 57 (3.5%)");
+  assert.equal(countWithShare(0, 0), "0 of 0");
+});
+
+test("an interval reads as a range, and none as nothing", () => {
+  assert.equal(intervalWords({ low: 0.0097, high: 0.1192 }), "95% range 1.0%–12%");
+  assert.equal(intervalWords(null), "");
 });
 
 test("a reading's time splits into a short day and a clock, for two lines", () => {

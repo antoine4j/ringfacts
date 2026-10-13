@@ -124,3 +124,39 @@ export function percent(confidence: unknown): string {
   if (typeof confidence !== "number") return "";
   return `${Math.round(confidence * 100)}%`;
 }
+
+/**
+ * A share as a percentage for the scores page: one decimal under 10%, where
+ * the decimal still says something, whole numbers from there up.
+ *
+ * @param share  A number from 0 to 1.
+ * @returns For example "3.5%", "0%" or "61%".
+ */
+export function sharePercent(share: number): string {
+  const percentage = share * 100;
+  if (percentage === 0 || percentage >= 10) return `${Math.round(percentage)}%`;
+  return `${percentage.toFixed(1)}%`;
+}
+
+/**
+ * How many of how many, with the share when there is one.
+ *
+ * @param count  How many.
+ * @param of  Out of how many.
+ * @returns For example "2 of 57 (3.5%)", or "0 of 0" with no share.
+ */
+export function countWithShare(count: number, of: number): string {
+  if (of === 0) return `${count} of ${of}`;
+  return `${count} of ${of} (${sharePercent(count / of)})`;
+}
+
+/**
+ * A Wilson interval in words.
+ *
+ * @param interval  Its two ends, from 0 to 1, or null when there was nothing to count.
+ * @returns For example "95% range 1.0%–12%"; "" for none.
+ */
+export function intervalWords(interval: { low: number; high: number } | null): string {
+  if (!interval) return "";
+  return `95% range ${sharePercent(interval.low)}–${sharePercent(interval.high)}`;
+}

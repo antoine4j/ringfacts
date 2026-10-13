@@ -26,7 +26,7 @@ type Props = {
  *
  * @param event  The change.
  */
-function apply(event: { currentTarget: { form: HTMLFormElement | null } }): void {
+export function apply(event: { currentTarget: { form: HTMLFormElement | null } }): void {
   event.currentTarget.form?.requestSubmit();
 }
 
@@ -35,7 +35,7 @@ function apply(event: { currentTarget: { form: HTMLFormElement | null } }): void
  *
  * @param event  The form being sent.
  */
-function dropEmpty(event: { currentTarget: HTMLFormElement }): void {
+export function dropEmpty(event: { currentTarget: HTMLFormElement }): void {
   for (const element of Array.from(event.currentTarget.elements) as HTMLInputElement[]) {
     if (element.name && element.value === "") element.disabled = true;
   }
@@ -144,9 +144,10 @@ export function FilterBar({ path, params, schema, fighters, outlets, stages = fa
  * The date filter: a named period, or a custom range shown as two date boxes.
  *
  * @param props.params  The current filters.
+ * @param props.unset  The words for no period chosen.
  * @returns The drop-down, the range's days, and the boxes when custom.
  */
-function DateChoice({ params }: { params: Params }) {
+export function DateChoice({ params, unset = "any time" }: { params: Params; unset?: string }) {
   // The older ?day= link opens as a one-day custom range.
   const day = param(params, "day");
   const initial = param(params, "when") || (day ? "custom" : "");
@@ -166,7 +167,7 @@ function DateChoice({ params }: { params: Params }) {
           if (event.currentTarget.value !== "custom") apply(event);
         }}
       >
-        <option value="">any time</option>
+        <option value="">{unset}</option>
         {PERIODS.map(([key, label]) => (
           <option key={key} value={key}>
             {label}
