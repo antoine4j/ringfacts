@@ -5,13 +5,17 @@ import { notFound } from "next/navigation";
 import { ClaimReadings } from "../../../components/ClaimReadings.tsx";
 import { SameClaimReview } from "../../../components/ReviewControls.tsx";
 import { ReviewStatus } from "../../../components/ReviewStatus.tsx";
+import { TierReview } from "../../../components/TierReview.tsx";
+import { tierName } from "../../../components/bits.tsx";
 import { FeedbackForm } from "../../../components/FeedbackForm.tsx";
 import { FeedbackList } from "../../../components/FeedbackList.tsx";
 import { query } from "../../../lib/db.ts";
 import type { Params } from "../../../lib/filters.ts";
 import { pacificTime } from "../../../lib/format.ts";
-import { claimMembers, claimReviews, feedbackOn, type ClaimRow } from "../../../lib/queries.ts";
+import { bestTier } from "../../../lib/live-scores.ts";
+import { claimMembers, claimReviews, feedbackOn, tierMarksFor, type ClaimRow } from "../../../lib/queries.ts";
 import { schemaFrom, schemaSuffix } from "../../../lib/schema.ts";
+import { newestTierMarks, tierJudgement } from "../../../lib/tier-marks.ts";
 
 /** The answers a note on a claim can be about. */
 const CLAIM_FIELDS = ["grouping", "label", "current_label", "posted_reading", "claim"];
@@ -35,6 +39,11 @@ export default async function ClaimPage({ params, searchParams }: { params: Prom
   const members = await claimMembers(schema, [id]);
   const review = (await claimReviews(schema, members)).get(id);
   const feedback = await feedbackOn(schema, "claim", id);
+
+  // The claim's tier (its best reading's) and the tier mark on it, live data only.
+  const tierNow = bestTier((members.get(id) ?? []).map((member) => member.tier));
+  const tierMarks = schema === "public" && tierNow !== null ? await tierMarksFor([id]) : [];
+  const judgement = tierJudgement(newestTierMarks(tierMarks).get(id), tierNow);
 
   return (
     <>
@@ -72,6 +81,17 @@ export default async function ClaimPage({ params, searchParams }: { params: Prom
         <dd>{claim.grouping_version}</dd>
         <dt>created</dt>
         <dd>{pacificTime(claim.created_at)}</dd>
+        {tierNow !== null && (
+          <>
+            <dt>tier</dt>
+            <dd className="review-line">
+              <span>
+                {tierNow} · {tierName(tierNow)}
+              </span>
+              {schema === "public" && <TierReview claimId={claim.id} tierNow={tierNow} judgement={judgement} />}
+            </dd>
+          </>
+        )}
         {review && (
           <>
             <dt>review</dt>

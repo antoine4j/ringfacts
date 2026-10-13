@@ -20,7 +20,7 @@ import { choiceVerdict, clearLabel, markChanged, markLine, startingChoice, tapAc
  *
  * @returns run(save), whether one is running, and the last error.
  */
-function useSave(): { run: (save: () => Promise<ActionResult>, after?: () => void) => void; saving: boolean; error: string } {
+export function useSave(): { run: (save: () => Promise<ActionResult>, after?: () => void) => void; saving: boolean; error: string } {
   const router = useRouter();
   const [saving, startTransition] = useTransition();
   const [error, setError] = useState("");

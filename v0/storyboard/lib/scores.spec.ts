@@ -2,7 +2,8 @@ import { test } from "node:test";
 import assert from "node:assert/strict";
 import type { CareerEvent, ClaimFacts } from "./career-events.ts";
 import { reviewViews, sameClaimGroups, type ReadingMark, type ReadingVerdict, type SameClaimMark } from "./reviews.ts";
-import { claimTier, isThin, overMerge, overSplit, reopenedClaims, sealedClaims, summariseEvents, thumbsDownShare, tier1Repeats, versionsInForce } from "./scores.ts";
+import { claimTier, isThin, overMerge, overSplit, reopenedClaims, sealedClaims, summariseEvents, thumbsDownShare, tier1Repeats, versionsInForce, wrongTier } from "./scores.ts";
+import { tierJudgement } from "./tier-marks.ts";
 
 let nextId = 1;
 
@@ -123,6 +124,18 @@ test("versions: the newest is in force; two among the readings are named with th
   assert.equal(versions.mixed.length, 1);
   assert.equal(versions.mixed[0].station, "classifier");
   assert.deepEqual(versions.mixed[0].versions.map((one) => one.version), ["v7.6", "v7.7"]);
+});
+
+test("wrong tier counts judged sealed claims only, over-promotion as wrong and junk apart", () => {
+  const tierMark = (id: string, tierHad: number, verdict: "right" | "wrong", shouldBe: number | null) => ({ id, claim_id: id, tier_had: tierHad, verdict, should_be_tier: shouldBe, note: "" });
+  const judgements = new Map([
+    ["1", tierJudgement(tierMark("1", 1, "wrong", 2), 1)],
+    ["2", tierJudgement(tierMark("2", 2, "wrong", 3), 2)],
+    ["3", tierJudgement(tierMark("3", 1, "right", null), 1)],
+    ["5", tierJudgement(tierMark("5", 1, "wrong", 3), 1)],
+  ]);
+  // Claim 4 is sealed but not judged; claim 5 is judged but not sealed.
+  assert.deepEqual(wrongTier(["1", "2", "3", "4"], judgements), { count: 2, of: 3, unjudged: 1, overPromoted: 1, junk: 1 });
 });
 
 test("a slice under 30 is thin", () => {

@@ -2,6 +2,7 @@
 
 import type { Settings } from "../../pipeline/settings/tiers.ts";
 import { reviewViews, type ClaimReviewView, type ReadingMark, type SameClaimMark } from "./reviews.ts";
+import type { TierMark } from "./tier-marks.ts";
 import { query } from "./db.ts";
 import type { Schema } from "./schema.ts";
 
@@ -168,6 +169,17 @@ export async function reviewsFor(schema: Schema, claimIds: string[]): Promise<{ 
     query<SameClaimMark>(schema, "SELECT id, claim_id, other_claim_id, verdict, note FROM review_same_claims"),
   ]);
   return { readingMarks, sameMarks };
+}
+
+/**
+ * Anton's tier marks on some claims (scoreboard D3), every row; lib/tier-marks.ts works out which is in force.
+ *
+ * @param claimIds  The claims.
+ * @returns The review_tiers rows.
+ */
+export async function tierMarksFor(claimIds: string[]): Promise<TierMark[]> {
+  if (claimIds.length === 0) return [];
+  return query<TierMark>("public", "SELECT id, claim_id, tier_had, verdict, should_be_tier, note FROM review_tiers WHERE claim_id = ANY($1::bigint[])", [claimIds]);
 }
 
 /**

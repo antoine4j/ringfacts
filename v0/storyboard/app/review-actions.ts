@@ -1,6 +1,7 @@
 "use server";
 // Anton's grouping reviews (D35): marking a reading in a claim, linking
-// claims that are one claim, and the claims the picker suggests. Every write
+// claims that are one claim, and the claims the picker suggests; and the
+// tier mark on a claim (scoreboard D3). Every write
 // adds a row; nothing is changed. Live data only: the golden replay's
 // rulings are the golden set's.
 // Design: docs/superpowers/specs/2026-10-04-v0-design.md, section 11, "Reviewing claims".
@@ -8,9 +9,11 @@
 import { revalidatePath } from "next/cache";
 import { query } from "../lib/db.ts";
 import { pairOrder, type ReadingVerdict } from "../lib/reviews.ts";
+import type { TierVerdict } from "../lib/tier-marks.ts";
 import type { ActionResult } from "./actions.ts";
 
 const READING_VERDICTS: ReadingVerdict[] = ["belongs", "does_not_belong", "own_claim", "cleared"];
+const TIER_VERDICTS: TierVerdict[] = ["right", "wrong", "cleared"];
 const NOTE_MAX = 1000;
 const NEARBY_DAYS = 3;
 const NEARBY_MAX = 5;
@@ -111,6 +114,45 @@ export async function markSameClaim(input: { claimId: string; otherClaimId: stri
     await query("public", "INSERT INTO review_same_claims (claim_id, other_claim_id, verdict, note) VALUES ($1, $2, $3, $4)", [claimId, otherClaimId, input.verdict, note]);
     revalidatePath("/", "layout");
     return { ok: true, message: input.verdict === "cleared" ? `Unlinked from #${other}` : `Same claim as #${other}` };
+  } catch (error) {
+    return { ok: false, message: `Not saved: ${(error as Error).message}` };
+  }
+}
+
+/**
+ * A claim's tier today: the best of its readings' latest decisions (1 post, 2 digest, 3 drop).
+ *
+ * @param claimId  The claim.
+ * @returns The tier, or null when none of its readings is decided.
+ */
+async function tierNowOf(claimId: string): Promise<number | null> {
+  const rows = await query<{ tier: number | null }>("public", "SELECT min(tier) AS tier FROM reading_now WHERE claim_id = $1", [claimId]);
+  return rows[0]?.tier === null || rows[0]?.tier === undefined ? null : Number(rows[0].tier);
+}
+
+/**
+ * Marks a claim's tier as right, or as the tier it should have had, or clears the mark (scoreboard D3).
+ *
+ * @param input  claimId, tierHad (the tier the page showed), verdict, shouldBe (with "wrong"), note.
+ * @returns Whether it was saved, in words.
+ */
+export async function markTier(input: { claimId: string; tierHad: number; verdict: TierVerdict; shouldBe?: number | null; note?: string }): Promise<ActionResult> {
+  try {
+    const claimId = checkedId(input.claimId, "the claim");
+    if (!TIER_VERDICTS.includes(input.verdict)) throw new Error("unknown verdict");
+    const shouldBe = input.verdict === "wrong" ? Number(input.shouldBe) : null;
+    if (shouldBe !== null && (![1, 2, 3].includes(shouldBe) || shouldBe === input.tierHad)) throw new Error("a wrong tier must name another tier");
+    const note = checkedNote(input.note);
+
+    // The mark is about the tier the page showed; if the claim has moved since, the page is out of date.
+    await fighterOf(claimId);
+    const tierNow = await tierNowOf(claimId);
+    if (tierNow === null) throw new Error(`claim #${claimId} has no tier yet`);
+    if (tierNow !== Number(input.tierHad)) throw new Error(`claim #${claimId} is now tier ${tierNow}; reload the page`);
+
+    await query("public", "INSERT INTO review_tiers (claim_id, tier_had, verdict, should_be_tier, note) VALUES ($1, $2, $3, $4, $5)", [claimId, tierNow, input.verdict, shouldBe, note]);
+    revalidatePath("/", "layout");
+    return { ok: true, message: input.verdict === "cleared" ? "Cleared" : "Saved" };
   } catch (error) {
     return { ok: false, message: `Not saved: ${(error as Error).message}` };
   }

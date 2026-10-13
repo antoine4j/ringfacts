@@ -12,15 +12,17 @@ import { Explain } from "./ScoreCard.tsx";
  * @param props.share  How many of how many; null when it is not measured yet.
  * @param props.unit  What is counted, such as "articles".
  * @param props.explain  How it is measured, and its weakness.
+ * @param props.extra  A further line, such as what was left uncounted.
  * @returns The row.
  */
-export function ScoreRow({ name, share, unit, explain }: { name: string; share: Share | null; unit: string; explain: { how: string; weakness: string } }) {
+export function ScoreRow({ name, share, unit, explain, extra }: { name: string; share: Share | null; unit: string; explain: { how: string; weakness: string }; extra?: string }) {
   const isGrey = share === null || isThin(share);
   return (
     <tr className={isGrey ? "dim" : ""}>
       <th scope="row">{name}</th>
       <td className="num nowrap">{share ? `${countWithShare(share.count, share.of)} ${unit}` : "not measured yet"}</td>
       <td>
+        {extra && <p className="small">{extra}</p>}
         {share && isThin(share) && <p className="small">Fewer than {THIN_BELOW} counted: too few to read as a rate.</p>}
         <Explain how={explain.how} weakness={explain.weakness} />
       </td>

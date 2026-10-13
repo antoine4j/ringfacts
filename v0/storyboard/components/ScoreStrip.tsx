@@ -15,6 +15,7 @@ export async function ScoreStrip() {
   const parts = [
     `over-merge ${live.overMerge.count} of ${live.overMerge.of} articles`,
     `over-split ${live.overSplit.count} of ${live.overSplit.of} stories`,
+    `wrong tier ${live.wrongTier.count} of ${live.wrongTier.of} judged`,
     `tier-1 repeats ${live.repeats.count} of ${live.repeats.of} posts`,
     `👎 ${live.thumbsDown.count} of ${live.thumbsDown.of} messages`,
     `events not posted ${live.events.notPosted.count} of ${live.events.notPosted.of}`,

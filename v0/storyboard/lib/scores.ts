@@ -6,6 +6,7 @@
 
 import { eventStatus, type CareerEvent, type ClaimFacts, type EventStatus, type MissCause } from "./career-events.ts";
 import type { ClaimReviewView } from "./reviews.ts";
+import type { TierJudgement } from "./tier-marks.ts";
 
 /** A share: how many of how many. */
 export type Share = { count: number; of: number };
@@ -100,6 +101,33 @@ export function overMerge(sealed: string[], views: Map<string, ClaimReviewView>)
 export function overSplit(sealed: string[], views: Map<string, ClaimReviewView>): Share {
   const linked = sealed.filter((claimId) => (views.get(claimId)?.group.length ?? 0) > 0);
   return { count: linked.length, of: sealed.length };
+}
+
+/** The wrong-tier rate, with the counts behind it. */
+export type WrongTier = Share & { unjudged: number; overPromoted: number; junk: number };
+
+/**
+ * Wrong tier: of the sealed claims whose tier was judged, how many were
+ * judged wrong (scoreboard D3). Only an explicit mark counts, so a sealed
+ * claim with none is "not judged" and in neither number (Q2). Over-promotion
+ * (a Digest claim posted as Post) is one of the wrongs; junk (a claim that
+ * should have been dropped but reached the group) is counted apart, for G2.
+ *
+ * @param sealed  The sealed claims.
+ * @param judgements  Claim → its tier judgement.
+ * @returns Wrong of judged, and how many sealed claims are not judged, over-promoted, or junk.
+ */
+export function wrongTier(sealed: string[], judgements: Map<string, TierJudgement>): WrongTier {
+  const states = sealed.map((claimId) => judgements.get(claimId) ?? { state: "not_judged" as const, staleMark: null });
+  const wrong = states.filter((judgement) => judgement.state === "wrong");
+  const judged = states.filter((judgement) => judgement.state !== "not_judged").length;
+  return {
+    count: wrong.length,
+    of: judged,
+    unjudged: states.length - judged,
+    overPromoted: wrong.filter((judgement) => judgement.promoted && !judgement.junk).length,
+    junk: wrong.filter((judgement) => judgement.junk).length,
+  };
 }
 
 /**
@@ -230,8 +258,8 @@ export const EXPLAIN = {
     weakness: "Only stories the maintainer chose to review are counted, not a random sample.",
   },
   wrong_tier: {
-    how: "The share of reviewed stories the maintainer marked as deserving another tier: posted, digest or dropped.",
-    weakness: "Not measured yet: the mark is being built.",
+    how: "Of the reviewed stories whose tier the maintainer judged, the share marked as deserving another tier (posted, put in the digest, or dropped). A story posted that belonged in the digest counts here.",
+    weakness: "Only stories the maintainer chose to review and then judged are counted; a story nobody judged is in neither number.",
   },
 } as const;
 

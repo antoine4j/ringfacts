@@ -53,7 +53,10 @@ export function LaunchBarSection({ live, last14 }: { live: LiveScores; last14: s
           share={thumbsDown}
           unit="messages"
           bar={{ words: "at most 1 in 10", met: thumbsDown.count * 10 <= thumbsDown.of }}
-          lines={[`${thumbsDown.unreacted} of ${thumbsDown.of} without a reaction.`]}
+          lines={[
+            `${thumbsDown.unreacted} of ${thumbsDown.of} without a reaction.`,
+            `Junk that reached the group, as judged on reviewed stories: ${live.wrongTier.junk}.`,
+          ]}
           explain={EXPLAIN.thumbs_down}
         />
       </div>
@@ -79,7 +82,13 @@ export function GroomingSection({ live }: { live: LiveScores }) {
         <tbody>
           <ScoreRow name="Over-merge" share={live.overMerge} unit="articles" explain={EXPLAIN.over_merge} />
           <ScoreRow name="Over-split" share={live.overSplit} unit="stories" explain={EXPLAIN.over_split} />
-          <ScoreRow name="Wrong tier" share={null} unit="stories" explain={EXPLAIN.wrong_tier} />
+          <ScoreRow
+            name="Wrong tier"
+            share={live.wrongTier}
+            unit="stories"
+            explain={EXPLAIN.wrong_tier}
+            extra={`${live.wrongTier.overPromoted} posted that belonged in the digest; ${live.wrongTier.junk} that should have been dropped. ${live.wrongTier.unjudged} reviewed stories not judged for tier yet.`}
+          />
         </tbody>
       </table>
     </section>

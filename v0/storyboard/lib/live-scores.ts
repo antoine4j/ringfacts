@@ -5,9 +5,11 @@
 
 import { careerEvents, eventsInPeriod, namedClaimIds } from "./career-events.ts";
 import { periodRange, type DayRange } from "./dates.ts";
+import { tierMarksFor } from "./queries.ts";
 import { sameClaimGroups } from "./reviews.ts";
 import { claimFacts, claimsInPeriod, digestsInPeriod, firstUsedRows, postsInPeriod, reviewTimes, sameClaimMarks, versionRows } from "./score-queries.ts";
-import { overMerge, overSplit, reopenedClaims, sealedClaims, summariseEvents, thumbsDownShare, tier1Repeats, versionsInForce, type EventsSummary, type Share, type VersionsInForce } from "./scores.ts";
+import { overMerge, overSplit, reopenedClaims, sealedClaims, summariseEvents, thumbsDownShare, tier1Repeats, versionsInForce, wrongTier, type EventsSummary, type Share, type VersionsInForce, type WrongTier } from "./scores.ts";
+import { tierJudgements } from "./tier-marks.ts";
 
 /** The live numbers of one period. */
 export type LiveScores = {
@@ -16,6 +18,7 @@ export type LiveScores = {
   reopened: number;
   overMerge: Share;
   overSplit: Share;
+  wrongTier: WrongTier;
   repeats: Share;
   thumbsDown: Share & { unreacted: number };
   events: EventsSummary & { checked: string; listIsBehind: boolean };
@@ -56,7 +59,13 @@ export async function liveScores(range: DayRange | null, now = new Date()): Prom
   // The stories of the period with their reviews, and the times that tell a reopened one.
   const period = await claimsInPeriod(range);
   const sealed = sealedClaims(period.views);
-  const [times, versions, firstUsed, bar] = await Promise.all([reviewTimes(period.ids), versionRows(period.ids), firstUsedRows(), launchBar(range, today)]);
+  const [times, versions, firstUsed, tierMarks, bar] = await Promise.all([
+    reviewTimes(period.ids), versionRows(period.ids), firstUsedRows(), tierMarksFor(period.ids), launchBar(range, today),
+  ]);
+
+  // Each story's tier today (its best reading's), and what its tier mark says about it.
+  const tierOf = new Map([...period.members].map(([claimId, members]) => [claimId, bestTier(members.map((member) => member.tier))]));
+  const judgements = tierJudgements(tierMarks, tierOf);
 
   return {
     claims: period.ids.length,
@@ -64,7 +73,19 @@ export async function liveScores(range: DayRange | null, now = new Date()): Prom
     reopened: reopenedClaims(period.views, times.lastMarkAt, times.joinedAt).length,
     overMerge: overMerge(sealed, period.views),
     overSplit: overSplit(sealed, period.views),
+    wrongTier: wrongTier(sealed, judgements),
     versions: versionsInForce(versions, firstUsed),
     ...bar,
   };
+}
+
+/**
+ * A story's tier: the best (lowest) of its readings' decided tiers.
+ *
+ * @param tiers  Each reading's latest tier, null when not decided.
+ * @returns 1, 2 or 3; null when none is decided.
+ */
+export function bestTier(tiers: (number | null)[]): number | null {
+  const decided = tiers.filter((tier): tier is number => tier !== null).map(Number);
+  return decided.length > 0 ? Math.min(...decided) : null;
 }
