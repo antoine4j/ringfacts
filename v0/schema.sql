@@ -188,6 +188,23 @@ CREATE TABLE IF NOT EXISTS review_same_claims (
 );
 CREATE INDEX IF NOT EXISTS review_same_claims_pair_idx ON review_same_claims (claim_id, other_claim_id, id);
 
+-- Anton's tier marks (scoreboard D3): a claim's tier, as its best reading's
+-- decision gave it (1 post, 2 digest, 3 drop), was right, or should have been
+-- another. One judgement per claim; the newest row for a claim is in force,
+-- and "cleared" undoes the one before it.
+CREATE TABLE IF NOT EXISTS review_tiers (
+  id              bigint GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+  claim_id        bigint NOT NULL REFERENCES claims(id),
+  tier_had        smallint NOT NULL CHECK (tier_had IN (1, 2, 3)),
+  verdict         text NOT NULL CHECK (verdict IN ('right', 'wrong', 'cleared')),
+  should_be_tier  smallint CHECK (should_be_tier IN (1, 2, 3)),
+  note            text NOT NULL DEFAULT '',
+  author          text NOT NULL DEFAULT 'anton',
+  created_at      timestamptz NOT NULL DEFAULT now(),
+  CHECK ((verdict = 'wrong') = (should_be_tier IS NOT NULL) AND (should_be_tier IS NULL OR should_be_tier <> tier_had))
+);
+CREATE INDEX IF NOT EXISTS review_tiers_claim_idx ON review_tiers (claim_id, id);
+
 -- One row per run of the job: its kind, how long it took, and its numbers.
 CREATE TABLE IF NOT EXISTS runs (
   id           bigint GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
@@ -228,7 +245,7 @@ DO $$
 DECLARE
   answer_table text;
 BEGIN
-  FOREACH answer_table IN ARRAY ARRAY['articles', 'classifications', 'extracts', 'groupings', 'decisions', 'settings', 'digest_claims', 'feedback', 'reactions', 'review_readings', 'review_same_claims']
+  FOREACH answer_table IN ARRAY ARRAY['articles', 'classifications', 'extracts', 'groupings', 'decisions', 'settings', 'digest_claims', 'feedback', 'reactions', 'review_readings', 'review_same_claims', 'review_tiers']
   LOOP
     EXECUTE format('DROP TRIGGER IF EXISTS %I_never_updated ON %I', answer_table, answer_table);
     EXECUTE format('CREATE TRIGGER %I_never_updated BEFORE UPDATE ON %I FOR EACH ROW EXECUTE FUNCTION refuse_update()', answer_table, answer_table);
