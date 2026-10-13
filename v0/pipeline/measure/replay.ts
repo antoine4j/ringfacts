@@ -53,6 +53,33 @@ async function resetReplay(ownerUrl: string): Promise<void> {
   await owner.end();
 }
 
+/** The versions a replay ran on, as the replay schema's own rows record them. */
+type RunVersions = { classifier: string | null; extractor: string | null; grouping: string | null; settings: string | null };
+
+/**
+ * The versions the replay actually used, read from its answers rather than
+ * from the code. A comma in a value means a --continue run spanned a change
+ * of that station, and the scores mix the two.
+ *
+ * @param pool  The replay pool.
+ * @returns Each station's versions, comma-separated when more than one.
+ */
+async function runVersions(pool: pg.Pool): Promise<RunVersions> {
+  const result = await pool.query<RunVersions>(
+    `SELECT (SELECT string_agg(DISTINCT version, ',') FROM classifications) AS classifier,
+            (SELECT string_agg(DISTINCT version, ',') FROM extracts) AS extractor,
+            (SELECT string_agg(DISTINCT version, ',') FROM groupings) AS grouping,
+            (SELECT string_agg(DISTINCT settings_version::text, ',') FROM decisions) AS settings`,
+  );
+  const versions = result.rows[0];
+
+  // Say so when a station ran on more than one version.
+  for (const [station, value] of Object.entries(versions)) {
+    if (value?.includes(",")) console.warn(`warning: the replay's ${station} answers come from more than one version (${value}); its scores mix them`);
+  }
+  return versions;
+}
+
 /**
  * Runs the replay and prints and stores its scores.
  */
@@ -66,6 +93,7 @@ async function main(): Promise<void> {
   // Import the golden articles as history, then run every station on them.
   const pool = openPool(String(process.env.V0_DATABASE_URL), "replay");
   const started = Date.now();
+  const runStartedAt = new Date(started).toISOString().slice(0, 19) + "Z";
   const imported = isContinue ? { imported: 0, readings: 0, noBody: 0 } : await importItems(pool, goldenItems(), SUBJECTS, true);
   const context: RunContext = {
     pool, feed: null, subjects: SUBJECTS, backfill: true, importDays: null, importLimit: null, deadline: Infinity,
@@ -74,13 +102,15 @@ async function main(): Promise<void> {
   };
   const result = await (await buildWorkflow(context).createRun()).start({ inputData: {} });
 
-  // Score, store the scores with the run, and keep them in the repository.
+  // Score, store the scores with the run, and keep them in the repository with the versions they describe.
   const scores = await scoreReplay(pool);
+  const versions = await runVersions(pool);
   const seconds = (Date.now() - started) / 1000;
   await pool.query("INSERT INTO runs (kind, finished_at, seconds, counts) VALUES ('replay', now(), $1, $2)", [seconds, { ...context.tally, scores }]);
   const stamp = new Date().toISOString().slice(0, 16).replace(":", "");
+  const record = { status: result.status, run_started_at: runStartedAt, seconds: Math.round(seconds), versions, counts: context.tally, scores };
   mkdirSync(new URL("./replay-results/", import.meta.url), { recursive: true });
-  writeFileSync(new URL(`./replay-results/${stamp}.json`, import.meta.url), JSON.stringify({ status: result.status, seconds: Math.round(seconds), counts: context.tally, scores }, null, 1) + "\n");
+  writeFileSync(new URL(`./replay-results/${stamp}.json`, import.meta.url), JSON.stringify(record, null, 1) + "\n");
   console.log(JSON.stringify({ status: result.status, seconds: Math.round(seconds), counts: context.tally }, null, 1));
   console.log(JSON.stringify(scores, null, 1));
   await pool.end();

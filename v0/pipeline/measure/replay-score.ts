@@ -87,7 +87,7 @@ function classifierScores(rows: Replayed[], key: Record<string, Record<string, s
  * Grouping against the ruled claims: of the article pairs v0 put in one claim, how many Anton did too, and the reverse.
  *
  * @param rows  The readings, any side.
- * @returns Pair precision and recall, and how many ruled claims v0 split and how many v0 claims mixed ruled ones.
+ * @returns Pair precision and recall with the pair counts behind them, and how many ruled claims v0 split and how many v0 claims mixed ruled ones.
  */
 function groupingScores(rows: Replayed[]) {
   let bothSame = 0;
@@ -112,6 +112,7 @@ function groupingScores(rows: Replayed[]) {
     ruled_claims: new Set(rows.map((row) => row.claimKey)).size,
     pair_precision: Number((bothSame / Math.max(1, v0Same)).toFixed(3)),
     pair_recall: Number((bothSame / Math.max(1, goldenSame)).toFixed(3)),
+    pairs: { v0_same: v0Same, ruled_same: goldenSame, both_same: bothSame },
     ruled_claims_split: spread((row) => row.claimKey, (row) => row.v0Claim),
     v0_claims_mixing_ruled: spread((row) => row.v0Claim, (row) => row.claimKey),
   };

@@ -1,6 +1,13 @@
 {
  "status": "success",
+ "run_started_at": "2026-10-05T10:19:41Z",
  "seconds": 1,
+ "versions": {
+  "classifier": "v7.7",
+  "extractor": "p4",
+  "grouping": "g1",
+  "settings": "1"
+ },
  "counts": {
   "imported": 0,
   "readings_made": 0,
