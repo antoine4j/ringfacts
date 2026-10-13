@@ -76,3 +76,8 @@ research/experiments/2026-09-27-answer-key/**/in-*.json
 research/experiments/2026-09-27-answer-key/**/in.json
 research/experiments/2026-09-27-answer-key/**/*-in.json
 research/experiments/2026-10-05-body-fetch-spike/bodies/
+
+# Ephemeral git worktrees the Claude Code harness creates under .claude/worktrees/.
+# They are local scratch checkouts of other branches; this repo is public, so
+# they must never be committed. Only this directory is ignored, not all of .claude/.
+.claude/worktrees/
