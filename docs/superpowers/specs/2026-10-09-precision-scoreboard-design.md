@@ -1,8 +1,9 @@
 # Precision scoreboard: technical design
 
-**Status:** design, 9 Oct 2026. Phase 1 built 12 Oct 2026 (the scores
-page, the strip, the replay versions); the tier mark (§4) is phase 2,
-not built. Closes the gaps in
+**Status:** design, 9 Oct 2026. Built 12–13 Oct 2026: phase 1 (the
+scores page, the strip, the replay versions) and phase 2 (the tier mark
+of §4, its table migrated to the live v0 database on 13 Oct, and the
+wrong-tier rate). Closes the gaps in
 [the scoreboard spec](2026-10-06-precision-scoreboard.md), whose ten
 decisions (D1–D10) are settled and are not restated here; each is
 pointed at by number. Goal moved: the showcase (end state 1 in
@@ -167,25 +168,31 @@ set, days valid, claim ids are numbers.
 ## 4. The tier mark (D3)
 
 **Schema**, added to `v0/schema.sql`, so it exists in both `public` and
-`replay`:
+`replay`. As built (12–13 Oct), it follows the existing tables rather
+than the first sketch, which stored tiers as words: tiers are numbers as
+in `decisions.tier` (1 post, 2 digest, 3 drop), and the verdict is a word
+with a separate target column tied to it by a CHECK, as `review_readings`
+pairs its verdict with `belongs_in_claim_id`.
 
 ```sql
--- The maintainer's tier mark (scoreboard D3, decision Q2): the tier a claim
--- displayed when marked, and the tier it should have had. verdict equal to
--- tier_had means "the tier was right". The newest row for a claim is in
--- force; "cleared" undoes the one before it and returns the claim to
--- "not yet judged".
 CREATE TABLE IF NOT EXISTS review_tiers (
-  id          bigint GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
-  claim_id    bigint NOT NULL REFERENCES claims(id),
-  tier_had    text NOT NULL CHECK (tier_had IN ('post', 'digest', 'drop')),
-  verdict     text NOT NULL CHECK (verdict IN ('post', 'digest', 'drop', 'cleared')),
-  note        text NOT NULL DEFAULT '',
-  author      text NOT NULL DEFAULT 'anton',
-  created_at  timestamptz NOT NULL DEFAULT now()
+  id              bigint GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+  claim_id        bigint NOT NULL REFERENCES claims(id),
+  tier_had        smallint NOT NULL CHECK (tier_had IN (1, 2, 3)),
+  verdict         text NOT NULL CHECK (verdict IN ('right', 'wrong', 'cleared')),
+  should_be_tier  smallint CHECK (should_be_tier IN (1, 2, 3)),
+  note            text NOT NULL DEFAULT '',
+  author          text NOT NULL DEFAULT 'anton',
+  created_at      timestamptz NOT NULL DEFAULT now(),
+  CHECK ((verdict = 'wrong') = (should_be_tier IS NOT NULL) AND (should_be_tier IS NULL OR should_be_tier <> tier_had))
 );
 CREATE INDEX IF NOT EXISTS review_tiers_claim_idx ON review_tiers (claim_id, id);
 ```
+
+`tier_had` is the tier the claim showed when marked; `right` says it was
+right; `wrong` names the tier it should have had in `should_be_tier`,
+which must differ; `cleared` takes the mark back, and the claim is "not
+yet judged" again. The newest row for a claim is in force.
 
 - `review_tiers` joins the `refuse_update` trigger list.
 - **Grants**, in `v0/grants.sql`:
@@ -209,28 +216,28 @@ CREATE INDEX IF NOT EXISTS review_tiers_claim_idx ON review_tiers (claim_id, id)
   wrong marks over marked claims, and the card shows how many reviewed
   claims are still unjudged.
 - **Over-promotion** (a genuine Digest claim that posted as tier 1) is
-  recorded by this same mark (verdict `digest` on a claim that displayed
-  Post) and folded into the single wrong-tier rate. It is not junk and
-  does not count against G2's zero-junk bar, which is for tier-3
-  material surfacing as tier 2 or higher (a verdict `drop` on a claim
-  that displayed Post or Digest). The card for G2 reads that subset
-  from the same table.
+  recorded by this same mark (`wrong`, `should_be_tier` 2 on a claim
+  that showed 1) and folded into the single wrong-tier rate. It is not
+  junk and does not count against G2's zero-junk bar, which is for
+  tier-3 material surfacing as tier 2 or higher (`wrong`,
+  `should_be_tier` 3 on a claim that showed 1 or 2). The card for G2
+  reads that subset from the same table.
 - **The mark in force counts only while it is current.** If the claim's
   tier has changed since the mark (`tier_had` differs from the claim's
   tier today), the mark is stale, and the claim shows as unmarked for its
   tier, in the same way a new article reopens a sealed claim.
 - **On the claim page** (`app/claims/[id]/page.tsx`): a row "Tier: Digest
   · should be: Post Digest Drop", with the mark in force tinted. Tapping
-  any tier saves it at once: the claim's own tier means "right"
-  (verdict equal to `tier_had`), another tier means "should have been".
+  any tier saves it at once: the claim's own tier saves `right`, another
+  tier saves `wrong` with that tier as `should_be_tier`.
   A small "clear" link saves `cleared`, back to "not yet judged". This is a server action in
   `app/review-actions.ts`, live data only.
 
-**Order: the page ships first.** Until the table exists, the wrong-tier
-row reads "not measured yet: the tier mark is being built", and the
-strip leaves it out. The table is a schema change that needs the
-owner's migration, so it is its own step and does not hold up the five
-numbers that need nothing new.
+**Order: the page was built first, the mark second.** Both ship
+together. The table was applied to the live database by itself (the
+table, its index, the never-update trigger and the grants, in both
+schemas), not by re-running the whole migration script, so nothing else
+was re-applied and no row was seeded.
 
 ## 5. The Wilson interval
 

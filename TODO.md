@@ -45,8 +45,11 @@ public roadmap at https://antoine4j.github.io/ringfacts/launch-map.html.
    **2026-10-12:** phase 1 built ([technical design](docs/superpowers/specs/2026-10-09-precision-scoreboard-design.md),
    [plan](docs/superpowers/plans/2026-10-10-precision-scoreboard.md)): the
    storyboard's `/scores` page and a strip on the claims list, with the
-   README's numbers copied from it. Left: phase 2, the tier mark and the
-   wrong-tier rate; and the hand-kept career events list, empty so far.
+   README's numbers copied from it. **2026-10-13:** phase 2 built, the tier
+   mark on the claim page and the wrong-tier rate; `review_tiers` migrated
+   to the live v0 database. Left: the hand-kept career events list, empty
+   so far; correcting the classifier's answers behind a tier stays with
+   item 6 (launch map 9.4, 9.5).
 3. **Make v0 self-feeding, then retire production.** S and L: critical.
    v0 still reads its articles from production's `items` table (v0 design,
    "Timing"), so production cannot stop until v0 runs stations 1–3 itself:
