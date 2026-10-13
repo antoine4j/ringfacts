@@ -140,7 +140,8 @@ starting their own.
   DeepSeek V4 Pro through OpenRouter, Gemini embeddings; production's decider
   is Claude Haiku 4.5.
 - **Delivery:** a Telegram bot posting to a group chat.
-- **Review:** the storyboard, a Next.js app on Vercel behind sign-in.
+- **Review:** the storyboard, a Next.js app on Vercel behind sign-in, with
+  a Scores page for the live numbers.
 - **Public pages:** GitHub Pages, from `docs/`.
 - **Built with:** Claude Code.
 
@@ -162,12 +163,16 @@ The numbers so far, each with its date and how it was measured:
 | Semantic dedup, right claim in the shortlist of 5 | **97.6%** of 42 joins on the test set; 98.5% of 130 on training and validation | 2026-10-05, run once; [research/experiments/2026-09-20-claim-extraction](research/experiments/2026-09-20-claim-extraction/README.md) |
 | Claim sentence as a grouping signal | No gain confirmed on the test set: separation 0.942 with the sentence against 0.950 with headline and lead alone (AUC), a gap smaller than the error | same run |
 | Articles v0 cannot read for lack of text | 72% of Amosov's, 42% of Donchenko's | 2026-10-05, over the archive; [research/experiments/2026-10-05-body-fetch-spike](research/experiments/2026-10-05-body-fetch-spike/README.md) |
-| v0 live | 36 articles read since going live, none tier 1 yet | 2026-10-06, [check-in log](docs/checkin-log.md) |
+| v0 live, the launch bar | Career events not posted: 0 of 0 (the hand-kept list of events has none yet). Repeats in tier 1: 0 of 3 posts (95% range 0–56%). Posts and digests with a 👎: **1 of 9 (11%**, 95% range 2.0–44%), against a bar of at most 1 in 10; 6 of the 9 have no reaction | 2026-10-12, all time, from the storyboard's Scores page on a copy of the live database; the bar is in [docs/goals.md](docs/goals.md) |
+| v0 live, grouping articles into stories | Over-merge: 0 of 20 articles. Over-split: 0 of 9 stories. Both over the 9 stories reviewed in full, chosen by hand rather than drawn at random; under 30, too few to read as rates | same page and day; method in [the scoreboard design](docs/superpowers/specs/2026-10-09-precision-scoreboard-design.md) |
 
 The failing pass marks are reported as they are: the classifier was fitted
-to the training set, and 9 career-event stories make a small test. A precision
-scoreboard, planned next (TODO.md, item 2), will put live rates from Anton's
-reactions beside these; what [docs/lessons.md](docs/lessons.md) records is
+to the training set, and 9 career-event stories make a small test. The live
+rows come from the storyboard's Scores page, which shows the live numbers
+for any period beside the golden replay's stored result, never mixed, each
+with its count, its method and its weakness. The storyboard is private (it
+holds other outlets' article text), so the rows are copied here by hand at
+each version change. What [docs/lessons.md](docs/lessons.md) records is
 what the experiments taught.
 
 ## How to run it

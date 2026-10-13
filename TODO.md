@@ -42,6 +42,11 @@ public roadmap at https://antoine4j.github.io/ringfacts/launch-map.html.
    adds one line: whether cleaner article text changes the pipeline's
    decisions, run on the golden set twice (the text as saved, and the same
    articles with the site furniture removed).
+   **2026-10-12:** phase 1 built ([technical design](docs/superpowers/specs/2026-10-09-precision-scoreboard-design.md),
+   [plan](docs/superpowers/plans/2026-10-10-precision-scoreboard.md)): the
+   storyboard's `/scores` page and a strip on the claims list, with the
+   README's numbers copied from it. Left: phase 2, the tier mark and the
+   wrong-tier rate; and the hand-kept career events list, empty so far.
 3. **Make v0 self-feeding, then retire production.** S and L: critical.
    v0 still reads its articles from production's `items` table (v0 design,
    "Timing"), so production cannot stop until v0 runs stations 1–3 itself:

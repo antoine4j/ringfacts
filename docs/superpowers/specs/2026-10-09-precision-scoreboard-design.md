@@ -1,6 +1,8 @@
 # Precision scoreboard: technical design
 
-**Status:** design, 9 Oct 2026. Not built. Closes the gaps in
+**Status:** design, 9 Oct 2026. Phase 1 built 12 Oct 2026 (the scores
+page, the strip, the replay versions); the tier mark (§4) is phase 2,
+not built. Closes the gaps in
 [the scoreboard spec](2026-10-06-precision-scoreboard.md), whose ten
 decisions (D1–D10) are settled and are not restated here; each is
 pointed at by number. Goal moved: the showcase (end state 1 in
@@ -36,7 +38,10 @@ are at the end (§11) and are applied throughout.
 
   > Scores, all time: over-merge 2 of 57 readings · over-split 1 of 14 claims ·
   > wrong tier 0 of 14 · tier-1 repeats 0 of 3 posts · 👎 1 of 12 · events
-  > missed 0 of 2 → scores
+  > not posted 0 of 2 → scores
+
+  (After Q3 the strip names the headline number of §2, "not posted",
+  which counts late and missed events together.)
 
   It calls the same functions as the page, with no period.
 
@@ -140,8 +145,14 @@ changed by commit. A commit is the record of each check.
   post nor a digest. The card names the cause: a **tier-3 drop** (the
   claim's tier is Drop: a classifier problem) or a **digest omission**
   (the claim was Digest but the digest writer left it out, `used` false
-  or no digest row: a digest-writer problem). `claim_ids` empty is
-  reported as "never found".
+  or no digest row: a digest-writer problem). `claim_ids` empty, or
+  naming no claim that exists, is reported as "never found".
+  Two more causes were found while planning and building (10–12 Oct):
+  **waiting for the digest**, when the claim reaches a digest but no
+  digest for its fighter has a `period_end` after the claim's first
+  reading yet, so it has not been left out, only not yet sent; and **not
+  decided**, when the claim's readings have no tier yet. Both still count
+  as not posted.
 
 The launch bar counts "late" and "missed" together as failures of G1, and
 the card shows the three outcomes separately: "2 posted · 1 late · 1
