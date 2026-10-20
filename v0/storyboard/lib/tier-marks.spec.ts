@@ -1,6 +1,6 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
-import { newestTierMarks, tierJudgement, tierJudgements, type TierMark, type TierVerdict } from "./tier-marks.ts";
+import { newestTierMarks, tierJudgement, tierJudgements, tierToJudge, type TierMark, type TierVerdict } from "./tier-marks.ts";
 
 /**
  * A review_tiers row.
@@ -65,4 +65,21 @@ test("judgements cover every claim given, marked or not", () => {
   const judgements = tierJudgements([mark(1, 1, "wrong", 2, "7")], new Map<string, number | null>([["7", 1], ["8", 2]]));
   assert.equal(judgements.get("7")?.state, "wrong");
   assert.equal(judgements.get("8")?.state, "not_judged");
+});
+
+test("a claim waits for its tier only once its readings are reviewed and it has a tier", () => {
+  const notJudged = tierJudgement(undefined, 2);
+  assert.equal(tierToJudge(true, notJudged, 2), true);
+  assert.equal(tierToJudge(false, notJudged, 2), false);
+  assert.equal(tierToJudge(true, tierJudgement(undefined, null), null), false);
+});
+
+test("either answer judges the tier, and a stale mark does not", () => {
+  assert.equal(tierToJudge(true, tierJudgement(mark(1, 2, "right"), 2), 2), false);
+  assert.equal(tierToJudge(true, tierJudgement(mark(1, 2, "wrong", 1), 2), 2), false);
+  assert.equal(tierToJudge(true, tierJudgement(mark(1, 3, "right"), 2), 2), true);
+});
+
+test("where no tier marks are kept, nothing waits for one", () => {
+  assert.equal(tierToJudge(true, undefined, 2), false);
 });

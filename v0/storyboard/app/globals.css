@@ -349,6 +349,7 @@ pre.json { background: var(--chip); padding: 10px 12px; border-radius: 8px; over
 .review-dot.has_new { border-color: var(--soft-post); background-image: conic-gradient(var(--soft-post) var(--done), transparent 0); }
 .review-dot.reviewed { border-color: var(--soft-post); background-color: var(--soft-post); color: var(--panel); font: 700 8px/9px var(--body); text-align: center; }
 .review-dot.reviewed::after { content: "✓"; }
+.review-dot.tier-to-judge { border-color: var(--soft-post); background-color: var(--soft-post); }
 .claim[open] > summary .review-group { display: none; }
 .review-bar { display: flex; flex-wrap: wrap; gap: 6px 12px; align-items: center; margin: 10px 0 2px; }
 .review-line { display: flex; flex-wrap: wrap; gap: 6px 12px; align-items: center; }

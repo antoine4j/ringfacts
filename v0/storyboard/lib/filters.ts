@@ -249,11 +249,18 @@ const READING_REVIEWED = "coalesce((SELECT rr.verdict FROM review_readings rr WH
 const ANY_REVIEWED = `EXISTS (SELECT 1 FROM groupings g WHERE g.claim_id = cn.id AND ${READING_REVIEWED})`;
 const ANY_UNREVIEWED = `EXISTS (SELECT 1 FROM groupings g WHERE g.claim_id = cn.id AND NOT ${READING_REVIEWED})`;
 
+const READINGS_REVIEWED = `${ANY_REVIEWED} AND NOT ${ANY_UNREVIEWED}`;
+
+// The claim's tier today (its best reading's) is undecided, or the newest tier mark is in force for it (lib/tier-marks.ts).
+const TIER_NOW = "(SELECT min(rn.tier) FROM reading_now rn WHERE rn.claim_id = cn.id)";
+const TIER_JUDGED = `(${TIER_NOW} IS NULL OR (SELECT rt.verdict <> 'cleared' AND rt.tier_had = ${TIER_NOW} FROM review_tiers rt WHERE rt.claim_id = cn.id ORDER BY rt.id DESC LIMIT 1) IS TRUE)`;
+
 /** The review filter's values: address value → condition, the SQL fixed here. */
 export const REVIEW_FILTERS: Record<string, string> = {
   not_reviewed: `NOT ${ANY_REVIEWED}`,
   has_new: `${ANY_REVIEWED} AND ${ANY_UNREVIEWED}`,
-  reviewed: `${ANY_REVIEWED} AND NOT ${ANY_UNREVIEWED}`,
+  tier_to_judge: `${READINGS_REVIEWED} AND NOT ${TIER_JUDGED}`,
+  reviewed: `${READINGS_REVIEWED} AND ${TIER_JUDGED}`,
 };
 
 /** The claims page's orders: address value → words and SQL, the SQL fixed here. */

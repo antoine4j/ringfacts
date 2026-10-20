@@ -19,7 +19,7 @@ import { bestTier } from "../lib/live-scores.ts";
 import { claimMembers, claimNotesFor, claimReviews, fighterNames, outletNames, tierMarksFor, type ClaimNoteRow, type ClaimRow, type MemberRow } from "../lib/queries.ts";
 import type { ClaimReviewView } from "../lib/reviews.ts";
 import { schemaFrom, schemaSuffix, type Schema } from "../lib/schema.ts";
-import { tierJudgements, type TierJudgement } from "../lib/tier-marks.ts";
+import { tierJudgements, tierToJudge, type TierJudgement } from "../lib/tier-marks.ts";
 
 /** The most claims one page shows. */
 const LIMIT = 300;
@@ -105,15 +105,19 @@ function ClaimCard({ claim, rows, digest, schema, review, note, tierMark }: { cl
   const tier = claimTier(rows);
   const labelChanged = claim.current_label !== claim.label;
 
+  // Green once every reading is reviewed and the tier is judged; in between while the tier waits.
+  const readingsReviewed = review?.review.state === "reviewed";
+  const tierWaits = tierToJudge(readingsReviewed, tierMark, tier?.best ?? null);
+
   return (
-    <details className={`claim${review?.review.state === "reviewed" ? " is-reviewed" : ""}`}>
+    <details className={`claim${readingsReviewed && !tierWaits ? " is-reviewed" : ""}`}>
       <summary>
         <div className="label-row">
           <span className="label">{claim.current_label}</span>
           <Link className="claim-id" href={`/claims/${claim.id}${schemaSuffix(schema)}`} title="Open this claim's page">
             #{claim.id}
           </Link>
-          <ReviewDot view={review} readings={rows.length} />
+          <ReviewDot view={review} readings={rows.length} tierToJudge={tierWaits} />
         </div>
         {labelChanged && <div className="small muted">first label: {claim.label}</div>}
         {/* Facts on the left, each in a column of its own; the verdict on the right, under the number. */}

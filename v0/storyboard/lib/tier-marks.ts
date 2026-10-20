@@ -2,6 +2,8 @@
 // yet judged, right, or wrong with the tier it should have had. Nothing here
 // is stored; it is worked out from review_tiers rows each time a page loads.
 // Tiers are numbers, as the decisions table has them: 1 post, 2 digest, 3 drop.
+// A claim is fully reviewed on the storyboard only once its tier is judged too
+// (tierToJudge); the scores still count claims by their readings alone.
 // Design: docs/superpowers/specs/2026-10-09-precision-scoreboard-design.md, §4.
 
 /** A verdict on a claim's tier; "cleared" undoes the one before it. */
@@ -72,4 +74,18 @@ export function tierJudgement(newest: TierMark | undefined, tierNow: number | nu
 export function tierJudgements(marks: TierMark[], tierOf: Map<string, number | null>): Map<string, TierJudgement> {
   const newest = newestTierMarks(marks);
   return new Map([...tierOf].map(([claimId, tierNow]) => [claimId, tierJudgement(newest.get(claimId), tierNow)]));
+}
+
+/**
+ * Whether a claim's readings are all reviewed but its tier is not judged yet:
+ * the storyboard's in-between look, before the card turns green. A claim with
+ * no decided tier has nothing to judge.
+ *
+ * @param readingsReviewed  Every reading carries a mark in force (the review state "reviewed").
+ * @param judgement  What the tier mark says; absent where tier marks are not kept (the golden replay).
+ * @param tierNow  The claim's tier today; null when none is decided.
+ * @returns True while the tier still waits for a mark.
+ */
+export function tierToJudge(readingsReviewed: boolean, judgement: TierJudgement | undefined, tierNow: number | null): boolean {
+  return readingsReviewed && tierNow !== null && judgement?.state === "not_judged";
 }

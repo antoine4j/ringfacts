@@ -14,7 +14,7 @@ import { pacificTime, shortTime } from "../../../lib/format.ts";
 import { bestTier } from "../../../lib/live-scores.ts";
 import { claimMembers, claimNotesFor, claimReviews, tierMarksFor, type ClaimRow } from "../../../lib/queries.ts";
 import { schemaFrom, schemaSuffix } from "../../../lib/schema.ts";
-import { newestTierMarks, tierJudgement } from "../../../lib/tier-marks.ts";
+import { newestTierMarks, tierJudgement, tierToJudge } from "../../../lib/tier-marks.ts";
 
 /**
  * The claim page.
@@ -40,6 +40,7 @@ export default async function ClaimPage({ params, searchParams }: { params: Prom
   const tierNow = bestTier((members.get(id) ?? []).map((member) => member.tier));
   const tierMarks = schema === "public" && tierNow !== null ? await tierMarksFor([id]) : [];
   const judgement = tierJudgement(newestTierMarks(tierMarks).get(id), tierNow);
+  const tierWaits = tierToJudge(review?.review.state === "reviewed", schema === "public" ? judgement : undefined, tierNow);
 
   return (
     <>
@@ -92,7 +93,7 @@ export default async function ClaimPage({ params, searchParams }: { params: Prom
           <>
             <dt>review</dt>
             <dd className="review-line">
-              <ReviewStatus view={review} showGroup={false} />
+              <ReviewStatus view={review} showGroup={false} tierToJudge={tierWaits} />
               <SameClaimReview claimId={claim.id} group={review.group} />
             </dd>
           </>

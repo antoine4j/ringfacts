@@ -99,7 +99,7 @@ export function FilterBar({ path, params, schema, fighters, outlets, stages = fa
       <Choice name="posted" placeholder="posted or not" value={param(params, "posted")} options={["yes", "no"]} prefix="posted: " />
       {claimOptions && <Choice name="digest" placeholder="in a digest or not" value={param(params, "digest")} options={["yes", "no"]} prefix="in a digest: " />}
       {claimOptions && schema !== "replay" && (
-        <Choice name="review" placeholder="reviewed or not" value={param(params, "review")} options={["not_reviewed", "has_new", "reviewed"]} labels={REVIEW_LABELS} />
+        <Choice name="review" placeholder="reviewed or not" value={param(params, "review")} options={["not_reviewed", "has_new", "tier_to_judge", "reviewed"]} labels={REVIEW_LABELS} />
       )}
       {claimOptions && (
         <select name="sort" defaultValue={param(params, "sort")} onChange={apply} className={param(params, "sort") ? "set" : ""} aria-label="sort">
@@ -188,7 +188,7 @@ export function DateChoice({ params, unset = "any time" }: { params: Params; uns
 }
 
 /** The review filter's words (D35). */
-const REVIEW_LABELS: Record<string, string> = { not_reviewed: "not reviewed", has_new: "reviewed, has new", reviewed: "reviewed" };
+const REVIEW_LABELS: Record<string, string> = { not_reviewed: "not reviewed", has_new: "reviewed, has new", tier_to_judge: "tier to judge", reviewed: "reviewed" };
 
 /**
  * One drop-down filter whose empty choice names what it filters.
