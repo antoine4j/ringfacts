@@ -37,6 +37,28 @@ export function useSave(): { run: (save: () => Promise<ActionResult>, after?: ()
 }
 
 /**
+ * Closes a panel when a tap lands outside its control, or on Escape, so
+ * opening one panel closes another.
+ *
+ * @param open  Whether the panel is open.
+ * @param boxRef  The control holding the panel; a tap inside it is left alone.
+ * @param close  Closes the panel.
+ */
+export function useCloseOnOutside(open: boolean, boxRef: RefObject<HTMLElement | null>, close: () => void): void {
+  useEffect(() => {
+    if (!open) return;
+    const onClick = (event: MouseEvent) => (event.target instanceof Node && boxRef.current?.contains(event.target)) || close();
+    const onKey = (event: KeyboardEvent) => event.key === "Escape" && close();
+    document.addEventListener("click", onClick);
+    document.addEventListener("keydown", onKey);
+    return () => {
+      document.removeEventListener("click", onClick);
+      document.removeEventListener("keydown", onKey);
+    };
+  }, [open, boxRef, close]);
+}
+
+/**
  * The picker's suggestions, fetched once and kept: started by preload (the
  * pointer on the button, or the picker opening), read again by the picker.
  *
@@ -365,9 +387,11 @@ export function SameClaimReview({ claimId, group }: { claimId: string; group: { 
   const { run, saving, error } = useSave();
   const [picking, setPicking] = useState(false);
   const suggestions = usePreloaded(() => claimSuggestions({ claimId }));
+  const boxRef = useRef<HTMLSpanElement>(null);
+  useCloseOnOutside(picking, boxRef, () => setPicking(false));
 
   return (
-    <span className="review same-claim">
+    <span className="review same-claim" ref={boxRef}>
       {group.length > 0 && (
         <span className="small">
           same claim as{" "}
