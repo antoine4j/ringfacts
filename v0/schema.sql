@@ -205,6 +205,19 @@ CREATE TABLE IF NOT EXISTS review_tiers (
 );
 CREATE INDEX IF NOT EXISTS review_tiers_claim_idx ON review_tiers (claim_id, id);
 
+-- Anton's note on a claim as a whole: what the story is, in his words, or why
+-- he judged it as he did. A note, not a verdict: it neither reviews the claim
+-- nor counts in a score. The newest row for a claim is in force; an empty note
+-- clears it.
+CREATE TABLE IF NOT EXISTS review_claim_notes (
+  id          bigint GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+  claim_id    bigint NOT NULL REFERENCES claims(id),
+  note        text NOT NULL,
+  author      text NOT NULL DEFAULT 'anton',
+  created_at  timestamptz NOT NULL DEFAULT now()
+);
+CREATE INDEX IF NOT EXISTS review_claim_notes_claim_idx ON review_claim_notes (claim_id, id);
+
 -- One row per run of the job: its kind, how long it took, and its numbers.
 CREATE TABLE IF NOT EXISTS runs (
   id           bigint GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
@@ -245,7 +258,7 @@ DO $$
 DECLARE
   answer_table text;
 BEGIN
-  FOREACH answer_table IN ARRAY ARRAY['articles', 'classifications', 'extracts', 'groupings', 'decisions', 'settings', 'digest_claims', 'feedback', 'reactions', 'review_readings', 'review_same_claims', 'review_tiers']
+  FOREACH answer_table IN ARRAY ARRAY['articles', 'classifications', 'extracts', 'groupings', 'decisions', 'settings', 'digest_claims', 'feedback', 'reactions', 'review_readings', 'review_same_claims', 'review_tiers', 'review_claim_notes']
   LOOP
     EXECUTE format('DROP TRIGGER IF EXISTS %I_never_updated ON %I', answer_table, answer_table);
     EXECUTE format('CREATE TRIGGER %I_never_updated BEFORE UPDATE ON %I FOR EACH ROW EXECUTE FUNCTION refuse_update()', answer_table, answer_table);
