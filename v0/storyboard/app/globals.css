@@ -377,6 +377,13 @@ pre.json { background: var(--chip); padding: 10px 12px; border-radius: 8px; over
 .claim-note-line.has-note { color: var(--muted); }
 .kv .claim-note-line { font-size: inherit; }
 .claim-note-date { flex: none; white-space: nowrap; }
+/* The tier line on an open claims-list card: quiet words, the choices in the link colour, the one in force bold plain text. */
+.tier-check { display: inline-flex; flex-wrap: wrap; gap: 4px; align-items: baseline; font-size: 12px; }
+.tier-check-line { font-size: 12px; font-weight: inherit; color: var(--muted); }
+.tier-check-choice { font-size: 12px; font-weight: inherit; }
+.tier-check-option { display: inline-flex; gap: 4px; }
+.tier-check-choice[aria-pressed="true"]:disabled { font-weight: 600; color: var(--text); opacity: 1; cursor: default; }
+.tier-check .clear-mark { margin-left: 6px; }
 
 /* The scores page: headline numbers as cards, slices as rows, the replay as a table. */
 .lede { max-width: 72ch; margin: 0 0 10px; }

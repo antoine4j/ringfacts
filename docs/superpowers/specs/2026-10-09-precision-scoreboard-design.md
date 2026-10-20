@@ -232,6 +232,14 @@ yet judged" again. The newest row for a claim is in force.
   tier saves `wrong` with that tier as `should_be_tier`.
   A small "clear" link saves `cleared`, back to "not yet judged". This is a server action in
   `app/review-actions.ts`, live data only.
+- **On the claims list** (`components/TierCheck.tsx`, added 2026-10-20):
+  the open card asks in one line of text, "tier right? yes · no". Yes
+  saves `right`; no shows the two other tiers, and tapping one saves
+  `wrong` with it. Once marked, the line says the mark ("✓ tier right",
+  "tier should be post") and a tap reopens the choices with "clear". The
+  choice already in force shows as plain text, not a link, so a repeat
+  tap cannot add a row that changes nothing. The folded card shows no
+  tier mark; its tier pill is unchanged.
 
 **Order: the page was built first, the mark second.** Both ship
 together. The table was applied to the live database by itself (the

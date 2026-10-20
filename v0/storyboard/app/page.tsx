@@ -9,14 +9,17 @@ import { ClaimReadings } from "../components/ClaimReadings.tsx";
 import { SameClaimReview } from "../components/ReviewControls.tsx";
 import { ReviewDot, ReviewStatus } from "../components/ReviewStatus.tsx";
 import { ScoreStrip } from "../components/ScoreStrip.tsx";
+import { TierCheck } from "../components/TierCheck.tsx";
 import { Empty, isDoubtfulPick, tierName, tierTitle } from "../components/bits.tsx";
 import { FilterBar } from "../components/FilterBar.tsx";
 import { query } from "../lib/db.ts";
 import { claimFilter, claimOrder, whereSql, type Params } from "../lib/filters.ts";
 import { dayAndClock, shortTime } from "../lib/format.ts";
-import { claimMembers, claimNotesFor, claimReviews, fighterNames, outletNames, type ClaimNoteRow, type ClaimRow, type MemberRow } from "../lib/queries.ts";
+import { bestTier } from "../lib/live-scores.ts";
+import { claimMembers, claimNotesFor, claimReviews, fighterNames, outletNames, tierMarksFor, type ClaimNoteRow, type ClaimRow, type MemberRow } from "../lib/queries.ts";
 import type { ClaimReviewView } from "../lib/reviews.ts";
 import { schemaFrom, schemaSuffix, type Schema } from "../lib/schema.ts";
+import { tierJudgements, type TierJudgement } from "../lib/tier-marks.ts";
 
 /** The most claims one page shows. */
 const LIMIT = 300;
@@ -41,6 +44,10 @@ export default async function ClaimsPage({ searchParams }: { searchParams: Promi
   const members = await claimMembers(schema, claims.map((claim) => claim.id));
   const reviews = await claimReviews(schema, members);
   const notes = schema === "public" ? await claimNotesFor(claims.map((claim) => claim.id)) : new Map<string, ClaimNoteRow>();
+
+  // Each claim's tier today and the tier mark on it, live data only.
+  const tierOf = new Map([...members].map(([claimId, rows]) => [claimId, bestTier(rows.map((row) => row.tier))]));
+  const judgements = schema === "public" ? tierJudgements(await tierMarksFor(claims.map((claim) => claim.id)), tierOf) : new Map<string, TierJudgement>();
 
   // The latest posted digest that used each claim.
   const digested = await query<InDigest>(
@@ -70,7 +77,7 @@ export default async function ClaimsPage({ searchParams }: { searchParams: Promi
       </p>
       {claims.length === 0 && <Empty>No claims match.</Empty>}
       {claims.map((claim) => (
-        <ClaimCard key={claim.id} claim={claim} rows={members.get(claim.id) ?? []} digest={digestOf.get(claim.id) ?? null} schema={schema} review={reviews.get(claim.id)} note={notes.get(claim.id) ?? null} />
+        <ClaimCard key={claim.id} claim={claim} rows={members.get(claim.id) ?? []} digest={digestOf.get(claim.id) ?? null} schema={schema} review={reviews.get(claim.id)} note={notes.get(claim.id) ?? null} tierMark={judgements.get(claim.id)} />
       ))}
     </>
   );
@@ -88,9 +95,10 @@ type InDigest = { claim_id: string; digest_id: string; period_end: Date };
  * @param props.schema  Kept on links.
  * @param props.review  Its review (D35); absent on the golden replay.
  * @param props.note  Anton's note on it and when he wrote it; null when none.
+ * @param props.tierMark  What the tier mark on it says; absent on the golden replay.
  * @returns The card.
  */
-function ClaimCard({ claim, rows, digest, schema, review, note }: { claim: ClaimRow; rows: MemberRow[]; digest: InDigest | null; schema: Schema; review?: ClaimReviewView; note: ClaimNoteRow | null }) {
+function ClaimCard({ claim, rows, digest, schema, review, note, tierMark }: { claim: ClaimRow; rows: MemberRow[]; digest: InDigest | null; schema: Schema; review?: ClaimReviewView; note: ClaimNoteRow | null; tierMark?: TierJudgement }) {
   // A join is doubtful when the pick that made it was under 50% sure; Anton's mark on the reading, either way, settles it.
   const doubtful = rows.filter((row) => isDoubtfulPick(row.pick));
   const unsettled = doubtful.filter((row) => !review?.marks[row.reading_id]).length;
@@ -133,6 +141,7 @@ function ClaimCard({ claim, rows, digest, schema, review, note }: { claim: Claim
         <div className="review-bar">
           <SameClaimReview claimId={claim.id} group={review.group} />
           <ClaimNote claimId={claim.id} note={note?.note ?? ""} written={shortTime(note?.created_at)} />
+          {tier && tierMark && <TierCheck claimId={claim.id} tierNow={tier.best} judgement={tierMark} />}
         </div>
       )}
       <ClaimReadings rows={rows} schema={schema} postedReadingId={claim.posted_reading_id} claimId={claim.id} review={review} />
