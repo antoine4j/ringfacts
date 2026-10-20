@@ -108,12 +108,6 @@ function ClaimCard({ claim, rows, digest, schema, review, note }: { claim: Claim
           <ReviewDot view={review} readings={rows.length} />
         </div>
         {labelChanged && <div className="small muted">first label: {claim.label}</div>}
-        {note && (
-          <div className="claim-note-folded">
-            <span className="claim-note-text">✎ {note.note}</span>
-            <span className="claim-note-date">· {shortTime(note.created_at)}</span>
-          </div>
-        )}
         {/* Facts on the left, each in a column of its own; the verdict on the right, under the number. */}
         <div className="meta">
           <span className="meta-fighter">{claim.fighter}</span>

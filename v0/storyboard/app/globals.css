@@ -370,14 +370,12 @@ pre.json { background: var(--chip); padding: 10px 12px; border-radius: 8px; over
 /* Clearing sits apart from save, on the right, in the warning colour. */
 .clear-mark { margin-left: auto; color: var(--warn-text); }
 
-/* A note on a claim, then its date, in the fighter name's quiet type: in the
-   review bar a line that opens its editor; on the folded card one line, the
-   note cut short so the date stays in view, hidden once the card is open. */
+/* A note on a claim, then its date, in the fighter name's quiet type: a line
+   in the open card's review bar that opens its editor. On the claim page it
+   takes the size of the words beside it, such as "✓ reviewed". */
 .claim-note-line { font-size: 12px; font-weight: inherit; text-align: left; white-space: normal; }
 .claim-note-line.has-note { color: var(--muted); }
-.claim-note-folded { display: flex; gap: 4px; min-width: 0; font-size: 12px; color: var(--muted); margin-top: 2px; }
-.claim-note-text { min-width: 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-.claim[open] > summary .claim-note-folded { display: none; }
+.kv .claim-note-line { font-size: inherit; }
 .claim-note-date { flex: none; white-space: nowrap; }
 
 /* The scores page: headline numbers as cards, slices as rows, the replay as a table. */
