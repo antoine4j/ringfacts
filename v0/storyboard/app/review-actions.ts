@@ -1,8 +1,8 @@
 "use server";
 // Anton's grouping reviews (D35): marking a reading in a claim, linking
-// claims that are one claim, and the claims the picker suggests; and the
-// tier mark on a claim (scoreboard D3). Every write
-// adds a row; nothing is changed. Live data only: the golden replay's
+// claims that are one claim, and the claims the picker suggests; the tier
+// mark on a claim (scoreboard D3); and a note on a claim. Every write adds a
+// row; nothing is changed. Live data only: the golden replay's
 // rulings are the golden set's.
 // Design: docs/superpowers/specs/2026-10-04-v0-design.md, section 11, "Reviewing claims".
 
@@ -153,6 +153,26 @@ export async function markTier(input: { claimId: string; tierHad: number; verdic
     await query("public", "INSERT INTO review_tiers (claim_id, tier_had, verdict, should_be_tier, note) VALUES ($1, $2, $3, $4, $5)", [claimId, tierNow, input.verdict, shouldBe, note]);
     revalidatePath("/", "layout");
     return { ok: true, message: input.verdict === "cleared" ? "Cleared" : "Saved" };
+  } catch (error) {
+    return { ok: false, message: `Not saved: ${(error as Error).message}` };
+  }
+}
+
+/**
+ * Saves a note on a claim as a whole, or clears it when the note is empty.
+ *
+ * @param input  claimId and the note.
+ * @returns Whether it was saved, in words.
+ */
+export async function noteClaim(input: { claimId: string; note: string }): Promise<ActionResult> {
+  try {
+    const claimId = checkedId(input.claimId, "the claim");
+    const note = checkedNote(input.note);
+    await fighterOf(claimId);
+
+    await query("public", "INSERT INTO review_claim_notes (claim_id, note) VALUES ($1, $2)", [claimId, note]);
+    revalidatePath("/", "layout");
+    return { ok: true, message: note === "" ? "Cleared" : "Saved" };
   } catch (error) {
     return { ok: false, message: `Not saved: ${(error as Error).message}` };
   }

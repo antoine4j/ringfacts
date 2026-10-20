@@ -29,7 +29,7 @@ golden replay). Three login roles:
 | Role | Can | Address in `.env.v0` |
 |---|---|---|
 | `v0_pipeline` | read everything; add rows; move a reading's stage | `V0_DATABASE_URL` |
-| `v0_editor` | read everything; add feedback and settings | `V0_EDITOR_DATABASE_URL` |
+| `v0_editor` | read everything; add settings, review marks, claim notes and feedback | `V0_EDITOR_DATABASE_URL` |
 | `v0_feed` | read production's `items`, read-only, nothing else | `V0_FEED_DATABASE_URL` |
 
 Set up once (already done on 2026-10-05), with the owner's addresses from

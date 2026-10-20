@@ -4,7 +4,6 @@
 
 import Link from "next/link";
 import { Json, PickTag } from "../../../components/bits.tsx";
-import { FeedbackForm } from "../../../components/FeedbackForm.tsx";
 import { pacificTime, percent } from "../../../lib/format.ts";
 import { schemaSuffix, type Schema } from "../../../lib/schema.ts";
 
@@ -29,13 +28,11 @@ export type DecisionRow = { id: string; classification_id: string; settings_vers
  * Every row of one answering station, each as a table of answer → value.
  *
  * @param props.rows  The rows, newest first.
- * @param props.prefix  "classification" or "extract": names the answers in feedback.
- * @param props.readingId  The reading, for the feedback form.
  * @param props.schema  "public" or "replay".
  * @param props.showJev  Whether to show JEV's confidence beside each answer.
  * @returns The rows.
  */
-export function AnswerRows({ rows, prefix, readingId, schema, showJev = false }: { rows: AnswerRow[]; prefix: string; readingId: string; schema: Schema; showJev?: boolean }) {
+export function AnswerRows({ rows, showJev = false }: { rows: AnswerRow[]; showJev?: boolean }) {
   if (rows.length === 0) return <p className="muted">No answer yet.</p>;
   return (
     <>
@@ -57,7 +54,6 @@ export function AnswerRows({ rows, prefix, readingId, schema, showJev = false }:
                 ))}
               </tbody>
             </table>
-            {index === 0 && <FeedbackForm target="reading" id={readingId} schema={schema} fields={names.map((name) => `${prefix}.${name}`)} />}
             <details>
               <summary className="small muted">the model&apos;s whole reply</summary>
               <Json value={row.raw} />
@@ -102,11 +98,10 @@ function jevDetail(raw: unknown, name: string): string {
  * Every grouping of the reading: the shortlist JEV was shown, its pick, and the claim joined.
  *
  * @param props.rows  The groupings, newest first.
- * @param props.readingId  The reading, for the feedback form.
  * @param props.schema  "public" or "replay".
  * @returns The rows.
  */
-export function GroupingRows({ rows, readingId, schema }: { rows: GroupingRow[]; readingId: string; schema: Schema }) {
+export function GroupingRows({ rows, schema }: { rows: GroupingRow[]; schema: Schema }) {
   if (rows.length === 0) return <p className="muted">Not grouped yet.</p>;
   return (
     <>
@@ -120,7 +115,6 @@ export function GroupingRows({ rows, readingId, schema }: { rows: GroupingRow[];
             {row.pick.claim === null || row.pick.claim === undefined ? " (started by this reading)" : ""}
           </p>
           <ShortlistTable shortlist={row.shortlist} picked={row.pick.claim ?? null} schema={schema} />
-          {index === 0 && <FeedbackForm target="reading" id={readingId} schema={schema} fields={["grouping", "grouping.pick", "grouping.shortlist"]} />}
           <details>
             <summary className="small muted">JEV&apos;s whole reply to the pick</summary>
             <Json value={row.pick.raw ?? null} />

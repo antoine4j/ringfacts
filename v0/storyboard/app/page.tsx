@@ -4,17 +4,17 @@
 
 import Link from "next/link";
 import { Suspense } from "react";
+import { ClaimNote } from "../components/ClaimNote.tsx";
 import { ClaimReadings } from "../components/ClaimReadings.tsx";
 import { SameClaimReview } from "../components/ReviewControls.tsx";
 import { ReviewDot, ReviewStatus } from "../components/ReviewStatus.tsx";
 import { ScoreStrip } from "../components/ScoreStrip.tsx";
 import { Empty, isDoubtfulPick, tierName, tierTitle } from "../components/bits.tsx";
-import { FeedbackForm } from "../components/FeedbackForm.tsx";
 import { FilterBar } from "../components/FilterBar.tsx";
 import { query } from "../lib/db.ts";
 import { claimFilter, claimOrder, whereSql, type Params } from "../lib/filters.ts";
 import { dayAndClock, shortTime } from "../lib/format.ts";
-import { claimMembers, claimReviews, fighterNames, outletNames, type ClaimRow, type MemberRow } from "../lib/queries.ts";
+import { claimMembers, claimNotesFor, claimReviews, fighterNames, outletNames, type ClaimNoteRow, type ClaimRow, type MemberRow } from "../lib/queries.ts";
 import type { ClaimReviewView } from "../lib/reviews.ts";
 import { schemaFrom, schemaSuffix, type Schema } from "../lib/schema.ts";
 
@@ -40,6 +40,7 @@ export default async function ClaimsPage({ searchParams }: { searchParams: Promi
   );
   const members = await claimMembers(schema, claims.map((claim) => claim.id));
   const reviews = await claimReviews(schema, members);
+  const notes = schema === "public" ? await claimNotesFor(claims.map((claim) => claim.id)) : new Map<string, ClaimNoteRow>();
 
   // The latest posted digest that used each claim.
   const digested = await query<InDigest>(
@@ -69,7 +70,7 @@ export default async function ClaimsPage({ searchParams }: { searchParams: Promi
       </p>
       {claims.length === 0 && <Empty>No claims match.</Empty>}
       {claims.map((claim) => (
-        <ClaimCard key={claim.id} claim={claim} rows={members.get(claim.id) ?? []} digest={digestOf.get(claim.id) ?? null} schema={schema} review={reviews.get(claim.id)} />
+        <ClaimCard key={claim.id} claim={claim} rows={members.get(claim.id) ?? []} digest={digestOf.get(claim.id) ?? null} schema={schema} review={reviews.get(claim.id)} note={notes.get(claim.id) ?? null} />
       ))}
     </>
   );
@@ -86,9 +87,10 @@ type InDigest = { claim_id: string; digest_id: string; period_end: Date };
  * @param props.digest  The latest posted digest that used it, or null.
  * @param props.schema  Kept on links.
  * @param props.review  Its review (D35); absent on the golden replay.
+ * @param props.note  Anton's note on it and when he wrote it; null when none.
  * @returns The card.
  */
-function ClaimCard({ claim, rows, digest, schema, review }: { claim: ClaimRow; rows: MemberRow[]; digest: InDigest | null; schema: Schema; review?: ClaimReviewView }) {
+function ClaimCard({ claim, rows, digest, schema, review, note }: { claim: ClaimRow; rows: MemberRow[]; digest: InDigest | null; schema: Schema; review?: ClaimReviewView; note: ClaimNoteRow | null }) {
   // A join is doubtful when the pick that made it was under 50% sure; Anton's mark on the reading, either way, settles it.
   const doubtful = rows.filter((row) => isDoubtfulPick(row.pick));
   const unsettled = doubtful.filter((row) => !review?.marks[row.reading_id]).length;
@@ -106,6 +108,12 @@ function ClaimCard({ claim, rows, digest, schema, review }: { claim: ClaimRow; r
           <ReviewDot view={review} readings={rows.length} />
         </div>
         {labelChanged && <div className="small muted">first label: {claim.label}</div>}
+        {note && (
+          <div className="claim-note-folded">
+            <span className="claim-note-text">✎ {note.note}</span>
+            <span className="claim-note-date">· {shortTime(note.created_at)}</span>
+          </div>
+        )}
         {/* Facts on the left, each in a column of its own; the verdict on the right, under the number. */}
         <div className="meta">
           <span className="meta-fighter">{claim.fighter}</span>
@@ -130,10 +138,10 @@ function ClaimCard({ claim, rows, digest, schema, review }: { claim: ClaimRow; r
       {review && (
         <div className="review-bar">
           <SameClaimReview claimId={claim.id} group={review.group} />
+          <ClaimNote claimId={claim.id} note={note?.note ?? ""} written={shortTime(note?.created_at)} />
         </div>
       )}
       <ClaimReadings rows={rows} schema={schema} postedReadingId={claim.posted_reading_id} claimId={claim.id} review={review} />
-      <FeedbackForm target="claim" id={claim.id} schema={schema} fields={["grouping", "label", "current_label", "claim"]} label="feedback on this claim" />
     </details>
   );
 }

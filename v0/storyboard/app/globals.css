@@ -243,9 +243,6 @@ details > summary { cursor: pointer; }
 .kv dd { margin: 0; }
 pre.json { background: var(--chip); padding: 10px 12px; border-radius: 8px; overflow-x: auto; font: 12px/1.5 var(--mono); max-height: 420px; }
 
-.feedback-form { display: inline-block; margin: 4px 0; }
-.feedback-form form { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; padding: 8px; background: var(--panel); border: 1px solid var(--line); border-radius: var(--radius); margin-top: 6px; }
-.feedback-form summary { font-size: 12px; color: var(--accent); }
 
 /* Settings: three columns of cards; a card is a small white panel. */
 .board { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
@@ -372,6 +369,16 @@ pre.json { background: var(--chip); padding: 10px 12px; border-radius: 8px; over
 .picker.note-editor { width: min(360px, calc(100vw - 32px)); }
 /* Clearing sits apart from save, on the right, in the warning colour. */
 .clear-mark { margin-left: auto; color: var(--warn-text); }
+
+/* A note on a claim, then its date, in the fighter name's quiet type: in the
+   review bar a line that opens its editor; on the folded card one line, the
+   note cut short so the date stays in view, hidden once the card is open. */
+.claim-note-line { font-size: 12px; font-weight: inherit; text-align: left; white-space: normal; }
+.claim-note-line.has-note { color: var(--muted); }
+.claim-note-folded { display: flex; gap: 4px; min-width: 0; font-size: 12px; color: var(--muted); margin-top: 2px; }
+.claim-note-text { min-width: 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.claim[open] > summary .claim-note-folded { display: none; }
+.claim-note-date { flex: none; white-space: nowrap; }
 
 /* The scores page: headline numbers as cards, slices as rows, the replay as a table. */
 .lede { max-width: 72ch; margin: 0 0 10px; }

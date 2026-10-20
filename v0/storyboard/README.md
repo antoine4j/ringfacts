@@ -21,12 +21,12 @@ remembered in the browser.
 
 | Page | Shows |
 |---|---|
-| `/` Claims | Every claim, newest activity first: current label (and first label when it differs), fighter, readings, outlets, first and last date, posted or not. Each opens to its readings in date order: your review mark (✓ belongs, ✕ doesn't), the extract sentence, grouping (joined or new claim, with JEV's confidence; under 50% is flagged ⚠) and the decision (tier and the classifier answers behind it). The card says whether the claim is reviewed, how many readings arrived since, and which claims you marked as the same claim. Filters: fighter, dates, outlet, tier, posted, in a digest, review status, and any classifier answer. |
-| `/claims/[id]` | One claim, both labels, its tier with the tier mark (should be Post, Digest or Drop), its review, its readings with their review marks, feedback on it. |
+| `/` Claims | Every claim, newest activity first: current label (and first label when it differs), fighter, readings, outlets, first and last date, posted or not. Each opens to its readings in date order: your review mark (✓ belongs, ✕ doesn't), the extract sentence, grouping (joined or new claim, with JEV's confidence; under 50% is flagged ⚠) and the decision (tier and the classifier answers behind it). The card says whether the claim is reviewed, how many readings arrived since, and which claims you marked as the same claim; your note on the claim shows under its label, and opening the card lets you write or change it. Filters: fighter, dates, outlet, tier, posted, in a digest, review status, and any classifier answer. |
+| `/claims/[id]` | One claim, both labels, its tier with the tier mark (should be Post, Digest or Drop), its review, your note on it, its readings with their review marks. |
 | `/readings` | Every reading, newest first, v0's tier beside production's outcome. Filters: fighter, dates, outlet, tier, posted, stage (`waiting` = classify, extract, group or decide), archive, and any classifier answer, e.g. `/readings?fact=next_fight&firmness=rumour`. |
-| `/readings/[id]` | One reading: the article, then every row of every station (Classifier, Claim extractor, Semantic dedup with its shortlist and pick, Decider), newest first, each with a feedback form; production's outcome; feedback given. |
+| `/readings/[id]` | One reading: the article, then every row of every station (Classifier, Claim extractor, Semantic dedup with its shortlist and pick, Decider), newest first; production's outcome. |
 | `/settings` | The tier map: Post, Digest, Drop. Each "what new fact · how firm" is a card with its count of readings and three headlines; drag it (or use its buttons) to make a draft. Before saving, the page says how many readings would move, by running the Decider's own code (`../pipeline/settings/tiers.ts`) on them. Below: each fighter's digest schedule, and the version history. Saving adds a settings row. |
-| `/digests` | Each digest: its text, the items the writer listed, the claims it used and left out, feedback. |
+| `/digests` | Each digest: its text, the items the writer listed, the claims it used and left out. |
 | `/runs` | Where every reading is now (stage × fighter), and every run with its headline counts, failures, tokens and cost. |
 | `/scores` | How well v0 does, written for a visitor (design: [the scoreboard](../../docs/superpowers/specs/2026-10-09-precision-scoreboard-design.md)). Live numbers over one period (`?when=last_14` is the launch bar's window): the launch bar (career events not posted, from `../pipeline/measure/career-events.json`; repeats in tier 1; posts and digests with a 👎), then over-merge, over-split and wrong tier from the review marks, each with its count, a Wilson 95% range on the headline numbers, and its method and weakness. Beside them, never mixed, the golden replay's stored result from `../pipeline/measure/replay-results/`. Those two files are read as committed, so they change on a push, not live. The claims list carries the same live numbers, all time, as a one-line strip. Always live data. |
 | `/compare` | Production's outcome × v0's tier, and the readings where one posted and the other did not. |
@@ -37,10 +37,12 @@ Every page also reads the golden replay's copy of the tables with
 
 ## Writes
 
-Each adds a row and never changes one: a feedback note (`feedback`), a new
-settings version (`settings`), grouping reviews (`review_readings`,
-`review_same_claims`) and tier marks (`review_tiers`); reviews are live
-data only, see the v0 design, section 11, "Reviewing claims". The database role `v0_editor` can do nothing else. A
+Each adds a row and never changes one: a new settings version (`settings`),
+grouping reviews (`review_readings`, `review_same_claims`), tier marks
+(`review_tiers`), a note on a claim (`review_claim_notes`), and the compare
+pages' verdicts (`feedback`); reviews and notes are live data only, see the v0
+design, section 11, "Reviewing claims", and D36. The database role
+`v0_editor` can do nothing else. A
 settings save is refused if another version was saved after the page was
 opened.
 

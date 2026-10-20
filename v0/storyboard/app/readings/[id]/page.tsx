@@ -1,16 +1,13 @@
 // One reading: the article, then every station's answers in pipeline order,
-// every version of each (newest first), each with a feedback form, then the
-// feedback already given.
+// every version of each (newest first).
 
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Decision } from "../../../components/Decision.tsx";
-import { FeedbackForm } from "../../../components/FeedbackForm.tsx";
-import { FeedbackList } from "../../../components/FeedbackList.tsx";
 import { query } from "../../../lib/db.ts";
 import type { Params } from "../../../lib/filters.ts";
 import { pacificTime } from "../../../lib/format.ts";
-import { feedbackOn, latestReaction } from "../../../lib/queries.ts";
+import { latestReaction } from "../../../lib/queries.ts";
 import { schemaFrom, schemaSuffix, type Schema } from "../../../lib/schema.ts";
 import { AnswerRows, GroupingRows, type AnswerRow, type DecisionRow, type GroupingRow } from "./stations.tsx";
 
@@ -64,15 +61,14 @@ export default async function ReadingPage({ params, searchParams }: { params: Pr
   const reading = readings[0];
   if (!reading) notFound();
 
-  // Every station's rows for it, newest first, and the feedback on it.
-  const [classifications, extracts, groupings, decisions, feedback, siblings] = await Promise.all([
+  // Every station's rows for it, newest first, and the other readings of its article.
+  const [classifications, extracts, groupings, decisions, siblings] = await Promise.all([
     query<AnswerRow>(schema, "SELECT id, version, answers, raw, created_at FROM classifications WHERE reading_id = $1 ORDER BY id DESC", [id]),
     query<AnswerRow>(schema, "SELECT id, version, answers, raw, created_at FROM extracts WHERE reading_id = $1 ORDER BY id DESC", [id]),
     query<GroupingRow>(schema, "SELECT id, extract_id, version, shortlist, pick, claim_id, created_at FROM groupings WHERE reading_id = $1 ORDER BY id DESC", [id]),
     query<DecisionRow>(schema, `SELECT d.id, d.classification_id, d.settings_version, d.tier, d.cell, d.created_at, c.answers ->> 'centrality' AS centrality
        FROM decisions d JOIN classifications c ON c.id = d.classification_id
        WHERE d.reading_id = $1 ORDER BY d.id DESC`, [id]),
-    feedbackOn(schema, "reading", id),
     query<{ id: string; fighter: string }>(schema, "SELECT id, fighter FROM readings WHERE article_id = $1 AND id <> $2 ORDER BY id", [reading.article_id, id]),
   ]);
 
@@ -84,27 +80,23 @@ export default async function ReadingPage({ params, searchParams }: { params: Pr
       <ArticleSection reading={reading} siblings={siblings} schema={schema} />
       <section className="section">
         <h2>Classifier (4)</h2>
-        <AnswerRows rows={classifications} prefix="classification" readingId={id} schema={schema} showJev />
+        <AnswerRows rows={classifications} showJev />
       </section>
       <section className="section">
         <h2>Claim extractor (5)</h2>
-        <AnswerRows rows={extracts} prefix="extract" readingId={id} schema={schema} />
+        <AnswerRows rows={extracts} />
       </section>
       <section className="section">
         <h2>Semantic dedup (6)</h2>
-        <GroupingRows rows={groupings} readingId={id} schema={schema} />
+        <GroupingRows rows={groupings} schema={schema} />
       </section>
       <section className="section">
         <h2>Decider (7)</h2>
-        <DecisionTable rows={decisions} readingId={id} schema={schema} />
+        <DecisionTable rows={decisions} schema={schema} />
         <p>
           Production&apos;s outcome: <strong>{reading.production_outcome ?? "none recorded"}</strong>
           {reading.posted_at ? ` · v0 posted it ${pacificTime(reading.posted_at)} (message ${reading.message_id})${reading.reaction ? `, you reacted ${reading.reaction}` : ""}` : " · v0 has not posted it"}
         </p>
-      </section>
-      <section className="section">
-        <h2>Feedback on this reading</h2>
-        <FeedbackList rows={feedback} />
       </section>
     </>
   );
@@ -173,11 +165,10 @@ function ArticleSection({ reading, siblings, schema }: { reading: ReadingDetail;
  * Every decision for the reading, newest first.
  *
  * @param props.rows  The decisions.
- * @param props.readingId  The reading, for the feedback form.
  * @param props.schema  "public" or "replay".
- * @returns The table and a feedback form.
+ * @returns The table.
  */
-function DecisionTable({ rows, readingId, schema }: { rows: DecisionRow[]; readingId: string; schema: Schema }) {
+function DecisionTable({ rows, schema }: { rows: DecisionRow[]; schema: Schema }) {
   if (rows.length === 0) return <p className="muted">Not decided yet.</p>;
   return (
     <>
@@ -203,7 +194,6 @@ function DecisionTable({ rows, readingId, schema }: { rows: DecisionRow[]; readi
           ))}
         </tbody>
       </table>
-      <FeedbackForm target="reading" id={readingId} schema={schema} fields={["tier", "cell"]} label="feedback on the tier" />
     </>
   );
 }

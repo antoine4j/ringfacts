@@ -3,12 +3,10 @@
 
 import Link from "next/link";
 import { Empty, Json } from "../../components/bits.tsx";
-import { FeedbackForm } from "../../components/FeedbackForm.tsx";
-import { FeedbackList } from "../../components/FeedbackList.tsx";
 import { query } from "../../lib/db.ts";
 import { param, type Params } from "../../lib/filters.ts";
 import { pacificTime } from "../../lib/format.ts";
-import { fighterNames, latestReaction, type FeedbackRow } from "../../lib/queries.ts";
+import { fighterNames, latestReaction } from "../../lib/queries.ts";
 import { schemaFrom, schemaSuffix, type Schema } from "../../lib/schema.ts";
 import { safeTelegramHtml } from "../../lib/telegram-html.ts";
 
@@ -29,7 +27,7 @@ export default async function DigestsPage({ searchParams }: { searchParams: Prom
   const schema = schemaFrom(params.schema);
   const fighter = param(params, "fighter");
 
-  // The digests, newest period first, then the claims and feedback of all of them at once.
+  // The digests, newest period first, then the claims of all of them at once.
   const digests = await query<DigestRow>(
     schema,
     `SELECT d.id, d.fighter, d.period_start, d.period_end, d.model, d.prompt_version, d.text, d.items, d.posted_at, ${latestReaction("d.message_id")} AS reaction, d.backfill, d.created_at
@@ -37,7 +35,7 @@ export default async function DigestsPage({ searchParams }: { searchParams: Prom
     [fighter],
   );
   const ids = digests.map((digest) => digest.id);
-  const [given, feedback, fighters] = await Promise.all([
+  const [given, fighters] = await Promise.all([
     query<GivenClaim>(
       schema,
       `SELECT dc.digest_id, dc.claim_id, dc.used, cn.current_label, cn.readings, cn.outlets
@@ -45,7 +43,6 @@ export default async function DigestsPage({ searchParams }: { searchParams: Prom
        WHERE dc.digest_id = ANY($1::bigint[]) ORDER BY dc.used DESC, cn.readings DESC`,
       [ids],
     ),
-    query<FeedbackRow>(schema, "SELECT * FROM feedback WHERE digest_id = ANY($1::bigint[]) ORDER BY id DESC", [ids]),
     fighterNames(schema),
   ]);
 
@@ -78,7 +75,6 @@ export default async function DigestsPage({ searchParams }: { searchParams: Prom
           key={digest.id}
           digest={digest}
           given={given.filter((claim) => claim.digest_id === digest.id)}
-          feedback={feedback.filter((row) => row.digest_id === digest.id)}
           schema={schema}
         />
       ))}
@@ -87,15 +83,14 @@ export default async function DigestsPage({ searchParams }: { searchParams: Prom
 }
 
 /**
- * One digest: its header, its text, its items, the claims used and left out, and feedback.
+ * One digest: its header, its text, its items, and the claims used and left out.
  *
  * @param props.digest  The digest.
  * @param props.given  The claims it was given.
- * @param props.feedback  Feedback on it.
  * @param props.schema  Kept on links.
  * @returns The card.
  */
-function DigestCard({ digest, given, feedback, schema }: { digest: DigestRow; given: GivenClaim[]; feedback: FeedbackRow[]; schema: Schema }) {
+function DigestCard({ digest, given, schema }: { digest: DigestRow; given: GivenClaim[]; schema: Schema }) {
   const used = given.filter((claim) => claim.used);
   const leftOut = given.filter((claim) => !claim.used);
   return (
@@ -117,8 +112,6 @@ function DigestCard({ digest, given, feedback, schema }: { digest: DigestRow; gi
         <summary className="small muted">the items the writer listed</summary>
         <Json value={digest.items} />
       </details>
-      <FeedbackForm target="digest" id={digest.id} schema={schema} fields={["digest", "digest.text", "digest.left_out", "digest.used"]} label="feedback on this digest" />
-      {feedback.length > 0 && <FeedbackList rows={feedback} />}
     </section>
   );
 }

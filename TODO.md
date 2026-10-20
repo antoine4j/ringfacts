@@ -78,8 +78,8 @@ public roadmap at https://antoine4j.github.io/ringfacts/launch-map.html.
    model writes" story with a cost table (blog backlog 7).
 6. **Review tooling** ([the classifier's answers behind a tier](docs/superpowers/specs/2026-10-06-review-classifier-answers.md),
    two decisions open; [editing a review mark](docs/superpowers/specs/2026-10-06-review-mark-editing.md);
-   the feedback form as plain notes, [v0 design](docs/superpowers/specs/2026-10-04-v0-design.md)
-   section 11; all unparked). L: medium on its own, but Anton's review
+   both unparked; the feedback form became a note on a claim, done 2026-10-20,
+   [v0 design](docs/superpowers/specs/2026-10-04-v0-design.md) D36). L: medium on its own, but Anton's review
    time is the scarce resource and over-merges are visible now and scroll
    into history; this makes the every-couple-of-days grooming fast while
    the claims are fresh. S: the "production teaches the model" post (blog

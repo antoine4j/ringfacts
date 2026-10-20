@@ -21,9 +21,6 @@ export function latestReaction(messageId: string): string {
 /** A row of the settings table, with its metadata. */
 export type SettingsRow = Settings & { author: string; note: string; created_at: Date };
 
-/** A row of the feedback table. */
-export type FeedbackRow = { id: string; reading_id: string | null; claim_id: string | null; digest_id: string | null; field: string; should_be: string | null; note: string; author: string; created_at: Date };
-
 /** What a feedback row is about: one reading, one claim or one digest. */
 export type FeedbackTarget = "reading" | "claim" | "digest";
 
@@ -61,19 +58,6 @@ export async function fighterNames(schema: Schema): Promise<string[]> {
 export async function outletNames(schema: Schema): Promise<string[]> {
   const rows = await query<{ outlet: string }>(schema, "SELECT DISTINCT outlet FROM articles WHERE outlet <> '' ORDER BY outlet");
   return rows.map((row) => row.outlet);
-}
-
-/**
- * Every feedback row about one reading, claim or digest, newest first.
- *
- * @param schema  "public" or "replay".
- * @param target  What kind of thing the feedback is on.
- * @param id  Its id.
- * @returns The rows.
- */
-export async function feedbackOn(schema: Schema, target: FeedbackTarget, id: string): Promise<FeedbackRow[]> {
-  const column = FEEDBACK_COLUMN[target];
-  return query<FeedbackRow>(schema, `SELECT * FROM feedback WHERE ${column} = $1 ORDER BY id DESC`, [id]);
 }
 
 /** A claim as the claim_now view shows it. */
@@ -180,6 +164,25 @@ export async function reviewsFor(schema: Schema, claimIds: string[]): Promise<{ 
 export async function tierMarksFor(claimIds: string[]): Promise<TierMark[]> {
   if (claimIds.length === 0) return [];
   return query<TierMark>("public", "SELECT id, claim_id, tier_had, verdict, should_be_tier, note FROM review_tiers WHERE claim_id = ANY($1::bigint[])", [claimIds]);
+}
+
+/** A note on a claim, and when it was written or last changed. */
+export type ClaimNoteRow = { note: string; created_at: Date };
+
+/**
+ * Anton's note in force on each of some claims: each claim's newest row, unless it cleared the note.
+ *
+ * @param claimIds  The claims.
+ * @returns Claim id → its note and when it was written; a claim without one is absent.
+ */
+export async function claimNotesFor(claimIds: string[]): Promise<Map<string, ClaimNoteRow>> {
+  if (claimIds.length === 0) return new Map();
+  const rows = await query<ClaimNoteRow & { claim_id: string }>(
+    "public",
+    "SELECT DISTINCT ON (claim_id) claim_id, note, created_at FROM review_claim_notes WHERE claim_id = ANY($1::bigint[]) ORDER BY claim_id, id DESC",
+    [claimIds],
+  );
+  return new Map(rows.filter((row) => row.note !== "").map((row) => [row.claim_id, { note: row.note, created_at: row.created_at }]));
 }
 
 /**

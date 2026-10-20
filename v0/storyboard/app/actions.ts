@@ -1,8 +1,9 @@
 "use server";
-// The storyboard's only two writes: a feedback note, and a new settings
-// version. Both add a row; nothing is ever changed or deleted (the database
-// role could not, even if asked). Everything a form sends is checked here,
-// since a form can be sent by hand.
+// Two of the storyboard's writes: a feedback row (the compare page's verdict,
+// the digest comparison's pick), and a new settings version; the review marks
+// and claim notes are in review-actions.ts. Both add a row; nothing is ever
+// changed or deleted (the database role could not, even if asked). Everything
+// a form sends is checked here, since a form can be sent by hand.
 
 import { revalidatePath } from "next/cache";
 import { query } from "../lib/db.ts";
