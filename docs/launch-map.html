@@ -205,7 +205,7 @@ footer{font-size:13px;color:var(--dim);max-width:100ch}
 
   <section class="backlog">
     <h2>Backlog</h2>
-    <p class="lede">The tasks still parked when the history page closed (27 on 6 Oct), unchanged, from <code>golden/parked-tasks.json</code>. Seven were candidates for a theme, each waiting for a yes or no (task 0.12); a yes moves the task onto its station and off this list. Ideas parked since are listed after them, dated on their cards: 8.8 and 9.11 (9 Oct), both for after the launch.</p>
+    <p class="lede">The tasks still parked when the history page closed (27 on 6 Oct), unchanged, from <code>golden/parked-tasks.json</code>. Seven were candidates for a theme, each waiting for a yes or no (task 0.12); a yes moves the task onto its station and off this list. Ideas parked since are listed after them, dated on their cards: 8.8 and 9.11 (9 Oct), both for after the launch; 2.6 and 6.13 (20 Oct).</p>
     <div class="filters" role="group" aria-label="Backlog filter">
       <button data-f="all" aria-pressed="true">All</button>
       <button data-f="cand" aria-pressed="false">Candidates only</button>
@@ -408,10 +408,16 @@ const PARKED_SINCE = [
   {id:"9.11", station:9, station_name:"Telegram and storyboard", task:"Answer a reply to the bot, or a free-text question, from the archive alone", label:"after launch",
    what:"Parked 9 Oct. Someone replies to a post or a digest with a question, and the bot answers from the collected articles, with no internet. A reply carries the id of the message it answers, and posted readings and digests store theirs, so the news behind it is found by a join: message, claim or claims, readings, bodies. A digest's stored items say which claims each paragraph drew on, and a reply to part of a message carries the quoted text, so one paragraph can be answered on its own. A question with nothing to reply to ('what is happening with his next fight?') goes the dedup station's way: embed it, shortlist the fighter's claims, answer from their articles; the same embedding model and index, a different question at the end. The same two tools as 8.8, so one reader agent with two doors. It answers with links, and says plainly when the archive has nothing. One decision it forces: v0 asks Telegram for news once an hour and is reachable from nowhere (v0 design, section 10), so an answer would come with the next run, up to an hour late; a conversation needs a small always-listening service (a webhook on Cloud Run's free tier), which the design avoided on purpose. Also open: whether anyone in the group may ask, or one person at first.",
    why:{set:"None.", station:"The first chat feature, far smaller than the chat planned under the reader site: no memory, no web search, one question about one piece of news.", system:"The end state's fourth step (docs/goals.md), grown from what the pipeline already stores: every post and digest knows its claims, every claim its articles."}},
+  {id:"2.6", station:2, station_name:"URL dedup", task:"Catch a copy that differs only in its address scheme, or carries an identical body", label:"parked 20 Oct",
+   what:"Parked 20 Oct. Claim #473 holds one MMA Sucka article twice: the same headline and a byte-identical body (2,177 characters), once as http://mmasucka.com/… and once as https://mmasucka.com/…, published 6 hours apart. Production's seen-before check compares exact addresses, so the second copy was new to it; v0 takes one article per production item, so it became a second reading, and grouping, the only step that compares articles, joined it to its twin's claim at 36%, a doubtful join for review. Two cheap catches: treat http and https as one address (a rule for 2.2's clean-up), and, once the body is fetched, flag an article whose body matches one already stored for the same fighter.",
+   why:{set:"None; #473's pair is a test case.", station:"A copy caught before grouping costs no model calls and never shows as a doubtful join.", system:"A copy in a claim inflates its counts, and is review time spent on nothing."}},
+  {id:"6.13", station:6, station_name:"Semantic dedup: grouping into claims", task:"Test how much of the body the similarity text should take", label:"parked 20 Oct",
+   what:"Parked 20 Oct. The text embedded for the shortlist is the extract sentence, the headline and the body's first 1,500 characters. The sentence in front was measured (the claim-extraction experiment, 21 Sep: 398 wrong pairs against 542 without it, on the same pairs), but the 1,500 is production's original choice and was never varied, and on some outlets, Sport.ua among them, the first 1,500 characters are mostly menus. Compare shorter, longer and the whole body on the same labelled pairs, with the sentence in front each time.",
+   why:{set:"None; reuses the experiment's pairs.", station:"Whether the shortlist puts the right claim first more often.", system:"A better shortlist means fewer wrong joins and fewer repeats."}},
 ];
 
 const BACKLOG_THEMES = {
-  "8.8":["digest"], "9.11":["site"],
+  "8.8":["digest"], "9.11":["site"], "2.6":["feed"], "6.13":["group"],
   "0.6":["feed"], "2.2":["entity"], "3.3":["body","label"], "3.4":["body"],
   "4.26":["v8"], "4.27":["v8"], "4.28":["v8","label"], "4.29":["v8","label"], "4.17":["v8"],
   "4.9":["label"], "4.10":["label"], "4.11":["label"],
