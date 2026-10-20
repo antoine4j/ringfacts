@@ -6,7 +6,9 @@ import { notFound } from "next/navigation";
 import { Decision } from "../../../components/Decision.tsx";
 import { query } from "../../../lib/db.ts";
 import type { Params } from "../../../lib/filters.ts";
+import { nameStemsOf } from "../../../lib/fighter-names.ts";
 import { pacificTime } from "../../../lib/format.ts";
+import { nameCount, splitOnNames, type TextPiece } from "../../../lib/name-marks.ts";
 import { latestReaction } from "../../../lib/queries.ts";
 import { schemaFrom, schemaSuffix, type Schema } from "../../../lib/schema.ts";
 import { AnswerRows, GroupingRows, type AnswerRow, type DecisionRow, type GroupingRow } from "./stations.tsx";
@@ -111,11 +113,16 @@ export default async function ReadingPage({ params, searchParams }: { params: Pr
  * @returns The section.
  */
 function ArticleSection({ reading, siblings, schema }: { reading: ReadingDetail; siblings: { id: string; fighter: string }[]; schema: Schema }) {
+  // The fighter's name, marked where the pipeline would find it.
+  const stems = nameStemsOf(reading.fighter);
+  const bodyPieces = splitOnNames(reading.body ?? "", stems);
+  const bodyNames = nameCount(bodyPieces);
+
   return (
     <section>
       <h2>
         <a href={reading.url} target="_blank" rel="noreferrer">
-          {reading.headline} ↗
+          <Marked pieces={splitOnNames(reading.headline, stems)} /> ↗
         </a>
       </h2>
       <dl className="kv">
@@ -153,11 +160,42 @@ function ArticleSection({ reading, siblings, schema }: { reading: ReadingDetail;
       </dl>
       {reading.body && (
         <details>
-          <summary className="small">the article body</summary>
-          <pre className="json pre">{reading.body}</pre>
+          <summary className="small">
+            the article body
+            {stems.length > 0 && (
+              <span className={bodyNames === 0 ? "name-count none" : "name-count"}>
+                {" "}· {stems.join(" / ")} found {bodyNames} time{bodyNames === 1 ? "" : "s"}
+              </span>
+            )}
+          </summary>
+          <pre className="json pre">
+            <Marked pieces={bodyPieces} />
+          </pre>
         </details>
       )}
     </section>
+  );
+}
+
+/**
+ * Text with the fighter's name highlighted.
+ *
+ * @param props.pieces  The text, split by splitOnNames.
+ * @returns The text, each name in a mark.
+ */
+function Marked({ pieces }: { pieces: TextPiece[] }) {
+  return (
+    <>
+      {pieces.map((piece, index) =>
+        piece.isName ? (
+          <mark key={index} className="name-mark">
+            {piece.text}
+          </mark>
+        ) : (
+          piece.text
+        ),
+      )}
+    </>
   );
 }
 

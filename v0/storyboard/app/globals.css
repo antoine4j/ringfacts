@@ -16,6 +16,7 @@
   --digest: #8a5a00;
   --drop: #7d838e;
   --warn-bg: #fcefd9;
+  --name-mark: #fbe38e;
   --warn-text: #8a4a00;
   --bad-bg: #fde7e7;
   --bad-text: #a11b1b;
@@ -45,6 +46,7 @@
     --digest: #f0a54a;
     --drop: #8d939e;
     --warn-bg: #3a2a12;
+  --name-mark: #5c4a14;
     --warn-text: #f0c27a;
     --bad-bg: #3f1d1d;
     --bad-text: #ff9b9b;
@@ -67,6 +69,7 @@
   --digest: #f0a54a;
   --drop: #8d939e;
   --warn-bg: #3a2a12;
+  --name-mark: #5c4a14;
   --warn-text: #f0c27a;
   --bad-bg: #3f1d1d;
   --bad-text: #ff9b9b;
@@ -119,6 +122,10 @@ h3 { font-size: 14px; font-weight: 600; margin: 16px 0 6px; }
 .small { font-size: 12.5px; }
 .nowrap { white-space: nowrap; }
 .pre { white-space: pre-wrap; }
+/* The tracked fighter's name in an article, as a highlighter pen marks it; the body's count beside its toggle. */
+.name-mark { background: var(--name-mark); color: inherit; border-radius: 2px; padding: 0 1px; }
+.name-count { color: var(--muted); }
+.name-count.none { color: var(--warn-text); }
 .num, td.num { font-family: var(--mono); font-variant-numeric: tabular-nums; }
 th.num { font-variant-numeric: tabular-nums; }
 
