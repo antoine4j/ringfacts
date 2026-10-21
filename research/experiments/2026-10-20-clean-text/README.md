@@ -170,6 +170,18 @@ fitted to the saved texts, furniture included (it was tuned over 18
 passes on them, and its test score of 5 Oct already sat below training).
 Small: 24 answers on 124 articles; a lean, not a proven cause.
 
+**Extract spot check** (`extracts-page.mjs`, a private page whose
+verdicts saved with it; 21 Oct). Ten training-side articles whose extract
+changed with clean text but not when the saved text was sent again. The
+maintainer judged the clean extract better in 1, the saved one in 4, the
+same in meaning in 5. The changes sit in the prompt's loosest fields: the
+opponent ("the other fighter involved", not saying in what) in 5, a
+dropped event name in 2, and reaction against new remark (the prompt has
+no test and no example for a reaction) in 3. One (#1002) differs from its
+saved text only by HTML codes, so its change is the model's own wobble,
+which one re-run does not fully show. Hand-cleaned texts keep the saved
+text's HTML codes (63 of 136); only Readability's texts drop them.
+
 **Conclusion.** Clean text changes about three times as many answers as
 sending the same text twice does (41 articles against 13), but almost
 none of what the pipeline decides: 6 tier crossings against 3 from noise

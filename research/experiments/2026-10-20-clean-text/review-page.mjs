@@ -9,6 +9,7 @@
 // History: docs/decisions.md#article-text-out-of-git
 
 import { readFileSync, writeFileSync } from "node:fs";
+import { fileURLToPath } from "node:url";
 import { letters, decoded } from "./text.mjs";
 import { SUBJECTS } from "../../../watchlist.js";
 
@@ -154,7 +155,7 @@ function sentenceBreaks(run, breakNow) {
  * @param {string|null} cleanText
  * @returns {string}
  */
-function savedHtml(body, cleanText) {
+export function savedHtml(body, cleanText) {
   const savedWords = wordsOf(body);
   const html = markedWords(savedWords, sharedWords(savedWords, wordsOf(cleanText ?? "")), "removed", new Set());
 
@@ -171,7 +172,7 @@ function savedHtml(body, cleanText) {
  * @param {string} body  The saved text.
  * @returns {string}
  */
-function cleanHtml(text, paragraphs, body) {
+export function cleanHtml(text, paragraphs, body) {
   if (!text) return "<i>nothing usable</i>";
   const blocks = paragraphs?.length ? paragraphs : [text];
   const cleanWords = [];
@@ -191,7 +192,7 @@ function cleanHtml(text, paragraphs, body) {
  * @param {string} subject  The fighter's name.
  * @returns {string}
  */
-function withNames(html, subject) {
+export function withNames(html, subject) {
   const stems = SUBJECTS.find((entry) => entry.name === subject).matchNames;
   const pattern = new RegExp(`[\\p{L}'’]*(?:${stems.join("|")})[\\p{L}'’]*`, "giu");
   return html.replace(pattern, (word) => `<mark class="name">${word}</mark>`);
@@ -362,4 +363,5 @@ document.getElementById("copy").onclick = async () => {
   console.log(`wrote ${OUT.pathname}`);
 }
 
-main();
+// Run only when called as a script, not when the extract page borrows the text rendering.
+if (process.argv[1] === fileURLToPath(import.meta.url)) main();
