@@ -159,15 +159,16 @@ to neither. Split by who gave the label:
 
 | Labelled by | Wrong → right | Right → wrong |
 |---|---|---|
-| The maintainer, reading the original page (97 articles) | 5 | 15 |
+| The maintainer, who checks against the outlet's own page (124 articles) | 6 | 18 |
 | Two blind readers, reading the saved text (176) | 15 | 20 |
-| The maintainer, from a summary (27) | 1 | 3 |
 
-Where the key is independent of the furniture, clean text breaks three
-answers for each one it fixes. That leans toward v7.7 being fitted to the
-saved texts, furniture included (it was tuned over 18 passes on them, and
-its test score of 5 Oct already sat below training). Small: 20 answers on
-97 articles; a lean, not a proven cause.
+The labels file marks the maintainer's 124 as opened (97) or confirmed
+from a summary (27), but that split is not reliable, so they are counted
+together. Where the key is independent of the furniture, clean text
+breaks three answers for each one it fixes. That leans toward v7.7 being
+fitted to the saved texts, furniture included (it was tuned over 18
+passes on them, and its test score of 5 Oct already sat below training).
+Small: 24 answers on 124 articles; a lean, not a proven cause.
 
 **Conclusion.** Clean text changes about three times as many answers as
 sending the same text twice does (41 articles against 13), but almost
