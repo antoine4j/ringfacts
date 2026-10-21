@@ -492,6 +492,27 @@ Rules for adding to it:
 - **Does not say:** that a window works for embeddings — RF used no
   embeddings.
 
+### Clean text moves the classifier's answers, not the pipeline's decisions
+`corpus` · `measured` · *FB 2026-10-21*
+- **Evidence:** all 300 golden articles through v0's classifier (v7.7)
+  and extractor (p4), once on the saved text and once on a clean one
+  (Readability, or the saved text with its furniture cut by hand), on the
+  260 whose text differs. Beside the same saved text sent twice on those
+  260: articles with an answer changed **41 against 13**, answers **68 of
+  2,340 against 27**, extracts (kind, actor, opponent, event, date) **91
+  against 69**, but tier crossings **6 against 3** and no score outside
+  the saved text's own run-to-run spread (all nine right on training 116
+  clean, 115 and 110 saved). Readability alone, where code accepted it
+  (97 articles), crossed no tier. Three of the four training crossings
+  were hand-cleaned texts gaining a "next fight" once the furniture
+  around it was gone. `research/experiments/2026-10-20-clean-text/`.
+- **Does not say:** that furniture never matters. The 3 Oct test on JEV
+  (above) found the same at the answer level on 155 articles; this
+  carries it to the tier. One fight week; an article that names the
+  fighter only in a link is still in the set as labelled. **Would
+  overturn it:** a later week where clean text moves tiers beyond the
+  noise floor.
+
 ### Speculation outnumbers events by two orders of magnitude
 `domain` · `measured` · *RF-L12; FB agrees, 2026-09-18*
 - **Evidence (RF):** 34 days, three fighters: roughly one booking, one result,

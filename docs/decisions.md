@@ -927,6 +927,12 @@ stays closed, and v7.7 is not to be sent it again. What changes next is
 judged on training and validation as before, and these test numbers are
 the line any later version is compared against once.
 
+**Lifted once, for 3.11 (2026-10-21):** v7.7 was sent the 105 test articles
+again, twice on the saved text and once on the clean text, to count whether
+clean text moves the decisions (research/experiments/2026-10-20-clean-text).
+Nothing was tuned on them and only counts were reported, never which test
+articles changed; the test score above stays the line.
+
 **Considered and rejected:** a pass mark on all nine right (it measures
 description, not posting); a mark per question (nine lines to tune
 against, most of them irrelevant to the goals); counting G1 by article

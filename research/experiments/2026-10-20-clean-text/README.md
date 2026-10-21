@@ -77,3 +77,88 @@ in. Neither changed more than two sources.
 **Cost: $0.** The texts, pages and review page stay off the repository
 (docs/decisions.md#article-text-out-of-git): everything under `data/` is
 git-ignored.
+
+## Step 2 (3.11): does clean text move the decisions
+
+**Method.** v0's own station code, imported unchanged (`run.ts`):
+classifier v7.7 (`jev-1.13.0`), claim extractor p4 on Qwen3.8 Flash
+through OpenRouter, and the decider with the live settings (v1, read once
+in a read-only transaction by `read-settings.mjs`; identical to the
+starting map). The experiments' test keys from `research/bench/.env.bench`,
+never live v0's. Runs, each stored per article in `data/runs/`:
+
+- `saved-a`: all 300 on the saved text;
+- `saved-b`: all 300 on the saved text again, the **noise floor**;
+- `clean-a`: the 260 articles whose clean text differs from the saved one
+  (35 are identical; the 5 with nothing usable keep their saved answers).
+
+A **production-like** text needs no run of its own: where code alone
+accepted Readability (106 articles; 97 differ from the saved text), its
+text is the clean text, so it takes `clean-a` there and `saved-a`
+elsewhere. `compare.ts` counts and scores; `results.json` holds every
+number, ids only, and none for the test side's articles.
+
+**What counts as a change.** A classifier answer changes when any of the
+nine differs. An extract changes when its kind, actor, opponent, event or
+date differs (trimmed, case ignored); the claim's wording is counted
+apart, since it is re-worded even on identical input. A tier crossing is
+a move between post, digest and drop under the live settings. A career
+fact is "what new fact" = result, next fight or health.
+
+**Result, on the 260 articles whose text changed** (noise floor = the same
+saved text sent twice, on the same 260):
+
+| | Noise floor | Saved vs clean |
+|---|---|---|
+| Articles with any of the nine answers changed | 13 (5%) | **41 (16%)** |
+| Answers changed, of 2,340 | 27 (1.2%) | **68 (2.9%)** |
+| Extracts changed (kind, actor, opponent, event, date) | 69 (27%) | **91 (35%)** |
+| Claims re-worded | 144 (55%) | 174 (67%) |
+| Tier crossings (post / digest / drop) | 3 | **6 (2.3%)** |
+| Career fact lost / invented | 3 / 1 | 1 / 5 |
+
+Test side, counts only (93 of the 260): 18 articles changed an answer
+(noise 7), 26 answers (noise 19), 25 extracts (noise 19), 2 tier
+crossings (noise 2), 0 career facts lost and 1 invented (noise 2 and 0).
+
+On the training side the four tier crossings are one false "post now"
+removed (#494, Readability) and three added (#599, #619, #690, all
+hand-cleaned: a next fight read into a text whose surrounding furniture
+was cut); #690 also crosses a tier in the noise run.
+
+**Production-like, on the 97 articles where it differs:** 9 articles
+changed an answer (noise 4), 15 answers of 873 (noise 6), 32 extracts
+(noise 18), **0 tier crossings** (noise 0), no career fact lost or
+invented.
+
+**Scores against the labels** (`golden/labels.json`, coin flips
+accepted), all 300 articles:
+
+| | Saved | Saved, sent again | Clean | Production-like |
+|---|---|---|---|---|
+| All nine right, training (195) | 115 | 110 | 116 | 113 |
+| All nine right, test (105) | 41 | 40 | 41 | 41 |
+| Answers right, training (of 1,755) | 1,606 | 1,595 | 1,599 | 1,598 |
+| Answers right, test (of 945) | 822 | 828 | 812 | 818 |
+| Career facts recognised, training (of 46) | 33 | 32 | 34 | 33 |
+| Career facts recognised, test (of 15) | 10 | 10 | 10 | 10 |
+| Career false alarms, training / test | 7 / 6 | 8 / 4 | 9 / 7 | 7 / 6 |
+
+**Conclusion.** Clean text changes about three times as many answers as
+sending the same text twice does (41 articles against 13), but almost
+none of what the pipeline decides: 6 tier crossings against 3 from noise
+alone, and no score moves further than the saved text moves against
+itself (all nine right 115 against 110 on training). The production-like
+text crosses no tier at all. The furniture is noise to the classifier,
+not a cause of its decisions; the extractor's detail fields move more
+(91 against 69).
+
+**Does not say.** That furniture never matters: #948-style articles,
+which name the fighter only in a link, stay in the set as labelled; the
+sample is one fight week. The test side was sent to v7.7 again for this
+count, with the rule lifted (docs/decisions.md#classifier-pass-marks):
+nothing was tuned on it and only counts are reported.
+
+**Cost: $0.44 measured** for 860 article calls (JEV $0.21 at its
+published $0.042 per million input tokens, 4.97 million tokens;
+OpenRouter $0.23 as billed per call). Run 21 October 2026.

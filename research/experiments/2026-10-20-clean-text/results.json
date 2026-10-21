@@ -1,0 +1,565 @@
+{
+ "settings_version": 1,
+ "classifier": "v7.7",
+ "noise_floor": {
+  "training": {
+   "articles": 195,
+   "answers": 1755,
+   "articles_with_an_answer_change": 7,
+   "answers_changed": 12,
+   "answers_changed_per_question": {
+    "centrality": 2,
+    "act": 2,
+    "fact": 3,
+    "firmness": 2,
+    "reports_his_health": 1,
+    "reports_his_next_fight": 1,
+    "he_speaks": 1
+   },
+   "extracts_changed": 58,
+   "extract_fields_changed": {
+    "opponent": 30,
+    "kind": 8,
+    "date": 20,
+    "actor": 12,
+    "event": 8
+   },
+   "claims_reworded": 107,
+   "tier_crossings": 1,
+   "tier_moves": {
+    "digest → post": 1
+   },
+   "career_fact_lost": 1,
+   "career_fact_invented": 1,
+   "articles_that_crossed_a_tier_or_moved_a_career_fact": [
+    "368",
+    "690"
+   ]
+  },
+  "test": {
+   "articles": 105,
+   "answers": 945,
+   "articles_with_an_answer_change": 8,
+   "answers_changed": 20,
+   "answers_changed_per_question": {
+    "source": 3,
+    "fact": 4,
+    "firmness": 5,
+    "reports_his_next_fight": 1,
+    "act": 3,
+    "centrality": 2,
+    "reports_his_result": 2
+   },
+   "extracts_changed": 22,
+   "extract_fields_changed": {
+    "opponent": 10,
+    "event": 9,
+    "date": 15,
+    "actor": 4,
+    "kind": 3
+   },
+   "claims_reworded": 55,
+   "tier_crossings": 2,
+   "tier_moves": {
+    "post → digest": 2
+   },
+   "career_fact_lost": 2,
+   "career_fact_invented": 0
+  },
+  "all": {
+   "articles": 300,
+   "answers": 2700,
+   "articles_with_an_answer_change": 15,
+   "answers_changed": 32,
+   "answers_changed_per_question": {
+    "centrality": 4,
+    "source": 3,
+    "fact": 7,
+    "firmness": 7,
+    "reports_his_next_fight": 2,
+    "act": 5,
+    "reports_his_health": 1,
+    "reports_his_result": 2,
+    "he_speaks": 1
+   },
+   "extracts_changed": 80,
+   "extract_fields_changed": {
+    "opponent": 40,
+    "event": 17,
+    "kind": 11,
+    "date": 35,
+    "actor": 16
+   },
+   "claims_reworded": 162,
+   "tier_crossings": 3,
+   "tier_moves": {
+    "post → digest": 2,
+    "digest → post": 1
+   },
+   "career_fact_lost": 3,
+   "career_fact_invented": 1
+  }
+ },
+ "noise_floor_on_clean_articles": {
+  "training": {
+   "articles": 167,
+   "answers": 1503,
+   "articles_with_an_answer_change": 6,
+   "answers_changed": 8,
+   "answers_changed_per_question": {
+    "centrality": 2,
+    "fact": 2,
+    "act": 1,
+    "firmness": 1,
+    "reports_his_next_fight": 1,
+    "he_speaks": 1
+   },
+   "extracts_changed": 50,
+   "extract_fields_changed": {
+    "opponent": 25,
+    "kind": 8,
+    "date": 18,
+    "actor": 9,
+    "event": 8
+   },
+   "claims_reworded": 93,
+   "tier_crossings": 1,
+   "tier_moves": {
+    "digest → post": 1
+   },
+   "career_fact_lost": 1,
+   "career_fact_invented": 1
+  },
+  "test": {
+   "articles": 93,
+   "answers": 837,
+   "articles_with_an_answer_change": 7,
+   "answers_changed": 19,
+   "answers_changed_per_question": {
+    "source": 3,
+    "fact": 4,
+    "firmness": 5,
+    "reports_his_next_fight": 1,
+    "act": 3,
+    "reports_his_result": 2,
+    "centrality": 1
+   },
+   "extracts_changed": 19,
+   "extract_fields_changed": {
+    "opponent": 7,
+    "event": 7,
+    "date": 12,
+    "actor": 3,
+    "kind": 1
+   },
+   "claims_reworded": 51,
+   "tier_crossings": 2,
+   "tier_moves": {
+    "post → digest": 2
+   },
+   "career_fact_lost": 2,
+   "career_fact_invented": 0
+  },
+  "all": {
+   "articles": 260,
+   "answers": 2340,
+   "articles_with_an_answer_change": 13,
+   "answers_changed": 27,
+   "answers_changed_per_question": {
+    "centrality": 3,
+    "source": 3,
+    "fact": 6,
+    "firmness": 6,
+    "reports_his_next_fight": 2,
+    "act": 4,
+    "reports_his_result": 2,
+    "he_speaks": 1
+   },
+   "extracts_changed": 69,
+   "extract_fields_changed": {
+    "opponent": 32,
+    "event": 15,
+    "kind": 9,
+    "date": 30,
+    "actor": 12
+   },
+   "claims_reworded": 144,
+   "tier_crossings": 3,
+   "tier_moves": {
+    "post → digest": 2,
+    "digest → post": 1
+   },
+   "career_fact_lost": 3,
+   "career_fact_invented": 1
+  }
+ },
+ "noise_floor_on_production_articles": {
+  "all": {
+   "articles": 97,
+   "answers": 873,
+   "articles_with_an_answer_change": 4,
+   "answers_changed": 6,
+   "answers_changed_per_question": {
+    "centrality": 1,
+    "act": 2,
+    "fact": 1,
+    "firmness": 2
+   },
+   "extracts_changed": 18,
+   "extract_fields_changed": {
+    "opponent": 11,
+    "kind": 4,
+    "actor": 4,
+    "date": 6,
+    "event": 2
+   },
+   "claims_reworded": 53,
+   "tier_crossings": 0,
+   "tier_moves": {},
+   "career_fact_lost": 0,
+   "career_fact_invented": 0
+  }
+ },
+ "saved_vs_clean": {
+  "training": {
+   "articles": 167,
+   "answers": 1503,
+   "articles_with_an_answer_change": 23,
+   "answers_changed": 42,
+   "answers_changed_per_question": {
+    "centrality": 8,
+    "firmness": 9,
+    "source": 4,
+    "act": 6,
+    "fact": 7,
+    "reports_his_result": 1,
+    "reports_his_next_fight": 6,
+    "reports_his_health": 1
+   },
+   "extracts_changed": 66,
+   "extract_fields_changed": {
+    "date": 33,
+    "opponent": 31,
+    "kind": 10,
+    "event": 8,
+    "actor": 7
+   },
+   "claims_reworded": 109,
+   "tier_crossings": 4,
+   "tier_moves": {
+    "post → digest": 1,
+    "digest → post": 3
+   },
+   "career_fact_lost": 1,
+   "career_fact_invented": 4,
+   "articles_that_crossed_a_tier_or_moved_a_career_fact": [
+    "494",
+    "599",
+    "619",
+    "690",
+    "838"
+   ]
+  },
+  "test": {
+   "articles": 93,
+   "answers": 837,
+   "articles_with_an_answer_change": 18,
+   "answers_changed": 26,
+   "answers_changed_per_question": {
+    "centrality": 4,
+    "source": 5,
+    "firmness": 7,
+    "act": 5,
+    "fact": 3,
+    "reports_his_result": 1,
+    "he_speaks": 1
+   },
+   "extracts_changed": 25,
+   "extract_fields_changed": {
+    "actor": 10,
+    "opponent": 8,
+    "event": 4,
+    "date": 15,
+    "kind": 5
+   },
+   "claims_reworded": 65,
+   "tier_crossings": 2,
+   "tier_moves": {
+    "digest → post": 1,
+    "drop → digest": 1
+   },
+   "career_fact_lost": 0,
+   "career_fact_invented": 1
+  },
+  "all": {
+   "articles": 260,
+   "answers": 2340,
+   "articles_with_an_answer_change": 41,
+   "answers_changed": 68,
+   "answers_changed_per_question": {
+    "centrality": 12,
+    "source": 9,
+    "firmness": 16,
+    "act": 11,
+    "fact": 10,
+    "reports_his_result": 2,
+    "reports_his_next_fight": 6,
+    "reports_his_health": 1,
+    "he_speaks": 1
+   },
+   "extracts_changed": 91,
+   "extract_fields_changed": {
+    "date": 48,
+    "actor": 17,
+    "opponent": 39,
+    "kind": 15,
+    "event": 12
+   },
+   "claims_reworded": 174,
+   "tier_crossings": 6,
+   "tier_moves": {
+    "digest → post": 4,
+    "post → digest": 1,
+    "drop → digest": 1
+   },
+   "career_fact_lost": 1,
+   "career_fact_invented": 5
+  }
+ },
+ "saved_vs_production": {
+  "training": {
+   "articles": 64,
+   "answers": 576,
+   "articles_with_an_answer_change": 5,
+   "answers_changed": 9,
+   "answers_changed_per_question": {
+    "centrality": 3,
+    "firmness": 2,
+    "reports_his_next_fight": 1,
+    "reports_his_health": 1,
+    "act": 1,
+    "fact": 1
+   },
+   "extracts_changed": 25,
+   "extract_fields_changed": {
+    "date": 12,
+    "kind": 4,
+    "opponent": 11,
+    "event": 1
+   },
+   "claims_reworded": 41,
+   "tier_crossings": 0,
+   "tier_moves": {},
+   "career_fact_lost": 0,
+   "career_fact_invented": 0,
+   "articles_that_crossed_a_tier_or_moved_a_career_fact": []
+  },
+  "test": {
+   "articles": 33,
+   "answers": 297,
+   "articles_with_an_answer_change": 4,
+   "answers_changed": 6,
+   "answers_changed_per_question": {
+    "act": 2,
+    "fact": 1,
+    "firmness": 2,
+    "source": 1
+   },
+   "extracts_changed": 7,
+   "extract_fields_changed": {
+    "actor": 5,
+    "kind": 2,
+    "date": 3,
+    "opponent": 1,
+    "event": 1
+   },
+   "claims_reworded": 26,
+   "tier_crossings": 0,
+   "tier_moves": {},
+   "career_fact_lost": 0,
+   "career_fact_invented": 0
+  },
+  "all": {
+   "articles": 97,
+   "answers": 873,
+   "articles_with_an_answer_change": 9,
+   "answers_changed": 15,
+   "answers_changed_per_question": {
+    "centrality": 3,
+    "act": 3,
+    "fact": 2,
+    "firmness": 4,
+    "source": 1,
+    "reports_his_next_fight": 1,
+    "reports_his_health": 1
+   },
+   "extracts_changed": 32,
+   "extract_fields_changed": {
+    "date": 15,
+    "actor": 5,
+    "kind": 6,
+    "opponent": 12,
+    "event": 2
+   },
+   "claims_reworded": 67,
+   "tier_crossings": 0,
+   "tier_moves": {},
+   "career_fact_lost": 0,
+   "career_fact_invented": 0
+  }
+ },
+ "scores": {
+  "saved": {
+   "training": {
+    "articles": 195,
+    "all_nine_right": 115,
+    "answers_right": "1606 of 1755",
+    "right_per_question": {
+     "centrality": 173,
+     "source": 181,
+     "act": 160,
+     "fact": 168,
+     "firmness": 170,
+     "reports_his_result": 194,
+     "reports_his_next_fight": 184,
+     "reports_his_health": 182,
+     "he_speaks": 194
+    },
+    "career_facts_recognised": "33 of 46",
+    "career_false_alarms": 7
+   },
+   "test": {
+    "articles": 105,
+    "all_nine_right": 41,
+    "answers_right": "822 of 945",
+    "right_per_question": {
+     "centrality": 81,
+     "source": 87,
+     "act": 84,
+     "fact": 88,
+     "firmness": 84,
+     "reports_his_result": 102,
+     "reports_his_next_fight": 97,
+     "reports_his_health": 99,
+     "he_speaks": 100
+    },
+    "career_facts_recognised": "10 of 15",
+    "career_false_alarms": 6
+   }
+  },
+  "saved_again": {
+   "training": {
+    "articles": 195,
+    "all_nine_right": 110,
+    "answers_right": "1595 of 1755",
+    "right_per_question": {
+     "centrality": 171,
+     "source": 181,
+     "act": 158,
+     "fact": 165,
+     "firmness": 168,
+     "reports_his_result": 194,
+     "reports_his_next_fight": 183,
+     "reports_his_health": 182,
+     "he_speaks": 193
+    },
+    "career_facts_recognised": "32 of 46",
+    "career_false_alarms": 8
+   },
+   "test": {
+    "articles": 105,
+    "all_nine_right": 40,
+    "answers_right": "828 of 945",
+    "right_per_question": {
+     "centrality": 81,
+     "source": 88,
+     "act": 86,
+     "fact": 89,
+     "firmness": 85,
+     "reports_his_result": 104,
+     "reports_his_next_fight": 96,
+     "reports_his_health": 99,
+     "he_speaks": 100
+    },
+    "career_facts_recognised": "10 of 15",
+    "career_false_alarms": 4
+   }
+  },
+  "clean": {
+   "training": {
+    "articles": 195,
+    "all_nine_right": 116,
+    "answers_right": "1599 of 1755",
+    "right_per_question": {
+     "centrality": 174,
+     "source": 178,
+     "act": 164,
+     "fact": 166,
+     "firmness": 167,
+     "reports_his_result": 193,
+     "reports_his_next_fight": 182,
+     "reports_his_health": 181,
+     "he_speaks": 194
+    },
+    "career_facts_recognised": "34 of 46",
+    "career_false_alarms": 9
+   },
+   "test": {
+    "articles": 105,
+    "all_nine_right": 41,
+    "answers_right": "812 of 945",
+    "right_per_question": {
+     "centrality": 83,
+     "source": 86,
+     "act": 82,
+     "fact": 85,
+     "firmness": 78,
+     "reports_his_result": 101,
+     "reports_his_next_fight": 97,
+     "reports_his_health": 99,
+     "he_speaks": 101
+    },
+    "career_facts_recognised": "10 of 15",
+    "career_false_alarms": 7
+   }
+  },
+  "production": {
+   "training": {
+    "articles": 195,
+    "all_nine_right": 113,
+    "answers_right": "1598 of 1755",
+    "right_per_question": {
+     "centrality": 171,
+     "source": 181,
+     "act": 159,
+     "fact": 167,
+     "firmness": 168,
+     "reports_his_result": 194,
+     "reports_his_next_fight": 183,
+     "reports_his_health": 181,
+     "he_speaks": 194
+    },
+    "career_facts_recognised": "33 of 46",
+    "career_false_alarms": 7
+   },
+   "test": {
+    "articles": 105,
+    "all_nine_right": 41,
+    "answers_right": "818 of 945",
+    "right_per_question": {
+     "centrality": 81,
+     "source": 86,
+     "act": 83,
+     "fact": 87,
+     "firmness": 83,
+     "reports_his_result": 102,
+     "reports_his_next_fight": 97,
+     "reports_his_health": 99,
+     "he_speaks": 100
+    },
+    "career_facts_recognised": "10 of 15",
+    "career_false_alarms": 6
+   }
+  }
+ }
+}
