@@ -74,7 +74,7 @@ a{color:var(--accent)}
 .themes li:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
 .themes li[aria-pressed="true"]{border:2px solid var(--accent);padding:9px 11px;background:var(--accentbg)}
 .themes li.unranked{border-style:dashed}
-.themes .rk{grid-row:span 4;font-family:var(--display);font-size:30px;line-height:1;color:var(--red)}
+.themes .rk{grid-row:span 5;font-family:var(--display);font-size:30px;line-height:1;color:var(--red)}
 .themes li.unranked .rk{color:var(--dim)}
 .themes li.finished{background:var(--donebg);border-color:var(--done)}
 .themes li.finished .rk{color:var(--done)}
@@ -84,6 +84,8 @@ a{color:var(--accent)}
 .themes .cnt{font:500 12px var(--mono);color:var(--done);line-height:1.4}
 .themes .cnt .bl{color:var(--decide)}
 .themes .cnt .none{color:var(--dim)}
+.themes .goal{grid-column:2;font-size:13.5px;line-height:1.4}
+.themes .goal b{font-weight:600}
 .themes .note{grid-column:2;font-size:13px;color:var(--dim);line-height:1.35}
 .hlnote{position:sticky;top:calc(env(safe-area-inset-top, 0px) + 8px);z-index:3;margin:0;justify-self:start;background:var(--accent);color:var(--panel);border-radius:999px;padding:6px 8px 6px 14px;font-size:14px;display:flex;gap:10px;align-items:center}
 /* hidden must win over each element's own display: claude.ai adds this rule to artifacts, a plain browser does not */
@@ -220,30 +222,43 @@ footer{font-size:13px;color:var(--dim);max-width:100ch}
 // One place to edit: the themes, the stations' tasks, then the backlog's theme chips.
 const THEMES = [
   {id:"repo", rank:1, name:"Repo, README and backlog", short:"README and backlog", s:"critical", l:"none",
+   goal:"A stranger trusts the project after one read, because it says plainly what works, what does not, and how we know.",
    note:"Visitors read the repo today. All of it is done, the roadmap's wording last (0.16, 9 Oct)."},
   {id:"score", rank:2, name:"Precision scoreboard", short:"scoreboard", s:"critical", l:"the launch bar's dashboard",
+   goal:"\"How good is it?\" has an honest answer anyone can check, so no claim about quality rests on our word.",
    note:"Built 12 and 13 Oct: the scores page, its strip on the claims list, the launch bar and the tier mark (10.5 to 10.7). Done. The count of whether clean text moves the decisions (3.11) was listed here until 20 Oct; it decides the extractor's place, so it moved to that theme. It came second because it is the page that makes the showcase credible, and it could go up with the numbers that existed. Each rate on the page with a date and a method; that it is there matters more than that it is high."},
   {id:"feed", rank:3, name:"Self-feeding, then retire production", short:"self-feeding", s:"critical", l:"critical",
+   goal:"v0 stands on its own, and the news it misses because it could not read the article shrinks, above all for Amosov and Donchenko (G1).",
    note:"v0 reads its articles from production's table, so production cannot stop until v0 runs stations 1 to 3 itself. The free text fixes are built inside it: 72% of Amosov's readings and 42% of Donchenko's have no text, so the classifier never sees them (G1)."},
   {id:"body", rank:4, name:"The extractor station", short:"extractor", s:"a blog post", l:"high",
-   note:"First a clean text for every golden article (3.12) and a count of how much it moves the decisions (3.11); then which text wins, the unusable texts marked, the winner tuned and scored. May swap places with the digest on that count."},
+   goal:"The stations judge the article itself, never the page around it, so a link list can neither make news nor hide it (G1, G2).",
+   note:"A clean text for every golden article (3.12) and the count of what it moves (3.11) are done, 21 Oct: it barely moves the decisions, so the theme keeps its place behind self-feeding. Readability won the reader question (3.9) and goes into v0's own fetch (3.6); then the unusable texts marked, its checks tuned, and the classifier and extractor re-tuned on the clean text (3.13)."},
   {id:"digest", rank:5, name:"Digest tuning", short:"digest", s:"medium", l:"critical",
+   goal:"The weekly digest is the thing the friends actually read: short, the important first, nothing they would skip.",
    note:"About 115 Topuria tier-2 readings a week go through it; it is most of what the friends will see. The model stays DeepSeek V4 Pro unless the blind page changes the pick; a shorter digest comes from the ranking and the cap."},
   {id:"review", rank:6, name:"Review tooling", short:"review", s:"a blog post", l:"medium",
+   goal:"Reviewing stays cheap enough to keep doing, so every score stays current with what the bot does now.",
    note:"Review time is the scarce resource; this keeps the every-couple-of-days grooming fast while claims are fresh."},
   {id:"group", rank:7, name:"Grouping fixes", short:"grouping", s:"moves the scoreboard's rates", l:"medium, G3 only",
+   goal:"One story reaches the group once, and a new story is never buried inside an old one (G3, G1).",
    note:"The digest absorbs splits and the launch bar tolerates them. Measured on the golden replay before any change."},
   {id:"entity", rank:8, name:"Bout as an entity, address clean-up, fighter profile", short:"bout and address", s:"low", l:"low",
+   goal:"The bot knows which fight a story is about, so a result never joins the wrong booking and copies are caught before they cost anything.",
    note:""},
   {id:"demo", rank:9, name:"Public live demo", short:"demo", s:"high", l:"the reader site's seed",
+   goal:"Anyone can see the real bot work, end to end, without taking our word for it.",
    note:"After the switch, so it shows the real thing."},
   {id:"v8", rank:10, name:"Classifier v8", short:"classifier v8", s:"low", l:"low, until a miss",
+   goal:"No career event is ever missed because the classifier misread it (G1).",
    note:"Jumps to the top if the launch window shows a missed career event."},
   {id:"site", rank:11, name:"Reader site, then chat", short:"reader site", s:"high, later", l:"after launch",
+   goal:"The friends have a place to read and ask, not only a feed of posts.",
    note:"The demo grows into the site. Nothing on the stations yet."},
   {id:"launch", rank:null, name:"The launch", short:"launch", s:"", l:"the goal",
+   goal:"The friends get a bot they would miss if it stopped.",
    note:"Not in the order: it is where the others lead. The bar is under \"Two finish lines\"."},
   {id:"label", rank:null, name:"Golden set labelling", short:"labelling", s:"", l:"none so far",
+   goal:"The answer key keeps up with what the stations need judged.",
    note:"Label passes left open when the set froze. Backlog only; none is needed for launch yet."},
 ];
 
@@ -304,7 +319,7 @@ const STATIONS = [
   ]},
   {n:3, name:"Body extractor", role:"Gets the article text from the page.", items:[
     K("3.6",["feed"],"todo","v0 fetches the article text itself",
-      "Decode Google's wrapped address and extract the body (lib/googlenews.js and lib/extract.js today), with the fallback below built in rather than added later.",
+      "Decode Google's wrapped address and read the article with Mozilla Readability, keeping its text when the checks of 3.12 pass (same headline, shared sentences, names the fighter, not much shorter) and falling back to our extractor (lib/extract.js) and then the reader service (3.8) otherwise. Decided 2026-10-21 (3.9): new articles get clean text from the first day v0 fetches its own.",
       "The classifier reads the text; without this v0 has nothing of its own to read."),
     K("3.7",["feed"],"todo","Retry the Google News decode on the next run",
       "A decode that failed is tried again an hour later instead of giving up. New articles only.",
@@ -321,12 +336,15 @@ const STATIONS = [
     K("3.11",["body"],"done","Measure whether clean text moves the pipeline's decisions",
       "Done 2026-10-21: barely. On the 260 articles whose text changed, 41 changed a classifier answer (13 when the same saved text is sent twice), but 6 crossed a tier line (3 from noise alone) and no score moved beyond the saved text's own run-to-run spread (all nine right on training 116 clean, 115 and 110 saved). Readability alone, where code accepted it, crossed no tier. Extracts' detail fields moved more: 91 against 69. Cost $0.44. research/experiments/2026-10-20-clean-text/README.md. Added 2026-10-09. The question is not which extractor, but whether the furniture in a saved text (site menus, link lists, captions, other stories on the page) changes what the pipeline decides. Waits on 3.12, which builds the clean texts. Run the classifier and the claim extractor over the golden articles twice, with the same prompts: once on the text as v0 saved it, once on 3.12's clean text. Count two things: how many of the nine answers change, and how many of those changes cross a tier line, a career fact lost or invented; then score both runs against the labels. All 300 articles are run, since nothing is tuned here; on the test side only the counts are reported, never which articles changed, so the test set stays unseen for the next classifier version. Model calls on the experiments' test keys; the cost is measured, not estimated.",
       "It settles the extractor station's place: a small count keeps today's extractor and leaves 3.9 and 3.4 where they are; a large one makes them G1 work and moves them up beside self-feeding."),
-    K("3.9",["body"],"waits","Decide which text wins when two readers both read a page",
-      "Our extractor beside Mozilla Readability on the same pages: menus, captions, ads, and whether the article is complete. Question 1 of the intake design (docs/design/intake.excalidraw); the review page stays on the laptop because it holds the outlets' text (research/experiments/2026-10-05-body-fetch-spike/bodies/review-1-extractor-vs-readability.html). Since 2026-10-09 the decision rests on 3.11's count rather than on reading the two texts side by side: the review page is for the pages where the two runs disagree.",
+    K("3.9",["body"],"done","Decide which text wins when two readers both read a page",
+      "Decided 2026-10-21: Readability first, our extractor as the fallback, built into v0's own fetch (3.6). 3.11's count showed Readability's text costs nothing in decisions (no tier crossed on the 97 articles where code accepted it), and cleaner text is the better base for every station after it. Before that: our extractor beside Mozilla Readability on the same pages: menus, captions, ads, and whether the article is complete. Question 1 of the intake design (docs/design/intake.excalidraw); the review page stays on the laptop because it holds the outlets' text (research/experiments/2026-10-05-body-fetch-spike/bodies/review-1-extractor-vs-readability.html). Since 2026-10-09 the decision rests on 3.11's count rather than on reading the two texts side by side: the review page is for the pages where the two runs disagree.",
       "The stations read whatever text they are given; a page full of menus and other stories reads as other news."),
     K("3.4",["body"],"waits","Tune the extractor v0 uses, then score it on the golden set",
-      "Moved from the backlog 2026-10-09 (task 0.12); starts after 3.9, which decides whether v0 keeps our extractor or switches to Mozilla Readability, so the tuning goes to the one that wins, inside v0's own fetch (3.6). The known failures to fix (task 3.2): #655 saved styling code only; #134 the intro only; #230 cut at 10,000 characters; #937 a second, chained article never fetched; #852 lost its 'said on Instagram' line; #385 an embedded post we cannot see. Scored against 3.2's list and 3.3's marks.",
+      "Moved from the backlog 2026-10-09 (task 0.12). Since 3.9 chose Readability (2026-10-21), this tunes its checks and the fallback inside v0's own fetch (3.6), rather than our own extractor. The known failures to fix (task 3.2): #655 saved styling code only; #134 the intro only; #230 cut at 10,000 characters; #937 a second, chained article never fetched; #852 lost its 'said on Instagram' line; #385 an embedded post we cannot see. Scored against 3.2's list and 3.3's marks.",
       "Better text lifts every station after it, and only a score shows whether a fix helped."),
+    K("3.13",["body"],"waits","Re-tune the classifier and extractor on clean text",
+      "Added 2026-10-21; starts after 3.6, once v0 reads clean text itself. 3.11 found v7.7 a little worse on clean text (38 answers turned wrong against 21 turned right, the loss clearest where the maintainer checked the key against the outlet's page), which points to it being fitted to the saved texts. First fix the claim extractor's two loose spots, which the extract spot check showed carry most of its changes: define what 'opponent' is the opponent in, and give 'reaction' a test that separates it from a new remark, with an example; re-measure on the saved text, since this should cut the run-to-run wobble on any text. Then tune both stations on 3.12's clean texts: changes made on training, checked on validation, and the test set scored once only; v7.7 has been sent it three times, so that one score becomes the line.",
+      "A classifier fitted to one kind of text should be tuned again when the text changes; cleaner input only pays off once the stations are tuned to it."),
     K("3.10",["body"],"call","Decide whether the stations read headline and summary when there is no text",
       "The headline and the outlet's preview summary beside the full article: could the classifier and extractor get the news right from the headline side alone? Question 2 of the intake design; review page review-2-summary-vs-article.html, beside the first.",
       "If they can, the articles no way can read are judged on what the outlet shows instead of not at all."),
@@ -462,7 +480,7 @@ document.getElementById("themes").innerHTML = THEMES.map(t => {
   const extra = cands.length ? ` · <span class="bl">${plural(cands.length,"candidate")}</span>` : parked.length ? ` · <span class="none">${parked.length} in backlog</span>` : "";
   const imp = [t.s && `Showcase <b>${esc(t.s)}</b>`, t.l && `Launch <b>${esc(t.l)}</b>`].filter(Boolean).join(" · ");
   const ids = [...mine.map(i => i.id), ...parked.map(p => p.id)];
-  return `<li class="${[t.rank ? "" : "unranked", finished ? "finished" : ""].join(" ").trim()}" role="button" tabindex="0" aria-pressed="false" data-theme="${t.id}" data-n="${ids.length}"><span class="rk">${t.rank ?? "·"}</span><span class="t">${esc(t.name)}</span><span class="imp">${imp}</span><span class="cnt">${where}${extra}</span>${t.note ? `<span class="note">${esc(t.note)}</span>` : ""}</li>`;
+  return `<li class="${[t.rank ? "" : "unranked", finished ? "finished" : ""].join(" ").trim()}" role="button" tabindex="0" aria-pressed="false" data-theme="${t.id}" data-n="${ids.length}"><span class="rk">${t.rank ?? "·"}</span><span class="t">${esc(t.name)}</span><span class="imp">${imp}</span><span class="cnt">${where}${extra}</span>${t.goal ? `<span class="goal"><b>Goal:</b> ${esc(t.goal)}</span>` : ""}${t.note ? `<span class="note">${esc(t.note)}</span>` : ""}</li>`;
 }).join("");
 
 // One task line, the same on the board and in the backlog
