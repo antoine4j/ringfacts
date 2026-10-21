@@ -7,6 +7,14 @@ as the chat report: data / changes / proposals / next attention.
 
 ---
 
+## 2026-10-20 to 21 — Launch Map 3.12 and 3.11: clean golden text, and whether it moves v0's decisions (Anton present on and off; Opus 5.5)
+
+📊 **Data**: 300 pages fetched again (234 came back); clean text from Readability 159, hand-cleaned 136, nothing usable 5; spot check: clean better in 11 of 11. On the 260 articles whose text changed, against the same saved text sent twice: answers changed in 41 articles against 13, tier crossings 6 against 3, all nine right on training 116 clean against 115 and 110 saved; Readability alone crossed no tier. Measured spend **$0.44** (JEV $0.21, OpenRouter $0.23).
+🔧 **Changes**: research/experiments/2026-10-20-clean-text/ (scripts, record.json, results.json, README); lessons entry; decisions line lifting the "not sent the test set again" rule for 3.11 (counts only); Launch Map 3.12 and 3.11 done, republished; pages list gains the spot-check page; v0's live settings read once, read-only (v1). Private data repo synced. Nothing pushed on the public repo, deployed or posted.
+💡 **For Anton**: read the report, then push the five local commits; whether the extractor theme keeps its place now that the count is small.
+👀 **Next attention**: 3.9 can use these texts as its answer key; Readability keeps a roundup's other stories (#261), which no check catches.
+⏱ **Session**: started 2026-10-21 00:35 UTC, ended 18:55 UTC (18 h 20 min on the clock, most of it waiting on reviews); about 0.58 M tokens in this session's context, plus 1.45 M across the ten hand-cleaning helpers.
+
 ## 2026-10-06 night — Launch Map theme 1: research/ move, history recheck, README and public pages (Anton away; Opus 5.5)
 
 📊 **Data**: the move kept the same 6,046 tracked and 42,917 ignored files, path for path; 548 root tests, v0 51 + 58. History recheck: 6,516 file versions across 9 refs, against 358 local bodies, no passage of 200+ characters (bodies only in production's database not compared: that read was refused by the session's permission filter). Public pages re-read claim by claim: 10 corrections on the architecture overview, 8 on the funnel walkthrough; the test-suite overview counted 95 checks.
