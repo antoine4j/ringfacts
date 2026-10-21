@@ -144,6 +144,31 @@ accepted), all 300 articles:
 | Career facts recognised, test (of 15) | 10 | 10 | 10 | 10 |
 | Career false alarms, training / test | 7 / 6 | 8 / 4 | 9 / 7 | 7 / 6 |
 
+**Which way the changed answers moved**, against the labels, on the same
+260 articles:
+
+| | Same text twice | Clean text |
+|---|---|---|
+| Wrong → right | 9 | 21 |
+| Right → wrong | 12 | 38 |
+| Wrong → another wrong | 6 | 9 |
+
+Clean text moves an answer away from the label more often than toward
+it; of its 6 tier crossings, 2 move toward the label's tier, 3 away and 1
+to neither. Split by who gave the label:
+
+| Labelled by | Wrong → right | Right → wrong |
+|---|---|---|
+| The maintainer, reading the original page (97 articles) | 5 | 15 |
+| Two blind readers, reading the saved text (176) | 15 | 20 |
+| The maintainer, from a summary (27) | 1 | 3 |
+
+Where the key is independent of the furniture, clean text breaks three
+answers for each one it fixes. That leans toward v7.7 being fitted to the
+saved texts, furniture included (it was tuned over 18 passes on them, and
+its test score of 5 Oct already sat below training). Small: 20 answers on
+97 articles; a lean, not a proven cause.
+
 **Conclusion.** Clean text changes about three times as many answers as
 sending the same text twice does (41 articles against 13), but almost
 none of what the pipeline decides: 6 tier crossings against 3 from noise

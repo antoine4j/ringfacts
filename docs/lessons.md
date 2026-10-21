@@ -505,7 +505,13 @@ Rules for adding to it:
   clean, 115 and 110 saved). Readability alone, where code accepted it
   (97 articles), crossed no tier. Three of the four training crossings
   were hand-cleaned texts gaining a "next fight" once the furniture
-  around it was gone. `research/experiments/2026-10-20-clean-text/`.
+  around it was gone. The changed answers lean away from the key: 21
+  wrong → right and 38 right → wrong (noise 9 and 12), and on the 97
+  articles the maintainer labelled from the original page 5 against 15,
+  where the blind readers' 176, labelled from the saved text, were near
+  even (15 against 20). A lean toward v7.7 being fitted to the saved
+  texts, furniture included; small, not a proven cause.
+  `research/experiments/2026-10-20-clean-text/`.
 - **Does not say:** that furniture never matters. The 3 Oct test on JEV
   (above) found the same at the answer level on 155 articles; this
   carries it to the tier. One fight week; an article that names the
