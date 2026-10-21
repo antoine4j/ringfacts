@@ -1,0 +1,10 @@
+{
+  "name": "clean-text-experiment",
+  "private": true,
+  "type": "module",
+  "description": "Launch Map 3.12 and 3.11: a clean text per golden article, and whether it moves v0's decisions. Readability and jsdom live here, not in production's or v0's packages.",
+  "dependencies": {
+    "@mozilla/readability": "^0.6.0",
+    "jsdom": "^26.1.0"
+  }
+}

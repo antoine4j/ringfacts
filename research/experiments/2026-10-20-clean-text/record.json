@@ -1,0 +1,3867 @@
+{
+ "1": {
+  "source": "readability",
+  "checks": {
+   "headline": true,
+   "shares_sentences": true,
+   "names_fighter": true,
+   "long_enough": true
+  },
+  "reason": "Readability passed all four checks",
+  "saved_chars": 2179,
+  "clean_chars": 2475,
+  "same_as_saved": false,
+  "names_fighter": true
+ },
+ "2": {
+  "source": "hand-cleaned",
+  "checks": {
+   "headline": true,
+   "shares_sentences": false,
+   "names_fighter": false,
+   "long_enough": false
+  },
+  "reason": "Readability not used (failed: shares_sentences, names_fighter, long_enough); trailing related headline, betting license/bonus disclaimer",
+  "saved_chars": 1053,
+  "clean_chars": 618,
+  "same_as_saved": false,
+  "names_fighter": true
+ },
+ "3": {
+  "source": "nothing usable",
+  "checks": {
+   "headline": true,
+   "shares_sentences": false,
+   "names_fighter": false,
+   "long_enough": false
+  },
+  "reason": "Readability not used (failed: shares_sentences, names_fighter, long_enough); only a photo caption plus site login/newsletter/footer boilerplate; no article text",
+  "saved_chars": 2040,
+  "clean_chars": 0,
+  "same_as_saved": false,
+  "names_fighter": false
+ },
+ "4": {
+  "source": "readability",
+  "checks": {
+   "headline": true,
+   "shares_sentences": true,
+   "names_fighter": true,
+   "long_enough": true
+  },
+  "reason": "Readability passed all four checks",
+  "saved_chars": 1134,
+  "clean_chars": 1158,
+  "same_as_saved": false,
+  "names_fighter": true
+ },
+ "6": {
+  "source": "readability",
+  "checks": {
+   "headline": true,
+   "shares_sentences": true,
+   "names_fighter": true,
+   "long_enough": true
+  },
+  "reason": "Readability passed all four checks",
+  "saved_chars": 2756,
+  "clean_chars": 2744,
+  "same_as_saved": false,
+  "names_fighter": true
+ },
+ "10": {
+  "source": "hand-cleaned",
+  "checks": {
+   "headline": true,
+   "shares_sentences": false,
+   "names_fighter": false,
+   "long_enough": false
+  },
+  "reason": "Readability not used (failed: shares_sentences, names_fighter, long_enough); menu, headline repeats, ads, footer before article",
+  "saved_chars": 2729,
+  "clean_chars": 1473,
+  "same_as_saved": false,
+  "names_fighter": true
+ },
+ "13": {
+  "source": "hand-cleaned",
+  "checks": {
+   "headline": true,
+   "shares_sentences": true,
+   "names_fighter": true,
+   "long_enough": false
+  },
+  "reason": "Readability not used (failed: long_enough); photo credit, author bio, newsletter blurb at end",
+  "saved_chars": 1597,
+  "clean_chars": 1260,
+  "same_as_saved": false,
+  "names_fighter": true
+ },
+ "14": {
+  "source": "hand-cleaned",
+  "checks": {
+   "headline": true,
+   "shares_sentences": false,
+   "names_fighter": true,
+   "long_enough": false
+  },
+  "reason": "Readability not used (failed: shares_sentences, long_enough); Yahoo menu before article, HEAVY promo/footer at end",
+  "saved_chars": 3447,
+  "clean_chars": 2049,
+  "same_as_saved": false,
+  "names_fighter": true
+ },
+ "16": {
+  "source": "readability",
+  "checks": {
+   "headline": true,
+   "shares_sentences": true,
+   "names_fighter": true,
+   "long_enough": true
+  },
+  "reason": "Readability passed all four checks",
+  "saved_chars": 1145,
+  "clean_chars": 1145,
+  "same_as_saved": true,
+  "names_fighter": true
+ },
+ "17": {
+  "source": "hand-cleaned",
+  "checks": {
+   "headline": false,
+   "shares_sentences": true,
+   "names_fighter": true,
+   "long_enough": true
+  },
+  "reason": "Readability not used (failed: headline); removed mid-text link headline, embedded post credit and related-headline at end",
+  "saved_chars": 1375,
+  "clean_chars": 1157,
+  "same_as_saved": false,
+  "names_fighter": true
+ },
+ "18": {
+  "source": "hand-cleaned",
+  "checks": null,
+  "reason": "Readability not used (page not fetched (403)); menu/nav before headline, date/share bar, caption, embed stub, popular/latest news, comments, footer and betting promos",
+  "saved_chars": 8523,
+  "clean_chars": 1032,
+  "same_as_saved": false,
+  "names_fighter": true
+ },
+ "25": {
+  "source": "readability",
+  "checks": {
+   "headline": true,
+   "shares_sentences": true,
+   "names_fighter": true,
+   "long_enough": "passed on recheck"
+  },
+  "reason": "Readability passed once its length was checked against the hand-cleaned text",
+  "saved_chars": 2521,
+  "clean_chars": 2637,
+  "same_as_saved": false,
+  "names_fighter": true
+ },
+ "33": {
+  "source": "hand-cleaned",
+  "checks": {
+   "headline": true,
+   "shares_sentences": true,
+   "names_fighter": true,
+   "long_enough": false
+  },
+  "reason": "Readability not used (failed: long_enough); photo credit, author bio, newsletter box at end",
+  "saved_chars": 1597,
+  "clean_chars": 1260,
+  "same_as_saved": false,
+  "names_fighter": true
+ },
+ "34": {
+  "source": "readability",
+  "checks": {
+   "headline": true,
+   "shares_sentences": true,
+   "names_fighter": true,
+   "long_enough": "passed on recheck"
+  },
+  "reason": "Readability passed once its length was checked against the hand-cleaned text",
+  "saved_chars": 2600,
+  "clean_chars": 2635,
+  "same_as_saved": false,
+  "names_fighter": true
+ },
+ "38": {
+  "source": "hand-cleaned",
+  "checks": {
+   "headline": true,
+   "shares_sentences": true,
+   "names_fighter": false,
+   "long_enough": true
+  },
+  "reason": "Readability not used (failed: names_fighter); nothing removed",
+  "saved_chars": 2659,
+  "clean_chars": 2659,
+  "same_as_saved": true,
+  "names_fighter": false
+ },
+ "44": {
+  "source": "hand-cleaned",
+  "checks": null,
+  "reason": "Readability not used (Readability found no article); nothing removed",
+  "saved_chars": 685,
+  "clean_chars": 685,
+  "same_as_saved": true,
+  "names_fighter": true
+ },
+ "51": {
+  "source": "readability",
+  "checks": {
+   "headline": true,
+   "shares_sentences": true,
+   "names_fighter": true,
+   "long_enough": true
+  },
+  "reason": "Readability passed all four checks",
+  "saved_chars": 3148,
+  "clean_chars": 4035,
+  "same_as_saved": false,
+  "names_fighter": true
+ },
+ "55": {
+  "source": "hand-cleaned",
+  "checks": {
+   "headline": true,
+   "shares_sentences": true,
+   "names_fighter": true,
+   "long_enough": false
+  },
+  "reason": "Readability not used (failed: long_enough); Yahoo menu/ads/headline/caption/byline before, HEAVY promo and republish lines at end",
+  "saved_chars": 4990,
+  "clean_chars": 3054,
+  "same_as_saved": false,
+  "names_fighter": true
+ },
+ "60": {
+  "source": "hand-cleaned",
+  "checks": null,
+  "reason": "Readability not used (page not fetched (403)); two LATEST NEWS promo lines, photo caption",
+  "saved_chars": 2639,
+  "clean_chars": 2357,
+  "same_as_saved": false,
+  "names_fighter": false
+ },
+ "65": {
+  "source": "readability",
+  "checks": {
+   "headline": true,
+   "shares_sentences": true,
+   "names_fighter": true,
+   "long_enough": true
+  },
+  "reason": "Readability passed all four checks",
+  "saved_chars": 10000,
+  "clean_chars": 9826,
+  "same_as_saved": false,
+  "names_fighter": true
+ },
+ "71": {
+  "source": "readability",
+  "checks": {
+   "headline": true,
+   "shares_sentences": true,
+   "names_fighter": true,
+   "long_enough": true
+  },
+  "reason": "Readability passed all four checks",
+  "saved_chars": 2253,
+  "clean_chars": 2253,
+  "same_as_saved": true,
+  "names_fighter": true
+ },
+ "78": {
+  "source": "hand-cleaned",
+  "checks": {
+   "headline": true,
+   "shares_sentences": true,
+   "names_fighter": true,
+   "long_enough": false
+  },
+  "reason": "Readability not used (failed: long_enough); nothing removed",
+  "saved_chars": 2584,
+  "clean_chars": 2584,
+  "same_as_saved": true,
+  "names_fighter": true
+ },
+ "84": {
+  "source": "readability",
+  "checks": {
+   "headline": true,
+   "shares_sentences": true,
+   "names_fighter": true,
+   "long_enough": true
+  },
+  "reason": "Readability passed all four checks",
+  "saved_chars": 3406,
+  "clean_chars": 3485,
+  "same_as_saved": false,
+  "names_fighter": true
+ },
+ "90": {
+  "source": "readability",
+  "checks": {
+   "headline": true,
+   "shares_sentences": true,
+   "names_fighter": true,
+   "long_enough": true
+  },
+  "reason": "Readability passed all four checks",
+  "saved_chars": 1854,
+  "clean_chars": 1878,
+  "same_as_saved": false,
+  "names_fighter": true
+ },
+ "96": {
+  "source": "readability",
+  "checks": {
+   "headline": true,
+   "shares_sentences": true,
+   "names_fighter": true,
+   "long_enough": "passed on recheck"
+  },
+  "reason": "Readability passed once its length was checked against the hand-cleaned text",
+  "saved_chars": 2691,
+  "clean_chars": 813,
+  "same_as_saved": false,
+  "names_fighter": true
+ },
+ "97": {
+  "source": "readability",
+  "checks": {
+   "headline": true,
+   "shares_sentences": true,
+   "names_fighter": true,
+   "long_enough": true
+  },
+  "reason": "Readability passed all four checks",
+  "saved_chars": 2945,
+  "clean_chars": 3170,
+  "same_as_saved": false,
+  "names_fighter": true
+ },
+ "102": {
+  "source": "readability",
+  "checks": {
+   "headline": true,
+   "shares_sentences": true,
+   "names_fighter": true,
+   "long_enough": true
+  },
+  "reason": "Readability passed all four checks",
+  "saved_chars": 2939,
+  "clean_chars": 3226,
+  "same_as_saved": false,
+  "names_fighter": true
+ },
+ "115": {
+  "source": "readability",
+  "checks": {
+   "headline": true,
+   "shares_sentences": true,
+   "names_fighter": true,
+   "long_enough": true
+  },
+  "reason": "Readability passed all four checks",
+  "saved_chars": 2709,
+  "clean_chars": 2635,
+  "same_as_saved": false,
+  "names_fighter": true
+ },
+ "119": {
+  "source": "readability",
+  "checks": {
+   "headline": true,
+   "shares_sentences": true,
+   "names_fighter": true,
+   "long_enough": true
+  },
+  "reason": "Readability passed all four checks",
+  "saved_chars": 1542,
+  "clean_chars": 1390,
+  "same_as_saved": false,
+  "names_fighter": true
+ },
+ "125": {
+  "source": "readability",
+  "checks": {
+   "headline": true,
+   "shares_sentences": true,
+   "names_fighter": true,
+   "long_enough": true
+  },
+  "reason": "Readability passed all four checks",
+  "saved_chars": 2709,
+  "clean_chars": 2635,
+  "same_as_saved": false,
+  "names_fighter": true
+ },
+ "129": {
+  "source": "hand-cleaned",
+  "checks": {
+   "headline": true,
+   "shares_sentences": true,
+   "names_fighter": true,
+   "long_enough": false
+  },
+  "reason": "Readability not used (failed: long_enough); nothing removed",
+  "saved_chars": 2628,
+  "clean_chars": 2628,
+  "same_as_saved": true,
+  "names_fighter": true
+ },
+ "134": {
+  "source": "hand-cleaned",
+  "checks": {
+   "headline": false,
+   "shares_sentences": true,
+   "names_fighter": true,
+   "long_enough": true
+  },
+  "reason": "Readability not used (failed: headline); nothing removed; thin rankings-page blurb",
+  "saved_chars": 478,
+  "clean_chars": 478,
+  "same_as_saved": true,
+  "names_fighter": false
+ },
+ "138": {
+  "source": "readability",
+  "checks": {
+   "headline": true,
+   "shares_sentences": true,
+   "names_fighter": true,
+   "long_enough": true
+  },
+  "reason": "Readability passed all four checks",
+  "saved_chars": 2571,
+  "clean_chars": 2970,
+  "same_as_saved": false,
+  "names_fighter": true
+ },
+ "144": {
+  "source": "readability",
+  "checks": {
+   "headline": true,
+   "shares_sentences": true,
+   "names_fighter": true,
+   "long_enough": "passed on recheck"
+  },
+  "reason": "Readability passed once its length was checked against the hand-cleaned text",
+  "saved_chars": 3237,
+  "clean_chars": 3185,
+  "same_as_saved": false,
+  "names_fighter": true
+ },
+ "148": {
+  "source": "readability",
+  "checks": {
+   "headline": true,
+   "shares_sentences": true,
+   "names_fighter": true,
+   "long_enough": true
+  },
+  "reason": "Readability passed all four checks",
+  "saved_chars": 1892,
+  "clean_chars": 2316,
+  "same_as_saved": false,
+  "names_fighter": true
+ },
+ "152": {
+  "source": "readability",
+  "checks": {
+   "headline": true,
+   "shares_sentences": true,
+   "names_fighter": true,
+   "long_enough": "passed on recheck"
+  },
+  "reason": "Readability passed once its length was checked against the hand-cleaned text",
+  "saved_chars": 2116,
+  "clean_chars": 2034,
+  "same_as_saved": false,
+  "names_fighter": true
+ },
+ "158": {
+  "source": "hand-cleaned",
+  "checks": {
+   "headline": true,
+   "shares_sentences": true,
+   "names_fighter": true,
+   "long_enough": false
+  },
+  "reason": "Readability not used (failed: long_enough); nothing removed",
+  "saved_chars": 4382,
+  "clean_chars": 4382,
+  "same_as_saved": true,
+  "names_fighter": false
+ },
+ "166": {
+  "source": "hand-cleaned",
+  "checks": {
+   "headline": true,
+   "shares_sentences": true,
+   "names_fighter": true,
+   "long_enough": false
+  },
+  "reason": "Readability not used (failed: long_enough); nothing removed",
+  "saved_chars": 7150,
+  "clean_chars": 7150,
+  "same_as_saved": true,
+  "names_fighter": true
+ },
+ "170": {
+  "source": "readability",
+  "checks": {
+   "headline": true,
+   "shares_sentences": true,
+   "names_fighter": true,
+   "long_enough": true
+  },
+  "reason": "Readability passed all four checks",
+  "saved_chars": 1201,
+  "clean_chars": 1225,
+  "same_as_saved": false,
+  "names_fighter": true
+ },
+ "174": {
+  "source": "readability",
+  "checks": {
+   "headline": true,
+   "shares_sentences": true,
+   "names_fighter": true,
+   "long_enough": true
+  },
+  "reason": "Readability passed all four checks",
+  "saved_chars": 1790,
+  "clean_chars": 1785,
+  "same_as_saved": false,
+  "names_fighter": true
+ },
+ "181": {
+  "source": "hand-cleaned",
+  "checks": null,
+  "reason": "Readability not used (page not fetched (403)); 3 LATEST NEWS headline blocks, photo credit",
+  "saved_chars": 2132,
+  "clean_chars": 1788,
+  "same_as_saved": false,
+  "names_fighter": false
+ },
+ "186": {
+  "source": "hand-cleaned",
+  "checks": null,
+  "reason": "Readability not used (page not fetched (403)); two LATEST NEWS link lines and photo credit",
+  "saved_chars": 2406,
+  "clean_chars": 2152,
+  "same_as_saved": false,
+  "names_fighter": true
+ },
+ "187": {
+  "source": "hand-cleaned",
+  "checks": null,
+  "reason": "Readability not used (page not fetched (403)); 2 LATEST NEWS promo lines, photo credit",
+  "saved_chars": 2752,
+  "clean_chars": 2493,
+  "same_as_saved": false,
+  "names_fighter": true
+ },
+ "193": {
+  "source": "hand-cleaned",
+  "checks": {
+   "headline": true,
+   "shares_sentences": true,
+   "names_fighter": true,
+   "long_enough": false
+  },
+  "reason": "Readability not used (failed: long_enough); nothing removed",
+  "saved_chars": 3045,
+  "clean_chars": 3045,
+  "same_as_saved": true,
+  "names_fighter": true
+ },
+ "200": {
+  "source": "hand-cleaned",
+  "checks": null,
+  "reason": "Readability not used (page not fetched (403)); removed 2 LATEST NEWS inserts",
+  "saved_chars": 2428,
+  "clean_chars": 2226,
+  "same_as_saved": false,
+  "names_fighter": true
+ },
+ "203": {
+  "source": "hand-cleaned",
+  "checks": null,
+  "reason": "Readability not used (page not fetched (403)); related-story line and error-report prompt at end",
+  "saved_chars": 3199,
+  "clean_chars": 3031,
+  "same_as_saved": false,
+  "names_fighter": true
+ },
+ "204": {
+  "source": "hand-cleaned",
+  "checks": null,
+  "reason": "Readability not used (page not fetched (403)); removed huge site menu, ad, date/share lines, photo credit; text is truncated at end; article is Makhachev-Garry (Amosov only in deck)",
+  "saved_chars": 10000,
+  "clean_chars": 7750,
+  "same_as_saved": false,
+  "names_fighter": true
+ },
+ "207": {
+  "source": "hand-cleaned",
+  "checks": null,
+  "reason": "Readability not used (page not fetched (403)); two LATEST NEWS link lines removed",
+  "saved_chars": 3495,
+  "clean_chars": 3295,
+  "same_as_saved": false,
+  "names_fighter": true
+ },
+ "208": {
+  "source": "hand-cleaned",
+  "checks": null,
+  "reason": "Readability not used (page not fetched (403)); trailing related-story line",
+  "saved_chars": 1165,
+  "clean_chars": 1078,
+  "same_as_saved": false,
+  "names_fighter": true
+ },
+ "214": {
+  "source": "hand-cleaned",
+  "checks": {
+   "headline": true,
+   "shares_sentences": false,
+   "names_fighter": false,
+   "long_enough": false
+  },
+  "reason": "Readability not used (failed: shares_sentences, names_fighter, long_enough); Yahoo menu, 2 MORE links, 2 captions, newsletter line",
+  "saved_chars": 4643,
+  "clean_chars": 2637,
+  "same_as_saved": false,
+  "names_fighter": true
+ },
+ "224": {
+  "source": "hand-cleaned",
+  "checks": null,
+  "reason": "Readability not used (page not fetched (403)); 2 LATEST NEWS blocks (3 headlines), photo credit; kept embedded tweet",
+  "saved_chars": 2573,
+  "clean_chars": 2221,
+  "same_as_saved": false,
+  "names_fighter": true
+ },
+ "228": {
+  "source": "readability",
+  "checks": {
+   "headline": true,
+   "shares_sentences": true,
+   "names_fighter": true,
+   "long_enough": true
+  },
+  "reason": "Readability passed all four checks",
+  "saved_chars": 1922,
+  "clean_chars": 1916,
+  "same_as_saved": false,
+  "names_fighter": true
+ },
+ "230": {
+  "source": "readability",
+  "checks": {
+   "headline": true,
+   "shares_sentences": true,
+   "names_fighter": true,
+   "long_enough": true
+  },
+  "reason": "Readability passed all four checks",
+  "saved_chars": 10000,
+  "clean_chars": 17358,
+  "same_as_saved": false,
+  "names_fighter": true
+ },
+ "233": {
+  "source": "hand-cleaned",
+  "checks": {
+   "headline": true,
+   "shares_sentences": false,
+   "names_fighter": false,
+   "long_enough": false
+  },
+  "reason": "Readability not used (failed: shares_sentences, names_fighter, long_enough); menu/header, MORE link, 3 photo captions, newsletter line",
+  "saved_chars": 6582,
+  "clean_chars": 4596,
+  "same_as_saved": false,
+  "names_fighter": true
+ },
+ "238": {
+  "source": "readability",
+  "checks": {
+   "headline": true,
+   "shares_sentences": true,
+   "names_fighter": true,
+   "long_enough": true
+  },
+  "reason": "Readability passed all four checks",
+  "saved_chars": 10000,
+  "clean_chars": 18978,
+  "same_as_saved": false,
+  "names_fighter": true
+ },
+ "244": {
+  "source": "readability",
+  "checks": {
+   "headline": true,
+   "shares_sentences": true,
+   "names_fighter": true,
+   "long_enough": true
+  },
+  "reason": "Readability passed all four checks",
+  "saved_chars": 3073,
+  "clean_chars": 3073,
+  "same_as_saved": true,
+  "names_fighter": true
+ },
+ "247": {
+  "source": "hand-cleaned",
+  "checks": null,
+  "reason": "Readability not used (page not fetched (403)); 2 LATEST NEWS promo lines, photo credit",
+  "saved_chars": 2781,
+  "clean_chars": 2532,
+  "same_as_saved": false,
+  "names_fighter": true
+ },
+ "249": {
+  "source": "hand-cleaned",
+  "checks": {
+   "headline": true,
+   "shares_sentences": true,
+   "names_fighter": true,
+   "long_enough": false
+  },
+  "reason": "Readability not used (failed: long_enough); nothing removed (embedded tweet placeholders kept)",
+  "saved_chars": 2350,
+  "clean_chars": 2350,
+  "same_as_saved": true,
+  "names_fighter": true
+ },
+ "256": {
+  "source": "readability",
+  "checks": {
+   "headline": true,
+   "shares_sentences": true,
+   "names_fighter": true,
+   "long_enough": "passed on recheck"
+  },
+  "reason": "Readability passed once its length was checked against the hand-cleaned text",
+  "saved_chars": 2303,
+  "clean_chars": 2250,
+  "same_as_saved": false,
+  "names_fighter": true
+ },
+ "261": {
+  "source": "readability",
+  "checks": {
+   "headline": true,
+   "shares_sentences": true,
+   "names_fighter": true,
+   "long_enough": true
+  },
+  "reason": "Readability passed all four checks",
+  "saved_chars": 5855,
+  "clean_chars": 5908,
+  "same_as_saved": false,
+  "names_fighter": true
+ },
+ "269": {
+  "source": "readability",
+  "checks": {
+   "headline": true,
+   "shares_sentences": true,
+   "names_fighter": true,
+   "long_enough": "passed on recheck"
+  },
+  "reason": "Readability passed once its length was checked against the hand-cleaned text",
+  "saved_chars": 1865,
+  "clean_chars": 1564,
+  "same_as_saved": false,
+  "names_fighter": true
+ },
+ "273": {
+  "source": "hand-cleaned",
+  "checks": {
+   "headline": true,
+   "shares_sentences": false,
+   "names_fighter": true,
+   "long_enough": false
+  },
+  "reason": "Readability not used (failed: shares_sentences, long_enough); Yahoo menu/ads/footer before, HEAVY promo tail after",
+  "saved_chars": 3308,
+  "clean_chars": 1917,
+  "same_as_saved": false,
+  "names_fighter": true
+ },
+ "279": {
+  "source": "readability",
+  "checks": {
+   "headline": true,
+   "shares_sentences": true,
+   "names_fighter": true,
+   "long_enough": "passed on recheck"
+  },
+  "reason": "Readability passed once its length was checked against the hand-cleaned text",
+  "saved_chars": 2585,
+  "clean_chars": 2656,
+  "same_as_saved": false,
+  "names_fighter": true
+ },
+ "283": {
+  "source": "readability",
+  "checks": {
+   "headline": true,
+   "shares_sentences": true,
+   "names_fighter": true,
+   "long_enough": true
+  },
+  "reason": "Readability passed all four checks",
+  "saved_chars": 1625,
+  "clean_chars": 1701,
+  "same_as_saved": false,
+  "names_fighter": true
+ },
+ "287": {
+  "source": "hand-cleaned",
+  "checks": {
+   "headline": true,
+   "shares_sentences": true,
+   "names_fighter": true,
+   "long_enough": false
+  },
+  "reason": "Readability not used (failed: long_enough); comment form, related links at end",
+  "saved_chars": 1612,
+  "clean_chars": 1174,
+  "same_as_saved": false,
+  "names_fighter": true
+ },
+ "291": {
+  "source": "readability",
+  "checks": {
+   "headline": true,
+   "shares_sentences": true,
+   "names_fighter": true,
+   "long_enough": "passed on recheck"
+  },
+  "reason": "Readability passed once its length was checked against the hand-cleaned text",
+  "saved_chars": 2642,
+  "clean_chars": 2588,
+  "same_as_saved": false,
+  "names_fighter": true
+ },
+ "297": {
+  "source": "readability",
+  "checks": {
+   "headline": true,
+   "shares_sentences": true,
+   "names_fighter": true,
+   "long_enough": true
+  },
+  "reason": "Readability passed all four checks",
+  "saved_chars": 10000,
+  "clean_chars": 17862,
+  "same_as_saved": false,
+  "names_fighter": true
+ },
+ "298": {
+  "source": "hand-cleaned",
+  "checks": null,
+  "reason": "Readability not used (page not fetched (403)); photo caption at start, typo-report prompt at end",
+  "saved_chars": 2926,
+  "clean_chars": 2790,
+  "same_as_saved": false,
+  "names_fighter": true
+ },
+ "300": {
+  "source": "hand-cleaned",
+  "checks": null,
+  "reason": "Readability not used (page not fetched (403)); typo-report footer prompt at end",
+  "saved_chars": 2165,
+  "clean_chars": 2087,
+  "same_as_saved": false,
+  "names_fighter": true
+ },
+ "301": {
+  "source": "hand-cleaned",
+  "checks": null,
+  "reason": "Readability not used (page not fetched (403)); photo caption at start, related link and typo prompt at end",
+  "saved_chars": 1485,
+  "clean_chars": 1298,
+  "same_as_saved": false,
+  "names_fighter": true
+ },
+ "305": {
+  "source": "readability",
+  "checks": {
+   "headline": true,
+   "shares_sentences": true,
+   "names_fighter": true,
+   "long_enough": true
+  },
+  "reason": "Readability passed all four checks",
+  "saved_chars": 2345,
+  "clean_chars": 2359,
+  "same_as_saved": false,
+  "names_fighter": true
+ },
+ "311": {
+  "source": "readability",
+  "checks": {
+   "headline": true,
+   "shares_sentences": true,
+   "names_fighter": true,
+   "long_enough": true
+  },
+  "reason": "Readability passed all four checks",
+  "saved_chars": 2578,
+  "clean_chars": 3111,
+  "same_as_saved": false,
+  "names_fighter": true
+ },
+ "316": {
+  "source": "hand-cleaned",
+  "checks": {
+   "headline": true,
+   "shares_sentences": true,
+   "names_fighter": false,
+   "long_enough": true
+  },
+  "reason": "Readability not used (failed: names_fighter); nothing removed",
+  "saved_chars": 3023,
+  "clean_chars": 3023,
+  "same_as_saved": true,
+  "names_fighter": false
+ },
+ "320": {
+  "source": "hand-cleaned",
+  "checks": null,
+  "reason": "Readability not used (page not fetched (403)); photo caption at start, related-link sentence and error-report prompt at end",
+  "saved_chars": 2222,
+  "clean_chars": 1993,
+  "same_as_saved": false,
+  "names_fighter": true
+ },
+ "321": {
+  "source": "hand-cleaned",
+  "checks": null,
+  "reason": "Readability not used (page not fetched (403)); photo caption at start, related line and typo-report prompt at end",
+  "saved_chars": 2780,
+  "clean_chars": 2564,
+  "same_as_saved": false,
+  "names_fighter": true
+ },
+ "322": {
+  "source": "hand-cleaned",
+  "checks": null,
+  "reason": "Readability not used (page not fetched (403)); photo caption at start, related-link sentence and typo prompt at end",
+  "saved_chars": 3147,
+  "clean_chars": 2924,
+  "same_as_saved": false,
+  "names_fighter": true
+ },
+ "323": {
+  "source": "readability",
+  "checks": {
+   "headline": true,
+   "shares_sentences": true,
+   "names_fighter": true,
+   "long_enough": true
+  },
+  "reason": "Readability passed all four checks",
+  "saved_chars": 428,
+  "clean_chars": 581,
+  "same_as_saved": false,
+  "names_fighter": true
+ },
+ "327": {
+  "source": "hand-cleaned",
+  "checks": {
+   "headline": true,
+   "shares_sentences": true,
+   "names_fighter": true,
+   "long_enough": false
+  },
+  "reason": "Readability not used (failed: long_enough); poll question and comment-form legal text at end",
+  "saved_chars": 2412,
+  "clean_chars": 1996,
+  "same_as_saved": false,
+  "names_fighter": true
+ },
+ "335": {
+  "source": "hand-cleaned",
+  "checks": null,
+  "reason": "Readability not used (page not fetched (403)); two LATEST NEWS lines, photo caption and credit",
+  "saved_chars": 2741,
+  "clean_chars": 2429,
+  "same_as_saved": false,
+  "names_fighter": false
+ },
+ "339": {
+  "source": "hand-cleaned",
+  "checks": {
+   "headline": true,
+   "shares_sentences": true,
+   "names_fighter": true,
+   "long_enough": false
+  },
+  "reason": "Readability not used (failed: long_enough); nothing removed",
+  "saved_chars": 2494,
+  "clean_chars": 2494,
+  "same_as_saved": true,
+  "names_fighter": true
+ },
+ "342": {
+  "source": "readability",
+  "checks": {
+   "headline": true,
+   "shares_sentences": true,
+   "names_fighter": true,
+   "long_enough": true
+  },
+  "reason": "Readability passed all four checks",
+  "saved_chars": 3467,
+  "clean_chars": 3822,
+  "same_as_saved": false,
+  "names_fighter": true
+ },
+ "349": {
+  "source": "readability",
+  "checks": {
+   "headline": true,
+   "shares_sentences": true,
+   "names_fighter": true,
+   "long_enough": true
+  },
+  "reason": "Readability passed all four checks",
+  "saved_chars": 2545,
+  "clean_chars": 2763,
+  "same_as_saved": false,
+  "names_fighter": true
+ },
+ "353": {
+  "source": "hand-cleaned",
+  "checks": {
+   "headline": true,
+   "shares_sentences": true,
+   "names_fighter": false,
+   "long_enough": false
+  },
+  "reason": "Readability not used (failed: names_fighter, long_enough); share buttons at start, Up Next headline list; interview transcript kept (text ends truncated)",
+  "saved_chars": 10000,
+  "clean_chars": 9198,
+  "same_as_saved": false,
+  "names_fighter": true
+ },
+ "361": {
+  "source": "readability",
+  "checks": {
+   "headline": true,
+   "shares_sentences": true,
+   "names_fighter": true,
+   "long_enough": true
+  },
+  "reason": "Readability passed all four checks",
+  "saved_chars": 2290,
+  "clean_chars": 2290,
+  "same_as_saved": true,
+  "names_fighter": true
+ },
+ "368": {
+  "source": "readability",
+  "checks": {
+   "headline": true,
+   "shares_sentences": true,
+   "names_fighter": true,
+   "long_enough": "passed on recheck"
+  },
+  "reason": "Readability passed once its length was checked against the hand-cleaned text",
+  "saved_chars": 3554,
+  "clean_chars": 3721,
+  "same_as_saved": false,
+  "names_fighter": true
+ },
+ "373": {
+  "source": "readability",
+  "checks": {
+   "headline": true,
+   "shares_sentences": true,
+   "names_fighter": true,
+   "long_enough": "passed on recheck"
+  },
+  "reason": "Readability passed once its length was checked against the hand-cleaned text",
+  "saved_chars": 1964,
+  "clean_chars": 2054,
+  "same_as_saved": false,
+  "names_fighter": true
+ },
+ "380": {
+  "source": "readability",
+  "checks": {
+   "headline": true,
+   "shares_sentences": true,
+   "names_fighter": true,
+   "long_enough": true
+  },
+  "reason": "Readability passed all four checks",
+  "saved_chars": 2508,
+  "clean_chars": 2569,
+  "same_as_saved": false,
+  "names_fighter": true
+ },
+ "385": {
+  "source": "readability",
+  "checks": {
+   "headline": true,
+   "shares_sentences": true,
+   "names_fighter": true,
+   "long_enough": "passed on recheck"
+  },
+  "reason": "Readability passed once its length was checked against the hand-cleaned text",
+  "saved_chars": 2055,
+  "clean_chars": 2062,
+  "same_as_saved": false,
+  "names_fighter": true
+ },
+ "397": {
+  "source": "readability",
+  "checks": {
+   "headline": true,
+   "shares_sentences": true,
+   "names_fighter": true,
+   "long_enough": true
+  },
+  "reason": "Readability passed all four checks",
+  "saved_chars": 2945,
+  "clean_chars": 2854,
+  "same_as_saved": false,
+  "names_fighter": true
+ },
+ "402": {
+  "source": "readability",
+  "checks": {
+   "headline": true,
+   "shares_sentences": true,
+   "names_fighter": true,
+   "long_enough": "passed on recheck"
+  },
+  "reason": "Readability passed once its length was checked against the hand-cleaned text",
+  "saved_chars": 4451,
+  "clean_chars": 4582,
+  "same_as_saved": false,
+  "names_fighter": true
+ },
+ "408": {
+  "source": "readability",
+  "checks": {
+   "headline": true,
+   "shares_sentences": true,
+   "names_fighter": true,
+   "long_enough": "passed on recheck"
+  },
+  "reason": "Readability passed once its length was checked against the hand-cleaned text",
+  "saved_chars": 2804,
+  "clean_chars": 3708,
+  "same_as_saved": false,
+  "names_fighter": true
+ },
+ "412": {
+  "source": "readability",
+  "checks": {
+   "headline": true,
+   "shares_sentences": true,
+   "names_fighter": true,
+   "long_enough": "passed on recheck"
+  },
+  "reason": "Readability passed once its length was checked against the hand-cleaned text",
+  "saved_chars": 4748,
+  "clean_chars": 4534,
+  "same_as_saved": false,
+  "names_fighter": true
+ },
+ "416": {
+  "source": "hand-cleaned",
+  "checks": {
+   "headline": true,
+   "shares_sentences": false,
+   "names_fighter": true,
+   "long_enough": false
+  },
+  "reason": "Readability not used (failed: shares_sentences, long_enough); menu/header, byline, footer nav, originally-appeared line",
+  "saved_chars": 2300,
+  "clean_chars": 1674,
+  "same_as_saved": false,
+  "names_fighter": true
+ },
+ "423": {
+  "source": "readability",
+  "checks": {
+   "headline": true,
+   "shares_sentences": true,
+   "names_fighter": true,
+   "long_enough": true
+  },
+  "reason": "Readability passed all four checks",
+  "saved_chars": 3286,
+  "clean_chars": 3440,
+  "same_as_saved": false,
+  "names_fighter": true
+ },
+ "427": {
+  "source": "readability",
+  "checks": {
+   "headline": true,
+   "shares_sentences": true,
+   "names_fighter": true,
+   "long_enough": true
+  },
+  "reason": "Readability passed all four checks",
+  "saved_chars": 2474,
+  "clean_chars": 2561,
+  "same_as_saved": false,
+  "names_fighter": true
+ },
+ "431": {
+  "source": "hand-cleaned",
+  "checks": {
+   "headline": true,
+   "shares_sentences": false,
+   "names_fighter": false,
+   "long_enough": false
+  },
+  "reason": "Readability not used (failed: shares_sentences, names_fighter, long_enough); Yahoo menu, byline, ad labels, footer 'originally appeared' line",
+  "saved_chars": 2894,
+  "clean_chars": 2049,
+  "same_as_saved": false,
+  "names_fighter": true
+ },
+ "435": {
+  "source": "readability",
+  "checks": {
+   "headline": true,
+   "shares_sentences": true,
+   "names_fighter": true,
+   "long_enough": true
+  },
+  "reason": "Readability passed all four checks",
+  "saved_chars": 4477,
+  "clean_chars": 4314,
+  "same_as_saved": false,
+  "names_fighter": true
+ },
+ "442": {
+  "source": "readability",
+  "checks": {
+   "headline": true,
+   "shares_sentences": true,
+   "names_fighter": true,
+   "long_enough": true
+  },
+  "reason": "Readability passed all four checks",
+  "saved_chars": 1973,
+  "clean_chars": 1973,
+  "same_as_saved": true,
+  "names_fighter": true
+ },
+ "447": {
+  "source": "readability",
+  "checks": {
+   "headline": true,
+   "shares_sentences": true,
+   "names_fighter": true,
+   "long_enough": true
+  },
+  "reason": "Readability passed all four checks",
+  "saved_chars": 6538,
+  "clean_chars": 6536,
+  "same_as_saved": false,
+  "names_fighter": true
+ },
+ "453": {
+  "source": "hand-cleaned",
+  "checks": null,
+  "reason": "Readability not used (page not fetched (403)); two LATEST NEWS inserts removed",
+  "saved_chars": 2731,
+  "clean_chars": 2509,
+  "same_as_saved": false,
+  "names_fighter": false
+ },
+ "457": {
+  "source": "hand-cleaned",
+  "checks": null,
+  "reason": "Readability not used (page not fetched (403)); removed 1 LATEST NEWS insert",
+  "saved_chars": 1758,
+  "clean_chars": 1643,
+  "same_as_saved": false,
+  "names_fighter": true
+ },
+ "462": {
+  "source": "hand-cleaned",
+  "checks": null,
+  "reason": "Readability not used (page not fetched (404)); Yahoo menu, trending, headline repeats, photo caption, footer",
+  "saved_chars": 3724,
+  "clean_chars": 2187,
+  "same_as_saved": false,
+  "names_fighter": true
+ },
+ "467": {
+  "source": "readability",
+  "checks": {
+   "headline": true,
+   "shares_sentences": true,
+   "names_fighter": true,
+   "long_enough": "passed on recheck"
+  },
+  "reason": "Readability passed once its length was checked against the hand-cleaned text",
+  "saved_chars": 2952,
+  "clean_chars": 4122,
+  "same_as_saved": false,
+  "names_fighter": true
+ },
+ "476": {
+  "source": "hand-cleaned",
+  "checks": null,
+  "reason": "Readability not used (page not fetched (404)); affiliate disclaimer, 2 ticket promos, MMA desk blurb and newsletter box at end",
+  "saved_chars": 1814,
+  "clean_chars": 1373,
+  "same_as_saved": false,
+  "names_fighter": true
+ },
+ "484": {
+  "source": "readability",
+  "checks": {
+   "headline": true,
+   "shares_sentences": true,
+   "names_fighter": true,
+   "long_enough": true
+  },
+  "reason": "Readability passed all four checks",
+  "saved_chars": 2096,
+  "clean_chars": 2432,
+  "same_as_saved": false,
+  "names_fighter": true
+ },
+ "490": {
+  "source": "readability",
+  "checks": {
+   "headline": true,
+   "shares_sentences": true,
+   "names_fighter": true,
+   "long_enough": "passed on recheck"
+  },
+  "reason": "Readability passed once its length was checked against the hand-cleaned text",
+  "saved_chars": 10000,
+  "clean_chars": 10206,
+  "same_as_saved": false,
+  "names_fighter": true
+ },
+ "491": {
+  "source": "readability",
+  "checks": {
+   "headline": true,
+   "shares_sentences": true,
+   "names_fighter": true,
+   "long_enough": "passed on recheck"
+  },
+  "reason": "Readability passed once its length was checked against the hand-cleaned text",
+  "saved_chars": 10000,
+  "clean_chars": 10206,
+  "same_as_saved": false,
+  "names_fighter": true
+ },
+ "492": {
+  "source": "hand-cleaned",
+  "checks": {
+   "headline": true,
+   "shares_sentences": false,
+   "names_fighter": true,
+   "long_enough": false
+  },
+  "reason": "Readability not used (failed: shares_sentences, long_enough); video list, duplicate headline/summary/byline",
+  "saved_chars": 9626,
+  "clean_chars": 8197,
+  "same_as_saved": false,
+  "names_fighter": true
+ },
+ "494": {
+  "source": "readability",
+  "checks": {
+   "headline": true,
+   "shares_sentences": true,
+   "names_fighter": true,
+   "long_enough": "passed on recheck"
+  },
+  "reason": "Readability passed once its length was checked against the hand-cleaned text",
+  "saved_chars": 10000,
+  "clean_chars": 10206,
+  "same_as_saved": false,
+  "names_fighter": true
+ },
+ "497": {
+  "source": "readability",
+  "checks": {
+   "headline": true,
+   "shares_sentences": true,
+   "names_fighter": true,
+   "long_enough": "passed on recheck"
+  },
+  "reason": "Readability passed once its length was checked against the hand-cleaned text",
+  "saved_chars": 4645,
+  "clean_chars": 4688,
+  "same_as_saved": false,
+  "names_fighter": true
+ },
+ "500": {
+  "source": "hand-cleaned",
+  "checks": null,
+  "reason": "Readability not used (page not fetched (403)); one LATEST NEWS insert removed; fight card list kept",
+  "saved_chars": 1850,
+  "clean_chars": 1737,
+  "same_as_saved": false,
+  "names_fighter": true
+ },
+ "503": {
+  "source": "readability",
+  "checks": {
+   "headline": true,
+   "shares_sentences": true,
+   "names_fighter": true,
+   "long_enough": true
+  },
+  "reason": "Readability passed all four checks",
+  "saved_chars": 2836,
+  "clean_chars": 3488,
+  "same_as_saved": false,
+  "names_fighter": true
+ },
+ "508": {
+  "source": "hand-cleaned",
+  "checks": {
+   "headline": true,
+   "shares_sentences": false,
+   "names_fighter": false,
+   "long_enough": false
+  },
+  "reason": "Readability not used (failed: shares_sentences, names_fighter, long_enough); removed Yahoo menu/header block, MORE: link, 3 photo captions, newsletter line at end",
+  "saved_chars": 6946,
+  "clean_chars": 4653,
+  "same_as_saved": false,
+  "names_fighter": true
+ },
+ "510": {
+  "source": "hand-cleaned",
+  "checks": null,
+  "reason": "Readability not used (page not fetched (403)); two LATEST NEWS link lines",
+  "saved_chars": 3026,
+  "clean_chars": 2803,
+  "same_as_saved": false,
+  "names_fighter": true
+ },
+ "516": {
+  "source": "hand-cleaned",
+  "checks": {
+   "headline": true,
+   "shares_sentences": true,
+   "names_fighter": true,
+   "long_enough": false
+  },
+  "reason": "Readability not used (failed: long_enough); removed media embed placeholder and trailing schedule link line",
+  "saved_chars": 2063,
+  "clean_chars": 1934,
+  "same_as_saved": false,
+  "names_fighter": true
+ },
+ "520": {
+  "source": "hand-cleaned",
+  "checks": null,
+  "reason": "Readability not used (page not fetched (403)); 2 LATEST NEWS lines, photo credit",
+  "saved_chars": 2684,
+  "clean_chars": 2464,
+  "same_as_saved": false,
+  "names_fighter": false
+ },
+ "521": {
+  "source": "readability",
+  "checks": {
+   "headline": true,
+   "shares_sentences": true,
+   "names_fighter": true,
+   "long_enough": true
+  },
+  "reason": "Readability passed all four checks",
+  "saved_chars": 2072,
+  "clean_chars": 1318,
+  "same_as_saved": false,
+  "names_fighter": true
+ },
+ "525": {
+  "source": "readability",
+  "checks": {
+   "headline": true,
+   "shares_sentences": true,
+   "names_fighter": true,
+   "long_enough": true
+  },
+  "reason": "Readability passed all four checks",
+  "saved_chars": 3015,
+  "clean_chars": 3015,
+  "same_as_saved": true,
+  "names_fighter": true
+ },
+ "529": {
+  "source": "hand-cleaned",
+  "checks": {
+   "headline": true,
+   "shares_sentences": true,
+   "names_fighter": false,
+   "long_enough": false
+  },
+  "reason": "Readability not used (failed: names_fighter, long_enough); nav, byline, link lines, Fight Pass/video blocks, results footer and promo teasers at end",
+  "saved_chars": 7854,
+  "clean_chars": 6032,
+  "same_as_saved": false,
+  "names_fighter": true
+ },
+ "532": {
+  "source": "hand-cleaned",
+  "checks": {
+   "headline": true,
+   "shares_sentences": true,
+   "names_fighter": false,
+   "long_enough": false
+  },
+  "reason": "Readability not used (failed: names_fighter, long_enough); nav, byline, MORE/FIGHT WEEK link lines, Fight Pass promos and video title, results footer and teasers",
+  "saved_chars": 7863,
+  "clean_chars": 6029,
+  "same_as_saved": false,
+  "names_fighter": true
+ },
+ "533": {
+  "source": "readability",
+  "checks": {
+   "headline": true,
+   "shares_sentences": true,
+   "names_fighter": true,
+   "long_enough": true
+  },
+  "reason": "Readability passed all four checks",
+  "saved_chars": 3229,
+  "clean_chars": 3655,
+  "same_as_saved": false,
+  "names_fighter": true
+ },
+ "540": {
+  "source": "readability",
+  "checks": {
+   "headline": true,
+   "shares_sentences": true,
+   "names_fighter": true,
+   "long_enough": true
+  },
+  "reason": "Readability passed all four checks",
+  "saved_chars": 3229,
+  "clean_chars": 3655,
+  "same_as_saved": false,
+  "names_fighter": true
+ },
+ "547": {
+  "source": "readability",
+  "checks": {
+   "headline": true,
+   "shares_sentences": true,
+   "names_fighter": true,
+   "long_enough": true
+  },
+  "reason": "Readability passed all four checks",
+  "saved_chars": 2676,
+  "clean_chars": 2916,
+  "same_as_saved": false,
+  "names_fighter": true
+ },
+ "551": {
+  "source": "readability",
+  "checks": {
+   "headline": true,
+   "shares_sentences": true,
+   "names_fighter": true,
+   "long_enough": true
+  },
+  "reason": "Readability passed all four checks",
+  "saved_chars": 2038,
+  "clean_chars": 2367,
+  "same_as_saved": false,
+  "names_fighter": true
+ },
+ "555": {
+  "source": "readability",
+  "checks": {
+   "headline": true,
+   "shares_sentences": true,
+   "names_fighter": true,
+   "long_enough": true
+  },
+  "reason": "Readability passed all four checks",
+  "saved_chars": 9966,
+  "clean_chars": 9182,
+  "same_as_saved": false,
+  "names_fighter": true
+ },
+ "556": {
+  "source": "readability",
+  "checks": {
+   "headline": true,
+   "shares_sentences": true,
+   "names_fighter": true,
+   "long_enough": "passed on recheck"
+  },
+  "reason": "Readability passed once its length was checked against the hand-cleaned text",
+  "saved_chars": 4077,
+  "clean_chars": 2789,
+  "same_as_saved": false,
+  "names_fighter": true
+ },
+ "560": {
+  "source": "readability",
+  "checks": {
+   "headline": true,
+   "shares_sentences": true,
+   "names_fighter": true,
+   "long_enough": true
+  },
+  "reason": "Readability passed all four checks",
+  "saved_chars": 1995,
+  "clean_chars": 2037,
+  "same_as_saved": false,
+  "names_fighter": true
+ },
+ "563": {
+  "source": "hand-cleaned",
+  "checks": null,
+  "reason": "Readability not used (page not fetched (404)); menu/header, byline, 5 photo captions; text truncated at end by the save",
+  "saved_chars": 10000,
+  "clean_chars": 7609,
+  "same_as_saved": false,
+  "names_fighter": true
+ },
+ "565": {
+  "source": "hand-cleaned",
+  "checks": {
+   "headline": true,
+   "shares_sentences": false,
+   "names_fighter": false,
+   "long_enough": false
+  },
+  "reason": "Readability not used (failed: shares_sentences, names_fighter, long_enough); Yahoo menu/byline/ad labels, 1 photo caption",
+  "saved_chars": 4387,
+  "clean_chars": 3589,
+  "same_as_saved": false,
+  "names_fighter": true
+ },
+ "572": {
+  "source": "hand-cleaned",
+  "checks": null,
+  "reason": "Readability not used (page not fetched (403)); two LATEST NEWS inserts and a photo credit removed",
+  "saved_chars": 2278,
+  "clean_chars": 2027,
+  "same_as_saved": false,
+  "names_fighter": true
+ },
+ "576": {
+  "source": "readability",
+  "checks": {
+   "headline": true,
+   "shares_sentences": true,
+   "names_fighter": true,
+   "long_enough": true
+  },
+  "reason": "Readability passed all four checks",
+  "saved_chars": 1647,
+  "clean_chars": 1522,
+  "same_as_saved": false,
+  "names_fighter": true
+ },
+ "580": {
+  "source": "hand-cleaned",
+  "checks": null,
+  "reason": "Readability not used (page not fetched (403)); removed 2 LATEST NEWS inserts, 'View this post on Instagram'",
+  "saved_chars": 2379,
+  "clean_chars": 2134,
+  "same_as_saved": false,
+  "names_fighter": false
+ },
+ "585": {
+  "source": "readability",
+  "checks": {
+   "headline": true,
+   "shares_sentences": true,
+   "names_fighter": true,
+   "long_enough": true
+  },
+  "reason": "Readability passed all four checks",
+  "saved_chars": 2488,
+  "clean_chars": 2633,
+  "same_as_saved": false,
+  "names_fighter": true
+ },
+ "588": {
+  "source": "readability",
+  "checks": {
+   "headline": true,
+   "shares_sentences": true,
+   "names_fighter": true,
+   "long_enough": true
+  },
+  "reason": "Readability passed all four checks",
+  "saved_chars": 2187,
+  "clean_chars": 2187,
+  "same_as_saved": true,
+  "names_fighter": true
+ },
+ "592": {
+  "source": "readability",
+  "checks": {
+   "headline": true,
+   "shares_sentences": true,
+   "names_fighter": true,
+   "long_enough": true
+  },
+  "reason": "Readability passed all four checks",
+  "saved_chars": 1162,
+  "clean_chars": 1189,
+  "same_as_saved": false,
+  "names_fighter": true
+ },
+ "594": {
+  "source": "readability",
+  "checks": {
+   "headline": true,
+   "shares_sentences": true,
+   "names_fighter": true,
+   "long_enough": "passed on recheck"
+  },
+  "reason": "Readability passed once its length was checked against the hand-cleaned text",
+  "saved_chars": 5419,
+  "clean_chars": 5841,
+  "same_as_saved": false,
+  "names_fighter": true
+ },
+ "599": {
+  "source": "hand-cleaned",
+  "checks": null,
+  "reason": "Readability not used (page not fetched (403)); site menu, headline repeats/dates/counters/share buttons, photo credit, subscribe prompt; error-report prompt and popular-news list at end; saved text is cut off by the 10000-char limit but article ends before the furniture",
+  "saved_chars": 10000,
+  "clean_chars": 7037,
+  "same_as_saved": false,
+  "names_fighter": true
+ },
+ "601": {
+  "source": "readability",
+  "checks": {
+   "headline": true,
+   "shares_sentences": true,
+   "names_fighter": true,
+   "long_enough": "passed on recheck"
+  },
+  "reason": "Readability passed once its length was checked against the hand-cleaned text",
+  "saved_chars": 869,
+  "clean_chars": 826,
+  "same_as_saved": false,
+  "names_fighter": true
+ },
+ "603": {
+  "source": "hand-cleaned",
+  "checks": {
+   "headline": true,
+   "shares_sentences": true,
+   "names_fighter": false,
+   "long_enough": false
+  },
+  "reason": "Readability not used (failed: names_fighter, long_enough); fight-record table before, odds/tips/stats/bookmaker footer after",
+  "saved_chars": 7350,
+  "clean_chars": 5006,
+  "same_as_saved": false,
+  "names_fighter": true
+ },
+ "605": {
+  "source": "readability",
+  "checks": {
+   "headline": true,
+   "shares_sentences": true,
+   "names_fighter": true,
+   "long_enough": true
+  },
+  "reason": "Readability passed all four checks",
+  "saved_chars": 715,
+  "clean_chars": 784,
+  "same_as_saved": false,
+  "names_fighter": true
+ },
+ "606": {
+  "source": "readability",
+  "checks": {
+   "headline": true,
+   "shares_sentences": true,
+   "names_fighter": true,
+   "long_enough": true
+  },
+  "reason": "Readability passed all four checks",
+  "saved_chars": 2509,
+  "clean_chars": 2737,
+  "same_as_saved": false,
+  "names_fighter": true
+ },
+ "608": {
+  "source": "readability",
+  "checks": {
+   "headline": true,
+   "shares_sentences": true,
+   "names_fighter": true,
+   "long_enough": "passed on recheck"
+  },
+  "reason": "Readability passed once its length was checked against the hand-cleaned text",
+  "saved_chars": 4375,
+  "clean_chars": 4286,
+  "same_as_saved": false,
+  "names_fighter": true
+ },
+ "609": {
+  "source": "hand-cleaned",
+  "checks": {
+   "headline": true,
+   "shares_sentences": true,
+   "names_fighter": true,
+   "long_enough": false
+  },
+  "reason": "Readability not used (failed: long_enough); published-on/follow-us box and social share buttons HTML",
+  "saved_chars": 9820,
+  "clean_chars": 4828,
+  "same_as_saved": false,
+  "names_fighter": true
+ },
+ "613": {
+  "source": "readability",
+  "checks": {
+   "headline": true,
+   "shares_sentences": true,
+   "names_fighter": true,
+   "long_enough": true
+  },
+  "reason": "Readability passed all four checks",
+  "saved_chars": 1885,
+  "clean_chars": 1832,
+  "same_as_saved": false,
+  "names_fighter": true
+ },
+ "614": {
+  "source": "readability",
+  "checks": {
+   "headline": true,
+   "shares_sentences": true,
+   "names_fighter": true,
+   "long_enough": "passed on recheck"
+  },
+  "reason": "Readability passed once its length was checked against the hand-cleaned text",
+  "saved_chars": 1083,
+  "clean_chars": 1034,
+  "same_as_saved": false,
+  "names_fighter": true
+ },
+ "616": {
+  "source": "hand-cleaned",
+  "checks": {
+   "headline": true,
+   "shares_sentences": true,
+   "names_fighter": true,
+   "long_enough": false
+  },
+  "reason": "Readability not used (failed: long_enough); share notice, read-also link, bet365 odds tweet removed; other embedded tweets kept",
+  "saved_chars": 5211,
+  "clean_chars": 4931,
+  "same_as_saved": false,
+  "names_fighter": true
+ },
+ "619": {
+  "source": "hand-cleaned",
+  "checks": null,
+  "reason": "Readability not used (page not fetched (403)); removed sport.ua menu, repeated headline/standfirst/share row, photo credit, footer lists",
+  "saved_chars": 10000,
+  "clean_chars": 7037,
+  "same_as_saved": false,
+  "names_fighter": true
+ },
+ "620": {
+  "source": "readability",
+  "checks": {
+   "headline": true,
+   "shares_sentences": true,
+   "names_fighter": true,
+   "long_enough": true
+  },
+  "reason": "Readability passed all four checks",
+  "saved_chars": 2075,
+  "clean_chars": 2000,
+  "same_as_saved": false,
+  "names_fighter": true
+ },
+ "623": {
+  "source": "hand-cleaned",
+  "checks": {
+   "headline": true,
+   "shares_sentences": false,
+   "names_fighter": false,
+   "long_enough": false
+  },
+  "reason": "Readability not used (failed: shares_sentences, names_fighter, long_enough); Yahoo menu/header/footer, one photo caption",
+  "saved_chars": 9375,
+  "clean_chars": 8026,
+  "same_as_saved": false,
+  "names_fighter": true
+ },
+ "625": {
+  "source": "hand-cleaned",
+  "checks": null,
+  "reason": "Readability not used (page not fetched (TypeError: fetch failed)); removed menus, trending lists, headline/byline repeat, share/related/comment form, war-stats widget, categories footer",
+  "saved_chars": 5609,
+  "clean_chars": 773,
+  "same_as_saved": false,
+  "names_fighter": true
+ },
+ "627": {
+  "source": "readability",
+  "checks": {
+   "headline": true,
+   "shares_sentences": true,
+   "names_fighter": true,
+   "long_enough": true
+  },
+  "reason": "Readability passed all four checks",
+  "saved_chars": 2071,
+  "clean_chars": 1967,
+  "same_as_saved": false,
+  "names_fighter": true
+ },
+ "632": {
+  "source": "readability",
+  "checks": {
+   "headline": true,
+   "shares_sentences": true,
+   "names_fighter": true,
+   "long_enough": true
+  },
+  "reason": "Readability passed all four checks",
+  "saved_chars": 1620,
+  "clean_chars": 2169,
+  "same_as_saved": false,
+  "names_fighter": true
+ },
+ "636": {
+  "source": "readability",
+  "checks": {
+   "headline": true,
+   "shares_sentences": true,
+   "names_fighter": true,
+   "long_enough": true
+  },
+  "reason": "Readability passed all four checks",
+  "saved_chars": 3179,
+  "clean_chars": 3538,
+  "same_as_saved": false,
+  "names_fighter": true
+ },
+ "641": {
+  "source": "readability",
+  "checks": {
+   "headline": true,
+   "shares_sentences": true,
+   "names_fighter": true,
+   "long_enough": true
+  },
+  "reason": "Readability passed all four checks",
+  "saved_chars": 6109,
+  "clean_chars": 4967,
+  "same_as_saved": false,
+  "names_fighter": true
+ },
+ "643": {
+  "source": "hand-cleaned",
+  "checks": null,
+  "reason": "Readability not used (page not fetched (403)); one related-story headline",
+  "saved_chars": 1718,
+  "clean_chars": 1633,
+  "same_as_saved": false,
+  "names_fighter": false
+ },
+ "647": {
+  "source": "nothing usable",
+  "checks": null,
+  "reason": "Readability not used (page not fetched (429)); only a one-line dek and comment-policy text, no article body",
+  "saved_chars": 738,
+  "clean_chars": 0,
+  "same_as_saved": false,
+  "names_fighter": false
+ },
+ "651": {
+  "source": "readability",
+  "checks": {
+   "headline": true,
+   "shares_sentences": true,
+   "names_fighter": true,
+   "long_enough": "passed on recheck"
+  },
+  "reason": "Readability passed once its length was checked against the hand-cleaned text",
+  "saved_chars": 2282,
+  "clean_chars": 2154,
+  "same_as_saved": false,
+  "names_fighter": true
+ },
+ "653": {
+  "source": "nothing usable",
+  "checks": null,
+  "reason": "Readability not used (page not fetched (429)); only headline, then site boilerplate/login forms",
+  "saved_chars": 1938,
+  "clean_chars": 0,
+  "same_as_saved": false,
+  "names_fighter": false
+ },
+ "654": {
+  "source": "readability",
+  "checks": {
+   "headline": true,
+   "shares_sentences": true,
+   "names_fighter": true,
+   "long_enough": "passed on recheck"
+  },
+  "reason": "Readability passed once its length was checked against the hand-cleaned text",
+  "saved_chars": 611,
+  "clean_chars": 3240,
+  "same_as_saved": false,
+  "names_fighter": true
+ },
+ "655": {
+  "source": "nothing usable",
+  "checks": {
+   "headline": true,
+   "shares_sentences": false,
+   "names_fighter": true,
+   "long_enough": false
+  },
+  "reason": "Readability not used (failed: shares_sentences, long_enough); only inline CSS, no article prose",
+  "saved_chars": 10000,
+  "clean_chars": 0,
+  "same_as_saved": false,
+  "names_fighter": false
+ },
+ "659": {
+  "source": "hand-cleaned",
+  "checks": {
+   "headline": true,
+   "shares_sentences": true,
+   "names_fighter": true,
+   "long_enough": false
+  },
+  "reason": "Readability not used (failed: long_enough); nothing removed (Instagram embed boilerplate kept)",
+  "saved_chars": 2143,
+  "clean_chars": 2143,
+  "same_as_saved": true,
+  "names_fighter": true
+ },
+ "666": {
+  "source": "readability",
+  "checks": {
+   "headline": true,
+   "shares_sentences": true,
+   "names_fighter": true,
+   "long_enough": "passed on recheck"
+  },
+  "reason": "Readability passed once its length was checked against the hand-cleaned text",
+  "saved_chars": 2747,
+  "clean_chars": 2697,
+  "same_as_saved": false,
+  "names_fighter": true
+ },
+ "672": {
+  "source": "readability",
+  "checks": {
+   "headline": true,
+   "shares_sentences": true,
+   "names_fighter": true,
+   "long_enough": "passed on recheck"
+  },
+  "reason": "Readability passed once its length was checked against the hand-cleaned text",
+  "saved_chars": 5267,
+  "clean_chars": 2183,
+  "same_as_saved": false,
+  "names_fighter": true
+ },
+ "673": {
+  "source": "readability",
+  "checks": {
+   "headline": true,
+   "shares_sentences": true,
+   "names_fighter": true,
+   "long_enough": true
+  },
+  "reason": "Readability passed all four checks",
+  "saved_chars": 1510,
+  "clean_chars": 1888,
+  "same_as_saved": false,
+  "names_fighter": true
+ },
+ "675": {
+  "source": "readability",
+  "checks": {
+   "headline": true,
+   "shares_sentences": true,
+   "names_fighter": true,
+   "long_enough": "passed on recheck"
+  },
+  "reason": "Readability passed once its length was checked against the hand-cleaned text",
+  "saved_chars": 2275,
+  "clean_chars": 2182,
+  "same_as_saved": false,
+  "names_fighter": true
+ },
+ "681": {
+  "source": "hand-cleaned",
+  "checks": {
+   "headline": true,
+   "shares_sentences": false,
+   "names_fighter": true,
+   "long_enough": false
+  },
+  "reason": "Readability not used (failed: shares_sentences, long_enough); Yahoo menu/ads/footer, headline repeats, photo caption, MMA Junkie origin line",
+  "saved_chars": 3018,
+  "clean_chars": 1525,
+  "same_as_saved": false,
+  "names_fighter": true
+ },
+ "682": {
+  "source": "hand-cleaned",
+  "checks": {
+   "headline": true,
+   "shares_sentences": false,
+   "names_fighter": true,
+   "long_enough": false
+  },
+  "reason": "Readability not used (failed: shares_sentences, long_enough); Yahoo menu/ads/headline/caption/byline before, HEAVY promo at end",
+  "saved_chars": 4943,
+  "clean_chars": 3022,
+  "same_as_saved": false,
+  "names_fighter": true
+ },
+ "683": {
+  "source": "readability",
+  "checks": {
+   "headline": true,
+   "shares_sentences": true,
+   "names_fighter": true,
+   "long_enough": true
+  },
+  "reason": "Readability passed all four checks",
+  "saved_chars": 1654,
+  "clean_chars": 1654,
+  "same_as_saved": true,
+  "names_fighter": true
+ },
+ "686": {
+  "source": "hand-cleaned",
+  "checks": {
+   "headline": true,
+   "shares_sentences": false,
+   "names_fighter": false,
+   "long_enough": false
+  },
+  "reason": "Readability not used (failed: shares_sentences, names_fighter, long_enough); photo caption, gambling licence block, related link at end",
+  "saved_chars": 1344,
+  "clean_chars": 1229,
+  "same_as_saved": false,
+  "names_fighter": true
+ },
+ "687": {
+  "source": "hand-cleaned",
+  "checks": null,
+  "reason": "Readability not used (page not fetched (403)); site menus, dates/share buttons, Telegram promo, fight card heading, popular/other news lists",
+  "saved_chars": 8731,
+  "clean_chars": 1056,
+  "same_as_saved": false,
+  "names_fighter": true
+ },
+ "688": {
+  "source": "hand-cleaned",
+  "checks": null,
+  "reason": "Readability not used (page not fetched (403)); menu, date/share bar, caption, in-text Telegram promo, fightcard heading, popular/latest news, comments, footer, betting promos",
+  "saved_chars": 8879,
+  "clean_chars": 1056,
+  "same_as_saved": false,
+  "names_fighter": true
+ },
+ "690": {
+  "source": "hand-cleaned",
+  "checks": null,
+  "reason": "Readability not used (page not fetched (403)); site menu, dateline/share row, photo credit, subscribe prompt, typo prompt, popular/related/latest lists, footer",
+  "saved_chars": 10000,
+  "clean_chars": 4523,
+  "same_as_saved": false,
+  "names_fighter": true
+ },
+ "692": {
+  "source": "hand-cleaned",
+  "checks": {
+   "headline": true,
+   "shares_sentences": true,
+   "names_fighter": true,
+   "long_enough": false
+  },
+  "reason": "Readability not used (failed: long_enough); nothing removed",
+  "saved_chars": 8651,
+  "clean_chars": 8651,
+  "same_as_saved": true,
+  "names_fighter": true
+ },
+ "693": {
+  "source": "readability",
+  "checks": {
+   "headline": true,
+   "shares_sentences": true,
+   "names_fighter": true,
+   "long_enough": true
+  },
+  "reason": "Readability passed all four checks",
+  "saved_chars": 5474,
+  "clean_chars": 5647,
+  "same_as_saved": false,
+  "names_fighter": true
+ },
+ "697": {
+  "source": "readability",
+  "checks": {
+   "headline": true,
+   "shares_sentences": true,
+   "names_fighter": true,
+   "long_enough": true
+  },
+  "reason": "Readability passed all four checks",
+  "saved_chars": 5883,
+  "clean_chars": 5920,
+  "same_as_saved": false,
+  "names_fighter": true
+ },
+ "698": {
+  "source": "hand-cleaned",
+  "checks": {
+   "headline": true,
+   "shares_sentences": true,
+   "names_fighter": true,
+   "long_enough": false
+  },
+  "reason": "Readability not used (failed: long_enough); nothing removed",
+  "saved_chars": 8651,
+  "clean_chars": 8651,
+  "same_as_saved": true,
+  "names_fighter": true
+ },
+ "702": {
+  "source": "readability",
+  "checks": {
+   "headline": true,
+   "shares_sentences": true,
+   "names_fighter": true,
+   "long_enough": true
+  },
+  "reason": "Readability passed all four checks",
+  "saved_chars": 4403,
+  "clean_chars": 4540,
+  "same_as_saved": false,
+  "names_fighter": true
+ },
+ "709": {
+  "source": "readability",
+  "checks": {
+   "headline": true,
+   "shares_sentences": true,
+   "names_fighter": true,
+   "long_enough": "passed on recheck"
+  },
+  "reason": "Readability passed once its length was checked against the hand-cleaned text",
+  "saved_chars": 3874,
+  "clean_chars": 1804,
+  "same_as_saved": false,
+  "names_fighter": true
+ },
+ "710": {
+  "source": "hand-cleaned",
+  "checks": null,
+  "reason": "Readability not used (page not fetched (403)); 2 LATEST NEWS lines",
+  "saved_chars": 2724,
+  "clean_chars": 2510,
+  "same_as_saved": false,
+  "names_fighter": false
+ },
+ "714": {
+  "source": "readability",
+  "checks": {
+   "headline": true,
+   "shares_sentences": true,
+   "names_fighter": true,
+   "long_enough": "passed on recheck"
+  },
+  "reason": "Readability passed once its length was checked against the hand-cleaned text",
+  "saved_chars": 10000,
+  "clean_chars": 12395,
+  "same_as_saved": false,
+  "names_fighter": true
+ },
+ "717": {
+  "source": "hand-cleaned",
+  "checks": {
+   "headline": true,
+   "shares_sentences": false,
+   "names_fighter": true,
+   "long_enough": false
+  },
+  "reason": "Readability not used (failed: shares_sentences, long_enough); Yahoo menu, photo caption, Athlon source footer",
+  "saved_chars": 3629,
+  "clean_chars": 2072,
+  "same_as_saved": false,
+  "names_fighter": true
+ },
+ "723": {
+  "source": "readability",
+  "checks": {
+   "headline": true,
+   "shares_sentences": true,
+   "names_fighter": true,
+   "long_enough": true
+  },
+  "reason": "Readability passed all four checks",
+  "saved_chars": 3025,
+  "clean_chars": 3787,
+  "same_as_saved": false,
+  "names_fighter": true
+ },
+ "728": {
+  "source": "readability",
+  "checks": {
+   "headline": true,
+   "shares_sentences": true,
+   "names_fighter": true,
+   "long_enough": "passed on recheck"
+  },
+  "reason": "Readability passed once its length was checked against the hand-cleaned text",
+  "saved_chars": 2443,
+  "clean_chars": 2383,
+  "same_as_saved": false,
+  "names_fighter": true
+ },
+ "731": {
+  "source": "readability",
+  "checks": {
+   "headline": true,
+   "shares_sentences": true,
+   "names_fighter": true,
+   "long_enough": true
+  },
+  "reason": "Readability passed all four checks",
+  "saved_chars": 957,
+  "clean_chars": 1055,
+  "same_as_saved": false,
+  "names_fighter": true
+ },
+ "732": {
+  "source": "hand-cleaned",
+  "checks": {
+   "headline": true,
+   "shares_sentences": true,
+   "names_fighter": true,
+   "long_enough": false
+  },
+  "reason": "Readability not used (failed: long_enough); nothing removed (kept embedded tweets at end)",
+  "saved_chars": 2096,
+  "clean_chars": 2096,
+  "same_as_saved": true,
+  "names_fighter": true
+ },
+ "733": {
+  "source": "hand-cleaned",
+  "checks": {
+   "headline": true,
+   "shares_sentences": true,
+   "names_fighter": true,
+   "long_enough": false
+  },
+  "reason": "Readability not used (failed: long_enough); photo caption/credit at start removed",
+  "saved_chars": 3563,
+  "clean_chars": 3474,
+  "same_as_saved": false,
+  "names_fighter": true
+ },
+ "735": {
+  "source": "hand-cleaned",
+  "checks": null,
+  "reason": "Readability not used (page not fetched (403)); removed sport.ua menu, repeated headline, photo credit, Telegram promo sentence, footer lists/comments/legal",
+  "saved_chars": 9183,
+  "clean_chars": 1447,
+  "same_as_saved": false,
+  "names_fighter": true
+ },
+ "736": {
+  "source": "readability",
+  "checks": {
+   "headline": true,
+   "shares_sentences": true,
+   "names_fighter": true,
+   "long_enough": true
+  },
+  "reason": "Readability passed all four checks",
+  "saved_chars": 884,
+  "clean_chars": 992,
+  "same_as_saved": false,
+  "names_fighter": true
+ },
+ "737": {
+  "source": "hand-cleaned",
+  "checks": {
+   "headline": true,
+   "shares_sentences": true,
+   "names_fighter": true,
+   "long_enough": false
+  },
+  "reason": "Readability not used (failed: long_enough); nothing removed (live blog, truncated)",
+  "saved_chars": 10000,
+  "clean_chars": 10000,
+  "same_as_saved": true,
+  "names_fighter": true
+ },
+ "740": {
+  "source": "readability",
+  "checks": {
+   "headline": true,
+   "shares_sentences": true,
+   "names_fighter": true,
+   "long_enough": true
+  },
+  "reason": "Readability passed all four checks",
+  "saved_chars": 2155,
+  "clean_chars": 1406,
+  "same_as_saved": false,
+  "names_fighter": true
+ },
+ "743": {
+  "source": "readability",
+  "checks": {
+   "headline": true,
+   "shares_sentences": true,
+   "names_fighter": true,
+   "long_enough": true
+  },
+  "reason": "Readability passed all four checks",
+  "saved_chars": 834,
+  "clean_chars": 893,
+  "same_as_saved": false,
+  "names_fighter": true
+ },
+ "744": {
+  "source": "hand-cleaned",
+  "checks": null,
+  "reason": "Readability not used (page not fetched (403)); removed menu, repeated headline/dates/share, photo credit, error-report prompt, popular/top news lists",
+  "saved_chars": 10000,
+  "clean_chars": 2628,
+  "same_as_saved": false,
+  "names_fighter": true
+ },
+ "745": {
+  "source": "readability",
+  "checks": {
+   "headline": true,
+   "shares_sentences": true,
+   "names_fighter": true,
+   "long_enough": true
+  },
+  "reason": "Readability passed all four checks",
+  "saved_chars": 780,
+  "clean_chars": 852,
+  "same_as_saved": false,
+  "names_fighter": true
+ },
+ "746": {
+  "source": "readability",
+  "checks": {
+   "headline": true,
+   "shares_sentences": true,
+   "names_fighter": true,
+   "long_enough": true
+  },
+  "reason": "Readability passed all four checks",
+  "saved_chars": 2175,
+  "clean_chars": 1423,
+  "same_as_saved": false,
+  "names_fighter": true
+ },
+ "747": {
+  "source": "hand-cleaned",
+  "checks": {
+   "headline": true,
+   "shares_sentences": true,
+   "names_fighter": true,
+   "long_enough": false
+  },
+  "reason": "Readability not used (failed: long_enough); photo credit and copied-link label at start",
+  "saved_chars": 1216,
+  "clean_chars": 1181,
+  "same_as_saved": false,
+  "names_fighter": true
+ },
+ "755": {
+  "source": "readability",
+  "checks": {
+   "headline": true,
+   "shares_sentences": true,
+   "names_fighter": true,
+   "long_enough": "passed on recheck"
+  },
+  "reason": "Readability passed once its length was checked against the hand-cleaned text",
+  "saved_chars": 7635,
+  "clean_chars": 7817,
+  "same_as_saved": false,
+  "names_fighter": true
+ },
+ "758": {
+  "source": "hand-cleaned",
+  "checks": null,
+  "reason": "Readability not used (page not fetched (403)); site menu, dates/share bar, photo credit, comments, popular/latest news lists, bookmaker block, footer",
+  "saved_chars": 10000,
+  "clean_chars": 3284,
+  "same_as_saved": false,
+  "names_fighter": true
+ },
+ "759": {
+  "source": "hand-cleaned",
+  "checks": null,
+  "reason": "Readability not used (page not fetched (403)); site menu, dates/share buttons, photo credit, Telegram promo, news lists at end",
+  "saved_chars": 9233,
+  "clean_chars": 1600,
+  "same_as_saved": false,
+  "names_fighter": true
+ },
+ "762": {
+  "source": "readability",
+  "checks": {
+   "headline": true,
+   "shares_sentences": true,
+   "names_fighter": true,
+   "long_enough": true
+  },
+  "reason": "Readability passed all four checks",
+  "saved_chars": 7189,
+  "clean_chars": 8108,
+  "same_as_saved": false,
+  "names_fighter": true
+ },
+ "765": {
+  "source": "hand-cleaned",
+  "checks": {
+   "headline": true,
+   "shares_sentences": true,
+   "names_fighter": true,
+   "long_enough": false
+  },
+  "reason": "Readability not used (failed: long_enough); two ВАС ЗАЦІКАВИТЬ related-link teasers",
+  "saved_chars": 1670,
+  "clean_chars": 1472,
+  "same_as_saved": false,
+  "names_fighter": true
+ },
+ "767": {
+  "source": "readability",
+  "checks": {
+   "headline": true,
+   "shares_sentences": true,
+   "names_fighter": true,
+   "long_enough": true
+  },
+  "reason": "Readability passed all four checks",
+  "saved_chars": 926,
+  "clean_chars": 926,
+  "same_as_saved": true,
+  "names_fighter": true
+ },
+ "768": {
+  "source": "hand-cleaned",
+  "checks": null,
+  "reason": "Readability not used (page not fetched (403)); menu, dateline/share row, photo credit, Telegram promo sentence, typo prompt, comments, related lists, betting box, footer",
+  "saved_chars": 9526,
+  "clean_chars": 1676,
+  "same_as_saved": false,
+  "names_fighter": true
+ },
+ "771": {
+  "source": "readability",
+  "checks": {
+   "headline": true,
+   "shares_sentences": true,
+   "names_fighter": true,
+   "long_enough": true
+  },
+  "reason": "Readability passed all four checks",
+  "saved_chars": 4880,
+  "clean_chars": 5375,
+  "same_as_saved": false,
+  "names_fighter": true
+ },
+ "772": {
+  "source": "hand-cleaned",
+  "checks": null,
+  "reason": "Readability not used (page not fetched (403)); huge menu/header, headline/date block, photo credit, subscribe/Telegram promos, error prompt, popular news, comments, odds block, legal footer removed",
+  "saved_chars": 9462,
+  "clean_chars": 1606,
+  "same_as_saved": false,
+  "names_fighter": true
+ },
+ "773": {
+  "source": "hand-cleaned",
+  "checks": null,
+  "reason": "Readability not used (page not fetched (403)); removed sport.ua menu, repeated headline/share row, footer, comments, lists",
+  "saved_chars": 10000,
+  "clean_chars": 3208,
+  "same_as_saved": false,
+  "names_fighter": true
+ },
+ "774": {
+  "source": "hand-cleaned",
+  "checks": null,
+  "reason": "Readability not used (page not fetched (403)); site menu, headline repeats, photo credit, subscribe, popular/latest news, bookmaker promo, comments, legal footer",
+  "saved_chars": 10000,
+  "clean_chars": 2511,
+  "same_as_saved": false,
+  "names_fighter": true
+ },
+ "776": {
+  "source": "readability",
+  "checks": {
+   "headline": true,
+   "shares_sentences": true,
+   "names_fighter": true,
+   "long_enough": true
+  },
+  "reason": "Readability passed all four checks",
+  "saved_chars": 3110,
+  "clean_chars": 3281,
+  "same_as_saved": false,
+  "names_fighter": true
+ },
+ "778": {
+  "source": "readability",
+  "checks": {
+   "headline": true,
+   "shares_sentences": true,
+   "names_fighter": true,
+   "long_enough": "passed on recheck"
+  },
+  "reason": "Readability passed once its length was checked against the hand-cleaned text",
+  "saved_chars": 1327,
+  "clean_chars": 1604,
+  "same_as_saved": false,
+  "names_fighter": true
+ },
+ "779": {
+  "source": "hand-cleaned",
+  "checks": {
+   "headline": true,
+   "shares_sentences": true,
+   "names_fighter": true,
+   "long_enough": false
+  },
+  "reason": "Readability not used (failed: long_enough); photo caption, related-story sentence at end",
+  "saved_chars": 2248,
+  "clean_chars": 2109,
+  "same_as_saved": false,
+  "names_fighter": true
+ },
+ "780": {
+  "source": "readability",
+  "checks": {
+   "headline": true,
+   "shares_sentences": true,
+   "names_fighter": true,
+   "long_enough": true
+  },
+  "reason": "Readability passed all four checks",
+  "saved_chars": 1016,
+  "clean_chars": 1144,
+  "same_as_saved": false,
+  "names_fighter": true
+ },
+ "782": {
+  "source": "hand-cleaned",
+  "checks": {
+   "headline": true,
+   "shares_sentences": false,
+   "names_fighter": false,
+   "long_enough": false
+  },
+  "reason": "Readability not used (failed: shares_sentences, names_fighter, long_enough); related line, betting licence/promo disclaimers at end",
+  "saved_chars": 761,
+  "clean_chars": 334,
+  "same_as_saved": false,
+  "names_fighter": true
+ },
+ "783": {
+  "source": "hand-cleaned",
+  "checks": null,
+  "reason": "Readability not used (page not fetched (403)); photo caption, share/tags/source footer",
+  "saved_chars": 1166,
+  "clean_chars": 1031,
+  "same_as_saved": false,
+  "names_fighter": true
+ },
+ "785": {
+  "source": "hand-cleaned",
+  "checks": {
+   "headline": true,
+   "shares_sentences": true,
+   "names_fighter": true,
+   "long_enough": false
+  },
+  "reason": "Readability not used (failed: long_enough); nothing removed",
+  "saved_chars": 2732,
+  "clean_chars": 2732,
+  "same_as_saved": true,
+  "names_fighter": true
+ },
+ "786": {
+  "source": "hand-cleaned",
+  "checks": null,
+  "reason": "Readability not used (page not fetched (403)); in-text Telegram LIVE promo sentence",
+  "saved_chars": 1461,
+  "clean_chars": 1387,
+  "same_as_saved": false,
+  "names_fighter": true
+ },
+ "788": {
+  "source": "hand-cleaned",
+  "checks": {
+   "headline": true,
+   "shares_sentences": true,
+   "names_fighter": true,
+   "long_enough": false
+  },
+  "reason": "Readability not used (failed: long_enough); comment form text and related-article titles at end",
+  "saved_chars": 2759,
+  "clean_chars": 2367,
+  "same_as_saved": false,
+  "names_fighter": true
+ },
+ "789": {
+  "source": "hand-cleaned",
+  "checks": {
+   "headline": true,
+   "shares_sentences": false,
+   "names_fighter": true,
+   "long_enough": false
+  },
+  "reason": "Readability not used (failed: shares_sentences, long_enough); Yahoo menus/trending/ads block before body, trailing 'originally appeared' line removed",
+  "saved_chars": 3769,
+  "clean_chars": 2366,
+  "same_as_saved": false,
+  "names_fighter": true
+ },
+ "790": {
+  "source": "hand-cleaned",
+  "checks": null,
+  "reason": "Readability not used (page not fetched (403)); nothing removed",
+  "saved_chars": 3196,
+  "clean_chars": 3196,
+  "same_as_saved": true,
+  "names_fighter": true
+ },
+ "794": {
+  "source": "readability",
+  "checks": {
+   "headline": true,
+   "shares_sentences": true,
+   "names_fighter": true,
+   "long_enough": true
+  },
+  "reason": "Readability passed all four checks",
+  "saved_chars": 2286,
+  "clean_chars": 2313,
+  "same_as_saved": false,
+  "names_fighter": true
+ },
+ "797": {
+  "source": "hand-cleaned",
+  "checks": {
+   "headline": true,
+   "shares_sentences": false,
+   "names_fighter": true,
+   "long_enough": false
+  },
+  "reason": "Readability not used (failed: shares_sentences, long_enough); Yahoo menu, byline, footer, originally-appeared line",
+  "saved_chars": 3270,
+  "clean_chars": 2366,
+  "same_as_saved": false,
+  "names_fighter": true
+ },
+ "798": {
+  "source": "hand-cleaned",
+  "checks": {
+   "headline": true,
+   "shares_sentences": false,
+   "names_fighter": true,
+   "long_enough": false
+  },
+  "reason": "Readability not used (failed: shares_sentences, long_enough); removed Yahoo nav menus, ads, headline/byline repeats",
+  "saved_chars": 3200,
+  "clean_chars": 1936,
+  "same_as_saved": false,
+  "names_fighter": true
+ },
+ "803": {
+  "source": "readability",
+  "checks": {
+   "headline": true,
+   "shares_sentences": true,
+   "names_fighter": true,
+   "long_enough": true
+  },
+  "reason": "Readability passed all four checks",
+  "saved_chars": 3717,
+  "clean_chars": 3846,
+  "same_as_saved": false,
+  "names_fighter": true
+ },
+ "807": {
+  "source": "readability",
+  "checks": {
+   "headline": true,
+   "shares_sentences": true,
+   "names_fighter": true,
+   "long_enough": true
+  },
+  "reason": "Readability passed all four checks",
+  "saved_chars": 1937,
+  "clean_chars": 1686,
+  "same_as_saved": false,
+  "names_fighter": true
+ },
+ "811": {
+  "source": "hand-cleaned",
+  "checks": null,
+  "reason": "Readability not used (page not fetched (403)); 2 LATEST NEWS lines",
+  "saved_chars": 3119,
+  "clean_chars": 2920,
+  "same_as_saved": false,
+  "names_fighter": false
+ },
+ "813": {
+  "source": "hand-cleaned",
+  "checks": null,
+  "reason": "Readability not used (page not fetched (429)); MMA Junkie republish line and reporting credit at end",
+  "saved_chars": 2447,
+  "clean_chars": 2285,
+  "same_as_saved": false,
+  "names_fighter": true
+ },
+ "817": {
+  "source": "hand-cleaned",
+  "checks": null,
+  "reason": "Readability not used (page not fetched (403)); site menu, dates/share bar, photo credit, error-report prompt, popular/latest news lists, bookmaker block",
+  "saved_chars": 10000,
+  "clean_chars": 4698,
+  "same_as_saved": false,
+  "names_fighter": true
+ },
+ "820": {
+  "source": "readability",
+  "checks": {
+   "headline": true,
+   "shares_sentences": true,
+   "names_fighter": true,
+   "long_enough": true
+  },
+  "reason": "Readability passed all four checks",
+  "saved_chars": 1690,
+  "clean_chars": 1541,
+  "same_as_saved": false,
+  "names_fighter": true
+ },
+ "823": {
+  "source": "hand-cleaned",
+  "checks": {
+   "headline": true,
+   "shares_sentences": true,
+   "names_fighter": true,
+   "long_enough": false
+  },
+  "reason": "Readability not used (failed: long_enough); photo caption",
+  "saved_chars": 1443,
+  "clean_chars": 1349,
+  "same_as_saved": false,
+  "names_fighter": true
+ },
+ "826": {
+  "source": "hand-cleaned",
+  "checks": {
+   "headline": true,
+   "shares_sentences": true,
+   "names_fighter": true,
+   "long_enough": false
+  },
+  "reason": "Readability not used (failed: long_enough); nothing removed",
+  "saved_chars": 995,
+  "clean_chars": 995,
+  "same_as_saved": true,
+  "names_fighter": true
+ },
+ "828": {
+  "source": "readability",
+  "checks": {
+   "headline": true,
+   "shares_sentences": true,
+   "names_fighter": true,
+   "long_enough": "passed on recheck"
+  },
+  "reason": "Readability passed once its length was checked against the hand-cleaned text",
+  "saved_chars": 3685,
+  "clean_chars": 4352,
+  "same_as_saved": false,
+  "names_fighter": true
+ },
+ "829": {
+  "source": "readability",
+  "checks": {
+   "headline": true,
+   "shares_sentences": true,
+   "names_fighter": true,
+   "long_enough": "passed on recheck"
+  },
+  "reason": "Readability passed once its length was checked against the hand-cleaned text",
+  "saved_chars": 1463,
+  "clean_chars": 1369,
+  "same_as_saved": false,
+  "names_fighter": true
+ },
+ "833": {
+  "source": "hand-cleaned",
+  "checks": {
+   "headline": true,
+   "shares_sentences": false,
+   "names_fighter": true,
+   "long_enough": false
+  },
+  "reason": "Readability not used (failed: shares_sentences, long_enough); removed Yahoo header/menu block and 2 photo captions",
+  "saved_chars": 4728,
+  "clean_chars": 3343,
+  "same_as_saved": false,
+  "names_fighter": true
+ },
+ "838": {
+  "source": "hand-cleaned",
+  "checks": null,
+  "reason": "Readability not used (page not fetched (403)); inline EXCLUSIVE related link",
+  "saved_chars": 1514,
+  "clean_chars": 1429,
+  "same_as_saved": false,
+  "names_fighter": true
+ },
+ "843": {
+  "source": "hand-cleaned",
+  "checks": null,
+  "reason": "Readability not used (page not fetched (404)); removed Yahoo nav menu, ads, photo caption, byline",
+  "saved_chars": 3030,
+  "clean_chars": 1480,
+  "same_as_saved": false,
+  "names_fighter": true
+ },
+ "850": {
+  "source": "readability",
+  "checks": {
+   "headline": true,
+   "shares_sentences": true,
+   "names_fighter": true,
+   "long_enough": true
+  },
+  "reason": "Readability passed all four checks",
+  "saved_chars": 1934,
+  "clean_chars": 1914,
+  "same_as_saved": false,
+  "names_fighter": true
+ },
+ "851": {
+  "source": "readability",
+  "checks": {
+   "headline": true,
+   "shares_sentences": true,
+   "names_fighter": true,
+   "long_enough": true
+  },
+  "reason": "Readability passed all four checks",
+  "saved_chars": 2546,
+  "clean_chars": 2615,
+  "same_as_saved": false,
+  "names_fighter": true
+ },
+ "852": {
+  "source": "readability",
+  "checks": {
+   "headline": true,
+   "shares_sentences": true,
+   "names_fighter": true,
+   "long_enough": "passed on recheck"
+  },
+  "reason": "Readability passed once its length was checked against the hand-cleaned text",
+  "saved_chars": 1714,
+  "clean_chars": 1711,
+  "same_as_saved": false,
+  "names_fighter": true
+ },
+ "856": {
+  "source": "readability",
+  "checks": {
+   "headline": true,
+   "shares_sentences": true,
+   "names_fighter": true,
+   "long_enough": true
+  },
+  "reason": "Readability passed all four checks",
+  "saved_chars": 3254,
+  "clean_chars": 3397,
+  "same_as_saved": false,
+  "names_fighter": true
+ },
+ "861": {
+  "source": "readability",
+  "checks": {
+   "headline": true,
+   "shares_sentences": true,
+   "names_fighter": true,
+   "long_enough": true
+  },
+  "reason": "Readability passed all four checks",
+  "saved_chars": 1057,
+  "clean_chars": 1415,
+  "same_as_saved": false,
+  "names_fighter": true
+ },
+ "862": {
+  "source": "readability",
+  "checks": {
+   "headline": true,
+   "shares_sentences": true,
+   "names_fighter": true,
+   "long_enough": true
+  },
+  "reason": "Readability passed all four checks",
+  "saved_chars": 1980,
+  "clean_chars": 2004,
+  "same_as_saved": false,
+  "names_fighter": true
+ },
+ "866": {
+  "source": "readability",
+  "checks": {
+   "headline": true,
+   "shares_sentences": true,
+   "names_fighter": true,
+   "long_enough": true
+  },
+  "reason": "Readability passed all four checks",
+  "saved_chars": 2189,
+  "clean_chars": 2134,
+  "same_as_saved": false,
+  "names_fighter": true
+ },
+ "871": {
+  "source": "readability",
+  "checks": {
+   "headline": true,
+   "shares_sentences": true,
+   "names_fighter": true,
+   "long_enough": "passed on recheck"
+  },
+  "reason": "Readability passed once its length was checked against the hand-cleaned text",
+  "saved_chars": 4480,
+  "clean_chars": 4321,
+  "same_as_saved": false,
+  "names_fighter": true
+ },
+ "875": {
+  "source": "readability",
+  "checks": {
+   "headline": true,
+   "shares_sentences": true,
+   "names_fighter": true,
+   "long_enough": "passed on recheck"
+  },
+  "reason": "Readability passed once its length was checked against the hand-cleaned text",
+  "saved_chars": 6380,
+  "clean_chars": 6180,
+  "same_as_saved": false,
+  "names_fighter": true
+ },
+ "879": {
+  "source": "readability",
+  "checks": {
+   "headline": true,
+   "shares_sentences": true,
+   "names_fighter": true,
+   "long_enough": true
+  },
+  "reason": "Readability passed all four checks",
+  "saved_chars": 1669,
+  "clean_chars": 1554,
+  "same_as_saved": false,
+  "names_fighter": true
+ },
+ "883": {
+  "source": "hand-cleaned",
+  "checks": {
+   "headline": false,
+   "shares_sentences": false,
+   "names_fighter": false,
+   "long_enough": false
+  },
+  "reason": "Readability not used (failed: headline, shares_sentences, names_fighter, long_enough); share prompts, newsletter box, related headlines, betting promo, topics/recommended footer",
+  "saved_chars": 3774,
+  "clean_chars": 2507,
+  "same_as_saved": false,
+  "names_fighter": true
+ },
+ "887": {
+  "source": "hand-cleaned",
+  "checks": {
+   "headline": true,
+   "shares_sentences": true,
+   "names_fighter": true,
+   "long_enough": false
+  },
+  "reason": "Readability not used (failed: long_enough); nothing removed (embedded tweet placeholders kept)",
+  "saved_chars": 2647,
+  "clean_chars": 2647,
+  "same_as_saved": true,
+  "names_fighter": true
+ },
+ "889": {
+  "source": "readability",
+  "checks": {
+   "headline": true,
+   "shares_sentences": true,
+   "names_fighter": true,
+   "long_enough": true
+  },
+  "reason": "Readability passed all four checks",
+  "saved_chars": 1118,
+  "clean_chars": 1005,
+  "same_as_saved": false,
+  "names_fighter": true
+ },
+ "892": {
+  "source": "readability",
+  "checks": {
+   "headline": true,
+   "shares_sentences": true,
+   "names_fighter": true,
+   "long_enough": true
+  },
+  "reason": "Readability passed all four checks",
+  "saved_chars": 1900,
+  "clean_chars": 1900,
+  "same_as_saved": true,
+  "names_fighter": true
+ },
+ "896": {
+  "source": "readability",
+  "checks": {
+   "headline": true,
+   "shares_sentences": true,
+   "names_fighter": true,
+   "long_enough": "passed on recheck"
+  },
+  "reason": "Readability passed once its length was checked against the hand-cleaned text",
+  "saved_chars": 4049,
+  "clean_chars": 4057,
+  "same_as_saved": false,
+  "names_fighter": true
+ },
+ "901": {
+  "source": "hand-cleaned",
+  "checks": null,
+  "reason": "Readability not used (page not fetched (403)); photo credit",
+  "saved_chars": 2278,
+  "clean_chars": 2246,
+  "same_as_saved": false,
+  "names_fighter": true
+ },
+ "905": {
+  "source": "readability",
+  "checks": {
+   "headline": true,
+   "shares_sentences": true,
+   "names_fighter": true,
+   "long_enough": "passed on recheck"
+  },
+  "reason": "Readability passed once its length was checked against the hand-cleaned text",
+  "saved_chars": 2221,
+  "clean_chars": 1946,
+  "same_as_saved": false,
+  "names_fighter": true
+ },
+ "909": {
+  "source": "hand-cleaned",
+  "checks": null,
+  "reason": "Readability not used (page not fetched (404)); Yahoo menu/ads/footer, headline repeats, byline",
+  "saved_chars": 3492,
+  "clean_chars": 2209,
+  "same_as_saved": false,
+  "names_fighter": true
+ },
+ "913": {
+  "source": "hand-cleaned",
+  "checks": {
+   "headline": true,
+   "shares_sentences": true,
+   "names_fighter": true,
+   "long_enough": false
+  },
+  "reason": "Readability not used (failed: long_enough); nothing removed",
+  "saved_chars": 2773,
+  "clean_chars": 2773,
+  "same_as_saved": true,
+  "names_fighter": true
+ },
+ "917": {
+  "source": "readability",
+  "checks": {
+   "headline": true,
+   "shares_sentences": true,
+   "names_fighter": true,
+   "long_enough": "passed on recheck"
+  },
+  "reason": "Readability passed once its length was checked against the hand-cleaned text",
+  "saved_chars": 5654,
+  "clean_chars": 5410,
+  "same_as_saved": false,
+  "names_fighter": true
+ },
+ "921": {
+  "source": "readability",
+  "checks": {
+   "headline": true,
+   "shares_sentences": true,
+   "names_fighter": true,
+   "long_enough": "passed on recheck"
+  },
+  "reason": "Readability passed once its length was checked against the hand-cleaned text",
+  "saved_chars": 1679,
+  "clean_chars": 1486,
+  "same_as_saved": false,
+  "names_fighter": true
+ },
+ "926": {
+  "source": "hand-cleaned",
+  "checks": {
+   "headline": false,
+   "shares_sentences": true,
+   "names_fighter": true,
+   "long_enough": false
+  },
+  "reason": "Readability not used (failed: headline, long_enough); header with repeated headline/video label/byline, Kayo Sports promo box",
+  "saved_chars": 6237,
+  "clean_chars": 5791,
+  "same_as_saved": false,
+  "names_fighter": true
+ },
+ "930": {
+  "source": "readability",
+  "checks": {
+   "headline": true,
+   "shares_sentences": true,
+   "names_fighter": true,
+   "long_enough": true
+  },
+  "reason": "Readability passed all four checks",
+  "saved_chars": 1628,
+  "clean_chars": 1692,
+  "same_as_saved": false,
+  "names_fighter": true
+ },
+ "933": {
+  "source": "hand-cleaned",
+  "checks": null,
+  "reason": "Readability not used (page not fetched (403)); nothing removed",
+  "saved_chars": 6090,
+  "clean_chars": 6090,
+  "same_as_saved": true,
+  "names_fighter": true
+ },
+ "934": {
+  "source": "hand-cleaned",
+  "checks": null,
+  "reason": "Readability not used (page not fetched (403)); removed sport.ua menu, repeated headline/standfirst, footer lists",
+  "saved_chars": 10000,
+  "clean_chars": 6114,
+  "same_as_saved": false,
+  "names_fighter": true
+ },
+ "937": {
+  "source": "hand-cleaned",
+  "checks": {
+   "headline": true,
+   "shares_sentences": true,
+   "names_fighter": false,
+   "long_enough": true
+  },
+  "reason": "Readability not used (failed: names_fighter); nothing removed",
+  "saved_chars": 1847,
+  "clean_chars": 1847,
+  "same_as_saved": true,
+  "names_fighter": false
+ },
+ "944": {
+  "source": "readability",
+  "checks": {
+   "headline": true,
+   "shares_sentences": true,
+   "names_fighter": true,
+   "long_enough": true
+  },
+  "reason": "Readability passed all four checks",
+  "saved_chars": 1675,
+  "clean_chars": 1571,
+  "same_as_saved": false,
+  "names_fighter": true
+ },
+ "948": {
+  "source": "hand-cleaned",
+  "checks": null,
+  "reason": "Readability not used (page not fetched (403)); removed two inline LATEST NEWS related-headline lines",
+  "saved_chars": 2644,
+  "clean_chars": 2430,
+  "same_as_saved": false,
+  "names_fighter": false
+ },
+ "953": {
+  "source": "readability",
+  "checks": {
+   "headline": true,
+   "shares_sentences": true,
+   "names_fighter": true,
+   "long_enough": true
+  },
+  "reason": "Readability passed all four checks",
+  "saved_chars": 1475,
+  "clean_chars": 1351,
+  "same_as_saved": false,
+  "names_fighter": true
+ },
+ "958": {
+  "source": "hand-cleaned",
+  "checks": {
+   "headline": true,
+   "shares_sentences": false,
+   "names_fighter": true,
+   "long_enough": false
+  },
+  "reason": "Readability not used (failed: shares_sentences, long_enough); Yahoo menu/ads/footer, headline repeats, byline",
+  "saved_chars": 3073,
+  "clean_chars": 1818,
+  "same_as_saved": false,
+  "names_fighter": true
+ },
+ "963": {
+  "source": "readability",
+  "checks": {
+   "headline": true,
+   "shares_sentences": true,
+   "names_fighter": true,
+   "long_enough": true
+  },
+  "reason": "Readability passed all four checks",
+  "saved_chars": 1538,
+  "clean_chars": 1595,
+  "same_as_saved": false,
+  "names_fighter": true
+ },
+ "968": {
+  "source": "readability",
+  "checks": {
+   "headline": true,
+   "shares_sentences": true,
+   "names_fighter": true,
+   "long_enough": true
+  },
+  "reason": "Readability passed all four checks",
+  "saved_chars": 1420,
+  "clean_chars": 1455,
+  "same_as_saved": false,
+  "names_fighter": true
+ },
+ "972": {
+  "source": "hand-cleaned",
+  "checks": null,
+  "reason": "Readability not used (page not fetched (404)); Yahoo menu/ads/headline/caption/byline before",
+  "saved_chars": 4300,
+  "clean_chars": 2360,
+  "same_as_saved": false,
+  "names_fighter": true
+ },
+ "975": {
+  "source": "readability",
+  "checks": {
+   "headline": true,
+   "shares_sentences": true,
+   "names_fighter": true,
+   "long_enough": true
+  },
+  "reason": "Readability passed all four checks",
+  "saved_chars": 7697,
+  "clean_chars": 8018,
+  "same_as_saved": false,
+  "names_fighter": true
+ },
+ "977": {
+  "source": "readability",
+  "checks": {
+   "headline": true,
+   "shares_sentences": true,
+   "names_fighter": true,
+   "long_enough": true
+  },
+  "reason": "Readability passed all four checks",
+  "saved_chars": 2222,
+  "clean_chars": 2252,
+  "same_as_saved": false,
+  "names_fighter": true
+ },
+ "983": {
+  "source": "readability",
+  "checks": {
+   "headline": true,
+   "shares_sentences": true,
+   "names_fighter": true,
+   "long_enough": "passed on recheck"
+  },
+  "reason": "Readability passed once its length was checked against the hand-cleaned text",
+  "saved_chars": 2105,
+  "clean_chars": 2061,
+  "same_as_saved": false,
+  "names_fighter": true
+ },
+ "991": {
+  "source": "hand-cleaned",
+  "checks": {
+   "headline": true,
+   "shares_sentences": false,
+   "names_fighter": true,
+   "long_enough": false
+  },
+  "reason": "Readability not used (failed: shares_sentences, long_enough); Yahoo header/menu/footer nav, HEAVY promo and republish footer",
+  "saved_chars": 3564,
+  "clean_chars": 2114,
+  "same_as_saved": false,
+  "names_fighter": true
+ },
+ "998": {
+  "source": "readability",
+  "checks": {
+   "headline": true,
+   "shares_sentences": true,
+   "names_fighter": true,
+   "long_enough": true
+  },
+  "reason": "Readability passed all four checks",
+  "saved_chars": 1951,
+  "clean_chars": 1945,
+  "same_as_saved": false,
+  "names_fighter": true
+ },
+ "1002": {
+  "source": "readability",
+  "checks": {
+   "headline": true,
+   "shares_sentences": true,
+   "names_fighter": true,
+   "long_enough": true
+  },
+  "reason": "Readability passed all four checks",
+  "saved_chars": 2051,
+  "clean_chars": 2124,
+  "same_as_saved": false,
+  "names_fighter": true
+ },
+ "1008": {
+  "source": "hand-cleaned",
+  "checks": {
+   "headline": true,
+   "shares_sentences": true,
+   "names_fighter": true,
+   "long_enough": false
+  },
+  "reason": "Readability not used (failed: long_enough); removed syndication/newsletter footer; tweet kept",
+  "saved_chars": 2064,
+  "clean_chars": 1880,
+  "same_as_saved": false,
+  "names_fighter": true
+ },
+ "1016": {
+  "source": "readability",
+  "checks": {
+   "headline": true,
+   "shares_sentences": true,
+   "names_fighter": true,
+   "long_enough": true
+  },
+  "reason": "Readability passed all four checks",
+  "saved_chars": 1656,
+  "clean_chars": 1563,
+  "same_as_saved": false,
+  "names_fighter": true
+ },
+ "1020": {
+  "source": "readability",
+  "checks": {
+   "headline": true,
+   "shares_sentences": true,
+   "names_fighter": true,
+   "long_enough": "passed on recheck"
+  },
+  "reason": "Readability passed once its length was checked against the hand-cleaned text",
+  "saved_chars": 1614,
+  "clean_chars": 1964,
+  "same_as_saved": false,
+  "names_fighter": true
+ },
+ "1027": {
+  "source": "hand-cleaned",
+  "checks": {
+   "headline": true,
+   "shares_sentences": true,
+   "names_fighter": true,
+   "long_enough": false
+  },
+  "reason": "Readability not used (failed: long_enough); removed video playlist list and repeated headline/byline",
+  "saved_chars": 2816,
+  "clean_chars": 1411,
+  "same_as_saved": false,
+  "names_fighter": true
+ },
+ "1031": {
+  "source": "readability",
+  "checks": {
+   "headline": true,
+   "shares_sentences": true,
+   "names_fighter": true,
+   "long_enough": true
+  },
+  "reason": "Readability passed all four checks",
+  "saved_chars": 5463,
+  "clean_chars": 5463,
+  "same_as_saved": true,
+  "names_fighter": true
+ },
+ "1036": {
+  "source": "readability",
+  "checks": {
+   "headline": true,
+   "shares_sentences": true,
+   "names_fighter": true,
+   "long_enough": "passed on recheck"
+  },
+  "reason": "Readability passed once its length was checked against the hand-cleaned text",
+  "saved_chars": 2018,
+  "clean_chars": 2038,
+  "same_as_saved": false,
+  "names_fighter": true
+ },
+ "1040": {
+  "source": "hand-cleaned",
+  "checks": {
+   "headline": true,
+   "shares_sentences": false,
+   "names_fighter": true,
+   "long_enough": false
+  },
+  "reason": "Readability not used (failed: shares_sentences, long_enough); Yahoo menu/ads/headline/byline before, 2 photo captions",
+  "saved_chars": 4202,
+  "clean_chars": 2780,
+  "same_as_saved": false,
+  "names_fighter": true
+ },
+ "1045": {
+  "source": "nothing usable",
+  "checks": {
+   "headline": true,
+   "shares_sentences": true,
+   "names_fighter": true,
+   "long_enough": false
+  },
+  "reason": "Readability not used (failed: long_enough); video page stub: only a show description plus sidebar of other videos",
+  "saved_chars": 4548,
+  "clean_chars": 0,
+  "same_as_saved": false,
+  "names_fighter": false
+ },
+ "1050": {
+  "source": "readability",
+  "checks": {
+   "headline": true,
+   "shares_sentences": true,
+   "names_fighter": true,
+   "long_enough": "passed on recheck"
+  },
+  "reason": "Readability passed once its length was checked against the hand-cleaned text",
+  "saved_chars": 5552,
+  "clean_chars": 2207,
+  "same_as_saved": false,
+  "names_fighter": true
+ },
+ "1058": {
+  "source": "readability",
+  "checks": {
+   "headline": true,
+   "shares_sentences": true,
+   "names_fighter": true,
+   "long_enough": true
+  },
+  "reason": "Readability passed all four checks",
+  "saved_chars": 2296,
+  "clean_chars": 2677,
+  "same_as_saved": false,
+  "names_fighter": true
+ },
+ "1066": {
+  "source": "hand-cleaned",
+  "checks": {
+   "headline": true,
+   "shares_sentences": true,
+   "names_fighter": true,
+   "long_enough": false
+  },
+  "reason": "Readability not used (failed: long_enough); nothing removed (embedded fan tweets kept)",
+  "saved_chars": 2451,
+  "clean_chars": 2451,
+  "same_as_saved": true,
+  "names_fighter": true
+ },
+ "1072": {
+  "source": "readability",
+  "checks": {
+   "headline": true,
+   "shares_sentences": true,
+   "names_fighter": true,
+   "long_enough": true
+  },
+  "reason": "Readability passed all four checks",
+  "saved_chars": 1736,
+  "clean_chars": 1853,
+  "same_as_saved": false,
+  "names_fighter": true
+ },
+ "1076": {
+  "source": "readability",
+  "checks": {
+   "headline": true,
+   "shares_sentences": true,
+   "names_fighter": true,
+   "long_enough": true
+  },
+  "reason": "Readability passed all four checks",
+  "saved_chars": 2744,
+  "clean_chars": 2982,
+  "same_as_saved": false,
+  "names_fighter": true
+ },
+ "1080": {
+  "source": "hand-cleaned",
+  "checks": null,
+  "reason": "Readability not used (page not fetched (403)); two LATEST NEWS inserts removed",
+  "saved_chars": 2430,
+  "clean_chars": 2205,
+  "same_as_saved": false,
+  "names_fighter": false
+ },
+ "1085": {
+  "source": "hand-cleaned",
+  "checks": null,
+  "reason": "Readability not used (page not fetched (403)); removed 2 LATEST NEWS inserts and a photo credit",
+  "saved_chars": 3172,
+  "clean_chars": 2915,
+  "same_as_saved": false,
+  "names_fighter": false
+ },
+ "1089": {
+  "source": "hand-cleaned",
+  "checks": null,
+  "reason": "Readability not used (page not fetched (404)); Yahoo menu, trending, repeated headline, photo caption, byline, footer",
+  "saved_chars": 3495,
+  "clean_chars": 1627,
+  "same_as_saved": false,
+  "names_fighter": true
+ },
+ "1093": {
+  "source": "readability",
+  "checks": {
+   "headline": true,
+   "shares_sentences": true,
+   "names_fighter": true,
+   "long_enough": "passed on recheck"
+  },
+  "reason": "Readability passed once its length was checked against the hand-cleaned text",
+  "saved_chars": 5187,
+  "clean_chars": 2068,
+  "same_as_saved": false,
+  "names_fighter": true
+ },
+ "1097": {
+  "source": "readability",
+  "checks": {
+   "headline": true,
+   "shares_sentences": true,
+   "names_fighter": true,
+   "long_enough": "passed on recheck"
+  },
+  "reason": "Readability passed once its length was checked against the hand-cleaned text",
+  "saved_chars": 2795,
+  "clean_chars": 2835,
+  "same_as_saved": false,
+  "names_fighter": true
+ },
+ "1101": {
+  "source": "readability",
+  "checks": {
+   "headline": true,
+   "shares_sentences": true,
+   "names_fighter": true,
+   "long_enough": "passed on recheck"
+  },
+  "reason": "Readability passed once its length was checked against the hand-cleaned text",
+  "saved_chars": 2238,
+  "clean_chars": 2144,
+  "same_as_saved": false,
+  "names_fighter": true
+ },
+ "1125": {
+  "source": "readability",
+  "checks": {
+   "headline": true,
+   "shares_sentences": true,
+   "names_fighter": true,
+   "long_enough": true
+  },
+  "reason": "Readability passed all four checks",
+  "saved_chars": 2570,
+  "clean_chars": 2724,
+  "same_as_saved": false,
+  "names_fighter": true
+ },
+ "1129": {
+  "source": "readability",
+  "checks": {
+   "headline": true,
+   "shares_sentences": true,
+   "names_fighter": true,
+   "long_enough": true
+  },
+  "reason": "Readability passed all four checks",
+  "saved_chars": 2570,
+  "clean_chars": 2724,
+  "same_as_saved": false,
+  "names_fighter": true
+ },
+ "1146": {
+  "source": "hand-cleaned",
+  "checks": null,
+  "reason": "Readability not used (page not fetched (403)); two LATEST NEWS link blocks, photo caption, excerpt of a different story at end",
+  "saved_chars": 2639,
+  "clean_chars": 1691,
+  "same_as_saved": false,
+  "names_fighter": true
+ },
+ "1150": {
+  "source": "hand-cleaned",
+  "checks": {
+   "headline": true,
+   "shares_sentences": false,
+   "names_fighter": false,
+   "long_enough": false
+  },
+  "reason": "Readability not used (failed: shares_sentences, names_fighter, long_enough); photo caption/author, casino/betting disclaimer, related link at end",
+  "saved_chars": 1590,
+  "clean_chars": 943,
+  "same_as_saved": false,
+  "names_fighter": true
+ },
+ "1160": {
+  "source": "hand-cleaned",
+  "checks": {
+   "headline": true,
+   "shares_sentences": false,
+   "names_fighter": false,
+   "long_enough": false
+  },
+  "reason": "Readability not used (failed: shares_sentences, names_fighter, long_enough); photo caption at start; whole Morning Report link roundup, video/social lists, exit poll and footer at end",
+  "saved_chars": 4756,
+  "clean_chars": 1923,
+  "same_as_saved": false,
+  "names_fighter": true
+ },
+ "1161": {
+  "source": "hand-cleaned",
+  "checks": {
+   "headline": true,
+   "shares_sentences": false,
+   "names_fighter": false,
+   "long_enough": false
+  },
+  "reason": "Readability not used (failed: shares_sentences, names_fighter, long_enough); related headline, casino/betting legal disclaimers at end",
+  "saved_chars": 1801,
+  "clean_chars": 1207,
+  "same_as_saved": false,
+  "names_fighter": false
+ },
+ "1172": {
+  "source": "hand-cleaned",
+  "checks": null,
+  "reason": "Readability not used (page not fetched (403)); site menu, headline/date/share block, photo credit, subscribe prompt before body removed; text ends truncated",
+  "saved_chars": 10000,
+  "clean_chars": 7645,
+  "same_as_saved": false,
+  "names_fighter": true
+ },
+ "1200": {
+  "source": "readability",
+  "checks": {
+   "headline": true,
+   "shares_sentences": true,
+   "names_fighter": true,
+   "long_enough": true
+  },
+  "reason": "Readability passed all four checks",
+  "saved_chars": 10000,
+  "clean_chars": 10939,
+  "same_as_saved": false,
+  "names_fighter": true
+ },
+ "1260": {
+  "source": "readability",
+  "checks": {
+   "headline": true,
+   "shares_sentences": true,
+   "names_fighter": true,
+   "long_enough": true
+  },
+  "reason": "Readability passed all four checks",
+  "saved_chars": 1711,
+  "clean_chars": 1626,
+  "same_as_saved": false,
+  "names_fighter": true
+ }
+}
