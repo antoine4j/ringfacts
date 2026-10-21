@@ -15,7 +15,7 @@ import json, os, sys, time, urllib.request, urllib.error
 from concurrent.futures import ThreadPoolExecutor
 
 HERE = os.path.dirname(os.path.abspath(__file__))
-ENV = os.path.join(HERE, "../../../.env")
+ENV = os.path.join(HERE, "../../bench/.env.bench")
 URL = "https://api.typesafe.ai/v1/systemone"
 MODEL = "jev-1.13.0"
 PRICE_PER_TOKEN = 0.042 / 1_000_000
@@ -24,14 +24,14 @@ LEDGER = os.path.join(HERE, "ledger.json")
 
 
 def api_key():
-    """The JEV key from the .env line that names typesafe; never printed.
+    """The JEV test key from research/bench/.env.bench; never printed.
 
     @returns: the key string
     """
     for line in open(ENV):
-        if "typesafe" in line.lower() and "=" in line:
+        if line.startswith("JEV_TEST_API_KEY="):
             return line.split("=", 1)[1].strip().strip('"').strip("'")
-    raise SystemExit("no typesafe key line in .env")
+    raise SystemExit("no JEV_TEST_API_KEY line in research/bench/.env.bench")
 
 
 def state_of(article):

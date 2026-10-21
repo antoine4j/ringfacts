@@ -82,6 +82,8 @@ node --env-file=../../../.env.v0 write-digest.ts --fighter "Ilia Topuria" --from
 node --env-file=../../../.env.v0 archive-digests.ts           # past weeks by three models, side by side (D25)
 ```
 
+The replay calls JEV on the experiments' test key, `JEV_TEST_API_KEY` in `research/bench/.env.bench`, never live v0's.
+
 Each replay's scores are kept in `pipeline/measure/replay-results/`. The
 daily counts (10.2) are part of the hourly run.
 

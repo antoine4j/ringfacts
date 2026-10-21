@@ -39,6 +39,8 @@ that counts.
 - **Production keys.** `research/bench/.env.bench` (gitignored) holds keys named
   `ANTHROPIC_TEST_API_KEY` and `GEMINI_TEST_API_KEY`; `research/bench/env.js` maps them
   onto the SDK names and refuses a file that carries the unprefixed names.
+  The same file holds `OPENROUTER_TEST_API_KEY` and `JEV_TEST_API_KEY` (TypeSafe's
+  JEV), which the experiment scripts and v0's golden replay read directly.
 - **The production database.** The `DATABASE_URL` in that file must name the
   `bench` database; `reset.js` checks again before its one `TRUNCATE`.
 - **The group.** Nothing here posts. (`BENCH_CHAT_ID` is reserved for a

@@ -5,16 +5,16 @@ Read-only. Writes raw/ (one file per call, so a re-run is free) and results.json
 import json, os, sys, time, urllib.request, urllib.error
 from concurrent.futures import ThreadPoolExecutor
 
-ENV="/Users/anton/Projects/fighter-bot/.env"
+ENV=os.path.join(os.path.dirname(os.path.abspath(__file__)),"../../bench/.env.bench")
 URL="https://api.typesafe.ai/v1/systemone"
 HERE=os.path.dirname(os.path.abspath(__file__))
 PASS=int(os.environ.get("PASS","1"))
 
 def key():
     for l in open(ENV):
-        if "typesafe" in l.lower() and "=" in l:
+        if l.startswith("JEV_TEST_API_KEY="):
             return l.split("=",1)[1].strip().strip('"').strip("'")
-    raise SystemExit("no key")
+    raise SystemExit("no JEV_TEST_API_KEY line in research/bench/.env.bench")
 
 Q=json.load(open(f"{HERE}/questions.json"))
 ROWS=json.load(open(f"{HERE}/data/articles.json"))

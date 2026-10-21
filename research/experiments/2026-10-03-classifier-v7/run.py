@@ -21,14 +21,14 @@ ROUND = os.environ.get("ROUND", "r1")
 
 
 def api_key():
-    """The classifier's API key, from the .env line that names the vendor.
+    """The classifier's test key, from research/bench/.env.bench.
 
     @returns: the key; it is never printed
     """
-    for line in open(f"{HERE}/../../../.env"):
-        if "typesafe" in line.lower() and "=" in line:
+    for line in open(f"{HERE}/../../bench/.env.bench"):
+        if line.startswith("JEV_TEST_API_KEY="):
             return line.split("=", 1)[1].strip().strip('"').strip("'")
-    raise SystemExit("no typesafe key line in .env")
+    raise SystemExit("no JEV_TEST_API_KEY line in research/bench/.env.bench")
 
 
 def state_of(article):

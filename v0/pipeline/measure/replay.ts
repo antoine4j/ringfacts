@@ -10,6 +10,8 @@
 // The replay schema holds only copies of golden articles and v0's answers to
 // them, so each replay starts by emptying it (the owner's address is needed
 // for that alone). Each replay's scores are kept in measure/replay-results/.
+// JEV runs on the experiments' test key (research/bench/.env.bench), never
+// live v0's, so a replay cannot eat into the hourly run's allowance.
 
 import pg from "pg";
 import { readFileSync, writeFileSync, mkdirSync } from "node:fs";
@@ -21,6 +23,7 @@ import { scoreReplay } from "./replay-score.ts";
 import type { RunContext } from "../workflow/context.ts";
 
 const GOLDEN = new URL("../../../golden/", import.meta.url);
+const BENCH_ENV = new URL("../../../research/bench/.env.bench", import.meta.url);
 const REPLAY_TABLES = "articles, readings, classifications, extracts, claims, groupings, decisions, digests, digest_claims, feedback, review_readings, review_same_claims, review_tiers, review_claim_notes, runs, daily_reports, reactions";
 
 /**
@@ -39,6 +42,18 @@ export function goldenItems(): ProductionItem[] {
   }));
   items.sort((first: ProductionItem, second: ProductionItem) => first.published_at.getTime() - second.published_at.getTime());
   return items;
+}
+
+/**
+ * The JEV test key, read from the bench's key file; never printed.
+ *
+ * @returns The key.
+ */
+function jevTestKey(): string {
+  const line = readFileSync(BENCH_ENV, "utf8").split("\n").find((entry) => entry.startsWith("JEV_TEST_API_KEY="));
+  const key = line?.slice("JEV_TEST_API_KEY=".length).trim().replace(/^["']|["']$/g, "");
+  if (!key) throw new Error("no JEV_TEST_API_KEY line in research/bench/.env.bench");
+  return key;
 }
 
 /**
@@ -97,7 +112,7 @@ async function main(): Promise<void> {
   const imported = isContinue ? { imported: 0, readings: 0, noBody: 0 } : await importItems(pool, goldenItems(), SUBJECTS, true);
   const context: RunContext = {
     pool, feed: null, subjects: SUBJECTS, backfill: true, importDays: null, importLimit: null, deadline: Infinity,
-    keys: { jev: String(process.env.JEV_API_KEY), openrouter: String(process.env.OPENROUTER_API_KEY), gemini: String(process.env.GEMINI_API_KEY) },
+    keys: { jev: jevTestKey(), openrouter: String(process.env.OPENROUTER_API_KEY), gemini: String(process.env.GEMINI_API_KEY) },
     poster: async () => null, readsReactions: false, sends: false, tally: { imported: imported.imported, readings_made: imported.readings, no_body: imported.noBody },
   };
   const result = await (await buildWorkflow(context).createRun()).start({ inputData: {} });

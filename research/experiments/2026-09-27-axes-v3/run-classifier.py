@@ -13,15 +13,15 @@ from concurrent.futures import ThreadPoolExecutor
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 OUTDIR = f"{HERE}/classifier-v3"
-ENV = f"{HERE}/../../../.env"
+ENV = f"{HERE}/../../bench/.env.bench"
 URL = "https://api.typesafe.ai/v1/systemone"
 PASS = int(os.environ.get("PASS", "1")); ORDER = os.environ.get("ORDER", "original")
 ROWS = json.load(open(f"{HERE}/../../../golden/articles.json"))
 
 def key():
     for l in open(ENV):
-        if "typesafe" in l.lower() and "=" in l: return l.split("=", 1)[1].strip().strip('"').strip("'")
-    raise SystemExit("no typesafe key line in .env")
+        if l.startswith("JEV_TEST_API_KEY="): return l.split("=", 1)[1].strip().strip('"').strip("'")
+    raise SystemExit("no JEV_TEST_API_KEY line in research/bench/.env.bench")
 
 def questions():
     q = json.load(open(f"{OUTDIR}/questions.json"))
