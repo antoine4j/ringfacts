@@ -1,0 +1,574 @@
+{
+ "fresh": {
+  "perFighter": {
+   "Daniil Donchenko": {
+    "articles": 38,
+    "fetched": 21,
+    "ours": 12,
+    "readability": 13,
+    "jina": 11,
+    "page_readers": 14,
+    "ours_or_jina": 16,
+    "all": 17,
+    "production": 11,
+    "jina_only": 3
+   },
+   "Yaroslav Amosov": {
+    "articles": 46,
+    "fetched": 29,
+    "ours": 16,
+    "readability": 14,
+    "jina": 25,
+    "page_readers": 16,
+    "ours_or_jina": 26,
+    "all": 26,
+    "production": 13,
+    "jina_only": 10
+   },
+   "Ilia Topuria": {
+    "articles": 90,
+    "fetched": 77,
+    "ours": 68,
+    "readability": 60,
+    "jina": 73,
+    "page_readers": 69,
+    "ours_or_jina": 81,
+    "all": 81,
+    "production": 71,
+    "jina_only": 12
+   }
+  },
+  "perOutlet": {
+   "MMA Fighting": {
+    "articles": 8,
+    "fetched": 8,
+    "page_readers": 8,
+    "jina": 8,
+    "all": 8
+   },
+   "Sherdog": {
+    "articles": 1,
+    "fetched": 1,
+    "page_readers": 1,
+    "jina": 0,
+    "all": 1
+   },
+   "boxingnews.com": {
+    "articles": 2,
+    "fetched": 2,
+    "page_readers": 2,
+    "jina": 2,
+    "all": 2
+   },
+   "Sport.ua": {
+    "articles": 9,
+    "fetched": 0,
+    "page_readers": 0,
+    "jina": 0,
+    "all": 0
+   },
+   "Champion.com.ua": {
+    "articles": 6,
+    "fetched": 6,
+    "page_readers": 6,
+    "jina": 0,
+    "all": 6
+   },
+   "Tribuna.com": {
+    "articles": 13,
+    "fetched": 0,
+    "page_readers": 0,
+    "jina": 0,
+    "all": 0
+   },
+   "24 Канал": {
+    "articles": 3,
+    "fetched": 3,
+    "page_readers": 3,
+    "jina": 3,
+    "all": 3
+   },
+   "Ukr.net": {
+    "articles": 15,
+    "fetched": 15,
+    "page_readers": 0,
+    "jina": 5,
+    "all": 5
+   },
+   "Tribuna UA": {
+    "articles": 2,
+    "fetched": 0,
+    "page_readers": 0,
+    "jina": 0,
+    "all": 0
+   },
+   "СПОРТ-ЕКСПРЕС": {
+    "articles": 4,
+    "fetched": 4,
+    "page_readers": 4,
+    "jina": 4,
+    "all": 4
+   },
+   "Bloody Elbow": {
+    "articles": 11,
+    "fetched": 0,
+    "page_readers": 0,
+    "jina": 11,
+    "all": 11
+   },
+   "XSPORT.ua": {
+    "articles": 3,
+    "fetched": 3,
+    "page_readers": 2,
+    "jina": 3,
+    "all": 3
+   },
+   "xsport.ua": {
+    "articles": 1,
+    "fetched": 1,
+    "page_readers": 0,
+    "jina": 1,
+    "all": 1
+   },
+   "enews.com.ua": {
+    "articles": 1,
+    "fetched": 0,
+    "page_readers": 0,
+    "jina": 0,
+    "all": 0
+   },
+   "my.ua": {
+    "articles": 1,
+    "fetched": 1,
+    "page_readers": 1,
+    "jina": 1,
+    "all": 1
+   },
+   "247Sports": {
+    "articles": 3,
+    "fetched": 1,
+    "page_readers": 0,
+    "jina": 0,
+    "all": 0
+   },
+   "Sportscape Magazine": {
+    "articles": 2,
+    "fetched": 2,
+    "page_readers": 2,
+    "jina": 2,
+    "all": 2
+   },
+   "24tv.ua": {
+    "articles": 1,
+    "fetched": 1,
+    "page_readers": 1,
+    "jina": 1,
+    "all": 1
+   },
+   "Волинські Новини": {
+    "articles": 1,
+    "fetched": 1,
+    "page_readers": 1,
+    "jina": 1,
+    "all": 1
+   },
+   "Sport.nv.ua.": {
+    "articles": 2,
+    "fetched": 0,
+    "page_readers": 0,
+    "jina": 2,
+    "all": 2
+   },
+   "glavcom.ua": {
+    "articles": 1,
+    "fetched": 1,
+    "page_readers": 1,
+    "jina": 1,
+    "all": 1
+   },
+   "Главком": {
+    "articles": 1,
+    "fetched": 1,
+    "page_readers": 1,
+    "jina": 1,
+    "all": 1
+   },
+   "ukr.net": {
+    "articles": 2,
+    "fetched": 2,
+    "page_readers": 0,
+    "jina": 0,
+    "all": 0
+   },
+   "sportnews.com.ua": {
+    "articles": 1,
+    "fetched": 1,
+    "page_readers": 1,
+    "jina": 1,
+    "all": 1
+   },
+   "Футбол 24": {
+    "articles": 1,
+    "fetched": 1,
+    "page_readers": 1,
+    "jina": 1,
+    "all": 1
+   },
+   "Unisba Media": {
+    "articles": 1,
+    "fetched": 0,
+    "page_readers": 0,
+    "jina": 0,
+    "all": 0
+   },
+   "DAZN": {
+    "articles": 5,
+    "fetched": 5,
+    "page_readers": 5,
+    "jina": 0,
+    "all": 5
+   },
+   "ABC": {
+    "articles": 4,
+    "fetched": 4,
+    "page_readers": 4,
+    "jina": 4,
+    "all": 4
+   },
+   "www.mma.es": {
+    "articles": 1,
+    "fetched": 1,
+    "page_readers": 1,
+    "jina": 1,
+    "all": 1
+   },
+   "Eurosport": {
+    "articles": 4,
+    "fetched": 4,
+    "page_readers": 0,
+    "jina": 0,
+    "all": 0
+   },
+   "FashionNetwork USA": {
+    "articles": 1,
+    "fetched": 1,
+    "page_readers": 1,
+    "jina": 1,
+    "all": 1
+   },
+   "Sporting Goods Intelligence Europe": {
+    "articles": 1,
+    "fetched": 1,
+    "page_readers": 1,
+    "jina": 0,
+    "all": 1
+   },
+   "Yahoo Sports": {
+    "articles": 7,
+    "fetched": 7,
+    "page_readers": 6,
+    "jina": 5,
+    "all": 6
+   },
+   "MMA Sucka": {
+    "articles": 8,
+    "fetched": 8,
+    "page_readers": 6,
+    "jina": 6,
+    "all": 6
+   },
+   "Diario AS": {
+    "articles": 3,
+    "fetched": 2,
+    "page_readers": 2,
+    "jina": 3,
+    "all": 3
+   },
+   "Mundo Deportivo": {
+    "articles": 8,
+    "fetched": 8,
+    "page_readers": 8,
+    "jina": 7,
+    "all": 8
+   },
+   "Antena 3 Noticias": {
+    "articles": 2,
+    "fetched": 2,
+    "page_readers": 2,
+    "jina": 2,
+    "all": 2
+   },
+   "20Minutos": {
+    "articles": 3,
+    "fetched": 3,
+    "page_readers": 3,
+    "jina": 3,
+    "all": 3
+   },
+   "marca usa": {
+    "articles": 2,
+    "fetched": 2,
+    "page_readers": 2,
+    "jina": 2,
+    "all": 2
+   },
+   "Heavy.com": {
+    "articles": 1,
+    "fetched": 1,
+    "page_readers": 1,
+    "jina": 1,
+    "all": 1
+   },
+   "Infobae": {
+    "articles": 4,
+    "fetched": 4,
+    "page_readers": 4,
+    "jina": 4,
+    "all": 4
+   },
+   "La Razón": {
+    "articles": 1,
+    "fetched": 1,
+    "page_readers": 1,
+    "jina": 1,
+    "all": 1
+   },
+   "OkDiario": {
+    "articles": 1,
+    "fetched": 1,
+    "page_readers": 1,
+    "jina": 1,
+    "all": 1
+   },
+   "FashionNetwork - The World's Fashion Business News": {
+    "articles": 1,
+    "fetched": 0,
+    "page_readers": 0,
+    "jina": 1,
+    "all": 1
+   },
+   "MMA Junkie": {
+    "articles": 1,
+    "fetched": 1,
+    "page_readers": 1,
+    "jina": 1,
+    "all": 1
+   },
+   "MARCA": {
+    "articles": 2,
+    "fetched": 2,
+    "page_readers": 2,
+    "jina": 2,
+    "all": 2
+   },
+   "MMA Mania": {
+    "articles": 2,
+    "fetched": 2,
+    "page_readers": 2,
+    "jina": 2,
+    "all": 2
+   },
+   "Radio Mitre": {
+    "articles": 1,
+    "fetched": 1,
+    "page_readers": 1,
+    "jina": 1,
+    "all": 1
+   },
+   "La Sueur": {
+    "articles": 1,
+    "fetched": 1,
+    "page_readers": 1,
+    "jina": 1,
+    "all": 1
+   },
+   "SPORT": {
+    "articles": 1,
+    "fetched": 1,
+    "page_readers": 1,
+    "jina": 1,
+    "all": 1
+   },
+   "Marca": {
+    "articles": 2,
+    "fetched": 2,
+    "page_readers": 2,
+    "jina": 2,
+    "all": 2
+   },
+   "Facebook": {
+    "articles": 1,
+    "fetched": 0,
+    "page_readers": 0,
+    "jina": 0,
+    "all": 0
+   },
+   "Forbes España": {
+    "articles": 1,
+    "fetched": 1,
+    "page_readers": 1,
+    "jina": 1,
+    "all": 1
+   },
+   "El Frente": {
+    "articles": 1,
+    "fetched": 1,
+    "page_readers": 1,
+    "jina": 1,
+    "all": 1
+   },
+   "Libertad Digital": {
+    "articles": 1,
+    "fetched": 1,
+    "page_readers": 1,
+    "jina": 1,
+    "all": 1
+   },
+   "talkSPORT": {
+    "articles": 1,
+    "fetched": 1,
+    "page_readers": 0,
+    "jina": 1,
+    "all": 1
+   },
+   "20minutos.es": {
+    "articles": 1,
+    "fetched": 1,
+    "page_readers": 1,
+    "jina": 1,
+    "all": 1
+   },
+   "شبكة تواصل الإخبارية": {
+    "articles": 1,
+    "fetched": 0,
+    "page_readers": 0,
+    "jina": 0,
+    "all": 0
+   },
+   "FashionNetwork France": {
+    "articles": 1,
+    "fetched": 0,
+    "page_readers": 0,
+    "jina": 1,
+    "all": 1
+   },
+   "FashionNetwork España": {
+    "articles": 1,
+    "fetched": 0,
+    "page_readers": 0,
+    "jina": 1,
+    "all": 1
+   },
+   "USA Today": {
+    "articles": 1,
+    "fetched": 1,
+    "page_readers": 1,
+    "jina": 1,
+    "all": 1
+   },
+   "BJPenn.com": {
+    "articles": 1,
+    "fetched": 1,
+    "page_readers": 1,
+    "jina": 1,
+    "all": 1
+   }
+  },
+  "bothRead": {
+   "pages": 84,
+   "readability_longer": 47,
+   "furniture_ours": {
+    "n": 84,
+    "median": 0
+   },
+   "furniture_readability": {
+    "n": 84,
+    "median": 0
+   },
+   "ours_in_readability": {
+    "n": 84,
+    "median": 1
+   },
+   "readability_in_ours": {
+    "n": 84,
+    "median": 0.92
+   },
+   "jina_in_readability": {
+    "n": 76,
+    "median": 0.48
+   },
+   "readability_in_jina": {
+    "n": 76,
+    "median": 1
+   },
+   "jina_furniture": {
+    "n": 76,
+    "median": 0.11
+   }
+  }
+ },
+ "golden": {
+  "readability:ours": {
+   "n": 159,
+   "readable": 158,
+   "precision": 0.99,
+   "recall": 0.95
+  },
+  "readability:readability": {
+   "n": 159,
+   "readable": 159,
+   "precision": 1,
+   "recall": 1
+  },
+  "readability:jina": {
+   "n": 156,
+   "readable": 150,
+   "precision": 0.35,
+   "recall": 1
+  },
+  "hand-cleaned:ours": {
+   "n": 71,
+   "readable": 65,
+   "precision": 0.85,
+   "recall": 1
+  },
+  "hand-cleaned:readability": {
+   "n": 71,
+   "readable": 38,
+   "precision": 0.86,
+   "recall": 0.24
+  },
+  "hand-cleaned:jina": {
+   "n": 133,
+   "readable": 99,
+   "precision": 0.3,
+   "recall": 0.97
+  }
+ },
+ "cpu": {
+  "read.json": {
+   "pages": 127,
+   "readability_ms": {
+    "median": 35.67,
+    "mean": 54,
+    "max": 497
+   },
+   "ours_ms": {
+    "median": 0.08,
+    "max": 4
+   }
+  },
+  "golden-read.json": {
+   "pages": 234,
+   "readability_ms": {
+    "median": 45.65,
+    "mean": 67,
+    "max": 854
+   },
+   "ours_ms": {
+    "median": 0.13,
+    "max": 5
+   }
+  }
+ }
+}

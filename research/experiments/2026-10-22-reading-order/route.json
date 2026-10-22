@@ -1,0 +1,26 @@
+{
+ "Daniil Donchenko": {
+  "sampled": 38,
+  "articles": 27,
+  "production": 9,
+  "ours": 11,
+  "ours_readability": 13,
+  "all": 15
+ },
+ "Yaroslav Amosov": {
+  "sampled": 46,
+  "articles": 35,
+  "production": 12,
+  "ours": 14,
+  "ours_readability": 14,
+  "all": 18
+ },
+ "Ilia Topuria": {
+  "sampled": 90,
+  "articles": 89,
+  "production": 71,
+  "ours": 67,
+  "ours_readability": 68,
+  "all": 80
+ }
+}

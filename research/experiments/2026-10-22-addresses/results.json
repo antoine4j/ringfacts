@@ -1,0 +1,39 @@
+{
+ "items": 2223,
+ "still_wrapped": 102,
+ "feed_link": {
+  "seen": 0,
+  "groups": 0,
+  "mixedHosts": 0,
+  "falseMerges": []
+ },
+ "real_address": {
+  "seen": 162,
+  "groups": 154,
+  "mixedHosts": 0,
+  "falseMerges": []
+ },
+ "slug": {
+  "seen": 223,
+  "groups": 208,
+  "mixedHosts": 7,
+  "falseMerges": []
+ },
+ "any_key": {
+  "seen": 223
+ },
+ "query_kept": [
+  1046,
+  1058,
+  1116,
+  1139,
+  1149,
+  1167
+ ],
+ "short_slugs": [
+  "BXRTBuPQmmc",
+  "g8zh2VfEPRk",
+  "cyKHul1H-Ss",
+  "6095726"
+ ]
+}

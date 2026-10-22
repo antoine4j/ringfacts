@@ -519,6 +519,64 @@ Rules for adding to it:
   overturn it:** a later week where clean text moves tiers beyond the
   noise floor.
 
+### A simple extractor keeps the article; Readability, when it fails, loses it
+`domain` · `measured` · *FB 2026-10-22*
+- **Evidence:** on 127 fresh pages (Sep–Oct), our regex extractor
+  (`lib/extract.js`) passed v0's readable bar on 96, Readability on 87;
+  Readability alone read 3, ours alone 12. Against 3.12's clean texts:
+  on the 159 golden pages where Readability passed its checks, 99% of
+  ours' words belong and it keeps 95% of the article; on the 71 where
+  Readability failed, it kept a median 24% of the article (it took the
+  wrong part of the page), while ours kept all of it with 15% extra
+  words. The site's own JSON-LD `articleBody` is the clean case (100% of
+  words belong); "all paragraphs" the dirty one (72%). Readability costs
+  about 54 ms of CPU a page; with jsdom, a page's window left open leaks
+  (652 MB of heap after 127 pages). `research/experiments/2026-10-22-reading-order/`.
+- **Does not say:** that furniture is free (see the entry above for what
+  it moves). The two golden subsets are biased in opposite directions by
+  how their keys were made. **Would overturn it:** a fresh hand-checked
+  set where Readability's text is cleaner and no shorter.
+
+### Some outlets refuse every free reader; the rest of the loss is copies
+`corpus` · `measured` · *FB 2026-10-22*
+- **Evidence:** of 174 fresh articles, 43 pages refused us (403). Jina
+  Reader, keyless, read most refused pages elsewhere (Bloody Elbow 11 of
+  11), but Tribuna and Sport.ua answer pages and RSS alike with
+  Cloudflare's bot check, for us and for Jina. With copies merged by slug,
+  all free readers together reach Amosov 51%, Donchenko 56%, Topuria 90%.
+  Jina's own text is mostly not the article (30–35% of its words belong
+  to the clean text) but keeps nearly all of it; asked for the page's HTML
+  instead, with our extractor run on it, 98% of the words belong and 98%
+  of the article is kept (60 golden pages). Of 17 Ukr.net items, 9
+  link to an article already found directly. Same folder.
+- **Does not say:** that the unread articles carried news found nowhere
+  else. **Would overturn it:** a source review (E4) that finds another
+  free route to Tribuna's or Sport.ua's articles.
+
+### Waiting out a Google News 503 inside the run does not help
+`domain` · `measured` · *FB 2026-10-22*
+- **Evidence:** in production's last 30 days, 834 searches got a 503 and
+  waited 75 seconds to ask again; 833 failed again. Refusals come in whole
+  runs (139 of 720), and those runs took about 9 minutes each, 77,128 of
+  production's 90,046 vCPU-seconds, about a third of Cloud Run's free
+  CPU. Cloud Run job executions and logs, 23 Sep to 22 Oct.
+- **Does not say:** why Google refuses (load, address range, time).
+  **Would overturn it:** a retry policy that measurably recovers searches
+  within the same run.
+
+### A slug catches the copies an address misses; some outlets keep the article in the query
+`domain` · `measured` · *FB 2026-10-22*
+- **Evidence:** on production's 2,223 stored addresses, the slug
+  (protocol, host, `amp` parts, trailing slash and query dropped) finds
+  223 copies against 162 by exact address, all eleven known pairs, and no
+  two different headlines sharing a slug. But `agencianova.com/nota.asp?…&id=…`
+  and `enews.com.ua/?page=news&slug=…` carry the article only in the
+  query, so the query is kept where the path names no page.
+  `research/experiments/2026-10-22-addresses/`.
+- **Does not say:** that short slugs are safe across hosts (four under 12
+  characters; none collided). **Would overturn it:** a false merge in a
+  week of v0's own sightings.
+
 ### Speculation outnumbers events by two orders of magnitude
 `domain` · `measured` · *RF-L12; FB agrees, 2026-09-18*
 - **Evidence (RF):** 34 days, three fighters: roughly one booking, one result,
