@@ -1,9 +1,14 @@
 # Domains
 
-A **domain** is everything the tracker knows about a subject area. The pipeline
-itself — fetch, dedup, semantic dedup, body extraction, claim matching,
-tiering, posting — never mentions MMA, fighters, or fights. Swap the domain and
-the same machinery tracks musicians, politicians, or company executives.
+A **domain** is the subject-area knowledge production keeps out of its code.
+The aim is a pipeline — fetch, dedup, semantic dedup, body extraction, claim
+matching, tiering, posting — that never mentions MMA, so that swapping the
+domain tracks musicians, politicians, or company executives instead. It is
+only partly met. `lib/matcher.js` still has fight rules of its own, in its
+prompt (a story about a fight versus a reaction to it, an opponent's
+cornerman as a passing mention) and in its checks (an announcement needs an
+opponent, event or date; a result needs a fight date). v0 does not read this
+folder: its prompts are written for MMA throughout.
 
 Select one with the `DOMAIN` environment variable (default: `mma`).
 

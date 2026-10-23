@@ -117,17 +117,24 @@ pages walk through it with real articles:
 **[Architecture Overview](https://antoine4j.github.io/ringfacts/architecture-overview.html)**
 ([source](docs/architecture-overview.html)).
 
-### Two kinds of configuration
+### What is configured, and what is built in
 
-The pipeline knows nothing about MMA. Two things do, kept apart on purpose.
-**The domain** ([`domain/`](domain/README.md)) is *what kind of thing* is
-tracked: which outlets to read, whose word counts as official, the claim
-vocabulary. [`domain/example-music.js`](domain/example-music.js) is a second
-one, written to prove the seam is real and labelled as never run.
-**The watchlist** ([`watchlist.js`](watchlist.js)) is *who* is tracked, with
-search aliases per language and the namesakes to watch out for;
-[`watchlist.example.js`](watchlist.example.js) documents the shape for anyone
-starting their own.
+**Who is tracked** is configuration in both pipelines: the watchlist
+([`watchlist.js`](watchlist.js)), with search aliases per language and the
+namesakes to watch out for. [`watchlist.example.js`](watchlist.example.js)
+documents the shape for anyone starting their own.
+
+**The sport** is built in. In v0 it is written into the prompts: the
+classifier's questions, the extractor's worked examples, and the grouping and
+digest instructions are all about fights. Tracking another kind of subject
+would mean rewriting them.
+
+Production moved part of it out, into a domain file
+([`domain/`](domain/README.md)): which outlets to read, whose word counts as
+official, the claim vocabulary. The rest stayed in: its decider's prompt still
+talks about fights, opponents and cornermen, and its checks expect a fight's
+opponent, event and date. [`domain/example-music.js`](domain/example-music.js)
+is a second domain, written to test that split and never run.
 
 ## Technology
 

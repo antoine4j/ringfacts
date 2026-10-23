@@ -1,8 +1,8 @@
 // The MMA domain. Everything in this file is knowledge about a subject area,
-// not about how the pipeline works — swap it and the same machinery tracks
-// musicians or politicians. See domain/README.md for the contract.
+// not about how the pipeline works. Only production reads it, and some MMA
+// knowledge is still in lib/matcher.js; domain/README.md says what.
 //
-// The prompt fragments exist so lib/matcher.js can stay domain-blind. They are
+// The prompt fragments exist so lib/matcher.js needs less MMA of its own. They are
 // worded to slot into its sentences verbatim; changing one changes what the
 // model is told, so they carry the same weight as prompt text and should be
 // edited with the same care.

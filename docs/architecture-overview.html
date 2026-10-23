@@ -475,16 +475,17 @@
     <span class="f">domain/mma.js</span> what kind of thing<span class="sep">·</span>
     <span class="f">watchlist.js</span> who
   </div>
-  <p class="prose">The pipeline knows nothing about MMA. Two files do, and they are separate on
-  purpose.</p>
+  <p class="prose">The pipeline is built for MMA. Who is tracked lives in one file; what the
+  sport is lives partly in another and partly in the prompt itself.</p>
 
   <div class="two-col">
     <div class="side red">
       <h4>The domain</h4>
       <p><b>What kind of thing is tracked.</b> Which outlets to read, whose word counts as official,
-      the vocabulary of claim types, and the sentences spliced into the model's prompt.</p>
-      <p>Swap this file and the same machinery tracks musicians instead.
-      <span class="mono">domain/example-music.js</span> exists to prove the seam is real, and is
+      the vocabulary of claim types, and some phrases spliced into production's prompt.</p>
+      <p>Not all of the pipeline's MMA knowledge is here: the decider's prompt still talks about
+      fights and opponents, and its checks expect a fight's opponent, event and date.
+      <span class="mono">domain/example-music.js</span> was written to test the split, and is
       clearly marked as never having been run.</p>
     </div>
     <div class="side blue">
