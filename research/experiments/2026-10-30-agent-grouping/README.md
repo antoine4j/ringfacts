@@ -123,6 +123,20 @@ folder shared by every agent of the session, where the first judge's
 output still lay. Agents of one session share that folder, so a repeat
 run gets a folder of its own.
 
+**The pipeline's grouping, scored with the agents' calls as the marks**
+(`rates.mjs`, counted as the scores page counts: over-merge = readings
+that do not belong, of the readings of claims every reading of which is
+marked; over-split = such claims linked "same claim as" another). All five
+weeks, 197 claims: **over-merge 120 of 672 readings, 17.9% (Wilson 95%
+15.1–20.9)**, of which 53 belong in a named other claim and 67 are their
+own claim (mostly a passing mention or another person's reaction, the
+rules still open); **over-split 70 of 197 claims, 35.5% (29.2–42.4)**. Per
+week the over-merge runs 25, 28, 19, 18 and 18%, and over-split 41, 36, 56,
+35 and 39% (a claim counts in every week it has a reading). On the
+maintainer's own marks only 10 claims are fully marked: 0 of 19 readings
+and 0 of 10 claims; on those 10 the agents also find no over-merge, and
+would link 2.
+
 ## Where it stands
 
 - Weeks of 2026-09-28 to 2026-10-26: done. The storyboard reads all five
