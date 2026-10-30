@@ -519,6 +519,30 @@ Rules for adding to it:
   overturn it:** a later week where clean text moves tiers beyond the
   noise floor.
 
+### A headline alone keeps most career news but loses who the article is about
+`corpus` · `measured` · *FB 2026-10-29*
+- **Evidence:** the 195 training and validation golden articles sent to
+  v0's classifier (v7.7) on their headline alone, beside the full text and
+  the full text sent twice. Career facts recognised **30 of 46** (full text
+  33, noise 32); post-worthy articles still posted **26 of 29**, false
+  posts 4 (full text 4). But **33 tier crossings against a noise floor of
+  1**, 25 toward drop: all 18 digest → drop moves are the gate, centrality
+  falling to "only mentioned" (right on 108 of 195 against 173). A headline
+  that does not name him (54) drops nearly everything, 2 of 3 results
+  included; Ukrainian-language headlines (42, mostly Sport.ua) matched the
+  full text (1 crossing, noise 1). Google's `rss_description` is the
+  headline plus the outlet in 153 of 157; it adds nothing. $0.07.
+  `research/experiments/2026-10-30-headline-only/`.
+- **Does not say:** how stable headline answers are beyond one pair of
+  runs ten minutes apart (the headline side sent twice crossed 3 tiers in
+  195 against the full text's 1, and changed 22 of 1,755 answers against
+  12, so the 33 crossings are 11 times that wobble and 32 recur in both
+  runs; a third run, days later, could differ); that the refused outlets'
+  headlines read like these readable ones; anything beyond one fight week.
+  A prompt written for headlines was not tried. **Would overturn it:** the
+  same counts on a labelled week of headline-only articles, or a later run
+  whose crossings differ widely from these two.
+
 ### A simple extractor keeps the article; Readability, when it fails, loses it
 `domain` · `measured` · *FB 2026-10-22*
 - **Evidence:** on 127 fresh pages (Sep–Oct), our regex extractor
