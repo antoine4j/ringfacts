@@ -4,6 +4,7 @@
 
 import Link from "next/link";
 import { Suspense } from "react";
+import { AgentClaimBar, AgentCount } from "../components/AgentCalls.tsx";
 import { ClaimNote } from "../components/ClaimNote.tsx";
 import { ClaimReadings } from "../components/ClaimReadings.tsx";
 import { SameClaimReview } from "../components/ReviewControls.tsx";
@@ -16,7 +17,8 @@ import { query } from "../lib/db.ts";
 import { claimFilter, claimOrder, whereSql, type Params } from "../lib/filters.ts";
 import { dayAndClock, shortTime } from "../lib/format.ts";
 import { bestTier } from "../lib/live-scores.ts";
-import { claimMembers, claimNotesFor, claimReviews, fighterNames, outletNames, tierMarksFor, type ClaimNoteRow, type ClaimRow, type MemberRow } from "../lib/queries.ts";
+import { claimAgentViews, claimMembers, claimNotesFor, claimReviews, fighterNames, outletNames, tierMarksFor, type ClaimNoteRow, type ClaimRow, type MemberRow } from "../lib/queries.ts";
+import type { ClaimAgentView } from "../lib/agent-marks.ts";
 import type { ClaimReviewView } from "../lib/reviews.ts";
 import { schemaFrom, schemaSuffix, type Schema } from "../lib/schema.ts";
 import { tierJudgements, tierToJudge, type TierJudgement } from "../lib/tier-marks.ts";
@@ -36,11 +38,15 @@ export default async function ClaimsPage({ searchParams }: { searchParams: Promi
 
   // The claims that match, then all their readings in one query.
   const filter = claimFilter(params);
-  const claims = await query<ClaimRow>(
+  const matching = await query<ClaimRow>(
     schema,
     `SELECT cn.* FROM claim_now cn ${whereSql(filter)} ORDER BY ${claimOrder(params)} LIMIT ${LIMIT}`,
     filter.values,
   );
+
+  // The agents' calls, when loaded; ?agent=open or ?agent=differs keeps the claims with such calls.
+  const agentViews = await claimAgentViews(schema, matching.map((claim) => claim.id));
+  const claims = matching.filter((claim) => agentKept(params.agent, agentViews.get(claim.id)));
   const members = await claimMembers(schema, claims.map((claim) => claim.id));
   const reviews = await claimReviews(schema, members);
   const notes = schema === "public" ? await claimNotesFor(claims.map((claim) => claim.id)) : new Map<string, ClaimNoteRow>();
@@ -75,9 +81,10 @@ export default async function ClaimsPage({ searchParams }: { searchParams: Promi
         {claims.length === LIMIT ? ` (the first ${LIMIT})` : ""}. Dates, outlet and tier match a claim when any of its readings matches. A grouping under 50%
         sure shows as "doubtful join".
       </p>
+      {agentViews.size > 0 && <AgentFilterLine params={params} views={agentViews} />}
       {claims.length === 0 && <Empty>No claims match.</Empty>}
       {claims.map((claim) => (
-        <ClaimCard key={claim.id} claim={claim} rows={members.get(claim.id) ?? []} digest={digestOf.get(claim.id) ?? null} schema={schema} review={reviews.get(claim.id)} note={notes.get(claim.id) ?? null} tierMark={judgements.get(claim.id)} />
+        <ClaimCard key={claim.id} claim={claim} rows={members.get(claim.id) ?? []} digest={digestOf.get(claim.id) ?? null} schema={schema} review={reviews.get(claim.id)} note={notes.get(claim.id) ?? null} tierMark={judgements.get(claim.id)} agent={agentViews.get(claim.id)} />
       ))}
     </>
   );
@@ -96,9 +103,10 @@ type InDigest = { claim_id: string; digest_id: string; period_end: Date };
  * @param props.review  Its review (D35); absent on the golden replay.
  * @param props.note  Anton's note on it and when he wrote it; null when none.
  * @param props.tierMark  What the tier mark on it says; absent on the golden replay.
+ * @param props.agent  The agents' calls on it; absent when none are loaded.
  * @returns The card.
  */
-function ClaimCard({ claim, rows, digest, schema, review, note, tierMark }: { claim: ClaimRow; rows: MemberRow[]; digest: InDigest | null; schema: Schema; review?: ClaimReviewView; note: ClaimNoteRow | null; tierMark?: TierJudgement }) {
+function ClaimCard({ claim, rows, digest, schema, review, note, tierMark, agent }: { claim: ClaimRow; rows: MemberRow[]; digest: InDigest | null; schema: Schema; review?: ClaimReviewView; note: ClaimNoteRow | null; tierMark?: TierJudgement; agent?: ClaimAgentView }) {
   // A join is doubtful when the pick that made it was under 50% sure; Anton's mark on the reading, either way, settles it.
   const doubtful = rows.filter((row) => isDoubtfulPick(row.pick));
   const unsettled = doubtful.filter((row) => !review?.marks[row.reading_id]).length;
@@ -137,6 +145,7 @@ function ClaimCard({ claim, rows, digest, schema, review, note, tierMark }: { cl
               </span>
             )}
             <ReviewStatus view={review} showDone={false} />
+            <AgentCount view={agent} />
           </span>
           <ClaimVerdict claim={claim} tier={tier} digest={digest} schema={schema} />
         </div>
@@ -148,7 +157,8 @@ function ClaimCard({ claim, rows, digest, schema, review, note, tierMark }: { cl
           {tier && tierMark && <TierCheck claimId={claim.id} tierNow={tier.best} judgement={tierMark} />}
         </div>
       )}
-      <ClaimReadings rows={rows} schema={schema} postedReadingId={claim.posted_reading_id} claimId={claim.id} review={review} />
+      {agent && <AgentClaimBar claimId={claim.id} view={agent} />}
+      <ClaimReadings rows={rows} schema={schema} postedReadingId={claim.posted_reading_id} claimId={claim.id} review={review} agent={agent} />
     </details>
   );
 }
@@ -220,5 +230,45 @@ function ClaimVerdict({ claim, tier, digest, schema }: { claim: ClaimRow; tier: 
       <span className={`verdict-tier${outcome ? " divided" : ""}`}>{tierName(tier.best)}</span>
       {outcome}
     </span>
+  );
+}
+
+/**
+ * Whether a claim stays in the list under the agent filter.
+ *
+ * @param filter  ?agent: "open" (a call to answer), "changes" (an open call to split or merge), "differs" (a call that differs from Anton's mark), or absent.
+ * @param view  The claim's agent view, if any.
+ * @returns True when the claim is shown.
+ */
+function agentKept(filter: string | string[] | undefined, view: ClaimAgentView | undefined): boolean {
+  if (filter === "open") return Boolean(view && view.open > 0);
+  if (filter === "changes") return Boolean(view && view.changes > 0);
+  if (filter === "differs") return Boolean(view && view.disagrees > 0);
+  return true;
+}
+
+/**
+ * The line that says agent calls are loaded, with links that keep only the claims that need an answer.
+ *
+ * @param props.params  The filters from the address.
+ * @param props.views  The agent views of the claims shown.
+ * @returns The line.
+ */
+function AgentFilterLine({ params, views }: { params: Params; views: Map<string, ClaimAgentView> }) {
+  const open = [...views.values()].filter((view) => view.open > 0).length;
+  const differs = [...views.values()].filter((view) => view.disagrees > 0).length;
+  const changes = [...views.values()].filter((view) => view.changes > 0).length;
+  const link = (agent: string | null) => {
+    const kept = new URLSearchParams(Object.entries(params).flatMap(([key, value]) => (key === "agent" || value === undefined ? [] : [[key, String(value)]])));
+    if (agent) kept.set("agent", agent);
+    return `/?${kept}`;
+  };
+  return (
+    <p className="small agent-filter">
+      <span className="agent-tag">agent</span> calls are loaded (not your reviews; they never count as them): {open} claim{open === 1 ? "" : "s"} with calls to answer,{" "}
+      {changes} where they propose a split or merge, {differs} with calls that differ from your marks. Show <Link href={link("changes")}>split or merge</Link> · <Link href={link("open")}>to answer</Link> ·{" "}
+      <Link href={link("differs")}>differing</Link> ·{" "}
+      <Link href={link(null)}>all</Link>
+    </p>
   );
 }

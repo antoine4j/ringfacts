@@ -22,6 +22,8 @@
   --bad-text: #a11b1b;
   --good-bg: #e3f4e8;
   --reviewed-bg: color-mix(in srgb, var(--good-bg) 75%, var(--panel));
+  --agent: #6a3fb5;
+  --agent-bg: #efe8fb;
   --display: var(--font-display), "Arial Narrow", system-ui, sans-serif;
   --body: var(--font-body), system-ui, -apple-system, "Segoe UI", sans-serif;
   --mono: var(--font-mono), ui-monospace, Menlo, monospace;
@@ -41,6 +43,8 @@
     --line: #2c323d;
     --accent: #7c9bf0;
     --accent-bg: #1e2a47;
+    --agent: #b79cf0;
+    --agent-bg: #2c2240;
     --on-accent: #12151b;
     --post: #6cc48e;
     --digest: #f0a54a;
@@ -64,6 +68,8 @@
   --line: #2c323d;
   --accent: #7c9bf0;
   --accent-bg: #1e2a47;
+  --agent: #b79cf0;
+  --agent-bg: #2c2240;
   --on-accent: #12151b;
   --post: #6cc48e;
   --digest: #f0a54a;
@@ -415,3 +421,18 @@ h2.period { margin-top: 14px; }
   .score-rows th[scope="row"], .score-rows td.num { display: block; width: auto; border-bottom: 0; }
   .score-rows td { display: block; }
 }
+
+/* The agents' grouping calls (components/AgentCalls.tsx): violet, so they never read as Anton's own marks. */
+.agent-tag { font: 600 10px/1 var(--mono); text-transform: uppercase; letter-spacing: 0.04em; color: var(--agent); background: var(--agent-bg); border-radius: 999px; padding: 3px 6px; }
+.tag.agent-tag { font-size: 11px; }
+.agent-line { display: block; margin-top: 4px; font-size: 12px; color: var(--muted); border-left: 2px solid var(--agent); padding-left: 6px; }
+.agent-line .agent-says { color: var(--agent); font-weight: 600; }
+.agent-line .agent-why { font-style: italic; }
+.agent-line.state-denied .agent-says { text-decoration: line-through; }
+.agent-line.state-confirmed, .agent-line.state-agrees { opacity: 0.7; }
+.agent-differs { color: var(--bad-text); font-weight: 600; }
+.agent-answer { font-size: 11px; padding: 1px 8px; margin-left: 4px; border: 1px solid var(--agent); color: var(--agent); background: var(--panel); border-radius: 999px; cursor: pointer; }
+.agent-answered { font: 600 11px/1 var(--mono); color: var(--agent); margin-left: 4px; }
+.agent-bar { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 10px; margin: 6px 0; padding: 6px 10px; background: var(--agent-bg); border-radius: var(--radius); }
+.agent-bar .agent-line { flex-basis: 100%; margin-top: 0; }
+.agent-filter .agent-tag { margin-right: 6px; }

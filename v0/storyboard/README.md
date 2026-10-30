@@ -46,6 +46,36 @@ design, section 11, "Reviewing claims", and D36. The database role
 settings save is refused if another version was saved after the page was
 opened.
 
+## Agents' calls (local only)
+
+Agents can read a week's articles and propose the same grouping marks
+(belongs, doesn't belong and where, its own claim, same claim as), each with
+a sentence saying why. Their calls are a local JSON file, never database
+rows, so they never count as reviews and never reach the scores. Run the
+storyboard with `AGENT_MARKS_FILE` set to the file and they show in violet,
+marked "agent": a line under each reading, and on each claim a bar with its
+same-claim calls and a count, "agent 3" on the folded card, and a line at the
+top of the claims list that keeps only the claims where they propose a split
+or a merge (`?agent=changes`), with any call to answer (`?agent=open`), or
+with calls that differ from your marks (`?agent=differs`).
+
+Each call has **confirm** (it is saved as your own mark, through the same
+action as ✓ ✕, so it counts from then on as your review) and **deny** (it is
+set aside; mark the reading yourself). "Confirm the N calls on unmarked
+readings" on a claim confirms all of its open calls on readings you have not
+marked. Answers are appended to `<file>.answers.jsonl` beside the calls
+file; **undo** clears an answer (a mark it saved stays, and changes with
+✓ ✕). Without the variable, nothing changes. Machinery and weeks:
+[the agent grouping experiment](../../research/experiments/2026-10-30-agent-grouping/README.md).
+
+```bash
+AGENT_MARKS_FILE=$PWD/../../research/experiments/2026-10-30-agent-grouping/data/agent-marks.json \
+DATABASE_URL=$(grep '^V0_EDITOR_DATABASE_URL=' ../../.env.v0 | cut -d= -f2-) npm run dev
+```
+
+The second line points it at the live data, where your reviews are, as the
+deployed storyboard does; confirming a call writes your mark there.
+
 ## Run it locally
 
 From `v0/`, once: `npm install`. Then, from `v0/storyboard/`, against the

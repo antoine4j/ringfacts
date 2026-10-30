@@ -1,7 +1,8 @@
 // Questions more than one page asks the database.
 
 import type { Settings } from "../../pipeline/settings/tiers.ts";
-import { reviewViews, type ClaimReviewView, type ReadingMark, type SameClaimMark } from "./reviews.ts";
+import { agentViews, answersInForce, loadAgentMarks, type ClaimAgentView } from "./agent-marks.ts";
+import { marksInForce, reviewViews, sameClaimGroups, type ClaimReviewView, type ReadingMark, type SameClaimMark } from "./reviews.ts";
 import type { TierMark } from "./tier-marks.ts";
 import { query } from "./db.ts";
 import type { Schema } from "./schema.ts";
@@ -198,4 +199,27 @@ export async function claimReviews(schema: Schema, members: Map<string, MemberRo
   const readingsOf = new Map([...members].map(([claimId, rows]) => [claimId, rows.map((row) => row.reading_id)]));
   const { readingMarks, sameMarks } = await reviewsFor(schema, [...members.keys()]);
   return reviewViews(readingsOf, readingMarks, sameMarks);
+}
+
+/**
+ * The agents' calls on each claim shown, beside Anton's marks; empty on the
+ * golden replay and when no calls file is set (lib/agent-marks.ts).
+ *
+ * @param schema  "public" or "replay".
+ * @param claimIds  The claims shown.
+ * @returns Claim → what it shows about the agents' calls; claims with none are absent.
+ */
+export async function claimAgentViews(schema: Schema, claimIds: string[]): Promise<Map<string, ClaimAgentView>> {
+  const loaded = schema === "public" ? loadAgentMarks() : null;
+  if (!loaded) return new Map();
+
+  // The calls on these claims, set against Anton's marks and links in force.
+  const shown = new Set(claimIds);
+  const file = {
+    ...loaded.file,
+    readings: loaded.file.readings.filter((call) => shown.has(call.claim_id)),
+    same_claims: loaded.file.same_claims.filter((call) => shown.has(call.claim_id) || shown.has(call.other_claim_id)),
+  };
+  const { readingMarks, sameMarks } = await reviewsFor(schema, claimIds);
+  return agentViews(file, answersInForce(loaded.answers), marksInForce(readingMarks), sameClaimGroups(sameMarks).links);
 }

@@ -17,7 +17,7 @@ export const WAITING_STAGES = ["classify", "extract", "group", "decide"];
 export const STAGES = ["no_body", ...WAITING_STAGES, "done", "stuck"];
 
 /** Address keys that are filters of their own, so they are never read as a classifier answer. */
-const RESERVED_KEYS = new Set(["fighter", "day", "when", "from", "to", "digest", "review", "sort", "outlet", "tier", "posted", "stage", "history", "claim", "schema", "limit", "open"]);
+const RESERVED_KEYS = new Set(["fighter", "day", "when", "from", "to", "digest", "review", "sort", "outlet", "tier", "posted", "stage", "history", "claim", "schema", "limit", "open", "agent"]);
 
 /** What a classifier answer's name may look like in the address. */
 const ANSWER_NAME = /^[a-z][a-z_]{0,39}$/;
