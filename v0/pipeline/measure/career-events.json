@@ -1,5 +1,32 @@
 {
- "checked": "2026-10-12",
- "how": "Searched the web for each watched fighter's news since the last check.",
- "events": []
+ "checked": "2026-10-29",
+ "how": "Searched the web for each watched fighter's career events since 1 Sep 2026, kept only events with two independent sources, and searched the claims table for matching claims.",
+ "events": [
+  {
+   "id": "2026-09-05-donchenko-soriano-result",
+   "fighter": "Daniil Donchenko",
+   "kind": "result",
+   "happened": "2026-09-05",
+   "what": "Donchenko beat Punahele Soriano by unanimous decision (30-27, 30-27, 29-28) at UFC Paris.",
+   "first_report": "2026-09-05",
+   "claim_ids": [
+    197,
+    208
+   ],
+   "note": "Sources: UFC (official scorecards) https://www.ufc.com/news/ufc-paris-official-scorecards-hooker-vs-parnasse ; LowKick MMA https://www.lowkickmma.com/daniil-donchenko-dominates-punahele-soriano-at-ufc-paris-calls-out-daniel-rodriguez/ . Claim 208 says split decision, which is wrong, but it describes the same result. Before v0 went live on 2026-10-05: its readings are the 5 Oct backfill, so what the storyboard says the group heard describes the backfill digests, not a live run."
+  },
+  {
+   "id": "2026-09-16-topuria-return-february",
+   "fighter": "Ilia Topuria",
+   "kind": "return_date",
+   "happened": "2026-09-16",
+   "what": "Topuria's physical trainer said the fighter is targeting a return to fighting from February 2027, after the June loss to Justin Gaethje.",
+   "first_report": "2026-09-16",
+   "claim_ids": [
+    306,
+    85
+   ],
+   "note": "Sources: LowKick MMA https://www.lowkickmma.com/ilia-topuria-no-ufc-return-2026/ ; Boxing News https://boxingnews.com/news/topuria-coach-confirms-february-return . Also reported by SportBible and MMA News the same day. Claim 85 says only that the return is targeted for 2027. Before v0 went live on 2026-10-05: its readings are the 5 Oct backfill, so what the storyboard says the group heard describes the backfill digests, not a live run."
+  }
+ ]
 }
