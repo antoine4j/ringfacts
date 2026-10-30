@@ -133,13 +133,13 @@ footer{font-size:13px;color:var(--dim);max-width:100ch}
 const P = (name, url, where, status, kind, what, note, src, warn) => ({name, url, where, status, kind, what, note, src, warn});
 const BODIES = "research/experiments/2026-10-05-body-fetch-spike/bodies/";
 const PAGES = [
-  P("Our extractor vs Readability", null, "local", "call", "review",
+  P("Our extractor vs Readability", null, "local", "old", "review",
     "Production's extracted text beside Mozilla Readability's for the same page, article by article: menus, captions, ads, and whether the article is complete.",
-    "<b>Open:</b> question 1 of the intake design, which text wins when both read a page (docs/design/intake.excalidraw). Launch Map task 3.9.",
+    "<b>Superseded:</b> question 1 of the intake drawing (docs/design/intake.excalidraw, a 5 Oct proposal replaced 22 Oct by the self-feeding architecture doc), which text wins when both read a page. Launch Map task 3.9 chose Readability first on 21 Oct; the architecture proposes the reverse, and the Reader Spot Check page is where that pick is made now.",
     [BODIES + "review-1-extractor-vs-readability.html"], "Holds article text: stays on this laptop, git-ignored."),
   P("Headline + summary vs full article", null, "local", "call", "review",
     "What v0 would have without the article (the headline and the outlet's preview summary) beside the full text: could the stations get the news right from the left side alone?",
-    "<b>Open:</b> question 2 of the intake design, whether the stations read headline and summary when there is no text. Launch Map task 3.10.",
+    "<b>Open:</b> question 2 of the intake drawing (docs/design/intake.excalidraw, superseded 22 Oct by the self-feeding architecture doc; the question outlives it), whether the stations read headline and summary when there is no text. Launch Map task 3.10.",
     [BODIES + "review-2-summary-vs-article.html"], "Holds article text: stays on this laptop, git-ignored."),
 
   P("Clean Text Spot Check", "https://claude.ai/artifact/6QFbK2xWUSJpTPhuJxL8zK", "claude", "done", "your input",
@@ -155,6 +155,10 @@ const PAGES = [
     "Theme 3 is in its architecture phase; the docs merge into the repo's own docs when the theme ends.",
     ["claude.ai only (the docs are Claude Docs)"]),
 
+  P("Night Run 29 Oct", "https://claude.ai/artifact/9dh3Pbs7jJokYrRNiqxZcL", "claude", "call", "report",
+    "What the unattended run of 29 to 30 Oct did while the self-feeding architecture waited for review: the source review (E4), retry data (E7), the headline-only classifier (3.10), tests for untested v0 files, the career-events list, stale docs. Each item on its own local branch.",
+    "<b>Needs your review:</b> the branches to merge or drop, two career events to confirm, and whether a fight reported as being negotiated counts as booked.",
+    []),
   P("Launch Map", "https://claude.ai/artifact/KbwUC8WgQFQwVS84xLPXK6", "claude", "now", "plan",
     "What is left before launch: the ranked themes, each station's tasks, and the backlog. Point at a task by its number.",
     "<b>Start here.</b> Two copies of one file: this private one is republished after every change, so it shows work before a push; the public site shows what is on main. Its themes are numbered in the order the work is taken in (since 9 Oct): the repo first, now done, then the scoreboard, then self-feeding; a done theme keeps its number.",
