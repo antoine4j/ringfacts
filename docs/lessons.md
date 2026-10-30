@@ -731,6 +731,19 @@ Rules for adding to it:
 
 ## 5. Harness — the model and our own code
 
+### Agents of one session share a scratch folder: a repeat run is not independent by default
+`harness` · `measured` · *FB 2026-10-30*
+- **Evidence:** a second judge run on the agent-grouping experiment's first
+  week, meant as a noise floor, agreed with the first on 341 of 344 calls.
+  It had worked in the session's scratch folder, where the first run's
+  output and script still lay. Rerun in a folder of its own and told to open
+  nothing else, it agreed on 341 of 344 again, the 3 differences all low or
+  medium confidence (`research/experiments/2026-10-30-agent-grouping/`).
+- **Does not say:** that the first rerun copied; only that it could have, so
+  its number proved nothing. Nor anything about reader noise: the readers
+  were not rerun. **Would overturn:** an isolated rerun that differs on
+  dozens of calls.
+
 ### Models echo your formatting back, and a swallowed exception eats the decision
 `general` · `measured` · *RF-L14 — no FB counterpart yet*
 - **Evidence (RF):** candidates rendered `[7] summary`; the model answered
