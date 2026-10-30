@@ -598,9 +598,12 @@ Rules for adding to it:
   list about 100 items by relevance, months deep for a quiet fighter,
   under a week for half of Topuria's.
   `research/experiments/2026-10-30-source-review/`.
-- **Does not say:** whether a paid route passes Tribuna's check; which
-  outlets Google never surfaced (no wider search was run). One probe per
-  outlet, and Cloudflare's behaviour changes by the hour. **Would
+- **Does not say:** whether a paid route passes Tribuna's check. A wider
+  web search (28 searches, three languages; `wider-search.md` in the same
+  folder) found 29 hosts production never recorded, but their pages in the
+  window would move the shares by 2 points at most and carry no story
+  production lacks. One probe per outlet, and Cloudflare's behaviour
+  changes by the hour. **Would
   overturn it:** Tribuna or Sport.nv.ua answering a plain fetch, or a
   full-text feed found for either.
 

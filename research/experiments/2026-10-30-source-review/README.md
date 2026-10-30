@@ -334,10 +334,12 @@ from the outlets that refuse everyone.
   record; not tested from Cloud Run today. The timing (four outlets started
   refusing between 9 and 10 September) could also be a change on our side;
   not checked.
-- **A wider search.** The spec asks for outlets found outside Google News
-  too; only Google's results and production's direct feeds are counted
-  here. Outlets that carry a fighter but that Google never surfaced are not
-  in these tables.
+- **A wider search** was run afterwards ([wider-search.md](wider-search.md)):
+  28 web searches in three languages found 29 hosts production has never
+  recorded, 15 probed. Counting every page in the window as readable moves
+  Amosov to 42% and Donchenko to 60%, and none of those pages carries a
+  story production lacks; the ceiling above stands. Only agentmma.com adds a
+  readable route (plain pages that read, a teaser feed).
 - **Paid or account routes** (a Jina key, a headless browser, a residential
   proxy) were not tried; whether any passes Tribuna's check is open.
 - **The sample is thin** for Donchenko in the last 30 days (6 articles) and
