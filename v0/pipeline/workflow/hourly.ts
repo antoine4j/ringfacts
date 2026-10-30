@@ -27,7 +27,7 @@ const OUTCOME = z.object({ id: z.number(), outcome: z.enum(["done", "failed", "s
  * @param work  The station's work on one reading.
  * @returns The Mastra step.
  */
-function stationStep(context: RunContext, stage: string, work: (reading: Reading) => Promise<void>) {
+export function stationStep(context: RunContext, stage: string, work: (reading: Reading) => Promise<void>) {
   return createStep({
     id: `${stage}-one`,
     inputSchema: READING,
