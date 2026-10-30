@@ -1,0 +1,493 @@
+{
+ "uniqueFailedPages": 109,
+ "pagesFailedOnBothDates": 4,
+ "botCheckAmongRefusals": {
+  "refused403": 94,
+  "botCheck": 90
+ },
+ "otherRefusalHosts": [
+  "uk.fashionnetwork.com",
+  "us.fashionnetwork.com",
+  "ww.fashionnetwork.com",
+  "es.fashionnetwork.com"
+ ],
+ "connectCauses": [
+  {
+   "id": "1350",
+   "cause": "ERR_TLS_CERT_ALTNAME_INVALID"
+  }
+ ],
+ "fetched_at": "2026-10-30T05:51:04.324Z",
+ "finished_at": "2026-10-30T05:51:35.029Z",
+ "pages_fetched": 129,
+ "failed_rows": 113,
+ "tables": {
+  "2026-10-20": {
+   "403": {
+    "same failure": 55,
+    "different failure": 0,
+    "unreadable": 0,
+    "readable": 0
+   },
+   "404": {
+    "same failure": 7,
+    "different failure": 0,
+    "unreadable": 0,
+    "readable": 0
+   },
+   "429": {
+    "same failure": 3,
+    "different failure": 0,
+    "unreadable": 0,
+    "readable": 0
+   },
+   "connect": {
+    "same failure": 0,
+    "different failure": 0,
+    "unreadable": 0,
+    "readable": 1
+   }
+  },
+  "2026-10-22": {
+   "400": {
+    "same failure": 1,
+    "different failure": 0,
+    "unreadable": 0,
+    "readable": 0
+   },
+   "403": {
+    "same failure": 42,
+    "different failure": 0,
+    "unreadable": 0,
+    "readable": 1
+   },
+   "406": {
+    "same failure": 2,
+    "different failure": 0,
+    "unreadable": 0,
+    "readable": 0
+   },
+   "connect": {
+    "same failure": 1,
+    "different failure": 0,
+    "unreadable": 0,
+    "readable": 0
+   }
+  },
+  "combined": {
+   "400": {
+    "same failure": 1,
+    "different failure": 0,
+    "unreadable": 0,
+    "readable": 0
+   },
+   "403": {
+    "same failure": 97,
+    "different failure": 0,
+    "unreadable": 0,
+    "readable": 1
+   },
+   "404": {
+    "same failure": 7,
+    "different failure": 0,
+    "unreadable": 0,
+    "readable": 0
+   },
+   "406": {
+    "same failure": 2,
+    "different failure": 0,
+    "unreadable": 0,
+    "readable": 0
+   },
+   "429": {
+    "same failure": 3,
+    "different failure": 0,
+    "unreadable": 0,
+    "readable": 0
+   },
+   "connect": {
+    "same failure": 1,
+    "different failure": 0,
+    "unreadable": 0,
+    "readable": 1
+   }
+  }
+ },
+ "hosts": [
+  {
+   "host": "bloodyelbow.com",
+   "pages": 36,
+   "cameBack": 0,
+   "readable": 0,
+   "cameBackEarlier": 0
+  },
+  {
+   "host": "sport.ua",
+   "pages": 30,
+   "cameBack": 0,
+   "readable": 0,
+   "cameBackEarlier": 0
+  },
+  {
+   "host": "ua.tribuna.com",
+   "pages": 15,
+   "cameBack": 0,
+   "readable": 0,
+   "cameBackEarlier": 0
+  },
+  {
+   "host": "sport.nv.ua",
+   "pages": 10,
+   "cameBack": 0,
+   "readable": 0,
+   "cameBackEarlier": 0
+  },
+  {
+   "host": "sports.yahoo.com",
+   "pages": 6,
+   "cameBack": 0,
+   "readable": 0,
+   "cameBackEarlier": 28
+  },
+  {
+   "host": "247sports.com",
+   "pages": 2,
+   "cameBack": 0,
+   "readable": 0,
+   "cameBackEarlier": 1
+  },
+  {
+   "host": "as.com",
+   "pages": 1,
+   "cameBack": 1,
+   "readable": 1,
+   "cameBackEarlier": 2
+  },
+  {
+   "host": "boxingnews.com",
+   "pages": 1,
+   "cameBack": 0,
+   "readable": 0,
+   "cameBackEarlier": 15
+  },
+  {
+   "host": "centraloregondaily.com",
+   "pages": 1,
+   "cameBack": 0,
+   "readable": 0,
+   "cameBackEarlier": 1
+  },
+  {
+   "host": "duflu.org.ua",
+   "pages": 1,
+   "cameBack": 1,
+   "readable": 1,
+   "cameBackEarlier": 0
+  },
+  {
+   "host": "enews.com.ua",
+   "pages": 1,
+   "cameBack": 0,
+   "readable": 0,
+   "cameBackEarlier": 0
+  },
+  {
+   "host": "es.fashionnetwork.com",
+   "pages": 1,
+   "cameBack": 0,
+   "readable": 0,
+   "cameBackEarlier": 0
+  },
+  {
+   "host": "facebook.com",
+   "pages": 1,
+   "cameBack": 0,
+   "readable": 0,
+   "cameBackEarlier": 0
+  },
+  {
+   "host": "lufkindailynews.com",
+   "pages": 1,
+   "cameBack": 0,
+   "readable": 0,
+   "cameBackEarlier": 1
+  },
+  {
+   "host": "media.unisba.ac.id",
+   "pages": 1,
+   "cameBack": 0,
+   "readable": 0,
+   "cameBackEarlier": 0
+  },
+  {
+   "host": "sportarena.ua",
+   "pages": 1,
+   "cameBack": 0,
+   "readable": 0,
+   "cameBackEarlier": 0
+  },
+  {
+   "host": "thepress.net",
+   "pages": 1,
+   "cameBack": 0,
+   "readable": 0,
+   "cameBackEarlier": 0
+  },
+  {
+   "host": "twaslnews1.twaslnews.com",
+   "pages": 1,
+   "cameBack": 0,
+   "readable": 0,
+   "cameBackEarlier": 0
+  },
+  {
+   "host": "uk.fashionnetwork.com",
+   "pages": 1,
+   "cameBack": 0,
+   "readable": 0,
+   "cameBackEarlier": 0
+  },
+  {
+   "host": "ww.fashionnetwork.com",
+   "pages": 1,
+   "cameBack": 0,
+   "readable": 0,
+   "cameBackEarlier": 0
+  }
+ ],
+ "jina": {
+  "2026-10-22": {
+   "pages": 1,
+   "readableToday": 1,
+   "jinaReached": 1,
+   "jinaReadable": 1
+  },
+  "2026-10-20": {
+   "pages": 1,
+   "readableToday": 1,
+   "jinaReached": 1,
+   "jinaReadable": 1
+  }
+ },
+ "jinaOnAllFailed": {
+  "2026-10-22": {
+   "pages": 47,
+   "readableToday": 1,
+   "jinaReached": 20,
+   "jinaReadable": 17
+  },
+  "2026-10-20": {
+   "pages": 66,
+   "readableToday": 1,
+   "jinaReached": 43,
+   "jinaReadable": 37
+  }
+ },
+ "control": {
+  "pages": 20,
+  "stillCameBack": 19,
+  "nowFailing": 1,
+  "sameReadVerdict": 19,
+  "rows": [
+   {
+    "id": "2202",
+    "host": "dazn.com",
+    "todayKind": null,
+    "readableToday": true,
+    "readableOn22Oct": true
+   },
+   {
+    "id": "2031",
+    "host": "abc.es",
+    "todayKind": null,
+    "readableToday": true,
+    "readableOn22Oct": true
+   },
+   {
+    "id": "2206",
+    "host": "mma.es",
+    "todayKind": null,
+    "readableToday": true,
+    "readableOn22Oct": true
+   },
+   {
+    "id": "1999",
+    "host": "eurosport.es",
+    "todayKind": null,
+    "readableToday": false,
+    "readableOn22Oct": false
+   },
+   {
+    "id": "1597",
+    "host": "24tv.ua",
+    "todayKind": null,
+    "readableToday": true,
+    "readableOn22Oct": true
+   },
+   {
+    "id": "938",
+    "host": "champion.com.ua",
+    "todayKind": null,
+    "readableToday": true,
+    "readableOn22Oct": true
+   },
+   {
+    "id": "1150",
+    "host": "xsport.ua",
+    "todayKind": null,
+    "readableToday": true,
+    "readableOn22Oct": true
+   },
+   {
+    "id": "2048",
+    "host": "us.fashionnetwork.com",
+    "todayKind": "403",
+    "readableToday": false,
+    "readableOn22Oct": true
+   },
+   {
+    "id": "1777",
+    "host": "ukr.net",
+    "todayKind": null,
+    "readableToday": false,
+    "readableOn22Oct": false
+   },
+   {
+    "id": "1834",
+    "host": "ukr.net",
+    "todayKind": null,
+    "readableToday": false,
+    "readableOn22Oct": false
+   },
+   {
+    "id": "2057",
+    "host": "sgieurope.com",
+    "todayKind": null,
+    "readableToday": true,
+    "readableOn22Oct": true
+   },
+   {
+    "id": "2105",
+    "host": "sports.yahoo.com",
+    "todayKind": null,
+    "readableToday": true,
+    "readableOn22Oct": true
+   },
+   {
+    "id": "2137",
+    "host": "mmasucka.com",
+    "todayKind": null,
+    "readableToday": true,
+    "readableOn22Oct": true
+   },
+   {
+    "id": "2172",
+    "host": "as.com",
+    "todayKind": null,
+    "readableToday": true,
+    "readableOn22Oct": true
+   },
+   {
+    "id": "1024",
+    "host": "champion.com.ua",
+    "todayKind": null,
+    "readableToday": true,
+    "readableOn22Oct": true
+   },
+   {
+    "id": "2198",
+    "host": "mundodeportivo.com",
+    "todayKind": null,
+    "readableToday": true,
+    "readableOn22Oct": true
+   },
+   {
+    "id": "2096",
+    "host": "sports.yahoo.com",
+    "todayKind": null,
+    "readableToday": true,
+    "readableOn22Oct": true
+   },
+   {
+    "id": "2021",
+    "host": "antena3.com",
+    "todayKind": null,
+    "readableToday": true,
+    "readableOn22Oct": true
+   },
+   {
+    "id": "2091",
+    "host": "20minutos.es",
+    "todayKind": null,
+    "readableToday": true,
+    "readableOn22Oct": true
+   },
+   {
+    "id": "975",
+    "host": "sportnews.24tv.ua",
+    "todayKind": null,
+    "readableToday": true,
+    "readableOn22Oct": true
+   }
+  ]
+ },
+ "mixed": [],
+ "relented": [
+  {
+   "id": "625",
+   "date": "2026-10-20",
+   "kind": "connect",
+   "host": "duflu.org.ua",
+   "outcome": "readable",
+   "jina": {
+    "reached": true,
+    "readable": true
+   }
+  },
+  {
+   "id": "2177",
+   "date": "2026-10-22",
+   "kind": "403",
+   "host": "as.com",
+   "outcome": "readable",
+   "jina": {
+    "reached": true,
+    "readable": true
+   }
+  }
+ ],
+ "todayKinds": [
+  [
+   "403 -> 403",
+   97
+  ],
+  [
+   "404 -> 404",
+   7
+  ],
+  [
+   "connect -> 200",
+   1
+  ],
+  [
+   "429 -> 429",
+   3
+  ],
+  [
+   "connect -> connect",
+   1
+  ],
+  [
+   "406 -> 406",
+   2
+  ],
+  [
+   "400 -> 400",
+   1
+  ],
+  [
+   "403 -> 200",
+   1
+  ]
+ ]
+}
