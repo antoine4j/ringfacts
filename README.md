@@ -188,7 +188,7 @@ what the experiments taught.
 
 ```bash
 npm test                            # production: 413 tests, about a second
-npm install --prefix v0 && npm test --prefix v0   # v0: 51 + 58 tests
+npm install --prefix v0 && npm test --prefix v0   # v0: 127 + 107 tests
 git config core.hooksPath .githooks # once per clone: run both before each commit
 ```
 
