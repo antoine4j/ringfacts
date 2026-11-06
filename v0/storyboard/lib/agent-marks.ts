@@ -169,6 +169,16 @@ type JudgesFile = {
 };
 
 /**
+ * Whether a calls file is the three-judge shape: a list of judges, and every reading carrying the judges' calls.
+ *
+ * @param raw  The parsed calls file.
+ * @returns True for the three-judge shape.
+ */
+function isJudgesFile(raw: AgentFile | JudgesFile): raw is JudgesFile {
+  return Array.isArray((raw as JudgesFile).judges) && raw.readings.every((reading) => "calls" in reading);
+}
+
+/**
  * Reads either file shape into the one the storyboard uses. A file with a
  * `judges` key is the three-judge shape: each reading becomes its majority
  * call (or a "split" call) with the judges' calls in `panel`, each same-claim
@@ -179,7 +189,7 @@ type JudgesFile = {
  * @returns The calls in the storyboard's shape.
  */
 export function normalizeAgentFile(raw: AgentFile | JudgesFile): AgentFile {
-  if (!("judges" in raw)) return raw;
+  if (!isJudgesFile(raw)) return raw;
   const judges = raw.judges;
   const order = (calls: Record<string, unknown>) => judges.filter((judge) => judge in calls);
   const readings: AgentReadingCall[] = raw.readings.map((reading) => {
