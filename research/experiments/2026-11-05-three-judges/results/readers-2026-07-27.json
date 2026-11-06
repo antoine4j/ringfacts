@@ -1,0 +1,247 @@
+{
+ "week": "2026-07-27",
+ "models": [
+  "opus",
+  "fable",
+  "sonnet"
+ ],
+ "readings": 3,
+ "complete": 3,
+ "agreement": {
+  "centrality": {
+   "unanimous": 3,
+   "majority": 0,
+   "split": 0,
+   "items": 3,
+   "kappa": 1
+  },
+  "source": {
+   "unanimous": 3,
+   "majority": 0,
+   "split": 0,
+   "items": 3,
+   "kappa": 1
+  },
+  "act": {
+   "unanimous": 3,
+   "majority": 0,
+   "split": 0,
+   "items": 3,
+   "kappa": 1
+  },
+  "fact": {
+   "unanimous": 3,
+   "majority": 0,
+   "split": 0,
+   "items": 3,
+   "kappa": 1
+  },
+  "firmness": {
+   "unanimous": 3,
+   "majority": 0,
+   "split": 0,
+   "items": 3,
+   "kappa": 1
+  },
+  "reports_his_result": {
+   "unanimous": 3,
+   "majority": 0,
+   "split": 0,
+   "items": 3,
+   "kappa": 1
+  },
+  "reports_his_next_fight": {
+   "unanimous": 3,
+   "majority": 0,
+   "split": 0,
+   "items": 3,
+   "kappa": 1
+  },
+  "reports_his_health": {
+   "unanimous": 3,
+   "majority": 0,
+   "split": 0,
+   "items": 3,
+   "kappa": 1
+  },
+  "he_speaks": {
+   "unanimous": 3,
+   "majority": 0,
+   "split": 0,
+   "items": 3,
+   "kappa": 1
+  },
+  "kind": {
+   "unanimous": 3,
+   "majority": 0,
+   "split": 0,
+   "items": 3,
+   "kappa": 1
+  },
+  "career_event": {
+   "unanimous": 3,
+   "majority": 0,
+   "split": 0,
+   "items": 3,
+   "kappa": 1
+  },
+  "first_source": {
+   "unanimous": 3,
+   "majority": 0,
+   "split": 0,
+   "items": 3,
+   "kappa": 1
+  },
+  "language": {
+   "unanimous": 3,
+   "majority": 0,
+   "split": 0,
+   "items": 3,
+   "kappa": 1
+  },
+  "body_problem": {
+   "unanimous": 3,
+   "majority": 0,
+   "split": 0,
+   "items": 3,
+   "kappa": 1
+  }
+ },
+ "golden": {
+  "scored": 0,
+  "test_side_left_alone": 3,
+  "right": {}
+ },
+ "classifier": {
+  "centrality": {
+   "unanimous": 3,
+   "pipeline_differs": 0
+  },
+  "source": {
+   "unanimous": 3,
+   "pipeline_differs": 1
+  },
+  "act": {
+   "unanimous": 3,
+   "pipeline_differs": 0
+  },
+  "fact": {
+   "unanimous": 3,
+   "pipeline_differs": 0
+  },
+  "firmness": {
+   "unanimous": 3,
+   "pipeline_differs": 3
+  },
+  "reports_his_result": {
+   "unanimous": 3,
+   "pipeline_differs": 0
+  },
+  "reports_his_next_fight": {
+   "unanimous": 3,
+   "pipeline_differs": 0
+  },
+  "reports_his_health": {
+   "unanimous": 3,
+   "pipeline_differs": 0
+  },
+  "he_speaks": {
+   "unanimous": 3,
+   "pipeline_differs": 0
+  }
+ },
+ "tier": {
+  "counted": 3,
+  "same": 3,
+  "confusion": {
+   "v0 1 → readers 1": 3
+  }
+ },
+ "extractor": {
+  "kind_same": 3,
+  "kind_counted": 3,
+  "no_claim_v0": 0,
+  "no_claim_readers": 0,
+  "no_claim_both": 0,
+  "pairs": {}
+ },
+ "text": {
+  "copies_majority": 0,
+  "problems_majority": 0,
+  "by_body_via": {
+   "paragraphs": {
+    "readings": 1,
+    "copies": 0,
+    "problems": 0
+   },
+   "json-ld": {
+    "readings": 2,
+    "copies": 0,
+    "problems": 0
+   }
+  },
+  "by_outlet": {
+   "Sport.ua": {
+    "readings": 1,
+    "copies": 0,
+    "problems": 0
+   },
+   "Футбол 24": {
+    "readings": 1,
+    "copies": 0,
+    "problems": 0
+   },
+   "sport24.ua": {
+    "readings": 1,
+    "copies": 0,
+    "problems": 0
+   }
+  },
+  "languages": {
+   "uk": 3
+  },
+  "problem_kinds": {}
+ },
+ "sources": {
+  "fighter_post": 2,
+  "unclear": 1
+ },
+ "career": {
+  "none": 0,
+  "fight_booked": 3,
+  "fight_changed": 0,
+  "result": 0,
+  "injury": 0,
+  "ranking": 0,
+  "title": 0,
+  "contract_or_move": 0,
+  "retirement": 0
+ },
+ "screen": {
+  "unread": 2,
+  "screened": 2,
+  "models": [
+   "opus",
+   "fable",
+   "sonnet"
+  ],
+  "news_unanimous": 2,
+  "news_majority": 2,
+  "by_fighter": {
+   "Daniil Donchenko": {
+    "unread": 2,
+    "news": 2
+   }
+  },
+  "by_outlet": {
+   "ukr.net": {
+    "unread": 1,
+    "news": 1
+   },
+   "ua.korrespondent.net": {
+    "unread": 1,
+    "news": 1
+   }
+  }
+ }
+}
