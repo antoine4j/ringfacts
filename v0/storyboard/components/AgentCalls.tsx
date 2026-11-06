@@ -9,7 +9,8 @@ import Link from "next/link";
 import type { ReactNode } from "react";
 import type { AgentListing } from "../lib/queries.ts";
 import { answerAgentCall, confirmAgentCalls } from "../app/agent-actions.ts";
-import { agreementBadge, sameBadge, type AgentConfidence, type CallState, type ClaimAgentView, type ReadingCallView, type SamePanel, type SameCallView } from "../lib/agent-marks.ts";
+import { agreementBadge, sameBadge } from "../lib/agent-badges.ts";
+import type { AgentConfidence, CallState, ClaimAgentView, ReadingCallView, SamePanel, SameCallView } from "../lib/agent-marks.ts";
 import { useSave } from "./ReviewControls.tsx";
 
 /**
