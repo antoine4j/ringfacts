@@ -48,6 +48,16 @@ test("joined calls carry each judge, the agreement and the majority", () => {
   assert.deepEqual([joined.same_claims[0].claim_id, joined.same_claims[0].other_claim_id], ["10", "11"]);
 });
 
+test("a reading only two of three judges called is at most a majority, never unanimous", () => {
+  const call = (verdict) => ({ claim_id: "10", reading_id: "1", verdict, belongs_in_claim_id: null, why: "", rule: 0, confidence: "high" });
+  const joined = joinCalls({ a: { readings: [call("own_claim")] }, b: { readings: [call("own_claim")] }, c: { readings: [] } }, ["a", "b", "c"]);
+  assert.equal(joined.readings[0].agreement, "majority");
+  assert.equal(joined.readings[0].judges, 2);
+  const one = joinCalls({ a: { readings: [call("own_claim")] }, b: { readings: [] }, c: { readings: [] } }, ["a", "b", "c"]);
+  assert.equal(one.readings[0].agreement, "split");
+  assert.equal(one.readings[0].majority, null);
+});
+
 test("three different calls are a split with no majority", () => {
   const call = (verdict, to) => ({ claim_id: "10", reading_id: "1", verdict, belongs_in_claim_id: to, why: "", rule: 0, confidence: "low" });
   const joined = joinCalls({ a: { readings: [call("belongs", null)] }, b: { readings: [call("own_claim", null)] }, c: { readings: [call("does_not_belong", "11")] } }, ["a", "b", "c"]);

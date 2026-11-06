@@ -1,0 +1,132 @@
+{
+ "week": "2026-07-27",
+ "models": [
+  "opus",
+  "fable",
+  "sonnet"
+ ],
+ "readings": 3,
+ "problems": 0,
+ "agreement": {
+  "unanimous": 3,
+  "majority": 0,
+  "split": 0,
+  "items": 3,
+  "kappa_call": 1,
+  "kappa_verdict": 1
+ },
+ "agreement_change": {
+  "unanimous": 3,
+  "majority": 0,
+  "split": 0,
+  "items": 3,
+  "kappa": 1
+ },
+ "anton": {
+  "marks": 0,
+  "same": {
+   "opus": 0,
+   "fable": 0,
+   "sonnet": 0
+  },
+  "majority": {
+   "same": 0,
+   "of": 0
+  },
+  "unanimous": {
+   "same": 0,
+   "of": 0
+  },
+  "links": {
+   "his": 0,
+   "made_by_someone": 0,
+   "made_by_all": 0
+  }
+ },
+ "same_claims": {
+  "pairs": 0,
+  "unanimous": 0,
+  "majority": 0,
+  "minority": 0
+ },
+ "rules": {
+  "opus": {},
+  "fable": {},
+  "sonnet": {}
+ },
+ "rates": {
+  "opus": {
+   "over_merge": {
+    "count": 0,
+    "of": 3,
+    "pct": 0,
+    "low": 0,
+    "high": 56.2,
+    "text": "0 of 3 = 0% (0–56.2)"
+   },
+   "over_split": {
+    "count": 0,
+    "of": 1,
+    "pct": 0,
+    "low": 0,
+    "high": 79.3,
+    "text": "0 of 1 = 0% (0–79.3)"
+   }
+  },
+  "fable": {
+   "over_merge": {
+    "count": 0,
+    "of": 3,
+    "pct": 0,
+    "low": 0,
+    "high": 56.2,
+    "text": "0 of 3 = 0% (0–56.2)"
+   },
+   "over_split": {
+    "count": 0,
+    "of": 1,
+    "pct": 0,
+    "low": 0,
+    "high": 79.3,
+    "text": "0 of 1 = 0% (0–79.3)"
+   }
+  },
+  "sonnet": {
+   "over_merge": {
+    "count": 0,
+    "of": 3,
+    "pct": 0,
+    "low": 0,
+    "high": 56.2,
+    "text": "0 of 3 = 0% (0–56.2)"
+   },
+   "over_split": {
+    "count": 0,
+    "of": 1,
+    "pct": 0,
+    "low": 0,
+    "high": 79.3,
+    "text": "0 of 1 = 0% (0–79.3)"
+   }
+  },
+  "majority": {
+   "over_merge": {
+    "count": 0,
+    "of": 3,
+    "pct": 0,
+    "low": 0,
+    "high": 56.2,
+    "text": "0 of 3 = 0% (0–56.2)"
+   },
+   "over_split": {
+    "count": 0,
+    "of": 1,
+    "pct": 0,
+    "low": 0,
+    "high": 79.3,
+    "text": "0 of 1 = 0% (0–79.3)"
+   }
+  }
+ },
+ "rule_gaps": 0
+}

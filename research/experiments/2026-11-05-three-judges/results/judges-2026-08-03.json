@@ -1,0 +1,147 @@
+{
+ "week": "2026-08-03",
+ "models": [
+  "opus",
+  "fable",
+  "sonnet"
+ ],
+ "readings": 82,
+ "problems": 0,
+ "agreement": {
+  "unanimous": 78,
+  "majority": 4,
+  "split": 0,
+  "items": 82,
+  "kappa_call": 0.839,
+  "kappa_verdict": 0.838
+ },
+ "agreement_change": {
+  "unanimous": 79,
+  "majority": 3,
+  "split": 0,
+  "items": 82,
+  "kappa": 0.875
+ },
+ "anton": {
+  "marks": 0,
+  "same": {
+   "opus": 0,
+   "fable": 0,
+   "sonnet": 0
+  },
+  "majority": {
+   "same": 0,
+   "of": 0
+  },
+  "unanimous": {
+   "same": 0,
+   "of": 0
+  },
+  "links": {
+   "his": 0,
+   "made_by_someone": 0,
+   "made_by_all": 0
+  }
+ },
+ "same_claims": {
+  "pairs": 1,
+  "unanimous": 0,
+  "majority": 0,
+  "minority": 1
+ },
+ "rules": {
+  "opus": {
+   "2": 2,
+   "4": 1,
+   "5": 1,
+   "6": 6
+  },
+  "fable": {
+   "1": 1,
+   "2": 2,
+   "4": 1,
+   "5": 1,
+   "6": 5
+  },
+  "sonnet": {
+   "2": 2,
+   "5": 3,
+   "6": 2
+  }
+ },
+ "rates": {
+  "opus": {
+   "over_merge": {
+    "count": 10,
+    "of": 82,
+    "pct": 12.2,
+    "low": 6.8,
+    "high": 21,
+    "text": "10 of 82 = 12.2% (6.8–21)"
+   },
+   "over_split": {
+    "count": 0,
+    "of": 30,
+    "pct": 0,
+    "low": 0,
+    "high": 11.4,
+    "text": "0 of 30 = 0% (0–11.4)"
+   }
+  },
+  "fable": {
+   "over_merge": {
+    "count": 10,
+    "of": 82,
+    "pct": 12.2,
+    "low": 6.8,
+    "high": 21,
+    "text": "10 of 82 = 12.2% (6.8–21)"
+   },
+   "over_split": {
+    "count": 0,
+    "of": 30,
+    "pct": 0,
+    "low": 0,
+    "high": 11.4,
+    "text": "0 of 30 = 0% (0–11.4)"
+   }
+  },
+  "sonnet": {
+   "over_merge": {
+    "count": 7,
+    "of": 82,
+    "pct": 8.5,
+    "low": 4.2,
+    "high": 16.6,
+    "text": "7 of 82 = 8.5% (4.2–16.6)"
+   },
+   "over_split": {
+    "count": 2,
+    "of": 30,
+    "pct": 6.7,
+    "low": 1.8,
+    "high": 21.3,
+    "text": "2 of 30 = 6.7% (1.8–21.3)"
+   }
+  },
+  "majority": {
+   "over_merge": {
+    "count": 10,
+    "of": 82,
+    "pct": 12.2,
+    "low": 6.8,
+    "high": 21,
+    "text": "10 of 82 = 12.2% (6.8–21)"
+   },
+   "over_split": {
+    "count": 0,
+    "of": 30,
+    "pct": 0,
+    "low": 0,
+    "high": 11.4,
+    "text": "0 of 30 = 0% (0–11.4)"
+   }
+  }
+ },
+ "rule_gaps": 11
+}

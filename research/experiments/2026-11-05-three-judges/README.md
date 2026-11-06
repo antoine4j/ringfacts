@@ -68,11 +68,90 @@ readers.
 
 ## Rulings carried in the judge prompt
 
-Rule 2 (reactions) and rule 4 (recurring columns) wait for the maintainer's
-ruling on the open questions from the first run (#289, #383). Until he
-rules, the prompt carries the proposed reading, marked as such.
+`rulings.json`. Rule 2 (reactions) carries the maintainer's ruling of
+2026-11-05 on #289: every person's reaction is its own claim, the fighter's
+own defence stays with his claim, fans' reaction is its own claim too. Rule 4
+(recurring columns) carries the proposed reading of #383, not yet ruled:
+each weekly issue is its own claim. Every split names its rule, so a ruling
+flips those calls without a rerun.
+
+## Results (2026-11-05, all 15 weeks, 1,901 grouped readings)
+
+Models: Opus 5.5, Fable 5.1 and Sonnet 5.5 as Claude Code sessions on the
+maintainer's plan; no outside spend. Reader prompt r1, judge j4, history h1.
+
+**The judge prompt's wording moved the calls more than the model did.** On
+the pilot week (28 Sep, 345 readings, 80 marks), four wordings of rule 5 (a
+passing mention) gave each judge between 51 and 132 "its own claim" calls.
+j1 keyed rule 5 on the golden `centrality` label, which calls a callout aimed
+at the fighter "only mentioned", and so split callout write-ups off their
+claims; j4 keeps a claim that is wholly someone else's story grouped (its
+relevance is the classifier's question) and treats an article on another
+topic from the same sitting as its own claim (the maintainer's mark on
+#419). Under j4 the judges were unanimous on 323 of 345 pilot readings.
+`versions.mjs` prints the four side by side.
+
+**Readers** (`history-readers.mjs`, `results/history-readers.json`):
+
+- Agreement between the three on the nine answers: kappa 0.86 to 0.99
+  (centrality lowest, the yes/no questions highest).
+- Against the golden key, the 207 training and validation articles inside
+  v0's history (109 test-side articles counted and never scored), all nine
+  answers right: Fable 86.5%, Opus 77.8%, Sonnet 74.9%, their majority
+  82.1%, classifier v7.7 55.1%. Where all three agree on all nine, they are
+  wrong against the key on 39 of 1,377 answers (2.8%).
+- The classifier differs from three agreeing readers on act 24.6%,
+  centrality 17.3%, fact 15.7%, firmness 15.8%, the yes/no questions 1.5
+  to 8.9%; about the same in English and Spanish.
+- The Decider re-run on the readers' majority answers gives v0's tier on
+  89.0% (87.5–90.3): 30 readings v0 put at tier 1 the readers put lower,
+  1 the other way.
+- The extractor's kind matches the readers' majority on 77.3%; the main
+  slip is someone else's story called a remark about the fighter (128).
+- 13.3% of readings are copies of another article (Yahoo Sports 65 of 167),
+  2.0% of saved texts are not the article.
+- Of the 691 readings with no saved text, 209 look like news of the fighter
+  by headline (131 unanimously): Amosov 24 against 47 read, Donchenko 29
+  against 106, Topuria 156 against 1,748. Eurosport, Bloody Elbow and
+  Sherdog lose the most. Headline-only evidence.
+
+**Judges** (`history-judges.mjs`, `results/history-judges.json`):
+
+- Unanimous on the full call (verdict and the claim named) for 1,619 of
+  1,901 readings (85.2%), majority 245, split 37; kappa 0.65 (0.76 on keep
+  or change alone).
+- Against the maintainer's 110 marks: each judge and the majority 99 to
+  100 (90 to 91%); the unanimous calls 98 of 106. Of the ten the majority
+  calls differently, nine are the three known questions (#289 two, now ruled
+  his way, so the judges follow his ruling against his earlier mark; #383
+  three, unruled; #421 four, where all three judges trace the articles to
+  the Kolos interview) and one is new (#351, reading 1595). His one
+  same-claim link (#424 with #426) all three judges made.
+- The pipeline's grouping scored with the judges' calls: over-merge 14.5%
+  of readings by the majority (judges 15.6 to 17.5%), over-split 22.1% of
+  claims (judges 19.5 to 26.4%). The first run's single judge gave 17.9%
+  and 35.5% on its five weeks under the older rules.
+
+**History pass** (`history-pass.mjs`, `results/history-pass.json`): 178
+same-claim pairs across weeks for Topuria (51 made by all three), 13 for
+Donchenko, 4 for Amosov. Career events named by a majority: Donchenko's
+booking and result, Amosov's booking, all at tier 1 in v0 within 7 hours of
+the first article; Topuria's three (his injuries, his clearance, a ranking)
+never at tier 1, because the starting map sends health and rankings to the
+digest.
+
+**Rule gaps**: the judges logged 276 cases the rules did not settle,
+grouped into nine questions with candidate rules and a recommendation each
+(`data/compare/rule-gaps.md`, local).
 
 ## Where it stands
 
-- 2026-11-05: export done (15 weeks, 3,487 readings in 576 claims, 691
-  unread). Pilot week 2026-09-28 readers running on all three models.
+- 2026-11-05: the whole history is labelled. The storyboard reads
+  `data/marks/three-judges.json` from branch `storyboard-three-judges`
+  (`/?agent=disputed`, `/?agent=spot`); confirming a call saves it as the
+  maintainer's mark.
+- Open for the maintainer: #383, the nine rule questions, the Disputed view
+  (282 readings not unanimous), the 40-call spot check.
+- Next, once he has ruled: flip the calls whose rule changed (by their rule
+  number), rescore, and use the silver labels to tune the classifier and
+  the extractor against the golden key.
