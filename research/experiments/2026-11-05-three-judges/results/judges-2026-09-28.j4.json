@@ -1,0 +1,137 @@
+{
+ "week": "2026-09-28",
+ "models": [
+  "opus",
+  "sonnet"
+ ],
+ "readings": 345,
+ "problems": 0,
+ "agreement": {
+  "unanimous": 323,
+  "majority": 0,
+  "split": 22,
+  "items": 345,
+  "kappa_call": 0.844,
+  "kappa_verdict": 0.842
+ },
+ "agreement_change": {
+  "unanimous": 324,
+  "majority": 0,
+  "split": 21,
+  "items": 345,
+  "kappa": 0.838
+ },
+ "anton": {
+  "marks": 80,
+  "same": {
+   "opus": 71,
+   "sonnet": 71
+  },
+  "majority": {
+   "same": 70,
+   "of": 78
+  },
+  "unanimous": {
+   "same": 70,
+   "of": 78
+  },
+  "links": {
+   "his": 0,
+   "made_by_someone": 0,
+   "made_by_all": 0
+  }
+ },
+ "same_claims": {
+  "pairs": 16,
+  "unanimous": 10,
+  "majority": 0,
+  "minority": 6
+ },
+ "rules": {
+  "opus": {
+   "1": 11,
+   "2": 37,
+   "4": 10,
+   "5": 13,
+   "6": 14
+  },
+  "sonnet": {
+   "1": 8,
+   "2": 36,
+   "4": 7,
+   "5": 20,
+   "6": 17
+  }
+ },
+ "rates": {
+  "opus": {
+   "over_merge": {
+    "count": 85,
+    "of": 345,
+    "pct": 24.6,
+    "low": 20.4,
+    "high": 29.4,
+    "text": "85 of 345 = 24.6% (20.4–29.4)"
+   },
+   "over_split": {
+    "count": 23,
+    "of": 61,
+    "pct": 37.7,
+    "low": 26.6,
+    "high": 50.3,
+    "text": "23 of 61 = 37.7% (26.6–50.3)"
+   }
+  },
+  "sonnet": {
+   "over_merge": {
+    "count": 88,
+    "of": 345,
+    "pct": 25.5,
+    "low": 21.2,
+    "high": 30.4,
+    "text": "88 of 345 = 25.5% (21.2–30.4)"
+   },
+   "over_split": {
+    "count": 26,
+    "of": 61,
+    "pct": 42.6,
+    "low": 31,
+    "high": 55.1,
+    "text": "26 of 61 = 42.6% (31–55.1)"
+   }
+  },
+  "majority": {
+   "over_merge": {
+    "count": 75,
+    "of": 345,
+    "pct": 21.7,
+    "low": 17.7,
+    "high": 26.4,
+    "text": "75 of 345 = 21.7% (17.7–26.4)"
+   },
+   "over_split": {
+    "count": 20,
+    "of": 61,
+    "pct": 32.8,
+    "low": 22.3,
+    "high": 45.3,
+    "text": "20 of 61 = 32.8% (22.3–45.3)"
+   }
+  }
+ },
+ "first_run": {
+  "opus": {
+   "same": 333,
+   "of": 344
+  },
+  "sonnet": {
+   "same": 326,
+   "of": 344
+  },
+  "majority": {
+   "same": 319,
+   "of": 322
+  }
+ },
+ "rule_gaps": 19
+}

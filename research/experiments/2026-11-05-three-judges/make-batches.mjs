@@ -21,12 +21,13 @@ const week = JSON.parse(readFileSync(join(here, "data", "history", `week-${monda
 const root = join(here, "data", model);
 const folder = join(root, `batches-${monday}`);
 
-// This model's answers from its other weeks, by reading.
+// Readings this model already has in another week's batches, answered or
+// not: a claim that spans weeks is read once, in the first week cut.
 const earlier = new Map();
 if (existsSync(root)) {
   for (const other of readdirSync(root).filter((name) => name.startsWith("batches-") && name !== `batches-${monday}`)) {
-    for (const name of readdirSync(join(root, other)).filter((file) => file.endsWith(".out.json"))) {
-      for (const answer of JSON.parse(readFileSync(join(root, other, name), "utf8"))) earlier.set(String(answer.reading_id), answer);
+    for (const name of readdirSync(join(root, other)).filter((file) => file.endsWith(".in.json") || file.endsWith(".out.json"))) {
+      for (const item of JSON.parse(readFileSync(join(root, other, name), "utf8"))) if (!earlier.has(String(item.reading_id))) earlier.set(String(item.reading_id), other);
     }
   }
 }
@@ -45,9 +46,8 @@ const all = week.claims.flatMap((claim) =>
 
 // Those read before are reused; the rest are batched.
 mkdirSync(folder, { recursive: true });
-const reused = all.filter((reading) => earlier.has(String(reading.reading_id))).map((reading) => earlier.get(String(reading.reading_id)));
-writeFileSync(join(folder, "reused.out.json"), JSON.stringify(reused, null, 1));
-writeFileSync(join(folder, "reused.in.json"), "[]");
+const reused = all.filter((reading) => earlier.has(String(reading.reading_id))).map((reading) => ({ reading_id: reading.reading_id, in: earlier.get(String(reading.reading_id)) }));
+writeFileSync(join(folder, "reused.json"), JSON.stringify(reused, null, 1));
 const readings = all.filter((reading) => !earlier.has(String(reading.reading_id)));
 
 let written = 0;

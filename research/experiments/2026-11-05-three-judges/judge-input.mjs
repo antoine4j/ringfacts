@@ -17,12 +17,15 @@ const week = JSON.parse(readFileSync(join(here, "data", "history", `week-${monda
 const root = join(here, "data", model);
 const folder = join(root, `batches-${monday}`);
 
-// Every reader's answer, by reading; a batch without one stops the run.
+// Every reader's answer of this model, from every week's batches (a claim
+// that spans weeks was read once); a batch of this week without one stops the run.
 const answers = new Map();
-for (const name of readdirSync(folder).filter((file) => file.endsWith(".in.json"))) {
-  const out = join(folder, name.replace(".in.json", ".out.json"));
-  if (!existsSync(out)) throw new Error(`${model} ${monday}: ${name} is not read yet`);
-  for (const answer of JSON.parse(readFileSync(out, "utf8"))) answers.set(String(answer.reading_id), answer);
+for (const other of readdirSync(root).filter((name) => name.startsWith("batches-"))) {
+  for (const name of readdirSync(join(root, other)).filter((file) => file.endsWith(".in.json"))) {
+    const out = join(root, other, name.replace(".in.json", ".out.json"));
+    if (!existsSync(out)) { if (other === `batches-${monday}`) throw new Error(`${model} ${monday}: ${name} is not read yet`); continue; }
+    for (const answer of JSON.parse(readFileSync(out, "utf8"))) answers.set(String(answer.reading_id), answer);
+  }
 }
 
 // This model's calls from earlier weeks, by claim and reading.

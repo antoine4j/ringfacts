@@ -26,6 +26,13 @@ const out = join(here, "data", "prompts");
 mkdirSync(out, { recursive: true });
 writeFileSync(join(out, "reader-r1.md"), after(readFileSync(join(here, "reader-prompt.md"), "utf8")).replace("{GUIDE}", inlined) + "\n");
 writeFileSync(join(out, "screen-s1.md"), after(readFileSync(join(here, "screen-prompt.md"), "utf8")) + "\n");
+
+// The judge prompt with the rulings in force. Until the maintainer rules on
+// #289 (reactions) and #383 (recurring columns), rules 2 and 4 carry the
+// proposed reading, and every split names its rule so a ruling flips the calls.
+const rulings = JSON.parse(readFileSync(join(here, "rulings.json"), "utf8"));
+const judgeVersion = readFileSync(join(here, "judge-prompt.md"), "utf8").match(/Prompt version: (j\d+)/)[1];
+writeFileSync(join(out, `judge-${judgeVersion}.md`), after(readFileSync(join(here, "judge-prompt.md"), "utf8")).replace("{RULE_2}", rulings.rule_2).replace("{RULE_4}", rulings.rule_4).replace("{RULINGS_DATE}", rulings.date) + "\n");
 const commit = execSync(`git -C ${root} log -1 --format=%h -- ${guidePath}`).toString().trim();
-writeFileSync(join(out, "record.json"), JSON.stringify({ rendered_at: new Date().toISOString(), guide: guidePath, guide_commit: commit, reader: "r1", screen: "s1" }, null, 1));
+writeFileSync(join(out, "record.json"), JSON.stringify({ rendered_at: new Date().toISOString(), guide: guidePath, guide_commit: commit, reader: "r1", screen: "s1", judge: judgeVersion, rulings: rulings.date }, null, 1));
 console.log(`prompts in ${out}; guide at ${commit}`);

@@ -34,11 +34,14 @@ const settings = { version: 1, classifier_version: "v7.7", tiers: startingTierMa
 // Every reader's answers, by model and reading.
 const answersOf = {};
 for (const model of models) {
-  const folder = join(here, "data", model, `batches-${monday}`);
+  // Every week's batches: a claim that spans weeks was read once.
   answersOf[model] = new Map();
-  if (!existsSync(folder)) continue;
-  for (const name of readdirSync(folder).filter((file) => file.endsWith(".out.json"))) {
-    for (const answer of read(join(folder, name))) answersOf[model].set(String(answer.reading_id), answer);
+  const root = join(here, "data", model);
+  if (!existsSync(root)) continue;
+  for (const other of readdirSync(root).filter((name) => name.startsWith("batches-"))) {
+    for (const name of readdirSync(join(root, other)).filter((file) => file.endsWith(".out.json"))) {
+      for (const answer of read(join(root, other, name))) answersOf[model].set(String(answer.reading_id), answer);
+    }
   }
 }
 const readings = week.claims.flatMap((claim) => claim.readings.map((reading) => ({ ...reading, fighter: claim.fighter, claim_id: claim.id })));
@@ -163,22 +166,26 @@ for (const reading of complete) {
 const topPairs = Object.entries(counts.extractor.pairs).sort((a, b) => b[1] - a[1]).slice(0, 8);
 lines.push("## The extractor's kind against the readers' majority", "", `Same kind on ${share(counts.extractor.kind_same, counts.extractor.kind_counted).text}. NO CLAIM: v0 ${counts.extractor.no_claim_v0}, readers ${counts.extractor.no_claim_readers}, both ${counts.extractor.no_claim_both}.`, "", `Most common differences (v0 → readers): ${topPairs.map(([key, count]) => `${key} ${count}`).join("; ") || "none"}.`, "");
 
-// F. The saved text: problems by how the body was fetched, and by outlet.
-counts.text = { problems_majority: 0, by_body_via: {}, by_outlet: {}, languages: {} };
+// F. The saved text: copies of another article (a dedup signal) apart from texts that are not the article (a fetch signal).
+counts.text = { copies_majority: 0, problems_majority: 0, by_body_via: {}, by_outlet: {}, languages: {}, problem_kinds: {} };
 for (const reading of complete) {
-  const problems = models.map((model) => answer(model, reading, "body_problem") || "").filter(Boolean);
-  const flagged = problems.length >= 2;
+  const flags = models.map((model) => answer(model, reading, "body_problem") || "").filter(Boolean);
+  const copies = flags.filter((flag) => flag === "copy").length;
+  const others = flags.filter((flag) => flag !== "copy");
+  const isCopy = copies >= 2;
+  const isProblem = !isCopy && others.length >= 2;
   const via = reading.body_via ?? "unknown";
-  counts.text.by_body_via[via] ??= { readings: 0, flagged: 0 };
+  counts.text.by_body_via[via] ??= { readings: 0, copies: 0, problems: 0 };
   counts.text.by_body_via[via].readings++;
-  counts.text.by_outlet[reading.outlet] ??= { readings: 0, flagged: 0 };
+  counts.text.by_outlet[reading.outlet] ??= { readings: 0, copies: 0, problems: 0 };
   counts.text.by_outlet[reading.outlet].readings++;
-  if (flagged) { counts.text.problems_majority++; counts.text.by_body_via[via].flagged++; counts.text.by_outlet[reading.outlet].flagged++; }
+  if (isCopy) { counts.text.copies_majority++; counts.text.by_body_via[via].copies++; counts.text.by_outlet[reading.outlet].copies++; }
+  if (isProblem) { counts.text.problems_majority++; counts.text.by_body_via[via].problems++; counts.text.by_outlet[reading.outlet].problems++; const kind = majority(others)?.answer ?? "other"; counts.text.problem_kinds[kind] = (counts.text.problem_kinds[kind] ?? 0) + 1; }
   const language = majorityOf(reading, "language")?.answer ?? "?";
   counts.text.languages[language] = (counts.text.languages[language] ?? 0) + 1;
 }
-const outletRows = Object.entries(counts.text.by_outlet).filter(([, row]) => row.flagged).sort((a, b) => b[1].flagged - a[1].flagged).slice(0, 12);
-lines.push("## The saved text", "", `Flagged as not the article by at least two readers: ${share(counts.text.problems_majority, complete.length).text}.`, "", ...table(["Fetched via", "Readings", "Flagged"], Object.entries(counts.text.by_body_via).map(([via, row]) => [via, row.readings, row.flagged])), ...table(["Outlet", "Readings", "Flagged"], outletRows.map(([outlet, row]) => [outlet, row.readings, row.flagged])), `Languages: ${Object.entries(counts.text.languages).sort((a, b) => b[1] - a[1]).map(([language, count]) => `${language} ${count}`).join(", ")}.`, "");
+const outletRows = Object.entries(counts.text.by_outlet).filter(([, row]) => row.copies || row.problems).sort((a, b) => (b[1].copies + b[1].problems) - (a[1].copies + a[1].problems)).slice(0, 12);
+lines.push("## The saved text", "", `A copy of another article in the week (at least two readers): ${share(counts.text.copies_majority, complete.length).text}. Not the article (navigation, cut off, another story, a stub): ${share(counts.text.problems_majority, complete.length).text}${Object.keys(counts.text.problem_kinds).length ? `, of which ${Object.entries(counts.text.problem_kinds).map(([kind, count]) => `${kind} ${count}`).join(", ")}` : ""}.`, "", ...table(["Fetched via", "Readings", "Copies", "Not the article"], Object.entries(counts.text.by_body_via).map(([via, row]) => [via, row.readings, row.copies, row.problems])), ...table(["Outlet", "Readings", "Copies", "Not the article"], outletRows.map(([outlet, row]) => [outlet, row.readings, row.copies, row.problems])), `Languages: ${Object.entries(counts.text.languages).sort((a, b) => b[1] - a[1]).map(([language, count]) => `${language} ${count}`).join(", ")}.`, "");
 
 // G. Where the news came from, and career events named.
 counts.sources = {};
@@ -216,5 +223,5 @@ mkdirSync(join(here, "data", "compare"), { recursive: true });
 mkdirSync(join(here, "results"), { recursive: true });
 writeFileSync(join(here, "data", "compare", `readers-${monday}.md`), lines.join("\n") + "\n");
 writeFileSync(join(here, "results", `readers-${monday}.json`), JSON.stringify(counts, null, 1));
-console.log(lines.slice(0, 40).join("\n"));
+console.log(lines.join("\n"));
 console.log(`\n→ data/compare/readers-${monday}.md, results/readers-${monday}.json`);
