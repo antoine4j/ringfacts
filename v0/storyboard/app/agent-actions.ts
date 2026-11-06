@@ -31,10 +31,12 @@ export async function answerAgentCall(input: { call: string; answer: AgentAnswer
     const same = loaded.file.same_claims.find((call) => sameCallKey(call.claim_id, call.other_claim_id) === input.call);
     if (!reading && !same) throw new Error("there is no such agent call");
 
+    if (input.answer === "confirmed" && reading?.verdict === "split") throw new Error("the judges split on this reading, so there is no majority call to confirm; mark it yourself");
+
     // Confirming saves the call as Anton's own mark first; if that fails, nothing is recorded.
     if (input.answer === "confirmed") {
       const saved = reading
-        ? await markReading({ claimId: reading.claim_id, readingId: reading.reading_id, verdict: reading.verdict, belongsIn: reading.belongs_in_claim_id })
+        ? await markReading({ claimId: reading.claim_id, readingId: reading.reading_id, verdict: reading.verdict as Exclude<typeof reading.verdict, "split">, belongsIn: reading.belongs_in_claim_id })
         : await markSameClaim({ claimId: same!.claim_id, otherClaimId: same!.other_claim_id, verdict: "same_claim" });
       if (!saved.ok) return saved;
     }

@@ -1,7 +1,7 @@
 // Questions more than one page asks the database.
 
 import type { Settings } from "../../pipeline/settings/tiers.ts";
-import { agentViews, answersInForce, loadAgentMarks, type ClaimAgentView } from "./agent-marks.ts";
+import { agentViews, answersInForce, disputedCalls, loadAgentMarks, spotSample, SPOT_SIZE, type AgentFile, type ClaimAgentView, type ReadingCallView, type SameCallView } from "./agent-marks.ts";
 import { marksInForce, reviewViews, sameClaimGroups, type ClaimReviewView, type ReadingMark, type SameClaimMark } from "./reviews.ts";
 import type { TierMark } from "./tier-marks.ts";
 import { query } from "./db.ts";
@@ -222,4 +222,40 @@ export async function claimAgentViews(schema: Schema, claimIds: string[]): Promi
   };
   const { readingMarks, sameMarks } = await reviewsFor(schema, claimIds);
   return agentViews(file, answersInForce(loaded.answers), marksInForce(readingMarks), sameClaimGroups(sameMarks).links);
+}
+
+/** The flat views of the three-judge file: ?agent=disputed and ?agent=spot. */
+export type AgentListing = {
+  mode: "disputed" | "spot";
+  readings: { call: ReadingCallView; row: MemberRow | undefined }[];
+  same: { claim_id: string; call: SameCallView }[];
+  /** Spot only: calls Anton has answered (or already marked) out of the sample. */
+  answered: number;
+  total: number;
+};
+
+/**
+ * The reading calls, and for disputed the same-claim pairs, one of the two
+ * three-judge views shows, each set against Anton's answers and marks. Null
+ * when no calls are loaded or the file is the single-judge shape.
+ *
+ * @param schema  "public" or "replay".
+ * @param mode  "disputed" (not unanimous, split first) or "spot" (the fixed sample of unanimous change calls).
+ * @returns The listing, or null.
+ */
+export async function agentListing(schema: Schema, mode: "disputed" | "spot"): Promise<AgentListing | null> {
+  const loaded = schema === "public" ? loadAgentMarks() : null;
+  if (!loaded || !loaded.file.judges) return null;
+  const picked = mode === "spot" ? { readings: spotSample(loaded.file), same: [] } : disputedCalls(loaded.file);
+  const file: AgentFile = { ...loaded.file, readings: picked.readings, same_claims: picked.same };
+  const claimIds = [...new Set([...file.readings.map((call) => call.claim_id), ...file.same_claims.flatMap((call) => [call.claim_id, call.other_claim_id])])];
+  const { readingMarks, sameMarks } = await reviewsFor(schema, claimIds);
+  const views = agentViews(file, answersInForce(loaded.answers), marksInForce(readingMarks), sameClaimGroups(sameMarks).links);
+  const members = await claimMembers(schema, claimIds);
+  const readings = file.readings.map((call) => ({
+    call: views.get(call.claim_id)!.readings[call.reading_id],
+    row: members.get(call.claim_id)?.find((row) => row.reading_id === call.reading_id),
+  }));
+  const same = file.same_claims.map((call) => ({ claim_id: call.claim_id, call: views.get(call.claim_id)!.same.find((each) => each.other_claim_id === call.other_claim_id)! }));
+  return { mode, readings, same, answered: readings.filter(({ call }) => call.state !== "open").length, total: mode === "spot" ? Math.min(SPOT_SIZE, readings.length) : readings.length };
 }

@@ -4,7 +4,7 @@
 
 import Link from "next/link";
 import { Suspense } from "react";
-import { AgentClaimBar, AgentCount } from "../components/AgentCalls.tsx";
+import { AgentClaimBar, AgentCount, AgentListingPage } from "../components/AgentCalls.tsx";
 import { ClaimNote } from "../components/ClaimNote.tsx";
 import { ClaimReadings } from "../components/ClaimReadings.tsx";
 import { SameClaimReview } from "../components/ReviewControls.tsx";
@@ -17,7 +17,7 @@ import { query } from "../lib/db.ts";
 import { claimFilter, claimOrder, whereSql, type Params } from "../lib/filters.ts";
 import { dayAndClock, shortTime } from "../lib/format.ts";
 import { bestTier } from "../lib/live-scores.ts";
-import { claimAgentViews, claimMembers, claimNotesFor, claimReviews, fighterNames, outletNames, tierMarksFor, type ClaimNoteRow, type ClaimRow, type MemberRow } from "../lib/queries.ts";
+import { agentListing, claimAgentViews, claimMembers, claimNotesFor, claimReviews, fighterNames, outletNames, tierMarksFor, type ClaimNoteRow, type ClaimRow, type MemberRow } from "../lib/queries.ts";
 import type { ClaimAgentView } from "../lib/agent-marks.ts";
 import type { ClaimReviewView } from "../lib/reviews.ts";
 import { schemaFrom, schemaSuffix, type Schema } from "../lib/schema.ts";
@@ -35,6 +35,12 @@ const LIMIT = 300;
 export default async function ClaimsPage({ searchParams }: { searchParams: Promise<Params> }) {
   const params = await searchParams;
   const schema = schemaFrom(params.schema);
+
+  // The two three-judge views list readings, not claims.
+  if (params.agent === "disputed" || params.agent === "spot") {
+    const listing = await agentListing(schema, params.agent);
+    if (listing) return <AgentListingPage listing={listing} />;
+  }
 
   // The claims that match, then all their readings in one query.
   const filter = claimFilter(params);
@@ -268,6 +274,7 @@ function AgentFilterLine({ params, views }: { params: Params; views: Map<string,
       <span className="agent-tag">agent</span> calls are loaded (not your reviews; they never count as them): {open} claim{open === 1 ? "" : "s"} with calls to answer,{" "}
       {changes} where they propose a split or merge, {differs} with calls that differ from your marks. Show <Link href={link("changes")}>split or merge</Link> · <Link href={link("open")}>to answer</Link> ·{" "}
       <Link href={link("differs")}>differing</Link> ·{" "}
+      <Link href={link("disputed")}>disputed</Link> · <Link href={link("spot")}>spot check</Link> ·{" "}
       <Link href={link(null)}>all</Link>
     </p>
   );

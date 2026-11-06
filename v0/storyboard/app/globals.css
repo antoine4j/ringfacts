@@ -433,6 +433,14 @@ h2.period { margin-top: 14px; }
 .agent-differs { color: var(--bad-text); font-weight: 600; }
 .agent-answer { font-size: 11px; padding: 1px 8px; margin-left: 4px; border: 1px solid var(--agent); color: var(--agent); background: var(--panel); border-radius: 999px; cursor: pointer; }
 .agent-answered { font: 600 11px/1 var(--mono); color: var(--agent); margin-left: 4px; }
+.agent-badge { font: 600 11px/1 var(--mono); color: var(--agent); background: var(--agent-bg); border-radius: 999px; padding: 2px 6px; }
+.agent-badge.split { color: var(--bad-text); }
+.agent-panel { display: inline-block; margin-left: 6px; }
+.agent-panel summary { cursor: pointer; color: var(--agent); font-size: 11px; }
+.agent-panel[open] { display: block; margin: 4px 0 0; }
+.agent-judges { display: grid; gap: 4px; margin-top: 4px; }
+.agent-judge { display: grid; grid-template-columns: 56px 130px 1fr 48px; gap: 8px; align-items: baseline; }
+.agent-list-item { margin: 10px 0; padding: 8px 10px; border: 1px solid var(--border, #ddd); border-radius: var(--radius); }
 .agent-bar { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 10px; margin: 6px 0; padding: 6px 10px; background: var(--agent-bg); border-radius: var(--radius); }
 .agent-bar .agent-line { flex-basis: 100%; margin-top: 0; }
 .agent-filter .agent-tag { margin-right: 6px; }
