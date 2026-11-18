@@ -12,30 +12,30 @@
     "sonnet"
    ],
    "links": {
-    "pairs": 178,
-    "all": 51,
-    "two": 46,
-    "one": 81
+    "pairs": 273,
+    "all": 54,
+    "two": 78,
+    "one": 141
    },
    "stories": {
     "opus": {
-     "stories": 11,
-     "claims_in_stories": 175
+     "stories": 14,
+     "claims_in_stories": 253
     },
     "fable": {
-     "stories": 14,
-     "claims_in_stories": 178
+     "stories": 19,
+     "claims_in_stories": 371
     },
     "sonnet": {
      "stories": 29,
-     "claims_in_stories": 395
+     "claims_in_stories": 359
     }
    },
    "career": {
-    "events": 4,
-    "agreed": 3,
-    "agreed_with_tier1": 0,
-    "agreed_tier1_after_a_day": 0
+    "events": 3,
+    "agreed": 2,
+    "agreed_with_tier1": 1,
+    "agreed_tier1_after_a_day": 1
    }
   },
   "donchenko": {
@@ -45,22 +45,22 @@
     "sonnet"
    ],
    "links": {
-    "pairs": 13,
+    "pairs": 14,
     "all": 9,
     "two": 1,
-    "one": 3
+    "one": 4
    },
    "stories": {
     "opus": {
-     "stories": 4,
-     "claims_in_stories": 29
+     "stories": 3,
+     "claims_in_stories": 27
     },
     "fable": {
-     "stories": 4,
-     "claims_in_stories": 31
+     "stories": 3,
+     "claims_in_stories": 27
     },
     "sonnet": {
-     "stories": 6,
+     "stories": 5,
      "claims_in_stories": 29
     }
    },
@@ -78,27 +78,27 @@
     "sonnet"
    ],
    "links": {
-    "pairs": 4,
-    "all": 2,
+    "pairs": 7,
+    "all": 5,
     "two": 1,
     "one": 1
    },
    "stories": {
     "opus": {
-     "stories": 7,
-     "claims_in_stories": 21
+     "stories": 6,
+     "claims_in_stories": 24
     },
     "fable": {
      "stories": 5,
-     "claims_in_stories": 17
+     "claims_in_stories": 22
     },
     "sonnet": {
-     "stories": 7,
-     "claims_in_stories": 24
+     "stories": 8,
+     "claims_in_stories": 29
     }
    },
    "career": {
-    "events": 1,
+    "events": 2,
     "agreed": 1,
     "agreed_with_tier1": 1,
     "agreed_tier1_after_a_day": 0

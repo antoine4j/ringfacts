@@ -201,8 +201,9 @@ lines.push("## Where the news came from (readers' majority)", "", Object.entries
 // H. The headline screen of the unread.
 const screens = {};
 for (const model of models) {
-  const file = join(here, "data", model, `screen-${monday}.out.json`);
-  if (existsSync(file)) screens[model] = new Map(read(file).map((item) => [String(item.reading_id), item]));
+  // A week exported again has a second screen file for the unread that came in later.
+  const names = readdirSync(join(here, "data", model)).filter((file) => file.startsWith(`screen-${monday}`) && file.endsWith(".out.json"));
+  if (names.length) screens[model] = new Map(names.flatMap((name) => read(join(here, "data", model, name))).map((item) => [String(item.reading_id), item]));
 }
 const screened = week.unread.filter((reading) => Object.values(screens).every((map) => map.has(reading.reading_id)));
 counts.screen = { unread: week.unread.length, screened: screened.length, models: Object.keys(screens), news_unanimous: 0, news_majority: 0, by_fighter: {}, by_outlet: {} };

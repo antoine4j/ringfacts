@@ -144,14 +144,71 @@ digest.
 grouped into nine questions with candidate rules and a recommendation each
 (`data/compare/rule-gaps.md`, local).
 
+## Top-up to 18 Nov (2026-11-18)
+
+**Question.** Can the history be extended past the first export (2026-11-06T01:12Z,
+5 Nov 17:12 Pacific) with the same models, prompts (r1, s1, j4, h1) and rulings,
+so that every score runs from 31 Jul to now on one method, without splitting
+claims at the cut-off?
+
+**How.** The export was taken again at 2026-11-18T17:54Z for the weeks of 2, 9
+and 16 Nov. `cut-check.mjs` compares it with the first export by reading id,
+not by date: 433 new grouped readings and 125 new unread. No reading is missed
+or counted twice. None of the 2,592 earlier ones changed claim or gained text.
+Nine came in late with a publish date before the cut. `results/cut-2026-11-18.json`
+lists the new ids. The first export's 2 Nov week, the judges' first calls on it
+and the first history pass are kept in `cut-2026-11-05/` folders. Only the new
+articles were read (23 batches per model); earlier answers were reused
+(`make-batches.mjs` now leaves a re-exported week's batches as they are).
+
+The seam is closed the same way every week boundary was closed in the first run:
+
+- the 2 Nov week is judged again whole, old and new articles on one page.
+  Each judge's first call on an old article is shown as its earlier call
+  (`judge-input.mjs` reads `cut-<date>/`);
+- every claim comes with all its readings back to its first, so a claim that
+  spans weeks is judged with its old articles;
+- the history pass (`run-history.sh`, now headless like the rest) runs again
+  over all 17 weeks, so a new claim can be linked to an old one any number of
+  weeks back.
+
+`boundary-check.mjs` (`results/boundary-check.json`) counts the seam per judge.
+New articles moved into a claim that existed before the cut: 2 to 3. New claims
+linked to an older one by the history pass: 7. The second judging of the 2 Nov
+week changed 1 to 5 of the 128 first calls. The second history pass kept 80 to
+86% of the first one's links (Opus 98 of 114, Fable 93 of 116, Sonnet 110 of
+137). That is the history pass's own noise, and a reason to read its links
+only where two or three models agree.
+
+**Results over 31 Jul to 18 Nov (17 weeks, 2,334 grouped readings, 816 unread).**
+
+- Judges: unanimous on the full call for 1,983 (85.0%), kappa 0.655 (0.762
+  on keep or change alone). Against the maintainer's 110 marks: each judge 99
+  to 100, the majority 100; he has made no marks since the first export.
+- The pipeline's grouping by the majority: over-merge 15.2% of readings
+  (Topuria 14.5%, Donchenko 16.8%, Amosov 27.0%), over-split 23.3% of claims.
+- Readers: the classifier differs from three agreeing readers on act 23.9%,
+  centrality 17.3%, fact 16.0%, firmness 17.0%. The Decider re-run gives v0's
+  tier on 88.4%. 46 tier-1 posts the readers put lower, 4 the other way.
+  The extractor's kind matches on 77.3%. 12.9% of readings are copies, 2.4%
+  of saved texts are not the article. The golden-key scores are unchanged
+  (the golden set ends on 17 Sep).
+- Unread: 276 of 816 look like news by headline. Amosov 46 against 111
+  read and grouped, Donchenko 29 against 107, Topuria 201 against 2,116.
+- Career events by a majority: Amosov's booking against Machado Garry on 7 Nov
+  was posted at tier 1 within the hour.
+- Rule gaps: 328 logged (52 new); the nine questions in
+  `data/compare/rule-gaps.md` were drawn from the first 276.
+
 ## Where it stands
 
 - 2026-11-05: the whole history is labelled. The storyboard reads
   `data/marks/three-judges.json` from branch `storyboard-three-judges`
   (`/?agent=disputed`, `/?agent=spot`); confirming a call saves it as the
   maintainer's mark.
+- 2026-11-18: topped up to 18 Nov 09:54 Pacific (above); the storyboard file is rebuilt over all 17 weeks.
 - Open for the maintainer: #383, the nine rule questions, the Disputed view
-  (282 readings not unanimous), the 40-call spot check.
+  (351 readings not unanimous since the top-up; 282 before), the 40-call spot check.
 - Next, once he has ruled: flip the calls whose rule changed (by their rule
   number), rescore, and use the silver labels to tune the classifier and
   the extractor against the golden key.

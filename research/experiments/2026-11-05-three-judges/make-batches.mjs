@@ -7,6 +7,11 @@
 // A batch with an answer file is left alone, so a later run resumes. The week's
 // unread readings (no saved text) go to one screen file, headline and all.
 //
+// A week exported again after more articles came in (the top-up of a later
+// cut-off) keeps its batches: readings already in them are not cut again,
+// the new ones go to batches numbered after the last, and the unread not yet
+// screened go to screen-<monday>-<n>.in.json.
+//
 // Usage: node research/experiments/2026-11-05-three-judges/make-batches.mjs <model> 2026-09-28
 
 import { existsSync, mkdirSync, readFileSync, readdirSync, writeFileSync } from "node:fs";
@@ -44,14 +49,19 @@ const all = week.claims.flatMap((claim) =>
   })),
 );
 
-// Those read before are reused; the rest are batched.
+// Readings already in this week's own batches (a week exported again).
 mkdirSync(folder, { recursive: true });
+const batchNames = readdirSync(folder).filter((file) => /^batch-\d+\.in\.json$/.test(file));
+const batched = new Set(batchNames.flatMap((name) => JSON.parse(readFileSync(join(folder, name), "utf8")).map((item) => String(item.reading_id))));
+const firstNumber = batchNames.length ? Math.max(...batchNames.map((name) => Number(name.slice(6, -8)))) + 1 : 1;
+
+// Those read before are reused; the rest are batched.
 const reused = all.filter((reading) => earlier.has(String(reading.reading_id))).map((reading) => ({ reading_id: reading.reading_id, in: earlier.get(String(reading.reading_id)) }));
 writeFileSync(join(folder, "reused.json"), JSON.stringify(reused, null, 1));
-const readings = all.filter((reading) => !earlier.has(String(reading.reading_id)));
+const readings = all.filter((reading) => !earlier.has(String(reading.reading_id)) && !batched.has(String(reading.reading_id)));
 
 let written = 0;
-for (let start = 0, number = 1; start < readings.length; start += BATCH_SIZE, number++) {
+for (let start = 0, number = firstNumber; start < readings.length; start += BATCH_SIZE, number++) {
   const name = `batch-${String(number).padStart(2, "0")}`;
   if (existsSync(join(folder, `${name}.out.json`))) continue;
   writeFileSync(join(folder, `${name}.in.json`), JSON.stringify(readings.slice(start, start + BATCH_SIZE), null, 1));
@@ -59,10 +69,13 @@ for (let start = 0, number = 1; start < readings.length; start += BATCH_SIZE, nu
 }
 
 // The unread readings: headline, outlet, and the line of text when there is one.
-const screen = week.unread.map((reading) => ({
+const screenNames = readdirSync(root).filter((file) => file.startsWith(`screen-${monday}`) && file.endsWith(".in.json"));
+const screenedBefore = new Set(screenNames.flatMap((name) => JSON.parse(readFileSync(join(root, name), "utf8")).map((item) => String(item.reading_id))));
+const screen = week.unread.filter((reading) => !screenedBefore.has(String(reading.reading_id))).map((reading) => ({
   reading_id: reading.reading_id, fighter: reading.fighter, published: String(reading.published_at).slice(0, 10),
   outlet: reading.outlet, headline: reading.headline, url: reading.url, description: reading.body,
 }));
-if (!existsSync(join(root, `screen-${monday}.out.json`))) writeFileSync(join(root, `screen-${monday}.in.json`), JSON.stringify(screen, null, 1));
+const screenName = screenNames.length ? `screen-${monday}-${screenNames.length + 1}.in.json` : `screen-${monday}.in.json`;
+if (screen.length && !existsSync(join(root, screenName.replace(".in.json", ".out.json")))) writeFileSync(join(root, screenName), JSON.stringify(screen, null, 1));
 
 console.log(`${model} ${monday}: ${all.length} readings, ${reused.length} read before; ${written} batches to read in ${folder}; ${screen.length} unread to screen`);

@@ -5,22 +5,22 @@
   "fable",
   "sonnet"
  ],
- "readings": 128,
- "problems": 13,
+ "readings": 375,
+ "problems": 11,
  "agreement": {
-  "unanimous": 121,
-  "majority": 5,
-  "split": 2,
-  "items": 128,
-  "kappa_call": 0.863,
-  "kappa_verdict": 0.863
+  "unanimous": 338,
+  "majority": 34,
+  "split": 3,
+  "items": 375,
+  "kappa_call": 0.801,
+  "kappa_verdict": 0.832
  },
  "agreement_change": {
-  "unanimous": 123,
-  "majority": 5,
+  "unanimous": 344,
+  "majority": 31,
   "split": 0,
-  "items": 128,
-  "kappa": 0.911
+  "items": 375,
+  "kappa": 0.828
  },
  "anton": {
   "marks": 13,
@@ -44,106 +44,109 @@
   }
  },
  "same_claims": {
-  "pairs": 4,
-  "unanimous": 1,
-  "majority": 2,
-  "minority": 1
+  "pairs": 37,
+  "unanimous": 4,
+  "majority": 7,
+  "minority": 26
  },
  "rules": {
   "opus": {
-   "1": 2,
-   "2": 7,
-   "4": 8,
-   "5": 7,
-   "6": 1
+   "2": 25,
+   "4": 11,
+   "5": 15,
+   "6": 28,
+   "7": 5
   },
   "fable": {
-   "1": 1,
-   "2": 7,
+   "1": 19,
+   "2": 20,
    "4": 5,
-   "5": 2,
-   "6": 5
+   "5": 14,
+   "6": 7,
+   "7": 1
   },
   "sonnet": {
-   "2": 7,
-   "4": 5,
-   "5": 5,
-   "6": 6
+   "1": 12,
+   "2": 21,
+   "4": 11,
+   "5": 10,
+   "6": 20,
+   "7": 1
   }
  },
  "rates": {
   "opus": {
    "over_merge": {
-    "count": 25,
-    "of": 128,
-    "pct": 19.5,
-    "low": 13.6,
-    "high": 27.2,
-    "text": "25 of 128 = 19.5% (13.6–27.2)"
+    "count": 84,
+    "of": 375,
+    "pct": 22.4,
+    "low": 18.5,
+    "high": 26.9,
+    "text": "84 of 375 = 22.4% (18.5–26.9)"
    },
    "over_split": {
-    "count": 2,
-    "of": 20,
-    "pct": 10,
-    "low": 2.8,
-    "high": 30.1,
-    "text": "2 of 20 = 10% (2.8–30.1)"
+    "count": 24,
+    "of": 63,
+    "pct": 38.1,
+    "low": 27.1,
+    "high": 50.4,
+    "text": "24 of 63 = 38.1% (27.1–50.4)"
    }
   },
   "fable": {
    "over_merge": {
-    "count": 20,
-    "of": 128,
-    "pct": 15.6,
-    "low": 10.3,
-    "high": 22.9,
-    "text": "20 of 128 = 15.6% (10.3–22.9)"
+    "count": 66,
+    "of": 375,
+    "pct": 17.6,
+    "low": 14.1,
+    "high": 21.8,
+    "text": "66 of 375 = 17.6% (14.1–21.8)"
    },
    "over_split": {
-    "count": 6,
-    "of": 20,
-    "pct": 30,
-    "low": 14.5,
-    "high": 51.9,
-    "text": "6 of 20 = 30% (14.5–51.9)"
+    "count": 26,
+    "of": 63,
+    "pct": 41.3,
+    "low": 30,
+    "high": 53.6,
+    "text": "26 of 63 = 41.3% (30–53.6)"
    }
   },
   "sonnet": {
    "over_merge": {
-    "count": 23,
-    "of": 128,
-    "pct": 18,
-    "low": 12.3,
-    "high": 25.5,
-    "text": "23 of 128 = 18% (12.3–25.5)"
+    "count": 75,
+    "of": 375,
+    "pct": 20,
+    "low": 16.3,
+    "high": 24.3,
+    "text": "75 of 375 = 20% (16.3–24.3)"
    },
    "over_split": {
-    "count": 8,
-    "of": 20,
-    "pct": 40,
-    "low": 21.9,
-    "high": 61.3,
-    "text": "8 of 20 = 40% (21.9–61.3)"
+    "count": 22,
+    "of": 63,
+    "pct": 34.9,
+    "low": 24.3,
+    "high": 47.2,
+    "text": "22 of 63 = 34.9% (24.3–47.2)"
    }
   },
   "majority": {
    "over_merge": {
-    "count": 21,
-    "of": 128,
-    "pct": 16.4,
-    "low": 11,
+    "count": 73,
+    "of": 375,
+    "pct": 19.5,
+    "low": 15.8,
     "high": 23.8,
-    "text": "21 of 128 = 16.4% (11–23.8)"
+    "text": "73 of 375 = 19.5% (15.8–23.8)"
    },
    "over_split": {
-    "count": 6,
-    "of": 20,
-    "pct": 30,
-    "low": 14.5,
-    "high": 51.9,
-    "text": "6 of 20 = 30% (14.5–51.9)"
+    "count": 16,
+    "of": 63,
+    "pct": 25.4,
+    "low": 16.3,
+    "high": 37.3,
+    "text": "16 of 63 = 25.4% (16.3–37.3)"
    }
   }
  },
- "rule_gaps": 14
+ "rule_gaps": 29
 }

@@ -1,0 +1,151 @@
+{
+ "week": "2026-11-16",
+ "models": [
+  "opus",
+  "fable",
+  "sonnet"
+ ],
+ "readings": 160,
+ "problems": 46,
+ "agreement": {
+  "unanimous": 125,
+  "majority": 34,
+  "split": 1,
+  "items": 160,
+  "kappa_call": 0.666,
+  "kappa_verdict": 0.688
+ },
+ "agreement_change": {
+  "unanimous": 137,
+  "majority": 23,
+  "split": 0,
+  "items": 160,
+  "kappa": 0.759
+ },
+ "anton": {
+  "marks": 0,
+  "same": {
+   "opus": 0,
+   "fable": 0,
+   "sonnet": 0
+  },
+  "majority": {
+   "same": 0,
+   "of": 0
+  },
+  "unanimous": {
+   "same": 0,
+   "of": 0
+  },
+  "links": {
+   "his": 0,
+   "made_by_someone": 0,
+   "made_by_all": 0
+  }
+ },
+ "same_claims": {
+  "pairs": 6,
+  "unanimous": 0,
+  "majority": 0,
+  "minority": 6
+ },
+ "rules": {
+  "opus": {
+   "1": 5,
+   "2": 15,
+   "4": 4,
+   "5": 16,
+   "6": 7,
+   "7": 1
+  },
+  "fable": {
+   "1": 12,
+   "2": 7,
+   "4": 2,
+   "5": 12,
+   "6": 2,
+   "7": 1
+  },
+  "sonnet": {
+   "1": 11,
+   "2": 9,
+   "5": 15,
+   "6": 12
+  }
+ },
+ "rates": {
+  "opus": {
+   "over_merge": {
+    "count": 48,
+    "of": 160,
+    "pct": 30,
+    "low": 23.4,
+    "high": 37.5,
+    "text": "48 of 160 = 30% (23.4–37.5)"
+   },
+   "over_split": {
+    "count": 0,
+    "of": 34,
+    "pct": 0,
+    "low": 0,
+    "high": 10.2,
+    "text": "0 of 34 = 0% (0–10.2)"
+   }
+  },
+  "fable": {
+   "over_merge": {
+    "count": 36,
+    "of": 160,
+    "pct": 22.5,
+    "low": 16.7,
+    "high": 29.6,
+    "text": "36 of 160 = 22.5% (16.7–29.6)"
+   },
+   "over_split": {
+    "count": 9,
+    "of": 34,
+    "pct": 26.5,
+    "low": 14.6,
+    "high": 43.1,
+    "text": "9 of 34 = 26.5% (14.6–43.1)"
+   }
+  },
+  "sonnet": {
+   "over_merge": {
+    "count": 47,
+    "of": 160,
+    "pct": 29.4,
+    "low": 22.9,
+    "high": 36.8,
+    "text": "47 of 160 = 29.4% (22.9–36.8)"
+   },
+   "over_split": {
+    "count": 2,
+    "of": 34,
+    "pct": 5.9,
+    "low": 1.6,
+    "high": 19.1,
+    "text": "2 of 34 = 5.9% (1.6–19.1)"
+   }
+  },
+  "majority": {
+   "over_merge": {
+    "count": 45,
+    "of": 160,
+    "pct": 28.1,
+    "low": 21.7,
+    "high": 35.5,
+    "text": "45 of 160 = 28.1% (21.7–35.5)"
+   },
+   "over_split": {
+    "count": 0,
+    "of": 34,
+    "pct": 0,
+    "low": 0,
+    "high": 10.2,
+    "text": "0 of 34 = 0% (0–10.2)"
+   }
+  }
+ },
+ "rule_gaps": 16
+}

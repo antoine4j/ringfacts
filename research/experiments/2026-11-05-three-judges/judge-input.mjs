@@ -28,10 +28,19 @@ for (const other of readdirSync(root).filter((name) => name.startsWith("batches-
   }
 }
 
-// This model's calls from earlier weeks, by claim and reading.
+// This model's calls from earlier weeks, by claim and reading, oldest week
+// first so the newest call wins. A week judged again after a later cut-off
+// keeps its first judging in cut-<date>/: those calls count as earlier ones,
+// for that week too, and a week's current judging wins over its first.
 const earlierCalls = new Map();
-for (const name of readdirSync(root).filter((file) => /^judge-out-\d{4}-\d{2}-\d{2}\.json$/.test(file) && file !== `judge-out-${monday}.json`)) {
-  for (const call of JSON.parse(readFileSync(join(root, name), "utf8")).readings) {
+const isJudged = (file) => /^judge-out-\d{4}-\d{2}-\d{2}\.json$/.test(file);
+const sources = [
+  ...readdirSync(root).filter((name) => /^cut-\d{4}-\d{2}-\d{2}$/.test(name))
+    .flatMap((cut) => readdirSync(join(root, cut)).filter(isJudged).map((file) => ({ week: file.slice(10, 20), order: 0, path: join(root, cut, file) }))),
+  ...readdirSync(root).filter((file) => isJudged(file) && file !== `judge-out-${monday}.json`).map((file) => ({ week: file.slice(10, 20), order: 1, path: join(root, file) })),
+].sort((a, b) => a.week.localeCompare(b.week) || a.order - b.order);
+for (const { path } of sources) {
+  for (const call of JSON.parse(readFileSync(path, "utf8")).readings) {
     earlierCalls.set(`${call.claim_id}:${call.reading_id}`, { verdict: call.verdict, belongs_in_claim_id: call.belongs_in_claim_id });
   }
 }
