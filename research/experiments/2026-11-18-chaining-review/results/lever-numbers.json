@@ -1,0 +1,12 @@
+{
+ "entering_articles": 56,
+ "entering_below_0_8": 34,
+ "entering_below_0_5": 13,
+ "right_joins_in_the_same_claims": 522,
+ "right_joins_below_0_8": 85,
+ "right_joins_below_0_5": 20,
+ "entering_with_event_or_opponent_to_compare": 27,
+ "entering_event_or_opponent_differs": 12,
+ "right_joins_with_event_or_opponent_to_compare": 279,
+ "right_joins_event_or_opponent_differs": 43
+}

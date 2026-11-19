@@ -1,0 +1,98 @@
+{
+ "weeks": {
+  "first": "2026-07-27",
+  "last": "2026-11-09",
+  "count": 16,
+  "left_out": "weeks after 2026-11-09"
+ },
+ "claims": 675,
+ "readings": 2295,
+ "mixed_two_or_more_judges": 112,
+ "mixed_all_three_judges": 105,
+ "mixed_two_judges_same_reading": 112,
+ "mixed_three_judges_same_reading": 98,
+ "per_fighter": {
+  "Daniil Donchenko": {
+   "claims": 36,
+   "mixed": 6
+  },
+  "Ilia Topuria": {
+   "claims": 608,
+   "mixed": 100
+  },
+  "Yaroslav Amosov": {
+   "claims": 31,
+   "mixed": 6
+  }
+ },
+ "rule": "mixed = at least two of the three judges each call at least one reading of the claim out (does not belong or own claim); foreign readings = called out by at least two judges",
+ "selection": {
+  "seed": 20261118,
+  "largest_by_article_count": 20,
+  "random_sample_of_rest": 40,
+  "largest": [
+   "85",
+   "90",
+   "93",
+   "169",
+   "182",
+   "197",
+   "199",
+   "214",
+   "226",
+   "279",
+   "289",
+   "364",
+   "394",
+   "419",
+   "476",
+   "498",
+   "575",
+   "614",
+   "640",
+   "643"
+  ],
+  "sampled": [
+   "5",
+   "8",
+   "28",
+   "154",
+   "159",
+   "180",
+   "208",
+   "209",
+   "218",
+   "243",
+   "260",
+   "261",
+   "265",
+   "273",
+   "288",
+   "301",
+   "305",
+   "311",
+   "322",
+   "328",
+   "330",
+   "337",
+   "339",
+   "351",
+   "385",
+   "391",
+   "403",
+   "448",
+   "450",
+   "469",
+   "503",
+   "517",
+   "526",
+   "549",
+   "557",
+   "567",
+   "580",
+   "589",
+   "594",
+   "641"
+  ]
+ }
+}

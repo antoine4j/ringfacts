@@ -727,6 +727,29 @@ Rules for adding to it:
   filed `personal_life` Monday and `injury` Tuesday, cleared the test and the
   group read it twice. A promotion past dedup must be earned by content.
 
+### A mixed claim starts with one wrong pick at the door; drift and a moving label come after
+`harness` · `observed` · *FB 2026-11-18*
+- **Evidence:** of 112 v0 claims that at least two of three judges (models, not
+  the maintainer) say hold more than one story, 60 were read (the 20 largest,
+  a seeded 40 of the rest). By the entering article's join numbers: 55 wrong
+  picks, 1 chain, 0 stale leaders, 2 where the judges look wrong, 2 not
+  tellable. The entering article came in below 0.8 confidence in 34 of 56
+  (right joins of the same claims: 16%), was nearest the claim's first or label
+  reading in 33, and met a claim of fewer than three readings in 22, so it
+  could not chain. After the door, 33 of 56 claims took in more of the foreign
+  story, in 12 of them most through each other; the label moved onto the
+  entering story in 7, in 2 of them by the firmest-reading label rule handing it
+  to a later, firmer foreign reading. The golden replay's 3 mixed training claims
+  entered the same way. No foreign article hid a new career event.
+  `research/experiments/2026-11-18-chaining-review/`.
+- **Does not say:** that chaining and stale leaders do not happen: they show
+  after the door (12 claims with a later join passing the chain test, 7 with a
+  moving label). Nor that a confidence floor is free: the right joins counted are
+  those of mixed claims only. The calls are one agent's, mostly without the
+  bodies, on the models' labels; 17 of 56 rest on rule questions the maintainer
+  has not ruled. **Would overturn:** a second reader who calls many of the 55
+  one story, or a ruling on questions 2 and 3 that merges most of the 17.
+
 ---
 
 ## 5. Harness — the model and our own code
