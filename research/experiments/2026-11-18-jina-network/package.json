@@ -1,0 +1,11 @@
+{
+  "name": "jina-network-experiment",
+  "private": true,
+  "type": "module",
+  "description": "Self-feeding architecture: does keyless Jina reach the outlets that refuse production's Cloud Run address. Readability and jsdom live here, not in production's or v0's packages.",
+  "dependencies": {
+    "@mozilla/readability": "^0.6.0",
+    "jsdom": "^26.1.0",
+    "pg": "^8.13.0"
+  }
+}

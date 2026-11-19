@@ -671,6 +671,26 @@ Rules for adding to it:
   with Amosov or Donchenko steadily above 20 articles in 30 days, or a
   verdict at or above 75% for either.
 
+### Keyless Jina reads NDTV and Eldesmarque that refuse production, but not DAZN or Champion.com.ua
+`corpus` · `measured` · *FB 2026-11-18*
+- **Evidence:** 43 recent addresses at the four outlets production stores
+  as `http-403` (37 of them unread there), each once through keyless Jina
+  asking for the page's HTML, 3.2 seconds apart: NDTV 12 of 12 and
+  Eldesmarque 7 of 7 came back as articles that pass the readable bar and
+  match their headlines; DAZN 0 of 12 (Jina's address met a "disable your
+  VPN" wall, or a CloudFront 403 page) and Champion.com.ua 0 of 12
+  (Cloudflare's block page). Every reply was HTTP 200, block pages
+  included, so the status alone cannot tell. No rate limiting in 43
+  requests (the headers read 20 a minute, 19 left every time). Jina's
+  Reader page states 20 requests a minute without a key, per IP.
+  `research/experiments/2026-11-18-jina-network/`.
+- **Does not say:** how Jina or the outlets treat a call from Cloud Run,
+  or that the pattern holds on another day; one request per address from
+  the laptop. Only Champion.com.ua, of the four, carries Amosov or
+  Donchenko (11 of his 144 articles, 1 of his 58), so for the two quiet
+  fighters Jina adds nothing at these outlets. **Would overturn it:** a
+  Champion.com.ua or DAZN page returned by Jina on another day.
+
 ### Speculation outnumbers events by two orders of magnitude
 `domain` · `measured` · *RF-L12; FB agrees, 2026-09-18*
 - **Evidence (RF):** 34 days, three fighters: roughly one booking, one result,
