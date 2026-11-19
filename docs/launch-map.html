@@ -165,9 +165,10 @@ footer{font-size:13px;color:var(--dim);max-width:100ch}
 
 <div class="wrap">
   <section>
+    <p style="margin:0"><a href="https://claude.ai/artifact/U6ZPToDnMuWt9Zux8pUf72">← Contents</a></p>
     <div class="top"><h1>Launch Map</h1>
       <div class="theme" role="group" aria-label="Colour theme">
-        <button id="t-system" data-t="system" aria-pressed="true">System</button>
+        <button id="t-system" data-t="auto" aria-pressed="true">Auto</button>
         <button id="t-light" data-t="light" aria-pressed="false">Light</button>
         <button id="t-dark" data-t="dark" aria-pressed="false">Dark</button>
       </div></div>
@@ -303,7 +304,7 @@ const STATIONS = [
       "Google News per fighter, with the names in several languages, plus the direct publisher feeds filtered by name, as production does today (lib/feeds.js).",
       "Today v0 takes its articles from production's items table."),
     K("1.3",["feed"],"todo","Add the MMAWeekly and Athlon feeds",
-      "One of the three free fixes the body-fetch spike found; together they recovered 56% of the readings that had no text.",
+      "One of the three free fixes the body-fetch spike found; together they recovered 56% of the readings that had no text. The source review of 2026-10-30 (research/experiments/2026-10-30-source-review/) names a third feed: Champion.com.ua's /rss carries full text (median 1,210 characters), and 6 of Donchenko's 11 Champion articles were readable before the site started refusing our fetches on 9 Sep. The same review found no full-text feed for Tribuna, Sport.ua or Sport.nv.ua, which carry 41% of Donchenko's articles behind Cloudflare's bot check.",
       "A feed of its own reaches articles that Google News links fail to open."),
   ]},
   {n:2, name:"URL dedup", role:"Drops a link we have already seen.", items:[
@@ -319,13 +320,13 @@ const STATIONS = [
   ]},
   {n:3, name:"Body extractor", role:"Gets the article text from the page.", items:[
     K("3.6",["feed"],"todo","v0 fetches the article text itself",
-      "Decode Google's wrapped address and read the article with Mozilla Readability, keeping its text when the checks of 3.12 pass (same headline, shared sentences, names the fighter, not much shorter) and falling back to our extractor (lib/extract.js) and then the reader service (3.8) otherwise. Decided 2026-10-21 (3.9): new articles get clean text from the first day v0 fetches its own.",
+      "Decode Google's wrapped address and read the article with Mozilla Readability, keeping its text when the checks of 3.12 pass (same headline, shared sentences, names the fighter, not much shorter) and falling back to our extractor (lib/extract.js) and then the reader service (3.8) otherwise. Decided 2026-10-21 (3.9): new articles get clean text from the first day v0 fetches its own. The architecture phase (22 Oct, the self-feeding architecture doc (https://claude.ai/artifact/1L4Cjo9sz9kPdL77dVYDLr)) measured the two readers on 127 fresh pages and proposes the reverse order: our extractor first, Readability only when ours has nothing usable, with Jina fetching refused pages for the same readers. That reversal is an open decision; the Reader Spot Check page is where it is made.",
       "The classifier reads the text; without this v0 has nothing of its own to read."),
     K("3.7",["feed"],"todo","Retry the Google News decode on the next run",
       "A decode that failed is tried again an hour later instead of giving up. New articles only.",
       "One of the spike's three free fixes."),
     K("3.8",["feed"],"todo","Fall back to a reader service when the fetch fails",
-      "Jina's reader, when the page refuses or returns nothing usable. New articles only.",
+      "Jina's reader, when the page refuses or returns nothing usable. New articles only. The architecture phase (22 Oct) proposes Jina as a second way to get the page rather than as a reader: its copy of the page's HTML goes to the same readers, and its own text is the last resort, since only 35% of its words belong to the article against 98% for our extractor on its HTML (research/experiments/2026-10-22-reading-order/). Waits on the same decision as 3.6. The source review of 2026-10-30 adds a reason for a second network: DAZN, NDTV, Eldesmarque and Champion.com.ua refused production with a 403 but answer the laptop with the same reader and headers, so the refusal looks like Cloud Run's address rather than the outlet (inferred, not tested from Cloud Run).",
       "One of the spike's three free fixes."),
     K("3.3",["body","label"],"todo","Mark the golden articles whose saved text is unusable",
       "Moved from the backlog 2026-10-09 (task 0.12). Some saved texts are not the article: an intro only (#134), styling code only (#655), one line and the site's comment policy (#647), video pages with almost nothing saved (#44, #1045); 23 texts hit the 10,000-character cap, and some open with site menus (#1172 starts with 1,900 characters of menu). Expected 10 to 15 in the 300. Done the cheap way: Claude pre-marks the suspects automatically (cap hits, short texts, texts that open with menus or link lists, texts that name the fighter only in links) and Anton confirms that list, perhaps 20 to 30 articles, instead of reading all 300. v0's own bar (at least 400 characters naming a fighter, D32) already stops styling code and empty video pages, but not a menu that names him, which misclassified at least one reading on the storyboard. The marks are the answer key for 3.9 and for any check that calls a text unusable.",
@@ -337,7 +338,7 @@ const STATIONS = [
       "Done 2026-10-21: barely. On the 260 articles whose text changed, 41 changed a classifier answer (13 when the same saved text is sent twice), but 6 crossed a tier line (3 from noise alone) and no score moved beyond the saved text's own run-to-run spread (all nine right on training 116 clean, 115 and 110 saved). Readability alone, where code accepted it, crossed no tier. Extracts' detail fields moved more: 91 against 69. Cost $0.44. research/experiments/2026-10-20-clean-text/README.md. Added 2026-10-09. The question is not which extractor, but whether the furniture in a saved text (site menus, link lists, captions, other stories on the page) changes what the pipeline decides. Waits on 3.12, which builds the clean texts. Run the classifier and the claim extractor over the golden articles twice, with the same prompts: once on the text as v0 saved it, once on 3.12's clean text. Count two things: how many of the nine answers change, and how many of those changes cross a tier line, a career fact lost or invented; then score both runs against the labels. All 300 articles are run, since nothing is tuned here; on the test side only the counts are reported, never which articles changed, so the test set stays unseen for the next classifier version. Model calls on the experiments' test keys; the cost is measured, not estimated.",
       "It settles the extractor station's place: a small count keeps today's extractor and leaves 3.9 and 3.4 where they are; a large one makes them G1 work and moves them up beside self-feeding."),
     K("3.9",["body"],"done","Decide which text wins when two readers both read a page",
-      "Decided 2026-10-21: Readability first, our extractor as the fallback, built into v0's own fetch (3.6). 3.11's count showed Readability's text costs nothing in decisions (no tier crossed on the 97 articles where code accepted it), and cleaner text is the better base for every station after it. Before that: our extractor beside Mozilla Readability on the same pages: menus, captions, ads, and whether the article is complete. Question 1 of the intake design (docs/design/intake.excalidraw); the review page stays on the laptop because it holds the outlets' text (research/experiments/2026-10-05-body-fetch-spike/bodies/review-1-extractor-vs-readability.html). Since 2026-10-09 the decision rests on 3.11's count rather than on reading the two texts side by side: the review page is for the pages where the two runs disagree.",
+      "Decided 2026-10-21: Readability first, our extractor as the fallback, built into v0's own fetch (3.6). 3.11's count showed Readability's text costs nothing in decisions (no tier crossed on the 97 articles where code accepted it), and cleaner text is the better base for every station after it. Before that: our extractor beside Mozilla Readability on the same pages: menus, captions, ads, and whether the article is complete. Question 1 of the intake drawing (docs/design/intake.excalidraw, a 5 Oct proposal superseded 22 Oct by the self-feeding architecture doc (https://claude.ai/artifact/1L4Cjo9sz9kPdL77dVYDLr)); the review page stays on the laptop because it holds the outlets' text (research/experiments/2026-10-05-body-fetch-spike/bodies/review-1-extractor-vs-readability.html). Since 2026-10-09 the decision rests on 3.11's count rather than on reading the two texts side by side: the review page is for the pages where the two runs disagree. Reopened by the architecture phase (22 Oct): on 127 fresh pages our extractor read 96 and Readability 87, and where Readability fails it keeps a quarter of the article, so the architecture proposes our extractor first; the decision is open on the Reader Spot Check page.",
       "The stations read whatever text they are given; a page full of menus and other stories reads as other news."),
     K("3.4",["body"],"waits","Tune the extractor v0 uses, then score it on the golden set",
       "Moved from the backlog 2026-10-09 (task 0.12). Since 3.9 chose Readability (2026-10-21), this tunes its checks and the fallback inside v0's own fetch (3.6), rather than our own extractor. The known failures to fix (task 3.2): #655 saved styling code only; #134 the intro only; #230 cut at 10,000 characters; #937 a second, chained article never fetched; #852 lost its 'said on Instagram' line; #385 an embedded post we cannot see. Scored against 3.2's list and 3.3's marks.",
@@ -346,7 +347,7 @@ const STATIONS = [
       "Added 2026-10-21; starts after 3.6, once v0 reads clean text itself. 3.11 found v7.7 a little worse on clean text (38 answers turned wrong against 21 turned right, the loss clearest where the maintainer checked the key against the outlet's page), which points to it being fitted to the saved texts. First fix the claim extractor's two loose spots, which the extract spot check showed carry most of its changes: define what 'opponent' is the opponent in, and give 'reaction' a test that separates it from a new remark, with an example; re-measure on the saved text, since this should cut the run-to-run wobble on any text. Then tune both stations on 3.12's clean texts: changes made on training, checked on validation, and the test set scored once only; v7.7 has been sent it three times, so that one score becomes the line.",
       "A classifier fitted to one kind of text should be tuned again when the text changes; cleaner input only pays off once the stations are tuned to it."),
     K("3.10",["body"],"call","Decide whether the stations read headline and summary when there is no text",
-      "The headline and the outlet's preview summary beside the full article: could the classifier and extractor get the news right from the headline side alone? Question 2 of the intake design; review page review-2-summary-vs-article.html, beside the first.",
+      "The headline and the outlet's preview summary beside the full article: could the classifier and extractor get the news right from the headline side alone? Question 2 of the intake drawing (docs/design/intake.excalidraw, superseded 22 Oct by the self-feeding architecture doc (https://claude.ai/artifact/1L4Cjo9sz9kPdL77dVYDLr); this question outlives it); review page review-2-summary-vs-article.html, beside the first. Measured 2026-10-29 (research/experiments/2026-10-30-headline-only/): on the headline alone, v7.7 keeps 30 of 46 career facts (full text 33) and still posts 26 of 29 post-worthy articles with no more false posts, but crosses 33 tier lines against a noise floor of 1, 25 toward drop, because a headline rarely shows how central he is; Ukrainian-language headlines matched the full text. Google's feed summary repeats the headline in 153 of 157 articles, so it adds nothing.",
       "If they can, the articles no way can read are judged on what the outlet shows instead of not at all."),
   ]},
   {n:4, name:"Classifier", role:"Answers nine questions per article (JEV v7.7).", quiet:"Classifier v8 waits for a missed career event in the launch window.", items:[]},
@@ -544,13 +545,15 @@ document.querySelectorAll(".backlog .filters button").forEach(b => b.addEventLis
 }));
 
 // Theme: system follows the device; light or dark overrides it. Remembered if storage allows.
+// Auto follows the viewer's local time (their time zone), not the device setting: dark from 19:00 to 07:00.
 function setTheme(t){
-  if (t==="system") document.documentElement.removeAttribute("data-theme");
-  else document.documentElement.setAttribute("data-theme", t);
+  if (t==="system") t = "auto";
+  const h = new Date().getHours();
+  document.documentElement.setAttribute("data-theme", t==="auto" ? (h>=19 || h<7 ? "dark" : "light") : t);
   document.querySelectorAll(".theme button").forEach(b => b.setAttribute("aria-pressed", String(b.dataset.t===t)));
   try { localStorage.setItem("launch-map-theme", t); } catch(e) {}
 }
 document.querySelectorAll(".theme button").forEach(b => b.addEventListener("click", () => setTheme(b.dataset.t)));
-let savedTheme = "system"; try { savedTheme = localStorage.getItem("launch-map-theme") || "system"; } catch(e) {}
+let savedTheme = "auto"; try { savedTheme = localStorage.getItem("launch-map-theme") || "auto"; } catch(e) {}
 setTheme(savedTheme);
 </script>
