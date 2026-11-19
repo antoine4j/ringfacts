@@ -553,6 +553,24 @@ Rules for adding to it:
   else. **Would overturn it:** a source review (E4) that finds another
   free route to Tribuna's or Sport.ua's articles.
 
+### A refused page stays refused a week later
+`corpus` · `measured` · *FB 2026-10-30*
+- **Evidence:** the 109 distinct pages that failed on 20 and 22 October
+  (113 rows) were fetched once more 7 to 9 days later, the same way (browser
+  headers, 10 s, no retry). 2 came back, both readable: 1 of 98 refusals
+  (403) and 1 of 2 connection failures. All 7 gone pages (404), 3
+  rate-limited (429) and 3 other codes (406, 400) answered the same again.
+  90 of the 94 refusals that day were Cloudflare's bot check; Bloody Elbow,
+  Sport.ua, Tribuna and NV Sport (91 rows) have never answered a plain
+  fetch. Both pages that came back were already readable through Jina. Of
+  20 control pages that came back on 22 October, 19 did again and 1
+  (fashionnetwork) now refuses. `research/experiments/2026-10-30-retry-later/`.
+- **Does not say:** that no outlet relents on another timescale or from
+  another network (one gap, one laptop, one try); anything about retrying
+  a timeout or 5xx (there were none). Two connection failures are too few
+  to set a retry count. **Would overturn it:** v0's first weeks of attempt
+  rows (E7) showing refused pages that relent at a rate worth a request.
+
 ### Waiting out a Google News 503 inside the run does not help
 `domain` · `measured` · *FB 2026-10-22*
 - **Evidence:** in production's last 30 days, 834 searches got a 503 and
