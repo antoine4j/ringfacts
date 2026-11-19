@@ -406,6 +406,9 @@ const STATIONS = [
     K("9.12",["launch","review"],"todo","Count reactions per person before the friends join",
       "Today v0 keeps one latest reaction per message across everyone (the newest update wins), which is right for a one-person test chat; with several people one reaction would overwrite the others, and the launch bar's thumbs-down share would be wrong. Found 18 Nov by the tests on local branch test/v0-specs-2. Must land before 9.10.",
       "The launch bar's numbers must stay true once more than one person reacts."),
+    K("9.13",["review"],"todo","Feedback from Telegram: replies and emoji",
+      "Built 19 Nov on a local branch, not yet merged or live. In v0's chat only: every reply to a post or digest, and every reply to a reply, becomes a note on the post it ends at, kept in a table of its own and shown on the claim page, the digest page and a Telegram page on the storyboard. Five emoji: 👍 good, 👎 should not have been sent, 🥱 belongs in the digest, 👀 repeat, 🤔 looks wrong. A 👀 or a reply that links the earlier post counts as a repeat on the launch bar at once; 🥱 and 🤔 wait for the maintainer's Confirm on the storyboard. v0 already received replies each hour and dropped them; the step now stores each batch before Telegram is told to forget it, and every part of a long digest has its message id recorded. Checked on a copy of the live database: the launch bar's numbers were the same before and after. The live test in the chat is still to do.",
+      "Reviewing from the chat where the posts are keeps review cheap, and the 👎 and 👀 become the launch bar's own evidence (G2, G3)."),
   ]},
   {n:10, name:"Measurement", role:"How we know how well it works.", items:[
     K("10.5",["score"],"done","Answer the scoreboard's eight open questions",
