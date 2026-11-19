@@ -6,6 +6,8 @@
 //
 // The career events are read from the committed list, which a spec cannot swap,
 // so the events summary is checked against that list, not against made-up events.
+// The fake pool answers the list's claims query itself (by default: no such
+// claims), so no spec depends on which events the list holds.
 
 import { test, afterEach } from "node:test";
 import assert from "node:assert/strict";
@@ -51,7 +53,32 @@ function fortnight(): FakePool {
     .on(/UNION ALL/, [])
     .on(/FROM claims c JOIN readings r/, (values) => (values.length === 0 ? allPosts : allPosts.filter((post) => post.claim_id !== "4")))
     .on(/SELECT d\.id,/, [{ id: "1", latest: "👎" }, { id: "2", latest: "👍" }])
-    .on(/^SELECT cn\.id FROM claim_now cn/, [{ id: "1" }, { id: "2" }]);
+    .on(/^SELECT cn\.id FROM claim_now cn/, [{ id: "1" }, { id: "2" }])
+    .on(/CROSS JOIN LATERAL/, []);
+}
+
+/**
+ * What the database says about one claim the career events name: the shape
+ * lib/score-queries.ts reads, with the answers a spec wants.
+ *
+ * @param id  The claim's id.
+ * @param facts  What differs from a story that was never posted and never judged a tier.
+ * @returns The row.
+ */
+function claimRow(id: number, facts: { posted?: boolean; best_tier?: number | null; in_posted_digest?: boolean; digest_still_due?: boolean } = {}) {
+  return { id: String(id), posted: false, best_tier: null, in_posted_digest: false, digest_still_due: false, ...facts };
+}
+
+/**
+ * The first day of the committed list that names a claim, with that day's events.
+ *
+ * @returns The day and the events that happened on it.
+ */
+function aDayWithEvents() {
+  const list = careerEvents();
+  const first = list.events.find((event) => event.claim_ids.length > 0);
+  assert.ok(first, "the committed career-events list names no claim, so the launch bar's events path has nothing to run on");
+  return { day: first.happened, events: list.events.filter((event) => event.happened === first.happened) };
 }
 
 test("the best tier of a story's readings is the lowest one decided", () => {
@@ -133,6 +160,31 @@ test("a period without career events asks nothing about claims, and its events a
   const scores = await liveScores({ from: "2000-01-01", to: "2000-01-02" }, NOW);
   assert.deepEqual(scores.events.notPosted, { count: 0, of: 0 });
   assert.equal(database.sent(/CROSS JOIN LATERAL/).length, 0);
+});
+
+test("events in the period are asked about by the claims they name, and a tier 1 post counts them as heard", async () => {
+  const { day, events } = aDayWithEvents();
+  const database = fortnight().on(/CROSS JOIN LATERAL/, (values) => (values[0] as number[]).map((id) => claimRow(id, { posted: true, best_tier: 1 })));
+  const scores = await liveScores({ from: day, to: day }, NOW);
+  assert.deepEqual(scores.events.notPosted, { count: 0, of: events.length });
+  assert.equal(scores.events.posted, events.length);
+  assert.deepEqual(database.sent(/CROSS JOIN LATERAL/).map((query) => query.values), [[[...new Set(events.flatMap((event) => event.claim_ids))]]]);
+});
+
+test("events whose claims were never posted are counted as not posted, with the furthest stage their claims reached as the cause", async () => {
+  const { day, events } = aDayWithEvents();
+  fortnight().on(/CROSS JOIN LATERAL/, (values) => (values[0] as number[]).map((id) => claimRow(id, { best_tier: 3 })));
+  const scores = await liveScores({ from: day, to: day }, NOW);
+  assert.deepEqual(scores.events.notPosted, { count: events.length, of: events.length });
+  assert.equal(scores.events.missed, events.length);
+  assert.deepEqual(scores.events.causes, { tier_3_drop: events.length });
+});
+
+test("an event none of whose claims exist in the database was never found", async () => {
+  const { day, events } = aDayWithEvents();
+  fortnight();
+  const scores = await liveScores({ from: day, to: day }, NOW);
+  assert.deepEqual(scores.events.causes, { never_found: events.length });
 });
 
 test("all time counts every event on the committed list", async () => {

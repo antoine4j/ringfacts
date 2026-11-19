@@ -187,8 +187,8 @@ what the experiments taught.
 **Tests**, offline and without credentials:
 
 ```bash
-npm test                            # production: 413 tests, about a second
-npm install --prefix v0 && npm test --prefix v0   # v0: 271 + 157 tests
+npm test                            # production: 443 tests, about a second
+npm install --prefix v0 && npm test --prefix v0   # v0: 283 + 172 tests
 git config core.hooksPath .githooks # once per clone: run both before each commit
 ```
 
