@@ -649,6 +649,28 @@ Rules for adding to it:
   overturn it:** Tribuna or Sport.nv.ua answering a plain fetch, or a
   full-text feed found for either.
 
+### A 30-day, 20-article health rule is silent for half the days on Amosov and Donchenko, and says "under 75%" whenever it speaks
+`corpus` · `measured` · *FB 2026-11-18*
+- **Evidence:** replayed day by day over production's whole record (7 Aug
+  to 18 Nov, 2,357 articles) with production's own readable verdicts: at
+  30 days and a minimum of 20, a verdict exists on 43 of 75 days for
+  Amosov (57%) and 35 of 75 for Donchenko (47%), against all 75 for
+  Topuria. Every verdict for the two was under 75% (their shares ran 22%
+  to 68%). Donchenko has had no article since 2 Oct (47 days); 114 of his
+  144 articles fall in two September weeks, 72 of Amosov's 133 in two
+  November weeks. A week holds a median 4 articles for Amosov and 1 for
+  Donchenko (none in 19% and 50% of weeks), so a week's readable share has
+  a 95% interval about 55 points wide, against 15 for Topuria. A longer
+  window removes the silence only by judging old news: at 60 days a
+  Donchenko verdict rests on articles whose newest is a median 20 days
+  old. `research/experiments/2026-11-18-verdict-replay/`.
+- **Does not say:** what v0's own readers would show (these are
+  production's stored texts; the ceilings of 74% and 59% bound them), or
+  that the pattern outlives these two bursts: each quiet fighter has one
+  burst in the record. **Would overturn it:** a month of v0's own counts
+  with Amosov or Donchenko steadily above 20 articles in 30 days, or a
+  verdict at or above 75% for either.
+
 ### Speculation outnumbers events by two orders of magnitude
 `domain` · `measured` · *RF-L12; FB agrees, 2026-09-18*
 - **Evidence (RF):** 34 days, three fighters: roughly one booking, one result,
