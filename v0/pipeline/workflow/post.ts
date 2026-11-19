@@ -3,6 +3,7 @@
 // reading is history (backfill) never posts: that news is old.
 
 import { escapeHtml } from "../stations/telegram/telegram.ts";
+import { recordSent } from "../store/sent.ts";
 import { count, type RunContext } from "./context.ts";
 
 // News older than this is not posted: a claim whose first tier-1 article is
@@ -94,6 +95,7 @@ export async function postNewClaims(context: RunContext): Promise<{ posted: numb
       if (messageId === null) continue;
       await context.pool.query("UPDATE claims SET posted_reading_id = $1 WHERE id = $2 AND posted_reading_id IS NULL", [row.reading_id, row.claim_id]);
       await context.pool.query("UPDATE readings SET posted_at = now(), message_id = $1, updated_at = now() WHERE id = $2", [messageId, row.reading_id]);
+      await recordSent(context.pool, messageId, { kind: "post", readingId: row.reading_id });
     } catch (error) {
       count(context, "post_failed");
       console.error(`claim ${row.claim_id} not posted: ${(error as Error).message}`);

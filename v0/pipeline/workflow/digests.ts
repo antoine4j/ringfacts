@@ -7,6 +7,7 @@ import { digestContext, newestLiveDigest, previousDigestEnd, recordDigest, type 
 import { writeDigest, DEFAULT_DIGEST_MODEL, DIGEST_PROMPT_VERSION } from "../stations/digest/digest.ts";
 import { duePeriod } from "../settings/schedule.ts";
 import { escapeHtml } from "../stations/telegram/telegram.ts";
+import { recordSent } from "../store/sent.ts";
 import { count, type RunContext } from "./context.ts";
 
 // Telegram refuses messages over 4,096 characters.
@@ -78,9 +79,12 @@ export async function writeAndPostDigest(context: RunContext, fighter: string, p
 async function postDigest(context: RunContext, digestId: number, fighter: string, text: string): Promise<void> {
   const parts = splitMessage(`<b>${escapeHtml(fighter)}: the week</b>\n\n${text}`);
   let firstMessageId: number | null = null;
-  for (const part of parts) {
+  for (const [index, part] of parts.entries()) {
     const messageId = await context.poster(part);
     firstMessageId ??= messageId;
+
+    // Every part is recorded, so a reply or an emoji on any of them reaches the digest.
+    if (messageId !== null) await recordSent(context.pool, messageId, { kind: "digest", digestId, part: index + 1 });
   }
   if (firstMessageId !== null) {
     await context.pool.query("UPDATE digests SET posted_at = now(), message_id = $1 WHERE id = $2", [firstMessageId, digestId]);

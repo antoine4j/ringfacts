@@ -81,6 +81,21 @@ test("a sent claim is marked on the claim and on its reading with the message id
   assert.deepEqual(updates[1].params, [5000, 10]);
 });
 
+test("a sent claim's message is recorded as a post of its reading, so a reply to it finds the claim", async () => {
+  const database = dueDatabase([1]);
+  await postNewClaims(makeContext(database));
+  const recorded = database.sent(/^INSERT INTO sent_messages/);
+  assert.equal(recorded.length, 1);
+  // message id, kind, reading, digest, day, part
+  assert.deepEqual(recorded[0].params, [5000, "post", 10, null, null, 1]);
+});
+
+test("a claim that only printed records no sent message", async () => {
+  const database = dueDatabase([1]);
+  await postNewClaims(makeContext(database, { poster: async () => null }));
+  assert.equal(database.sent(/^INSERT INTO sent_messages/).length, 0);
+});
+
 test("claims go out oldest first, each with its own message id", async () => {
   const database = dueDatabase([1, 2, 3]);
   const context = makeContext(database);

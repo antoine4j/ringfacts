@@ -176,6 +176,22 @@ test("a digest too long for one message is posted in parts, and the first part's
   assert.deepEqual(database.sent(/UPDATE digests SET posted_at/)[0].params, [5000, digestId]);
 });
 
+test("every part of a long digest is recorded with its number, so an emoji on any part reaches the digest", async () => {
+  const database = digestDatabase();
+  writerNetwork({ text: `${"a".repeat(3000)}\n\n${"b".repeat(3000)}`, items: [] });
+  const context = makeContext(database);
+  const digestId = await writeAndPostDigest(context, FIGHTER, PERIOD);
+  const recorded = database.sent(/^INSERT INTO sent_messages/).map((query) => query.params);
+  assert.deepEqual(recorded, [[5000, "digest", null, digestId, null, 1], [5001, "digest", null, digestId, null, 2]]);
+});
+
+test("a digest that only printed records no sent message", async () => {
+  const database = digestDatabase();
+  writerNetwork();
+  await writeAndPostDigest(makeContext(database, { poster: async () => null }), FIGHTER, PERIOD);
+  assert.equal(database.sent(/^INSERT INTO sent_messages/).length, 0);
+});
+
 test("a run on history stores the digest but never posts it", async () => {
   const database = digestDatabase();
   writerNetwork();

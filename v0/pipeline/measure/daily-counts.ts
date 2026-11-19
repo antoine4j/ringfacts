@@ -5,6 +5,7 @@
 import { fighterDays, runTotals, cpuSecondsThisMonth, dailyReport, type FighterDay } from "../store/counts.ts";
 import { wallClock, zonedInstant } from "../settings/schedule.ts";
 import { escapeHtml } from "../stations/telegram/telegram.ts";
+import { recordSent } from "../store/sent.ts";
 import { count, type RunContext } from "../workflow/context.ts";
 
 const TIME_ZONE = "America/Los_Angeles";
@@ -81,7 +82,7 @@ export async function dailyCountsDue(context: RunContext, now: Date): Promise<vo
   if (written) {
     if (!context.sends) return;
     const messageId = await context.poster(written.text);
-    if (messageId !== null) await context.pool.query("UPDATE daily_reports SET posted_at = now(), message_id = $1 WHERE day = $2", [messageId, day]);
+    if (messageId !== null) await markDailySent(context, messageId, day);
     count(context, "daily_counts_sent_late");
     return;
   }
@@ -90,6 +91,18 @@ export async function dailyCountsDue(context: RunContext, now: Date): Promise<vo
   const text = dailyMessage(day, await fighterDays(context.pool, from, at), await runTotals(context.pool, from, at), { soFar, forecast: monthForecast(soFar, now) });
   await context.pool.query("INSERT INTO daily_reports (day, text) VALUES ($1, $2) ON CONFLICT DO NOTHING", [day, text]);
   const messageId = await context.poster(text);
-  if (messageId !== null) await context.pool.query("UPDATE daily_reports SET posted_at = now(), message_id = $1 WHERE day = $2", [messageId, day]);
+  if (messageId !== null) await markDailySent(context, messageId, day);
   count(context, "daily_counts_written");
+}
+
+/**
+ * Marks the day's counts as sent and records the message that carried them.
+ *
+ * @param context  The run.
+ * @param messageId  The message's Telegram id.
+ * @param day  The report's day.
+ */
+async function markDailySent(context: RunContext, messageId: number, day: string): Promise<void> {
+  await context.pool.query("UPDATE daily_reports SET posted_at = now(), message_id = $1 WHERE day = $2", [messageId, day]);
+  await recordSent(context.pool, messageId, { kind: "daily", day });
 }

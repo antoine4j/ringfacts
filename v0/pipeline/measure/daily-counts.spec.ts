@@ -105,6 +105,12 @@ test("a report written by a run that could not post is sent by the first run tha
   assert.equal(context.tally.daily_counts_sent_late, 1);
 });
 
+test("a sent report's message is recorded against its day", async () => {
+  const database = countsDatabase({ text: "written earlier", posted_at: null });
+  await dailyCountsDue(makeContext(database), AFTER_REPORT_TIME);
+  assert.deepEqual(database.sent(/^INSERT INTO sent_messages/)[0].params, [5000, "daily", null, null, "2026-10-05", 1]);
+});
+
 test("a written report waits when this run cannot send, and nothing is written again", async () => {
   const database = countsDatabase({ text: "written earlier", posted_at: null });
   const context = makeContext(database, { sends: false });
