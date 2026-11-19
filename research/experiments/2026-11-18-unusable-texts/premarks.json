@@ -1,0 +1,1648 @@
+{
+  "about": "Suspects among the 300 golden articles whose saved text may not be the article: reason codes, lengths and the agent's proposed mark. Marks are the agent's call (by: agent), not the maintainer's; ids and numbers only, no article text.",
+  "articles": 300,
+  "thresholds": {
+    "capCharacters": 9990,
+    "shortBelow": 800,
+    "menuLeadCharacters": 1500,
+    "menuLeadShare": 0.4,
+    "menuLeadFloor": 800,
+    "mostlyFurnitureBelow": 0.5,
+    "styleBraces": 20,
+    "videoThinProseBelow": 1500,
+    "cleanLongerBy": 1.5,
+    "cleanLongerAtCap": 1.2,
+    "cleanFillsCap": 9000,
+    "muchRemoved": 0.5
+  },
+  "counts": {
+    "byCode": {
+      "nothing_usable": 5,
+      "menu_opening": 23,
+      "much_removed": 19,
+      "no_name": 8,
+      "short": 8,
+      "video_thin": 10,
+      "name_only_in_furniture": 19,
+      "cut_at_cap": 14,
+      "at_cap": 24,
+      "video_page": 5,
+      "clean_much_longer": 5,
+      "mostly_furniture": 8,
+      "styling_code": 1
+    },
+    "byMark": {
+      "unusable": 9,
+      "furniture": 37,
+      "fine": 17,
+      "partial": 13
+    },
+    "notListed": {
+      "menu_opening": 1,
+      "mostly_furniture": 1,
+      "much_removed": 5
+    },
+    "notSuspectsWithShorterMenu": 16
+  },
+  "knownCases": [
+    {
+      "id": "134",
+      "what": "intro only (a rankings page)",
+      "caught": true,
+      "codes": [
+        "short",
+        "no_name"
+      ]
+    },
+    {
+      "id": "655",
+      "what": "styling code only",
+      "caught": true,
+      "codes": [
+        "nothing_usable",
+        "styling_code",
+        "no_name",
+        "at_cap",
+        "menu_opening",
+        "mostly_furniture"
+      ]
+    },
+    {
+      "id": "647",
+      "what": "one line and the site's comment policy",
+      "caught": true,
+      "codes": [
+        "nothing_usable",
+        "short"
+      ]
+    },
+    {
+      "id": "44",
+      "what": "video page, almost nothing saved",
+      "caught": true,
+      "codes": [
+        "short",
+        "video_thin"
+      ]
+    },
+    {
+      "id": "1045",
+      "what": "video page, only the blurb",
+      "caught": true,
+      "codes": [
+        "nothing_usable",
+        "video_thin"
+      ]
+    },
+    {
+      "id": "1172",
+      "what": "opens with 1,900 characters of menu",
+      "caught": true,
+      "codes": [
+        "cut_at_cap",
+        "at_cap",
+        "menu_opening"
+      ]
+    },
+    {
+      "id": "230",
+      "what": "cut at the 10,000-character cap",
+      "caught": true,
+      "codes": [
+        "no_name",
+        "clean_much_longer",
+        "cut_at_cap",
+        "at_cap"
+      ]
+    },
+    {
+      "id": "937",
+      "what": "second, chained article never fetched",
+      "caught": true,
+      "codes": [
+        "no_name"
+      ]
+    },
+    {
+      "id": "521",
+      "what": "video page, words not in the saved text",
+      "caught": true,
+      "codes": [
+        "video_thin"
+      ]
+    },
+    {
+      "id": "653",
+      "what": "headline, then site boilerplate",
+      "caught": true,
+      "codes": [
+        "nothing_usable"
+      ]
+    },
+    {
+      "id": "492",
+      "what": "video page, the whole transcript",
+      "caught": true,
+      "codes": [
+        "menu_opening",
+        "video_page"
+      ]
+    },
+    {
+      "id": "740",
+      "what": "video page, words not in the saved text",
+      "caught": true,
+      "codes": [
+        "video_thin",
+        "name_only_in_furniture"
+      ]
+    },
+    {
+      "id": "852",
+      "what": "lost its 'said on Instagram' line (one line of an otherwise whole article)",
+      "caught": false,
+      "codes": []
+    },
+    {
+      "id": "385",
+      "what": "embedded post that the saved text cannot show (the article itself is whole)",
+      "caught": false,
+      "codes": []
+    }
+  ],
+  "suspects": [
+    {
+      "id": "3",
+      "subject": "Yaroslav Amosov",
+      "codes": [
+        "nothing_usable"
+      ],
+      "noted": [
+        "check_failed"
+      ],
+      "lengths": {
+        "saved": 2040,
+        "clean": 0,
+        "prose": 1988,
+        "lead": 53
+      },
+      "cleanSource": "nothing usable",
+      "mark": "unusable",
+      "reason": "A photo caption of him fighting, then the site's login, newsletter and footer text. No article.",
+      "by": "agent"
+    },
+    {
+      "id": "18",
+      "subject": "Daniil Donchenko",
+      "codes": [
+        "menu_opening",
+        "much_removed"
+      ],
+      "noted": [],
+      "lengths": {
+        "saved": 8523,
+        "clean": 1032,
+        "prose": 4667,
+        "lead": 1907
+      },
+      "cleanSource": "hand-cleaned",
+      "mark": "furniture",
+      "reason": "A short pre-fight news item (about 1,000 characters) under a Sport.ua menu, share bar, comments and lists, which make up 88% of the text.",
+      "by": "agent"
+    },
+    {
+      "id": "38",
+      "subject": "Ilia Topuria",
+      "codes": [
+        "no_name"
+      ],
+      "noted": [
+        "check_failed"
+      ],
+      "lengths": {
+        "saved": 2659,
+        "clean": 2659,
+        "prose": 2237,
+        "lead": 286
+      },
+      "cleanSource": "hand-cleaned",
+      "mark": "fine",
+      "reason": "A complete article about another fighter. He is not named anywhere in it, so this is a question for the 'about him' label, not a text defect.",
+      "by": "agent"
+    },
+    {
+      "id": "44",
+      "subject": "Ilia Topuria",
+      "codes": [
+        "short",
+        "video_thin"
+      ],
+      "noted": [],
+      "lengths": {
+        "saved": 685,
+        "clean": 685,
+        "prose": 621,
+        "lead": 65
+      },
+      "cleanSource": "hand-cleaned",
+      "mark": "unusable",
+      "reason": "Yahoo video page: only the page's one-paragraph summary was saved, taken from its description tag; the video is the content. Agrees with the maintainer's earlier call on the card.",
+      "by": "agent"
+    },
+    {
+      "id": "60",
+      "subject": "Ilia Topuria",
+      "codes": [
+        "name_only_in_furniture"
+      ],
+      "noted": [],
+      "lengths": {
+        "saved": 2639,
+        "clean": 2357,
+        "prose": 2538,
+        "lead": 0
+      },
+      "cleanSource": "hand-cleaned",
+      "mark": "furniture",
+      "reason": "A complete article about other fighters. He is named only in a LATEST NEWS headline line inside the text.",
+      "by": "agent"
+    },
+    {
+      "id": "65",
+      "subject": "Yaroslav Amosov",
+      "codes": [
+        "cut_at_cap",
+        "at_cap"
+      ],
+      "noted": [],
+      "lengths": {
+        "saved": 10000,
+        "clean": 9826,
+        "prose": 9343,
+        "lead": 0
+      },
+      "cleanSource": "readability",
+      "mark": "fine",
+      "reason": "Hit the cap, but the whole page text is only about 230 characters longer: two closing sentences are cut, and his one mention is in the saved part.",
+      "by": "agent"
+    },
+    {
+      "id": "96",
+      "subject": "Yaroslav Amosov",
+      "codes": [
+        "much_removed",
+        "video_page"
+      ],
+      "noted": [],
+      "lengths": {
+        "saved": 2691,
+        "clean": 813,
+        "prose": 1500,
+        "lead": 110
+      },
+      "cleanSource": "readability",
+      "mark": "furniture",
+      "reason": "Yahoo video page: an 800-character summary of the video segment, then repeated and sidebar text (70% of the whole). The content itself is the video.",
+      "by": "agent"
+    },
+    {
+      "id": "134",
+      "subject": "Ilia Topuria",
+      "codes": [
+        "short",
+        "no_name"
+      ],
+      "noted": [
+        "check_failed"
+      ],
+      "lengths": {
+        "saved": 478,
+        "clean": 478,
+        "prose": 449,
+        "lead": 30
+      },
+      "cleanSource": "hand-cleaned",
+      "mark": "partial",
+      "reason": "Rankings page: only a short intro was saved. The table that lists him is missing. Matches the maintainer's note in golden/answers/readers-v1.json.",
+      "by": "agent"
+    },
+    {
+      "id": "158",
+      "subject": "Ilia Topuria",
+      "codes": [
+        "no_name"
+      ],
+      "noted": [
+        "check_failed"
+      ],
+      "lengths": {
+        "saved": 4382,
+        "clean": 4382,
+        "prose": 4330,
+        "lead": 30
+      },
+      "cleanSource": "hand-cleaned",
+      "mark": "fine",
+      "reason": "A complete article about another fighter. He is not named in it.",
+      "by": "agent"
+    },
+    {
+      "id": "181",
+      "subject": "Ilia Topuria",
+      "codes": [
+        "name_only_in_furniture"
+      ],
+      "noted": [],
+      "lengths": {
+        "saved": 2132,
+        "clean": 1788,
+        "prose": 1956,
+        "lead": 0
+      },
+      "cleanSource": "hand-cleaned",
+      "mark": "furniture",
+      "reason": "A complete article about other fighters. He is named only in a LATEST NEWS headline line.",
+      "by": "agent"
+    },
+    {
+      "id": "204",
+      "subject": "Yaroslav Amosov",
+      "codes": [
+        "name_only_in_furniture",
+        "cut_at_cap",
+        "at_cap"
+      ],
+      "noted": [],
+      "lengths": {
+        "saved": 10000,
+        "clean": 7750,
+        "prose": 8052,
+        "lead": 176
+      },
+      "cleanSource": "hand-cleaned",
+      "mark": "partial",
+      "reason": "Sport.ua article behind 1,900 characters of menu, cut mid-sentence at the cap, so its last paragraph is lost. He is named only in the standfirst.",
+      "by": "agent"
+    },
+    {
+      "id": "230",
+      "subject": "Yaroslav Amosov",
+      "codes": [
+        "no_name",
+        "clean_much_longer",
+        "cut_at_cap",
+        "at_cap"
+      ],
+      "noted": [],
+      "lengths": {
+        "saved": 10000,
+        "clean": 17358,
+        "prose": 9811,
+        "lead": 18
+      },
+      "cleanSource": "readability",
+      "mark": "partial",
+      "reason": "Cut at the cap after 10,000 of about 17,400 characters; the only mention of him is in the lost part.",
+      "by": "agent"
+    },
+    {
+      "id": "238",
+      "subject": "Ilia Topuria",
+      "codes": [
+        "clean_much_longer",
+        "cut_at_cap",
+        "at_cap"
+      ],
+      "noted": [],
+      "lengths": {
+        "saved": 10000,
+        "clean": 18978,
+        "prose": 9418,
+        "lead": 134
+      },
+      "cleanSource": "readability",
+      "mark": "partial",
+      "reason": "An interview cut at the cap after 10,000 of about 19,000 characters; 4 of his 13 mentions are in the lost part.",
+      "by": "agent"
+    },
+    {
+      "id": "297",
+      "subject": "Ilia Topuria",
+      "codes": [
+        "clean_much_longer",
+        "cut_at_cap",
+        "at_cap"
+      ],
+      "noted": [],
+      "lengths": {
+        "saved": 10000,
+        "clean": 17862,
+        "prose": 9708,
+        "lead": 293
+      },
+      "cleanSource": "readability",
+      "mark": "partial",
+      "reason": "An interview cut at the cap after 10,000 of about 17,900 characters; 3 of his 4 mentions are in the lost part.",
+      "by": "agent"
+    },
+    {
+      "id": "316",
+      "subject": "Ilia Topuria",
+      "codes": [
+        "no_name"
+      ],
+      "noted": [
+        "check_failed"
+      ],
+      "lengths": {
+        "saved": 3023,
+        "clean": 3023,
+        "prose": 2414,
+        "lead": 0
+      },
+      "cleanSource": "hand-cleaned",
+      "mark": "fine",
+      "reason": "A complete article about other fighters. He is not named in it.",
+      "by": "agent"
+    },
+    {
+      "id": "323",
+      "subject": "Ilia Topuria",
+      "codes": [
+        "short",
+        "video_thin"
+      ],
+      "noted": [],
+      "lengths": {
+        "saved": 428,
+        "clean": 581,
+        "prose": 367,
+        "lead": 62
+      },
+      "cleanSource": "readability",
+      "mark": "fine",
+      "reason": "A video page whose whole text is a three-sentence description; Readability finds only 150 characters more. Little is missing, though the real content is the video.",
+      "by": "agent"
+    },
+    {
+      "id": "335",
+      "subject": "Ilia Topuria",
+      "codes": [
+        "name_only_in_furniture"
+      ],
+      "noted": [],
+      "lengths": {
+        "saved": 2741,
+        "clean": 2429,
+        "prose": 2640,
+        "lead": 0
+      },
+      "cleanSource": "hand-cleaned",
+      "mark": "furniture",
+      "reason": "A complete article about a women's fight. He is named only in a LATEST NEWS headline line.",
+      "by": "agent"
+    },
+    {
+      "id": "353",
+      "subject": "Ilia Topuria",
+      "codes": [
+        "cut_at_cap",
+        "at_cap",
+        "video_page"
+      ],
+      "noted": [
+        "check_failed"
+      ],
+      "lengths": {
+        "saved": 10000,
+        "clean": 9198,
+        "prose": 8495,
+        "lead": 310
+      },
+      "cleanSource": "hand-cleaned",
+      "mark": "partial",
+      "reason": "SI video page: the transcript of an interview, cut mid-sentence at the cap. How much is lost is unknown, as there is no page text to compare with. His loss is mentioned once, in the opening line.",
+      "by": "agent"
+    },
+    {
+      "id": "453",
+      "subject": "Ilia Topuria",
+      "codes": [
+        "name_only_in_furniture"
+      ],
+      "noted": [],
+      "lengths": {
+        "saved": 2731,
+        "clean": 2509,
+        "prose": 2566,
+        "lead": 19
+      },
+      "cleanSource": "hand-cleaned",
+      "mark": "furniture",
+      "reason": "A complete article about other fighters. He is named only in a LATEST NEWS headline line.",
+      "by": "agent"
+    },
+    {
+      "id": "490",
+      "subject": "Daniil Donchenko",
+      "codes": [
+        "cut_at_cap",
+        "at_cap"
+      ],
+      "noted": [],
+      "lengths": {
+        "saved": 10000,
+        "clean": 10206,
+        "prose": 7502,
+        "lead": 197
+      },
+      "cleanSource": "readability",
+      "mark": "fine",
+      "reason": "Hit the cap, but the article ends before the cut; what was cut is the page footer.",
+      "by": "agent"
+    },
+    {
+      "id": "491",
+      "subject": "Daniil Donchenko",
+      "codes": [
+        "cut_at_cap",
+        "at_cap"
+      ],
+      "noted": [],
+      "lengths": {
+        "saved": 10000,
+        "clean": 10206,
+        "prose": 7502,
+        "lead": 197
+      },
+      "cleanSource": "readability",
+      "mark": "fine",
+      "reason": "Same page as #490: hit the cap, but the article ends before the cut; what was cut is the page footer.",
+      "by": "agent"
+    },
+    {
+      "id": "492",
+      "subject": "Ilia Topuria",
+      "codes": [
+        "menu_opening",
+        "video_page"
+      ],
+      "noted": [
+        "check_failed"
+      ],
+      "lengths": {
+        "saved": 9626,
+        "clean": 8197,
+        "prose": 7331,
+        "lead": 1590
+      },
+      "cleanSource": "hand-cleaned",
+      "mark": "furniture",
+      "reason": "Yahoo video page: the saved text is the video's transcript plus ten other video titles, while the page shows one paragraph (rule-backlog item 4). Readers judged words the page does not show.",
+      "by": "agent"
+    },
+    {
+      "id": "494",
+      "subject": "Daniil Donchenko",
+      "codes": [
+        "cut_at_cap",
+        "at_cap"
+      ],
+      "noted": [],
+      "lengths": {
+        "saved": 10000,
+        "clean": 10206,
+        "prose": 7508,
+        "lead": 179
+      },
+      "cleanSource": "readability",
+      "mark": "fine",
+      "reason": "Same page as #490: hit the cap, but the article ends before the cut; what was cut is the page footer.",
+      "by": "agent"
+    },
+    {
+      "id": "500",
+      "subject": "Daniil Donchenko",
+      "codes": [
+        "name_only_in_furniture"
+      ],
+      "noted": [],
+      "lengths": {
+        "saved": 1850,
+        "clean": 1737,
+        "prose": 1429,
+        "lead": 0
+      },
+      "cleanSource": "hand-cleaned",
+      "mark": "fine",
+      "reason": "A complete short article. He appears once, in the fight-card list that is part of it.",
+      "by": "agent"
+    },
+    {
+      "id": "510",
+      "subject": "Daniil Donchenko",
+      "codes": [
+        "name_only_in_furniture"
+      ],
+      "noted": [],
+      "lengths": {
+        "saved": 3026,
+        "clean": 2803,
+        "prose": 2151,
+        "lead": 0
+      },
+      "cleanSource": "hand-cleaned",
+      "mark": "fine",
+      "reason": "A complete preview. He appears in the fight-card list that is part of it.",
+      "by": "agent"
+    },
+    {
+      "id": "520",
+      "subject": "Ilia Topuria",
+      "codes": [
+        "name_only_in_furniture"
+      ],
+      "noted": [],
+      "lengths": {
+        "saved": 2684,
+        "clean": 2464,
+        "prose": 2553,
+        "lead": 0
+      },
+      "cleanSource": "hand-cleaned",
+      "mark": "furniture",
+      "reason": "A complete article about other fighters. He is named only in a LATEST NEWS headline line.",
+      "by": "agent"
+    },
+    {
+      "id": "521",
+      "subject": "Daniil Donchenko",
+      "codes": [
+        "video_thin"
+      ],
+      "noted": [],
+      "lengths": {
+        "saved": 2072,
+        "clean": 1318,
+        "prose": 1167,
+        "lead": 13
+      },
+      "cleanSource": "readability",
+      "mark": "unusable",
+      "reason": "UFC video page: a one-line description, a Fight Pass advert and a list of other videos. The interview itself is the video.",
+      "by": "agent"
+    },
+    {
+      "id": "563",
+      "subject": "Daniil Donchenko",
+      "codes": [
+        "cut_at_cap",
+        "at_cap"
+      ],
+      "noted": [],
+      "lengths": {
+        "saved": 10000,
+        "clean": 7609,
+        "prose": 7705,
+        "lead": 1391
+      },
+      "cleanSource": "hand-cleaned",
+      "mark": "partial",
+      "reason": "Yahoo predictions article behind a menu, cut mid-pick at the cap, so the later fight picks are lost (the cleaning step noted the cut). His own pick is in the saved part.",
+      "by": "agent"
+    },
+    {
+      "id": "580",
+      "subject": "Ilia Topuria",
+      "codes": [
+        "name_only_in_furniture"
+      ],
+      "noted": [],
+      "lengths": {
+        "saved": 2379,
+        "clean": 2134,
+        "prose": 1891,
+        "lead": 0
+      },
+      "cleanSource": "hand-cleaned",
+      "mark": "furniture",
+      "reason": "A complete article about other fighters. He is named only in a LATEST NEWS headline line.",
+      "by": "agent"
+    },
+    {
+      "id": "599",
+      "subject": "Daniil Donchenko",
+      "codes": [
+        "at_cap",
+        "menu_opening"
+      ],
+      "noted": [],
+      "lengths": {
+        "saved": 10000,
+        "clean": 7037,
+        "prose": 7813,
+        "lead": 1907
+      },
+      "cleanSource": "hand-cleaned",
+      "mark": "furniture",
+      "reason": "A pre-fight analysis (about 7,000 characters) between a menu and lists; the cap cut only trailing lists.",
+      "by": "agent"
+    },
+    {
+      "id": "605",
+      "subject": "Daniil Donchenko",
+      "codes": [
+        "short"
+      ],
+      "noted": [],
+      "lengths": {
+        "saved": 715,
+        "clean": 784,
+        "prose": 713,
+        "lead": 3
+      },
+      "cleanSource": "readability",
+      "mark": "fine",
+      "reason": "A short but whole news item (715 characters).",
+      "by": "agent"
+    },
+    {
+      "id": "609",
+      "subject": "Daniil Donchenko",
+      "codes": [
+        "mostly_furniture",
+        "much_removed"
+      ],
+      "noted": [
+        "check_failed"
+      ],
+      "lengths": {
+        "saved": 9820,
+        "clean": 4828,
+        "prose": 4149,
+        "lead": 1076
+      },
+      "cleanSource": "hand-cleaned",
+      "mark": "furniture",
+      "reason": "A complete article, but saved as raw HTML with link and share-button markup; cleaning removed half of the text.",
+      "by": "agent"
+    },
+    {
+      "id": "613",
+      "subject": "Daniil Donchenko",
+      "codes": [
+        "name_only_in_furniture"
+      ],
+      "noted": [],
+      "lengths": {
+        "saved": 1885,
+        "clean": 1832,
+        "prose": 1229,
+        "lead": 0
+      },
+      "cleanSource": "readability",
+      "mark": "fine",
+      "reason": "A complete weigh-in report. He appears in the weigh-in list that is part of it.",
+      "by": "agent"
+    },
+    {
+      "id": "619",
+      "subject": "Daniil Donchenko",
+      "codes": [
+        "at_cap",
+        "menu_opening"
+      ],
+      "noted": [],
+      "lengths": {
+        "saved": 10000,
+        "clean": 7037,
+        "prose": 7739,
+        "lead": 1907
+      },
+      "cleanSource": "hand-cleaned",
+      "mark": "furniture",
+      "reason": "Same article as #599: a pre-fight analysis between a menu and lists; the cap cut only trailing lists.",
+      "by": "agent"
+    },
+    {
+      "id": "625",
+      "subject": "Daniil Donchenko",
+      "codes": [
+        "menu_opening",
+        "mostly_furniture",
+        "much_removed"
+      ],
+      "noted": [],
+      "lengths": {
+        "saved": 5609,
+        "clean": 773,
+        "prose": 1429,
+        "lead": 1541
+      },
+      "cleanSource": "hand-cleaned",
+      "mark": "furniture",
+      "reason": "A short weigh-in item (about 770 characters) inside 5,600 characters of menus, trending lists and a comment form.",
+      "by": "agent"
+    },
+    {
+      "id": "643",
+      "subject": "Ilia Topuria",
+      "codes": [
+        "name_only_in_furniture"
+      ],
+      "noted": [],
+      "lengths": {
+        "saved": 1718,
+        "clean": 1633,
+        "prose": 1542,
+        "lead": 67
+      },
+      "cleanSource": "hand-cleaned",
+      "mark": "furniture",
+      "reason": "A complete article about two other fighters. He is named only in a related-story headline.",
+      "by": "agent"
+    },
+    {
+      "id": "647",
+      "subject": "Ilia Topuria",
+      "codes": [
+        "nothing_usable",
+        "short"
+      ],
+      "noted": [],
+      "lengths": {
+        "saved": 738,
+        "clean": 0,
+        "prose": 739,
+        "lead": 0
+      },
+      "cleanSource": "nothing usable",
+      "mark": "unusable",
+      "reason": "A one-line standfirst and the site's comment policy. No article.",
+      "by": "agent"
+    },
+    {
+      "id": "653",
+      "subject": "Daniil Donchenko",
+      "codes": [
+        "nothing_usable"
+      ],
+      "noted": [],
+      "lengths": {
+        "saved": 1938,
+        "clean": 0,
+        "prose": 1939,
+        "lead": 0
+      },
+      "cleanSource": "nothing usable",
+      "mark": "unusable",
+      "reason": "Headline, then the site's login forms and boilerplate. No article.",
+      "by": "agent"
+    },
+    {
+      "id": "654",
+      "subject": "Daniil Donchenko",
+      "codes": [
+        "short",
+        "clean_much_longer"
+      ],
+      "noted": [],
+      "lengths": {
+        "saved": 611,
+        "clean": 3240,
+        "prose": 560,
+        "lead": 52
+      },
+      "cleanSource": "readability",
+      "mark": "partial",
+      "reason": "MMA Junkie picks article: only the 600-character intro was saved; Readability found 3,200 characters, including the pick lines.",
+      "by": "agent"
+    },
+    {
+      "id": "655",
+      "subject": "Daniil Donchenko",
+      "codes": [
+        "nothing_usable",
+        "styling_code",
+        "no_name",
+        "at_cap",
+        "menu_opening",
+        "mostly_furniture"
+      ],
+      "noted": [
+        "check_failed"
+      ],
+      "lengths": {
+        "saved": 10000,
+        "clean": 0,
+        "prose": 0,
+        "lead": 10000
+      },
+      "cleanSource": "nothing usable",
+      "mark": "unusable",
+      "reason": "Page styling code only (10,000 characters of CSS); the real article, a predictions page, is not in it. Confirmed by the maintainer on 27 Sep.",
+      "by": "agent"
+    },
+    {
+      "id": "681",
+      "subject": "Daniil Donchenko",
+      "codes": [
+        "menu_opening",
+        "mostly_furniture"
+      ],
+      "noted": [
+        "check_failed"
+      ],
+      "lengths": {
+        "saved": 3018,
+        "clean": 1525,
+        "prose": 1311,
+        "lead": 1708
+      },
+      "cleanSource": "hand-cleaned",
+      "mark": "furniture",
+      "reason": "A prediction article (about 1,500 characters) after 1,700 characters of Yahoo menu and ads.",
+      "by": "agent"
+    },
+    {
+      "id": "683",
+      "subject": "Daniil Donchenko",
+      "codes": [
+        "name_only_in_furniture",
+        "mostly_furniture"
+      ],
+      "noted": [],
+      "lengths": {
+        "saved": 1654,
+        "clean": 1654,
+        "prose": 700,
+        "lead": 0
+      },
+      "cleanSource": "readability",
+      "mark": "fine",
+      "reason": "A complete results page. His bout is a line of the results list that is part of it.",
+      "by": "agent"
+    },
+    {
+      "id": "687",
+      "subject": "Daniil Donchenko",
+      "codes": [
+        "menu_opening",
+        "much_removed"
+      ],
+      "noted": [],
+      "lengths": {
+        "saved": 8731,
+        "clean": 1056,
+        "prose": 4554,
+        "lead": 1969
+      },
+      "cleanSource": "hand-cleaned",
+      "mark": "furniture",
+      "reason": "A short 'where to watch' preview (about 1,050 characters) inside 8,700 characters of menus, lists and promos.",
+      "by": "agent"
+    },
+    {
+      "id": "688",
+      "subject": "Daniil Donchenko",
+      "codes": [
+        "menu_opening",
+        "much_removed"
+      ],
+      "noted": [],
+      "lengths": {
+        "saved": 8879,
+        "clean": 1056,
+        "prose": 4837,
+        "lead": 1969
+      },
+      "cleanSource": "hand-cleaned",
+      "mark": "furniture",
+      "reason": "Same article as #687, saved twice: about 1,050 characters of preview inside menus, lists and promos.",
+      "by": "agent"
+    },
+    {
+      "id": "690",
+      "subject": "Daniil Donchenko",
+      "codes": [
+        "at_cap",
+        "menu_opening",
+        "much_removed"
+      ],
+      "noted": [],
+      "lengths": {
+        "saved": 10000,
+        "clean": 4523,
+        "prose": 6356,
+        "lead": 1876
+      },
+      "cleanSource": "hand-cleaned",
+      "mark": "furniture",
+      "reason": "A preview article (about 4,500 characters) between a menu and lists; the cap cut only trailing lists.",
+      "by": "agent"
+    },
+    {
+      "id": "710",
+      "subject": "Ilia Topuria",
+      "codes": [
+        "name_only_in_furniture"
+      ],
+      "noted": [],
+      "lengths": {
+        "saved": 2724,
+        "clean": 2510,
+        "prose": 2562,
+        "lead": 56
+      },
+      "cleanSource": "hand-cleaned",
+      "mark": "furniture",
+      "reason": "A complete article about a wrestling event. He is named only in a LATEST NEWS headline line.",
+      "by": "agent"
+    },
+    {
+      "id": "714",
+      "subject": "Daniil Donchenko",
+      "codes": [
+        "clean_much_longer",
+        "cut_at_cap",
+        "at_cap"
+      ],
+      "noted": [],
+      "lengths": {
+        "saved": 10000,
+        "clean": 12395,
+        "prose": 8960,
+        "lead": 203
+      },
+      "cleanSource": "readability",
+      "mark": "partial",
+      "reason": "UFC.com results page cut at the cap; the write-ups of the last bouts (2,300 of 12,400 characters) are lost. His own bout is in the saved part.",
+      "by": "agent"
+    },
+    {
+      "id": "735",
+      "subject": "Daniil Donchenko",
+      "codes": [
+        "menu_opening",
+        "much_removed"
+      ],
+      "noted": [],
+      "lengths": {
+        "saved": 9183,
+        "clean": 1447,
+        "prose": 5360,
+        "lead": 1947
+      },
+      "cleanSource": "hand-cleaned",
+      "mark": "furniture",
+      "reason": "A short fight report (about 1,450 characters) inside a Sport.ua menu and 7,700 characters of lists and comments.",
+      "by": "agent"
+    },
+    {
+      "id": "737",
+      "subject": "Daniil Donchenko",
+      "codes": [
+        "cut_at_cap",
+        "at_cap"
+      ],
+      "noted": [
+        "check_failed"
+      ],
+      "lengths": {
+        "saved": 10000,
+        "clean": 10000,
+        "prose": 9100,
+        "lead": 82
+      },
+      "cleanSource": "hand-cleaned",
+      "mark": "partial",
+      "reason": "A live blog cut at the cap in the middle of the card, so the rest of the card is lost. His own fight is in the saved part.",
+      "by": "agent"
+    },
+    {
+      "id": "740",
+      "subject": "Daniil Donchenko",
+      "codes": [
+        "video_thin",
+        "name_only_in_furniture"
+      ],
+      "noted": [],
+      "lengths": {
+        "saved": 2155,
+        "clean": 1406,
+        "prose": 1117,
+        "lead": 114
+      },
+      "cleanSource": "readability",
+      "mark": "unusable",
+      "reason": "UFC video page: a one-line description, a Fight Pass advert and a list of other videos. The interview itself is the video.",
+      "by": "agent"
+    },
+    {
+      "id": "744",
+      "subject": "Daniil Donchenko",
+      "codes": [
+        "at_cap",
+        "menu_opening",
+        "much_removed"
+      ],
+      "noted": [],
+      "lengths": {
+        "saved": 10000,
+        "clean": 2628,
+        "prose": 6362,
+        "lead": 1893
+      },
+      "cleanSource": "hand-cleaned",
+      "mark": "furniture",
+      "reason": "An article of his statements (about 2,600 characters) between a menu and lists; the cap cut only trailing lists.",
+      "by": "agent"
+    },
+    {
+      "id": "745",
+      "subject": "Daniil Donchenko",
+      "codes": [
+        "short"
+      ],
+      "noted": [],
+      "lengths": {
+        "saved": 780,
+        "clean": 852,
+        "prose": 781,
+        "lead": 0
+      },
+      "cleanSource": "readability",
+      "mark": "fine",
+      "reason": "A short but whole news item (780 characters).",
+      "by": "agent"
+    },
+    {
+      "id": "746",
+      "subject": "Daniil Donchenko",
+      "codes": [
+        "video_thin",
+        "name_only_in_furniture"
+      ],
+      "noted": [],
+      "lengths": {
+        "saved": 2175,
+        "clean": 1423,
+        "prose": 1116,
+        "lead": 125
+      },
+      "cleanSource": "readability",
+      "mark": "unusable",
+      "reason": "UFC video page: a one-line description, a Fight Pass advert and a list of other videos. The interview itself is the video.",
+      "by": "agent"
+    },
+    {
+      "id": "758",
+      "subject": "Daniil Donchenko",
+      "codes": [
+        "at_cap",
+        "menu_opening",
+        "much_removed"
+      ],
+      "noted": [],
+      "lengths": {
+        "saved": 10000,
+        "clean": 3284,
+        "prose": 6547,
+        "lead": 1886
+      },
+      "cleanSource": "hand-cleaned",
+      "mark": "furniture",
+      "reason": "A fight report (about 3,300 characters) between a menu and lists; the cap cut only trailing lists.",
+      "by": "agent"
+    },
+    {
+      "id": "759",
+      "subject": "Daniil Donchenko",
+      "codes": [
+        "menu_opening",
+        "much_removed"
+      ],
+      "noted": [],
+      "lengths": {
+        "saved": 9233,
+        "clean": 1600,
+        "prose": 5196,
+        "lead": 1947
+      },
+      "cleanSource": "hand-cleaned",
+      "mark": "furniture",
+      "reason": "Same article as #735, saved twice: about 1,600 characters of report inside menus and lists.",
+      "by": "agent"
+    },
+    {
+      "id": "767",
+      "subject": "Daniil Donchenko",
+      "codes": [
+        "video_thin"
+      ],
+      "noted": [],
+      "lengths": {
+        "saved": 926,
+        "clean": 926,
+        "prose": 927,
+        "lead": 0
+      },
+      "cleanSource": "readability",
+      "mark": "fine",
+      "reason": "A short, whole fight report (926 characters); one unrelated headline sits at the end.",
+      "by": "agent"
+    },
+    {
+      "id": "768",
+      "subject": "Daniil Donchenko",
+      "codes": [
+        "menu_opening",
+        "much_removed",
+        "video_page"
+      ],
+      "noted": [],
+      "lengths": {
+        "saved": 9526,
+        "clean": 1676,
+        "prose": 5383,
+        "lead": 2357
+      },
+      "cleanSource": "hand-cleaned",
+      "mark": "furniture",
+      "reason": "A fight report (about 1,700 characters) inside menus, comments and lists (82% of the text).",
+      "by": "agent"
+    },
+    {
+      "id": "772",
+      "subject": "Daniil Donchenko",
+      "codes": [
+        "menu_opening",
+        "mostly_furniture",
+        "much_removed",
+        "video_page"
+      ],
+      "noted": [],
+      "lengths": {
+        "saved": 9462,
+        "clean": 1606,
+        "prose": 4602,
+        "lead": 2357
+      },
+      "cleanSource": "hand-cleaned",
+      "mark": "furniture",
+      "reason": "Same article as #768, saved twice: about 1,600 characters of report inside menus, comments and lists.",
+      "by": "agent"
+    },
+    {
+      "id": "773",
+      "subject": "Daniil Donchenko",
+      "codes": [
+        "at_cap",
+        "menu_opening",
+        "much_removed"
+      ],
+      "noted": [],
+      "lengths": {
+        "saved": 10000,
+        "clean": 3208,
+        "prose": 6166,
+        "lead": 1886
+      },
+      "cleanSource": "hand-cleaned",
+      "mark": "furniture",
+      "reason": "Same article as #758, saved twice: a fight report between a menu and lists; the cap cut only trailing lists.",
+      "by": "agent"
+    },
+    {
+      "id": "774",
+      "subject": "Daniil Donchenko",
+      "codes": [
+        "at_cap",
+        "menu_opening",
+        "much_removed"
+      ],
+      "noted": [],
+      "lengths": {
+        "saved": 10000,
+        "clean": 2511,
+        "prose": 6491,
+        "lead": 1893
+      },
+      "cleanSource": "hand-cleaned",
+      "mark": "furniture",
+      "reason": "Same article as #744, saved twice: an article of his statements between a menu and lists.",
+      "by": "agent"
+    },
+    {
+      "id": "780",
+      "subject": "Daniil Donchenko",
+      "codes": [
+        "video_thin"
+      ],
+      "noted": [],
+      "lengths": {
+        "saved": 1016,
+        "clean": 1144,
+        "prose": 1017,
+        "lead": 0
+      },
+      "cleanSource": "readability",
+      "mark": "fine",
+      "reason": "A short, whole fight report (1,000 characters) with a tweet link and two read-also lines at the end.",
+      "by": "agent"
+    },
+    {
+      "id": "782",
+      "subject": "Daniil Donchenko",
+      "codes": [
+        "short",
+        "video_thin",
+        "much_removed"
+      ],
+      "noted": [
+        "check_failed"
+      ],
+      "lengths": {
+        "saved": 761,
+        "clean": 334,
+        "prose": 742,
+        "lead": 0
+      },
+      "cleanSource": "hand-cleaned",
+      "mark": "furniture",
+      "reason": "A three-sentence video-review note followed by betting-licence text; more than half the text is furniture.",
+      "by": "agent"
+    },
+    {
+      "id": "811",
+      "subject": "Ilia Topuria",
+      "codes": [
+        "name_only_in_furniture"
+      ],
+      "noted": [],
+      "lengths": {
+        "saved": 3119,
+        "clean": 2920,
+        "prose": 3011,
+        "lead": 0
+      },
+      "cleanSource": "hand-cleaned",
+      "mark": "furniture",
+      "reason": "A complete article about a fight card. He is named only in a LATEST NEWS headline line.",
+      "by": "agent"
+    },
+    {
+      "id": "817",
+      "subject": "Daniil Donchenko",
+      "codes": [
+        "at_cap",
+        "menu_opening",
+        "much_removed"
+      ],
+      "noted": [],
+      "lengths": {
+        "saved": 10000,
+        "clean": 4698,
+        "prose": 6557,
+        "lead": 1859
+      },
+      "cleanSource": "hand-cleaned",
+      "mark": "furniture",
+      "reason": "A fight analysis (about 4,700 characters) between a menu and lists; the cap cut only trailing lists.",
+      "by": "agent"
+    },
+    {
+      "id": "843",
+      "subject": "Ilia Topuria",
+      "codes": [
+        "menu_opening",
+        "much_removed"
+      ],
+      "noted": [],
+      "lengths": {
+        "saved": 3030,
+        "clean": 1480,
+        "prose": 1569,
+        "lead": 1462
+      },
+      "cleanSource": "hand-cleaned",
+      "mark": "furniture",
+      "reason": "A complete article (about 1,500 characters) after 1,400 characters of Yahoo menu and ads.",
+      "by": "agent"
+    },
+    {
+      "id": "934",
+      "subject": "Daniil Donchenko",
+      "codes": [
+        "at_cap",
+        "menu_opening"
+      ],
+      "noted": [],
+      "lengths": {
+        "saved": 10000,
+        "clean": 6114,
+        "prose": 7161,
+        "lead": 1876
+      },
+      "cleanSource": "hand-cleaned",
+      "mark": "furniture",
+      "reason": "An article (about 6,100 characters) between a menu and lists; the cap cut only trailing lists.",
+      "by": "agent"
+    },
+    {
+      "id": "937",
+      "subject": "Ilia Topuria",
+      "codes": [
+        "no_name"
+      ],
+      "noted": [
+        "check_failed"
+      ],
+      "lengths": {
+        "saved": 1847,
+        "clean": 1847,
+        "prose": 1848,
+        "lead": 0
+      },
+      "cleanSource": "hand-cleaned",
+      "mark": "partial",
+      "reason": "The headline names him but the saved text is a whole article about another fighter and never names him; the card (task 3.4) says a second, chained article was never fetched.",
+      "by": "agent"
+    },
+    {
+      "id": "948",
+      "subject": "Ilia Topuria",
+      "codes": [
+        "name_only_in_furniture"
+      ],
+      "noted": [],
+      "lengths": {
+        "saved": 2644,
+        "clean": 2430,
+        "prose": 2401,
+        "lead": 0
+      },
+      "cleanSource": "hand-cleaned",
+      "mark": "furniture",
+      "reason": "A complete article about another fighter. He is named only in a LATEST NEWS headline line.",
+      "by": "agent"
+    },
+    {
+      "id": "1027",
+      "subject": "Ilia Topuria",
+      "codes": [
+        "video_thin",
+        "menu_opening",
+        "mostly_furniture"
+      ],
+      "noted": [
+        "check_failed"
+      ],
+      "lengths": {
+        "saved": 2816,
+        "clean": 1411,
+        "prose": 1290,
+        "lead": 1400
+      },
+      "cleanSource": "hand-cleaned",
+      "mark": "furniture",
+      "reason": "Yahoo video page: the video's transcript (about 1,400 characters) after 1,400 characters of menu, plus a list of other videos.",
+      "by": "agent"
+    },
+    {
+      "id": "1045",
+      "subject": "Ilia Topuria",
+      "codes": [
+        "nothing_usable",
+        "video_thin"
+      ],
+      "noted": [
+        "check_failed"
+      ],
+      "lengths": {
+        "saved": 4548,
+        "clean": 0,
+        "prose": 2353,
+        "lead": 138
+      },
+      "cleanSource": "nothing usable",
+      "mark": "unusable",
+      "reason": "Yahoo video page: a show description and a sidebar of other videos. His name is only in the headline. Agrees with the maintainer's earlier call on the card.",
+      "by": "agent"
+    },
+    {
+      "id": "1050",
+      "subject": "Ilia Topuria",
+      "codes": [
+        "mostly_furniture",
+        "much_removed"
+      ],
+      "noted": [],
+      "lengths": {
+        "saved": 5552,
+        "clean": 2207,
+        "prose": 2733,
+        "lead": 286
+      },
+      "cleanSource": "readability",
+      "mark": "furniture",
+      "reason": "A complete article (about 2,200 characters) between a breadcrumb, a trending line and a list of other stories (60% of the text).",
+      "by": "agent"
+    },
+    {
+      "id": "1080",
+      "subject": "Ilia Topuria",
+      "codes": [
+        "name_only_in_furniture"
+      ],
+      "noted": [],
+      "lengths": {
+        "saved": 2430,
+        "clean": 2205,
+        "prose": 2270,
+        "lead": 0
+      },
+      "cleanSource": "hand-cleaned",
+      "mark": "furniture",
+      "reason": "A complete article about a fake-fight story. He is named only in a LATEST NEWS headline line.",
+      "by": "agent"
+    },
+    {
+      "id": "1085",
+      "subject": "Ilia Topuria",
+      "codes": [
+        "name_only_in_furniture"
+      ],
+      "noted": [],
+      "lengths": {
+        "saved": 3172,
+        "clean": 2915,
+        "prose": 2831,
+        "lead": 0
+      },
+      "cleanSource": "hand-cleaned",
+      "mark": "furniture",
+      "reason": "A complete article about another fighter. He is named only in a LATEST NEWS headline line.",
+      "by": "agent"
+    },
+    {
+      "id": "1161",
+      "subject": "Daniil Donchenko",
+      "codes": [
+        "no_name"
+      ],
+      "noted": [
+        "check_failed"
+      ],
+      "lengths": {
+        "saved": 1801,
+        "clean": 1207,
+        "prose": 1632,
+        "lead": 41
+      },
+      "cleanSource": "hand-cleaned",
+      "mark": "fine",
+      "reason": "A complete article about another fighter, followed by betting disclaimers. He is not named in it.",
+      "by": "agent"
+    },
+    {
+      "id": "1172",
+      "subject": "Daniil Donchenko",
+      "codes": [
+        "cut_at_cap",
+        "at_cap",
+        "menu_opening"
+      ],
+      "noted": [],
+      "lengths": {
+        "saved": 10000,
+        "clean": 7645,
+        "prose": 7971,
+        "lead": 1882
+      },
+      "cleanSource": "hand-cleaned",
+      "mark": "partial",
+      "reason": "A very long interview behind 1,900 characters of menu, cut mid-word at the cap, so its end is lost. Both defects; the cut is the larger.",
+      "by": "agent"
+    },
+    {
+      "id": "1200",
+      "subject": "Yaroslav Amosov",
+      "codes": [
+        "cut_at_cap",
+        "at_cap"
+      ],
+      "noted": [],
+      "lengths": {
+        "saved": 10000,
+        "clean": 10939,
+        "prose": 10001,
+        "lead": 0
+      },
+      "cleanSource": "readability",
+      "mark": "partial",
+      "reason": "An interview cut at the cap; the lost last 700 characters (6%) hold one of his two mentions.",
+      "by": "agent"
+    }
+  ]
+}
