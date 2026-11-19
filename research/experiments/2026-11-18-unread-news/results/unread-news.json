@@ -1,0 +1,708 @@
+{
+ "experiment": "2026-11-18-unread-news",
+ "exported_at": "2026-11-19T05:46:12.081Z",
+ "weeks": 17,
+ "window_hours": 6,
+ "unread_total": 821,
+ "unscreened": 0,
+ "candidates": {
+  "Amosov": {
+   "unread": 148,
+   "read_and_grouped": 111,
+   "core": 38,
+   "extra": 6
+  },
+  "Donchenko": {
+   "unread": 75,
+   "read_and_grouped": 107,
+   "core": 6,
+   "extra": 13
+  },
+  "Topuria": {
+   "unread": 598,
+   "read_and_grouped": 2132,
+   "core": 17,
+   "extra": 43
+  }
+ },
+ "candidate_totals": {
+  "core": 61,
+  "extra": 62
+ },
+ "articles_by_call": {
+  "core": {
+   "Donchenko": {
+    "event": 5,
+    "borderline": 1,
+    "not_event": 0
+   },
+   "Topuria": {
+    "event": 10,
+    "borderline": 6,
+    "not_event": 1
+   },
+   "Amosov": {
+    "event": 23,
+    "borderline": 11,
+    "not_event": 4
+   }
+  },
+  "extra": {
+   "Amosov": {
+    "event": 1,
+    "borderline": 0,
+    "not_event": 5
+   },
+   "Donchenko": {
+    "event": 1,
+    "borderline": 0,
+    "not_event": 12
+   },
+   "Topuria": {
+    "event": 2,
+    "borderline": 28,
+    "not_event": 13
+   }
+  }
+ },
+ "per_fighter": {
+  "Amosov": {
+   "clear": {
+    "events": 3,
+    "within_window": 1,
+    "read_first": 0,
+    "late": [
+     {
+      "id": "A-2",
+      "hours": 17.13
+     },
+     {
+      "id": "A-3",
+      "hours": 7.83
+     }
+    ],
+    "never_read": 0
+   },
+   "clear_and_borderline": {
+    "events": 4,
+    "within_window": 2,
+    "read_first": 0,
+    "late": [
+     {
+      "id": "A-2",
+      "hours": 17.13
+     },
+     {
+      "id": "A-3",
+      "hours": 7.83
+     }
+    ],
+    "never_read": 0
+   },
+   "not_event_groups": 3
+  },
+  "Donchenko": {
+   "clear": {
+    "events": 2,
+    "within_window": 1,
+    "read_first": 1,
+    "late": [
+     {
+      "id": "D-1",
+      "hours": 18.83
+     }
+    ],
+    "never_read": 0
+   },
+   "clear_and_borderline": {
+    "events": 3,
+    "within_window": 2,
+    "read_first": 2,
+    "late": [
+     {
+      "id": "D-1",
+      "hours": 18.83
+     }
+    ],
+    "never_read": 0
+   },
+   "not_event_groups": 2
+  },
+  "Topuria": {
+   "clear": {
+    "events": 5,
+    "within_window": 5,
+    "read_first": 5,
+    "late": [],
+    "never_read": 0
+   },
+   "clear_and_borderline": {
+    "events": 13,
+    "within_window": 12,
+    "read_first": 12,
+    "late": [
+     {
+      "id": "T-10b",
+      "hours": 12.24
+     }
+    ],
+    "never_read": 0
+   },
+   "not_event_groups": 5
+  }
+ },
+ "events": [
+  {
+   "id": "A-1",
+   "fighter": "Amosov",
+   "kind": "fight_talk",
+   "call": "borderline",
+   "name": "Amosov says he has been told his next opponent, unnamed (29-30 Sep)",
+   "match": "medium",
+   "unread_count": 11,
+   "twin_count": 4,
+   "first_unread": {
+    "reading_id": "1737",
+    "outlet": "Sport.nv.ua.",
+    "published_at": "2026-09-29T16:57:00.000Z"
+   },
+   "first_read": {
+    "reading_id": "1743",
+    "outlet": "glavcom.ua",
+    "published_at": "2026-09-29T17:44:27.000Z",
+    "tier": 1
+   },
+   "hours": 0.79,
+   "category": "within_window",
+   "best_tier": 1,
+   "tier1_posted": false
+  },
+  {
+   "id": "A-2",
+   "fighter": "Amosov",
+   "kind": "fight_booked",
+   "call": "event",
+   "name": "Garry named as Amosov's next opponent, UFC 335 (23-24 Oct)",
+   "match": "medium",
+   "unread_count": 4,
+   "twin_count": 3,
+   "first_unread": {
+    "reading_id": "2269",
+    "outlet": "Sport.ua",
+    "published_at": "2026-10-23T23:32:00.000Z"
+   },
+   "first_read": {
+    "reading_id": "2282",
+    "outlet": "MMA Sucka",
+    "published_at": "2026-10-24T16:39:38.000Z",
+    "tier": 1
+   },
+   "hours": 17.13,
+   "category": "late",
+   "best_tier": 1,
+   "tier1_posted": true
+  },
+  {
+   "id": "A-3",
+   "fighter": "Amosov",
+   "kind": "fight_booked",
+   "call": "event",
+   "name": "Amosov says his bout agreement is signed (6 Nov)",
+   "match": "high",
+   "unread_count": 3,
+   "twin_count": 2,
+   "first_unread": {
+    "reading_id": "2602",
+    "outlet": "MiddleEasy",
+    "published_at": "2026-11-06T02:24:12.000Z"
+   },
+   "first_read": {
+    "reading_id": "2622",
+    "outlet": "XSPORT.ua",
+    "published_at": "2026-11-06T10:14:07.000Z",
+    "tier": 1
+   },
+   "hours": 7.83,
+   "category": "late",
+   "best_tier": 1,
+   "tier1_posted": true
+  },
+  {
+   "id": "A-4",
+   "fighter": "Amosov",
+   "kind": "fight_booked",
+   "call": "event",
+   "name": "Amosov vs Garry confirmed for 5 Dec in Saudi Arabia (7-8 Nov)",
+   "match": "medium",
+   "unread_count": 17,
+   "twin_count": 10,
+   "first_unread": {
+    "reading_id": "2704",
+    "outlet": "Sport.ua",
+    "published_at": "2026-11-07T10:21:00.000Z"
+   },
+   "first_read": {
+    "reading_id": "2708",
+    "outlet": "112.ua",
+    "published_at": "2026-11-07T11:35:34.000Z",
+    "tier": 1
+   },
+   "hours": 1.24,
+   "category": "within_window",
+   "best_tier": 1,
+   "tier1_posted": true
+  },
+  {
+   "id": "D-1",
+   "fighter": "Donchenko",
+   "kind": "fight_booked",
+   "call": "event",
+   "name": "Donchenko booked against Soriano for UFC Paris (30-31 Jul)",
+   "match": "high",
+   "unread_count": 2,
+   "twin_count": 3,
+   "first_unread": {
+    "reading_id": "1",
+    "outlet": "ukr.net",
+    "published_at": "2026-07-30T15:01:03.000Z"
+   },
+   "first_read": {
+    "reading_id": "3",
+    "outlet": "Sport.ua",
+    "published_at": "2026-07-31T09:51:00.000Z",
+    "tier": 1
+   },
+   "hours": 18.83,
+   "category": "late",
+   "best_tier": 1,
+   "tier1_posted": false
+  },
+  {
+   "id": "D-2",
+   "fighter": "Donchenko",
+   "kind": "result",
+   "call": "event",
+   "name": "Donchenko beats Soriano at UFC Paris (5 Sep)",
+   "match": "high",
+   "unread_count": 4,
+   "twin_count": 6,
+   "first_unread": {
+    "reading_id": "747",
+    "outlet": "Tribuna.com",
+    "published_at": "2026-09-05T20:44:00.000Z"
+   },
+   "first_read": {
+    "reading_id": "743",
+    "outlet": "Sport.ua",
+    "published_at": "2026-09-05T20:41:00.000Z",
+    "tier": 1
+   },
+   "hours": -0.05,
+   "category": "within_window",
+   "best_tier": 1,
+   "tier1_posted": false
+  },
+  {
+   "id": "D-3",
+   "fighter": "Donchenko",
+   "kind": "fight_talk",
+   "call": "borderline",
+   "name": "Donchenko names the opponent he wants next (6 Sep)",
+   "match": "high",
+   "unread_count": 1,
+   "twin_count": 1,
+   "first_unread": {
+    "reading_id": "801",
+    "outlet": "Ukr.net",
+    "published_at": "2026-09-06T16:10:28.000Z"
+   },
+   "first_read": {
+    "reading_id": "785",
+    "outlet": "Champion.com.ua",
+    "published_at": "2026-09-06T06:41:00.000Z",
+    "tier": 2
+   },
+   "hours": -9.49,
+   "category": "within_window",
+   "best_tier": 2,
+   "tier1_posted": false
+  },
+  {
+   "id": "T-1",
+   "fighter": "Topuria",
+   "kind": "return_date",
+   "call": "event",
+   "name": "Trainer says Topuria could be back by December, more likely spring 2027 (12-17 Aug)",
+   "match": "high",
+   "unread_count": 1,
+   "twin_count": 5,
+   "first_unread": {
+    "reading_id": "235",
+    "outlet": "Eurosport",
+    "published_at": "2026-08-17T16:34:00.000Z"
+   },
+   "first_read": {
+    "reading_id": "141",
+    "outlet": "20minutos.es",
+    "published_at": "2026-08-12T06:20:32.000Z",
+    "tier": 2
+   },
+   "hours": -130.22,
+   "category": "within_window",
+   "best_tier": 2,
+   "tier1_posted": false
+  },
+  {
+   "id": "T-3",
+   "fighter": "Topuria",
+   "kind": "fight_talk",
+   "call": "borderline",
+   "name": "Rumour of Topuria vs Pimblett in December and Pimblett's replies (1-7 Sep)",
+   "match": "medium",
+   "unread_count": 8,
+   "twin_count": 3,
+   "first_unread": {
+    "reading_id": "528",
+    "outlet": "Eurosport",
+    "published_at": "2026-09-01T17:31:00.000Z"
+   },
+   "first_read": {
+    "reading_id": "357",
+    "outlet": "El Horizonte",
+    "published_at": "2026-08-25T03:00:00.000Z",
+    "tier": 2
+   },
+   "hours": -182.52,
+   "category": "within_window",
+   "best_tier": 2,
+   "tier1_posted": false
+  },
+  {
+   "id": "T-4",
+   "fighter": "Topuria",
+   "kind": "injury",
+   "call": "event",
+   "name": "Topuria's essay discloses more injuries from the Gaethje fight (5 Sep)",
+   "match": "high",
+   "unread_count": 3,
+   "twin_count": 4,
+   "first_unread": {
+    "reading_id": "720",
+    "outlet": "Bloody Elbow",
+    "published_at": "2026-09-05T12:45:00.000Z"
+   },
+   "first_read": {
+    "reading_id": "705",
+    "outlet": "ABC",
+    "published_at": "2026-09-05T10:57:28.000Z",
+    "tier": 2
+   },
+   "hours": -1.79,
+   "category": "within_window",
+   "best_tier": 2,
+   "tier1_posted": false
+  },
+  {
+   "id": "T-5",
+   "fighter": "Topuria",
+   "kind": "fight_talk",
+   "call": "borderline",
+   "name": "A commentator says the UFC is weighing a Gaethje rematch (6-7 Sep)",
+   "match": "high",
+   "unread_count": 5,
+   "twin_count": 5,
+   "first_unread": {
+    "reading_id": "802",
+    "outlet": "Bloody Elbow",
+    "published_at": "2026-09-06T17:00:00.000Z"
+   },
+   "first_read": {
+    "reading_id": "799",
+    "outlet": "heavy.com",
+    "published_at": "2026-09-06T14:34:37.000Z",
+    "tier": 2
+   },
+   "hours": -2.42,
+   "category": "within_window",
+   "best_tier": 2,
+   "tier1_posted": false
+  },
+  {
+   "id": "T-8",
+   "fighter": "Topuria",
+   "kind": "return_date",
+   "call": "borderline",
+   "name": "Dana White: Topuria is ready to fight, two options (9-11 Sep)",
+   "match": "high",
+   "unread_count": 11,
+   "twin_count": 4,
+   "first_unread": {
+    "reading_id": "972",
+    "outlet": "MMAWeekly.com",
+    "published_at": "2026-09-09T22:46:31.000Z"
+   },
+   "first_read": {
+    "reading_id": "971",
+    "outlet": "Yahoo Sports",
+    "published_at": "2026-09-09T22:46:31.000Z",
+    "tier": 2
+   },
+   "hours": 0,
+   "category": "within_window",
+   "best_tier": 2,
+   "tier1_posted": false
+  },
+  {
+   "id": "T-10a",
+   "fighter": "Topuria",
+   "kind": "fight_talk",
+   "call": "borderline",
+   "name": "Topuria's manager: only the Gaethje rematch interests the team (12-13 Sep)",
+   "match": "high",
+   "unread_count": 2,
+   "twin_count": 2,
+   "first_unread": {
+    "reading_id": "1128",
+    "outlet": "Bloody Elbow",
+    "published_at": "2026-09-12T02:00:00.000Z"
+   },
+   "first_read": {
+    "reading_id": "1125",
+    "outlet": "LowKickMMA.com",
+    "published_at": "2026-09-12T00:12:54.000Z",
+    "tier": 2
+   },
+   "hours": -1.78,
+   "category": "within_window",
+   "best_tier": 2,
+   "tier1_posted": false
+  },
+  {
+   "id": "T-10b",
+   "fighter": "Topuria",
+   "kind": "return_date",
+   "call": "borderline",
+   "name": "Trainer: no camp has started, return not imminent (12-15 Sep)",
+   "match": "high",
+   "unread_count": 4,
+   "twin_count": 5,
+   "first_unread": {
+    "reading_id": "1151",
+    "outlet": "Eurosport",
+    "published_at": "2026-09-12T19:36:00.000Z"
+   },
+   "first_read": {
+    "reading_id": "1156",
+    "outlet": "Diario AS",
+    "published_at": "2026-09-13T07:50:25.000Z",
+    "tier": 2
+   },
+   "hours": 12.24,
+   "category": "late",
+   "best_tier": 2,
+   "tier1_posted": false
+  },
+  {
+   "id": "T-11",
+   "fighter": "Topuria",
+   "kind": "return_date",
+   "call": "event",
+   "name": "Trainer rules out a 2026 return and gives a February window (16 Sep)",
+   "match": "high",
+   "unread_count": 1,
+   "twin_count": 4,
+   "first_unread": {
+    "reading_id": "1240",
+    "outlet": "Bloody Elbow",
+    "published_at": "2026-09-16T15:00:00.000Z"
+   },
+   "first_read": {
+    "reading_id": "1230",
+    "outlet": "Yahoo Sports",
+    "published_at": "2026-09-16T12:00:00.000Z",
+    "tier": 2
+   },
+   "hours": -3,
+   "category": "within_window",
+   "best_tier": 2,
+   "tier1_posted": false
+  },
+  {
+   "id": "T-12",
+   "fighter": "Topuria",
+   "kind": "injury",
+   "call": "event",
+   "name": "Topuria announces he is medically cleared to return (16 Sep)",
+   "match": "high",
+   "unread_count": 6,
+   "twin_count": 6,
+   "first_unread": {
+    "reading_id": "1258",
+    "outlet": "eurosport.es",
+    "published_at": "2026-09-16T20:45:00.000Z"
+   },
+   "first_read": {
+    "reading_id": "1256",
+    "outlet": "Bloody Elbow",
+    "published_at": "2026-09-16T20:24:39.000Z",
+    "tier": 2
+   },
+   "hours": -0.34,
+   "category": "within_window",
+   "best_tier": 2,
+   "tier1_posted": false
+  },
+  {
+   "id": "T-14",
+   "fighter": "Topuria",
+   "kind": "fight_talk",
+   "call": "borderline",
+   "name": "Leak of Topuria vs Parnasse at UFC 336, denied by the camp (5 Oct)",
+   "match": "high",
+   "unread_count": 1,
+   "twin_count": 3,
+   "first_unread": {
+    "reading_id": "1946",
+    "outlet": "Eurosport",
+    "published_at": "2026-10-05T16:53:00.000Z"
+   },
+   "first_read": {
+    "reading_id": "1943",
+    "outlet": "Bloody Elbow",
+    "published_at": "2026-10-05T14:00:00.000Z",
+    "tier": 2
+   },
+   "hours": -2.88,
+   "category": "within_window",
+   "best_tier": 2,
+   "tier1_posted": false
+  },
+  {
+   "id": "T-17",
+   "fighter": "Topuria",
+   "kind": "return_date",
+   "call": "event",
+   "name": "Dana White puts Topuria's return in early 2027 (5 Nov)",
+   "match": "high",
+   "unread_count": 1,
+   "twin_count": 4,
+   "first_unread": {
+    "reading_id": "2568",
+    "outlet": "SPORT",
+    "published_at": "2026-11-05T10:15:57.000Z"
+   },
+   "first_read": {
+    "reading_id": "2529",
+    "outlet": "MMA Junkie",
+    "published_at": "2026-11-05T02:20:00.000Z",
+    "tier": 2
+   },
+   "hours": -7.93,
+   "category": "within_window",
+   "best_tier": 2,
+   "tier1_posted": false
+  },
+  {
+   "id": "T-18",
+   "fighter": "Topuria",
+   "kind": "fight_talk",
+   "call": "borderline",
+   "name": "Dana White gives the green light to Topuria vs Pimblett (14 Nov)",
+   "match": "high",
+   "unread_count": 1,
+   "twin_count": 1,
+   "first_unread": {
+    "reading_id": "3050",
+    "outlet": "Sportscape Magazine",
+    "published_at": "2026-11-14T23:38:36.000Z"
+   },
+   "first_read": {
+    "reading_id": "3038",
+    "outlet": "Mundo Deportivo",
+    "published_at": "2026-11-14T08:59:58.000Z",
+    "tier": 2
+   },
+   "hours": -14.64,
+   "category": "within_window",
+   "best_tier": 2,
+   "tier1_posted": false
+  },
+  {
+   "id": "T-19",
+   "fighter": "Topuria",
+   "kind": "injury",
+   "call": "borderline",
+   "name": "Topuria says how close he came to career-ending surgery (17 Nov)",
+   "match": "high",
+   "unread_count": 2,
+   "twin_count": 3,
+   "first_unread": {
+    "reading_id": "3090",
+    "outlet": "Bloody Elbow",
+    "published_at": "2026-11-17T03:00:00.000Z"
+   },
+   "first_read": {
+    "reading_id": "3091",
+    "outlet": "Bloody Elbow",
+    "published_at": "2026-11-17T03:00:00.000Z",
+    "tier": 2
+   },
+   "hours": 0,
+   "category": "within_window",
+   "best_tier": 2,
+   "tier1_posted": false
+  }
+ ],
+ "not_event_groups": [
+  {
+   "id": "N-A1",
+   "fighter": "Amosov",
+   "unread_count": 4
+  },
+  {
+   "id": "N-A2",
+   "fighter": "Amosov",
+   "unread_count": 2
+  },
+  {
+   "id": "N-A3",
+   "fighter": "Amosov",
+   "unread_count": 3
+  },
+  {
+   "id": "N-D1",
+   "fighter": "Donchenko",
+   "unread_count": 4
+  },
+  {
+   "id": "N-D2",
+   "fighter": "Donchenko",
+   "unread_count": 8
+  },
+  {
+   "id": "N-T1",
+   "fighter": "Topuria",
+   "unread_count": 4
+  },
+  {
+   "id": "N-T2",
+   "fighter": "Topuria",
+   "unread_count": 5
+  },
+  {
+   "id": "N-T3",
+   "fighter": "Topuria",
+   "unread_count": 2
+  },
+  {
+   "id": "N-T4",
+   "fighter": "Topuria",
+   "unread_count": 2
+  },
+  {
+   "id": "N-T5",
+   "fighter": "Topuria",
+   "unread_count": 1
+  }
+ ]
+}

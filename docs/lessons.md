@@ -498,6 +498,29 @@ Rules for adding to it:
   reader's calls awaiting his confirmation. **Would overturn it:** his
   confirmation moving many furniture or fine calls to unusable.
 
+### Unread career articles mostly have a read twin; the events that trail are first reported by Ukrainian outlets
+`corpus` · `observed` · *v0, 2026-11-18*
+- **Evidence:** of 821 unread articles in v0's history (27 Jul – 18 Nov), 123
+  had a career kind from at least one headline screener. An agent grouped them
+  into 10 clear career events, 10 borderline ones (rumours, denials, statements
+  with no date) and 10 groups that are not events. For each event it found the
+  earliest *read* article about the same fact. Of the 10 clear events, 7 were
+  read first or within G1's 6 hours and 3 trailed: Amosov's opponent named
+  (17.1 h), his signed agreement (7.8 h), Donchenko's booking (18.8 h, at the
+  very start of the history). None was only ever unread. All five Topuria events
+  and Donchenko's result were read first; three of the four events whose first
+  feed report was unread are Amosov's, whose unread share is highest (148 unread
+  against 111 read). Of the 123 articles only 42 sit in event groups. See
+  [2026-11-18-unread-news](../research/experiments/2026-11-18-unread-news/README.md).
+- **Does not say:** that unread text costs little. The counts are small (10
+  events), the grouping is one agent's reading of headlines, two matches rest on
+  timing because the unread headline names no opponent, and the gaps are publish
+  times, not when v0 saw the article. A career event with a plain headline the
+  screen missed is not counted. **Would overturn it:** a hand-checked list of
+  career events (G1's recall probe) with some that never reached v0 through a
+  read article, or a re-grouping by someone else that moves two of the three
+  late events inside the window.
+
 ### Boilerplate contaminates the text; a focused excerpt around the subject beats a prefix
 `domain` · `measured` · **found independently by both, RF tested it** · *RF-L09; FB 2026-09-20*
 - **Evidence (RF):** two unrelated stories scored 0.76 lexical overlap because
