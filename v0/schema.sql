@@ -247,6 +247,80 @@ CREATE TABLE IF NOT EXISTS reactions (
   received_at  timestamptz NOT NULL DEFAULT now()
 );
 
+-- Who reacted, so one person's emoji never overwrites another's (tasks 9.12 and 9.13).
+-- Rows from before this column keep it empty: the chat then held only the maintainer.
+ALTER TABLE reactions ADD COLUMN IF NOT EXISTS user_id bigint;
+
+-- Every message the bot sent: a tier-1 post, one part of a digest, or the daily counts.
+-- A reply or an emoji finds its post here, whichever part of a long digest it landed on.
+-- Design: Launch Map task 9.13 (docs/launch-map.html).
+CREATE TABLE IF NOT EXISTS sent_messages (
+  message_id  bigint PRIMARY KEY,
+  kind        text NOT NULL CHECK (kind IN ('post', 'digest', 'daily')),
+  reading_id  bigint REFERENCES readings(id),
+  digest_id   bigint REFERENCES digests(id),
+  daily_day   date REFERENCES daily_reports(day),
+  part        smallint NOT NULL DEFAULT 1,
+  sent_at     timestamptz NOT NULL DEFAULT now(),
+  CHECK (num_nonnulls(reading_id, digest_id, daily_day) = 1)
+);
+CREATE INDEX IF NOT EXISTS sent_messages_reading_idx ON sent_messages (reading_id);
+CREATE INDEX IF NOT EXISTS sent_messages_digest_idx ON sent_messages (digest_id);
+
+-- What was sent before sent_messages existed: the one message id each row kept
+-- (a digest's first part). Safe to run again.
+INSERT INTO sent_messages (message_id, kind, reading_id, sent_at)
+  SELECT message_id, 'post', id, posted_at FROM readings WHERE message_id IS NOT NULL AND posted_at IS NOT NULL
+  ON CONFLICT DO NOTHING;
+INSERT INTO sent_messages (message_id, kind, digest_id, part, sent_at)
+  SELECT message_id, 'digest', id, 1, posted_at FROM digests WHERE message_id IS NOT NULL AND posted_at IS NOT NULL
+  ON CONFLICT DO NOTHING;
+INSERT INTO sent_messages (message_id, kind, daily_day, sent_at)
+  SELECT message_id, 'daily', day, posted_at FROM daily_reports WHERE message_id IS NOT NULL AND posted_at IS NOT NULL
+  ON CONFLICT DO NOTHING;
+
+-- Every message the maintainer sent in the chat. Only his: the step drops anyone
+-- else's before storing. A reply says which message it answers; a link in the
+-- text names another message (parsed on write, so no query needs a pattern).
+CREATE TABLE IF NOT EXISTS telegram_messages (
+  update_id           bigint PRIMARY KEY,
+  message_id          bigint NOT NULL UNIQUE,
+  reply_to_message_id bigint,
+  text                text NOT NULL DEFAULT '',
+  quote               text,
+  kind                text NOT NULL DEFAULT 'text',
+  link_message_id     bigint,
+  sent_at             timestamptz NOT NULL,
+  received_at         timestamptz NOT NULL DEFAULT now()
+);
+CREATE INDEX IF NOT EXISTS telegram_messages_reply_idx ON telegram_messages (reply_to_message_id);
+
+-- Each of his messages with the bot message at the top of its reply chain, and
+-- the bot message a link in it names. Walks at most 20 steps; a chain that does
+-- not reach a bot message leaves the columns empty (the note is "unattached").
+CREATE OR REPLACE VIEW telegram_notes AS
+WITH RECURSIVE walk(note_id, role, reached, steps) AS (
+  SELECT message_id, 'answer', reply_to_message_id, 1 FROM telegram_messages WHERE reply_to_message_id IS NOT NULL
+  UNION ALL
+  SELECT message_id, 'link', link_message_id, 1 FROM telegram_messages WHERE link_message_id IS NOT NULL
+  UNION ALL
+  SELECT w.note_id, w.role, t.reply_to_message_id, w.steps + 1
+  FROM walk w JOIN telegram_messages t ON t.message_id = w.reached
+  WHERE t.reply_to_message_id IS NOT NULL AND w.steps < 20
+),
+hit AS (
+  SELECT DISTINCT ON (w.note_id, w.role) w.note_id, w.role, s.message_id, s.kind, s.reading_id, s.digest_id, s.daily_day, s.part
+  FROM walk w JOIN sent_messages s ON s.message_id = w.reached
+  ORDER BY w.note_id, w.role, w.steps
+)
+SELECT m.update_id, m.message_id, m.reply_to_message_id, m.text, m.quote, m.kind, m.link_message_id, m.sent_at,
+       a.message_id AS post_message_id, a.kind AS post_kind, a.reading_id AS post_reading_id, a.digest_id AS post_digest_id,
+       a.daily_day AS post_daily_day, a.part AS post_part,
+       l.message_id AS repeats_message_id, l.kind AS repeats_kind, l.reading_id AS repeats_reading_id
+FROM telegram_messages m
+LEFT JOIN hit a ON a.note_id = m.message_id AND a.role = 'answer'
+LEFT JOIN hit l ON l.note_id = m.message_id AND l.role = 'link';
+
 -- Answers are never overwritten: an UPDATE on an answer table is refused.
 CREATE OR REPLACE FUNCTION refuse_update() RETURNS trigger AS $$
 BEGIN
@@ -258,7 +332,7 @@ DO $$
 DECLARE
   answer_table text;
 BEGIN
-  FOREACH answer_table IN ARRAY ARRAY['articles', 'classifications', 'extracts', 'groupings', 'decisions', 'settings', 'digest_claims', 'feedback', 'reactions', 'review_readings', 'review_same_claims', 'review_tiers', 'review_claim_notes']
+  FOREACH answer_table IN ARRAY ARRAY['articles', 'classifications', 'extracts', 'groupings', 'decisions', 'settings', 'digest_claims', 'feedback', 'reactions', 'sent_messages', 'telegram_messages', 'review_readings', 'review_same_claims', 'review_tiers', 'review_claim_notes']
   LOOP
     EXECUTE format('DROP TRIGGER IF EXISTS %I_never_updated ON %I', answer_table, answer_table);
     EXECUTE format('CREATE TRIGGER %I_never_updated BEFORE UPDATE ON %I FOR EACH ROW EXECUTE FUNCTION refuse_update()', answer_table, answer_table);

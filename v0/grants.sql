@@ -14,10 +14,10 @@ GRANT SELECT ON ALL TABLES IN SCHEMA public, replay TO v0_pipeline, v0_editor;
 GRANT INSERT ON
   public.articles, public.fighters, public.readings, public.classifications, public.extracts,
   public.groupings, public.claims, public.decisions, public.digests, public.digest_claims,
-  public.runs, public.daily_reports, public.reactions,
+  public.runs, public.daily_reports, public.reactions, public.sent_messages, public.telegram_messages,
   replay.articles, replay.fighters, replay.readings, replay.classifications, replay.extracts,
   replay.groupings, replay.claims, replay.decisions, replay.digests, replay.digest_claims,
-  replay.runs, replay.daily_reports, replay.reactions
+  replay.runs, replay.daily_reports, replay.reactions, replay.sent_messages, replay.telegram_messages
 TO v0_pipeline;
 
 -- The job moves a reading along, sets a claim's posted reading once, and marks what it sent.
