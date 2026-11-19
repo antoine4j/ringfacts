@@ -7,6 +7,7 @@ import { ClaimNote } from "../../../components/ClaimNote.tsx";
 import { ClaimReadings } from "../../../components/ClaimReadings.tsx";
 import { SameClaimReview } from "../../../components/ReviewControls.tsx";
 import { ReviewStatus } from "../../../components/ReviewStatus.tsx";
+import { TelegramNotes } from "../../../components/TelegramNotes.tsx";
 import { TierReview } from "../../../components/TierReview.tsx";
 import { tierName } from "../../../components/bits.tsx";
 import { query } from "../../../lib/db.ts";
@@ -15,6 +16,7 @@ import { pacificTime, shortTime } from "../../../lib/format.ts";
 import { bestTier } from "../../../lib/live-scores.ts";
 import { claimAgentViews, claimMembers, claimNotesFor, claimReviews, tierMarksFor, type ClaimRow } from "../../../lib/queries.ts";
 import { schemaFrom, schemaSuffix } from "../../../lib/schema.ts";
+import { notesForClaims } from "../../../lib/telegram.ts";
 import { newestTierMarks, tierJudgement, tierToJudge } from "../../../lib/tier-marks.ts";
 
 /**
@@ -37,6 +39,7 @@ export default async function ClaimPage({ params, searchParams }: { params: Prom
   const review = (await claimReviews(schema, members)).get(id);
   const note = schema === "public" ? ((await claimNotesFor([id])).get(id) ?? null) : null;
   const agent = (await claimAgentViews(schema, [id])).get(id);
+  const telegramNotes = schema === "public" ? ((await notesForClaims([id])).get(id) ?? []) : [];
 
   // The claim's tier (its best reading's) and the tier mark on it, live data only.
   const tierNow = bestTier((members.get(id) ?? []).map((member) => member.tier));
@@ -105,6 +108,14 @@ export default async function ClaimPage({ params, searchParams }: { params: Prom
             <dt>note</dt>
             <dd>
               <ClaimNote claimId={claim.id} note={note?.note ?? ""} written={shortTime(note?.created_at)} />
+            </dd>
+          </>
+        )}
+        {telegramNotes.length > 0 && (
+          <>
+            <dt>Telegram</dt>
+            <dd>
+              <TelegramNotes notes={telegramNotes} schema={schema} />
             </dd>
           </>
         )}

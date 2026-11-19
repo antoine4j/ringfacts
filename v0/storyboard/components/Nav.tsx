@@ -12,6 +12,7 @@ const PAGES = [
   { path: "/readings", name: "Readings" },
   { path: "/settings", name: "Settings" },
   { path: "/digests", name: "Digests" },
+  { path: "/telegram", name: "Telegram" },
   { path: "/runs", name: "Runs" },
   { path: "/compare", name: "Compare" },
   { path: "/replay", name: "Replay" },

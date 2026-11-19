@@ -2,12 +2,14 @@
 // listed, and which of the claims it was given it used or left out.
 
 import Link from "next/link";
+import { TelegramNotes } from "../../components/TelegramNotes.tsx";
 import { Empty, Json } from "../../components/bits.tsx";
 import { query } from "../../lib/db.ts";
 import { param, type Params } from "../../lib/filters.ts";
 import { pacificTime } from "../../lib/format.ts";
 import { fighterNames, latestReaction } from "../../lib/queries.ts";
 import { schemaFrom, schemaSuffix, type Schema } from "../../lib/schema.ts";
+import { notesForDigests, type TelegramNote } from "../../lib/telegram.ts";
 import { safeTelegramHtml } from "../../lib/telegram-html.ts";
 
 /** A row of the digests table. */
@@ -35,7 +37,7 @@ export default async function DigestsPage({ searchParams }: { searchParams: Prom
     [fighter],
   );
   const ids = digests.map((digest) => digest.id);
-  const [given, fighters] = await Promise.all([
+  const [given, fighters, notesByDigest] = await Promise.all([
     query<GivenClaim>(
       schema,
       `SELECT dc.digest_id, dc.claim_id, dc.used, cn.current_label, cn.readings, cn.outlets
@@ -44,6 +46,7 @@ export default async function DigestsPage({ searchParams }: { searchParams: Prom
       [ids],
     ),
     fighterNames(schema),
+    schema === "public" ? notesForDigests(ids) : Promise.resolve(new Map<string, TelegramNote[]>()),
   ]);
 
   return (
@@ -75,6 +78,7 @@ export default async function DigestsPage({ searchParams }: { searchParams: Prom
           key={digest.id}
           digest={digest}
           given={given.filter((claim) => claim.digest_id === digest.id)}
+          notes={notesByDigest.get(digest.id) ?? []}
           schema={schema}
         />
       ))}
@@ -87,10 +91,11 @@ export default async function DigestsPage({ searchParams }: { searchParams: Prom
  *
  * @param props.digest  The digest.
  * @param props.given  The claims it was given.
+ * @param props.notes  What he wrote about it in Telegram, on any part of it.
  * @param props.schema  Kept on links.
  * @returns The card.
  */
-function DigestCard({ digest, given, schema }: { digest: DigestRow; given: GivenClaim[]; schema: Schema }) {
+function DigestCard({ digest, given, notes, schema }: { digest: DigestRow; given: GivenClaim[]; notes: TelegramNote[]; schema: Schema }) {
   const used = given.filter((claim) => claim.used);
   const leftOut = given.filter((claim) => !claim.used);
   return (
@@ -104,6 +109,7 @@ function DigestCard({ digest, given, schema }: { digest: DigestRow; given: Given
         </span>
       </h2>
       <div className="pre digest-text" dangerouslySetInnerHTML={{ __html: safeTelegramHtml(digest.text) }} />
+      <TelegramNotes notes={notes} schema={schema} />
       <h3>Used ({used.length})</h3>
       <ClaimList claims={used} schema={schema} />
       <h3>Left out ({leftOut.length})</h3>
