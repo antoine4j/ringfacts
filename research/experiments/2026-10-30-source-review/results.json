@@ -1,0 +1,5997 @@
+{
+ "outlets": {
+  "totals": {
+   "Yaroslav Amosov": {
+    "articles": 58,
+    "readable": 23,
+    "readable_share": 0.4,
+    "recent": 21,
+    "recent_readable": 6,
+    "outlets": 28
+   },
+   "Daniil Donchenko": {
+    "articles": 144,
+    "readable": 84,
+    "readable_share": 0.58,
+    "recent": 6,
+    "recent_readable": 1,
+    "outlets": 48
+   },
+   "Ilia Topuria": {
+    "articles": 1594,
+    "readable": 1244,
+    "readable_share": 0.78,
+    "recent": 429,
+    "recent_readable": 327,
+    "outlets": 150
+   }
+  },
+  "per_fighter": {
+   "Yaroslav Amosov": [
+    {
+     "outlet": "ua.tribuna.com",
+     "articles": 10,
+     "readable": 0,
+     "recent": 4,
+     "recent_readable": 0,
+     "failures": {
+      "http-403": 9,
+      "decode-failed": 1
+     },
+     "share_of_fighter": 0.17,
+     "readable_share": 0
+    },
+    {
+     "outlet": "ukr.net",
+     "articles": 5,
+     "readable": 0,
+     "recent": 4,
+     "recent_readable": 0,
+     "failures": {
+      "og-description": 5
+     },
+     "share_of_fighter": 0.09,
+     "readable_share": 0
+    },
+    {
+     "outlet": "247sports.com",
+     "articles": 4,
+     "readable": 0,
+     "recent": 2,
+     "recent_readable": 0,
+     "failures": {
+      "http-406": 4
+     },
+     "share_of_fighter": 0.07,
+     "readable_share": 0
+    },
+    {
+     "outlet": "bloodyelbow.com",
+     "articles": 4,
+     "readable": 2,
+     "recent": 0,
+     "recent_readable": 0,
+     "failures": {
+      "http-403": 1,
+      "decode-failed": 1
+     },
+     "share_of_fighter": 0.07,
+     "readable_share": 0.5
+    },
+    {
+     "outlet": "sport.ua",
+     "articles": 3,
+     "readable": 0,
+     "recent": 3,
+     "recent_readable": 0,
+     "failures": {
+      "http-403": 3
+     },
+     "share_of_fighter": 0.05,
+     "readable_share": 0
+    },
+    {
+     "outlet": "sports.yahoo.com",
+     "articles": 3,
+     "readable": 2,
+     "recent": 0,
+     "recent_readable": 0,
+     "failures": {
+      "og-description": 1
+     },
+     "share_of_fighter": 0.05,
+     "readable_share": 0.67
+    },
+    {
+     "outlet": "24tv.ua",
+     "articles": 2,
+     "readable": 2,
+     "recent": 0,
+     "recent_readable": 0,
+     "failures": {},
+     "share_of_fighter": 0.03,
+     "readable_share": 1
+    },
+    {
+     "outlet": "boxingnews.com",
+     "articles": 2,
+     "readable": 2,
+     "recent": 0,
+     "recent_readable": 0,
+     "failures": {},
+     "share_of_fighter": 0.03,
+     "readable_share": 1
+    },
+    {
+     "outlet": "glavcom.ua",
+     "articles": 2,
+     "readable": 2,
+     "recent": 0,
+     "recent_readable": 0,
+     "failures": {},
+     "share_of_fighter": 0.03,
+     "readable_share": 1
+    },
+    {
+     "outlet": "mmasucka.com",
+     "articles": 2,
+     "readable": 2,
+     "recent": 2,
+     "recent_readable": 2,
+     "failures": {},
+     "share_of_fighter": 0.03,
+     "readable_share": 1
+    },
+    {
+     "outlet": "sport-express.ua",
+     "articles": 2,
+     "readable": 0,
+     "recent": 0,
+     "recent_readable": 0,
+     "failures": {
+      "decode-failed": 2
+     },
+     "share_of_fighter": 0.03,
+     "readable_share": 0
+    },
+    {
+     "outlet": "sport.nv.ua",
+     "articles": 2,
+     "readable": 0,
+     "recent": 0,
+     "recent_readable": 0,
+     "failures": {
+      "http-403": 2
+     },
+     "share_of_fighter": 0.03,
+     "readable_share": 0
+    },
+    {
+     "outlet": "xsport.ua",
+     "articles": 2,
+     "readable": 2,
+     "recent": 0,
+     "recent_readable": 0,
+     "failures": {},
+     "share_of_fighter": 0.03,
+     "readable_share": 1
+    },
+    {
+     "outlet": "champion.com.ua",
+     "articles": 1,
+     "readable": 0,
+     "recent": 1,
+     "recent_readable": 0,
+     "failures": {
+      "http-403": 1
+     },
+     "share_of_fighter": 0.02,
+     "readable_share": 0
+    },
+    {
+     "outlet": "enews.com.ua",
+     "articles": 1,
+     "readable": 1,
+     "recent": 0,
+     "recent_readable": 0,
+     "failures": {},
+     "share_of_fighter": 0.02,
+     "readable_share": 1
+    },
+    {
+     "outlet": "essentiallysports.com",
+     "articles": 1,
+     "readable": 0,
+     "recent": 1,
+     "recent_readable": 0,
+     "failures": {
+      "decode-failed": 1
+     },
+     "share_of_fighter": 0.02,
+     "readable_share": 0
+    },
+    {
+     "outlet": "football24.ua",
+     "articles": 1,
+     "readable": 1,
+     "recent": 1,
+     "recent_readable": 1,
+     "failures": {},
+     "share_of_fighter": 0.02,
+     "readable_share": 1
+    },
+    {
+     "outlet": "heavy.com",
+     "articles": 1,
+     "readable": 1,
+     "recent": 0,
+     "recent_readable": 0,
+     "failures": {},
+     "share_of_fighter": 0.02,
+     "readable_share": 1
+    },
+    {
+     "outlet": "lufkindailynews.com",
+     "articles": 1,
+     "readable": 1,
+     "recent": 0,
+     "recent_readable": 0,
+     "failures": {},
+     "share_of_fighter": 0.02,
+     "readable_share": 1
+    },
+    {
+     "outlet": "mmafighting.com",
+     "articles": 1,
+     "readable": 1,
+     "recent": 0,
+     "recent_readable": 0,
+     "failures": {},
+     "share_of_fighter": 0.02,
+     "readable_share": 1
+    },
+    {
+     "outlet": "mmajunkie.usatoday.com",
+     "articles": 1,
+     "readable": 1,
+     "recent": 0,
+     "recent_readable": 0,
+     "failures": {},
+     "share_of_fighter": 0.02,
+     "readable_share": 1
+    },
+    {
+     "outlet": "my.ua",
+     "articles": 1,
+     "readable": 0,
+     "recent": 0,
+     "recent_readable": 0,
+     "failures": {
+      "decode-failed": 1
+     },
+     "share_of_fighter": 0.02,
+     "readable_share": 0
+    },
+    {
+     "outlet": "news.ssbcrack.com",
+     "articles": 1,
+     "readable": 1,
+     "recent": 1,
+     "recent_readable": 1,
+     "failures": {},
+     "share_of_fighter": 0.02,
+     "readable_share": 1
+    },
+    {
+     "outlet": "sherdog.com",
+     "articles": 1,
+     "readable": 0,
+     "recent": 0,
+     "recent_readable": 0,
+     "failures": {
+      "og-description": 1
+     },
+     "share_of_fighter": 0.02,
+     "readable_share": 0
+    },
+    {
+     "outlet": "sportnews.com.ua",
+     "articles": 1,
+     "readable": 1,
+     "recent": 1,
+     "recent_readable": 1,
+     "failures": {},
+     "share_of_fighter": 0.02,
+     "readable_share": 1
+    },
+    {
+     "outlet": "sportscapemagazine.com",
+     "articles": 1,
+     "readable": 0,
+     "recent": 0,
+     "recent_readable": 0,
+     "failures": {
+      "decode-failed": 1
+     },
+     "share_of_fighter": 0.02,
+     "readable_share": 0
+    },
+    {
+     "outlet": "vechirniy.kyiv.ua",
+     "articles": 1,
+     "readable": 0,
+     "recent": 0,
+     "recent_readable": 0,
+     "failures": {
+      "http-403": 1
+     },
+     "share_of_fighter": 0.02,
+     "readable_share": 0
+    },
+    {
+     "outlet": "yardbarker.com",
+     "articles": 1,
+     "readable": 1,
+     "recent": 1,
+     "recent_readable": 1,
+     "failures": {},
+     "share_of_fighter": 0.02,
+     "readable_share": 1
+    }
+   ],
+   "Daniil Donchenko": [
+    {
+     "outlet": "ua.tribuna.com",
+     "articles": 27,
+     "readable": 0,
+     "recent": 3,
+     "recent_readable": 0,
+     "failures": {
+      "http-403": 27
+     },
+     "share_of_fighter": 0.19,
+     "readable_share": 0
+    },
+    {
+     "outlet": "sport.ua",
+     "articles": 17,
+     "readable": 16,
+     "recent": 0,
+     "recent_readable": 0,
+     "failures": {
+      "timeout": 1
+     },
+     "share_of_fighter": 0.12,
+     "readable_share": 0.94
+    },
+    {
+     "outlet": "sport.nv.ua",
+     "articles": 15,
+     "readable": 8,
+     "recent": 0,
+     "recent_readable": 0,
+     "failures": {
+      "http-403": 7
+     },
+     "share_of_fighter": 0.1,
+     "readable_share": 0.53
+    },
+    {
+     "outlet": "champion.com.ua",
+     "articles": 11,
+     "readable": 6,
+     "recent": 1,
+     "recent_readable": 0,
+     "failures": {
+      "http-403": 5
+     },
+     "share_of_fighter": 0.08,
+     "readable_share": 0.55
+    },
+    {
+     "outlet": "ukr.net",
+     "articles": 10,
+     "readable": 0,
+     "recent": 1,
+     "recent_readable": 0,
+     "failures": {
+      "og-description": 10
+     },
+     "share_of_fighter": 0.07,
+     "readable_share": 0
+    },
+    {
+     "outlet": "ufc.com",
+     "articles": 6,
+     "readable": 6,
+     "recent": 0,
+     "recent_readable": 0,
+     "failures": {},
+     "share_of_fighter": 0.04,
+     "readable_share": 1
+    },
+    {
+     "outlet": "112.ua",
+     "articles": 5,
+     "readable": 5,
+     "recent": 0,
+     "recent_readable": 0,
+     "failures": {},
+     "share_of_fighter": 0.03,
+     "readable_share": 1
+    },
+    {
+     "outlet": "mmafighting.com",
+     "articles": 4,
+     "readable": 4,
+     "recent": 0,
+     "recent_readable": 0,
+     "failures": {},
+     "share_of_fighter": 0.03,
+     "readable_share": 1
+    },
+    {
+     "outlet": "mmajunkie.usatoday.com",
+     "articles": 3,
+     "readable": 2,
+     "recent": 0,
+     "recent_readable": 0,
+     "failures": {
+      "no-extract": 1
+     },
+     "share_of_fighter": 0.02,
+     "readable_share": 0.67
+    },
+    {
+     "outlet": "sport-express.ua",
+     "articles": 3,
+     "readable": 3,
+     "recent": 0,
+     "recent_readable": 0,
+     "failures": {},
+     "share_of_fighter": 0.02,
+     "readable_share": 1
+    },
+    {
+     "outlet": "xsport.ua",
+     "articles": 3,
+     "readable": 3,
+     "recent": 1,
+     "recent_readable": 1,
+     "failures": {},
+     "share_of_fighter": 0.02,
+     "readable_share": 1
+    },
+    {
+     "outlet": "boxingnews.com",
+     "articles": 2,
+     "readable": 2,
+     "recent": 0,
+     "recent_readable": 0,
+     "failures": {},
+     "share_of_fighter": 0.01,
+     "readable_share": 1
+    },
+    {
+     "outlet": "sport24.ua",
+     "articles": 2,
+     "readable": 2,
+     "recent": 0,
+     "recent_readable": 0,
+     "failures": {},
+     "share_of_fighter": 0.01,
+     "readable_share": 1
+    },
+    {
+     "outlet": "sports.yahoo.com",
+     "articles": 2,
+     "readable": 2,
+     "recent": 0,
+     "recent_readable": 0,
+     "failures": {},
+     "share_of_fighter": 0.01,
+     "readable_share": 1
+    },
+    {
+     "outlet": "ats.io",
+     "articles": 1,
+     "readable": 0,
+     "recent": 0,
+     "recent_readable": 0,
+     "failures": {
+      "http-403": 1
+     },
+     "share_of_fighter": 0.01,
+     "readable_share": 0
+    },
+    {
+     "outlet": "bjpenn.com",
+     "articles": 1,
+     "readable": 1,
+     "recent": 0,
+     "recent_readable": 0,
+     "failures": {},
+     "share_of_fighter": 0.01,
+     "readable_share": 1
+    },
+    {
+     "outlet": "cagesidepress.com",
+     "articles": 1,
+     "readable": 1,
+     "recent": 0,
+     "recent_readable": 0,
+     "failures": {},
+     "share_of_fighter": 0.01,
+     "readable_share": 1
+    },
+    {
+     "outlet": "centraloregondaily.com",
+     "articles": 1,
+     "readable": 1,
+     "recent": 0,
+     "recent_readable": 0,
+     "failures": {},
+     "share_of_fighter": 0.01,
+     "readable_share": 1
+    },
+    {
+     "outlet": "clutchpoints.com",
+     "articles": 1,
+     "readable": 1,
+     "recent": 0,
+     "recent_readable": 0,
+     "failures": {},
+     "share_of_fighter": 0.01,
+     "readable_share": 1
+    },
+    {
+     "outlet": "dknetwork.draftkings.com",
+     "articles": 1,
+     "readable": 1,
+     "recent": 0,
+     "recent_readable": 0,
+     "failures": {},
+     "share_of_fighter": 0.01,
+     "readable_share": 1
+    },
+    {
+     "outlet": "duflu.org.ua",
+     "articles": 1,
+     "readable": 1,
+     "recent": 0,
+     "recent_readable": 0,
+     "failures": {},
+     "share_of_fighter": 0.01,
+     "readable_share": 1
+    },
+    {
+     "outlet": "espreso.tv",
+     "articles": 1,
+     "readable": 1,
+     "recent": 0,
+     "recent_readable": 0,
+     "failures": {},
+     "share_of_fighter": 0.01,
+     "readable_share": 1
+    },
+    {
+     "outlet": "football24.ua",
+     "articles": 1,
+     "readable": 1,
+     "recent": 0,
+     "recent_readable": 0,
+     "failures": {},
+     "share_of_fighter": 0.01,
+     "readable_share": 1
+    },
+    {
+     "outlet": "hromadske.ua",
+     "articles": 1,
+     "readable": 1,
+     "recent": 0,
+     "recent_readable": 0,
+     "failures": {},
+     "share_of_fighter": 0.01,
+     "readable_share": 1
+    },
+    {
+     "outlet": "jp.ufc.com",
+     "articles": 1,
+     "readable": 1,
+     "recent": 0,
+     "recent_readable": 0,
+     "failures": {},
+     "share_of_fighter": 0.01,
+     "readable_share": 1
+    },
+    {
+     "outlet": "kamyanske.com.ua",
+     "articles": 1,
+     "readable": 1,
+     "recent": 0,
+     "recent_readable": 0,
+     "failures": {},
+     "share_of_fighter": 0.01,
+     "readable_share": 1
+    },
+    {
+     "outlet": "khon2.com",
+     "articles": 1,
+     "readable": 1,
+     "recent": 0,
+     "recent_readable": 0,
+     "failures": {},
+     "share_of_fighter": 0.01,
+     "readable_share": 1
+    },
+    {
+     "outlet": "korosten.today",
+     "articles": 1,
+     "readable": 1,
+     "recent": 0,
+     "recent_readable": 0,
+     "failures": {},
+     "share_of_fighter": 0.01,
+     "readable_share": 1
+    },
+    {
+     "outlet": "lindyssports.com",
+     "articles": 1,
+     "readable": 0,
+     "recent": 0,
+     "recent_readable": 0,
+     "failures": {
+      "http-403": 1
+     },
+     "share_of_fighter": 0.01,
+     "readable_share": 0
+    },
+    {
+     "outlet": "liontips.com",
+     "articles": 1,
+     "readable": 1,
+     "recent": 0,
+     "recent_readable": 0,
+     "failures": {},
+     "share_of_fighter": 0.01,
+     "readable_share": 1
+    },
+    {
+     "outlet": "lowkickmma.com",
+     "articles": 1,
+     "readable": 1,
+     "recent": 0,
+     "recent_readable": 0,
+     "failures": {},
+     "share_of_fighter": 0.01,
+     "readable_share": 1
+    },
+    {
+     "outlet": "lufkindailynews.com",
+     "articles": 1,
+     "readable": 1,
+     "recent": 0,
+     "recent_readable": 0,
+     "failures": {},
+     "share_of_fighter": 0.01,
+     "readable_share": 1
+    },
+    {
+     "outlet": "middleeasy.com",
+     "articles": 1,
+     "readable": 1,
+     "recent": 0,
+     "recent_readable": 0,
+     "failures": {},
+     "share_of_fighter": 0.01,
+     "readable_share": 1
+    },
+    {
+     "outlet": "mmamania.com",
+     "articles": 1,
+     "readable": 1,
+     "recent": 0,
+     "recent_readable": 0,
+     "failures": {},
+     "share_of_fighter": 0.01,
+     "readable_share": 1
+    },
+    {
+     "outlet": "mmasucka.com",
+     "articles": 1,
+     "readable": 1,
+     "recent": 0,
+     "recent_readable": 0,
+     "failures": {},
+     "share_of_fighter": 0.01,
+     "readable_share": 1
+    },
+    {
+     "outlet": "oddschecker.com",
+     "articles": 1,
+     "readable": 0,
+     "recent": 0,
+     "recent_readable": 0,
+     "failures": {
+      "http-403": 1
+     },
+     "share_of_fighter": 0.01,
+     "readable_share": 0
+    },
+    {
+     "outlet": "robinhood.com",
+     "articles": 1,
+     "readable": 0,
+     "recent": 0,
+     "recent_readable": 0,
+     "failures": {
+      "og-description": 1
+     },
+     "share_of_fighter": 0.01,
+     "readable_share": 0
+    },
+    {
+     "outlet": "sherdog.com",
+     "articles": 1,
+     "readable": 0,
+     "recent": 0,
+     "recent_readable": 0,
+     "failures": {
+      "short-or-unnamed": 1
+     },
+     "share_of_fighter": 0.01,
+     "readable_share": 0
+    },
+    {
+     "outlet": "sport.novyny.live",
+     "articles": 1,
+     "readable": 1,
+     "recent": 0,
+     "recent_readable": 0,
+     "failures": {},
+     "share_of_fighter": 0.01,
+     "readable_share": 1
+    },
+    {
+     "outlet": "sport.rbc.ua",
+     "articles": 1,
+     "readable": 1,
+     "recent": 0,
+     "recent_readable": 0,
+     "failures": {},
+     "share_of_fighter": 0.01,
+     "readable_share": 1
+    },
+    {
+     "outlet": "sportanalytic.com",
+     "articles": 1,
+     "readable": 0,
+     "recent": 0,
+     "recent_readable": 0,
+     "failures": {
+      "no-extract": 1
+     },
+     "share_of_fighter": 0.01,
+     "readable_share": 0
+    },
+    {
+     "outlet": "sportarena.ua",
+     "articles": 1,
+     "readable": 1,
+     "recent": 0,
+     "recent_readable": 0,
+     "failures": {},
+     "share_of_fighter": 0.01,
+     "readable_share": 1
+    },
+    {
+     "outlet": "sports.betmgm.com",
+     "articles": 1,
+     "readable": 0,
+     "recent": 0,
+     "recent_readable": 0,
+     "failures": {
+      "short-or-unnamed": 1
+     },
+     "share_of_fighter": 0.01,
+     "readable_share": 0
+    },
+    {
+     "outlet": "thestatszone.com",
+     "articles": 1,
+     "readable": 1,
+     "recent": 0,
+     "recent_readable": 0,
+     "failures": {},
+     "share_of_fighter": 0.01,
+     "readable_share": 1
+    },
+    {
+     "outlet": "tonyspicks.com",
+     "articles": 1,
+     "readable": 0,
+     "recent": 0,
+     "recent_readable": 0,
+     "failures": {
+      "http-403": 1
+     },
+     "share_of_fighter": 0.01,
+     "readable_share": 0
+    },
+    {
+     "outlet": "ua.korrespondent.net",
+     "articles": 1,
+     "readable": 0,
+     "recent": 0,
+     "recent_readable": 0,
+     "failures": {
+      "og-description": 1
+     },
+     "share_of_fighter": 0.01,
+     "readable_share": 0
+    },
+    {
+     "outlet": "uk.sports.yahoo.com",
+     "articles": 1,
+     "readable": 1,
+     "recent": 0,
+     "recent_readable": 0,
+     "failures": {},
+     "share_of_fighter": 0.01,
+     "readable_share": 1
+    },
+    {
+     "outlet": "zn.ua",
+     "articles": 1,
+     "readable": 1,
+     "recent": 0,
+     "recent_readable": 0,
+     "failures": {},
+     "share_of_fighter": 0.01,
+     "readable_share": 1
+    }
+   ],
+   "Ilia Topuria": [
+    {
+     "outlet": "mmasucka.com",
+     "articles": 138,
+     "readable": 133,
+     "recent": 37,
+     "recent_readable": 37,
+     "failures": {
+      "decode-failed": 5
+     },
+     "share_of_fighter": 0.09,
+     "readable_share": 0.96
+    },
+    {
+     "outlet": "sports.yahoo.com",
+     "articles": 113,
+     "readable": 103,
+     "recent": 27,
+     "recent_readable": 26,
+     "failures": {
+      "none": 1,
+      "og-description": 1,
+      "decode-failed": 8
+     },
+     "share_of_fighter": 0.07,
+     "readable_share": 0.91
+    },
+    {
+     "outlet": "bloodyelbow.com",
+     "articles": 108,
+     "readable": 43,
+     "recent": 24,
+     "recent_readable": 10,
+     "failures": {
+      "http-403": 61,
+      "none": 3,
+      "decode-failed": 1
+     },
+     "share_of_fighter": 0.07,
+     "readable_share": 0.4
+    },
+    {
+     "outlet": "mundodeportivo.com",
+     "articles": 93,
+     "readable": 86,
+     "recent": 35,
+     "recent_readable": 32,
+     "failures": {
+      "short-or-unnamed": 3,
+      "decode-failed": 4
+     },
+     "share_of_fighter": 0.06,
+     "readable_share": 0.92
+    },
+    {
+     "outlet": "abc.es",
+     "articles": 91,
+     "readable": 88,
+     "recent": 29,
+     "recent_readable": 29,
+     "failures": {
+      "decode-failed": 3
+     },
+     "share_of_fighter": 0.06,
+     "readable_share": 0.97
+    },
+    {
+     "outlet": "boxingnews.com",
+     "articles": 86,
+     "readable": 82,
+     "recent": 13,
+     "recent_readable": 12,
+     "failures": {
+      "http-404": 1,
+      "decode-failed": 3
+     },
+     "share_of_fighter": 0.05,
+     "readable_share": 0.95
+    },
+    {
+     "outlet": "marca.com",
+     "articles": 70,
+     "readable": 66,
+     "recent": 17,
+     "recent_readable": 17,
+     "failures": {
+      "decode-failed": 4
+     },
+     "share_of_fighter": 0.04,
+     "readable_share": 0.94
+    },
+    {
+     "outlet": "20minutos.es",
+     "articles": 63,
+     "readable": 55,
+     "recent": 20,
+     "recent_readable": 17,
+     "failures": {
+      "decode-failed": 6,
+      "short-or-unnamed": 2
+     },
+     "share_of_fighter": 0.04,
+     "readable_share": 0.87
+    },
+    {
+     "outlet": "eurosport.es",
+     "articles": 63,
+     "readable": 0,
+     "recent": 24,
+     "recent_readable": 0,
+     "failures": {
+      "no-extract": 18,
+      "http-403": 39,
+      "decode-failed": 6
+     },
+     "share_of_fighter": 0.04,
+     "readable_share": 0
+    },
+    {
+     "outlet": "mmafighting.com",
+     "articles": 45,
+     "readable": 43,
+     "recent": 11,
+     "recent_readable": 10,
+     "failures": {
+      "decode-failed": 2
+     },
+     "share_of_fighter": 0.03,
+     "readable_share": 0.96
+    },
+    {
+     "outlet": "heavy.com",
+     "articles": 41,
+     "readable": 40,
+     "recent": 8,
+     "recent_readable": 8,
+     "failures": {
+      "decode-failed": 1
+     },
+     "share_of_fighter": 0.03,
+     "readable_share": 0.98
+    },
+    {
+     "outlet": "bjpenn.com",
+     "articles": 40,
+     "readable": 39,
+     "recent": 8,
+     "recent_readable": 8,
+     "failures": {
+      "decode-failed": 1
+     },
+     "share_of_fighter": 0.03,
+     "readable_share": 0.98
+    },
+    {
+     "outlet": "mmajunkie.usatoday.com",
+     "articles": 36,
+     "readable": 31,
+     "recent": 6,
+     "recent_readable": 6,
+     "failures": {
+      "decode-failed": 5
+     },
+     "share_of_fighter": 0.02,
+     "readable_share": 0.86
+    },
+    {
+     "outlet": "sherdog.com",
+     "articles": 30,
+     "readable": 2,
+     "recent": 5,
+     "recent_readable": 0,
+     "failures": {
+      "og-description": 24,
+      "short-or-unnamed": 3,
+      "decode-failed": 1
+     },
+     "share_of_fighter": 0.02,
+     "readable_share": 0.07
+    },
+    {
+     "outlet": "dazn.com",
+     "articles": 28,
+     "readable": 1,
+     "recent": 7,
+     "recent_readable": 0,
+     "failures": {
+      "no-extract": 2,
+      "http-403": 24,
+      "decode-failed": 1
+     },
+     "share_of_fighter": 0.02,
+     "readable_share": 0.04
+    },
+    {
+     "outlet": "infobae.com",
+     "articles": 28,
+     "readable": 24,
+     "recent": 14,
+     "recent_readable": 13,
+     "failures": {
+      "decode-failed": 4
+     },
+     "share_of_fighter": 0.02,
+     "readable_share": 0.86
+    },
+    {
+     "outlet": "mmamania.com",
+     "articles": 28,
+     "readable": 26,
+     "recent": 9,
+     "recent_readable": 9,
+     "failures": {
+      "decode-failed": 2
+     },
+     "share_of_fighter": 0.02,
+     "readable_share": 0.93
+    },
+    {
+     "outlet": "sport.es",
+     "articles": 28,
+     "readable": 21,
+     "recent": 4,
+     "recent_readable": 3,
+     "failures": {
+      "short-or-unnamed": 4,
+      "decode-failed": 3
+     },
+     "share_of_fighter": 0.02,
+     "readable_share": 0.75
+    },
+    {
+     "outlet": "nyfights.com",
+     "articles": 27,
+     "readable": 26,
+     "recent": 9,
+     "recent_readable": 9,
+     "failures": {
+      "decode-failed": 1
+     },
+     "share_of_fighter": 0.02,
+     "readable_share": 0.96
+    },
+    {
+     "outlet": "as.com",
+     "articles": 26,
+     "readable": 20,
+     "recent": 8,
+     "recent_readable": 7,
+     "failures": {
+      "none": 1,
+      "http-403": 4,
+      "decode-failed": 1
+     },
+     "share_of_fighter": 0.02,
+     "readable_share": 0.77
+    },
+    {
+     "outlet": "timesofindia.indiatimes.com",
+     "articles": 25,
+     "readable": 25,
+     "recent": 7,
+     "recent_readable": 7,
+     "failures": {},
+     "share_of_fighter": 0.02,
+     "readable_share": 1
+    },
+    {
+     "outlet": "mundiario.com",
+     "articles": 24,
+     "readable": 23,
+     "recent": 15,
+     "recent_readable": 14,
+     "failures": {
+      "decode-failed": 1
+     },
+     "share_of_fighter": 0.02,
+     "readable_share": 0.96
+    },
+    {
+     "outlet": "estadiodeportivo.com",
+     "articles": 23,
+     "readable": 23,
+     "recent": 9,
+     "recent_readable": 9,
+     "failures": {},
+     "share_of_fighter": 0.01,
+     "readable_share": 1
+    },
+    {
+     "outlet": "okdiario.com",
+     "articles": 22,
+     "readable": 21,
+     "recent": 7,
+     "recent_readable": 6,
+     "failures": {
+      "decode-failed": 1
+     },
+     "share_of_fighter": 0.01,
+     "readable_share": 0.95
+    },
+    {
+     "outlet": "lasueur.com",
+     "articles": 20,
+     "readable": 20,
+     "recent": 4,
+     "recent_readable": 4,
+     "failures": {},
+     "share_of_fighter": 0.01,
+     "readable_share": 1
+    },
+    {
+     "outlet": "lowkickmma.com",
+     "articles": 18,
+     "readable": 17,
+     "recent": 2,
+     "recent_readable": 1,
+     "failures": {
+      "decode-failed": 1
+     },
+     "share_of_fighter": 0.01,
+     "readable_share": 0.94
+    },
+    {
+     "outlet": "mmaweekly.com",
+     "articles": 15,
+     "readable": 0,
+     "recent": 3,
+     "recent_readable": 0,
+     "failures": {
+      "http-403": 15
+     },
+     "share_of_fighter": 0.01,
+     "readable_share": 0
+    },
+    {
+     "outlet": "sports.ndtv.com",
+     "articles": 15,
+     "readable": 0,
+     "recent": 10,
+     "recent_readable": 0,
+     "failures": {
+      "http-403": 14,
+      "decode-failed": 1
+     },
+     "share_of_fighter": 0.01,
+     "readable_share": 0
+    },
+    {
+     "outlet": "si.com",
+     "articles": 14,
+     "readable": 14,
+     "recent": 3,
+     "recent_readable": 3,
+     "failures": {},
+     "share_of_fighter": 0.01,
+     "readable_share": 1
+    },
+    {
+     "outlet": "yardbarker.com",
+     "articles": 11,
+     "readable": 11,
+     "recent": 0,
+     "recent_readable": 0,
+     "failures": {},
+     "share_of_fighter": 0.01,
+     "readable_share": 1
+    },
+    {
+     "outlet": "athlonsports.com",
+     "articles": 8,
+     "readable": 0,
+     "recent": 1,
+     "recent_readable": 0,
+     "failures": {
+      "http-403": 8
+     },
+     "share_of_fighter": 0.01,
+     "readable_share": 0
+    },
+    {
+     "outlet": "eldebate.com",
+     "articles": 7,
+     "readable": 6,
+     "recent": 2,
+     "recent_readable": 2,
+     "failures": {
+      "decode-failed": 1
+     },
+     "share_of_fighter": 0,
+     "readable_share": 0.86
+    },
+    {
+     "outlet": "agencianova.com",
+     "articles": 6,
+     "readable": 6,
+     "recent": 0,
+     "recent_readable": 0,
+     "failures": {},
+     "share_of_fighter": 0,
+     "readable_share": 1
+    },
+    {
+     "outlet": "elespanol.com",
+     "articles": 6,
+     "readable": 5,
+     "recent": 1,
+     "recent_readable": 1,
+     "failures": {
+      "decode-failed": 1
+     },
+     "share_of_fighter": 0,
+     "readable_share": 0.83
+    },
+    {
+     "outlet": "larazon.es",
+     "articles": 6,
+     "readable": 6,
+     "recent": 2,
+     "recent_readable": 2,
+     "failures": {},
+     "share_of_fighter": 0,
+     "readable_share": 1
+    },
+    {
+     "outlet": "libertaddigital.com",
+     "articles": 6,
+     "readable": 5,
+     "recent": 2,
+     "recent_readable": 1,
+     "failures": {
+      "decode-failed": 1
+     },
+     "share_of_fighter": 0,
+     "readable_share": 0.83
+    },
+    {
+     "outlet": "ca.sports.yahoo.com",
+     "articles": 5,
+     "readable": 5,
+     "recent": 0,
+     "recent_readable": 0,
+     "failures": {},
+     "share_of_fighter": 0,
+     "readable_share": 1
+    },
+    {
+     "outlet": "clarin.com",
+     "articles": 5,
+     "readable": 3,
+     "recent": 0,
+     "recent_readable": 0,
+     "failures": {
+      "short-or-unnamed": 2
+     },
+     "share_of_fighter": 0,
+     "readable_share": 0.6
+    },
+    {
+     "outlet": "eldesmarque.com",
+     "articles": 5,
+     "readable": 2,
+     "recent": 1,
+     "recent_readable": 0,
+     "failures": {
+      "http-403": 3
+     },
+     "share_of_fighter": 0,
+     "readable_share": 0.4
+    },
+    {
+     "outlet": "sportscapemagazine.com",
+     "articles": 5,
+     "readable": 5,
+     "recent": 4,
+     "recent_readable": 4,
+     "failures": {},
+     "share_of_fighter": 0,
+     "readable_share": 1
+    },
+    {
+     "outlet": "lavanguardia.com",
+     "articles": 4,
+     "readable": 3,
+     "recent": 1,
+     "recent_readable": 1,
+     "failures": {
+      "decode-failed": 1
+     },
+     "share_of_fighter": 0,
+     "readable_share": 0.75
+    },
+    {
+     "outlet": "metroecuador.com.ec",
+     "articles": 4,
+     "readable": 4,
+     "recent": 2,
+     "recent_readable": 2,
+     "failures": {},
+     "share_of_fighter": 0,
+     "readable_share": 1
+    },
+    {
+     "outlet": "talksport.com",
+     "articles": 4,
+     "readable": 2,
+     "recent": 2,
+     "recent_readable": 0,
+     "failures": {
+      "no-extract": 1,
+      "decode-failed": 1
+     },
+     "share_of_fighter": 0,
+     "readable_share": 0.5
+    },
+    {
+     "outlet": "uk.sports.yahoo.com",
+     "articles": 4,
+     "readable": 4,
+     "recent": 0,
+     "recent_readable": 0,
+     "failures": {},
+     "share_of_fighter": 0,
+     "readable_share": 1
+    },
+    {
+     "outlet": "actumma.com",
+     "articles": 3,
+     "readable": 3,
+     "recent": 0,
+     "recent_readable": 0,
+     "failures": {},
+     "share_of_fighter": 0,
+     "readable_share": 1
+    },
+    {
+     "outlet": "elconfidencial.com",
+     "articles": 3,
+     "readable": 2,
+     "recent": 0,
+     "recent_readable": 0,
+     "failures": {
+      "decode-failed": 1
+     },
+     "share_of_fighter": 0,
+     "readable_share": 0.67
+    },
+    {
+     "outlet": "elperiodico.com",
+     "articles": 3,
+     "readable": 3,
+     "recent": 1,
+     "recent_readable": 1,
+     "failures": {},
+     "share_of_fighter": 0,
+     "readable_share": 1
+    },
+    {
+     "outlet": "middleeasy.com",
+     "articles": 3,
+     "readable": 3,
+     "recent": 0,
+     "recent_readable": 0,
+     "failures": {},
+     "share_of_fighter": 0,
+     "readable_share": 1
+    },
+    {
+     "outlet": "mmanews.com",
+     "articles": 3,
+     "readable": 0,
+     "recent": 2,
+     "recent_readable": 0,
+     "failures": {
+      "http-403": 3
+     },
+     "share_of_fighter": 0,
+     "readable_share": 0
+    },
+    {
+     "outlet": "sportsnaut.com",
+     "articles": 3,
+     "readable": 1,
+     "recent": 1,
+     "recent_readable": 0,
+     "failures": {
+      "decode-failed": 1,
+      "http-403": 1
+     },
+     "share_of_fighter": 0,
+     "readable_share": 0.33
+    },
+    {
+     "outlet": "thesun.co.uk",
+     "articles": 3,
+     "readable": 2,
+     "recent": 1,
+     "recent_readable": 0,
+     "failures": {
+      "no-extract": 1
+     },
+     "share_of_fighter": 0,
+     "readable_share": 0.67
+    },
+    {
+     "outlet": "usatoday.com",
+     "articles": 3,
+     "readable": 3,
+     "recent": 0,
+     "recent_readable": 0,
+     "failures": {},
+     "share_of_fighter": 0,
+     "readable_share": 1
+    },
+    {
+     "outlet": "(name) Diario de Ibiza",
+     "articles": 2,
+     "readable": 0,
+     "recent": 0,
+     "recent_readable": 0,
+     "failures": {
+      "decode-failed": 2
+     },
+     "share_of_fighter": 0,
+     "readable_share": 0
+    },
+    {
+     "outlet": "101tv.es",
+     "articles": 2,
+     "readable": 2,
+     "recent": 0,
+     "recent_readable": 0,
+     "failures": {},
+     "share_of_fighter": 0,
+     "readable_share": 1
+    },
+    {
+     "outlet": "antena3.com",
+     "articles": 2,
+     "readable": 2,
+     "recent": 1,
+     "recent_readable": 1,
+     "failures": {},
+     "share_of_fighter": 0,
+     "readable_share": 1
+    },
+    {
+     "outlet": "aol.com",
+     "articles": 2,
+     "readable": 2,
+     "recent": 0,
+     "recent_readable": 0,
+     "failures": {},
+     "share_of_fighter": 0,
+     "readable_share": 1
+    },
+    {
+     "outlet": "cbssports.com",
+     "articles": 2,
+     "readable": 2,
+     "recent": 0,
+     "recent_readable": 0,
+     "failures": {},
+     "share_of_fighter": 0,
+     "readable_share": 1
+    },
+    {
+     "outlet": "centraloregondaily.com",
+     "articles": 2,
+     "readable": 2,
+     "recent": 0,
+     "recent_readable": 0,
+     "failures": {},
+     "share_of_fighter": 0,
+     "readable_share": 1
+    },
+    {
+     "outlet": "clarosports.com",
+     "articles": 2,
+     "readable": 2,
+     "recent": 0,
+     "recent_readable": 0,
+     "failures": {},
+     "share_of_fighter": 0,
+     "readable_share": 1
+    },
+    {
+     "outlet": "digitaldeleon.com",
+     "articles": 2,
+     "readable": 2,
+     "recent": 0,
+     "recent_readable": 0,
+     "failures": {},
+     "share_of_fighter": 0,
+     "readable_share": 1
+    },
+    {
+     "outlet": "elcorreo.com",
+     "articles": 2,
+     "readable": 2,
+     "recent": 0,
+     "recent_readable": 0,
+     "failures": {},
+     "share_of_fighter": 0,
+     "readable_share": 1
+    },
+    {
+     "outlet": "en.as.com",
+     "articles": 2,
+     "readable": 2,
+     "recent": 0,
+     "recent_readable": 0,
+     "failures": {},
+     "share_of_fighter": 0,
+     "readable_share": 1
+    },
+    {
+     "outlet": "foxsports.com.au",
+     "articles": 2,
+     "readable": 2,
+     "recent": 0,
+     "recent_readable": 0,
+     "failures": {},
+     "share_of_fighter": 0,
+     "readable_share": 1
+    },
+    {
+     "outlet": "geosuper.tv",
+     "articles": 2,
+     "readable": 1,
+     "recent": 0,
+     "recent_readable": 0,
+     "failures": {
+      "decode-failed": 1
+     },
+     "share_of_fighter": 0,
+     "readable_share": 0.5
+    },
+    {
+     "outlet": "hch.tv",
+     "articles": 2,
+     "readable": 2,
+     "recent": 0,
+     "recent_readable": 0,
+     "failures": {},
+     "share_of_fighter": 0,
+     "readable_share": 1
+    },
+    {
+     "outlet": "hola.com",
+     "articles": 2,
+     "readable": 1,
+     "recent": 0,
+     "recent_readable": 0,
+     "failures": {
+      "short-or-unnamed": 1
+     },
+     "share_of_fighter": 0,
+     "readable_share": 0.5
+    },
+    {
+     "outlet": "independent.co.uk",
+     "articles": 2,
+     "readable": 2,
+     "recent": 0,
+     "recent_readable": 0,
+     "failures": {},
+     "share_of_fighter": 0,
+     "readable_share": 1
+    },
+    {
+     "outlet": "la-lista.com",
+     "articles": 2,
+     "readable": 2,
+     "recent": 0,
+     "recent_readable": 0,
+     "failures": {},
+     "share_of_fighter": 0,
+     "readable_share": 1
+    },
+    {
+     "outlet": "menshealth.com",
+     "articles": 2,
+     "readable": 2,
+     "recent": 1,
+     "recent_readable": 1,
+     "failures": {},
+     "share_of_fighter": 0,
+     "readable_share": 1
+    },
+    {
+     "outlet": "mirror.co.uk",
+     "articles": 2,
+     "readable": 0,
+     "recent": 0,
+     "recent_readable": 0,
+     "failures": {
+      "no-extract": 1,
+      "decode-failed": 1
+     },
+     "share_of_fighter": 0,
+     "readable_share": 0
+    },
+    {
+     "outlet": "mma.es",
+     "articles": 2,
+     "readable": 1,
+     "recent": 1,
+     "recent_readable": 1,
+     "failures": {
+      "short-or-unnamed": 1
+     },
+     "share_of_fighter": 0,
+     "readable_share": 0.5
+    },
+    {
+     "outlet": "mmacrossfire.com",
+     "articles": 2,
+     "readable": 1,
+     "recent": 1,
+     "recent_readable": 1,
+     "failures": {
+      "no-extract": 1
+     },
+     "share_of_fighter": 0,
+     "readable_share": 0.5
+    },
+    {
+     "outlet": "nz.news.yahoo.com",
+     "articles": 2,
+     "readable": 2,
+     "recent": 0,
+     "recent_readable": 0,
+     "failures": {},
+     "share_of_fighter": 0,
+     "readable_share": 1
+    },
+    {
+     "outlet": "radiomitre.cienradios.com",
+     "articles": 2,
+     "readable": 2,
+     "recent": 1,
+     "recent_readable": 1,
+     "failures": {},
+     "share_of_fighter": 0,
+     "readable_share": 1
+    },
+    {
+     "outlet": "relevo.com",
+     "articles": 2,
+     "readable": 2,
+     "recent": 0,
+     "recent_readable": 0,
+     "failures": {},
+     "share_of_fighter": 0,
+     "readable_share": 1
+    },
+    {
+     "outlet": "sportbible.com",
+     "articles": 2,
+     "readable": 1,
+     "recent": 2,
+     "recent_readable": 1,
+     "failures": {
+      "decode-failed": 1
+     },
+     "share_of_fighter": 0,
+     "readable_share": 0.5
+    },
+    {
+     "outlet": "sportskeeda.com",
+     "articles": 2,
+     "readable": 0,
+     "recent": 2,
+     "recent_readable": 0,
+     "failures": {
+      "decode-failed": 1,
+      "http-403": 1
+     },
+     "share_of_fighter": 0,
+     "readable_share": 0
+    },
+    {
+     "outlet": "thebiglead.com",
+     "articles": 2,
+     "readable": 2,
+     "recent": 1,
+     "recent_readable": 1,
+     "failures": {},
+     "share_of_fighter": 0,
+     "readable_share": 1
+    },
+    {
+     "outlet": "us.marca.com",
+     "articles": 2,
+     "readable": 2,
+     "recent": 1,
+     "recent_readable": 1,
+     "failures": {},
+     "share_of_fighter": 0,
+     "readable_share": 1
+    },
+    {
+     "outlet": "youtu.be",
+     "articles": 2,
+     "readable": 0,
+     "recent": 1,
+     "recent_readable": 0,
+     "failures": {
+      "og-description": 1,
+      "no-extract": 1
+     },
+     "share_of_fighter": 0,
+     "readable_share": 0
+    },
+    {
+     "outlet": "(name) Dealroom",
+     "articles": 1,
+     "readable": 0,
+     "recent": 1,
+     "recent_readable": 0,
+     "failures": {
+      "decode-failed": 1
+     },
+     "share_of_fighter": 0,
+     "readable_share": 0
+    },
+    {
+     "outlet": "(name) El Diario Vasco",
+     "articles": 1,
+     "readable": 0,
+     "recent": 0,
+     "recent_readable": 0,
+     "failures": {
+      "decode-failed": 1
+     },
+     "share_of_fighter": 0,
+     "readable_share": 0
+    },
+    {
+     "outlet": "(name) Forbes",
+     "articles": 1,
+     "readable": 0,
+     "recent": 0,
+     "recent_readable": 0,
+     "failures": {
+      "decode-failed": 1
+     },
+     "share_of_fighter": 0,
+     "readable_share": 0
+    },
+    {
+     "outlet": "(name) SportsGrid",
+     "articles": 1,
+     "readable": 0,
+     "recent": 0,
+     "recent_readable": 0,
+     "failures": {
+      "decode-failed": 1
+     },
+     "share_of_fighter": 0,
+     "readable_share": 0
+    },
+    {
+     "outlet": "amp.marca.com",
+     "articles": 1,
+     "readable": 1,
+     "recent": 0,
+     "recent_readable": 0,
+     "failures": {},
+     "share_of_fighter": 0,
+     "readable_share": 1
+    },
+    {
+     "outlet": "au.sports.yahoo.com",
+     "articles": 1,
+     "readable": 1,
+     "recent": 0,
+     "recent_readable": 0,
+     "failures": {},
+     "share_of_fighter": 0,
+     "readable_share": 1
+    },
+    {
+     "outlet": "autobild.es",
+     "articles": 1,
+     "readable": 1,
+     "recent": 1,
+     "recent_readable": 1,
+     "failures": {},
+     "share_of_fighter": 0,
+     "readable_share": 1
+    },
+    {
+     "outlet": "bbc.com",
+     "articles": 1,
+     "readable": 1,
+     "recent": 0,
+     "recent_readable": 0,
+     "failures": {},
+     "share_of_fighter": 0,
+     "readable_share": 1
+    },
+    {
+     "outlet": "betus.com.pa",
+     "articles": 1,
+     "readable": 0,
+     "recent": 0,
+     "recent_readable": 0,
+     "failures": {
+      "http-403": 1
+     },
+     "share_of_fighter": 0,
+     "readable_share": 0
+    },
+    {
+     "outlet": "centredaily.com",
+     "articles": 1,
+     "readable": 0,
+     "recent": 0,
+     "recent_readable": 0,
+     "failures": {
+      "timeout": 1
+     },
+     "share_of_fighter": 0,
+     "readable_share": 0
+    },
+    {
+     "outlet": "diariodeleon.es",
+     "articles": 1,
+     "readable": 0,
+     "recent": 0,
+     "recent_readable": 0,
+     "failures": {
+      "short-or-unnamed": 1
+     },
+     "share_of_fighter": 0,
+     "readable_share": 0
+    },
+    {
+     "outlet": "diarioenpositivo.com",
+     "articles": 1,
+     "readable": 1,
+     "recent": 0,
+     "recent_readable": 0,
+     "failures": {},
+     "share_of_fighter": 0,
+     "readable_share": 1
+    },
+    {
+     "outlet": "divinity.es",
+     "articles": 1,
+     "readable": 1,
+     "recent": 0,
+     "recent_readable": 0,
+     "failures": {},
+     "share_of_fighter": 0,
+     "readable_share": 1
+    },
+    {
+     "outlet": "ecosistemastartup.com",
+     "articles": 1,
+     "readable": 0,
+     "recent": 1,
+     "recent_readable": 0,
+     "failures": {
+      "http-403": 1
+     },
+     "share_of_fighter": 0,
+     "readable_share": 0
+    },
+    {
+     "outlet": "elcomercio.es",
+     "articles": 1,
+     "readable": 1,
+     "recent": 0,
+     "recent_readable": 0,
+     "failures": {},
+     "share_of_fighter": 0,
+     "readable_share": 1
+    },
+    {
+     "outlet": "eleconomista.es",
+     "articles": 1,
+     "readable": 1,
+     "recent": 0,
+     "recent_readable": 0,
+     "failures": {},
+     "share_of_fighter": 0,
+     "readable_share": 1
+    },
+    {
+     "outlet": "elfrente.com.co",
+     "articles": 1,
+     "readable": 1,
+     "recent": 1,
+     "recent_readable": 1,
+     "failures": {},
+     "share_of_fighter": 0,
+     "readable_share": 1
+    },
+    {
+     "outlet": "elhorizonte.mx",
+     "articles": 1,
+     "readable": 1,
+     "recent": 0,
+     "recent_readable": 0,
+     "failures": {},
+     "share_of_fighter": 0,
+     "readable_share": 1
+    },
+    {
+     "outlet": "elisportsnetwork.com",
+     "articles": 1,
+     "readable": 1,
+     "recent": 0,
+     "recent_readable": 0,
+     "failures": {},
+     "share_of_fighter": 0,
+     "readable_share": 1
+    },
+    {
+     "outlet": "elmundo.es",
+     "articles": 1,
+     "readable": 1,
+     "recent": 0,
+     "recent_readable": 0,
+     "failures": {},
+     "share_of_fighter": 0,
+     "readable_share": 1
+    },
+    {
+     "outlet": "elnacional.cat",
+     "articles": 1,
+     "readable": 1,
+     "recent": 0,
+     "recent_readable": 0,
+     "failures": {},
+     "share_of_fighter": 0,
+     "readable_share": 1
+    },
+    {
+     "outlet": "elnuevodia.com",
+     "articles": 1,
+     "readable": 1,
+     "recent": 0,
+     "recent_readable": 0,
+     "failures": {},
+     "share_of_fighter": 0,
+     "readable_share": 1
+    },
+    {
+     "outlet": "elnuevoherald.com",
+     "articles": 1,
+     "readable": 0,
+     "recent": 0,
+     "recent_readable": 0,
+     "failures": {
+      "timeout": 1
+     },
+     "share_of_fighter": 0,
+     "readable_share": 0
+    },
+    {
+     "outlet": "elperiodicodearagon.com",
+     "articles": 1,
+     "readable": 1,
+     "recent": 0,
+     "recent_readable": 0,
+     "failures": {},
+     "share_of_fighter": 0,
+     "readable_share": 1
+    },
+    {
+     "outlet": "elpespunte.es",
+     "articles": 1,
+     "readable": 1,
+     "recent": 0,
+     "recent_readable": 0,
+     "failures": {},
+     "share_of_fighter": 0,
+     "readable_share": 1
+    },
+    {
+     "outlet": "es.fashionnetwork.com",
+     "articles": 1,
+     "readable": 0,
+     "recent": 1,
+     "recent_readable": 0,
+     "failures": {
+      "http-403": 1
+     },
+     "share_of_fighter": 0,
+     "readable_share": 0
+    },
+    {
+     "outlet": "espn.com.ar",
+     "articles": 1,
+     "readable": 0,
+     "recent": 0,
+     "recent_readable": 0,
+     "failures": {
+      "no-extract": 1
+     },
+     "share_of_fighter": 0,
+     "readable_share": 0
+    },
+    {
+     "outlet": "espn.com.pe",
+     "articles": 1,
+     "readable": 0,
+     "recent": 0,
+     "recent_readable": 0,
+     "failures": {
+      "no-extract": 1
+     },
+     "share_of_fighter": 0,
+     "readable_share": 0
+    },
+    {
+     "outlet": "essentiallysports.com",
+     "articles": 1,
+     "readable": 1,
+     "recent": 1,
+     "recent_readable": 1,
+     "failures": {},
+     "share_of_fighter": 0,
+     "readable_share": 1
+    },
+    {
+     "outlet": "expreso.ec",
+     "articles": 1,
+     "readable": 1,
+     "recent": 0,
+     "recent_readable": 0,
+     "failures": {},
+     "share_of_fighter": 0,
+     "readable_share": 1
+    },
+    {
+     "outlet": "extra.ec",
+     "articles": 1,
+     "readable": 1,
+     "recent": 0,
+     "recent_readable": 0,
+     "failures": {},
+     "share_of_fighter": 0,
+     "readable_share": 1
+    },
+    {
+     "outlet": "facebook.com",
+     "articles": 1,
+     "readable": 0,
+     "recent": 1,
+     "recent_readable": 0,
+     "failures": {
+      "http-400": 1
+     },
+     "share_of_fighter": 0,
+     "readable_share": 0
+    },
+    {
+     "outlet": "forbes.es",
+     "articles": 1,
+     "readable": 1,
+     "recent": 1,
+     "recent_readable": 1,
+     "failures": {},
+     "share_of_fighter": 0,
+     "readable_share": 1
+    },
+    {
+     "outlet": "gasteizhoy.com",
+     "articles": 1,
+     "readable": 1,
+     "recent": 1,
+     "recent_readable": 1,
+     "failures": {},
+     "share_of_fighter": 0,
+     "readable_share": 1
+    },
+    {
+     "outlet": "heraldo.es",
+     "articles": 1,
+     "readable": 1,
+     "recent": 0,
+     "recent_readable": 0,
+     "failures": {},
+     "share_of_fighter": 0,
+     "readable_share": 1
+    },
+    {
+     "outlet": "heraldodeleon.es",
+     "articles": 1,
+     "readable": 1,
+     "recent": 0,
+     "recent_readable": 0,
+     "failures": {},
+     "share_of_fighter": 0,
+     "readable_share": 1
+    },
+    {
+     "outlet": "huffingtonpost.es",
+     "articles": 1,
+     "readable": 0,
+     "recent": 1,
+     "recent_readable": 0,
+     "failures": {
+      "http-403": 1
+     },
+     "share_of_fighter": 0,
+     "readable_share": 0
+    },
+    {
+     "outlet": "idahostatesman.com",
+     "articles": 1,
+     "readable": 0,
+     "recent": 0,
+     "recent_readable": 0,
+     "failures": {
+      "timeout": 1
+     },
+     "share_of_fighter": 0,
+     "readable_share": 0
+    },
+    {
+     "outlet": "journal.com.ph",
+     "articles": 1,
+     "readable": 0,
+     "recent": 1,
+     "recent_readable": 0,
+     "failures": {
+      "http-403": 1
+     },
+     "share_of_fighter": 0,
+     "readable_share": 0
+    },
+    {
+     "outlet": "kchcomunicacion.com",
+     "articles": 1,
+     "readable": 1,
+     "recent": 0,
+     "recent_readable": 0,
+     "failures": {},
+     "share_of_fighter": 0,
+     "readable_share": 1
+    },
+    {
+     "outlet": "kfgo.com",
+     "articles": 1,
+     "readable": 1,
+     "recent": 0,
+     "recent_readable": 0,
+     "failures": {},
+     "share_of_fighter": 0,
+     "readable_share": 1
+    },
+    {
+     "outlet": "lanuevacronica.com",
+     "articles": 1,
+     "readable": 1,
+     "recent": 0,
+     "recent_readable": 0,
+     "failures": {},
+     "share_of_fighter": 0,
+     "readable_share": 1
+    },
+    {
+     "outlet": "lasprovincias.es",
+     "articles": 1,
+     "readable": 1,
+     "recent": 0,
+     "recent_readable": 0,
+     "failures": {},
+     "share_of_fighter": 0,
+     "readable_share": 1
+    },
+    {
+     "outlet": "lecturas.com",
+     "articles": 1,
+     "readable": 1,
+     "recent": 0,
+     "recent_readable": 0,
+     "failures": {},
+     "share_of_fighter": 0,
+     "readable_share": 1
+    },
+    {
+     "outlet": "lindyssports.com",
+     "articles": 1,
+     "readable": 0,
+     "recent": 0,
+     "recent_readable": 0,
+     "failures": {
+      "http-403": 1
+     },
+     "share_of_fighter": 0,
+     "readable_share": 0
+    },
+    {
+     "outlet": "lnt.ma",
+     "articles": 1,
+     "readable": 1,
+     "recent": 0,
+     "recent_readable": 0,
+     "failures": {},
+     "share_of_fighter": 0,
+     "readable_share": 1
+    },
+    {
+     "outlet": "lufkindailynews.com",
+     "articles": 1,
+     "readable": 0,
+     "recent": 0,
+     "recent_readable": 0,
+     "failures": {
+      "short-or-unnamed": 1
+     },
+     "share_of_fighter": 0,
+     "readable_share": 0
+    },
+    {
+     "outlet": "neo2.com",
+     "articles": 1,
+     "readable": 1,
+     "recent": 0,
+     "recent_readable": 0,
+     "failures": {},
+     "share_of_fighter": 0,
+     "readable_share": 1
+    },
+    {
+     "outlet": "nostresport.com",
+     "articles": 1,
+     "readable": 1,
+     "recent": 0,
+     "recent_readable": 0,
+     "failures": {},
+     "share_of_fighter": 0,
+     "readable_share": 1
+    },
+    {
+     "outlet": "record.com.mx",
+     "articles": 1,
+     "readable": 1,
+     "recent": 0,
+     "recent_readable": 0,
+     "failures": {},
+     "share_of_fighter": 0,
+     "readable_share": 1
+    },
+    {
+     "outlet": "sgieurope.com",
+     "articles": 1,
+     "readable": 0,
+     "recent": 1,
+     "recent_readable": 0,
+     "failures": {
+      "http-405": 1
+     },
+     "share_of_fighter": 0,
+     "readable_share": 0
+    },
+    {
+     "outlet": "streamlinefeed.co.ke",
+     "articles": 1,
+     "readable": 1,
+     "recent": 0,
+     "recent_readable": 0,
+     "failures": {},
+     "share_of_fighter": 0,
+     "readable_share": 1
+    },
+    {
+     "outlet": "suaragarut.id",
+     "articles": 1,
+     "readable": 0,
+     "recent": 0,
+     "recent_readable": 0,
+     "failures": {
+      "http-520": 1
+     },
+     "share_of_fighter": 0,
+     "readable_share": 0
+    },
+    {
+     "outlet": "superdeporte.es",
+     "articles": 1,
+     "readable": 1,
+     "recent": 0,
+     "recent_readable": 0,
+     "failures": {},
+     "share_of_fighter": 0,
+     "readable_share": 1
+    },
+    {
+     "outlet": "telecinco.es",
+     "articles": 1,
+     "readable": 1,
+     "recent": 0,
+     "recent_readable": 0,
+     "failures": {},
+     "share_of_fighter": 0,
+     "readable_share": 1
+    },
+    {
+     "outlet": "the-sun.com",
+     "articles": 1,
+     "readable": 0,
+     "recent": 0,
+     "recent_readable": 0,
+     "failures": {
+      "no-extract": 1
+     },
+     "share_of_fighter": 0,
+     "readable_share": 0
+    },
+    {
+     "outlet": "thepress.net",
+     "articles": 1,
+     "readable": 1,
+     "recent": 0,
+     "recent_readable": 0,
+     "failures": {},
+     "share_of_fighter": 0,
+     "readable_share": 1
+    },
+    {
+     "outlet": "thescrap.co",
+     "articles": 1,
+     "readable": 1,
+     "recent": 1,
+     "recent_readable": 1,
+     "failures": {},
+     "share_of_fighter": 0,
+     "readable_share": 1
+    },
+    {
+     "outlet": "todoalicante.es",
+     "articles": 1,
+     "readable": 1,
+     "recent": 0,
+     "recent_readable": 0,
+     "failures": {},
+     "share_of_fighter": 0,
+     "readable_share": 1
+    },
+    {
+     "outlet": "twaslnews1.twaslnews.com",
+     "articles": 1,
+     "readable": 0,
+     "recent": 1,
+     "recent_readable": 0,
+     "failures": {
+      "http-403": 1
+     },
+     "share_of_fighter": 0,
+     "readable_share": 0
+    },
+    {
+     "outlet": "tycsports.com",
+     "articles": 1,
+     "readable": 1,
+     "recent": 0,
+     "recent_readable": 0,
+     "failures": {},
+     "share_of_fighter": 0,
+     "readable_share": 1
+    },
+    {
+     "outlet": "uk.fashionnetwork.com",
+     "articles": 1,
+     "readable": 0,
+     "recent": 1,
+     "recent_readable": 0,
+     "failures": {
+      "http-403": 1
+     },
+     "share_of_fighter": 0,
+     "readable_share": 0
+    },
+    {
+     "outlet": "us.fashionnetwork.com",
+     "articles": 1,
+     "readable": 1,
+     "recent": 1,
+     "recent_readable": 1,
+     "failures": {},
+     "share_of_fighter": 0,
+     "readable_share": 1
+    },
+    {
+     "outlet": "vanitatis.elconfidencial.com",
+     "articles": 1,
+     "readable": 1,
+     "recent": 0,
+     "recent_readable": 0,
+     "failures": {},
+     "share_of_fighter": 0,
+     "readable_share": 1
+    },
+    {
+     "outlet": "vavel.com",
+     "articles": 1,
+     "readable": 1,
+     "recent": 0,
+     "recent_readable": 0,
+     "failures": {},
+     "share_of_fighter": 0,
+     "readable_share": 1
+    },
+    {
+     "outlet": "vergemagazine.co.uk",
+     "articles": 1,
+     "readable": 1,
+     "recent": 1,
+     "recent_readable": 1,
+     "failures": {},
+     "share_of_fighter": 0,
+     "readable_share": 1
+    },
+    {
+     "outlet": "wkzo.com",
+     "articles": 1,
+     "readable": 1,
+     "recent": 0,
+     "recent_readable": 0,
+     "failures": {},
+     "share_of_fighter": 0,
+     "readable_share": 1
+    },
+    {
+     "outlet": "wtaq.com",
+     "articles": 1,
+     "readable": 1,
+     "recent": 0,
+     "recent_readable": 0,
+     "failures": {},
+     "share_of_fighter": 0,
+     "readable_share": 1
+    },
+    {
+     "outlet": "ww.fashionnetwork.com",
+     "articles": 1,
+     "readable": 0,
+     "recent": 1,
+     "recent_readable": 0,
+     "failures": {
+      "http-403": 1
+     },
+     "share_of_fighter": 0,
+     "readable_share": 0
+    },
+    {
+     "outlet": "zamin.uz",
+     "articles": 1,
+     "readable": 0,
+     "recent": 1,
+     "recent_readable": 0,
+     "failures": {
+      "http-403": 1
+     },
+     "share_of_fighter": 0,
+     "readable_share": 0
+    }
+   ]
+  }
+ },
+ "not_direct": [
+  {
+   "outlet": "ua.tribuna.com",
+   "articles": 37,
+   "readable": 0,
+   "recent": 7,
+   "recent_readable": 0,
+   "failures": {
+    "http-403": 36,
+    "decode-failed": 1
+   },
+   "share_of_fighter": 0.23,
+   "readable_share": 0,
+   "amosov": 10,
+   "donchenko": 27
+  },
+  {
+   "outlet": "sport.nv.ua",
+   "articles": 17,
+   "readable": 8,
+   "recent": 0,
+   "recent_readable": 0,
+   "failures": {
+    "http-403": 9
+   },
+   "share_of_fighter": 0.11,
+   "readable_share": 0.47,
+   "amosov": 2,
+   "donchenko": 15
+  },
+  {
+   "outlet": "ukr.net",
+   "articles": 15,
+   "readable": 0,
+   "recent": 5,
+   "recent_readable": 0,
+   "failures": {
+    "og-description": 15
+   },
+   "share_of_fighter": 0.09,
+   "readable_share": 0,
+   "amosov": 5,
+   "donchenko": 10
+  },
+  {
+   "outlet": "champion.com.ua",
+   "articles": 12,
+   "readable": 6,
+   "recent": 2,
+   "recent_readable": 0,
+   "failures": {
+    "http-403": 6
+   },
+   "share_of_fighter": 0.07,
+   "readable_share": 0.5,
+   "amosov": 1,
+   "donchenko": 11
+  },
+  {
+   "outlet": "112.ua",
+   "articles": 5,
+   "readable": 5,
+   "recent": 0,
+   "recent_readable": 0,
+   "failures": {},
+   "share_of_fighter": 0.03,
+   "readable_share": 1,
+   "amosov": 0,
+   "donchenko": 5
+  },
+  {
+   "outlet": "sport-express.ua",
+   "articles": 5,
+   "readable": 3,
+   "recent": 0,
+   "recent_readable": 0,
+   "failures": {
+    "decode-failed": 2
+   },
+   "share_of_fighter": 0.03,
+   "readable_share": 0.6,
+   "amosov": 2,
+   "donchenko": 3
+  },
+  {
+   "outlet": "sports.yahoo.com",
+   "articles": 5,
+   "readable": 4,
+   "recent": 0,
+   "recent_readable": 0,
+   "failures": {
+    "og-description": 1
+   },
+   "share_of_fighter": 0.03,
+   "readable_share": 0.8,
+   "amosov": 3,
+   "donchenko": 2
+  },
+  {
+   "outlet": "247sports.com",
+   "articles": 4,
+   "readable": 0,
+   "recent": 2,
+   "recent_readable": 0,
+   "failures": {
+    "http-406": 4
+   },
+   "share_of_fighter": 0.02,
+   "readable_share": 0,
+   "amosov": 4,
+   "donchenko": 0
+  },
+  {
+   "outlet": "boxingnews.com",
+   "articles": 4,
+   "readable": 4,
+   "recent": 0,
+   "recent_readable": 0,
+   "failures": {},
+   "share_of_fighter": 0.02,
+   "readable_share": 1,
+   "amosov": 2,
+   "donchenko": 2
+  },
+  {
+   "outlet": "xsport.ua",
+   "articles": 4,
+   "readable": 4,
+   "recent": 1,
+   "recent_readable": 1,
+   "failures": {},
+   "share_of_fighter": 0.02,
+   "readable_share": 1,
+   "amosov": 1,
+   "donchenko": 3
+  },
+  {
+   "outlet": "mmajunkie.usatoday.com",
+   "articles": 3,
+   "readable": 2,
+   "recent": 0,
+   "recent_readable": 0,
+   "failures": {
+    "no-extract": 1
+   },
+   "share_of_fighter": 0.02,
+   "readable_share": 0.67,
+   "amosov": 0,
+   "donchenko": 3
+  },
+  {
+   "outlet": "mmasucka.com",
+   "articles": 3,
+   "readable": 3,
+   "recent": 2,
+   "recent_readable": 2,
+   "failures": {},
+   "share_of_fighter": 0.02,
+   "readable_share": 1,
+   "amosov": 2,
+   "donchenko": 1
+  },
+  {
+   "outlet": "24tv.ua",
+   "articles": 2,
+   "readable": 2,
+   "recent": 0,
+   "recent_readable": 0,
+   "failures": {},
+   "share_of_fighter": 0.01,
+   "readable_share": 1,
+   "amosov": 2,
+   "donchenko": 0
+  },
+  {
+   "outlet": "football24.ua",
+   "articles": 2,
+   "readable": 2,
+   "recent": 1,
+   "recent_readable": 1,
+   "failures": {},
+   "share_of_fighter": 0.01,
+   "readable_share": 1,
+   "amosov": 1,
+   "donchenko": 1
+  },
+  {
+   "outlet": "glavcom.ua",
+   "articles": 2,
+   "readable": 2,
+   "recent": 0,
+   "recent_readable": 0,
+   "failures": {},
+   "share_of_fighter": 0.01,
+   "readable_share": 1,
+   "amosov": 2,
+   "donchenko": 0
+  },
+  {
+   "outlet": "sport24.ua",
+   "articles": 2,
+   "readable": 2,
+   "recent": 0,
+   "recent_readable": 0,
+   "failures": {},
+   "share_of_fighter": 0.01,
+   "readable_share": 1,
+   "amosov": 0,
+   "donchenko": 2
+  },
+  {
+   "outlet": "ats.io",
+   "articles": 1,
+   "readable": 0,
+   "recent": 0,
+   "recent_readable": 0,
+   "failures": {
+    "http-403": 1
+   },
+   "share_of_fighter": 0.01,
+   "readable_share": 0,
+   "amosov": 0,
+   "donchenko": 1
+  },
+  {
+   "outlet": "bjpenn.com",
+   "articles": 1,
+   "readable": 1,
+   "recent": 0,
+   "recent_readable": 0,
+   "failures": {},
+   "share_of_fighter": 0.01,
+   "readable_share": 1,
+   "amosov": 0,
+   "donchenko": 1
+  },
+  {
+   "outlet": "cagesidepress.com",
+   "articles": 1,
+   "readable": 1,
+   "recent": 0,
+   "recent_readable": 0,
+   "failures": {},
+   "share_of_fighter": 0.01,
+   "readable_share": 1,
+   "amosov": 0,
+   "donchenko": 1
+  },
+  {
+   "outlet": "centraloregondaily.com",
+   "articles": 1,
+   "readable": 1,
+   "recent": 0,
+   "recent_readable": 0,
+   "failures": {},
+   "share_of_fighter": 0.01,
+   "readable_share": 1,
+   "amosov": 0,
+   "donchenko": 1
+  },
+  {
+   "outlet": "clutchpoints.com",
+   "articles": 1,
+   "readable": 1,
+   "recent": 0,
+   "recent_readable": 0,
+   "failures": {},
+   "share_of_fighter": 0.01,
+   "readable_share": 1,
+   "amosov": 0,
+   "donchenko": 1
+  },
+  {
+   "outlet": "dknetwork.draftkings.com",
+   "articles": 1,
+   "readable": 1,
+   "recent": 0,
+   "recent_readable": 0,
+   "failures": {},
+   "share_of_fighter": 0.01,
+   "readable_share": 1,
+   "amosov": 0,
+   "donchenko": 1
+  },
+  {
+   "outlet": "duflu.org.ua",
+   "articles": 1,
+   "readable": 1,
+   "recent": 0,
+   "recent_readable": 0,
+   "failures": {},
+   "share_of_fighter": 0.01,
+   "readable_share": 1,
+   "amosov": 0,
+   "donchenko": 1
+  },
+  {
+   "outlet": "enews.com.ua",
+   "articles": 1,
+   "readable": 1,
+   "recent": 0,
+   "recent_readable": 0,
+   "failures": {},
+   "share_of_fighter": 0.01,
+   "readable_share": 1,
+   "amosov": 1,
+   "donchenko": 0
+  },
+  {
+   "outlet": "espreso.tv",
+   "articles": 1,
+   "readable": 1,
+   "recent": 0,
+   "recent_readable": 0,
+   "failures": {},
+   "share_of_fighter": 0.01,
+   "readable_share": 1,
+   "amosov": 0,
+   "donchenko": 1
+  },
+  {
+   "outlet": "essentiallysports.com",
+   "articles": 1,
+   "readable": 0,
+   "recent": 1,
+   "recent_readable": 0,
+   "failures": {
+    "decode-failed": 1
+   },
+   "share_of_fighter": 0.01,
+   "readable_share": 0,
+   "amosov": 1,
+   "donchenko": 0
+  },
+  {
+   "outlet": "hromadske.ua",
+   "articles": 1,
+   "readable": 1,
+   "recent": 0,
+   "recent_readable": 0,
+   "failures": {},
+   "share_of_fighter": 0.01,
+   "readable_share": 1,
+   "amosov": 0,
+   "donchenko": 1
+  },
+  {
+   "outlet": "jp.ufc.com",
+   "articles": 1,
+   "readable": 1,
+   "recent": 0,
+   "recent_readable": 0,
+   "failures": {},
+   "share_of_fighter": 0.01,
+   "readable_share": 1,
+   "amosov": 0,
+   "donchenko": 1
+  },
+  {
+   "outlet": "kamyanske.com.ua",
+   "articles": 1,
+   "readable": 1,
+   "recent": 0,
+   "recent_readable": 0,
+   "failures": {},
+   "share_of_fighter": 0.01,
+   "readable_share": 1,
+   "amosov": 0,
+   "donchenko": 1
+  },
+  {
+   "outlet": "khon2.com",
+   "articles": 1,
+   "readable": 1,
+   "recent": 0,
+   "recent_readable": 0,
+   "failures": {},
+   "share_of_fighter": 0.01,
+   "readable_share": 1,
+   "amosov": 0,
+   "donchenko": 1
+  },
+  {
+   "outlet": "korosten.today",
+   "articles": 1,
+   "readable": 1,
+   "recent": 0,
+   "recent_readable": 0,
+   "failures": {},
+   "share_of_fighter": 0.01,
+   "readable_share": 1,
+   "amosov": 0,
+   "donchenko": 1
+  },
+  {
+   "outlet": "lindyssports.com",
+   "articles": 1,
+   "readable": 0,
+   "recent": 0,
+   "recent_readable": 0,
+   "failures": {
+    "http-403": 1
+   },
+   "share_of_fighter": 0.01,
+   "readable_share": 0,
+   "amosov": 0,
+   "donchenko": 1
+  },
+  {
+   "outlet": "liontips.com",
+   "articles": 1,
+   "readable": 1,
+   "recent": 0,
+   "recent_readable": 0,
+   "failures": {},
+   "share_of_fighter": 0.01,
+   "readable_share": 1,
+   "amosov": 0,
+   "donchenko": 1
+  },
+  {
+   "outlet": "lowkickmma.com",
+   "articles": 1,
+   "readable": 1,
+   "recent": 0,
+   "recent_readable": 0,
+   "failures": {},
+   "share_of_fighter": 0.01,
+   "readable_share": 1,
+   "amosov": 0,
+   "donchenko": 1
+  },
+  {
+   "outlet": "lufkindailynews.com",
+   "articles": 1,
+   "readable": 1,
+   "recent": 0,
+   "recent_readable": 0,
+   "failures": {},
+   "share_of_fighter": 0.01,
+   "readable_share": 1,
+   "amosov": 0,
+   "donchenko": 1
+  },
+  {
+   "outlet": "middleeasy.com",
+   "articles": 1,
+   "readable": 1,
+   "recent": 0,
+   "recent_readable": 0,
+   "failures": {},
+   "share_of_fighter": 0.01,
+   "readable_share": 1,
+   "amosov": 0,
+   "donchenko": 1
+  },
+  {
+   "outlet": "mmamania.com",
+   "articles": 1,
+   "readable": 1,
+   "recent": 0,
+   "recent_readable": 0,
+   "failures": {},
+   "share_of_fighter": 0.01,
+   "readable_share": 1,
+   "amosov": 0,
+   "donchenko": 1
+  },
+  {
+   "outlet": "my.ua",
+   "articles": 1,
+   "readable": 0,
+   "recent": 0,
+   "recent_readable": 0,
+   "failures": {
+    "decode-failed": 1
+   },
+   "share_of_fighter": 0.01,
+   "readable_share": 0,
+   "amosov": 1,
+   "donchenko": 0
+  },
+  {
+   "outlet": "news.ssbcrack.com",
+   "articles": 1,
+   "readable": 1,
+   "recent": 1,
+   "recent_readable": 1,
+   "failures": {},
+   "share_of_fighter": 0.01,
+   "readable_share": 1,
+   "amosov": 1,
+   "donchenko": 0
+  },
+  {
+   "outlet": "oddschecker.com",
+   "articles": 1,
+   "readable": 0,
+   "recent": 0,
+   "recent_readable": 0,
+   "failures": {
+    "http-403": 1
+   },
+   "share_of_fighter": 0.01,
+   "readable_share": 0,
+   "amosov": 0,
+   "donchenko": 1
+  },
+  {
+   "outlet": "robinhood.com",
+   "articles": 1,
+   "readable": 0,
+   "recent": 0,
+   "recent_readable": 0,
+   "failures": {
+    "og-description": 1
+   },
+   "share_of_fighter": 0.01,
+   "readable_share": 0,
+   "amosov": 0,
+   "donchenko": 1
+  },
+  {
+   "outlet": "sport.novyny.live",
+   "articles": 1,
+   "readable": 1,
+   "recent": 0,
+   "recent_readable": 0,
+   "failures": {},
+   "share_of_fighter": 0.01,
+   "readable_share": 1,
+   "amosov": 0,
+   "donchenko": 1
+  },
+  {
+   "outlet": "sport.rbc.ua",
+   "articles": 1,
+   "readable": 1,
+   "recent": 0,
+   "recent_readable": 0,
+   "failures": {},
+   "share_of_fighter": 0.01,
+   "readable_share": 1,
+   "amosov": 0,
+   "donchenko": 1
+  },
+  {
+   "outlet": "sportanalytic.com",
+   "articles": 1,
+   "readable": 0,
+   "recent": 0,
+   "recent_readable": 0,
+   "failures": {
+    "no-extract": 1
+   },
+   "share_of_fighter": 0.01,
+   "readable_share": 0,
+   "amosov": 0,
+   "donchenko": 1
+  },
+  {
+   "outlet": "sportarena.ua",
+   "articles": 1,
+   "readable": 1,
+   "recent": 0,
+   "recent_readable": 0,
+   "failures": {},
+   "share_of_fighter": 0.01,
+   "readable_share": 1,
+   "amosov": 0,
+   "donchenko": 1
+  },
+  {
+   "outlet": "sportnews.com.ua",
+   "articles": 1,
+   "readable": 1,
+   "recent": 1,
+   "recent_readable": 1,
+   "failures": {},
+   "share_of_fighter": 0.01,
+   "readable_share": 1,
+   "amosov": 1,
+   "donchenko": 0
+  },
+  {
+   "outlet": "sports.betmgm.com",
+   "articles": 1,
+   "readable": 0,
+   "recent": 0,
+   "recent_readable": 0,
+   "failures": {
+    "short-or-unnamed": 1
+   },
+   "share_of_fighter": 0.01,
+   "readable_share": 0,
+   "amosov": 0,
+   "donchenko": 1
+  },
+  {
+   "outlet": "sportscapemagazine.com",
+   "articles": 1,
+   "readable": 0,
+   "recent": 0,
+   "recent_readable": 0,
+   "failures": {
+    "decode-failed": 1
+   },
+   "share_of_fighter": 0.01,
+   "readable_share": 0,
+   "amosov": 1,
+   "donchenko": 0
+  },
+  {
+   "outlet": "thestatszone.com",
+   "articles": 1,
+   "readable": 1,
+   "recent": 0,
+   "recent_readable": 0,
+   "failures": {},
+   "share_of_fighter": 0.01,
+   "readable_share": 1,
+   "amosov": 0,
+   "donchenko": 1
+  },
+  {
+   "outlet": "tonyspicks.com",
+   "articles": 1,
+   "readable": 0,
+   "recent": 0,
+   "recent_readable": 0,
+   "failures": {
+    "http-403": 1
+   },
+   "share_of_fighter": 0.01,
+   "readable_share": 0,
+   "amosov": 0,
+   "donchenko": 1
+  },
+  {
+   "outlet": "ua.korrespondent.net",
+   "articles": 1,
+   "readable": 0,
+   "recent": 0,
+   "recent_readable": 0,
+   "failures": {
+    "og-description": 1
+   },
+   "share_of_fighter": 0.01,
+   "readable_share": 0,
+   "amosov": 0,
+   "donchenko": 1
+  },
+  {
+   "outlet": "uk.sports.yahoo.com",
+   "articles": 1,
+   "readable": 1,
+   "recent": 0,
+   "recent_readable": 0,
+   "failures": {},
+   "share_of_fighter": 0.01,
+   "readable_share": 1,
+   "amosov": 0,
+   "donchenko": 1
+  },
+  {
+   "outlet": "vechirniy.kyiv.ua",
+   "articles": 1,
+   "readable": 0,
+   "recent": 0,
+   "recent_readable": 0,
+   "failures": {
+    "http-403": 1
+   },
+   "share_of_fighter": 0.01,
+   "readable_share": 0,
+   "amosov": 1,
+   "donchenko": 0
+  },
+  {
+   "outlet": "yardbarker.com",
+   "articles": 1,
+   "readable": 1,
+   "recent": 1,
+   "recent_readable": 1,
+   "failures": {},
+   "share_of_fighter": 0.01,
+   "readable_share": 1,
+   "amosov": 1,
+   "donchenko": 0
+  },
+  {
+   "outlet": "zn.ua",
+   "articles": 1,
+   "readable": 1,
+   "recent": 0,
+   "recent_readable": 0,
+   "failures": {},
+   "share_of_fighter": 0.01,
+   "readable_share": 1,
+   "amosov": 0,
+   "donchenko": 1
+  }
+ ],
+ "probe_targets": [
+  {
+   "host": "ua.tribuna.com",
+   "reasons": [
+    "Yaroslav Amosov: 0/10 readable",
+    "Daniil Donchenko: 0/27 readable"
+   ],
+   "article_id": 2280
+  },
+  {
+   "host": "ukr.net",
+   "reasons": [
+    "Yaroslav Amosov: 0/5 readable",
+    "Daniil Donchenko: 0/10 readable"
+   ],
+   "article_id": 2247
+  },
+  {
+   "host": "247sports.com",
+   "reasons": [
+    "Yaroslav Amosov: 0/4 readable"
+   ],
+   "article_id": 2041
+  },
+  {
+   "host": "bloodyelbow.com",
+   "reasons": [
+    "Yaroslav Amosov: 2/4 readable",
+    "Ilia Topuria: 43/108 readable"
+   ],
+   "article_id": 2406
+  },
+  {
+   "host": "sport.ua",
+   "reasons": [
+    "Yaroslav Amosov: 0/3 readable",
+    "Daniil Donchenko: 16/17 readable"
+   ],
+   "article_id": 2244
+  },
+  {
+   "host": "sports.yahoo.com",
+   "reasons": [
+    "Yaroslav Amosov: 2/3 readable"
+   ],
+   "article_id": 2409
+  },
+  {
+   "host": "sport.nv.ua",
+   "reasons": [
+    "Daniil Donchenko: 8/15 readable"
+   ],
+   "article_id": 1724
+  },
+  {
+   "host": "champion.com.ua",
+   "reasons": [
+    "Daniil Donchenko: 6/11 readable"
+   ],
+   "article_id": 1835
+  },
+  {
+   "host": "ufc.com",
+   "reasons": [
+    "Daniil Donchenko: 6/6 readable"
+   ],
+   "article_id": 746
+  },
+  {
+   "host": "112.ua",
+   "reasons": [
+    "Daniil Donchenko: 5/5 readable"
+   ],
+   "article_id": 745
+  },
+  {
+   "host": "mmafighting.com",
+   "reasons": [
+    "Daniil Donchenko: 4/4 readable"
+   ],
+   "article_id": 2383
+  },
+  {
+   "host": "mmajunkie.usatoday.com",
+   "reasons": [
+    "Daniil Donchenko: 2/3 readable"
+   ],
+   "article_id": 2316
+  },
+  {
+   "host": "sport-express.ua",
+   "reasons": [
+    "Daniil Donchenko: 3/3 readable"
+   ],
+   "article_id": 1129
+  },
+  {
+   "host": "xsport.ua",
+   "reasons": [
+    "Daniil Donchenko: 3/3 readable"
+   ],
+   "article_id": 1839
+  },
+  {
+   "host": "eurosport.es",
+   "reasons": [
+    "Ilia Topuria: 0/63 readable"
+   ],
+   "article_id": 2380
+  },
+  {
+   "host": "sherdog.com",
+   "reasons": [
+    "Ilia Topuria: 2/30 readable"
+   ],
+   "article_id": 2408
+  },
+  {
+   "host": "dazn.com",
+   "reasons": [
+    "Ilia Topuria: 1/28 readable"
+   ],
+   "article_id": 2220
+  },
+  {
+   "host": "mmaweekly.com",
+   "reasons": [
+    "Ilia Topuria: 0/15 readable"
+   ],
+   "article_id": 2112
+  },
+  {
+   "host": "sports.ndtv.com",
+   "reasons": [
+    "Ilia Topuria: 0/15 readable"
+   ],
+   "article_id": 2332
+  },
+  {
+   "host": "athlonsports.com",
+   "reasons": [
+    "Ilia Topuria: 0/8 readable"
+   ],
+   "article_id": 2405
+  },
+  {
+   "host": "eldesmarque.com",
+   "reasons": [
+    "Ilia Topuria: 2/5 readable"
+   ],
+   "article_id": 1936
+  },
+  {
+   "host": "mmanews.com",
+   "reasons": [
+    "Ilia Topuria: 0/3 readable"
+   ],
+   "article_id": 2347
+  },
+  {
+   "host": "sportsnaut.com",
+   "reasons": [
+    "Ilia Topuria: 1/3 readable"
+   ],
+   "article_id": 1907
+  }
+ ],
+ "probes": [
+  {
+   "host": "ua.tribuna.com",
+   "reasons": [
+    "Yaroslav Amosov: 0/10 readable",
+    "Daniil Donchenko: 0/27 readable"
+   ],
+   "home": {
+    "status": 403,
+    "cloudflare_check": true,
+    "final_host": "ua.tribuna.com"
+   },
+   "article": {
+    "status": 403,
+    "cloudflare_check": true,
+    "final_host": "ua.tribuna.com"
+   },
+   "announced": [],
+   "tried": [
+    {
+     "address": "https://ua.tribuna.com/rss",
+     "status": 403,
+     "cloudflare_check": true,
+     "is_feed": false
+    },
+    {
+     "address": "https://ua.tribuna.com/feed",
+     "status": 403,
+     "cloudflare_check": true,
+     "is_feed": false
+    },
+    {
+     "address": "https://ua.tribuna.com/rss.xml",
+     "status": 403,
+     "cloudflare_check": true,
+     "is_feed": false
+    },
+    {
+     "address": "https://ua.tribuna.com/feed.xml",
+     "status": 403,
+     "cloudflare_check": true,
+     "is_feed": false
+    },
+    {
+     "address": "https://ua.tribuna.com/rss/all",
+     "status": 403,
+     "cloudflare_check": true,
+     "is_feed": false
+    },
+    {
+     "address": "https://ua.tribuna.com/news/rss",
+     "status": 403,
+     "cloudflare_check": true,
+     "is_feed": false
+    }
+   ],
+   "feed": null
+  },
+  {
+   "host": "ukr.net",
+   "reasons": [
+    "Yaroslav Amosov: 0/5 readable",
+    "Daniil Donchenko: 0/10 readable"
+   ],
+   "home": {
+    "status": 200,
+    "cloudflare_check": false,
+    "final_host": "www.ukr.net"
+   },
+   "article": {
+    "status": 200,
+    "cloudflare_check": false,
+    "final_host": "www.ukr.net"
+   },
+   "announced": [],
+   "tried": [
+    {
+     "address": "https://ukr.net/rss",
+     "status": 404,
+     "cloudflare_check": false,
+     "is_feed": false
+    },
+    {
+     "address": "https://ukr.net/feed",
+     "status": 404,
+     "cloudflare_check": false,
+     "is_feed": false
+    },
+    {
+     "address": "https://ukr.net/rss.xml",
+     "status": 404,
+     "cloudflare_check": false,
+     "is_feed": false
+    },
+    {
+     "address": "https://ukr.net/feed.xml",
+     "status": 404,
+     "cloudflare_check": false,
+     "is_feed": false
+    },
+    {
+     "address": "https://ukr.net/rss/all",
+     "status": 404,
+     "cloudflare_check": false,
+     "is_feed": false
+    },
+    {
+     "address": "https://ukr.net/news/rss",
+     "status": 404,
+     "cloudflare_check": false,
+     "is_feed": false
+    }
+   ],
+   "feed": null
+  },
+  {
+   "host": "247sports.com",
+   "reasons": [
+    "Yaroslav Amosov: 0/4 readable"
+   ],
+   "home": {
+    "status": 200,
+    "cloudflare_check": false,
+    "final_host": "247sports.com"
+   },
+   "article": {
+    "status": 406,
+    "cloudflare_check": false,
+    "final_host": "247sports.com"
+   },
+   "announced": [],
+   "tried": [
+    {
+     "address": "https://247sports.com/rss",
+     "status": 404,
+     "cloudflare_check": false,
+     "is_feed": false
+    },
+    {
+     "address": "https://247sports.com/feed",
+     "status": 200,
+     "cloudflare_check": false,
+     "is_feed": false
+    },
+    {
+     "address": "https://247sports.com/rss.xml",
+     "status": 404,
+     "cloudflare_check": false,
+     "is_feed": false
+    },
+    {
+     "address": "https://247sports.com/feed.xml",
+     "status": 404,
+     "cloudflare_check": false,
+     "is_feed": false
+    },
+    {
+     "address": "https://247sports.com/rss/all",
+     "status": 404,
+     "cloudflare_check": false,
+     "is_feed": false
+    },
+    {
+     "address": "https://247sports.com/news/rss",
+     "status": 404,
+     "cloudflare_check": false,
+     "is_feed": false
+    }
+   ],
+   "feed": null
+  },
+  {
+   "host": "bloodyelbow.com",
+   "reasons": [
+    "Yaroslav Amosov: 2/4 readable",
+    "Ilia Topuria: 43/108 readable"
+   ],
+   "home": {
+    "status": 200,
+    "cloudflare_check": false,
+    "final_host": "bloodyelbow.com"
+   },
+   "article": {
+    "status": 403,
+    "cloudflare_check": true,
+    "final_host": "bloodyelbow.com"
+   },
+   "announced": [],
+   "tried": [
+    {
+     "address": "https://bloodyelbow.com/feed/",
+     "status": 200,
+     "cloudflare_check": false,
+     "is_feed": true
+    }
+   ],
+   "feed": {
+    "address": "https://bloodyelbow.com/feed/",
+    "items": 20,
+    "median_text": 2473,
+    "full_text": true,
+    "naming": {
+     "Daniil Donchenko": 0,
+     "Yaroslav Amosov": 1,
+     "Ilia Topuria": 6
+    },
+    "readable_items": {
+     "Daniil Donchenko": 0,
+     "Yaroslav Amosov": 1,
+     "Ilia Topuria": 6
+    }
+   }
+  },
+  {
+   "host": "sport.ua",
+   "reasons": [
+    "Yaroslav Amosov: 0/3 readable",
+    "Daniil Donchenko: 16/17 readable"
+   ],
+   "home": {
+    "status": 403,
+    "cloudflare_check": true,
+    "final_host": "sport.ua"
+   },
+   "article": {
+    "status": 403,
+    "cloudflare_check": true,
+    "final_host": "sport.ua"
+   },
+   "announced": [],
+   "tried": [
+    {
+     "address": "https://sport.ua/uk/rss/mma",
+     "status": 200,
+     "cloudflare_check": false,
+     "is_feed": true
+    }
+   ],
+   "feed": {
+    "address": "https://sport.ua/uk/rss/mma",
+    "items": 20,
+    "median_text": 73,
+    "full_text": false,
+    "naming": {
+     "Daniil Donchenko": 3,
+     "Yaroslav Amosov": 2,
+     "Ilia Topuria": 0
+    },
+    "readable_items": {
+     "Daniil Donchenko": 0,
+     "Yaroslav Amosov": 0,
+     "Ilia Topuria": 0
+    }
+   }
+  },
+  {
+   "host": "sports.yahoo.com",
+   "reasons": [
+    "Yaroslav Amosov: 2/3 readable"
+   ],
+   "home": {
+    "status": 200,
+    "cloudflare_check": false,
+    "final_host": "sports.yahoo.com"
+   },
+   "article": {
+    "status": 200,
+    "cloudflare_check": false,
+    "final_host": "sports.yahoo.com"
+   },
+   "announced": [
+    "https://sports.yahoo.com/rss/"
+   ],
+   "tried": [
+    {
+     "address": "https://sports.yahoo.com/rss/",
+     "status": 200,
+     "cloudflare_check": false,
+     "is_feed": true
+    }
+   ],
+   "feed": {
+    "address": "https://sports.yahoo.com/rss/",
+    "items": 50,
+    "median_text": 3112,
+    "full_text": true,
+    "naming": {
+     "Daniil Donchenko": 0,
+     "Yaroslav Amosov": 0,
+     "Ilia Topuria": 0
+    },
+    "readable_items": {
+     "Daniil Donchenko": 0,
+     "Yaroslav Amosov": 0,
+     "Ilia Topuria": 0
+    }
+   }
+  },
+  {
+   "host": "sport.nv.ua",
+   "reasons": [
+    "Daniil Donchenko: 8/15 readable"
+   ],
+   "home": {
+    "status": 403,
+    "cloudflare_check": true,
+    "final_host": "sport.nv.ua"
+   },
+   "article": {
+    "status": 403,
+    "cloudflare_check": true,
+    "final_host": "sport.nv.ua"
+   },
+   "announced": [],
+   "tried": [
+    {
+     "address": "https://sport.nv.ua/rss",
+     "status": 404,
+     "cloudflare_check": false,
+     "is_feed": false
+    },
+    {
+     "address": "https://sport.nv.ua/feed",
+     "status": 403,
+     "cloudflare_check": true,
+     "is_feed": false
+    },
+    {
+     "address": "https://sport.nv.ua/rss.xml",
+     "status": 404,
+     "cloudflare_check": false,
+     "is_feed": false
+    },
+    {
+     "address": "https://sport.nv.ua/feed.xml",
+     "status": 404,
+     "cloudflare_check": false,
+     "is_feed": false
+    },
+    {
+     "address": "https://sport.nv.ua/rss/all",
+     "status": 404,
+     "cloudflare_check": false,
+     "is_feed": false
+    },
+    {
+     "address": "https://sport.nv.ua/news/rss",
+     "status": 404,
+     "cloudflare_check": false,
+     "is_feed": false
+    }
+   ],
+   "feed": null
+  },
+  {
+   "host": "champion.com.ua",
+   "reasons": [
+    "Daniil Donchenko: 6/11 readable"
+   ],
+   "home": {
+    "status": 200,
+    "cloudflare_check": false,
+    "final_host": "champion.com.ua"
+   },
+   "article": {
+    "status": 200,
+    "cloudflare_check": false,
+    "final_host": "champion.com.ua"
+   },
+   "announced": [],
+   "tried": [
+    {
+     "address": "https://champion.com.ua/rss",
+     "status": 200,
+     "cloudflare_check": false,
+     "is_feed": true
+    }
+   ],
+   "feed": {
+    "address": "https://champion.com.ua/rss",
+    "items": 14,
+    "median_text": 1210,
+    "full_text": true,
+    "naming": {
+     "Daniil Donchenko": 0,
+     "Yaroslav Amosov": 0,
+     "Ilia Topuria": 0
+    },
+    "readable_items": {
+     "Daniil Donchenko": 0,
+     "Yaroslav Amosov": 0,
+     "Ilia Topuria": 0
+    }
+   }
+  },
+  {
+   "host": "ufc.com",
+   "reasons": [
+    "Daniil Donchenko: 6/6 readable"
+   ],
+   "home": {
+    "status": 200,
+    "cloudflare_check": false,
+    "final_host": "www.ufc.com"
+   },
+   "article": {
+    "status": 200,
+    "cloudflare_check": false,
+    "final_host": "www.ufc.com"
+   },
+   "announced": [],
+   "tried": [
+    {
+     "address": "https://www.ufc.com/rss/news",
+     "status": 200,
+     "cloudflare_check": false,
+     "is_feed": true
+    }
+   ],
+   "feed": {
+    "address": "https://www.ufc.com/rss/news",
+    "items": 30,
+    "median_text": 152,
+    "full_text": false,
+    "naming": {
+     "Daniil Donchenko": 0,
+     "Yaroslav Amosov": 0,
+     "Ilia Topuria": 0
+    },
+    "readable_items": {
+     "Daniil Donchenko": 0,
+     "Yaroslav Amosov": 0,
+     "Ilia Topuria": 0
+    }
+   }
+  },
+  {
+   "host": "112.ua",
+   "reasons": [
+    "Daniil Donchenko: 5/5 readable"
+   ],
+   "home": {
+    "status": 200,
+    "cloudflare_check": false,
+    "final_host": "112.ua"
+   },
+   "article": {
+    "status": 200,
+    "cloudflare_check": false,
+    "final_host": "112.ua"
+   },
+   "announced": [
+    "https://112.ua/rss.xml",
+    "https://112.ua/ru/rss.xml",
+    "https://112.ua/en/rss.xml",
+    "https://112.ua/de/rss.xml",
+    "https://112.ua/pl/rss.xml"
+   ],
+   "tried": [
+    {
+     "address": "https://112.ua/rss.xml",
+     "status": 200,
+     "cloudflare_check": false,
+     "is_feed": true
+    }
+   ],
+   "feed": {
+    "address": "https://112.ua/rss.xml",
+    "items": 50,
+    "median_text": 300,
+    "full_text": false,
+    "naming": {
+     "Daniil Donchenko": 0,
+     "Yaroslav Amosov": 0,
+     "Ilia Topuria": 0
+    },
+    "readable_items": {
+     "Daniil Donchenko": 0,
+     "Yaroslav Amosov": 0,
+     "Ilia Topuria": 0
+    }
+   }
+  },
+  {
+   "host": "mmafighting.com",
+   "reasons": [
+    "Daniil Donchenko: 4/4 readable"
+   ],
+   "home": {
+    "status": 200,
+    "cloudflare_check": false,
+    "final_host": "www.mmafighting.com"
+   },
+   "article": {
+    "status": 200,
+    "cloudflare_check": false,
+    "final_host": "www.mmafighting.com"
+   },
+   "announced": [
+    "https://mmafighting.com/rss/index.xml"
+   ],
+   "tried": [
+    {
+     "address": "https://www.mmafighting.com/rss/index.xml",
+     "status": 200,
+     "cloudflare_check": false,
+     "is_feed": true
+    }
+   ],
+   "feed": {
+    "address": "https://www.mmafighting.com/rss/index.xml",
+    "items": 10,
+    "median_text": 1728,
+    "full_text": true,
+    "naming": {
+     "Daniil Donchenko": 0,
+     "Yaroslav Amosov": 0,
+     "Ilia Topuria": 2
+    },
+    "readable_items": {
+     "Daniil Donchenko": 0,
+     "Yaroslav Amosov": 0,
+     "Ilia Topuria": 2
+    }
+   }
+  },
+  {
+   "host": "mmajunkie.usatoday.com",
+   "reasons": [
+    "Daniil Donchenko: 2/3 readable"
+   ],
+   "home": {
+    "status": 200,
+    "cloudflare_check": false,
+    "final_host": "mmajunkie.usatoday.com"
+   },
+   "article": {
+    "status": 200,
+    "cloudflare_check": false,
+    "final_host": "mmajunkie.usatoday.com"
+   },
+   "announced": [],
+   "tried": [
+    {
+     "address": "https://mmajunkie.usatoday.com/rss",
+     "status": 404,
+     "cloudflare_check": false,
+     "is_feed": false
+    },
+    {
+     "address": "https://mmajunkie.usatoday.com/feed",
+     "status": 404,
+     "cloudflare_check": false,
+     "is_feed": false
+    },
+    {
+     "address": "https://mmajunkie.usatoday.com/rss.xml",
+     "status": 404,
+     "cloudflare_check": false,
+     "is_feed": false
+    },
+    {
+     "address": "https://mmajunkie.usatoday.com/feed.xml",
+     "status": 404,
+     "cloudflare_check": false,
+     "is_feed": false
+    },
+    {
+     "address": "https://mmajunkie.usatoday.com/rss/all",
+     "status": 404,
+     "cloudflare_check": false,
+     "is_feed": false
+    },
+    {
+     "address": "https://mmajunkie.usatoday.com/news/rss",
+     "status": 404,
+     "cloudflare_check": false,
+     "is_feed": false
+    }
+   ],
+   "feed": null
+  },
+  {
+   "host": "sport-express.ua",
+   "reasons": [
+    "Daniil Donchenko: 3/3 readable"
+   ],
+   "home": {
+    "status": 200,
+    "cloudflare_check": false,
+    "final_host": "sport-express.ua"
+   },
+   "article": {
+    "status": 200,
+    "cloudflare_check": false,
+    "final_host": "sport-express.ua"
+   },
+   "announced": [
+    "https://sport-express.ua/rss.xml"
+   ],
+   "tried": [
+    {
+     "address": "https://sport-express.ua/rss.xml",
+     "status": 200,
+     "cloudflare_check": false,
+     "is_feed": true
+    }
+   ],
+   "feed": {
+    "address": "https://sport-express.ua/rss.xml",
+    "items": 40,
+    "median_text": 166,
+    "full_text": false,
+    "naming": {
+     "Daniil Donchenko": 0,
+     "Yaroslav Amosov": 0,
+     "Ilia Topuria": 0
+    },
+    "readable_items": {
+     "Daniil Donchenko": 0,
+     "Yaroslav Amosov": 0,
+     "Ilia Topuria": 0
+    }
+   }
+  },
+  {
+   "host": "xsport.ua",
+   "reasons": [
+    "Daniil Donchenko: 3/3 readable"
+   ],
+   "home": {
+    "status": 200,
+    "cloudflare_check": false,
+    "final_host": "xsport.ua"
+   },
+   "article": {
+    "status": 200,
+    "cloudflare_check": false,
+    "final_host": "xsport.ua"
+   },
+   "announced": [],
+   "tried": [
+    {
+     "address": "https://xsport.ua/rss",
+     "status": 200,
+     "cloudflare_check": false,
+     "is_feed": false
+    },
+    {
+     "address": "https://xsport.ua/feed",
+     "status": 404,
+     "cloudflare_check": false,
+     "is_feed": false
+    },
+    {
+     "address": "https://xsport.ua/rss.xml",
+     "status": 404,
+     "cloudflare_check": false,
+     "is_feed": false
+    },
+    {
+     "address": "https://xsport.ua/feed.xml",
+     "status": 404,
+     "cloudflare_check": false,
+     "is_feed": false
+    },
+    {
+     "address": "https://xsport.ua/rss/all",
+     "status": 200,
+     "cloudflare_check": false,
+     "is_feed": false
+    },
+    {
+     "address": "https://xsport.ua/news/rss",
+     "status": 404,
+     "cloudflare_check": false,
+     "is_feed": false
+    }
+   ],
+   "feed": null
+  },
+  {
+   "host": "eurosport.es",
+   "reasons": [
+    "Ilia Topuria: 0/63 readable"
+   ],
+   "home": {
+    "status": 200,
+    "cloudflare_check": false,
+    "final_host": "www.eurosport.es"
+   },
+   "article": {
+    "status": 200,
+    "cloudflare_check": false,
+    "final_host": "www.eurosport.es"
+   },
+   "announced": [],
+   "tried": [
+    {
+     "address": "https://eurosport.es/rss",
+     "status": 200,
+     "cloudflare_check": false,
+     "is_feed": false
+    },
+    {
+     "address": "https://eurosport.es/feed",
+     "status": 200,
+     "cloudflare_check": false,
+     "is_feed": false
+    },
+    {
+     "address": "https://eurosport.es/rss.xml",
+     "status": 404,
+     "cloudflare_check": false,
+     "is_feed": false
+    },
+    {
+     "address": "https://eurosport.es/feed.xml",
+     "status": 404,
+     "cloudflare_check": false,
+     "is_feed": false
+    },
+    {
+     "address": "https://eurosport.es/rss/all",
+     "status": 200,
+     "cloudflare_check": false,
+     "is_feed": false
+    },
+    {
+     "address": "https://eurosport.es/news/rss",
+     "status": 200,
+     "cloudflare_check": false,
+     "is_feed": false
+    }
+   ],
+   "feed": null
+  },
+  {
+   "host": "sherdog.com",
+   "reasons": [
+    "Ilia Topuria: 2/30 readable"
+   ],
+   "home": {
+    "status": 200,
+    "cloudflare_check": false,
+    "final_host": "www.sherdog.com"
+   },
+   "article": {
+    "status": 200,
+    "cloudflare_check": false,
+    "final_host": "www.sherdog.com"
+   },
+   "announced": [],
+   "tried": [
+    {
+     "address": "https://www.sherdog.com/rss/news.xml",
+     "status": 200,
+     "cloudflare_check": false,
+     "is_feed": true
+    }
+   ],
+   "feed": {
+    "address": "https://www.sherdog.com/rss/news.xml",
+    "items": 50,
+    "median_text": 128,
+    "full_text": false,
+    "naming": {
+     "Daniil Donchenko": 0,
+     "Yaroslav Amosov": 0,
+     "Ilia Topuria": 2
+    },
+    "readable_items": {
+     "Daniil Donchenko": 0,
+     "Yaroslav Amosov": 0,
+     "Ilia Topuria": 0
+    }
+   }
+  },
+  {
+   "host": "dazn.com",
+   "reasons": [
+    "Ilia Topuria: 1/28 readable"
+   ],
+   "home": {
+    "status": 200,
+    "cloudflare_check": false,
+    "final_host": "www.dazn.com"
+   },
+   "article": {
+    "status": 200,
+    "cloudflare_check": false,
+    "final_host": "www.dazn.com"
+   },
+   "announced": [],
+   "tried": [
+    {
+     "address": "https://dazn.com/rss",
+     "status": 200,
+     "cloudflare_check": false,
+     "is_feed": false
+    },
+    {
+     "address": "https://dazn.com/feed",
+     "status": 200,
+     "cloudflare_check": false,
+     "is_feed": false
+    },
+    {
+     "address": "https://dazn.com/rss.xml",
+     "status": 200,
+     "cloudflare_check": false,
+     "is_feed": false
+    },
+    {
+     "address": "https://dazn.com/feed.xml",
+     "status": 200,
+     "cloudflare_check": false,
+     "is_feed": false
+    },
+    {
+     "address": "https://dazn.com/rss/all",
+     "status": 200,
+     "cloudflare_check": false,
+     "is_feed": false
+    },
+    {
+     "address": "https://dazn.com/news/rss",
+     "status": 200,
+     "cloudflare_check": false,
+     "is_feed": false
+    }
+   ],
+   "feed": null
+  },
+  {
+   "host": "mmaweekly.com",
+   "reasons": [
+    "Ilia Topuria: 0/15 readable"
+   ],
+   "home": {
+    "status": 403,
+    "cloudflare_check": false,
+    "final_host": "mmaweekly.com"
+   },
+   "article": {
+    "status": 403,
+    "cloudflare_check": false,
+    "final_host": "www.mmaweekly.com"
+   },
+   "announced": [],
+   "tried": [
+    {
+     "address": "https://mmaweekly.com/feed",
+     "status": 200,
+     "cloudflare_check": false,
+     "is_feed": true
+    }
+   ],
+   "feed": {
+    "address": "https://mmaweekly.com/feed",
+    "items": 50,
+    "median_text": 1492,
+    "full_text": true,
+    "naming": {
+     "Daniil Donchenko": 0,
+     "Yaroslav Amosov": 0,
+     "Ilia Topuria": 2
+    },
+    "readable_items": {
+     "Daniil Donchenko": 0,
+     "Yaroslav Amosov": 0,
+     "Ilia Topuria": 2
+    }
+   }
+  },
+  {
+   "host": "sports.ndtv.com",
+   "reasons": [
+    "Ilia Topuria: 0/15 readable"
+   ],
+   "home": {
+    "status": 200,
+    "cloudflare_check": false,
+    "final_host": "sports.ndtv.com"
+   },
+   "article": {
+    "status": 200,
+    "cloudflare_check": false,
+    "final_host": "sports.ndtv.com"
+   },
+   "announced": [
+    "https://feeds.feedburner.com/ndtvsports-latest"
+   ],
+   "tried": [
+    {
+     "address": "https://feeds.feedburner.com/ndtvsports-latest",
+     "status": 200,
+     "cloudflare_check": false,
+     "is_feed": true
+    }
+   ],
+   "feed": {
+    "address": "https://feeds.feedburner.com/ndtvsports-latest",
+    "items": 20,
+    "median_text": 209,
+    "full_text": false,
+    "naming": {
+     "Daniil Donchenko": 0,
+     "Yaroslav Amosov": 0,
+     "Ilia Topuria": 0
+    },
+    "readable_items": {
+     "Daniil Donchenko": 0,
+     "Yaroslav Amosov": 0,
+     "Ilia Topuria": 0
+    }
+   }
+  },
+  {
+   "host": "athlonsports.com",
+   "reasons": [
+    "Ilia Topuria: 0/8 readable"
+   ],
+   "home": {
+    "status": 403,
+    "cloudflare_check": false,
+    "final_host": "athlonsports.com"
+   },
+   "article": {
+    "status": 403,
+    "cloudflare_check": false,
+    "final_host": "athlonsports.com"
+   },
+   "announced": [],
+   "tried": [
+    {
+     "address": "https://athlonsports.com/rss",
+     "status": 200,
+     "cloudflare_check": false,
+     "is_feed": true
+    }
+   ],
+   "feed": {
+    "address": "https://athlonsports.com/rss",
+    "items": 50,
+    "median_text": 3070,
+    "full_text": true,
+    "naming": {
+     "Daniil Donchenko": 0,
+     "Yaroslav Amosov": 0,
+     "Ilia Topuria": 1
+    },
+    "readable_items": {
+     "Daniil Donchenko": 0,
+     "Yaroslav Amosov": 0,
+     "Ilia Topuria": 1
+    }
+   }
+  },
+  {
+   "host": "eldesmarque.com",
+   "reasons": [
+    "Ilia Topuria: 2/5 readable"
+   ],
+   "home": {
+    "status": 200,
+    "cloudflare_check": false,
+    "final_host": "www.eldesmarque.com"
+   },
+   "article": {
+    "status": 200,
+    "cloudflare_check": false,
+    "final_host": "www.eldesmarque.com"
+   },
+   "announced": [
+    "https://www.eldesmarque.com/rss.xml"
+   ],
+   "tried": [
+    {
+     "address": "https://www.eldesmarque.com/rss.xml",
+     "status": 200,
+     "cloudflare_check": false,
+     "is_feed": true
+    }
+   ],
+   "feed": {
+    "address": "https://www.eldesmarque.com/rss.xml",
+    "items": 30,
+    "median_text": 156,
+    "full_text": false,
+    "naming": {
+     "Daniil Donchenko": 0,
+     "Yaroslav Amosov": 0,
+     "Ilia Topuria": 0
+    },
+    "readable_items": {
+     "Daniil Donchenko": 0,
+     "Yaroslav Amosov": 0,
+     "Ilia Topuria": 0
+    }
+   }
+  },
+  {
+   "host": "mmanews.com",
+   "reasons": [
+    "Ilia Topuria: 0/3 readable"
+   ],
+   "home": {
+    "status": 403,
+    "cloudflare_check": false,
+    "final_host": "www.mmanews.com"
+   },
+   "article": {
+    "status": 403,
+    "cloudflare_check": false,
+    "final_host": "www.mmanews.com"
+   },
+   "announced": [],
+   "tried": [
+    {
+     "address": "https://mmanews.com/rss",
+     "status": 404,
+     "cloudflare_check": false,
+     "is_feed": false
+    },
+    {
+     "address": "https://mmanews.com/feed",
+     "status": 200,
+     "cloudflare_check": false,
+     "is_feed": true
+    }
+   ],
+   "feed": {
+    "address": "https://mmanews.com/feed",
+    "items": 50,
+    "median_text": 155,
+    "full_text": false,
+    "naming": {
+     "Daniil Donchenko": 0,
+     "Yaroslav Amosov": 0,
+     "Ilia Topuria": 2
+    },
+    "readable_items": {
+     "Daniil Donchenko": 0,
+     "Yaroslav Amosov": 0,
+     "Ilia Topuria": 0
+    }
+   }
+  },
+  {
+   "host": "sportsnaut.com",
+   "reasons": [
+    "Ilia Topuria: 1/3 readable"
+   ],
+   "home": {
+    "status": 200,
+    "cloudflare_check": false,
+    "final_host": "sportsnaut.com"
+   },
+   "article": {
+    "status": 200,
+    "cloudflare_check": false,
+    "final_host": "sportsnaut.com"
+   },
+   "announced": [
+    "https://sportsnaut.com/feed"
+   ],
+   "tried": [
+    {
+     "address": "https://sportsnaut.com/feed",
+     "status": 200,
+     "cloudflare_check": false,
+     "is_feed": true
+    }
+   ],
+   "feed": {
+    "address": "https://sportsnaut.com/feed",
+    "items": 25,
+    "median_text": 3420,
+    "full_text": true,
+    "naming": {
+     "Daniil Donchenko": 0,
+     "Yaroslav Amosov": 0,
+     "Ilia Topuria": 0
+    },
+    "readable_items": {
+     "Daniil Donchenko": 0,
+     "Yaroslav Amosov": 0,
+     "Ilia Topuria": 0
+    }
+   }
+  }
+ ],
+ "reread": [
+  {
+   "host": "ukr.net",
+   "article_id": 2247,
+   "subject": "Yaroslav Amosov",
+   "via": "og-description",
+   "chars": 148,
+   "readable": false
+  },
+  {
+   "host": "sports.yahoo.com",
+   "article_id": 2409,
+   "subject": "Ilia Topuria",
+   "via": "paragraphs",
+   "chars": 2231,
+   "readable": true
+  },
+  {
+   "host": "champion.com.ua",
+   "article_id": 1835,
+   "subject": "Daniil Donchenko",
+   "via": "article-tag",
+   "chars": 961,
+   "readable": true
+  },
+  {
+   "host": "ufc.com",
+   "article_id": 746,
+   "subject": "Daniil Donchenko",
+   "via": "paragraphs",
+   "chars": 2375,
+   "readable": true
+  },
+  {
+   "host": "112.ua",
+   "article_id": 745,
+   "subject": "Daniil Donchenko",
+   "via": "article-tag",
+   "chars": 780,
+   "readable": true
+  },
+  {
+   "host": "mmafighting.com",
+   "article_id": 2383,
+   "subject": "Ilia Topuria",
+   "via": "json-ld",
+   "chars": 5400,
+   "readable": true
+  },
+  {
+   "host": "mmajunkie.usatoday.com",
+   "article_id": 2316,
+   "subject": "Ilia Topuria",
+   "via": "article-tag",
+   "chars": 2278,
+   "readable": true
+  },
+  {
+   "host": "sport-express.ua",
+   "article_id": 1129,
+   "subject": "Daniil Donchenko",
+   "via": "json-ld",
+   "chars": 2570,
+   "readable": true
+  },
+  {
+   "host": "xsport.ua",
+   "article_id": 1839,
+   "subject": "Daniil Donchenko",
+   "via": "article-tag",
+   "chars": 1524,
+   "readable": true
+  },
+  {
+   "host": "eurosport.es",
+   "article_id": 2380,
+   "subject": "Ilia Topuria",
+   "via": "no-extract",
+   "chars": 0,
+   "readable": false
+  },
+  {
+   "host": "sherdog.com",
+   "article_id": 2408,
+   "subject": "Ilia Topuria",
+   "via": "og-description",
+   "chars": 130,
+   "readable": false
+  },
+  {
+   "host": "dazn.com",
+   "article_id": 2220,
+   "subject": "Ilia Topuria",
+   "via": "json-ld",
+   "chars": 3181,
+   "readable": true
+  },
+  {
+   "host": "sports.ndtv.com",
+   "article_id": 2332,
+   "subject": "Ilia Topuria",
+   "via": "json-ld",
+   "chars": 2642,
+   "readable": true
+  },
+  {
+   "host": "eldesmarque.com",
+   "article_id": 1936,
+   "subject": "Ilia Topuria",
+   "via": "json-ld",
+   "chars": 2055,
+   "readable": true
+  },
+  {
+   "host": "sportsnaut.com",
+   "article_id": 1907,
+   "subject": "Ilia Topuria",
+   "via": "article-tag",
+   "chars": 2658,
+   "readable": true
+  }
+ ],
+ "copies": {
+  "Yaroslav Amosov": {
+   "articles": 58,
+   "unreadable": 35,
+   "slug": 0,
+   "story": 20,
+   "headline": 0,
+   "nearby": 7,
+   "none": 8,
+   "by_outlet": {
+    "sherdog.com": {
+     "unreadable": 1,
+     "slug": 0,
+     "story": 1,
+     "headline": 0,
+     "nearby": 0,
+     "none": 0
+    },
+    "bloodyelbow.com": {
+     "unreadable": 2,
+     "slug": 0,
+     "story": 2,
+     "headline": 0,
+     "nearby": 0,
+     "none": 0
+    },
+    "247sports.com": {
+     "unreadable": 4,
+     "slug": 0,
+     "story": 0,
+     "headline": 0,
+     "nearby": 2,
+     "none": 2
+    },
+    "ua.tribuna.com": {
+     "unreadable": 10,
+     "slug": 0,
+     "story": 3,
+     "headline": 0,
+     "nearby": 3,
+     "none": 4
+    },
+    "sports.yahoo.com": {
+     "unreadable": 1,
+     "slug": 0,
+     "story": 0,
+     "headline": 0,
+     "nearby": 0,
+     "none": 1
+    },
+    "vechirniy.kyiv.ua": {
+     "unreadable": 1,
+     "slug": 0,
+     "story": 0,
+     "headline": 0,
+     "nearby": 0,
+     "none": 1
+    },
+    "ukr.net": {
+     "unreadable": 5,
+     "slug": 0,
+     "story": 5,
+     "headline": 0,
+     "nearby": 0,
+     "none": 0
+    },
+    "my.ua": {
+     "unreadable": 1,
+     "slug": 0,
+     "story": 1,
+     "headline": 0,
+     "nearby": 0,
+     "none": 0
+    },
+    "sportscapemagazine.com": {
+     "unreadable": 1,
+     "slug": 0,
+     "story": 1,
+     "headline": 0,
+     "nearby": 0,
+     "none": 0
+    },
+    "sport-express.ua": {
+     "unreadable": 2,
+     "slug": 0,
+     "story": 0,
+     "headline": 0,
+     "nearby": 2,
+     "none": 0
+    },
+    "sport.nv.ua": {
+     "unreadable": 2,
+     "slug": 0,
+     "story": 2,
+     "headline": 0,
+     "nearby": 0,
+     "none": 0
+    },
+    "champion.com.ua": {
+     "unreadable": 1,
+     "slug": 0,
+     "story": 1,
+     "headline": 0,
+     "nearby": 0,
+     "none": 0
+    },
+    "sport.ua": {
+     "unreadable": 3,
+     "slug": 0,
+     "story": 3,
+     "headline": 0,
+     "nearby": 0,
+     "none": 0
+    },
+    "essentiallysports.com": {
+     "unreadable": 1,
+     "slug": 0,
+     "story": 1,
+     "headline": 0,
+     "nearby": 0,
+     "none": 0
+    }
+   },
+   "same_story_share": 0.57,
+   "by_story": {
+    "stories": 19,
+    "readable": 9,
+    "readable_share": 0.47
+   },
+   "ceiling_without_checked_outlets": {
+    "articles": 58,
+    "reachable": 43,
+    "share": 0.74,
+    "stories": 19,
+    "reachable_stories": 15,
+    "story_share": 0.79
+   }
+  },
+  "Daniil Donchenko": {
+   "articles": 144,
+   "unreadable": 60,
+   "slug": 0,
+   "story": 30,
+   "headline": 2,
+   "nearby": 25,
+   "none": 3,
+   "by_outlet": {
+    "ua.korrespondent.net": {
+     "unreadable": 1,
+     "slug": 0,
+     "story": 1,
+     "headline": 0,
+     "nearby": 0,
+     "none": 0
+    },
+    "ukr.net": {
+     "unreadable": 10,
+     "slug": 0,
+     "story": 6,
+     "headline": 0,
+     "nearby": 4,
+     "none": 0
+    },
+    "sport.nv.ua": {
+     "unreadable": 7,
+     "slug": 0,
+     "story": 2,
+     "headline": 0,
+     "nearby": 2,
+     "none": 3
+    },
+    "ua.tribuna.com": {
+     "unreadable": 27,
+     "slug": 0,
+     "story": 13,
+     "headline": 0,
+     "nearby": 14,
+     "none": 0
+    },
+    "tonyspicks.com": {
+     "unreadable": 1,
+     "slug": 0,
+     "story": 0,
+     "headline": 1,
+     "nearby": 0,
+     "none": 0
+    },
+    "ats.io": {
+     "unreadable": 1,
+     "slug": 0,
+     "story": 0,
+     "headline": 1,
+     "nearby": 0,
+     "none": 0
+    },
+    "sports.betmgm.com": {
+     "unreadable": 1,
+     "slug": 0,
+     "story": 1,
+     "headline": 0,
+     "nearby": 0,
+     "none": 0
+    },
+    "lindyssports.com": {
+     "unreadable": 1,
+     "slug": 0,
+     "story": 1,
+     "headline": 0,
+     "nearby": 0,
+     "none": 0
+    },
+    "oddschecker.com": {
+     "unreadable": 1,
+     "slug": 0,
+     "story": 1,
+     "headline": 0,
+     "nearby": 0,
+     "none": 0
+    },
+    "robinhood.com": {
+     "unreadable": 1,
+     "slug": 0,
+     "story": 1,
+     "headline": 0,
+     "nearby": 0,
+     "none": 0
+    },
+    "mmajunkie.usatoday.com": {
+     "unreadable": 1,
+     "slug": 0,
+     "story": 1,
+     "headline": 0,
+     "nearby": 0,
+     "none": 0
+    },
+    "sportanalytic.com": {
+     "unreadable": 1,
+     "slug": 0,
+     "story": 1,
+     "headline": 0,
+     "nearby": 0,
+     "none": 0
+    },
+    "sherdog.com": {
+     "unreadable": 1,
+     "slug": 0,
+     "story": 1,
+     "headline": 0,
+     "nearby": 0,
+     "none": 0
+    },
+    "champion.com.ua": {
+     "unreadable": 5,
+     "slug": 0,
+     "story": 1,
+     "headline": 0,
+     "nearby": 4,
+     "none": 0
+    },
+    "sport.ua": {
+     "unreadable": 1,
+     "slug": 0,
+     "story": 0,
+     "headline": 0,
+     "nearby": 1,
+     "none": 0
+    }
+   },
+   "same_story_share": 0.53,
+   "by_story": {
+    "stories": 44,
+    "readable": 28,
+    "readable_share": 0.64
+   },
+   "ceiling_without_checked_outlets": {
+    "articles": 144,
+    "reachable": 85,
+    "share": 0.59,
+    "stories": 44,
+    "reachable_stories": 27,
+    "story_share": 0.61
+   }
+  },
+  "Ilia Topuria": {
+   "articles": 1594,
+   "unreadable": 350,
+   "slug": 5,
+   "story": 243,
+   "headline": 13,
+   "nearby": 89,
+   "none": 0,
+   "by_outlet": {
+    "sherdog.com": {
+     "unreadable": 28,
+     "slug": 2,
+     "story": 23,
+     "headline": 1,
+     "nearby": 2,
+     "none": 0
+    },
+    "eurosport.es": {
+     "unreadable": 63,
+     "slug": 0,
+     "story": 38,
+     "headline": 2,
+     "nearby": 23,
+     "none": 0
+    },
+    "as.com": {
+     "unreadable": 6,
+     "slug": 0,
+     "story": 3,
+     "headline": 0,
+     "nearby": 3,
+     "none": 0
+    },
+    "hola.com": {
+     "unreadable": 1,
+     "slug": 0,
+     "story": 0,
+     "headline": 0,
+     "nearby": 1,
+     "none": 0
+    },
+    "diariodeleon.es": {
+     "unreadable": 1,
+     "slug": 0,
+     "story": 0,
+     "headline": 0,
+     "nearby": 1,
+     "none": 0
+    },
+    "mundodeportivo.com": {
+     "unreadable": 7,
+     "slug": 0,
+     "story": 4,
+     "headline": 0,
+     "nearby": 3,
+     "none": 0
+    },
+    "sports.yahoo.com": {
+     "unreadable": 10,
+     "slug": 0,
+     "story": 6,
+     "headline": 0,
+     "nearby": 4,
+     "none": 0
+    },
+    "athlonsports.com": {
+     "unreadable": 8,
+     "slug": 0,
+     "story": 6,
+     "headline": 0,
+     "nearby": 2,
+     "none": 0
+    },
+    "bloodyelbow.com": {
+     "unreadable": 65,
+     "slug": 3,
+     "story": 49,
+     "headline": 2,
+     "nearby": 11,
+     "none": 0
+    },
+    "boxingnews.com": {
+     "unreadable": 4,
+     "slug": 0,
+     "story": 4,
+     "headline": 0,
+     "nearby": 0,
+     "none": 0
+    },
+    "dazn.com": {
+     "unreadable": 27,
+     "slug": 0,
+     "story": 19,
+     "headline": 1,
+     "nearby": 7,
+     "none": 0
+    },
+    "mma.es": {
+     "unreadable": 1,
+     "slug": 0,
+     "story": 0,
+     "headline": 0,
+     "nearby": 1,
+     "none": 0
+    },
+    "sport.es": {
+     "unreadable": 7,
+     "slug": 0,
+     "story": 4,
+     "headline": 1,
+     "nearby": 2,
+     "none": 0
+    },
+    "clarin.com": {
+     "unreadable": 2,
+     "slug": 0,
+     "story": 2,
+     "headline": 0,
+     "nearby": 0,
+     "none": 0
+    },
+    "betus.com.pa": {
+     "unreadable": 1,
+     "slug": 0,
+     "story": 0,
+     "headline": 0,
+     "nearby": 1,
+     "none": 0
+    },
+    "youtu.be": {
+     "unreadable": 2,
+     "slug": 0,
+     "story": 1,
+     "headline": 0,
+     "nearby": 1,
+     "none": 0
+    },
+    "lufkindailynews.com": {
+     "unreadable": 1,
+     "slug": 0,
+     "story": 0,
+     "headline": 0,
+     "nearby": 1,
+     "none": 0
+    },
+    "mmaweekly.com": {
+     "unreadable": 15,
+     "slug": 0,
+     "story": 13,
+     "headline": 0,
+     "nearby": 2,
+     "none": 0
+    },
+    "espn.com.ar": {
+     "unreadable": 1,
+     "slug": 0,
+     "story": 1,
+     "headline": 0,
+     "nearby": 0,
+     "none": 0
+    },
+    "espn.com.pe": {
+     "unreadable": 1,
+     "slug": 0,
+     "story": 1,
+     "headline": 0,
+     "nearby": 0,
+     "none": 0
+    },
+    "mmanews.com": {
+     "unreadable": 3,
+     "slug": 0,
+     "story": 2,
+     "headline": 0,
+     "nearby": 1,
+     "none": 0
+    },
+    "mirror.co.uk": {
+     "unreadable": 2,
+     "slug": 0,
+     "story": 1,
+     "headline": 0,
+     "nearby": 1,
+     "none": 0
+    },
+    "eldesmarque.com": {
+     "unreadable": 3,
+     "slug": 0,
+     "story": 2,
+     "headline": 0,
+     "nearby": 1,
+     "none": 0
+    },
+    "sports.ndtv.com": {
+     "unreadable": 15,
+     "slug": 0,
+     "story": 12,
+     "headline": 0,
+     "nearby": 3,
+     "none": 0
+    },
+    "elnuevoherald.com": {
+     "unreadable": 1,
+     "slug": 0,
+     "story": 1,
+     "headline": 0,
+     "nearby": 0,
+     "none": 0
+    },
+    "mmacrossfire.com": {
+     "unreadable": 1,
+     "slug": 0,
+     "story": 1,
+     "headline": 0,
+     "nearby": 0,
+     "none": 0
+    },
+    "lindyssports.com": {
+     "unreadable": 1,
+     "slug": 0,
+     "story": 1,
+     "headline": 0,
+     "nearby": 0,
+     "none": 0
+    },
+    "idahostatesman.com": {
+     "unreadable": 1,
+     "slug": 0,
+     "story": 0,
+     "headline": 0,
+     "nearby": 1,
+     "none": 0
+    },
+    "heavy.com": {
+     "unreadable": 1,
+     "slug": 0,
+     "story": 1,
+     "headline": 0,
+     "nearby": 0,
+     "none": 0
+    },
+    "mmasucka.com": {
+     "unreadable": 5,
+     "slug": 0,
+     "story": 2,
+     "headline": 3,
+     "nearby": 0,
+     "none": 0
+    },
+    "(name) SportsGrid": {
+     "unreadable": 1,
+     "slug": 0,
+     "story": 1,
+     "headline": 0,
+     "nearby": 0,
+     "none": 0
+    },
+    "marca.com": {
+     "unreadable": 4,
+     "slug": 0,
+     "story": 3,
+     "headline": 1,
+     "nearby": 0,
+     "none": 0
+    },
+    "mmajunkie.usatoday.com": {
+     "unreadable": 5,
+     "slug": 0,
+     "story": 4,
+     "headline": 0,
+     "nearby": 1,
+     "none": 0
+    },
+    "20minutos.es": {
+     "unreadable": 8,
+     "slug": 0,
+     "story": 7,
+     "headline": 0,
+     "nearby": 1,
+     "none": 0
+    },
+    "mmamania.com": {
+     "unreadable": 2,
+     "slug": 0,
+     "story": 2,
+     "headline": 0,
+     "nearby": 0,
+     "none": 0
+    },
+    "suaragarut.id": {
+     "unreadable": 1,
+     "slug": 0,
+     "story": 1,
+     "headline": 0,
+     "nearby": 0,
+     "none": 0
+    },
+    "centredaily.com": {
+     "unreadable": 1,
+     "slug": 0,
+     "story": 0,
+     "headline": 0,
+     "nearby": 1,
+     "none": 0
+    },
+    "(name) El Diario Vasco": {
+     "unreadable": 1,
+     "slug": 0,
+     "story": 0,
+     "headline": 0,
+     "nearby": 1,
+     "none": 0
+    },
+    "elespanol.com": {
+     "unreadable": 1,
+     "slug": 0,
+     "story": 1,
+     "headline": 0,
+     "nearby": 0,
+     "none": 0
+    },
+    "bjpenn.com": {
+     "unreadable": 1,
+     "slug": 0,
+     "story": 1,
+     "headline": 0,
+     "nearby": 0,
+     "none": 0
+    },
+    "(name) Diario de Ibiza": {
+     "unreadable": 2,
+     "slug": 0,
+     "story": 0,
+     "headline": 0,
+     "nearby": 2,
+     "none": 0
+    },
+    "nyfights.com": {
+     "unreadable": 1,
+     "slug": 0,
+     "story": 1,
+     "headline": 0,
+     "nearby": 0,
+     "none": 0
+    },
+    "abc.es": {
+     "unreadable": 3,
+     "slug": 0,
+     "story": 0,
+     "headline": 0,
+     "nearby": 3,
+     "none": 0
+    },
+    "geosuper.tv": {
+     "unreadable": 1,
+     "slug": 0,
+     "story": 1,
+     "headline": 0,
+     "nearby": 0,
+     "none": 0
+    },
+    "infobae.com": {
+     "unreadable": 4,
+     "slug": 0,
+     "story": 3,
+     "headline": 0,
+     "nearby": 1,
+     "none": 0
+    },
+    "lavanguardia.com": {
+     "unreadable": 1,
+     "slug": 0,
+     "story": 1,
+     "headline": 0,
+     "nearby": 0,
+     "none": 0
+    },
+    "mmafighting.com": {
+     "unreadable": 2,
+     "slug": 0,
+     "story": 1,
+     "headline": 1,
+     "nearby": 0,
+     "none": 0
+    },
+    "eldebate.com": {
+     "unreadable": 1,
+     "slug": 0,
+     "story": 0,
+     "headline": 0,
+     "nearby": 1,
+     "none": 0
+    },
+    "(name) Forbes": {
+     "unreadable": 1,
+     "slug": 0,
+     "story": 0,
+     "headline": 1,
+     "nearby": 0,
+     "none": 0
+    },
+    "sportsnaut.com": {
+     "unreadable": 2,
+     "slug": 0,
+     "story": 1,
+     "headline": 0,
+     "nearby": 1,
+     "none": 0
+    },
+    "elconfidencial.com": {
+     "unreadable": 1,
+     "slug": 0,
+     "story": 0,
+     "headline": 0,
+     "nearby": 1,
+     "none": 0
+    },
+    "the-sun.com": {
+     "unreadable": 1,
+     "slug": 0,
+     "story": 1,
+     "headline": 0,
+     "nearby": 0,
+     "none": 0
+    },
+    "talksport.com": {
+     "unreadable": 2,
+     "slug": 0,
+     "story": 1,
+     "headline": 0,
+     "nearby": 1,
+     "none": 0
+    },
+    "lowkickmma.com": {
+     "unreadable": 1,
+     "slug": 0,
+     "story": 0,
+     "headline": 0,
+     "nearby": 1,
+     "none": 0
+    },
+    "journal.com.ph": {
+     "unreadable": 1,
+     "slug": 0,
+     "story": 1,
+     "headline": 0,
+     "nearby": 0,
+     "none": 0
+    },
+    "thesun.co.uk": {
+     "unreadable": 1,
+     "slug": 0,
+     "story": 1,
+     "headline": 0,
+     "nearby": 0,
+     "none": 0
+    },
+    "facebook.com": {
+     "unreadable": 1,
+     "slug": 0,
+     "story": 0,
+     "headline": 0,
+     "nearby": 1,
+     "none": 0
+    },
+    "mundiario.com": {
+     "unreadable": 1,
+     "slug": 0,
+     "story": 1,
+     "headline": 0,
+     "nearby": 0,
+     "none": 0
+    },
+    "uk.fashionnetwork.com": {
+     "unreadable": 1,
+     "slug": 0,
+     "story": 1,
+     "headline": 0,
+     "nearby": 0,
+     "none": 0
+    },
+    "ww.fashionnetwork.com": {
+     "unreadable": 1,
+     "slug": 0,
+     "story": 1,
+     "headline": 0,
+     "nearby": 0,
+     "none": 0
+    },
+    "sgieurope.com": {
+     "unreadable": 1,
+     "slug": 0,
+     "story": 1,
+     "headline": 0,
+     "nearby": 0,
+     "none": 0
+    },
+    "es.fashionnetwork.com": {
+     "unreadable": 1,
+     "slug": 0,
+     "story": 1,
+     "headline": 0,
+     "nearby": 0,
+     "none": 0
+    },
+    "(name) Dealroom": {
+     "unreadable": 1,
+     "slug": 0,
+     "story": 1,
+     "headline": 0,
+     "nearby": 0,
+     "none": 0
+    },
+    "ecosistemastartup.com": {
+     "unreadable": 1,
+     "slug": 0,
+     "story": 1,
+     "headline": 0,
+     "nearby": 0,
+     "none": 0
+    },
+    "sportbible.com": {
+     "unreadable": 1,
+     "slug": 0,
+     "story": 1,
+     "headline": 0,
+     "nearby": 0,
+     "none": 0
+    },
+    "sportskeeda.com": {
+     "unreadable": 2,
+     "slug": 0,
+     "story": 1,
+     "headline": 0,
+     "nearby": 1,
+     "none": 0
+    },
+    "twaslnews1.twaslnews.com": {
+     "unreadable": 1,
+     "slug": 0,
+     "story": 1,
+     "headline": 0,
+     "nearby": 0,
+     "none": 0
+    },
+    "zamin.uz": {
+     "unreadable": 1,
+     "slug": 0,
+     "story": 1,
+     "headline": 0,
+     "nearby": 0,
+     "none": 0
+    },
+    "libertaddigital.com": {
+     "unreadable": 1,
+     "slug": 0,
+     "story": 1,
+     "headline": 0,
+     "nearby": 0,
+     "none": 0
+    },
+    "okdiario.com": {
+     "unreadable": 1,
+     "slug": 0,
+     "story": 1,
+     "headline": 0,
+     "nearby": 0,
+     "none": 0
+    },
+    "huffingtonpost.es": {
+     "unreadable": 1,
+     "slug": 0,
+     "story": 1,
+     "headline": 0,
+     "nearby": 0,
+     "none": 0
+    }
+   },
+   "same_story_share": 0.75,
+   "by_story": {
+    "stories": 465,
+    "readable": 389,
+    "readable_share": 0.84
+   },
+   "ceiling_without_checked_outlets": {
+    "articles": 1594,
+    "reachable": 1594,
+    "share": 1,
+    "stories": 465,
+    "reachable_stories": 465,
+    "story_share": 1
+   }
+  }
+ },
+ "retention": {
+  "read_at": "2026-10-30T06:00:03.638Z",
+  "feeds": [
+   {
+    "name": "google en \"Daniil Donchenko\"",
+    "host": "news.google.com",
+    "status": 200,
+    "items": 39,
+    "dated": 39,
+    "newest_days": 53,
+    "median_days": 412,
+    "oldest_days": 527,
+    "within_1d": 0,
+    "within_7d": 0
+   },
+   {
+    "name": "google uk \"Данило Донченко\"",
+    "host": "news.google.com",
+    "status": 200,
+    "items": 100,
+    "dated": 100,
+    "newest_days": 28,
+    "median_days": 59,
+    "oldest_days": 315.9,
+    "within_1d": 0,
+    "within_7d": 0
+   },
+   {
+    "name": "google en \"Yaroslav Amosov\"",
+    "host": "news.google.com",
+    "status": 200,
+    "items": 100,
+    "dated": 100,
+    "newest_days": 5.1,
+    "median_days": 177.5,
+    "oldest_days": 1704.9,
+    "within_1d": 0,
+    "within_7d": 2
+   },
+   {
+    "name": "google uk \"Ярослав Амосов\"",
+    "host": "news.google.com",
+    "status": 200,
+    "items": 59,
+    "dated": 59,
+    "newest_days": 4.9,
+    "median_days": 211,
+    "oldest_days": 2255,
+    "within_1d": 0,
+    "within_7d": 2
+   },
+   {
+    "name": "google en \"Ilia Topuria\"",
+    "host": "news.google.com",
+    "status": 200,
+    "items": 102,
+    "dated": 102,
+    "newest_days": 0,
+    "median_days": 18,
+    "oldest_days": 138,
+    "within_1d": 11,
+    "within_7d": 34
+   },
+   {
+    "name": "google es \"Ilia Topuria\"",
+    "host": "news.google.com",
+    "status": 200,
+    "items": 101,
+    "dated": 101,
+    "newest_days": 0.2,
+    "median_days": 10,
+    "oldest_days": 235.9,
+    "within_1d": 5,
+    "within_7d": 42
+   },
+   {
+    "name": "direct ufc",
+    "host": "www.ufc.com",
+    "status": 200,
+    "items": 30,
+    "dated": 27,
+    "newest_days": 0.1,
+    "median_days": 2.6,
+    "oldest_days": 6.6,
+    "within_1d": 9,
+    "within_7d": 27
+   },
+   {
+    "name": "direct mmafighting",
+    "host": "www.mmafighting.com",
+    "status": 200,
+    "items": 10,
+    "dated": 10,
+    "newest_days": 0.3,
+    "median_days": 0.6,
+    "oldest_days": 0.7,
+    "within_1d": 10,
+    "within_7d": 10
+   },
+   {
+    "name": "direct bloodyelbow",
+    "host": "bloodyelbow.com",
+    "status": 200,
+    "items": 20,
+    "dated": 20,
+    "newest_days": 0.1,
+    "median_days": 0.5,
+    "oldest_days": 0.8,
+    "within_1d": 20,
+    "within_7d": 20
+   },
+   {
+    "name": "direct sherdog",
+    "host": "www.sherdog.com",
+    "status": 200,
+    "items": 50,
+    "dated": 50,
+    "newest_days": 0.1,
+    "median_days": 1.4,
+    "oldest_days": 3,
+    "within_1d": 15,
+    "within_7d": 50
+   },
+   {
+    "name": "direct sportua",
+    "host": "sport.ua",
+    "status": 200,
+    "items": 20,
+    "dated": 20,
+    "newest_days": 3.7,
+    "median_days": 13.8,
+    "oldest_days": 50.8,
+    "within_1d": 0,
+    "within_7d": 7
+   },
+   {
+    "name": "direct marca",
+    "host": "e00-marca.uecdn.es",
+    "status": 200,
+    "items": 50,
+    "dated": 50,
+    "newest_days": 0.4,
+    "median_days": 9.6,
+    "oldest_days": 20.5,
+    "within_1d": 2,
+    "within_7d": 20
+   },
+   {
+    "name": "candidate mmaweekly",
+    "host": "mmaweekly.com",
+    "status": 200,
+    "items": 50,
+    "dated": 50,
+    "newest_days": 0.1,
+    "median_days": 7.1,
+    "oldest_days": 12.1,
+    "within_1d": 4,
+    "within_7d": 24
+   },
+   {
+    "name": "candidate athlon",
+    "host": "athlonsports.com",
+    "status": 200,
+    "items": 50,
+    "dated": 50,
+    "newest_days": 0,
+    "median_days": 0.2,
+    "oldest_days": 0.3,
+    "within_1d": 50,
+    "within_7d": 50
+   },
+   {
+    "name": "probed bloodyelbow.com",
+    "host": "bloodyelbow.com",
+    "status": 200,
+    "items": 20,
+    "dated": 20,
+    "newest_days": 0.1,
+    "median_days": 0.5,
+    "oldest_days": 0.8,
+    "within_1d": 20,
+    "within_7d": 20
+   },
+   {
+    "name": "probed sport.ua",
+    "host": "sport.ua",
+    "status": 200,
+    "items": 20,
+    "dated": 20,
+    "newest_days": 3.7,
+    "median_days": 13.8,
+    "oldest_days": 50.8,
+    "within_1d": 0,
+    "within_7d": 7
+   },
+   {
+    "name": "probed sports.yahoo.com",
+    "host": "sports.yahoo.com",
+    "status": 200,
+    "items": 50,
+    "dated": 50,
+    "newest_days": 0,
+    "median_days": 0,
+    "oldest_days": 0,
+    "within_1d": 50,
+    "within_7d": 50
+   },
+   {
+    "name": "probed champion.com.ua",
+    "host": "champion.com.ua",
+    "status": 200,
+    "items": 14,
+    "dated": 14,
+    "newest_days": 0,
+    "median_days": 0.3,
+    "oldest_days": 0.4,
+    "within_1d": 14,
+    "within_7d": 14
+   },
+   {
+    "name": "probed ufc.com",
+    "host": "www.ufc.com",
+    "status": 200,
+    "items": 30,
+    "dated": 27,
+    "newest_days": 0.1,
+    "median_days": 2.6,
+    "oldest_days": 6.6,
+    "within_1d": 9,
+    "within_7d": 27
+   },
+   {
+    "name": "probed 112.ua",
+    "host": "112.ua",
+    "status": 200,
+    "items": 50,
+    "dated": 50,
+    "newest_days": 0,
+    "median_days": 0.1,
+    "oldest_days": 0.2,
+    "within_1d": 50,
+    "within_7d": 50
+   },
+   {
+    "name": "probed mmafighting.com",
+    "host": "www.mmafighting.com",
+    "status": 200,
+    "items": 10,
+    "dated": 10,
+    "newest_days": 0.3,
+    "median_days": 0.6,
+    "oldest_days": 0.7,
+    "within_1d": 10,
+    "within_7d": 10
+   },
+   {
+    "name": "probed sport-express.ua",
+    "host": "sport-express.ua",
+    "status": 200,
+    "items": 40,
+    "dated": 40,
+    "newest_days": 0.4,
+    "median_days": 0.8,
+    "oldest_days": 1.8,
+    "within_1d": 28,
+    "within_7d": 40
+   },
+   {
+    "name": "probed sherdog.com",
+    "host": "www.sherdog.com",
+    "status": 200,
+    "items": 50,
+    "dated": 50,
+    "newest_days": 0.1,
+    "median_days": 1.4,
+    "oldest_days": 3,
+    "within_1d": 15,
+    "within_7d": 50
+   },
+   {
+    "name": "probed mmaweekly.com",
+    "host": "mmaweekly.com",
+    "status": 200,
+    "items": 50,
+    "dated": 50,
+    "newest_days": 0.1,
+    "median_days": 7.1,
+    "oldest_days": 12.1,
+    "within_1d": 4,
+    "within_7d": 24
+   },
+   {
+    "name": "probed sports.ndtv.com",
+    "host": "feeds.feedburner.com",
+    "status": 200,
+    "items": 20,
+    "dated": 0,
+    "newest_days": null,
+    "median_days": null,
+    "oldest_days": null,
+    "within_1d": 0,
+    "within_7d": 0
+   },
+   {
+    "name": "probed athlonsports.com",
+    "host": "athlonsports.com",
+    "status": 200,
+    "items": 50,
+    "dated": 50,
+    "newest_days": 0,
+    "median_days": 0.2,
+    "oldest_days": 0.3,
+    "within_1d": 50,
+    "within_7d": 50
+   },
+   {
+    "name": "probed eldesmarque.com",
+    "host": "www.eldesmarque.com",
+    "status": 200,
+    "items": 30,
+    "dated": 0,
+    "newest_days": null,
+    "median_days": null,
+    "oldest_days": null,
+    "within_1d": 0,
+    "within_7d": 0
+   },
+   {
+    "name": "probed mmanews.com",
+    "host": "mmanews.com",
+    "status": 200,
+    "items": 50,
+    "dated": 50,
+    "newest_days": 0.6,
+    "median_days": 2.6,
+    "oldest_days": 5.5,
+    "within_1d": 8,
+    "within_7d": 50
+   },
+   {
+    "name": "probed sportsnaut.com",
+    "host": "sportsnaut.com",
+    "status": 200,
+    "items": 25,
+    "dated": 25,
+    "newest_days": 0.1,
+    "median_days": 0.5,
+    "oldest_days": 0.6,
+    "within_1d": 25,
+    "within_7d": 25
+   }
+  ]
+ },
+ "listing_delay": {
+  "en \"Ilia Topuria\"": {
+   "items": 1022,
+   "median_days": 0,
+   "p90_days": 0.4,
+   "longest_days": 1
+  },
+  "es \"Ilia Topuria\"": {
+   "items": 711,
+   "median_days": 0,
+   "p90_days": 0.3,
+   "longest_days": 1
+  },
+  "direct bloodyelbow": {
+   "items": 204,
+   "median_days": 0,
+   "p90_days": 0,
+   "longest_days": 0.7
+  },
+  "direct mmafighting": {
+   "items": 87,
+   "median_days": 0,
+   "p90_days": 0,
+   "longest_days": 0.3
+  },
+  "en \"Yaroslav Amosov\"": {
+   "items": 16,
+   "median_days": 0.3,
+   "p90_days": 0.7,
+   "longest_days": 0.8
+  },
+  "direct marca": {
+   "items": 37,
+   "median_days": 0,
+   "p90_days": 0,
+   "longest_days": 0.1
+  },
+  "direct sherdog": {
+   "items": 21,
+   "median_days": 0,
+   "p90_days": 0.2,
+   "longest_days": 0.5
+  },
+  "uk \"Ярослав Амосов\"": {
+   "items": 45,
+   "median_days": 0.1,
+   "p90_days": 0.5,
+   "longest_days": 0.9
+  },
+  "uk \"Данило Донченко\"": {
+   "items": 107,
+   "median_days": 0.1,
+   "p90_days": 0.6,
+   "longest_days": 1
+  },
+  "direct sportua": {
+   "items": 12,
+   "median_days": 0.1,
+   "p90_days": 0.3,
+   "longest_days": 0.3
+  },
+  "en \"Daniil Donchenko\"": {
+   "items": 42,
+   "median_days": 0.1,
+   "p90_days": 0.4,
+   "longest_days": 0.7
+  },
+  "direct ufc": {
+   "items": 1,
+   "median_days": 0,
+   "p90_days": 0,
+   "longest_days": 0
+  }
+ },
+ "still_listed": {
+  "google en \"Daniil Donchenko\"": {
+   "0-7 days": {
+    "found": 0,
+    "still_listed": 0
+   },
+   "7-30 days": {
+    "found": 0,
+    "still_listed": 0
+   },
+   "30-90 days": {
+    "found": 42,
+    "still_listed": 15
+   }
+  },
+  "google uk \"Данило Донченко\"": {
+   "0-7 days": {
+    "found": 0,
+    "still_listed": 0
+   },
+   "7-30 days": {
+    "found": 6,
+    "still_listed": 3
+   },
+   "30-90 days": {
+    "found": 106,
+    "still_listed": 59
+   }
+  },
+  "google en \"Yaroslav Amosov\"": {
+   "0-7 days": {
+    "found": 5,
+    "still_listed": 4
+   },
+   "7-30 days": {
+    "found": 3,
+    "still_listed": 2
+   },
+   "30-90 days": {
+    "found": 13,
+    "still_listed": 7
+   }
+  },
+  "google uk \"Ярослав Амосов\"": {
+   "0-7 days": {
+    "found": 3,
+    "still_listed": 3
+   },
+   "7-30 days": {
+    "found": 15,
+    "still_listed": 7
+   },
+   "30-90 days": {
+    "found": 27,
+    "still_listed": 6
+   }
+  },
+  "google en \"Ilia Topuria\"": {
+   "0-7 days": {
+    "found": 84,
+    "still_listed": 39
+   },
+   "7-30 days": {
+    "found": 197,
+    "still_listed": 48
+   },
+   "30-90 days": {
+    "found": 747,
+    "still_listed": 38
+   }
+  },
+  "google es \"Ilia Topuria\"": {
+   "0-7 days": {
+    "found": 58,
+    "still_listed": 43
+   },
+   "7-30 days": {
+    "found": 189,
+    "still_listed": 42
+   },
+   "30-90 days": {
+    "found": 474,
+    "still_listed": 13
+   }
+  }
+ }
+}

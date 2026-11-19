@@ -1,0 +1,9 @@
+{
+  "name": "source-review-experiment",
+  "private": true,
+  "type": "module",
+  "description": "Self-feeding architecture (E4): per fighter, which outlets carry the news, which refuse us, and whether a feed reaches them; how long each feed keeps an article listed.",
+  "dependencies": {
+    "pg": "^8.13.0"
+  }
+}

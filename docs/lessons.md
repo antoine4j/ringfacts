@@ -619,6 +619,36 @@ Rules for adding to it:
   characters; none collided). **Would overturn it:** a false merge in a
   week of v0's own sightings.
 
+### Three outlets behind Cloudflare cap Donchenko at 59% readable; some refusals are our network, not the outlet
+`corpus` · `measured` · *FB 2026-10-30*
+- **Evidence:** over production's whole record (7 Aug to 30 Oct, 2,341
+  articles), Tribuna, Sport.ua and Sport.nv.ua carry 41% of Donchenko's
+  articles and 26% of Amosov's; all three show Cloudflare's bot check to
+  every request and offer no full-text feed (Sport.ua's MMA feed is a
+  73-character teaser). Counting everything else as readable, the ceiling
+  is **Donchenko 59% of articles (61% of stories), Amosov 74% (79%)**;
+  production reads 58% and 40% today, Donchenko's propped up by Sport.ua
+  answering in September (16 of his 84 readable articles; refused since
+  30 Sep). DAZN, NDTV, Eldesmarque and Champion.com.ua stored http-403 in
+  production but read from the laptop with production's own reader and
+  headers: the network, not the outlet (inferred, not tested from Cloud
+  Run). Champion.com.ua has a free full-text feed. About half of what is
+  lost has a readable article on the same story elsewhere (Amosov 20 of
+  35, Donchenko 32 of 60), almost all found through production's story
+  grouping, not by slug or headline. Fast outlet feeds list under a day
+  (Athlon 7 h, MMA Fighting 17 h, Bloody Elbow 19 h); Google's searches
+  list about 100 items by relevance, months deep for a quiet fighter,
+  under a week for half of Topuria's.
+  `research/experiments/2026-10-30-source-review/`.
+- **Does not say:** whether a paid route passes Tribuna's check. A wider
+  web search (28 searches, three languages; `wider-search.md` in the same
+  folder) found 29 hosts production never recorded, but their pages in the
+  window would move the shares by 2 points at most and carry no story
+  production lacks. One probe per outlet, and Cloudflare's behaviour
+  changes by the hour. **Would
+  overturn it:** Tribuna or Sport.nv.ua answering a plain fetch, or a
+  full-text feed found for either.
+
 ### Speculation outnumbers events by two orders of magnitude
 `domain` · `measured` · *RF-L12; FB agrees, 2026-09-18*
 - **Evidence (RF):** 34 days, three fighters: roughly one booking, one result,
