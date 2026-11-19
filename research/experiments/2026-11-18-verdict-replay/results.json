@@ -1,0 +1,533 @@
+{
+ "recordFirstDay": "2026-08-07",
+ "recordLastDay": "2026-11-18",
+ "recordDays": 104,
+ "floor": 0.75,
+ "fighters": {
+  "Yaroslav Amosov": {
+   "articlesFound": 133,
+   "articlesReadable": 73,
+   "replays": [
+    {
+     "windowDays": 30,
+     "minimum": 10,
+     "daysJudged": 75,
+     "firstDayJudged": "2026-09-05",
+     "daysWithVerdict": 64,
+     "shareOfDaysWithVerdict": 0.853,
+     "daysUnderFloor": 64,
+     "shareOfVerdictDaysUnderFloor": 1,
+     "readableShareOnVerdictDays": {
+      "lowest": 0.217,
+      "median": 0.4,
+      "highest": 0.676
+     },
+     "newestArticleAgeOnVerdictDays": {
+      "median": 2,
+      "oldest": 11
+     },
+     "silentStretches": 2,
+     "silentStretchMedianDays": 10,
+     "silentStretchLongestDays": 10,
+     "silentStretchLongestFrom": "2026-09-06",
+     "firstVerdictDay": "2026-09-05"
+    },
+    {
+     "windowDays": 30,
+     "minimum": 20,
+     "daysJudged": 75,
+     "firstDayJudged": "2026-09-05",
+     "daysWithVerdict": 43,
+     "shareOfDaysWithVerdict": 0.573,
+     "daysUnderFloor": 43,
+     "shareOfVerdictDaysUnderFloor": 1,
+     "readableShareOnVerdictDays": {
+      "lowest": 0.217,
+      "median": 0.355,
+      "highest": 0.676
+     },
+     "newestArticleAgeOnVerdictDays": {
+      "median": 1,
+      "oldest": 11
+     },
+     "silentStretches": 2,
+     "silentStretchMedianDays": 24,
+     "silentStretchLongestDays": 24,
+     "silentStretchLongestFrom": "2026-09-05",
+     "firstVerdictDay": "2026-09-29"
+    },
+    {
+     "windowDays": 60,
+     "minimum": 10,
+     "daysJudged": 45,
+     "firstDayJudged": "2026-10-05",
+     "daysWithVerdict": 45,
+     "shareOfDaysWithVerdict": 1,
+     "daysUnderFloor": 45,
+     "shareOfVerdictDaysUnderFloor": 1,
+     "readableShareOnVerdictDays": {
+      "lowest": 0.282,
+      "median": 0.366,
+      "highest": 0.574
+     },
+     "newestArticleAgeOnVerdictDays": {
+      "median": 3,
+      "oldest": 11
+     },
+     "silentStretches": 0,
+     "silentStretchMedianDays": null,
+     "silentStretchLongestDays": 0,
+     "silentStretchLongestFrom": null,
+     "firstVerdictDay": "2026-10-05"
+    },
+    {
+     "windowDays": 60,
+     "minimum": 20,
+     "daysJudged": 45,
+     "firstDayJudged": "2026-10-05",
+     "daysWithVerdict": 45,
+     "shareOfDaysWithVerdict": 1,
+     "daysUnderFloor": 45,
+     "shareOfVerdictDaysUnderFloor": 1,
+     "readableShareOnVerdictDays": {
+      "lowest": 0.282,
+      "median": 0.366,
+      "highest": 0.574
+     },
+     "newestArticleAgeOnVerdictDays": {
+      "median": 3,
+      "oldest": 11
+     },
+     "silentStretches": 0,
+     "silentStretchMedianDays": null,
+     "silentStretchLongestDays": 0,
+     "silentStretchLongestFrom": null,
+     "firstVerdictDay": "2026-10-05"
+    },
+    {
+     "windowDays": 90,
+     "minimum": 10,
+     "daysJudged": 15,
+     "firstDayJudged": "2026-11-04",
+     "daysWithVerdict": 15,
+     "shareOfDaysWithVerdict": 1,
+     "daysUnderFloor": 15,
+     "shareOfVerdictDaysUnderFloor": 1,
+     "readableShareOnVerdictDays": {
+      "lowest": 0.315,
+      "median": 0.536,
+      "highest": 0.556
+     },
+     "newestArticleAgeOnVerdictDays": {
+      "median": 0,
+      "oldest": 11
+     },
+     "silentStretches": 0,
+     "silentStretchMedianDays": null,
+     "silentStretchLongestDays": 0,
+     "silentStretchLongestFrom": null,
+     "firstVerdictDay": "2026-11-04"
+    },
+    {
+     "windowDays": 90,
+     "minimum": 20,
+     "daysJudged": 15,
+     "firstDayJudged": "2026-11-04",
+     "daysWithVerdict": 15,
+     "shareOfDaysWithVerdict": 1,
+     "daysUnderFloor": 15,
+     "shareOfVerdictDaysUnderFloor": 1,
+     "readableShareOnVerdictDays": {
+      "lowest": 0.315,
+      "median": 0.536,
+      "highest": 0.556
+     },
+     "newestArticleAgeOnVerdictDays": {
+      "median": 0,
+      "oldest": 11
+     },
+     "silentStretches": 0,
+     "silentStretchMedianDays": null,
+     "silentStretchLongestDays": 0,
+     "silentStretchLongestFrom": null,
+     "firstVerdictDay": "2026-11-04"
+    }
+   ],
+   "weekly": {
+    "weeksCounted": 98,
+    "articlesPerWeek": {
+     "lowest": 0,
+     "tenthPercentile": 0,
+     "median": 4,
+     "highest": 70
+    },
+    "shareOfWeeksWithNoArticle": 0.194,
+    "shareOfWeeksWithAtLeast5": 0.418,
+    "shareOfWeeksWithAtLeast10": 0.214,
+    "shareOfWeeksWithAtLeast20": 0.082,
+    "medianWidthOfWeeklyShareInterval": 0.57
+   },
+   "daysToTwentyArticles": {
+    "startsThatReachIt": 95,
+    "startsTried": 104,
+    "medianDays": 26,
+    "longestDays": 48
+   },
+   "silenceAlert": {
+    "daysWouldAlert": 19,
+    "episodes": 3,
+    "longestStretchWithoutAnArticleDays": 15
+   }
+  },
+  "Daniil Donchenko": {
+   "articlesFound": 144,
+   "articlesReadable": 84,
+   "replays": [
+    {
+     "windowDays": 30,
+     "minimum": 10,
+     "daysJudged": 75,
+     "firstDayJudged": "2026-09-05",
+     "daysWithVerdict": 40,
+     "shareOfDaysWithVerdict": 0.533,
+     "daysUnderFloor": 40,
+     "shareOfVerdictDaysUnderFloor": 1,
+     "readableShareOnVerdictDays": {
+      "lowest": 0.217,
+      "median": 0.602,
+      "highest": 0.664
+     },
+     "newestArticleAgeOnVerdictDays": {
+      "median": 3,
+      "oldest": 13
+     },
+     "silentStretches": 1,
+     "silentStretchMedianDays": 35,
+     "silentStretchLongestDays": 35,
+     "silentStretchLongestFrom": "2026-10-15",
+     "firstVerdictDay": "2026-09-05"
+    },
+    {
+     "windowDays": 30,
+     "minimum": 20,
+     "daysJudged": 75,
+     "firstDayJudged": "2026-09-05",
+     "daysWithVerdict": 35,
+     "shareOfDaysWithVerdict": 0.467,
+     "daysUnderFloor": 35,
+     "shareOfVerdictDaysUnderFloor": 1,
+     "readableShareOnVerdictDays": {
+      "lowest": 0.217,
+      "median": 0.603,
+      "highest": 0.664
+     },
+     "newestArticleAgeOnVerdictDays": {
+      "median": 2,
+      "oldest": 13
+     },
+     "silentStretches": 1,
+     "silentStretchMedianDays": 40,
+     "silentStretchLongestDays": 40,
+     "silentStretchLongestFrom": "2026-10-10",
+     "firstVerdictDay": "2026-09-05"
+    },
+    {
+     "windowDays": 60,
+     "minimum": 10,
+     "daysJudged": 45,
+     "firstDayJudged": "2026-10-05",
+     "daysWithVerdict": 40,
+     "shareOfDaysWithVerdict": 0.889,
+     "daysUnderFloor": 40,
+     "shareOfVerdictDaysUnderFloor": 1,
+     "readableShareOnVerdictDays": {
+      "lowest": 0.217,
+      "median": 0.583,
+      "highest": 0.606
+     },
+     "newestArticleAgeOnVerdictDays": {
+      "median": 23,
+      "oldest": 42
+     },
+     "silentStretches": 1,
+     "silentStretchMedianDays": 5,
+     "silentStretchLongestDays": 5,
+     "silentStretchLongestFrom": "2026-11-14",
+     "firstVerdictDay": "2026-10-05"
+    },
+    {
+     "windowDays": 60,
+     "minimum": 20,
+     "daysJudged": 45,
+     "firstDayJudged": "2026-10-05",
+     "daysWithVerdict": 35,
+     "shareOfDaysWithVerdict": 0.778,
+     "daysUnderFloor": 35,
+     "shareOfVerdictDaysUnderFloor": 1,
+     "readableShareOnVerdictDays": {
+      "lowest": 0.217,
+      "median": 0.583,
+      "highest": 0.606
+     },
+     "newestArticleAgeOnVerdictDays": {
+      "median": 20,
+      "oldest": 37
+     },
+     "silentStretches": 1,
+     "silentStretchMedianDays": 10,
+     "silentStretchLongestDays": 10,
+     "silentStretchLongestFrom": "2026-11-09",
+     "firstVerdictDay": "2026-10-05"
+    },
+    {
+     "windowDays": 90,
+     "minimum": 10,
+     "daysJudged": 15,
+     "firstDayJudged": "2026-11-04",
+     "daysWithVerdict": 15,
+     "shareOfDaysWithVerdict": 1,
+     "daysUnderFloor": 15,
+     "shareOfVerdictDaysUnderFloor": 1,
+     "readableShareOnVerdictDays": {
+      "lowest": 0.581,
+      "median": 0.583,
+      "highest": 0.583
+     },
+     "newestArticleAgeOnVerdictDays": {
+      "median": 40,
+      "oldest": 47
+     },
+     "silentStretches": 0,
+     "silentStretchMedianDays": null,
+     "silentStretchLongestDays": 0,
+     "silentStretchLongestFrom": null,
+     "firstVerdictDay": "2026-11-04"
+    },
+    {
+     "windowDays": 90,
+     "minimum": 20,
+     "daysJudged": 15,
+     "firstDayJudged": "2026-11-04",
+     "daysWithVerdict": 15,
+     "shareOfDaysWithVerdict": 1,
+     "daysUnderFloor": 15,
+     "shareOfVerdictDaysUnderFloor": 1,
+     "readableShareOnVerdictDays": {
+      "lowest": 0.581,
+      "median": 0.583,
+      "highest": 0.583
+     },
+     "newestArticleAgeOnVerdictDays": {
+      "median": 40,
+      "oldest": 47
+     },
+     "silentStretches": 0,
+     "silentStretchMedianDays": null,
+     "silentStretchLongestDays": 0,
+     "silentStretchLongestFrom": null,
+     "firstVerdictDay": "2026-11-04"
+    }
+   ],
+   "weekly": {
+    "weeksCounted": 98,
+    "articlesPerWeek": {
+     "lowest": 0,
+     "tenthPercentile": 0,
+     "median": 1,
+     "highest": 99
+    },
+    "shareOfWeeksWithNoArticle": 0.5,
+    "shareOfWeeksWithAtLeast5": 0.357,
+    "shareOfWeeksWithAtLeast10": 0.173,
+    "shareOfWeeksWithAtLeast20": 0.112,
+    "medianWidthOfWeeklyShareInterval": 0.533
+   },
+   "daysToTwentyArticles": {
+    "startsThatReachIt": 35,
+    "startsTried": 104,
+    "medianDays": 12,
+    "longestDays": 24
+   },
+   "silenceAlert": {
+    "daysWouldAlert": 49,
+    "episodes": 3,
+    "longestStretchWithoutAnArticleDays": 47
+   }
+  },
+  "Ilia Topuria": {
+   "articlesFound": 2080,
+   "articlesReadable": 1621,
+   "replays": [
+    {
+     "windowDays": 30,
+     "minimum": 10,
+     "daysJudged": 75,
+     "firstDayJudged": "2026-09-05",
+     "daysWithVerdict": 75,
+     "shareOfDaysWithVerdict": 1,
+     "daysUnderFloor": 21,
+     "shareOfVerdictDaysUnderFloor": 0.28,
+     "readableShareOnVerdictDays": {
+      "lowest": 0.704,
+      "median": 0.769,
+      "highest": 0.864
+     },
+     "newestArticleAgeOnVerdictDays": {
+      "median": 0,
+      "oldest": 0
+     },
+     "silentStretches": 0,
+     "silentStretchMedianDays": null,
+     "silentStretchLongestDays": 0,
+     "silentStretchLongestFrom": null,
+     "firstVerdictDay": "2026-09-05"
+    },
+    {
+     "windowDays": 30,
+     "minimum": 20,
+     "daysJudged": 75,
+     "firstDayJudged": "2026-09-05",
+     "daysWithVerdict": 75,
+     "shareOfDaysWithVerdict": 1,
+     "daysUnderFloor": 21,
+     "shareOfVerdictDaysUnderFloor": 0.28,
+     "readableShareOnVerdictDays": {
+      "lowest": 0.704,
+      "median": 0.769,
+      "highest": 0.864
+     },
+     "newestArticleAgeOnVerdictDays": {
+      "median": 0,
+      "oldest": 0
+     },
+     "silentStretches": 0,
+     "silentStretchMedianDays": null,
+     "silentStretchLongestDays": 0,
+     "silentStretchLongestFrom": null,
+     "firstVerdictDay": "2026-09-05"
+    },
+    {
+     "windowDays": 60,
+     "minimum": 10,
+     "daysJudged": 45,
+     "firstDayJudged": "2026-10-05",
+     "daysWithVerdict": 45,
+     "shareOfDaysWithVerdict": 1,
+     "daysUnderFloor": 10,
+     "shareOfVerdictDaysUnderFloor": 0.222,
+     "readableShareOnVerdictDays": {
+      "lowest": 0.735,
+      "median": 0.777,
+      "highest": 0.8
+     },
+     "newestArticleAgeOnVerdictDays": {
+      "median": 0,
+      "oldest": 0
+     },
+     "silentStretches": 0,
+     "silentStretchMedianDays": null,
+     "silentStretchLongestDays": 0,
+     "silentStretchLongestFrom": null,
+     "firstVerdictDay": "2026-10-05"
+    },
+    {
+     "windowDays": 60,
+     "minimum": 20,
+     "daysJudged": 45,
+     "firstDayJudged": "2026-10-05",
+     "daysWithVerdict": 45,
+     "shareOfDaysWithVerdict": 1,
+     "daysUnderFloor": 10,
+     "shareOfVerdictDaysUnderFloor": 0.222,
+     "readableShareOnVerdictDays": {
+      "lowest": 0.735,
+      "median": 0.777,
+      "highest": 0.8
+     },
+     "newestArticleAgeOnVerdictDays": {
+      "median": 0,
+      "oldest": 0
+     },
+     "silentStretches": 0,
+     "silentStretchMedianDays": null,
+     "silentStretchLongestDays": 0,
+     "silentStretchLongestFrom": null,
+     "firstVerdictDay": "2026-10-05"
+    },
+    {
+     "windowDays": 90,
+     "minimum": 10,
+     "daysJudged": 15,
+     "firstDayJudged": "2026-11-04",
+     "daysWithVerdict": 15,
+     "shareOfDaysWithVerdict": 1,
+     "daysUnderFloor": 0,
+     "shareOfVerdictDaysUnderFloor": 0,
+     "readableShareOnVerdictDays": {
+      "lowest": 0.777,
+      "median": 0.784,
+      "highest": 0.787
+     },
+     "newestArticleAgeOnVerdictDays": {
+      "median": 0,
+      "oldest": 0
+     },
+     "silentStretches": 0,
+     "silentStretchMedianDays": null,
+     "silentStretchLongestDays": 0,
+     "silentStretchLongestFrom": null,
+     "firstVerdictDay": "2026-11-04"
+    },
+    {
+     "windowDays": 90,
+     "minimum": 20,
+     "daysJudged": 15,
+     "firstDayJudged": "2026-11-04",
+     "daysWithVerdict": 15,
+     "shareOfDaysWithVerdict": 1,
+     "daysUnderFloor": 0,
+     "shareOfVerdictDaysUnderFloor": 0,
+     "readableShareOnVerdictDays": {
+      "lowest": 0.777,
+      "median": 0.784,
+      "highest": 0.787
+     },
+     "newestArticleAgeOnVerdictDays": {
+      "median": 0,
+      "oldest": 0
+     },
+     "silentStretches": 0,
+     "silentStretchMedianDays": null,
+     "silentStretchLongestDays": 0,
+     "silentStretchLongestFrom": null,
+     "firstVerdictDay": "2026-11-04"
+    }
+   ],
+   "weekly": {
+    "weeksCounted": 98,
+    "articlesPerWeek": {
+     "lowest": 49,
+     "tenthPercentile": 74,
+     "median": 123,
+     "highest": 294
+    },
+    "shareOfWeeksWithNoArticle": 0,
+    "shareOfWeeksWithAtLeast5": 1,
+    "shareOfWeeksWithAtLeast10": 1,
+    "shareOfWeeksWithAtLeast20": 1,
+    "medianWidthOfWeeklyShareInterval": 0.147
+   },
+   "daysToTwentyArticles": {
+    "startsThatReachIt": 103,
+    "startsTried": 104,
+    "medianDays": 2,
+    "longestDays": 5
+   },
+   "silenceAlert": {
+    "daysWouldAlert": 0,
+    "episodes": 0,
+    "longestStretchWithoutAnArticleDays": 1
+   }
+  }
+ }
+}
