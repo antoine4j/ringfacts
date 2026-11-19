@@ -18,9 +18,11 @@ built to keep me scrolling. I didn't want to go where the news is — I wanted
 the news to come to me. Only the parts that matter, gathered from all the
 coverage, in the chat I already have with my friends.
 
-It is also how I am learning to build applications on language models, agents
-included: a digest-writing agent and a chat agent are on the roadmap. The
-sport is the fun part; the work underneath is not specific to it. Taking in a
+It is also how I am learning to build applications on language models. The
+digest writer runs today, as one model call per fighter each week. Two agent
+steps are parked until after the launch: giving the digest writer tools so it
+reads the big stories on demand, and a bot that answers questions from the
+archive. The sport is the fun part; the work underneath is not specific to it. Taking in a
 stream of documents, deciding which ones matter, extracting the facts,
 recognising when two sources report the same thing and routing each item by
 its importance is the same problem anywhere there is more incoming information
@@ -32,12 +34,14 @@ design partner. The commit history, [docs/decisions.md](docs/decisions.md) and
 made, including the ones that were measured and then rejected. Where this file
 and the code disagree, the code is right.
 
-> **Status, 6 October 2026.** Two bots run side by side. Production has
+> **Status, 19 November 2026.** Two bots run side by side. Production has
 > posted hourly since August, from the files at the top of this repository.
 > Its successor, [v0](v0/README.md), runs beside it with its own database and
 > its own test chat, and is the design going forward. Production retires once
 > v0 fetches its own articles. This page describes both; the two published
-> walkthroughs describe production. What is left before launch, task by task:
+> walkthroughs describe production. v0's four-week launch window started on
+> 18 November; the friends' group joins once its last two weeks pass the
+> launch bar in [docs/goals.md](docs/goals.md). What is left before launch, task by task:
 > **[the Roadmap](https://antoine4j.github.io/ringfacts/launch-map.html)**
 > ([source](docs/launch-map.html)).
 
@@ -83,7 +87,7 @@ and is tried again next hour.
 
 v0 still takes its articles from production's table. Fetching feeds and
 bodies itself is the next large piece of work, and production retires after
-it (TODO.md, item 5).
+it (TODO.md, item 3).
 
 ### Production, running today
 
@@ -188,7 +192,7 @@ what the experiments taught.
 
 ```bash
 npm test                            # production: 443 tests, about a second
-npm install --prefix v0 && npm test --prefix v0   # v0: 283 + 172 tests
+npm install --prefix v0 && npm test --prefix v0   # v0: 301 + 192 tests
 git config core.hooksPath .githooks # once per clone: run both before each commit
 ```
 
