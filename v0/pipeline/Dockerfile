@@ -18,6 +18,9 @@ COPY lib/tier.js ./lib/
 COPY v0/schema.sql v0/grants.sql ./v0/
 COPY v0/pipeline ./v0/pipeline
 
-ENV NODE_ENV=production
+# The commit the image was built from, readable inside the container and on the image.
+ARG COMMIT=unknown
+LABEL org.opencontainers.image.revision=$COMMIT
+ENV NODE_ENV=production RINGFACTS_COMMIT=$COMMIT
 WORKDIR /app/v0/pipeline
 CMD ["node", "run.ts", "--kind", "hourly"]

@@ -1224,3 +1224,34 @@ long enough to be split.
   half in the chat.
 - *Re-send any unsent row.* Would send the six go-live digests and any future
   print-only row, weeks late.
+
+<a id="deploy-commit"></a>
+## deploy-commit — Every deploy names its commit, and only a clean, pushed main deploys
+*2026-11-18*
+
+**The gap.** Both setup scripts build from the folder they are run in, not from
+GitHub. Nothing recorded which commit a build came from. On 2026-11-18 the only
+way to tell what v0's job was running was to download the source archive Cloud
+Build kept from 5 October and compare it, file by file, with every commit of
+that week. It matched one commit exactly, but only because that folder had
+happened to be clean.
+
+**The rule now.** `scripts/deploy-commit.sh` runs first in both scripts and
+refuses the deploy unless the folder is on `main`, no tracked file differs from
+the commit, no untracked file sits outside `research/` (which neither image
+copies), and the commit is on `origin/main`. `ALLOW_UNPUSHED=1` waives only the
+last check, loudly, for a deploy that is pushed right after. The commit then
+goes on everything deployed: a `commit` label on the v0 job, the production
+service and both production jobs; and for v0, whose image is built by its own
+Cloud Build config, the image tag, the OCI `revision` label and a
+`RINGFACTS_COMMIT` variable baked into the image. The v0 job runs the image by
+its commit tag rather than `latest`, so its description names the code, and
+going back is one `jobs update` to an older tag.
+
+**Considered.** A plain environment variable on the job was rejected: both
+scripts assert the jobs carry no literal variables
+([one-config-secret](#one-config-secret)), and a label says the same thing
+without weakening that check. Building from a fresh clone of GitHub instead of
+the folder would make the check unnecessary, but it also means a deploy needs
+a network fetch and a second checkout; refusing a dirty folder gets the same
+traceability for one `git status`.

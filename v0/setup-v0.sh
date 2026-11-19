@@ -15,8 +15,13 @@ set -euo pipefail
 PROJECT_ID="${PROJECT_ID:?set PROJECT_ID to the GCP project id}"
 REGION="us-west1"
 JOB="ringfacts-v0"
-IMAGE="us-west1-docker.pkg.dev/${PROJECT_ID}/cloud-run-source-deploy/ringfacts-v0:latest"
 ENV_FILE=".env.v0"
+
+# Main, clean and pushed, or no deploy; sets COMMIT (scripts/deploy-commit.sh).
+source scripts/deploy-commit.sh
+# The image is tagged with the commit it was built from, and the job runs that
+# tag, so the job's own description names the code it runs.
+IMAGE="us-west1-docker.pkg.dev/${PROJECT_ID}/cloud-run-source-deploy/ringfacts-v0:${COMMIT}"
 
 PROJECT_NUMBER=$(gcloud projects describe "$PROJECT_ID" --format="value(projectNumber)")
 RUNTIME_SA="${PROJECT_NUMBER}-compute@developer.gserviceaccount.com"
@@ -45,13 +50,15 @@ gcloud secrets add-iam-policy-binding v0-config --project="$PROJECT_ID" \
   --member="serviceAccount:$RUNTIME_SA" --role="roles/secretmanager.secretAccessor" >/dev/null
 
 # --- The image: built in the cloud from the repository root -------------------
-gcloud builds submit --project="$PROJECT_ID" --config v0/pipeline/cloudbuild.yaml .
+gcloud builds submit --project="$PROJECT_ID" --config v0/pipeline/cloudbuild.yaml \
+  --substitutions="_COMMIT=$COMMIT" .
 
 # --- The job: 4 minutes at most a run, so a slow hour cannot eat the free tier -
 gcloud run jobs deploy "$JOB" \
   --project="$PROJECT_ID" \
   --region="$REGION" \
   --image="$IMAGE" \
+  --labels="commit=$COMMIT" \
   --clear-env-vars \
   --set-secrets=V0_CONFIG=v0-config:latest \
   --task-timeout=240 \
@@ -67,7 +74,7 @@ if [ -n "$PLAIN" ]; then
   echo "REFUSING: $JOB carries literal env vars: $PLAIN" >&2
   exit 1
 fi
-echo "Deployed $JOB to $REGION, all config by reference."
+echo "Deployed $JOB to $REGION at commit $COMMIT, all config by reference."
 
 # --- Hourly at :47, half an hour after production's :17 (D15) ----------------
 # Only with SCHEDULE=1: the job is first run by hand, and the trigger is made
@@ -87,5 +94,9 @@ fi
 
 # Run it by hand:
 # gcloud run jobs execute ringfacts-v0 --region=us-west1 --wait
+# Which commit runs:
+# gcloud run jobs describe ringfacts-v0 --region=us-west1 --format='value(metadata.labels.commit)'
+# Go back to an earlier image (its tag is the commit, or use its digest):
+# gcloud run jobs update ringfacts-v0 --region=us-west1 --image=us-west1-docker.pkg.dev/$PROJECT_ID/cloud-run-source-deploy/ringfacts-v0:<commit> --labels=commit=<commit>
 # Pause it (the rollback):
 # gcloud scheduler jobs pause ringfacts-v0-hourly --location=us-west1

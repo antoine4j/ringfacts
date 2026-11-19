@@ -49,6 +49,10 @@ REGION="us-west1"
 SERVICE="fighterbot"
 JOB="fighterbot-hunter"
 
+# Main, clean and pushed, or no deploy; sets COMMIT (scripts/deploy-commit.sh).
+# Checked before anything below touches GCP.
+source scripts/deploy-commit.sh
+
 # Every `gcloud run` command below passes --region="$REGION" explicitly rather
 # than leaning on the run/region config set just above. On 2026-08-10 that
 # config resolved to us-central1 mid-session, and `gcloud run jobs deploy`
@@ -131,6 +135,9 @@ gcloud secrets add-iam-policy-binding ringfacts-config \
   --role="roles/secretmanager.secretAccessor" >/dev/null
 
 # --- Build + deploy from source ---------------------------------------------
+# Each deploy carries the commit as a "commit" label, so the service's and each
+# job's own description names the code it runs:
+#   gcloud run jobs describe fighterbot-hunter --region=us-west1 --format='value(metadata.labels.commit)'
 # Cloud Build builds the Dockerfile in the cloud, pushes to Artifact Registry,
 # Cloud Run serves it. max-instances=1 is the hard cost ceiling (spec §16.4).
 # No --set-env-vars at all: the whitelist now arrives inside ringfacts-config
@@ -142,6 +149,7 @@ gcloud run deploy "$SERVICE" \
   --region="$REGION" \
   --source . \
   --allow-unauthenticated \
+  --update-labels="commit=$COMMIT" \
   --clear-env-vars \
   --max-instances=1 \
   --memory=512Mi \
@@ -204,6 +212,7 @@ fi
 gcloud run jobs deploy "$JOB" \
   --region="$REGION" \
   --source . \
+  --labels="commit=$COMMIT" \
   --command node --args hunter.js \
   --clear-env-vars \
   --set-secrets=RINGFACTS_CONFIG=ringfacts-config:latest \
@@ -260,6 +269,7 @@ gcloud scheduler jobs create http fighterbot-hunter-hourly \
 gcloud run jobs deploy fighterbot-mentions \
   --region="$REGION" \
   --source . \
+  --labels="commit=$COMMIT" \
   --command node --args hunter.js,--mentions \
   --clear-env-vars \
   --set-secrets=RINGFACTS_CONFIG=ringfacts-config:latest \
