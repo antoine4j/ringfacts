@@ -1,8 +1,9 @@
-// Writes and posts each fighter's digest when his schedule says it is due.
-// A failed digest is still due next run, so it is simply tried again.
+// Writes and posts each fighter's digest when his schedule says it is due. A
+// digest the writer failed on is stored nowhere and is still due next run; one
+// that was stored but not sent is sent again from its saved text.
 
 import { currentSettings } from "../store/answers.ts";
-import { digestContext, previousDigestEnd, recordDigest } from "../store/digests.ts";
+import { digestContext, newestLiveDigest, previousDigestEnd, recordDigest, type SavedDigest } from "../store/digests.ts";
 import { writeDigest, DEFAULT_DIGEST_MODEL, DIGEST_PROMPT_VERSION } from "../stations/digest/digest.ts";
 import { duePeriod } from "../settings/schedule.ts";
 import { escapeHtml } from "../stations/telegram/telegram.ts";
@@ -14,6 +15,10 @@ const MESSAGE_LIMIT = 4000;
 // A digest took 112 seconds on DeepSeek V4 Pro with reasoning (measured); one is
 // started only when the run has this long left before its deadline.
 const DIGEST_MILLISECONDS_NEEDED = 120_000;
+
+// A saved digest that was never sent is sent again only for this many days after it was saved.
+// History: docs/decisions.md#digest-resend
+export const RESEND_WINDOW_DAYS = 3;
 
 /**
  * Splits a long message at paragraph breaks into parts Telegram accepts.
@@ -58,7 +63,20 @@ export async function writeAndPostDigest(context: RunContext, fighter: string, p
 
   // History never posts; a live digest goes out under the fighter's name.
   if (context.backfill) return digestId;
-  const parts = splitMessage(`<b>${escapeHtml(fighter)}: the week</b>\n\n${written.text}`);
+  await postDigest(context, digestId, fighter, written.text);
+  return digestId;
+}
+
+/**
+ * Sends a stored digest under the fighter's name, and marks it posted.
+ *
+ * @param context  The run.
+ * @param digestId  The stored digest.
+ * @param fighter  The fighter.
+ * @param text  The digest's text.
+ */
+async function postDigest(context: RunContext, digestId: number, fighter: string, text: string): Promise<void> {
+  const parts = splitMessage(`<b>${escapeHtml(fighter)}: the week</b>\n\n${text}`);
   let firstMessageId: number | null = null;
   for (const part of parts) {
     const messageId = await context.poster(part);
@@ -68,7 +86,39 @@ export async function writeAndPostDigest(context: RunContext, fighter: string, p
     await context.pool.query("UPDATE digests SET posted_at = now(), message_id = $1 WHERE id = $2", [firstMessageId, digestId]);
     count(context, "digests_posted");
   }
-  return digestId;
+}
+
+/**
+ * Whether a saved digest should be sent again: never sent, has text, and saved recently.
+ *
+ * @param saved  The fighter's newest live digest.
+ * @param now  The current moment.
+ * @returns True to send it.
+ */
+function shouldResend(saved: SavedDigest, now: Date): boolean {
+  const isUnsent = saved.postedAt === null;
+  const hasText = saved.text.trim() !== "";
+  const oldestWorthSending = now.getTime() - RESEND_WINDOW_DAYS * 86_400_000;
+  const isRecent = saved.createdAt.getTime() >= oldestWorthSending;
+  return isUnsent && hasText && isRecent;
+}
+
+/**
+ * Sends a fighter's newest digest again from its saved text if an earlier send failed.
+ * Never asks the writer for a new one. A run that only prints sends nothing.
+ *
+ * @param context  The run.
+ * @param fighter  The fighter.
+ * @param now  The current moment.
+ *
+ * History: docs/decisions.md#digest-resend
+ */
+async function resendUnsentDigest(context: RunContext, fighter: string, now: Date): Promise<void> {
+  if (!context.sends) return;
+  const saved = await newestLiveDigest(context.pool, fighter);
+  if (!saved || !shouldResend(saved, now)) return;
+  await postDigest(context, saved.id, fighter, saved.text);
+  count(context, "digests_resent");
 }
 
 /**
@@ -83,6 +133,14 @@ export async function digestsDue(context: RunContext, now: Date): Promise<void> 
   // Every fighter whose schedule says now, written side by side.
   const writes: Promise<void>[] = [];
   for (const [fighter, schedule] of Object.entries(settings.digest_schedule)) {
+    // A digest saved but not sent goes first; if that fails, no new one is written over it.
+    try {
+      await resendUnsentDigest(context, fighter, now);
+    } catch (error) {
+      count(context, "digests_failed");
+      console.error(`re-sending the digest for ${fighter} failed: ${(error as Error).message}`);
+      continue;
+    }
     const due = duePeriod(schedule, await previousDigestEnd(context.pool, fighter, false), now);
     if (!due) continue;
     const hasTime = context.deadline - Date.now() >= DIGEST_MILLISECONDS_NEEDED;
