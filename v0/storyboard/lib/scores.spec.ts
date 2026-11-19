@@ -93,6 +93,23 @@ test("two linked claims posted at the same moment count one repeat", () => {
   assert.deepEqual(tier1Repeats(posts, posts, groupOf), { count: 1, of: 2 });
 });
 
+test("a post he called a repeat in Telegram is a repeat though no claim was linked, and counts once however it was marked", () => {
+  const groupOf = sameClaimGroups([link("1", "2")]).groupOf;
+  const posts = [
+    { claimId: "1", postedAt: new Date("2026-10-01") },
+    { claimId: "2", postedAt: new Date("2026-10-02") },
+    { claimId: "3", postedAt: new Date("2026-10-03") },
+    { claimId: "4", postedAt: new Date("2026-10-04") },
+  ];
+  // Claim 2 is a repeat by the link between claims and also by 👀: one repeat. Claim 3 only by 👀.
+  assert.deepEqual(tier1Repeats(posts, posts, groupOf, new Set(["2", "3"])), { count: 2, of: 4 });
+  assert.deepEqual(tier1Repeats(posts, posts, groupOf), { count: 1, of: 4 });
+});
+
+test("a reply of his counts a message as reacted to, though it carries no emoji", () => {
+  assert.deepEqual(thumbsDownShare([{ latest: null, noted: true }, { latest: null, noted: false }, { latest: null }, { latest: "👎", noted: true }]), { count: 1, of: 4, unreacted: 2 });
+});
+
 test("the 👎 share counts the latest reaction, and a removed reaction as none", () => {
   assert.deepEqual(thumbsDownShare([{ latest: "👎" }, { latest: "👍" }, { latest: null }, { latest: null }]), { count: 1, of: 4, unreacted: 2 });
 });

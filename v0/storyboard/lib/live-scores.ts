@@ -7,7 +7,7 @@ import { careerEvents, eventsInPeriod, namedClaimIds } from "./career-events.ts"
 import { periodRange, type DayRange } from "./dates.ts";
 import { tierMarksFor } from "./queries.ts";
 import { sameClaimGroups } from "./reviews.ts";
-import { claimFacts, claimsInPeriod, digestsInPeriod, firstUsedRows, postsInPeriod, reviewTimes, sameClaimMarks, versionRows } from "./score-queries.ts";
+import { claimFacts, claimsInPeriod, claimsMarkedRepeatByLink, digestsInPeriod, firstUsedRows, postsInPeriod, reviewTimes, sameClaimMarks, versionRows } from "./score-queries.ts";
 import { overMerge, overSplit, reopenedClaims, sealedClaims, summariseEvents, thumbsDownShare, tier1Repeats, versionsInForce, wrongTier, type EventsSummary, type Share, type VersionsInForce, type WrongTier } from "./scores.ts";
 import { tierJudgements } from "./tier-marks.ts";
 
@@ -34,8 +34,11 @@ export type LiveScores = {
  */
 async function launchBar(range: DayRange | null, today: string): Promise<Pick<LiveScores, "repeats" | "thumbsDown" | "events">> {
   // The messages of the period, every post ever (an earlier one makes a repeat), and the links between stories.
-  const [posts, allPosts, digests, sameMarks] = await Promise.all([postsInPeriod(range), postsInPeriod(null), digestsInPeriod(range), sameClaimMarks()]);
-  const repeats = tier1Repeats(posts, allPosts, sameClaimGroups(sameMarks).groupOf);
+  const [posts, allPosts, digests, sameMarks, linkedRepeats] = await Promise.all([postsInPeriod(range), postsInPeriod(null), digestsInPeriod(range), sameClaimMarks(), claimsMarkedRepeatByLink()]);
+
+  // A post he called a repeat in Telegram counts at once: a 👀 on it, or a reply linking the earlier post.
+  const markedRepeat = new Set([...linkedRepeats, ...posts.filter((post) => post.latest === "👀").map((post) => post.claimId)]);
+  const repeats = tier1Repeats(posts, allPosts, sameClaimGroups(sameMarks).groupOf, markedRepeat);
   const thumbsDown = thumbsDownShare([...posts, ...digests]);
 
   // The career events of the period, and what the database says about the stories they name.

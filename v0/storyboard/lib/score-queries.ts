@@ -60,35 +60,70 @@ function dayConditions(column: string, range: DayRange | null, values: unknown[]
  * The tier-1 posts sent in a period: each claim's posted reading.
  *
  * @param range  The days, or null for every post ever sent.
- * @returns The posts, with each one's latest reaction.
+ * @returns The posts, with each one's latest emoji and whether he wrote a reply to it.
  */
-export async function postsInPeriod(range: DayRange | null): Promise<(Post & { latest: string | null })[]> {
+export async function postsInPeriod(range: DayRange | null): Promise<(Post & { latest: string | null; noted: boolean })[]> {
   const values: unknown[] = [];
-  const rows = await query<{ claim_id: string; posted_at: Date; latest: string | null }>(
+  const rows = await query<{ claim_id: string; posted_at: Date; latest: string | null; noted: boolean }>(
     "public",
-    `SELECT c.id AS claim_id, r.posted_at, ${latestReaction("r.message_id")} AS latest
+    `SELECT c.id AS claim_id, r.posted_at, ${latestReaction("r.message_id")} AS latest,
+            EXISTS (SELECT 1 FROM telegram_notes n WHERE n.post_reading_id = r.id) AS noted
      FROM claims c JOIN readings r ON r.id = c.posted_reading_id
      WHERE r.posted_at IS NOT NULL${dayConditions("r.posted_at", range, values)}`,
     values,
   );
-  return rows.map((row) => ({ claimId: row.claim_id, postedAt: row.posted_at, latest: row.latest }));
+  return rows.map((row) => ({ claimId: row.claim_id, postedAt: row.posted_at, latest: row.latest, noted: row.noted }));
 }
 
 /**
- * The digests sent in a period, each with its latest reaction.
+ * The latest emoji on a digest, as a SQL expression: a 👎 on any part of it counts
+ * as the digest's, since a long digest is several messages and he may react to
+ * any of them; otherwise the newest emoji on any part.
+ *
+ * @param digestId  The column holding the digest's id, with its table alias; a fixed name, never user input.
+ * @returns The expression.
+ */
+export function latestDigestReaction(digestId: string): string {
+  if (!digestId.includes(".")) throw new Error(`latestDigestReaction needs a qualified column, got "${digestId}"`);
+  return `(SELECT CASE WHEN bool_or(part.emoji = '👎') THEN '👎' ELSE (array_agg(part.emoji ORDER BY part.update_id DESC))[1] END
+     FROM (SELECT DISTINCT ON (re.message_id) re.message_id, re.emoji, re.update_id
+           FROM reactions re JOIN sent_messages sm ON sm.message_id = re.message_id
+           WHERE sm.digest_id = ${digestId}
+           ORDER BY re.message_id, re.update_id DESC) part)`;
+}
+
+/**
+ * The digests sent in a period, each with its latest emoji and whether he wrote a reply to any part.
  *
  * @param range  The days, or null for all time.
  * @returns One row per digest sent.
  */
-export async function digestsInPeriod(range: DayRange | null): Promise<{ id: string; latest: string | null }[]> {
+export async function digestsInPeriod(range: DayRange | null): Promise<{ id: string; latest: string | null; noted: boolean }[]> {
   const values: unknown[] = [];
-  return query<{ id: string; latest: string | null }>(
+  return query<{ id: string; latest: string | null; noted: boolean }>(
     "public",
-    `SELECT d.id, ${latestReaction("d.message_id")} AS latest
+    `SELECT d.id, ${latestDigestReaction("d.id")} AS latest,
+            EXISTS (SELECT 1 FROM telegram_notes n WHERE n.post_digest_id = d.id) AS noted
      FROM digests d
      WHERE d.posted_at IS NOT NULL AND NOT d.backfill${dayConditions("d.posted_at", range, values)}`,
     values,
   );
+}
+
+/**
+ * The claims whose tier-1 post he called a repeat by replying with a link to an earlier post.
+ * A link to the very post replied to is no repeat of anything, so it is left out.
+ *
+ * @returns The claim ids.
+ */
+export async function claimsMarkedRepeatByLink(): Promise<Set<string>> {
+  const rows = await query<{ claim_id: string }>(
+    "public",
+    `SELECT DISTINCT c.id AS claim_id
+     FROM telegram_notes n JOIN claims c ON c.posted_reading_id = n.post_reading_id
+     WHERE n.repeats_message_id IS NOT NULL AND n.repeats_message_id <> n.post_message_id`,
+  );
+  return new Set(rows.map((row) => row.claim_id));
 }
 
 /** One claim's facts as the database returns them. */

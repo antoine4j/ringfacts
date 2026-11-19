@@ -52,7 +52,8 @@ function fortnight(): FakePool {
     .on(/FROM reading_now WHERE claim_id/, [{ classifier_version: "v7.7", grouping_version: "g1", settings_version: 3, readings: "3" }])
     .on(/UNION ALL/, [])
     .on(/FROM claims c JOIN readings r/, (values) => (values.length === 0 ? allPosts : allPosts.filter((post) => post.claim_id !== "4")))
-    .on(/SELECT d\.id,/, [{ id: "1", latest: "👎" }, { id: "2", latest: "👍" }])
+    .on(/SELECT d\.id,/, [{ id: "1", latest: "👎", noted: false }, { id: "2", latest: "👍", noted: false }])
+    .on(/FROM telegram_notes n JOIN claims c/, [])
     .on(/^SELECT cn\.id FROM claim_now cn/, [{ id: "1" }, { id: "2" }])
     .on(/CROSS JOIN LATERAL/, []);
 }
@@ -119,6 +120,21 @@ test("the 👎 share is counted over the period's posts and digests together, a 
   const scores = await liveScores(RANGE, NOW);
   // Two posts (👎, none) and two digests (👎, 👍).
   assert.deepEqual(scores.thumbsDown, { count: 2, of: 4, unreacted: 1 });
+});
+
+test("a 👀 on a post, and a reply linking an earlier post, each make a repeat; a reply alone counts as reacted to", async () => {
+  const onDay = (day: string) => new Date(`${day}T18:00:00Z`);
+  // Claim 1 carries a 👀, claim 3 has no emoji but a reply that links an earlier post, and claim 3 is also the claim the review links to claim 4.
+  const posts = [
+    { claim_id: "1", posted_at: onDay("2026-10-15"), latest: "👀", noted: false },
+    { claim_id: "3", posted_at: onDay("2026-10-16"), latest: null, noted: true },
+  ];
+  fortnight().on(/FROM claims c JOIN readings r/, (values) => (values.length === 0 ? [...posts, { claim_id: "4", posted_at: onDay("2026-10-01"), latest: "👍", noted: false }] : posts))
+    .on(/FROM telegram_notes n JOIN claims c/, [{ claim_id: "3" }]);
+  const scores = await liveScores(RANGE, NOW);
+  assert.deepEqual(scores.repeats, { count: 2, of: 2 });
+  // The 👀 post is reacted to and not a 👎; the post with a reply is reacted to though it has no emoji; the digests are 👎 and 👍.
+  assert.deepEqual(scores.thumbsDown, { count: 1, of: 4, unreacted: 0 });
 });
 
 test("a repeat is a post of a story linked to one the group had already been sent, even from before the period", async () => {

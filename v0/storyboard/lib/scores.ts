@@ -132,19 +132,22 @@ export function wrongTier(sealed: string[], judgements: Map<string, TierJudgemen
 
 /**
  * Repeats in tier 1: posts of a story the group had already been sent as a
- * tier-1 post, by the maintainer's "same claim as" links. A group of three
- * posted claims holds two repeats.
+ * tier-1 post, by the maintainer's "same claim as" links, plus the posts he
+ * called a repeat in Telegram. A group of three posted claims holds two
+ * repeats, and a post counts once however it was marked.
  *
  * @param postsInPeriod  The tier-1 posts sent in the period.
  * @param allPosts  Every tier-1 post, so an earlier one outside the period still counts.
  * @param groupOf  Claim → the other claims of its group, from sameClaimGroups.
+ * @param markedRepeat  Claims whose post he called a repeat in Telegram (👀, or a reply linking the earlier post).
  * @returns Repeats of posts, both in the period.
  */
-export function tier1Repeats(postsInPeriod: Post[], allPosts: Post[], groupOf: Map<string, string[]>): Share {
+export function tier1Repeats(postsInPeriod: Post[], allPosts: Post[], groupOf: Map<string, string[]>, markedRepeat: Set<string> = new Set()): Share {
   const postedAt = new Map(allPosts.map((post) => [post.claimId, post.postedAt]));
 
-  // A repeat: another claim of its group went out before it.
+  // A repeat: the maintainer called it one (👀, or a reply linking the earlier post), or another claim of its group went out before it.
   const repeats = postsInPeriod.filter((post) => {
+    if (markedRepeat.has(post.claimId)) return true;
     const others = groupOf.get(post.claimId) ?? [];
     return others.some((other) => wentOutFirst(other, postedAt.get(other), post));
   });
@@ -169,12 +172,12 @@ function wentOutFirst(otherId: string, otherAt: Date | undefined, post: Post): b
 /**
  * The 👎 share: messages whose latest reaction is 👎.
  *
- * @param messages  The tier-1 posts and digests sent in the period, each with its latest reaction.
- * @returns 👎 of messages, and how many have no reaction at all.
+ * @param messages  The tier-1 posts and digests sent in the period, each with its latest emoji and whether he wrote a reply to it.
+ * @returns 👎 of messages, and how many have neither an emoji nor a reply.
  */
-export function thumbsDownShare(messages: { latest: string | null }[]): Share & { unreacted: number } {
+export function thumbsDownShare(messages: { latest: string | null; noted?: boolean }[]): Share & { unreacted: number } {
   const thumbsDown = messages.filter((message) => message.latest === "👎").length;
-  const unreacted = messages.filter((message) => message.latest === null).length;
+  const unreacted = messages.filter((message) => message.latest === null && !message.noted).length;
   return { count: thumbsDown, of: messages.length, unreacted };
 }
 

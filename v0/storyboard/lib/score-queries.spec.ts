@@ -7,7 +7,7 @@
 
 import { test, afterEach } from "node:test";
 import assert from "node:assert/strict";
-import { claimFacts, claimsInPeriod, digestsInPeriod, firstUsedRows, postsInPeriod, reviewTimes, sameClaimMarks, versionRows } from "./score-queries.ts";
+import { claimFacts, claimsInPeriod, claimsMarkedRepeatByLink, digestsInPeriod, firstUsedRows, latestDigestReaction, postsInPeriod, reviewTimes, sameClaimMarks, versionRows } from "./score-queries.ts";
 import { FakePool } from "./fake-pool.ts";
 
 let pool: FakePool;
@@ -16,9 +16,9 @@ afterEach(() => pool?.restore());
 const POSTED_AT = new Date("2026-10-05T18:00:00Z");
 
 test("every post ever sent is asked for with no days, and each row becomes a claim, a time and the latest reaction", async () => {
-  pool = new FakePool().install().on(/FROM claims c JOIN readings r/, [{ claim_id: "7", posted_at: POSTED_AT, latest: "👎" }, { claim_id: "8", posted_at: POSTED_AT, latest: null }]);
+  pool = new FakePool().install().on(/FROM claims c JOIN readings r/, [{ claim_id: "7", posted_at: POSTED_AT, latest: "👎", noted: false }, { claim_id: "8", posted_at: POSTED_AT, latest: null, noted: true }]);
   const posts = await postsInPeriod(null);
-  assert.deepEqual(posts, [{ claimId: "7", postedAt: POSTED_AT, latest: "👎" }, { claimId: "8", postedAt: POSTED_AT, latest: null }]);
+  assert.deepEqual(posts, [{ claimId: "7", postedAt: POSTED_AT, latest: "👎", noted: false }, { claimId: "8", postedAt: POSTED_AT, latest: null, noted: true }]);
   assert.deepEqual(pool.queries[0].values, []);
   assert.doesNotMatch(pool.queries[0].sql, /::date/);
 });
@@ -57,13 +57,20 @@ test("a period open at the end sends one value too", async () => {
   assert.doesNotMatch(pool.queries[0].sql, /<= \$/);
 });
 
-test("digests are the ones sent and not history, each with the latest reaction on its own message", async () => {
-  pool = new FakePool().install().on(/FROM digests d/, [{ id: "3", latest: "👍" }]);
-  assert.deepEqual(await digestsInPeriod({ from: "2026-10-01", to: "2026-10-07" }), [{ id: "3", latest: "👍" }]);
+test("a post is noted when a reply of his ends at its reading", async () => {
+  pool = new FakePool().install().on(/FROM claims c JOIN readings r/, []);
+  await postsInPeriod(null);
+  assert.match(pool.queries[0].sql, /EXISTS \(SELECT 1 FROM telegram_notes n WHERE n\.post_reading_id = r\.id\) AS noted/);
+});
+
+test("digests are the ones sent and not history, each with the latest emoji over all its parts and whether a reply of his reached it", async () => {
+  pool = new FakePool().install().on(/FROM digests d/, [{ id: "3", latest: "👍", noted: false }]);
+  assert.deepEqual(await digestsInPeriod({ from: "2026-10-01", to: "2026-10-07" }), [{ id: "3", latest: "👍", noted: false }]);
   const { sql, values } = pool.queries[0];
   assert.deepEqual(values, ["2026-10-01", "2026-10-07"]);
   assert.match(sql, /d\.posted_at IS NOT NULL AND NOT d\.backfill/);
-  assert.match(sql, /re\.message_id = d\.message_id/);
+  assert.match(sql, /sm\.digest_id = d\.id/);
+  assert.match(sql, /EXISTS \(SELECT 1 FROM telegram_notes n WHERE n\.post_digest_id = d\.id\) AS noted/);
   assert.match(sql, /\(d\.posted_at AT TIME ZONE 'America\/Los_Angeles'\)::date >= \$1::date/);
 });
 
@@ -195,4 +202,21 @@ test("a period's claims come with their readings and review views", async () => 
   const period = await claimsInPeriod(null);
   assert.deepEqual(period.members.get("1")?.map((row) => row.reading_id), ["11"]);
   assert.equal(period.views.get("1")?.review.state, "reviewed");
+});
+
+test("a 👎 on any part of a digest is the digest's emoji; otherwise the newest emoji on any part", () => {
+  const expression = latestDigestReaction("d.id");
+  assert.match(expression, /CASE WHEN bool_or\(part\.emoji = '👎'\) THEN '👎' ELSE \(array_agg\(part\.emoji ORDER BY part\.update_id DESC\)\)\[1\] END/);
+  assert.match(expression, /DISTINCT ON \(re\.message_id\)/);
+  assert.match(expression, /JOIN sent_messages sm ON sm\.message_id = re\.message_id/);
+});
+
+test("a digest column without its table name is refused", () => {
+  assert.throws(() => latestDigestReaction("id"), /needs a qualified column/);
+});
+
+test("the claims marked a repeat by a link are those with a note naming another post, never the post it replies to", async () => {
+  pool = new FakePool().install().on(/FROM telegram_notes n JOIN claims c/, [{ claim_id: "7" }, { claim_id: "9" }, { claim_id: "7" }]);
+  assert.deepEqual([...await claimsMarkedRepeatByLink()], ["7", "9"]);
+  assert.match(pool.queries[0].sql, /n\.repeats_message_id IS NOT NULL AND n\.repeats_message_id <> n\.post_message_id/);
 });
