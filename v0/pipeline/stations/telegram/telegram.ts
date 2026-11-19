@@ -8,7 +8,7 @@ import type { Poster } from "../../workflow/context.ts";
  * Makes text safe inside a Telegram HTML message.
  *
  * @param text  Any text.
- * @returns The text with &, < and > escaped.
+ * @returns The text with &, <, > and double quotes escaped.
  */
 export function escapeHtml(text: string): string {
   return text.replaceAll("&", "&amp;").replaceAll("<", "&lt;").replaceAll(">", "&gt;").replaceAll('"', "&quot;");

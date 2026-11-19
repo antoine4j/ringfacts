@@ -50,7 +50,7 @@ async function replayed(pool: pg.Pool): Promise<Replayed[]> {
  * @param nameMisses  True on training only: validation is scored, never read.
  * @returns The scores.
  */
-function classifierScores(rows: Replayed[], key: Record<string, Record<string, string>>, flips: Map<string, Set<string>>, nameMisses: boolean) {
+export function classifierScores(rows: Replayed[], key: Record<string, Record<string, string>>, flips: Map<string, Set<string>>, nameMisses: boolean) {
   const right: Record<string, number> = {};
   let allNine = 0;
   for (const row of rows) {
@@ -89,7 +89,7 @@ function classifierScores(rows: Replayed[], key: Record<string, Record<string, s
  * @param rows  The readings, any side.
  * @returns Pair precision and recall with the pair counts behind them, and how many ruled claims v0 split and how many v0 claims mixed ruled ones.
  */
-function groupingScores(rows: Replayed[]) {
+export function groupingScores(rows: Replayed[]) {
   let bothSame = 0;
   let v0Same = 0;
   let goldenSame = 0;
@@ -126,7 +126,7 @@ function groupingScores(rows: Replayed[]) {
  * @param nameMisses  True on training only: validation is scored, never read.
  * @returns The counts, with the ruled claims missed, falsely posted and posted twice named on training.
  */
-function postingScores(rows: Replayed[], key: Record<string, Record<string, string>>, nameMisses: boolean) {
+export function postingScores(rows: Replayed[], key: Record<string, Record<string, string>>, nameMisses: boolean) {
   const shouldPostArticle = (answers: Record<string, string>) =>
     answers.fact === "result" || (answers.fact === "next_fight" && (answers.firmness === "reported" || answers.firmness === "official_or_done"));
   const shouldPost = new Set(rows.filter((row) => shouldPostArticle(key[row.article])).map((row) => row.claimKey));
