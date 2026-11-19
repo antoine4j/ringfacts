@@ -35,10 +35,12 @@ export function said(call) {
  * @param week  The exported week.
  * @param judged  The judge's output.
  * @param problems  Where to add what was fixed or dropped.
+ * @param knownFighters  Claim → fighter over every week, so a call may name a claim the judge saw in an earlier week; the week's own claims when absent.
  * @returns Reading calls and same-claim calls, ids as strings.
  */
-export function checkedCalls(week, judged, problems) {
-  const fighterOf = new Map(week.claims.map((claim) => [String(claim.id), claim.fighter]));
+export function checkedCalls(week, judged, problems, knownFighters) {
+  const fighterOf = new Map(knownFighters ?? []);
+  for (const claim of week.claims) fighterOf.set(String(claim.id), claim.fighter);
   const expected = new Set(week.claims.flatMap((claim) => claim.readings.map((reading) => `${claim.id}:${reading.reading_id}`)));
   const readings = [];
   for (const call of judged.readings) {
@@ -83,9 +85,12 @@ export function joinCalls(byModel, modelNames) {
   for (const entry of readings.values()) {
     const votes = modelNames.map((model) => entry.calls[model]).filter(Boolean).map(said);
     const best = majority(votes);
+    // Unanimous and majority are counted against every judge, so a reading
+    // only some judges called cannot look unanimous.
     entry.judges = votes.length;
-    entry.agreement = !best ? "none" : best.unanimous ? "unanimous" : best.count > votes.length / 2 ? "majority" : "split";
-    const lead = best && best.count > votes.length / 2 ? modelNames.map((model) => entry.calls[model]).find((call) => call && said(call) === best.answer) : null;
+    const all = modelNames.length;
+    entry.agreement = !best ? "none" : best.count === all ? "unanimous" : best.count > all / 2 ? "majority" : "split";
+    const lead = best && best.count > all / 2 ? modelNames.map((model) => entry.calls[model]).find((call) => call && said(call) === best.answer) : null;
     entry.majority = lead ? { verdict: lead.verdict, belongs_in_claim_id: lead.belongs_in_claim_id } : null;
     entry.proposes_change = Boolean(entry.majority && entry.majority.verdict !== "belongs");
   }
@@ -110,6 +115,8 @@ export function joinCalls(byModel, modelNames) {
 
 if (process.argv[1] === fileURLToPath(import.meta.url)) {
   const weeks = readdirSync(join(here, "data", "history")).filter((name) => /^week-\d{4}-\d{2}-\d{2}\.json$/.test(name)).map((name) => name.slice(5, 15)).sort();
+  const knownFighters = new Map();
+  for (const monday of weeks) for (const claim of read(join(here, "data", "history", `week-${monday}.json`)).claims) knownFighters.set(String(claim.id), claim.fighter);
   const byModel = {};
   const problems = [];
   const judgedWeeks = new Set();
@@ -121,7 +128,7 @@ if (process.argv[1] === fileURLToPath(import.meta.url)) {
       judgedWeeks.add(monday);
       const week = read(join(here, "data", "history", `week-${monday}.json`));
       const before = problems.length;
-      const checked = checkedCalls(week, read(file), problems);
+      const checked = checkedCalls(week, read(file), problems, knownFighters);
       if (problems.length > before) console.log(`${model} ${monday}: ${problems.length - before} problem(s) fixed or dropped`);
       byModel[model].readings.push(...checked.readings);
       byModel[model].same_claims.push(...checked.same_claims);

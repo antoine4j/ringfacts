@@ -1,0 +1,404 @@
+{
+ "models": [
+  "opus",
+  "fable",
+  "sonnet"
+ ],
+ "weeks": [
+  "2026-07-27",
+  "2026-08-03",
+  "2026-08-10",
+  "2026-08-17",
+  "2026-08-24",
+  "2026-08-31",
+  "2026-09-07",
+  "2026-09-14",
+  "2026-09-21",
+  "2026-09-28",
+  "2026-10-05",
+  "2026-10-12",
+  "2026-10-19",
+  "2026-10-26",
+  "2026-11-02",
+  "2026-11-09",
+  "2026-11-16"
+ ],
+ "claims": 708,
+ "readings": 2350,
+ "problems": 0,
+ "agreement": {
+  "unanimous": 2000,
+  "majority": 302,
+  "split": 48,
+  "items": 2350,
+  "kappa_call": 0.658,
+  "kappa_verdict": 0.683
+ },
+ "agreement_change": {
+  "unanimous": 2111,
+  "majority": 239,
+  "split": 0,
+  "items": 2350,
+  "kappa": 0.764
+ },
+ "anton": {
+  "marks": 110,
+  "same": {
+   "opus": {
+    "same": 100,
+    "of": 110
+   },
+   "fable": {
+    "same": 99,
+    "of": 110
+   },
+   "sonnet": {
+    "same": 100,
+    "of": 110
+   }
+  },
+  "majority": {
+   "same": 100,
+   "of": 110
+  },
+  "unanimous": {
+   "same": 98,
+   "of": 106
+  },
+  "differences_by_claim": {
+   "289": 2,
+   "351": 1,
+   "383": 3,
+   "421": 4
+  },
+  "links": {
+   "his": 1,
+   "made_by_someone": 1,
+   "made_by_all": 1
+  }
+ },
+ "rates": {
+  "opus Daniil Donchenko": {
+   "over_merge": {
+    "count": 30,
+    "of": 107,
+    "pct": 28,
+    "low": 20.4,
+    "high": 37.2,
+    "text": "30 of 107 = 28% (20.4–37.2)"
+   },
+   "over_split": {
+    "count": 4,
+    "of": 36,
+    "pct": 11.1,
+    "low": 4.4,
+    "high": 25.3,
+    "text": "4 of 36 = 11.1% (4.4–25.3)"
+   }
+  },
+  "opus Ilia Topuria": {
+   "over_merge": {
+    "count": 338,
+    "of": 2132,
+    "pct": 15.9,
+    "low": 14.4,
+    "high": 17.5,
+    "text": "338 of 2132 = 15.9% (14.4–17.5)"
+   },
+   "over_split": {
+    "count": 158,
+    "of": 640,
+    "pct": 24.7,
+    "low": 21.5,
+    "high": 28.2,
+    "text": "158 of 640 = 24.7% (21.5–28.2)"
+   }
+  },
+  "opus Yaroslav Amosov": {
+   "over_merge": {
+    "count": 31,
+    "of": 111,
+    "pct": 27.9,
+    "low": 20.4,
+    "high": 36.9,
+    "text": "31 of 111 = 27.9% (20.4–36.9)"
+   },
+   "over_split": {
+    "count": 6,
+    "of": 32,
+    "pct": 18.8,
+    "low": 8.9,
+    "high": 35.3,
+    "text": "6 of 32 = 18.8% (8.9–35.3)"
+   }
+  },
+  "opus all": {
+   "over_merge": {
+    "count": 399,
+    "of": 2350,
+    "pct": 17,
+    "low": 15.5,
+    "high": 18.6,
+    "text": "399 of 2350 = 17% (15.5–18.6)"
+   },
+   "over_split": {
+    "count": 168,
+    "of": 708,
+    "pct": 23.7,
+    "low": 20.7,
+    "high": 27,
+    "text": "168 of 708 = 23.7% (20.7–27)"
+   }
+  },
+  "fable Daniil Donchenko": {
+   "over_merge": {
+    "count": 26,
+    "of": 107,
+    "pct": 24.3,
+    "low": 17.2,
+    "high": 33.2,
+    "text": "26 of 107 = 24.3% (17.2–33.2)"
+   },
+   "over_split": {
+    "count": 21,
+    "of": 36,
+    "pct": 58.3,
+    "low": 42.2,
+    "high": 72.9,
+    "text": "21 of 36 = 58.3% (42.2–72.9)"
+   }
+  },
+  "fable Ilia Topuria": {
+   "over_merge": {
+    "count": 348,
+    "of": 2132,
+    "pct": 16.3,
+    "low": 14.8,
+    "high": 18,
+    "text": "348 of 2132 = 16.3% (14.8–18)"
+   },
+   "over_split": {
+    "count": 181,
+    "of": 640,
+    "pct": 28.3,
+    "low": 24.9,
+    "high": 31.9,
+    "text": "181 of 640 = 28.3% (24.9–31.9)"
+   }
+  },
+  "fable Yaroslav Amosov": {
+   "over_merge": {
+    "count": 21,
+    "of": 111,
+    "pct": 18.9,
+    "low": 12.7,
+    "high": 27.2,
+    "text": "21 of 111 = 18.9% (12.7–27.2)"
+   },
+   "over_split": {
+    "count": 7,
+    "of": 32,
+    "pct": 21.9,
+    "low": 11,
+    "high": 38.8,
+    "text": "7 of 32 = 21.9% (11–38.8)"
+   }
+  },
+  "fable all": {
+   "over_merge": {
+    "count": 395,
+    "of": 2350,
+    "pct": 16.8,
+    "low": 15.4,
+    "high": 18.4,
+    "text": "395 of 2350 = 16.8% (15.4–18.4)"
+   },
+   "over_split": {
+    "count": 209,
+    "of": 708,
+    "pct": 29.5,
+    "low": 26.3,
+    "high": 33,
+    "text": "209 of 708 = 29.5% (26.3–33)"
+   }
+  },
+  "sonnet Daniil Donchenko": {
+   "over_merge": {
+    "count": 32,
+    "of": 107,
+    "pct": 29.9,
+    "low": 22.1,
+    "high": 39.2,
+    "text": "32 of 107 = 29.9% (22.1–39.2)"
+   },
+   "over_split": {
+    "count": 13,
+    "of": 36,
+    "pct": 36.1,
+    "low": 22.5,
+    "high": 52.4,
+    "text": "13 of 36 = 36.1% (22.5–52.4)"
+   }
+  },
+  "sonnet Ilia Topuria": {
+   "over_merge": {
+    "count": 367,
+    "of": 2132,
+    "pct": 17.2,
+    "low": 15.7,
+    "high": 18.9,
+    "text": "367 of 2132 = 17.2% (15.7–18.9)"
+   },
+   "over_split": {
+    "count": 167,
+    "of": 640,
+    "pct": 26.1,
+    "low": 22.8,
+    "high": 29.6,
+    "text": "167 of 640 = 26.1% (22.8–29.6)"
+   }
+  },
+  "sonnet Yaroslav Amosov": {
+   "over_merge": {
+    "count": 30,
+    "of": 111,
+    "pct": 27,
+    "low": 19.6,
+    "high": 36,
+    "text": "30 of 111 = 27% (19.6–36)"
+   },
+   "over_split": {
+    "count": 7,
+    "of": 32,
+    "pct": 21.9,
+    "low": 11,
+    "high": 38.8,
+    "text": "7 of 32 = 21.9% (11–38.8)"
+   }
+  },
+  "sonnet all": {
+   "over_merge": {
+    "count": 429,
+    "of": 2350,
+    "pct": 18.3,
+    "low": 16.7,
+    "high": 19.9,
+    "text": "429 of 2350 = 18.3% (16.7–19.9)"
+   },
+   "over_split": {
+    "count": 187,
+    "of": 708,
+    "pct": 26.4,
+    "low": 23.3,
+    "high": 29.8,
+    "text": "187 of 708 = 26.4% (23.3–29.8)"
+   }
+  },
+  "majority Daniil Donchenko": {
+   "over_merge": {
+    "count": 18,
+    "of": 107,
+    "pct": 16.8,
+    "low": 10.9,
+    "high": 25,
+    "text": "18 of 107 = 16.8% (10.9–25)"
+   },
+   "over_split": {
+    "count": 10,
+    "of": 36,
+    "pct": 27.8,
+    "low": 15.8,
+    "high": 44,
+    "text": "10 of 36 = 27.8% (15.8–44)"
+   }
+  },
+  "majority Ilia Topuria": {
+   "over_merge": {
+    "count": 310,
+    "of": 2132,
+    "pct": 14.5,
+    "low": 13.1,
+    "high": 16.1,
+    "text": "310 of 2132 = 14.5% (13.1–16.1)"
+   },
+   "over_split": {
+    "count": 158,
+    "of": 640,
+    "pct": 24.7,
+    "low": 21.5,
+    "high": 28.2,
+    "text": "158 of 640 = 24.7% (21.5–28.2)"
+   }
+  },
+  "majority Yaroslav Amosov": {
+   "over_merge": {
+    "count": 30,
+    "of": 111,
+    "pct": 27,
+    "low": 19.6,
+    "high": 36,
+    "text": "30 of 111 = 27% (19.6–36)"
+   },
+   "over_split": {
+    "count": 6,
+    "of": 32,
+    "pct": 18.8,
+    "low": 8.9,
+    "high": 35.3,
+    "text": "6 of 32 = 18.8% (8.9–35.3)"
+   }
+  },
+  "majority all": {
+   "over_merge": {
+    "count": 358,
+    "of": 2350,
+    "pct": 15.2,
+    "low": 13.8,
+    "high": 16.7,
+    "text": "358 of 2350 = 15.2% (13.8–16.7)"
+   },
+   "over_split": {
+    "count": 174,
+    "of": 708,
+    "pct": 24.6,
+    "low": 21.5,
+    "high": 27.9,
+    "text": "174 of 708 = 24.6% (21.5–27.9)"
+   }
+  }
+ },
+ "same_claims": {
+  "pairs": 209,
+  "unanimous": 55,
+  "majority": 54,
+  "minority": 100
+ },
+ "rules": {
+  "opus": {
+   "1": 15,
+   "2": 132,
+   "3": 3,
+   "4": 30,
+   "5": 55,
+   "6": 154,
+   "7": 10
+  },
+  "fable": {
+   "1": 86,
+   "2": 112,
+   "4": 23,
+   "5": 71,
+   "6": 96,
+   "7": 7
+  },
+  "sonnet": {
+   "1": 36,
+   "2": 112,
+   "4": 27,
+   "5": 79,
+   "6": 162,
+   "7": 13
+  }
+ },
+ "rule_gaps": 330
+}

@@ -1,0 +1,108 @@
+{
+ "models": [
+  "opus",
+  "fable",
+  "sonnet"
+ ],
+ "fighters": {
+  "topuria": {
+   "models": [
+    "opus",
+    "fable",
+    "sonnet"
+   ],
+   "links": {
+    "pairs": 255,
+    "all": 42,
+    "two": 82,
+    "one": 131
+   },
+   "stories": {
+    "opus": {
+     "stories": 12,
+     "claims_in_stories": 274
+    },
+    "fable": {
+     "stories": 19,
+     "claims_in_stories": 393
+    },
+    "sonnet": {
+     "stories": 27,
+     "claims_in_stories": 408
+    }
+   },
+   "career": {
+    "events": 4,
+    "agreed": 2,
+    "agreed_with_tier1": 0,
+    "agreed_tier1_after_a_day": 0
+   }
+  },
+  "donchenko": {
+   "models": [
+    "opus",
+    "fable",
+    "sonnet"
+   ],
+   "links": {
+    "pairs": 16,
+    "all": 9,
+    "two": 0,
+    "one": 7
+   },
+   "stories": {
+    "opus": {
+     "stories": 3,
+     "claims_in_stories": 28
+    },
+    "fable": {
+     "stories": 4,
+     "claims_in_stories": 27
+    },
+    "sonnet": {
+     "stories": 4,
+     "claims_in_stories": 29
+    }
+   },
+   "career": {
+    "events": 3,
+    "agreed": 2,
+    "agreed_with_tier1": 2,
+    "agreed_tier1_after_a_day": 0
+   }
+  },
+  "amosov": {
+   "models": [
+    "opus",
+    "fable",
+    "sonnet"
+   ],
+   "links": {
+    "pairs": 6,
+    "all": 5,
+    "two": 1,
+    "one": 0
+   },
+   "stories": {
+    "opus": {
+     "stories": 7,
+     "claims_in_stories": 26
+    },
+    "fable": {
+     "stories": 6,
+     "claims_in_stories": 24
+    },
+    "sonnet": {
+     "stories": 6,
+     "claims_in_stories": 26
+    }
+   },
+   "career": {
+    "events": 2,
+    "agreed": 1,
+    "agreed_with_tier1": 1,
+    "agreed_tier1_after_a_day": 0
+   }
+  }
+ }
+}

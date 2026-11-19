@@ -1,0 +1,29 @@
+{
+ "opus": {
+  "new_readings_in_old_claims_by_pipeline": 6,
+  "new_readings_moved_into_old_claims": 3,
+  "new_claims_linked_to_old": 7,
+  "old_links": 114,
+  "old_links_kept": 98,
+  "rejudged_2nov_old_calls": 128,
+  "rejudged_2nov_changed": 1
+ },
+ "fable": {
+  "new_readings_in_old_claims_by_pipeline": 15,
+  "new_readings_moved_into_old_claims": 2,
+  "new_claims_linked_to_old": 7,
+  "old_links": 116,
+  "old_links_kept": 93,
+  "rejudged_2nov_old_calls": 128,
+  "rejudged_2nov_changed": 5
+ },
+ "sonnet": {
+  "new_readings_in_old_claims_by_pipeline": 6,
+  "new_readings_moved_into_old_claims": 2,
+  "new_claims_linked_to_old": 7,
+  "old_links": 137,
+  "old_links_kept": 110,
+  "rejudged_2nov_old_calls": 128,
+  "rejudged_2nov_changed": 5
+ }
+}

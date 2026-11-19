@@ -1,0 +1,538 @@
+{
+ "week": "2026-08-03",
+ "models": [
+  "opus",
+  "fable",
+  "sonnet"
+ ],
+ "readings": 82,
+ "complete": 82,
+ "agreement": {
+  "centrality": {
+   "unanimous": 81,
+   "majority": 1,
+   "split": 0,
+   "items": 82,
+   "kappa": 0.986
+  },
+  "source": {
+   "unanimous": 78,
+   "majority": 4,
+   "split": 0,
+   "items": 82,
+   "kappa": 0.957
+  },
+  "act": {
+   "unanimous": 77,
+   "majority": 5,
+   "split": 0,
+   "items": 82,
+   "kappa": 0.946
+  },
+  "fact": {
+   "unanimous": 81,
+   "majority": 1,
+   "split": 0,
+   "items": 82,
+   "kappa": 0.962
+  },
+  "firmness": {
+   "unanimous": 80,
+   "majority": 2,
+   "split": 0,
+   "items": 82,
+   "kappa": 0.923
+  },
+  "reports_his_result": {
+   "unanimous": 82,
+   "majority": 0,
+   "split": 0,
+   "items": 82,
+   "kappa": 1
+  },
+  "reports_his_next_fight": {
+   "unanimous": 82,
+   "majority": 0,
+   "split": 0,
+   "items": 82,
+   "kappa": 1
+  },
+  "reports_his_health": {
+   "unanimous": 81,
+   "majority": 1,
+   "split": 0,
+   "items": 82,
+   "kappa": 0.952
+  },
+  "he_speaks": {
+   "unanimous": 82,
+   "majority": 0,
+   "split": 0,
+   "items": 82,
+   "kappa": 1
+  },
+  "kind": {
+   "unanimous": 50,
+   "majority": 32,
+   "split": 0,
+   "items": 82,
+   "kappa": 0.652
+  },
+  "career_event": {
+   "unanimous": 79,
+   "majority": 3,
+   "split": 0,
+   "items": 82,
+   "kappa": 0.829
+  },
+  "first_source": {
+   "unanimous": 53,
+   "majority": 27,
+   "split": 2,
+   "items": 82,
+   "kappa": 0.602
+  },
+  "language": {
+   "unanimous": 82,
+   "majority": 0,
+   "split": 0,
+   "items": 82,
+   "kappa": 1
+  },
+  "body_problem": {
+   "unanimous": 78,
+   "majority": 4,
+   "split": 0,
+   "items": 82,
+   "kappa": 0.889
+  }
+ },
+ "golden": {
+  "scored": 22,
+  "test_side_left_alone": 7,
+  "right": {
+   "opus": {
+    "centrality": 21,
+    "source": 22,
+    "act": 22,
+    "fact": 22,
+    "firmness": 22,
+    "reports_his_result": 22,
+    "reports_his_next_fight": 22,
+    "reports_his_health": 22,
+    "he_speaks": 22,
+    "all_nine": 21
+   },
+   "fable": {
+    "centrality": 21,
+    "source": 22,
+    "act": 22,
+    "fact": 22,
+    "firmness": 22,
+    "reports_his_result": 22,
+    "reports_his_next_fight": 22,
+    "reports_his_health": 22,
+    "he_speaks": 22,
+    "all_nine": 21
+   },
+   "sonnet": {
+    "centrality": 21,
+    "source": 22,
+    "act": 22,
+    "fact": 22,
+    "firmness": 22,
+    "reports_his_result": 22,
+    "reports_his_next_fight": 22,
+    "reports_his_health": 22,
+    "he_speaks": 22,
+    "all_nine": 21
+   },
+   "majority": {
+    "centrality": 21,
+    "source": 22,
+    "act": 22,
+    "fact": 22,
+    "firmness": 22,
+    "reports_his_result": 22,
+    "reports_his_next_fight": 22,
+    "reports_his_health": 22,
+    "he_speaks": 22,
+    "all_nine": 21
+   },
+   "pipeline v7.7": {
+    "centrality": 20,
+    "source": 20,
+    "act": 18,
+    "fact": 21,
+    "firmness": 21,
+    "reports_his_result": 22,
+    "reports_his_next_fight": 22,
+    "reports_his_health": 21,
+    "he_speaks": 22,
+    "all_nine": 15
+   }
+  },
+  "unanimous_articles": 22,
+  "unanimous_wrong_answers": 1
+ },
+ "classifier": {
+  "centrality": {
+   "unanimous": 81,
+   "pipeline_differs": 14
+  },
+  "source": {
+   "unanimous": 78,
+   "pipeline_differs": 10
+  },
+  "act": {
+   "unanimous": 77,
+   "pipeline_differs": 18
+  },
+  "fact": {
+   "unanimous": 81,
+   "pipeline_differs": 4
+  },
+  "firmness": {
+   "unanimous": 80,
+   "pipeline_differs": 4
+  },
+  "reports_his_result": {
+   "unanimous": 82,
+   "pipeline_differs": 0
+  },
+  "reports_his_next_fight": {
+   "unanimous": 82,
+   "pipeline_differs": 0
+  },
+  "reports_his_health": {
+   "unanimous": 81,
+   "pipeline_differs": 2
+  },
+  "he_speaks": {
+   "unanimous": 82,
+   "pipeline_differs": 2
+  }
+ },
+ "tier": {
+  "counted": 82,
+  "same": 79,
+  "confusion": {
+   "v0 3 → readers 3": 36,
+   "v0 2 → readers 3": 1,
+   "v0 3 → readers 2": 2,
+   "v0 2 → readers 2": 43
+  }
+ },
+ "extractor": {
+  "kind_same": 73,
+  "kind_counted": 82,
+  "no_claim_v0": 25,
+  "no_claim_readers": 29,
+  "no_claim_both": 24,
+  "pairs": {
+   "analysis → new_remark": 1,
+   "new_remark → about_someone_else": 2,
+   "no_text → analysis": 1,
+   "new_event → about_someone_else": 2,
+   "analysis → about_someone_else": 1,
+   "restatement → about_someone_else": 2
+  }
+ },
+ "text": {
+  "copies_majority": 11,
+  "problems_majority": 3,
+  "by_body_via": {
+   "json-ld": {
+    "readings": 49,
+    "copies": 6,
+    "problems": 2
+   },
+   "article-tag": {
+    "readings": 16,
+    "copies": 2,
+    "problems": 0
+   },
+   "feed-content": {
+    "readings": 2,
+    "copies": 0,
+    "problems": 0
+   },
+   "paragraphs": {
+    "readings": 8,
+    "copies": 3,
+    "problems": 1
+   },
+   "unknown": {
+    "readings": 6,
+    "copies": 0,
+    "problems": 0
+   },
+   "og-description": {
+    "readings": 1,
+    "copies": 0,
+    "problems": 0
+   }
+  },
+  "by_outlet": {
+   "MMA Sucka": {
+    "readings": 7,
+    "copies": 0,
+    "problems": 0
+   },
+   "BJPenn.com": {
+    "readings": 1,
+    "copies": 0,
+    "problems": 0
+   },
+   "boxingnews.com": {
+    "readings": 7,
+    "copies": 2,
+    "problems": 0
+   },
+   "ABC": {
+    "readings": 8,
+    "copies": 0,
+    "problems": 0
+   },
+   "20Minutos": {
+    "readings": 2,
+    "copies": 0,
+    "problems": 0
+   },
+   "Bloody Elbow": {
+    "readings": 6,
+    "copies": 0,
+    "problems": 0
+   },
+   "Yahoo Sports": {
+    "readings": 8,
+    "copies": 2,
+    "problems": 0
+   },
+   "MMA Mania": {
+    "readings": 1,
+    "copies": 1,
+    "problems": 0
+   },
+   "Diario AS": {
+    "readings": 3,
+    "copies": 0,
+    "problems": 0
+   },
+   "Estadio Deportivo": {
+    "readings": 2,
+    "copies": 0,
+    "problems": 0
+   },
+   "Mundo Deportivo": {
+    "readings": 3,
+    "copies": 0,
+    "problems": 0
+   },
+   "HOLA": {
+    "readings": 1,
+    "copies": 0,
+    "problems": 1
+   },
+   "El Comercio": {
+    "readings": 1,
+    "copies": 0,
+    "problems": 0
+   },
+   "heavy.com": {
+    "readings": 2,
+    "copies": 0,
+    "problems": 0
+   },
+   "okdiario.com": {
+    "readings": 1,
+    "copies": 0,
+    "problems": 0
+   },
+   "MMA Fighting": {
+    "readings": 5,
+    "copies": 1,
+    "problems": 1
+   },
+   "NY Fights": {
+    "readings": 1,
+    "copies": 0,
+    "problems": 0
+   },
+   "SPORT": {
+    "readings": 3,
+    "copies": 0,
+    "problems": 0
+   },
+   "MMA Junkie": {
+    "readings": 2,
+    "copies": 0,
+    "problems": 0
+   },
+   "Yahoo Sports Australia": {
+    "readings": 1,
+    "copies": 1,
+    "problems": 0
+   },
+   "MARCA": {
+    "readings": 2,
+    "copies": 1,
+    "problems": 0
+   },
+   "Marca": {
+    "readings": 1,
+    "copies": 1,
+    "problems": 0
+   },
+   "marca usa": {
+    "readings": 1,
+    "copies": 1,
+    "problems": 0
+   },
+   "Sherdog": {
+    "readings": 1,
+    "copies": 0,
+    "problems": 0
+   },
+   "Infobae": {
+    "readings": 2,
+    "copies": 1,
+    "problems": 0
+   },
+   "lasueur.com": {
+    "readings": 1,
+    "copies": 0,
+    "problems": 0
+   },
+   "abc.es": {
+    "readings": 1,
+    "copies": 0,
+    "problems": 0
+   },
+   "Sports Illustrated": {
+    "readings": 1,
+    "copies": 0,
+    "problems": 0
+   },
+   "OkDiario": {
+    "readings": 1,
+    "copies": 0,
+    "problems": 0
+   },
+   "El Confidencial": {
+    "readings": 1,
+    "copies": 0,
+    "problems": 0
+   },
+   "El Debate": {
+    "readings": 1,
+    "copies": 0,
+    "problems": 0
+   },
+   "20minutos.es": {
+    "readings": 1,
+    "copies": 0,
+    "problems": 0
+   },
+   "XSPORT.ua": {
+    "readings": 1,
+    "copies": 0,
+    "problems": 0
+   },
+   "The Lufkin Daily News": {
+    "readings": 1,
+    "copies": 0,
+    "problems": 1
+   },
+   "heraldo.es": {
+    "readings": 1,
+    "copies": 0,
+    "problems": 0
+   }
+  },
+  "languages": {
+   "en": 45,
+   "es": 35,
+   "fr": 1,
+   "uk": 1
+  },
+  "problem_kinds": {
+   "cut_off": 2,
+   "stub": 1
+  }
+ },
+ "sources": {
+  "fighter_post": 14,
+  "rewrite": 47,
+  "own_report": 16,
+  "unclear": 3,
+  "official": 1,
+  "own_interview": 1
+ },
+ "career": {
+  "none": 76,
+  "fight_booked": 0,
+  "fight_changed": 0,
+  "result": 0,
+  "injury": 6,
+  "ranking": 0,
+  "title": 0,
+  "contract_or_move": 0,
+  "retirement": 0
+ },
+ "screen": {
+  "unread": 22,
+  "screened": 22,
+  "models": [
+   "opus",
+   "fable",
+   "sonnet"
+  ],
+  "news_unanimous": 0,
+  "news_majority": 3,
+  "by_fighter": {
+   "Ilia Topuria": {
+    "unread": 16,
+    "news": 3
+   },
+   "Yaroslav Amosov": {
+    "unread": 6,
+    "news": 0
+   }
+  },
+  "by_outlet": {
+   "Diario de León": {
+    "unread": 1,
+    "news": 0
+   },
+   "Sherdog": {
+    "unread": 4,
+    "news": 0
+   },
+   "Eurosport": {
+    "unread": 3,
+    "news": 1
+   },
+   "Athlon Sports": {
+    "unread": 1,
+    "news": 0
+   },
+   "Bloody Elbow": {
+    "unread": 8,
+    "news": 2
+   },
+   "boxingnews.com": {
+    "unread": 1,
+    "news": 0
+   },
+   "Mshale": {
+    "unread": 3,
+    "news": 0
+   },
+   "mshale.com": {
+    "unread": 1,
+    "news": 0
+   }
+  }
+ }
+}

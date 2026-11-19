@@ -1,0 +1,31 @@
+{
+ "cut": "2026-11-19",
+ "rejudged_week": "2026-11-16",
+ "opus": {
+  "new_readings_in_old_claims_by_pipeline": 2,
+  "new_readings_moved_into_old_claims": 0,
+  "new_claims_linked_to_old": 2,
+  "old_links": 166,
+  "old_links_kept": 138,
+  "rejudged_old_calls": 160,
+  "rejudged_changed": 0
+ },
+ "fable": {
+  "new_readings_in_old_claims_by_pipeline": 2,
+  "new_readings_moved_into_old_claims": 0,
+  "new_claims_linked_to_old": 3,
+  "old_links": 172,
+  "old_links_kept": 123,
+  "rejudged_old_calls": 160,
+  "rejudged_changed": 1
+ },
+ "sonnet": {
+  "new_readings_in_old_claims_by_pipeline": 2,
+  "new_readings_moved_into_old_claims": 0,
+  "new_claims_linked_to_old": 1,
+  "old_links": 172,
+  "old_links_kept": 81,
+  "rejudged_old_calls": 160,
+  "rejudged_changed": 2
+ }
+}

@@ -1,0 +1,168 @@
+{
+ "week": "2026-10-12",
+ "models": [
+  "opus",
+  "fable",
+  "sonnet"
+ ],
+ "readings": 194,
+ "problems": 9,
+ "agreement": {
+  "unanimous": 183,
+  "majority": 11,
+  "split": 0,
+  "items": 194,
+  "kappa_call": 0.889,
+  "kappa_verdict": 0.899
+ },
+ "agreement_change": {
+  "unanimous": 185,
+  "majority": 9,
+  "split": 0,
+  "items": 194,
+  "kappa": 0.904
+ },
+ "anton": {
+  "marks": 26,
+  "same": {
+   "opus": 23,
+   "fable": 23,
+   "sonnet": 23
+  },
+  "majority": {
+   "same": 23,
+   "of": 26
+  },
+  "unanimous": {
+   "same": 23,
+   "of": 26
+  },
+  "links": {
+   "his": 1,
+   "made_by_someone": 0,
+   "made_by_all": 0
+  }
+ },
+ "same_claims": {
+  "pairs": 12,
+  "unanimous": 4,
+  "majority": 4,
+  "minority": 4
+ },
+ "rules": {
+  "opus": {
+   "1": 6,
+   "2": 16,
+   "4": 9,
+   "5": 2,
+   "6": 6
+  },
+  "fable": {
+   "1": 6,
+   "2": 14,
+   "4": 10,
+   "5": 1,
+   "6": 6
+  },
+  "sonnet": {
+   "1": 9,
+   "2": 15,
+   "4": 6,
+   "5": 5,
+   "6": 7
+  }
+ },
+ "rates": {
+  "opus": {
+   "over_merge": {
+    "count": 39,
+    "of": 194,
+    "pct": 20.1,
+    "low": 15.1,
+    "high": 26.3,
+    "text": "39 of 194 = 20.1% (15.1–26.3)"
+   },
+   "over_split": {
+    "count": 8,
+    "of": 41,
+    "pct": 19.5,
+    "low": 10.2,
+    "high": 34,
+    "text": "8 of 41 = 19.5% (10.2–34)"
+   }
+  },
+  "fable": {
+   "over_merge": {
+    "count": 37,
+    "of": 194,
+    "pct": 19.1,
+    "low": 14.2,
+    "high": 25.2,
+    "text": "37 of 194 = 19.1% (14.2–25.2)"
+   },
+   "over_split": {
+    "count": 15,
+    "of": 41,
+    "pct": 36.6,
+    "low": 23.6,
+    "high": 51.9,
+    "text": "15 of 41 = 36.6% (23.6–51.9)"
+   }
+  },
+  "sonnet": {
+   "over_merge": {
+    "count": 42,
+    "of": 194,
+    "pct": 21.6,
+    "low": 16.4,
+    "high": 28,
+    "text": "42 of 194 = 21.6% (16.4–28)"
+   },
+   "over_split": {
+    "count": 16,
+    "of": 41,
+    "pct": 39,
+    "low": 25.7,
+    "high": 54.3,
+    "text": "16 of 41 = 39% (25.7–54.3)"
+   }
+  },
+  "majority": {
+   "over_merge": {
+    "count": 37,
+    "of": 194,
+    "pct": 19.1,
+    "low": 14.2,
+    "high": 25.2,
+    "text": "37 of 194 = 19.1% (14.2–25.2)"
+   },
+   "over_split": {
+    "count": 14,
+    "of": 41,
+    "pct": 34.1,
+    "low": 21.6,
+    "high": 49.5,
+    "text": "14 of 41 = 34.1% (21.6–49.5)"
+   }
+  }
+ },
+ "first_run": {
+  "opus": {
+   "same": 183,
+   "of": 189
+  },
+  "fable": {
+   "same": 185,
+   "of": 189
+  },
+  "sonnet": {
+   "same": 184,
+   "of": 189
+  },
+  "majority": {
+   "same": 185,
+   "of": 189
+  }
+ },
+ "rule_gaps": 19
+}

@@ -1,0 +1,885 @@
+{
+ "week": "2026-09-14",
+ "models": [
+  "opus",
+  "fable",
+  "sonnet"
+ ],
+ "readings": 427,
+ "complete": 414,
+ "agreement": {
+  "centrality": {
+   "unanimous": 324,
+   "majority": 90,
+   "split": 0,
+   "items": 414,
+   "kappa": 0.746
+  },
+  "source": {
+   "unanimous": 388,
+   "majority": 25,
+   "split": 1,
+   "items": 414,
+   "kappa": 0.948
+  },
+  "act": {
+   "unanimous": 368,
+   "majority": 43,
+   "split": 3,
+   "items": 414,
+   "kappa": 0.905
+  },
+  "fact": {
+   "unanimous": 389,
+   "majority": 23,
+   "split": 2,
+   "items": 414,
+   "kappa": 0.918
+  },
+  "firmness": {
+   "unanimous": 393,
+   "majority": 21,
+   "split": 0,
+   "items": 414,
+   "kappa": 0.933
+  },
+  "reports_his_result": {
+   "unanimous": 414,
+   "majority": 0,
+   "split": 0,
+   "items": 414,
+   "kappa": 1
+  },
+  "reports_his_next_fight": {
+   "unanimous": 410,
+   "majority": 4,
+   "split": 0,
+   "items": 414,
+   "kappa": 0.956
+  },
+  "reports_his_health": {
+   "unanimous": 391,
+   "majority": 23,
+   "split": 0,
+   "items": 414,
+   "kappa": 0.805
+  },
+  "he_speaks": {
+   "unanimous": 405,
+   "majority": 9,
+   "split": 0,
+   "items": 414,
+   "kappa": 0.948
+  },
+  "kind": {
+   "unanimous": 322,
+   "majority": 89,
+   "split": 3,
+   "items": 414,
+   "kappa": 0.761
+  },
+  "career_event": {
+   "unanimous": 388,
+   "majority": 26,
+   "split": 0,
+   "items": 414,
+   "kappa": 0.717
+  },
+  "first_source": {
+   "unanimous": 345,
+   "majority": 60,
+   "split": 9,
+   "items": 414,
+   "kappa": 0.789
+  },
+  "language": {
+   "unanimous": 414,
+   "majority": 0,
+   "split": 0,
+   "items": 414,
+   "kappa": 1
+  },
+  "body_problem": {
+   "unanimous": 404,
+   "majority": 10,
+   "split": 0,
+   "items": 414,
+   "kappa": 0.941
+  }
+ },
+ "golden": {
+  "scored": 35,
+  "test_side_left_alone": 5,
+  "right": {
+   "opus": {
+    "centrality": 27,
+    "source": 32,
+    "act": 33,
+    "fact": 33,
+    "firmness": 33,
+    "reports_his_result": 35,
+    "reports_his_next_fight": 35,
+    "reports_his_health": 33,
+    "he_speaks": 32,
+    "all_nine": 24
+   },
+   "fable": {
+    "centrality": 31,
+    "source": 32,
+    "act": 33,
+    "fact": 34,
+    "firmness": 34,
+    "reports_his_result": 35,
+    "reports_his_next_fight": 35,
+    "reports_his_health": 34,
+    "he_speaks": 32,
+    "all_nine": 29
+   },
+   "sonnet": {
+    "centrality": 26,
+    "source": 33,
+    "act": 33,
+    "fact": 33,
+    "firmness": 33,
+    "reports_his_result": 35,
+    "reports_his_next_fight": 35,
+    "reports_his_health": 33,
+    "he_speaks": 32,
+    "all_nine": 24
+   },
+   "majority": {
+    "centrality": 27,
+    "source": 32,
+    "act": 33,
+    "fact": 33,
+    "firmness": 33,
+    "reports_his_result": 35,
+    "reports_his_next_fight": 35,
+    "reports_his_health": 33,
+    "he_speaks": 32,
+    "all_nine": 24
+   },
+   "pipeline v7.7": {
+    "centrality": 30,
+    "source": 30,
+    "act": 23,
+    "fact": 27,
+    "firmness": 25,
+    "reports_his_result": 34,
+    "reports_his_next_fight": 30,
+    "reports_his_health": 29,
+    "he_speaks": 31,
+    "all_nine": 12
+   }
+  },
+  "unanimous_articles": 26,
+  "unanimous_wrong_answers": 13
+ },
+ "classifier": {
+  "centrality": {
+   "unanimous": 324,
+   "pipeline_differs": 46
+  },
+  "source": {
+   "unanimous": 388,
+   "pipeline_differs": 66
+  },
+  "act": {
+   "unanimous": 368,
+   "pipeline_differs": 115
+  },
+  "fact": {
+   "unanimous": 389,
+   "pipeline_differs": 106
+  },
+  "firmness": {
+   "unanimous": 393,
+   "pipeline_differs": 94
+  },
+  "reports_his_result": {
+   "unanimous": 414,
+   "pipeline_differs": 5
+  },
+  "reports_his_next_fight": {
+   "unanimous": 410,
+   "pipeline_differs": 37
+  },
+  "reports_his_health": {
+   "unanimous": 391,
+   "pipeline_differs": 46
+  },
+  "he_speaks": {
+   "unanimous": 405,
+   "pipeline_differs": 5
+  }
+ },
+ "tier": {
+  "counted": 414,
+  "same": 380,
+  "confusion": {
+   "v0 3 → readers 3": 80,
+   "v0 2 → readers 2": 300,
+   "v0 2 → readers 3": 6,
+   "v0 3 → readers 2": 22,
+   "v0 1 → readers 2": 6
+  }
+ },
+ "extractor": {
+  "kind_same": 308,
+  "kind_counted": 414,
+  "no_claim_v0": 54,
+  "no_claim_readers": 91,
+  "no_claim_both": 54,
+  "pairs": {
+   "new_remark → about_someone_else": 30,
+   "new_event → new_remark": 9,
+   "restatement → about_someone_else": 1,
+   "new_remark → reaction": 27,
+   "analysis → new_remark": 13,
+   "analysis → reaction": 4,
+   "new_remark → analysis": 7,
+   "analysis → about_someone_else": 5,
+   "reaction → new_remark": 6,
+   "new_event → about_someone_else": 2,
+   "new_event → restatement": 1,
+   "reaction → about_someone_else": 1
+  }
+ },
+ "text": {
+  "copies_majority": 61,
+  "problems_majority": 7,
+  "by_body_via": {
+   "article-tag": {
+    "readings": 100,
+    "copies": 16,
+    "problems": 3
+   },
+   "paragraphs": {
+    "readings": 71,
+    "copies": 24,
+    "problems": 1
+   },
+   "json-ld": {
+    "readings": 184,
+    "copies": 18,
+    "problems": 1
+   },
+   "feed-content": {
+    "readings": 59,
+    "copies": 3,
+    "problems": 2
+   }
+  },
+  "by_outlet": {
+   "xsport.ua": {
+    "readings": 2,
+    "copies": 0,
+    "problems": 0
+   },
+   "Sport.ua": {
+    "readings": 2,
+    "copies": 1,
+    "problems": 1
+   },
+   "24 Канал": {
+    "readings": 2,
+    "copies": 0,
+    "problems": 0
+   },
+   "boxingnews.com": {
+    "readings": 31,
+    "copies": 8,
+    "problems": 0
+   },
+   "enews.com.ua": {
+    "readings": 2,
+    "copies": 0,
+    "problems": 0
+   },
+   "Infobae": {
+    "readings": 4,
+    "copies": 0,
+    "problems": 0
+   },
+   "Diario AS": {
+    "readings": 7,
+    "copies": 0,
+    "problems": 0
+   },
+   "La Razón": {
+    "readings": 1,
+    "copies": 0,
+    "problems": 0
+   },
+   "Estadio Deportivo": {
+    "readings": 4,
+    "copies": 0,
+    "problems": 0
+   },
+   "Mundo Deportivo": {
+    "readings": 19,
+    "copies": 1,
+    "problems": 0
+   },
+   "El Desmarque": {
+    "readings": 1,
+    "copies": 0,
+    "problems": 0
+   },
+   "Libertad Digital": {
+    "readings": 1,
+    "copies": 0,
+    "problems": 0
+   },
+   "HCH": {
+    "readings": 2,
+    "copies": 1,
+    "problems": 1
+   },
+   "El Debate": {
+    "readings": 2,
+    "copies": 0,
+    "problems": 0
+   },
+   "Relevo Deportes": {
+    "readings": 1,
+    "copies": 0,
+    "problems": 0
+   },
+   "Clarin.com": {
+    "readings": 1,
+    "copies": 0,
+    "problems": 0
+   },
+   "Yahoo Sports": {
+    "readings": 46,
+    "copies": 16,
+    "problems": 2
+   },
+   "MMA Mania": {
+    "readings": 6,
+    "copies": 2,
+    "problems": 0
+   },
+   "timesofindia.indiatimes.com": {
+    "readings": 2,
+    "copies": 0,
+    "problems": 0
+   },
+   "heavy.com": {
+    "readings": 12,
+    "copies": 0,
+    "problems": 0
+   },
+   "Bloody Elbow": {
+    "readings": 38,
+    "copies": 0,
+    "problems": 0
+   },
+   "Sports Illustrated": {
+    "readings": 3,
+    "copies": 0,
+    "problems": 0
+   },
+   "LowKickMMA.com": {
+    "readings": 6,
+    "copies": 0,
+    "problems": 0
+   },
+   "MMA Sucka": {
+    "readings": 28,
+    "copies": 3,
+    "problems": 0
+   },
+   "uk.sports.yahoo.com": {
+    "readings": 1,
+    "copies": 1,
+    "problems": 0
+   },
+   "20Minutos": {
+    "readings": 7,
+    "copies": 1,
+    "problems": 0
+   },
+   "20minutos.es": {
+    "readings": 4,
+    "copies": 0,
+    "problems": 0
+   },
+   "Marca": {
+    "readings": 15,
+    "copies": 4,
+    "problems": 0
+   },
+   "mmasucka.com": {
+    "readings": 2,
+    "copies": 0,
+    "problems": 0
+   },
+   "MMA Fighting": {
+    "readings": 28,
+    "copies": 7,
+    "problems": 2
+   },
+   "BJPenn.com": {
+    "readings": 10,
+    "copies": 0,
+    "problems": 0
+   },
+   "yardbarker.com": {
+    "readings": 2,
+    "copies": 1,
+    "problems": 0
+   },
+   "Yardbarker": {
+    "readings": 4,
+    "copies": 1,
+    "problems": 0
+   },
+   "mmamania.com": {
+    "readings": 1,
+    "copies": 1,
+    "problems": 0
+   },
+   "AOL.com": {
+    "readings": 1,
+    "copies": 0,
+    "problems": 0
+   },
+   "The Independent": {
+    "readings": 2,
+    "copies": 0,
+    "problems": 0
+   },
+   "Yahoo News New Zealand": {
+    "readings": 2,
+    "copies": 2,
+    "problems": 0
+   },
+   "Claro Sports": {
+    "readings": 1,
+    "copies": 0,
+    "problems": 0
+   },
+   "MMA Junkie": {
+    "readings": 9,
+    "copies": 0,
+    "problems": 0
+   },
+   "DAZN": {
+    "readings": 1,
+    "copies": 0,
+    "problems": 0
+   },
+   "The Times of India": {
+    "readings": 8,
+    "copies": 0,
+    "problems": 0
+   },
+   "MARCA": {
+    "readings": 6,
+    "copies": 1,
+    "problems": 0
+   },
+   "bjpenn.com": {
+    "readings": 2,
+    "copies": 0,
+    "problems": 0
+   },
+   "Actu MMA": {
+    "readings": 2,
+    "copies": 0,
+    "problems": 0
+   },
+   "The Big Lead": {
+    "readings": 2,
+    "copies": 1,
+    "problems": 0
+   },
+   "sports.yahoo.com": {
+    "readings": 4,
+    "copies": 3,
+    "problems": 0
+   },
+   "as.com": {
+    "readings": 1,
+    "copies": 0,
+    "problems": 0
+   },
+   "SPORT": {
+    "readings": 2,
+    "copies": 0,
+    "problems": 0
+   },
+   "El Pespunte": {
+    "readings": 1,
+    "copies": 0,
+    "problems": 0
+   },
+   "talkSPORT": {
+    "readings": 1,
+    "copies": 0,
+    "problems": 0
+   },
+   "Agencia NOVA": {
+    "readings": 5,
+    "copies": 3,
+    "problems": 0
+   },
+   "mundodeportivo.com": {
+    "readings": 1,
+    "copies": 0,
+    "problems": 0
+   },
+   "OkDiario": {
+    "readings": 5,
+    "copies": 0,
+    "problems": 0
+   },
+   "The Sun": {
+    "readings": 1,
+    "copies": 0,
+    "problems": 0
+   },
+   "Sportscape Magazine": {
+    "readings": 1,
+    "copies": 0,
+    "problems": 0
+   },
+   "ABC": {
+    "readings": 14,
+    "copies": 0,
+    "problems": 0
+   },
+   "agencianova.com": {
+    "readings": 1,
+    "copies": 1,
+    "problems": 0
+   },
+   "abc.es": {
+    "readings": 4,
+    "copies": 0,
+    "problems": 0
+   },
+   "MUNDIARIO": {
+    "readings": 4,
+    "copies": 0,
+    "problems": 0
+   },
+   "Central Oregon Daily": {
+    "readings": 1,
+    "copies": 1,
+    "problems": 0
+   },
+   "antena3.com": {
+    "readings": 1,
+    "copies": 0,
+    "problems": 0
+   },
+   "NY Fights": {
+    "readings": 5,
+    "copies": 0,
+    "problems": 0
+   },
+   "lnt.ma": {
+    "readings": 1,
+    "copies": 0,
+    "problems": 0
+   },
+   "ca.sports.yahoo.com": {
+    "readings": 1,
+    "copies": 0,
+    "problems": 0
+   },
+   "nyfights.com": {
+    "readings": 1,
+    "copies": 1,
+    "problems": 0
+   },
+   "La Sueur": {
+    "readings": 5,
+    "copies": 0,
+    "problems": 0
+   },
+   "marca.com": {
+    "readings": 1,
+    "copies": 0,
+    "problems": 0
+   },
+   "Las Provincias": {
+    "readings": 1,
+    "copies": 0,
+    "problems": 0
+   },
+   "Superdeporte": {
+    "readings": 1,
+    "copies": 0,
+    "problems": 0
+   },
+   "101TV": {
+    "readings": 1,
+    "copies": 0,
+    "problems": 0
+   },
+   "Récord": {
+    "readings": 1,
+    "copies": 0,
+    "problems": 0
+   },
+   "Fox Sports": {
+    "readings": 1,
+    "copies": 0,
+    "problems": 0
+   },
+   "Metro Ecuador": {
+    "readings": 2,
+    "copies": 0,
+    "problems": 0
+   },
+   "Sherdog": {
+    "readings": 1,
+    "copies": 0,
+    "problems": 1
+   },
+   "clarosports.com": {
+    "readings": 1,
+    "copies": 0,
+    "problems": 0
+   },
+   "El Español": {
+    "readings": 1,
+    "copies": 0,
+    "problems": 0
+   },
+   "El Correo": {
+    "readings": 1,
+    "copies": 0,
+    "problems": 0
+   },
+   "BBC": {
+    "readings": 1,
+    "copies": 0,
+    "problems": 0
+   },
+   "la-lista.com": {
+    "readings": 1,
+    "copies": 0,
+    "problems": 0
+   },
+   "USA Today": {
+    "readings": 3,
+    "copies": 0,
+    "problems": 0
+   },
+   "diarioenpositivo.com": {
+    "readings": 1,
+    "copies": 0,
+    "problems": 0
+   },
+   "Vanitatis": {
+    "readings": 1,
+    "copies": 0,
+    "problems": 0
+   },
+   "si.com": {
+    "readings": 1,
+    "copies": 0,
+    "problems": 0
+   },
+   "SPORTbible": {
+    "readings": 1,
+    "copies": 0,
+    "problems": 0
+   }
+  },
+  "languages": {
+   "uk": 8,
+   "en": 275,
+   "es": 124,
+   "fr": 7
+  },
+  "problem_kinds": {
+   "cut_off": 3,
+   "other": 1,
+   "stub": 3
+  }
+ },
+ "sources": {
+  "fighter_post": 61,
+  "own_interview": 17,
+  "rewrite": 263,
+  "unclear": 39,
+  "own_report": 30,
+  "official": 4
+ },
+ "career": {
+  "none": 382,
+  "fight_booked": 0,
+  "fight_changed": 0,
+  "result": 0,
+  "injury": 32,
+  "ranking": 0,
+  "title": 0,
+  "contract_or_move": 0,
+  "retirement": 0
+ },
+ "screen": {
+  "unread": 78,
+  "screened": 78,
+  "models": [
+   "opus",
+   "fable",
+   "sonnet"
+  ],
+  "news_unanimous": 14,
+  "news_majority": 19,
+  "by_fighter": {
+   "Daniil Donchenko": {
+    "unread": 3,
+    "news": 2
+   },
+   "Ilia Topuria": {
+    "unread": 73,
+    "news": 17
+   },
+   "Yaroslav Amosov": {
+    "unread": 2,
+    "news": 0
+   }
+  },
+  "by_outlet": {
+   "Tribuna.com": {
+    "unread": 2,
+    "news": 2
+   },
+   "XSPORT.ua": {
+    "unread": 1,
+    "news": 0
+   },
+   "DAZN": {
+    "unread": 5,
+    "news": 3
+   },
+   "NDTV Sports": {
+    "unread": 4,
+    "news": 1
+   },
+   "Bloody Elbow": {
+    "unread": 8,
+    "news": 3
+   },
+   "MMA Fighting": {
+    "unread": 3,
+    "news": 0
+   },
+   "Diario AS": {
+    "unread": 2,
+    "news": 0
+   },
+   "Eurosport": {
+    "unread": 11,
+    "news": 3
+   },
+   "eurosport.es": {
+    "unread": 1,
+    "news": 1
+   },
+   "El Nuevo Herald": {
+    "unread": 1,
+    "news": 1
+   },
+   "bloodyelbow.com": {
+    "unread": 2,
+    "news": 0
+   },
+   "MMAWeekly.com": {
+    "unread": 7,
+    "news": 1
+   },
+   "MMA Crossfire": {
+    "unread": 1,
+    "news": 1
+   },
+   "Athlon Sports": {
+    "unread": 1,
+    "news": 0
+   },
+   "Sherdog": {
+    "unread": 5,
+    "news": 1
+   },
+   "lindyssports.com": {
+    "unread": 2,
+    "news": 0
+   },
+   "Idaho Statesman": {
+    "unread": 1,
+    "news": 0
+   },
+   "MMA Mania": {
+    "unread": 1,
+    "news": 0
+   },
+   "The Mirror": {
+    "unread": 1,
+    "news": 0
+   },
+   "MMA Junkie": {
+    "unread": 1,
+    "news": 0
+   },
+   "Yahoo Sports": {
+    "unread": 3,
+    "news": 0
+   },
+   "MARCA": {
+    "unread": 2,
+    "news": 1
+   },
+   "SportsGrid": {
+    "unread": 1,
+    "news": 0
+   },
+   "MMA Sucka": {
+    "unread": 2,
+    "news": 0
+   },
+   "heavy.com": {
+    "unread": 1,
+    "news": 0
+   },
+   "Belleville News-Democrat": {
+    "unread": 1,
+    "news": 0
+   },
+   "20Minutos": {
+    "unread": 2,
+    "news": 1
+   },
+   "Centre Daily Times": {
+    "unread": 1,
+    "news": 0
+   },
+   "mmafighting.com": {
+    "unread": 1,
+    "news": 0
+   },
+   "SuaraGarut.ID": {
+    "unread": 1,
+    "news": 0
+   },
+   "ABC": {
+    "unread": 1,
+    "news": 0
+   },
+   "my.ua": {
+    "unread": 1,
+    "news": 0
+   },
+   "247Sports": {
+    "unread": 1,
+    "news": 0
+   }
+  }
+ }
+}

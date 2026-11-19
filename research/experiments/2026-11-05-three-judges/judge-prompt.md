@@ -6,8 +6,18 @@ article in them. The judge makes the calls the maintainer makes on the
 storyboard, each with a sentence, and names the rule behind every split, so a
 later ruling can flip those calls without a rerun. It does not see the
 maintainer's marks, and it never sees another model's readers or judge.
-Prompt version: j1 (2026-11-05). Rules 2 and 4 carry the maintainer's rulings
-of {RULINGS_DATE}.
+Prompt version: j4 (2026-11-05). j1 keyed rule 5 on the reader's `centrality`,
+which the labelling guide sets to `only_mentioned` for a callout aimed at the
+fighter, so j1 split callout write-ups off their claims; j2 keyed it on the
+reader's `kind` but still split a claim whose every reading is someone
+else's story into as many claims, though its readings do share one
+occasion. j3 limited rule 5 to a passing mention inside a claim about the
+fighter's own occasion, but let an article from the same sitting about
+another topic stay; j4 says one sitting can hold several pieces of news, so
+such an article is its own claim (the maintainer's own mark on #419).
+Whether a whole claim is about him at all stays the classifier's question,
+scored apart from grouping. Rules 2 and 4 carry
+the maintainer's rulings of {RULINGS_DATE}.
 
 ---
 
@@ -37,10 +47,21 @@ one announcement, or one social post. The rules:
    same rumour are one ongoing story: link such claims as one.
 4. A fight's preview, its result, and the reactions after it are different
    claims. {RULE_4}
-5. An article where the fighter appears only in passing (a link, a sidebar,
-   a list, one line in a roundup; the reader's `centrality` is
-   `only_mentioned` or `not_in_content`) is not part of a claim about that
-   occasion: call it its own claim.
+5. A claim is one piece of news about the fighter, and one sitting can hold
+   several pieces of news. Inside a claim whose core is news about the
+   fighter, an article that is about something else, even from the same
+   sitting or press conference (the promotion's boss on another fighter's
+   stoppage, another fighter's own story), and names the fighter only in
+   passing (the reader's `kind` is `about_someone_else` or `no_text`, or
+   the reader's `claim` is NO CLAIM) does not belong: call it its own
+   claim. The reader's `centrality` alone is not the signal: the labelling
+   guide calls an article `only_mentioned` even when it is built on a
+   callout, a prediction or a remark aimed at the fighter, and such an
+   article does report the news about him, so it belongs. The other way
+   round, a claim whose readings all report someone else's story (his
+   brother's fight) is grouped right: its readings `belong` to one another,
+   and whether the pipeline should have kept the claim at all is the
+   classifier's question, scored elsewhere.
 6. A claim's core is the occasion most of its readings share (not
    necessarily its label). Readings outside the core do not belong.
 7. A reading whose saved text is not the article (`body_problem` set) is
