@@ -70,6 +70,17 @@ development); live tables refuse deletes, so test runs never go there.
 Only `--kind hourly` without `--dev` and without `DRY_RUN` sends to
 Telegram.
 
+The last step of an hourly run reads the chat. It keeps the maintainer's own
+messages (replies, and replies to replies) and the emoji 👍 👎 🥱 👀 🤔 put on
+v0's messages, by anyone, with who reacted. A message from any other account is
+dropped before it is stored. It needs `TELEGRAM_CHAT_ID` and
+`TELEGRAM_MAINTAINER_ID` (the maintainer's Telegram account id) in `v0-config`;
+without the second it reads nothing, so his messages wait at Telegram, which
+keeps them for 24 hours. The bot must be an admin of the chat to see emoji and
+replies to replies. Every message the bot sends is recorded in `sent_messages`,
+and the `telegram_notes` view walks a reply chain up to the bot message at its
+top. Design: task 9.13 on the Launch Map (docs/launch-map.html).
+
 ## Measuring
 
 ```bash

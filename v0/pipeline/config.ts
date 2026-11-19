@@ -5,7 +5,7 @@
 // History: docs/decisions.md#one-config-secret
 
 export const REQUIRED_KEYS = ["JEV_API_KEY", "OPENROUTER_API_KEY", "GEMINI_API_KEY", "TELEGRAM_BOT_TOKEN", "V0_DATABASE_URL", "V0_FEED_DATABASE_URL"];
-export const OPTIONAL_KEYS = ["TELEGRAM_CHAT_ID"];
+export const OPTIONAL_KEYS = ["TELEGRAM_CHAT_ID", "TELEGRAM_MAINTAINER_ID"];
 
 /**
  * Copies V0_CONFIG's values into the environment, never over a value already set.

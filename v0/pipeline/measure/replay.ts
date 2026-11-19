@@ -113,7 +113,7 @@ async function main(): Promise<void> {
   const context: RunContext = {
     pool, feed: null, subjects: SUBJECTS, backfill: true, importDays: null, importLimit: null, deadline: Infinity,
     keys: { jev: jevTestKey(), openrouter: String(process.env.OPENROUTER_API_KEY), gemini: String(process.env.GEMINI_API_KEY) },
-    poster: async () => null, readsReactions: false, sends: false, tally: { imported: imported.imported, readings_made: imported.readings, no_body: imported.noBody },
+    poster: async () => null, readsFeedback: false, sends: false, tally: { imported: imported.imported, readings_made: imported.readings, no_body: imported.noBody },
   };
   const result = await (await buildWorkflow(context).createRun()).start({ inputData: {} });
 

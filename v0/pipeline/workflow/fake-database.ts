@@ -238,7 +238,7 @@ export function makeContext(database: FakeDatabase, overrides: Partial<RunContex
       messages.push(text);
       return nextMessageId++;
     },
-    readsReactions: false, sends: true, tally: {}, messages,
+    readsFeedback: false, sends: true, tally: {}, messages,
     ...overrides,
   };
   return context;

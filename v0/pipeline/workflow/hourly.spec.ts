@@ -459,21 +459,23 @@ test("a live run checks the day's counts after 07:00 Pacific, and a run on histo
   assert.equal(history.sent(/FROM daily_reports/).length, 0);
 });
 
-test("reactions are read only by a run that may post", async () => {
-  const savedToken = process.env.TELEGRAM_BOT_TOKEN;
-  const savedChat = process.env.TELEGRAM_CHAT_ID;
+test("feedback is read only by a run that may post, and only with the chat and the maintainer's account configured", async () => {
+  const saved = { token: process.env.TELEGRAM_BOT_TOKEN, chat: process.env.TELEGRAM_CHAT_ID, maintainer: process.env.TELEGRAM_MAINTAINER_ID };
   process.env.TELEGRAM_BOT_TOKEN = "bot-token";
   process.env.TELEGRAM_CHAT_ID = "-100";
+  process.env.TELEGRAM_MAINTAINER_ID = "4242";
   try {
     const stub = stubNetwork(() => ({ body: { result: [] } }));
     restoreNetwork = stub.restore;
-    await runWorkflow(makeContext(new FakeDatabase(), { readsReactions: false }));
+    await runWorkflow(makeContext(new FakeDatabase(), { readsFeedback: false }));
     assert.equal(stub.requests.length, 0);
-    await runWorkflow(makeContext(new FakeDatabase(), { readsReactions: true }));
+    await runWorkflow(makeContext(new FakeDatabase(), { readsFeedback: true }));
     assert.equal(stub.requests.length, 1);
     assert.match(stub.requests[0].url, /api\.telegram\.org\/botbot-token\/getUpdates/);
   } finally {
-    if (savedToken === undefined) delete process.env.TELEGRAM_BOT_TOKEN; else process.env.TELEGRAM_BOT_TOKEN = savedToken;
-    if (savedChat === undefined) delete process.env.TELEGRAM_CHAT_ID; else process.env.TELEGRAM_CHAT_ID = savedChat;
+    for (const [name, value] of [["TELEGRAM_BOT_TOKEN", saved.token], ["TELEGRAM_CHAT_ID", saved.chat], ["TELEGRAM_MAINTAINER_ID", saved.maintainer]] as const) {
+      if (value === undefined) delete process.env[name]; else process.env[name] = value;
+    }
   }
 });
+

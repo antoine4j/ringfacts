@@ -41,7 +41,7 @@ async function main(): Promise<void> {
   const { poster, sends } = posts ? makePoster(process.env.TELEGRAM_BOT_TOKEN, process.env.TELEGRAM_CHAT_ID, false) : { poster: async () => null, sends: false };
   const context: RunContext = {
     pool: openPool(url, flag("schema") ?? "public"), feed: null, keys: { jev: "", openrouter: "", gemini: "" }, subjects: [],
-    backfill: !posts, importDays: null, importLimit: null, deadline: Infinity, poster, readsReactions: false, sends, tally: {},
+    backfill: !posts, importDays: null, importLimit: null, deadline: Infinity, poster, readsFeedback: false, sends, tally: {},
   };
   const started = Date.now();
   const digestId = await writeAndPostDigest(context, fighter, { start: new Date(from), end: new Date(to) }, model);

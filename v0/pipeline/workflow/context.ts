@@ -18,7 +18,8 @@ export type RunContext = {
   importLimit: number | null;
   deadline: number;
   poster: Poster;
-  readsReactions: boolean;
+  /** True when the run may read feedback from the chat: it alone has the chat id and the maintainer's account id. */
+  readsFeedback: boolean;
   /** True when the poster really sends to Telegram, not just prints. */
   sends: boolean;
   tally: Record<string, number>;

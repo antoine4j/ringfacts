@@ -67,7 +67,7 @@ function contextFromFlags(): { context: RunContext; kind: string } {
     importLimit: flag("import-limit") ? Number(flag("import-limit")) : null,
     deadline: Date.now() + deadlineSeconds * 1000,
     poster,
-    readsReactions: sends,
+    readsFeedback: sends,
     sends,
     tally: {},
   };

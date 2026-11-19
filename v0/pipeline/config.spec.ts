@@ -21,3 +21,12 @@ test("a missing required value stops the start", () => {
   const { GEMINI_API_KEY, ...missing } = FULL;
   assert.throws(() => applyV0Config({ V0_CONFIG: JSON.stringify(missing) }), /no GEMINI_API_KEY/);
 });
+
+test("the maintainer's account id is read from the secret like the chat id, and is optional", () => {
+  const env: Record<string, string | undefined> = { V0_CONFIG: JSON.stringify({ ...FULL, TELEGRAM_MAINTAINER_ID: "4242" }) };
+  applyV0Config(env);
+  assert.equal(env.TELEGRAM_MAINTAINER_ID, "4242");
+  const without: Record<string, string | undefined> = { V0_CONFIG: JSON.stringify(FULL) };
+  applyV0Config(without);
+  assert.equal(without.TELEGRAM_MAINTAINER_ID, undefined);
+});

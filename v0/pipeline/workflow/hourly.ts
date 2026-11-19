@@ -12,7 +12,7 @@ import { classifyReading, extractReading, groupReading, decideReading } from "./
 import { postNewClaims } from "./post.ts";
 import { digestsDue } from "./digests.ts";
 import { dailyCountsDue } from "../measure/daily-counts.ts";
-import { storeReactions } from "./reactions.ts";
+import { storeFeedback } from "./feedback.ts";
 import { count, type RunContext } from "./context.ts";
 import { DailyLimitError } from "../stations/http.ts";
 
@@ -137,13 +137,13 @@ export function buildWorkflow(context: RunContext) {
       return {};
     },
   });
-  const reactionsStep = createStep({
-    id: "reactions",
+  const feedbackStep = createStep({
+    id: "feedback",
     inputSchema: z.any(),
     outputSchema: z.any(),
     execute: async () => {
-      // Only a run that may post reads reactions: it alone has the chat id.
-      if (context.readsReactions) await storeReactions(context, process.env.TELEGRAM_BOT_TOKEN, process.env.TELEGRAM_CHAT_ID);
+      // Only a run that may post reads feedback: it alone has the chat id.
+      if (context.readsFeedback) await storeFeedback(context, process.env.TELEGRAM_BOT_TOKEN, process.env.TELEGRAM_CHAT_ID, process.env.TELEGRAM_MAINTAINER_ID);
       return {};
     },
   });
@@ -160,7 +160,7 @@ export function buildWorkflow(context: RunContext) {
     .then(postStep)
     .then(digestStep)
     .then(countsStep)
-    .then(reactionsStep)
+    .then(feedbackStep)
     .commit();
 }
 
