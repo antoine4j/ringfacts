@@ -5,106 +5,106 @@
   "fable",
   "sonnet"
  ],
- "readings": 160,
- "complete": 160,
+ "readings": 176,
+ "complete": 176,
  "agreement": {
   "centrality": {
-   "unanimous": 121,
+   "unanimous": 137,
    "majority": 36,
    "split": 3,
-   "items": 160,
-   "kappa": 0.743
+   "items": 176,
+   "kappa": 0.772
   },
   "source": {
-   "unanimous": 121,
-   "majority": 38,
+   "unanimous": 132,
+   "majority": 43,
    "split": 1,
-   "items": 160,
-   "kappa": 0.794
+   "items": 176,
+   "kappa": 0.792
   },
   "act": {
-   "unanimous": 110,
-   "majority": 48,
+   "unanimous": 125,
+   "majority": 49,
    "split": 2,
-   "items": 160,
-   "kappa": 0.732
+   "items": 176,
+   "kappa": 0.748
   },
   "fact": {
-   "unanimous": 138,
-   "majority": 22,
+   "unanimous": 153,
+   "majority": 23,
    "split": 0,
-   "items": 160,
+   "items": 176,
    "kappa": 0.829
   },
   "firmness": {
-   "unanimous": 139,
-   "majority": 21,
+   "unanimous": 154,
+   "majority": 22,
    "split": 0,
-   "items": 160,
-   "kappa": 0.826
+   "items": 176,
+   "kappa": 0.827
   },
   "reports_his_result": {
-   "unanimous": 160,
+   "unanimous": 176,
    "majority": 0,
    "split": 0,
-   "items": 160,
+   "items": 176,
    "kappa": 1
   },
   "reports_his_next_fight": {
-   "unanimous": 144,
+   "unanimous": 160,
    "majority": 16,
    "split": 0,
-   "items": 160,
-   "kappa": 0.781
+   "items": 176,
+   "kappa": 0.786
   },
   "reports_his_health": {
-   "unanimous": 160,
+   "unanimous": 176,
    "majority": 0,
    "split": 0,
-   "items": 160,
+   "items": 176,
    "kappa": 1
   },
   "he_speaks": {
-   "unanimous": 152,
+   "unanimous": 168,
    "majority": 8,
    "split": 0,
-   "items": 160,
-   "kappa": 0.932
+   "items": 176,
+   "kappa": 0.937
   },
   "kind": {
-   "unanimous": 119,
-   "majority": 38,
+   "unanimous": 132,
+   "majority": 41,
    "split": 3,
-   "items": 160,
-   "kappa": 0.772
+   "items": 176,
+   "kappa": 0.779
   },
   "career_event": {
-   "unanimous": 142,
+   "unanimous": 158,
    "majority": 18,
    "split": 0,
-   "items": 160,
-   "kappa": 0.81
+   "items": 176,
+   "kappa": 0.814
   },
   "first_source": {
-   "unanimous": 123,
+   "unanimous": 139,
    "majority": 37,
    "split": 0,
-   "items": 160,
-   "kappa": 0.791
+   "items": 176,
+   "kappa": 0.807
   },
   "language": {
-   "unanimous": 160,
+   "unanimous": 176,
    "majority": 0,
    "split": 0,
-   "items": 160,
+   "items": 176,
    "kappa": 1
   },
   "body_problem": {
-   "unanimous": 153,
+   "unanimous": 169,
    "majority": 7,
    "split": 0,
-   "items": 160,
-   "kappa": 0.874
+   "items": 176,
+   "kappa": 0.88
   }
  },
  "golden": {
@@ -114,49 +114,49 @@
  },
  "classifier": {
   "centrality": {
-   "unanimous": 121,
-   "pipeline_differs": 18
+   "unanimous": 137,
+   "pipeline_differs": 22
   },
   "source": {
-   "unanimous": 121,
-   "pipeline_differs": 17
+   "unanimous": 132,
+   "pipeline_differs": 21
   },
   "act": {
-   "unanimous": 110,
-   "pipeline_differs": 24
+   "unanimous": 125,
+   "pipeline_differs": 25
   },
   "fact": {
-   "unanimous": 138,
-   "pipeline_differs": 27
+   "unanimous": 153,
+   "pipeline_differs": 28
   },
   "firmness": {
-   "unanimous": 139,
-   "pipeline_differs": 33
+   "unanimous": 154,
+   "pipeline_differs": 34
   },
   "reports_his_result": {
-   "unanimous": 160,
+   "unanimous": 176,
    "pipeline_differs": 1
   },
   "reports_his_next_fight": {
-   "unanimous": 144,
+   "unanimous": 160,
    "pipeline_differs": 13
   },
   "reports_his_health": {
-   "unanimous": 160,
+   "unanimous": 176,
    "pipeline_differs": 3
   },
   "he_speaks": {
-   "unanimous": 152,
+   "unanimous": 168,
    "pipeline_differs": 4
   }
  },
  "tier": {
-  "counted": 160,
-  "same": 125,
+  "counted": 176,
+  "same": 141,
   "confusion": {
-   "v0 3 → readers 3": 29,
+   "v0 3 → readers 3": 40,
    "v0 2 → readers 3": 14,
-   "v0 2 → readers 2": 75,
+   "v0 2 → readers 2": 80,
    "v0 1 → readers 2": 10,
    "v0 3 → readers 2": 9,
    "v0 2 → readers 1": 1,
@@ -165,13 +165,13 @@
   }
  },
  "extractor": {
-  "kind_same": 96,
-  "kind_counted": 160,
-  "no_claim_v0": 16,
-  "no_claim_readers": 34,
-  "no_claim_both": 13,
+  "kind_same": 111,
+  "kind_counted": 176,
+  "no_claim_v0": 26,
+  "no_claim_readers": 45,
+  "no_claim_both": 23,
   "pairs": {
-   "new_event → about_someone_else": 6,
+   "new_event → about_someone_else": 7,
    "new_remark → about_someone_else": 8,
    "new_remark → reaction": 31,
    "new_remark → restatement": 1,
@@ -189,27 +189,27 @@
   }
  },
  "text": {
-  "copies_majority": 15,
+  "copies_majority": 16,
   "problems_majority": 6,
   "by_body_via": {
    "json-ld": {
-    "readings": 84,
+    "readings": 91,
     "copies": 7,
     "problems": 1
    },
    "article-tag": {
-    "readings": 41,
+    "readings": 42,
     "copies": 2,
     "problems": 4
    },
    "feed-content": {
-    "readings": 13,
+    "readings": 18,
     "copies": 2,
     "problems": 1
    },
    "paragraphs": {
-    "readings": 22,
-    "copies": 4,
+    "readings": 25,
+    "copies": 5,
     "problems": 0
    }
   },
@@ -240,7 +240,7 @@
     "problems": 0
    },
    "MARCA": {
-    "readings": 6,
+    "readings": 8,
     "copies": 0,
     "problems": 0
    },
@@ -250,7 +250,7 @@
     "problems": 0
    },
    "MMA Fighting": {
-    "readings": 7,
+    "readings": 8,
     "copies": 1,
     "problems": 1
    },
@@ -260,17 +260,17 @@
     "problems": 0
    },
    "ABC": {
-    "readings": 5,
+    "readings": 6,
     "copies": 0,
     "problems": 0
    },
    "Bloody Elbow": {
-    "readings": 9,
+    "readings": 13,
     "copies": 1,
     "problems": 0
    },
    "Yahoo Sports": {
-    "readings": 17,
+    "readings": 18,
     "copies": 4,
     "problems": 2
    },
@@ -295,7 +295,7 @@
     "problems": 0
    },
    "Infobae": {
-    "readings": 3,
+    "readings": 4,
     "copies": 0,
     "problems": 0
    },
@@ -320,7 +320,7 @@
     "problems": 0
    },
    "MMA Sucka": {
-    "readings": 10,
+    "readings": 11,
     "copies": 2,
     "problems": 0
    },
@@ -345,7 +345,7 @@
     "problems": 0
    },
    "MUNDIARIO": {
-    "readings": 2,
+    "readings": 3,
     "copies": 0,
     "problems": 0
    },
@@ -444,6 +444,11 @@
     "copies": 0,
     "problems": 0
    },
+   "Vietnam.vn": {
+    "readings": 2,
+    "copies": 1,
+    "problems": 0
+   },
    "BetBrothers.es": {
     "readings": 1,
     "copies": 0,
@@ -455,6 +460,16 @@
     "problems": 0
    },
    "The Body Lock": {
+    "readings": 1,
+    "copies": 0,
+    "problems": 0
+   },
+   "La Vanguardia": {
+    "readings": 1,
+    "copies": 0,
+    "problems": 0
+   },
+   "Sherdog": {
     "readings": 1,
     "copies": 0,
     "problems": 0
@@ -536,8 +551,8 @@
    }
   },
   "languages": {
-   "es": 67,
-   "en": 82,
+   "es": 74,
+   "en": 91,
    "fr": 2,
    "uk": 9
   },
@@ -550,14 +565,14 @@
  },
  "sources": {
   "official": 25,
-  "rewrite": 63,
-  "own_interview": 8,
-  "fighter_post": 40,
+  "rewrite": 74,
+  "own_interview": 10,
+  "fighter_post": 41,
   "unclear": 11,
-  "own_report": 13
+  "own_report": 15
  },
  "career": {
-  "none": 121,
+  "none": 137,
   "fight_booked": 25,
   "fight_changed": 0,
   "result": 0,
@@ -568,8 +583,8 @@
   "retirement": 0
  },
  "screen": {
-  "unread": 31,
-  "screened": 31,
+  "unread": 36,
+  "screened": 36,
   "models": [
    "opus",
    "fable",
@@ -579,7 +594,7 @@
   "news_majority": 14,
   "by_fighter": {
    "Ilia Topuria": {
-    "unread": 27,
+    "unread": 32,
     "news": 14
    },
    "Yaroslav Amosov": {
@@ -597,7 +612,7 @@
     "news": 1
    },
    "MARCA": {
-    "unread": 1,
+    "unread": 2,
     "news": 0
    },
    "Telecom Asia Sport": {
@@ -609,7 +624,7 @@
     "news": 3
    },
    "Eurosport": {
-    "unread": 5,
+    "unread": 7,
     "news": 3
    },
    "ABC": {
@@ -625,7 +640,7 @@
     "news": 2
    },
    "Bloody Elbow": {
-    "unread": 1,
+    "unread": 3,
     "news": 1
    },
    "NDTV Sports": {

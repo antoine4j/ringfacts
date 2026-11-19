@@ -23,93 +23,93 @@
   "2026-11-09",
   "2026-11-16"
  ],
- "readings": 2334,
- "complete": 2334,
- "unread": 816,
+ "readings": 2350,
+ "complete": 2350,
+ "unread": 821,
  "agreement": {
   "centrality": {
-   "unanimous": 2036,
+   "unanimous": 2052,
    "majority": 293,
    "split": 5,
-   "items": 2334,
-   "kappa": 0.87
+   "items": 2350,
+   "kappa": 0.871
   },
   "source": {
-   "unanimous": 2093,
-   "majority": 237,
+   "unanimous": 2104,
+   "majority": 242,
    "split": 4,
-   "items": 2334,
-   "kappa": 0.912
+   "items": 2350,
+   "kappa": 0.911
   },
   "act": {
-   "unanimous": 1988,
-   "majority": 334,
+   "unanimous": 2003,
+   "majority": 335,
    "split": 12,
-   "items": 2334,
+   "items": 2350,
    "kappa": 0.875
   },
   "fact": {
-   "unanimous": 2152,
-   "majority": 177,
+   "unanimous": 2167,
+   "majority": 178,
    "split": 5,
-   "items": 2334,
-   "kappa": 0.883
+   "items": 2350,
+   "kappa": 0.882
   },
   "firmness": {
-   "unanimous": 2159,
-   "majority": 169,
+   "unanimous": 2174,
+   "majority": 170,
    "split": 6,
-   "items": 2334,
+   "items": 2350,
    "kappa": 0.881
   },
   "reports_his_result": {
-   "unanimous": 2333,
+   "unanimous": 2349,
    "majority": 1,
    "split": 0,
-   "items": 2334,
+   "items": 2350,
    "kappa": 0.988
   },
   "reports_his_next_fight": {
-   "unanimous": 2294,
+   "unanimous": 2310,
    "majority": 40,
    "split": 0,
-   "items": 2334,
+   "items": 2350,
    "kappa": 0.881
   },
   "reports_his_health": {
-   "unanimous": 2285,
+   "unanimous": 2301,
    "majority": 49,
    "split": 0,
-   "items": 2334,
+   "items": 2350,
    "kappa": 0.864
   },
   "he_speaks": {
-   "unanimous": 2296,
+   "unanimous": 2312,
    "majority": 38,
    "split": 0,
-   "items": 2334,
+   "items": 2350,
    "kappa": 0.968
   },
   "kind": {
-   "unanimous": 1789,
-   "majority": 516,
+   "unanimous": 1802,
+   "majority": 519,
    "split": 29,
-   "items": 2334,
-   "kappa": 0.769
+   "items": 2350,
+   "kappa": 0.77
   },
   "career_event": {
-   "unanimous": 2239,
+   "unanimous": 2255,
    "majority": 95,
    "split": 0,
-   "items": 2334,
+   "items": 2350,
    "kappa": 0.81
   },
   "first_source": {
-   "unanimous": 1916,
+   "unanimous": 1932,
    "majority": 386,
    "split": 32,
-   "items": 2334,
-   "kappa": 0.796
+   "items": 2350,
+   "kappa": 0.798
   }
  },
  "golden": {
@@ -182,39 +182,39 @@
  },
  "classifier": {
   "centrality": {
-   "unanimous": 2036,
-   "pipeline_differs": 353
+   "unanimous": 2052,
+   "pipeline_differs": 357
   },
   "source": {
-   "unanimous": 2093,
-   "pipeline_differs": 278
+   "unanimous": 2104,
+   "pipeline_differs": 282
   },
   "act": {
-   "unanimous": 1988,
-   "pipeline_differs": 475
+   "unanimous": 2003,
+   "pipeline_differs": 476
   },
   "fact": {
-   "unanimous": 2152,
-   "pipeline_differs": 344
+   "unanimous": 2167,
+   "pipeline_differs": 345
   },
   "firmness": {
-   "unanimous": 2159,
-   "pipeline_differs": 366
+   "unanimous": 2174,
+   "pipeline_differs": 367
   },
   "reports_his_result": {
-   "unanimous": 2333,
+   "unanimous": 2349,
    "pipeline_differs": 38
   },
   "reports_his_next_fight": {
-   "unanimous": 2294,
+   "unanimous": 2310,
    "pipeline_differs": 115
   },
   "reports_his_health": {
-   "unanimous": 2285,
+   "unanimous": 2301,
    "pipeline_differs": 180
   },
   "he_speaks": {
-   "unanimous": 2296,
+   "unanimous": 2312,
    "pipeline_differs": 38
   }
  },
@@ -224,8 +224,8 @@
    "differs": 75
   },
   "Ilia Topuria": {
-   "unanimous": 17815,
-   "differs": 2005
+   "unanimous": 17951,
+   "differs": 2016
   },
   "Yaroslav Amosov": {
    "unanimous": 920,
@@ -233,14 +233,14 @@
   }
  },
  "tier": {
-  "counted": 2334,
-  "same": 2064,
+  "counted": 2350,
+  "same": 2080,
   "confusion": {
    "v0 1 → readers 1": 71,
-   "v0 3 → readers 3": 718,
+   "v0 3 → readers 3": 729,
    "v0 2 → readers 3": 80,
    "v0 3 → readers 2": 140,
-   "v0 2 → readers 2": 1275,
+   "v0 2 → readers 2": 1280,
    "v0 1 → readers 3": 5,
    "v0 1 → readers 2": 41,
    "v0 2 → readers 1": 2,
@@ -600,13 +600,13 @@
   ]
  },
  "extractor": {
-  "same": 1804,
-  "counted": 2334,
+  "same": 1819,
+  "counted": 2350,
   "pairs": {
    "analysis → new_remark": 17,
    "new_remark → about_someone_else": 152,
    "no_text → analysis": 1,
-   "new_event → about_someone_else": 18,
+   "new_event → about_someone_else": 19,
    "analysis → about_someone_else": 36,
    "restatement → about_someone_else": 7,
    "reaction → new_remark": 21,
@@ -634,31 +634,31 @@
    "about_someone_else → restatement": 1,
    "new_event → reaction": 1
   },
-  "no_claim_v0": 472,
-  "no_claim_readers": 701,
-  "no_claim_both": 453
+  "no_claim_v0": 482,
+  "no_claim_readers": 712,
+  "no_claim_both": 463
  },
  "text": {
-  "copies": 301,
+  "copies": 302,
   "problems": 55,
   "by_body_via": {
    "paragraphs": {
-    "readings": 365,
-    "copies": 113,
+    "readings": 368,
+    "copies": 114,
     "problems": 20
    },
    "json-ld": {
-    "readings": 1166,
+    "readings": 1173,
     "copies": 111,
     "problems": 14
    },
    "article-tag": {
-    "readings": 488,
+    "readings": 489,
     "copies": 56,
     "problems": 17
    },
    "feed-content": {
-    "readings": 308,
+    "readings": 313,
     "copies": 21,
     "problems": 4
    },
@@ -690,7 +690,7 @@
     "problems": 0
    },
    "MMA Sucka": {
-    "readings": 191,
+    "readings": 192,
     "copies": 20,
     "problems": 1
    },
@@ -705,7 +705,7 @@
     "problems": 0
    },
    "ABC": {
-    "readings": 117,
+    "readings": 118,
     "copies": 1,
     "problems": 0
    },
@@ -715,12 +715,12 @@
     "problems": 0
    },
    "Bloody Elbow": {
-    "readings": 247,
+    "readings": 251,
     "copies": 8,
     "problems": 0
    },
    "Yahoo Sports": {
-    "readings": 214,
+    "readings": 215,
     "copies": 77,
     "problems": 12
    },
@@ -765,7 +765,7 @@
     "problems": 0
    },
    "MMA Fighting": {
-    "readings": 130,
+    "readings": 131,
     "copies": 28,
     "problems": 7
    },
@@ -790,7 +790,7 @@
     "problems": 0
    },
    "MARCA": {
-    "readings": 73,
+    "readings": 75,
     "copies": 7,
     "problems": 0
    },
@@ -805,12 +805,12 @@
     "problems": 0
    },
    "Sherdog": {
-    "readings": 3,
+    "readings": 4,
     "copies": 0,
     "problems": 1
    },
    "Infobae": {
-    "readings": 31,
+    "readings": 32,
     "copies": 1,
     "problems": 0
    },
@@ -990,7 +990,7 @@
     "problems": 0
    },
    "MUNDIARIO": {
-    "readings": 32,
+    "readings": 33,
     "copies": 1,
     "problems": 0
    },
@@ -1275,7 +1275,7 @@
     "problems": 0
    },
    "La Vanguardia": {
-    "readings": 2,
+    "readings": 3,
     "copies": 0,
     "problems": 0
    },
@@ -1869,6 +1869,11 @@
     "copies": 0,
     "problems": 0
    },
+   "Vietnam.vn": {
+    "readings": 2,
+    "copies": 1,
+    "problems": 0
+   },
    "BetBrothers.es": {
     "readings": 1,
     "copies": 0,
@@ -1882,8 +1887,8 @@
   },
   "languages": {
    "uk": 103,
-   "en": 1410,
-   "es": 789,
+   "en": 1419,
+   "es": 796,
    "fr": 32
   },
   "problem_kinds": {
@@ -1899,12 +1904,12 @@
    "differs": 88
   },
   "en": {
-   "unanimous": 11982,
-   "differs": 1304
+   "unanimous": 12060,
+   "differs": 1308
   },
   "es": {
-   "unanimous": 6505,
-   "differs": 767
+   "unanimous": 6563,
+   "differs": 774
   },
   "fr": {
    "unanimous": 271,
@@ -1912,16 +1917,16 @@
   }
  },
  "sources": {
-  "fighter_post": 355,
+  "fighter_post": 356,
   "unclear": 190,
-  "rewrite": 1372,
-  "own_report": 215,
+  "rewrite": 1383,
+  "own_report": 217,
   "official": 97,
-  "own_interview": 96,
+  "own_interview": 98,
   "wire": 9
  },
  "career": {
-  "none": 2168,
+  "none": 2184,
   "fight_booked": 48,
   "fight_changed": 0,
   "result": 28,
@@ -1948,8 +1953,8 @@
    "own": 1
   },
   "MMA Sucka": {
-   "readings": 191,
-   "rewrites": 144,
+   "readings": 192,
+   "rewrites": 145,
    "own": 9
   },
   "BJPenn.com": {
@@ -1963,9 +1968,9 @@
    "own": 1
   },
   "ABC": {
-   "readings": 117,
+   "readings": 118,
    "rewrites": 55,
-   "own": 26
+   "own": 27
   },
   "20Minutos": {
    "readings": 59,
@@ -1973,13 +1978,13 @@
    "own": 1
   },
   "Bloody Elbow": {
-   "readings": 247,
-   "rewrites": 160,
+   "readings": 251,
+   "rewrites": 163,
    "own": 25
   },
   "Yahoo Sports": {
-   "readings": 214,
-   "rewrites": 156,
+   "readings": 215,
+   "rewrites": 157,
    "own": 24
   },
   "MMA Mania": {
@@ -2023,9 +2028,9 @@
    "own": 0
   },
   "MMA Fighting": {
-   "readings": 130,
+   "readings": 131,
    "rewrites": 69,
-   "own": 42
+   "own": 43
   },
   "NY Fights": {
    "readings": 41,
@@ -2048,9 +2053,9 @@
    "own": 0
   },
   "MARCA": {
-   "readings": 73,
+   "readings": 75,
    "rewrites": 39,
-   "own": 11
+   "own": 13
   },
   "Marca": {
    "readings": 38,
@@ -2063,13 +2068,13 @@
    "own": 0
   },
   "Sherdog": {
-   "readings": 3,
-   "rewrites": 1,
+   "readings": 4,
+   "rewrites": 2,
    "own": 0
   },
   "Infobae": {
-   "readings": 31,
-   "rewrites": 17,
+   "readings": 32,
+   "rewrites": 18,
    "own": 0
   },
   "lasueur.com": {
@@ -2248,8 +2253,8 @@
    "own": 0
   },
   "MUNDIARIO": {
-   "readings": 32,
-   "rewrites": 17,
+   "readings": 33,
+   "rewrites": 18,
    "own": 1
   },
   "centraloregondaily.com": {
@@ -2533,8 +2538,8 @@
    "own": 0
   },
   "La Vanguardia": {
-   "readings": 2,
-   "rewrites": 1,
+   "readings": 3,
+   "rewrites": 2,
    "own": 0
   },
   "Metro Ecuador": {
@@ -3127,6 +3132,11 @@
    "rewrites": 1,
    "own": 0
   },
+  "Vietnam.vn": {
+   "readings": 2,
+   "rewrites": 2,
+   "own": 0
+  },
   "BetBrothers.es": {
    "readings": 1,
    "rewrites": 0,
@@ -3139,8 +3149,8 @@
   }
  },
  "screen": {
-  "unread": 816,
-  "screened": 816,
+  "unread": 821,
+  "screened": 821,
   "news_majority": 276,
   "news_unanimous": 179,
   "by_fighter": {
@@ -3149,7 +3159,7 @@
     "news": 29
    },
    "Ilia Topuria": {
-    "unread": 593,
+    "unread": 598,
     "news": 201
    },
    "Yaroslav Amosov": {
@@ -3175,7 +3185,7 @@
     "news": 27
    },
    "Eurosport": {
-    "unread": 85,
+    "unread": 87,
     "news": 34
    },
    "Athlon Sports": {
@@ -3183,7 +3193,7 @@
     "news": 2
    },
    "Bloody Elbow": {
-    "unread": 93,
+    "unread": 95,
     "news": 29
    },
    "boxingnews.com": {
@@ -3335,7 +3345,7 @@
     "news": 1
    },
    "MARCA": {
-    "unread": 18,
+    "unread": 19,
     "news": 5
    },
    "sports.yahoo.com": {

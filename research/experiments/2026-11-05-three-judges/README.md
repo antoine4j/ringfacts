@@ -200,6 +200,20 @@ only where two or three models agree.
 - Rule gaps: 328 logged (52 new); the nine questions in
   `data/compare/rule-gaps.md` were drawn from the first 276.
 
+**Second top-up to 18 Nov 21:46 Pacific (2026-11-19).** The same steps. The
+16 Nov week was judged again whole, and its first judging and the 18 Nov
+history pass were kept in `cut-2026-11-18/`. `cut-check.mjs cut-2026-11-18 2026-11-19`:
+16 new grouped and 5 new unread, none missed or doubled. `boundary-check.mjs
+cut-2026-11-18 2026-11-19` (`results/boundary-2026-11-19.json`): no new article
+was moved into an older claim. 1 to 3 new claims were linked to older ones. The
+second judging changed 0 to 2 of the week's 160 first calls. The history pass
+kept 83% of Opus's links, 72% of Fable's and 47% of Sonnet's: its links are noisy,
+and Sonnet's alone should not be trusted. Over 2,350 grouped readings the
+judges are unanimous on 85.1% (kappa 0.658). The majority still matches 100 of
+110 marks. Over-merge is 15.2% of readings and over-split 24.6% of claims.
+Usage over this top-up: 39% to 45% of the weekly all-models limit and
+53% to 61% of Fable's, counting other work on the plan at the same time.
+
 ## Where it stands
 
 - 2026-11-05: the whole history is labelled. The storyboard reads
@@ -208,7 +222,7 @@ only where two or three models agree.
   maintainer's mark.
 - 2026-11-18: topped up to 18 Nov 09:54 Pacific (above); the storyboard file is rebuilt over all 17 weeks.
 - Open for the maintainer: #383, the nine rule questions, the Disputed view
-  (351 readings not unanimous since the top-up; 282 before), the 40-call spot check.
+  (350 readings not unanimous after the second top-up; 282 before the first), the 40-call spot check.
 - Next, once he has ruled: flip the calls whose rule changed (by their rule
   number), rescore, and use the silver labels to tune the classifier and
   the extractor against the golden key.

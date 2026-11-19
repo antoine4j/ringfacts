@@ -23,23 +23,23 @@
   "2026-11-09",
   "2026-11-16"
  ],
- "claims": 699,
- "readings": 2334,
+ "claims": 708,
+ "readings": 2350,
  "problems": 0,
  "agreement": {
-  "unanimous": 1983,
-  "majority": 304,
-  "split": 47,
-  "items": 2334,
-  "kappa_call": 0.655,
-  "kappa_verdict": 0.68
+  "unanimous": 2000,
+  "majority": 302,
+  "split": 48,
+  "items": 2350,
+  "kappa_call": 0.658,
+  "kappa_verdict": 0.683
  },
  "agreement_change": {
-  "unanimous": 2095,
+  "unanimous": 2111,
   "majority": 239,
   "split": 0,
-  "items": 2334,
-  "kappa": 0.762
+  "items": 2350,
+  "kappa": 0.764
  },
  "anton": {
   "marks": 110,
@@ -98,20 +98,20 @@
   },
   "opus Ilia Topuria": {
    "over_merge": {
-    "count": 335,
-    "of": 2116,
-    "pct": 15.8,
-    "low": 14.3,
-    "high": 17.4,
-    "text": "335 of 2116 = 15.8% (14.3–17.4)"
+    "count": 338,
+    "of": 2132,
+    "pct": 15.9,
+    "low": 14.4,
+    "high": 17.5,
+    "text": "338 of 2132 = 15.9% (14.4–17.5)"
    },
    "over_split": {
-    "count": 146,
-    "of": 631,
-    "pct": 23.1,
-    "low": 20,
-    "high": 26.6,
-    "text": "146 of 631 = 23.1% (20–26.6)"
+    "count": 158,
+    "of": 640,
+    "pct": 24.7,
+    "low": 21.5,
+    "high": 28.2,
+    "text": "158 of 640 = 24.7% (21.5–28.2)"
    }
   },
   "opus Yaroslav Amosov": {
@@ -134,20 +134,20 @@
   },
   "opus all": {
    "over_merge": {
-    "count": 396,
-    "of": 2334,
+    "count": 399,
+    "of": 2350,
     "pct": 17,
     "low": 15.5,
-    "high": 18.5,
-    "text": "396 of 2334 = 17% (15.5–18.5)"
+    "high": 18.6,
+    "text": "399 of 2350 = 17% (15.5–18.6)"
    },
    "over_split": {
-    "count": 156,
-    "of": 699,
-    "pct": 22.3,
-    "low": 19.4,
-    "high": 25.6,
-    "text": "156 of 699 = 22.3% (19.4–25.6)"
+    "count": 168,
+    "of": 708,
+    "pct": 23.7,
+    "low": 20.7,
+    "high": 27,
+    "text": "168 of 708 = 23.7% (20.7–27)"
    }
   },
   "fable Daniil Donchenko": {
@@ -170,20 +170,20 @@
   },
   "fable Ilia Topuria": {
    "over_merge": {
-    "count": 345,
-    "of": 2116,
+    "count": 348,
+    "of": 2132,
     "pct": 16.3,
     "low": 14.8,
-    "high": 17.9,
-    "text": "345 of 2116 = 16.3% (14.8–17.9)"
+    "high": 18,
+    "text": "348 of 2132 = 16.3% (14.8–18)"
    },
    "over_split": {
-    "count": 174,
-    "of": 631,
-    "pct": 27.6,
-    "low": 24.2,
-    "high": 31.2,
-    "text": "174 of 631 = 27.6% (24.2–31.2)"
+    "count": 181,
+    "of": 640,
+    "pct": 28.3,
+    "low": 24.9,
+    "high": 31.9,
+    "text": "181 of 640 = 28.3% (24.9–31.9)"
    }
   },
   "fable Yaroslav Amosov": {
@@ -206,20 +206,20 @@
   },
   "fable all": {
    "over_merge": {
-    "count": 392,
-    "of": 2334,
+    "count": 395,
+    "of": 2350,
     "pct": 16.8,
-    "low": 15.3,
+    "low": 15.4,
     "high": 18.4,
-    "text": "392 of 2334 = 16.8% (15.3–18.4)"
+    "text": "395 of 2350 = 16.8% (15.4–18.4)"
    },
    "over_split": {
-    "count": 202,
-    "of": 699,
-    "pct": 28.9,
-    "low": 25.7,
-    "high": 32.4,
-    "text": "202 of 699 = 28.9% (25.7–32.4)"
+    "count": 209,
+    "of": 708,
+    "pct": 29.5,
+    "low": 26.3,
+    "high": 33,
+    "text": "209 of 708 = 29.5% (26.3–33)"
    }
   },
   "sonnet Daniil Donchenko": {
@@ -242,20 +242,20 @@
   },
   "sonnet Ilia Topuria": {
    "over_merge": {
-    "count": 363,
-    "of": 2116,
+    "count": 367,
+    "of": 2132,
     "pct": 17.2,
-    "low": 15.6,
-    "high": 18.8,
-    "text": "363 of 2116 = 17.2% (15.6–18.8)"
+    "low": 15.7,
+    "high": 18.9,
+    "text": "367 of 2132 = 17.2% (15.7–18.9)"
    },
    "over_split": {
-    "count": 165,
-    "of": 631,
+    "count": 167,
+    "of": 640,
     "pct": 26.1,
-    "low": 22.9,
-    "high": 29.7,
-    "text": "165 of 631 = 26.1% (22.9–29.7)"
+    "low": 22.8,
+    "high": 29.6,
+    "text": "167 of 640 = 26.1% (22.8–29.6)"
    }
   },
   "sonnet Yaroslav Amosov": {
@@ -278,20 +278,20 @@
   },
   "sonnet all": {
    "over_merge": {
-    "count": 425,
-    "of": 2334,
-    "pct": 18.2,
+    "count": 429,
+    "of": 2350,
+    "pct": 18.3,
     "low": 16.7,
-    "high": 19.8,
-    "text": "425 of 2334 = 18.2% (16.7–19.8)"
+    "high": 19.9,
+    "text": "429 of 2350 = 18.3% (16.7–19.9)"
    },
    "over_split": {
-    "count": 185,
-    "of": 699,
-    "pct": 26.5,
+    "count": 187,
+    "of": 708,
+    "pct": 26.4,
     "low": 23.3,
-    "high": 29.9,
-    "text": "185 of 699 = 26.5% (23.3–29.9)"
+    "high": 29.8,
+    "text": "187 of 708 = 26.4% (23.3–29.8)"
    }
   },
   "majority Daniil Donchenko": {
@@ -314,20 +314,20 @@
   },
   "majority Ilia Topuria": {
    "over_merge": {
-    "count": 307,
-    "of": 2116,
+    "count": 310,
+    "of": 2132,
     "pct": 14.5,
     "low": 13.1,
     "high": 16.1,
-    "text": "307 of 2116 = 14.5% (13.1–16.1)"
+    "text": "310 of 2132 = 14.5% (13.1–16.1)"
    },
    "over_split": {
-    "count": 147,
-    "of": 631,
-    "pct": 23.3,
-    "low": 20.2,
-    "high": 26.8,
-    "text": "147 of 631 = 23.3% (20.2–26.8)"
+    "count": 158,
+    "of": 640,
+    "pct": 24.7,
+    "low": 21.5,
+    "high": 28.2,
+    "text": "158 of 640 = 24.7% (21.5–28.2)"
    }
   },
   "majority Yaroslav Amosov": {
@@ -350,28 +350,28 @@
   },
   "majority all": {
    "over_merge": {
-    "count": 355,
-    "of": 2334,
+    "count": 358,
+    "of": 2350,
     "pct": 15.2,
     "low": 13.8,
     "high": 16.7,
-    "text": "355 of 2334 = 15.2% (13.8–16.7)"
+    "text": "358 of 2350 = 15.2% (13.8–16.7)"
    },
    "over_split": {
-    "count": 163,
-    "of": 699,
-    "pct": 23.3,
-    "low": 20.3,
-    "high": 26.6,
-    "text": "163 of 699 = 23.3% (20.3–26.6)"
+    "count": 174,
+    "of": 708,
+    "pct": 24.6,
+    "low": 21.5,
+    "high": 27.9,
+    "text": "174 of 708 = 24.6% (21.5–27.9)"
    }
   }
  },
  "same_claims": {
-  "pairs": 205,
-  "unanimous": 53,
-  "majority": 49,
-  "minority": 103
+  "pairs": 209,
+  "unanimous": 55,
+  "majority": 54,
+  "minority": 100
  },
  "rules": {
   "opus": {
@@ -379,26 +379,26 @@
    "2": 132,
    "3": 3,
    "4": 30,
-   "5": 53,
-   "6": 153,
+   "5": 55,
+   "6": 154,
    "7": 10
   },
   "fable": {
-   "1": 85,
+   "1": 86,
    "2": 112,
    "4": 23,
-   "5": 69,
+   "5": 71,
    "6": 96,
    "7": 7
   },
   "sonnet": {
-   "1": 34,
-   "2": 111,
-   "4": 26,
-   "5": 78,
-   "6": 163,
+   "1": 36,
+   "2": 112,
+   "4": 27,
+   "5": 79,
+   "6": 162,
    "7": 13
   }
  },
- "rule_gaps": 328
+ "rule_gaps": 330
 }
