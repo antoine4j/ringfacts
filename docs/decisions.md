@@ -1167,3 +1167,60 @@ into one generated JSON file imported by the page (a second moving part,
 held as the fallback if the preview shows the files missing); a database
 table of replay results (D7 keeps the runs as files, compared without a
 database).
+
+<a id="digest-resend"></a>
+## digest-resend — A digest saved but not sent is sent again from its saved text, for three days
+*2026-11-18*
+
+**The fault.** v0 saves a live digest, then sends it, then marks it
+`posted_at`. "Where did his last digest end" (`previousDigestEnd`) reads every
+live row, sent or not. So when the send failed after the save, the fighter
+counted as done for the week, nothing looked at the unsent row again, and that
+week's digest never reached the chat. A failure on a later part of a
+multi-part digest did the same.
+
+**The rule now.** At the start of each hourly digest step, for each fighter,
+the run looks at his newest live digest (latest `period_end`, then latest id).
+It sends that digest again, from the stored text and without a model call, only
+when all of these hold: it was never marked posted, it has text, it was saved
+within the last `RESEND_WINDOW_DAYS` (3) days, and this run really sends (a
+printing run sends nothing). If the send fails, the failure is counted and no
+new digest is written for that fighter that run, so a new row never buries the
+unsent one; the next hourly run tries again.
+
+**Why these guards.** Live data on 2026-11-18: 27 live digests, 21 sent. The six
+unsent rows are real digests written by two runs on go-live day, 2026-10-05:
+three covering 21 Sept to 5 Oct, three covering the hours since. No migration,
+import or backfill code creates digest rows; the only code that does is the
+digest step. That the runs had no chat to send to is an inference, not
+recorded: a run without one prints and leaves `posted_at` empty, and the first
+sent digest (digest 7, message id 6) was
+saved hours later, and looks like a hand-run `--post` for the week the job
+missed. The six must never be sent. Each is older than the window and none is
+its fighter's newest row; either guard alone keeps them out. The newest-row rule is also what stops an old gap from ever replaying a
+backlog. Three days is longer than a weekend outage and shorter than the week
+between digests, so a resent digest always goes out before the next one is due.
+On the day of this change every fighter's newest digest was already sent, so the
+first deploy sends nothing.
+
+**Multi-part digests: resent whole.** A digest over 4,000 characters goes out
+in parts, and the database holds only whether the whole digest was marked
+posted, not how many parts arrived. A re-send therefore sends every part again.
+The cost: if part 1 got through and part 2 failed, part 1 appears twice in the
+chat. The same cost applies when a send worked but the reply was lost, or the
+`posted_at` update failed. One live digest so far (4,463 characters) was
+long enough to be split.
+
+**Considered and rejected.**
+- *Mark the digest posted after the first part.* A failed later part is then
+  never sent and the chat holds a digest cut off with no sign of it: a silent
+  loss, which is the fault being fixed.
+- *Record how many parts arrived.* Right, but it needs a new column, a
+  migration on the live database, and a change to the writer's insert, for a
+  case that has happened to one digest. Revisit if parts fail more often.
+- *Ask for "no previous digest" when the last one was unsent, so the next run
+  rewrites the week.* A second model call (about 112 seconds, and money) to get
+  a different text for the same week, and the digest it replaces may already be
+  half in the chat.
+- *Re-send any unsent row.* Would send the six go-live digests and any future
+  print-only row, weeks late.

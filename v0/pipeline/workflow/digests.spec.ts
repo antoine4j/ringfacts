@@ -6,7 +6,7 @@
 
 import { test, afterEach, mock } from "node:test";
 import assert from "node:assert/strict";
-import { splitMessage, writeAndPostDigest, digestsDue } from "./digests.ts";
+import { splitMessage, writeAndPostDigest, digestsDue, RESEND_WINDOW_DAYS } from "./digests.ts";
 import { previousDigestEnd } from "../store/digests.ts";
 import { DIGEST_PROMPT_VERSION, DEFAULT_DIGEST_MODEL } from "../stations/digest/digest.ts";
 import { FakeDatabase, makeContext, stubNetwork, type SeenRequest } from "./fake-database.ts";
@@ -60,16 +60,21 @@ function claimRow(claimId: number) {
   };
 }
 
+/** A live digest row as the store's "newest digest" query returns it. */
+type SavedDigest = { id: number; text: string; posted_at: Date | null; created_at: Date };
+
 /**
- * A database for digests: the claims the period holds, and when each fighter's last digest ended.
+ * A database for digests: the claims the period holds, when each fighter's last digest ended, and his newest saved digest.
  *
  * @param previousEnds  Fighter → end of his last live digest; absent means none.
  * @param claimIds  The claims the period holds.
+ * @param newestSaved  Fighter → his newest live digest row; absent means none.
  * @returns The fake database.
  */
-function digestDatabase(previousEnds: Record<string, Date> = {}, claimIds: number[] = []) {
+function digestDatabase(previousEnds: Record<string, Date> = {}, claimIds: number[] = [], newestSaved: Record<string, SavedDigest> = {}) {
   const database = new FakeDatabase([FIGHTER]);
   database.on(/SELECT max\(period_end\) AS end FROM digests/, (params) => ({ rows: [{ end: previousEnds[params[0]] ?? null }] }));
+  database.on(NEWEST_DIGEST_QUERY, (params) => ({ rows: newestSaved[params[0]] ? [newestSaved[params[0]]] : [] }));
   database.on(/FROM reading_now rn JOIN claim_now cn/, (params) => {
     const isThePeriod = params[2].getTime() === NOW.getTime();
     return { rows: isThePeriod ? claimIds.map(claimRow) : [] };
@@ -77,6 +82,9 @@ function digestDatabase(previousEnds: Record<string, Date> = {}, claimIds: numbe
   database.on(/WITH earlier AS/, () => ({ rows: [] }));
   return database;
 }
+
+// The store's question "which live digest of this fighter is the newest".
+const NEWEST_DIGEST_QUERY = /FROM digests WHERE fighter = \$1 AND backfill = false ORDER BY period_end DESC, id DESC LIMIT 1/;
 
 const PERIOD = { start: new Date("2026-10-19T14:00:00Z"), end: NOW };
 
@@ -312,14 +320,7 @@ test("a failed digest leaves the fighter still due on the next run", async () =>
   assert.equal(database.inserted.digests.length, 1);
 });
 
-// The next two tests document a suspected bug, they do not endorse it. A digest
-// is stored before it is sent, and the lookup of "where did his last digest end"
-// does not ask whether that digest was ever sent. So when sending fails the
-// digest stays stored and unsent, and the fighter is not due again until the
-// next schedule: that week's digest never reaches the chat, and it is in
-// neither the thumbs-down count nor the digest list. Fixing it changes how v0
-// runs, so it is left for the maintainer; if it is fixed, change these tests.
-test("[suspected bug] a digest whose send fails is stored and left unmarked as posted", async () => {
+test("a digest whose send fails is stored and left unmarked as posted", async () => {
   const database = digestDatabase();
   writerNetwork();
   const context = makeContext(database, { poster: async () => { throw new Error("Telegram 502"); } });
@@ -328,7 +329,10 @@ test("[suspected bug] a digest whose send fails is stored and left unmarked as p
   assert.equal(database.sent(/UPDATE digests SET posted_at/).length, 0);
 });
 
-test("[suspected bug] the previous digest is found among every live digest, sent or not", async () => {
+// A saved digest that failed to send counts as "where his last digest ended" on
+// purpose: the next run re-sends that text instead of writing the week again.
+// Why: docs/decisions.md#digest-resend
+test("the previous digest is found among every live digest, sent or not, because an unsent one is re-sent, not rewritten", async () => {
   const database = new FakeDatabase();
   database.on(/SELECT max\(period_end\)/, () => ({ rows: [{ end: null }] }));
   await previousDigestEnd(database.pool, FIGHTER, false);
@@ -351,4 +355,156 @@ test("a digest that goes out in parts and fails on a later part is stored withou
   await assert.rejects(writeAndPostDigest(context, FIGHTER, PERIOD), /Telegram 502/);
   assert.equal(sent, 2);
   assert.equal(database.sent(/UPDATE digests SET posted_at/).length, 0);
+});
+
+/**
+ * A digest row saved but never sent.
+ *
+ * @param overrides  Any fields to change.
+ * @returns The row.
+ */
+function unsentDigest(overrides: Partial<SavedDigest> = {}): SavedDigest {
+  return { id: 77, text: "Saved but never sent.", posted_at: null, created_at: new Date(NOW.getTime() - 3_600_000), ...overrides };
+}
+
+const DAY = 86_400_000;
+const LAST_END = new Date("2026-10-26T14:30:00Z");
+
+test("a digest saved but never sent is sent on a later run from its saved text, without asking the writer again", async () => {
+  const database = digestDatabase({ [FIGHTER]: LAST_END }, [], { [FIGHTER]: unsentDigest() });
+  const requests = writerNetwork();
+  const context = makeContext(database);
+  await digestsDue(context, NOW);
+  assert.deepEqual(context.messages, ["<b>Marko Testov: the week</b>\n\nSaved but never sent."]);
+  assert.equal(requests.length, 0);
+  assert.equal(database.inserted.digests, undefined);
+});
+
+test("a re-sent digest is marked posted with its first message's id, and counted as re-sent and posted", async () => {
+  const database = digestDatabase({ [FIGHTER]: LAST_END }, [], { [FIGHTER]: unsentDigest({ id: 77 }) });
+  writerNetwork();
+  const context = makeContext(database);
+  await digestsDue(context, NOW);
+  assert.deepEqual(database.sent(/UPDATE digests SET posted_at/)[0].params, [5000, 77]);
+  assert.equal(context.tally.digests_resent, 1);
+  assert.equal(context.tally.digests_posted, 1);
+});
+
+test("a digest that was already sent is never sent again", async () => {
+  const sent = unsentDigest({ posted_at: new Date(NOW.getTime() - 60_000) });
+  const database = digestDatabase({ [FIGHTER]: LAST_END }, [], { [FIGHTER]: sent });
+  const context = makeContext(database);
+  await digestsDue(context, NOW);
+  assert.deepEqual(context.messages, []);
+  assert.equal(database.sent(/UPDATE digests SET posted_at/).length, 0);
+});
+
+test("an unsent digest is re-sent just inside the window and left alone just outside it", async () => {
+  const insideAge = new Date(NOW.getTime() - RESEND_WINDOW_DAYS * DAY + 60_000);
+  const inside = digestDatabase({ [FIGHTER]: LAST_END }, [], { [FIGHTER]: unsentDigest({ created_at: insideAge }) });
+  const insideContext = makeContext(inside);
+  await digestsDue(insideContext, NOW);
+  assert.equal(insideContext.messages.length, 1);
+
+  const outsideAge = new Date(NOW.getTime() - RESEND_WINDOW_DAYS * DAY - 60_000);
+  const outside = digestDatabase({ [FIGHTER]: LAST_END }, [], { [FIGHTER]: unsentDigest({ created_at: outsideAge }) });
+  const outsideContext = makeContext(outside);
+  await digestsDue(outsideContext, NOW);
+  assert.deepEqual(outsideContext.messages, []);
+});
+
+test("only the fighter's newest live digest is looked at, so an older unsent one is never re-sent", async () => {
+  const database = digestDatabase({ [FIGHTER]: LAST_END });
+  await digestsDue(makeContext(database), NOW);
+  const lookups = database.sent(NEWEST_DIGEST_QUERY);
+  assert.equal(lookups.length, 1);
+  assert.deepEqual(lookups[0].params, [FIGHTER]);
+});
+
+test("a saved digest with no text is not sent", async () => {
+  const database = digestDatabase({ [FIGHTER]: LAST_END }, [], { [FIGHTER]: unsentDigest({ text: "  \n" }) });
+  const context = makeContext(database);
+  await digestsDue(context, NOW);
+  assert.deepEqual(context.messages, []);
+});
+
+test("a run that only prints re-sends nothing, because there is nothing to send with", async () => {
+  const database = digestDatabase({ [FIGHTER]: LAST_END }, [], { [FIGHTER]: unsentDigest() });
+  const context = makeContext(database, { sends: false });
+  await digestsDue(context, NOW);
+  assert.deepEqual(context.messages, []);
+  assert.equal(context.tally.digests_resent, undefined);
+});
+
+test("a long digest that is re-sent goes out whole again, so a part that already arrived appears twice", async () => {
+  const text = `${"a".repeat(3000)}\n\n${"b".repeat(3000)}`;
+  const database = digestDatabase({ [FIGHTER]: LAST_END }, [], { [FIGHTER]: unsentDigest({ text }) });
+  const context = makeContext(database);
+  await digestsDue(context, NOW);
+  assert.equal(context.messages.length, 2);
+  assert.deepEqual(database.sent(/UPDATE digests SET posted_at/)[0].params, [5000, 77]);
+});
+
+test("a re-send that fails is counted failed, leaves the digest unsent for the next run, and writes nothing new", async () => {
+  const database = digestDatabase({ [FIGHTER]: LAST_END }, [], { [FIGHTER]: unsentDigest() });
+  const requests = writerNetwork();
+  const failing = makeContext(database, { poster: async () => { throw new Error("Telegram 502"); } });
+  await digestsDue(failing, NOW);
+  assert.equal(failing.tally.digests_failed, 1);
+  assert.equal(failing.tally.digests_posted, undefined);
+  assert.equal(database.sent(/UPDATE digests SET posted_at/).length, 0);
+  assert.equal(requests.length, 0);
+
+  const nextRun = makeContext(database);
+  await digestsDue(nextRun, NOW);
+  assert.equal(nextRun.messages.length, 1);
+});
+
+test("when a re-send fails and the fighter is also due, no new digest is written over the unsent one", async () => {
+  const database = digestDatabase({ [FIGHTER]: new Date("2026-10-19T15:00:00Z") }, [], { [FIGHTER]: unsentDigest() });
+  const requests = writerNetwork();
+  const context = makeContext(database, { poster: async () => { throw new Error("Telegram 502"); } });
+  await digestsDue(context, NOW);
+  assert.equal(requests.length, 0);
+  assert.equal(database.inserted.digests, undefined);
+  assert.equal(context.tally.digests_failed, 1);
+});
+
+test("one fighter's failed re-send does not stop another fighter's digest", async () => {
+  const database = digestDatabase({ [FIGHTER]: LAST_END }, [], { [FIGHTER]: unsentDigest() });
+  database.settings!.digest_schedule[OTHER_FIGHTER] = database.settings!.digest_schedule[FIGHTER];
+  writerNetwork();
+  const context = makeContext(database, {
+    poster: async (text) => {
+      if (text.includes("Saved but never sent")) throw new Error("Telegram 502");
+      return 5000;
+    },
+  });
+  await digestsDue(context, NOW);
+  assert.equal(context.tally.digests_failed, 1);
+  assert.deepEqual(database.inserted.digests.map((row) => row.params[0]), [OTHER_FIGHTER]);
+});
+
+test("a digest whose send failed is delivered by the next hourly run, once, and the run after sends nothing", async () => {
+  const database = digestDatabase();
+  const requests = writerNetwork();
+  const firstRun = makeContext(database, { poster: async () => { throw new Error("Telegram 502"); } });
+  await digestsDue(firstRun, NOW);
+  assert.equal(firstRun.tally.digests_failed, 1);
+  const [saved] = database.inserted.digests;
+
+  // The database now holds what the first run saved: the end of that digest, and the row, still unsent.
+  const later = new Date(NOW.getTime() + 3_600_000);
+  database.on(/SELECT max\(period_end\) AS end FROM digests/, () => ({ rows: [{ end: saved.params[2] }] }));
+  const row = () => ({ id: saved.id, text: saved.params[5], posted_at: database.sent(/UPDATE digests SET posted_at/).length ? later : null, created_at: NOW });
+  database.on(NEWEST_DIGEST_QUERY, () => ({ rows: [row()] }));
+  const secondRun = makeContext(database);
+  await digestsDue(secondRun, later);
+  assert.deepEqual(secondRun.messages, ["<b>Marko Testov: the week</b>\n\nA short digest."]);
+
+  const thirdRun = makeContext(database);
+  await digestsDue(thirdRun, new Date(later.getTime() + 3_600_000));
+  assert.deepEqual(thirdRun.messages, []);
+  assert.equal(requests.length, 1);
+  assert.equal(database.inserted.digests.length, 1);
 });

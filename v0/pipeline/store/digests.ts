@@ -50,6 +50,23 @@ export async function previousDigestEnd(pool: pg.Pool, fighter: string, backfill
   return result.rows[0].end;
 }
 
+/** A saved live digest, as the hourly run needs it to decide whether to send it again. */
+export type SavedDigest = { id: number; text: string; postedAt: Date | null; createdAt: Date };
+
+/**
+ * A fighter's newest live digest, sent or not.
+ *
+ * @param pool  The v0 pool.
+ * @param fighter  The fighter.
+ * @returns The digest with the latest period end, or null when he has none.
+ */
+export async function newestLiveDigest(pool: pg.Pool, fighter: string): Promise<SavedDigest | null> {
+  const result = await pool.query("SELECT id, text, posted_at, created_at FROM digests WHERE fighter = $1 AND backfill = false ORDER BY period_end DESC, id DESC LIMIT 1", [fighter]);
+  const row = result.rows[0];
+  if (!row) return null;
+  return { id: Number(row.id), text: row.text, postedAt: row.posted_at, createdAt: row.created_at };
+}
+
 /**
  * The claims with at least one tier-1 or tier-2 reading published between two moments.
  *
