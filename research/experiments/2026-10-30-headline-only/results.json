@@ -1,0 +1,3291 @@
+{
+ "settings_version": 1,
+ "classifier": "v7.7",
+ "note": "training = split 'tune', validation = split 'check'; no test-side article was sent or read",
+ "training": {
+  "articles": 155,
+  "scores": {
+   "headline_a": {
+    "articles": 155,
+    "answers_right": 1170,
+    "answers_asked": 1395,
+    "all_nine_right": 52,
+    "right_per_question": {
+     "centrality": 89,
+     "act": 105,
+     "fact": 131,
+     "firmness": 126,
+     "reports_his_result": 150,
+     "reports_his_next_fight": 149,
+     "reports_his_health": 148,
+     "he_speaks": 139,
+     "source": 133
+    },
+    "career_facts_labelled": 44,
+    "career_facts_recognised": 29,
+    "career_facts_same_kind": 29,
+    "career_false_alarms": 1,
+    "career_false_alarm_ids": [
+     "500"
+    ],
+    "at_the_labels_tier": 129,
+    "label_post_articles": 28,
+    "label_post_reaching_post": 25,
+    "post_where_label_is_not_post": 1
+   },
+   "headline_b": {
+    "articles": 155,
+    "answers_right": 1170,
+    "answers_asked": 1395,
+    "all_nine_right": 53,
+    "right_per_question": {
+     "centrality": 91,
+     "act": 106,
+     "fact": 130,
+     "firmness": 127,
+     "reports_his_result": 149,
+     "reports_his_next_fight": 149,
+     "reports_his_health": 148,
+     "he_speaks": 139,
+     "source": 131
+    },
+    "career_facts_labelled": 44,
+    "career_facts_recognised": 28,
+    "career_facts_same_kind": 28,
+    "career_false_alarms": 1,
+    "career_false_alarm_ids": [
+     "500"
+    ],
+    "at_the_labels_tier": 128,
+    "label_post_articles": 28,
+    "label_post_reaching_post": 24,
+    "post_where_label_is_not_post": 1
+   },
+   "saved": {
+    "articles": 155,
+    "answers_right": 1280,
+    "answers_asked": 1395,
+    "all_nine_right": 95,
+    "right_per_question": {
+     "centrality": 141,
+     "source": 145,
+     "act": 128,
+     "fact": 134,
+     "firmness": 135,
+     "reports_his_result": 154,
+     "reports_his_next_fight": 145,
+     "reports_his_health": 144,
+     "he_speaks": 154
+    },
+    "career_facts_labelled": 44,
+    "career_facts_recognised": 32,
+    "career_facts_same_kind": 32,
+    "career_false_alarms": 5,
+    "career_false_alarm_ids": [
+     "84",
+     "490",
+     "491",
+     "494",
+     "944"
+    ],
+    "at_the_labels_tier": 147,
+    "label_post_articles": 28,
+    "label_post_reaching_post": 28,
+    "post_where_label_is_not_post": 4
+   },
+   "saved_again": {
+    "articles": 155,
+    "answers_right": 1276,
+    "answers_asked": 1395,
+    "all_nine_right": 92,
+    "right_per_question": {
+     "centrality": 139,
+     "source": 145,
+     "act": 128,
+     "fact": 133,
+     "firmness": 135,
+     "reports_his_result": 154,
+     "reports_his_next_fight": 145,
+     "reports_his_health": 144,
+     "he_speaks": 153
+    },
+    "career_facts_labelled": 44,
+    "career_facts_recognised": 31,
+    "career_facts_same_kind": 31,
+    "career_false_alarms": 5,
+    "career_false_alarm_ids": [
+     "84",
+     "490",
+     "491",
+     "494",
+     "944"
+    ],
+    "at_the_labels_tier": 147,
+    "label_post_articles": 28,
+    "label_post_reaching_post": 28,
+    "post_where_label_is_not_post": 4
+   }
+  },
+  "against_full_text": {
+   "headline_a_vs_saved": {
+    "articles": 155,
+    "same_nine_answers": 54,
+    "answers_changed": 212,
+    "answers_changed_per_question": {
+     "source": 19,
+     "centrality": 64,
+     "act": 40,
+     "fact": 22,
+     "firmness": 27,
+     "reports_his_health": 11,
+     "he_speaks": 15,
+     "reports_his_next_fight": 8,
+     "reports_his_result": 6
+    },
+    "tier_crossings": 28,
+    "tier_moves": {
+     "digest → drop": 17,
+     "drop → digest": 3,
+     "post → digest": 5,
+     "drop → post": 1,
+     "post → drop": 2
+    },
+    "more_cautious": 24,
+    "more_eager": 4,
+    "career_fact_lost": 11,
+    "career_fact_invented": 4,
+    "tier_crossing_ids": [
+     "13",
+     "33",
+     "78",
+     "256",
+     "287",
+     "490",
+     "491",
+     "494",
+     "500",
+     "555",
+     "563",
+     "608",
+     "623",
+     "641",
+     "655",
+     "692",
+     "698",
+     "714",
+     "737",
+     "746",
+     "807",
+     "828",
+     "838",
+     "892",
+     "913",
+     "944",
+     "977",
+     "1200"
+    ]
+   },
+   "headline_b_vs_saved": {
+    "articles": 155,
+    "same_nine_answers": 55,
+    "answers_changed": 215,
+    "answers_changed_per_question": {
+     "source": 21,
+     "centrality": 63,
+     "act": 39,
+     "fact": 23,
+     "firmness": 28,
+     "reports_his_health": 11,
+     "he_speaks": 15,
+     "reports_his_next_fight": 8,
+     "reports_his_result": 7
+    },
+    "tier_crossings": 29,
+    "tier_moves": {
+     "digest → drop": 17,
+     "drop → digest": 3,
+     "post → digest": 6,
+     "drop → post": 1,
+     "post → drop": 2
+    },
+    "more_cautious": 25,
+    "more_eager": 4,
+    "career_fact_lost": 12,
+    "career_fact_invented": 4,
+    "tier_crossing_ids": [
+     "13",
+     "33",
+     "78",
+     "102",
+     "256",
+     "287",
+     "490",
+     "491",
+     "494",
+     "500",
+     "555",
+     "563",
+     "623",
+     "641",
+     "655",
+     "692",
+     "698",
+     "714",
+     "737",
+     "746",
+     "779",
+     "807",
+     "828",
+     "838",
+     "892",
+     "913",
+     "944",
+     "977",
+     "1200"
+    ]
+   },
+   "noise_floor_saved_vs_saved_again": {
+    "articles": 155,
+    "same_nine_answers": 151,
+    "answers_changed": 4,
+    "answers_changed_per_question": {
+     "centrality": 2,
+     "fact": 1,
+     "he_speaks": 1
+    },
+    "tier_crossings": 0,
+    "tier_moves": {},
+    "more_cautious": 0,
+    "more_eager": 0,
+    "career_fact_lost": 1,
+    "career_fact_invented": 0,
+    "tier_crossing_ids": []
+   }
+  },
+  "headline_noise_floor_a_vs_b": {
+   "articles": 155,
+   "same_nine_answers": 141,
+   "answers_changed": 19,
+   "answers_changed_per_question": {
+    "source": 2,
+    "centrality": 8,
+    "act": 4,
+    "firmness": 3,
+    "fact": 1,
+    "reports_his_result": 1
+   },
+   "tier_crossings": 3,
+   "tier_moves": {
+    "digest → drop": 1,
+    "drop → digest": 1,
+    "post → digest": 1
+   },
+   "more_cautious": 2,
+   "more_eager": 1,
+   "career_fact_lost": 1,
+   "career_fact_invented": 0,
+   "tier_crossing_ids": [
+    "102",
+    "608",
+    "779"
+   ]
+  },
+  "headline_crossings_shared": {
+   "headline_a_crossings": 28,
+   "headline_b_crossings": 29,
+   "crossed_in_both_runs": 27,
+   "crossed_in_one_run_only": 3
+  },
+  "tiers": {
+   "labels": {
+    "post": 28,
+    "digest": 94,
+    "drop": 33
+   },
+   "headline_a": {
+    "post": 26,
+    "digest": 83,
+    "drop": 46
+   },
+   "headline_b": {
+    "post": 25,
+    "digest": 84,
+    "drop": 46
+   },
+   "saved": {
+    "post": 32,
+    "digest": 92,
+    "drop": 31
+   },
+   "saved_again": {
+    "post": 32,
+    "digest": 92,
+    "drop": 31
+   }
+  }
+ },
+ "validation": {
+  "articles": 40,
+  "scores": {
+   "headline_a": {
+    "articles": 40,
+    "answers_right": 293,
+    "answers_asked": 360,
+    "all_nine_right": 11,
+    "right_per_question": {
+     "centrality": 19,
+     "source": 25,
+     "act": 29,
+     "fact": 33,
+     "firmness": 34,
+     "reports_his_result": 39,
+     "reports_his_next_fight": 37,
+     "reports_his_health": 40,
+     "he_speaks": 37
+    },
+    "career_facts_labelled": 2,
+    "career_facts_recognised": 1,
+    "career_facts_same_kind": 1,
+    "career_false_alarms": 3,
+    "career_false_alarm_ids": [
+     "228",
+     "672",
+     "879"
+    ],
+    "at_the_labels_tier": 31,
+    "label_post_articles": 1,
+    "label_post_reaching_post": 1,
+    "post_where_label_is_not_post": 3
+   },
+   "headline_b": {
+    "articles": 40,
+    "answers_right": 291,
+    "answers_asked": 360,
+    "all_nine_right": 10,
+    "right_per_question": {
+     "centrality": 19,
+     "source": 24,
+     "act": 29,
+     "fact": 33,
+     "firmness": 33,
+     "reports_his_result": 39,
+     "reports_his_next_fight": 37,
+     "reports_his_health": 40,
+     "he_speaks": 37
+    },
+    "career_facts_labelled": 2,
+    "career_facts_recognised": 1,
+    "career_facts_same_kind": 1,
+    "career_false_alarms": 3,
+    "career_false_alarm_ids": [
+     "228",
+     "672",
+     "879"
+    ],
+    "at_the_labels_tier": 31,
+    "label_post_articles": 1,
+    "label_post_reaching_post": 1,
+    "post_where_label_is_not_post": 3
+   },
+   "saved": {
+    "articles": 40,
+    "answers_right": 326,
+    "answers_asked": 360,
+    "all_nine_right": 20,
+    "right_per_question": {
+     "centrality": 32,
+     "source": 36,
+     "act": 32,
+     "fact": 34,
+     "firmness": 35,
+     "reports_his_result": 40,
+     "reports_his_next_fight": 39,
+     "reports_his_health": 38,
+     "he_speaks": 40
+    },
+    "career_facts_labelled": 2,
+    "career_facts_recognised": 1,
+    "career_facts_same_kind": 1,
+    "career_false_alarms": 2,
+    "career_false_alarm_ids": [
+     "228",
+     "917"
+    ],
+    "at_the_labels_tier": 35,
+    "label_post_articles": 1,
+    "label_post_reaching_post": 1,
+    "post_where_label_is_not_post": 0
+   },
+   "saved_again": {
+    "articles": 40,
+    "answers_right": 319,
+    "answers_asked": 360,
+    "all_nine_right": 18,
+    "right_per_question": {
+     "centrality": 32,
+     "source": 36,
+     "act": 30,
+     "fact": 32,
+     "firmness": 33,
+     "reports_his_result": 40,
+     "reports_his_next_fight": 38,
+     "reports_his_health": 38,
+     "he_speaks": 40
+    },
+    "career_facts_labelled": 2,
+    "career_facts_recognised": 1,
+    "career_facts_same_kind": 1,
+    "career_false_alarms": 3,
+    "career_false_alarm_ids": [
+     "228",
+     "690",
+     "917"
+    ],
+    "at_the_labels_tier": 34,
+    "label_post_articles": 1,
+    "label_post_reaching_post": 1,
+    "post_where_label_is_not_post": 1
+   }
+  },
+  "against_full_text": {
+   "headline_a_vs_saved": {
+    "articles": 40,
+    "same_nine_answers": 12,
+    "answers_changed": 72,
+    "answers_changed_per_question": {
+     "centrality": 21,
+     "source": 12,
+     "act": 12,
+     "fact": 9,
+     "firmness": 9,
+     "reports_his_health": 3,
+     "reports_his_result": 1,
+     "he_speaks": 3,
+     "reports_his_next_fight": 2
+    },
+    "tier_crossings": 5,
+    "tier_moves": {
+     "drop → post": 1,
+     "digest → drop": 1,
+     "drop → digest": 1,
+     "digest → post": 2
+    },
+    "more_cautious": 1,
+    "more_eager": 4,
+    "career_fact_lost": 1,
+    "career_fact_invented": 2,
+    "tier_crossing_ids": [
+     "228",
+     "249",
+     "335",
+     "672",
+     "879"
+    ]
+   },
+   "headline_b_vs_saved": {
+    "articles": 40,
+    "same_nine_answers": 11,
+    "answers_changed": 74,
+    "answers_changed_per_question": {
+     "centrality": 21,
+     "source": 13,
+     "firmness": 10,
+     "act": 12,
+     "fact": 9,
+     "reports_his_health": 3,
+     "reports_his_result": 1,
+     "he_speaks": 3,
+     "reports_his_next_fight": 2
+    },
+    "tier_crossings": 5,
+    "tier_moves": {
+     "drop → post": 1,
+     "digest → drop": 1,
+     "drop → digest": 1,
+     "digest → post": 2
+    },
+    "more_cautious": 1,
+    "more_eager": 4,
+    "career_fact_lost": 1,
+    "career_fact_invented": 2,
+    "tier_crossing_ids": [
+     "228",
+     "249",
+     "335",
+     "672",
+     "879"
+    ]
+   },
+   "noise_floor_saved_vs_saved_again": {
+    "articles": 40,
+    "same_nine_answers": 37,
+    "answers_changed": 8,
+    "answers_changed_per_question": {
+     "act": 2,
+     "fact": 2,
+     "firmness": 2,
+     "reports_his_health": 1,
+     "reports_his_next_fight": 1
+    },
+    "tier_crossings": 1,
+    "tier_moves": {
+     "digest → post": 1
+    },
+    "more_cautious": 0,
+    "more_eager": 1,
+    "career_fact_lost": 0,
+    "career_fact_invented": 1,
+    "tier_crossing_ids": [
+     "690"
+    ]
+   }
+  },
+  "headline_noise_floor_a_vs_b": {
+   "articles": 40,
+   "same_nine_answers": 37,
+   "answers_changed": 3,
+   "answers_changed_per_question": {
+    "firmness": 1,
+    "act": 1,
+    "source": 1
+   },
+   "tier_crossings": 0,
+   "tier_moves": {},
+   "more_cautious": 0,
+   "more_eager": 0,
+   "career_fact_lost": 0,
+   "career_fact_invented": 0,
+   "tier_crossing_ids": []
+  },
+  "headline_crossings_shared": {
+   "headline_a_crossings": 5,
+   "headline_b_crossings": 5,
+   "crossed_in_both_runs": 5,
+   "crossed_in_one_run_only": 0
+  },
+  "tiers": {
+   "labels": {
+    "post": 1,
+    "digest": 23,
+    "drop": 16
+   },
+   "headline_a": {
+    "post": 4,
+    "digest": 16,
+    "drop": 20
+   },
+   "headline_b": {
+    "post": 4,
+    "digest": 16,
+    "drop": 20
+   },
+   "saved": {
+    "post": 1,
+    "digest": 18,
+    "drop": 21
+   },
+   "saved_again": {
+    "post": 2,
+    "digest": 17,
+    "drop": 21
+   }
+  }
+ },
+ "both_sides": {
+  "articles": 195,
+  "scores": {
+   "headline_a": {
+    "articles": 195,
+    "answers_right": 1463,
+    "answers_asked": 1755,
+    "all_nine_right": 63,
+    "right_per_question": {
+     "centrality": 108,
+     "act": 134,
+     "fact": 164,
+     "firmness": 160,
+     "reports_his_result": 189,
+     "reports_his_next_fight": 186,
+     "reports_his_health": 188,
+     "he_speaks": 176,
+     "source": 158
+    },
+    "career_facts_labelled": 46,
+    "career_facts_recognised": 30,
+    "career_facts_same_kind": 30,
+    "career_false_alarms": 4,
+    "career_false_alarm_ids": [
+     "228",
+     "500",
+     "672",
+     "879"
+    ],
+    "at_the_labels_tier": 160,
+    "label_post_articles": 29,
+    "label_post_reaching_post": 26,
+    "post_where_label_is_not_post": 4
+   },
+   "headline_b": {
+    "articles": 195,
+    "answers_right": 1461,
+    "answers_asked": 1755,
+    "all_nine_right": 63,
+    "right_per_question": {
+     "centrality": 110,
+     "act": 135,
+     "fact": 163,
+     "firmness": 160,
+     "reports_his_result": 188,
+     "reports_his_next_fight": 186,
+     "reports_his_health": 188,
+     "he_speaks": 176,
+     "source": 155
+    },
+    "career_facts_labelled": 46,
+    "career_facts_recognised": 29,
+    "career_facts_same_kind": 29,
+    "career_false_alarms": 4,
+    "career_false_alarm_ids": [
+     "228",
+     "500",
+     "672",
+     "879"
+    ],
+    "at_the_labels_tier": 159,
+    "label_post_articles": 29,
+    "label_post_reaching_post": 25,
+    "post_where_label_is_not_post": 4
+   },
+   "saved": {
+    "articles": 195,
+    "answers_right": 1606,
+    "answers_asked": 1755,
+    "all_nine_right": 115,
+    "right_per_question": {
+     "centrality": 173,
+     "source": 181,
+     "act": 160,
+     "fact": 168,
+     "firmness": 170,
+     "reports_his_result": 194,
+     "reports_his_next_fight": 184,
+     "reports_his_health": 182,
+     "he_speaks": 194
+    },
+    "career_facts_labelled": 46,
+    "career_facts_recognised": 33,
+    "career_facts_same_kind": 33,
+    "career_false_alarms": 7,
+    "career_false_alarm_ids": [
+     "84",
+     "228",
+     "490",
+     "491",
+     "494",
+     "917",
+     "944"
+    ],
+    "at_the_labels_tier": 182,
+    "label_post_articles": 29,
+    "label_post_reaching_post": 29,
+    "post_where_label_is_not_post": 4
+   },
+   "saved_again": {
+    "articles": 195,
+    "answers_right": 1595,
+    "answers_asked": 1755,
+    "all_nine_right": 110,
+    "right_per_question": {
+     "centrality": 171,
+     "source": 181,
+     "act": 158,
+     "fact": 165,
+     "firmness": 168,
+     "reports_his_result": 194,
+     "reports_his_next_fight": 183,
+     "reports_his_health": 182,
+     "he_speaks": 193
+    },
+    "career_facts_labelled": 46,
+    "career_facts_recognised": 32,
+    "career_facts_same_kind": 32,
+    "career_false_alarms": 8,
+    "career_false_alarm_ids": [
+     "84",
+     "228",
+     "490",
+     "491",
+     "494",
+     "690",
+     "917",
+     "944"
+    ],
+    "at_the_labels_tier": 181,
+    "label_post_articles": 29,
+    "label_post_reaching_post": 29,
+    "post_where_label_is_not_post": 5
+   }
+  },
+  "against_full_text": {
+   "headline_a_vs_saved": {
+    "articles": 195,
+    "same_nine_answers": 66,
+    "answers_changed": 284,
+    "answers_changed_per_question": {
+     "source": 31,
+     "centrality": 85,
+     "act": 52,
+     "fact": 31,
+     "firmness": 36,
+     "reports_his_health": 14,
+     "he_speaks": 18,
+     "reports_his_next_fight": 10,
+     "reports_his_result": 7
+    },
+    "tier_crossings": 33,
+    "tier_moves": {
+     "digest → drop": 18,
+     "drop → digest": 4,
+     "drop → post": 2,
+     "post → digest": 5,
+     "digest → post": 2,
+     "post → drop": 2
+    },
+    "more_cautious": 25,
+    "more_eager": 8,
+    "career_fact_lost": 12,
+    "career_fact_invented": 6,
+    "tier_crossing_ids": [
+     "13",
+     "33",
+     "78",
+     "228",
+     "249",
+     "256",
+     "287",
+     "335",
+     "490",
+     "491",
+     "494",
+     "500",
+     "555",
+     "563",
+     "608",
+     "623",
+     "641",
+     "655",
+     "672",
+     "692",
+     "698",
+     "714",
+     "737",
+     "746",
+     "807",
+     "828",
+     "838",
+     "879",
+     "892",
+     "913",
+     "944",
+     "977",
+     "1200"
+    ]
+   },
+   "headline_b_vs_saved": {
+    "articles": 195,
+    "same_nine_answers": 66,
+    "answers_changed": 289,
+    "answers_changed_per_question": {
+     "source": 34,
+     "centrality": 84,
+     "act": 51,
+     "fact": 32,
+     "firmness": 38,
+     "reports_his_health": 14,
+     "he_speaks": 18,
+     "reports_his_next_fight": 10,
+     "reports_his_result": 8
+    },
+    "tier_crossings": 34,
+    "tier_moves": {
+     "digest → drop": 18,
+     "drop → digest": 4,
+     "drop → post": 2,
+     "post → digest": 6,
+     "digest → post": 2,
+     "post → drop": 2
+    },
+    "more_cautious": 26,
+    "more_eager": 8,
+    "career_fact_lost": 13,
+    "career_fact_invented": 6,
+    "tier_crossing_ids": [
+     "13",
+     "33",
+     "78",
+     "102",
+     "228",
+     "249",
+     "256",
+     "287",
+     "335",
+     "490",
+     "491",
+     "494",
+     "500",
+     "555",
+     "563",
+     "623",
+     "641",
+     "655",
+     "672",
+     "692",
+     "698",
+     "714",
+     "737",
+     "746",
+     "779",
+     "807",
+     "828",
+     "838",
+     "879",
+     "892",
+     "913",
+     "944",
+     "977",
+     "1200"
+    ]
+   },
+   "noise_floor_saved_vs_saved_again": {
+    "articles": 195,
+    "same_nine_answers": 188,
+    "answers_changed": 12,
+    "answers_changed_per_question": {
+     "centrality": 2,
+     "act": 2,
+     "fact": 3,
+     "firmness": 2,
+     "reports_his_health": 1,
+     "reports_his_next_fight": 1,
+     "he_speaks": 1
+    },
+    "tier_crossings": 1,
+    "tier_moves": {
+     "digest → post": 1
+    },
+    "more_cautious": 0,
+    "more_eager": 1,
+    "career_fact_lost": 1,
+    "career_fact_invented": 1,
+    "tier_crossing_ids": [
+     "690"
+    ]
+   }
+  },
+  "headline_noise_floor_a_vs_b": {
+   "articles": 195,
+   "same_nine_answers": 178,
+   "answers_changed": 22,
+   "answers_changed_per_question": {
+    "source": 3,
+    "centrality": 8,
+    "firmness": 4,
+    "act": 5,
+    "fact": 1,
+    "reports_his_result": 1
+   },
+   "tier_crossings": 3,
+   "tier_moves": {
+    "digest → drop": 1,
+    "drop → digest": 1,
+    "post → digest": 1
+   },
+   "more_cautious": 2,
+   "more_eager": 1,
+   "career_fact_lost": 1,
+   "career_fact_invented": 0,
+   "tier_crossing_ids": [
+    "102",
+    "608",
+    "779"
+   ]
+  },
+  "headline_crossings_shared": {
+   "headline_a_crossings": 33,
+   "headline_b_crossings": 34,
+   "crossed_in_both_runs": 32,
+   "crossed_in_one_run_only": 3
+  },
+  "tiers": {
+   "labels": {
+    "post": 29,
+    "digest": 117,
+    "drop": 49
+   },
+   "headline_a": {
+    "post": 30,
+    "digest": 99,
+    "drop": 66
+   },
+   "headline_b": {
+    "post": 29,
+    "digest": 100,
+    "drop": 66
+   },
+   "saved": {
+    "post": 33,
+    "digest": 110,
+    "drop": 52
+   },
+   "saved_again": {
+    "post": 34,
+    "digest": 109,
+    "drop": 52
+   }
+  }
+ },
+ "topuria": {
+  "articles": 112,
+  "scores": {
+   "headline_a": {
+    "articles": 112,
+    "answers_right": 838,
+    "answers_asked": 1008,
+    "all_nine_right": 34,
+    "right_per_question": {
+     "source": 89,
+     "fact": 90,
+     "firmness": 88,
+     "reports_his_result": 112,
+     "reports_his_next_fight": 105,
+     "reports_his_health": 106,
+     "he_speaks": 104,
+     "centrality": 66,
+     "act": 78
+    },
+    "career_facts_labelled": 15,
+    "career_facts_recognised": 4,
+    "career_facts_same_kind": 4,
+    "career_false_alarms": 2,
+    "career_false_alarm_ids": [
+     "228",
+     "879"
+    ],
+    "at_the_labels_tier": 98,
+    "label_post_articles": 0,
+    "label_post_reaching_post": 0,
+    "post_where_label_is_not_post": 2
+   },
+   "headline_b": {
+    "articles": 112,
+    "answers_right": 835,
+    "answers_asked": 1008,
+    "all_nine_right": 32,
+    "right_per_question": {
+     "fact": 90,
+     "firmness": 88,
+     "reports_his_result": 112,
+     "reports_his_next_fight": 105,
+     "reports_his_health": 106,
+     "he_speaks": 104,
+     "source": 87,
+     "centrality": 65,
+     "act": 78
+    },
+    "career_facts_labelled": 15,
+    "career_facts_recognised": 4,
+    "career_facts_same_kind": 4,
+    "career_false_alarms": 2,
+    "career_false_alarm_ids": [
+     "228",
+     "879"
+    ],
+    "at_the_labels_tier": 97,
+    "label_post_articles": 0,
+    "label_post_reaching_post": 0,
+    "post_where_label_is_not_post": 2
+   },
+   "saved": {
+    "articles": 112,
+    "answers_right": 899,
+    "answers_asked": 1008,
+    "all_nine_right": 56,
+    "right_per_question": {
+     "centrality": 98,
+     "source": 103,
+     "fact": 90,
+     "firmness": 94,
+     "reports_his_result": 111,
+     "reports_his_next_fight": 104,
+     "reports_his_health": 100,
+     "he_speaks": 112,
+     "act": 87
+    },
+    "career_facts_labelled": 15,
+    "career_facts_recognised": 3,
+    "career_facts_same_kind": 3,
+    "career_false_alarms": 4,
+    "career_false_alarm_ids": [
+     "84",
+     "228",
+     "917",
+     "944"
+    ],
+    "at_the_labels_tier": 107,
+    "label_post_articles": 0,
+    "label_post_reaching_post": 0,
+    "post_where_label_is_not_post": 1
+   },
+   "saved_again": {
+    "articles": 112,
+    "answers_right": 892,
+    "answers_asked": 1008,
+    "all_nine_right": 52,
+    "right_per_question": {
+     "centrality": 97,
+     "source": 103,
+     "fact": 88,
+     "firmness": 93,
+     "reports_his_result": 111,
+     "reports_his_next_fight": 104,
+     "reports_his_health": 100,
+     "he_speaks": 111,
+     "act": 85
+    },
+    "career_facts_labelled": 15,
+    "career_facts_recognised": 2,
+    "career_facts_same_kind": 2,
+    "career_false_alarms": 4,
+    "career_false_alarm_ids": [
+     "84",
+     "228",
+     "917",
+     "944"
+    ],
+    "at_the_labels_tier": 107,
+    "label_post_articles": 0,
+    "label_post_reaching_post": 0,
+    "post_where_label_is_not_post": 1
+   }
+  },
+  "against_full_text": {
+   "headline_a_vs_saved": {
+    "articles": 112,
+    "same_nine_answers": 33,
+    "answers_changed": 168,
+    "answers_changed_per_question": {
+     "centrality": 48,
+     "act": 32,
+     "fact": 19,
+     "firmness": 24,
+     "reports_his_health": 14,
+     "source": 17,
+     "he_speaks": 8,
+     "reports_his_next_fight": 5,
+     "reports_his_result": 1
+    },
+    "tier_crossings": 14,
+    "tier_moves": {
+     "drop → digest": 2,
+     "drop → post": 1,
+     "digest → drop": 9,
+     "digest → post": 1,
+     "post → digest": 1
+    },
+    "more_cautious": 10,
+    "more_eager": 4,
+    "career_fact_lost": 5,
+    "career_fact_invented": 4,
+    "tier_crossing_ids": [
+     "78",
+     "228",
+     "249",
+     "256",
+     "287",
+     "335",
+     "807",
+     "828",
+     "838",
+     "879",
+     "892",
+     "913",
+     "944",
+     "977"
+    ]
+   },
+   "headline_b_vs_saved": {
+    "articles": 112,
+    "same_nine_answers": 31,
+    "answers_changed": 172,
+    "answers_changed_per_question": {
+     "centrality": 50,
+     "source": 19,
+     "act": 32,
+     "fact": 19,
+     "firmness": 24,
+     "reports_his_health": 14,
+     "he_speaks": 8,
+     "reports_his_next_fight": 5,
+     "reports_his_result": 1
+    },
+    "tier_crossings": 15,
+    "tier_moves": {
+     "drop → digest": 2,
+     "digest → drop": 10,
+     "drop → post": 1,
+     "digest → post": 1,
+     "post → digest": 1
+    },
+    "more_cautious": 11,
+    "more_eager": 4,
+    "career_fact_lost": 5,
+    "career_fact_invented": 4,
+    "tier_crossing_ids": [
+     "78",
+     "102",
+     "228",
+     "249",
+     "256",
+     "287",
+     "335",
+     "807",
+     "828",
+     "838",
+     "879",
+     "892",
+     "913",
+     "944",
+     "977"
+    ]
+   },
+   "noise_floor_saved_vs_saved_again": {
+    "articles": 112,
+    "same_nine_answers": 107,
+    "answers_changed": 8,
+    "answers_changed_per_question": {
+     "centrality": 1,
+     "act": 2,
+     "fact": 2,
+     "firmness": 1,
+     "reports_his_health": 1,
+     "he_speaks": 1
+    },
+    "tier_crossings": 0,
+    "tier_moves": {},
+    "more_cautious": 0,
+    "more_eager": 0,
+    "career_fact_lost": 1,
+    "career_fact_invented": 0,
+    "tier_crossing_ids": []
+   }
+  },
+  "headline_noise_floor_a_vs_b": {
+   "articles": 112,
+   "same_nine_answers": 103,
+   "answers_changed": 10,
+   "answers_changed_per_question": {
+    "source": 2,
+    "centrality": 4,
+    "firmness": 2,
+    "act": 2
+   },
+   "tier_crossings": 1,
+   "tier_moves": {
+    "digest → drop": 1
+   },
+   "more_cautious": 1,
+   "more_eager": 0,
+   "career_fact_lost": 0,
+   "career_fact_invented": 0,
+   "tier_crossing_ids": [
+    "102"
+   ]
+  },
+  "headline_crossings_shared": {
+   "headline_a_crossings": 14,
+   "headline_b_crossings": 15,
+   "crossed_in_both_runs": 14,
+   "crossed_in_one_run_only": 1
+  },
+  "tiers": {
+   "labels": {
+    "post": 0,
+    "digest": 76,
+    "drop": 36
+   },
+   "headline_a": {
+    "post": 2,
+    "digest": 68,
+    "drop": 42
+   },
+   "headline_b": {
+    "post": 2,
+    "digest": 67,
+    "drop": 43
+   },
+   "saved": {
+    "post": 1,
+    "digest": 75,
+    "drop": 36
+   },
+   "saved_again": {
+    "post": 1,
+    "digest": 75,
+    "drop": 36
+   }
+  }
+ },
+ "amosov_and_donchenko": {
+  "articles": 83,
+  "scores": {
+   "headline_a": {
+    "articles": 83,
+    "answers_right": 625,
+    "answers_asked": 747,
+    "all_nine_right": 29,
+    "right_per_question": {
+     "centrality": 42,
+     "act": 56,
+     "fact": 74,
+     "firmness": 72,
+     "reports_his_result": 77,
+     "reports_his_next_fight": 81,
+     "reports_his_health": 82,
+     "he_speaks": 72,
+     "source": 69
+    },
+    "career_facts_labelled": 31,
+    "career_facts_recognised": 26,
+    "career_facts_same_kind": 26,
+    "career_false_alarms": 2,
+    "career_false_alarm_ids": [
+     "500",
+     "672"
+    ],
+    "at_the_labels_tier": 62,
+    "label_post_articles": 29,
+    "label_post_reaching_post": 26,
+    "post_where_label_is_not_post": 2
+   },
+   "headline_b": {
+    "articles": 83,
+    "answers_right": 626,
+    "answers_asked": 747,
+    "all_nine_right": 31,
+    "right_per_question": {
+     "centrality": 45,
+     "act": 57,
+     "fact": 73,
+     "firmness": 72,
+     "reports_his_result": 76,
+     "reports_his_next_fight": 81,
+     "reports_his_health": 82,
+     "he_speaks": 72,
+     "source": 68
+    },
+    "career_facts_labelled": 31,
+    "career_facts_recognised": 25,
+    "career_facts_same_kind": 25,
+    "career_false_alarms": 2,
+    "career_false_alarm_ids": [
+     "500",
+     "672"
+    ],
+    "at_the_labels_tier": 62,
+    "label_post_articles": 29,
+    "label_post_reaching_post": 25,
+    "post_where_label_is_not_post": 2
+   },
+   "saved": {
+    "articles": 83,
+    "answers_right": 707,
+    "answers_asked": 747,
+    "all_nine_right": 59,
+    "right_per_question": {
+     "centrality": 75,
+     "source": 78,
+     "act": 73,
+     "fact": 78,
+     "firmness": 76,
+     "reports_his_result": 83,
+     "reports_his_next_fight": 80,
+     "reports_his_health": 82,
+     "he_speaks": 82
+    },
+    "career_facts_labelled": 31,
+    "career_facts_recognised": 30,
+    "career_facts_same_kind": 30,
+    "career_false_alarms": 3,
+    "career_false_alarm_ids": [
+     "490",
+     "491",
+     "494"
+    ],
+    "at_the_labels_tier": 75,
+    "label_post_articles": 29,
+    "label_post_reaching_post": 29,
+    "post_where_label_is_not_post": 3
+   },
+   "saved_again": {
+    "articles": 83,
+    "answers_right": 703,
+    "answers_asked": 747,
+    "all_nine_right": 58,
+    "right_per_question": {
+     "centrality": 74,
+     "source": 78,
+     "act": 73,
+     "fact": 77,
+     "firmness": 75,
+     "reports_his_result": 83,
+     "reports_his_next_fight": 79,
+     "reports_his_health": 82,
+     "he_speaks": 82
+    },
+    "career_facts_labelled": 31,
+    "career_facts_recognised": 30,
+    "career_facts_same_kind": 30,
+    "career_false_alarms": 4,
+    "career_false_alarm_ids": [
+     "490",
+     "491",
+     "494",
+     "690"
+    ],
+    "at_the_labels_tier": 74,
+    "label_post_articles": 29,
+    "label_post_reaching_post": 29,
+    "post_where_label_is_not_post": 4
+   }
+  },
+  "against_full_text": {
+   "headline_a_vs_saved": {
+    "articles": 83,
+    "same_nine_answers": 33,
+    "answers_changed": 116,
+    "answers_changed_per_question": {
+     "source": 14,
+     "centrality": 37,
+     "act": 20,
+     "fact": 12,
+     "firmness": 12,
+     "reports_his_next_fight": 5,
+     "he_speaks": 10,
+     "reports_his_result": 6
+    },
+    "tier_crossings": 19,
+    "tier_moves": {
+     "digest → drop": 9,
+     "post → digest": 4,
+     "drop → post": 1,
+     "drop → digest": 2,
+     "digest → post": 1,
+     "post → drop": 2
+    },
+    "more_cautious": 15,
+    "more_eager": 4,
+    "career_fact_lost": 7,
+    "career_fact_invented": 2,
+    "tier_crossing_ids": [
+     "13",
+     "33",
+     "490",
+     "491",
+     "494",
+     "500",
+     "555",
+     "563",
+     "608",
+     "623",
+     "641",
+     "655",
+     "672",
+     "692",
+     "698",
+     "714",
+     "737",
+     "746",
+     "1200"
+    ]
+   },
+   "headline_b_vs_saved": {
+    "articles": 83,
+    "same_nine_answers": 35,
+    "answers_changed": 117,
+    "answers_changed_per_question": {
+     "source": 15,
+     "centrality": 34,
+     "act": 19,
+     "fact": 13,
+     "firmness": 14,
+     "reports_his_next_fight": 5,
+     "he_speaks": 10,
+     "reports_his_result": 7
+    },
+    "tier_crossings": 19,
+    "tier_moves": {
+     "digest → drop": 8,
+     "post → digest": 5,
+     "drop → post": 1,
+     "drop → digest": 2,
+     "digest → post": 1,
+     "post → drop": 2
+    },
+    "more_cautious": 15,
+    "more_eager": 4,
+    "career_fact_lost": 8,
+    "career_fact_invented": 2,
+    "tier_crossing_ids": [
+     "13",
+     "33",
+     "490",
+     "491",
+     "494",
+     "500",
+     "555",
+     "563",
+     "623",
+     "641",
+     "655",
+     "672",
+     "692",
+     "698",
+     "714",
+     "737",
+     "746",
+     "779",
+     "1200"
+    ]
+   },
+   "noise_floor_saved_vs_saved_again": {
+    "articles": 83,
+    "same_nine_answers": 81,
+    "answers_changed": 4,
+    "answers_changed_per_question": {
+     "fact": 1,
+     "firmness": 1,
+     "reports_his_next_fight": 1,
+     "centrality": 1
+    },
+    "tier_crossings": 1,
+    "tier_moves": {
+     "digest → post": 1
+    },
+    "more_cautious": 0,
+    "more_eager": 1,
+    "career_fact_lost": 0,
+    "career_fact_invented": 1,
+    "tier_crossing_ids": [
+     "690"
+    ]
+   }
+  },
+  "headline_noise_floor_a_vs_b": {
+   "articles": 83,
+   "same_nine_answers": 75,
+   "answers_changed": 12,
+   "answers_changed_per_question": {
+    "act": 3,
+    "centrality": 4,
+    "firmness": 2,
+    "source": 1,
+    "fact": 1,
+    "reports_his_result": 1
+   },
+   "tier_crossings": 2,
+   "tier_moves": {
+    "drop → digest": 1,
+    "post → digest": 1
+   },
+   "more_cautious": 1,
+   "more_eager": 1,
+   "career_fact_lost": 1,
+   "career_fact_invented": 0,
+   "tier_crossing_ids": [
+    "608",
+    "779"
+   ]
+  },
+  "headline_crossings_shared": {
+   "headline_a_crossings": 19,
+   "headline_b_crossings": 19,
+   "crossed_in_both_runs": 18,
+   "crossed_in_one_run_only": 2
+  },
+  "tiers": {
+   "labels": {
+    "post": 29,
+    "digest": 41,
+    "drop": 13
+   },
+   "headline_a": {
+    "post": 28,
+    "digest": 31,
+    "drop": 24
+   },
+   "headline_b": {
+    "post": 27,
+    "digest": 33,
+    "drop": 23
+   },
+   "saved": {
+    "post": 32,
+    "digest": 35,
+    "drop": 16
+   },
+   "saved_again": {
+    "post": 33,
+    "digest": 34,
+    "drop": 16
+   }
+  }
+ },
+ "preview_adds_words": {
+  "articles": 4,
+  "scores": {
+   "headline_a": {
+    "articles": 4,
+    "answers_right": 31,
+    "answers_asked": 36,
+    "all_nine_right": 1,
+    "right_per_question": {
+     "source": 4,
+     "act": 4,
+     "firmness": 4,
+     "reports_his_result": 4,
+     "reports_his_next_fight": 4,
+     "reports_his_health": 4,
+     "he_speaks": 3,
+     "fact": 3,
+     "centrality": 1
+    },
+    "career_facts_labelled": 0,
+    "career_facts_recognised": 0,
+    "career_facts_same_kind": 0,
+    "career_false_alarms": 0,
+    "career_false_alarm_ids": [],
+    "at_the_labels_tier": 4,
+    "label_post_articles": 0,
+    "label_post_reaching_post": 0,
+    "post_where_label_is_not_post": 0
+   },
+   "headline_b": {
+    "articles": 4,
+    "answers_right": 31,
+    "answers_asked": 36,
+    "all_nine_right": 1,
+    "right_per_question": {
+     "source": 4,
+     "act": 4,
+     "firmness": 4,
+     "reports_his_result": 4,
+     "reports_his_next_fight": 4,
+     "reports_his_health": 4,
+     "he_speaks": 3,
+     "fact": 3,
+     "centrality": 1
+    },
+    "career_facts_labelled": 0,
+    "career_facts_recognised": 0,
+    "career_facts_same_kind": 0,
+    "career_false_alarms": 0,
+    "career_false_alarm_ids": [],
+    "at_the_labels_tier": 4,
+    "label_post_articles": 0,
+    "label_post_reaching_post": 0,
+    "post_where_label_is_not_post": 0
+   },
+   "saved": {
+    "articles": 4,
+    "answers_right": 32,
+    "answers_asked": 36,
+    "all_nine_right": 1,
+    "right_per_question": {
+     "centrality": 4,
+     "source": 4,
+     "act": 4,
+     "fact": 3,
+     "firmness": 3,
+     "reports_his_result": 4,
+     "reports_his_next_fight": 4,
+     "reports_his_health": 3,
+     "he_speaks": 3
+    },
+    "career_facts_labelled": 0,
+    "career_facts_recognised": 0,
+    "career_facts_same_kind": 0,
+    "career_false_alarms": 0,
+    "career_false_alarm_ids": [],
+    "at_the_labels_tier": 4,
+    "label_post_articles": 0,
+    "label_post_reaching_post": 0,
+    "post_where_label_is_not_post": 0
+   },
+   "saved_again": {
+    "articles": 4,
+    "answers_right": 32,
+    "answers_asked": 36,
+    "all_nine_right": 1,
+    "right_per_question": {
+     "centrality": 4,
+     "source": 4,
+     "act": 4,
+     "fact": 3,
+     "firmness": 3,
+     "reports_his_result": 4,
+     "reports_his_next_fight": 4,
+     "reports_his_health": 3,
+     "he_speaks": 3
+    },
+    "career_facts_labelled": 0,
+    "career_facts_recognised": 0,
+    "career_facts_same_kind": 0,
+    "career_false_alarms": 0,
+    "career_false_alarm_ids": [],
+    "at_the_labels_tier": 4,
+    "label_post_articles": 0,
+    "label_post_reaching_post": 0,
+    "post_where_label_is_not_post": 0
+   }
+  },
+  "against_full_text": {
+   "headline_a_vs_saved": {
+    "articles": 4,
+    "same_nine_answers": 0,
+    "answers_changed": 7,
+    "answers_changed_per_question": {
+     "centrality": 3,
+     "fact": 2,
+     "firmness": 1,
+     "reports_his_health": 1
+    },
+    "tier_crossings": 0,
+    "tier_moves": {},
+    "more_cautious": 0,
+    "more_eager": 0,
+    "career_fact_lost": 0,
+    "career_fact_invented": 0,
+    "tier_crossing_ids": []
+   },
+   "headline_b_vs_saved": {
+    "articles": 4,
+    "same_nine_answers": 0,
+    "answers_changed": 7,
+    "answers_changed_per_question": {
+     "centrality": 3,
+     "fact": 2,
+     "firmness": 1,
+     "reports_his_health": 1
+    },
+    "tier_crossings": 0,
+    "tier_moves": {},
+    "more_cautious": 0,
+    "more_eager": 0,
+    "career_fact_lost": 0,
+    "career_fact_invented": 0,
+    "tier_crossing_ids": []
+   },
+   "noise_floor_saved_vs_saved_again": {
+    "articles": 4,
+    "same_nine_answers": 4,
+    "answers_changed": 0,
+    "answers_changed_per_question": {},
+    "tier_crossings": 0,
+    "tier_moves": {},
+    "more_cautious": 0,
+    "more_eager": 0,
+    "career_fact_lost": 0,
+    "career_fact_invented": 0,
+    "tier_crossing_ids": []
+   }
+  },
+  "headline_noise_floor_a_vs_b": {
+   "articles": 4,
+   "same_nine_answers": 4,
+   "answers_changed": 0,
+   "answers_changed_per_question": {},
+   "tier_crossings": 0,
+   "tier_moves": {},
+   "more_cautious": 0,
+   "more_eager": 0,
+   "career_fact_lost": 0,
+   "career_fact_invented": 0,
+   "tier_crossing_ids": []
+  },
+  "headline_crossings_shared": {
+   "headline_a_crossings": 0,
+   "headline_b_crossings": 0,
+   "crossed_in_both_runs": 0,
+   "crossed_in_one_run_only": 0
+  },
+  "tiers": {
+   "labels": {
+    "post": 0,
+    "digest": 4,
+    "drop": 0
+   },
+   "headline_a": {
+    "post": 0,
+    "digest": 4,
+    "drop": 0
+   },
+   "headline_b": {
+    "post": 0,
+    "digest": 4,
+    "drop": 0
+   },
+   "saved": {
+    "post": 0,
+    "digest": 4,
+    "drop": 0
+   },
+   "saved_again": {
+    "post": 0,
+    "digest": 4,
+    "drop": 0
+   }
+  }
+ },
+ "headline_alone": {
+  "articles": 191,
+  "scores": {
+   "headline_a": {
+    "articles": 191,
+    "answers_right": 1432,
+    "answers_asked": 1719,
+    "all_nine_right": 62,
+    "right_per_question": {
+     "centrality": 107,
+     "act": 130,
+     "fact": 161,
+     "firmness": 156,
+     "reports_his_result": 185,
+     "reports_his_next_fight": 182,
+     "reports_his_health": 184,
+     "he_speaks": 173,
+     "source": 154
+    },
+    "career_facts_labelled": 46,
+    "career_facts_recognised": 30,
+    "career_facts_same_kind": 30,
+    "career_false_alarms": 4,
+    "career_false_alarm_ids": [
+     "228",
+     "500",
+     "672",
+     "879"
+    ],
+    "at_the_labels_tier": 156,
+    "label_post_articles": 29,
+    "label_post_reaching_post": 26,
+    "post_where_label_is_not_post": 4
+   },
+   "headline_b": {
+    "articles": 191,
+    "answers_right": 1430,
+    "answers_asked": 1719,
+    "all_nine_right": 62,
+    "right_per_question": {
+     "centrality": 109,
+     "act": 131,
+     "fact": 160,
+     "firmness": 156,
+     "reports_his_result": 184,
+     "reports_his_next_fight": 182,
+     "reports_his_health": 184,
+     "he_speaks": 173,
+     "source": 151
+    },
+    "career_facts_labelled": 46,
+    "career_facts_recognised": 29,
+    "career_facts_same_kind": 29,
+    "career_false_alarms": 4,
+    "career_false_alarm_ids": [
+     "228",
+     "500",
+     "672",
+     "879"
+    ],
+    "at_the_labels_tier": 155,
+    "label_post_articles": 29,
+    "label_post_reaching_post": 25,
+    "post_where_label_is_not_post": 4
+   },
+   "saved": {
+    "articles": 191,
+    "answers_right": 1574,
+    "answers_asked": 1719,
+    "all_nine_right": 114,
+    "right_per_question": {
+     "centrality": 169,
+     "source": 177,
+     "act": 156,
+     "fact": 165,
+     "firmness": 167,
+     "reports_his_result": 190,
+     "reports_his_next_fight": 180,
+     "reports_his_health": 179,
+     "he_speaks": 191
+    },
+    "career_facts_labelled": 46,
+    "career_facts_recognised": 33,
+    "career_facts_same_kind": 33,
+    "career_false_alarms": 7,
+    "career_false_alarm_ids": [
+     "84",
+     "228",
+     "490",
+     "491",
+     "494",
+     "917",
+     "944"
+    ],
+    "at_the_labels_tier": 178,
+    "label_post_articles": 29,
+    "label_post_reaching_post": 29,
+    "post_where_label_is_not_post": 4
+   },
+   "saved_again": {
+    "articles": 191,
+    "answers_right": 1563,
+    "answers_asked": 1719,
+    "all_nine_right": 109,
+    "right_per_question": {
+     "centrality": 167,
+     "source": 177,
+     "act": 154,
+     "fact": 162,
+     "firmness": 165,
+     "reports_his_result": 190,
+     "reports_his_next_fight": 179,
+     "reports_his_health": 179,
+     "he_speaks": 190
+    },
+    "career_facts_labelled": 46,
+    "career_facts_recognised": 32,
+    "career_facts_same_kind": 32,
+    "career_false_alarms": 8,
+    "career_false_alarm_ids": [
+     "84",
+     "228",
+     "490",
+     "491",
+     "494",
+     "690",
+     "917",
+     "944"
+    ],
+    "at_the_labels_tier": 177,
+    "label_post_articles": 29,
+    "label_post_reaching_post": 29,
+    "post_where_label_is_not_post": 5
+   }
+  },
+  "against_full_text": {
+   "headline_a_vs_saved": {
+    "articles": 191,
+    "same_nine_answers": 66,
+    "answers_changed": 277,
+    "answers_changed_per_question": {
+     "source": 31,
+     "centrality": 82,
+     "act": 52,
+     "fact": 29,
+     "firmness": 35,
+     "reports_his_health": 13,
+     "he_speaks": 18,
+     "reports_his_next_fight": 10,
+     "reports_his_result": 7
+    },
+    "tier_crossings": 33,
+    "tier_moves": {
+     "digest → drop": 18,
+     "drop → digest": 4,
+     "drop → post": 2,
+     "post → digest": 5,
+     "digest → post": 2,
+     "post → drop": 2
+    },
+    "more_cautious": 25,
+    "more_eager": 8,
+    "career_fact_lost": 12,
+    "career_fact_invented": 6,
+    "tier_crossing_ids": [
+     "13",
+     "33",
+     "78",
+     "228",
+     "249",
+     "256",
+     "287",
+     "335",
+     "490",
+     "491",
+     "494",
+     "500",
+     "555",
+     "563",
+     "608",
+     "623",
+     "641",
+     "655",
+     "672",
+     "692",
+     "698",
+     "714",
+     "737",
+     "746",
+     "807",
+     "828",
+     "838",
+     "879",
+     "892",
+     "913",
+     "944",
+     "977",
+     "1200"
+    ]
+   },
+   "headline_b_vs_saved": {
+    "articles": 191,
+    "same_nine_answers": 66,
+    "answers_changed": 282,
+    "answers_changed_per_question": {
+     "source": 34,
+     "centrality": 81,
+     "act": 51,
+     "fact": 30,
+     "firmness": 37,
+     "reports_his_health": 13,
+     "he_speaks": 18,
+     "reports_his_next_fight": 10,
+     "reports_his_result": 8
+    },
+    "tier_crossings": 34,
+    "tier_moves": {
+     "digest → drop": 18,
+     "drop → digest": 4,
+     "drop → post": 2,
+     "post → digest": 6,
+     "digest → post": 2,
+     "post → drop": 2
+    },
+    "more_cautious": 26,
+    "more_eager": 8,
+    "career_fact_lost": 13,
+    "career_fact_invented": 6,
+    "tier_crossing_ids": [
+     "13",
+     "33",
+     "78",
+     "102",
+     "228",
+     "249",
+     "256",
+     "287",
+     "335",
+     "490",
+     "491",
+     "494",
+     "500",
+     "555",
+     "563",
+     "623",
+     "641",
+     "655",
+     "672",
+     "692",
+     "698",
+     "714",
+     "737",
+     "746",
+     "779",
+     "807",
+     "828",
+     "838",
+     "879",
+     "892",
+     "913",
+     "944",
+     "977",
+     "1200"
+    ]
+   },
+   "noise_floor_saved_vs_saved_again": {
+    "articles": 191,
+    "same_nine_answers": 184,
+    "answers_changed": 12,
+    "answers_changed_per_question": {
+     "centrality": 2,
+     "act": 2,
+     "fact": 3,
+     "firmness": 2,
+     "reports_his_health": 1,
+     "reports_his_next_fight": 1,
+     "he_speaks": 1
+    },
+    "tier_crossings": 1,
+    "tier_moves": {
+     "digest → post": 1
+    },
+    "more_cautious": 0,
+    "more_eager": 1,
+    "career_fact_lost": 1,
+    "career_fact_invented": 1,
+    "tier_crossing_ids": [
+     "690"
+    ]
+   }
+  },
+  "headline_noise_floor_a_vs_b": {
+   "articles": 191,
+   "same_nine_answers": 174,
+   "answers_changed": 22,
+   "answers_changed_per_question": {
+    "source": 3,
+    "centrality": 8,
+    "firmness": 4,
+    "act": 5,
+    "fact": 1,
+    "reports_his_result": 1
+   },
+   "tier_crossings": 3,
+   "tier_moves": {
+    "digest → drop": 1,
+    "drop → digest": 1,
+    "post → digest": 1
+   },
+   "more_cautious": 2,
+   "more_eager": 1,
+   "career_fact_lost": 1,
+   "career_fact_invented": 0,
+   "tier_crossing_ids": [
+    "102",
+    "608",
+    "779"
+   ]
+  },
+  "headline_crossings_shared": {
+   "headline_a_crossings": 33,
+   "headline_b_crossings": 34,
+   "crossed_in_both_runs": 32,
+   "crossed_in_one_run_only": 3
+  },
+  "tiers": {
+   "labels": {
+    "post": 29,
+    "digest": 113,
+    "drop": 49
+   },
+   "headline_a": {
+    "post": 30,
+    "digest": 95,
+    "drop": 66
+   },
+   "headline_b": {
+    "post": 29,
+    "digest": 96,
+    "drop": 66
+   },
+   "saved": {
+    "post": 33,
+    "digest": 106,
+    "drop": 52
+   },
+   "saved_again": {
+    "post": 34,
+    "digest": 105,
+    "drop": 52
+   }
+  }
+ },
+ "headline_names_him": {
+  "articles": 141,
+  "scores": {
+   "headline_a": {
+    "articles": 141,
+    "answers_right": 1074,
+    "answers_asked": 1269,
+    "all_nine_right": 52,
+    "right_per_question": {
+     "centrality": 96,
+     "act": 104,
+     "fact": 115,
+     "firmness": 111,
+     "reports_his_result": 138,
+     "reports_his_next_fight": 133,
+     "reports_his_health": 134,
+     "he_speaks": 122,
+     "source": 121
+    },
+    "career_facts_labelled": 42,
+    "career_facts_recognised": 29,
+    "career_facts_same_kind": 29,
+    "career_false_alarms": 3,
+    "career_false_alarm_ids": [
+     "228",
+     "672",
+     "879"
+    ],
+    "at_the_labels_tier": 121,
+    "label_post_articles": 26,
+    "label_post_reaching_post": 25,
+    "post_where_label_is_not_post": 3
+   },
+   "headline_b": {
+    "articles": 141,
+    "answers_right": 1077,
+    "answers_asked": 1269,
+    "all_nine_right": 52,
+    "right_per_question": {
+     "centrality": 98,
+     "act": 104,
+     "fact": 115,
+     "firmness": 112,
+     "reports_his_result": 138,
+     "reports_his_next_fight": 133,
+     "reports_his_health": 134,
+     "he_speaks": 122,
+     "source": 121
+    },
+    "career_facts_labelled": 42,
+    "career_facts_recognised": 29,
+    "career_facts_same_kind": 29,
+    "career_false_alarms": 3,
+    "career_false_alarm_ids": [
+     "228",
+     "672",
+     "879"
+    ],
+    "at_the_labels_tier": 121,
+    "label_post_articles": 26,
+    "label_post_reaching_post": 25,
+    "post_where_label_is_not_post": 3
+   },
+   "saved": {
+    "articles": 141,
+    "answers_right": 1145,
+    "answers_asked": 1269,
+    "all_nine_right": 84,
+    "right_per_question": {
+     "centrality": 126,
+     "source": 133,
+     "act": 118,
+     "fact": 114,
+     "firmness": 116,
+     "reports_his_result": 140,
+     "reports_his_next_fight": 130,
+     "reports_his_health": 128,
+     "he_speaks": 140
+    },
+    "career_facts_labelled": 42,
+    "career_facts_recognised": 29,
+    "career_facts_same_kind": 29,
+    "career_false_alarms": 7,
+    "career_false_alarm_ids": [
+     "84",
+     "228",
+     "490",
+     "491",
+     "494",
+     "917",
+     "944"
+    ],
+    "at_the_labels_tier": 130,
+    "label_post_articles": 26,
+    "label_post_reaching_post": 26,
+    "post_where_label_is_not_post": 4
+   },
+   "saved_again": {
+    "articles": 141,
+    "answers_right": 1136,
+    "answers_asked": 1269,
+    "all_nine_right": 81,
+    "right_per_question": {
+     "centrality": 125,
+     "source": 133,
+     "act": 117,
+     "fact": 111,
+     "firmness": 114,
+     "reports_his_result": 140,
+     "reports_his_next_fight": 129,
+     "reports_his_health": 128,
+     "he_speaks": 139
+    },
+    "career_facts_labelled": 42,
+    "career_facts_recognised": 28,
+    "career_facts_same_kind": 28,
+    "career_false_alarms": 8,
+    "career_false_alarm_ids": [
+     "84",
+     "228",
+     "490",
+     "491",
+     "494",
+     "690",
+     "917",
+     "944"
+    ],
+    "at_the_labels_tier": 129,
+    "label_post_articles": 26,
+    "label_post_reaching_post": 26,
+    "post_where_label_is_not_post": 5
+   }
+  },
+  "against_full_text": {
+   "headline_a_vs_saved": {
+    "articles": 141,
+    "same_nine_answers": 61,
+    "answers_changed": 184,
+    "answers_changed_per_question": {
+     "source": 18,
+     "centrality": 38,
+     "act": 26,
+     "fact": 26,
+     "firmness": 31,
+     "reports_his_health": 14,
+     "he_speaks": 18,
+     "reports_his_next_fight": 9,
+     "reports_his_result": 4
+    },
+    "tier_crossings": 20,
+    "tier_moves": {
+     "digest → drop": 10,
+     "drop → digest": 2,
+     "drop → post": 1,
+     "post → digest": 5,
+     "digest → post": 2
+    },
+    "more_cautious": 15,
+    "more_eager": 5,
+    "career_fact_lost": 9,
+    "career_fact_invented": 5,
+    "tier_crossing_ids": [
+     "13",
+     "33",
+     "78",
+     "228",
+     "256",
+     "287",
+     "490",
+     "491",
+     "494",
+     "608",
+     "655",
+     "672",
+     "746",
+     "807",
+     "828",
+     "838",
+     "879",
+     "892",
+     "913",
+     "944"
+    ]
+   },
+   "headline_b_vs_saved": {
+    "articles": 141,
+    "same_nine_answers": 61,
+    "answers_changed": 184,
+    "answers_changed_per_question": {
+     "source": 18,
+     "centrality": 37,
+     "act": 26,
+     "fact": 26,
+     "firmness": 32,
+     "reports_his_health": 14,
+     "he_speaks": 18,
+     "reports_his_next_fight": 9,
+     "reports_his_result": 4
+    },
+    "tier_crossings": 20,
+    "tier_moves": {
+     "digest → drop": 10,
+     "drop → digest": 2,
+     "drop → post": 1,
+     "post → digest": 5,
+     "digest → post": 2
+    },
+    "more_cautious": 15,
+    "more_eager": 5,
+    "career_fact_lost": 9,
+    "career_fact_invented": 5,
+    "tier_crossing_ids": [
+     "13",
+     "33",
+     "78",
+     "102",
+     "228",
+     "256",
+     "287",
+     "490",
+     "491",
+     "494",
+     "655",
+     "672",
+     "746",
+     "807",
+     "828",
+     "838",
+     "879",
+     "892",
+     "913",
+     "944"
+    ]
+   },
+   "noise_floor_saved_vs_saved_again": {
+    "articles": 141,
+    "same_nine_answers": 136,
+    "answers_changed": 10,
+    "answers_changed_per_question": {
+     "centrality": 1,
+     "act": 1,
+     "fact": 3,
+     "firmness": 2,
+     "reports_his_health": 1,
+     "reports_his_next_fight": 1,
+     "he_speaks": 1
+    },
+    "tier_crossings": 1,
+    "tier_moves": {
+     "digest → post": 1
+    },
+    "more_cautious": 0,
+    "more_eager": 1,
+    "career_fact_lost": 1,
+    "career_fact_invented": 1,
+    "tier_crossing_ids": [
+     "690"
+    ]
+   }
+  },
+  "headline_noise_floor_a_vs_b": {
+   "articles": 141,
+   "same_nine_answers": 130,
+   "answers_changed": 12,
+   "answers_changed_per_question": {
+    "centrality": 7,
+    "firmness": 3,
+    "act": 2
+   },
+   "tier_crossings": 2,
+   "tier_moves": {
+    "digest → drop": 1,
+    "drop → digest": 1
+   },
+   "more_cautious": 1,
+   "more_eager": 1,
+   "career_fact_lost": 0,
+   "career_fact_invented": 0,
+   "tier_crossing_ids": [
+    "102",
+    "608"
+   ]
+  },
+  "headline_crossings_shared": {
+   "headline_a_crossings": 20,
+   "headline_b_crossings": 20,
+   "crossed_in_both_runs": 19,
+   "crossed_in_one_run_only": 2
+  },
+  "tiers": {
+   "labels": {
+    "post": 26,
+    "digest": 105,
+    "drop": 10
+   },
+   "headline_a": {
+    "post": 28,
+    "digest": 95,
+    "drop": 18
+   },
+   "headline_b": {
+    "post": 28,
+    "digest": 95,
+    "drop": 18
+   },
+   "saved": {
+    "post": 30,
+    "digest": 100,
+    "drop": 11
+   },
+   "saved_again": {
+    "post": 31,
+    "digest": 99,
+    "drop": 11
+   }
+  }
+ },
+ "headline_does_not_name_him": {
+  "articles": 54,
+  "scores": {
+   "headline_a": {
+    "articles": 54,
+    "answers_right": 389,
+    "answers_asked": 486,
+    "all_nine_right": 11,
+    "right_per_question": {
+     "source": 37,
+     "fact": 49,
+     "firmness": 49,
+     "reports_his_result": 51,
+     "reports_his_next_fight": 53,
+     "reports_his_health": 54,
+     "he_speaks": 54,
+     "centrality": 12,
+     "act": 30
+    },
+    "career_facts_labelled": 4,
+    "career_facts_recognised": 1,
+    "career_facts_same_kind": 1,
+    "career_false_alarms": 1,
+    "career_false_alarm_ids": [
+     "500"
+    ],
+    "at_the_labels_tier": 39,
+    "label_post_articles": 3,
+    "label_post_reaching_post": 1,
+    "post_where_label_is_not_post": 1
+   },
+   "headline_b": {
+    "articles": 54,
+    "answers_right": 384,
+    "answers_asked": 486,
+    "all_nine_right": 11,
+    "right_per_question": {
+     "fact": 48,
+     "firmness": 48,
+     "reports_his_result": 50,
+     "reports_his_next_fight": 53,
+     "reports_his_health": 54,
+     "he_speaks": 54,
+     "source": 34,
+     "centrality": 12,
+     "act": 31
+    },
+    "career_facts_labelled": 4,
+    "career_facts_recognised": 0,
+    "career_facts_same_kind": 0,
+    "career_false_alarms": 1,
+    "career_false_alarm_ids": [
+     "500"
+    ],
+    "at_the_labels_tier": 38,
+    "label_post_articles": 3,
+    "label_post_reaching_post": 0,
+    "post_where_label_is_not_post": 1
+   },
+   "saved": {
+    "articles": 54,
+    "answers_right": 461,
+    "answers_asked": 486,
+    "all_nine_right": 31,
+    "right_per_question": {
+     "centrality": 47,
+     "source": 48,
+     "fact": 54,
+     "firmness": 54,
+     "reports_his_result": 54,
+     "reports_his_next_fight": 54,
+     "reports_his_health": 54,
+     "he_speaks": 54,
+     "act": 42
+    },
+    "career_facts_labelled": 4,
+    "career_facts_recognised": 4,
+    "career_facts_same_kind": 4,
+    "career_false_alarms": 0,
+    "career_false_alarm_ids": [],
+    "at_the_labels_tier": 52,
+    "label_post_articles": 3,
+    "label_post_reaching_post": 3,
+    "post_where_label_is_not_post": 0
+   },
+   "saved_again": {
+    "articles": 54,
+    "answers_right": 459,
+    "answers_asked": 486,
+    "all_nine_right": 29,
+    "right_per_question": {
+     "centrality": 46,
+     "source": 48,
+     "fact": 54,
+     "firmness": 54,
+     "reports_his_result": 54,
+     "reports_his_next_fight": 54,
+     "reports_his_health": 54,
+     "he_speaks": 54,
+     "act": 41
+    },
+    "career_facts_labelled": 4,
+    "career_facts_recognised": 4,
+    "career_facts_same_kind": 4,
+    "career_false_alarms": 0,
+    "career_false_alarm_ids": [],
+    "at_the_labels_tier": 52,
+    "label_post_articles": 3,
+    "label_post_reaching_post": 3,
+    "post_where_label_is_not_post": 0
+   }
+  },
+  "against_full_text": {
+   "headline_a_vs_saved": {
+    "articles": 54,
+    "same_nine_answers": 5,
+    "answers_changed": 100,
+    "answers_changed_per_question": {
+     "centrality": 47,
+     "act": 26,
+     "source": 13,
+     "fact": 5,
+     "firmness": 5,
+     "reports_his_next_fight": 1,
+     "reports_his_result": 3
+    },
+    "tier_crossings": 13,
+    "tier_moves": {
+     "digest → drop": 8,
+     "drop → digest": 2,
+     "drop → post": 1,
+     "post → drop": 2
+    },
+    "more_cautious": 10,
+    "more_eager": 3,
+    "career_fact_lost": 3,
+    "career_fact_invented": 1,
+    "tier_crossing_ids": [
+     "249",
+     "335",
+     "500",
+     "555",
+     "563",
+     "623",
+     "641",
+     "692",
+     "698",
+     "714",
+     "737",
+     "977",
+     "1200"
+    ]
+   },
+   "headline_b_vs_saved": {
+    "articles": 54,
+    "same_nine_answers": 5,
+    "answers_changed": 105,
+    "answers_changed_per_question": {
+     "centrality": 47,
+     "source": 16,
+     "act": 25,
+     "fact": 6,
+     "firmness": 6,
+     "reports_his_next_fight": 1,
+     "reports_his_result": 4
+    },
+    "tier_crossings": 14,
+    "tier_moves": {
+     "digest → drop": 8,
+     "drop → digest": 2,
+     "drop → post": 1,
+     "post → drop": 2,
+     "post → digest": 1
+    },
+    "more_cautious": 11,
+    "more_eager": 3,
+    "career_fact_lost": 4,
+    "career_fact_invented": 1,
+    "tier_crossing_ids": [
+     "249",
+     "335",
+     "500",
+     "555",
+     "563",
+     "623",
+     "641",
+     "692",
+     "698",
+     "714",
+     "737",
+     "779",
+     "977",
+     "1200"
+    ]
+   },
+   "noise_floor_saved_vs_saved_again": {
+    "articles": 54,
+    "same_nine_answers": 52,
+    "answers_changed": 2,
+    "answers_changed_per_question": {
+     "act": 1,
+     "centrality": 1
+    },
+    "tier_crossings": 0,
+    "tier_moves": {},
+    "more_cautious": 0,
+    "more_eager": 0,
+    "career_fact_lost": 0,
+    "career_fact_invented": 0,
+    "tier_crossing_ids": []
+   }
+  },
+  "headline_noise_floor_a_vs_b": {
+   "articles": 54,
+   "same_nine_answers": 48,
+   "answers_changed": 10,
+   "answers_changed_per_question": {
+    "source": 3,
+    "act": 3,
+    "centrality": 1,
+    "fact": 1,
+    "firmness": 1,
+    "reports_his_result": 1
+   },
+   "tier_crossings": 1,
+   "tier_moves": {
+    "post → digest": 1
+   },
+   "more_cautious": 1,
+   "more_eager": 0,
+   "career_fact_lost": 1,
+   "career_fact_invented": 0,
+   "tier_crossing_ids": [
+    "779"
+   ]
+  },
+  "headline_crossings_shared": {
+   "headline_a_crossings": 13,
+   "headline_b_crossings": 14,
+   "crossed_in_both_runs": 13,
+   "crossed_in_one_run_only": 1
+  },
+  "tiers": {
+   "labels": {
+    "post": 3,
+    "digest": 12,
+    "drop": 39
+   },
+   "headline_a": {
+    "post": 2,
+    "digest": 4,
+    "drop": 48
+   },
+   "headline_b": {
+    "post": 1,
+    "digest": 5,
+    "drop": 48
+   },
+   "saved": {
+    "post": 3,
+    "digest": 10,
+    "drop": 41
+   },
+   "saved_again": {
+    "post": 3,
+    "digest": 10,
+    "drop": 41
+   }
+  }
+ },
+ "cyrillic_headline": {
+  "articles": 42,
+  "scores": {
+   "headline_a": {
+    "articles": 42,
+    "answers_right": 345,
+    "answers_asked": 378,
+    "all_nine_right": 22,
+    "right_per_question": {
+     "centrality": 30,
+     "source": 40,
+     "act": 38,
+     "fact": 40,
+     "firmness": 38,
+     "reports_his_result": 41,
+     "reports_his_next_fight": 41,
+     "reports_his_health": 41,
+     "he_speaks": 36
+    },
+    "career_facts_labelled": 25,
+    "career_facts_recognised": 24,
+    "career_facts_same_kind": 24,
+    "career_false_alarms": 0,
+    "career_false_alarm_ids": [],
+    "at_the_labels_tier": 40,
+    "label_post_articles": 24,
+    "label_post_reaching_post": 24,
+    "post_where_label_is_not_post": 0
+   },
+   "headline_b": {
+    "articles": 42,
+    "answers_right": 344,
+    "answers_asked": 378,
+    "all_nine_right": 23,
+    "right_per_question": {
+     "centrality": 32,
+     "source": 39,
+     "act": 38,
+     "fact": 39,
+     "firmness": 38,
+     "reports_his_result": 40,
+     "reports_his_next_fight": 41,
+     "reports_his_health": 41,
+     "he_speaks": 36
+    },
+    "career_facts_labelled": 25,
+    "career_facts_recognised": 23,
+    "career_facts_same_kind": 23,
+    "career_false_alarms": 0,
+    "career_false_alarm_ids": [],
+    "at_the_labels_tier": 39,
+    "label_post_articles": 24,
+    "label_post_reaching_post": 23,
+    "post_where_label_is_not_post": 0
+   },
+   "saved": {
+    "articles": 42,
+    "answers_right": 364,
+    "answers_asked": 378,
+    "all_nine_right": 32,
+    "right_per_question": {
+     "centrality": 39,
+     "source": 40,
+     "act": 41,
+     "fact": 40,
+     "firmness": 38,
+     "reports_his_result": 42,
+     "reports_his_next_fight": 42,
+     "reports_his_health": 41,
+     "he_speaks": 41
+    },
+    "career_facts_labelled": 25,
+    "career_facts_recognised": 24,
+    "career_facts_same_kind": 24,
+    "career_false_alarms": 0,
+    "career_false_alarm_ids": [],
+    "at_the_labels_tier": 41,
+    "label_post_articles": 24,
+    "label_post_reaching_post": 24,
+    "post_where_label_is_not_post": 0
+   },
+   "saved_again": {
+    "articles": 42,
+    "answers_right": 360,
+    "answers_asked": 378,
+    "all_nine_right": 31,
+    "right_per_question": {
+     "centrality": 38,
+     "source": 40,
+     "act": 41,
+     "fact": 39,
+     "firmness": 37,
+     "reports_his_result": 42,
+     "reports_his_next_fight": 41,
+     "reports_his_health": 41,
+     "he_speaks": 41
+    },
+    "career_facts_labelled": 25,
+    "career_facts_recognised": 24,
+    "career_facts_same_kind": 24,
+    "career_false_alarms": 1,
+    "career_false_alarm_ids": [
+     "690"
+    ],
+    "at_the_labels_tier": 40,
+    "label_post_articles": 24,
+    "label_post_reaching_post": 24,
+    "post_where_label_is_not_post": 1
+   }
+  },
+  "against_full_text": {
+   "headline_a_vs_saved": {
+    "articles": 42,
+    "same_nine_answers": 26,
+    "answers_changed": 25,
+    "answers_changed_per_question": {
+     "centrality": 9,
+     "act": 3,
+     "source": 2,
+     "fact": 2,
+     "firmness": 2,
+     "reports_his_next_fight": 1,
+     "reports_his_result": 1,
+     "he_speaks": 5
+    },
+    "tier_crossings": 1,
+    "tier_moves": {
+     "drop → digest": 1
+    },
+    "more_cautious": 0,
+    "more_eager": 1,
+    "career_fact_lost": 0,
+    "career_fact_invented": 0,
+    "tier_crossing_ids": [
+     "1200"
+    ]
+   },
+   "headline_b_vs_saved": {
+    "articles": 42,
+    "same_nine_answers": 27,
+    "answers_changed": 28,
+    "answers_changed_per_question": {
+     "act": 3,
+     "centrality": 7,
+     "source": 3,
+     "fact": 3,
+     "firmness": 4,
+     "reports_his_next_fight": 1,
+     "reports_his_result": 2,
+     "he_speaks": 5
+    },
+    "tier_crossings": 2,
+    "tier_moves": {
+     "post → digest": 1,
+     "drop → digest": 1
+    },
+    "more_cautious": 1,
+    "more_eager": 1,
+    "career_fact_lost": 1,
+    "career_fact_invented": 0,
+    "tier_crossing_ids": [
+     "779",
+     "1200"
+    ]
+   },
+   "noise_floor_saved_vs_saved_again": {
+    "articles": 42,
+    "same_nine_answers": 40,
+    "answers_changed": 4,
+    "answers_changed_per_question": {
+     "fact": 1,
+     "firmness": 1,
+     "reports_his_next_fight": 1,
+     "centrality": 1
+    },
+    "tier_crossings": 1,
+    "tier_moves": {
+     "digest → post": 1
+    },
+    "more_cautious": 0,
+    "more_eager": 1,
+    "career_fact_lost": 0,
+    "career_fact_invented": 1,
+    "tier_crossing_ids": [
+     "690"
+    ]
+   }
+  },
+  "headline_noise_floor_a_vs_b": {
+   "articles": 42,
+   "same_nine_answers": 38,
+   "answers_changed": 7,
+   "answers_changed_per_question": {
+    "centrality": 2,
+    "firmness": 2,
+    "source": 1,
+    "fact": 1,
+    "reports_his_result": 1
+   },
+   "tier_crossings": 1,
+   "tier_moves": {
+    "post → digest": 1
+   },
+   "more_cautious": 1,
+   "more_eager": 0,
+   "career_fact_lost": 1,
+   "career_fact_invented": 0,
+   "tier_crossing_ids": [
+    "779"
+   ]
+  },
+  "headline_crossings_shared": {
+   "headline_a_crossings": 1,
+   "headline_b_crossings": 2,
+   "crossed_in_both_runs": 1,
+   "crossed_in_one_run_only": 1
+  },
+  "tiers": {
+   "labels": {
+    "post": 24,
+    "digest": 16,
+    "drop": 2
+   },
+   "headline_a": {
+    "post": 24,
+    "digest": 16,
+    "drop": 2
+   },
+   "headline_b": {
+    "post": 23,
+    "digest": 17,
+    "drop": 2
+   },
+   "saved": {
+    "post": 24,
+    "digest": 15,
+    "drop": 3
+   },
+   "saved_again": {
+    "post": 25,
+    "digest": 14,
+    "drop": 3
+   }
+  }
+ },
+ "latin_headline": {
+  "articles": 153,
+  "scores": {
+   "headline_a": {
+    "articles": 153,
+    "answers_right": 1118,
+    "answers_asked": 1377,
+    "all_nine_right": 41,
+    "right_per_question": {
+     "centrality": 78,
+     "act": 96,
+     "fact": 124,
+     "firmness": 122,
+     "reports_his_result": 148,
+     "reports_his_next_fight": 145,
+     "reports_his_health": 147,
+     "he_speaks": 140,
+     "source": 118
+    },
+    "career_facts_labelled": 21,
+    "career_facts_recognised": 6,
+    "career_facts_same_kind": 6,
+    "career_false_alarms": 4,
+    "career_false_alarm_ids": [
+     "228",
+     "500",
+     "672",
+     "879"
+    ],
+    "at_the_labels_tier": 120,
+    "label_post_articles": 5,
+    "label_post_reaching_post": 2,
+    "post_where_label_is_not_post": 4
+   },
+   "headline_b": {
+    "articles": 153,
+    "answers_right": 1117,
+    "answers_asked": 1377,
+    "all_nine_right": 40,
+    "right_per_question": {
+     "centrality": 78,
+     "act": 97,
+     "fact": 124,
+     "firmness": 122,
+     "reports_his_result": 148,
+     "reports_his_next_fight": 145,
+     "reports_his_health": 147,
+     "he_speaks": 140,
+     "source": 116
+    },
+    "career_facts_labelled": 21,
+    "career_facts_recognised": 6,
+    "career_facts_same_kind": 6,
+    "career_false_alarms": 4,
+    "career_false_alarm_ids": [
+     "228",
+     "500",
+     "672",
+     "879"
+    ],
+    "at_the_labels_tier": 120,
+    "label_post_articles": 5,
+    "label_post_reaching_post": 2,
+    "post_where_label_is_not_post": 4
+   },
+   "saved": {
+    "articles": 153,
+    "answers_right": 1242,
+    "answers_asked": 1377,
+    "all_nine_right": 83,
+    "right_per_question": {
+     "centrality": 134,
+     "source": 141,
+     "act": 119,
+     "fact": 128,
+     "firmness": 132,
+     "reports_his_result": 152,
+     "reports_his_next_fight": 142,
+     "reports_his_health": 141,
+     "he_speaks": 153
+    },
+    "career_facts_labelled": 21,
+    "career_facts_recognised": 9,
+    "career_facts_same_kind": 9,
+    "career_false_alarms": 7,
+    "career_false_alarm_ids": [
+     "84",
+     "228",
+     "490",
+     "491",
+     "494",
+     "917",
+     "944"
+    ],
+    "at_the_labels_tier": 141,
+    "label_post_articles": 5,
+    "label_post_reaching_post": 5,
+    "post_where_label_is_not_post": 4
+   },
+   "saved_again": {
+    "articles": 153,
+    "answers_right": 1235,
+    "answers_asked": 1377,
+    "all_nine_right": 79,
+    "right_per_question": {
+     "centrality": 133,
+     "source": 141,
+     "act": 117,
+     "fact": 126,
+     "firmness": 131,
+     "reports_his_result": 152,
+     "reports_his_next_fight": 142,
+     "reports_his_health": 141,
+     "he_speaks": 152
+    },
+    "career_facts_labelled": 21,
+    "career_facts_recognised": 8,
+    "career_facts_same_kind": 8,
+    "career_false_alarms": 7,
+    "career_false_alarm_ids": [
+     "84",
+     "228",
+     "490",
+     "491",
+     "494",
+     "917",
+     "944"
+    ],
+    "at_the_labels_tier": 141,
+    "label_post_articles": 5,
+    "label_post_reaching_post": 5,
+    "post_where_label_is_not_post": 4
+   }
+  },
+  "against_full_text": {
+   "headline_a_vs_saved": {
+    "articles": 153,
+    "same_nine_answers": 40,
+    "answers_changed": 259,
+    "answers_changed_per_question": {
+     "source": 29,
+     "centrality": 76,
+     "act": 49,
+     "fact": 29,
+     "firmness": 34,
+     "reports_his_health": 14,
+     "he_speaks": 13,
+     "reports_his_next_fight": 9,
+     "reports_his_result": 6
+    },
+    "tier_crossings": 32,
+    "tier_moves": {
+     "digest → drop": 18,
+     "drop → digest": 3,
+     "drop → post": 2,
+     "post → digest": 5,
+     "digest → post": 2,
+     "post → drop": 2
+    },
+    "more_cautious": 25,
+    "more_eager": 7,
+    "career_fact_lost": 12,
+    "career_fact_invented": 6,
+    "tier_crossing_ids": [
+     "13",
+     "33",
+     "78",
+     "228",
+     "249",
+     "256",
+     "287",
+     "335",
+     "490",
+     "491",
+     "494",
+     "500",
+     "555",
+     "563",
+     "608",
+     "623",
+     "641",
+     "655",
+     "672",
+     "692",
+     "698",
+     "714",
+     "737",
+     "746",
+     "807",
+     "828",
+     "838",
+     "879",
+     "892",
+     "913",
+     "944",
+     "977"
+    ]
+   },
+   "headline_b_vs_saved": {
+    "articles": 153,
+    "same_nine_answers": 39,
+    "answers_changed": 261,
+    "answers_changed_per_question": {
+     "source": 31,
+     "centrality": 77,
+     "act": 48,
+     "fact": 29,
+     "firmness": 34,
+     "reports_his_health": 14,
+     "he_speaks": 13,
+     "reports_his_next_fight": 9,
+     "reports_his_result": 6
+    },
+    "tier_crossings": 32,
+    "tier_moves": {
+     "digest → drop": 18,
+     "drop → digest": 3,
+     "drop → post": 2,
+     "post → digest": 5,
+     "digest → post": 2,
+     "post → drop": 2
+    },
+    "more_cautious": 25,
+    "more_eager": 7,
+    "career_fact_lost": 12,
+    "career_fact_invented": 6,
+    "tier_crossing_ids": [
+     "13",
+     "33",
+     "78",
+     "102",
+     "228",
+     "249",
+     "256",
+     "287",
+     "335",
+     "490",
+     "491",
+     "494",
+     "500",
+     "555",
+     "563",
+     "623",
+     "641",
+     "655",
+     "672",
+     "692",
+     "698",
+     "714",
+     "737",
+     "746",
+     "807",
+     "828",
+     "838",
+     "879",
+     "892",
+     "913",
+     "944",
+     "977"
+    ]
+   },
+   "noise_floor_saved_vs_saved_again": {
+    "articles": 153,
+    "same_nine_answers": 148,
+    "answers_changed": 8,
+    "answers_changed_per_question": {
+     "centrality": 1,
+     "act": 2,
+     "fact": 2,
+     "firmness": 1,
+     "reports_his_health": 1,
+     "he_speaks": 1
+    },
+    "tier_crossings": 0,
+    "tier_moves": {},
+    "more_cautious": 0,
+    "more_eager": 0,
+    "career_fact_lost": 1,
+    "career_fact_invented": 0,
+    "tier_crossing_ids": []
+   }
+  },
+  "headline_noise_floor_a_vs_b": {
+   "articles": 153,
+   "same_nine_answers": 140,
+   "answers_changed": 15,
+   "answers_changed_per_question": {
+    "source": 2,
+    "centrality": 6,
+    "firmness": 2,
+    "act": 5
+   },
+   "tier_crossings": 2,
+   "tier_moves": {
+    "digest → drop": 1,
+    "drop → digest": 1
+   },
+   "more_cautious": 1,
+   "more_eager": 1,
+   "career_fact_lost": 0,
+   "career_fact_invented": 0,
+   "tier_crossing_ids": [
+    "102",
+    "608"
+   ]
+  },
+  "headline_crossings_shared": {
+   "headline_a_crossings": 32,
+   "headline_b_crossings": 32,
+   "crossed_in_both_runs": 31,
+   "crossed_in_one_run_only": 2
+  },
+  "tiers": {
+   "labels": {
+    "post": 5,
+    "digest": 101,
+    "drop": 47
+   },
+   "headline_a": {
+    "post": 6,
+    "digest": 83,
+    "drop": 64
+   },
+   "headline_b": {
+    "post": 6,
+    "digest": 83,
+    "drop": 64
+   },
+   "saved": {
+    "post": 9,
+    "digest": 95,
+    "drop": 49
+   },
+   "saved_again": {
+    "post": 9,
+    "digest": 95,
+    "drop": 49
+   }
+  }
+ },
+ "cost": {
+  "calls": 390,
+  "jev_input_tokens": 1772112,
+  "dollars": 0.0744,
+  "per_run": {
+   "headline_a": {
+    "calls": 195,
+    "jev_input_tokens": 886056,
+    "dollars": 0.0372
+   },
+   "headline_b": {
+    "calls": 195,
+    "jev_input_tokens": 886056,
+    "dollars": 0.0372
+   }
+  }
+ }
+}
