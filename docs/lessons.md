@@ -465,6 +465,22 @@ Rules for adding to it:
   other outlets. **Would overturn it:** the same counts after the fetcher
   changes, or a sample of the unread showing they carry nothing new.
 
+### A cut text and a furniture-heavy text are different defects; only the record and the cap show the first
+`corpus` · `measured` · *FB 2026-11-18, agent's marks, not yet confirmed*
+- **Evidence:** 76 of the 300 golden texts were flagged by length, cap,
+  menu, prose-share, name and clean-text signals, then read and marked: 9
+  unusable, 13 partial, 37 furniture, 17 false alarms. A signal read from the
+  clean-text record (nothing usable, a clean text 1.5 times longer) was
+  right every time (5 of 5 and 5 of 5). The 23 articles listed only because
+  two furniture signals agreed were all furniture, none unusable or partial.
+  Noise: a cap hit alone (24 hits, 10 lost part of the article, 9 had lost only
+  trailing furniture), a short text (3 of 8 were whole short items) and "never
+  names him" (4 of 8 were whole articles about someone else).
+  `research/experiments/2026-11-18-unusable-texts/`.
+- **Does not say:** that these are the maintainer's marks; they are one
+  reader's calls awaiting his confirmation. **Would overturn it:** his
+  confirmation moving many furniture or fine calls to unusable.
+
 ### Boilerplate contaminates the text; a focused excerpt around the subject beats a prefix
 `domain` · `measured` · **found independently by both, RF tested it** · *RF-L09; FB 2026-09-20*
 - **Evidence (RF):** two unrelated stories scored 0.76 lexical overlap because
