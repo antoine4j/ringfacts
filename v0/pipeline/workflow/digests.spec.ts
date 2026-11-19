@@ -7,6 +7,7 @@
 import { test, afterEach, mock } from "node:test";
 import assert from "node:assert/strict";
 import { splitMessage, writeAndPostDigest, digestsDue } from "./digests.ts";
+import { previousDigestEnd } from "../store/digests.ts";
 import { DIGEST_PROMPT_VERSION, DEFAULT_DIGEST_MODEL } from "../stations/digest/digest.ts";
 import { FakeDatabase, makeContext, stubNetwork, type SeenRequest } from "./fake-database.ts";
 
@@ -309,4 +310,45 @@ test("a failed digest leaves the fighter still due on the next run", async () =>
   await digestsDue(makeContext(database), NOW);
   assert.equal(requests.length, 1);
   assert.equal(database.inserted.digests.length, 1);
+});
+
+// The next two tests document a suspected bug, they do not endorse it. A digest
+// is stored before it is sent, and the lookup of "where did his last digest end"
+// does not ask whether that digest was ever sent. So when sending fails the
+// digest stays stored and unsent, and the fighter is not due again until the
+// next schedule: that week's digest never reaches the chat, and it is in
+// neither the thumbs-down count nor the digest list. Fixing it changes how v0
+// runs, so it is left for the maintainer; if it is fixed, change these tests.
+test("[suspected bug] a digest whose send fails is stored and left unmarked as posted", async () => {
+  const database = digestDatabase();
+  writerNetwork();
+  const context = makeContext(database, { poster: async () => { throw new Error("Telegram 502"); } });
+  await assert.rejects(writeAndPostDigest(context, FIGHTER, PERIOD), /Telegram 502/);
+  assert.equal(database.inserted.digests.length, 1);
+  assert.equal(database.sent(/UPDATE digests SET posted_at/).length, 0);
+});
+
+test("[suspected bug] the previous digest is found among every live digest, sent or not", async () => {
+  const database = new FakeDatabase();
+  database.on(/SELECT max\(period_end\)/, () => ({ rows: [{ end: null }] }));
+  await previousDigestEnd(database.pool, FIGHTER, false);
+  const { sql, params } = database.queries[0];
+  assert.deepEqual(params, [FIGHTER, false]);
+  assert.doesNotMatch(sql, /posted_at/);
+});
+
+test("a digest that goes out in parts and fails on a later part is stored without a message id", async () => {
+  const database = digestDatabase();
+  writerNetwork({ text: `${"a".repeat(3000)}\n\n${"b".repeat(3000)}`, items: [] });
+  let sent = 0;
+  const context = makeContext(database, {
+    poster: async () => {
+      sent += 1;
+      if (sent === 2) throw new Error("Telegram 502");
+      return 5000;
+    },
+  });
+  await assert.rejects(writeAndPostDigest(context, FIGHTER, PERIOD), /Telegram 502/);
+  assert.equal(sent, 2);
+  assert.equal(database.sent(/UPDATE digests SET posted_at/).length, 0);
 });
