@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import { AgentClaimBar } from "../../../components/AgentCalls.tsx";
 import { ClaimNote } from "../../../components/ClaimNote.tsx";
 import { ClaimReadings } from "../../../components/ClaimReadings.tsx";
 import { SameClaimReview } from "../../../components/ReviewControls.tsx";
@@ -12,7 +13,7 @@ import { query } from "../../../lib/db.ts";
 import type { Params } from "../../../lib/filters.ts";
 import { pacificTime, shortTime } from "../../../lib/format.ts";
 import { bestTier } from "../../../lib/live-scores.ts";
-import { claimMembers, claimNotesFor, claimReviews, tierMarksFor, type ClaimRow } from "../../../lib/queries.ts";
+import { claimAgentViews, claimMembers, claimNotesFor, claimReviews, tierMarksFor, type ClaimRow } from "../../../lib/queries.ts";
 import { schemaFrom, schemaSuffix } from "../../../lib/schema.ts";
 import { newestTierMarks, tierJudgement, tierToJudge } from "../../../lib/tier-marks.ts";
 
@@ -35,6 +36,7 @@ export default async function ClaimPage({ params, searchParams }: { params: Prom
   const members = await claimMembers(schema, [id]);
   const review = (await claimReviews(schema, members)).get(id);
   const note = schema === "public" ? ((await claimNotesFor([id])).get(id) ?? null) : null;
+  const agent = (await claimAgentViews(schema, [id])).get(id);
 
   // The claim's tier (its best reading's) and the tier mark on it, live data only.
   const tierNow = bestTier((members.get(id) ?? []).map((member) => member.tier));
@@ -108,7 +110,8 @@ export default async function ClaimPage({ params, searchParams }: { params: Prom
         )}
       </dl>
       <h2>Readings</h2>
-      <ClaimReadings rows={members.get(claim.id) ?? []} schema={schema} postedReadingId={claim.posted_reading_id} claimId={claim.id} review={review} />
+      {agent && <AgentClaimBar claimId={claim.id} view={agent} />}
+      <ClaimReadings rows={members.get(claim.id) ?? []} schema={schema} postedReadingId={claim.posted_reading_id} claimId={claim.id} review={review} agent={agent} />
     </>
   );
 }

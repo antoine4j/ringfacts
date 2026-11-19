@@ -10,8 +10,10 @@
 import Link from "next/link";
 import { dayAndClock } from "../lib/format.ts";
 import type { MemberRow } from "../lib/queries.ts";
+import type { ClaimAgentView } from "../lib/agent-marks.ts";
 import type { ClaimReviewView } from "../lib/reviews.ts";
 import { schemaSuffix, type Schema } from "../lib/schema.ts";
+import { AgentReadingLine } from "./AgentCalls.tsx";
 import { PickTag, PostedTag } from "./bits.tsx";
 import { Decision } from "./Decision.tsx";
 import { MarkLine, ReadingReview, ReviewRow } from "./ReviewControls.tsx";
@@ -24,9 +26,10 @@ import { MarkLine, ReadingReview, ReviewRow } from "./ReviewControls.tsx";
  * @param props.postedReadingId  The reading that was posted for the claim, if any.
  * @param props.claimId  The claim.
  * @param props.review  Its review (D35); absent on the golden replay, where nothing is reviewed here.
+ * @param props.agent  The agents' calls on it, shown apart from the review; absent when none are loaded.
  * @returns The list.
  */
-export function ClaimReadings({ rows, schema, postedReadingId, claimId, review }: { rows: MemberRow[]; schema: Schema; postedReadingId: string | null; claimId: string; review?: ClaimReviewView }) {
+export function ClaimReadings({ rows, schema, postedReadingId, claimId, review, agent }: { rows: MemberRow[]; schema: Schema; postedReadingId: string | null; claimId: string; review?: ClaimReviewView; agent?: ClaimAgentView }) {
   return (
     <div className="readings">
       <div className="reading head" aria-hidden="true">
@@ -63,6 +66,7 @@ export function ClaimReadings({ rows, schema, postedReadingId, claimId, review }
               </a>
               {row.reading_id === postedReadingId && <PostedTag reaction={row.reaction} />}
               {review && <MarkLine />}
+              {agent?.readings[row.reading_id] && <AgentReadingLine call={agent.readings[row.reading_id]} />}
             </span>
             <span className="sentence">{row.sentence}</span>
             <span className="grouping">

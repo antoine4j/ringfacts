@@ -46,6 +46,61 @@ design, section 11, "Reviewing claims", and D36. The database role
 settings save is refused if another version was saved after the page was
 opened.
 
+## Agents' calls (local only)
+
+Agents can read a week's articles and propose the same grouping marks
+(belongs, doesn't belong and where, its own claim, same claim as), each with
+a sentence saying why. Their calls are a local JSON file, never database
+rows, so they never count as reviews and never reach the scores. Run the
+storyboard with `AGENT_MARKS_FILE` set to the file and they show in violet,
+marked "agent": a line under each reading, and on each claim a bar with its
+same-claim calls and a count, "agent 3" on the folded card, and a line at the
+top of the claims list that keeps only the claims where they propose a split
+or a merge (`?agent=changes`), with any call to answer (`?agent=open`), or
+with calls that differ from your marks (`?agent=differs`).
+
+Each call has **confirm** (it is saved as your own mark, through the same
+action as ✓ ✕, so it counts from then on as your review) and **deny** (it is
+set aside; mark the reading yourself). "Confirm the N calls on unmarked
+readings" on a claim confirms all of its open calls on readings you have not
+marked. Answers are appended to `<file>.answers.jsonl` beside the calls
+file; **undo** clears an answer (a mark it saved stays, and changes with
+✓ ✕). Without the variable, nothing changes. Machinery and weeks:
+[the agent grouping experiment](../../research/experiments/2026-10-30-agent-grouping/README.md).
+
+### Three judges' file
+
+`AGENT_MARKS_FILE` may also be the three-judge file (it has a `judges` key;
+shape and an invented sample in
+`research/experiments/2026-11-05-three-judges/storyboard-sample.json`). The
+old single-judge file still works. With the three-judge file:
+
+- Each reading shows the **majority call** in violet with a badge, "3/3",
+  "2/3" or "split", and **the judges** folded under it: each judge's verdict,
+  one-line why and confidence side by side. A same-claim call shows which
+  judges made it ("2/3", "made by opus, fable").
+- **Confirm** saves the majority call as your mark, through the same path as
+  before. It is disabled on a split reading (no majority): mark it yourself,
+  or deny it. Deny and undo are unchanged.
+- `/?agent=disputed` lists only the readings the judges did not all agree on
+  (split first, then majority) and the same-claim pairs not all of them made.
+- `/?agent=spot` is a spot check: a fixed random sample of 40 unanimous calls
+  that propose a change (its own claim, or doesn't belong). The shuffle is
+  seeded by the file's `made_by`, so the sample is the same every time for
+  one file; the page counts "Answered N of 40" (confirmed, denied, or already
+  matching your mark).
+
+Nothing new is written: no database change, and only the existing answers
+file and confirm path.
+
+```bash
+AGENT_MARKS_FILE=$PWD/../../research/experiments/2026-10-30-agent-grouping/data/agent-marks.json \
+DATABASE_URL=$(grep '^V0_EDITOR_DATABASE_URL=' ../../.env.v0 | cut -d= -f2-) npm run dev
+```
+
+The second line points it at the live data, where your reviews are, as the
+deployed storyboard does; confirming a call writes your mark there.
+
 ## Run it locally
 
 From `v0/`, once: `npm install`. Then, from `v0/storyboard/`, against the

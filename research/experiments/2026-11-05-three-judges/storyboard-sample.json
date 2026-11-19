@@ -1,0 +1,59 @@
+{
+ "about": "An invented sample of the three judges' file (data/marks/three-judges.json, built by build-marks.mjs) for the storyboard's tests. Claim and reading ids, headlines and reasons are made up; nothing here is from an article.",
+ "made_by": "three judges (opus, fable, sonnet), 2026-11-06",
+ "weeks": ["2026-09-28"],
+ "judges": ["opus", "fable", "sonnet"],
+ "readings": [
+  {
+   "claim_id": "900001", "reading_id": "800001",
+   "calls": {
+    "opus": {"claim_id": "900001", "reading_id": "800001", "verdict": "belongs", "belongs_in_claim_id": null, "why": "Reports the Monday podcast sitting the claim is built on.", "rule": 0, "confidence": "high"},
+    "fable": {"claim_id": "900001", "reading_id": "800001", "verdict": "belongs", "belongs_in_claim_id": null, "why": "Same podcast episode as the other readings.", "rule": 0, "confidence": "high"},
+    "sonnet": {"claim_id": "900001", "reading_id": "800001", "verdict": "belongs", "belongs_in_claim_id": null, "why": "Quotes the Monday podcast.", "rule": 0, "confidence": "high"}
+   },
+   "judges": 3, "agreement": "unanimous", "majority": {"verdict": "belongs", "belongs_in_claim_id": null}, "proposes_change": false
+  },
+  {
+   "claim_id": "900001", "reading_id": "800002",
+   "calls": {
+    "opus": {"claim_id": "900001", "reading_id": "800002", "verdict": "own_claim", "belongs_in_claim_id": null, "why": "A rival's reply on his own stream, a different speaker (rule 2).", "rule": 2, "confidence": "high"},
+    "fable": {"claim_id": "900001", "reading_id": "800002", "verdict": "own_claim", "belongs_in_claim_id": null, "why": "The rival speaking, not the podcast.", "rule": 2, "confidence": "medium"},
+    "sonnet": {"claim_id": "900001", "reading_id": "800002", "verdict": "own_claim", "belongs_in_claim_id": null, "why": "Another person's reaction.", "rule": 2, "confidence": "high"}
+   },
+   "judges": 3, "agreement": "unanimous", "majority": {"verdict": "own_claim", "belongs_in_claim_id": null}, "proposes_change": true
+  },
+  {
+   "claim_id": "900001", "reading_id": "800003",
+   "calls": {
+    "opus": {"claim_id": "900001", "reading_id": "800003", "verdict": "does_not_belong", "belongs_in_claim_id": "900002", "why": "Retells the Friday interview, claim 900002's sitting.", "rule": 6, "confidence": "medium"},
+    "fable": {"claim_id": "900001", "reading_id": "800003", "verdict": "does_not_belong", "belongs_in_claim_id": "900002", "why": "The quotes are the Friday interview's.", "rule": 6, "confidence": "medium"},
+    "sonnet": {"claim_id": "900001", "reading_id": "800003", "verdict": "belongs", "belongs_in_claim_id": null, "why": "Leads with the Monday podcast line.", "rule": 0, "confidence": "low"}
+   },
+   "judges": 3, "agreement": "majority", "majority": {"verdict": "does_not_belong", "belongs_in_claim_id": "900002"}, "proposes_change": true
+  },
+  {
+   "claim_id": "900002", "reading_id": "800004",
+   "calls": {
+    "opus": {"claim_id": "900002", "reading_id": "800004", "verdict": "belongs", "belongs_in_claim_id": null, "why": "The Friday interview.", "rule": 0, "confidence": "high"},
+    "fable": {"claim_id": "900002", "reading_id": "800004", "verdict": "own_claim", "belongs_in_claim_id": null, "why": "A passing mention in a card preview (rule 5).", "rule": 5, "confidence": "medium"},
+    "sonnet": {"claim_id": "900002", "reading_id": "800004", "verdict": "does_not_belong", "belongs_in_claim_id": "900001", "why": "Quotes the Monday podcast.", "rule": 6, "confidence": "low"}
+   },
+   "judges": 3, "agreement": "split", "majority": null, "proposes_change": false
+  }
+ ],
+ "same_claims": [
+  {
+   "claim_id": "900001", "other_claim_id": "900002",
+   "calls": {
+    "opus": {"claim_id": "900001", "other_claim_id": "900002", "why": "Both report the same rumour and its denial (rule 3).", "rule": 3, "confidence": "medium"},
+    "fable": {"claim_id": "900002", "other_claim_id": "900001", "why": "One ongoing story.", "rule": 3, "confidence": "low"}
+   },
+   "judges": 2, "agreement": "majority"
+  }
+ ],
+ "cores": {
+  "opus": {"900001": "His Monday podcast sitting, 29 Sep", "900002": "His Friday interview with the paper, 3 Oct"},
+  "fable": {"900001": "The Monday podcast", "900002": "The Friday interview"},
+  "sonnet": {"900001": "Monday podcast", "900002": "Friday interview"}
+ }
+}
