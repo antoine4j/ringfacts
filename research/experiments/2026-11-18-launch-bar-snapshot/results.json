@@ -1,0 +1,421 @@
+{
+  "now": "2026-11-19T05:55:00.000Z",
+  "today": "2026-11-18",
+  "listChecked": "2026-11-18",
+  "readOnly": {
+    "mine": "on",
+    "storyboardPool": "on"
+  },
+  "recall": [
+    {
+      "eventId": "2026-09-05-donchenko-soriano-result",
+      "skipped": "before v0 went live on 2026-10-05"
+    },
+    {
+      "eventId": "2026-09-16-topuria-return-february",
+      "skipped": "before v0 went live on 2026-10-05"
+    },
+    {
+      "eventId": "2026-11-07-amosov-garry-booked",
+      "pageStatus": {
+        "status": "posted"
+      },
+      "articlesInNamedClaims": 34,
+      "firstArticle": {
+        "readingId": "2708",
+        "outlet": "112.ua",
+        "publishedAt": "2026-11-07T11:35:34.000Z"
+      },
+      "claims": [
+        {
+          "claimId": 604,
+          "readings": 14,
+          "bestTier": 1,
+          "postedAt": "2026-11-07T12:47:25.370Z",
+          "messageId": "82",
+          "digests": [
+            {
+              "digestId": 113,
+              "postedAt": "2026-11-09T15:48:49.453Z",
+              "used": true
+            },
+            {
+              "digestId": 116,
+              "postedAt": "2026-11-16T15:48:05.656Z",
+              "used": false
+            }
+          ]
+        },
+        {
+          "claimId": 614,
+          "readings": 43,
+          "bestTier": 1,
+          "postedAt": "2026-11-08T05:47:16.890Z",
+          "messageId": "85",
+          "digests": [
+            {
+              "digestId": 113,
+              "postedAt": "2026-11-09T15:48:49.453Z",
+              "used": true
+            },
+            {
+              "digestId": 116,
+              "postedAt": "2026-11-16T15:48:05.656Z",
+              "used": true
+            }
+          ]
+        }
+      ],
+      "hoursToTier1Post": 1.2,
+      "hoursToDigest": 52.2,
+      "matchedWithoutClaim": {
+        "articles": 6,
+        "withoutText": 6,
+        "earliest": "2026-11-08T03:58:31.000Z"
+      },
+      "matchedInOtherClaims": []
+    }
+  ],
+  "windows": {
+    "last_14_days": {
+      "range": {
+        "from": "2026-11-05",
+        "to": "2026-11-18"
+      },
+      "page": {
+        "thumbsDown": {
+          "count": 0,
+          "of": 15,
+          "unreacted": 14
+        },
+        "repeatsInTier1": {
+          "count": 0,
+          "of": 9
+        },
+        "careerEvents": {
+          "notPosted": {
+            "count": 0,
+            "of": 1
+          },
+          "posted": 1,
+          "late": 0,
+          "missed": 0,
+          "causes": {},
+          "checked": "2026-11-18",
+          "listIsBehind": false
+        }
+      },
+      "myRecount": {
+        "sent": 15,
+        "posts": 9,
+        "digests": 6,
+        "withReaction": 1,
+        "thumbsDown": 0,
+        "agreesWithPage": true
+      },
+      "reactions": {
+        "none": 14,
+        "👍": 1
+      },
+      "withReaction": [
+        {
+          "kind": "digest",
+          "id": 113,
+          "messageId": 89,
+          "day": "2026-11-09",
+          "newest": "👍"
+        }
+      ],
+      "withoutReaction": [
+        {
+          "kind": "post",
+          "id": 580,
+          "messageId": 77,
+          "day": "2026-11-05"
+        },
+        {
+          "kind": "post",
+          "id": 587,
+          "messageId": 78,
+          "day": "2026-11-06"
+        },
+        {
+          "kind": "post",
+          "id": 598,
+          "messageId": 80,
+          "day": "2026-11-06"
+        },
+        {
+          "kind": "post",
+          "id": 601,
+          "messageId": 81,
+          "day": "2026-11-06"
+        },
+        {
+          "kind": "post",
+          "id": 604,
+          "messageId": 82,
+          "day": "2026-11-07"
+        },
+        {
+          "kind": "post",
+          "id": 605,
+          "messageId": 83,
+          "day": "2026-11-07"
+        },
+        {
+          "kind": "post",
+          "id": 614,
+          "messageId": 85,
+          "day": "2026-11-07"
+        },
+        {
+          "kind": "post",
+          "id": 618,
+          "messageId": 87,
+          "day": "2026-11-08"
+        },
+        {
+          "kind": "digest",
+          "id": 112,
+          "messageId": 88,
+          "day": "2026-11-09"
+        },
+        {
+          "kind": "digest",
+          "id": 114,
+          "messageId": 90,
+          "day": "2026-11-09"
+        },
+        {
+          "kind": "digest",
+          "id": 115,
+          "messageId": 100,
+          "day": "2026-11-16"
+        },
+        {
+          "kind": "digest",
+          "id": 116,
+          "messageId": 101,
+          "day": "2026-11-16"
+        },
+        {
+          "kind": "digest",
+          "id": 117,
+          "messageId": 102,
+          "day": "2026-11-16"
+        },
+        {
+          "kind": "post",
+          "id": 677,
+          "messageId": 99,
+          "day": "2026-11-16"
+        }
+      ]
+    },
+    "last_28_days": {
+      "range": {
+        "from": "2026-10-22",
+        "to": "2026-11-18"
+      },
+      "page": {
+        "thumbsDown": {
+          "count": 1,
+          "of": 26,
+          "unreacted": 24
+        },
+        "repeatsInTier1": {
+          "count": 0,
+          "of": 14
+        },
+        "careerEvents": {
+          "notPosted": {
+            "count": 0,
+            "of": 1
+          },
+          "posted": 1,
+          "late": 0,
+          "missed": 0,
+          "causes": {},
+          "checked": "2026-11-18",
+          "listIsBehind": false
+        }
+      },
+      "myRecount": {
+        "sent": 26,
+        "posts": 14,
+        "digests": 12,
+        "withReaction": 2,
+        "thumbsDown": 1,
+        "agreesWithPage": true
+      },
+      "reactions": {
+        "👎": 1,
+        "none": 24,
+        "👍": 1
+      },
+      "withReaction": [
+        {
+          "kind": "post",
+          "id": 498,
+          "messageId": 50,
+          "day": "2026-10-22",
+          "newest": "👎"
+        },
+        {
+          "kind": "digest",
+          "id": 113,
+          "messageId": 89,
+          "day": "2026-11-09",
+          "newest": "👍"
+        }
+      ],
+      "withoutReaction": [
+        {
+          "kind": "post",
+          "id": 519,
+          "messageId": 54,
+          "day": "2026-10-24"
+        },
+        {
+          "kind": "post",
+          "id": 525,
+          "messageId": 56,
+          "day": "2026-10-25"
+        },
+        {
+          "kind": "post",
+          "id": 527,
+          "messageId": 57,
+          "day": "2026-10-25"
+        },
+        {
+          "kind": "digest",
+          "id": 106,
+          "messageId": 58,
+          "day": "2026-10-26"
+        },
+        {
+          "kind": "digest",
+          "id": 107,
+          "messageId": 59,
+          "day": "2026-10-26"
+        },
+        {
+          "kind": "digest",
+          "id": 108,
+          "messageId": 60,
+          "day": "2026-10-26"
+        },
+        {
+          "kind": "post",
+          "id": 508,
+          "messageId": 62,
+          "day": "2026-10-26"
+        },
+        {
+          "kind": "digest",
+          "id": 109,
+          "messageId": 69,
+          "day": "2026-11-02"
+        },
+        {
+          "kind": "digest",
+          "id": 110,
+          "messageId": 70,
+          "day": "2026-11-02"
+        },
+        {
+          "kind": "digest",
+          "id": 111,
+          "messageId": 71,
+          "day": "2026-11-02"
+        },
+        {
+          "kind": "post",
+          "id": 580,
+          "messageId": 77,
+          "day": "2026-11-05"
+        },
+        {
+          "kind": "post",
+          "id": 587,
+          "messageId": 78,
+          "day": "2026-11-06"
+        },
+        {
+          "kind": "post",
+          "id": 598,
+          "messageId": 80,
+          "day": "2026-11-06"
+        },
+        {
+          "kind": "post",
+          "id": 601,
+          "messageId": 81,
+          "day": "2026-11-06"
+        },
+        {
+          "kind": "post",
+          "id": 604,
+          "messageId": 82,
+          "day": "2026-11-07"
+        },
+        {
+          "kind": "post",
+          "id": 605,
+          "messageId": 83,
+          "day": "2026-11-07"
+        },
+        {
+          "kind": "post",
+          "id": 614,
+          "messageId": 85,
+          "day": "2026-11-07"
+        },
+        {
+          "kind": "post",
+          "id": 618,
+          "messageId": 87,
+          "day": "2026-11-08"
+        },
+        {
+          "kind": "digest",
+          "id": 112,
+          "messageId": 88,
+          "day": "2026-11-09"
+        },
+        {
+          "kind": "digest",
+          "id": 114,
+          "messageId": 90,
+          "day": "2026-11-09"
+        },
+        {
+          "kind": "digest",
+          "id": 115,
+          "messageId": 100,
+          "day": "2026-11-16"
+        },
+        {
+          "kind": "digest",
+          "id": 116,
+          "messageId": 101,
+          "day": "2026-11-16"
+        },
+        {
+          "kind": "digest",
+          "id": 117,
+          "messageId": 102,
+          "day": "2026-11-16"
+        },
+        {
+          "kind": "post",
+          "id": 677,
+          "messageId": 99,
+          "day": "2026-11-16"
+        }
+      ]
+    }
+  }
+}

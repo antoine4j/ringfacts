@@ -1,6 +1,6 @@
 {
- "checked": "2026-10-29",
- "how": "Searched the web for each watched fighter's career events since 1 Sep 2026, kept only events with two independent sources, and searched the claims table for matching claims.",
+ "checked": "2026-11-18",
+ "how": "Searched the web for each watched fighter's career events since 1 Sep 2026 (extended on 18 Nov to cover 30 Oct to 18 Nov, searching in English, Ukrainian, Russian and Spanish), kept only events with two independent sources, and searched the claims table for matching claims. A return window with no date or opponent (the UFC chief's \"early 2027\" for Topuria, 4 Nov) is not an official return date and is not listed. Events added on 18 Nov are not yet confirmed by the maintainer.",
  "events": [
   {
    "id": "2026-09-05-donchenko-soriano-result",
@@ -27,6 +27,19 @@
     85
    ],
    "note": "Sources: LowKick MMA https://www.lowkickmma.com/ilia-topuria-no-ufc-return-2026/ ; Boxing News https://boxingnews.com/news/topuria-coach-confirms-february-return . Also reported by SportBible and MMA News the same day. Claim 85 says only that the return is targeted for 2027. Before v0 went live on 2026-10-05: its readings are the 5 Oct backfill, so what the storyboard says the group heard describes the backfill digests, not a live run."
+  },
+  {
+   "id": "2026-11-07-amosov-garry-booked",
+   "fighter": "Yaroslav Amosov",
+   "kind": "booked",
+   "happened": "2026-11-07",
+   "what": "Amosov was booked against Ian Machado Garry in the five-round co-main event of UFC Saudi Arabia (Fight Night) on 5 December 2026 in Riyadh, announced by the UFC during the UFC Vegas 124 broadcast.",
+   "first_report": "2026-11-07",
+   "claim_ids": [
+    604,
+    614
+   ],
+   "note": "Sources: Cageside Press https://cagesidepress.com/2026/11/07/israel-adesanya-vs-shara-bullet-headlines-ufc-saudi-arabia-ian-garry-vs-yaroslav-amosov-co-main/ ; Yahoo Sports https://sports.yahoo.com/articles/israel-adesanya-vs-shara-magomedov-110000826.html . Also Agent MMA https://agentmma.com/news/92438-ian-garry-to-fight-yaroslav-amosov-at-ufc-saudi-arabia-on-december-5 (reported the pairing the morning of 7 Nov, before the announcement), MMA News and Bloody Elbow. No ufc.com page was fetched, so the official announcement rests on the outlets' account of it. Claims 604 and 614 are one story by the maintainer's ruling of 18 Nov: 604 posted a report made ahead of the announcement (labelled reported), 614 posted the announcement (labelled official), and the grouping step kept them apart. An earlier claim, 519 (24 Oct), reported the same pairing for UFC 335 on 12 December and is not this event. Not yet confirmed by the maintainer."
   }
  ]
 }

@@ -168,6 +168,23 @@ Rules for adding to it:
   $0.81 and 5 extraction passes for $0.40; the money went to replicates and
   reversals, which is what bought the noise-floor finding.
 
+### A bar made of reactions and links reads as a pass when nobody reacts or links
+`corpus` · `measured` · *FB 2026-11-18*
+- **Evidence:** the launch bar's 👎 share was 0 of 15 over the last 14 days,
+  and 1 of 26 over 28. Only 1 of the 15 and 2 of the 26 had any reaction;
+  the last reaction of any kind was 9 November, the last grouping mark
+  20 October, and one "same claim" link exists. So "no repeat marked" and
+  "no 👎" are silence, not measurement. Likewise the career-events list,
+  last checked 29 October, read "0 of 0 events" on the page; a fresh search
+  found one event, posted in 1.2 hours. It reached the group twice, as a
+  report before the announcement and as the announcement, two claims the
+  grouping step did not join. v0 has no "now confirmed" follow-up, so that
+  second post is a repeat until someone links it.
+  `research/experiments/2026-11-18-launch-bar-snapshot/`.
+- **Does not say:** that the bot did well or badly; only that these three
+  numbers cannot say. **Would overturn it:** a window in which most messages
+  carry a reaction and the list has been re-searched.
+
 ---
 
 ## 2. JEV — the closed-set classifier (TypeSafe "systemone", `jev-latest`)
