@@ -1,0 +1,827 @@
+{
+ "run": "2026-10-05T1019-earliest-on-tie",
+ "training": [
+  {
+   "v0_claim": "29",
+   "ruled_claims": [
+    [
+     "claim-066",
+     4
+    ],
+    [
+     "claim-073.0",
+     3
+    ],
+    [
+     "claim-074",
+     3
+    ],
+    [
+     "claim-056",
+     1
+    ],
+    [
+     "claim-058",
+     1
+    ]
+   ],
+   "readings": 12,
+   "crossing": 1,
+   "crossing_features": {
+    "position": 1,
+    "reading_id": "66",
+    "members_before": 1,
+    "confidence": 0.97,
+    "none_probability": 0.02,
+    "judges_target_on_shortlist": null,
+    "shortlist_rank": 1,
+    "shortlist_size": 2,
+    "label_source_position": 0,
+    "nearest_position": 0,
+    "nearest_similarity": 0.889,
+    "nearest_is_anchor": true,
+    "best_anchor_similarity": 0.889,
+    "margin_over_anchors": 0,
+    "passes_chain_test": false,
+    "days_after_first_reading": 0.3,
+    "days_after_newest_reading": 0.3,
+    "extract_label_overlap": 1,
+    "founder_is_foreign": false,
+    "of_readings": 12,
+    "foreign_total": 11,
+    "later_same_status": 10,
+    "later_same_status_nearest_same_status": 10,
+    "later_joins_passing_chain_test": 3,
+    "label_moved_to_other_story": true
+   },
+   "joins": [
+    {
+     "position": 0,
+     "ruled_claim": "claim-056",
+     "is_core": false,
+     "confidence": 0.99,
+     "shortlist_rank": null,
+     "nearest_position": null,
+     "nearest_similarity": null,
+     "similarity_to_first": null
+    },
+    {
+     "position": 1,
+     "ruled_claim": "claim-058",
+     "is_core": false,
+     "confidence": 0.97,
+     "shortlist_rank": 1,
+     "nearest_position": 0,
+     "nearest_similarity": 0.889,
+     "similarity_to_first": 0.889
+    },
+    {
+     "position": 2,
+     "ruled_claim": "claim-066",
+     "is_core": true,
+     "confidence": 0.92,
+     "shortlist_rank": 1,
+     "nearest_position": 1,
+     "nearest_similarity": 0.861,
+     "similarity_to_first": 0.837
+    },
+    {
+     "position": 3,
+     "ruled_claim": "claim-066",
+     "is_core": true,
+     "confidence": 0.93,
+     "shortlist_rank": 1,
+     "nearest_position": 2,
+     "nearest_similarity": 0.904,
+     "similarity_to_first": 0.794
+    },
+    {
+     "position": 4,
+     "ruled_claim": "claim-066",
+     "is_core": true,
+     "confidence": 0.97,
+     "shortlist_rank": 1,
+     "nearest_position": 2,
+     "nearest_similarity": 0.891,
+     "similarity_to_first": 0.808
+    },
+    {
+     "position": 5,
+     "ruled_claim": "claim-073.0",
+     "is_core": false,
+     "confidence": 0.96,
+     "shortlist_rank": 1,
+     "nearest_position": 4,
+     "nearest_similarity": 0.85,
+     "similarity_to_first": 0.734
+    },
+    {
+     "position": 6,
+     "ruled_claim": "claim-073.0",
+     "is_core": false,
+     "confidence": 0.97,
+     "shortlist_rank": 1,
+     "nearest_position": 5,
+     "nearest_similarity": 0.97,
+     "similarity_to_first": 0.726
+    },
+    {
+     "position": 7,
+     "ruled_claim": "claim-073.0",
+     "is_core": false,
+     "confidence": 0.97,
+     "shortlist_rank": 1,
+     "nearest_position": 5,
+     "nearest_similarity": 0.843,
+     "similarity_to_first": 0.801
+    },
+    {
+     "position": 8,
+     "ruled_claim": "claim-066",
+     "is_core": true,
+     "confidence": 0.73,
+     "shortlist_rank": 1,
+     "nearest_position": 4,
+     "nearest_similarity": 0.835,
+     "similarity_to_first": 0.717
+    },
+    {
+     "position": 9,
+     "ruled_claim": "claim-074",
+     "is_core": false,
+     "confidence": 0.46,
+     "shortlist_rank": 1,
+     "nearest_position": 7,
+     "nearest_similarity": 0.905,
+     "similarity_to_first": 0.767
+    },
+    {
+     "position": 10,
+     "ruled_claim": "claim-074",
+     "is_core": false,
+     "confidence": 0.98,
+     "shortlist_rank": 1,
+     "nearest_position": 9,
+     "nearest_similarity": 0.842,
+     "similarity_to_first": 0.697
+    },
+    {
+     "position": 11,
+     "ruled_claim": "claim-074",
+     "is_core": false,
+     "confidence": 0.89,
+     "shortlist_rank": 1,
+     "nearest_position": 1,
+     "nearest_similarity": 0.884,
+     "similarity_to_first": 0.855
+    }
+   ]
+  },
+  {
+   "v0_claim": "46",
+   "ruled_claims": [
+    [
+     "claim-113",
+     10
+    ],
+    [
+     "claim-097",
+     6
+    ]
+   ],
+   "readings": 16,
+   "crossing": 6,
+   "crossing_features": {
+    "position": 6,
+    "reading_id": "178",
+    "members_before": 6,
+    "confidence": 0.64,
+    "none_probability": 0.29,
+    "judges_target_on_shortlist": null,
+    "shortlist_rank": 1,
+    "shortlist_size": 5,
+    "label_source_position": 0,
+    "nearest_position": 0,
+    "nearest_similarity": 0.811,
+    "nearest_is_anchor": true,
+    "best_anchor_similarity": 0.811,
+    "margin_over_anchors": 0,
+    "passes_chain_test": false,
+    "days_after_first_reading": 3.2,
+    "days_after_newest_reading": 2.1,
+    "extract_label_overlap": 0.24,
+    "founder_is_foreign": false,
+    "of_readings": 16,
+    "foreign_total": 10,
+    "later_same_status": 9,
+    "later_same_status_nearest_same_status": 9,
+    "later_joins_passing_chain_test": 0,
+    "label_moved_to_other_story": true
+   },
+   "joins": [
+    {
+     "position": 0,
+     "ruled_claim": "claim-097",
+     "is_core": false,
+     "confidence": 0.99,
+     "shortlist_rank": 3,
+     "nearest_position": null,
+     "nearest_similarity": null,
+     "similarity_to_first": null
+    },
+    {
+     "position": 1,
+     "ruled_claim": "claim-097",
+     "is_core": false,
+     "confidence": 1,
+     "shortlist_rank": 1,
+     "nearest_position": 0,
+     "nearest_similarity": 0.847,
+     "similarity_to_first": 0.847
+    },
+    {
+     "position": 2,
+     "ruled_claim": "claim-097",
+     "is_core": false,
+     "confidence": 1,
+     "shortlist_rank": 1,
+     "nearest_position": 1,
+     "nearest_similarity": 0.9,
+     "similarity_to_first": 0.824
+    },
+    {
+     "position": 3,
+     "ruled_claim": "claim-097",
+     "is_core": false,
+     "confidence": 1,
+     "shortlist_rank": 1,
+     "nearest_position": 1,
+     "nearest_similarity": 0.945,
+     "similarity_to_first": 0.855
+    },
+    {
+     "position": 4,
+     "ruled_claim": "claim-097",
+     "is_core": false,
+     "confidence": 0.99,
+     "shortlist_rank": 1,
+     "nearest_position": 3,
+     "nearest_similarity": 0.911,
+     "similarity_to_first": 0.839
+    },
+    {
+     "position": 5,
+     "ruled_claim": "claim-097",
+     "is_core": false,
+     "confidence": 1,
+     "shortlist_rank": 1,
+     "nearest_position": 3,
+     "nearest_similarity": 0.952,
+     "similarity_to_first": 0.835
+    },
+    {
+     "position": 6,
+     "ruled_claim": "claim-113",
+     "is_core": true,
+     "confidence": 0.64,
+     "shortlist_rank": 1,
+     "nearest_position": 0,
+     "nearest_similarity": 0.811,
+     "similarity_to_first": 0.811
+    },
+    {
+     "position": 7,
+     "ruled_claim": "claim-113",
+     "is_core": true,
+     "confidence": 1,
+     "shortlist_rank": 1,
+     "nearest_position": 6,
+     "nearest_similarity": 0.951,
+     "similarity_to_first": 0.78
+    },
+    {
+     "position": 8,
+     "ruled_claim": "claim-113",
+     "is_core": true,
+     "confidence": 1,
+     "shortlist_rank": 1,
+     "nearest_position": 6,
+     "nearest_similarity": 0.946,
+     "similarity_to_first": 0.795
+    },
+    {
+     "position": 9,
+     "ruled_claim": "claim-113",
+     "is_core": true,
+     "confidence": 1,
+     "shortlist_rank": 1,
+     "nearest_position": 6,
+     "nearest_similarity": 0.94,
+     "similarity_to_first": 0.783
+    },
+    {
+     "position": 10,
+     "ruled_claim": "claim-113",
+     "is_core": true,
+     "confidence": 1,
+     "shortlist_rank": 1,
+     "nearest_position": 7,
+     "nearest_similarity": 0.909,
+     "similarity_to_first": 0.753
+    },
+    {
+     "position": 11,
+     "ruled_claim": "claim-113",
+     "is_core": true,
+     "confidence": 1,
+     "shortlist_rank": 1,
+     "nearest_position": 10,
+     "nearest_similarity": 0.953,
+     "similarity_to_first": 0.77
+    },
+    {
+     "position": 12,
+     "ruled_claim": "claim-113",
+     "is_core": true,
+     "confidence": 1,
+     "shortlist_rank": 1,
+     "nearest_position": 11,
+     "nearest_similarity": 0.903,
+     "similarity_to_first": 0.797
+    },
+    {
+     "position": 13,
+     "ruled_claim": "claim-113",
+     "is_core": true,
+     "confidence": 1,
+     "shortlist_rank": 1,
+     "nearest_position": 10,
+     "nearest_similarity": 0.915,
+     "similarity_to_first": 0.787
+    },
+    {
+     "position": 14,
+     "ruled_claim": "claim-113",
+     "is_core": true,
+     "confidence": 1,
+     "shortlist_rank": 1,
+     "nearest_position": 11,
+     "nearest_similarity": 0.957,
+     "similarity_to_first": 0.777
+    },
+    {
+     "position": 15,
+     "ruled_claim": "claim-113",
+     "is_core": true,
+     "confidence": 1,
+     "shortlist_rank": 1,
+     "nearest_position": 11,
+     "nearest_similarity": 0.949,
+     "similarity_to_first": 0.771
+    }
+   ]
+  },
+  {
+   "v0_claim": "47",
+   "ruled_claims": [
+    [
+     "claim-073.4",
+     24
+    ],
+    [
+     "claim-073.3",
+     3
+    ],
+    [
+     "claim-095",
+     2
+    ],
+    [
+     "claim-094.0",
+     2
+    ],
+    [
+     "claim-127",
+     1
+    ]
+   ],
+   "readings": 32,
+   "crossing": 2,
+   "crossing_features": {
+    "position": 2,
+    "reading_id": "118",
+    "members_before": 2,
+    "confidence": 0.99,
+    "none_probability": 0,
+    "judges_target_on_shortlist": null,
+    "shortlist_rank": 4,
+    "shortlist_size": 5,
+    "label_source_position": 0,
+    "nearest_position": 1,
+    "nearest_similarity": 0.819,
+    "nearest_is_anchor": false,
+    "best_anchor_similarity": 0.786,
+    "margin_over_anchors": 0.033,
+    "passes_chain_test": false,
+    "days_after_first_reading": 0.6,
+    "days_after_newest_reading": 0.3,
+    "extract_label_overlap": 0.58,
+    "founder_is_foreign": false,
+    "of_readings": 32,
+    "foreign_total": 29,
+    "later_same_status": 28,
+    "later_same_status_nearest_same_status": 26,
+    "later_joins_passing_chain_test": 9,
+    "label_moved_to_other_story": false
+   },
+   "joins": [
+    {
+     "position": 0,
+     "ruled_claim": "claim-073.3",
+     "is_core": false,
+     "confidence": 0.99,
+     "shortlist_rank": null,
+     "nearest_position": null,
+     "nearest_similarity": null,
+     "similarity_to_first": null
+    },
+    {
+     "position": 1,
+     "ruled_claim": "claim-073.3",
+     "is_core": false,
+     "confidence": 1,
+     "shortlist_rank": 1,
+     "nearest_position": 0,
+     "nearest_similarity": 0.918,
+     "similarity_to_first": 0.918
+    },
+    {
+     "position": 2,
+     "ruled_claim": "claim-073.4",
+     "is_core": true,
+     "confidence": 0.99,
+     "shortlist_rank": 4,
+     "nearest_position": 1,
+     "nearest_similarity": 0.819,
+     "similarity_to_first": 0.786
+    },
+    {
+     "position": 3,
+     "ruled_claim": "claim-073.4",
+     "is_core": true,
+     "confidence": 1,
+     "shortlist_rank": 1,
+     "nearest_position": 2,
+     "nearest_similarity": 0.971,
+     "similarity_to_first": 0.798
+    },
+    {
+     "position": 4,
+     "ruled_claim": "claim-073.4",
+     "is_core": true,
+     "confidence": 0.99,
+     "shortlist_rank": 1,
+     "nearest_position": 2,
+     "nearest_similarity": 0.932,
+     "similarity_to_first": 0.81
+    },
+    {
+     "position": 5,
+     "ruled_claim": "claim-073.4",
+     "is_core": true,
+     "confidence": 1,
+     "shortlist_rank": 1,
+     "nearest_position": 1,
+     "nearest_similarity": 0.909,
+     "similarity_to_first": 0.887
+    },
+    {
+     "position": 6,
+     "ruled_claim": "claim-073.4",
+     "is_core": true,
+     "confidence": 0.98,
+     "shortlist_rank": 1,
+     "nearest_position": 5,
+     "nearest_similarity": 0.883,
+     "similarity_to_first": 0.831
+    },
+    {
+     "position": 7,
+     "ruled_claim": "claim-073.4",
+     "is_core": true,
+     "confidence": 0.93,
+     "shortlist_rank": 1,
+     "nearest_position": 3,
+     "nearest_similarity": 0.959,
+     "similarity_to_first": 0.795
+    },
+    {
+     "position": 8,
+     "ruled_claim": "claim-073.4",
+     "is_core": true,
+     "confidence": 1,
+     "shortlist_rank": 1,
+     "nearest_position": 7,
+     "nearest_similarity": 0.975,
+     "similarity_to_first": 0.785
+    },
+    {
+     "position": 9,
+     "ruled_claim": "claim-073.4",
+     "is_core": true,
+     "confidence": 0.99,
+     "shortlist_rank": 1,
+     "nearest_position": 4,
+     "nearest_similarity": 0.956,
+     "similarity_to_first": 0.806
+    },
+    {
+     "position": 10,
+     "ruled_claim": "claim-073.4",
+     "is_core": true,
+     "confidence": 0.99,
+     "shortlist_rank": 1,
+     "nearest_position": 4,
+     "nearest_similarity": 0.948,
+     "similarity_to_first": 0.804
+    },
+    {
+     "position": 11,
+     "ruled_claim": "claim-073.4",
+     "is_core": true,
+     "confidence": 1,
+     "shortlist_rank": 1,
+     "nearest_position": 4,
+     "nearest_similarity": 0.959,
+     "similarity_to_first": 0.82
+    },
+    {
+     "position": 12,
+     "ruled_claim": "claim-073.4",
+     "is_core": true,
+     "confidence": 1,
+     "shortlist_rank": 1,
+     "nearest_position": 11,
+     "nearest_similarity": 0.958,
+     "similarity_to_first": 0.827
+    },
+    {
+     "position": 13,
+     "ruled_claim": "claim-095",
+     "is_core": false,
+     "confidence": 0.68,
+     "shortlist_rank": 1,
+     "nearest_position": 1,
+     "nearest_similarity": 0.844,
+     "similarity_to_first": 0.812
+    },
+    {
+     "position": 14,
+     "ruled_claim": "claim-073.3",
+     "is_core": false,
+     "confidence": 1,
+     "shortlist_rank": 1,
+     "nearest_position": 0,
+     "nearest_similarity": 0.951,
+     "similarity_to_first": 0.951
+    },
+    {
+     "position": 15,
+     "ruled_claim": "claim-073.4",
+     "is_core": true,
+     "confidence": 0.92,
+     "shortlist_rank": 1,
+     "nearest_position": 10,
+     "nearest_similarity": 0.966,
+     "similarity_to_first": 0.801
+    },
+    {
+     "position": 16,
+     "ruled_claim": "claim-094.0",
+     "is_core": false,
+     "confidence": 0.38,
+     "shortlist_rank": 2,
+     "nearest_position": 7,
+     "nearest_similarity": 0.836,
+     "similarity_to_first": 0.705
+    },
+    {
+     "position": 17,
+     "ruled_claim": "claim-094.0",
+     "is_core": false,
+     "confidence": 0.71,
+     "shortlist_rank": 1,
+     "nearest_position": 8,
+     "nearest_similarity": 0.875,
+     "similarity_to_first": 0.765
+    },
+    {
+     "position": 18,
+     "ruled_claim": "claim-073.4",
+     "is_core": true,
+     "confidence": 1,
+     "shortlist_rank": 1,
+     "nearest_position": 11,
+     "nearest_similarity": 0.947,
+     "similarity_to_first": 0.81
+    },
+    {
+     "position": 19,
+     "ruled_claim": "claim-073.4",
+     "is_core": true,
+     "confidence": 0.97,
+     "shortlist_rank": 1,
+     "nearest_position": 11,
+     "nearest_similarity": 0.908,
+     "similarity_to_first": 0.804
+    },
+    {
+     "position": 20,
+     "ruled_claim": "claim-095",
+     "is_core": false,
+     "confidence": 0.63,
+     "shortlist_rank": 1,
+     "nearest_position": 12,
+     "nearest_similarity": 0.864,
+     "similarity_to_first": 0.726
+    },
+    {
+     "position": 21,
+     "ruled_claim": "claim-073.4",
+     "is_core": true,
+     "confidence": 1,
+     "shortlist_rank": 1,
+     "nearest_position": 2,
+     "nearest_similarity": 0.971,
+     "similarity_to_first": 0.799
+    },
+    {
+     "position": 22,
+     "ruled_claim": "claim-073.4",
+     "is_core": true,
+     "confidence": 1,
+     "shortlist_rank": 1,
+     "nearest_position": 21,
+     "nearest_similarity": 0.991,
+     "similarity_to_first": 0.801
+    },
+    {
+     "position": 23,
+     "ruled_claim": "claim-073.4",
+     "is_core": true,
+     "confidence": 0.99,
+     "shortlist_rank": 1,
+     "nearest_position": 11,
+     "nearest_similarity": 0.963,
+     "similarity_to_first": 0.807
+    },
+    {
+     "position": 24,
+     "ruled_claim": "claim-073.4",
+     "is_core": true,
+     "confidence": 1,
+     "shortlist_rank": 1,
+     "nearest_position": 11,
+     "nearest_similarity": 0.953,
+     "similarity_to_first": 0.808
+    },
+    {
+     "position": 25,
+     "ruled_claim": "claim-073.4",
+     "is_core": true,
+     "confidence": 1,
+     "shortlist_rank": 1,
+     "nearest_position": 23,
+     "nearest_similarity": 0.957,
+     "similarity_to_first": 0.828
+    },
+    {
+     "position": 26,
+     "ruled_claim": "claim-073.4",
+     "is_core": true,
+     "confidence": 1,
+     "shortlist_rank": 1,
+     "nearest_position": 12,
+     "nearest_similarity": 0.912,
+     "similarity_to_first": 0.809
+    },
+    {
+     "position": 27,
+     "ruled_claim": "claim-073.4",
+     "is_core": true,
+     "confidence": 1,
+     "shortlist_rank": 1,
+     "nearest_position": 11,
+     "nearest_similarity": 0.965,
+     "similarity_to_first": 0.819
+    },
+    {
+     "position": 28,
+     "ruled_claim": "claim-073.4",
+     "is_core": true,
+     "confidence": 1,
+     "shortlist_rank": 1,
+     "nearest_position": 11,
+     "nearest_similarity": 0.937,
+     "similarity_to_first": 0.795
+    },
+    {
+     "position": 29,
+     "ruled_claim": "claim-073.4",
+     "is_core": true,
+     "confidence": 1,
+     "shortlist_rank": 1,
+     "nearest_position": 12,
+     "nearest_similarity": 0.957,
+     "similarity_to_first": 0.827
+    },
+    {
+     "position": 30,
+     "ruled_claim": "claim-127",
+     "is_core": false,
+     "confidence": 0.41,
+     "shortlist_rank": 1,
+     "nearest_position": 8,
+     "nearest_similarity": 0.845,
+     "similarity_to_first": 0.677
+    },
+    {
+     "position": 31,
+     "ruled_claim": "claim-073.4",
+     "is_core": true,
+     "confidence": 1,
+     "shortlist_rank": 1,
+     "nearest_position": 27,
+     "nearest_similarity": 0.968,
+     "similarity_to_first": 0.807
+    }
+   ]
+  }
+ ],
+ "validation": [
+  {
+   "v0_claim": "47",
+   "ruled_claims": [
+    [
+     "claim-073.5",
+     1
+    ],
+    [
+     "claim-101",
+     1
+    ]
+   ],
+   "readings": 2,
+   "crossing": 1,
+   "crossing_features": {
+    "position": 1,
+    "reading_id": "160",
+    "members_before": 1,
+    "confidence": 0.45,
+    "none_probability": 0.45,
+    "judges_target_on_shortlist": null,
+    "shortlist_rank": 1,
+    "shortlist_size": 5,
+    "label_source_position": -1,
+    "nearest_position": 0,
+    "nearest_similarity": 0.854,
+    "nearest_is_anchor": true,
+    "best_anchor_similarity": 0.854,
+    "margin_over_anchors": 0,
+    "passes_chain_test": false,
+    "days_after_first_reading": 0.5,
+    "days_after_newest_reading": 0.5,
+    "extract_label_overlap": 0.11,
+    "founder_is_foreign": false,
+    "of_readings": 2,
+    "foreign_total": 1,
+    "later_same_status": 0,
+    "later_same_status_nearest_same_status": 0,
+    "later_joins_passing_chain_test": 0,
+    "label_moved_to_other_story": false
+   },
+   "joins": [
+    {
+     "position": 0,
+     "ruled_claim": "claim-073.5",
+     "is_core": true,
+     "confidence": 1,
+     "shortlist_rank": 1,
+     "nearest_position": null,
+     "nearest_similarity": null,
+     "similarity_to_first": null
+    },
+    {
+     "position": 1,
+     "ruled_claim": "claim-101",
+     "is_core": false,
+     "confidence": 0.45,
+     "shortlist_rank": 1,
+     "nearest_position": 0,
+     "nearest_similarity": 0.854,
+     "similarity_to_first": 0.854
+    }
+   ]
+  }
+ ]
+}

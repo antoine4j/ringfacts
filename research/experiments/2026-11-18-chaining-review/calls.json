@@ -1,0 +1,517 @@
+{
+ "5": {
+  "verdict": "mixed",
+  "rule_question": 0,
+  "career_event": "",
+  "foreign_kind": "other_speaker",
+  "tags": [],
+  "note": "Another commentator's talk-show pick joined a claim about one fighter's own interview remarks; the fighter is a passing mention in it."
+ },
+ "8": {
+  "verdict": "mixed",
+  "rule_question": 0,
+  "career_event": "",
+  "foreign_kind": "reaction",
+  "tags": [],
+  "note": "The fighter's manager answering a rival manager joined the rival manager's podcast claim; the maintainer ruled on 5 Nov that each person's reaction is its own claim."
+ },
+ "28": {
+  "verdict": "mixed",
+  "rule_question": 3,
+  "career_event": "",
+  "foreign_kind": "coverage",
+  "tags": [],
+  "note": "Three more preview columns from other outlets joined one outlet's roundtable claim; whether a column is its own claim is unruled (question 3)."
+ },
+ "85": {
+  "verdict": "mixed",
+  "rule_question": 2,
+  "career_event": "borderline:return date",
+  "foreign_kind": "sitting",
+  "tags": [
+   "window_bridge"
+  ],
+  "note": "A trainer's new return-date remark four weeks after his first interview joined the first interview's claim; both are estimates by the trainer, not an official date."
+ },
+ "90": {
+  "verdict": "mixed",
+  "rule_question": 0,
+  "career_event": "",
+  "foreign_kind": "other_speaker",
+  "tags": [],
+  "note": "A third party defending the fighter on a talk show joined one rival's matchmaking claim, five days later and at low confidence."
+ },
+ "93": {
+  "verdict": "mixed",
+  "rule_question": 2,
+  "career_event": "",
+  "foreign_kind": "sitting",
+  "tags": [
+   "window_bridge"
+  ],
+  "note": "The same fighter's callout in a second interview two weeks later joined the claim about his first one (question 2, one speaker repeating himself)."
+ },
+ "154": {
+  "verdict": "mixed",
+  "rule_question": 3,
+  "career_event": "",
+  "foreign_kind": "occasion",
+  "tags": [
+   "generic_label"
+  ],
+  "note": "The claim began on a card-wide article and was labelled with a bare booking sentence; the first article of a different occasion (the opponent's interview) joined it at confidence 0.94 though it sat far from the claim, and previews, picks and the weigh-in followed.",
+  "crossing": "534"
+ },
+ "159": {
+  "verdict": "mixed",
+  "rule_question": 0,
+  "career_event": "",
+  "foreign_kind": "occasion",
+  "tags": [],
+  "note": "The fighter's essay revealing a new injury joined a one-article claim about an earlier recovery feature, at confidence 0.57, and the essay write-ups followed."
+ },
+ "169": {
+  "verdict": "mixed",
+  "rule_question": 0,
+  "career_event": "",
+  "foreign_kind": "other_speaker",
+  "tags": [],
+  "note": "A former champion's comment on a different fighter joined a claim about the champion's own interview."
+ },
+ "180": {
+  "verdict": "mixed",
+  "rule_question": 0,
+  "career_event": "",
+  "foreign_kind": "occasion",
+  "tags": [],
+  "note": "A post-fight review of one bout joined a claim about the same outlet's preview of it (rule 4: preview and result are different claims)."
+ },
+ "182": {
+  "verdict": "mixed",
+  "rule_question": 0,
+  "career_event": "",
+  "foreign_kind": "sitting",
+  "tags": [],
+  "note": "The fighter's written essay of the next day joined the claim about his video letter to his son; the essay carries the injury news that has its own claim."
+ },
+ "197": {
+  "verdict": "mixed",
+  "rule_question": 0,
+  "career_event": "",
+  "foreign_kind": "occasion",
+  "tags": [],
+  "note": "The fighter's post-fight interview stubs and next-opponent analysis joined the claim about his win."
+ },
+ "199": {
+  "verdict": "mixed",
+  "rule_question": 0,
+  "career_event": "",
+  "foreign_kind": "reaction",
+  "tags": [],
+  "note": "Fans' reaction to a rematch remark, and a colleague's support post, joined the claim about the fighter's essay."
+ },
+ "208": {
+  "verdict": "mixed",
+  "rule_question": 0,
+  "career_event": "",
+  "foreign_kind": "occasion",
+  "tags": [],
+  "note": "The fighter's later post-fight comments joined the claim about his win, at confidence 0.25."
+ },
+ "209": {
+  "verdict": "mixed",
+  "rule_question": 0,
+  "career_event": "",
+  "foreign_kind": "reaction",
+  "tags": [],
+  "note": "The opponent's Instagram reply to the fighter's callout joined the callout's claim at confidence 0.33; the judges' doubt about the first article's sitting is a repeat-callout question and is not what this review counts.",
+  "crossing": "886"
+ },
+ "214": {
+  "verdict": "mixed",
+  "rule_question": 5,
+  "career_event": "",
+  "foreign_kind": "other_speaker",
+  "tags": [
+   "generic_label"
+  ],
+  "note": "A pundit's warning against the rematch joined a claim labelled with a topic-level sentence about the UFC considering the rematch; the claim grew to 91 readings as every rematch remark attached to it.",
+  "crossing": "892"
+ },
+ "218": {
+  "verdict": "mixed",
+  "rule_question": 0,
+  "career_event": "",
+  "foreign_kind": "reaction",
+  "tags": [],
+  "note": "A fans'-backlash article joined a claim about the fighter's rival saying nobody had called him."
+ },
+ "226": {
+  "verdict": "mixed",
+  "rule_question": 0,
+  "career_event": "",
+  "foreign_kind": "other_speaker",
+  "tags": [],
+  "note": "A former champion's rematch warning joined a claim about a commentator's warning."
+ },
+ "243": {
+  "verdict": "mixed",
+  "rule_question": 0,
+  "career_event": "",
+  "foreign_kind": "other_speaker",
+  "tags": [],
+  "note": "Two different pundits warning against the same rematch were put in one claim, joined at confidence 0.41."
+ },
+ "260": {
+  "verdict": "mixed",
+  "rule_question": 0,
+  "career_event": "",
+  "foreign_kind": "other_speaker",
+  "tags": [],
+  "note": "A pundit taking the opposite view on the rematch joined the claim about another pundit's view."
+ },
+ "261": {
+  "verdict": "mixed",
+  "rule_question": 2,
+  "career_event": "",
+  "foreign_kind": "sitting",
+  "tags": [],
+  "note": "A feature recapping the manager's August posts joined the claim about his Instagram story of 11-12 Sep."
+ },
+ "265": {
+  "verdict": "mixed",
+  "rule_question": 0,
+  "career_event": "",
+  "foreign_kind": "occasion",
+  "tags": [
+   "extract_restates_core"
+  ],
+  "note": "A friend's post of the fighter cycling joined the trainer's claim at confidence 1.0 because its extract sentence was the trainer's remark."
+ },
+ "273": {
+  "verdict": "mixed",
+  "rule_question": 2,
+  "career_event": "",
+  "foreign_kind": "sitting",
+  "tags": [],
+  "note": "The same ex-champion's podcast remark of 23 Sep joined the claim about his interview of 14 Sep, 9 days on."
+ },
+ "279": {
+  "verdict": "same_story",
+  "rule_question": 4,
+  "career_event": "",
+  "foreign_kind": "roundup",
+  "tags": [
+   "roundup"
+  ],
+  "note": "A morning roundup page that carries the remark as one blurb joined the claim about it; on reading it reports the same fact."
+ },
+ "288": {
+  "verdict": "mixed",
+  "rule_question": 0,
+  "career_event": "",
+  "foreign_kind": "unrelated",
+  "tags": [],
+  "note": "Another fighter's booking on the same card joined the claim about the fighter's brother's booking."
+ },
+ "289": {
+  "verdict": "mixed",
+  "rule_question": 0,
+  "career_event": "",
+  "foreign_kind": "reaction",
+  "tags": [],
+  "note": "The rival's X reply to the fighter's posts joined the claim about the posts; this is the claim the maintainer's 5 Nov ruling on reactions came from."
+ },
+ "301": {
+  "verdict": "mixed",
+  "rule_question": 0,
+  "career_event": "",
+  "foreign_kind": "other_speaker",
+  "tags": [],
+  "note": "The rival manager's own follow-up post joined the claim about the fighter's reply to him."
+ },
+ "305": {
+  "verdict": "mixed",
+  "rule_question": 3,
+  "career_event": "",
+  "foreign_kind": "coverage",
+  "tags": [],
+  "note": "A later column by the same writer on another fighter's title shot joined the claim about his earlier column."
+ },
+ "311": {
+  "verdict": "mixed",
+  "rule_question": 0,
+  "career_event": "",
+  "foreign_kind": "reaction",
+  "tags": [],
+  "note": "The promotion boss's reply to the glove claim joined the claim about the commission's statement, and his sentence became the claim's label."
+ },
+ "322": {
+  "verdict": "mixed",
+  "rule_question": 2,
+  "career_event": "",
+  "foreign_kind": "sitting",
+  "tags": [],
+  "note": "The rival's podcast remark joined a claim founded on a clip of the same rival doubting the fighter at lightweight a few days earlier."
+ },
+ "328": {
+  "verdict": "mixed",
+  "rule_question": 3,
+  "career_event": "",
+  "foreign_kind": "coverage",
+  "tags": [],
+  "note": "A column drawing on the promotion boss's remarks joined the claim about his press-conference answer."
+ },
+ "330": {
+  "verdict": "mixed",
+  "rule_question": 0,
+  "career_event": "",
+  "foreign_kind": "reaction",
+  "tags": [
+   "extract_restates_core"
+  ],
+  "note": "A fans'-reaction article, whose extract sentence restated the rival's remark, founded the claim the rival's remark articles then joined."
+ },
+ "337": {
+  "verdict": "mixed",
+  "rule_question": 9,
+  "career_event": "",
+  "foreign_kind": "coverage",
+  "tags": [],
+  "note": "Different outlets' own rankings joined, one after another, a claim founded on one outlet's monthly list (question 9, whether each ranking is its own claim)."
+ },
+ "339": {
+  "verdict": "mixed",
+  "rule_question": 0,
+  "career_event": "",
+  "foreign_kind": "other_speaker",
+  "tags": [],
+  "note": "A rival's remarks about the fighter joined the claim about the promotion's weekly rankings update, at confidence 0.49."
+ },
+ "351": {
+  "verdict": "same_story",
+  "rule_question": 4,
+  "career_event": "",
+  "foreign_kind": "roundup",
+  "tags": [
+   "roundup",
+   "extract_restates_core"
+  ],
+  "note": "A morning roundup that embeds the debunk of a death hoax founded the claim; on reading it reports the same fact as the articles that followed."
+ },
+ "364": {
+  "verdict": "mixed",
+  "rule_question": 0,
+  "career_event": "",
+  "foreign_kind": "other_speaker",
+  "tags": [
+   "extract_restates_core"
+  ],
+  "note": "A coach's remarks, summarised by the extractor as the rival's remark, joined the rival's podcast claim at confidence 0.99; a pundit's remarks then followed and the label moved to the pundit's sentence."
+ },
+ "385": {
+  "verdict": "mixed",
+  "rule_question": 0,
+  "career_event": "",
+  "foreign_kind": "reaction",
+  "tags": [],
+  "note": "Fans' reaction to the training post joined the claim about the post."
+ },
+ "391": {
+  "verdict": "mixed",
+  "rule_question": 2,
+  "career_event": "",
+  "foreign_kind": "sitting",
+  "tags": [
+   "window_bridge"
+  ],
+  "note": "The same pundit's new video 17 days after the claim began joined it at confidence 0.88; a reading 5 days before it kept the claim inside the 14-day window."
+ },
+ "394": {
+  "verdict": "mixed",
+  "rule_question": 0,
+  "career_event": "",
+  "foreign_kind": "reaction",
+  "tags": [],
+  "note": "The promotion boss's reaction to the pitch joined the claim about the pitch, at confidence 0.5."
+ },
+ "403": {
+  "verdict": "mixed",
+  "rule_question": 0,
+  "career_event": "",
+  "foreign_kind": "sitting",
+  "tags": [],
+  "note": "A recap of the fighter's older remarks on success joined the claim about his return to training."
+ },
+ "419": {
+  "verdict": "mixed",
+  "rule_question": 1,
+  "career_event": "",
+  "foreign_kind": "occasion",
+  "tags": [],
+  "note": "The promotion boss's answer on a referee, from the same press conference but about someone else, joined the claim about his answer on the fighter (question 1)."
+ },
+ "448": {
+  "verdict": "mixed",
+  "rule_question": 0,
+  "career_event": "",
+  "foreign_kind": "reaction",
+  "tags": [],
+  "note": "Fans' anger at the referee joined the claim about the footage release."
+ },
+ "450": {
+  "verdict": "mixed",
+  "rule_question": 0,
+  "career_event": "",
+  "foreign_kind": "sitting",
+  "tags": [
+   "window_bridge"
+  ],
+  "note": "The same ex-champion's podcast remarks nine days later, on another subject, joined the claim about his interview."
+ },
+ "469": {
+  "verdict": "mixed",
+  "rule_question": 3,
+  "career_event": "",
+  "foreign_kind": "coverage",
+  "tags": [],
+  "note": "A fight-day preview joined the claim about the same fighter's interview ten days earlier, at confidence 0.33."
+ },
+ "476": {
+  "verdict": "mixed",
+  "rule_question": 0,
+  "career_event": "",
+  "foreign_kind": "reaction",
+  "tags": [],
+  "note": "The promotion boss's answer to a rival champion's pitch joined the claim about the pitch; later readings about the next opponent of a third fighter drifted in through one another over three weeks."
+ },
+ "498": {
+  "verdict": "mixed",
+  "rule_question": 0,
+  "career_event": "",
+  "foreign_kind": "unrelated",
+  "tags": [],
+  "note": "A former champion's heavyweight remarks, with the fighter absent from the text, joined the claim about another ex-champion's remark, at confidence 0.39."
+ },
+ "503": {
+  "verdict": "mixed",
+  "rule_question": 2,
+  "career_event": "",
+  "foreign_kind": "sitting",
+  "tags": [],
+  "note": "The same fighter's second interview a day later, with a slightly different line, joined the claim about his first."
+ },
+ "517": {
+  "verdict": "mixed",
+  "rule_question": 0,
+  "career_event": "",
+  "foreign_kind": "occasion",
+  "tags": [],
+  "note": "A result report from a regional promotion's event joined the claim about its preview, at confidence 0.38."
+ },
+ "526": {
+  "verdict": "mixed",
+  "rule_question": 0,
+  "career_event": "",
+  "foreign_kind": "reaction",
+  "tags": [],
+  "note": "A rival's mockery of the fighter's reaction joined the claim founded on the fighter's reaction at confidence 1.0, and the mockery's sentence became the label."
+ },
+ "549": {
+  "verdict": "mixed",
+  "rule_question": 0,
+  "career_event": "",
+  "foreign_kind": "sitting",
+  "tags": [],
+  "note": "The manager's later post denying a signing, 13 days after the claim began, joined the claim about his earlier naming of the fighter."
+ },
+ "557": {
+  "verdict": "mixed",
+  "rule_question": 0,
+  "career_event": "",
+  "foreign_kind": "unrelated",
+  "tags": [],
+  "note": "A wrestling-manager interview with no mention of the fighter joined the claim about a marketing list, at nearest similarity 0.61."
+ },
+ "567": {
+  "verdict": "mixed",
+  "rule_question": 0,
+  "career_event": "",
+  "foreign_kind": "occasion",
+  "tags": [],
+  "note": "A broadcast-deal announcement for a promotion joined the claim about the same promotion's card announcement."
+ },
+ "575": {
+  "verdict": "mixed",
+  "rule_question": 0,
+  "career_event": "borderline:return date",
+  "foreign_kind": "other_speaker",
+  "tags": [],
+  "note": "The fighter's own interview giving an April return joined the claim about the promotion boss's early-2027 return remark; the interview has its own claim."
+ },
+ "580": {
+  "verdict": "mixed",
+  "rule_question": 0,
+  "career_event": "",
+  "foreign_kind": "reaction",
+  "tags": [],
+  "note": "A podcast panel discussing the fighter's interview joined the claim about the interview."
+ },
+ "589": {
+  "verdict": "mixed",
+  "rule_question": 0,
+  "career_event": "",
+  "foreign_kind": "sitting",
+  "tags": [],
+  "note": "A second interview of the same days, on a different line, joined the claim about the fighter's first interview since his loss, at confidence 0.4."
+ },
+ "594": {
+  "verdict": "mixed",
+  "rule_question": 2,
+  "career_event": "",
+  "foreign_kind": "sitting",
+  "tags": [],
+  "note": "The same fighter's later Q&A video joined a claim founded on an earlier sit-down interview with the same rematch wish."
+ },
+ "614": {
+  "verdict": "mixed",
+  "rule_question": 0,
+  "career_event": "",
+  "foreign_kind": "coverage",
+  "tags": [
+   "extract_restates_core",
+   "generic_label"
+  ],
+  "note": "Odds pieces whose extract repeated the booking sentence joined the booking claim at confidence 1.0, and then reactions and background pieces."
+ },
+ "640": {
+  "verdict": "cannot_tell",
+  "rule_question": 8,
+  "career_event": "",
+  "foreign_kind": "occasion",
+  "tags": [
+   "extract_restates_core",
+   "stub_founder"
+  ],
+  "note": "The founding article is a stub whose saved text is not the article, so what story it reports cannot be told from the stored rows."
+ },
+ "641": {
+  "verdict": "mixed",
+  "rule_question": 8,
+  "career_event": "",
+  "foreign_kind": "reaction",
+  "tags": [],
+  "note": "The fighter's own condemnation joined the claim about the attack on his friend, at confidence 0.65."
+ },
+ "643": {
+  "verdict": "cannot_tell",
+  "rule_question": 8,
+  "career_event": "",
+  "foreign_kind": "occasion",
+  "tags": [
+   "extract_restates_core",
+   "stub_founder"
+  ],
+  "note": "The founding article's saved text is cut off, so what it reports cannot be told from the stored rows."
+ }
+}
