@@ -50,8 +50,8 @@ function fortnight(): FakePool {
     .on(/max\(created_at\) AS at FROM review_readings/, [{ claim_id: "1", at: onDay("2026-10-17") }])
     .on(/min\(created_at\) AS at FROM groupings/, [{ claim_id: "1", reading_id: "11", at: onDay("2026-10-14") }, { claim_id: "1", reading_id: "12", at: onDay("2026-10-15") }])
     .on(/FROM reading_now WHERE claim_id/, [{ classifier_version: "v7.7", grouping_version: "g1", settings_version: 3, readings: "3" }])
-    .on(/UNION ALL/, [])
-    .on(/FROM claims c JOIN readings r/, (values) => (values.length === 0 ? allPosts : allPosts.filter((post) => post.claim_id !== "4")))
+    .on(/UNION ALL SELECT 'grouping'/, [])
+    .on(/SELECT c\.id AS claim_id, r\.posted_at/, (values) => (values.length === 0 ? allPosts : allPosts.filter((post) => post.claim_id !== "4")))
     .on(/SELECT d\.id,/, [{ id: "1", latest: "👎", noted: false }, { id: "2", latest: "👍", noted: false }])
     .on(/FROM telegram_notes n JOIN claims c/, [])
     .on(/^SELECT cn\.id FROM claim_now cn/, [{ id: "1" }, { id: "2" }])
@@ -129,7 +129,7 @@ test("a 👀 on a post, and a reply linking an earlier post, each make a repeat;
     { claim_id: "1", posted_at: onDay("2026-10-15"), latest: "👀", noted: false },
     { claim_id: "3", posted_at: onDay("2026-10-16"), latest: null, noted: true },
   ];
-  fortnight().on(/FROM claims c JOIN readings r/, (values) => (values.length === 0 ? [...posts, { claim_id: "4", posted_at: onDay("2026-10-01"), latest: "👍", noted: false }] : posts))
+  fortnight().on(/SELECT c\.id AS claim_id, r\.posted_at/, (values) => (values.length === 0 ? [...posts, { claim_id: "4", posted_at: onDay("2026-10-01"), latest: "👍", noted: false }] : posts))
     .on(/FROM telegram_notes n JOIN claims c/, [{ claim_id: "3" }]);
   const scores = await liveScores(RANGE, NOW);
   assert.deepEqual(scores.repeats, { count: 2, of: 2 });
@@ -147,7 +147,7 @@ test("a repeat is a post of a story linked to one the group had already been sen
 test("the period's posts are asked for with its days, and every post ever with none", async () => {
   const database = fortnight();
   await liveScores(RANGE, NOW);
-  const askedFor = database.sent(/FROM claims c JOIN readings r/).map((query) => query.values);
+  const askedFor = database.sent(/SELECT c\.id AS claim_id, r\.posted_at/).map((query) => query.values);
   assert.equal(askedFor.length, 2);
   assert.ok(askedFor.some((values) => values.length === 0));
   assert.ok(askedFor.some((values) => values.length === 2 && values[0] === "2026-10-13" && values[1] === "2026-10-19"));

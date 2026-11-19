@@ -1,6 +1,6 @@
 // What the maintainer wrote in the Telegram chat, and the emoji he put on v0's
 // posts, as the storyboard shows them: the notes on a claim or a digest, the
-// inbox of every note, the marks that wait for his Confirm, and when Telegram
+// inbox of every note, the 🥱 and 🤔 that count now, and when Telegram
 // was last read. Live data only: the golden replay has no chat.
 // Design: Launch Map task 9.13 (docs/launch-map.html).
 
@@ -28,8 +28,8 @@ export type TelegramNote = {
   digest_period_end: Date | null;
 };
 
-/** The emoji that wait for his Confirm: 🥱 means "belongs in the digest", 🤔 means "looks wrong". */
-export type EmojiMark = { message_id: string; emoji: "🥱" | "🤔"; claim_id: string; claim_label: string; tier_now: number | null; claim_note: string | null };
+/** An emoji of his that counts now: 🥱 means "belongs in the digest", 🤔 means "looks wrong". */
+export type EmojiMark = { message_id: string; emoji: "🥱" | "🤔"; claim_id: string; claim_label: string };
 
 // The columns every notes query returns, with the claim or digest each note ends at.
 const NOTE_COLUMNS = `n.message_id, n.text, n.quote, n.kind, n.sent_at, n.reply_to_message_id, n.post_message_id, n.post_kind, n.post_reading_id, n.post_digest_id,
@@ -87,19 +87,13 @@ export async function inboxNotes(): Promise<TelegramNote[]> {
 }
 
 /**
- * The 🥱 and 🤔 on tier-1 posts that wait for his Confirm.
+ * The 🥱 and 🤔 on tier-1 posts that count now: his newest emoji on a post, so one he took off or changed is gone.
+ * Nothing waits for a Confirm; the claim page and the scores read the same emoji directly.
  *
- * Only his newest emoji on a post counts, so one he took off or changed is gone.
- * A 🥱 is waiting until the claim's newest tier mark says "wrong, should be the
- * digest"; a 🤔 until the claim has a note that starts with the marker the Confirm
- * writes. His account is the one in
- * TELEGRAM_MAINTAINER_ID; without it every account in the chat counts, which is
- * right while he is alone in it.
- *
- * @param maintainerId  His Telegram account id, or "" when not configured.
- * @returns The waiting marks, newest first.
+ * @param maintainerId  His Telegram account id, or "" when not configured (then every account counts, right while he is alone in the chat).
+ * @returns The emoji in force, newest first.
  */
-export async function emojiMarksWaiting(maintainerId: string): Promise<EmojiMark[]> {
+export async function emojiMarksInForce(maintainerId: string): Promise<EmojiMark[]> {
   return query<EmojiMark>(
     "public",
     `WITH newest AS (
@@ -108,16 +102,12 @@ export async function emojiMarksWaiting(maintainerId: string): Promise<EmojiMark
        WHERE ($1 = '' OR re.user_id IS NULL OR re.user_id::text = $1)
        ORDER BY re.message_id, re.user_id, re.update_id DESC
      )
-     SELECT nw.message_id, nw.emoji, c.id AS claim_id, cn.current_label AS claim_label,
-            (SELECT min(rn.tier) FROM reading_now rn WHERE rn.claim_id = c.id) AS tier_now,
-            (SELECT k.note FROM review_claim_notes k WHERE k.claim_id = c.id ORDER BY k.id DESC LIMIT 1) AS claim_note
+     SELECT nw.message_id, nw.emoji, c.id AS claim_id, cn.current_label AS claim_label
      FROM newest nw
      JOIN sent_messages sm ON sm.message_id = nw.message_id AND sm.kind = 'post'
      JOIN claims c ON c.posted_reading_id = sm.reading_id
      JOIN claim_now cn ON cn.id = c.id
      WHERE nw.emoji IN ('🥱', '🤔')
-       AND NOT (nw.emoji = '🥱' AND COALESCE((SELECT t.verdict = 'wrong' AND t.should_be_tier = 2 FROM review_tiers t WHERE t.claim_id = c.id ORDER BY t.id DESC LIMIT 1), false))
-       AND NOT (nw.emoji = '🤔' AND EXISTS (SELECT 1 FROM review_claim_notes k WHERE k.claim_id = c.id AND k.note LIKE '🤔 looks wrong%'))
      ORDER BY nw.update_id DESC`,
     [maintainerId],
   );

@@ -6,7 +6,7 @@
 
 import { test, afterEach } from "node:test";
 import assert from "node:assert/strict";
-import { claimMembers, claimNotesFor, claimReviews, latestReaction, reviewsFor, tierMarksFor, type MemberRow } from "./queries.ts";
+import { claimMembers, claimNotesFor, claimReviews, latestHisEmoji, latestReaction, LOOKS_WRONG_NOTE, reviewsFor, tierMarksFor, type MemberRow } from "./queries.ts";
 import { FakePool } from "./fake-pool.ts";
 
 let pool: FakePool;
@@ -70,7 +70,40 @@ test("tier marks are asked for by claim and returned as they are", async () => {
   const marks = [{ id: "1", claim_id: "5", tier_had: 1, verdict: "wrong", should_be_tier: 2, note: "" }];
   pool = new FakePool().install().on(/FROM review_tiers/, marks);
   assert.deepEqual(await tierMarksFor(["5"]), marks);
-  assert.deepEqual(pool.queries[0].values, [["5"]]);
+  assert.deepEqual(pool.queries[0].values, [["5"], ""]);
+});
+
+test("a 🥱 on a claim's posted message is a wrong-tier mark at once, only for a tier-1 claim, and only when no later mark of his on the storyboard overrides it", async () => {
+  pool = new FakePool().install().on(/FROM review_tiers/, []);
+  await tierMarksFor(["5"]);
+  const sql = pool.queries[0].sql;
+  assert.match(sql, /UNION ALL/);
+  assert.match(sql, /last\.emoji = '🥱'/);
+  assert.match(sql, /'wrong'::text, 2::smallint/);
+  assert.match(sql, /tn\.tier = 1/);
+  assert.match(sql, /t\.created_at > last\.received_at/);
+  assert.match(sql, /9000000000000 \+ c\.id/);
+});
+
+test("his account comes from the setting, and an unset setting counts any account", async () => {
+  const saved = process.env.TELEGRAM_MAINTAINER_ID;
+  try {
+    process.env.TELEGRAM_MAINTAINER_ID = "4242";
+    pool = new FakePool().install().on(/FROM review_tiers/, []);
+    await tierMarksFor(["5"]);
+    assert.deepEqual(pool.queries[0].values, [["5"], "4242"]);
+    delete process.env.TELEGRAM_MAINTAINER_ID;
+    await tierMarksFor(["5"]);
+    assert.deepEqual(pool.queries[1].values, [["5"], ""]);
+  } finally {
+    if (saved === undefined) delete process.env.TELEGRAM_MAINTAINER_ID; else process.env.TELEGRAM_MAINTAINER_ID = saved;
+  }
+});
+
+test("the newest emoji of his on a message is asked for by its newest update, over his account or an unset one", () => {
+  const sql = latestHisEmoji("r.message_id", "$2");
+  assert.match(sql, /re\.message_id = r\.message_id AND \(\$2 = '' OR re\.user_id IS NULL OR re\.user_id::text = \$2\) ORDER BY re\.update_id DESC LIMIT 1/);
+  assert.throws(() => latestHisEmoji("message_id", "$2"), /needs a qualified column/);
 });
 
 test("a note is kept for the claim's newest row, and a cleared note leaves the claim without one", async () => {
@@ -78,10 +111,23 @@ test("a note is kept for the claim's newest row, and a cleared note leaves the c
   pool = new FakePool().install().on(/FROM review_claim_notes/, [
     { claim_id: "1", note: "check this", created_at: written },
     { claim_id: "2", note: "", created_at: written },
-  ]);
+  ]).on(/last\.received_at AS at/, []);
   const notes = await claimNotesFor(["1", "2"]);
   assert.deepEqual([...notes], [["1", { note: "check this", created_at: written }]]);
   assert.match(pool.queries[0].sql, /ORDER BY claim_id, id DESC/);
+});
+
+test("a 🤔 on a claim's posted message is a looks-wrong note at once, in front of a note already there, and a note written after it wins", async () => {
+  const earlier = new Date("2026-10-06T10:00:00Z");
+  const emoji = new Date("2026-10-07T10:00:00Z");
+  pool = new FakePool().install()
+    .on(/FROM review_claim_notes/, [{ claim_id: "1", note: "check this", created_at: earlier }])
+    .on(/last\.received_at AS at/, [{ claim_id: "1", at: emoji }, { claim_id: "3", at: emoji }]);
+  const notes = await claimNotesFor(["1", "3"]);
+  assert.deepEqual([...notes], [["1", { note: `${LOOKS_WRONG_NOTE}. check this`, created_at: emoji }], ["3", { note: LOOKS_WRONG_NOTE, created_at: emoji }]]);
+  const sql = pool.sent(/last\.received_at AS at/)[0].sql;
+  assert.match(sql, /last\.emoji = '🤔'/);
+  assert.match(sql, /k\.created_at > last\.received_at/);
 });
 
 test("reviews ask for every same-claim link, since a group can reach a claim through others", async () => {

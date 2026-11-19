@@ -6,7 +6,7 @@
 
 import { test, afterEach } from "node:test";
 import assert from "node:assert/strict";
-import { emojiMarksWaiting, inboxNotes, isStale, lastFeedbackRead, notesForClaims, notesForDigests, postWords, STALE_AFTER_HOURS, type TelegramNote } from "./telegram.ts";
+import { emojiMarksInForce, inboxNotes, isStale, lastFeedbackRead, notesForClaims, notesForDigests, postWords, STALE_AFTER_HOURS, type TelegramNote } from "./telegram.ts";
 import { FakePool } from "./fake-pool.ts";
 
 let pool: FakePool;
@@ -63,22 +63,16 @@ test("the inbox puts notes that reach no post first, then newest first, and stop
   assert.match(pool.queries[0].sql, /LIMIT 200/);
 });
 
-test("the waiting marks look at his newest emoji on a message, only the two that need a Confirm, and take his account from the setting", async () => {
+test("the emoji in force are his newest on a message, only the two that mark a claim, and take his account from the setting", async () => {
   pool = new FakePool().install().on(/WITH newest AS/, []);
-  await emojiMarksWaiting("4242");
+  await emojiMarksInForce("4242");
   assert.deepEqual(pool.queries[0].values, ["4242"]);
   assert.match(pool.queries[0].sql, /DISTINCT ON \(re\.message_id, re\.user_id\)/);
   assert.match(pool.queries[0].sql, /ORDER BY re\.message_id, re\.user_id, re\.update_id DESC/);
   assert.match(pool.queries[0].sql, /nw\.emoji IN \('🥱', '🤔'\)/);
   assert.match(pool.queries[0].sql, /sm\.kind = 'post'/);
   assert.match(pool.queries[0].sql, /\$1 = '' OR re\.user_id IS NULL OR re\.user_id::text = \$1/);
-});
-
-test("a confirmed 🥱 stops waiting once the claim's newest tier mark says wrong, should be the digest", async () => {
-  pool = new FakePool().install().on(/WITH newest AS/, []);
-  await emojiMarksWaiting("");
-  assert.match(pool.queries[0].sql, /t\.verdict = 'wrong' AND t\.should_be_tier = 2 FROM review_tiers t WHERE t\.claim_id = c\.id ORDER BY t\.id DESC LIMIT 1/);
-  assert.match(pool.queries[0].sql, /k\.note LIKE '🤔 looks wrong%'/);
+  assert.doesNotMatch(pool.queries[0].sql, /review_tiers|review_claim_notes/);
 });
 
 test("the last read is the newest run that counted a read, or none", async () => {

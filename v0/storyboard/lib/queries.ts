@@ -164,7 +164,48 @@ export async function reviewsFor(schema: Schema, claimIds: string[]): Promise<{ 
  */
 export async function tierMarksFor(claimIds: string[]): Promise<TierMark[]> {
   if (claimIds.length === 0) return [];
-  return query<TierMark>("public", "SELECT id, claim_id, tier_had, verdict, should_be_tier, note FROM review_tiers WHERE claim_id = ANY($1::bigint[])", [claimIds]);
+
+  // Marks made on the storyboard, plus one for each claim whose posted message carries his 🥱 now: it counts at once, and taking the emoji off takes it back.
+  // A mark he made on the storyboard after the emoji wins, so the synthetic one is left out then. Its id is above any real one, so it is the newest.
+  return query<TierMark>(
+    "public",
+    `SELECT id, claim_id, tier_had, verdict, should_be_tier, note FROM review_tiers WHERE claim_id = ANY($1::bigint[])
+     UNION ALL
+     SELECT ${EMOJI_MARK_ID_BASE} + c.id, c.id, tn.tier, 'wrong'::text, 2::smallint, '🥱 in Telegram: belongs in the digest'::text
+     FROM claims c
+     JOIN readings r ON r.id = c.posted_reading_id
+     JOIN LATERAL (${latestHisEmoji("r.message_id", "$2")}) last ON last.emoji = '🥱'
+     JOIN LATERAL (SELECT min(rn.tier) AS tier FROM reading_now rn WHERE rn.claim_id = c.id) tn ON tn.tier = 1
+     WHERE c.id = ANY($1::bigint[]) AND NOT EXISTS (SELECT 1 FROM review_tiers t WHERE t.claim_id = c.id AND t.created_at > last.received_at)`,
+    [claimIds, maintainerId()],
+  );
+}
+
+/** A synthetic tier mark's id starts here, above any real review_tiers id. */
+const EMOJI_MARK_ID_BASE = 9_000_000_000_000;
+
+/** The marker the note read from a 🤔 starts with. */
+export const LOOKS_WRONG_NOTE = "🤔 looks wrong (from Telegram)";
+
+/**
+ * His Telegram account id from the setting; "" when it is not set, which counts any account, right while he is alone in the chat.
+ *
+ * @returns The id, or "".
+ */
+function maintainerId(): string {
+  return process.env.TELEGRAM_MAINTAINER_ID ?? "";
+}
+
+/**
+ * A SQL query for the newest emoji he put on one message, with when it was put there.
+ *
+ * @param messageId  The column holding the message's id, with its table alias; a fixed name, never user input.
+ * @param maintainerParam  The placeholder holding his account id ("" counts any account); a fixed name, never user input.
+ * @returns The query, giving emoji and received_at.
+ */
+export function latestHisEmoji(messageId: string, maintainerParam: string): string {
+  if (!messageId.includes(".")) throw new Error(`latestHisEmoji needs a qualified column, got "${messageId}"`);
+  return `SELECT re.emoji, re.received_at FROM reactions re WHERE re.message_id = ${messageId} AND (${maintainerParam} = '' OR re.user_id IS NULL OR re.user_id::text = ${maintainerParam}) ORDER BY re.update_id DESC LIMIT 1`;
 }
 
 /** A note on a claim, and when it was written or last changed. */
@@ -183,7 +224,24 @@ export async function claimNotesFor(claimIds: string[]): Promise<Map<string, Cla
     "SELECT DISTINCT ON (claim_id) claim_id, note, created_at FROM review_claim_notes WHERE claim_id = ANY($1::bigint[]) ORDER BY claim_id, id DESC",
     [claimIds],
   );
-  return new Map(rows.filter((row) => row.note !== "").map((row) => [row.claim_id, { note: row.note, created_at: row.created_at }]));
+  const notes = new Map(rows.filter((row) => row.note !== "").map((row) => [row.claim_id, { note: row.note, created_at: row.created_at }]));
+
+  // A 🤔 on a claim's posted message is a looks-wrong note at once, kept in front of the note already there; a note written after the emoji wins.
+  const wrong = await query<{ claim_id: string; at: Date }>(
+    "public",
+    `SELECT c.id AS claim_id, last.received_at AS at
+     FROM claims c
+     JOIN readings r ON r.id = c.posted_reading_id
+     JOIN LATERAL (${latestHisEmoji("r.message_id", "$2")}) last ON last.emoji = '🤔'
+     WHERE c.id = ANY($1::bigint[])
+       AND NOT EXISTS (SELECT 1 FROM review_claim_notes k WHERE k.claim_id = c.id AND k.created_at > last.received_at)`,
+    [claimIds, maintainerId()],
+  );
+  for (const row of wrong) {
+    const existing = notes.get(row.claim_id);
+    notes.set(row.claim_id, { note: existing ? `${LOOKS_WRONG_NOTE}. ${existing.note}` : LOOKS_WRONG_NOTE, created_at: row.at });
+  }
+  return notes;
 }
 
 /**
