@@ -15,7 +15,7 @@ import { careerEvents } from "./career-events.ts";
 import { bestTier, liveScores } from "./live-scores.ts";
 import { FakePool } from "./fake-pool.ts";
 
-let pool: FakePool;
+let pool: FakePool | undefined;
 afterEach(() => pool?.restore());
 
 const NOW = new Date("2026-10-20T20:00:00Z");
