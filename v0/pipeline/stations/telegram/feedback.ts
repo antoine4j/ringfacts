@@ -25,6 +25,8 @@ export type TelegramMessage = {
   document?: unknown;
   sticker?: unknown;
   animation?: unknown;
+  /** Service messages carry a field of their own, listed in SERVICE_FIELDS. */
+  [serviceField: string]: unknown;
 };
 
 /** One reaction as Telegram lists it. */
@@ -57,6 +59,29 @@ export type MaintainerMessage = {
 
 /** One change of reaction, as v0 stores it. */
 export type Reaction = { updateId: number; messageId: number; emoji: string | null; oldEmoji: string | null; userId: number | null };
+
+// The fields Telegram puts on a service message: a pin, someone joining or leaving, a chat renamed
+// or given a new photo, a timer, a video chat, a forum topic. Each names something that happened in
+// the chat, not something anyone wrote, so a message carrying one is never kept.
+export const SERVICE_FIELDS = [
+  "pinned_message", "new_chat_members", "left_chat_member", "new_chat_title", "new_chat_photo", "delete_chat_photo",
+  "group_chat_created", "supergroup_chat_created", "channel_chat_created", "message_auto_delete_timer_changed",
+  "migrate_to_chat_id", "migrate_from_chat_id", "successful_payment", "users_shared", "chat_shared", "connected_website",
+  "write_access_allowed", "passport_data", "proximity_alert_triggered", "boost_added", "chat_background_set",
+  "forum_topic_created", "forum_topic_edited", "forum_topic_closed", "forum_topic_reopened",
+  "general_forum_topic_hidden", "general_forum_topic_unhidden", "giveaway_created", "giveaway_completed",
+  "video_chat_scheduled", "video_chat_started", "video_chat_ended", "video_chat_participants_invited", "web_app_data",
+] as const;
+
+/**
+ * Whether Telegram marked this message as a service message rather than something the sender wrote.
+ *
+ * @param message  The message.
+ * @returns True when it carries any service field.
+ */
+function isServiceMessage(message: TelegramMessage): boolean {
+  return SERVICE_FIELDS.some((field) => message[field] !== undefined);
+}
 
 // The kinds of message that are not plain text, in the order they are looked for.
 const MEDIA_KINDS = ["photo", "voice", "video", "video_note", "audio", "document", "sticker", "animation"] as const;
@@ -105,7 +130,9 @@ function kindOf(message: TelegramMessage): string {
  * The maintainer's messages in v0's chat among a batch of updates.
  *
  * Anything from another account is dropped here, before it can be stored: the
- * friends will be in the chat after launch and their words are never kept.
+ * friends will be in the chat after launch and their words are never kept. So is a
+ * service message (a pin, a join, a rename), recognised by the field Telegram puts
+ * on it, never by its being empty.
  *
  * @param updates  What getUpdates returned.
  * @param chatId  v0's chat.
@@ -118,6 +145,9 @@ export function maintainerMessagesIn(updates: Update[], chatId: string, maintain
     const message = update.message;
     if (!message || String(message.chat.id) !== chatId) continue;
     if (!message.from || message.from.is_bot || String(message.from.id) !== maintainerId) continue;
+
+    // A pin, a join or a rename is the chat's own line, not his words.
+    if (isServiceMessage(message)) continue;
     const text = message.text ?? message.caption ?? "";
     kept.push({
       updateId: update.update_id,

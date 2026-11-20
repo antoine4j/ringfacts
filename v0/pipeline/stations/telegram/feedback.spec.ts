@@ -6,7 +6,7 @@
 
 import { test } from "node:test";
 import assert from "node:assert/strict";
-import { linkedMessageId, maintainerMessagesIn, reactionsIn, type Update } from "./feedback.ts";
+import { linkedMessageId, maintainerMessagesIn, reactionsIn, SERVICE_FIELDS, type Update } from "./feedback.ts";
 
 const CHAT = "-1001234567890";
 const ME = "4242";
@@ -142,4 +142,39 @@ test("swapping one counted emoji for another is one change carrying both", () =>
 
 test("the chat is compared as text, so a chat whose number only ends alike is another chat", () => {
   assert.deepEqual(reactionsIn([reactionUpdate(29, [], ["👍"], { chat: { id: -10012345678901 } })], CHAT), []);
+});
+
+test("a pin notice is dropped: Telegram marks it with pinned_message, and it carries no text of his", () => {
+  const pin = messageUpdate(40, { text: undefined, reply_to_message: { message_id: 8 }, pinned_message: { message_id: 8 } });
+  assert.deepEqual(maintainerMessagesIn([pin], CHAT, ME), []);
+});
+
+test("every service field drops the message that carries it", () => {
+  for (const field of SERVICE_FIELDS) {
+    const service = messageUpdate(41, { text: undefined, [field]: {} });
+    assert.deepEqual(maintainerMessagesIn([service], CHAT, ME), [], field);
+  }
+});
+
+test("a message with no text that is not a service message is kept, so emptiness alone drops nothing", () => {
+  const kept = maintainerMessagesIn([
+    messageUpdate(42, { text: undefined, poll: {} }),
+    messageUpdate(43, { text: undefined, location: {} }),
+    messageUpdate(44, { text: undefined, photo: [{}] }),
+    messageUpdate(45, { text: undefined, voice: {} }),
+    messageUpdate(46, { text: undefined, sticker: {} }),
+    messageUpdate(47, { text: undefined, video: {} }),
+  ], CHAT, ME);
+  assert.deepEqual(kept.map((message) => message.kind), ["other", "other", "photo", "voice", "sticker", "video"]);
+});
+
+test("a text that says it pinned or joined something is kept: the rule reads fields, not words", () => {
+  const [kept] = maintainerMessagesIn([messageUpdate(48, { text: "pinned_message and new_chat_members, as text" })], CHAT, ME);
+  assert.equal(kept.text, "pinned_message and new_chat_members, as text");
+});
+
+test("a pin notice among real messages drops only the notice", () => {
+  const pin = messageUpdate(50, { text: undefined, pinned_message: { message_id: 1 } });
+  const kept = maintainerMessagesIn([messageUpdate(49), pin, messageUpdate(51)], CHAT, ME);
+  assert.deepEqual(kept.map((message) => message.updateId), [49, 51]);
 });
